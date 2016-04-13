@@ -4,7 +4,7 @@
   * you may not use this file except in compliance with the License.
   * You may obtain a copy of the License at
   *
-  * http://www.apache.org/licenses/LICENSE-2.0
+  *        http://www.apache.org/licenses/LICENSE-2.0
   *
   * Unless required by applicable law or agreed to in writing, software
   * distributed under the License is distributed on an "AS IS" BASIS,
@@ -33,17 +33,18 @@ class BindingTest extends FunSpec with Matchers with MockitoSugar with LazyLoggi
     "Bound To Character",
     "Bound To Account")
   final val NumCharacters = 10
-  final val randWords = for { x ← 1 to 5 } yield randomAlphanumericString(NumCharacters)
-  final val abbr = possibleText.map { words ⇒ if (words.equalsIgnoreCase(Unbound)) Unbound else wordsToAcronym(words).get }
+  final val randWords = for { x <- 1 to 5 } yield randomAlphanumericString(NumCharacters)
+  final val abbr = possibleText.map { words => if (words.equalsIgnoreCase(Unbound)) Unbound else wordsToAcronym(words).get }
   final val checks: List[String] = List("BindsToAccount",
     "Unbound", "BindsToCharacter", "BindsToCharacterOnEquip", "BindsToAccountOnEquip", "BindsToCharacterOnAcquire", "BindsToCharacterOnEquip")
+  private def init: Unit = {}
   describe("Binding Status") {
     they("should include unbound, account and character") {
-      BindingStatus.values.foreach { x ⇒ checks.contains(x) }
+      BindingStatus.values.foreach { x => checks.contains(x) }
     }
 
     they("should recognize both 'bound' and 'binds'") {
-      possibleText.filterNot { x ⇒ x.equalsIgnoreCase(Unbound.toLowerCase()) }.foreach { x ⇒
+      possibleText.filterNot { x => x.equalsIgnoreCase(Unbound.toLowerCase()) }.foreach { x =>
         BindingFlags.fromWords(Option.apply(x)) should not be empty
         BindingFlags.fromWords(Option.apply(x.replace("Bound", "Binds"))) should not be empty
       }
@@ -60,7 +61,7 @@ class BindingTest extends FunSpec with Matchers with MockitoSugar with LazyLoggi
     }
     it("should default to 'None' if any non-matching text supplied") {
       val i = 10
-      randWords.foreach { words ⇒
+      randWords.foreach { words =>
         logger.info(s"Testing words: ${words}")
         val rslt = BindingFlags.fromWords(Option(words))
         rslt shouldEqual None
@@ -69,8 +70,8 @@ class BindingTest extends FunSpec with Matchers with MockitoSugar with LazyLoggi
   }
   describe("Binding Flags") {
     they("can create an instance from acronyns with [Option] or raw") {
-      val words = possibleText.filter { x ⇒ x.equals(Unbound) }
-      words.foreach { x ⇒
+      val words = possibleText.filter { x => x.equals(Unbound) }
+      words.foreach { x =>
         logger.info(s"using acronym from ${words}")
         BindingFlags.fromWords(x) should not be empty
         BindingFlags.fromWords(Option(x)) should not be empty
@@ -78,7 +79,7 @@ class BindingTest extends FunSpec with Matchers with MockitoSugar with LazyLoggi
     }
 
     they("should produce an instance from the full (case insensitive) words") {
-      abbr.foreach { name ⇒
+      abbr.foreach { name =>
         logger.info(s"Testing with case insensitive full name ${name}")
         BindingFlags.withNameInsensitiveOption(name.toUpperCase()) should not be empty
         noException should be thrownBy (BindingFlags.withNameInsensitive(name.toUpperCase()))
@@ -86,7 +87,7 @@ class BindingTest extends FunSpec with Matchers with MockitoSugar with LazyLoggi
     }
 
     they("should produce an instance from the full (case sensitive) words") {
-      abbr.foreach { name ⇒
+      abbr.foreach { name =>
         BindingFlags.withNameOption(name) should not be empty
         noException should be thrownBy (BindingFlags.withName(name))
       }

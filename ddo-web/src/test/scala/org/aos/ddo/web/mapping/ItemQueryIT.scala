@@ -54,10 +54,10 @@ class QueryItemIT extends FunSpec with Matchers with MockitoSugar with LazyLoggi
         logger.info(MsgRetrieve)
         val weaponDoc = Warehouse.htmlToMappedValues(id)
         weaponDoc match {
-          case Some(x) ⇒
+          case Some(x) =>
             logger.info(MsgDataFound)
             x.keys.foreach {
-              key ⇒
+              key =>
                 {
                   val v = {
                     x.getOrElse(key, MsgMissing)
@@ -66,7 +66,7 @@ class QueryItemIT extends FunSpec with Matchers with MockitoSugar with LazyLoggi
                   logger.info(MsgKv)
                 }
             }
-          case _ ⇒ logger.warn(extracted)
+          case _ => logger.warn(extracted)
         }
       }))
   }

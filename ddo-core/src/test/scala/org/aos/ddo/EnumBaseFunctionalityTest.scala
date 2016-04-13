@@ -14,9 +14,8 @@
   */
 package org.aos.ddo
 
-import org.scalatest.FunSpec
-import org.scalatest.BeforeAndAfter
 import org.junit.runner.RunWith
+import org.scalatest.{ BeforeAndAfter, Finders, FunSpec }
 import org.scalatest.junit.JUnitRunner
 import org.scalatest.mockito.MockitoSugar
 

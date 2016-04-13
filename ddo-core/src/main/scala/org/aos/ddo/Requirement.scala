@@ -14,7 +14,7 @@
   */
 package org.aos.ddo
 
-import enumeratum.{ EnumEntry, Enum ⇒ SmartEnum }
+import enumeratum.{ EnumEntry, Enum => SmartEnum }
 
 /** Base trait used to enumerate qualifications.
   */

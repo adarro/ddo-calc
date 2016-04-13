@@ -4,7 +4,7 @@
   * you may not use this file except in compliance with the License.
   * You may obtain a copy of the License at
   *
-  * http://www.apache.org/licenses/LICENSE-2.0
+  *        http://www.apache.org/licenses/LICENSE-2.0
   *
   * Unless required by applicable law or agreed to in writing, software
   * distributed under the License is distributed on an "AS IS" BASIS,
@@ -21,7 +21,7 @@ import org.aos.ddo.{ Armor, Clothing, DDOObject, Item, Potion }
 
 import com.typesafe.scalalogging.slf4j.LazyLogging
 
-import enumeratum.{ Enum ⇒ SmartEnum, EnumEntry }
+import enumeratum.{ Enum => SmartEnum, EnumEntry }
 
 /** Utility object for mapping DDOWiki tables and fields to objects
   */
@@ -32,8 +32,8 @@ object FieldMapper extends LazyLogging {
     */
   sealed abstract class ItemType(words: Either[String, List[String]]) extends EnumEntry {
     val wordList = words match {
-      case Right(x) ⇒ x
-      case Left(x)  ⇒ List(x)
+      case Right(x) => x
+      case Left(x)  => List(x)
     }
   }
 
@@ -69,7 +69,7 @@ object FieldMapper extends LazyLogging {
     * @return an [[ItemType]] if found, otherwise None
     */
   def fieldType(words: Set[String]): Option[ItemType] = {
-    val types = FieldMapper.ItemType.values.filter { x ⇒ words.intersect(x.wordList.toSet).size > 0 }
+    val types = FieldMapper.ItemType.values.filter { x => words.intersect(x.wordList.toSet).size > 0 }
     if (!types.isEmpty) {
       Some(types(0))
     } else {
@@ -86,7 +86,7 @@ object FieldMapper extends LazyLogging {
     val types = fieldType(keys)
     logger.info(s"Filtered type: ${types}")
     types match {
-      case Some(x: ItemType) if x == ItemType.Weapon ⇒
+      case Some(x: ItemType) if x == ItemType.Weapon =>
         logger.info("Item type of weapon found")
         val damageAndTypeString = WikiParser.damage(source)
         val damageDie: Option[String] = WikiParser.damageDie(damageAndTypeString)
@@ -126,7 +126,7 @@ object FieldMapper extends LazyLogging {
           weaponCategory = weaponCategory,
           weaponType = WikiParser.weaponType(weaponCategory))
         Some(weapon)
-      case _ ⇒ None
+      case _ => None
     }
   }
   /** WikiToProperty
@@ -147,11 +147,11 @@ object FieldMapper extends LazyLogging {
     val types = fieldType(keys)
     logger.info(s"Filtered type: ${types}")
     types match {
-      case Some(x: ItemType) if x == ItemType.Weapon ⇒ weaponFromWiki(source)
-      case Some(x: Armor)                            ⇒ { throw new NotImplementedError }
-      case Some(x: Potion)                           ⇒ { throw new NotImplementedError }
-      case Some(x: Clothing)                         ⇒ { throw new NotImplementedError }
-      case _                                         ⇒ None
+      case Some(x: ItemType) if x == ItemType.Weapon => weaponFromWiki(source)
+      case Some(x: Armor)                            => { throw new NotImplementedError }
+      case Some(x: Potion)                           => { throw new NotImplementedError }
+      case Some(x: Clothing)                         => { throw new NotImplementedError }
+      case _                                         => None
 
     }
   }

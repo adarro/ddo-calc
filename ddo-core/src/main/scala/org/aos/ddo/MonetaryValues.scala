@@ -14,7 +14,7 @@
   */
 package org.aos.ddo
 
-import enumeratum.{ EnumEntry, Enum ⇒ SmartEnum }
+import enumeratum.{ EnumEntry, Enum => SmartEnum }
 
 /** should indicate the base value (in platinum type denominations)
   * This should probably be expanded to a general DDO Denomination to support

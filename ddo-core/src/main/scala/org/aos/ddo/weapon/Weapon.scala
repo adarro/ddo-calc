@@ -4,7 +4,7 @@
   * you may not use this file except in compliance with the License.
   * You may obtain a copy of the License at
   *
-  * http://www.apache.org/licenses/LICENSE-2.0
+  *        http://www.apache.org/licenses/LICENSE-2.0
   *
   * Unless required by applicable law or agreed to in writing, software
   * distributed under the License is distributed on an "AS IS" BASIS,
@@ -151,8 +151,8 @@ trait OneHandedWeapon extends HandedWeapon {
   lazy val allowedWearLocations = {
     WearLocation.fromMask(
       WearLocation.MainHand | WearLocation.OffHand) match {
-        case Some(x) ⇒ x
-        case _       ⇒ Nil
+        case Some(x) => x
+        case _       => Nil
       }
   }
 }
@@ -160,8 +160,8 @@ trait OneHandedWeapon extends HandedWeapon {
 trait TwoHandedWeapon extends HandedWeapon {
   lazy val allowedWearLocations = {
     WearLocation.fromMask(WearLocation.MainHand.toInt) match {
-      case Some(x) ⇒ x
-      case _       ⇒ List[WearLocation with Product with Serializable]()
+      case Some(x) => x
+      case _       => List[WearLocation with Product with Serializable]()
     }
   }
 }

@@ -4,7 +4,7 @@
   * you may not use this file except in compliance with the License.
   * You may obtain a copy of the License at
   *
-  * http://www.apache.org/licenses/LICENSE-2.0
+  *        http://www.apache.org/licenses/LICENSE-2.0
   *
   * Unless required by applicable law or agreed to in writing, software
   * distributed under the License is distributed on an "AS IS" BASIS,
@@ -47,8 +47,8 @@ object Warehouse extends LazyLogging {
     import net.ruippeixotog.scalascraper.dsl.DSL.Parse._
     // scalastyle:on import.grouping underscore.import
     e >?> element(HtmlTag.ListItem) match {
-      case Some(x) ⇒ for (ele ← e.getElementsByAttribute(HtmlTag.ListItem)) yield ele.text() // scalastyle:off for.brace
-      case _       ⇒ Nil
+      case Some(x) => for (ele <- e.getElementsByAttribute(HtmlTag.ListItem)) yield ele.text() // scalastyle:off for.brace
+      case _       => Nil
     }
   }
 
@@ -74,13 +74,13 @@ object Warehouse extends LazyLogging {
   def makeLeaves(fragment: Element, branchTag: String = HtmlTag.UnorderedList, leafTag: String = HtmlTag.ListItem): Option[Buffer[Leaf]] = {
     import net.ruippeixotog.scalascraper.dsl.DSL.Extract._ // scalastyle:off import.grouping underscore.import
     fragment >?> element(branchTag) match {
-      case Some(ele) ⇒
+      case Some(ele) =>
         val firstLevelItemsWithToolTips = ele.select(Filter.FirstLevelLeaf)
         lazy val msgLeafCount = s"Leaf count ${firstLevelItemsWithToolTips.size}"
         logger.info(msgLeafCount)
-        val rslt = firstLevelItemsWithToolTips.map { x ⇒ new Leaf(x.text()) }
+        val rslt = firstLevelItemsWithToolTips.map { x => new Leaf(x.text()) }
         Some(rslt)
-      case _ ⇒
+      case _ =>
         logger.warn(MsgNoReadableLists)
         None
     }
@@ -95,16 +95,16 @@ object Warehouse extends LazyLogging {
   def readHtmlList(fragment: Element, branchTag: String = HtmlTag.UnorderedList, leafTag: String = HtmlTag.ListItem): HtmlTreeNode = {
     import net.ruippeixotog.scalascraper.dsl.DSL.Extract._ // scalastyle:off import.grouping underscore.import
     fragment >?> element(branchTag) match {
-      case Some(ele) ⇒ {
+      case Some(ele) => {
         val leaves = makeLeaves(ele, branchTag, leafTag)
-        val b = ele.children.select(s":root > ${branchTag} ").select(Filter.FirstLevelLeaf).map { x ⇒ logger.info(s"BranchedLeaf ${x.text}"); Leaf(x.text) }
+        val b = ele.children.select(s":root > ${branchTag} ").select(Filter.FirstLevelLeaf).map { x => logger.info(s"BranchedLeaf ${x.text}"); Leaf(x.text) }
         val branchedLeaves = if (b.size > 0) Some(b) else None
         Branch(branchedLeaves match {
-          case Some(x) ⇒ { Some(List(Branch(leaves = branchedLeaves))) }
-          case _       ⇒ { None }
+          case Some(x) => { Some(List(Branch(leaves = branchedLeaves))) }
+          case _       => { None }
         }, leaves)
       }
-      case _ ⇒ { Stump() }
+      case _ => { Stump() }
     }
   }
 
@@ -126,27 +126,27 @@ object Warehouse extends LazyLogging {
     logger.info(s"call for ${key} has size ${doc.html().length()}")
     // We need to add the sibling h2 to allow for the update warning template
     doc >?> element("#mw-content-text > h2 + table") match {
-      case Some(tables) ⇒ {
+      case Some(tables) => {
         val nameRows = tables.getElementsByTag(HtmlTag.TableRow)
         logger.info(s"found ${nameRows.size()} name rows")
-        val namedRow = nameRows.map { (row ⇒ row.select(HtmlTag.TableHeader).text.trim() -> row) }.toMap
-        val fields = nameRows.map { row ⇒ row.select(HtmlTag.TableHeader).text.trim() }.toSet
+        val namedRow = nameRows.map { (row => row.select(HtmlTag.TableHeader).text.trim() -> row) }.toMap
+        val fields = nameRows.map { row => row.select(HtmlTag.TableHeader).text.trim() }.toSet
         val field = FieldMapper.fieldType(fields)
 
         val result = field match {
-          case Some(field) ⇒
+          case Some(field) =>
             lazy val MsgItemType = s"item is of type ${field} "
             logger.info(MsgItemType);
             val r = FieldMapper.wikiToItem(namedRow)
             None
-          case _ ⇒
+          case _ =>
             logger.info(MsgErrCantParseField);
             None
         }
-        namedRow.foreach { x ⇒ logger.info(s"\nnamedRow: ${x._1} data: ${x._2.html()}") }
+        namedRow.foreach { x => logger.info(s"\nnamedRow: ${x._1} data: ${x._2.html()}") }
         result
       }
-      case _ ⇒ None
+      case _ => None
     }
   }
 

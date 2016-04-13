@@ -1,0 +1,1 @@
+mvn archetype:generate -B -DarchetypeGroupId=net.alchim31.maven -DarchetypeArtifactId=scala-archetype-simple -DarchetypeVersion=1.5  -DgroupId=org.aos -DartifactId=ddo-support -Dversion=0.1-SNAPSHOT -Dpackage=org.aos.ddo.support

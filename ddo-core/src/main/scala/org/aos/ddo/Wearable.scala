@@ -1,3 +1,18 @@
+/**
+ * Copyright (C) 2015 Andre White (adarro@gmail.com)
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *         http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
 package org.aos.ddo
 
 /** Indicates the given object can be equipped / wielded etc.
@@ -9,8 +24,8 @@ trait Wearable {
     */
   lazy val equipmentSlot = {
     WearLocation.fromMask(allowedWearLocationFlags) match {
-      case Some(x) ⇒ x
-      case _       ⇒ List[WearLocation with Product with Serializable]()
+      case Some(x) => x
+      case _       => List[WearLocation with Product with Serializable]()
     }
   }
   /** A bitmask that corresponds to one or more [[org.aos.ddo.WearLocation] values.

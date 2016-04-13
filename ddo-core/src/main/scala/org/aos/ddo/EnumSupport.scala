@@ -4,7 +4,7 @@
   * you may not use this file except in compliance with the License.
   * You may obtain a copy of the License at
   *
-  * http://www.apache.org/licenses/LICENSE-2.0
+  *        http://www.apache.org/licenses/LICENSE-2.0
   *
   * Unless required by applicable law or agreed to in writing, software
   * distributed under the License is distributed on an "AS IS" BASIS,
@@ -70,7 +70,7 @@ object EnumImplicits {
 trait Enum[A] {
   import scala.language.implicitConversions // scalastyle:off import.grouping
   trait Value extends DefaultValue[Value] {
-    self: A ⇒
+    self: A =>
     def index: Int = values indexOf this
     def bitValue: Int = Math.pow(2.0, index).toInt
     def all: List[Value] = values
@@ -78,7 +78,7 @@ trait Enum[A] {
   def valsOfType[T: Manifest]: Array[T] = {
     val c = implicitly[Manifest[T]].runtimeClass
     for {
-      m ← getClass.getMethods
+      m <- getClass.getMethods
       if m.getParameterTypes.isEmpty && c.isAssignableFrom(m.getReturnType)
     } yield (m.invoke(this).asInstanceOf[T])
   }
@@ -91,7 +91,7 @@ trait Enum[A] {
   // These convenience methods mostly have the common return type of Option[List[Enum[A]]] and left for comprehensions, which should NOT use braces.
   // scalastyle:off public.methods.have.type for.brace
   def withName(name: String, ignoreCase: Boolean = false) = {
-    values.find { x ⇒
+    values.find { x =>
       {
         if (ignoreCase) x.toString().equalsIgnoreCase(name) else x.toString().equals(name)
       }
@@ -99,38 +99,25 @@ trait Enum[A] {
   }
   def withNames(names: List[String], ignoreCase: Boolean = false) = {
     for (
-      sc ← Some(this.values.filter { x ⇒
+      sc <- Some(this.values.filter { x =>
         if (ignoreCase) {
-          names.count { n ⇒ n.equalsIgnoreCase(x.toString()) } > 0
+          names.count { n => n.equalsIgnoreCase(x.toString()) } > 0
         } else { names.contains(x.toString()) }
       }) if sc.nonEmpty
     ) yield sc
   }
   def fromMask(flag: Int) = {
     for (
-      sc ← Some(this.values.filter { x ⇒ (x.bitValue & flag) != 0 }) if sc.nonEmpty
+      sc <- Some(this.values.filter { x => (x.bitValue & flag) != 0 }) if sc.nonEmpty
     ) yield sc
   }
 
-  //  def fromMask2[T <: Integer, B <: Value](z: B)(flag: Int) = {
-  //    val g: Int = 0 + flag
-  //    for (
-  //      sc ← Some(z.all.filter { x ⇒ (x.bitValue & flag) != 0 }) if sc.nonEmpty
-  //    ) yield sc
-  //  }
-  //
-  //  def fromMask3[T <: Value](flag: Int)(implicit z: T): Option[List[T]] = {
-  //    val p = z
-  //    for (
-  //      sc ← Some(z.all.filter { x ⇒ (x.bitValue & flag) != 0 }) if sc.nonEmpty
-  //    ) yield sc.map { x ⇒ x.asInstanceOf[T] }
-  //  }
   /** Converts Int to Enum
     */
   implicit def i2e(i: Int) = {
-    values.find { x ⇒ x.bitValue == i } match {
-      case Some(x) ⇒ { x }
-      case _       ⇒ { throw new IndexOutOfBoundsException(s"No value found with index $i") }
+    values.find { x => x.bitValue == i } match {
+      case Some(x) => { x }
+      case _       => { throw new IndexOutOfBoundsException(s"No value found with index $i") }
     }
   }
   // scalastyle:on public.methods.have.type for.brace

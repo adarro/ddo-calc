@@ -1,0 +1,267 @@
+<!-- Copyright (C) ${project.inceptionYear} ${owner} (${email}) Licensed 
+    under the Apache License, Version 2.0 (the "License"); you may not use this 
+    file except in compliance with the License. You may obtain a copy of the 
+    License at http://www.apache.org/licenses/LICENSE-2.0 Unless required by 
+    applicable law or agreed to in writing, software distributed under the License 
+    is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY 
+    KIND, either express or implied. See the License for the specific language 
+    governing permissions and limitations under the License. -->
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <parent>
+        <groupId>ddo-calc</groupId>
+        <artifactId>ddo-calc-parent</artifactId>
+        <version>0.1.0-alpha</version>
+    </parent>
+    <artifactId>ddo-core</artifactId>
+    <name>Core DDO Objects</name>
+    <description>Basic traits and classes</description>
+    <properties>
+        <scala.binary.full.version>2.11.7</scala.binary.full.version>
+    </properties>
+    <build>
+        <sourceDirectory>src/main/scala</sourceDirectory>
+        <testSourceDirectory>src/test/scala</testSourceDirectory>
+        <plugins>
+            <!-- Disable maven compiler -->
+            <plugin>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <executions>
+                    <execution>
+                        <id>default-compile</id>
+                        <phase>none</phase>
+                    </execution>
+                    <execution>
+                        <id>default-testCompile</id>
+                        <phase>none</phase>
+                    </execution>
+                </executions>
+            </plugin>
+
+            <plugin>
+                <!-- see http://davidb.github.com/scala-maven-plugin -->
+                <groupId>net.alchim31.maven</groupId>
+                <artifactId>scala-maven-plugin</artifactId>
+                <executions>
+                    <execution>
+                        <id>scala-compile</id>
+                        <!-- <phase>process-resources</phase> -->
+                        <goals>
+                            <!-- <goal>add-source</goal> -->
+                            <goal>compile</goal>
+                        </goals>
+                    </execution>
+                    <execution>
+                        <id>scala-test-compile</id>
+                        <!-- <phase>process-test-resources</phase> -->
+                        <phase>test-compile</phase>
+                        <goals>
+                            <goal>testCompile</goal>
+                        </goals>
+                        <configuration>
+                             <includes>
+                                 <include>**/*Test.scala</include>
+                                 <include>**/*IT.scala</include>
+                                </includes>
+                            </configuration>
+                    </execution>
+                </executions>
+                <configuration>
+                    <!--<recompileMode>incremental</recompileMode>-->
+                    <args>
+                        <!-- <arg>-make:transitive</arg> flag is deprecated in 2.11+ -->
+                        <arg>-dependencyfile</arg>
+                        <arg>-deprecation</arg>
+                        <arg>-feature</arg>
+                        <arg>-Ywarn-unused</arg>
+<!--                        <arg>-P:genjavadoc:out=${project.build.directory}/genjavadoc</arg> -->
+                        <!-- <arg>${project.build.directory}/.scala_dependencies</arg> -->
+                    </args>
+                      
+                <!--    <compilerPlugins>
+                        <compilerPlugin>
+                            <groupId>com.typesafe.genjavadoc</groupId>
+                            <artifactId>genjavadoc-plugin_${scala.binary.full.version}</artifactId>
+                            <version>0.9</version>
+                        </compilerPlugin>
+                    </compilerPlugins> -->
+                </configuration> 
+            </plugin>
+            <!-- <plugin> -->
+            <!-- <groupId>org.codehaus.mojo</groupId> -->
+            <!-- <artifactId>build-helper-maven-plugin</artifactId> -->
+            <!-- <executions> -->
+            <!-- <execution> -->
+            <!-- <id>add-source</id> -->
+            <!-- <phase>generate-sources</phase> -->
+            <!-- <goals> -->
+            <!-- <goal>add-source</goal> -->
+            <!-- </goals> -->
+            <!-- <configuration> -->
+            <!-- <sources> -->
+            <!-- <source>src/main/scala</source> -->
+            <!-- <source>${project.build.directory}/genjavadoc</source> -->
+            <!-- </sources> -->
+            <!-- </configuration> -->
+            <!-- </execution> -->
+            <!-- <execution> -->
+            <!-- <id>add-test-source</id> -->
+            <!-- <phase>generate-test-sources</phase> -->
+            <!-- <goals> -->
+            <!-- <goal>add-test-source</goal> -->
+            <!-- </goals> -->
+            <!-- <configuration> -->
+            <!-- <sources> -->
+            <!-- <source>src/test/scala</source> -->
+            <!-- <source>src/test/xtend</source> -->
+            <!-- </sources> -->
+            <!-- </configuration> -->
+            <!-- </execution> -->
+            <!-- </executions> -->
+            <!-- </plugin> -->
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-javadoc-plugin</artifactId>
+                <configuration>
+                    <minmemory>64m</minmemory>
+                    <maxmemory>2g</maxmemory>
+                    <outputDirectory>${project.build.directory}</outputDirectory>
+                    <detectLinks>true</detectLinks>
+                </configuration>
+            </plugin>
+            <!-- XTend Maven -->
+            <!-- Xtend Builder -->
+            <!-- <plugin> <groupId>org.eclipse.xtend</groupId> <artifactId>xtend-maven-plugin</artifactId> 
+                <executions> <execution> <goals> <goal>compile</goal> <goal>testCompile</goal> 
+                <goal>xtend-install-debug-info</goal> </goals> <configuration> <outputDirectory>${project.build.directory}/xtend-gen/main</outputDirectory> 
+                <testOutputDirectory>${project.build.directory}/xtend-gen/test</testOutputDirectory> 
+                </configuration> </execution> </executions> </plugin> -->
+            <!-- Jnario Builder -->
+            <!-- <plugin> <groupId>org.jnario</groupId> <artifactId>jnario-maven-plugin</artifactId> 
+                <executions> <execution> <goals> <goal>testCompile</goal> <goal>xtend-test-install-debug-info</goal> 
+                </goals> </execution> </executions> </plugin> -->
+            <!-- <plugin> <groupId>com.github.bmsantos</groupId> <artifactId>cola-maven-plugin</artifactId> 
+                <configuration> <includes> <include>**/*Test.class</include> </includes> 
+                </configuration> <executions> <execution> <id>compile-cola-tests</id> <phase>process-test-classes</phase> 
+                <goals> <goal>compile</goal> </goals> </execution> </executions> </plugin> -->
+            <!-- Kotlin compilier -->
+            <!-- <plugin> <artifactId>kotlin-maven-plugin</artifactId> <groupId>org.jetbrains.kotlin</groupId> 
+                <version>${kotlin.version}</version> <executions> <execution> <id>compile</id> 
+                <phase>compile</phase> <goals> <goal>compile</goal> </goals> </execution> 
+                <execution> <id>test-compile</id> <phase>test-compile</phase> <goals> <goal>test-compile</goal> 
+                </goals> </execution> </executions> </plugin> -->
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-surefire-plugin</artifactId>
+                <configuration>
+                    <skipTests>true</skipTests>
+                </configuration>
+            </plugin>
+            <!-- enable scalatest -->
+            <plugin>
+                <groupId>org.scalatest</groupId>
+                <artifactId>scalatest-maven-plugin</artifactId>
+                <!--<configuration>
+                    <reportsDirectory>${project.build.directory}/surefire-reports</reportsDirectory>
+                    <junitxml>.</junitxml>
+                    <filereports>WDF TestSuite.txt</filereports>
+                </configuration>
+                <executions>
+                    <execution>
+                        <id>test</id>
+                        <goals>
+                            <goal>test</goal>
+                        </goals>
+                    </execution>
+                </executions>-->
+            </plugin>
+        </plugins>
+    </build>
+    <reporting>
+        <plugins>
+            <plugin>
+                <!-- see http://davidb.github.com/scala-maven-plugin -->
+                <groupId>net.alchim31.maven</groupId>
+                <artifactId>scala-maven-plugin</artifactId>
+                <!-- <executions> -->
+                <!-- <execution> -->
+                <!-- <id>scala-doc-compile</id> -->
+                <!-- <phase>process-resources</phase> -->
+                <!-- <goals> -->
+                <!-- <goal>add-source</goal> -->
+                <!-- <goal>doc</goal> -->
+                <!-- </goals> -->
+
+                <!-- </execution> -->
+
+
+                <!-- </executions> -->
+                <!-- <configuration> -->
+                <!-- <recompileMode>incremental</recompileMode> -->
+                <!-- <args> -->
+                <!-- <arg>-make:transitive</arg> flag is deprecated in 2.11+ -->
+
+                <!-- <arg>-P:genjavadoc:out=${project.build.directory}/genjavadoc</arg> -->
+                <!-- <arg>${project.build.directory}/.scala_dependencies</arg> -->
+                <!-- </args> -->
+                <!-- <compilerPlugins> -->
+                <!-- <compilerPlugin> -->
+                <!-- <groupId>com.typesafe.genjavadoc</groupId> -->
+                <!-- <artifactId>genjavadoc-plugin_${scala.binary.full.version}</artifactId> -->
+                <!-- <version>0.9</version> -->
+                <!-- </compilerPlugin> -->
+                <!-- </compilerPlugins> -->
+                <!-- </configuration> -->
+            </plugin>
+        </plugins>
+    </reporting>
+    <dependencies>
+        <!-- Scala -->
+        <dependency>
+            <groupId>org.scala-lang</groupId>
+            <artifactId>scala-library</artifactId>
+        </dependency>
+        <!-- Validation -->
+        <dependency>
+            <groupId>com.wix</groupId>
+            <artifactId>accord-core_${scala.tools.version}</artifactId>
+        </dependency>
+        <!-- Logging -->
+        <dependency>
+            <groupId>com.typesafe.scala-logging</groupId>
+            <artifactId>scala-logging-slf4j_${scala.tools.version}</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>ch.qos.logback</groupId>
+            <artifactId>logback-classic</artifactId>
+        </dependency>
+        <!-- Configuration Management -->
+        <dependency>
+            <groupId>com.typesafe</groupId>
+            <artifactId>config</artifactId>
+        </dependency>
+
+        <!-- YASU - enumerations -->
+        <dependency>
+            <groupId>com.beachape</groupId>
+            <artifactId>enumeratum_${scala.base}</artifactId>
+        </dependency>
+        <!-- Test -->
+        <dependency>
+            <groupId>org.scalatest</groupId>
+            <artifactId>scalatest_${scala.tools.version}</artifactId>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.mockito</groupId>
+            <artifactId>mockito-all</artifactId>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>junit</groupId>
+            <artifactId>junit</artifactId>
+            <scope>test</scope>
+        </dependency>
+    </dependencies>
+</project>

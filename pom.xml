@@ -1,352 +1,834 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Copyright (C) ${project.inceptionYear} ${owner} (${email}) Licensed 
+    under the Apache License, Version 2.0 (the "License"); you may not use this 
+    file except in compliance with the License. You may obtain a copy of the 
+    License at http://www.apache.org/licenses/LICENSE-2.0 Unless required by 
+    applicable law or agreed to in writing, software distributed under the License 
+    is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY 
+    KIND, either express or implied. See the License for the specific language 
+    governing permissions and limitations under the License. -->
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
-	<modelVersion>4.0.0</modelVersion>
-	<groupId>ddo-calc</groupId>
-	<artifactId>ddo-calc-parent</artifactId>
-	<version>0.0.1-SNAPSHOT</version>
-	<packaging>pom</packaging>
-	<name>DDO Calculations</name>
-	<description>DDO Calculator for damage, planning and analysis</description>
-	<properties>
-		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
-		<jvm.version>1.8</jvm.version>
-		<min.jvm.version>[1.8,)</min.jvm.version>
-		<maven.compiler.source>${jvm.version}</maven.compiler.source>
-		<maven.compiler.target>${jvm.version}</maven.compiler.target>
-		<encoding>UTF-8</encoding>
-		<someProp>${project.inceptionYear}</someProp>
-		<!--<couchbase.version>1.1.0-525</couchbase.version> -->
-		<couchbase.version>1.1.0</couchbase.version>
-		<scala.base>2.11</scala.base>
-		<scala.version>${scala.base}.6</scala.version>
-		<scala.tools.version>${scala.base}</scala.tools.version>
-		<scala.logging.version>2.1.2</scala.logging.version>
-		<scoverage.plugin.version>1.1.0</scoverage.plugin.version>
-		<license.id>apache_v2</license.id>
-		<jrbroker.version>7.4.8</jrbroker.version>
-		<global.properties.file>${project.build.outputDirectory}/${project.groupId}.properties</global.properties.file>
-		<!-- R Analytics -->
-		<fluentr.version>1.0</fluentr.version>
-	</properties>
-	<scm>
-		<url>https://github.com/adarro/ddo-calc</url>
-		<connection>scm:git:git://github.com/github.com/adarro/ddo-calc.git</connection>
-		<developerConnection>scm:git:git@github.com:adarro/ddo-calc.git</developerConnection>
-	</scm>
-	<issueManagement>
-		<url>https://github.com/adarro/ddo-calc/issues</url>
-		<system>GitHub Issues</system>
-	</issueManagement>
-	<build>
-		<pluginManagement>
-			<plugins>
-				<plugin>
-					<groupId>org.apache.maven.plugins</groupId>
-					<artifactId>maven-enforcer-plugin</artifactId>
-					<version>1.4.1</version>
-					<executions>
-						<execution>
-							<id>pre-release</id>
-							<goals>
-								<goal>enforce</goal>
-							</goals>
-							<configuration>
-								<rules>
-									<requireReleaseDeps>
-										<message>No Snapshots Allowed!</message>
-										<failWhenParentIsSnapshot>false</failWhenParentIsSnapshot>
-									</requireReleaseDeps>
-									<requireJavaVersion>
-										<version>${jvm.version}</version>
-									</requireJavaVersion>
-									<!-- <requirePluginVersions> -->
-									<!-- <phases>clean,deploy,site</phases> -->
-									<!-- <unCheckedPluginList>org.apache.maven.plugins:maven-clean-plugin,org.apache.maven.plugins:maven-install-plugin,org.apache.maven.plugins:maven-site-plugin,org.apache.maven.plugins:maven-deploy-plugin</unCheckedPluginList> -->
-									<!-- </requirePluginVersions> -->
-								</rules>
-								<fail>true</fail>
-							</configuration>
-						</execution>
-					</executions>
-				</plugin>
-				<plugin>
-					<groupId>com.mycila</groupId>
-					<artifactId>license-maven-plugin</artifactId>
-					<version>2.11</version>
-					<configuration>
-						<header>com/mycila/maven/plugin/license/templates/APACHE-2.txt</header>
-						<properties>
-							<owner>Andre White</owner>
-							<email>adarro@gmail.com</email>
-						</properties>
-						<excludes>
-							<exclude>**/README</exclude>
-							<exclude>src/test/resources/**</exclude>
-							<exclude>src/main/resources/**</exclude>
-						</excludes>
-					</configuration>
-					<executions>
-						<execution>
-							<goals>
-								<goal>check</goal>
-							</goals>
-						</execution>
-					</executions>
-				</plugin>
-				<plugin>
-					<groupId>com.github.goldin</groupId>
-					<artifactId>find-maven-plugin</artifactId>
-					<version>0.2.5</version>
-					<executions>
-						<execution>
-							<id>find-notice-file</id>
-							<goals>
-								<goal>find</goal>
-							</goals>
-							<phase>validate</phase>
-							<configuration>
-								<propertyName>notice.file</propertyName>
-								<file>NOTICE</file>
-							</configuration>
-						</execution>
-					</executions>
-				</plugin>
-				<plugin>
-					<groupId>org.codehaus.mojo</groupId>
-					<artifactId>build-helper-maven-plugin</artifactId>
-					<version>1.10</version>
-				</plugin>
-				 <plugin>
-                <groupId>pl.project13.maven</groupId>
-                <artifactId>git-commit-id-plugin</artifactId>
-                <version>2.2.0</version>
-                <executions>
-                    <execution>
-                        <goals>
-                            <goal>revision</goal>
-                         </goals>
-                    </execution>
-                </executions>
+    xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <groupId>ddo-calc</groupId>
+    <artifactId>ddo-calc-parent</artifactId>
+    <version>0.1.0-alpha</version>
+    <packaging>pom</packaging>
+    <name>DDO Calculations</name>
+    <description>DDO Calculator for damage, planning and analysis (Super POM + Aggegator)</description>
+    <inceptionYear>2015</inceptionYear>
+    <properties>
+        <!-- General Build / Informational properties -->
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+        <jvm.version>1.8</jvm.version>
+        <min.jvm.version>[1.8,)</min.jvm.version>
+        <maven.compiler.source>${jvm.version}</maven.compiler.source>
+        <maven.compiler.target>${jvm.version}</maven.compiler.target>
+        <encoding>UTF-8</encoding>
+        <someProp>${project.inceptionYear}</someProp>
+        <!--Data / Persistence -->
+        <!--<couchbase.version>1.1.0-525</couchbase.version> -->
+        <!-- Counchbase (lite) only deploys Native (Linux) on repo, so reproducability 
+            and development on windows is... limited at best. -->
+        <couchbase.version>1.1.0</couchbase.version>
+        <!-- Languages -->
+        <!-- Extend -->
+        <xtend.version>2.9.0</xtend.version>
+        <!-- Scala -->
+        <scala.base>2.11</scala.base>
+        <scala.minor.version>7</scala.minor.version>
+        <scala.version>${scala.base}.${scala.minor.version}</scala.version>
+        <scala.tools.version>${scala.base}</scala.tools.version>
+        <scala.logging.version>2.1.2</scala.logging.version>
+        <scala.binary.full.version>${scala.version}</scala.binary.full.version>
+        <scoverage.plugin.version>1.1.0</scoverage.plugin.version>
+        <!-- Kotlin -->
+        <kotlin.version>1.0.0-beta-4584</kotlin.version>
+        <license.id>apache_v2</license.id>
+        <jrbroker.version>7.4.8</jrbroker.version>
+        <global.properties.file>${project.build.outputDirectory}/${project.groupId}.properties</global.properties.file>
+        <!-- R Analytics -->
+        <fluentr.version>1.0</fluentr.version>
+        <!-- Testing -->
+        <junit.version>4.11</junit.version>
+        <cola.version>0.5.0</cola.version>
+        <mockito.version>2.0.2-beta</mockito.version>
+        <jnario.version>1.0.0</jnario.version>
+        <scalatest.version>3.0.0-M15</scalatest.version>
+        <!-- Misc Utilities -->
+        <!-- Web Scraping -->
+        <scalascraper.version>0.1.1</scalascraper.version>
+        <!-- Deployment / Deploy / Stage -->
+        <maven-deploy-plugin.version>2.8.2</maven-deploy-plugin.version>
+        <!-- Analytics -->
+        <!-- SonarQube -->
+        <!-- Sonar -->
+        <sonar.java.coveragePlugin>scoverage</sonar.java.coveragePlugin>
+        <sonar.dynamicAnalysis>reuseReports</sonar.dynamicAnalysis>
+        <sonar.jacoco.reportPath>${project.basedir}/../target/jacoco.exec</sonar.jacoco.reportPath>
+        <sonar.language>scala</sonar.language>
+        <sonar.plugin.version>2.7.1</sonar.plugin.version>
+    </properties>
+    <scm>
+        <url>https://github.com/adarro/ddo-calc</url>
+        <connection>scm:git:git://github.com/github.com/adarro/ddo-calc.git</connection>
+        <developerConnection>scm:git:git@github.com:adarro/ddo-calc.git</developerConnection>
+    </scm>
+    <issueManagement>
+        <url>https://github.com/adarro/ddo-calc/issues</url>
+        <system>GitHub Issues</system>
+    </issueManagement>
+    <distributionManagement>
 
-                <configuration>
-                    <!--
-                        If you'd like to tell the plugin where your .git directory is,
-                        use this setting, otherwise we'll perform a search trying to
-                        figure out the right directory. It's better to add it explicite IMHO.
-                    -->
-                    <dotGitDirectory>${project.basedir}/.git</dotGitDirectory>
+        <site>
+            <id>ddo.website</id>
+            <name>Adarro's Nexus</name>
+            <url>http://localhost/DdoObjects/</url>
+        </site>
 
-                    <!-- that's the default value, you don't have to set it -->
-                    <prefix>git</prefix>
+    </distributionManagement>
+    <developers>
+        <developer>
+            <email>adarro@gmail.com</email>
+            <name>Andre White</name>
+            <url>https://adarro.github.io</url>
+            <id>awhite</id>
+        </developer>
+    </developers>
+    <build>
+        <pluginManagement>
+            <plugins>
+                <!-- Deployment -->
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-deploy-plugin</artifactId>
+                    <version>${maven-deploy-plugin.version}</version>
+                    <configuration>
+                        <skip>true</skip>
+                    </configuration>
+                </plugin>
+                <plugin>
+                    <groupId>org.sonatype.plugins</groupId>
+                    <artifactId>nexus-staging-maven-plugin</artifactId>
+                    <version>1.5.1</version>
+                    <executions>
+                        <execution>
+                            <id>default-deploy</id>
+                            <phase>deploy</phase>
+                            <goals>
+                                <goal>deploy</goal>
+                            </goals>
+                        </execution>
+                    </executions>
+                    <configuration>
+                        <serverId>nexus</serverId>
+                        <nexusUrl>http://localhost:8081/nexus/</nexusUrl>
+                        <skipStaging>false</skipStaging>
+                    </configuration>
+                </plugin>
 
-                    <!-- that's the default value -->
-                    <dateFormat>dd.MM.yyyy '@' HH:mm:ss z</dateFormat>
+                <!--Reporting and Metrics -->
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-project-info-reports-plugin</artifactId>
+                    <version>2.8.1</version>
+                </plugin>
+                <plugin>
+                    <groupId>org.scoverage</groupId>
+                    <artifactId>scoverage-maven-plugin</artifactId>
+                    <version>${scoverage.plugin.version}</version>
+                    <executions>
+                        <execution>
+                            <id>instrument</id>
+                            <phase>check</phase>
+                            <goals>
+                                <goal>test</goal>
+                            </goals>
+                        </execution>
+                    </executions>
+                    <configuration>
+                        <scalaVersion>${scala.version}</scalaVersion>
+                        <aggregate>true</aggregate>
+                        <!-- other parameters -->
+                    </configuration>
+                </plugin>
+                <plugin>
+                    <groupId>org.codehaus.mojo</groupId>
+                    <artifactId>sonar-maven-plugin</artifactId>
+                    <version>${sonar.plugin.version}</version>
+                    <executions>
+                        <execution>
+                            <phase>verify</phase>
+                            <goals>
+                                <goal>sonar</goal>
+                            </goals>
+                        </execution>
+                    </executions>
+                </plugin>
+                <!-- Versioning -->
+                <plugin>
+                    <groupId>org.codehaus.mojo</groupId>
+                    <artifactId>versions-maven-plugin</artifactId>
+                    <version>2.2</version>
+                </plugin>
 
-                    <!-- @since 2.2.0 -->
-                    <!-- 
-                         If you want to set the timezone of the dateformat to anything in particular you can do this by using this option. 
-                         As a general warning try to avoid three-letter time zone IDs because the same abbreviation are often used for multiple time zones. 
-                         The default value we'll use the timezone use the timezone that's shipped with java (java.util.TimeZone.getDefault().getID()). 
-                         *Note*: If you plan to set the java's timezone by using `MAVEN_OPTS=-Duser.timezone=UTC mvn clean package`, `mvn clean package -Duser.timezone=UTC` or any other configuration keep in mind that this option will override those settings and will not take other configurations into account!
-                    -->
-                    <dateFormatTimeZone>${user.timezone}</dateFormatTimeZone>
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-enforcer-plugin</artifactId>
+                    <version>1.4.1</version>
+                    <executions>
+                        <execution>
+                            <id>pre-release</id>
+                            <goals>
+                                <goal>enforce</goal>
+                            </goals>
+                            <configuration>
+                                <rules>
+                                    <requireReleaseDeps>
+                                        <message>No Snapshots Allowed!</message>
+                                        <failWhenParentIsSnapshot>false</failWhenParentIsSnapshot>
+                                    </requireReleaseDeps>
+                                    <requireJavaVersion>
+                                        <version>${jvm.version}</version>
+                                    </requireJavaVersion>
+                                    <!-- <requirePluginVersions> -->
+                                    <!-- <phases>clean,deploy,site</phases> -->
+                                    <!-- <unCheckedPluginList>org.apache.maven.plugins:maven-clean-plugin,org.apache.maven.plugins:maven-install-plugin,org.apache.maven.plugins:maven-site-plugin,org.apache.maven.plugins:maven-deploy-plugin</unCheckedPluginList> -->
+                                    <!-- </requirePluginVersions> -->
+                                </rules>
+                                <fail>true</fail>
+                            </configuration>
+                        </execution>
+                    </executions>
+                </plugin>
+                <!-- License Management -->
+                <plugin>
+                    <groupId>com.mycila</groupId>
+                    <artifactId>license-maven-plugin</artifactId>
+                    <version>2.11</version>
+                    <configuration>
+                        <header>com/mycila/maven/plugin/license/templates/APACHE-2.txt</header>
+                        <properties>
+                            <owner>Andre White</owner>
+                            <email>adarro@gmail.com</email>
+                        </properties>
+                        <includes>
+                            <!-- <include>src/main/java/**/*.java</include> -->
+                            <include>src/main/scala/**/*.scala</include>
+                            <include>src/test/scala/**/*.scala</include>
+                            <include>src/main/java/**/*.java</include>
+                            <include>src/test/java/**/*.java</include>
+                            <!-- <include>**/*.xml</include> -->
+                            <!-- <include>**/*.kt</include> -->
+                            <!-- <include>**/*.r</include> -->
+                        </includes>
+                        <excludes>
+                            <!-- <exclude>**/.*/**</exclude> -->
+                            <exclude>**/test*</exclude>
+                            <exclude>target/**</exclude>
+                            <exclude>**/AndroidManifest.xml</exclude>
+                            <exclude>**/README</exclude>
+                            <exclude>src/test/resources/**</exclude>
+                            <exclude>src/main/resources/**</exclude>
+                        </excludes>
+                        <useDefaultExcludes>true</useDefaultExcludes>
+                        <strictCheck>true</strictCheck>
+                        <mapping>
+                            <scala>JAVADOC_STYLE</scala>
+                            <r>HAML_STYLE</r>
+                            <kt>JAVADOC_STYLE</kt>
+                        </mapping>
+                    </configuration>
+                    <executions>
+                        <execution>
+                            <goals>
+                                <goal>check</goal>
+                            </goals>
+                        </execution>
+                    </executions>
+                </plugin>
+                <!-- <plugin> <groupId>com.github.goldin</groupId> <artifactId>find-maven-plugin</artifactId> 
+                    <version>0.2.5</version> <executions> <execution> <id>find-notice-file</id> 
+                    <goals> <goal>find</goal> </goals> <phase>validate</phase> <configuration> 
+                    <propertyName>notice.file</propertyName> <file>NOTICE</file> </configuration> 
+                    </execution> </executions> </plugin> -->
+                <plugin>
+                    <groupId>org.codehaus.mojo</groupId>
+                    <artifactId>build-helper-maven-plugin</artifactId>
+                    <version>1.10</version>
+                </plugin>
+                <plugin>
+                    <groupId>pl.project13.maven</groupId>
+                    <artifactId>git-commit-id-plugin</artifactId>
+                    <version>2.2.0</version>
+                    <executions>
+                        <execution>
+                            <goals>
+                                <goal>revision</goal>
+                            </goals>
+                        </execution>
+                    </executions>
 
-                    <!-- false is default here, it prints some more information during the build -->
-                    <verbose>false</verbose>
+                    <configuration>
+                        <!-- If you'd like to tell the plugin where your .git directory is, 
+                            use this setting, otherwise we'll perform a search trying to figure out the 
+                            right directory. It's better to add it explicite IMHO. -->
+                        <dotGitDirectory>${project.basedir}/.git</dotGitDirectory>
 
-                    <!-- ALTERNATE SETUP - GENERATE FILE -->
-                    <!--
-                        If you want to keep git information, even in your WAR file etc,
-                        use this mode, which will generate a properties file (with filled out values)
-                        which you can then normally read using new Properties().load(/**/)
-                    -->
+                        <!-- that's the default value, you don't have to set it -->
+                        <prefix>git</prefix>
 
-                    <!-- this is false by default, forces the plugin to generate the git.properties file -->
-                    <generateGitPropertiesFile>true</generateGitPropertiesFile>
+                        <!-- that's the default value -->
+                        <dateFormat>dd.MM.yyyy '@' HH:mm:ss z</dateFormat>
 
-                    <!-- 
-                        The path for the to be generated properties file, it's relative to ${project.basedir} 
-                        The default value is ${project.build.outputDirectory}/git.properties
-                    -->
-                    <generateGitPropertiesFilename>${project.build.outputDirectory}/git.properties</generateGitPropertiesFilename>
+                        <!-- @since 2.2.0 -->
+                        <!-- If you want to set the timezone of the dateformat to anything 
+                            in particular you can do this by using this option. As a general warning 
+                            try to avoid three-letter time zone IDs because the same abbreviation are 
+                            often used for multiple time zones. The default value we'll use the timezone 
+                            use the timezone that's shipped with java (java.util.TimeZone.getDefault().getID()). 
+                            *Note*: If you plan to set the java's timezone by using `MAVEN_OPTS=-Duser.timezone=UTC 
+                            mvn clean package`, `mvn clean package -Duser.timezone=UTC` or any other 
+                            configuration keep in mind that this option will override those settings 
+                            and will not take other configurations into account! -->
+                        <dateFormatTimeZone>${user.timezone}</dateFormatTimeZone>
 
-                    <!-- Denotes the format to save properties in. Valid options are "properties" (default) and "json". Properties will be saved to the generateGitPropertiesFilename if generateGitPropertiesFile is set to `true`. -->
-                    <format>properties</format>
+                        <!-- false is default here, it prints some more information during 
+                            the build -->
+                        <verbose>false</verbose>
 
-                    <!--
-                        this is true by default; You may want to set this to false, if the plugin should run inside a
-                        <packaging>pom</packaging> project. Most projects won't need to override this property.
+                        <!-- ALTERNATE SETUP - GENERATE FILE -->
+                        <!-- If you want to keep git information, even in your WAR file etc, 
+                            use this mode, which will generate a properties file (with filled out values) 
+                            which you can then normally read using new Properties().load(/**/) -->
 
-                        For an use-case for this kind of behaviour see: https://github.com/ktoso/maven-git-commit-id-plugin/issues/21
-                    -->
-                    <skipPoms>true</skipPoms>
+                        <!-- this is false by default, forces the plugin to generate the git.properties 
+                            file -->
+                        <generateGitPropertiesFile>true</generateGitPropertiesFile>
 
-                    <!-- @since 2.1.4 -->
-                    <!-- 
-                        Tell maven-git-commit-id to inject the git properties into all reactor projects not just the current one.
-                        For details about why you might want to skip this, read this issue: https://github.com/ktoso/maven-git-commit-id-plugin/pull/65
-                        The property is set to ``false`` by default to prevent the overriding of properties that may be unrelated to the project.
-                    -->
-                    <injectAllReactorProjects>false</injectAllReactorProjects>
+                        <!-- The path for the to be generated properties file, it's relative 
+                            to ${project.basedir} The default value is ${project.build.outputDirectory}/git.properties -->
+                        <generateGitPropertiesFilename>${project.build.outputDirectory}/git.properties</generateGitPropertiesFilename>
 
-                    <!-- @since 2.0.4 -->
-                    <!-- true by default, controls whether the plugin will fail when no .git directory is found, when set to false the plugin will just skip execution -->                    
-                    <failOnNoGitDirectory>true</failOnNoGitDirectory>
+                        <!-- Denotes the format to save properties in. Valid options are "properties" 
+                            (default) and "json". Properties will be saved to the generateGitPropertiesFilename 
+                            if generateGitPropertiesFile is set to `true`. -->
+                        <format>properties</format>
 
-                    <!-- @since 2.1.5 -->
-                    <!-- true by default, controls whether the plugin will fail if it was unable to obtain enough data for a complete run, if you don't care about this, you may want to set this value to false. -->
-                    <failOnUnableToExtractRepoInfo>true</failOnUnableToExtractRepoInfo>
+                        <!-- this is true by default; You may want to set this to false, if 
+                            the plugin should run inside a <packaging>pom</packaging> project. Most projects 
+                            won't need to override this property. For an use-case for this kind of behaviour 
+                            see: https://github.com/ktoso/maven-git-commit-id-plugin/issues/21 -->
+                        <skipPoms>true</skipPoms>
 
-                    <!-- @since 2.1.8 -->
-                    <!--
-                        skip the plugin execution completely. This is useful for e.g. profile activated plugin invocations or
-                        to use properties to enable / disable pom features. Default value is 'false'.
-                    -->
-                    <skip>false</skip>
+                        <!-- @since 2.1.4 -->
+                        <!-- Tell maven-git-commit-id to inject the git properties into all 
+                            reactor projects not just the current one. For details about why you might 
+                            want to skip this, read this issue: https://github.com/ktoso/maven-git-commit-id-plugin/pull/65 
+                            The property is set to ``false`` by default to prevent the overriding of 
+                            properties that may be unrelated to the project. -->
+                        <injectAllReactorProjects>false</injectAllReactorProjects>
 
-                    <!-- @since 2.1.12 -->
-                    <!--
-                       Use with caution!
+                        <!-- @since 2.0.4 -->
+                        <!-- true by default, controls whether the plugin will fail when no 
+                            .git directory is found, when set to false the plugin will just skip execution -->
+                        <failOnNoGitDirectory>true</failOnNoGitDirectory>
 
-                       In a multi-module build, only run once. This means that the plugins effects will only execute once, for the parent project.
-                       This probably won't "do the right thing" if your project has more than one git repository.
+                        <!-- @since 2.1.5 -->
+                        <!-- true by default, controls whether the plugin will fail if it was 
+                            unable to obtain enough data for a complete run, if you don't care about 
+                            this, you may want to set this value to false. -->
+                        <failOnUnableToExtractRepoInfo>true</failOnUnableToExtractRepoInfo>
 
-                       Important: If you're using `generateGitPropertiesFile`, setting `runOnlyOnce` will make the plugin
-                       only generate the file in the directory where you started your build (!).
-
-                       The `git.*` maven properties are available in all modules.
-                       Default value is `false`.
-                    -->
-                    <runOnlyOnce>false</runOnlyOnce>
-
-                    <!-- @since 2.1.9 -->
-                    <!--
-                        Can be used to exclude certain properties from being emited into the resulting file.
-                        May be useful when you want to hide {@code git.remote.origin.url} (maybe because it contains your repo password?),
-                        or the email of the committer etc.
-
-                        Each value may be globbing, that is, you can write {@code git.commit.user.*} to exclude both, the {@code name},
-                        as well as {@code email} properties from being emitted into the resulting files.
-
-                        Please note that the strings here are Java regexes ({@code .*} is globbing, not plain {@code *}).
-                    -->
-                    <excludeProperties>
-                      <!-- <excludeProperty>git.user.*</excludeProperty> -->
-                    </excludeProperties>
-
-                    <!-- @since 2.1.14 -->
-                    <!--
-                        Can be used to include only certain properties into the resulting file.
-                        Will be overruled by the exclude properties.
-
-                        Each value may be globbing, that is, you can write {@code git.commit.user.*} to include both, the {@code name},
-                        as well as {@code email} properties into the resulting files.
-
-                        Please note that the strings here are Java regexes ({@code .*} is globbing, not plain {@code *}).
-                    -->
-                    <includeOnlyProperties>
-                      <!-- <includeOnlyProperty>^git.commit.id.full$</includeOnlyProperty> -->
-                    </includeOnlyProperties>
-
-                    <!-- @since 2.1.10 -->
-                    <!-- 
-                      false is default here, if set to true it uses native `git` excutable for extracting all data.
-                      This usually has better performance than the default (jgit) implemenation, but requires you to 
-                      have git available as executable for the build as well as *might break unexpectedly* when you 
-                      upgrade your system-wide git installation.
-
-                      As rule of thumb - stay on `jgit` (keep this `false`) until you notice performance problems.
-                    -->
-                    <useNativeGit>false</useNativeGit>
-
-                    <!-- @since v2.0.4 -->
-                    <!--
-                         Controls the length of the abbreviated git commit it (git.commit.id.abbrev)
-
-                         Defaults to `7`.
-                         `0` carries the special meaning.
-                         Maximum value is `40`, because of max SHA-1 length.
-                     -->
-                    <abbrevLength>7</abbrevLength>
-
-
-                    <!-- @since v2.2.0 -->
-                    <!--
-                         The option can be used to tell the plugin how it should generate the 'git.commit.id' property. Due to some naming issues when exporting the properties as an json-object (https://github.com/ktoso/maven-git-commit-id-plugin/issues/122) we needed to make it possible to export all properties as a valid json-object.
-                         Due to the fact that this is one of the major properties the plugin is exporting we just don't want to change the exporting mechanism and somehow throw the backwards compatibility away.
-                         We rather provide a convient switch where you can choose if you would like the properties as they always had been, or if you rather need to support full json-object compatibility.
-                         In the case you need to fully support json-object we unfortunately need to change the 'git.commit.id' property from 'git.commit.id' to 'git.commit.id.full' in the exporting mechanism to allow the generation of a fully valid json object.
-
-                         Currently the switch allows two different options:
-                         1. By default this property is set to 'flat' and will generate the formerly known property 'git.commit.id' as it was in the previous versions of the plugin. Keeping it to 'flat' by default preserve backwards compatibility and does not require further adjustments by the end user.
-                         2. If you set this switch to 'full' the plugin will export the formerly known property 'git.commit.id' as 'git.commit.id.full' and therefore will generate a fully valid json object in the exporting mechanism.
-
-                         *Note*: Depending on your plugin configuration you obviously can choose the 'prefix' of your properties by setting it accordingly in the plugin's configuration. As a result this is therefore only an illustration what the switch means when the 'prefix' is set to it's default value.
-                         *Note*: If you set the value to something that's not equal to 'flat' or 'full' (ignoring the case) the plugin will output a warning and will fallback to the default 'flat' mode.
-                    -->
-                    <commitIdGenerationMode>flat</commitIdGenerationMode>
-
-                    <!-- @since 2.1.0 -->
-                    <!-- 
-                        read up about git-describe on the in man, or it's homepage - it's a really powerful versioning helper 
-                        and the recommended way to use git-commit-id-plugin. The configuration bellow is optional, 
-                        by default describe will run "just like git-describe on the command line", even though it's a JGit reimplementation.
-                    -->
-                    <gitDescribe>
-
-                        <!-- don't generate the describe property -->
+                        <!-- @since 2.1.8 -->
+                        <!-- skip the plugin execution completely. This is useful for e.g. 
+                            profile activated plugin invocations or to use properties to enable / disable 
+                            pom features. Default value is 'false'. -->
                         <skip>false</skip>
 
-                        <!-- 
-                            if no tag was found "near" this commit, just print the commit's id instead, 
-                            helpful when you always expect this field to be not-empty 
-                        -->
-                        <always>false</always>
-                        <!--
-                             how many chars should be displayed as the commit object id? 
-                             7 is git's default, 
-                             0 has a special meaning (see end of this README.md), 
-                             and 40 is the maximum value here 
-                        -->
-                        <abbrev>7</abbrev>
+                        <!-- @since 2.1.12 -->
+                        <!-- Use with caution! In a multi-module build, only run once. This 
+                            means that the plugins effects will only execute once, for the parent project. 
+                            This probably won't "do the right thing" if your project has more than one 
+                            git repository. Important: If you're using `generateGitPropertiesFile`, setting 
+                            `runOnlyOnce` will make the plugin only generate the file in the directory 
+                            where you started your build (!). The `git.*` maven properties are available 
+                            in all modules. Default value is `false`. -->
+                        <runOnlyOnce>false</runOnlyOnce>
 
-                        <!-- when the build is triggered while the repo is in "dirty state", append this suffix -->
-                        <dirty>-dirty</dirty>
+                        <!-- @since 2.1.9 -->
+                        <!-- Can be used to exclude certain properties from being emited into 
+                            the resulting file. May be useful when you want to hide {@code git.remote.origin.url} 
+                            (maybe because it contains your repo password?), or the email of the committer 
+                            etc. Each value may be globbing, that is, you can write {@code git.commit.user.*} 
+                            to exclude both, the {@code name}, as well as {@code email} properties from 
+                            being emitted into the resulting files. Please note that the strings here 
+                            are Java regexes ({@code .*} is globbing, not plain {@code *}). -->
+                        <excludeProperties>
+                            <!-- <excludeProperty>git.user.*</excludeProperty> -->
+                        </excludeProperties>
 
-                        <!-- Only consider tags matching the given pattern. This can be used to avoid leaking private tags from the repository. -->
-                        <match>*</match>
+                        <!-- @since 2.1.14 -->
+                        <!-- Can be used to include only certain properties into the resulting 
+                            file. Will be overruled by the exclude properties. Each value may be globbing, 
+                            that is, you can write {@code git.commit.user.*} to include both, the {@code 
+                            name}, as well as {@code email} properties into the resulting files. Please 
+                            note that the strings here are Java regexes ({@code .*} is globbing, not 
+                            plain {@code *}). -->
+                        <includeOnlyProperties>
+                            <!-- <includeOnlyProperty>^git.commit.id.full$</includeOnlyProperty> -->
+                        </includeOnlyProperties>
 
-                        <!-- 
-                             always print using the "tag-commits_from_tag-g_commit_id-maybe_dirty" format, even if "on" a tag. 
-                             The distance will always be 0 if you're "on" the tag. 
-                        -->
-                        <forceLongFormat>false</forceLongFormat>
-                    </gitDescribe>
-                </configuration>
+                        <!-- @since 2.1.10 -->
+                        <!-- false is default here, if set to true it uses native `git` excutable 
+                            for extracting all data. This usually has better performance than the default 
+                            (jgit) implemenation, but requires you to have git available as executable 
+                            for the build as well as *might break unexpectedly* when you upgrade your 
+                            system-wide git installation. As rule of thumb - stay on `jgit` (keep this 
+                            `false`) until you notice performance problems. -->
+                        <useNativeGit>false</useNativeGit>
 
+                        <!-- @since v2.0.4 -->
+                        <!-- Controls the length of the abbreviated git commit it (git.commit.id.abbrev) 
+                            Defaults to `7`. `0` carries the special meaning. Maximum value is `40`, 
+                            because of max SHA-1 length. -->
+                        <abbrevLength>7</abbrevLength>
+
+
+                        <!-- @since v2.2.0 -->
+                        <!-- The option can be used to tell the plugin how it should generate 
+                            the 'git.commit.id' property. Due to some naming issues when exporting the 
+                            properties as an json-object (https://github.com/ktoso/maven-git-commit-id-plugin/issues/122) 
+                            we needed to make it possible to export all properties as a valid json-object. 
+                            Due to the fact that this is one of the major properties the plugin is exporting 
+                            we just don't want to change the exporting mechanism and somehow throw the 
+                            backwards compatibility away. We rather provide a convient switch where you 
+                            can choose if you would like the properties as they always had been, or if 
+                            you rather need to support full json-object compatibility. In the case you 
+                            need to fully support json-object we unfortunately need to change the 'git.commit.id' 
+                            property from 'git.commit.id' to 'git.commit.id.full' in the exporting mechanism 
+                            to allow the generation of a fully valid json object. Currently the switch 
+                            allows two different options: 1. By default this property is set to 'flat' 
+                            and will generate the formerly known property 'git.commit.id' as it was in 
+                            the previous versions of the plugin. Keeping it to 'flat' by default preserve 
+                            backwards compatibility and does not require further adjustments by the end 
+                            user. 2. If you set this switch to 'full' the plugin will export the formerly 
+                            known property 'git.commit.id' as 'git.commit.id.full' and therefore will 
+                            generate a fully valid json object in the exporting mechanism. *Note*: Depending 
+                            on your plugin configuration you obviously can choose the 'prefix' of your 
+                            properties by setting it accordingly in the plugin's configuration. As a 
+                            result this is therefore only an illustration what the switch means when 
+                            the 'prefix' is set to it's default value. *Note*: If you set the value to 
+                            something that's not equal to 'flat' or 'full' (ignoring the case) the plugin 
+                            will output a warning and will fallback to the default 'flat' mode. -->
+                        <commitIdGenerationMode>flat</commitIdGenerationMode>
+
+                        <!-- @since 2.1.0 -->
+                        <!-- read up about git-describe on the in man, or it's homepage - it's 
+                            a really powerful versioning helper and the recommended way to use git-commit-id-plugin. 
+                            The configuration bellow is optional, by default describe will run "just 
+                            like git-describe on the command line", even though it's a JGit reimplementation. -->
+                        <gitDescribe>
+
+                            <!-- don't generate the describe property -->
+                            <skip>false</skip>
+
+                            <!-- if no tag was found "near" this commit, just print the commit's 
+                                id instead, helpful when you always expect this field to be not-empty -->
+                            <always>false</always>
+                            <!-- how many chars should be displayed as the commit object id? 7 
+                                is git's default, 0 has a special meaning (see end of this README.md), and 
+                                40 is the maximum value here -->
+                            <abbrev>7</abbrev>
+
+                            <!-- when the build is triggered while the repo is in "dirty state", 
+                                append this suffix -->
+                            <dirty>-dirty</dirty>
+
+                            <!-- Only consider tags matching the given pattern. This can be used 
+                                to avoid leaking private tags from the repository. -->
+                            <match>*</match>
+
+                            <!-- always print using the "tag-commits_from_tag-g_commit_id-maybe_dirty" 
+                                format, even if "on" a tag. The distance will always be 0 if you're "on" 
+                                the tag. -->
+                            <forceLongFormat>false</forceLongFormat>
+                        </gitDescribe>
+                    </configuration>
+
+                </plugin>
+                <!-- END OF GIT COMMIT ID PLUGIN CONFIGURATION -->
+
+                <plugin>
+                    <groupId>external.atlassian.jgitflow</groupId>
+                    <artifactId>jgitflow-maven-plugin</artifactId>
+                    <version>1.0-m5.1</version>
+                    <configuration>
+                        <flowInitContext>
+                            <masterBranchName>master</masterBranchName>
+                            <developBranchName>development</developBranchName>
+                            <featureBranchPrefix>feature-</featureBranchPrefix>
+                            <releaseBranchPrefix>release-</releaseBranchPrefix>
+                            <hotfixBranchPrefix>hotfix-</hotfixBranchPrefix>
+                            <versionTagPrefix>v-</versionTagPrefix>
+                        </flowInitContext>
+                    </configuration>
+                </plugin>
+                <!-- Test -->
+                <!-- Cola-test -->
+                <plugin>
+                    <groupId>com.github.bmsantos</groupId>
+                    <artifactId>cola-maven-plugin</artifactId>
+                    <version>${cola.version}</version>
+                    <configuration>
+                        <includes>
+                            <include>**/*Test.class</include>
+                        </includes>
+                    </configuration>
+                    <executions>
+                        <execution>
+                            <id>compile-cola-tests</id>
+                            <phase>process-test-classes</phase>
+                            <goals>
+                                <goal>compile</goal>
+                            </goals>
+                        </execution>
+                    </executions>
+                </plugin>
+                <!-- Integration Tests -->
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-failsafe-plugin</artifactId>
+                    <version>2.19.1</version>
+                    <executions>
+                        <execution>
+                            <id>integration-test</id>
+                            <goals>
+                                <goal>integration-test</goal>
+                            </goals>
+                        </execution>
+                        <execution>
+                            <id>verify</id>
+                            <goals>
+                                <goal>verify</goal>
+                            </goals>
+                        </execution>
+                    </executions>
+                </plugin>
+                <!-- Programming language Integration (Maven) support -->
+                <!-- Builders / Compliers -->
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-compiler-plugin</artifactId>
+                    <version>3.3</version>
+                </plugin>
+                <!-- Kotlin maven -->
+                <plugin>
+                    <artifactId>kotlin-maven-plugin</artifactId>
+                    <groupId>org.jetbrains.kotlin</groupId>
+                    <version>${kotlin.version}</version>
+                    <executions>
+                        <execution>
+                            <id>compile</id>
+                            <phase>compile</phase>
+                            <goals>
+                                <goal>compile</goal>
+                            </goals>
+                        </execution>
+                        <execution>
+                            <id>test-compile</id>
+                            <phase>test-compile</phase>
+                            <goals>
+                                <goal>test-compile</goal>
+                            </goals>
+                        </execution>
+                    </executions>
+                </plugin>
+
+                <!-- Scala Maven -->
+                <plugin>
+                    <!-- see http://davidb.github.com/scala-maven-plugin -->
+                    <groupId>net.alchim31.maven</groupId>
+                    <artifactId>scala-maven-plugin</artifactId>
+                    <version>3.2.0</version>
+                    <executions>
+                        <execution>
+                            <id>scala-compile</id>
+                            <goals>
+                                <goal>compile</goal>
+                            </goals>
+                            <configuration>
+                                <args>
+                                    <!-- <arg>-make:transitive</arg> flag is deprecated in 2.11+ -->
+                                    <arg>-dependencyfile</arg>
+                                    <arg>-deprecation</arg>
+                                    <arg>-feature</arg>
+                                    <arg>-Ywarn-unused</arg>
+                                    <!-- <arg>${project.build.directory}/.scala_dependencies</arg> -->
+                                </args>
+                            </configuration>
+                        </execution>
+                        <execution>
+                            <id>scala-test-compile</id>
+                            <goals>
+                                <goal>testCompile</goal>
+                            </goals>
+                            <configuration>
+                                <args>
+                                    <!-- <arg>-make:transitive</arg> flag is deprecated in 2.11+ -->
+                                    <arg>-dependencyfile</arg>
+                                    <arg>-deprecation</arg>
+                                    <arg>-feature</arg>
+                                    <arg>-Ywarn-unused</arg>
+                                    <!-- <arg>${project.build.directory}/.scala_dependencies</arg> -->
+                                </args>
+                                <includes>
+                                    <include>*Test.scala</include>
+                                    <include>*IT.scala</include>
+                                </includes>
+                            </configuration>
+                        </execution>
+                    </executions>
+                </plugin>
+                <!-- Javadoc -->
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-javadoc-plugin</artifactId>
+                    <version>2.9</version>
+                    <configuration>
+                        <minmemory>64m</minmemory>
+                        <maxmemory>2g</maxmemory>
+                        <outputDirectory>${project.build.directory}</outputDirectory>
+                        <detectLinks>true</detectLinks>
+                    </configuration>
+                </plugin>
+                <!-- disable surefire -->
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-surefire-plugin</artifactId>
+                    <version>2.19</version>
+                </plugin>
+                <!-- enable scalatest -->
+                <plugin>
+                    <groupId>org.scalatest</groupId>
+                    <artifactId>scalatest-maven-plugin</artifactId>
+                    <version>1.0</version>
+                    <configuration>
+                        <reportsDirectory>${project.build.directory}/surefire-reports</reportsDirectory>
+                        <junitxml>.</junitxml>
+                        <filereports>WDF TestSuite.txt</filereports>
+                    </configuration>
+                    <executions>
+                        <execution>
+                            <id>scala-test</id>
+                            <goals>
+                                <goal>test</goal>
+                            </goals>
+                            <configuration>
+                                <suffixes>Test</suffixes>
+                            </configuration>
+                        </execution>
+                        <execution>
+                            <id>scala-integration-test</id>
+                            <phase>integration-test</phase>
+                            <goals>
+                                <goal>test</goal>
+                            </goals>
+                            <configuration>
+                                <suffixes>IT</suffixes>
+                            </configuration>
+                        </execution>
+                    </executions>
+                </plugin>
+                <!-- XTend Maven -->
+                <!-- Xtend Builder -->
+                <plugin>
+                    <groupId>org.eclipse.xtend</groupId>
+                    <artifactId>xtend-maven-plugin</artifactId>
+                    <version>${xtend.version}</version>
+                    <executions>
+                        <execution>
+                            <goals>
+                                <goal>compile</goal>
+                                <goal>testCompile</goal>
+                                <!-- <goal>xtend-install-debug-info</goal> -->
+                            </goals>
+                            <configuration>
+                                <outputDirectory>${project.build.directory}/xtend-gen/main</outputDirectory>
+                                <testOutputDirectory>${project.build.directory}/xtend-gen/test</testOutputDirectory>
+                            </configuration>
+                        </execution>
+                    </executions>
+                </plugin>
+                <!-- Jnario Builder -->
+                <plugin>
+                    <groupId>org.jnario</groupId>
+                    <artifactId>jnario-maven-plugin</artifactId>
+                    <version>${jnario.version}</version>
+                    <executions>
+                        <execution>
+                            <goals>
+                                <goal>testCompile</goal>
+                                <goal>xtend-test-install-debug-info</goal>
+                            </goals>
+                        </execution>
+                    </executions>
+                </plugin>
+
+            </plugins>
+        </pluginManagement>
+    </build>
+    <dependencyManagement>
+        <dependencies> <!-- Language Support -->
+            <!-- R Lang -->
+            <dependency>
+                <groupId>com.revolutionanalytics.deployr</groupId>
+                <artifactId>jRBroker</artifactId>
+                <version>${jrbroker.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>io.onetapbeyond</groupId>
+                <artifactId>fluent-r</artifactId>
+                <version>${fluentr.version}</version>
+            </dependency>
+            <!-- Kotlin -->
+            <dependency>
+                <groupId>org.jetbrains.kotlin</groupId>
+                <artifactId>kotlin-stdlib</artifactId>
+                <version>${kotlin.version}</version>
+            </dependency>
+            <!-- Scala -->
+            <dependency>
+                <groupId>org.scala-lang</groupId>
+                <artifactId>scala-library</artifactId>
+                <version>${scala.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.scalactic</groupId>
+                <artifactId>scalactic_2.11</artifactId>
+                <version>${scalatest.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.scalatest</groupId>
+                <artifactId>scalatest_${scala.tools.version}</artifactId>
+                <version>${scalatest.version}</version>
+                <scope>test</scope>
+            </dependency>
+            <!-- XTend (used mainly for JNario specs -->
+            <dependency>
+                <groupId>org.eclipse.xtend</groupId>
+                <artifactId>org.eclipse.xtend.lib</artifactId>
+                <version>${xtend.version}</version>
+            </dependency>
+            <!-- Scala Misc Utilities -->
+            <dependency>
+                <groupId>com.beachape</groupId>
+                <artifactId>enumeratum_${scala.base}</artifactId>
+                <version>1.3.6</version>
+            </dependency>
+            <!-- Logging -->
+            <dependency>
+                <groupId>com.typesafe.scala-logging</groupId>
+                <artifactId>scala-logging-slf4j_${scala.tools.version}</artifactId>
+                <version>${scala.logging.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>ch.qos.logback</groupId>
+                <artifactId>logback-classic</artifactId>
+                <version>1.1.2</version>
+            </dependency>
+            <!-- Configuration Management -->
+            <dependency>
+                <groupId>com.typesafe</groupId>
+                <artifactId>config</artifactId>
+                <version>1.3.0</version>
+            </dependency>
+            <!-- Testing -->
+            <dependency>
+                <groupId>org.jnario</groupId>
+                <artifactId>org.jnario.lib</artifactId>
+                <version>${jnario.version}</version>
+                <scope>test</scope>
+            </dependency>
+            <!-- Validation -->
+            <dependency>
+                <groupId>com.wix</groupId>
+                <artifactId>accord-core_${scala.tools.version}</artifactId>
+                <version>0.5</version>
+            </dependency>
+            <dependency>
+                <groupId>com.wix</groupId>
+                <artifactId>accord-scalatest_${scala.tools.version}</artifactId>
+                <version>0.5</version>
+                <scope>test</scope>
+            </dependency>
+            <!-- Web Scraping Utility -->
+            <dependency>
+                <groupId>net.ruippeixotog</groupId>
+                <artifactId>scala-scraper_${scala.tools.version}</artifactId>
+                <version>${scalascraper.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>junit</groupId>
+                <artifactId>junit</artifactId>
+                <version>${junit.version}</version>
+                <scope>test</scope>
+            </dependency>
+            <dependency>
+                <groupId>org.testng</groupId>
+                <artifactId>testng</artifactId>
+                <version>6.1.1</version>
+                <scope>test</scope>
+            </dependency>
+            <dependency>
+                <groupId>com.github.bmsantos</groupId>
+                <artifactId>cola-tests</artifactId>
+                <version>${cola.version}</version>
+                <scope>test</scope>
+            </dependency>
+            <dependency>
+                <groupId>org.mockito</groupId>
+                <artifactId>mockito-all</artifactId>
+                <version>${mockito.version}</version>
+            </dependency>
+            <!-- Statitics Vec etc -->
+            <dependency>
+                <groupId>org.scala-saddle</groupId>
+                <artifactId>saddle-core_2.11</artifactId>
+                <version>1.3.4</version>
+            </dependency>
+
+        </dependencies>
+    </dependencyManagement>
+    <reporting>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-jxr-plugin</artifactId>
+                <version>2.3</version>
+                <reportSets>
+                    <reportSet>
+                        <id>aggregate</id>
+                        <inherited>false</inherited>
+                        <reports>
+                            <report>aggregate</report>
+                        </reports>
+                    </reportSet>
+                </reportSets>
             </plugin>
-            <!-- END OF GIT COMMIT ID PLUGIN CONFIGURATION -->
-			</plugins>
-		</pluginManagement>
-
-	</build>
-	<dependencyManagement>
-		<dependencies>
-			<dependency>
-				<groupId>com.revolutionanalytics.deployr</groupId>
-				<artifactId>jRBroker</artifactId>
-				<version>${jrbroker.version}</version>
-			</dependency>
-			<dependency>
-				<groupId>io.onetapbeyond</groupId>
-				<artifactId>fluent-r</artifactId>
-				<version>${fluentr.version}</version>
-			</dependency>
-		</dependencies>
-	</dependencyManagement>
-	<modules>
-		<module>ddo-plot</module>
-	</modules>
-	<url>http://github.com/adarro/ddo-calc</url>
+            <plugin>
+                <groupId>org.codehaus.sonar-plugins</groupId>
+                <artifactId>maven-report</artifactId>
+                <version>${sonar.plugin.version}</version>
+            </plugin>
+        </plugins>
+    </reporting>
+    <modules>
+        <module>ddo-plot</module>
+        <module>ddo-core</module>
+        <module>ddo-web</module>
+        <module>ddo-support</module>
+    </modules>
+    <url>http://github.com/adarro/ddo-calc</url>
 </project>

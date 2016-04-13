@@ -64,3 +64,9 @@ project/plugins/project/
 # Scala-IDE specific
 .scala_dependencies
 .worksheet
+/org/
+infinitest.filters
+.cache-main
+.cache-tests
+*.sc
+*.scalastyle

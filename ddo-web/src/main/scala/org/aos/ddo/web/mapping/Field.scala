@@ -1,0 +1,99 @@
+package org.aos.ddo.web.mapping
+
+/** Storage object used to contain text matches when scraping HTML text.
+    */
+  object Field {
+    /** Extracts proficiency information, such as 'Simple Weapon Proficiency'
+      */
+    val ProficiencyClass = "Proficiency Class"
+    /** Extracts Damage and Type information such as '1.50[1d4] + 3 Slash, Pierce, Magic'
+      */
+    val DamageAndType = "Damage and Type"
+
+    /** Extracts Critical Threat Range, i.e. '19-20/x2'
+      */
+    val CriticalThreatRange = "Critical threat range"
+    /** Extracts Weapon Type information, i.e.  'Dagger / Piercing weapons'
+      */
+    val WeaponTypeAndDamageType = "Weapon Type"
+    /** Extracts Required Race information, i.e. 'Shadar-Kai'
+      */
+    val RaceAbsRequired = "Race Absolutely Required"
+    /** Extracts Minimum Level, i.e. '15'
+      */
+    val ML = "Minimum Level"
+    /** Extracts Required traits such as 'Good'
+      */
+    val RequiredTrait = "Required Trait"
+    /** Extracts UMD check information
+      *
+      * i.e. Wiz(39) indicating
+      * a Wizard class can use or equip this item despite restrictions with a successful UMD
+      * check of 39 or greater.
+      */
+    val UMD = "Use Magical Device DC"
+    /** Extracts Handedness for weapons / shields
+      *
+      * i.e. main hand, off hand or two-handed
+      */
+    val Handedness = "Handedness"
+    /** Extracts Attributes used to determine Attack modifier for Weapons
+      *
+      * Typically this will be STR (Strength) for Melee weapons and Dex for some Missile weapons.
+      */
+    val AttackMod = "Attack Mod"
+    /** Extracts Attribute used to determine Damage Modifier for Weapons
+      *
+      * Typically this will be STR (Strength) for Melee weapons and Dex for some Missile weapons.
+      */
+    val DamageMod = "Damage Mod"
+    /** Reads any binding enformation.
+      *
+      * i.e. Bound to Character / Account on Acquire or equipping
+      */
+    val Binding = "Binding"
+    /** Reads the durability of the item
+      *
+      * Should be a number
+      */
+    val Durability = "Durability"
+    /** Reads the material item is made from.
+      *
+      * i.e. Steel, Crystal etc.
+      */
+    val Material = "Made from"
+    /** Reads the number representing the Hardness of an item.
+      *
+      * i.e. Steel will have a higher hardness than glass.
+      */
+    val Hardness = "Hardness"
+    /** Reds the Base monetary value of the item.
+      *
+      * Generally expressed in platinum pieces. i.e. 6,000 pp 2 gp
+      */
+    val BaseValue = "Base Value"
+    /** Reads the weight in pounds.
+      *
+      * i.e. 3 lbs
+      */
+    val Weight = "Weight"
+    /** String description of where the item is located or how to obtain.
+      *
+      * i.e. Advance to level 15, End reward
+      */
+    val Location = "Location"
+    /** Array of zero or more Enchantments
+      *
+      * Can be many different effects such a bonus to a stat, skill or ability etc.
+      */
+    val Enchantments = "Enchantments"
+    /** Determines if an item can be upgraded to a better version.
+      *
+      * Generally, non-upgradeable items will be indicated by 'Not upgradeable' while upgradeable
+      * items will have text descriptions and possibly a link on what / how to upgrade.
+      */
+    val Upgradeable = "Upgradeable?"
+    /** Basic text with a description of the item.
+      */
+    val Description = "Description" // likely multi-line text
+  }

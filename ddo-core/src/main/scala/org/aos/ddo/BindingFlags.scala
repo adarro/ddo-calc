@@ -1,0 +1,83 @@
+package org.aos.ddo
+
+import org.aos.ddo.support.StringUtils.wordsToAcronym
+
+import com.typesafe.scalalogging.slf4j.LazyLogging
+
+import enumeratum.{ Enum ⇒ SmartEnum, EnumEntry }
+
+/** Stores the binding status of an item.
+  *
+  * As this is basically a database / analysis tool, it is primarily for identifying if
+  * and when any binding may occur, which is useful when attempting to acquire said item.
+  */
+sealed abstract class BindingFlags(
+    override val entryName: String,
+    status: BindingStatus,
+    event: BindingEvent) extends EnumEntry with Abbreviation with DefaultValue[BindingFlags] {
+  val abbr = entryName
+  override lazy val defaultValue = BindingFlags.defaultValue
+}
+/** Distinct value of binding options.
+  */
+object BindingFlags extends SmartEnum[BindingFlags] with DefaultValue[BindingFlags] with LazyLogging {
+  /** Attempts to mangle an Enumeration using free text.
+    *
+    * There is no extensive rule set, but DDO commonly using acronyms such as BTC,
+    * so we are translating Binds|Bound to Account to BTA etc.
+    * @note
+    * First catches 'Unbound'
+    * Next Attempts to extract abbreviation using space or case to separate words
+    *
+    * Finally defaults to None
+    *
+    * If you have the exact words without spaces, it may be more performant to use the 'withName' methods.
+    * NOTE: This enumeration is keyed by Acronym, so BTCoE will match, where 'Bound to Character On Equip' will fail.
+    */
+  def fromWords(words: Option[String]): Option[BindingFlags] = {
+    words match {
+      case Some(x) if x.equalsIgnoreCase(BindingFlags.Unbound.toFullWord()) ⇒
+        Some(BindingFlags.Unbound)
+      case Some(x) ⇒ wordsToAcronym(x) match {
+        case Some(abbr) ⇒
+          BindingFlags.values.filter { x ⇒ x.abbr.equalsIgnoreCase(abbr) }.headOption match {
+            case Some(opt) ⇒ Some(opt)
+            case _ ⇒
+              logger.warn(s"No Matching Value found for ${words}, defaulting")
+              None
+          }
+        case _ ⇒ None
+      }
+    }
+  }
+
+  /** @see [[org.aos.ddo.Binding.fromWords#Option[String]]]
+    */
+  def fromWords(words: String): Option[BindingFlags] = fromWords(Option(words))
+
+  /** Returns the default binding status (BindingFlags.Unbound)
+    */
+  override lazy val defaultValue = Some(BindingFlags.Unbound)
+  val values = findValues
+  case object Unbound extends BindingFlags("Unbound", BindingStatus.Unbound, BindingEvent.None) {
+    def toFullWord(): String = "Unbound"
+  }
+  case object BoundToAccountOnAcquire extends BindingFlags("BTAoA", BindingStatus.BindsToAccount, BindingEvent.OnAcquire) {
+    def toFullWord(): String = "Bound To Account On Acquire"
+  }
+  case object BoundToCharacterOnAcquire extends BindingFlags("BTCoA", BindingStatus.BindsToAccount, BindingEvent.OnAcquire) {
+    def toFullWord(): String = "Bound To Character On Acquire"
+  }
+  case object BoundToAccount extends BindingFlags("BTA", BindingStatus.BindsToAccount, BindingEvent.None) {
+    def toFullWord(): String = "Bound To Account"
+  }
+  case object BoundToCharacter extends BindingFlags("BTC", BindingStatus.BindsToCharacter, BindingEvent.None) {
+    def toFullWord(): String = "Bound To Character"
+  }
+  case object BoundToAccountOnEquip extends BindingFlags("BTAoE", BindingStatus.BindsToAccount, BindingEvent.OnEquip) {
+    def toFullWord(): String = "Bound To Account On Equip"
+  }
+  case object BoundToCharacterOnEquip extends BindingFlags("BTCoE", BindingStatus.BindsToAccount, BindingEvent.OnEquip) {
+    def toFullWord(): String = "Bound To Character On Equip"
+  }
+}

@@ -1,0 +1,140 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<parent>
+		<artifactId>ddo-calc-parent</artifactId>
+		<groupId>ddo-calc</groupId>
+		<version>0.1.0-alpha</version>
+	</parent>
+	<groupId>org.aos</groupId>
+	<artifactId>ddo-support</artifactId>
+	<name>DDO Support Library</name>
+	<description>Common and Shared Utility Library</description>
+	<inceptionYear>2016</inceptionYear>
+	<licenses>
+		<license>
+			<name>My License</name>
+			<url>http://....</url>
+			<distribution>repo</distribution>
+		</license>
+	</licenses>
+
+	<properties>
+		<!-- <maven.compiler.source>1.6</maven.compiler.source> -->
+		<!-- <maven.compiler.target>1.6</maven.compiler.target> -->
+		<!-- <encoding>UTF-8</encoding> -->
+		<!-- <scala.tools.version>2.10</scala.tools.version> -->
+		<!-- <scala.version>2.10.0</scala.version> -->
+	</properties>
+
+	<dependencies>
+		<dependency>
+			<groupId>org.scala-lang</groupId>
+			<artifactId>scala-library</artifactId>
+		</dependency>
+
+		<!-- Test -->
+		<!-- <dependency> -->
+		<!-- <groupId>org.specs2</groupId> -->
+		<!-- <artifactId>specs2_${scala.tools.version}</artifactId> -->
+		<!-- <version>1.13</version> -->
+		<!-- <scope>test</scope> -->
+		<!-- </dependency> -->
+		<dependency>
+			<groupId>org.scalatest</groupId>
+			<artifactId>scalatest_${scala.tools.version}</artifactId>
+			<scope>test</scope>
+		</dependency>
+		<dependency>
+			<groupId>com.wix</groupId>
+			<artifactId>accord-scalatest_${scala.tools.version}</artifactId>
+			<scope>test</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.mockito</groupId>
+			<artifactId>mockito-all</artifactId>
+			<scope>test</scope>
+		</dependency>
+		<dependency>
+			<groupId>junit</groupId>
+			<artifactId>junit</artifactId>
+			<scope>test</scope>
+		</dependency>
+	</dependencies>
+
+	<build>
+		<sourceDirectory>src/main/scala</sourceDirectory>
+		<testSourceDirectory>src/test/scala</testSourceDirectory>
+		<plugins>
+				<!-- Disable maven compiler -->
+			<plugin>
+				<artifactId>maven-compiler-plugin</artifactId>
+				<executions>
+					<execution>
+						<id>default-compile</id>
+						<phase>none</phase>
+					</execution>
+					<execution>
+						<id>default-testCompile</id>
+						<phase>none</phase>
+					</execution>
+				</executions>
+			</plugin>
+			<plugin>
+				<!-- see http://davidb.github.com/scala-maven-plugin -->
+				<groupId>net.alchim31.maven</groupId>
+				<artifactId>scala-maven-plugin</artifactId>
+				<executions>
+					<execution>
+						<id>scala-compile</id>
+						<!-- <phase>process-resources</phase> -->
+						<goals>
+							<!-- <goal>add-source</goal> -->
+							<goal>compile</goal>
+						</goals>
+					</execution>
+					<execution>
+						<id>scala-test-compile</id>
+						<!-- <phase>process-test-resources</phase> -->
+						<goals>
+							<goal>testCompile</goal>
+						</goals>
+					</execution>
+				</executions>
+				<configuration>
+					<!-- <recompileMode>incremental</recompileMode> -->
+					<args>
+						<!-- <arg>-make:transitive</arg> flag is deprecated in 2.11+ -->
+						<arg>-dependencyfile</arg>
+						<arg>-deprecation</arg>
+						<arg>-feature</arg>
+						<!-- <arg>-P:genjavadoc:out=${project.build.directory}/genjavadoc</arg> -->
+						<!-- <arg>${project.build.directory}/.scala_dependencies</arg> -->
+					</args>
+					<!-- <compilerPlugins> -->
+					<!-- <compilerPlugin> -->
+					<!-- <groupId>com.typesafe.genjavadoc</groupId> -->
+					<!-- <artifactId>genjavadoc-plugin_${scala.binary.full.version}</artifactId> -->
+					<!-- <version>0.9</version> -->
+					<!-- </compilerPlugin> -->
+					<!-- </compilerPlugins> -->
+				</configuration>
+			</plugin>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-surefire-plugin</artifactId>
+				<configuration>
+					<useFile>false</useFile>
+					<disableXmlReport>true</disableXmlReport>
+					<!-- If you have classpath issue like NoDefClassError,... -->
+					<!-- useManifestOnlyJar>false</useManifestOnlyJar -->
+					<includes>
+						<include>**/*Test.*</include>
+						<include>**/*Suite.*</include>
+					</includes>
+				</configuration>
+			</plugin>
+		</plugins>
+	</build>
+</project>

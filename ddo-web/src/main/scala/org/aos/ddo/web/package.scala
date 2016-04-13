@@ -4,7 +4,7 @@
   * you may not use this file except in compliance with the License.
   * You may obtain a copy of the License at
   *
-  *        http://www.apache.org/licenses/LICENSE-2.0
+  * http://www.apache.org/licenses/LICENSE-2.0
   *
   * Unless required by applicable law or agreed to in writing, software
   * distributed under the License is distributed on an "AS IS" BASIS,
@@ -16,9 +16,10 @@ package org.aos.ddo
 
 import java.net.URLEncoder
 
+import org.aos.ddo.support.StringUtils.{ Space, UnderScore }
+
 import com.typesafe.config.{ Config, ConfigFactory }
 import com.typesafe.scalalogging.slf4j.LazyLogging
-
 package object web {
 
   /** Takes an ID string and translates it to URL escaped and wiki specific format.
@@ -38,11 +39,9 @@ package object web {
     * apostrophe is more common.
     */
   def toWikiUrlString(s: String, escapeApostrophe: Boolean = false): String = {
-    var rVal = s.replace(" ", "_").trim()
-    if (escapeApostrophe) {
-      rVal = URLEncoder.encode(rVal, "UTF-8")
-    }
-    rVal
+    val x = s.replace(Space, UnderScore).trim()
+    if (escapeApostrophe) URLEncoder.encode(x, "UTF-8")
+    else x
   }
 
   // Whenever you write a library, allow people to supply a Config but

@@ -1,8 +1,12 @@
-language: java  
-
-r_github_packages:
-  - jimhester/covr
+language: scala
+scala:
+- 2.11.4
+jdk:
+- oraclejdk8
+- oraclejdk7  
+script:
+- mvn scoverage:report
 
 after_success:
-  - Rscript -e 'covr::codecov()'
+  - bash <(curl -s https://codecov.io/bash)
   

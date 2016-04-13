@@ -70,3 +70,4 @@ infinitest.filters
 .cache-tests
 *.sc
 *.scalastyle
+*.bak

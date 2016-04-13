@@ -1,18 +1,17 @@
-/**
- * Copyright (C) 2015 Andre White (adarro@gmail.com)
- *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- *         http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
- */
+/** Copyright (C) 2015 Andre White (adarro@gmail.com)
+  *
+  * Licensed under the Apache License, Version 2.0 (the "License");
+  * you may not use this file except in compliance with the License.
+  * You may obtain a copy of the License at
+  *
+  *     http://www.apache.org/licenses/LICENSE-2.0
+  *
+  * Unless required by applicable law or agreed to in writing, software
+  * distributed under the License is distributed on an "AS IS" BASIS,
+  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+  * See the License for the specific language governing permissions and
+  * limitations under the License.
+  */
 package org.aos.ddo.web.mapping
 
 import java.text.NumberFormat
@@ -226,7 +225,6 @@ object WikiParser extends LazyLogging {
   def weaponCategoryInfo(source: Map[String, Any]): Option[WeaponCategory] = {
     simpleExtractor(source.get(Field.WeaponTypeAndDamageType)) match {
       case Some(x: String) => {
-        //   auditSuccess += WeaponTypeAndDamageType
         val s = x.split(ForwardSlash)
         WeaponCategory.withName(s(0).replace(Space, EmptyString), true) match {
           case Some(weap) => Some(weap.asInstanceOf[WeaponCategory])
@@ -345,7 +343,10 @@ object WikiParser extends LazyLogging {
     simpleExtractor(source.get(Field.DamageMod)) match {
       case Some(x: String) => {
         logger.debug(s"DamageMod returned ${x}")
-        x.split(",").toList.filter { name => Attributes.withNameOption(name) != None }.map { name => Attributes.withName(name) }
+        for {
+          a <- x.split(Comma).toList
+          n <- Attributes.withNameOption(a)
+        } yield { n }
       }
       case _ => logger.error(s"No match found for ${Field.DamageMod}"); Nil
     }

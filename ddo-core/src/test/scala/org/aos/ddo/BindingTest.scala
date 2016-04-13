@@ -4,7 +4,7 @@
   * you may not use this file except in compliance with the License.
   * You may obtain a copy of the License at
   *
-  *        http://www.apache.org/licenses/LICENSE-2.0
+  *       http://www.apache.org/licenses/LICENSE-2.0
   *
   * Unless required by applicable law or agreed to in writing, software
   * distributed under the License is distributed on an "AS IS" BASIS,
@@ -60,7 +60,6 @@ class BindingTest extends FunSpec with Matchers with MockitoSugar with LazyLoggi
       binding shouldEqual Some(unbound)
     }
     it("should default to 'None' if any non-matching text supplied") {
-      val i = 10
       randWords.foreach { words =>
         logger.info(s"Testing words: ${words}")
         val rslt = BindingFlags.fromWords(Option(words))

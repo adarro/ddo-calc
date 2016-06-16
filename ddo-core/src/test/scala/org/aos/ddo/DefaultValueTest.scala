@@ -27,10 +27,10 @@ class DefaultValueTest extends FunSpec with Matchers with LazyLogging {
   final val greeting = "Hello World"
   val noDefault: DefaultValue[String] = new DefaultValue[String] with NoDefault[String] {}
   val greetDefault = new DefaultValue[String] {
-    override lazy val defaultValue = Some(greeting)
+    override lazy val defaultType = Some(greeting)
   }
   val otherGreet = new DefaultValue[String] {
-    override lazy val defaultValue = Some(greeting)
+    override lazy val defaultType = Some(greeting)
   }
   describe("A Default Value ") {
     it("should be able to check if it has one") {
@@ -38,7 +38,7 @@ class DefaultValueTest extends FunSpec with Matchers with LazyLogging {
     }
 
     it("can be checked against None") {
-      noDefault.defaultValue should be(empty)
+      noDefault.defaultType should be(empty)
     }
 
     it("May have a value") {
@@ -47,12 +47,12 @@ class DefaultValueTest extends FunSpec with Matchers with LazyLogging {
 
     it("can be verified to have a value") {
       val thisGreeting = Some(greeting)
-      greetDefault.defaultValue should be(thisGreeting)
+      greetDefault.defaultType should be(thisGreeting)
     }
 
     it("can see if it is the default value (equals)") {
       val thisGreeting = Some(greeting)
-      greetDefault.isDefaultValue(otherGreet)
+      greetDefault.isDefaultValue(otherGreet) should be(true)
     }
   }
 }

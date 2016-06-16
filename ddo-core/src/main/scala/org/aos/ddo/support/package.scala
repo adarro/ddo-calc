@@ -1,4 +1,5 @@
-/** Copyright (C) 2015 Andre White (adarro@gmail.com)
+/**
+  * Copyright (C) 2015 Andre White (adarro@gmail.com)
   *
   * Licensed under the Apache License, Version 2.0 (the "License");
   * you may not use this file except in compliance with the License.
@@ -15,8 +16,11 @@
 package org.aos.ddo
 
 import scala.util.control.Exception.catching
+
+import com.wix.accord.Violation
 package object support {
-  /** StringUtils
+  /**
+    * StringUtils
     * Useful Implicits used in mapping
     */
   object StringUtils {
@@ -24,16 +28,18 @@ package object support {
       def toIntOpt: Option[Int] = catching(classOf[NumberFormatException]) opt s.toInt
     }
     // Constants
-    final val Comma: String = ","
-    final val Space: String = " "
-    final val EmptyString: String = ""
-    final val ForwardSlash: String = "/"
-    final val UnderScore: String = "_"
+    final val Comma = ","
+    final val Space = " "
+    final val EmptyString = ""
+    final val ForwardSlash = "/"
+    final val UnderScore = "_"
+    final val LineSep = sys.props("line.separator")
 
     // Random generator
     private[this] val random: scala.util.Random = new scala.util.Random
 
-    /** Attempts to convert a string to an acronym
+    /**
+      * Attempts to convert a string to an acronym
       *
       * Will use space as a delimiter, falling back on Case else None.
       *
@@ -52,15 +58,40 @@ package object support {
         case _       => None
       }
     }
-    /** Generate a random string of length n from the given alphabet
+    /**
+      * Generate a random string of length n from the given alphabet
       * @note see excellent source at [[http://www.bindschaedler.com/2012/04/07/elegant-random-string-generation-in-scala/ Laurent BINDSCHAEDLER's blog post]]
       */
     def randomString(alphabet: String)(n: Int): String =
       Stream.continually(random.nextInt(alphabet.size)).map(alphabet).take(n).mkString
 
-    /** Generate a random alphabnumeric string of length n
+    /**
+      * Generate a random alphabnumeric string of length n
       */
     def randomAlphanumericString(n: Int): String =
       randomString("abcdefghijklmnopqrstuvwxyz0123456789")(n)
+  }
+
+  /**
+    * Validation utilities and convenience routines
+    */
+  object Validation {
+    import StringUtils.LineSep // scalastyle:off import.group
+    /**
+      * Extracts violation description and message text
+      * @param v Volations
+      * @return Printable list of violations.
+      */
+    def violationToString(v: Set[Violation]): String = {
+      val buf = new StringBuilder
+      v.foreach { x =>
+        x.description match {
+          case Some(d) => buf.append(s"${d} -> ${x.constraint}")
+          case _       => buf.append(x.constraint)
+        }
+        buf.append(LineSep)
+      }
+      buf.toString()
+    }
   }
 }

@@ -35,11 +35,12 @@ object WearLocation extends Enum[WearLocation] {
     * using two handed weapons or bows.
     */
   case object OffHand extends WearLocation
+  case object TwoHand extends WearLocation
   case object Trinket extends WearLocation
   case object HeadDecoration extends WearLocation
   case object BodyDecoration extends WearLocation
   case object Ammo extends WearLocation
   case object Quiver extends WearLocation
   val values = List(Head, Neck, Trinket, Back, Wrist, FirstFinger, SecondFinger, Body, Feet, Goggles, MainHand, OffHand,
-    HeadDecoration, BodyDecoration, Ammo, Quiver)
+    TwoHand, HeadDecoration, BodyDecoration, Ammo, Quiver)
 }

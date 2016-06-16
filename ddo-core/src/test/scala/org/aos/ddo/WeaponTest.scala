@@ -1,4 +1,5 @@
-/** Copyright (C) 2015 Andre White (adarro@gmail.com)
+/**
+  * Copyright (C) 2015 Andre White (adarro@gmail.com)
   *
   * Licensed under the Apache License, Version 2.0 (the "License");
   * you may not use this file except in compliance with the License.
@@ -22,7 +23,9 @@ import org.junit.runner.RunWith
 import org.scalatest.{ FunSpec, Matchers }
 import org.scalatest.junit.JUnitRunner
 import org.scalatest.mockito.MockitoSugar
+import org.scalatest.tags.Slow
 
+@Slow
 @RunWith(classOf[JUnitRunner])
 class WeaponTest extends FunSpec with Matchers with MockitoSugar {
   def fixture = new {
@@ -52,6 +55,7 @@ class WeaponTest extends FunSpec with Matchers with MockitoSugar {
       val absoluteMinimumLevel: Option[Int] = Some(3)
       val minimumLevel: Int = 4
       val umd: Int = 3
+      val enchantments = mock[Option[Seq[String]]]
     }
   }
 

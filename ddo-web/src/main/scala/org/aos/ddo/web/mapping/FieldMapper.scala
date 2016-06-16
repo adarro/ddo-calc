@@ -1,4 +1,5 @@
-/** Copyright (C) 2015 Andre White (adarro@gmail.com)
+/**
+  * Copyright (C) 2015 Andre White (adarro@gmail.com)
   *
   * Licensed under the Apache License, Version 2.0 (the "License");
   * you may not use this file except in compliance with the License.
@@ -23,11 +24,13 @@ import com.typesafe.scalalogging.slf4j.LazyLogging
 
 import enumeratum.{ Enum => SmartEnum, EnumEntry }
 
-/** Utility object for mapping DDOWiki tables and fields to objects
+/**
+  * Utility object for mapping DDOWiki tables and fields to objects
   */
 object FieldMapper extends LazyLogging {
 
-  /** Convenience class to hold a list or single value string list.
+  /**
+    * Convenience class to hold a list or single value string list.
     *
     */
   sealed abstract class ItemType(words: Either[String, List[String]]) extends EnumEntry {
@@ -37,23 +40,29 @@ object FieldMapper extends LazyLogging {
     }
   }
 
-  /** Enumeration to hold the possible item type values along with keywords used to map the fields
+  /**
+    * Enumeration to hold the possible item type values along with keywords used to map the fields
     */
   object ItemType extends SmartEnum[ItemType] {
     val values = findValues
-    /** A wieldable weapon
+    /**
+      * A wieldable weapon
       */
     case object Weapon extends ItemType(Left("Proficiency Class"))
-    /** An equipable armor
+    /**
+      * An equipable armor
       */
     case object Armor extends ItemType(Left("Armor Type"))
-    /** A potion
+    /**
+      * A potion
       */
     case object Potion extends ItemType(Right(List("Acquired from", "Located in")))
-    /** Bracers, Boots, Belts etc.
+    /**
+      * Bracers, Boots, Belts etc.
       */
     case object Clothing extends ItemType(Left("Item Type"))
-    /** Rings etc.
+    /**
+      * Rings etc.
       */
     case object Jewelery extends ItemType(Left("Item Type"))
   }
@@ -62,7 +71,8 @@ object FieldMapper extends LazyLogging {
   // Vampirism
   // Bloodletter III
   // Risk and Reward
-  /** Determines the type of Item from a set up keywords.
+  /**
+    * Determines the type of Item from a set up keywords.
     *
     * @param words list of words pulled from various fields using the mapping
     * provided by [[FieldMapper.ItemType.values]]
@@ -77,7 +87,8 @@ object FieldMapper extends LazyLogging {
     }
   }
 
-  /** Extracts weapon information from the DDOWiki site.
+  /**
+    * Extracts weapon information from the DDOWiki site.
     * @param source HTML data from the site
     * @return A Weapon object scrapped from the site or None
     */
@@ -124,12 +135,14 @@ object FieldMapper extends LazyLogging {
           proficiency = WikiParser.proficiency(source),
           upgradeable = WikiParser.upgradable(source),
           weaponCategory = weaponCategory,
-          weaponType = WikiParser.weaponType(weaponCategory))
+          weaponType = WikiParser.weaponType(weaponCategory),
+          enchantments = WikiParser.enchantments(source))
         Some(weapon)
       case _ => None
     }
   }
-  /** WikiToProperty
+  /**
+    * WikiToProperty
     * Reads sourced data from DDOWiki and attempts to mangle it into readable properties.
     * @param source a collection of properties that should generally
     * be in the form of simple strings or JSoup Elements.

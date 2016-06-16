@@ -72,9 +72,9 @@ package object web {
       this(ConfigFactory.load())
     }
 
-    val Source: String = config.getString(s"${lib}.${id}")
+    val source: String = config.getString(s"${lib}.${id}")
 
-    def url(id: String): String = "%s%s".format(Source, id)
+    def url(id: String): String = "%s%s".format(source, id)
 
     // this is the amazing functionality provided by simple-lib
     def printSetting(path: String): Unit = {

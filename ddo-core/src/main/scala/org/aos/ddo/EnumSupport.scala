@@ -1,4 +1,5 @@
-/** Copyright (C) 2015 Andre White (adarro@gmail.com)
+/**
+  * Copyright (C) 2015 Andre White (adarro@gmail.com)
   *
   * Licensed under the Apache License, Version 2.0 (the "License");
   * you may not use this file except in compliance with the License.
@@ -19,7 +20,8 @@ object EnumImplicits {
 
 }
 
-/** @author adarro
+/**
+  * @author adarro
   * A generic Enumeration with built-in support for flags / BitWise Fields, positional values
   * to provide C# like [[https://msdn.microsoft.com/en-us/library/system.flagsattribute(v=vs.110).aspx C Sharp Flags]] functionality.
   * @param <A> Base type of the class.
@@ -69,7 +71,7 @@ object EnumImplicits {
   */
 trait Enum[A] {
   import scala.language.implicitConversions // scalastyle:off import.grouping
-  trait Value extends DefaultValue[Value] {
+  trait Value {
     self: A =>
     def index: Int = values indexOf this
     def bitValue: Int = Math.pow(2.0, index).toInt
@@ -83,7 +85,8 @@ trait Enum[A] {
     } yield (m.invoke(this).asInstanceOf[T])
   }
 
-  /** Supplies a default Enum value or should return None if no default applies.
+  /**
+    * Supplies a default Enum value or should return None if no default applies.
     */
   val defaultValue: Option[Value] = None
   // val values: List[A]
@@ -112,7 +115,8 @@ trait Enum[A] {
     ) yield sc
   }
 
-  /** Converts Int to Enum
+  /**
+    * Converts Int to Enum
     */
   implicit def i2e(i: Int) = {
     values.find { x => x.bitValue == i } match {
@@ -122,7 +126,8 @@ trait Enum[A] {
   }
   // scalastyle:on public.methods.have.type for.brace
 
-  /** Converts enum to Int
+  /**
+    * Converts enum to Int
     */
   implicit def e2i[T <: Value](t: T): Int = {
     t.bitValue
@@ -130,5 +135,7 @@ trait Enum[A] {
 }
 
 object Enum {
+  import scala.language.implicitConversions
   implicit def companion[T](implicit comp: Enum[T]): Enum[T] = comp
+  implicit def strToX[T](s: String)(implicit comp: Enum[T]): Option[comp.Value] = comp.withName(s, true)
 }

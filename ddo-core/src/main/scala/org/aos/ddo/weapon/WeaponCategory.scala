@@ -1,27 +1,31 @@
 /**
- * Copyright (C) 2015 Andre White (adarro@gmail.com)
- *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- *         http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
- */
+  * Copyright (C) 2015 Andre White (adarro@gmail.com)
+  *
+  * Licensed under the Apache License, Version 2.0 (the "License");
+  * you may not use this file except in compliance with the License.
+  * You may obtain a copy of the License at
+  *
+  *         http://www.apache.org/licenses/LICENSE-2.0
+  *
+  * Unless required by applicable law or agreed to in writing, software
+  * distributed under the License is distributed on an "AS IS" BASIS,
+  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+  * See the License for the specific language governing permissions and
+  * limitations under the License.
+  */
 package org.aos.ddo.weapon
 
 import org.aos.ddo.{ Bludgeoning, Damage, Enum, NoDefault, Piercing, Slashing }
+import org.aos.ddo.support.DefaultType
 
-/** Enumerates the specific base types of weapons available in DDO, i.e. Kopesh, Dagger etc.
+/**
+  * Enumerates the specific base types of weapons available in DDO, i.e. Kopesh, Dagger etc.
   */
-sealed trait WeaponCategory extends WeaponCategory.Value with Damage with WeaponClass with NoDefault[WeaponCategory.Value]
+sealed trait WeaponCategory extends WeaponCategory.Value with Damage with WeaponClass
+
 // scalastyle:off number.of.types number.of.methods
-/** Holds the basic (Default) weapon types, swords, axes etc.
+/**
+  * Holds the basic (Default) weapon types, swords, axes etc.
   * TODO: Handle orbs and rune arms, orbs should be shields,
   * but rune arm is only off-hand only with non-physical damage
   */

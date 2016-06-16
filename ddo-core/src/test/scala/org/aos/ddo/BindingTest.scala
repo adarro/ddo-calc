@@ -32,8 +32,8 @@ class BindingTest extends FunSpec with Matchers with MockitoSugar with LazyLoggi
     Unbound,
     "Bound To Character",
     "Bound To Account")
-  final val NumCharacters = 10
-  final val randWords = for { x <- 1 to 5 } yield randomAlphanumericString(NumCharacters)
+  final val numCharacters = 10
+  final val randWords = for { x <- 1 to 5 } yield randomAlphanumericString(numCharacters)
   final val abbr = possibleText.map { words => if (words.equalsIgnoreCase(Unbound)) Unbound else wordsToAcronym(words).get }
   final val checks: List[String] = List("BindsToAccount",
     "Unbound", "BindsToCharacter", "BindsToCharacterOnEquip", "BindsToAccountOnEquip", "BindsToCharacterOnAcquire", "BindsToCharacterOnEquip")
@@ -54,7 +54,7 @@ class BindingTest extends FunSpec with Matchers with MockitoSugar with LazyLoggi
     }
     it("should have a default value of BindingFlags.Unbound") {
       val unbound = BindingFlags.Unbound
-      val binding = BindingFlags.defaultValue
+      val binding = BindingFlags.defaultType
       BindingFlags.isDefaultValue(unbound) should be(true)
 
       binding shouldEqual Some(unbound)

@@ -1,74 +1,91 @@
 /**
- * Copyright (C) 2015 Andre White (adarro@gmail.com)
- *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- *         http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
- */
+  * Copyright (C) 2015 Andre White (adarro@gmail.com)
+  *
+  * Licensed under the Apache License, Version 2.0 (the "License");
+  * you may not use this file except in compliance with the License.
+  * You may obtain a copy of the License at
+  *
+  *        http://www.apache.org/licenses/LICENSE-2.0
+  *
+  * Unless required by applicable law or agreed to in writing, software
+  * distributed under the License is distributed on an "AS IS" BASIS,
+  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+  * See the License for the specific language governing permissions and
+  * limitations under the License.
+  */
 package org.aos.ddo
 
 import org.aos.ddo.MonetaryValue.Coins
+import org.aos.ddo.effect.Effects
 
-/** A general Item, which can be a Weapon, Armor, potion, scroll etc.
+/**
+  * A general Item, which can be a Weapon, Armor, potion, scroll etc.
   */
 trait Item extends MetaData {
-  /** A Friendly, Kobold readable description or explanation of the item.
+  /**
+    * A Friendly, Kobold readable description or explanation of the item.
     */
   val description: Option[String]
 
-  /** requiredRaces - list of races the player or pet MUST be to naturally equip the item
+  /**
+    * requiredRaces - list of races the player or pet MUST be to naturally equip the item
     * unless they can bypass with a high enough UMD.
     *
     */
   val requiredRaces: List[Race] = Nil
-  /** A list of races that a player MUST be to equip the item.
+  /**
+    * A list of races that a player MUST be to equip the item.
     */
   val absoluteRequiredRaces: List[Race] = Nil
 
-  /** A list of races the player MUST NOT be in order to wear.
+  /**
+    * A list of races the player MUST NOT be in order to wear.
     * @example Warforged can NOT wear plate armor.
     */
   val absoluteRestrictedRaces: List[Race] = Nil
 
-  /** Represents the Minimum level a player must be to equip this item.
+  /**
+    * Represents the Minimum level a player must be to equip this item.
     */
   val minimumLevel: Int
 
-  /** Represents the absolute minimum level of the item.
+  /**
+    * Represents the absolute minimum level of the item.
     * This is usually due to augments or crafting or other alterations to a base item.
     */
   val absoluteMinimumLevel: Option[Int]
 
-  /** Use Magical Device [[http://ddowiki.com/page/Use_Magic_Device UMD]]
+  /**
+    * Use Magical Device [[http://ddowiki.com/page/Use_Magic_Device UMD]]
     * Skill level needed to bypass certain restrictions such as using wands below level
     * or out of class or bypassing race restrictions.
     */
   val umd: Int
 
-  /** //TODO: create set bonus case classes
+  /**
+    * Additional Effects such as enchantments on a Weapon
+    */
+  val effects: List[Effects] = Nil
+  /**
+    * //TODO: create set bonus case classes
     */
   val setBonus: List[SetItem] = Nil
 
-  /** Represents monetary in game amount.
+  /**
+    * Represents monetary in game amount.
     * plat / gold / copper.  Low Priority
     * i.e. Base Value: 7pp 5gp
     * TODO: Base Value may need to be a double or something to better represent
     */
   val baseValue: Option[Coins]
-  /** Weight of item, in pounds
+  /**
+    * Weight of item, in pounds
     * i.e. Weight: 2 lbs
     */
   val weight: Option[Int]
 
-  /** Durability
+  /**
+    * Durability
     *
     * The durability is the toughness of the item.  The higher the durability, the more damage it
     * can withstand before breaking.  The material also contributes to this value.
@@ -78,7 +95,8 @@ trait Item extends MetaData {
     */
   val durability: Int
 
-  /** Material
+  /**
+    * Material
     * what the item is "made from"
     * I.e. bows - typically wood, plate mail may be steel or dwarven iron.
     *
@@ -88,14 +106,21 @@ trait Item extends MetaData {
     */
   val material: Option[Material]
 
-  /** Hardness
+  /**
+    * Hardness
     * Generally based on the material and influences how quickly durability is decreased.
     * Adamantum and Diamond would have a higher rating that wood.
     */
   val hardness: Int
 
-  /** Indicates the binding status, if any for the item.
+  /**
+    * Indicates the binding status, if any for the item.
     */
   val binding: Option[BindingFlags]
+
+  /**
+    * List of enchantments
+    */
+  val enchantments: Option[Seq[String]]
 
 }

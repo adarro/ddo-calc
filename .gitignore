@@ -71,3 +71,4 @@ infinitest.filters
 *.sc
 *.scalastyle
 *.bak
+quick.bat

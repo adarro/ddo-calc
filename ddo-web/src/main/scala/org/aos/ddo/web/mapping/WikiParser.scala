@@ -1,10 +1,11 @@
-/** Copyright (C) 2015 Andre White (adarro@gmail.com)
+/**
+  * Copyright (C) 2015 Andre White (adarro@gmail.com)
   *
   * Licensed under the Apache License, Version 2.0 (the "License");
   * you may not use this file except in compliance with the License.
   * You may obtain a copy of the License at
   *
-  *     http://www.apache.org/licenses/LICENSE-2.0
+  * http://www.apache.org/licenses/LICENSE-2.0
   *
   * Unless required by applicable law or agreed to in writing, software
   * distributed under the License is distributed on an "AS IS" BASIS,
@@ -19,40 +20,24 @@ import java.text.NumberFormat
 import scala.collection.JavaConversions.{ asScalaBuffer, seqAsJavaList }
 import scala.language.{ existentials, postfixOps, reflectiveCalls }
 import scala.util.Try
-
-import org.aos.ddo.{
-  Attributes,
-  BindingFlags,
-  CriticalProfile,
-  DamageInfo,
-  Material,
-  MonetaryValue,
-  PhysicalDamageType,
-  UpgradeInfo
-}
+import org.aos.ddo.web.mapping.Extractor._
+import org.aos.ddo._ // scalastyle:off underscore.import (6+ imports)
 import org.aos.ddo.support.StringUtils.{ Comma, EmptyString, ForwardSlash, Space, StringImprovements }
-import org.aos.ddo.weapon.{
-  CriticalThreatRange,
-  Handedness,
-  MeleeDamage,
-  ProficiencyClass,
-  RangeDamage,
-  SpecialDamage,
-  ThrownDamage,
-  WeaponCategory,
-  WeaponType
-}
+import org.aos.ddo.weapon._ // scalastyle:off underscore.import (6+ imports)
 import org.aos.ddo.web.HtmlTag
 import org.jsoup.nodes.Element
 
 import com.typesafe.scalalogging.slf4j.LazyLogging
+import org.aos.ddo.web.mapping.Extractor.damageExtractor
 
-/** Contains functions used to scrape DDOWiki when needed.
+/**
+  * Contains functions used to scrape DDOWiki when needed.
   */
 object WikiParser extends LazyLogging {
-  lazy val MsgNoData = "No Data available to extract"
-  lazy val MsgRawStringData = "returning raw string data"
-  /** parser that extracts the text portion from a possibly HTML wrapped string.
+  lazy val msgNoData = "No Data available to extract"
+  lazy val msgRawStringData = "returning raw string data"
+  /**
+    * parser that extracts the text portion from a possibly HTML wrapped string.
     * @param textOrElement fragment of HTML or Text
     * @param tagSelector tag to extract. defaults to 'td'
     * @return extracted text or None if tag was not found or input was not of expected type.
@@ -60,7 +45,7 @@ object WikiParser extends LazyLogging {
   def simpleExtractor(textOrElement: Option[Any], tagSelector: String = HtmlTag.TableData): Option[String] = {
     textOrElement match {
       case Some(data: String) =>
-        logger.info(MsgRawStringData)
+        logger.info(msgRawStringData)
         Some(data)
       case Some(data: Element) =>
         val rslt = data.select(tagSelector).first().text()
@@ -71,94 +56,16 @@ object WikiParser extends LazyLogging {
         logger.warn(s"Data was not of expected type (text or Element) - found ${data.getClass().toString()}")
         None
       }
-      case _ => logger.warn(MsgNoData); None
+      case _ => logger.warn(msgNoData); None
     }
 
-  }
-
-  /** Helper object to hold extended damage information
-    * @param wMod Weapon Modifier information
-    * @param dice D &amp; D Dice
-    * @param extra Extra damage beyond dice
-    * @param damageType List of Damage types
-    */
-  case class damageExtractor(wMod: Int, dice: String, extra: Int, damageType: List[String])
-
-  /** Wraps text into an extractor object as an intermeadiate object to extract additional
-    * damage information.
-    * @param infoText structured text read from the Wiki HTML
-    * @return wrapped damageExtractor object with parsed properties.
-    */
-  def extractDamageInfo(infoText: String): Option[damageExtractor] = {
-    val damageInfo = """(?<wDamage>\d(?:\.\d+)?)?\s*(?<dice>\[\d+d\d+\])(?<damageType>\s\+\s\d+)?\s(.*)""".r
-    // val damageInfo = """(?<wDamage>\d+.\d+)?(?<dice>\[\d+d\d+\])(?<damageType>\s\+\s\d+)?\s(.*)""".r
-    infoText match {
-      case damageInfo(wDamage, dice, extra, damageType) =>
-
-        logger.trace(s"${infoText} matched")
-        val msgDiceMultiplier = s"Dice Multiplier: ${wDamage}\nDice: ${dice}\nExtra: ${extra}\nDamageType: ${damageType}"
-        logger.info(msgDiceMultiplier)
-
-        Some(damageExtractor(
-          Option(wDamage) match {
-            case Some(x) => wDamage.toInt
-            case _       => 0
-          },
-          dice,
-          Option(extra) match {
-            case Some(x) => extra.replaceAll(Space, EmptyString).toInt
-            case _       => 0
-          },
-          damageType.split(Comma) toList))
-      case _ => {
-        logger.warn(s"Could not match infostring to damage extractor ${infoText}")
-        None
-      }
-    }
-  }
-
-  /** encapsulates the critical damage profile
-    *
-    * @example a typical weapon may have a damage range of 1-20 with a bonus for
-    * certain high rolls.  The scimatar for example may have 1-20, with 18-20 receiving
-    * a bonus damage multiplier of double damage.  This is written in terms of 18-20 x3.
-    *
-    * programatically, this would be represented as
-    * {{{
-    * val cp = critProfile(min = 18, max=20, multiplier = 2)
-    * }}}
-    * @param min minimum damage roll
-    * @param max maximum damage roll
-    * @multiplier amount to multiply when a given roll is within the min / max range.
-    *
-    */
-  case class critProfile(min: Int, max: Int, multiplier: Int)
-
-  /** Extracts the critical profile information from a string representation.
-    * @param infoText text containing a min - max x: Multiplier, i.e. 19-20 x3
-    * @return a [[critProfile]] or None if there was no parsable value found.
-    */
-  def extractCriticalProfile(infoText: String): Some[critProfile] = {
-
-    /** Regular expression used to translate D &amp; D text to object notation.
-      */
-    val regCritical = """(?<min>\d+)?-?(?<max>\d+)\s*/\s*x(?<multiplier>\d+)""".r
-    infoText match {
-      case regCritical(min, max, multiplier) => {
-        logger.info(s"critical profile: ${infoText}")
-        Some(critProfile(
-          if (min == null) max.toInt else min.toInt, // scalastyle:off null
-          max toInt,
-          multiplier toInt))
-      }
-      case _ => logger.error(s"argument could not be parsed: ${infoText}"); throw new IllegalArgumentException
-    }
   }
 
   // Implicit to safely attempt String to Int conversion
   private def tryToInt(s: String) = Try(s.toInt).toOption
 
-  /** Encapsulates Weapon Category and Damage Information
+  /**
+    * Encapsulates Weapon Category and Damage Information
     *
     * @param category The category such as Club or Bastard Sword
     * @param physicalDamageType The type of damage such as Bludgeon or Pierce
@@ -166,7 +73,8 @@ object WikiParser extends LazyLogging {
     */
   case class WeaponClassInfo(category: WeaponCategory, physicalDamageType: PhysicalDamageType)
 
-  /** Extracts the proficiency such as Martial Weapon
+  /**
+    * Extracts the proficiency such as Martial Weapon
     * @param source Text or HTML fragment containing the information
     * @return Proficiency Class or None if invalid or missing
     */
@@ -184,7 +92,8 @@ object WikiParser extends LazyLogging {
     }
   }
 
-  /** Extracts damage information from text or HTML Fragment
+  /**
+    * Extracts damage information from text or HTML Fragment
     * @param source Text or HTML fragment containing the information
     * @return Damage information or None if missing or invalid data.
     */
@@ -198,7 +107,8 @@ object WikiParser extends LazyLogging {
     }
   }
 
-  /** Extracts the Critical Threat information
+  /**
+    * Extracts the Critical Threat information
     * @param source Text or HTML fragment containing source information
     * @return Critical Information or None if missing or invalid data
     */
@@ -218,7 +128,8 @@ object WikiParser extends LazyLogging {
     }
   }
 
-  /** Extracts Weapon Category information
+  /**
+    * Extracts Weapon Category information
     * @param source Text or HTML fragment containing desired information
     * @return Weapon Category information or None if missing / invalid data
     */
@@ -235,7 +146,8 @@ object WikiParser extends LazyLogging {
     }
   }
 
-  /** Extracts Race Requirements, if any
+  /**
+    * Extracts Race Requirements, if any
     * @param source Text or HTML fragment containing desired information
     * @return Collection of Race ID's or empty list if none found
     */
@@ -250,7 +162,8 @@ object WikiParser extends LazyLogging {
     }
   }
 
-  /** Extracts Minimum level information
+  /**
+    * Extracts Minimum level information
     * @param source Text or HTML fragment containing desired information
     * @return Int value of minimum level.
     */
@@ -268,14 +181,15 @@ object WikiParser extends LazyLogging {
     }
   }
 
-  /** Extracts Required traits, if any
+  /**
+    * Extracts Required traits, if any
     * @param source Text or HTML fragment with desired information
     * @return Collection of Trait IDs or empty list if none found
     *
     * @note  Currently treating this as a list, I believe there is only one value at most, but
     * taking the performance hit over code breaking.
     * One potential use case is a aligned race restricted item.
-    * Will try to update and streamline this oncce we can locate better source data
+    * Will try to update and streamline this once we can locate better source data
     */
   def requiredTrait(source: Map[String, Any]): List[String] = {
     // TODO: Return Option instead of empty list
@@ -289,7 +203,8 @@ object WikiParser extends LazyLogging {
     }
   }
 
-  /** Extracts Use Magical Device information, if any
+  /**
+    * Extracts Use Magical Device information, if any
     * @param source Text or HTML fragment with desired information
     * @return Int or UMD check, defaulting to zero if none found.
     */
@@ -302,7 +217,8 @@ object WikiParser extends LazyLogging {
     }
   }
 
-  /** Extracts handedness (Off-hand, main-hand, two-handed etc) from source
+  /**
+    * Extracts handedness (Off-hand, main-hand, two-handed etc) from source
     * @param source Text or HTML fragment
     * @return list of valid equip locations.
     */
@@ -321,7 +237,8 @@ object WikiParser extends LazyLogging {
     }
   }
 
-  /** Extracts Attack Modifier Attributes
+  /**
+    * Extracts Attack Modifier Attributes
     * @param source Text or HTML fragment with desired information
     * @return List of Attributes or empty list if none found.
     */
@@ -335,7 +252,8 @@ object WikiParser extends LazyLogging {
     }
   }
 
-  /** Extracts Attributes used to determine Damage Modifier
+  /**
+    * Extracts Attributes used to determine Damage Modifier
     * @param source Text or HTML fragment with desired information
     * @return List of Attributes or empty list if none found.
     */
@@ -352,7 +270,8 @@ object WikiParser extends LazyLogging {
     }
   }
 
-  /** Extracts binding information (i.e. bound to Character etc)
+  /**
+    * Extracts binding information (i.e. bound to Character etc)
     * @param source Text or HTML fragment with desired information
     * @return Binding status or None if missing / invalid data
     */
@@ -364,12 +283,9 @@ object WikiParser extends LazyLogging {
     }
   }
 
-  /** Extracts durability for item.
-    * @param source /**
-    * @param source
-    * @return
-    * */
-    * Text or HTML fragment with desired information
+  /**
+    * Extracts durability for item.
+    * @param source Text or HTML fragment with desired information
     * @return Int value of durability, defaults to zero if none found.
     */
   def durability(source: Map[String, Any]): Int = {
@@ -386,7 +302,8 @@ object WikiParser extends LazyLogging {
     }
   }
 
-  /** Extracts material information
+  /**
+    * Extracts material information
     * @param source Text or HTML fragment with desired information
     * @return Material or None if missing / invalid data
     */
@@ -411,7 +328,8 @@ object WikiParser extends LazyLogging {
     }
   }
 
-  /** Extracts Hardness information
+  /**
+    * Extracts Hardness information
     * @param source Text or HTML fragment with desired information
     * @return Int value for hardness , defaulting to zero if missing / invalid data
     */
@@ -429,7 +347,8 @@ object WikiParser extends LazyLogging {
     }
   }
 
-  /** Extracts the base monetary value
+  /**
+    * Extracts the base monetary value
     * @param source Text or HTML fragment
     * @return Base value in platinum or None if missing / invalid data
     */
@@ -460,7 +379,8 @@ object WikiParser extends LazyLogging {
     }
   }
 
-  /** Wraps an Int value into a Coin object
+  /**
+    * Wraps an Int value into a Coin object
     * @param baseValue amount of platinum pieces
     * @return wrapped object using given value.
     */
@@ -471,7 +391,8 @@ object WikiParser extends LazyLogging {
     }
   }
 
-  /** Item weight
+  /**
+    * Item weight
     * @param source Text or HTML fragment
     * @return Weight in pounds, if supplied
     */
@@ -487,7 +408,8 @@ object WikiParser extends LazyLogging {
     }
   }
 
-  /** Item source location
+  /**
+    * Item source location
     * @param source Text or HTML fragment
     * @return location text, if found
     */
@@ -500,16 +422,21 @@ object WikiParser extends LazyLogging {
     }
   }
 
-  /** item effects
+  /**
+    * item effects
     * @param source Source Text or HTML fragment
     * @return collection of enchantments
     */
-  def enchantments(source: Map[String, Any]): Option[Any] = {
+  def enchantments(source: Map[String, Any]) = {
     // TODO: Do we want to alter this from Any to Either[String,Element]?
-    source.get(Field.Enchantments)
+    val eSource = source.filter(e => e._2.isInstanceOf[Element]).map(f => f._1 -> f._2.asInstanceOf[Element])
+    val leaves = enchantmentExtractor(eSource).map { x => x.text }
+    if (leaves.isEmpty) None
+    else Some(leaves)
   }
 
-  /** Extracts any upgrade information text
+  /**
+    * Extracts any upgrade information text
     * @param source Text or HTML fragment
     * @return Upgrade info with any information text found
     */
@@ -527,7 +454,8 @@ object WikiParser extends LazyLogging {
     }
   }
 
-  /** Extracts any descriptive text
+  /**
+    * Extracts any descriptive text
     * @param source Text or HTML fragment
     * @return Descriptive text if found.
     */
@@ -539,7 +467,8 @@ object WikiParser extends LazyLogging {
     }
   }
 
-  /** Extracts Weapon type (Melee, Ranged, thrown etc)
+  /**
+    * Extracts Weapon type (Melee, Ranged, thrown etc)
     * @param wc Wrapper generally retrieved through [[WeaponCategoryInfo]] information
     * @return
     */
@@ -553,7 +482,8 @@ object WikiParser extends LazyLogging {
     }
   }
 
-  /** Wraps Threat information into a Profile object
+  /**
+    * Wraps Threat information into a Profile object
     * @param ctr Threat Information
     * @return
     */
@@ -568,7 +498,8 @@ object WikiParser extends LazyLogging {
     }
   }
 
-  /** Extracts damage dice
+  /**
+    * Extracts damage dice
     * @param dts Damage extraction helper object
     * @return Damage dice as string
     */
@@ -579,7 +510,8 @@ object WikiParser extends LazyLogging {
     }
   }
 
-  /** Extracts the Damage type from the extraction helper object
+  /**
+    * Extracts the Damage type from the extraction helper object
     * @param dts utility helper object
     * @return List of damage types
     */
@@ -590,7 +522,8 @@ object WikiParser extends LazyLogging {
     }
   }
 
-  /** Extracts the weapon modifier value from the utility helper object
+  /**
+    * Extracts the weapon modifier value from the utility helper object
     * @param dts utility helper object
     * @return Int value of the modifier, defaulting to 0
     */
@@ -602,7 +535,8 @@ object WikiParser extends LazyLogging {
     }
   }
 
-  /** Populates a DamageInfo object from a helper object
+  /**
+    * Populates a DamageInfo object from a helper object
     * @param dts helper object
     * @return populated [[DamageInfo]] object
     */

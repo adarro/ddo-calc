@@ -17,7 +17,7 @@ package org.aos.ddo
 /** The 'What it does' half of binding status.
   */
 sealed trait BindingStatus extends BindingStatus.Value with DefaultValue[BindingStatus.Value] {
-  override lazy val defaultValue = Some(BindingStatus.Unbound)
+  override lazy val defaultType = Some(BindingStatus.Unbound)
 }
 /** Enum for noting the distinct types of binding.
   *

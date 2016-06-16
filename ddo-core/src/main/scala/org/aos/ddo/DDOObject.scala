@@ -1,4 +1,5 @@
-/** Copyright (C) 2015 Andre White (adarro@gmail.com)
+/**
+  * Copyright (C) 2015 Andre White (adarro@gmail.com)
   *
   * Licensed under the Apache License, Version 2.0 (the "License");
   * you may not use this file except in compliance with the License.
@@ -16,7 +17,8 @@ package org.aos.ddo
 
 import org.aos.ddo.weapon.{ Handedness, ProficiencyClass, WeaponCategory => wcat, WeaponType }
 
-/** Encapsulates any and all Items and objects within DDO
+/**
+  * Encapsulates any and all Items and objects within DDO
   */
 object DDOObject {
   // Character Planning
@@ -36,6 +38,7 @@ object DDOObject {
     val umd: Int,
     val weight: Option[Int],
     val binding: Option[BindingFlags],
+    val enchantments: Option[Seq[String]],
     // Members declared in org.aos.ddo.Weapon
     val attackModifier: List[Attributes],
     val critical: Option[CriticalProfile],

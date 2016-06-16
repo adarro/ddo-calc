@@ -4,7 +4,7 @@
   * you may not use this file except in compliance with the License.
   * You may obtain a copy of the License at
   *
-  *        http://www.apache.org/licenses/LICENSE-2.0
+  *      http://www.apache.org/licenses/LICENSE-2.0
   *
   * Unless required by applicable law or agreed to in writing, software
   * distributed under the License is distributed on an "AS IS" BASIS,
@@ -23,7 +23,7 @@ import org.junit.runner.RunWith
 import org.scalatest.{ FunSpec, Matchers }
 import org.scalatest.junit.JUnitRunner
 import org.scalatest.mockito.MockitoSugar
-
+import scala.language.reflectiveCalls
 import com.typesafe.scalalogging.slf4j.LazyLogging
 
 @RunWith(classOf[JUnitRunner])
@@ -51,7 +51,7 @@ class DDoWikiScrapingIT extends FunSpec with Matchers with MockitoSugar with Laz
   describe("Effect / enhancement List") {
     it("Should read a simple list") {
       // This example has 6 items in a simple list, so we should have one branch with 6 leaves
-      import scala.language.reflectiveCalls // scalastyle:off import.grouping
+
       val fragment = fixture.simpleListDoc
       val result = Tree(Warehouse.readHtmlList(fragment))
       result.isStump should be(false)
@@ -65,7 +65,7 @@ class DDoWikiScrapingIT extends FunSpec with Matchers with MockitoSugar with Laz
 
     it("Should read a nested UL list") {
       // This example has 2 items in a simple list, plus 5 nested ones
-      import scala.language.reflectiveCalls // scalastyle:off import.grouping
+
       val fragment = fixture.nestedListDoc
       val result = Tree(Warehouse.readHtmlList(fragment))
       result.isStump should be(false)

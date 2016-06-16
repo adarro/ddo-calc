@@ -21,6 +21,7 @@
 		<module>ddo-core</module>
 		<module>ddo-web</module>
 		<module>ddo-support</module>
+		<!--<module>ddo-etl</module> -->
 	</modules>
 	<properties>
 		<!-- General Build / Informational properties -->
@@ -32,14 +33,20 @@
 		<maven.compiler.target>${jvm.version}</maven.compiler.target>
 		<encoding>UTF-8</encoding>
 		<someProp>${project.inceptionYear}</someProp>
+		<!-- API Standards / REST -->
+		<swagger.version>2.1.6</swagger.version>
 		<!--Data / Persistence -->
+		<slick.version>3.1.1</slick.version>
+		<!-- Avro -->
+		<avro.version>1.8.1</avro.version>
+		<avro.scala.version>1.4.3</avro.scala.version>
 		<!--<couchbase.version>1.1.0-525</couchbase.version> -->
 		<!-- Counchbase (lite) only deploys Native (Linux) on repo, so reproducability 
 			and development on windows is... limited at best. -->
 		<couchbase.version>1.1.0</couchbase.version>
 		<!-- Languages -->
 		<!-- Extend -->
-		<xtend.version>2.9.0</xtend.version>
+		<xtend.version>2.10.0</xtend.version>
 		<!-- Scala -->
 		<scala.base>2.11</scala.base>
 		<scala.minor.version>7</scala.minor.version>
@@ -47,17 +54,17 @@
 		<scala.tools.version>${scala.base}</scala.tools.version>
 		<scala.logging.version>2.1.2</scala.logging.version>
 		<scala.binary.full.version>${scala.version}</scala.binary.full.version>
-		<scoverage.plugin.version>1.1.0</scoverage.plugin.version>
+		<scoverage.plugin.version>1.1.1</scoverage.plugin.version>
 		<!-- Kotlin -->
-		<kotlin.version>1.0.0-beta-4584</kotlin.version>
+		<kotlin.version>1.0.2-1</kotlin.version>
 		<license.id>apache_v2</license.id>
 		<jrbroker.version>7.4.8</jrbroker.version>
 		<global.properties.file>${project.build.outputDirectory}/${project.groupId}.properties</global.properties.file>
 		<!-- R Analytics -->
-		<fluentr.version>1.0</fluentr.version>
+		<fluentr.version>1.1</fluentr.version>
 		<!-- Testing -->
-		<junit.version>4.11</junit.version>
-		<cola.version>0.5.0</cola.version>
+		<junit.version>4.12</junit.version>
+		<cola.version>0.5.5</cola.version>
 		<mockito.version>2.0.2-beta</mockito.version>
 		<jnario.version>1.0.0</jnario.version>
 		<scalatest.version>3.0.0-M15</scalatest.version>
@@ -73,13 +80,47 @@
 		<sonar.dynamicAnalysis>reuseReports</sonar.dynamicAnalysis>
 		<sonar.jacoco.reportPath>${project.basedir}/../target/jacoco.exec</sonar.jacoco.reportPath>
 		<sonar.language>scala</sonar.language>
-		<sonar.plugin.version>2.7.1</sonar.plugin.version>
+		<sonar.plugin.version>3.0.2</sonar.plugin.version>
 		<!-- Reporting -->
-		<site.plugin.version>3.5</site.plugin.version>
+		<site.plugin.version>3.5.1</site.plugin.version>
 		<project-info-reports.plugin.version>2.9</project-info-reports.plugin.version>
 	</properties>
 	<dependencyManagement>
 		<dependencies>
+			<!--Open API / Standards -->
+			<dependency>
+				<groupId>io.swagger</groupId>
+				<artifactId>swagger-codegen</artifactId>
+				<version>${swagger.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>io.swagger</groupId>
+				<artifactId>swagger-codegen-maven-plugin</artifactId>
+				<version>${swagger.version}</version>
+			</dependency>
+			<!-- Database / Persistence -->
+			<!-- Slick -->
+			<dependency>
+				<groupId>com.typesafe.slick</groupId>
+				<artifactId>slick_${scala.base}</artifactId>
+				<version>${slick.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>com.typesafe.slick</groupId>
+				<artifactId>slick-codegen_${scala.base}</artifactId>
+				<version>${slick.version}</version>
+			</dependency>
+			<!-- Avro -->
+			<dependency>
+				<groupId>com.sksamuel.avro4s</groupId>
+				<artifactId>avro4s-core_2.11</artifactId>
+				<version>${avro.scala.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.apache.avro</groupId>
+				<artifactId>avro</artifactId>
+				<version>${avro.version}</version>
+			</dependency>
 			<!-- Language Support -->
 			<!-- R Lang -->
 			<dependency>
@@ -198,12 +239,70 @@
 				<artifactId>saddle-core_2.11</artifactId>
 				<version>1.3.4</version>
 			</dependency>
-
+			<!-- Transitive / Convergence Management -->
+			<dependency>
+				<groupId>commons-codec</groupId>
+				<artifactId>commons-codec</artifactId>
+				<version>[1.6,)</version>
+			</dependency>
 		</dependencies>
 	</dependencyManagement>
 	<build>
+		<plugins>
+			<!-- Versioning -->
+			<plugin>
+				<groupId>org.codehaus.mojo</groupId>
+				<artifactId>versions-maven-plugin</artifactId>
+				<configuration>
+					<excludeProperties>scalascraper.version,scala.base,scala.version,scala.tools.versionscala.minor.version,scala.binary.full.version,scalatest.version</excludeProperties>
+				</configuration>
+			</plugin>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-dependency-plugin</artifactId>
+				<executions>
+					<execution>
+						<id>uninstall</id>
+						<inherited>true</inherited>
+						<goals>
+							<goal>purge-local-repository</goal>
+						</goals>
+						<configuration>
+							<manualInclude>${project.groupId}:${project.artifactId}</manualInclude>
+							<snapshotsOnly>true</snapshotsOnly>
+						</configuration>
+					</execution>
+					<execution>
+						<id>uninstall-dep</id>
+						<inherited>true</inherited>
+						<goals>
+							<goal>purge-local-repository</goal>
+						</goals>
+						<configuration>
+							<actTransitively>false</actTransitively>
+							<reResolve>false</reResolve>
+						</configuration>
+					</execution>
+				</executions>
+				<configuration>
+					<verbose>true</verbose>
+				</configuration>
+			</plugin>
+		</plugins>
 		<pluginManagement>
 			<plugins>
+				<!-- License and outdated Dependency Service -->
+				<plugin>
+					<groupId>com.versioneye</groupId>
+					<artifactId>versioneye-maven-plugin</artifactId>
+					<version>3.9.2</version>
+				</plugin>
+				<!-- Cross Dependency checker (scala) -->
+				<plugin>
+					<groupId>com.lihaoyi</groupId>
+					<artifactId>acyclic_${scala.base}</artifactId>
+					<version>0.1.4</version>
+				</plugin>
 				<!-- Coding standards -->
 				<plugin>
 					<groupId>com.github.ekryd.sortpom</groupId>
@@ -279,6 +378,11 @@
 							<phase>check</phase>
 						</execution>
 					</executions>
+				</plugin>
+				<plugin>
+					<groupId>org.apache.maven.plugins</groupId>
+					<artifactId>maven-surefire-report-plugin</artifactId>
+					<version>2.19.1</version>
 				</plugin>
 				<plugin>
 					<groupId>org.codehaus.mojo</groupId>
@@ -740,10 +844,18 @@
 					<groupId>org.scalatest</groupId>
 					<artifactId>scalatest-maven-plugin</artifactId>
 					<version>1.0</version>
+					<dependencies>
+						<dependency>
+							<groupId>org.pegdown</groupId>
+							<artifactId>pegdown</artifactId>
+							<version>1.5.0</version>
+						</dependency>
+					</dependencies>
 					<configuration>
 						<reportsDirectory>${project.build.directory}/surefire-reports</reportsDirectory>
 						<junitxml>.</junitxml>
 						<filereports>WDF TestSuite.txt</filereports>
+						
 					</configuration>
 					<executions>
 						<execution>
@@ -753,6 +865,7 @@
 							</goals>
 							<configuration>
 								<suffixes>Test</suffixes>
+								<skipTests>${skip.tests}</skipTests>
 							</configuration>
 						</execution>
 						<execution>
@@ -763,6 +876,7 @@
 							<phase>integration-test</phase>
 							<configuration>
 								<suffixes>IT</suffixes>
+								<skipTests>${skip.tests}</skipTests>
 							</configuration>
 						</execution>
 					</executions>
@@ -801,10 +915,43 @@
 						</execution>
 					</executions>
 				</plugin>
+				<!-- Reporting / Skinning -->
 				<plugin>
 					<groupId>org.apache.maven.plugins</groupId>
 					<artifactId>maven-site-plugin</artifactId>
 					<version>${site.plugin.version}</version>
+					<dependencies>
+						<dependency>
+							<groupId>org.apache.maven.skins</groupId>
+							<artifactId>maven-fluido-skin</artifactId>
+							<version>1.5</version>
+						</dependency>
+						<dependency>
+							<groupId>org.apache.maven.doxia</groupId>
+							<artifactId>doxia-module-markdown</artifactId>
+							<version>1.7</version>
+						</dependency>
+					</dependencies>
+					<configuration>
+						<skipDeploy>true</skipDeploy>
+					</configuration>
+				</plugin>
+				<plugin>
+					<groupId>com.github.github</groupId>
+					<artifactId>site-maven-plugin</artifactId>
+					<version></version>
+					<executions>
+						<execution>
+							<goals>
+								<goal>site</goal>
+							</goals>
+							<phase>site-deploy</phase>
+							<configuration>
+								<path>${project.version}</path>
+								<merge>true</merge>
+							</configuration>
+						</execution>
+					</executions>
 				</plugin>
 			</plugins>
 		</pluginManagement>
@@ -813,30 +960,30 @@
 		<plugins>
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
-				<artifactId>maven-project-info-reports-plugin</artifactId>
-				<version>${project-info-reports.plugin.version}</version>
-				<reportSets>
-					<reportSet>
-						<reports>
-							<report>index</report>
-						</reports>
-					</reportSet>
-				</reportSets>
+				<artifactId>maven-pmd-plugin</artifactId>
+				<version>3.6</version>
+				<configuration>
+					<linkXref>true</linkXref>
+					<sourceEncoding>utf-8</sourceEncoding>
+					<minimumTokens>100</minimumTokens>
+					<targetJdk>${jvm.version}</targetJdk>
+					<excludes>
+						<exclude>**/*Bean.java</exclude>
+						<exclude>**/generated/*.java</exclude>
+					</excludes>
+					<excludeRoots>
+						<excludeRoot>target/generated-sources/stubs</excludeRoot>
+					</excludeRoots>
+				</configuration>
 			</plugin>
-
+			<plugin>
+				<artifactId>maven-dependency-plugin</artifactId>
+				<version>2.10</version>
+			</plugin>
 			<plugin>
 				<groupId>org.scoverage</groupId>
 				<artifactId>scoverage-maven-plugin</artifactId>
 				<version>${scoverage.plugin.version}</version>
-				<reportSets>
-					<reportSet>
-						<reports>
-							<report>report</report>
-							<!-- select only one report from: report, integration-report and report-only 
-								reporters -->
-						</reports>
-					</reportSet>
-				</reportSets>
 			</plugin>
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
@@ -853,9 +1000,22 @@
 				</reportSets>
 			</plugin>
 			<plugin>
-				<groupId>org.codehaus.sonar-plugins</groupId>
-				<artifactId>maven-report</artifactId>
-				<version>${sonar.plugin.version}</version>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-surefire-report-plugin</artifactId>
+			</plugin>
+			<plugin>
+				<groupId>org.codehaus.mojo</groupId>
+				<artifactId>versions-maven-plugin</artifactId>
+				<version>2.2</version>
+				<reportSets>
+					<reportSet>
+						<reports>
+							<report>dependency-updates-report</report>
+							<report>plugin-updates-report</report>
+							<report>property-updates-report</report>
+						</reports>
+					</reportSet>
+				</reportSets>
 			</plugin>
 		</plugins>
 	</reporting>

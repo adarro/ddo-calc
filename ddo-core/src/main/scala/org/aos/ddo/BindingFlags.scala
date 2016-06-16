@@ -31,7 +31,7 @@ sealed abstract class BindingFlags(
     status: BindingStatus,
     event: BindingEvent) extends EnumEntry with Abbreviation with DefaultValue[BindingFlags] {
   val abbr = entryName
-  override lazy val defaultValue = BindingFlags.defaultValue
+  override lazy val defaultType = BindingFlags.defaultType
 }
 /** Distinct value of binding options.
   */
@@ -72,7 +72,7 @@ object BindingFlags extends SmartEnum[BindingFlags] with DefaultValue[BindingFla
 
   /** Returns the default binding status (BindingFlags.Unbound)
     */
-  override lazy val defaultValue = Some(BindingFlags.Unbound)
+  override lazy val defaultType = Some(BindingFlags.Unbound)
   val values = findValues
   case object Unbound extends BindingFlags("Unbound", BindingStatus.Unbound, BindingEvent.None) {
     def toFullWord(): String = "Unbound"

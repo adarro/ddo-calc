@@ -17,7 +17,7 @@ package org.aos.ddo
 
 import org.aos.ddo.support.StringUtils.wordsToAcronym
 
-import com.typesafe.scalalogging.slf4j.LazyLogging
+import com.typesafe.scalalogging.LazyLogging
 
 import enumeratum.{ Enum => SmartEnum, EnumEntry }
 
@@ -40,6 +40,7 @@ object BindingFlags extends SmartEnum[BindingFlags] with DefaultValue[BindingFla
     *
     * There is no extensive rule set, but DDO commonly using acronyms such as BTC,
     * so we are translating Binds|Bound to Account to BTA etc.
+    *
     * @note
     * First catches 'Unbound'
     * Next Attempts to extract abbreviation using space or case to separate words
@@ -55,10 +56,10 @@ object BindingFlags extends SmartEnum[BindingFlags] with DefaultValue[BindingFla
         Some(BindingFlags.Unbound)
       case Some(x) => wordsToAcronym(x) match {
         case Some(abbr) =>
-          BindingFlags.values.filter { x => x.abbr.equalsIgnoreCase(abbr) }.headOption match {
+          BindingFlags.values.find { x => x.abbr.equalsIgnoreCase(abbr) } match {
             case Some(opt) => Some(opt)
             case _ =>
-              logger.warn(s"No Matching Value found for ${words}, defaulting")
+              logger.warn(s"No Matching Value found for $words, defaulting")
               None
           }
         case _ => None
@@ -66,7 +67,7 @@ object BindingFlags extends SmartEnum[BindingFlags] with DefaultValue[BindingFla
     }
   }
 
-  /** @see [[org.aos.ddo.Binding.fromWords#Option[String]]]
+  /** @see [[org.aos.ddo.BindingFlags.fromWords#Option[String]]]
     */
   def fromWords(words: String): Option[BindingFlags] = fromWords(Option(words))
 

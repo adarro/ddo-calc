@@ -19,7 +19,7 @@ import org.aos.ddo.support.StringUtils.{ wordsToAcronym, StringImprovements }
 import org.scalatest.{ FunSpec, Matchers }
 import org.scalatest.OptionValues._
 
-import com.typesafe.scalalogging.slf4j.LazyLogging
+import com.typesafe.scalalogging.LazyLogging
 
 class StringUtilsTest extends FunSpec with Matchers with LazyLogging {
   private val wordsWithSpaces: String = "I Believe Mom"

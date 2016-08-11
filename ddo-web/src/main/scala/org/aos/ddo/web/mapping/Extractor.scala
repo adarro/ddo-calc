@@ -5,11 +5,12 @@ import scala.language.postfixOps
 import org.aos.ddo.support.StringUtils.{ Comma, EmptyString, Space }
 import org.jsoup.nodes.Element
 
-import com.typesafe.scalalogging.slf4j.LazyLogging
+import com.typesafe.scalalogging.LazyLogging
 
 object Extractor extends LazyLogging {
   /**
     * Extracts the critical profile information from a string representation.
+    *
     * @param infoText text containing a min - max x: Multiplier, i.e. 19-20 x3
     * @return a [[critProfile]] or None if there was no parsable value found.
     */
@@ -20,19 +21,19 @@ object Extractor extends LazyLogging {
       */
     val regCritical = """(?<min>\d+)?-?(?<max>\d+)\s*/\s*x(?<multiplier>\d+)""".r
     infoText match {
-      case regCritical(min, max, multiplier) => {
-        logger.info(s"critical profile: ${infoText}")
+      case regCritical(min, max, multiplier) =>
+        logger.info(s"critical profile: $infoText")
         Some(critProfile(
           if (min == null) max.toInt else min.toInt, // scalastyle:off null
           max toInt,
           multiplier toInt))
-      }
-      case _ => logger.error(s"argument could not be parsed: ${infoText}"); throw new IllegalArgumentException
+      case _ => logger.error(s"argument could not be parsed: $infoText"); throw new IllegalArgumentException
     }
   }
 
   /**
     * Helper object to hold extended damage information
+    *
     * @param wMod Weapon Modifier information
     * @param dice D &amp; D Dice
     * @param extra Extra damage beyond dice
@@ -43,6 +44,7 @@ object Extractor extends LazyLogging {
   /**
     * Wraps text into an extractor object as an intermeadiate object to extract additional
     * damage information.
+    *
     * @param infoText structured text read from the Wiki HTML
     * @return wrapped damageExtractor object with parsed properties.
     */
@@ -52,8 +54,8 @@ object Extractor extends LazyLogging {
     infoText match {
       case damageInfo(wDamage, dice, extra, damageType) =>
 
-        logger.trace(s"${infoText} matched")
-        val msgDiceMultiplier = s"Dice Multiplier: ${wDamage}\nDice: ${dice}\nExtra: ${extra}\nDamageType: ${damageType}"
+        logger.trace(s"$infoText matched")
+        val msgDiceMultiplier = s"Dice Multiplier: $wDamage\nDice: $dice\nExtra: $extra\nDamageType: $damageType"
         logger.info(msgDiceMultiplier)
 
         Some(damageExtractor(
@@ -67,21 +69,19 @@ object Extractor extends LazyLogging {
             case _       => 0
           },
           damageType.split(Comma) toList))
-      case _ => {
-        logger.warn(s"Could not match infostring to damage extractor ${infoText}")
+      case _ =>
+        logger.warn(s"Could not match infostring to damage extractor $infoText")
         None
-      }
     }
   }
 
   /**
     * Extracts Enchantment data from ddowiki html
+    *
     * @param source wiki scrapped html
     * @return sequence of possibly nested Leafs containing any enchantments
     */
   def enchantmentExtractor(source: Map[String, Element]): Seq[org.aos.ddo.web.Leaf] = {
-    // FIXME: Need to move enchantmentExtractor to a utility class or we make
-    // Warehouse and WikiParser cross dependent
     val maybeTree = for {
       e <- source.get(Field.Enchantments)
     } yield org.aos.ddo.web.Warehouse.readHtmlList(e)

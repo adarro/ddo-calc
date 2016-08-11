@@ -14,16 +14,14 @@
   */
 package org.aos.ddo.web.mapping
 
-import scala.annotation.migration
-import scala.language.reflectiveCalls
-
-import org.aos.ddo.web.{ Warehouse, toWikiUrlString }
+import com.typesafe.scalalogging.LazyLogging
+import org.aos.ddo.web.{Warehouse, toWikiUrlString}
 import org.junit.runner.RunWith
-import org.scalatest.{ FunSpec, Matchers, Tag }
 import org.scalatest.junit.JUnitRunner
 import org.scalatest.mockito.MockitoSugar
+import org.scalatest.{FunSpec, Matchers, Tag}
 
-import com.typesafe.scalalogging.slf4j.LazyLogging
+import scala.language.reflectiveCalls
 
 object SlowTest extends Tag("org.aos.ddo.tags.SlowTest")
 
@@ -40,13 +38,13 @@ class QueryItemIT extends FunSpec with Matchers with MockitoSugar with LazyLoggi
   }
 
   describe("A named weapon") {
-    (
+
       it("should be retrievable from ddo wiki")({
         val f = fixture
         val id = toWikiUrlString(f.typeList.getOrElse(lblWeapon, f.defaultItemId))
         lazy val msgDataFound = "weapon data found"
-        lazy val msgRetrieve = s"Attempting to retrieve item ${id}"
-        lazy val extracted = s"No Data for ${id}"
+        lazy val msgRetrieve = s"Attempting to retrieve item $id"
+        lazy val extracted = s"No Data for $id"
 
         logger.info(msgRetrieve)
         val doc = Warehouse.loadDoc(id)
@@ -60,13 +58,13 @@ class QueryItemIT extends FunSpec with Matchers with MockitoSugar with LazyLoggi
                   val v = {
                     x.getOrElse(key, msgMissing)
                   }
-                  lazy val msgKv = s"\n${key}:  ${v}"
+                  lazy val msgKv = s"\n$key:  $v"
                   logger.info(msgKv)
                 }
             }
           case _ => logger.warn(extracted)
         }
-      }))
+      })
   }
 
 }

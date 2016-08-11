@@ -5,7 +5,7 @@
   * you may not use this file except in compliance with the License.
   * You may obtain a copy of the License at
   *
-  *   http://www.apache.org/licenses/LICENSE-2.0
+  * http://www.apache.org/licenses/LICENSE-2.0
   *
   * Unless required by applicable law or agreed to in writing, software
   * distributed under the License is distributed on an "AS IS" BASIS,
@@ -15,40 +15,39 @@
   */
 package org.aos.ddo.web
 
-import scala.collection.mutable.Buffer
-
-import org.aos.ddo.web.mapping.FieldMapper
-import org.jsoup.nodes.Element
-import org.jsoup.nodes.Document
-
-import com.typesafe.scalalogging.slf4j.LazyLogging
-
-import net.ruippeixotog.scalascraper.dsl.DSL._
+import com.typesafe.scalalogging.LazyLogging
 import net.ruippeixotog.scalascraper.browser.Browser
 import net.ruippeixotog.scalascraper.dsl.DSL.Extract._
-import net.ruippeixotog.scalascraper.dsl.DSL.Parse._
+import net.ruippeixotog.scalascraper.dsl.DSL._
+import org.aos.ddo.web.mapping.FieldMapper
+import org.jsoup.nodes.{Document, Element}
+
+import scala.collection.mutable
+import scala.collection.mutable.Buffer
 
 /**
   * Provides a Storage Area for DDO Items.
+  *
   * @author Andre White
   */
 object Warehouse extends LazyLogging {
   private val context = new WebContext()
   lazy val MsgNoReadableLists = "no readable lists detected"
   lazy val MsgErrCantParseField = "could not parse field"
+
   /**
     * Extracts Multi-values and nested values from an element.
+    *
     * @param e HTML fragment containing desired text
     * @return a Collection of found elements or an empty list if none are found.
     */
-  def byExploding(e: Element) = {
+  protected[web] def byExploding(e: Element) = {
     // scalastyle:off import.grouping underscore.import
     import net.ruippeixotog.scalascraper.dsl.DSL.Extract._
-    import net.ruippeixotog.scalascraper.dsl.DSL.Parse._
     // scalastyle:on import.grouping underscore.import
     e >?> elements(HtmlTag.ListItem) match {
       case Some(x) => for (ele <- e.getElementsByAttribute(HtmlTag.ListItem)) yield ele.text() // scalastyle:off for.brace
-      case _       => Nil
+      case _ => Nil
     }
   }
 
@@ -66,16 +65,18 @@ object Warehouse extends LazyLogging {
   }
 
   /**
-    * Attempts to format elements into a list of [[Warehouse.Leaf]]
+    * Attempts to format elements into a list of [[org.aos.ddo.web.Leaf]]
     *
-    * @param fragment source HTML fragment
+    * @param fragment  source HTML fragment
     * @param branchTag HTML tag for the branch. Defaults to unordered list (ul)
-    * @param leafTag HTML tag for leaf nodes. Defaults to 'List Item' (li)
-    * @return an [[Option]] [[Buffer]] of [[Warehouse.Leaf]] of one or more
-    * leaves, or None if none were found.
+    * @param leafTag   HTML tag for leaf nodes. Defaults to 'List Item' (li)
+    * @return an [[Option]] [[Buffer]] of [[org.aos.ddo.web.Leaf]] of one or more
+    *         leaves, or None if none were found.
     */
-  def makeLeaves(fragment: Element, branchTag: String = HtmlTag.UnorderedList, leafTag: String = HtmlTag.ListItem): Option[Buffer[Leaf]] = {
-    import net.ruippeixotog.scalascraper.dsl.DSL.Extract._ // scalastyle:off import.grouping underscore.import
+  def makeLeaves(fragment: Element, branchTag: String = HtmlTag.UnorderedList, leafTag: String = HtmlTag.ListItem)
+  : Option[mutable.Buffer[Leaf]] = {
+    import net.ruippeixotog.scalascraper.dsl.DSL.Extract._
+    // scalastyle:off import.grouping underscore.import
     fragment >?> element(branchTag) match {
       case Some(ele) =>
         val firstLevelItemsWithToolTips = ele.select(Filter.FirstLevelLeaf)
@@ -91,33 +92,35 @@ object Warehouse extends LazyLogging {
 
   /**
     * Extracts text from an html fragment and attempts to format it in a TreeNode like structure.
-    * @param fragment source html
+    *
+    * @param fragment  source html
     * @param branchTag html tag for the branch. Defaults to unordered list (ul)
-    * @param leafTag html tag for leaf nodes. Defaults to 'List Item' (li)
-    * @return an [[org.aos.ddo.web.Warehouse.htmlList]] populated from the source text.
+    * @param leafTag   html tag for leaf nodes. Defaults to 'List Item' (li)
+    * @return an [[org.aos.ddo.web.HtmlTreeNode]] populated from the source text.
     */
   def readHtmlList(fragment: Element, branchTag: String = HtmlTag.UnorderedList, leafTag: String = HtmlTag.ListItem): HtmlTreeNode = {
-    import net.ruippeixotog.scalascraper.dsl.DSL.Extract._ // scalastyle:off import.grouping underscore.import
+    import net.ruippeixotog.scalascraper.dsl.DSL.Extract._
+    // scalastyle:off import.grouping underscore.import
     fragment >?> element(branchTag) match {
-      case Some(ele) => {
+      case Some(ele) =>
         val leaves = makeLeaves(ele, branchTag, leafTag)
-        val b = ele.children.select(s":root > ${branchTag} ").select(Filter.FirstLevelLeaf).map { x => logger.info(s"BranchedLeaf ${x.text}"); Leaf(x.text) }
-        val branchedLeaves = if (b.size > 0) Some(b) else None
+        val b = ele.children.select(s":root > $branchTag ").select(Filter.FirstLevelLeaf).map { x => logger.info(s"BranchedLeaf ${x.text}"); Leaf(x.text) }
+        val branchedLeaves = if (b.nonEmpty) Some(b) else None
         Branch(branchedLeaves match {
-          case Some(x) => { Some(List(Branch(leaves = branchedLeaves))) }
-          case _       => { None }
+          case Some(x) => Some(List(Branch(leaves = branchedLeaves)))
+          case _ => None
         }, leaves)
-      }
-      case _ => { Stump() }
+      case _ => Stump()
     }
   }
 
   /**
     * Loads a web page based on the key
+    *
     * @param key the ID of the item to lookup
-    * @param wc [[WebContext]] used to locate the page
+    * @param wc  [[WebContext]] used to locate the page
     */
-  def loadDoc(key: String, wc: WebContext = new WebContext()) = {
+  def loadDoc(key: String, wc: WebContext = new WebContext()): Document = {
     // logger.info(s"url: ${wc.Url(key)}")
     new Browser().get(wc.url(key))
   }
@@ -127,7 +130,7 @@ object Warehouse extends LazyLogging {
     *
     * @return Mapped key values which can be passed to helper methods to extract specific values
     */
-  def htmlToMappedValues(doc: Document) = {
+  def htmlToMappedValues(doc: Document): Option[Map[String, Element]] = {
     // : Option[Map[String, List[String]]]
     // scalastyle:on import.grouping underscore.import
     // TODO: Items with multiple level instances i.e. jeweled cloak with ML12-14 and Epic 23-25
@@ -140,7 +143,9 @@ object Warehouse extends LazyLogging {
       case Some(tables) =>
         val nameRows = tables.getElementsByTag(HtmlTag.TableRow)
         logger.info(s"found ${nameRows.size()} name rows")
-        val namedRow = nameRows.map { (row => row.select(HtmlTag.TableHeader).text.trim() -> row) }.toMap
+        val namedRow = nameRows.map {
+          row => row.select(HtmlTag.TableHeader).text.trim() -> row
+        }.toMap
         Some(namedRow)
       case _ => None
     }
@@ -161,26 +166,27 @@ object Warehouse extends LazyLogging {
     // logger.info(s"call for ${key} has size ${doc.html().length()}")
     // We need to add the sibling h2 to allow for the update warning template
     doc >?> element("#mw-content-text > h2 + table") match {
-      case Some(tables) => {
+      case Some(tables) =>
         val nameRows = tables.getElementsByTag(HtmlTag.TableRow)
         logger.info(s"found ${nameRows.size()} name rows")
-        val namedRow = nameRows.map { (row => row.select(HtmlTag.TableHeader).text.trim() -> row) }.toMap
+        val namedRow = nameRows.map {
+          row => row.select(HtmlTag.TableHeader).text.trim() -> row
+        }.toMap
         val fields = nameRows.map { row => row.select(HtmlTag.TableHeader).text.trim() }.toSet
         val field = FieldMapper.fieldType(fields)
 
         val result = field match {
-          case Some(field) =>
-            lazy val msgItemType = s"item is of type ${field} "
-            logger.info(msgItemType);
+          case Some(fld) =>
+            lazy val msgItemType = s"item is of type $fld "
+            logger.info(msgItemType)
             val r = FieldMapper.wikiToItem(namedRow)
             None
           case _ =>
-            logger.info(MsgErrCantParseField);
+            logger.info(MsgErrCantParseField)
             None
         }
         namedRow.foreach { x => logger.info(s"\nnamedRow: ${x._1} data: ${x._2.html()}") }
         result
-      }
       case _ => None
     }
   }

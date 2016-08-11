@@ -20,7 +20,7 @@ import org.scalatest.{ Finders, FunSpec, Matchers }
 import org.scalatest.junit.JUnitRunner
 import org.scalatest.mockito.MockitoSugar
 
-import com.typesafe.scalalogging.slf4j.LazyLogging
+import com.typesafe.scalalogging.LazyLogging
 
 @RunWith(classOf[JUnitRunner])
 class IntegrationIT extends FunSpec with Matchers with MockitoSugar with LazyLogging {

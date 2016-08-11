@@ -20,7 +20,7 @@ import org.scalatest.{ FunSpec, Matchers }
 import org.scalatest.junit.JUnitRunner
 import org.scalatest.mockito.MockitoSugar
 
-import com.typesafe.scalalogging.slf4j.LazyLogging
+import com.typesafe.scalalogging.LazyLogging
 
 @RunWith(classOf[JUnitRunner])
 class DefaultValueTest extends FunSpec with Matchers with LazyLogging {

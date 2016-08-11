@@ -1,14 +1,16 @@
 package org.aos.ddo.effect
 
-import enumeratum.{ Enum => SmartEnum }
+import enumeratum.{Enum => SmartEnum}
 import enumeratum.EnumEntry
+import org.aos.ddo.support.IndexedEnum
 
 /**
   * Determines when or how an effect occurs
   */
 sealed trait TriggerEvent extends EnumEntry
-object TriggerEvent extends SmartEnum[TriggerEvent] {
-  override val values: IndexedSeq[org.aos.ddo.effect.TriggerEvent] = findValues
+
+object TriggerEvent extends IndexedEnum[TriggerEvent] {
+  override val values = findValues
   case object Passive extends TriggerEvent
   /**
     * Occurs on every attack

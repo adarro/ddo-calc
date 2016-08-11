@@ -9,7 +9,7 @@
 *.ear
 
 # virtual machine crash logs, see http://www.java.com/en/download/help/error_hotspot.xml
-hs_err_pid*
+# hs_err_pid*
 
 #Maven exclusions
 target/
@@ -50,7 +50,6 @@ vignettes/*.pdf
 .history
 .lib/
 dist/*
-target/
 lib_managed/
 src_managed/
 project/boot/
@@ -72,3 +71,13 @@ infinitest.filters
 *.scalastyle
 *.bak
 quick.bat
+/pom.xml.back
+.codeclimate.yml
+.idea/
+ddo-calc-parent.iml
+ddo-core/ddo-core.iml
+ddo-core/src/main/scala/org/aos/ddo/experimental/
+ddo-etl/
+ddo-plot/ddo-plot.iml
+ddo-web/bin/
+ddo-web/ddo-web.iml

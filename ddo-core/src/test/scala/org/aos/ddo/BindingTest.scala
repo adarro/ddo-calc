@@ -14,13 +14,12 @@
   */
 package org.aos.ddo
 
-import org.aos.ddo.support.StringUtils.{ randomAlphanumericString, wordsToAcronym }
+import com.typesafe.scalalogging.LazyLogging
+import org.aos.ddo.support.StringUtils.{randomAlphanumericString, wordsToAcronym}
 import org.junit.runner.RunWith
-import org.scalatest.{ Finders, FunSpec, Matchers }
 import org.scalatest.junit.JUnitRunner
 import org.scalatest.mockito.MockitoSugar
-
-import com.typesafe.scalalogging.slf4j.LazyLogging
+import org.scalatest.{FunSpec, Matchers}
 
 @RunWith(classOf[JUnitRunner])
 class BindingTest extends FunSpec with Matchers with MockitoSugar with LazyLogging {
@@ -37,7 +36,6 @@ class BindingTest extends FunSpec with Matchers with MockitoSugar with LazyLoggi
   final val abbr = possibleText.map { words => if (words.equalsIgnoreCase(Unbound)) Unbound else wordsToAcronym(words).get }
   final val checks: List[String] = List("BindsToAccount",
     "Unbound", "BindsToCharacter", "BindsToCharacterOnEquip", "BindsToAccountOnEquip", "BindsToCharacterOnAcquire", "BindsToCharacterOnEquip")
-  private def init: Unit = {}
   describe("Binding Status") {
     they("should include unbound, account and character") {
       BindingStatus.values.foreach { x => checks.contains(x) }
@@ -61,7 +59,7 @@ class BindingTest extends FunSpec with Matchers with MockitoSugar with LazyLoggi
     }
     it("should default to 'None' if any non-matching text supplied") {
       randWords.foreach { words =>
-        logger.info(s"Testing words: ${words}")
+        logger.info(s"Testing words: $words")
         val rslt = BindingFlags.fromWords(Option(words))
         rslt shouldEqual None
       }
@@ -71,7 +69,7 @@ class BindingTest extends FunSpec with Matchers with MockitoSugar with LazyLoggi
     they("can create an instance from acronyns with [Option] or raw") {
       val words = possibleText.filter { x => x.equals(Unbound) }
       words.foreach { x =>
-        logger.info(s"using acronym from ${words}")
+        logger.info(s"using acronym from $words")
         BindingFlags.fromWords(x) should not be empty
         BindingFlags.fromWords(Option(x)) should not be empty
       }
@@ -79,16 +77,16 @@ class BindingTest extends FunSpec with Matchers with MockitoSugar with LazyLoggi
 
     they("should produce an instance from the full (case insensitive) words") {
       abbr.foreach { name =>
-        logger.info(s"Testing with case insensitive full name ${name}")
+        logger.info(s"Testing with case insensitive full name $name")
         BindingFlags.withNameInsensitiveOption(name.toUpperCase()) should not be empty
-        noException should be thrownBy (BindingFlags.withNameInsensitive(name.toUpperCase()))
+        noException should be thrownBy BindingFlags.withNameInsensitive(name.toUpperCase())
       }
     }
 
     they("should produce an instance from the full (case sensitive) words") {
       abbr.foreach { name =>
         BindingFlags.withNameOption(name) should not be empty
-        noException should be thrownBy (BindingFlags.withName(name))
+        noException should be thrownBy BindingFlags.withName(name)
       }
     }
   }

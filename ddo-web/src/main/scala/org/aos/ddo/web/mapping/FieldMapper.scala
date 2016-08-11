@@ -5,7 +5,7 @@
   * you may not use this file except in compliance with the License.
   * You may obtain a copy of the License at
   *
-  *        http://www.apache.org/licenses/LICENSE-2.0
+  * http://www.apache.org/licenses/LICENSE-2.0
   *
   * Unless required by applicable law or agreed to in writing, software
   * distributed under the License is distributed on an "AS IS" BASIS,
@@ -15,14 +15,11 @@
   */
 package org.aos.ddo.web.mapping
 
-import scala.{ Left, Right }
-import scala.language.{ existentials, postfixOps, reflectiveCalls }
+import com.typesafe.scalalogging.LazyLogging
+import enumeratum.{EnumEntry, Enum => SmartEnum}
+import org.aos.ddo.{Armor, Clothing, DDOObject, Item, Potion}
 
-import org.aos.ddo.{ Armor, Clothing, DDOObject, Item, Potion }
-
-import com.typesafe.scalalogging.slf4j.LazyLogging
-
-import enumeratum.{ Enum => SmartEnum, EnumEntry }
+import scala.language.{existentials, postfixOps, reflectiveCalls}
 
 /**
   * Utility object for mapping DDOWiki tables and fields to objects
@@ -36,7 +33,7 @@ object FieldMapper extends LazyLogging {
   sealed abstract class ItemType(words: Either[String, List[String]]) extends EnumEntry {
     val wordList = words match {
       case Right(x) => x
-      case Left(x)  => List(x)
+      case Left(x) => List(x)
     }
   }
 
@@ -45,26 +42,32 @@ object FieldMapper extends LazyLogging {
     */
   object ItemType extends SmartEnum[ItemType] {
     val values = findValues
+
     /**
       * A wieldable weapon
       */
     case object Weapon extends ItemType(Left("Proficiency Class"))
+
     /**
       * An equipable armor
       */
     case object Armor extends ItemType(Left("Armor Type"))
+
     /**
       * A potion
       */
     case object Potion extends ItemType(Right(List("Acquired from", "Located in")))
+
     /**
       * Bracers, Boots, Belts etc.
       */
     case object Clothing extends ItemType(Left("Item Type"))
+
     /**
       * Rings etc.
       */
     case object Jewelery extends ItemType(Left("Item Type"))
+
   }
 
   // +3 Enhancement Bonus
@@ -75,27 +78,22 @@ object FieldMapper extends LazyLogging {
     * Determines the type of Item from a set up keywords.
     *
     * @param words list of words pulled from various fields using the mapping
-    * provided by [[FieldMapper.ItemType.values]]
+    *              provided by [[FieldMapper.ItemType.values]]
     * @return an [[ItemType]] if found, otherwise None
     */
-  def fieldType(words: Set[String]): Option[ItemType] = {
-    val types = FieldMapper.ItemType.values.filter { x => words.intersect(x.wordList.toSet).size > 0 }
-    if (!types.isEmpty) {
-      Some(types(0))
-    } else {
-      None
-    }
-  }
+  def fieldType(words: Set[String]): Option[ItemType] =
+    FieldMapper.ItemType.values.find { x => words.intersect(x.wordList.toSet).nonEmpty }
 
   /**
     * Extracts weapon information from the DDOWiki site.
+    *
     * @param source HTML data from the site
     * @return A Weapon object scrapped from the site or None
     */
   def weaponFromWiki(source: Map[String, Any]): Option[DDOObject.Weapon] = {
     val keys = source.keySet
     val types = fieldType(keys)
-    logger.info(s"Filtered type: ${types}")
+    logger.info(s"Filtered type: $types")
     types match {
       case Some(x: ItemType) if x == ItemType.Weapon =>
         logger.info("Item type of weapon found")
@@ -141,11 +139,13 @@ object FieldMapper extends LazyLogging {
       case _ => None
     }
   }
+
   /**
     * WikiToProperty
     * Reads sourced data from DDOWiki and attempts to mangle it into readable properties.
+    *
     * @param source a collection of properties that should generally
-    * be in the form of simple strings or JSoup Elements.
+    *               be in the form of simple strings or JSoup Elements.
     * @return A DDO Item wrapped in an Option
     * @note
     * Breaking cases:
@@ -158,13 +158,16 @@ object FieldMapper extends LazyLogging {
 
     val keys = source.keySet
     val types = fieldType(keys)
-    logger.info(s"Filtered type: ${types}")
+    logger.info(s"Filtered type: $types")
     types match {
       case Some(x: ItemType) if x == ItemType.Weapon => weaponFromWiki(source)
-      case Some(x: Armor)                            => { throw new NotImplementedError }
-      case Some(x: Potion)                           => { throw new NotImplementedError }
-      case Some(x: Clothing)                         => { throw new NotImplementedError }
-      case _                                         => None
+      case Some(x: Armor) =>
+        throw new NotImplementedError
+      case Some(x: Potion) =>
+        throw new NotImplementedError
+      case Some(x: Clothing) =>
+        throw new NotImplementedError
+      case _ => None
 
     }
   }

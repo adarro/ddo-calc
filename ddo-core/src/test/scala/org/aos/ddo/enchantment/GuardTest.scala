@@ -1,11 +1,10 @@
 package org.aos.ddo.enchantment
 
-import org.junit.runner.RunWith
-import org.scalatest.{ Finders, FunSpec, Matchers }
-import org.scalatest.junit.JUnitRunner
-
-import com.typesafe.scalalogging.slf4j.LazyLogging
+import com.typesafe.scalalogging.LazyLogging
 import com.wix.accord.scalatest.ResultMatchers
+import org.junit.runner.RunWith
+import org.scalatest.junit.JUnitRunner
+import org.scalatest.{FunSpec, Matchers}
 
 @RunWith(classOf[JUnitRunner])
 class GuardTest extends FunSpec with Matchers with ResultMatchers with LazyLogging {
@@ -14,7 +13,7 @@ class GuardTest extends FunSpec with Matchers with ResultMatchers with LazyLoggi
     it("Can support a Roman Numeral 1 - 10") {
       val rn = List("I", "II", "III", "IV", "V", "VI", "VII", "VIII", "IX", "X")
 
-      for { x <- rn } {
+      for {x <- rn} {
         GuardModifier.allowedRoman(Option(x)) should not be empty
       }
     }
@@ -25,7 +24,7 @@ class GuardTest extends FunSpec with Matchers with ResultMatchers with LazyLoggi
     }
 
     it("Will reject an invalid suffix") {
-      val ex = a[NoSuchElementException] should be thrownBy {
+      a[NoSuchElementException] should be thrownBy {
         Some(GuardModifier(suffix = Some("whateva")))
       }
     }
@@ -35,7 +34,7 @@ class GuardTest extends FunSpec with Matchers with ResultMatchers with LazyLoggi
     }
 
     it("Must reject a disallowed  prefix") {
-      val ex = an[IllegalArgumentException] should be thrownBy {
+      an[IllegalArgumentException] should be thrownBy {
         Some(GuardModifier(prefix = Some("x")))
         Some(GuardModifier(prefix = Some("m")))
       }
@@ -53,19 +52,19 @@ class GuardTest extends FunSpec with Matchers with ResultMatchers with LazyLoggi
     }
 
     it("Must reject a invalid  prefix") {
-      val ex = an[IllegalArgumentException] should be thrownBy {
+      an[IllegalArgumentException] should be thrownBy {
         Some(GuardModifier(prefix = Some("Super Uber Rock me Epic")))
       }
     }
 
     it("Must not have a secondary prefix") {
-      val ex = an[IllegalArgumentException] should be thrownBy {
+      an[IllegalArgumentException] should be thrownBy {
         GuardModifier(sPrefix = Some("Uber"))
       }
     }
 
     it("Must not have both a prefix AND a suffix") {
-      val ex = a[IllegalArgumentException] should be thrownBy {
+      a[IllegalArgumentException] should be thrownBy {
         Some(GuardModifier(prefix = Some(Modifier.Minor.entryName), suffix = Some(rnIV)))
       }
     }

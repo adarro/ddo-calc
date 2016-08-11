@@ -28,7 +28,7 @@ import org.scalatest.tags.Slow
 @Slow
 @RunWith(classOf[JUnitRunner])
 class WeaponTest extends FunSpec with Matchers with MockitoSugar {
-  def fixture = new {
+  private def fixture = new {
     val longBow = new Weapon {
       val Coinage = 1000
       val NWeight = 4

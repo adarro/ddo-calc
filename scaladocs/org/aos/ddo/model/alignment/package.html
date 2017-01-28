@@ -1,0 +1,224 @@
+<!DOCTYPE html >
+<html>
+        <head>
+          <title>alignment - Core DDO Objects 0.1.0-alpha API - org.aos.ddo.model.alignment</title>
+          <meta name="description" content="alignment - Core DDO Objects 0.1.0 - alpha API - org.aos.ddo.model.alignment" />
+          <meta name="keywords" content="alignment Core DDO Objects 0.1.0 alpha API org.aos.ddo.model.alignment" />
+          <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+          
+      <link href="../../../../../lib/template.css" media="screen" type="text/css" rel="stylesheet" />
+      <link href="../../../../../lib/diagrams.css" media="screen" type="text/css" rel="stylesheet" id="diagrams-css" />
+      <script type="text/javascript" src="../../../../../lib/jquery.js" id="jquery-js"></script>
+      <script type="text/javascript" src="../../../../../lib/jquery-ui.js"></script>
+      <script type="text/javascript" src="../../../../../lib/template.js"></script>
+      <script type="text/javascript" src="../../../../../lib/tools.tooltip.js"></script>
+      
+      <script type="text/javascript">
+         if(top === self) {
+            var url = '../../../../../index.html';
+            var hash = 'org.aos.ddo.model.alignment.package';
+            var anchor = window.location.hash;
+            var anchor_opt = '';
+            if (anchor.length >= 1)
+              anchor_opt = '@' + anchor.substring(1);
+            window.location.href = url + '#' + hash + anchor_opt;
+         }
+   	  </script>
+    
+        </head>
+        <body class="value">
+      <div id="definition">
+        <img alt="Package" src="../../../../../lib/package_big.png" />
+        <p id="owner"><a href="../../../../package.html" class="extype" name="org">org</a>.<a href="../../../package.html" class="extype" name="org.aos">aos</a>.<a href="../../package.html" class="extype" name="org.aos.ddo">ddo</a>.<a href="../package.html" class="extype" name="org.aos.ddo.model">model</a></p>
+        <h1>alignment</h1><span class="permalink">
+      <a href="../../../../../index.html#org.aos.ddo.model.alignment.package" title="Permalink" target="_top">
+        <img src="../../../../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      </div>
+
+      <h4 id="signature" class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">package</span>
+      </span>
+      <span class="symbol">
+        <span class="name">alignment</span>
+      </span>
+      </h4>
+      
+          <div id="comment" class="fullcommenttop"></div>
+        
+
+      <div id="mbrsel">
+        <div id="textfilter"><span class="pre"></span><span class="input"><input id="mbrsel-input" type="text" accesskey="/" /></span><span class="post"></span></div>
+        
+        
+        <div id="visbl">
+            <span class="filtertype">Visibility</span>
+            <ol><li class="public in"><span>Public</span></li><li class="all out"><span>All</span></li></ol>
+          </div>
+      </div>
+
+      <div id="template">
+        <div id="allMembers">
+        
+
+        <div id="types" class="types members">
+              <h3>Type Members</h3>
+              <ol><li name="org.aos.ddo.model.alignment.AlignmentType" visbl="pub" data-isabs="true" fullComment="no" group="Ungrouped">
+      <a id="AlignmentTypeextendsAnyRef"></a>
+      <a id="AlignmentType:AlignmentType"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier">sealed </span>
+        <span class="kind">trait</span>
+      </span>
+      <span class="symbol">
+        <a href="AlignmentType.html"><span class="name">AlignmentType</span></a><span class="result"> extends <span class="extype" name="scala.AnyRef">AnyRef</span></span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../../../../index.html#org.aos.ddo.model.alignment.package@AlignmentTypeextendsAnyRef" title="Permalink" target="_top">
+        <img src="../../../../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      <p class="shortcomment cmt">Created by adarr on 8/12/2016.</p>
+    </li><li name="org.aos.ddo.model.alignment.Alignments" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="AlignmentsextendsEnumEntry"></a>
+      <a id="Alignments:Alignments"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier">sealed </span>
+        <span class="kind">class</span>
+      </span>
+      <span class="symbol">
+        <a href="Alignments.html"><span class="name">Alignments</span></a><span class="result"> extends <span class="extype" name="enumeratum.EnumEntry">EnumEntry</span></span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../../../../index.html#org.aos.ddo.model.alignment.package@AlignmentsextendsEnumEntry" title="Permalink" target="_top">
+        <img src="../../../../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      <p class="shortcomment cmt">Represents the dual axis Alignments
+</p>
+    </li><li name="org.aos.ddo.model.alignment.LawAxis" visbl="pub" data-isabs="true" fullComment="no" group="Ungrouped">
+      <a id="LawAxisextendsEnumEntrywithAlignmentTypewithNoDefault[org.aos.ddo.model.alignment.LawAxis]"></a>
+      <a id="LawAxis:LawAxis"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier">sealed </span>
+        <span class="kind">trait</span>
+      </span>
+      <span class="symbol">
+        <a href="LawAxis.html"><span class="name">LawAxis</span></a><span class="result"> extends <span class="extype" name="enumeratum.EnumEntry">EnumEntry</span> with <a href="AlignmentType.html" class="extype" name="org.aos.ddo.model.alignment.AlignmentType">AlignmentType</a> with <a href="../../NoDefault.html" class="extype" name="org.aos.ddo.NoDefault">NoDefault</a>[<a href="LawAxis.html" class="extype" name="org.aos.ddo.model.alignment.LawAxis">LawAxis</a>]</span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../../../../index.html#org.aos.ddo.model.alignment.package@LawAxisextendsEnumEntrywithAlignmentTypewithNoDefault[org.aos.ddo.model.alignment.LawAxis]" title="Permalink" target="_top">
+        <img src="../../../../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      
+    </li><li name="org.aos.ddo.model.alignment.MoralAxis" visbl="pub" data-isabs="true" fullComment="no" group="Ungrouped">
+      <a id="MoralAxisextendsEnumEntrywithAlignmentTypewithNoDefault[org.aos.ddo.model.alignment.MoralAxis]"></a>
+      <a id="MoralAxis:MoralAxis"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier">sealed </span>
+        <span class="kind">trait</span>
+      </span>
+      <span class="symbol">
+        <a href="MoralAxis.html"><span class="name">MoralAxis</span></a><span class="result"> extends <span class="extype" name="enumeratum.EnumEntry">EnumEntry</span> with <a href="AlignmentType.html" class="extype" name="org.aos.ddo.model.alignment.AlignmentType">AlignmentType</a> with <a href="../../NoDefault.html" class="extype" name="org.aos.ddo.NoDefault">NoDefault</a>[<a href="MoralAxis.html" class="extype" name="org.aos.ddo.model.alignment.MoralAxis">MoralAxis</a>]</span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../../../../index.html#org.aos.ddo.model.alignment.package@MoralAxisextendsEnumEntrywithAlignmentTypewithNoDefault[org.aos.ddo.model.alignment.MoralAxis]" title="Permalink" target="_top">
+        <img src="../../../../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      
+    </li></ol>
+            </div>
+
+        
+
+        <div id="values" class="values members">
+              <h3>Value Members</h3>
+              <ol><li name="org.aos.ddo.model.alignment.Alignments" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="Alignments"></a>
+      <a id="Alignments:Alignments"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">object</span>
+      </span>
+      <span class="symbol">
+        <a href="Alignments$.html"><span class="name">Alignments</span></a><span class="result"> extends <span class="extype" name="enumeratum.Enum">Enum</span>[<a href="Alignments.html" class="extype" name="org.aos.ddo.model.alignment.Alignments">Alignments</a>]</span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../../../../index.html#org.aos.ddo.model.alignment.package@Alignments" title="Permalink" target="_top">
+        <img src="../../../../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      
+    </li><li name="org.aos.ddo.model.alignment.LawAxis" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="LawAxis"></a>
+      <a id="LawAxis:LawAxis"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">object</span>
+      </span>
+      <span class="symbol">
+        <a href="LawAxis$.html"><span class="name">LawAxis</span></a><span class="result"> extends <span class="extype" name="enumeratum.Enum">Enum</span>[<a href="LawAxis.html" class="extype" name="org.aos.ddo.model.alignment.LawAxis">LawAxis</a>] with <a href="../../enumeration/BitSupport.html" class="extype" name="org.aos.ddo.enumeration.BitSupport">BitSupport</a></span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../../../../index.html#org.aos.ddo.model.alignment.package@LawAxis" title="Permalink" target="_top">
+        <img src="../../../../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      
+    </li><li name="org.aos.ddo.model.alignment.MoralAxis" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="MoralAxis"></a>
+      <a id="MoralAxis:MoralAxis"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">object</span>
+      </span>
+      <span class="symbol">
+        <a href="MoralAxis$.html"><span class="name">MoralAxis</span></a><span class="result"> extends <span class="extype" name="enumeratum.Enum">Enum</span>[<a href="MoralAxis.html" class="extype" name="org.aos.ddo.model.alignment.MoralAxis">MoralAxis</a>] with <a href="../../enumeration/BitSupport.html" class="extype" name="org.aos.ddo.enumeration.BitSupport">BitSupport</a></span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../../../../index.html#org.aos.ddo.model.alignment.package@MoralAxis" title="Permalink" target="_top">
+        <img src="../../../../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      
+    </li></ol>
+            </div>
+
+        
+
+        
+        </div>
+
+        <div id="inheritedMembers">
+        
+        
+        </div>
+
+        <div id="groupedMembers">
+        <div class="group" name="Ungrouped">
+              <h3>Ungrouped</h3>
+              
+            </div>
+        </div>
+
+      </div>
+
+      <div id="tooltip"></div>
+
+      <div id="footer">  </div>
+
+
+    </body>
+      </html>

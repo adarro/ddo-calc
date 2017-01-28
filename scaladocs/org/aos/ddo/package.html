@@ -1,0 +1,909 @@
+<!DOCTYPE html >
+<html>
+        <head>
+          <title>ddo - Core DDO Objects 0.1.0-alpha API - org.aos.ddo</title>
+          <meta name="description" content="ddo - Core DDO Objects 0.1.0 - alpha API - org.aos.ddo" />
+          <meta name="keywords" content="ddo Core DDO Objects 0.1.0 alpha API org.aos.ddo" />
+          <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+          
+      <link href="../../../lib/template.css" media="screen" type="text/css" rel="stylesheet" />
+      <link href="../../../lib/diagrams.css" media="screen" type="text/css" rel="stylesheet" id="diagrams-css" />
+      <script type="text/javascript" src="../../../lib/jquery.js" id="jquery-js"></script>
+      <script type="text/javascript" src="../../../lib/jquery-ui.js"></script>
+      <script type="text/javascript" src="../../../lib/template.js"></script>
+      <script type="text/javascript" src="../../../lib/tools.tooltip.js"></script>
+      
+      <script type="text/javascript">
+         if(top === self) {
+            var url = '../../../index.html';
+            var hash = 'org.aos.ddo.package';
+            var anchor = window.location.hash;
+            var anchor_opt = '';
+            if (anchor.length >= 1)
+              anchor_opt = '@' + anchor.substring(1);
+            window.location.href = url + '#' + hash + anchor_opt;
+         }
+   	  </script>
+    
+        </head>
+        <body class="value">
+      <div id="definition">
+        <img alt="Package" src="../../../lib/package_big.png" />
+        <p id="owner"><a href="../../package.html" class="extype" name="org">org</a>.<a href="../package.html" class="extype" name="org.aos">aos</a></p>
+        <h1>ddo</h1><span class="permalink">
+      <a href="../../../index.html#org.aos.ddo.package" title="Permalink" target="_top">
+        <img src="../../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      </div>
+
+      <h4 id="signature" class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">package</span>
+      </span>
+      <span class="symbol">
+        <span class="name">ddo</span>
+      </span>
+      </h4>
+      
+          <div id="comment" class="fullcommenttop"><div class="toggleContainer block">
+          <span class="toggle">Linear Supertypes</span>
+          <div class="superTypes hiddenContent"><span class="extype" name="scala.AnyRef">AnyRef</span>, <span class="extype" name="scala.Any">Any</span></div>
+        </div></div>
+        
+
+      <div id="mbrsel">
+        <div id="textfilter"><span class="pre"></span><span class="input"><input id="mbrsel-input" type="text" accesskey="/" /></span><span class="post"></span></div>
+        <div id="order">
+              <span class="filtertype">Ordering</span>
+              <ol>
+                
+                <li class="alpha in"><span>Alphabetic</span></li>
+                <li class="inherit out"><span>By Inheritance</span></li>
+              </ol>
+            </div>
+        <div id="ancestors">
+                <span class="filtertype">Inherited<br />
+                </span>
+                <ol id="linearization">
+                  <li class="in" name="org.aos.ddo"><span>ddo</span></li><li class="in" name="scala.AnyRef"><span>AnyRef</span></li><li class="in" name="scala.Any"><span>Any</span></li>
+                </ol>
+              </div><div id="ancestors">
+            <span class="filtertype"></span>
+            <ol>
+              <li class="hideall out"><span>Hide All</span></li>
+              <li class="showall in"><span>Show All</span></li>
+            </ol>
+          </div>
+        <div id="visbl">
+            <span class="filtertype">Visibility</span>
+            <ol><li class="public in"><span>Public</span></li><li class="all out"><span>All</span></li></ol>
+          </div>
+      </div>
+
+      <div id="template">
+        <div id="allMembers">
+        
+
+        <div id="types" class="types members">
+              <h3>Type Members</h3>
+              <ol><li name="org.aos.ddo.Abbreviation" visbl="pub" data-isabs="true" fullComment="no" group="Ungrouped">
+      <a id="AbbreviationextendsAnyRef"></a>
+      <a id="Abbreviation:Abbreviation"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">trait</span>
+      </span>
+      <span class="symbol">
+        <a href="Abbreviation.html"><span class="name">Abbreviation</span></a><span class="result"> extends <span class="extype" name="scala.AnyRef">AnyRef</span></span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../../index.html#org.aos.ddo.package@AbbreviationextendsAnyRef" title="Permalink" target="_top">
+        <img src="../../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      <p class="shortcomment cmt">Allows given object to have / use an abbreviation
+</p>
+    </li><li name="org.aos.ddo.BindingEvent" visbl="pub" data-isabs="true" fullComment="no" group="Ungrouped">
+      <a id="BindingEventextendsEnumEntrywithNoDefault[org.aos.ddo.BindingEvent]"></a>
+      <a id="BindingEvent:BindingEvent"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier">sealed </span>
+        <span class="kind">trait</span>
+      </span>
+      <span class="symbol">
+        <a href="BindingEvent.html"><span class="name">BindingEvent</span></a><span class="result"> extends <span class="extype" name="enumeratum.EnumEntry">EnumEntry</span> with <a href="NoDefault.html" class="extype" name="org.aos.ddo.NoDefault">NoDefault</a>[<a href="BindingEvent.html" class="extype" name="org.aos.ddo.BindingEvent">BindingEvent</a>]</span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../../index.html#org.aos.ddo.package@BindingEventextendsEnumEntrywithNoDefault[org.aos.ddo.BindingEvent]" title="Permalink" target="_top">
+        <img src="../../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      <p class="shortcomment cmt">The 'When' any binding occurs
+</p>
+    </li><li name="org.aos.ddo.BindingFlags" visbl="pub" data-isabs="true" fullComment="yes" group="Ungrouped">
+      <a id="BindingFlagsextendsEnumEntrywithAbbreviationwithDefaultValue[org.aos.ddo.BindingFlags]"></a>
+      <a id="BindingFlags:BindingFlags"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier">sealed abstract </span>
+        <span class="kind">class</span>
+      </span>
+      <span class="symbol">
+        <a href="BindingFlags.html"><span class="name">BindingFlags</span></a><span class="result"> extends <span class="extype" name="enumeratum.EnumEntry">EnumEntry</span> with <a href="Abbreviation.html" class="extype" name="org.aos.ddo.Abbreviation">Abbreviation</a> with <a href="DefaultValue.html" class="extype" name="org.aos.ddo.DefaultValue">DefaultValue</a>[<a href="BindingFlags.html" class="extype" name="org.aos.ddo.BindingFlags">BindingFlags</a>]</span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../../index.html#org.aos.ddo.package@BindingFlagsextendsEnumEntrywithAbbreviationwithDefaultValue[org.aos.ddo.BindingFlags]" title="Permalink" target="_top">
+        <img src="../../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      <p class="shortcomment cmt">Stores the binding status of an item.</p><div class="fullcomment"><div class="comment cmt"><p>Stores the binding status of an item.</p><p>As this is basically a database / analysis tool, it is primarily for identifying if
+and when any binding may occur, which is useful when attempting to acquire said item.
+</p></div></div>
+    </li><li name="org.aos.ddo.BindingStatus" visbl="pub" data-isabs="true" fullComment="no" group="Ungrouped">
+      <a id="BindingStatusextendsEnumEntrywithDefaultValue[org.aos.ddo.BindingStatus]"></a>
+      <a id="BindingStatus:BindingStatus"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier">sealed </span>
+        <span class="kind">trait</span>
+      </span>
+      <span class="symbol">
+        <a href="BindingStatus.html"><span class="name">BindingStatus</span></a><span class="result"> extends <span class="extype" name="enumeratum.EnumEntry">EnumEntry</span> with <a href="DefaultValue.html" class="extype" name="org.aos.ddo.DefaultValue">DefaultValue</a>[<a href="BindingStatus.html" class="extype" name="org.aos.ddo.BindingStatus">BindingStatus</a>]</span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../../index.html#org.aos.ddo.package@BindingStatusextendsEnumEntrywithDefaultValue[org.aos.ddo.BindingStatus]" title="Permalink" target="_top">
+        <img src="../../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      <p class="shortcomment cmt">The 'What it does' half of binding status.</p>
+    </li><li name="org.aos.ddo.Bludgeoning" visbl="pub" data-isabs="true" fullComment="no" group="Ungrouped">
+      <a id="BludgeoningextendsPhysicalDamage"></a>
+      <a id="Bludgeoning:Bludgeoning"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">trait</span>
+      </span>
+      <span class="symbol">
+        <a href="Bludgeoning.html"><span class="name">Bludgeoning</span></a><span class="result"> extends <a href="PhysicalDamage.html" class="extype" name="org.aos.ddo.PhysicalDamage">PhysicalDamage</a></span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../../index.html#org.aos.ddo.package@BludgeoningextendsPhysicalDamage" title="Permalink" target="_top">
+        <img src="../../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      <p class="shortcomment cmt">Damage type resulting in blunt force such as clubs, staves or a partial
+component of spells such as Ice Storm.</p>
+    </li><li name="org.aos.ddo.CriticalProfile" visbl="pub" data-isabs="true" fullComment="no" group="Ungrouped">
+      <a id="CriticalProfileextendsAnyRef"></a>
+      <a id="CriticalProfile:CriticalProfile"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">trait</span>
+      </span>
+      <span class="symbol">
+        <a href="CriticalProfile.html"><span class="name">CriticalProfile</span></a><span class="result"> extends <span class="extype" name="scala.AnyRef">AnyRef</span></span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../../index.html#org.aos.ddo.package@CriticalProfileextendsAnyRef" title="Permalink" target="_top">
+        <img src="../../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      <p class="shortcomment cmt">Holds range information used to determine when critical hits occur
+and the bonus to apply.</p>
+    </li><li name="org.aos.ddo.Damage" visbl="pub" data-isabs="true" fullComment="no" group="Ungrouped">
+      <a id="DamageextendsAnyRef"></a>
+      <a id="Damage:Damage"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">trait</span>
+      </span>
+      <span class="symbol">
+        <a href="Damage.html"><span class="name">Damage</span></a><span class="result"> extends <span class="extype" name="scala.AnyRef">AnyRef</span></span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../../index.html#org.aos.ddo.package@DamageextendsAnyRef" title="Permalink" target="_top">
+        <img src="../../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      
+    </li><li name="org.aos.ddo.DamageInfo" visbl="pub" data-isabs="true" fullComment="yes" group="Ungrouped">
+      <a id="DamageInfoextendsAnyRef"></a>
+      <a id="DamageInfo:DamageInfo"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">trait</span>
+      </span>
+      <span class="symbol">
+        <a href="DamageInfo.html"><span class="name">DamageInfo</span></a><span class="result"> extends <span class="extype" name="scala.AnyRef">AnyRef</span></span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../../index.html#org.aos.ddo.package@DamageInfoextendsAnyRef" title="Permalink" target="_top">
+        <img src="../../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      <p class="shortcomment cmt">Contains Damage information based on Dice
+</p><div class="fullcomment"><div class="comment cmt"><p>Contains Damage information based on Dice
+</p></div><dl class="attributes block"> <div class="block">Example:
+               <ol><li class="cmt"><p>
+Given 3[1d4] + 2
+weaponModifier : 3
+dice : 1d4
+extra : 2</p></li></ol>
+            </div></dl></div>
+    </li><li name="org.aos.ddo.DefaultValue" visbl="pub" data-isabs="true" fullComment="no" group="Ungrouped">
+      <a id="DefaultValue[T]extendsAnyRef"></a>
+      <a id="DefaultValue[T]:DefaultValue[T]"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">trait</span>
+      </span>
+      <span class="symbol">
+        <a href="DefaultValue.html"><span class="name">DefaultValue</span></a><span class="tparams">[<span name="T">T</span>]</span><span class="result"> extends <span class="extype" name="scala.AnyRef">AnyRef</span></span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../../index.html#org.aos.ddo.package@DefaultValue[T]extendsAnyRef" title="Permalink" target="_top">
+        <img src="../../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      <p class="shortcomment cmt">Used to supply some default value or None if there is no default.</p>
+    </li><li name="org.aos.ddo.EmpoweredDouble" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="EmpoweredDoubleextendsAnyRef"></a>
+      <a id="EmpoweredDouble:EmpoweredDouble"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">class</span>
+      </span>
+      <span class="symbol">
+        <a href="package$$EmpoweredDouble.html"><span class="name">EmpoweredDouble</span></a><span class="result"> extends <span class="extype" name="scala.AnyRef">AnyRef</span></span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../../index.html#org.aos.ddo.package@EmpoweredDoubleextendsAnyRef" title="Permalink" target="_top">
+        <img src="../../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      
+    </li><li name="org.aos.ddo.EnumOld" visbl="pub" data-isabs="true" fullComment="yes" group="Ungrouped">
+      <a id="EnumOld[A]extendsAnyRef"></a>
+      <a id="EnumOld[A]:EnumOld[A]"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">trait</span>
+      </span>
+      <span class="symbol">
+        <a href="EnumOld.html"><span class="name">EnumOld</span></a><span class="tparams">[<span name="A">A</span>]</span><span class="result"> extends <span class="extype" name="scala.AnyRef">AnyRef</span></span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../../index.html#org.aos.ddo.package@EnumOld[A]extendsAnyRef" title="Permalink" target="_top">
+        <img src="../../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      <p class="shortcomment cmt"></p><div class="fullcomment"><div class="comment cmt"></div><dl class="paramcmts block"><dt class="tparam">A</dt><dd class="cmt"><p>Base type of the class.</p></dd></dl><dl class="attributes block"> <div class="block">Example:
+               <ol><li class="cmt"><p></p><pre><span class="kw">sealed</span> <span class="kw">trait</span> DayOfWeek <span class="kw">extends</span> DayOfWeek.Value
+<span class="kw">object</span> DayOfWeek <span class="kw">extends</span> Enum[DayOfWeek] {
+<span class="kw">case</span> <span class="kw">object</span> MON <span class="kw">extends</span> DayOfWeek
+<span class="kw">case</span> <span class="kw">object</span> TUE <span class="kw">extends</span> DayOfWeek
+<span class="kw">case</span> <span class="kw">object</span> WED <span class="kw">extends</span> DayOfWeek
+<span class="kw">case</span> <span class="kw">object</span> THU <span class="kw">extends</span> DayOfWeek
+<span class="kw">case</span> <span class="kw">object</span> FRI <span class="kw">extends</span> DayOfWeek
+<span class="kw">case</span> <span class="kw">object</span> SAT <span class="kw">extends</span> DayOfWeek
+<span class="kw">case</span> <span class="kw">object</span> SUN <span class="kw">extends</span> DayOfWeek
+<span class="kw">val</span> values = <span class="std">List</span>(MON,TUE,WED,THU,FRI,SAT,SUN)
+}</pre><p>Syntactic sugar for bitwise manipulations can be realized
+via implicits.
+In the above example:</p><pre><span class="kw">import</span> DayOfWeek.e2i
+<span class="kw">val</span> monday = DayOfWeek.MON
+<span class="kw">val</span> tuesday = DayOfWeek.values(<span class="num">1</span>)
+assert(tuesday == DayOfWeek.TUE)
+<span class="cmt">//Cast monday to Int</span>
+monday: <span class="std">Int</span>
+<span class="cmt">//Add monday (as int) to another Int</span>
+<span class="num">2</span> + monday
+monday + <span class="num">2</span>
+<span class="kw">val</span> i = monday.bitValue
+assert(i == DayOfWeek.MON.bitValue)
+<span class="cmt">//cast Int to Day Of Week (Monday)</span>
+i: DayOfWeek.Value \\yields DayOfWeek.MON
+<span class="cmt">//BitWise Manulpulations</span>
+<span class="kw">import</span> DayOfWeek._
+<span class="kw">val</span> b = MON | TUE \\res: <span class="num">3</span>:INT
+<span class="kw">val</span> tuesdayOrBust = b &amp; TUE \\ res: <span class="num">2</span>
+<span class="kw">val</span> tuesdayOrBustNative : DayOfWeek.Value =b &amp; TUE \\res TUE</pre><p>NOTE: the last example, tuesdayOrBustNative may throw an exception for no match.</p></li></ol>
+            </div></dl></div>
+    </li><li name="org.aos.ddo.InventorySection" visbl="pub" data-isabs="true" fullComment="no" group="Ungrouped">
+      <a id="InventorySectionextendsEnumEntrywithNoDefault[org.aos.ddo.InventorySection]"></a>
+      <a id="InventorySection:InventorySection"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier">sealed </span>
+        <span class="kind">trait</span>
+      </span>
+      <span class="symbol">
+        <a href="InventorySection.html"><span class="name">InventorySection</span></a><span class="result"> extends <span class="extype" name="enumeratum.EnumEntry">EnumEntry</span> with <a href="NoDefault.html" class="extype" name="org.aos.ddo.NoDefault">NoDefault</a>[<a href="InventorySection.html" class="extype" name="org.aos.ddo.InventorySection">InventorySection</a>]</span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../../index.html#org.aos.ddo.package@InventorySectionextendsEnumEntrywithNoDefault[org.aos.ddo.InventorySection]" title="Permalink" target="_top">
+        <img src="../../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      <p class="shortcomment cmt">Represents a location where an item is.</p>
+    </li><li name="org.aos.ddo.Item" visbl="pub" data-isabs="true" fullComment="no" group="Ungrouped">
+      <a id="ItemextendsMetaData"></a>
+      <a id="Item:Item"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">trait</span>
+      </span>
+      <span class="symbol">
+        <a href="Item.html"><span class="name">Item</span></a><span class="result"> extends <a href="MetaData.html" class="extype" name="org.aos.ddo.MetaData">MetaData</a></span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../../index.html#org.aos.ddo.package@ItemextendsMetaData" title="Permalink" target="_top">
+        <img src="../../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      <p class="shortcomment cmt">A general Item, which can be a Weapon, Armor, potion, scroll etc.</p>
+    </li><li name="org.aos.ddo.LevelInfo" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="LevelInfoextendsProductwithSerializable"></a>
+      <a id="LevelInfo:LevelInfo"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">case class</span>
+      </span>
+      <span class="symbol">
+        <a href="LevelInfo.html"><span class="name">LevelInfo</span></a><span class="params">(<span name="minLevel">minLevel: <span class="extype" name="scala.Int">Int</span></span>, <span name="absMinLevel">absMinLevel: <span class="extype" name="scala.Int">Int</span></span>)</span><span class="result"> extends <span class="extype" name="scala.Product">Product</span> with <span class="extype" name="scala.Serializable">Serializable</span></span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../../index.html#org.aos.ddo.package@LevelInfoextendsProductwithSerializable" title="Permalink" target="_top">
+        <img src="../../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      
+    </li><li name="org.aos.ddo.MetaData" visbl="pub" data-isabs="true" fullComment="no" group="Ungrouped">
+      <a id="MetaDataextendsAnyRef"></a>
+      <a id="MetaData:MetaData"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">trait</span>
+      </span>
+      <span class="symbol">
+        <a href="MetaData.html"><span class="name">MetaData</span></a><span class="result"> extends <span class="extype" name="scala.AnyRef">AnyRef</span></span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../../index.html#org.aos.ddo.package@MetaDataextendsAnyRef" title="Permalink" target="_top">
+        <img src="../../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      <p class="shortcomment cmt">TBD: :Used for Meta and potentially internal transformations.</p>
+    </li><li name="org.aos.ddo.MonetaryValue" visbl="pub" data-isabs="true" fullComment="yes" group="Ungrouped">
+      <a id="MonetaryValueextendsEnumEntry"></a>
+      <a id="MonetaryValue:MonetaryValue"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier">sealed abstract </span>
+        <span class="kind">class</span>
+      </span>
+      <span class="symbol">
+        <a href="MonetaryValue.html"><span class="name">MonetaryValue</span></a><span class="result"> extends <span class="extype" name="enumeratum.EnumEntry">EnumEntry</span></span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../../index.html#org.aos.ddo.package@MonetaryValueextendsEnumEntry" title="Permalink" target="_top">
+        <img src="../../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      <p class="shortcomment cmt">should indicate the base value (in platinum type denominations)
+This should probably be expanded to a general DDO Denomination to support
+the concept of cost.</p><div class="fullcomment"><div class="comment cmt"><p>should indicate the base value (in platinum type denominations)
+This should probably be expanded to a general DDO Denomination to support
+the concept of cost.  i.e. plat would simply be the listed item price
+(which is generally quite useless and uninteresting) but Astral Shards
+or Turbine points could be noted if the item is available from the DDO Store etc.
+</p></div></div>
+    </li><li name="org.aos.ddo.NoDefault" visbl="pub" data-isabs="true" fullComment="no" group="Ungrouped">
+      <a id="NoDefault[T]extendsDefaultValue[T]"></a>
+      <a id="NoDefault[T]:NoDefault[T]"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">trait</span>
+      </span>
+      <span class="symbol">
+        <a href="NoDefault.html"><span class="name">NoDefault</span></a><span class="tparams">[<span name="T">T</span>]</span><span class="result"> extends <a href="DefaultValue.html" class="extype" name="org.aos.ddo.DefaultValue">DefaultValue</a>[<span class="extype" name="org.aos.ddo.NoDefault.T">T</span>]</span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../../index.html#org.aos.ddo.package@NoDefault[T]extendsDefaultValue[T]" title="Permalink" target="_top">
+        <img src="../../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      <p class="shortcomment cmt">Specifies there is no default value for this object.</p>
+    </li><li name="org.aos.ddo.PhysicalDamage" visbl="pub" data-isabs="true" fullComment="no" group="Ungrouped">
+      <a id="PhysicalDamageextendsDamagewithDefaultValue[org.aos.ddo.PhysicalDamageType]"></a>
+      <a id="PhysicalDamage:PhysicalDamage"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier">sealed </span>
+        <span class="kind">trait</span>
+      </span>
+      <span class="symbol">
+        <a href="PhysicalDamage.html"><span class="name">PhysicalDamage</span></a><span class="result"> extends <a href="Damage.html" class="extype" name="org.aos.ddo.Damage">Damage</a> with <a href="DefaultValue.html" class="extype" name="org.aos.ddo.DefaultValue">DefaultValue</a>[<a href="PhysicalDamageType.html" class="extype" name="org.aos.ddo.PhysicalDamageType">PhysicalDamageType</a>]</span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../../index.html#org.aos.ddo.package@PhysicalDamageextendsDamagewithDefaultValue[org.aos.ddo.PhysicalDamageType]" title="Permalink" target="_top">
+        <img src="../../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      
+    </li><li name="org.aos.ddo.PhysicalDamageType" visbl="pub" data-isabs="true" fullComment="no" group="Ungrouped">
+      <a id="PhysicalDamageTypeextendsEnumEntrywithNoDefault[org.aos.ddo.PhysicalDamageType]"></a>
+      <a id="PhysicalDamageType:PhysicalDamageType"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier">sealed </span>
+        <span class="kind">trait</span>
+      </span>
+      <span class="symbol">
+        <a href="PhysicalDamageType.html"><span class="name">PhysicalDamageType</span></a><span class="result"> extends <span class="extype" name="enumeratum.EnumEntry">EnumEntry</span> with <a href="NoDefault.html" class="extype" name="org.aos.ddo.NoDefault">NoDefault</a>[<a href="PhysicalDamageType.html" class="extype" name="org.aos.ddo.PhysicalDamageType">PhysicalDamageType</a>]</span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../../index.html#org.aos.ddo.package@PhysicalDamageTypeextendsEnumEntrywithNoDefault[org.aos.ddo.PhysicalDamageType]" title="Permalink" target="_top">
+        <img src="../../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      <p class="shortcomment cmt">Basic damage for (generally) physical damage
+</p>
+    </li><li name="org.aos.ddo.Piercing" visbl="pub" data-isabs="true" fullComment="no" group="Ungrouped">
+      <a id="PiercingextendsPhysicalDamage"></a>
+      <a id="Piercing:Piercing"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">trait</span>
+      </span>
+      <span class="symbol">
+        <a href="Piercing.html"><span class="name">Piercing</span></a><span class="result"> extends <a href="PhysicalDamage.html" class="extype" name="org.aos.ddo.PhysicalDamage">PhysicalDamage</a></span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../../index.html#org.aos.ddo.package@PiercingextendsPhysicalDamage" title="Permalink" target="_top">
+        <img src="../../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      
+    </li><li name="org.aos.ddo.Proficiency" visbl="pub" data-isabs="true" fullComment="no" group="Ungrouped">
+      <a id="ProficiencyextendsAnyRef"></a>
+      <a id="Proficiency:Proficiency"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">trait</span>
+      </span>
+      <span class="symbol">
+        <a href="Proficiency.html"><span class="name">Proficiency</span></a><span class="result"> extends <span class="extype" name="scala.AnyRef">AnyRef</span></span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../../index.html#org.aos.ddo.package@ProficiencyextendsAnyRef" title="Permalink" target="_top">
+        <img src="../../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      
+    </li><li name="org.aos.ddo.Requirement" visbl="pub" data-isabs="true" fullComment="no" group="Ungrouped">
+      <a id="RequirementextendsEnumEntry"></a>
+      <a id="Requirement:Requirement"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier">sealed </span>
+        <span class="kind">trait</span>
+      </span>
+      <span class="symbol">
+        <a href="Requirement.html"><span class="name">Requirement</span></a><span class="result"> extends <span class="extype" name="enumeratum.EnumEntry">EnumEntry</span></span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../../index.html#org.aos.ddo.package@RequirementextendsEnumEntry" title="Permalink" target="_top">
+        <img src="../../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      <p class="shortcomment cmt">Base trait used to enumerate qualifications.</p>
+    </li><li name="org.aos.ddo.SetItem" visbl="pub" data-isabs="true" fullComment="no" group="Ungrouped">
+      <a id="SetItemextendsAnyRef"></a>
+      <a id="SetItem:SetItem"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">trait</span>
+      </span>
+      <span class="symbol">
+        <a href="SetItem.html"><span class="name">SetItem</span></a><span class="result"> extends <span class="extype" name="scala.AnyRef">AnyRef</span></span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../../index.html#org.aos.ddo.package@SetItemextendsAnyRef" title="Permalink" target="_top">
+        <img src="../../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      <p class="shortcomment cmt">An Item set provides bonuses when equipping some or all of the items in the set.</p>
+    </li><li name="org.aos.ddo.Slashing" visbl="pub" data-isabs="true" fullComment="no" group="Ungrouped">
+      <a id="SlashingextendsPhysicalDamage"></a>
+      <a id="Slashing:Slashing"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">trait</span>
+      </span>
+      <span class="symbol">
+        <a href="Slashing.html"><span class="name">Slashing</span></a><span class="result"> extends <a href="PhysicalDamage.html" class="extype" name="org.aos.ddo.PhysicalDamage">PhysicalDamage</a></span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../../index.html#org.aos.ddo.package@SlashingextendsPhysicalDamage" title="Permalink" target="_top">
+        <img src="../../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      
+    </li><li name="org.aos.ddo.UpgradeInfo" visbl="pub" data-isabs="true" fullComment="no" group="Ungrouped">
+      <a id="UpgradeInfoextendsAnyRef"></a>
+      <a id="UpgradeInfo:UpgradeInfo"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">trait</span>
+      </span>
+      <span class="symbol">
+        <a href="UpgradeInfo.html"><span class="name">UpgradeInfo</span></a><span class="result"> extends <span class="extype" name="scala.AnyRef">AnyRef</span></span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../../index.html#org.aos.ddo.package@UpgradeInfoextendsAnyRef" title="Permalink" target="_top">
+        <img src="../../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      <p class="shortcomment cmt">Provides information on whether a given object is upgradeable and may contain additional
+information on how to upgrade it.</p>
+    </li><li name="org.aos.ddo.WearLocation" visbl="pub" data-isabs="true" fullComment="no" group="Ungrouped">
+      <a id="WearLocationextendsEnumEntrywithNoDefault[org.aos.ddo.WearLocation]withBitWise"></a>
+      <a id="WearLocation:WearLocation"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier">sealed </span>
+        <span class="kind">trait</span>
+      </span>
+      <span class="symbol">
+        <a href="WearLocation.html"><span class="name">WearLocation</span></a><span class="result"> extends <span class="extype" name="enumeratum.EnumEntry">EnumEntry</span> with <a href="NoDefault.html" class="extype" name="org.aos.ddo.NoDefault">NoDefault</a>[<a href="WearLocation.html" class="extype" name="org.aos.ddo.WearLocation">WearLocation</a>] with <a href="enumeration/BitWise.html" class="extype" name="org.aos.ddo.enumeration.BitWise">BitWise</a></span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../../index.html#org.aos.ddo.package@WearLocationextendsEnumEntrywithNoDefault[org.aos.ddo.WearLocation]withBitWise" title="Permalink" target="_top">
+        <img src="../../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      <p class="shortcomment cmt">Constrains the places items can be used.</p>
+    </li><li name="org.aos.ddo.Wearable" visbl="pub" data-isabs="true" fullComment="no" group="Ungrouped">
+      <a id="WearableextendsAnyRef"></a>
+      <a id="Wearable:Wearable"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">trait</span>
+      </span>
+      <span class="symbol">
+        <a href="Wearable.html"><span class="name">Wearable</span></a><span class="result"> extends <span class="extype" name="scala.AnyRef">AnyRef</span></span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../../index.html#org.aos.ddo.package@WearableextendsAnyRef" title="Permalink" target="_top">
+        <img src="../../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      <p class="shortcomment cmt">Indicates the given object can be equipped / wielded etc.</p>
+    </li></ol>
+            </div>
+
+        
+
+        <div id="values" class="values members">
+              <h3>Value Members</h3>
+              <ol><li name="org.aos.ddo.BindingEvent" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="BindingEvent"></a>
+      <a id="BindingEvent:BindingEvent"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">object</span>
+      </span>
+      <span class="symbol">
+        <a href="BindingEvent$.html"><span class="name">BindingEvent</span></a><span class="result"> extends <span class="extype" name="enumeratum.Enum">Enum</span>[<a href="BindingEvent.html" class="extype" name="org.aos.ddo.BindingEvent">BindingEvent</a>] with <a href="DefaultValue.html" class="extype" name="org.aos.ddo.DefaultValue">DefaultValue</a>[<a href="BindingEvent.html" class="extype" name="org.aos.ddo.BindingEvent">BindingEvent</a>]</span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../../index.html#org.aos.ddo.package@BindingEvent" title="Permalink" target="_top">
+        <img src="../../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      <p class="shortcomment cmt">Triggers for binding.</p>
+    </li><li name="org.aos.ddo.BindingFlags" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="BindingFlags"></a>
+      <a id="BindingFlags:BindingFlags"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">object</span>
+      </span>
+      <span class="symbol">
+        <a href="BindingFlags$.html"><span class="name">BindingFlags</span></a><span class="result"> extends <span class="extype" name="enumeratum.Enum">Enum</span>[<a href="BindingFlags.html" class="extype" name="org.aos.ddo.BindingFlags">BindingFlags</a>] with <a href="DefaultValue.html" class="extype" name="org.aos.ddo.DefaultValue">DefaultValue</a>[<a href="BindingFlags.html" class="extype" name="org.aos.ddo.BindingFlags">BindingFlags</a>] with <span class="extype" name="com.typesafe.scalalogging.LazyLogging">LazyLogging</span></span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../../index.html#org.aos.ddo.package@BindingFlags" title="Permalink" target="_top">
+        <img src="../../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      <p class="shortcomment cmt">Distinct value of binding options.</p>
+    </li><li name="org.aos.ddo.BindingStatus" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="BindingStatus"></a>
+      <a id="BindingStatus:BindingStatus"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">object</span>
+      </span>
+      <span class="symbol">
+        <a href="BindingStatus$.html"><span class="name">BindingStatus</span></a><span class="result"> extends <span class="extype" name="enumeratum.Enum">Enum</span>[<a href="BindingStatus.html" class="extype" name="org.aos.ddo.BindingStatus">BindingStatus</a>] with <a href="DefaultValue.html" class="extype" name="org.aos.ddo.DefaultValue">DefaultValue</a>[<a href="BindingStatus.html" class="extype" name="org.aos.ddo.BindingStatus">BindingStatus</a>]</span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../../index.html#org.aos.ddo.package@BindingStatus" title="Permalink" target="_top">
+        <img src="../../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      <p class="shortcomment cmt">Enum for noting the distinct types of binding.</p><div class="fullcomment"><div class="comment cmt"><p>Enum for noting the distinct types of binding.</p><p>Binding ties an object to a character, preventing them from selling, trading or transferring.
+</p></div></div>
+    </li><li name="org.aos.ddo.DDOObject" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="DDOObject"></a>
+      <a id="DDOObject:DDOObject"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">object</span>
+      </span>
+      <span class="symbol">
+        <a href="DDOObject$.html"><span class="name">DDOObject</span></a>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../../index.html#org.aos.ddo.package@DDOObject" title="Permalink" target="_top">
+        <img src="../../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      <p class="shortcomment cmt">Encapsulates any and all Items and objects within DDO
+</p>
+    </li><li name="org.aos.ddo.EnumImplicits" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="EnumImplicits"></a>
+      <a id="EnumImplicits:EnumImplicits"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">object</span>
+      </span>
+      <span class="symbol">
+        <a href="EnumImplicits$.html"><span class="name">EnumImplicits</span></a>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../../index.html#org.aos.ddo.package@EnumImplicits" title="Permalink" target="_top">
+        <img src="../../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      
+    </li><li name="org.aos.ddo.EnumOld" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="EnumOld"></a>
+      <a id="EnumOld:EnumOld"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">object</span>
+      </span>
+      <span class="symbol">
+        <a href="EnumOld$.html"><span class="name">EnumOld</span></a>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../../index.html#org.aos.ddo.package@EnumOld" title="Permalink" target="_top">
+        <img src="../../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      
+    </li><li name="org.aos.ddo.InventorySection" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="InventorySection"></a>
+      <a id="InventorySection:InventorySection"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">object</span>
+      </span>
+      <span class="symbol">
+        <a href="InventorySection$.html"><span class="name">InventorySection</span></a><span class="result"> extends <span class="extype" name="enumeratum.Enum">Enum</span>[<a href="InventorySection.html" class="extype" name="org.aos.ddo.InventorySection">InventorySection</a>]</span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../../index.html#org.aos.ddo.package@InventorySection" title="Permalink" target="_top">
+        <img src="../../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      
+    </li><li name="org.aos.ddo.MonetaryValue" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="MonetaryValue"></a>
+      <a id="MonetaryValue:MonetaryValue"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">object</span>
+      </span>
+      <span class="symbol">
+        <a href="MonetaryValue$.html"><span class="name">MonetaryValue</span></a><span class="result"> extends <span class="extype" name="enumeratum.Enum">Enum</span>[<a href="MonetaryValue.html" class="extype" name="org.aos.ddo.MonetaryValue">MonetaryValue</a>]</span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../../index.html#org.aos.ddo.package@MonetaryValue" title="Permalink" target="_top">
+        <img src="../../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      <p class="shortcomment cmt">should indicate the base value (in platinum type denominations)
+This should probably be expanded to a general DDO Denomination to support
+the concept of cost.</p><div class="fullcomment"><div class="comment cmt"><p>should indicate the base value (in platinum type denominations)
+This should probably be expanded to a general DDO Denomination to support
+the concept of cost.  i.e. plat would simply be the listed item price
+(which is generally quite useless and uninteresting) but Astral Shards
+or Turbine points could be noted if the item is available from the DDO Store etc.
+</p></div></div>
+    </li><li name="org.aos.ddo.PhysicalDamageType" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="PhysicalDamageType"></a>
+      <a id="PhysicalDamageType:PhysicalDamageType"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">object</span>
+      </span>
+      <span class="symbol">
+        <a href="PhysicalDamageType$.html"><span class="name">PhysicalDamageType</span></a><span class="result"> extends <span class="extype" name="enumeratum.Enum">Enum</span>[<a href="PhysicalDamageType.html" class="extype" name="org.aos.ddo.PhysicalDamageType">PhysicalDamageType</a>]</span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../../index.html#org.aos.ddo.package@PhysicalDamageType" title="Permalink" target="_top">
+        <img src="../../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      <p class="shortcomment cmt">Basic damage enumeration for (generally) physical damage
+</p>
+    </li><li name="org.aos.ddo.Requirement" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="Requirement"></a>
+      <a id="Requirement:Requirement"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">object</span>
+      </span>
+      <span class="symbol">
+        <a href="Requirement$.html"><span class="name">Requirement</span></a><span class="result"> extends <span class="extype" name="enumeratum.Enum">Enum</span>[<a href="Requirement.html" class="extype" name="org.aos.ddo.Requirement">Requirement</a>]</span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../../index.html#org.aos.ddo.package@Requirement" title="Permalink" target="_top">
+        <img src="../../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      <p class="shortcomment cmt">Used to enumerate prerequisites or qualifications for a given feat, spell, enhancement,
+equipping an item etc.</p>
+    </li><li name="org.aos.ddo.WearLocation" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="WearLocation"></a>
+      <a id="WearLocation:WearLocation"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">object</span>
+      </span>
+      <span class="symbol">
+        <a href="WearLocation$.html"><span class="name">WearLocation</span></a><span class="result"> extends <span class="extype" name="enumeratum.Enum">Enum</span>[<a href="WearLocation.html" class="extype" name="org.aos.ddo.WearLocation">WearLocation</a>] with <a href="enumeration/BitSupport.html" class="extype" name="org.aos.ddo.enumeration.BitSupport">BitSupport</a></span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../../index.html#org.aos.ddo.package@WearLocation" title="Permalink" target="_top">
+        <img src="../../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      <p class="shortcomment cmt">Distinct values for location slots.</p>
+    </li><li name="org.aos.ddo.enchantment" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="enchantment"></a>
+      <a id="enchantment:enchantment"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">package</span>
+      </span>
+      <span class="symbol">
+        <a href="enchantment/package.html"><span class="name">enchantment</span></a>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../../index.html#org.aos.ddo.package@enchantment" title="Permalink" target="_top">
+        <img src="../../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      
+    </li><li name="org.aos.ddo.enumeration" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="enumeration"></a>
+      <a id="enumeration:enumeration"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">package</span>
+      </span>
+      <span class="symbol">
+        <a href="enumeration/package.html"><span class="name">enumeration</span></a>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../../index.html#org.aos.ddo.package@enumeration" title="Permalink" target="_top">
+        <img src="../../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      
+    </li><li name="org.aos.ddo.model" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="model"></a>
+      <a id="model:model"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">package</span>
+      </span>
+      <span class="symbol">
+        <a href="model/package.html"><span class="name">model</span></a>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../../index.html#org.aos.ddo.package@model" title="Permalink" target="_top">
+        <img src="../../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      <p class="shortcomment cmt">Created by adarr on 1/27/2017.</p>
+    </li><li name="org.aos.ddo.support" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="support"></a>
+      <a id="support:support"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">package</span>
+      </span>
+      <span class="symbol">
+        <a href="support/package.html"><span class="name">support</span></a>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../../index.html#org.aos.ddo.package@support" title="Permalink" target="_top">
+        <img src="../../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      
+    </li></ol>
+            </div>
+
+        
+
+        
+        </div>
+
+        <div id="inheritedMembers">
+        <div class="parent" name="scala.AnyRef">
+              <h3>Inherited from <span class="extype" name="scala.AnyRef">AnyRef</span></h3>
+            </div><div class="parent" name="scala.Any">
+              <h3>Inherited from <span class="extype" name="scala.Any">Any</span></h3>
+            </div>
+        
+        </div>
+
+        <div id="groupedMembers">
+        <div class="group" name="Ungrouped">
+              <h3>Ungrouped</h3>
+              
+            </div>
+        </div>
+
+      </div>
+
+      <div id="tooltip"></div>
+
+      <div id="footer">  </div>
+
+
+    </body>
+      </html>

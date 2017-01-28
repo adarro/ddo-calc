@@ -1,0 +1,898 @@
+<html>
+      <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+        <title id="title">
+          org\aos\ddo\enchantment\GuardModifier.scala.html
+        </title>
+        <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery.tablesorter/2.20.1/css/theme.default.min.css" type="text/css"/><script src="http://cdnjs.cloudflare.com/ajax/libs/jquery.tablesorter/2.20.1/js/jquery.tablesorter.min.js"></script><link rel="stylesheet" href="http://netdna.bootstrapcdn.com/bootstrap/3.0.3/css/bootstrap.min.css" type="text/css"/><script src="http://netdna.bootstrapcdn.com/bootstrap/3.0.3/js/bootstrap.min.js"></script><script type="text/javascript">
+        $(document).ready(function() {$(".tablesorter").tablesorter();});
+      </script>
+        <style>
+          table.codegrid { font-family: monospace; font-size: 12px; width: auto!important; }table.statementlist { width: auto!important; font-size: 13px; } table.codegrid td { padding: 0!important; border: 0!important } table td.linenumber { width: 40px!important; } 
+        </style>
+      </head>
+      <body style="font-family: monospace;">
+        <ul class="nav nav-tabs">
+          <li>
+            <a href="#codegrid" data-toggle="tab">Codegrid</a>
+          </li>
+          <li>
+            <a href="#statementlist" data-toggle="tab">Statement List</a>
+          </li>
+        </ul>
+        <div class="tab-content">
+          <div class="tab-pane active" id="codegrid">
+            <pre style='font-size: 12pt; font-family: courier;'>1 <span style=''>package org.aos.ddo.enchantment
+
+import org.aos.ddo.model.effect.{Prefix, SecondaryPrefix, Suffix}
+import org.aos.ddo.enchantment.Modifier.{Greater, Lesser, Minor}
+import org.aos.ddo.support.RomanNumeral.fromRoman
+import org.aos.ddo.support.Validation.violationToString
+
+import com.typesafe.scalalogging.LazyLogging
+import com.wix.accord.{Failure, Success}
+import com.wix.accord.dsl.{Contextualizer, ValidatorBooleanOps, empty, notEmpty, validator}
+import com.wix.accord.validate
+import scala.language.postfixOps
+
+/**
+  * Valid prefixes and suffixes for Guard Enchantments
+  */
+object GuardModifier extends LazyLogging {
+  type Parameters = (Option[String], Option[String], Option[String])
+
+  def apply(prefix: Option[String] = None, sPrefix: Option[String] = None, suffix: Option[String] = None): GuardModifier = {
+    val o = </span><span style='background: #AEF1AE'>create(prefix, sPrefix, suffix)</span><span style=''>
+    </span><span style='background: #AEF1AE'>validate(o)</span><span style=''> match {
+      case Success => o
+      case Failure(x) => </span><span style='background: #AEF1AE'>throw new IllegalArgumentException(violationToString(x))</span><span style=''>
+    }
+  }
+
+  def apply(parameters: Parameters): GuardModifier =
+    </span><span style='background: #F0ADAD'>GuardModifier(parameters._1, parameters._2, parameters._3)</span><span style=''>
+
+  private def create(prefix: Option[String], sPrefix: Option[String], suffix: Option[String]): GuardModifier = {
+    </span><span style='background: #AEF1AE'>new</span><span style=''> GuardModifier(prefix, sPrefix, suffix) {
+      private def readResolve(): Object =
+        </span><span style='background: #F0ADAD'>GuardModifier(prefix, sPrefix, suffix)</span><span style=''>
+
+      def copy(prefix: Option[String], sPrefix: Option[String], suffix: Option[String]): GuardModifier =
+        </span><span style='background: #F0ADAD'>GuardModifier(prefix, sPrefix, suffix)</span><span style=''>
+
+      val tuple: GuardModifier.Parameters =
+        </span><span style='background: #AEF1AE'>(prefix, sPrefix, suffix)</span><span style=''>
+    }
+  }
+
+  /**
+    * Array of allowed Guard Modifiers, may occasionally need to be updated
+    * if the game adds new ones.
+    */
+  lazy val allowedModifiers = </span><span style='background: #AEF1AE'>List(Minor, Lesser, Greater).map { x => x.entryName }</span><span style=''>
+
+  /**
+    * Restricts Modifiers to allowed current modifiers.
+    */
+  protected[enchantment] def filterModifiers(mod: Option[String]): Option[String] =
+    (</span><span style='background: #AEF1AE'>for {m <- mod}
+      yield {
+        allowedModifiers.collectFirst({
+          case x: String if x.equals(m) => x
+        })
+      }) flatten</span><span style=''>
+
+  /**
+    * Filters to allow supported suffixes for the guards.
+    * Currently, this is represented by a Roman Numeral 1 - 10.
+    */
+  def allowedRoman(rn: Option[String]): Option[Int] = {
+    </span><span style='background: #AEF1AE'>rn.flatMap { y =>
+      fromRoman(y) match {
+        case x: Int if 1 until 11 contains x =>
+          logger.info(s"AllowedRoman $y->$x"); Some(x)
+        case _ => logger.info(s"AllowedRoman $y -> None"); </span><span style='background: #F0ADAD'>None</span><span style='background: #AEF1AE'>
+      }
+    }</span><span style=''>
+  }
+
+  implicit val guardModifierValidator = validator[GuardModifier] { g => {
+    // Guards can have nothing, a prefix or a suffix
+    // No Modifiers
+    (((g.prefix is empty) and (g.sPrefix is empty) and (g.suffix is empty))
+      or
+      // Just a (valid) prefix
+      (((g.prefix is notEmpty) and (g.sPrefix is empty) and (g.suffix is empty))
+        and (filterModifiers(g.prefix) is notEmpty))
+      or
+      // Just a valid suffix
+      (((g.prefix is empty) and (g.sPrefix is empty) and (g.suffix is notEmpty))
+        and (allowedRoman(g.suffix) is notEmpty)))
+
+  }
+  }
+}
+
+abstract case class GuardModifier private[GuardModifier](prefix: Option[String], sPrefix: Option[String] = None, suffix: Option[String])
+  extends Prefix with SecondaryPrefix with Suffix {
+  def copy(prefix: Option[String], sPrefix: Option[String], suffix: Option[String]): GuardModifier
+}
+
+</span></pre>
+          </div>
+          <div class="tab-pane" id="statementlist">
+            <table cellspacing="0" cellpadding="0" class="table statementlist">
+      <tr>
+        <th>Line</th>
+        <th>Stmt Id</th>
+        <th>Pos</th>
+        <th>Tree</th>
+        <th>Symbol</th>
+        <th>Code</th>
+      </tr><tr>
+        <td>
+          21
+        </td>
+        <td>
+          23
+        </td>
+        <td>
+          828
+          -
+          859
+        </td>
+        <td>
+          Apply
+        </td>
+        <td>
+          org.aos.ddo.enchantment.GuardModifier.create
+        </td>
+        <td style="background: #AEF1AE">
+          GuardModifier.this.create(prefix, sPrefix, suffix)
+        </td>
+      </tr><tr>
+        <td>
+          22
+        </td>
+        <td>
+          25
+        </td>
+        <td>
+          864
+          -
+          875
+        </td>
+        <td>
+          ApplyToImplicitArgs
+        </td>
+        <td>
+          com.wix.accord.validate
+        </td>
+        <td style="background: #AEF1AE">
+          com.wix.accord.`package`.validate[org.aos.ddo.enchantment.GuardModifier](o)(GuardModifier.this.guardModifierValidator)
+        </td>
+      </tr><tr>
+        <td>
+          22
+        </td>
+        <td>
+          24
+        </td>
+        <td>
+          872
+          -
+          872
+        </td>
+        <td>
+          Select
+        </td>
+        <td>
+          org.aos.ddo.enchantment.GuardModifier.guardModifierValidator
+        </td>
+        <td style="background: #AEF1AE">
+          GuardModifier.this.guardModifierValidator
+        </td>
+      </tr><tr>
+        <td>
+          24
+        </td>
+        <td>
+          26
+        </td>
+        <td>
+          933
+          -
+          989
+        </td>
+        <td>
+          Throw
+        </td>
+        <td>
+          &lt;nosymbol&gt;
+        </td>
+        <td style="background: #AEF1AE">
+          throw new scala.`package`.IllegalArgumentException(org.aos.ddo.support.`package`.Validation.violationToString(x))
+        </td>
+      </tr><tr>
+        <td>
+          29
+        </td>
+        <td>
+          29
+        </td>
+        <td>
+          1102
+          -
+          1115
+        </td>
+        <td>
+          Select
+        </td>
+        <td>
+          scala.Tuple3._3
+        </td>
+        <td style="background: #F0ADAD">
+          parameters._3
+        </td>
+      </tr><tr>
+        <td>
+          29
+        </td>
+        <td>
+          28
+        </td>
+        <td>
+          1087
+          -
+          1100
+        </td>
+        <td>
+          Select
+        </td>
+        <td>
+          scala.Tuple3._2
+        </td>
+        <td style="background: #F0ADAD">
+          parameters._2
+        </td>
+      </tr><tr>
+        <td>
+          29
+        </td>
+        <td>
+          27
+        </td>
+        <td>
+          1072
+          -
+          1085
+        </td>
+        <td>
+          Select
+        </td>
+        <td>
+          scala.Tuple3._1
+        </td>
+        <td style="background: #F0ADAD">
+          parameters._1
+        </td>
+      </tr><tr>
+        <td>
+          29
+        </td>
+        <td>
+          30
+        </td>
+        <td>
+          1058
+          -
+          1116
+        </td>
+        <td>
+          Apply
+        </td>
+        <td>
+          org.aos.ddo.enchantment.GuardModifier.apply
+        </td>
+        <td style="background: #F0ADAD">
+          GuardModifier.apply(parameters._1, parameters._2, parameters._3)
+        </td>
+      </tr><tr>
+        <td>
+          32
+        </td>
+        <td>
+          40
+        </td>
+        <td>
+          1235
+          -
+          1238
+        </td>
+        <td>
+          Apply
+        </td>
+        <td>
+          org.aos.ddo.enchantment.GuardModifier.$anon.&lt;init&gt;
+        </td>
+        <td style="background: #AEF1AE">
+          new $anon()
+        </td>
+      </tr><tr>
+        <td>
+          34
+        </td>
+        <td>
+          32
+        </td>
+        <td>
+          1352
+          -
+          1359
+        </td>
+        <td>
+          Select
+        </td>
+        <td>
+          org.aos.ddo.enchantment.GuardModifier.sPrefix
+        </td>
+        <td style="background: #F0ADAD">
+          $anon.this.sPrefix
+        </td>
+      </tr><tr>
+        <td>
+          34
+        </td>
+        <td>
+          31
+        </td>
+        <td>
+          1344
+          -
+          1350
+        </td>
+        <td>
+          Select
+        </td>
+        <td>
+          org.aos.ddo.enchantment.GuardModifier.prefix
+        </td>
+        <td style="background: #F0ADAD">
+          $anon.this.prefix
+        </td>
+      </tr><tr>
+        <td>
+          34
+        </td>
+        <td>
+          34
+        </td>
+        <td>
+          1330
+          -
+          1368
+        </td>
+        <td>
+          Apply
+        </td>
+        <td>
+          org.aos.ddo.enchantment.GuardModifier.apply
+        </td>
+        <td style="background: #F0ADAD">
+          GuardModifier.apply($anon.this.prefix, $anon.this.sPrefix, $anon.this.suffix)
+        </td>
+      </tr><tr>
+        <td>
+          34
+        </td>
+        <td>
+          33
+        </td>
+        <td>
+          1361
+          -
+          1367
+        </td>
+        <td>
+          Select
+        </td>
+        <td>
+          org.aos.ddo.enchantment.GuardModifier.suffix
+        </td>
+        <td style="background: #F0ADAD">
+          $anon.this.suffix
+        </td>
+      </tr><tr>
+        <td>
+          37
+        </td>
+        <td>
+          35
+        </td>
+        <td>
+          1483
+          -
+          1521
+        </td>
+        <td>
+          Apply
+        </td>
+        <td>
+          org.aos.ddo.enchantment.GuardModifier.apply
+        </td>
+        <td style="background: #F0ADAD">
+          GuardModifier.apply(prefix, sPrefix, suffix)
+        </td>
+      </tr><tr>
+        <td>
+          40
+        </td>
+        <td>
+          38
+        </td>
+        <td>
+          1593
+          -
+          1599
+        </td>
+        <td>
+          Select
+        </td>
+        <td>
+          org.aos.ddo.enchantment.GuardModifier.suffix
+        </td>
+        <td style="background: #AEF1AE">
+          $anon.this.suffix
+        </td>
+      </tr><tr>
+        <td>
+          40
+        </td>
+        <td>
+          37
+        </td>
+        <td>
+          1584
+          -
+          1591
+        </td>
+        <td>
+          Select
+        </td>
+        <td>
+          org.aos.ddo.enchantment.GuardModifier.sPrefix
+        </td>
+        <td style="background: #AEF1AE">
+          $anon.this.sPrefix
+        </td>
+      </tr><tr>
+        <td>
+          40
+        </td>
+        <td>
+          36
+        </td>
+        <td>
+          1576
+          -
+          1582
+        </td>
+        <td>
+          Select
+        </td>
+        <td>
+          org.aos.ddo.enchantment.GuardModifier.prefix
+        </td>
+        <td style="background: #AEF1AE">
+          $anon.this.prefix
+        </td>
+      </tr><tr>
+        <td>
+          40
+        </td>
+        <td>
+          39
+        </td>
+        <td>
+          1575
+          -
+          1600
+        </td>
+        <td>
+          Apply
+        </td>
+        <td>
+          scala.Tuple3.apply
+        </td>
+        <td style="background: #AEF1AE">
+          scala.Tuple3.apply[Option[String], Option[String], Option[String]]($anon.this.prefix, $anon.this.sPrefix, $anon.this.suffix)
+        </td>
+      </tr><tr>
+        <td>
+          48
+        </td>
+        <td>
+          41
+        </td>
+        <td>
+          1769
+          -
+          1774
+        </td>
+        <td>
+          Select
+        </td>
+        <td>
+          org.aos.ddo.enchantment.Modifier.Minor
+        </td>
+        <td style="background: #AEF1AE">
+          org.aos.ddo.enchantment.Modifier.Minor
+        </td>
+      </tr><tr>
+        <td>
+          48
+        </td>
+        <td>
+          44
+        </td>
+        <td>
+          1804
+          -
+          1815
+        </td>
+        <td>
+          Select
+        </td>
+        <td>
+          enumeratum.EnumEntry.entryName
+        </td>
+        <td style="background: #AEF1AE">
+          x.entryName
+        </td>
+      </tr><tr>
+        <td>
+          48
+        </td>
+        <td>
+          46
+        </td>
+        <td>
+          1764
+          -
+          1817
+        </td>
+        <td>
+          ApplyToImplicitArgs
+        </td>
+        <td>
+          scala.collection.immutable.List.map
+        </td>
+        <td style="background: #AEF1AE">
+          immutable.this.List.apply[org.aos.ddo.enchantment.Modifier with Product with Serializable](org.aos.ddo.enchantment.Modifier.Minor, org.aos.ddo.enchantment.Modifier.Lesser, org.aos.ddo.enchantment.Modifier.Greater).map[String, List[String]](((x: org.aos.ddo.enchantment.Modifier with Product with Serializable) =&gt; x.entryName))(immutable.this.List.canBuildFrom[String])
+        </td>
+      </tr><tr>
+        <td>
+          48
+        </td>
+        <td>
+          43
+        </td>
+        <td>
+          1784
+          -
+          1791
+        </td>
+        <td>
+          Select
+        </td>
+        <td>
+          org.aos.ddo.enchantment.Modifier.Greater
+        </td>
+        <td style="background: #AEF1AE">
+          org.aos.ddo.enchantment.Modifier.Greater
+        </td>
+      </tr><tr>
+        <td>
+          48
+        </td>
+        <td>
+          45
+        </td>
+        <td>
+          1797
+          -
+          1797
+        </td>
+        <td>
+          TypeApply
+        </td>
+        <td>
+          scala.collection.immutable.List.canBuildFrom
+        </td>
+        <td style="background: #AEF1AE">
+          immutable.this.List.canBuildFrom[String]
+        </td>
+      </tr><tr>
+        <td>
+          48
+        </td>
+        <td>
+          42
+        </td>
+        <td>
+          1776
+          -
+          1782
+        </td>
+        <td>
+          Select
+        </td>
+        <td>
+          org.aos.ddo.enchantment.Modifier.Lesser
+        </td>
+        <td style="background: #AEF1AE">
+          org.aos.ddo.enchantment.Modifier.Lesser
+        </td>
+      </tr><tr>
+        <td>
+          56
+        </td>
+        <td>
+          49
+        </td>
+        <td>
+          2014
+          -
+          2101
+        </td>
+        <td>
+          Apply
+        </td>
+        <td>
+          scala.collection.TraversableOnce.collectFirst
+        </td>
+        <td style="background: #AEF1AE">
+          GuardModifier.this.allowedModifiers.collectFirst[String](({
+  @SerialVersionUID(value = 0) final &lt;synthetic&gt; class $anonfun extends scala.runtime.AbstractPartialFunction[String,String] with Serializable {
+    def &lt;init&gt;(): &lt;$anon: String =&gt; String&gt; = {
+      $anonfun.super.&lt;init&gt;();
+      ()
+    };
+    final override def applyOrElse[A1 &lt;: String, B1 &gt;: String](x1: A1, default: A1 =&gt; B1): B1 = ((x1.asInstanceOf[String]: String): String @unchecked) match {
+      case (x @ (_: String)) if x.equals(m) =&gt; x
+      case (defaultCase$ @ _) =&gt; default.apply(x1)
+    };
+    final def isDefinedAt(x1: String): Boolean = ((x1.asInstanceOf[String]: String): String @unchecked) match {
+      case (x @ (_: String)) if x.equals(m) =&gt; true
+      case (defaultCase$ @ _) =&gt; false
+    }
+  };
+  new $anonfun()
+}: PartialFunction[String,String]))
+        </td>
+      </tr><tr>
+        <td>
+          56
+        </td>
+        <td>
+          48
+        </td>
+        <td>
+          2044
+          -
+          2044
+        </td>
+        <td>
+          Apply
+        </td>
+        <td>
+          org.aos.ddo.enchantment.GuardModifier.$anonfun.&lt;init&gt;
+        </td>
+        <td style="background: #AEF1AE">
+          new $anonfun()
+        </td>
+      </tr><tr>
+        <td>
+          57
+        </td>
+        <td>
+          47
+        </td>
+        <td>
+          2074
+          -
+          2085
+        </td>
+        <td>
+          Apply
+        </td>
+        <td>
+          java.lang.String.equals
+        </td>
+        <td style="background: #AEF1AE">
+          x.equals(m)
+        </td>
+      </tr><tr>
+        <td>
+          59
+        </td>
+        <td>
+          50
+        </td>
+        <td>
+          2111
+          -
+          2111
+        </td>
+        <td>
+          TypeApply
+        </td>
+        <td>
+          scala.Predef.$conforms
+        </td>
+        <td style="background: #AEF1AE">
+          scala.this.Predef.$conforms[Option[String]]
+        </td>
+      </tr><tr>
+        <td>
+          59
+        </td>
+        <td>
+          51
+        </td>
+        <td>
+          1977
+          -
+          2118
+        </td>
+        <td>
+          ApplyToImplicitArgs
+        </td>
+        <td>
+          scala.Option.flatten
+        </td>
+        <td style="background: #AEF1AE">
+          mod.map[Option[String]](((m: String) =&gt; GuardModifier.this.allowedModifiers.collectFirst[String](({
+  @SerialVersionUID(value = 0) final &lt;synthetic&gt; class $anonfun extends scala.runtime.AbstractPartialFunction[String,String] with Serializable {
+    def &lt;init&gt;(): &lt;$anon: String =&gt; String&gt; = {
+      $anonfun.super.&lt;init&gt;();
+      ()
+    };
+    final override def applyOrElse[A1 &lt;: String, B1 &gt;: String](x1: A1, default: A1 =&gt; B1): B1 = ((x1.asInstanceOf[String]: String): String @unchecked) match {
+      case (x @ (_: String)) if x.equals(m) =&gt; x
+      case (defaultCase$ @ _) =&gt; default.apply(x1)
+    };
+    final def isDefinedAt(x1: String): Boolean = ((x1.asInstanceOf[String]: String): String @unchecked) match {
+      case (x @ (_: String)) if x.equals(m) =&gt; true
+      case (defaultCase$ @ _) =&gt; false
+    }
+  };
+  new $anonfun()
+}: PartialFunction[String,String])))).flatten[String](scala.this.Predef.$conforms[Option[String]])
+        </td>
+      </tr><tr>
+        <td>
+          66
+        </td>
+        <td>
+          56
+        </td>
+        <td>
+          2315
+          -
+          2540
+        </td>
+        <td>
+          Apply
+        </td>
+        <td>
+          scala.Option.flatMap
+        </td>
+        <td style="background: #AEF1AE">
+          rn.flatMap[Int](((y: String) =&gt; org.aos.ddo.support.RomanNumeral.fromRoman(y) match {
+  case (x @ (_: Int)) if scala.this.Predef.intWrapper(1).until(11).contains(x) =&gt; {
+    (if (GuardModifier.this.logger.underlying.isInfoEnabled())
+      GuardModifier.this.logger.underlying.info(scala.StringContext.apply(&quot;AllowedRoman &quot;, &quot;-&gt;&quot;, &quot;&quot;).s(y, x))
+    else
+      (): Unit);
+    scala.Some.apply[Int](x)
+  }
+  case _ =&gt; {
+    (if (GuardModifier.this.logger.underlying.isInfoEnabled())
+      GuardModifier.this.logger.underlying.info(scala.StringContext.apply(&quot;AllowedRoman &quot;, &quot; -&gt; None&quot;).s(y))
+    else
+      (): Unit);
+    scala.None
+  }
+}))
+        </td>
+      </tr><tr>
+        <td>
+          67
+        </td>
+        <td>
+          52
+        </td>
+        <td>
+          2339
+          -
+          2351
+        </td>
+        <td>
+          Apply
+        </td>
+        <td>
+          org.aos.ddo.support.RomanNumeral.fromRoman
+        </td>
+        <td style="background: #AEF1AE">
+          org.aos.ddo.support.RomanNumeral.fromRoman(y)
+        </td>
+      </tr><tr>
+        <td>
+          68
+        </td>
+        <td>
+          53
+        </td>
+        <td>
+          2383
+          -
+          2404
+        </td>
+        <td>
+          Apply
+        </td>
+        <td>
+          scala.collection.immutable.Range.contains
+        </td>
+        <td style="background: #AEF1AE">
+          scala.this.Predef.intWrapper(1).until(11).contains(x)
+        </td>
+      </tr><tr>
+        <td>
+          69
+        </td>
+        <td>
+          54
+        </td>
+        <td>
+          2455
+          -
+          2462
+        </td>
+        <td>
+          Apply
+        </td>
+        <td>
+          scala.Some.apply
+        </td>
+        <td style="background: #AEF1AE">
+          scala.Some.apply[Int](x)
+        </td>
+      </tr><tr>
+        <td>
+          70
+        </td>
+        <td>
+          55
+        </td>
+        <td>
+          2522
+          -
+          2526
+        </td>
+        <td>
+          Select
+        </td>
+        <td>
+          scala.None
+        </td>
+        <td style="background: #F0ADAD">
+          scala.None
+        </td>
+      </tr>
+    </table>
+          </div>
+        </div>
+      </body>
+    </html>

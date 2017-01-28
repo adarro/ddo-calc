@@ -1,0 +1,379 @@
+<html>
+      <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+        <title id="title">
+          org\aos\ddo\model\item\weapon\Weapon.scala.html
+        </title>
+        <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery.tablesorter/2.20.1/css/theme.default.min.css" type="text/css"/><script src="http://cdnjs.cloudflare.com/ajax/libs/jquery.tablesorter/2.20.1/js/jquery.tablesorter.min.js"></script><link rel="stylesheet" href="http://netdna.bootstrapcdn.com/bootstrap/3.0.3/css/bootstrap.min.css" type="text/css"/><script src="http://netdna.bootstrapcdn.com/bootstrap/3.0.3/js/bootstrap.min.js"></script><script type="text/javascript">
+        $(document).ready(function() {$(".tablesorter").tablesorter();});
+      </script>
+        <style>
+          table.codegrid { font-family: monospace; font-size: 12px; width: auto!important; }table.statementlist { width: auto!important; font-size: 13px; } table.codegrid td { padding: 0!important; border: 0!important } table td.linenumber { width: 40px!important; } 
+        </style>
+      </head>
+      <body style="font-family: monospace;">
+        <ul class="nav nav-tabs">
+          <li>
+            <a href="#codegrid" data-toggle="tab">Codegrid</a>
+          </li>
+          <li>
+            <a href="#statementlist" data-toggle="tab">Statement List</a>
+          </li>
+        </ul>
+        <div class="tab-content">
+          <div class="tab-pane active" id="codegrid">
+            <pre style='font-size: 12pt; font-family: courier;'>1 <span style=''>/** Copyright (C) 2015 Andre White (adarro@gmail.com)
+</span>2 <span style=''>  *
+</span>3 <span style=''>  * Licensed under the Apache License, Version 2.0 (the "License");
+</span>4 <span style=''>  * you may not use this file except in compliance with the License.
+</span>5 <span style=''>  * You may obtain a copy of the License at
+</span>6 <span style=''>  *
+</span>7 <span style=''>  *        http://www.apache.org/licenses/LICENSE-2.0
+</span>8 <span style=''>  *
+</span>9 <span style=''>  * Unless required by applicable law or agreed to in writing, software
+</span>10 <span style=''>  * distributed under the License is distributed on an "AS IS" BASIS,
+</span>11 <span style=''>  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+</span>12 <span style=''>  * See the License for the specific language governing permissions and
+</span>13 <span style=''>  * limitations under the License.
+</span>14 <span style=''>  */
+</span>15 <span style=''>package org.aos.ddo.model.item.weapon
+</span>16 <span style=''>
+</span>17 <span style=''>import org.aos.ddo._
+</span>18 <span style=''>import org.aos.ddo.enumeration.EnumExtensions._
+</span>19 <span style=''>import org.aos.ddo.model.attributes.Attributes
+</span>20 <span style=''>
+</span>21 <span style=''>import scala.language.implicitConversions
+</span>22 <span style=''>
+</span>23 <span style=''>/** Weapon
+</span>24 <span style=''>  * Used only for protection... and kobolds.
+</span>25 <span style=''>  *
+</span>26 <span style=''>  * @note
+</span>27 <span style=''>  * Template:
+</span>28 <span style=''>  * Base Item Object
+</span>29 <span style=''>  * Proficiency Class  Simple Weapon Proficiency
+</span>30 <span style=''>  * Icerazor shown.jpg
+</span>31 <span style=''>  * Damage and Type  2 [1d6] + 6 Slash, Magic
+</span>32 <span style=''>  * Critical threat range  20 / x2
+</span>33 <span style=''>  * Weapon Type  Sickle / Slashing weapons
+</span>34 <span style=''>  * Race Absolutely Required  None
+</span>35 <span style=''>  * Minimum Level  21
+</span>36 <span style=''>  * Required Trait  None
+</span>37 <span style=''>  * Use Magical Device DC  No UMD needed
+</span>38 <span style=''>  * Handedness
+</span>39 <span style=''>  * Attack Mod  STR
+</span>40 <span style=''>  * Damage Mod  STR
+</span>41 <span style=''>  * Binding  Bound to Character on Equip or Bound to Character on Acquire
+</span>42 <span style=''>  * Durability  170
+</span>43 <span style=''>  * Made from  Ice
+</span>44 <span style=''>  * Hardness  22
+</span>45 <span style=''>  * Base Value  8,400pp
+</span>46 <span style=''>  * Weight  2 lbs
+</span>47 <span style=''>  * Location  The House of Broken Chains, End Chest ; Slavemaster Banister of House Avithoul, The Underdark ;
+</span>48 <span style=''>  * Menace of the Underdark: City of Portals, Quest chain end reward
+</span>49 <span style=''>  * Enchantments
+</span>50 <span style=''>  * Spellcasting Implement +18
+</span>51 <span style=''>  * +6 Enhancement Bonus
+</span>52 <span style=''>  * Glaciation +102
+</span>53 <span style=''>  * Ice Lore V
+</span>54 <span style=''>  * Slicing
+</span>55 <span style=''>  * Icy Burst
+</span>56 <span style=''>  * Freezing Ice
+</span>57 <span style=''>  * Upgradeable?
+</span>58 <span style=''>  * Not upgradeable
+</span>59 <span style=''>  * Composite Shortbow
+</span>60 <span style=''>  * Description  This wicked sickle is crafted from magical ice that will never melt.
+</span>61 <span style=''>  * Any flesh it touches will instantly freeze to the blade, to be painfully ripped away when the weapon is withdrawn.
+</span>62 <span style=''>  */
+</span>63 <span style=''>trait Weapon extends Item  with MetaData with HandedWeapon {
+</span>64 <span style=''>
+</span>65 <span style=''>  /** Proficiency Class
+</span>66 <span style=''>    * Equipping a item without having the corresponding
+</span>67 <span style=''>    * proficiency may incur penalties
+</span>68 <span style=''>    *
+</span>69 <span style=''>    * i.e. Repeating Heavy Crossbows require Martial Weapon Proficiency: Repeating Heavy Crossbows
+</span>70 <span style=''>    * (certain requirements may be bypassed or temporarily granted via race / class enhancements or
+</span>71 <span style=''>    * spells such as Tensor's Transformation
+</span>72 <span style=''>    */
+</span>73 <span style=''>  val proficiency: Option[ProficiencyClass]
+</span>74 <span style=''>
+</span>75 <span style=''>  // Damage and Type: 1d6 Pierce
+</span>76 <span style=''>  val damage: Option[DamageInfo]
+</span>77 <span style=''>  // Critical threat range 20/x3
+</span>78 <span style=''>  val critical: Option[CriticalProfile]
+</span>79 <span style=''>
+</span>80 <span style=''>  /** Weapon Type
+</span>81 <span style=''>    *
+</span>82 <span style=''>    * Weapon Type represents a general class of weapons, such as Ranged Weapons for bows, thrown for
+</span>83 <span style=''>    * small projectiles, etc.
+</span>84 <span style=''> *
+</span>85 <span style=''>    * @see [[org.aos.ddo.model.item.weapon.WeaponType]]
+</span>86 <span style=''>    */
+</span>87 <span style=''>  val weaponType: Option[WeaponType]
+</span>88 <span style=''>
+</span>89 <span style=''>  val weaponCategory: Option[WeaponCategory]
+</span>90 <span style=''>
+</span>91 <span style=''>  /** Handedness
+</span>92 <span style=''>    * Represents how a weapon can be used / equipped. i.e. Daggers (One Handed, Longbow  two handed)
+</span>93 <span style=''>    *
+</span>94 <span style=''>    * @note DDO Wiki seems a bit inconsistent.  [[http://ddowiki.com/page/Composite_longbow Composite Longbow]] lists
+</span>95 <span style=''>    *       handedness as 'ranged' while [[http://ddowiki.com/page/Item:Bow_of_the_Silver_Flame Bow of the Silver Flame]] leaves this blank.
+</span>96 <span style=''>    *       For our purposes, the handedness will likely be 'twohanded', and matching against the [[org.aos.ddo.model.item.weapon.WeaponType]] for Ranged should be
+</span>97 <span style=''>    *       enough to allow the UI to display either or none and understand that using a bow prevents equipping something else
+</span>98 <span style=''>    *       in the off hand.
+</span>99 <span style=''>    *
+</span>100 <span style=''>    * @todo Likely need to test this for logic / integration
+</span>101 <span style=''>    */
+</span>102 <span style=''>  val handedness: List[Handedness]
+</span>103 <span style=''>
+</span>104 <span style=''>  /** Default Modifiers
+</span>105 <span style=''>    * Dertermines the ability stat used for attack or damage bonuses.
+</span>106 <span style=''>    * Typically this will be STR for melee / bows to Hit and / or damage.
+</span>107 <span style=''>    * Weapon finesse and similar may change this to another stat such as DEX
+</span>108 <span style=''>    * or INT for Insightful Weapons.
+</span>109 <span style=''>    */
+</span>110 <span style=''>  val damageModifier: List[Attributes]
+</span>111 <span style=''>
+</span>112 <span style=''>  /** @see [[damageModifier]]
+</span>113 <span style=''>    */
+</span>114 <span style=''>  val attackModifier: List[Attributes]
+</span>115 <span style=''>
+</span>116 <span style=''>  val upgradeable: UpgradeInfo
+</span>117 <span style=''>
+</span>118 <span style=''>  //  Named items: Category:Composite Shortbows
+</span>119 <span style=''>
+</span>120 <span style=''>  /** handwrap example
+</span>121 <span style=''>    * Base Value: None
+</span>122 <span style=''>    * Weight: None
+</span>123 <span style=''>    * Proficiency Class: Simple weapons
+</span>124 <span style=''>    * Damage and Type: 1d3 Bludgeon (Halflings: 1d2 Bludgeon)
+</span>125 <span style=''>    * Critical threat range 20/x2
+</span>126 <span style=''>    * Weapon Type: Bludgeoning weapons
+</span>127 <span style=''>    * Handedness: One-handed weapon
+</span>128 <span style=''>    * Default Modifiers
+</span>129 <span style=''>    * Damage: STR
+</span>130 <span style=''>    * Attack: STR
+</span>131 <span style=''>    * Durability: Not applicable
+</span>132 <span style=''>    * Made from: Flesh
+</span>133 <span style=''>    * Hardness: N/A
+</span>134 <span style=''>    * Named items: Category:Handwraps
+</span>135 <span style=''>    */
+</span>136 <span style=''>
+</span>137 <span style=''>  /** restricts the slot to main hand or off hand.
+</span>138 <span style=''>    * Override this to restrict further for two handed or other special cases
+</span>139 <span style=''>    */
+</span>140 <span style=''>  def allowedWearLocationFlags: Int = </span><span style='background: #AEF1AE'>WearLocation.MainHand.bitValue | WearLocation.OffHand.bitValue</span><span style=''>
+</span>141 <span style=''>}
+</span>142 <span style=''>
+</span>143 <span style=''>/** Basic trait for allowing an item to be wielded using one or more hand slots.
+</span>144 <span style=''>  *
+</span>145 <span style=''>  * TODO: +allowedWearLocations needs to block off-hand for two-handed melee / bows etc
+</span>146 <span style=''>  * TODO: Bows / x-bows eqiup to main hand, need a plug or otherwise to 'occupy' the off-hand slot
+</span>147 <span style=''>  *
+</span>148 <span style=''>  */
+</span>149 <span style=''>trait HandedWeapon extends Wearable
+</span>150 <span style=''>
+</span>151 <span style=''>trait OneHandedWeapon extends HandedWeapon {
+</span>152 <span style=''>  lazy val allowedWearLocations = {
+</span>153 <span style=''>    </span><span style='background: #F0ADAD'>WearLocation.fromMask(
+</span>154 <span style=''></span><span style='background: #F0ADAD'>      WearLocation.MainHand.bitValue | WearLocation.OffHand.bitValue)</span><span style=''> match {
+</span>155 <span style=''>      case Some(x) => x
+</span>156 <span style=''>      case _       => </span><span style='background: #F0ADAD'>Nil</span><span style=''>
+</span>157 <span style=''>    }
+</span>158 <span style=''>  }
+</span>159 <span style=''>}
+</span>160 <span style=''>
+</span>161 <span style=''>trait TwoHandedWeapon extends HandedWeapon {
+</span>162 <span style=''>  lazy val allowedWearLocations = {
+</span>163 <span style=''>    </span><span style='background: #F0ADAD'>WearLocation.fromMask(WearLocation.MainHand.bitValue)</span><span style=''> match {
+</span>164 <span style=''>      case Some(x) => x
+</span>165 <span style=''>      case _       => </span><span style='background: #F0ADAD'>List[WearLocation with Product with Serializable]()</span><span style=''>
+</span>166 <span style=''>    }
+</span>167 <span style=''>  }
+</span>168 <span style=''>}
+</span>169 <span style=''>
+</span>170 <span style=''>case class CriticalThreatRange(range: Range, multiplier: Int)
+</span></pre>
+          </div>
+          <div class="tab-pane" id="statementlist">
+            <table cellspacing="0" cellpadding="0" class="table statementlist">
+      <tr>
+        <th>Line</th>
+        <th>Stmt Id</th>
+        <th>Pos</th>
+        <th>Tree</th>
+        <th>Symbol</th>
+        <th>Code</th>
+      </tr><tr>
+        <td>
+          140
+        </td>
+        <td>
+          4
+        </td>
+        <td>
+          5080
+          -
+          5142
+        </td>
+        <td>
+          Apply
+        </td>
+        <td>
+          scala.Int.|
+        </td>
+        <td style="background: #AEF1AE">
+          org.aos.ddo.WearLocation.MainHand.bitValue.|(org.aos.ddo.WearLocation.OffHand.bitValue)
+        </td>
+      </tr><tr>
+        <td>
+          153
+        </td>
+        <td>
+          5
+        </td>
+        <td>
+          5562
+          -
+          5574
+        </td>
+        <td>
+          Select
+        </td>
+        <td>
+          org.aos.ddo.WearLocation
+        </td>
+        <td style="background: #AEF1AE">
+          org.aos.ddo.WearLocation
+        </td>
+      </tr><tr>
+        <td>
+          153
+        </td>
+        <td>
+          7
+        </td>
+        <td>
+          5562
+          -
+          5655
+        </td>
+        <td>
+          Apply
+        </td>
+        <td>
+          org.aos.ddo.enumeration.EnumExtensions.EnumCompanionOps.fromMask
+        </td>
+        <td style="background: #F0ADAD">
+          org.aos.ddo.enumeration.EnumExtensions.EnumCompanionOps[org.aos.ddo.WearLocation.type](org.aos.ddo.WearLocation).fromMask(org.aos.ddo.WearLocation.MainHand.bitValue.|(org.aos.ddo.WearLocation.OffHand.bitValue))
+        </td>
+      </tr><tr>
+        <td>
+          154
+        </td>
+        <td>
+          6
+        </td>
+        <td>
+          5592
+          -
+          5654
+        </td>
+        <td>
+          Apply
+        </td>
+        <td>
+          scala.Int.|
+        </td>
+        <td style="background: #AEF1AE">
+          org.aos.ddo.WearLocation.MainHand.bitValue.|(org.aos.ddo.WearLocation.OffHand.bitValue)
+        </td>
+      </tr><tr>
+        <td>
+          156
+        </td>
+        <td>
+          8
+        </td>
+        <td>
+          5712
+          -
+          5715
+        </td>
+        <td>
+          Select
+        </td>
+        <td>
+          scala.collection.immutable.Nil
+        </td>
+        <td style="background: #F0ADAD">
+          immutable.this.Nil
+        </td>
+      </tr><tr>
+        <td>
+          163
+        </td>
+        <td>
+          10
+        </td>
+        <td>
+          5821
+          -
+          5874
+        </td>
+        <td>
+          Apply
+        </td>
+        <td>
+          org.aos.ddo.enumeration.EnumExtensions.EnumCompanionOps.fromMask
+        </td>
+        <td style="background: #F0ADAD">
+          org.aos.ddo.enumeration.EnumExtensions.EnumCompanionOps[org.aos.ddo.WearLocation.type](org.aos.ddo.WearLocation).fromMask(org.aos.ddo.WearLocation.MainHand.bitValue)
+        </td>
+      </tr><tr>
+        <td>
+          163
+        </td>
+        <td>
+          9
+        </td>
+        <td>
+          5821
+          -
+          5833
+        </td>
+        <td>
+          Select
+        </td>
+        <td>
+          org.aos.ddo.WearLocation
+        </td>
+        <td style="background: #F0ADAD">
+          org.aos.ddo.WearLocation
+        </td>
+      </tr><tr>
+        <td>
+          165
+        </td>
+        <td>
+          11
+        </td>
+        <td>
+          5931
+          -
+          5982
+        </td>
+        <td>
+          Select
+        </td>
+        <td>
+          scala.collection.immutable.Nil
+        </td>
+        <td style="background: #F0ADAD">
+          immutable.this.Nil
+        </td>
+      </tr>
+    </table>
+          </div>
+        </div>
+      </body>
+    </html>

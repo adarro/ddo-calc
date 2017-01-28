@@ -1,0 +1,528 @@
+<!DOCTYPE html >
+<html>
+        <head>
+          <title>weapon - Core DDO Objects 0.1.0-alpha API - org.aos.ddo.model.item.weapon</title>
+          <meta name="description" content="weapon - Core DDO Objects 0.1.0 - alpha API - org.aos.ddo.model.item.weapon" />
+          <meta name="keywords" content="weapon Core DDO Objects 0.1.0 alpha API org.aos.ddo.model.item.weapon" />
+          <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+          
+      <link href="../../../../../../lib/template.css" media="screen" type="text/css" rel="stylesheet" />
+      <link href="../../../../../../lib/diagrams.css" media="screen" type="text/css" rel="stylesheet" id="diagrams-css" />
+      <script type="text/javascript" src="../../../../../../lib/jquery.js" id="jquery-js"></script>
+      <script type="text/javascript" src="../../../../../../lib/jquery-ui.js"></script>
+      <script type="text/javascript" src="../../../../../../lib/template.js"></script>
+      <script type="text/javascript" src="../../../../../../lib/tools.tooltip.js"></script>
+      
+      <script type="text/javascript">
+         if(top === self) {
+            var url = '../../../../../../index.html';
+            var hash = 'org.aos.ddo.model.item.weapon.package';
+            var anchor = window.location.hash;
+            var anchor_opt = '';
+            if (anchor.length >= 1)
+              anchor_opt = '@' + anchor.substring(1);
+            window.location.href = url + '#' + hash + anchor_opt;
+         }
+   	  </script>
+    
+        </head>
+        <body class="value">
+      <div id="definition">
+        <img alt="Package" src="../../../../../../lib/package_big.png" />
+        <p id="owner"><a href="../../../../../package.html" class="extype" name="org">org</a>.<a href="../../../../package.html" class="extype" name="org.aos">aos</a>.<a href="../../../package.html" class="extype" name="org.aos.ddo">ddo</a>.<a href="../../package.html" class="extype" name="org.aos.ddo.model">model</a>.<a href="../package.html" class="extype" name="org.aos.ddo.model.item">item</a></p>
+        <h1>weapon</h1><span class="permalink">
+      <a href="../../../../../../index.html#org.aos.ddo.model.item.weapon.package" title="Permalink" target="_top">
+        <img src="../../../../../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      </div>
+
+      <h4 id="signature" class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">package</span>
+      </span>
+      <span class="symbol">
+        <span class="name">weapon</span>
+      </span>
+      </h4>
+      
+          <div id="comment" class="fullcommenttop"></div>
+        
+
+      <div id="mbrsel">
+        <div id="textfilter"><span class="pre"></span><span class="input"><input id="mbrsel-input" type="text" accesskey="/" /></span><span class="post"></span></div>
+        
+        
+        <div id="visbl">
+            <span class="filtertype">Visibility</span>
+            <ol><li class="public in"><span>Public</span></li><li class="all out"><span>All</span></li></ol>
+          </div>
+      </div>
+
+      <div id="template">
+        <div id="allMembers">
+        
+
+        <div id="types" class="types members">
+              <h3>Type Members</h3>
+              <ol><li name="org.aos.ddo.model.item.weapon.CriticalThreatRange" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="CriticalThreatRangeextendsProductwithSerializable"></a>
+      <a id="CriticalThreatRange:CriticalThreatRange"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">case class</span>
+      </span>
+      <span class="symbol">
+        <a href="CriticalThreatRange.html"><span class="name">CriticalThreatRange</span></a><span class="params">(<span name="range">range: <span class="extype" name="scala.Range">Range</span></span>, <span name="multiplier">multiplier: <span class="extype" name="scala.Int">Int</span></span>)</span><span class="result"> extends <span class="extype" name="scala.Product">Product</span> with <span class="extype" name="scala.Serializable">Serializable</span></span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../../../../../index.html#org.aos.ddo.model.item.weapon.package@CriticalThreatRangeextendsProductwithSerializable" title="Permalink" target="_top">
+        <img src="../../../../../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      
+    </li><li name="org.aos.ddo.model.item.weapon.ExoticWeapon" visbl="pub" data-isabs="true" fullComment="no" group="Ungrouped">
+      <a id="ExoticWeaponextendsWeaponProficiency"></a>
+      <a id="ExoticWeapon:ExoticWeapon"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">trait</span>
+      </span>
+      <span class="symbol">
+        <a href="ExoticWeapon.html"><span class="name">ExoticWeapon</span></a><span class="result"> extends <a href="WeaponProficiency.html" class="extype" name="org.aos.ddo.model.item.weapon.WeaponProficiency">WeaponProficiency</a></span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../../../../../index.html#org.aos.ddo.model.item.weapon.package@ExoticWeaponextendsWeaponProficiency" title="Permalink" target="_top">
+        <img src="../../../../../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      <p class="shortcomment cmt">Weapon is extremely rare or requires extensive training.</p>
+    </li><li name="org.aos.ddo.model.item.weapon.HandedWeapon" visbl="pub" data-isabs="true" fullComment="yes" group="Ungrouped">
+      <a id="HandedWeaponextendsWearable"></a>
+      <a id="HandedWeapon:HandedWeapon"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">trait</span>
+      </span>
+      <span class="symbol">
+        <a href="HandedWeapon.html"><span class="name">HandedWeapon</span></a><span class="result"> extends <a href="../../../Wearable.html" class="extype" name="org.aos.ddo.Wearable">Wearable</a></span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../../../../../index.html#org.aos.ddo.model.item.weapon.package@HandedWeaponextendsWearable" title="Permalink" target="_top">
+        <img src="../../../../../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      <p class="shortcomment cmt">Basic trait for allowing an item to be wielded using one or more hand slots.</p><div class="fullcomment"><div class="comment cmt"><p>Basic trait for allowing an item to be wielded using one or more hand slots.</p><p>TODO: +allowedWearLocations needs to block off-hand for two-handed melee / bows etc
+TODO: Bows / x-bows eqiup to main hand, need a plug or otherwise to 'occupy' the off-hand slot</p></div></div>
+    </li><li name="org.aos.ddo.model.item.weapon.Handedness" visbl="pub" data-isabs="true" fullComment="yes" group="Ungrouped">
+      <a id="HandednessextendsEnumEntrywithNoDefault[org.aos.ddo.model.item.weapon.Handedness]"></a>
+      <a id="Handedness:Handedness"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier">sealed </span>
+        <span class="kind">trait</span>
+      </span>
+      <span class="symbol">
+        <a href="Handedness.html"><span class="name">Handedness</span></a><span class="result"> extends <span class="extype" name="enumeratum.EnumEntry">EnumEntry</span> with <a href="../../../NoDefault.html" class="extype" name="org.aos.ddo.NoDefault">NoDefault</a>[<a href="Handedness.html" class="extype" name="org.aos.ddo.model.item.weapon.Handedness">Handedness</a>]</span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../../../../../index.html#org.aos.ddo.model.item.weapon.package@HandednessextendsEnumEntrywithNoDefault[org.aos.ddo.model.item.weapon.Handedness]" title="Permalink" target="_top">
+        <img src="../../../../../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      <p class="shortcomment cmt">handedness is used to determine a one handed, two handed or off hand equip.</p><div class="fullcomment"><div class="comment cmt"><p>handedness is used to determine a one handed, two handed or off hand equip.
+DDOwiki lists bows as ranged
+</p></div></div>
+    </li><li name="org.aos.ddo.model.item.weapon.MartialWeapon" visbl="pub" data-isabs="true" fullComment="no" group="Ungrouped">
+      <a id="MartialWeaponextendsWeaponProficiency"></a>
+      <a id="MartialWeapon:MartialWeapon"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">trait</span>
+      </span>
+      <span class="symbol">
+        <a href="MartialWeapon.html"><span class="name">MartialWeapon</span></a><span class="result"> extends <a href="WeaponProficiency.html" class="extype" name="org.aos.ddo.model.item.weapon.WeaponProficiency">WeaponProficiency</a></span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../../../../../index.html#org.aos.ddo.model.item.weapon.package@MartialWeaponextendsWeaponProficiency" title="Permalink" target="_top">
+        <img src="../../../../../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      <p class="shortcomment cmt">Type generally requires a fighter like class without special training
+</p>
+    </li><li name="org.aos.ddo.model.item.weapon.MeleeDamage" visbl="pub" data-isabs="true" fullComment="no" group="Ungrouped">
+      <a id="MeleeDamageextendsWeaponClass"></a>
+      <a id="MeleeDamage:MeleeDamage"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">trait</span>
+      </span>
+      <span class="symbol">
+        <a href="MeleeDamage.html"><span class="name">MeleeDamage</span></a><span class="result"> extends <a href="WeaponClass.html" class="extype" name="org.aos.ddo.model.item.weapon.WeaponClass">WeaponClass</a></span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../../../../../index.html#org.aos.ddo.model.item.weapon.package@MeleeDamageextendsWeaponClass" title="Permalink" target="_top">
+        <img src="../../../../../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      
+    </li><li name="org.aos.ddo.model.item.weapon.OneHandedWeapon" visbl="pub" data-isabs="true" fullComment="no" group="Ungrouped">
+      <a id="OneHandedWeaponextendsHandedWeapon"></a>
+      <a id="OneHandedWeapon:OneHandedWeapon"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">trait</span>
+      </span>
+      <span class="symbol">
+        <a href="OneHandedWeapon.html"><span class="name">OneHandedWeapon</span></a><span class="result"> extends <a href="HandedWeapon.html" class="extype" name="org.aos.ddo.model.item.weapon.HandedWeapon">HandedWeapon</a></span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../../../../../index.html#org.aos.ddo.model.item.weapon.package@OneHandedWeaponextendsHandedWeapon" title="Permalink" target="_top">
+        <img src="../../../../../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      
+    </li><li name="org.aos.ddo.model.item.weapon.ProficiencyClass" visbl="pub" data-isabs="true" fullComment="no" group="Ungrouped">
+      <a id="ProficiencyClassextendsEnumEntrywithNoDefault[org.aos.ddo.model.item.weapon.ProficiencyClass]"></a>
+      <a id="ProficiencyClass:ProficiencyClass"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier">sealed </span>
+        <span class="kind">trait</span>
+      </span>
+      <span class="symbol">
+        <a href="ProficiencyClass.html"><span class="name">ProficiencyClass</span></a><span class="result"> extends <span class="extype" name="enumeratum.EnumEntry">EnumEntry</span> with <a href="../../../NoDefault.html" class="extype" name="org.aos.ddo.NoDefault">NoDefault</a>[<a href="ProficiencyClass.html" class="extype" name="org.aos.ddo.model.item.weapon.ProficiencyClass">ProficiencyClass</a>]</span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../../../../../index.html#org.aos.ddo.model.item.weapon.package@ProficiencyClassextendsEnumEntrywithNoDefault[org.aos.ddo.model.item.weapon.ProficiencyClass]" title="Permalink" target="_top">
+        <img src="../../../../../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      <p class="shortcomment cmt">Trait to constrain Proficiency values
+</p>
+    </li><li name="org.aos.ddo.model.item.weapon.RangeDamage" visbl="pub" data-isabs="true" fullComment="no" group="Ungrouped">
+      <a id="RangeDamageextendsWeaponClass"></a>
+      <a id="RangeDamage:RangeDamage"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">trait</span>
+      </span>
+      <span class="symbol">
+        <a href="RangeDamage.html"><span class="name">RangeDamage</span></a><span class="result"> extends <a href="WeaponClass.html" class="extype" name="org.aos.ddo.model.item.weapon.WeaponClass">WeaponClass</a></span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../../../../../index.html#org.aos.ddo.model.item.weapon.package@RangeDamageextendsWeaponClass" title="Permalink" target="_top">
+        <img src="../../../../../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      
+    </li><li name="org.aos.ddo.model.item.weapon.SimpleWeapon" visbl="pub" data-isabs="true" fullComment="no" group="Ungrouped">
+      <a id="SimpleWeaponextendsWeaponProficiency"></a>
+      <a id="SimpleWeapon:SimpleWeapon"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">trait</span>
+      </span>
+      <span class="symbol">
+        <a href="SimpleWeapon.html"><span class="name">SimpleWeapon</span></a><span class="result"> extends <a href="WeaponProficiency.html" class="extype" name="org.aos.ddo.model.item.weapon.WeaponProficiency">WeaponProficiency</a></span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../../../../../index.html#org.aos.ddo.model.item.weapon.package@SimpleWeaponextendsWeaponProficiency" title="Permalink" target="_top">
+        <img src="../../../../../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      <p class="shortcomment cmt">Weapon generally requires no special training to use.</p>
+    </li><li name="org.aos.ddo.model.item.weapon.SpecialDamage" visbl="pub" data-isabs="true" fullComment="no" group="Ungrouped">
+      <a id="SpecialDamageextendsWeaponClass"></a>
+      <a id="SpecialDamage:SpecialDamage"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">trait</span>
+      </span>
+      <span class="symbol">
+        <a href="SpecialDamage.html"><span class="name">SpecialDamage</span></a><span class="result"> extends <a href="WeaponClass.html" class="extype" name="org.aos.ddo.model.item.weapon.WeaponClass">WeaponClass</a></span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../../../../../index.html#org.aos.ddo.model.item.weapon.package@SpecialDamageextendsWeaponClass" title="Permalink" target="_top">
+        <img src="../../../../../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      <p class="shortcomment cmt">This trait indicates Damage is delivered in a non-standard way and may require some
+custom processing.</p>
+    </li><li name="org.aos.ddo.model.item.weapon.ThrownDamage" visbl="pub" data-isabs="true" fullComment="no" group="Ungrouped">
+      <a id="ThrownDamageextendsWeaponClass"></a>
+      <a id="ThrownDamage:ThrownDamage"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">trait</span>
+      </span>
+      <span class="symbol">
+        <a href="ThrownDamage.html"><span class="name">ThrownDamage</span></a><span class="result"> extends <a href="WeaponClass.html" class="extype" name="org.aos.ddo.model.item.weapon.WeaponClass">WeaponClass</a></span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../../../../../index.html#org.aos.ddo.model.item.weapon.package@ThrownDamageextendsWeaponClass" title="Permalink" target="_top">
+        <img src="../../../../../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      
+    </li><li name="org.aos.ddo.model.item.weapon.TwoHandedWeapon" visbl="pub" data-isabs="true" fullComment="no" group="Ungrouped">
+      <a id="TwoHandedWeaponextendsHandedWeapon"></a>
+      <a id="TwoHandedWeapon:TwoHandedWeapon"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">trait</span>
+      </span>
+      <span class="symbol">
+        <a href="TwoHandedWeapon.html"><span class="name">TwoHandedWeapon</span></a><span class="result"> extends <a href="HandedWeapon.html" class="extype" name="org.aos.ddo.model.item.weapon.HandedWeapon">HandedWeapon</a></span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../../../../../index.html#org.aos.ddo.model.item.weapon.package@TwoHandedWeaponextendsHandedWeapon" title="Permalink" target="_top">
+        <img src="../../../../../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      
+    </li><li name="org.aos.ddo.model.item.weapon.Weapon" visbl="pub" data-isabs="true" fullComment="yes" group="Ungrouped">
+      <a id="WeaponextendsItemwithMetaDatawithHandedWeapon"></a>
+      <a id="Weapon:Weapon"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">trait</span>
+      </span>
+      <span class="symbol">
+        <a href="Weapon.html"><span class="name">Weapon</span></a><span class="result"> extends <a href="../../../Item.html" class="extype" name="org.aos.ddo.Item">Item</a> with <a href="../../../MetaData.html" class="extype" name="org.aos.ddo.MetaData">MetaData</a> with <a href="HandedWeapon.html" class="extype" name="org.aos.ddo.model.item.weapon.HandedWeapon">HandedWeapon</a></span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../../../../../index.html#org.aos.ddo.model.item.weapon.package@WeaponextendsItemwithMetaDatawithHandedWeapon" title="Permalink" target="_top">
+        <img src="../../../../../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      <p class="shortcomment cmt">Weapon
+Used only for protection...</p><div class="fullcomment"><div class="comment cmt"><p>Weapon
+Used only for protection... and kobolds.
+</p></div><dl class="attributes block"> <dt>Note</dt><dd><span class="cmt"><p>
+Template:
+Base Item Object
+Proficiency Class  Simple Weapon Proficiency
+Icerazor shown.jpg
+Damage and Type  2 [1d6] + 6 Slash, Magic
+Critical threat range  20 / x2
+Weapon Type  Sickle / Slashing weapons
+Race Absolutely Required  None
+Minimum Level  21
+Required Trait  None
+Use Magical Device DC  No UMD needed
+Handedness
+Attack Mod  STR
+Damage Mod  STR
+Binding  Bound to Character on Equip or Bound to Character on Acquire
+Durability  170
+Made from  Ice
+Hardness  22
+Base Value  8,400pp
+Weight  2 lbs
+Location  The House of Broken Chains, End Chest ; Slavemaster Banister of House Avithoul, The Underdark ;
+Menace of the Underdark: City of Portals, Quest chain end reward
+Enchantments
+Spellcasting Implement +18
++6 Enhancement Bonus
+Glaciation +102
+Ice Lore V
+Slicing
+Icy Burst
+Freezing Ice
+Upgradeable?
+Not upgradeable
+Composite Shortbow
+Description  This wicked sickle is crafted from magical ice that will never melt.
+Any flesh it touches will instantly freeze to the blade, to be painfully ripped away when the weapon is withdrawn.</p></span></dd></dl></div>
+    </li><li name="org.aos.ddo.model.item.weapon.WeaponCategory" visbl="pub" data-isabs="true" fullComment="yes" group="Ungrouped">
+      <a id="WeaponCategoryextendsEnumEntrywithDamagewithWeaponClass"></a>
+      <a id="WeaponCategory:WeaponCategory"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier">sealed </span>
+        <span class="kind">trait</span>
+      </span>
+      <span class="symbol">
+        <a href="WeaponCategory.html"><span class="name">WeaponCategory</span></a><span class="result"> extends <span class="extype" name="enumeratum.EnumEntry">EnumEntry</span> with <a href="../../../Damage.html" class="extype" name="org.aos.ddo.Damage">Damage</a> with <a href="WeaponClass.html" class="extype" name="org.aos.ddo.model.item.weapon.WeaponClass">WeaponClass</a></span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../../../../../index.html#org.aos.ddo.model.item.weapon.package@WeaponCategoryextendsEnumEntrywithDamagewithWeaponClass" title="Permalink" target="_top">
+        <img src="../../../../../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      <p class="shortcomment cmt">Enumerates the specific base types of weapons available in DDO, i.e.</p><div class="fullcomment"><div class="comment cmt"><p>Enumerates the specific base types of weapons available in DDO, i.e. Kopesh, Dagger etc.
+</p></div></div>
+    </li><li name="org.aos.ddo.model.item.weapon.WeaponClass" visbl="pub" data-isabs="true" fullComment="no" group="Ungrouped">
+      <a id="WeaponClassextendsAnyRef"></a>
+      <a id="WeaponClass:WeaponClass"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">trait</span>
+      </span>
+      <span class="symbol">
+        <a href="WeaponClass.html"><span class="name">WeaponClass</span></a><span class="result"> extends <span class="extype" name="scala.AnyRef">AnyRef</span></span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../../../../../index.html#org.aos.ddo.model.item.weapon.package@WeaponClassextendsAnyRef" title="Permalink" target="_top">
+        <img src="../../../../../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      <p class="shortcomment cmt">Specifies the method of damage delivery.</p>
+    </li><li name="org.aos.ddo.model.item.weapon.WeaponProficiency" visbl="pub" data-isabs="true" fullComment="no" group="Ungrouped">
+      <a id="WeaponProficiencyextendsAnyRef"></a>
+      <a id="WeaponProficiency:WeaponProficiency"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier">sealed </span>
+        <span class="kind">trait</span>
+      </span>
+      <span class="symbol">
+        <a href="WeaponProficiency.html"><span class="name">WeaponProficiency</span></a><span class="result"> extends <span class="extype" name="scala.AnyRef">AnyRef</span></span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../../../../../index.html#org.aos.ddo.model.item.weapon.package@WeaponProficiencyextendsAnyRef" title="Permalink" target="_top">
+        <img src="../../../../../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      <p class="shortcomment cmt">Base trait to provide a field for weapon proficiency
+</p>
+    </li><li name="org.aos.ddo.model.item.weapon.WeaponType" visbl="pub" data-isabs="true" fullComment="no" group="Ungrouped">
+      <a id="WeaponTypeextendsEnumEntrywithNoDefault[org.aos.ddo.model.item.weapon.WeaponType]"></a>
+      <a id="WeaponType:WeaponType"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier">sealed </span>
+        <span class="kind">trait</span>
+      </span>
+      <span class="symbol">
+        <a href="WeaponType.html"><span class="name">WeaponType</span></a><span class="result"> extends <span class="extype" name="enumeratum.EnumEntry">EnumEntry</span> with <a href="../../../NoDefault.html" class="extype" name="org.aos.ddo.NoDefault">NoDefault</a>[<a href="WeaponType.html" class="extype" name="org.aos.ddo.model.item.weapon.WeaponType">WeaponType</a>]</span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../../../../../index.html#org.aos.ddo.model.item.weapon.package@WeaponTypeextendsEnumEntrywithNoDefault[org.aos.ddo.model.item.weapon.WeaponType]" title="Permalink" target="_top">
+        <img src="../../../../../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      <p class="shortcomment cmt">used to denote the basic use of the weapon.</p>
+    </li></ol>
+            </div>
+
+        
+
+        <div id="values" class="values members">
+              <h3>Value Members</h3>
+              <ol><li name="org.aos.ddo.model.item.weapon.Handedness" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="Handedness"></a>
+      <a id="Handedness:Handedness"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">object</span>
+      </span>
+      <span class="symbol">
+        <a href="Handedness$.html"><span class="name">Handedness</span></a><span class="result"> extends <span class="extype" name="enumeratum.Enum">Enum</span>[<a href="Handedness.html" class="extype" name="org.aos.ddo.model.item.weapon.Handedness">Handedness</a>]</span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../../../../../index.html#org.aos.ddo.model.item.weapon.package@Handedness" title="Permalink" target="_top">
+        <img src="../../../../../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      
+    </li><li name="org.aos.ddo.model.item.weapon.ProficiencyClass" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="ProficiencyClass"></a>
+      <a id="ProficiencyClass:ProficiencyClass"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">object</span>
+      </span>
+      <span class="symbol">
+        <a href="ProficiencyClass$.html"><span class="name">ProficiencyClass</span></a><span class="result"> extends <span class="extype" name="enumeratum.Enum">Enum</span>[<a href="ProficiencyClass.html" class="extype" name="org.aos.ddo.model.item.weapon.ProficiencyClass">ProficiencyClass</a>]</span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../../../../../index.html#org.aos.ddo.model.item.weapon.package@ProficiencyClass" title="Permalink" target="_top">
+        <img src="../../../../../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      <p class="shortcomment cmt">Enumerates the distinct weapon proficiencies.</p>
+    </li><li name="org.aos.ddo.model.item.weapon.WeaponCategory" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="WeaponCategory"></a>
+      <a id="WeaponCategory:WeaponCategory"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">object</span>
+      </span>
+      <span class="symbol">
+        <a href="WeaponCategory$.html"><span class="name">WeaponCategory</span></a><span class="result"> extends <span class="extype" name="enumeratum.Enum">Enum</span>[<a href="WeaponCategory.html" class="extype" name="org.aos.ddo.model.item.weapon.WeaponCategory">WeaponCategory</a>]</span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../../../../../index.html#org.aos.ddo.model.item.weapon.package@WeaponCategory" title="Permalink" target="_top">
+        <img src="../../../../../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      <p class="shortcomment cmt">Holds the basic (Default) weapon types, swords, axes etc.</p><div class="fullcomment"><div class="comment cmt"><p>Holds the basic (Default) weapon types, swords, axes etc.
+TODO: Handle orbs and rune arms, orbs should be shields,
+but rune arm is only off-hand only with non-physical damage
+</p></div></div>
+    </li><li name="org.aos.ddo.model.item.weapon.WeaponType" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="WeaponType"></a>
+      <a id="WeaponType:WeaponType"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">object</span>
+      </span>
+      <span class="symbol">
+        <a href="WeaponType$.html"><span class="name">WeaponType</span></a><span class="result"> extends <span class="extype" name="enumeratum.Enum">Enum</span>[<a href="WeaponType.html" class="extype" name="org.aos.ddo.model.item.weapon.WeaponType">WeaponType</a>]</span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../../../../../index.html#org.aos.ddo.model.item.weapon.package@WeaponType" title="Permalink" target="_top">
+        <img src="../../../../../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      <p class="shortcomment cmt">Enum to constrain allowed Weapon Types
+</p>
+    </li></ol>
+            </div>
+
+        
+
+        
+        </div>
+
+        <div id="inheritedMembers">
+        
+        
+        </div>
+
+        <div id="groupedMembers">
+        <div class="group" name="Ungrouped">
+              <h3>Ungrouped</h3>
+              
+            </div>
+        </div>
+
+      </div>
+
+      <div id="tooltip"></div>
+
+      <div id="footer">  </div>
+
+
+    </body>
+      </html>

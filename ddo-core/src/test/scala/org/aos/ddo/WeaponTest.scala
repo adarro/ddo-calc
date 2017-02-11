@@ -16,11 +16,12 @@
 package org.aos.ddo
 
 import scala.language.reflectiveCalls
-
 import org.aos.ddo.MonetaryValue.Coins
-import org.aos.ddo.weapon.{ Handedness, ProficiencyClass, Weapon, WeaponCategory }
+import org.aos.ddo.model.attribute.Attribute
+import org.aos.ddo.model.misc.Material
+import org.aos.ddo.model.item.weapon.{Handedness, ProficiencyClass, Weapon, WeaponCategory}
 import org.junit.runner.RunWith
-import org.scalatest.{ FunSpec, Matchers }
+import org.scalatest.{FunSpec, Matchers}
 import org.scalatest.junit.JUnitRunner
 import org.scalatest.mockito.MockitoSugar
 import org.scalatest.tags.Slow
@@ -37,13 +38,13 @@ class WeaponTest extends FunSpec with Matchers with MockitoSugar {
       val damage = Some(mock[DamageInfo])
       val critical = Some(mock[CriticalProfile])
       val weaponCategory = Some(WeaponCategory.Dagger)
-      val baseValue = Some(new Coins(Coinage))
+      val baseValue = Some(Coins(Coinage))
       val handedness: List[Handedness] = mock[List[Handedness]]
-      val weaponType = Some(mock[org.aos.ddo.weapon.WeaponType])
+      val weaponType = Some(mock[org.aos.ddo.model.item.weapon.DeliveryType])
       val weight = Some(NWeight)
       val binding = Some(BindingFlags.Unbound)
-      val attackModifier: List[Attributes] = mock[List[Attributes]]
-      val damageModifier: List[Attributes] = mock[List[Attributes]]
+      val attackModifier: List[Attribute] = mock[List[Attribute]]
+      val damageModifier: List[Attribute] = mock[List[Attribute]]
       val durability: Int = 3
       val hardness: Int = 4
       val material = Some(mock[Material])

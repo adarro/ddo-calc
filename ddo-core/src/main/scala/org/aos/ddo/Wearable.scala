@@ -14,6 +14,8 @@
  * limitations under the License.
  */
 package org.aos.ddo
+import enumeratum.EnumEntry
+import org.aos.ddo.enumeration.EnumExtensions._
 
 /** Indicates the given object can be equipped / wielded etc.
   */
@@ -22,13 +24,14 @@ trait Wearable {
     *
     * Slots are determined by default using the allowedWearLocationFlags bitmask.
     */
-  lazy val equipmentSlot = {
+  lazy val equipmentSlot: Seq[EnumEntry] = {
     WearLocation.fromMask(allowedWearLocationFlags) match {
       case Some(x) => x
       case _       => List[WearLocation with Product with Serializable]()
     }
   }
-  /** A bitmask that corresponds to one or more [[org.aos.ddo.WearLocation] values.
+
+  /** A bitmask that corresponds to one or more [org.aos.ddo.WearLocation] values.
     */
   def allowedWearLocationFlags: Int
 }

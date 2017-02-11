@@ -44,13 +44,13 @@ class DDoWikiScrapingIT extends FunSpec with Matchers with MockitoSugar with Laz
   private def fixture = new {
 
     // Drow X of the Weapon Master
-    val nestedListDoc = loadLocalTestHtml(nestedPath)
+    val nestedListDoc: Document = loadLocalTestHtml(nestedPath)
     // Eyld Edge
-    val simpleListDoc = loadLocalTestHtml(simplePath)
+    val simpleListDoc: Document = loadLocalTestHtml(simplePath)
   }
   describe("Effect / enhancement List") {
-    it("Should read a simple list") {
-      // This example has 6 items in a simple list, so we should have one branch with 6 leaves
+    it("Should read a Simple list") {
+      // This example has 6 items in a Simple list, so we should have one branch with 6 leaves
 
       val fragment = fixture.simpleListDoc
       val result = Tree(Warehouse.readHtmlList(fragment))
@@ -64,7 +64,7 @@ class DDoWikiScrapingIT extends FunSpec with Matchers with MockitoSugar with Laz
     }
 
     it("Should read a nested UL list") {
-      // This example has 2 items in a simple list, plus 5 nested ones
+      // This example has 2 items in a Simple list, plus 5 nested ones
 
       val fragment = fixture.nestedListDoc
       val result = Tree(Warehouse.readHtmlList(fragment))

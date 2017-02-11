@@ -15,7 +15,9 @@
   */
 package org.aos.ddo
 
-import org.aos.ddo.weapon.{ Handedness, ProficiencyClass, WeaponCategory => wcat, WeaponType }
+import org.aos.ddo.model.attribute.{Attribute => Attrib}
+import org.aos.ddo.model.item.weapon.{DeliveryType, Handedness, ProficiencyClass, WeaponCategory => wcat}
+import org.aos.ddo.model.misc.Material
 
 /**
   * Encapsulates any and all Items and objects within DDO
@@ -23,32 +25,32 @@ import org.aos.ddo.weapon.{ Handedness, ProficiencyClass, WeaponCategory => wcat
 object DDOObject {
   // Character Planning
   case class Character()
-  case class Enchancement()
+  case class Enhancement()
   case class Attribute()
   case class Skill()
   case class Feat()
   // Able to Equip
-  case class Weapon(val absoluteMinimumLevel: Option[Int],
-    val baseValue: Option[MonetaryValue.Coins],
-    val description: Option[String],
-    val durability: Int,
-    val hardness: Int,
-    val material: Option[Material],
-    val minimumLevel: Int,
-    val umd: Int,
-    val weight: Option[Int],
-    val binding: Option[BindingFlags],
-    val enchantments: Option[Seq[String]],
-    // Members declared in org.aos.ddo.Weapon
-    val attackModifier: List[Attributes],
-    val critical: Option[CriticalProfile],
-    val damage: Option[DamageInfo],
-    val damageModifier: List[Attributes],
-    val handedness: List[Handedness],
-    val proficiency: Option[ProficiencyClass],
-    val upgradeable: UpgradeInfo,
-    val weaponCategory: Option[wcat],
-    val weaponType: Option[WeaponType]) extends org.aos.ddo.weapon.Weapon
+  case class Weapon(absoluteMinimumLevel: Option[Int],
+                    baseValue: Option[MonetaryValue.Coins],
+                    description: Option[String],
+                    durability: Int,
+                    hardness: Int,
+                    material: Option[Material],
+                    minimumLevel: Int,
+                    umd: Int,
+                    weight: Option[Int],
+                    binding: Option[BindingFlags],
+                    enchantments: Option[Seq[String]],
+                    // Members declared in org.aos.ddo.Weapon
+                    attackModifier: List[Attrib],
+                    critical: Option[CriticalProfile],
+                    damage: Option[DamageInfo],
+                    damageModifier: List[Attrib],
+                    handedness: List[Handedness],
+                    proficiency: Option[ProficiencyClass],
+                    upgradeable: UpgradeInfo,
+                    weaponCategory: Option[wcat],
+                    weaponType: Option[DeliveryType]) extends org.aos.ddo.model.item.weapon.Weapon
   case class Clothing()
   case class Jewelery()
   case class Armour()

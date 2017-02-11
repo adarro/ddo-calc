@@ -1,7 +1,7 @@
 package org.aos.ddo.support
 
-import org.aos.ddo.effect.Suffix
-import org.aos.ddo.effect.Prefix
+import org.aos.ddo.model.effect.Suffix
+import org.aos.ddo.model.effect.Prefix
 
 trait RomanNumeral {
   type Self <: RomanNumeral

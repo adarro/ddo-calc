@@ -5,7 +5,7 @@
   * you may not use this file except in compliance with the License.
   * You may obtain a copy of the License at
   *
-  *        http://www.apache.org/licenses/LICENSE-2.0
+  * http://www.apache.org/licenses/LICENSE-2.0
   *
   * Unless required by applicable law or agreed to in writing, software
   * distributed under the License is distributed on an "AS IS" BASIS,
@@ -13,20 +13,102 @@
   * See the License for the specific language governing permissions and
   * limitations under the License.
   */
+
 package org.aos.ddo
 
 import scala.util.control.Exception.catching
-
 import com.wix.accord.Violation
+import org.aos.ddo.model.race.Race
+import org.aos.ddo.support.requisite.Requirement
+import org.aos.ddo.support.requisite.Requirement.ReqRace
+
+import scala.language.postfixOps
+import scala.util.Random
+
 package object support {
   /**
     * StringUtils
     * Useful Implicits used in mapping
     */
   object StringUtils {
+
     implicit class StringImprovements(val s: String) {
       def toIntOpt: Option[Int] = catching(classOf[NumberFormatException]) opt s.toInt
     }
+
+    implicit class Extensions(val s: String) {
+      /**
+        * Formats string into [[http://wiki.c2.com/?PascalCase PascalCase]] or 'UpperCamelCase'
+        *
+        * @return formatted string
+        * @note this also removes space characters but does not check for characters taht may be illegal
+        *       for a specific language. (i.e. underscores, commas etc)
+        */
+      def toPascalCase: String = {
+        {
+          for {w <- s.split(Space)
+               c = w.charAt(0).toString.toLowerCase
+          } yield w.toLowerCase.replaceFirst(c, c.toUpperCase)
+        } mkString
+      }
+
+
+      /**
+        * Splits a string using uppercase
+        *
+        * @return the string with spaces between words.
+        * @note This is currently a very simple parser that assumes input is camel-cased.  Non-camel case
+        *       may have undesired results. i.e.  TEST will return T E S T. where getFoo returns get Foo.
+        */
+      def splitByCase: String = {
+        val b = new StringBuilder
+        s.toCharArray.foreach { c =>
+          if (c.isLetter && c.isUpper) b.append(s" $c") else b.append(c.toString)
+        }
+        b.mkString.trim
+      }
+
+      /**
+        * Sanitizes strings by removing unwanted characters
+        *
+        * @return Sanitized string.
+        */
+      def sanitize: String = {
+        s
+          .trim
+          .filterAlphaNumeric
+      }
+
+      def filterAlphaNumeric: String =
+        s.toCharArray.filter { x => x.isLetterOrDigit }.mkString
+
+      def randomCase: String = {
+        val r = new Random
+        s.toCharArray
+          .map { x => if (r.nextInt > 0) x.toUpper else x.toLower }
+          .foldLeft("")((r, c) => r + c)
+      }
+
+      /**
+        * Attempts to convert a string to an acronym
+        *
+        * Will use space as a delimiter, falling back on Case else None.
+        *
+        * @example
+        * {{{
+        * val wordList = List("I Believe Mom","i borrow money","IBetterMail","oracle")
+        * wordList.map(x => wordsToAcronym(x)}
+        * res0:List(Some("IBM"),Some("ibm"),Some("IBM"),None)
+        * }}}
+        */
+      def wordsToAcronym: Option[String] = Option(s) match {
+        case Some(x) if x.contains(Space) =>
+          Some(new String(x.split(" ").map { y => y.charAt(0) }))
+        case Some(x) => Some(new String(x.toCharArray.filter { y => y.isLetter && y.isUpper }))
+        case _ => None
+      }
+    }
+
     // Constants
     final val Comma = ","
     final val Space = " "
@@ -38,47 +120,38 @@ package object support {
     // Random generator
     private[this] val random: scala.util.Random = new scala.util.Random
 
-    /**
-      * Attempts to convert a string to an acronym
-      *
-      * Will use space as a delimiter, falling back on Case else None.
-      *
-      * @example
-      * {{{
-      * val wordList = List("I Believe Mom","i borrow money","IBetterMail","oracle")
-      * wordList.map(x => wordsToAcronym(x)}
-      * res0:List(Some("IBM"),Some("ibm"),Some("IBM"),None)
-      * }}}
-      */
-    def wordsToAcronym(words: String): Option[String] = {
-      Option(words) match {
-        case Some(x) if (x.contains(Space)) =>
-          Some(new String(x.split(" ").map { y => y.charAt(0) }))
-        case Some(x) => Some(new String(x.toCharArray().filter { y => y.isLetter && y.isUpper }))
-        case _       => None
-      }
-    }
+
     /**
       * Generate a random string of length n from the given alphabet
+      *
       * @note see excellent source at [[http://www.bindschaedler.com/2012/04/07/elegant-random-string-generation-in-scala/ Laurent BINDSCHAEDLER's blog post]]
       */
     def randomString(alphabet: String)(n: Int): String =
-      Stream.continually(random.nextInt(alphabet.size)).map(alphabet).take(n).mkString
+      Stream.continually(random.nextInt(alphabet.length)).map(alphabet).take(n).mkString
 
     /**
       * Generate a random alphabnumeric string of length n
       */
     def randomAlphanumericString(n: Int): String =
-      randomString("abcdefghijklmnopqrstuvwxyz0123456789")(n)
+      randomString({
+        ('a' to 'z') ++ (0 to 9)
+      }.mkString)(n)
+
+    def randomAlphaString(n: Int): String =
+      randomString(('a' to 'z').mkString)(n)
   }
 
   /**
     * Validation utilities and convenience routines
     */
   object Validation {
-    import StringUtils.LineSep // scalastyle:off import.group
+
+    import StringUtils.LineSep
+
+    // scalastyle:off import.group
     /**
       * Extracts violation description and message text
+      *
       * @param v Volations
       * @return Printable list of violations.
       */
@@ -86,12 +159,13 @@ package object support {
       val buf = new StringBuilder
       v.foreach { x =>
         x.description match {
-          case Some(d) => buf.append(s"${d} -> ${x.constraint}")
-          case _       => buf.append(x.constraint)
+          case Some(d) => buf.append(s"$d -> ${x.constraint}")
+          case _ => buf.append(x.constraint)
         }
         buf.append(LineSep)
       }
       buf.toString()
     }
   }
+
 }

@@ -4,7 +4,7 @@
   * you may not use this file except in compliance with the License.
   * You may obtain a copy of the License at
   *
-  *       http://www.apache.org/licenses/LICENSE-2.0
+  * http://www.apache.org/licenses/LICENSE-2.0
   *
   * Unless required by applicable law or agreed to in writing, software
   * distributed under the License is distributed on an "AS IS" BASIS,
@@ -12,10 +12,11 @@
   * See the License for the specific language governing permissions and
   * limitations under the License.
   */
+
 package org.aos.ddo
 
 import com.typesafe.scalalogging.LazyLogging
-import org.aos.ddo.support.StringUtils.{randomAlphanumericString, wordsToAcronym}
+import org.aos.ddo.support.StringUtils.{Extensions, randomAlphanumericString}
 import org.junit.runner.RunWith
 import org.scalatest.junit.JUnitRunner
 import org.scalatest.mockito.MockitoSugar
@@ -32,8 +33,8 @@ class BindingTest extends FunSpec with Matchers with MockitoSugar with LazyLoggi
     "Bound To Character",
     "Bound To Account")
   final val numCharacters = 10
-  final val randWords = for { x <- 1 to 5 } yield randomAlphanumericString(numCharacters)
-  final val abbr = possibleText.map { words => if (words.equalsIgnoreCase(Unbound)) Unbound else wordsToAcronym(words).get }
+  final val randWords = for {x <- 1 to 5} yield randomAlphanumericString(numCharacters)
+  final val abbr = possibleText.map { words => if (words.equalsIgnoreCase(Unbound)) Unbound else words.wordsToAcronym.getOrElse(Unbound) }
   final val checks: List[String] = List("BindsToAccount",
     "Unbound", "BindsToCharacter", "BindsToCharacterOnEquip", "BindsToAccountOnEquip", "BindsToCharacterOnAcquire", "BindsToCharacterOnEquip")
   describe("Binding Status") {
@@ -52,7 +53,7 @@ class BindingTest extends FunSpec with Matchers with MockitoSugar with LazyLoggi
     }
     it("should have a default value of BindingFlags.Unbound") {
       val unbound = BindingFlags.Unbound
-      val binding = BindingFlags.defaultType
+      val binding = BindingFlags.default
       BindingFlags.isDefaultValue(unbound) should be(true)
 
       binding shouldEqual Some(unbound)

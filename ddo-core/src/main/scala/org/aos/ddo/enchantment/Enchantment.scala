@@ -15,6 +15,6 @@
   */
 package org.aos.ddo.enchantment
 
-import org.aos.ddo.effect.EffectList
+import org.aos.ddo.model.effect.EffectList
 
 trait Enchantment extends EffectList

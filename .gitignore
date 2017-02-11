@@ -74,6 +74,7 @@ quick.bat
 /pom.xml.back
 .codeclimate.yml
 .idea/
+.idea_bak
 ddo-calc-parent.iml
 ddo-core/ddo-core.iml
 ddo-core/src/main/scala/org/aos/ddo/experimental/
@@ -81,3 +82,5 @@ ddo-etl/
 ddo-plot/ddo-plot.iml
 ddo-web/bin/
 ddo-web/ddo-web.iml
+qa-tools/qa-tools.iml
+/.ensime_cache/

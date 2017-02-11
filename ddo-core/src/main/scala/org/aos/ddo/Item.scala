@@ -16,7 +16,9 @@
 package org.aos.ddo
 
 import org.aos.ddo.MonetaryValue.Coins
-import org.aos.ddo.effect.Effects
+import org.aos.ddo.model.effect.Effect
+import org.aos.ddo.model.misc.Material
+import org.aos.ddo.model.race.Race
 
 /**
   * A general Item, which can be a Weapon, Armor, potion, scroll etc.
@@ -65,7 +67,7 @@ trait Item extends MetaData {
   /**
     * Additional Effects such as enchantments on a Weapon
     */
-  val effects: List[Effects] = Nil
+  val effects: List[Effect] = Nil
   /**
     * //TODO: create set bonus case classes
     */

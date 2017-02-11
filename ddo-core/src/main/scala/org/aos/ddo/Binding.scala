@@ -14,16 +14,18 @@
   */
 package org.aos.ddo
 
+import enumeratum.{EnumEntry,Enum}
+
 /** The 'What it does' half of binding status.
   */
-sealed trait BindingStatus extends BindingStatus.Value with DefaultValue[BindingStatus.Value] {
-  override lazy val defaultType = Some(BindingStatus.Unbound)
+sealed trait BindingStatus extends EnumEntry with DefaultValue[BindingStatus] {
+  override lazy val default = Some(BindingStatus.Unbound)
 }
 /** Enum for noting the distinct types of binding.
   *
   * Binding ties an object to a character, preventing them from selling, trading or transferring.
   */
-object BindingStatus extends Enum[BindingStatus] {
+object BindingStatus extends Enum[BindingStatus] with DefaultValue[BindingStatus] {
   /** Item can be transfered between characters on the same account.
     *
     * Generally through the shared bank.
@@ -36,15 +38,15 @@ object BindingStatus extends Enum[BindingStatus] {
     */
   case object Unbound extends BindingStatus
   override val values = List(BindsToAccount, BindsToCharacter, Unbound)
-  override val defaultValue = Some(BindingStatus.Unbound)
+  override lazy val default = Some(BindingStatus.Unbound)
 }
 
 /** The 'When' any binding occurs
   */
-sealed trait BindingEvent extends BindingEvent.Value with NoDefault[BindingEvent.Value]
+sealed trait BindingEvent extends EnumEntry with NoDefault[BindingEvent]
 /** Triggers for binding.
   */
-object BindingEvent extends Enum[BindingEvent] {
+object BindingEvent extends Enum[BindingEvent] with DefaultValue[BindingEvent] {
   /** Occurs when you receive the item, such as a quest reward or upon crafting.
     */
   case object OnAcquire extends BindingEvent
@@ -55,5 +57,5 @@ object BindingEvent extends Enum[BindingEvent] {
     */
   case object None extends BindingEvent
   override val values = List(OnAcquire, OnEquip, None)
-  override val defaultValue = Some(BindingEvent.None)
+  override lazy val default = Some(BindingEvent.None)
 }

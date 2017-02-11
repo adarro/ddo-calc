@@ -63,7 +63,7 @@ object Field {
     */
   final val Handedness = "Handedness"
   /**
-    * Extracts Attributes used to determine Attack modifier for Weapons
+    * Extracts Attribute used to determine Attack modifier for Weapons
     *
     * Typically this will be STR (Strength) for Melee weapons and Dex for some Missile weapons.
     */

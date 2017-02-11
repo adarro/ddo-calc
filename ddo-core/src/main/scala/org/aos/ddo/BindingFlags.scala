@@ -15,11 +15,10 @@
  */
 package org.aos.ddo
 
-import org.aos.ddo.support.StringUtils.wordsToAcronym
-
 import com.typesafe.scalalogging.LazyLogging
-
-import enumeratum.{ Enum => SmartEnum, EnumEntry }
+import enumeratum.{Enum,EnumEntry}
+import org.aos.ddo.BindingFlags.Unbound
+import org.aos.ddo.support.StringUtils.Extensions
 
 /** Stores the binding status of an item.
   *
@@ -30,12 +29,12 @@ sealed abstract class BindingFlags(
     override val entryName: String,
     status: BindingStatus,
     event: BindingEvent) extends EnumEntry with Abbreviation with DefaultValue[BindingFlags] {
-  val abbr = entryName
-  override lazy val defaultType = BindingFlags.defaultType
+  val abbr: String = entryName
+  override lazy val default: Option[Unbound.type] = BindingFlags.default
 }
 /** Distinct value of binding options.
   */
-object BindingFlags extends SmartEnum[BindingFlags] with DefaultValue[BindingFlags] with LazyLogging {
+object BindingFlags extends Enum[BindingFlags] with DefaultValue[BindingFlags] with LazyLogging {
   /** Attempts to mangle an Enumeration using free text.
     *
     * There is no extensive rule set, but DDO commonly using acronyms such as BTC,
@@ -47,14 +46,14 @@ object BindingFlags extends SmartEnum[BindingFlags] with DefaultValue[BindingFla
     *
     * Finally defaults to None
     *
-    * If you have the exact words without spaces, it may be more performant to use the 'withName' methods.
+    * If you have the exact words without spaces, it may be more performant to use the 'withName' variant.
     * NOTE: This enumeration is keyed by Acronym, so BTCoE will match, where 'Bound to Character On Equip' will fail.
     */
   def fromWords(words: Option[String]): Option[BindingFlags] = {
     words match {
       case Some(x) if x.equalsIgnoreCase(BindingFlags.Unbound.toFullWord()) =>
         Some(BindingFlags.Unbound)
-      case Some(x) => wordsToAcronym(x) match {
+      case Some(x) => x.wordsToAcronym match {
         case Some(abbr) =>
           BindingFlags.values.find { x => x.abbr.equalsIgnoreCase(abbr) } match {
             case Some(opt) => Some(opt)
@@ -67,14 +66,14 @@ object BindingFlags extends SmartEnum[BindingFlags] with DefaultValue[BindingFla
     }
   }
 
-  /** @see [[org.aos.ddo.BindingFlags.fromWords#Option[String]]]
+  /** @see [[org.aos.ddo.BindingFlags.fromWords(#Option[String])]]
     */
   def fromWords(words: String): Option[BindingFlags] = fromWords(Option(words))
 
   /** Returns the default binding status (BindingFlags.Unbound)
     */
-  override lazy val defaultType = Some(BindingFlags.Unbound)
-  val values = findValues
+  override lazy val default: Option[Unbound.type] = Some(BindingFlags.Unbound)
+  val values: Seq[BindingFlags] = findValues
   case object Unbound extends BindingFlags("Unbound", BindingStatus.Unbound, BindingEvent.None) {
     def toFullWord(): String = "Unbound"
   }

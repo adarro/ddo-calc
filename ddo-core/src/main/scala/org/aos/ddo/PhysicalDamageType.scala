@@ -15,9 +15,11 @@
  */
 package org.aos.ddo
 
+import enumeratum.{Enum,EnumEntry}
+
 /** Basic damage for (generally) physical damage
   */
-sealed trait PhysicalDamageType extends PhysicalDamageType.Value with NoDefault[PhysicalDamageType.Value]
+sealed trait PhysicalDamageType extends EnumEntry with NoDefault[PhysicalDamageType]
 
 /** Basic damage enumeration for (generally) physical damage
   */
@@ -38,5 +40,5 @@ object PhysicalDamageType extends Enum[PhysicalDamageType] {
     */
   case object Magic extends PhysicalDamageType
 
-  val values = List(Bludgeon, Pierce, Slash, Special, Magic)
+  val values: Seq[PhysicalDamageType] =  findValues
 }

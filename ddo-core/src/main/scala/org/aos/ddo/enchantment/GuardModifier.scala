@@ -1,14 +1,15 @@
 package org.aos.ddo.enchantment
 
-import org.aos.ddo.effect.{Prefix, SecondaryPrefix, Suffix}
+import org.aos.ddo.model.effect.{Prefix, SecondaryPrefix, Suffix}
 import org.aos.ddo.enchantment.Modifier.{Greater, Lesser, Minor}
 import org.aos.ddo.support.RomanNumeral.fromRoman
 import org.aos.ddo.support.Validation.violationToString
-
 import com.typesafe.scalalogging.LazyLogging
 import com.wix.accord.{Failure, Success}
 import com.wix.accord.dsl.{Contextualizer, ValidatorBooleanOps, empty, notEmpty, validator}
+import com.wix.accord.transform.ValidationTransform.TransformedValidator
 import com.wix.accord.validate
+
 import scala.language.postfixOps
 
 /**
@@ -45,7 +46,7 @@ object GuardModifier extends LazyLogging {
     * Array of allowed Guard Modifiers, may occasionally need to be updated
     * if the game adds new ones.
     */
-  lazy val allowedModifiers = List(Minor, Lesser, Greater).map { x => x.entryName }
+  lazy val allowedModifiers: List[String] = List(Minor, Lesser, Greater).map { x => x.entryName }
 
   /**
     * Restricts Modifiers to allowed current modifiers.
@@ -72,7 +73,7 @@ object GuardModifier extends LazyLogging {
     }
   }
 
-  implicit val guardModifierValidator = validator[GuardModifier] { g => {
+  implicit val guardModifierValidator: TransformedValidator[GuardModifier] = validator[GuardModifier] { g => {
     // Guards can have nothing, a prefix or a suffix
     // No Modifiers
     (((g.prefix is empty) and (g.sPrefix is empty) and (g.suffix is empty))

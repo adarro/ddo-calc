@@ -15,7 +15,7 @@
   */
 package org.aos.ddo
 
-import org.aos.ddo.support.StringUtils.{ wordsToAcronym, StringImprovements }
+import org.aos.ddo.support.StringUtils.{ Extensions, StringImprovements }
 import org.scalatest.{ FunSpec, Matchers }
 import org.scalatest.OptionValues._
 
@@ -28,15 +28,11 @@ class StringUtilsTest extends FunSpec with Matchers with LazyLogging {
 
   describe("wordsToAcronym") {
     it("Should convert words with spaces into an acronym") {
-      wordsToAcronym(wordsWithSpaces).value should equal("IBM")
+      wordsWithSpaces.wordsToAcronym.value should equal("IBM")
     }
 
     it("Should convert words without spaces using Case into an acronym") {
-      wordsToAcronym(wordsWithoutSpaces).value should equal("IBM")
-    }
-
-    it("Should be null safe (um...in case Java calls it ;)") {
-      wordsToAcronym(null) should be(empty) // scalastyle:off null explicitly proving we're null safe, not recommending its use
+      wordsWithoutSpaces.wordsToAcronym.value should equal("IBM")
     }
   }
 

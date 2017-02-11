@@ -14,7 +14,7 @@
   */
 package org.aos.ddo
 
-import org.aos.ddo.effect.Effects
+import org.aos.ddo.model.effect.Effect
 
 /** An Item set provides bonuses when equipping some or all of the items in the set.
   */
@@ -29,9 +29,9 @@ trait SetItem {
 
   /** This will generally be a single bonus set,
     * such as Anger's Wrath. However some sets, such as
-    * the [[http://ddowiki.com/page/Named_item_sets#Might_of_the_Abishai Abashi's Might] which gives
+    * the [[http://ddowiki.com/page/Named_item_sets#Might_of_the_Abishai Abashi's Might]] which gives
     * a small bonus for some of the items, and a bigger bonus for wearing all of the items.
     */
-  val effects: Map[Int, List[Effects]]
+  val effects: Map[Int, List[Effect]]
 
 }

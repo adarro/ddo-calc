@@ -17,7 +17,9 @@ package org.aos.ddo.web.mapping
 
 import com.typesafe.scalalogging.LazyLogging
 import enumeratum.{EnumEntry, Enum => SmartEnum}
-import org.aos.ddo.{Armor, Clothing, DDOObject, Item, Potion}
+import org.aos.ddo.model.item.{Clothing, Potion}
+import org.aos.ddo.model.item.armor.Armor
+import org.aos.ddo.{DDOObject, Item}
 
 import scala.language.{existentials, postfixOps, reflectiveCalls}
 
@@ -31,7 +33,7 @@ object FieldMapper extends LazyLogging {
     *
     */
   sealed abstract class ItemType(words: Either[String, List[String]]) extends EnumEntry {
-    val wordList = words match {
+    val wordList: List[String] = words match {
       case Right(x) => x
       case Left(x) => List(x)
     }
@@ -41,7 +43,7 @@ object FieldMapper extends LazyLogging {
     * Enumeration to hold the possible item type values along with keywords used to map the fields
     */
   object ItemType extends SmartEnum[ItemType] {
-    val values = findValues
+    val values: Seq[ItemType] = findValues
 
     /**
       * A wieldable weapon

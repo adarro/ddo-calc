@@ -1,0 +1,370 @@
+<aliases xmlns="http://smartics.de/alias/1.1.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://smartics.de/alias/1.1.0 ">
+
+  <extension env="windows">
+    <name>aq</name>
+    <template>@echo off $T color $T {@cmd} ^&amp;^&amp; exit $T color F4 $T @echo on $T echo {@bell}</template>
+    <comment mnemonic="... and quit!">Launches the command and closes the shell on successful termination.
+      On error the shell is turned red and beeps for attention.
+    </comment>
+    <apply-to>
+      <group>mvn</group>
+      <group>project-release</group>
+    </apply-to>
+  </extension>
+
+  <extension env="bash">
+    <name>aq</name>
+    <template>{@cmd} &amp;&amp; exit ; echo {@bell}</template>
+    <comment mnemonic="... and quit!">
+      Launches the command and closes the shell on successful termination.
+      On error the shell beeps for attention.
+    </comment>
+    <apply-to>
+      <group>mvn</group>
+      <group>project-release</group>
+    </apply-to>
+  </extension>
+
+  <group name="mvn">
+    <comment>
+      Aliases running builds with <a href="http://maven.apache.org">Maven</a>.
+    </comment>
+    <alias>
+      <name>t</name>
+      <command>mvn -T 4 clean test</command>
+      <comment>Tests a project with <a href="http://maven.apache.org">Maven</a>. Requires a valid Maven-POM.
+      </comment>
+    </alias>
+    <alias>
+      <name>p</name>
+      <command>mvn -T 4 clean package</command>
+      <comment>Packages a project with <a href="http://maven.apache.org">Maven</a>. Requires a valid Maven-POM.
+      </comment>
+    </alias>
+    <alias>
+      <name>i</name>
+      <command>mvn -T 4 clean install</command>
+      <comment>Installs a project with <a href="http://maven.apache.org">Maven</a>. Requires a valid Maven-POM.
+      </comment>
+    </alias>
+    <alias>
+      <name>d</name>
+      <command>mvn -T 4 clean deploy</command>
+      <comment>Deploys a project with <a href="http://maven.apache.org">Maven</a>. Requires a valid Maven-POM.
+      </comment>
+    </alias>
+    <alias>
+      <name>s</name>
+      <command>mvn -T 4 initialize site</command>
+      <comment>Creates <a href="http://maven.apache.org">Maven</a> site. Requires a valid Maven-POM.
+      </comment>
+    </alias>
+    <alias>
+      <name>sd</name>
+      <command>mvn -T 4 clean deploy site-deploy</command>
+      <comment>
+        Creates and deploys a project and its <a href="http://maven.apache.org">Maven</a> site. Requires a valid
+        Maven-POM.
+      </comment>
+    </alias>
+    <alias>
+      <name>l</name>
+      <command>mvn initialize license:format</command>
+      <comment>
+        Formats license headers in a <a href="http://maven.apache.org">Maven</a> project.
+        Requires a valid Maven-POM and a configured
+        <a href="http://code.google.com/p/maven-license-plugin/">maven-license-plugin</a>.
+      </comment>
+    </alias>
+  </group>
+
+  <group name="jboss">
+    <comment>
+      Aliases to deploy project artifacts to a JBoss application server.
+    </comment>
+    <alias>
+      <name>asd</name>
+      <command>mvn jboss-as:deploy</command>
+      <comment>
+        Aplication Server Deploy (asd): deploy to application server via management api.
+      </comment>
+    </alias>
+    <alias>
+      <name>asr</name>
+      <command>mvn jboss-as:redeploy</command>
+      <comment>
+        Aplication Server Redeploy (asr): redeploy to application server via management api.
+      </comment>
+    </alias>
+    <alias>
+      <name>asu</name>
+      <command>mvn jboss-as:undeploy</command>
+      <comment>
+        Aplication Server Undeploy (asu): undeploy via management api.
+      </comment>
+    </alias>
+
+    <alias>
+      <name>iasd</name>
+      <command>mvn clean install jboss-as:deploy</command>
+      <comment>
+        Aplication Server Deploy (asd): build the project and deploy to application server via management api.
+      </comment>
+    </alias>
+    <alias>
+      <name>iasr</name>
+      <command>mvn clean install jboss-as:redeploy</command>
+      <comment>
+        Aplication Server Redeploy (asr): build the project and redeploy to application server via management api.
+      </comment>
+    </alias>
+  </group>
+
+  <group name="project-sync">
+    <comment>
+      Aliases synchronizing project information with external information systems.
+    </comment>
+    <alias>
+      <name>b</name>
+      <command>mvn bugzilla:sync</command>
+      <comment>
+        Syncs Bugzilla product with Maven-POM.
+
+        <p>
+          For more information please refer to the
+          <a href="http://www.smartics.eu/bugzilla-maven-plugin/">bugzilla plugin's homepage</a>.
+        </p>
+      </comment>
+    </alias>
+    <alias>
+      <name>bi</name>
+      <command>mvn bugzilla:init</command>
+      <comment>
+        Creates product in Bugzilla based on Maven-POM.
+        <p>
+          For more information please refer to the
+          <a href="http://www.smartics.eu/bugzilla-maven-plugin/">bugzilla plugin's homepage</a>.
+        </p>
+      </comment>
+    </alias>
+    <alias>
+      <name>chj</name>
+      <command>mvn hudson:createJobs</command>
+      <comment>
+        Creates Hudson job based on Maven-POM.
+        <p>
+          For more information please refer to the
+          <a href="http://www.smartics.eu/hudson-maven-plugin/">hudson plugin's homepage</a>.
+        </p>
+      </comment>
+    </alias>
+    <alias>
+      <name>dhj</name>
+      <command>mvn hudson:deleteJobs</command>
+      <comment>
+        Deletes Hudson job based on Maven-POM.
+
+        <p>
+          For more information please refer to the
+          <a href="http://www.smartics.eu/hudson-maven-plugin/">hudson plugin's homepage</a>.
+        </p>
+      </comment>
+    </alias>
+  </group>
+
+  <group name="project-analysis">
+    <comment>
+      Aliases to analyze project information.
+    </comment>
+    <alias>
+      <name>a</name>
+      <command>mvn dependency:analyze</command>
+      <comment>
+        Analyzes the dependencies of this project and determines which are: used and declared;
+        used and undeclared; unused and declared. This goal is intended to be used standalone,
+        thus it always executes the test-compile phase - use the dependency:analyze-only goal
+        instead when participating in the build lifecycle.
+
+        <p>
+          For more information please refer to the
+          <a href="http://maven.apache.org/plugins/maven-dependency-plugin/analyze-mojo.html">analyze mojo</a>.
+        </p>
+      </comment>
+    </alias>
+    <alias>
+      <name>dpu</name>
+      <command>mvn versions:display-plugin-updates</command>
+      <comment>
+        Displays all plugins that have newer versions available.
+        <p>
+          For more information please refer to the
+          <a href="http://mojo.codehaus.org/versions-maven-plugin/display-plugin-updates-mojo.html">
+            display-plugin-updates mojo</a>.
+        </p>
+      </comment>
+    </alias>
+    <alias>
+      <name>ddu</name>
+      <command>mvn versions:display-dependency-updates</command>
+      <comment>
+        Displays all dependencies that have newer versions available.
+        <p>
+          For more information please refer to the
+          <a href="http://mojo.codehaus.org/versions-maven-plugin/display-dependency-updates-mojo.html">
+            display-dependency-updates
+            mojo</a>.
+        </p>
+      </comment>
+    </alias>
+  </group>
+
+  <group name="project-release">
+    <comment>
+      Aliases to release a project with <a href="http://maven.apache.org">Maven</a>.
+    </comment>
+    <alias>
+      <name>r</name>
+      <command>mvn -T 4 release:prepare release:perform</command>
+      <comment>
+        Prepares and performs the release of a project.
+      </comment>
+    </alias>
+    <alias>
+      <name>rpr</name>
+      <command>mvn -T 4 release:prepare</command>
+      <comment>
+        Prepares the release of a project.
+
+        <p>
+          For more information please refer to the
+          <a href="http://maven.apache.org/plugins/maven-release-plugin/prepare-mojo.html">prepare mojo</a>.
+        </p>
+      </comment>
+    </alias>
+    <alias>
+      <name>rpe</name>
+      <command>mvn -T 4 release:perform</command>
+      <comment>
+        Performs the release of a project after it has been prepared.
+
+        <p>
+          For more information please refer to the
+          <a href="http://maven.apache.org/plugins/maven-release-plugin/perform-mojo.html">perform mojo</a>.
+        </p>
+      </comment>
+    </alias>
+    <alias>
+      <name>rr</name>
+      <command>mvn release:rollback</command>
+      <comment>
+        Runs a rollback after a failed release. Please note that any SCM tags have to be removed manually.
+
+        <p>
+          For more information please refer to the
+          <a href="http://maven.apache.org/plugins/maven-release-plugin/rollback-mojo.html">rollback mojo</a>.
+        </p>
+      </comment>
+    </alias>
+    <alias>
+      <name>rc</name>
+      <command>mvn release:clean</command>
+      <comment>
+        Runs a clean after a failed release.
+
+        <p>
+          For more information please refer to the
+          <a href="http://maven.apache.org/plugins/maven-release-plugin/clean-mojo.html">clean mojo</a>.
+        </p>
+      </comment>
+    </alias>
+  </group>
+
+  <group name="atlassian">
+    <comment>
+      Aliases to work with <a href="https://developer.atlassian.com/display/DOCS/Getting+Started">Atlassian's SDK</a>.
+    </comment>
+    <alias>
+      <name>atlas-d</name>
+      <command>atlas-debug -Dmaven.test.skip</command>
+      <comment>
+        Skips the tests whose existence prevent FastDev from hot-deployment.
+      </comment>
+    </alias>
+    <alias>
+      <name>atlas-rs</name>
+      <command>atlas-run-standalone --product confluence --jvmargs "-Xdebug
+        -Xrunjdwp:transport=dt_socket,address=5005,server=y,suspend=n"
+      </command>
+      <comment>
+        Starts the standalone version of confluence for developing purposes. To run a version that is not the LATEST,
+        use: --version 5.6.1 --data-version 5.6.1
+      </comment>
+    </alias>
+  </group>
+
+  <group name="enterprise-architect">
+    <comment>
+      Aliases to work with Sparx Systems' <a href="http://www.sparxsystems.com/products/ea/">Enterprise Architect</a>.
+    </comment>
+    <alias>
+      <name>ea</name>
+      <command>set JAVA_HOME="%JAVA_HOME_6x32%"^&amp;^&amp; set PATH=%JAVA_HOME_6x32%\bin;%PATH% ^&amp;^&amp; set
+        MAVEN_OPTS=%MAVEN_OPTS% -Djava.library.path="%EA_LIB_PATH%"
+      </command>
+      <comment>
+        Sets environment variable <tt>JAVA_HOME</tt> to existing <tt>JAVA_HOME_6x32</tt> and prepends it to the <tt>
+        PATH</tt>.
+        Additionally the library path now includes the EA DLL by referencing the existing environment variable <tt>
+        EA_LIB_PATH</tt>.
+        <p>
+          <strong>To use this alias, please define the environment variables <tt>JAVA_HOME_6x32</tt> and <tt>
+            EA_LIB_PATH</tt>.
+          </strong>
+        </p>
+      </comment>
+    </alias>
+  </group>
+
+  <group name="java">
+    <comment>
+      Aliases setting environment variables for the Java runtime.
+    </comment>
+    <alias env="windows">
+      <name>j5</name>
+      <command passArgs="false">set JAVA_HOME="%JAVA_HOME_5%"^&amp;^&amp; set PATH=%JAVA_HOME_5%\bin;%PATH%</command>
+      <comment>Sets environment variable <tt>JAVA_HOME</tt> to existing <tt>JAVA_HOME_5</tt> and prepends it to the <tt>
+        PATH</tt>.
+      </comment>
+    </alias>
+    <alias env="windows">
+      <name>j6</name>
+      <command passArgs="false">set JAVA_HOME="%JAVA_HOME_6%"^&amp;^&amp; set PATH=%JAVA_HOME_6%\bin;%PATH%</command>
+      <comment>Sets environment variable <tt>JAVA_HOME</tt> to existing <tt>JAVA_HOME_6</tt> and prepends it to the <tt>
+        PATH</tt>.
+      </comment>
+    </alias>
+    <alias env="windows">
+      <name>j6x32</name>
+      <command passArgs="false">set JAVA_HOME="%JAVA_HOME_6x32%"^&amp;^&amp; set PATH=%JAVA_HOME_6x32%\bin;%PATH%
+      </command>
+      <comment>Sets environment variable <tt>JAVA_HOME</tt> to existing <tt>JAVA_HOME_6x32</tt> and prepends it to
+        the <tt>PATH</tt>.
+      </comment>
+    </alias>
+    <alias env="windows">
+      <name>j7</name>
+      <command passArgs="false">set JAVA_HOME="%JAVA_HOME_7%"^&amp;^&amp; set PATH=%JAVA_HOME_7%\bin;%PATH%</command>
+      <comment>Sets environment variable <tt>JAVA_HOME</tt> to existing <tt>JAVA_HOME_7</tt> and prepends it to the <tt>
+        PATH</tt>.
+      </comment>
+    </alias>
+    <alias env="windows">
+      <name>j8</name>
+      <command passArgs="false">set JAVA_HOME="%JAVA_HOME_8%"^&amp;^&amp; set PATH=%JAVA_HOME_8%\bin;%PATH%</command>
+      <comment>Sets environment variable <tt>JAVA_HOME</tt> to existing <tt>JAVA_HOME_8</tt> and prepends it to the <tt>
+        PATH</tt>.
+      </comment>
+    </alias>
+  </group>
+</aliases>

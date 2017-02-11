@@ -7,8 +7,7 @@
 	is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY 
 	KIND, either express or implied. See the License for the specific language 
 	governing permissions and limitations under the License. -->
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
   <modelVersion>4.0.0</modelVersion>
   <parent>
     <groupId>ddo-calc</groupId>
@@ -19,14 +18,14 @@
   <name>Core DDO Objects</name>
   <description>Basic traits and classes</description>
   <properties>
-
+    <targetFolder>src/test/evosuite</targetFolder>
   </properties>
   <dependencies>
-    <!-- Spring Data Annotations -->
+    <!-- Spring Data Annotations
     <dependency>
       <groupId>org.springframework.data</groupId>
       <artifactId>spring-data-commons-core</artifactId>
-    </dependency>
+    </dependency>-->
     <!-- Scala -->
     <dependency>
       <groupId>org.scala-lang</groupId>
@@ -36,11 +35,6 @@
     <dependency>
       <groupId>com.wix</groupId>
       <artifactId>accord-core_${scala.tools.version}</artifactId>
-    </dependency>
-    <dependency>
-      <groupId>com.wix</groupId>
-      <artifactId>accord-scalatest_${scala.tools.version}</artifactId>
-      <scope>test</scope>
     </dependency>
     <!-- Logging -->
     <dependency>
@@ -62,10 +56,37 @@
       <groupId>com.beachape</groupId>
       <artifactId>enumeratum_${scala.base}</artifactId>
     </dependency>
+    <!--<dependency>
+      <groupId>com.sun</groupId>
+      <artifactId>tools</artifactId>
+      <scope>system</scope>
+    </dependency>-->
+    <!--Template engine used for generating base specs (Concordion) -->
+    <dependency>
+      <groupId>de.neuland-bfi</groupId>
+      <artifactId>jade4j</artifactId>
+      <scope>test</scope>
+    </dependency>
+    <!-- Web Scrapping Utility -->
+    <dependency>
+      <groupId>net.ruippeixotog</groupId>
+      <artifactId>scala-scraper_${scala.tools.version}</artifactId>
+      <scope>test</scope>
+    </dependency>
+    <dependency>
+      <groupId>com.wix</groupId>
+      <artifactId>accord-scalatest_${scala.tools.version}</artifactId>
+      <scope>test</scope>
+    </dependency>
     <!-- Test -->
     <dependency>
       <groupId>org.scalatest</groupId>
       <artifactId>scalatest_${scala.tools.version}</artifactId>
+      <scope>test</scope>
+    </dependency>
+    <dependency>
+      <groupId>org.evosuite</groupId>
+      <artifactId>evosuite-standalone-runtime</artifactId>
       <scope>test</scope>
     </dependency>
     <dependency>
@@ -78,11 +99,47 @@
       <artifactId>junit</artifactId>
       <scope>test</scope>
     </dependency>
+    <dependency>
+      <groupId>org.concordion</groupId>
+      <artifactId>concordion</artifactId>
+      <scope>test</scope>
+    </dependency>
+    <dependency>
+      <groupId>org.concordion</groupId>
+      <artifactId>concordion-embed-extension</artifactId>
+      <scope>test</scope>
+    </dependency>
+    <!-- https://mvnrepository.com/artifact/org.concordion/concordion-collapse-output-extension -->
+    <dependency>
+      <groupId>org.concordion</groupId>
+      <artifactId>concordion-collapse-output-extension</artifactId>
+      <scope>test</scope>
+    </dependency>
   </dependencies>
   <build>
     <sourceDirectory>src/main/scala</sourceDirectory>
     <testSourceDirectory>src/test/scala</testSourceDirectory>
     <plugins>
+      <plugin>
+        <groupId>org.revapi</groupId>
+        <artifactId>revapi-maven-plugin</artifactId>
+        <version>0.4.5</version>
+        <dependencies>
+          <dependency>
+            <groupId>org.revapi</groupId>
+            <artifactId>revapi-java</artifactId>
+            <version>0.9.0</version>
+          </dependency>
+        </dependencies>
+        <executions>
+          <execution>
+            <goals>
+              <goal>check</goal>
+            </goals>
+          </execution>
+        </executions>
+      </plugin>
+
       <!-- adding java source directory -->
       <plugin>
         <groupId>org.codehaus.mojo</groupId>
@@ -90,10 +147,10 @@
         <executions>
           <execution>
             <id>add-source</id>
-            <phase>process-sources</phase>
             <goals>
               <goal>add-source</goal>
             </goals>
+            <phase>process-sources</phase>
             <configuration>
               <sources>
                 <source>src/main/java</source>
@@ -102,13 +159,14 @@
           </execution>
           <execution>
             <id>add-test-source</id>
-            <phase>generate-test-sources</phase>
             <goals>
               <goal>add-test-source</goal>
             </goals>
+            <phase>generate-test-sources</phase>
             <configuration>
               <sources>
                 <source>src/test/java</source>
+                <source>${targetFolder}</source>
               </sources>
             </configuration>
           </execution>
@@ -142,19 +200,20 @@
             <arg>-feature</arg>
             <arg>-Ywarn-unused</arg>
             <arg>-Xlint</arg>
+            <arg>-Xcheckinit</arg>
             <!-- <arg>-P:genjavadoc:out=${project.build.directory}/genjavadoc</arg> -->
             <!-- <arg>${project.build.directory}/.scala_dependencies</arg> -->
           </args>
           <!-- <compilerPlugins> <compilerPlugin> <groupId>com.typesafe.genjavadoc</groupId>
             <artifactId>genjavadoc-plugin_${scala.binary.full.version}</artifactId> <version>0.9</version>
             </compilerPlugin> </compilerPlugins> -->
-          <compilerPlugins>
+          <!-- <compilerPlugins>
             <compilerPlugin>
               <groupId>com.lihaoyi</groupId>
               <artifactId>acyclic_${scala.base}</artifactId>
               <version>0.1.4</version>
             </compilerPlugin>
-          </compilerPlugins>
+          </compilerPlugins>-->
         </configuration>
         <executions>
           <execution>
@@ -174,8 +233,16 @@
             <phase>test-compile</phase>
             <configuration>
               <includes>
-                <include>**/*Test.scala</include>
-                <include>**/*IT.scala</include>
+                <include>**/*.scala</include>
+                <include>**/*.java</include>
+                <!--  <include>**/*HelperTest.scala</include>
+                  <include>**/*Helper.scala</include>
+                  <include>**/*Builder.scala</include>
+                  <include>**/*Support.scala</include>
+                  <include>**/*Test.scala</include>
+                  <include>**/*IT.scala</include>
+                  <include>**/*Spec.scala</include>
+                  <include>**/Skill.scala</include>-->
               </includes>
             </configuration>
           </execution>
@@ -248,17 +315,86 @@
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-surefire-plugin</artifactId>
         <configuration>
-          <skipTests>true</skipTests>
+          <systemProperties>
+            <concordion.output.dir>target/concordion</concordion.output.dir>
+          </systemProperties>
+          <properties>
+            <property>
+              <name>listener</name>
+              <value>org.evosuite.runtime.InitializingListener</value>
+            </property>
+          </properties>
+
+          <includes>
+            <include>**/*Spec.java</include>
+            <include>**/*Spec.scala</include>
+            <include>**/*.scala</include>
+          </includes>
+          <excludes>
+            <exclude>**/*Test.scala</exclude>
+            <exclude>**/*Builder.scala</exclude>
+            <exclude>**/*Helper.scala</exclude>
+            <exclude>**/*IT.scala</exclude>
+            <!-- <exclude>**/*Spec.scala</exclude>-->
+          </excludes>
+          <skipTests>${skip.tests}</skipTests>
         </configuration>
+        <executions>
+          <execution>
+            <id>acceptance-test</id>
+            <goals>
+              <goal>test</goal>
+            </goals>
+            <phase>integration-test</phase>
+            <configuration>
+              <skip>false</skip>
+              <testSourceDirectory>src/test/scala</testSourceDirectory>
+              <includes>
+                <include>**/*.scala</include>
+              </includes>
+              <excludes>
+                <exclude>**/*Test.scala</exclude>
+                <exclude>**/*Builder.scala</exclude>
+                <exclude>**/*Helper.scala</exclude>
+                <!-- <exclude>**/*Spec.scala</exclude>-->
+              </excludes>
+            </configuration>
+          </execution>
+        </executions>
+      </plugin>
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-failsafe-plugin</artifactId>
       </plugin>
       <!-- enable scalatest -->
       <plugin>
         <groupId>org.scalatest</groupId>
         <artifactId>scalatest-maven-plugin</artifactId>
-        <!--<configuration> <reportsDirectory>${project.build.directory}/surefire-reports</reportsDirectory>
-          <junitxml>.</junitxml> <filereports>WDF TestSuite.txt</filereports> </configuration>
-          <executions> <execution> <id>test</id> <goals> <goal>test</goal> </goals>
-          </execution> </executions> -->
+      </plugin>
+      <plugin>
+        <groupId>org.evosuite.plugins</groupId>
+        <artifactId>evosuite-maven-plugin</artifactId>
+        <configuration>
+          <timeInMinutesPerClass>3</timeInMinutesPerClass>
+          <detail>true</detail>
+          <memoryInMB>2000</memoryInMB>
+        </configuration>
+        <executions>
+          <execution>
+            <goals>
+              <goal>prepare</goal>
+              <goal>export</goal>
+            </goals>
+            <phase>process-test-classes</phase>
+          </execution>
+          <!--   <execution>
+            <id>generate</id>
+            <goals>
+              <goal>generate</goal>
+            </goals>
+            <phase>generate-test-sources</phase>
+          </execution>-->
+        </executions>
       </plugin>
       <!-- Coverage for Codecov.io -->
       <plugin>
@@ -299,9 +435,105 @@
       <!--</executions>-->
       <!--</plugin>-->
     </plugins>
+    <extensions>
+      <extension>
+        <groupId>io.truthencode</groupId>
+        <artifactId>qa-tools</artifactId>
+        <version>1.0</version>
+      </extension>
+    </extensions>
   </build>
   <reporting>
     <plugins>
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-project-info-reports-plugin</artifactId>
+        <version>2.9</version>
+        <inherited>true</inherited>
+      </plugin>
+      <!--<plugin>-->
+      <!--<groupId>de.smartics.maven.plugin</groupId>-->
+      <!--<artifactId>alias-maven-plugin</artifactId>-->
+      <!--<version>RELEASE</version>-->
+      <!--</plugin>-->
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-pmd-plugin</artifactId>
+        <version>3.6</version>
+        <inherited>true</inherited>
+        <configuration>
+          <linkXRef>true</linkXRef>
+          <sourceEncoding>utf-8</sourceEncoding>
+          <minimumTokens>100</minimumTokens>
+          <targetJdk>${jvm.version}</targetJdk>
+          <excludes>
+            <exclude>**/*Bean.java</exclude>
+            <exclude>**/generated/*.java</exclude>
+          </excludes>
+          <excludeRoots>
+            <excludeRoot>target/generated-sources/stubs</excludeRoot>
+          </excludeRoots>
+        </configuration>
+      </plugin>
+      <plugin>
+        <artifactId>maven-dependency-plugin</artifactId>
+        <version>2.10</version>
+      </plugin>
+      <plugin>
+        <groupId>org.scoverage</groupId>
+        <artifactId>scoverage-maven-plugin</artifactId>
+        <version>${scoverage.plugin.version}</version>
+      </plugin>
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-jxr-plugin</artifactId>
+        <version>2.3</version>
+        <reportSets>
+          <reportSet>
+            <id>aggregate</id>
+            <reports>
+              <report>aggregate</report>
+            </reports>
+            <inherited>false</inherited>
+          </reportSet>
+        </reportSets>
+      </plugin>
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-surefire-report-plugin</artifactId>
+        <version>RELEASE</version>
+      </plugin>
+      <plugin>
+        <groupId>org.codehaus.mojo</groupId>
+        <artifactId>versions-maven-plugin</artifactId>
+        <version>2.2</version>
+        <reportSets>
+          <reportSet>
+            <reports>
+              <report>dependency-updates-report</report>
+              <report>plugin-updates-report</report>
+              <report>property-updates-report</report>
+            </reports>
+          </reportSet>
+        </reportSets>
+      </plugin>
+      <plugin>
+        <groupId>org.codehaus.mojo</groupId>
+        <artifactId>taglist-maven-plugin</artifactId>
+        <version>2.4</version>
+      </plugin>
+      <plugin>
+        <groupId>org.revapi</groupId>
+        <artifactId>revapi-maven-plugin</artifactId>
+        <version>0.4.5</version>
+        <reportSets>
+          <reportSet>
+            <reports>
+              <report>report</report>
+            </reports>
+          </reportSet>
+        </reportSets>
+      </plugin>
       <plugin>
         <groupId>org.scoverage</groupId>
         <artifactId>scoverage-maven-plugin</artifactId>
@@ -315,6 +547,15 @@
             </reports>
           </reportSet>
         </reportSets>
+      </plugin>
+      <plugin>
+        <groupId>com.github.bassman5</groupId>
+        <artifactId>maven-concordion-reporting-plugin</artifactId>
+        <version>1.0.2</version>
+        <configuration>
+          <concordionDir>${basedir}/target/concordion</concordionDir>
+          <concordionIndexFile>acceptanceTests/AcceptanceTests.html</concordionIndexFile>
+        </configuration>
       </plugin>
       <plugin>
         <!-- see http://davidb.github.com/scala-maven-plugin -->

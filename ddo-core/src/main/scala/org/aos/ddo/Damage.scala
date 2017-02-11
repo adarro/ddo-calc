@@ -15,24 +15,11 @@
   */
 package org.aos.ddo
 
-import org.aos.ddo.PhysicalDamageType.{ Bludgeon, Pierce, Slash, Value }
+import org.aos.ddo.PhysicalDamageType.{Bludgeon, Pierce, Slash}
+import org.aos.ddo.support.PhysicalDamage
 
 trait Damage
 
-trait PhysicalDamage extends Damage with DefaultValue[PhysicalDamageType.Value]
 
-/**
-  * Damage type resulting in blunt force such as clubs, staves or a partial
-  * component of spells such as Ice Storm.
-  */
-trait Bludgeoning extends PhysicalDamage {
-  override lazy val defaultType: Option[Value] = Some(Bludgeon)
-}
 
-trait Slashing extends PhysicalDamage {
-  override lazy val defaultType: Option[Value] = Some(Slash)
-}
 
-trait Piercing extends PhysicalDamage {
-  override lazy val defaultType: Option[Value] = Some(Pierce)
-}

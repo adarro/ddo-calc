@@ -52,6 +52,14 @@ object EnumExtensions {
       } yield sc.toSeq
     }
 
+
+    def fromWords(words:String): Option[EnumEntry] = {
+      words.wordsToAcronym match {
+        case Some(x) =>  comp.withNameOption(x.toPascalCase)
+        case _ => None
+      }
+    }
+
     def bitValues: Map[EnumEntry, Double] = comp.valuesToIndex.map { x => x._1 -> Math.pow(2.0, x._2) }
 
   }

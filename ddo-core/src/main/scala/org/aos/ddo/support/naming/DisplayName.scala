@@ -1,4 +1,4 @@
-package org.aos.ddo.support
+package org.aos.ddo.support.naming
 
 /**
   * Wrapper class to store / convert EnumEntry IDs with their expanded text representation.

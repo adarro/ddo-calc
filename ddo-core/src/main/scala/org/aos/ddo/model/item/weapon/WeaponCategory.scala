@@ -17,12 +17,21 @@ package org.aos.ddo.model.item.weapon
 
 import enumeratum.{Enum, EnumEntry}
 import org.aos.ddo.Damage
+import org.aos.ddo.support.naming.{DisplayName, FriendlyDisplay}
 import org.aos.ddo.support.{Bludgeoning, Piercing, Slashing}
+import org.aos.ddo.support.StringUtils.Extensions
 
 /**
   * Enumerates the specific base types of weapons available in DDO, i.e. Kopesh, Dagger etc.
   */
-sealed trait WeaponCategory extends EnumEntry with Damage with DefaultDeliveryMethod
+sealed trait WeaponCategory extends EnumEntry with Damage with DefaultDeliveryMethod with DisplayName with FriendlyDisplay {
+  /**
+    * Sets or maps the source text for the DisplayName.
+    *
+    * @return Source text.
+    */
+  override protected def nameSource: String = entryName.splitByCase.toPascalCase
+}
 
 // scalastyle:off number.of.types number.of.methods
 /**

@@ -1,5 +1,7 @@
 package org.aos.ddo.model.feat
 
+import org.aos.ddo.model.feat.Feat.WeaponSpecialization
+import org.aos.ddo.model.item.weapon.{WeaponClass, WeaponClassBludgeoning}
 import org.aos.ddo.support.requisite.{FeatRequisiteImpl, RequiresAllOfFeat, RequiresAnyOfFeat, RequiresBaB}
 
 /** Icon 	Feat 	Type 	Description 	Prerequisites
@@ -10,11 +12,13 @@ import org.aos.ddo.support.requisite.{FeatRequisiteImpl, RequiresAllOfFeat, Requ
   * Base Attack Bonus +4
   * MustContainAtLeastOne of: Weapon Specialization: Ranged Weapons, Power Attack, Combat Expertise, Zen Archery
   * */
-trait BowStrength extends FeatRequisiteImpl with Passive with RequiresBaB with RequiresAllOfFeat with RequiresAnyOfFeat {
+protected[feat] trait BowStrength extends FeatRequisiteImpl with Passive with RequiresBaB with RequiresAllOfFeat with RequiresAnyOfFeat {
   self: Feat =>
-  override def anyOfFeats: Seq[Feat] = List(Feat.WeaponSpecializationRanged, Feat.PowerAttack, Feat.CombatExpertise, Feat.ZenArchery)
+  private def ranged = Feat.weaponSpecializationAny collect { case x: WeaponSpecialization if x.weaponClass == WeaponClass.Ranged => x }
+
+  override def anyOfFeats: Seq[Feat] = List(Feat.PowerAttack, Feat.CombatExpertise, Feat.ZenArchery) ++ ranged
 
   override def requiresBaB = 4
 
-  override def allOfFeats: Seq[Feat] = List(Feat.PointBlankShot, Feat.WeaponFocusRanged)
+  override def allOfFeats: Seq[Feat] = ranged :+ Feat.PointBlankShot
 }

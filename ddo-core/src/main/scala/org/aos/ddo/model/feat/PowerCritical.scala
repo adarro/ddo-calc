@@ -14,5 +14,5 @@ protected[feat] trait PowerCritical extends FeatRequisiteImpl with Passive with 
 
   override def requiresBaB: Int = 4
 
-  override def anyOfFeats: Seq[Feat] = Feat.WeaponFocusAny
+  override def anyOfFeats: Seq[Feat] = Feat.weaponFocusAny
 }

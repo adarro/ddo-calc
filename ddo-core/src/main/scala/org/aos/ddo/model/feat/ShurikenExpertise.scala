@@ -1,6 +1,8 @@
 package org.aos.ddo.model.feat
 
 import org.aos.ddo.model.attribute.Attribute
+import org.aos.ddo.model.feat.Feat.ExoticWeaponProficiency
+import org.aos.ddo.model.item.weapon.WeaponCategory
 import org.aos.ddo.support.requisite.{FeatRequisiteImpl, RequiresAnyOfFeat, RequiresAttribute}
 
 /** Shuriken Expertise.PNG
@@ -14,5 +16,9 @@ protected[feat] trait ShurikenExpertise extends FeatRequisiteImpl with Passive w
   self: Feat =>
   override def requiresAttribute: Seq[(Attribute, Int)] = List((Attribute.Dexterity, 13))
 
-  override def anyOfFeats: Seq[Feat] = List(Feat.ExoticWeaponProficiencyShuriken, Feat.HalfElfDilettanteMonk)
+ // Feat.exoticWeaponProficiencies.filter { x => x.weapon.forall { y => y.enumEntry == WeaponCategory.Shuriken } }
+
+  private def exotic = Feat.exoticWeaponProficiencies collect { case x: ExoticWeaponProficiency if x.weapon.head == WeaponCategory.Shuriken => x }
+
+  override def anyOfFeats: Seq[Feat] = exotic :+ Feat.HalfElfDilettanteMonk
 }

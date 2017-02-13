@@ -12,9 +12,9 @@ import org.aos.ddo.support.requisite.{FeatRequisiteImpl, RequiresAllOfClass, Req
   *       Level 16: Fighter, Greater Weapon Focus
   *       Greater Weapon Specialization in the same Specific Weapon Type
   **/
-protected[feat] trait SuperiorWeaponFocus extends FeatRequisiteImpl with Passive with RequiresAllOfClass {
+protected[feat] trait SuperiorWeaponFocusBase extends FeatRequisiteImpl with Passive with RequiresAllOfClass {
 
-  self: Feat with WeaponClass with RequiresAllOfFeat =>
+  self: Feat with RequiresAllOfFeat =>
 
   override def anyOfClass: Seq[(CharacterClass, Int)] = List((CharacterClass.Fighter, 16))
 }

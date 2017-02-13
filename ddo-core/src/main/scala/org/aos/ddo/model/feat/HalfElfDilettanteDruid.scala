@@ -8,7 +8,7 @@ import org.aos.ddo.support.requisite.{FeatRequisiteImpl, RequiresAllOfRace, Requ
   * Half-Elf Dilettante: Druid	Passive	Able to use wands and scrolls as if you were a level one druid.
   * Half-Elf
   * 13 Wisdom */
-trait HalfElfDilettanteDruid extends FeatRequisiteImpl with Passive with RequiresAttribute with RequiresAllOfRace {
+trait HalfElfDilettanteDruid extends FeatRequisiteImpl with HalfElfDilettante with Passive with RequiresAttribute with RequiresAllOfRace {
   self: Feat =>
   override def allOfRace: Seq[(Race, Int)] = List((Race.HalfElf, 1))
 

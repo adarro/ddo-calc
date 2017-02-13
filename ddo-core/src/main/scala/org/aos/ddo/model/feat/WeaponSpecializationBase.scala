@@ -9,9 +9,9 @@ import org.aos.ddo.support.requisite.{FeatRequisiteImpl, RequiresAllOfClass, Req
   * Icon Feat Weapon Specialization.png
   * Weapon Specialization 	Passive 	Provides a +2 bonus to damage rolls with the chosen weapon type and +2 stacking Melee Power or Ranged Power. This feat can be taken multiple times, once for each weapon type.
   */
-protected[feat] trait WeaponSpecialization extends FeatRequisiteImpl with Passive with RequiresAllOfClass {
+protected[feat] trait WeaponSpecializationBase extends FeatRequisiteImpl with Passive with RequiresAllOfClass {
 
-  self: Feat with WeaponClass with RequiresAllOfFeat =>
+  self: Feat =>
 
   override def allOfClass: Seq[(CharacterClass, Int)] = List((CharacterClass.Fighter, 4))
 }

@@ -17,27 +17,31 @@
 package org.aos.ddo.model.feat
 
 import enumeratum.{Enum, EnumEntry}
-import org.aos.ddo.model.attribute.Attribute
-import org.aos.ddo.model.item.weapon.{SimpleWeapon, WeaponCategory, WeaponClass}
+import org.aos.ddo.model.item.weapon._
+import org.aos.ddo.model.schools.School
+import org.aos.ddo.model.skill.Skill
 import org.aos.ddo.support.SearchPrefix
+import org.aos.ddo.support.StringUtils.Extensions
+import org.aos.ddo.support.naming.{DisplayName, FriendlyDisplay, PostText, Prefix}
 import org.aos.ddo.support.requisite._
 
 /**
   * [[http://ddowiki.com/page/Feats Feats]] are special abilities that give your character a new capability, or improves one he or she already has.
   */
-sealed trait Feat extends EnumEntry {
+sealed trait Feat extends EnumEntry with DisplayName with FriendlyDisplay with SubFeatInformation {
   self: FeatType with Requisite with Inclusion =>
+
+  override protected def nameSource: String = entryName.splitByCase.toPascalCase
 }
 
+
+/**
+  * @todo need to Sneak Attack to Class Feat
+  * @todo move Half elf Dilettante feats to Racial Feat
+  */
 //noinspection ScalaStyle
 object Feat extends Enum[Feat] with SearchPrefix {
 
-  /**
-    * Convenience function to group all Weapon Focus Feats
-    *
-    * @return
-    */
-  def WeaponFocusAny = Seq(Feat.WeaponFocusBludgeon, Feat.WeaponFocusPiercing, Feat.WeaponFocusSlashing, Feat.WeaponFocusRanged, Feat.WeaponFocusThrown)
 
   case object Attack extends Feat with Attack
 
@@ -82,7 +86,7 @@ object Feat extends Enum[Feat] with SearchPrefix {
   // Combat Stances
   case object CombatExpertise extends Feat with CombatExpertise
 
-  case object ManyShot extends Feat with ManyShot
+  case object Manyshot extends Feat with Manyshot
 
   case object TenThousandStars extends Feat with TenThousandStars
 
@@ -96,7 +100,7 @@ object Feat extends Enum[Feat] with SearchPrefix {
 
   // Passive Feats
   // General passive feats
-  case object DieHard extends Feat with DieHard
+  case object Diehard extends Feat with Diehard
 
   case object Dodge extends Feat with Dodge
 
@@ -148,96 +152,111 @@ object Feat extends Enum[Feat] with SearchPrefix {
   case object TwoWeaponBlocking extends Feat with TwoWeaponBlocking
 
   // Weapon Focus Passive Feats
-  case object WeaponFocusBludgeon extends WeaponClass.Bludgeon with Feat with WeaponFocus
-
-  case object WeaponFocusSlashing extends WeaponClass.Slashing with Feat with WeaponFocus
-
-  case object WeaponFocusPiercing extends WeaponClass.Piercing with Feat with WeaponFocus
-
-  case object WeaponFocusRanged extends WeaponClass.Ranged with Feat with WeaponFocus
-
-  case object WeaponFocusThrown extends WeaponClass.Thrown with Feat with WeaponFocus
-
-  case object GreaterWeaponFocusBludgeon extends WeaponClass.Bludgeon with Feat with GreaterWeaponFocus with RequiresAllOfFeat {
-    override lazy val allOfFeats: Seq[Feat] = List(WeaponFocusBludgeon)
+  case object WeaponFocus extends Feat with WeaponFocusBase with ParentFeat {
+    override val subFeats: Seq[Feat with SubFeat] = weaponFocusAny
   }
 
-  case object GreaterWeaponFocusPiercing extends WeaponClass.Piercing with Feat with GreaterWeaponFocus with RequiresAllOfFeat {
-    override lazy val allOfFeats: Seq[Feat] = List(WeaponFocusPiercing)
+  /**
+    * Convenience function to group all Weapon Focus Feats
+    *
+    * @return
+    */
+  def weaponFocusAny: Seq[WeaponFocus] = {
+    for {wc <- WeaponClass.values} yield WeaponFocus(wc)
   }
 
-  case object GreaterWeaponFocusSlashing extends WeaponClass.Slashing with Feat with GreaterWeaponFocus with RequiresAllOfFeat {
-    override lazy val allOfFeats: Seq[Feat] = List(WeaponFocusSlashing)
+  // Seq(Feat.WeaponFocusBludgeon, Feat.WeaponFocusPiercing, Feat.WeaponFocusSlashing, Feat.WeaponFocusRanged, Feat.WeaponFocusThrown)
+
+  case class WeaponFocus(weaponClass: WeaponClass) extends Feat with WeaponFocusBase with SubFeat with Prefix with FriendlyDisplay {
+    override def prefix: Option[String] = Some("Weapon Focus")
+
+    /**
+      * Delimits the prefix and text.
+      */
+    override protected val prefixSeparator: String = ": "
+
+    override protected def nameSource: String = weaponClass.displayText
   }
 
-  case object GreaterWeaponFocusRanged extends WeaponClass.Ranged with Feat with GreaterWeaponFocus with RequiresAllOfFeat {
-    override lazy val allOfFeats: Seq[Feat] = List(WeaponFocusRanged)
+  case object GreaterWeaponFocus extends Feat with GreaterWeaponFocusBase with ParentFeat with RequiresAllOfFeat {
+    override val subFeats: Seq[Feat with SubFeat] = greaterWeaponFocusAny
+
+    override def allOfFeats: Seq[Feat] = List(Feat.WeaponFocus)
   }
 
-  case object GreaterWeaponFocusThrown extends WeaponClass.Thrown with Feat with GreaterWeaponFocus with RequiresAllOfFeat {
-    override lazy val allOfFeats: Seq[Feat] = List(WeaponFocusThrown)
+  case class GreaterWeaponFocus(weaponClass: WeaponClass) extends Feat with GreaterWeaponFocusBase with RequiresAllOfFeat with SubFeat with Prefix {
+    override def prefix: Option[String] = Some("GreaterWeaponFocus".splitByCase)
+
+    override protected val prefixSeparator: String = ": "
+
+    override protected def nameSource: String = weaponClass.displayText
+
+    override def allOfFeats: Seq[Feat] = weaponFocusAny.filter { x => x.weaponClass.eq(weaponClass) }
   }
 
-  case object SuperiorWeaponFocusBludgeon extends WeaponClass.Bludgeon with Feat with SuperiorWeaponFocus with RequiresAllOfFeat {
-    override lazy val allOfFeats: Seq[Feat] = List(GreaterWeaponFocusBludgeon)
+  def greaterWeaponFocusAny: Seq[GreaterWeaponFocus] = {
+    for {wc <- WeaponClass.values} yield GreaterWeaponFocus(wc)
   }
 
-  case object SuperiorWeaponFocusPiercing extends WeaponClass.Piercing with Feat with SuperiorWeaponFocus with RequiresAllOfFeat {
-    override def allOfFeats: Seq[Feat] = List(GreaterWeaponFocusPiercing)
+  case object SuperiorWeaponFocus extends Feat with SuperiorWeaponFocusBase with ParentFeat with RequiresAllOfFeat {
+    override val subFeats: Seq[Feat with SubFeat] = superiorWeaponFocusAny
+
+    override def allOfFeats: Seq[Feat] = List(Feat.WeaponFocus)
   }
 
-  case object SuperiorWeaponFocusSlashing extends WeaponClass.Slashing with Feat with SuperiorWeaponFocus with RequiresAllOfFeat {
-    override def allOfFeats: Seq[Feat] = List(GreaterWeaponFocusSlashing)
+  case class SuperiorWeaponFocus(weaponClass: WeaponClass) extends Feat with SuperiorWeaponFocusBase with RequiresAllOfFeat with SubFeat with Prefix with FriendlyDisplay {
+    override def prefix: Option[String] = Some("SuperiorWeaponFocus".splitByCase)
+
+    override protected def nameSource: String = weaponClass.displayText
+
+    override protected val prefixSeparator: String = ": "
+
+    override def allOfFeats: Seq[Feat] = greaterWeaponFocusAny.filter { x => x.weaponClass.eq(weaponClass) }
   }
 
-  case object SuperiorWeaponFocusRanged extends WeaponClass.Ranged with Feat with SuperiorWeaponFocus with RequiresAllOfFeat {
-    override def allOfFeats: Seq[Feat] = List(GreaterWeaponFocusRanged)
+  def superiorWeaponFocusAny: Seq[SuperiorWeaponFocus] = {
+    for {wc <- WeaponClass.values} yield SuperiorWeaponFocus(wc)
   }
 
-  case object SuperiorWeaponFocusThrown extends WeaponClass.Thrown with Feat with SuperiorWeaponFocus with RequiresAllOfFeat {
-    override def allOfFeats: Seq[Feat] = List(GreaterWeaponFocusThrown)
+
+  case object WeaponSpecialization extends Feat with WeaponSpecializationBase with ParentFeat {
+    override val subFeats: Seq[Feat with SubFeat] = weaponSpecializationAny
   }
 
-  //  Weapon Specialization Passive Feats
-  case object WeaponSpecializationBludgeon extends WeaponClass.Bludgeon with Feat with WeaponSpecialization with RequiresAllOfFeat {
-    override def allOfFeats: Seq[Feat] = List(Feat.WeaponFocusBludgeon)
+  case class WeaponSpecialization(weaponClass: WeaponClass) extends Feat with WeaponSpecializationBase with RequiresAllOfFeat with SubFeat with Prefix with FriendlyDisplay {
+    override def prefix: Option[String] = Some("Weapon Specialization".splitByCase)
+
+    override protected val prefixSeparator: String = ": "
+
+    override protected def nameSource: String = weaponClass.displayText
+
+    override def allOfFeats: Seq[Feat] = weaponFocusAny.filter { x => x.weaponClass.eq(weaponClass) }
   }
 
-  case object WeaponSpecializationPiercing extends WeaponClass.Piercing with Feat with WeaponSpecialization with RequiresAllOfFeat {
-    override def allOfFeats: Seq[Feat] = List(Feat.WeaponFocusPiercing)
+  def weaponSpecializationAny: Seq[WeaponSpecialization] = {
+    for {wc <- WeaponClass.values} yield WeaponSpecialization(wc)
   }
 
-  case object WeaponSpecializationSlashing extends WeaponClass.Slashing with Feat with WeaponSpecialization with RequiresAllOfFeat {
-    override def allOfFeats: Seq[Feat] = List(Feat.WeaponFocusSlashing)
+  case object GreaterWeaponSpecialization extends Feat with GreaterWeaponSpecializationBase with RequiresAllOfFeat with ParentFeat {
+    override val subFeats: Seq[Feat with SubFeat] = greaterWeaponSpecializationAny
+
+    override def allOfFeats: Seq[Feat] = List(Feat.WeaponSpecialization)
   }
 
-  case object WeaponSpecializationRanged extends WeaponClass.Ranged with Feat with WeaponSpecialization with RequiresAllOfFeat {
-    override def allOfFeats: Seq[Feat] = List(Feat.WeaponFocusRanged)
+  case class GreaterWeaponSpecialization(weaponClass: WeaponClass) extends Feat with GreaterWeaponSpecializationBase with RequiresAllOfFeat with SubFeat with Prefix with FriendlyDisplay {
+    override def prefix: Option[String] = Some("GreaterWeaponSpecialization".splitByCase)
+
+    override protected val prefixSeparator: String = ": "
+
+    override def allOfFeats: Seq[Feat] = greaterWeaponFocusAny.filter { x => x.weaponClass.eq(weaponClass) } ++ weaponSpecializationAny.filter { x => x.weaponClass.eq(weaponClass) }
+
+    override protected def nameSource: String = weaponClass.displayText
   }
 
-  case object WeaponSpecializationThrown extends WeaponClass.Thrown with Feat with WeaponSpecialization with RequiresAllOfFeat {
-    override def allOfFeats: Seq[Feat] = List(Feat.WeaponFocusThrown)
+  def greaterWeaponSpecializationAny: Seq[GreaterWeaponSpecialization] = {
+    for {wc <- WeaponClass.values} yield GreaterWeaponSpecialization(wc)
   }
 
-  case object GreaterWeaponSpecializationBludgeon extends WeaponClass.Bludgeon with Feat with GreaterWeaponSpecialization with RequiresAllOfFeat {
-    override def allOfFeats: Seq[Feat] = List(Feat.WeaponFocusBludgeon, Feat.WeaponSpecializationBludgeon)
-  }
-
-  case object GreaterWeaponSpecializationPiercing extends WeaponClass.Piercing with Feat with GreaterWeaponSpecialization with RequiresAllOfFeat {
-    override def allOfFeats: Seq[Feat] = List(Feat.WeaponFocusPiercing, Feat.WeaponSpecializationPiercing)
-  }
-
-  case object GreaterWeaponSpecializationSlashing extends WeaponClass.Slashing with Feat with GreaterWeaponSpecialization with RequiresAllOfFeat {
-    override def allOfFeats: Seq[Feat] = List(Feat.WeaponFocusSlashing, Feat.WeaponSpecializationSlashing)
-  }
-
-  case object GreaterWeaponSpecializationRanged extends WeaponClass.Ranged with Feat with GreaterWeaponSpecialization with RequiresAllOfFeat {
-    override def allOfFeats: Seq[Feat] = List(Feat.WeaponFocusRanged, Feat.WeaponSpecializationRanged)
-  }
-
-  case object GreaterWeaponSpecializationThrown extends WeaponClass.Thrown with Feat with GreaterWeaponSpecialization with RequiresAllOfFeat {
-    override def allOfFeats: Seq[Feat] = List(Feat.WeaponFocusThrown, Feat.WeaponSpecializationThrown)
-  }
 
   //Tactical Passive Feats
   case object TacticalTraining extends Feat with TacticalTraining
@@ -296,10 +315,48 @@ object Feat extends Enum[Feat] with SearchPrefix {
 
 
   // @todo add [Superior|Greater] spell focus X here
-  case object SpellPenetration extends Feat with SpellPenetration
+  case object SpellFocus extends Feat with SpellFocusBase with ParentFeat {
+    override val subFeats: Seq[Feat with SubFeat] = spellFocusAny
+  }
+
+  case class SpellFocus(school: School) extends Feat with SpellFocusBase with SubFeat with Prefix {
+    override protected def nameSource: String = school.displayText
+
+    /** * Delimits the prefix and text.
+      */
+    override protected val prefixSeparator: String = ": "
+
+    override def prefix: Option[String] = Some("SpellFocus".splitByCase)
+  }
+
+  def spellFocusAny: Seq[SpellFocus] = for {x <- School.values} yield SpellFocus(x)
+
+  case object GreaterSpellFocus extends Feat with GreaterSpellFocusBase with ParentFeat {
+    override val subFeats: Seq[Feat with SubFeat] = greaterWeaponFocusAny
+  }
+
+  case class GreaterSpellFocus(school: School) extends Feat with GreaterSpellFocusBase with SubFeat with Prefix {
+    override protected def nameSource: String = school.displayText
+
+    /** Delimits the prefix and text.
+      */
+    override protected val prefixSeparator: String = ": "
+
+    override def prefix: Option[String] = Some("GreaterSpellFocus".splitByCase)
+
+    def lesser = spellFocusAny.filter { x => x.school.eq(school) }
+
+    override def allOfFeats: Seq[Feat] = lesser
+  }
+
+  def greaterSpellFocusAny: Seq[GreaterSpellFocus] = for {x <- School.values} yield GreaterSpellFocus(x)
+
+
+  case object SpellPenetration extends Feat with SpellPenetration with PostText {
+    override def postText: Option[String] = Some("feat")
+  }
 
   case object GreaterSpellPenetration extends Feat with GreaterSpellPenetration
-
 
   //Armor, Shield & Weapon proficiencies
   case object LightArmorProficiency extends Feat with LightArmorProficiency
@@ -308,7 +365,9 @@ object Feat extends Enum[Feat] with SearchPrefix {
 
   case object HeavyArmorProficiency extends Feat with HeavyArmorProficiency
 
-  case object ShieldProficiency extends Feat with ShieldProficiency
+  case object ShieldProficiency extends Feat with ShieldProficiency with PostText {
+    override def postText: Option[String] = Some("General")
+  }
 
   case object TowerShieldProficiency extends Feat with TowerShieldProficiency
 
@@ -325,94 +384,98 @@ object Feat extends Enum[Feat] with SearchPrefix {
     * Druids are proficient with these simple weapons: Club, Dagger, Dart, Quarterstaff, Sickle, and Unarmed.
     * Druids are also proficient with the Martial class Scimitar.
     */
-  case class SimpleWeaponProficiency(weapon: WeaponCategory with SimpleWeapon*) extends Feat with SimpleWeaponProficiencyBase
+  case class SimpleWeaponProficiency(weapon: WeaponCategory with SimpleWeapon*) extends Feat with SimpleWeaponProficiencyBase with Prefix with SubFeat {
+    /**
+      * Delimits the prefix and text.
+      */
+    override protected val prefixSeparator: String = ": "
 
-  case object MartialWeaponProficiency extends Feat with MartialWeaponProficiency
+    override def prefix: Option[String] = Some("Simple Weapon Proficiency")
 
-  case object MartialWeaponProficiencyBattleaxe extends Feat with MartialWeaponProficiency
-
-  case object MartialWeaponProficiencyFalchion extends Feat with MartialWeaponProficiency
-
-  case object MartialWeaponProficiencyGreataxe extends Feat with MartialWeaponProficiency
-
-  case object MartialWeaponProficiencyGreatclub extends Feat with MartialWeaponProficiency
-
-  case object MartialWeaponProficiencyGreatsword extends Feat with MartialWeaponProficiency
-
-  case object MartialWeaponProficiencyHandaxe extends Feat with MartialWeaponProficiency
-
-  case object MartialWeaponProficiencyHeavyPick extends Feat with MartialWeaponProficiency
-
-  case object MartialWeaponProficiencyKukri extends Feat with MartialWeaponProficiency
-
-  case object MartialWeaponProficiencyLightHammer extends Feat with MartialWeaponProficiency
-
-  case object MartialWeaponProficiencyLightPick extends Feat with MartialWeaponProficiency
-
-  case object MartialWeaponProficiencyLongbow extends Feat with MartialWeaponProficiency
-
-  case object MartialWeaponProficiencyLongsword extends Feat with MartialWeaponProficiency
-
-  case object MartialWeaponProficiencyMaul extends Feat with MartialWeaponProficiency
-
-  case object MartialWeaponProficiencyRapier extends Feat with MartialWeaponProficiency
-
-  case object MartialWeaponProficiencyScimitar extends Feat with MartialWeaponProficiency
-
-  case object MartialWeaponProficiencyShortSword extends Feat with MartialWeaponProficiency
-
-  case object MartialWeaponProficiencyShortbow extends Feat with MartialWeaponProficiency
-
-  case object MartialWeaponProficiencyCompositeShortbow extends Feat with MartialWeaponProficiency
-
-  case object MartialWeaponProficiencyThrowingAxe extends Feat with MartialWeaponProficiency
-
-  case object MartialWeaponProficiencyThrowingHammer extends Feat with MartialWeaponProficiency
-
-  case object MartialWeaponProficiencyWarhammer extends Feat with MartialWeaponProficiency
-
-  case object ExoticWeaponProficiencyBastardSword extends Feat with ExoticWeaponProficiency with RequiresAttribute {
-    override def requiresAttribute: Seq[(Attribute, Int)] = List((Attribute.Strength, 13))
+    override protected def nameSource: String = weapon.headOption match {
+      case Some(x) => x.displayText
+      case _ => entryName
+    }
   }
 
-  /**
-    * @todo This is free for Dwarves, need to add Grant trait for AllOff[Dwarf with MartialWeaponProf]
-    */
-  case object ExoticWeaponProficiencyDwarvenAxe extends Feat with ExoticWeaponProficiency with RequiresAttribute {
-    override def requiresAttribute: Seq[(Attribute, Int)] = List((Attribute.Strength, 13))
+  case object SimpleWeaponProficiency extends Feat with SimpleWeaponProficiencyBase with ParentFeat {
+    override val subFeats: Seq[Feat with SubFeat] = simpleWeaponProficiencies
   }
 
-  /**
-    * @todo Need to add Free for Artificers and Rogue Mechanic:Arbalester
-    */
-  case object ExoticWeaponProficiencyGreatCrossBow extends Feat with ExoticWeaponProficiency
+  def simpleWeaponProficiencies: Seq[SimpleWeaponProficiency] = for {wc <- simpleWeapons} yield SimpleWeaponProficiency(wc)
 
-  /**
-    * @todo Free for Monks
-    */
-  case object ExoticWeaponProficiencyHandWraps extends Feat with ExoticWeaponProficiency
+  def simpleWeapons: Seq[WeaponCategory with SimpleWeapon] = {
+    for {w <- WeaponCategory.values.filter { x =>
+      x match {
+        case _: SimpleWeapon => true
+        case _ => false
+      }
+    }
+    } yield w.asInstanceOf[WeaponCategory with SimpleWeapon]
+  }
 
-  /**
-    * @todo Free for Monks
-    */
-  case object ExoticWeaponProficiencyKama extends Feat with ExoticWeaponProficiency
+  case class MartialWeaponProficiency(weapon: WeaponCategory with MartialWeapon*) extends Feat with MartialWeaponProficiencyBase with Prefix with SubFeat {
+    /**
+      * Delimits the prefix and text.
+      */
+    override protected val prefixSeparator: String = ": "
 
-  case object ExoticWeaponProficiencyKhopesh extends Feat with ExoticWeaponProficiency
+    override def prefix: Option[String] = Some("Martial Weapon Proficiency")
 
-  /*
-  @todo free for Artificers and Rogue Mechanic: Improved Detection
-   */
-  case object ExoticWeaponProficiencyRepeatingHeavyCrossbow extends Feat with ExoticWeaponProficiency
+    override protected def nameSource: String = weapon.headOption match {
+      case Some(x) => x.displayText
+      case _ => entryName
+    }
+  }
 
-  /*
-  (free for Artificers and Rogue Mechanic: Targeting Sights)
-   */
-  case object ExoticWeaponProficiencyRepeatingLightCrossbow extends Feat with ExoticWeaponProficiency
+  def martialWeaponProficiencies: Seq[MartialWeaponProficiency] = for {wc <- martialWeapons} yield MartialWeaponProficiency(wc)
 
-  /*
-  @todo (free for Monks and Drow)
-   */
-  case object ExoticWeaponProficiencyShuriken extends Feat with ExoticWeaponProficiency
+  def martialWeapons: Seq[WeaponCategory with MartialWeapon] = {
+    for {w <- WeaponCategory.values.filter { x =>
+      x match {
+        case _: MartialWeapon => true
+        case _ => false
+      }
+    }
+    } yield w.asInstanceOf[WeaponCategory with MartialWeapon]
+  }
+
+  case object MartialWeaponProficiency extends Feat with MartialWeaponProficiencyBase with ParentFeat {
+    override val subFeats: Seq[Feat with SubFeat] = martialWeaponProficiencies
+  }
+
+  case class ExoticWeaponProficiency(weapon: WeaponCategory with ExoticWeapon*) extends Feat with ExoticWeaponProficiencyBase with Prefix with SubFeat {
+    /**
+      * Delimits the prefix and text.
+      */
+    override protected val prefixSeparator: String = ": "
+
+    override def prefix: Option[String] = Some("Exotic Weapon Proficiency")
+
+    override protected def nameSource: String = weapon.headOption match {
+      case Some(x) => x.displayText
+      case _ => entryName
+    }
+  }
+
+  def exoticWeaponProficiencies: Seq[ExoticWeaponProficiency] = for {wc <- exoticWeapons} yield ExoticWeaponProficiency(wc)
+
+  def exoticWeapons: Seq[WeaponCategory with ExoticWeapon] = {
+    for {w <- WeaponCategory.values.filter { x =>
+      x match {
+        case _: ExoticWeapon => true
+        case _ => false
+      }
+    }
+    } yield w.asInstanceOf[WeaponCategory with ExoticWeapon]
+  }
+
+  case object ExoticWeaponProficiency extends Feat with ExoticWeaponProficiencyBase with ParentFeat {
+    override val subFeats: Seq[Feat with SubFeat] = exoticWeaponProficiencies
+
+    override def prefix: Option[String] = None
+  }
+
 
   // Skill bonus feats
 
@@ -433,7 +496,22 @@ object Feat extends Enum[Feat] with SearchPrefix {
   /**
     * @todo this needs to be a case class for each (allowed) Skill
     */
-  case object SkillFocus extends Feat with SkillFocus
+  case object SkillFocus extends Feat with SkillFocusBase with ParentFeat {
+    override val subFeats: Seq[Feat with SubFeat] = skillFocusAny
+  }
+
+  case class SkillFocus(skill: Skill) extends Feat with SkillFocusBase with SubFeat with Prefix {
+    override def prefix: Option[String] = Some("Skill Focus")
+
+    /**
+      * Delimits the prefix and text.
+      */
+    override protected val prefixSeparator: String = ": "
+
+    override protected def nameSource: String = skill.displayText
+  }
+
+  def skillFocusAny: Seq[SkillFocus] = for {x <- Skill.values} yield SkillFocus(x)
 
   case object Stealthy extends Feat with Stealthy
 
@@ -461,42 +539,81 @@ object Feat extends Enum[Feat] with SearchPrefix {
 
   case object InsightfulReflexes extends Feat with InsightfulReflexes
 
-  // Favor awarded free feats
-  // case object CoinLordFinishingSchoolTraining extends Feat with CoinLordFinishingSchoolTraining
+  // FavorPatron awarded free feats
+  case object CoinLordFinishingSchoolTraining extends Feat with CoinLordFinishingSchoolTraining
 
-  //  case object DraconicVitality extends Feat with DraconicVitality
+  case object DraconicVitality extends Feat with DraconicVitality
 
   // Exchange feats
   // case object FeatRespecToken extends Feat with FeatRespecToken
 
   // Racial Feats
-  case object HalfElfDilettanteMonk extends Feat with HalfElfDilettanteMonk
+  case object HalfElfDilettanteMonk extends Feat with HalfElfDilettanteMonk {
+    override protected def nameSource: String = "Monk".toPascalCase
+  }
 
-  case object HalfElfDilettanteBarbarian extends Feat with HalfElfDilettanteBarbarian
+  case object HalfElfDilettanteBarbarian extends Feat with HalfElfDilettanteBarbarian {
+    override protected def nameSource: String = "Barbarian".toPascalCase
+  }
 
-  case object HalfElfDilettanteBard extends Feat with HalfElfDilettanteBard
+  case object HalfElfDilettanteBard extends Feat with HalfElfDilettanteBard {
+    override protected def nameSource: String = "Bard".toPascalCase
+  }
 
-  case object HalfElfDilettanteCleric extends Feat with HalfElfDilettanteCleric
+  case object HalfElfDilettanteCleric extends Feat with HalfElfDilettanteCleric {
+    override protected def nameSource: String = "Cleric".toPascalCase
+  }
 
-  case object HalfElfDilettanteDruid extends Feat with HalfElfDilettanteDruid
+  case object HalfElfDilettanteDruid extends Feat with HalfElfDilettanteDruid {
+    override protected def nameSource: String = "Druid".toPascalCase
+  }
 
-  case object HalfElfDilettanteFavoredSoul extends Feat with HalfElfDilettanteFavoredSoul
+  case object HalfElfDilettanteFavoredSoul extends Feat with HalfElfDilettanteFavoredSoul {
+    override protected def nameSource: String = "FavoredSoul".splitByCase.toPascalCase
+  }
 
-  case object HalfElfDilettanteFighter extends Feat with HalfElfDilettanteFighter
+  case object HalfElfDilettanteFighter extends Feat with HalfElfDilettanteFighter {
+    override protected def nameSource: String = "Fighter".toPascalCase
+  }
 
-  case object HalfElfDilettantePaladin extends Feat with HalfElfDilettantePaladin
 
-  case object HalfElfDilettanteRanger extends Feat with HalfElfDilettanteRanger
+  case object HalfElfDilettantePaladin extends Feat with HalfElfDilettantePaladin {
+    override protected def nameSource: String = "Paladin".toPascalCase
+  }
 
-  case object HalfElfDilettanteRogue extends Feat with HalfElfDilettanteRogue
+  case object HalfElfDilettanteRanger extends Feat with HalfElfDilettanteRanger {
+    override protected def nameSource: String = "Ranger".toPascalCase
+  }
 
-  case object HalfElfDilettanteSorcerer extends Feat with HalfElfDilettanteSorcerer
+  case object HalfElfDilettanteRogue extends Feat with HalfElfDilettanteRogue {
+    override protected def nameSource: String = "Rogue".toPascalCase
+  }
 
-  case object HalfElfDilettanteWarlock extends Feat with HalfElfDilettanteWarlock
+  case object HalfElfDilettanteSorcerer extends Feat with HalfElfDilettanteSorcerer {
+    override protected def nameSource: String = "Sorcerer".toPascalCase
+  }
 
-  case object HalfElfDilettanteWizard extends Feat with HalfElfDilettanteWizard
+  case object HalfElfDilettanteWarlock extends Feat with HalfElfDilettanteWarlock {
+    override protected def nameSource: String = "Warlock".toPascalCase
+  }
 
-  override lazy val values: Seq[Feat] = findValues
+  case object HalfElfDilettanteWizard extends Feat with HalfElfDilettanteWizard {
+    override protected def nameSource: String = "Wizard".toPascalCase
+  }
+
+  override lazy val values: Seq[Feat] =
+    findValues ++
+      simpleWeaponProficiencies ++
+      martialWeaponProficiencies ++
+      exoticWeaponProficiencies ++
+      weaponFocusAny ++
+      greaterWeaponFocusAny ++
+      superiorWeaponFocusAny ++
+      spellFocusAny ++
+      greaterSpellFocusAny ++
+      weaponSpecializationAny ++
+      greaterWeaponSpecializationAny ++
+      skillFocusAny
 
   /**
     * Used when qualifying a search with a prefix.

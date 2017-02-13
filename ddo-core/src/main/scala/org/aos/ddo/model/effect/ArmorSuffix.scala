@@ -1,7 +1,6 @@
 package org.aos.ddo.model.effect
 
-import enumeratum.{ Enum => SmartEnum, EnumEntry }
-import org.aos.ddo.support.Descriptive
+import enumeratum.{EnumEntry, Enum => SmartEnum}
 
 sealed trait ArmorSuffix extends EnumEntry with Suffix
 object ArmorSuffix extends SmartEnum[ArmorSuffix] {

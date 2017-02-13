@@ -1,18 +1,20 @@
 package org.aos.ddo.model.feat
 
 import org.aos.ddo.model.classes.CharacterClass
-import org.aos.ddo.support.requisite.RequiresAllOfClass
+import org.aos.ddo.support.requisite.{FeatRequisiteImpl, RequiresAnyOfClass}
 
-/** Icon Feat Greater Spell Focus.png
-  * Greater Spell Focus 	Passive 	This feat makes it harder for enemies to resist the caster's spells of a particular school by adding +1 to the difficulty class of the spell. This stacks with Spell Focus.
-  * *
-  * Spell Focus for the same school
+/** Icon Feat Spell Focus.png
+  * Spell Focus - Passive
+  * This feat makes it harder for enemies to resist the caster's spells of a particular school by adding +1 to the difficulty class of the spell.
+  *
   * Level 1: Artificer, Bard, Cleric, Druid, Favored Soul
   * Level 1: Sorcerer, Wizard; Level 4: Paladin, Ranger
-  * */
-trait GreaterSpellFocus extends Passive with RequiresAllOfClass {
+  *
+  * @todo create spell focus:X feats
+  **/
+protected[feat] trait SpellFocusBase extends FeatRequisiteImpl with Passive with RequiresAnyOfClass  {
   self: Feat =>
-  override def anyOfClass: Seq[(CharacterClass, Int)] =
+  override def allOfClass: Seq[(CharacterClass, Int)] =
     List((CharacterClass.Artificer, 1),
       (CharacterClass.Bard, 1),
       (CharacterClass.Cleric, 1),

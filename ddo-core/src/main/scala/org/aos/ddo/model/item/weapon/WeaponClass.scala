@@ -2,27 +2,34 @@ package org.aos.ddo.model.item.weapon
 
 import enumeratum.{Enum, EnumEntry}
 import org.aos.ddo._
+import org.aos.ddo.support.naming.DisplayName
 import org.aos.ddo.support.{Deferred, PhysicalDamage}
 
 /**
   * This trait is used to map weapons for purposes such as determining
   * weapon specialization and should correspond directly to such Feats.
   */
-sealed trait WeaponClass extends EnumEntry {
+sealed trait WeaponClass extends EnumEntry with DisplayName {
   self: DefaultDeliveryMethod with PhysicalDamage =>
+  /**
+    * Sets or maps the source text for the DisplayName.
+    *
+    * @return Source text.
+    */
+  override protected def nameSource: String = entryName
 }
 
 object WeaponClass extends Enum[WeaponClass] {
 
-  class Bludgeon() extends WeaponClassBludgeoning
+  case object Bludgeon extends WeaponClassBludgeoning
 
-  class Piercing() extends WeaponClassPiercing
+  case object  Piercing extends WeaponClassPiercing
 
-  class Slashing() extends WeaponClassSlashing
+  case object  Slashing extends WeaponClassSlashing
 
-  class Ranged() extends WeaponClassRanged
+  case object  Ranged extends WeaponClassRanged
 
-  class Thrown() extends WeaponClassThrown
+  case object  Thrown extends WeaponClassThrown
 
   override def values: Seq[WeaponClass] = findValues
 }

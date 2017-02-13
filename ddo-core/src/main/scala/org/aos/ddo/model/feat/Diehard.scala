@@ -8,6 +8,6 @@ import org.aos.ddo.support.requisite.{FeatRequisiteImpl, FreeFeat}
   * Passive
   * You automatically stabilize when incapacitated.
   */
-protected[feat] trait DieHard extends FeatRequisiteImpl with Passive with FreeFeat {
+protected[feat] trait Diehard extends FeatRequisiteImpl with Passive with FreeFeat {
   self: Feat =>
 }

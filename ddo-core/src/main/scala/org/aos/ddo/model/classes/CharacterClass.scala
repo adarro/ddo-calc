@@ -42,7 +42,7 @@ object CharacterClass extends Enum[CharacterClass] with SearchPrefix {
   /**
     * A divine caster that follows the path of the Cleric but uses divine magic to destroy as well as heal, Favored Souls have fewer spells than Clerics, but can cast more often. Their single current Prestige Enhancement line increases their offensive effectiveness, or that of a single ally. Other enhancements include certain stacking energy resistance and inherent Damage Reduction, making them more than just clerics with "fewer spells, but more casting". Favored Souls use Wisdom for spell casting effectiveness (DCs), but Charisma for spell points, and may gain Wisdom or Charisma enhancements as they level up. They can use Light or Medium armor, and have limited martial weapon proficiency (only in the chosen weapon of their god).
     * *
-    * The Favored Soul class must be purchased in the DDO store for Turbine Points or unlocked on a per server basis by earning 2500 Total Favor on a single character.
+    * The Favored Soul class must be purchased in the DDO store for Turbine Points or unlocked on a per server basis by earning 2500 Total FavorPatron on a single character.
     *
     *
     */

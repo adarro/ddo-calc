@@ -7,9 +7,9 @@ import org.aos.ddo.support.requisite.{FeatRequisiteImpl, RequiresAllOfClass, Req
 /** Icon Feat Greater Weapon Focus.png
   * Greater Weapon Focus 	Passive 	Provides an additional +1 bonus to attack rolls with the chosen weapon type and additional +2 stacking Melee Power or Ranged Power. This feat stacks with Weapon Focus.
   * */
-protected[feat] trait GreaterWeaponFocus extends FeatRequisiteImpl with Passive with RequiresAllOfClass {
+protected[feat] trait GreaterWeaponFocusBase extends FeatRequisiteImpl with Passive with RequiresAllOfClass {
 
-  self: WeaponClass with Feat with RequiresAllOfFeat =>
+  self: Feat with RequiresAllOfFeat =>
 
-  override def anyOfClass: Seq[(CharacterClass, Int)] = List((CharacterClass.Fighter, 8))
+  override def allOfClass: Seq[(CharacterClass, Int)] = List((CharacterClass.Fighter, 8))
 }

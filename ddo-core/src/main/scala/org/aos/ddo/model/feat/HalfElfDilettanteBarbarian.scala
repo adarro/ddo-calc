@@ -10,7 +10,7 @@ import org.aos.ddo.support.requisite.{FeatRequisiteImpl, RequiresAllOfRace, Requ
   *DilettanteBarbarian.bmp
   * Half-Elf Dilettante: Barbarian	Passive	Damage Reduction 1/- (does not stack with Barbarian Damage Reduction).
   */
-trait HalfElfDilettanteBarbarian extends FeatRequisiteImpl with Passive with RequiresAttribute with RequiresAllOfRace {
+trait HalfElfDilettanteBarbarian extends FeatRequisiteImpl with HalfElfDilettante  with Passive with RequiresAttribute with RequiresAllOfRace {
   self: Feat =>
   override def allOfRace: Seq[(Race, Int)] = List((Race.HalfElf, 1))
 

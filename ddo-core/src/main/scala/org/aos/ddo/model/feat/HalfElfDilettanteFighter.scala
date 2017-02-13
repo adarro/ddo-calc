@@ -26,7 +26,7 @@ import org.aos.ddo.support.requisite._
   * Half-Elf
   * 13 Strength
   */
-protected[feat] trait HalfElfDilettanteFighter extends FeatRequisiteImpl with Passive with RequiresAttribute with RequiresAllOfRace {
+protected[feat] trait HalfElfDilettanteFighter extends FeatRequisiteImpl with HalfElfDilettante with Passive with RequiresAttribute with RequiresAllOfRace {
   self: Feat =>
   override def allOfRace: Seq[(Race, Int)] = List((Race.HalfElf, 1))
 

@@ -18,10 +18,16 @@ import enumeratum.{Enum, EnumEntry}
 import org.aos.ddo.activation.{ActivationType, AtWillEvent, PassiveActivation}
 import org.aos.ddo.model.attribute._
 import org.aos.ddo.support.SearchPrefix
+import org.aos.ddo.support.naming.{DisplayName, FriendlyDisplay}
 
-sealed trait Skill extends EnumEntry {
+sealed trait Skill extends EnumEntry with DisplayName with FriendlyDisplay {
   self: ActivationType with LinkedAttribute =>
-
+  /**
+    * Sets or maps the source text for the DisplayName.
+    *
+    * @return Source text.
+    */
+  override protected def nameSource: String = entryName
 }
 
 object Skill extends Enum[Skill] with SearchPrefix {

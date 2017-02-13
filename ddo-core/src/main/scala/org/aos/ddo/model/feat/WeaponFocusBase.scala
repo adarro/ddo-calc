@@ -10,9 +10,9 @@ import org.aos.ddo.support.requisite.{FeatRequisiteImpl, RequiresBaB}
   *
   * Base Attack Bonus +1
   * */
-trait WeaponFocus extends FeatRequisiteImpl with Passive with RequiresBaB {
+trait WeaponFocusBase extends FeatRequisiteImpl with Passive with RequiresBaB {
 
-  self: WeaponClass with Feat =>
+  self: Feat =>
 
   override def requiresBaB: Int = 1
 }

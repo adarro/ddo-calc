@@ -19,11 +19,12 @@ import org.aos.ddo.Abbreviation
 import org.aos.ddo.model.alignment.{AlignmentType, Alignments, LawAxis, MoralAxis}
 import org.aos.ddo.model.attribute.Attribute
 import org.aos.ddo.model.classes.CharacterClass
+import org.aos.ddo.model.favor.FavorPatron
 import org.aos.ddo.model.feat.Feat
 import org.aos.ddo.model.race.Race
 import org.aos.ddo.model.skill.Skill
 import org.aos.ddo.support.StringUtils.Extensions
-import org.aos.ddo.support.{DisplayName, Prefix}
+import org.aos.ddo.support.naming.{DisplayName, Prefix}
 
 /** Base trait used to enumerate qualifications.
   */
@@ -111,6 +112,20 @@ object Requirement extends Enum[Requirement] {
     */
   case class ReqClass(id: String, level: Int) extends Requirement {
     override def prefix: Option[String] = Some(CharacterClass.searchPrefixSource)
+
+    /**
+      * @inheritdoc
+      */
+    override protected def nameSource: String = id.splitByCase.toPascalCase
+  }
+
+  /** Represents the minimum level of a given class to qualify
+    *
+    * @param id    the patron / faction
+    * @param level the minimum amount of favor required
+    */
+  case class ReqFavorPatron(id: String, level: Int) extends Requirement {
+    override def prefix: Option[String] = Some(FavorPatron.searchPrefixSource)
 
     /**
       * @inheritdoc

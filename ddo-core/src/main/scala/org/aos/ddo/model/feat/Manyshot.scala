@@ -16,7 +16,7 @@ import org.aos.ddo.support.requisite._
   * @todo add 30 second Cooldown
   * @todo add 20 second Active
   */
-protected[feat] trait ManyShot extends FeatRequisiteImpl with Active with RequiresAllOfFeat with RequiresAttribute with RequiresBaB {
+protected[feat] trait Manyshot extends FeatRequisiteImpl with Active with RequiresAllOfFeat with RequiresAttribute with RequiresBaB {
   self: Feat =>
   override def allOfFeats: Seq[Feat] = List(Feat.PointBlankShot, Feat.RapidShot)
 

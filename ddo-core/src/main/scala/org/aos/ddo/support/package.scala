@@ -16,27 +16,60 @@
 
 package org.aos.ddo
 
-import scala.util.control.Exception.catching
+import com.typesafe.config.ConfigFactory
+import com.typesafe.scalalogging.LazyLogging
 import com.wix.accord.Violation
-import org.aos.ddo.model.race.Race
-import org.aos.ddo.support.requisite.Requirement
-import org.aos.ddo.support.requisite.Requirement.ReqRace
 
 import scala.language.postfixOps
 import scala.util.Random
+import scala.util.control.Exception.catching
 
-package object support {
+package object support extends LazyLogging {
+
   /**
     * StringUtils
     * Useful Implicits used in mapping
     */
   object StringUtils {
 
+    def path = "org.aos.ddo.support"
+
+    implicit lazy val config: com.typesafe.config.Config = {
+      val cfg = ConfigFactory.load
+      if (!cfg.hasPath(path)) {
+        logger.warn("Failed to load a valid configuration file, using hard-coded defaults... Please verify your configuration")
+        val data =
+          """
+            |org.aos.ddo {
+            |  support {
+            |    noiseWords = [
+            |      "On",
+            |      "The",
+            |      "Of"
+            |    ]
+            |  }
+            |}
+          """.stripMargin
+        ConfigFactory.parseString(data)
+      } else {
+        cfg
+      }
+    }
+
     implicit class StringImprovements(val s: String) {
       def toIntOpt: Option[Int] = catching(classOf[NumberFormatException]) opt s.toInt
     }
 
     implicit class Extensions(val s: String) {
+      def lowerCaseNoise: String = {
+        val noise = config.getStringList("org.aos.ddo.support.noiseWords")
+        val words = s.splitByCase
+        (for {w <- words.split(Space).map { x =>
+          if (noise.contains(x)) x.toLowerCase else x
+        }
+        } yield w + Space).mkString.trim
+      }
+
       /**
         * Formats string into [[http://wiki.c2.com/?PascalCase PascalCase]] or 'UpperCamelCase'
         *
@@ -63,7 +96,7 @@ package object support {
       def splitByCase: String = {
         val b = new StringBuilder
         s.toCharArray.foreach { c =>
-          if (c.isLetter && c.isUpper) b.append(s" $c") else b.append(c.toString)
+          if (c.isLetter && c.isUpper) b.append(s"$Space$c") else b.append(c.toString)
         }
         b.mkString.trim
       }

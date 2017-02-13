@@ -8,7 +8,7 @@ import org.aos.ddo.support.requisite.{FeatRequisiteImpl, RequiresAllOfRace, Requ
   * Half-Elf Dilettante: Favored Soul	Passive	Able to use wands and scrolls as if you were a level one favored soul.
   * Half-Elf
   * 13 Charisma */
-trait HalfElfDilettanteFavoredSoul extends FeatRequisiteImpl with Passive with RequiresAttribute with RequiresAllOfRace {
+trait HalfElfDilettanteFavoredSoul extends FeatRequisiteImpl with HalfElfDilettante with Passive with RequiresAttribute with RequiresAllOfRace {
   self: Feat =>
   override def allOfRace: Seq[(Race, Int)] = List((Race.HalfElf, 1))
 

@@ -1,4 +1,4 @@
-package org.aos.ddo.support
+package org.aos.ddo.support.naming
 
 /**
   * Mixin Used to prefix a name.
@@ -11,12 +11,12 @@ trait Prefix extends DisplayProperties {
     */
   protected val prefixSeparator: String = ":"
 
-  def withPrefix: String = prefix match {
-    case Some(p) => s"$p$prefixSeparator"
-    case _ => prefixSeparator
+  def withPrefix: Option[String] = prefix match {
+    case Some(p) => Some(s"$p$prefixSeparator")
+    case _ => None
   }
 
-  abstract override def displaySource: String = withPrefix + super.displaySource
+  abstract override def displaySource: String = withPrefix.getOrElse("") + super.displaySource
 
   def hasPrefix: Boolean = prefix.isDefined
 }

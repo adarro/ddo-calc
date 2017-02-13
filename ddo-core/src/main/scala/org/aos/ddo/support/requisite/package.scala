@@ -2,6 +2,7 @@ package org.aos.ddo.support
 
 import org.aos.ddo.model.attribute.Attribute
 import org.aos.ddo.model.classes.CharacterClass
+import org.aos.ddo.model.favor.FavorPatron
 import org.aos.ddo.model.feat.Feat
 import org.aos.ddo.model.race.Race
 import org.aos.ddo.model.skill.Skill
@@ -14,6 +15,17 @@ package object requisite {
   type Result = (Boolean, Option[List[Requisite]])
 
   object RequirementImplicits {
+
+    implicit class PatronImplicits(val source: (FavorPatron, Int)) {
+      def toReqFavor: ReqFavorPatron = patronToReq(source)
+    }
+
+    val patronToReq = new PartialFunction[(FavorPatron, Int), ReqFavorPatron] {
+      override def isDefinedAt(x: (FavorPatron, Int)): Boolean =
+        Requirement.withNameOption(s"${FavorPatron.searchPrefix}${x._1.entryName}").isDefined
+
+      override def apply(v1: (FavorPatron, Int)): ReqFavorPatron = ReqFavorPatron(v1._1.entryName, v1._2)
+    }
 
     implicit class SkillImplicits(val source: (Skill, Int)) {
       def toReq: ReqSkill = skillToReq(source)

@@ -1,5 +1,6 @@
 package org.aos.ddo.model.feat
 
+import org.aos.ddo.model.item.weapon.SimpleWeapon
 import org.aos.ddo.support.requisite.{FeatRequisiteImpl, FreeFeat}
 
 /** Icon Feat Simple Weapon Proficiency.png
@@ -7,6 +8,6 @@ import org.aos.ddo.support.requisite.{FeatRequisiteImpl, FreeFeat}
   * *
   * None
   * */
-protected[feat] trait SimpleWeaponProficiencyBase extends FeatRequisiteImpl with Passive with FreeFeat {
+protected[feat] trait SimpleWeaponProficiencyBase extends FeatRequisiteImpl with SimpleWeapon with Passive with FreeFeat {
   self: Feat =>
 }

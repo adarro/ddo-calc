@@ -3,7 +3,8 @@ scala:
 - 2.11.8
 jdk:
 - oraclejdk8
-- oraclejdk7  
+- oraclejdk7
+install: true
 before_script:
 - mvn install -pl qa-tools
 script:

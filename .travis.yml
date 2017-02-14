@@ -8,7 +8,7 @@ install: true
 before_script:
   - mvn install -Dmaven.skip.tests -f qa-tools
 script:
-  - mvn scoverage:report
+  - mvn org.scoverage:scoverage-maven-plugin:1.3.0:report
 
 after_success:
   - bash <(curl -s https://codecov.io/bash)

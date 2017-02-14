@@ -6,7 +6,7 @@ jdk:
 - oraclejdk7
 install: true
 before_script:
-- mvn install -pl qa-tools -amd -Dmaven.test.skip=true
+- mvn install -pl qa-tools -Dmaven.test.skip=true
 script:
 - mvn scoverage:report
 

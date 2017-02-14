@@ -246,7 +246,7 @@
         <version>${spring.boot.version}</version>
         <optional>true</optional>
       </dependency>
-       <!-- Spring-boot -->
+      <!-- Spring-boot -->
       <dependency>
         <!-- Import dependency management from Spring Boot -->
         <groupId>org.springframework.boot</groupId>

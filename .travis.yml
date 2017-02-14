@@ -6,9 +6,9 @@ jdk:
 - oraclejdk7
 install: true
 before_script:
-- mvn install -pl qa-tools -Dmaven.test.skip=true
+  - mvn install -Dmaven.skip.tests -f qa-tools
 script:
-- mvn scoverage:report
+  - mvn scoverage:report
 
 after_success:
   - bash <(curl -s https://codecov.io/bash)

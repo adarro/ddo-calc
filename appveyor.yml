@@ -15,7 +15,7 @@ install:
   - cmd: SET JAVA_OPTS=-XX:MaxPermSize=2g -Xmx4g
   - cmd: SET M2_HOME=C:\maven\apache-maven-3.2.5
 before_build:
-  - mvn install -pl qa-tools -Dmaven.test.skip=true
+  - mvn install -Dmaven.skip.tests -f qa-tools
 build_script:
   - mvn clean package --batch-mode -DskipTest
 test_script:

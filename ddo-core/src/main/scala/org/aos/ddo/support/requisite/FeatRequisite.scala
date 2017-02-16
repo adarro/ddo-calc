@@ -1,6 +1,6 @@
 package org.aos.ddo.support.requisite
 
-import org.aos.ddo.model.feat.Feat
+import org.aos.ddo.model.feats.Feat
 import org.aos.ddo.support.requisite.RequirementImplicits.featToReq
 
 import scala.language.{implicitConversions, postfixOps}

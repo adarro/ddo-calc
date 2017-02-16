@@ -87,11 +87,11 @@
       <artifactId>scalatest_${scala.tools.version}</artifactId>
       <scope>test</scope>
     </dependency>
-    <dependency>
+  <!--  <dependency>
       <groupId>org.evosuite</groupId>
       <artifactId>evosuite-standalone-runtime</artifactId>
       <scope>test</scope>
-    </dependency>
+    </dependency> -->
     <dependency>
       <groupId>org.mockito</groupId>
       <artifactId>mockito-all</artifactId>
@@ -330,10 +330,10 @@
             <concordion.output.dir>target/concordion</concordion.output.dir>
           </systemProperties>
           <properties>
-            <property>
-              <name>listener</name>
-              <value>org.evosuite.runtime.InitializingListener</value>
-            </property>
+            <!--<property>-->
+              <!--<name>listener</name>-->
+              <!--<value>org.evosuite.runtime.InitializingListener</value>-->
+            <!--</property>-->
           </properties>
 
           <includes>
@@ -382,31 +382,31 @@
         <groupId>org.scalatest</groupId>
         <artifactId>scalatest-maven-plugin</artifactId>
       </plugin>
-      <plugin>
-        <groupId>org.evosuite.plugins</groupId>
-        <artifactId>evosuite-maven-plugin</artifactId>
-        <configuration>
-          <timeInMinutesPerClass>3</timeInMinutesPerClass>
-          <detail>true</detail>
-          <memoryInMB>2000</memoryInMB>
-        </configuration>
-        <executions>
-          <execution>
-            <goals>
-              <goal>prepare</goal>
-              <goal>export</goal>
-            </goals>
-            <phase>process-test-classes</phase>
-          </execution>
-          <!--   <execution>
-            <id>generate</id>
-            <goals>
-              <goal>generate</goal>
-            </goals>
-            <phase>generate-test-sources</phase>
-          </execution>-->
-        </executions>
-      </plugin>
+      <!--<plugin>-->
+        <!--<groupId>org.evosuite.plugins</groupId>-->
+        <!--<artifactId>evosuite-maven-plugin</artifactId>-->
+        <!--<configuration>-->
+          <!--<timeInMinutesPerClass>3</timeInMinutesPerClass>-->
+          <!--<detail>true</detail>-->
+          <!--<memoryInMB>2000</memoryInMB>-->
+        <!--</configuration>-->
+        <!--<executions>-->
+          <!--<execution>-->
+            <!--<goals>-->
+              <!--<goal>prepare</goal>-->
+              <!--<goal>export</goal>-->
+            <!--</goals>-->
+            <!--<phase>process-test-classes</phase>-->
+          <!--</execution>-->
+          <!--&lt;!&ndash;   <execution>-->
+            <!--<id>generate</id>-->
+            <!--<goals>-->
+              <!--<goal>generate</goal>-->
+            <!--</goals>-->
+            <!--<phase>generate-test-sources</phase>-->
+          <!--</execution>&ndash;&gt;-->
+        <!--</executions>-->
+      <!--</plugin>-->
       <!-- Coverage for Codecov.io -->
       <plugin>
         <groupId>org.scoverage</groupId>

@@ -49,12 +49,12 @@ class BindingTest extends FunSpec with Matchers with MockitoSugar with LazyLoggi
       }
     }
     it("should have a default value") {
-      BindingFlags.hasDefaultValue should be(true)
+      BindingFlags.hasDefault should be(true)
     }
     it("should have a default value of BindingFlags.Unbound") {
       val unbound = BindingFlags.Unbound
       val binding = BindingFlags.default
-      BindingFlags.isDefaultValue(unbound) should be(true)
+      BindingFlags.isDefault(unbound) should be(true)
 
       binding shouldEqual Some(unbound)
     }

@@ -34,7 +34,7 @@ class DefaultValueTest extends FunSpec with Matchers with LazyLogging {
   }
   describe("A Default Value ") {
     it("should be able to check if it has one") {
-      noDefault.hasDefaultValue should be(false)
+      noDefault.hasDefault should be(false)
     }
 
     it("can be checked against None") {
@@ -42,7 +42,7 @@ class DefaultValueTest extends FunSpec with Matchers with LazyLogging {
     }
 
     it("May have a value") {
-      greetDefault.hasDefaultValue should be(true)
+      greetDefault.hasDefault should be(true)
     }
 
     it("can be verified to have a value") {
@@ -52,7 +52,7 @@ class DefaultValueTest extends FunSpec with Matchers with LazyLogging {
 
     it("can see if it is the default value (equals)") {
       val thisGreeting = Some(greeting)
-      greetDefault.isDefaultValue(otherGreet) should be(true)
+      greetDefault.isDefault(otherGreet) should be(true)
     }
   }
 }

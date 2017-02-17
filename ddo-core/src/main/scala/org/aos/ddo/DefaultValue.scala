@@ -23,15 +23,15 @@ trait DefaultValue[T] {
   /** True if value is default value, otherwise false.
     * @note will return false if there is no default value is provided.
     */
-  def isDefaultValue[D <: T](other: DefaultValue[D]): Boolean = {
+  def isDefault[D <: T](other: DefaultValue[D]): Boolean = {
     this.default match {
-      case Some(x) => other.hasDefaultValue &&  other.default.contains(x) //  == other // this.defaultValue.equals(other.defaultValue)
+      case Some(x) => other.hasDefault &&  other.default.contains(x) //  == other // this.defaultValue.equals(other.defaultValue)
       case _       => false
     }
   }
   /** True if there is a default value.
     */
-  def hasDefaultValue: Boolean = this.default match {
+  def hasDefault: Boolean = this.default match {
     case Some(_) => true
     case _       => false
   }

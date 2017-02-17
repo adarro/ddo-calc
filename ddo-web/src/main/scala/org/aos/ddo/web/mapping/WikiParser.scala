@@ -20,17 +20,7 @@ import java.text.NumberFormat
 import com.typesafe.scalalogging.LazyLogging
 import org.aos.ddo.enumeration.EnumExtensions.EnumCompanionOps
 import org.aos.ddo.model.attribute.Attribute
-import org.aos.ddo.model.item.weapon.{
-  CriticalThreatRange,
-  DeliveryType,
-  Handedness,
-  MeleeDamage,
-  ProficiencyClass,
-  RangeDamage,
-  SpecialDamage,
-  ThrownDamage,
-  WeaponCategory
-}
+import org.aos.ddo.model.item.weapon._
 import org.aos.ddo.model.misc.Material
 import org.aos.ddo.support.StringUtils.{
   Comma,

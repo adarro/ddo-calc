@@ -14,9 +14,7 @@ import scala.languageFeature.postfixOps
   */
 class SelfTypeEnumTest extends FunSpec with Matchers with LazyLogging {
 
-  sealed trait Simple extends EnumEntry {
-
-  }
+  sealed trait Simple extends EnumEntry
 
   sealed trait values extends EnumEntry
 

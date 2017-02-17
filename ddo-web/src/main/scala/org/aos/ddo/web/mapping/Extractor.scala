@@ -1,13 +1,37 @@
 package org.aos.ddo.web.mapping
 
 import scala.language.postfixOps
-
-import org.aos.ddo.support.StringUtils.{ Comma, EmptyString, Space }
+import org.aos.ddo.support.StringUtils.{Comma, EmptyString, Space}
 import org.jsoup.nodes.Element
-
 import com.typesafe.scalalogging.LazyLogging
+import org.aos.ddo.web.HtmlTag
+import org.aos.ddo.web.mapping.WikiParser.logger
 
 object Extractor extends LazyLogging {
+  /**
+    * parser that extracts the text portion from a possibly HTML wrapped string.
+    *
+    * @param textOrElement fragment of HTML or Text
+    * @param tagSelector   tag to extract. defaults to 'td'
+    * @return extracted text or None if tag was not found or input was not of expected type.
+    */
+  def simpleExtractor(textOrElement: Option[Any], tagSelector: String = HtmlTag.TableData): Option[String] = {
+    textOrElement match {
+      case Some(data: String) =>
+        logger.info(msgRawStringData)
+        Some(data)
+      case Some(data: Element) =>
+        val rslt = data.select(tagSelector).first().text()
+        lazy val MsgExtraction = s"returning element extraction $rslt"
+        logger.info(MsgExtraction)
+        Some(rslt)
+      case Some(data) =>
+        logger.warn(s"Data was not of expected type (text or Element) - found ${data.getClass.toString}")
+        None
+      case _ => logger.warn(msgNoData); None
+    }
+
+  }
   /**
     * Extracts the critical profile information from a string representation.
     *
@@ -60,12 +84,12 @@ object Extractor extends LazyLogging {
 
         Some(damageExtractor(
           Option(wDamage) match {
-            case Some(x) => wDamage.toInt
+            case Some(_) => wDamage.toInt
             case _       => 0
           },
           dice,
           Option(extra) match {
-            case Some(x) => extra.replaceAll(Space, EmptyString).toInt
+            case Some(_) => extra.replaceAll(Space, EmptyString).toInt
             case _       => 0
           },
           damageType.split(Comma) toList))

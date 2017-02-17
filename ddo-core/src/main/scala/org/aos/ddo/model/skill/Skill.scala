@@ -16,12 +16,21 @@ package org.aos.ddo.model.skill
 
 import enumeratum.{Enum, EnumEntry}
 import org.aos.ddo.activation.{ActivationType, AtWillEvent, PassiveActivation}
-import org.aos.ddo.model.attribute._
+import org.aos.ddo.model.attribute.{
+  CharismaLinked,
+  ConstitutionLinked,
+  DexterityLinked,
+  IntelligenceLinked,
+  LinkedAttribute,
+  StrengthLinked,
+  WisdomLinked
+}
 import org.aos.ddo.support.SearchPrefix
 import org.aos.ddo.support.naming.{DisplayName, FriendlyDisplay}
 
 sealed trait Skill extends EnumEntry with DisplayName with FriendlyDisplay {
   self: ActivationType with LinkedAttribute =>
+
   /**
     * Sets or maps the source text for the DisplayName.
     *
@@ -48,7 +57,10 @@ object Skill extends Enum[Skill] with SearchPrefix {
   /**
     * Allows you a chance to continue casting a spell after being damaged or otherwise interrupted. Allows monks to retain Ki.
     */
-  case object Concentration extends Skill with PassiveActivation with ConstitutionLinked
+  case object Concentration
+      extends Skill
+      with PassiveActivation
+      with ConstitutionLinked
 
   /**
     * Allows you to negotiate more effectively with certain NPCs and to encourage monsters to find targets other than yourself.
@@ -65,7 +77,10 @@ object Skill extends Enum[Skill] with SearchPrefix {
     * (causing some damage to those in an area around the box) and can't be used again (the trap will remain dangerous, of course!).
     * Using this skill consumes one thieves' tool.
     */
-  case object DisableDevice extends Skill with AtWillEvent with IntelligenceLinked
+  case object DisableDevice
+      extends Skill
+      with AtWillEvent
+      with IntelligenceLinked
 
   /**
     * Allows you to negotiate better prices with vendors.
@@ -78,7 +93,6 @@ object Skill extends Enum[Skill] with SearchPrefix {
     * Does not affect Warforged characters. Each point of skill adds 1 point to Positive and Negative Spell Power. (1 second cooldown)
     */
   case object Heal extends Skill with PassiveActivation with WisdomLinked
-
 
   /**
     * Allows you to sneak past monsters, avoiding their sight. Hide ties directly into the feat Sneak.
@@ -108,12 +122,15 @@ object Skill extends Enum[Skill] with SearchPrefix {
   /**
     * Allows you to sneak past monsters, avoiding their hearing. It ties directly into the feat Sneak.
     */
-  case object MoveSilently extends Skill with PassiveActivation with DexterityLinked
+  case object OpenLock extends Skill with AtWillEvent with DexterityLinked
 
   /**
-    * Allows you to attempt to open locked doors, chests, and other objects. Using the skill consumes one thieves’ tool.
+    * Allows you to sneak past monsters, avoiding their hearing. It ties directly into the feat Sneak.
     */
-  case object OpenLock extends Skill with AtWillEvent with DexterityLinked
+  case object MoveSilently
+      extends Skill
+      with PassiveActivation
+      with DexterityLinked
 
   /**
     * Allows you to use and improve your musical ability to inspire and fascinate others.
@@ -128,7 +145,11 @@ object Skill extends Enum[Skill] with SearchPrefix {
     * Also, the character with the highest Repair skill is used when using Rest shrines to dictate how much health is recovered.
     * Only affects Warforged characters. Each point of skill adds 1 point to Repair and Rust Spell Power. (1 second cooldown)
     */
-  case object Repair extends Skill with PassiveActivation with AtWillEvent with IntelligenceLinked
+  case object Repair
+      extends Skill
+      with PassiveActivation
+      with AtWillEvent
+      with IntelligenceLinked
 
   /**
     * Allows you to find hidden doors, traps, and objects when activated.
@@ -138,18 +159,19 @@ object Skill extends Enum[Skill] with SearchPrefix {
     */
   case object Search extends Skill with AtWillEvent with IntelligenceLinked
 
-
   /**
     * Adds 1 point of Spell Power per point of skill with following damage types: Acid, Cold, Electric, Fire, Force and Light.
     */
-  case object Spellcraft extends Skill with PassiveActivation with IntelligenceLinked
+  case object Spellcraft
+      extends Skill
+      with PassiveActivation
+      with IntelligenceLinked
 
   /**
     * Allows you to sense nearby hidden doors, traps, objects, and stealthed enemies.
     * Except for the enemies, the exact locations will be unknown until a search check is successfully made.
     */
   case object Spot extends Skill with PassiveActivation with WisdomLinked
-
 
   /**
     * Allows you to swim faster and for a longer period of time underwater.
@@ -167,8 +189,10 @@ object Skill extends Enum[Skill] with SearchPrefix {
   /**
     * Grants you the ability to use magic devices which you could not normally use. This also allows you to bypass racial and alignment restrictions upon items.
     */
-  case object UseMagicDevice extends Skill with PassiveActivation with CharismaLinked
-
+  case object UseMagicDevice
+      extends Skill
+      with PassiveActivation
+      with CharismaLinked
 
   override def values: Seq[Skill] = findValues
 

@@ -18,14 +18,42 @@ package org.aos.ddo.web.mapping
 import java.text.NumberFormat
 
 import com.typesafe.scalalogging.LazyLogging
-import org.aos.ddo._
-import org.aos.ddo.enumeration.EnumExtensions._
+import org.aos.ddo.enumeration.EnumExtensions.EnumCompanionOps
 import org.aos.ddo.model.attribute.Attribute
-import org.aos.ddo.model.item.weapon._
+import org.aos.ddo.model.item.weapon.{
+  CriticalThreatRange,
+  DeliveryType,
+  Handedness,
+  MeleeDamage,
+  ProficiencyClass,
+  RangeDamage,
+  SpecialDamage,
+  ThrownDamage,
+  WeaponCategory
+}
 import org.aos.ddo.model.misc.Material
-import org.aos.ddo.support.StringUtils.{Comma, EmptyString, ForwardSlash, Space, StringImprovements}
-import org.aos.ddo.web.HtmlTag
-import org.aos.ddo.web.mapping.Extractor.{damageExtractor, _}
+import org.aos.ddo.support.StringUtils.{
+  Comma,
+  EmptyString,
+  ForwardSlash,
+  Space,
+  StringImprovements
+}
+import org.aos.ddo.web.mapping.Extractor.{
+  damageExtractor,
+  enchantmentExtractor,
+  extractCriticalProfile,
+  extractDamageInfo,
+  simpleExtractor
+}
+import org.aos.ddo.{
+  BindingFlags,
+  CriticalProfile,
+  DamageInfo,
+  MonetaryValue,
+  PhysicalDamageType,
+  UpgradeInfo
+}
 import org.jsoup.nodes.Element
 
 import scala.collection.JavaConversions.{asScalaBuffer, seqAsJavaList}
@@ -37,45 +65,9 @@ import scala.util.Try
   */
 //noinspection ScalaStyle
 object WikiParser extends LazyLogging {
-  lazy val msgNoData = "No Data available to extract"
-  lazy val msgRawStringData = "returning raw string data"
-
-  /**
-    * parser that extracts the text portion from a possibly HTML wrapped string.
-    *
-    * @param textOrElement fragment of HTML or Text
-    * @param tagSelector   tag to extract. defaults to 'td'
-    * @return extracted text or None if tag was not found or input was not of expected type.
-    */
-  def simpleExtractor(textOrElement: Option[Any], tagSelector: String = HtmlTag.TableData): Option[String] = {
-    textOrElement match {
-      case Some(data: String) =>
-        logger.info(msgRawStringData)
-        Some(data)
-      case Some(data: Element) =>
-        val rslt = data.select(tagSelector).first().text()
-        lazy val MsgExtraction = s"returning element extraction $rslt"
-        logger.info(MsgExtraction)
-        Some(rslt)
-      case Some(data) =>
-        logger.warn(s"Data was not of expected type (text or Element) - found ${data.getClass.toString}")
-        None
-      case _ => logger.warn(msgNoData); None
-    }
-
-  }
 
   // Implicit to safely attempt String to Int conversion
   private def tryToInt(s: String) = Try(s.toInt).toOption
-
-  /**
-    * Encapsulates Weapon Category and Damage Information
-    *
-    * @param category           The category such as Club or Bastard Sword
-    * @param physicalDamageType The type of damage such as Bludgeon or Pierce
-    *
-    */
-  case class WeaponClassInfo(category: WeaponCategory, physicalDamageType: PhysicalDamageType)
 
   /**
     * Extracts the proficiency such as Martial Weapon
@@ -86,14 +78,16 @@ object WikiParser extends LazyLogging {
   def proficiency(source: Map[String, Any]): Option[ProficiencyClass] = {
     source.get(Field.ProficiencyClass) match {
       //  Simple Weapon Proficiency
-      case Some(name: String) => ProficiencyClass.withName(name, true) match {
-        case Some(pc) => Some(pc.asInstanceOf[ProficiencyClass])
-        case _ => logger.error(s"Invalid Proficiency Class $name"); None
-      }
-      case Some(x: Element) => ProficiencyClass.withName(x.text, true) match {
-        case Some(pc) => Some(pc.asInstanceOf[ProficiencyClass])
-        case _ => logger.error(s"Invalid Proficiency Class $x"); None
-      }
+      case Some(name: String) =>
+        ProficiencyClass.withName(name, true) match {
+          case Some(pc) => Some(pc.asInstanceOf[ProficiencyClass])
+          case _ => logger.error(s"Invalid Proficiency Class $name"); None
+        }
+      case Some(x: Element) =>
+        ProficiencyClass.withName(x.text, true) match {
+          case Some(pc) => Some(pc.asInstanceOf[ProficiencyClass])
+          case _ => logger.error(s"Invalid Proficiency Class $x"); None
+        }
       case _ => None
     }
   }
@@ -125,9 +119,9 @@ object WikiParser extends LazyLogging {
       case Some(x: String) =>
         extractCriticalProfile(x) match {
           case Some(profile) =>
-            Some(CriticalThreatRange(
-              profile.min to profile.max,
-              profile.multiplier))
+            Some(
+              CriticalThreatRange(profile.min to profile.max,
+                                  profile.multiplier))
           case _ => None
         }
       case _ => None
@@ -149,7 +143,10 @@ object WikiParser extends LazyLogging {
           case Some(category) => Some(category.asInstanceOf[WeaponCategory])
           case _ => logger.error(s"Unknown Weapon Category $s"); None
         }
-      case _ => logger.error(s"Failed to parse ${Field.WeaponTypeAndDamageType} (No result)"); None
+      case _ =>
+        logger.error(
+          s"Failed to parse ${Field.WeaponTypeAndDamageType} (No result)");
+        None
     }
   }
 
@@ -166,7 +163,9 @@ object WikiParser extends LazyLogging {
         x.split(Comma).toList
       case Some(x) =>
         logger.error(s"Failed to parse ${Field.RaceAbsRequired} from $x"); Nil
-      case _ => logger.error(s"Failed to parse ${Field.RaceAbsRequired} (No result)"); Nil
+      case _ =>
+        logger.error(s"Failed to parse ${Field.RaceAbsRequired} (No result)")
+        Nil
     }
   }
 
@@ -185,7 +184,8 @@ object WikiParser extends LazyLogging {
           case Some(x: Int) => x
           case _ => logger.error(s"Failed to parse ${Field.ML} with $x"); 0
         }
-      case _ => logger.info("No ML value specified for object, assuming zero"); 0
+      case _ =>
+        logger.info("No ML value specified for object, assuming zero"); 0
     }
   }
 
@@ -236,11 +236,16 @@ object WikiParser extends LazyLogging {
     source.get(Field.Handedness) match {
       case Some(x: String) =>
         logger.info(s"Handedness located!!! $x")
-        x.split(Comma).filter { name => Handedness.withName(name, true).isDefined }
+        x.split(Comma)
+          .filter { name =>
+            Handedness.withName(name, true).isDefined
+          }
           .map { name =>
-            Handedness.withName(name, true)
+            Handedness
+              .withName(name, true)
               .asInstanceOf[Handedness]
-          }.toList
+          }
+          .toList
       case _ => logger.error("Failed to retrieve Handedness"); Nil
     }
   }
@@ -255,7 +260,14 @@ object WikiParser extends LazyLogging {
     simpleExtractor(source.get(Field.AttackMod)) match {
       case Some(x: String) =>
         logger.debug(s"""AttackMod returned $x""")
-        x.split(",").toList.filter { name => Attribute.withNameOption(name).isDefined }.map { name => Attribute.withName(name) }
+        x.split(",")
+          .toList
+          .filter { name =>
+            Attribute.withNameOption(name).isDefined
+          }
+          .map { name =>
+            Attribute.withName(name)
+          }
       case _ => logger.error(s"No match found for ${Field.AttackMod}"); Nil
     }
   }
@@ -290,7 +302,8 @@ object WikiParser extends LazyLogging {
     simpleExtractor(source.get(Field.Binding), "a") match {
       case Some(x: String) =>
         BindingFlags.fromWords(x)
-      case _ => logger.debug(s"Failed to retrieve ${Field.Binding}"); None // TODO: Do we return default binding if none specified?
+      case _ =>
+        logger.debug(s"Failed to retrieve ${Field.Binding}"); None // TODO: Do we return default binding if none specified?
     }
   }
 
@@ -307,9 +320,13 @@ object WikiParser extends LazyLogging {
           case Some(x: Int) =>
             x
           case _ =>
-            logger.warn(s"None numeric value found for ${Field.Durability} ($x), defaulting to 0"); 0
+            logger.warn(
+              s"None numeric value found for ${Field.Durability} ($x), defaulting to 0")
+            0
         }
-      case _ => logger.warn(s"No value found for ${Field.Durability}, defaulting to 0"); 0
+      case _ =>
+        logger.warn(
+          s"No value found for ${Field.Durability}, defaulting to 0"); 0
     }
   }
 
@@ -327,7 +344,8 @@ object WikiParser extends LazyLogging {
           case Some(name) =>
             Some(name)
           case _ =>
-            logger.warn(s"No material found by name of $x, if this is a new material, it needs to be added to the enumeration")
+            logger.warn(
+              s"No material found by name of $x, if this is a new material, it needs to be added to the enumeration")
             None
         }
       case _ =>
@@ -349,9 +367,13 @@ object WikiParser extends LazyLogging {
           case Some(x: Int) =>
             x
           case _ =>
-            logger.warn(s"None numeric value found for ${Field.Hardness} ($x), defaulting to 0"); 0
+            logger.warn(
+              s"None numeric value found for ${Field.Hardness} ($x), defaulting to 0")
+            0
         }
-      case _ => logger.warn(s"No value found for ${Field.Hardness}, defaulting to 0"); 0
+      case _ =>
+        logger.warn(s"No value found for ${Field.Hardness}, defaulting to 0")
+        0
     }
   }
 
@@ -367,20 +389,29 @@ object WikiParser extends LazyLogging {
       """(?<num>\d+,?\d+)""".r
     source.get(Field.BaseValue) match {
       case Some(x: Element) =>
-
         val ele = x.select("td").first().textNodes()
-        val filtered = ele.map { x =>
-          x.text() match {
-            case rex(num) => Some(NumberFormat.getInstance(java.util.Locale.US).parse(num))
-            case _ => None
+        val filtered = ele
+          .map { x =>
+            x.text() match {
+              case rex(num) =>
+                Some(NumberFormat.getInstance(java.util.Locale.US).parse(num))
+              case _ => None
+            }
           }
-        }.filter { x => x.isDefined }.map { x => x.get }.toList
+          .filter { x =>
+            x.isDefined
+          }
+          .map { x =>
+            x.get
+          }
+          .toList
         filtered.size match {
           case 1 => Some(filtered.get(0).intValue())
           case 0 =>
             logger.info(s"could not extract number from $x"); None
           case _ =>
-            logger.warn(s"Multiple values returned for basevalue $x, returning the first")
+            logger.warn(
+              s"Multiple values returned for basevalue $x, returning the first")
             Some(seqAsJavaList(filtered).get(0).intValue())
         }
       case _ => logger.info(s"${Field.BaseValue} was not supplied"); None
@@ -411,7 +442,12 @@ object WikiParser extends LazyLogging {
       case Some(x: String) =>
         val rex = """(?<num>\d+,?\d*) lbs""".r
         x match {
-          case rex(num) => Some(NumberFormat.getInstance(java.util.Locale.US).parse(num).intValue())
+          case rex(num) =>
+            Some(
+              NumberFormat
+                .getInstance(java.util.Locale.US)
+                .parse(num)
+                .intValue())
           case _ => None
         }
       case _ => logger.info(s"${Field.Weight} not supplied"); None
@@ -439,10 +475,14 @@ object WikiParser extends LazyLogging {
     * @param source Source Text or HTML fragment
     * @return collection of enchantments
     */
-  def enchantments(source: Map[String, Any]) = {
+  def enchantments(source: Map[String, Any]): Option[Seq[String]] = {
     // TODO: Do we want to alter this from Any to Either[String,Element]?
-    val eSource = source.filter(e => e._2.isInstanceOf[Element]).map(f => f._1 -> f._2.asInstanceOf[Element])
-    val leaves = enchantmentExtractor(eSource).map { x => x.text }
+    val eSource = source
+      .filter(e => e._2.isInstanceOf[Element])
+      .map(f => f._1 -> f._2.asInstanceOf[Element])
+    val leaves = enchantmentExtractor(eSource).map { x =>
+      x.text
+    }
     if (leaves.isEmpty) None
     else Some(leaves)
   }
@@ -477,7 +517,8 @@ object WikiParser extends LazyLogging {
     simpleExtractor(source.get(Field.Description)) match {
       case Some(x: String) =>
         Some(x)
-      case _ => logger.warn(s"Failed to retrieve ${Field.Description}"); None // TODO: Message should only warn or info? if no description was specified
+      case _ =>
+        logger.warn(s"Failed to retrieve ${Field.Description}"); None // TODO: Message should only warn or info? if no description was specified
     }
   }
 
@@ -489,10 +530,10 @@ object WikiParser extends LazyLogging {
     */
   def weaponType(wc: Option[WeaponCategory]): Option[DeliveryType] = {
     wc match {
-      case Some(x: MeleeDamage) => Some(DeliveryType.Melee)
-      case Some(x: RangeDamage) => Some(DeliveryType.Ranged)
-      case Some(x: ThrownDamage) => Some(DeliveryType.Thrown)
-      case Some(x: SpecialDamage) => Some(DeliveryType.Special)
+      case Some(_: MeleeDamage) => Some(DeliveryType.Melee)
+      case Some(_: RangeDamage) => Some(DeliveryType.Ranged)
+      case Some(_: ThrownDamage) => Some(DeliveryType.Thrown)
+      case Some(_: SpecialDamage) => Some(DeliveryType.Special)
       case _ => None
     }
   }
@@ -503,13 +544,15 @@ object WikiParser extends LazyLogging {
     * @param ctr Threat Information
     * @return
     */
-  def criticalProfile(ctr: Option[CriticalThreatRange]): Option[CriticalProfile] = {
+  def criticalProfile(
+      ctr: Option[CriticalThreatRange]): Option[CriticalProfile] = {
     ctr match {
-      case Some(profile) => Some(new CriticalProfile {
-        val min: Int = profile.range.min
-        val max: Int = profile.range.max
-        val multiplier: Int = profile.multiplier
-      })
+      case Some(profile) =>
+        Some(new CriticalProfile {
+          val min: Int = profile.range.min
+          val max: Int = profile.range.max
+          val multiplier: Int = profile.multiplier
+        })
       case _ => None
     }
   }
@@ -562,12 +605,13 @@ object WikiParser extends LazyLogging {
     */
   def damageValue(dts: Option[damageExtractor]): Option[DamageInfo] = {
     dts match {
-      case Some(dmg) => Some(new org.aos.ddo.DamageInfo {
-        val weaponModifier: Int = dmg.wMod
-        val dice: String = dmg.dice
-        val extra: Int = dmg.extra
-        val damageType: List[String] = dmg.damageType
-      })
+      case Some(dmg) =>
+        Some(new org.aos.ddo.DamageInfo {
+          val weaponModifier: Int = dmg.wMod
+          val dice: String = dmg.dice
+          val extra: Int = dmg.extra
+          val damageType: List[String] = dmg.damageType
+        })
       case _ => None
     }
   }

@@ -20,17 +20,17 @@ import org.aos.ddo.enumeration.{BitSupport, BitWise}
 
 /** Constrains the places items can be used.
   */
-sealed trait WearLocation extends EnumEntry with NoDefault[WearLocation] with BitWise {
-  // val companion = WearLocation
-  lazy val c = WearLocation
+sealed trait WearLocation
+    extends EnumEntry
+    with NoDefault[WearLocation]
+    with BitWise {
 
-  override lazy val bitValue: Int = c.bitValues
-    .filter { x =>
-      c.checkVal(x._1)
-    }.values.head
-  /*= companion.bitValues.filter { x =>
-    companion.checkVal(x._1)
-  }.values.head*/
+  private lazy val bitValues = WearLocation.valuesToIndex map { x =>
+    x._1 -> toBitMask(x._2)
+  }
+
+  override lazy val bitValue: Int = bitValues(this)
+
 }
 
 /** Distinct values for location slots.
@@ -76,5 +76,8 @@ object WearLocation extends Enum[WearLocation] with BitSupport {
 
   val values: Seq[WearLocation] = findValues
   override type T = WearLocation
-  override lazy val bitValues: Map[WearLocation, Int] = valuesToIndex.map { x => x._1 -> Math.pow(2.0, x._2).toInt }
+  override lazy val bitValues: Map[WearLocation, Int] = valuesToIndex.map {
+    x =>
+      x._1 -> Math.pow(2.0, x._2).toInt
+  }
 }

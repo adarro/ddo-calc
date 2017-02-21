@@ -11,7 +11,7 @@ script:
   - mvn org.scoverage:scoverage-maven-plugin:1.3.0:report
 
 after_success:
-  - mvn versioneye:update
+  - mvn com.versioneye:versioneye-maven-plugin:3.11.1:update
   - bash <(curl -s https://codecov.io/bash)
 addons:
     code_climate:

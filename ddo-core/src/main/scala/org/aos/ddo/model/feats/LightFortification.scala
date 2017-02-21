@@ -15,5 +15,5 @@ trait LightFortification  extends FeatRequisiteImpl
   override def anyOfRace: Seq[(Race, Int)] =
     List((Race.Warforged, 1), (Race.Bladeforged, 1))
 
-  override def postText: Option[String] = Some("Feat")
+  override def postText: Option[String] = Some("feat")
 }

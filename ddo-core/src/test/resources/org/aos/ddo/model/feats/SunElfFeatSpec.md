@@ -5,6 +5,7 @@
 |[ ][existingFeat] [Feats][result] | Description | Prerequisites | Icon |
 |----------------------------------------|--------|----|----|
 |[Elf][elf_feat] |You are considered an Elf. You are treated as such by magical abilities and effects, and are able to use appropriate equipment.| [Elf][elf_race] , [Sun Elf][sunelf_race]|![Icon Feat Elf.png](/images/Icon_Feat_Elf.png)|
+|[Immunity to Sleep](http://www.ddowiki.com/page/Immunity_to_Sleep "Immunity to Sleep")| Elves are naturally immune to magical sleep effects. | [Elf][elf_race] , [Sun Elf][sunelf_race]|![Icon Feat Elven.png](/images/thumb/36px-Icon_Feat_Elven.png)|
 
 [existingFeat]: - "c:verify-rows=#feat:verifyRacialFeats()"
 [_matchStrategy_]: - "c:matchStrategy=KeyMatch"

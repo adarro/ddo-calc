@@ -76,7 +76,7 @@
     <evosuiteVersion>1.0.4-alpha2</evosuiteVersion>
     <skip.tests>false</skip.tests>
     <!-- Spring!!! -->
-    <spring.boot.version>1.4.1.RELEASE</spring.boot.version>
+    <spring.boot.version>1.5.0.RELEASE</spring.boot.version>
     <!-- Misc Utilities -->
     <!-- Web Scraping -->
     <scalascraper.version>0.1.1</scalascraper.version>

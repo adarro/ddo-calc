@@ -1,6 +1,8 @@
 # Gnome Feat Spec
 
+[Feats by Race](RacialFeatSpec.html)
 
+## Feats
 
 |[ ][existingFeat] [Feats][result] | Description | Type | Icon |
 |-----|-----|-----|-----|

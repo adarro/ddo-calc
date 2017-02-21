@@ -87,7 +87,7 @@
       <artifactId>scalatest_${scala.tools.version}</artifactId>
       <scope>test</scope>
     </dependency>
-  <!--  <dependency>
+    <!--  <dependency>
       <groupId>org.evosuite</groupId>
       <artifactId>evosuite-standalone-runtime</artifactId>
       <scope>test</scope>
@@ -331,8 +331,8 @@
           </systemProperties>
           <properties>
             <!--<property>-->
-              <!--<name>listener</name>-->
-              <!--<value>org.evosuite.runtime.InitializingListener</value>-->
+            <!--<name>listener</name>-->
+            <!--<value>org.evosuite.runtime.InitializingListener</value>-->
             <!--</property>-->
           </properties>
 
@@ -383,29 +383,29 @@
         <artifactId>scalatest-maven-plugin</artifactId>
       </plugin>
       <!--<plugin>-->
-        <!--<groupId>org.evosuite.plugins</groupId>-->
-        <!--<artifactId>evosuite-maven-plugin</artifactId>-->
-        <!--<configuration>-->
-          <!--<timeInMinutesPerClass>3</timeInMinutesPerClass>-->
-          <!--<detail>true</detail>-->
-          <!--<memoryInMB>2000</memoryInMB>-->
-        <!--</configuration>-->
-        <!--<executions>-->
-          <!--<execution>-->
-            <!--<goals>-->
-              <!--<goal>prepare</goal>-->
-              <!--<goal>export</goal>-->
-            <!--</goals>-->
-            <!--<phase>process-test-classes</phase>-->
-          <!--</execution>-->
-          <!--&lt;!&ndash;   <execution>-->
-            <!--<id>generate</id>-->
-            <!--<goals>-->
-              <!--<goal>generate</goal>-->
-            <!--</goals>-->
-            <!--<phase>generate-test-sources</phase>-->
-          <!--</execution>&ndash;&gt;-->
-        <!--</executions>-->
+      <!--<groupId>org.evosuite.plugins</groupId>-->
+      <!--<artifactId>evosuite-maven-plugin</artifactId>-->
+      <!--<configuration>-->
+      <!--<timeInMinutesPerClass>3</timeInMinutesPerClass>-->
+      <!--<detail>true</detail>-->
+      <!--<memoryInMB>2000</memoryInMB>-->
+      <!--</configuration>-->
+      <!--<executions>-->
+      <!--<execution>-->
+      <!--<goals>-->
+      <!--<goal>prepare</goal>-->
+      <!--<goal>export</goal>-->
+      <!--</goals>-->
+      <!--<phase>process-test-classes</phase>-->
+      <!--</execution>-->
+      <!--&lt;!&ndash;   <execution>-->
+      <!--<id>generate</id>-->
+      <!--<goals>-->
+      <!--<goal>generate</goal>-->
+      <!--</goals>-->
+      <!--<phase>generate-test-sources</phase>-->
+      <!--</execution>&ndash;&gt;-->
+      <!--</executions>-->
       <!--</plugin>-->
       <!-- Coverage for Codecov.io -->
       <plugin>
@@ -460,7 +460,10 @@
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-project-info-reports-plugin</artifactId>
         <version>2.9</version>
-        <inherited>true</inherited>
+        <configuration>
+          <dependencyDetailsEnabled>false</dependencyDetailsEnabled>
+          <dependencyLocationsEnabled>false</dependencyLocationsEnabled>
+        </configuration>
       </plugin>
       <!--<plugin>-->
       <!--<groupId>de.smartics.maven.plugin</groupId>-->

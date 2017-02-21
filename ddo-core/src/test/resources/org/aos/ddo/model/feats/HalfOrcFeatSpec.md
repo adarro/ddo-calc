@@ -1,5 +1,8 @@
 # Half-Orc Feat Spec
 
+[Feats by Race](RacialFeatSpec.html)
+
+## Feats
 |[ ][existingFeat] [Feats][result] | Description | Type | Icon |
 |-----|-----|-----|-----|
 |[Half-Orc Orc Blood](http://ddowiki.com/page/Half-Orc_Orc_Blood) | As a Small creature, Gnomes gain a +1 size bonus to attack rolls and Armor Class, and a +4 bonus on Hide checks. | Passive  | ![Icon Half Orc Blood.png](http://ddowiki.com/images/HalfOrcOrcBlood.png)

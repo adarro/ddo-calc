@@ -1,5 +1,7 @@
 # Half-Elf Feats
 
+[Feats by Race](RacialFeatSpec.html)
+
 ## [Half Elf Feats](http://ddowiki.com/page/Category:Half-Elf_feats)
 
 | [ ][existingFeat] [Feats][result]| Type | Description | Prerequisites |

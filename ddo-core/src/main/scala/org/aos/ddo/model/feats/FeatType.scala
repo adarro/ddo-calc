@@ -21,5 +21,7 @@ trait RangedCombatStanceStance extends FeatType
 
 trait OffensiveRangedStance extends FeatType
 
+trait MetaMagic extends FeatType
+
 
 

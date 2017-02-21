@@ -28,9 +28,9 @@ Feats can be searched with many case options.
 * Lowercase
 * Snake / Camel case
 
-## [Verify Known Feats](- "enumerate class=collapsible")
+## [Verify Known Feats](- "enumerate")
 
-Verifying all known Feats (from DDO Wiki)
+Verifying all known General Feats (from DDO Wiki)
 
 | Errata  |   |
 |:-:|:-:|

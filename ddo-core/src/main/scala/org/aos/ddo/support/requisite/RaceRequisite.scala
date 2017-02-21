@@ -12,8 +12,9 @@ trait RaceRequisite {
   def allOfRace: Seq[(Race, Int)] = IndexedSeq.apply()
 
   def noneOfRace: Seq[(Race, Int)] = IndexedSeq.apply()
-}
 
+  def grantsToRace:Seq[(Race,Int)] = IndexedSeq.apply()
+}
 
 trait FreeRace extends RaceRequisite with RequiresNone with RequiredExpression with Requisite
 
@@ -30,7 +31,6 @@ trait RequiresAllOfRace extends RaceRequisite with RequiresAllOf[Requirement] wi
     allOfRace collect raceToReq
   }
 }
-
 
 trait RequiresNoneOfRace extends RaceRequisite with RequiresNoneOf[Requirement] with Requisite {
 

@@ -16,11 +16,24 @@
 package org.aos.ddo.model.feats
 
 import enumeratum.Enum
+import org.aos.ddo.model.attribute.{
+  AttributeModifierInit,
+  ConstitutionModifier
+}
 import org.aos.ddo.model.item.weapon._
+import org.aos.ddo.model.misc.FreeToPlayFeature
+import org.aos.ddo.model.race.Race
+import org.aos.ddo.model.race.Race.Elf
 import org.aos.ddo.model.schools.School
 import org.aos.ddo.model.skill.Skill
+import org.aos.ddo.support.PhysicalDamage
 import org.aos.ddo.support.StringUtils.Extensions
-import org.aos.ddo.support.naming.{FriendlyDisplay, PostText, Prefix}
+import org.aos.ddo.support.naming.{
+  DisplayName,
+  FriendlyDisplay,
+  PostText,
+  Prefix
+}
 import org.aos.ddo.support.requisite.{Inclusion, RequiresAllOfFeat, Requisite}
 
 /**
@@ -546,6 +559,7 @@ object GeneralFeat extends Enum[GeneralFeat] with FeatSearchPrefix {
   }
 
   case class MartialWeaponProficiency(
+      override val grantsToRace: Seq[(Race, Int)],
       weapon: WeaponCategory with MartialWeapon*)
       extends GeneralFeat
       with MartialWeaponProficiencyBase
@@ -565,8 +579,39 @@ object GeneralFeat extends Enum[GeneralFeat] with FeatSearchPrefix {
     }
   }
 
-  def martialWeaponProficiencies: Seq[MartialWeaponProficiency] =
-    for { wc <- martialWeapons } yield MartialWeaponProficiency(wc)
+  def martialWeaponProficiencies: Seq[MartialWeaponProficiency] = {
+    for {
+      wc <- martialWeapons
+      rl <- racialMartialWeaponGrants(wc)
+    } yield MartialWeaponProficiency(rl, wc)
+  }
+
+  def racialMartialWeaponGrants(wc: WeaponCategory with MartialWeapon) = {
+    val weaponGrants: Map[WeaponCategory with MartialWeapon, List[(Race, Int)]] =
+      Map(
+        WeaponCategory.Longsword -> List((Race.Elf, 1)),
+        WeaponCategory.Longbow -> List((Race.Elf, 1)),
+        WeaponCategory.Shortbow -> List((Race.Elf, 1)),
+        WeaponCategory.Rapier -> List((Race.Elf, 1),(Race.DrowElf, 1)),
+        WeaponCategory.Shortsword -> List((Race.DrowElf,1)),
+        WeaponCategory.LightHammer -> List((Race.Gnome,1)),
+        WeaponCategory.ThrowingHammer -> List((Race.Gnome,1)),
+        WeaponCategory.Warhammer -> List((Race.Gnome,1))
+      )
+    weaponGrants.filter { x =>
+      x._1.eq(wc)
+    }.values
+  }
+  def racialExoticWeaponGrants(wc: WeaponCategory with ExoticWeapon) = {
+    val weaponGrants: Map[WeaponCategory with ExoticWeapon, List[(Race, Int)]] =
+      Map(
+        WeaponCategory.Shuriken -> List((Race.DrowElf, 1)),
+        WeaponCategory.DwarvenWarAxe -> List((Race.Dwarf, 1))
+      )
+    weaponGrants.filter { x =>
+      x._1.eq(wc)
+    }.values
+  }
 
   def martialWeapons: Seq[WeaponCategory with MartialWeapon] = {
     for {
@@ -587,7 +632,7 @@ object GeneralFeat extends Enum[GeneralFeat] with FeatSearchPrefix {
       martialWeaponProficiencies
   }
 
-  case class ExoticWeaponProficiency(weapon: WeaponCategory with ExoticWeapon*)
+  case class ExoticWeaponProficiency(override val grantsToRace: Seq[(Race, Int)],weapon: WeaponCategory with ExoticWeapon*)
       extends GeneralFeat
       with ExoticWeaponProficiencyBase
       with Prefix
@@ -607,7 +652,10 @@ object GeneralFeat extends Enum[GeneralFeat] with FeatSearchPrefix {
   }
 
   def exoticWeaponProficiencies: Seq[ExoticWeaponProficiency] =
-    for { wc <- exoticWeapons } yield ExoticWeaponProficiency(wc)
+    for {
+      wc <- exoticWeapons
+      rl <- racialExoticWeaponGrants(wc)
+       } yield ExoticWeaponProficiency(rl,wc)
 
   def exoticWeapons: Seq[WeaponCategory with ExoticWeapon] = {
     for {
@@ -672,7 +720,9 @@ object GeneralFeat extends Enum[GeneralFeat] with FeatSearchPrefix {
   }
 
   def skillFocusAny: Seq[SkillFocus] =
-    for { x <- Skill.values } yield SkillFocus(x)
+    for {
+      x <- Skill.values
+    } yield SkillFocus(x)
 
   case object Stealthy extends GeneralFeat with Stealthy
 

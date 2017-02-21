@@ -52,7 +52,14 @@ object WeaponCategory extends Enum[WeaponCategory] {
 
   case object Dart extends WeaponCategory with SimpleWeapon with MeleeDamage with Piercing
 
-  case object DwarvenWarAxe extends WeaponCategory with ExoticWeapon with MeleeDamage with Piercing
+  case object DwarvenWarAxe extends WeaponCategory with ExoticWeapon with MeleeDamage with Piercing {
+    /**
+      * Sets or maps the source text for the DisplayName.
+      *
+      * @return Source text.
+      */
+    override protected def nameSource: String = "Dwarven Axe".toPascalCase
+  }
 
   case object Falchion extends WeaponCategory with MartialWeapon with MeleeDamage with Slashing
 
@@ -110,7 +117,7 @@ object WeaponCategory extends Enum[WeaponCategory] {
 
   case object Shortbow extends WeaponCategory with MartialWeapon with RangeDamage with Piercing
 
-  case object ShortSword extends WeaponCategory with MartialWeapon with MeleeDamage with Piercing
+  case object Shortsword extends WeaponCategory with MartialWeapon with MeleeDamage with Piercing
 
   case object Shuriken extends WeaponCategory with ExoticWeapon with ThrownDamage with Piercing
 
@@ -124,7 +131,7 @@ object WeaponCategory extends Enum[WeaponCategory] {
 
   case object ThrowingHammer extends WeaponCategory with MartialWeapon with ThrownDamage with Bludgeoning
 
-  case object WarHammer extends WeaponCategory with MartialWeapon with Product with Serializable with MeleeDamage with Bludgeoning
+  case object Warhammer extends WeaponCategory with MartialWeapon with Product with Serializable with MeleeDamage with Bludgeoning
 
   //  RuneArm,
   val values: Seq[WeaponCategory] = findValues

@@ -11,6 +11,8 @@ script:
   - mvn org.scoverage:scoverage-maven-plugin:1.3.0:report
 
 after_success:
-  - bash <(curl -s https://codecov.io/bash)
   - mvn versioneye:update
-  
+  - bash <(curl -s https://codecov.io/bash)
+addons:
+    code_climate:
+        repo_token: 665646cbcbd55d57b5c78261227b9775f00a9e4716d1c28b6fa2cfbda7369ba2

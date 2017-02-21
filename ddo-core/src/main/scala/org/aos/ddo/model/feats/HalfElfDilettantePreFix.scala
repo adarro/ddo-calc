@@ -5,7 +5,7 @@ import org.aos.ddo.support.naming.{DisplayName, FriendlyDisplay, Prefix}
 /**
   * Base Trait for Half-Elf Racial Feat family (Half-Elf Dilettante: X)
   */
-trait HalfElfDilettante extends Prefix {
+trait HalfElfDilettantePreFix extends Prefix {
   self: DisplayName with FriendlyDisplay =>
   override def prefix: Option[String] = Some("Half-Elf Dilettante")
 

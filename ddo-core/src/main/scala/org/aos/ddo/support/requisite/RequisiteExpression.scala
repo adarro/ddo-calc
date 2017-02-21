@@ -15,63 +15,6 @@ sealed trait RequisiteExpression {
   def prerequisites: Seq[RequirementSet[_, _]] = IndexedSeq()
 }
 
-object RequisiteExpression {
-
-  implicit class Stuff(source: RequisiteExpression with RequisiteType with Inclusion) {
-    // def foo = RequirementSet(source,source,source.)
-  }
-
-  implicit class GrantDsl(source: GrantOrRevokeExpression) {
-    def grants(requisiteExpression: RequisiteExpression): GrantOrRevokeExpression = ???
-
-    def grants(r: RequisiteExpression => RequisiteExpression): GrantOrRevokeExpression = ???
-
-    def requires(requisiteExpression: RequisiteExpression): GrantOrRevokeExpression = ???
-
-    def prohibits(requisiteExpression: RequisiteExpression): GrantOrRevokeExpression = ???
-  }
-
-  object Requires {
-
-    implicit class Dsl(source: Require) {
-      def and(exp: RequisiteExpression): ComplexRequisite = ???
-
-      def or(exp: RequisiteExpression): ComplexRequisite = ???
-
-      case class MustContainAtLeastOneOf(req: Requirement*) extends RequiresOneOf[Requirement] {
-        override val oneOf: List[Requirement] = req.toList
-      }
-
-      case class MustContainAtLeastOne(req: Requirement) extends RequiresOneOf[Requirement] {
-        override val oneOf: List[Requirement] = List(req)
-      }
-
-      def AllOf(exp: Requisite*): ComplexRequisite = ???
-
-      def NoneOf(exp: Requisite*): ComplexRequisite = ???
-
-      def Nothing: SimpleRequisite = ???
-    }
-
-  }
-
-  implicit class Dsl(source: RequisiteExpression) {
-    def and(exp: RequisiteExpression): ComplexRequisite = ???
-
-    def or(exp: RequisiteExpression): ComplexRequisite = ???
-
-    def OneOf(exp: Requisite*): ComplexRequisite = ???
-
-    def AllOf(exp: Requisite*): ComplexRequisite = ???
-
-    def NoneOf(exp: Requisite*): ComplexRequisite = ???
-
-    def Nothing: SimpleRequisite = ???
-
-  }
-
-}
-
 sealed trait SimpleRequisite extends RequisiteExpression {
   self: RequisiteType with Inclusion =>
 }
@@ -124,19 +67,19 @@ trait RequiresOneOf[T <: Requirement] extends MustContainAtLeastOneOf[T] with Re
 
   private[this] def makeSet: RequirementSet[RequiresOneOf[T], RequiresOneOf[T]] = RequirementSet(this, this, oneOf: _*)
 
-  abstract override def prerequisites = super.prerequisites :+ makeSet
+  abstract override def prerequisites: Seq[RequirementSet[_, _]] = super.prerequisites :+ makeSet
 }
 
 trait RequiresAllOf[T <: Requirement] extends MustContainAllOf[T] with Require {
   private[this] def makeSet: RequirementSet[RequiresAllOf[T], RequiresAllOf[T]] = RequirementSet(this, this, allOf: _*)
 
-  abstract override def prerequisites = super.prerequisites :+ makeSet
+  abstract override def prerequisites: Seq[RequirementSet[_, _]] = super.prerequisites :+ makeSet
 }
 
 trait RequiresNoneOf[T <: Requirement] extends MustContainNoneOf[T] with Require {
   private[this] def makeSet: RequirementSet[RequiresNoneOf[T], RequiresNoneOf[T]] = RequirementSet(this, this, noneOf: _*)
 
-  abstract override def prerequisites = super.prerequisites :+ makeSet
+  abstract override def prerequisites: Seq[RequirementSet[_, _]] = super.prerequisites :+ makeSet
 }
 
 /* Prohibiting 'One Of' does not make any sense in this context.
@@ -147,7 +90,7 @@ trait ProhibitsOneOf[+T <: Requirement] extends MustContainAtLeastOneOf[T] with 
 }
 */
 
-/* Providing 'One Of' likely makes no sense in this context but may be needed??? Need to invistigate
+/* Providing 'One Of' likely makes no sense in this context but may be needed??? Need to investigate
 trait ProvidesOneOf[+T <: Requirement] extends MustContainAtLeastOneOf[T] with Grant {
   private[this] def makeSet: RequirementSet = RequirementSet(this, this, oneOf)
 

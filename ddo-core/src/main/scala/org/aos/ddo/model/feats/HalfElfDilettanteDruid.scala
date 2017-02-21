@@ -14,7 +14,7 @@ import org.aos.ddo.support.requisite.{
   * 13 Wisdom */
 trait HalfElfDilettanteDruid
     extends FeatRequisiteImpl
-    with HalfElfDilettante
+    with HalfElfDilettantePreFix
     with Passive
     with RequiresAttribute
     with RequiresAllOfRace { self: RacialFeat =>

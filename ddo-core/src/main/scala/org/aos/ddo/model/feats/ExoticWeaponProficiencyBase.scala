@@ -1,7 +1,7 @@
 package org.aos.ddo.model.feats
 
 import org.aos.ddo.support.naming.Prefix
-import org.aos.ddo.support.requisite.{FeatRequisiteImpl, RequiresBaB}
+import org.aos.ddo.support.requisite.{FeatRequisiteImpl, RaceRequisite, RequiresBaB}
 
 /** Icon Feat Exotic Weapon Proficiency.png
   * Exotic Weapon Proficiency - Passive
@@ -12,7 +12,7 @@ import org.aos.ddo.support.requisite.{FeatRequisiteImpl, RequiresBaB}
   * Strength 13 for Bastard Sword and Dwarven Waraxe
   * Base Attack Bonus +1,
   */
-protected[feats] trait ExoticWeaponProficiencyBase extends FeatRequisiteImpl with Prefix with Passive with RequiresBaB {
+protected[feats] trait ExoticWeaponProficiencyBase extends FeatRequisiteImpl with RaceRequisite with Prefix with Passive with RequiresBaB {
   self: GeneralFeat =>
   override def requiresBaB: Int = 1
 

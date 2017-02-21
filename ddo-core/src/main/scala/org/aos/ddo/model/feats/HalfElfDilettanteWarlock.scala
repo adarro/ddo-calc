@@ -19,7 +19,7 @@ import org.aos.ddo.support.requisite.{
   */
 protected[feats] trait HalfElfDilettanteWarlock
     extends FeatRequisiteImpl
-    with HalfElfDilettante
+    with HalfElfDilettantePreFix
     with Passive
     with RequiresAttribute
     with RequiresAllOfRace { self: RacialFeat =>

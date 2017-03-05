@@ -7,12 +7,15 @@ import org.concordion.ext.EmbedExtension
 import org.concordion.integration.junit4.ConcordionRunner
 import org.junit.runner.RunWith
 
-
 @FullOGNL
 @Extensions(Array(classOf[EmbedExtension]))
 @RunWith(classOf[ConcordionRunner])
-@ConcordionOptions(declareNamespaces = Array("ext", "urn:concordion-extensions:2010"),
-  markdownExtensions = Array(MarkdownExtensions.WIKILINKS, MarkdownExtensions.AUTOLINKS, MarkdownExtensions.TASKLISTITEMS))
+@ConcordionOptions(
+  declareNamespaces = Array("ext", "urn:concordion-extensions:2010"),
+  markdownExtensions = Array(MarkdownExtensions.WIKILINKS,
+                             MarkdownExtensions.AUTOLINKS,
+                             MarkdownExtensions.TASKLISTITEMS)
+)
 class Model {
-
+  def sumtinFancy(): String = "Wow, we did something"
 }

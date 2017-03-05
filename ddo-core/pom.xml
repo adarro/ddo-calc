@@ -7,7 +7,8 @@
 	is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY 
 	KIND, either express or implied. See the License for the specific language 
 	governing permissions and limitations under the License. -->
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
   <modelVersion>4.0.0</modelVersion>
   <parent>
     <groupId>ddo-calc</groupId>
@@ -19,6 +20,9 @@
   <description>Basic traits and classes</description>
   <properties>
     <targetFolder>src/test/evosuite</targetFolder>
+    <specs.code.dir>${basedir}/src/specs/scala</specs.code.dir>
+    <specs.resource.dir>/src/specs/resources</specs.resource.dir>
+    <specs.dir>/src/test/specs</specs.dir>
   </properties>
   <dependencies>
     <!-- Spring Data Annotations
@@ -171,6 +175,43 @@
                 <source>src/test/java</source>
                 <source>${targetFolder}</source>
               </sources>
+            </configuration>
+          </execution>
+          <execution>
+            <id>add-specs-source</id>
+            <phase>compile</phase>
+            <goals>
+              <goal>add-test-source</goal>
+            </goals>
+            <configuration>
+              <sources>
+                <source>${specs.code.dir}</source>
+              </sources>
+            </configuration>
+          </execution>
+          <execution>
+            <id>add-test-resource</id>
+            <phase>generate-test-sources</phase>
+            <goals>
+              <goal>add-test-resource</goal>
+            </goals>
+            <configuration>
+              <resources>
+                <resource>
+                  <directory>${specs.dir}</directory>
+                  <includes>
+                    <include>**/*.html</include>
+                    <include>**/*.md</include>
+                    <include>**/*.png</include>
+                  </includes>
+                </resource>
+                <resource>
+                  <directory>${specs.resource.dir}</directory>
+                  <Includes>
+                    <include>**/*.png</include>
+                  </Includes>
+                </resource>
+              </resources>
             </configuration>
           </execution>
         </executions>
@@ -359,7 +400,7 @@
             <phase>integration-test</phase>
             <configuration>
               <skip>false</skip>
-              <testSourceDirectory>src/test/scala</testSourceDirectory>
+              <testSourceDirectory>${specs.code.dir}</testSourceDirectory>
               <includes>
                 <include>**/*.scala</include>
               </includes>

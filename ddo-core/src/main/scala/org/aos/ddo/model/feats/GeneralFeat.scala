@@ -16,24 +16,12 @@
 package org.aos.ddo.model.feats
 
 import enumeratum.Enum
-import org.aos.ddo.model.attribute.{
-  AttributeModifierInit,
-  ConstitutionModifier
-}
 import org.aos.ddo.model.item.weapon._
-import org.aos.ddo.model.misc.FreeToPlayFeature
 import org.aos.ddo.model.race.Race
-import org.aos.ddo.model.race.Race.Elf
 import org.aos.ddo.model.schools.School
 import org.aos.ddo.model.skill.Skill
-import org.aos.ddo.support.PhysicalDamage
 import org.aos.ddo.support.StringUtils.Extensions
-import org.aos.ddo.support.naming.{
-  DisplayName,
-  FriendlyDisplay,
-  PostText,
-  Prefix
-}
+import org.aos.ddo.support.naming.{FriendlyDisplay, PostText, Prefix}
 import org.aos.ddo.support.requisite.{Inclusion, RequiresAllOfFeat, Requisite}
 
 /**
@@ -586,7 +574,7 @@ object GeneralFeat extends Enum[GeneralFeat] with FeatSearchPrefix {
     } yield MartialWeaponProficiency(rl, wc)
   }
 
-  def racialMartialWeaponGrants(wc: WeaponCategory with MartialWeapon) = {
+  def racialMartialWeaponGrants(wc: WeaponCategory with MartialWeapon): Iterable[List[(Race, Int)]] = {
     val weaponGrants: Map[WeaponCategory with MartialWeapon, List[(Race, Int)]] =
       Map(
         WeaponCategory.Longsword -> List((Race.Elf, 1)),
@@ -602,7 +590,8 @@ object GeneralFeat extends Enum[GeneralFeat] with FeatSearchPrefix {
       x._1.eq(wc)
     }.values
   }
-  def racialExoticWeaponGrants(wc: WeaponCategory with ExoticWeapon) = {
+
+  def racialExoticWeaponGrants(wc: WeaponCategory with ExoticWeapon): Iterable[List[(Race, Int)]] = {
     val weaponGrants: Map[WeaponCategory with ExoticWeapon, List[(Race, Int)]] =
       Map(
         WeaponCategory.Shuriken -> List((Race.DrowElf, 1)),

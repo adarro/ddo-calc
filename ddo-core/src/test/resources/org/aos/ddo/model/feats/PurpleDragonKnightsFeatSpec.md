@@ -2,7 +2,7 @@
 
 |[ ][existingFeat] [Feats][result] | Description | Type | Icon |
 |-----|-----|-----|-----|
-|[Human](http://ddowiki.com/page/Human) | You are considered human. You are treated as such by magical abilities and effects, and are able to use appropriate equipment. | Passive | ![Icon Feat Human.png](http://ddowiki.com/images/Icon_Feat_Human.png)
+|[Human](http://ddowiki.com/page/Human) | You are considered human. You are treated as such by magical abilities and effects, and are able to use appropriate equipment. | Passive | ![Icon Feat Human.png](/images/Human_race_icon.png)
 
 
 [existingFeat]: - "c:verify-rows=#feat:verifyRacialFeats()"

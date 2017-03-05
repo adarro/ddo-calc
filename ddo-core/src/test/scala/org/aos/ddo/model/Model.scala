@@ -14,5 +14,5 @@ import org.junit.runner.RunWith
 @ConcordionOptions(declareNamespaces = Array("ext", "urn:concordion-extensions:2010"),
   markdownExtensions = Array(MarkdownExtensions.WIKILINKS, MarkdownExtensions.AUTOLINKS, MarkdownExtensions.TASKLISTITEMS))
 class Model {
-
+def needsToExist() : Unit = {}
 }

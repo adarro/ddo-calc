@@ -41,7 +41,7 @@ object CharacterClass extends Enum[CharacterClass] with SearchPrefix {
 
   /**
     * A divine caster that follows the path of the Cleric but uses divine magic to destroy as well as heal, Favored Souls have fewer spells than Clerics, but can cast more often. Their single current Prestige Enhancement line increases their offensive effectiveness, or that of a single ally. Other enhancements include certain stacking energy resistance and inherent Damage Reduction, making them more than just clerics with "fewer spells, but more casting". Favored Souls use Wisdom for spell casting effectiveness (DCs), but Charisma for spell points, and may gain Wisdom or Charisma enhancements as they level up. They can use Light or Medium armor, and have limited martial weapon proficiency (only in the chosen weapon of their god).
-    * *
+    *
     * The Favored Soul class must be purchased in the DDO store for Turbine Points or unlocked on a per server basis by earning 2500 Total FavorPatron on a single character.
     *
     *
@@ -56,7 +56,7 @@ object CharacterClass extends Enum[CharacterClass] with SearchPrefix {
   /**
     * A Monk is a combatant without shields and armor, using simple or no weapons, that performs amazing techniques in battle by using a power source called ki. Through intense physical training and mental discipline, Monks gain the ability to generate and control ki.
     *
-    * In order to use their special abilities, monks must be Centered—in a state of physical and mental balance. To remain centered, a monk must be unencumbered. Your overall encumbrance is based on your Strength and on the total weight of all items in your inventory. Monks cannot use a shield, must wear robes or outfits and must fight unarmed or with special ki weapons: quarterstaffs, handwraps, kamas and shurikens unless they master in specialized training through feats or other class enhancements to enable other weapons as Centered.
+    * In order to use their special abilities, monks must be Centered in a state of physical and mental balance. To remain centered, a monk must be unencumbered. Your overall encumbrance is based on your Strength and on the total weight of all items in your inventory. Monks cannot use a shield, must wear robes or outfits and must fight unarmed or with special ki weapons: quarterstaffs, handwraps, kamas and shurikens unless they master in specialized training through feats or other class enhancements to enable other weapons as Centered.
     *
     * The Monk class is free for VIP accounts, but others must purchase the class in the DDO store for Turbine Points.
     */

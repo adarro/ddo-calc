@@ -336,11 +336,7 @@
             <!--</property>-->
           </properties>
 
-          <includes>
-            <include>**/*Spec.java</include>
-            <include>**/*Spec.scala</include>
-            <include>**/*.scala</include>
-          </includes>
+
           <excludes>
             <exclude>**/*Test.scala</exclude>
             <exclude>**/*Builder.scala</exclude>
@@ -348,6 +344,12 @@
             <exclude>**/*IT.scala</exclude>
             <!-- <exclude>**/*Spec.scala</exclude>-->
           </excludes>
+          <includes>
+            <include>*/model/**</include>
+            <!--<include>**/*Spec.java</include>-->
+            <!--<include>**/*Spec.scala</include>-->
+            <!--<include>**/*.scala</include>-->
+          </includes>
           <skipTests>${skip.tests}</skipTests>
         </configuration>
         <executions>
@@ -361,12 +363,12 @@
               <skip>false</skip>
               <testSourceDirectory>src/test/scala</testSourceDirectory>
               <includes>
-                <include>**/*.scala</include>
+                <include>**/*Spec.scala</include>
               </includes>
               <excludes>
-                <exclude>**/*Test.scala</exclude>
-                <exclude>**/*Builder.scala</exclude>
-                <exclude>**/*Helper.scala</exclude>
+                <exclude>**/*Test.*</exclude>
+                <exclude>**/*Builder.*</exclude>
+                <exclude>**/*Helper.*</exclude>
                 <!-- <exclude>**/*Spec.scala</exclude>-->
               </excludes>
             </configuration>
@@ -450,7 +452,7 @@
       <extension>
         <groupId>io.truthencode</groupId>
         <artifactId>qa-tools</artifactId>
-        <version>1.0</version>
+        <version>${project.version}</version>
       </extension>
     </extensions>
   </build>

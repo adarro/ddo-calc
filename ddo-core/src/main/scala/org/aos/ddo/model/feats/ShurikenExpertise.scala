@@ -13,7 +13,7 @@ import org.aos.ddo.support.requisite.{FeatRequisiteImpl, RaceRequisite, Requires
   * MustContainAtLeastOne of: Proficiency: Shuriken or
   * Half-Elf Dilettante: Monk AND Dex 13
   * Or: Drow
-  * @todo: Apply multi-conditional logic dor Shuriken Expertise
+  * @todo  Apply multi-conditional logic dor Shuriken Expertise
   * */
 protected[feats] trait ShurikenExpertise extends FeatRequisiteImpl with RaceRequisite with Passive with RequiresAttribute with RequiresAnyOfFeat {
   self: GeneralFeat =>

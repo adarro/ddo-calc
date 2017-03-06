@@ -24,41 +24,69 @@ sealed trait ClassFeat
 }
 
 object ClassFeat extends Enum[ClassFeat] with FeatSearchPrefix {
+
   case object ArcaneLore extends ClassFeat with ArcaneLore
+
   case object ArtificerConstructMastery
       extends ClassFeat
       with ArtificerConstructMastery
+
   case object ArtificerKnowledgeScrolls
       extends ClassFeat
-      with ArtificerKnowledgeScrolls
+      with ArtificerKnowledgeScrolls {
+    override protected def nameSource: String = "Scrolls"
+  }
+
   case object InscribeArtificerScroll
       extends ClassFeat
       with InscribeArtificerScroll
+
   case object RapidReload extends ClassFeat with RapidReload
+
   case object ReanimateConstruct extends ClassFeat with ReanimateConstruct
+
   case object Trapfinding extends ClassFeat with Trapfinding
+
   case object UnleashIronDefender extends ClassFeat with UnleashIronDefender
+
   case object ArtificerCraftMastery
       extends ClassFeat
       with ArtificerCraftMastery
-    case object RuneArmUse extends ClassFeat with RuneArmUse
+
+  case object RuneArmUse extends ClassFeat with RuneArmUse
+
   case object ArtificerKnowledgeWands
       extends ClassFeat
-      with ArtificerKnowledgeWands
+      with ArtificerKnowledgeWands {
+    override protected def nameSource: String = "Wands"
+  }
+
   case object Trapmaking extends ClassFeat with Trapmaking
+
   case object RetainEssence extends ClassFeat with RetainEssence
+
   case object ArtificerKnowledgeArmsAndArmor
       extends ClassFeat
-      with ArtificerKnowledgeArmsAndArmor
+      with ArtificerKnowledgeArmsAndArmor {
+    override protected def nameSource: String = "Arms and Armor"
+  }
+
   case object ArtificerKnowledgePotions
       extends ClassFeat
-      with ArtificerKnowledgePotions
+      with ArtificerKnowledgePotions {
+    override protected def nameSource: String = "Potions"
+  }
+
   case object ArtificerKnowledgeWondrousItems
       extends ClassFeat
-      with ArtificerKnowledgeWondrousItems
+      with ArtificerKnowledgeWondrousItems {
+    override protected def nameSource: String = "Wondrous Items"
+  }
+
   case object ArtificerSkillMastery
       extends ClassFeat
       with ArtificerSkillMastery
+
   case object SneakAttack extends ClassFeat with SneakAttack
   override lazy val values: Seq[ClassFeat] = findValues
 }

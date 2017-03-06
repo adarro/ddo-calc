@@ -12,7 +12,7 @@ import scala.reflect.ClassTag
   * Created by adarr on 2/14/2017.
   */
 trait Feat
-    extends EnumEntry
+  extends EnumEntry
     with DisplayName
     with FriendlyDisplay
     with SubFeatInformation {
@@ -26,13 +26,7 @@ object Feat extends Enum[Feat] with FeatSearchPrefix {
   def featByRace[Feat: ClassTag](feat: Feat): Option[Seq[Race]] = {
     feat match {
       case x: RaceRequisite =>
-        Some(x.allOfRace.map { y =>
-          y._1
-        } ++ x.anyOfRace.map { y =>
-          y._1
-        } ++ x.grantsToRace.map { y =>
-          y._1
-        })
+        Some(x.allOfRace.map(_._1) ++ x.anyOfRace.map(_._1) ++ x.grantsToRace.map(_._1))
       case _ => None
     }
   }
@@ -53,6 +47,7 @@ object Feat extends Enum[Feat] with FeatSearchPrefix {
       .map { x =>
         x._1
       }
+
   override def values: Seq[Feat] =
     GeneralFeat.values ++ ClassFeat.values ++ RacialFeat.values
 }

@@ -1237,7 +1237,7 @@
     <system>GitHub Issues</system>
     <url>https://github.com/adarro/ddo-calc/issues</url>
   </issueManagement>
-<!-- Add JitPack for github as dependencies if needed -->
+  <!-- Add JitPack for github as dependencies if needed -->
   <repositories>
     <repository>
       <id>EvoSuite</id>

@@ -9,9 +9,11 @@ import org.aos.ddo.support.requisite.{FeatRequisiteImpl, RequiresAllOfClass}
   */
 protected[feats] trait ArtificerKnowledgePotions
     extends FeatRequisiteImpl
+    with ArtificerKnowledgePrefix
     with Passive
-    with RequiresAllOfClass {
-  override def allOfClass: Seq[(CharacterClass, Int)] = {
-    List((Artificer, 2))
+    with RequiresAllOfClass { self: ClassFeat =>
+  private lazy val levels = List(2, 5, 8, 11, 14)
+  override def anyOfClass: Seq[(CharacterClass, Int)] = levels.map { x =>
+    (Artificer, x)
   }
 }

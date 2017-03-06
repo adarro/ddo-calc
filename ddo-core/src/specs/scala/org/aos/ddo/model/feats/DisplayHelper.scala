@@ -4,6 +4,8 @@ import java.util
 
 import enumeratum.{Enum, EnumEntry}
 import org.aos.ddo.support.naming.FriendlyDisplay
+import org.aos.ddo.support.requisite.Requisite
+
 import scala.collection.JavaConverters._
 
 /**
@@ -53,4 +55,6 @@ trait DisplayHelper {
     List(withName(skillId).displayText).asJava
 
   protected def withName(skillId: String): Entry = enum.withName(skillId)
+
+  def findByName(skillId: String): String = withName(skillId).displayText
 }

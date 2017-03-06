@@ -574,32 +574,32 @@ object GeneralFeat extends Enum[GeneralFeat] with FeatSearchPrefix {
     } yield MartialWeaponProficiency(rl, wc)
   }
 
-  def racialMartialWeaponGrants(wc: WeaponCategory with MartialWeapon): Iterable[List[(Race, Int)]] = {
+  def racialMartialWeaponGrants(
+      wc: WeaponCategory with MartialWeapon): Iterable[List[(Race, Int)]] = {
     val weaponGrants: Map[WeaponCategory with MartialWeapon, List[(Race, Int)]] =
       Map(
         WeaponCategory.Longsword -> List((Race.Elf, 1)),
         WeaponCategory.Longbow -> List((Race.Elf, 1)),
         WeaponCategory.Shortbow -> List((Race.Elf, 1)),
-        WeaponCategory.Rapier -> List((Race.Elf, 1),(Race.DrowElf, 1)),
-        WeaponCategory.Shortsword -> List((Race.DrowElf,1)),
-        WeaponCategory.LightHammer -> List((Race.Gnome,1)),
-        WeaponCategory.ThrowingHammer -> List((Race.Gnome,1)),
-        WeaponCategory.Warhammer -> List((Race.Gnome,1))
+        WeaponCategory.Rapier -> List((Race.Elf, 1), (Race.DrowElf, 1)),
+        WeaponCategory.Shortsword -> List((Race.DrowElf, 1)),
+        WeaponCategory.LightHammer -> List((Race.Gnome, 1)),
+        WeaponCategory.ThrowingHammer -> List((Race.Gnome, 1)),
+        WeaponCategory.Warhammer -> List((Race.Gnome, 1))
       )
     weaponGrants.filter { x =>
       x._1.eq(wc)
     }.values
   }
 
-  def racialExoticWeaponGrants(wc: WeaponCategory with ExoticWeapon): Iterable[List[(Race, Int)]] = {
+  def racialExoticWeaponGrants(
+      wc: WeaponCategory with ExoticWeapon): Iterable[List[(Race, Int)]] = {
     val weaponGrants: Map[WeaponCategory with ExoticWeapon, List[(Race, Int)]] =
       Map(
         WeaponCategory.Shuriken -> List((Race.DrowElf, 1)),
         WeaponCategory.DwarvenWarAxe -> List((Race.Dwarf, 1))
       )
-    weaponGrants.filter { x =>
-      x._1.eq(wc)
-    }.values
+    weaponGrants.filter(_._1.eq(wc)).values
   }
 
   def martialWeapons: Seq[WeaponCategory with MartialWeapon] = {
@@ -621,7 +621,9 @@ object GeneralFeat extends Enum[GeneralFeat] with FeatSearchPrefix {
       martialWeaponProficiencies
   }
 
-  case class ExoticWeaponProficiency(override val grantsToRace: Seq[(Race, Int)],weapon: WeaponCategory with ExoticWeapon*)
+  case class ExoticWeaponProficiency(
+      override val grantsToRace: Seq[(Race, Int)],
+      weapon: WeaponCategory with ExoticWeapon*)
       extends GeneralFeat
       with ExoticWeaponProficiencyBase
       with Prefix
@@ -644,7 +646,7 @@ object GeneralFeat extends Enum[GeneralFeat] with FeatSearchPrefix {
     for {
       wc <- exoticWeapons
       rl <- racialExoticWeaponGrants(wc)
-       } yield ExoticWeaponProficiency(rl,wc)
+    } yield ExoticWeaponProficiency(rl, wc)
 
   def exoticWeapons: Seq[WeaponCategory with ExoticWeapon] = {
     for {

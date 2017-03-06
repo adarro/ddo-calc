@@ -7,6 +7,14 @@ import org.aos.ddo.support.requisite.{FeatRequisiteImpl, RequiresAllOfClass}
 /**
   * Created by adarr on 2/16/2017.
   */
-protected[feats] trait ArtificerKnowledgeWands extends FeatRequisiteImpl with Passive with RequiresAllOfClass {
-  override def allOfClass: Seq[(CharacterClass, Int)] = List((Artificer,3))
+protected[feats] trait ArtificerKnowledgeWands
+    extends FeatRequisiteImpl
+    with ArtificerKnowledgePrefix
+    with Passive
+    with RequiresAllOfClass {
+  self: ClassFeat=>
+  private lazy val levels = List(3,6, 9, 12,15)
+  override def anyOfClass: Seq[(CharacterClass, Int)] = levels.map { x =>
+    (Artificer, x)
+  }
 }

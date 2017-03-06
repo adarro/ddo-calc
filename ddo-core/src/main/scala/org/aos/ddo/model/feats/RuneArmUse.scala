@@ -8,5 +8,5 @@ import org.aos.ddo.support.requisite.{FeatRequisiteImpl, RequiresAllOfClass}
   * Created by adarr on 2/16/2017.
   */
 protected[feats] trait RuneArmUse extends FeatRequisiteImpl with Active with Passive with RequiresAllOfClass{
-  override def allOfClass: Seq[(CharacterClass, Int)] = List((Artificer,1))
+  override def allOfClass: Seq[(CharacterClass, Int)] = List((Artificer,2))
 }

@@ -11,6 +11,8 @@ trait ClassRequisite {
   def allOfClass: Seq[(CharacterClass, Int)] = IndexedSeq.apply()
 
   def noneOfClass: Seq[(CharacterClass, Int)] = IndexedSeq.apply()
+
+  def grantToClass: Seq[(CharacterClass, Int)] = IndexedSeq.apply()
 }
 
 
@@ -35,5 +37,11 @@ trait RequiresNoneOfClass extends ClassRequisite with RequiresNoneOf[Requirement
 
   abstract override def noneOf: Seq[Requirement] = super.noneOf ++ {
     noneOfClass collect classToReq
+  }
+}
+
+trait GrantsToClass extends ClassRequisite  with GrantExpression with RequiresOneOf[Requirement] with Requisite {
+  abstract override def oneOf: Seq[Requirement] = super.oneOf ++ {
+    grantToClass collect classToReq
   }
 }

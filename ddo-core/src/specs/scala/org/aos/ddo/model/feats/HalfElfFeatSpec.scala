@@ -3,6 +3,7 @@ package org.aos.ddo.model.feats
 import java.util
 
 import org.aos.ddo.model.race.Race
+import org.aos.ddo.support.requisite.Requisite
 import org.concordion.integration.junit4.ConcordionRunner
 import org.junit.runner.RunWith
 

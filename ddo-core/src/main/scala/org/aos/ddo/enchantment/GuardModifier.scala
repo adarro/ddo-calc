@@ -1,14 +1,13 @@
 package org.aos.ddo.enchantment
 
-import org.aos.ddo.model.effect.{Prefix, SecondaryPrefix, Suffix}
-import org.aos.ddo.enchantment.Modifier.{Greater, Lesser, Minor}
-import org.aos.ddo.support.RomanNumeral.fromRoman
-import org.aos.ddo.support.Validation.violationToString
 import com.typesafe.scalalogging.LazyLogging
-import com.wix.accord.{Failure, Success}
 import com.wix.accord.dsl.{Contextualizer, ValidatorBooleanOps, empty, notEmpty, validator}
 import com.wix.accord.transform.ValidationTransform.TransformedValidator
-import com.wix.accord.validate
+import com.wix.accord.{Failure, Success, validate}
+import org.aos.ddo.enchantment.Modifier.{Greater, Lesser, Minor}
+import org.aos.ddo.model.effect.{Prefix, SecondaryPrefix, Suffix}
+import org.aos.ddo.support.RomanNumeral.fromRoman
+import org.aos.ddo.support.Validation.violationToString
 
 import scala.language.postfixOps
 

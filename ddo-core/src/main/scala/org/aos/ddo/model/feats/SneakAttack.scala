@@ -1,6 +1,8 @@
 package org.aos.ddo.model.feats
 
-import org.aos.ddo.support.requisite.{FeatRequisiteImpl, FreeFeat}
+import org.aos.ddo.model.classes.CharacterClass
+import org.aos.ddo.model.classes.CharacterClass.Rogue
+import org.aos.ddo.support.requisite.{FeatRequisiteImpl, FreeFeat, GrantsToClass}
 
 /**
   * [[http://ddowiki.com/page/Sneak_Attack Sneak Attack]]
@@ -16,6 +18,10 @@ import org.aos.ddo.support.requisite.{FeatRequisiteImpl, FreeFeat}
   *
   * @todo Need to apply Rogue Auto Grant
   */
-protected[feats] trait SneakAttack extends FeatRequisiteImpl with Passive with FreeFeat {
-  self: ClassFeat =>
+protected[feats] trait SneakAttack
+    extends FeatRequisiteImpl
+    with Passive
+    with GrantsToClass
+    with FreeFeat { self: ClassFeat =>
+  override def grantToClass: Seq[(CharacterClass, Int)] = List((Rogue, 1))
 }

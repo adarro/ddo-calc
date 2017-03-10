@@ -15,7 +15,7 @@ Searching for [Attack](- "#searchString") will return:
 | Attack |
 
 
-[search]: - "c:verify-rows=#username:withNameAsList(#searchString)"
+[search]: - "c:verify-rows=#username:withNameAsJavaList(#searchString)"
 [_matchStrategy_]: - "c:matchStrategy=KeyMatch"
 [match]: - "?=#username"
 

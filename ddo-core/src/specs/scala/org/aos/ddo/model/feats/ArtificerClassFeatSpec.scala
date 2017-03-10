@@ -12,7 +12,7 @@ import org.junit.runner.RunWith
 @RunWith(classOf[ConcordionRunner])
 class ArtificerClassFeatSpec extends ClassDisplayHelper {
   override val enum: E = ClassFeat
-  var level = 0
+
   override val cClass: CharacterClass = CharacterClass.Artificer
 
 }

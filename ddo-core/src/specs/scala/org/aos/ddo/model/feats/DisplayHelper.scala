@@ -51,10 +51,19 @@ trait DisplayHelper {
     }
   }
 
-  def withNameAsList(skillId: String): util.List[String] =
-    List(withName(skillId).displayText).asJava
+  def withNameAsList(skillId: String*): Seq[String] = {
+    for {
+      id <- skillId
+      skill <- withName(id)
+    } yield skill.displayText
+  }
 
-  protected def withName(skillId: String): Entry = enum.withName(skillId)
+  def withNameAsJavaList(id: String): util.List[String] = withNameAsList(id).asJava
 
-  def findByName(skillId: String): String = withName(skillId).displayText
+  protected def withName(skillId: String): Option[Entry] =
+    enum.withNameOption(skillId)
+
+  def findByName(skillId: String): String = {
+    withNameAsList(skillId).headOption.orNull
+  }
 }

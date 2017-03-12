@@ -20,8 +20,8 @@
   <properties>
     <targetFolder>src/test/evosuite</targetFolder>
     <specs.code.dir>${basedir}/src/specs/scala</specs.code.dir>
-    <specs.resource.dir>/src/specs/resources</specs.resource.dir>
-    <specs.dir>/src/test/specs</specs.dir>
+    <specs.resource.dir>src/specs/resources</specs.resource.dir>
+    <specs.dir>src/test/specs</specs.dir>
   </properties>
   <dependencies>
     <!-- Spring Data Annotations
@@ -181,7 +181,7 @@
             <goals>
               <goal>add-test-source</goal>
             </goals>
-            <phase>compile</phase>
+            <phase>process-test-sources</phase>
             <configuration>
               <sources>
                 <source>${specs.code.dir}</source>

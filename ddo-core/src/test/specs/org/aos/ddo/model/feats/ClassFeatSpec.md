@@ -4,7 +4,7 @@
 
 Certain traits can only be acquired by specific classes.
 
-* [ ] [Artificer](ArtificerClassFeatSpec.html)
+* [x] [Artificer](ArtificerClassFeatSpec.html)
 * [ ] [Barbarian](BarbarianClassFeatSpec.html)
 * [ ] [Bard](BardClassFeatSpec.html)
 * [ ] [Cleric](ClericClassFeatSpec.html)

@@ -1,6 +1,7 @@
 package org.aos.ddo.model.feats
 
-import org.aos.ddo.support.requisite.{FeatRequisiteImpl, FreeFeat}
+import org.aos.ddo.model.classes.CharacterClass
+import org.aos.ddo.support.requisite.{ClassRequisite, FeatRequisiteImpl, FreeFeat}
 
 /** Icon 	Feat 	Type 	Description 	Prerequisites
   * Icon Feat Light Armor Proficiency.png
@@ -9,6 +10,7 @@ import org.aos.ddo.support.requisite.{FeatRequisiteImpl, FreeFeat}
   * *
   * None
   * */
-protected[feats] trait LightArmorProficiency extends FeatRequisiteImpl with Passive with FreeFeat {
+protected[feats] trait LightArmorProficiency extends FeatRequisiteImpl with ClassRequisite with Passive with FreeFeat  {
   self: GeneralFeat =>
+  override def anyOfClass: Seq[(CharacterClass, Int)] = List((CharacterClass.Barbarian,1))
 }

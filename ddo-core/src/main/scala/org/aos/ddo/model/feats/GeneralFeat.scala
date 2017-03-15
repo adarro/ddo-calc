@@ -16,13 +16,14 @@
 package org.aos.ddo.model.feats
 
 import enumeratum.Enum
+import org.aos.ddo.model.classes.CharacterClass
 import org.aos.ddo.model.item.weapon._
 import org.aos.ddo.model.race.Race
 import org.aos.ddo.model.schools.School
 import org.aos.ddo.model.skill.Skill
 import org.aos.ddo.support.StringUtils.Extensions
 import org.aos.ddo.support.naming.{FriendlyDisplay, PostText, Prefix}
-import org.aos.ddo.support.requisite.{Inclusion, RequiresAllOfFeat, Requisite}
+import org.aos.ddo.support.requisite.{GrantsToClass, Inclusion, RequiresAllOfFeat, Requisite}
 
 /**
   * [[http://ddowiki.com/page/Feats Feats]] are special abilities that give your character a new capability, or improves one he or she already has.
@@ -547,7 +548,7 @@ object GeneralFeat extends Enum[GeneralFeat] with FeatSearchPrefix {
   }
 
   case class MartialWeaponProficiency(
-      override val grantsToRace: Seq[(Race, Int)],
+      override val grantsToRace: Seq[(Race, Int)],override val grantToClass: Seq[(CharacterClass, Int)],
       weapon: WeaponCategory with MartialWeapon*)
       extends GeneralFeat
       with MartialWeaponProficiencyBase
@@ -571,7 +572,17 @@ object GeneralFeat extends Enum[GeneralFeat] with FeatSearchPrefix {
     for {
       wc <- martialWeapons
       rl <- racialMartialWeaponGrants(wc)
-    } yield MartialWeaponProficiency(rl, wc)
+      cl <- classMartialWeaponGrants(wc)
+    } yield MartialWeaponProficiency(rl,cl, wc)
+  }
+
+  def classMartialWeaponGrants( wc: WeaponCategory with MartialWeapon): Iterable[List[(CharacterClass, Int)]] = {
+    val autoGrant = List(CharacterClass.Barbarian,CharacterClass.Fighter,CharacterClass.Paladin,CharacterClass.Ranger).map((_ ,1))
+
+    val weaponGrants: Map[WeaponCategory with MartialWeapon, List[(CharacterClass, Int)]] = martialWeapons.map(_ -> autoGrant).toMap
+    weaponGrants.filter { x =>
+      x._1.eq(wc)
+    }.values
   }
 
   def racialMartialWeaponGrants(

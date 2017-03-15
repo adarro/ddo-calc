@@ -4,7 +4,6 @@ import java.util
 
 import enumeratum.{Enum, EnumEntry}
 import org.aos.ddo.support.naming.FriendlyDisplay
-import org.aos.ddo.support.requisite.Requisite
 
 import scala.collection.JavaConverters._
 

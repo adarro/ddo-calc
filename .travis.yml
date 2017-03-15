@@ -5,14 +5,16 @@ jdk:
 - oraclejdk8
 install: true
 before_script:
-  - mvn install -Dmaven.skip.tests -f qa-tools
+- mvn install -Dmaven.skip.tests -f qa-tools
 script:
-  - mvn install -Dmaven.skip.tests
-  - mvn org.scoverage:scoverage-maven-plugin:1.3.0:report
-
+- mvn install -Dmaven.skip.tests
+- mvn org.scoverage:scoverage-maven-plugin:1.3.0:report
 after_success:
-  - mvn com.versioneye:versioneye-maven-plugin:3.11.1:update
-  - bash <(curl -s https://codecov.io/bash)
+- mvn com.versioneye:versioneye-maven-plugin:3.11.1:update
+- bash <(curl -s https://codecov.io/bash)
 addons:
-    code_climate:
-        repo_token: 665646cbcbd55d57b5c78261227b9775f00a9e4716d1c28b6fa2cfbda7369ba2
+  code_climate:
+    repo_token: 665646cbcbd55d57b5c78261227b9775f00a9e4716d1c28b6fa2cfbda7369ba2
+env:
+  matrix:
+    secure: GSUUlg/qnryPwhDMBHd5SyrDZm+5cHj6MGmr5/9vmQR5M8PNTupFLoCJAlYSM8C4bqp1vdhkmmBIIvQX2qPjMvHyZnQ6+zbz5FzVmwtce08cqmqiqw8kUodYrdgHXwq8+rxSQDTlVhrJxtiNVVGXhQz/UMHxPi7NXmwfGobqZAVZADdms6iEOmwW5kYhixN4PJTrVvjjBjIF4r00XavaAlcLgC0wnHLDrGCLQJu2yWeVv+a53dqQdu5Bczv3FJj9KtjXukoMhwN0jxTS/SG/nveGziQKgQxmbKVyV3ugXv/Otq95c/FQuWh2fk8aGHfa6pdizRhjLAUbNeXutybH+RbP2mflbyoVRpsIR12kIQUr9SBIYlJsN4BIkLgJ0A6CKZnJZH6KPhFbf+P7JL3U7Eie0T4uTfDW7chEuSZy2BAzBV9tIh6jT+IK5K8qQXgiYuoVsFDjKR+XR+TjybKdlyEf8Uo+yW27QP2xCOxwD4NFWhTmlXTu9vx88iKyGaV9Tok2sDOXsfoLO1kyw+4gybEBLb+UU1JnZQUFCSNSCik4okahooRvRvfcZaZOfoGQBBdVabBuSuutJTW5ylNTXIjXa2HGClxc1Y7Z3dJd4xu/19RN9H1Bcx9RXvW4k6Xu5F+BQkWkKuuFGg+EKTcSOcJ512kjKq6cr9wNUoloLbI=

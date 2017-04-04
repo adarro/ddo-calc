@@ -60,7 +60,7 @@ object LawAxis extends Enum[LawAxis] with BitSupport {
 
   case object Lawful extends LawAxis
 
-  val values: Seq[LawAxis] = findValues
+  val values = findValues
   type T = LawAxis
   val bitValues: Map[T, Int] = valuesToIndex.map { x =>
     x._1 -> Math.pow(2.0, x._2).toInt
@@ -89,7 +89,7 @@ object MoralAxis extends Enum[MoralAxis] with BitSupport {
 
   case object Evil extends MoralAxis
 
-  val values: Seq[MoralAxis] = findValues
+  val values = findValues
   type T = MoralAxis
   val bitValues: Map[T, Int] = valuesToIndex.map { x =>
     x._1 -> Math.pow(2.0, x._2).toInt

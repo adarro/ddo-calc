@@ -16,9 +16,11 @@ package org.aos.ddo.web.mapping
 
 import java.io.File
 
-import org.aos.ddo.web.{ Tree, Warehouse }
-import org.jsoup.Jsoup
-import org.jsoup.nodes.Document
+import net.ruippeixotog.scalascraper.browser.JsoupBrowser
+import net.ruippeixotog.scalascraper.model.Document
+import org.aos.ddo.web.{Tree, Warehouse}
+//import org.jsoup.Jsoup
+//import org.jsoup.nodes.Document
 import org.junit.runner.RunWith
 import org.scalatest.{ FunSpec, Matchers }
 import org.scalatest.junit.JUnitRunner
@@ -33,12 +35,14 @@ class DDoWikiScrapingIT extends FunSpec with Matchers with MockitoSugar with Laz
   lazy val nestedPath = "Drow_Scimitar_of_the_Weapon_Master.html"
   lazy val simplePath = "Elyd_Edge.html"
   lazy val multiLevelPath = ""
+  val browser = JsoupBrowser()
   protected def loadLocalTestHtml(fileName: String, charsetName: String = defaultEncoding, baseUri: String = baseUri): Document = {
     val url = Thread.currentThread().getContextClassLoader.getResource(fileName)
     logger.info(s"Local file: ${url.getPath}")
     val in = new File(url.getPath)
     if (!in.exists()) logger.warn("can not load file!!")
-    Jsoup.parse(in, charsetName, baseUri)
+    browser.parseFile(in,charsetName)
+
   }
 
   private def fixture = new {
@@ -52,7 +56,7 @@ class DDoWikiScrapingIT extends FunSpec with Matchers with MockitoSugar with Laz
     it("Should read a Simple list") {
       // This example has 6 items in a Simple list, so we should have one branch with 6 leaves
 
-      val fragment = fixture.simpleListDoc
+      val fragment = fixture.simpleListDoc.root
       val result = Tree(Warehouse.readHtmlList(fragment))
       result.isStump should be(false)
       result.leaves should be('empty)
@@ -66,7 +70,7 @@ class DDoWikiScrapingIT extends FunSpec with Matchers with MockitoSugar with Laz
     it("Should read a nested UL list") {
       // This example has 2 items in a Simple list, plus 5 nested ones
 
-      val fragment = fixture.nestedListDoc
+      val fragment = fixture.nestedListDoc.root
       val result = Tree(Warehouse.readHtmlList(fragment))
       result.isStump should be(false)
       result.leaves should be('empty)

@@ -14,20 +14,23 @@
   */
 package org.aos.ddo
 
-import enumeratum.{EnumEntry,Enum}
+import enumeratum.{EnumEntry, Enum}
 
 /** Represents a location where an item is.
   */
-sealed trait InventorySection extends EnumEntry with NoDefault[InventorySection]
+sealed trait InventorySection
+    extends EnumEntry
+    with NoDefault[InventorySection]
 object InventorySection extends Enum[InventorySection] {
   case object ActiveInventory extends InventorySection
   case object CharacterBank extends InventorySection
   case object SharedBank extends InventorySection
+
   /** No current direct implementation plans for auction,
     * just a place holder for the code.
     */
   case object Auction extends InventorySection
   case object Equipped extends InventorySection
- // val values = List(ActiveInventory, CharacterBank, SharedBank, Auction, Equipped)
-  override def values: Seq[InventorySection] = findValues
+
+  def values = findValues
 }

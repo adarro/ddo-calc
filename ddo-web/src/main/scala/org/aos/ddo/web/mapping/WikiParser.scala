@@ -18,33 +18,17 @@ package org.aos.ddo.web.mapping
 import java.text.NumberFormat
 
 import com.typesafe.scalalogging.LazyLogging
+import net.ruippeixotog.scalascraper.dsl.DSL.Extract._
+import net.ruippeixotog.scalascraper.dsl.DSL._
+import net.ruippeixotog.scalascraper.model.Element
 import org.aos.ddo.enumeration.EnumExtensions.EnumCompanionOps
 import org.aos.ddo.model.attribute.Attribute
 import org.aos.ddo.model.item.weapon._
 import org.aos.ddo.model.misc.Material
-import org.aos.ddo.support.StringUtils.{
-  Comma,
-  EmptyString,
-  ForwardSlash,
-  Space,
-  StringImprovements
-}
-import org.aos.ddo.web.mapping.Extractor.{
-  damageExtractor,
-  enchantmentExtractor,
-  extractCriticalProfile,
-  extractDamageInfo,
-  simpleExtractor
-}
-import org.aos.ddo.{
-  BindingFlags,
-  CriticalProfile,
-  DamageInfo,
-  MonetaryValue,
-  PhysicalDamageType,
-  UpgradeInfo
-}
-import org.jsoup.nodes.Element
+import org.aos.ddo.support.StringUtils.{Comma, EmptyString, ForwardSlash, Space, StringImprovements}
+import org.aos.ddo.web.mapping.ElementSupport.ElementToElementOps
+import org.aos.ddo.web.mapping.Extractor._
+import org.aos.ddo._
 
 import scala.collection.JavaConversions.{asScalaBuffer, seqAsJavaList}
 import scala.language.{existentials, postfixOps, reflectiveCalls}
@@ -379,10 +363,10 @@ object WikiParser extends LazyLogging {
       """(?<num>\d+,?\d+)""".r
     source.get(Field.BaseValue) match {
       case Some(x: Element) =>
-        val ele = x.select("td").first().textNodes()
-        val filtered = ele
+        val ele = x >> element("td:first-child")
+        val filtered = ele.textNodes
           .map { x =>
-            x.text() match {
+            x.text match {
               case rex(num) =>
                 Some(NumberFormat.getInstance(java.util.Locale.US).parse(num))
               case _ => None

@@ -14,48 +14,60 @@
   */
 package org.aos.ddo
 
-import enumeratum.{EnumEntry,Enum}
+import enumeratum.{EnumEntry, Enum}
 
 /** The 'What it does' half of binding status.
   */
 sealed trait BindingStatus extends EnumEntry with DefaultValue[BindingStatus] {
   override lazy val default = Some(BindingStatus.Unbound)
 }
+
 /** Enum for noting the distinct types of binding.
   *
   * Binding ties an object to a character, preventing them from selling, trading or transferring.
   */
-object BindingStatus extends Enum[BindingStatus] with DefaultValue[BindingStatus] {
-  /** Item can be transfered between characters on the same account.
+object BindingStatus
+    extends Enum[BindingStatus]
+    with DefaultValue[BindingStatus] {
+
+  /** Item can be transferred between characters on the same account.
     *
     * Generally through the shared bank.
     */
   case object BindsToAccount extends BindingStatus
+
   /** Item can not be traded or sold.
     */
   case object BindsToCharacter extends BindingStatus
+
   /** Item does not have any restrictions.
     */
   case object Unbound extends BindingStatus
-  override val values = List(BindsToAccount, BindsToCharacter, Unbound)
+  val values = findValues // IndexedSeq(BindsToAccount, BindsToCharacter, Unbound)
   override lazy val default = Some(BindingStatus.Unbound)
 }
 
 /** The 'When' any binding occurs
   */
 sealed trait BindingEvent extends EnumEntry with NoDefault[BindingEvent]
+
 /** Triggers for binding.
   */
-object BindingEvent extends Enum[BindingEvent] with DefaultValue[BindingEvent] {
+object BindingEvent
+    extends Enum[BindingEvent]
+    with DefaultValue[BindingEvent] {
+
   /** Occurs when you receive the item, such as a quest reward or upon crafting.
     */
   case object OnAcquire extends BindingEvent
+
   /** Occurs upon first use.
     */
   case object OnEquip extends BindingEvent
+
   /** No binding occurs.
     */
   case object None extends BindingEvent
-  override val values = List(OnAcquire, OnEquip, None)
+  val values = findValues
   override lazy val default = Some(BindingEvent.None)
 }

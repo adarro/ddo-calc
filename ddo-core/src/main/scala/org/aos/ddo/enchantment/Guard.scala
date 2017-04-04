@@ -12,7 +12,7 @@ trait GuardFlag {
 }
 
 object Guard extends ((Guards, Option[GuardModifier]) => Guard) {
-  implicit val guardValidator: TransformedValidator[Guard] = validator[Guard] { g => {
+  implicit val guardValidator: Validator[Guard] = validator[Guard] { g => {
 
     g.effects is notEmpty
 
@@ -22,10 +22,12 @@ object Guard extends ((Guards, Option[GuardModifier]) => Guard) {
 
   def apply(guard: Guards, affixes: Option[GuardModifier] = None): Guard = {
     val o = create(guard, affixes)
-    validate(o) match {
-      case Success => o
-      case Failure(x) => throw new IllegalArgumentException(violationToString(x))
-    }
+    assert(validate(o) == Success)
+//    validate(o) match {
+//      case Success => o
+//      case Failure(x) => throw new IllegalArgumentException(violationToString(x))
+//    }
+    o
   }
 
   def apply(parameters: Parameters): Guard =

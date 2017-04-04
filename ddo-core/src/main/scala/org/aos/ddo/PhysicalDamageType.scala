@@ -40,5 +40,5 @@ object PhysicalDamageType extends Enum[PhysicalDamageType] {
     */
   case object Magic extends PhysicalDamageType
 
-  val values: Seq[PhysicalDamageType] =  findValues
+  val values =  findValues
 }

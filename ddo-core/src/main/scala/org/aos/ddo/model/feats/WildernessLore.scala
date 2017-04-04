@@ -1,12 +1,7 @@
 package org.aos.ddo.model.feats
 
 import org.aos.ddo.model.classes.CharacterClass
-import org.aos.ddo.model.classes.CharacterClass.{Barbarian, Rogue}
-import org.aos.ddo.support.requisite.{
-  FeatRequisiteImpl,
-  FreeFeat,
-  GrantsToClass
-}
+import org.aos.ddo.support.requisite.{FeatRequisiteImpl, FreeFeat, GrantsToClass}
 
 /**
   * [[http://ddowiki.com/page/Wilderness_Lore Wilderness Lore]]
@@ -23,8 +18,21 @@ protected[feats] trait WildernessLore
     extends FeatRequisiteImpl
     with Passive
     with Active
+    with StackableFeat
     with GrantsToClass
     with FreeFeat { self: ClassFeat =>
+
+  private def bardLevels =
+    (1 to 20).filter(_ % 2 == 1).toList.map((CharacterClass.Bard, _))
+
+  private def allLevelsClasses =
+    for {
+      c <- List(CharacterClass.Barbarian,
+                CharacterClass.Druid,
+                CharacterClass.Ranger)
+      l <- 1 to 20
+    } yield (c, l)
+
   override def grantToClass: Seq[(CharacterClass, Int)] =
-    List((Barbarian, 4), (Rogue, 4))
+    allLevelsClasses.sortBy(_._1.entryName) ++ bardLevels
 }

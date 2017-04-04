@@ -2,7 +2,11 @@ package org.aos.ddo.model.feats
 
 import org.aos.ddo.model.classes.CharacterClass
 import org.aos.ddo.model.classes.CharacterClass.Rogue
-import org.aos.ddo.support.requisite.{FeatRequisiteImpl, FreeFeat, GrantsToClass}
+import org.aos.ddo.support.requisite.{
+  FeatRequisiteImpl,
+  FreeFeat,
+  GrantsToClass
+}
 
 /**
   * [[http://ddowiki.com/page/Sneak_Attack Sneak Attack]]
@@ -23,5 +27,7 @@ protected[feats] trait SneakAttack
     with Passive
     with GrantsToClass
     with FreeFeat { self: ClassFeat =>
-  override def grantToClass: Seq[(CharacterClass, Int)] = List((Rogue, 1))
+  private def rogueLevels = (3 to 19 by 2) :+ 1
+  override def grantToClass: Seq[(CharacterClass, Int)] =
+    rogueLevels.map((Rogue, _))
 }

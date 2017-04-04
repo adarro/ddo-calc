@@ -22,7 +22,7 @@ class SelfTypeEnumTest extends FunSpec with Matchers with LazyLogging {
 
     object Basic extends values with Simple
 
-    override def values: Seq[Simple with EnumEntry] = findValues
+    override def values = findValues
   }
 
   describe("Self typed enum entry hacks") {

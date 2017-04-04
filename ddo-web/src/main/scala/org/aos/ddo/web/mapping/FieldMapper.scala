@@ -32,7 +32,8 @@ object FieldMapper extends LazyLogging {
     * Convenience class to hold a list or single value string list.
     *
     */
-  sealed abstract class ItemType(words: Either[String, List[String]]) extends EnumEntry {
+  sealed abstract class ItemType(words: Either[String, List[String]])
+      extends EnumEntry {
     val wordList: List[String] = words match {
       case Right(x) => x
       case Left(x) => List(x)
@@ -43,7 +44,7 @@ object FieldMapper extends LazyLogging {
     * Enumeration to hold the possible item type values along with keywords used to map the fields
     */
   object ItemType extends SmartEnum[ItemType] {
-    val values: Seq[ItemType] = findValues
+    val values = findValues
 
     /**
       * A wieldable weapon
@@ -58,7 +59,8 @@ object FieldMapper extends LazyLogging {
     /**
       * A potion
       */
-    case object Potion extends ItemType(Right(List("Acquired from", "Located in")))
+    case object Potion
+        extends ItemType(Right(List("Acquired from", "Located in")))
 
     /**
       * Bracers, Boots, Belts etc.
@@ -84,7 +86,9 @@ object FieldMapper extends LazyLogging {
     * @return an [[ItemType]] if found, otherwise None
     */
   def fieldType(words: Set[String]): Option[ItemType] =
-    FieldMapper.ItemType.values.find { x => words.intersect(x.wordList.toSet).nonEmpty }
+    FieldMapper.ItemType.values.find { x =>
+      words.intersect(x.wordList.toSet).nonEmpty
+    }
 
   /**
     * Extracts weapon information from the DDOWiki site.
@@ -100,9 +104,11 @@ object FieldMapper extends LazyLogging {
       case Some(x: ItemType) if x == ItemType.Weapon =>
         logger.info("Item type of weapon found")
         val damageAndTypeString = WikiParser.damage(source)
-        val damageDie: Option[String] = WikiParser.damageDie(damageAndTypeString)
+        val damageDie: Option[String] =
+          WikiParser.damageDie(damageAndTypeString)
         // TODO: damageAppliedType is not mapped to weapon object
-        val damageAppliedType = WikiParser.damageAppliedType(damageAndTypeString)
+        val damageAppliedType =
+          WikiParser.damageAppliedType(damageAndTypeString)
         //   val weaponModifier = damageAndTypeString
         //   val extraDamage = WikiParser.weaponModifier(damageAndTypeString)
         val weaponCategory = WikiParser.weaponCategoryInfo(source)
@@ -117,7 +123,8 @@ object FieldMapper extends LazyLogging {
         // TODO: Need to add Item Sets ,
         // they are included under Enchantments and should be handled / extracted separately
 
-        val weapon = DDOObject.Weapon(absoluteMinimumLevel = None,
+        val weapon = DDOObject.Weapon(
+          absoluteMinimumLevel = None,
           baseValue = WikiParser.monetaryValue(WikiParser.baseValue(source)),
           description = WikiParser.description(source),
           durability = WikiParser.durability(source),
@@ -128,7 +135,8 @@ object FieldMapper extends LazyLogging {
           umd = WikiParser.umdDc(source),
           weight = WikiParser.weight(source), // Members declared in org.aos.ddo.Weapon
           attackModifier = WikiParser.attackModifier(source),
-          critical = WikiParser.criticalProfile(WikiParser.criticalThreat(source)),
+          critical =
+            WikiParser.criticalProfile(WikiParser.criticalThreat(source)),
           damage = WikiParser.damageValue(damageAndTypeString),
           damageModifier = WikiParser.damageModifier(source),
           handedness = WikiParser.handedness(source),
@@ -136,7 +144,8 @@ object FieldMapper extends LazyLogging {
           upgradeable = WikiParser.upgradable(source),
           weaponCategory = weaponCategory,
           weaponType = WikiParser.weaponType(weaponCategory),
-          enchantments = WikiParser.enchantments(source))
+          enchantments = WikiParser.enchantments(source)
+        )
         Some(weapon)
       case _ => None
     }

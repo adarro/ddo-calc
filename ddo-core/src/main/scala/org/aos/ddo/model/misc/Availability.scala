@@ -41,6 +41,6 @@ trait IconicFeature extends Availability {
 /**
   * Feature is available with active VIP subscription
   */
-trait VIP extends Availability {
+trait VIPFeature extends Availability {
   abstract override def availabilityLevels: Set[AvailabilityLevel] = super.availabilityLevels + AvailabilityLevel.VIP
 }

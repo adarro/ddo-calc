@@ -5,6 +5,8 @@ import org.aos.ddo._
 import org.aos.ddo.support.naming.DisplayName
 import org.aos.ddo.support.{Deferred, PhysicalDamage}
 
+import scala.collection.immutable.IndexedSeq
+
 /**
   * This trait is used to map weapons for purposes such as determining
   * weapon specialization and should correspond directly to such Feats.
@@ -31,7 +33,7 @@ object WeaponClass extends Enum[WeaponClass] {
 
   case object  Thrown extends WeaponClassThrown
 
-  override def values: Seq[WeaponClass] = findValues
+  override def values: IndexedSeq[WeaponClass] = findValues
 }
 
 sealed trait WeaponClassBludgeoning extends WeaponClass with MeleeDamage with org.aos.ddo.support.Bludgeoning

@@ -51,7 +51,7 @@ object BindingFlags extends Enum[BindingFlags] with DefaultValue[BindingFlags] w
     */
   def fromWords(words: Option[String]): Option[BindingFlags] = {
     words match {
-      case Some(x) if x.equalsIgnoreCase(BindingFlags.Unbound.toFullWord()) =>
+      case Some(x) if x.equalsIgnoreCase(BindingFlags.Unbound.toFullWord) =>
         Some(BindingFlags.Unbound)
       case Some(x) => x.wordsToAcronym match {
         case Some(abbr) =>
@@ -73,26 +73,26 @@ object BindingFlags extends Enum[BindingFlags] with DefaultValue[BindingFlags] w
   /** Returns the default binding status (BindingFlags.Unbound)
     */
   override lazy val default: Option[Unbound.type] = Some(BindingFlags.Unbound)
-  val values: Seq[BindingFlags] = findValues
+  val values = findValues
   case object Unbound extends BindingFlags("Unbound", BindingStatus.Unbound, BindingEvent.None) {
-    def toFullWord(): String = "Unbound"
+    def toFullWord: String = "Unbound"
   }
   case object BoundToAccountOnAcquire extends BindingFlags("BTAoA", BindingStatus.BindsToAccount, BindingEvent.OnAcquire) {
-    def toFullWord(): String = "Bound To Account On Acquire"
+    def toFullWord: String = "Bound To Account On Acquire"
   }
   case object BoundToCharacterOnAcquire extends BindingFlags("BTCoA", BindingStatus.BindsToAccount, BindingEvent.OnAcquire) {
-    def toFullWord(): String = "Bound To Character On Acquire"
+    def toFullWord: String = "Bound To Character On Acquire"
   }
   case object BoundToAccount extends BindingFlags("BTA", BindingStatus.BindsToAccount, BindingEvent.None) {
-    def toFullWord(): String = "Bound To Account"
+    def toFullWord: String = "Bound To Account"
   }
   case object BoundToCharacter extends BindingFlags("BTC", BindingStatus.BindsToCharacter, BindingEvent.None) {
-    def toFullWord(): String = "Bound To Character"
+    def toFullWord: String = "Bound To Character"
   }
   case object BoundToAccountOnEquip extends BindingFlags("BTAoE", BindingStatus.BindsToAccount, BindingEvent.OnEquip) {
-    def toFullWord(): String = "Bound To Account On Equip"
+    def toFullWord: String = "Bound To Account On Equip"
   }
   case object BoundToCharacterOnEquip extends BindingFlags("BTCoE", BindingStatus.BindsToAccount, BindingEvent.OnEquip) {
-    def toFullWord(): String = "Bound To Character On Equip"
+    def toFullWord: String = "Bound To Character On Equip"
   }
 }

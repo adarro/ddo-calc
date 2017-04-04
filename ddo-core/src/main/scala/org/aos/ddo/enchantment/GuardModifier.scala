@@ -1,7 +1,13 @@
 package org.aos.ddo.enchantment
 
 import com.typesafe.scalalogging.LazyLogging
-import com.wix.accord.dsl.{Contextualizer, ValidatorBooleanOps, empty, notEmpty, validator}
+import com.wix.accord.dsl.{
+  Contextualizer,
+  ValidatorBooleanOps,
+  empty,
+  notEmpty,
+  validator
+}
 import com.wix.accord.transform.ValidationTransform.TransformedValidator
 import com.wix.accord.{Failure, Success, validate}
 import org.aos.ddo.enchantment.Modifier.{Greater, Lesser, Minor}
@@ -17,23 +23,47 @@ import scala.language.postfixOps
 object GuardModifier extends LazyLogging {
   type Parameters = (Option[String], Option[String], Option[String])
 
-  def apply(prefix: Option[String] = None, sPrefix: Option[String] = None, suffix: Option[String] = None): GuardModifier = {
-    val o = create(prefix, sPrefix, suffix)
-    validate(o) match {
-      case Success => o
-      case Failure(x) => throw new IllegalArgumentException(violationToString(x))
+  implicit val guardModifierValidator: TransformedValidator[GuardModifier] =
+    validator[GuardModifier] { g =>
+      {
+        // Guards can have nothing, a prefix or a suffix
+        // No Modifiers
+        (((g.prefix is empty) and (g.sPrefix is empty) and (g.suffix is empty))
+          or
+            // Just a (valid) prefix
+            (((g.prefix is notEmpty) and (g.sPrefix is empty) and (g.suffix is empty))
+              and (filterModifiers(g.prefix) is notEmpty))
+          or
+            // Just a valid suffix
+            (((g.prefix is empty) and (g.sPrefix is empty) and (g.suffix is notEmpty))
+              and (allowedRoman(g.suffix) is notEmpty)))
+
+      }
     }
+
+  def apply(prefix: Option[String] = None,
+            sPrefix: Option[String] = None,
+            suffix: Option[String] = None): GuardModifier = {
+    val o = create(prefix, sPrefix, suffix)
+    val valid = validate(o)
+    assert(valid == Success)
+    o
+
   }
 
   def apply(parameters: Parameters): GuardModifier =
     GuardModifier(parameters._1, parameters._2, parameters._3)
 
-  private def create(prefix: Option[String], sPrefix: Option[String], suffix: Option[String]): GuardModifier = {
+  private def create(prefix: Option[String],
+                     sPrefix: Option[String],
+                     suffix: Option[String]): GuardModifier = {
     new GuardModifier(prefix, sPrefix, suffix) {
       private def readResolve(): Object =
         GuardModifier(prefix, sPrefix, suffix)
 
-      def copy(prefix: Option[String], sPrefix: Option[String], suffix: Option[String]): GuardModifier =
+      def copy(prefix: Option[String],
+               sPrefix: Option[String],
+               suffix: Option[String]): GuardModifier =
         GuardModifier(prefix, sPrefix, suffix)
 
       val tuple: GuardModifier.Parameters =
@@ -45,18 +75,21 @@ object GuardModifier extends LazyLogging {
     * Array of allowed Guard Modifiers, may occasionally need to be updated
     * if the game adds new ones.
     */
-  lazy val allowedModifiers: List[String] = List(Minor, Lesser, Greater).map { x => x.entryName }
+  lazy val allowedModifiers: List[String] = List(Minor, Lesser, Greater).map {
+    x =>
+      x.entryName
+  }
 
   /**
     * Restricts Modifiers to allowed current modifiers.
     */
-  protected[enchantment] def filterModifiers(mod: Option[String]): Option[String] =
-    (for {m <- mod}
-      yield {
-        allowedModifiers.collectFirst({
-          case x: String if x.equals(m) => x
-        })
-      }) flatten
+  protected[enchantment] def filterModifiers(
+      mod: Option[String]): Option[String] =
+    (for { m <- mod } yield {
+      allowedModifiers.collectFirst({
+        case x: String if x.equals(m) => x
+      })
+    }) flatten
 
   /**
     * Filters to allow supported suffixes for the guards.
@@ -72,24 +105,16 @@ object GuardModifier extends LazyLogging {
     }
   }
 
-  implicit val guardModifierValidator: TransformedValidator[GuardModifier] = validator[GuardModifier] { g => {
-    // Guards can have nothing, a prefix or a suffix
-    // No Modifiers
-    (((g.prefix is empty) and (g.sPrefix is empty) and (g.suffix is empty))
-      or
-      // Just a (valid) prefix
-      (((g.prefix is notEmpty) and (g.sPrefix is empty) and (g.suffix is empty))
-        and (filterModifiers(g.prefix) is notEmpty))
-      or
-      // Just a valid suffix
-      (((g.prefix is empty) and (g.sPrefix is empty) and (g.suffix is notEmpty))
-        and (allowedRoman(g.suffix) is notEmpty)))
-
-  }
-  }
 }
 
-abstract case class GuardModifier private[GuardModifier](prefix: Option[String], sPrefix: Option[String] = None, suffix: Option[String])
-  extends Prefix with SecondaryPrefix with Suffix {
-  def copy(prefix: Option[String], sPrefix: Option[String], suffix: Option[String]): GuardModifier
+abstract case class GuardModifier private[GuardModifier] (
+    prefix: Option[String],
+    sPrefix: Option[String] = None,
+    suffix: Option[String])
+    extends Prefix
+    with SecondaryPrefix
+    with Suffix {
+  def copy(prefix: Option[String],
+           sPrefix: Option[String],
+           suffix: Option[String]): GuardModifier
 }

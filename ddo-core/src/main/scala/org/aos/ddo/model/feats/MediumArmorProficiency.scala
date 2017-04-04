@@ -1,7 +1,13 @@
 package org.aos.ddo.model.feats
 
 import org.aos.ddo.model.classes.CharacterClass
-import org.aos.ddo.support.requisite.{ClassRequisite, FeatRequisiteImpl, RequiresAllOfFeat}
+import org.aos.ddo.model.classes.CharacterClass._
+import org.aos.ddo.support.requisite.{
+  ClassRequisiteImpl,
+  FeatRequisiteImpl,
+  GrantsToClass,
+  RequiresAllOfFeat
+}
 
 /** Icon Feat Medium Armor Proficiency.png
   * Medium Armor Proficiency Passive
@@ -10,8 +16,16 @@ import org.aos.ddo.support.requisite.{ClassRequisite, FeatRequisiteImpl, Require
   *
   * Light Armor Proficiency
   * */
-protected[feats] trait MediumArmorProficiency extends FeatRequisiteImpl with ClassRequisite with Passive with RequiresAllOfFeat {
-  self: GeneralFeat =>
-  override def allOfFeats: Seq[GeneralFeat] = List(GeneralFeat.LightArmorProficiency)
-  override def anyOfClass: Seq[(CharacterClass, Int)] = List((CharacterClass.Barbarian,1))
+protected[feats] trait MediumArmorProficiency
+    extends FeatRequisiteImpl
+    with ClassRequisiteImpl
+    with GrantsToClass
+    with Passive
+    with RequiresAllOfFeat { self: GeneralFeat =>
+  private def firstLevelClasses =
+    List(Barbarian, Cleric, FavoredSoul, Fighter, Paladin).map((_, 1))
+  override def allOfFeats: Seq[GeneralFeat] =
+    List(GeneralFeat.LightArmorProficiency)
+  override def grantToClass: Seq[(CharacterClass, Int)] = firstLevelClasses
+
 }

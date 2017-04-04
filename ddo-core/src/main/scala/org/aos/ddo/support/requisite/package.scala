@@ -77,16 +77,16 @@ package object requisite {
       def toReq: ReqFeat = featToReq(source)
     }
 
-    val matchGeneralFeat : PartialFunction[Feat,GeneralFeat] = {
-      case x:GeneralFeat => x
+    val matchGeneralFeat: PartialFunction[Feat, GeneralFeat] = {
+      case x: GeneralFeat => x
     }
 
-    val matchClassFeat : PartialFunction[Feat,ClassFeat] = {
-      case x:ClassFeat => x
+    val matchClassFeat: PartialFunction[Feat, ClassFeat] = {
+      case x: ClassFeat => x
     }
 
-    val matchRacialFeat : PartialFunction[Feat,RacialFeat] = {
-      case x:RacialFeat => x
+    val matchRacialFeat: PartialFunction[Feat, RacialFeat] = {
+      case x: RacialFeat => x
     }
 
 //    val matchGFeatId : PartialFunction[String,GeneralFeat] = {
@@ -100,12 +100,12 @@ package object requisite {
 //    }
 
     val featToReq = new PartialFunction[Feat, ReqFeat] {
-      override def isDefinedAt(x: Feat ): Boolean =
+      override def isDefinedAt(x: Feat): Boolean =
         Requirement
           .withNameOption(s"${Feat.searchPrefix}${x.entryName}")
           .isDefined
 
-      override def apply(v1: Feat ): ReqFeat = ReqFeat(v1.entryName)
+      override def apply(v1: Feat): ReqFeat = ReqFeat(v1.entryName)
     }
 
 //    val anyFeatToReq = new PartialFunction[Feat, ReqFeat] {
@@ -134,9 +134,6 @@ package object requisite {
       override def apply(v1: ClassFeat): ReqFeat = ReqFeat(v1.entryName)
     }
 
-
-
-
     implicit class ClassImplicits(val source: (CharacterClass, Int)) {
       def toReq: ReqClass = classToReq(source)
     }
@@ -149,6 +146,10 @@ package object requisite {
 
       override def apply(v1: (CharacterClass, Int)): ReqClass =
         ReqClass(v1._1.entryName, v1._2)
+    }
+
+    val characterLevelToReq: PartialFunction[Int, ReqCharacterLevel] = {
+      case x: Int if CharacterLevels contains x => ReqCharacterLevel(x)
     }
 
   }

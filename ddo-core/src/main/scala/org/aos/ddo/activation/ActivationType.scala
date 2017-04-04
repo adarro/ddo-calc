@@ -11,8 +11,7 @@ import scala.reflect.ClassTag
 /**
   * Determines whether the given effect is Active or Passively triggered
   */
-sealed trait ActivationType extends EnumEntry {
-  self: TriggerEvent =>
+sealed trait ActivationType extends EnumEntry { self: TriggerEvent =>
   def activations: Set[TriggerEvent] = init
 
   private[this] val init = new HashSet[TriggerEvent]()
@@ -22,7 +21,8 @@ sealed trait ActivationType extends EnumEntry {
   * Denotes the effect is passive and always on.
   */
 trait PassiveActivation extends ActivationType with PassiveEvent {
-  abstract override def activations: Set[TriggerEvent] = super.activations + Passive
+  abstract override def activations: Set[TriggerEvent] =
+    super.activations + Passive
 }
 
 object ActivationType extends Enum[ActivationType] with LazyLogging {
@@ -48,7 +48,7 @@ object ActivationType extends Enum[ActivationType] with LazyLogging {
     }
   }
 
-  private def filterActive[T <: TriggerEvent : ClassTag](c: T): Boolean = {
+  private def filterActive[T <: TriggerEvent: ClassTag](c: T): Boolean = {
     c match {
       case _: ActiveEvent => true
       case _ => false
@@ -56,17 +56,20 @@ object ActivationType extends Enum[ActivationType] with LazyLogging {
   }
 
   lazy val dynamics: Seq[Active] = {
-    TriggerEvent.values.filter(p => filterActive(p)) map { x => Active(x.asInstanceOf[ActiveEvent]) }
+    TriggerEvent.values.filter(p => filterActive(p)) map { x =>
+      Active(x.asInstanceOf[ActiveEvent])
+    }
 
   }
-
-
-  /** @inheritdoc
-    */
-  override lazy val values: Seq[ActivationType] = findValues ++ dynamics
+  @volatile
+  override lazy val values = findValues ++ dynamics
 }
 
-trait TriggeredActivation extends ActivationType with Trigger with ActiveEvent with LazyLogging {
-  self: EnumEntry =>
-  abstract override lazy val activations: Set[TriggerEvent] = super.activations ++ activeTriggers
+trait TriggeredActivation
+    extends ActivationType
+    with Trigger
+    with ActiveEvent
+    with LazyLogging { self: EnumEntry =>
+  abstract override lazy val activations
+    : Set[TriggerEvent] = super.activations ++ activeTriggers
 }

@@ -9,7 +9,7 @@ trait Prefix extends DisplayProperties {
   /**
     * Delimits the prefix and text.
     */
-  protected val prefixSeparator: String = ":"
+  protected val prefixSeparator: String = ": "
 
   def withPrefix: Option[String] = prefix match {
     case Some(p) => Some(s"$p$prefixSeparator")

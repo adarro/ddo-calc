@@ -16,14 +16,18 @@
 package org.aos.ddo.web
 
 import com.typesafe.scalalogging.LazyLogging
-import net.ruippeixotog.scalascraper.browser.Browser
+import net.ruippeixotog.scalascraper.browser.{Browser, JsoupBrowser}
 import net.ruippeixotog.scalascraper.dsl.DSL.Extract._
+import net.ruippeixotog.scalascraper.model.{Document, Element}
 import net.ruippeixotog.scalascraper.dsl.DSL._
 import org.aos.ddo.web.mapping.FieldMapper
-import org.jsoup.nodes.{Document, Element}
+
+import scala.collection.mutable.ListBuffer
+// import org.jsoup.nodes.{Document, Element}
 
 import scala.collection.mutable
 import scala.collection.mutable.Buffer
+import scala.languageFeature.postfixOps
 
 /**
   * Provides a Storage Area for DDO Items.
@@ -42,11 +46,9 @@ object Warehouse extends LazyLogging {
     * @return a Collection of found elements or an empty list if none are found.
     */
   protected[web] def byExploding(e: Element) = {
-    // scalastyle:off import.grouping underscore.import
-    import net.ruippeixotog.scalascraper.dsl.DSL.Extract._
-    // scalastyle:on import.grouping underscore.import
     e >?> elements(HtmlTag.ListItem) match {
-      case Some(x) => for (ele <- e.getElementsByAttribute(HtmlTag.ListItem)) yield ele.text() // scalastyle:off for.brace
+      case Some(_) =>
+        for { ele <- e >> elementList(HtmlTag.ListItem) } yield ele.text
       case _ => Nil
     }
   }
@@ -70,20 +72,25 @@ object Warehouse extends LazyLogging {
     * @param fragment  source HTML fragment
     * @param branchTag HTML tag for the branch. Defaults to unordered list (ul)
     * @param leafTag   HTML tag for leaf nodes. Defaults to 'List Item' (li)
-    * @return an [[Option]] [[Buffer]] of [[org.aos.ddo.web.Leaf]] of one or more
+    * @return an [[scala.Option]] [[mutable.Buffer]] of [[org.aos.ddo.web.Leaf]] of one or more
     *         leaves, or None if none were found.
     */
-  def makeLeaves(fragment: Element, branchTag: String = HtmlTag.UnorderedList, leafTag: String = HtmlTag.ListItem)
-  : Option[mutable.Buffer[Leaf]] = {
-    import net.ruippeixotog.scalascraper.dsl.DSL.Extract._
-    // scalastyle:off import.grouping underscore.import
+  def makeLeaves(
+      fragment: Element,
+      branchTag: String = HtmlTag.UnorderedList,
+      leafTag: String = HtmlTag.ListItem): Option[mutable.Buffer[Leaf]] = {
     fragment >?> element(branchTag) match {
       case Some(ele) =>
         val firstLevelItemsWithToolTips = ele.select(Filter.FirstLevelLeaf)
-        lazy val msgLeafCount = s"Leaf count ${firstLevelItemsWithToolTips.size}"
+        lazy val msgLeafCount =
+          s"Leaf count ${firstLevelItemsWithToolTips.size}"
         logger.info(msgLeafCount)
-        val rslt = firstLevelItemsWithToolTips.map { x => new Leaf(x.text()) }
-        Some(rslt)
+
+        val buf = new ListBuffer[Leaf]
+        firstLevelItemsWithToolTips.foreach { x =>
+          buf.append(Leaf(x.text))
+        }
+        Some(buf)
       case _ =>
         logger.warn(MsgNoReadableLists)
         None
@@ -98,16 +105,20 @@ object Warehouse extends LazyLogging {
     * @param leafTag   html tag for leaf nodes. Defaults to 'List Item' (li)
     * @return an [[org.aos.ddo.web.HtmlTreeNode]] populated from the source text.
     */
-  def readHtmlList(fragment: Element, branchTag: String = HtmlTag.UnorderedList, leafTag: String = HtmlTag.ListItem): HtmlTreeNode = {
-    import net.ruippeixotog.scalascraper.dsl.DSL.Extract._
-    // scalastyle:off import.grouping underscore.import
+  def readHtmlList(fragment: Element,
+                   branchTag: String = HtmlTag.UnorderedList,
+                   leafTag: String = HtmlTag.ListItem): HtmlTreeNode = {
     fragment >?> element(branchTag) match {
       case Some(ele) =>
         val leaves = makeLeaves(ele, branchTag, leafTag)
-        val b = ele.children.select(s":root > $branchTag ").select(Filter.FirstLevelLeaf).map { x => logger.info(s"BranchedLeaf ${x.text}"); Leaf(x.text) }
+        val b = for {
+          c <- ele.children
+          r <- c >> element(s":root > $branchTag ")
+          firstLevel <- r >> Filter.FirstLevelLeaf
+        } yield Leaf(firstLevel)
         val branchedLeaves = if (b.nonEmpty) Some(b) else None
         Branch(branchedLeaves match {
-          case Some(x) => Some(List(Branch(leaves = branchedLeaves)))
+          case Some(_) => Some(List(Branch(leaves = branchedLeaves)))
           case _ => None
         }, leaves)
       case _ => Stump()
@@ -122,7 +133,7 @@ object Warehouse extends LazyLogging {
     */
   def loadDoc(key: String, wc: WebContext = new WebContext()): Document = {
     // logger.info(s"url: ${wc.Url(key)}")
-    new Browser().get(wc.url(key))
+    JsoupBrowser().get(wc.url(key))
   }
 
   /**
@@ -141,10 +152,11 @@ object Warehouse extends LazyLogging {
     // We need to add the sibling h2 to allow for the update warning template
     doc >?> element("#mw-content-text > h2 + table") match {
       case Some(tables) =>
-        val nameRows = tables.getElementsByTag(HtmlTag.TableRow)
-        logger.info(s"found ${nameRows.size()} name rows")
-        val namedRow = nameRows.map {
-          row => row.select(HtmlTag.TableHeader).text.trim() -> row
+        val nameRows = tables >> elementList(HtmlTag.TableRow)
+        logger.info(s"found ${nameRows.size} name rows")
+        val namedRow = nameRows.map { row =>
+          val r = row >> element(HtmlTag.TableHeader)
+          r.text.trim -> row
         }.toMap
         Some(namedRow)
       case _ => None
@@ -167,12 +179,14 @@ object Warehouse extends LazyLogging {
     // We need to add the sibling h2 to allow for the update warning template
     doc >?> element("#mw-content-text > h2 + table") match {
       case Some(tables) =>
-        val nameRows = tables.getElementsByTag(HtmlTag.TableRow)
-        logger.info(s"found ${nameRows.size()} name rows")
-        val namedRow = nameRows.map {
-          row => row.select(HtmlTag.TableHeader).text.trim() -> row
+        val nameRows = tables >> elementList(HtmlTag.TableRow)
+        logger.info(s"found ${nameRows.size} name rows")
+        val namedRow = nameRows.map { row =>
+          (row >> element(HtmlTag.TableHeader)).text.trim -> row
         }.toMap
-        val fields = nameRows.map { row => row.select(HtmlTag.TableHeader).text.trim() }.toSet
+        val fields = nameRows.map { row =>
+          (row >> element(HtmlTag.TableHeader)).text.trim
+        }.toSet
         val field = FieldMapper.fieldType(fields)
 
         val result = field match {
@@ -185,7 +199,9 @@ object Warehouse extends LazyLogging {
             logger.info(MsgErrCantParseField)
             None
         }
-        namedRow.foreach { x => logger.info(s"\nnamedRow: ${x._1} data: ${x._2.html()}") }
+        namedRow.foreach { x =>
+          logger.info(s"\nnamedRow: ${x._1} data: ${x._2.innerHtml}")
+        }
         result
       case _ => None
     }

@@ -21,6 +21,8 @@ import org.aos.ddo.support.naming.{DisplayName, FriendlyDisplay}
 import org.aos.ddo.support.{Bludgeoning, Piercing, Slashing}
 import org.aos.ddo.support.StringUtils.Extensions
 
+import scala.collection.immutable.IndexedSeq
+
 /**
   * Enumerates the specific base types of weapons available in DDO, i.e. Kopesh, Dagger etc.
   */
@@ -134,7 +136,40 @@ object WeaponCategory extends Enum[WeaponCategory] {
   case object Warhammer extends WeaponCategory with MartialWeapon with Product with Serializable with MeleeDamage with Bludgeoning
 
   //  RuneArm,
-  val values: Seq[WeaponCategory] = findValues
+  val values = findValues
+
+  def exoticWeapons: Seq[WeaponCategory with ExoticWeapon] = {
+    for {
+      w <- WeaponCategory.values.filter { x =>
+        x match {
+          case _: ExoticWeapon => true
+          case _ => false
+        }
+      }
+    } yield w.asInstanceOf[WeaponCategory with ExoticWeapon]
+  }
+
+  def martialWeapons: Seq[WeaponCategory with MartialWeapon] = {
+    for {
+      w <- WeaponCategory.values.filter { x =>
+        x match {
+          case _: MartialWeapon => true
+          case _ => false
+        }
+      }
+    } yield w.asInstanceOf[WeaponCategory with MartialWeapon]
+  }
+
+  def simpleWeapons: Seq[WeaponCategory with SimpleWeapon] = {
+    for {
+      w <- WeaponCategory.values.filter { x =>
+        x match {
+          case _: SimpleWeapon => true
+          case _ => false
+        }
+      }
+    } yield w.asInstanceOf[WeaponCategory with SimpleWeapon]
+  }
 
 }
 

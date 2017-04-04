@@ -18,6 +18,8 @@ package org.aos.ddo.model.item.weapon
 import enumeratum.{Enum, EnumEntry}
 import org.aos.ddo.NoDefault
 
+import scala.collection.immutable.IndexedSeq
+
 /** used to denote the Delivery method (thrown, launched, hand-held) of a weapon.
   *
   */
@@ -49,5 +51,5 @@ object DeliveryType extends Enum[DeliveryType] {
     */
   case object Special extends DeliveryType
 
-  override val values: Seq[DeliveryType] = findValues
+  override val values = findValues
 }

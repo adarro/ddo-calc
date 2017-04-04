@@ -16,6 +16,8 @@ package org.aos.ddo.model.misc
 
 import enumeratum.{EnumEntry, Enum => SmartEnum}
 
+import scala.collection.immutable.IndexedSeq
+
 /** Represents the material make up of an object.
   *
   * @note This is not to be confused with Material Components, which are used for
@@ -27,7 +29,7 @@ sealed trait Material extends EnumEntry
 /** Companion Enumeration for [[org.aos.ddo.model.misc.Material]]
   */
 object Material extends SmartEnum[Material] {
-  val values: Seq[Material] = findValues
+  val values = findValues
   case object Adamantine extends Material
   case object Blueshine extends Material
   case object Bone extends Material

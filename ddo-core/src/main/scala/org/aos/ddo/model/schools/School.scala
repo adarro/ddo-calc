@@ -5,6 +5,8 @@ import org.aos.ddo.support.SearchPrefix
 import org.aos.ddo.support.naming.{DisplayName, FriendlyDisplay}
 import org.aos.ddo.support.StringUtils.Extensions
 
+import scala.collection.immutable.IndexedSeq
+
 /**
   * Represents one of the eight schools of magic.
   */
@@ -43,5 +45,5 @@ object School extends Enum[School] with SearchPrefix {
     */
   override def searchPrefixSource: String = "School"
 
-  override def values: Seq[School] = findValues
+  override def values: IndexedSeq[School] = findValues
 }

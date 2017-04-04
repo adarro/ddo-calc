@@ -13,18 +13,42 @@
   * See the License for the specific language governing permissions and
   * limitations under the License.
   */
-
 package org.aos.ddo
 
 import com.typesafe.config.ConfigFactory
 import com.typesafe.scalalogging.LazyLogging
+import com.wix.accord.Descriptions.Description
 import com.wix.accord.Violation
 
+import scala.collection.immutable
 import scala.language.postfixOps
 import scala.util.Random
 import scala.util.control.Exception.catching
 
 package object support extends LazyLogging {
+  /**
+    * The Current Max Level achievable by a player.
+    */
+  val LevelCap = 30
+
+  /**
+    * Current Valid range of levels considered [[http://ddowiki.com/page/Heroic Heroic Levels]]
+    */
+  final val HeroicLevels: Range.Inclusive = 1 to 20
+  /**
+    * Current valid range of levels considered [[http://ddowiki.com/page/Epic_levels Epic Levels]]
+    */
+  final val EpicLevels: Range.Inclusive = 21 to LevelCap
+  final val CharacterLevels: _root_.scala.collection.immutable.Range.Inclusive = HeroicLevels.min to EpicLevels.max
+
+  object TraverseOps {
+
+    // succinctly pooled from SO [[http://stackoverflow.com/a/14740340/400729]]
+    implicit class Crossable[X](xs: Traversable[X]) {
+      def cross[Y](ys: Traversable[Y]) = for { x <- xs; y <- ys } yield (x, y)
+    }
+
+  }
 
   /**
     * StringUtils
@@ -37,7 +61,8 @@ package object support extends LazyLogging {
     implicit lazy val config: com.typesafe.config.Config = {
       val cfg = ConfigFactory.load
       if (!cfg.hasPath(path)) {
-        logger.warn("Failed to load a valid configuration file, using hard-coded defaults... Please verify your configuration")
+        logger.warn(
+          "Failed to load a valid configuration file, using hard-coded defaults... Please verify your configuration")
         val data =
           """
             |org.aos.ddo {
@@ -45,7 +70,10 @@ package object support extends LazyLogging {
             |    noiseWords = [
             |      "On",
             |      "The",
-            |      "Of"
+            |      "Of",
+            |      "And",
+            |      "To",
+            |      "In"
             |    ]
             |  }
             |}
@@ -57,16 +85,18 @@ package object support extends LazyLogging {
     }
 
     implicit class StringImprovements(val s: String) {
-      def toIntOpt: Option[Int] = catching(classOf[NumberFormatException]) opt s.toInt
+      def toIntOpt: Option[Int] =
+        catching(classOf[NumberFormatException]) opt s.toInt
     }
 
     implicit class Extensions(val s: String) {
       def lowerCaseNoise: String = {
         val noise = config.getStringList("org.aos.ddo.support.noiseWords")
         val words = s.splitByCase
-        (for {w <- words.split(Space).map { x =>
-          if (noise.contains(x)) x.toLowerCase else x
-        }
+        (for {
+          w <- words.split(Space).map { x =>
+            if (noise.contains(x)) x.toLowerCase else x
+          }
         } yield w + Space).mkString.trim
       }
 
@@ -74,17 +104,17 @@ package object support extends LazyLogging {
         * Formats string into [[http://wiki.c2.com/?PascalCase PascalCase]] or 'UpperCamelCase'
         *
         * @return formatted string
-        * @note this also removes space characters but does not check for characters taht may be illegal
+        * @note this also removes space characters but does not check for characters that may be illegal
         *       for a specific language. (i.e. underscores, commas etc)
         */
       def toPascalCase: String = {
         {
-          for {w <- s.split(Space)
-               c = w.charAt(0).toString.toLowerCase
+          for {
+            w <- s.split(Space)
+            c = w.charAt(0).toString.toLowerCase
           } yield w.toLowerCase.replaceFirst(c, c.toUpperCase)
         } mkString
       }
-
 
       /**
         * Splits a string using uppercase
@@ -96,7 +126,8 @@ package object support extends LazyLogging {
       def splitByCase: String = {
         val b = new StringBuilder
         s.toCharArray.foreach { c =>
-          if (c.isLetter && c.isUpper) b.append(s"$Space$c") else b.append(c.toString)
+          if (c.isLetter && c.isUpper) b.append(s"$Space$c")
+          else b.append(c.toString)
         }
         b.mkString.trim
       }
@@ -107,18 +138,20 @@ package object support extends LazyLogging {
         * @return Sanitized string.
         */
       def sanitize: String = {
-        s
-          .trim
-          .filterAlphaNumeric
+        s.trim.filterAlphaNumeric
       }
 
       def filterAlphaNumeric: String =
-        s.toCharArray.filter { x => x.isLetterOrDigit }.mkString
+        s.toCharArray.filter { x =>
+          x.isLetterOrDigit
+        }.mkString
 
       def randomCase: String = {
         val r = new Random
         s.toCharArray
-          .map { x => if (r.nextInt > 0) x.toUpper else x.toLower }
+          .map { x =>
+            if (r.nextInt > 0) x.toUpper else x.toLower
+          }
           .foldLeft("")((r, c) => r + c)
       }
 
@@ -136,8 +169,13 @@ package object support extends LazyLogging {
         */
       def wordsToAcronym: Option[String] = Option(s) match {
         case Some(x) if x.contains(Space) =>
-          Some(new String(x.split(" ").map { y => y.charAt(0) }))
-        case Some(x) => Some(new String(x.toCharArray.filter { y => y.isLetter && y.isUpper }))
+          Some(new String(x.split(" ").map { y =>
+            y.charAt(0)
+          }))
+        case Some(x) =>
+          Some(new String(x.toCharArray.filter { y =>
+            y.isLetter && y.isUpper
+          }))
         case _ => None
       }
     }
@@ -153,14 +191,17 @@ package object support extends LazyLogging {
     // Random generator
     private[this] val random: scala.util.Random = new scala.util.Random
 
-
     /**
       * Generate a random string of length n from the given alphabet
       *
       * @note see excellent source at [[http://www.bindschaedler.com/2012/04/07/elegant-random-string-generation-in-scala/ Laurent BINDSCHAEDLER's blog post]]
       */
     def randomString(alphabet: String)(n: Int): String =
-      Stream.continually(random.nextInt(alphabet.length)).map(alphabet).take(n).mkString
+      Stream
+        .continually(random.nextInt(alphabet.length))
+        .map(alphabet)
+        .take(n)
+        .mkString
 
     /**
       * Generate a random alphabnumeric string of length n
@@ -187,17 +228,20 @@ package object support extends LazyLogging {
       *
       * @param v Volations
       * @return Printable list of violations.
+      * @deprecated
       */
     def violationToString(v: Set[Violation]): String = {
-      val buf = new StringBuilder
-      v.foreach { x =>
-        x.description match {
-          case Some(d) => buf.append(s"$d -> ${x.constraint}")
-          case _ => buf.append(x.constraint)
-        }
-        buf.append(LineSep)
-      }
-      buf.toString()
+      //      val buf = new StringBuilder
+      //      v.foreach { x =>
+      //        x.description match {
+      //          case Some(d) => buf.append(s"$d -> ${x.constraint}")
+      //          case _ => buf.append(x.constraint)
+      //        }
+      //        buf.append(LineSep)
+      //      }
+      //      buf.toString()
+      //    }
+      "This function is no longer supported, please see Wix Documentation"
     }
   }
 

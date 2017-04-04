@@ -2,7 +2,12 @@ package org.aos.ddo.model.feats
 
 import org.aos.ddo.model.attribute.Attribute
 import org.aos.ddo.model.classes.CharacterClass
-import org.aos.ddo.support.requisite.{FeatRequisiteImpl, RequiresAllOfClass, RequiresAttribute}
+import org.aos.ddo.support.requisite.{
+  ClassRequisiteImpl,
+  FeatRequisiteImpl,
+  RequiresAllOfClass,
+  RequiresAttribute
+}
 
 /**
   * Icon Feat Ten Thousand Stars.png
@@ -13,9 +18,15 @@ import org.aos.ddo.support.requisite.{FeatRequisiteImpl, RequiresAllOfClass, Req
   * Level 6: Monk
   * Dexterity 13
   */
-protected[feats] trait TenThousandStars extends FeatRequisiteImpl with Active with RequiresAttribute with RequiresAllOfClass {
-  self: GeneralFeat =>
-  override def requiresAttribute: Seq[(Attribute, Int)] = List((Attribute.Dexterity, 13))
+protected[feats] trait TenThousandStars
+    extends FeatRequisiteImpl
+    with ClassRequisiteImpl
+    with Active
+    with RequiresAttribute
+    with RequiresAllOfClass { self: GeneralFeat =>
+  override def requiresAttribute: Seq[(Attribute, Int)] =
+    List((Attribute.Dexterity, 13))
 
-  override def allOfClass: Seq[(CharacterClass, Int)] = List((CharacterClass.Monk, 6))
+  override def allOfClass: Seq[(CharacterClass, Int)] =
+    List((CharacterClass.Monk, 6))
 }

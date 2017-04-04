@@ -2,31 +2,34 @@ package org.aos.ddo.model.feats
 
 import enumeratum.{Enum, EnumEntry}
 import org.aos.ddo.model.race.Race
-import org.aos.ddo.support.requisite.{Inclusion, RaceRequisite, Requisite}
 import org.aos.ddo.support.StringUtils.Extensions
 import org.aos.ddo.support.naming.{DisplayName, FriendlyDisplay}
+import org.aos.ddo.support.requisite.{Inclusion, RaceRequisite, Requisite}
 
+import scala.collection.immutable.IndexedSeq
 import scala.reflect.ClassTag
 
 /**
   * Created by adarr on 2/14/2017.
   */
 trait Feat
-  extends EnumEntry
+    extends EnumEntry
     with DisplayName
     with FriendlyDisplay
-    with SubFeatInformation {
-  self: FeatType with Requisite with Inclusion with FeatMatcher =>
+    with SubFeatInformation { self: FeatType with Requisite with Inclusion =>
 
   override protected def nameSource: String =
     entryName.splitByCase.toPascalCase
 }
 
 object Feat extends Enum[Feat] with FeatSearchPrefix {
-  def featByRace[Feat: ClassTag](feat: Feat): Option[Seq[Race]] = {
+
+  def featByRace[T: ClassTag](feat: Feat): Option[Seq[Race]] = {
     feat match {
       case x: RaceRequisite =>
-        Some(x.allOfRace.map(_._1) ++ x.anyOfRace.map(_._1) ++ x.grantsToRace.map(_._1))
+        Some(
+          x.allOfRace.map(_._1) ++ x.anyOfRace.map(_._1) ++ x.grantsToRace.map(
+            _._1))
       case _ => None
     }
   }
@@ -48,6 +51,6 @@ object Feat extends Enum[Feat] with FeatSearchPrefix {
         x._1
       }
 
-  override def values: Seq[Feat] =
-    GeneralFeat.values ++ ClassFeat.values ++ RacialFeat.values
+  override def values: IndexedSeq[Feat] =
+    GeneralFeat.values ++ ClassFeat.values ++ RacialFeat.values ++ MetaMagicFeat.values ++ EpicFeat.values
 }

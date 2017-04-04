@@ -17,6 +17,4 @@ import org.junit.runner.RunWith
                              MarkdownExtensions.AUTOLINKS,
                              MarkdownExtensions.TASKLISTITEMS)
 )
-class Model {
-
-}
+class Model

@@ -31,5 +31,5 @@ object Alignments extends SmartEnum[Alignments] {
 
   case object LawfulEvil extends Alignments(Lawful, Evil)
 
-  val values: Seq[Alignments] = findValues
+  val values = findValues
 }

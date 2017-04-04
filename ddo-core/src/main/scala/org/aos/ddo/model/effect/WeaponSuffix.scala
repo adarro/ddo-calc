@@ -1,11 +1,11 @@
 package org.aos.ddo.model.effect
 
-import enumeratum.{ Enum => SmartEnum, EnumEntry }
+import enumeratum.{Enum, EnumEntry}
 import org.aos.ddo.NoDefault
 
 sealed trait WeaponSuffix extends EnumEntry with Suffix
-object WeaponSuffix extends SmartEnum[WeaponSuffix] with NoDefault[WeaponSuffix] {
-  val values: Seq[WeaponSuffix] = findValues
+object WeaponSuffix extends Enum[WeaponSuffix] with NoDefault[WeaponSuffix] {
+  val values = findValues
   case object ArcaneDetonation extends WeaponSuffix
   case object Backstabbing extends WeaponSuffix
   case object Bane extends WeaponSuffix

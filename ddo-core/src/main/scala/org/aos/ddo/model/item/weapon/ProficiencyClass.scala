@@ -18,6 +18,8 @@ package org.aos.ddo.model.item.weapon
 import enumeratum.{Enum, EnumEntry}
 import org.aos.ddo.NoDefault
 
+import scala.collection.immutable.IndexedSeq
+
 /** Trait to constrain Proficiency values
   */
 sealed trait ProficiencyClass extends EnumEntry with NoDefault[ProficiencyClass]
@@ -38,5 +40,5 @@ object ProficiencyClass extends Enum[ProficiencyClass] {
     */
   case object Simple extends ProficiencyClass
 
-  override val values: Seq[ProficiencyClass] = findValues
+  override val values = findValues
 }

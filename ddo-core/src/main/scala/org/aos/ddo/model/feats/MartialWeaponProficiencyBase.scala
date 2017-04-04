@@ -1,12 +1,7 @@
 package org.aos.ddo.model.feats
 
 import org.aos.ddo.model.item.weapon.MartialWeapon
-import org.aos.ddo.support.requisite.{
-  ClassRequisite,
-  FeatRequisiteImpl,
-  FreeFeat,
-  RaceRequisite
-}
+import org.aos.ddo.support.requisite._
 
 /** Icon Feat Martial Weapon Proficiency.png
   * Martial Weapon Proficiency Passive
@@ -17,8 +12,8 @@ import org.aos.ddo.support.requisite.{
 protected[feats] trait MartialWeaponProficiencyBase
     extends FeatRequisiteImpl
     with RaceRequisite
-    with ClassRequisite
+    with ClassRequisiteImpl
     with MartialWeapon
     with Passive
-    with FreeFeat { self: GeneralFeat =>
-}
+    with FreeFeat
+    with WeaponProficiencyBase

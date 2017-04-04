@@ -16,17 +16,11 @@ package org.aos.ddo.model.skill
 
 import enumeratum.{Enum, EnumEntry}
 import org.aos.ddo.activation.{ActivationType, AtWillEvent, PassiveActivation}
-import org.aos.ddo.model.attribute.{
-  CharismaLinked,
-  ConstitutionLinked,
-  DexterityLinked,
-  IntelligenceLinked,
-  LinkedAttribute,
-  StrengthLinked,
-  WisdomLinked
-}
+import org.aos.ddo.model.attribute.{CharismaLinked, ConstitutionLinked, DexterityLinked, IntelligenceLinked, LinkedAttribute, StrengthLinked, WisdomLinked}
 import org.aos.ddo.support.SearchPrefix
 import org.aos.ddo.support.naming.{DisplayName, FriendlyDisplay}
+
+import scala.collection.immutable.IndexedSeq
 
 sealed trait Skill extends EnumEntry with DisplayName with FriendlyDisplay {
   self: ActivationType with LinkedAttribute =>
@@ -194,7 +188,7 @@ object Skill extends Enum[Skill] with SearchPrefix {
       with PassiveActivation
       with CharismaLinked
 
-  override def values: Seq[Skill] = findValues
+  override def values: IndexedSeq[Skill] = findValues
 
   /**
     * Used when qualifying a search with a prefix.

@@ -3,6 +3,8 @@ package org.aos.ddo.model.favor
 import enumeratum.{Enum, EnumEntry}
 import org.aos.ddo.support.SearchPrefix
 
+import scala.collection.immutable.IndexedSeq
+
 /**
   * [[http://ddowiki.com/page/FavorPatron FavorPatron]] FavorPatron can be gained for a faction which can provide various benifits in-game.
   */
@@ -88,5 +90,5 @@ object FavorPatron extends Enum[FavorPatron] with SearchPrefix {
     override val maxFavor: Int = 111
   }
 
-  override def values: Seq[FavorPatron] = findValues
+  override def values: IndexedSeq[FavorPatron] = findValues
 }

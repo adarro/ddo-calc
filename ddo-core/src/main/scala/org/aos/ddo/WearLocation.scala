@@ -74,7 +74,7 @@ object WearLocation extends Enum[WearLocation] with BitSupport {
 
   case object Quiver extends WearLocation
 
-  val values: Seq[WearLocation] = findValues
+  val values = findValues
   override type T = WearLocation
   override lazy val bitValues: Map[WearLocation, Int] = valuesToIndex.map {
     x =>

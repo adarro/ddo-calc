@@ -1,16 +1,19 @@
 package org.aos.ddo.model.feats
 
+import com.typesafe.scalalogging.LazyLogging
 import enumeratum.Enum
 import org.aos.ddo.model.classes.CharacterClass
 import org.aos.ddo.support.StringUtils.Extensions
 import org.aos.ddo.support.naming.FriendlyDisplay
 import org.aos.ddo.support.requisite.{Inclusion, Requisite}
 
+import scala.collection.immutable.IndexedSeq
+
 /**
   * Created by adarr on 2/14/2017.
   */
-sealed trait RacialFeat extends Feat with FriendlyDisplay with FeatMatcher {
-  self: FeatType with Requisite with Inclusion =>
+sealed trait RacialFeat extends Feat with FriendlyDisplay with FeatMatcher with LazyLogging {
+  self: FeatType with Requisite with Inclusion  =>
   val matchFeat: PartialFunction[Feat, RacialFeat] = {
     case x: RacialFeat => x
   }
@@ -176,5 +179,5 @@ object RacialFeat extends Enum[RacialFeat] with FeatSearchPrefix {
       CharacterClass.Wizard.entryName.toPascalCase
   }
 
-  override def values: Seq[RacialFeat] = findValues
+  override def values: IndexedSeq[RacialFeat] = findValues
 }

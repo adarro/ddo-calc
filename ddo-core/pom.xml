@@ -7,644 +7,267 @@
 	is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY 
 	KIND, either express or implied. See the License for the specific language 
 	governing permissions and limitations under the License. -->
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
-  <modelVersion>4.0.0</modelVersion>
-  <parent>
-    <groupId>ddo-calc</groupId>
-    <artifactId>ddo-calc-parent</artifactId>
-    <version>0.1.0-alpha</version>
-  </parent>
-  <artifactId>ddo-core</artifactId>
-  <name>Core DDO Objects</name>
-  <description>Basic traits and classes</description>
-  <properties>
-    <targetFolder>src/test/evosuite</targetFolder>
-    <specs.code.dir>${basedir}/src/specs/scala</specs.code.dir>
-    <specs.resource.dir>src/specs/resources</specs.resource.dir>
-    <specs.dir>src/test/specs</specs.dir>
-  </properties>
-  <dependencies>
-    <!-- Spring Data Annotations
-    <dependency>
-      <groupId>org.springframework.data</groupId>
-      <artifactId>spring-data-commons-core</artifactId>
-    </dependency>-->
-    <!-- Scala -->
-    <dependency>
-      <groupId>org.scala-lang</groupId>
-      <artifactId>scala-library</artifactId>
-    </dependency>
-    <!-- Validation -->
-    <dependency>
-      <groupId>com.wix</groupId>
-      <artifactId>accord-core_${scala.tools.version}</artifactId>
-    </dependency>
-    <!-- Logging -->
-    <dependency>
-      <groupId>com.typesafe.scala-logging</groupId>
-      <artifactId>scala-logging_${scala.tools.version}</artifactId>
-    </dependency>
-    <dependency>
-      <groupId>ch.qos.logback</groupId>
-      <artifactId>logback-classic</artifactId>
-    </dependency>
-    <!-- Configuration Management -->
-    <dependency>
-      <groupId>com.typesafe</groupId>
-      <artifactId>config</artifactId>
-    </dependency>
-    <dependency>
-      <groupId>com.github.kxbmap</groupId>
-      <artifactId>configs_${scala.base}</artifactId>
-    </dependency>
-    <!-- YASU - enumerations -->
-    <dependency>
-      <groupId>com.beachape</groupId>
-      <artifactId>enumeratum_${scala.base}</artifactId>
-    </dependency>
-    <!--<dependency>
-      <groupId>com.sun</groupId>
-      <artifactId>tools</artifactId>
-      <scope>system</scope>
-    </dependency>-->
-    <!--Template engine used for generating base specs (Concordion) -->
-    <dependency>
-      <groupId>de.neuland-bfi</groupId>
-      <artifactId>jade4j</artifactId>
-      <scope>test</scope>
-    </dependency>
-    <!-- Web Scrapping Utility -->
-    <dependency>
-      <groupId>net.ruippeixotog</groupId>
-      <artifactId>scala-scraper_${scala.tools.version}</artifactId>
-      <scope>test</scope>
-    </dependency>
-    <dependency>
-      <groupId>com.wix</groupId>
-      <artifactId>accord-scalatest_${scala.tools.version}</artifactId>
-      <scope>test</scope>
-    </dependency>
-    <!-- Test -->
-    <dependency>
-      <groupId>org.scalatest</groupId>
-      <artifactId>scalatest_${scala.tools.version}</artifactId>
-      <scope>test</scope>
-    </dependency>
-    <!--  <dependency>
-      <groupId>org.evosuite</groupId>
-      <artifactId>evosuite-standalone-runtime</artifactId>
-      <scope>test</scope>
-    </dependency> -->
-    <dependency>
-      <groupId>org.mockito</groupId>
-      <artifactId>mockito-all</artifactId>
-      <scope>test</scope>
-    </dependency>
-    <dependency>
-      <groupId>junit</groupId>
-      <artifactId>junit</artifactId>
-      <scope>test</scope>
-    </dependency>
-    <dependency>
-      <groupId>org.concordion</groupId>
-      <artifactId>concordion</artifactId>
-      <scope>test</scope>
-    </dependency>
-    <dependency>
-      <groupId>org.concordion</groupId>
-      <artifactId>concordion-embed-extension</artifactId>
-      <scope>test</scope>
-    </dependency>
-    <!-- https://mvnrepository.com/artifact/org.concordion/concordion-collapse-output-extension -->
-    <dependency>
-      <groupId>org.concordion</groupId>
-      <artifactId>concordion-collapse-output-extension</artifactId>
-      <scope>test</scope>
-    </dependency>
-  </dependencies>
-  <build>
-    <sourceDirectory>src/main/scala</sourceDirectory>
-    <testSourceDirectory>src/test/scala</testSourceDirectory>
-    <plugins>
-      <plugin>
-        <groupId>org.revapi</groupId>
-        <artifactId>revapi-maven-plugin</artifactId>
-        <version>0.4.5</version>
-        <dependencies>
-          <dependency>
-            <groupId>org.revapi</groupId>
-            <artifactId>revapi-java</artifactId>
-            <version>0.9.0</version>
-          </dependency>
-        </dependencies>
-        <executions>
-          <execution>
-            <goals>
-              <goal>check</goal>
-            </goals>
-          </execution>
-        </executions>
-      </plugin>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<parent>
+		<groupId>ddo-calc</groupId>
+		<artifactId>ddo-calc-parent</artifactId>
+		<version>0.1.0-alpha</version>
+	</parent>
+	<artifactId>ddo-core</artifactId>
+	<name>Core DDO Objects</name>
+	<description>Basic traits and classes</description>
+	<properties>
+		<specs.code.dir>src/specs/scala</specs.code.dir>
+		<specs.resource.dir>src/specs/resources</specs.resource.dir>
+		<specs.dir>src/test/specs</specs.dir>
+	</properties>
+	<build>
+		<plugins>
+			<plugin>
+				<groupId>org.codehaus.mojo</groupId>
+				<artifactId>build-helper-maven-plugin</artifactId>
+				<executions>
+					<execution>
+						<id>add-source</id>
+						<goals>
+							<goal>add-source</goal>
+						</goals>
+						<phase>generate-sources</phase>
+						<configuration>
+							<sources>
+								<source>src/main/java</source>
+								<source>src/main/scala</source>
+							</sources>
+						</configuration>
+					</execution>
+					<execution>
+						<id>add-test-source</id>
+						<goals>
+							<goal>add-test-source</goal>
+						</goals>
+						<phase>generate-test-sources</phase>
+						<configuration>
+							<sources>
+								<source>src/test/java</source>
+								<source>src/test/scala</source>
+							</sources>
+						</configuration>
+					</execution>
 
-      <!-- adding java source directory -->
-      <plugin>
-        <groupId>org.codehaus.mojo</groupId>
-        <artifactId>build-helper-maven-plugin</artifactId>
-        <executions>
-          <execution>
-            <id>add-source</id>
-            <goals>
-              <goal>add-source</goal>
-            </goals>
-            <phase>process-sources</phase>
-            <configuration>
-              <sources>
-                <source>src/main/java</source>
-              </sources>
-            </configuration>
-          </execution>
-          <execution>
-            <id>add-test-source</id>
-            <goals>
-              <goal>add-test-source</goal>
-            </goals>
-            <phase>generate-test-sources</phase>
-            <configuration>
-              <sources>
-                <source>src/test/java</source>
-                <source>${targetFolder}</source>
-              </sources>
-            </configuration>
-          </execution>
-          <execution>
-            <id>add-specs-source</id>
-            <goals>
-              <goal>add-test-source</goal>
-            </goals>
-            <phase>process-test-sources</phase>
-            <configuration>
-              <sources>
-                <source>${specs.code.dir}</source>
-              </sources>
-            </configuration>
-          </execution>
-          <execution>
-            <id>add-test-resource</id>
-            <goals>
-              <goal>add-test-resource</goal>
-            </goals>
-            <phase>generate-test-sources</phase>
-            <configuration>
-              <resources>
-                <resource>
-                  <directory>${specs.dir}</directory>
-                  <includes>
-                    <include>**/*.html</include>
-                    <include>**/*.md</include>
-                    <include>**/*.png</include>
-                  </includes>
-                </resource>
-                <resource>
-                  <directory>${specs.resource.dir}</directory>
-                  <Includes>
-                    <include>**/*.png</include>
-                  </Includes>
-                </resource>
-              </resources>
-            </configuration>
-          </execution>
-        </executions>
-      </plugin>
-      <!-- Disable maven compiler -->
-      <plugin>
-        <artifactId>maven-compiler-plugin</artifactId>
-        <executions>
-          <execution>
-            <id>default-compile</id>
-            <phase>none</phase>
-          </execution>
-          <execution>
-            <id>default-testCompile</id>
-            <phase>none</phase>
-          </execution>
-        </executions>
-      </plugin>
+					<execution>
+						<id>add-test-resource</id>
+						<goals>
+							<goal>add-test-resource</goal>
+						</goals>
+						<phase>generate-test-sources</phase>
+						<configuration>
+							<resources>
+								<resource>
+									<directory>${specs.dir}</directory>
+									<includes>
+										<include>**/*.html</include>
+										<include>**/*.md</include>
+										<include>**/*.png</include>
+									</includes>
+								</resource>
+								<resource>
+									<directory>${specs.resource.dir}</directory>
+									<Includes>
+										<include>**/*.png</include>
+									</Includes>
+								</resource>
+							</resources>
+						</configuration>
+					</execution>
+					<execution>
+						<id>add-specs-source</id>
+						<goals>
+							<goal>add-test-source</goal>
+						</goals>
+						<phase>process-test-sources</phase>
+						<configuration>
+							<sources>
+								<source>${specs.code.dir}</source>
+							</sources>
+						</configuration>
+					</execution>
+				</executions>
+			</plugin>
+			<!-- Disable maven compiler -->
+			<plugin>
+				<artifactId>maven-compiler-plugin</artifactId>
+				<executions>
+					<execution>
+						<id>default-compile</id>
+						<phase>none</phase>
+					</execution>
+					<execution>
+						<id>default-testCompile</id>
+						<phase>compile</phase>
+					</execution>
+				</executions>
+			</plugin>
 
-      <plugin>
-        <!-- see http://davidb.github.com/scala-maven-plugin -->
-        <groupId>net.alchim31.maven</groupId>
-        <artifactId>scala-maven-plugin</artifactId>
-        <configuration>
-          <recompileMode>incremental</recompileMode>
-          <args>
-            <!-- <arg>-make:transitive</arg> flag is deprecated in 2.11+ -->
-            <arg>-dependencyfile</arg>
-            <arg>-deprecation</arg>
-            <arg>-feature</arg>
-            <arg>-Ywarn-unused</arg>
-            <arg>-Xlint</arg>
-            <arg>-Xcheckinit</arg>
-            <!-- <arg>-P:genjavadoc:out=${project.build.directory}/genjavadoc</arg> -->
-            <!-- <arg>${project.build.directory}/.scala_dependencies</arg> -->
-          </args>
-          <compilerPlugins>
-            <compilerPlugin>
-              <groupId>ch.epfl.scala</groupId>
-              <artifactId>scalafix-nsc_${scala.tools.version}</artifactId>
-              <version>0.2.2</version>
-            </compilerPlugin>
-          </compilerPlugins>
-          <!--
-          <compilerPlugin> <groupId>com.typesafe.genjavadoc</groupId>
-            <artifactId>genjavadoc-plugin_${scala.binary.full.version}</artifactId> <version>0.9</version>
-            </compilerPlugin> </compilerPlugins> -->
-          <!-- <compilerPlugins>
-            <compilerPlugin>
-              <groupId>com.lihaoyi</groupId>
-              <artifactId>acyclic_${scala.base}</artifactId>
-              <version>0.1.4</version>
-            </compilerPlugin>
-          </compilerPlugins>-->
-        </configuration>
-        <executions>
-          <execution>
-            <id>scala-compile</id>
-            <!-- <phase>process-resources</phase> -->
-            <goals>
-              <!-- <goal>add-source</goal> -->
-              <goal>compile</goal>
-            </goals>
-          </execution>
-          <execution>
-            <id>scala-test-compile</id>
-            <goals>
-              <goal>testCompile</goal>
-            </goals>
-            <!-- <phase>process-test-resources</phase> -->
-            <phase>test-compile</phase>
-            <configuration>
-              <includes>
-                <include>**/*.scala</include>
-                <include>**/*.java</include>
-                <!--  <include>**/*HelperTest.scala</include>
-                  <include>**/*Helper.scala</include>
-                  <include>**/*Builder.scala</include>
-                  <include>**/*Support.scala</include>
-                  <include>**/*Test.scala</include>
-                  <include>**/*IT.scala</include>
-                  <include>**/*Spec.scala</include>
-                  <include>**/Skill.scala</include>-->
-              </includes>
-            </configuration>
-          </execution>
-        </executions>
-      </plugin>
-      <!-- <plugin> -->
-      <!-- <groupId>org.codehaus.mojo</groupId> -->
-      <!-- <artifactId>build-helper-maven-plugin</artifactId> -->
-      <!-- <executions> -->
-      <!-- <execution> -->
-      <!-- <id>add-source</id> -->
-      <!-- <phase>generate-sources</phase> -->
-      <!-- <goals> -->
-      <!-- <goal>add-source</goal> -->
-      <!-- </goals> -->
-      <!-- <configuration> -->
-      <!-- <sources> -->
-      <!-- <source>src/main/scala</source> -->
-      <!-- <source>${project.build.directory}/genjavadoc</source> -->
-      <!-- </sources> -->
-      <!-- </configuration> -->
-      <!-- </execution> -->
-      <!-- <execution> -->
-      <!-- <id>add-test-source</id> -->
-      <!-- <phase>generate-test-sources</phase> -->
-      <!-- <goals> -->
-      <!-- <goal>add-test-source</goal> -->
-      <!-- </goals> -->
-      <!-- <configuration> -->
-      <!-- <sources> -->
-      <!-- <source>src/test/scala</source> -->
-      <!-- <source>src/test/xtend</source> -->
-      <!-- </sources> -->
-      <!-- </configuration> -->
-      <!-- </execution> -->
-      <!-- </executions> -->
-      <!-- </plugin> -->
-      <plugin>
-        <groupId>org.apache.maven.plugins</groupId>
-        <artifactId>maven-javadoc-plugin</artifactId>
-        <configuration>
-          <minmemory>64m</minmemory>
-          <maxmemory>2g</maxmemory>
-          <outputDirectory>${project.build.directory}</outputDirectory>
-          <detectLinks>true</detectLinks>
-        </configuration>
-      </plugin>
-      <!-- XTend Maven -->
-      <!-- Xtend Builder -->
-      <!-- <plugin> <groupId>org.eclipse.xtend</groupId> <artifactId>xtend-maven-plugin</artifactId>
-        <executions> <execution> <goals> <goal>compile</goal> <goal>testCompile</goal>
-        <goal>xtend-install-debug-info</goal> </goals> <configuration> <outputDirectory>${project.build.directory}/xtend-gen/main</outputDirectory>
-        <testOutputDirectory>${project.build.directory}/xtend-gen/test</testOutputDirectory>
-        </configuration> </execution> </executions> </plugin> -->
-      <!-- Jnario Builder -->
-      <!-- <plugin> <groupId>org.jnario</groupId> <artifactId>jnario-maven-plugin</artifactId>
-        <executions> <execution> <goals> <goal>testCompile</goal> <goal>xtend-test-install-debug-info</goal>
-        </goals> </execution> </executions> </plugin> -->
-      <!-- <plugin> <groupId>com.github.bmsantos</groupId> <artifactId>cola-maven-plugin</artifactId>
-        <configuration> <includes> <include>**/*Test.class</include> </includes>
-        </configuration> <executions> <execution> <id>compile-cola-tests</id> <phase>process-test-classes</phase>
-        <goals> <goal>compile</goal> </goals> </execution> </executions> </plugin> -->
-      <!-- Kotlin compilier -->
-      <!-- <plugin> <artifactId>kotlin-maven-plugin</artifactId> <groupId>org.jetbrains.kotlin</groupId>
-        <version>${kotlin.version}</version> <executions> <execution> <id>compile</id>
-        <phase>compile</phase> <goals> <goal>compile</goal> </goals> </execution>
-        <execution> <id>test-compile</id> <phase>test-compile</phase> <goals> <goal>test-compile</goal>
-        </goals> </execution> </executions> </plugin> -->
-      <plugin>
-        <groupId>org.apache.maven.plugins</groupId>
-        <artifactId>maven-surefire-plugin</artifactId>
-        <configuration>
-          <systemProperties>
-            <concordion.output.dir>target/concordion</concordion.output.dir>
-          </systemProperties>
-          <properties>
-            <!--<property>-->
-            <!--<name>listener</name>-->
-            <!--<value>org.evosuite.runtime.InitializingListener</value>-->
-            <!--</property>-->
-          </properties>
+			<plugin>
+				<!-- see http://davidb.github.com/scala-maven-plugin -->
+				<groupId>net.alchim31.maven</groupId>
+				<artifactId>scala-maven-plugin</artifactId>
+			</plugin>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-surefire-plugin</artifactId>
+				<configuration>
+					<systemProperties>
+						<concordion.output.dir>target/concordion</concordion.output.dir>
+					</systemProperties>
+					<properties>
+						<!--<property> -->
+						<!--<name>listener</name> -->
+						<!--<value>org.evosuite.runtime.InitializingListener</value> -->
+						<!--</property> -->
+					</properties>
 
-          <excludes>
-            <exclude>**/*Test.scala</exclude>
-            <exclude>**/*Builder.scala</exclude>
-            <exclude>**/*Helper.scala</exclude>
-            <exclude>**/*IT.scala</exclude>
-            <!-- <exclude>**/*Spec.scala</exclude>-->
-          </excludes>
-          <includes>
-            <include>*/model/**</include>
-            <!--<include>**/*Spec.java</include>-->
-            <!--<include>**/*Spec.scala</include>-->
-            <!--<include>**/*.scala</include>-->
-          </includes>
-          <skipTests>${skip.tests}</skipTests>
-        </configuration>
-        <executions>
-          <execution>
-            <id>acceptance-test</id>
-            <goals>
-              <goal>test</goal>
-            </goals>
-            <phase>integration-test</phase>
-            <configuration>
-              <skip>false</skip>
-              <testSourceDirectory>${specs.code.dir}</testSourceDirectory>
-              <includes>
-                <include>**/*Spec.scala</include>
-              </includes>
-              <excludes>
-                <exclude>**/*Test.*</exclude>
-                <exclude>**/*Builder.*</exclude>
-                <exclude>**/*Helper.*</exclude>
-                <!-- <exclude>**/*Spec.scala</exclude>-->
-              </excludes>
-            </configuration>
-          </execution>
-        </executions>
-      </plugin>
-      <plugin>
-        <groupId>org.apache.maven.plugins</groupId>
-        <artifactId>maven-failsafe-plugin</artifactId>
-      </plugin>
-      <!-- enable scalatest -->
-      <plugin>
-        <groupId>org.scalatest</groupId>
-        <artifactId>scalatest-maven-plugin</artifactId>
-      </plugin>
-      <!--<plugin>-->
-      <!--<groupId>org.evosuite.plugins</groupId>-->
-      <!--<artifactId>evosuite-maven-plugin</artifactId>-->
-      <!--<configuration>-->
-      <!--<timeInMinutesPerClass>3</timeInMinutesPerClass>-->
-      <!--<detail>true</detail>-->
-      <!--<memoryInMB>2000</memoryInMB>-->
-      <!--</configuration>-->
-      <!--<executions>-->
-      <!--<execution>-->
-      <!--<goals>-->
-      <!--<goal>prepare</goal>-->
-      <!--<goal>export</goal>-->
-      <!--</goals>-->
-      <!--<phase>process-test-classes</phase>-->
-      <!--</execution>-->
-      <!--&lt;!&ndash;   <execution>-->
-      <!--<id>generate</id>-->
-      <!--<goals>-->
-      <!--<goal>generate</goal>-->
-      <!--</goals>-->
-      <!--<phase>generate-test-sources</phase>-->
-      <!--</execution>&ndash;&gt;-->
-      <!--</executions>-->
-      <!--</plugin>-->
-      <!-- Coverage for Codecov.io -->
-      <plugin>
-        <groupId>org.scoverage</groupId>
-        <artifactId>scoverage-maven-plugin</artifactId>
-        <configuration>
-          <highlighting>true</highlighting>
-        </configuration>
-      </plugin>
-      <!--<plugin>-->
-      <!--<groupId>org.jetbrains.kotlin</groupId>-->
-      <!--<artifactId>kotlin-maven-plugin</artifactId>-->
-      <!--<executions>-->
-      <!--<execution>-->
-      <!--<id>compile</id>-->
-      <!--<phase>process-sources</phase>-->
-      <!--<goals>-->
-      <!--<goal>compile</goal>-->
-      <!--</goals>-->
-      <!--<configuration>-->
-      <!--<sourceDirs>-->
-      <!--<source>src/main/kotlin</source>-->
-      <!--</sourceDirs>-->
-      <!--</configuration>-->
-      <!--</execution>-->
-      <!--<execution>-->
-      <!--<id>test-compile</id>-->
-      <!--<phase>process-test-sources</phase>-->
-      <!--<goals>-->
-      <!--<goal>test-compile</goal>-->
-      <!--</goals>-->
-      <!--<configuration>-->
-      <!--<sourceDirs>-->
-      <!--<source>src/test/kotlin</source>-->
-      <!--</sourceDirs>-->
-      <!--</configuration>-->
-      <!--</execution>-->
-      <!--</executions>-->
-      <!--</plugin>-->
-    </plugins>
-    <extensions>
-      <extension>
-        <groupId>io.truthencode</groupId>
-        <artifactId>qa-tools</artifactId>
-        <version>${project.version}</version>
-      </extension>
-    </extensions>
-  </build>
-  <reporting>
-    <plugins>
-      <plugin>
-        <groupId>org.apache.maven.plugins</groupId>
-        <artifactId>maven-project-info-reports-plugin</artifactId>
-        <version>2.9</version>
-        <configuration>
-          <dependencyDetailsEnabled>false</dependencyDetailsEnabled>
-          <dependencyLocationsEnabled>false</dependencyLocationsEnabled>
-        </configuration>
-      </plugin>
-      <!--<plugin>-->
-      <!--<groupId>de.smartics.maven.plugin</groupId>-->
-      <!--<artifactId>alias-maven-plugin</artifactId>-->
-      <!--<version>RELEASE</version>-->
-      <!--</plugin>-->
-      <plugin>
-        <groupId>org.apache.maven.plugins</groupId>
-        <artifactId>maven-pmd-plugin</artifactId>
-        <version>3.6</version>
-        <inherited>true</inherited>
-        <configuration>
-          <linkXRef>true</linkXRef>
-          <sourceEncoding>utf-8</sourceEncoding>
-          <minimumTokens>100</minimumTokens>
-          <targetJdk>${jvm.version}</targetJdk>
-          <excludes>
-            <exclude>**/*Bean.java</exclude>
-            <exclude>**/generated/*.java</exclude>
-          </excludes>
-          <excludeRoots>
-            <excludeRoot>target/generated-sources/stubs</excludeRoot>
-          </excludeRoots>
-        </configuration>
-      </plugin>
-      <plugin>
-        <artifactId>maven-dependency-plugin</artifactId>
-        <version>2.10</version>
-      </plugin>
-      <plugin>
-        <groupId>org.scoverage</groupId>
-        <artifactId>scoverage-maven-plugin</artifactId>
-        <version>${scoverage.plugin.version}</version>
-      </plugin>
-      <plugin>
-        <groupId>org.apache.maven.plugins</groupId>
-        <artifactId>maven-jxr-plugin</artifactId>
-        <version>2.3</version>
-        <reportSets>
-          <reportSet>
-            <id>aggregate</id>
-            <reports>
-              <report>aggregate</report>
-            </reports>
-            <inherited>false</inherited>
-          </reportSet>
-        </reportSets>
-      </plugin>
-      <plugin>
-        <groupId>org.apache.maven.plugins</groupId>
-        <artifactId>maven-surefire-report-plugin</artifactId>
-        <version>RELEASE</version>
-      </plugin>
-      <plugin>
-        <groupId>org.codehaus.mojo</groupId>
-        <artifactId>versions-maven-plugin</artifactId>
-        <version>2.2</version>
-        <reportSets>
-          <reportSet>
-            <reports>
-              <report>dependency-updates-report</report>
-              <report>plugin-updates-report</report>
-              <report>property-updates-report</report>
-            </reports>
-          </reportSet>
-        </reportSets>
-      </plugin>
-      <plugin>
-        <groupId>org.codehaus.mojo</groupId>
-        <artifactId>taglist-maven-plugin</artifactId>
-        <version>2.4</version>
-      </plugin>
-      <plugin>
-        <groupId>org.revapi</groupId>
-        <artifactId>revapi-maven-plugin</artifactId>
-        <version>0.4.5</version>
-        <reportSets>
-          <reportSet>
-            <reports>
-              <report>report</report>
-            </reports>
-          </reportSet>
-        </reportSets>
-      </plugin>
-      <plugin>
-        <groupId>org.scoverage</groupId>
-        <artifactId>scoverage-maven-plugin</artifactId>
-        <version>${scoverage.plugin.version}</version>
-        <reportSets>
-          <reportSet>
-            <reports>
-              <report>report</report>
-              <!-- select only one report from: report, integration-report and report-only
-                reporters -->
-            </reports>
-          </reportSet>
-        </reportSets>
-      </plugin>
-      <plugin>
-        <groupId>com.github.bassman5</groupId>
-        <artifactId>maven-concordion-reporting-plugin</artifactId>
-        <version>1.0.2</version>
-        <configuration>
-          <concordionDir>${basedir}/target/concordion</concordionDir>
-          <concordionIndexFile>acceptanceTests/AcceptanceTests.html</concordionIndexFile>
-        </configuration>
-      </plugin>
-      <plugin>
-        <!-- see http://davidb.github.com/scala-maven-plugin -->
-        <groupId>net.alchim31.maven</groupId>
-        <artifactId>scala-maven-plugin</artifactId>
-        <!-- <executions> -->
-        <!-- <execution> -->
-        <!-- <id>scala-doc-compile</id> -->
-        <!-- <phase>process-resources</phase> -->
-        <!-- <goals> -->
-        <!-- <goal>add-source</goal> -->
-        <!-- <goal>doc</goal> -->
-        <!-- </goals> -->
-
-        <!-- </execution> -->
-
-        <!-- </executions> -->
-        <!-- <configuration> -->
-        <!-- <recompileMode>incremental</recompileMode> -->
-        <!-- <args> -->
-        <!-- <arg>-make:transitive</arg> flag is deprecated in 2.11+ -->
-
-        <!-- <arg>-P:genjavadoc:out=${project.build.directory}/genjavadoc</arg> -->
-        <!-- <arg>${project.build.directory}/.scala_dependencies</arg> -->
-        <!-- </args> -->
-        <!-- <compilerPlugins> -->
-        <!-- <compilerPlugin> -->
-        <!-- <groupId>com.typesafe.genjavadoc</groupId> -->
-        <!-- <artifactId>genjavadoc-plugin_${scala.binary.full.version}</artifactId> -->
-        <!-- <version>0.9</version> -->
-        <!-- </compilerPlugin> -->
-        <!-- </compilerPlugins> -->
-        <!-- </configuration> -->
-      </plugin>
-    </plugins>
-  </reporting>
+					<excludes>
+						<exclude>**/*Test.scala</exclude>
+						<exclude>**/*Builder.scala</exclude>
+						<exclude>**/*Helper.scala</exclude>
+						<exclude>**/*IT.scala</exclude>
+						<!-- <exclude>**/*Spec.scala</exclude> -->
+					</excludes>
+					<includes>
+						<include>*/model/**</include>
+						<include>*/support/**</include>
+						<!--<include>**/*Spec.java</include> -->
+						<!--<include>**/*Spec.scala</include> -->
+						<!--<include>**/*.scala</include> -->
+					</includes>
+					<skipTests>${skip.tests}</skipTests>
+				</configuration>
+				<executions>
+					<execution>
+						<id>acceptance-test</id>
+						<goals>
+							<goal>test</goal>
+						</goals>
+						<phase>integration-test</phase>
+						<configuration>
+							<skip>false</skip>
+							<testSourceDirectory>${specs.code.dir}</testSourceDirectory>
+							<includes>
+								<include>**/*Spec.scala</include>
+							</includes>
+							<excludes>
+								<exclude>**/*Test.*</exclude>
+								<exclude>**/*Builder.*</exclude>
+								<exclude>**/*Helper.*</exclude>
+								<!-- <exclude>**/*Spec.scala</exclude> -->
+							</excludes>
+						</configuration>
+					</execution>
+				</executions>
+			</plugin>
+			<!-- enable scalatest -->
+			<plugin>
+				<groupId>org.scalatest</groupId>
+				<artifactId>scalatest-maven-plugin</artifactId>
+			</plugin>
+		</plugins>
+	</build>
+	<dependencies>
+		<!-- Scala -->
+		<dependency>
+			<groupId>org.scala-lang</groupId>
+			<artifactId>scala-library</artifactId>
+		</dependency>
+		<!-- YASU - enumerations -->
+		<dependency>
+			<groupId>com.beachape</groupId>
+			<artifactId>enumeratum_${scala.base}</artifactId>
+		</dependency>
+		<!-- Configuration Management -->
+		<dependency>
+			<groupId>com.typesafe</groupId>
+			<artifactId>config</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>com.github.kxbmap</groupId>
+			<artifactId>configs_${scala.base}</artifactId>
+		</dependency>
+		<!-- Validation -->
+		<dependency>
+			<groupId>com.wix</groupId>
+			<artifactId>accord-core_${scala.tools.version}</artifactId>
+		</dependency>
+		<!-- Logging -->
+		<dependency>
+			<groupId>com.typesafe.scala-logging</groupId>
+			<artifactId>scala-logging_${scala.tools.version}</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>ch.qos.logback</groupId>
+			<artifactId>logback-classic</artifactId>
+		</dependency>
+		<!-- ****************************************************** TEST DEPENDENCIES 
+			****************************************************** -->
+		<!-- Unit Testing -->
+		<dependency>
+			<groupId>org.scalatest</groupId>
+			<artifactId>scalatest_${scala.tools.version}</artifactId>
+			<scope>test</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.mockito</groupId>
+			<artifactId>mockito-all</artifactId>
+			<scope>test</scope>
+		</dependency>
+		<dependency>
+			<groupId>junit</groupId>
+			<artifactId>junit</artifactId>
+			<scope>test</scope>
+		</dependency>
+		<!-- Concordion Acceptance Testing Framework -->
+		<dependency>
+			<groupId>org.concordion</groupId>
+			<artifactId>concordion</artifactId>
+			<scope>test</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.concordion</groupId>
+			<artifactId>concordion-embed-extension</artifactId>
+			<scope>test</scope>
+		</dependency>
+		<!-- https://mvnrepository.com/artifact/org.concordion/concordion-collapse-output-extension -->
+		<dependency>
+			<groupId>org.concordion</groupId>
+			<artifactId>concordion-collapse-output-extension</artifactId>
+			<scope>test</scope>
+		</dependency>
+		<!-- Validation Integration -->
+		<dependency>
+			<groupId>com.wix</groupId>
+			<artifactId>accord-scalatest_${scala.tools.version}</artifactId>
+			<scope>test</scope>
+		</dependency>
+		<!--Template engine used for generating base specs (Concordion) Plan to 
+			deprecate -->
+		<dependency>
+			<groupId>de.neuland-bfi</groupId>
+			<artifactId>jade4j</artifactId>
+			<scope>test</scope>
+		</dependency>
+		<!-- Web Scraping for more functional tests -->
+		<!-- Web Scraping Utility -->
+		<dependency>
+			<groupId>net.ruippeixotog</groupId>
+			<artifactId>scala-scraper_${scala.tools.version}</artifactId>
+			<scope>test</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.jetbrains</groupId>
+			<artifactId>annotations</artifactId>
+			<version>RELEASE</version>
+		</dependency>
+	</dependencies>
 </project>

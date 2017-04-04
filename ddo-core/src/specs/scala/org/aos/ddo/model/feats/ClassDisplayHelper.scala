@@ -20,20 +20,32 @@ trait ClassDisplayHelper extends DisplayHelper {
   val cClass: CharacterClass
 
   val filterByAllOf: PartialFunction[Entry, Entry] = {
-    case x: ClassRequisite if x.allOfClass.exists(isDefinedForClass) => x
+    case x: ClassRequisite if x.allOfClass.exists(isDefinedForClass(_)) => x
   }
 
   val filterByAnyOf: PartialFunction[Entry, Entry] = {
-    case x: ClassRequisite if x.anyOfClass.exists(isDefinedForClass) => x
+    case x: ClassRequisite if x.anyOfClass.exists(isDefinedForClass(_)) => x
   }
 
   val filterByGrantedTo: PartialFunction[Entry, Entry] = {
-    case x: ClassRequisite if x.grantToClass.exists(isDefinedForClass) => x
+    case x: ClassRequisite if x.grantToClass.exists(isDefinedForClass(_)) => x
+  }
+  case class Param(e: Entry with ClassRequisite, l: Int)
+
+  val filterByGrantedToByLevel: PartialFunction[(Entry, Int), (Entry, Int)] = {
+    case (x: ClassRequisite, y)
+        if x.grantToClass.exists(isDefinedForClass(_, Some(y))) =>
+      (x, y)
   }
 
   val existing = filterByAllOf orElse filterByAnyOf orElse filterByGrantedTo
 
-  def isDefinedForClass(e: (CharacterClass, Int)): Boolean = e._1.eq(cClass)
+  def isDefinedForClass(e: (CharacterClass, Int),
+                        level: Option[Int] = None): Boolean =
+    e._1.eq(cClass) && isEqualOrEmpty(e._2, level)
+
+  private def isEqualOrEmpty(i: Int, source: Option[Int]): Boolean =
+    source.isEmpty || (source.nonEmpty && source.contains(i))
 
   def allOfFilterByLevel(as: Entry): Seq[(CharacterClass, Int)] = as match {
     case x: ClassRequisite => x.allOfClass.filter(_._1.eq(cClass))
@@ -71,9 +83,19 @@ trait ClassDisplayHelper extends DisplayHelper {
       }(collection.breakOut)
   }
 
-  lazy val classFeats: util.List[String] = {
-    val values = enum.values collect existing
+  lazy val grantedFeats: util.List[String] = {
+    val values = enum.values collect filterByGrantedTo
     values.filterNot(_.isSubFeat).map(_.displayText).sorted.asJava
+  }
+
+  def grantedFeatsByLevel(level: Int): util.List[String] = {
+    val values = enum.values.map((_, level)) collect filterByGrantedToByLevel
+    values
+   //   .filterNot(_._1.isSubFeat)
+      .filter(_._2 == level)
+      .map(_._1.displayText)
+      .sorted
+      .asJava
   }
 
   def classByLevel(level: Int): util.List[String] =

@@ -67,7 +67,7 @@ class BindingTest extends FunSpec with Matchers with MockitoSugar with LazyLoggi
     }
   }
   describe("Binding Flags") {
-    they("can create an instance from acronyns with [Option] or raw") {
+    they("can create an instance from acronyms with [Option] or raw") {
       val words = possibleText.filter { x => x.equals(Unbound) }
       words.foreach { x =>
         logger.info(s"using acronym from $words")

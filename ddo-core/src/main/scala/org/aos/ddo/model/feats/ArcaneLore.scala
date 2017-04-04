@@ -1,7 +1,13 @@
 package org.aos.ddo.model.feats
 
 import org.aos.ddo.model.classes.CharacterClass
-import org.aos.ddo.support.requisite.{FeatRequisiteImpl, RequiresAnyOfClass}
+import org.aos.ddo.model.classes.CharacterClass.{
+  Artificer,
+  Bard,
+  Sorcerer,
+  Wizard
+}
+import org.aos.ddo.support.requisite.{FeatRequisiteImpl, GrantsToClass}
 
 /**
   * This feat grants represents your knowledge of the Arcane.
@@ -11,10 +17,14 @@ import org.aos.ddo.support.requisite.{FeatRequisiteImpl, RequiresAnyOfClass}
 protected[feats] trait ArcaneLore
     extends FeatRequisiteImpl
     with Passive
-    with RequiresAnyOfClass {
-  override def anyOfClass: Seq[(CharacterClass, Int)] =
-    List((CharacterClass.Artificer, 1),
-         (CharacterClass.Bard, 1),
-         (CharacterClass.Sorcerer, 1),
-         (CharacterClass.Wizard, 1))
+    with StackableFeat
+    with GrantsToClass {
+
+  private def grantedClasses =
+    for {
+      gc <- List(Artificer, Bard, Sorcerer, Wizard)
+      l <- 1 to 20
+    } yield (gc, l)
+  override def grantToClass: Seq[(CharacterClass, Int)] =
+    grantedClasses
 }

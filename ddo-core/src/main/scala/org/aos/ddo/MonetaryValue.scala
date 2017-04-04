@@ -33,5 +33,5 @@ object MonetaryValue extends SmartEnum[MonetaryValue] {
   case class Coins(plat: Int = 0, gold: Int = 0, silver: Int = 0, copper: Int = 0) extends MonetaryValue
   case class AstralShards(amount: Int) extends MonetaryValue
   case class TurbinePoints(amount: Int) extends MonetaryValue
-  val values: Seq[MonetaryValue] = findValues
+  val values = findValues
 }

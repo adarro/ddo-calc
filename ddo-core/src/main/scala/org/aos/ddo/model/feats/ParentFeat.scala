@@ -1,10 +1,17 @@
 package org.aos.ddo.model.feats
 
 /**
-  * Created by adarr on 2/11/2017.
+  * A Parent Feat is a Feat which acts as a container for linked sub-feats.
+  * A basic example would be Spell Focus, which contains sub-feats for each school of magic.
+  * i.e. Spell Focus: Enchantment, Spell Focus: Necromancy etc.
   */
 trait ParentFeat {
-  self: GeneralFeat =>
-  val subFeats: Seq[GeneralFeat with SubFeat]
+  self: Feat =>
+  val subFeats: Seq[Feat with SubFeat]
 
+}
+
+object ParentFeat {
+  
+  
 }

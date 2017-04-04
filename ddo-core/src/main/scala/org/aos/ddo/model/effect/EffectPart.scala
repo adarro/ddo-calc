@@ -4,7 +4,7 @@ import enumeratum.{Enum, EnumEntry}
 import org.aos.ddo.NoDefault
 sealed trait EffectPart extends EnumEntry
 object EffectPart extends Enum[EffectPart] with NoDefault[EffectPart] {
-  val values: Seq[EffectPart] = findValues
+  val values = findValues
   case object Attribute extends EffectPart
   case object Skill extends EffectPart
   case object Health extends EffectPart

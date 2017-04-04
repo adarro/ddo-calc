@@ -3,6 +3,7 @@ package org.aos.ddo.activation
 import org.aos.ddo.model.effect.TriggerEvent
 import org.aos.ddo.model.effect.TriggerEvent._
 
+
 /**
   * Occurs on every attack
   */

@@ -13,10 +13,14 @@ import org.aos.ddo.support.requisite.{
   * This feat grants you a 1% passive bonus to Dodge at levels 4, 6, 8, 12, 16, and 20.
   * Also, you can activate this ability to gain a temporary 50% dodge bonus and a +6 reflex save bonus.
   * As of Update 14, using this ability is no longer restricted by number of uses per rest. However, it is restricted by cooldown.
+  *
+  * @note This feat effectively replaces [[UncannyDodge]] if the character has both.
+  *       i.e. Does not stack, but improves the Dodge feat with an improved Active ability.
   */
 protected[feats] trait ImprovedUncannyDodge
     extends FeatRequisiteImpl
-    with Passive with Active
+    with Passive
+    with Active
     with GrantsToClass
     with FreeFeat { self: ClassFeat =>
   override def grantToClass: Seq[(CharacterClass, Int)] =

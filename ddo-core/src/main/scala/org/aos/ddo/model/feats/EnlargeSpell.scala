@@ -8,7 +8,7 @@ import org.aos.ddo.support.requisite.{FeatRequisiteImpl, RequiresAnyOfClass}
   */
 trait EnlargeSpell
     extends FeatRequisiteImpl
-    with MetaMagic
+    with EpicMetaMagic
     with RequiresAnyOfClass { self: MetaMagicFeat =>
   override def anyOfClass: Seq[(CharacterClass, Int)] =
     MetaMagicFeat.minimumSpellCastingClass

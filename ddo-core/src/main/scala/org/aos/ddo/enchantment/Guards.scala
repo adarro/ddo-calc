@@ -1,13 +1,13 @@
 package org.aos.ddo.enchantment
 
-import enumeratum.{EnumEntry, Enum }
+import enumeratum.{Enum, EnumEntry}
 import org.aos.ddo.NoDefault
-import enumeratum.{ Enum => SmartEnum, EnumEntry }
-import enumeratum.{Enum => SmartEnum}
+
+import scala.collection.immutable.IndexedSeq
 
 sealed trait Guards extends EnumEntry
 object Guards extends Enum[Guards] with NoDefault[Guards] {
-  val values: Seq[Guards] = findValues
+  val values: IndexedSeq[Guards] = findValues
   case object AcidGuard extends Guards
   case object AirGuard extends Guards
   case object CacophonicGuard extends Guards

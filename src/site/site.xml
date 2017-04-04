@@ -10,18 +10,19 @@
   </bannerLeft>
 
   <skin>
-    <!--
+
     <groupId>lt.velykis.maven.skins</groupId>
     <artifactId>reflow-maven-skin</artifactId>
-    <version>1.1.1</version> -->
-    <groupId>org.apache.maven.skins</groupId>
-    <artifactId>maven-fluido-skin</artifactId>
-    <version>1.6</version>
+    <version>1.1.1</version>
+    <!--<groupId>org.apache.maven.skins</groupId>-->
+    <!--<artifactId>maven-fluido-skin</artifactId>-->
+    <!--<version>1.6</version>-->
 
   </skin>
   <custom>
     <reflowSkin>
-      <theme>site</theme>
+        <absoluteResourceURL>http://github.com/adarro/ddo-calc/</absoluteResourceURL>
+      <theme>bootswatch-cyborg</theme>
       <highlightJs>true</highlightJs>
       <brand>
         <name>Fatespinner</name>
@@ -57,26 +58,6 @@
         </developer-info>
       </pages>
     </reflowSkin>
-    <fluidoSkin>
-      <sideBarEnabled>true</sideBarEnabled>
-      <topBarEnabled>true</topBarEnabled>
-      <sourceLineNumbersEnabled>true</sourceLineNumbersEnabled>
-      <profile>pre-release</profile>
-      <facebookLike/>
-      <googlePlusOne/>
-      <gitHub>
-        <projectId>adarro/ddo-calc</projectId>
-        <ribbonOrientation>right</ribbonOrientation>
-        <ribbonColor>green</ribbonColor>
-      </gitHub>
-      <ohloh>
-        <projectId>ddo-calc</projectId>
-        <widget>factoids</widget>
-      </ohloh>
-      <googleSearch>
-        <sitesearch/>
-      </googleSearch>
-    </fluidoSkin>
   </custom>
 
 

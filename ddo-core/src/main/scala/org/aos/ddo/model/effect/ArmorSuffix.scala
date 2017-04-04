@@ -4,7 +4,7 @@ import enumeratum.{EnumEntry, Enum => SmartEnum}
 
 sealed trait ArmorSuffix extends EnumEntry with Suffix
 object ArmorSuffix extends SmartEnum[ArmorSuffix] {
-  override val values: Seq[ArmorSuffix] = findValues
+  override val values = findValues
   case object AcidResistance extends ArmorSuffix with Resist with Acid
   case object Axeblock extends ArmorSuffix with DamageReduction with Slashing
   case object ColdResistance extends ArmorSuffix with Resist with Cold

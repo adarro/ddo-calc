@@ -1,7 +1,11 @@
 package org.aos.ddo.model.feats
 
-import org.aos.ddo.model.classes.CharacterClass
-import org.aos.ddo.support.requisite.{FeatRequisiteImpl, RequiresAllOfFeat, RequiresAnyOfClass}
+import org.aos.ddo.support.requisite.{
+  ClassRequisiteImpl,
+  FeatRequisiteImpl,
+  RequiresAllOfFeat,
+  RequiresAnyOfClass
+}
 
 /** Icon Feat Greater Spell Focus.png
   * Greater Spell Focus - Passive
@@ -12,9 +16,12 @@ import org.aos.ddo.support.requisite.{FeatRequisiteImpl, RequiresAllOfFeat, Requ
   * Level 1: Artificer, Bard, Cleric, Druid, Favored Soul
   * Level 1: Sorcerer, Wizard; Level 4: Paladin, Ranger
   * */
-trait GreaterSpellFocusBase extends FeatRequisiteImpl with Passive with RequiresAnyOfClass with RequiresAllOfFeat  {
-  self: GeneralFeat =>
-
+trait GreaterSpellFocusBase
+    extends FeatRequisiteImpl
+    with ClassRequisiteImpl
+    with Passive
+    with RequiresAnyOfClass
+    with RequiresAllOfFeat { self: GeneralFeat =>
 
   override def allOfFeats: Seq[GeneralFeat] = List(GeneralFeat.SpellFocus)
 }

@@ -16,7 +16,9 @@
 package org.aos.ddo.model.item.weapon
 
 import org.aos.ddo.NoDefault
-import enumeratum.{Enum,EnumEntry}
+import enumeratum.{Enum, EnumEntry}
+
+import scala.collection.immutable.IndexedSeq
 
 /** handedness is used to determine a one handed, two handed or off hand equip.
   * DDOwiki lists bows as ranged
@@ -26,5 +28,5 @@ object Handedness extends Enum[Handedness] {
   case object OneHand extends Handedness
   case object TwoHand extends Handedness
   case object OffHand extends Handedness
-  override val values: Seq[Handedness] = findValues
+  override val values = findValues
 }

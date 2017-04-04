@@ -38,7 +38,7 @@ object Attribute extends Enum[Attribute] with SearchPrefix {
 
   case object Charisma extends Charisma
 
-  val values: Seq[Attribute] = findValues
+  val values = findValues
 
   /**
     * Used when qualifying a search with a prefix.
@@ -52,35 +52,35 @@ object Attribute extends Enum[Attribute] with SearchPrefix {
 trait Strength extends Attribute {
   override val abbr: String = "STR"
 
-  def toFullWord(): String = "Strength"
+  def toFullWord: String = "Strength"
 }
 
 trait Dexterity extends Attribute {
   override val abbr: String = "DEX"
 
-  def toFullWord(): String = "Dexterity"
+  def toFullWord: String = "Dexterity"
 }
 
 trait Constitution extends Attribute {
   override val abbr: String = "CON"
 
-  def toFullWord(): String = "Constitution"
+  def toFullWord: String = "Constitution"
 }
 
 trait Intelligence extends Attribute {
   override val abbr: String = "INT"
 
-  def toFullWord(): String = "Intelligence"
+  def toFullWord: String = "Intelligence"
 }
 
 trait Wisdom extends Attribute {
   override val abbr: String = "WIS"
 
-  def toFullWord(): String = "Wisdom"
+  def toFullWord: String = "Wisdom"
 }
 
 trait Charisma extends Attribute {
   override val abbr: String = "CHA"
 
-  def toFullWord(): String = "Charisma"
+  def toFullWord: String = "Charisma"
 }

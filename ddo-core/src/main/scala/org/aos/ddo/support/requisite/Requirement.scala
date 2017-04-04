@@ -26,6 +26,8 @@ import org.aos.ddo.model.skill.Skill
 import org.aos.ddo.support.StringUtils.Extensions
 import org.aos.ddo.support.naming.{DisplayName, Prefix}
 
+import scala.collection.immutable.IndexedSeq
+
 /** Base trait used to enumerate qualifications.
   */
 sealed trait Requirement extends EnumEntry with DisplayName with Prefix {
@@ -102,7 +104,7 @@ object Requirement extends Enum[Requirement] {
 
     /** Expands the abbr to its full value
       */
-    override def toFullWord(): String = entryName.splitByCase
+    override def toFullWord: String = entryName.splitByCase
   }
 
   /** Represents the minimum level of a given class to qualify
@@ -118,6 +120,8 @@ object Requirement extends Enum[Requirement] {
       */
     override protected def nameSource: String = id.splitByCase.toPascalCase
   }
+
+
 
   /** Represents the minimum level of a given class to qualify
     *
@@ -208,9 +212,9 @@ object Requirement extends Enum[Requirement] {
   /** Represents the minimum total character level required to activate or select
     * a skill, wear an item etc.
     *
-    * @param level Minimum character level.
+    * @param characterLevel Minimum character level.
     */
-  case class ReqCharacterLevel(level: Int) extends Requirement {
+  case class ReqCharacterLevel(characterLevel: Int) extends Requirement {
     override def prefix: Option[String] = None
 
     /**
@@ -248,5 +252,5 @@ object Requirement extends Enum[Requirement] {
     override protected def nameSource: String = id.splitByCase.toPascalCase
   }
 
-  def values: Seq[Requirement] = findValues ++ races ++ classes ++ alignments ++ skills
+  def values: IndexedSeq[Requirement] = findValues ++ races ++ classes ++ alignments ++ skills
 }

@@ -3,6 +3,7 @@ package org.aos.ddo.model.feats
 import org.aos.ddo.model.classes.CharacterClass
 import org.aos.ddo.model.classes.CharacterClass.{Barbarian, Rogue}
 import org.aos.ddo.support.requisite.{FeatRequisiteImpl, FreeFeat, GrantsToClass}
+import org.aos.ddo.support.TraverseOps.Crossable
 
 /**
   * [[http://ddowiki.com/page/Trap_Sense Trap Sense]]
@@ -15,5 +16,7 @@ protected[feats] trait TrapSense
     with Passive
     with GrantsToClass
     with FreeFeat { self: ClassFeat =>
-  override def grantToClass: Seq[(CharacterClass, Int)] = List((Barbarian, 3),(Rogue,3))
+  private def levelMatrix = 3 to 20 by 3
+  private def classMatrix = List(Barbarian,Rogue)
+  override def grantToClass: Seq[(CharacterClass, Int)] = (classMatrix cross levelMatrix).toSeq
 }

@@ -1,7 +1,11 @@
 package org.aos.ddo.model.feats
 
 import org.aos.ddo.model.classes.CharacterClass
-import org.aos.ddo.support.requisite.{FeatRequisiteImpl, RequiresAnyOfClass}
+import org.aos.ddo.support.requisite.{
+  ClassRequisiteImpl,
+  FeatRequisiteImpl,
+  RequiresAnyOfClass
+}
 
 /** Icon Feat Spell Focus.png
   * Spell Focus - Passive
@@ -11,11 +15,15 @@ import org.aos.ddo.support.requisite.{FeatRequisiteImpl, RequiresAnyOfClass}
   * Level 1: Sorcerer, Wizard; Level 4: Paladin, Ranger
   *
   * @todo create spell focus:X feats
-  **/
-protected[feats] trait SpellFocusBase extends FeatRequisiteImpl with Passive with RequiresAnyOfClass  {
-  self: GeneralFeat =>
+  */
+protected[feats] trait SpellFocusBase
+    extends FeatRequisiteImpl
+    with ClassRequisiteImpl
+    with Passive
+    with RequiresAnyOfClass { self: GeneralFeat =>
   override def allOfClass: Seq[(CharacterClass, Int)] =
-    List((CharacterClass.Artificer, 1),
+    List(
+      (CharacterClass.Artificer, 1),
       (CharacterClass.Bard, 1),
       (CharacterClass.Cleric, 1),
       (CharacterClass.Druid, 1),
@@ -23,5 +31,6 @@ protected[feats] trait SpellFocusBase extends FeatRequisiteImpl with Passive wit
       (CharacterClass.Sorcerer, 1),
       (CharacterClass.Wizard, 1),
       (CharacterClass.Paladin, 4),
-      (CharacterClass.Ranger, 4))
+      (CharacterClass.Ranger, 4)
+    )
 }

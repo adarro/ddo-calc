@@ -5,8 +5,8 @@
 ## Epic Feats by Category
 
 * [x] [Epic General Passive](EpicGeneralFeatSpec.html "Epic General Feats")
-* [ ] [Ranged Combat](EpicRangedCombatFeatSpec.html)
-* [ ] [Active Spell](EpicActiveSpellFeatSpec.html)
-* [ ] [SpellCasting](EpicSpellCastingFeatSpec.html)
-* [ ] [Metamagic](EpicMetamagicFeatSpec.html)
-* [ ] [Class](EpicClassFeatSpec.html)
+* [x] [Ranged Combat](EpicRangedCombatFeatSpec.html)
+* [x] [Active Spell](EpicActiveSpellFeatSpec.html)
+* [x] [SpellCasting](EpicSpellCastingFeatSpec.html)
+* [x] [Metamagic](EpicMetamagicFeatSpec.html)
+* [x] [Class](EpicClassFeatSpec.html)

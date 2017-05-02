@@ -12,8 +12,6 @@ import org.junit.runner.RunWith
 @FullOGNL
 @RunWith(classOf[ConcordionRunner])
 class EpicGeneralFeatSpec extends EpicFeatDisplayHelper {
-
-  override type C = GeneralPassive
   override val filterByCategory: PartialFunction[Entry, EpicFeat] = {
     case x: GeneralPassive => x.asInstanceOf[EpicFeat]
   }

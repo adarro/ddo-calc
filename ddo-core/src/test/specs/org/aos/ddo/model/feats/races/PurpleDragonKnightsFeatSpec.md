@@ -1,11 +1,13 @@
 # Purple Dragon Knights Feats
 
+## [Feats](http://ddowiki.com/page/Category:Purple_Dragon_Knight_feats)
+
 |[ ][existingFeat] [Feats][result] | Description | Type | Icon |
 |-----|-----|-----|-----|
 |[Human](http://ddowiki.com/page/Human) | You are considered human. You are treated as such by magical abilities and effects, and are able to use appropriate equipment. | Passive | ![Icon Feat Human.png](/images/Human_race_icon.png)
 
 
-[existingFeat]: - "c:verify-rows=#feat:verifyRacialFeats()"
+[existingFeat]: - "c:verify-rows=#feat:verifyGrantedFeats()"
 [_matchStrategy_]: - "c:matchStrategy=KeyMatch"
 [result]: - "?=#feat"
 [halfling_agility]: http://ddowiki.com/page/Halfling_Agility_(feat)

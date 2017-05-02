@@ -8,7 +8,7 @@ import org.aos.ddo.support.requisite.{FeatRequisiteImpl, RequiresAnyOfClass}
   */
 trait EmpowerSpell
     extends FeatRequisiteImpl
-    with EpicMetaMagic
+    with MetaMagic
     with RequiresAnyOfClass { self: MetaMagicFeat =>
   override def anyOfClass: Seq[(CharacterClass, Int)] =
     MetaMagicFeat.minimumSpellCastingClass

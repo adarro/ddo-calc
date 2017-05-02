@@ -40,6 +40,7 @@ sealed trait DragonmarkFeat
 object DragonmarkFeat extends Enum[DragonmarkFeat] with FeatSearchPrefix {
   case object LeastDragonmarkOfStorm
       extends DragonmarkFeat
+      with RaceRequisiteImpl
       with RequiresAllOfRace
       with Active
       with Passive {
@@ -47,6 +48,7 @@ object DragonmarkFeat extends Enum[DragonmarkFeat] with FeatSearchPrefix {
   }
   case object LeastDragonmarkOfShadow
       extends DragonmarkFeat
+      with RaceRequisiteImpl
       with RequiresAllOfRace
       with Active
       with Passive {
@@ -54,6 +56,7 @@ object DragonmarkFeat extends Enum[DragonmarkFeat] with FeatSearchPrefix {
   }
   case object LeastDragonmarkOfFinding
       extends DragonmarkFeat
+      with RaceRequisiteImpl
       with RequiresAllOfRace
       with Active
       with Passive {
@@ -61,6 +64,7 @@ object DragonmarkFeat extends Enum[DragonmarkFeat] with FeatSearchPrefix {
   }
   case object LeastDragonmarkOfHealing
       extends DragonmarkFeat
+      with RaceRequisiteImpl
       with RequiresAnyOfRace
       with Active
       with Passive {
@@ -68,6 +72,7 @@ object DragonmarkFeat extends Enum[DragonmarkFeat] with FeatSearchPrefix {
   }
   case object LeastDragonmarkOfMaking
       extends DragonmarkFeat
+      with RaceRequisiteImpl
       with RequiresAnyOfRace
       with Active
       with Passive {
@@ -75,6 +80,7 @@ object DragonmarkFeat extends Enum[DragonmarkFeat] with FeatSearchPrefix {
   }
   case object LeastDragonmarkOfPassage
       extends DragonmarkFeat
+      with RaceRequisiteImpl
       with RequiresAllOfRace
       with Active
       with Passive {
@@ -82,6 +88,7 @@ object DragonmarkFeat extends Enum[DragonmarkFeat] with FeatSearchPrefix {
   }
   case object LeastDragonmarkOfSentinel
       extends DragonmarkFeat
+      with RaceRequisiteImpl
       with RequiresAllOfRace
       with Active
       with Passive {
@@ -89,6 +96,7 @@ object DragonmarkFeat extends Enum[DragonmarkFeat] with FeatSearchPrefix {
   }
   case object LeastDragonmarkOfWarding
       extends DragonmarkFeat
+      with RaceRequisiteImpl
       with RequiresAllOfRace
       with Active
       with Passive {
@@ -96,6 +104,7 @@ object DragonmarkFeat extends Enum[DragonmarkFeat] with FeatSearchPrefix {
   }
   case object LeastDragonmarkOfScribing
       extends DragonmarkFeat
+      with RaceRequisiteImpl
       with RequiresAllOfRace
       with Active
       with Passive {

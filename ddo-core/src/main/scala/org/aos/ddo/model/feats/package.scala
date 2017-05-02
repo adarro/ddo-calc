@@ -1,5 +1,9 @@
 package org.aos.ddo.model
 
+import org.aos.ddo.model.feats.EpicFeat.EpicSpellFocus
+import org.aos.ddo.model.schools.School
+
+import scala.collection.immutable
 import scala.reflect.ClassTag
 
 /**
@@ -26,4 +30,6 @@ package object feats {
       case c: C if other.isDefinedAt(c) => other(c)
     }
   }
+
+
 }

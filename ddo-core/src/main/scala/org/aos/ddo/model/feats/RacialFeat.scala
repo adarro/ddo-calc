@@ -5,15 +5,19 @@ import enumeratum.Enum
 import org.aos.ddo.model.classes.CharacterClass
 import org.aos.ddo.support.StringUtils.Extensions
 import org.aos.ddo.support.naming.FriendlyDisplay
-import org.aos.ddo.support.requisite.{Inclusion, Requisite}
+import org.aos.ddo.support.requisite.{Inclusion, RaceRequisiteImpl, Requisite, RequisiteType}
 
 import scala.collection.immutable.IndexedSeq
 
 /**
   * Created by adarr on 2/14/2017.
   */
-sealed trait RacialFeat extends Feat with FriendlyDisplay with FeatMatcher with LazyLogging {
-  self: FeatType with Requisite with Inclusion  =>
+sealed trait RacialFeat
+    extends Feat
+    with RaceRequisiteImpl
+    with FriendlyDisplay
+    with FeatMatcher
+    with LazyLogging { self: FeatType with Requisite with Inclusion with RequisiteType =>
   val matchFeat: PartialFunction[Feat, RacialFeat] = {
     case x: RacialFeat => x
   }
@@ -34,9 +38,13 @@ object RacialFeat extends Enum[RacialFeat] with FeatSearchPrefix {
   case object WarforgedTraits extends RacialFeat with WarforgedTraits
   case object AdamantineBody extends RacialFeat with AdamantineBody
   case object MithralBody extends RacialFeat with MithralBody
-  case object ImprovedDamageReduction extends RacialFeat with ImprovedDamageReduction
-  case object ImprovedFortification extends RacialFeat with ImprovedFortification
-  case object MithralFluidity  extends RacialFeat with MithralFluidity
+  case object ImprovedDamageReduction
+      extends RacialFeat
+      with ImprovedDamageReduction
+  case object ImprovedFortification
+      extends RacialFeat
+      with ImprovedFortification
+  case object MithralFluidity extends RacialFeat with MithralFluidity
 
   // Bladeforged
   case object Bladeforged extends RacialFeat with BladeforgedFeat
@@ -49,7 +57,9 @@ object RacialFeat extends Enum[RacialFeat] with FeatSearchPrefix {
   case object HalflingBravery extends RacialFeat with HalflingBravery
   case object HalflingKeenEars extends RacialFeat with HalflingKeenEars
   case object HalflingLuck extends RacialFeat with HalflingLuck
-  case object HalflingThrownWeaponFocus extends RacialFeat with HalflingThrownWeaponFocus
+  case object HalflingThrownWeaponFocus
+      extends RacialFeat
+      with HalflingThrownWeaponFocus
   // Gnome
   case object GnomishProficiencies extends RacialFeat with GnomishProficiencies
   case object SmallSizeBonus extends RacialFeat with SmallSizeBonus

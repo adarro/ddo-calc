@@ -15,20 +15,23 @@
   */
 package org.aos.ddo.model.feats
 
+import com.typesafe.scalalogging.LazyLogging
 import enumeratum.Enum
 import org.aos.ddo.model.classes.CharacterClass
+import org.aos.ddo.model.classes.CharacterClass.Bard
+import org.aos.ddo.model.item.weapon.WeaponCategory.{
+  Longsword,
+  Rapier,
+  Shortbow,
+  Shortsword
+}
 import org.aos.ddo.model.item.weapon._
 import org.aos.ddo.model.race.Race
 import org.aos.ddo.model.schools.School
 import org.aos.ddo.model.skill.Skill
 import org.aos.ddo.support.StringUtils.Extensions
 import org.aos.ddo.support.naming.{FriendlyDisplay, PostText, Prefix}
-import org.aos.ddo.support.requisite.{
-  GrantsToClass,
-  Inclusion,
-  RequiresAllOfFeat,
-  Requisite
-}
+import org.aos.ddo.support.requisite._
 
 import scala.collection.immutable.IndexedSeq
 
@@ -49,7 +52,8 @@ sealed trait GeneralFeat
 object GeneralFeat
     extends Enum[GeneralFeat]
     with FeatSearchPrefix
-    with FeatMatcher {
+    with FeatMatcher
+    with LazyLogging {
   val matchFeat: PartialFunction[Feat, GeneralFeat] = {
     case x: GeneralFeat => x
   }
@@ -59,6 +63,7 @@ object GeneralFeat
         case Some(y) => y
       }
   }
+
   case object Attack extends GeneralFeat with Attack
 
   case object DefensiveFighting extends GeneralFeat with DefensiveFighting
@@ -124,7 +129,39 @@ object GeneralFeat
 
   case object SpringAttack extends GeneralFeat with SpringAttack
 
-  case object ImprovedCritical extends GeneralFeat with ImprovedCritical
+  case object ImprovedCritical
+      extends GeneralFeat
+      with ImprovedCriticalBase
+      with ParentFeat {
+    override val subFeats: Seq[GeneralFeat with SubFeat] = improvedCriticalAny
+  }
+
+  /**
+    * Convenience function to group all weapon classes
+    *
+    * @return
+    */
+  def improvedCriticalAny: Seq[ImprovedCritical] = {
+    for { wc <- WeaponClass.values } yield ImprovedCritical(wc)
+  }
+
+  // Seq(Feat.WeaponFocusBludgeon, Feat.WeaponFocusPiercing, Feat.WeaponFocusSlashing, Feat.WeaponFocusRanged, Feat.WeaponFocusThrown)
+
+  case class ImprovedCritical(weaponClass: WeaponClass)
+      extends GeneralFeat
+      with ImprovedCriticalBase
+      with SubFeat
+      with Prefix
+      with FriendlyDisplay {
+    override def prefix: Option[String] = Some("Improved Critical")
+
+    /**
+      * Delimits the prefix and text.
+      */
+    override protected val prefixSeparator: String = ": "
+
+    override protected def nameSource: String = weaponClass.displayText
+  }
 
   case object PowerCritical extends GeneralFeat with PowerCritical
 
@@ -419,6 +456,9 @@ object GeneralFeat
     override val subFeats: Seq[GeneralFeat with SubFeat] = spellFocusAny
   }
 
+  def spellFocusAny: Seq[SpellFocus] =
+    for { x <- School.values } yield SpellFocus(x)
+
   case class SpellFocus(school: School)
       extends GeneralFeat
       with SpellFocusBase
@@ -432,9 +472,6 @@ object GeneralFeat
 
     override def prefix: Option[String] = Some("SpellFocus".splitByCase)
   }
-
-  def spellFocusAny: Seq[SpellFocus] =
-    for { x <- School.values } yield SpellFocus(x)
 
   case object GreaterSpellFocus
       extends GeneralFeat
@@ -557,6 +594,7 @@ object GeneralFeat
       override val grantToClass: Seq[(CharacterClass, Int)],
       weapon: WeaponCategory with MartialWeapon*)
       extends GeneralFeat
+      with RaceRequisiteImpl
       with MartialWeaponProficiencyBase
       with Prefix
       with SubFeat {
@@ -588,11 +626,29 @@ object GeneralFeat
                          CharacterClass.Fighter,
                          CharacterClass.Paladin,
                          CharacterClass.Ranger).map((_, 1))
-
+    val bardWeapons
+      : Map[WeaponCategory with MartialWeapon, List[(CharacterClass, Int)]] =
+      List(Longsword, Rapier, Shortsword, Shortbow)
+        .map(_ -> List((Bard, 1)))
+        .toMap
     val weaponGrants
       : Map[WeaponCategory with MartialWeapon, List[(CharacterClass, Int)]] =
       WeaponCategory.martialWeapons.map(_ -> autoGrant).toMap
-    weaponGrants.filter(_._1.eq(wc)).values
+
+    val unfiltered
+      : Set[(WeaponCategory with MartialWeapon, List[(CharacterClass, Int)])] =
+      for {
+        k <- weaponGrants.keySet
+        x = for {
+          a <- weaponGrants.find(p => p._1 == k)
+          b <- bardWeapons.find(p => p._1 == k)
+          l = a._2 ++ b._2
+        } yield l
+        g <- weaponGrants.find(p => p._1.eq(k)).map(_._2)
+      } yield k -> x.getOrElse(g)
+
+    unfiltered.filter(_._1.eq(wc)).toMap.values
+    //  weaponGrants.filter(_._1.eq(wc)).values
   }
 
   def classSimpleWeaponGrants(wc: WeaponCategory with SimpleWeapon)
@@ -600,7 +656,8 @@ object GeneralFeat
     val autoGrant = List(CharacterClass.Barbarian,
                          CharacterClass.Fighter,
                          CharacterClass.Paladin,
-                         CharacterClass.Ranger).map((_, 1))
+                         CharacterClass.Ranger,
+                         CharacterClass.Bard).map((_, 1))
 
     val weaponGrants
       : Map[WeaponCategory with SimpleWeapon, List[(CharacterClass, Int)]] =
@@ -613,10 +670,10 @@ object GeneralFeat
     val weaponGrants
       : Map[WeaponCategory with MartialWeapon, List[(Race, Int)]] =
       Map(
-        WeaponCategory.Longsword -> List((Race.Elf, 1)),
-        WeaponCategory.Longbow -> List((Race.Elf, 1)),
-        WeaponCategory.Shortbow -> List((Race.Elf, 1)),
-        WeaponCategory.Rapier -> List((Race.Elf, 1), (Race.DrowElf, 1)),
+        WeaponCategory.Longsword -> List((Race.Elf, 1),(Race.Morninglord, 1)),
+        WeaponCategory.Longbow -> List((Race.Elf, 1),(Race.Morninglord, 1)),
+        WeaponCategory.Shortbow -> List((Race.Elf, 1),(Race.Morninglord, 1)),
+        WeaponCategory.Rapier -> List((Race.Elf, 1),(Race.Morninglord, 1), (Race.DrowElf, 1)),
         WeaponCategory.Shortsword -> List((Race.DrowElf, 1)),
         WeaponCategory.LightHammer -> List((Race.Gnome, 1),
                                            (Race.DeepGnome, 1)),
@@ -640,6 +697,7 @@ object GeneralFeat
 
   case object MartialWeaponProficiency
       extends GeneralFeat
+      with RaceRequisiteImpl
       with MartialWeaponProficiencyBase
       with ParentFeat {
     override val subFeats: Seq[GeneralFeat with SubFeat] =
@@ -650,6 +708,7 @@ object GeneralFeat
       override val grantsToRace: Seq[(Race, Int)],
       weapon: WeaponCategory with ExoticWeapon*)
       extends GeneralFeat
+      with RaceRequisiteImpl
       with ExoticWeaponProficiencyBase
       with Prefix
       with SubFeat {
@@ -675,6 +734,7 @@ object GeneralFeat
 
   case object ExoticWeaponProficiency
       extends GeneralFeat
+      with RaceRequisiteImpl
       with ExoticWeaponProficiencyBase
       with ParentFeat {
     override val subFeats: Seq[GeneralFeat with SubFeat] =
@@ -777,5 +837,6 @@ object GeneralFeat
       greaterSpellFocusAny ++
       weaponSpecializationAny ++
       greaterWeaponSpecializationAny ++
-      skillFocusAny
+      skillFocusAny ++
+      improvedCriticalAny
 }

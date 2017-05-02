@@ -1,10 +1,13 @@
 package org.aos.ddo.model.feats
 
 import org.aos.ddo.model.skill.Skill
-import org.aos.ddo.support.requisite.{FeatRequisiteImpl, RequiresSkill}
+import org.aos.ddo.support.requisite.{
+  FeatRequisiteImpl,
+  RequiresAnyOfSkill,
+  SkillRequisiteImpl
+}
 
 /**
-  * Icon 	Feat 	Type 	Description 	Prerequisites
   * Icon Feat Single Weapon Fighting.png
   * Single Weapon Fighting
   * Passive
@@ -15,7 +18,10 @@ import org.aos.ddo.support.requisite.{FeatRequisiteImpl, RequiresSkill}
   * Note: Actually increases base number of attacks per second from 1.4 to 1.6.[Unverified]
   * 2 ranks of Balance
   */
-protected[feats] trait SingleWeaponFighting extends FeatRequisiteImpl with Passive with RequiresSkill {
-  self: GeneralFeat =>
-  override def requiresSkill: Seq[(Skill, Int)] = List((Skill.Balance, 2))
+protected[feats] trait SingleWeaponFighting
+    extends FeatRequisiteImpl
+    with SkillRequisiteImpl
+    with Passive
+    with RequiresAnyOfSkill { self: GeneralFeat =>
+  override def oneOfSkill: Seq[(Skill, Int)] = List((Skill.Balance, 2))
 }

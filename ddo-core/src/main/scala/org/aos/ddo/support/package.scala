@@ -26,6 +26,7 @@ import scala.util.Random
 import scala.util.control.Exception.catching
 
 package object support extends LazyLogging {
+
   /**
     * The Current Max Level achievable by a player.
     */
@@ -35,11 +36,13 @@ package object support extends LazyLogging {
     * Current Valid range of levels considered [[http://ddowiki.com/page/Heroic Heroic Levels]]
     */
   final val HeroicLevels: Range.Inclusive = 1 to 20
+
   /**
     * Current valid range of levels considered [[http://ddowiki.com/page/Epic_levels Epic Levels]]
     */
   final val EpicLevels: Range.Inclusive = 21 to LevelCap
-  final val CharacterLevels: _root_.scala.collection.immutable.Range.Inclusive = HeroicLevels.min to EpicLevels.max
+  final val CharacterLevels
+    : _root_.scala.collection.immutable.Range.Inclusive = HeroicLevels.min to EpicLevels.max
 
   object TraverseOps {
 
@@ -126,8 +129,9 @@ package object support extends LazyLogging {
       def splitByCase: String = {
         val b = new StringBuilder
         s.toCharArray.foreach { c =>
-          if (c.isLetter && c.isUpper) b.append(s"$Space$c")
-          else b.append(c.toString)
+          if (c.isLetter && c.isUpper) {
+            b.append(s"$Space$c")
+          } else { b.append(c.toString) }
         }
         b.mkString.trim
       }

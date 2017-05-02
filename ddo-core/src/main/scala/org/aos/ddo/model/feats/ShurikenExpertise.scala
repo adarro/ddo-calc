@@ -4,12 +4,7 @@ import org.aos.ddo.model.attribute.Attribute
 import org.aos.ddo.model.feats.GeneralFeat.ExoticWeaponProficiency
 import org.aos.ddo.model.item.weapon.WeaponCategory
 import org.aos.ddo.model.race.Race
-import org.aos.ddo.support.requisite.{
-  FeatRequisiteImpl,
-  RaceRequisite,
-  RequiresAnyOfFeat,
-  RequiresAttribute
-}
+import org.aos.ddo.support.requisite._
 
 /** Shuriken Expertise.PNG
   * Shuriken Expertise 	Passive 	You are skilled with the use of the shuriken, and have a chance to throw an additional one per throw. (Percent chance to throw an additional shuriken is equal to your Dexterity.) This is also a racial feat given to all Drow Elf at level 1, regardless of class.
@@ -22,8 +17,8 @@ import org.aos.ddo.support.requisite.{
   * */
 protected[feats] trait ShurikenExpertise
     extends FeatRequisiteImpl
-    with RaceRequisite
-    with Passive
+      with RaceRequisiteImpl
+      with Passive
     with RequiresAttribute
     with RequiresAnyOfFeat { self: GeneralFeat =>
   override def requiresAttribute: Seq[(Attribute, Int)] =

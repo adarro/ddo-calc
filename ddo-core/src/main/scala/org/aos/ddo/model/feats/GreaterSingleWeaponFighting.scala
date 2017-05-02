@@ -1,7 +1,7 @@
 package org.aos.ddo.model.feats
 
 import org.aos.ddo.model.skill.Skill
-import org.aos.ddo.support.requisite.{FeatRequisiteImpl, RequiresAllOfFeat, RequiresBaB, RequiresSkill}
+import org.aos.ddo.support.requisite._
 
 /** Icon Feat Single Weapon Fighting.png
   * Greater Single Weapon Fighting
@@ -14,11 +14,17 @@ import org.aos.ddo.support.requisite.{FeatRequisiteImpl, RequiresAllOfFeat, Requ
   * 7 ranks of Balance
   * Base Attack Bonus +11
   */
-trait GreaterSingleWeaponFighting extends FeatRequisiteImpl with Passive with RequiresAllOfFeat with RequiresSkill with RequiresBaB {
-  self: GeneralFeat =>
+trait GreaterSingleWeaponFighting
+    extends FeatRequisiteImpl
+    with SkillRequisiteImpl
+    with Passive
+    with RequiresAllOfFeat
+    with RequiresAnyOfSkill
+    with RequiresBaB { self: GeneralFeat =>
   override def requiresBaB = 11
 
-  override def requiresSkill: Seq[(Skill, Int)] = List((Skill.Balance, 7))
+  override def oneOfSkill: Seq[(Skill, Int)] = List((Skill.Balance, 7))
 
-  override def allOfFeats: Seq[GeneralFeat] = List(GeneralFeat.ImprovedSingleWeaponFighting)
+  override def allOfFeats: Seq[GeneralFeat] =
+    List(GeneralFeat.ImprovedSingleWeaponFighting)
 }

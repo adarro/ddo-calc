@@ -1,13 +1,13 @@
 # Shardarkai Feat Spec
 
-[Feats by Race](RacialFeatSpec.html)
+# [Feats](http://ddowiki.com/page/Category:Shadar-kai_feats)
 
 |[ ][existingFeat] [Feats][result] | Description | Type | Icon |
 |-----|-----|-----|-----|
-|[Human](http://ddowiki.com/page/Human) | You are considered human. You are treated as such by magical abilities and effects, and are able to use appropriate equipment. | Passive | ![Icon Feat Human.png](http://ddowiki.com/images/Icon_Feat_Human.png)
+|[Human](http://ddowiki.com/page/Human) | You are considered human. You are treated as such by magical abilities and effects, and are able to use appropriate equipment. | Passive | ![Icon Feat Human.png](/images/Icon_Feat_Human.png)
 
 
-[existingFeat]: - "c:verify-rows=#feat:verifyRacialFeats()"
+[existingFeat]: - "c:verify-rows=#feat:verifyGrantedFeats()"
 [_matchStrategy_]: - "c:matchStrategy=KeyMatch"
 [result]: - "?=#feat"
 [halfling_agility]: http://ddowiki.com/page/Halfling_Agility_(feat)

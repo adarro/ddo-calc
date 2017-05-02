@@ -1,9 +1,11 @@
 # Drow Feat Spec
 
-## [Drow Feats](http://ddowiki.com/page/Category:Drow_feats)
+[Drow Feats](http://ddowiki.com/page/Category:Drow_feats)
 
-|[ ][existingFeat] [Feats][result]  | Type | Description | Prerequisites | Icon |
-|----|---|---|---|----|
+## Granted
+
+|[ ][grantedFeats] [Feats][result] | Type | Description | Prerequisites | Icon |
+|----------------------------------------|--------|----|----|---|
 |[Drow Spell Resistance](http://ddowiki.com/page/Drow_Spell_Resistance)| Passive | Drow are naturally resistant to spells and magical effects. They have Spell Resistance 10+Character Level. | Drow | Icon Feat Drow Spell Resistance.png |
 |[Elven Keen Senses](http://ddowiki.com/page/Elven_Keen_Senses)| Passive |	Elves have keen senses and gain a +2 bonus to Listen, Search, and Spot checks. | Drow | Icon Feat Elven.png|
 |[Enchantment Save Bonus](http://ddowiki.com/page/Enchantment_Save_Bonus)| Passive |	Elves are naturally resistant to enchantments, receiving a +2 bonus on saves against enchantments. | Drow | Icon Feat Elven.png|
@@ -15,11 +17,11 @@
 |[Spell Save Bonus](http://ddowiki.com/page/Spell_Save_Bonus)| Passive |	Drow are naturally resistant to spells, receiving a +2 bonus on Will saves against spell effects. | Drow | Icon Feat Exotic Weapon Proficiency.png |
 
 
-[existingFeat]: - "c:verify-rows=#feat:verifyRacialFeats()"
+[grantedFeats]: - "c:verify-rows=#feat:verifyGrantedFeats()"
+[availableFeats]: - "c:verify-rows=#feat:verifyAvailableFeats()"
 [_matchStrategy_]: - "c:matchStrategy=KeyMatch"
 [result]: - "?=#feat"
-[elf_feat]: http://www.ddowiki.com/edit/Elf_(feat)?redlink=1 "Elf (feat) (page does not exist)"
-[elf_race]: http://www.ddowiki.com/page/Elf "Elf"
-[sunelf_race]: http://www.ddowiki.com/page/Sun_Elf_(Morninglord) "Sun Elf (Morninglord)"
 ![Attribution-ShareAlike 2.5](/images/somerights20.png)
 [Attribution-ShareAlike 2.5](https://creativecommons.org/licenses/by-sa/2.5/) Images and general information available from http://ddowiki.com
+
+

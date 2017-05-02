@@ -23,7 +23,7 @@ protected[feats] trait WildernessLore
     with FreeFeat { self: ClassFeat =>
 
   private def bardLevels =
-    (1 to 20).filter(_ % 2 == 1).toList.map((CharacterClass.Bard, _))
+    (1 to 20 by 2).toList.map((CharacterClass.Bard, _))
 
   private def allLevelsClasses =
     for {

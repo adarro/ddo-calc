@@ -17,6 +17,6 @@ protected[feats] trait DamageReduction
     extends FeatRequisiteImpl
     with Passive
     with GrantsToClass
-    with FreeFeat { self: ClassFeat =>
+    with FreeFeat { self: ClassFeat with DamageReductionPrefix =>
   override def grantToClass: Seq[(CharacterClass, Int)] = List((Barbarian, 2))
 }

@@ -17,7 +17,7 @@ trait ClassDisplayHelper extends DisplayHelper {
   type FNLevel = (Entry) => Seq[(CharacterClass, Int)]
   type FNClass = (Entry) => Seq[CharacterClass]
 
-  val cClass: CharacterClass
+  def cClass: CharacterClass
 
   val filterByAllOf: PartialFunction[Entry, Entry] = {
     case x: ClassRequisite if x.allOfClass.exists(isDefinedForClass(_)) => x
@@ -38,7 +38,7 @@ trait ClassDisplayHelper extends DisplayHelper {
       (x, y)
   }
 
-  val existing = filterByAllOf orElse filterByAnyOf orElse filterByGrantedTo
+  val existing: PartialFunction[Entry, Entry] = filterByAllOf orElse filterByAnyOf orElse filterByGrantedTo
 
   def isDefinedForClass(e: (CharacterClass, Int),
                         level: Option[Int] = None): Boolean =

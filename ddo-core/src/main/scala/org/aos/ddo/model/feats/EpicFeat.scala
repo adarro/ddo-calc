@@ -1,7 +1,10 @@
 package org.aos.ddo.model.feats
 
 import enumeratum.Enum
-import org.aos.ddo.support.naming.FriendlyDisplay
+import org.aos.ddo.model.schools.School
+import org.aos.ddo.support.EpicLevels
+import org.aos.ddo.support.StringUtils.Extensions
+import org.aos.ddo.support.naming.{FriendlyDisplay, Prefix}
 import org.aos.ddo.support.requisite._
 
 import scala.collection.immutable
@@ -12,11 +15,19 @@ import scala.collection.immutable
 sealed trait EpicFeat
     extends Feat
     with FriendlyDisplay
-    with SubFeatInformation {
+    with SubFeatInformation
+    with RequiresCharacterLevel {
   self: FeatType with Requisite with Inclusion with EpicFeatCategory =>
+
+  /**
+    * Default Minimum Level for all Epic Feats.
+    * Override this with a higher level as needed.
+    */
+  override val characterLevel: Int = EpicLevels.min
 
 }
 
+// scalastyle:off  number.of.methods
 object EpicFeat extends Enum[EpicFeat] with FeatSearchPrefix with FeatMatcher {
   val matchFeat: PartialFunction[Feat, EpicFeat] = {
     case x: EpicFeat => x
@@ -27,6 +38,9 @@ object EpicFeat extends Enum[EpicFeat] with FeatSearchPrefix with FeatMatcher {
         case Some(y) => y
       }
   }
+
+  def epicSpellFocusAny: immutable.IndexedSeq[EpicSpellFocus] =
+    for { x <- School.values } yield EpicSpellFocus(x)
 
   // General Passive Feats
   case object BlindingSpeed
@@ -56,6 +70,7 @@ object EpicFeat extends Enum[EpicFeat] with FeatSearchPrefix with FeatMatcher {
       with GeneralPassive
       with FreeFeat
       with EpicFortitude
+
   case object EpicReflexes
       extends FeatRequisiteImpl
       with EpicFeat
@@ -112,13 +127,182 @@ object EpicFeat extends Enum[EpicFeat] with FeatSearchPrefix with FeatMatcher {
       with FreeFeat
       with WatchfulEye
 
+  // Ranged Combat Passive
+  case object CombatArchery
+      extends FeatRequisiteImpl
+      with EpicFeat
+      with RangedCombatPassive
+      with CombatArchery
+
+  case object BurstOfGlacialWrath
+      extends FeatRequisiteImpl
+      with EpicFeat
+      with BurstOfGlacialWrath
+
+  case object Ruin extends FeatRequisiteImpl with EpicFeat with Ruin
+
+  case object GreaterRuin
+      extends FeatRequisiteImpl
+      with EpicFeat
+      with GreaterRuin
+
+  case object EpicMentalToughness
+      extends FeatRequisiteImpl
+      with EpicFeat
+      with EpicMentalToughness
+
+  case object EpicSpellFocus
+      extends EpicSpellFocusBase
+      with EpicFeat
+      with ParentFeat {
+    override val subFeats: Seq[EpicFeat with SubFeat] =
+      epicSpellFocusAny
+  }
+
+  case class EpicSpellFocus(school: School)
+      extends EpicSpellFocusBase
+      with EpicFeat
+      with SubFeat
+      with Prefix {
+    override protected def nameSource: String = school.displayText
+
+    /** Delimits the prefix and text.
+      */
+    override protected val prefixSeparator: String = ": "
+
+    override def prefix: Option[String] = Some("EpicSpellFocus".splitByCase)
+
+    private def lesser = GeneralFeat.spellFocusAny.filter { x =>
+      x.school.eq(school)
+    }
+
+    override def allOfFeats: Seq[GeneralFeat] = lesser
+  }
+
+  case object EpicSpellPenetration
+      extends FeatRequisiteImpl
+      with EpicFeat
+      with EpicSpellPenetration
+
+  case object ImprovedAugmentSummoning
+      extends FeatRequisiteImpl
+      with EpicFeat
+      with ImprovedAugmentSummoning
+
+  case object MasterOfAir
+      extends FeatRequisiteImpl
+      with EpicFeat
+      with SpellCastingPassive
+      with FreeFeat
+      with MasterOfAir
+
+  case object MasterOfAlignment
+      extends FeatRequisiteImpl
+      with EpicFeat
+      with SpellCastingPassive
+      with FreeFeat
+      with MasterOfAlignment
+
+  case object MasterOfArtifice
+      extends FeatRequisiteImpl
+      with EpicFeat
+      with SpellCastingPassive
+      with FreeFeat
+      with MasterOfArtifice
+
+  case object MasterOfEarth
+      extends FeatRequisiteImpl
+      with EpicFeat
+      with SpellCastingPassive
+      with FreeFeat
+      with MasterOfEarth
+
+  case object MasterOfFire
+      extends FeatRequisiteImpl
+      with EpicFeat
+      with SpellCastingPassive
+      with FreeFeat
+      with MasterOfFire
+
+  case object MasterOfKnowledge
+      extends FeatRequisiteImpl
+      with EpicFeat
+      with SpellCastingPassive
+      with FreeFeat
+      with MasterOfKnowledge
+
   case object MasterOfLight
       extends FeatRequisiteImpl
       with EpicFeat
-      with SpellCastingActive
+      with SpellCastingPassive
       with FreeFeat
+      with MasterOfLight
 
+  case object MasterOfMusic
+      extends FeatRequisiteImpl
+      with EpicFeat
+      with SpellCastingPassive
+      with FreeFeat
+      with MasterOfMusic
 
+  case object MasterOfWater
+      extends FeatRequisiteImpl
+      with EpicFeat
+      with SpellCastingPassive
+      with FreeFeat
+      with MasterOfWater
+
+  case object MasterOfTheDead
+      extends FeatRequisiteImpl
+      with EpicFeat
+      with SpellCastingPassive
+      with FreeFeat
+      with MasterOfTheDead
+
+  case object MasterOfTheWilds
+      extends FeatRequisiteImpl
+      with EpicFeat
+      with SpellCastingPassive
+      with FreeFeat
+      with MasterOfTheWilds
+
+  case object EmboldenSpell
+      extends FeatRequisiteImpl
+      with EpicFeat
+      with FreeFeat
+      with EmboldenSpell
+
+  case object IntensifySpell
+      extends FeatRequisiteImpl
+      with EpicFeat
+      with FreeFeat
+      with IntensifySpell
+
+  case object ConstructExemplar
+      extends FeatRequisiteImpl
+      with RaceRequisiteImpl
+      with ClassRequisiteImpl
+      with EpicFeat
+      with FreeFeat
+      with ConstructExemplar
+
+  case object InspireExcellence
+      extends FeatRequisiteImpl
+      with SkillRequisiteImpl
+      with ClassRequisiteImpl
+      with EpicFeat
+      with InspireExcellence
+
+  case object ImprovedMartialArts
+      extends FeatRequisiteImpl
+      with EpicFeat
+      with ImprovedMartialArts
+
+  case object VorpalStrikes extends VorpalStrikes with EpicFeat
+
+  case object ImprovedSneakAttack extends ImprovedSneakAttack with EpicFeat
+
+  case object EpicEldritchBlast extends EpicEldritchBlast with EpicFeat
 
   override def values: immutable.IndexedSeq[EpicFeat] = findValues
 }

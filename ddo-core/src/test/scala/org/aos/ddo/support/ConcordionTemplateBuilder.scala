@@ -40,6 +40,8 @@ class ConcordionTemplateBuilder extends LazyLogging {
     }
   }
 
+
+
   def renderEnum(fqn: String): Option[String] = {
     val path = s"$basePath/Enum.jade"
     val cpPath = getClass.getResource(path).getFile

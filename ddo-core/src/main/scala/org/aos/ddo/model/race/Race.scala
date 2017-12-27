@@ -11,11 +11,11 @@ import scala.collection.immutable.IndexedSeq
 /**
   * Represents a DDO Race [http://ddowiki.com/page/Races]
   */
-sealed trait Race extends EnumEntry {
+sealed trait Race extends EnumEntry with AttributeModifierInit {
   self: Availability with HomeWorld with AttributeModifier =>
 }
 
-trait EberronRace extends  HomeWorld { self: Race =>
+trait EberronRace extends HomeWorld { self: Race =>
   override def world: World = World.Eberron
 }
 
@@ -34,8 +34,8 @@ object Race extends Enum[Race] with SearchPrefix {
   }
 
   case object Bladeforged
-      extends Race with EberronRace
-      with AttributeModifierInit
+      extends Race
+      with EberronRace
       with IconicFeature
       with DexterityModifier
       with ConstitutionModifier
@@ -46,8 +46,8 @@ object Race extends Enum[Race] with SearchPrefix {
   }
   // Svirfneblin
   case object DeepGnome
-      extends Race with ForgottenRealmsRace
-      with AttributeModifierInit
+      extends Race
+      with ForgottenRealmsRace
       with IconicFeature
       with IntelligenceModifier
       with WisdomModifier
@@ -60,8 +60,8 @@ object Race extends Enum[Race] with SearchPrefix {
   }
 
   case object DragonBorn
-      extends Race  with EberronRace
-      with AttributeModifierInit
+      extends Race
+      with EberronRace
       with VIPFeature
       with StrengthModifier
       with CharismaModifier
@@ -72,8 +72,8 @@ object Race extends Enum[Race] with SearchPrefix {
   }
 
   case object DrowElf
-      extends Race with EberronRace
-      with AttributeModifierInit
+      extends Race
+      with EberronRace
       with FavorFeature
       with DexterityModifier
       with IntelligenceModifier
@@ -87,8 +87,8 @@ object Race extends Enum[Race] with SearchPrefix {
   }
 
   case object Dwarf
-      extends Race with EberronRace
-      with AttributeModifierInit
+      extends Race
+      with EberronRace
       with FreeToPlayFeature
       with ConstitutionModifier
       with CharismaModifier {
@@ -97,8 +97,8 @@ object Race extends Enum[Race] with SearchPrefix {
   }
 
   case object Elf
-      extends Race with EberronRace
-      with AttributeModifierInit
+      extends Race
+      with EberronRace
       with FreeToPlayFeature
       with DexterityModifier
       with ConstitutionModifier {
@@ -107,8 +107,8 @@ object Race extends Enum[Race] with SearchPrefix {
   }
 
   case object Gnome
-      extends Race with EberronRace
-      with AttributeModifierInit
+      extends Race
+      with EberronRace
       with PremiumFeature
       with IntelligenceModifier
       with StrengthModifier {
@@ -117,8 +117,8 @@ object Race extends Enum[Race] with SearchPrefix {
   }
 
   case object Halfling
-      extends Race with EberronRace
-      with AttributeModifierInit
+      extends Race
+      with EberronRace
       with FreeToPlayFeature
       with DexterityModifier
       with StrengthModifier {
@@ -127,14 +127,14 @@ object Race extends Enum[Race] with SearchPrefix {
   }
 
   case object HalfElf
-      extends Race with EberronRace
-      with AttributeModifierInit
+      extends Race
+      with EberronRace
       with PremiumFeature
       with DefaultAttributeModifier
 
   case object HalfOrc
-      extends Race with EberronRace
-      with AttributeModifierInit
+      extends Race
+      with EberronRace
       with PremiumFeature
       with StrengthModifier
       with IntelligenceModifier
@@ -145,14 +145,14 @@ object Race extends Enum[Race] with SearchPrefix {
   }
 
   case object Human
-      extends Race with EberronRace
-      with AttributeModifierInit
+      extends Race
+      with EberronRace
       with FreeToPlayFeature
       with DefaultAttributeModifier
 
   case object Morninglord
-      extends Race with ForgottenRealmsRace
-      with AttributeModifierInit
+      extends Race
+      with ForgottenRealmsRace
       with IconicFeature
       with IntelligenceModifier
       with ConstitutionModifier {
@@ -161,14 +161,14 @@ object Race extends Enum[Race] with SearchPrefix {
   }
 
   case object PurpleDragonKnight
-      extends Race with ForgottenRealmsRace
-      with AttributeModifierInit
+      extends Race
+      with ForgottenRealmsRace
       with IconicFeature
       with DefaultAttributeModifier
 
   case object Shadarkai
-      extends Race with ForgottenRealmsRace
-      with AttributeModifierInit
+      extends Race
+      with ForgottenRealmsRace
       with IconicFeature
       with DexterityModifier
       with CharismaModifier {
@@ -177,8 +177,8 @@ object Race extends Enum[Race] with SearchPrefix {
   }
 
   case object Warforged
-      extends Race with EberronRace
-      with AttributeModifierInit
+      extends Race
+      with EberronRace
       with PremiumFeature
       with ConstitutionModifier
       with WisdomModifier

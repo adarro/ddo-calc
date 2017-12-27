@@ -16,17 +16,16 @@
 package org.aos.ddo.web
 
 import com.typesafe.scalalogging.LazyLogging
-import net.ruippeixotog.scalascraper.browser.{Browser, JsoupBrowser}
+import net.ruippeixotog.scalascraper.browser.JsoupBrowser
 import net.ruippeixotog.scalascraper.dsl.DSL.Extract._
-import net.ruippeixotog.scalascraper.model.{Document, Element}
 import net.ruippeixotog.scalascraper.dsl.DSL._
+import net.ruippeixotog.scalascraper.model.{Document, Element}
 import org.aos.ddo.web.mapping.FieldMapper
 
 import scala.collection.mutable.ListBuffer
 // import org.jsoup.nodes.{Document, Element}
 
 import scala.collection.mutable
-import scala.collection.mutable.Buffer
 import scala.languageFeature.postfixOps
 
 /**
@@ -45,7 +44,7 @@ object Warehouse extends LazyLogging {
     * @param e HTML fragment containing desired text
     * @return a Collection of found elements or an empty list if none are found.
     */
-  protected[web] def byExploding(e: Element) = {
+  protected[web] def byExploding(e: Element): List[String] = {
     e >?> elements(HtmlTag.ListItem) match {
       case Some(_) =>
         for { ele <- e >> elementList(HtmlTag.ListItem) } yield ele.text

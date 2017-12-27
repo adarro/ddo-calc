@@ -27,6 +27,7 @@ import org.scalatest.junit.JUnitRunner
 import org.scalatest.mockito.MockitoSugar
 import scala.language.reflectiveCalls
 import com.typesafe.scalalogging.LazyLogging
+import org.scalatest.OptionValues._
 
 @RunWith(classOf[JUnitRunner])
 class DDoWikiScrapingIT extends FunSpec with Matchers with MockitoSugar with LazyLogging {
@@ -61,7 +62,8 @@ class DDoWikiScrapingIT extends FunSpec with Matchers with MockitoSugar with Laz
       result.isStump should be(false)
       result.leaves should be('empty)
       result.branches should not be 'empty
-      result.branches.getOrElse(Nil) should have length 1
+      val r =result.branches.getOrElse(Nil) //) should have length 1
+      
       val branches = result.branches.getOrElse(Nil)
       val leaves = branches.head.leaves.getOrElse(Nil).toSeq
       leaves should have length 6
@@ -74,17 +76,17 @@ class DDoWikiScrapingIT extends FunSpec with Matchers with MockitoSugar with Laz
       val result = Tree(Warehouse.readHtmlList(fragment))
       result.isStump should be(false)
       result.leaves should be('empty)
-      result.branches should not be 'empty
-      result.branches.getOrElse(Nil) should have length 1
+      result.branches shouldBe defined
+      result.branches.value should have size 1
       val branches = result.branches.getOrElse(Nil)
       val leaves = branches.head.leaves.getOrElse(Nil).toSeq
       leaves should have length 2
       val nestedBranches = branches.head.branches.getOrElse(Nil).toList
       nestedBranches should have length 1
-      nestedBranches.head.leaves should not be 'empty
+      nestedBranches.head.leaves shouldBe defined
       nestedBranches.head.branches should be('empty)
-      val branchedLeaves = nestedBranches.head.leaves.getOrElse(Nil).toSeq
-      branchedLeaves should have length 5
+      nestedBranches.head.leaves.value should have size 5
+    
 
     }
 

@@ -20,7 +20,7 @@ Dice <- setClass(
    validity=function(object)
   {
     if(object@sides <= 0) {
-      return("Zero orless sided dice are not allowed on this plane of existence.")
+      return("Zero or less sided dice are not allowed on this plane of existence.")
     }
      #TODO: quantity should be a whole number, you can't have 2.5 dice.
     if (object@quantity < 0) {

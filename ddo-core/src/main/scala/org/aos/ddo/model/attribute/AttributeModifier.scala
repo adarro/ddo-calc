@@ -9,8 +9,6 @@ import scala.collection.immutable.HashSet
   */
 sealed trait AttributeModifier {
   type M = (Attribute, Int)
-//  protected[attributes] val attribute: Attribute
-//  protected[attributes] val amount: Int
   def modifiedAttributes: Set[M]
 }
 

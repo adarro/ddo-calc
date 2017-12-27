@@ -8,7 +8,7 @@ import scala.collection.immutable.HashSet
 sealed trait Availability {
   def availabilityLevels: Set[AvailabilityLevel] = new HashSet[AvailabilityLevel]()
 
-  def isFreeToPlay: Boolean = availabilityLevels.contains(AvailabilityLevel.FreeToPlay) && availabilityLevels.contains(AvailabilityLevel.Favor)
+  def isFreeToPlay: Boolean = availabilityLevels.contains(AvailabilityLevel.FreeToPlay) || availabilityLevels.contains(AvailabilityLevel.Favor)
 
   def isPremiumFeature: Boolean = availabilityLevels.contains(AvailabilityLevel.Premium)
 

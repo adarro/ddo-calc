@@ -1,0 +1,25 @@
+---
+plugins:
+  markdownlint:
+    enabled: true
+engines:
+ scalastyle:
+   enabled: true
+   exclude_paths:
+     - config/engines.yml
+     - **/test/**/*
+     - **/spec/**/*
+ metrics:
+   enabled: true
+   exclude_paths:
+     - config/engines.yml
+ coverage:
+   enabled: true
+   exclude_paths:
+     - config/engines.yml
+exclude_paths:
+  - .bundle/**
+  - spec/**/*
+  - benchmarks/**/*
+  - '*.min.js'
+  - '**/tests/**'

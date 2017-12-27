@@ -13,6 +13,7 @@ object RequirementOption extends Enum[RequirementOption] {
 
   /**
     * Automatically granted without the need to acquire additional combinations.
+    *
     * @note minimum level still applies.
     *       This is used mainly for quickly determining if a given feat / skill etc are automatically granted
     *       upon character creation or reaching a level as opposed to explicitly needing to purchase.
@@ -34,5 +35,6 @@ object RequirementOption extends Enum[RequirementOption] {
     * Examples include the Toughness Feat.
     */
   case object Available extends RequirementOption
+
   override def values: immutable.IndexedSeq[RequirementOption] = findValues
 }

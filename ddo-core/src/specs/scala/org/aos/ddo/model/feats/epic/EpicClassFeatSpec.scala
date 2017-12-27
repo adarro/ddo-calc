@@ -30,7 +30,7 @@ class EpicClassFeatSpec
     instanceClass = result
   }
 
-  var instanceClass: Option[CharacterClass] = None
+ private var instanceClass: Option[CharacterClass] = None
 
   override def cClass: CharacterClass =
     instanceClass.getOrElse(CharacterClass.Artificer)

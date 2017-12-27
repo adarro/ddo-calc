@@ -2,11 +2,7 @@ package org.aos.ddo.model.feats
 
 import org.aos.ddo.model.classes.CharacterClass
 import org.aos.ddo.model.classes.CharacterClass.Barbarian
-import org.aos.ddo.support.requisite.{
-  FeatRequisiteImpl,
-  FreeFeat,
-  GrantsToClass
-}
+import org.aos.ddo.support.requisite.{FeatRequisiteImpl, FreeFeat, GrantsToClass}
 
 /**
   * [[http://ddowiki.com/page/Rage_(feat) Rage]]
@@ -28,9 +24,10 @@ import org.aos.ddo.support.requisite.{
   * The in-game text description of "30 seconds plus an additional amount of time based on your Constitution" is incorrect.
   */
 protected[feats] trait Rage
-    extends FeatRequisiteImpl
+  extends FeatRequisiteImpl
     with Passive
     with GrantsToClass
-    with FreeFeat { self: ClassFeat =>
+    with FreeFeat {
+  self: ClassFeat =>
   override def grantToClass: Seq[(CharacterClass, Int)] = List((Barbarian, 1))
 }

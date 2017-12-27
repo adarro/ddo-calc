@@ -58,7 +58,7 @@ object Extractor extends LazyLogging {
         logger.info(s"critical profile: $infoText")
         Some(
           critProfile(
-            if (min == null) max.toInt else min.toInt, // scalastyle:off null
+           Option(min).getOrElse(max).toInt,
             max toInt,
             multiplier toInt))
       case _ =>

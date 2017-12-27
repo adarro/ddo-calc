@@ -4,7 +4,7 @@
   * you may not use this file except in compliance with the License.
   * You may obtain a copy of the License at
   *
-  *      http://www.apache.org/licenses/LICENSE-2.0
+  * http://www.apache.org/licenses/LICENSE-2.0
   *
   * Unless required by applicable law or agreed to in writing, software
   * distributed under the License is distributed on an "AS IS" BASIS,
@@ -16,18 +16,18 @@ package org.aos.ddo.web.mapping
 
 import java.io.File
 
+import com.typesafe.scalalogging.LazyLogging
 import net.ruippeixotog.scalascraper.browser.JsoupBrowser
 import net.ruippeixotog.scalascraper.model.Document
-import org.aos.ddo.web.{Tree, Warehouse}
-//import org.jsoup.Jsoup
-//import org.jsoup.nodes.Document
+import org.aos.ddo.web.{Branch, Tree, Warehouse}
 import org.junit.runner.RunWith
-import org.scalatest.{ FunSpec, Matchers }
+import org.scalatest.{FunSpec, Matchers}
 import org.scalatest.junit.JUnitRunner
 import org.scalatest.mockito.MockitoSugar
-import scala.language.reflectiveCalls
-import com.typesafe.scalalogging.LazyLogging
 import org.scalatest.OptionValues._
+
+import scala.language.reflectiveCalls
+
 
 @RunWith(classOf[JUnitRunner])
 class DDoWikiScrapingIT extends FunSpec with Matchers with MockitoSugar with LazyLogging {
@@ -37,14 +37,6 @@ class DDoWikiScrapingIT extends FunSpec with Matchers with MockitoSugar with Laz
   lazy val simplePath = "Elyd_Edge.html"
   lazy val multiLevelPath = ""
   val browser = JsoupBrowser()
-  protected def loadLocalTestHtml(fileName: String, charsetName: String = defaultEncoding, baseUri: String = baseUri): Document = {
-    val url = Thread.currentThread().getContextClassLoader.getResource(fileName)
-    logger.info(s"Local file: ${url.getPath}")
-    val in = new File(url.getPath)
-    if (!in.exists()) logger.warn("can not load file!!")
-    browser.parseFile(in,charsetName)
-
-  }
 
   private def fixture = new {
 
@@ -53,6 +45,16 @@ class DDoWikiScrapingIT extends FunSpec with Matchers with MockitoSugar with Laz
     // Eyld Edge
     val simpleListDoc: Document = loadLocalTestHtml(simplePath)
   }
+
+  protected def loadLocalTestHtml(fileName: String, charsetName: String = defaultEncoding, baseUri: String = baseUri): Document = {
+    val url = Thread.currentThread().getContextClassLoader.getResource(fileName)
+    logger.info(s"Local file: ${url.getPath}")
+    val in = new File(url.getPath)
+    if (!in.exists()) logger.warn("can not load file!!")
+    browser.parseFile(in, charsetName)
+
+  }
+
   describe("Effect / enhancement List") {
     it("Should read a Simple list") {
       // This example has 6 items in a Simple list, so we should have one branch with 6 leaves
@@ -61,12 +63,9 @@ class DDoWikiScrapingIT extends FunSpec with Matchers with MockitoSugar with Laz
       val result = Tree(Warehouse.readHtmlList(fragment))
       result.isStump should be(false)
       result.leaves should be('empty)
-      result.branches should not be 'empty
-      val r =result.branches.getOrElse(Nil) //) should have length 1
-      
-      val branches = result.branches.getOrElse(Nil)
-      val leaves = branches.head.leaves.getOrElse(Nil).toSeq
-      leaves should have length 6
+      result.branches.value should have size 1
+      result.branches.value.head.leaves.value.toSeq should have length 6
+
     }
 
     it("Should read a nested UL list") {
@@ -79,14 +78,14 @@ class DDoWikiScrapingIT extends FunSpec with Matchers with MockitoSugar with Laz
       result.branches shouldBe defined
       result.branches.value should have size 1
       val branches = result.branches.getOrElse(Nil)
-      val leaves = branches.head.leaves.getOrElse(Nil).toSeq
-      leaves should have length 2
-      val nestedBranches = branches.head.branches.getOrElse(Nil).toList
+      val leaves = branches.head.leaves.value should have size 2
+      result.branches.value.head.leaves.value should have size 2
+      val nestedBranches = branches.head.branches.value.toList
       nestedBranches should have length 1
       nestedBranches.head.leaves shouldBe defined
       nestedBranches.head.branches should be('empty)
       nestedBranches.head.leaves.value should have size 5
-    
+
 
     }
 

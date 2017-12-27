@@ -20,7 +20,7 @@ import org.aos.ddo.model.alignment.{AlignmentType, Alignments, LawAxis, MoralAxi
 import org.aos.ddo.model.attribute.Attribute
 import org.aos.ddo.model.classes.CharacterClass
 import org.aos.ddo.model.favor.FavorPatron
-import org.aos.ddo.model.feats.{Feat, GeneralFeat}
+import org.aos.ddo.model.feats.Feat
 import org.aos.ddo.model.race.Race
 import org.aos.ddo.model.skill.Skill
 import org.aos.ddo.support.StringUtils.Extensions

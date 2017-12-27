@@ -40,9 +40,6 @@ import scala.util.Try
 //noinspection ScalaStyle
 object WikiParser extends LazyLogging {
 
-  // Implicit to safely attempt String to Int conversion
-  private def tryToInt(s: String) = Try(s.toInt).toOption
-
   /**
     * Extracts the proficiency such as Martial Weapon
     *
@@ -95,7 +92,7 @@ object WikiParser extends LazyLogging {
           case Some(profile) =>
             Some(
               CriticalThreatRange(profile.min to profile.max,
-                                  profile.multiplier))
+                profile.multiplier))
           case _ => None
         }
       case _ => None
@@ -172,14 +169,16 @@ object WikiParser extends LazyLogging {
     *       taking the performance hit over code breaking.
     *       MustContainAtLeastOne potential use case is a aligned race restricted item.
     *       Will try to update and streamline this once we can locate better source data
+    *
+    *       Also, the value 'None' may be included in the text and is filtered out.
     */
   def requiredTrait(source: Map[String, Any]): List[String] = {
     // TODO: Return Option instead of empty list
     source.get(Field.RequiredTrait) match {
       case Some(x: String) if x != "None" =>
         x.split(Comma).toList
-      case Some(x: String) if x == "None" =>
-        logger.info(s"No required traits assigned, value was $x"); Nil
+      case Some(x: String) =>
+        logger.info(s"No required traits assigned, excluded value was $x"); Nil
       case _ => logger.info("No required traits discovered"); Nil
     }
   }
@@ -231,19 +230,10 @@ object WikiParser extends LazyLogging {
     * @return List of Attribute or empty list if none found.
     */
   def attackModifier(source: Map[String, Any]): List[Attribute] = {
-    simpleExtractor(source.get(Field.AttackMod)) match {
-      case Some(x: String) =>
-        logger.debug(s"""AttackMod returned $x""")
-        x.split(",")
-          .toList
-          .filter { name =>
-            Attribute.withNameOption(name).isDefined
-          }
-          .map { name =>
-            Attribute.withName(name)
-          }
-      case _ => logger.error(s"No match found for ${Field.AttackMod}"); Nil
-    }
+    for {e <- List(simpleExtractor(source.get(Field.AttackMod))).flatten
+         x <- e.split(Comma)
+         y <- Attribute.values.find(a => a.toString == x)}
+      yield y
   }
 
   /**
@@ -253,17 +243,10 @@ object WikiParser extends LazyLogging {
     * @return List of Attribute or empty list if none found.
     */
   def damageModifier(source: Map[String, Any]): List[Attribute] = {
-    simpleExtractor(source.get(Field.DamageMod)) match {
-      case Some(x: String) =>
-        logger.debug(s"DamageMod returned $x")
-        for {
-          a <- x.split(Comma).toList
-          n <- Attribute.withNameOption(a)
-        } yield {
-          n
-        }
-      case _ => logger.error(s"No match found for ${Field.DamageMod}"); Nil
-    }
+    for {e <- List(simpleExtractor(source.get(Field.DamageMod))).flatten
+         x <- e.split(Comma)
+         y <- Attribute.values.find(a => a.toString == x)}
+      yield y
   }
 
   /**
@@ -300,9 +283,13 @@ object WikiParser extends LazyLogging {
         }
       case _ =>
         logger.warn(
-          s"No value found for ${Field.Durability}, defaulting to 0"); 0
+          s"No value found for ${Field.Durability}, defaulting to 0");
+        0
     }
   }
+
+  // Implicit to safely attempt String to Int conversion
+  private def tryToInt(s: String) = Try(s.toInt).toOption
 
   /**
     * Extracts material information
@@ -519,7 +506,7 @@ object WikiParser extends LazyLogging {
     * @return
     */
   def criticalProfile(
-      ctr: Option[CriticalThreatRange]): Option[CriticalProfile] = {
+                       ctr: Option[CriticalThreatRange]): Option[CriticalProfile] = {
     ctr match {
       case Some(profile) =>
         Some(new CriticalProfile {

@@ -5,9 +5,6 @@ import org.aos.ddo.support.naming.FriendlyDisplay
 import org.aos.ddo.support.requisite._
 
 import scala.collection.immutable
-import scala.util.Success
-import scala.util.Try
-import scala.util.Failure
 
 /**
  * Created by adarr on 2/14/2017.
@@ -186,79 +183,7 @@ object DeityFeat
    * @return A default or applied prefix
    */
   override def searchPrefixSource: String = "Deity Feat"
-
-  /*
-    case object ChildOfAureon extends DeityFeat with ChildOfAureon
-
-
-    case object ChildOfTheBloodOfVol extends DeityFeat with ChildOfTheBloodOfVol
-
-
-    case object ChildOfTheLordOfBlades extends DeityFeat with ChildOfTheLordOfBlades
-
-
-    case object ChildOfOlladra extends DeityFeat with ChildOfOlladra
-
-
-    case object ChildOfOnatar extends DeityFeat with ChildOfOnatar
-
-
-    case object ChildOfTheSilverFlame extends DeityFeat with ChildOfTheSilverFlame
-
-
-    case object ChildOfTheSovereignHost extends DeityFeat with ChildOfTheSovereignHost
-
-
-    case object ChildOfTheUndyingCourt extends DeityFeat with ChildOfTheUndyingCourt
-
-
-    case object ChildOfVulkoor extends DeityFeat with ChildOfVulkoor
-
-
-    case object ChildOfAmaunator extends DeityFeat with ChildOfAmaunator
-
-
-    case object ChildOfHelm extends DeityFeat with ChildOfHelm
-
-
-    case object ChildOfSilvanus extends DeityFeat with ChildOfSilvanus
-
-
-    case object BelovedOfAureon extends DeityFeat with BelovedOfAureon
-
-
-    case object BelovedOfTheBloodOfVol extends DeityFeat with BelovedOfTheBloodOfVol
-
-
-    case object BelovedOfTheLordOfBlades extends DeityFeat with BelovedOfTheLordOfBlades
-
-
-    case object BelovedOfOlladra extends DeityFeat with BelovedOfOlladra
-
-
-    case object BelovedOfOnatar extends DeityFeat with BelovedOfOnatar
-
-
-    case object BelovedOfTheSilverFlame extends DeityFeat with BelovedOfTheSilverFlame
-
-
-    case object BelovedOfTheSovereignHost extends DeityFeat with BelovedOfTheSovereignHost
-
-
-    case object BelovedOfTheUndyingCourt extends DeityFeat with BelovedOfTheUndyingCourt
-
-
-    case object BelovedOfVulkoor extends DeityFeat with BelovedOfVulkoor
-
-
-    case object BelovedOfAmaunator extends DeityFeat with BelovedOfAmaunator
-
-
-    case object BelovedOfHelm extends DeityFeat with BelovedOfHelm
-
-
-    case object BelovedOfSilvanus extends DeityFeat with BelovedOfSilvanus
-   */
+ 
   override lazy val values: immutable.IndexedSeq[DeityFeat] = findValues
   override val matchFeat: PartialFunction[Feat, _ <: Feat] = {
     case x: DeityFeat => x

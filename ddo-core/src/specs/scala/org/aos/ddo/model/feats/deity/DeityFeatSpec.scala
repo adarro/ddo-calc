@@ -3,18 +3,7 @@ package org.aos.ddo.model.feats.deity
 import java.util
 
 import com.typesafe.scalalogging.LazyLogging
-import org.aos.ddo.model.feats.{
-  BelovedOfLevel,
-  ChildOfLevel,
-  DamageReductionLevel,
-  DisplayHelper,
-  EberronReligionBase,
-  Feat,
-  FollowerOfLevel,
-  ForgottenRealmsReligionBase,
-  ReligionFeatBase,
-  UniqueLevel
-}
+import org.aos.ddo.model.feats._
 import org.aos.ddo.model.item.weapon.FavoredWeapon
 import org.aos.ddo.model.religions.Religion
 import org.aos.ddo.model.worlds.World
@@ -24,20 +13,20 @@ import org.concordion.api.FullOGNL
 import org.concordion.integration.junit4.ConcordionRunner
 import org.junit.runner.RunWith
 
-import scala.collection.JavaConverters._
 import scala.collection.immutable
+import scala.collection.JavaConverters._
 
 @FullOGNL
 @RunWith(classOf[ConcordionRunner])
 class DeityFeatSpec extends DisplayHelper with LazyLogging {
 
   private val filterEberron
-    : PartialFunction[Entry, Entry with ReligionFeatBase] = {
+  : PartialFunction[Entry, Entry with ReligionFeatBase] = {
     case x: EberronReligionBase with ReligionFeatBase => x
   }
 
   private val filterForgottenRealms
-    : PartialFunction[Entry, Entry with ReligionFeatBase] = {
+  : PartialFunction[Entry, Entry with ReligionFeatBase] = {
     case x: ForgottenRealmsReligionBase with ReligionFeatBase => x
   }
 
@@ -58,12 +47,12 @@ class DeityFeatSpec extends DisplayHelper with LazyLogging {
   }
 
   private val filterDR
-    : PartialFunction[Entry, Entry with DisplayName with Prefix] = {
+  : PartialFunction[Entry, Entry with DisplayName with Prefix] = {
     case x: DamageReductionLevel with DisplayName with Prefix => x
   }
 
   private val filterFavoredWeapons
-    : PartialFunction[Entry, Entry with FavoredWeapon] = {
+  : PartialFunction[Entry, Entry with FavoredWeapon] = {
     case x: FavoredWeapon => x
   }
 
@@ -140,12 +129,12 @@ class DeityFeatSpec extends DisplayHelper with LazyLogging {
       s"$prefix TBD"
     }
     val result = ResultObject(religion = data,
-                              follow = follower,
-                              favoredWeapon = fw,
-                              child = child,
-                              unique = unique,
-                              beloved = beloved,
-                              damageReduction = dr)
+      follow = follower,
+      favoredWeapon = fw,
+      child = child,
+      unique = unique,
+      beloved = beloved,
+      damageReduction = dr)
     logger.debug(s"Result: $result")
     result
 

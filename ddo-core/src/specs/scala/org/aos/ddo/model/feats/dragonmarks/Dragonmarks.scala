@@ -5,6 +5,4 @@ import org.concordion.integration.junit4.ConcordionRunner
 import org.junit.runner.RunWith
 
 @RunWith(classOf[ConcordionRunner])
-class dragonmarks extends DragonmarkDisplayHelper {
-
-}
+class Dragonmarks extends DragonmarkDisplayHelper

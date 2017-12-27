@@ -78,7 +78,6 @@ quick.bat
 ddo-calc-parent.iml
 ddo-core/ddo-core.iml
 ddo-core/src/main/scala/org/aos/ddo/experimental/
-ddo-etl/
 ddo-plot/ddo-plot.iml
 ddo-web/bin/
 ddo-web/ddo-web.iml

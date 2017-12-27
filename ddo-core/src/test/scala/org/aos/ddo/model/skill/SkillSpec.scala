@@ -38,7 +38,10 @@ class SkillSpec {
 
   }
 
-  def withNameAsList(skillId: String): util.List[Skill] = List(enum.withName(skillId)).asJava
+  def withNameAsList(skillId: String): util.List[Skill] = {
+    for {v <- enum.values
+         if v.toString == skillId} yield v
+  }.asJava
 
 
 }

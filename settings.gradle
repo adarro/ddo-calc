@@ -5,7 +5,7 @@ include ':ddo-web'
 include ':ddo-etl'
 include ':ddo-data:ddo-data-mongo'
 include ':ddo-data'
-include ':ddo-route'
+// include ':ddo-route'
 
 project(':ddo-plot').projectDir = "$rootDir/ddo-plot" as File
 project(':ddo-core').projectDir = "$rootDir/ddo-core" as File
@@ -13,4 +13,4 @@ project(':ddo-web').projectDir = "$rootDir/ddo-web" as File
 project(':ddo-etl').projectDir = "$rootDir/ddo-etl" as File
 project(':ddo-data:ddo-data-mongo').projectDir = "$rootDir/ddo-data/ddo-data-mongo" as File
 project(':ddo-data').projectDir = "$rootDir/ddo-data" as File
-project(':ddo-route').projectDir = "$rootDir/ddo-route" as File
+// project(':ddo-route').projectDir = "$rootDir/ddo-route" as File

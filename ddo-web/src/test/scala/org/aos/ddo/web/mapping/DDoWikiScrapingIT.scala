@@ -64,7 +64,7 @@ class DDoWikiScrapingIT extends FunSpec with Matchers with MockitoSugar with Laz
       result.isStump should be(false)
       result.leaves should be('empty)
       result.branches.value should have size 1
-      result.branches.value.head.leaves.value.toSeq should have length 6
+      result.branches.value.head.leaves.value should have size 6
 
     }
 

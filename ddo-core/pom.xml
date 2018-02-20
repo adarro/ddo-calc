@@ -18,9 +18,7 @@
   <name>Core DDO Objects</name>
   <description>Basic traits and classes</description>
   <properties>
-    <specs.code.dir>src/specs/scala</specs.code.dir>
-    <specs.resource.dir>src/specs/resources</specs.resource.dir>
-    <specs.dir>src/test/specs</specs.dir>
+
   </properties>
   <dependencies>
     <!-- Scala -->

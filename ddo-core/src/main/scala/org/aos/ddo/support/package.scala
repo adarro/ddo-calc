@@ -17,10 +17,8 @@ package org.aos.ddo
 
 import com.typesafe.config.ConfigFactory
 import com.typesafe.scalalogging.LazyLogging
-import com.wix.accord.Descriptions.Description
 import com.wix.accord.Violation
 
-import scala.collection.immutable
 import scala.language.postfixOps
 import scala.util.Random
 import scala.util.control.Exception.catching
@@ -59,7 +57,7 @@ package object support extends LazyLogging {
     */
   object StringUtils {
 
-    def path = "org.aos.ddo.support"
+    private val path = "org.aos.ddo.support"
 
     implicit lazy val config: com.typesafe.config.Config = {
       val cfg = ConfigFactory.load
@@ -88,10 +86,19 @@ package object support extends LazyLogging {
     }
 
     implicit class StringImprovements(val s: String) {
+      /**
+        * Converts a String to an Optional Int.
+        * @return Some(Int) upon successful conversion or None for a failed attempt.
+        */
       def toIntOpt: Option[Int] =
         catching(classOf[NumberFormatException]) opt s.toInt
     }
 
+    /**
+      * Mostly String manipulation utility methods.
+      * Most methods are fluent if possible.
+      * @param s source string
+      */
     implicit class Extensions(val s: String) {
       def lowerCaseNoise: String = {
         val noise = config.getStringList("org.aos.ddo.support.noiseWords")
@@ -145,11 +152,19 @@ package object support extends LazyLogging {
         s.trim.filterAlphaNumeric
       }
 
+      /**
+        * Filters out non alphanumeric values.
+        * @return alphanumeric values.
+        */
       def filterAlphaNumeric: String =
         s.toCharArray.filter { x =>
           x.isLetterOrDigit
         }.mkString
 
+      /**
+        * Randomizes the case of the source string.
+        * @return source string with randomized upper and lower case characters.
+        */
       def randomCase: String = {
         val r = new Random
         s.toCharArray
@@ -208,7 +223,7 @@ package object support extends LazyLogging {
         .mkString
 
     /**
-      * Generate a random alphabnumeric string of length n
+      * Generate a random alphanumeric string of length n
       */
     def randomAlphanumericString(n: Int): String =
       randomString({
@@ -224,13 +239,11 @@ package object support extends LazyLogging {
     */
   object Validation {
 
-    import StringUtils.LineSep
-
     // scalastyle:off import.group
     /**
       * Extracts violation description and message text
       *
-      * @param v Volations
+      * @param v Violations
       * @return Printable list of violations.
       * @deprecated
       */

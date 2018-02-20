@@ -51,7 +51,7 @@ object Requirement extends Enum[Requirement] {
   /** @param id    the required race
     * @param level the minimum character level.
     * @example
-    * ReqRace("Drow",6) would represent a level 6 or greater player of the drow race.
+    * ReqRace("Drow",6) would represent a level 6 or greater player of the Drow race.
     */
   case class ReqRace(id: String, level: Int) extends Requirement {
     override def prefix: Option[String] = Some(Race.searchPrefixSource)

@@ -1,0 +1,6 @@
+
+description = 'DDO Calculation Plots'
+dependencies {
+    compile group: 'io.onetapbeyond', name: 'fluent-r', version:'1.1'
+    compile group: 'com.revolutionanalytics.deployr', name: 'jRBroker', version:'7.4.8'
+}

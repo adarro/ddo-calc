@@ -49,7 +49,7 @@ object Attribute extends Enum[Attribute] with SearchPrefix {
   override def searchPrefixSource: String = "Attribute"
 }
 
-trait Strength extends Attribute {
+protected trait Strength extends Attribute {
   override val abbr: String = "STR"
 
   def toFullWord: String = "Strength"

@@ -43,11 +43,8 @@ vignettes/*.pdf
 # OAuth2 token, see https://github.com/hadley/httr/releases/tag/v0.3
 .httr-oauth
 #Scala
-*.log
-
 # sbt specific
 .cache
-.history
 .lib/
 dist/*
 lib_managed/
@@ -83,3 +80,18 @@ ddo-web/bin/
 ddo-web/ddo-web.iml
 qa-tools/qa-tools.iml
 /.ensime_cache/
+### Gradle template
+.gradle
+/build/
+
+# Ignore Gradle GUI config
+gradle-app.setting
+
+# Avoid ignoring Gradle wrapper jar file (.jar files are usually ignored)
+!gradle-wrapper.jar
+
+# Cache of project
+.gradletasknamecache
+
+# # Work around https://youtrack.jetbrains.com/issue/IDEA-116898
+# gradle/wrapper/gradle-wrapper.properties

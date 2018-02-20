@@ -7,6 +7,13 @@ install: true
 after_success:
 - gradlew versioneye-update
 - bash <(curl -s https://codecov.io/bash)
+before_cache:
+  - rm -f  $HOME/.gradle/caches/modules-2/modules-2.lock
+  - rm -fr $HOME/.gradle/caches/*/plugin-resolution/
+cache:
+  directories:
+    - $HOME/.gradle/caches/
+    - $HOME/.gradle/wrapper/
 addons:
   code_climate:
     repo_token: 665646cbcbd55d57b5c78261227b9775f00a9e4716d1c28b6fa2cfbda7369ba2

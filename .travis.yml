@@ -5,8 +5,8 @@ jdk:
 - oraclejdk8
 install: true
 after_success:
-- ./gradlew versioneye-update
-- ./gradlew scoverageReport
+- ./gradlew versionEyeUpdate
+- ./gradlew reportScoverage
 - bash <(curl -s https://codecov.io/bash)
 before_cache:
   - rm -f  $HOME/.gradle/caches/modules-2/modules-2.lock

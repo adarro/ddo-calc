@@ -32,7 +32,7 @@ object Feat extends Enum[Feat] with FeatSearchPrefix with LazyLogging {
     * Filters feats which belong to racial / general feats only.
     *
     * This removes feats that happen to have some racial aspect but are considered
-    * under another category, such as A Deity Based feat that requires classes as well as a race.
+    * under another category, such as a Deity Based feat that requires classes as well as a race.
     *
     * @note Not sure if we really need this method in production.
     *       May only be useful for detecting / Acceptance testing subsets

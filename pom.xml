@@ -24,7 +24,7 @@
 		<!--<module>ddo-support</module> -->
 		<module>ddo-etl</module>
 		<module>ddo-data</module>
-		<module>ddo-route</module>
+		<!--<module>ddo-route</module>-->
 	</modules>
 	<properties>
 		<!-- Specs path -->

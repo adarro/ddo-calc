@@ -14,7 +14,7 @@ sourceSets {
             exclude '**/*Spec.scala'
             exclude '**/*Helper*'
             exclude '**/*Builder*'
-            include '**/*Test.scala'
+        //    include '**/*Test.scala'
 
         }
     }
@@ -52,6 +52,28 @@ configure(acceptanceTest) {
     description = 'Runs Acceptance Testing'
 }
 
+// configure scalac
+/*compileScala {
+
+    scalaCompileOptions.encoding = 'UTF-8'
+    scalaCompileOptions.deprecation = true
+    scalaCompileOptions.additionalParameters = ['-feature','-Ywarn-unused','-Xlint','-Xcheckinit','-Yrangepos']
+    // optionally specify host and port of the daemon:
+   // scalaCompileOptions.daemonServer = "localhost:4243"
+}*/
+/*tasks.withType(ScalaCompile) {
+    configure(scalaCompileOptions) {
+        deprecation = true
+        encoding = 'UTF-8'
+
+
+    }
+    configure(scalaCompileOptions.forkOptions) {
+
+        memoryMaximumSize = '1g'
+        jvmArgs = ['-XX:MaxPermSize=512m']
+    }
+}*/
 
 description = 'Core DDO Objects'
 dependencies {
@@ -77,7 +99,7 @@ dependencies {
   //  provided group: 'org.scoverage', name: 'scalac-scoverage-plugin_2.12', version: '1.4.0-M2'
 
     scoverage 'org.scoverage:scalac-scoverage-plugin_2.12:1.4.0-M2', 'org.scoverage:scalac-scoverage-runtime_2.12:1.4.0-M2'
-    compile  group: 'com.geirsson', name: 'scalafmt-core_2.11', version: '1.1.0'
+    compile  group: 'com.geirsson', name: 'scalafmt-core_2.12', version: '1.1.0'
 
 }
 

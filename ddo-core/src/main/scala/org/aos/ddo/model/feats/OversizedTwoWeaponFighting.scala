@@ -4,8 +4,10 @@ import org.aos.ddo.model.attribute.Attribute
 import org.aos.ddo.support.requisite.{FeatRequisiteImpl, RequiresAllOfFeat, RequiresAttribute}
 
 /** Icon Feat Oversized Two Weapon Fighting.png
-  * Oversized Two Weapon Fighting 	Passive 	When wielding a one handed weapon in your off-hand, you take penalties for fighting with two weapons as if you were wielding a light weapon on your offhand.
-  * *
+  * Oversized Two Weapon Fighting
+  * Passive
+  * When wielding a one handed weapon in your off-hand, you take penalties for fighting with two weapons as if you were wielding a light weapon on your offhand.
+  *
   * Two Weapon Fighting
   * Strength 12
   * */

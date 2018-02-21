@@ -10,8 +10,3 @@ trait ParentFeat {
   val subFeats: Seq[Feat with SubFeat]
 
 }
-
-object ParentFeat {
-  
-  
-}

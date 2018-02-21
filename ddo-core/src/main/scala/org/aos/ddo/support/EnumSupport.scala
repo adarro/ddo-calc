@@ -1,7 +1,5 @@
 package org.aos.ddo.support
 
-import java.io.InvalidClassException
-
 import enumeratum.{Enum, EnumEntry}
 
 import scala.util.{Failure, Success, Try}

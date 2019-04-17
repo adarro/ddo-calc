@@ -2,10 +2,8 @@ package org.aos.ddo.enchantment
 
 import com.wix.accord._
 import com.wix.accord.dsl._
-import com.wix.accord.transform.ValidationTransform.TransformedValidator
 import org.aos.ddo.enchantment.Modifier._
 import org.aos.ddo.model.effect.{Passive, _}
-import org.aos.ddo.support.Validation._
 
 trait GuardFlag {
   val guard: Guards
@@ -23,10 +21,6 @@ object Guard extends ((Guards, Option[GuardModifier]) => Guard) {
   def apply(guard: Guards, affixes: Option[GuardModifier] = None): Guard = {
     val o = create(guard, affixes)
     assert(validate(o) == Success)
-//    validate(o) match {
-//      case Success => o
-//      case Failure(x) => throw new IllegalArgumentException(violationToString(x))
-//    }
     o
   }
 

@@ -15,11 +15,4 @@
   */
 package org.aos.ddo
 
-import org.aos.ddo.PhysicalDamageType.{Bludgeon, Pierce, Slash}
-import org.aos.ddo.support.PhysicalDamage
-
 trait Damage
-
-
-
-

@@ -18,9 +18,10 @@ package org.aos.ddo.web.mapping
 import java.text.NumberFormat
 
 import com.typesafe.scalalogging.LazyLogging
-import net.ruippeixotog.scalascraper.dsl.DSL.Extract._
 import net.ruippeixotog.scalascraper.dsl.DSL._
+import net.ruippeixotog.scalascraper.dsl.DSL.Extract._
 import net.ruippeixotog.scalascraper.model.Element
+import org.aos.ddo._
 import org.aos.ddo.enumeration.EnumExtensions.EnumCompanionOps
 import org.aos.ddo.model.attribute.Attribute
 import org.aos.ddo.model.item.weapon._
@@ -28,9 +29,8 @@ import org.aos.ddo.model.misc.Material
 import org.aos.ddo.support.StringUtils.{Comma, EmptyString, ForwardSlash, Space, StringImprovements}
 import org.aos.ddo.web.mapping.ElementSupport.ElementToElementOps
 import org.aos.ddo.web.mapping.Extractor._
-import org.aos.ddo._
+import scala.collection.JavaConverters._
 
-import scala.collection.JavaConversions.{asScalaBuffer, seqAsJavaList}
 import scala.language.{existentials, postfixOps, reflectiveCalls}
 import scala.util.Try
 
@@ -351,7 +351,7 @@ object WikiParser extends LazyLogging {
     source.get(Field.BaseValue) match {
       case Some(x: Element) =>
         val ele = x >> element("td:first-child")
-        val filtered = ele.textNodes
+        val filtered = ele.textNodes.asScala
           .map { x =>
             x.text match {
               case rex(num) =>
@@ -367,13 +367,13 @@ object WikiParser extends LazyLogging {
           }
           .toList
         filtered.size match {
-          case 1 => Some(filtered.get(0).intValue())
+          case 1 => Some(filtered.head.intValue())
           case 0 =>
             logger.info(s"could not extract number from $x"); None
           case _ =>
             logger.warn(
               s"Multiple values returned for basevalue $x, returning the first")
-            Some(seqAsJavaList(filtered).get(0).intValue())
+            Some(filtered.head.intValue())
         }
       case _ => logger.info(s"${Field.BaseValue} was not supplied"); None
     }

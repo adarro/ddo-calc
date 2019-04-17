@@ -1,5 +1,5 @@
 rootProject.name = 'ddo-calc-parent'
-include ':ddo-plot'
+// include ':ddo-plot'
 include ':ddo-core'
 include ':ddo-web'
 include ':ddo-etl'
@@ -7,10 +7,17 @@ include ':ddo-data:ddo-data-mongo'
 include ':ddo-data'
 // include ':ddo-route'
 
-project(':ddo-plot').projectDir = "$rootDir/ddo-plot" as File
+// requires updated R language gradle plugin.
+// project(':ddo-plot').projectDir = "$rootDir/ddo-plot" as File
 project(':ddo-core').projectDir = "$rootDir/ddo-core" as File
 project(':ddo-web').projectDir = "$rootDir/ddo-web" as File
 project(':ddo-etl').projectDir = "$rootDir/ddo-etl" as File
 project(':ddo-data:ddo-data-mongo').projectDir = "$rootDir/ddo-data/ddo-data-mongo" as File
 project(':ddo-data').projectDir = "$rootDir/ddo-data" as File
 // project(':ddo-route').projectDir = "$rootDir/ddo-route" as File
+
+
+// gradle.experimentalFeatures.enable()
+include 'ddo-odata'
+include 'ddo-odata-server'
+

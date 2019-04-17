@@ -6,7 +6,7 @@ import org.aos.ddo.support.SearchPrefix
 import scala.collection.immutable.IndexedSeq
 
 /**
-  * [[http://ddowiki.com/page/FavorPatron FavorPatron]] FavorPatron can be gained for a faction which can provide various benifits in-game.
+  * [[http://ddowiki.com/page/FavorPatron FavorPatron]] FavorPatron can be gained for a faction which can provide various benefits in-game.
   */
 sealed trait FavorPatron extends EnumEntry {
   val maxFavor: Int

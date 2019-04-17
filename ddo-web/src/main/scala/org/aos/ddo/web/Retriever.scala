@@ -15,7 +15,6 @@
  */
 package org.aos.ddo.web
 
-import net.ruippeixotog.scalascraper.browser.Browser
 import com.typesafe.scalalogging.LazyLogging
 import org.aos.ddo.Item
 

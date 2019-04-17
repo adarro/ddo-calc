@@ -27,12 +27,12 @@ object CannithCraftingAffixCategories extends LazyLogging {
     protected def addS = s"${source}s"
 
 
-    final val plurals = List("Elemental Absorptions", "Elemental Resistances") //.map(_.addS)
+    final val plurals = List("Elemental Absorptions", "Elemental Resistances") // .map(_.addS)
 
     /**
       * An extremely basic pluralizer that adds an 'S' to the word based on a dictionary list.
       */
-    def pluralize = plurals.find(_.eq(source.addS)).getOrElse(source)
+    def pluralize: String = plurals.find(_.eq(source.addS)).getOrElse(source)
 
   }
 

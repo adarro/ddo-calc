@@ -2,7 +2,8 @@ language: scala
 scala:
 - 2.12.3
 jdk:
-- oraclejdk8
+- openjdk8
+- oraclejdk9
 install: true
 after_success:
 - ./gradlew versionEyeUpdate
@@ -15,9 +16,15 @@ cache:
   directories:
     - $HOME/.gradle/caches/
     - $HOME/.gradle/wrapper/
-addons:
-  code_climate:
-    repo_token: 665646cbcbd55d57b5c78261227b9775f00a9e4716d1c28b6fa2cfbda7369ba2
+before_script:
+  - curl -L https://codeclimate.com/downloads/test-reporter/test-reporter-latest-linux-amd64 > ./cc-test-reporter
+  - chmod +x ./cc-test-reporter
+  - ./cc-test-reporter before-build
+after_script:
+  - ./cc-test-reporter after-build --exit-code $TRAVIS_TEST_RESULT
+  - if [[ "$TRAVIS_TEST_RESULT" == 0 ]]; then ./cc-test-reporter upload-coverage; fi  # Upload coverage/codeclimate.json
 env:
+  global:
+    - CC_TEST_REPORTER_ID=665646cbcbd55d57b5c78261227b9775f00a9e4716d1c28b6fa2cfbda7369ba2
   matrix:
     secure: R5u6EvwmtT+UU4x9nV/Fva/sR+fQsVT/S3Z+hWUjzHeoVAhI+VXkwj0ZONEbUz7Ri8NcuBV/YCh6pgc/GmVkCuUj7zLISgY6jyBdfaNlRSRCFCMq74DWRcgCT4AqmtTk/SqvYcezQwg3C08jfZEAso18v4/0T+sOfVMiDC4c8btQJR060w6QbuwMtSrbhWHhIvq6oY3S7+x6EolFq4bdAUqo6naD2N6Xq/Sj9olwk+y/EyZaQ6CGjkl41gNJ9eLGpR/OGRCjn68Txt8xEstAplKwcrkviCMiBRn1VTyjo04/zh+aER600aEfvhq/iOnAUlz0XP+XGagVyK3tLVHceXhAHeFp7GrNvePGM/wspUKtYaD0xCzo4JIgZWFQ+ImTCM0NLgqpHsQyBo6rcpT6nEMtLM2+/4QcILR1S4nAqljv/ZAeYclfNyAH6AHGGk1c/cYPnZ7e4VoT3mC2iJhlItdw27VnUziIBSq7tk+qfiTR4nh/f740gt6OmRdJ4rpvBgtvEzd9UTAbNmvyEDa4bda7UEGWYWkuMvJm2vXbDK+oy+4OK+c/qalcO48kfVrW6wZJmpCRFEBWby/N63gnMNfwVLYV4ngClIdnCdE6yjB+8WG90GIw1obktVP/v+V551KUM0ucrDZ8ntvdfTRo2ABhc41KJex/6tVuOwacCAs=

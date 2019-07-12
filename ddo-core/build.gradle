@@ -2,20 +2,22 @@ plugins {
 
     id "scala"
 //    id "com.diffplug.gradle.spotless" version "3.10.0"
-//    id "com.github.maiflai.scalatest" version "0.19"
-    id "org.scoverage" version "2.1.0"
+  //  id "com.github.maiflai.scalatest" version "0.25"
+    id "org.scoverage" version "3.1.5"
  //   id 'nebula.optional-base' version '3.0.3'
+ //   id "org.junit.platform.gradle.plugin"
 
 }
+
 
 sourceSets {
     test {
         scala {
             srcDir{'src/test/scala'}
-            exclude {'**/*Spec.scala'}
-            exclude {'**/*Helper*'}
-            exclude {'**/*Builder*'}
-        //    include '**/*Test.scala'
+            exclude '**/*Spec.scala'
+            exclude '**/*Helper*'
+            exclude '**/*Builder*'
+//            include {'**/*Test.scala'}
 
         }
     }
@@ -50,14 +52,14 @@ acceptanceTest.mustRunAfter(test)
 acceptanceTest.testLogging.showStandardStreams = true   // display test output on console
 acceptanceTest.systemProperties['concordion.output.dir'] = "$reporting.baseDir/spec"  // write output to build/reports/spec
 
-task allTests  {
-    println "Executing all tests"
+task allTests(type: Test)  {
+    description = "Runs All Unit and Acceptance Tests"
+    dependsOn(test,acceptanceTest)
+    group = "verification"
 
 }
 
-
-
-allTests.setDependsOn {tasks.withType(Test).iterator()}
+// allTests.setDependsOn {tasks.withType(Test).iterator()}
 configure(acceptanceTest) {
     group = 'verification'
     description = 'Runs Acceptance Testing'
@@ -88,6 +90,18 @@ tasks.withType(ScalaCompile) {
     }
 }
 
+
+//tasks.withType(Test) {
+//    useJUnitPlatform{
+//        include
+//    }
+//}
+
+//test {
+//    useJUnitPlatform {
+//        includeEngines 'junit-jupiter', 'junit-vintage'
+//    }
+//}
 description = 'Core DDO Objects'
 dependencies {
     implementation group: 'org.scala-lang', name: 'scala-library', version:'2.12.3'
@@ -101,16 +115,21 @@ dependencies {
     testImplementation group: 'org.scalatest', name: 'scalatest_2.12', version:'3.0.0'
     testRuntimeOnly 'org.pegdown:pegdown:1.4.2'
     testImplementation group: 'org.mockito', name: 'mockito-all', version:'2.0.2-beta'
-    testImplementation group: 'junit', name: 'junit', version:'4.12'
-    acceptanceTestImplementation group: 'org.concordion', name: 'concordion', version:'2.1.1'
-    acceptanceTestImplementation group: 'org.concordion', name: 'concordion-embed-extension', version:'1.1.2'
+ //   testImplementation group: 'junit', name: 'junit', version:'4.12'
+    // JUnit 5
+    testImplementation("org.junit.jupiter:junit-jupiter-api:5.2.0")
+    testRuntimeOnly("org.junit.jupiter:junit-jupiter-engine:5.2.0")
+   // testRuntime("org.junit.platform:junit-platform-console:1.2.0")
+    testImplementation("org.junit.platform:junit-platform-runner:1.2.0")
+    acceptanceTestImplementation group: 'org.concordion', name: 'concordion', version:'2.2.0'
+    acceptanceTestImplementation group: 'org.concordion', name: 'concordion-embed-extension', version:'1.2.0'
     acceptanceTestImplementation group: 'org.concordion', name: 'concordion-collapse-output-extension', version:'1.0.0'
     testImplementation group: 'com.wix', name: 'accord-scalatest_2.12', version:'0.7.1'
     testImplementation group: 'de.neuland-bfi', name: 'jade4j', version:'1.2.7'
     testImplementation group: 'net.ruippeixotog', name: 'scala-scraper_2.12', version:'1.2.0'
     testCompileOnly group: 'org.jetbrains', name: 'annotations', version: '16.0.1'
 
-    scoverage 'org.scoverage:scalac-scoverage-plugin_2.12:1.4.0-M2', 'org.scoverage:scalac-scoverage-runtime_2.12:1.4.0-M2'
+    scoverage 'org.scoverage:scalac-scoverage-plugin_2.12:1.4.0', 'org.scoverage:scalac-scoverage-runtime_2.12:1.4.0'
     implementation  group: 'com.geirsson', name: 'scalafmt-core_2.12', version: '1.1.0'
 
 }

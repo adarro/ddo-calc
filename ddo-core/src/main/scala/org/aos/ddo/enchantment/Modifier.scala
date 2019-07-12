@@ -1,6 +1,6 @@
 package org.aos.ddo.enchantment
 
-import enumeratum.{EnumEntry, Enum => SmartEnum}
+import enumeratum.EnumEntry
 import org.aos.ddo.NoDefault
 import org.aos.ddo.support.IndexedEnum
 

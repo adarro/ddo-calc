@@ -16,13 +16,13 @@
 package org.aos.ddo
 
 import com.typesafe.scalalogging.LazyLogging
-import org.aos.ddo.support.StringUtils.{Extensions, randomAlphanumericString}
+import org.aos.ddo.support.StringUtils.{randomAlphanumericString, Extensions}
+import org.junit.platform.runner.JUnitPlatform
 import org.junit.runner.RunWith
-import org.scalatest.junit.JUnitRunner
-import org.scalatest.mockito.MockitoSugar
 import org.scalatest.{FunSpec, Matchers}
+import org.scalatest.mockito.MockitoSugar
 
-@RunWith(classOf[JUnitRunner])
+@RunWith(classOf[JUnitPlatform])
 class BindingTest extends FunSpec with Matchers with MockitoSugar with LazyLogging {
   final val Unbound = "Unbound"
   final val possibleText: List[String] = List("Bound To Character on Equip",

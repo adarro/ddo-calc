@@ -19,21 +19,14 @@ import com.typesafe.scalalogging.LazyLogging
 import enumeratum.Enum
 import org.aos.ddo.model.classes.CharacterClass
 import org.aos.ddo.model.classes.CharacterClass.Bard
-import org.aos.ddo.model.item.weapon.WeaponCategory.{
-  Longsword,
-  Rapier,
-  Shortbow,
-  Shortsword
-}
 import org.aos.ddo.model.item.weapon._
+import org.aos.ddo.model.item.weapon.WeaponCategory.{Longsword, Rapier, Shortbow, Shortsword}
 import org.aos.ddo.model.race.Race
 import org.aos.ddo.model.schools.School
 import org.aos.ddo.model.skill.Skill
 import org.aos.ddo.support.StringUtils.Extensions
 import org.aos.ddo.support.naming.{FriendlyDisplay, PostText, Prefix}
 import org.aos.ddo.support.requisite._
-
-import scala.collection.immutable.IndexedSeq
 
 /**
   * [[http://ddowiki.com/page/Feats Feats]] are special abilities that give your character a new capability, or improves one he or she already has.

@@ -1,0 +1,10 @@
+{
+  "include": [
+    "src/main/script/*",
+    "typings/**/*" // <-- don't forget this line!
+  ],
+  "exclude": [
+    "node_modules",
+    "**/*.spec.ts"
+  ]
+}

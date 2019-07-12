@@ -1,7 +1,7 @@
 package org.aos.ddo.model.feats
 
 import org.aos.ddo.model.classes.CharacterClass
-import org.aos.ddo.model.classes.CharacterClass.{Druid, Ranger}
+import org.aos.ddo.model.classes.CharacterClass.Druid
 import org.aos.ddo.support.requisite.{FeatRequisiteImpl, GrantsToClass, RequiresAnyOfClass}
 
 /**

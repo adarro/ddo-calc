@@ -16,8 +16,6 @@ package org.aos.ddo.model.misc
 
 import enumeratum.{EnumEntry, Enum => SmartEnum}
 
-import scala.collection.immutable.IndexedSeq
-
 /** Represents the material make up of an object.
   *
   * @note This is not to be confused with Material Components, which are used for

@@ -18,8 +18,6 @@ package org.aos.ddo.model.item.weapon
 import enumeratum.{Enum, EnumEntry}
 import org.aos.ddo.NoDefault
 
-import scala.collection.immutable.IndexedSeq
-
 /** Trait to constrain Proficiency values
   */
 sealed trait ProficiencyClass extends EnumEntry with NoDefault[ProficiencyClass]

@@ -45,7 +45,7 @@ package object support extends LazyLogging {
 
     // succinctly pooled from SO [[http://stackoverflow.com/a/14740340/400729]]
     implicit class Crossable[X](xs: Traversable[X]) {
-      def cross[Y](ys: Traversable[Y]) = for {x <- xs; y <- ys} yield (x, y)
+      def cross[Y](ys: Traversable[Y]): Traversable[(X, Y)] = for {x <- xs; y <- ys} yield (x, y)
     }
 
   }

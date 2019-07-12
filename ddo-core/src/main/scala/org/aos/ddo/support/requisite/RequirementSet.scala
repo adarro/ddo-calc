@@ -1,8 +1,5 @@
 package org.aos.ddo.support.requisite
 
-import org.aos.ddo.model.item.weapon.WeaponCategory
-import org.aos.ddo.model.item.weapon.WeaponCategory._
-
 /**
   * Encapsulates A requirement with relevant context for evaluating against a provided set of requirements.
   *

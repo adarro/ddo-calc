@@ -18,8 +18,6 @@ package org.aos.ddo.model.item.weapon
 import enumeratum.{Enum, EnumEntry}
 import org.aos.ddo.NoDefault
 
-import scala.collection.immutable.IndexedSeq
-
 /** used to denote the Delivery method (thrown, launched, hand-held) of a weapon.
   *
   */

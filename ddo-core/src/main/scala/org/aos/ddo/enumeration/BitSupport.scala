@@ -1,8 +1,8 @@
 package org.aos.ddo.enumeration
 
-import enumeratum.{Enum, EnumEntry}
+import enumeratum.EnumEntry
 
-import scala.reflect.{ClassTag, classTag}
+import scala.reflect.{classTag, ClassTag}
 
 /**
   * Created by adarr on 1/22/2017.

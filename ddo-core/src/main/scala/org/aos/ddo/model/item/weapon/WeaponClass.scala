@@ -1,9 +1,8 @@
 package org.aos.ddo.model.item.weapon
 
 import enumeratum.{Enum, EnumEntry}
-import org.aos.ddo._
-import org.aos.ddo.support.naming.DisplayName
 import org.aos.ddo.support.{Deferred, PhysicalDamage}
+import org.aos.ddo.support.naming.DisplayName
 
 import scala.collection.immutable.IndexedSeq
 

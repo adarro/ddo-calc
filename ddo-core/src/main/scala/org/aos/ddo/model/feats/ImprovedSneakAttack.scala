@@ -2,7 +2,7 @@ package org.aos.ddo.model.feats
 
 import org.aos.ddo.model.attribute.Attribute
 import org.aos.ddo.model.classes.CharacterClass
-import org.aos.ddo.model.classes.CharacterClass.{Monk, Rogue}
+import org.aos.ddo.model.classes.CharacterClass.Rogue
 import org.aos.ddo.support.requisite._
 
 import scala.collection.immutable

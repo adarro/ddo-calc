@@ -3,13 +3,8 @@ package org.aos.ddo.model.feats
 import org.aos.ddo.model.classes.CharacterClass
 import org.aos.ddo.model.classes.CharacterClass.Artificer
 import org.aos.ddo.model.item.weapon.WeaponCategory
-import org.aos.ddo.support.requisite.{
-  FeatRequisiteImpl,
-  GrantsToClass,
-  RequiresAllOfClass,
-  RequiresAllOfFeat
-}
 import org.aos.ddo.model.FeatConverters.featByWeaponProficiency
+import org.aos.ddo.support.requisite.{FeatRequisiteImpl, GrantsToClass, RequiresAllOfFeat}
 
 /** Icon Feat Rapid Reload.png
   * Rapid Reload

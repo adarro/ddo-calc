@@ -1,7 +1,7 @@
 package org.aos.ddo.model.feats
 
 import org.aos.ddo.model.race.Race
-import org.aos.ddo.support.requisite.{FeatRequisiteImpl, GrantsToRace, RequiresAllOfRace}
+import org.aos.ddo.support.requisite.{FeatRequisiteImpl, GrantsToRace}
 
 /**
   * Created by adarr on 2/19/2017.

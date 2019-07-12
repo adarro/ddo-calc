@@ -1,10 +1,6 @@
 package org.aos.ddo.model.feats
 
-import org.aos.ddo.support.requisite.{
-  FreeFeat,
-  RequiresAllOfFeat,
-  RequiresCharacterLevel
-}
+import org.aos.ddo.support.requisite.{FreeFeat, RequiresAllOfFeat}
 
 /**
   * Created by adarr on 4/3/2017.

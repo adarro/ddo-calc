@@ -1,9 +1,5 @@
 package org.aos.ddo.model.spells
 
-import org.aos.ddo.model.save.Save
-
-import scala.reflect.ClassTag
-
 
 /**
   * Base stackable trait used for determining saving throws.

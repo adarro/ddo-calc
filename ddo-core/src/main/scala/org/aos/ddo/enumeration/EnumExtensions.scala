@@ -3,14 +3,13 @@ package org.aos.ddo.enumeration
 import enumeratum.{Enum, EnumEntry}
 import org.aos.ddo.support.StringUtils.Extensions
 
-import scala.language.higherKinds
 
 /**
   * Created by adarr on 1/16/2017.
   */
 object EnumExtensions {
 
-  private def findEnum[E <: EnumEntry: Enum](v: E) = implicitly[Enum[E]]
+  private def findEnum[E <: EnumEntry : Enum](v: E) = implicitly[Enum[E]]
 
   final implicit class EnumCompanionOps[A <: Enum[_ <: EnumEntry]](val comp: A) {
     def exists(id: String): Boolean = {
@@ -63,15 +62,15 @@ object EnumExtensions {
       } yield sc.toSeq
     }
 
+    def bitValues: Map[EnumEntry, Double] = comp.valuesToIndex.map { x =>
+      x._1 -> Math.pow(2.0, x._2)
+    }
+
     def fromWords(words: String): Option[EnumEntry] = {
       words.wordsToAcronym match {
         case Some(x) => comp.withNameOption(x.toPascalCase)
         case _ => None
       }
-    }
-
-    def bitValues: Map[EnumEntry, Double] = comp.valuesToIndex.map { x =>
-      x._1 -> Math.pow(2.0, x._2)
     }
 
   }

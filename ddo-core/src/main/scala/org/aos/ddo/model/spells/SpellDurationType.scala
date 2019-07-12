@@ -2,10 +2,6 @@ package org.aos.ddo.model.spells
 
 import java.time.Duration
 
-import enumeratum.{Enum, EnumEntry}
-
-import scala.collection.immutable
-
 /**
   * Represents the duration of a spell
   */

@@ -1,13 +1,7 @@
 package org.aos.ddo.model.feats
 
 import org.aos.ddo.model.classes.CharacterClass
-import org.aos.ddo.model.classes.CharacterClass.{Barbarian, Bard, Rogue}
-import org.aos.ddo.support.requisite.{
-  ClassRequisite,
-  FeatRequisiteImpl,
-  GrantsToClass,
-  RequiresAnyOfClass
-}
+import org.aos.ddo.support.requisite.{ClassRequisite, FeatRequisiteImpl, GrantsToClass}
 
 /**
   * A rogue with this ability gains +1 to all skills. This ability may be taken multiple times.

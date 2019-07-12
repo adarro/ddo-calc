@@ -9,7 +9,7 @@ public class AssertionStatus {
      * Used internally to conditionally ignore assertion based unit tests.
      * @return true if assertions are enabled.
      */
-    public final static boolean isEnabled() { //    @org.jetbrains.annotations.Contract(pure = true)
+    public static boolean isEnabled() { //    @org.jetbrains.annotations.Contract(pure = true)
         boolean assertOn = false;
         // *assigns* true if assertions are on.
         assert assertOn = true; // Intentional side effect!!!

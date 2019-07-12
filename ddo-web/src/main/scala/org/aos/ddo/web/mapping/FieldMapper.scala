@@ -17,11 +17,12 @@ package org.aos.ddo.web.mapping
 
 import com.typesafe.scalalogging.LazyLogging
 import enumeratum.{EnumEntry, Enum => SmartEnum}
+import org.aos.ddo.{DDOObject, Item}
 import org.aos.ddo.model.item.{Clothing, Potion}
 import org.aos.ddo.model.item.armor.Armor
-import org.aos.ddo.{DDOObject, Item}
 
-import scala.language.{existentials, postfixOps, reflectiveCalls}
+import scala.collection.immutable
+import scala.language.{existentials, postfixOps}
 
 /**
   * Utility object for mapping DDOWiki tables and fields to objects
@@ -44,7 +45,7 @@ object FieldMapper extends LazyLogging {
     * Enumeration to hold the possible item type values along with keywords used to map the fields
     */
   object ItemType extends SmartEnum[ItemType] {
-    val values = findValues
+    val values: immutable.IndexedSeq[ItemType] = findValues
 
     /**
       * A wieldable weapon
@@ -172,11 +173,11 @@ object FieldMapper extends LazyLogging {
     logger.info(s"Filtered type: $types")
     types match {
       case Some(x: ItemType) if x == ItemType.Weapon => weaponFromWiki(source)
-      case Some(x: Armor) =>
+      case Some(_: Armor) =>
         throw new NotImplementedError
-      case Some(x: Potion) =>
+      case Some(_: Potion) =>
         throw new NotImplementedError
-      case Some(x: Clothing) =>
+      case Some(_: Clothing) =>
         throw new NotImplementedError
       case _ => None
 

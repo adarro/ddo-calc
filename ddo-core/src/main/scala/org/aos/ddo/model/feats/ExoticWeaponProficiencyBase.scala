@@ -1,6 +1,6 @@
 package org.aos.ddo.model.feats
 
-import org.aos.ddo.model.item.weapon.{ExoticWeapon, WeaponProficiency}
+import org.aos.ddo.model.item.weapon.ExoticWeapon
 import org.aos.ddo.support.naming.Prefix
 import org.aos.ddo.support.requisite._
 

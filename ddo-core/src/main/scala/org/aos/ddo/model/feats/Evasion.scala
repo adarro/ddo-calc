@@ -2,7 +2,7 @@ package org.aos.ddo.model.feats
 
 import org.aos.ddo.model.classes.CharacterClass
 import org.aos.ddo.model.classes.CharacterClass.{Monk, Ranger, Rogue}
-import org.aos.ddo.support.requisite.{FeatRequisiteImpl, FreeFeat, GrantsToClass, RequiresAllOfClass}
+import org.aos.ddo.support.requisite.{FeatRequisiteImpl, FreeFeat, GrantsToClass}
 
 /**
   * Created by adarr on 3/17/2017.

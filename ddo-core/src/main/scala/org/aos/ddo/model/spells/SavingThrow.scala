@@ -36,7 +36,7 @@ trait WillSave extends SpellSaveImpl {
 
 
 object Sample {
-  val rs = new ReflexSave with SavingThrowResults {
+  val rs: ReflexSave with SavingThrowResults = new ReflexSave with SavingThrowResults {
     override def savingThrowResult: SavingThrowResult = SavingThrowResult.None
   }
 

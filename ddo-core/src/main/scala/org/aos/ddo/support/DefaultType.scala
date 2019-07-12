@@ -22,7 +22,7 @@ trait DefaultType {
     * True if there is a default value.
     */
   def hasDefaultType: Boolean = this.defaultType match {
-    case Some(x) => true
+    case Some(_) => true
     case _       => false
   }
 }

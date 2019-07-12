@@ -1,6 +1,6 @@
 package org.aos.ddo.enumeration
 
-import enumeratum.{Enum, EnumEntry}
+import enumeratum.EnumEntry
 
 /**
   * Created by adarr on 1/23/2017.

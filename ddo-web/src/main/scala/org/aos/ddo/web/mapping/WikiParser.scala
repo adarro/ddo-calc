@@ -29,8 +29,8 @@ import org.aos.ddo.model.misc.Material
 import org.aos.ddo.support.StringUtils.{Comma, EmptyString, ForwardSlash, Space, StringImprovements}
 import org.aos.ddo.web.mapping.ElementSupport.ElementToElementOps
 import org.aos.ddo.web.mapping.Extractor._
-import scala.collection.JavaConverters._
 
+import scala.collection.JavaConverters._
 import scala.language.{existentials, postfixOps, reflectiveCalls}
 import scala.util.Try
 
@@ -116,7 +116,7 @@ object WikiParser extends LazyLogging {
         }
       case _ =>
         logger.error(
-          s"Failed to parse ${Field.WeaponTypeAndDamageType} (No result)");
+          s"Failed to parse ${Field.WeaponTypeAndDamageType} (No result)")
         None
     }
   }
@@ -283,7 +283,7 @@ object WikiParser extends LazyLogging {
         }
       case _ =>
         logger.warn(
-          s"No value found for ${Field.Durability}, defaulting to 0");
+          s"No value found for ${Field.Durability}, defaulting to 0")
         0
     }
   }
@@ -463,7 +463,7 @@ object WikiParser extends LazyLogging {
       case _ =>
         logger.warn(s"Failed to retrieve ${Field.Upgradeable}")
         new UpgradeInfo {
-          val text = None
+          val text: Option[String] = None
         } // TODO: Message should only warn if no upgrade value was specified
     }
   }

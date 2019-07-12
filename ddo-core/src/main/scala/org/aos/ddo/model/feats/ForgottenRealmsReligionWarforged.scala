@@ -2,11 +2,7 @@ package org.aos.ddo.model.feats
 
 import org.aos.ddo.model.race.Race
 import org.aos.ddo.model.race.Race.Warforged
-import org.aos.ddo.support.requisite.{
-  RaceRequisiteImpl,
-  RequiresAllOfRace,
-  RequiresNoneOfRace
-}
+import org.aos.ddo.support.requisite.{RaceRequisiteImpl, RequiresAllOfRace}
 
 /**
   * Created by adarr on 4/6/2017.

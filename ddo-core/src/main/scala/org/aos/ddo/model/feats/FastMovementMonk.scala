@@ -3,7 +3,7 @@ package org.aos.ddo.model.feats
 import org.aos.ddo.model.classes.CharacterClass
 import org.aos.ddo.model.classes.CharacterClass.Monk
 import org.aos.ddo.support.naming.PostText
-import org.aos.ddo.support.requisite.{FeatRequisiteImpl, FreeFeat, GrantsToClass, RequiresAllOfClass}
+import org.aos.ddo.support.requisite.{FeatRequisiteImpl, GrantsToClass, RequiresAllOfClass}
 
 /**
   * [[http://ddowiki.com/page/Fast_Movement_(monk_class_feat)]]

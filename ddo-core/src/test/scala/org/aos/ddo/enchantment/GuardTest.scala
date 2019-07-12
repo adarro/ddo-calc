@@ -2,11 +2,10 @@ package org.aos.ddo.enchantment
 
 import com.typesafe.scalalogging.LazyLogging
 import com.wix.accord.scalatest.ResultMatchers
-import org.junit.runner.RunWith
-import org.scalatest.junit.JUnitRunner
+// import org.junit.runner.RunWith
 import org.scalatest.{FunSpec, Matchers}
 
-@RunWith(classOf[JUnitRunner])
+// @RunWith(classOf[JUnitRunner])
 class GuardTest
     extends FunSpec
     with Matchers

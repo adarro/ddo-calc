@@ -15,10 +15,8 @@
  */
 package org.aos.ddo.model.item.weapon
 
-import org.aos.ddo.NoDefault
 import enumeratum.{Enum, EnumEntry}
-
-import scala.collection.immutable.IndexedSeq
+import org.aos.ddo.NoDefault
 
 /** handedness is used to determine a one handed, two handed or off hand equip.
   * DDOwiki lists bows as ranged

@@ -44,7 +44,7 @@ object EnumSupport {
   }
 
   /**
-    * Attempts to extract a named [[enumeratum.EnumEntry]] from a fully qualifed class name
+    * Attempts to extract a named [[enumeratum.EnumEntry]] from a fully qualified class name
     * @param fqn fully qualified class name of the enumeration
     * @param id string name of the value to extract. (Case Sensitive)
     * @return The EnumEntry value or [[scala.None]] if value can not be found.

@@ -21,7 +21,7 @@ protected[feats] trait Trapmaking
     with RequiresAnyOfFeat {
   override def anyOfClass: Seq[(CharacterClass, Int)] =
     List((Artificer, 4), (Rogue, 4))
-//@todo Add Least DM of Making
+// @todo Add Least DM of Making
   override def anyOfFeats: Seq[Feat] =
     List(GeneralFeat.NimbleFingers,
          GeneralFeat.SkillFocus(Skill.DisableDevice))

@@ -14,10 +14,13 @@ plugins {
     //  application
     // id("scala") apply (false)
     id("java-library")
+    idea
+    eclipse
     //   id "findbugs"
     //  id "org.standardout.versioneye" version "1.5.0"
     id("com.github.ben-manes.versions") version "0.21.0"
     id("se.patrikerdes.use-latest-versions") version "0.2.9"
+    id("com.gradle.build-scan") version "2.3"
     `project-report`
 
 }
@@ -35,12 +38,17 @@ allprojects {
 }
 val t = this
 
+buildScan {
+    termsOfServiceUrl = "https://gradle.com/terms-of-service"
+    termsOfServiceAgree = "yes"
+    publishOnFailure()
+    
+}
+
 subprojects {
 
-this.pluginManager.apply("java-library")
+    this.pluginManager.apply("java-library")
     this.pluginManager.apply("project-report")
-
-
 
 
 //    val p = this
@@ -69,6 +77,7 @@ this.pluginManager.apply("java-library")
     // apply plugin: 'java-library'
 
     tasks.withType(ScalaCompile::class.java) {
+
         options.encoding = "UTF-8"
         scalaCompileOptions.encoding = "UTF-8"
         // scalaCompileOptions.deprecation = true
@@ -120,7 +129,7 @@ tasks.withType<DependencyUpdatesTask> {
 }
 
 projectReports {
-    this.projects.addAll( t.allprojects)
+    this.projects.addAll(t.allprojects)
 }
 //
 //task testReport(type: TestReport) {

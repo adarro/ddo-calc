@@ -2,7 +2,10 @@ package org.aos.ddo.model.alignment
 
 import enumeratum.{Enum, EnumEntry}
 import org.aos.ddo.NoDefault
-import org.aos.ddo.enumeration._
+import org.aos.ddo.enumeration.BitSupport
+
+import scala.collection.immutable
+// import org.aos.ddo.enumeration._
 
 
 /**
@@ -54,7 +57,7 @@ object LawAxis extends Enum[LawAxis] with BitSupport {
   }*/
 
   type T = LawAxis
-  val values = findValues
+  val values: immutable.IndexedSeq[T] = findValues
   val bitValues: Map[T, Int] = valuesToIndex.map { x =>
     x._1 -> Math.pow(2.0, x._2).toInt
   }
@@ -84,7 +87,7 @@ sealed trait MoralAxis
 object MoralAxis extends Enum[MoralAxis] with BitSupport {
 
   type T = MoralAxis
-  val values = findValues
+  val values: immutable.IndexedSeq[MoralAxis] = findValues
   val bitValues: Map[T, Int] = valuesToIndex.map { x =>
     x._1 -> Math.pow(2.0, x._2).toInt
   }

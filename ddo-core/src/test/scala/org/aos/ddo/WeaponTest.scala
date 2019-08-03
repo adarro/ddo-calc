@@ -48,7 +48,7 @@ class WeaponTest extends FunSpec with Matchers with MockitoSugar {
       val durability: Int = 3
       val hardness: Int = 4
       val material = Some(mock[Material])
-      val upgradeInfo = mock[UpgradeInfo]
+      val upgradeInfo: UpgradeInfo = mock[UpgradeInfo]
 
       val description = Some("A mock Weapon")
       // Members declared in org.aos.ddo.Weapon
@@ -56,13 +56,13 @@ class WeaponTest extends FunSpec with Matchers with MockitoSugar {
       val absoluteMinimumLevel: Option[Int] = Some(3)
       val minimumLevel: Int = 4
       val umd: Int = 3
-      val enchantments = mock[Option[Seq[String]]]
+      val enchantments: Option[Seq[String]] = mock[Option[Seq[String]]]
     }
   }
 
   describe("a basic weapon") {
     it("should have a weapon type") {
-      import scala.language.reflectiveCalls // scalastyle:off import.grouping
+    //  import scala.language.reflectiveCalls // scalastyle:off import.grouping
       val f = fixture
       f.longBow.weaponCategory should be(Some(WeaponCategory.Dagger))
     }

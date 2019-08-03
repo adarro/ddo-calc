@@ -2,10 +2,8 @@ package org.aos.ddo.model.feats
 
 import java.util
 
-import enumeratum.EnumEntry
 import org.aos.ddo.model.classes.CharacterClass
-import org.aos.ddo.support.naming.FriendlyDisplay
-import org.aos.ddo.support.requisite.{ClassRequisite, Requisite}
+import org.aos.ddo.support.requisite.ClassRequisite
 
 import scala.collection.JavaConverters._
 
@@ -14,8 +12,8 @@ import scala.collection.JavaConverters._
   */
 trait ClassDisplayHelper extends DisplayHelper {
 
-  type FNLevel = (Entry) => Seq[(CharacterClass, Int)]
-  type FNClass = (Entry) => Seq[CharacterClass]
+  type FNLevel = Entry => Seq[(CharacterClass, Int)]
+  type FNClass = Entry => Seq[CharacterClass]
 
   def cClass: CharacterClass
 

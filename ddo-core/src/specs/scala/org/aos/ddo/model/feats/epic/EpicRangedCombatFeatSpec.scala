@@ -1,6 +1,6 @@
 package org.aos.ddo.model.feats.epic
 
-import org.aos.ddo.model.feats.{EpicFeat, EpicFeatDisplayHelper, GeneralPassive, RangedCombatPassive}
+import org.aos.ddo.model.feats.{EpicFeat, EpicFeatDisplayHelper, RangedCombatPassive}
 import org.concordion.integration.junit4.ConcordionRunner
 import org.junit.runner.RunWith
 

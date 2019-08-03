@@ -16,9 +16,11 @@
 package org.aos.ddo
 
 import com.typesafe.scalalogging.LazyLogging
-import enumeratum.{Enum,EnumEntry}
+import enumeratum.{Enum, EnumEntry}
 import org.aos.ddo.BindingFlags.Unbound
 import org.aos.ddo.support.StringUtils.Extensions
+
+import scala.collection.immutable
 
 /** Stores the binding status of an item.
   *
@@ -37,7 +39,7 @@ sealed abstract class BindingFlags(
 object BindingFlags extends Enum[BindingFlags] with DefaultValue[BindingFlags] with LazyLogging {
   /** Attempts to mangle an Enumeration using free text.
     *
-    * There is no extensive rule set, but DDO commonly using acronyms such as BTC,
+    * There is no extensive rule set, but DDO commonly uses acronyms such as BTC for Bound to Account,
     * so we are translating Binds|Bound to Account to BTA etc.
     *
     * @note
@@ -73,7 +75,7 @@ object BindingFlags extends Enum[BindingFlags] with DefaultValue[BindingFlags] w
   /** Returns the default binding status (BindingFlags.Unbound)
     */
   override lazy val default: Option[Unbound.type] = Some(BindingFlags.Unbound)
-  val values = findValues
+  val values: immutable.IndexedSeq[BindingFlags] = findValues
   case object Unbound extends BindingFlags("Unbound", BindingStatus.Unbound, BindingEvent.None) {
     def toFullWord: String = "Unbound"
   }

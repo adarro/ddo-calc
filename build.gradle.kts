@@ -12,16 +12,18 @@ plugins {
     //  scala apply(false)
 //    `java-library`
     //  application
-    // id("scala") apply (false)
+ 
     id("java-library")
+    id("org.scoverage")  version "3.1.5" apply(false)
     idea
     eclipse
     //   id "findbugs"
     //  id "org.standardout.versioneye" version "1.5.0"
     id("com.github.ben-manes.versions") version "0.21.0"
-    id("se.patrikerdes.use-latest-versions") version "0.2.9"
+    id("se.patrikerdes.use-latest-versions") version "0.2.12"
     id("com.gradle.build-scan") version "2.3"
     `project-report`
+
 
 }
 //
@@ -41,16 +43,25 @@ val t = this
 buildScan {
     termsOfServiceUrl = "https://gradle.com/terms-of-service"
     termsOfServiceAgree = "yes"
-    publishOnFailure()
-    
+//    publishOnFailure()
+
 }
 
-subprojects {
 
+
+
+subprojects {
+    val codacy: Configuration by configurations.creating
     this.pluginManager.apply("java-library")
     this.pluginManager.apply("project-report")
 
+    dependencies {
 
+        // https://mvnrepository.com/artifact/com.codacy/codacy-coverage-reporter
+
+        codacy(group = "com.codacy", name = "codacy-coverage-reporter", version = "6.0.2")
+
+    }
 //    val p = this
 //    p.afterEvaluate {
 //        this.withConvention(JavaPluginConvention::class, {
@@ -117,6 +128,11 @@ tasks.withType<DependencyUpdatesTask> {
                 }
                 if (rejected) {
                     reject("Release candidate")
+                } else {
+                    val scalaLibLoc = candidate.module == "scala-library" || candidate.group == "org.scala-lang"
+                    if (scalaLibLoc) {
+                        reject("${candidate.module}:${candidate.module} is locked at ${candidate.version}")
+                    }
                 }
             }
         }

@@ -40,7 +40,7 @@ dependencies {
     // Logging
     compile(group = "org.slf4j", name = "slf4j-api", version = "1.7.25")
     testCompile(group = "ch.qos.logback", name = "logback-classic", version = "1.2.3")
-    implementation(group = "com.typesafe.scala-logging", name = "scala-logging_2.12", version = "3.8.0")
+    implementation(group = "com.typesafe.scala-logging", name = "scala-logging_2.12", version = "3.9.2")
 
     // quick and dirty web testing
     testImplementation (group= "org.eclipse.jetty", name="jetty-server", version= jettyVersion)

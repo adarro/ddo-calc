@@ -17,18 +17,38 @@ trait SpellInfo extends CoolDown {
     */
   val coolDown: Option[Duration]
 
+  /**
+    * Determines if this spell is subject to a Resistance check
+    */
   val spellResistance: Boolean
 
   // TBD spell result
-
+/**
+  * List of applicable targets [[SpellTarget]]
+ */
   val target : List[SpellTarget]
 
+  /**
+    * Available saving throws, if any
+    */
   val savingThrow: List[SavingThrow]
 
+  /**
+    * Spell Point Cost
+    * @return
+    */
   def spellPoints: Int
 
+  /**
+    * Hit Point Cost
+    * @return
+    */
   def hitPoints: Option[Int] = None
 
+  /**
+    * List of required spell components
+    * @return
+    */
   def components: List[ComponentList]
 
 

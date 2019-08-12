@@ -12,62 +12,10 @@ import org.aos.ddo.support.StringUtils.Extensions
 
 import scala.collection.immutable
 
-/**
-  * Base class for spells and spell like abilities
-  */
-sealed trait SpellLike
+object SpellBuilder {
+  def apply[T <: Spell](ingredients: Seq[SpellElement]): SpellBuilder[T] = new SpellBuilder[T](ingredients)
 
-sealed trait SpellElement extends SpellLike
-
-object SpellElement {
-
-  sealed trait EmptySpell extends SpellElement
-
-  sealed trait WithSpellResistance extends SpellElement {
-    val spellResistance: Boolean = false
-  }
-
-  sealed trait WithSpellTarget extends SpellElement {
-    val target: List[SpellTarget] = List.empty
-  }
-
-  sealed trait WithSpellSavingThrow extends SpellElement {
-    val savingThrow: List[SavingThrow] = List.empty
-  }
-
-  sealed trait WithSpellPoints extends SpellElement {
-    val spellPoints: Int = 0
-  }
-
-  sealed trait WithComponents extends SpellElement {
-    val components: List[ComponentList] = List.empty
-  }
-
-  sealed trait WithLevelCap extends SpellElement with CasterLevelCap
-
-  sealed trait WithSpellEffects extends SpellElement with EffectList {
-    val effects: List[Effect]
-  }
-
-  sealed trait WithTarget extends SpellElement {
-    val targets: List[SpellTarget]
-  }
-
-  sealed trait WithCoolDown extends SpellElement with CoolDown
-
-  sealed trait WithCasterClass extends SpellElement with CasterLevels
-
-}
-
-sealed trait Spell
-  extends SpellLike
-    with EnumEntry
-    with DisplayName
-    with FriendlyDisplay {
-  val name: String
-
-  // self: SpellInfo with EffectList =>
-  override protected def nameSource: String = entryName.splitByCase.toPascalCase
+  // def apply(): SpellBuilder[Pizza.EmptyPizza] = apply[Pizza.EmptyPizza](Seq())
 }
 
 protected abstract class BaseSpellBuilder[T <: Spell](elements: Seq[SpellElement]) {
@@ -78,7 +26,10 @@ protected abstract class BaseSpellBuilder[T <: Spell](elements: Seq[SpellElement
     with CasterLevels
     with CoolDown
 
-  def addCoolDown(cd: Option[Duration]): BaseSpellBuilder[T with CoolDown]
+  def addSpellInfo(si: SpellInfo): BaseSpellBuilder[T with SpellInfo]
+
+  // SpellInfo
+  //  def addCoolDown(cd: Option[Duration]): BaseSpellBuilder[T with CoolDown]
 
   def addCasterClass(
                       cl: Seq[CasterWithLevel]): BaseSpellBuilder[T with CasterLevels]
@@ -101,54 +52,68 @@ protected abstract class BaseSpellBuilder[T <: Spell](elements: Seq[SpellElement
 class SpellBuilder[T <: Spell](elements: Seq[SpellElement] = Seq.empty)
   extends BaseSpellBuilder[T](elements) {
 
-  override def addCoolDown(
-                            cd: Option[Duration]): BaseSpellBuilder[T with CoolDown] =
-    new SpellBuilder[T with CoolDown](elements :+ new WithCoolDown {
-      override def coolDown: Option[Duration] = cd
-    })
+  //  override def addCoolDown(
+  //                            cd: Option[Duration]): BaseSpellBuilder[T with CoolDown] =
+  //    SpellBuilder[T with CoolDown](elements :+ UseCoolDown {
+  //      cd
+  //    })
 
-  override def build(implicit ev: Spell =:= CompleteSpell): Spell = {
-    val e: Spell =:= CompleteSpell = ev
-    // val s: Spell
-    null
+  override def build(implicit ev: Spell =:= CompleteSpell): Spell = SpellDescriptor(elements)
 
-  }
+  // {
+  //    val e: Spell =:= CompleteSpell = ev
+  //   createSpell
+  //    // val s: Spell
+  //    null
+  //
+  // }
 
   override def addCasterClass(
                                cl: Seq[CasterWithLevel]): BaseSpellBuilder[T with CasterLevels] =
-    new SpellBuilder[T with CasterLevels](elements :+ new WithCasterClass {
-      override def casterLevels: Seq[CasterWithLevel] = cl
+    SpellBuilder[T with CasterLevels](elements :+ UseCasterClass {
+      cl
     })
 
   override def addSpellTarget(targets: List[SpellTarget]): BaseSpellBuilder[T with SpellTarget] =
-    new SpellBuilder[T with SpellTarget](elements :+ new WithSpellTarget {
-      override val target: List[SpellTarget] = targets
+    SpellBuilder[T with SpellTarget](elements :+ UseSpellTarget {
+      targets
     })
 
   override def addSavingThrow(saves: List[SavingThrow]): BaseSpellBuilder[T with WithSpellSavingThrow] =
-    new SpellBuilder[T with WithSpellSavingThrow](elements :+ new WithSpellSavingThrow {
-      override val savingThrow: List[SavingThrow] = saves
+    SpellBuilder[T with WithSpellSavingThrow](elements :+ UseSpellSavingThrow {
+      saves
     })
 
   override def addSpellPoints(sp: Int): BaseSpellBuilder[T with WithSpellPoints] =
-    new SpellBuilder[T with WithSpellPoints](elements :+ new WithSpellPoints {
-      override val spellPoints: Int = sp
+    SpellBuilder[T with WithSpellPoints](elements :+ UseSpellPoints {
+      sp
     })
 
   override def addComponents(component: List[ComponentList]): BaseSpellBuilder[T with WithComponents] =
-    new SpellBuilder[T with WithComponents](elements :+ new WithComponents {
-      override val components: List[ComponentList] = component
+    SpellBuilder[T with WithComponents](elements :+ UseComponents {
+      component
     })
 
   override def addLevelCap(cl: CasterLevelCap): BaseSpellBuilder[T with WithLevelCap] =
-    new SpellBuilder[T with WithLevelCap](elements :+ new WithLevelCap {
-      override val baseLevelCap: Option[Int] = cl.baseLevelCap
+    SpellBuilder[T with WithLevelCap](elements :+ UseLevelCap {
+      cl.baseLevelCap
     })
 
   override def addEffect(eff: EffectList): BaseSpellBuilder[T with WithSpellEffects] =
-    new SpellBuilder[T with WithSpellEffects](elements :+ new WithSpellEffects {
-      override val effects: List[Effect] = eff.effects
+    SpellBuilder[T with WithSpellEffects](elements :+ UseSpellEffects {
+      eff.effects
     })
+
+  override def addSpellInfo(si: SpellInfo): BaseSpellBuilder[T with SpellInfo] =
+    SpellBuilder[T with SpellInfo](
+      elements :+ UseSpellInfo(
+        coolDown = si.coolDown,
+        savingThrow = si.savingThrow,
+        spellResistance = si.spellResistance,
+        target = si.target,
+        components = si.components,
+        spellPoints = si.spellPoints)
+    )
 
   private def buildFromElements(elements: Seq[SpellElement]) = {
 
@@ -158,7 +123,14 @@ class SpellBuilder[T <: Spell](elements: Seq[SpellElement] = Seq.empty)
     //    }
 
     elements.foreach {
-      case x: WithCoolDown => s = s.copy(coolDown = x.coolDown)
+      case x: WithSpellInfo => s = s.copy(name = "new spell",
+        coolDown = x.coolDown,
+        spellResistance = x.spellResistance,
+        target = x.target,
+        savingThrow = x.savingThrow,
+        spellPoints = x.spellPoints,
+        components = x.components)
+      case x: UseCoolDown => s = s.copy(coolDown = x.coolDown)
       case x: WithCasterClass =>
         s = s.copy(casterLevels = new CasterLevels {
           override def casterLevels: Seq[CasterWithLevel] = x.casterLevels
@@ -176,30 +148,7 @@ class SpellBuilder[T <: Spell](elements: Seq[SpellElement] = Seq.empty)
   }
 }
 
-private final case class createSpell(
-                                      name: String = "new spell",
-                                      coolDown: Option[Duration] = None,
-                                      spellResistance: Boolean = false,
-                                      target: List[SpellTarget] = List.empty,
-                                      savingThrow: List[SavingThrow] = List.empty,
-                                      spellPoints: Int = 0,
-                                      components: List[ComponentList] = List.empty,
-                                      maxCasterLevel: CasterLevelCap = new CasterLevelCap {
-                                        override val baseLevelCap: Option[Int] = None
-                                      },
-                                      casterLevels: CasterLevels = new CasterLevels {
-                                        override def casterLevels: Seq[CasterWithLevel] = Seq.empty
-                                      },
-                                      effects: List[Effect] = List.empty)
-  extends Spell
-    with SpellInfo
-    with EffectList
 
-trait BullsStrength extends Spell with SpellInfo with EffectList
 
-object Spell extends Enum[Spell] {
 
-  override def values: immutable.IndexedSeq[Spell] = findValues
-}
 
-trait SpellLikeAbility extends SpellLike

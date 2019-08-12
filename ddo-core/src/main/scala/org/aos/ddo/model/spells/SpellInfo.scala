@@ -23,10 +23,10 @@ trait SpellInfo extends CoolDown {
   val spellResistance: Boolean
 
   // TBD spell result
-/**
-  * List of applicable targets [[SpellTarget]]
- */
-  val target : List[SpellTarget]
+  /**
+    * List of applicable targets [[SpellTarget]]
+    */
+  val target: List[SpellTarget]
 
   /**
     * Available saving throws, if any
@@ -35,24 +35,32 @@ trait SpellInfo extends CoolDown {
 
   /**
     * Spell Point Cost
+    *
     * @return
     */
   def spellPoints: Int
 
   /**
     * Hit Point Cost
+    *
     * @return
     */
   def hitPoints: Option[Int] = None
 
   /**
     * List of required spell components
+    *
     * @return
     */
-  def components: List[ComponentList]
-
-
-
-
-
+  val components: List[ComponentList]
 }
+
+
+final case class CreateSpellInfo(
+                                  override val coolDown: Option[Duration],
+                                  override val savingThrow: List[SavingThrow],
+                                  override val spellResistance: Boolean,
+                                  override val target: List[SpellTarget],
+                                  override val components: List[ComponentList],
+                                  override val spellPoints: Int,
+                                  override val hitPoints: Option[Int] = None) extends SpellInfo

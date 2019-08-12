@@ -17,12 +17,12 @@ package org.aos.ddo
 
 import com.typesafe.scalalogging.LazyLogging
 import org.aos.ddo.support.StringUtils.{randomAlphanumericString, Extensions}
-import org.junit.platform.runner.JUnitPlatform
 import org.junit.runner.RunWith
 import org.scalatest.{FunSpec, Matchers}
+import org.scalatest.junit.JUnitRunner
 import org.scalatest.mockito.MockitoSugar
 
-@RunWith(classOf[JUnitPlatform])
+@RunWith(classOf[JUnitRunner])
 class BindingTest extends FunSpec with Matchers with MockitoSugar with LazyLogging {
   final val Unbound = "Unbound"
   final val possibleText: List[String] = List("Bound To Character on Equip",
@@ -39,7 +39,7 @@ class BindingTest extends FunSpec with Matchers with MockitoSugar with LazyLoggi
     "Unbound", "BindsToCharacter", "BindsToCharacterOnEquip", "BindsToAccountOnEquip", "BindsToCharacterOnAcquire", "BindsToCharacterOnEquip")
   describe("Binding Status") {
     they("should include unbound, account and character") {
-      BindingStatus.values.foreach { x => checks.contains(x) }
+      BindingStatus.values.foreach { x => checks.contains(x.entryName) }
     }
 
     they("should recognize both 'bound' and 'binds'") {

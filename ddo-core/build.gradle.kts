@@ -1,16 +1,6 @@
 plugins {
-    `java-library`
-//    scala
-
-    id ("scala-profile")
-
-//    id "com.diffplug.gradle.spotless" version "3.10.0"
-    //  id "com.github.maiflai.scalatest" version "0.25"
-    //  id "org.scoverage" // version "3.1.5"
-    //   id 'nebula.optional-base' version '3.0.3'
-    //   id "org.junit.platform.gradle.plugin"
-
-
+    id("org.unbroken-dome.test-sets") // version "2.1.1"
+    id("scala-profiles")
 }
 
 //sourceSets {
@@ -56,26 +46,6 @@ plugins {
 //
 //}
 
-tasks.create("showPath") {
-    val scalaScriptLoc = rootProject.buildDir.parent + "/scala.gradle.kts"
-    println("root $scalaScriptLoc")
-    println("spath $scalaScriptLoc")
-}
-//
-//task<Test>("acceptanceTest") {
-//    group = "verification"
-//    description = "Runs Acceptance Tests"
-//    testClassesDirs = sourceSets["acceptanceTest"].output.classesDirs
-//    classpath += sourceSets["acceptanceTest"].runtimeClasspath
-//    mustRunAfter(getTasksByName("test", recursive = false))
-//    testLogging {
-//        showStandardStreams = true
-//    }
-//    systemProperties["concordion.output.dir"] = "$reporting.baseDir/spec"
-//}
-//
-//
-//
 //task<Test>("allTests") {
 //    description = "Runs All Unit and Acceptance Tests"
 //    dependsOn(getTasksByName("test", false), getTasksByName("acceptanceTest", false))
@@ -85,11 +55,21 @@ tasks.create("showPath") {
 //tasks.getByName("check").dependsOn(tasks.getByName("allTests"))
 
 description = "Core DDO Objects"
+testSets {
+
+    "acceptanceTest" {
+        dirName = "specs"
+        sourceSet.resources {
+            this.srcDirs.add(File("${project.projectDir}/src/test/specs"))
+        }
+        createArtifact = true
+        //  this.testTaskName = "MyAcceptanceTest"
+    }
+}
 
 dependencies {
-    // val acceptanceTestImplementation by getting
-    val acceptanceTestImplementation: Configuration by configurations.getting
-   
+    val junitPlatformVersion: String by project
+    val junitPlatformRunnerVersion: String by project
     implementation(group = "com.beachape", name = "enumeratum_2.12", version = "1.5.13")
     implementation(group = "com.typesafe", name = "config", version = "1.3.4")
     implementation(group = "com.github.kxbmap", name = "configs_2.12", version = "0.4.4")
@@ -102,11 +82,15 @@ dependencies {
     testImplementation(group = "org.mockito", name = "mockito-all", version = "2.0.2-beta")
     //   testImplementation (group= "junit", name= "junit", version="4.12"
     // JUnit 5
-    testImplementation(group = "org.junit.jupiter", name = "junit-jupiter-api", version = "5.5.1")
-    //  testImplementation("org.junit.jupiter:junit-jupiter-api:5.5.1")
-    testRuntimeOnly("org.junit.jupiter:junit-jupiter-engine:5.5.1")
-    testRuntime("org.junit.platform:junit-platform-console:1.5.1")
-    testImplementation("org.junit.platform:junit-platform-runner:1.5.1")
+    testImplementation(group = "org.junit.jupiter", name = "junit-jupiter", version = junitPlatformVersion)
+    testRuntimeOnly(group = "org.junit.vintage", name = "junit-vintage-engine", version = junitPlatformVersion)
+    testImplementation(
+        group = "org.junit.platform",
+        name = "junit-platform-runner",
+        version = junitPlatformRunnerVersion
+    )
+
+    val acceptanceTestImplementation by configurations.getting
     acceptanceTestImplementation(group = "org.concordion", name = "concordion", version = "2.2.0")
     acceptanceTestImplementation(group = "org.concordion", name = "concordion-embed-extension", version = "1.2.0")
     acceptanceTestImplementation(

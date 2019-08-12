@@ -1,6 +1,5 @@
-// import org.gradle.api.internal.java.JavaLibrary
-// import org.gradle.kotlin.dsl.*
 import com.github.benmanes.gradle.versions.updates.DependencyUpdatesTask
+import org.gradle.api.tasks.testing.logging.TestLogEvent
 
 buildscript {
     repositories {
@@ -9,12 +8,11 @@ buildscript {
 }
 
 plugins {
-    //  scala apply(false)
-//    `java-library`
+
     //  application
- 
     id("java-library")
-    id("org.scoverage")  version "3.1.5" apply(false)
+    id("org.unbroken-dome.test-sets") version "2.1.1"
+    id("org.scoverage") version "3.1.5" // apply(false)
     idea
     eclipse
     //   id "findbugs"
@@ -29,10 +27,7 @@ plugins {
 //
 
 
-allprojects {
-
-
-    //   plugins { `java-library` }
+allprojects {   
     repositories {
         jcenter()
         mavenCentral()
@@ -43,10 +38,29 @@ val t = this
 buildScan {
     termsOfServiceUrl = "https://gradle.com/terms-of-service"
     termsOfServiceAgree = "yes"
-//    publishOnFailure()
-
 }
 
+tasks.register("showDirs") {
+    doLast {
+        logger.quiet(rootDir.toPath().relativize((project.properties["reportsDir"] as File).toPath()).toString())
+        logger.quiet(rootDir.toPath().relativize((project.properties["testResultsDir"] as File).toPath()).toString())
+    }
+}
+
+tasks.register<TestReport>("testReport") {
+    destinationDir = file("$buildDir/reports/allTests")
+    // Include the results from the `test` task in all subprojects
+    reportOn(subprojects.map { it.tasks["test"] })
+}
+
+
+
+tasks.test {
+    useJUnitPlatform()   
+    testLogging {
+        events.addAll(listOf(TestLogEvent.PASSED, TestLogEvent.FAILED, TestLogEvent.SKIPPED))
+    }
+}
 
 
 
@@ -62,36 +76,11 @@ subprojects {
         codacy(group = "com.codacy", name = "codacy-coverage-reporter", version = "6.0.2")
 
     }
-//    val p = this
-//    p.afterEvaluate {
-//        this.withConvention(JavaPluginConvention::class, {
-//            sourceCompatibility = JavaVersion.VERSION_1_8
-//            targetCompatibility = JavaVersion.VERSION_1_8
-//        })
-//    }
-//    p.afterEvaluate {
-//        apply {
-//            java {
-//                sourceCompatibility = JavaVersion.VERSION_1_8
-//                targetCompatibility = JavaVersion.VERSION_1_8
-//            }
-//        }
-//    }
-
-//    plugins.withId("java-library") {
-//
-//        p.configure(JavaPluginConvention::class.java, {
-//            sourceCompatibility = JavaVersion.VERSION_1_8
-//            targetCompatibility = JavaVersion.VERSION_1_8
-//        })
-//    }
-    // apply plugin: 'java-library'
 
     tasks.withType(ScalaCompile::class.java) {
 
         options.encoding = "UTF-8"
-        scalaCompileOptions.encoding = "UTF-8"
-        // scalaCompileOptions.deprecation = true
+        scalaCompileOptions.encoding = "UTF-8"        
         scalaCompileOptions.additionalParameters =
             listOf("-deprecation", "-feature", "-Ywarn-unused", "-Xlint", "-Xcheckinit", "-Yrangepos")
         // optionally specify host and port of the daemon:
@@ -105,7 +94,7 @@ subprojects {
         }
     }
     tasks.withType<Test> {
-        reports.html.isEnabled = false
+        reports.html.isEnabled = true
     }
 
 
@@ -147,16 +136,6 @@ tasks.withType<DependencyUpdatesTask> {
 projectReports {
     this.projects.addAll(t.allprojects)
 }
-//
-//task testReport(type: TestReport) {
-//    destinationDir = file("$buildDir/reports/allTests")
-//    // Include the results from the `test` task in all subprojects
-//    reportOn subprojects*.test
-//}
-//
-//dependencies {
-//    compile group: 'org.scala-lang', name: 'scala-library', version: '2.13.0-M5-1775dba'
-//}
 
 /*versioneye {
     includeSubProjects = true

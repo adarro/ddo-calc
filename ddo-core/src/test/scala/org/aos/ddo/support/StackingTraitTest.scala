@@ -36,6 +36,7 @@ class StackingTraitTest extends FunSpec with Matchers with LazyLogging {
     }
     it("Supports dynamic stacking") {
       val active = new Fixture.ActivationType with ActiveEvent {}
+      active.activations should be(empty)
     }
   }
 }

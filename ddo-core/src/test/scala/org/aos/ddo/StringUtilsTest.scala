@@ -15,12 +15,14 @@
   */
 package org.aos.ddo
 
-import org.aos.ddo.support.StringUtils.{ Extensions, StringImprovements }
-import org.scalatest.{ FunSpec, Matchers }
+import org.aos.ddo.support.StringUtils.{Extensions, StringImprovements}
+import org.scalatest.{FunSpec, Matchers}
 import org.scalatest.OptionValues._
-
 import com.typesafe.scalalogging.LazyLogging
+import org.junit.runner.RunWith
+import org.scalatest.junit.JUnitRunner
 
+@RunWith(classOf[JUnitRunner])
 class StringUtilsTest extends FunSpec with Matchers with LazyLogging {
   private val wordsWithSpaces: String = "I Believe Mom"
   private val wordsWithoutSpaces: String = "IBetterMail"

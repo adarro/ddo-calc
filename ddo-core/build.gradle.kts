@@ -1,3 +1,5 @@
+import org.unbrokendome.gradle.plugins.testsets.dsl.testSets
+
 plugins {
     id("org.unbroken-dome.test-sets") // version "2.1.1"
     id("scala-profiles")
@@ -59,14 +61,36 @@ testSets {
 
     "acceptanceTest" {
         dirName = "specs"
+
+        sourceSet.java {
+            "acceptanceTest" {
+           //     withConvention(ScalaSourceSet::class) {
+                    //            scala {
+//                srcDir { "src/test/scala" }
+                    exclude(
+                        "**/*Spec.scala",
+                        "**/*Helper*",
+                        "**/*Builder*"
+                    )
+           //     }
+            }
+        }
+
+////            include {'**/*Test.scala'}
+//            }
+//
+//        }
+//        }
         sourceSet.resources {
             this.srcDirs.add(File("${project.projectDir}/src/test/specs"))
         }
         createArtifact = true
         //  this.testTaskName = "MyAcceptanceTest"
+        
+
     }
 }
-
+tasks.getByName("check").dependsOn(tasks.getByName("acceptanceTest"))
 dependencies {
     val junitPlatformVersion: String by project
     val junitPlatformRunnerVersion: String by project
@@ -81,6 +105,7 @@ dependencies {
     testRuntimeOnly("org.pegdown:pegdown:1.6.0")
     testImplementation(group = "org.mockito", name = "mockito-all", version = "2.0.2-beta")
     //   testImplementation (group= "junit", name= "junit", version="4.12"
+    // Test
     // JUnit 5
     testImplementation(group = "org.junit.jupiter", name = "junit-jupiter", version = junitPlatformVersion)
     testRuntimeOnly(group = "org.junit.vintage", name = "junit-vintage-engine", version = junitPlatformVersion)
@@ -90,6 +115,7 @@ dependencies {
         version = junitPlatformRunnerVersion
     )
 
+    // Concordion BDD
     val acceptanceTestImplementation by configurations.getting
     acceptanceTestImplementation(group = "org.concordion", name = "concordion", version = "2.2.0")
     acceptanceTestImplementation(group = "org.concordion", name = "concordion-embed-extension", version = "1.2.0")

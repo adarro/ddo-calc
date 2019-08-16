@@ -18,6 +18,7 @@ package org.aos.ddo
 import com.typesafe.scalalogging.LazyLogging
 import org.aos.ddo.support.StringUtils.{randomAlphanumericString, Extensions}
 import org.junit.runner.RunWith
+import org.scalactic.Equality
 import org.scalatest.{FunSpec, Matchers}
 import org.scalatest.junit.JUnitRunner
 import org.scalatest.mockito.MockitoSugar
@@ -28,12 +29,17 @@ class BindingTest extends FunSpec with Matchers with MockitoSugar with LazyLoggi
   final val possibleText: List[String] = List("Bound To Character on Equip",
     "Bound To Account on Equip",
     "Bound To Character on Acquire",
+    "Bound To Account on Acquire",
     "Bound To Account on Equip",
     Unbound,
     "Bound To Character",
     "Bound To Account")
   final val numCharacters = 10
   final val randWords = for {x <- 1 to 5} yield randomAlphanumericString(numCharacters)
+  final val bindMap = possibleText.map {
+    words => (words, if (words.equalsIgnoreCase(Unbound)) Unbound else words.wordsToAcronym.getOrElse(Unbound))
+  }
+    .toMap.map { case (k, v) => v -> k }
   final val abbr = possibleText.map { words => if (words.equalsIgnoreCase(Unbound)) Unbound else words.wordsToAcronym.getOrElse(Unbound) }
   final val checks: List[String] = List("BindsToAccount",
     "Unbound", "BindsToCharacter", "BindsToCharacterOnEquip", "BindsToAccountOnEquip", "BindsToCharacterOnAcquire", "BindsToCharacterOnEquip")
@@ -65,6 +71,12 @@ class BindingTest extends FunSpec with Matchers with MockitoSugar with LazyLoggi
         rslt shouldEqual None
       }
     }
+    it("should equal None if None is supplied") {
+      val none: Option[String] = None
+      val rslt = BindingFlags.fromWords(none)
+      logger.info(s"Validating $rslt equals None")
+      rslt shouldEqual None
+    }
   }
   describe("Binding Flags") {
     they("can create an instance from acronyms with [Option] or raw") {
@@ -88,6 +100,18 @@ class BindingTest extends FunSpec with Matchers with MockitoSugar with LazyLoggi
       abbr.foreach { name =>
         BindingFlags.withNameOption(name) should not be empty
         noException should be thrownBy BindingFlags.withName(name)
+      }
+    }
+    they("should match Abbreviation with the name") {
+      implicit val caseInsensitiveEquality: Equality[String] = (self: String, b: Any) => b match {
+        case other: String => self.equalsIgnoreCase(other)
+        case _ => false
+      }
+      bindMap.foreach {
+        case (k, v) => val flag = BindingFlags.withName(k).toFullWord
+          logger.info(s"validating $flag == $v")
+          flag shouldEqual  v
+
       }
     }
   }

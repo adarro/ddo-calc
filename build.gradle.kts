@@ -11,23 +11,30 @@ plugins {
 
     //  application
     id("java-library")
-    id("org.unbroken-dome.test-sets") version "2.1.1"
-    id("org.scoverage") version "3.1.5" // apply(false)
+    id("org.unbroken-dome.test-sets")
+    id("org.scoverage") version "3.1.5"
     idea
     eclipse
     //   id "findbugs"
     //  id "org.standardout.versioneye" version "1.5.0"
-    id("com.github.ben-manes.versions") version "0.21.0"
-    id("se.patrikerdes.use-latest-versions") version "0.2.12"
-    id("com.gradle.build-scan") version "2.3"
+    id("com.github.ben-manes.versions")
+    id("se.patrikerdes.use-latest-versions")
+    id("com.gradle.build-scan")
+    id("quality-checks")
     `project-report`
+    `build-dashboard`
+    id("gradle.site") version "0.6"
 
 
 }
 //
 
+tasks.withType(HtmlDependencyReportTask::class.java) {
+    projects = projects
+}
 
-allprojects {   
+
+allprojects {
     repositories {
         jcenter()
         mavenCentral()
@@ -53,14 +60,44 @@ tasks.register<TestReport>("testReport") {
     reportOn(subprojects.map { it.tasks["test"] })
 }
 
+tasks.register("aggregateReports") {
+    dependsOn("testReport", "aggregateScoverage", "projectReport")
+    group = "reporting"
+    description = "Aggregates Reports into root directory"
 
+}
+
+tasks.register("showReportTasks ") {
+    description = "Displays report task names"
+    tasks.filter { t -> t.name.contains("report", true) }.forEach {
+        println("ReportTask : ${it.name}\t${it.javaClass.name}")
+    }
+}
 
 tasks.test {
-    useJUnitPlatform()   
+    useJUnitPlatform()
     testLogging {
         events.addAll(listOf(TestLogEvent.PASSED, TestLogEvent.FAILED, TestLogEvent.SKIPPED))
     }
 }
+site {
+    websiteUrl.set("https://github.com/adarro")
+    outputDir.set(file("$rootDir/docs"))
+    vcsUrl.set("https://github.com/adarro/ddo-calc.git")
+}
+
+
+tasks.withType(GenerateBuildDashboard::class.java) {
+    // this.aggregate()
+    reports {
+        logger.warn("${enabledReports.size} enabled dashboard reports")
+        enabledReports.forEach { (n, r) ->
+            logger.warn("Dashboard: $n\t${r.name}\t${r.displayName}\t${r.isEnabled}")
+        }
+
+    }
+}
+
 
 
 
@@ -77,15 +114,6 @@ subprojects {
 
     }
 
-    tasks.withType(ScalaCompile::class.java) {
-
-        options.encoding = "UTF-8"
-        scalaCompileOptions.encoding = "UTF-8"        
-        scalaCompileOptions.additionalParameters =
-            listOf("-deprecation", "-feature", "-Ywarn-unused", "-Xlint", "-Xcheckinit", "-Yrangepos")
-        // optionally specify host and port of the daemon:
-        // scalaCompileOptions.daemonServer = "localhost:4243"
-    }
     tasks.create("showPlugins") {
         description = "Lists pluginAware plugins for each project"
         println("Plugins for $project.name")
@@ -94,7 +122,7 @@ subprojects {
         }
     }
     tasks.withType<Test> {
-        reports.html.isEnabled = true
+        reports.html.isEnabled = false
     }
 
 

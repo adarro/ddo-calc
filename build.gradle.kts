@@ -24,6 +24,7 @@ plugins {
     `project-report`
     `build-dashboard`
     id("gradle.site") version "0.6"
+    id("com.dorongold.task-tree") 
 
 
 }

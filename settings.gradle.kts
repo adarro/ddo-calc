@@ -25,6 +25,7 @@ val buildScanPluginVersion: String by settings
 val useLatestVersionsPluginVersion: String by settings
 val testSetsPluginVersion: String by settings
 val versionEyePluginVersion: String by settings
+val taskTreePluginVersion : String by settings
 
 pluginManagement {
     plugins {
@@ -35,6 +36,7 @@ pluginManagement {
         id("com.github.ben-manes.versions") version versionsPluginVersion
         id("se.patrikerdes.use-latest-versions") version useLatestVersionsPluginVersion
         id("com.gradle.build-scan") version buildScanPluginVersion
+        id("com.dorongold.task-tree") version taskTreePluginVersion
     }
 }
 

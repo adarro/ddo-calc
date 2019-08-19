@@ -64,15 +64,15 @@ testSets {
 
         sourceSet.java {
             "acceptanceTest" {
-           //     withConvention(ScalaSourceSet::class) {
-                    //            scala {
+                //     withConvention(ScalaSourceSet::class) {
+                //            scala {
 //                srcDir { "src/test/scala" }
-                    exclude(
-                        "**/*Spec.scala",
-                        "**/*Helper*",
-                        "**/*Builder*"
-                    )
-           //     }
+                exclude(
+                    "**/*Spec.scala",
+                    "**/*Helper*",
+                    "**/*Builder*"
+                )
+                //     }
             }
         }
 
@@ -86,7 +86,7 @@ testSets {
         }
         createArtifact = true
         //  this.testTaskName = "MyAcceptanceTest"
-        
+
 
     }
 }
@@ -102,7 +102,9 @@ dependencies {
     implementation(group = "ch.qos.logback", name = "logback-classic", version = "1.2.3") //,optional
     implementation(group = "org.jetbrains", name = "annotations", version = "17.0.0")
     testImplementation(group = "org.scalatest", name = "scalatest_2.12", version = "3.2.0-SNAP10")
-    testRuntimeOnly("org.pegdown:pegdown:1.6.0")
+    testImplementation(group = "org.scalacheck", name = "scalacheck_2.12", version = "1.14.0")
+
+
     testImplementation(group = "org.mockito", name = "mockito-all", version = "2.0.2-beta")
     //   testImplementation (group= "junit", name= "junit", version="4.12"
     // Test

@@ -29,6 +29,7 @@ object EnumSupport {
     *       Also allows base trait name to invoke Companion. i.e. org.example.baseTrait vs Companion org.example.baseTrait$
     */
   def tryEnumFromString(fqn: String): Option[Enum[EnumEntry]] = {
+    // Testing naming pattern for companion object
     val mangle = if (fqn.endsWith("$")) { fqn } else { "%s$".format(fqn) }
     val y: Try[AnyRef] = for {
       c <- Try(Class.forName(mangle))

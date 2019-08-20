@@ -19,6 +19,7 @@ import com.typesafe.scalalogging.LazyLogging
 import enumeratum.{Enum, EnumEntry}
 import org.aos.ddo.BindingFlags.Unbound
 import org.aos.ddo.support.StringUtils.Extensions
+import org.aos.ddo.support.matching.{WordMatchStrategies, WordMatchStrategy}
 
 import scala.collection.immutable
 
@@ -45,13 +46,17 @@ object BindingFlags extends Enum[BindingFlags] with DefaultValue[BindingFlags] w
 
   /** @see [[org.aos.ddo.BindingFlags.fromWords(#Option[String])]]
     */
-  def fromWords(words: String): Option[BindingFlags] = fromWords(Option(words))
+  def fromWords(words: String)(implicit strategy: WordMatchStrategy)
+  : Option[BindingFlags] = fromWords(Option(words))(strategy)
 
   /** Attempts to mangle an Enumeration using free text.
     *
     * There is no extensive rule set, but DDO commonly uses acronyms such as BTC for Bound to Account,
     * so we are translating Binds|Bound to Account to BTA etc.
     *
+    * @param words    Optional String of text to translate.
+    * @param strategy Implicit strategy used to determine matching constraints such as Upper / Lowercase / Preserve Case, full word etc.
+    * @return [BindingFlags] from name or None if no data or no matching data is found.
     * @note
     * First catches 'Unbound'
     * Next Attempts to extract abbreviation using space or case to separate words
@@ -61,7 +66,7 @@ object BindingFlags extends Enum[BindingFlags] with DefaultValue[BindingFlags] w
     * If you have the exact words without spaces, it may be more performant to use the 'withName' variant.
     * NOTE: This enumeration is keyed by Acronym, so BTCoE will match, where 'Bound to Character On Equip' will fail.
     */
-  def fromWords(words: Option[String]): Option[BindingFlags] = {
+  def fromWords(words: Option[String])(implicit strategy: WordMatchStrategy = WordMatchStrategies.TitleCaseWordStrategy): Option[BindingFlags] = {
     words match {
       case Some(x) if x.equalsIgnoreCase(BindingFlags.Unbound.toFullWord) =>
         Some(BindingFlags.Unbound)

@@ -17,6 +17,7 @@ package org.aos.ddo
 
 import com.typesafe.scalalogging.LazyLogging
 import org.aos.ddo.support.StringUtils.{randomAlphanumericString, Extensions}
+import org.aos.ddo.support.matching.{WordMatchStrategies, WordMatchStrategy}
 import org.junit.runner.RunWith
 import org.scalactic.Equality
 import org.scalatest.{FunSpec, Matchers}
@@ -35,7 +36,7 @@ class BindingTest extends FunSpec with Matchers with MockitoSugar with LazyLoggi
     "Bound To Character",
     "Bound To Account")
   final val numCharacters = 10
-  final val randWords = for {x <- 1 to 5} yield randomAlphanumericString(numCharacters)
+  final val randWords = for {_ <- 1 to 5} yield randomAlphanumericString(numCharacters)
   final val bindMap = possibleText.map {
     words => (words, if (words.equalsIgnoreCase(Unbound)) Unbound else words.wordsToAcronym.getOrElse(Unbound))
   }
@@ -49,14 +50,17 @@ class BindingTest extends FunSpec with Matchers with MockitoSugar with LazyLoggi
     }
 
     they("should recognize both 'bound' and 'binds'") {
+      implicit val strategy: WordMatchStrategy = WordMatchStrategies.FullLowerCaseWordStrategy
       possibleText.filterNot { x => x.equalsIgnoreCase(Unbound.toLowerCase()) }.foreach { x =>
         BindingFlags.fromWords(Option.apply(x)) should not be empty
         BindingFlags.fromWords(Option.apply(x.replace("Bound", "Binds"))) should not be empty
       }
     }
+
     it("should have a default value") {
       BindingFlags.hasDefault should be(true)
     }
+
     it("should have a default value of BindingFlags.Unbound") {
       val unbound = BindingFlags.Unbound
       val binding = BindingFlags.default
@@ -64,13 +68,15 @@ class BindingTest extends FunSpec with Matchers with MockitoSugar with LazyLoggi
 
       binding shouldEqual Some(unbound)
     }
+
     it("should default to 'None' if any non-matching text supplied") {
-      randWords.foreach { words =>
+      (randWords :+ "\t").foreach { words =>
         logger.info(s"Testing words: $words")
         val rslt = BindingFlags.fromWords(Option(words))
         rslt shouldEqual None
       }
     }
+
     it("should equal None if None is supplied") {
       val none: Option[String] = None
       val rslt = BindingFlags.fromWords(none)
@@ -82,6 +88,7 @@ class BindingTest extends FunSpec with Matchers with MockitoSugar with LazyLoggi
     they("can create an instance from acronyms with [Option] or raw") {
       val words = possibleText.filter { x => x.equals(Unbound) }
       words.foreach { x =>
+        implicit val strategy: WordMatchStrategy = WordMatchStrategies.FullLowerCaseWordStrategy
         logger.info(s"using acronym from $words")
         BindingFlags.fromWords(x) should not be empty
         BindingFlags.fromWords(Option(x)) should not be empty
@@ -110,7 +117,7 @@ class BindingTest extends FunSpec with Matchers with MockitoSugar with LazyLoggi
       bindMap.foreach {
         case (k, v) => val flag = BindingFlags.withName(k).toFullWord
           logger.info(s"validating $flag == $v")
-          flag shouldEqual  v
+          flag shouldEqual v
 
       }
     }

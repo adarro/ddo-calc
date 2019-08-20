@@ -24,7 +24,7 @@ plugins {
     `project-report`
     `build-dashboard`
     id("gradle.site") version "0.6"
-    id("com.dorongold.task-tree") 
+    id("com.dorongold.task-tree")
 
 
 }
@@ -81,6 +81,7 @@ tasks.test {
         events.addAll(listOf(TestLogEvent.PASSED, TestLogEvent.FAILED, TestLogEvent.SKIPPED))
     }
 }
+
 site {
     websiteUrl.set("https://github.com/adarro")
     outputDir.set(file("$rootDir/docs"))
@@ -123,7 +124,12 @@ subprojects {
         }
     }
     tasks.withType<Test> {
-        reports.html.isEnabled = false
+        reports.html.isEnabled = true
+        useJUnitPlatform()
+        testLogging {
+            events.addAll(listOf(TestLogEvent.PASSED, TestLogEvent.FAILED, TestLogEvent.SKIPPED))
+        }
+        systemProperty("concordion.output.dir","${project.reporting.baseDir}/spec")
     }
 
 

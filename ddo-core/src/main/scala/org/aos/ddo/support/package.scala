@@ -18,6 +18,7 @@ package org.aos.ddo
 import com.typesafe.config.ConfigFactory
 import com.typesafe.scalalogging.LazyLogging
 import com.wix.accord.Violation
+import org.aos.ddo.support.matching.{WordMatchStrategies, WordMatchStrategy}
 
 import scala.language.postfixOps
 import scala.util.Random
@@ -26,13 +27,13 @@ import scala.util.control.Exception.catching
 package object support extends LazyLogging {
 
   /**
-    * The Current Max Level achievable by a player.
-    */
-  val LevelCap = 30
-  /**
     * Current Valid range of levels considered [[http://ddowiki.com/page/Heroic Heroic Levels]]
     */
   final val HeroicLevels: Range.Inclusive = 1 to 20
+  /**
+    * The Current Max Level achievable by a player.
+    */
+  final val LevelCap = 30
   /**
     * Current valid range of levels considered [[http://ddowiki.com/page/Epic_levels Epic Levels]]
     */
@@ -148,15 +149,6 @@ package object support extends LazyLogging {
       }
 
       /**
-        * Sanitizes strings by removing unwanted characters
-        *
-        * @return Sanitized string.
-        */
-      def sanitize: String = {
-        s.trim.filterAlphaNumeric
-      }
-
-      /**
         * Filters out non alphanumeric values.
         *
         * @return alphanumeric values.
@@ -189,21 +181,49 @@ package object support extends LazyLogging {
         * {{{
         * val wordList = List("I Believe Mom","i borrow money","IBetterMail","oracle")
         * wordList.map(x => wordsToAcronym(x)}
-        * res0:List(Some("IBM"),Some("ibm"),Some("IBM"),None)
+        * res0:List(Some("IBM"),Some("IBM"),Some("IBM"),None)
         * }}}
         */
-      def wordsToAcronym: Option[String] = Option(s) match {
-        case Some(x) if x.contains(Space) =>
-          Some(new String(x.split(" ").map { y =>
-            y.charAt(0)
-          }))
-        case Some(x) =>
-          Some(new String(x.toCharArray.filter { y =>
-            y.isLetter && y.isUpper
-          }))
-        case _ => None
+      def wordsToAcronym(implicit wordMatchStrategy: WordMatchStrategy = WordMatchStrategies.IgnoreCaseWordStrategy): Option[String] =
+        s.toSanitizeOption match {
+          case Some(x) if x.contains(Space) =>
+            Some(new String(x.split(Space).map { y => characterToStrategy(y.charAt(0), wordMatchStrategy)
+            }))
+          case Some(x) =>
+            Some(new String(x.toCharArray.filter { y =>
+              y.isLetter && y.isUpper
+            }.map(characterToStrategy(_, wordMatchStrategy))))
+          case _ => None
+        }
+
+      /**
+        * Applies the sanitize filter while safely wrapping value in an [[Option[String]]]
+        *
+        * @return
+        */
+      def toSanitizeOption: Option[String] = {
+        Option(s) match {
+          case Some(x) => Option(x.sanitize) match {
+            case Some(y) if y.nonEmpty => Some(y)
+            case _ => None
+          }
+          case _ => None
+        }
+      }
+
+      /**
+        * Sanitizes strings by removing unwanted characters
+        *
+        * @return Sanitized string.
+        */
+      def sanitize: String = {
+        s.trim.toCharArray.filter { x =>
+          x.isLetterOrDigit || x.isSpaceChar
+        }.mkString
       }
     }
+
+
     final val Space = " "
     final val EmptyString = ""
     final val ForwardSlash = "/"
@@ -235,6 +255,14 @@ package object support extends LazyLogging {
         .map(alphabet)
         .take(n)
         .mkString
+
+    private def characterToStrategy(c: Char, wordMatchStrategy: WordMatchStrategy): Char = {
+      wordMatchStrategy match {
+        case WordMatchStrategies.IgnoreCaseWordStrategy => c
+        case WordMatchStrategies.FullUpperCaseWordStrategy | WordMatchStrategies.TitleCaseWordStrategy => c.toUpper
+        case WordMatchStrategies.FullLowerCaseWordStrategy => c.toLower
+      }
+    }
   }
 
   /**
@@ -250,7 +278,7 @@ package object support extends LazyLogging {
       * @return Printable list of violations.
       *
       */
-    @deprecated("No longer supported by Wix Validation","Wix Validation")
+    @deprecated("No longer supported by Wix Validation", "Wix Validation")
     def violationToString(v: Set[Violation]): String = {
       //      val buf = new StringBuilder
       //      v.foreach { x =>

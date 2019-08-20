@@ -26,7 +26,7 @@ object EnumExtensions {
     def withNames(names: List[String],
                   ignoreCase: Boolean = false): Option[Seq[EnumEntry]] = {
       val sanitized: List[String] = names.map { x =>
-        x.sanitize
+        x.filterAlphaNumeric
       }
       for {
         sc <- Some(

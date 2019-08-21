@@ -1,4 +1,22 @@
+/*
+ * SPDX-License-Identifier: Apache-2.0
+ *
+ * Copyright 2015-2019 Andre White.
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *     https://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
 import com.github.benmanes.gradle.versions.updates.DependencyUpdatesTask
+import com.hierynomus.gradle.license.tasks.LicenseCheck
 import org.gradle.api.tasks.testing.logging.TestLogEvent
 
 buildscript {
@@ -12,6 +30,9 @@ plugins {
     //  application
     id("java-library")
     id("org.unbroken-dome.test-sets")
+    id("org.kordamp.gradle.project")
+    id("org.kordamp.gradle.bintray")
+    id("org.kordamp.gradle.build-scan")
     id("org.scoverage") version "3.1.5"
     idea
     eclipse
@@ -28,7 +49,77 @@ plugins {
 
 
 }
-//
+
+val bintrayUsername: String by project
+val bintrayApiKey: String by project
+val releaseActive: Boolean? = rootProject.findProperty("release") as Boolean?
+
+config {
+    release = if (releaseActive != null) releaseActive!! else false
+
+    info {
+        name = "DDO Calculations"
+        vendor = "TruthEncode"
+        description = "DDO Character Analyzer and Planner"
+        inceptionYear = "2015"
+
+        links {
+            website = "https://github.com/adarro/ddo-calc"
+            issueTracker = "https://github.com/adarro/ddo-calc/issues"
+            scm = "https://github.com/adarro/ddo-calc/ddo-calc.git"
+        }
+
+        scm {
+            url = "https://github.com/adarro/ddo-calc"
+            developerConnection = "scm:git:git@github.com:adarro/ddo-calc.git"
+            connection = "scm:git:git://github.com/github.com/adarro/ddo-calc.git"
+        }
+
+        people {
+            person {
+                id = "adarro"
+                name = "Andre White"
+                roles = listOf("developer", "owner")
+            }
+        }
+    }
+
+    licensing {
+        licenses {
+            license {
+                id = "Apache-2.0" //org.kordamp.gradle.plugin.base.model.LicenseId.APACHE_2_0
+            }
+        }
+    }
+
+    bintray {
+        credentials {
+            username = bintrayUsername // project.bintrayUsername
+            password = bintrayApiKey // project.bintrayApiKey
+        }
+        userOrg = "adarro"
+        name = rootProject.name
+        githubRepo = "adarro/ddo-calc"
+        enabled = true
+    }
+    bom {
+        enabled = true
+//        signing {
+// * To be done later
+//        }
+    }
+    buildInfo {
+        buildBy = "Andre White"
+    }
+    buildScan {
+        enabled = true
+    }
+}
+
+license {
+    header = rootProject.file("buildResources/LICENSE_HEADER")
+
+}
 
 tasks.withType(HtmlDependencyReportTask::class.java) {
     projects = projects
@@ -129,7 +220,7 @@ subprojects {
         testLogging {
             events.addAll(listOf(TestLogEvent.PASSED, TestLogEvent.FAILED, TestLogEvent.SKIPPED))
         }
-        systemProperty("concordion.output.dir","${project.reporting.baseDir}/spec")
+        systemProperty("concordion.output.dir", "${project.reporting.baseDir}/spec")
     }
 
 
@@ -168,6 +259,13 @@ tasks.withType<DependencyUpdatesTask> {
     reportfileName = "report"
 }
 
+
+
+tasks.withType<LicenseCheck> {
+    ignoreFailures = true
+    strictCheck = true
+    
+}
 projectReports {
     this.projects.addAll(t.allprojects)
 }

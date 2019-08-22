@@ -50,8 +50,17 @@ plugins {
 
 }
 
-val bintrayUsername: String by project
-val bintrayApiKey: String by project
+fun binTrayUser() :Pair<String,String> {
+    val bintrayUsername: String? by project
+    val bintrayApiKey: String? by project
+    val uId = bintrayUsername ?: System.getenv("bintrayUsername")
+    val apiId = bintrayApiKey ?: System.getenv("bintrayApiKey")
+    return Pair(uId,apiId)
+
+}
+val (bintrayUsername,bintrayApiKey) = binTrayUser()//: String by project
+//val bintrayUsername: String by project
+//val bintrayApiKey: String by project
 val releaseActive: Boolean? = rootProject.findProperty("release") as Boolean?
 
 config {

@@ -6,25 +6,35 @@ jdk:
 - oraclejdk9
 install: true
 after_success:
-- ./gradlew versionEyeUpdate
-- ./gradlew reportScoverage
+- "./gradlew versionEyeUpdate"
+- "./gradlew reportScoverage"
 - bash <(curl -s https://codecov.io/bash)
 before_cache:
-  - rm -f  $HOME/.gradle/caches/modules-2/modules-2.lock
-  - rm -fr $HOME/.gradle/caches/*/plugin-resolution/
+- rm -f  $HOME/.gradle/caches/modules-2/modules-2.lock
+- rm -fr $HOME/.gradle/caches/*/plugin-resolution/
 cache:
   directories:
-    - $HOME/.gradle/caches/
-    - $HOME/.gradle/wrapper/
+  - "$HOME/.gradle/caches/"
+  - "$HOME/.gradle/wrapper/"
 before_script:
-  - curl -L https://codeclimate.com/downloads/test-reporter/test-reporter-latest-linux-amd64 > ./cc-test-reporter
-  - chmod +x ./cc-test-reporter
-  - ./cc-test-reporter before-build
+- curl -L https://codeclimate.com/downloads/test-reporter/test-reporter-latest-linux-amd64
+  > ./cc-test-reporter
+- chmod +x ./cc-test-reporter
+- "./cc-test-reporter before-build"
 after_script:
-  - ./cc-test-reporter after-build --exit-code $TRAVIS_TEST_RESULT
-  - if [[ "$TRAVIS_TEST_RESULT" == 0 ]]; then ./cc-test-reporter upload-coverage; fi  # Upload coverage/codeclimate.json
+- "./cc-test-reporter after-build --exit-code $TRAVIS_TEST_RESULT"
+- if [[ "$TRAVIS_TEST_RESULT" == 0 ]]; then ./cc-test-reporter upload-coverage; fi
 env:
   global:
-    - CC_TEST_REPORTER_ID=665646cbcbd55d57b5c78261227b9775f00a9e4716d1c28b6fa2cfbda7369ba2
+  - CC_TEST_REPORTER_ID=665646cbcbd55d57b5c78261227b9775f00a9e4716d1c28b6fa2cfbda7369ba2
   matrix:
     secure: R5u6EvwmtT+UU4x9nV/Fva/sR+fQsVT/S3Z+hWUjzHeoVAhI+VXkwj0ZONEbUz7Ri8NcuBV/YCh6pgc/GmVkCuUj7zLISgY6jyBdfaNlRSRCFCMq74DWRcgCT4AqmtTk/SqvYcezQwg3C08jfZEAso18v4/0T+sOfVMiDC4c8btQJR060w6QbuwMtSrbhWHhIvq6oY3S7+x6EolFq4bdAUqo6naD2N6Xq/Sj9olwk+y/EyZaQ6CGjkl41gNJ9eLGpR/OGRCjn68Txt8xEstAplKwcrkviCMiBRn1VTyjo04/zh+aER600aEfvhq/iOnAUlz0XP+XGagVyK3tLVHceXhAHeFp7GrNvePGM/wspUKtYaD0xCzo4JIgZWFQ+ImTCM0NLgqpHsQyBo6rcpT6nEMtLM2+/4QcILR1S4nAqljv/ZAeYclfNyAH6AHGGk1c/cYPnZ7e4VoT3mC2iJhlItdw27VnUziIBSq7tk+qfiTR4nh/f740gt6OmRdJ4rpvBgtvEzd9UTAbNmvyEDa4bda7UEGWYWkuMvJm2vXbDK+oy+4OK+c/qalcO48kfVrW6wZJmpCRFEBWby/N63gnMNfwVLYV4ngClIdnCdE6yjB+8WG90GIw1obktVP/v+V551KUM0ucrDZ8ntvdfTRo2ABhc41KJex/6tVuOwacCAs=
+deploy:
+  provider: bintray
+  user: adarro
+  key:
+    secure: DIH7QKRleQPAnZBFQ5VPggYXkzhE8oiR+7p8dzuH5jhwGyqLJ0rYc26bJ9cFK6h32q/lyz2Sy/Q+/YQFIDeLLAgzEoLdLH6Ws50U7HKqEg+atJDZDKy2rNUzAcdCyFfRug3Yj9nte3pZhgsldiZHppnKXK5Uvo0ZjpAhri/M+T11OL8VRx0ciK6Qw4sAyXEXTWsf7HIncZd4QXaoMuhnqvmzSH4NWrCMvy7un8j+F8JU2jWO6CAW7V120i239wOMEt5YxgxrIAJWi9t+KCa056DORlyEvoY7HNcaWBmoEZZmkD3j/kKlBFia1/FjbLtxZAU/24RwR27L2sM2W5TQnWJ8Jd0G+I46jamRKvRnhIZ7dcBataRWy7XTIseN3SRCPUq/TlarXROgOaOO194XcpewDtjQZP+Fyv6P7cdLgPcgdHdnB9YJ78tQgO9T8ZWIVuvJUyfY36k04N3dcPnw8ULvRybXKVuRI6yoVlSdp3ExbL7mBUG1yPs1fny04BN/zsGxAtoRoRpM1uwbQd50JkcXLirAERqUNGbhlyZA86XPflQ2GO4nMu4gAu935Ej/Tjs9atDHteLkXvssAsLBxdo8xTgJGDaDS1uIILdPaPplrErl1OIDL7bYDl14QSdxt+MJJQYYCsFhDGWbdzq8BApyBcZRTOYZTlYrXdGYV3A=
+bintrayUsername:
+  secure: KNPaIcfMXDPlnP7vjwlaKShk4DJSm+nKICIF41zh3bwl6XD0MEKqZ/LrHCDvrfdD6+109Xy+4nDY6uDjVv1Q3yZ9ANdrMACQbvGC+EcWPaI+nFPlLRC4rW4naADXI4JaHA7LLEMR50dBsTaZWNnboPBQk3Qoh41DRBn4o9HHKEZjAXBTwrqLTpIzFJNaOrQ1IguThSnAG7kXU4/hUwDcyiIGbndvM79DMHnSSYyI1Vk/R+iTpyWCzk/tlEx4CfqjXdh+eyyf74D0mFhJBdggbvUDtNCuOAxgfiw8SwY0nwYRfnR19SvPKXavl8jAXygdwKFtajRpIv9JeTE/3wgXjWeF96f5lWbTNtz2ujzVgvDezOsHLwp3YKMGlMCYtL0Z8eQfsVm+CWMEPPtaZdTNxlaMNB3GEHls8sxBfGlfwCrXfnIz8FaRKzV5pSDcAL3GVoCCinws3kbzEXBTIbmmYKFwq+g0j7mBPhRzSlB9QxsZz0ac12J06kNqVQTxvFfUFcbO76a03lZOjyKxiylfApOIkX0EJWLc17wxiS3HuptYZDX8QAH2Hb8F/B4hBk7+Od8NVGimh/P2B1qWVQ1KDNSgflWcQ4vHu+nNRc6kcPJnJDZzPy66k+3SHKNvouJMmskDUydiIcZEnoO0o2DXiJBek8ou8goxnE9nZqaILHE=
+bintrayApiKey:
+  secure: KOK+gkaQk61vxIL0SqCM5dMtw8kTjnzR2mfshd32YhOJuwVc3Xt0uCFUQGdKwmGL8f7gRKXSfZWtAw4tKEbNjmaJkVmwBlsKPqn7l2ND7enM+J6Yk/TAOErCu4dTNK+5sIgWpY6YPxUWVzco6dv1KxWUUgplb1ab6ju2eKXL4EBF4eVNUpLPxWLty/IG1JXfianqA8EqxWtYLd1rx5xZdDv6TZWB9qoPlkkALP3w6E6QD17CpGFO1xw2RrOIz84R9cvwlX5MZuRAlrzwFSoEbF+532blJum0+ZohhjTHmQa7WcqAgskUkysMu2B+DRDrjDTwLLTg3OGHkreIcG+dVdqK5wDff9xfWtEGvxuwdI7otHO5BkuYgLZDyL7GKh5BTn3u9dbfKcO4VnzSmkFdqz2R3COwx5+TzY7yhE45F+onb/OiRKov+gVR409Q7L/zWhapIp2F2QMHnfbvFzU3+0R/X8tK23mpWOiRuuhiKitsesblnw+LUPPT4O+bfI2+xBzYVLaQUAqWGzgeOG8iUuaTjJrxZqJqpPzyLWOezVs753E8zAVpJcX6tpiic7Y3PPtb+aMh7DAYYNA4oeR53grD76HN3ujtto3o85B6eTu2fvojO1i515AV2C+sL8AWHeZE01FslqirE7223GstQEmb+n26sAI0MJS6Z1UiaFk=

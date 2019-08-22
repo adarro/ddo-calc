@@ -106,7 +106,7 @@ config {
             username = bintrayUsername // project.bintrayUsername
             password = bintrayApiKey // project.bintrayApiKey
         }
-        userOrg = "adarro"
+        userOrg = "truthencode"
         name = rootProject.name
         githubRepo = "adarro/ddo-calc"
         enabled = true

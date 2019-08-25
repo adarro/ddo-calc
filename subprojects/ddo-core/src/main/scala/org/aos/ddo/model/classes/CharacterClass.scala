@@ -20,6 +20,8 @@ package org.aos.ddo.model.classes
 import enumeratum.{Enum, EnumEntry}
 import org.aos.ddo.support.SearchPrefix
 
+import scala.collection.immutable
+
 /** Represents one of the playable character classes.
   */
 sealed trait CharacterClass extends EnumEntry
@@ -195,7 +197,7 @@ object CharacterClass extends Enum[CharacterClass] with SearchPrefix {
     */
   case object Wizard extends CharacterClass
 
-  override def values = findValues
+  override def values: immutable.IndexedSeq[CharacterClass] = findValues
 
   /**
     * Used when qualifying a search with a prefix.

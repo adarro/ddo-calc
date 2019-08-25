@@ -132,7 +132,7 @@ class SpellBuilder[T <: Spell](elements: Seq[SpellElement] = Seq.empty)
         spellPoints = si.spellPoints)
     )
 
-  private def buildFromElements(elements: Seq[SpellElement]) = {
+  private[this] def buildFromElements(elements: Seq[SpellElement]) = {
 
     var s = createSpell()
     //    elements.reduceLeft {(e,y) => e match {

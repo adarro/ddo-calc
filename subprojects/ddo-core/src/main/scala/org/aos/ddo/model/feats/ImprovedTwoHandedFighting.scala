@@ -32,7 +32,7 @@ trait ImprovedTwoHandedFighting extends FeatRequisiteImpl with Passive with Requ
   self: GeneralFeat =>
   override def requiresAttribute: Seq[(Attribute, Int)] = List((Attribute.Strength, 17))
 
-  override def requiresBaB = 6
+  override def requiresBaB: Int = 6
 
   override def allOfFeats: Seq[GeneralFeat] = List(GeneralFeat.TwoHandedFighting)
 }

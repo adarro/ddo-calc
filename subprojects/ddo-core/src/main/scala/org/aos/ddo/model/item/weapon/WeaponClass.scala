@@ -63,11 +63,11 @@ sealed trait WeaponClassRanged extends WeaponClass with RangeDamage with Deferre
 sealed trait WeaponClassThrown extends WeaponClass with ThrownDamage with Deferred
 
 
-/*object WeaponClass extends Enum[WeaponClass] {
+/* object WeaponClass extends Enum[WeaponClass] {
   case object Bludgeoning extends WeaponClass with MeleeDamage with Bludgeoning
   case object  Piercing extends WeaponClass with MeleeDamage with Piercing
   case class  Ranged () extends WeaponClass with RangeDamage with PhysicalDamage
   case object Slashing extends WeaponClass with MeleeDamage with Slashing
   case object  Thrown extends WeaponClass with RangeDamage with
   override def values: Seq[WeaponClass] = findValues
-}*/
+} */

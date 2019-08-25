@@ -29,5 +29,5 @@ protected[feats] trait ImprovedShieldMastery extends FeatRequisiteImpl with Pass
   self: GeneralFeat =>
   override def allOfFeats: Seq[GeneralFeat] = List(GeneralFeat.ShieldMastery)
 
-  override def requiresBaB = 8
+  override def requiresBaB: Int = 8
 }

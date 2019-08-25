@@ -40,7 +40,7 @@ protected[feats] trait ImprovedSingleWeaponFighting
     with RequiresAllOfFeat
     with RequiresAnyOfSkill
     with RequiresBaB { self: GeneralFeat =>
-  override def requiresBaB = 6
+  override def requiresBaB: Int = 6
 
   override def oneOfSkill: Seq[(Skill, Int)] = List((Skill.Balance, 4))
 

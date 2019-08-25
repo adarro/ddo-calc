@@ -24,14 +24,15 @@ import org.aos.ddo.support.requisite._
 import scala.collection.immutable
 
 /**
- * Created by adarr on 2/14/2017.
- */
+  * Created by adarr on 2/14/2017.
+  */
 sealed trait DeityFeat
   extends Feat
-  with FriendlyDisplay
-  with SubFeatInformation
-  with ClassRequisiteImpl
-  with FeatMatcher with ReligionFeatBaseImpl { self: FeatType with Requisite with Inclusion =>
+    with FriendlyDisplay
+    with SubFeatInformation
+    with ClassRequisiteImpl
+    with FeatMatcher with ReligionFeatBaseImpl {
+  self: FeatType with Requisite with Inclusion =>
 
   val matchFeat: PartialFunction[Feat, DeityFeat] = {
     case x: DeityFeat => x
@@ -46,21 +47,40 @@ sealed trait DeityFeat
   }
 }
 
-//scalastyle:off number.of.methods
+// scalastyle:off number.of.methods
 object DeityFeat
   extends Enum[DeityFeat]
-  with FeatSearchPrefix
-  with FeatMatcher {
+    with FeatSearchPrefix
+    with FeatMatcher {
+
+  override lazy val values: immutable.IndexedSeq[DeityFeat] = findValues
+  override val matchFeat: PartialFunction[Feat, _ <: Feat] = {
+    case x: DeityFeat => x
+  }
+  override val matchFeatById: PartialFunction[String, _ <: Feat] = {
+    case x: String if EpicFeat.namesToValuesMap.contains(x) =>
+      DeityFeat.withNameOption(x) match {
+        case Some(y) => y
+      }
+  }
+
+  /**
+    * Used when qualifying a search with a prefix.
+    * Examples include finding "HalfElf" from qualified "Race:HalfElf"
+    *
+    * @return A default or applied prefix
+    */
+  override def searchPrefixSource: String = "Deity Feat"
 
   case object FollowerOfAureon extends DeityFeat with FollowerOfAureon
 
   case object FollowerOfTheBloodOfVol
     extends DeityFeat
-    with FollowerOfTheBloodOfVol
+      with FollowerOfTheBloodOfVol
 
   case object FollowerOfTheLordOfBlades
     extends DeityFeat
-    with FollowerOfTheLordOfBlades
+      with FollowerOfTheLordOfBlades
 
   case object FollowerOfOlladra extends DeityFeat with FollowerOfOlladra
 
@@ -68,15 +88,15 @@ object DeityFeat
 
   case object FollowerOfTheSilverFlame
     extends DeityFeat
-    with FollowerOfTheSilverFlame
+      with FollowerOfTheSilverFlame
 
   case object FollowerOfTheSovereignHost
     extends DeityFeat
-    with FollowerOfTheSovereignHost
+      with FollowerOfTheSovereignHost
 
   case object FollowerOfTheUndyingCourt
     extends DeityFeat
-    with FollowerOfTheUndyingCourt
+      with FollowerOfTheUndyingCourt
 
   case object FollowerOfVulkoor extends DeityFeat with FollowerOfVulkoor
 
@@ -92,7 +112,7 @@ object DeityFeat
 
   case object ChildOfTheLordOfBlades
     extends DeityFeat
-    with ChildOfTheLordOfBlades
+      with ChildOfTheLordOfBlades
 
   case object ChildOfOlladra extends DeityFeat with ChildOfOlladra
 
@@ -100,15 +120,15 @@ object DeityFeat
 
   case object ChildOfTheSilverFlame
     extends DeityFeat
-    with ChildOfTheSilverFlame
+      with ChildOfTheSilverFlame
 
   case object ChildOfTheSovereignHost
     extends DeityFeat
-    with ChildOfTheSovereignHost
+      with ChildOfTheSovereignHost
 
   case object ChildOfTheUndyingCourt
     extends DeityFeat
-    with ChildOfTheUndyingCourt
+      with ChildOfTheUndyingCourt
 
   case object ChildOfVulkoor extends DeityFeat with ChildOfVulkoor
 
@@ -123,18 +143,20 @@ object DeityFeat
   case object AureonsInstruction extends DeityFeat with AureonsInstruction
 
   case object TheBloodIsTheLife extends DeityFeat with TheBloodIsTheLife
+
   case object BladeswornTransformation
     extends DeityFeat
-    with BladeswornTransformation
+      with BladeswornTransformation
 
   case object LuckOfOlladra extends DeityFeat with LuckOfOlladra
 
   case object OnatarsForge extends DeityFeat with OnatarsForge
 
   case object SilverFlameExorcism extends DeityFeat with SilverFlameExorcism
+
   case object UnyieldingSovereignty
     extends DeityFeat
-    with UnyieldingSovereignty
+      with UnyieldingSovereignty
 
   case object UndyingCall extends DeityFeat with UndyingCall
 
@@ -149,11 +171,11 @@ object DeityFeat
 
   case object BelovedOfTheBloodOfVol
     extends DeityFeat
-    with BelovedOfTheBloodOfVol
+      with BelovedOfTheBloodOfVol
 
   case object BelovedOfTheLordOfBlades
     extends DeityFeat
-    with BelovedOfTheLordOfBlades
+      with BelovedOfTheLordOfBlades
 
   case object BelovedOfOlladra extends DeityFeat with BelovedOfOlladra
 
@@ -161,15 +183,15 @@ object DeityFeat
 
   case object BelovedOfTheSilverFlame
     extends DeityFeat
-    with BelovedOfTheSilverFlame
+      with BelovedOfTheSilverFlame
 
   case object BelovedOfTheSovereignHost
     extends DeityFeat
-    with BelovedOfTheSovereignHost
+      with BelovedOfTheSovereignHost
 
   case object BelovedOfTheUndyingCourt
     extends DeityFeat
-    with BelovedOfTheUndyingCourt
+      with BelovedOfTheUndyingCourt
 
   case object BelovedOfVulkoor extends DeityFeat with BelovedOfVulkoor
 
@@ -181,34 +203,15 @@ object DeityFeat
 
   case object DamageReductionSilver
     extends DeityFeat
-    with DamageReductionSilver
+      with DamageReductionSilver
 
   case object DamageReductionAdamantine
     extends DeityFeat
-    with DamageReductionAdamantine
+      with DamageReductionAdamantine
 
   case object DamageReductionColdIron
     extends DeityFeat
-    with DamageReductionColdIron
+      with DamageReductionColdIron
 
   case object DamageReductionGood extends DeityFeat with DamageReductionGood
-
-  /**
-   * Used when qualifying a search with a prefix.
-   * Examples include finding "HalfElf" from qualified "Race:HalfElf"
-   *
-   * @return A default or applied prefix
-   */
-  override def searchPrefixSource: String = "Deity Feat"
- 
-  override lazy val values: immutable.IndexedSeq[DeityFeat] = findValues
-  override val matchFeat: PartialFunction[Feat, _ <: Feat] = {
-    case x: DeityFeat => x
-  }
-  override val matchFeatById: PartialFunction[String, _ <: Feat] = {
-    case x: String if EpicFeat.namesToValuesMap.contains(x) =>
-      DeityFeat.withNameOption(x) match {
-        case Some(y) => y
-      }
-  }
 }

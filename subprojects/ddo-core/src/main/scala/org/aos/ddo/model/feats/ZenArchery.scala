@@ -31,5 +31,5 @@ trait ZenArchery extends FeatRequisiteImpl with Passive with RequiresAttribute w
   self: GeneralFeat =>
   override def requiresAttribute: Seq[(Attribute, Int)] = List((Attribute.Wisdom, 13))
 
-  override def requiresBaB = 1
+  override def requiresBaB: Int = 1
 }

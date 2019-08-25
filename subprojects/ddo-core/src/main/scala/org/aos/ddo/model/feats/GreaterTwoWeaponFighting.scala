@@ -39,7 +39,7 @@ trait GreaterTwoWeaponFighting
     with RequiresAttribute
     with RequiresBaB
     with GrantsToClass { self: GeneralFeat =>
-  override def requiresBaB = 11
+  override def requiresBaB: Int = 11
 
   override def allOfFeats: Seq[GeneralFeat] =
     List(GeneralFeat.ImprovedTwoWeaponFighting)

@@ -48,31 +48,10 @@ sealed trait LawAxis
 
   }
 
-  // SuperEnum.companion[LawAxis]
-  /* implicit def enumToSpecific(x: Enum[_ <: EnumEntry]): LawAxis = {
-     x.asInstanceOf[LawAxis]
-   }*/
-
-  // def eToS[A,B](implicit A : LawAxis,B:Enum[_]) = LawAxis
-  // def sToE[B,A](implicit A : LawAxis,B:Enum[_]) = B.asInstanceOf[A]
-
-  // def makeWork[E] = implicitly[LawAxis]
-
-  //  override type E = LawAxis.type
-  // C <: Enum[_ <: enumeratum.EnumEntry]
-  //  override val companion = LawAxis
-  //  implicit val v = LawAxis
   protected val c = LawAxis
 }
 
 object LawAxis extends Enum[LawAxis] with BitSupport {
-
-  /*  implicit def comp = new SuperEnum[LawAxis] {
-    type C = LawAxis.type
-
-    def apply(): LawAxis.type = LawAxis
-  }*/
-
   type T = LawAxis
   val values: immutable.IndexedSeq[T] = findValues
   val bitValues: Map[T, Int] = valuesToIndex.map { x =>
@@ -97,7 +76,7 @@ sealed trait MoralAxis
   /* val bitValue: Int = c.bitValues
     .filter { x =>
       c.checkVal(x._1)
-    }.values.head*/
+    }.values.head */
   val bitValue: Int = 0
 }
 

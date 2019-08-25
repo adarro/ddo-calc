@@ -34,7 +34,7 @@ import org.aos.ddo.support.requisite.{FeatRequisiteImpl, RequiresAnyOfFeat, Requ
   */
 protected[feats] trait ShieldDeflection extends FeatRequisiteImpl with Passive with RequiresBaB with RequiresAnyOfFeat {
   self: GeneralFeat =>
-  override def requiresBaB = 8
+  override def requiresBaB: Int = 8
 
   override def anyOfFeats: Seq[GeneralFeat] = List(GeneralFeat.ShieldProficiency, GeneralFeat.TowerShieldProficiency)
 }

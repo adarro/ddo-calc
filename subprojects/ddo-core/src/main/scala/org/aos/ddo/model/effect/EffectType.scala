@@ -17,8 +17,7 @@
  */
 package org.aos.ddo.model.effect
 
-import enumeratum.{ Enum => SmartEnum }
-import enumeratum.EnumEntry
+import enumeratum.{EnumEntry, Enum => SmartEnum}
 
 sealed trait AugmentEffectType extends EnumEntry
 

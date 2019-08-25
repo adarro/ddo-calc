@@ -33,7 +33,7 @@ plugins {
     id("org.kordamp.gradle.project")
     id("org.kordamp.gradle.bintray")
     id("org.kordamp.gradle.build-scan")
-    id("org.scoverage") 
+    id("org.scoverage")
     idea
     eclipse
     //   id "findbugs"
@@ -51,15 +51,15 @@ plugins {
 
 }
 
-fun binTrayUser() :Pair<String,String> {
+fun binTrayUser(): Pair<String, String> {
     val bintrayUsername: String? by project
     val bintrayApiKey: String? by project
     val uId = bintrayUsername ?: System.getenv("bintrayUsername")
     val apiId = bintrayApiKey ?: System.getenv("bintrayApiKey")
-    return Pair(uId,apiId)
+    return Pair(uId, apiId)
 
 }
-val (bintrayUsername,bintrayApiKey) = binTrayUser()//: String by project
+val (bintrayUsername, bintrayApiKey) = binTrayUser()//: String by project
 //val bintrayUsername: String by project
 //val bintrayApiKey: String by project
 val releaseActive: Boolean? = rootProject.findProperty("release") as Boolean?
@@ -204,14 +204,8 @@ tasks.withType(GenerateBuildDashboard::class.java) {
     }
 }
 
-
-
-
-subprojects {
+allprojects {
     val codacy: Configuration by configurations.creating
-    this.pluginManager.apply("java-library")
-    this.pluginManager.apply("project-report")
-
     dependencies {
 
         // https://mvnrepository.com/artifact/com.codacy/codacy-coverage-reporter
@@ -219,6 +213,16 @@ subprojects {
         codacy(group = "com.codacy", name = "codacy-coverage-reporter", version = "6.0.2")
 
     }
+}
+
+
+
+subprojects {
+
+    this.pluginManager.apply("java-library")
+    this.pluginManager.apply("project-report")
+
+
 
     tasks.create("showPlugins") {
         description = "Lists pluginAware plugins for each project"
@@ -273,11 +277,68 @@ tasks.withType<DependencyUpdatesTask> {
 }
 
 
+tasks.create("showEnv") {
+    println("Forcing Action")
+    outputs.upToDateWhen { false }
+    logger.lifecycle("Env")
+    val props = System.getProperties()
+    logger.lifecycle("Environment has ${props.size} properties")
+    props.forEach {
+        logger.lifecycle("${it.key} -> ${it.value}")
+    }
+}
+
+tasks.create("sendCoverageToCodacy", JavaExec::class) {
+    val codacy = configurations.findByName("codacy")
+    val pId = "CODACY_PROJECT_TOKEN"
+    val token = if (project.hasProperty(pId))
+        project.properties[pId] as String else System.getProperty(pId)
+    logger.warn("$pId -> $token")
+    main = "com.codacy.CodacyCoverageReporter"
+    if (codacy != null) {
+        classpath = codacy.asFileTree
+    }
+    args = listOf(
+        "report",
+        "-l",
+        "Scala",
+        "-r",
+        "${buildDir}/reports/scoverage/cobertura.xml"
+    )
+    logger.info("Adding env $pId -> $token")
+    environment = environment.plus(Pair(pId, token))
+    // environment(Pair(pId,token))
+    val tsk = tasks.findByName("aggregateReports")
+    val tsk2 = tasks.findByName("showEnv")
+    if (tsk != null) {
+        dependsOn(setOf(tsk))
+    }
+    if (tsk2 != null) {
+        dependsOn(setOf(tsk2))
+    }
+}
+
+
+
+/*
+task sendCoverageToCodacy(type: JavaExec, dependsOn: jacocoTestReport) {
+    main = "com.codacy.CodacyCoverageReporter"
+    classpath = configurations.codacy
+    args = [
+        "report",
+        "-l",
+        "Java",
+        "-r",
+        "${buildDir}/reports/jacoco/test/jacocoTestReport.xml"
+    ]
+}
+
+ */
 
 tasks.withType<LicenseCheck> {
     ignoreFailures = true
     strictCheck = true
-    
+
 }
 projectReports {
     this.projects.addAll(t.allprojects)

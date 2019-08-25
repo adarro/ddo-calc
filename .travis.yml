@@ -8,6 +8,7 @@ install: true
 after_success:
 - "./gradlew versionEyeUpdate"
 - "./gradlew reportScoverage"
+- "./gradlew sendCoverageToCodacy"
 - bash <(curl -s https://codecov.io/bash)
 - java -jar ~/codacy-coverage-reporter-assembly.jar report -l Java -r build/reports/scoverage/cobertura.xml
 before_cache:

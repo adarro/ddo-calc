@@ -33,7 +33,7 @@ plugins {
     id("org.kordamp.gradle.project")
     id("org.kordamp.gradle.bintray")
     id("org.kordamp.gradle.build-scan")
-    id("org.scoverage") version "3.1.5"
+    id("org.scoverage") 
     idea
     eclipse
     //   id "findbugs"
@@ -46,6 +46,7 @@ plugins {
     `build-dashboard`
     id("gradle.site") version "0.6"
     id("com.dorongold.task-tree")
+    id("org.kordamp.gradle.scaladoc")
 
 
 }
@@ -122,6 +123,9 @@ config {
     }
     buildScan {
         enabled = true
+    }
+    scaladoc {
+        this.replaceJavadoc = true
     }
 }
 

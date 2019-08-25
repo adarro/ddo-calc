@@ -82,6 +82,7 @@ pluginManagement {
         id("org.kordamp.gradle.project") version kordampGradlePluginVersion
         id("org.kordamp.gradle.bintray") version kordampGradlePluginVersion
         id("org.kordamp.gradle.build-scan") version kordampGradlePluginVersion
+        id("org.kordamp.gradle.scaladoc") version kordampGradlePluginVersion 
     }
 }
 

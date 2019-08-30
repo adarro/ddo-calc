@@ -38,7 +38,7 @@ package object requisite {
       def toReqFavor: ReqFavorPatron = patronToReq(source)
     }
 
-    val patronToReq = new PartialFunction[(FavorPatron, Int), ReqFavorPatron] {
+    val patronToReq: PartialFunction[(FavorPatron, Int), ReqFavorPatron] = new PartialFunction[(FavorPatron, Int), ReqFavorPatron] {
       override def isDefinedAt(x: (FavorPatron, Int)): Boolean =
         Requirement
           .withNameOption(s"${FavorPatron.searchPrefix}${x._1.entryName}")
@@ -52,7 +52,7 @@ package object requisite {
       def toReq: ReqSkill = skillToReq(source)
     }
 
-    val skillToReq = new PartialFunction[(Skill, Int), ReqSkill] {
+    val skillToReq: PartialFunction[(Skill, Int), ReqSkill] = new PartialFunction[(Skill, Int), ReqSkill] {
       override def isDefinedAt(x: (Skill, Int)): Boolean =
         Requirement
           .withNameOption(s"${Skill.searchPrefix}${x._1.entryName}")
@@ -66,7 +66,7 @@ package object requisite {
       def toReq: ReqAttribute = attrToReq(source)
     }
 
-    val attrToReq = new PartialFunction[(Attribute, Int), ReqAttribute] {
+    val attrToReq: PartialFunction[(Attribute, Int), ReqAttribute] = new PartialFunction[(Attribute, Int), ReqAttribute] {
       override def isDefinedAt(x: (Attribute, Int)): Boolean =
         Requirement
           .withNameOption(s"${Attribute.searchPrefix}${x._1.entryName}")
@@ -80,7 +80,7 @@ package object requisite {
       def toReq: ReqRace = raceToReq(source)
     }
 
-    val raceToReq = new PartialFunction[(Race, Int), ReqRace] {
+    val raceToReq: PartialFunction[(Race, Int), ReqRace] = new PartialFunction[(Race, Int), ReqRace] {
       override def isDefinedAt(x: (Race, Int)): Boolean =
         Requirement
           .withNameOption(s"${Race.searchPrefix}${x._1.entryName}")
@@ -116,7 +116,7 @@ package object requisite {
 //      override def apply(v1: String): GeneralFeat = ???
 //    }
 
-    val featToReq = new PartialFunction[Feat, ReqFeat] {
+    val featToReq: PartialFunction[Feat, ReqFeat] = new PartialFunction[Feat, ReqFeat] {
       override def isDefinedAt(x: Feat): Boolean =
         Requirement
           .withNameOption(s"${Feat.searchPrefix}${x.entryName}")
@@ -133,7 +133,7 @@ package object requisite {
 //
 //      override def apply(v1: Feat): ReqFeat = ReqFeat(v1.entryName)
 //    }
-    val racialFeatToReq = new PartialFunction[RacialFeat, ReqFeat] {
+    val racialFeatToReq: PartialFunction[RacialFeat, ReqFeat] = new PartialFunction[RacialFeat, ReqFeat] {
       override def isDefinedAt(x: RacialFeat): Boolean =
         Requirement
           .withNameOption(s"${RacialFeat.searchPrefix}${x.entryName}")
@@ -142,7 +142,7 @@ package object requisite {
       override def apply(v1: RacialFeat): ReqFeat = ReqFeat(v1.entryName)
     }
 
-    val classFeatToReq = new PartialFunction[ClassFeat, ReqFeat] {
+    val classFeatToReq: PartialFunction[ClassFeat, ReqFeat] = new PartialFunction[ClassFeat, ReqFeat] {
       override def isDefinedAt(x: ClassFeat): Boolean =
         Requirement
           .withNameOption(s"${ClassFeat.searchPrefix}${x.entryName}")
@@ -155,7 +155,7 @@ package object requisite {
       def toReq: ReqClass = classToReq(source)
     }
 
-    val classToReq = new PartialFunction[(CharacterClass, Int), ReqClass] {
+    val classToReq: PartialFunction[(CharacterClass, Int), ReqClass] = new PartialFunction[(CharacterClass, Int), ReqClass] {
       override def isDefinedAt(x: (CharacterClass, Int)): Boolean =
         Requirement
           .withNameOption(s"${CharacterClass.searchPrefix}${x._1.entryName}")

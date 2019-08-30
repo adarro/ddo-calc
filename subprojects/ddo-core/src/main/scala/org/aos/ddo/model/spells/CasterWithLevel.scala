@@ -26,5 +26,5 @@ trait CasterWithLevel {
 
 
 trait CasterLevels {
-  def casterLevels : Seq[CasterWithLevel]
+  def casterLevels: Set[CasterWithLevel]
 }

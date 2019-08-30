@@ -25,7 +25,7 @@ import org.aos.ddo.model.spells.component.ComponentList
 /**
   * Encapsulates the cost, duration, range etc of a given spell
   */
-trait SpellInfo extends CoolDown {
+trait SpellInfo extends CoolDown with SpellResistance {
   // caster level needs to be applied at source site
 
   // spell failure TBD by existence of somatic / verbal / concentration / armor spell failure etc
@@ -33,11 +33,6 @@ trait SpellInfo extends CoolDown {
     * Amount of time, usually in seconds that must elapse before a given spell or ability can be used again
     */
   val coolDown: Option[Duration]
-
-  /**
-    * Determines if this spell is subject to a Resistance check
-    */
-  val spellResistance: Boolean
 
   // TBD spell result
   /**
@@ -70,13 +65,15 @@ trait SpellInfo extends CoolDown {
     * @return
     */
   val components: List[ComponentList]
+
+  val spellResistance = this
 }
 
 
 final case class CreateSpellInfo(
                                   override val coolDown: Option[Duration],
                                   override val savingThrow: List[SavingThrow],
-                                  override val spellResistance: Boolean,
+                                  override val sr: Option[Int],
                                   override val target: List[SpellTarget],
                                   override val components: List[ComponentList],
                                   override val spellPoints: Int,

@@ -27,7 +27,8 @@ import org.aos.ddo.model.spells.SpellElement._
 import org.aos.ddo.support.naming.{DisplayName, FriendlyDisplay}
 import org.aos.ddo.support.StringUtils.Extensions
 
-import scala.collection.immutable
+import scala.collection.{immutable, Iterable}
+import scala.reflect.ClassTag
 
 trait SpellTraits
 
@@ -39,11 +40,45 @@ sealed trait SpellLike
 sealed trait SpellElement extends SpellLike
 
 object SpellElement {
+  def extract[T <: SpellElement](list: Iterable[SpellElement])(implicit tag: ClassTag[T]): Iterable[T] = {
+    list.flatMap {
+      case element: T => Some(element)
+      case _ => None
+    }
+  }
 
-  sealed trait EmptySpell extends SpellElement
+
+  implicit class Util(elements: Iterable[SpellElement]) {
+    def extract[T <: SpellElement](implicit tag: ClassTag[T]): Iterable[T] = {
+      elements.flatMap {
+        case element: T => Some(element)
+        case _ => None
+      }
+    }
+
+    def getStuff[T: ClassTag](list: Seq[SpellElement]): Seq[T] = list collect { case element: T => element }
+
+    //    def extract[X: SpellElement](implicit evidence: ClassTag[X]): Option[X] = {
+    //      val nameOpt: Seq[Option[X]] = for {e <- elements
+    //                                         p = e match {
+    //                                           case x: X => Some(x)
+    //                                           case _ => None
+    //                                         }
+    //                                         if p.nonEmpty
+    //      } yield p
+    //      nameOpt.headOption.flatten
+    //    }
+  }
+
+  sealed trait EmptySpell extends Spell with SpellElement
+
+  sealed trait WithName extends SpellElement {
+    def name: String
+  }
 
   sealed trait WithSpellResistance extends SpellElement {
-    val spellResistance: Boolean = false
+    self: SpellResistance =>
+
   }
 
   sealed trait WithSpellTarget extends SpellElement {
@@ -76,13 +111,13 @@ object SpellElement {
 
   sealed trait WithCasterClass extends SpellElement with CasterLevels
 
-  sealed trait WithSpellInfo extends SpellElement with SpellInfo
+  sealed trait WithSpellInfo extends SpellElement with WithSpellResistance with SpellInfo
 
 }
 
 final case class UseCoolDown(coolDown: Option[Duration]) extends WithCoolDown
 
-final case class UseCasterClass(override val casterLevels: Seq[CasterWithLevel]) extends WithCasterClass
+final case class UseCasterClass(override val casterLevels: Set[CasterWithLevel]) extends WithCasterClass
 
 final case class UseSpellTarget(override val target: List[SpellTarget]) extends WithSpellTarget
 
@@ -98,15 +133,18 @@ final case class UseSpellEffects(override val effects: List[Effect]) extends Wit
 
 final case class UseSpellInfo(override val coolDown: Option[Duration],
                               override val savingThrow: List[SavingThrow],
-                              override val spellResistance: Boolean,
-                              override val target: List[SpellTarget],override val components: List[ComponentList],
+                              override val sr: Option[Int],
+                              override val target: List[SpellTarget], override val components: List[ComponentList],
                               override val spellPoints: Int) extends WithSpellInfo
 
+final case class UseSpellName(override val name: String) extends WithName
+
+final case class UseSpellResistance(override val sr: Option[Int]) extends WithSpellResistance with SpellResistance
 
 protected final case class createSpell(
-                                        name: String = "new spell",
+                                        override val name: String = "new spell",
                                         coolDown: Option[Duration] = None,
-                                        spellResistance: Boolean = false,
+                                        override val sr: Option[Int],
                                         target: List[SpellTarget] = List.empty,
                                         savingThrow: List[SavingThrow] = List.empty,
                                         spellPoints: Int = 0,
@@ -115,7 +153,7 @@ protected final case class createSpell(
                                           override val baseLevelCap: Option[Int] = None
                                         },
                                         casterLevels: CasterLevels = new CasterLevels {
-                                          override def casterLevels: Seq[CasterWithLevel] = Seq.empty
+                                          override def casterLevels: Set[CasterWithLevel] = Set.empty
                                         },
                                         effects: List[Effect] = List.empty)
   extends Spell
@@ -127,22 +165,40 @@ sealed trait Spell
     with EnumEntry
     with DisplayName
     with FriendlyDisplay {
-  val name: String
+  def name: String
 
   // self: SpellInfo with EffectList =>
   override protected def nameSource: String = entryName.splitByCase.toPascalCase
+
+  override def entryName: String = name
 }
 
 object Spell extends Enum[Spell] {
 
+
+  // trait EmptySpell extends Spell
   override def values: immutable.IndexedSeq[Spell] = findValues
+
+  protected[spells] case class makeEmptySpell(override val name: String) extends EmptySpell
+
 }
 
 trait SpellLikeAbility extends SpellLike
 
-case class SpellDescriptor(elements: Seq[SpellElement]) extends Spell {
-  override val name: String = nameSource
+protected[spells] final case class SpellDescriptor(elements: Iterable[SpellElement]) extends Spell {
+  override val name: String = {
+    val nameOpt: Iterable[String] = for {e <- elements
+                                    p = e match {
+                                      case x: WithName => Some(x)
+                                      case _ => None
+                                    }
+                                    if p.nonEmpty
+    } yield p.head.name
+    nameOpt.headOption.getOrElse("Unnamed Spell")
+  }
 }
 
-trait BullsStrength extends Spell with SpellInfo with EffectList
+trait BullsStrength extends Spell with SpellInfo with EffectList {
+  override val name: String = nameSource
+}
 

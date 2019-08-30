@@ -19,33 +19,173 @@ package org.aos.ddo.model.spells
 
 import java.time.Duration
 
-import org.aos.ddo.model.classes.CharacterClass
-import org.aos.ddo.model.effect.{Effect, EffectList}
-import org.aos.ddo.model.misc.CoolDown
+import com.typesafe.scalalogging.LazyLogging
+import org.aos.ddo.model.effect.EffectList
+import org.junit.runner.RunWith
 import org.scalatest.{FunSpec, Matchers}
+import org.scalatest.junit.JUnitRunner
 import org.scalatest.mockito.MockitoSugar
 
-class SpellBuilderTest extends FunSpec with Matchers with MockitoSugar {
+@RunWith(classOf[JUnitRunner])
+class SpellBuilderTest extends FunSpec with Matchers with MockitoSugar with LazyLogging {
   private final val sampleDuration = 5L
   private final val sampleLevelCap = 32
+  private final val SpellPointValue = 42
   private val coolDown = mock[Option[Duration]]
   private val casterLevel = mock[CasterWithLevel]
-  private val spellTarget =  mock[SpellTarget]
+  private val spellTarget = mock[SpellTarget]
   private val casterLevelCap = mock[CasterLevelCap]
   private val effectList = mock[EffectList]
   private val spellInfo = mock[SpellInfo]
   describe("Spell Builder") {
-    it("should support cool downs") {
-      val builder = new SpellBuilder()
+    it("should compile if all elements are present") {
+      """ SpellBuilder.apply("NewSpell")
         .addSpellInfo(spellInfo)
         .addCasterClass(Seq(casterLevel))
         .addSpellTarget(List(spellTarget))
         .addSavingThrow(List.empty)
-        .addSpellPoints(32)
+        .addSpellPoints(SpellPointValue)
         .addComponents(List.empty)
         .addLevelCap(casterLevelCap)
         .addEffect(effectList)
-        //.build
+        .build
+        """ should compile
+
+    }
+    it("should build if all elements are present") {
+      noException shouldBe thrownBy {
+        val s = SpellBuilder.apply()
+          .addName("New Spell")
+          .addSpellInfo(spellInfo)
+          .addCasterClass(Seq(casterLevel))
+          .addSpellTarget(List(spellTarget))
+          .addSavingThrow(List.empty)
+          .addSpellPoints(SpellPointValue)
+          .addComponents(List.empty)
+          .addLevelCap(casterLevelCap)
+          .addEffect(effectList)
+          .build
+        logger.info(s"Created spell ${s.name} - ${s.entryName}")
+      }
+    }
+
+    it("should build with Named constructor if all elements are present") {
+      noException shouldBe thrownBy {
+        val s = SpellBuilder.apply("New Spell")
+          .addSpellInfo(spellInfo)
+          .addCasterClass(Seq(casterLevel))
+          .addSpellTarget(List(spellTarget))
+          .addSavingThrow(List.empty)
+          .addSpellPoints(SpellPointValue)
+          .addComponents(List.empty)
+          .addLevelCap(casterLevelCap)
+          .addEffect(effectList)
+          .build
+        logger.info(s"Created spell ${s.name} - ${s.entryName}")
+      }
+    }
+
+    it("should fail to compile if LevelCap is not present") {
+      """ SpellBuilder.apply("NewSpell")
+        .addName("New Spell")
+        .addSpellInfo(spellInfo)
+        .addCasterClass(Seq(casterLevel))
+        .addSpellTarget(List(spellTarget))
+        .addSavingThrow(List.empty)
+        .addSpellPoints(SpellPointValue)
+        .addComponents(List.empty)
+        .addEffect(effectList)
+        .build
+        """ shouldNot typeCheck
+    }
+
+    it("should fail to compile if spell info is not present") {
+      """ SpellBuilder.apply("NewSpell")
+        .addCasterClass(Seq(casterLevel))
+        .addSpellTarget(List(spellTarget))
+        .addSavingThrow(List.empty)
+        .addSpellPoints(SpellPointValue)
+        .addComponents(List.empty)
+        .addLevelCap(casterLevelCap)
+        .addEffect(effectList)
+        .build
+        """ shouldNot typeCheck
+    }
+
+    it("should fail to compile if caster class is not present") {
+      """ SpellBuilder.apply("NewSpell")
+        .addSpellInfo(spellInfo)
+        .addSpellTarget(List(spellTarget))
+        .addSavingThrow(List.empty)
+        .addSpellPoints(SpellPointValue)
+        .addComponents(List.empty)
+        .addLevelCap(casterLevelCap)
+        .addEffect(effectList)
+        .build
+        """ shouldNot typeCheck
+
+    }
+
+    it("should fail to compile if Saving throw is not present") {
+      """ SpellBuilder.apply("NewSpell")
+        .addSpellInfo(spellInfo)
+        .addCasterClass(Seq(casterLevel))
+        .addSpellTarget(List(spellTarget))
+        .addSpellPoints(SpellPointValue)
+        .addComponents(List.empty)
+        .addLevelCap(casterLevelCap)
+        .addEffect(effectList)
+        .build
+        """ shouldNot typeCheck
+    }
+    it("should fail to compile if SpellPoints is not present") {
+      """ SpellBuilder.apply("NewSpell")
+        .addSpellInfo(spellInfo)
+        .addCasterClass(Seq(casterLevel))
+        .addSpellTarget(List(spellTarget))
+        .addSavingThrow(List.empty)
+        .addComponents(List.empty)
+        .addLevelCap(casterLevelCap)
+        .addEffect(effectList)
+        .build
+        """ shouldNot typeCheck
+    }
+    it("should fail to compile if Components is not present") {
+      """ SpellBuilder.apply("NewSpell")
+        .addSpellInfo(spellInfo)
+        .addCasterClass(Seq(casterLevel))
+        .addSpellTarget(List(spellTarget))
+        .addSavingThrow(List.empty)
+        .addSpellPoints(SpellPointValue)
+        .addLevelCap(casterLevelCap)
+        .addEffect(effectList)
+        .build
+        """ shouldNot typeCheck
+    }
+    it("should fail to compile if Effects are not present") {
+      """ SpellBuilder.apply("NewSpell")
+        .addSpellInfo(spellInfo)
+        .addCasterClass(Seq(casterLevel))
+        .addSpellTarget(List(spellTarget))
+        .addSavingThrow(List.empty)
+        .addSpellPoints(SpellPointValue)
+        .addComponents(List.empty)
+        .addLevelCap(casterLevelCap)
+        .build
+        """ shouldNot typeCheck
+    }
+    it("should fail to compile if Name are not present") {
+      """ SpellBuilder()
+        .addSpellInfo(spellInfo)
+        .addCasterClass(Seq(casterLevel))
+        .addSpellTarget(List(spellTarget))
+        .addSavingThrow(List.empty)
+        .addSpellPoints(SpellPointValue)
+        .addComponents(List.empty)
+        .addLevelCap(casterLevelCap)
+        .addEffect(effectList)
+        .build
+        """ shouldNot typeCheck
     }
   }
 

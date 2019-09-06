@@ -32,6 +32,7 @@ trait ClassDisplayHelper extends DisplayHelper with LazyLogging {
 
   type FNLevel = Entry => Seq[(CharacterClass, Int)]
   type FNClass = Entry => Seq[CharacterClass]
+  val cClass: CharacterClass
   lazy val classFeatByLevelMap: Seq[(String, Seq[Int])] = {
     val levels = for {
       f <- enum.values
@@ -87,8 +88,6 @@ trait ClassDisplayHelper extends DisplayHelper with LazyLogging {
   val existing
   : PartialFunction[Entry, Entry] = filterByAllOf orElse filterByAnyOf orElse filterByGrantedTo
 
-  val cClass: CharacterClass
-
   def isDefinedForClass(e: (CharacterClass, Int),
                         level: Option[Int] = None): Boolean =
     e._1.eq(cClass) && isEqualOrEmpty(e._2, level)
@@ -132,7 +131,6 @@ trait ClassDisplayHelper extends DisplayHelper with LazyLogging {
   def bonusFeatsByLevel(level: Int): util.List[String] = {
     val values = enum.values.map((_, level)) collect filterByClassBonusFeatByLevel
     values
-      //   .filterNot(_._1.isSubFeat)
       .filter(_._2 == level)
       .map(_._1.displayText)
       .sorted

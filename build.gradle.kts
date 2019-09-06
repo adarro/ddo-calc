@@ -276,17 +276,17 @@ tasks.withType<DependencyUpdatesTask> {
     reportfileName = "report"
 }
 
-
-tasks.create("showEnv") {
-    println("Forcing Action")
-    outputs.upToDateWhen { false }
-    logger.lifecycle("Env")
-    val props = System.getProperties()
-    logger.lifecycle("Environment has ${props.size} properties")
-    props.forEach {
-        logger.lifecycle("${it.key} -> ${it.value}")
-    }
-}
+//
+//tasks.create("showEnv") {
+//    println("Forcing Action")
+//    outputs.upToDateWhen { false }
+//    logger.lifecycle("Env")
+//    val props = System.getProperties()
+//    logger.lifecycle("Environment has ${props.size} properties")
+//    props.forEach {
+//        logger.lifecycle("${it.key} -> ${it.value}")
+//    }
+//}
 
 tasks.create("sendCoverageToCodacy", JavaExec::class) {
     val codacy = configurations.findByName("codacy")
@@ -308,14 +308,14 @@ tasks.create("sendCoverageToCodacy", JavaExec::class) {
     logger.info("Adding env $pId -> $token")
     environment = environment.plus(Pair(pId, token))
     // environment(Pair(pId,token))
-    val tsk = tasks.findByName("aggregateReports")
-    val tsk2 = tasks.findByName("showEnv")
-    if (tsk != null) {
-        dependsOn(setOf(tsk))
-    }
-    if (tsk2 != null) {
-        dependsOn(setOf(tsk2))
-    }
+//    val tsk = tasks.findByName("aggregateReports")
+//    val tsk2 = tasks.findByName("showEnv")
+//    if (tsk != null) {
+//        dependsOn(setOf(tsk))
+//    }
+//    if (tsk2 != null) {
+//        dependsOn(setOf(tsk2))
+//    }
 }
 
 

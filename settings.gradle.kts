@@ -18,6 +18,8 @@
 buildscript {
     repositories {
         gradlePluginPortal()
+        mavenCentral()
+        jcenter()
     }
     dependencies {
         classpath("org.kordamp.gradle:settings-gradle-plugin:0.25.0")
@@ -67,11 +69,13 @@ val testSetsPluginVersion: String by settings
 val versionEyePluginVersion: String by settings
 val taskTreePluginVersion: String by settings
 val kordampGradlePluginVersion: String by settings
+val scalaTestPluginVersion:String by settings
 
 pluginManagement {
     plugins {
         id("org.unbroken-dome.test-sets") version testSetsPluginVersion
         id("org.scoverage") version scoveragePluginVersion
+        id("com.github.maiflai.scalatest") version scalaTestPluginVersion // "0.25"
         //   id "findbugs"
         //  id "org.standardout.versioneye" version versionEyePluginVersion
         id("com.github.ben-manes.versions") version versionsPluginVersion

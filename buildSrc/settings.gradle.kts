@@ -25,17 +25,22 @@
 //}
 val testSetsPluginVersion: String by settings
 val kordampGradlePluginVersion: String by settings
+val scalaTestPluginVersion:String by settings
 
 pluginManagement {
     plugins {
         id("org.unbroken-dome.test-sets") version testSetsPluginVersion // "2.1.1"
         id("org.kordamp.gradle.project") version kordampGradlePluginVersion
+     //   id("com.github.maiflai.scalatest") version scalaTestPluginVersion // "0.25"
     }
 
     repositories {
-        gradlePluginPortal()
+     //   gradlePluginPortal()
         jcenter()
         mavenCentral()
+        maven {
+            url = uri("https://plugins.gradle.org/m2/")
+        }
 
     }
 }

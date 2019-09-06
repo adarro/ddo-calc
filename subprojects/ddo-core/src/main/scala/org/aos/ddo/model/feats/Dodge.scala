@@ -31,7 +31,9 @@ import org.aos.ddo.support.requisite.{FeatRequisiteImpl, RequiresAttribute}
   * @todo A Fighter may select this feat as one of his fighter bonus feats.
   * @todo A Monk may select this feat as one of his martial arts feats.
   */
-trait Dodge extends FeatRequisiteImpl with Passive with RequiresAttribute {
+trait Dodge extends FeatRequisiteImpl
+  with Passive with RequiresAttribute
+  with FighterBonusFeat with MartialArtsFeat {
   self: GeneralFeat =>
   override def requiresAttribute: Seq[(Attribute, Int)] = List((Attribute.Dexterity, 13))
 }

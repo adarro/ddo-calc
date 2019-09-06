@@ -33,10 +33,12 @@ import org.aos.ddo.support.requisite.{
   * You automatically stabilize when incapacitated.
   */
 protected[feats] trait Diehard
-    extends FeatRequisiteImpl
+  extends FeatRequisiteImpl
     with ClassRequisiteImpl
     with Passive
     with FreeFeat
-    with GrantsToClass { self: GeneralFeat =>
+    with GrantsToClass
+    with MartialArtsFeat {
+  self: GeneralFeat =>
   override def grantToClass: Seq[(CharacterClass, Int)] = List((Ranger, 3))
 }

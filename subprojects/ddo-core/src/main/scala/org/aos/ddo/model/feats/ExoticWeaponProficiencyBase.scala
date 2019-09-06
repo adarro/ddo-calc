@@ -31,21 +31,23 @@ import org.aos.ddo.support.requisite._
   * Base Attack Bonus +1,
   */
 protected[feats] trait ExoticWeaponProficiencyBase
-    extends FeatRequisiteImpl
+  extends FeatRequisiteImpl
     with RaceRequisite
     with ClassRequisiteImpl
     with Prefix
     with Passive
     with RequiresBaB
     with WeaponProficiencyBase
-    with ExoticWeapon { self: GeneralFeat =>
-  override def requiresBaB: Int = 1
-
-  override def prefix: Option[String] = Some("Exotic Weapon Proficiency")
-
+    with ExoticWeapon
+    with FighterBonusFeat {
+  self: GeneralFeat =>
   /**
     * Delimits the prefix and text.
     */
   override protected val prefixSeparator: String = ": "
+
+  override def requiresBaB: Int = 1
+
+  override def prefix: Option[String] = Some("Exotic Weapon Proficiency")
 
 }

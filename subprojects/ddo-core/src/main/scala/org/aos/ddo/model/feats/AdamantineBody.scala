@@ -29,11 +29,13 @@ import org.aos.ddo.support.requisite.{
   * Created by adarr on 2/20/2017.
   */
 trait AdamantineBody
-    extends FeatRequisiteImpl
+  extends FeatRequisiteImpl
     with RaceRequisite
     with Passive
     with RequiresAttribute
-    with RequiresAnyOfRace { self: RacialFeat =>
+    with RequiresAnyOfRace
+    with ArtificerBonusFeat {
+  self: RacialFeat =>
   override def anyOfRace: Seq[(Race, Int)] =
     List((Race.Warforged, 1), (Race.Bladeforged, 1))
 

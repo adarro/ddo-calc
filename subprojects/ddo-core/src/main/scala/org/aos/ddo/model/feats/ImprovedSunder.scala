@@ -32,7 +32,11 @@ import org.aos.ddo.support.requisite.{FeatRequisiteImpl, RequiresAllOfFeat}
   * Power Attack
   *
   */
-protected[feats] trait ImprovedSunder extends FeatRequisiteImpl with Active with RequiresAllOfFeat {
+protected[feats] trait ImprovedSunder extends FeatRequisiteImpl
+  with Active
+  with RequiresAllOfFeat
+  with FighterBonusFeat
+  with MartialArtsFeat {
   self: GeneralFeat =>
   override val allOfFeats = List(GeneralFeat.Sunder, GeneralFeat.PowerAttack)
 }

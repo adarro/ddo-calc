@@ -29,7 +29,11 @@ import org.aos.ddo.support.requisite.{FeatRequisiteImpl, RequiresAllOfFeat, Requ
   *
   * @todo Implement MustContainAtLeastOneOf(Sneak Attack or Half-Elf Dilettante: Rogue)
   */
-protected[feats] trait ImprovedFeint extends FeatRequisiteImpl with Active with RequiresAnyOfFeat with RequiresAllOfFeat {
+protected[feats] trait ImprovedFeint extends FeatRequisiteImpl
+  with Active
+  with RequiresAnyOfFeat
+  with RequiresAllOfFeat
+  with FighterBonusFeat {
   self: GeneralFeat =>
   override def anyOfFeats: Seq[Feat] = List(ClassFeat.SneakAttack)
 

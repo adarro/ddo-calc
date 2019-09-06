@@ -21,7 +21,8 @@ import org.aos.ddo.model.classes.CharacterClass
 import org.aos.ddo.model.classes.CharacterClass.Ranger
 import org.aos.ddo.model.feats.GeneralFeat.WeaponSpecialization
 import org.aos.ddo.model.item.weapon.WeaponClass
-import org.aos.ddo.support.requisite._
+import org.aos.ddo.support.requisite.{ClassRequisiteImpl, FeatRequisiteImpl, GrantsToClass, RequiresAllOfFeat, RequiresAnyOfFeat, RequiresBaB}
+
 
 /**
   * Feat bow strength.png
@@ -32,28 +33,33 @@ import org.aos.ddo.support.requisite._
   * Point Blank Shot, Weapon Focus: Ranged Weapons
   * Base Attack Bonus +4
   * MustContainAtLeastOne of: Weapon Specialization: Ranged Weapons, Power Attack, Combat Expertise, Zen Archery
-  * */
+  **/
 protected[feats] trait BowStrength
-    extends FeatRequisiteImpl
-    with ClassRequisiteImpl
+  extends FeatRequisiteImpl
+    // with ClassRequisiteImpl
     with Passive
     with RequiresBaB
     with RequiresAllOfFeat
     with RequiresAnyOfFeat
-    with GrantsToClass { self: GeneralFeat =>
-  private def ranged = GeneralFeat.weaponSpecializationAny collect {
-    case x: WeaponSpecialization if x.weaponClass == WeaponClass.Ranged => x
-  }
-
+    with FighterBonusFeat with GrantsToClass {
+  self: GeneralFeat =>
   override def anyOfFeats: Seq[GeneralFeat] =
     List(GeneralFeat.PowerAttack,
-         GeneralFeat.CombatExpertise,
-         GeneralFeat.ZenArchery) ++ ranged
+      GeneralFeat.CombatExpertise,
+      GeneralFeat.ZenArchery) ++ specializations
+
+  private def specializations = GeneralFeat.weaponSpecializationAny collect {
+    case x: WeaponSpecialization if x.weaponClass == WeaponClass.Ranged => x
+  }
 
   override def requiresBaB = 4
 
   override def allOfFeats: Seq[GeneralFeat] =
-    ranged :+ GeneralFeat.PointBlankShot
+    focus :+ GeneralFeat.PointBlankShot
+
+  private def focus = GeneralFeat.weaponFocusAny collect {
+    case x: WeaponFocusBase if x.weaponClass == WeaponClass.Ranged => x
+  }
 
   override def grantToClass: Seq[(CharacterClass, Int)] = Seq((Ranger, 1))
 }

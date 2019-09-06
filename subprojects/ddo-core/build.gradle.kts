@@ -20,6 +20,7 @@ import org.unbrokendome.gradle.plugins.testsets.dsl.testSets
 plugins {
     id("org.unbroken-dome.test-sets") // version "2.1.1"
     id("scala-profiles")
+    id("com.github.maiflai.scalatest") // version scalaTestPluginVersion
 }
 
 //sourceSets {
@@ -86,7 +87,7 @@ testSets {
 //                srcDir { "src/test/scala" }
                 exclude(
                     "**/*Spec.scala",
-                    "**/*Helper*",
+                   // "**/*Helper*",
                     "**/*Builder*"
                 )
                 //     }
@@ -101,6 +102,7 @@ testSets {
         sourceSet.resources {
             this.srcDirs.add(File("${project.projectDir}/src/test/specs"))
         }
+        configurations[compileClasspathConfigurationName].extendsFrom(configurations["testImplementation"])
         createArtifact = true
         //  this.testTaskName = "MyAcceptanceTest"
 
@@ -136,6 +138,7 @@ dependencies {
 
     // Concordion BDD
     val acceptanceTestImplementation by configurations.getting
+    acceptanceTestImplementation.extendsFrom(configurations["testCompileClasspath"])
     acceptanceTestImplementation(group = "org.concordion", name = "concordion", version = "2.2.0")
     acceptanceTestImplementation(group = "org.concordion", name = "concordion-embed-extension", version = "1.2.0")
     acceptanceTestImplementation(

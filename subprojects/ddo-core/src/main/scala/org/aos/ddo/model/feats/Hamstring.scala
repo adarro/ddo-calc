@@ -25,7 +25,10 @@ import org.aos.ddo.support.requisite.{FeatRequisiteImpl, RequiresAllOfFeat}
   *
   * Sneak Attack
   */
-protected[feats] trait Hamstring extends FeatRequisiteImpl with Active with RequiresAllOfFeat {
+protected[feats] trait Hamstring extends FeatRequisiteImpl
+  with Active
+  with RequiresAllOfFeat
+  with FighterBonusFeat {
   self: GeneralFeat =>
   override val allOfFeats = List(ClassFeat.SneakAttack)
 }

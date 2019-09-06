@@ -32,13 +32,15 @@ import org.aos.ddo.support.requisite._
   * *
   */
 trait GreaterTwoWeaponFighting
-    extends FeatRequisiteImpl
+  extends FeatRequisiteImpl
     with ClassRequisiteImpl
     with Passive
     with RequiresAllOfFeat
     with RequiresAttribute
     with RequiresBaB
-    with GrantsToClass { self: GeneralFeat =>
+    with GrantsToClass
+    with FighterBonusFeat {
+  self: GeneralFeat =>
   override def requiresBaB: Int = 11
 
   override def allOfFeats: Seq[GeneralFeat] =

@@ -27,6 +27,9 @@ import org.aos.ddo.support.requisite.{FeatRequisiteImpl, FreeFeat}
   * Some creatures may be immune to the sap effect and sap is more effective when performed as a successful sneak attack
   * (whether or not your character can normally perform sneak attacks).
   */
-protected trait Sap extends FeatRequisiteImpl with Active with FreeFeat {
+protected trait Sap extends FeatRequisiteImpl
+  with Active
+  with FreeFeat
+  with FighterBonusFeat {
   self: GeneralFeat =>
 }

@@ -24,7 +24,10 @@ import org.aos.ddo.support.requisite.{FeatRequisiteImpl, RequiresAllOfFeat}
   * *
   * Two Weapon Fighting
   * */
-trait TwoWeaponDefense extends FeatRequisiteImpl with Passive with RequiresAllOfFeat {
+trait TwoWeaponDefense extends FeatRequisiteImpl
+  with Passive
+  with RequiresAllOfFeat
+  with FighterBonusFeat {
   self: GeneralFeat =>
   override def allOfFeats: Seq[GeneralFeat] = List(GeneralFeat.TwoWeaponFighting)
 }

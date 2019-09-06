@@ -24,9 +24,11 @@ import org.aos.ddo.support.requisite.{FeatRequisiteImpl, RequiresAnyOfClass}
   * Created by adarr on 2/21/2017.
   */
 trait EschewMaterials
-    extends FeatRequisiteImpl
+  extends FeatRequisiteImpl
     with MetaMagic
-    with RequiresAnyOfClass { self: MetaMagicFeat =>
+    with RequiresAnyOfClass
+    with ArtificerBonusFeat {
+  self: MetaMagicFeat =>
   override def anyOfClass: Seq[(CharacterClass, Int)] =
     MetaMagicFeat.minimumSpellCastingClass
 }

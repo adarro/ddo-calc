@@ -25,7 +25,11 @@ import org.aos.ddo.support.requisite.{FeatRequisiteImpl, RequiresAllOfFeat}
   * *
   * Combat Expertise
   */
-protected[feats] trait ImprovedTrip extends FeatRequisiteImpl with Active with RequiresAllOfFeat {
+protected[feats] trait ImprovedTrip extends FeatRequisiteImpl
+  with Active
+  with RequiresAllOfFeat
+  with FighterBonusFeat
+  with MartialArtsFeat {
   self: GeneralFeat =>
   override val allOfFeats = List(GeneralFeat.CombatExpertise)
 }

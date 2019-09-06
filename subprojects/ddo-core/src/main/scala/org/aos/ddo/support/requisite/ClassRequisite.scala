@@ -21,6 +21,7 @@ import org.aos.ddo.model.classes.CharacterClass
 import org.aos.ddo.support.requisite.RequirementImplicits.classToReq
 
 /**
+  * Represents Character class based restrictions and allowances
   * Created by adarr on 1/30/2017.
   */
 trait ClassRequisite {
@@ -31,8 +32,14 @@ trait ClassRequisite {
   def noneOfClass: Seq[(CharacterClass, Int)]
 
   def grantToClass: Seq[(CharacterClass, Int)]
+
+  def bonusSelectableToClass: Seq[(CharacterClass, Int)]
 }
 
+/**
+  * Base implementation setting all required values to a default empty set.
+  * Stackable traits may then override and augment selected values.
+  */
 trait ClassRequisiteImpl extends ClassRequisite {
   override def anyOfClass: Seq[(CharacterClass, Int)] = Nil
 
@@ -41,16 +48,21 @@ trait ClassRequisiteImpl extends ClassRequisite {
   override def noneOfClass: Seq[(CharacterClass, Int)] = Nil
 
   override def grantToClass: Seq[(CharacterClass, Int)] = Nil
+
+  override def bonusSelectableToClass: Seq[(CharacterClass, Int)] = Nil
 }
 
 trait FreeClass
-    extends ClassRequisite
+  extends ClassRequisite
     with RequiresNone
     with RequiredExpression
     with Requisite
 
+/**
+  * Feature requires any of the included classes.
+  */
 trait RequiresAnyOfClass
-    extends ClassRequisite
+  extends ClassRequisite
     with RequiresOneOf[Requirement]
     with Requisite {
 
@@ -59,8 +71,12 @@ trait RequiresAnyOfClass
   }
 }
 
+/**
+  * Feature requires this particular set of classes.
+  * i.e. A given feat may only be available to Monks.
+  */
 trait RequiresAllOfClass
-    extends ClassRequisite
+  extends ClassRequisite
     with RequiresAllOf[Requirement]
     with Requisite {
 
@@ -69,8 +85,13 @@ trait RequiresAllOfClass
   }
 }
 
+/**
+  * Feature is prohibited for a given set of classes.
+  * This is often used as an exclusive selector, i.e. you can choose one thing or the other,
+  * but one excludes the other.
+  */
 trait RequiresNoneOfClass
-    extends ClassRequisite
+  extends ClassRequisite
     with RequiresNoneOf[Requirement]
     with Requisite {
 
@@ -79,12 +100,29 @@ trait RequiresNoneOfClass
   }
 }
 
+/**
+  * This feature is automatically granted to a particular class or set of classes.
+  */
 trait GrantsToClass
-    extends ClassRequisite
+  extends ClassRequisite
     with GrantExpression
     with RequiresOneOf[Requirement]
     with Requisite {
   abstract override def oneOf: Seq[Requirement] = super.oneOf ++ {
     grantToClass collect classToReq
+  }
+}
+
+/**
+  * This feature becomes selectable to a given class, generally at a particular level.
+  * Specifically, this applies to Feats to allow bonus feat selection such as Monk Bonus feats.
+  */
+trait SelectableToClass
+  extends ClassRequisite
+    with ClassRequisiteImpl
+    with RequiresOneOf[Requirement]
+    with Requisite {
+  abstract override def oneOf: Seq[Requirement] = super.oneOf ++ {
+    bonusSelectableToClass collect classToReq
   }
 }

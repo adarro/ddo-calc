@@ -27,7 +27,7 @@ import org.aos.ddo.support.requisite.{FeatRequisiteImpl, RequiresAttribute, Requ
   * Strength 13
   * Base Attack Bonus +1
   */
-trait BrutalThrow extends FeatRequisiteImpl with Passive with RequiresAttribute with RequiresBaB {
+trait BrutalThrow extends FeatRequisiteImpl with Passive with RequiresAttribute with RequiresBaB with FighterBonusFeat {
   self: GeneralFeat =>
   override def requiresAttribute: Seq[(Attribute, Int)] = List((Attribute.Strength, 13))
 

@@ -32,7 +32,11 @@ import org.aos.ddo.support.requisite.{FeatRequisiteImpl, RequiresAnyOfFeat, Requ
   * Tower Shield Proficiency
   * +8 Base Attack Bonus
   */
-protected[feats] trait ShieldDeflection extends FeatRequisiteImpl with Passive with RequiresBaB with RequiresAnyOfFeat {
+protected[feats] trait ShieldDeflection extends FeatRequisiteImpl
+  with Passive
+  with RequiresBaB
+  with RequiresAnyOfFeat
+  with FighterBonusFeat {
   self: GeneralFeat =>
   override def requiresBaB: Int = 8
 

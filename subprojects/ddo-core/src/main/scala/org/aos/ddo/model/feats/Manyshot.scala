@@ -38,13 +38,15 @@ import org.aos.ddo.support.requisite._
   * @todo add 20 second Active
   */
 protected[feats] trait Manyshot
-    extends FeatRequisiteImpl
+  extends FeatRequisiteImpl
     with Active
     with RequiresAllOfFeat
     with RequiresAttribute
     with RequiresBaB
     with ClassRequisiteImpl
-    with GrantsToClass { self: GeneralFeat =>
+    with GrantsToClass
+    with FighterBonusFeat {
+  self: GeneralFeat =>
   override def allOfFeats: Seq[GeneralFeat] =
     List(GeneralFeat.PointBlankShot, GeneralFeat.RapidShot)
 

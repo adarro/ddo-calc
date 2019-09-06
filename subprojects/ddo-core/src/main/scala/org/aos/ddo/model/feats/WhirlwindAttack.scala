@@ -29,7 +29,11 @@ import org.aos.ddo.support.requisite.{FeatRequisiteImpl, RequiresAllOfFeat, Requ
   * @note Only Combat Expertise and Spring Attack are required as feats. However, Spring Attack depends on Mobility with Depends on Dodge
   *       and are listed on the Wiki as such. Nested dependencies should be inferred and this list may remove all but explicit dependencies.
   */
-protected[feats] trait WhirlwindAttack extends FeatRequisiteImpl with Active with RequiresAllOfFeat with RequiresBaB {
+protected[feats] trait WhirlwindAttack extends FeatRequisiteImpl
+  with Active
+  with RequiresAllOfFeat
+  with RequiresBaB
+  with FighterBonusFeat {
   self: GeneralFeat =>
   /**
     * The Minimum Required Base Attack Bonus

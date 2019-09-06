@@ -22,11 +22,14 @@ import org.aos.ddo.support.requisite.{FeatRequisiteImpl, RequiresAnyOfClass}
 
 /**
   * Created by adarr on 2/21/2017.
+  *
   * @todo Need to add requirement to cast 2nd level spells
   */
-trait HeightenSpell  extends FeatRequisiteImpl
+trait HeightenSpell extends FeatRequisiteImpl
   with MetaMagic
-  with RequiresAnyOfClass { self: MetaMagicFeat =>
+  with RequiresAnyOfClass
+  with ArtificerBonusFeat {
+  self: MetaMagicFeat =>
   override def anyOfClass: Seq[(CharacterClass, Int)] =
     List((CharacterClass.Artificer, 4),
       (CharacterClass.Bard, 4),

@@ -27,7 +27,10 @@ import org.aos.ddo.support.requisite.{FeatRequisiteImpl, RequiresBaB}
   *
   * Base Attack Bonus +1
   * */
-trait QuickDraw extends FeatRequisiteImpl with Passive with RequiresBaB {
+trait QuickDraw extends FeatRequisiteImpl
+  with Passive
+  with RequiresBaB
+  with FighterBonusFeat {
   self: GeneralFeat =>
   override def requiresBaB: Int = 1
 }

@@ -27,7 +27,13 @@ import org.aos.ddo.support.requisite.{FeatRequisiteImpl, RequiresAllOfFeat, Requ
   *
   * Dodge, Mobility
   * Dexterity 13 , Base Attack Bonus 4, */
-protected[feats] trait SpringAttack extends FeatRequisiteImpl with Passive with RequiresAllOfFeat with RequiresAttribute with RequiresBaB {
+protected[feats] trait SpringAttack extends FeatRequisiteImpl
+  with Passive
+  with RequiresAllOfFeat
+  with RequiresAttribute
+  with RequiresBaB
+  with FighterBonusFeat
+  with MartialArtsFeat {
   self: GeneralFeat =>
   override def allOfFeats: Seq[GeneralFeat] = List(GeneralFeat.Dodge, GeneralFeat.Mobility)
 

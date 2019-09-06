@@ -23,7 +23,6 @@ import enumeratum.{Enum, EnumEntry}
 import org.aos.ddo.support.naming.FriendlyDisplay
 
 import scala.collection.JavaConverters._
-
 /**
   * Created by adarr on 2/17/2017.
   */
@@ -36,18 +35,6 @@ trait DisplayHelper {
   def prettyPrint(): String = {
     listValues("Current Supported Feats", collapse = true)
   }
-
-  def verify(): util.List[String] =
-    enum.values
-      .filter { x =>
-        !x.isSubFeat
-      }
-      .map { x =>
-        x.displayText
-      }
-      .toList
-      .sorted
-      .asJava
 
   def listValues(heading: String, collapse: Boolean = false): String = {
 
@@ -67,6 +54,24 @@ trait DisplayHelper {
     }
   }
 
+  def verify(): util.List[String] =
+    enum.values
+      .filter { x =>
+        !x.isSubFeat
+      }
+      .map { x =>
+        x.displayText
+      }
+      .toList
+      .sorted
+      .asJava
+
+  def withNameAsJavaList(id: String): util.List[String] = withNameAsList(id).asJava
+
+  def findByName(skillId: String): String = {
+    withNameAsList(skillId).headOption.orNull
+  }
+
   def withNameAsList(skillId: String*): Seq[String] = {
     for {
       id <- skillId
@@ -74,12 +79,6 @@ trait DisplayHelper {
     } yield skill.displayText
   }
 
-  def withNameAsJavaList(id: String): util.List[String] = withNameAsList(id).asJava
-
   protected def withName(skillId: String): Option[Entry] =
     enum.withNameOption(skillId)
-
-  def findByName(skillId: String): String = {
-    withNameAsList(skillId).headOption.orNull
-  }
 }

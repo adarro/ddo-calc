@@ -30,10 +30,12 @@ import org.aos.ddo.support.requisite.{
   * Level 8: Fighter
   * */
 trait TacticalCombatant
-    extends FeatRequisiteImpl
+  extends FeatRequisiteImpl
     with ClassRequisiteImpl
     with Passive
-    with RequiresAllOfClass { self: GeneralFeat =>
+    with RequiresAllOfClass
+    with FighterBonusFeat {
+  self: GeneralFeat =>
   override def allOfClass: Seq[(CharacterClass, Int)] =
     List((CharacterClass.Fighter, 8))
 }

@@ -24,6 +24,10 @@ import org.aos.ddo.support.requisite.{FeatRequisiteImpl, FreeFeat}
   *
   * None
   */
-protected[feats] trait PointBlankShot extends FeatRequisiteImpl with Passive with FreeFeat {
+protected[feats] trait PointBlankShot extends FeatRequisiteImpl
+  with Passive
+  with FreeFeat
+  with FighterBonusFeat
+  with ArtificerBonusFeat {
   self: GeneralFeat =>
 }

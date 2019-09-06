@@ -27,7 +27,12 @@ import org.aos.ddo.support.requisite.{FeatRequisiteImpl, RequiresAttribute, Requ
   * Dexterity 13
   * Base Attack Bonus +1
   */
-protected[feats] trait Precision extends FeatRequisiteImpl with Active with RequiresAttribute with RequiresBaB {
+protected[feats] trait Precision extends FeatRequisiteImpl
+  with Active
+  with RequiresAttribute
+  with RequiresBaB
+  with FighterBonusFeat
+  with MartialArtsFeat {
   self: GeneralFeat =>
   override def requiresAttribute: Seq[(Attribute, Int)] = List((Attribute.Dexterity, 13))
 

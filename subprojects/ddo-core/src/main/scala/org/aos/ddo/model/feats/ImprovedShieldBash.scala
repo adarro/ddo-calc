@@ -24,7 +24,10 @@ import org.aos.ddo.support.requisite.{FeatRequisiteImpl, RequiresAllOfFeat}
   * *
   * Shield Proficiency: General
   * */
-protected[feats] trait ImprovedShieldBash extends FeatRequisiteImpl with Passive with RequiresAllOfFeat {
+protected[feats] trait ImprovedShieldBash extends FeatRequisiteImpl
+  with Passive
+  with RequiresAllOfFeat
+  with FighterBonusFeat {
   self: GeneralFeat =>
   override def allOfFeats: Seq[GeneralFeat] = List(GeneralFeat.ShieldProficiency)
 }

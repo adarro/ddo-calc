@@ -40,11 +40,14 @@ import org.aos.ddo.support.requisite.{
   * Dexterity 15
   * */
 trait TwoWeaponFighting
-    extends FeatRequisiteImpl
+  extends FeatRequisiteImpl
     with Passive
     with ClassRequisiteImpl
     with GrantsToClass
-    with RequiresAttribute { self: GeneralFeat =>
+    with RequiresAttribute
+    with FighterBonusFeat
+    with MartialArtsFeat {
+  self: GeneralFeat =>
   override def requiresAttribute: Seq[(Attribute, Int)] =
     List((Attribute.Dexterity, 15))
 

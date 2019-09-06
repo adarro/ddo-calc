@@ -18,6 +18,7 @@
 package org.aos.ddo.model.feats
 
 import org.aos.ddo.model.item.weapon.WeaponProficiency
+import org.aos.ddo.support.requisite.{Inclusion, Requisite}
 
 /**
   * Created by adarr on 3/30/2017.

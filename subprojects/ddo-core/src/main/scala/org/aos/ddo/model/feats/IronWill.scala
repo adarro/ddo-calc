@@ -24,6 +24,9 @@ import org.aos.ddo.support.requisite.{FeatRequisiteImpl, FreeFeat}
   * *
   * None
   * */
-trait IronWill extends FeatRequisiteImpl with Passive with FreeFeat {
+trait IronWill extends FeatRequisiteImpl
+  with Passive
+  with FreeFeat
+  with MartialArtsFeat {
   self: GeneralFeat =>
 }

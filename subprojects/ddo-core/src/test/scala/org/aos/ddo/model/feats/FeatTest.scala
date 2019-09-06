@@ -17,16 +17,29 @@
  */
 package org.aos.ddo.model.feats
 
+import com.typesafe.scalalogging.LazyLogging
 import org.junit.runner.RunWith
 import org.scalatest.{FunSpec, Matchers}
 import org.scalatest.junit.JUnitRunner
 
 @RunWith(classOf[JUnitRunner])
-class FeatTest extends FunSpec with Matchers {
+class FeatTest extends FunSpec with Matchers with LazyLogging {
 
   describe("FeatTest") {
     it("should findValues") {
       noException shouldBe thrownBy(Feat.values)
+    }
+    it("should automatically create proper display text / name") {
+      val feats = Feat.values
+      feats.foreach {x =>
+         val idInfo = Map(
+          "entryName" -> x.entryName,
+          "displaySource" -> x.displaySource,
+          "displayText" -> x.displayText
+        )
+        logger.debug(s"Id Info $idInfo")
+
+      }
     }
   }
 }

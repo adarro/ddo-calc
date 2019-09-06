@@ -25,7 +25,11 @@ import org.aos.ddo.support.requisite.{FeatRequisiteImpl, RequiresAllOfFeat, Requ
   * Shield Mastery
   * Base Attack Bonus +8
   * */
-protected[feats] trait ImprovedShieldMastery extends FeatRequisiteImpl with Passive with RequiresAllOfFeat with RequiresBaB {
+protected[feats] trait ImprovedShieldMastery extends FeatRequisiteImpl
+  with Passive
+  with RequiresAllOfFeat
+  with RequiresBaB
+  with FighterBonusFeat {
   self: GeneralFeat =>
   override def allOfFeats: Seq[GeneralFeat] = List(GeneralFeat.ShieldMastery)
 

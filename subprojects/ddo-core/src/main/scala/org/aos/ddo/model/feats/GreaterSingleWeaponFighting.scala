@@ -32,12 +32,14 @@ import org.aos.ddo.support.requisite._
   * Base Attack Bonus +11
   */
 trait GreaterSingleWeaponFighting
-    extends FeatRequisiteImpl
+  extends FeatRequisiteImpl
     with SkillRequisiteImpl
     with Passive
     with RequiresAllOfFeat
     with RequiresAnyOfSkill
-    with RequiresBaB { self: GeneralFeat =>
+    with RequiresBaB
+    with FighterBonusFeat {
+  self: GeneralFeat =>
   override def requiresBaB = 11
 
   override def oneOfSkill: Seq[(Skill, Int)] = List((Skill.Balance, 7))

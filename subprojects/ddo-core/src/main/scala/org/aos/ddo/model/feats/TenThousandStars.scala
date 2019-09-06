@@ -36,11 +36,13 @@ import org.aos.ddo.support.requisite.{
   * Dexterity 13
   */
 protected[feats] trait TenThousandStars
-    extends FeatRequisiteImpl
+  extends FeatRequisiteImpl
     with ClassRequisiteImpl
     with Active
     with RequiresAttribute
-    with RequiresAllOfClass { self: GeneralFeat =>
+    with RequiresAllOfClass
+    with MartialArtsFeat {
+  self: GeneralFeat =>
   override def requiresAttribute: Seq[(Attribute, Int)] =
     List((Attribute.Dexterity, 13))
 

@@ -30,10 +30,12 @@ import org.aos.ddo.support.requisite.{FeatRequisiteImpl, GrantsToClass, Requires
   * Proficiency: Light Crossbows
   * */
 protected[feats] trait RapidReload
-    extends FeatRequisiteImpl
+  extends FeatRequisiteImpl
     with Passive
     with RequiresAllOfFeat
-    with GrantsToClass { self: ClassFeat =>
+    with GrantsToClass
+    with FighterBonusFeat {
+  self: ClassFeat =>
   override def grantToClass: Seq[(CharacterClass, Int)] = List((Artificer, 1))
 
   override def allOfFeats: Seq[GeneralFeat] =

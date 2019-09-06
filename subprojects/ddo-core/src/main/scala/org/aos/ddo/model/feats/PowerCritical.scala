@@ -26,7 +26,11 @@ import org.aos.ddo.support.requisite.{FeatRequisiteImpl, RequiresAnyOfFeat, Requ
   * Base Attack Bonus 4
   *
   * */
-protected[feats] trait PowerCritical extends FeatRequisiteImpl with Passive with RequiresBaB with RequiresAnyOfFeat {
+protected[feats] trait PowerCritical extends FeatRequisiteImpl
+  with Passive
+  with RequiresBaB
+  with RequiresAnyOfFeat
+  with FighterBonusFeat {
   self: GeneralFeat =>
 
   override def requiresBaB: Int = 4

@@ -30,12 +30,14 @@ import org.aos.ddo.support.requisite.{
   * Passive
   * +2 bonus to Tactics DC's.
   * Level 4: Fighter
-  * */
+  **/
 trait TacticalTraining
-    extends FeatRequisiteImpl
+  extends FeatRequisiteImpl
     with ClassRequisiteImpl
     with Passive
-    with RequiresAllOfClass { self: GeneralFeat =>
+    with RequiresAllOfClass
+    with FighterBonusFeat {
+  self: GeneralFeat =>
   override def allOfClass: Seq[(CharacterClass, Int)] =
     List((CharacterClass.Fighter, 4))
 }

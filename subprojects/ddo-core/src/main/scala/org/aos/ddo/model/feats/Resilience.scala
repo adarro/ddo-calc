@@ -26,7 +26,11 @@ import org.aos.ddo.support.requisite.{FeatRequisiteImpl, RequiresAttribute, Requ
   * Constitution 13
   * Base Attack Bonus +1
   */
-protected[feats] trait Resilience extends FeatRequisiteImpl with Active with RequiresAttribute with RequiresBaB {
+protected[feats] trait Resilience extends FeatRequisiteImpl
+  with Active
+  with RequiresAttribute
+  with RequiresBaB
+  with MartialArtsFeat {
   self: GeneralFeat =>
   override def requiresAttribute: Seq[(Attribute, Int)] = List((Attribute.Constitution, 13))
 

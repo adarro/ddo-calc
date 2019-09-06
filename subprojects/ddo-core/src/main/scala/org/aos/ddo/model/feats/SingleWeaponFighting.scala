@@ -36,9 +36,12 @@ import org.aos.ddo.support.requisite.{
   * 2 ranks of Balance
   */
 protected[feats] trait SingleWeaponFighting
-    extends FeatRequisiteImpl
+  extends FeatRequisiteImpl
     with SkillRequisiteImpl
     with Passive
-    with RequiresAnyOfSkill { self: GeneralFeat =>
+    with RequiresAnyOfSkill
+    with FighterBonusFeat
+    with MartialArtsFeat {
+  self: GeneralFeat =>
   override def oneOfSkill: Seq[(Skill, Int)] = List((Skill.Balance, 2))
 }

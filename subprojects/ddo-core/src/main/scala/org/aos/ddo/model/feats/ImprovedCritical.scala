@@ -26,13 +26,16 @@ import org.aos.ddo.support.requisite.{FeatRequisiteImpl, RequiresBaB}
   * Adds 1, 2, or 3 to critical threat range based on the weapon type's unmodified threat range.
   *
   * This feat is taken for a certain weapon type (Bludgeoning, Piercing, Ranged, Slashing or Thrown), and can be taken multiple times,
-  *     though each time must be for a different type.
+  * though each time must be for a different type.
   *
   * Base Attack Bonus +8
   */
 protected[feats] trait ImprovedCritical
-    extends FeatRequisiteImpl
+  extends FeatRequisiteImpl
     with Passive
-    with RequiresBaB { self: GeneralFeat =>
+    with RequiresBaB
+    with FighterBonusFeat
+    with ArtificerBonusFeat {
+  self: GeneralFeat =>
   override def requiresBaB: Int = 8
 }

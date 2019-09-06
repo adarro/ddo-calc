@@ -56,6 +56,7 @@ Verifying all known General Feats (from DDO Wiki)
 | Combat Casting |
 | Combat Expertise |
 | Defensive Fighting |
+| Deflect Arrows |
 | Diehard |
 | Discipline |
 | Dismiss Charm |
@@ -93,6 +94,7 @@ Verifying all known General Feats (from DDO Wiki)
 | Improved Two Weapon Fighting |
 | Insightful Reflexes |
 | Iron Will |
+| Knight's Training |
 | Light Armor Proficiency |
 | Lightning Reflexes |
 | Luck of Heroes |
@@ -134,8 +136,10 @@ Verifying all known General Feats (from DDO Wiki)
 | Spring Attack |
 | Stealthy |
 | Stunning Blow |
+| Stunning Fist |
 | Sunder |
 | Superior Weapon Focus |
+| Swords to Plowshares |
 | Tactical Combatant |
 | Tactical Mastery |
 | Tactical Supremacy |
@@ -151,6 +155,7 @@ Verifying all known General Feats (from DDO Wiki)
 | Weapon Finesse |
 | Weapon Focus |
 | Weapon Specialization |
+| Whirling Steel Strike |
 | Whirlwind Attack |
 | Zen Archery |
 

@@ -111,5 +111,4 @@ object Feat extends Enum[Feat] with FeatSearchPrefix with LazyLogging {
   }
 
   override def values: IndexedSeq[Feat] =
-    GeneralFeat.values ++ ClassFeat.values ++ RacialFeat.values ++ MetaMagicFeat.values ++ DeityFeat.values ++ EpicFeat.values
-}
+    GeneralFeat.values ++ ClassFeat.values ++ RacialFeat.values ++ MetaMagicFeat.values ++ DeityFeat.values ++ EpicFeat.values}

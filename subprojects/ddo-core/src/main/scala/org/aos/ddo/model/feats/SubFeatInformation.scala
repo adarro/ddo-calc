@@ -24,8 +24,8 @@ trait SubFeatInformation {
 
   /**
     * Flag used for determining if this is a Sub-Feat having a common parent
-    *
-    * @return
+    * This is mainly useful when looking up group feats such as Weapon Specialization: WeaponType or Meta Magics
+    * @return true if this is a subfeat otherwise false (the default value).
     */
   def isSubFeat: Boolean = false
 }

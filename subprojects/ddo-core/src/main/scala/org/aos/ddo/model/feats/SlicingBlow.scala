@@ -29,6 +29,9 @@ import org.aos.ddo.support.requisite.{FeatRequisiteImpl, FreeFeat}
   *
   * None
   */
-protected[feats] trait SlicingBlow extends FeatRequisiteImpl with Active with FreeFeat {
+protected[feats] trait SlicingBlow extends FeatRequisiteImpl
+  with Active
+  with FreeFeat
+  with FighterBonusFeat {
   self: GeneralFeat =>
 }

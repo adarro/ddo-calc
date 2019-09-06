@@ -34,7 +34,7 @@ import org.aos.ddo.support.requisite.{FeatRequisiteImpl, RequiresAttribute}
   * @todo add Cooldown 10 seconds
   * @todo add Offensive Combat Stance
   */
-protected[feats] trait PowerAttack extends FeatRequisiteImpl with Active with RequiresAttribute {
+protected[feats] trait PowerAttack extends FeatRequisiteImpl with Active with RequiresAttribute with MartialArtsFeat with FighterBonusFeat {
   self: GeneralFeat =>
   override val requiresAttribute: Seq[(Attribute, Int)] = List((Attribute.Strength, 13))
 }

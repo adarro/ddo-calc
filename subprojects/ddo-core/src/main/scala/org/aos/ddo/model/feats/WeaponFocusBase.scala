@@ -26,7 +26,10 @@ import org.aos.ddo.support.requisite.{FeatRequisiteImpl, RequiresBaB}
   *
   * Base Attack Bonus +1
   * */
-trait WeaponFocusBase extends FeatRequisiteImpl with Passive with RequiresBaB {
+trait WeaponFocusBase extends FeatRequisiteImpl
+  with Passive
+  with RequiresBaB
+  with FighterBonusFeat {
 
   self: GeneralFeat =>
 

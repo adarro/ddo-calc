@@ -31,7 +31,12 @@ import org.aos.ddo.support.requisite.{FeatRequisiteImpl, RequiresAttribute}
   *
   * @todo Mixin DefensiveCombatStance
   */
-protected[feats] trait CombatExpertise extends FeatRequisiteImpl with Active with RequiresAttribute {
+protected[feats] trait CombatExpertise extends FeatRequisiteImpl
+  with Active
+  with RequiresAttribute
+  with MartialArtsFeat
+  with FighterBonusFeat
+  with ArtificerBonusFeat {
   self: GeneralFeat =>
   override val requiresAttribute = List((Attribute.Intelligence, 13))
 }

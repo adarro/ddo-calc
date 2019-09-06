@@ -24,15 +24,18 @@ import org.aos.ddo.model.compendium.types.{MainType, MonsterType}
 import org.aos.ddo.support.naming.FriendlyDisplay
 import org.aos.ddo.support.requisite._
 
+import scala.collection.immutable
+
 /**
   * Created by adarr on 2/14/2017.
   */
 sealed trait ClassFeat
-    extends Feat
+  extends Feat
     with FriendlyDisplay
     with SubFeatInformation
     with ClassRequisiteImpl
-    with FeatMatcher { self: FeatType with Requisite with Inclusion =>
+    with FeatMatcher {
+  self: FeatType with Requisite with Inclusion =>
   val matchFeat: PartialFunction[Feat, ClassFeat] = {
     case x: ClassFeat => x
   }
@@ -47,48 +50,49 @@ sealed trait ClassFeat
 // scalastyle:off number.of.methods
 object ClassFeat extends Enum[ClassFeat] with FeatSearchPrefix {
 
+  override lazy val values: immutable.IndexedSeq[ClassFeat] = findValues
+
+  protected def favoredEnemies: immutable.IndexedSeq[FavoredEnemyType] = {
+    for {m <- MonsterType.values} yield FavoredEnemyType(Some(m))
+  }
+
   case class FavoredEnemyType(mainTypes: Option[MonsterType])
-      extends ClassFeat
+    extends ClassFeat
       with FavoredEnemy
       with MainType
       with SubFeat
-
-  protected def favoredEnemies = {
-    for { m <- MonsterType.values } yield FavoredEnemyType(Some(m))
-  }
 
   /**
     * @todo Need to add Grants for Gnomish / Deep Gnome Tier 4/ Deep Wood Stalker Tier 5
     *       Harper Tier 4, Epic Primal Avatar Tier 2
     */
   case object FavoredEnemy
-      extends ClassFeat
+    extends ClassFeat
       with FeatRequisiteImpl
       with GrantsToClass
       with ParentFeat
       with Passive {
-    val rangerLevels = (5 to 20 by 5) :+ 1
+    override val subFeats: immutable.IndexedSeq[FavoredEnemyType] = favoredEnemies
+    private val rangerLevels = (5 to 20 by 5) :+ 1
 
     override def grantToClass: Seq[(CharacterClass, Int)] =
       rangerLevels.map((Ranger, _))
-
-    override val subFeats = favoredEnemies
   }
 
   case object ArcaneLore extends ClassFeat with ArcaneLore
 
   case object ArtificerConstructMastery
-      extends ClassFeat
+    extends ClassFeat
       with ArtificerConstructMastery
 
   case object ArtificerKnowledgeScrolls
-      extends ClassFeat
+    extends ClassFeat
       with ArtificerKnowledgeScrolls {
     override protected def nameSource: String = "Scrolls"
   }
 
   case object InscribeArtificerScroll
-      extends ClassFeat
+    extends ClassFeat
       with InscribeArtificerScroll
 
   case object RapidReload extends ClassFeat with RapidReload
@@ -100,13 +104,13 @@ object ClassFeat extends Enum[ClassFeat] with FeatSearchPrefix {
   case object UnleashIronDefender extends ClassFeat with UnleashIronDefender
 
   case object ArtificerCraftMastery
-      extends ClassFeat
+    extends ClassFeat
       with ArtificerCraftMastery
 
   case object RuneArmUse extends ClassFeat with RuneArmUse
 
   case object ArtificerKnowledgeWands
-      extends ClassFeat
+    extends ClassFeat
       with ArtificerKnowledgeWands {
     override protected def nameSource: String = "Wands"
   }
@@ -116,28 +120,29 @@ object ClassFeat extends Enum[ClassFeat] with FeatSearchPrefix {
   case object RetainEssence extends ClassFeat with RetainEssence
 
   case object ArtificerKnowledgeArmsAndArmor
-      extends ClassFeat
+    extends ClassFeat
       with ArtificerKnowledgeArmsAndArmor {
     override protected def nameSource: String = "Arms and Armor"
   }
 
   case object ArtificerKnowledgePotions
-      extends ClassFeat
+    extends ClassFeat
       with ArtificerKnowledgePotions {
     override protected def nameSource: String = "Potions"
   }
 
   case object ArtificerKnowledgeWondrousItems
-      extends ClassFeat
+    extends ClassFeat
       with ArtificerKnowledgeWondrousItems {
     override protected def nameSource: String = "Wondrous Items"
   }
 
   case object ArtificerSkillMastery
-      extends ClassFeat
+    extends ClassFeat
       with ArtificerSkillMastery
 
   case object SneakAttack extends ClassFeat with SneakAttack
+
   // Bard Feats
   case object Fascinate extends ClassFeat with Fascinate
 
@@ -148,7 +153,7 @@ object ClassFeat extends Enum[ClassFeat] with FeatSearchPrefix {
   case object SuggestionSong extends ClassFeat with SuggestionSong
 
   case object ImprovedInspireCourage
-      extends ClassFeat
+    extends ClassFeat
       with ImprovedInspireCourage
 
   case object InspireGreatness extends ClassFeat with InspireGreatness
@@ -158,11 +163,12 @@ object ClassFeat extends Enum[ClassFeat] with FeatSearchPrefix {
   case object InspireHeroics extends ClassFeat with InspireHeroics
 
   case object MassSuggestion extends ClassFeat with MassSuggestion
+
   // Barbarian Feats
   case object DismissRage extends ClassFeat with DismissRage
 
   case object FastMovementBarbarian
-      extends ClassFeat
+    extends ClassFeat
       with FastMovementBarbarian
 
   case object GreaterRage extends ClassFeat with GreaterRage
@@ -189,7 +195,7 @@ object ClassFeat extends Enum[ClassFeat] with FeatSearchPrefix {
   case object CallWolfCompanion extends ClassFeat with CallWolfCompanion
 
   case object DruidSpontaneousCasting
-      extends ClassFeat
+    extends ClassFeat
       with DruidSpontaneousCasting {
     override protected def nameSource: String = "Spontaneous Casting"
   }
@@ -217,13 +223,13 @@ object ClassFeat extends Enum[ClassFeat] with FeatSearchPrefix {
   }
 
   case object WildShapeFireElemental
-      extends ClassFeat
+    extends ClassFeat
       with WildShapeFireElemental {
     override protected def nameSource: String = "Fire Elemental"
   }
 
   case object WildShapeWaterElemental
-      extends ClassFeat
+    extends ClassFeat
       with WildShapeWaterElemental {
     override protected def nameSource: String = "Water Elemental"
   }
@@ -240,13 +246,13 @@ object ClassFeat extends Enum[ClassFeat] with FeatSearchPrefix {
   case object EnergyResistanceCold extends ClassFeat with EnergyResistanceCold
 
   case object EnergyResistanceElectricity
-      extends ClassFeat
+    extends ClassFeat
       with EnergyResistanceElectricity
 
   case object EnergyResistanceFire extends ClassFeat with EnergyResistanceFire
 
   case object EnergyResistanceSonic
-      extends ClassFeat
+    extends ClassFeat
       with EnergyResistanceSonic
 
   // Monk Class Feats
@@ -267,11 +273,11 @@ object ClassFeat extends Enum[ClassFeat] with FeatSearchPrefix {
   case object StillMind extends ClassFeat with StillMind
 
   case object PathOfHarmoniousBalance
-      extends ClassFeat
+    extends ClassFeat
       with PathOfHarmoniousBalance
 
   case object PathOfInevitableDominion
-      extends ClassFeat
+    extends ClassFeat
       with PathOfInevitableDominion
 
   case object KiStrikeMagic extends ClassFeat with KiStrikeMagic
@@ -310,7 +316,7 @@ object ClassFeat extends Enum[ClassFeat] with FeatSearchPrefix {
 
   case object ShiningStar extends ClassFeat with ShiningStar
 
-  //Paladin Class Feats
+  // Paladin Class Feats
   case object AuraOfGood extends ClassFeat with AuraOfGood
 
   case object AuraOfCourage extends ClassFeat with AuraOfCourage
@@ -339,7 +345,7 @@ object ClassFeat extends Enum[ClassFeat] with FeatSearchPrefix {
 
   case object SlipperyMind extends ClassFeat with SlipperyMind
 
-  //Warlock Class Feats
+  // Warlock Class Feats
   case object EldritchBlastFocused extends ClassFeat with EldritchBlastFocused
 
   case object EldritchBlastDamage extends ClassFeat with EldritchBlastDamage
@@ -380,18 +386,14 @@ object ClassFeat extends Enum[ClassFeat] with FeatSearchPrefix {
 
   case object CreateThrall extends ClassFeat with CreateThrall
 
-  object ConstructEssence
-      extends ClassFeat
-      with FeatRequisiteImpl
-      with RaceRequisiteImpl
+  case object ConstructEssence
+    extends ClassFeat
       with ConstructEssence
 
-  object ImprovedConstructEssence
-      extends ClassFeat
+  case object ImprovedConstructEssence
+    extends ClassFeat
       with FeatRequisiteImpl
       with RaceRequisiteImpl
       with ImprovedConstructEssence
-
-  override lazy val values = findValues
 
 }

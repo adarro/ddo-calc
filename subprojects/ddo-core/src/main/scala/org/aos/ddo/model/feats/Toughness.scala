@@ -25,6 +25,9 @@ import org.aos.ddo.support.requisite.{FeatRequisiteImpl, FreeFeat}
   * *
   * None
   **/
-protected[feats] trait Toughness extends FeatRequisiteImpl with Passive with FreeFeat {
+protected[feats] trait Toughness extends FeatRequisiteImpl
+  with Passive
+  with FreeFeat
+  with MartialArtsFeat {
   self: GeneralFeat =>
 }

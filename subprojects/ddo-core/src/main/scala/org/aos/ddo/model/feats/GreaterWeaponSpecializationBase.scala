@@ -34,10 +34,12 @@ import org.aos.ddo.support.requisite.{
   *       Weapon Specialization in same Weapon Type
   **/
 protected[feats] trait GreaterWeaponSpecializationBase
-    extends FeatRequisiteImpl
+  extends FeatRequisiteImpl
     with ClassRequisiteImpl
     with Passive
-    with RequiresAllOfClass { self: GeneralFeat with RequiresAllOfFeat =>
+    with RequiresAllOfClass
+    with FighterBonusFeat {
+  self: GeneralFeat with RequiresAllOfFeat =>
 
   override def allOfClass: Seq[(CharacterClass, Int)] =
     List((CharacterClass.Fighter, 12))

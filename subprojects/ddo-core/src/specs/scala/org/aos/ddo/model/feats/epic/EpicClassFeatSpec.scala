@@ -20,12 +20,10 @@ package org.aos.ddo.model.feats.epic
 import java.util
 
 import com.typesafe.scalalogging.LazyLogging
+import enumeratum.{Enum, EnumEntry}
 import org.aos.ddo.model.classes.CharacterClass
-import org.aos.ddo.model.feats.{
-  ClassDisplayHelper,
-  ClassRestricted,
-  EpicFeatDisplayHelper
-}
+import org.aos.ddo.model.feats.{ClassDisplayHelper, ClassRestricted, EpicFeatDisplayHelper, SubFeatInformation}
+import org.aos.ddo.support.naming.FriendlyDisplay
 import org.aos.ddo.support.requisite.ClassRequisite
 import org.concordion.integration.junit4.ConcordionRunner
 import org.junit.runner.RunWith
@@ -34,9 +32,24 @@ import scala.collection.JavaConverters._
 
 @RunWith(classOf[ConcordionRunner])
 class EpicClassFeatSpec
-    extends ClassDisplayHelper
-    with EpicFeatDisplayHelper
-    with LazyLogging {
+  extends LazyLogging {
+  type Entry = EnumEntry with SubFeatInformation with FriendlyDisplay
+  type E = Enum[_ <: Entry]
+  type CharClass = Option[CharacterClass]
+  type EpicClassHelper = ClassDisplayHelper with EpicFeatDisplayHelper
+
+  //  override val cClass: CharacterClass =
+  //    instanceClass.getOrElse(CharacterClass.Artificer)
+  //  override val filterByCategory: PartialFunction[Entry, Entry] = {
+  //    case x: ClassRestricted => x
+  //  }
+
+  val helperMap: scala.collection.mutable.HashMap[CharClass, EpicClassHelper] = scala.collection.mutable.HashMap.empty
+  val filterByAnyOfs: PartialFunction[Entry, Entry] = {
+    case x: ClassRequisite if x.anyOfClass.exists(findHelper.isDefinedForClass(_)) => x
+  }
+  private var instanceClass: Option[CharacterClass] = None
+
   def setUpClass(classId: String): Unit = {
     logger.info(s"classId $classId")
     val result = CharacterClass.namesToValuesMap
@@ -45,29 +58,42 @@ class EpicClassFeatSpec
       .headOption
     logger.info(s"classId $classId Set instance to $result")
     instanceClass = result
+
   }
 
- private var instanceClass: Option[CharacterClass] = None
-
-  override def cClass: CharacterClass =
-    instanceClass.getOrElse(CharacterClass.Artificer)
-
-  val filterByAnyOfs: PartialFunction[Entry, Entry] = {
-    case x: ClassRequisite if x.anyOfClass.exists(isDefinedForClass(_)) => x
-  }
-
-  override val filterByCategory: PartialFunction[Entry, Entry] = {
-    case x: ClassRestricted => x
-  }
-
-  override def verify(): util.List[String] = {
+  def verify(): util.List[String] = {
     logger.info(s"Verify instance $instanceClass")
+    val h = findHelper
 
-    val y: Seq[Entry] = enum.values collect existing
+    val y: Seq[Entry] = h.enum.values collect h.existing
     logger.info(s"count from existing ${y.size}")
-    val z = y collect filterByCategory
+    val z = y collect h.filterByCategory
     logger.info(s"count from filterByCategory ${z.size}")
     z.map(_.displayText).asJava
+  }
+
+  def findHelper(implicit charClass: CharClass = instanceClass): EpicClassHelper = {
+    helperMap.getOrElseUpdate(charClass, makeHelper(charClass))
+  }
+
+  def makeHelper(clazz: CharClass): EpicClassHelper = {
+    new ClassDisplayHelper with EpicFeatDisplayHelper {
+      override val cClass: CharacterClass =
+        instanceClass.getOrElse(CharacterClass.Artificer)
+      override val filterByCategory: PartialFunction[Entry, Entry] = {
+        case x: ClassRestricted => x
+      }
+
+      override def verify(): util.List[String] = {
+        logger.info(s"Verify instance $instanceClass")
+
+        val y: Seq[Entry] = enum.values collect existing
+        logger.info(s"count from existing ${y.size}")
+        val z = y collect filterByCategory
+        logger.info(s"count from filterByCategory ${z.size}")
+        z.map(_.displayText).asJava
+      }
+    }
   }
 
 }

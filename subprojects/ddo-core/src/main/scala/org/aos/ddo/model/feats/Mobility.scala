@@ -26,7 +26,11 @@ import org.aos.ddo.support.requisite.{FeatRequisiteImpl, RequiresAllOfFeat}
   * You will also gain a 2% dodge bonus.
   * Dodge
   */
-trait Mobility extends FeatRequisiteImpl with Passive with RequiresAllOfFeat {
+trait Mobility extends FeatRequisiteImpl
+  with Passive
+  with RequiresAllOfFeat
+  with MartialArtsFeat
+  with FighterBonusFeat {
   self: GeneralFeat =>
   override def allOfFeats: Seq[GeneralFeat] = List(GeneralFeat.Dodge)
 }

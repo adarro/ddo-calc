@@ -24,7 +24,7 @@ import org.aos.ddo.support.requisite.{FeatRequisiteImpl, RequiresAllOfFeat}
   * Special Attack - Activate this ability to attack one or more enemies in an arc in front of you. This attack deals +1[W] damage.
   * Cleave has a better chance to hit more enemies at once than a basic attack.
   */
-protected[feats] trait Cleave extends FeatRequisiteImpl with  Active with RequiresAllOfFeat {
+protected[feats] trait Cleave extends FeatRequisiteImpl with  Active with RequiresAllOfFeat with FighterBonusFeat {
   self: GeneralFeat =>
   override val allOfFeats = List(GeneralFeat.PowerAttack)
   override lazy val anyOfFeats: Seq[GeneralFeat] = IndexedSeq.apply()

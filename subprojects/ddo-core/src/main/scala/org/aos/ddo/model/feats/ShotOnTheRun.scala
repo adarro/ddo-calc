@@ -32,11 +32,14 @@ import org.aos.ddo.support.requisite.{
   * Dexterity 13, Base Attack Bonus 4+
   * */
 protected[feats] trait ShotOnTheRun
-    extends FeatRequisiteImpl
+  extends FeatRequisiteImpl
     with Passive
     with RequiresAllOfFeat
     with RequiresAttribute
-    with RequiresBaB { self: GeneralFeat =>
+    with RequiresBaB
+    with FighterBonusFeat
+    with ArtificerBonusFeat {
+  self: GeneralFeat =>
   override def requiresAttribute: Seq[(Attribute, Int)] =
     List((Attribute.Dexterity, 13))
 

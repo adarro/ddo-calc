@@ -21,13 +21,19 @@ import org.aos.ddo.model.classes.CharacterClass
 import org.aos.ddo.model.classes.CharacterClass.Artificer
 import org.aos.ddo.model.race.Race
 import org.aos.ddo.model.race.Race.Warforged
-import org.aos.ddo.support.requisite.{RequiresAllOfClass, RequiresNoneOfRace}
+import org.aos.ddo.support.requisite.{FeatRequisiteImpl, RaceRequisiteImpl, RequiresAllOfClass, RequiresNoneOfRace}
 
 /**
   * Created by adarr on 4/5/2017.
   */
-trait ConstructEssence extends Passive with RequiresAllOfClass with RequiresNoneOfRace {
-  override def noneOfRace: Seq[(Race, Int)] = List((Warforged,1))
+protected[feats] trait ConstructEssence extends FeatRequisiteImpl
+  with RaceRequisiteImpl
+  with RequiresAllOfClass
+  with RequiresNoneOfRace
+  with ArtificerBonusFeat
+  with Passive {
+  self: ClassFeat =>
+  override def noneOfRace: Seq[(Race, Int)] = List((Warforged, 1))
 
-  override def allOfClass: Seq[(CharacterClass, Int)] = List((Artificer,3))
+  override def allOfClass: Seq[(CharacterClass, Int)] = List((Artificer, 3))
 }

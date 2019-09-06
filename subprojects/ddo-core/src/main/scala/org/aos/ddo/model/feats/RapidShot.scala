@@ -28,15 +28,18 @@ import org.aos.ddo.support.requisite._
   * *
   * Point Blank Shot
   * Dexterity 13,
+  *
   * @todo Should we move this to a Class Feat due to the Auto grant to Rangers
   */
 protected[feats] trait RapidShot
-    extends FeatRequisiteImpl
+  extends FeatRequisiteImpl
     with ClassRequisiteImpl
     with Passive
     with RequiresAllOfFeat
     with RequiresAttribute
-    with GrantsToClass { self: GeneralFeat =>
+    with GrantsToClass
+    with ArtificerBonusFeat {
+  self: GeneralFeat =>
   override def grantToClass: Seq[(CharacterClass, Int)] = List((Ranger, 2))
 
   override def requiresAttribute: Seq[(Attribute, Int)] =

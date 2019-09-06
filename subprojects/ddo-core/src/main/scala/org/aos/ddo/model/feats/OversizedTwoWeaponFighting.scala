@@ -28,7 +28,11 @@ import org.aos.ddo.support.requisite.{FeatRequisiteImpl, RequiresAllOfFeat, Requ
   * Two Weapon Fighting
   * Strength 12
   * */
-trait OversizedTwoWeaponFighting extends FeatRequisiteImpl with Passive with RequiresAllOfFeat with RequiresAttribute {
+trait OversizedTwoWeaponFighting extends FeatRequisiteImpl
+  with Passive
+  with RequiresAllOfFeat
+  with RequiresAttribute
+  with FighterBonusFeat {
   self: GeneralFeat =>
   override def requiresAttribute: Seq[(Attribute, Int)] = List((Attribute.Strength, 12))
 

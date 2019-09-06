@@ -30,25 +30,28 @@ import org.aos.ddo.support.requisite._
   * MustContainAtLeastOne of: Proficiency: Shuriken or
   * Half-Elf Dilettante: Monk AND Dex 13
   * Or: Drow
-  * @todo  Apply multi-conditional logic dor Shuriken Expertise
-  * */
+  *
+  * @todo Apply multi-conditional logic dor Shuriken Expertise
+  **/
 protected[feats] trait ShurikenExpertise
-    extends FeatRequisiteImpl
-      with RaceRequisiteImpl
-      with Passive
+  extends FeatRequisiteImpl
+    with RaceRequisiteImpl
+    with Passive
     with RequiresAttribute
-    with RequiresAnyOfFeat { self: GeneralFeat =>
+    with RequiresAnyOfFeat
+    with MartialArtsFeat {
+  self: GeneralFeat =>
   override def requiresAttribute: Seq[(Attribute, Int)] =
     List((Attribute.Dexterity, 13))
 
-  private def exotic = GeneralFeat.exoticWeaponProficiencies collect {
-    case x: ExoticWeaponProficiency
-        if x.weapon.headOption.contains(WeaponCategory.Shuriken) =>
-      x
-  }
-
   override def anyOfFeats: Seq[Feat] =
     exotic :+ RacialFeat.HalfElfDilettanteMonk
+
+  private def exotic = GeneralFeat.exoticWeaponProficiencies collect {
+    case x: ExoticWeaponProficiency
+      if x.weapon.headOption.contains(WeaponCategory.Shuriken) =>
+      x
+  }
 
   override def grantsToRace: Seq[(Race, Int)] = List((Race.DrowElf, 1))
 }

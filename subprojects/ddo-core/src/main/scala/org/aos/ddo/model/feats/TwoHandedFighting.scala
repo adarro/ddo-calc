@@ -29,7 +29,12 @@ import org.aos.ddo.support.requisite.{FeatRequisiteImpl, RequiresAttribute}
   *
   * Strength 15
   **/
-trait TwoHandedFighting extends FeatRequisiteImpl with Passive with RequiresAttribute {
+trait TwoHandedFighting extends FeatRequisiteImpl
+  with Passive
+  with RequiresAttribute
+  with FighterBonusFeat
+  with MartialArtsFeat
+  with ArtificerBonusFeat {
   self: GeneralFeat =>
   override def requiresAttribute: Seq[(Attribute, Int)] = List((Attribute.Strength, 15))
 }

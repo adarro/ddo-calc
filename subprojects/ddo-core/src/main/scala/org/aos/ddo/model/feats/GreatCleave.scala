@@ -31,7 +31,11 @@ import org.aos.ddo.support.requisite._
   * @todo Flag Toggled Stance
   *
   */
-trait GreatCleave extends  FeatRequisiteImpl with Active with RequiresAllOfFeat with RequiresBaB {
+trait GreatCleave extends FeatRequisiteImpl
+  with Active
+  with RequiresAllOfFeat
+  with RequiresBaB
+  with FighterBonusFeat {
   self: GeneralFeat =>
   override val allOfFeats = List(GeneralFeat.Cleave)
 

@@ -29,13 +29,15 @@ import org.aos.ddo.support.requisite.{
   * Weapon Specialization
   * Passive
   * Provides a +2 bonus to damage rolls with the chosen weapon type and +2 stacking Melee Power or Ranged Power.
-  *     This feat can be taken multiple times, once for each weapon type.
+  * This feat can be taken multiple times, once for each weapon type.
   */
 protected[feats] trait WeaponSpecializationBase
-    extends FeatRequisiteImpl
+  extends FeatRequisiteImpl
     with ClassRequisiteImpl
     with Passive
-    with RequiresAllOfClass { self: GeneralFeat =>
+    with RequiresAllOfClass
+    with FighterBonusFeat {
+  self: GeneralFeat =>
 
   override def allOfClass: Seq[(CharacterClass, Int)] =
     List((CharacterClass.Fighter, 4))

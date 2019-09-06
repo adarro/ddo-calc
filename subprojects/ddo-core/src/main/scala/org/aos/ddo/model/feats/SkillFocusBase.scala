@@ -24,6 +24,9 @@ import org.aos.ddo.support.requisite.{FeatRequisiteImpl, FreeFeat}
   * *
   * None
   */
-protected[feats] trait SkillFocusBase extends FeatRequisiteImpl with Passive with FreeFeat {
+protected[feats] trait SkillFocusBase extends FeatRequisiteImpl
+  with Passive
+  with FreeFeat
+  with ArtificerBonusFeat {
   self: GeneralFeat =>
 }

@@ -25,7 +25,9 @@ import org.aos.ddo.support.requisite.{FeatRequisiteImpl, RequiresAnyOfClass}
   */
 trait MaximizeSpell extends FeatRequisiteImpl
   with MetaMagic
-  with RequiresAnyOfClass { self: MetaMagicFeat =>
+  with RequiresAnyOfClass
+  with ArtificerBonusFeat {
+  self: MetaMagicFeat =>
   override def anyOfClass: Seq[(CharacterClass, Int)] =
     MetaMagicFeat.minimumSpellCastingClass
 }

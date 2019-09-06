@@ -24,6 +24,9 @@ import org.aos.ddo.support.requisite.{FeatRequisiteImpl, FreeFeat}
   * *
   * None
   */
-trait LightningReflexes extends FeatRequisiteImpl with Passive with FreeFeat {
+trait LightningReflexes extends FeatRequisiteImpl
+  with Passive
+  with FreeFeat
+  with MartialArtsFeat {
   self: GeneralFeat =>
 }

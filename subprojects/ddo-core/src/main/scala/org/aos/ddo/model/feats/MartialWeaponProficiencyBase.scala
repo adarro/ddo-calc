@@ -27,10 +27,11 @@ import org.aos.ddo.support.requisite._
   * Prerequisites None
   */
 protected[feats] trait MartialWeaponProficiencyBase
-    extends FeatRequisiteImpl
+  extends FeatRequisiteImpl
     with RaceRequisite
     with ClassRequisiteImpl
     with MartialWeapon
     with Passive
-    with FreeFeat
-    with WeaponProficiencyBase
+    with FreeFeat {
+  self: Feat =>
+}

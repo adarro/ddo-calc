@@ -40,11 +40,14 @@ import scala.collection.immutable
   * Point Blank Shot
   */
 trait PreciseShot
-    extends FeatRequisiteImpl
+  extends FeatRequisiteImpl
     with ClassRequisiteImpl
     with Passive
     with RequiresAllOfFeat
-    with GrantsToClass { self: GeneralFeat =>
+    with GrantsToClass
+    with FighterBonusFeat
+    with ArtificerBonusFeat {
+  self: GeneralFeat =>
   override def grantToClass: Seq[(CharacterClass, Int)] = List((Ranger, 4))
 
   override def allOfFeats: immutable.Seq[Feat] =

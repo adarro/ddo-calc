@@ -17,7 +17,7 @@
  */
 package org.aos.ddo.model.feats
 
-import org.aos.ddo.model.classes.CharacterClass
+import org.aos.ddo.model.classes.HeroicCharacterClass
 import org.aos.ddo.support.requisite.{FeatRequisiteImpl, RequiresAnyOfClass}
 
 /**
@@ -30,15 +30,15 @@ trait HeightenSpell extends FeatRequisiteImpl
   with RequiresAnyOfClass
   with ArtificerBonusFeat {
   self: MetaMagicFeat =>
-  override def anyOfClass: Seq[(CharacterClass, Int)] =
-    List((CharacterClass.Artificer, 4),
-      (CharacterClass.Bard, 4),
-      (CharacterClass.Cleric, 3),
-      (CharacterClass.Druid, 1),
-      (CharacterClass.FavoredSoul, 4),
-      (CharacterClass.Sorcerer, 4),
-      (CharacterClass.Warlock, 4),
-      (CharacterClass.Wizard, 3),
-      (CharacterClass.Paladin, 8),
-      (CharacterClass.Ranger, 8))
+  override def anyOfClass: Seq[(HeroicCharacterClass, Int)] =
+    List((HeroicCharacterClass.Artificer, 4),
+      (HeroicCharacterClass.Bard, 4),
+      (HeroicCharacterClass.Cleric, 3),
+      (HeroicCharacterClass.Druid, 1),
+      (HeroicCharacterClass.FavoredSoul, 4),
+      (HeroicCharacterClass.Sorcerer, 4),
+      (HeroicCharacterClass.Warlock, 4),
+      (HeroicCharacterClass.Wizard, 3),
+      (HeroicCharacterClass.Paladin, 8),
+      (HeroicCharacterClass.Ranger, 8))
 }

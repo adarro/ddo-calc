@@ -17,8 +17,8 @@
  */
 package org.aos.ddo.model.feats
 
-import org.aos.ddo.model.classes.CharacterClass
-import org.aos.ddo.model.classes.CharacterClass.Druid
+import org.aos.ddo.model.classes.HeroicCharacterClass
+import org.aos.ddo.model.classes.HeroicCharacterClass.Druid
 import org.aos.ddo.support.requisite.{GrantsToClass, RequiresAllOfClass}
 
 /**
@@ -28,8 +28,8 @@ trait WildShapeWaterElemental
   extends WildShape
       with GrantsToClass
       with RequiresAllOfClass {
-    override def grantToClass: Seq[(CharacterClass, Int)] =
+    override def grantToClass: Seq[(HeroicCharacterClass, Int)] =
       List((Druid, 13), (Druid, 17))
 
-    override def allOfClass: Seq[(CharacterClass, Int)] = List((Druid, 13))
+    override def allOfClass: Seq[(HeroicCharacterClass, Int)] = List((Druid, 13))
   }

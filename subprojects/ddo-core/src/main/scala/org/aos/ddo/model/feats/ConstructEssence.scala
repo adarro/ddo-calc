@@ -17,8 +17,8 @@
  */
 package org.aos.ddo.model.feats
 
-import org.aos.ddo.model.classes.CharacterClass
-import org.aos.ddo.model.classes.CharacterClass.Artificer
+import org.aos.ddo.model.classes.HeroicCharacterClass
+import org.aos.ddo.model.classes.HeroicCharacterClass.Artificer
 import org.aos.ddo.model.race.Race
 import org.aos.ddo.model.race.Race.Warforged
 import org.aos.ddo.support.requisite.{FeatRequisiteImpl, RaceRequisiteImpl, RequiresAllOfClass, RequiresNoneOfRace}
@@ -35,5 +35,5 @@ protected[feats] trait ConstructEssence extends FeatRequisiteImpl
   self: ClassFeat =>
   override def noneOfRace: Seq[(Race, Int)] = List((Warforged, 1))
 
-  override def allOfClass: Seq[(CharacterClass, Int)] = List((Artificer, 3))
+  override def allOfClass: Seq[(HeroicCharacterClass, Int)] = List((Artificer, 3))
 }

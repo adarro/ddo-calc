@@ -17,19 +17,19 @@
  */
 package org.aos.ddo.model.feats
 
-import org.aos.ddo.model.classes.CharacterClass
+import org.aos.ddo.model.classes.HeroicCharacterClass
 import org.aos.ddo.support.requisite.{Inclusion, Requisite, SelectableToClass}
 
 trait ArtificerBonusFeat  extends SelectableToClass with BonusSelectableFeatImpl {
   self: Feat with FeatType with Requisite with Inclusion =>
-  private[this] val myCharClass: CharacterClass = CharacterClass.Artificer
+  private[this] val myCharClass: HeroicCharacterClass = HeroicCharacterClass.Artificer
   override val levels: Set[Int] = Set(1) ++ (4 to 20 by 4).toSet
-  abstract override def bonusCharacterClass: Seq[CharacterClass] = super.bonusCharacterClass :+ myCharClass
+  abstract override def bonusCharacterClass: Seq[HeroicCharacterClass] = super.bonusCharacterClass :+ myCharClass
 
 
-  abstract override def bonusSelectableToClass: Seq[(CharacterClass, Int)] = {
+  abstract override def bonusSelectableToClass: Seq[(HeroicCharacterClass, Int)] = {
 
-    val cc: Set[(CharacterClass, Int)] = for {l <- levels} yield (myCharClass, l)
+    val cc: Set[(HeroicCharacterClass, Int)] = for {l <- levels} yield (myCharClass, l)
     super.bonusSelectableToClass ++ cc.toSeq
 
   }

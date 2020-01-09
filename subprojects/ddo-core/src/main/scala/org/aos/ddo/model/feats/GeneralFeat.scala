@@ -19,8 +19,8 @@ package org.aos.ddo.model.feats
 
 import com.typesafe.scalalogging.LazyLogging
 import enumeratum.Enum
-import org.aos.ddo.model.classes.CharacterClass
-import org.aos.ddo.model.classes.CharacterClass.Bard
+import org.aos.ddo.model.classes.HeroicCharacterClass
+import org.aos.ddo.model.classes.HeroicCharacterClass.Bard
 import org.aos.ddo.model.item.weapon._
 import org.aos.ddo.model.item.weapon.WeaponCategory.{Longsword, Rapier, Shortbow, Shortsword}
 import org.aos.ddo.model.race.Race
@@ -121,15 +121,15 @@ object GeneralFeat
     } yield SimpleWeaponProficiency(cl, wc)
 
   def classSimpleWeaponGrants(wc: WeaponCategory with SimpleWeapon)
-  : Iterable[List[(CharacterClass, Int)]] = {
-    val autoGrant = List(CharacterClass.Barbarian,
-      CharacterClass.Fighter,
-      CharacterClass.Paladin,
-      CharacterClass.Ranger,
-      CharacterClass.Bard).map((_, 1))
+  : Iterable[List[(HeroicCharacterClass, Int)]] = {
+    val autoGrant = List(HeroicCharacterClass.Barbarian,
+      HeroicCharacterClass.Fighter,
+      HeroicCharacterClass.Paladin,
+      HeroicCharacterClass.Ranger,
+      HeroicCharacterClass.Bard).map((_, 1))
 
     val weaponGrants
-    : Map[WeaponCategory with SimpleWeapon, List[(CharacterClass, Int)]] =
+    : Map[WeaponCategory with SimpleWeapon, List[(HeroicCharacterClass, Int)]] =
       WeaponCategory.simpleWeapons.map(_ -> autoGrant).toMap
     weaponGrants.filter(_._1.eq(wc)).values
   }
@@ -143,22 +143,22 @@ object GeneralFeat
   }
 
   def classMartialWeaponGrants(wc: WeaponCategory with MartialWeapon)
-  : Iterable[List[(CharacterClass, Int)]] = {
-    val autoGrant = List(CharacterClass.Barbarian,
-      CharacterClass.Fighter,
-      CharacterClass.Paladin,
-      CharacterClass.Ranger).map((_, 1))
+  : Iterable[List[(HeroicCharacterClass, Int)]] = {
+    val autoGrant = List(HeroicCharacterClass.Barbarian,
+      HeroicCharacterClass.Fighter,
+      HeroicCharacterClass.Paladin,
+      HeroicCharacterClass.Ranger).map((_, 1))
     val bardWeapons
-    : Map[WeaponCategory with MartialWeapon, List[(CharacterClass, Int)]] =
+    : Map[WeaponCategory with MartialWeapon, List[(HeroicCharacterClass, Int)]] =
       List(Longsword, Rapier, Shortsword, Shortbow)
         .map(_ -> List((Bard, 1)))
         .toMap
     val weaponGrants
-    : Map[WeaponCategory with MartialWeapon, List[(CharacterClass, Int)]] =
+    : Map[WeaponCategory with MartialWeapon, List[(HeroicCharacterClass, Int)]] =
       WeaponCategory.martialWeapons.map(_ -> autoGrant).toMap
 
     val unfiltered
-    : Set[(WeaponCategory with MartialWeapon, List[(CharacterClass, Int)])] =
+    : Set[(WeaponCategory with MartialWeapon, List[(HeroicCharacterClass, Int)])] =
       for {
         k <- weaponGrants.keySet
         x = for {
@@ -373,7 +373,7 @@ object GeneralFeat
     * Druids are also proficient with the Martial class Scimitar.
     */
   case class SimpleWeaponProficiency(
-                                      override val grantToClass: Seq[(CharacterClass, Int)],
+                                      override val grantToClass: Seq[(HeroicCharacterClass, Int)],
                                       weapon: WeaponCategory with SimpleWeapon*)
     extends GeneralFeat
       with SimpleWeaponProficiencyBase
@@ -396,7 +396,7 @@ object GeneralFeat
 
   case class MartialWeaponProficiency(
                                        override val grantsToRace: Seq[(Race, Int)],
-                                       override val grantToClass: Seq[(CharacterClass, Int)],
+                                       override val grantToClass: Seq[(HeroicCharacterClass, Int)],
                                        weapon: WeaponCategory with MartialWeapon*)
     extends GeneralFeat
       with RaceRequisiteImpl

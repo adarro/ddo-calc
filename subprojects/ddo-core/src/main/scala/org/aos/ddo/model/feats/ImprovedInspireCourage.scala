@@ -17,8 +17,8 @@
  */
 package org.aos.ddo.model.feats
 
-import org.aos.ddo.model.classes.CharacterClass
-import org.aos.ddo.model.classes.CharacterClass.Bard
+import org.aos.ddo.model.classes.HeroicCharacterClass
+import org.aos.ddo.model.classes.HeroicCharacterClass.Bard
 import org.aos.ddo.model.skill.Skill
 import org.aos.ddo.support.requisite._
 
@@ -32,10 +32,10 @@ protected[feats] trait ImprovedInspireCourage
     with RequiresAllOfClass
       with GrantsToClass
     with Active {
-  override def allOfClass: Seq[(CharacterClass, Int)] =
-    List((CharacterClass.Bard, 8))
+  override def allOfClass: Seq[(HeroicCharacterClass, Int)] =
+    List((HeroicCharacterClass.Bard, 8))
 
-  override def grantToClass: Seq[(CharacterClass, Int)] = List(8,14,20).map((Bard,_))
+  override def grantToClass: Seq[(HeroicCharacterClass, Int)] = List(8,14,20).map((Bard,_))
 
   override def allOfSkill: Seq[(Skill, Int)] = List((Skill.Perform, 3))
 }

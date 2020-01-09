@@ -17,8 +17,8 @@
  */
 package org.aos.ddo.model.feats
 
-import org.aos.ddo.model.classes.CharacterClass
-import org.aos.ddo.model.classes.CharacterClass.Monk
+import org.aos.ddo.model.classes.HeroicCharacterClass
+import org.aos.ddo.model.classes.HeroicCharacterClass.Monk
 import org.aos.ddo.support.requisite.{FeatRequisiteImpl, GrantsToClass, RequiresAllOfClass}
 
 /**
@@ -34,6 +34,6 @@ protected[feats] trait KiStrikeLawful
 
   override protected def nameSource: String = "Lawful"
 
-  override def grantToClass: Seq[(CharacterClass, Int)] = List((Monk, 10))
-  override def allOfClass: Seq[(CharacterClass, Int)] = List((Monk, 10))
+  override def grantToClass: Seq[(HeroicCharacterClass, Int)] = List((Monk, 10))
+  override def allOfClass: Seq[(HeroicCharacterClass, Int)] = List((Monk, 10))
 }

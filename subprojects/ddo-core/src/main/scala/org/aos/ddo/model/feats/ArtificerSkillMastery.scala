@@ -17,8 +17,8 @@
  */
 package org.aos.ddo.model.feats
 
-import org.aos.ddo.model.classes.CharacterClass
-import org.aos.ddo.model.classes.CharacterClass.Artificer
+import org.aos.ddo.model.classes.HeroicCharacterClass
+import org.aos.ddo.model.classes.HeroicCharacterClass.Artificer
 import org.aos.ddo.support.requisite.{FeatRequisiteImpl, GrantsToClass, RequiresAllOfClass}
 
 /**
@@ -29,6 +29,6 @@ protected[feats] trait ArtificerSkillMastery
     with Passive
     with GrantsToClass
     with RequiresAllOfClass {
-  override def allOfClass: Seq[(CharacterClass, Int)] = List((Artificer, 13))
-  override def grantToClass: Seq[(CharacterClass, Int)] = List((Artificer, 13))
+  override def allOfClass: Seq[(HeroicCharacterClass, Int)] = List((Artificer, 13))
+  override def grantToClass: Seq[(HeroicCharacterClass, Int)] = List((Artificer, 13))
 }

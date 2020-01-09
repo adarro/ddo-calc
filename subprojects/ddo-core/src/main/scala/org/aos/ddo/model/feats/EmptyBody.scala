@@ -17,8 +17,8 @@
  */
 package org.aos.ddo.model.feats
 
-import org.aos.ddo.model.classes.CharacterClass
-import org.aos.ddo.model.classes.CharacterClass.Monk
+import org.aos.ddo.model.classes.HeroicCharacterClass
+import org.aos.ddo.model.classes.HeroicCharacterClass.Monk
 import org.aos.ddo.support.requisite.{FeatRequisiteImpl, GrantsToClass, RequiresAnyOfClass}
 
 /**
@@ -29,9 +29,9 @@ trait EmptyBody
     with Active
     with GrantsToClass
     with RequiresAnyOfClass {
-  override def grantToClass: Seq[(CharacterClass, Int)] =
+  override def grantToClass: Seq[(HeroicCharacterClass, Int)] =
     List((Monk, 19))
 
-  override def anyOfClass: Seq[(CharacterClass, Int)] =
+  override def anyOfClass: Seq[(HeroicCharacterClass, Int)] =
     List((Monk, 19))
 }

@@ -17,7 +17,7 @@
  */
 package org.aos.ddo.model.feats
 
-import org.aos.ddo.model.classes.CharacterClass
+import org.aos.ddo.model.classes.HeroicCharacterClass
 import org.aos.ddo.support.requisite.{FeatRequisiteImpl, FreeFeat, GrantsToClass}
 
 /**
@@ -40,16 +40,16 @@ protected[feats] trait WildernessLore
     with FreeFeat { self: ClassFeat =>
 
   private def bardLevels =
-    (1 to 20 by 2).toList.map((CharacterClass.Bard, _))
+    (1 to 20 by 2).toList.map((HeroicCharacterClass.Bard, _))
 
   private def allLevelsClasses =
     for {
-      c <- List(CharacterClass.Barbarian,
-                CharacterClass.Druid,
-                CharacterClass.Ranger)
+      c <- List(HeroicCharacterClass.Barbarian,
+                HeroicCharacterClass.Druid,
+                HeroicCharacterClass.Ranger)
       l <- 1 to 20
     } yield (c, l)
 
-  override def grantToClass: Seq[(CharacterClass, Int)] =
+  override def grantToClass: Seq[(HeroicCharacterClass, Int)] =
     allLevelsClasses.sortBy(_._1.entryName) ++ bardLevels
 }

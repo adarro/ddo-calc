@@ -21,7 +21,7 @@ import java.util
 
 import com.typesafe.scalalogging.LazyLogging
 import enumeratum.{Enum, EnumEntry}
-import org.aos.ddo.model.classes.CharacterClass
+import org.aos.ddo.model.classes.HeroicCharacterClass
 import org.aos.ddo.model.feats.{ClassDisplayHelper, ClassRestricted, EpicFeatDisplayHelper, SubFeatInformation}
 import org.aos.ddo.support.naming.FriendlyDisplay
 import org.aos.ddo.support.requisite.ClassRequisite
@@ -35,7 +35,7 @@ class EpicClassFeatSpec
   extends LazyLogging {
   type Entry = EnumEntry with SubFeatInformation with FriendlyDisplay
   type E = Enum[_ <: Entry]
-  type CharClass = Option[CharacterClass]
+  type CharClass = Option[HeroicCharacterClass]
   type EpicClassHelper = ClassDisplayHelper with EpicFeatDisplayHelper
 
   //  override val cClass: CharacterClass =
@@ -48,11 +48,11 @@ class EpicClassFeatSpec
   val filterByAnyOfs: PartialFunction[Entry, Entry] = {
     case x: ClassRequisite if x.anyOfClass.exists(findHelper.isDefinedForClass(_)) => x
   }
-  private var instanceClass: Option[CharacterClass] = None
+  private var instanceClass: Option[HeroicCharacterClass] = None
 
   def setUpClass(classId: String): Unit = {
     logger.info(s"classId $classId")
-    val result = CharacterClass.namesToValuesMap
+    val result = HeroicCharacterClass.namesToValuesMap
       .filterKeys(_ == classId)
       .values
       .headOption
@@ -78,8 +78,8 @@ class EpicClassFeatSpec
 
   def makeHelper(clazz: CharClass): EpicClassHelper = {
     new ClassDisplayHelper with EpicFeatDisplayHelper {
-      override val cClass: CharacterClass =
-        instanceClass.getOrElse(CharacterClass.Artificer)
+      override val cClass: HeroicCharacterClass =
+        instanceClass.getOrElse(HeroicCharacterClass.Artificer)
       override val filterByCategory: PartialFunction[Entry, Entry] = {
         case x: ClassRestricted => x
       }

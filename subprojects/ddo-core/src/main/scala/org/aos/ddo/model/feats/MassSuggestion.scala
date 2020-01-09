@@ -17,7 +17,7 @@
  */
 package org.aos.ddo.model.feats
 
-import org.aos.ddo.model.classes.CharacterClass
+import org.aos.ddo.model.classes.HeroicCharacterClass
 import org.aos.ddo.model.skill.Skill
 import org.aos.ddo.support.requisite._
 
@@ -31,10 +31,10 @@ protected[feats] trait MassSuggestion
     with RequiresAllOfClass
       with GrantsToClass
     with Active {
-  override def allOfClass: Seq[(CharacterClass, Int)] =
-    List((CharacterClass.Bard, 18))
+  override def allOfClass: Seq[(HeroicCharacterClass, Int)] =
+    List((HeroicCharacterClass.Bard, 18))
 
-  override def grantToClass: Seq[(CharacterClass, Int)] =  List((CharacterClass.Bard, 18))
+  override def grantToClass: Seq[(HeroicCharacterClass, Int)] =  List((HeroicCharacterClass.Bard, 18))
 
   override def allOfSkill: Seq[(Skill, Int)] = List((Skill.Perform, 21))
 }

@@ -17,8 +17,8 @@
  */
 package org.aos.ddo.model.feats
 
-import org.aos.ddo.model.classes.CharacterClass
-import org.aos.ddo.model.classes.CharacterClass.{Druid, Monk}
+import org.aos.ddo.model.classes.HeroicCharacterClass
+import org.aos.ddo.model.classes.HeroicCharacterClass.{Druid, Monk}
 import org.aos.ddo.support.requisite.{
   FeatRequisiteImpl,
   GrantsToClass,
@@ -33,9 +33,9 @@ trait TimelessBody
     with Passive
     with GrantsToClass
     with RequiresAnyOfClass {
-  override def grantToClass: Seq[(CharacterClass, Int)] =
+  override def grantToClass: Seq[(HeroicCharacterClass, Int)] =
     List((Druid, 15), (Monk, 17))
 
-  override def anyOfClass: Seq[(CharacterClass, Int)] =
+  override def anyOfClass: Seq[(HeroicCharacterClass, Int)] =
     List((Druid, 15), (Monk, 17))
 }

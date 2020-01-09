@@ -18,8 +18,8 @@
 package org.aos.ddo.model.feats
 
 import org.aos.ddo.model.attribute.Attribute
-import org.aos.ddo.model.classes.CharacterClass
-import org.aos.ddo.model.classes.CharacterClass.Ranger
+import org.aos.ddo.model.classes.HeroicCharacterClass
+import org.aos.ddo.model.classes.HeroicCharacterClass.Ranger
 import org.aos.ddo.support.requisite._
 
 /**
@@ -60,5 +60,5 @@ protected[feats] trait Manyshot
   override def requiresAttribute: Seq[(Attribute, Int)] =
     List((Attribute.Dexterity, 17))
 
-  override def grantToClass: Seq[(CharacterClass, Int)] = List((Ranger, 6))
+  override def grantToClass: Seq[(HeroicCharacterClass, Int)] = List((Ranger, 6))
 }

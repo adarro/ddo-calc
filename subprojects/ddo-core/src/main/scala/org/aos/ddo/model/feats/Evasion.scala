@@ -17,8 +17,8 @@
  */
 package org.aos.ddo.model.feats
 
-import org.aos.ddo.model.classes.CharacterClass
-import org.aos.ddo.model.classes.CharacterClass.{Monk, Ranger, Rogue}
+import org.aos.ddo.model.classes.HeroicCharacterClass
+import org.aos.ddo.model.classes.HeroicCharacterClass.{Monk, Ranger, Rogue}
 import org.aos.ddo.support.requisite.{FeatRequisiteImpl, FreeFeat, GrantsToClass}
 
 /**
@@ -29,7 +29,7 @@ trait Evasion
       with Passive
       with GrantsToClass
       with FreeFeat {
-    override def grantToClass: Seq[(CharacterClass, Int)] =
+    override def grantToClass: Seq[(HeroicCharacterClass, Int)] =
       List((Monk, 2),(Rogue, 2),(Ranger,9))
 
   }

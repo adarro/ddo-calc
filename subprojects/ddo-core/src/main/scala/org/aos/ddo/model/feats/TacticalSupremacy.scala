@@ -17,7 +17,7 @@
  */
 package org.aos.ddo.model.feats
 
-import org.aos.ddo.model.classes.CharacterClass
+import org.aos.ddo.model.classes.HeroicCharacterClass
 import org.aos.ddo.support.requisite.{
   ClassRequisiteImpl,
   FeatRequisiteImpl,
@@ -40,6 +40,6 @@ trait TacticalSupremacy
     with RequiresAllOfClass
     with FighterBonusFeat {
   self: GeneralFeat =>
-  override def allOfClass: Seq[(CharacterClass, Int)] =
-    List((CharacterClass.Fighter, 16))
+  override def allOfClass: Seq[(HeroicCharacterClass, Int)] =
+    List((HeroicCharacterClass.Fighter, 16))
 }

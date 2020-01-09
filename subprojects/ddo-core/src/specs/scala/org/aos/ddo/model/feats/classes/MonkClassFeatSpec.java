@@ -19,8 +19,8 @@ package org.aos.ddo.model.feats.classes;
 
 import enumeratum.Enum;
 import enumeratum.EnumEntry;
-import org.aos.ddo.model.classes.CharacterClass;
-import org.aos.ddo.model.classes.CharacterClass$;
+import org.aos.ddo.model.classes.HeroicCharacterClass;
+import org.aos.ddo.model.classes.HeroicCharacterClass$;
 import org.aos.ddo.model.feats.ClassDisplayHelper;
 import org.concordion.api.FullOGNL;
 import org.junit.runner.RunWith;

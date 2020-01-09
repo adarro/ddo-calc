@@ -17,8 +17,8 @@
  */
 package org.aos.ddo.model.feats
 
-import org.aos.ddo.model.classes.CharacterClass
-import org.aos.ddo.model.classes.CharacterClass.{Barbarian, Rogue}
+import org.aos.ddo.model.classes.HeroicCharacterClass
+import org.aos.ddo.model.classes.HeroicCharacterClass.{Barbarian, Rogue}
 import org.aos.ddo.support.TraverseOps.Crossable
 import org.aos.ddo.support.requisite._
 
@@ -41,7 +41,7 @@ protected[feats] trait UncannyDodge
   private lazy val grantedClasses = classMatrix.map((_, 4))
   private def rogueAndBarbMatrix = (classMatrix cross rogueAndBarbLevels).toSeq
 
-  override def grantToClass: Seq[(CharacterClass, Int)] = grantedClasses
+  override def grantToClass: Seq[(HeroicCharacterClass, Int)] = grantedClasses
 
-  override def anyOfClass: Seq[(CharacterClass, Int)] = grantedClasses
+  override def anyOfClass: Seq[(HeroicCharacterClass, Int)] = grantedClasses
 }

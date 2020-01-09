@@ -22,7 +22,7 @@ import enumeratum.{Enum, EnumEntry}
 import org.aos.ddo.Abbreviation
 import org.aos.ddo.model.alignment.{AlignmentType, Alignments, LawAxis, MoralAxis}
 import org.aos.ddo.model.attribute.Attribute
-import org.aos.ddo.model.classes.CharacterClass
+import org.aos.ddo.model.classes.HeroicCharacterClass
 import org.aos.ddo.model.favor.FavorPatron
 import org.aos.ddo.model.feats.Feat
 import org.aos.ddo.model.race.Race
@@ -44,7 +44,7 @@ sealed trait Requirement extends EnumEntry with DisplayName with Prefix {
 object Requirement extends Enum[Requirement] {
   private def races = Race.values map { x => ReqRace(x.entryName, 0) }
 
-  private def classes = CharacterClass.values map { x => ReqClass(x.entryName, 0) }
+  private def classes = HeroicCharacterClass.values map { x => ReqClass(x.entryName, 0) }
 
   private def alignments = Alignments.values.map { x => ReqAlignment(Right(x)) } ++
     LawAxis.values.map { x => ReqAlignment(Left(x)) } ++
@@ -117,7 +117,7 @@ object Requirement extends Enum[Requirement] {
     * @param level the minimum level for a class.
     */
   case class ReqClass(id: String, level: Int) extends Requirement {
-    override def prefix: Option[String] = Some(CharacterClass.searchPrefixSource)
+    override def prefix: Option[String] = Some(HeroicCharacterClass.searchPrefixSource)
 
     /**
       * @inheritdoc

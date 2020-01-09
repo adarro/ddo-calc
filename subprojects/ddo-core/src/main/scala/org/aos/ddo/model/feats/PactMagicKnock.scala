@@ -17,8 +17,8 @@
  */
 package org.aos.ddo.model.feats
 
-import org.aos.ddo.model.classes.CharacterClass
-import org.aos.ddo.model.classes.CharacterClass.Warlock
+import org.aos.ddo.model.classes.HeroicCharacterClass
+import org.aos.ddo.model.classes.HeroicCharacterClass.Warlock
 import org.aos.ddo.support.requisite.{FeatRequisiteImpl, GrantsToClass, RequiresAllOfClass, RequiresAllOfFeat}
 
 /**
@@ -32,7 +32,7 @@ protected[feats] trait PactMagicKnock
     with PactMagicPrefix with RequiresAllOfFeat { self: ClassFeat =>
   override protected def nameSource: String = "Knock"
 
-  override def grantToClass: Seq[(CharacterClass, Int)] = List((Warlock, 5))
+  override def grantToClass: Seq[(HeroicCharacterClass, Int)] = List((Warlock, 5))
 
   override def allOfFeats: Seq[Feat] = List(ClassFeat.PactGreatOldOne)
 }

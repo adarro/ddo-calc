@@ -20,7 +20,7 @@ package org.aos.ddo.model.feats
 import java.util
 
 import com.typesafe.scalalogging.LazyLogging
-import org.aos.ddo.model.classes.CharacterClass
+import org.aos.ddo.model.classes.HeroicCharacterClass
 import org.aos.ddo.support.requisite.{ClassRequisite, SelectableToClass}
 
 import scala.collection.JavaConverters._
@@ -30,9 +30,9 @@ import scala.collection.JavaConverters._
   */
 trait ClassDisplayHelper extends DisplayHelper with LazyLogging {
 
-  type FNLevel = Entry => Seq[(CharacterClass, Int)]
-  type FNClass = Entry => Seq[CharacterClass]
-  val cClass: CharacterClass
+  type FNLevel = Entry => Seq[(HeroicCharacterClass, Int)]
+  type FNClass = Entry => Seq[HeroicCharacterClass]
+  val cClass: HeroicCharacterClass
   lazy val classFeatByLevelMap: Seq[(String, Seq[Int])] = {
     val levels = for {
       f <- enum.values
@@ -88,7 +88,7 @@ trait ClassDisplayHelper extends DisplayHelper with LazyLogging {
   val existing
   : PartialFunction[Entry, Entry] = filterByAllOf orElse filterByAnyOf orElse filterByGrantedTo
 
-  def isDefinedForClass(e: (CharacterClass, Int),
+  def isDefinedForClass(e: (HeroicCharacterClass, Int),
                         level: Option[Int] = None): Boolean =
     e._1.eq(cClass) && isEqualOrEmpty(e._2, level)
 
@@ -103,19 +103,19 @@ trait ClassDisplayHelper extends DisplayHelper with LazyLogging {
       .filter(_._1.eq(cClass))
       .map(_._2)
 
-  def allOfFilterByLevel(as: Entry): Seq[(CharacterClass, Int)] = as match {
+  def allOfFilterByLevel(as: Entry): Seq[(HeroicCharacterClass, Int)] = as match {
     case x: ClassRequisite => x.allOfClass.filter(_._1.eq(cClass))
   }
 
-  def anyOfFilterByLevel(as: Entry): Seq[(CharacterClass, Int)] = as match {
+  def anyOfFilterByLevel(as: Entry): Seq[(HeroicCharacterClass, Int)] = as match {
     case x: ClassRequisite => x.anyOfClass.filter(_._1.eq(cClass))
   }
 
-  def grantToFilterByLevel(as: Entry): Seq[(CharacterClass, Int)] = as match {
+  def grantToFilterByLevel(as: Entry): Seq[(HeroicCharacterClass, Int)] = as match {
     case x: ClassRequisite => x.grantToClass.filter(_._1.eq(cClass))
   }
 
-  def extractLevels(as: Entry, fn: FNLevel*): Seq[(CharacterClass, Int)] =
+  def extractLevels(as: Entry, fn: FNLevel*): Seq[(HeroicCharacterClass, Int)] =
     fn.flatMap(f => f(as))
 
   def grantedFeatsByLevel(level: Int): util.List[String] = {

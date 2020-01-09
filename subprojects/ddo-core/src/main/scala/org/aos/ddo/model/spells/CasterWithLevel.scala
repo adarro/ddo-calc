@@ -17,10 +17,10 @@
  */
 package org.aos.ddo.model.spells
 
-import org.aos.ddo.model.classes.CharacterClass
+import org.aos.ddo.model.classes.HeroicCharacterClass
 
 trait CasterWithLevel {
-  def characterClass : CharacterClass
+  def characterClass : HeroicCharacterClass
   def level:Int
 }
 

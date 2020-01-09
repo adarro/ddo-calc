@@ -17,7 +17,7 @@
  */
 package org.aos.ddo.model.feats
 
-import org.aos.ddo.model.classes.CharacterClass
+import org.aos.ddo.model.classes.HeroicCharacterClass
 import org.junit.runner.RunWith
 import org.scalatest.{FunSpec, Matchers}
 import org.scalatest.junit.JUnitRunner
@@ -25,7 +25,7 @@ import org.scalatest.junit.JUnitRunner
 @RunWith(classOf[JUnitRunner])
 class BonusFeatTest extends FunSpec with Matchers {
   val helper = new ClassDisplayHelper {
-    override val cClass: CharacterClass = CharacterClass.Monk
+    override val cClass: HeroicCharacterClass = HeroicCharacterClass.Monk
 
     override val enum: E = Feat
   }

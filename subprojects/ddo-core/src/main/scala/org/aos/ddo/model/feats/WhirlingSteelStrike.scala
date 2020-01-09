@@ -17,7 +17,7 @@
  */
 package org.aos.ddo.model.feats
 
-import org.aos.ddo.model.classes.CharacterClass
+import org.aos.ddo.model.classes.HeroicCharacterClass
 import org.aos.ddo.support.requisite.{ClassRequisiteImpl, FeatRequisiteImpl, RequiresAllOfClass}
 
 trait WhirlingSteelStrike extends FeatRequisiteImpl
@@ -31,6 +31,6 @@ trait WhirlingSteelStrike extends FeatRequisiteImpl
 
   override def anyOfFeats: Seq[Feat] = Seq(Feat.withName("Proficiency: Longswords"), DeityFeat.FollowerOfTheSovereignHost, RacialFeat.HalfElfDilettanteFighter)
 
-  override def allOfClass: Seq[(CharacterClass, Int)] =
-    List((CharacterClass.Monk, 1))
+  override def allOfClass: Seq[(HeroicCharacterClass, Int)] =
+    List((HeroicCharacterClass.Monk, 1))
 }

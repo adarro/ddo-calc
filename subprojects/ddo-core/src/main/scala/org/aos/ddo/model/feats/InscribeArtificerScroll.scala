@@ -17,8 +17,8 @@
  */
 package org.aos.ddo.model.feats
 
-import org.aos.ddo.model.classes.CharacterClass
-import org.aos.ddo.model.classes.CharacterClass.Artificer
+import org.aos.ddo.model.classes.HeroicCharacterClass
+import org.aos.ddo.model.classes.HeroicCharacterClass.Artificer
 import org.aos.ddo.support.requisite.{
   FeatRequisiteImpl,
   GrantsToClass,
@@ -33,6 +33,6 @@ trait InscribeArtificerScroll
     with Active
     with RequiresAllOfClass
     with GrantsToClass {
-  override def allOfClass: Seq[(CharacterClass, Int)] = List((Artificer, 1))
-  override def grantToClass: Seq[(CharacterClass, Int)] = List((Artificer, 1))
+  override def allOfClass: Seq[(HeroicCharacterClass, Int)] = List((Artificer, 1))
+  override def grantToClass: Seq[(HeroicCharacterClass, Int)] = List((Artificer, 1))
 }

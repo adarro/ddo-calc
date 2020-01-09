@@ -17,8 +17,8 @@
  */
 package org.aos.ddo.model.feats
 
-import org.aos.ddo.model.classes.CharacterClass
-import org.aos.ddo.model.classes.CharacterClass.{Barbarian, Rogue}
+import org.aos.ddo.model.classes.HeroicCharacterClass
+import org.aos.ddo.model.classes.HeroicCharacterClass.{Barbarian, Rogue}
 import org.aos.ddo.support.requisite.{
   FeatRequisiteImpl,
   FreeFeat,
@@ -40,6 +40,6 @@ protected[feats] trait ImprovedUncannyDodge
     with Active
     with GrantsToClass
     with FreeFeat { self: ClassFeat =>
-  override def grantToClass: Seq[(CharacterClass, Int)] =
+  override def grantToClass: Seq[(HeroicCharacterClass, Int)] =
     List((Barbarian, 8), (Rogue, 8))
 }

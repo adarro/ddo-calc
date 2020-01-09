@@ -17,7 +17,7 @@
  */
 package org.aos.ddo.model.feats
 
-import org.aos.ddo.model.classes.CharacterClass
+import org.aos.ddo.model.classes.HeroicCharacterClass
 import org.aos.ddo.support.requisite.{
   ClassRequisiteImpl,
   FeatRequisiteImpl,
@@ -43,6 +43,6 @@ protected[feats] trait SuperiorWeaponFocusBase
     with FighterBonusFeat {
   self: GeneralFeat with RequiresAllOfFeat =>
 
-  override def anyOfClass: Seq[(CharacterClass, Int)] =
-    List((CharacterClass.Fighter, 16))
+  override def anyOfClass: Seq[(HeroicCharacterClass, Int)] =
+    List((HeroicCharacterClass.Fighter, 16))
 }

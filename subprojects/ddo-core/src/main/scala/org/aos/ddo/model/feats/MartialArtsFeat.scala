@@ -17,7 +17,7 @@
  */
 package org.aos.ddo.model.feats
 
-import org.aos.ddo.model.classes.CharacterClass
+import org.aos.ddo.model.classes.HeroicCharacterClass
 import org.aos.ddo.support.requisite.{Inclusion, Requisite, SelectableToClass}
 
 /**
@@ -26,14 +26,14 @@ import org.aos.ddo.support.requisite.{Inclusion, Requisite, SelectableToClass}
   */
 trait MartialArtsFeat extends SelectableToClass with BonusSelectableFeat with BonusSelectableFeatImpl {
   self: Feat with FeatType with Requisite with Inclusion =>
-  private[this] val myCharClass: CharacterClass = CharacterClass.Monk
+  private[this] val myCharClass: HeroicCharacterClass = HeroicCharacterClass.Monk
 
-  abstract override def bonusCharacterClass: Seq[CharacterClass] = super.bonusCharacterClass :+ myCharClass
+  abstract override def bonusCharacterClass: Seq[HeroicCharacterClass] = super.bonusCharacterClass :+ myCharClass
   override val levels: Set[Int] = Set(1, 2, 6)
 
-  abstract override def bonusSelectableToClass: Seq[(CharacterClass, Int)] = {
+  abstract override def bonusSelectableToClass: Seq[(HeroicCharacterClass, Int)] = {
 
-    val cc: Set[(CharacterClass, Int)] = for {l <- levels} yield (myCharClass, l)
+    val cc: Set[(HeroicCharacterClass, Int)] = for {l <- levels} yield (myCharClass, l)
     super.bonusSelectableToClass ++ cc.toSeq
 
   }

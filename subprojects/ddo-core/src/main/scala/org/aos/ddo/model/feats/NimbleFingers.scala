@@ -17,7 +17,7 @@
  */
 package org.aos.ddo.model.feats
 
-import org.aos.ddo.model.classes.CharacterClass
+import org.aos.ddo.model.classes.HeroicCharacterClass
 import org.aos.ddo.support.requisite.{
   ClassRequisiteImpl,
   FeatRequisiteImpl,
@@ -36,6 +36,6 @@ protected[feats] trait NimbleFingers
     with ClassRequisiteImpl
     with Passive
     with RequiresAllOfClass { self: GeneralFeat =>
-  override def allOfClass: Seq[(CharacterClass, Int)] =
-    List((CharacterClass.Rogue, 1))
+  override def allOfClass: Seq[(HeroicCharacterClass, Int)] =
+    List((HeroicCharacterClass.Rogue, 1))
 }

@@ -17,8 +17,8 @@
  */
 package org.aos.ddo.model.feats
 
-import org.aos.ddo.model.classes.CharacterClass
-import org.aos.ddo.model.classes.CharacterClass.FavoredSoul
+import org.aos.ddo.model.classes.HeroicCharacterClass
+import org.aos.ddo.model.classes.HeroicCharacterClass.FavoredSoul
 import org.aos.ddo.model.religions.{Amaunator, SilverFlame, SovereignHost}
 import org.aos.ddo.support.requisite.{
   FeatRequisiteImpl,
@@ -44,7 +44,7 @@ trait DamageReductionSilver
 
   override def nameSource: String = "Silver"
 
-  override def allOfClass: immutable.Seq[(CharacterClass, Int)] =
+  override def allOfClass: immutable.Seq[(HeroicCharacterClass, Int)] =
     List((FavoredSoul, 20))
 
   override def anyOfFeats: Seq[Feat] =

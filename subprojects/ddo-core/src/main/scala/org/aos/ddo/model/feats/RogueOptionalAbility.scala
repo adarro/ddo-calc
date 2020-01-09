@@ -17,7 +17,7 @@
  */
 package org.aos.ddo.model.feats
 
-import org.aos.ddo.model.classes.CharacterClass.Rogue
+import org.aos.ddo.model.classes.HeroicCharacterClass.Rogue
 
 /**
   * Created by adarr on 3/26/2017.

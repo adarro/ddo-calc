@@ -17,8 +17,8 @@
  */
 package org.aos.ddo.model.feats
 
-import org.aos.ddo.model.classes.CharacterClass
-import org.aos.ddo.model.classes.CharacterClass.Ranger
+import org.aos.ddo.model.classes.HeroicCharacterClass
+import org.aos.ddo.model.classes.HeroicCharacterClass.Ranger
 import org.aos.ddo.support.requisite.{
   ClassRequisiteImpl,
   FeatRequisiteImpl,
@@ -48,7 +48,7 @@ trait PreciseShot
     with FighterBonusFeat
     with ArtificerBonusFeat {
   self: GeneralFeat =>
-  override def grantToClass: Seq[(CharacterClass, Int)] = List((Ranger, 4))
+  override def grantToClass: Seq[(HeroicCharacterClass, Int)] = List((Ranger, 4))
 
   override def allOfFeats: immutable.Seq[Feat] =
     List(GeneralFeat.PointBlankShot)

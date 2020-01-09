@@ -17,8 +17,8 @@
  */
 package org.aos.ddo.model.feats
 
-import org.aos.ddo.model.classes.CharacterClass
-import org.aos.ddo.model.classes.CharacterClass.Rogue
+import org.aos.ddo.model.classes.HeroicCharacterClass
+import org.aos.ddo.model.classes.HeroicCharacterClass.Rogue
 import org.aos.ddo.support.requisite.{
   FeatRequisiteImpl,
   FreeFeat,
@@ -45,6 +45,6 @@ protected[feats] trait SneakAttack
     with GrantsToClass
     with FreeFeat { self: ClassFeat =>
   private def rogueLevels = (3 to 19 by 2) :+ 1
-  override def grantToClass: Seq[(CharacterClass, Int)] =
+  override def grantToClass: Seq[(HeroicCharacterClass, Int)] =
     rogueLevels.map((Rogue, _))
 }

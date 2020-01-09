@@ -17,8 +17,8 @@
  */
 package org.aos.ddo.model.feats
 
-import org.aos.ddo.model.classes.CharacterClass
-import org.aos.ddo.model.classes.CharacterClass.Monk
+import org.aos.ddo.model.classes.HeroicCharacterClass
+import org.aos.ddo.model.classes.HeroicCharacterClass.Monk
 import org.aos.ddo.support.requisite._
 
 import scala.collection.immutable
@@ -32,7 +32,7 @@ trait VorpalStrikes
     with RequiresAllOfClass
     with Active
     with ClassRestricted {
-  override def allOfClass: immutable.Seq[(CharacterClass, Int)] =
+  override def allOfClass: immutable.Seq[(HeroicCharacterClass, Int)] =
     List((Monk, 12))
 
 }

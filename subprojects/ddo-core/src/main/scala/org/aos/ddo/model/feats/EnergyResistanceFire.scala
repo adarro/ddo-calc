@@ -17,7 +17,7 @@
  */
 package org.aos.ddo.model.feats
 
-import org.aos.ddo.model.classes.CharacterClass
+import org.aos.ddo.model.classes.HeroicCharacterClass
 import org.aos.ddo.support.naming.{DisplayName, FriendlyDisplay}
 import org.aos.ddo.support.requisite.GrantsToClass
 
@@ -26,9 +26,9 @@ import org.aos.ddo.support.requisite.GrantsToClass
   */
 trait EnergyResistanceFire extends EnergyResistance with FriendlyDisplay with GrantsToClass {
   self: DisplayName =>
-  private def fvsMap = (5 to 15 by 5).map((CharacterClass.FavoredSoul,_))
+  private def fvsMap = (5 to 15 by 5).map((HeroicCharacterClass.FavoredSoul,_))
 
-  override def grantToClass: Seq[(CharacterClass, Int)] = fvsMap
+  override def grantToClass: Seq[(HeroicCharacterClass, Int)] = fvsMap
 
   /**
     * @inheritdoc

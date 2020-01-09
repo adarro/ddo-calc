@@ -17,7 +17,7 @@
  */
 package org.aos.ddo.support.requisite
 
-import org.aos.ddo.model.classes.CharacterClass
+import org.aos.ddo.model.classes.HeroicCharacterClass
 import org.aos.ddo.support.requisite.RequirementImplicits.classToReq
 
 /**
@@ -25,15 +25,15 @@ import org.aos.ddo.support.requisite.RequirementImplicits.classToReq
   * Created by adarr on 1/30/2017.
   */
 trait ClassRequisite {
-  def anyOfClass: Seq[(CharacterClass, Int)]
+  def anyOfClass: Seq[(HeroicCharacterClass, Int)]
 
-  def allOfClass: Seq[(CharacterClass, Int)]
+  def allOfClass: Seq[(HeroicCharacterClass, Int)]
 
-  def noneOfClass: Seq[(CharacterClass, Int)]
+  def noneOfClass: Seq[(HeroicCharacterClass, Int)]
 
-  def grantToClass: Seq[(CharacterClass, Int)]
+  def grantToClass: Seq[(HeroicCharacterClass, Int)]
 
-  def bonusSelectableToClass: Seq[(CharacterClass, Int)]
+  def bonusSelectableToClass: Seq[(HeroicCharacterClass, Int)]
 }
 
 /**
@@ -41,15 +41,15 @@ trait ClassRequisite {
   * Stackable traits may then override and augment selected values.
   */
 trait ClassRequisiteImpl extends ClassRequisite {
-  override def anyOfClass: Seq[(CharacterClass, Int)] = Nil
+  override def anyOfClass: Seq[(HeroicCharacterClass, Int)] = Nil
 
-  override def allOfClass: Seq[(CharacterClass, Int)] = Nil
+  override def allOfClass: Seq[(HeroicCharacterClass, Int)] = Nil
 
-  override def noneOfClass: Seq[(CharacterClass, Int)] = Nil
+  override def noneOfClass: Seq[(HeroicCharacterClass, Int)] = Nil
 
-  override def grantToClass: Seq[(CharacterClass, Int)] = Nil
+  override def grantToClass: Seq[(HeroicCharacterClass, Int)] = Nil
 
-  override def bonusSelectableToClass: Seq[(CharacterClass, Int)] = Nil
+  override def bonusSelectableToClass: Seq[(HeroicCharacterClass, Int)] = Nil
 }
 
 trait FreeClass

@@ -17,8 +17,8 @@
  */
 package org.aos.ddo.model.feats
 
-import org.aos.ddo.model.classes.CharacterClass
-import org.aos.ddo.model.classes.CharacterClass._
+import org.aos.ddo.model.classes.HeroicCharacterClass
+import org.aos.ddo.model.classes.HeroicCharacterClass._
 import org.aos.ddo.support.requisite.{
   ClassRequisiteImpl,
   FeatRequisiteImpl,
@@ -40,7 +40,7 @@ trait EpicSpellFocusBase
   private val lvl11 = List(Cleric, Druid, Wizard).map((_, 11))
   private val lvl12 = List(Sorcerer, FavoredSoul).map((_, 12))
   override def anyOfClass
-    : Seq[(CharacterClass with Product with Serializable, Int)] =
+    : Seq[(HeroicCharacterClass with Product with Serializable, Int)] =
     lvl11 ++ lvl12 :+ (Artificer, 15) :+ (Bard, 16)
 
   override def allOfFeats: Seq[GeneralFeat] = List(GeneralFeat.SpellFocus)

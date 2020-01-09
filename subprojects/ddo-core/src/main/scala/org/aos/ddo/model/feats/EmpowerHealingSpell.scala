@@ -17,7 +17,7 @@
  */
 package org.aos.ddo.model.feats
 
-import org.aos.ddo.model.classes.CharacterClass
+import org.aos.ddo.model.classes.HeroicCharacterClass
 import org.aos.ddo.support.requisite.{FeatRequisiteImpl, RequiresAnyOfClass}
 
 /**
@@ -29,13 +29,13 @@ protected[feats] trait EmpowerHealingSpell
     with RequiresAnyOfClass
     with ArtificerBonusFeat {
   self: MetaMagicFeat =>
-  override def anyOfClass: Seq[(CharacterClass, Int)] =
+  override def anyOfClass: Seq[(HeroicCharacterClass, Int)] =
     List(
-      (CharacterClass.Bard, 1),
-      (CharacterClass.Cleric, 1),
-      (CharacterClass.Druid, 1),
-      (CharacterClass.FavoredSoul, 1),
-      (CharacterClass.Paladin, 4),
-      (CharacterClass.Ranger, 8)
+      (HeroicCharacterClass.Bard, 1),
+      (HeroicCharacterClass.Cleric, 1),
+      (HeroicCharacterClass.Druid, 1),
+      (HeroicCharacterClass.FavoredSoul, 1),
+      (HeroicCharacterClass.Paladin, 4),
+      (HeroicCharacterClass.Ranger, 8)
     )
 }

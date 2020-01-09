@@ -17,8 +17,8 @@
  */
 package org.aos.ddo.model.feats
 
-import org.aos.ddo.model.classes.CharacterClass
-import org.aos.ddo.model.classes.CharacterClass.{Cleric, Fighter, Paladin}
+import org.aos.ddo.model.classes.HeroicCharacterClass
+import org.aos.ddo.model.classes.HeroicCharacterClass.{Cleric, Fighter, Paladin}
 import org.aos.ddo.support.requisite.{
   ClassRequisiteImpl,
   FeatRequisiteImpl,
@@ -43,6 +43,6 @@ protected[feats] trait HeavyArmorProficiency
   private def firstLevelClasses = List(Cleric, Fighter, Paladin).map((_, 1))
   override def allOfFeats: Seq[GeneralFeat] =
     List(GeneralFeat.MediumArmorProficiency)
-  override def grantToClass: Seq[(CharacterClass, Int)] = firstLevelClasses
+  override def grantToClass: Seq[(HeroicCharacterClass, Int)] = firstLevelClasses
 
 }

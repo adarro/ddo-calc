@@ -23,94 +23,33 @@ plugins {
     id("com.github.maiflai.scalatest") // version scalaTestPluginVersion
 }
 
-//sourceSets {
-//
-//    main {
-//        withConvention(ScalaSourceSet::class) {
-//            scala.srcDir("src/main/scala")
-//        }
-//    }
-//
-//    test {
-//        withConvention(ScalaSourceSet::class) {
-//            scala {
-//                srcDir { "src/test/scala" }
-//                exclude(
-//                    "**/*Spec.scala",
-//                    "**/*Helper*",
-//                    "**/*Builder*"
-//                )
-////            include {'**/*Test.scala'}
-//            }
-//
-//        }
-//    }
-//
-//    sourceSets.create("acceptanceTest") {
-//
-//        resources {
-//            srcDirs("src/specs/resources", "src/test/specs")
-//        }
-//
-//        withConvention(ScalaSourceSet::class) {
-//            scala {
-//                srcDir("src/specs/scala")
-//            }
-//
-//            scala.srcDir("src/specs/scala")
-//        }
-//
-//        compileClasspath += sourceSets["main"].runtimeClasspath
-//        compileClasspath += sourceSets["test"].runtimeClasspath
-//    }
-//
-//}
-
-//task<Test>("allTests") {
-//    description = "Runs All Unit and Acceptance Tests"
-//    dependsOn(getTasksByName("test", false), getTasksByName("acceptanceTest", false))
-//    group = "verification"
-//}
-//
-//tasks.getByName("check").dependsOn(tasks.getByName("allTests"))
 
 description = "Core DDO Objects"
 testSets {
-
     "acceptanceTest" {
         dirName = "specs"
-
         sourceSet.java {
             "acceptanceTest" {
-                //     withConvention(ScalaSourceSet::class) {
-                //            scala {
-//                srcDir { "src/test/scala" }
                 exclude(
                     "**/*Spec.scala",
                    // "**/*Helper*",
                     "**/*Builder*"
                 )
-                //     }
             }
         }
 
-////            include {'**/*Test.scala'}
-//            }
-//
-//        }
-//        }
+
         sourceSet.resources {
             this.srcDirs.add(File("${project.projectDir}/src/test/specs"))
         }
         configurations[compileClasspathConfigurationName].extendsFrom(configurations["testImplementation"])
         createArtifact = true
-        //  this.testTaskName = "MyAcceptanceTest"
-
-
     }
 }
 tasks.getByName("check").dependsOn(tasks.getByName("acceptanceTest"))
 dependencies {
+    // Each project has a dependency on the platform
+    api(platform(project(":ddo-platform")))
     val junitPlatformVersion: String by project
     val junitPlatformRunnerVersion: String by project
     implementation(group = "com.beachape", name = "enumeratum_2.12", version = "1.5.13")

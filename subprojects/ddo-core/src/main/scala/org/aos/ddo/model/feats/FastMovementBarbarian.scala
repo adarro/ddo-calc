@@ -17,8 +17,8 @@
  */
 package org.aos.ddo.model.feats
 
-import org.aos.ddo.model.classes.CharacterClass
-import org.aos.ddo.model.classes.CharacterClass.Barbarian
+import org.aos.ddo.model.classes.HeroicCharacterClass
+import org.aos.ddo.model.classes.HeroicCharacterClass.Barbarian
 import org.aos.ddo.support.naming.PostText
 import org.aos.ddo.support.requisite.{FeatRequisiteImpl, GrantsToClass, RequiresAllOfClass}
 
@@ -32,9 +32,9 @@ protected[feats] trait FastMovementBarbarian
     with GrantsToClass
     with PostText
     with RequiresAllOfClass { self: ClassFeat =>
-  override def grantToClass: Seq[(CharacterClass, Int)] = List((Barbarian, 1))
+  override def grantToClass: Seq[(HeroicCharacterClass, Int)] = List((Barbarian, 1))
   override def nameSource: String = "Fast Movement"
   override def postText: Option[String] = Some("Barbarian Class Feat")
 
-  override def allOfClass: Seq[(CharacterClass, Int)] = List((Barbarian, 1))
+  override def allOfClass: Seq[(HeroicCharacterClass, Int)] = List((Barbarian, 1))
 }

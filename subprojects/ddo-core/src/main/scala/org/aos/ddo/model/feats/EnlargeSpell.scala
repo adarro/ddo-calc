@@ -17,7 +17,7 @@
  */
 package org.aos.ddo.model.feats
 
-import org.aos.ddo.model.classes.CharacterClass
+import org.aos.ddo.model.classes.HeroicCharacterClass
 import org.aos.ddo.support.requisite.{FeatRequisiteImpl, RequiresAnyOfClass}
 
 /**
@@ -29,6 +29,6 @@ trait EnlargeSpell
     with RequiresAnyOfClass
     with ArtificerBonusFeat {
   self: MetaMagicFeat =>
-  override def anyOfClass: Seq[(CharacterClass, Int)] =
+  override def anyOfClass: Seq[(HeroicCharacterClass, Int)] =
     MetaMagicFeat.minimumSpellCastingClass
 }

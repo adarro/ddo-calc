@@ -17,8 +17,8 @@
  */
 package org.aos.ddo.model.feats
 
-import org.aos.ddo.model.classes.CharacterClass
-import org.aos.ddo.model.classes.CharacterClass.Warlock
+import org.aos.ddo.model.classes.HeroicCharacterClass
+import org.aos.ddo.model.classes.HeroicCharacterClass.Warlock
 import org.aos.ddo.support.requisite.{
   FeatRequisiteImpl,
   GrantsToClass,
@@ -39,7 +39,7 @@ protected[feats] trait HurlThroughHell
 
   override protected def nameSource: String = "Hurl through Hell"
 
-  override def grantToClass: Seq[(CharacterClass, Int)] = Seq((Warlock, 15))
+  override def grantToClass: Seq[(HeroicCharacterClass, Int)] = Seq((Warlock, 15))
 
   override def allOfFeats: Seq[Feat] = Seq(ClassFeat.PactFiend)
 }

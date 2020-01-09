@@ -17,7 +17,7 @@
  */
 package org.aos.ddo.model.feats
 
-import org.aos.ddo.model.classes.CharacterClass
+import org.aos.ddo.model.classes.HeroicCharacterClass
 import org.aos.ddo.support.requisite._
 
 /** Icon Feat Mobile Spellcasting.png
@@ -42,16 +42,16 @@ protected[feats] trait MobileSpellcasting
     with RequiresAnyOfClass { self: GeneralFeat =>
   override def allOfFeats: Seq[GeneralFeat] = List(GeneralFeat.CombatCasting)
 
-  override def anyOfClass: Seq[(CharacterClass, Int)] =
+  override def anyOfClass: Seq[(HeroicCharacterClass, Int)] =
     List(
-      (CharacterClass.Artificer, 3),
-      (CharacterClass.Bard, 4),
-      (CharacterClass.Cleric, 3),
-      (CharacterClass.Druid, 3),
-      (CharacterClass.FavoredSoul, 4),
-      (CharacterClass.Sorcerer, 4),
-      (CharacterClass.Wizard, 3),
-      (CharacterClass.Paladin, 7),
-      (CharacterClass.Ranger, 7)
+      (HeroicCharacterClass.Artificer, 3),
+      (HeroicCharacterClass.Bard, 4),
+      (HeroicCharacterClass.Cleric, 3),
+      (HeroicCharacterClass.Druid, 3),
+      (HeroicCharacterClass.FavoredSoul, 4),
+      (HeroicCharacterClass.Sorcerer, 4),
+      (HeroicCharacterClass.Wizard, 3),
+      (HeroicCharacterClass.Paladin, 7),
+      (HeroicCharacterClass.Ranger, 7)
     )
 }

@@ -17,8 +17,8 @@
  */
 package org.aos.ddo.model.feats
 
-import org.aos.ddo.model.classes.CharacterClass
-import org.aos.ddo.model.classes.CharacterClass.{Druid, Ranger}
+import org.aos.ddo.model.classes.HeroicCharacterClass
+import org.aos.ddo.model.classes.HeroicCharacterClass.{Druid, Ranger}
 import org.aos.ddo.support.requisite.{FeatRequisiteImpl, GrantsToClass, RequiresAnyOfClass}
 
 /**
@@ -33,9 +33,9 @@ protected[feats] trait WildEmpathy
     with Active
     with GrantsToClass
     with RequiresAnyOfClass {
-  override def anyOfClass: Seq[(CharacterClass, Int)] =
+  override def anyOfClass: Seq[(HeroicCharacterClass, Int)] =
     List((Druid, 1), (Ranger, 1))
 
-  override def grantToClass: Seq[(CharacterClass, Int)] =
+  override def grantToClass: Seq[(HeroicCharacterClass, Int)] =
     List((Druid, 1), (Ranger, 1))
 }

@@ -17,8 +17,8 @@
  */
 package org.aos.ddo.model.feats
 
-import org.aos.ddo.model.classes.CharacterClass
-import org.aos.ddo.model.classes.CharacterClass.{Barbarian, Bard, Rogue}
+import org.aos.ddo.model.classes.HeroicCharacterClass
+import org.aos.ddo.model.classes.HeroicCharacterClass.{Barbarian, Bard, Rogue}
 import org.aos.ddo.support.requisite.{ClassRequisite, FeatRequisiteImpl, GrantsToClass, RequiresAnyOfClass}
 
 /**
@@ -33,7 +33,7 @@ protected[feats] trait SkillMastery
     with GrantsToClass
     with RequiresAnyOfClass
     with RogueOptionalAbility { self: ClassFeat =>
-  override def grantToClass: Seq[(CharacterClass, Int)] = rogueOptionMatrix
+  override def grantToClass: Seq[(HeroicCharacterClass, Int)] = rogueOptionMatrix
 
-  override def anyOfClass: Seq[(CharacterClass, Int)] = List((Rogue,10),(Bard,18),(Barbarian,12))
+  override def anyOfClass: Seq[(HeroicCharacterClass, Int)] = List((Rogue,10),(Bard,18),(Barbarian,12))
 }

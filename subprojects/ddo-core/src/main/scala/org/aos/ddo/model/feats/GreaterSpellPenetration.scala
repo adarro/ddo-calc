@@ -17,7 +17,7 @@
  */
 package org.aos.ddo.model.feats
 
-import org.aos.ddo.model.classes.CharacterClass
+import org.aos.ddo.model.classes.HeroicCharacterClass
 import org.aos.ddo.support.requisite.{
   ClassRequisiteImpl,
   FeatRequisiteImpl,
@@ -40,17 +40,17 @@ protected[feats] trait GreaterSpellPenetration
     with Passive
     with RequiresAnyOfClass
     with RequiresAllOfFeat { self: GeneralFeat =>
-  override def anyOfClass: Seq[(CharacterClass, Int)] =
+  override def anyOfClass: Seq[(HeroicCharacterClass, Int)] =
     List(
-      (CharacterClass.Artificer, 1),
-      (CharacterClass.Bard, 1),
-      (CharacterClass.Cleric, 1),
-      (CharacterClass.Druid, 1),
-      (CharacterClass.FavoredSoul, 1),
-      (CharacterClass.Sorcerer, 1),
-      (CharacterClass.Wizard, 1),
-      (CharacterClass.Paladin, 4),
-      (CharacterClass.Ranger, 4)
+      (HeroicCharacterClass.Artificer, 1),
+      (HeroicCharacterClass.Bard, 1),
+      (HeroicCharacterClass.Cleric, 1),
+      (HeroicCharacterClass.Druid, 1),
+      (HeroicCharacterClass.FavoredSoul, 1),
+      (HeroicCharacterClass.Sorcerer, 1),
+      (HeroicCharacterClass.Wizard, 1),
+      (HeroicCharacterClass.Paladin, 4),
+      (HeroicCharacterClass.Ranger, 4)
     )
 
   override def allOfFeats: Seq[GeneralFeat] =

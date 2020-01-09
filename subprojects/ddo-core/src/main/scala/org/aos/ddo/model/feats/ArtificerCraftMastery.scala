@@ -17,8 +17,8 @@
  */
 package org.aos.ddo.model.feats
 
-import org.aos.ddo.model.classes.CharacterClass
-import org.aos.ddo.model.classes.CharacterClass.Artificer
+import org.aos.ddo.model.classes.HeroicCharacterClass
+import org.aos.ddo.model.classes.HeroicCharacterClass.Artificer
 import org.aos.ddo.support.requisite.{
   FeatRequisiteImpl,
   GrantsToClass,
@@ -34,10 +34,10 @@ protected[feats] trait ArtificerCraftMastery
     with GrantsToClass
     with RequiresAllOfClass {
   private lazy val levels = (1 to 20).filter(_ % 2 == 0)
-  override def allOfClass: Seq[(CharacterClass, Int)] = levels.map { x =>
+  override def allOfClass: Seq[(HeroicCharacterClass, Int)] = levels.map { x =>
     (Artificer, x)
   }
-  override def grantToClass: Seq[(CharacterClass, Int)] =
+  override def grantToClass: Seq[(HeroicCharacterClass, Int)] =
     levels.map { x =>
       (Artificer, x)
     }

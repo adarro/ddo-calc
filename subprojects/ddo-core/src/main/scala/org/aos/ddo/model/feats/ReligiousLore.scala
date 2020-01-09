@@ -17,7 +17,7 @@
  */
 package org.aos.ddo.model.feats
 
-import org.aos.ddo.model.classes.CharacterClass
+import org.aos.ddo.model.classes.HeroicCharacterClass
 import org.aos.ddo.support.requisite.{
   FeatRequisiteImpl,
   FreeFeat,
@@ -46,17 +46,17 @@ protected[feats] trait ReligiousLore
     with FreeFeat { self: ClassFeat =>
 
   private def bardLevels =
-    (1 to 20 by 2).toList.map((CharacterClass.Bard, _))
+    (1 to 20 by 2).toList.map((HeroicCharacterClass.Bard, _))
 
   private def allLevelsClasses =
     for {
-      c <- List(CharacterClass.Cleric,
-                CharacterClass.FavoredSoul,
-                CharacterClass.Paladin,
-                CharacterClass.FavoredSoul)
+      c <- List(HeroicCharacterClass.Cleric,
+                HeroicCharacterClass.FavoredSoul,
+                HeroicCharacterClass.Paladin,
+                HeroicCharacterClass.FavoredSoul)
       l <- 1 to 20
     } yield (c, l)
 
-  override def grantToClass: Seq[(CharacterClass, Int)] =
+  override def grantToClass: Seq[(HeroicCharacterClass, Int)] =
     allLevelsClasses.sortBy(_._1.entryName) ++ bardLevels
 }

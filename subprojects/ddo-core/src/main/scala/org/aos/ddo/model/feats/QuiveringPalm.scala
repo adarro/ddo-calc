@@ -17,8 +17,8 @@
  */
 package org.aos.ddo.model.feats
 
-import org.aos.ddo.model.classes.CharacterClass
-import org.aos.ddo.model.classes.CharacterClass.Monk
+import org.aos.ddo.model.classes.HeroicCharacterClass
+import org.aos.ddo.model.classes.HeroicCharacterClass.Monk
 import org.aos.ddo.support.requisite.{FeatRequisiteImpl, GrantsToClass, RequiresAllOfClass}
 
 /**
@@ -33,9 +33,9 @@ trait QuiveringPalm
     with Active
     with GrantsToClass
     with RequiresAllOfClass {
-  override def grantToClass: Seq[(CharacterClass, Int)] =
+  override def grantToClass: Seq[(HeroicCharacterClass, Int)] =
     List((Monk, 15))
 
-  override def allOfClass: Seq[(CharacterClass, Int)] =
+  override def allOfClass: Seq[(HeroicCharacterClass, Int)] =
     List((Monk, 15))
 }

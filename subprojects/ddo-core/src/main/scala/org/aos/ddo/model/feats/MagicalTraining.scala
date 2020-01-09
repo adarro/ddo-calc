@@ -17,8 +17,8 @@
  */
 package org.aos.ddo.model.feats
 
-import org.aos.ddo.model.classes.CharacterClass
-import org.aos.ddo.model.classes.CharacterClass._
+import org.aos.ddo.model.classes.HeroicCharacterClass
+import org.aos.ddo.model.classes.HeroicCharacterClass._
 import org.aos.ddo.support.requisite.{
   ClassRequisiteImpl,
   FeatRequisiteImpl,
@@ -45,6 +45,6 @@ protected[feats] trait MagicalTraining
     with GrantsToClass { self: GeneralFeat =>
   private def magicClasses =
     List(Cleric, Druid, FavoredSoul, Artificer, Sorcerer, Wizard, Warlock)
-  override def grantToClass: Seq[(CharacterClass, Int)] =
+  override def grantToClass: Seq[(HeroicCharacterClass, Int)] =
     magicClasses.map((_, 1))
 }

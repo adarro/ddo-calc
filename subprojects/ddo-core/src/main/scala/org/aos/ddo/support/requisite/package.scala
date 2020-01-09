@@ -19,7 +19,7 @@ package org.aos.ddo.support
 
 import enumeratum.EnumEntry
 import org.aos.ddo.model.attribute.Attribute
-import org.aos.ddo.model.classes.CharacterClass
+import org.aos.ddo.model.classes.HeroicCharacterClass
 import org.aos.ddo.model.favor.FavorPatron
 import org.aos.ddo.model.feats.{ClassFeat, Feat, GeneralFeat, RacialFeat}
 import org.aos.ddo.model.race.Race
@@ -151,17 +151,17 @@ package object requisite {
       override def apply(v1: ClassFeat): ReqFeat = ReqFeat(v1.entryName)
     }
 
-    implicit class ClassImplicits(val source: (CharacterClass, Int)) {
+    implicit class ClassImplicits(val source: (HeroicCharacterClass, Int)) {
       def toReq: ReqClass = classToReq(source)
     }
 
-    val classToReq: PartialFunction[(CharacterClass, Int), ReqClass] = new PartialFunction[(CharacterClass, Int), ReqClass] {
-      override def isDefinedAt(x: (CharacterClass, Int)): Boolean =
+    val classToReq: PartialFunction[(HeroicCharacterClass, Int), ReqClass] = new PartialFunction[(HeroicCharacterClass, Int), ReqClass] {
+      override def isDefinedAt(x: (HeroicCharacterClass, Int)): Boolean =
         Requirement
-          .withNameOption(s"${CharacterClass.searchPrefix}${x._1.entryName}")
+          .withNameOption(s"${HeroicCharacterClass.searchPrefix}${x._1.entryName}")
           .isDefined
 
-      override def apply(v1: (CharacterClass, Int)): ReqClass =
+      override def apply(v1: (HeroicCharacterClass, Int)): ReqClass =
         ReqClass(v1._1.entryName, v1._2)
     }
 

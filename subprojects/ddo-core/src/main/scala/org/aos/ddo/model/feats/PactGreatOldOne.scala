@@ -17,8 +17,8 @@
  */
 package org.aos.ddo.model.feats
 
-import org.aos.ddo.model.classes.CharacterClass
-import org.aos.ddo.model.classes.CharacterClass._
+import org.aos.ddo.model.classes.HeroicCharacterClass
+import org.aos.ddo.model.classes.HeroicCharacterClass._
 import org.aos.ddo.support.requisite.{FeatRequisiteImpl, GrantsToClass, RequiresAllOfClass}
 
 /**
@@ -37,5 +37,5 @@ protected[feats] trait PactGreatOldOne
 
   override protected def nameSource: String = "Great Old One"
 
-  override def grantToClass: Seq[(CharacterClass, Int)] = List((Warlock, 1))
+  override def grantToClass: Seq[(HeroicCharacterClass, Int)] = List((Warlock, 1))
 }

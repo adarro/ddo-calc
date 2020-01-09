@@ -15,78 +15,82 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-buildscript {
-    repositories {
-        gradlePluginPortal()
-        mavenCentral()
-        jcenter()
-    }
-    dependencies {
-        classpath("org.kordamp.gradle:settings-gradle-plugin:0.25.0")
-    }
-}
-
-apply(plugin = "org.kordamp.gradle.settings")
-
-
-configure<org.kordamp.gradle.plugin.settings.ProjectsExtension> {
-    val incubating = System.getenv("incubating")
-
-    val dirList = mutableListOf("plugins", "docs", "subprojects")
-    if (incubating != null )
-        dirList += "incubating"
-    logger.warn("DIRLIST ====> $dirList")
-    directories = dirList
-    enforceNamingConvention = false
-}
 
 rootProject.name = "ddo-calc-parent"
-// include ':ddo-plot'
-// include(":ddo-core")
-// include ':ddo-etl'
-// include ':ddo-data:ddo-data-mongo'
-// include ':ddo-data'
-// include ':ddo-route'
 
-// requires updated R language gradle plugin.
-// project(':ddo-plot').projectDir = "$rootDir/ddo-plot" as File
-// project(":ddo-core").projectDir = File("$rootDir/ddo-core")
-// project(':ddo-web').projectDir = "$rootDir/ddo-web" as File
-//project(':ddo-etl').projectDir = "$rootDir/ddo-etl" as File
-//project(':ddo-data:ddo-data-mongo').projectDir = "$rootDir/ddo-data/ddo-data-mongo" as File
-//project(':ddo-data').projectDir = "$rootDir/ddo-data" as File
-// project(':ddo-route').projectDir = "$rootDir/ddo-route" as File
+fun includeProject(projectDirName: String, projectName: String) {
+    logger.info("I am in include project function")
+    val baseDir = File(settingsDir, projectDirName)
+    val projectDir = File(baseDir, projectName)
+    val buildFileName = "${projectName}.scala-platform.gradle.kts"
+
+    assert(projectDir.isDirectory())
+    assert(File(projectDir, buildFileName).isFile())
+
+    include(projectName)
+    logger.info("Including Project $projectName in $projectDir with using build file $buildFileName")
+    project(":${projectName}").projectDir = projectDir
+    project(":${projectName}").buildFileName = buildFileName
+}
+
+// at some point in the future, see if we can safely make this property optional so there is no build warning if it is not specified or create a sensible default
+val projectFolderDelimiter: String by settings
+val projectFolders: List<String>
+    get() =
+        settings.extra["projectFolders"]?.toString()?.split(projectFolderDelimiter) ?: listOf()
+
+logger.info("checking ${projectFolders.size} project folders")
+projectFolders.forEach { dirName ->
+    val subdir = File(rootDir, dirName)
+    logger.info("checking for projects in subDir: ${subdir.name}")
+    subdir.walkTopDown().maxDepth(1).forEach { dir ->
+        val fileNames = listOf(dir.name, "build")
+        var found = false
+        for (f in fileNames) {
+            val buildFileName = File(dir, "$f.gradle.kts")
+            logger.info("looking in ${dir.name} for buildFile $buildFileName")
+            if (buildFileName.exists()) {
+                logger.info("FOUND: $buildFileName")
+                includeProject(dirName, dir.name)
+                found = true
+                break
+            }
+        }
+        if (!found) logger.warn("No build file found in did not exist in ${dir.name}")
+    }
+}
 
 
-// gradle.experimentalFeatures.enable()
-//include 'ddo-odata'
-//include 'ddo-odata-server'
-val scoveragePluginVersion: String by settings
-val versionsPluginVersion: String by settings
-val buildScanPluginVersion: String by settings
-val useLatestVersionsPluginVersion: String by settings
-val testSetsPluginVersion: String by settings
-val versionEyePluginVersion: String by settings
-val taskTreePluginVersion: String by settings
-val kordampGradlePluginVersion: String by settings
-val scalaTestPluginVersion:String by settings
+
+
 
 pluginManagement {
+    val scoveragePluginVersion: String by settings
+    val versionsPluginVersion: String by settings
+    val buildScanPluginVersion: String by settings
+    val useLatestVersionsPluginVersion: String by settings
+    val testSetsPluginVersion: String by settings
+    val versionEyePluginVersion: String by settings
+    val taskTreePluginVersion: String by settings
+    val kordampGradlePluginVersion: String by settings
+    val scalaTestPluginVersion: String by settings
+    val semVerPluginVersion: String by settings
     plugins {
-        id("org.unbroken-dome.test-sets") version testSetsPluginVersion
         id("org.scoverage") version scoveragePluginVersion
+        id("org.unbroken-dome.test-sets") version testSetsPluginVersion
         id("com.github.maiflai.scalatest") version scalaTestPluginVersion // "0.25"
         //   id "findbugs"
         //  id "org.standardout.versioneye" version versionEyePluginVersion
         id("com.github.ben-manes.versions") version versionsPluginVersion
         id("se.patrikerdes.use-latest-versions") version useLatestVersionsPluginVersion
-        id("com.gradle.build-scan") version buildScanPluginVersion
+      //  id("com.gradle.build-scan") version buildScanPluginVersion
         id("com.dorongold.task-tree") version taskTreePluginVersion
         // kordamp opinionated gradle project plugins
         id("org.kordamp.gradle.project") version kordampGradlePluginVersion
-        id("org.kordamp.gradle.bintray") version kordampGradlePluginVersion
-        id("org.kordamp.gradle.build-scan") version kordampGradlePluginVersion
-        id("org.kordamp.gradle.scaladoc") version kordampGradlePluginVersion 
+//        id("org.kordamp.gradle.bintray") version kordampGradlePluginVersion
+//        id("org.kordamp.gradle.build-scan") version kordampGradlePluginVersion
+        id("org.kordamp.gradle.scaladoc") version kordampGradlePluginVersion
+        id("io.wusa.semver-git-plugin") version semVerPluginVersion
     }
 }
 

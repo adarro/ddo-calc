@@ -17,8 +17,8 @@
  */
 package org.aos.ddo.model.feats
 
-import org.aos.ddo.model.classes.CharacterClass
-import org.aos.ddo.model.classes.CharacterClass.Monk
+import org.aos.ddo.model.classes.HeroicCharacterClass
+import org.aos.ddo.model.classes.HeroicCharacterClass.Monk
 import org.aos.ddo.support.requisite.{
   FeatRequisiteImpl,
   GrantsToClass,
@@ -41,7 +41,7 @@ trait UnarmedStrike
     * @return Monk Levels
     */
   private def monkLevels = Seq((Monk, 1)) ++ levels.map((Monk, _))
-  override def grantToClass: Seq[(CharacterClass, Int)] = monkLevels
+  override def grantToClass: Seq[(HeroicCharacterClass, Int)] = monkLevels
 
-  override def allOfClass: Seq[(CharacterClass, Int)] = monkLevels
+  override def allOfClass: Seq[(HeroicCharacterClass, Int)] = monkLevels
 }

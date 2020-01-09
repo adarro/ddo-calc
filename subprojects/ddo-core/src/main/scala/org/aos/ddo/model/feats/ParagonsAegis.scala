@@ -17,8 +17,8 @@
  */
 package org.aos.ddo.model.feats
 
-import org.aos.ddo.model.classes.CharacterClass
-import org.aos.ddo.model.classes.CharacterClass.Warlock
+import org.aos.ddo.model.classes.HeroicCharacterClass
+import org.aos.ddo.model.classes.HeroicCharacterClass.Warlock
 import org.aos.ddo.support.requisite.{
   FeatRequisiteImpl,
   GrantsToClass,
@@ -35,7 +35,7 @@ protected[feats] trait ParagonsAegis
     with RequiresAllOfClass
     with GrantsToClass { self: ClassFeat =>
   private def artiLevels = 12 to 20 by 2
-  override def grantToClass: Seq[(CharacterClass, Int)] =
+  override def grantToClass: Seq[(HeroicCharacterClass, Int)] =
     artiLevels.map((Warlock, _))
 
   override protected def nameSource: String = "Paragon's Aegis"

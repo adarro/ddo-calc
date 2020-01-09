@@ -18,8 +18,8 @@
 package org.aos.ddo.model.feats
 
 import enumeratum.Enum
-import org.aos.ddo.model.classes.CharacterClass
-import org.aos.ddo.model.classes.CharacterClass.Ranger
+import org.aos.ddo.model.classes.HeroicCharacterClass
+import org.aos.ddo.model.classes.HeroicCharacterClass.Ranger
 import org.aos.ddo.model.compendium.types.{MainType, MonsterType}
 import org.aos.ddo.support.naming.FriendlyDisplay
 import org.aos.ddo.support.requisite._
@@ -75,7 +75,7 @@ object ClassFeat extends Enum[ClassFeat] with FeatSearchPrefix {
     override val subFeats: immutable.IndexedSeq[FavoredEnemyType] = favoredEnemies
     private val rangerLevels = (5 to 20 by 5) :+ 1
 
-    override def grantToClass: Seq[(CharacterClass, Int)] =
+    override def grantToClass: Seq[(HeroicCharacterClass, Int)] =
       rangerLevels.map((Ranger, _))
   }
 

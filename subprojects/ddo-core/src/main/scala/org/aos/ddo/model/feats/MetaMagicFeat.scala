@@ -18,7 +18,7 @@
 package org.aos.ddo.model.feats
 
 import enumeratum.Enum
-import org.aos.ddo.model.classes.CharacterClass
+import org.aos.ddo.model.classes.HeroicCharacterClass
 import org.aos.ddo.support.naming.FriendlyDisplay
 import org.aos.ddo.support.requisite.{ClassRequisiteImpl, Inclusion, Requisite}
 
@@ -45,18 +45,18 @@ sealed trait MetaMagicFeat
 }
 
 object MetaMagicFeat extends Enum[MetaMagicFeat] {
-  lazy val minimumSpellCastingClass: Seq[(CharacterClass, Int)] =
+  lazy val minimumSpellCastingClass: Seq[(HeroicCharacterClass, Int)] =
     List(
-      (CharacterClass.Artificer, 1),
-      (CharacterClass.Bard, 1),
-      (CharacterClass.Cleric, 1),
-      (CharacterClass.Druid, 1),
-      (CharacterClass.FavoredSoul, 1),
-      (CharacterClass.Sorcerer, 1),
-      (CharacterClass.Warlock, 1),
-      (CharacterClass.Wizard, 1),
-      (CharacterClass.Paladin, 4),
-      (CharacterClass.Ranger, 4)
+      (HeroicCharacterClass.Artificer, 1),
+      (HeroicCharacterClass.Bard, 1),
+      (HeroicCharacterClass.Cleric, 1),
+      (HeroicCharacterClass.Druid, 1),
+      (HeroicCharacterClass.FavoredSoul, 1),
+      (HeroicCharacterClass.Sorcerer, 1),
+      (HeroicCharacterClass.Warlock, 1),
+      (HeroicCharacterClass.Wizard, 1),
+      (HeroicCharacterClass.Paladin, 4),
+      (HeroicCharacterClass.Ranger, 4)
     )
   case object EmpowerHealingSpell
       extends MetaMagicFeat

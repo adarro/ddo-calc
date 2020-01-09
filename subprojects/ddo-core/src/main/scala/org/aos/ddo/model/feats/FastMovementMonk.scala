@@ -17,8 +17,8 @@
  */
 package org.aos.ddo.model.feats
 
-import org.aos.ddo.model.classes.CharacterClass
-import org.aos.ddo.model.classes.CharacterClass.Monk
+import org.aos.ddo.model.classes.HeroicCharacterClass
+import org.aos.ddo.model.classes.HeroicCharacterClass.Monk
 import org.aos.ddo.support.naming.PostText
 import org.aos.ddo.support.requisite.{FeatRequisiteImpl, GrantsToClass, RequiresAllOfClass}
 
@@ -34,9 +34,9 @@ protected[feats] trait FastMovementMonk
     with GrantsToClass
     with PostText
     with RequiresAllOfClass { self: ClassFeat =>
-  override def grantToClass: Seq[(CharacterClass, Int)] = List((Monk, 3))
+  override def grantToClass: Seq[(HeroicCharacterClass, Int)] = List((Monk, 3))
   override def nameSource: String = "Fast Movement"
   override def postText: Option[String] = Some("Monk Class Feat")
 
-  override def allOfClass: Seq[(CharacterClass, Int)] = List((Monk, 3))
+  override def allOfClass: Seq[(HeroicCharacterClass, Int)] = List((Monk, 3))
 }

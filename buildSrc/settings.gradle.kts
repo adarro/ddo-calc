@@ -15,19 +15,13 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-//buildscript {
-//    repositories {
-//        gradlePluginPortal()
-//    }
-//    dependencies {
-//        classpath("org.kordamp.gradle:settings-gradle-plugin:0.25.0")
-//    }
-//}
-val testSetsPluginVersion: String by settings
-val kordampGradlePluginVersion: String by settings
-val scalaTestPluginVersion:String by settings
 
 pluginManagement {
+    val testSetsPluginVersion: String by settings
+    val kordampGradlePluginVersion: String by settings
+    val scalaTestPluginVersion:String by settings
+    val semVerPluginVersion:String by settings
+    val scoveragePluginVersion:String by settings
     plugins {
         id("org.unbroken-dome.test-sets") version testSetsPluginVersion // "2.1.1"
         id("org.kordamp.gradle.project") version kordampGradlePluginVersion
@@ -41,7 +35,6 @@ pluginManagement {
         maven {
             url = uri("https://plugins.gradle.org/m2/")
         }
-
     }
 }
 

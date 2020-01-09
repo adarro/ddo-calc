@@ -17,7 +17,7 @@
  */
 package org.aos.ddo.model.feats
 
-import org.aos.ddo.model.classes.CharacterClass
+import org.aos.ddo.model.classes.HeroicCharacterClass
 import org.aos.ddo.support.requisite.{ClassRequisite, Inclusion, Requisite, SelectableToClass}
 
 /**
@@ -29,12 +29,12 @@ trait BonusSelectableFeat {
 
   val levels: Set[Int]
 
-  def bonusCharacterClass: Seq[CharacterClass]
+  def bonusCharacterClass: Seq[HeroicCharacterClass]
 
 }
 
 trait BonusSelectableFeatImpl extends BonusSelectableFeat with SelectableToClass {
   self: Feat with FeatType with Requisite with Inclusion =>
-  override def bonusCharacterClass: Seq[CharacterClass] = Nil
- override def bonusSelectableToClass: Seq[(CharacterClass, Int)] = Nil
+  override def bonusCharacterClass: Seq[HeroicCharacterClass] = Nil
+ override def bonusSelectableToClass: Seq[(HeroicCharacterClass, Int)] = Nil
 }

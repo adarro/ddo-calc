@@ -17,8 +17,8 @@
  */
 package org.aos.ddo.model.feats
 
-import org.aos.ddo.model.classes.CharacterClass
-import org.aos.ddo.model.classes.CharacterClass._
+import org.aos.ddo.model.classes.HeroicCharacterClass
+import org.aos.ddo.model.classes.HeroicCharacterClass._
 import org.aos.ddo.support.requisite.{
   ClassRequisiteImpl,
   FeatRequisiteImpl,
@@ -36,6 +36,6 @@ protected[feats] trait ShieldProficiency
   private def firstLevelClasses =
     List(Barbarian, Cleric, FavoredSoul, Fighter, Paladin, Ranger, Rogue).map(
       (_, 1))
-  override def grantToClass: Seq[(CharacterClass, Int)] = firstLevelClasses
+  override def grantToClass: Seq[(HeroicCharacterClass, Int)] = firstLevelClasses
 
 }

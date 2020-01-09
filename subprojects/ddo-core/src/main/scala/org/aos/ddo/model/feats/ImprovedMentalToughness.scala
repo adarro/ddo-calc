@@ -17,7 +17,7 @@
  */
 package org.aos.ddo.model.feats
 
-import org.aos.ddo.model.classes.CharacterClass
+import org.aos.ddo.model.classes.HeroicCharacterClass
 import org.aos.ddo.support.requisite.{
   ClassRequisiteImpl,
   FeatRequisiteImpl,
@@ -46,16 +46,16 @@ protected[feats] trait ImprovedMentalToughness
     with RequiresAnyOfClass { self: GeneralFeat =>
   override def allOfFeats: Seq[GeneralFeat] = List(GeneralFeat.MentalToughness)
 
-  override def anyOfClass: Seq[(CharacterClass, Int)] =
+  override def anyOfClass: Seq[(HeroicCharacterClass, Int)] =
     List(
-      (CharacterClass.Artificer, 7),
-      (CharacterClass.Bard, 7),
-      (CharacterClass.Cleric, 5),
-      (CharacterClass.Druid, 5),
-      (CharacterClass.FavoredSoul, 6),
-      (CharacterClass.Sorcerer, 6),
-      (CharacterClass.Wizard, 5),
-      (CharacterClass.Paladin, 10),
-      (CharacterClass.Ranger, 10)
+      (HeroicCharacterClass.Artificer, 7),
+      (HeroicCharacterClass.Bard, 7),
+      (HeroicCharacterClass.Cleric, 5),
+      (HeroicCharacterClass.Druid, 5),
+      (HeroicCharacterClass.FavoredSoul, 6),
+      (HeroicCharacterClass.Sorcerer, 6),
+      (HeroicCharacterClass.Wizard, 5),
+      (HeroicCharacterClass.Paladin, 10),
+      (HeroicCharacterClass.Ranger, 10)
     )
 }

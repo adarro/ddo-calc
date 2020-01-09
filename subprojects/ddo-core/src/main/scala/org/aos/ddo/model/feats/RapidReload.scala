@@ -17,8 +17,8 @@
  */
 package org.aos.ddo.model.feats
 
-import org.aos.ddo.model.classes.CharacterClass
-import org.aos.ddo.model.classes.CharacterClass.Artificer
+import org.aos.ddo.model.classes.HeroicCharacterClass
+import org.aos.ddo.model.classes.HeroicCharacterClass.Artificer
 import org.aos.ddo.model.item.weapon.WeaponCategory
 import org.aos.ddo.model.FeatConverters.featByWeaponProficiency
 import org.aos.ddo.support.requisite.{FeatRequisiteImpl, GrantsToClass, RequiresAllOfFeat}
@@ -36,7 +36,7 @@ protected[feats] trait RapidReload
     with GrantsToClass
     with FighterBonusFeat {
   self: ClassFeat =>
-  override def grantToClass: Seq[(CharacterClass, Int)] = List((Artificer, 1))
+  override def grantToClass: Seq[(HeroicCharacterClass, Int)] = List((Artificer, 1))
 
   override def allOfFeats: Seq[GeneralFeat] =
     List(WeaponCategory.LightCrossbow) collect featByWeaponProficiency

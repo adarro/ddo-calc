@@ -17,7 +17,7 @@
  */
 package org.aos.ddo.model.feats
 
-import org.aos.ddo.model.classes.CharacterClass
+import org.aos.ddo.model.classes.HeroicCharacterClass
 import org.aos.ddo.support.requisite.{
   ClassRequisiteImpl,
   FeatRequisiteImpl,
@@ -38,6 +38,6 @@ trait NaturalFighting
     with ClassRequisiteImpl
     with Passive
     with RequiresAllOfClass { self: GeneralFeat =>
-  override def allOfClass: Seq[(CharacterClass, Int)] =
-    List((CharacterClass.Druid, 9))
+  override def allOfClass: Seq[(HeroicCharacterClass, Int)] =
+    List((HeroicCharacterClass.Druid, 9))
 }

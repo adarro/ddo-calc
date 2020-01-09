@@ -17,8 +17,8 @@
  */
 package org.aos.ddo.model.feats
 
-import org.aos.ddo.model.classes.CharacterClass
-import org.aos.ddo.model.classes.CharacterClass.Ranger
+import org.aos.ddo.model.classes.HeroicCharacterClass
+import org.aos.ddo.model.classes.HeroicCharacterClass.Ranger
 import org.aos.ddo.support.requisite.{
   FeatRequisiteImpl,
   GrantsToClass,
@@ -36,8 +36,8 @@ protected[feats] trait HideInPlainSight
     with Active
     with GrantsToClass
     with RequiresAllOfClass {
-  override def allOfClass: Seq[(CharacterClass, Int)] = List((Ranger, 17))
+  override def allOfClass: Seq[(HeroicCharacterClass, Int)] = List((Ranger, 17))
 
-  override def grantToClass: Seq[(CharacterClass, Int)] = List((Ranger, 17))
+  override def grantToClass: Seq[(HeroicCharacterClass, Int)] = List((Ranger, 17))
 
 }

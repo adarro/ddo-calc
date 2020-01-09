@@ -47,7 +47,6 @@ trait RequiresAllOfPatron extends PatronRequisite with RequiresAllOf[Requirement
   }
 }
 
-
 trait RequiresNoneOfPatron extends PatronRequisite with RequiresNoneOf[Requirement] with Requisite {
 
   abstract override def noneOf: Seq[Requirement] = super.noneOf ++ {

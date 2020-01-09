@@ -19,8 +19,8 @@ package org.aos.ddo.model.feats
 
 import org.aos.ddo.model.attribute.Attribute
 import org.aos.ddo.model.attribute.Attribute.Wisdom
-import org.aos.ddo.model.classes.CharacterClass
-import org.aos.ddo.model.classes.CharacterClass.Monk
+import org.aos.ddo.model.classes.HeroicCharacterClass
+import org.aos.ddo.model.classes.HeroicCharacterClass.Monk
 import org.aos.ddo.model.item.weapon.WeaponClass
 import org.aos.ddo.support.requisite._
 
@@ -37,7 +37,7 @@ trait ImprovedMartialArts
     with RequiresAllOfClass
     with RequiresAttribute
     with ClassRestricted { self: EpicFeat =>
-  override def allOfClass: immutable.Seq[(CharacterClass, Int)] =
+  override def allOfClass: immutable.Seq[(HeroicCharacterClass, Int)] =
     List((Monk, 12))
 
   override def requiresAttribute: Seq[(Attribute, Int)] = List((Wisdom, 32))

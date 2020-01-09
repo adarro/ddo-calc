@@ -17,7 +17,7 @@
  */
 package org.aos.ddo.model.feats
 
-import org.aos.ddo.model.classes.CharacterClass
+import org.aos.ddo.model.classes.HeroicCharacterClass
 import org.aos.ddo.support.requisite.{
   ClassRequisite,
   FeatRequisiteImpl,
@@ -33,6 +33,6 @@ protected[feats] trait Opportunist
     with Passive
     with GrantsToClass
     with RogueOptionalAbility { self: ClassFeat =>
-  override def grantToClass: Seq[(CharacterClass, Int)] = rogueOptionMatrix
+  override def grantToClass: Seq[(HeroicCharacterClass, Int)] = rogueOptionMatrix
 
 }

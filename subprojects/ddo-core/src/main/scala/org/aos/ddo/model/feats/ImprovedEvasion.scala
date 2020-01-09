@@ -17,8 +17,8 @@
  */
 package org.aos.ddo.model.feats
 
-import org.aos.ddo.model.classes.CharacterClass
-import org.aos.ddo.model.classes.CharacterClass.Monk
+import org.aos.ddo.model.classes.HeroicCharacterClass
+import org.aos.ddo.model.classes.HeroicCharacterClass.Monk
 import org.aos.ddo.support.requisite.{FeatRequisiteImpl, FreeFeat, GrantsToClass}
 
 /**
@@ -34,7 +34,7 @@ trait ImprovedEvasion
     with Passive
     with GrantsToClass with RogueOptionalAbility
     with FreeFeat {
-  override def grantToClass: Seq[(CharacterClass, Int)] = rogueOptionMatrix :+ (Monk, 9)
+  override def grantToClass: Seq[(HeroicCharacterClass, Int)] = rogueOptionMatrix :+ (Monk, 9)
 
 
 }

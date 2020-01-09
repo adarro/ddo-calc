@@ -17,8 +17,8 @@
  */
 package org.aos.ddo.model.feats
 
-import org.aos.ddo.model.classes.CharacterClass
-import org.aos.ddo.model.classes.CharacterClass.{Artificer, Rogue}
+import org.aos.ddo.model.classes.HeroicCharacterClass
+import org.aos.ddo.model.classes.HeroicCharacterClass.{Artificer, Rogue}
 import org.aos.ddo.model.skill.Skill
 import org.aos.ddo.support.requisite.{
   FeatRequisiteImpl,
@@ -36,12 +36,12 @@ protected[feats] trait Trapmaking
     with GrantsToClass
     with RequiresAnyOfClass
     with RequiresAnyOfFeat {
-  override def anyOfClass: Seq[(CharacterClass, Int)] =
+  override def anyOfClass: Seq[(HeroicCharacterClass, Int)] =
     List((Artificer, 4), (Rogue, 4))
 // @todo Add Least DM of Making
   override def anyOfFeats: Seq[Feat] =
     List(GeneralFeat.NimbleFingers,
          GeneralFeat.SkillFocus(Skill.DisableDevice))
-  override def grantToClass: Seq[(CharacterClass, Int)] =
+  override def grantToClass: Seq[(HeroicCharacterClass, Int)] =
     List((Artificer, 4), (Rogue, 4))
 }

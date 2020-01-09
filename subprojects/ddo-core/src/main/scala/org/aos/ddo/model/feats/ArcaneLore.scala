@@ -17,8 +17,8 @@
  */
 package org.aos.ddo.model.feats
 
-import org.aos.ddo.model.classes.CharacterClass
-import org.aos.ddo.model.classes.CharacterClass.{
+import org.aos.ddo.model.classes.HeroicCharacterClass
+import org.aos.ddo.model.classes.HeroicCharacterClass.{
   Artificer,
   Bard,
   Sorcerer,
@@ -42,6 +42,6 @@ protected[feats] trait ArcaneLore
       gc <- List(Artificer, Bard, Sorcerer, Wizard)
       l <- 1 to 20
     } yield (gc, l)
-  override def grantToClass: Seq[(CharacterClass, Int)] =
+  override def grantToClass: Seq[(HeroicCharacterClass, Int)] =
     grantedClasses
 }

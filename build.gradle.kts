@@ -17,7 +17,9 @@
  */
 import com.github.benmanes.gradle.versions.updates.DependencyUpdatesTask
 import com.hierynomus.gradle.license.tasks.LicenseCheck
+// import io.wusa.SemverGitPluginExtension
 import org.gradle.api.tasks.testing.logging.TestLogEvent
+import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
 
 buildscript {
     repositories {
@@ -26,13 +28,13 @@ buildscript {
 }
 
 plugins {
-
+ //   id("io.wusa.semver-git-plugin")
     //  application
     id("java-library")
     id("org.unbroken-dome.test-sets")
     id("org.kordamp.gradle.project")
-    id("org.kordamp.gradle.bintray")
-    id("org.kordamp.gradle.build-scan")
+   // id("org.kordamp.gradle.bintray") removing in favor of Mockito / ShipKit
+  //  id("org.kordamp.gradle.build-scan") // deprecated as of 0.31.0
     id("org.scoverage")
     idea
     eclipse
@@ -40,16 +42,19 @@ plugins {
     //  id "org.standardout.versioneye" version "1.5.0"
     id("com.github.ben-manes.versions")
     id("se.patrikerdes.use-latest-versions")
-    id("com.gradle.build-scan")
+ //   id("com.gradle.build-scan").version("3.1.1")
     id("quality-checks")
     `project-report`
     `build-dashboard`
     id("gradle.site") version "0.6"
     id("com.dorongold.task-tree")
     id("org.kordamp.gradle.scaladoc")
+    kotlin("jvm") version "1.3.61"
 
 
 }
+
+// val semver: SemverGitPluginExtension by project.extensions
 
 fun binTrayUser(): Pair<String, String> {
     val bintrayUsername: String? by project
@@ -102,16 +107,17 @@ config {
         }
     }
 
-    bintray {
-        credentials {
-            username = bintrayUsername // project.bintrayUsername
-            password = bintrayApiKey // project.bintrayApiKey
-        }
-        userOrg = "truthencode"
-        name = rootProject.name
-        githubRepo = "adarro/ddo-calc"
-        enabled = true
-    }
+//    bintray {
+//        enabled = false
+//        credentials {
+//            username = bintrayUsername // project.bintrayUsername
+//            password = bintrayApiKey // project.bintrayApiKey
+//        }
+//        userOrg = "truthencode"
+//        name = rootProject.name
+//        githubRepo = "adarro/ddo-calc"
+//        enabled = true
+//    }
     bom {
         enabled = true
 //        signing {
@@ -121,9 +127,9 @@ config {
     buildInfo {
         buildBy = "Andre White"
     }
-    buildScan {
-        enabled = true
-    }
+//    buildScan {
+//        enabled = false
+//    }
     scaladoc {
         this.replaceJavadoc = true
     }
@@ -131,6 +137,8 @@ config {
 
 license {
     header = rootProject.file("buildResources/LICENSE_HEADER")
+    ignoreFailures = true
+    strictCheck = true
 
 }
 
@@ -138,19 +146,18 @@ tasks.withType(HtmlDependencyReportTask::class.java) {
     projects = projects
 }
 
+// semver {
+//    snapshotSuffix = "SNAPSHOT"
+//    val ti: SemverGitPluginExtension = this
+//}
 
-allprojects {
-    repositories {
-        jcenter()
-        mavenCentral()
-    }
-}
+
 val t = this
 
-buildScan {
-    termsOfServiceUrl = "https://gradle.com/terms-of-service"
-    termsOfServiceAgree = "yes"
-}
+// buildScan {
+//    termsOfServiceUrl = "https://gradle.com/terms-of-service"
+//    termsOfServiceAgree = "yes"
+//}
 
 tasks.register("showDirs") {
     doLast {
@@ -205,13 +212,17 @@ tasks.withType(GenerateBuildDashboard::class.java) {
 }
 
 allprojects {
+    repositories {
+        jcenter()
+        mavenCentral()
+        gradlePluginPortal()
+    }
+//    apply(plugin = "io.wusa.semver-git-plugin")
+//    version = semver.info.version
     val codacy: Configuration by configurations.creating
     dependencies {
-
         // https://mvnrepository.com/artifact/com.codacy/codacy-coverage-reporter
-
         codacy(group = "com.codacy", name = "codacy-coverage-reporter", version = "6.0.2")
-
     }
 }
 
@@ -276,18 +287,6 @@ tasks.withType<DependencyUpdatesTask> {
     reportfileName = "report"
 }
 
-//
-//tasks.create("showEnv") {
-//    println("Forcing Action")
-//    outputs.upToDateWhen { false }
-//    logger.lifecycle("Env")
-//    val props = System.getProperties()
-//    logger.lifecycle("Environment has ${props.size} properties")
-//    props.forEach {
-//        logger.lifecycle("${it.key} -> ${it.value}")
-//    }
-//}
-
 tasks.create("sendCoverageToCodacy", JavaExec::class) {
     val codacy = configurations.findByName("codacy")
     val pId = "CODACY_PROJECT_TOKEN"
@@ -307,17 +306,7 @@ tasks.create("sendCoverageToCodacy", JavaExec::class) {
     )
     logger.info("Adding env $pId -> $token")
     environment = environment.plus(Pair(pId, token))
-    // environment(Pair(pId,token))
-//    val tsk = tasks.findByName("aggregateReports")
-//    val tsk2 = tasks.findByName("showEnv")
-//    if (tsk != null) {
-//        dependsOn(setOf(tsk))
-//    }
-//    if (tsk2 != null) {
-//        dependsOn(setOf(tsk2))
-//    }
 }
-
 
 
 /*
@@ -335,15 +324,32 @@ task sendCoverageToCodacy(type: JavaExec, dependsOn: jacocoTestReport) {
 
  */
 
-tasks.withType<LicenseCheck> {
-    ignoreFailures = true
-    strictCheck = true
+//tasks.withType<LicenseCheck> {
+//    ignoreFailures = true
+//    strictCheck = true
+//
+//}
 
-}
 projectReports {
     this.projects.addAll(t.allprojects)
 }
 
-/*versioneye {
+/*
+versioneye {
     includeSubProjects = true
-}*/
+}
+*/
+dependencies {
+    implementation(kotlin("stdlib-jdk8"))
+}
+repositories {
+    mavenCentral()
+}
+val compileKotlin: KotlinCompile by tasks
+compileKotlin.kotlinOptions {
+    jvmTarget = "1.8"
+}
+val compileTestKotlin: KotlinCompile by tasks
+compileTestKotlin.kotlinOptions {
+    jvmTarget = "1.8"
+}

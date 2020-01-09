@@ -17,8 +17,8 @@
  */
 package org.aos.ddo.model.feats
 
-import org.aos.ddo.model.classes.CharacterClass
-import org.aos.ddo.model.classes.CharacterClass.{Barbarian, Rogue}
+import org.aos.ddo.model.classes.HeroicCharacterClass
+import org.aos.ddo.model.classes.HeroicCharacterClass.{Barbarian, Rogue}
 import org.aos.ddo.support.requisite.{FeatRequisiteImpl, FreeFeat, GrantsToClass}
 import org.aos.ddo.support.TraverseOps.Crossable
 
@@ -35,5 +35,5 @@ protected[feats] trait TrapSense
     with FreeFeat { self: ClassFeat =>
   private def levelMatrix = 3 to 20 by 3
   private def classMatrix = List(Barbarian,Rogue)
-  override def grantToClass: Seq[(CharacterClass, Int)] = (classMatrix cross levelMatrix).toSeq
+  override def grantToClass: Seq[(HeroicCharacterClass, Int)] = (classMatrix cross levelMatrix).toSeq
 }

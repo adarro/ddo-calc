@@ -17,8 +17,8 @@
  */
 package org.aos.ddo.model.feats
 
-import org.aos.ddo.model.classes.CharacterClass
-import org.aos.ddo.model.classes.CharacterClass.Warlock
+import org.aos.ddo.model.classes.HeroicCharacterClass
+import org.aos.ddo.model.classes.HeroicCharacterClass.Warlock
 import org.aos.ddo.support.requisite._
 
 import scala.collection.immutable
@@ -32,6 +32,6 @@ trait EpicEldritchBlast
     with RequiresAllOfClass
     with Passive
     with ClassRestricted {
-  override def allOfClass: immutable.Seq[(CharacterClass, Int)] =
+  override def allOfClass: immutable.Seq[(HeroicCharacterClass, Int)] =
     List((Warlock, 12))
 }

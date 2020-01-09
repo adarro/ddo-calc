@@ -28,9 +28,9 @@ repositories {
 
 }
 
-kotlinDslPluginOptions {
-    experimentalWarning.set(false)
-}
+//kotlinDslPluginOptions {
+//    experimentalWarning.set(false)
+//}
 
 
 //configure<LicenseExtension> {

@@ -17,8 +17,8 @@
  */
 package org.aos.ddo.model.feats
 
-import org.aos.ddo.model.classes.CharacterClass
-import org.aos.ddo.model.classes.CharacterClass.Ranger
+import org.aos.ddo.model.classes.HeroicCharacterClass
+import org.aos.ddo.model.classes.HeroicCharacterClass.Ranger
 import org.aos.ddo.model.feats.GeneralFeat.WeaponSpecialization
 import org.aos.ddo.model.item.weapon.WeaponClass
 import org.aos.ddo.support.requisite.{ClassRequisiteImpl, FeatRequisiteImpl, GrantsToClass, RequiresAllOfFeat, RequiresAnyOfFeat, RequiresBaB}
@@ -61,5 +61,5 @@ protected[feats] trait BowStrength
     case x: WeaponFocusBase if x.weaponClass == WeaponClass.Ranged => x
   }
 
-  override def grantToClass: Seq[(CharacterClass, Int)] = Seq((Ranger, 1))
+  override def grantToClass: Seq[(HeroicCharacterClass, Int)] = Seq((Ranger, 1))
 }

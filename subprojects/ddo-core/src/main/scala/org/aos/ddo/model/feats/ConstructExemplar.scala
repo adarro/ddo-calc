@@ -17,8 +17,8 @@
  */
 package org.aos.ddo.model.feats
 
-import org.aos.ddo.model.classes.CharacterClass
-import org.aos.ddo.model.classes.CharacterClass.Artificer
+import org.aos.ddo.model.classes.HeroicCharacterClass
+import org.aos.ddo.model.classes.HeroicCharacterClass.Artificer
 import org.aos.ddo.model.feats.ClassFeat.ImprovedConstructEssence
 import org.aos.ddo.model.race.Race
 import org.aos.ddo.model.race.Race.Warforged
@@ -38,5 +38,5 @@ protected[feats] trait ConstructExemplar
 
   override def noneOfRace: Seq[(Race, Int)] = List((Warforged, 1))
 
-  override def allOfClass: Seq[(CharacterClass, Int)] = List((Artificer, 12))
+  override def allOfClass: Seq[(HeroicCharacterClass, Int)] = List((Artificer, 12))
 }

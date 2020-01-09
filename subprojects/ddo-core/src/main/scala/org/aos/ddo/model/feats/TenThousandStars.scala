@@ -18,7 +18,7 @@
 package org.aos.ddo.model.feats
 
 import org.aos.ddo.model.attribute.Attribute
-import org.aos.ddo.model.classes.CharacterClass
+import org.aos.ddo.model.classes.HeroicCharacterClass
 import org.aos.ddo.support.requisite.{
   ClassRequisiteImpl,
   FeatRequisiteImpl,
@@ -46,6 +46,6 @@ protected[feats] trait TenThousandStars
   override def requiresAttribute: Seq[(Attribute, Int)] =
     List((Attribute.Dexterity, 13))
 
-  override def allOfClass: Seq[(CharacterClass, Int)] =
-    List((CharacterClass.Monk, 6))
+  override def allOfClass: Seq[(HeroicCharacterClass, Int)] =
+    List((HeroicCharacterClass.Monk, 6))
 }

@@ -17,8 +17,8 @@
  */
 package org.aos.ddo.model.feats
 
-import org.aos.ddo.model.classes.CharacterClass
-import org.aos.ddo.model.classes.CharacterClass.Paladin
+import org.aos.ddo.model.classes.HeroicCharacterClass
+import org.aos.ddo.model.classes.HeroicCharacterClass.Paladin
 import org.aos.ddo.support.requisite._
 
 /**
@@ -33,7 +33,7 @@ protected[feats] trait AuraOfCourage
     with Active
     with GrantsToClass
     with RequiresAllOfClass { self: ClassFeat =>
-  override def grantToClass: Seq[(CharacterClass, Int)] = List((Paladin, 3))
+  override def grantToClass: Seq[(HeroicCharacterClass, Int)] = List((Paladin, 3))
 
-  override def anyOfClass: Seq[(CharacterClass, Int)] = List((Paladin, 3))
+  override def anyOfClass: Seq[(HeroicCharacterClass, Int)] = List((Paladin, 3))
 }

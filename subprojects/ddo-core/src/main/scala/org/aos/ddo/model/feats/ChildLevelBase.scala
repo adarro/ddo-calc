@@ -17,7 +17,7 @@
  */
 package org.aos.ddo.model.feats
 
-import org.aos.ddo.model.classes.CharacterClass.{Cleric, FavoredSoul, Paladin}
+import org.aos.ddo.model.classes.HeroicCharacterClass.{Cleric, FavoredSoul, Paladin}
 import org.aos.ddo.model.item.weapon.FavoredWeapon
 import org.aos.ddo.support.requisite.{RequiresAllOfClass, RequiresAllOfFeat}
 

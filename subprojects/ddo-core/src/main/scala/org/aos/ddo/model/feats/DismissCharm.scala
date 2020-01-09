@@ -17,7 +17,7 @@
  */
 package org.aos.ddo.model.feats
 
-import org.aos.ddo.model.classes.CharacterClass
+import org.aos.ddo.model.classes.HeroicCharacterClass
 import org.aos.ddo.support.requisite.{
   ClassRequisiteImpl,
   FeatRequisiteImpl,
@@ -38,6 +38,6 @@ protected[feats] trait DismissCharm
     with ClassRequisiteImpl
     with GrantsToClass { self: GeneralFeat =>
 
-  override def grantToClass: Seq[(CharacterClass, Int)] =
-    CharacterClass.values.map((_, 1))
+  override def grantToClass: Seq[(HeroicCharacterClass, Int)] =
+    HeroicCharacterClass.values.map((_, 1))
 }

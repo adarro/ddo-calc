@@ -9,27 +9,27 @@
 	governing permissions and limitations under the License. -->
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
-	<modelVersion>4.0.0</modelVersion>
-	<groupId>io.truthencode</groupId>
-	<artifactId>qa-tools</artifactId>
-	<version>0.1.0-alpha</version>
-	<name>Build / Quality Assurance Tools</name>
-	<description>Contains validation / style / QA such as scalastyle / checkstyle etc.</description>
-	<properties>
-		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
-		<jvm.version>1.8</jvm.version>
-		<min.jvm.version>[1.8,)</min.jvm.version>
-		<maven.compiler.source>${jvm.version}</maven.compiler.source>
-		<maven.compiler.target>${jvm.version}</maven.compiler.target>
-		<encoding>UTF-8</encoding>
-	</properties>
-	<distributionManagement>
-		<site>
-			<id>ddo.website</id>
-			<name>Adarro's Nexus</name>
-			<url>http://localhost/DdoObjects/</url>
-		</site>
+    <modelVersion>4.0.0</modelVersion>
+    <groupId>io.truthencode</groupId>
+    <artifactId>qa-tools</artifactId>
+    <version>0.1.0-alpha</version>
+    <name>Build / Quality Assurance Tools</name>
+    <description>Contains validation / style / QA such as scalastyle / checkstyle etc.</description>
+    <properties>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+        <jvm.version>1.8</jvm.version>
+        <min.jvm.version>[1.8,)</min.jvm.version>
+        <maven.compiler.source>${jvm.version}</maven.compiler.source>
+        <maven.compiler.target>${jvm.version}</maven.compiler.target>
+        <encoding>UTF-8</encoding>
+    </properties>
+    <distributionManagement>
+        <site>
+            <id>ddo.website</id>
+            <name>Adarro's Nexus</name>
+            <url>http://localhost/DdoObjects/</url>
+        </site>
 
-	</distributionManagement>
+    </distributionManagement>
 </project>

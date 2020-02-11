@@ -1,7 +1,7 @@
 /*
  * SPDX-License-Identifier: Apache-2.0
  *
- * Copyright 2015-2019 Andre White.
+ * Copyright 2015-2020 Andre White.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -15,21 +15,23 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-
 pluginManagement {
     val testSetsPluginVersion: String by settings
     val kordampGradlePluginVersion: String by settings
-    val scalaTestPluginVersion:String by settings
-    val semVerPluginVersion:String by settings
-    val scoveragePluginVersion:String by settings
+    val scalaTestPluginVersion: String by settings
+    val semVerPluginVersion: String by settings
+    val scoveragePluginVersion: String by settings
+    val editorConfigVersion : String by settings
+    
     plugins {
         id("org.unbroken-dome.test-sets") version testSetsPluginVersion // "2.1.1"
         id("org.kordamp.gradle.project") version kordampGradlePluginVersion
-     //   id("com.github.maiflai.scalatest") version scalaTestPluginVersion // "0.25"
+        id("com.github.maiflai.scalatest") version scalaTestPluginVersion // "0.25"
+        id("org.ec4j.editorconfig") version editorConfigVersion // "0.0.3"
     }
 
     repositories {
-     //   gradlePluginPortal()
+        //   gradlePluginPortal()
         jcenter()
         mavenCentral()
         maven {
@@ -37,11 +39,3 @@ pluginManagement {
         }
     }
 }
-
-//apply(plugin = "org.kordamp.gradle.settings")
-//
-//configure<org.kordamp.gradle.plugin.settings.ProjectsExtension> {
-//    directories = listOf("docs", "subprojects")
-//    enforceNamingConvention = false
-//    layout = "two-level"
-//}

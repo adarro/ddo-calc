@@ -1,0 +1,10 @@
+{
+  "namespace": "model",
+  "type": "enum",
+  "doc": "",
+  "name": "ResultFormat",
+  "symbols": [
+    "json",
+    "csv"
+  ]
+}

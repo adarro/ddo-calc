@@ -1,7 +1,7 @@
 /*
  * SPDX-License-Identifier: Apache-2.0
  *
- * Copyright 2015-2019 Andre White.
+ * Copyright 2015-2020 Andre White.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -16,14 +16,12 @@
  * limitations under the License.
  */
 plugins {
-    //   java
-    `java-library`
     scala
+    `java-library` // cross-compiler is incompatible with java-library ATM
+
     id("com.github.maiflai.scalatest") // version "0.25"
     id("org.scoverage") // version "3.1.5"
-  
     // IDE Specific
     idea
     id("org.unbroken-dome.test-sets") // version "2.1.1"
 }
-

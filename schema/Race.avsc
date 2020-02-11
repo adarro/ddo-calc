@@ -1,0 +1,69 @@
+{
+  "namespace": "model",
+  "type": "record",
+  "doc": "",
+  "name": "Race",
+  "fields": [
+    {
+      "name": "name",
+      "type": ["null", {
+        "type": "enum",
+        "name": "Race_name",
+        "symbols": [
+          "Bladeforged",
+          "Deep Gnome (Svirfneblin)",
+          "Drow Elf",
+          "Dwarf",
+          "Elf",
+          "Gnome",
+          "Halfling",
+          "Half-Elf",
+          "Half-Orc",
+          "Human",
+          "Morninglord (Sun Elf)",
+          "Purple Dragon Knight",
+          "Shadar-kai",
+          "Warforged"
+        ]
+      }],
+      "doc": "Name of race (Used for general display)"
+    },
+    {
+      "name": "id",
+      "type": ["null", {
+        "type": "enum",
+        "name": "Race_id",
+        "symbols": [
+          "Bladeforged",
+          "DeepGnome",
+          "DrowElf",
+          "Dwarf",
+          "Elf",
+          "Gnome",
+          "Halfling",
+          "HalfElf",
+          "HalfOrc",
+          "Human",
+          "Morninglord",
+          "PurpleDragonKnight",
+          "Shadarkai",
+          "Warforged"
+        ]
+      }],
+      "doc": "ID used as key for the Race"
+    },
+    {
+      "name": "availability",
+      "type": ["null", {
+        "type": "enum",
+        "name": "Race_availability",
+        "symbols": [
+          "Basic",
+          "Premium",
+          "Iconic"
+        ]
+      }],
+      "doc": "Determines the subscription level required to unlock or use the race."
+    }
+  ]
+}

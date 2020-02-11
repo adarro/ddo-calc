@@ -3,75 +3,75 @@
 <project name="Maven" xmlns="http://maven.apache.org/DECORATION/1.0.0"
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/DECORATION/1.0.0 http://maven.apache.org/xsd/decoration-1.0.0.xsd">
-  <bannerLeft>
-    <name>The Oracle at DDO Core</name>
-    <src>http://html5-slides-template.googlecode.com/git/images/akquinet-logo-small.png</src>
-    <href>http://adarro.github.io/</href>
-  </bannerLeft>
+    <bannerLeft>
+        <name>The Oracle at DDO Core</name>
+        <src>http://html5-slides-template.googlecode.com/git/images/akquinet-logo-small.png</src>
+        <href>http://adarro.github.io/</href>
+    </bannerLeft>
 
-  <skin>
+    <skin>
 
-    <groupId>lt.velykis.maven.skins</groupId>
-    <artifactId>reflow-maven-skin</artifactId>
-    <version>1.1.1</version>
+        <groupId>lt.velykis.maven.skins</groupId>
+        <artifactId>reflow-maven-skin</artifactId>
+        <version>1.1.1</version>
     <!--<groupId>org.apache.maven.skins</groupId>-->
     <!--<artifactId>maven-fluido-skin</artifactId>-->
     <!--<version>1.6</version>-->
 
-  </skin>
-  <custom>
-    <reflowSkin>
-        <absoluteResourceURL>http://github.com/adarro/ddo-calc/</absoluteResourceURL>
-      <theme>bootswatch-cyborg</theme>
-      <highlightJs>true</highlightJs>
-      <brand>
-        <name>Fatespinner</name>
-        <href>http://github.com/adarro/ddo-calc</href>
-      </brand>
-      <slogan>Super interesting project doing good things.</slogan>
-      <titleTemplate>%2$s | %1$s</titleTemplate>
-      <toc>top</toc>
-      <topNav>Download|reports</topNav>
-      <bottomNav>
-        <column>Main|Download</column>
-        <column>Documentation</column>
-        <column>reports|modules</column>
-      </bottomNav>
-      <bottomDescription>
+    </skin>
+    <custom>
+        <reflowSkin>
+            <absoluteResourceURL>http://github.com/adarro/ddo-calc/</absoluteResourceURL>
+            <theme>bootswatch-cyborg</theme>
+            <highlightJs>true</highlightJs>
+            <brand>
+                <name>Fatespinner</name>
+                <href>http://github.com/adarro/ddo-calc</href>
+            </brand>
+            <slogan>Super interesting project doing good things.</slogan>
+            <titleTemplate>%2$s | %1$s</titleTemplate>
+            <toc>top</toc>
+            <topNav>Download|reports</topNav>
+            <bottomNav>
+                <column>Main|Download</column>
+                <column>Documentation</column>
+                <column>reports|modules</column>
+            </bottomNav>
+            <bottomDescription>
         This is a very good project doing interesting and valuable things.
-      </bottomDescription>
-      <pages>
-        <index project="project-id">
-          <shortTitle>Welcome</shortTitle>
-          <breadcrumbs>true</breadcrumbs>
-          <toc>true</toc>
-          <sections>
-            <carousel/>
-            <body/>
-            <sidebar/>
-            <thumbs>2</thumbs>
-            <columns>3</columns>
-          </sections>
-        </index>
-        <developer-info>
-          <toc>sidebar</toc>
-        </developer-info>
-      </pages>
-    </reflowSkin>
-  </custom>
+            </bottomDescription>
+            <pages>
+                <index project="project-id">
+                    <shortTitle>Welcome</shortTitle>
+                    <breadcrumbs>true</breadcrumbs>
+                    <toc>true</toc>
+                    <sections>
+                        <carousel/>
+                        <body/>
+                        <sidebar/>
+                        <thumbs>2</thumbs>
+                        <columns>3</columns>
+                    </sections>
+                </index>
+                <developer-info>
+                    <toc>sidebar</toc>
+                </developer-info>
+            </pages>
+        </reflowSkin>
+    </custom>
 
 
-  <body>
-    <links>
-      <item name="akquinet" href="http://www.akquinet.de/en"/>
-    </links>
+    <body>
+        <links>
+            <item name="akquinet" href="http://www.akquinet.de/en"/>
+        </links>
 
-    <menu name="Regular Web Site">
-      <item name="APT Format" href="format.html"/>
-      <item name="Xdoc Example" href="xdoc.html"/>
-      <item name="FAQ" href="faq.html"/>
-    </menu>
+        <menu name="Regular Web Site">
+            <item name="APT Format" href="format.html"/>
+            <item name="Xdoc Example" href="xdoc.html"/>
+            <item name="FAQ" href="faq.html"/>
+        </menu>
 
-    <menu ref="reports"/>
-  </body>
+        <menu ref="reports"/>
+    </body>
 </project>

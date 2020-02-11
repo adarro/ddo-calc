@@ -1,7 +1,7 @@
 /*
  * SPDX-License-Identifier: Apache-2.0
  *
- * Copyright 2015-2019 Andre White.
+ * Copyright 2015-2020 Andre White.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -15,23 +15,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-
 rootProject.name = "ddo-calc-parent"
-
-fun includeProject(projectDirName: String, projectName: String) {
-    logger.info("I am in include project function")
-    val baseDir = File(settingsDir, projectDirName)
-    val projectDir = File(baseDir, projectName)
-    val buildFileName = "${projectName}.scala-platform.gradle.kts"
-
-    assert(projectDir.isDirectory())
-    assert(File(projectDir, buildFileName).isFile())
-
-    include(projectName)
-    logger.info("Including Project $projectName in $projectDir with using build file $buildFileName")
-    project(":${projectName}").projectDir = projectDir
-    project(":${projectName}").buildFileName = buildFileName
-}
 
 // at some point in the future, see if we can safely make this property optional so there is no build warning if it is not specified or create a sensible default
 val projectFolderDelimiter: String by settings
@@ -39,30 +23,52 @@ val projectFolders: List<String>
     get() =
         settings.extra["projectFolders"]?.toString()?.split(projectFolderDelimiter) ?: listOf()
 
-logger.info("checking ${projectFolders.size} project folders")
-projectFolders.forEach { dirName ->
-    val subdir = File(rootDir, dirName)
-    logger.info("checking for projects in subDir: ${subdir.name}")
-    subdir.walkTopDown().maxDepth(1).forEach { dir ->
-        val fileNames = listOf(dir.name, "build")
-        var found = false
-        for (f in fileNames) {
-            val buildFileName = File(dir, "$f.gradle.kts")
-            logger.info("looking in ${dir.name} for buildFile $buildFileName")
-            if (buildFileName.exists()) {
-                logger.info("FOUND: $buildFileName")
-                includeProject(dirName, dir.name)
-                found = true
-                break
-            }
-        }
-        if (!found) logger.warn("No build file found in did not exist in ${dir.name}")
-    }
+
+/**
+ *  should be an Extension, but can not inline compile as one in settings.gradle.kts
+ *  so we're doing a quick one off verses polluting a buildSrc.
+ */
+fun readFirstPart(s: String): String {
+    return s.split(".").first()
 }
 
 
+logger.info("checking ${projectFolders.size} project folders")
+projectFolders.forEach { dirName ->
+    // TODO: We should likely check that this path exists or build can bomb
+    val directory = java.nio.file.Paths.get("${rootDir}/$dirName")
+    java.nio.file.Files.find(
+        directory,
+        Integer.MAX_VALUE,
+        { p: java.nio.file.Path, attributes: java.nio.file.attribute.BasicFileAttributes ->
+            attributes.isDirectory
+        }).use { dir ->
+        dir.forEach { d ->
+            val customName = d.toFile().name
+            val files = d.toFile()
+                .listFiles { _, s -> s.matches(Regex("($customName|build)\\.gradle(\\.kts)?")) } //({{f,s -> true}})
 
-
+            if (files?.isNullOrEmpty() != true) {
+                if (files.size != 1)
+                    logger.warn("Multiple build files located in project directory $d")
+                //   val projectDir = d.relativize(rootProject.getProjectDirectory.toPath)
+                //   val projectDir = d.relativize(rootDir.toPath())
+                // val projectDir = d // java.nio.file.Paths.get(d.toPath())
+                val projectDir = rootDir.toPath().relativize(d)
+                val first = files.first()
+                val buildFileName = first.name
+                // build file name may be artibtrary but usually follows either build or the directory name.
+                // since we're mostly controlling the build we'll assume the containing folders' name.
+                val projectName = first.parentFile.name
+                logger.info("Including Project $projectName \t projectDir: $projectDir \t BuildFile: $buildFileName")
+                include(projectName)
+                logger.lifecycle("Including Project $projectName in $projectDir with using build file $buildFileName")
+                project(":${projectName}").projectDir = projectDir.toFile()
+                project(":${projectName}").buildFileName = buildFileName
+            }
+        }
+    }
+}
 
 pluginManagement {
     val scoveragePluginVersion: String by settings
@@ -74,7 +80,15 @@ pluginManagement {
     val taskTreePluginVersion: String by settings
     val kordampGradlePluginVersion: String by settings
     val scalaTestPluginVersion: String by settings
+    val scalaGradleCrossBuildPluginVersion: String by settings
     val semVerPluginVersion: String by settings
+    val editorConfigPluginVersion: String by settings
+    val ktlintConventionPluginVersion: String by settings
+    // Avro
+    val avroHuggerPluginVersion: String by settings
+    val openApiGeneratorPluginVersion: String by settings
+
+
     plugins {
         id("org.scoverage") version scoveragePluginVersion
         id("org.unbroken-dome.test-sets") version testSetsPluginVersion
@@ -83,14 +97,19 @@ pluginManagement {
         //  id "org.standardout.versioneye" version versionEyePluginVersion
         id("com.github.ben-manes.versions") version versionsPluginVersion
         id("se.patrikerdes.use-latest-versions") version useLatestVersionsPluginVersion
-      //  id("com.gradle.build-scan") version buildScanPluginVersion
+        //  id("com.gradle.build-scan") version buildScanPluginVersion
         id("com.dorongold.task-tree") version taskTreePluginVersion
         // kordamp opinionated gradle project plugins
         id("org.kordamp.gradle.project") version kordampGradlePluginVersion
 //        id("org.kordamp.gradle.bintray") version kordampGradlePluginVersion
 //        id("org.kordamp.gradle.build-scan") version kordampGradlePluginVersion
-        id("org.kordamp.gradle.scaladoc") version kordampGradlePluginVersion
+        //       id("org.kordamp.gradle.scaladoc") version kordampGradlePluginVersion
         id("io.wusa.semver-git-plugin") version semVerPluginVersion
+        id("org.ec4j.editorconfig") version editorConfigPluginVersion
+        id("org.gradle.kotlin-dsl.ktlint-convention") version ktlintConventionPluginVersion
+        id("com.github.prokod.gradle-crossbuild") version scalaGradleCrossBuildPluginVersion
+        id("com.zlad.gradle.avrohugger") version avroHuggerPluginVersion
+        id("com.chudsaviet.gradle.avrohugger") version avroHuggerPluginVersion
+        id("org.openapi.generator") version openApiGeneratorPluginVersion
     }
 }
-

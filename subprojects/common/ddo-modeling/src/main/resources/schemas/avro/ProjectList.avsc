@@ -1,0 +1,21 @@
+{
+  "namespace": "model",
+  "type": "record",
+  "doc": "",
+  "name": "ProjectList",
+  "fields": [
+    {
+      "name": "projects",
+      "type": ["null", {
+        "type": "array",
+        "items": "io.truthencode.ddo.etl.parsehub.models.model.Project"
+      }],
+      "doc": ""
+    },
+    {
+      "name": "total_projects",
+      "type": ["null", "int"],
+      "doc": "The total number of projects in your account."
+    }
+  ]
+}

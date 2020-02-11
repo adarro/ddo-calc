@@ -1,0 +1,473 @@
+openapi: 3.0.0
+info:
+  version: "1.0.0-oas3"
+  title: TOAD API
+  description: The Oracle At DDO
+  termsOfService: 'http://swagger.io/terms/'
+  contact:
+    name: Andre White
+    email: adarro@gmail.com
+    url: 'http://toad.comlu.com'
+  license:
+    name: Apachev2
+    url: 'http://www.apache.org/licenses/LICENSE-2.0'
+paths:
+  /items/weapon:
+    get:
+      operationId: listWeapons
+      summary: Retrieves available weapons
+      description: >-
+        Service used to retrieve weapons as per
+        [DDOWiki](http://ddowiki.com/page/Category:Weapons)
+      parameters:
+        - name: tags
+          in: query
+          description: >-
+            tags to filter by. Tag names should correspond to the field names
+            (see Weapon Object)
+          required: false
+          style: form
+          schema:
+            type: array
+            items:
+              type: string
+        - name: limit
+          in: query
+          description: maximum number of results to return
+          required: false
+          schema:
+            type: integer
+            format: int32
+            default: 50
+      tags:
+        - Weapons
+      responses:
+        '200':
+          description: Weapons found matching the given criteria
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Weapon'
+            application/xml:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Weapon'
+        default:
+          description: Unexpected error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/Error'
+  '/items/weapon/{name}':
+    get:
+      operationId: findWeaponByName
+      summary: Retrieves available weapons
+      description: >-
+        Service used to retrieve specific named weapon as per
+        [DDOWiki](http://ddowiki.com/page/Category:Weapons)
+      parameters:
+        - name: name
+          in: path
+          description: Id of the weapon
+          required: true
+          schema:
+            type: string
+      tags:
+        - Weapons
+      responses:
+        '200':
+          description: Weapons found matching the given criteria
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Weapon'
+            application/xml:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Weapon'
+        default:
+          description: Unexpected error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/Error'
+servers:
+  - url: 'https://localhost:8888/api'
+  - url: 'http://localhost:8888/api'
+  - url: 'ws://localhost:8888/api'
+  - url: 'wss://localhost:8888/api'
+components:
+  schemas:
+    Error:
+      type: object
+      properties:
+        code:
+          type: integer
+          format: int32
+        message:
+          type: string
+        fields:
+          type: string
+    Weapon:
+      type: object
+      properties:
+        name:
+          type: string
+          description: Name of the Item
+        proficiency_class:
+          type: string
+          description: General Level of Martial training required to wield
+          enum:
+            - Simple
+            - Martial
+            - Exotic
+        image:
+          type: string
+          description: Screen shot or image URI
+        damage:
+          $ref: '#/components/schemas/Damage'
+        damage_type:
+          $ref: '#/components/schemas/Damage_Type'
+        critical_threat_range:
+          $ref: '#/components/schemas/Critical_Threat_Range'
+        weapon_category:
+          description: The type of weapon such as long sword Axe etc
+          type: string
+          enum:
+            - BastardSword
+            - BattleAxe
+            - Club
+            - Dagger
+            - Dart
+            - DwarvenWarAxe
+            - Falchion
+            - GreatAxe
+            - GreatClub
+            - GreatCrossbow
+            - GreatSword
+            - HandAxe
+            - Handwrap
+            - HeavyCrossbow
+            - HeavyMace
+            - HeavyPick
+            - Kama
+            - Khopesh
+            - Kukris
+            - LightCrossbow
+            - LightHammer
+            - LightMace
+            - LightPick
+            - Longbow
+            - Longsword
+            - Maul
+            - Morningstar
+            - Quarterstaff
+            - Rapier
+            - RepeatingHeavyCrossbow
+            - RepeatingLightCrossbow
+            - Scimitar
+            - Shortbow
+            - ShortSword
+            - Shuriken
+            - Sickle
+            - SimpleProjectile
+            - ThrowingAxe
+            - ThrowingDagger
+            - ThrowingHammer
+            - WarHammer
+        required_race:
+          description: Race required to use item without a UMD Check
+          type: array
+          items:
+            type: string
+        abs_required_race:
+          description: Race absolutely required (no bypass) to use item
+          type: array
+          items:
+            type: string
+        abs_restricted_race:
+          description: Races specifically not allowed to use
+          type: array
+          items:
+            type: string
+        min_level:
+          description: Minimum character level required to use item
+          type: integer
+          format: int32
+        abs_min_level:
+          description: >-
+            Altered minimum level usually caused as a side-effect of additional
+            enchantments which may increase the requirement
+        required_trait:
+          description: Trait such as Lawful needed to use item
+          type: array
+          items:
+            type: string
+        umd:
+          type: string
+          description: Use Magical Device DC
+        handedness:
+          description: Allowed slots such as one handed (main or off hand) / two handed
+          type: array
+          items:
+            type: string
+        attack_mod:
+          description: Attribute(s) that modify the attack roll
+          type: array
+          items:
+            type: string
+        damage_mod:
+          description: Attribute(s) that modify the damage roll
+          type: array
+          items:
+            type: string
+        binding:
+          description: 'Character or Account binding, if any'
+          type: string
+        durability:
+          description: 'tensile strength, how hard it is to damage'
+          type: integer
+          format: int32
+        wear_location:
+          description: Allowed slots for the item to be equipped
+          type: string
+          enum:
+            - MainHand
+            - OffHand
+            - TwoHand
+        material:
+          description: material made from
+          type: string
+          enum:
+            - Adamantine
+            - Blueshine
+            - Bone
+            - Byeshk
+            - Cloth
+            - Cold_Iron
+            - Crystal
+            - Darkleaf
+            - Darkwood
+            - Densewood
+            - Dwarven_Iron
+            - Feyleather
+            - Flametouched_Iron
+            - Flesh
+            - Force
+            - Gem
+            - Glass
+            - Ice
+            - Leather
+            - Light
+            - Magesteel
+            - Mithral
+            - Planeforged_Steel
+            - Rust
+            - Silver
+            - Spiritcraft_Leather
+            - Spiritforged_Iron
+            - Steel
+            - Stone
+            - Wood
+        hardness:
+          description: physical toughness of the item
+          type: integer
+          format: int32
+        base_value:
+          description: Monetary value of item
+          type: string
+        weight:
+          type: integer
+          format: int32
+          description: weight in pounds
+        location:
+          description: Text describing the location of the item
+          type: string
+        enchantments:
+          description: Collection of Enchantments on the item.
+          type: array
+          items:
+            type: string
+        enchantments_choice:
+          description: Used to support One of the following
+          type: array
+          items:
+            type: string
+        upgradeable:
+          description: >-
+            If an item can be upgraded, instructions or the name of the upgraded
+            item may appear here.
+          type: string
+        description_text:
+          description: descriptive text of the item
+          type: string
+        sets:
+          description: >-
+            Any sets this item belongs to that give bonuses when all items are
+            equipped.
+          type: array
+          items:
+            type: string
+    Damage:
+      properties:
+        dice_modifier:
+          type: integer
+          format: int32
+          description: Multiplier for the dice
+        dice:
+          type: string
+          description: Dice expression in the form of nDm
+        extra:
+          type: integer
+          format: int32
+          description: Additional Damage after the dice
+        damage_type:
+          $ref: '#/components/schemas/Damage_Type'
+    Damage_Type:
+      properties:
+        value:
+          type: string
+          enum:
+            - Bludgeon
+            - Pierce
+            - Slash
+            - Magic
+    Critical_Threat_Range:
+      properties:
+        min:
+          description: Lower bound for critical multiplier
+          type: integer
+          format: int32
+        max:
+          description: Upper bound for critical multiplier
+          type: integer
+          format: int32
+        multiplier:
+          description: Number to multiply the damage roll by
+          type: integer
+          format: int32
+    Ability:
+      description: >-
+        Base stat that determines, enhances or decreases skills and abilities,
+        modifications to attack and damage rolls etc.
+      type: object
+      properties:
+        id:
+          type: string
+          description: key for Ability
+          enum:
+            - Strength
+            - Dexterity
+            - Constitution
+            - Intelligence
+            - Wisdom
+            - Charisma
+        abbreviation:
+          type: string
+          description: Abbreviation for stat
+          enum:
+            - STR
+            - DEX
+            - CON
+            - INT
+            - WIS
+            - CHA
+    Skill:
+      description: >-
+        Specific skills such as haggling which are affected by a related ability
+        score
+      type: object
+      properties:
+        name:
+          description: Name of the skill
+          type: string
+          enum:
+            - Balance
+            - Bluff
+            - Concentration
+            - Diplomacy
+            - Disable Device
+            - Haggle
+            - Heal
+            - Hide
+            - Intimidate
+            - Jump
+            - Listen
+            - Move Silently
+            - Open Lock
+            - Perform
+            - Repair
+            - Search
+            - Spellcraft
+            - Spot
+            - Swim
+            - Tumble
+            - Use Magic Device
+        skillType:
+          description: Determines whether a skill is active or passive
+          type: string
+          enum:
+            - Passive
+            - Active
+        RelatedAbility:
+          $ref: '#/components/schemas/Race'
+    Race:
+      type: object
+      properties:
+        name:
+          description: Name of race (Used for general display)
+          type: string
+          enum:
+            - Bladeforged
+            - Deep-Gnome_Svirfneblin
+            - Drow Elf
+            - Dwarf
+            - Elf
+            - Gnome
+            - Halfling
+            - Half-Elf
+            - Half-Orc
+            - Human
+            - Morninglord_Sun-Elf
+            - Purple-Dragon-Knight
+            - Shadar-kai
+            - Warforged
+        id:
+          description: ID used as key for the Race
+          type: string
+          enum:
+            - Bladeforged
+            - DeepGnome
+            - DrowElf
+            - Dwarf
+            - Elf
+            - Gnome
+            - Halfling
+            - HalfElf
+            - HalfOrc
+            - Human
+            - Morninglord
+            - PurpleDragonKnight
+            - Shadarkai
+            - Warforged
+        availability:
+          description: >-
+            Determines the subscription level required to unlock or use the
+            race.
+          type: string
+          enum:
+            - Basic
+            - Premium
+            - Iconic

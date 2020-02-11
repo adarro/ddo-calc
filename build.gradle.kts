@@ -1,7 +1,7 @@
 /*
  * SPDX-License-Identifier: Apache-2.0
  *
- * Copyright 2015-2019 Andre White.
+ * Copyright 2015-2020 Andre White.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -15,59 +15,48 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import com.github.benmanes.gradle.versions.updates.DependencyUpdatesTask
-import com.hierynomus.gradle.license.tasks.LicenseCheck
-// import io.wusa.SemverGitPluginExtension
-import org.gradle.api.tasks.testing.logging.TestLogEvent
-import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
+// Welcome to a clean start
+// import com.hierynomus.gradle.license.tasks.LicenseCheck
 
-buildscript {
-    repositories {
-        jcenter()
-    }
-}
+
+import org.gradle.plugins.ide.idea.model.Module
+import org.gradle.plugins.ide.idea.model.ModuleDependency
 
 plugins {
- //   id("io.wusa.semver-git-plugin")
-    //  application
-    id("java-library")
-    id("org.unbroken-dome.test-sets")
-    id("org.kordamp.gradle.project")
-   // id("org.kordamp.gradle.bintray") removing in favor of Mockito / ShipKit
-  //  id("org.kordamp.gradle.build-scan") // deprecated as of 0.31.0
-    id("org.scoverage")
-    idea
-    eclipse
-    //   id "findbugs"
-    //  id "org.standardout.versioneye" version "1.5.0"
-    id("com.github.ben-manes.versions")
-    id("se.patrikerdes.use-latest-versions")
- //   id("com.gradle.build-scan").version("3.1.1")
+    // CI / CD
+    id("org.shipkit.java") version "2.2.6"
+    // Formatting, linting / code standards and conventions etc
+    id("org.ec4j.editorconfig")
+    //  id("org.gradle.kotlin-dsl.ktlint-convention") apply (false)
     id("quality-checks")
-    `project-report`
-    `build-dashboard`
-    id("gradle.site") version "0.6"
-    id("com.dorongold.task-tree")
-    id("org.kordamp.gradle.scaladoc")
-    kotlin("jvm") version "1.3.61"
+    id("com.github.maiflai.scalatest") apply (false)
+    id("org.scoverage") apply (false)
+    //  id("com.github.prokod.gradle-crossbuild") // apply (false)
+    id("org.unbroken-dome.test-sets") apply (false)
+    id("org.kordamp.gradle.project") // apply (false)
+    idea
 
 
-}
-
-// val semver: SemverGitPluginExtension by project.extensions
-
-fun binTrayUser(): Pair<String, String> {
-    val bintrayUsername: String? by project
-    val bintrayApiKey: String? by project
-    val uId = bintrayUsername ?: System.getenv("bintrayUsername")
-    val apiId = bintrayApiKey ?: System.getenv("bintrayApiKey")
-    return Pair(uId, apiId)
 
 }
-val (bintrayUsername, bintrayApiKey) = binTrayUser()//: String by project
-//val bintrayUsername: String by project
-//val bintrayApiKey: String by project
+
+repositories {
+    jcenter()
+    mavenCentral()
+}
+
+
+
+// general project information
+val projectName = project.name
+val gitHubAccountName = "truthencode"
+val gitHubBaseSite = "https://github.com/$gitHubAccountName/${project.name}"
+val siteIssueTracker = "${gitHubBaseSite}/issues"
+val gitExtension = "${project.name}.git"
+val siteScm = "${gitHubBaseSite}/$gitExtension"
+
 val releaseActive: Boolean? = rootProject.findProperty("release") as Boolean?
+
 
 config {
     release = if (releaseActive != null) releaseActive!! else false
@@ -79,15 +68,15 @@ config {
         inceptionYear = "2015"
 
         links {
-            website = "https://github.com/adarro/ddo-calc"
-            issueTracker = "https://github.com/adarro/ddo-calc/issues"
-            scm = "https://github.com/adarro/ddo-calc/ddo-calc.git"
+            website = gitHubBaseSite
+            issueTracker = siteIssueTracker
+            scm = siteScm
         }
 
         scm {
-            url = "https://github.com/adarro/ddo-calc"
-            developerConnection = "scm:git:git@github.com:adarro/ddo-calc.git"
-            connection = "scm:git:git://github.com/github.com/adarro/ddo-calc.git"
+            url = gitHubBaseSite
+            developerConnection = "scm:git:git@github.com:$gitHubAccountName/${gitExtension}"
+            connection = "scm:git:git://github.com/github.com/$gitHubAccountName/$gitExtension"
         }
 
         people {
@@ -106,250 +95,140 @@ config {
             }
         }
     }
-
-//    bintray {
-//        enabled = false
-//        credentials {
-//            username = bintrayUsername // project.bintrayUsername
-//            password = bintrayApiKey // project.bintrayApiKey
-//        }
-//        userOrg = "truthencode"
-//        name = rootProject.name
-//        githubRepo = "adarro/ddo-calc"
-//        enabled = true
-//    }
-    bom {
-        enabled = true
-//        signing {
-// * To be done later
-//        }
-    }
-    buildInfo {
-        buildBy = "Andre White"
-    }
-//    buildScan {
-//        enabled = false
-//    }
-    scaladoc {
-        this.replaceJavadoc = true
-    }
 }
 
 license {
     header = rootProject.file("buildResources/LICENSE_HEADER")
     ignoreFailures = true
     strictCheck = true
+    excludes(listOf("buildsrc\\build\\kotlin-dsl\\plugins-blocks\\extracted\\**"))
 
 }
-
-tasks.withType(HtmlDependencyReportTask::class.java) {
-    projects = projects
-}
-
-// semver {
-//    snapshotSuffix = "SNAPSHOT"
-//    val ti: SemverGitPluginExtension = this
-//}
-
-
-val t = this
-
-// buildScan {
-//    termsOfServiceUrl = "https://gradle.com/terms-of-service"
-//    termsOfServiceAgree = "yes"
-//}
-
-tasks.register("showDirs") {
-    doLast {
-        logger.quiet(rootDir.toPath().relativize((project.properties["reportsDir"] as File).toPath()).toString())
-        logger.quiet(rootDir.toPath().relativize((project.properties["testResultsDir"] as File).toPath()).toString())
-    }
-}
-
-tasks.register<TestReport>("testReport") {
-    destinationDir = file("$buildDir/reports/allTests")
-    // Include the results from the `test` task in all subprojects
-    reportOn(subprojects.map { it.tasks["test"] })
-}
-
-tasks.register("aggregateReports") {
-    dependsOn("testReport", "aggregateScoverage", "projectReport")
-    group = "reporting"
-    description = "Aggregates Reports into root directory"
-
-}
-
-tasks.register("showReportTasks ") {
-    description = "Displays report task names"
-    tasks.filter { t -> t.name.contains("report", true) }.forEach {
-        println("ReportTask : ${it.name}\t${it.javaClass.name}")
-    }
-}
-
-tasks.test {
-    useJUnitPlatform()
-    testLogging {
-        events.addAll(listOf(TestLogEvent.PASSED, TestLogEvent.FAILED, TestLogEvent.SKIPPED))
-    }
-}
-
-site {
-    websiteUrl.set("https://github.com/adarro")
-    outputDir.set(file("$rootDir/docs"))
-    vcsUrl.set("https://github.com/adarro/ddo-calc.git")
-}
-
-
-tasks.withType(GenerateBuildDashboard::class.java) {
-    // this.aggregate()
-    reports {
-        logger.warn("${enabledReports.size} enabled dashboard reports")
-        enabledReports.forEach { (n, r) ->
-            logger.warn("Dashboard: $n\t${r.name}\t${r.displayName}\t${r.isEnabled}")
+idea {
+    project {
+        vcs = "Git"
+        ipr {
+            beforeMerged(Action<org.gradle.plugins.ide.idea.model.Project> {
+                modulePaths.clear()
+            })
         }
 
-    }
-}
-
-allprojects {
-    repositories {
-        jcenter()
-        mavenCentral()
-        gradlePluginPortal()
-    }
-//    apply(plugin = "io.wusa.semver-git-plugin")
-//    version = semver.info.version
-    val codacy: Configuration by configurations.creating
-    dependencies {
-        // https://mvnrepository.com/artifact/com.codacy/codacy-coverage-reporter
-        codacy(group = "com.codacy", name = "codacy-coverage-reporter", version = "6.0.2")
-    }
-}
-
-
-
-subprojects {
-
-    this.pluginManager.apply("java-library")
-    this.pluginManager.apply("project-report")
-
-
-
-    tasks.create("showPlugins") {
-        description = "Lists pluginAware plugins for each project"
-        println("Plugins for $project.name")
-        project.plugins.forEach {
-            println(it)
-        }
-    }
-    tasks.withType<Test> {
-        reports.html.isEnabled = true
-        useJUnitPlatform()
-        testLogging {
-            events.addAll(listOf(TestLogEvent.PASSED, TestLogEvent.FAILED, TestLogEvent.SKIPPED))
-        }
-        systemProperty("concordion.output.dir", "${project.reporting.baseDir}/spec")
-    }
-
-
-    repositories {
-        mavenLocal()
-        jcenter()
-        maven("http://repo.spring.io/libs-release-remote")
-        maven("https://oss.sonatype.org/content/repositories/releases")
-        maven("http://repo1.maven.org/maven2/")
-    }
-
-}
-
-tasks.withType<DependencyUpdatesTask> {
-    resolutionStrategy {
-        componentSelection {
-            all {
-                val rejected = listOf("alpha", "beta", "rc", "cr", "m", "preview", "b", "ea").any { qualifier ->
-                    candidate.version.matches(Regex("(?i).*[.-]$qualifier[.\\d-+]*"))
-                }
-                if (rejected) {
-                    reject("Release candidate")
-                } else {
-                    val scalaLibLoc = candidate.module == "scala-library" || candidate.group == "org.scala-lang"
-                    if (scalaLibLoc) {
-                        reject("${candidate.module}:${candidate.module} is locked at ${candidate.version}")
+        module {
+            iml {
+                whenMerged(Action<Module> {
+                    dependencies.forEach {
+                        (it as ModuleDependency).isExported = true
                     }
-                }
+                })
             }
         }
     }
-    // optional parameters
-    checkForGradleUpdate = true
-    outputFormatter = "json"
-    outputDir = "build/dependencyUpdates"
-    reportfileName = "report"
-}
 
-tasks.create("sendCoverageToCodacy", JavaExec::class) {
-    val codacy = configurations.findByName("codacy")
-    val pId = "CODACY_PROJECT_TOKEN"
-    val token = if (project.hasProperty(pId))
-        project.properties[pId] as String else System.getProperty(pId)
-    logger.warn("$pId -> $token")
-    main = "com.codacy.CodacyCoverageReporter"
-    if (codacy != null) {
-        classpath = codacy.asFileTree
+    module.iml {
+        beforeMerged(Action<Module> {
+            dependencies.clear()
+        })
     }
-    args = listOf(
-        "report",
-        "-l",
-        "Scala",
-        "-r",
-        "${buildDir}/reports/scoverage/cobertura.xml"
-    )
-    logger.info("Adding env $pId -> $token")
-    environment = environment.plus(Pair(pId, token))
 }
 
-
-/*
-task sendCoverageToCodacy(type: JavaExec, dependsOn: jacocoTestReport) {
-    main = "com.codacy.CodacyCoverageReporter"
-    classpath = configurations.codacy
-    args = [
-        "report",
-        "-l",
-        "Java",
-        "-r",
-        "${buildDir}/reports/jacoco/test/jacocoTestReport.xml"
-    ]
-}
-
- */
-
-//tasks.withType<LicenseCheck> {
-//    ignoreFailures = true
-//    strictCheck = true
+//        configure<org.gradle.plugins.ide.idea.model.IdeaModel> {
+//
+//        }
+//crossBuild {
 //
 //}
 
-projectReports {
-    this.projects.addAll(t.allprojects)
+allprojects {
+    apply {
+        // plugin("org.ec4j.editorconfig")
+        plugin("quality-checks")
+
+    }
+    // scala cross building
+//    pluginManager.withPlugin("com.github.prokod.gradle-crossbuild") {
+
+//        crossBuild {
+//
+//            scalaVersionsCatalog = ['2.11':'2.11.12', '2.12':'2.12.8']
+//
+//            builds {
+//                spark240_211
+//                spark243_212
+//            }
+//        }
+//    }
+    repositories {
+        jcenter()
+        mavenCentral()
+    }
 }
 
-/*
-versioneye {
-    includeSubProjects = true
+//subprojects {
+//    // filter out platform projects (i.e. java-platform plugin applied not java-library
+//    this.pluginManager.withPlugin("java-library") {
+//        project.apply {
+//            plugin("org.unbroken-dome.test-sets")
+//        }
+//    }
+//
+//}
+
+// tasks.getByPath("check").dependsOn("licenseFormat")
+editorconfig {
+    excludes = listOf("**/*.gradle.kts", "gradle.properties", "**/gradlew.bat", "gradle", "gradlew")
 }
-*/
-dependencies {
-    implementation(kotlin("stdlib-jdk8"))
+
+// shipkit config with gradle 6
+tasks.withType(org.shipkit.gradle.notes.AbstractReleaseNotesTask::class.java) {
+    this.publicationRepository = "https://dl.bintray.com/truthencode/ddo-service"
 }
-repositories {
-    mavenCentral()
+
+fun String.firstPart(): String {
+    return this.split(".").first()
 }
-val compileKotlin: KotlinCompile by tasks
-compileKotlin.kotlinOptions {
-    jvmTarget = "1.8"
+
+tasks.create("complianceCheck") {
+    this.description = "Formats code according to editorConfig and applies any missing license headers"
+    dependsOn("editorconfigCheck", "license")
+    group = "compliance"
 }
-val compileTestKotlin: KotlinCompile by tasks
-compileTestKotlin.kotlinOptions {
-    jvmTarget = "1.8"
+
+tasks.create("complianceFormat") {
+    this.description = "Formats code according to editorConfig and applies any missing license headers"
+    dependsOn("editorconfigFormat", "licenseFormat")
+    group = "compliance"
 }
+
+tasks.create("showSubDir") {
+    // TODO: Remove this task before commit
+    val directory = java.nio.file.Paths.get("${rootDir.path}/subprojects")
+    java.nio.file.Files.find(
+        directory,
+        Integer.MAX_VALUE,
+        { _: java.nio.file.Path, attributes: java.nio.file.attribute.BasicFileAttributes ->
+            attributes.isDirectory
+        }).use { dir ->
+        dir.forEach { d ->
+            val files =
+                d.toFile().listFiles { p, s -> s.matches(Regex(".*build\\.gradle(\\.kts)?")) } //({{f,s -> true}})
+
+            if (files?.isNullOrEmpty() != true) {
+                if (files.size != 1)
+                    logger.warn("Multiple build files located in project directory $d")
+                val projectDir = java.nio.file.Paths.get(".") //. d.relativize(directory)
+                val first = files.first()
+                val projectName = first.name.firstPart()
+                logger.info("Including Project $projectName \t projectDir: $projectDir \t BuildFile: $first")
+            }
+        }
+    }
+
+
+}
+// rootProject.apply { from(rootProject.file("gradle/shipkit")) }
+/* rootProject.apply {
+    afterEvaluate {
+        apply{from(rootProject.file("gradle/ide.gradle.kts"))}
+    }
+
+} */

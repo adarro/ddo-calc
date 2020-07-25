@@ -15,9 +15,9 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package org.aos.ddo.support.naming
+package io.truthencode.ddo.support.naming
 
-import org.aos.ddo.support.StringUtils.Extensions
+import io.truthencode.ddo.support.StringUtils.Extensions
 
 /**
   * Alters Display by adding spaces between words.

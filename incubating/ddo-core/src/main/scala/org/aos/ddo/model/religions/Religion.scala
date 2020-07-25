@@ -15,15 +15,15 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package org.aos.ddo.model.religions
+package io.truthencode.ddo.model.religions
 
 import enumeratum.{Enum, EnumEntry}
-import org.aos.ddo.model.item.weapon.{FavoredWeapon, WeaponCategory}
-import org.aos.ddo.model.worlds.{Eberron, ForgottenRealms, HomeWorld}
-import org.aos.ddo.support.naming.{DisplayName, FriendlyDisplay}
+import io.truthencode.ddo.model.item.weapon.{FavoredWeapon, WeaponCategory}
+import io.truthencode.ddo.model.worlds.{Eberron, ForgottenRealms, HomeWorld}
+import io.truthencode.ddo.support.naming.{DisplayName, FriendlyDisplay}
 
 import scala.collection.immutable.IndexedSeq
-import org.aos.ddo.support.StringUtils.Extensions
+import io.truthencode.ddo.support.StringUtils.Extensions
 
 /**
   * Represents the Deities followed by player characters.

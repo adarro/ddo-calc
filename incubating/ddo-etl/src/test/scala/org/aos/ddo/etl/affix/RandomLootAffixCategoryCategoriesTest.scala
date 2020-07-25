@@ -1,8 +1,8 @@
-package org.aos.ddo.etl.affix
+package io.truthencode.ddo.etl.affix
 
 import com.typesafe.scalalogging.LazyLogging
 import org.scalatest.{FunSpec, Matchers}
-import org.aos.ddo.etl.affix.RandomLootAffixRules.catOpts
+import io.truthencode.ddo.etl.affix.RandomLootAffixRules.catOpts
 import org.scalatest.matchers.{MatchResult, Matcher}
 
 /**

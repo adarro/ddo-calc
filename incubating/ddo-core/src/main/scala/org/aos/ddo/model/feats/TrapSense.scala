@@ -15,12 +15,12 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package org.aos.ddo.model.feats
+package io.truthencode.ddo.model.feats
 
-import org.aos.ddo.model.classes.HeroicCharacterClass
-import org.aos.ddo.model.classes.HeroicCharacterClass.{Barbarian, Rogue}
-import org.aos.ddo.support.requisite.{FeatRequisiteImpl, FreeFeat, GrantsToClass}
-import org.aos.ddo.support.TraverseOps.Crossable
+import io.truthencode.ddo.model.classes.HeroicCharacterClass
+import io.truthencode.ddo.model.classes.HeroicCharacterClass.{Barbarian, Rogue}
+import io.truthencode.ddo.support.requisite.{FeatRequisiteImpl, FreeFeat, GrantsToClass}
+import io.truthencode.ddo.support.TraverseOps.Crossable
 
 /**
   * [[http://ddowiki.com/page/Trap_Sense Trap Sense]]

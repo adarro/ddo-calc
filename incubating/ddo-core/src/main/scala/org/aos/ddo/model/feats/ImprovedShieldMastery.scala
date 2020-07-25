@@ -15,9 +15,9 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package org.aos.ddo.model.feats
+package io.truthencode.ddo.model.feats
 
-import org.aos.ddo.support.requisite.{FeatRequisiteImpl, RequiresAllOfFeat, RequiresBaB}
+import io.truthencode.ddo.support.requisite.{FeatRequisiteImpl, RequiresAllOfFeat, RequiresBaB}
 
 /** Icon Feat Improved Shield Mastery.png
   * Improved Shield Mastery 	Passive 	You are exceptionally skilled with the use of a shield, and your physical resistance is increased by an additional 5 when using a buckler or small shield, 10 when using a large shield, or 15 when using a tower shield. Your Doublestrike chance while using a shield is increased by 5% to a total of 8%. Add +3 Melee Power(for a total of +6)

@@ -31,7 +31,7 @@ pluginManagement {
     }
 
     repositories {
-        //   gradlePluginPortal()
+           gradlePluginPortal()
         jcenter()
         mavenCentral()
         maven {

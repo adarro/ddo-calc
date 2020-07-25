@@ -15,7 +15,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package org.aos.ddo
+package io.truthencode.ddo
 
 /**
   * Created by adarr on 1/27/2017.

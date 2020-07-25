@@ -15,7 +15,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package org.aos.ddo.support
+package io.truthencode.ddo.support
 
 /**
   * Represents item modifier effects that can be prefixed or suffixed to an item to provide additional effects.

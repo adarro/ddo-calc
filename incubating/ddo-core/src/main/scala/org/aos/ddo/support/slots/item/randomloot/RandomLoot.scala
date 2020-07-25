@@ -15,9 +15,9 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package org.aos.ddo.support.slots.item.randomloot
+package io.truthencode.ddo.support.slots.item.randomloot
 
-import org.aos.ddo.support.slots.item.RandomLootGen
+import io.truthencode.ddo.support.slots.item.RandomLootGen
 
 /**
   * Created by adarr on 5/5/2017.

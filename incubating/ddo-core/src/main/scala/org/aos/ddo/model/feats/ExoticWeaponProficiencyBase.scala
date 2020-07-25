@@ -15,11 +15,11 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package org.aos.ddo.model.feats
+package io.truthencode.ddo.model.feats
 
-import org.aos.ddo.model.item.weapon.ExoticWeapon
-import org.aos.ddo.support.naming.Prefix
-import org.aos.ddo.support.requisite._
+import io.truthencode.ddo.model.item.weapon.ExoticWeapon
+import io.truthencode.ddo.support.naming.Prefix
+import io.truthencode.ddo.support.requisite._
 
 /** Icon Feat Exotic Weapon Proficiency.png
   * Exotic Weapon Proficiency - Passive

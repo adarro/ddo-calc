@@ -18,7 +18,7 @@
 plugins {
     id "scala"
 }
-group = 'org.aos'
+group = 'io.truthencode'
 description = ''
 dependencies {
     compile group: 'com.typesafe.scala-logging', name: 'scala-logging_2.12', version:'3.9.2'

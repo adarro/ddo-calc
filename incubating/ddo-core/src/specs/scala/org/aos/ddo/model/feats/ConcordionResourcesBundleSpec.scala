@@ -15,7 +15,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package org.aos.ddo.model.feats
+package io.truthencode.ddo.model.feats
 
 import org.concordion.api.ConcordionResources
 import org.concordion.integration.junit4.ConcordionRunner

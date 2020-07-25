@@ -27,24 +27,16 @@ plugins {
     id("org.shipkit.java") version "2.2.6"
     // Formatting, linting / code standards and conventions etc
     id("org.ec4j.editorconfig")
-    //  id("org.gradle.kotlin-dsl.ktlint-convention") apply (false)
     id("quality-checks")
-    id("com.github.maiflai.scalatest") apply (false)
-    id("org.scoverage") apply (false)
-    //  id("com.github.prokod.gradle-crossbuild") // apply (false)
     id("org.unbroken-dome.test-sets") apply (false)
     id("org.kordamp.gradle.project") // apply (false)
     idea
-
-
-
 }
 
 repositories {
     jcenter()
     mavenCentral()
 }
-
 
 
 // general project information
@@ -104,6 +96,7 @@ license {
     excludes(listOf("buildsrc\\build\\kotlin-dsl\\plugins-blocks\\extracted\\**"))
 
 }
+
 idea {
     project {
         vcs = "Git"
@@ -131,13 +124,6 @@ idea {
     }
 }
 
-//        configure<org.gradle.plugins.ide.idea.model.IdeaModel> {
-//
-//        }
-//crossBuild {
-//
-//}
-
 allprojects {
     apply {
         // plugin("org.ec4j.editorconfig")
@@ -162,16 +148,6 @@ allprojects {
         mavenCentral()
     }
 }
-
-//subprojects {
-//    // filter out platform projects (i.e. java-platform plugin applied not java-library
-//    this.pluginManager.withPlugin("java-library") {
-//        project.apply {
-//            plugin("org.unbroken-dome.test-sets")
-//        }
-//    }
-//
-//}
 
 // tasks.getByPath("check").dependsOn("licenseFormat")
 editorconfig {

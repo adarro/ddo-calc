@@ -15,7 +15,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package org.aos.ddo.support.slots.item
+package io.truthencode.ddo.support.slots.item
 
 /**
   * Base trait representing slots that can be filled with effects.

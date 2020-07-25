@@ -15,12 +15,12 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package org.aos.ddo.model.misc
+package io.truthencode.ddo.model.misc
 
 import com.typesafe.scalalogging.LazyLogging
-import org.aos.ddo.activation.ActivationType
-import org.aos.ddo.activation.ActivationType.Passive
-import org.aos.ddo.model.effect.TriggerEvent
+import io.truthencode.ddo.activation.ActivationType
+import io.truthencode.ddo.activation.ActivationType.Passive
+import io.truthencode.ddo.model.effect.TriggerEvent
 import org.scalatest.{FunSpec, Matchers}
 
 import scala.languageFeature.postfixOps

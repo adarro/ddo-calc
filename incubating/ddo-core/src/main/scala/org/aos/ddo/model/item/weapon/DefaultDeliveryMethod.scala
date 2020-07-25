@@ -30,7 +30,7 @@
   * See the License for the specific language governing permissions and
   * limitations under the License.
   */
-package org.aos.ddo.model.item.weapon
+package io.truthencode.ddo.model.item.weapon
 
 /** Specifies the method of damage delivery.
   */

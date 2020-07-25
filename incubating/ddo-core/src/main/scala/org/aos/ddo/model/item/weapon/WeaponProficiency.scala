@@ -15,12 +15,12 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package org.aos.ddo.model.item.weapon
+package io.truthencode.ddo.model.item.weapon
 
 /** Base trait to provide a field for weapon proficiency
   */
 sealed trait WeaponProficiency {
-  /** MustContainAtLeastOne of the [[org.aos.ddo.model.item.weapon.ProficiencyClass]] values.
+  /** MustContainAtLeastOne of the [[io.truthencode.ddo.model.item.weapon.ProficiencyClass]] values.
     */
   val proficiency: ProficiencyClass
 }

@@ -15,10 +15,10 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package org.aos.ddo.model.effect
+package io.truthencode.ddo.model.effect
 
 import enumeratum.{Enum, EnumEntry}
-import org.aos.ddo.NoDefault
+import io.truthencode.ddo.NoDefault
 
 sealed trait WeaponSuffix extends EnumEntry with Suffix
 object WeaponSuffix extends Enum[WeaponSuffix] with NoDefault[WeaponSuffix] {

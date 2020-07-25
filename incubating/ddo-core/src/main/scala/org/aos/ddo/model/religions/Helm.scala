@@ -15,10 +15,10 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package org.aos.ddo.model.religions
+package io.truthencode.ddo.model.religions
 
-import org.aos.ddo.model.item.weapon.{FavoredWeapon, WeaponCategory}
-import org.aos.ddo.model.worlds.Eberron
+import io.truthencode.ddo.model.item.weapon.{FavoredWeapon, WeaponCategory}
+import io.truthencode.ddo.model.worlds.Eberron
 
 /**
   * Created by adarr on 4/9/2017.

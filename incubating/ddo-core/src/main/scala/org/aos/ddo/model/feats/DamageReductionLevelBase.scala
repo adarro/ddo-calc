@@ -15,10 +15,10 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package org.aos.ddo.model.feats
+package io.truthencode.ddo.model.feats
 
-import org.aos.ddo.support.naming.{DisplayName, FriendlyDisplay}
-import org.aos.ddo.support.requisite.{ClassRequisite, FeatRequisite}
+import io.truthencode.ddo.support.naming.{DisplayName, FriendlyDisplay}
+import io.truthencode.ddo.support.requisite.{ClassRequisite, FeatRequisite}
 
 /**
   * Created by adarr on 4/10/2017.

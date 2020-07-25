@@ -15,13 +15,13 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package org.aos.ddo.model.feats
+package io.truthencode.ddo.model.feats
 
-import org.aos.ddo.model.attribute.Attribute
-import org.aos.ddo.model.feats.GeneralFeat.ExoticWeaponProficiency
-import org.aos.ddo.model.item.weapon.WeaponCategory
-import org.aos.ddo.model.race.Race
-import org.aos.ddo.support.requisite._
+import io.truthencode.ddo.model.attribute.Attribute
+import io.truthencode.ddo.model.feats.GeneralFeat.ExoticWeaponProficiency
+import io.truthencode.ddo.model.item.weapon.WeaponCategory
+import io.truthencode.ddo.model.race.Race
+import io.truthencode.ddo.support.requisite._
 
 /** Shuriken Expertise.PNG
   * Shuriken Expertise 	Passive 	You are skilled with the use of the shuriken, and have a chance to throw an additional one per throw. (Percent chance to throw an additional shuriken is equal to your Dexterity.) This is also a racial feat given to all Drow Elf at level 1, regardless of class.

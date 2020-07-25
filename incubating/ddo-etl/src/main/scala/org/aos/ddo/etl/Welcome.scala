@@ -1,4 +1,4 @@
-package org.aos.ddo.etl
+package io.truthencode.ddo.etl
 
 /**
   * Created by adarr on 5/5/2017.

@@ -15,9 +15,9 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package org.aos.ddo.activation
+package io.truthencode.ddo.activation
 
-import org.aos.ddo.model.effect.TriggerEvent
+import io.truthencode.ddo.model.effect.TriggerEvent
 
 import scala.collection.immutable.HashSet
 

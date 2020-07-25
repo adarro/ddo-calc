@@ -15,11 +15,11 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package org.aos.ddo.model.feats.metamagic
+package io.truthencode.ddo.model.feats.metamagic
 
 import java.util
 
-import org.aos.ddo.model.feats.MetaMagicFeat
+import io.truthencode.ddo.model.feats.MetaMagicFeat
 import org.concordion.integration.junit4.ConcordionRunner
 import org.junit.runner.RunWith
 

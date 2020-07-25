@@ -1,4 +1,4 @@
-package org.aos.ddo.web.mapping
+package io.truthencode.ddo.web.mapping
 
 import java.util
 

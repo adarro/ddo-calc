@@ -15,7 +15,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package org.aos.ddo.model.worlds
+package io.truthencode.ddo.model.worlds
 
 /**
   * Created by adarr on 3/19/2017.

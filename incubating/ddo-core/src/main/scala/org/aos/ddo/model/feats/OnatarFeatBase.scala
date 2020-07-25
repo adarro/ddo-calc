@@ -15,9 +15,9 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package org.aos.ddo.model.feats
+package io.truthencode.ddo.model.feats
 
-import org.aos.ddo.model.religions.{Onatar, Religion}
+import io.truthencode.ddo.model.religions.{Onatar, Religion}
 
 /**
   * Created by adarr on 5/2/2017.

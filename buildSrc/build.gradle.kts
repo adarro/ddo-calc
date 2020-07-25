@@ -21,9 +21,9 @@ val p = "printing $editorConfigVersion"
 plugins {
     `kotlin-dsl`
     id("org.unbroken-dome.test-sets") // version "2.1.1"
-     id("org.kordamp.gradle.project")  apply(false)
-    // TODO: use explict receiver for variable to avoid hard-code
-    id("org.ec4j.editorconfig") // version "0.0.3"
+    id("org.kordamp.gradle.project") apply (false)
+    // TODO: use explicit receiver for variable to avoid hard-code
+    //  id("org.ec4j.editorconfig") // version "0.0.3"
 //    id("org.jmailen.kotlinter") version "2.2.0"
     // id("org.gradle.kotlin-dsl.ktlint-convention") version "0.4.1"
 }

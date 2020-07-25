@@ -46,7 +46,28 @@ dependencies {
 //    testImplementation("org.scalatest:scalatest_2.12:3.0.8")
 
     // Need scala-xml at test runtime
-    testRuntimeOnly("org.scala-lang.modules:scala-xml_2.12:1.2.0")
+  //  testRuntimeOnly("org.scala-lang.modules:scala-xml_2.12:1.2.0")
+    // https://mvnrepository.com/artifact/org.json4s/json4s-native
+    implementation(group = "org.json4s", name = "json4s-native_2.12", version = "3.6.7")
+    val scalaLibraryVersion: String by project
+    val scalaMajorVersion: String by project
+
+    implementation(platform(project(":ddo-platform-scala")))
+    implementation("org.scala-lang:scala-library:$scalaLibraryVersion")
+    implementation(group = "com.beachape", name = "enumeratum_${scalaMajorVersion}")
+    implementation(group = "com.typesafe", name = "config")
+    implementation(group = "com.github.kxbmap", name = "configs_${scalaMajorVersion}")
+    // validation and rules
+    implementation(group = "com.wix", name = "accord-core_2.12")
+    implementation(group = "ch.qos.logback", name = "logback-classic")
+    implementation(group = "com.typesafe.scala-logging", name = "scala-logging_${scalaMajorVersion}")
+    testImplementation(group = "org.scalatest", name = "scalatest_$scalaMajorVersion")
+    testImplementation(group = "org.mockito", name = "mockito-all")
+
+    // JUnit 5
+    testRuntimeOnly(group = "org.junit.platform", name = "junit-platform-engine")
+    testRuntimeOnly(group = "org.junit.platform", name = "junit-platform-launcher")
+    testRuntimeOnly(group = "co.helmethair", name = "scalatest-junit-runner")
 }
 
 // OpenApi code / schema generation
@@ -191,3 +212,15 @@ tasks.create<Delete>("cleanGeneratedScala") {
 }
 
 tasks.getAt("clean").dependsOn("cleanAvroSchema", "cleanGeneratedScala")
+
+tasks {
+    // Use the built-in JUnit support of Gradle.
+    "test"(Test::class) {
+        useJUnitPlatform {
+            includeEngines = setOf("scalatest")
+            testLogging {
+                events("passed", "skipped", "failed")
+            }
+        }
+    }
+}

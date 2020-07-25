@@ -16,13 +16,13 @@
  * limitations under the License.
  */
 
-package org.aos.ddo.model.skill
+package io.truthencode.ddo.model.skill
 
 import enumeratum.{Enum, EnumEntry}
-import org.aos.ddo.activation.{ActivationType, AtWillEvent, PassiveActivation}
-import org.aos.ddo.model.attribute.{CharismaLinked, ConstitutionLinked, DexterityLinked, IntelligenceLinked, LinkedAttribute, StrengthLinked, WisdomLinked}
-import org.aos.ddo.support.SearchPrefix
-import org.aos.ddo.support.naming.{DisplayName, FriendlyDisplay}
+import io.truthencode.ddo.activation.{ActivationType, AtWillEvent, PassiveActivation}
+import io.truthencode.ddo.model.attribute.{CharismaLinked, ConstitutionLinked, DexterityLinked, IntelligenceLinked, LinkedAttribute, StrengthLinked, WisdomLinked}
+import io.truthencode.ddo.support.SearchPrefix
+import io.truthencode.ddo.support.naming.{DisplayName, FriendlyDisplay}
 
 import scala.collection.immutable.IndexedSeq
 

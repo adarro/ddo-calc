@@ -15,9 +15,12 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package org.aos.ddo.model.feats
+package io.truthencode.ddo.model.feats
 
-import org.aos.ddo.support.requisite.{FeatRequisiteImpl, RequiresAllOfFeat}
+import io.truthencode.ddo.support.requisite.{
+  FeatRequisiteImpl,
+  RequiresAllOfFeat
+}
 
 /**
   * Icon Feat Improved Sunder.png
@@ -32,11 +35,13 @@ import org.aos.ddo.support.requisite.{FeatRequisiteImpl, RequiresAllOfFeat}
   * Power Attack
   *
   */
-protected[feats] trait ImprovedSunder extends FeatRequisiteImpl
-  with Active
-  with RequiresAllOfFeat
-  with FighterBonusFeat
-  with MartialArtsFeat {
+protected[feats] trait ImprovedSunder
+    extends FeatRequisiteImpl
+    with Active
+    with Tactical
+    with RequiresAllOfFeat
+    with FighterBonusFeat
+    with MartialArtsFeat {
   self: GeneralFeat =>
   override val allOfFeats = List(GeneralFeat.Sunder, GeneralFeat.PowerAttack)
 }

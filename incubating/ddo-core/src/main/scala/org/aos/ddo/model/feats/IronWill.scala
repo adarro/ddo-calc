@@ -15,9 +15,9 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package org.aos.ddo.model.feats
+package io.truthencode.ddo.model.feats
 
-import org.aos.ddo.support.requisite.{FeatRequisiteImpl, FreeFeat}
+import io.truthencode.ddo.support.requisite.{FeatRequisiteImpl, FreeFeat}
 
 /** Icon Feat Iron Will.png
   * Iron Will 	Passive 	Grants a +2 bonus to Will saves.

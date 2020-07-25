@@ -13,7 +13,7 @@
   * See the License for the specific language governing permissions and
   * limitations under the License.
   */
-package org.aos.ddo.web.mapping
+package io.truthencode.ddo.web.mapping
 
 import java.text.NumberFormat
 
@@ -21,14 +21,14 @@ import com.typesafe.scalalogging.LazyLogging
 import net.ruippeixotog.scalascraper.dsl.DSL._
 import net.ruippeixotog.scalascraper.dsl.DSL.Extract._
 import net.ruippeixotog.scalascraper.model.Element
-import org.aos.ddo._
-import org.aos.ddo.enumeration.EnumExtensions.EnumCompanionOps
-import org.aos.ddo.model.attribute.Attribute
-import org.aos.ddo.model.item.weapon._
-import org.aos.ddo.model.misc.Material
-import org.aos.ddo.support.StringUtils.{Comma, EmptyString, ForwardSlash, Space, StringImprovements}
-import org.aos.ddo.web.mapping.ElementSupport.ElementToElementOps
-import org.aos.ddo.web.mapping.Extractor._
+import io.truthencode.ddo._
+import io.truthencode.ddo.enumeration.EnumExtensions.EnumCompanionOps
+import io.truthencode.ddo.model.attribute.Attribute
+import io.truthencode.ddo.model.item.weapon._
+import io.truthencode.ddo.model.misc.Material
+import io.truthencode.ddo.support.StringUtils.{Comma, EmptyString, ForwardSlash, Space, StringImprovements}
+import io.truthencode.ddo.web.mapping.ElementSupport.ElementToElementOps
+import io.truthencode.ddo.web.mapping.Extractor._
 
 import scala.collection.JavaConverters._
 import scala.language.{existentials, postfixOps, reflectiveCalls}
@@ -150,7 +150,7 @@ object WikiParser extends LazyLogging {
     // TODO: Should we return Option vs default zero assumption?
     simpleExtractor(source.get(Field.ML)) match {
       case Some(x) =>
-        //    import org.aos.ddo.web.StringUtils._
+        //    import io.truthencode.ddo.web.StringUtils._
         x.toIntOpt match {
           case Some(x: Int) => x
           case _ => logger.error(s"Failed to parse ${Field.ML} with $x"); 0
@@ -567,7 +567,7 @@ object WikiParser extends LazyLogging {
   def damageValue(dts: Option[damageExtractor]): Option[DamageInfo] = {
     dts match {
       case Some(dmg) =>
-        Some(new org.aos.ddo.DamageInfo {
+        Some(new io.truthencode.ddo.DamageInfo {
           val weaponModifier: Int = dmg.wMod
           val dice: String = dmg.dice
           val extra: Int = dmg.extra

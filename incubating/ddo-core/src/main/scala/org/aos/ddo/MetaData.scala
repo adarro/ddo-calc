@@ -16,7 +16,7 @@
  * limitations under the License.
  */
 
-package org.aos.ddo
+package io.truthencode.ddo
 
 // Base Enums and skeleton objects
 /** TBD: :Used for Meta and potentially internal transformations.

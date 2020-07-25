@@ -15,13 +15,13 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package org.aos.ddo.model.feats.classes
+package io.truthencode.ddo.model.feats.classes
 
 import java.util
 
-import org.aos.ddo.model.classes.HeroicCharacterClass
-import org.aos.ddo.model.classes.HeroicCharacterClass.Monk
-import org.aos.ddo.model.feats.{ClassDisplayHelper, Feat}
+import io.truthencode.ddo.model.classes.HeroicCharacterClass
+import io.truthencode.ddo.model.classes.HeroicCharacterClass.Monk
+import io.truthencode.ddo.model.feats.{ClassDisplayHelper, Feat}
 
 abstract class MonkJavaHelper extends ClassDisplayHelper{
   override val cClass: HeroicCharacterClass = Monk

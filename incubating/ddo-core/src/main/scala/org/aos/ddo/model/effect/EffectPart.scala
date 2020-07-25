@@ -15,10 +15,10 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package org.aos.ddo.model.effect
+package io.truthencode.ddo.model.effect
 
 import enumeratum.{Enum, EnumEntry}
-import org.aos.ddo.NoDefault
+import io.truthencode.ddo.NoDefault
 sealed trait EffectPart extends EnumEntry
 object EffectPart extends Enum[EffectPart] with NoDefault[EffectPart] {
   val values = findValues

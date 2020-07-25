@@ -15,14 +15,14 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package org.aos.ddo.model.feats
+package io.truthencode.ddo.model.feats
 
 import enumeratum.Enum
-import org.aos.ddo.model.classes.HeroicCharacterClass
-import org.aos.ddo.model.classes.HeroicCharacterClass.Ranger
-import org.aos.ddo.model.compendium.types.{MainType, MonsterType}
-import org.aos.ddo.support.naming.FriendlyDisplay
-import org.aos.ddo.support.requisite._
+import io.truthencode.ddo.model.classes.HeroicCharacterClass
+import io.truthencode.ddo.model.classes.HeroicCharacterClass.Ranger
+import io.truthencode.ddo.model.compendium.types.{MainType, MonsterType}
+import io.truthencode.ddo.support.naming.FriendlyDisplay
+import io.truthencode.ddo.support.requisite._
 
 import scala.collection.immutable
 

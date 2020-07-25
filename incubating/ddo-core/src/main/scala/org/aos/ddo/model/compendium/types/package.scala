@@ -15,7 +15,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package org.aos.ddo.model.compendium
+package io.truthencode.ddo.model.compendium
 
 /**
   * Created by adarr on 3/25/2017.

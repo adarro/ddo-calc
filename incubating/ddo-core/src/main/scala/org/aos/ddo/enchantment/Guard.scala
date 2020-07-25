@@ -15,12 +15,12 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package org.aos.ddo.enchantment
+package io.truthencode.ddo.enchantment
 
 import com.wix.accord._
 import com.wix.accord.dsl._
-import org.aos.ddo.enchantment.Modifier._
-import org.aos.ddo.model.effect.{Passive, _}
+import io.truthencode.ddo.enchantment.Modifier._
+import io.truthencode.ddo.model.effect.{Passive, _}
 
 trait GuardFlag {
   val guard: Guards

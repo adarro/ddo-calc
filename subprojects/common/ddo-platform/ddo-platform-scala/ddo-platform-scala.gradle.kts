@@ -38,6 +38,7 @@ val concordionVersion: String by project
 val concordionExtEmbedVersion: String by project
 val concordionExtCollapseOutputVersion: String by project
 val scalaFmtVersion: String by project
+val junitScalaTestVersion: String by project
 
 dependencies {
 
@@ -66,7 +67,11 @@ dependencies {
         api("com.beachape:enumeratum_$scalaMajorVersion:$enumeratumVersion")
         api("com.typesafe:config:$typeSafeConfigVersion")
         api("com.github.kxbmap:configs_${scalaMajorVersion}:$configsVersion")
-        runtime("org.junit.vintage:junit-vintage-engine:$junitPlatformVersion")
+
+        // JUnit5
+        runtime("co.helmethair:scalatest-junit-runner:$junitScalaTestVersion")
+     //   runtime("org.junit.vintage:junit-vintage-engine:$junitPlatformVersion")
+        runtime("org.junit.platform:junit-platform-engine:$junitPlatformRunnerVersion")
         api("org.junit.platform:junit-platform-runner:$junitPlatformRunnerVersion")
 
         // Acceptance Testing 

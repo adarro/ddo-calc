@@ -15,10 +15,10 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package org.aos.ddo.model.item.weapon
+package io.truthencode.ddo.model.item.weapon
 
 import enumeratum.{Enum, EnumEntry}
-import org.aos.ddo.NoDefault
+import io.truthencode.ddo.NoDefault
 
 /** handedness is used to determine a one handed, two handed or off hand equip.
   * DDOwiki lists bows as ranged

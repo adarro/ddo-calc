@@ -15,9 +15,9 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package org.aos.ddo.model.feats
+package io.truthencode.ddo.model.feats
 
-import org.aos.ddo.support.requisite.{FeatRequisiteImpl, FreeFeat}
+import io.truthencode.ddo.support.requisite.{FeatRequisiteImpl, FreeFeat}
 
 /**
   * While using Defensive Fighting mode, you gain a 5% bonus to AC and -5% penalty to-hit.

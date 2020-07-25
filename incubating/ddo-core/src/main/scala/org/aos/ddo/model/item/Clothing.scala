@@ -15,9 +15,9 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package org.aos.ddo.model.item
+package io.truthencode.ddo.model.item
 
-import org.aos.ddo.Item
+import io.truthencode.ddo.Item
 
 /** Includes capes, gloves etc.
   */

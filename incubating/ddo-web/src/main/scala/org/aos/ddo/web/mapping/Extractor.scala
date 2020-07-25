@@ -1,14 +1,14 @@
-package org.aos.ddo.web.mapping
+package io.truthencode.ddo.web.mapping
 
 import net.ruippeixotog.scalascraper.dsl.DSL.Extract._
 import net.ruippeixotog.scalascraper.dsl.DSL._
 import net.ruippeixotog.scalascraper.model.Element
-import org.aos.ddo.support.StringUtils.{Comma, EmptyString, Space}
+import io.truthencode.ddo.support.StringUtils.{Comma, EmptyString, Space}
 
 import scala.language.postfixOps
 // import org.jsoup.nodes.Element
 import com.typesafe.scalalogging.LazyLogging
-import org.aos.ddo.web.HtmlTag
+import io.truthencode.ddo.web.HtmlTag
 
 object Extractor extends LazyLogging {
 
@@ -125,10 +125,10 @@ object Extractor extends LazyLogging {
     * @return sequence of possibly nested Leafs containing any enchantments
     */
   def enchantmentExtractor(
-      source: Map[String, Element]): Seq[org.aos.ddo.web.Leaf] = {
+      source: Map[String, Element]): Seq[io.truthencode.ddo.web.Leaf] = {
     val maybeTree = for {
       e <- source.get(Field.Enchantments)
-    } yield org.aos.ddo.web.Warehouse.readHtmlList(e)
+    } yield io.truthencode.ddo.web.Warehouse.readHtmlList(e)
 
     maybeTree match {
       case Some(tree) =>

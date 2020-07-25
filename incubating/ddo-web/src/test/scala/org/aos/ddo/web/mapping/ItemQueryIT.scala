@@ -12,10 +12,10 @@
   * See the License for the specific language governing permissions and
   * limitations under the License.
   */
-package org.aos.ddo.web.mapping
+package io.truthencode.ddo.web.mapping
 
 import com.typesafe.scalalogging.LazyLogging
-import org.aos.ddo.web.{Warehouse, toWikiUrlString}
+import io.truthencode.ddo.web.{Warehouse, toWikiUrlString}
 import org.junit.runner.RunWith
 import org.scalatest.junit.JUnitRunner
 import org.scalatest.mockito.MockitoSugar
@@ -23,7 +23,7 @@ import org.scalatest.{FunSpec, Matchers, Tag}
 
 import scala.language.reflectiveCalls
 
-object SlowTest extends Tag("org.aos.ddo.tags.SlowTest")
+object SlowTest extends Tag("io.truthencode.ddo.tags.SlowTest")
 
 @RunWith(classOf[JUnitRunner])
 class QueryItemIT extends FunSpec with Matchers with MockitoSugar with LazyLogging {

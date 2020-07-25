@@ -1,0 +1,249 @@
+====
+    SPDX-License-Identifier: Apache-2.0
+
+    Copyright 2015-2020 Andre White.
+
+    Licensed under the Apache License, Version 2.0 (the "License");
+    you may not use this file except in compliance with the License.
+    You may obtain a copy of the License at
+
+        https://www.apache.org/licenses/LICENSE-2.0
+
+    Unless required by applicable law or agreed to in writing, software
+    distributed under the License is distributed on an "AS IS" BASIS,
+    WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+    See the License for the specific language governing permissions and
+    limitations under the License.
+====
+
+<table class="wikitable" border="1">
+
+
+<tbody><tr style="background: #BBBBBB; border: 1px #CCCCCC solid; vertical-align&nbsp;: middle;">
+<td><b>Type</b>
+</td>
+<td><b>Races</b>
+</td>
+<td><b>Bane Type</b>
+</td>
+<td><b>Alternate Bane Type</b>
+</td></tr>
+<tr>
+<td><b><a title="Aberration type" href="/page/Aberration_type">Aberration</a></b>
+</td>
+<td><a title="Beholder race" href="/page/Beholder_race">Beholder</a>, <a title="Dream Reaver race" href="/page/Dream_Reaver_race">Dream Reaver</a>, <a title="Drider race" href="/page/Drider_race">Drider</a>, <a title="Drow Scorpion race" href="/page/Drow_Scorpion_race">Drow Scorpion</a>, <a title="Evil Eye race" href="/page/Evil_Eye_race">Evil Eye</a>, <a title="Eye Horror race" href="/page/Eye_Horror_race">Eye Horror</a>, <a title="Mimic race" href="/page/Mimic_race">Mimic</a>, <a title="Mind Flayer race" href="/page/Mind_Flayer_race">Mind Flayer</a>, <a title="Rust Monster race" href="/page/Rust_Monster_race">Rust Monster</a>, <a title="Taken race" href="/page/Taken_race">Taken</a>, <a title="Will o' Wisp race" href="/page/Will_o%27_Wisp_race">Will o' Wisp</a>
+</td>
+<td style="text-align: center;" colspan="2">Aberration bane
+</td></tr>
+<tr>
+<td rowspan="2"><b><a title="Air Outsider type" href="/page/Air_Outsider_type">Air Outsider</a></b>
+</td>
+<td><b>Chaotic Neutral Ousiders:</b> <a title="Djinn race" href="/page/Djinn_race">Djinn</a>
+</td>
+<td rowspan="2">none
+</td>
+<td>Chaotic outsider bane
+</td></tr>
+<tr>
+<td><a title="Mephit race" href="/page/Mephit_race">Mephit</a>
+</td>
+<td>none
+</td></tr>
+<tr>
+<td><b><a title="Animal type" href="/page/Animal_type">Animal</a></b>
+</td>
+<td><a title="Bat race" href="/page/Bat_race">Bat</a>, <a title="Bear race" href="/page/Bear_race">Bear</a>, <a title="Dog race" href="/page/Dog_race">Dog</a>, <a title="Hyena race" href="/page/Hyena_race">Hyena</a>, <a title="Lion race" href="/page/Lion_race">Lion</a>, <a title="Rat race" href="/page/Rat_race">Rat</a>, <a title="Wolf race" href="/page/Wolf_race">Wolf</a>
+</td>
+<td style="text-align: center;" colspan="2">Animal bane
+</td></tr>
+<tr>
+<td><b><a title="Construct type" href="/page/Construct_type">Construct</a></b>
+</td>
+<td><a title="Animated Object race" href="/page/Animated_Object_race">Animated Object</a>, <a title="Golem race" href="/page/Golem_race">Golem</a>, <a title="Inanimate Object race" href="/page/Inanimate_Object_race">Inanimate Object</a>, <a title="Inevitable race" href="/page/Inevitable_race">Inevitable</a>, <a title="Iron Defender race" href="/page/Iron_Defender_race">Iron Defender</a>, <a title="Warforged Titan race" href="/page/Warforged_Titan_race">Warforged Titan</a>
+</td>
+<td style="text-align: center;" colspan="2">Construct bane
+</td></tr>
+<tr>
+<td><b><a title="Dragon type" href="/page/Dragon_type">Dragon</a></b>
+</td>
+<td><a title="Black Dragon race" href="/page/Black_Dragon_race">Black Dragon</a>, <a title="Blue Dragon race" href="/page/Blue_Dragon_race">Blue Dragon</a>, <a title="Green Dragon race" href="/page/Green_Dragon_race">Green Dragon</a>, <a title="Red Dragon race" href="/page/Red_Dragon_race">Red Dragon</a>, <a title="White Dragon race" href="/page/White_Dragon_race">White Dragon</a>
+</td>
+<td style="text-align: center;" colspan="2">Dragon bane
+</td></tr>
+<tr>
+<td><b><a title="Dwarf type" href="/page/Dwarf_type">Dwarf</a></b>
+</td>
+<td><a title="Duergar race" class="mw-redirect" href="/page/Duergar_race">Duergar</a>, <a title="Dwarf race" href="/page/Dwarf_race">Dwarf</a>
+</td>
+<td style="text-align: center;" colspan="2">Dwarf bane
+</td></tr>
+<tr>
+<td><b><a title="Earth Outsider type (page does not exist)" class="new" href="/edit/Earth_Outsider_type?redlink=1">Earth Outsider</a></b>
+</td>
+<td><a title="Mephit race" href="/page/Mephit_race">Mephit</a>
+</td>
+<td style="text-align: center;" colspan="2">none
+</td></tr>
+<tr>
+<td><b><a title="Elemental type" href="/page/Elemental_type">Elemental</a></b>
+</td>
+<td><a title="Air Elemental race" href="/page/Air_Elemental_race">Air Elemental</a>, <a title="Earth Elemental race" href="/page/Earth_Elemental_race">Earth Elemental</a>, <a title="Fire Elemental race" href="/page/Fire_Elemental_race">Fire Elemental</a>, <a title="Invisible Stalker race" href="/page/Invisible_Stalker_race">Invisible Stalker</a>, <a title="Muckman race" href="/page/Muckman_race">Muckman</a>, <a title="Water Elemental race" href="/page/Water_Elemental_race">Water Elemental</a>
+</td>
+<td style="text-align: center;" colspan="2">Elemental bane
+</td></tr>
+<tr>
+<td><b><a title="Elf type" href="/page/Elf_type">Elf</a></b>
+</td>
+<td><a title="Drow Elf race" href="/page/Drow_Elf_race">Drow Elf</a>, <a title="Elf race" href="/page/Elf_race">Elf</a>
+</td>
+<td style="text-align: center;" colspan="2">Elf bane
+</td></tr>
+<tr>
+<td rowspan="3"><b><a title="Evil Outsider type" href="/page/Evil_Outsider_type">Evil Outsider</a></b>
+</td>
+<td><b>Chaotic Evil Outsiders:</b> <a title="Demon race" href="/page/Demon_race">Demon</a> (Tanar'ri)
+</td>
+<td style="text-align: center;" rowspan="3">Evil Outsider bane
+</td>
+<td>Chaotic Outsider bane
+</td></tr>
+<tr>
+<td><b>Lawful Evil Outsiders:</b> <a title="Devil race" href="/page/Devil_race">Devil</a> (Baatezu)
+</td>
+<td>Lawful Outsider bane
+</td></tr>
+<tr>
+<td><b>Miscellaneous Evil Outsiders:</b> <a title="Daelkyr race" href="/page/Daelkyr_race">Daelkyr</a>, <a title="Efreet race" href="/page/Efreet_race">Efreet</a>, <a title="Hag race" href="/page/Hag_race">Hag</a> (<a title="Green Hag sub-race (page does not exist)" class="new" href="/edit/Green_Hag_sub-race?redlink=1">Green Hags</a> and <a title="Night Hag sub-race (page does not exist)" class="new" href="/edit/Night_Hag_sub-race?redlink=1">Night Hags</a> only), <a title="Hellhound race" href="/page/Hellhound_race">Hellhound</a>, <a title="Rakshasa race" href="/page/Rakshasa_race">Rakshasa</a>, <a title="Quori race" href="/page/Quori_race">Quori</a>, <a title="Salamander race" href="/page/Salamander_race">Salamander</a>, <a title="Scorpion race" href="/page/Scorpion_race">Scorpion</a> (<a title="Spawn of Vulkoor" href="/page/Spawn_of_Vulkoor">Spawn of Vulkoor</a> and <a title="Wrathspawn" href="/page/Wrathspawn">Wrathspawn</a> only), <a title="Tiefling race" href="/page/Tiefling_race">Tiefling</a>, <a title="Yugoloth race" href="/page/Yugoloth_race">Yugoloth</a>
+</td>
+<td>Lawful or Chaotic Outsider bane, depending upon alignment
+</td></tr>
+<tr>
+<td><b><a title="Fey type" href="/page/Fey_type">Fey</a></b>
+</td>
+<td><a title="Dryad race" href="/page/Dryad_race">Dryad</a>
+</td>
+<td style="text-align: center;" colspan="2">none
+</td></tr>
+<tr>
+<td><b><a title="Fire Outsider type" href="/page/Fire_Outsider_type">Fire Outsider</a></b>
+</td>
+<td><a title="Mephit race" href="/page/Mephit_race">Mephit</a>
+</td>
+<td style="text-align: center;" colspan="2">none
+</td></tr>
+<tr>
+<td><b><a title="Giant type" href="/page/Giant_type">Giant</a></b>
+</td>
+<td><a title="Giant race" href="/page/Giant_race">Giant</a> , <a title="Ogre race" href="/page/Ogre_race">Ogre</a>, <a title="Ogre Mage sub-race" href="/page/Ogre_Mage_sub-race">Ogre Magi</a>, <a title="Troll race" href="/page/Troll_race">Troll</a>
+</td>
+<td style="text-align: center;" colspan="2">Giant bane
+</td></tr>
+<tr>
+<td><b><a title="Gnoll type" href="/page/Gnoll_type">Gnoll</a></b>
+</td>
+<td><a title="Gnoll race" href="/page/Gnoll_race">Gnoll</a>
+</td>
+<td style="text-align: center;" colspan="2">Gnoll bane
+</td></tr>
+<tr>
+<td><b><a title="Goblinoid type" href="/page/Goblinoid_type">Goblinoid</a></b>
+</td>
+<td><a title="Bugbear race" href="/page/Bugbear_race">Bugbear</a>, <a title="Hobgoblin race" href="/page/Hobgoblin_race">Hobgoblin</a>
+</td>
+<td style="text-align: center;" colspan="2">Goblinoid bane
+</td></tr>
+<tr>
+<td><b><a title="Good Outsider type" href="/page/Good_Outsider_type">Good Outsider</a></b>
+</td>
+<td><b>Chaotic Good Outsiders:</b> <a title="Bralani Eladrin race" href="/page/Bralani_Eladrin_race">Bralani Eladrin</a>, <a title="Ghaele Eladrin race" href="/page/Ghaele_Eladrin_race">Ghaele Eladrin</a>
+</td>
+<td>none
+</td>
+<td>Chaotic Outsider bane
+</td></tr>
+<tr>
+<td><b><a title="Halfling type" href="/page/Halfling_type">Halfling</a></b>
+</td>
+<td><a title="Halfling race" href="/page/Halfling_race">Halfling</a>
+</td>
+<td style="text-align: center;" colspan="2">Halfling bane
+</td></tr>
+<tr>
+<td><b><a title="Human type" href="/page/Human_type">Human</a></b>
+</td>
+<td><a title="Human race" href="/page/Human_race">Human</a>
+</td>
+<td style="text-align: center;" colspan="2">Human bane
+</td></tr>
+<tr>
+<td><b><a title="Living Construct type" href="/page/Living_Construct_type">Living Construct</a></b>
+</td>
+<td><a title="Warforged race" href="/page/Warforged_race">Warforged</a>
+</td>
+<td style="text-align: center;" colspan="2">Construct bane
+</td></tr>
+<tr>
+<td><b><a title="Magical Beast type" href="/page/Magical_Beast_type">Magical Beast</a></b>
+</td>
+<td><a title="Bat race" href="/page/Bat_race">Bat</a> (<a title="Fiendish Bat" href="/page/Fiendish_Bat">Fiendish Bats</a>, etc.), <a title="Fiendish Scorpion race" class="mw-redirect" href="/page/Fiendish_Scorpion_race">Fiendish Scorpion</a>, <a title="Fiendish Spider race" href="/page/Fiendish_Spider_race">Fiendish Spider</a>, <a title="Hyena race" href="/page/Hyena_race">Hyena</a> (<a title="Messenger of Prairies" href="/page/Messenger_of_Prairies">Messenger of Prairies</a> only), <a title="Lion race" href="/page/Lion_race">Lion</a>, <a title="Panther race" href="/page/Panther_race">Panther</a>, <a title="Purple Worm race" href="/page/Purple_Worm_race">Purple Worm</a>, <a title="Razor Cat race" href="/page/Razor_Cat_race">Razor Cat</a>, <a title="Spider race" href="/page/Spider_race">Spider</a> (Crimson Foot Spiders, <a title="Phase Spider" href="/page/Phase_Spider">Phase Spiders</a>, <a title="Whisperdoom" href="/page/Whisperdoom">Whisperdoom</a>, etc.), <a title="Wolf race" href="/page/Wolf_race">Wolf</a> (<a title="Worg sub-race" href="/page/Worg_sub-race">Worgs</a> and <a title="Winter Wolf sub-race" href="/page/Winter_Wolf_sub-race">Winter Wolves</a> only)
+</td>
+<td style="text-align: center;" colspan="2">Magical Beast bane
+</td></tr>
+<tr>
+<td><b><a title="Monstrous Humanoid type" href="/page/Monstrous_Humanoid_type">Monstrous Humanoid</a></b>
+</td>
+<td><a title="Gargoyle race" href="/page/Gargoyle_race">Gargoyle</a>, <a title="Hag race" href="/page/Hag_race">Hag</a> (<a title="Forest Hag sub-race (page does not exist)" class="new" href="/edit/Forest_Hag_sub-race?redlink=1">Forest Hags</a> only), <a title="Medusa race" href="/page/Medusa_race">Medusa</a>, <a title="Minotaur race" href="/page/Minotaur_race">Minotaur</a>, <a title="Sahuagin race" href="/page/Sahuagin_race">Sahuagin</a>, <a title="Werewolf race" href="/page/Werewolf_race">Werewolf</a>, <a title="Wildman race" href="/page/Wildman_race">Wildman</a>, <a title="Yuan-ti race" href="/page/Yuan-ti_race">Yuan-ti</a>
+</td>
+<td style="text-align: center;" colspan="2">Monstrous Humanoid bane
+</td></tr>
+<tr>
+<td><b><a title="Native Outsider type" href="/page/Native_Outsider_type">Native Outsider</a></b>
+</td>
+<td><b>Native Evil Outsiders:</b> <a title="Tiefling race" href="/page/Tiefling_race">Tiefling</a>
+</td>
+<td style="white-space:nowrap">Evil Outsider bane
+</td>
+<td colspan="2">Lawful or Chaotic Outsider bane, depending upon alignment
+</td></tr>
+<tr>
+<td><b><a title="Ooze type" href="/page/Ooze_type">Ooze</a></b>
+</td>
+<td><a title="Arcane Ooze race" href="/page/Arcane_Ooze_race">Arcane Ooze</a>, <a title="Black Pudding race" href="/page/Black_Pudding_race">Black Pudding</a>, <a title="Gelatinous Cube race" href="/page/Gelatinous_Cube_race">Gelatinous Cube</a>, <a title="Gray Ooze race" href="/page/Gray_Ooze_race">Gray Ooze</a>, <a title="Ochre Jelly race" href="/page/Ochre_Jelly_race">Ochre Jelly</a>, <a title="Spell race" href="/page/Spell_race">Spell</a>, <a title="Violet Slime race" href="/page/Violet_Slime_race">Violet Slime</a>
+</td>
+<td style="text-align: center;" colspan="2">Ooze bane
+</td></tr>
+<tr>
+<td><b><a title="Orc type" href="/page/Orc_type">Orc</a></b>
+</td>
+<td><a title="Half-Orc race" href="/page/Half-Orc_race">Half-Orc</a>, <a title="Orc race" href="/page/Orc_race">Orc</a>
+</td>
+<td style="text-align: center;" colspan="2">Orc bane
+</td></tr>
+<tr>
+<td><b><a title="Plant type" href="/page/Plant_type">Plant</a></b>
+</td>
+<td><a title="Plant Creature race" href="/page/Plant_Creature_race">Plant Creature</a>, <a title="Vine Stalker race" href="/page/Vine_Stalker_race">Vine Stalker</a>, <a title="Wood Woad race" href="/page/Wood_Woad_race">Wood Woad</a>
+</td>
+<td style="text-align: center;" colspan="2">Plant bane
+</td></tr>
+<tr>
+<td><b><a title="Reptilian type" href="/page/Reptilian_type">Reptilian</a></b>
+</td>
+<td><a title="Kobold race" href="/page/Kobold_race">Kobold</a>, <a title="Troglodyte race" href="/page/Troglodyte_race">Troglodyte</a>
+</td>
+<td style="text-align: center;" colspan="2">Reptilian bane
+</td></tr>
+<tr>
+<td><b><a title="Undead type" href="/page/Undead_type">Undead</a></b>
+</td>
+<td><a title="Beholder race" href="/page/Beholder_race">Beholder</a> (<a title="Doomsphere" class="mw-redirect" href="/page/Doomsphere">Doomspheres</a> only), <a title="Blue Dragon race" href="/page/Blue_Dragon_race">Blue Dragon</a> (<a title="Auraxyllon" href="/page/Auraxyllon">Auraxyllon</a> and <a title="Eternity" href="/page/Eternity">Eternity</a> only), <a title="Fire Elemental race" href="/page/Fire_Elemental_race">Fire Elemental</a> (<a title="Cinderspawn" class="mw-redirect" href="/page/Cinderspawn">Cinderspawn</a> only), <a title="Human race" href="/page/Human_race">Human</a> (<a title="Death Knight" href="/page/Death_Knight">Death Knights</a> only), <a title="Ghast race" href="/page/Ghast_race">Ghast</a>, <a title="Ghoul race" href="/page/Ghoul_race">Ghoul</a>, <a title="Lich race" href="/page/Lich_race">Lich</a>, <a title="Mummy race" href="/page/Mummy_race">Mummy</a>, <a title="Quell race" href="/page/Quell_race">Quell</a>, <a title="Rat race" href="/page/Rat_race">Rat</a>, <a title="Shadow race" href="/page/Shadow_race">Shadow</a>, <a title="Skeleton race" href="/page/Skeleton_race">Skeleton</a>, <a title="Spectre race" href="/page/Spectre_race">Spectre</a>, <a title="Vampire race" href="/page/Vampire_race">Vampire</a>, <a title="Wheep race" href="/page/Wheep_race">Wheep</a>, <a title="Wight race" href="/page/Wight_race">Wight</a>, <a title="Wraith race" href="/page/Wraith_race">Wraith</a>, <a title="Zombie race" href="/page/Zombie_race">Zombie</a>
+</td>
+<td style="text-align: center;" colspan="2">Undead bane
+</td></tr>
+<tr>
+<td><b><a title="Vermin type" href="/page/Vermin_type">Vermin</a></b>
+</td>
+<td><a title="Scorpion race" href="/page/Scorpion_race">Scorpion</a>, <a title="Spider race" href="/page/Spider_race">Spider</a>
+</td>
+<td style="text-align: center;" colspan="2">Vermin bane
+</td></tr></tbody></table>

@@ -15,9 +15,9 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package org.aos.ddo.support.slots.item.crafting
+package io.truthencode.ddo.support.slots.item.crafting
 
-import org.aos.ddo.support.slots.item.{Craftable, ItemSlot}
+import io.truthencode.ddo.support.slots.item.{Craftable, ItemSlot}
 
 /**
   * Created by adarr on 5/5/2017.

@@ -15,9 +15,9 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package org.aos.ddo.model.feats
+package io.truthencode.ddo.model.feats
 
-import org.aos.ddo.model.classes.HeroicCharacterClass.Rogue
+import io.truthencode.ddo.model.classes.HeroicCharacterClass.Rogue
 
 /**
   * Created by adarr on 3/26/2017.

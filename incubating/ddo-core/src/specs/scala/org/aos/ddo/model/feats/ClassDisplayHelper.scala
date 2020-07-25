@@ -15,13 +15,13 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package org.aos.ddo.model.feats
+package io.truthencode.ddo.model.feats
 
 import java.util
 
 import com.typesafe.scalalogging.LazyLogging
-import org.aos.ddo.model.classes.HeroicCharacterClass
-import org.aos.ddo.support.requisite.{ClassRequisite, SelectableToClass}
+import io.truthencode.ddo.model.classes.HeroicCharacterClass
+import io.truthencode.ddo.support.requisite.{ClassRequisite, SelectableToClass}
 
 import scala.collection.JavaConverters._
 

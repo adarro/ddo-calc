@@ -15,10 +15,10 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package org.aos.ddo.support.requisite
+package io.truthencode.ddo.support.requisite
 
-import org.aos.ddo.model.attribute.Attribute
-import org.aos.ddo.support.requisite.RequirementImplicits.attrToReq
+import io.truthencode.ddo.model.attribute.Attribute
+import io.truthencode.ddo.support.requisite.RequirementImplicits.attrToReq
 
 /**
   * Created by adarr on 2/3/2017.

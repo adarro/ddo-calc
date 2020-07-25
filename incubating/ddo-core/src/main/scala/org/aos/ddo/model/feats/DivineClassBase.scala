@@ -15,10 +15,10 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package org.aos.ddo.model.feats
-import org.aos.ddo.model.classes.HeroicCharacterClass
-import org.aos.ddo.model.classes.HeroicCharacterClass.{Cleric, FavoredSoul, Paladin}
-import org.aos.ddo.support.requisite.{ClassRequisite, RequiresAnyOfClass}
+package io.truthencode.ddo.model.feats
+import io.truthencode.ddo.model.classes.HeroicCharacterClass
+import io.truthencode.ddo.model.classes.HeroicCharacterClass.{Cleric, FavoredSoul, Paladin}
+import io.truthencode.ddo.support.requisite.{ClassRequisite, RequiresAnyOfClass}
 
 /**
   * Created by adarr on 4/18/2017.

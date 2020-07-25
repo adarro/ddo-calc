@@ -15,7 +15,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package org.aos.ddo.model.misc
+package io.truthencode.ddo.model.misc
 
 import enumeratum.{Enum, EnumEntry}
 
@@ -30,5 +30,5 @@ object Simple extends Enum[Simple] {
 
   object Basic extends values with Simple
 
-  override def values:  scala.collection.immutable.IndexedSeq[org.aos.ddo.model.misc.Simple]= findValues
+  override def values:  scala.collection.immutable.IndexedSeq[io.truthencode.ddo.model.misc.Simple]= findValues
 }

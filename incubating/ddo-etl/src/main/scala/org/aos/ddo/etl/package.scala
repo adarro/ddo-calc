@@ -1,4 +1,4 @@
-package org.aos.ddo
+package io.truthencode.ddo
 
 import net.ruippeixotog.scalascraper.browser.JsoupBrowser
 import net.ruippeixotog.scalascraper.model.Document

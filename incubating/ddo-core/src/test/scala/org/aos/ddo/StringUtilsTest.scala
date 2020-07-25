@@ -30,13 +30,13 @@
   * See the License for the specific language governing permissions and
   * limitations under the License.
   */
-package org.aos.ddo
+package io.truthencode.ddo
 
-import org.aos.ddo.support.StringUtils.{Extensions, StringImprovements}
+import io.truthencode.ddo.support.StringUtils.{Extensions, StringImprovements}
 import org.scalatest.{FunSpec, Matchers}
 import org.scalatest.OptionValues._
 import com.typesafe.scalalogging.LazyLogging
-import org.aos.ddo.support.matching.{WordMatchStrategies, WordMatchStrategy}
+import io.truthencode.ddo.support.matching.{WordMatchStrategies, WordMatchStrategy}
 import org.junit.runner.RunWith
 import org.scalatest.junit.JUnitRunner
 import org.scalatest.prop.PropertyChecks
@@ -104,7 +104,7 @@ class StringUtilsTest extends FunSpec with PropertyChecks with Matchers with Laz
 
   describe("StringImprovements") {
     it("implicitly allows safe string to int conversions") {
-      import org.aos.ddo.support.StringUtils.StringImprovements // scalastyle:off import.grouping due to implicit scoping
+      import io.truthencode.ddo.support.StringUtils.StringImprovements // scalastyle:off import.grouping due to implicit scoping
       val love: Option[Int] = "42".toIntOpt
       love should not be empty
       love should be(Some(meaningOfLife))

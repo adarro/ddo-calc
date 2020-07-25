@@ -15,7 +15,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package org.aos.ddo.model.spells.component
+package io.truthencode.ddo.model.spells.component
 
 /**
   * Collection of required components (Material, Somatic, verbal etc.) required to enact a spell

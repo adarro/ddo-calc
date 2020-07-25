@@ -15,7 +15,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package org.aos.ddo.model.skill
+package io.truthencode.ddo.model.skill
 
 import java.util
 

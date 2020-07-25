@@ -1,7 +1,7 @@
-package org.aos.ddo.etl
+package io.truthencode.ddo.etl
 
 import configs.Result
-import org.aos.ddo.etl.affix.RandomLootAffixCategories.MyConfig
+import io.truthencode.ddo.etl.affix.RandomLootAffixCategories.MyConfig
 import configs.syntax._
 /**
   * Created by adarr on 5/8/2017.

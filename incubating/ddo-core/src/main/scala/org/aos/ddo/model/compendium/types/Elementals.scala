@@ -15,9 +15,9 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package org.aos.ddo.model.compendium.types
+package io.truthencode.ddo.model.compendium.types
 
-import org.aos.ddo.model.compendium.types.MonsterType.Elemental
+import io.truthencode.ddo.model.compendium.types.MonsterType.Elemental
 
 /**
   * Created by adarr on 3/25/2017.

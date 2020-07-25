@@ -15,7 +15,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package org.aos.ddo.support
+package io.truthencode.ddo.support
 
 import com.typesafe.scalalogging.LazyLogging
 import com.wix.accord.scalatest.ResultMatchers
@@ -35,7 +35,7 @@ class ConcordionTemplateBuilderTest
   ignore("A Custom enum") {
     it("should be generated from a jade template") {
       val builder = new ConcordionTemplateBuilder()
-      val actual = builder.renderEnum("org.aos.ddo.model.alignment.MoralAxis")
+      val actual = builder.renderEnum("io.truthencode.ddo.model.alignment.MoralAxis")
       actual should not be empty
       logger.info(actual.getOrElse("No data returned"))
     }

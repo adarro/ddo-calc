@@ -30,13 +30,13 @@
   * See the License for the specific language governing permissions and
   * limitations under the License.
   */
-package org.aos.ddo
+package io.truthencode.ddo
 
 import scala.language.reflectiveCalls
-import org.aos.ddo.MonetaryValue.Coins
-import org.aos.ddo.model.attribute.Attribute
-import org.aos.ddo.model.misc.Material
-import org.aos.ddo.model.item.weapon.{Handedness, ProficiencyClass, Weapon, WeaponCategory}
+import io.truthencode.ddo.MonetaryValue.Coins
+import io.truthencode.ddo.model.attribute.Attribute
+import io.truthencode.ddo.model.misc.Material
+import io.truthencode.ddo.model.item.weapon.{Handedness, ProficiencyClass, Weapon, WeaponCategory}
 import org.junit.runner.RunWith
 import org.scalatest.{FunSpec, Matchers}
 import org.scalatest.junit.JUnitRunner
@@ -57,7 +57,7 @@ class WeaponTest extends FunSpec with Matchers with MockitoSugar {
       val weaponCategory = Some(WeaponCategory.Dagger)
       val baseValue = Some(Coins(Coinage))
       val handedness: List[Handedness] = mock[List[Handedness]]
-      val weaponType = Some(mock[org.aos.ddo.model.item.weapon.DeliveryType])
+      val weaponType = Some(mock[io.truthencode.ddo.model.item.weapon.DeliveryType])
       val weight = Some(NWeight)
       val binding = Some(BindingFlags.Unbound)
       val attackModifier: List[Attribute] = mock[List[Attribute]]
@@ -68,8 +68,8 @@ class WeaponTest extends FunSpec with Matchers with MockitoSugar {
       val upgradeInfo: UpgradeInfo = mock[UpgradeInfo]
 
       val description = Some("A mock Weapon")
-      // Members declared in org.aos.ddo.Weapon
-      val upgradeable: org.aos.ddo.UpgradeInfo = mock[UpgradeInfo]
+      // Members declared in io.truthencode.ddo.Weapon
+      val upgradeable: io.truthencode.ddo.UpgradeInfo = mock[UpgradeInfo]
       val absoluteMinimumLevel: Option[Int] = Some(3)
       val minimumLevel: Int = 4
       val umd: Int = 3

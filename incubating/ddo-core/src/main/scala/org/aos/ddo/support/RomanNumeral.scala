@@ -15,10 +15,10 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package org.aos.ddo.support
+package io.truthencode.ddo.support
 
-import org.aos.ddo.model.effect.Suffix
-import org.aos.ddo.model.effect.Prefix
+import io.truthencode.ddo.model.effect.Suffix
+import io.truthencode.ddo.model.effect.Prefix
 
 trait RomanNumeral {
   type Self <: RomanNumeral

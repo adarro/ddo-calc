@@ -15,13 +15,13 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package org.aos.ddo.support
+package io.truthencode.ddo.support
 
 import com.typesafe.scalalogging.LazyLogging
 import de.neuland.jade4j.{Jade4J, JadeConfiguration}
 import enumeratum.{Enum, EnumEntry}
-import org.aos.ddo.enumeration.Companionable
-import org.aos.ddo.support.StringUtils.{Extensions, randomAlphaString}
+import io.truthencode.ddo.enumeration.Companionable
+import io.truthencode.ddo.support.StringUtils.{Extensions, randomAlphaString}
 
 import scala.collection.JavaConverters.asJavaIterableConverter
 import scala.reflect.ClassTag

@@ -15,9 +15,9 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package org.aos.ddo.model.feats.races
+package io.truthencode.ddo.model.feats.races
 
-import org.aos.ddo.model.feats.{DisplayHelper, RacialFeat}
+import io.truthencode.ddo.model.feats.{DisplayHelper, RacialFeat}
 import org.concordion.api.FullOGNL
 import org.concordion.api.extension.Extensions
 import org.concordion.api.option.{ConcordionOptions, MarkdownExtensions}

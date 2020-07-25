@@ -30,11 +30,11 @@
   * See the License for the specific language governing permissions and
   * limitations under the License.
   */
-package org.aos.ddo
+package io.truthencode.ddo
 
-import org.aos.ddo.model.attribute.{Attribute => Attrib}
-import org.aos.ddo.model.item.weapon.{DeliveryType, Handedness, ProficiencyClass, WeaponCategory => wcat}
-import org.aos.ddo.model.misc.Material
+import io.truthencode.ddo.model.attribute.{Attribute => Attrib}
+import io.truthencode.ddo.model.item.weapon.{DeliveryType, Handedness, ProficiencyClass, WeaponCategory => wcat}
+import io.truthencode.ddo.model.misc.Material
 
 /**
   * Encapsulates any and all Items and objects within DDO
@@ -58,7 +58,7 @@ object DDOObject {
                     weight: Option[Int],
                     binding: Option[BindingFlags],
                     enchantments: Option[Seq[String]],
-                    // Members declared in org.aos.ddo.Weapon
+                    // Members declared in io.truthencode.ddo.Weapon
                     attackModifier: List[Attrib],
                     critical: Option[CriticalProfile],
                     damage: Option[DamageInfo],
@@ -67,7 +67,7 @@ object DDOObject {
                     proficiency: Option[ProficiencyClass],
                     upgradeable: UpgradeInfo,
                     weaponCategory: Option[wcat],
-                    weaponType: Option[DeliveryType]) extends org.aos.ddo.model.item.weapon.Weapon
+                    weaponType: Option[DeliveryType]) extends io.truthencode.ddo.model.item.weapon.Weapon
   case class Clothing()
   case class Jewelery()
   case class Armour()

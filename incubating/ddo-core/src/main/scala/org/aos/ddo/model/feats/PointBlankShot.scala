@@ -15,9 +15,9 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package org.aos.ddo.model.feats
+package io.truthencode.ddo.model.feats
 
-import org.aos.ddo.support.requisite.{FeatRequisiteImpl, FreeFeat}
+import io.truthencode.ddo.support.requisite.{FeatRequisiteImpl, FreeFeat}
 
 /** Icon Feat Point Blank Shot.png
   * Point Blank Shot 	Passive 	Grants a +1 bonus to hit within 15 meters, and your ranged weapons deal +1[W]. (A weapon that deals 1d6 damage per hit will deal 2d6 damage per hit instead, while a weapon that deals 2d8 damage per hit will deal 4d8 damage per hit instead. This affects the base dice of the associated weapon any time they are rolled, including critical hits.)

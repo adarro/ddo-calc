@@ -15,10 +15,10 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package org.aos.ddo.model
+package io.truthencode.ddo.model
 
-import org.aos.ddo.model.feats.{GeneralFeat, SubFeat}
-import org.aos.ddo.model.item.weapon.{
+import io.truthencode.ddo.model.feats.{GeneralFeat, SubFeat}
+import io.truthencode.ddo.model.item.weapon.{
   ExoticWeapon,
   MartialWeapon,
   SimpleWeapon,

@@ -16,7 +16,7 @@
  * limitations under the License.
  */
 
-package org.aos.ddo
+package io.truthencode.ddo
 
 import com.typesafe.scalalogging.LazyLogging
 import org.junit.runner.RunWith

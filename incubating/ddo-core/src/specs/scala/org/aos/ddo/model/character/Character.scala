@@ -1,8 +1,8 @@
-package org.aos.ddo.model.character
+package io.truthencode.ddo.model.character
 
-import org.aos.ddo.model.attribute.Attribute
-import org.aos.ddo.model.classes.HeroicCharacterClass
-import org.aos.ddo.model.race.Race
+import io.truthencode.ddo.model.attribute.Attribute
+import io.truthencode.ddo.model.classes.HeroicCharacterClass
+import io.truthencode.ddo.model.race.Race
 
 trait Character {
   /**

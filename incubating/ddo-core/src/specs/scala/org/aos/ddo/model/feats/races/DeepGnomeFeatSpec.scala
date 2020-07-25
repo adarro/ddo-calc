@@ -15,10 +15,10 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package org.aos.ddo.model.feats.races
+package io.truthencode.ddo.model.feats.races
 
-import org.aos.ddo.model.feats.RaceSupport
-import org.aos.ddo.model.race.Race
+import io.truthencode.ddo.model.feats.RaceSupport
+import io.truthencode.ddo.model.race.Race
 import org.concordion.integration.junit4.ConcordionRunner
 import org.junit.runner.RunWith
 

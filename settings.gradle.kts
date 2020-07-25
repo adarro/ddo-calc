@@ -57,7 +57,7 @@ projectFolders.forEach { dirName ->
                 val projectDir = rootDir.toPath().relativize(d)
                 val first = files.first()
                 val buildFileName = first.name
-                // build file name may be artibtrary but usually follows either build or the directory name.
+                // build file name may be arbitrary but usually follows either build or the directory name.
                 // since we're mostly controlling the build we'll assume the containing folders' name.
                 val projectName = first.parentFile.name
                 logger.info("Including Project $projectName \t projectDir: $projectDir \t BuildFile: $buildFileName")
@@ -111,5 +111,14 @@ pluginManagement {
         id("com.zlad.gradle.avrohugger") version avroHuggerPluginVersion
         id("com.chudsaviet.gradle.avrohugger") version avroHuggerPluginVersion
         id("org.openapi.generator") version openApiGeneratorPluginVersion
+    }
+
+     repositories {
+           gradlePluginPortal()
+        jcenter()
+        mavenCentral()
+        maven {
+            url = uri("https://plugins.gradle.org/m2/")
+        }
     }
 }

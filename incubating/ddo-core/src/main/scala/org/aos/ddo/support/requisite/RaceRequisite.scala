@@ -15,10 +15,10 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package org.aos.ddo.support.requisite
+package io.truthencode.ddo.support.requisite
 
-import org.aos.ddo.model.race.Race
-import org.aos.ddo.support.requisite.RequirementImplicits.raceToReq
+import io.truthencode.ddo.model.race.Race
+import io.truthencode.ddo.support.requisite.RequirementImplicits.raceToReq
 
 /**
   * Created by adarr on 1/30/2017.

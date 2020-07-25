@@ -30,13 +30,13 @@
   * See the License for the specific language governing permissions and
   * limitations under the License.
   */
-package org.aos.ddo
+package io.truthencode.ddo
 
 import com.typesafe.scalalogging.LazyLogging
 import enumeratum.{Enum, EnumEntry}
-import org.aos.ddo.BindingFlags.Unbound
-import org.aos.ddo.support.StringUtils.Extensions
-import org.aos.ddo.support.matching.{WordMatchStrategies, WordMatchStrategy}
+import io.truthencode.ddo.BindingFlags.Unbound
+import io.truthencode.ddo.support.StringUtils.Extensions
+import io.truthencode.ddo.support.matching.{WordMatchStrategies, WordMatchStrategy}
 
 import scala.collection.immutable
 
@@ -61,7 +61,7 @@ object BindingFlags extends Enum[BindingFlags] with DefaultValue[BindingFlags] w
   override lazy val default: Option[Unbound.type] = Some(BindingFlags.Unbound)
   val values: immutable.IndexedSeq[BindingFlags] = findValues
 
-  /** @see [[org.aos.ddo.BindingFlags.fromWords(#Option[String])]]
+  /** @see [[io.truthencode.ddo.BindingFlags.fromWords(#Option[String])]]
     */
   def fromWords(words: String)(implicit strategy: WordMatchStrategy)
   : Option[BindingFlags] = fromWords(Option(words))(strategy)

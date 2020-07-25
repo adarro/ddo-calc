@@ -15,7 +15,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package org.aos.ddo.support.naming
+package io.truthencode.ddo.support.naming
 
 /**
   * Used to display text in an optionally more friendly way.

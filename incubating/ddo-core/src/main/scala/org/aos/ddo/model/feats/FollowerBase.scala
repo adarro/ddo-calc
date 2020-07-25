@@ -15,12 +15,12 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package org.aos.ddo.model.feats
+package io.truthencode.ddo.model.feats
 
-import org.aos.ddo.model.classes.HeroicCharacterClass
-import org.aos.ddo.model.classes.HeroicCharacterClass.{Cleric, FavoredSoul, Paladin}
-import org.aos.ddo.model.item.weapon.FavoredWeapon
-import org.aos.ddo.support.requisite.RequiresAnyOfClass
+import io.truthencode.ddo.model.classes.HeroicCharacterClass
+import io.truthencode.ddo.model.classes.HeroicCharacterClass.{Cleric, FavoredSoul, Paladin}
+import io.truthencode.ddo.model.item.weapon.FavoredWeapon
+import io.truthencode.ddo.support.requisite.RequiresAnyOfClass
 
 /**
   * Base properties common to all follower Deity Feats

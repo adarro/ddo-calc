@@ -15,10 +15,10 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package org.aos.ddo.support.requisite
+package io.truthencode.ddo.support.requisite
 
-import org.aos.ddo.model.feats.Feat
-import org.aos.ddo.support.requisite.RequirementImplicits.featToReq
+import io.truthencode.ddo.model.feats.Feat
+import io.truthencode.ddo.support.requisite.RequirementImplicits.featToReq
 
 import scala.language.{implicitConversions, postfixOps}
 import scala.languageFeature.higherKinds

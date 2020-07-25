@@ -16,9 +16,9 @@
  * limitations under the License.
  */
 
-package org.aos.ddo
+package io.truthencode.ddo
 
-import org.aos.ddo.model.effect.Effect
+import io.truthencode.ddo.model.effect.Effect
 
 /** An Item set provides bonuses when equipping some or all of the items in the set.
   */

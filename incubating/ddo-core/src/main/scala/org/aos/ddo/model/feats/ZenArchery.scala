@@ -15,10 +15,10 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package org.aos.ddo.model.feats
+package io.truthencode.ddo.model.feats
 
-import org.aos.ddo.model.attribute.Attribute
-import org.aos.ddo.support.requisite.{FeatRequisiteImpl, RequiresAttribute, RequiresBaB}
+import io.truthencode.ddo.model.attribute.Attribute
+import io.truthencode.ddo.support.requisite.{FeatRequisiteImpl, RequiresAttribute, RequiresBaB}
 
 /** ICON Zen Archery.PNG
   * Zen Archery 	Passive 	You can use your Wisdom bonus instead of Dexterity bonus to determine bonus to attack with ranged missile weapons if it is higher (does not apply to thrown weapons). You treat longbows and shortbows as if they were Ki weapons.

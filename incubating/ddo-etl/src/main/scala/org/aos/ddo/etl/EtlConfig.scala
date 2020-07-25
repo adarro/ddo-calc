@@ -1,4 +1,4 @@
-package org.aos.ddo.etl
+package io.truthencode.ddo.etl
 
 import com.mongodb.ServerAddress
 import com.mongodb.async.client.MongoClientSettings

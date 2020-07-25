@@ -1,3 +1,3 @@
-package org.aos.ddo.model.classes
+package io.truthencode.ddo.model.classes
 
 trait CharacterClass

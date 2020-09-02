@@ -52,7 +52,6 @@ val releaseActive: Boolean? = rootProject.findProperty("release") as Boolean?
 
 config {
     release = if (releaseActive != null) releaseActive!! else false
-
     info {
         name = "DDO Calculations"
         vendor = "TruthEncode"

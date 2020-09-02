@@ -18,36 +18,27 @@
 package io.truthencode.ddo.model.feats
 
 import io.truthencode.ddo.model.attribute.Attribute
-import io.truthencode.ddo.model.misc.DefaultCoolDown
+import io.truthencode.ddo.model.classes.HeroicCharacterClass
+import io.truthencode.ddo.model.classes.HeroicCharacterClass.Alchemist
 import io.truthencode.ddo.support.requisite.{
+  ClassRequisiteImpl,
   FeatRequisiteImpl,
-  RequiresAttribute,
-  RequiresBaB
+  RequiresAllOfClass,
+  RequiresAttribute
 }
 
-/** Icon Feat Precision.png
-  * [[https://ddowiki.com/page/Precision Precision]]
-  * Active - Offensive Combat Stance
-  * While using Precision mode, you gain +5% to hit and reduce the target's fortification against your attacks by 25%.
-  * Cannot be used while raged.
-  * *
-  * Dexterity 13
-  * Base Attack Bonus +1
-  * @todo add Rage Prohibition
+/**
+  * You are skilled with the use of Simple Thrown Weapons (Throwing Daggers and Darts) and while using one, you gain Doubleshot equal to your Dexterity.
+  *
+  * @see [[https://ddowiki.com/page/Simple_Thrown_Weapon_Expertise]]
   */
-protected[feats] trait Precision
+protected[feats] trait SimpleThrownWeaponExpertise
     extends FeatRequisiteImpl
-    with ActiveFeat
-    with OffensiveCombatStance
     with RequiresAttribute
-    with RequiresBaB
     with AlchemistBonusFeat
-    with FighterBonusFeat
-    with MartialArtsFeat
-    with DefaultCoolDown {
+    with Passive {
   self: GeneralFeat =>
-  override def requiresAttribute: Seq[(Attribute, Int)] =
-    List((Attribute.Dexterity, 13))
+//  private[this] val cls = (Alchemist, 12)
+  override val requiresAttribute = Seq((Attribute.Dexterity, 13))
 
-  override def requiresBaB = 1
 }

@@ -17,18 +17,27 @@
  */
 package io.truthencode.ddo.model.feats
 
-import com.typesafe.scalalogging.LazyLogging
-import io.truthencode.ddo.model.spells.alchemical.{Primer, Reaction}
-import org.scalatest.{FunSpec, Matchers}
+import io.truthencode.ddo.model.classes.HeroicCharacterClass
+import io.truthencode.ddo.model.classes.HeroicCharacterClass.Alchemist
+import io.truthencode.ddo.support.requisite.{
+  ClassRequisiteImpl,
+  FeatRequisiteImpl,
+  RequiresAllOfClass
+}
 
-class ClassFeatTest extends FunSpec with Matchers with LazyLogging {
+/**
+  * Gain Evasion.
+  *
+  * @see [[https://ddowiki.com/page/Liquid_Luck]]
+  */
+protected[feats] trait LiquidLuck
+    extends FeatRequisiteImpl
+    with ClassRequisiteImpl
+    with RequiresAllOfClass
+    with AlchemistBonusFeat
+    with Passive {
+  self: ClassFeat =>
+  private[this] val cls = (Alchemist, 12)
 
-  describe("Alchemists") {
-    it("should have Alchemical Studies") {
-      val cf = ClassFeat.values
-      logger.info(s"found ${cf.size} values")
-      val c: ClassFeat.AlchemicalStudies = ClassFeat.AlchemicalStudies(Reaction.Orchidium)
-      cf should contain(c)
-    }
-  }
+  abstract override def allOfClass: Seq[(HeroicCharacterClass, Int)] = super.allOfClass :+ cls
 }

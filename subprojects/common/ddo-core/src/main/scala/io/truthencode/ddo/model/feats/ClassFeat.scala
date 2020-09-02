@@ -84,6 +84,7 @@ object ClassFeat extends Enum[ClassFeat] with FeatSearchPrefix {
       rangerLevels.map((Ranger, _))
   }
 
+  // Alchemists
   case class AlchemicalStudies(reaction: Reaction) extends ClassFeat with AlchemicalStudiesBase {
 
     override protected def nameSource: String = reaction.entryName
@@ -97,6 +98,11 @@ object ClassFeat extends Enum[ClassFeat] with FeatSearchPrefix {
   case object AlchemicalSpellcasting extends ClassFeat with AlchemicalSpellcasting
   case object InscribeAlchemyRecipe extends ClassFeat with InscribeAlchemyRecipe
   case object AlchemyOnTheRun extends ClassFeat with AlchemyOnTheRun
+  case object BattalionBrew extends ClassFeat with BattalionBrew
+  case object LiquidCourage extends ClassFeat with LiquidCourage
+  case object LiquidLuck extends ClassFeat with LiquidLuck
+  case object ToughTincture extends ClassFeat with ToughTincture
+  case object ToxicTonic extends ClassFeat with ToxicTonic
   case object MultitudeOfMissiles extends ClassFeat with MultitudeOfMissiles
   case object Poisonblood extends ClassFeat with Poisonblood
 

@@ -125,6 +125,7 @@ Verifying all known General Feats (from DDO Wiki)
 | Shield Proficiency (General) |
 | Shot on the Run |
 | Shuriken Expertise |
+| Simple Thrown Weapon Expertise |
 | Simple Weapon Proficiency |
 | Single Weapon Fighting |
 | Skill Focus |

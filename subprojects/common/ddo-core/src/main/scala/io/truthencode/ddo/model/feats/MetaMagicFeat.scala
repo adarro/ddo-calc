@@ -20,7 +20,12 @@ package io.truthencode.ddo.model.feats
 import enumeratum.Enum
 import io.truthencode.ddo.model.classes.HeroicCharacterClass
 import io.truthencode.ddo.support.naming.FriendlyDisplay
-import io.truthencode.ddo.support.requisite.{ClassRequisiteImpl, Inclusion, Requisite, RequisiteType}
+import io.truthencode.ddo.support.requisite.{
+  ClassRequisiteImpl,
+  Inclusion,
+  Requisite,
+  RequisiteType
+}
 
 import scala.collection.immutable.IndexedSeq
 
@@ -32,9 +37,11 @@ sealed trait MetaMagicFeat
     with ClassRequisiteImpl
     with FriendlyDisplay
     with FeatMatcher { self: FeatType with Requisite with Inclusion with RequisiteType =>
+
   val matchFeat: PartialFunction[Feat, MetaMagicFeat] = {
     case x: MetaMagicFeat => x
   }
+
   val matchFeatById: PartialFunction[String, MetaMagicFeat] = {
     case x: String if MetaMagicFeat.namesToValuesMap.contains(x) =>
       MetaMagicFeat.withNameOption(x) match {
@@ -45,8 +52,10 @@ sealed trait MetaMagicFeat
 }
 
 object MetaMagicFeat extends Enum[MetaMagicFeat] {
+
   lazy val minimumSpellCastingClass: Seq[(HeroicCharacterClass, Int)] =
     List(
+      (HeroicCharacterClass.Alchemist, 1),
       (HeroicCharacterClass.Artificer, 1),
       (HeroicCharacterClass.Bard, 1),
       (HeroicCharacterClass.Cleric, 1),
@@ -58,9 +67,7 @@ object MetaMagicFeat extends Enum[MetaMagicFeat] {
       (HeroicCharacterClass.Paladin, 4),
       (HeroicCharacterClass.Ranger, 4)
     )
-  case object EmpowerHealingSpell
-      extends MetaMagicFeat
-      with EmpowerHealingSpell
+  case object EmpowerHealingSpell extends MetaMagicFeat with EmpowerHealingSpell
   case object EmpowerSpell extends MetaMagicFeat with EmpowerSpell
   case object EnlargeSpell extends MetaMagicFeat with EnlargeSpell
   case object EschewMaterials extends MetaMagicFeat with EschewMaterials

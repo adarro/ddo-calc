@@ -24,17 +24,19 @@ import io.truthencode.ddo.support.naming.{DisplayName, FriendlyDisplay}
 
 import scala.collection.immutable
 
-sealed trait ClassTrees
-    extends EnumEntry
-    with ClassTree
-    with DisplayName
-    with FriendlyDisplay {
+sealed trait ClassTrees extends EnumEntry with ClassTree with DisplayName with FriendlyDisplay {
+
   override protected def nameSource: String =
     entryName.splitByCase.toPascalCase
 }
+
 // scalastyle:off number.of.methods
 object ClassTrees extends Enum[ClassTrees] with TreePrefix {
   override def values: immutable.IndexedSeq[ClassTrees] = findValues
+  // Alchemist
+  case object Apothecary extends ClassTrees with Apothecary
+  case object Bombardier extends ClassTrees with Bombardier
+  case object VileChemist extends ClassTrees with VileChemist
   // Artificier
   case object Arcanotechnician extends ClassTrees with Arcanotechnician
   case object BattleEngineer extends ClassTrees with BattleEngineer
@@ -71,12 +73,20 @@ object ClassTrees extends Enum[ClassTrees] with TreePrefix {
   case object KnightOfTheChalice extends ClassTrees with KnightOfTheChalice
   case object SacredDefender extends ClassTrees with SacredDefender
   // Ranger
+  /**
+    * @note will either need to qualify class or compensate for Racial Elven Arcane Archer access
+    */
   case object ArcaneArcher extends ClassTrees with ArcaneArcher
   case object DeepwoodStalker extends ClassTrees with DeepwoodStalker
   case object Tempest extends ClassTrees with Tempest
   // Rogue
   case object Assassin extends ClassTrees with Assassin
   case object Mechanic extends ClassTrees with Mechanic
+
+  /**
+    * @note may need to override display name to add Hyphen
+    *       perhaps add Hyphenate rule to display options
+    */
   case object ThiefAcrobat extends ClassTrees with ThiefAcrobat
   // Sorcerer
   case object AirSavant extends ClassTrees with AirSavant

@@ -309,7 +309,17 @@ object Requirement extends Enum[Requirement] {
       */
     override protected def nameSource: String = id.splitByCase.toPascalCase
   }
+case class ReqPointsInTree(treeLike: TreeLike,amount:Int) extends Requirement {
+    override def prefix: Option[String] = Some(treeLike.searchPrefix)
 
+    /**
+     * Sets or maps the source text for the DisplayName.
+     *
+     * @return Source text.
+     */
+    override protected def nameSource: String = treeLike.entryName.splitByCase.toPascalCase
+  val pointType: SpendablePoints = treeLike.pointType
+}
   case class ReqPoints(id: String, amount: Int) extends Requirement {
     override def prefix: Option[String] = Some(SpendablePoints.searchPrefix)
 

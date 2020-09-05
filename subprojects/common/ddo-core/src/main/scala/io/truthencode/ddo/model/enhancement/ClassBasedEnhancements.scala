@@ -46,7 +46,7 @@ import io.truthencode.ddo.support.requisite.{
 
 import scala.collection.immutable
 
-sealed trait EnhancementClass extends EnumEntry with DisplayName with FriendlyDisplay {
+sealed trait ClassBasedEnhancements extends EnumEntry with DisplayName with FriendlyDisplay {
 
   override protected def nameSource: String =
     entryName.splitByCase.toPascalCase
@@ -61,7 +61,7 @@ Vile Chemist enhancements - Poisons & debuffs: Additional poison damage to weapo
  */
 
 trait AlchemistEnhancement
-    extends EnhancementClass
+    extends ClassBasedEnhancements
     with ClassRequisiteImpl
     with RequiresAllOfClass {
 
@@ -74,7 +74,7 @@ Artificer enhancements
 Enhancements: Arcanotechnician, Battle Engineer, Renegade Mastermaker
  */
 trait ArtificerEnhancement
-    extends EnhancementClass
+    extends ClassBasedEnhancements
     with ClassRequisiteImpl
     with RequiresAllOfClass {
 
@@ -87,7 +87,7 @@ Barbarian
 Enhancements: Frenzied Berserker, Occult Slayer, Ravager
  */
 trait BarbarianEnhancement
-    extends EnhancementClass
+    extends ClassBasedEnhancements
     with ClassRequisiteImpl
     with RequiresAllOfClass {
 
@@ -99,7 +99,7 @@ trait BarbarianEnhancement
 Bard
 Enhancements: Spellsinger, Warchanter, Swashbuckler
  */
-trait BardEnhancement extends EnhancementClass with ClassRequisiteImpl with RequiresAllOfClass {
+trait BardEnhancement extends ClassBasedEnhancements with ClassRequisiteImpl with RequiresAllOfClass {
 
   override def allOfClass: Seq[(HeroicCharacterClass, Int)] =
     List((Bard, 1))
@@ -109,7 +109,7 @@ trait BardEnhancement extends EnhancementClass with ClassRequisiteImpl with Requ
 Cleric
 Enhancements: Divine Disciple, Warpriest, Radiant Servant
  */
-trait ClericEnhancement extends EnhancementClass with ClassRequisiteImpl with RequiresAllOfClass {
+trait ClericEnhancement extends ClassBasedEnhancements with ClassRequisiteImpl with RequiresAllOfClass {
 
   override def allOfClass: Seq[(HeroicCharacterClass, Int)] =
     List((Cleric, 1))
@@ -120,7 +120,7 @@ Druid
 Enhancements: Nature's Protector, Nature's Warrior, Season's Herald
 @note may need to adjust entry name to include apostrophe ??
  */
-trait DruidEnhancement extends EnhancementClass with ClassRequisiteImpl with RequiresAllOfClass {
+trait DruidEnhancement extends ClassBasedEnhancements with ClassRequisiteImpl with RequiresAllOfClass {
 
   override def allOfClass: Seq[(HeroicCharacterClass, Int)] =
     List((Druid, 1))
@@ -132,7 +132,7 @@ Enhancements: Angel of Vengeance, Beacon of Hope, War Soul
  */
 
 trait FavoredSoulEnhancement
-    extends EnhancementClass
+    extends ClassBasedEnhancements
     with ClassRequisiteImpl
     with RequiresAllOfClass {
 
@@ -144,14 +144,15 @@ trait FavoredSoulEnhancement
 Fighter
 Enhancements: Kensei, Stalwart Defender, Vanguard
  */
-trait FighterEnhancement extends EnhancementClass with ClassRequisiteImpl with RequiresAllOfClass {
+trait FighterEnhancement extends FighterOrPaladinEnhancement with RequiresAllOfClass {
+  private val cls = List((Fighter, 1))
+  override def anyOfClass: Seq[(HeroicCharacterClass, Int)] = List((Fighter, 1))
+  override def allOfClass: Seq[(HeroicCharacterClass, Int)] = List((Fighter, 1))
 
-  override def allOfClass: Seq[(HeroicCharacterClass, Int)] =
-    List((Fighter, 1))
 }
 
 trait FighterOrPaladinEnhancement
-    extends EnhancementClass
+    extends ClassBasedEnhancements
     with ClassRequisiteImpl
     with RequiresAnyOfClass {
 
@@ -164,7 +165,7 @@ trait FighterOrPaladinEnhancement
 Monk
 Enhancements: Henshin Mystic, Ninja Spy, Shintao Monk
  */
-trait MonkEnhancement extends EnhancementClass with ClassRequisiteImpl with RequiresAllOfClass {
+trait MonkEnhancement extends ClassBasedEnhancements with ClassRequisiteImpl with RequiresAllOfClass {
 
   override def allOfClass: Seq[(HeroicCharacterClass, Int)] =
     List((Monk, 1))
@@ -175,10 +176,11 @@ Paladin
 Enhancements: Knight of the Chalice, Sacred Defender, Vanguard
  */
 
-trait PaladinEnhancement extends EnhancementClass with ClassRequisiteImpl with RequiresAllOfClass {
+trait PaladinEnhancement extends FighterOrPaladinEnhancement with RequiresAllOfClass {
+  private val cls = List((Paladin, 1))
+  override def anyOfClass: Seq[(HeroicCharacterClass, Int)] = cls
+  override def allOfClass: Seq[(HeroicCharacterClass, Int)] = cls
 
-  override def allOfClass: Seq[(HeroicCharacterClass, Int)] =
-    List((Paladin, 1))
 }
 
 // Vanguard included with Fighter Enhancement of the same name
@@ -186,7 +188,7 @@ trait PaladinEnhancement extends EnhancementClass with ClassRequisiteImpl with R
 Ranger
 Enhancements: Arcane Archer, Deepwood Stalker, Tempest
  */
-trait RangerEnhancement extends EnhancementClass with ClassRequisiteImpl with RequiresAllOfClass {
+trait RangerEnhancement extends ClassBasedEnhancements with ClassRequisiteImpl with RequiresAllOfClass {
 
   override def allOfClass: Seq[(HeroicCharacterClass, Int)] =
     List((Ranger, 1))
@@ -197,7 +199,7 @@ Rogue
 Enhancements: Assassin, Mechanic, Thief-Acrobat
  */
 
-trait RogueEnhancement extends EnhancementClass with ClassRequisiteImpl with RequiresAllOfClass {
+trait RogueEnhancement extends ClassBasedEnhancements with ClassRequisiteImpl with RequiresAllOfClass {
 
   override def allOfClass: Seq[(HeroicCharacterClass, Int)] =
     List((Rogue, 1))
@@ -207,14 +209,15 @@ trait RogueEnhancement extends EnhancementClass with ClassRequisiteImpl with Req
 Sorcerer
 Enhancements: Air Savant, Earth Savant, Eldritch Knight, Fire Savant, Water Savant
  */
-trait SorcererEnhancement extends EnhancementClass with ClassRequisiteImpl with RequiresAllOfClass {
+trait SorcererEnhancement extends SorcererOrWizardEnhancement with RequiresAllOfClass {
+  private val cls = List((Sorcerer, 1))
+  override def allOfClass: Seq[(HeroicCharacterClass, Int)] = cls
+  override def anyOfClass: Seq[(HeroicCharacterClass, Int)] = cls
 
-  override def allOfClass: Seq[(HeroicCharacterClass, Int)] =
-    List((Sorcerer, 1))
 }
 
 trait SorcererOrWizardEnhancement
-    extends EnhancementClass
+    extends ClassBasedEnhancements
     with ClassRequisiteImpl
     with RequiresAnyOfClass {
 
@@ -226,7 +229,7 @@ trait SorcererOrWizardEnhancement
 Warlock
 Enhancements: Soul Eater, Tainted Scholar, Enlightened Spirit
  */
-trait WarlockEnhancement extends EnhancementClass with ClassRequisiteImpl with RequiresAllOfClass {
+trait WarlockEnhancement extends ClassBasedEnhancements with ClassRequisiteImpl with RequiresAllOfClass {
 
   override def allOfClass: Seq[(HeroicCharacterClass, Int)] =
     List((Warlock, 1))
@@ -236,10 +239,11 @@ trait WarlockEnhancement extends EnhancementClass with ClassRequisiteImpl with R
 Wizard
 Enhancements: Archmage, Eldritch Knight, Pale Master
  */
-trait WizardEnhancement extends EnhancementClass with ClassRequisiteImpl with RequiresAllOfClass {
+trait WizardEnhancement extends SorcererOrWizardEnhancement with RequiresAllOfClass {
+  private val cls = List((Wizard, 1))
+  override def allOfClass: Seq[(HeroicCharacterClass, Int)] = cls
+  override def anyOfClass: Seq[(HeroicCharacterClass, Int)] = cls
 
-  override def allOfClass: Seq[(HeroicCharacterClass, Int)] =
-    List((Wizard, 1))
 }
 
 /*
@@ -248,34 +252,25 @@ Reaper Enhancements: Dread Adversary, Dire Thaumaturge, Grim Barricade
  */
 
 // scalastyle:off number.of.methods
-object EnhancementClass extends Enum[EnhancementClass] {
-    val matchFeatById: PartialFunction[HeroicCharacterClass, EnhancementClass with ClassRequisiteImpl with RequiresAllOfClass] = {
-        case Alchemist => new AlchemistEnhancement {}
-        case Artificer => new ArtificerEnhancement {}
-        case Bard => new BardEnhancement {}
-        case Cleric => new ClericEnhancement {}
-        case Druid => new DruidEnhancement {}
-        case FavoredSoul => new FavoredSoulEnhancement {}
-            case Fighter => new FighterEnhancement {}
-        case Monk => new MonkEnhancement {}
-        case Paladin => new PaladinEnhancement {}
-        case Rogue => new RogueEnhancement {}
-        case Ranger => new RangerEnhancement {}
-        case Sorcerer => new SorcererEnhancement {}
-        case Warlock => new WarlockEnhancement {}
-        case Wizard => new WizardEnhancement {}
-    }
-  case class SingleClass(heroicCharacterClass: HeroicCharacterClass)
-      extends EnhancementClass
-      with ClassRequisiteImpl
-      with RequiresAllOfClass {
-    override def allOfClass: Seq[(HeroicCharacterClass, Int)] = Seq((heroicCharacterClass, 1))
-  }
+object ClassBasedEnhancements extends Enum[ClassBasedEnhancements] {
 
-  def singleClassEnhancements: immutable.Seq[SingleClass] = HeroicCharacterClass.values.map {
-    SingleClass
-  }
   case object FighterOrPaladinEnhancement extends FighterOrPaladinEnhancement
   case object SorcererOrWizardEnhancement extends SorcererOrWizardEnhancement
-  override def values: immutable.IndexedSeq[EnhancementClass] = findValues ++ singleClassEnhancements
+  case object AlchemistEnhancement extends AlchemistEnhancement
+  case object ArtificerEnhancement extends ArtificerEnhancement
+  case object BardEnhancementEnhancement extends BardEnhancement
+  case object ClericEnhancementEnhancement extends ClericEnhancement
+  case object DruidEnhancement extends DruidEnhancement
+  case object FavoredSoulEnhancement extends FavoredSoulEnhancement
+  case object FighterEnhancement extends FighterEnhancement
+  case object MonkEnhancement extends MonkEnhancement
+  case object PaladinEnhancement extends PaladinEnhancement
+  case object RogueEnhancement extends RogueEnhancement
+  case object RangerEnhancement extends RangerEnhancement
+  case object SorcererEnhancement extends SorcererEnhancement
+  case object WarlockEnhancement extends WarlockEnhancement
+  case object WizardEnhancement extends WizardEnhancement
+
+  override lazy val values: immutable.IndexedSeq[ClassBasedEnhancements] =
+    findValues
 }

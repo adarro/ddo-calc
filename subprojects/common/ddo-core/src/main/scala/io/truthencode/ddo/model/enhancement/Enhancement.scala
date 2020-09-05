@@ -18,13 +18,11 @@
 package io.truthencode.ddo.model.enhancement
 
 import enumeratum.{Enum, EnumEntry}
-import io.truthencode.ddo.model.classes.HeroicCharacterClass
-import io.truthencode.ddo.model.classes.HeroicCharacterClass.Artificer
 import io.truthencode.ddo.model.enhancement.enhancements.Determination
 import io.truthencode.ddo.support.StringUtils.Extensions
 import io.truthencode.ddo.support.naming.{DisplayName, FriendlyDisplay}
-import io.truthencode.ddo.support.requisite.{ClassRequisite, ClassRequisiteImpl, RaceRequisite, RequiresAllOfClass}
-import io.truthencode.ddo.support.tree.ClassTrees
+import io.truthencode.ddo.support.requisite.{PointInTreeRequisite, PointsAvailableRequisite, RaceRequisite}
+import io.truthencode.ddo.support.tree.{ClassTrees, Ranks}
 
 import scala.collection.immutable
 
@@ -42,11 +40,11 @@ sealed trait Enhancement
 }
 
 /**
-  * Class based enhancement which requires at least one level in a particular class.
-  */
-trait ClassEnhancement extends Enhancement with ClassBased {
-  self: Tier with ClassRequisite =>
-  val tree : ClassTrees
+ * Class based enhancement which requires at least one level in a particular class.
+ */
+trait ClassEnhancement extends Enhancement with ClassBased with Ranks {
+    self: Tier with ClassBasedEnhancements with PointInTreeRequisite with PointsAvailableRequisite =>
+    val tree : ClassTrees
 }
 
 /**

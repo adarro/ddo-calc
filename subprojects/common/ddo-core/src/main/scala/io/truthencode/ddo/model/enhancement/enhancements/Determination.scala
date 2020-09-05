@@ -19,12 +19,33 @@ package io.truthencode.ddo.model.enhancement.enhancements
 
 import io.truthencode.ddo.model.classes.HeroicCharacterClass
 import io.truthencode.ddo.model.classes.HeroicCharacterClass.Alchemist
-import io.truthencode.ddo.model.enhancement.{AlchemistEnhancement, ClassEnhancement, Core}
-import io.truthencode.ddo.support.tree.ClassTrees
+import io.truthencode.ddo.model.enhancement.{Apothecary, ClassEnhancement, Core}
+import io.truthencode.ddo.support.points.SpendablePoints
+import io.truthencode.ddo.support.requisite._
+import io.truthencode.ddo.support.tree.{ClassTrees, TreeLike}
 
-trait Determination  extends AlchemistEnhancement with ClassEnhancement with Core {
+trait Determination
+    extends ClassEnhancement
+    with Apothecary
+    with Core
+    with PointsAvailableRequisiteImpl
+    with PointsInTreeRequisiteImpl
+    with RequiresPointsInTree
+    with RequiresPointsAvailable
+    with RequiresActionPoints {
   // Will Save +1
-    override val tree: ClassTrees = ClassTrees.Apothecary
+  override val tree: ClassTrees = ClassTrees.Apothecary
 
-    override def allOfClass: Seq[(HeroicCharacterClass, Int)] = Seq((Alchemist,1))
+  override def costPerRank: Int = 1
+
+
+
+  /**
+    * Some enhancements can be taken multiple times (generally up to three)
+    */
+  override val ranks: Int = 1
+
+  override def allOfClass: Seq[(HeroicCharacterClass, Int)] = Seq((Alchemist, 1))
+
+  override def pointsInTree: Seq[(TreeLike, SpendablePoints, Int)] = Seq((tree, 0))
 }

@@ -27,7 +27,7 @@ import io.truthencode.ddo.support.naming.{DisplayName, FriendlyDisplay}
 import io.truthencode.ddo.support.points.SpendablePoints
 
 import scala.collection.immutable
-sealed trait TreeLike extends EnumEntry with DisplayName with FriendlyDisplay {
+sealed trait TreeLike extends EnumEntry with DisplayName with FriendlyDisplay with SearchPrefix {
   override protected def nameSource: String =
     entryName.splitByCase.toPascalCase
   val pointType: SpendablePoints

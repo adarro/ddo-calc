@@ -15,15 +15,21 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package io.truthencode.ddo.model.feats.classes
+package io.truthencode.ddo.model.enhancement
 
-import io.truthencode.ddo.model.feats.{ClassFeat, FeatDisplayHelper}
-import io.truthencode.ddo.testoptions.DefaultFlexmark
-import org.concordion.api.option.{ConcordionOptions, MarkdownExtensions}
-import org.concordion.integration.junit4.ConcordionRunner
-import org.junit.runner.RunWith
+import io.truthencode.ddo.support.points.SpendablePoints
+import io.truthencode.ddo.support.tree.TreeLike
 
-@RunWith(classOf[ConcordionRunner])
-class Classes extends FeatDisplayHelper with DefaultFlexmark{
-  override val enum: E = ClassFeat
+package object enhancements {
+
+    /**
+     * Simple Convinience class to expand and manipulate Tree tuples
+     * @param source Tuple of Tree and cost values
+     */
+    implicit def expanders(source: (TreeLike, Int)) = {
+
+
+            (source._1, source._1.pointType, source._2)
+
+    }
 }

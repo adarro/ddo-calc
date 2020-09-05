@@ -17,7 +17,7 @@
  */
 package io.truthencode.ddo.model.feats.races
 
-import io.truthencode.ddo.model.feats.{DisplayHelper, RacialFeat}
+import io.truthencode.ddo.model.feats.{FeatDisplayHelper, RacialFeat}
 import org.concordion.api.FullOGNL
 import org.concordion.api.option.{ConcordionOptions, MarkdownExtensions}
 //import org.concordion.ext.EmbedExtension
@@ -34,6 +34,6 @@ import org.junit.runner.RunWith
                              MarkdownExtensions.AUTOLINKS,
                              MarkdownExtensions.TASKLISTITEMS)
 )
-class Races extends DisplayHelper {
+class Races extends FeatDisplayHelper {
   override val enum: E = RacialFeat
 }

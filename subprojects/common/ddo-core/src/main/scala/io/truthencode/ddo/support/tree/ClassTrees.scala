@@ -28,6 +28,14 @@ sealed trait ClassTrees extends EnumEntry with ClassTree with DisplayName with F
 
   override protected def nameSource: String =
     entryName.splitByCase.toPascalCase
+
+    /**
+     * Used when qualifying a search with a prefix.
+     * Examples include finding "HalfElf" from qualified "Race:HalfElf"
+     *
+     * @return A default or applied prefix
+     */
+    override def searchPrefixSource: String = "ClassEnhancement"
 }
 
 // scalastyle:off number.of.methods
@@ -96,7 +104,7 @@ object ClassTrees extends Enum[ClassTrees] with TreePrefix {
   case object WaterSavant extends ClassTrees with WaterSavant
   // Warlock
   case object SoulEater extends ClassTrees with SoulEater
-  case object TaintedScholar extends ClassTree with TaintedScholar
+  case object TaintedScholar extends ClassTrees with TaintedScholar
   case object EnlightenedSpirit extends ClassTrees with EnlightenedSpirit
   //  Wizard
   case object Archmage extends ClassTrees with Archmage

@@ -25,7 +25,13 @@ import io.truthencode.ddo.model.favor.FavorPatron
 import io.truthencode.ddo.model.feats.{ClassFeat, Feat, GeneralFeat, RacialFeat}
 import io.truthencode.ddo.model.race.Race
 import io.truthencode.ddo.model.skill.Skill
-import io.truthencode.ddo.support.points.{ActionPoints, EpicDestinyPoints, SpendablePoints, Progression, SurvivalPoints}
+import io.truthencode.ddo.support.points.{
+  ActionPoints,
+  EpicDestinyPoints,
+  Progression,
+  SpendablePoints,
+  SurvivalPoints
+}
 import io.truthencode.ddo.support.requisite.Requirement._
 import io.truthencode.ddo.support.tree.{TreeLike, UniversalTree}
 
@@ -41,57 +47,65 @@ package object requisite {
       def toReqFavor: ReqFavorPatron = patronToReq(source)
     }
 
-    val patronToReq: PartialFunction[(FavorPatron, Int), ReqFavorPatron] = new PartialFunction[(FavorPatron, Int), ReqFavorPatron] {
-      override def isDefinedAt(x: (FavorPatron, Int)): Boolean =
-        Requirement
-          .withNameOption(s"${FavorPatron.searchPrefix}${x._1.entryName}")
-          .isDefined
+    val patronToReq: PartialFunction[(FavorPatron, Int), ReqFavorPatron] =
+      new PartialFunction[(FavorPatron, Int), ReqFavorPatron] {
 
-      override def apply(v1: (FavorPatron, Int)): ReqFavorPatron =
-        ReqFavorPatron(v1._1.entryName, v1._2)
-    }
+        override def isDefinedAt(x: (FavorPatron, Int)): Boolean =
+          Requirement
+            .withNameOption(s"${FavorPatron.searchPrefix}${x._1.entryName}")
+            .isDefined
+
+        override def apply(v1: (FavorPatron, Int)): ReqFavorPatron =
+          ReqFavorPatron(v1._1.entryName, v1._2)
+      }
 
     implicit class SkillImplicits(val source: (Skill, Int)) {
       def toReq: ReqSkill = skillToReq(source)
     }
 
-    val skillToReq: PartialFunction[(Skill, Int), ReqSkill] = new PartialFunction[(Skill, Int), ReqSkill] {
-      override def isDefinedAt(x: (Skill, Int)): Boolean =
-        Requirement
-          .withNameOption(s"${Skill.searchPrefix}${x._1.entryName}")
-          .isDefined
+    val skillToReq: PartialFunction[(Skill, Int), ReqSkill] =
+      new PartialFunction[(Skill, Int), ReqSkill] {
 
-      override def apply(v1: (Skill, Int)): ReqSkill =
-        ReqSkill(v1._1.entryName, v1._2)
-    }
+        override def isDefinedAt(x: (Skill, Int)): Boolean =
+          Requirement
+            .withNameOption(s"${Skill.searchPrefix}${x._1.entryName}")
+            .isDefined
+
+        override def apply(v1: (Skill, Int)): ReqSkill =
+          ReqSkill(v1._1.entryName, v1._2)
+      }
 
     implicit class AttributeImplicits(val source: (Attribute, Int)) {
       def toReq: ReqAttribute = attrToReq(source)
     }
 
-    val attrToReq: PartialFunction[(Attribute, Int), ReqAttribute] = new PartialFunction[(Attribute, Int), ReqAttribute] {
-      override def isDefinedAt(x: (Attribute, Int)): Boolean =
-        Requirement
-          .withNameOption(s"${Attribute.searchPrefix}${x._1.entryName}")
-          .isDefined
+    val attrToReq: PartialFunction[(Attribute, Int), ReqAttribute] =
+      new PartialFunction[(Attribute, Int), ReqAttribute] {
 
-      override def apply(v1: (Attribute, Int)): ReqAttribute =
-        ReqAttribute(v1._1.entryName, v1._2)
-    }
+        override def isDefinedAt(x: (Attribute, Int)): Boolean =
+          Requirement
+            .withNameOption(s"${Attribute.searchPrefix}${x._1.entryName}")
+            .isDefined
+
+        override def apply(v1: (Attribute, Int)): ReqAttribute =
+          ReqAttribute(v1._1.entryName, v1._2)
+      }
 
     implicit class RaceImplicits(val source: (Race, Int)) {
       def toReq: ReqRace = raceToReq(source)
     }
 
-    val raceToReq: PartialFunction[(Race, Int), ReqRace] = new PartialFunction[(Race, Int), ReqRace] {
-      override def isDefinedAt(x: (Race, Int)): Boolean =
-        Requirement
-          .withNameOption(s"${Race.searchPrefix}${x._1.entryName}")
-          .isDefined
+    val raceToReq: PartialFunction[(Race, Int), ReqRace] =
+      new PartialFunction[(Race, Int), ReqRace] {
 
-      override def apply(v1: (Race, Int)): ReqRace =
-        ReqRace(v1._1.entryName, v1._2)
-    }
+        override def isDefinedAt(x: (Race, Int)): Boolean =
+          Requirement
+            .withNameOption(s"${Race.searchPrefix}${x._1.entryName}")
+            .isDefined
+
+        override def apply(v1: (Race, Int)): ReqRace =
+          ReqRace(v1._1.entryName, v1._2)
+      }
 
     implicit class FeatImplicits(val source: Feat with EnumEntry) {
       def toReq: ReqFeat = featToReq(source)
@@ -120,6 +134,7 @@ package object requisite {
 //    }
 
     val featToReq: PartialFunction[Feat, ReqFeat] = new PartialFunction[Feat, ReqFeat] {
+
       override def isDefinedAt(x: Feat): Boolean =
         Requirement
           .withNameOption(s"${Feat.searchPrefix}${x.entryName}")
@@ -136,56 +151,72 @@ package object requisite {
 //
 //      override def apply(v1: Feat): ReqFeat = ReqFeat(v1.entryName)
 //    }
-    val racialFeatToReq: PartialFunction[RacialFeat, ReqFeat] = new PartialFunction[RacialFeat, ReqFeat] {
-      override def isDefinedAt(x: RacialFeat): Boolean =
-        Requirement
-          .withNameOption(s"${RacialFeat.searchPrefix}${x.entryName}")
-          .isDefined
+    val racialFeatToReq: PartialFunction[RacialFeat, ReqFeat] =
+      new PartialFunction[RacialFeat, ReqFeat] {
 
-      override def apply(v1: RacialFeat): ReqFeat = ReqFeat(v1.entryName)
-    }
+        override def isDefinedAt(x: RacialFeat): Boolean =
+          Requirement
+            .withNameOption(s"${RacialFeat.searchPrefix}${x.entryName}")
+            .isDefined
 
-    val classFeatToReq: PartialFunction[ClassFeat, ReqFeat] = new PartialFunction[ClassFeat, ReqFeat] {
-      override def isDefinedAt(x: ClassFeat): Boolean =
-        Requirement
-          .withNameOption(s"${ClassFeat.searchPrefix}${x.entryName}")
-          .isDefined
+        override def apply(v1: RacialFeat): ReqFeat = ReqFeat(v1.entryName)
+      }
 
-      override def apply(v1: ClassFeat): ReqFeat = ReqFeat(v1.entryName)
-    }
+    val classFeatToReq: PartialFunction[ClassFeat, ReqFeat] =
+      new PartialFunction[ClassFeat, ReqFeat] {
+
+        override def isDefinedAt(x: ClassFeat): Boolean =
+          Requirement
+            .withNameOption(s"${ClassFeat.searchPrefix}${x.entryName}")
+            .isDefined
+
+        override def apply(v1: ClassFeat): ReqFeat = ReqFeat(v1.entryName)
+      }
 
     implicit class ClassImplicits(val source: (HeroicCharacterClass, Int)) {
       def toReq: ReqClass = classToReq(source)
     }
 
-    val classToReq: PartialFunction[(HeroicCharacterClass, Int), ReqClass] = new PartialFunction[(HeroicCharacterClass, Int), ReqClass] {
-      override def isDefinedAt(x: (HeroicCharacterClass, Int)): Boolean =
-        Requirement
-          .withNameOption(s"${HeroicCharacterClass.searchPrefix}${x._1.entryName}")
-          .isDefined
+    val classToReq: PartialFunction[(HeroicCharacterClass, Int), ReqClass] =
+      new PartialFunction[(HeroicCharacterClass, Int), ReqClass] {
 
-      override def apply(v1: (HeroicCharacterClass, Int)): ReqClass =
-        ReqClass(v1._1.entryName, v1._2)
+        override def isDefinedAt(x: (HeroicCharacterClass, Int)): Boolean =
+          Requirement
+            .withNameOption(s"${HeroicCharacterClass.searchPrefix}${x._1.entryName}")
+            .isDefined
+
+        override def apply(v1: (HeroicCharacterClass, Int)): ReqClass =
+          ReqClass(v1._1.entryName, v1._2)
+      }
+
+    val alignmentTypeToReq: PartialFunction[AlignmentType, ReqAlignment] = {
+      case x: AlignmentType => ReqAlignment(Left(x))
     }
 
-    val alignmentTypeToReq: PartialFunction[AlignmentType,ReqAlignment] = {
-        case x:AlignmentType => ReqAlignment(Left(x))
+    val alignmentsToReq: PartialFunction[Alignments, ReqAlignment] = {
+      case x: Alignments => ReqAlignment(Right(x))
     }
-    val alignmentsToReq: PartialFunction[Alignments,ReqAlignment] = {
-        case x:Alignments => ReqAlignment(Right(x))
-    }
+
     val characterLevelToReq: PartialFunction[Int, ReqCharacterLevel] = {
       case x: Int if CharacterLevels contains x => ReqCharacterLevel(x)
     }
 
-    val progressionToReq: PartialFunction[(TreeLike,Int),ReqPointsSpentInTree] = {
-          case (x:UniversalTree,y:Int) => ReqPointsSpentInTree(x,y)
+    val pointToReq: PartialFunction[(SpendablePoints, Int), ReqPoints] = {
+      case x: (SpendablePoints, Int) => ReqPoints(x._1.entryName, x._2)
+    }
+
+    val progressionToReq: PartialFunction[(TreeLike, Int), ReqPointsSpentInTree] = {
+      case (x: TreeLike, y: Int) => ReqPointsSpentInTree(x, y)
 
 //              if Points.withNameOption(x._1.entryName).nonEmpty=> x._1 match {
 //              case y: ActionPoints => ReqPointsSpent(Points.ActionPoints,x._2)
 //              case y: SurvivalPoints => ReqPointsSpent(Points.SurvivalPoints,x._2)
 //              case y: EpicDestinyPoints => ReqPointsSpent(Points.EpicDestinyPoints,x._2)
 //          }
+    }
+
+      val progressionWithPointsToReq: PartialFunction[(TreeLike,SpendablePoints, Int), ReqPointsSpentInTree] = {
+          case (x: TreeLike,_, y: Int) => ReqPointsSpentInTree(x, y)
       }
 //    val pointsToReq: PartialFunction[(Points with SpendablePoint,Int),ReqPointsSpent] = {
 //        case x: (Points with SpendablePoint,Int) => {

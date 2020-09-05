@@ -49,6 +49,7 @@ trait ProgressionRequisiteImpl
     extends MustContainImpl[Requirement]
     with ProgressionInTreeRequisite {
   self: Requisite with RequisiteType =>
+    override def pointsInTree: Seq[(TreeLike, Int)] = Nil
 }
 
 trait RequiresTreeProgression

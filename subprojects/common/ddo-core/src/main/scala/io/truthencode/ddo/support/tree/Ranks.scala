@@ -15,15 +15,12 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package io.truthencode.ddo.model.feats.classes
+package io.truthencode.ddo.support.tree
 
-import io.truthencode.ddo.model.feats.{ClassFeat, FeatDisplayHelper}
-import io.truthencode.ddo.testoptions.DefaultFlexmark
-import org.concordion.api.option.{ConcordionOptions, MarkdownExtensions}
-import org.concordion.integration.junit4.ConcordionRunner
-import org.junit.runner.RunWith
+trait Ranks {
 
-@RunWith(classOf[ConcordionRunner])
-class Classes extends FeatDisplayHelper with DefaultFlexmark{
-  override val enum: E = ClassFeat
+  /**
+    * Some enhancements can be taken multiple times (generally up to three)
+    */
+  val ranks: Int
 }

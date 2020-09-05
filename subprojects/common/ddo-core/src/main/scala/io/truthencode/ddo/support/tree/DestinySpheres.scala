@@ -31,6 +31,14 @@ sealed trait DestinySpheres
     with FriendlyDisplay {
   override protected def nameSource: String =
     entryName.splitByCase.toPascalCase
+
+    /**
+     * Used when qualifying a search with a prefix.
+     * Examples include finding "HalfElf" from qualified "Race:HalfElf"
+     *
+     * @return A default or applied prefix
+     */
+    override def searchPrefixSource: String = "DestinySphere"
 }
 
 trait Arcane extends DestinySpheres

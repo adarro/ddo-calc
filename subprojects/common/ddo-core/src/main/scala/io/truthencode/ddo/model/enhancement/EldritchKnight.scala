@@ -17,4 +17,4 @@
  */
 package io.truthencode.ddo.model.enhancement
 
-trait EldritchKnight extends SorcererEnhancement
+trait EldritchKnight extends SorcererOrWizardEnhancement

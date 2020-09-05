@@ -29,22 +29,20 @@ import scala.collection.immutable
 /**
   * Enhancements are acquired via the Skill Tree by spending action points.
   */
-sealed trait Enhancement
-    extends EnumEntry
-    with DisplayName
-    with FriendlyDisplay {
+sealed trait Enhancement extends EnumEntry with DisplayName with FriendlyDisplay {
   self: TreeType with Tier =>
+
   override protected def nameSource: String =
     entryName.splitByCase.toPascalCase
 
 }
 
 /**
- * Class based enhancement which requires at least one level in a particular class.
- */
+  * Class based enhancement which requires at least one level in a particular class.
+  */
 trait ClassEnhancement extends Enhancement with ClassBased with Ranks {
-    self: Tier with ClassBasedEnhancements with PointInTreeRequisite with PointsAvailableRequisite =>
-    val tree : ClassTrees
+  self: Tier with ClassBasedEnhancements with PointInTreeRequisite with PointsAvailableRequisite =>
+  val tree: ClassTrees
 }
 
 /**
@@ -60,8 +58,6 @@ trait UniversalEnhancement extends Enhancement with Universal {
 trait RacialEnhancement extends Enhancement with Racial {
   self: Tier with RaceRequisite =>
 }
-
-
 
 object Enhancement extends Enum[Enhancement] {
   override def values: immutable.IndexedSeq[Enhancement] = findValues

@@ -48,11 +48,12 @@ trait ClassFeatDisplayHelper extends FeatDisplayHelper with LazyLogging {
   }
 
   lazy val grantedFeats: util.List[String] = {
-    val values = enum.values collect filterByGrantedTo
-    values.filterNot(_.isSubFeat).map(_.displayText).sorted.asJava
+    val values =  {enum.values collect filterByGrantedTo } collect filterByMainFeat
+    values.map(_.displayText).sorted.asJava
   }
 
-  val filterByAllOf: PartialFunction[Entry, Entry] = {
+// Currently no sub-feats with Class based restrictions?
+   val filterByAllOf: PartialFunction[Entry, Entry] = {
     case x: ClassRequisite if x.allOfClass.exists(isDefinedForClass(_)) => x
   }
 
@@ -70,7 +71,7 @@ trait ClassFeatDisplayHelper extends FeatDisplayHelper with LazyLogging {
   }
 
   val filterByClassBonusFeat: PartialFunction[Entry, Entry] = {
-    case x: BonusSelectableFeat if x.bonusCharacterClass.contains(cClass) && !x.isSubFeat =>
+    case x: BonusSelectableFeat with SubFeatInformation if x.bonusCharacterClass.contains(cClass) && !x.isSubFeat =>
       lazy val msg = s"Entry ${x.displayText} matched type and character class $cClass"
       lazy val idInfo = Map(
         "entryName"     -> x.entryName,
@@ -85,7 +86,7 @@ trait ClassFeatDisplayHelper extends FeatDisplayHelper with LazyLogging {
   }
 
   val filterByClassBonusFeatByLevel: PartialFunction[(Entry, Int), (Entry, Int)] = {
-    case (x: SelectableToClass, y)
+    case (x: SelectableToClass with SubFeatInformation, y)
         if x.bonusSelectableToClass.exists(isDefinedForClass(_, Some(y))) && !x.isSubFeat =>
       (x, y)
   }

@@ -38,8 +38,6 @@ trait Determination
 
   override def costPerRank: Int = 1
 
-
-
   /**
     * Some enhancements can be taken multiple times (generally up to three)
     */

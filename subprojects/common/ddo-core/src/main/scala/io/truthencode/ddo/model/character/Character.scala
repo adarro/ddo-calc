@@ -18,50 +18,17 @@
 package io.truthencode.ddo.model.character
 
 import io.truthencode.ddo.model.alignment.Alignments
-import io.truthencode.ddo.model.classes.{
-  EpicCharacterClass,
-  HeroicCharacterClass
-}
+import io.truthencode.ddo.model.classes.{EpicCharacterClass, HeroicCharacterClass}
 import io.truthencode.ddo.model.destiny.EpicDestiny
 import io.truthencode.ddo.model.enhancement.Enhancement
 import io.truthencode.ddo.model.feats.Feat
 import io.truthencode.ddo.model.item.WearableItem
 import io.truthencode.ddo.model.race.Race
 import io.truthencode.ddo.model.skill.Skill
-import io.truthencode.ddo.model.stats.{
-  AttributeStat,
-  BaseAttackBonus,
-  BowAttackSpeedBonus,
-  CriticalHitConfirmation,
-  CriticalHitDamage,
-  DodgeBypass,
-  FortificationBypass,
-  HelplessDamage,
-  MeleeThreatMultiplier,
-  MovementSpeedModifier,
-  NonRepeatingCrossbowAttackSpeedBonus,
-  OffhandDoublestrike,
-  OffhandHitChance,
-  OneHandedAttackSpeedBonus,
-  QuarterstaffAttackSpeedBonus,
-  RangedThreatMultiplier,
-  RepeatingCrossbowAttackSpeedBonus,
-  SecondaryShieldBashChance,
-  ShieldBashChance,
-  SimpleStatItem,
-  SneakAttackDamageBonus,
-  SneakAttackHitBonus,
-  SpellCostReduction,
-  SpellPenetrationBonuses,
-  SpellThreatMultiplier,
-  StatItem,
-  StrikeThroughChance,
-  ThrownAttackSpeedBonus,
-  TwoHandedAttackSpeedBonus,
-  TwoWeaponAttackSpeedBonus
-}
+import io.truthencode.ddo.model.stats._
 import io.truthencode.ddo.support.dice.Dice
 import io.truthencode.ddo.support.points.{HitPoints, Ki, SpellPoints}
+
 // scalastyle:off number.of.methods
 trait Character {
 
@@ -198,10 +165,8 @@ trait Character {
   //    Ranged Attack
   def bowAttackSpeedBonus: StatItem[BowAttackSpeedBonus, Pct]
   def thrownAttackSpeedBonus: StatItem[ThrownAttackSpeedBonus, Pct]
-  def nonRepeatingCrossbowAttackSpeedBonus
-      : StatItem[NonRepeatingCrossbowAttackSpeedBonus, Pct]
-  def repeatingCrossbowAttackSpeedBonus
-      : StatItem[RepeatingCrossbowAttackSpeedBonus, Pct]
+  def nonRepeatingCrossbowAttackSpeedBonus: StatItem[NonRepeatingCrossbowAttackSpeedBonus, Pct]
+  def repeatingCrossbowAttackSpeedBonus: StatItem[RepeatingCrossbowAttackSpeedBonus, Pct]
   // def rangedThreatMultiplier: StatItem[RangedThreatMultiplier,Pct]
   // Effective hit points?
 

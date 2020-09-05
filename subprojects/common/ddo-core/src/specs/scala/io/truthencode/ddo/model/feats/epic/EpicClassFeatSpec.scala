@@ -22,7 +22,12 @@ import java.util
 import com.typesafe.scalalogging.LazyLogging
 import enumeratum.{Enum, EnumEntry}
 import io.truthencode.ddo.model.classes.HeroicCharacterClass
-import io.truthencode.ddo.model.feats.{ClassFeatDisplayHelper, ClassRestricted, EpicFeatFeatDisplayHelper, SubFeatInformation}
+import io.truthencode.ddo.model.feats.{
+  ClassFeatDisplayHelper,
+  ClassRestricted,
+  EpicFeatFeatDisplayHelper,
+  SubFeatInformation
+}
 import io.truthencode.ddo.support.naming.FriendlyDisplay
 import io.truthencode.ddo.support.requisite.ClassRequisite
 import org.concordion.integration.junit4.ConcordionRunner
@@ -31,9 +36,8 @@ import org.junit.runner.RunWith
 import scala.collection.JavaConverters._
 
 @RunWith(classOf[ConcordionRunner])
-class EpicClassFeatSpec
-  extends LazyLogging {
-  type Entry = EnumEntry with SubFeatInformation with FriendlyDisplay
+class EpicClassFeatSpec extends LazyLogging {
+  type Entry = EnumEntry with FriendlyDisplay
   type E = Enum[_ <: Entry]
   type CharClass = Option[HeroicCharacterClass]
   type EpicClassHelper = ClassFeatDisplayHelper with EpicFeatFeatDisplayHelper
@@ -44,7 +48,9 @@ class EpicClassFeatSpec
   //    case x: ClassRestricted => x
   //  }
 
-  val helperMap: scala.collection.mutable.HashMap[CharClass, EpicClassHelper] = scala.collection.mutable.HashMap.empty
+  val helperMap: scala.collection.mutable.HashMap[CharClass, EpicClassHelper] =
+    scala.collection.mutable.HashMap.empty
+
   val filterByAnyOfs: PartialFunction[Entry, Entry] = {
     case x: ClassRequisite if x.anyOfClass.exists(findHelper.isDefinedForClass(_)) => x
   }

@@ -20,6 +20,7 @@ package io.truthencode.ddo.model.feats
 import java.util
 
 import enumeratum.{Enum, EnumEntry}
+import io.truthencode.ddo.model.DisplayHelper
 import io.truthencode.ddo.support.naming.FriendlyDisplay
 
 import scala.collection.JavaConverters._
@@ -28,11 +29,7 @@ import scala.collection.JavaConverters._
   * Created by adarr on 2/17/2017.
   * Adds convenience and display functions for Concordion Acceptance testing against Feats in various contexts.
   */
-trait FeatDisplayHelper {
-  type Entry = EnumEntry with SubFeatInformation with FriendlyDisplay
-  type E = Enum[_ <: Entry]
-
-  val enum: E
+trait FeatDisplayHelper extends DisplayHelper {
 
   def prettyPrint(): String = {
     listValues("Current Supported Feats", collapse = true)
@@ -56,17 +53,20 @@ trait FeatDisplayHelper {
     }
   }
 
-  def verify(): util.List[String] =
-    enum.values
-      .filter { x =>
-        !x.isSubFeat
-      }
-      .map { x =>
-        x.displayText
-      }
-      .toList
-      .sorted
-      .asJava
+  /**
+    * Removes Sub-Feats such as Weapon Proficiencies
+    */
+  val filterByMainFeat: PartialFunction[Entry, Entry] = {
+    case x: Feat with SubFeatInformation if !x.isSubFeat => x
+  }
+
+  def verify(): util.List[String] = { enum.values collect filterByMainFeat }
+    .map { x =>
+      x.displayText
+    }
+    .toList
+    .sorted
+    .asJava
 
   def withNameAsJavaList(id: String): util.List[String] = withNameAsList(id).asJava
 

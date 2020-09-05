@@ -33,6 +33,7 @@ trait ClassDisplayHelper extends DisplayHelper with LazyLogging {
   type FNLevel = Entry => Seq[(HeroicCharacterClass, Int)]
   type FNClass = Entry => Seq[HeroicCharacterClass]
   val cClass: HeroicCharacterClass
+
   lazy val classFeatByLevelMap: Seq[(String, Seq[Int])] = {
     val levels = for {
       f <- enum.values
@@ -45,22 +46,26 @@ trait ClassDisplayHelper extends DisplayHelper with LazyLogging {
         (x._1, x._2.map(_._2))
       }(collection.breakOut)
   }
+
   lazy val grantedFeats: util.List[String] = {
     val values = enum.values collect filterByGrantedTo
     values.filterNot(_.isSubFeat).map(_.displayText).sorted.asJava
   }
+
   val filterByAllOf: PartialFunction[Entry, Entry] = {
     case x: ClassRequisite if x.allOfClass.exists(isDefinedForClass(_)) => x
   }
+
   val filterByAnyOf: PartialFunction[Entry, Entry] = {
     case x: ClassRequisite if x.anyOfClass.exists(isDefinedForClass(_)) => x
   }
+
   val filterByGrantedTo: PartialFunction[Entry, Entry] = {
     case x: ClassRequisite if x.grantToClass.exists(isDefinedForClass(_)) => x
   }
+
   val filterByGrantedToByLevel: PartialFunction[(Entry, Int), (Entry, Int)] = {
-    case (x: ClassRequisite, y)
-      if x.grantToClass.exists(isDefinedForClass(_, Some(y))) =>
+    case (x: ClassRequisite, y) if x.grantToClass.exists(isDefinedForClass(_, Some(y))) =>
       (x, y)
   }
 
@@ -68,39 +73,34 @@ trait ClassDisplayHelper extends DisplayHelper with LazyLogging {
     case x: BonusSelectableFeat if x.bonusCharacterClass.contains(cClass) && !x.isSubFeat =>
       lazy val msg = s"Entry ${x.displayText} matched type and character class $cClass"
       lazy val idInfo = Map(
-        "entryName" -> x.entryName,
+        "entryName"     -> x.entryName,
         "displaySource" -> x.displaySource,
-        "displayText" -> x.displayText
+        "displayText"   -> x.displayText
       )
       logger.debug(msg)
       if (x.displayText.contains("Construct")) {
-        logger.debug(s"Id Info $idInfo") }
+        logger.debug(s"Id Info $idInfo")
+      }
       x
   }
 
-  val filterByClassBonusFeatByLevel
-  : PartialFunction[(Entry, Int), (Entry, Int)] = {
+  val filterByClassBonusFeatByLevel: PartialFunction[(Entry, Int), (Entry, Int)] = {
     case (x: SelectableToClass, y)
-      if x.bonusSelectableToClass.exists(isDefinedForClass(_, Some(y))) && !x.isSubFeat =>
+        if x.bonusSelectableToClass.exists(isDefinedForClass(_, Some(y))) && !x.isSubFeat =>
       (x, y)
   }
 
   val existing
-  : PartialFunction[Entry, Entry] = filterByAllOf orElse filterByAnyOf orElse filterByGrantedTo
+    : PartialFunction[Entry, Entry] = filterByAllOf orElse filterByAnyOf orElse filterByGrantedTo
 
-  def isDefinedForClass(e: (HeroicCharacterClass, Int),
-                        level: Option[Int] = None): Boolean =
+  def isDefinedForClass(e: (HeroicCharacterClass, Int), level: Option[Int] = None): Boolean =
     e._1.eq(cClass) && isEqualOrEmpty(e._2, level)
 
   private def isEqualOrEmpty(i: Int, source: Option[Int]): Boolean =
     source.isEmpty || (source.nonEmpty && source.contains(i))
 
   def allTypesByLevelFilter(as: Entry): Seq[Int] =
-    extractLevels(as,
-      allOfFilterByLevel,
-      anyOfFilterByLevel,
-      grantToFilterByLevel)
-      .filter(_._1.eq(cClass))
+    extractLevels(as, allOfFilterByLevel, anyOfFilterByLevel, grantToFilterByLevel)
       .map(_._2)
 
   def allOfFilterByLevel(as: Entry): Seq[(HeroicCharacterClass, Int)] = as match {
@@ -121,7 +121,7 @@ trait ClassDisplayHelper extends DisplayHelper with LazyLogging {
   def grantedFeatsByLevel(level: Int): util.List[String] = {
     val values = enum.values.map((_, level)) collect filterByGrantedToByLevel
     values
-      //   .filterNot(_._1.isSubFeat)
+    //   .filterNot(_._1.isSubFeat)
       .filter(_._2 == level)
       .map(_._1.displayText)
       .sorted

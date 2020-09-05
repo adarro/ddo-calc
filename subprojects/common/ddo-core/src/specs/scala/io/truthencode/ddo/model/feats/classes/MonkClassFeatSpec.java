@@ -17,20 +17,13 @@
  */
 package io.truthencode.ddo.model.feats.classes;
 
-import enumeratum.Enum;
-import enumeratum.EnumEntry;
-import io.truthencode.ddo.model.classes.HeroicCharacterClass;
-import io.truthencode.ddo.model.classes.HeroicCharacterClass$;
-import io.truthencode.ddo.model.feats.ClassDisplayHelper;
 import org.concordion.api.FullOGNL;
 import org.junit.runner.RunWith;
 import org.concordion.integration.junit4.ConcordionRunner;
 
-import java.util.List;
-
 @FullOGNL
 @RunWith(ConcordionRunner.class)
-public class MonkClassFeatSpec extends MonkJavaHelper {
+public class MonkClassFeatSpec extends MonkJavaHelperFeat {
     // This wrapper class is no longer needed.
 //    MonkJavaHelper helper = new MonkJavaHelper() {
 //        @Override

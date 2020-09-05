@@ -15,12 +15,11 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package io.truthencode.ddo.model.feats;
+package io.truthencode.ddo.model.feats
 
-import org.concordion.integration.junit4.ConcordionRunner;
-import org.junit.runner.RunWith;
-
-@RunWith(ConcordionRunner.class)
-public class TacticalFeatSpec extends TacticalFeatFeatDisplayHelperJava {
-
+/**
+  * Created by adarr on 3/26/2017.
+  */
+trait DragonmarkFeatDisplayHelper extends FeatDisplayHelper {
+  override val enum: E = DragonmarkFeat
 }

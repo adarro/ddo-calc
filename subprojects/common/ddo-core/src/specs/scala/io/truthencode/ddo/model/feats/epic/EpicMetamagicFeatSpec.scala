@@ -20,7 +20,7 @@ package io.truthencode.ddo.model.feats.epic
 import io.truthencode.ddo.model.feats.{
   EpicFeat,
   EpicFeatCategory,
-  EpicFeatDisplayHelper,
+  EpicFeatFeatDisplayHelper,
   EpicMetaMagic
 }
 import org.concordion.api.FullOGNL
@@ -29,7 +29,7 @@ import org.junit.runner.RunWith
 
 @FullOGNL
 @RunWith(classOf[ConcordionRunner])
-class EpicMetamagicFeatSpec extends EpicFeatDisplayHelper {
+class EpicMetamagicFeatSpec extends EpicFeatFeatDisplayHelper {
   override val filterByCategory: PartialFunction[Entry, EpicFeat] = {
     case x: EpicMetaMagic => x.asInstanceOf[EpicFeat]
   }

@@ -15,12 +15,23 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package io.truthencode.ddo.model.feats;
+package io.truthencode.ddo.model.feats
+import java.util
+import scala.collection.JavaConverters._
 
-import org.concordion.integration.junit4.ConcordionRunner;
-import org.junit.runner.RunWith;
+/**
+  * Verifies basic creation of Epic Feats, categorized as per [[http://ddowiki.com/page/Epic_Feats ddo Epic Feats]].
+  */
+trait EpicFeatFeatDisplayHelper extends FeatDisplayHelper {
 
-@RunWith(ConcordionRunner.class)
-public class TacticalFeatSpec extends TacticalFeatFeatDisplayHelperJava {
 
+  final override val enum: E = Feat
+  // val categoryFilter: EpicFeatCategory
+
+  val filterByCategory: PartialFunction[Entry, Entry]
+
+  override def verify(): util.List[String] = {
+    val v = enum.values collect filterByCategory
+    v.map(_.displayText).asJava
+  }
 }

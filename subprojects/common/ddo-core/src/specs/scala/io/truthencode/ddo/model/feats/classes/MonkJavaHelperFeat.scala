@@ -15,12 +15,17 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package io.truthencode.ddo.model.feats;
+package io.truthencode.ddo.model.feats.classes
 
-import org.concordion.integration.junit4.ConcordionRunner;
-import org.junit.runner.RunWith;
+import java.util
 
-@RunWith(ConcordionRunner.class)
-public class TacticalFeatSpec extends TacticalFeatFeatDisplayHelperJava {
+import io.truthencode.ddo.model.classes.HeroicCharacterClass
+import io.truthencode.ddo.model.classes.HeroicCharacterClass.Monk
+import io.truthencode.ddo.model.feats.{ClassFeatDisplayHelper, Feat}
+
+abstract class MonkJavaHelperFeat extends ClassFeatDisplayHelper{
+  override val cClass: HeroicCharacterClass = Monk
+  override val enum: E = Feat
+  def allBonusFeats(): util.List[String] =  bonusFeats
 
 }

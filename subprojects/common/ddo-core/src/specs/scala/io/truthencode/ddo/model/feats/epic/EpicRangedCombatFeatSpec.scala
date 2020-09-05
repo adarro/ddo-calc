@@ -17,12 +17,12 @@
  */
 package io.truthencode.ddo.model.feats.epic
 
-import io.truthencode.ddo.model.feats.{EpicFeat, EpicFeatDisplayHelper, RangedCombatPassive}
+import io.truthencode.ddo.model.feats.{EpicFeat, EpicFeatFeatDisplayHelper, RangedCombatPassive}
 import org.concordion.integration.junit4.ConcordionRunner
 import org.junit.runner.RunWith
 
 @RunWith(classOf[ConcordionRunner])
-class EpicRangedCombatFeatSpec extends EpicFeatDisplayHelper{
+class EpicRangedCombatFeatSpec extends EpicFeatFeatDisplayHelper{
 
   override val filterByCategory: PartialFunction[Entry, EpicFeat]  = {
     case x: RangedCombatPassive => x.asInstanceOf[EpicFeat]

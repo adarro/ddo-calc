@@ -33,7 +33,7 @@ import org.junit.runner.RunWith
                              MarkdownExtensions.TASKLISTITEMS)
 )
 @RunWith(classOf[ConcordionRunner])
-class GeneralFeatSpec extends DisplayHelper {
+class GeneralFeatSpec extends FeatDisplayHelper {
   val enum: E = GeneralFeat
 
 }

@@ -28,7 +28,7 @@ import scala.collection.JavaConverters._
 /**
   * Created by Adarro on 3/5/2017.
   */
-trait ClassDisplayHelper extends DisplayHelper with LazyLogging {
+trait ClassFeatDisplayHelper extends FeatDisplayHelper with LazyLogging {
 
   type FNLevel = Entry => Seq[(HeroicCharacterClass, Int)]
   type FNClass = Entry => Seq[HeroicCharacterClass]

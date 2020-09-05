@@ -35,7 +35,7 @@ import scala.collection.JavaConverters._
 
 @FullOGNL
 @RunWith(classOf[ConcordionRunner])
-class DeityFeatSpec extends DisplayHelper with LazyLogging {
+class DeityFeatSpec extends FeatDisplayHelper with LazyLogging {
 
   private val filterEberron
   : PartialFunction[Entry, Entry with ReligionFeatBase] = {

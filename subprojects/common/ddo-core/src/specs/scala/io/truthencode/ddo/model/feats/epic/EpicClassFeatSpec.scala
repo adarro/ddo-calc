@@ -22,7 +22,7 @@ import java.util
 import com.typesafe.scalalogging.LazyLogging
 import enumeratum.{Enum, EnumEntry}
 import io.truthencode.ddo.model.classes.HeroicCharacterClass
-import io.truthencode.ddo.model.feats.{ClassDisplayHelper, ClassRestricted, EpicFeatDisplayHelper, SubFeatInformation}
+import io.truthencode.ddo.model.feats.{ClassFeatDisplayHelper, ClassRestricted, EpicFeatFeatDisplayHelper, SubFeatInformation}
 import io.truthencode.ddo.support.naming.FriendlyDisplay
 import io.truthencode.ddo.support.requisite.ClassRequisite
 import org.concordion.integration.junit4.ConcordionRunner
@@ -36,7 +36,7 @@ class EpicClassFeatSpec
   type Entry = EnumEntry with SubFeatInformation with FriendlyDisplay
   type E = Enum[_ <: Entry]
   type CharClass = Option[HeroicCharacterClass]
-  type EpicClassHelper = ClassDisplayHelper with EpicFeatDisplayHelper
+  type EpicClassHelper = ClassFeatDisplayHelper with EpicFeatFeatDisplayHelper
 
   //  override val cClass: CharacterClass =
   //    instanceClass.getOrElse(CharacterClass.Artificer)
@@ -77,7 +77,7 @@ class EpicClassFeatSpec
   }
 
   def makeHelper(clazz: CharClass): EpicClassHelper = {
-    new ClassDisplayHelper with EpicFeatDisplayHelper {
+    new ClassFeatDisplayHelper with EpicFeatFeatDisplayHelper {
       override val cClass: HeroicCharacterClass =
         instanceClass.getOrElse(HeroicCharacterClass.Artificer)
       override val filterByCategory: PartialFunction[Entry, Entry] = {

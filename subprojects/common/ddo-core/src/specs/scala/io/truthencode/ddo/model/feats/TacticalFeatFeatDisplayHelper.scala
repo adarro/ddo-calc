@@ -15,12 +15,24 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package io.truthencode.ddo.model.feats;
+package io.truthencode.ddo.model.feats
 
-import org.concordion.integration.junit4.ConcordionRunner;
-import org.junit.runner.RunWith;
+import java.util
 
-@RunWith(ConcordionRunner.class)
-public class TacticalFeatSpec extends TacticalFeatFeatDisplayHelperJava {
+import com.typesafe.scalalogging.LazyLogging
 
+import scala.collection.JavaConverters._
+
+trait TacticalFeatFeatDisplayHelper extends FeatDisplayHelper with LazyLogging {
+  override val enum: E = Feat
+}
+
+abstract class TacticalFeatFeatDisplayHelperJava extends TacticalFeatFeatDisplayHelper {
+  type S = Feat with Tactical
+
+    val filterByTactical: PartialFunction[Entry, Entry] = {
+        case x: Tactical => x
+    }
+
+  def tacticalFeats: util.List[Entry] ={enum.values collect filterByTactical}.sortBy(_.entryName).asJava
 }

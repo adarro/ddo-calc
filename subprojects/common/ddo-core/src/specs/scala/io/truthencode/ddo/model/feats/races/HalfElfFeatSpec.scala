@@ -19,7 +19,7 @@ package io.truthencode.ddo.model.feats.races
 
 import java.util
 
-import io.truthencode.ddo.model.feats.{DisplayHelper, Feat, RaceSupport}
+import io.truthencode.ddo.model.feats.{FeatDisplayHelper, Feat, RaceSupport}
 import io.truthencode.ddo.model.race.Race
 import io.truthencode.ddo.support.requisite.RequirementOption
 import org.concordion.integration.junit4.ConcordionRunner
@@ -28,7 +28,7 @@ import org.junit.runner.RunWith
 import scala.collection.JavaConverters._
 
 @RunWith(classOf[ConcordionRunner])
-class HalfElfFeatSpec extends DisplayHelper with RaceSupport {
+class HalfElfFeatSpec extends FeatDisplayHelper with RaceSupport {
 
   override val raceId: Race = Race.HalfElf
 

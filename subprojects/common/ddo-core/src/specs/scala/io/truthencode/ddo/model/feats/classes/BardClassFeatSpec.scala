@@ -18,14 +18,14 @@
 package io.truthencode.ddo.model.feats.classes
 
 import io.truthencode.ddo.model.classes.HeroicCharacterClass
-import io.truthencode.ddo.model.feats.{ClassDisplayHelper, Feat}
+import io.truthencode.ddo.model.feats.{ClassFeatDisplayHelper, Feat}
 import org.concordion.api.FullOGNL
 import org.concordion.integration.junit4.ConcordionRunner
 import org.junit.runner.RunWith
 
 @FullOGNL
 @RunWith(classOf[ConcordionRunner])
-class BardClassFeatSpec  extends ClassDisplayHelper {
+class BardClassFeatSpec  extends ClassFeatDisplayHelper {
   override val enum: E = Feat
 
   override val cClass: HeroicCharacterClass = HeroicCharacterClass.Bard

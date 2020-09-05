@@ -19,7 +19,7 @@ package io.truthencode.ddo.model.feats.epic
 
 import io.truthencode.ddo.model.feats.{
   EpicFeat,
-  EpicFeatDisplayHelper,
+  EpicFeatFeatDisplayHelper,
   SpellCastingPassive
 }
 import org.concordion.api.FullOGNL
@@ -28,7 +28,7 @@ import org.junit.runner.RunWith
 
 @FullOGNL
 @RunWith(classOf[ConcordionRunner])
-class EpicSpellCastingFeatSpec extends EpicFeatDisplayHelper {
+class EpicSpellCastingFeatSpec extends EpicFeatFeatDisplayHelper {
   override val filterByCategory: PartialFunction[Entry, EpicFeat] = {
     case x: SpellCastingPassive => x.asInstanceOf[EpicFeat]
   }

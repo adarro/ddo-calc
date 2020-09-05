@@ -24,7 +24,7 @@ import org.scalatest.junit.JUnitRunner
 
 @RunWith(classOf[JUnitRunner])
 class BonusFeatTest extends FunSpec with Matchers {
-  val helper = new ClassDisplayHelper {
+  val helper = new ClassFeatDisplayHelper {
     override val cClass: HeroicCharacterClass = HeroicCharacterClass.Monk
 
     override val enum: E = Feat

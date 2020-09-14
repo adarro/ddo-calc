@@ -162,3 +162,11 @@ fabric.properties
 # Android studio 3.1+ serialized cache file
 .idea/caches/build_file_checksums.ser
 /bin/
+
+# NodeJS specific #
+.nyc_output/
+coverage/
+node_modules/
+npm-debug.log
+package-lock.json
+test/*.log

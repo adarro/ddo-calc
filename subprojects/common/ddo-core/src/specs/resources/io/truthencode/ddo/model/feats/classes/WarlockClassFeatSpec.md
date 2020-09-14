@@ -57,8 +57,8 @@ Pact Save Bonus: +1 to a save based on your pact (see below); increases by +1 at
 
 | [ ][featLevel6] [Feats][result]| Type | Description|
 |------------------------------------------|----|----|
-|[Dark One's Luck](http://ddowiki.com/page/Dark_One%27s_Luck) | Spell | +2 to all saves
 |[Dark Delirium](http://ddowiki.com/page/Dark_Delirium) | Spell |  (Daze Monster: 10% chance damage breaks; no save; works on orange-named)
+|[Dark One's Luck](http://ddowiki.com/page/Dark_One%27s_Luck) | Spell | +2 to all saves
 |[Entropic Ward](http://ddowiki.com/page/Entropic_Ward) | Spell | +5 MRR, +25% Fortification
 |Pact Damage | Passive | +1d4 extra damage to your Eldritch Blast based on your pact (see below); this will increase by +1d4 every even Warlock levels, for a total of 10d4 at level 20. 
 Special Ability: Gain a special ability based on your pact (see below).

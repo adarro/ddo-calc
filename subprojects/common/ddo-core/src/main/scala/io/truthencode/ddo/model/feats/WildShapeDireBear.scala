@@ -19,15 +19,15 @@ package io.truthencode.ddo.model.feats
 
 import io.truthencode.ddo.model.classes.HeroicCharacterClass
 import io.truthencode.ddo.model.classes.HeroicCharacterClass.Druid
+import io.truthencode.ddo.support.naming.{DisplayName, DisplayProperties}
 import io.truthencode.ddo.support.requisite.{GrantsToClass, RequiresAllOfClass}
 
 /**
   * Created by adarr on 3/17/2017.
   */
-trait WildShapeDireBear
-    extends WildShape
-    with GrantsToClass
-    with RequiresAllOfClass {
+trait WildShapeDireBear extends WildShape with GrantsToClass with RequiresAllOfClass {
+  self: DisplayName with DisplayProperties =>
+
   override def grantToClass: Seq[(HeroicCharacterClass, Int)] =
     List((Druid, 8), (Druid, 11))
 

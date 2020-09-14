@@ -137,7 +137,7 @@ object ClassFeat extends Enum[ClassFeat] with FeatSearchPrefix {
   case object RetainEssence extends ClassFeat with RetainEssence
 
   case object ArtificerKnowledgeArmsAndArmor extends ClassFeat with ArtificerKnowledgeArmsAndArmor {
-    override protected def nameSource: String = "Arms and Armor"
+    override protected def nameSource: String = "Arms And Armor"
   }
 
   case object ArtificerKnowledgePotions extends ClassFeat with ArtificerKnowledgePotions {

@@ -44,7 +44,7 @@ sealed trait GeneralFeat extends Feat with FriendlyDisplay with SubFeatInformati
 /**
   * General Feats aren't specific to a particular race or class.
   */
-//noinspection ScalaStyle
+// scalastyle:off number.of.methods
 object GeneralFeat
     extends Enum[GeneralFeat]
     with FeatSearchPrefix

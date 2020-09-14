@@ -15,21 +15,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-/**
-  * Copyright (C) 2015 Andre White (adarro@gmail.com)
-  *
-  * Licensed under the Apache License, Version 2.0 (the "License");
-  * you may not use this file except in compliance with the License.
-  * You may obtain a copy of the License at
-  *
-  * http://www.apache.org/licenses/LICENSE-2.0
-  *
-  * Unless required by applicable law or agreed to in writing, software
-  * distributed under the License is distributed on an "AS IS" BASIS,
-  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-  * See the License for the specific language governing permissions and
-  * limitations under the License.
-  */
+
 package io.truthencode.ddo
 
 import com.typesafe.config.ConfigFactory
@@ -37,6 +23,7 @@ import com.typesafe.scalalogging.LazyLogging
 import com.wix.accord.Violation
 import io.truthencode.ddo.support.matching.{WordMatchStrategies, WordMatchStrategy}
 
+import scala.collection.immutable.HashMap
 import scala.language.postfixOps
 import scala.util.Random
 import scala.util.control.Exception.catching
@@ -47,23 +34,25 @@ package object support extends LazyLogging {
     * Current Valid range of levels considered [[http://ddowiki.com/page/Heroic Heroic Levels]]
     */
   final val HeroicLevels: Range.Inclusive = 1 to 20
+
   /**
     * The Current Max Level achievable by a player.
     */
   final val LevelCap = 30
+
   /**
     * Current valid range of levels considered [[http://ddowiki.com/page/Epic_levels Epic Levels]]
     */
   final val EpicLevels: Range.Inclusive = 21 to LevelCap
-  final val CharacterLevels
-  : _root_.scala.collection.immutable.Range.Inclusive = HeroicLevels.min to EpicLevels.max
 
+  final val CharacterLevels
+    : _root_.scala.collection.immutable.Range.Inclusive = HeroicLevels.min to EpicLevels.max
 
   object TraverseOps {
 
     // succinctly pooled from SO [[http://stackoverflow.com/a/14740340/400729]]
     implicit class Crossable[X](xs: Traversable[X]) {
-      def cross[Y](ys: Traversable[Y]): Traversable[(X, Y)] = for {x <- xs; y <- ys} yield (x, y)
+      def cross[Y](ys: Traversable[Y]): Traversable[(X, Y)] = for { x <- xs; y <- ys } yield (x, y)
     }
 
   }
@@ -81,7 +70,8 @@ package object support extends LazyLogging {
       val cfg = ConfigFactory.load
       if (!cfg.hasPath(path)) {
         logger.warn(
-          "Failed to load a valid configuration file, using hard-coded defaults... Please verify your configuration")
+          "Failed to load a valid configuration file, using hard-coded defaults... Please verify your configuration"
+        )
         val data =
           """
             |io.truthencode.ddo {
@@ -104,6 +94,7 @@ package object support extends LazyLogging {
     }
 
     implicit class StringImprovements(val s: String) {
+
       /**
         * Converts a String to an Optional Int.
         *
@@ -120,6 +111,7 @@ package object support extends LazyLogging {
       * @param s source string
       */
     implicit class Extensions(val s: String) {
+
       def lowerCaseNoise: String = {
         val noise = config.getStringList("io.truthencode.ddo.support.noiseWords")
         val words = s.splitByCase
@@ -137,16 +129,43 @@ package object support extends LazyLogging {
         * @note This is currently a very simple parser that assumes input is camel-cased.  Non-camel case
         *       may have undesired results. i.e.  TEST will return T E S T. where getFoo returns get Foo.
         */
-      def splitByCase: String = {
+      def splitByCase(implicit replaceSymbols: Boolean = false): String = {
         val b = new StringBuilder
-        s.toCharArray.foreach { c =>
-          if (c.isLetter && c.isUpper) {
+        s.toCharArray.foreach {
+          case c: Char if (c.isLetter && c.isUpper) || c.isDigit =>
             b.append(s"$Space$c")
-          } else {
+          case c: Char if c.isSpaceChar =>
+          case c: Char if replaceSymbols && specialSymbols.keys.exists(sc => sc.equals(c)) =>
+            b.append(s"$Space${c.toString.symbolsToWords}")
+          case c: Char if !replaceSymbols && specialSymbols.keys.exists(sc => sc.equals(c)) =>
+            b.append(s"$Space$c")
+          case c: Char =>
             b.append(c.toString)
+        }
+        b.mkString.trim
+      }
+
+      /**
+        * Replaces special characters such as ampersand to "And"
+        * @return
+        */
+      def symbolsToWords: String = {
+        val b = new StringBuilder
+        s.toCharArray.foreach { e: Char =>
+          if (specialSymbols.keys.exists(_.equals(e))) {
+            val r = specialSymbols(e)
+            b.append(s"$r")
+          } else {
+            b.append(e)
           }
         }
         b.mkString.trim
+      }
+
+      lazy val specialSymbols: Map[Char, String] = {
+        HashMap {
+          '&' -> "And"
+        }
       }
 
       /**
@@ -163,6 +182,33 @@ package object support extends LazyLogging {
             c = w.charAt(0).toString.toLowerCase
           } yield w.toLowerCase.replaceFirst(c, c.toUpperCase)
         } mkString
+      }
+
+      /**
+        * Replaces Roman Numeral Representation with Numerical value.
+        * i.e. IV -> 4
+        * @note This utility parses using Space as a delimiter.
+        *       It is generally advised to use this before other manipulations such as removing spaces or changing cases.
+        * @return the string with all Roman Numerals replaced.  No changes are made if no valid numerals are found.
+        */
+      def replaceRomanNumerals: String = {
+        s.split(Space)
+            .map {
+                case s: String if RomanNumeral.fnRomanNumeralToNumber.isDefinedAt(s) =>
+                    RomanNumeral.fnRomanNumeralToNumber(s).toString
+                case s: String => s
+            }
+            .mkString(Space)
+      }
+
+      def replaceNumbersWithRomanNumerals: String = {
+          s.split(Space)
+              .map {
+                  case s: String if RomanNumeral.fnNumberToRomanNumeral.isDefinedAt(s) =>
+                      RomanNumeral.fnNumberToRomanNumeral(s)
+                  case s: String => s
+              }
+              .mkString(Space)
       }
 
       /**
@@ -201,15 +247,24 @@ package object support extends LazyLogging {
         * res0:List(Some("IBM"),Some("IBM"),Some("IBM"),None)
         * }}}
         */
-      def wordsToAcronym(implicit wordMatchStrategy: WordMatchStrategy = WordMatchStrategies.IgnoreCaseWordStrategy): Option[String] =
+      def wordsToAcronym(
+        implicit wordMatchStrategy: WordMatchStrategy = WordMatchStrategies.IgnoreCaseWordStrategy
+      ): Option[String] =
         s.toSanitizeOption match {
           case Some(x) if x.contains(Space) =>
-            Some(new String(x.split(Space).map { y => characterToStrategy(y.charAt(0), wordMatchStrategy)
+            Some(new String(x.split(Space).map { y =>
+              characterToStrategy(y.charAt(0), wordMatchStrategy)
             }))
           case Some(x) =>
-            Some(new String(x.toCharArray.filter { y =>
-              y.isLetter && y.isUpper
-            }.map(characterToStrategy(_, wordMatchStrategy))))
+            Some(
+              new String(
+                x.toCharArray
+                  .filter { y =>
+                    y.isLetter && y.isUpper
+                  }
+                  .map(characterToStrategy(_, wordMatchStrategy))
+              )
+            )
           case _ => None
         }
 
@@ -220,10 +275,11 @@ package object support extends LazyLogging {
         */
       def toSanitizeOption: Option[String] = {
         Option(s) match {
-          case Some(x) => Option(x.sanitize) match {
-            case Some(y) if y.nonEmpty => Some(y)
-            case _ => None
-          }
+          case Some(x) =>
+            Option(x.sanitize) match {
+              case Some(y) if y.nonEmpty => Some(y)
+              case _                     => None
+            }
           case _ => None
         }
       }
@@ -239,7 +295,6 @@ package object support extends LazyLogging {
         }.mkString
       }
     }
-
 
     final val Space = " "
     final val EmptyString = ""
@@ -276,7 +331,9 @@ package object support extends LazyLogging {
     private def characterToStrategy(c: Char, wordMatchStrategy: WordMatchStrategy): Char = {
       wordMatchStrategy match {
         case WordMatchStrategies.IgnoreCaseWordStrategy => c
-        case WordMatchStrategies.FullUpperCaseWordStrategy | WordMatchStrategies.TitleCaseWordStrategy => c.toUpper
+        case WordMatchStrategies.FullUpperCaseWordStrategy |
+            WordMatchStrategies.TitleCaseWordStrategy =>
+          c.toUpper
         case WordMatchStrategies.FullLowerCaseWordStrategy => c.toLower
       }
     }

@@ -39,6 +39,7 @@ import io.truthencode.ddo.model.classes.HeroicCharacterClass.{
 import io.truthencode.ddo.support.StringUtils.Extensions
 import io.truthencode.ddo.support.naming.{DisplayName, FriendlyDisplay}
 import io.truthencode.ddo.support.requisite.{
+  ClassRequisite,
   ClassRequisiteImpl,
   RequiresAllOfClass,
   RequiresAnyOfClass
@@ -46,7 +47,8 @@ import io.truthencode.ddo.support.requisite.{
 
 import scala.collection.immutable
 
-sealed trait ClassBasedEnhancements extends EnumEntry with DisplayName with FriendlyDisplay {
+sealed trait ClassBasedEnhancements extends EnumEntry with DisplayName {
+  self: ClassRequisite =>
 
   override protected def nameSource: String =
     entryName.splitByCase.toPascalCase
@@ -99,7 +101,10 @@ trait BarbarianEnhancement
 Bard
 Enhancements: Spellsinger, Warchanter, Swashbuckler
  */
-trait BardEnhancement extends ClassBasedEnhancements with ClassRequisiteImpl with RequiresAllOfClass {
+trait BardEnhancement
+    extends ClassBasedEnhancements
+    with ClassRequisiteImpl
+    with RequiresAllOfClass {
 
   override def allOfClass: Seq[(HeroicCharacterClass, Int)] =
     List((Bard, 1))
@@ -109,7 +114,10 @@ trait BardEnhancement extends ClassBasedEnhancements with ClassRequisiteImpl wit
 Cleric
 Enhancements: Divine Disciple, Warpriest, Radiant Servant
  */
-trait ClericEnhancement extends ClassBasedEnhancements with ClassRequisiteImpl with RequiresAllOfClass {
+trait ClericEnhancement
+    extends ClassBasedEnhancements
+    with ClassRequisiteImpl
+    with RequiresAllOfClass {
 
   override def allOfClass: Seq[(HeroicCharacterClass, Int)] =
     List((Cleric, 1))
@@ -120,7 +128,10 @@ Druid
 Enhancements: Nature's Protector, Nature's Warrior, Season's Herald
 @note may need to adjust entry name to include apostrophe ??
  */
-trait DruidEnhancement extends ClassBasedEnhancements with ClassRequisiteImpl with RequiresAllOfClass {
+trait DruidEnhancement
+    extends ClassBasedEnhancements
+    with ClassRequisiteImpl
+    with RequiresAllOfClass {
 
   override def allOfClass: Seq[(HeroicCharacterClass, Int)] =
     List((Druid, 1))
@@ -165,7 +176,10 @@ trait FighterOrPaladinEnhancement
 Monk
 Enhancements: Henshin Mystic, Ninja Spy, Shintao Monk
  */
-trait MonkEnhancement extends ClassBasedEnhancements with ClassRequisiteImpl with RequiresAllOfClass {
+trait MonkEnhancement
+    extends ClassBasedEnhancements
+    with ClassRequisiteImpl
+    with RequiresAllOfClass {
 
   override def allOfClass: Seq[(HeroicCharacterClass, Int)] =
     List((Monk, 1))
@@ -188,7 +202,10 @@ trait PaladinEnhancement extends FighterOrPaladinEnhancement with RequiresAllOfC
 Ranger
 Enhancements: Arcane Archer, Deepwood Stalker, Tempest
  */
-trait RangerEnhancement extends ClassBasedEnhancements with ClassRequisiteImpl with RequiresAllOfClass {
+trait RangerEnhancement
+    extends ClassBasedEnhancements
+    with ClassRequisiteImpl
+    with RequiresAllOfClass {
 
   override def allOfClass: Seq[(HeroicCharacterClass, Int)] =
     List((Ranger, 1))
@@ -199,7 +216,10 @@ Rogue
 Enhancements: Assassin, Mechanic, Thief-Acrobat
  */
 
-trait RogueEnhancement extends ClassBasedEnhancements with ClassRequisiteImpl with RequiresAllOfClass {
+trait RogueEnhancement
+    extends ClassBasedEnhancements
+    with ClassRequisiteImpl
+    with RequiresAllOfClass {
 
   override def allOfClass: Seq[(HeroicCharacterClass, Int)] =
     List((Rogue, 1))
@@ -229,7 +249,10 @@ trait SorcererOrWizardEnhancement
 Warlock
 Enhancements: Soul Eater, Tainted Scholar, Enlightened Spirit
  */
-trait WarlockEnhancement extends ClassBasedEnhancements with ClassRequisiteImpl with RequiresAllOfClass {
+trait WarlockEnhancement
+    extends ClassBasedEnhancements
+    with ClassRequisiteImpl
+    with RequiresAllOfClass {
 
   override def allOfClass: Seq[(HeroicCharacterClass, Int)] =
     List((Warlock, 1))

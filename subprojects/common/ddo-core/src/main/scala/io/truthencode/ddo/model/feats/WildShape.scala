@@ -19,12 +19,8 @@ package io.truthencode.ddo.model.feats
 
 import io.truthencode.ddo.activation.OnShapeShift
 import io.truthencode.ddo.model.misc.DefaultCasterCoolDown
-import io.truthencode.ddo.support.naming.Prefix
-import io.truthencode.ddo.support.requisite.{
-  FeatRequisiteImpl,
-  GrantsToClass,
-  RequiresAllOfClass
-}
+import io.truthencode.ddo.support.naming.{DisplayName, DisplayProperties, Prefix, WildShapePrefix}
+import io.truthencode.ddo.support.requisite.{FeatRequisiteImpl, GrantsToClass, RequiresAllOfClass}
 
 /**
   * [[https://ddowiki.com/page/Wild_Shape Wild Shape]]
@@ -43,9 +39,6 @@ protected[feats] trait WildShape
     with ActiveFeat
     with OnShapeShift
     with DefaultCasterCoolDown
-    with Prefix { self: GrantsToClass with RequiresAllOfClass =>
-
-  override def prefix: Option[String] = Some("Wild Shape")
-
-  override protected val prefixSeparator: String = ": "
+    with WildShapePrefix {
+  self: GrantsToClass with RequiresAllOfClass with DisplayName with DisplayProperties =>
 }

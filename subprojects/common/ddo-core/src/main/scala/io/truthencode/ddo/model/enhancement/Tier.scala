@@ -27,7 +27,7 @@ import scala.collection.immutable
   * An enhancement Tier separates Enhancements into various levels and require increasing pre-requisites such as a certain
   * number of Action points spent
   */
-sealed trait Tier extends EnumEntry with DisplayName with FriendlyDisplay {
+sealed trait Tier extends EnumEntry with DisplayName {
 
   override protected def nameSource: String = {
     entryName.splitByCase.toPascalCase

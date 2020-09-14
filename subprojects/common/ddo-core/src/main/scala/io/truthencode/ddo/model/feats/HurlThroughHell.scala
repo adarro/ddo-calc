@@ -40,7 +40,7 @@ protected[feats] trait HurlThroughHell
     with RequiresNoneOfAxis
     with GrantsToClass { self: ClassFeat =>
 
-  override protected def nameSource: String = "Hurl through Hell"
+  override protected def nameSource: String = "Hurl Through Hell"
 
   override def grantToClass: Seq[(HeroicCharacterClass, Int)] =
     Seq((Warlock, 15))

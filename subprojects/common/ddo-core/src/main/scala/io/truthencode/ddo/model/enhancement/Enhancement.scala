@@ -18,31 +18,21 @@
 package io.truthencode.ddo.model.enhancement
 
 import enumeratum.{Enum, EnumEntry}
-import io.truthencode.ddo.model.enhancement.enhancements.Determination
 import io.truthencode.ddo.support.StringUtils.Extensions
-import io.truthencode.ddo.support.naming.{DisplayName, FriendlyDisplay}
-import io.truthencode.ddo.support.requisite.{PointInTreeRequisite, PointsAvailableRequisite, RaceRequisite}
-import io.truthencode.ddo.support.tree.{ClassTrees, Ranks}
+import io.truthencode.ddo.support.naming.{Description, DisplayName}
+import io.truthencode.ddo.support.requisite.RaceRequisite
 
 import scala.collection.immutable
 
 /**
   * Enhancements are acquired via the Skill Tree by spending action points.
   */
-sealed trait Enhancement extends EnumEntry with DisplayName with FriendlyDisplay {
+protected[ddo] trait Enhancement extends EnumEntry with Description with DisplayName {
   self: TreeType with Tier =>
 
   override protected def nameSource: String =
     entryName.splitByCase.toPascalCase
 
-}
-
-/**
-  * Class based enhancement which requires at least one level in a particular class.
-  */
-trait ClassEnhancement extends Enhancement with ClassBased with Ranks {
-  self: Tier with ClassBasedEnhancements with PointInTreeRequisite with PointsAvailableRequisite =>
-  val tree: ClassTrees
 }
 
 /**
@@ -60,8 +50,8 @@ trait RacialEnhancement extends Enhancement with Racial {
 }
 
 object Enhancement extends Enum[Enhancement] {
-  override def values: immutable.IndexedSeq[Enhancement] = findValues
+  override def values: immutable.IndexedSeq[Enhancement] = ??? // findValues
   // Alchemist
   // Core
-  case object Determination extends Determination
+
 }

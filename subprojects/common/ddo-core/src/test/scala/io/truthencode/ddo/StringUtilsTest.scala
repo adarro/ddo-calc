@@ -33,6 +33,7 @@
 package io.truthencode.ddo
 
 import com.typesafe.scalalogging.LazyLogging
+import io.truthencode.ddo.support.RomanNumeral
 import io.truthencode.ddo.support.matching.{WordMatchStrategies, WordMatchStrategy}
 import io.truthencode.ddo.support.StringUtils.{Extensions, StringImprovements}
 import org.scalatest.OptionValues._
@@ -42,17 +43,35 @@ import org.scalatest.{FunSpec, Matchers}
 
 import scala.collection.immutable.HashSet
 
-
 class StringUtilsTest extends FunSpec with PropertyChecks with Matchers with LazyLogging {
   final private val meaningOfLife = 42
   private final val ibm = List("I Believe Mom", "i borrow money", "IBetterMail")
   private final val nullString: String = null
-  val strategyResults = Table(("Strategy", "Expected"),
+
+  val strategyResults = Table(
+    ("Strategy", "Expected"),
     (WordMatchStrategies.FullUpperCaseWordStrategy, HashSet() ++ List("IBM")),
     (WordMatchStrategies.TitleCaseWordStrategy, HashSet() ++ List("IBM")),
     (WordMatchStrategies.FullLowerCaseWordStrategy, HashSet() ++ List("ibm")),
     (WordMatchStrategies.IgnoreCaseWordStrategy, HashSet() ++ List("IBM", "ibm"))
+  )
 
+  val validRomanToNumbers =
+    Table(
+      ("given", "expected"),
+      ("Some Magical Ability IX", "Some Magical Ability 9"),
+      ("Cool IV stuff", "Cool 4 stuff"),
+      ("Mixed II 3", "Mixed 2 3"),
+      ("Spaced IV II", "Spaced 4 2")
+    )
+
+  val validNumbersToRoman = Table(
+    ("given", "expected"),
+    ("Some Magical Ability 9", "Some Magical Ability IX"),
+    ("Cool 4 stuff", "Cool IV stuff"),
+    ("Mixed 2 3", "Mixed II III"),
+    ("Spaced 4 2", "Spaced IV II"),
+    ("Meaning 42","Meaning XLII")
   )
   private val wordsWithSpaces: String = "I Believe Mom"
   private val wordsWithoutSpaces: String = "IBetterMail"
@@ -76,14 +95,12 @@ class StringUtilsTest extends FunSpec with PropertyChecks with Matchers with Laz
     }
     it("should gracefully handle non-alpha input") {
 
-
       //      val wordList = List("I Believe Mom","i borrow money","IBetterMail","oracle","\t")
       //      val wMap = wordList.map(x => x.wordsToAcronym.value)
       "\t".wordsToAcronym shouldBe empty
     }
     it("should make all acronyms Upper Case when option is supplied") {
       forAll(strategyResults) { (s: WordMatchStrategy, hs: HashSet[String]) =>
-
         implicit val ws: WordMatchStrategy = s
         logger.info(s"Testing Strategy ${s.stringMatchOption} ${s.getClass.getSimpleName}")
         val bigBlue = ibm.map {
@@ -94,10 +111,50 @@ class StringUtilsTest extends FunSpec with PropertyChecks with Matchers with Laz
         bigBlue should not contain None
         bigBlue.toSet should equal(hs)
       }
-
-
-
       //  bigBlue.toSet should equal(HashSet() ++ List("IBM"))
+    }
+  }
+
+  describe("symbolsToWords") {
+    it("should replace symbols in names") {
+      val expected = "WordsAndPhrases"
+      val given = "Words&Phrases"
+      given.symbolsToWords shouldEqual (expected)
+    }
+    it("should not alter when there are no symbols") {
+      val original = "WordsAndPhrases"
+      val expected = original
+      val given = "WordsAndPhrases".symbolsToWords
+      given.symbolsToWords shouldEqual (expected)
+
+    }
+    it("should gracefully coexist with splitByCase") {
+      val original = "Words&Phrases"
+      val expected = "Words & Phrases"
+      val given = original.splitByCase
+      given.shouldEqual(expected)
+
+    }
+  }
+
+  describe("Roman Numerals") {
+    they("Can be translated to numbers") {
+      forAll(validRomanToNumbers) { (given, expected) =>
+        val translations = given.replaceRomanNumerals
+        translations shouldEqual expected
+      }
+    }
+
+    they("Can be translated from numbers") {
+      forAll(validNumbersToRoman) { (given, expected) =>
+        val translations = given.replaceNumbersWithRomanNumerals
+        translations shouldEqual expected
+      }
+    }
+
+    they("should be tolerated by splitByCase") {
+      val c ="SomeSpell3".splitByCase
+      val stp = 0
     }
   }
 

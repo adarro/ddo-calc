@@ -70,6 +70,16 @@ projectFolders.forEach { dirName ->
     }
 }
 
+/*
+Included build section for testing incubating projects
+// Example
+includeBuild("incubating/ddo-odata-server") {
+  
+}
+
+
+ */
+
 pluginManagement {
     val scoveragePluginVersion: String by settings
     val versionsPluginVersion: String by settings

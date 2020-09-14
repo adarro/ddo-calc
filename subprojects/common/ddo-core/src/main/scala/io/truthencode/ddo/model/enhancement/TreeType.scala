@@ -19,11 +19,11 @@ package io.truthencode.ddo.model.enhancement
 
 import enumeratum.{Enum, EnumEntry}
 import io.truthencode.ddo.support.StringUtils.Extensions
-import io.truthencode.ddo.support.naming.{DisplayName, FriendlyDisplay}
+import io.truthencode.ddo.support.naming.{Description, DisplayName}
 
 import scala.collection.immutable
 
-sealed trait TreeType extends EnumEntry with DisplayName with FriendlyDisplay {
+sealed trait TreeType extends EnumEntry with Description with  DisplayName  {
   override protected def nameSource: String =
     entryName.splitByCase.toPascalCase
 }

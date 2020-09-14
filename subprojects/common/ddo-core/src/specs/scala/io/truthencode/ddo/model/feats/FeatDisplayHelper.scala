@@ -21,7 +21,7 @@ import java.util
 
 import enumeratum.{Enum, EnumEntry}
 import io.truthencode.ddo.model.DisplayHelper
-import io.truthencode.ddo.support.naming.FriendlyDisplay
+import io.truthencode.ddo.support.naming.{Description, DisplayName, FriendlyDisplay}
 
 import scala.collection.JavaConverters._
 

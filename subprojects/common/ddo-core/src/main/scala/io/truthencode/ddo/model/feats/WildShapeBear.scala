@@ -20,6 +20,7 @@ package io.truthencode.ddo.model.feats
 import io.truthencode.ddo.model.classes.HeroicCharacterClass
 import io.truthencode.ddo.model.classes.HeroicCharacterClass.Druid
 import io.truthencode.ddo.model.misc.DefaultCasterCoolDown
+import io.truthencode.ddo.support.naming.{DisplayName, DisplayProperties}
 import io.truthencode.ddo.support.requisite.{GrantsToClass, RequiresAllOfClass}
 
 /**
@@ -30,6 +31,7 @@ trait WildShapeBear
     with GrantsToClass
     with RequiresAllOfClass
     with DefaultCasterCoolDown {
+    self: DisplayName with DisplayProperties =>
   override def grantToClass: Seq[(HeroicCharacterClass, Int)] =
     List((Druid, 2), (Druid, 5))
 

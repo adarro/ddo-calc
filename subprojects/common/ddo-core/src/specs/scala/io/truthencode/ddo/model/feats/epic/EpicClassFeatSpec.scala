@@ -22,13 +22,8 @@ import java.util
 import com.typesafe.scalalogging.LazyLogging
 import enumeratum.{Enum, EnumEntry}
 import io.truthencode.ddo.model.classes.HeroicCharacterClass
-import io.truthencode.ddo.model.feats.{
-  ClassFeatDisplayHelper,
-  ClassRestricted,
-  EpicFeatFeatDisplayHelper,
-  SubFeatInformation
-}
-import io.truthencode.ddo.support.naming.FriendlyDisplay
+import io.truthencode.ddo.model.feats.{ClassFeatDisplayHelper, ClassRestricted, EpicFeatFeatDisplayHelper, SubFeatInformation}
+import io.truthencode.ddo.support.naming.{Description, DisplayName, DisplayProperties, FriendlyDisplay}
 import io.truthencode.ddo.support.requisite.ClassRequisite
 import org.concordion.integration.junit4.ConcordionRunner
 import org.junit.runner.RunWith
@@ -37,7 +32,7 @@ import scala.collection.JavaConverters._
 
 @RunWith(classOf[ConcordionRunner])
 class EpicClassFeatSpec extends LazyLogging {
-  type Entry = EnumEntry with FriendlyDisplay
+  type Entry = EnumEntry with DisplayProperties
   type E = Enum[_ <: Entry]
   type CharClass = Option[HeroicCharacterClass]
   type EpicClassHelper = ClassFeatDisplayHelper with EpicFeatFeatDisplayHelper

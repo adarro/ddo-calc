@@ -19,10 +19,10 @@ package io.truthencode.ddo.model
 
 import enumeratum.{Enum, EnumEntry}
 import io.truthencode.ddo.model.feats.SubFeatInformation
-import io.truthencode.ddo.support.naming.FriendlyDisplay
+import io.truthencode.ddo.support.naming.{DisplayProperties, FriendlyDisplay}
 
 trait DisplayHelper {
-    type Entry = EnumEntry with FriendlyDisplay
+    type Entry = EnumEntry with DisplayProperties
     type E = Enum[_ <: Entry]
 
     val enum: E

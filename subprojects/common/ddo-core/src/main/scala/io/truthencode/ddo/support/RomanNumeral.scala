@@ -29,37 +29,52 @@ trait RomanNumeral {
 
 object RomanNumeral {
 
+  val numerals =
+    Map('I' -> 1, 'V' -> 5, 'X' -> 10, 'L' -> 50, 'C' -> 100, 'D' -> 500, 'M' -> 1000)
+
+  val validIdentifiers: Set[Char] = numerals.keySet
+
   // from [[https://www.rosettacode.org/wiki/Roman_numerals/Decode#Scala rosettacode]]
   /**
     * Translates Roman Numerals to Int
     * [[https://www.rosettacode.org/wiki/Roman_numerals/Decode#Scala rosettacode]]
     */
   def fromRoman(s: String): Int = {
-    val numerals = Map('I' -> 1, 'V' -> 5, 'X' -> 10, 'L' -> 50, 'C' -> 100, 'D' -> 500, 'M' -> 1000)
-
-    s.toUpperCase.map(numerals).foldLeft((0, 0)) {
-      case ((sum, last), curr) => (sum + curr + (if (last < curr) -2 * last else 0), curr)
-    }._1
+    s.toUpperCase
+      .map(numerals)
+      .foldLeft((0, 0)) {
+        case ((sum, last), curr) => (sum + curr + (if (last < curr) -2 * last else 0), curr)
+      }
+      ._1
   }
+
   /**
     * Translates Int into Roman numerals
     * [[https://www.rosettacode.org/wiki/Roman_numerals/Decode#Scala rosettacode]]
     */
   def toRoman(num: Int): String = {
-      def convert(value: Int, table: List[(Int, String)]): String = table.headOption match {
-        case None                  => ""
-        case Some((arabic, roman)) => roman * (value / arabic) + convert(value % arabic, table.tail)
-      }
+    def convert(value: Int, table: List[(Int, String)]): String = table.headOption match {
+      case None                  => ""
+      case Some((arabic, roman)) => roman * (value / arabic) + convert(value % arabic, table.tail)
+    }
     convert(num, table)
   }
+
   private val table = List(
-    (1000, "M"), (900, "CM"),
-    (500, "D"), (400, "CD"),
-    (100, "C"), (90, "XC"),
-    (50, "L"), (40, "XL"),
-    (10, "X"), (9, "IX"),
-    (5, "V"), (4, "IV"),
-    (1, "I"))
+    (1000, "M"),
+    (900, "CM"),
+    (500, "D"),
+    (400, "CD"),
+    (100, "C"),
+    (90, "XC"),
+    (50, "L"),
+    (40, "XL"),
+    (10, "X"),
+    (9, "IX"),
+    (5, "V"),
+    (4, "IV"),
+    (1, "I")
+  )
   // scalastyle:off regex
   /**
     * // A small test
@@ -77,6 +92,32 @@ object RomanNumeral {
     *
     */
   // scalastyle:on
+
+  def fnRomanNumeralToNumber: PartialFunction[String, Int] = new PartialFunction[String, Int] {
+
+    def isDefinedAt(x: String): Boolean = {
+      // Unique Characters in word
+      val chars = x.toCharArray.map(_.toUpper).toSet
+      val validChars = chars.intersect(validIdentifiers)
+      validChars.nonEmpty && chars.size.equals(validChars.size)
+    }
+
+    def apply(x: String): Int = {
+      fromRoman(x)
+    }
+  }
+
+  def fnNumberToRomanNumeral: PartialFunction[String, String] =
+    new PartialFunction[String, String] {
+
+      override def isDefinedAt(x: String): Boolean = {
+        val chars = x.toCharArray
+        val validChars = chars.filter(_.isDigit)
+        validChars.nonEmpty && validChars.length.equals(chars.size)
+      }
+
+      override def apply(v1: String): String = toRoman(v1.toInt)
+    }
 }
 
 trait RomanSuffix extends RomanNumeral with Suffix

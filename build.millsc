@@ -1,0 +1,13 @@
+import mill._, scalalib._
+import $ivy.`com.lihaoyi::mill-contrib-bloop:0.6.0`
+
+trait BaseModule extends SbtModule {
+  def foo = T { Seq("base") }
+  def cmd(i: Int) = T.command { Seq("base" + i) }
+  def scalaVersion = "2.12.4"
+}
+
+object example extends BaseModule {
+  def foo = T { super.foo() ++ Seq("object") }
+  def cmd(i: Int) = T.command { super.cmd(i)() ++ Seq("object" + i) }
+}

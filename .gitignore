@@ -170,4 +170,19 @@ node_modules/
 npm-debug.log
 package-lock.json
 test/*.log
-/node/
+node/
+
+# don't include mill build (yet)
+mill
+
+# metals exclusion
+.metals/
+
+# vscode (for now)
+.vscode/
+
+# ammonite
+.ammonite/
+
+
+rslt.txt

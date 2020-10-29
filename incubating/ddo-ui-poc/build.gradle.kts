@@ -1,3 +1,20 @@
+/*
+ * SPDX-License-Identifier: Apache-2.0
+ *
+ * Copyright 2015-2020 Andre White.
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *     https://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
 plugins {
     scala
 
@@ -92,9 +109,9 @@ fun scalaFXModules(dhs: DependencyHandlerScope, scope: String = "implementation"
     val jdkV = listOf(sc, tc).sorted().first().toInt()
     val rslt = vals.filter { p -> p.key.contains(jdkV) }.map { v -> v.value }.firstOrNull()
     if (!rslt.isNullOrEmpty()) {
-        dhs.add(scope,"org.scalafx:scalafx_${scalaMajorVersion}:${rslt}")
+        dhs.add(scope, "org.scalafx:scalafx_${scalaMajorVersion}:${rslt}")
     }
-   
+
 }
 
 //allprojects {
@@ -115,6 +132,7 @@ fun scalaFXModules(dhs: DependencyHandlerScope, scope: String = "implementation"
 repositories {
     mavenCentral()
     jcenter()
+    mavenLocal()
 }
 
 tasks.register("showPlugins") {
@@ -130,10 +148,15 @@ dependencies {
     val scalaMajorVersion: String by project
     val scalaFxVersion: String by project
     val scalaFXMLVersion: String by project
+    val enumeratumVersion: String by project
     implementation("org.scala-lang:scala-library:$scalaLibraryVersion")
     //  implementation(group = "", name = "_${scalaMajorVersion}")
     implementation(group = "org.jooq", name = "joor", version = "0.9.13")
-   // implementation(group = "org.scalafx", name = "scalafx_${scalaMajorVersion}", version = scalaFxVersion) //'8.0.144-R12'
+    //  implementation(project(":ddo-calc:ddo-core"))
+    // implementation(project("../../subprojects/common/ddo-core"))
+    implementation(group = "io.truthencode", name = "ddo-core", version = "0.0.1")
+    implementation(group = "com.beachape", name = "enumeratum_${scalaMajorVersion}", version = enumeratumVersion)
+    // implementation(group = "org.scalafx", name = "scalafx_${scalaMajorVersion}", version = scalaFxVersion) //'8.0.144-R12'
     //  implementation(group = "org.scalafx", name = "scalafxml-core-sfx8_${scalaMajorVersion}", version = scalaFXMLVersion) //'0.4'
 //    implementation(group = "", name = "_${scalaMajorVersion}")
     scalaFXModules(this)

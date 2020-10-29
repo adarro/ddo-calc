@@ -17,9 +17,13 @@
  */
 rootProject.name = "ddo-poc-javafx"
 
-// Include core ddo projects
+// Include core ddo projects (Uncomment below to include main build)
 
-// includeBuild("../..")
+includeBuild("../..") {
+    dependencySubstitution {
+        substitute(module("io.truthencode:ddo-core")).with(project(":ddo-core"))
+    }
+}
 
 pluginManagement {
     plugins {
@@ -33,6 +37,7 @@ pluginManagement {
         gradlePluginPortal()
         jcenter()
         mavenCentral()
+        mavenLocal()
         maven {
             url = uri("https://plugins.gradle.org/m2/")
         }

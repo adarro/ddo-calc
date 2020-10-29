@@ -23,6 +23,7 @@ import com.typesafe.scalalogging.LazyLogging
 import com.wix.accord.Violation
 import io.truthencode.ddo.support.matching.{WordMatchStrategies, WordMatchStrategy}
 
+import scala.collection.{GenMap, GenSeq, MapLike}
 import scala.collection.immutable.HashMap
 import scala.language.postfixOps
 import scala.util.Random
@@ -48,6 +49,9 @@ package object support extends LazyLogging {
   final val CharacterLevels
     : _root_.scala.collection.immutable.Range.Inclusive = HeroicLevels.min to EpicLevels.max
 
+  /**
+    * Implicit functions for manipulating collections such as finding the Cartesian Product, Left and Right Joins
+    */
   object TraverseOps {
 
     // succinctly pooled from SO [[http://stackoverflow.com/a/14740340/400729]]
@@ -55,6 +59,59 @@ package object support extends LazyLogging {
       def cross[Y](ys: Traversable[Y]): Traversable[(X, Y)] = for { x <- xs; y <- ys } yield (x, y)
     }
 
+    implicit class Joinable[X](xs: GenSeq[X]) {
+
+      def leftJoin[Y >: X](ys: GenSeq[Y]): GenSeq[X] = {
+        val yy: GenSeq[X] = xs.intersect(ys)
+        yy.union(xs.diff(yy))
+      }
+
+      def rightJoin[Y >: X](ys: GenSeq[Y]): GenSeq[Y] = {
+        val yy: GenSeq[Y] = ys.intersect(xs)
+        yy.union(ys.diff(yy))
+      }
+    }
+
+    implicit class MapOps[K, V](xs: Map[K, V]) {
+
+      /**
+        * Performs the traditional "Left Join" on a Map
+        * @param ys Map to Join
+        * @param joinOnKeys Join based on Keys Only, otherwise matches based on key AND value
+        * @tparam Y Key
+        * @tparam Z Value
+        * @return Subset of source consisting of unique LHS + common LHS
+        */
+      def leftJoin[Y >: K, Z >: V](ys: Map[Y, Z])(implicit joinOnKeys: Boolean = true): Map[K, V] = {
+        if (joinOnKeys) {
+          val lk = xs.keys.toSeq.leftJoin(ys.keys.toSeq)
+          xs.filter { k =>
+            lk.exists(k2 => k._1.equals(k2))
+          }
+        } else {
+          xs.toList.leftJoin(ys.toList).toList.toMap
+        }
+      }
+
+        /**
+         * Performs the traditional "Left Join" on a Map
+         * @param ys Map to Join
+         * @param joinOnKeys Join based on Keys Only, otherwise matches based on key AND value
+         * @tparam Y Key
+         * @tparam Z Value
+         * @return Subset of source consisting of unique LHS + common LHS
+         */
+      def rightJoin[Y >: K, Z >: V](ys: Map[Y, Z])(implicit joinOnKeys: Boolean = true): Map[Y, Z] = {
+        if (joinOnKeys) {
+            val lk = ys.keys.toSeq.leftJoin(xs.keys.toSeq)
+            ys.filter { k =>
+                lk.exists(k2 => k._1.equals(k2))
+            }
+        } else {
+          ys.toList.leftJoin(xs.toList).toList.toMap
+        }
+      }
+    }
   }
 
   /**
@@ -193,22 +250,22 @@ package object support extends LazyLogging {
         */
       def replaceRomanNumerals: String = {
         s.split(Space)
-            .map {
-                case s: String if RomanNumeral.fnRomanNumeralToNumber.isDefinedAt(s) =>
-                    RomanNumeral.fnRomanNumeralToNumber(s).toString
-                case s: String => s
-            }
-            .mkString(Space)
+          .map {
+            case s: String if RomanNumeral.fnRomanNumeralToNumber.isDefinedAt(s) =>
+              RomanNumeral.fnRomanNumeralToNumber(s).toString
+            case s: String => s
+          }
+          .mkString(Space)
       }
 
       def replaceNumbersWithRomanNumerals: String = {
-          s.split(Space)
-              .map {
-                  case s: String if RomanNumeral.fnNumberToRomanNumeral.isDefinedAt(s) =>
-                      RomanNumeral.fnNumberToRomanNumeral(s)
-                  case s: String => s
-              }
-              .mkString(Space)
+        s.split(Space)
+          .map {
+            case s: String if RomanNumeral.fnNumberToRomanNumeral.isDefinedAt(s) =>
+              RomanNumeral.fnNumberToRomanNumeral(s)
+            case s: String => s
+          }
+          .mkString(Space)
       }
 
       /**

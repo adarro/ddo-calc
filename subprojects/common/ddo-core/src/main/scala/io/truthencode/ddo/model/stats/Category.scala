@@ -20,6 +20,8 @@ package io.truthencode.ddo.model.stats
 /**
   * Used to generally classify a stat or effect such as Saving Throws or Movement.
   * These should generally correspond to the Game Client Menu although some are not visible from the UI
+  * NOTE: May not exactly match in game UI for UX purposes. (i.e. Dodge chance / AC / Incorporeal should fall under
+  * Avoidance Defense although we are expecting it to appear under main display)
   */
 sealed trait Category
 
@@ -38,6 +40,7 @@ trait GeneralCombat extends Category
 trait MeleeCombat extends Category
 
 trait RangedCombat extends Category
+
 
 /**
  * General or Main stats generally appear on the main character sheet such as Base Attack Bonus

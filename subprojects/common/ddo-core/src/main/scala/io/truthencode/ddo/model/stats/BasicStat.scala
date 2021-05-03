@@ -51,6 +51,8 @@ trait BaseAttackBonus extends BasicStat with Abbreviation with General {
   */
 trait MovementSpeedModifier extends BasicStat with Movement
 
+/** amount health is allowed to go negative in an 'incapacitated' manner before death is triggered. */
+trait UnconsciousRange extends BasicStat with General
 // Saving Throws
 
 trait SavesVsSpells extends BasicStat with SavingThrows
@@ -215,6 +217,9 @@ trait BowAttackSpeedBonus extends RangedCombatCategory
 
 trait RangedThreatMultiplier extends RangedCombatCategory
 
+/** Distance from target used for point blank damage (not shown in Game UI) */
+trait PointBlankShotRange extends RangedCombatCategory
+
 // scalastyle:off number.of.methods
 object BasicStat extends Enum[BasicStat] with SearchPrefix {
     override def values: immutable.IndexedSeq[BasicStat] = findValues
@@ -224,6 +229,8 @@ object BasicStat extends Enum[BasicStat] with SearchPrefix {
     case object BaseAttackBonus extends BaseAttackBonus
 
     case object MovementSpeedModifier extends MovementSpeedModifier
+
+    case object UnconsciousRange extends UnconsciousRange
 
     case object SavesVsSpells extends SavesVsSpells
 
@@ -349,6 +356,8 @@ object BasicStat extends Enum[BasicStat] with SearchPrefix {
 
     case object OffhandHitChance extends OffhandHitChance
 
+    /** As of [[https://ddowiki.com/page/Update_49_Release_Notes#What.27s_Changing: Update 49]], this is no longer a configurable stat
+      * and is by default 50% of your Mainhand doublestrike * */
     case object OffhandDoublestrike extends OffhandDoublestrike
 
     case object GlancingblowDamage extends GlancingblowDamage
@@ -370,6 +379,8 @@ object BasicStat extends Enum[BasicStat] with SearchPrefix {
     case object BowAttackSpeedBonus extends BowAttackSpeedBonus
 
     case object RangedThreatMultiplier extends RangedThreatMultiplier
+
+    case object PointBlankShotRange extends PointBlankShotRange
 
     /**
       * Used when qualifying a search with a prefix.

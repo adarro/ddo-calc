@@ -19,7 +19,7 @@ package io.truthencode.ddo.model.stats
 
 /**
   * Used to generally classify a stat or effect such as Saving Throws or Movement.
-  * These should generally correspond to the Game Client Menu
+  * These should generally correspond to the Game Client Menu although some are not visible from the UI
   */
 sealed trait Category
 

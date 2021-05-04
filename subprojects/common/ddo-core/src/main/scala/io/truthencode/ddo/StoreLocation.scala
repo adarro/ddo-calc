@@ -86,11 +86,6 @@ trait ItemEquip extends StoreLocation {
   */
 object StoreLocation extends Enum[StoreLocation] with BitSupport {
 
-  /**
-    * Object can be slotted onto character, such as a sword or helmet.
-    * Items with this value should further be constrained with corresponding WearLocation.
-    * TODO: This should be a case class / child using Wearlocation
-    */
   case object Equipped extends Inventory
 
   /**
@@ -155,7 +150,7 @@ object StoreLocation extends Enum[StoreLocation] with BitSupport {
     for { s <- WearLocation.values } yield EquippedLocation(s)
   }
 
-  val values = findValues ++ generateEquipmentSlot ++ generateAugmentValues
+  val values: immutable.IndexedSeq[StoreLocation] = findValues ++ generateEquipmentSlot ++ generateAugmentValues
   override type T = StoreLocation
 
   val fnEquipment: PartialFunction[StoreLocation, StoreLocation with ItemEquip] = {
@@ -174,15 +169,21 @@ object StoreLocation extends Enum[StoreLocation] with BitSupport {
     case x: Filigree => x
   }
 
+  /**
+    * Object can be slotted onto character, such as a sword or helmet.
+    * Items with this value should further be constrained with corresponding WearLocation.
+    */
   lazy val Equipment
     : immutable.Seq[StoreLocation with ItemEquip] = StoreLocation.values collect fnEquipment
 
-  lazy val Augments: immutable.Seq[StoreLocation with ColorAugment]= StoreLocation.values collect fnAugments
+  lazy val Augments
+    : immutable.Seq[StoreLocation with ColorAugment] = StoreLocation.values collect fnAugments
 
-  lazy val GuildAugments: immutable.Seq[StoreLocation with GuildAugment] = StoreLocation.values collect fnGuildAugments
+  lazy val GuildAugments
+    : immutable.Seq[StoreLocation with GuildAugment] = StoreLocation.values collect fnGuildAugments
 
-  lazy val Filigrees: immutable.Seq[StoreLocation with Filigree] = StoreLocation.values collect fnFiligrees
-
+  lazy val Filigrees
+    : immutable.Seq[StoreLocation with Filigree] = StoreLocation.values collect fnFiligrees
 
   override lazy val bitValues: Map[StoreLocation, Int] = valuesToIndex.map { x =>
     val wl = x._1

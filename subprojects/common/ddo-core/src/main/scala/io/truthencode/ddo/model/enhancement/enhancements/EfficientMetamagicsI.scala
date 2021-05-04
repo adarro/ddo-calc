@@ -18,6 +18,7 @@
 package io.truthencode.ddo.model.enhancement.enhancements
 
 import io.truthencode.ddo.model.enhancement.enhancements.classbased.BombardierTierTwo
+import io.truthencode.ddo.support.StringUtils.Extensions
 
 trait EfficientMetamagicsI extends BombardierTierTwo with ClassEnhancementImpl {
     /**
@@ -33,4 +34,6 @@ trait EfficientMetamagicsI extends BombardierTierTwo with ClassEnhancementImpl {
      * Some enhancements can be taken multiple times (generally up to three)
      */
     override val ranks: Int = 3
+
+    override protected def nameSource: String = "EfficientMetamagicsI".symbolsToWords.replaceRomanNumerals
 }

@@ -125,7 +125,7 @@ object ClassEnhancement extends Enum[ClassEnhancement] {
   case object SpellCriticalElementalAndPoisonIII extends SpellCriticalElementalAndPoisonIII
   case object AbilityIBombardier extends AbilityIBombardier
   // Tier4
-  case object SLASmokeBomb extends SLASmokeBomb
+  case object SmokeBomb extends SLASmokeBomb
   case object EfficientHeighten extends EfficientHeighten
   case object BurningAmbition extends BurningAmbition
   case object SpellCriticalElementalAndPoisonIV extends SpellCriticalElementalAndPoisonIV

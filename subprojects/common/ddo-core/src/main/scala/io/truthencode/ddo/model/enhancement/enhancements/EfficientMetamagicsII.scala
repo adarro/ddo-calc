@@ -18,8 +18,11 @@
 package io.truthencode.ddo.model.enhancement.enhancements
 
 import io.truthencode.ddo.model.enhancement.enhancements.classbased.BombardierTierThree
+import io.truthencode.ddo.support.StringUtils.Extensions
+import io.truthencode.ddo.support.naming.RomanNumeralAffix
 
-trait EfficientMetamagicsII extends BombardierTierThree with ClassEnhancementImpl {
+// TODO: Need to add mutliselector support similar to Martial Weapon Proficiency:x
+trait EfficientMetamagicsII extends BombardierTierThree with ClassEnhancementImpl with RomanNumeralAffix {
     /**
      * Some enhancements have multiple ranks.
      * This is the cost for each rank.
@@ -33,4 +36,5 @@ trait EfficientMetamagicsII extends BombardierTierThree with ClassEnhancementImp
      * Some enhancements can be taken multiple times (generally up to three)
      */
     override val ranks: Int = 3
+    override protected def nameSource: String = "Efficient Metamagics II".replaceRomanNumerals
 }

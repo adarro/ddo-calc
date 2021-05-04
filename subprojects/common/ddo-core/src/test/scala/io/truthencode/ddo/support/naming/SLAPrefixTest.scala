@@ -24,7 +24,7 @@ class SLAPrefixTest extends FunSpec with Matchers {
   describe("SlA Prefix") {
     it("should prepend Enhancements") {
       val e = ClassEnhancement.SLARapidCondensation
-      e.displayText shouldEqual "SLA: Rapid Condensation"
+      e.displayText shouldEqual "Spell-Like Ability: Rapid Condensation"
     }
   }
 }

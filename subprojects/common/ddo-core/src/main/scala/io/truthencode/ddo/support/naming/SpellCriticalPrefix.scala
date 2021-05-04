@@ -20,7 +20,7 @@ package io.truthencode.ddo.support.naming
 import io.truthencode.ddo.support.StringUtils.Extensions
 
 /**
-  * TODO: Move prefixes to naming package and out of enhancement as they might be used generically for feats / enhancements etc.
+  * Adds Spell Critical: prefix to item.
   */
 trait SpellCriticalPrefix extends Prefix {
   self: DisplayName =>

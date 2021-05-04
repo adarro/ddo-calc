@@ -27,10 +27,10 @@ trait BurningAmbition extends BombardierTierFour with ClassEnhancementImpl {
      *
      * @return
      */
-    override def apCostPerRank: Int = 1
+    override def apCostPerRank: Int = 2
 
     /**
      * Some enhancements can be taken multiple times (generally up to three)
      */
-    override val ranks: Int = 2
+    override val ranks: Int = 1
 }

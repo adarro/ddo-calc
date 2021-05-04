@@ -24,6 +24,6 @@ package io.truthencode.ddo.support.naming
   */
 trait SLAPrefix extends Prefix {
   self: DisplayName with DisplayProperties =>
-  override def prefix: Option[String] = Some("SLA")
+  override def prefix: Option[String] = Some("Spell-Like Ability")
 
 }

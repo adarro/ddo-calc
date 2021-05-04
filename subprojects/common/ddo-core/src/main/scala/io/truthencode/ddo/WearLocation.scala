@@ -24,7 +24,7 @@ import io.truthencode.ddo.enumeration.{BitSupport, BitWise}
   */
 sealed trait WearLocation
     extends EnumEntry
-    with NoDefault[WearLocation]
+  //  with NoDefault[WearLocation]
     with BitWise {
 
   private lazy val bitValues = WearLocation.valuesToIndex map { x =>
@@ -35,15 +35,16 @@ sealed trait WearLocation
 
 }
 
+trait EquipmentSlot extends WearLocation
 /**
  * Rings etc
  */
-trait Finger extends WearLocation
+trait Finger extends EquipmentSlot
 
 /**
  * Includes items that can be held or wielded from swords to wands to shields and orbs / rune arms
  */
-trait HeldItem extends WearLocation
+trait HeldItem extends EquipmentSlot
 
 /** Distinct values for location slots.
   */
@@ -52,22 +53,22 @@ object WearLocation extends Enum[WearLocation] with BitSupport {
     /**
      * Headwear such as Helmets
      */
-  case object Head extends WearLocation
+  case object Head extends EquipmentSlot
 
     /**
      * Necklaces
      */
-  case object Neck extends WearLocation
+  case object Neck extends EquipmentSlot
 
     /**
      * Cloaks etc
      */
-  case object Back extends WearLocation
+  case object Back extends EquipmentSlot
 
     /**
      * Includes Armbands / bracers etc
      */
-  case object Wrist extends WearLocation
+  case object Wrist extends EquipmentSlot
 
     /**
      * One of two Ring locations
@@ -82,27 +83,27 @@ object WearLocation extends Enum[WearLocation] with BitSupport {
     /**
      * Armor / cloth robes for wizards etc
      */
-  case object Body extends WearLocation
+  case object Body extends EquipmentSlot
 
     /**
      * Footwear such as boots etc
      */
-  case object Feet extends WearLocation
+  case object Feet extends EquipmentSlot
 
     /**
      * Belt items
      */
-  case object Belt extends WearLocation
+  case object Belt extends EquipmentSlot
 
     /**
      * Eyewear such as goggles / glasses
      */
-  case object Goggles extends WearLocation
+  case object Goggles extends EquipmentSlot
 
     /**
      * Gloves and other over the hand items
      */
-  case object Gloves extends WearLocation
+  case object Gloves extends EquipmentSlot
 
   case object MainHand extends HeldItem
 
@@ -116,15 +117,15 @@ object WearLocation extends Enum[WearLocation] with BitSupport {
     /**
      * Trinkets such as Voice of the Master
      */
-  case object Trinket extends WearLocation
+  case object Trinket extends EquipmentSlot
 
-  case object HeadDecoration extends WearLocation
+  case object HeadDecoration extends EquipmentSlot
 
-  case object BodyDecoration extends WearLocation
+  case object BodyDecoration extends EquipmentSlot
 
-  case object Ammo extends WearLocation
+  case object Ammo extends EquipmentSlot
 
-  case object Quiver extends WearLocation
+  case object Quiver extends EquipmentSlot
 
   val values = findValues
   override type T = WearLocation

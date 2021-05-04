@@ -62,7 +62,7 @@ object ClassEnhancementInfo extends LazyLogging {
     }
     if (eOpt.nonEmpty) {
       val e = eOpt.get
-
+logger.info(s"located ${e.displayText}")
       /**
         * The string id used to create the object
         */
@@ -81,6 +81,7 @@ object ClassEnhancementInfo extends LazyLogging {
       val description: String = e.rawDescription
       CEnhancementDumb(name, id, actionPointCost, ranks, progression, requirements, description)
     } else {
+        logger.warn((s"did not locate id, using safe wrapper for $name"))
       CEnhancementDumb(name)
     }
 

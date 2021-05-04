@@ -21,7 +21,6 @@ import com.typesafe.scalalogging.LazyLogging
 import io.truthencode.ddo.model.enhancement.Tier
 import io.truthencode.ddo.model.enhancement.enhancements.ClassEnhancement
 import io.truthencode.ddo.support.requisite.{ActionPointRequisite, PointInTreeRequisite}
-import io.truthencode.ddo.support.StringUtils._
 
 trait ClassEnhancementDisplayHelper extends EnhancementDisplayHelper with LazyLogging {
   override val enum: E = ClassEnhancement
@@ -32,7 +31,7 @@ trait ClassEnhancementDisplayHelper extends EnhancementDisplayHelper with LazyLo
   lazy val mappedValues: Map[String, ClassEnhancementInfo] = values.map { v =>
     logger.info(s"Loading enhancement with entry: ${v.entryName}")
     val c = ClassEnhancementInfo.apply(v.displayText)
-    logger.info("It worked I think")
+    logger.info(s"Added using key ${c.name}")
     c.name -> c
   }.toMap
 

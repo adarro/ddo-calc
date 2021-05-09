@@ -29,7 +29,7 @@ plugins {
     // Formatting, linting / code standards and conventions etc
     id("org.ec4j.editorconfig")
     id("quality-checks")
-    id("com.github.fkorotkov.libraries")
+  //  id("com.github.fkorotkov.libraries")
     id("org.unbroken-dome.test-sets") apply (false)
     id("org.kordamp.gradle.project") // apply (false)
     idea

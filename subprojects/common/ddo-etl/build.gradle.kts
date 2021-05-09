@@ -23,8 +23,6 @@
  * User Manual available at https://docs.gradle.org/6.1.1/userguide/scala_plugin.html
  */
 
-import io.truthencode.gradle.kotlin.dsl.scalaProject
-
 plugins {
     // Apply the scala plugin to add support for Scala
     scala

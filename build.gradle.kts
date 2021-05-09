@@ -153,7 +153,7 @@ allprojects {
 subprojects {
     apply {
         plugin ("idea")
-        plugin("com.github.fkorotkov.libraries")
+    //    plugin("com.github.fkorotkov.libraries")
     }
 }
 

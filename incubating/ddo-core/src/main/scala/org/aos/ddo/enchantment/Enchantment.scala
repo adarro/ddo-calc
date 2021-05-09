@@ -30,8 +30,8 @@
   * See the License for the specific language governing permissions and
   * limitations under the License.
   */
-package org.aos.ddo.enchantment
+package io.truthencode.ddo.enchantment
 
-import org.aos.ddo.model.effect.EffectList
+import io.truthencode.ddo.model.effect.EffectList
 
 trait Enchantment extends EffectList

@@ -15,7 +15,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package org.aos.ddo.model.misc
+package io.truthencode.ddo.model.misc
 
 import org.scalatest.FunSpec
 

@@ -15,12 +15,12 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package org.aos.ddo.support
+package io.truthencode.ddo.support
 
 import com.typesafe.scalalogging.LazyLogging
 import enumeratum.EnumEntry
-import org.aos.ddo.activation.PassiveActivation
-import org.aos.ddo.model.effect.{ActiveEvent, PassiveEvent, TriggerEvent}
+import io.truthencode.ddo.activation.PassiveActivation
+import io.truthencode.ddo.model.effect.{ActiveEvent, PassiveEvent, TriggerEvent}
 import org.scalatest.{FunSpec, Matchers}
 
 /**

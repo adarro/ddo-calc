@@ -30,12 +30,12 @@
   * See the License for the specific language governing permissions and
   * limitations under the License.
   */
-package org.aos.ddo
+package io.truthencode.ddo
 
-import org.aos.ddo.MonetaryValue.Coins
-import org.aos.ddo.model.effect.Effect
-import org.aos.ddo.model.misc.Material
-import org.aos.ddo.model.race.Race
+import io.truthencode.ddo.MonetaryValue.Coins
+import io.truthencode.ddo.model.effect.Effect
+import io.truthencode.ddo.model.misc.Material
+import io.truthencode.ddo.model.race.Race
 
 /**
   * A general Item, which can be a Weapon, Armor, potion, scroll etc.

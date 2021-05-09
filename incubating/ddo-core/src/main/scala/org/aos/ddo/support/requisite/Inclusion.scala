@@ -15,7 +15,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package org.aos.ddo.support.requisite
+package io.truthencode.ddo.support.requisite
 
 /**
   * Flag used to denote inclusion logic

@@ -30,13 +30,13 @@
   * See the License for the specific language governing permissions and
   * limitations under the License.
   */
-package org.aos.ddo.model.item.weapon
+package io.truthencode.ddo.model.item.weapon
 
 import enumeratum.{Enum, EnumEntry}
-import org.aos.ddo.Damage
-import org.aos.ddo.support.naming.{DisplayName, FriendlyDisplay}
-import org.aos.ddo.support.{Bludgeoning, Piercing, Slashing}
-import org.aos.ddo.support.StringUtils.Extensions
+import io.truthencode.ddo.Damage
+import io.truthencode.ddo.support.naming.{DisplayName, FriendlyDisplay}
+import io.truthencode.ddo.support.{Bludgeoning, Piercing, Slashing}
+import io.truthencode.ddo.support.StringUtils.Extensions
 
 import scala.collection.immutable.IndexedSeq
 

@@ -30,12 +30,12 @@
   * See the License for the specific language governing permissions and
   * limitations under the License.
   */
-package org.aos.ddo
+package io.truthencode.ddo
 
 import com.typesafe.config.ConfigFactory
 import com.typesafe.scalalogging.LazyLogging
 import com.wix.accord.Violation
-import org.aos.ddo.support.matching.{WordMatchStrategies, WordMatchStrategy}
+import io.truthencode.ddo.support.matching.{WordMatchStrategies, WordMatchStrategy}
 
 import scala.language.postfixOps
 import scala.util.Random
@@ -84,7 +84,7 @@ package object support extends LazyLogging {
           "Failed to load a valid configuration file, using hard-coded defaults... Please verify your configuration")
         val data =
           """
-            |org.aos.ddo {
+            |io.truthencode.ddo {
             |  support {
             |    noiseWords = [
             |      "On",
@@ -121,7 +121,7 @@ package object support extends LazyLogging {
       */
     implicit class Extensions(val s: String) {
       def lowerCaseNoise: String = {
-        val noise = config.getStringList("org.aos.ddo.support.noiseWords")
+        val noise = config.getStringList("io.truthencode.ddo.support.noiseWords")
         val words = s.splitByCase
         (for {
           w <- words.split(Space).map { x =>
@@ -246,7 +246,7 @@ package object support extends LazyLogging {
     final val ForwardSlash = "/"
     final val UnderScore = "_"
     final val LineSep = sys.props("line.separator")
-    private val path = "org.aos.ddo.support"
+    private val path = "io.truthencode.ddo.support"
     // Random generator
     private[this] val random: scala.util.Random = new scala.util.Random
 

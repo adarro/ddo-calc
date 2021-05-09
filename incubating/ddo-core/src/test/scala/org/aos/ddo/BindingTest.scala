@@ -16,11 +16,11 @@
  * limitations under the License.
  */
 
-package org.aos.ddo
+package io.truthencode.ddo
 
 import com.typesafe.scalalogging.LazyLogging
-import org.aos.ddo.support.StringUtils.{randomAlphanumericString, Extensions}
-import org.aos.ddo.support.matching.{WordMatchStrategies, WordMatchStrategy}
+import io.truthencode.ddo.support.StringUtils.{randomAlphanumericString, Extensions}
+import io.truthencode.ddo.support.matching.{WordMatchStrategies, WordMatchStrategy}
 import org.junit.runner.RunWith
 import org.scalactic.Equality
 import org.scalatest.{FunSpec, Matchers}

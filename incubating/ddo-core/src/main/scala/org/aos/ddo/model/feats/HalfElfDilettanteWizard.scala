@@ -15,11 +15,11 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package org.aos.ddo.model.feats
+package io.truthencode.ddo.model.feats
 
-import org.aos.ddo.model.attribute.Attribute
-import org.aos.ddo.model.race.Race
-import org.aos.ddo.support.requisite.{
+import io.truthencode.ddo.model.attribute.Attribute
+import io.truthencode.ddo.model.race.Race
+import io.truthencode.ddo.support.requisite.{
   FeatRequisiteImpl,
   RequiresAllOfRace,
   RequiresAttribute

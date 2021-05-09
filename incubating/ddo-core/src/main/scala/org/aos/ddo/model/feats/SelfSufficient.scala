@@ -15,9 +15,9 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package org.aos.ddo.model.feats
+package io.truthencode.ddo.model.feats
 
-import org.aos.ddo.support.requisite.{FeatRequisiteImpl, FreeFeat}
+import io.truthencode.ddo.support.requisite.{FeatRequisiteImpl, FreeFeat}
 
 /** Icon Feat Self Sufficient.png
   * Self Sufficient Passive Provides a +2 bonus to the character's Heal and Repair skills.

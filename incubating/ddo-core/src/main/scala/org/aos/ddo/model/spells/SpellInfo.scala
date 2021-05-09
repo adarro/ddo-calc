@@ -15,12 +15,12 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package org.aos.ddo.model.spells
+package io.truthencode.ddo.model.spells
 
 import java.time.Duration
 
-import org.aos.ddo.model.misc.CoolDown
-import org.aos.ddo.model.spells.component.ComponentList
+import io.truthencode.ddo.model.misc.CoolDown
+import io.truthencode.ddo.model.spells.component.ComponentList
 
 /**
   * Encapsulates the cost, duration, range etc of a given spell

@@ -15,17 +15,17 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package org.aos.ddo.model.spells
+package io.truthencode.ddo.model.spells
 
 import java.time.Duration
 
 import enumeratum.{Enum, EnumEntry}
-import org.aos.ddo.model.effect.{Effect, EffectList}
-import org.aos.ddo.model.misc.CoolDown
-import org.aos.ddo.model.spells.component.ComponentList
-import org.aos.ddo.model.spells.SpellElement._
-import org.aos.ddo.support.naming.{DisplayName, FriendlyDisplay}
-import org.aos.ddo.support.StringUtils.Extensions
+import io.truthencode.ddo.model.effect.{Effect, EffectList}
+import io.truthencode.ddo.model.misc.CoolDown
+import io.truthencode.ddo.model.spells.component.ComponentList
+import io.truthencode.ddo.model.spells.SpellElement._
+import io.truthencode.ddo.support.naming.{DisplayName, FriendlyDisplay}
+import io.truthencode.ddo.support.StringUtils.Extensions
 
 import scala.collection.{immutable, Iterable}
 import scala.reflect.ClassTag

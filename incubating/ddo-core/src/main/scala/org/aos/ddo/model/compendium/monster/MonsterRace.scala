@@ -15,10 +15,10 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package org.aos.ddo.model.compendium.monster
+package io.truthencode.ddo.model.compendium.monster
 
 import enumeratum.{Enum, EnumEntry}
-import org.aos.ddo.model.compendium.types._
+import io.truthencode.ddo.model.compendium.types._
 
 import scala.collection.immutable
 

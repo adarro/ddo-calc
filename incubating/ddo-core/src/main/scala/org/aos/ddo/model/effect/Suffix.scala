@@ -15,7 +15,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package org.aos.ddo.model.effect
+package io.truthencode.ddo.model.effect
 
 trait Suffix extends Effect with Affix
 

@@ -1,4 +1,4 @@
-package org.aos.ddo.etl.tags;
+package io.truthencode.ddo.etl.tags;
 
 
 import org.scalatest.TagAnnotation;

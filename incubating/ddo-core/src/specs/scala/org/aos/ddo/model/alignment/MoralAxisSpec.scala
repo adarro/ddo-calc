@@ -15,9 +15,9 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package org.aos.ddo.model.alignment
+package io.truthencode.ddo.model.alignment
 
-import org.aos.ddo.support.{ConcordionEnumBuilderHelper, ConcordionEnumBuilderSupport}
+import io.truthencode.ddo.support.{ConcordionEnumBuilderHelper, ConcordionEnumBuilderSupport}
 import org.concordion.api.FullOGNL
 import org.concordion.api.extension.Extensions
 import org.concordion.ext.EmbedExtension

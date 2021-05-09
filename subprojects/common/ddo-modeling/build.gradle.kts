@@ -1,7 +1,7 @@
 /*
  * SPDX-License-Identifier: Apache-2.0
  *
- * Copyright 2015-2020 Andre White.
+ * Copyright 2015-2021 Andre White.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -16,7 +16,6 @@
  * limitations under the License.
  */
 
-
 plugins {
     // Apply the scala plugin to add support for Scala
     scala
@@ -28,14 +27,8 @@ plugins {
     id("org.openapi.generator")
 }
 
-repositories {
-    // Use jcenter for resolving dependencies.
-    // You can declare any Maven/Ivy/file repository here.
-    jcenter()
-}
-
 // import common scala project dependencies etc
-project.apply { from(rootProject.file("gradle/scala.gradle.kts")) }
+// project.apply { from(rootProject.file("gradle/scala.gradle.kts")) }
 
 dependencies {
     // Use Scala 2.12 in our library project
@@ -46,7 +39,31 @@ dependencies {
 //    testImplementation("org.scalatest:scalatest_2.12:3.0.8")
 
     // Need scala-xml at test runtime
-    testRuntimeOnly("org.scala-lang.modules:scala-xml_2.12:1.2.0")
+    //  testRuntimeOnly("org.scala-lang.modules:scala-xml_2.12:1.2.0")
+    // https://mvnrepository.com/artifact/org.json4s/json4s-native
+
+    val scalaLibraryVersion: String by project
+    val scalaMajorVersion: String by project
+
+    implementation(platform(project(":ddo-platform-scala")))
+    implementation("org.scala-lang:scala-library:$scalaLibraryVersion")
+    implementation(group = "com.beachape", name = "enumeratum_${scalaMajorVersion}")
+    implementation(group = "com.typesafe", name = "config")
+    implementation(group = "com.github.kxbmap", name = "configs_${scalaMajorVersion}")
+
+    implementation(group = "org.json4s", name = "json4s-native_2.12")
+
+    // validation and rules
+    implementation(group = "com.wix", name = "accord-core_2.12")
+    implementation(group = "ch.qos.logback", name = "logback-classic")
+    implementation(group = "com.typesafe.scala-logging", name = "scala-logging_${scalaMajorVersion}")
+    testImplementation(group = "org.scalatest", name = "scalatest_$scalaMajorVersion")
+    testImplementation(group = "org.mockito", name = "mockito-all")
+
+    // JUnit 5
+    testRuntimeOnly(group = "org.junit.platform", name = "junit-platform-engine")
+    testRuntimeOnly(group = "org.junit.platform", name = "junit-platform-launcher")
+    testRuntimeOnly(group = "co.helmethair", name = "scalatest-junit-runner")
 }
 
 // OpenApi code / schema generation
@@ -58,7 +75,12 @@ val schemaDir = "${project.projectDir}/src/main/resources/schemas/avro"
 val generatedScalaSourceDir = "${project.projectDir}/src/main/avro"
 
 data class ApiSpec(val spec: String, val schemaDir: String, val generatedSrcDir: String)
-data class PackageSpec(val basePackage: String = "io.truthencode.ddo", val apiPackage: String = "api", val invokerPackage: String = "invoker", val modelPackage: String = "models.model") {
+data class PackageSpec(
+    val basePackage: String = "io.truthencode.ddo",
+    val apiPackage: String = "api",
+    val invokerPackage: String = "invoker",
+    val modelPackage: String = "models.model"
+) {
     val api: String
         get() {
             return "${basePackage}.$apiPackage"
@@ -76,7 +98,8 @@ data class PackageSpec(val basePackage: String = "io.truthencode.ddo", val apiPa
 
 val defaultApiSpec = ApiSpec(apiSpec, schemaDir, generatedScalaSourceDir)
 // val defaultPackageSpec = PackageSpec("io.truthencode.ddo.api","io.truthencode.ddo.invoker","io.truthencode.ddo.models.model")
-val schemas = mapOf("ddoModel" to defaultApiSpec, "parseHub" to defaultApiSpec.copy(spec = "$rootDir/specs/parsehub.yaml"))
+val schemas =
+    mapOf("ddoModel" to defaultApiSpec, "parseHub" to defaultApiSpec.copy(spec = "$rootDir/specs/parsehub.yaml"))
 val specs = mapOf("parseHub" to PackageSpec(basePackage = "io.truthencode.ddo.etl.parsehub"))
 //openApiGenerate {
 //
@@ -139,7 +162,6 @@ schemaList.forEach { id ->
 }
 
 
-
 //task("genAvroSchema", org.openapitools.generator.gradle.plugin.tasks.GenerateTask::class) {
 //
 //    //   verbose.set(true)
@@ -191,3 +213,15 @@ tasks.create<Delete>("cleanGeneratedScala") {
 }
 
 tasks.getAt("clean").dependsOn("cleanAvroSchema", "cleanGeneratedScala")
+
+tasks {
+    // Use the built-in JUnit support of Gradle.
+    "test"(Test::class) {
+        useJUnitPlatform {
+            includeEngines = setOf("scalatest")
+            testLogging {
+                events("passed", "skipped", "failed")
+            }
+        }
+    }
+}

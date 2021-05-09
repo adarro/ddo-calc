@@ -15,10 +15,10 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package org.aos.ddo.model.feats
+package io.truthencode.ddo.model.feats
 
-import org.aos.ddo.model.feats.ClassFeat.FlurryOfBlows
-import org.aos.ddo.support.requisite.{FeatRequisiteImpl, FreeFeat, RequiresAllOfFeat}
+import io.truthencode.ddo.model.feats.ClassFeat.FlurryOfBlows
+import io.truthencode.ddo.support.requisite.{FeatRequisiteImpl, FreeFeat, RequiresAllOfFeat}
 
 /**
   * ![Feat stunningfist.png](/images/Feat_stunningfist.png)

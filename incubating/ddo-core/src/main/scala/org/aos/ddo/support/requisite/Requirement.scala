@@ -16,19 +16,19 @@
  * limitations under the License.
  */
 
-package org.aos.ddo.support.requisite
+package io.truthencode.ddo.support.requisite
 
 import enumeratum.{Enum, EnumEntry}
-import org.aos.ddo.Abbreviation
-import org.aos.ddo.model.alignment.{AlignmentType, Alignments, LawAxis, MoralAxis}
-import org.aos.ddo.model.attribute.Attribute
-import org.aos.ddo.model.classes.HeroicCharacterClass
-import org.aos.ddo.model.favor.FavorPatron
-import org.aos.ddo.model.feats.Feat
-import org.aos.ddo.model.race.Race
-import org.aos.ddo.model.skill.Skill
-import org.aos.ddo.support.StringUtils.Extensions
-import org.aos.ddo.support.naming.{DisplayName, Prefix}
+import io.truthencode.ddo.Abbreviation
+import io.truthencode.ddo.model.alignment.{AlignmentType, Alignments, LawAxis, MoralAxis}
+import io.truthencode.ddo.model.attribute.Attribute
+import io.truthencode.ddo.model.classes.HeroicCharacterClass
+import io.truthencode.ddo.model.favor.FavorPatron
+import io.truthencode.ddo.model.feats.Feat
+import io.truthencode.ddo.model.race.Race
+import io.truthencode.ddo.model.skill.Skill
+import io.truthencode.ddo.support.StringUtils.Extensions
+import io.truthencode.ddo.support.naming.{DisplayName, Prefix}
 
 import scala.collection.immutable.IndexedSeq
 
@@ -155,8 +155,8 @@ object Requirement extends Enum[Requirement] {
     override protected def nameSource: String = id.splitByCase.toPascalCase
   }
 
-  /** Represents a particular alignment, i.e. A Pure Good weapon requires [[org.aos.ddo.model.alignment.MoralAxis.Good]] (Either the law or moral axis)
-    * Some items, such as Generated armors such as Armors of Stability give bonus if the character is [[org.aos.ddo.model.alignment.Alignments.TrueNeutral]].
+  /** Represents a particular alignment, i.e. A Pure Good weapon requires [[io.truthencode.ddo.model.alignment.MoralAxis.Good]] (Either the law or moral axis)
+    * Some items, such as Generated armors such as Armors of Stability give bonus if the character is [[io.truthencode.ddo.model.alignment.Alignments.TrueNeutral]].
     *
     * @param id either a fully qualified Alignment (i.e. ChaoticGood) or one of the axis, i.e. Lawful or Evil
     *

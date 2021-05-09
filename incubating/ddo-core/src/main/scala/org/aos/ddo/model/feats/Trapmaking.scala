@@ -15,12 +15,12 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package org.aos.ddo.model.feats
+package io.truthencode.ddo.model.feats
 
-import org.aos.ddo.model.classes.HeroicCharacterClass
-import org.aos.ddo.model.classes.HeroicCharacterClass.{Artificer, Rogue}
-import org.aos.ddo.model.skill.Skill
-import org.aos.ddo.support.requisite.{
+import io.truthencode.ddo.model.classes.HeroicCharacterClass
+import io.truthencode.ddo.model.classes.HeroicCharacterClass.{Artificer, Rogue}
+import io.truthencode.ddo.model.skill.Skill
+import io.truthencode.ddo.support.requisite.{
   FeatRequisiteImpl,
   GrantsToClass,
   RequiresAnyOfClass,

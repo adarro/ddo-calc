@@ -15,11 +15,11 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package org.aos.ddo.model.spells
+package io.truthencode.ddo.model.spells
 
-import org.aos.ddo.model.effect.EffectList
-import org.aos.ddo.model.spells.component.ComponentList
-import org.aos.ddo.model.spells.SpellElement._
+import io.truthencode.ddo.model.effect.EffectList
+import io.truthencode.ddo.model.spells.component.ComponentList
+import io.truthencode.ddo.model.spells.SpellElement._
 
 import scala.collection.immutable
 

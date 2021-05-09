@@ -1,4 +1,4 @@
-package org.aos.ddo.etl
+package io.truthencode.ddo.etl
 
 import org.mongodb.scala.{MongoClient, MongoDatabase}
 

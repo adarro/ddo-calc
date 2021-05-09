@@ -15,10 +15,10 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package org.aos.ddo.enumeration
+package io.truthencode.ddo.enumeration
 
 import enumeratum.{Enum, EnumEntry}
-import org.aos.ddo.support.StringUtils.Extensions
+import io.truthencode.ddo.support.StringUtils.Extensions
 
 
 /**

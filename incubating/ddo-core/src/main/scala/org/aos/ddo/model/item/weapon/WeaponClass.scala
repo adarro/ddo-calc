@@ -15,11 +15,11 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package org.aos.ddo.model.item.weapon
+package io.truthencode.ddo.model.item.weapon
 
 import enumeratum.{Enum, EnumEntry}
-import org.aos.ddo.support.{Deferred, PhysicalDamage}
-import org.aos.ddo.support.naming.DisplayName
+import io.truthencode.ddo.support.{Deferred, PhysicalDamage}
+import io.truthencode.ddo.support.naming.DisplayName
 
 import scala.collection.immutable.IndexedSeq
 
@@ -52,11 +52,11 @@ object WeaponClass extends Enum[WeaponClass] {
   override def values: IndexedSeq[WeaponClass] = findValues
 }
 
-sealed trait WeaponClassBludgeoning extends WeaponClass with MeleeDamage with org.aos.ddo.support.Bludgeoning
+sealed trait WeaponClassBludgeoning extends WeaponClass with MeleeDamage with io.truthencode.ddo.support.Bludgeoning
 
-sealed trait WeaponClassPiercing extends WeaponClass with MeleeDamage with org.aos.ddo.support.Piercing
+sealed trait WeaponClassPiercing extends WeaponClass with MeleeDamage with io.truthencode.ddo.support.Piercing
 
-sealed trait WeaponClassSlashing extends WeaponClass with MeleeDamage with org.aos.ddo.support.Slashing
+sealed trait WeaponClassSlashing extends WeaponClass with MeleeDamage with io.truthencode.ddo.support.Slashing
 
 sealed trait WeaponClassRanged extends WeaponClass with RangeDamage with Deferred
 

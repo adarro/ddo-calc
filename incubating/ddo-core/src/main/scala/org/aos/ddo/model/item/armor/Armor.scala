@@ -15,9 +15,9 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package org.aos.ddo.model.item.armor
+package io.truthencode.ddo.model.item.armor
 
-import org.aos.ddo.{Item, MetaData}
+import io.truthencode.ddo.{Item, MetaData}
 
 /** Represents body armor such as Breast plates, Chainmail etc.
   *

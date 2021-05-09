@@ -6,7 +6,7 @@
         <artifactId>ddo-calc-parent</artifactId>
         <version>0.1.0-alpha</version>
     </parent>
-    <groupId>org.aos</groupId>
+    <groupId>io.truthencode</groupId>
     <artifactId>ddo-etl</artifactId>   
     <properties>
         

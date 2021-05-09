@@ -15,11 +15,11 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package org.aos.ddo.model.alignment
+package io.truthencode.ddo.model.alignment
 
 import enumeratum.{EnumEntry, Enum => SmartEnum}
-import org.aos.ddo.model.alignment.LawAxis.{Chaotic, Lawful, Neutral}
-import org.aos.ddo.model.alignment.MoralAxis.{Evil, Good}
+import io.truthencode.ddo.model.alignment.LawAxis.{Chaotic, Lawful, Neutral}
+import io.truthencode.ddo.model.alignment.MoralAxis.{Evil, Good}
 
 /** Represents the dual axis Alignments
   *

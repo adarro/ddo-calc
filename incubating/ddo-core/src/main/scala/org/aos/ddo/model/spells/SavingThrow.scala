@@ -15,10 +15,10 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package org.aos.ddo.model.spells
+package io.truthencode.ddo.model.spells
 
-import org.aos.ddo.model.save.Save
-import org.aos.ddo.support.naming.FriendlyDisplay
+import io.truthencode.ddo.model.save.Save
+import io.truthencode.ddo.support.naming.FriendlyDisplay
 
 /**
   * Base trait for determining saves against spell.

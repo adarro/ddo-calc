@@ -1,7 +1,7 @@
 /*
  * SPDX-License-Identifier: Apache-2.0
  *
- * Copyright 2015-2020 Andre White.
+ * Copyright 2015-2021 Andre White.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -15,13 +15,14 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import com.moowork.gradle.node.task.NodeTask
+// import com.moowork.gradle.node.task.NodeTask
 
 plugins {
-    `java-library`
     scala
+    `java-library`
     id ("org.springframework.boot") version "2.0.0.RELEASE"
-    id ("com.moowork.node") version "1.2.0"
+  //  id ("com.moowork.node") version "1.2.0"
+     id("org.siouan.frontend-jdk8")
  //   id("io.spring.dependency-management")
 }
 
@@ -74,42 +75,74 @@ configure<JavaPluginConvention> {
     sourceCompatibility = JavaVersion.VERSION_1_8
 }
 
-task ("exportSwagger", NodeTask::class) {
-    group ="special"
-    setScript(file("src/main/script/dotransform.js"))
-    // ignoreExitValue = true
+frontend {
+    nodeDistributionProvided.set(false)
+    nodeVersion.set("8.17.0")
+    nodeDistributionUrlRoot.set("https://nodejs.org/dist/")
+    nodeDistributionUrlPathPattern.set("vVERSION/node-vVERSION-ARCH.TYPE")
+    nodeDistributionServerUsername.set("username")
+    nodeDistributionServerPassword.set("password")
+    nodeInstallDirectory.set(project.layout.projectDirectory.dir("node"))
+
+    yarnEnabled.set(true)
+    yarnDistributionProvided.set(false)
+    yarnVersion.set("1.22.5")
+    yarnDistributionUrlRoot.set("https://github.com/yarnpkg/yarn/releases/download/")
+    yarnDistributionUrlPathPattern.set("vVERSION/yarn-vVERSION.tar.gz")
+//    yarnDistributionServerUsername.set("username")
+//    yarnDistributionServerPassword.set("password")
+    yarnInstallDirectory.set(project.layout.projectDirectory.dir("yarn"))
+
+    installScript.set("install")
+    cleanScript.set("run clean")
+    assembleScript.set("run assemble")
+    checkScript.set("run check")
+    publishScript.set("run publish")
+
+    packageJsonDirectory.set(project.layout.projectDirectory.asFile)
+//    proxyHost.set("127.0.0.1")
+//    proxyPort.set(8080)
+//    proxyUsername.set("username")
+//    proxyPassword.set("password")
+    verboseModeEnabled.set(true)
 }
 
-var localNodeHome = "${project.buildDir}/nodejs"
-var localNpmWorkDir = "${project.buildDir}/npm"
-var localYarnWorkDir = "${project.buildDir}/yarn"
-
-node {
-    // Version of node to use.
-    version = "0.11.10"
-
-    // Version of npm to use.
-    npmVersion = "2.1.5"
-
-    // Version of Yarn to use.
-    yarnVersion = "0.16.1"
-
-    // Base URL for fetching node distributions (change if you have a mirror).
-    distBaseUrl = "https://nodejs.org/dist"
-
-    // If true, it will download node using above parameters.
-    // If false, it will try to use globally installed node.
-    download = false
-
-    // Set the work directory for unpacking node
-    workDir = file(localNodeHome)
-
-    // Set the work directory for NPM
-    npmWorkDir = file(localNpmWorkDir)
-
-    // Set the work directory for Yarn
-    yarnWorkDir = file(localYarnWorkDir)
-
-    // Set the work directory where node_modules should be located
-    nodeModulesDir = file("${project.projectDir}")
-}
+//task ("exportSwagger", NodeTask::class) {
+//    group ="special"
+//    setScript(file("src/main/script/dotransform.js"))
+//    // ignoreExitValue = true
+//}
+//
+//var localNodeHome = "${project.buildDir}/nodejs"
+//var localNpmWorkDir = "${project.buildDir}/npm"
+//var localYarnWorkDir = "${project.buildDir}/yarn"
+//
+//node {
+//    // Version of node to use.
+//    version = "0.11.10"
+//
+//    // Version of npm to use.
+//    npmVersion = "2.1.5"
+//
+//    // Version of Yarn to use.
+//    yarnVersion = "0.16.1"
+//
+//    // Base URL for fetching node distributions (change if you have a mirror).
+//    distBaseUrl = "https://nodejs.org/dist"
+//
+//    // If true, it will download node using above parameters.
+//    // If false, it will try to use globally installed node.
+//    download = false
+//
+//    // Set the work directory for unpacking node
+//    workDir = file(localNodeHome)
+//
+//    // Set the work directory for NPM
+//    npmWorkDir = file(localNpmWorkDir)
+//
+//    // Set the work directory for Yarn
+//    yarnWorkDir = file(localYarnWorkDir)
+//
+//    // Set the work directory where node_modules should be located
+//    nodeModulesDir = file("${project.projectDir}")
+//}

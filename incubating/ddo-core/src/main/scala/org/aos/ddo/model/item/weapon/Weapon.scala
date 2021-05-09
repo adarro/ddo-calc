@@ -16,12 +16,12 @@
  * limitations under the License.
  */
 
-package org.aos.ddo.model.item.weapon
+package io.truthencode.ddo.model.item.weapon
 
 import enumeratum.EnumEntry
-import org.aos.ddo._
-import org.aos.ddo.enumeration.EnumExtensions._
-import org.aos.ddo.model.attribute.Attribute
+import io.truthencode.ddo._
+import io.truthencode.ddo.enumeration.EnumExtensions._
+import io.truthencode.ddo.model.attribute.Attribute
 
 import scala.language.implicitConversions
 
@@ -87,7 +87,7 @@ trait Weapon extends Item  with MetaData with HandedWeapon {
     * Weapon Type represents a general class of weapons, such as Ranged Weapons for bows, thrown for
     * small projectiles, etc.
  *
-    * @see [[org.aos.ddo.model.item.weapon.DeliveryType]]
+    * @see [[io.truthencode.ddo.model.item.weapon.DeliveryType]]
     */
   val weaponType: Option[DeliveryType]
 
@@ -98,7 +98,7 @@ trait Weapon extends Item  with MetaData with HandedWeapon {
     *
     * @note DDO Wiki seems a bit inconsistent.  [[http://ddowiki.com/page/Composite_longbow Composite Longbow]] lists
     *       handedness as 'ranged' while [[http://ddowiki.com/page/Item:Bow_of_the_Silver_Flame Bow of the Silver Flame]] leaves this blank.
-    *       For our purposes, the handedness will likely be 'twohanded', and matching against the [[org.aos.ddo.model.item.weapon.DeliveryType]] for Ranged should be
+    *       For our purposes, the handedness will likely be 'twohanded', and matching against the [[io.truthencode.ddo.model.item.weapon.DeliveryType]] for Ranged should be
     *       enough to allow the UI to display either or none and understand that using a bow prevents equipping something else
     *       in the off hand.
     * @todo Likely need to test this for logic / integration

@@ -15,12 +15,12 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package org.aos.ddo.model.schools
+package io.truthencode.ddo.model.schools
 
 import enumeratum.{Enum, EnumEntry}
-import org.aos.ddo.support.SearchPrefix
-import org.aos.ddo.support.naming.{DisplayName, FriendlyDisplay}
-import org.aos.ddo.support.StringUtils.Extensions
+import io.truthencode.ddo.support.SearchPrefix
+import io.truthencode.ddo.support.naming.{DisplayName, FriendlyDisplay}
+import io.truthencode.ddo.support.StringUtils.Extensions
 
 import scala.collection.immutable.IndexedSeq
 

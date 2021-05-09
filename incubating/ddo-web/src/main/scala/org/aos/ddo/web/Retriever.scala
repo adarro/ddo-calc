@@ -13,10 +13,10 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package org.aos.ddo.web
+package io.truthencode.ddo.web
 
 import com.typesafe.scalalogging.LazyLogging
-import org.aos.ddo.Item
+import io.truthencode.ddo.Item
 
 object Retriever extends LazyLogging {
   /** When overridden, returns an Option[Item] using web resources

@@ -15,9 +15,9 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package org.aos.ddo
+package io.truthencode.ddo
 import enumeratum.EnumEntry
-import org.aos.ddo.enumeration.EnumExtensions._
+import io.truthencode.ddo.enumeration.EnumExtensions._
 
 /** Indicates the given object can be equipped / wielded etc.
   */
@@ -33,7 +33,7 @@ trait Wearable {
     }
   }
 
-  /** A bitmask that corresponds to one or more [org.aos.ddo.WearLocation] values.
+  /** A bitmask that corresponds to one or more [io.truthencode.ddo.WearLocation] values.
     */
   def allowedWearLocationFlags: Int
 }

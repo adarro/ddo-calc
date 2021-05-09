@@ -16,7 +16,7 @@
  * limitations under the License.
  */
 
-package org.aos.ddo
+package io.truthencode.ddo
 
 import enumeratum.{EnumEntry, Enum}
 

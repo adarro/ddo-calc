@@ -15,10 +15,10 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package org.aos.ddo.model.feats
+package io.truthencode.ddo.model.feats
 
-import org.aos.ddo.model.attribute.Attribute
-import org.aos.ddo.support.requisite.{FeatRequisiteImpl, RequiresAttribute, RequiresBaB}
+import io.truthencode.ddo.model.attribute.Attribute
+import io.truthencode.ddo.support.requisite.{FeatRequisiteImpl, RequiresAttribute, RequiresBaB}
 
 /** Icon Feat Precision.png
   * Precision 	Active - Offensive Combat Stance 	While using Precision mode, you gain +5% to hit and reduce the target's fortification against your attacks by 25%.

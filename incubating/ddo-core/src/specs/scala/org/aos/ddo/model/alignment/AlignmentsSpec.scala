@@ -15,7 +15,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package org.aos.ddo.model.alignment
+package io.truthencode.ddo.model.alignment
 
 import org.concordion.integration.junit4.ConcordionRunner
 import org.junit.runner.RunWith

@@ -15,13 +15,13 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package org.aos.ddo.model.effect
+package io.truthencode.ddo.model.effect
 
 /**
   * Basic flag for Elemental type damage.
   *
   * @note this only indicates there is some type of elemental damage / resist
-  *       use [[org.aos.ddo.model.effect.ElementalResistance]] which extends this to indicate
+  *       use [[io.truthencode.ddo.model.effect.ElementalResistance]] which extends this to indicate
   *       resist for all elemental types.
   */
 trait Elemental

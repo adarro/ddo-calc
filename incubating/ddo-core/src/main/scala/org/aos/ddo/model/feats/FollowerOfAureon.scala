@@ -15,10 +15,10 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package org.aos.ddo.model.feats
+package io.truthencode.ddo.model.feats
 
-import org.aos.ddo.model.religions.Aureon
-import org.aos.ddo.support.requisite.FeatRequisiteImpl
+import io.truthencode.ddo.model.religions.Aureon
+import io.truthencode.ddo.support.requisite.FeatRequisiteImpl
 
 trait FollowerOfAureon
     extends FeatRequisiteImpl

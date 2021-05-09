@@ -1,7 +1,7 @@
 /*
  * SPDX-License-Identifier: Apache-2.0
  *
- * Copyright 2015-2020 Andre White.
+ * Copyright 2015-2021 Andre White.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -35,8 +35,10 @@ fun readFirstPart(s: String): String {
 
 logger.info("checking ${projectFolders.size} project folders")
 projectFolders.forEach { dirName ->
-    // TODO: We should likely check that this path exists or build can bomb
     val directory = java.nio.file.Paths.get("${rootDir}/$dirName")
+    if (java.nio.file.Files.notExists(directory))
+        java.nio.file.Files.createDirectory(directory)
+
     java.nio.file.Files.find(
         directory,
         Integer.MAX_VALUE,
@@ -57,7 +59,7 @@ projectFolders.forEach { dirName ->
                 val projectDir = rootDir.toPath().relativize(d)
                 val first = files.first()
                 val buildFileName = first.name
-                // build file name may be artibtrary but usually follows either build or the directory name.
+                // build file name may be arbitrary but usually follows either build or the directory name.
                 // since we're mostly controlling the build we'll assume the containing folders' name.
                 val projectName = first.parentFile.name
                 logger.info("Including Project $projectName \t projectDir: $projectDir \t BuildFile: $buildFileName")
@@ -69,6 +71,16 @@ projectFolders.forEach { dirName ->
         }
     }
 }
+
+/*
+Included build section for testing incubating projects
+// Example
+includeBuild("incubating/ddo-odata-server") {
+  
+}
+
+
+ */
 
 pluginManagement {
     val scoveragePluginVersion: String by settings
@@ -87,6 +99,7 @@ pluginManagement {
     // Avro
     val avroHuggerPluginVersion: String by settings
     val openApiGeneratorPluginVersion: String by settings
+ //   val libraryPluginVersion: String by settings
 
 
     plugins {
@@ -96,6 +109,7 @@ pluginManagement {
         //   id "findbugs"
         //  id "org.standardout.versioneye" version versionEyePluginVersion
         id("com.github.ben-manes.versions") version versionsPluginVersion
+     //   id("com.github.fkorotkov.libraries") version libraryPluginVersion
         id("se.patrikerdes.use-latest-versions") version useLatestVersionsPluginVersion
         //  id("com.gradle.build-scan") version buildScanPluginVersion
         id("com.dorongold.task-tree") version taskTreePluginVersion
@@ -111,5 +125,14 @@ pluginManagement {
         id("com.zlad.gradle.avrohugger") version avroHuggerPluginVersion
         id("com.chudsaviet.gradle.avrohugger") version avroHuggerPluginVersion
         id("org.openapi.generator") version openApiGeneratorPluginVersion
+    }
+
+     repositories {
+           gradlePluginPortal()
+        jcenter()
+        mavenCentral()
+        maven {
+            url = uri("https://plugins.gradle.org/m2/")
+        }
     }
 }

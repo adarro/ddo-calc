@@ -15,14 +15,14 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package org.aos.ddo.model.alignment
+package io.truthencode.ddo.model.alignment
 
 import enumeratum.{Enum, EnumEntry}
-import org.aos.ddo.NoDefault
-import org.aos.ddo.enumeration.BitSupport
+import io.truthencode.ddo.NoDefault
+import io.truthencode.ddo.enumeration.BitSupport
 
 import scala.collection.immutable
-// import org.aos.ddo.enumeration._
+// import io.truthencode.ddo.enumeration._
 
 
 /**

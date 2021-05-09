@@ -15,7 +15,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package org.aos.ddo.enchantment
+package io.truthencode.ddo.enchantment
 
 import com.typesafe.scalalogging.LazyLogging
 import com.wix.accord.scalatest.ResultMatchers
@@ -83,21 +83,21 @@ class GuardTest
     }
 
     it("Must reject a invalid  prefix") {
-      assume (org.aos.ddo.support.AssertionStatus.isEnabled)
+      assume (io.truthencode.ddo.support.AssertionStatus.isEnabled)
       an[AssertionError] should be thrownBy {
         Some(GuardModifier(prefix = Some("Super Uber Rock me Epic")))
       }
     }
 
     it("Must not have a secondary prefix") {
-      assume (org.aos.ddo.support.AssertionStatus.isEnabled)
+      assume (io.truthencode.ddo.support.AssertionStatus.isEnabled)
       an[AssertionError] should be thrownBy {
         GuardModifier(sPrefix = Some("Uber"))
       }
     }
 
     it("Must not have both a prefix AND a suffix") {
-      assume (org.aos.ddo.support.AssertionStatus.isEnabled)
+      assume (io.truthencode.ddo.support.AssertionStatus.isEnabled)
       a[AssertionError] should be thrownBy {
         Some(
           GuardModifier(prefix = Some(Modifier.Minor.entryName),

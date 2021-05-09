@@ -13,13 +13,13 @@
   * See the License for the specific language governing permissions and
   * limitations under the License.
   */
-package org.aos.ddo.web.mapping
+package io.truthencode.ddo.web.mapping
 
 import com.typesafe.scalalogging.LazyLogging
 import enumeratum.{EnumEntry, Enum => SmartEnum}
-import org.aos.ddo.{DDOObject, Item}
-import org.aos.ddo.model.item.{Clothing, Potion}
-import org.aos.ddo.model.item.armor.Armor
+import io.truthencode.ddo.{DDOObject, Item}
+import io.truthencode.ddo.model.item.{Clothing, Potion}
+import io.truthencode.ddo.model.item.armor.Armor
 
 import scala.collection.immutable
 import scala.language.{existentials, postfixOps}
@@ -134,7 +134,7 @@ object FieldMapper extends LazyLogging {
           material = WikiParser.madeFrom(source),
           minimumLevel = WikiParser.minimumLevel(source),
           umd = WikiParser.umdDc(source),
-          weight = WikiParser.weight(source), // Members declared in org.aos.ddo.Weapon
+          weight = WikiParser.weight(source), // Members declared in io.truthencode.ddo.Weapon
           attackModifier = WikiParser.attackModifier(source),
           critical =
             WikiParser.criticalProfile(WikiParser.criticalThreat(source)),

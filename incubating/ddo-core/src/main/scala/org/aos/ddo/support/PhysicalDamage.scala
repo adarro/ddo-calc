@@ -15,10 +15,10 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package org.aos.ddo.support
+package io.truthencode.ddo.support
 
-import org.aos.ddo.PhysicalDamageType.{Bludgeon, Pierce, Slash}
-import org.aos.ddo.{Damage, DefaultValue, NoDefault, PhysicalDamageType}
+import io.truthencode.ddo.PhysicalDamageType.{Bludgeon, Pierce, Slash}
+import io.truthencode.ddo.{Damage, DefaultValue, NoDefault, PhysicalDamageType}
 
 /**
   * Created by adarr on 2/3/2017.

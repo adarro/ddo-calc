@@ -15,10 +15,10 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package org.aos.ddo.model.alignment
+package io.truthencode.ddo.model.alignment
 
 import com.typesafe.scalalogging.LazyLogging
-import org.aos.ddo.support.ConcordionEnumBuilderSupport
+import io.truthencode.ddo.support.ConcordionEnumBuilderSupport
 import org.concordion.api.FullOGNL
 import org.concordion.api.extension.Extensions
 import org.concordion.ext.EmbedExtension

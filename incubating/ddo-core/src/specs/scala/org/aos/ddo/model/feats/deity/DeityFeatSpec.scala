@@ -15,17 +15,17 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package org.aos.ddo.model.feats.deity
+package io.truthencode.ddo.model.feats.deity
 
 import java.util
 
 import com.typesafe.scalalogging.LazyLogging
-import org.aos.ddo.model.feats._
-import org.aos.ddo.model.item.weapon.FavoredWeapon
-import org.aos.ddo.model.religions.Religion
-import org.aos.ddo.model.worlds.World
-import org.aos.ddo.support.StringUtils.Extensions
-import org.aos.ddo.support.naming.{DisplayName, Prefix}
+import io.truthencode.ddo.model.feats._
+import io.truthencode.ddo.model.item.weapon.FavoredWeapon
+import io.truthencode.ddo.model.religions.Religion
+import io.truthencode.ddo.model.worlds.World
+import io.truthencode.ddo.support.StringUtils.Extensions
+import io.truthencode.ddo.support.naming.{DisplayName, Prefix}
 import org.concordion.api.FullOGNL
 import org.concordion.integration.junit4.ConcordionRunner
 import org.junit.runner.RunWith

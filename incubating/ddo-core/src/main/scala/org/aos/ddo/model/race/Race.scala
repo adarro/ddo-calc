@@ -15,13 +15,13 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package org.aos.ddo.model.race
+package io.truthencode.ddo.model.race
 
 import enumeratum.{Enum, EnumEntry}
-import org.aos.ddo.model.attribute._
-import org.aos.ddo.model.misc._
-import org.aos.ddo.model.worlds.{HomeWorld, World}
-import org.aos.ddo.support.SearchPrefix
+import io.truthencode.ddo.model.attribute._
+import io.truthencode.ddo.model.misc._
+import io.truthencode.ddo.model.worlds.{HomeWorld, World}
+import io.truthencode.ddo.support.SearchPrefix
 
 import scala.collection.immutable.IndexedSeq
 

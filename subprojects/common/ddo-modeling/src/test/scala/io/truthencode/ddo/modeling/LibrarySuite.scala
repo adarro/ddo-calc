@@ -1,7 +1,7 @@
 /*
  * SPDX-License-Identifier: Apache-2.0
  *
- * Copyright 2015-2020 Andre White.
+ * Copyright 2015-2021 Andre White.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -21,13 +21,11 @@
 package io.truthencode.ddo.modeling
 
 import org.scalatest.FunSuite
-import org.junit.runner.RunWith
-import org.scalatest.junit.JUnitRunner
 
-@RunWith(classOf[JUnitRunner])
+
 class LibrarySuite extends FunSuite {
   test("someLibraryMethod is always true") {
-    def library = new Library()
-    assert(library.someLibraryMethod)
+    def library: Library = new Library()
+    assert(library.someLibraryMethod())
   }
 }

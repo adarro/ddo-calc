@@ -15,10 +15,10 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package org.aos.ddo.model.classes
+package io.truthencode.ddo.model.classes
 
 import enumeratum.{Enum, EnumEntry}
-import org.aos.ddo.support.SearchPrefix
+import io.truthencode.ddo.support.SearchPrefix
 
 import scala.collection.immutable
 

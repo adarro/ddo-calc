@@ -15,10 +15,10 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package org.aos.ddo
+package io.truthencode.ddo
 
 import enumeratum.{Enum, EnumEntry}
-import org.aos.ddo.enumeration.{BitSupport, BitWise}
+import io.truthencode.ddo.enumeration.{BitSupport, BitWise}
 
 /** Constrains the places items can be used.
   */

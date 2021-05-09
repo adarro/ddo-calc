@@ -12,14 +12,14 @@
   * See the License for the specific language governing permissions and
   * limitations under the License.
   */
-package org.aos.ddo.web.mapping
+package io.truthencode.ddo.web.mapping
 
 import java.io.File
 
 import com.typesafe.scalalogging.LazyLogging
 import net.ruippeixotog.scalascraper.browser.JsoupBrowser
 import net.ruippeixotog.scalascraper.model.Document
-import org.aos.ddo.web.{Branch, Tree, Warehouse}
+import io.truthencode.ddo.web.{Branch, Tree, Warehouse}
 import org.junit.runner.RunWith
 import org.scalatest.{FunSpec, Matchers}
 import org.scalatest.junit.JUnitRunner

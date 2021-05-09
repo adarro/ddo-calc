@@ -1,4 +1,4 @@
-package org.aos.ddo.model.classes
+package io.truthencode.ddo.model.classes
 
 import org.scalatest.{FunSpec, Matchers}
 

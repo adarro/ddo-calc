@@ -15,16 +15,16 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package org.aos.ddo.support
+package io.truthencode.ddo.support
 
 import enumeratum.EnumEntry
-import org.aos.ddo.model.attribute.Attribute
-import org.aos.ddo.model.classes.HeroicCharacterClass
-import org.aos.ddo.model.favor.FavorPatron
-import org.aos.ddo.model.feats.{ClassFeat, Feat, GeneralFeat, RacialFeat}
-import org.aos.ddo.model.race.Race
-import org.aos.ddo.model.skill.Skill
-import org.aos.ddo.support.requisite.Requirement._
+import io.truthencode.ddo.model.attribute.Attribute
+import io.truthencode.ddo.model.classes.HeroicCharacterClass
+import io.truthencode.ddo.model.favor.FavorPatron
+import io.truthencode.ddo.model.feats.{ClassFeat, Feat, GeneralFeat, RacialFeat}
+import io.truthencode.ddo.model.race.Race
+import io.truthencode.ddo.model.skill.Skill
+import io.truthencode.ddo.support.requisite.Requirement._
 
 /**
   * Created by adarr on 1/30/2017.

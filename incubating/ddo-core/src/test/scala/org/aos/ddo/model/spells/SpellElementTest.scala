@@ -15,10 +15,10 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package org.aos.ddo.model.spells
+package io.truthencode.ddo.model.spells
 
 import com.typesafe.scalalogging.LazyLogging
-import org.aos.ddo.model.spells.SpellElement.{WithName, WithSpellInfo}
+import io.truthencode.ddo.model.spells.SpellElement.{WithName, WithSpellInfo}
 import org.junit.runner.RunWith
 import org.scalatest.{FunSpec, Matchers}
 import org.scalatest.junit.JUnitRunner

@@ -13,7 +13,7 @@
   * See the License for the specific language governing permissions and
   * limitations under the License.
   */
-package org.aos.ddo.web.mapping
+package io.truthencode.ddo.web.mapping
 
 /**
   * Storage object used to contain text matches when scraping HTML text.

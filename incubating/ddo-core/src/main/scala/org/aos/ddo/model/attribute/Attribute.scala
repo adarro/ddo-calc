@@ -16,11 +16,11 @@
  * limitations under the License.
  */
 
-package org.aos.ddo.model.attribute
+package io.truthencode.ddo.model.attribute
 
 import enumeratum.{Enum, EnumEntry}
-import org.aos.ddo.Abbreviation
-import org.aos.ddo.support.SearchPrefix
+import io.truthencode.ddo.Abbreviation
+import io.truthencode.ddo.support.SearchPrefix
 
 /**
   * Created by adarr on 2/3/2017.

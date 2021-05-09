@@ -15,10 +15,10 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package org.aos.ddo.model.feats
+package io.truthencode.ddo.model.feats
 
-import org.aos.ddo.model.attribute.Attribute
-import org.aos.ddo.support.requisite.{FeatRequisiteImpl, RequiresAttribute, RequiresBaB}
+import io.truthencode.ddo.model.attribute.Attribute
+import io.truthencode.ddo.support.requisite.{FeatRequisiteImpl, RequiresAttribute, RequiresBaB}
 
 /** Icon Feat Resilience.png
   * Resilience Active - Defensive Combat Stance You gain a +4 to all saving throws. Spells have three times their normal cooldown when this mode is active.

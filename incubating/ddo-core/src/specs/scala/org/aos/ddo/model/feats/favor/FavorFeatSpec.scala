@@ -15,13 +15,13 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package org.aos.ddo.model.feats.favor
+package io.truthencode.ddo.model.feats.favor
 
 import java.util
 
 import com.typesafe.scalalogging.LazyLogging
-import org.aos.ddo.model.feats.{DisplayHelper, EberronReligionBase, Feat, ReligionFeatBase}
-import org.aos.ddo.support.requisite.RequiresAllOfPatron
+import io.truthencode.ddo.model.feats.{DisplayHelper, EberronReligionBase, Feat, ReligionFeatBase}
+import io.truthencode.ddo.support.requisite.RequiresAllOfPatron
 import org.concordion.api.FullOGNL
 import org.concordion.integration.junit4.ConcordionRunner
 import org.junit.runner.RunWith

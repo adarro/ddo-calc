@@ -15,9 +15,9 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package org.aos.ddo.model.feats
+package io.truthencode.ddo.model.feats
 
-import org.aos.ddo.support.requisite.{FeatRequisiteImpl, RequiresAllOfFeat}
+import io.truthencode.ddo.support.requisite.{FeatRequisiteImpl, RequiresAllOfFeat}
 
 /** Icon Feat Two Weapon Defense.png
   * Two Weapon Defense 	Passive 	Grants you a +1 bonus to your AC and 5 PRR when you wield two weapons. ( This bonus does not apply when fighting unarmed/with handwraps.) In DDO, this is not implemented as a shield bonus and stacks with the Shield spell.

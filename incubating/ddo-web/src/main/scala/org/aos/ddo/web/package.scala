@@ -12,11 +12,11 @@
   * See the License for the specific language governing permissions and
   * limitations under the License.
   */
-package org.aos.ddo
+package io.truthencode.ddo
 
 import java.net.URLEncoder
 
-import org.aos.ddo.support.StringUtils.{Space, UnderScore}
+import io.truthencode.ddo.support.StringUtils.{Space, UnderScore}
 
 import com.typesafe.config.{Config, ConfigFactory}
 import com.typesafe.scalalogging.LazyLogging

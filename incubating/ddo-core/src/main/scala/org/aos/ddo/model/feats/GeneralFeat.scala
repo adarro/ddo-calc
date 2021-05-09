@@ -15,20 +15,20 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package org.aos.ddo.model.feats
+package io.truthencode.ddo.model.feats
 
 import com.typesafe.scalalogging.LazyLogging
 import enumeratum.Enum
-import org.aos.ddo.model.classes.HeroicCharacterClass
-import org.aos.ddo.model.classes.HeroicCharacterClass.Bard
-import org.aos.ddo.model.item.weapon._
-import org.aos.ddo.model.item.weapon.WeaponCategory.{Longsword, Rapier, Shortbow, Shortsword}
-import org.aos.ddo.model.race.Race
-import org.aos.ddo.model.schools.School
-import org.aos.ddo.model.skill.Skill
-import org.aos.ddo.support.StringUtils.Extensions
-import org.aos.ddo.support.naming.{FriendlyDisplay, PostText, Prefix}
-import org.aos.ddo.support.requisite._
+import io.truthencode.ddo.model.classes.HeroicCharacterClass
+import io.truthencode.ddo.model.classes.HeroicCharacterClass.Bard
+import io.truthencode.ddo.model.item.weapon._
+import io.truthencode.ddo.model.item.weapon.WeaponCategory.{Longsword, Rapier, Shortbow, Shortsword}
+import io.truthencode.ddo.model.race.Race
+import io.truthencode.ddo.model.schools.School
+import io.truthencode.ddo.model.skill.Skill
+import io.truthencode.ddo.support.StringUtils.Extensions
+import io.truthencode.ddo.support.naming.{FriendlyDisplay, PostText, Prefix}
+import io.truthencode.ddo.support.requisite._
 
 /**
   * [[http://ddowiki.com/page/Feats Feats]] are special abilities that give your character a new capability, or improves one he or she already has.

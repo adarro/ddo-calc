@@ -15,9 +15,9 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package org.aos.ddo.support.requisite
+package io.truthencode.ddo.support.requisite
 
-import org.aos.ddo.support.requisite.Requirement.ReqCharacterLevel
+import io.truthencode.ddo.support.requisite.Requirement.ReqCharacterLevel
 
 /**
   * Represents the character level required to attain a feat, skill etc.

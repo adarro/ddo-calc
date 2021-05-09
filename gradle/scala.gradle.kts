@@ -1,7 +1,7 @@
 /*
  * SPDX-License-Identifier: Apache-2.0
  *
- * Copyright 2015-2020 Andre White.
+ * Copyright 2015-2021 Andre White.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -24,6 +24,7 @@
 pluginManager.withPlugin("scala-profiles") {
     val implementation by configurations.getting
     val testImplementation by configurations.getting
+    val testRuntimeOnly by configurations.getting
     val scalaLibraryVersion: String by project
     val scalaMajorVersion: String by project
     dependencies {
@@ -33,12 +34,15 @@ pluginManager.withPlugin("scala-profiles") {
         implementation(group = "com.typesafe", name = "config")
         implementation(group = "com.github.kxbmap", name = "configs_${scalaMajorVersion}")
         // validation and rules
-        implementation(group = "com.wix", name = "accord-core_2.12")
+        implementation(group = "com.wix", name = "accord-core_${scalaMajorVersion}")
         implementation(group = "ch.qos.logback", name = "logback-classic")
         implementation(group = "com.typesafe.scala-logging", name = "scala-logging_${scalaMajorVersion}")
         testImplementation(group = "org.scalatest", name = "scalatest_$scalaMajorVersion")
         testImplementation(group = "org.mockito", name = "mockito-all")
-
+        // JUnit 5
+        testRuntimeOnly(group = "org.junit.platform", name = "junit-platform-engine")
+        testRuntimeOnly(group = "org.junit.platform", name = "junit-platform-launcher")
+        testRuntimeOnly(group = "co.helmethair", name = ":scalatest-junit-runner")
         //  api(platform(":ddo-platform-scala"))
     }
 }

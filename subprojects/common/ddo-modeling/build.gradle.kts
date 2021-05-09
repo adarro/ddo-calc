@@ -41,7 +41,7 @@ dependencies {
     // Need scala-xml at test runtime
     //  testRuntimeOnly("org.scala-lang.modules:scala-xml_2.12:1.2.0")
     // https://mvnrepository.com/artifact/org.json4s/json4s-native
-    implementation(libraries["json4s-native"])
+
     val scalaLibraryVersion: String by project
     val scalaMajorVersion: String by project
 
@@ -50,6 +50,9 @@ dependencies {
     implementation(group = "com.beachape", name = "enumeratum_${scalaMajorVersion}")
     implementation(group = "com.typesafe", name = "config")
     implementation(group = "com.github.kxbmap", name = "configs_${scalaMajorVersion}")
+
+    implementation(group = "org.json4s", name = "json4s-native_2.12")
+
     // validation and rules
     implementation(group = "com.wix", name = "accord-core_2.12")
     implementation(group = "ch.qos.logback", name = "logback-classic")

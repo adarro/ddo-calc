@@ -41,6 +41,7 @@ val concordionExtEmbedVersion: String by project
 val concordionExtCollapseOutputVersion: String by project
 val scalaFmtVersion: String by project
 val junitScalaTestVersion: String by project
+val json4sNativeVersion:String by project
 
 dependencies {
 
@@ -69,6 +70,9 @@ dependencies {
         api("com.beachape:enumeratum_$scalaMajorVersion:$enumeratumVersion")
         api("com.typesafe:config:$typeSafeConfigVersion")
         api("com.github.kxbmap:configs_${scalaMajorVersion}:$configsVersion")
+
+        // json libs
+        api("org.json4s:json4s-native_${scalaMajorVersion}:$json4sNativeVersion")
 
         // JUnit5
         runtime("co.helmethair:scalatest-junit-runner:$junitScalaTestVersion")

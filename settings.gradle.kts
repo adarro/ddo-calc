@@ -99,7 +99,7 @@ pluginManagement {
     // Avro
     val avroHuggerPluginVersion: String by settings
     val openApiGeneratorPluginVersion: String by settings
-    val libraryPluginVersion: String by settings
+ //   val libraryPluginVersion: String by settings
 
 
     plugins {
@@ -109,7 +109,7 @@ pluginManagement {
         //   id "findbugs"
         //  id "org.standardout.versioneye" version versionEyePluginVersion
         id("com.github.ben-manes.versions") version versionsPluginVersion
-        id("com.github.fkorotkov.libraries") version libraryPluginVersion
+     //   id("com.github.fkorotkov.libraries") version libraryPluginVersion
         id("se.patrikerdes.use-latest-versions") version useLatestVersionsPluginVersion
         //  id("com.gradle.build-scan") version buildScanPluginVersion
         id("com.dorongold.task-tree") version taskTreePluginVersion

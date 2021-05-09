@@ -85,31 +85,28 @@ dependencies {
 //    val scalaFmtVersion: String by project
 
     dependencies {
-        implementation(libraries["scala-lib"])
         /* Platform dependent */
         // https://mvnrepository.com/artifact/org.json4s/json4s-native
-        implementation(libraries["json4s-native"])
+        implementation(group = "org.json4s", name = "json4s-native_2.12", version = "3.6.7")
         val scalaLibraryVersion: String by project
         val scalaMajorVersion: String by project
 
-//        implementation(platform(project(":ddo-platform-scala")))
-
-        //  implementation("org.scala-lang:scala-library:$scalaLibraryVersion")
-        implementation(libraries["enumeratum"])
-        implementation(libraries["typesafe-config"])
-        //    implementation(group = "com.typesafe", name = "config")
-        implementation(libraries["kxb-configs"])
+        implementation(platform(project(":ddo-platform-scala")))
+        implementation("org.scala-lang:scala-library:$scalaLibraryVersion")
+        implementation(group = "com.beachape", name = "enumeratum_${scalaMajorVersion}")
+        implementation(group = "com.typesafe", name = "config")
+        implementation(group = "com.github.kxbmap", name = "configs_${scalaMajorVersion}")
         // validation and rules
-        implementation(libraries["wix-accord"])
-        implementation(libraries["logback"])
-        implementation(libraries["scala-logging"])
-        testImplementation(libraries["scalatest"])
-        testImplementation(libraries["mockito"])
+        implementation(group = "com.wix", name = "accord-core_2.12")
+        implementation(group = "ch.qos.logback", name = "logback-classic")
+        implementation(group = "com.typesafe.scala-logging", name = "scala-logging_${scalaMajorVersion}")
+        testImplementation(group = "org.scalatest", name = "scalatest_$scalaMajorVersion")
+        testImplementation(group = "org.mockito", name = "mockito-all")
 
         // JUnit 5
-        testRuntimeOnly(libraries["junit-platform-engine"])
-        testRuntimeOnly(libraries["junit-platform-launcher"])
-        testRuntimeOnly(libraries["scalatest-junit-runner"])
+        testRuntimeOnly(group = "org.junit.platform", name = "junit-platform-engine")
+        testRuntimeOnly(group = "org.junit.platform", name = "junit-platform-launcher")
+        testRuntimeOnly(group = "co.helmethair", name = "scalatest-junit-runner")
 
 
     }

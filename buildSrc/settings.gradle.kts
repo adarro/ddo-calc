@@ -20,18 +20,19 @@ pluginManagement {
     val kordampGradlePluginVersion: String by settings
     val scalaTestPluginVersion: String by settings
     val semVerPluginVersion: String by settings
-    val scoveragePluginVersion: String by settings
-    val editorConfigVersion : String by settings
-    
+  //  val scoveragePluginVersion: String by settings
+    val editorConfigVersion: String by settings
+
     plugins {
-        id("org.unbroken-dome.test-sets") version testSetsPluginVersion // "2.1.1"
+       id("org.unbroken-dome.test-sets") version testSetsPluginVersion // "2.1.1"
         id("org.kordamp.gradle.project") version kordampGradlePluginVersion
-        id("com.github.maiflai.scalatest") version scalaTestPluginVersion // "0.25"
+//        id("com.github.maiflai.scalatest") version scalaTestPluginVersion // "0.25"
         id("org.ec4j.editorconfig") version editorConfigVersion // "0.0.3"
+    //    id("org.scoverage") version scoveragePluginVersion
     }
 
     repositories {
-           gradlePluginPortal()
+        gradlePluginPortal()
         jcenter()
         mavenCentral()
         maven {

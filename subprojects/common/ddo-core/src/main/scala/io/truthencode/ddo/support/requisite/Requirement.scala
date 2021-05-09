@@ -202,6 +202,17 @@ object Requirement extends Enum[Requirement] {
     override protected def nameSource: String = id.splitByCase.toPascalCase
   }
 
+    case class ReqClassEnhancement(id:String) extends Requirement {
+        /**
+          * Sets or maps the source text for the DisplayName.
+          *
+          * @return Source text.
+          */
+        override protected def nameSource: String =  id.splitByCase.toPascalCase
+
+        override def prefix: Option[String] = Some("ClassEnhancement")
+    }
+
   /** Represents a particular alignment, i.e. A Pure Good weapon requires [[io.truthencode.ddo.model.alignment.MoralAxis.Good]] (Either the law or moral axis)
     * Some items, such as Generated armors such as Armors of Stability give bonus if the character is [[io.truthencode.ddo.model.alignment.Alignments.TrueNeutral]].
     *

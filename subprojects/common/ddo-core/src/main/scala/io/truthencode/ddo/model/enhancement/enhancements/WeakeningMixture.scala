@@ -17,24 +17,21 @@
  */
 package io.truthencode.ddo.model.enhancement.enhancements
 
-import io.truthencode.ddo.model.enhancement.enhancements.classbased.BombardierTierFour
-import io.truthencode.ddo.support.naming.SLAPrefix
+import io.truthencode.ddo.model.enhancement.enhancements.classbased.BombardierTierFive
 
-trait SLASmokeBomb extends BombardierTierFour with ClassEnhancementImpl with SLAPrefix {
-    override def displayText: String = withPrefix.getOrElse("") + nameSource
+trait WeakeningMixture  extends BombardierTierFive
+    with ClassEnhancementImpl with ParentClassEnhancement {
     /**
-     * Some enhancements have multiple ranks.
-     * This is the cost for each rank.
-     * Older versions had increasing costs which has been streamlined to a linear progression.
-     *
-     * @return
-     */
+      * Some enhancements have multiple ranks.
+      * This is the cost for each rank.
+      * Older versions had increasing costs which has been streamlined to a linear progression.
+      *
+      * @return
+      */
     override def apCostPerRank: Int = 1
 
     /**
-     * Some enhancements can be taken multiple times (generally up to three)
-     */
-    override val ranks: Int = 3
-
-    override protected def nameSource: String = "Smoke Bomb"
+      * Some enhancements can be taken multiple times (generally up to three)
+      */
+    override val ranks: Int = 1
 }

@@ -17,15 +17,14 @@
  */
 package io.truthencode.ddo.model.enhancements;
 
-import io.truthencode.ddo.model.enhancement.Enhancement$;
-import io.truthencode.ddo.model.enhancement.enhancements.ClassEnhancement;
-import io.truthencode.ddo.support.tree.ClassTrees$;
 import org.concordion.api.FullOGNL;
 import org.concordion.integration.junit4.ConcordionRunner;
+import org.junit.Ignore;
 import org.junit.runner.RunWith;
 
 
 @FullOGNL
+@Ignore
 @RunWith(ConcordionRunner.class)
 public class VileChemistSpec extends JEnhancementDisplayHelper {
     // override val tree: ClassTrees = ClassTrees.Apothecary

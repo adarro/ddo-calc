@@ -15,13 +15,13 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-plugins {
-    scala
-    `java-library` // cross-compiler is incompatible with java-library ATM
+package io.truthencode.ddo.model.enhancement.enhancements
 
-    id("com.github.maiflai.scalatest") // version "0.25"
-  //  id("org.scoverage") // version "3.1.5"
-    // IDE Specific
-    idea
-    id("org.unbroken-dome.test-sets") // version "2.1.1"
+trait WeakeningMixtureCold extends WeakeningMixtureMultiSelector with MultiSelectorKeyGenerator {
+  abstract override def keyList: List[String] = "Cold" :: super.keyList
+
+  override lazy val description: Option[String] = Some(
+    "When cast on a Cold spell on a creature that is immune to Cold, it makes them vulnerable to Cold for a short period of time."
+  )
+
 }

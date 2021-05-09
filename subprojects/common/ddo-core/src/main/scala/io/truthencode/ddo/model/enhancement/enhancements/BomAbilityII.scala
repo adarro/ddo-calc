@@ -17,9 +17,19 @@
  */
 package io.truthencode.ddo.model.enhancement.enhancements
 
+import io.truthencode.ddo.model.attribute.Attribute
 import io.truthencode.ddo.model.enhancement.enhancements.classbased.BombardierTierFour
 
-trait BomAbilityII extends BombardierTierFour with ClassEnhancementImpl {
+trait BomAbilityII extends BombardierTierFour with ClassEnhancementImpl with AbilitySelector {
+    /**
+      * Roman Numeral Suffix
+      *
+      * @return
+      */
+    override def rnSuffix: Int = 2
+
+    override val abilitySelections: Seq[Attribute] = Seq(Attribute.Intelligence)
+
     /**
      * Some enhancements have multiple ranks.
      * This is the cost for each rank.

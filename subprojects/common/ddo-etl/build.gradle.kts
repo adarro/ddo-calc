@@ -31,16 +31,17 @@ plugins {
 
     // Apply the java-library plugin for API and implementation separation.
     `java-library`
+    id("com.github.maiflai.scalatest") // version scalaTestPluginVersion
 }
 
 // scalaProject()
-project.apply { from(rootProject.file("gradle/scala.gradle.kts")) }
+// project.apply { from(rootProject.file("gradle/scala.gradle.kts")) }
 
-repositories {
-    // Use jcenter for resolving dependencies.
-    // You can declare any Maven/Ivy/file repository here.
-    jcenter()
-}
+//repositories {
+//    // Use jcenter for resolving dependencies.
+//    // You can declare any Maven/Ivy/file repository here.
+//    jcenter()
+//}
 
 dependencies {
     // https://mvnrepository.com/artifact/org.json4s/json4s-native

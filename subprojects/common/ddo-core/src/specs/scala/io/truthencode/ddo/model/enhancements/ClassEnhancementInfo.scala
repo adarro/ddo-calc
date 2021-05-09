@@ -18,15 +18,15 @@
 package io.truthencode.ddo.model.enhancements
 
 import com.typesafe.scalalogging.LazyLogging
-import io.truthencode.ddo.model.enhancement.{ClassBasedEnhancements, Tier}
 import io.truthencode.ddo.model.enhancement.enhancements.ClassEnhancement
+import io.truthencode.ddo.model.enhancement.{ClassBasedEnhancements, Tier}
+import io.truthencode.ddo.support.StringUtils._
 import io.truthencode.ddo.support.requisite.{
   ActionPointRequisite,
   PointInTreeRequisite,
   PointsAvailableRequisite,
   RequiresActionPoints
 }
-import io.truthencode.ddo.support.StringUtils._
 
 trait ClassEnhancementInfo {
   type ENH = ClassEnhancement with Tier with ActionPointRequisite with PointInTreeRequisite
@@ -46,9 +46,35 @@ trait ClassEnhancementInfo {
 
 object ClassEnhancementInfo extends LazyLogging {
 
-  def apply(name: String): ClassEnhancementInfo = {
-    val srch = name.symbolsToWords.filterAlphaNumeric
-    logger.info(s"Searching $name using: $srch")
+// scalastyle:off
+  def apply(
+    classEnhancement: ClassEnhancement
+      with Tier
+      with ClassBasedEnhancements
+      with PointInTreeRequisite
+      with PointsAvailableRequisite
+      with RequiresActionPoints
+  ) = {
+    val e = classEnhancement
+    def id: String = e.entryName
+    val actionPointCost: Int = e.apCostPerRank
+    val ranks: Int = e.ranks
+    val key = e.displayText
+    val progression: Int = e.progressionInTree.find { p =>
+      p._1 == e.tree
+    } match {
+      case Some(x) => x._3
+      case _       => 0
+    } // .flatMap{x => x._3} //.flatMap {p => p._3}
+    val requirements: Option[List[String]] = None
+
+    val description: String = e.rawDescription
+    CEnhancementDumb(key, id, actionPointCost, ranks, progression, requirements, description)
+  }
+
+  def apply(key: String, fullText: Option[String] = None): ClassEnhancementInfo = {
+    val srch = key.symbolsToWords.filterAlphaNumeric
+    logger.info(s"Searching $key using: $srch")
     val eOpt = ClassEnhancement.withNameInsensitiveOption(srch) match {
       case Some(
           x: ClassEnhancement with Tier with ClassBasedEnhancements with PointInTreeRequisite with PointsAvailableRequisite with RequiresActionPoints
@@ -56,13 +82,33 @@ object ClassEnhancementInfo extends LazyLogging {
         logger.info(s"Found ${x.displayText} => ${x.entryName}")
         Some(x)
       case _ =>
-        logger.warn(s"Failed to locate ClassEnhancement with Name $name")
+        fullText match {
+          case Some(y) =>
+            logger.warn(
+              s"Failed to locate ClassEnhancement with key $key, attempting using fullText $fullText"
+            )
+            val fMap = ClassEnhancement.values
+              .map { v =>
+                v.displayText -> v.entryName
+              }
+              .find(_._1 == y) match {
+              case Some(value) =>
+                logger.info(s"located valid key from fulltext, recursing using ${value._2}")
+                apply(value._2)
+              case None =>
+                logger.warn("Could not locate $key")
+                None
+            }
+          case None =>
+            logger.warn("could not locate with key $key and no alternate supplied")
+            None
+        }
         None
-
     }
     if (eOpt.nonEmpty) {
       val e = eOpt.get
-logger.info(s"located ${e.displayText}")
+      logger.info(s"located ${e.displayText}")
+
       /**
         * The string id used to create the object
         */
@@ -79,13 +125,14 @@ logger.info(s"located ${e.displayText}")
       val requirements: Option[List[String]] = None
 
       val description: String = e.rawDescription
-      CEnhancementDumb(name, id, actionPointCost, ranks, progression, requirements, description)
+      CEnhancementDumb(key, id, actionPointCost, ranks, progression, requirements, description)
     } else {
-        logger.warn((s"did not locate id, using safe wrapper for $name"))
-      CEnhancementDumb(name)
+      logger.warn((s"did not locate id, using safe wrapper for $key"))
+      CEnhancementDumb(key)
     }
 
   }
+  // scalastyle:off number.of.methods
 }
 
 case class CEnhancementDumb(

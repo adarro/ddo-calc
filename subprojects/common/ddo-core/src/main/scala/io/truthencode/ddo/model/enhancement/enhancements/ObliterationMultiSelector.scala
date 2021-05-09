@@ -17,13 +17,26 @@
  */
 package io.truthencode.ddo.model.enhancement.enhancements
 
-import io.truthencode.ddo.model.attribute.Attribute
-import io.truthencode.ddo.model.enhancement.enhancements.classbased.BombardierTierThree
+import io.truthencode.ddo.model.enhancement.enhancements.classbased.BombardierTierFive
+import io.truthencode.ddo.support.naming.{DisplayProperties, FriendlyDisplay, SLAPrefix}
 
-trait AbilityIBombardier
-    extends BombardierTierThree
+import scala.collection.immutable
+
+trait ObliterationMultiSelector
+    extends BombardierTierFive
     with ClassEnhancementImpl
-    with AbilitySelector {
+    with SLAPrefix
+    with SubEnhancement
+    with DisplayProperties
+    with FriendlyDisplay
+    with MultiSelectorKeyGeneratorImpl {
+  def element: String
+
+  override def displayText: String = withPrefix.getOrElse("") + nameSource
+
+  override lazy val description: Option[String] = Some(
+    s"Throw a vial that explodes with $element damage per Caster Level to all enemies nearby. (Max Caster Level 10)"
+  )
 
   /**
     * Some enhancements have multiple ranks.
@@ -32,22 +45,13 @@ trait AbilityIBombardier
     *
     * @return
     */
-  override def apCostPerRank: Int = 2
+  override def apCostPerRank: Int = 1
 
   /**
     * Some enhancements can be taken multiple times (generally up to three)
     */
-  override val ranks: Int = 1
-  override val abilitySelections: Seq[Attribute] = Seq(Attribute.Intelligence)
+  override val ranks: Int = 3
 
-  override lazy val description: Option[String] = Some(
-    "+1 to Intelligence"
-  )
-
-  /**
-    * Roman Numeral Suffix
-    *
-    * @return
-    */
-  override def rnSuffix: Int = 1
+  protected lazy val keys: immutable.Seq[String] =
+    keyList.map(v => s"$prefix$v")
 }

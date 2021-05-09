@@ -20,6 +20,8 @@ package io.truthencode.ddo
 import enumeratum.{Enum, EnumEntry}
 import io.truthencode.ddo.enumeration.{BitSupport, BitWise}
 
+import scala.collection.immutable
+
 /** Enumerates the places filigrees and augments can be placed.
   */
 sealed trait AugmentLocation
@@ -123,7 +125,7 @@ object AugmentLocation extends Enum[AugmentLocation] with BitSupport {
     */
   case object MinorArtifactSlot extends FiligreeLocation
 
-  val values = findValues
+  val values: immutable.IndexedSeq[AugmentLocation] = findValues
   override type T = AugmentLocation
 
   override lazy val bitValues: Map[AugmentLocation, Int] = valuesToIndex.map { x =>

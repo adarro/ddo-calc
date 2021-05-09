@@ -27,14 +27,8 @@ plugins {
     id("org.openapi.generator")
 }
 
-repositories {
-    // Use jcenter for resolving dependencies.
-    // You can declare any Maven/Ivy/file repository here.
-    jcenter()
-}
-
 // import common scala project dependencies etc
-project.apply { from(rootProject.file("gradle/scala.gradle.kts")) }
+// project.apply { from(rootProject.file("gradle/scala.gradle.kts")) }
 
 dependencies {
     // Use Scala 2.12 in our library project
@@ -45,9 +39,9 @@ dependencies {
 //    testImplementation("org.scalatest:scalatest_2.12:3.0.8")
 
     // Need scala-xml at test runtime
-  //  testRuntimeOnly("org.scala-lang.modules:scala-xml_2.12:1.2.0")
+    //  testRuntimeOnly("org.scala-lang.modules:scala-xml_2.12:1.2.0")
     // https://mvnrepository.com/artifact/org.json4s/json4s-native
-    implementation(group = "org.json4s", name = "json4s-native_2.12", version = "3.6.7")
+    implementation(libraries["json4s-native"])
     val scalaLibraryVersion: String by project
     val scalaMajorVersion: String by project
 
@@ -78,7 +72,12 @@ val schemaDir = "${project.projectDir}/src/main/resources/schemas/avro"
 val generatedScalaSourceDir = "${project.projectDir}/src/main/avro"
 
 data class ApiSpec(val spec: String, val schemaDir: String, val generatedSrcDir: String)
-data class PackageSpec(val basePackage: String = "io.truthencode.ddo", val apiPackage: String = "api", val invokerPackage: String = "invoker", val modelPackage: String = "models.model") {
+data class PackageSpec(
+    val basePackage: String = "io.truthencode.ddo",
+    val apiPackage: String = "api",
+    val invokerPackage: String = "invoker",
+    val modelPackage: String = "models.model"
+) {
     val api: String
         get() {
             return "${basePackage}.$apiPackage"
@@ -96,7 +95,8 @@ data class PackageSpec(val basePackage: String = "io.truthencode.ddo", val apiPa
 
 val defaultApiSpec = ApiSpec(apiSpec, schemaDir, generatedScalaSourceDir)
 // val defaultPackageSpec = PackageSpec("io.truthencode.ddo.api","io.truthencode.ddo.invoker","io.truthencode.ddo.models.model")
-val schemas = mapOf("ddoModel" to defaultApiSpec, "parseHub" to defaultApiSpec.copy(spec = "$rootDir/specs/parsehub.yaml"))
+val schemas =
+    mapOf("ddoModel" to defaultApiSpec, "parseHub" to defaultApiSpec.copy(spec = "$rootDir/specs/parsehub.yaml"))
 val specs = mapOf("parseHub" to PackageSpec(basePackage = "io.truthencode.ddo.etl.parsehub"))
 //openApiGenerate {
 //
@@ -157,7 +157,6 @@ schemaList.forEach { id ->
         genAvroSchemaTask.dependsOn(this)
     }
 }
-
 
 
 //task("genAvroSchema", org.openapitools.generator.gradle.plugin.tasks.GenerateTask::class) {

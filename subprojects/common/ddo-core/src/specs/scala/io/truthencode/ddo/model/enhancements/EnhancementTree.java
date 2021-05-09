@@ -22,7 +22,7 @@ import org.concordion.integration.junit4.ConcordionRunner;
 import org.junit.runner.RunWith;
 
 @RunWith(ConcordionRunner.class)
-@ConcordionResources(value = {"../../../../../../../resources/acceptanceTest/css/*.css","../../../../../../../resources/acceptanceTest/images/*.png"},includeDefaultStyling = false,insertType = ConcordionResources.InsertType.EMBEDDED)
 public class EnhancementTree {
-// ../../../../../../../resources/acceptanceTest/
+// @ConcordionResources(value = {"../../../../../../resources/acceptanceTest/css/*.css","../../../../../../resources/acceptanceTest/images/*.png"},includeDefaultStyling = false,insertType = ConcordionResources.InsertType.EMBEDDED)
+    // ../../../../../../../resources/acceptanceTest/
 }

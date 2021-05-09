@@ -18,36 +18,33 @@
 package io.truthencode.ddo.model.enhancement.enhancements
 
 import io.truthencode.ddo.model.attribute.Attribute
-import io.truthencode.ddo.model.enhancement.enhancements.classbased.BombardierTierThree
+import io.truthencode.ddo.model.enhancement.enhancements.classbased.ApothecaryTierFour
 
-trait AbilityIBombardier
-    extends BombardierTierThree
+trait ApothecaryAbilityII
+    extends ApothecaryTierFour
     with ClassEnhancementImpl
     with AbilitySelector {
 
-  /**
-    * Some enhancements have multiple ranks.
-    * This is the cost for each rank.
-    * Older versions had increasing costs which has been streamlined to a linear progression.
-    *
-    * @return
-    */
-  override def apCostPerRank: Int = 2
-
-  /**
-    * Some enhancements can be taken multiple times (generally up to three)
-    */
-  override val ranks: Int = 1
-  override val abilitySelections: Seq[Attribute] = Seq(Attribute.Intelligence)
-
   override lazy val description: Option[String] = Some(
-    "+1 to Intelligence"
+    "+1 to either Intelligence or Constitution"
   )
+//  override protected def nameSource: String = "Ability II".replaceRomanNumerals
+//  override def displayText: String = displaySource.replaceNumbersWithRomanNumerals
+  override def apCostPerRank: Int = 2
 
   /**
     * Roman Numeral Suffix
     *
     * @return
     */
-  override def rnSuffix: Int = 1
+  override def rnSuffix: Int = 2
+
+  override val abilitySelections: Seq[Attribute] =
+    Seq(Attribute.Intelligence, Attribute.Constitution)
+
+  /**
+    * Some enhancements can be taken multiple times (generally up to three)
+    */
+  override val ranks: Int = 1
+
 }

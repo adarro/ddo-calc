@@ -18,9 +18,15 @@
 package io.truthencode.ddo.model.enhancements
 
 import com.typesafe.scalalogging.LazyLogging
-import io.truthencode.ddo.model.enhancement.Tier
+import io.truthencode.ddo.model.enhancement.{ClassBasedEnhancements, Tier}
 import io.truthencode.ddo.model.enhancement.enhancements.ClassEnhancement
-import io.truthencode.ddo.support.requisite.{ActionPointRequisite, PointInTreeRequisite}
+import io.truthencode.ddo.support.requisite.{
+  ActionPointRequisite,
+  PointInTreeRequisite,
+  PointsAvailableRequisite,
+  RequiresActionPoints
+}
+import io.truthencode.ddo.support.tree.ClassTrees
 
 trait ClassEnhancementDisplayHelper extends EnhancementDisplayHelper with LazyLogging {
   override val enum: E = ClassEnhancement
@@ -28,11 +34,22 @@ trait ClassEnhancementDisplayHelper extends EnhancementDisplayHelper with LazyLo
 
   val values: Seq[ENH] = enum.values collect { case x: ENH => x }
 
-  lazy val mappedValues: Map[String, ClassEnhancementInfo] = values.map { v =>
-    logger.info(s"Loading enhancement with entry: ${v.entryName}")
-    val c = ClassEnhancementInfo.apply(v.displayText)
-    logger.info(s"Added using key ${c.name}")
-    c.name -> c
-  }.toMap
+  lazy val mappedValues: Map[String, ClassEnhancementInfo] = {
+
+    val ee = ClassEnhancement.values collect {
+        case x: ClassEnhancement with Tier with ClassBasedEnhancements with PointInTreeRequisite with PointsAvailableRequisite with RequiresActionPoints
+            if x.tree == tree =>
+          x
+      }
+    logger.info(s"Display Helper loaded ${ee.size} values for ${tree.displayText}")
+    ee.map { v =>
+      logger.info(s"Loading enhancement with entry id: ${v.entryName} with key ${v.displayText}")
+
+      // val c = ClassEnhancementInfo.apply(v.entryName,Some(v.displayText))
+      val c = ClassEnhancementInfo.apply(v)
+      logger.info(s"Added using key ${c.name}")
+      c.name -> c
+    }.toMap
+  }
 
 }

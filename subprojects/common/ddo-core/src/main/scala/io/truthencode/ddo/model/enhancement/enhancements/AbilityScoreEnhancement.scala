@@ -15,13 +15,15 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-plugins {
-    scala
-    `java-library` // cross-compiler is incompatible with java-library ATM
+package io.truthencode.ddo.model.enhancement.enhancements
 
-    id("com.github.maiflai.scalatest") // version "0.25"
-  //  id("org.scoverage") // version "3.1.5"
-    // IDE Specific
-    idea
-    id("org.unbroken-dome.test-sets") // version "2.1.1"
+import io.truthencode.ddo.model.attribute.Attribute
+
+/**
+  * Base trait which can be used to denote an enhancement which adds a bonus to an ability score
+  * such as Ability I in the Vile Chemist and Bombardier trees.
+  */
+trait AbilityScoreEnhancement {
+  self: ClassEnhancement =>
+  val abilitySelections: Seq[Attribute]
 }

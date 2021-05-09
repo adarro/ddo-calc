@@ -21,19 +21,14 @@ import enumeratum.EnumEntry
 import io.truthencode.ddo.model.alignment.{AlignmentType, Alignments}
 import io.truthencode.ddo.model.attribute.Attribute
 import io.truthencode.ddo.model.classes.HeroicCharacterClass
+import io.truthencode.ddo.model.enhancement.enhancements.ClassEnhancement
 import io.truthencode.ddo.model.favor.FavorPatron
 import io.truthencode.ddo.model.feats.{ClassFeat, Feat, GeneralFeat, RacialFeat}
 import io.truthencode.ddo.model.race.Race
 import io.truthencode.ddo.model.skill.Skill
-import io.truthencode.ddo.support.points.{
-  ActionPoints,
-  EpicDestinyPoints,
-  Progression,
-  SpendablePoints,
-  SurvivalPoints
-}
+import io.truthencode.ddo.support.points.SpendablePoints
 import io.truthencode.ddo.support.requisite.Requirement._
-import io.truthencode.ddo.support.tree.{TreeLike, UniversalTree}
+import io.truthencode.ddo.support.tree.TreeLike
 
 /**
   * Created by adarr on 1/30/2017.
@@ -143,6 +138,15 @@ package object requisite {
       override def apply(v1: Feat): ReqFeat = ReqFeat(v1.entryName)
     }
 
+
+    val classEnhancementToReq: PartialFunction[ClassEnhancement,ReqClassEnhancement]  = new PartialFunction[ClassEnhancement,ReqClassEnhancement]  {
+        override def isDefinedAt(x: ClassEnhancement): Boolean =
+        Requirement
+        .withNameOption(s"${ClassEnhancement.searchPrefix}${x.entryName}")
+        .isDefined
+
+        override def apply(v1: ClassEnhancement): ReqClassEnhancement = ReqClassEnhancement(v1.entryName)
+    }
 //    val anyFeatToReq = new PartialFunction[Feat, ReqFeat] {
 //      override def isDefinedAt(x: Feat): Boolean =
 //        Requirement

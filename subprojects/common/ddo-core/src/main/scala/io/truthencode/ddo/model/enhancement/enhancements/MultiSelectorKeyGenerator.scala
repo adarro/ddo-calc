@@ -17,21 +17,11 @@
  */
 package io.truthencode.ddo.model.enhancement.enhancements
 
-import io.truthencode.ddo.model.enhancement.enhancements.classbased.ApothecaryTierThree
-import io.truthencode.ddo.support.StringUtils.Extensions
+/** Stackable trait used for gathering keys / IDs of sub elements */
+trait MultiSelectorKeyGenerator {
+  def keyList: List[String]
+}
 
-trait AbilityI extends ApothecaryTierThree with ClassEnhancementImpl {
-
-  override lazy val description: Option[String] = Some(
-    "+1 to either Intelligence or Constitution"
-  )
-  override protected def nameSource: String = "Ability I".replaceRomanNumerals
-  override def displayText: String = displaySource.replaceNumbersWithRomanNumerals
-  override def apCostPerRank: Int = 2
-
-  /**
-    * Some enhancements can be taken multiple times (generally up to three)
-    */
-  override val ranks: Int = 1
-
+trait MultiSelectorKeyGeneratorImpl extends MultiSelectorKeyGenerator {
+  override def keyList: List[String] = Nil
 }

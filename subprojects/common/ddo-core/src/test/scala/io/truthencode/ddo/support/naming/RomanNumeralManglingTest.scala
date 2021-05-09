@@ -19,15 +19,24 @@ package io.truthencode.ddo.support.naming
 
 import com.typesafe.scalalogging.LazyLogging
 import io.truthencode.ddo.model.enhancement.enhancements.ClassEnhancement
+import io.truthencode.ddo.support.RomanNumeral
 import org.scalatest.{FunSpec, Matchers}
+import io.truthencode.ddo.support.StringUtils.Extensions
 
-class SLAPrefixTest extends FunSpec with Matchers with LazyLogging {
-  describe("SlA Prefix") {
-    it("should prepend Enhancements with Spell-Like Ability:") {
-      val e = ClassEnhancement.RapidCondensation
-      val s = ClassEnhancement.SpellCriticalChancePositiveAndNegativeIII
-      logger.info(s"evaluating ${e.entryName} and ${s.entryName}")
-      e.displayText shouldEqual "Spell-Like Ability: Rapid Condensation"
+class RomanNumeralManglingTest extends FunSpec with Matchers with LazyLogging {
+describe("Roman Numeral Suffixes") {
+  they("should survive bidirectional conversion") {
+    val numbers = List(1,2,5,11)
+    numbers.foreach{ n=>
+      val rn = RomanNumeral.toRoman(n)
+      val someString = s"Ability $rn"
+      val replaced = someString.replaceRomanNumerals
+      val displayed = replaced.replaceNumbersWithRomanNumerals
+      logger.debug(s"we have $rn $someString rp: $replaced dp $displayed")
+
+      someString shouldEqual(displayed)
     }
   }
+}
+
 }

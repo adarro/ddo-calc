@@ -17,13 +17,24 @@
  */
 package io.truthencode.ddo.model.enhancement.enhancements
 
-import io.truthencode.ddo.model.attribute.Attribute
-import io.truthencode.ddo.model.enhancement.enhancements.classbased.BombardierTierThree
+import io.truthencode.ddo.model.enhancement.enhancements.classbased.BombardierTierFive
+import io.truthencode.ddo.support.requisite.{
+  ClassEnhancementRequisiteImpl,
+  RequiresAllOfClassEnhancement
+}
 
-trait AbilityIBombardier
-    extends BombardierTierThree
+trait InfernoOfCreation
+    extends ClassEnhancementRequisiteImpl
+    with BombardierTierFive
     with ClassEnhancementImpl
-    with AbilitySelector {
+    with RequiresAllOfClassEnhancement {
+
+  override lazy val description: Option[String] = Some(
+    "When your Reaction is Pyrite, you gain +1 Burning Ambition die, and your harmful Crimsonite spells apply a stack of vulnerability to enemies that have at least 3 different elements of Burning Ambition.\nVulnerable: You take 1% more damage for 3 seconds. This effect stacks up to 20 times, and loses one stack on expiration."
+  )
+
+  override def allOfClassEnhancements: Seq[ClassEnhancement] =
+    List(ClassEnhancement.BurningAmbition)
 
   /**
     * Some enhancements have multiple ranks.
@@ -32,22 +43,10 @@ trait AbilityIBombardier
     *
     * @return
     */
-  override def apCostPerRank: Int = 2
+  override def apCostPerRank: Int = 1
 
   /**
     * Some enhancements can be taken multiple times (generally up to three)
     */
   override val ranks: Int = 1
-  override val abilitySelections: Seq[Attribute] = Seq(Attribute.Intelligence)
-
-  override lazy val description: Option[String] = Some(
-    "+1 to Intelligence"
-  )
-
-  /**
-    * Roman Numeral Suffix
-    *
-    * @return
-    */
-  override def rnSuffix: Int = 1
 }

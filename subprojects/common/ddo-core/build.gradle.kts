@@ -17,21 +17,25 @@
  */
 import org.unbrokendome.gradle.plugins.testsets.dsl.testSets
 
+// import com.fkorotkov.gradle.libraries
 plugins {
-    id("org.unbroken-dome.test-sets") // version "2.1.1"
+
     //  id("scala-profiles")
     // Apply the scala plugin to add support for Scala
     scala
 
     // Apply the java-library plugin for API and implementation separation.
     `java-library`
-    id("org.scoverage")
+    id("org.unbroken-dome.test-sets") // version "2.1.1"
+    id("cz.augi.gradle.wartremover") version "0.14.1"
+    //   id("org.scoverage")
     id("com.github.maiflai.scalatest") // version scalaTestPluginVersion
     //   id("com.github.roroche.plantuml")
 }
 
 
 description = "Core DDO Objects"
+
 testSets {
     "acceptanceTest" {
         dirName = "specs"
@@ -108,12 +112,18 @@ dependencies {
         testRuntimeOnly(group = "co.helmethair", name = "scalatest-junit-runner")
         testRuntimeOnly(group = "org.junit.vintage", name = "junit-vintage-engine")
 
+        val scalaCompilerPlugin by configurations.creating
+        scalaCompilerPlugin("com.typesafe.genjavadoc:genjavadoc-plugin_${scalaLibraryVersion}:0.17")
         // Concordion BDD
         val acceptanceTestImplementation by configurations.getting
         acceptanceTestImplementation.extendsFrom(configurations["testCompileClasspath"])
         acceptanceTestImplementation(group = "org.concordion", name = "concordion", version = concordionVersion)
-        acceptanceTestImplementation( group= "com.vladsch.flexmark", name= "flexmark-ext-gfm-strikethrough", version= "0.62.2")
-        acceptanceTestImplementation( group= "com.vladsch.flexmark", name= "flexmark-ext-emoji", version= "0.62.2")
+        acceptanceTestImplementation(
+            group = "com.vladsch.flexmark",
+            name = "flexmark-ext-gfm-strikethrough",
+            version = "0.62.2"
+        )
+        acceptanceTestImplementation(group = "com.vladsch.flexmark", name = "flexmark-ext-emoji", version = "0.62.2")
 
 //        acceptanceTestImplementation(group = "org.concordion", name = "concordion-embed-extension", version = "1.2.0")
 //        acceptanceTestImplementation(
@@ -122,7 +132,11 @@ dependencies {
 //            version = "1.0.0"
 //        )
         // https://mvnrepository.com/artifact/com.vladsch.flexmark/flexmark-ext-gfm-tasklist
-        acceptanceTestImplementation( group= "com.vladsch.flexmark", name= "flexmark-ext-gfm-tasklist", version= "0.62.2")
+        acceptanceTestImplementation(
+            group = "com.vladsch.flexmark",
+            name = "flexmark-ext-gfm-tasklist",
+            version = "0.62.2"
+        )
 
         testImplementation(group = "com.wix", name = "accord-scalatest_2.12", version = "0.7.3")
         testImplementation(group = "de.neuland-bfi", name = "jade4j", version = "1.2.7")
@@ -198,9 +212,23 @@ tasks {
 tasks.withType<ScalaCompile>().configureEach {
 
     scalaCompileOptions.apply {
-
-        additionalParameters?.plusAssign(listOf("-feature", "-deprecation", "-Ywarn-dead-code"))
+        val scalaCompilerPlugin by configurations.getting
+        additionalParameters?.plusAssign(
+            listOf(
+                "-feature", "-deprecation", "-Ywarn-dead-code", "-Xplugin:" + scalaCompilerPlugin.asPath,
+                "-P:genjavadoc:out=$buildDir/generated/java"
+            )
+        )
         // Need to add -Ypartial-unification for Tapir
     }
+}
+tasks.withType<Javadoc> {
+    dependsOn("compileScala")
+    val ss: FileTree = sourceSets["main"].allJava
+    val ft = fileTree("$buildDir/generated/java")
+    source = ss.plus(ft)
+
+    dependsOn("compileScala")
+    //  source = listOf(sourceSets.main.allJava, "$buildDir/generated/java")
 }
 

@@ -50,9 +50,12 @@ protected trait ClassEnhancementImpl extends ClassEnhancement {
     with PointsAvailableRequisite
     with RequiresActionPoints =>
 }
+
 // scalastyle:off number.of.methods
-object ClassEnhancement extends Enum[ClassEnhancement] {
-  override def values: immutable.IndexedSeq[ClassEnhancement] = findValues
+object ClassEnhancement extends Enum[ClassEnhancement] with ClassEnhancementSearchPrefix {
+
+  override def values: immutable.IndexedSeq[ClassEnhancement] =
+    findValues ++ generateObliterationMultiSelector ++ generateWeakeningMixtureMultiSelector
   // Alchemist
   // Apothecary
   // Core Enhancements
@@ -65,12 +68,14 @@ object ClassEnhancement extends Enum[ClassEnhancement] {
   // Tier1
   case object CurativeAdmixtureCureLightWounds extends CurativeAdmixtureCureLightWounds
   case object ApothecarySkills extends ApothecarySkills
+
   case object SpellCriticalChancePositiveAndNegativeI
       extends SpellCriticalChancePositiveAndNegativeI
   case object EnergyOfTheScholar extends EnergyOfTheScholar
   case object SoothingPoultices extends SoothingPoultices
   // Tier2
   case object HaleAndHearty extends HaleAndHearty
+
   case object SpellCriticalChancePositiveAndNegativeII
       extends SpellCriticalChancePositiveAndNegativeII
   case object StoneOfTheScholar extends StoneOfTheScholar
@@ -78,16 +83,19 @@ object ClassEnhancement extends Enum[ClassEnhancement] {
   // Tier3
   case object PanaceaPoultice extends PanaceaPoultice
   case object SafetyGoggles extends SafetyGoggles
+
   case object SpellCriticalChancePositiveAndNegativeIII
       extends SpellCriticalChancePositiveAndNegativeIII
   case object WillfulAmbition extends WillfulAmbition
-  case object AbilityI extends AbilityI
+  case object ApothecaryAbilityI extends ApothecaryAbilityI
   // Tier4
   case object InsulatedBoots extends InsulatedBoots
+
   case object SpellCriticalChancePositiveAndNegativeIV
       extends SpellCriticalChancePositiveAndNegativeIV
   case object RunForYourLife extends RunForYourLife
-  case object AbilityII extends AbilityII
+  case object AbilityII extends ApothecaryAbilityII
+
   // Tier5
   case object CurativeAdmixtureCureOrInflictCriticalWounds
       extends CurativeAdmixtureCureOrInflictCriticalWounds
@@ -113,7 +121,7 @@ object ClassEnhancement extends Enum[ClassEnhancement] {
   case object WandAndScrollMastery extends WandAndScrollMastery
 
   // Tier2
-  case object SLARapidCondensation extends SLARapidCondensation
+  case object RapidCondensation extends SLARapidCondensation
   case object EfficientMetamagicsI extends EfficientMetamagicsI
   case object StoneOfTheSavant extends StoneOfTheSavant
   case object SpellCriticalElementalAndPoisonII extends SpellCriticalElementalAndPoisonII
@@ -133,4 +141,53 @@ object ClassEnhancement extends Enum[ClassEnhancement] {
 
   // Tier5
 
+  case class ElementalObliterationSelector(id: String, element: String)
+      extends ObliterationMultiSelector {
+    override protected def nameSource: String = s"${id}Obliteration"
+    override def entryName: String = nameSource
+  }
+
+  // Generator for Obliteration selectors, would like to do this in a less horrible manner at some point
+  protected def generateObliterationMultiSelector: Seq[ElementalObliterationSelector] = {
+    Seq(
+      ("Fiery", "Fire"),
+      ("Frost", "Cold"),
+      ("Caustic", "Acid"),
+      ("Poison", "Poison"),
+      ("Voltaic", "Electric")
+    ).map { p =>
+      ElementalObliterationSelector(p._1, p._2)
+    }
+
+  }
+  // Parent needs SLA for each element and a means to express it
+
+  case object ElementalObliteration extends ElementalObliteration {
+
+    override val subEnhancements: Seq[ClassEnhancement with SubEnhancement] =
+      generateObliterationMultiSelector
+  }
+  case object Augmentation extends Augmentation
+  case object InfernoOfCreation extends InfernoOfCreation
+  case object ConjurationFocus extends ConjurationFocus
+
+  // Weakening Mixture multi select for element
+  case class WeakeningMixtureSelector(id: String, element: String)
+      extends WeakeningMixtureMultiSelector {
+    override protected def nameSource: String = id
+
+    override def entryName: String = withPrefix.getOrElse("").concat(id)
+  }
+
+  protected def generateWeakeningMixtureMultiSelector: Seq[WeakeningMixtureSelector] = {
+    Seq("Fire", "Cold", "Electric", "Acid", "Poison").map { p =>
+      WeakeningMixtureSelector(p, p)
+    }
+  }
+
+  case object WeakeningMixture extends WeakeningMixture {
+
+    override val subEnhancements: Seq[ClassEnhancement with SubEnhancement] =
+      generateWeakeningMixtureMultiSelector
+  }
 }

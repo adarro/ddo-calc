@@ -17,17 +17,20 @@
  */
 package io.truthencode.ddo.support.naming
 
-import com.typesafe.scalalogging.LazyLogging
-import io.truthencode.ddo.model.enhancement.enhancements.ClassEnhancement
-import org.scalatest.{FunSpec, Matchers}
+/**
+  * Created by adarr on 3/5/2017.
+  * Display Prefix for meta magic enhancements
+  *
+  * @example Alchemist Enhancement Efficient Metagagics in Bombardier line has selectors for Efficient Empower
+  *
+  *          @note it expects the specific meta magic name to be set via namesource such that
+  *                withPrefix.getOrElse("").namesource would produce 'Efficient Empower'
+  *                This can be further suffixed i.e. RomanNumerals
+  */
+trait EfficientMetamagicPrefix extends Prefix {
+  self: DisplayName with DisplayProperties =>
+  override def prefix: Option[String] = Some("Efficient")
 
-class SLAPrefixTest extends FunSpec with Matchers with LazyLogging {
-  describe("SlA Prefix") {
-    it("should prepend Enhancements with Spell-Like Ability:") {
-      val e = ClassEnhancement.RapidCondensation
-      val s = ClassEnhancement.SpellCriticalChancePositiveAndNegativeIII
-      logger.info(s"evaluating ${e.entryName} and ${s.entryName}")
-      e.displayText shouldEqual "Spell-Like Ability: Rapid Condensation"
-    }
-  }
+  override protected val prefixSeparator: String = " "
+
 }

@@ -21,6 +21,7 @@
 
 import org.gradle.plugins.ide.idea.model.Module
 import org.gradle.plugins.ide.idea.model.ModuleDependency
+import com.github.benmanes.gradle.versions.updates.DependencyUpdatesTask
 
 plugins {
     // CI / CD
@@ -28,6 +29,7 @@ plugins {
     // Formatting, linting / code standards and conventions etc
     id("org.ec4j.editorconfig")
     id("quality-checks")
+    id("com.github.fkorotkov.libraries")
     id("org.unbroken-dome.test-sets") apply (false)
     id("org.kordamp.gradle.project") // apply (false)
     idea
@@ -126,7 +128,7 @@ idea {
 allprojects {
     apply {
         // plugin("org.ec4j.editorconfig")
-        plugin("quality-checks")
+      //  plugin("quality-checks")
 
     }
     // scala cross building
@@ -145,6 +147,13 @@ allprojects {
     repositories {
         jcenter()
         mavenCentral()
+    }
+}
+
+subprojects {
+    apply {
+        plugin ("idea")
+        plugin("com.github.fkorotkov.libraries")
     }
 }
 
@@ -175,7 +184,7 @@ tasks.create("complianceFormat") {
 }
 
 tasks.create("showSubDir") {
-    // TODO: Remove this task before commit
+    // TODO: Remove this task before commit / publish
     val directory = java.nio.file.Paths.get("${rootDir.path}/subprojects")
     java.nio.file.Files.find(
         directory,
@@ -199,6 +208,45 @@ tasks.create("showSubDir") {
     }
 
 
+}
+
+fun isNonStable(version: String): Boolean {
+    val stableKeyword = listOf("RELEASE", "FINAL", "GA").any { version.toUpperCase().contains(it) }
+    val regex = "^[0-9,.v-]+(-r)?$".toRegex()
+    val isStable = stableKeyword || regex.matches(version)
+    return isStable.not()
+}
+
+tasks.named<DependencyUpdatesTask>("dependencyUpdates").configure {
+
+    // optional parameters
+    checkForGradleUpdate = true
+    outputFormatter = "html,xml"
+    outputDir = "build/dependencyUpdates"
+    reportfileName = "dependencyReport"
+}
+
+tasks.withType<DependencyUpdatesTask> {
+    // Example 1: reject all non stable versions
+    rejectVersionIf {
+        isNonStable(candidate.version)
+    }
+
+    // Example 2: disallow release candidates as upgradable versions from stable versions
+    rejectVersionIf {
+        isNonStable(candidate.version) && !isNonStable(currentVersion)
+    }
+
+    // Example 3: using the full syntax
+    resolutionStrategy {
+        componentSelection {
+            all {
+                if (isNonStable(candidate.version) && !isNonStable(currentVersion)) {
+                    reject("Release candidate")
+                }
+            }
+        }
+    }
 }
 // rootProject.apply { from(rootProject.file("gradle/shipkit")) }
 /* rootProject.apply {

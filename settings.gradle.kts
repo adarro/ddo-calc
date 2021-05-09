@@ -35,8 +35,10 @@ fun readFirstPart(s: String): String {
 
 logger.info("checking ${projectFolders.size} project folders")
 projectFolders.forEach { dirName ->
-    // TODO: We should likely check that this path exists or build can bomb
     val directory = java.nio.file.Paths.get("${rootDir}/$dirName")
+    if (java.nio.file.Files.notExists(directory))
+        java.nio.file.Files.createDirectory(directory)
+
     java.nio.file.Files.find(
         directory,
         Integer.MAX_VALUE,
@@ -97,6 +99,7 @@ pluginManagement {
     // Avro
     val avroHuggerPluginVersion: String by settings
     val openApiGeneratorPluginVersion: String by settings
+    val libraryPluginVersion: String by settings
 
 
     plugins {
@@ -106,6 +109,7 @@ pluginManagement {
         //   id "findbugs"
         //  id "org.standardout.versioneye" version versionEyePluginVersion
         id("com.github.ben-manes.versions") version versionsPluginVersion
+        id("com.github.fkorotkov.libraries") version libraryPluginVersion
         id("se.patrikerdes.use-latest-versions") version useLatestVersionsPluginVersion
         //  id("com.gradle.build-scan") version buildScanPluginVersion
         id("com.dorongold.task-tree") version taskTreePluginVersion

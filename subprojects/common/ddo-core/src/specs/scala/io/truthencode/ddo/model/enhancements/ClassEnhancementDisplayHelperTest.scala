@@ -26,9 +26,14 @@ import org.junit.runner.RunWith
 import org.scalatest.junit.JUnitRunner
 import org.scalatest.{FunSpec, Matchers}
 import io.truthencode.ddo.support.StringUtils._
+import org.scalatest.prop.ScalaCheckPropertyChecks
 
 @RunWith(classOf[JUnitRunner])
-class ClassEnhancementDisplayHelperTest extends FunSpec with Matchers with LazyLogging {
+class ClassEnhancementDisplayHelperTest
+    extends FunSpec
+    with Matchers
+    with ScalaCheckPropertyChecks
+    with LazyLogging {
   describe("Mapped Values") {
     it("should just work") {
       type ENH = ClassEnhancement with Tier with ActionPointRequisite with PointInTreeRequisite
@@ -38,18 +43,18 @@ class ClassEnhancementDisplayHelperTest extends FunSpec with Matchers with LazyL
       val baseNames = ClassEnhancement.values.map(_.entryName)
       val tNames = values.map(_.entryName)
       baseNames.intersect(tNames).size shouldEqual (baseSize)
-        val enhancement = "Curative Admixture: Cure Serious Wounds"
-        val csw = ClassEnhancement.CurativeAdmixtureCureSeriousWounds
-        val cswName = csw.displayText
-        val cswId = cswName.toPascalCase.filterAlphaNumeric
+      val enhancement = "Curative Admixture: Cure Serious Wounds"
+      val csw = ClassEnhancement.CurativeAdmixtureCureSeriousWounds
+      val cswName = csw.displayText
+      val cswId = cswName.toPascalCase.filterAlphaNumeric
 
-        cswName shouldEqual enhancement
-      cswId shouldEqual(csw.entryName)
+      cswName shouldEqual enhancement
+      cswId shouldEqual (csw.entryName)
 
-      implicit val identifier: String =  cswId
-        val vs =values.filter(_.entryName.contains("Cure"))
+      implicit val identifier: String = cswId
+      val vs = values.filter(_.entryName.contains("Cure"))
       noException shouldBe thrownBy {
-        val rslt =  values.find(p => p.entryName.equals(identifier))
+        val rslt = values.find(p => p.entryName.equals(identifier))
 
       }
 //      noException shouldBe thrownBy {
@@ -72,12 +77,39 @@ class ClassEnhancementDisplayHelperTest extends FunSpec with Matchers with LazyL
       dt.shouldEqual(expectedDisplay)
       id.shouldEqual(expectedId)
     }
+
+    they("should support prefixes") {
+      val e = ClassEnhancement.SmokeBomb
+      val id = e.entryName
+      val dt = e.displayText
+      val expectedDisplay = "Spell-Like Ability: Smoke Bomb"
+      val expectedId = "SmokeBomb"
+      dt.shouldEqual(expectedDisplay)
+      id.shouldEqual(expectedId)
+    }
+
     they("should have values") {
       val t = new ClassEnhancementDisplayHelper {
         override val tree: ClassTrees = ClassTrees.Apothecary
 
       }
       noException shouldBe thrownBy { t.mappedValues }
+    }
+    they("should support prefixes, affixes, Roman numerals and special symbols") {
+      val validCombos =
+        Table(
+          ("id", "display"),
+          ("RapidCondensation", "Spell-Like Ability: Rapid Condensation"),
+          ("EfficientMetamagicsII", "Efficient Metamagics II"),
+            ("Spell Critical: Elemental And Poison III".filterAlphaNumeric,"Spell Critical: Elemental and Poison III")
+        )
+
+      forAll(validCombos) { (n: String, d: String) =>
+        ClassEnhancement.withNameOption(n) should be(defined)
+          ClassEnhancement.withNameOption(n) match {
+              case Some(value) => value.displayText shouldEqual(d)
+          }
+      }
     }
   }
 }

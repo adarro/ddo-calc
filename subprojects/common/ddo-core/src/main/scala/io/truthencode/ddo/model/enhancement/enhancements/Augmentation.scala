@@ -17,13 +17,13 @@
  */
 package io.truthencode.ddo.model.enhancement.enhancements
 
-import io.truthencode.ddo.model.attribute.Attribute
-import io.truthencode.ddo.model.enhancement.enhancements.classbased.BombardierTierThree
+import io.truthencode.ddo.model.enhancement.enhancements.classbased.BombardierTierFive
 
-trait AbilityIBombardier
-    extends BombardierTierThree
-    with ClassEnhancementImpl
-    with AbilitySelector {
+trait Augmentation extends BombardierTierFive with ClassEnhancementImpl {
+
+  override lazy val description: Option[String] = Some(
+    "+2 Caster Levels with Crimsonite and Gildleaf spells."
+  )
 
   /**
     * Some enhancements have multiple ranks.
@@ -38,16 +38,4 @@ trait AbilityIBombardier
     * Some enhancements can be taken multiple times (generally up to three)
     */
   override val ranks: Int = 1
-  override val abilitySelections: Seq[Attribute] = Seq(Attribute.Intelligence)
-
-  override lazy val description: Option[String] = Some(
-    "+1 to Intelligence"
-  )
-
-  /**
-    * Roman Numeral Suffix
-    *
-    * @return
-    */
-  override def rnSuffix: Int = 1
 }

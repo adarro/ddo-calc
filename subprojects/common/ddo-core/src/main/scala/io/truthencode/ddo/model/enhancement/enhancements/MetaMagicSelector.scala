@@ -17,37 +17,24 @@
  */
 package io.truthencode.ddo.model.enhancement.enhancements
 
-import io.truthencode.ddo.model.attribute.Attribute
-import io.truthencode.ddo.model.enhancement.enhancements.classbased.BombardierTierThree
+import io.truthencode.ddo.model.enhancement.Tier
+import io.truthencode.ddo.support.naming.{EfficientMetamagicPrefix, RomanNumeralAffix}
+import io.truthencode.ddo.support.requisite.ActionPointRequisite
 
-trait AbilityIBombardier
-    extends BombardierTierThree
-    with ClassEnhancementImpl
-    with AbilitySelector {
+/**
+  * Basic support for adding +1 of some stat in an enhancement.
+  *
+  * @note trait manipulates diplay text so mix in AFTER other text manipulations to ensure Roman Numeral /  key
+  *       integrity.
+  */
+trait MetaMagicSelector extends MetaMagicEnhancement with EfficientMetamagicPrefix {
+  self: ClassEnhancement with Tier with ActionPointRequisite =>
 
-  /**
-    * Some enhancements have multiple ranks.
-    * This is the cost for each rank.
-    * Older versions had increasing costs which has been streamlined to a linear progression.
-    *
-    * @return
-    */
   override def apCostPerRank: Int = 2
 
   /**
     * Some enhancements can be taken multiple times (generally up to three)
     */
   override val ranks: Int = 1
-  override val abilitySelections: Seq[Attribute] = Seq(Attribute.Intelligence)
 
-  override lazy val description: Option[String] = Some(
-    "+1 to Intelligence"
-  )
-
-  /**
-    * Roman Numeral Suffix
-    *
-    * @return
-    */
-  override def rnSuffix: Int = 1
 }

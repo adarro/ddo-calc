@@ -17,9 +17,26 @@
  */
 package io.truthencode.ddo.support.naming
 
+import io.truthencode.ddo.support.RomanNumeral
 import io.truthencode.ddo.support.StringUtils.Extensions
 
-trait RomanNumeralAffix extends DisplayProperties with DisplayName {
+/**
+  * Preserves values / formatting for Roman Numeral Affixes
+  * @note be sure to override namesource as this will append the roman numeral to it.
+  */
+trait RomanNumeralAffix {
+  self: DisplayName =>
 
-    abstract override def displayText: String = super.displaySource.replaceNumbersWithRomanNumerals
+  /**
+    * Roman Numeral Suffix
+    * @return
+    */
+  def rnSuffix: Int
+
+  override protected def nameSource: String = s"Ability"
+
+  override def displaySource: String =
+    s"$nameSource ${RomanNumeral.toRoman(rnSuffix)}".replaceRomanNumerals
+  override def displayText: String = displaySource.replaceNumbersWithRomanNumerals
+
 }

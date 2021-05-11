@@ -36,9 +36,9 @@ repositories {
 
 dependencies {
     implementation(group = "gradle.plugin.org.ec4j.gradle", name = "editorconfig-gradle-plugin", version = "0.0.3")
-    implementation("com.github.maiflai:gradle-scalatest:0.31")
+    implementation("com.github.maiflai:gradle-scalatest:0.25")
     implementation("com.github.fkorotkov.libraries:com.github.fkorotkov.libraries.gradle.plugin:1.1")
-    implementation("org.scoverage:scalac-scoverage-plugin_2.12.11:1.4.5")
+    implementation("gradle.plugin.org.scoverage:gradle-scoverage:5.0.0")
     implementation("org.unbroken-dome.gradle-plugins:gradle-testsets-plugin:3.0.1")
 }
 

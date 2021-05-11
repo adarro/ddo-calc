@@ -38,11 +38,13 @@ pluginManager.withPlugin("scala-profiles") {
         implementation(group = "ch.qos.logback", name = "logback-classic")
         implementation(group = "com.typesafe.scala-logging", name = "scala-logging_${scalaMajorVersion}")
         testImplementation(group = "org.scalatest", name = "scalatest_$scalaMajorVersion")
+        // Needed for scalatest html reports (formerly depended on pegdown)
+        testRuntimeOnly ("com.vladsch.flexmark:flexmark-all:0.35.10")
         testImplementation(group = "org.mockito", name = "mockito-all")
         // JUnit 5
         testRuntimeOnly(group = "org.junit.platform", name = "junit-platform-engine")
         testRuntimeOnly(group = "org.junit.platform", name = "junit-platform-launcher")
-        testRuntimeOnly(group = "co.helmethair", name = ":scalatest-junit-runner")
+        testRuntimeOnly(group = "co.helmethair", name = "scalatest-junit-runner")
         //  api(platform(":ddo-platform-scala"))
     }
 }

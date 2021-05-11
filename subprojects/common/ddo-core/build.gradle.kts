@@ -20,20 +20,20 @@ import org.unbrokendome.gradle.plugins.testsets.dsl.testSets
 // import com.fkorotkov.gradle.libraries
 plugins {
 
-    //  id("scala-profiles")
+      id("scala-profiles")
     // Apply the scala plugin to add support for Scala
-    scala
+  //  scala
 
     // Apply the java-library plugin for API and implementation separation.
-    `java-library`
-    id("org.unbroken-dome.test-sets") // version "2.1.1"
+   // `java-library`
+ //   id("org.unbroken-dome.test-sets") // version "2.1.1"
     id("cz.augi.gradle.wartremover") version "0.14.1"
     //   id("org.scoverage")
-    id("com.github.maiflai.scalatest") // version scalaTestPluginVersion
+  //  id("com.github.maiflai.scalatest") // version scalaTestPluginVersion
     //   id("com.github.roroche.plantuml")
 }
 
-
+project.apply { from(rootProject.file("gradle/scala.gradle.kts")) }
 description = "Core DDO Objects"
 
 testSets {

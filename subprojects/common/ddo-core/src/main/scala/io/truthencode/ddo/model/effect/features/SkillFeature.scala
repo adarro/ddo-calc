@@ -18,9 +18,10 @@
 package io.truthencode.ddo.model.effect.features
 
 import io.truthencode.ddo.enhancement.BonusType
-import io.truthencode.ddo.model.effect.{Feature, ParameterModifier, PartModifier, SourceInfo}
+import io.truthencode.ddo.model.effect.{Feature, SourceInfo}
 import io.truthencode.ddo.model.skill.Skill
-import io.truthencode.ddo.model.stats.BasicStat
+
+import scala.collection.immutable
 
 /**
  * Affects One or more skills by the specified values
@@ -32,22 +33,8 @@ trait SkillFeature extends Features {
   val affectedSkills: List[(Skill,Int)]
   private val src = this
 
-  private lazy val skillChance = affectedSkills.map {f=>
+  private lazy val skillChance: immutable.Seq[Feature.SkillEffect] = affectedSkills.map { f=>
     Feature.SkillEffect(f._1,f._2,bonusType,this)
-//    val s = f._1
-//    val i = f._2
-//      new PartModifier[Int, Skill] with ParameterModifier[Int, BonusType] {
-//
-//          lazy override protected[this] val partToModify: Skill =
-//              s
-//
-//          lazy override protected[this] val parameterToModify: BonusType =
-//              bonusType
-//
-//          override val source: SourceInfo = src
-//          override val value: Int = i
-//
-//      }
   }
 
 

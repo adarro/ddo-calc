@@ -19,6 +19,7 @@ package io.truthencode.ddo.model.effect
 
 import enumeratum.EnumEntry
 import io.truthencode.ddo.enhancement.BonusType
+import io.truthencode.ddo.model.attribute.Attribute
 import io.truthencode.ddo.model.feats.Feat
 import io.truthencode.ddo.model.skill.Skill
 
@@ -38,9 +39,14 @@ sealed trait Feature[V] {
     case None        => None
     case Some(value) => Some(value.entryName)
   }
+  val effectText: Option[String] = None
 }
 
 object Feature {
+
+  def printFeature(f: Feature[_]): String = {
+    s"Feature:\nName:\t${f.name} \nvalue:\t${f.value}\nsource:\t${f.source}\ntext:\t${f.effectText}\n "
+  }
 
   case class SkillEffect(
     skill: Skill,
@@ -50,13 +56,39 @@ object Feature {
   ) extends PartModifier[Int, Skill]
       with ParameterModifier[Int, BonusType] {
 
+    def numberToSignedText(int: Int): String = {
+      if (int >= 0) {
+        s"+$int"
+      } else {
+        s"-$int"
+      }
+    }
+
     lazy override protected[this] val partToModify: Skill =
       skill
 
     lazy override protected[this] val parameterToModify: BonusType =
       bonusType
 
+    override lazy val name: Option[String] = Some(skill.withPrefix)
+
+    override val effectText: Option[String] = Some(
+      s"provides a ${numberToSignedText(value)} ${bonusType.entryName} bonus to ${partToModify.entryName}"
+    )
+
   }
+
+  case class AttributeEffect(
+    attribute: Attribute,
+    override val value: Int,
+    bonusType: BonusType,
+    override val source: SourceInfo
+  ) extends PartModifier[Int, Attribute]
+      with ParameterModifier[Int, BonusType] {
+    override protected[this] val partToModify: Attribute = attribute
+    override protected[this] val parameterToModify: BonusType = bonusType
+  }
+
 }
 trait AugmentFeatureValue extends Feature[Int]
 

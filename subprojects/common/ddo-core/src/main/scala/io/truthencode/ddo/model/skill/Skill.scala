@@ -18,11 +18,7 @@
 package io.truthencode.ddo.model.skill
 
 import enumeratum.{Enum, EnumEntry}
-import io.truthencode.ddo.activation.{
-  ActivationType,
-  AtWillEvent,
-  PassiveActivation
-}
+import io.truthencode.ddo.activation.{ActivationType, AtWillEvent, PassiveActivation}
 import io.truthencode.ddo.model.attribute.{
   CharismaLinked,
   ConstitutionLinked,
@@ -34,7 +30,7 @@ import io.truthencode.ddo.model.attribute.{
   WisdomLinked
 }
 import io.truthencode.ddo.support.SearchPrefix
-import io.truthencode.ddo.support.naming.{DisplayName, FriendlyDisplay}
+import io.truthencode.ddo.support.naming.{DisplayName, FriendlyDisplay, UsingSearchPrefix}
 
 import scala.collection.immutable.IndexedSeq
 
@@ -42,10 +38,21 @@ sealed trait Skill
     extends EnumEntry
     with DisplayName
     with FriendlyDisplay
-    with LinkedAttributeImpl {
+    with LinkedAttributeImpl
+    with UsingSearchPrefix {
   self: ActivationType =>
 
-  /**
+    override val withPrefix: String = s"${searchPrefix}:$entryName"
+
+    /**
+      * Used when qualifying a search with a prefix.
+      * Examples include finding "HalfElf" from qualified "Race:HalfElf"
+      *
+      * @return A default or applied prefix
+      */
+    override def searchPrefixSource: String = Skill.searchPrefix
+
+    /**
     * Sets or maps the source text for the DisplayName.
     *
     * @return Source text.
@@ -71,10 +78,7 @@ object Skill extends Enum[Skill] with SearchPrefix {
   /**
     * Allows you a chance to continue casting a spell after being damaged or otherwise interrupted. Allows monks to retain Ki.
     */
-  case object Concentration
-      extends Skill
-      with PassiveActivation
-      with ConstitutionLinked
+  case object Concentration extends Skill with PassiveActivation with ConstitutionLinked
 
   /**
     * Allows you to negotiate more effectively with certain NPCs and to encourage monsters to find targets other than yourself.
@@ -91,10 +95,7 @@ object Skill extends Enum[Skill] with SearchPrefix {
     * (causing some damage to those in an area around the box) and can't be used again (the trap will remain dangerous, of course!).
     * Using this skill consumes one thieves' tool.
     */
-  case object DisableDevice
-      extends Skill
-      with AtWillEvent
-      with IntelligenceLinked
+  case object DisableDevice extends Skill with AtWillEvent with IntelligenceLinked
 
   /**
     * Allows you to negotiate better prices with vendors.
@@ -141,10 +142,7 @@ object Skill extends Enum[Skill] with SearchPrefix {
   /**
     * Allows you to sneak past monsters, avoiding their hearing. It ties directly into the feat Sneak.
     */
-  case object MoveSilently
-      extends Skill
-      with PassiveActivation
-      with DexterityLinked
+  case object MoveSilently extends Skill with PassiveActivation with DexterityLinked
 
   /**
     * Allows you to use and improve your musical ability to inspire and fascinate others.
@@ -159,11 +157,7 @@ object Skill extends Enum[Skill] with SearchPrefix {
     * Also, the character with the highest Repair skill is used when using Rest shrines to dictate how much health is recovered.
     * Only affects Warforged characters. Each point of skill adds 1 point to Repair and Rust Spell Power. (1 second cooldown)
     */
-  case object Repair
-      extends Skill
-      with PassiveActivation
-      with AtWillEvent
-      with IntelligenceLinked
+  case object Repair extends Skill with PassiveActivation with AtWillEvent with IntelligenceLinked
 
   /**
     * Allows you to find hidden doors, traps, and objects when activated.
@@ -176,10 +170,7 @@ object Skill extends Enum[Skill] with SearchPrefix {
   /**
     * Adds 1 point of Spell Power per point of skill with following damage types: Acid, Cold, Electric, Fire, Force and Light.
     */
-  case object Spellcraft
-      extends Skill
-      with PassiveActivation
-      with IntelligenceLinked
+  case object Spellcraft extends Skill with PassiveActivation with IntelligenceLinked
 
   /**
     * Allows you to sense nearby hidden doors, traps, objects, and stealthed enemies.
@@ -203,10 +194,7 @@ object Skill extends Enum[Skill] with SearchPrefix {
   /**
     * Grants you the ability to use magic devices which you could not normally use. This also allows you to bypass racial and alignment restrictions upon items.
     */
-  case object UseMagicDevice
-      extends Skill
-      with PassiveActivation
-      with CharismaLinked
+  case object UseMagicDevice extends Skill with PassiveActivation with CharismaLinked
 
   override def values: IndexedSeq[Skill] = findValues
 

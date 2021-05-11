@@ -28,6 +28,26 @@ trait Features {
 
 }
 
+object Features {
+  implicit class FeatureOpt(source: Features) {
+    def hasFeature(features: Features): Boolean = {
+      source.features.contains(features)
+    }
+
+      /**
+        * Keys are generally expected to be prefixed (i.e. Skill:Listen or Feat:Alertness) to avoid ambiguity.
+        * @param name (prefixed) id of the feature
+        * @return true if found within the Features container.
+        */
+    def hasNamedFeature(name:String): Boolean = {
+      source.namedFeatures.contains(name)
+    }
+  }
+}
+
+/**
+  * Default convenience implementation which initializes the features list to Nil
+  */
 trait FeaturesImpl extends Features {
   override def features: List[Feature[_]] = Nil
 }

@@ -1,8 +1,0 @@
-module io.truthencode.ddo.ui.poc {
-    requires javafx.controls;
-//    requires org.jooq.joor;
-//
-//    opens io.truthencode.ddo.ui.poc to org.jooq.joor;
-
-    exports io.truthencode.ddo.ui.poc;
-}

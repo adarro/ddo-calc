@@ -17,122 +17,86 @@
  */
 rootProject.name = "ddo-calc-parent"
 
-// at some point in the future, see if we can safely make this property optional so there is no build warning if it is not specified or create a sensible default
-val projectFolderDelimiter: String by settings
-val projectFolders: List<String>
-    get() =
-        settings.extra["projectFolders"]?.toString()?.split(projectFolderDelimiter) ?: listOf()
+    val kordampGradlePluginVersion: String by settings
 
+    plugins{
+        id("com.zlad.gradle.avrohugger") version avroHuggerPluginVersion
+        id("com.chudsaviet.gradle.avrohugger") version avroHuggerPluginVersion
+        id("org.openapi.generator") version openApiGeneratorPluginVersion
+        id("org.scoverage") version scoveragePluginVersion
 
-/**
- *  should be an Extension, but can not inline compile as one in settings.gradle.kts
- *  so we're doing a quick one off verses polluting a buildSrc.
- */
-fun readFirstPart(s: String): String {
-    return s.split(".").first()
+        id("org.kordamp.gradle.project") version kordampGradlePluginVersion
+    }
+
+    repositories {
+        gradlePluginPortal()
+        mavenCentral()
+    }
 }
 
+// at some point in the future, see if we can safely make this property optional so there is no build warning if it is
+// not specified or create a sensible default
+val projectFolderDelimiter: String by settings
+
+
+@Suppress("CUSTOM_GETTERS_SETTERS")
+val projectFolders: List<String>
+    get() = settings.extra["projectFolders"]?.toString()?.split(projectFolderDelimiter) ?: listOf()
+
+logger.info("checking $projectFolders for sub-projects")
+/**
+ *  reads the first part of a string up to the "."
+ *  should be an Extension, but can not inline compile as one in settings.gradle.kts
+ *  so we're doing a quick one off verses polluting a buildSrc, um... further
+ *
+ *  @param str the string to parsee
+ *  @return the first part of the string
+ */
+fun readFirstPart(str: String): String = str.split(".").first()
 
 logger.info("checking ${projectFolders.size} project folders")
 projectFolders.forEach { dirName ->
-    val directory = java.nio.file.Paths.get("${rootDir}/$dirName")
-    if (java.nio.file.Files.notExists(directory))
-        java.nio.file.Files.createDirectory(directory)
+    val directory = Paths.get("$rootDir/$dirName")
+    if (Files.notExists(directory)) {
+        logger.warn("$directory does not exist,  creating")
+        Files.createDirectory(directory)
+    }
 
-    java.nio.file.Files.find(
+    Files.find(
         directory,
         Integer.MAX_VALUE,
-        { p: java.nio.file.Path, attributes: java.nio.file.attribute.BasicFileAttributes ->
+        { path: java.nio.file.Path, attributes: java.nio.file.attribute.BasicFileAttributes ->
             attributes.isDirectory
         }).use { dir ->
-        dir.forEach { d ->
-            val customName = d.toFile().name
-            val files = d.toFile()
-                .listFiles { _, s -> s.matches(Regex("($customName|build)\\.gradle(\\.kts)?")) } //({{f,s -> true}})
+        dir.forEach { dr ->
+            val customName = dr.toFile().name
+            // ({{f,s -> true}})
+            val files = dr.toFile()
+                .listFiles { _, str -> str.matches(Regex("($customName|build)\\.gradle(\\.kts)?")) }
 
             if (files?.isNullOrEmpty() != true) {
-                if (files.size != 1)
-                    logger.warn("Multiple build files located in project directory $d")
-                //   val projectDir = d.relativize(rootProject.getProjectDirectory.toPath)
-                //   val projectDir = d.relativize(rootDir.toPath())
-                // val projectDir = d // java.nio.file.Paths.get(d.toPath())
-                val projectDir = rootDir.toPath().relativize(d)
+                if (files.size != 1) {
+                    logger.warn("Multiple build files located in project directory $dr")
+                }
+                val projectDir = rootDir.toPath().relativize(dr)
                 val first = files.first()
                 val buildFileName = first.name
                 // build file name may be arbitrary but usually follows either build or the directory name.
                 // since we're mostly controlling the build we'll assume the containing folders' name.
                 val projectName = first.parentFile.name
-                logger.info("Including Project $projectName \t projectDir: $projectDir \t BuildFile: $buildFileName")
+                logger.info("Including Project:$projectName \tprojectDir: $projectDir \tBuildFile: $buildFileName")
                 include(projectName)
-                logger.lifecycle("Including Project $projectName in $projectDir with using build file $buildFileName")
-                project(":${projectName}").projectDir = projectDir.toFile()
-                project(":${projectName}").buildFileName = buildFileName
+                project(":$projectName").projectDir = projectDir.toFile()
+                project(":$projectName").buildFileName = buildFileName
             }
         }
     }
 }
 
-/*
-Included build section for testing incubating projects
-// Example
-includeBuild("incubating/ddo-odata-server") {
-  
-}
+logger.info("Adding included builds")
 
-
- */
-
-pluginManagement {
-    val scoveragePluginVersion: String by settings
-    val versionsPluginVersion: String by settings
-    val buildScanPluginVersion: String by settings
-    val useLatestVersionsPluginVersion: String by settings
-    val testSetsPluginVersion: String by settings
-    val versionEyePluginVersion: String by settings
-    val taskTreePluginVersion: String by settings
-    val kordampGradlePluginVersion: String by settings
-    val scalaTestPluginVersion: String by settings
-    val scalaGradleCrossBuildPluginVersion: String by settings
-    val semVerPluginVersion: String by settings
-    val editorConfigPluginVersion: String by settings
-    val ktlintConventionPluginVersion: String by settings
-    // Avro
-    val avroHuggerPluginVersion: String by settings
-    val openApiGeneratorPluginVersion: String by settings
- //   val libraryPluginVersion: String by settings
-
-
-    plugins {
-        id("org.scoverage") version scoveragePluginVersion
-        id("org.unbroken-dome.test-sets") version testSetsPluginVersion
-        id("com.github.maiflai.scalatest") version scalaTestPluginVersion // "0.25"
-        //   id "findbugs"
-        //  id "org.standardout.versioneye" version versionEyePluginVersion
-        id("com.github.ben-manes.versions") version versionsPluginVersion
-     //   id("com.github.fkorotkov.libraries") version libraryPluginVersion
-        id("se.patrikerdes.use-latest-versions") version useLatestVersionsPluginVersion
-        //  id("com.gradle.build-scan") version buildScanPluginVersion
-        id("com.dorongold.task-tree") version taskTreePluginVersion
-        // kordamp opinionated gradle project plugins
-        id("org.kordamp.gradle.project") version kordampGradlePluginVersion
-//        id("org.kordamp.gradle.bintray") version kordampGradlePluginVersion
-//        id("org.kordamp.gradle.build-scan") version kordampGradlePluginVersion
-        //       id("org.kordamp.gradle.scaladoc") version kordampGradlePluginVersion
-        id("io.wusa.semver-git-plugin") version semVerPluginVersion
-        id("org.ec4j.editorconfig") version editorConfigPluginVersion
-        id("org.gradle.kotlin-dsl.ktlint-convention") version ktlintConventionPluginVersion
-        id("com.github.prokod.gradle-crossbuild") version scalaGradleCrossBuildPluginVersion
-        id("com.zlad.gradle.avrohugger") version avroHuggerPluginVersion
-        id("com.chudsaviet.gradle.avrohugger") version avroHuggerPluginVersion
-        id("org.openapi.generator") version openApiGeneratorPluginVersion
-    }
-
-     repositories {
-           gradlePluginPortal()
-        jcenter()
-        mavenCentral()
-        maven {
-            url = uri("https://plugins.gradle.org/m2/")
-        }
+if (System.getenv("enableCompositeBuild") == "true") {
+    file("examples").listFiles().filter { ft -> ft.isDirectory }.forEach { moduleBuild: File ->
+        includeBuild(moduleBuild)
     }
 }

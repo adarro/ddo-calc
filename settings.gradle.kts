@@ -15,24 +15,40 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
+
+
+import java.nio.file.Files
+    import java.nio.file.Paths
+
+
 rootProject.name = "ddo-calc-parent"
 
-    val kordampGradlePluginVersion: String by settings
 
-    plugins{
-        id("com.zlad.gradle.avrohugger") version avroHuggerPluginVersion
-        id("com.chudsaviet.gradle.avrohugger") version avroHuggerPluginVersion
-        id("org.openapi.generator") version openApiGeneratorPluginVersion
-        id("org.scoverage") version scoveragePluginVersion
+    pluginManagement {
+        //  Scala
+        // Coverage
+        val scoveragePluginVersion: String by settings
+        // Avro
+        val avroHuggerPluginVersion: String by settings
+        val openApiGeneratorPluginVersion: String by settings
 
-        id("org.kordamp.gradle.project") version kordampGradlePluginVersion
+
+        val kordampGradlePluginVersion: String by settings
+
+        plugins{
+            id("com.zlad.gradle.avrohugger") version avroHuggerPluginVersion
+            id("com.chudsaviet.gradle.avrohugger") version avroHuggerPluginVersion
+            id("org.openapi.generator") version openApiGeneratorPluginVersion
+            id("org.scoverage") version scoveragePluginVersion
+
+            id("org.kordamp.gradle.project") version kordampGradlePluginVersion
+        }
+
+        repositories {
+            gradlePluginPortal()
+            mavenCentral()
+        }
     }
-
-    repositories {
-        gradlePluginPortal()
-        mavenCentral()
-    }
-}
 
 // at some point in the future, see if we can safely make this property optional so there is no build warning if it is
 // not specified or create a sensible default

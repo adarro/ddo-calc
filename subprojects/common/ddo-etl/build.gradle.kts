@@ -24,22 +24,9 @@
  */
 
 plugins {
-    // Apply the scala plugin to add support for Scala
-    scala
-
-    // Apply the java-library plugin for API and implementation separation.
-    `java-library`
-    id("com.github.maiflai.scalatest") // version scalaTestPluginVersion
+    id("scala-profiles")
+    id("acceptance-test-conventions")
 }
-
-// scalaProject()
-// project.apply { from(rootProject.file("gradle/scala.gradle.kts")) }
-
-//repositories {
-//    // Use jcenter for resolving dependencies.
-//    // You can declare any Maven/Ivy/file repository here.
-//    jcenter()
-//}
 
 dependencies {
     // https://mvnrepository.com/artifact/org.json4s/json4s-native
@@ -49,13 +36,13 @@ dependencies {
 
     implementation(platform(project(":ddo-platform-scala")))
     implementation("org.scala-lang:scala-library:$scalaLibraryVersion")
-    implementation(group = "com.beachape", name = "enumeratum_${scalaMajorVersion}")
+    implementation(group = "com.beachape", name = "enumeratum_$scalaMajorVersion")
     implementation(group = "com.typesafe", name = "config")
-    implementation(group = "com.github.kxbmap", name = "configs_${scalaMajorVersion}")
+    implementation(group = "com.github.kxbmap", name = "configs_$scalaMajorVersion")
     // validation and rules
     implementation(group = "com.wix", name = "accord-core_2.12")
     implementation(group = "ch.qos.logback", name = "logback-classic")
-    implementation(group = "com.typesafe.scala-logging", name = "scala-logging_${scalaMajorVersion}")
+    implementation(group = "com.typesafe.scala-logging", name = "scala-logging_$scalaMajorVersion")
     testImplementation(group = "org.scalatest", name = "scalatest_$scalaMajorVersion")
     testImplementation(group = "org.mockito", name = "mockito-all")
 
@@ -63,17 +50,7 @@ dependencies {
     testRuntimeOnly(group = "org.junit.platform", name = "junit-platform-engine")
     testRuntimeOnly(group = "org.junit.platform", name = "junit-platform-launcher")
     testRuntimeOnly(group = "co.helmethair", name = "scalatest-junit-runner")
-    //  api(platform(":ddo-platform-scala"))
 
-//    // Use Scala 2.12 in our library project
-//    implementation("org.scala-lang:scala-library:2.12.10")
-//
-//    // Use Scalatest for testing our library
-//    testImplementation("junit:junit:4.12")
-//    testImplementation("org.scalatest:scalatest_2.12:3.0.8")
-//
-//    // Need scala-xml at test runtime
-//    testRuntimeOnly("org.scala-lang.modules:scala-xml_2.12:1.2.0")
 }
 
 tasks {

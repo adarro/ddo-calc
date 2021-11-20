@@ -15,75 +15,16 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import org.unbrokendome.gradle.plugins.testsets.dsl.testSets
 
 description = "Common misc String and convenience Utilities"
 
-
 plugins {
-    //  id("scala-profiles")
-
-    scala
-    `java-library` // cross-compiler is incompatible with java-library ATM
-    id("com.github.maiflai.scalatest") // version "0.25"
-    id("org.scoverage") // version "3.1.5"
-    id("com.github.fkorotkov.libraries")
-//    // IDE Specific
-    //   idea
-    id("org.unbroken-dome.test-sets")
-}
-
-// import common scala project dependencies etc
-// project.apply { from(rootProject.file("gradle/scala.gradle.kts")) }
-
-testSets {
-    "acceptanceTest" {
-        dirName = "specs"
-        sourceSet.java {
-            "acceptanceTest" {
-                exclude(
-                    "**/*Spec.scala",
-                    // "**/*Helper*",
-                    "**/*Builder*"
-                )
-            }
-        }
-
-
-        sourceSet.resources {
-            this.srcDirs.add(File("${project.projectDir}/src/test/specs"))
-        }
-        configurations[compileClasspathConfigurationName].extendsFrom(configurations["testImplementation"])
-        createArtifact = true
-    }
+    id("scala-profiles")
+    id("acceptance-test-conventions")
+    id("org.scoverage")  // version "3.1.5"
 }
 
 dependencies {
-    //  val implementation by configurations.getting
-    //  val testImplementation by configurations.getting
-    //  val scalaLibraryVersion: String by project
-    //  val scalaMajorVersion: String by project
-    //  val logbackVersion:String by project
-//    val scalaLibraryVersion: String by project
-//    val scalaMajorVersion: String by project
-//    val scalaTestVersion: String by project
-//    val scalaCheckVersion: String by project
-//    val scalaLoggingVersion: String by project
-//    val mockitoVersion: String by project
-//    val accordVersion: String by project
-//    val scalaScraperVersion: String by project
-//    val enumeratumVersion: String by project
-//    val typeSafeConfigVersion: String by project
-//    val configsVersion: String by project
-//    val logbackVersion: String by project
-//    val jetBrainsAnnotationVersion: String by project
-//    val junitPlatformVersion: String by project
-//    val junitPlatformRunnerVersion: String by project
-//    val concordionVersion: String by project
-//    val concordionExtEmbedVersion: String by project
-//    val concordionExtCollapseOutputVersion: String by project
-//    val scalaFmtVersion: String by project
-
     dependencies {
         /* Platform dependent */
         // https://mvnrepository.com/artifact/org.json4s/json4s-native
@@ -93,13 +34,13 @@ dependencies {
 
         implementation(platform(project(":ddo-platform-scala")))
         implementation("org.scala-lang:scala-library:$scalaLibraryVersion")
-        implementation(group = "com.beachape", name = "enumeratum_${scalaMajorVersion}")
+        implementation(group = "com.beachape", name = "enumeratum_$scalaMajorVersion")
         implementation(group = "com.typesafe", name = "config")
-        implementation(group = "com.github.kxbmap", name = "configs_${scalaMajorVersion}")
+        implementation(group = "com.github.kxbmap", name = "configs_$scalaMajorVersion")
         // validation and rules
         implementation(group = "com.wix", name = "accord-core_2.12")
         implementation(group = "ch.qos.logback", name = "logback-classic")
-        implementation(group = "com.typesafe.scala-logging", name = "scala-logging_${scalaMajorVersion}")
+        implementation(group = "com.typesafe.scala-logging", name = "scala-logging_$scalaMajorVersion")
         testImplementation(group = "org.scalatest", name = "scalatest_$scalaMajorVersion")
         testImplementation(group = "org.mockito", name = "mockito-all")
 
@@ -107,12 +48,8 @@ dependencies {
         testRuntimeOnly(group = "org.junit.platform", name = "junit-platform-engine")
         testRuntimeOnly(group = "org.junit.platform", name = "junit-platform-launcher")
         testRuntimeOnly(group = "co.helmethair", name = "scalatest-junit-runner")
-
-
     }
 }
-
-
 tasks {
     // Use the built-in JUnit support of Gradle.
     "test"(Test::class) {

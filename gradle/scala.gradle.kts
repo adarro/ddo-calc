@@ -41,6 +41,7 @@ pluginManager.withPlugin("scala-profiles") {
         // Needed for scalatest html reports (formerly depended on pegdown)
         testRuntimeOnly ("com.vladsch.flexmark:flexmark-all:0.35.10")
         testImplementation(group = "org.mockito", name = "mockito-all")
+        testImplementation(group = "org.scalacheck", name = "scalacheck_$scalaMajorVersion")//, version = "1.15.4")
         // JUnit 5
         testRuntimeOnly(group = "org.junit.platform", name = "junit-platform-engine")
         testRuntimeOnly(group = "org.junit.platform", name = "junit-platform-launcher")

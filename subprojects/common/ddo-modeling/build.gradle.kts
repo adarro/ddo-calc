@@ -17,46 +17,29 @@
  */
 
 plugins {
-    // Apply the scala plugin to add support for Scala
-    scala
-
-    // Apply the java-library plugin for API and implementation separation.
-    `java-library`
+    id("scala-profiles")
     id("com.zlad.gradle.avrohugger")
     id("com.github.lkishalmi.gatling") version "3.2.9"
     id("org.openapi.generator")
 }
 
-// import common scala project dependencies etc
-// project.apply { from(rootProject.file("gradle/scala.gradle.kts")) }
-
 dependencies {
     // Use Scala 2.12 in our library project
-//    implementation("org.scala-lang:scala-library:2.12.10")
-//
-//    // Use Scalatest for testing our library
-//    testImplementation("junit:junit:4.12")
-//    testImplementation("org.scalatest:scalatest_2.12:3.0.8")
-
-    // Need scala-xml at test runtime
-    //  testRuntimeOnly("org.scala-lang.modules:scala-xml_2.12:1.2.0")
-    // https://mvnrepository.com/artifact/org.json4s/json4s-native
-
     val scalaLibraryVersion: String by project
     val scalaMajorVersion: String by project
 
     implementation(platform(project(":ddo-platform-scala")))
     implementation("org.scala-lang:scala-library:$scalaLibraryVersion")
-    implementation(group = "com.beachape", name = "enumeratum_${scalaMajorVersion}")
+    implementation(group = "com.beachape", name = "enumeratum_$scalaMajorVersion")
     implementation(group = "com.typesafe", name = "config")
-    implementation(group = "com.github.kxbmap", name = "configs_${scalaMajorVersion}")
+    implementation(group = "com.github.kxbmap", name = "configs_$scalaMajorVersion")
 
     implementation(group = "org.json4s", name = "json4s-native_2.12")
 
     // validation and rules
     implementation(group = "com.wix", name = "accord-core_2.12")
     implementation(group = "ch.qos.logback", name = "logback-classic")
-    implementation(group = "com.typesafe.scala-logging", name = "scala-logging_${scalaMajorVersion}")
+    implementation(group = "com.typesafe.scala-logging", name = "scala-logging_$scalaMajorVersion")
     testImplementation(group = "org.scalatest", name = "scalatest_$scalaMajorVersion")
     testImplementation(group = "org.mockito", name = "mockito-all")
 
@@ -74,49 +57,67 @@ val schemaDir = "${project.projectDir}/src/main/resources/schemas/avro"
 // Location of ??
 val generatedScalaSourceDir = "${project.projectDir}/src/main/avro"
 
-data class ApiSpec(val spec: String, val schemaDir: String, val generatedSrcDir: String)
+/**
+ * Api spec OpenAPI specification generation information
+ *
+ * @property spec Name of the specification
+ * @property schemaDir Directory of schema files
+ * @property generatedSrcDir destination for generated source code directory
+ * @constructor a new instance
+ */
+data class ApiSpec(
+    val spec: String,
+    val schemaDir: String,
+    val generatedSrcDir: String)
+
+/**
+ * Package spec holds the basic header information for the API
+ *
+ * @property basePackage base java package i.e. com.acme
+ * @property apiPackage package name for generated source.  This will be appended to basePackage.
+ * @property invokerPackage package name for invoker classes
+ * @property modelPackage package name for entity models
+ * @constructor Creates a new API specification
+ */
+@Suppress("CUSTOM_GETTERS_SETTERS", "NO_CORRESPONDING_PROPERTY")
 data class PackageSpec(
     val basePackage: String = "io.truthencode.ddo",
     val apiPackage: String = "api",
     val invokerPackage: String = "invoker",
     val modelPackage: String = "models.model"
 ) {
+    /**
+     * Api qualified api package name
+     */
     val api: String
         get() {
-            return "${basePackage}.$apiPackage"
-        }
-    val invoker: String
-        get() {
-            return "${basePackage}.$invokerPackage"
+            return "$basePackage.$apiPackage"
         }
 
+    /**
+     * Invoker qualified invoker package
+     */
+    val invoker: String
+        get() {
+            return "$basePackage.$invokerPackage"
+        }
+
+    /**
+     * Model qualified model package
+     *
+     */
     val model: String
         get() {
-            return "${basePackage}.$modelPackage"
+            return "$basePackage.$modelPackage"
         }
 }
 
 val defaultApiSpec = ApiSpec(apiSpec, schemaDir, generatedScalaSourceDir)
-// val defaultPackageSpec = PackageSpec("io.truthencode.ddo.api","io.truthencode.ddo.invoker","io.truthencode.ddo.models.model")
+// val defaultPackageSpec =
+// PackageSpec("io.truthencode.ddo.api","io.truthencode.ddo.invoker","io.truthencode.ddo.models.model")
 val schemas =
     mapOf("ddoModel" to defaultApiSpec, "parseHub" to defaultApiSpec.copy(spec = "$rootDir/specs/parsehub.yaml"))
 val specs = mapOf("parseHub" to PackageSpec(basePackage = "io.truthencode.ddo.etl.parsehub"))
-//openApiGenerate {
-//
-//    verbose.set(true)
-////    generatorName.set("avro-schema")
-////    inputSpec.set(apiSpec)
-////    outputDir.set(schemaDir)
-//
-//    apiPackage.set("io.truthencode.ddo.api")
-//    invokerPackage.set("io.truthencode.ddo.invoker")
-//    modelPackage.set("io.truthencode.ddo.models.model")
-////    modelFilesConstrainedTo.set(listOf(
-////        "Error"
-////    ))
-////    configOptions.set(mapOf(
-////        (this.configOptions.dateLibrary to "java8")))
-//}
 
 openApiValidate {
     inputSpec.set(apiSpec)
@@ -125,10 +126,8 @@ openApiValidate {
 avrohugger {
     this.sourceDirectories {
         this.from(schemaDir)
-
     }
     this.destinationDirectory.set(File(generatedScalaSourceDir))
-
 }
 val schemaList = listOf("parseHub")
 
@@ -139,43 +138,27 @@ val genAvroSchemaTask = task("genAvroSchema") {
     dependsOn("openApiValidate")
 }
 
-schemaList.forEach { id ->
-    val name = "genAvroSchema$id"
-    tasks.create(name, org.openapitools.generator.gradle.plugin.tasks.GenerateTask::class).apply {
-        generatorName.set("avro-schema")
-        schemas[id]?.let { s ->
-            inputSpec.set(s.spec)
-            outputDir.set(s.schemaDir)
+run {
+    @Suppress("IDENTIFIER_LENGTH")
+    schemaList.forEach { id ->
+        val name = "genAvroSchema$id"
+        tasks.create(name, org.openapitools.generator.gradle.plugin.tasks.GenerateTask::class).apply {
+            generatorName.set("avro-schema")
+            schemas[id]?.let { s ->
+                inputSpec.set(s.spec)
+                outputDir.set(s.schemaDir)
+            }
+            specs[id]?.let { p ->
+                apiPackage.set(p.api)
+                invokerPackage.set(p.invoker)
+                modelPackage.set(p.model)
+            }
+            this.group = "OpenAPI Tools"
+            dependsOn("openApiValidate")
+            genAvroSchemaTask.dependsOn(this)
         }
-        specs[id]?.let { p ->
-            apiPackage.set(p.api)
-            invokerPackage.set(p.invoker)
-            modelPackage.set(p.model)
-        }
-//        apiPackage.set("io.truthencode.ddo.api")
-//        invokerPackage.set("io.truthencode.ddo.invoker")
-//        modelPackage.set("io.truthencode.ddo.models.model")
-        this.group = "OpenAPI Tools"
-        dependsOn("openApiValidate")
-        genAvroSchemaTask.dependsOn(this)
     }
 }
-
-
-//task("genAvroSchema", org.openapitools.generator.gradle.plugin.tasks.GenerateTask::class) {
-//
-//    //   verbose.set(true)
-//    generatorName.set("avro-schema")
-//
-//    inputSpec.set(apiSpec)
-//    outputDir.set(schemaDir)
-//
-//    apiPackage.set("io.truthencode.ddo.api")
-//    invokerPackage.set("io.truthencode.ddo.invoker")
-//    modelPackage.set("io.truthencode.ddo.models.model")
-//    this.group = "OpenAPI Tools"
-//    dependsOn("openApiValidate")
-//}
 
 task("genModel", org.openapitools.generator.gradle.plugin.tasks.GenerateTask::class) {
     verbose.set(true)

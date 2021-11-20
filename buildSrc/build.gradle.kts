@@ -15,45 +15,18 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-val editorConfigVersion: String by project
-
-val p = "printing $editorConfigVersion"
 plugins {
     `kotlin-dsl`
-    id("org.unbroken-dome.test-sets") // version "2.1.1"
-    id("org.kordamp.gradle.project") apply (false)
-    // TODO: use explicit receiver for variable to avoid hard-code
-    //  id("org.ec4j.editorconfig") // version "0.0.3"
-//    id("org.jmailen.kotlinter") version "2.2.0"
-    // id("org.gradle.kotlin-dsl.ktlint-convention") version "0.4.1"
 }
 
 repositories {
-    gradlePluginPortal()
-    jcenter()
+    gradlePluginPortal() // so that external plugins can be resolved in dependencies section
     mavenCentral()
 }
 
 dependencies {
-    implementation(group = "gradle.plugin.org.ec4j.gradle", name = "editorconfig-gradle-plugin", version = "0.0.3")
-    implementation("com.github.maiflai:gradle-scalatest:0.25")
-    implementation("com.github.fkorotkov.libraries:com.github.fkorotkov.libraries.gradle.plugin:1.1")
-    implementation("gradle.plugin.org.scoverage:gradle-scoverage:5.0.0")
-    implementation("org.unbroken-dome.gradle-plugins:gradle-testsets-plugin:3.0.1")
+    implementation("com.diffplug.spotless:spotless-plugin-gradle:6.0.0")
+    implementation("org.unbroken-dome.gradle-plugins:gradle-testsets-plugin:4.0.0")
+    implementation("gradle.plugin.com.github.maiflai:gradle-scalatest:0.31")
+
 }
-
-kotlinDslPluginOptions {
-    experimentalWarning.set(false)
-}
-
-project.description = "build source plugin and common configuration"
-
-//kotlinter {
-////    ignoreFailures = false
-////    indentSize = 4
-////    continuationIndentSize = 4
-////    reporters = arrayOf("checkstyle", "plain")
-//    experimentalRules = true
-////    disabledRules = emptyArray<String>()
-////    fileBatchSize = 30
-//}

@@ -20,6 +20,11 @@ package io.truthencode.ddo.model.misc
 import java.time.Duration
 
 trait CoolDown {
+
+  /**
+    * Some duration until this action / spell / ability can be used again.
+    * @return Some Time span which must elapse before re-activation.
+    */
   def coolDown: Option[Duration]
 }
 
@@ -28,6 +33,12 @@ trait CoolDown {
   */
 trait DefaultCoolDown extends CoolDown {
 
+  /**
+    * This is a default cool down which is currently using [[io.truthencode.ddo.model.GlobalMinimumCoolDown]] for
+    * a value.  This may be adjusted or changed as knowledge increases.  However, it is also hopeful to deprecate this
+    * for a specified value.
+    *  @return Some Time span which must elapse before re-activation.
+    */
   override def coolDown: Option[Duration] =
     Some(io.truthencode.ddo.model.GlobalMinimumCoolDown)
 }

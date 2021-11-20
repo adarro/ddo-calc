@@ -1,6 +1,0 @@
-# Races
-
-The playable races
-
-
-

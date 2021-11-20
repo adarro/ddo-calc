@@ -36,6 +36,7 @@ rootProject.name = "ddo-calc-parent"
         val kordampGradlePluginVersion: String by settings
 
         plugins{
+            id ("com.github.hierynomus.license") version "0.16.1"
             id("com.zlad.gradle.avrohugger") version avroHuggerPluginVersion
             id("com.chudsaviet.gradle.avrohugger") version avroHuggerPluginVersion
             id("org.openapi.generator") version openApiGeneratorPluginVersion

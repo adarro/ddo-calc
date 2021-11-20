@@ -56,6 +56,7 @@
 | [ ][featLevel4] [Feats][result]| Type | Description|
 |------------------------------------------|----|----|
 |[Religious Lore][religious_lore]| Passive | Represents your knowledge of the religious. This feat is received once for every favored soul level.
+|[Turn Undead](https://ddowiki.com/page/Turn_Undead) | Active |  Attempts to drive away nearby undead or force them to cower. |
 Gain the ability to cast Paladin spells. Your effective caster level is equal to your Paladin level, contrary to PnP (thus, the starting duration for a Bless spell is 4 minutes).
 Turn Undead (active and passive): This feat allows the character to turn or at higher levels destroy undead creatures. The character can do this (3 + their charisma modifier) times per day. While turning undead is an active skill, this feat is passive as it adds to the total amount of turns per day. While enhancements from both Cleric and Paladin stack, as far as number and power of turns, the base number of turns do not stack with each other.
 

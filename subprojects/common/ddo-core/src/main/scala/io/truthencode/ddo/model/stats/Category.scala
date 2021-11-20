@@ -41,6 +41,7 @@ trait MeleeCombat extends Category
 
 trait RangedCombat extends Category
 
+trait TurnUndead extends Category
 
 /**
  * General or Main stats generally appear on the main character sheet such as Base Attack Bonus

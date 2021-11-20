@@ -383,4 +383,6 @@ object ClassFeat extends Enum[ClassFeat] with FeatSearchPrefix {
 
   case object ImprovedConstructEssence extends ClassFeat with ImprovedConstructEssence
 
+  case object TurnUndead extends ClassFeat with TurnUndead
+
 }

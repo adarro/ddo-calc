@@ -1,24 +1,24 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
     <modelVersion>4.0.0</modelVersion>
-     <parent>
-    <groupId>ddo-calc</groupId>
-    <artifactId>ddo-calc-parent</artifactId>
-    <version>0.1.0-alpha</version>
-  </parent>
-    <groupId>org.aos</groupId>
+    <parent>
+        <groupId>ddo-calc</groupId>
+        <artifactId>ddo-calc-parent</artifactId>
+        <version>0.1.0-alpha</version>
+    </parent>
+    <groupId>io.truthencode</groupId>
     <artifactId>ddo-etl</artifactId>   
     <properties>
         
     </properties>
-   <dependencyManagement>
-   <dependencies>
-        <dependency>
+    <dependencyManagement>
+        <dependencies>
+            <dependency>
                 <groupId>org.mongodb.scala</groupId>
                 <artifactId>mongo-scala-driver_${scala.base}</artifactId>
                 <version>${mongo.version}</version>
             </dependency>
-            </dependencies>
+        </dependencies>
     </dependencyManagement>
 
 

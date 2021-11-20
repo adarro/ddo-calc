@@ -1,7 +1,7 @@
 /*
  * SPDX-License-Identifier: Apache-2.0
  *
- * Copyright 2015-2019 Andre White.
+ * Copyright 2015-2021 Andre White.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -18,7 +18,7 @@
 plugins {
     id "scala"
 }
-group = 'org.aos'
+group = 'io.truthencode'
 description = ''
 dependencies {
     compile group: 'com.typesafe.scala-logging', name: 'scala-logging_2.12', version:'3.9.2'

@@ -13,14 +13,14 @@
   * See the License for the specific language governing permissions and
   * limitations under the License.
   */
-package org.aos.ddo.web
+package io.truthencode.ddo.web
 
 import com.typesafe.scalalogging.LazyLogging
 import net.ruippeixotog.scalascraper.browser.JsoupBrowser
 import net.ruippeixotog.scalascraper.dsl.DSL.Extract._
 import net.ruippeixotog.scalascraper.dsl.DSL._
 import net.ruippeixotog.scalascraper.model.{Document, Element}
-import org.aos.ddo.web.mapping.FieldMapper
+import io.truthencode.ddo.web.mapping.FieldMapper
 
 import scala.collection.mutable.ListBuffer
 // import org.jsoup.nodes.{Document, Element}
@@ -66,12 +66,12 @@ object Warehouse extends LazyLogging {
   }
 
   /**
-    * Attempts to format elements into a list of [[org.aos.ddo.web.Leaf]]
+    * Attempts to format elements into a list of [[io.truthencode.ddo.web.Leaf]]
     *
     * @param fragment  source HTML fragment
     * @param branchTag HTML tag for the branch. Defaults to unordered list (ul)
     * @param leafTag   HTML tag for leaf nodes. Defaults to 'List Item' (li)
-    * @return an [[scala.Option]] [[mutable.Buffer]] of [[org.aos.ddo.web.Leaf]] of one or more
+    * @return an [[scala.Option]] [[mutable.Buffer]] of [[io.truthencode.ddo.web.Leaf]] of one or more
     *         leaves, or None if none were found.
     */
   def makeLeaves(
@@ -102,7 +102,7 @@ object Warehouse extends LazyLogging {
     * @param fragment  source html
     * @param branchTag html tag for the branch. Defaults to unordered list (ul)
     * @param leafTag   html tag for leaf nodes. Defaults to 'List Item' (li)
-    * @return an [[org.aos.ddo.web.HtmlTreeNode]] populated from the source text.
+    * @return an [[io.truthencode.ddo.web.HtmlTreeNode]] populated from the source text.
     */
   def readHtmlList(fragment: Element,
                    branchTag: String = HtmlTag.UnorderedList,

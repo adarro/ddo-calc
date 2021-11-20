@@ -1,7 +1,7 @@
-package org.aos.ddo.web.mapping
+package io.truthencode.ddo.web.mapping
 
-import org.aos.ddo.PhysicalDamageType
-import org.aos.ddo.model.item.weapon.WeaponCategory
+import io.truthencode.ddo.PhysicalDamageType
+import io.truthencode.ddo.model.item.weapon.WeaponCategory
 
 /**
   * Encapsulates Weapon Category and Damage Information

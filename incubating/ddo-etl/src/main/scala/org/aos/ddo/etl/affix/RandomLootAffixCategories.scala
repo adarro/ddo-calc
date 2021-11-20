@@ -1,4 +1,4 @@
-package org.aos.ddo.etl.affix
+package io.truthencode.ddo.etl.affix
 
 import com.typesafe.scalalogging.LazyLogging
 import net.ruippeixotog.scalascraper.dsl.DSL._
@@ -7,7 +7,7 @@ import net.ruippeixotog.scalascraper.scraper.ContentExtractors.{
 element,
 elements
 }
-import org.aos.ddo.etl._
+import io.truthencode.ddo.etl._
 
 import scala.collection.immutable
 

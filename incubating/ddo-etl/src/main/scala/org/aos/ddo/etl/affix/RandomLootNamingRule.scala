@@ -1,4 +1,4 @@
-package org.aos.ddo.etl.affix
+package io.truthencode.ddo.etl.affix
 
 
 case class RandomLootNamingRule(category: Category, affixes: List[String])

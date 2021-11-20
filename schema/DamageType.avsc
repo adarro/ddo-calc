@@ -1,0 +1,22 @@
+{
+  "namespace": "model",
+  "type": "record",
+  "doc": "",
+  "name": "DamageType",
+  "fields": [
+    {
+      "name": "value",
+      "type": ["null", {
+        "type": "enum",
+        "name": "DamageType_value",
+        "symbols": [
+          "Bludgeon",
+          "Pierce",
+          "Slash",
+          "Magic"
+        ]
+      }],
+      "doc": ""
+    }
+  ]
+}

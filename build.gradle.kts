@@ -1,72 +1,22 @@
-/*
- * SPDX-License-Identifier: Apache-2.0
- *
- * Copyright 2015-2019 Andre White.
- *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- *     https://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
- */
-import com.github.benmanes.gradle.versions.updates.DependencyUpdatesTask
-import com.hierynomus.gradle.license.tasks.LicenseCheck
-import org.gradle.api.tasks.testing.logging.TestLogEvent
-
-buildscript {
-    repositories {
-        jcenter()
-    }
-}
 
 plugins {
-
-    //  application
-    id("java-library")
-    id("org.unbroken-dome.test-sets")
     id("org.kordamp.gradle.project")
-    id("org.kordamp.gradle.bintray")
-    id("org.kordamp.gradle.build-scan")
-    id("org.scoverage")
-    idea
-    eclipse
-    //   id "findbugs"
-    //  id "org.standardout.versioneye" version "1.5.0"
-    id("com.github.ben-manes.versions")
-    id("se.patrikerdes.use-latest-versions")
-    id("com.gradle.build-scan")
-    id("quality-checks")
-    `project-report`
-    `build-dashboard`
-    id("gradle.site") version "0.6"
-    id("com.dorongold.task-tree")
-    id("org.kordamp.gradle.scaladoc")
-
-
 }
 
-fun binTrayUser(): Pair<String, String> {
-    val bintrayUsername: String? by project
-    val bintrayApiKey: String? by project
-    val uId = bintrayUsername ?: System.getenv("bintrayUsername")
-    val apiId = bintrayApiKey ?: System.getenv("bintrayApiKey")
-    return Pair(uId, apiId)
 
-}
-val (bintrayUsername, bintrayApiKey) = binTrayUser()//: String by project
-//val bintrayUsername: String by project
-//val bintrayApiKey: String by project
+// general project information
+val projectName = project.name
+val gitHubAccountName = "truthencode"
+val gitHubBaseSite = "https://github.com/$gitHubAccountName/${project.name}"
+val siteIssueTracker = "${gitHubBaseSite}/issues"
+val gitExtension = "${project.name}.git"
+val siteScm = "${gitHubBaseSite}/$gitExtension"
+
 val releaseActive: Boolean? = rootProject.findProperty("release") as Boolean?
+
 
 config {
     release = if (releaseActive != null) releaseActive!! else false
-
     info {
         name = "DDO Calculations"
         vendor = "TruthEncode"
@@ -74,15 +24,15 @@ config {
         inceptionYear = "2015"
 
         links {
-            website = "https://github.com/adarro/ddo-calc"
-            issueTracker = "https://github.com/adarro/ddo-calc/issues"
-            scm = "https://github.com/adarro/ddo-calc/ddo-calc.git"
+            website = gitHubBaseSite
+            issueTracker = siteIssueTracker
+            scm = siteScm
         }
 
         scm {
-            url = "https://github.com/adarro/ddo-calc"
-            developerConnection = "scm:git:git@github.com:adarro/ddo-calc.git"
-            connection = "scm:git:git://github.com/github.com/adarro/ddo-calc.git"
+            url = gitHubBaseSite
+            developerConnection = "scm:git:git@github.com:$gitHubAccountName/${gitExtension}"
+            connection = "scm:git:git://github.com/github.com/$gitHubAccountName/$gitExtension"
         }
 
         people {
@@ -101,249 +51,11 @@ config {
             }
         }
     }
-
-    bintray {
-        credentials {
-            username = bintrayUsername // project.bintrayUsername
-            password = bintrayApiKey // project.bintrayApiKey
-        }
-        userOrg = "truthencode"
-        name = rootProject.name
-        githubRepo = "adarro/ddo-calc"
-        enabled = true
-    }
-    bom {
-        enabled = true
-//        signing {
-// * To be done later
-//        }
-    }
-    buildInfo {
-        buildBy = "Andre White"
-    }
-    buildScan {
-        enabled = true
-    }
-    scaladoc {
-        this.replaceJavadoc = true
-    }
-}
-
-license {
-    header = rootProject.file("buildResources/LICENSE_HEADER")
-
-}
-
-tasks.withType(HtmlDependencyReportTask::class.java) {
-    projects = projects
 }
 
 
-allprojects {
-    repositories {
-        jcenter()
+allprojects{
+    repositories{
         mavenCentral()
     }
 }
-val t = this
-
-buildScan {
-    termsOfServiceUrl = "https://gradle.com/terms-of-service"
-    termsOfServiceAgree = "yes"
-}
-
-tasks.register("showDirs") {
-    doLast {
-        logger.quiet(rootDir.toPath().relativize((project.properties["reportsDir"] as File).toPath()).toString())
-        logger.quiet(rootDir.toPath().relativize((project.properties["testResultsDir"] as File).toPath()).toString())
-    }
-}
-
-tasks.register<TestReport>("testReport") {
-    destinationDir = file("$buildDir/reports/allTests")
-    // Include the results from the `test` task in all subprojects
-    reportOn(subprojects.map { it.tasks["test"] })
-}
-
-tasks.register("aggregateReports") {
-    dependsOn("testReport", "aggregateScoverage", "projectReport")
-    group = "reporting"
-    description = "Aggregates Reports into root directory"
-
-}
-
-tasks.register("showReportTasks ") {
-    description = "Displays report task names"
-    tasks.filter { t -> t.name.contains("report", true) }.forEach {
-        println("ReportTask : ${it.name}\t${it.javaClass.name}")
-    }
-}
-
-tasks.test {
-    useJUnitPlatform()
-    testLogging {
-        events.addAll(listOf(TestLogEvent.PASSED, TestLogEvent.FAILED, TestLogEvent.SKIPPED))
-    }
-}
-
-site {
-    websiteUrl.set("https://github.com/adarro")
-    outputDir.set(file("$rootDir/docs"))
-    vcsUrl.set("https://github.com/adarro/ddo-calc.git")
-}
-
-
-tasks.withType(GenerateBuildDashboard::class.java) {
-    // this.aggregate()
-    reports {
-        logger.warn("${enabledReports.size} enabled dashboard reports")
-        enabledReports.forEach { (n, r) ->
-            logger.warn("Dashboard: $n\t${r.name}\t${r.displayName}\t${r.isEnabled}")
-        }
-
-    }
-}
-
-allprojects {
-    val codacy: Configuration by configurations.creating
-    dependencies {
-
-        // https://mvnrepository.com/artifact/com.codacy/codacy-coverage-reporter
-
-        codacy(group = "com.codacy", name = "codacy-coverage-reporter", version = "6.0.2")
-
-    }
-}
-
-
-
-subprojects {
-
-    this.pluginManager.apply("java-library")
-    this.pluginManager.apply("project-report")
-
-
-
-    tasks.create("showPlugins") {
-        description = "Lists pluginAware plugins for each project"
-        println("Plugins for $project.name")
-        project.plugins.forEach {
-            println(it)
-        }
-    }
-    tasks.withType<Test> {
-        reports.html.isEnabled = true
-        useJUnitPlatform()
-        testLogging {
-            events.addAll(listOf(TestLogEvent.PASSED, TestLogEvent.FAILED, TestLogEvent.SKIPPED))
-        }
-        systemProperty("concordion.output.dir", "${project.reporting.baseDir}/spec")
-    }
-
-
-    repositories {
-        mavenLocal()
-        jcenter()
-        maven("http://repo.spring.io/libs-release-remote")
-        maven("https://oss.sonatype.org/content/repositories/releases")
-        maven("http://repo1.maven.org/maven2/")
-    }
-
-}
-
-tasks.withType<DependencyUpdatesTask> {
-    resolutionStrategy {
-        componentSelection {
-            all {
-                val rejected = listOf("alpha", "beta", "rc", "cr", "m", "preview", "b", "ea").any { qualifier ->
-                    candidate.version.matches(Regex("(?i).*[.-]$qualifier[.\\d-+]*"))
-                }
-                if (rejected) {
-                    reject("Release candidate")
-                } else {
-                    val scalaLibLoc = candidate.module == "scala-library" || candidate.group == "org.scala-lang"
-                    if (scalaLibLoc) {
-                        reject("${candidate.module}:${candidate.module} is locked at ${candidate.version}")
-                    }
-                }
-            }
-        }
-    }
-    // optional parameters
-    checkForGradleUpdate = true
-    outputFormatter = "json"
-    outputDir = "build/dependencyUpdates"
-    reportfileName = "report"
-}
-
-//
-//tasks.create("showEnv") {
-//    println("Forcing Action")
-//    outputs.upToDateWhen { false }
-//    logger.lifecycle("Env")
-//    val props = System.getProperties()
-//    logger.lifecycle("Environment has ${props.size} properties")
-//    props.forEach {
-//        logger.lifecycle("${it.key} -> ${it.value}")
-//    }
-//}
-
-tasks.create("sendCoverageToCodacy", JavaExec::class) {
-    val codacy = configurations.findByName("codacy")
-    val pId = "CODACY_PROJECT_TOKEN"
-    val token = if (project.hasProperty(pId))
-        project.properties[pId] as String else System.getProperty(pId)
-    logger.warn("$pId -> $token")
-    main = "com.codacy.CodacyCoverageReporter"
-    if (codacy != null) {
-        classpath = codacy.asFileTree
-    }
-    args = listOf(
-        "report",
-        "-l",
-        "Scala",
-        "-r",
-        "${buildDir}/reports/scoverage/cobertura.xml"
-    )
-    logger.info("Adding env $pId -> $token")
-    environment = environment.plus(Pair(pId, token))
-    // environment(Pair(pId,token))
-//    val tsk = tasks.findByName("aggregateReports")
-//    val tsk2 = tasks.findByName("showEnv")
-//    if (tsk != null) {
-//        dependsOn(setOf(tsk))
-//    }
-//    if (tsk2 != null) {
-//        dependsOn(setOf(tsk2))
-//    }
-}
-
-
-
-/*
-task sendCoverageToCodacy(type: JavaExec, dependsOn: jacocoTestReport) {
-    main = "com.codacy.CodacyCoverageReporter"
-    classpath = configurations.codacy
-    args = [
-        "report",
-        "-l",
-        "Java",
-        "-r",
-        "${buildDir}/reports/jacoco/test/jacocoTestReport.xml"
-    ]
-}
-
- */
-
-tasks.withType<LicenseCheck> {
-    ignoreFailures = true
-    strictCheck = true
-
-}
-projectReports {
-    this.projects.addAll(t.allprojects)
-}
-
-/*versioneye {
-    includeSubProjects = true
-}*/

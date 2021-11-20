@@ -4,7 +4,11 @@
   "description": "Retrieves Odata Manifest and creates Swagger doc",
   "main": "index.js",
   "scripts": {
-    "test": "test"
+    "test": "echo call some node testing here",
+    "clean": "echo cleaning",
+    "check": "echo Checking frontend && npm run lint && npm run test",
+    "assemble": "echo assembling stuff at some point",
+    "lint": "echo call some linting here"
   },
   "repository": {
     "type": "git",
@@ -23,7 +27,7 @@
   "homepage": "https://github.com/adarro/oswagger#readme",
   "devDependencies": {
     "odata2openapi": "^1.2.4",
-    "webpack": "^4.4.1",
+    "webpack": "^v5.0.0-beta.29",
     "webpack-cli": "^2.0.13"
   }
 }

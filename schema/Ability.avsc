@@ -1,0 +1,40 @@
+{
+  "namespace": "model",
+  "type": "record",
+  "doc": "Base stat that determines, enhances or decreases skills and abilities, modifications to attack and damage rolls etc.",
+  "name": "Ability",
+  "fields": [
+    {
+      "name": "id",
+      "type": ["null", {
+        "type": "enum",
+        "name": "Ability_id",
+        "symbols": [
+          "Strength",
+          "Dexterity",
+          "Constitution",
+          "Intelligence",
+          "Wisdom",
+          "Charisma"
+        ]
+      }],
+      "doc": "key for Ability"
+    },
+    {
+      "name": "abbreviation",
+      "type": ["null", {
+        "type": "enum",
+        "name": "Ability_abbreviation",
+        "symbols": [
+          "STR",
+          "DEX",
+          "CON",
+          "INT",
+          "WIS",
+          "CHA"
+        ]
+      }],
+      "doc": "Abbreviation for stat"
+    }
+  ]
+}

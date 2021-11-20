@@ -1,11 +1,11 @@
-package org.aos.ddo.etl
+package io.truthencode.ddo.etl
 
 import com.mongodb.ServerAddress
 import com.mongodb.async.client.MongoClientSettings
 import com.mongodb.connection.ClusterSettings
 import com.typesafe.config.ConfigFactory
 import com.typesafe.scalalogging.LazyLogging
-import org.aos.ddo.etl.tags.Db
+import io.truthencode.ddo.etl.tags.Db
 import org.mongodb.scala.MongoClient
 import org.scalatest.{FunSpec, Matchers}
 

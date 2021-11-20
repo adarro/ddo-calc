@@ -1,0 +1,23 @@
+{
+  "namespace": "model",
+  "type": "record",
+  "doc": "",
+  "name": "Error",
+  "fields": [
+    {
+      "name": "code",
+      "type": ["null", "int"],
+      "doc": ""
+    },
+    {
+      "name": "message",
+      "type": ["null", "string"],
+      "doc": ""
+    },
+    {
+      "name": "fields",
+      "type": ["null", "string"],
+      "doc": ""
+    }
+  ]
+}

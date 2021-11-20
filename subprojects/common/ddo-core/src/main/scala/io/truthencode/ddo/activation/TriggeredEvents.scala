@@ -25,7 +25,7 @@ import io.truthencode.ddo.model.feats.Toggle
   * Occurs on every attack
   */
 trait AttackEvent extends TriggeredActivation {
-  abstract override lazy val activatableTriggers
+  abstract override def activatableTriggers
       : Set[TriggerEvent] = super.activatableTriggers + OnAttack
 }
 
@@ -33,7 +33,7 @@ trait AttackEvent extends TriggeredActivation {
   * Occurs on a specific range of attack rolls
   */
 trait AttackRollEvent extends TriggeredActivation {
-  abstract override lazy val activatableTriggers
+  abstract override def activatableTriggers
       : Set[TriggerEvent] = super.activatableTriggers + OnAttackRoll
 }
 
@@ -41,7 +41,7 @@ trait AttackRollEvent extends TriggeredActivation {
   * Occurs when you are damaged (hit)
   */
 trait OnDamageEvent extends TriggeredActivation {
-  abstract override lazy val activatableTriggers
+  abstract override def activatableTriggers
       : Set[TriggerEvent] = super.activatableTriggers + OnDamage
 }
 
@@ -49,7 +49,7 @@ trait OnDamageEvent extends TriggeredActivation {
   * Occurs when you are hit by a spell
   */
 trait OnSpellHitEvent extends TriggeredActivation {
-  abstract override lazy val activatableTriggers
+  abstract override def activatableTriggers
       : Set[TriggerEvent] = super.activatableTriggers + OnSpellHit
 }
 
@@ -57,7 +57,7 @@ trait OnSpellHitEvent extends TriggeredActivation {
   *
   */
 trait HealthyEvent extends TriggeredActivation {
-  abstract override lazy val activatableTriggers
+  abstract override def activatableTriggers
       : Set[TriggerEvent] = super.activatableTriggers + OnHealthy
 }
 
@@ -65,7 +65,7 @@ trait HealthyEvent extends TriggeredActivation {
   * Occurs when you cast a spell
   */
 trait OnSpellCastEvent extends TriggeredActivation {
-  abstract override lazy val activatableTriggers
+  abstract override def activatableTriggers
       : Set[TriggerEvent] = super.activatableTriggers + OnSpellCast
 }
 
@@ -73,7 +73,7 @@ trait OnSpellCastEvent extends TriggeredActivation {
   * Occurs when you cast a spell like ability
   */
 trait OnSpellLikeAbilityEvent extends TriggeredActivation {
-  abstract override lazy val activatableTriggers
+  abstract override def activatableTriggers
       : Set[TriggerEvent] = super.activatableTriggers + OnSpellLikeAbility
 }
 
@@ -86,7 +86,7 @@ trait OnSongPlayedEvent extends TriggeredActivation {
   * Occurs when you are killed
   */
 trait OnDeathEvent extends TriggeredActivation {
-  abstract override lazy val activatableTriggers
+  abstract override def activatableTriggers
       : Set[TriggerEvent] = super.activatableTriggers + OnDeath
 }
 
@@ -96,7 +96,7 @@ trait OnDeathEvent extends TriggeredActivation {
   * Hit points fall below 0
   */
 trait OnIncapacitatedEvent extends TriggeredActivation {
-  abstract override lazy val activatableTriggers
+  abstract override def activatableTriggers
       : Set[TriggerEvent] = super.activatableTriggers + OnIncapacitated
 }
 
@@ -104,7 +104,7 @@ trait OnIncapacitatedEvent extends TriggeredActivation {
   * Occurs upon waking from rest / shrine
   */
 trait OnRestEvent extends TriggeredActivation {
-  abstract override lazy val activatableTriggers
+  abstract override def activatableTriggers
       : Set[TriggerEvent] = super.activatableTriggers + OnRest
 }
 
@@ -112,12 +112,12 @@ trait OnRestEvent extends TriggeredActivation {
   * Player can toggle this effect on / off
   */
 trait OnToggleEvent extends TriggeredActivation with Toggle {
-  abstract override lazy val activatableTriggers
+  abstract override def activatableTriggers
       : Set[TriggerEvent] = super.activatableTriggers + OnToggle
 }
 
 trait AtWillEvent extends TriggeredActivation {
-  abstract override lazy val activatableTriggers
+  abstract override def activatableTriggers
       : Set[TriggerEvent] = super.activatableTriggers + AtWill
 }
 

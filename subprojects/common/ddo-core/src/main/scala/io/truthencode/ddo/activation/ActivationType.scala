@@ -87,6 +87,6 @@ trait TriggeredActivation
     with Trigger
     with ActiveEvent
     with LazyLogging { self: EnumEntry =>
-  abstract override lazy val activations
+  abstract override def activations
     : Set[TriggerEvent] = super.activations ++ activatableTriggers
 }

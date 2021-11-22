@@ -17,22 +17,18 @@
  */
 package io.truthencode.ddo.model.misc
 
-import org.scalatest.FunSpec
+import org.scalatest.funspec.AnyFunSpec
 
 /**
-  * Created by adarr on 1/28/2017.
-  */
-class TriggeredActivationTest extends FunSpec {
+ * Created by adarr on 1/28/2017.
+ */
+class TriggeredActivationTest extends AnyFunSpec {
 
   describe("TriggeredActivationTest") {
 
-    it("should should list values") {
+    it("should should list values") {}
 
-    }
-
-    it("should activations") {
-
-    }
+    it("should activations") {}
 
   }
 }

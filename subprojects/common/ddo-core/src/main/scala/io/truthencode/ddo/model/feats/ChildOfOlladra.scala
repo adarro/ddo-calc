@@ -21,15 +21,11 @@ import io.truthencode.ddo.model.religions.Olladra
 import io.truthencode.ddo.support.requisite.{FeatRequisiteImpl, RequiresAllOfFeat}
 
 /**
-  * Created by adarr on 4/7/2017.
-  */
+ * Created by adarr on 4/7/2017.
+ */
 trait ChildOfOlladra
-    extends FeatRequisiteImpl
-    with EberronReligionNonWarforged
-    with ChildLevelBase
-    with RequiresAllOfFeat
-    with Olladra
-    with OlladraFeatBase { self: DeityFeat =>
+  extends FeatRequisiteImpl with EberronReligionNonWarforged with ChildLevelBase with RequiresAllOfFeat with Olladra
+  with OlladraFeatBase { self: DeityFeat =>
 
   override def allOfFeats: Seq[Feat] = List(DeityFeat.FollowerOfOlladra)
 }

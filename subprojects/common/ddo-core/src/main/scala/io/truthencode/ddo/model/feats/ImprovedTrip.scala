@@ -20,27 +20,16 @@ package io.truthencode.ddo.model.feats
 import java.time.Duration
 
 import io.truthencode.ddo.activation.AtWillEvent
-import io.truthencode.ddo.support.requisite.{
-  FeatRequisiteImpl,
-  RequiresAllOfFeat
-}
+import io.truthencode.ddo.support.requisite.{FeatRequisiteImpl, RequiresAllOfFeat}
 
 /**
-  * Icon Feat Improved Trip.png
-  * [[https://ddowiki.com/page/Improved_Trip Improved Trip]]
-  * Active - Special Attack
-  * This feat has a chance to trip the target, if the target fails a Balance check (DC 14 + Str mod),
-  * rendering it prone for a longer period of time than Trip. Some creatures may be immune to this effect.
-  * *
-  * Combat Expertise
-  */
+ * Icon Feat Improved Trip.png [[https://ddowiki.com/page/Improved_Trip Improved Trip]] Active - Special Attack This
+ * feat has a chance to trip the target, if the target fails a Balance check (DC 14 + Str mod), rendering it prone for a
+ * longer period of time than Trip. Some creatures may be immune to this effect. * Combat Expertise
+ */
 protected[feats] trait ImprovedTrip
-    extends FeatRequisiteImpl
-    with ActiveFeat
-    with Tactical
-    with RequiresAllOfFeat
-    with FighterBonusFeat
-    with MartialArtsFeat {
+  extends FeatRequisiteImpl with ActiveFeat with Tactical with RequiresAllOfFeat with FighterBonusFeat
+  with MartialArtsFeat {
   self: GeneralFeat =>
   override def coolDown: Option[Duration] = Some(Duration.ofSeconds(10))
 

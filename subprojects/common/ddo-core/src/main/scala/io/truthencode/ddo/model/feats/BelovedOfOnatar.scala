@@ -21,12 +21,8 @@ import io.truthencode.ddo.model.religions.Onatar
 import io.truthencode.ddo.support.requisite.{FeatRequisiteImpl, RequiresAllOfFeat}
 
 trait BelovedOfOnatar
-    extends FeatRequisiteImpl
-    with EberronReligionNonWarforged
-    with BelovedLevelBase
-    with RequiresAllOfFeat
-    with Onatar
-    with OnatarFeatBase { self: DeityFeat =>
+  extends FeatRequisiteImpl with EberronReligionNonWarforged with BelovedLevelBase with RequiresAllOfFeat with Onatar
+  with OnatarFeatBase { self: DeityFeat =>
 
   override def allOfFeats: Seq[Feat] = List(DeityFeat.ChildOfOnatar)
 }

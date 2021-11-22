@@ -24,40 +24,55 @@
  */
 
 plugins {
-    id("scala-profiles")
+    id("scala-conventions")
     id("acceptance-test-conventions")
 }
 
+description = "Common ETL module for storing / loading data from web / user etc"
+
 dependencies {
-    // https://mvnrepository.com/artifact/org.json4s/json4s-native
-    implementation(group = "org.json4s", name = "json4s-native_2.12", version = "3.6.7")
+
     val scalaLibraryVersion: String by project
     val scalaMajorVersion: String by project
-
+    // https://mvnrepository.com/artifact/org.json4s/json4s-native
+    implementation(group = "org.json4s", name = "json4s-native_$scalaMajorVersion", version = "3.6.7")
     implementation(platform(project(":ddo-platform-scala")))
     implementation("org.scala-lang:scala-library:$scalaLibraryVersion")
     implementation(group = "com.beachape", name = "enumeratum_$scalaMajorVersion")
     implementation(group = "com.typesafe", name = "config")
     implementation(group = "com.github.kxbmap", name = "configs_$scalaMajorVersion")
+
+    /* DB, Query etc
+    // Quill Scala Query QSQL
+     https://github.com/getquill/quill */
+    implementation("io.getquill:quill-core_$scalaMajorVersion:3.11.0")
+    /* Quill - Monix Integration
+    Monix Task / Eval https://monix.io/docs/current/intro/hello-world.html */
+    implementation("io.getquill:quill-monix_$scalaMajorVersion:3.11.0")
+    implementation("io.getquill:quill-sql_$scalaMajorVersion:3.11.0")
+    implementation("io.monix:monix-eval_$scalaMajorVersion:3.4.0")
+    implementation("io.monix:monix-reactive_$scalaMajorVersion:3.4.0")
+
     // validation and rules
-    implementation(group = "com.wix", name = "accord-core_2.12")
+    implementation(group = "com.wix", name = "accord-core_$scalaMajorVersion")
     implementation(group = "ch.qos.logback", name = "logback-classic")
     implementation(group = "com.typesafe.scala-logging", name = "scala-logging_$scalaMajorVersion")
     testImplementation(group = "org.scalatest", name = "scalatest_$scalaMajorVersion")
-    testImplementation(group = "org.mockito", name = "mockito-all")
+    testImplementation(group = "org.scalacheck", name = "scalacheck_$scalaMajorVersion", version = "1.14.0")
+    testImplementation(group = "org.mockito", name = "mockito-core")
 
     // JUnit 5
     testRuntimeOnly(group = "org.junit.platform", name = "junit-platform-engine")
     testRuntimeOnly(group = "org.junit.platform", name = "junit-platform-launcher")
     testRuntimeOnly(group = "co.helmethair", name = "scalatest-junit-runner")
-
+    testRuntimeOnly(group = "org.junit.vintage", name = "junit-vintage-engine")
 }
 
 tasks {
     // Use the built-in JUnit support of Gradle.
     "test"(Test::class) {
         useJUnitPlatform {
-            includeEngines = setOf("scalatest")
+            includeEngines = setOf("scalatest", "vintage")
             testLogging {
                 events("passed", "skipped", "failed")
             }

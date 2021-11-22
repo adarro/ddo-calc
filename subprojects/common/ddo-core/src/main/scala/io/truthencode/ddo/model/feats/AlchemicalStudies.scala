@@ -24,14 +24,11 @@ import io.truthencode.ddo.support.requisite.{ClassRequisiteImpl, FeatRequisiteIm
 /**
  * You are able to move while drinking potions
  *
- * @see [[https://ddowiki.com/page/Alchemy_on_the_Run]]
+ * @see
+ *   [[https://ddowiki.com/page/Alchemy_on_the_Run]]
  */
 protected[feats] trait AlchemicalStudies
-  extends FeatRequisiteImpl
-    with ClassRequisiteImpl
-    with GrantsToClass
-    with RequiresAllOfClass
-    with Passive {
+  extends FeatRequisiteImpl with ClassRequisiteImpl with GrantsToClass with RequiresAllOfClass with Passive {
   private[this] val cls = (Alchemist, 4)
 
   abstract override def grantToClass: Seq[(HeroicCharacterClass, Int)] = super.grantToClass :+ cls

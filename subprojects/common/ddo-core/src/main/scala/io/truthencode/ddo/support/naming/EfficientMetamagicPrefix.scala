@@ -18,15 +18,15 @@
 package io.truthencode.ddo.support.naming
 
 /**
-  * Created by adarr on 3/5/2017.
-  * Display Prefix for meta magic enhancements
-  *
-  * @example Alchemist Enhancement Efficient Metagagics in Bombardier line has selectors for Efficient Empower
-  *
-  *          @note it expects the specific meta magic name to be set via namesource such that
-  *                withPrefix.getOrElse("").namesource would produce 'Efficient Empower'
-  *                This can be further suffixed i.e. RomanNumerals
-  */
+ * Created by adarr on 3/5/2017. Display Prefix for meta magic enhancements
+ *
+ * @example
+ *   Alchemist Enhancement Efficient Metagagics in Bombardier line has selectors for Efficient Empower
+ *
+ * @note
+ *   it expects the specific meta magic name to be set via namesource such that withPrefix.getOrElse("").namesource
+ *   would produce 'Efficient Empower' This can be further suffixed i.e. RomanNumerals
+ */
 trait EfficientMetamagicPrefix extends Prefix {
   self: DisplayName with DisplayProperties =>
   override def prefix: Option[String] = Some("Efficient")

@@ -20,6 +20,6 @@ package io.truthencode.ddo.model.save
 import io.truthencode.ddo.support.naming.DisplayName
 
 /**
-  * Represents the ability to negate or circumvent a given effect.
-  */
+ * Represents the ability to negate or circumvent a given effect.
+ */
 trait Save extends DisplayName

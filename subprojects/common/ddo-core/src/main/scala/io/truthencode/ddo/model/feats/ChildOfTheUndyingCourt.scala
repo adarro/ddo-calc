@@ -21,15 +21,11 @@ import io.truthencode.ddo.model.religions.UndyingCourt
 import io.truthencode.ddo.support.requisite.{FeatRequisiteImpl, RequiresAllOfFeat}
 
 /**
-  * Created by adarr on 4/7/2017.
-  */
+ * Created by adarr on 4/7/2017.
+ */
 trait ChildOfTheUndyingCourt
-    extends FeatRequisiteImpl
-    with EberronReligionNonWarforged
-    with ChildLevelBase
-    with RequiresAllOfFeat
-    with UndyingCourt
-    with TheUndyingCourtFeatBase { self: DeityFeat =>
+  extends FeatRequisiteImpl with EberronReligionNonWarforged with ChildLevelBase with RequiresAllOfFeat
+  with UndyingCourt with TheUndyingCourtFeatBase { self: DeityFeat =>
 
   override def allOfFeats: Seq[Feat] =
     List(DeityFeat.FollowerOfTheUndyingCourt)

@@ -18,7 +18,8 @@
 package io.truthencode.ddo
 
 // Base Enums and skeleton objects
-/** TBD: :Used for Meta and potentially internal transformations.
-  */
+/**
+ * TBD: :Used for Meta and potentially internal transformations.
+ */
 trait MetaData
 // armour bonus / enhancement bonus

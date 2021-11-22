@@ -24,23 +24,17 @@ import io.truthencode.ddo.model.religions.SilverFlame
 import io.truthencode.ddo.support.requisite.{FeatRequisiteImpl, RequiresAllOfFeat}
 
 /**
-  * [[https://ddowiki.com/page/Silver_Flame_Exorcism Silver Flame Exorcism]]
-  * You are a devoted follower of the Silver Flame, and your faith has been rewarded.
-  * Activate this ability to attempt to exorcise an extraplanar creature,
-  * which is entirely consumed in holy fire on a failed Will save or savagely burned by the light of the Silver Flame.
-  * A successful Fortitude save reduces the damage to half. The Save DC for this ability is 10 + Cleric Level + Charisma Modifier.
-  * Cooldown: 10 minutes.
-  * Created by adarr on 4/7/2017.
-  * @todo Add difficulty check
-  */
+ * [[https://ddowiki.com/page/Silver_Flame_Exorcism Silver Flame Exorcism]] You are a devoted follower of the Silver
+ * Flame, and your faith has been rewarded. Activate this ability to attempt to exorcise an extraplanar creature, which
+ * is entirely consumed in holy fire on a failed Will save or savagely burned by the light of the Silver Flame. A
+ * successful Fortitude save reduces the damage to half. The Save DC for this ability is 10 + Cleric Level + Charisma
+ * Modifier. Cooldown: 10 minutes. Created by adarr on 4/7/2017.
+ * @todo
+ *   Add difficulty check
+ */
 trait SilverFlameExorcism
-    extends FeatRequisiteImpl
-    with EberronReligionNonWarforged
-    with DeityUniqueLevelBase
-    with RequiresAllOfFeat
-    with SilverFlame
-    with TheSilverFlameFeatBase
-    with ActiveFeat with OnSpellLikeAbilityEvent { self: DeityFeat =>
+  extends FeatRequisiteImpl with EberronReligionNonWarforged with DeityUniqueLevelBase with RequiresAllOfFeat
+  with SilverFlame with TheSilverFlameFeatBase with ActiveFeat with OnSpellLikeAbilityEvent { self: DeityFeat =>
 
   override def allOfFeats: Seq[Feat] = List(DeityFeat.ChildOfTheSilverFlame)
 

@@ -20,22 +20,25 @@ package io.truthencode.ddo
 import io.truthencode.ddo.model.effect.Effect
 import io.truthencode.ddo.model.item.Item
 
-/** An Item set provides bonuses when equipping some or all of the items in the set.
-  */
+/**
+ * An Item set provides bonuses when equipping some or all of the items in the set.
+ */
 trait SetItem {
-  /** Name of set, such as Anger's Wrath
-    */
+  /**
+   * Name of set, such as Anger's Wrath
+   */
   val name: String
 
-  /** A collection of items that qualify for this set
-    */
+  /**
+   * A collection of items that qualify for this set
+   */
   val items: List[Item]
 
-  /** This will generally be a single bonus set,
-    * such as Anger's Wrath. However some sets, such as
-    * the [[http://ddowiki.com/page/Named_item_sets#Might_of_the_Abishai Abashi's Might]] which gives
-    * a small bonus for some of the items, and a bigger bonus for wearing all of the items.
-    */
+  /**
+   * This will generally be a single bonus set, such as Anger's Wrath. However some sets, such as the
+   * [[http://ddowiki.com/page/Named_item_sets#Might_of_the_Abishai Abashi's Might]] which gives a small bonus for some
+   * of the items, and a bigger bonus for wearing all of the items.
+   */
   val effects: Map[Int, List[Effect]]
 
 }

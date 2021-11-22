@@ -22,13 +22,12 @@ import io.truthencode.ddo.enumeration.{BitSupport, BitWise}
 
 import scala.collection.immutable
 
-/** Enumerates the places filigrees and augments can be placed.
-  */
-sealed trait AugmentLocation
-    extends EnumEntry
-    with BitWise {
+/**
+ * Enumerates the places filigrees and augments can be placed.
+ */
+sealed trait AugmentLocation extends EnumEntry with BitWise {
 
-  private lazy val bitValues = AugmentLocation.valuesToIndex map { x =>
+  private lazy val bitValues = AugmentLocation.valuesToIndex.map { x =>
     x._1 -> toBitMask(x._2)
   }
 
@@ -37,92 +36,95 @@ sealed trait AugmentLocation
 }
 
 /**
-  * Augments such as Diamonds, Topaz etc
-  */
+ * Augments such as Diamonds, Topaz etc
+ */
 trait GeneralAugmentLocation extends AugmentLocation
 
 /**
-  * Legacy Guild augment slots.
-  */
+ * Legacy Guild augment slots.
+ */
 trait GuildAugmentLocation extends AugmentLocation
 
 /**
-  * Can be slotted into a Sentient Item or Minor Artifact
-  */
+ * Can be slotted into a Sentient Item or Minor Artifact
+ */
 trait FiligreeLocation extends AugmentLocation
 
-/** Distinct values for location slots.
-  */
+/**
+ * Distinct values for location slots.
+ */
 object AugmentLocation extends Enum[AugmentLocation] with BitSupport {
 
   // Augments (Ruby / Sapphire etc)
   /**
-    * Typically Rubies which add additional damage types, spell power and / or bypass damage reduction
-    */
+   * Typically Rubies which add additional damage types, spell power and / or bypass damage reduction
+   */
   case object RedAugmentSlot extends GeneralAugmentLocation
 
   /**
-    * Supports Red, Blue and augments that some named augments which specify a purple slot
-    */
+   * Supports Red, Blue and augments that some named augments which specify a purple slot
+   */
   case object PurpleAugmentSlot extends GeneralAugmentLocation
 
   /**
-    * Supports Sapphires
-    */
+   * Supports Sapphires
+   */
   case object BlueAugmentSlot extends GeneralAugmentLocation
 
   /**
-    * Supports Yellow and Blue augments and some named augments which specify a green slot.
-    */
+   * Supports Yellow and Blue augments and some named augments which specify a green slot.
+   */
   case object GreenAugmentSlot extends GeneralAugmentLocation
 
   /**
-    * Supports Yellow Augments and Diamonds
-    */
+   * Supports Yellow Augments and Diamonds
+   */
   case object YellowAugmentSlot extends GeneralAugmentLocation
 
   /**
-    * Supports Yellow and Red augments and some named augments which specify an orange slot
-    */
+   * Supports Yellow and Red augments and some named augments which specify an orange slot
+   */
   case object OrangeAugmentSlot extends GeneralAugmentLocation
 
   /**
-    * Supports Diamonds and any named augments which specify a colorless slot.
-    * @note all augment slots support colorless augments.
-    */
+   * Supports Diamonds and any named augments which specify a colorless slot.
+   * @note
+   *   all augment slots support colorless augments.
+   */
   case object ColorlessAugmentSlot extends GeneralAugmentLocation
 
   // Guild Augments
 
   /**
-    * Supports Tiny Augments and can only be equipped by a character in a guild of a certain size.
-    */
+   * Supports Tiny Augments and can only be equipped by a character in a guild of a certain size.
+   */
   case object TinyGuildAugmentSlot extends GuildAugmentLocation
 
   /**
-    * Supports Small Augments and can only be equipped by a character in a guild of a certain size.
-    */
+   * Supports Small Augments and can only be equipped by a character in a guild of a certain size.
+   */
   case object SmallGuildAugmentSlot extends GuildAugmentLocation
 
   /**
-    * Supports Medium Augments and can only be equipped by a character in a guild of a certain size.
-    */
+   * Supports Medium Augments and can only be equipped by a character in a guild of a certain size.
+   */
   case object MediumGuildAugmentSlot extends GuildAugmentLocation
 
   /**
-    * Supports Large Augments and can only be equipped by a character in a guild of a certain size.
-    */
+   * Supports Large Augments and can only be equipped by a character in a guild of a certain size.
+   */
   case object LargeGuildAugmentSlot extends GuildAugmentLocation
 
   /**
-    * Supports filigrees.  The amount of slots is based on the level of XP a given sentient item has.
-    */
+   * Supports filigrees. The amount of slots is based on the level of XP a given sentient item has.
+   */
   case object SentientItemSlot extends FiligreeLocation
 
   /**
-    * Supports filigrees.  The amount of slots is based on the level of XP a given minor artifact has.
-    * @note Minor Artifacts have a lower maximum number of slots (currently between 1 and 3) possible.
-    */
+   * Supports filigrees. The amount of slots is based on the level of XP a given minor artifact has.
+   * @note
+   *   Minor Artifacts have a lower maximum number of slots (currently between 1 and 3) possible.
+   */
   case object MinorArtifactSlot extends FiligreeLocation
 
   val values: immutable.IndexedSeq[AugmentLocation] = findValues

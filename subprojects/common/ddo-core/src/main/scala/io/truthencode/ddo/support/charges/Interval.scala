@@ -33,13 +33,13 @@ trait ResetOnDuration extends Interval
 object Interval extends Enum[Interval] {
   override def values: immutable.IndexedSeq[Interval] = findValues
 
-    /**
-     * Replenished by Resting
-     */
+  /**
+   * Replenished by Resting
+   */
   case object PerRest extends ResetOnRest
 
-    /**
-     * Replenished after time elapses
-     */
+  /**
+   * Replenished after time elapses
+   */
   case object PerInterval extends ResetOnDuration
 }

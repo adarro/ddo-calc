@@ -20,6 +20,4 @@ package io.truthencode.ddo.model.affect
 /**
  * Trait used to determine what affects a given entity or stat.
  */
-trait AffectedBy {
-
-}
+trait AffectedBy {}

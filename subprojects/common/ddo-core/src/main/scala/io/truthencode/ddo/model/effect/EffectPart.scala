@@ -32,8 +32,8 @@ trait SearchPattern {
 }
 
 /**
-  * Denotes which aspect an effect applies to
-  */
+ * Denotes which aspect an effect applies to
+ */
 sealed trait EffectPart extends EnumEntry with SearchPattern
 
 trait SkillEffect extends EffectPart {
@@ -57,11 +57,11 @@ trait FeatEffect extends EffectPart {
 }
 
 /**
-  * A list of available effect targets.
-  * @note This should contain all items viewable from the DDO Character menu
-  *       (including the + menu)
-  *       Also, should have additional effects such as Caster / Turn Undead Level
-  */
+ * A list of available effect targets.
+ * @note
+ *   This should contain all items viewable from the DDO Character menu (including the + menu) Also, should have
+ *   additional effects such as Caster / Turn Undead Level
+ */
 object EffectPart extends Enum[EffectPart] with NoDefault[EffectPart] with Searchable[EffectPart] {
   lazy val values = findValues ++ anySkill ++ anyFeat
   // Attribute value affected by Base, Feat, Item, Tomes
@@ -207,29 +207,26 @@ object EffectPart extends Enum[EffectPart] with NoDefault[EffectPart] with Searc
    Dodge Chance / Max cap
    Missile Defense
    Possibly calculate Base Chance at Level
- */
+   */
 
 }
 
 /**
-  *
-  * {{{
-  * val excCombatMastery5 = Eff(
-  *     TriggerEvent.Passive,bonusType = Incite, Magnitude = 5,DifficultyCheck,List(Skill.Trip,Sunder,StunningBlow))
-  * //Tendon Slice 10%
-  * val tSlice = Eff(OnAttack,Enhancement,10%,???,Hamstring(slow enemy movement))
-  * // +6 Enhancement Bonus
-  * val eb6 = Eff(Passive,Enhancement,100/6,???Atk / Dmg Bonus)
-  * }}}
-  * Maiming: This weapon has a twisted haft or grip and spikes
-  * along its blade, head, or point. Whenever you score a
-  * critical hit with this weapon it deals an amount of
-  *  extra untyped damage depending on its
-  *  critical multiplier: x2 - 1 to 6, x3 - 2 to 12, x4 - 3 to 18.
-  *  {{{
-  *  val maiming = Eff(Critical,100,NA,100 / Multiplier(2->1d6,3->2d6,4->3d6),???,Melee/Ranged Attack)
-  *  }}}
-  */
+ * {{{
+ * val excCombatMastery5 = Eff(
+ *     TriggerEvent.Passive,bonusType = Incite, Magnitude = 5,DifficultyCheck,List(Skill.Trip,Sunder,StunningBlow))
+ * //Tendon Slice 10%
+ * val tSlice = Eff(OnAttack,Enhancement,10%,???,Hamstring(slow enemy movement))
+ * // +6 Enhancement Bonus
+ * val eb6 = Eff(Passive,Enhancement,100/6,???Atk / Dmg Bonus)
+ * }}}
+ * Maiming: This weapon has a twisted haft or grip and spikes along its blade, head, or point. Whenever you score a
+ * critical hit with this weapon it deals an amount of extra untyped damage depending on its critical multiplier: x2 - 1
+ * to 6, x3 - 2 to 12, x4 - 3 to 18.
+ * {{{
+ *   val maiming = Eff(Critical,100,NA,100 / Multiplier(2->1d6,3->2d6,4->3d6),???,Melee/Ranged Attack)
+ * }}}
+ */
 case class Eff(
   // When this event activates such as passive or some active event
   trigger: TriggerEvent,

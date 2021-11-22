@@ -18,10 +18,11 @@
 package io.truthencode.ddo.model.feats
 
 import com.typesafe.scalalogging.LazyLogging
-import io.truthencode.ddo.model.spells.alchemical.{Primer, Reaction}
-import org.scalatest.{FunSpec, Matchers}
+import io.truthencode.ddo.model.spells.alchemical.Reaction
+import org.scalatest.funspec.AnyFunSpec
+import org.scalatest.matchers.should.Matchers
 
-class ClassFeatTest extends FunSpec with Matchers with LazyLogging {
+class ClassFeatTest extends AnyFunSpec with Matchers with LazyLogging {
 
   describe("Alchemists") {
     it("should have Alchemical Studies") {

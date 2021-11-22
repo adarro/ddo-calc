@@ -19,16 +19,11 @@ package io.truthencode.ddo.model.feats
 
 import io.truthencode.ddo.support.requisite.{FeatRequisiteImpl, FreeFeat}
 
-/** Icon 	Feat 	Type 	Description 	Prerequisites
-  * Icon Feat Augment Summoning.png
-  * Augment Summoning 	Passive 	Your summoned creatures, charmed minions, and hirelings have +4 to all ability scores, increased health, and increased fortification.
-  * *
-  * None
-  * */
-protected[feats] trait AugmentSummoning extends
-  FeatRequisiteImpl
-  with Passive
-  with FreeFeat
-  with ArtificerBonusFeat {
+/**
+ * Icon Feat Type Description Prerequisites Icon Feat Augment Summoning.png Augment Summoning Passive Your summoned
+ * creatures, charmed minions, and hirelings have +4 to all ability scores, increased health, and increased
+ * fortification. * None
+ */
+protected[feats] trait AugmentSummoning extends FeatRequisiteImpl with Passive with FreeFeat with ArtificerBonusFeat {
   self: GeneralFeat =>
 }

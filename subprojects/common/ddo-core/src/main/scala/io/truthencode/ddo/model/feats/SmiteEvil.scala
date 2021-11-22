@@ -25,20 +25,18 @@ import io.truthencode.ddo.model.classes.HeroicCharacterClass.Paladin
 import io.truthencode.ddo.support.requisite._
 
 /**
-  * [[http://ddowiki.com/page/Smite_Evil Smite Evil]]
-  * Using this attack, you call upon the paladin's ability to strike down evil creatures,
-  *     gaining twice your Charisma bonus and a damage bonus based on your paladin level.
-  * Smites return at the rate of one every 90 seconds.
-  * @todo Need to change Requirements to Either PAL 1 or Level 20 Enhancement [[https://ddowiki.com/page/Unyielding_Sentinel#Fanaticism Fanaticism]]
-  *       @todo Shared Cooldown with Exalted Smite
-  */
+ * [[http://ddowiki.com/page/Smite_Evil Smite Evil]] Using this attack, you call upon the paladin's ability to strike
+ * down evil creatures, gaining twice your Charisma bonus and a damage bonus based on your paladin level. Smites return
+ * at the rate of one every 90 seconds.
+ * @todo
+ *   Need to change Requirements to Either PAL 1 or Level 20 Enhancement
+ *   [[https://ddowiki.com/page/Unyielding_Sentinel#Fanaticism Fanaticism]]
+ * @todo
+ *   Shared Cooldown with Exalted Smite
+ */
 protected[feats] trait SmiteEvil
-    extends FeatRequisiteImpl
-    with Passive
-    with ActiveFeat
-    with AtWillEvent
-    with GrantsToClass
-    with FreeFeat { self: ClassFeat =>
+  extends FeatRequisiteImpl with Passive with ActiveFeat with AtWillEvent with GrantsToClass with FreeFeat {
+  self: ClassFeat =>
   override def grantToClass: Seq[(HeroicCharacterClass, Int)] =
     List((Paladin, 1))
 

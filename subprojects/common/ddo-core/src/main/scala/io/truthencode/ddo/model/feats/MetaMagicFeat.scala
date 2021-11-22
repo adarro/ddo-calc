@@ -20,26 +20,18 @@ package io.truthencode.ddo.model.feats
 import enumeratum.Enum
 import io.truthencode.ddo.model.classes.HeroicCharacterClass
 import io.truthencode.ddo.support.naming.FriendlyDisplay
-import io.truthencode.ddo.support.requisite.{
-  ClassRequisiteImpl,
-  Inclusion,
-  Requisite,
-  RequisiteType
-}
+import io.truthencode.ddo.support.requisite.{ClassRequisiteImpl, Inclusion, Requisite, RequisiteType}
 
 import scala.collection.immutable.IndexedSeq
 
 /**
-  * Created by adarr on 2/21/2017.
-  */
-sealed trait MetaMagicFeat
-    extends Feat
-    with ClassRequisiteImpl
-    with FriendlyDisplay
-    with FeatMatcher { self: FeatType with Requisite with Inclusion with RequisiteType =>
+ * Created by adarr on 2/21/2017.
+ */
+sealed trait MetaMagicFeat extends Feat with ClassRequisiteImpl with FriendlyDisplay with FeatMatcher {
+  self: FeatType with Requisite with Inclusion with RequisiteType =>
 
-  val matchFeat: PartialFunction[Feat, MetaMagicFeat] = {
-    case x: MetaMagicFeat => x
+  val matchFeat: PartialFunction[Feat, MetaMagicFeat] = { case x: MetaMagicFeat =>
+    x
   }
 
   val matchFeatById: PartialFunction[String, MetaMagicFeat] = {

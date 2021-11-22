@@ -23,8 +23,9 @@ import io.truthencode.ddo.support.SearchPrefix
 import scala.collection.immutable.IndexedSeq
 
 /**
-  * [[http://ddowiki.com/page/FavorPatron FavorPatron]] FavorPatron can be gained for a faction which can provide various benefits in-game.
-  */
+ * [[http://ddowiki.com/page/FavorPatron FavorPatron]] FavorPatron can be gained for a faction which can provide various
+ * benefits in-game.
+ */
 sealed trait FavorPatron extends EnumEntry {
   val maxFavor: Int
   val availableFreeFavor: Int = 0
@@ -33,11 +34,11 @@ sealed trait FavorPatron extends EnumEntry {
 object FavorPatron extends Enum[FavorPatron] with SearchPrefix {
 
   /**
-    * Used when qualifying a search with a prefix.
-    * Examples include finding "HalfElf" from qualified "Race:HalfElf"
-    *
-    * @return A default or applied prefix
-    */
+   * Used when qualifying a search with a prefix. Examples include finding "HalfElf" from qualified "Race:HalfElf"
+   *
+   * @return
+   *   A default or applied prefix
+   */
   override def searchPrefixSource: String = "FavorPatron"
 
   case object AgentsOfArgonnessen extends FavorPatron {
@@ -47,7 +48,6 @@ object FavorPatron extends Enum[FavorPatron] with SearchPrefix {
   case object HouseCannith extends FavorPatron {
     override val maxFavor: Int = 225
   }
-
 
   case object TheCoinLords extends FavorPatron {
     override val maxFavor: Int = 608

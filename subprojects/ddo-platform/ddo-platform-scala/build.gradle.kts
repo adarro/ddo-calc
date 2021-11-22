@@ -22,6 +22,7 @@ plugins {
 val scalaLibraryVersion: String by project
 val scalaMajorVersion: String by project
 val scalaTestVersion: String by project
+val scalaTestPlusMockitoVersion: String by project
 val scalaCheckVersion: String by project
 val scalaLoggingVersion: String by project
 val mockitoVersion: String by project
@@ -33,8 +34,6 @@ val configsVersion: String by project
 val logbackVersion: String by project
 val jetBrainsAnnotationVersion: String by project
 val junitPlatformVersion: String by project
-val junitPlatformRunnerVersion: String by project
-val junitEngineVersion: String by project
 val junitLauncherVersion:String by project
 val concordionVersion: String by project
 val concordionExtEmbedVersion: String by project
@@ -60,10 +59,10 @@ dependencies {
         // Unit Testing
         api("org.scalatest:scalatest_$scalaMajorVersion:$scalaTestVersion")
         api("org.scalacheck:scalacheck_$scalaMajorVersion:$scalaCheckVersion")
-
-        api("org.mockito:mockito-all:$mockitoVersion")
+        api("org.scalatestplus:mockito-3-4_$scalaMajorVersion:$scalaTestPlusMockitoVersion")
+        api("org.mockito:mockito-core:$mockitoVersion")
         api("com.wix:accord-core_${scalaMajorVersion}:${accordVersion}")
-        api("com.wix::accord-scalatest_${scalaMajorVersion}$accordVersion")
+        api("com.wix:accord-scalatest_${scalaMajorVersion}:$accordVersion")
         api("org.junit.jupiter:junit-jupiter:$junitPlatformVersion")
         // A library providing a DSL for loading and extracting content from HTML pages.
         api("net.ruippeixotog:scala-scraper_$scalaMajorVersion:$scalaScraperVersion")
@@ -76,10 +75,10 @@ dependencies {
 
         // JUnit5
         runtime("co.helmethair:scalatest-junit-runner:$junitScalaTestVersion")
-        runtime("org.junit.vintage:junit-vintage-engine:$junitEngineVersion")
-        runtime("org.junit.platform:junit-platform-engine:$junitPlatformRunnerVersion")
+        runtime("org.junit.vintage:junit-vintage-engine:$junitPlatformVersion")
+        runtime("org.junit.platform:junit-platform-engine:$junitLauncherVersion")
         runtime("org.junit.platform:junit-platform-launcher:$junitLauncherVersion")
-        api("org.junit.platform:junit-platform-runner:$junitPlatformRunnerVersion")
+        api("org.junit.platform:junit-platform-runner:$junitPlatformVersion")
 
         // Acceptance Testing 
         // val acceptanceTestImplementation by configurations.getting

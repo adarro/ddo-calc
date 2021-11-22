@@ -21,7 +21,6 @@ import io.truthencode.ddo.model.item.weapon.WeaponProficiency
 import io.truthencode.ddo.support.requisite.{Inclusion, Requisite}
 
 /**
-  * Created by adarr on 3/30/2017.
-  */
-trait WeaponProficiencyBase { self: WeaponProficiency =>
-}
+ * Created by adarr on 3/30/2017.
+ */
+trait WeaponProficiencyBase { self: WeaponProficiency => }

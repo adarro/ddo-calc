@@ -26,45 +26,46 @@ import scala.collection.JavaConverters._
 
 trait Flexmark {
   def flexmarkExtensions: Seq[Extension]
-  def calls : Seq[() => MutableDataSet]
-import Flexmark._
-  @FlexmarkOptions  val flexmarkOptions: MutableDataSet = {
+  def calls: Seq[() => MutableDataSet]
+  import Flexmark._
+  @FlexmarkOptions val flexmarkOptions: MutableDataSet = {
     calls.foreach(f => f())
     ds.set(Parser.EXTENSIONS, flexmarkExtensions.toList.toJavaList)
 
   }
 }
 
-
 object Flexmark {
 
   implicit class ExtOpts(source: List[Extension]) {
 
     /**
-      * Extension Wrapper because scala is not inferring downcast due to Invariant T
-      * @return Downcast T <: Extension
-      */
+     * Extension Wrapper because scala is not inferring downcast due to Invariant T
+     * @return
+     *   Downcast T <: Extension
+     */
     def toJavaList: java.util.List[Extension] = {
       source.asJava
     }
   }
 
-    implicit class FlexOpts(source: Seq[(DataKey[_],Any)]) {
+  implicit class FlexOpts(source: Seq[(DataKey[_], Any)]) {
 
-        /**
-         * Extension Wrapper because scala is not inferring downcast due to Invariant T
-         * @return Downcast T <: Extension
-         */
-        def toJavaList: java.util.List[(DataKey[_],Any)] = {
-            source.asJava
-        }
+    /**
+     * Extension Wrapper because scala is not inferring downcast due to Invariant T
+     * @return
+     *   Downcast T <: Extension
+     */
+    def toJavaList: java.util.List[(DataKey[_], Any)] = {
+      source.asJava
     }
+  }
 
-  implicit class TupOpts(source :Seq[Tuple2[_,_]]) {
-      def toJavaList: java.util.List[Tuple2[_,_]] = {
-          source.asJava
-      }
+  implicit class TupOpts(source: Seq[Tuple2[_, _]]) {
+    def toJavaList: java.util.List[Tuple2[_, _]] = {
+      source.asJava
     }
+  }
   implicit class HtmlEscape(source: String) {
 
     def removeNbsp: String = {

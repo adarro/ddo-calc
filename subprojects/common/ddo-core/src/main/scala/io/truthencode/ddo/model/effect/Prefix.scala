@@ -27,7 +27,7 @@ trait SecondaryPrefix extends Affix
 
 trait HasSecondaryPrefix extends SecondaryPrefix {
   /**
-    * Secondary prefix
-    */
+   * Secondary prefix
+   */
   val sPrefix: String
 }

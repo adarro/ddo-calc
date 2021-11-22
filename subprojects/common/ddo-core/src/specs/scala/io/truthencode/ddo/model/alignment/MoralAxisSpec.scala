@@ -45,5 +45,4 @@ class MoralAxisSpec {
 
   def getInvalidValues: String = "Invalid values should be handled gracefully"
 
-
 }

@@ -18,8 +18,8 @@
 package io.truthencode.ddo.model.feats
 
 /**
-  * Created by adarr on 2/11/2017.
-  */
+ * Created by adarr on 2/11/2017.
+ */
 trait SubFeat extends SubFeatInformation {
   override val isSubFeat: Boolean = true
 }

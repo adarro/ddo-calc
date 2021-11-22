@@ -28,9 +28,8 @@ import org.junit.runner.RunWith
 //@Extensions(Array(classOf[EmbedExtension], classOf[CollapseOutputExtension]))
 @ConcordionOptions(
   declareNamespaces = Array("ext", "urn:concordion-extensions:2010"),
-  markdownExtensions = Array(MarkdownExtensions.WIKILINKS,
-                             MarkdownExtensions.AUTOLINKS,
-                             MarkdownExtensions.TASKLISTITEMS)
+  markdownExtensions =
+    Array(MarkdownExtensions.WIKILINKS, MarkdownExtensions.AUTOLINKS, MarkdownExtensions.TASKLISTITEMS)
 )
 @RunWith(classOf[ConcordionRunner])
 class GeneralFeatSpec extends FeatDisplayHelper {

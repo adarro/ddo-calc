@@ -17,12 +17,7 @@
  */
 package io.truthencode.ddo.support
 
-import io.truthencode.ddo.support.TraverseOps.{Joinable, MapOps}
-
-import scala.collection.{GenIterable, GenSeq, MapLike}
-import scala.language.higherKinds
-
-trait JoinAbleBase[+X, C <: GenIterable[X]] {
+trait JoinAbleBase[+X, C <: Iterable[X]] {
   val sampleSize = 15
 //  implicit def asSeq(x: C) = x.toSeq
   def portion: Int = sampleSize / 2 + (sampleSize / 3)

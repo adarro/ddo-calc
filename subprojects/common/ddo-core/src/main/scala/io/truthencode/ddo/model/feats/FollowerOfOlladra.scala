@@ -21,13 +21,10 @@ import io.truthencode.ddo.model.religions.Olladra
 import io.truthencode.ddo.support.requisite.FeatRequisiteImpl
 
 /**
-  * Created by adarr on 4/7/2017.
-  */
+ * Created by adarr on 4/7/2017.
+ */
 trait FollowerOfOlladra
-    extends FeatRequisiteImpl
-    with EberronReligionNonWarforged
-    with FollowerBase
-    with Olladra
-    with OlladraFeatBase { self: DeityFeat =>
+  extends FeatRequisiteImpl with EberronReligionNonWarforged with FollowerBase with Olladra with OlladraFeatBase {
+  self: DeityFeat =>
 
 }

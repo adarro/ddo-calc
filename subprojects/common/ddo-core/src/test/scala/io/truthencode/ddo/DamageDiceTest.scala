@@ -21,20 +21,16 @@ import com.typesafe.scalalogging.LazyLogging
 import io.truthencode.ddo.model.meta.PhysicalDamageType
 import io.truthencode.ddo.support.TraverseOps._
 import io.truthencode.ddo.support.dice.DamageInfo
-import org.scalatest.mockito.MockitoSugar
+import org.scalatest.funspec.AnyFunSpec
+import org.scalatest.matchers.should.Matchers
 import org.scalatest.prop.{PropertyChecks, TableFor1}
-import org.scalatest.{FunSpec, Matchers}
+import org.scalatestplus.mockito.MockitoSugar
 
 import scala.collection.immutable
 import scala.util.Random
 import scala.util.Random.shuffle
 
-class DamageDiceTest
-    extends FunSpec
-    with PropertyChecks
-    with Matchers
-    with MockitoSugar
-    with LazyLogging {
+class DamageDiceTest extends AnyFunSpec with PropertyChecks with Matchers with MockitoSugar with LazyLogging {
 
   final val maxFlags = 4
   val diceSet =
@@ -55,7 +51,7 @@ class DamageDiceTest
     "1d8",
     "10d4",
     "15d3",
-  //  "[3d4]", // we really shouldn't be using this
+    //  "[3d4]", // we really shouldn't be using this
     "3d4 + 2",
     "3[2d10] - 4"
   )
@@ -74,8 +70,9 @@ class DamageDiceTest
     def pl: Set[String] =
       shuffle(PhysicalDamageType.values.map(_.entryName)).take(rng).toSet
 
-    val tpl: immutable.Seq[String] = for { i <- 0.to(maxFlags) } yield pl
-      .mkString(",")
+    val tpl: immutable.Seq[String] =
+      for { i <- 0.to(maxFlags) } yield pl
+        .mkString(",")
     for { x <- diceSet.cross(tpl) } yield s"${x._1} ${x._2}"
   }
   describe("DnD Dice") {
@@ -99,6 +96,7 @@ class DamageDiceTest
     they("should convert to string and back") {
 
       forAll(validDiceExp) { (s: String) =>
+        logger.debug("evaluating $s")
         val res = DamageInfo(s)
         res.toString shouldEqual s
       }

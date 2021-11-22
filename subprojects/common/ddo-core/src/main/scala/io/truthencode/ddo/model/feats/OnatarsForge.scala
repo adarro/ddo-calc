@@ -21,33 +21,21 @@ import java.time.Duration
 
 import io.truthencode.ddo.activation.AtWillEvent
 import io.truthencode.ddo.model.religions.Onatar
-import io.truthencode.ddo.support.requisite.{
-  FeatRequisiteImpl,
-  RequiresAllOfFeat
-}
+import io.truthencode.ddo.support.requisite.{FeatRequisiteImpl, RequiresAllOfFeat}
 
 /**
-  * [[https://ddowiki.com/page/Onatar%27s_Forge Onatar's Forge]]
-  * Cooldown: 10 minutes
-  * Usage: Active
-  * Prerequisite: Level 6: Cleric, Favored Soul, Paladin; Follower of Onatar
-  * Description
-  * You are a devoted follower of Onatar, and your faith has been rewarded.
-  * Activate this ability to channel the power of Onatar's mighty forge for 24 seconds plus 6 seconds per Religious Lore feat you have.
-  *
-  * In this state, you gain +3 to tactical feat DCs, +10 Melee Power, +10 Repair Spell Power, +10 Rust Spell Power, and +10 Fire Spell Power.
-  * If you are a Warforged or otherwise already benefit from Repair, you gain +30 Repair Amplification.
-  * Created by adarr on 4/7/2017.
-  */
+ * [[https://ddowiki.com/page/Onatar%27s_Forge Onatar's Forge]] Cooldown: 10 minutes Usage: Active Prerequisite: Level
+ * 6: Cleric, Favored Soul, Paladin; Follower of Onatar Description You are a devoted follower of Onatar, and your faith
+ * has been rewarded. Activate this ability to channel the power of Onatar's mighty forge for 24 seconds plus 6 seconds
+ * per Religious Lore feat you have.
+ *
+ * In this state, you gain +3 to tactical feat DCs, +10 Melee Power, +10 Repair Spell Power, +10 Rust Spell Power, and
+ * +10 Fire Spell Power. If you are a Warforged or otherwise already benefit from Repair, you gain +30 Repair
+ * Amplification. Created by adarr on 4/7/2017.
+ */
 trait OnatarsForge
-    extends FeatRequisiteImpl
-    with EberronReligionNonWarforged
-    with DeityUniqueLevelBase
-    with RequiresAllOfFeat
-    with Onatar
-    with OnatarFeatBase
-    with ActiveFeat
-    with AtWillEvent { self: DeityFeat =>
+  extends FeatRequisiteImpl with EberronReligionNonWarforged with DeityUniqueLevelBase with RequiresAllOfFeat
+  with Onatar with OnatarFeatBase with ActiveFeat with AtWillEvent { self: DeityFeat =>
 
   override def displayText: String = "Onatar's Forge"
 

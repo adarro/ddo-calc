@@ -22,12 +22,9 @@ import io.truthencode.ddo.model.race.Race.{DrowElf, Elf, Morninglord}
 import io.truthencode.ddo.support.requisite.{FeatRequisiteImpl, GrantsToRace}
 
 /**
-  * Created by adarr on 2/19/2017.
-  */
-trait EnchantmentSaveBonus
-    extends FeatRequisiteImpl
-    with Passive
-    with GrantsToRace { self: RacialFeat =>
+ * Created by adarr on 2/19/2017.
+ */
+trait EnchantmentSaveBonus extends FeatRequisiteImpl with Passive with GrantsToRace { self: RacialFeat =>
   override def grantsToRace: Seq[(Race, Int)] =
     List(Elf, Morninglord, DrowElf).map((_, 1))
 }

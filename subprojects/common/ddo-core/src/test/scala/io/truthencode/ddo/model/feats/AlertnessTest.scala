@@ -20,9 +20,10 @@ package io.truthencode.ddo.model.feats
 import com.typesafe.scalalogging.LazyLogging
 import io.truthencode.ddo.model.effect.Feature
 import io.truthencode.ddo.model.skill.Skill
-import org.scalatest.{FunSpec, Matchers}
+import org.scalatest.funspec.AnyFunSpec
+import org.scalatest.matchers.should.Matchers
 
-class AlertnessTest extends FunSpec with Matchers with LazyLogging {
+class AlertnessTest extends AnyFunSpec with Matchers with LazyLogging {
   describe("the feat Alertness") {
     it("should provide a +2 bonus to the listen and spot skills") {
       val al = GeneralFeat.Alertness
@@ -31,7 +32,7 @@ class AlertnessTest extends FunSpec with Matchers with LazyLogging {
       //  al.namedFeatures(listen) should be('defined)
       al.features.size shouldBe 2
       val named = al.namedFeatures.keys.toList
-      named should contain allOf ("Skill:Listen", "Skill:Spot")
+      (named should contain).allOf("Skill:Listen", "Skill:Spot")
       val lf = al.namedFeatures(listen).head
       val sf = al.namedFeatures(spot).head
       lf.value shouldBe 2

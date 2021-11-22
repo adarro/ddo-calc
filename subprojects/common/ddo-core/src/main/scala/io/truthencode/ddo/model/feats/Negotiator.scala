@@ -19,11 +19,11 @@ package io.truthencode.ddo.model.feats
 
 import io.truthencode.ddo.support.requisite.{FeatRequisiteImpl, FreeFeat}
 
-/** Icon Feat Negotiator.png
-  * Negotiator Passive Provides a +2 bonus to the character's Diplomacy and Haggle skills.
-  *
-  * None
-  * */
+/**
+ * Icon Feat Negotiator.png Negotiator Passive Provides a +2 bonus to the character's Diplomacy and Haggle skills.
+ *
+ * None
+ */
 protected[feats] trait Negotiator extends FeatRequisiteImpl with Passive with FreeFeat {
   self: GeneralFeat =>
 }

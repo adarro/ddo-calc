@@ -22,13 +22,10 @@ import io.truthencode.ddo.model.classes.HeroicCharacterClass.Warlock
 import io.truthencode.ddo.support.requisite.{FeatRequisiteImpl, GrantsToClass, RequiresAllOfClass}
 
 /**
-  * +1 to Fortitude Saves
-  */
+ * +1 to Fortitude Saves
+ */
 protected[feats] trait FiendishResilience
-    extends FeatRequisiteImpl
-    with Passive
-    with RequiresAllOfClass
-    with GrantsToClass { self: ClassFeat =>
+  extends FeatRequisiteImpl with Passive with RequiresAllOfClass with GrantsToClass { self: ClassFeat =>
 
   override def grantToClass: Seq[(HeroicCharacterClass, Int)] = List((Warlock, 4))
 }

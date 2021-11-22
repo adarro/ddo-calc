@@ -17,12 +17,13 @@
  */
 package io.truthencode.ddo.model.race
 
-import org.scalatest.{FunSpec, Matchers}
+import org.scalatest.funspec.AnyFunSpec
+import org.scalatest.matchers.should.Matchers
 
 /**
-  * Created by adarr on 3/17/2017.
-  */
-class Race$Test extends FunSpec with Matchers {
+ * Created by adarr on 3/17/2017.
+ */
+class Race$Test extends AnyFunSpec with Matchers {
 
   describe("Race$Test") {
 

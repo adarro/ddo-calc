@@ -21,6 +21,6 @@ package io.truthencode.ddo.support.matching
  * Base trait used for determining Matches by full words.
  */
 trait WordMatchStrategy {
-    self: CaseMatchStrategy =>
-    val stringMatchOption: StringMatchOption
+  self: CaseMatchStrategy =>
+  val stringMatchOption: StringMatchOption
 }

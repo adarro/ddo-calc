@@ -22,28 +22,22 @@ import java.time.Duration
 import io.truthencode.ddo.model.attribute.Attribute
 import io.truthencode.ddo.support.requisite.{FeatRequisiteImpl, RequiresAttribute, RequiresBaB}
 
-/** Icon Feat Resilience.png
-  * [[https://ddowiki.com/page/Resilience Resilience]]
-  * Active - Defensive Combat Stance You gain a +4 to all saving throws.
-  * Spells have three times their normal cooldown when this mode is active.
-  *
-  * Constitution 13
-  * Base Attack Bonus +1
-  * @todo Adds 3x spell cooldown timers
-  */
+/**
+ * Icon Feat Resilience.png [[https://ddowiki.com/page/Resilience Resilience]] Active - Defensive Combat Stance You gain
+ * a +4 to all saving throws. Spells have three times their normal cooldown when this mode is active.
+ *
+ * Constitution 13 Base Attack Bonus +1
+ * @todo
+ *   Adds 3x spell cooldown timers
+ */
 protected[feats] trait Resilience
-    extends FeatRequisiteImpl
-    with ActiveFeat
-    with DefensiveCombatStance
-    with RequiresAttribute
-    with RequiresBaB
-    with FighterBonusFeat
-    with MartialArtsFeat {
+  extends FeatRequisiteImpl with ActiveFeat with DefensiveCombatStance with RequiresAttribute with RequiresBaB
+  with FighterBonusFeat with MartialArtsFeat {
   self: GeneralFeat =>
   override def requiresAttribute: Seq[(Attribute, Int)] =
     List((Attribute.Constitution, 13))
 
-    override def coolDown: Option[Duration] = Some(Duration.ofSeconds(6))
+  override def coolDown: Option[Duration] = Some(Duration.ofSeconds(6))
 
-    override def requiresBaB: Int = 1
+  override def requiresBaB: Int = 1
 }

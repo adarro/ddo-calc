@@ -20,30 +20,20 @@ package io.truthencode.ddo.model.feats
 import java.time.Duration
 
 import io.truthencode.ddo.activation.AtWillEvent
-import io.truthencode.ddo.support.requisite.{
-  FeatRequisiteImpl,
-  RequiresAllOfFeat,
-  RequiresAnyOfFeat
-}
+import io.truthencode.ddo.support.requisite.{FeatRequisiteImpl, RequiresAllOfFeat, RequiresAnyOfFeat}
 
 /**
-  * [[https://ddowiki.com/page/Improved_Feint Improved Feint]]
-  * Icon Feat Improved Feint.png
-  * Improved Feint -- Active - Special Attack
-  * A tactical melee attack which Bluffs the enemy, enabling Sneak Attacks.
-  *
-  * Combat Expertise,
-  * MustContainAtLeastOne of : Sneak Attack or Half-Elf Dilettante: Rogue
-  *
-  * @todo Implement MustContainAtLeastOneOf(Sneak Attack or Half-Elf Dilettante: Rogue)
-  */
+ * [[https://ddowiki.com/page/Improved_Feint Improved Feint]] Icon Feat Improved Feint.png Improved Feint -- Active -
+ * Special Attack A tactical melee attack which Bluffs the enemy, enabling Sneak Attacks.
+ *
+ * Combat Expertise, MustContainAtLeastOne of : Sneak Attack or Half-Elf Dilettante: Rogue
+ *
+ * @todo
+ *   Implement MustContainAtLeastOneOf(Sneak Attack or Half-Elf Dilettante: Rogue)
+ */
 protected[feats] trait ImprovedFeint
-    extends FeatRequisiteImpl
-    with ActiveFeat
-    with AtWillEvent
-    with RequiresAnyOfFeat
-    with RequiresAllOfFeat
-    with FighterBonusFeat {
+  extends FeatRequisiteImpl with ActiveFeat with AtWillEvent with RequiresAnyOfFeat with RequiresAllOfFeat
+  with FighterBonusFeat {
   self: GeneralFeat =>
   override def anyOfFeats: Seq[Feat] = List(ClassFeat.SneakAttack)
 

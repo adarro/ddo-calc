@@ -22,15 +22,11 @@ import java.time.Duration
 import io.truthencode.ddo.support.requisite.{FeatRequisiteImpl, FreeFeat}
 
 /**
- * [[https://ddowiki.com/page/Sunder Sunder]]
-  * This melee special attack, when successful, results in a -4 AC penalty to the target for 12 seconds if it fails a Fortitude save (DC 10 + Str mod).
-  * Some creatures may be immune to the sunder effect
-  */
-protected[feats] trait Sunder
-    extends FeatRequisiteImpl
-    with ActiveFeat
-    with Tactical
-    with FreeFeat {
+ * [[https://ddowiki.com/page/Sunder Sunder]] This melee special attack, when successful, results in a -4 AC penalty to
+ * the target for 12 seconds if it fails a Fortitude save (DC 10 + Str mod). Some creatures may be immune to the sunder
+ * effect
+ */
+protected[feats] trait Sunder extends FeatRequisiteImpl with ActiveFeat with Tactical with FreeFeat {
   self: GeneralFeat =>
-    override def coolDown: Option[Duration] = Some(Duration.ofSeconds(10))
+  override def coolDown: Option[Duration] = Some(Duration.ofSeconds(10))
 }

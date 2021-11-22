@@ -19,20 +19,13 @@ package io.truthencode.ddo.model.feats
 
 import io.truthencode.ddo.model.classes.HeroicCharacterClass
 import io.truthencode.ddo.model.classes.HeroicCharacterClass.Warlock
-import io.truthencode.ddo.support.requisite.{
-  FeatRequisiteImpl,
-  GrantsToClass,
-  RequiresAllOfClass
-}
+import io.truthencode.ddo.support.requisite.{FeatRequisiteImpl, GrantsToClass, RequiresAllOfClass}
 
 /**
-  * 1d4 damage from your Eldritch Blast
-  */
-protected[feats] trait DeceiveItem
-    extends FeatRequisiteImpl
-    with Passive
-    with RequiresAllOfClass
-    with GrantsToClass { self: ClassFeat =>
+ * 1d4 damage from your Eldritch Blast
+ */
+protected[feats] trait DeceiveItem extends FeatRequisiteImpl with Passive with RequiresAllOfClass with GrantsToClass {
+  self: ClassFeat =>
   private def warlockLevels = List(2, 13)
   override def grantToClass: Seq[(HeroicCharacterClass, Int)] =
     warlockLevels.map((Warlock, _))

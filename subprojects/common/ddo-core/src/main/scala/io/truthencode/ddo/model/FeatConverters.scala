@@ -18,41 +18,29 @@
 package io.truthencode.ddo.model
 
 import io.truthencode.ddo.model.feats.{GeneralFeat, SubFeat}
-import io.truthencode.ddo.model.item.weapon.{
-  ExoticWeapon,
-  MartialWeapon,
-  SimpleWeapon,
-  WeaponCategory
-}
+import io.truthencode.ddo.model.item.weapon.{ExoticWeapon, MartialWeapon, SimpleWeapon, WeaponCategory}
 
 /**
-  * Created by adarr on 4/1/2017.
-  */
+ * Created by adarr on 4/1/2017.
+ */
 object FeatConverters {
 
-  val featByWeaponProficiency
-    : PartialFunction[WeaponCategory, GeneralFeat with SubFeat] = {
+  val featByWeaponProficiency: PartialFunction[WeaponCategory, GeneralFeat with SubFeat] = {
     case x: SimpleWeapon
-        if GeneralFeat.SimpleWeaponProficiency.subFeats.exists(p =>
-          p.displayText.contains(x.displayText)) =>
-      GeneralFeat.SimpleWeaponProficiency.subFeats.find(p =>
-        p.displayText.contains(x.displayText)) match {
+        if GeneralFeat.SimpleWeaponProficiency.subFeats.exists(p => p.displayText.contains(x.displayText)) =>
+      GeneralFeat.SimpleWeaponProficiency.subFeats.find(p => p.displayText.contains(x.displayText)) match {
         case Some(f: GeneralFeat with SubFeat) => f
       }
 
     case x: MartialWeapon
-        if GeneralFeat.MartialWeaponProficiency.subFeats.exists(p =>
-          p.displayText.contains(x.displayText)) =>
-      GeneralFeat.MartialWeaponProficiency.subFeats.find(p =>
-        p.displayText.contains(x.displayText)) match {
+        if GeneralFeat.MartialWeaponProficiency.subFeats.exists(p => p.displayText.contains(x.displayText)) =>
+      GeneralFeat.MartialWeaponProficiency.subFeats.find(p => p.displayText.contains(x.displayText)) match {
         case Some(f: GeneralFeat with SubFeat) => f
       }
 
     case x: ExoticWeapon
-        if GeneralFeat.ExoticWeaponProficiency.subFeats.exists(p =>
-          p.displayText.contains(x.displayText)) =>
-      GeneralFeat.ExoticWeaponProficiency.subFeats.find(p =>
-        p.displayText.contains(x.displayText)) match {
+        if GeneralFeat.ExoticWeaponProficiency.subFeats.exists(p => p.displayText.contains(x.displayText)) =>
+      GeneralFeat.ExoticWeaponProficiency.subFeats.find(p => p.displayText.contains(x.displayText)) match {
         case Some(f: GeneralFeat with SubFeat) => f
       }
 

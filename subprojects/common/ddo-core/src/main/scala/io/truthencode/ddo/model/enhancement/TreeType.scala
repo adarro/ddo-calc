@@ -23,29 +23,29 @@ import io.truthencode.ddo.support.naming.{Description, DisplayName}
 
 import scala.collection.immutable
 
-sealed trait TreeType extends EnumEntry with Description with  DisplayName  {
+sealed trait TreeType extends EnumEntry with Description with DisplayName {
   override protected def nameSource: String =
     entryName.splitByCase.toPascalCase
 }
 
 /**
-  * Universal Trees are available to all classes / races but may require VIP / Favor
-  */
+ * Universal Trees are available to all classes / races but may require VIP / Favor
+ */
 trait Universal extends TreeType
 
 /**
-  * Racial trees are available to the specific character race
-  */
+ * Racial trees are available to the specific character race
+ */
 trait Racial extends TreeType
 
 /**
-  * Class based trees are available based on having at least one level in the given class.
-  */
+ * Class based trees are available based on having at least one level in the given class.
+ */
 trait ClassBased extends TreeType
 
 /**
-  * Enhancements based on Reaper Difficulties which use Survival points
-  */
+ * Enhancements based on Reaper Difficulties which use Survival points
+ */
 trait Reaper extends TreeType
 
 object TreeType extends Enum[TreeType] {

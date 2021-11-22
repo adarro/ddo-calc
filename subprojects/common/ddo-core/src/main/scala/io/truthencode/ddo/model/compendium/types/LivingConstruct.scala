@@ -18,8 +18,8 @@
 package io.truthencode.ddo.model.compendium.types
 
 /**
-  * Created by adarr on 3/25/2017.
-  */
+ * Created by adarr on 3/25/2017.
+ */
 trait LivingConstruct extends MainType {
   override val mainTypes = Some(MonsterType.LivingConstruct)
 }

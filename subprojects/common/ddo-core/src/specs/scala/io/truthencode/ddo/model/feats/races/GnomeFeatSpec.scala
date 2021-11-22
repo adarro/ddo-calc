@@ -23,6 +23,6 @@ import org.concordion.integration.junit4.ConcordionRunner
 import org.junit.runner.RunWith
 
 @RunWith(classOf[ConcordionRunner])
-class GnomeFeatSpec extends RaceSupport{
+class GnomeFeatSpec extends RaceSupport {
   override val raceId: Race = Race.Gnome
 }

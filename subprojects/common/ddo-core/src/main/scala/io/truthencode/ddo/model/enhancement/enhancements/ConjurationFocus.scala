@@ -23,16 +23,15 @@ trait ConjurationFocus extends BombardierTierFive with ClassEnhancementImpl {
   override lazy val description: Option[String] = Some("+2 to Conjuration DCs")
 
   /**
-    * Some enhancements have multiple ranks.
-    * This is the cost for each rank.
-    * Older versions had increasing costs which has been streamlined to a linear progression.
-    *
-    * @return
-    */
+   * Some enhancements have multiple ranks. This is the cost for each rank. Older versions had increasing costs which
+   * has been streamlined to a linear progression.
+   *
+   * @return
+   */
   override def apCostPerRank: Int = 2
 
   /**
-    * Some enhancements can be taken multiple times (generally up to three)
-    */
+   * Some enhancements can be taken multiple times (generally up to three)
+   */
   override val ranks: Int = 1
 }

@@ -23,22 +23,23 @@ import io.truthencode.ddo.support.IndexedEnum
 import scala.collection.immutable
 
 /**
-  * Determines when or how an effect occurs
-  */
+ * Determines when or how an effect occurs
+ */
 sealed trait TriggerEvent extends EnumEntry
 
 /**
-  * Empty Interface that denotes a given effect is "Always On"
-  */
+ * Empty Interface that denotes a given effect is "Always On"
+ */
 trait PassiveEvent extends TriggerEvent
 
 /**
-  * Event occurs based on some event
-  */
+ * Event occurs based on some event
+ */
 trait ActiveEvent extends TriggerEvent
 
 /**
- * @todo Need to add Hitpoint level (Percent) for events triggered when below 50% health etc.
+ * @todo
+ *   Need to add Hitpoint level (Percent) for events triggered when below 50% health etc.
  */
 object TriggerEvent extends IndexedEnum[TriggerEvent] {
   @volatile
@@ -46,90 +47,91 @@ object TriggerEvent extends IndexedEnum[TriggerEvent] {
   case object Passive extends PassiveEvent
 
   /**
-    * Occurs on every attack
-    */
+   * Occurs on every attack
+   */
   case object OnAttack extends ActiveEvent
 
   /**
-    * Occurs on a specific range of attack rolls
-    */
+   * Occurs on a specific range of attack rolls
+   */
   case object OnAttackRoll extends ActiveEvent
 
   /**
-    * Occurs when you are damaged (hit)
-    */
+   * Occurs when you are damaged (hit)
+   */
   case object OnDamage extends ActiveEvent
 
   /**
-    * Occurs when you are hit by a spell
-    */
+   * Occurs when you are hit by a spell
+   */
   case object OnSpellHit extends ActiveEvent
 
   /**
-    * Occurs when you cast a spell
-    */
+   * Occurs when you cast a spell
+   */
   case object OnSpellCast extends ActiveEvent
 
   /**
-    * Occurs when you activate a SLA (Spell like ability)
-    */
+   * Occurs when you activate a SLA (Spell like ability)
+   */
   case object OnSpellLikeAbility extends ActiveEvent
 
   /**
-    * Occurs when you play a song (Bard or Epic Destiny)
-    */
+   * Occurs when you play a song (Bard or Epic Destiny)
+   */
   case object OnSong extends ActiveEvent
 
   /**
-    * Occurs when you are killed
-    */
+   * Occurs when you are killed
+   */
   case object OnDeath extends ActiveEvent
 
   /**
-    * Occurs when you are incapacited
-    *
-    * Hit points fall below 0
-    */
+   * Occurs when you are incapacited
+   *
+   * Hit points fall below 0
+   */
   case object OnIncapacitated extends ActiveEvent
 
   /**
-    * Occurs upon waking from rest / shrine
-    */
+   * Occurs upon waking from rest / shrine
+   */
   case object OnRest extends ActiveEvent
 
   /**
-    * For lack of a better word, this is a rough translation of "Not Incapacitated" for effects that work unless you're
-    * helpless / incapacitated such as Aura of Courage
-    */
+   * For lack of a better word, this is a rough translation of "Not Incapacitated" for effects that work unless you're
+   * helpless / incapacitated such as Aura of Courage
+   */
   case object OnHealthy extends ActiveEvent
 
   /**
-    * Can be toggled on / off as desired
-    */
+   * Can be toggled on / off as desired
+   */
   case object OnToggle extends ActiveEvent
 
   /**
-    * Activated At Will / Button press such as Kick / Sunder and may have a cool-down
-    */
+   * Activated At Will / Button press such as Kick / Sunder and may have a cool-down
+   */
   case object AtWill extends ActiveEvent
 
   /**
-    * Activated while in a Tavern, generally only applies to Healing / Recovery such as the Goodberry spell or Broccoli
-    */
+   * Activated while in a Tavern, generally only applies to Healing / Recovery such as the Goodberry spell or Broccoli
+   */
   case object InTavern extends ActiveEvent
 
   /**
-    * [[https://ddowiki.com/page/Melee_special_attack Special Melee and Tactical attacks]] such as Trip, Sunder, Stunning / Slicing blow
-    */
+   * [[https://ddowiki.com/page/Melee_special_attack Special Melee and Tactical attacks]] such as Trip, Sunder, Stunning
+   * / Slicing blow
+   */
   case object SpecialAttack extends ActiveEvent
 
-    /**
-     * Occurs to summon (pet / monster etc)
-     */
+  /**
+   * Occurs to summon (pet / monster etc)
+   */
   case object Summon extends ActiveEvent
 
-    /**
-     * Occurs when changing form such as Druid Wild Shape
-     */
+  /**
+   * Occurs when changing form such as Druid Wild Shape
+   */
   case object ShapeChange extends ActiveEvent
 }

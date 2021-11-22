@@ -22,7 +22,12 @@ import java.util
 import com.typesafe.scalalogging.LazyLogging
 import enumeratum.{Enum, EnumEntry}
 import io.truthencode.ddo.model.classes.HeroicCharacterClass
-import io.truthencode.ddo.model.feats.{ClassFeatDisplayHelper, ClassRestricted, EpicFeatFeatDisplayHelper, SubFeatInformation}
+import io.truthencode.ddo.model.feats.{
+  ClassFeatDisplayHelper,
+  ClassRestricted,
+  EpicFeatFeatDisplayHelper,
+  SubFeatInformation
+}
 import io.truthencode.ddo.support.naming.{Description, DisplayName, DisplayProperties, FriendlyDisplay}
 import io.truthencode.ddo.support.requisite.ClassRequisite
 import org.concordion.integration.junit4.ConcordionRunner
@@ -66,9 +71,9 @@ class EpicClassFeatSpec extends LazyLogging {
     logger.info(s"Verify instance $instanceClass")
     val h = findHelper
 
-    val y: Seq[Entry] = h.enum.values collect h.existing
+    val y: Seq[Entry] = h.enum.values.collect(h.existing)
     logger.info(s"count from existing ${y.size}")
-    val z = y collect h.filterByCategory
+    val z = y.collect(h.filterByCategory)
     logger.info(s"count from filterByCategory ${z.size}")
     z.map(_.displayText).asJava
   }
@@ -81,16 +86,16 @@ class EpicClassFeatSpec extends LazyLogging {
     new ClassFeatDisplayHelper with EpicFeatFeatDisplayHelper {
       override val cClass: HeroicCharacterClass =
         instanceClass.getOrElse(HeroicCharacterClass.Artificer)
-      override val filterByCategory: PartialFunction[Entry, Entry] = {
-        case x: ClassRestricted => x
+      override val filterByCategory: PartialFunction[Entry, Entry] = { case x: ClassRestricted =>
+        x
       }
 
       override def verify(): util.List[String] = {
         logger.info(s"Verify instance $instanceClass")
 
-        val y: Seq[Entry] = enum.values collect existing
+        val y: Seq[Entry] = enum.values.collect(existing)
         logger.info(s"count from existing ${y.size}")
-        val z = y collect filterByCategory
+        val z = y.collect(filterByCategory)
         logger.info(s"count from filterByCategory ${z.size}")
         z.map(_.displayText).asJava
       }

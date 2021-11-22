@@ -20,6 +20,6 @@ package io.truthencode.ddo.support.slots.item.randomloot
 import io.truthencode.ddo.support.slots.item.{ItemSlot, RandomLootGen}
 
 /**
-  * Created by adarr on 5/5/2017.
-  */
+ * Created by adarr on 5/5/2017.
+ */
 trait RandomSuffix extends ItemSlot with RandomLootGen

@@ -27,14 +27,14 @@ trait ArcaneOil extends BombardierCore with ClassEnhancementImpl {
 
   override lazy val description: Option[String] = Some(
     """All equipped weapons are considered Spellcasting Implements.
-        |While in Pyrite Reaction, you gain +5 Fire, Cold, Electric, Acid, and Poison Spell Power.""".stripMargin
+      |While in Pyrite Reaction, you gain +5 Fire, Cold, Electric, Acid, and Poison Spell Power.""".stripMargin
   )
 
   override def apCostPerRank: Int = 1
 
   /**
-    * Some enhancements can be taken multiple times (generally up to three)
-    */
+   * Some enhancements can be taken multiple times (generally up to three)
+   */
   override val ranks: Int = 1
 
   override def allOfClass: Seq[(HeroicCharacterClass, Int)] = Seq((Alchemist, 3))

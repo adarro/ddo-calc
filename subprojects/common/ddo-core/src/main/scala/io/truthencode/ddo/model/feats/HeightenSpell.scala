@@ -21,16 +21,13 @@ import io.truthencode.ddo.model.classes.HeroicCharacterClass
 import io.truthencode.ddo.support.requisite.{FeatRequisiteImpl, RequiresAnyOfClass}
 
 /**
-  * Created by adarr on 2/21/2017.
-  *
-  * @todo Need to add requirement to cast 2nd level spells
-  */
+ * Created by adarr on 2/21/2017.
+ *
+ * @todo
+ *   Need to add requirement to cast 2nd level spells
+ */
 trait HeightenSpell
-    extends FeatRequisiteImpl
-    with MetaMagic
-    with RequiresAnyOfClass
-    with ArtificerBonusFeat
-    with AlchemistBonusFeat {
+  extends FeatRequisiteImpl with MetaMagic with RequiresAnyOfClass with ArtificerBonusFeat with AlchemistBonusFeat {
   self: MetaMagicFeat =>
 
   override def anyOfClass: Seq[(HeroicCharacterClass, Int)] =

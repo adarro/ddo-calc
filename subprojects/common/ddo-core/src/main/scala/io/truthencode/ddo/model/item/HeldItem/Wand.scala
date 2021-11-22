@@ -22,7 +22,8 @@ import io.truthencode.ddo.model.item.WearableItem
 
 trait Wand extends WearableItem with Wearable {
 
-  /** A bitmask that corresponds to one or more [io.truthencode.ddo.WearLocation] values.
-    */
+  /**
+   * A bitmask that corresponds to one or more [io.truthencode.ddo.WearLocation] values.
+   */
   override def allowedWearLocationFlags: Int = WearLocation.MainHand.bitValue
 }

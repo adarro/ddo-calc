@@ -24,14 +24,11 @@ import io.truthencode.ddo.support.requisite.{ClassRequisiteImpl, FeatRequisiteIm
 /**
  * You can use Intelligence for Will saves. Mutually exclusive with [[https://ddowiki.com/page/Liquid_Courage]]
  *
- * @see [[https://ddowiki.com/page/Tough_Tincture]]
+ * @see
+ *   [[https://ddowiki.com/page/Tough_Tincture]]
  */
 protected[feats] trait ToughTincture
-  extends FeatRequisiteImpl
-    with ClassRequisiteImpl
-    with RequiresAllOfClass
-    with AlchemistBonusFeat
-    with Passive {
+  extends FeatRequisiteImpl with ClassRequisiteImpl with RequiresAllOfClass with AlchemistBonusFeat with Passive {
   self: ClassFeat =>
   private[this] val cls = (Alchemist, 8)
 

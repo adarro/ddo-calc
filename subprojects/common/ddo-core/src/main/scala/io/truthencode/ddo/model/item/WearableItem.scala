@@ -23,6 +23,6 @@ import io.truthencode.ddo.Wearable
  * An Item that can be worn / equipped
  */
 trait WearableItem extends Item {
-  self : Wearable =>
+  self: Wearable =>
 
 }

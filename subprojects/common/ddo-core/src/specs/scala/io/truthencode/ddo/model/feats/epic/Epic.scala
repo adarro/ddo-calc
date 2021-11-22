@@ -17,7 +17,7 @@
  */
 package io.truthencode.ddo.model.feats.epic
 
-import io.truthencode.ddo.model.feats.{FeatDisplayHelper, Feat}
+import io.truthencode.ddo.model.feats.{Feat, FeatDisplayHelper}
 import io.truthencode.ddo.testoptions.DefaultFlexmark
 import org.concordion.api.FullOGNL
 import org.concordion.api.option.{ConcordionOptions, MarkdownExtensions}

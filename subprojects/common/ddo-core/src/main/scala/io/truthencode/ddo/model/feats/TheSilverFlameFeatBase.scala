@@ -20,8 +20,8 @@ package io.truthencode.ddo.model.feats
 import io.truthencode.ddo.model.religions.{Religion, SilverFlame}
 
 /**
-  * Created by adarr on 5/2/2017.
-  */
+ * Created by adarr on 5/2/2017.
+ */
 trait TheSilverFlameFeatBase extends ReligionFeatBase { self: SilverFlame =>
   abstract override def allowedReligions: List[Religion] =
     super.allowedReligions ++ List(Religion.SilverFlame)

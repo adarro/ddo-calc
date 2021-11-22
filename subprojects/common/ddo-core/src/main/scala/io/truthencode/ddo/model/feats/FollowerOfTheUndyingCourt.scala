@@ -21,13 +21,8 @@ import io.truthencode.ddo.model.religions.UndyingCourt
 import io.truthencode.ddo.support.requisite.FeatRequisiteImpl
 
 /**
-  * Created by adarr on 4/7/2017.
-  */
+ * Created by adarr on 4/7/2017.
+ */
 trait FollowerOfTheUndyingCourt
-    extends FeatRequisiteImpl
-    with EberronReligionNonWarforged
-    with FollowerBase
-    with UndyingCourt
-    with TheUndyingCourtFeatBase { self: DeityFeat =>
-
-}
+  extends FeatRequisiteImpl with EberronReligionNonWarforged with FollowerBase with UndyingCourt
+  with TheUndyingCourtFeatBase { self: DeityFeat => }

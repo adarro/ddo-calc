@@ -23,23 +23,18 @@ import io.truthencode.ddo.model.item.weapon.WeaponCategory
 import io.truthencode.ddo.model.race.Race
 import io.truthencode.ddo.support.requisite._
 
-/** Shuriken Expertise.PNG
-  * Shuriken Expertise 	Passive 	You are skilled with the use of the shuriken, and have a chance to throw an additional one per throw. (Percent chance to throw an additional shuriken is equal to your Dexterity.) This is also a racial feat given to all Drow Elf at level 1, regardless of class.
-  * *
-  * Dexterity 13
-  * MustContainAtLeastOne of: Proficiency: Shuriken or
-  * Half-Elf Dilettante: Monk AND Dex 13
-  * Or: Drow
-  *
-  * @todo Apply multi-conditional logic dor Shuriken Expertise
-  **/
+/**
+ * Shuriken Expertise.PNG Shuriken Expertise Passive You are skilled with the use of the shuriken, and have a chance to
+ * throw an additional one per throw. (Percent chance to throw an additional shuriken is equal to your Dexterity.) This
+ * is also a racial feat given to all Drow Elf at level 1, regardless of class. * Dexterity 13 MustContainAtLeastOne of:
+ * Proficiency: Shuriken or Half-Elf Dilettante: Monk AND Dex 13 Or: Drow
+ *
+ * @todo
+ *   Apply multi-conditional logic dor Shuriken Expertise
+ */
 protected[feats] trait ShurikenExpertise
-  extends FeatRequisiteImpl
-    with RaceRequisiteImpl
-    with Passive
-    with RequiresAttribute
-    with RequiresAnyOfFeat
-    with MartialArtsFeat {
+  extends FeatRequisiteImpl with RaceRequisiteImpl with Passive with RequiresAttribute with RequiresAnyOfFeat
+  with MartialArtsFeat {
   self: GeneralFeat =>
   override def requiresAttribute: Seq[(Attribute, Int)] =
     List((Attribute.Dexterity, 13))
@@ -47,9 +42,8 @@ protected[feats] trait ShurikenExpertise
   override def anyOfFeats: Seq[Feat] =
     exotic :+ RacialFeat.HalfElfDilettanteMonk
 
-  private def exotic = GeneralFeat.exoticWeaponProficiencies collect {
-    case x: ExoticWeaponProficiency
-      if x.weapon.headOption.contains(WeaponCategory.Shuriken) =>
+  private def exotic = GeneralFeat.exoticWeaponProficiencies.collect {
+    case x: ExoticWeaponProficiency if x.weapon.headOption.contains(WeaponCategory.Shuriken) =>
       x
   }
 

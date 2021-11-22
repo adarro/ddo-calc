@@ -21,16 +21,15 @@ description = "Common misc String and convenience Utilities"
 plugins {
     id("scala-profiles")
     id("acceptance-test-conventions")
-    id("org.scoverage")  // version "3.1.5"
 }
 
 dependencies {
     dependencies {
-        /* Platform dependent */
-        // https://mvnrepository.com/artifact/org.json4s/json4s-native
-        implementation(group = "org.json4s", name = "json4s-native_2.12", version = "3.6.7")
         val scalaLibraryVersion: String by project
         val scalaMajorVersion: String by project
+        /* Platform dependent */
+        // https://mvnrepository.com/artifact/org.json4s/json4s-native
+        implementation(group = "org.json4s", name = "json4s-native_$scalaMajorVersion", version = "4.0.3")
 
         implementation(platform(project(":ddo-platform-scala")))
         implementation("org.scala-lang:scala-library:$scalaLibraryVersion")
@@ -38,11 +37,11 @@ dependencies {
         implementation(group = "com.typesafe", name = "config")
         implementation(group = "com.github.kxbmap", name = "configs_$scalaMajorVersion")
         // validation and rules
-        implementation(group = "com.wix", name = "accord-core_2.12")
+        implementation(group = "com.wix", name = "accord-core_$scalaMajorVersion")
         implementation(group = "ch.qos.logback", name = "logback-classic")
         implementation(group = "com.typesafe.scala-logging", name = "scala-logging_$scalaMajorVersion")
         testImplementation(group = "org.scalatest", name = "scalatest_$scalaMajorVersion")
-        testImplementation(group = "org.mockito", name = "mockito-all")
+        testImplementation(group = "org.mockito", name = "mockito-core")
 
         // JUnit 5
         testRuntimeOnly(group = "org.junit.platform", name = "junit-platform-engine")

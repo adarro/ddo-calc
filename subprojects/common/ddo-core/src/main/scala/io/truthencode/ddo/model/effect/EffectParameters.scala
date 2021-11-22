@@ -17,7 +17,7 @@
  */
 package io.truthencode.ddo.model.effect
 
-import enumeratum.{EnumEntry, Enum => SmartEnum}
+import enumeratum.{Enum => SmartEnum, EnumEntry}
 import io.truthencode.ddo.enhancement.{BonusType => Bonus}
 import io.truthencode.ddo.model.attribute.Attribute
 import io.truthencode.ddo.repo.Repo
@@ -26,37 +26,38 @@ import io.truthencode.ddo.support.ModifierStrategy
 import scala.collection.immutable
 
 /**
-  * Enumerates the possible parameter types allowed for an effect such as the Trigger, Type of bonus etc
-  */
+ * Enumerates the possible parameter types allowed for an effect such as the Trigger, Type of bonus etc
+ */
 sealed trait EffectParameter extends EnumEntry with SearchPattern
 
 trait DifficultyCheck extends EffectParameter {
 
   /**
-    * The base difficulty check value (before modifiers such as Strength or any Feats / buffs etc.  I.e. For the Trip Feat, it is a base DC of 10
-    * @return initial base Difficulty value
-    */
+   * The base difficulty check value (before modifiers such as Strength or any Feats / buffs etc. I.e. For the Trip
+   * Feat, it is a base DC of 10
+   * @return
+   *   initial base Difficulty value
+   */
   def baseDC: Int
 
   /**
-    * List of Attributes to base modifiers.  In a general terms, the highest or lowest value will apply.
-    * @return list of attributes used to modify the check value.
-    */
+   * List of Attributes to base modifiers. In a general terms, the highest or lowest value will apply.
+   * @return
+   *   list of attributes used to modify the check value.
+   */
   def statModifier: List[Attribute]
   def modifierStrategy: ModifierStrategy
   def DC(implicit repo: Repo): Int = calculateDC
   def calculateDC(implicit repo: Repo): Int
 }
 
-object EffectParameter
-    extends SmartEnum[EffectParameter]
-    with Searchable[EffectParameter] {
+object EffectParameter extends SmartEnum[EffectParameter] with Searchable[EffectParameter] {
   val values = findValues ++ bonusTypes ++ triggerEvents
   case class Trigger(triggerEvent: TriggerEvent) extends EffectParameter
   def triggerEvents: immutable.IndexedSeq[Trigger] =
     for { t <- TriggerEvent.values } yield Trigger(t)
   case class BonusType(bonus: Bonus) extends EffectParameter {
-      override def searchPattern(target: String): String = s"BonusType($target)"
+    override def searchPattern(target: String): String = s"BonusType($target)"
   }
   def bonusTypes: immutable.IndexedSeq[BonusType] =
     for { b <- Bonus.values } yield BonusType(b)

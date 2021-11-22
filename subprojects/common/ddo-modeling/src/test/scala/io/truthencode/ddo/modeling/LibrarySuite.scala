@@ -20,10 +20,9 @@
  */
 package io.truthencode.ddo.modeling
 
-import org.scalatest.FunSuite
+import org.scalatest.funsuite.AnyFunSuite
 
-
-class LibrarySuite extends FunSuite {
+class LibrarySuite extends AnyFunSuite {
   test("someLibraryMethod is always true") {
     def library: Library = new Library()
     assert(library.someLibraryMethod())

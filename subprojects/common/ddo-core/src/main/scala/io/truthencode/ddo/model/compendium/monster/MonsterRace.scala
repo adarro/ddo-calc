@@ -23,12 +23,11 @@ import io.truthencode.ddo.model.compendium.types._
 import scala.collection.immutable
 
 /**
-  * Created by adarr on 3/25/2017.
-  */
+ * Created by adarr on 3/25/2017.
+ */
 sealed trait MonsterRace extends EnumEntry with MainTypeImpl {
 
-  lazy val subRaces : List[SubRace] = Nil
-
+  lazy val subRaces: List[SubRace] = Nil
 
 }
 // scalastyle:off number.of.methods
@@ -66,7 +65,7 @@ object MonsterRace extends Enum[MonsterRace] {
   case object WhiteDragon extends MonsterRace with Dragons
   case object Duergar extends MonsterRace with Dwarves
   case object Dwarf extends MonsterRace with Dwarves
-  case object Mephit extends MonsterRace //with AirOutsiders with FireOutsiders with EarthOutsiders
+  case object Mephit extends MonsterRace // with AirOutsiders with FireOutsiders with EarthOutsiders
   case object AirElemental extends MonsterRace with Elementals
   case object EarthElemental extends MonsterRace with Elementals
   case object FireElemental extends MonsterRace with Elementals
@@ -93,7 +92,7 @@ object MonsterRace extends Enum[MonsterRace] {
 //  case object Bat extends MonsterRace
   case object FiendishScorpion extends MonsterRace with MagicalBeasts
   case object FiendishSpider extends MonsterRace with MagicalBeasts
- // case object Hyena extends MonsterRace
+  // case object Hyena extends MonsterRace
 //  case object Lion extends MonsterRace
   case object Panther extends MonsterRace
   case object PurpleWorm extends MonsterRace

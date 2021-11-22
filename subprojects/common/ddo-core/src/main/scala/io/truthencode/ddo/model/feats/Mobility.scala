@@ -19,20 +19,13 @@ package io.truthencode.ddo.model.feats
 
 import io.truthencode.ddo.support.requisite.{FeatRequisiteImpl, RequiresAllOfFeat}
 
-/** Icon Feat Mobility.png
-  * Mobility
-  * Passive
-  * Increases the maximum dexterity bonus permitted by armor and tower shields by 2, and adds a +4 bonus to Armor Class while the character is tumbling.
-  * You will also gain a 2% dodge bonus.
-  * Dodge
-  */
+/**
+ * Icon Feat Mobility.png Mobility Passive Increases the maximum dexterity bonus permitted by armor and tower shields by
+ * 2, and adds a +4 bonus to Armor Class while the character is tumbling. You will also gain a 2% dodge bonus. Dodge
+ */
 trait Mobility
-    extends FeatRequisiteImpl
-    with Passive
-    with RequiresAllOfFeat
-    with MartialArtsFeat
-    with FighterBonusFeat
-    with AlchemistBonusFeat {
+  extends FeatRequisiteImpl with Passive with RequiresAllOfFeat with MartialArtsFeat with FighterBonusFeat
+  with AlchemistBonusFeat {
   self: GeneralFeat =>
   override def allOfFeats: Seq[GeneralFeat] = List(GeneralFeat.Dodge)
 }

@@ -22,9 +22,7 @@ import io.truthencode.ddo.support.StringUtils.Extensions
 import io.truthencode.ddo.support.naming.SpellCriticalChancePrefix
 
 trait SpellCriticalChancePositiveAndNegativeIII
-    extends ApothecaryTierThree
-    with ClassEnhancementImpl
-    with SpellCriticalChancePrefix {
+  extends ApothecaryTierThree with ClassEnhancementImpl with SpellCriticalChancePrefix {
 
   override lazy val description: Option[String] =
     Some(
@@ -32,8 +30,8 @@ trait SpellCriticalChancePositiveAndNegativeIII
     )
 
   /**
-    * Some enhancements can be taken multiple times (generally up to three)
-    */
+   * Some enhancements can be taken multiple times (generally up to three)
+   */
   override val ranks: Int = 1
 
   override protected def nameSource: String = "Positive & Negative III".replaceRomanNumerals

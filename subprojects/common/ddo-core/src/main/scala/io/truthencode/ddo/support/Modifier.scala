@@ -18,6 +18,6 @@
 package io.truthencode.ddo.support
 
 /**
-  * A Base Trait used for modifying Stats and Scores.
-  */
+ * A Base Trait used for modifying Stats and Scores.
+ */
 trait Modifier

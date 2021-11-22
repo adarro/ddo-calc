@@ -23,18 +23,12 @@ import io.truthencode.ddo.activation.AtWillEvent
 import io.truthencode.ddo.support.requisite.{FeatRequisiteImpl, FreeFeat}
 
 /**
-  * Icon Feat Stunning Blow.png
-  * [[https://ddowiki.com/page/Stunning_Blow Stunning Blow]]
-  * Active - Special Attack
-  * This feat has a chance to stun the target for 6 seconds if it fails a DC (10 + Str mod) Fortitude save.
-  * Some creatures may be immune to the stunning effect.
-  */
+ * Icon Feat Stunning Blow.png [[https://ddowiki.com/page/Stunning_Blow Stunning Blow]] Active - Special Attack This
+ * feat has a chance to stun the target for 6 seconds if it fails a DC (10 + Str mod) Fortitude save. Some creatures may
+ * be immune to the stunning effect.
+ */
 protected[feats] trait StunningBlow
-    extends FeatRequisiteImpl
-    with ActiveFeat
-    with FreeFeat
-    with Tactical
-    with FighterBonusFeat {
+  extends FeatRequisiteImpl with ActiveFeat with FreeFeat with Tactical with FighterBonusFeat {
   self: GeneralFeat =>
   override def coolDown: Option[Duration] = Some(Duration.ofSeconds(15))
 }

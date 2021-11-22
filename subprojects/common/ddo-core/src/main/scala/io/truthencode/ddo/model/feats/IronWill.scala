@@ -19,14 +19,9 @@ package io.truthencode.ddo.model.feats
 
 import io.truthencode.ddo.support.requisite.{FeatRequisiteImpl, FreeFeat}
 
-/** Icon Feat Iron Will.png
-  * Iron Will 	Passive 	Grants a +2 bonus to Will saves.
-  * *
-  * None
-  * */
-trait IronWill extends FeatRequisiteImpl
-  with Passive
-  with FreeFeat
-  with MartialArtsFeat {
+/**
+ * Icon Feat Iron Will.png Iron Will Passive Grants a +2 bonus to Will saves. * None
+ */
+trait IronWill extends FeatRequisiteImpl with Passive with FreeFeat with MartialArtsFeat {
   self: GeneralFeat =>
 }

@@ -26,20 +26,15 @@ import io.truthencode.ddo.model.misc.CoolDown
 import io.truthencode.ddo.support.requisite.{FeatRequisiteImpl, FreeFeat, GrantsToClass}
 
 /**
- * [[https://ddowiki.com/page/Favored_Enemy Favored Enemy]]
-  *Activate this ability to lower an animal's or beast's aggression, effectively mesmerizing them.
-  *
-  * Target: Enemy animals and magical beasts
-  * Duration: 5 Min
-  * Save: Will
-  */
+ * [[https://ddowiki.com/page/Favored_Enemy Favored Enemy]] Activate this ability to lower an animal's or beast's
+ * aggression, effectively mesmerizing them.
+ *
+ * Target: Enemy animals and magical beasts Duration: 5 Min Save: Will
+ */
 protected[feats] trait FavoredEnemy
-    extends FeatRequisiteImpl
-    with Passive
-    with GrantsToClass with CoolDown
-    with FreeFeat { self: MainType =>
+  extends FeatRequisiteImpl with Passive with GrantsToClass with CoolDown with FreeFeat { self: MainType =>
   override def grantToClass: Seq[(HeroicCharacterClass, Int)] =
     List((Ranger, 1))
 
-    override def coolDown: Option[Duration] = Some(Duration.ofMinutes(5))
+  override def coolDown: Option[Duration] = Some(Duration.ofMinutes(5))
 }

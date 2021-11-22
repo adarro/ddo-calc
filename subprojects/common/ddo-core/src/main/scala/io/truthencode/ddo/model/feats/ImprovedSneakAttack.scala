@@ -25,17 +25,13 @@ import io.truthencode.ddo.support.requisite._
 import scala.collection.immutable
 
 /**
-  * Created by adarr on 4/6/2017.
-  */
+ * Created by adarr on 4/6/2017.
+ */
 trait ImprovedSneakAttack
-    extends FeatRequisiteImpl
-    with ClassRequisiteImpl
-    with RequiresAllOfClass
-    with RequiresAttribute
-    with Passive
-    with ClassRestricted {
+  extends FeatRequisiteImpl with ClassRequisiteImpl with RequiresAllOfClass with RequiresAttribute with Passive
+  with ClassRestricted {
   override def allOfClass: immutable.Seq[(HeroicCharacterClass, Int)] =
     List((Rogue, 12))
 
-  override def requiresAttribute: Seq[(Attribute, Int)] = List((Attribute.Dexterity,21))
+  override def requiresAttribute: Seq[(Attribute, Int)] = List((Attribute.Dexterity, 21))
 }

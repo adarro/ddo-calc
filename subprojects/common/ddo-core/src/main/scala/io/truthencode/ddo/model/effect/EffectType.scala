@@ -17,7 +17,7 @@
  */
 package io.truthencode.ddo.model.effect
 
-import enumeratum.{EnumEntry, Enum => SmartEnum}
+import enumeratum.{Enum => SmartEnum, EnumEntry}
 
 sealed trait AugmentEffectType extends EnumEntry
 

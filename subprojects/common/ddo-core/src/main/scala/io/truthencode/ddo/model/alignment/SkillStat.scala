@@ -24,25 +24,25 @@ import io.truthencode.ddo.model.stats.StatItem
 trait SkillStat extends StatItem[Skill, Int] {
 
   /**
-    * The starting value for the skill.
-    * This should generally be 0.
-    */
+   * The starting value for the skill. This should generally be 0.
+   */
   val baseValue: Int = 0
 
   /**
-    * Represents the amount of skill points put in during leveling process.
-    */
+   * Represents the amount of skill points put in during leveling process.
+   */
   val trainedRanks: Int
 
   /**
-    * additional points from stats / feats etc.
-    * @return modified bonuses or penalties
-    */
+   * additional points from stats / feats etc.
+   * @return
+   *   modified bonuses or penalties
+   */
   def modValue: Int
 
-    /**
-     * Retrieves attributes such as STR that provide bonuses / penalties.
-     * @return
-     */
+  /**
+   * Retrieves attributes such as STR that provide bonuses / penalties.
+   * @return
+   */
   def linkedAttributes: Set[Attribute] = item.linkedAttribute
 }

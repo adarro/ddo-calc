@@ -21,15 +21,11 @@ import io.truthencode.ddo.model.religions.Silvanus
 import io.truthencode.ddo.support.requisite.{FeatRequisiteImpl, RequiresAllOfFeat}
 
 /**
-  * Created by adarr on 4/7/2017.
-  */
+ * Created by adarr on 4/7/2017.
+ */
 trait ChildOfSilvanus
-    extends FeatRequisiteImpl
-    with ForgottenRealmsReligionNonWarforged
-    with ChildLevelBase
-    with RequiresAllOfFeat
-    with Silvanus
-    with SilvanusFeatBase { self: DeityFeat =>
+  extends FeatRequisiteImpl with ForgottenRealmsReligionNonWarforged with ChildLevelBase with RequiresAllOfFeat
+  with Silvanus with SilvanusFeatBase { self: DeityFeat =>
 
   override def allOfFeats: Seq[Feat] = List(DeityFeat.FavoredBySilvanus)
 }

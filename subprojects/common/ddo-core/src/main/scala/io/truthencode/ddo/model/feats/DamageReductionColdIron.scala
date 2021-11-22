@@ -20,24 +20,14 @@ package io.truthencode.ddo.model.feats
 import io.truthencode.ddo.model.classes.HeroicCharacterClass
 import io.truthencode.ddo.model.classes.HeroicCharacterClass.FavoredSoul
 import io.truthencode.ddo.model.religions.{SovereignHost, UndyingCourt}
-import io.truthencode.ddo.support.requisite.{
-FeatRequisiteImpl,
-RequiresAllOfClass,
-RequiresAnyOfFeat
-}
+import io.truthencode.ddo.support.requisite.{FeatRequisiteImpl, RequiresAllOfClass, RequiresAnyOfFeat}
 
 import scala.collection.immutable
 
 trait DamageReductionColdIron
-  extends FeatRequisiteImpl
-    with EberronReligionNonWarforged
-    with DamageReductionLevelBase
-    with RequiresAnyOfFeat
-    with RequiresAllOfClass
-    with UndyingCourt
-    with TheUndyingCourtFeatBase
-    with SovereignHost
-    with TheSovereignHostFeatBase {
+  extends FeatRequisiteImpl with EberronReligionNonWarforged with DamageReductionLevelBase with RequiresAnyOfFeat
+  with RequiresAllOfClass with UndyingCourt with TheUndyingCourtFeatBase with SovereignHost
+  with TheSovereignHostFeatBase {
   self: DeityFeat =>
 
   override def nameSource: String = "Cold Iron"
@@ -46,6 +36,5 @@ trait DamageReductionColdIron
     List((FavoredSoul, 20))
 
   override def anyOfFeats: Seq[Feat] =
-    List(DeityFeat.BelovedOfTheSovereignHost,
-      DeityFeat.BelovedOfTheUndyingCourt)
+    List(DeityFeat.BelovedOfTheSovereignHost, DeityFeat.BelovedOfTheUndyingCourt)
 }

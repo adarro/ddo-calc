@@ -20,5 +20,5 @@ package io.truthencode.ddo.repo
 import io.truthencode.ddo.model.skill.Skill
 
 trait SkillRepo {
-def get(id:String):Skill
+  def get(id: String): Skill
 }

@@ -24,16 +24,17 @@ import io.truthencode.ddo.support.naming.DisplayName
 import scala.collection.immutable.IndexedSeq
 
 /**
-  * This trait is used to map weapons for purposes such as determining
-  * weapon specialization and should correspond directly to such Feats.
-  */
+ * This trait is used to map weapons for purposes such as determining weapon specialization and should correspond
+ * directly to such Feats.
+ */
 sealed trait WeaponClass extends EnumEntry with DisplayName {
   self: DefaultDeliveryMethod with PhysicalDamage =>
   /**
-    * Sets or maps the source text for the DisplayName.
-    *
-    * @return Source text.
-    */
+   * Sets or maps the source text for the DisplayName.
+   *
+   * @return
+   *   Source text.
+   */
   override protected def nameSource: String = entryName
 }
 
@@ -41,13 +42,13 @@ object WeaponClass extends Enum[WeaponClass] {
 
   case object Bludgeon extends WeaponClassBludgeoning
 
-  case object  Piercing extends WeaponClassPiercing
+  case object Piercing extends WeaponClassPiercing
 
-  case object  Slashing extends WeaponClassSlashing
+  case object Slashing extends WeaponClassSlashing
 
-  case object  Ranged extends WeaponClassRanged
+  case object Ranged extends WeaponClassRanged
 
-  case object  Thrown extends WeaponClassThrown
+  case object Thrown extends WeaponClassThrown
 
   override def values: IndexedSeq[WeaponClass] = findValues
 }
@@ -61,7 +62,6 @@ sealed trait WeaponClassSlashing extends WeaponClass with MeleeDamage with io.tr
 sealed trait WeaponClassRanged extends WeaponClass with RangeDamage with Deferred
 
 sealed trait WeaponClassThrown extends WeaponClass with ThrownDamage with Deferred
-
 
 /* object WeaponClass extends Enum[WeaponClass] {
   case object Bludgeoning extends WeaponClass with MeleeDamage with Bludgeoning

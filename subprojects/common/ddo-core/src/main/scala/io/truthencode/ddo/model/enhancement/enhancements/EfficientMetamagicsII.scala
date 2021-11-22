@@ -22,29 +22,25 @@ import io.truthencode.ddo.support.StringUtils.Extensions
 import io.truthencode.ddo.support.naming.RomanNumeralAffix
 
 // TODO: Need to add mutliselector support similar to Martial Weapon Proficiency:x
-trait EfficientMetamagicsII
-    extends BombardierTierThree
-    with ClassEnhancementImpl
-    with RomanNumeralAffix {
-    override protected def nameSource: String = "Efficient Metamagics"
+trait EfficientMetamagicsII extends BombardierTierThree with ClassEnhancementImpl with RomanNumeralAffix {
+  override protected def nameSource: String = "Efficient Metamagics"
   /**
-    * Some enhancements have multiple ranks.
-    * This is the cost for each rank.
-    * Older versions had increasing costs which has been streamlined to a linear progression.
-    *
-    * @return
-    */
+   * Some enhancements have multiple ranks. This is the cost for each rank. Older versions had increasing costs which
+   * has been streamlined to a linear progression.
+   *
+   * @return
+   */
   override def apCostPerRank: Int = 1
 
   /**
-    * Some enhancements can be taken multiple times (generally up to three)
-    */
+   * Some enhancements can be taken multiple times (generally up to three)
+   */
   override val ranks: Int = 3
 
   /**
-    * Roman Numeral Suffix
-    *
-    * @return
-    */
+   * Roman Numeral Suffix
+   *
+   * @return
+   */
   override def rnSuffix: Int = 2
 }

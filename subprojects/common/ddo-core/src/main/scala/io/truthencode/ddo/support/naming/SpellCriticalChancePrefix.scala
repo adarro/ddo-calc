@@ -18,8 +18,9 @@
 package io.truthencode.ddo.support.naming
 
 /**
-  * TODO: Move prefixes to naming package and out of enhancement as they might be used generically for feats / enhancements etc.
-  */
+ * TODO: Move prefixes to naming package and out of enhancement as they might be used generically for feats /
+ * enhancements etc.
+ */
 trait SpellCriticalChancePrefix extends SpellCriticalPrefix {
   self: DisplayName =>
   override def prefix: Option[String] = Some("Spell Critical Chance")

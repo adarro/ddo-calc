@@ -22,16 +22,12 @@ import io.truthencode.ddo.model.classes.HeroicCharacterClass.Monk
 import io.truthencode.ddo.support.requisite.{FeatRequisiteImpl, GrantsToClass, RequiresAnyOfClass}
 
 /**
-  * Created by adarr on 3/17/2017.
-  */
-trait FlurryOfBlows
-  extends FeatRequisiteImpl
-      with Passive
-      with GrantsToClass
-      with RequiresAnyOfClass {
-    override def grantToClass: Seq[(HeroicCharacterClass, Int)] =
-      List((Monk, 1))
+ * Created by adarr on 3/17/2017.
+ */
+trait FlurryOfBlows extends FeatRequisiteImpl with Passive with GrantsToClass with RequiresAnyOfClass {
+  override def grantToClass: Seq[(HeroicCharacterClass, Int)] =
+    List((Monk, 1))
 
-    override def anyOfClass: Seq[(HeroicCharacterClass, Int)] =
-      List((Monk, 1))
-  }
+  override def anyOfClass: Seq[(HeroicCharacterClass, Int)] =
+    List((Monk, 1))
+}

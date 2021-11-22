@@ -25,26 +25,18 @@ import io.truthencode.ddo.model.misc.SharedCoolDown
 import io.truthencode.ddo.support.requisite._
 
 /**
-  * [[https://ddowiki.com/page/Great_Cleave Great Cleave]]  Active - Special Attack
-  * This feat attacks enemies in a wider arc than Cleave, hence Great Cleave has a greater chance to hit more enemies than Cleave.
-  * This attack deals +2[W] damage.
-  * Cooldown: 6 seconds
-  * Usage: Active
-  * Prerequisites: Cleave
-  * Base Attack Bonus +4
-  *
-  * @note Prior to Update 45, it would also produce a glancing blow to each target (if using an appropriate weapon that allows them).
-  *       Glancing blows have now been replaced by Strikethrough, which does not benefit Cleave or Great Cleave.
-  *
-  */
+ * [[https://ddowiki.com/page/Great_Cleave Great Cleave]] Active - Special Attack This feat attacks enemies in a wider
+ * arc than Cleave, hence Great Cleave has a greater chance to hit more enemies than Cleave. This attack deals +2[W]
+ * damage. Cooldown: 6 seconds Usage: Active Prerequisites: Cleave Base Attack Bonus +4
+ *
+ * @note
+ *   Prior to Update 45, it would also produce a glancing blow to each target (if using an appropriate weapon that
+ *   allows them). Glancing blows have now been replaced by Strikethrough, which does not benefit Cleave or Great
+ *   Cleave.
+ */
 trait GreatCleave
-    extends FeatRequisiteImpl
-    with ActiveFeat
-    with AtWillEvent
-    with SharedCoolDown
-    with RequiresAllOfFeat
-    with RequiresBaB
-    with FighterBonusFeat {
+  extends FeatRequisiteImpl with ActiveFeat with AtWillEvent with SharedCoolDown with RequiresAllOfFeat with RequiresBaB
+  with FighterBonusFeat {
   self: GeneralFeat =>
   override val allOfFeats = List(GeneralFeat.Cleave)
 
@@ -53,9 +45,10 @@ trait GreatCleave
   override def coolDown: Option[Duration] = Some(Duration.ofSeconds(5))
 
   /**
-    * The Minimum Required Base Attack Bonus
-    *
-    * @return Minimum value allowed
-    */
+   * The Minimum Required Base Attack Bonus
+   *
+   * @return
+   *   Minimum value allowed
+   */
   override def requiresBaB: Int = 4
 }

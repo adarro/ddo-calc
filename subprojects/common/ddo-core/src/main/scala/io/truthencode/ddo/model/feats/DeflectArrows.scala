@@ -22,14 +22,10 @@ import io.truthencode.ddo.model.classes.HeroicCharacterClass
 import io.truthencode.ddo.model.classes.HeroicCharacterClass.Monk
 import io.truthencode.ddo.support.requisite.{FeatRequisiteImpl, RequiresAllOfClass, RequiresAttribute}
 
-trait DeflectArrows extends FeatRequisiteImpl
-with RequiresAllOfClass
-  with Passive with RequiresAttribute
-  with  MartialArtsFeat {
+trait DeflectArrows
+  extends FeatRequisiteImpl with RequiresAllOfClass with Passive with RequiresAttribute with MartialArtsFeat {
   self: GeneralFeat =>
   override def requiresAttribute: Seq[(Attribute, Int)] = List((Attribute.Dexterity, 13))
 
-  override def allOfClass: Seq[(HeroicCharacterClass, Int)] = List((Monk,1))
+  override def allOfClass: Seq[(HeroicCharacterClass, Int)] = List((Monk, 1))
 }
-
-

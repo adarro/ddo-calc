@@ -60,6 +60,12 @@ config {
                 roles = listOf("developer", "owner")
             }
         }
+
+        artifacts {
+            minpom {
+                enabled = false
+            }
+        }
     }
 
     licensing {

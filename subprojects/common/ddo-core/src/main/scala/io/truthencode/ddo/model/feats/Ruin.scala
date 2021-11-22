@@ -21,32 +21,19 @@ import io.truthencode.ddo.activation.OnSpellCastEvent
 import io.truthencode.ddo.support.requisite.{FreeFeat, RequiresCharacterLevel}
 
 /**
-  * [[https://ddowiki.com/page/Ruin_(feat) Ruin]]
-  * Name:	Ruin
-  * School:	Transmutation (Force)
-  * Level:	Epic Feats, level 27
-  * Spell Point Cost:	75
-  * Components:	none
-  * Metamagic:	Empower, Maximize, Quicken
-  * Range:	Standard
-  * Target:	Foe
-  * Duration:	Instantaneous
-  * Saving Throw:	No
-  * Spell Resistance:	No
-  * Cooldown:	15 seconds
-  * Description:
-  * Deals 500 untyped damage to a single enemy. (No saving throw.)
-  *
-  * @note Force Spell Power applies to this spell.
-  *       Using metamagic feats increases the cost.
- *       @todo ERRATA: This is a Feat, but metamagic cost etc affect it, so we likely treat it as a spell instead of SLA?
-  *      Created by adarr on 4/3/2017.
-  */
-protected[feats] trait Ruin
-    extends FreeFeat
-    with SpellFeats
-    with OnSpellCastEvent
-    with RequiresCharacterLevel { self: EpicFeat =>
+ * [[https://ddowiki.com/page/Ruin_(feat) Ruin]] Name: Ruin School: Transmutation (Force) Level: Epic Feats, level 27
+ * Spell Point Cost: 75 Components: none Metamagic: Empower, Maximize, Quicken Range: Standard Target: Foe Duration:
+ * Instantaneous Saving Throw: No Spell Resistance: No Cooldown: 15 seconds Description: Deals 500 untyped damage to a
+ * single enemy. (No saving throw.)
+ *
+ * @note
+ *   Force Spell Power applies to this spell. Using metamagic feats increases the cost.
+ * @todo
+ *   ERRATA: This is a Feat, but metamagic cost etc affect it, so we likely treat it as a spell instead of SLA? Created
+ *   by adarr on 4/3/2017.
+ */
+protected[feats] trait Ruin extends FreeFeat with SpellFeats with OnSpellCastEvent with RequiresCharacterLevel {
+  self: EpicFeat =>
 
   final override val characterLevel: Int = 27
 

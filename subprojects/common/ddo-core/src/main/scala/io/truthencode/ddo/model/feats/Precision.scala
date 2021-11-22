@@ -19,32 +19,18 @@ package io.truthencode.ddo.model.feats
 
 import io.truthencode.ddo.model.attribute.Attribute
 import io.truthencode.ddo.model.misc.DefaultCoolDown
-import io.truthencode.ddo.support.requisite.{
-  FeatRequisiteImpl,
-  RequiresAttribute,
-  RequiresBaB
-}
+import io.truthencode.ddo.support.requisite.{FeatRequisiteImpl, RequiresAttribute, RequiresBaB}
 
-/** Icon Feat Precision.png
-  * [[https://ddowiki.com/page/Precision Precision]]
-  * Active - Offensive Combat Stance
-  * While using Precision mode, you gain +5% to hit and reduce the target's fortification against your attacks by 25%.
-  * Cannot be used while raged.
-  * *
-  * Dexterity 13
-  * Base Attack Bonus +1
-  * @todo add Rage Prohibition
-  */
+/**
+ * Icon Feat Precision.png [[https://ddowiki.com/page/Precision Precision]] Active - Offensive Combat Stance While using
+ * Precision mode, you gain +5% to hit and reduce the target's fortification against your attacks by 25%. Cannot be used
+ * while raged. * Dexterity 13 Base Attack Bonus +1
+ * @todo
+ *   add Rage Prohibition
+ */
 protected[feats] trait Precision
-    extends FeatRequisiteImpl
-    with ActiveFeat
-    with OffensiveCombatStance
-    with RequiresAttribute
-    with RequiresBaB
-    with AlchemistBonusFeat
-    with FighterBonusFeat
-    with MartialArtsFeat
-    with DefaultCoolDown {
+  extends FeatRequisiteImpl with ActiveFeat with OffensiveCombatStance with RequiresAttribute with RequiresBaB
+  with AlchemistBonusFeat with FighterBonusFeat with MartialArtsFeat with DefaultCoolDown {
   self: GeneralFeat =>
   override def requiresAttribute: Seq[(Attribute, Int)] =
     List((Attribute.Dexterity, 13))

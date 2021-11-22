@@ -18,8 +18,8 @@
 package io.truthencode.ddo.support.matching
 
 /**
-  * Trait used to match using UpperCase
-  */
+ * Trait used to match using UpperCase
+ */
 trait UpperCaseStrategy extends CaseMatchStrategy {
   self: StringMatchBounds =>
   override val caseMatchOption: CaseMatchOption = CaseMatchOption.UpperCase

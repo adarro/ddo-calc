@@ -17,20 +17,16 @@
  */
 package io.truthencode.ddo.model.meta
 
-
 import enumeratum.{Enum, EnumEntry}
 import io.truthencode.ddo.NoDefault
 import io.truthencode.ddo.model.effect.{Acid, Cold, Damage, Electric, Fire, Force, Sonic}
 
 import scala.collection.immutable
 
-
 sealed trait MagicDamageType extends EnumEntry with Damage with NoDefault[MagicDamageType]
 
-
-
 object MagicDamageType extends Enum[MagicDamageType] {
-    override def values: immutable.IndexedSeq[MagicDamageType] = findValues
+  override def values: immutable.IndexedSeq[MagicDamageType] = findValues
   case object Acid extends Acid with MagicDamageType
   case object Fire extends Fire with MagicDamageType
   case object Cold extends Cold with MagicDamageType
@@ -39,5 +35,3 @@ object MagicDamageType extends Enum[MagicDamageType] {
   case object Sonic extends Sonic with MagicDamageType
   case object UnTyped extends MagicDamageType
 }
-
-

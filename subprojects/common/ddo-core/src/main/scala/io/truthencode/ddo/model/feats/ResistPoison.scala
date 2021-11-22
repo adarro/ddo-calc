@@ -19,11 +19,9 @@ package io.truthencode.ddo.model.feats
 
 import io.truthencode.ddo.support.requisite.{FeatRequisiteImpl, FreeFeat}
 
-/** Icon Feat Resist Poison.png
-  * Resist Poison 	Passive 	Grants a +4 bonus to all saving throws versus Poison.
-  * *
-  * None
-  * */
+/**
+ * Icon Feat Resist Poison.png Resist Poison Passive Grants a +4 bonus to all saving throws versus Poison. * None
+ */
 trait ResistPoison extends FeatRequisiteImpl with Passive with FreeFeat {
   self: GeneralFeat =>
 }

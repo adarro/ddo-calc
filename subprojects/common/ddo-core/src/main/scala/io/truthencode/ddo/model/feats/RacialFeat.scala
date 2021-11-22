@@ -27,16 +27,12 @@ import io.truthencode.ddo.support.requisite.{Inclusion, RaceRequisiteImpl, Requi
 import scala.collection.immutable.IndexedSeq
 
 /**
-  * Created by adarr on 2/14/2017.
-  */
-sealed trait RacialFeat
-    extends Feat
-    with RaceRequisiteImpl
-    with FriendlyDisplay
-    with FeatMatcher
-    with LazyLogging { self: FeatType with Requisite with Inclusion with RequisiteType =>
-  val matchFeat: PartialFunction[Feat, RacialFeat] = {
-    case x: RacialFeat => x
+ * Created by adarr on 2/14/2017.
+ */
+sealed trait RacialFeat extends Feat with RaceRequisiteImpl with FriendlyDisplay with FeatMatcher with LazyLogging {
+  self: FeatType with Requisite with Inclusion with RequisiteType =>
+  val matchFeat: PartialFunction[Feat, RacialFeat] = { case x: RacialFeat =>
+    x
   }
   val matchFeatById: PartialFunction[String, RacialFeat] = {
     case x: String if RacialFeat.namesToValuesMap.contains(x) =>
@@ -55,12 +51,8 @@ object RacialFeat extends Enum[RacialFeat] with FeatSearchPrefix {
   case object WarforgedTraits extends RacialFeat with WarforgedTraits
   case object AdamantineBody extends RacialFeat with AdamantineBody
   case object MithralBody extends RacialFeat with MithralBody
-  case object ImprovedDamageReduction
-      extends RacialFeat
-      with ImprovedDamageReduction
-  case object ImprovedFortification
-      extends RacialFeat
-      with ImprovedFortification
+  case object ImprovedDamageReduction extends RacialFeat with ImprovedDamageReduction
+  case object ImprovedFortification extends RacialFeat with ImprovedFortification
   case object MithralFluidity extends RacialFeat with MithralFluidity
 
   // Bladeforged
@@ -74,9 +66,7 @@ object RacialFeat extends Enum[RacialFeat] with FeatSearchPrefix {
   case object HalflingBravery extends RacialFeat with HalflingBravery
   case object HalflingKeenEars extends RacialFeat with HalflingKeenEars
   case object HalflingLuck extends RacialFeat with HalflingLuck
-  case object HalflingThrownWeaponFocus
-      extends RacialFeat
-      with HalflingThrownWeaponFocus
+  case object HalflingThrownWeaponFocus extends RacialFeat with HalflingThrownWeaponFocus
   // Gnome
   case object GnomishProficiencies extends RacialFeat with GnomishProficiencies
   case object SmallSizeBonus extends RacialFeat with SmallSizeBonus
@@ -99,9 +89,7 @@ object RacialFeat extends Enum[RacialFeat] with FeatSearchPrefix {
   case object HalfElfKeenSenses extends RacialFeat with HalfElfKeenSenses {
     override protected def nameSource: String = "Keen Senses".toPascalCase
   }
-  case object HalfElfMixedHeritage
-      extends RacialFeat
-      with HalfElfMixedHeritage {
+  case object HalfElfMixedHeritage extends RacialFeat with HalfElfMixedHeritage {
     override protected def nameSource: String = "Mixed Heritage".toPascalCase
   }
   case object HalfElfSocialGraces extends RacialFeat with HalfElfSocialGraces {
@@ -109,99 +97,71 @@ object RacialFeat extends Enum[RacialFeat] with FeatSearchPrefix {
   }
   case object ImmunityToSleep extends RacialFeat with ImmunityToSleep
 
-  case object HalfElfDilettanteMonk
-      extends RacialFeat
-      with HalfElfDilettanteMonk {
+  case object HalfElfDilettanteMonk extends RacialFeat with HalfElfDilettanteMonk {
     override protected def nameSource: String =
       HeroicCharacterClass.Monk.entryName.toPascalCase
   }
 
-  case object HalfElfDilettanteArtificer
-      extends RacialFeat
-      with HalfElfDilettanteArtificer {
+  case object HalfElfDilettanteArtificer extends RacialFeat with HalfElfDilettanteArtificer {
     override protected def nameSource: String =
       HeroicCharacterClass.Artificer.entryName.toPascalCase
   }
-  case object HalfElfDilettanteBarbarian
-      extends RacialFeat
-      with HalfElfDilettanteBarbarian {
+  case object HalfElfDilettanteBarbarian extends RacialFeat with HalfElfDilettanteBarbarian {
     override protected def nameSource: String =
       HeroicCharacterClass.Barbarian.entryName.toPascalCase
   }
 
-  case object HalfElfDilettanteBard
-      extends RacialFeat
-      with HalfElfDilettanteBard {
+  case object HalfElfDilettanteBard extends RacialFeat with HalfElfDilettanteBard {
     override protected def nameSource: String =
       HeroicCharacterClass.Bard.entryName.toPascalCase
   }
 
-  case object HalfElfDilettanteCleric
-      extends RacialFeat
-      with HalfElfDilettanteCleric {
+  case object HalfElfDilettanteCleric extends RacialFeat with HalfElfDilettanteCleric {
     override protected def nameSource: String =
       HeroicCharacterClass.Cleric.entryName.toPascalCase
   }
 
-  case object HalfElfDilettanteDruid
-      extends RacialFeat
-      with HalfElfDilettanteDruid {
+  case object HalfElfDilettanteDruid extends RacialFeat with HalfElfDilettanteDruid {
     override protected def nameSource: String =
       HeroicCharacterClass.Druid.entryName.toPascalCase
   }
 
-  case object HalfElfDilettanteFavoredSoul
-      extends RacialFeat
-      with HalfElfDilettanteFavoredSoul {
+  case object HalfElfDilettanteFavoredSoul extends RacialFeat with HalfElfDilettanteFavoredSoul {
     override protected def nameSource: String =
       HeroicCharacterClass.FavoredSoul.entryName.splitByCase.toPascalCase
   }
 
-  case object HalfElfDilettanteFighter
-      extends RacialFeat
-      with HalfElfDilettanteFighter {
+  case object HalfElfDilettanteFighter extends RacialFeat with HalfElfDilettanteFighter {
     override protected def nameSource: String =
       HeroicCharacterClass.Fighter.entryName.toPascalCase
   }
 
-  case object HalfElfDilettantePaladin
-      extends RacialFeat
-      with HalfElfDilettantePaladin {
+  case object HalfElfDilettantePaladin extends RacialFeat with HalfElfDilettantePaladin {
     override protected def nameSource: String =
       HeroicCharacterClass.Paladin.entryName.toPascalCase
   }
 
-  case object HalfElfDilettanteRanger
-      extends RacialFeat
-      with HalfElfDilettanteRanger {
+  case object HalfElfDilettanteRanger extends RacialFeat with HalfElfDilettanteRanger {
     override protected def nameSource: String =
       HeroicCharacterClass.Ranger.entryName.toPascalCase
   }
 
-  case object HalfElfDilettanteRogue
-      extends RacialFeat
-      with HalfElfDilettanteRogue {
+  case object HalfElfDilettanteRogue extends RacialFeat with HalfElfDilettanteRogue {
     override protected def nameSource: String =
       HeroicCharacterClass.Rogue.entryName.toPascalCase
   }
 
-  case object HalfElfDilettanteSorcerer
-      extends RacialFeat
-      with HalfElfDilettanteSorcerer {
+  case object HalfElfDilettanteSorcerer extends RacialFeat with HalfElfDilettanteSorcerer {
     override protected def nameSource: String =
       HeroicCharacterClass.Sorcerer.entryName.toPascalCase
   }
 
-  case object HalfElfDilettanteWarlock
-      extends RacialFeat
-      with HalfElfDilettanteWarlock {
+  case object HalfElfDilettanteWarlock extends RacialFeat with HalfElfDilettanteWarlock {
     override protected def nameSource: String =
       HeroicCharacterClass.Warlock.entryName.toPascalCase
   }
 
-  case object HalfElfDilettanteWizard
-      extends RacialFeat
-      with HalfElfDilettanteWizard {
+  case object HalfElfDilettanteWizard extends RacialFeat with HalfElfDilettanteWizard {
     override protected def nameSource: String =
       HeroicCharacterClass.Wizard.entryName.toPascalCase
   }

@@ -22,9 +22,7 @@ import io.truthencode.ddo.support.StringUtils._
 import io.truthencode.ddo.support.naming.SpellCriticalChancePrefix
 
 trait SpellCriticalChancePositiveAndNegativeI
-    extends ApothecaryTierOne
-    with ClassEnhancementImpl
-    with SpellCriticalChancePrefix {
+  extends ApothecaryTierOne with ClassEnhancementImpl with SpellCriticalChancePrefix {
 
   override lazy val description: Option[String] =
     Some(
@@ -32,8 +30,8 @@ trait SpellCriticalChancePositiveAndNegativeI
     )
 
   /**
-    * Some enhancements can be taken multiple times (generally up to three)
-    */
+   * Some enhancements can be taken multiple times (generally up to three)
+   */
   override val ranks: Int = 1
   override def apCostPerRank: Int = 2
   override protected def nameSource: String = "Positive & Negative I".replaceRomanNumerals

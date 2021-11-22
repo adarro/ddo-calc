@@ -20,15 +20,15 @@ package io.truthencode.ddo.model.misc
 import enumeratum.{Enum, EnumEntry}
 
 /**
-  * Basic enumeration used for testing / verifying behavior
-  */
+ * Basic enumeration used for testing / verifying behavior
+ */
 sealed trait Simple extends EnumEntry
 
- sealed trait values extends EnumEntry
+sealed trait values extends EnumEntry
 
 object Simple extends Enum[Simple] {
 
   object Basic extends values with Simple
 
-  override def values:  scala.collection.immutable.IndexedSeq[io.truthencode.ddo.model.misc.Simple]= findValues
+  override def values: scala.collection.immutable.IndexedSeq[io.truthencode.ddo.model.misc.Simple] = findValues
 }

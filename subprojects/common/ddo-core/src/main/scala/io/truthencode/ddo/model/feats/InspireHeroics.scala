@@ -24,27 +24,17 @@ import io.truthencode.ddo.model.skill.Skill
 import io.truthencode.ddo.support.requisite._
 
 /**
-  * [[https://ddowiki.com/page/Inspire_Heroics Inspire Heroics]]
-  * Level: Bard 15
-  * Perform: 18 ranks*
-  * Target: Target of Bard's Bardic Inspiration
-  * Base Duration:
-  * Song Description: Gives a +4 Music Bonus to Armor Class, +4% Music Bonus to Dodge, and a +4 Music bonus to all saves.
-  * Notes:
-  * Prerequisite for Epic Feat Inspire Excellence
-  * *Only the base number of Perform ranks bought with skill points count toward the requirement to be able to play this song. (Skill bonuses do not count.)
-  * Created by adarr on 4/5/2017.
-  * @todo Verify this was not conglomerated into Bardic Inspiration
-  */
+ * [[https://ddowiki.com/page/Inspire_Heroics Inspire Heroics]] Level: Bard 15 Perform: 18 ranks* Target: Target of
+ * Bard's Bardic Inspiration Base Duration: Song Description: Gives a +4 Music Bonus to Armor Class, +4% Music Bonus to
+ * Dodge, and a +4 Music bonus to all saves. Notes: Prerequisite for Epic Feat Inspire Excellence *Only the base number
+ * of Perform ranks bought with skill points count toward the requirement to be able to play this song. (Skill bonuses
+ * do not count.) Created by adarr on 4/5/2017.
+ * @todo
+ *   Verify this was not conglomerated into Bardic Inspiration
+ */
 protected[feats] trait InspireHeroics
-    extends SkillRequisiteImpl
-    with RequiresAllOfSkill
-    with ClassRequisiteImpl
-    with RequiresAllOfClass
-    with GrantsToClass
-    with ActiveFeat
-    with OnSongPlayedEvent
-    with BardSongCoolDown {
+  extends SkillRequisiteImpl with RequiresAllOfSkill with ClassRequisiteImpl with RequiresAllOfClass with GrantsToClass
+  with ActiveFeat with OnSongPlayedEvent with BardSongCoolDown {
   override def allOfClass: Seq[(HeroicCharacterClass, Int)] =
     List((HeroicCharacterClass.Bard, 15))
 

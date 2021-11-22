@@ -23,16 +23,12 @@ import io.truthencode.ddo.activation.OnToggleEvent
 import io.truthencode.ddo.support.requisite.{FeatRequisiteImpl, FreeFeat}
 
 /**
-  * [[https://ddowiki.com/page/Attack Attack]]
-  * This is the standard attack for all characters.
-  * It can be toggled on to attack repeatedly until your target is defeated, or activated once by right-clicking the mouse.
-  * @note Currently set to No Cooldown, aside from potential advanced metrics, this shouldn't be an issue.
-  */
-protected[feats] trait Attack
-    extends FeatRequisiteImpl
-    with ActiveFeat
-    with FreeFeat
-    with Stance {
+ * [[https://ddowiki.com/page/Attack Attack]] This is the standard attack for all characters. It can be toggled on to
+ * attack repeatedly until your target is defeated, or activated once by right-clicking the mouse.
+ * @note
+ *   Currently set to No Cooldown, aside from potential advanced metrics, this shouldn't be an issue.
+ */
+protected[feats] trait Attack extends FeatRequisiteImpl with ActiveFeat with FreeFeat with Stance {
   self: GeneralFeat =>
   override def coolDown: Option[Duration] = None
 }

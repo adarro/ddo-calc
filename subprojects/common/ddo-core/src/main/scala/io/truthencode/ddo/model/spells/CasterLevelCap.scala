@@ -18,8 +18,8 @@
 package io.truthencode.ddo.model.spells
 
 /**
-  * Represents the maximum caster level when determining a spell or abilities' effectiveness when scaling by level.
-  */
+ * Represents the maximum caster level when determining a spell or abilities' effectiveness when scaling by level.
+ */
 trait CasterLevelCap {
-  val baseLevelCap : Option[Int]
+  val baseLevelCap: Option[Int]
 }

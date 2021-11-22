@@ -18,29 +18,15 @@
 package io.truthencode.ddo.model.feats
 
 import io.truthencode.ddo.model.attribute.Attribute
-import io.truthencode.ddo.support.requisite.{
-  FeatRequisiteImpl,
-  RequiresAllOfFeat,
-  RequiresAttribute,
-  RequiresBaB
-}
+import io.truthencode.ddo.support.requisite.{FeatRequisiteImpl, RequiresAllOfFeat, RequiresAttribute, RequiresBaB}
 
-/** Icon Feat Shot On The Run.png
-  * Shot on the Run Passive Negates the penalty to your attack roll for firing ranged weapon while moving.
-  * Also gives +3 ranged power.
-  * *
-  * Point Blank Shot, Mobility
-  * Dexterity 13, Base Attack Bonus 4+
-  * */
+/**
+ * Icon Feat Shot On The Run.png Shot on the Run Passive Negates the penalty to your attack roll for firing ranged
+ * weapon while moving. Also gives +3 ranged power. * Point Blank Shot, Mobility Dexterity 13, Base Attack Bonus 4+
+ */
 protected[feats] trait ShotOnTheRun
-    extends FeatRequisiteImpl
-    with Passive
-    with RequiresAllOfFeat
-    with RequiresAttribute
-    with RequiresBaB
-    with FighterBonusFeat
-    with ArtificerBonusFeat
-    with AlchemistBonusFeat {
+  extends FeatRequisiteImpl with Passive with RequiresAllOfFeat with RequiresAttribute with RequiresBaB
+  with FighterBonusFeat with ArtificerBonusFeat with AlchemistBonusFeat {
   self: GeneralFeat =>
 
   override def requiresAttribute: Seq[(Attribute, Int)] =

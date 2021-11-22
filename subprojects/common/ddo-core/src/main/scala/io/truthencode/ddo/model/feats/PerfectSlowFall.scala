@@ -19,22 +19,13 @@ package io.truthencode.ddo.model.feats
 
 import io.truthencode.ddo.model.classes.HeroicCharacterClass
 import io.truthencode.ddo.model.classes.HeroicCharacterClass.Monk
-import io.truthencode.ddo.support.requisite.{
-  FeatRequisiteImpl,
-  GrantsToClass,
-  RequiresAllOfClass
-}
+import io.truthencode.ddo.support.requisite.{FeatRequisiteImpl, GrantsToClass, RequiresAllOfClass}
 
 /**
-  * [[https://ddowiki.com/page/Perfect_Slow_Fall Perfect Slow Fall]]
-  * You have perfected the ability to recover from a fall unharmed.
-  * You never take damage from falling no matter how far you fall.
-  */
-trait PerfectSlowFall
-    extends FeatRequisiteImpl
-    with Passive
-    with GrantsToClass
-    with RequiresAllOfClass {
+ * [[https://ddowiki.com/page/Perfect_Slow_Fall Perfect Slow Fall]] You have perfected the ability to recover from a
+ * fall unharmed. You never take damage from falling no matter how far you fall.
+ */
+trait PerfectSlowFall extends FeatRequisiteImpl with Passive with GrantsToClass with RequiresAllOfClass {
   override def grantToClass: Seq[(HeroicCharacterClass, Int)] =
     List((Monk, 20))
 

@@ -30,7 +30,7 @@ import io.truthencode.ddo.support.requisite.{
 
 trait ClassEnhancementInfo {
   type ENH = ClassEnhancement with Tier with ActionPointRequisite with PointInTreeRequisite
-  val values: Seq[ENH] = ClassEnhancement.values collect { case x: ENH => x }
+  val values: Seq[ENH] = ClassEnhancement.values.collect { case x: ENH => x }
   val name: String
   val actionPointCost: Int
   val ranks: Int
@@ -39,8 +39,8 @@ trait ClassEnhancementInfo {
   val description: String
 
   /**
-    * This should == ClassEnhancement.entryName
-    */
+   * This should == ClassEnhancement.entryName
+   */
   def id: String
 }
 
@@ -49,10 +49,7 @@ object ClassEnhancementInfo extends LazyLogging {
 // scalastyle:off
   def apply(
     classEnhancement: ClassEnhancement
-      with Tier
-      with ClassBasedEnhancements
-      with PointInTreeRequisite
-      with PointsAvailableRequisite
+      with Tier with ClassBasedEnhancements with PointInTreeRequisite with PointsAvailableRequisite
       with RequiresActionPoints
   ) = {
     val e = classEnhancement
@@ -64,7 +61,7 @@ object ClassEnhancementInfo extends LazyLogging {
       p._1 == e.tree
     } match {
       case Some(x) => x._3
-      case _       => 0
+      case _ => 0
     } // .flatMap{x => x._3} //.flatMap {p => p._3}
     val requirements: Option[List[String]] = None
 
@@ -77,7 +74,7 @@ object ClassEnhancementInfo extends LazyLogging {
     logger.info(s"Searching $key using: $srch")
     val eOpt = ClassEnhancement.withNameInsensitiveOption(srch) match {
       case Some(
-          x: ClassEnhancement with Tier with ClassBasedEnhancements with PointInTreeRequisite with PointsAvailableRequisite with RequiresActionPoints
+            x: ClassEnhancement with Tier with ClassBasedEnhancements with PointInTreeRequisite with PointsAvailableRequisite with RequiresActionPoints
           ) =>
         logger.info(s"Found ${x.displayText} => ${x.entryName}")
         Some(x)
@@ -87,10 +84,9 @@ object ClassEnhancementInfo extends LazyLogging {
             logger.warn(
               s"Failed to locate ClassEnhancement with key $key, attempting using fullText $fullText"
             )
-            val fMap = ClassEnhancement.values
-              .map { v =>
-                v.displayText -> v.entryName
-              }
+            val fMap = ClassEnhancement.values.map { v =>
+              v.displayText -> v.entryName
+            }
               .find(_._1 == y) match {
               case Some(value) =>
                 logger.info(s"located valid key from fulltext, recursing using ${value._2}")
@@ -110,8 +106,8 @@ object ClassEnhancementInfo extends LazyLogging {
       logger.info(s"located ${e.displayText}")
 
       /**
-        * The string id used to create the object
-        */
+       * The string id used to create the object
+       */
       def id: String = e.entryName
       val actionPointCost: Int = e.apCostPerRank
       val ranks: Int = e.ranks
@@ -120,7 +116,7 @@ object ClassEnhancementInfo extends LazyLogging {
         p._1 == e.tree
       } match {
         case Some(x) => x._3
-        case _       => 0
+        case _ => 0
       } // .flatMap{x => x._3} //.flatMap {p => p._3}
       val requirements: Option[List[String]] = None
 
@@ -148,8 +144,7 @@ case class CEnhancementDumb(
 case class CEnhancement(
   name: String
 )(implicit identifier: String = name.toPascalCase.filterAlphaNumeric)
-    extends ClassEnhancementInfo
-    with LazyLogging {
+  extends ClassEnhancementInfo with LazyLogging {
 
   private def _enh = {
     logger.info(s"locating values with entryname eq $id")
@@ -162,8 +157,8 @@ case class CEnhancement(
   private val enh: ENH = _enh.get
 
   /**
-    * The string id used to create the object
-    */
+   * The string id used to create the object
+   */
   override def id: String = enh.entryName
   override val actionPointCost: Int = enh.apCostPerRank
   override val ranks: Int = enh.ranks
@@ -172,7 +167,7 @@ case class CEnhancement(
     p._1 == enh.tree
   } match {
     case Some(x) => x._3
-    case _       => 0
+    case _ => 0
   } // .flatMap{x => x._3} //.flatMap {p => p._3}
   override val requirements: Option[List[String]] = None
 

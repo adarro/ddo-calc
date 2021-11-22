@@ -21,16 +21,17 @@ import io.truthencode.ddo.support.RomanNumeral
 import io.truthencode.ddo.support.StringUtils.Extensions
 
 /**
-  * Preserves values / formatting for Roman Numeral Affixes
-  * @note be sure to override namesource as this will append the roman numeral to it.
-  */
+ * Preserves values / formatting for Roman Numeral Affixes
+ * @note
+ *   be sure to override namesource as this will append the roman numeral to it.
+ */
 trait RomanNumeralAffix {
   self: DisplayName =>
 
   /**
-    * Roman Numeral Suffix
-    * @return
-    */
+   * Roman Numeral Suffix
+   * @return
+   */
   def rnSuffix: Int
 
   override protected def nameSource: String = s"Ability"

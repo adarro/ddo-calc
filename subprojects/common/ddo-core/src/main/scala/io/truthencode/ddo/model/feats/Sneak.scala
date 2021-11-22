@@ -21,16 +21,12 @@ import io.truthencode.ddo.model.misc.DefaultCoolDown
 import io.truthencode.ddo.support.requisite.{FeatRequisiteImpl, FreeFeat}
 
 /**
-  * [[https://ddowiki.com/page/Sneak Sneak]]
-  * The character becomes invisible to all enemies that fail a Spot and Listen skill check,
-  * opposed by Hide and Move Silently skills.
-  * @note There have been many changes to stealth and it is worth reading, but currently not deeply invested in this code-base
-  */
-protected[feats] trait Sneak
-    extends FeatRequisiteImpl
-    with ActiveFeat
-    with Stance
-    with DefaultCoolDown
-    with FreeFeat {
+ * [[https://ddowiki.com/page/Sneak Sneak]] The character becomes invisible to all enemies that fail a Spot and Listen
+ * skill check, opposed by Hide and Move Silently skills.
+ * @note
+ *   There have been many changes to stealth and it is worth reading, but currently not deeply invested in this
+ *   code-base
+ */
+protected[feats] trait Sneak extends FeatRequisiteImpl with ActiveFeat with Stance with DefaultCoolDown with FreeFeat {
   self: GeneralFeat =>
 }

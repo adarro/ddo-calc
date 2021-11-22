@@ -22,18 +22,18 @@ import io.truthencode.ddo.support.naming.RomanNumeralAffix
 import io.truthencode.ddo.support.requisite.ActionPointRequisite
 
 /**
-  * Basic support for adding +1 of some stat in an enhancement.
-  * @note trait manipulates diplay text so mix in AFTER other text manipulations to ensure Roman Numeral /  key
-  *       integrity.
-  */
+ * Basic support for adding +1 of some stat in an enhancement.
+ * @note
+ *   trait manipulates diplay text so mix in AFTER other text manipulations to ensure Roman Numeral / key integrity.
+ */
 trait AbilitySelector extends AbilityScoreEnhancement with RomanNumeralAffix {
   self: ClassEnhancement with Tier with ActionPointRequisite =>
   override protected def nameSource: String = "Ability"
   override def apCostPerRank: Int = 2
 
   /**
-    * Some enhancements can be taken multiple times (generally up to three)
-    */
+   * Some enhancements can be taken multiple times (generally up to three)
+   */
   override val ranks: Int = 1
 
 }

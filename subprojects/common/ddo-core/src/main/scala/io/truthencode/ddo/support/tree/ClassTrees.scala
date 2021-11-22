@@ -29,13 +29,13 @@ sealed trait ClassTrees extends EnumEntry with ClassTree with DisplayName with F
   override protected def nameSource: String =
     entryName.splitByCase.toPascalCase
 
-    /**
-     * Used when qualifying a search with a prefix.
-     * Examples include finding "HalfElf" from qualified "Race:HalfElf"
-     *
-     * @return A default or applied prefix
-     */
-    override def searchPrefixSource: String = "ClassEnhancement"
+  /**
+   * Used when qualifying a search with a prefix. Examples include finding "HalfElf" from qualified "Race:HalfElf"
+   *
+   * @return
+   *   A default or applied prefix
+   */
+  override def searchPrefixSource: String = "ClassEnhancement"
 }
 
 // scalastyle:off number.of.methods
@@ -82,8 +82,9 @@ object ClassTrees extends Enum[ClassTrees] with TreePrefix {
   case object SacredDefender extends ClassTrees with SacredDefender
   // Ranger
   /**
-    * @note will either need to qualify class or compensate for Racial Elven Arcane Archer access
-    */
+   * @note
+   *   will either need to qualify class or compensate for Racial Elven Arcane Archer access
+   */
   case object ArcaneArcher extends ClassTrees with ArcaneArcher
   case object DeepwoodStalker extends ClassTrees with DeepwoodStalker
   case object Tempest extends ClassTrees with Tempest
@@ -92,9 +93,9 @@ object ClassTrees extends Enum[ClassTrees] with TreePrefix {
   case object Mechanic extends ClassTrees with Mechanic
 
   /**
-    * @note may need to override display name to add Hyphen
-    *       perhaps add Hyphenate rule to display options
-    */
+   * @note
+   *   may need to override display name to add Hyphen perhaps add Hyphenate rule to display options
+   */
   case object ThiefAcrobat extends ClassTrees with ThiefAcrobat
   // Sorcerer
   case object AirSavant extends ClassTrees with AirSavant

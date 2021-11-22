@@ -23,26 +23,19 @@ import io.truthencode.ddo.model.religions.LordOfBlades
 import io.truthencode.ddo.support.requisite._
 
 /**
-  * Created by adarr on 4/7/2017.
-  * [[https://ddowiki.com/page/Bladesworn_Transformation Bladesworn Transformation]]
-  * You are a devoted follower of the Lord of Blades, and your faith has been rewarded.
-  * Activate this ability to attempt to become a juggernaut of destruction for 24 seconds plus 6 seconds per Religious Lore feat you have.
-  *
-  * While transformed, you have a +4 Profane bonus to Strength, +4 natural armor bonus to AC,
-  * a +4 profane bonus on damage rolls, +10 enhancement bonus to Will saves against mind affecting magic,
-  * and proficiency in all simple and martial weapons. Your base attack bonus equals your level.
-  * You lose your spellcasting ability. You have immunity to critical hits and sneak attacks, but cannot be healed by healing spells.
-  */
+ * Created by adarr on 4/7/2017. [[https://ddowiki.com/page/Bladesworn_Transformation Bladesworn Transformation]] You
+ * are a devoted follower of the Lord of Blades, and your faith has been rewarded. Activate this ability to attempt to
+ * become a juggernaut of destruction for 24 seconds plus 6 seconds per Religious Lore feat you have.
+ *
+ * While transformed, you have a +4 Profane bonus to Strength, +4 natural armor bonus to AC, a +4 profane bonus on
+ * damage rolls, +10 enhancement bonus to Will saves against mind affecting magic, and proficiency in all simple and
+ * martial weapons. Your base attack bonus equals your level. You lose your spellcasting ability. You have immunity to
+ * critical hits and sneak attacks, but cannot be healed by healing spells.
+ */
 trait BladeswornTransformation
-    extends FeatRequisiteImpl
-    with DeityUniqueLevelBase
-    with RequiresAllOfFeat
-    with EberronReligionWarforged
-    with LordOfBlades
-    with TheLordOfBladesFeatBase
-    with ActiveFeat
-    with AtWillEvent
-    with DefaultCoolDown { self: DeityFeat with Requisite with RequisiteType =>
+  extends FeatRequisiteImpl with DeityUniqueLevelBase with RequiresAllOfFeat with EberronReligionWarforged
+  with LordOfBlades with TheLordOfBladesFeatBase with ActiveFeat with AtWillEvent with DefaultCoolDown {
+  self: DeityFeat with Requisite with RequisiteType =>
 
   override def allOfFeats: Seq[Feat] = List(DeityFeat.ChildOfTheLordOfBlades)
 

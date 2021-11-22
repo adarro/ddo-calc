@@ -31,46 +31,41 @@ import io.truthencode.ddo.model.effect.{
   UntypedPhysicalDamage
 }
 
-/** Basic damage for (generally) physical damage
-  */
-sealed trait PhysicalDamageType
-    extends EnumEntry
-    with Damage
-    with NoDefault[PhysicalDamageType] {
+/**
+ * Basic damage for (generally) physical damage
+ */
+sealed trait PhysicalDamageType extends EnumEntry with Damage with NoDefault[PhysicalDamageType] {
   self: DamageType =>
 }
 
-/** Basic damage enumeration for (generally) physical damage
-  */
+/**
+ * Basic damage enumeration for (generally) physical damage
+ */
 object PhysicalDamageType extends Enum[PhysicalDamageType] {
 
-  /** Unique damage such as casts spell or other non-basic effect.
-    */
+  /**
+   * Unique damage such as casts spell or other non-basic effect.
+   */
   case object Special extends PhysicalDamageType with UntypedPhysicalDamage
 
-  /** Blunt force such as delivered by clubs maces and hammers and the crushing boulders of an ice storm
-    */
-  case object Bludgeon
-      extends PhysicalDamageType
-      with TypedPhysicalDamage
-      with Bludgeoning
+  /**
+   * Blunt force such as delivered by clubs maces and hammers and the crushing boulders of an ice storm
+   */
+  case object Bludgeon extends PhysicalDamageType with TypedPhysicalDamage with Bludgeoning
 
-  /** Stabbing damage such as delivered by Rapiers, arrows, bolts
-    */
-  case object Pierce
-      extends PhysicalDamageType
-      with TypedPhysicalDamage
-      with Piercing
+  /**
+   * Stabbing damage such as delivered by Rapiers, arrows, bolts
+   */
+  case object Pierce extends PhysicalDamageType with TypedPhysicalDamage with Piercing
 
-  /** Slicing damage such as delivered by Longswords, razors etc
-    */
-  case object Slash
-      extends PhysicalDamageType
-      with TypedPhysicalDamage
-      with Slashing
+  /**
+   * Slicing damage such as delivered by Longswords, razors etc
+   */
+  case object Slash extends PhysicalDamageType with TypedPhysicalDamage with Slashing
 
-  /** Damage done by Magical means such as a spell or a weapon with an enhancement of +1 or better
-    */
+  /**
+   * Damage done by Magical means such as a spell or a weapon with an enhancement of +1 or better
+   */
   case object Magic extends PhysicalDamageType with MagicalDamage
 
   val values = findValues

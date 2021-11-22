@@ -34,17 +34,16 @@ trait TurnUndeadMaxHitDiceFeature extends Features {
         BasicStat.TurnUndeadMaxHitDice
 
       lazy override protected[this] val parameterToModify: BonusType =
-          maxHitDiceBonusType
+        maxHitDiceBonusType
 
       override val source: SourceInfo = src
       override lazy val value: Int = maxHitDiceBonusAmount
 
     }
 
-
   abstract override def features: List[Feature[_]] = {
     assert(mHD.value == maxHitDiceBonusAmount)
-      super.features :+ mHD
+    super.features :+ mHD
   }
 
 }

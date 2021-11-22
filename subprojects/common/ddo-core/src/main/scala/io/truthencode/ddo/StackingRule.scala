@@ -18,22 +18,23 @@
 package io.truthencode.ddo
 
 /**
-  * Encapsulates the stacking rules for purposes of adding / combining bonuses from multiple sources.
-  */
+ * Encapsulates the stacking rules for purposes of adding / combining bonuses from multiple sources.
+ */
 sealed trait StackingRule
 
 /**
-  * Benefits from this stack from Any source, including itself.
-  * @example Mythic bonuses
-  */
+ * Benefits from this stack from Any source, including itself.
+ * @example
+ *   Mythic bonuses
+ */
 trait StacksWithAny extends StackingRule
 
 /**
-  * The most common rule.  Multiple effects will not stack and only the highest applies.
-  */
+ * The most common rule. Multiple effects will not stack and only the highest applies.
+ */
 trait NonStacking extends StackingRule
 
 /**
-  * Miscellaneous bonuses coming from the same source don't stack (ie - 2 paladins' aura).
-  */
+ * Miscellaneous bonuses coming from the same source don't stack (ie - 2 paladins' aura).
+ */
 trait StacksWithAllButSame extends StackingRule

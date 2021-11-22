@@ -21,28 +21,18 @@ import java.time.Duration
 
 import io.truthencode.ddo.activation.OnToggleEvent
 import io.truthencode.ddo.model.religions.Silvanus
-import io.truthencode.ddo.support.requisite.{
-  FeatRequisiteImpl,
-  RequiresAllOfFeat
-}
+import io.truthencode.ddo.support.requisite.{FeatRequisiteImpl, RequiresAllOfFeat}
 
 /**
-  * Created by adarr on 4/7/2017.
-  * [[https://ddowiki.com/page/Blessing_of_Silvanus Blessing of Silvanus]]
-  *
-You are a devoted follower of Silvanus, and your faith has been rewarded.
-Toggling this on gives you Blessing of Silvanus: You permanently gain a +4 natural armor bonus to AC,
-and Mauls you wield gain +2 to their Critical Threat Range.
-  */
+ * Created by adarr on 4/7/2017. [[https://ddowiki.com/page/Blessing_of_Silvanus Blessing of Silvanus]]
+ *
+ * You are a devoted follower of Silvanus, and your faith has been rewarded. Toggling this on gives you Blessing of
+ * Silvanus: You permanently gain a +4 natural armor bonus to AC, and Mauls you wield gain +2 to their Critical Threat
+ * Range.
+ */
 trait BlessingOfSilvanus
-    extends FeatRequisiteImpl
-    with ForgottenRealmsReligionNonWarforged
-    with DeityUniqueLevelBase
-    with RequiresAllOfFeat
-    with Silvanus
-    with SilvanusFeatBase
-    with ActiveFeat
-    with OnToggleEvent { self: DeityFeat =>
+  extends FeatRequisiteImpl with ForgottenRealmsReligionNonWarforged with DeityUniqueLevelBase with RequiresAllOfFeat
+  with Silvanus with SilvanusFeatBase with ActiveFeat with OnToggleEvent { self: DeityFeat =>
 
   override def coolDown: Option[Duration] = Some(Duration.ofSeconds(6))
 

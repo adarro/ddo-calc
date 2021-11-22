@@ -22,14 +22,15 @@ import io.truthencode.ddo.model.effect.TriggerEvent
 import scala.collection.immutable.HashSet
 
 /**
-  * Created by adarr on 2/6/2017.
-  */
+ * Created by adarr on 2/6/2017.
+ */
 trait Trigger {
 
   /**
-    * Event Triggers that fire on some condition
-    * @return Set of triggers that can activate it, if any.
-    */
+   * Event Triggers that fire on some condition
+   * @return
+   *   Set of triggers that can activate it, if any.
+   */
   def activatableTriggers: Set[TriggerEvent] = new HashSet[TriggerEvent]()
   def canActivate: Boolean = activatableTriggers.nonEmpty
 }

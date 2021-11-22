@@ -22,14 +22,11 @@ import io.truthencode.ddo.model.classes.HeroicCharacterClass.Warlock
 import io.truthencode.ddo.support.requisite.{FeatRequisiteImpl, GrantsToClass, RequiresAllOfClass, RequiresAllOfFeat}
 
 /**
-  * Adds the spell Knock to your spellbook @ Level 2
-  */
+ * Adds the spell Knock to your spellbook @ Level 2
+ */
 protected[feats] trait PactMagicKnock
-    extends FeatRequisiteImpl
-    with Passive
-    with RequiresAllOfClass
-    with GrantsToClass
-    with PactMagicPrefix with RequiresAllOfFeat { self: ClassFeat =>
+  extends FeatRequisiteImpl with Passive with RequiresAllOfClass with GrantsToClass with PactMagicPrefix
+  with RequiresAllOfFeat { self: ClassFeat =>
   override protected def nameSource: String = "Knock"
 
   override def grantToClass: Seq[(HeroicCharacterClass, Int)] = List((Warlock, 5))

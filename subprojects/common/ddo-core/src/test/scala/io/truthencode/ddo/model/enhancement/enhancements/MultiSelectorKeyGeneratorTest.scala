@@ -17,14 +17,11 @@
  */
 package io.truthencode.ddo.model.enhancement.enhancements
 
-import org.scalatest.FunSpec
+import org.scalatest.funspec.AnyFunSpec
 
-class MultiSelectorKeyGeneratorTest extends FunSpec {
+class MultiSelectorKeyGeneratorTest extends AnyFunSpec {
 
   describe("MultiSelectorKeyGeneratorTest") {
-    it("should keyList") {
-
-
-    }
+    it("should keyList") {}
   }
 }

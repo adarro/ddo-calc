@@ -21,11 +21,10 @@ import io.truthencode.ddo.support.naming.{DisplayName, FriendlyDisplay}
 import io.truthencode.ddo.support.requisite.{ClassRequisite, FeatRequisite}
 
 /**
-  * Created by adarr on 4/10/2017.
-  */
+ * Created by adarr on 4/10/2017.
+ */
 trait DamageReductionLevelBase
-    extends ReligionFeatBase
-    with Passive
-    with DamageReductionLevel with DamageReductionPrefix{ self: ClassRequisite with FeatRequisite with DisplayName with FriendlyDisplay =>
+  extends ReligionFeatBase with Passive with DamageReductionLevel with DamageReductionPrefix {
+  self: ClassRequisite with FeatRequisite with DisplayName with FriendlyDisplay =>
 
 }

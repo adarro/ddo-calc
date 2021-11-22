@@ -20,8 +20,8 @@ package io.truthencode.ddo.model.feats
 import io.truthencode.ddo.support.naming.{DisplayName, DisplayProperties, Prefix}
 
 /**
-  * Created by adarr on 3/5/2017.
-  */
+ * Created by adarr on 3/5/2017.
+ */
 trait KiStrikePrefix extends Prefix {
   self: DisplayName with DisplayProperties =>
   override def prefix: Option[String] = Some("Ki Strike")

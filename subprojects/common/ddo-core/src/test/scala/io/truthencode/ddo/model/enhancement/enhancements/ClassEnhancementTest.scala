@@ -18,10 +18,11 @@
 package io.truthencode.ddo.model.enhancement.enhancements
 
 import com.typesafe.scalalogging.LazyLogging
-import org.scalatest.{FunSpec, Matchers}
 import io.truthencode.ddo.support.StringUtils._
+import org.scalatest.funspec.AnyFunSpec
+import org.scalatest.matchers.should.Matchers
 
-class ClassEnhancementTest extends FunSpec with Matchers with LazyLogging {
+class ClassEnhancementTest extends AnyFunSpec with Matchers with LazyLogging {
   describe("A Class Enhancement") {
     it("should have a description") {
       val d = ClassEnhancement.Determination

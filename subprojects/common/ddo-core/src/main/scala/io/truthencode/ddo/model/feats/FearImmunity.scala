@@ -22,14 +22,10 @@ import io.truthencode.ddo.model.classes.HeroicCharacterClass.Paladin
 import io.truthencode.ddo.support.requisite._
 
 /**
-  * [[http://ddowiki.com/page/Fear_Immunity]]
-  * A paladin is immune to fear effects.
-  */
-protected[feats] trait FearImmunity
-    extends FeatRequisiteImpl
-    with Passive
-    with GrantsToClass
-    with FreeFeat { self: ClassFeat =>
+ * [[http://ddowiki.com/page/Fear_Immunity]] A paladin is immune to fear effects.
+ */
+protected[feats] trait FearImmunity extends FeatRequisiteImpl with Passive with GrantsToClass with FreeFeat {
+  self: ClassFeat =>
   override def grantToClass: Seq[(HeroicCharacterClass, Int)] =
     List((Paladin, 3))
 

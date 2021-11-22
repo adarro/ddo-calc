@@ -26,8 +26,8 @@ import io.truthencode.ddo.support.requisite.{ClassRequisite, SelectableToClass}
 import scala.collection.JavaConverters._
 
 /**
-  * Created by Adarro on 3/5/2017.
-  */
+ * Created by Adarro on 3/5/2017.
+ */
 trait ClassFeatDisplayHelper extends FeatDisplayHelper with LazyLogging {
 
   type FNLevel = Entry => Seq[(HeroicCharacterClass, Int)]
@@ -38,22 +38,22 @@ trait ClassFeatDisplayHelper extends FeatDisplayHelper with LazyLogging {
     val levels = for {
       f <- enum.values
       e <- allTypesByLevelFilter(f)
-
     } yield f.displayText -> e
     levels
       .groupBy(_._1)
       .map { x =>
         (x._1, x._2.map(_._2))
-      }(collection.breakOut)
+      }
+      .to(Seq)
   }
 
   lazy val grantedFeats: util.List[String] = {
-    val values =  {enum.values collect filterByGrantedTo } collect filterByMainFeat
+    val values = { enum.values.collect(filterByGrantedTo) }.collect(filterByMainFeat)
     values.map(_.displayText).sorted.asJava
   }
 
 // Currently no sub-feats with Class based restrictions?
-   val filterByAllOf: PartialFunction[Entry, Entry] = {
+  val filterByAllOf: PartialFunction[Entry, Entry] = {
     case x: ClassRequisite if x.allOfClass.exists(isDefinedForClass(_)) => x
   }
 
@@ -74,9 +74,9 @@ trait ClassFeatDisplayHelper extends FeatDisplayHelper with LazyLogging {
     case x: BonusSelectableFeat with SubFeatInformation if x.bonusCharacterClass.contains(cClass) && !x.isSubFeat =>
       lazy val msg = s"Entry ${x.displayText} matched type and character class $cClass"
       lazy val idInfo = Map(
-        "entryName"     -> x.entryName,
+        "entryName" -> x.entryName,
         "displaySource" -> x.displaySource,
-        "displayText"   -> x.displayText
+        "displayText" -> x.displayText
       )
       logger.debug(msg)
       if (x.displayText.contains("Construct")) {
@@ -91,8 +91,7 @@ trait ClassFeatDisplayHelper extends FeatDisplayHelper with LazyLogging {
       (x, y)
   }
 
-  val existing
-    : PartialFunction[Entry, Entry] = filterByAllOf orElse filterByAnyOf orElse filterByGrantedTo
+  val existing: PartialFunction[Entry, Entry] = filterByAllOf.orElse(filterByAnyOf).orElse(filterByGrantedTo)
 
   def isDefinedForClass(e: (HeroicCharacterClass, Int), level: Option[Int] = None): Boolean =
     e._1.eq(cClass) && isEqualOrEmpty(e._2, level)
@@ -120,9 +119,9 @@ trait ClassFeatDisplayHelper extends FeatDisplayHelper with LazyLogging {
     fn.flatMap(f => f(as))
 
   def grantedFeatsByLevel(level: Int): util.List[String] = {
-    val values = enum.values.map((_, level)) collect filterByGrantedToByLevel
+    val values = enum.values.map((_, level)).collect(filterByGrantedToByLevel)
     values
-    //   .filterNot(_._1.isSubFeat)
+      //   .filterNot(_._1.isSubFeat)
       .filter(_._2 == level)
       .map(_._1.displayText)
       .sorted
@@ -130,7 +129,7 @@ trait ClassFeatDisplayHelper extends FeatDisplayHelper with LazyLogging {
   }
 
   def bonusFeatsByLevel(level: Int): util.List[String] = {
-    val values = enum.values.map((_, level)) collect filterByClassBonusFeatByLevel
+    val values = enum.values.map((_, level)).collect(filterByClassBonusFeatByLevel)
     values
       .filter(_._2 == level)
       .map(_._1.displayText)
@@ -139,20 +138,21 @@ trait ClassFeatDisplayHelper extends FeatDisplayHelper with LazyLogging {
   }
 
   /**
-    * Retrieves Display Text for bonus feats as a Java List. (Use of parenthesis needed when calling from Java (concordion)
-    *
-    * @return List of Bonus Feat Names for the specific class sorted in Alpha ascending order.
-    */
+   * Retrieves Display Text for bonus feats as a Java List. (Use of parenthesis needed when calling from Java
+   * (concordion)
+   *
+   * @return
+   *   List of Bonus Feat Names for the specific class sorted in Alpha ascending order.
+   */
   def bonusFeats(): util.List[String] = {
-    val values = enum.values collect filterByClassBonusFeat
+    val values = enum.values.collect(filterByClassBonusFeat)
     values.map(_.displayText).sorted.asJava
   }
 
   def classByLevel(level: Int): util.List[String] =
-    classFeatByLevelMap
-      .filter { p =>
-        p._2.contains(level)
-      }
+    classFeatByLevelMap.filter { p =>
+      p._2.contains(level)
+    }
       .map(_._1)
       .sortWith(_ < _)
       .asJava

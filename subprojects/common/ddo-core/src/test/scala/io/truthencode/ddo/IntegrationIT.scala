@@ -18,10 +18,10 @@
 package io.truthencode.ddo
 
 import com.typesafe.scalalogging.LazyLogging
-import org.scalatest.mockito.MockitoSugar
-import org.scalatest.{FunSpec, Matchers}
+import org.scalatest.funspec.AnyFunSpec
+import org.scalatest.matchers.should.Matchers
+import org.scalatestplus.mockito.MockitoSugar
 
-
-class IntegrationIT extends FunSpec with Matchers with MockitoSugar with LazyLogging {
+class IntegrationIT extends AnyFunSpec with Matchers with MockitoSugar with LazyLogging {
   describe("Integration Tests")(pending)
 }

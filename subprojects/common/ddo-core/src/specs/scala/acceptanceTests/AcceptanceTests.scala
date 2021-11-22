@@ -21,7 +21,6 @@ import org.concordion.api.FullOGNL
 import org.concordion.integration.junit4.ConcordionRunner
 import org.junit.runner.RunWith
 
-
 @FullOGNL
 //@Extensions(Array(classOf[EmbedExtension], classOf[CollapseOutputExtension]))
 @RunWith(classOf[ConcordionRunner])

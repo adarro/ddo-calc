@@ -22,59 +22,49 @@ import io.truthencode.ddo.model.effect.TriggerEvent._
 import io.truthencode.ddo.model.feats.Toggle
 
 /**
-  * Occurs on every attack
-  */
+ * Occurs on every attack
+ */
 trait AttackEvent extends TriggeredActivation {
-  abstract override def activatableTriggers
-      : Set[TriggerEvent] = super.activatableTriggers + OnAttack
+  abstract override def activatableTriggers: Set[TriggerEvent] = super.activatableTriggers + OnAttack
 }
 
 /**
-  * Occurs on a specific range of attack rolls
-  */
+ * Occurs on a specific range of attack rolls
+ */
 trait AttackRollEvent extends TriggeredActivation {
-  abstract override def activatableTriggers
-      : Set[TriggerEvent] = super.activatableTriggers + OnAttackRoll
+  abstract override def activatableTriggers: Set[TriggerEvent] = super.activatableTriggers + OnAttackRoll
 }
 
 /**
-  * Occurs when you are damaged (hit)
-  */
+ * Occurs when you are damaged (hit)
+ */
 trait OnDamageEvent extends TriggeredActivation {
-  abstract override def activatableTriggers
-      : Set[TriggerEvent] = super.activatableTriggers + OnDamage
+  abstract override def activatableTriggers: Set[TriggerEvent] = super.activatableTriggers + OnDamage
 }
 
 /**
-  * Occurs when you are hit by a spell
-  */
+ * Occurs when you are hit by a spell
+ */
 trait OnSpellHitEvent extends TriggeredActivation {
-  abstract override def activatableTriggers
-      : Set[TriggerEvent] = super.activatableTriggers + OnSpellHit
+  abstract override def activatableTriggers: Set[TriggerEvent] = super.activatableTriggers + OnSpellHit
 }
 
-/**
-  *
-  */
 trait HealthyEvent extends TriggeredActivation {
-  abstract override def activatableTriggers
-      : Set[TriggerEvent] = super.activatableTriggers + OnHealthy
+  abstract override def activatableTriggers: Set[TriggerEvent] = super.activatableTriggers + OnHealthy
 }
 
 /**
-  * Occurs when you cast a spell
-  */
+ * Occurs when you cast a spell
+ */
 trait OnSpellCastEvent extends TriggeredActivation {
-  abstract override def activatableTriggers
-      : Set[TriggerEvent] = super.activatableTriggers + OnSpellCast
+  abstract override def activatableTriggers: Set[TriggerEvent] = super.activatableTriggers + OnSpellCast
 }
 
 /**
-  * Occurs when you cast a spell like ability
-  */
+ * Occurs when you cast a spell like ability
+ */
 trait OnSpellLikeAbilityEvent extends TriggeredActivation {
-  abstract override def activatableTriggers
-      : Set[TriggerEvent] = super.activatableTriggers + OnSpellLikeAbility
+  abstract override def activatableTriggers: Set[TriggerEvent] = super.activatableTriggers + OnSpellLikeAbility
 }
 
 trait OnSongPlayedEvent extends TriggeredActivation {
@@ -83,42 +73,37 @@ trait OnSongPlayedEvent extends TriggeredActivation {
 }
 
 /**
-  * Occurs when you are killed
-  */
+ * Occurs when you are killed
+ */
 trait OnDeathEvent extends TriggeredActivation {
-  abstract override def activatableTriggers
-      : Set[TriggerEvent] = super.activatableTriggers + OnDeath
+  abstract override def activatableTriggers: Set[TriggerEvent] = super.activatableTriggers + OnDeath
 }
 
 /**
-  * Occurs when you are incapacitated
-  *
-  * Hit points fall below 0
-  */
+ * Occurs when you are incapacitated
+ *
+ * Hit points fall below 0
+ */
 trait OnIncapacitatedEvent extends TriggeredActivation {
-  abstract override def activatableTriggers
-      : Set[TriggerEvent] = super.activatableTriggers + OnIncapacitated
+  abstract override def activatableTriggers: Set[TriggerEvent] = super.activatableTriggers + OnIncapacitated
 }
 
 /**
-  * Occurs upon waking from rest / shrine
-  */
+ * Occurs upon waking from rest / shrine
+ */
 trait OnRestEvent extends TriggeredActivation {
-  abstract override def activatableTriggers
-      : Set[TriggerEvent] = super.activatableTriggers + OnRest
+  abstract override def activatableTriggers: Set[TriggerEvent] = super.activatableTriggers + OnRest
 }
 
 /**
-  * Player can toggle this effect on / off
-  */
+ * Player can toggle this effect on / off
+ */
 trait OnToggleEvent extends TriggeredActivation with Toggle {
-  abstract override def activatableTriggers
-      : Set[TriggerEvent] = super.activatableTriggers + OnToggle
+  abstract override def activatableTriggers: Set[TriggerEvent] = super.activatableTriggers + OnToggle
 }
 
 trait AtWillEvent extends TriggeredActivation {
-  abstract override def activatableTriggers
-      : Set[TriggerEvent] = super.activatableTriggers + AtWill
+  abstract override def activatableTriggers: Set[TriggerEvent] = super.activatableTriggers + AtWill
 }
 
 trait OnTavern extends TriggeredActivation {

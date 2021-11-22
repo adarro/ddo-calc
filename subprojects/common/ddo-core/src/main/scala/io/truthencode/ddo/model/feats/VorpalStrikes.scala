@@ -24,26 +24,21 @@ import io.truthencode.ddo.support.requisite._
 import scala.collection.immutable
 
 /**
-  * [[https://ddowiki.com/page/Vorpal_Strikes Vorpal Strikes]]
-  * Usage: Active, Toggled Stance
-  * Prerequisite: Monk Level 12, Wisdom 23, Improved Critical:Bludgeoning Weapons.
-  * Description
-  * Your unarmed strikes are now considered vorpal and slashing.
-  *
-  * Notes
-  * Epic Feat available for selection at level 21, 24 or 27. You need at least 12 levels of Monk in your character to qualify for this feat.
-  * Vorpal Strikes is a Monk stance, similar to Slow Fall. The feat is switched off on character login. The stance co-exists with general stances such as Power Attack and Monk stances such as Mountain Stance.
-  * This ability does not make unarmed strikes considered slashing weapons in regards to Ninja Spy (No poison, no dex-to-damage or hit), it simply adds an additional damage type.
-  * @todo need to verify epic level selection functionality is handled
-  * Created by adarr on 4/6/2017.
-  */
+ * [[https://ddowiki.com/page/Vorpal_Strikes Vorpal Strikes]] Usage: Active, Toggled Stance Prerequisite: Monk Level 12,
+ * Wisdom 23, Improved Critical:Bludgeoning Weapons. Description Your unarmed strikes are now considered vorpal and
+ * slashing.
+ *
+ * Notes Epic Feat available for selection at level 21, 24 or 27. You need at least 12 levels of Monk in your character
+ * to qualify for this feat. Vorpal Strikes is a Monk stance, similar to Slow Fall. The feat is switched off on
+ * character login. The stance co-exists with general stances such as Power Attack and Monk stances such as Mountain
+ * Stance. This ability does not make unarmed strikes considered slashing weapons in regards to Ninja Spy (No poison, no
+ * dex-to-damage or hit), it simply adds an additional damage type.
+ * @todo
+ *   need to verify epic level selection functionality is handled Created by adarr on 4/6/2017.
+ */
 trait VorpalStrikes
-    extends FeatRequisiteImpl
-    with ClassRequisiteImpl
-    with RequiresAllOfClass
-    with ActiveFeat
-    with Stance
-    with ClassRestricted {
+  extends FeatRequisiteImpl with ClassRequisiteImpl with RequiresAllOfClass with ActiveFeat with Stance
+  with ClassRestricted {
   override def allOfClass: immutable.Seq[(HeroicCharacterClass, Int)] =
     List((Monk, 12))
 

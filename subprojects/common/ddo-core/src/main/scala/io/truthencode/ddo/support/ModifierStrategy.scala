@@ -23,7 +23,7 @@ import scala.collection.immutable
 sealed trait ModifierStrategy extends EnumEntry
 
 object ModifierStrategy extends Enum[ModifierStrategy] {
-    override def values: immutable.IndexedSeq[ModifierStrategy] = findValues
+  override def values: immutable.IndexedSeq[ModifierStrategy] = findValues
   case object HighestWins extends ModifierStrategy
   case object LowestWins extends ModifierStrategy
 }

@@ -16,31 +16,38 @@
  * limitations under the License.
  */
 package io.truthencode.ddo
-/** Used to supply some default value or None if there is no default.
-  */
+/**
+ * Used to supply some default value or None if there is no default.
+ */
 trait DefaultValue[T] {
-  /** The default value for the object
-    */
+  /**
+   * The default value for the object
+   */
   lazy val default: Option[T] = None
-  /** True if value is default value, otherwise false.
-    * @note will return false if there is no default value is provided.
-    */
+  /**
+   * True if value is default value, otherwise false.
+   * @note
+   *   will return false if there is no default value is provided.
+   */
   def isDefault[D <: T](other: DefaultValue[D]): Boolean = {
     this.default match {
-      case Some(x) => other.hasDefault &&  other.default.contains(x) //  == other // this.defaultValue.equals(other.defaultValue)
-      case _       => false
+      case Some(x) =>
+        other.hasDefault && other.default.contains(x) //  == other // this.defaultValue.equals(other.defaultValue)
+      case _ => false
     }
   }
-  /** True if there is a default value.
-    */
+  /**
+   * True if there is a default value.
+   */
   def hasDefault: Boolean = this.default match {
     case Some(_) => true
-    case _       => false
+    case _ => false
   }
 }
 
-/** Specifies there is no default value for this object.
-  */
+/**
+ * Specifies there is no default value for this object.
+ */
 trait NoDefault[T] extends DefaultValue[T] {
   override lazy val default: Option[T] = None
 }

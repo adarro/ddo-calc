@@ -23,21 +23,16 @@ import io.truthencode.ddo.model.item.weapon.WeaponCategory
 import io.truthencode.ddo.model.FeatConverters.featByWeaponProficiency
 import io.truthencode.ddo.support.requisite.{FeatRequisiteImpl, GrantsToClass, RequiresAllOfFeat}
 
-/** Icon Feat Rapid Reload.png
-  * Rapid Reload
-  * Passive Allows Crossbows to be reloaded about 20% faster.
-  *
-  * Proficiency: Light Crossbows
-  * */
+/**
+ * Icon Feat Rapid Reload.png Rapid Reload Passive Allows Crossbows to be reloaded about 20% faster.
+ *
+ * Proficiency: Light Crossbows
+ */
 protected[feats] trait RapidReload
-  extends FeatRequisiteImpl
-    with Passive
-    with RequiresAllOfFeat
-    with GrantsToClass
-    with FighterBonusFeat {
+  extends FeatRequisiteImpl with Passive with RequiresAllOfFeat with GrantsToClass with FighterBonusFeat {
   self: ClassFeat =>
   override def grantToClass: Seq[(HeroicCharacterClass, Int)] = List((Artificer, 1))
 
   override def allOfFeats: Seq[GeneralFeat] =
-    List(WeaponCategory.LightCrossbow) collect featByWeaponProficiency
+    List(WeaponCategory.LightCrossbow).collect(featByWeaponProficiency)
 }

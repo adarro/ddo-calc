@@ -18,14 +18,15 @@
 package io.truthencode.ddo.model.classes
 
 import enumeratum.EnumEntry
-import org.scalatest.{FunSpec, Matchers}
+import org.scalatest.funspec.AnyFunSpec
+import org.scalatest.matchers.should.Matchers
 
-class EpicCharacterClassTest extends FunSpec with Matchers{
+class EpicCharacterClassTest extends AnyFunSpec with Matchers {
   describe("An Epic Character Class") {
     it("Has values from 1 to 10 representing effective level 21 to 30") {
-      EpicCharacterClass.values.foreach{x :EnumEntry=>
-        x.entryName should startWith ("Level")
-        x.entryName should fullyMatch regex "Level\\d+"
+      EpicCharacterClass.values.foreach { x: EnumEntry =>
+        x.entryName should startWith("Level")
+        (x.entryName should fullyMatch).regex("Level\\d+")
       }
     }
   }

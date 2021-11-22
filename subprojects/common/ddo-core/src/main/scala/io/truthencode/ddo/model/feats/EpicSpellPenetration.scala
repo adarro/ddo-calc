@@ -20,11 +20,9 @@ package io.truthencode.ddo.model.feats
 import io.truthencode.ddo.support.requisite.{FreeFeat, RequiresAllOfFeat}
 
 /**
-  * Created by adarr on 4/3/2017.
-  */
-protected[feats] trait EpicSpellPenetration
-    extends FreeFeat
-    with SpellCastingPassive
-    with RequiresAllOfFeat { self: EpicFeat =>
+ * Created by adarr on 4/3/2017.
+ */
+protected[feats] trait EpicSpellPenetration extends FreeFeat with SpellCastingPassive with RequiresAllOfFeat {
+  self: EpicFeat =>
   override def allOfFeats: Seq[Feat] = List(GeneralFeat.GreaterSpellPenetration)
 }

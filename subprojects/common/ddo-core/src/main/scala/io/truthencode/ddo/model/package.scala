@@ -20,19 +20,20 @@ package io.truthencode.ddo
 import java.time.Duration
 
 /**
-  * Created by adarr on 1/27/2017.
-  */
+ * Created by adarr on 1/27/2017.
+ */
 package object model {
   /* Global Defaults */
   final val GlobalMinimumCoolDown = Duration.ofSeconds(1)
 
   /* icky unknowns as of yet */
   /**
-    * Used to provide a default value for under documented / unknown values
-    */
+   * Used to provide a default value for under documented / unknown values
+   */
   @deprecated(
     message =
-      "This is a place holder for cooldowns etc that are undocumented or unknown and should be removed in a later version","ddo-core 0.0.1"
+      "This is a place holder for cooldowns etc that are undocumented or unknown and should be removed in a later version",
+    "ddo-core 0.0.1"
   )
   final val UnknownDuration = Duration.ofSeconds(5)
 

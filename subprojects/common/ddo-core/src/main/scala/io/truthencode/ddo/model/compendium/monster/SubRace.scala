@@ -22,8 +22,8 @@ import enumeratum.{Enum, EnumEntry}
 import scala.collection.immutable
 
 /**
-  * Created by adarr on 3/25/2017.
-  */
+ * Created by adarr on 3/25/2017.
+ */
 sealed trait SubRace extends EnumEntry
 
 object SubRace extends Enum[SubRace] {

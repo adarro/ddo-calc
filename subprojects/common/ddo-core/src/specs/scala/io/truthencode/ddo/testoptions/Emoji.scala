@@ -23,10 +23,12 @@ import com.vladsch.flexmark.util.data.MutableDataSet
 import com.vladsch.flexmark.util.misc.Extension
 
 /**
-  * Configures and enables Flexmarks Emojis hopefully with the help of [[https://github.com/WebpageFX/emoji-cheat-sheet.com emojii cheat sheet]] extension
-  *
-  * @see [[https://github.com/vsch/flexmark-java/wiki/Extensions#emoji]]
-  */
+ * Configures and enables Flexmarks Emojis hopefully with the help of
+ * [[https://github.com/WebpageFX/emoji-cheat-sheet.com emojii cheat sheet]] extension
+ *
+ * @see
+ *   [[https://github.com/vsch/flexmark-java/wiki/Extensions#emoji]]
+ */
 trait Emoji extends Flexmark {
 
   abstract override def flexmarkExtensions: Seq[Extension] =
@@ -35,10 +37,11 @@ trait Emoji extends Flexmark {
   abstract override def calls: Seq[() => MutableDataSet] = super.calls :+ taskOptions()
 
   /**
-    * see [[https://github.com/vsch/flexmark-java/wiki/Extensions#emoji]]
-    * @param dataSet
-    * @return Mutated dataset with specified default options
-    */
+   * see [[https://github.com/vsch/flexmark-java/wiki/Extensions#emoji]]
+   * @param dataSet
+   * @return
+   *   Mutated dataset with specified default options
+   */
   private[this] def taskOptions()(implicit dataSet: MutableDataSet): () => MutableDataSet = { () =>
     dataSet
       .set(EmojiExtension.ATTR_IMAGE_SIZE, "24")

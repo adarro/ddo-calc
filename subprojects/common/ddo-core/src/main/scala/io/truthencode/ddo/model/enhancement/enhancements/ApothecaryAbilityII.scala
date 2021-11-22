@@ -20,10 +20,7 @@ package io.truthencode.ddo.model.enhancement.enhancements
 import io.truthencode.ddo.model.attribute.Attribute
 import io.truthencode.ddo.model.enhancement.enhancements.classbased.ApothecaryTierFour
 
-trait ApothecaryAbilityII
-    extends ApothecaryTierFour
-    with ClassEnhancementImpl
-    with AbilitySelector {
+trait ApothecaryAbilityII extends ApothecaryTierFour with ClassEnhancementImpl with AbilitySelector {
 
   override lazy val description: Option[String] = Some(
     "+1 to either Intelligence or Constitution"
@@ -33,18 +30,18 @@ trait ApothecaryAbilityII
   override def apCostPerRank: Int = 2
 
   /**
-    * Roman Numeral Suffix
-    *
-    * @return
-    */
+   * Roman Numeral Suffix
+   *
+   * @return
+   */
   override def rnSuffix: Int = 2
 
   override val abilitySelections: Seq[Attribute] =
     Seq(Attribute.Intelligence, Attribute.Constitution)
 
   /**
-    * Some enhancements can be taken multiple times (generally up to three)
-    */
+   * Some enhancements can be taken multiple times (generally up to three)
+   */
   override val ranks: Int = 1
 
 }

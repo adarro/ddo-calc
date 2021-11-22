@@ -22,14 +22,14 @@ import io.truthencode.ddo.model.attribute.Attribute._
 import scala.collection.immutable.HashSet
 
 /**
-  * Created by adarr on 1/28/2017.
-  */
+ * Created by adarr on 1/28/2017.
+ */
 trait LinkedAttribute {
   def linkedAttribute: Set[Attribute]
 }
 
 trait LinkedAttributeImpl extends LinkedAttribute {
-    override def linkedAttribute: Set[Attribute] = HashSet()
+  override def linkedAttribute: Set[Attribute] = HashSet()
 }
 
 trait StrengthLinked extends LinkedAttribute {

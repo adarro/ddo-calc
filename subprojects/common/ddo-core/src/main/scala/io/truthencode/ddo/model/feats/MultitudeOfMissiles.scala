@@ -27,36 +27,32 @@ import io.truthencode.ddo.model.misc.{CoolDownPool, SharedCoolDown}
 import io.truthencode.ddo.support.requisite._
 
 /**
-  * For the next 20 seconds, while wielding a Simple Thrown Weapon add 100 to your
-  * Doubleshot and 2x your Base Attack Bonus to Ranged Power.
-  * Shares a cooldown with Manyshot.
-  *
-  * @note Alchemists get this feat for free at class level 6 (without meeting the prerequisites).
-  *       Other classes can take this feat if they meet the prerequisitves.
-  * @see [[https://ddowiki.com/page/Multitude_of_Missiles]]
-  */
+ * For the next 20 seconds, while wielding a Simple Thrown Weapon add 100 to your Doubleshot and 2x your Base Attack
+ * Bonus to Ranged Power. Shares a cooldown with Manyshot.
+ *
+ * @note
+ *   Alchemists get this feat for free at class level 6 (without meeting the prerequisites). Other classes can take this
+ *   feat if they meet the prerequisitves.
+ * @see
+ *   [[https://ddowiki.com/page/Multitude_of_Missiles]]
+ */
 protected[feats] trait MultitudeOfMissiles
-    extends FeatRequisiteImpl
-    with ClassRequisiteImpl
-    with GrantsToClass
-    with RequiresAllOfFeat
-    with RequiresBaB
-    with ActiveFeat
-    with AtWillEvent
-    with SharedCoolDown {
+  extends FeatRequisiteImpl with ClassRequisiteImpl with GrantsToClass with RequiresAllOfFeat with RequiresBaB
+  with ActiveFeat with AtWillEvent with SharedCoolDown {
   override val coolDownPoolId: String = CoolDownPool.ManyShot.coolDownPoolId
   private[this] val cls = (Alchemist, 6)
 
-    override def coolDown: Option[Duration] = Some(Duration.ofSeconds(60))
+  override def coolDown: Option[Duration] = Some(Duration.ofSeconds(60))
 
-    abstract override def grantToClass: Seq[(HeroicCharacterClass, Int)] = super.grantToClass :+ cls
+  abstract override def grantToClass: Seq[(HeroicCharacterClass, Int)] = super.grantToClass :+ cls
 
   abstract override def allOfFeats: Seq[Feat] = super.allOfFeats :+ PointBlankShot
 
   /**
-    * The Minimum Required Base Attack Bonus
-    *
-    * @return Minimum value allowed
-    */
+   * The Minimum Required Base Attack Bonus
+   *
+   * @return
+   *   Minimum value allowed
+   */
   override def requiresBaB: Int = 6
 }

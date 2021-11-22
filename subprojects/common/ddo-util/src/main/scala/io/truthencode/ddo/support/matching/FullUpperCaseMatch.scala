@@ -18,6 +18,6 @@
 package io.truthencode.ddo.support.matching
 
 /**
-  * Used to match or manipulate using full UPPERCASE.
-  */
+ * Used to match or manipulate using full UPPERCASE.
+ */
 trait FullUpperCaseMatch extends UpperCaseStrategy with FullWord

@@ -21,8 +21,8 @@ import io.truthencode.ddo.support.requisite.RequirementImplicits.progressionToRe
 import io.truthencode.ddo.support.tree.TreeLike
 
 /**
-  * Represents a required amount of points spent (Action, Survival, Epic Destiny Points)
-  */
+ * Represents a required amount of points spent (Action, Survival, Epic Destiny Points)
+ */
 sealed trait ProgressionRequisite {
   self: Requisite =>
 
@@ -42,22 +42,18 @@ sealed trait ProgressionInTreeRequisite extends ProgressionRequisite {
 // }
 
 /**
-  * Base Stackable trait implementation used to initialize when no other has been used.
- * @note we should be able to create just one of these instead of a Race / Class / Feat etc specific one
-  */
-trait ProgressionRequisiteImpl
-    extends MustContainImpl[Requirement]
-    with ProgressionInTreeRequisite {
+ * Base Stackable trait implementation used to initialize when no other has been used.
+ * @note
+ *   we should be able to create just one of these instead of a Race / Class / Feat etc specific one
+ */
+trait ProgressionRequisiteImpl extends MustContainImpl[Requirement] with ProgressionInTreeRequisite {
   self: Requisite with RequisiteType =>
-    override def pointsInTree: Seq[(TreeLike, Int)] = Nil
+  override def pointsInTree: Seq[(TreeLike, Int)] = Nil
 }
 
-trait RequiresTreeProgression
-    extends ProgressionInTreeRequisite
-    with RequiresAllOf[Requirement]
-    with Requisite {
+trait RequiresTreeProgression extends ProgressionInTreeRequisite with RequiresAllOf[Requirement] with Requisite {
 
   abstract override def allOf: Seq[Requirement] = super.allOf ++ {
-    pointsInTree collect progressionToReq
+    pointsInTree.collect(progressionToReq)
   }
 }

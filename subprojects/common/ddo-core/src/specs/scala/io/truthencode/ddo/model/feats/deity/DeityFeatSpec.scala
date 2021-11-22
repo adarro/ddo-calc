@@ -37,40 +37,36 @@ import scala.collection.JavaConverters._
 @RunWith(classOf[ConcordionRunner])
 class DeityFeatSpec extends FeatDisplayHelper with LazyLogging {
 
-  private val filterEberron
-  : PartialFunction[Entry, Entry with ReligionFeatBase] = {
+  private val filterEberron: PartialFunction[Entry, Entry with ReligionFeatBase] = {
     case x: EberronReligionBase with ReligionFeatBase => x
   }
 
-  private val filterForgottenRealms
-  : PartialFunction[Entry, Entry with ReligionFeatBase] = {
+  private val filterForgottenRealms: PartialFunction[Entry, Entry with ReligionFeatBase] = {
     case x: ForgottenRealmsReligionBase with ReligionFeatBase => x
   }
 
-  private val filterFollower: PartialFunction[Entry, Entry] = {
-    case x: FollowerOfLevel => x
+  private val filterFollower: PartialFunction[Entry, Entry] = { case x: FollowerOfLevel =>
+    x
   }
 
-  private val filterChild: PartialFunction[Entry, Entry] = {
-    case x: ChildOfLevel => x
+  private val filterChild: PartialFunction[Entry, Entry] = { case x: ChildOfLevel =>
+    x
   }
 
-  private val filterBeloved: PartialFunction[Entry, Entry] = {
-    case x: BelovedOfLevel => x
+  private val filterBeloved: PartialFunction[Entry, Entry] = { case x: BelovedOfLevel =>
+    x
   }
 
-  private val filterUnique: PartialFunction[Entry, Entry] = {
-    case x: UniqueLevel => x
+  private val filterUnique: PartialFunction[Entry, Entry] = { case x: UniqueLevel =>
+    x
   }
 
-  private val filterDR
-  : PartialFunction[Entry, Entry with DisplayName with Prefix] = {
+  private val filterDR: PartialFunction[Entry, Entry with DisplayName with Prefix] = {
     case x: DamageReductionLevel with DisplayName with Prefix => x
   }
 
-  private val filterFavoredWeapons
-  : PartialFunction[Entry, Entry with FavoredWeapon] = {
-    case x: FavoredWeapon => x
+  private val filterFavoredWeapons: PartialFunction[Entry, Entry with FavoredWeapon] = { case x: FavoredWeapon =>
+    x
   }
 
   implicit class ListEntryOpts(source: Option[Entry]) {
@@ -96,8 +92,7 @@ class DeityFeatSpec extends FeatDisplayHelper with LazyLogging {
 
   case class ReligionWeapon(r: FavoredWeapon, re: Religion)
 
-  def myFilter(f: List[Entry with ReligionFeatBase],
-               rOpt: Option[Religion]): List[Entry] = {
+  def myFilter(f: List[Entry with ReligionFeatBase], rOpt: Option[Religion]): List[Entry] = {
     for {
       x <- f
       o <- x.allowedReligions
@@ -107,17 +102,15 @@ class DeityFeatSpec extends FeatDisplayHelper with LazyLogging {
 
   def loadFromKey(data: String): ResultObject = {
     val dataS = data.trim().toPascalCase
-    logger.debug(
-      s"Attempting to find religion $dataS for world $instanceWorld")
+    logger.debug(s"Attempting to find religion $dataS for world $instanceWorld")
     val worldReligion: immutable.Seq[Entry with ReligionFeatBase] =
       instanceWorld match {
-        case Some(World.Eberron) => enum.values collect filterEberron
+        case Some(World.Eberron) => enum.values.collect(filterEberron)
         case Some(World.ForgottenRealms) =>
-          enum.values collect filterForgottenRealms
+          enum.values.collect(filterForgottenRealms)
         case _ => Nil
       }
-    logger.debug(
-      s"Located ${worldReligion.size} matching world religion feats for $instanceWorld")
+    logger.debug(s"Located ${worldReligion.size} matching world religion feats for $instanceWorld")
     val oRel: Option[Religion] = findReligion(dataS)
     logger.debug(s"Religion $oRel")
 
@@ -128,11 +121,11 @@ class DeityFeatSpec extends FeatDisplayHelper with LazyLogging {
       case Some(x: FavoredWeapon) => x.favoredWeapon.displayText
     }
 
-    val follower = (f collectFirst filterFollower).firstStringValue
-    val beloved = (f collectFirst filterBeloved).firstStringValue
-    val child = (f collectFirst filterChild).firstStringValue
-    val unique = (f collectFirst filterUnique).firstStringValue
-    val drFeats = f collect filterDR
+    val follower = (f.collectFirst(filterFollower)).firstStringValue
+    val beloved = (f.collectFirst(filterBeloved)).firstStringValue
+    val child = (f.collectFirst(filterChild)).firstStringValue
+    val unique = (f.collectFirst(filterUnique)).firstStringValue
+    val drFeats = f.collect(filterDR)
     val k = for {
       x <- drFeats
       p <- x.withPrefix
@@ -145,7 +138,8 @@ class DeityFeatSpec extends FeatDisplayHelper with LazyLogging {
     } else {
       s"$prefix TBD"
     }
-    val result = ResultObject(religion = data,
+    val result = ResultObject(
+      religion = data,
       follow = follower,
       favoredWeapon = fw,
       child = child,
@@ -157,13 +151,14 @@ class DeityFeatSpec extends FeatDisplayHelper with LazyLogging {
 
   }
 
-  case class ResultObject(religion: String,
-                          favoredWeapon: String,
-                          follow: String,
-                          child: String,
-                          unique: String,
-                          beloved: String,
-                          damageReduction: String)
+  case class ResultObject(
+    religion: String,
+    favoredWeapon: String,
+    follow: String,
+    child: String,
+    unique: String,
+    beloved: String,
+    damageReduction: String)
 
   override val enum: E = Feat
 }

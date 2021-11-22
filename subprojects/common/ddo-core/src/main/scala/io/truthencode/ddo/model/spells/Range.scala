@@ -17,4 +17,4 @@
  */
 package io.truthencode.ddo.model.spells
 
-case class Range (range:SpellRange,area:SpellArea)
+case class Range(range: SpellRange, area: SpellArea)

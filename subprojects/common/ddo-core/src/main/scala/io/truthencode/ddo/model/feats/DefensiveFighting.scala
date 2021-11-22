@@ -22,21 +22,20 @@ import java.time.Duration
 import io.truthencode.ddo.support.requisite.{FeatRequisiteImpl, FreeFeat}
 
 /**
-  * [[https://ddowiki.com/page/Defensive_Fighting Defensive Fighting]]
-  * While using Defensive Fighting mode, you gain a 5% bonus to AC and -5% penalty to-hit.
-  * Casting a spell ends this mode.
-  * @note Entering this stance will cause you to end any other stances you may have active, and also dispel any rage
-  *       or recklessness effects currently present on your character.
-  */
+ * [[https://ddowiki.com/page/Defensive_Fighting Defensive Fighting]] While using Defensive Fighting mode, you gain a 5%
+ * bonus to AC and -5% penalty to-hit. Casting a spell ends this mode.
+ * @note
+ *   Entering this stance will cause you to end any other stances you may have active, and also dispel any rage or
+ *   recklessness effects currently present on your character.
+ */
 protected[feats] trait DefensiveFighting
-    extends FeatRequisiteImpl
-    with ActiveFeat
-    with DefensiveCombatStance
-    with FreeFeat {
+  extends FeatRequisiteImpl with ActiveFeat with DefensiveCombatStance with FreeFeat {
   self: GeneralFeat =>
-    /**
-     * @note Set to No Cooldown but likely has some default minimal one
-     * @return Cool Down Duration (Currently None)
-     */
-    override def coolDown: Option[Duration] = None
+  /**
+   * @note
+   *   Set to No Cooldown but likely has some default minimal one
+   * @return
+   *   Cool Down Duration (Currently None)
+   */
+  override def coolDown: Option[Duration] = None
 }

@@ -23,19 +23,18 @@ import io.truthencode.ddo.support.naming.{DisplayName, DisplayProperties, SLAPre
 trait SLARapidCondensation extends BombardierTierTwo with ClassEnhancementImpl with SLAPrefix {
   self: DisplayName with DisplayProperties =>
   // Manually overriding until proper Acronym Case preservation
-    override def displayText: String = withPrefix.getOrElse("") + nameSource
-    override protected def nameSource: String = "Rapid Condensation"
+  override def displayText: String = withPrefix.getOrElse("") + nameSource
+  override protected def nameSource: String = "Rapid Condensation"
   /**
-    * Some enhancements can be taken multiple times (generally up to three)
-    */
+   * Some enhancements can be taken multiple times (generally up to three)
+   */
   override val ranks: Int = 3
 
   /**
-    * Some enhancements have multiple ranks.
-    * This is the cost for each rank.
-    * Older versions had increasing costs which has been streamlined to a linear progression.
-    *
-    * @return
-    */
+   * Some enhancements have multiple ranks. This is the cost for each rank. Older versions had increasing costs which
+   * has been streamlined to a linear progression.
+   *
+   * @return
+   */
   override def apCostPerRank: Int = 1
 }

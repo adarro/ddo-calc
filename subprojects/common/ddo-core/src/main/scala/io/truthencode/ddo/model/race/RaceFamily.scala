@@ -22,9 +22,8 @@ import enumeratum.{Enum, EnumEntry}
 import scala.collection.immutable.{HashSet, IndexedSeq}
 
 /**
-  * Groups Individual race types into main families.
-  * Used primarily for Race restricted equipment i.e.
-  */
+ * Groups Individual race types into main families. Used primarily for Race restricted equipment i.e.
+ */
 sealed trait RaceFamily extends EnumEntry {
   def includedRaces: Set[Race]
 }
@@ -81,49 +80,48 @@ protected trait Orcish extends RaceFamily {
 object RaceFamily extends Enum[RaceFamily] {
 
   /**
-    * Includes Standard Elves along with Drow, Sun and Half-elves
-    */
+   * Includes Standard Elves along with Drow, Sun and Half-elves
+   */
   case object Elven extends RaceFamilyImpl with Elvish
 
   /**
-    * Includes Warforged, Bladeforged
-    * TODO: needs to include any race with Construct Essence Feat
-    */
+   * Includes Warforged, Bladeforged TODO: needs to include any race with Construct Essence Feat
+   */
   case object Construct extends RaceFamilyImpl with Construct
 
   /**
-    * Includes Humans, Purple Dragon Knights and Half-elves
-    */
+   * Includes Humans, Purple Dragon Knights and Half-elves
+   */
   case object Human extends RaceFamilyImpl with HumanKind
 
   /**
-    * Dwarven Lineage
-    */
+   * Dwarven Lineage
+   */
   case object Dwarven extends RaceFamilyImpl with Dwarven
 
   /**
-    * Includes Gnomes and their Underdark bretheren, Deep Gnomes
-    */
+   * Includes Gnomes and their Underdark bretheren, Deep Gnomes
+   */
   case object Gnomish extends RaceFamilyImpl with Gnomish
 
   /**
-    * The Halfling Race
-    */
+   * The Halfling Race
+   */
   case object Halfing extends RaceFamilyImpl with HalflingKind
 
   /**
-    * Includes Half-Orcs
-    */
+   * Includes Half-Orcs
+   */
   case object Orcish extends RaceFamilyImpl with Orcish
 
   /**
-    * Includes DragonBorn
-    */
+   * Includes DragonBorn
+   */
   case object DragonBorn extends RaceFamilyImpl with DragonKind
 
   /**
-    * Includes the Iconic Shadarkai
-    */
+   * Includes the Iconic Shadarkai
+   */
   case object Shadarkai extends RaceFamilyImpl with ShadarkaiKind
 
   override def values: IndexedSeq[RaceFamily] = findValues

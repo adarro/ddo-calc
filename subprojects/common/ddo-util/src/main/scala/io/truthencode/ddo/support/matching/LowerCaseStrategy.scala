@@ -18,8 +18,8 @@
 package io.truthencode.ddo.support.matching
 
 /**
-  * Strategies based on LowerCase Matches
-  */
+ * Strategies based on LowerCase Matches
+ */
 trait LowerCaseStrategy extends CaseMatchStrategy {
   self: StringMatchBounds =>
   override val caseMatchOption: CaseMatchOption = CaseMatchOption.LowerCase

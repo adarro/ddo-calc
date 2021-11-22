@@ -19,20 +19,12 @@ package io.truthencode.ddo.model.feats
 
 import io.truthencode.ddo.model.classes.HeroicCharacterClass
 import io.truthencode.ddo.model.classes.HeroicCharacterClass.{Druid, Monk}
-import io.truthencode.ddo.support.requisite.{
-  FeatRequisiteImpl,
-  GrantsToClass,
-  RequiresAnyOfClass
-}
+import io.truthencode.ddo.support.requisite.{FeatRequisiteImpl, GrantsToClass, RequiresAnyOfClass}
 
 /**
-  * Created by adarr on 3/17/2017.
-  */
-trait TimelessBody
-    extends FeatRequisiteImpl
-    with Passive
-    with GrantsToClass
-    with RequiresAnyOfClass {
+ * Created by adarr on 3/17/2017.
+ */
+trait TimelessBody extends FeatRequisiteImpl with Passive with GrantsToClass with RequiresAnyOfClass {
   override def grantToClass: Seq[(HeroicCharacterClass, Int)] =
     List((Druid, 15), (Monk, 17))
 

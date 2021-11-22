@@ -18,24 +18,13 @@
 package io.truthencode.ddo.model.feats
 
 import io.truthencode.ddo.model.classes.HeroicCharacterClass
-import io.truthencode.ddo.support.requisite.{
-  ClassRequisiteImpl,
-  FeatRequisiteImpl,
-  RequiresAllOfClass
-}
+import io.truthencode.ddo.support.requisite.{ClassRequisiteImpl, FeatRequisiteImpl, RequiresAllOfClass}
 
-/** Icon Tactical Training.png
-  * Tactical Mastery
-  * Passive
-  * +6 bonus to Tactics DC's.
-  * Level 12: Fighter
-  * */
+/**
+ * Icon Tactical Training.png Tactical Mastery Passive +6 bonus to Tactics DC's. Level 12: Fighter
+ */
 trait TacticalMastery
-  extends FeatRequisiteImpl
-    with Passive
-    with ClassRequisiteImpl
-    with RequiresAllOfClass
-    with FighterBonusFeat {
+  extends FeatRequisiteImpl with Passive with ClassRequisiteImpl with RequiresAllOfClass with FighterBonusFeat {
   self: GeneralFeat =>
   override def allOfClass: Seq[(HeroicCharacterClass, Int)] =
     List((HeroicCharacterClass.Fighter, 12))

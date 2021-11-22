@@ -30,17 +30,13 @@ import io.truthencode.ddo.support.requisite._
 import scala.collection.immutable
 
 /**
-  * Created by adarr on 3/26/2017.
-  */
+ * Created by adarr on 3/26/2017.
+ */
 sealed trait DragonmarkFeat
-    extends Feat
-    with FriendlyDisplay
-    with SubFeatInformation
-    with FeatMatcher
-    with FeatRequisiteImpl {
+  extends Feat with FriendlyDisplay with SubFeatInformation with FeatMatcher with FeatRequisiteImpl {
   self: FeatType with Requisite with RequisiteType with Inclusion =>
-  val matchFeat: PartialFunction[Feat, DragonmarkFeat] = {
-    case x: DragonmarkFeat => x
+  val matchFeat: PartialFunction[Feat, DragonmarkFeat] = { case x: DragonmarkFeat =>
+    x
   }
   val matchFeatById: PartialFunction[String, DragonmarkFeat] = {
     case x: String if DragonmarkFeat.namesToValuesMap.contains(x) =>
@@ -52,23 +48,19 @@ sealed trait DragonmarkFeat
 
 /**
  * [[https://ddowiki.com/page/Dragonmark Dragon Mark]] Feats
- * @note Lesser and Greater Dragonmarks are now Tier 2 and 3 Racial Enhancements and need to be coded as such
+ * @note
+ *   Lesser and Greater Dragonmarks are now Tier 2 and 3 Racial Enhancements and need to be coded as such
  */
 object DragonmarkFeat extends Enum[DragonmarkFeat] with FeatSearchPrefix {
 
   /**
-    * [[https://ddowiki.com/page/Dragonmark_of_Storm]]
-    * The bloodline of House Lyrandar bestows on you a +2 bonus to your Balance skill.
-    * Activate this ability to cast Gust of Wind three times per rest.
-    * Gust of Wind creates a severe blast of wind that slows enemy movement and disperses clouds.
-    */
+   * [[https://ddowiki.com/page/Dragonmark_of_Storm]] The bloodline of House Lyrandar bestows on you a +2 bonus to your
+   * Balance skill. Activate this ability to cast Gust of Wind three times per rest. Gust of Wind creates a severe blast
+   * of wind that slows enemy movement and disperses clouds.
+   */
   case object LeastDragonmarkOfStorm
-      extends DragonmarkFeat
-      with RaceRequisiteImpl
-      with RequiresAllOfRace
-      with ActiveFeat
-      with OnSpellLikeAbilityEvent
-      with Passive {
+    extends DragonmarkFeat with RaceRequisiteImpl with RequiresAllOfRace with ActiveFeat with OnSpellLikeAbilityEvent
+    with Passive {
     override def allOfRace: Seq[(Race, Int)] = List((HalfElf, 1))
 
     override def coolDown: Option[Duration] = Some(UnknownDuration)
@@ -107,35 +99,25 @@ object DragonmarkFeat extends Enum[DragonmarkFeat] with FeatSearchPrefix {
 //  }
 
   /**
-    *  [[https://ddowiki.com/page/Dragonmark_of_Storm]]
-    * Activate this ability to harness the bloodline of House Lyrandar to cast Call Lightning Storm once per rest.
-    * Also allows you to use your Least and Lesser Marks of Storm an extra time per rest.
-    * Call Lightning Storm calls down lightning bolts from the sky.
-    */
+   * [[https://ddowiki.com/page/Dragonmark_of_Storm]] Activate this ability to harness the bloodline of House Lyrandar
+   * to cast Call Lightning Storm once per rest. Also allows you to use your Least and Lesser Marks of Storm an extra
+   * time per rest. Call Lightning Storm calls down lightning bolts from the sky.
+   */
   case object LeastDragonmarkOfShadow
-      extends DragonmarkFeat
-      with RaceRequisiteImpl
-      with RequiresAllOfRace
-      with ActiveFeat
-      with OnSpellLikeAbilityEvent
-      with Passive {
+    extends DragonmarkFeat with RaceRequisiteImpl with RequiresAllOfRace with ActiveFeat with OnSpellLikeAbilityEvent
+    with Passive {
     override def allOfRace: Seq[(Race, Int)] = List((Elf, 1))
 
     override def coolDown: Option[Duration] = Some(UnknownDuration)
   }
 
   /**
-    * [[https://ddowiki.com/page/Least_Dragonmark_of_Shadow Least Dragonmark of Shadow]]
-    * The bloodline of House Phiarlan bestows on you a +2 bonus to your Hide skill.
-    * Activate this ability to cast Invisibility three times per rest.
-    */
+   * [[https://ddowiki.com/page/Least_Dragonmark_of_Shadow Least Dragonmark of Shadow]] The bloodline of House Phiarlan
+   * bestows on you a +2 bonus to your Hide skill. Activate this ability to cast Invisibility three times per rest.
+   */
   case object LeastDragonmarkOfFinding
-      extends DragonmarkFeat
-      with RaceRequisiteImpl
-      with RequiresAllOfRace
-      with ActiveFeat
-      with OnSpellLikeAbilityEvent
-      with Passive {
+    extends DragonmarkFeat with RaceRequisiteImpl with RequiresAllOfRace with ActiveFeat with OnSpellLikeAbilityEvent
+    with Passive {
     override def allOfRace: Seq[(Race, Int)] = List((HalfOrc, 1))
 
     override def coolDown: Option[Duration] = Some(UnknownDuration)
@@ -176,12 +158,8 @@ object DragonmarkFeat extends Enum[DragonmarkFeat] with FeatSearchPrefix {
 //  }
 
   case object LeastDragonmarkOfHealing
-      extends DragonmarkFeat
-      with RaceRequisiteImpl
-      with RequiresAnyOfRace
-      with ActiveFeat
-      with OnSpellLikeAbilityEvent
-      with Passive {
+    extends DragonmarkFeat with RaceRequisiteImpl with RequiresAnyOfRace with ActiveFeat with OnSpellLikeAbilityEvent
+    with Passive {
     override def coolDown: Option[Duration] = Some(Duration.ofSeconds(1))
 
     override def anyOfRace: Seq[(Race, Int)] = List((Halfling, 1), (Human, 1))
@@ -218,18 +196,13 @@ object DragonmarkFeat extends Enum[DragonmarkFeat] with FeatSearchPrefix {
 //  }
 
   /**
-    * [[https://ddowiki.com/page/Least_Dragonmark_of_Making Least Dragonmark of Making]]
-    * The bloodline of House Cannith bestows on you a +2 bonus to your Repair skill.
-    * Activate this ability to cast Repair Light Damage.
-    * The Dragonmarks of Making also grant bonuses (+3 for Least, +3 for Lesser, and +4 for Greater) to crafting skills.
-    */
+   * [[https://ddowiki.com/page/Least_Dragonmark_of_Making Least Dragonmark of Making]] The bloodline of House Cannith
+   * bestows on you a +2 bonus to your Repair skill. Activate this ability to cast Repair Light Damage. The Dragonmarks
+   * of Making also grant bonuses (+3 for Least, +3 for Lesser, and +4 for Greater) to crafting skills.
+   */
   case object LeastDragonmarkOfMaking
-      extends DragonmarkFeat
-      with RaceRequisiteImpl
-      with RequiresAnyOfRace
-      with ActiveFeat
-      with OnSpellLikeAbilityEvent
-      with Passive {
+    extends DragonmarkFeat with RaceRequisiteImpl with RequiresAnyOfRace with ActiveFeat with OnSpellLikeAbilityEvent
+    with Passive {
     override def coolDown: Option[Duration] = Some(UnknownDuration)
 
     override def anyOfRace: Seq[(Race, Int)] = List((Human, 1))
@@ -273,12 +246,8 @@ object DragonmarkFeat extends Enum[DragonmarkFeat] with FeatSearchPrefix {
 //  }
 
   case object LeastDragonmarkOfPassage
-      extends DragonmarkFeat
-      with RaceRequisiteImpl
-      with RequiresAllOfRace
-      with Passive
-      with ActiveFeat
-      with OnSpellLikeAbilityEvent {
+    extends DragonmarkFeat with RaceRequisiteImpl with RequiresAllOfRace with Passive with ActiveFeat
+    with OnSpellLikeAbilityEvent {
     override def allOfRace: Seq[(Race, Int)] = List((Human, 1))
 
     override def coolDown: Option[Duration] = Some(UnknownDuration)
@@ -313,15 +282,11 @@ object DragonmarkFeat extends Enum[DragonmarkFeat] with FeatSearchPrefix {
 //  }
 
   /**
-    * [[https://ddowiki.com/page/Dragonmark_of_Sentinel DragonMark of Sentinel]]
-    */
+   * [[https://ddowiki.com/page/Dragonmark_of_Sentinel DragonMark of Sentinel]]
+   */
   case object LeastDragonmarkOfSentinel
-      extends DragonmarkFeat
-      with RaceRequisiteImpl
-      with RequiresAllOfRace
-      with ActiveFeat
-      with OnSpellLikeAbilityEvent
-      with Passive {
+    extends DragonmarkFeat with RaceRequisiteImpl with RequiresAllOfRace with ActiveFeat with OnSpellLikeAbilityEvent
+    with Passive {
     override def allOfRace: Seq[(Race, Int)] = List((Human, 1))
 
     override def coolDown: Option[Duration] = Some(UnknownDuration)
@@ -368,16 +333,13 @@ object DragonmarkFeat extends Enum[DragonmarkFeat] with FeatSearchPrefix {
 //  }
 
   /**
-    * [[https://ddowiki.com/page/Least_Dragonmark_of_Warding Least Dragonmark of Warding]]
-    * The bloodline of House Kundarak bestows on you a +2 bonus to your Search skill. Activate this ability to cast Fire Trap three times per rest.
-    */
+   * [[https://ddowiki.com/page/Least_Dragonmark_of_Warding Least Dragonmark of Warding]] The bloodline of House
+   * Kundarak bestows on you a +2 bonus to your Search skill. Activate this ability to cast Fire Trap three times per
+   * rest.
+   */
   case object LeastDragonmarkOfWarding
-      extends DragonmarkFeat
-      with RaceRequisiteImpl
-      with RequiresAllOfRace
-      with ActiveFeat
-      with OnSpellLikeAbilityEvent
-      with Passive {
+    extends DragonmarkFeat with RaceRequisiteImpl with RequiresAllOfRace with ActiveFeat with OnSpellLikeAbilityEvent
+    with Passive {
     override def coolDown: Option[Duration] = Some(UnknownDuration)
 
     override def allOfRace: Seq[(Race, Int)] = List((Dwarf, 1))
@@ -412,24 +374,22 @@ object DragonmarkFeat extends Enum[DragonmarkFeat] with FeatSearchPrefix {
 //  }
 
   /**
-    * [[https://ddowiki.com/page/Least_Dragonmark_of_Scribing Least Dragonmark of Scribing]]
-    *
-  The bloodline of House Sivis bestows on you a +2 bonus to your Use Magic Device skill.
-  Activate this ability to scribe runes on your glove or gauntlet, casting the Shield spell.
-    */
+   * [[https://ddowiki.com/page/Least_Dragonmark_of_Scribing Least Dragonmark of Scribing]]
+   *
+   * The bloodline of House Sivis bestows on you a +2 bonus to your Use Magic Device skill. Activate this ability to
+   * scribe runes on your glove or gauntlet, casting the Shield spell.
+   */
   case object LeastDragonmarkOfScribing
-      extends DragonmarkFeat
-      with RaceRequisiteImpl
-      with RequiresAllOfRace
-      with ActiveFeat
-      with OnSpellLikeAbilityEvent
-      with Passive {
+    extends DragonmarkFeat with RaceRequisiteImpl with RequiresAllOfRace with ActiveFeat with OnSpellLikeAbilityEvent
+    with Passive {
     override def allOfRace: Seq[(Race, Int)] = List((Gnome, 1))
 
     /**
-      * @fixme Duration of 1 minute per character level
-      * @return Duration
-      */
+     * @fixme
+     *   Duration of 1 minute per character level
+     * @return
+     *   Duration
+     */
     override def coolDown: Option[Duration] = Some(UnknownDuration)
   }
 
@@ -468,11 +428,11 @@ object DragonmarkFeat extends Enum[DragonmarkFeat] with FeatSearchPrefix {
 //  }
 
   /**
-    * Used when qualifying a search with a prefix.
-    * Examples include finding "HalfElf" from qualified "Race:HalfElf"
-    *
-    * @return A default or applied prefix
-    */
+   * Used when qualifying a search with a prefix. Examples include finding "HalfElf" from qualified "Race:HalfElf"
+   *
+   * @return
+   *   A default or applied prefix
+   */
   override def searchPrefixSource: String = "Dragonmark: "
 
   override def values: immutable.IndexedSeq[DragonmarkFeat] = findValues

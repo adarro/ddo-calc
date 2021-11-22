@@ -22,19 +22,12 @@ import io.truthencode.ddo.model.spells.SpellBookImpl
 import io.truthencode.ddo.support.requisite.{FreeFeat, RequiresCharacterLevel}
 
 /**
-  * Created by adarr on 4/3/2017.
-  * [[https://ddowiki.com/page/Burst_of_Glacial_Wrath Burst of Glacial Wrath]]
-  * Passive: Grants 140 spell points.
-  * Active: Deals 30d6 cold damage in a cone, chance to freeze.
-  */
+ * Created by adarr on 4/3/2017. [[https://ddowiki.com/page/Burst_of_Glacial_Wrath Burst of Glacial Wrath]] Passive:
+ * Grants 140 spell points. Active: Deals 30d6 cold damage in a cone, chance to freeze.
+ */
 protected[feats] trait BurstOfGlacialWrath
-    extends FreeFeat
-    with SpellFeats
-    with Passive
-    with ActiveFeat
-    with AtWillEvent
-    with SpellBookImpl
-    with RequiresCharacterLevel { self: EpicFeat =>
+  extends FreeFeat with SpellFeats with Passive with ActiveFeat with AtWillEvent with SpellBookImpl
+  with RequiresCharacterLevel { self: EpicFeat =>
   abstract override def spellIds: Set[String] =
     super.spellIds + "BurstOfGlacialWrath"
   final override val characterLevel: Int = 24

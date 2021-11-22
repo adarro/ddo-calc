@@ -24,25 +24,14 @@ import io.truthencode.ddo.model.skill.Skill
 import io.truthencode.ddo.support.requisite._
 
 /**
-  * [[https://ddowiki.com/page/Song_of_Freedom Song of Freedom]]
-  * Level: Bard 12
-  * Perform: 15 ranks*
-  * Target: One nearby ally other than the Bard.
-  * Base Duration: Instantaneous
-  * Song Description: This ability is equivalent to the Break Enchantment spell on one ally.
-  * *Only the base number of Perform ranks bought with skill points count toward the requirement to be able to play this song.
-  * (Skill bonuses do not count.)
-  * Created by adarr on 4/5/2017.
-  */
+ * [[https://ddowiki.com/page/Song_of_Freedom Song of Freedom]] Level: Bard 12 Perform: 15 ranks* Target: One nearby
+ * ally other than the Bard. Base Duration: Instantaneous Song Description: This ability is equivalent to the Break
+ * Enchantment spell on one ally. *Only the base number of Perform ranks bought with skill points count toward the
+ * requirement to be able to play this song. (Skill bonuses do not count.) Created by adarr on 4/5/2017.
+ */
 protected[feats] trait SongOfFreedom
-    extends SkillRequisiteImpl
-    with RequiresAllOfSkill
-    with ClassRequisiteImpl
-    with RequiresAllOfClass
-    with GrantsToClass
-    with ActiveFeat
-    with OnSongPlayedEvent
-    with BardSongCoolDown {
+  extends SkillRequisiteImpl with RequiresAllOfSkill with ClassRequisiteImpl with RequiresAllOfClass with GrantsToClass
+  with ActiveFeat with OnSongPlayedEvent with BardSongCoolDown {
   override def allOfClass: Seq[(HeroicCharacterClass, Int)] =
     List((HeroicCharacterClass.Bard, 12))
 

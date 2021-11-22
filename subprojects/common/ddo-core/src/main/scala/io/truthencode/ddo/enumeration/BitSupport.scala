@@ -22,8 +22,8 @@ import enumeratum.EnumEntry
 import scala.reflect.{classTag, ClassTag}
 
 /**
-  * Created by adarr on 1/22/2017.
-  */
+ * Created by adarr on 1/22/2017.
+ */
 trait BitSupport {
 
   //  self: Enum[_] =>

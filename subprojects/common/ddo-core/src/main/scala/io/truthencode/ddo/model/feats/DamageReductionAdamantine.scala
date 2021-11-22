@@ -20,22 +20,13 @@ package io.truthencode.ddo.model.feats
 import io.truthencode.ddo.model.classes.HeroicCharacterClass
 import io.truthencode.ddo.model.classes.HeroicCharacterClass.FavoredSoul
 import io.truthencode.ddo.model.religions.LordOfBlades
-import io.truthencode.ddo.support.requisite.{
-  FeatRequisiteImpl,
-  RequiresAllOfClass,
-  RequiresAnyOfFeat
-}
+import io.truthencode.ddo.support.requisite.{FeatRequisiteImpl, RequiresAllOfClass, RequiresAnyOfFeat}
 
 import scala.collection.immutable
 
 trait DamageReductionAdamantine
-    extends FeatRequisiteImpl
-    with EberronReligionWarforged
-    with DamageReductionLevelBase
-    with RequiresAnyOfFeat
-    with RequiresAllOfClass
-    with LordOfBlades
-    with TheLordOfBladesFeatBase { self: DeityFeat =>
+  extends FeatRequisiteImpl with EberronReligionWarforged with DamageReductionLevelBase with RequiresAnyOfFeat
+  with RequiresAllOfClass with LordOfBlades with TheLordOfBladesFeatBase { self: DeityFeat =>
 
   override def nameSource: String = "Adamantine"
 

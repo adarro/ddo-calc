@@ -21,10 +21,8 @@ import io.truthencode.ddo.model.race.Race
 import io.truthencode.ddo.support.requisite.{FeatRequisiteImpl, GrantsToRace}
 
 /**
-  * Created by adarr on 2/19/2017.
-  */
-trait Elf extends FeatRequisiteImpl
-  with Passive
-  with GrantsToRace   { self: RacialFeat =>
-  override def grantsToRace: Seq[(Race, Int)] = List((Race.Elf, 1),(Race.Morninglord,1))
+ * Created by adarr on 2/19/2017.
+ */
+trait Elf extends FeatRequisiteImpl with Passive with GrantsToRace { self: RacialFeat =>
+  override def grantsToRace: Seq[(Race, Int)] = List((Race.Elf, 1), (Race.Morninglord, 1))
 }

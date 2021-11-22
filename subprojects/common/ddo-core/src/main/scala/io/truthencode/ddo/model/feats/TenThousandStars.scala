@@ -32,25 +32,17 @@ import io.truthencode.ddo.support.requisite.{
 }
 
 /**
-  * Icon Feat Ten Thousand Stars.png
-  * [[https://ddowiki.com/page/Ten_Thousand_Stars Ten Thousand Stars]]
-  * Active - Ability
-  * For the next 30 seconds, add your Wisdom ability score to your Ranged Power and add your monk level * 5 to your Doubleshot.
-  * This ability puts Manyshot on a 30 second cooldown. Cooldown: one minute.
-  * @fixme Currently have only one cooldown pool, but this has a 1 minute cooldown and adds Manyshot cooldown event.
-  *
-  * Level 6: Monk
-  * Dexterity 13
-  */
+ * Icon Feat Ten Thousand Stars.png [[https://ddowiki.com/page/Ten_Thousand_Stars Ten Thousand Stars]] Active - Ability
+ * For the next 30 seconds, add your Wisdom ability score to your Ranged Power and add your monk level * 5 to your
+ * Doubleshot. This ability puts Manyshot on a 30 second cooldown. Cooldown: one minute.
+ * @fixme
+ *   Currently have only one cooldown pool, but this has a 1 minute cooldown and adds Manyshot cooldown event.
+ *
+ * Level 6: Monk Dexterity 13
+ */
 protected[feats] trait TenThousandStars
-    extends FeatRequisiteImpl
-    with ClassRequisiteImpl
-    with ActiveFeat
-    with AtWillEvent
-    with SharedCoolDown
-    with RequiresAttribute
-    with RequiresAllOfClass
-    with MartialArtsFeat {
+  extends FeatRequisiteImpl with ClassRequisiteImpl with ActiveFeat with AtWillEvent with SharedCoolDown
+  with RequiresAttribute with RequiresAllOfClass with MartialArtsFeat {
   self: GeneralFeat =>
 
   override def requiresAttribute: Seq[(Attribute, Int)] =

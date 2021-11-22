@@ -20,16 +20,16 @@ package io.truthencode.ddo.model.feats
 import io.truthencode.ddo.model.classes.HeroicCharacterClass
 import io.truthencode.ddo.support.requisite.{ClassRequisiteImpl, FeatRequisiteImpl, RequiresAllOfClass}
 
-trait WhirlingSteelStrike extends FeatRequisiteImpl
-  with ClassRequisiteImpl
-  with Passive
-  with RequiresAllOfClass
-  with FighterBonusFeat
+trait WhirlingSteelStrike
+  extends FeatRequisiteImpl with ClassRequisiteImpl with Passive with RequiresAllOfClass with FighterBonusFeat
   with MartialArtsFeat {
   self: GeneralFeat =>
   override def allOfFeats: Seq[Feat] = Seq(Feat.withName("Weapon Focus: Slashing"))
 
-  override def anyOfFeats: Seq[Feat] = Seq(Feat.withName("Proficiency: Longswords"), DeityFeat.FollowerOfTheSovereignHost, RacialFeat.HalfElfDilettanteFighter)
+  override def anyOfFeats: Seq[Feat] = Seq(
+    Feat.withName("Proficiency: Longswords"),
+    DeityFeat.FollowerOfTheSovereignHost,
+    RacialFeat.HalfElfDilettanteFighter)
 
   override def allOfClass: Seq[(HeroicCharacterClass, Int)] =
     List((HeroicCharacterClass.Monk, 1))

@@ -23,22 +23,18 @@ import io.truthencode.ddo.activation.AtWillEvent
 import io.truthencode.ddo.support.requisite.{FeatRequisiteImpl, FreeFeat}
 
 /**
-  * Icon Feat Sap.png
-  * [[https://ddowiki.com/page/Sap Sap]]
-  * Active - Special Attack
-  * This feat has a chance to render the target briefly senseless, though it will become active if damaged again.
-  * Some creatures may be immune to the sap effect and sap is more effective when performed as a successful sneak attack
-  * (whether or not your character can normally perform sneak attacks).
-  * @todo Currently flagged as a tatical Feat,
-  *       but there is no save and therefore does not benefit (or need to) from tactical bonuses per se
-  */
+ * Icon Feat Sap.png [[https://ddowiki.com/page/Sap Sap]] Active - Special Attack This feat has a chance to render the
+ * target briefly senseless, though it will become active if damaged again. Some creatures may be immune to the sap
+ * effect and sap is more effective when performed as a successful sneak attack (whether or not your character can
+ * normally perform sneak attacks).
+ * @todo
+ *   Currently flagged as a tatical Feat, but there is no save and therefore does not benefit (or need to) from tactical
+ *   bonuses per se
+ */
 protected trait Sap
-    extends FeatRequisiteImpl
-    with ActiveFeat
+  extends FeatRequisiteImpl with ActiveFeat
 //    with AtWillEvent
-    with Tactical
-    with FreeFeat
-    with FighterBonusFeat {
+  with Tactical with FreeFeat with FighterBonusFeat {
   self: GeneralFeat =>
   override def coolDown: Option[Duration] = Some(Duration.ofSeconds(15))
 }

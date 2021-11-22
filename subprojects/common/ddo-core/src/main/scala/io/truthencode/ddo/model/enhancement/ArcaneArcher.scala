@@ -18,6 +18,7 @@
 package io.truthencode.ddo.model.enhancement
 
 /**
-  * @note will either need to qualify class or compensate for Racial Elven Arcane Archer access
-  */
+ * @note
+ *   will either need to qualify class or compensate for Racial Elven Arcane Archer access
+ */
 trait ArcaneArcher extends RangerEnhancement

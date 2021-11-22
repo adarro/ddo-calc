@@ -18,6 +18,6 @@
 package io.truthencode.ddo.model.feats
 
 /**
-  * Created by adarr on 4/9/2017.
-  */
+ * Created by adarr on 4/9/2017.
+ */
 trait DeityFeatLevel

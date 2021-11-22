@@ -17,9 +17,10 @@
  */
 package io.truthencode.ddo
 
-import org.scalatest.{FunSpec, Matchers}
+import org.scalatest.funspec.AnyFunSpec
+import org.scalatest.matchers.should.Matchers
 
-class StoreLocationTest extends FunSpec with Matchers {
+class StoreLocationTest extends AnyFunSpec with Matchers {
   describe("Wearable Items") {
     they("should have a designated Equipment Slot as a location") {
       val eq = StoreLocation.Equipment

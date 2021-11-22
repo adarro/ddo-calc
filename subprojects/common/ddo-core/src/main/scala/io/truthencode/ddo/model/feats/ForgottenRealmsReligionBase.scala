@@ -20,10 +20,6 @@ package io.truthencode.ddo.model.feats
 import io.truthencode.ddo.support.requisite.ClassRequisiteImpl
 
 /**
-  * Base trait denoting restrictions for Eberron based Deity feats
-  */
-trait ForgottenRealmsReligionBase
-    extends ClassRequisiteImpl
-    with DivineClassBase { self: DeityFeat =>
-
-}
+ * Base trait denoting restrictions for Eberron based Deity feats
+ */
+trait ForgottenRealmsReligionBase extends ClassRequisiteImpl with DivineClassBase { self: DeityFeat => }

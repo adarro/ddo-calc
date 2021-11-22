@@ -19,21 +19,13 @@ package io.truthencode.ddo.model.feats
 
 import io.truthencode.ddo.model.classes.HeroicCharacterClass
 import io.truthencode.ddo.model.classes.HeroicCharacterClass.Barbarian
-import io.truthencode.ddo.support.requisite.{
-  FeatRequisiteImpl,
-  FreeFeat,
-  GrantsToClass
-}
+import io.truthencode.ddo.support.requisite.{FeatRequisiteImpl, FreeFeat, GrantsToClass}
 
 /**
-  * [[http://ddowiki.com/page/Damage_Reduction Damage Reduction]]
-  * Damage Reduction (passive): Grants damage reduction 1/- to all unarmed, weapon, or natural attacks.
-  * Note: this increases with level.
-  */
-protected[feats] trait DamageReduction
-    extends FeatRequisiteImpl
-    with Passive
-    with GrantsToClass
-    with FreeFeat { self: ClassFeat with DamageReductionPrefix =>
+ * [[http://ddowiki.com/page/Damage_Reduction Damage Reduction]] Damage Reduction (passive): Grants damage reduction 1/-
+ * to all unarmed, weapon, or natural attacks. Note: this increases with level.
+ */
+protected[feats] trait DamageReduction extends FeatRequisiteImpl with Passive with GrantsToClass with FreeFeat {
+  self: ClassFeat with DamageReductionPrefix =>
   override def grantToClass: Seq[(HeroicCharacterClass, Int)] = List((Barbarian, 2))
 }

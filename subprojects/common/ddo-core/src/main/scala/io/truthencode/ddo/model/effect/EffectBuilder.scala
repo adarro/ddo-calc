@@ -20,7 +20,8 @@ package io.truthencode.ddo.model.effect
 import io.truthencode.ddo.model.effect.features.Features
 
 abstract class EffectBuilder[T <: EffectStatus]() {
-  def withProperty(i: Int)(implicit ev: T =:= EffectInComplete): EffectBuilder[EffectInComplete] = EffectBuilder.create(effect)
+  def withProperty(i: Int)(implicit ev: T =:= EffectInComplete): EffectBuilder[EffectInComplete] =
+    EffectBuilder.create(effect)
 
   protected val effect: Effect
   def build(implicit ev: EffectStatus =:= EffectComplete): Effect = effect

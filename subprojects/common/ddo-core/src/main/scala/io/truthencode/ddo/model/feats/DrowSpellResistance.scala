@@ -18,20 +18,12 @@
 package io.truthencode.ddo.model.feats
 
 import io.truthencode.ddo.model.race.Race
-import io.truthencode.ddo.support.requisite.{
-  FeatRequisiteImpl,
-  RaceRequisite,
-  RequiresAllOfRace
-}
+import io.truthencode.ddo.support.requisite.{FeatRequisiteImpl, RaceRequisite, RequiresAllOfRace}
 
 /**
-  * Created by adarr on 2/20/2017.
-  */
-trait DrowSpellResistance
-    extends FeatRequisiteImpl
-    with RaceRequisite
-    with Passive
-    with RequiresAllOfRace {
+ * Created by adarr on 2/20/2017.
+ */
+trait DrowSpellResistance extends FeatRequisiteImpl with RaceRequisite with Passive with RequiresAllOfRace {
   override def allOfRace: Seq[(Race, Int)] = List((Race.DrowElf, 1))
 
   override def grantsToRace: Seq[(Race, Int)] = List((Race.DrowElf, 1))

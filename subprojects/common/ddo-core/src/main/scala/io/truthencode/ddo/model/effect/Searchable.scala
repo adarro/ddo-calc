@@ -31,11 +31,11 @@ trait Searchable[T <: EnumEntry with SearchPattern] extends Enum[T] with LazyLog
   def tryFindByPattern(name: String): Try[T] = {
     logger.debug("entry\t=>\tnamed")
 
-    values collectFirst {
+    values.collectFirst {
       case p: T if p.searchPattern(name) == p.entryName => p
     } match {
       case Some(x) => Success(x)
-      case _       => Failure(new NoSuchElementException(s"Could not find element with name $name"))
+      case _ => Failure(new NoSuchElementException(s"Could not find element with name $name"))
     }
 
   }

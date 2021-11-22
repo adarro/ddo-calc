@@ -20,8 +20,8 @@ package io.truthencode.ddo.support.naming
 import io.truthencode.ddo.support.StringUtils.Extensions
 
 /**
-  * Adds Spell Critical: prefix to item.
-  */
+ * Adds Spell Critical: prefix to item.
+ */
 trait EfficientMetaMagicsPrefix extends Prefix {
   self: DisplayName =>
   override def prefix: Option[String] = Some("EfficientMetaMagics")

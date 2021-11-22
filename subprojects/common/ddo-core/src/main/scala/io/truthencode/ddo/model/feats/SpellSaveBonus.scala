@@ -18,20 +18,12 @@
 package io.truthencode.ddo.model.feats
 
 import io.truthencode.ddo.model.race.Race
-import io.truthencode.ddo.support.requisite.{
-  FeatRequisiteImpl,
-  RaceRequisite,
-  RequiresAnyOfRace
-}
+import io.truthencode.ddo.support.requisite.{FeatRequisiteImpl, RaceRequisite, RequiresAnyOfRace}
 
 /**
-  * Created by adarr on 2/20/2017.
-  */
-trait SpellSaveBonus
-    extends FeatRequisiteImpl
-    with RaceRequisite
-    with Passive
-    with RequiresAnyOfRace {
+ * Created by adarr on 2/20/2017.
+ */
+trait SpellSaveBonus extends FeatRequisiteImpl with RaceRequisite with Passive with RequiresAnyOfRace {
   override def anyOfRace: Seq[(Race, Int)] =
     List((Race.DrowElf, 1), (Race.Dwarf, 1))
 

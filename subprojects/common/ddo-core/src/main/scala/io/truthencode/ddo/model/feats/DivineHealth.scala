@@ -22,15 +22,11 @@ import io.truthencode.ddo.model.classes.HeroicCharacterClass.Paladin
 import io.truthencode.ddo.support.requisite._
 
 /**
-  * [[http://ddowiki.com/page/Divine_Health Divine Health]]
-  * This class feature makes the Paladin immune to all diseases.
-  * As of Update 14, this feat makes the Paladin immune to natural, magical, and supernatural diseases.
-  */
-protected[feats] trait DivineHealth
-    extends FeatRequisiteImpl
-    with Passive
-    with GrantsToClass
-    with FreeFeat { self: ClassFeat =>
+ * [[http://ddowiki.com/page/Divine_Health Divine Health]] This class feature makes the Paladin immune to all diseases.
+ * As of Update 14, this feat makes the Paladin immune to natural, magical, and supernatural diseases.
+ */
+protected[feats] trait DivineHealth extends FeatRequisiteImpl with Passive with GrantsToClass with FreeFeat {
+  self: ClassFeat =>
   override def grantToClass: Seq[(HeroicCharacterClass, Int)] =
     List((Paladin, 3))
 

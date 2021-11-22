@@ -20,8 +20,8 @@ package io.truthencode.ddo.model.feats
 import io.truthencode.ddo.model.religions.{Religion, Silvanus}
 
 /**
-  * Created by adarr on 5/2/2017.
-  */
+ * Created by adarr on 5/2/2017.
+ */
 trait SilvanusFeatBase extends ReligionFeatBase { self: Silvanus =>
   abstract override def allowedReligions: List[Religion] =
     super.allowedReligions ++ List(Religion.Silvanus)

@@ -22,11 +22,11 @@ import enumeratum.{Enum, EnumEntry}
 import scala.collection.immutable
 
 /**
-  * Encompasses the main type of creature.
-  * These types are used for favored enemies, bane weapons etc.
-  * @note At this point, the aim is to be complete enough to support favored enemy creation and calculations.
-  *       At some point in the future, a full compendium may be considered.
-  */
+ * Encompasses the main type of creature. These types are used for favored enemies, bane weapons etc.
+ * @note
+ *   At this point, the aim is to be complete enough to support favored enemy creation and calculations. At some point
+ *   in the future, a full compendium may be considered.
+ */
 sealed trait MonsterType extends EnumEntry
 
 object MonsterType extends Enum[MonsterType] {

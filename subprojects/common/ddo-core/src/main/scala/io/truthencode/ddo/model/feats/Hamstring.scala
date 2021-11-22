@@ -20,25 +20,17 @@ package io.truthencode.ddo.model.feats
 import java.time.Duration
 
 import io.truthencode.ddo.activation.AtWillEvent
-import io.truthencode.ddo.support.requisite.{
-  FeatRequisiteImpl,
-  RequiresAllOfFeat
-}
+import io.truthencode.ddo.support.requisite.{FeatRequisiteImpl, RequiresAllOfFeat}
 
-/** Icon Feat Hamstring.png
- * [[https://ddowiki.com/page/Hamstring Hamstring]]
-  * Hamstring  Active - Special Attack  This melee special attack, when successful,
-  * reduces the target's movement rate by half for 12 seconds.
-  * Some creatures may be immune to the hamstring effect.
-  *
-  * Sneak Attack
-  */
+/**
+ * Icon Feat Hamstring.png [[https://ddowiki.com/page/Hamstring Hamstring]] Hamstring Active - Special Attack This melee
+ * special attack, when successful, reduces the target's movement rate by half for 12 seconds. Some creatures may be
+ * immune to the hamstring effect.
+ *
+ * Sneak Attack
+ */
 protected[feats] trait Hamstring
-    extends FeatRequisiteImpl
-    with ActiveFeat
-    with AtWillEvent
-    with RequiresAllOfFeat
-    with FighterBonusFeat {
+  extends FeatRequisiteImpl with ActiveFeat with AtWillEvent with RequiresAllOfFeat with FighterBonusFeat {
   self: GeneralFeat =>
   override def coolDown: Option[Duration] = Some(Duration.ofSeconds(15))
 

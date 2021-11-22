@@ -19,21 +19,14 @@ package io.truthencode.ddo.model.feats
 
 import io.truthencode.ddo.model.classes.HeroicCharacterClass
 import io.truthencode.ddo.model.classes.HeroicCharacterClass.Barbarian
-import io.truthencode.ddo.support.requisite.{
-  FeatRequisiteImpl,
-  FreeFeat,
-  GrantsToClass
-}
+import io.truthencode.ddo.support.requisite.{FeatRequisiteImpl, FreeFeat, GrantsToClass}
 
 /**
-  * [[http://ddowiki.com/page/Tireless_Rage Tireless Rage]]
-  * Upon reaching level 17, a barbarian is no longer fatigued after raging.
-  * Also, gain a stacking +2 Strength and Constitution Bonus along with a +1 Morale Bonus to Will Saving Throws while raging.
-  */
-protected[feats] trait TirelessRage
-    extends FeatRequisiteImpl
-    with Passive
-    with GrantsToClass
-    with FreeFeat { self: ClassFeat =>
+ * [[http://ddowiki.com/page/Tireless_Rage Tireless Rage]] Upon reaching level 17, a barbarian is no longer fatigued
+ * after raging. Also, gain a stacking +2 Strength and Constitution Bonus along with a +1 Morale Bonus to Will Saving
+ * Throws while raging.
+ */
+protected[feats] trait TirelessRage extends FeatRequisiteImpl with Passive with GrantsToClass with FreeFeat {
+  self: ClassFeat =>
   override def grantToClass: Seq[(HeroicCharacterClass, Int)] = List((Barbarian, 17))
 }

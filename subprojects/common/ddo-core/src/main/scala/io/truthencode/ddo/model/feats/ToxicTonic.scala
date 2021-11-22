@@ -24,14 +24,11 @@ import io.truthencode.ddo.support.requisite.{ClassRequisiteImpl, FeatRequisiteIm
 /**
  * You are immune to Poison damage and get bonus saves versus poisons.
  *
- * @see [[https://ddowiki.com/page/Toxic_Tonic]]
+ * @see
+ *   [[https://ddowiki.com/page/Toxic_Tonic]]
  */
 protected[feats] trait ToxicTonic
-  extends FeatRequisiteImpl
-    with ClassRequisiteImpl
-    with RequiresAllOfClass
-    with AlchemistBonusFeat
-    with Passive {
+  extends FeatRequisiteImpl with ClassRequisiteImpl with RequiresAllOfClass with AlchemistBonusFeat with Passive {
   self: ClassFeat =>
   private[this] val cls = (Alchemist, 12)
 

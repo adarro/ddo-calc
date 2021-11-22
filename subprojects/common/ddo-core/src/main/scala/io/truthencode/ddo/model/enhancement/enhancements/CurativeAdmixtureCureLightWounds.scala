@@ -24,10 +24,7 @@ import io.truthencode.ddo.model.enhancement.enhancements.classbased.ApothecaryTi
 import io.truthencode.ddo.support.points.SpendablePoints
 import io.truthencode.ddo.support.tree.TreeLike
 
-trait CurativeAdmixtureCureLightWounds
-    extends ApothecaryTierOne
-    with ClassEnhancementImpl
-    with CurativeAdmixtureBase {
+trait CurativeAdmixtureCureLightWounds extends ApothecaryTierOne with ClassEnhancementImpl with CurativeAdmixtureBase {
 
   override lazy val description: Option[String] =
     Some(
@@ -37,8 +34,8 @@ trait CurativeAdmixtureCureLightWounds
     )
 
   /**
-    * Some enhancements can be taken multiple times (generally up to three)
-    */
+   * Some enhancements can be taken multiple times (generally up to three)
+   */
   override val ranks: Int = 3
 
   override protected def nameSource: String = "CureLightWounds"

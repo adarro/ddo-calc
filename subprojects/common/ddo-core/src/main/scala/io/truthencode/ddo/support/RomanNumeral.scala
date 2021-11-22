@@ -36,25 +36,23 @@ object RomanNumeral {
 
   // from [[https://www.rosettacode.org/wiki/Roman_numerals/Decode#Scala rosettacode]]
   /**
-    * Translates Roman Numerals to Int
-    * [[https://www.rosettacode.org/wiki/Roman_numerals/Decode#Scala rosettacode]]
-    */
+   * Translates Roman Numerals to Int [[https://www.rosettacode.org/wiki/Roman_numerals/Decode#Scala rosettacode]]
+   */
   def fromRoman(s: String): Int = {
     s.toUpperCase
       .map(numerals)
-      .foldLeft((0, 0)) {
-        case ((sum, last), curr) => (sum + curr + (if (last < curr) -2 * last else 0), curr)
+      .foldLeft((0, 0)) { case ((sum, last), curr) =>
+        (sum + curr + (if (last < curr) -2 * last else 0), curr)
       }
       ._1
   }
 
   /**
-    * Translates Int into Roman numerals
-    * [[https://www.rosettacode.org/wiki/Roman_numerals/Decode#Scala rosettacode]]
-    */
+   * Translates Int into Roman numerals [[https://www.rosettacode.org/wiki/Roman_numerals/Decode#Scala rosettacode]]
+   */
   def toRoman(num: Int): String = {
     def convert(value: Int, table: List[(Int, String)]): String = table.headOption match {
-      case None                  => ""
+      case None => ""
       case Some((arabic, roman)) => roman * (value / arabic) + convert(value % arabic, table.tail)
     }
     convert(num, table)
@@ -77,20 +75,14 @@ object RomanNumeral {
   )
   // scalastyle:off regex
   /**
-    * // A small test
-    * def test( roman:String ) = println( roman + " => " + fromRoman( roman ) )
-    *
-    * test("MCMXC")
-    * test("MMVIII")
-    * test("MDCLXVI")
-    *
-    * def testR( arabic:Int ) = println( arabic + " => " + toRoman( arabic ) )
-    *
-    * testR(1990)
-    * testR(2008)
-    * testR(1666)
-    *
-    */
+   * // A small test def test( roman:String ) = println( roman + " => " + fromRoman( roman ) )
+   *
+   * test("MCMXC") test("MMVIII") test("MDCLXVI")
+   *
+   * def testR( arabic:Int ) = println( arabic + " => " + toRoman( arabic ) )
+   *
+   * testR(1990) testR(2008) testR(1666)
+   */
   // scalastyle:on
 
   def fnRomanNumeralToNumber: PartialFunction[String, Int] = new PartialFunction[String, Int] {

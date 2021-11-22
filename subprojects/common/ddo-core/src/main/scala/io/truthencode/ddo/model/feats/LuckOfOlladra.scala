@@ -21,30 +21,21 @@ import java.time.Duration
 
 import io.truthencode.ddo.activation.AtWillEvent
 import io.truthencode.ddo.model.religions.Olladra
-import io.truthencode.ddo.support.requisite.{
-  FeatRequisiteImpl,
-  RequiresAllOfFeat
-}
+import io.truthencode.ddo.support.requisite.{FeatRequisiteImpl, RequiresAllOfFeat}
 
 /**
-  * [[https://ddowiki.com/page/Luck_of_Olladra Luck of Olladra]]
-  * Cooldown: 10 minutes
-  * Usage: Active
-  * Prerequisite: Level 6: Cleric, Favored Soul, Paladin, Follower of Olladra
-  * Description
-  * Luck of Olladra: You are a devoted follower of Olladra, and your faith has been rewarded. Activate this ability to heal yourself or an ally to full health and bestow +1d6 Luck bonus to each Ability Score, lasting 24 seconds plus 6 seconds per Religious Lore feat you have.
-  * Created by adarr on 4/7/2017.
-  * @note Bug: Luck of Olladra can only be used on yourself. [[https://www.ddo.com/forums/showthread.php/498539 Forum Discussion Link]]
-  */
+ * [[https://ddowiki.com/page/Luck_of_Olladra Luck of Olladra]] Cooldown: 10 minutes Usage: Active Prerequisite: Level
+ * 6: Cleric, Favored Soul, Paladin, Follower of Olladra Description Luck of Olladra: You are a devoted follower of
+ * Olladra, and your faith has been rewarded. Activate this ability to heal yourself or an ally to full health and
+ * bestow +1d6 Luck bonus to each Ability Score, lasting 24 seconds plus 6 seconds per Religious Lore feat you have.
+ * Created by adarr on 4/7/2017.
+ * @note
+ *   Bug: Luck of Olladra can only be used on yourself.
+ *   [[https://www.ddo.com/forums/showthread.php/498539 Forum Discussion Link]]
+ */
 trait LuckOfOlladra
-    extends FeatRequisiteImpl
-    with EberronReligionNonWarforged
-    with DeityUniqueLevelBase
-    with RequiresAllOfFeat
-    with Olladra
-    with OlladraFeatBase
-    with ActiveFeat
-    with AtWillEvent { self: DeityFeat =>
+  extends FeatRequisiteImpl with EberronReligionNonWarforged with DeityUniqueLevelBase with RequiresAllOfFeat
+  with Olladra with OlladraFeatBase with ActiveFeat with AtWillEvent { self: DeityFeat =>
 
   override def coolDown: Option[Duration] = Some(Duration.ofMinutes(10))
 

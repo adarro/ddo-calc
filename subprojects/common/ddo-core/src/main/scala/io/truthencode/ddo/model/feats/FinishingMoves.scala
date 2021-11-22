@@ -24,20 +24,16 @@ import io.truthencode.ddo.model.misc.DefaultCoolDown
 import io.truthencode.ddo.support.requisite.{FeatRequisiteImpl, GrantsToClass, RequiresAllOfClass}
 
 /**
-  * Created by adarr on 3/17/2017.
-  * [[https://ddowiki.com/page/Finishing_Moves Finishing Moves]]
-  * Through careful use of their abilities, monks can unlock special finishing moves to perform amazing effects.
-  * This button changes into various finishing moves as they become available.
-  *
-  * @note
-  * Since Update 33 all Finishing Moves deal +1[w] damage.
-  */
+ * Created by adarr on 3/17/2017. [[https://ddowiki.com/page/Finishing_Moves Finishing Moves]] Through careful use of
+ * their abilities, monks can unlock special finishing moves to perform amazing effects. This button changes into
+ * various finishing moves as they become available.
+ *
+ * @note
+ *   Since Update 33 all Finishing Moves deal +1[w] damage.
+ */
 trait FinishingMoves
-    extends FeatRequisiteImpl
-    with ActiveFeat
-    with AtWillEvent
-    with GrantsToClass
-    with RequiresAllOfClass with DefaultCoolDown{
+  extends FeatRequisiteImpl with ActiveFeat with AtWillEvent with GrantsToClass with RequiresAllOfClass
+  with DefaultCoolDown {
   override def grantToClass: Seq[(HeroicCharacterClass, Int)] =
     List((Monk, 1))
 

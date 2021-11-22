@@ -22,14 +22,10 @@ import io.truthencode.ddo.model.classes.HeroicCharacterClass.{Monk, Ranger, Rogu
 import io.truthencode.ddo.support.requisite.{FeatRequisiteImpl, FreeFeat, GrantsToClass}
 
 /**
-  * Created by adarr on 3/17/2017.
-  */
-trait Evasion
-  extends FeatRequisiteImpl
-      with Passive
-      with GrantsToClass
-      with FreeFeat {
-    override def grantToClass: Seq[(HeroicCharacterClass, Int)] =
-      List((Monk, 2),(Rogue, 2),(Ranger,9))
+ * Created by adarr on 3/17/2017.
+ */
+trait Evasion extends FeatRequisiteImpl with Passive with GrantsToClass with FreeFeat {
+  override def grantToClass: Seq[(HeroicCharacterClass, Int)] =
+    List((Monk, 2), (Rogue, 2), (Ranger, 9))
 
-  }
+}

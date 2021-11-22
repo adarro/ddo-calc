@@ -26,10 +26,9 @@ trait FighterBonusFeat extends SelectableToClass with BonusSelectableFeatImpl {
   override val levels: Set[Int] = Set(1) ++ (2 to 20 by 2).toSet
   abstract override def bonusCharacterClass: Seq[HeroicCharacterClass] = super.bonusCharacterClass :+ myCharClass
 
-
   abstract override def bonusSelectableToClass: Seq[(HeroicCharacterClass, Int)] = {
 
-    val cc: Set[(HeroicCharacterClass, Int)] = for {l <- levels} yield (myCharClass, l)
+    val cc: Set[(HeroicCharacterClass, Int)] = for { l <- levels } yield (myCharClass, l)
     super.bonusSelectableToClass ++ cc.toSeq
 
   }

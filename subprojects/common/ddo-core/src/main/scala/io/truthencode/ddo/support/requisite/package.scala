@@ -31,8 +31,8 @@ import io.truthencode.ddo.support.requisite.Requirement._
 import io.truthencode.ddo.support.tree.TreeLike
 
 /**
-  * Created by adarr on 1/30/2017.
-  */
+ * Created by adarr on 1/30/2017.
+ */
 package object requisite {
   type Result = (Boolean, Option[List[Requisite]])
 
@@ -106,16 +106,16 @@ package object requisite {
       def toReq: ReqFeat = featToReq(source)
     }
 
-    val matchGeneralFeat: PartialFunction[Feat, GeneralFeat] = {
-      case x: GeneralFeat => x
+    val matchGeneralFeat: PartialFunction[Feat, GeneralFeat] = { case x: GeneralFeat =>
+      x
     }
 
-    val matchClassFeat: PartialFunction[Feat, ClassFeat] = {
-      case x: ClassFeat => x
+    val matchClassFeat: PartialFunction[Feat, ClassFeat] = { case x: ClassFeat =>
+      x
     }
 
-    val matchRacialFeat: PartialFunction[Feat, RacialFeat] = {
-      case x: RacialFeat => x
+    val matchRacialFeat: PartialFunction[Feat, RacialFeat] = { case x: RacialFeat =>
+      x
     }
 
 //    val matchGFeatId : PartialFunction[String,GeneralFeat] = {
@@ -138,15 +138,15 @@ package object requisite {
       override def apply(v1: Feat): ReqFeat = ReqFeat(v1.entryName)
     }
 
-
-    val classEnhancementToReq: PartialFunction[ClassEnhancement,ReqClassEnhancement]  = new PartialFunction[ClassEnhancement,ReqClassEnhancement]  {
+    val classEnhancementToReq: PartialFunction[ClassEnhancement, ReqClassEnhancement] =
+      new PartialFunction[ClassEnhancement, ReqClassEnhancement] {
         override def isDefinedAt(x: ClassEnhancement): Boolean =
-        Requirement
-        .withNameOption(s"${ClassEnhancement.searchPrefix}${x.entryName}")
-        .isDefined
+          Requirement
+            .withNameOption(s"${ClassEnhancement.searchPrefix}${x.entryName}")
+            .isDefined
 
         override def apply(v1: ClassEnhancement): ReqClassEnhancement = ReqClassEnhancement(v1.entryName)
-    }
+      }
 //    val anyFeatToReq = new PartialFunction[Feat, ReqFeat] {
 //      override def isDefinedAt(x: Feat): Boolean =
 //        Requirement
@@ -193,24 +193,24 @@ package object requisite {
           ReqClass(v1._1.entryName, v1._2)
       }
 
-    val alignmentTypeToReq: PartialFunction[AlignmentType, ReqAlignment] = {
-      case x: AlignmentType => ReqAlignment(Left(x))
+    val alignmentTypeToReq: PartialFunction[AlignmentType, ReqAlignment] = { case x: AlignmentType =>
+      ReqAlignment(Left(x))
     }
 
-    val alignmentsToReq: PartialFunction[Alignments, ReqAlignment] = {
-      case x: Alignments => ReqAlignment(Right(x))
+    val alignmentsToReq: PartialFunction[Alignments, ReqAlignment] = { case x: Alignments =>
+      ReqAlignment(Right(x))
     }
 
     val characterLevelToReq: PartialFunction[Int, ReqCharacterLevel] = {
       case x: Int if CharacterLevels contains x => ReqCharacterLevel(x)
     }
 
-    val pointToReq: PartialFunction[(SpendablePoints, Int), ReqPoints] = {
-      case x: (SpendablePoints, Int) => ReqPoints(x._1.entryName, x._2)
+    val pointToReq: PartialFunction[(SpendablePoints, Int), ReqPoints] = { case x: (SpendablePoints, Int) =>
+      ReqPoints(x._1.entryName, x._2)
     }
 
-    val progressionToReq: PartialFunction[(TreeLike, Int), ReqPointsSpentInTree] = {
-      case (x: TreeLike, y: Int) => ReqPointsSpentInTree(x, y)
+    val progressionToReq: PartialFunction[(TreeLike, Int), ReqPointsSpentInTree] = { case (x: TreeLike, y: Int) =>
+      ReqPointsSpentInTree(x, y)
 
 //              if Points.withNameOption(x._1.entryName).nonEmpty=> x._1 match {
 //              case y: ActionPoints => ReqPointsSpent(Points.ActionPoints,x._2)
@@ -219,9 +219,9 @@ package object requisite {
 //          }
     }
 
-      val progressionWithPointsToReq: PartialFunction[(TreeLike,SpendablePoints, Int), ReqPointsSpentInTree] = {
-          case (x: TreeLike,_, y: Int) => ReqPointsSpentInTree(x, y)
-      }
+    val progressionWithPointsToReq: PartialFunction[(TreeLike, SpendablePoints, Int), ReqPointsSpentInTree] = {
+      case (x: TreeLike, _, y: Int) => ReqPointsSpentInTree(x, y)
+    }
 //    val pointsToReq: PartialFunction[(Points with SpendablePoint,Int),ReqPointsSpent] = {
 //        case x: (Points with SpendablePoint,Int) => {
 //            x._1

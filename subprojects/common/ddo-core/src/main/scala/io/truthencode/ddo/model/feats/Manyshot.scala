@@ -26,44 +26,36 @@ import io.truthencode.ddo.model.classes.HeroicCharacterClass.Ranger
 import io.truthencode.ddo.support.requisite._
 
 /**
-  * Icon Feat Many Shot.png
-  * [[https://ddowiki.com/page/Manyshot Manyshot]]
-  * Active - Ability
-  * For the next 20 seconds, add your base attack bonus * 4 to your Doubleshot and Ranged power.
-  * This ability puts Ten Thousand Stars on a 30 second cooldown.
-  *
-  * Cooldown: 2 minutes.
-  *
-  * Point Blank Shot, Rapid Shot
-  * Dexterity 17, Base Attack Bonus +6
-  *
-  * @note This feat does not work with thrown weapons or crossbows.
-  * Rangers receive this feat for free at level 6, even if the prerequisites are not met.
-  * Using this ability places Ten Thousand Stars on a 30 second cool-down if its current cool-down is less than 30 seconds.
-  * Tip: Increase your Base attack bonus, for example using Tenser's Transformation, to receive maximum benefit from this feat.
-  * Fighters may select this feat as one of their fighter bonus feats.
-  *
-  * @todo add 20 second Active
-  */
+ * Icon Feat Many Shot.png [[https://ddowiki.com/page/Manyshot Manyshot]] Active - Ability For the next 20 seconds, add
+ * your base attack bonus * 4 to your Doubleshot and Ranged power. This ability puts Ten Thousand Stars on a 30 second
+ * cooldown.
+ *
+ * Cooldown: 2 minutes.
+ *
+ * Point Blank Shot, Rapid Shot Dexterity 17, Base Attack Bonus +6
+ *
+ * @note
+ *   This feat does not work with thrown weapons or crossbows. Rangers receive this feat for free at level 6, even if
+ *   the prerequisites are not met. Using this ability places Ten Thousand Stars on a 30 second cool-down if its current
+ *   cool-down is less than 30 seconds. Tip: Increase your Base attack bonus, for example using Tenser's Transformation,
+ *   to receive maximum benefit from this feat. Fighters may select this feat as one of their fighter bonus feats.
+ *
+ * @todo
+ *   add 20 second Active
+ */
 protected[feats] trait Manyshot
-    extends FeatRequisiteImpl
-    with ActiveFeat
-    with AtWillEvent
-    with RequiresAllOfFeat
-    with RequiresAttribute
-    with RequiresBaB
-    with ClassRequisiteImpl
-    with GrantsToClass
-    with FighterBonusFeat {
+  extends FeatRequisiteImpl with ActiveFeat with AtWillEvent with RequiresAllOfFeat with RequiresAttribute
+  with RequiresBaB with ClassRequisiteImpl with GrantsToClass with FighterBonusFeat {
   self: GeneralFeat =>
   override def allOfFeats: Seq[GeneralFeat] =
     List(GeneralFeat.PointBlankShot, GeneralFeat.RapidShot)
 
   /**
-    * The Minimum Required Base Attack Bonus
-    *
-    * @return Minimum value allowed
-    */
+   * The Minimum Required Base Attack Bonus
+   *
+   * @return
+   *   Minimum value allowed
+   */
   override def requiresBaB: Int = 6
 
   override def requiresAttribute: Seq[(Attribute, Int)] =

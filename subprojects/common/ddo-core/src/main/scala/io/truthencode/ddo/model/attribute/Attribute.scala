@@ -22,8 +22,8 @@ import io.truthencode.ddo.Abbreviation
 import io.truthencode.ddo.support.SearchPrefix
 
 /**
-  * Created by adarr on 2/3/2017.
-  */
+ * Created by adarr on 2/3/2017.
+ */
 sealed trait Attribute extends EnumEntry with Abbreviation
 
 object Attribute extends Enum[Attribute] with SearchPrefix {
@@ -43,11 +43,11 @@ object Attribute extends Enum[Attribute] with SearchPrefix {
   val values = findValues
 
   /**
-    * Used when qualifying a search with a prefix.
-    * Examples include finding "HalfElf" from qualified "Race:HalfElf"
-    *
-    * @return A default or applied prefix
-    */
+   * Used when qualifying a search with a prefix. Examples include finding "HalfElf" from qualified "Race:HalfElf"
+   *
+   * @return
+   *   A default or applied prefix
+   */
   override def searchPrefixSource: String = "Attribute"
 }
 

@@ -18,8 +18,8 @@
 package io.truthencode.ddo.support.requisite
 
 /**
-  * Flag used to determine whether a given expression is granting, requiring or prohibiting.
-  */
+ * Flag used to determine whether a given expression is granting, requiring or prohibiting.
+ */
 sealed trait RequisiteType
 
 trait Grant extends RequisiteType

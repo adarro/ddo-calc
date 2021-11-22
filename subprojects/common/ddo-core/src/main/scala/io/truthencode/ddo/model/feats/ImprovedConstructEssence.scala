@@ -24,16 +24,11 @@ import io.truthencode.ddo.model.race.Race.Warforged
 import io.truthencode.ddo.support.requisite._
 
 /**
-  * Created by adarr on 4/5/2017.
-  */
+ * Created by adarr on 4/5/2017.
+ */
 trait ImprovedConstructEssence
-    extends FeatRequisiteImpl
-    with RaceRequisiteImpl
-    with RequiresAllOfFeat
-    with RequiresAllOfClass
-    with RequiresNoneOfRace
-    with ArtificerBonusFeat
-    with Passive {
+  extends FeatRequisiteImpl with RaceRequisiteImpl with RequiresAllOfFeat with RequiresAllOfClass
+  with RequiresNoneOfRace with ArtificerBonusFeat with Passive {
   self: Feat =>
   override def allOfFeats: Seq[Feat] = List(ClassFeat.ConstructEssence)
   override def noneOfRace: Seq[(Race, Int)] = List((Warforged, 1))

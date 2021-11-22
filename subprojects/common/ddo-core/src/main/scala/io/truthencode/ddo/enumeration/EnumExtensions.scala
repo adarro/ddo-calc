@@ -23,32 +23,34 @@ import io.truthencode.ddo.support.StringUtils.Extensions
 import scala.collection.immutable
 
 /**
-  * Created by adarr on 1/16/2017.
-  */
+ * Created by adarr on 1/16/2017.
+ */
 object EnumExtensions {
 
   // private def findEnum[E <: EnumEntry: Enum[E]](v: E) = implicitly[Enum[E]]
-  private def findEnum[E <: EnumEntry:Enum,A <: Enum[_ <: EnumEntry]](v: E) = implicitly[Enum[E]]
-
+  private def findEnum[E <: EnumEntry: Enum, A <: Enum[_ <: EnumEntry]](v: E) = implicitly[Enum[E]]
 
 //  final implicit class EnumCompanionOps[E <: EnumEntry:Enum[E],A <: Enum[E]](
-final implicit class EnumCompanionOps[A <: Enum[_ <: EnumEntry]](
-      val comp: A
+  final implicit class EnumCompanionOps[A <: Enum[_ <: EnumEntry]](
+    val comp: A
   ) {
     def exists(id: String): Boolean = {
       comp.namesToValuesMap.contains(id)
     }
 
     /**
-      * Attempts to locate a matching enumeration based on a list of potential values.
-      *
-      * @param names      List of string values to try. i.e. Red, blue, bLaCk for a color.
-      * @param ignoreCase toggles case sensitivity in search.
-      * @return Returns the first Enum value found matching any of the given supplied names.
-      */
+     * Attempts to locate a matching enumeration based on a list of potential values.
+     *
+     * @param names
+     *   List of string values to try. i.e. Red, blue, bLaCk for a color.
+     * @param ignoreCase
+     *   toggles case sensitivity in search.
+     * @return
+     *   Returns the first Enum value found matching any of the given supplied names.
+     */
     def withNames(
-        names: List[String],
-        ignoreCase: Boolean = false
+      names: List[String],
+      ignoreCase: Boolean = false
     ): Option[immutable.IndexedSeq[_ <: EnumEntry]] = {
       val sanitized: List[String] = names.map { x =>
         x.filterAlphaNumeric
@@ -64,8 +66,8 @@ final implicit class EnumCompanionOps[A <: Enum[_ <: EnumEntry]](
     }
 
     def withName(
-        name: String,
-        ignoreCase: Boolean = false
+      name: String,
+      ignoreCase: Boolean = false
     ): Option[_ <: EnumEntry] = {
       if (ignoreCase) {
         comp.withNameInsensitiveOption(name)
@@ -74,20 +76,22 @@ final implicit class EnumCompanionOps[A <: Enum[_ <: EnumEntry]](
       }
     }
 
-      def bitValues: Map[EnumEntry, Double] = comp.valuesToIndex.map { x =>
-          x._1 -> Math.pow(2.0, x._2)
-      }
+    def bitValues: Map[EnumEntry, Double] = comp.valuesToIndex.map { x =>
+      x._1 -> Math.pow(2.0, x._2)
+    }
 
     /**
-      * A list of enum values matching the BitMask
-      *
-      * @param flag Bit value to compare
-      * @return All matching values
-      */
+     * A list of enum values matching the BitMask
+     *
+     * @param flag
+     *   Bit value to compare
+     * @return
+     *   All matching values
+     */
     def fromMask(flag: Int): Option[Seq[EnumEntry]] = {
       //  comp.bitValues.filter {x => (x._2 & flag != 0)}
-    //  val zz :E = comp.values.head
-    //  val it = comp.bitValues.
+      //  val zz :E = comp.values.head
+      //  val it = comp.bitValues.
       for {
         sc <- Some(bitValues.filter { x =>
           (x._2.toInt & flag) != 0
@@ -95,20 +99,18 @@ final implicit class EnumCompanionOps[A <: Enum[_ <: EnumEntry]](
       } yield sc.toSeq
     }
 
-
-
     def fromWords(words: String): Option[EnumEntry] = {
       words.wordsToAcronym match {
         case Some(x) => comp.withNameOption(x.toPascalCase)
-        case _       => None
+        case _ => None
       }
     }
 
   }
-    final implicit class E2[E <: EnumEntry:Enum](val e:E) {
-        def foo = {
-        //    e.bitValues
-        }
+  final implicit class E2[E <: EnumEntry: Enum](val e: E) {
+    def foo = {
+      //    e.bitValues
     }
+  }
 
 }

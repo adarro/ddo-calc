@@ -18,6 +18,6 @@
 package io.truthencode.ddo.model.item
 
 /**
-  * Created by adarr on 8/12/2016.
-  */
+ * Created by adarr on 8/12/2016.
+ */
 trait Potion extends Item

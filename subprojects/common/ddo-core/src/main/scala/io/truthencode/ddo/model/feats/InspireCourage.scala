@@ -24,29 +24,21 @@ import io.truthencode.ddo.model.skill.Skill
 import io.truthencode.ddo.support.requisite._
 
 /**
-  * [[https://ddowiki.com/page/Inspire_Courage Inspire Courage]]
-  * Level: Bard 1
-  * Perform: 3 ranks*
-  * Target: Bard and all nearby allies
-  * Base Duration: Passive aura
-  * Song Description: Gives a +1 music bonus to attack rolls, damage rolls, and saving throws versus fear, as well as +3 universal Spell Power.
-  * Notes:
-  * At Bard level 8, this song automatically becomes Improved Inspire Courage and these bonuses rise to +2. At Bard level 14 they rise to +3, and at Bard level 20 they rise to +4.
-  * Each of these bonuses can be raised through Warchanter enhancements (maximum +3, damage +5[UnverifiedIcon tooltip.png]) and the Fatesinger epic destiny (damage +2, to-hit +4[UnverifiedIcon tooltip.png]).
-  * Since Update 41, Inspire Courage is a part of the Bardic Ballad, passive AoE aura automatically affecting nearby allies.
-  * Non-bards can access Inspire Courage via Past Life: Bardic Dilettante or the Fatesinger epic destiny. These instances of Inspire Courage are not part of a ballad but have to activated (sung) separately.
-  * *Only the base number of Perform ranks bought with skill points count toward the requirement to be able to play this song. (Skill bonuses do not count.)
-  * Created by adarr on 4/5/2017.
-  */
+ * [[https://ddowiki.com/page/Inspire_Courage Inspire Courage]] Level: Bard 1 Perform: 3 ranks* Target: Bard and all
+ * nearby allies Base Duration: Passive aura Song Description: Gives a +1 music bonus to attack rolls, damage rolls, and
+ * saving throws versus fear, as well as +3 universal Spell Power. Notes: At Bard level 8, this song automatically
+ * becomes Improved Inspire Courage and these bonuses rise to +2. At Bard level 14 they rise to +3, and at Bard level 20
+ * they rise to +4. Each of these bonuses can be raised through Warchanter enhancements (maximum +3, damage
+ * +5[UnverifiedIcon tooltip.png]) and the Fatesinger epic destiny (damage +2, to-hit +4[UnverifiedIcon tooltip.png]).
+ * Since Update 41, Inspire Courage is a part of the Bardic Ballad, passive AoE aura automatically affecting nearby
+ * allies. Non-bards can access Inspire Courage via Past Life: Bardic Dilettante or the Fatesinger epic destiny. These
+ * instances of Inspire Courage are not part of a ballad but have to activated (sung) separately. *Only the base number
+ * of Perform ranks bought with skill points count toward the requirement to be able to play this song. (Skill bonuses
+ * do not count.) Created by adarr on 4/5/2017.
+ */
 protected[feats] trait InspireCourage
-    extends SkillRequisiteImpl
-    with RequiresAllOfSkill
-    with ClassRequisiteImpl
-    with RequiresAllOfClass
-    with GrantsToClass
-    with ActiveFeat
-    with OnSongPlayedEvent
-    with BardSongCoolDown {
+  extends SkillRequisiteImpl with RequiresAllOfSkill with ClassRequisiteImpl with RequiresAllOfClass with GrantsToClass
+  with ActiveFeat with OnSongPlayedEvent with BardSongCoolDown {
   override def allOfClass: Seq[(HeroicCharacterClass, Int)] =
     List((HeroicCharacterClass.Bard, 1))
 

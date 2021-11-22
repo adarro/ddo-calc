@@ -21,32 +21,20 @@ import java.time.Duration
 
 import io.truthencode.ddo.activation.AtWillEvent
 import io.truthencode.ddo.model.religions.BloodOfVol
-import io.truthencode.ddo.support.requisite.{
-  FeatRequisiteImpl,
-  RequiresAllOfFeat
-}
+import io.truthencode.ddo.support.requisite.{FeatRequisiteImpl, RequiresAllOfFeat}
 
 /**
-  * [[https://ddowiki.com/page/The_Blood_is_The_Life The Blood is The Life]]
-  * Cooldown: 10 minutes
-  * Usage: Active
-  * Prerequisite: Level 6: Cleric, Favored Soul, Paladin; Follower of the Blood of Vol
-  * Description
-  * You are a devoted follower of The Blood of Vol, and your zeal has been rewarded.
-  * Activate this ability to draw upon the power within your own blood for 24 seconds plus 6 seconds per Religious Lore feat you have.
-  * In this state, you gain +4 Constitution, 100% Fortification, +10 to Fortitude Saves, and PRR and MRR equal to the number of Religious Lore feats you have.
-  * While in this state and have a Dagger in your main hand, you also gain Vampirism, stacking with other sources of Vampirism.
-  * Created by adarr on 4/7/2017.
-  */
+ * [[https://ddowiki.com/page/The_Blood_is_The_Life The Blood is The Life]] Cooldown: 10 minutes Usage: Active
+ * Prerequisite: Level 6: Cleric, Favored Soul, Paladin; Follower of the Blood of Vol Description You are a devoted
+ * follower of The Blood of Vol, and your zeal has been rewarded. Activate this ability to draw upon the power within
+ * your own blood for 24 seconds plus 6 seconds per Religious Lore feat you have. In this state, you gain +4
+ * Constitution, 100% Fortification, +10 to Fortitude Saves, and PRR and MRR equal to the number of Religious Lore feats
+ * you have. While in this state and have a Dagger in your main hand, you also gain Vampirism, stacking with other
+ * sources of Vampirism. Created by adarr on 4/7/2017.
+ */
 trait TheBloodIsTheLife
-    extends FeatRequisiteImpl
-    with EberronReligionNonWarforged
-    with DeityUniqueLevelBase
-    with RequiresAllOfFeat
-    with BloodOfVol
-    with TheBloodOfVolFeatBase
-    with ActiveFeat
-    with AtWillEvent { self: DeityFeat =>
+  extends FeatRequisiteImpl with EberronReligionNonWarforged with DeityUniqueLevelBase with RequiresAllOfFeat
+  with BloodOfVol with TheBloodOfVolFeatBase with ActiveFeat with AtWillEvent { self: DeityFeat =>
 
   override def displayText: String = "The Blood is The Life"
 

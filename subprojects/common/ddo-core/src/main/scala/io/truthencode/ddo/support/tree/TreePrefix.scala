@@ -23,11 +23,11 @@ import io.truthencode.ddo.support.SearchPrefix
  * Common search prefix for enhancement skill trees
  */
 trait TreePrefix extends SearchPrefix {
-    /**
-     * Used when qualifying a search with a prefix.
-     * Examples include finding "HalfElf" from qualified "Race:HalfElf"
-     *
-     * @return A default or applied prefix
-     */
-    override def searchPrefixSource: String = "Tree"
+  /**
+   * Used when qualifying a search with a prefix. Examples include finding "HalfElf" from qualified "Race:HalfElf"
+   *
+   * @return
+   *   A default or applied prefix
+   */
+  override def searchPrefixSource: String = "Tree"
 }

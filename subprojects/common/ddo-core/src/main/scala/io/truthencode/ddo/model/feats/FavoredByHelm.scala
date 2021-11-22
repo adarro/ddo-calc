@@ -21,13 +21,10 @@ import io.truthencode.ddo.model.religions.Helm
 import io.truthencode.ddo.support.requisite.FeatRequisiteImpl
 
 /**
-  * Created by adarr on 4/7/2017.
-  */
+ * Created by adarr on 4/7/2017.
+ */
 trait FavoredByHelm
-    extends FeatRequisiteImpl
-    with ForgottenRealmsReligionNonWarforged
-    with FollowerBase
-    with Helm
-    with HelmFeatBase { self: DeityFeat =>
+  extends FeatRequisiteImpl with ForgottenRealmsReligionNonWarforged with FollowerBase with Helm with HelmFeatBase {
+  self: DeityFeat =>
 
 }

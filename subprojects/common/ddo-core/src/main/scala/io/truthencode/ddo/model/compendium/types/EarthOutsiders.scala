@@ -20,8 +20,8 @@ package io.truthencode.ddo.model.compendium.types
 import io.truthencode.ddo.model.compendium.types.MonsterType.EarthOutsider
 
 /**
-  * Created by adarr on 3/25/2017.
-  */
+ * Created by adarr on 3/25/2017.
+ */
 trait EarthOutsiders extends MainType {
   override val mainTypes = Some(EarthOutsider)
 }

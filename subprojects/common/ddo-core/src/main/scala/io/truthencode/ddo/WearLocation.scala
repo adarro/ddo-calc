@@ -22,11 +22,12 @@ import io.truthencode.ddo.enumeration.{BitSupport, BitWise}
 
 import scala.collection.immutable
 
-/** Constrains the places items can be used.
-  */
+/**
+ * Constrains the places items can be used.
+ */
 sealed trait WearLocation extends EnumEntry with BitWise {
 
-  private lazy val bitValues = WearLocation.valuesToIndex map { x =>
+  private lazy val bitValues = WearLocation.valuesToIndex.map { x =>
     x._1 -> toBitMask(x._2)
   }
 
@@ -37,86 +38,87 @@ sealed trait WearLocation extends EnumEntry with BitWise {
 trait EquipmentSlot extends WearLocation
 
 /**
-  * Rings etc
-  */
+ * Rings etc
+ */
 trait Finger extends EquipmentSlot
 
 /**
-  * Includes items that can be held or wielded from swords to wands to shields and orbs / rune arms
-  */
+ * Includes items that can be held or wielded from swords to wands to shields and orbs / rune arms
+ */
 trait HeldItem extends EquipmentSlot
 
-/** Distinct values for location slots.
-  */
+/**
+ * Distinct values for location slots.
+ */
 object WearLocation extends Enum[WearLocation] with BitSupport {
 
   /**
-    * Headwear such as Helmets
-    */
+   * Headwear such as Helmets
+   */
   case object Head extends EquipmentSlot
 
   /**
-    * Necklaces
-    */
+   * Necklaces
+   */
   case object Neck extends EquipmentSlot
 
   /**
-    * Cloaks etc
-    */
+   * Cloaks etc
+   */
   case object Back extends EquipmentSlot
 
   /**
-    * Includes Armbands / bracers etc
-    */
+   * Includes Armbands / bracers etc
+   */
   case object Wrist extends EquipmentSlot
 
   /**
-    * One of two Ring locations
-    */
+   * One of two Ring locations
+   */
   case object FirstFinger extends Finger
 
   /**
-    * One of two ring locations
-    */
+   * One of two ring locations
+   */
   case object SecondFinger extends Finger
 
   /**
-    * Armor / cloth robes for wizards etc
-    */
+   * Armor / cloth robes for wizards etc
+   */
   case object Body extends EquipmentSlot
 
   /**
-    * Footwear such as boots etc
-    */
+   * Footwear such as boots etc
+   */
   case object Feet extends EquipmentSlot
 
   /**
-    * Belt items
-    */
+   * Belt items
+   */
   case object Belt extends EquipmentSlot
 
   /**
-    * Eyewear such as goggles / glasses
-    */
+   * Eyewear such as goggles / glasses
+   */
   case object Goggles extends EquipmentSlot
 
   /**
-    * Gloves and other over the hand items
-    */
+   * Gloves and other over the hand items
+   */
   case object Gloves extends EquipmentSlot
 
   case object MainHand extends HeldItem
 
-  /** OffHand holds shield, Orbs, rune arms etc. and will be unavailable when
-    * using two handed weapons or bows.
-    */
+  /**
+   * OffHand holds shield, Orbs, rune arms etc. and will be unavailable when using two handed weapons or bows.
+   */
   case object OffHand extends HeldItem
 
   case object TwoHand extends HeldItem
 
   /**
-    * Trinkets such as Voice of the Master
-    */
+   * Trinkets such as Voice of the Master
+   */
   case object Trinket extends EquipmentSlot
 
   case object HeadDecoration extends EquipmentSlot

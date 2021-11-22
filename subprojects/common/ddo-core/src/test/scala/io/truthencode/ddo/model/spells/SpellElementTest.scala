@@ -19,9 +19,10 @@ package io.truthencode.ddo.model.spells
 
 import com.typesafe.scalalogging.LazyLogging
 import io.truthencode.ddo.model.spells.SpellElement.{WithName, WithSpellInfo}
-import org.scalatest.{FunSpec, Matchers}
+import org.scalatest.funspec.AnyFunSpec
+import org.scalatest.matchers.should.Matchers
 
-class SpellElementTest extends FunSpec with Matchers with LazyLogging {
+class SpellElementTest extends AnyFunSpec with Matchers with LazyLogging {
 
   describe("Utility Functions") {
     it("Should extract an element by type correctly") {

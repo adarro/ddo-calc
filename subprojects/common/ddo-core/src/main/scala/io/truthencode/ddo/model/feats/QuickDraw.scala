@@ -19,20 +19,13 @@ package io.truthencode.ddo.model.feats
 
 import io.truthencode.ddo.support.requisite.{FeatRequisiteImpl, RequiresBaB}
 
-/** Icon Feat Quick Draw.png
-  * Quick Draw
-  * Passive
-  * Allows the character to switch weapons and armor faster than they would normally be able to.
-  * It also increases the rate of fire of thrown weapons, but not of other ranged weapons.
-  *
-  * Base Attack Bonus +1
-  * */
-trait QuickDraw
-    extends FeatRequisiteImpl
-    with Passive
-    with RequiresBaB
-    with FighterBonusFeat
-    with AlchemistBonusFeat {
+/**
+ * Icon Feat Quick Draw.png Quick Draw Passive Allows the character to switch weapons and armor faster than they would
+ * normally be able to. It also increases the rate of fire of thrown weapons, but not of other ranged weapons.
+ *
+ * Base Attack Bonus +1
+ */
+trait QuickDraw extends FeatRequisiteImpl with Passive with RequiresBaB with FighterBonusFeat with AlchemistBonusFeat {
   self: GeneralFeat =>
   override def requiresBaB: Int = 1
 }

@@ -24,21 +24,17 @@ import io.truthencode.ddo.support.naming.{DisplayName, FriendlyDisplay}
 
 import scala.collection.immutable
 
-sealed trait DestinySpheres
-    extends EnumEntry
-    with DestinySphere
-    with DisplayName
-    with FriendlyDisplay {
+sealed trait DestinySpheres extends EnumEntry with DestinySphere with DisplayName with FriendlyDisplay {
   override protected def nameSource: String =
     entryName.splitByCase.toPascalCase
 
-    /**
-     * Used when qualifying a search with a prefix.
-     * Examples include finding "HalfElf" from qualified "Race:HalfElf"
-     *
-     * @return A default or applied prefix
-     */
-    override def searchPrefixSource: String = "DestinySphere"
+  /**
+   * Used when qualifying a search with a prefix. Examples include finding "HalfElf" from qualified "Race:HalfElf"
+   *
+   * @return
+   *   A default or applied prefix
+   */
+  override def searchPrefixSource: String = "DestinySphere"
 }
 
 trait Arcane extends DestinySpheres
@@ -54,10 +50,10 @@ object DestinySpheres extends Enum[DestinySpheres] with SearchPrefix {
   case object Primal extends Primal
 
   /**
-    * Used when qualifying a search with a prefix.
-    * Examples include finding "HalfElf" from qualified "Race:HalfElf"
-    *
-    * @return A default or applied prefix
-    */
+   * Used when qualifying a search with a prefix. Examples include finding "HalfElf" from qualified "Race:HalfElf"
+   *
+   * @return
+   *   A default or applied prefix
+   */
   override def searchPrefixSource: String = "Sphere"
 }

@@ -22,13 +22,10 @@ import io.truthencode.ddo.model.classes.HeroicCharacterClass.Artificer
 import io.truthencode.ddo.support.requisite.{FeatRequisiteImpl, GrantsToClass, RequiresAllOfClass}
 
 /**
-  * Created by adarr on 2/16/2017.
-  */
+ * Created by adarr on 2/16/2017.
+ */
 protected[feats] trait ArtificerSkillMastery
-    extends FeatRequisiteImpl
-    with Passive
-    with GrantsToClass
-    with RequiresAllOfClass {
+  extends FeatRequisiteImpl with Passive with GrantsToClass with RequiresAllOfClass {
   override def allOfClass: Seq[(HeroicCharacterClass, Int)] = List((Artificer, 13))
   override def grantToClass: Seq[(HeroicCharacterClass, Int)] = List((Artificer, 13))
 }

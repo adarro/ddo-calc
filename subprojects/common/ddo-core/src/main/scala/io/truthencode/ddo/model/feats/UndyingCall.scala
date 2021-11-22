@@ -20,32 +20,20 @@ package io.truthencode.ddo.model.feats
 import io.truthencode.ddo.activation.AtWillEvent
 import io.truthencode.ddo.model.misc.DefaultCoolDown
 import io.truthencode.ddo.model.religions.UndyingCourt
-import io.truthencode.ddo.support.requisite.{
-  FeatRequisiteImpl,
-  RequiresAllOfFeat
-}
+import io.truthencode.ddo.support.requisite.{FeatRequisiteImpl, RequiresAllOfFeat}
 
 /**
-  * [[https://ddowiki.com/page/Undying_Call Undying Call]]
-  * Usage: Active
-  * Prerequisite: Level 6: Cleric, Favored Soul, Paladin, Follower of the Undying Court
-  * Description
-  * You are a devoted follower of the Undying Court, and your faith has been rewarded.
-  * Activate this ability to lead a dead ally's spirit back to this world,
-  * acting as a True Resurrection on high elven spirits or a Raise Dead for others.
-  * Created by adarr on 4/7/2017.
-  * @todo Check to see if this is just once per rest.
-  */
+ * [[https://ddowiki.com/page/Undying_Call Undying Call]] Usage: Active Prerequisite: Level 6: Cleric, Favored Soul,
+ * Paladin, Follower of the Undying Court Description You are a devoted follower of the Undying Court, and your faith
+ * has been rewarded. Activate this ability to lead a dead ally's spirit back to this world, acting as a True
+ * Resurrection on high elven spirits or a Raise Dead for others. Created by adarr on 4/7/2017.
+ * @todo
+ *   Check to see if this is just once per rest.
+ */
 trait UndyingCall
-    extends FeatRequisiteImpl
-    with EberronReligionNonWarforged
-    with DeityUniqueLevelBase
-    with RequiresAllOfFeat
-    with UndyingCourt
-    with TheUndyingCourtFeatBase
-    with ActiveFeat
-    with AtWillEvent
-    with DefaultCoolDown { self: DeityFeat =>
+  extends FeatRequisiteImpl with EberronReligionNonWarforged with DeityUniqueLevelBase with RequiresAllOfFeat
+  with UndyingCourt with TheUndyingCourtFeatBase with ActiveFeat with AtWillEvent with DefaultCoolDown {
+  self: DeityFeat =>
 
   override def allOfFeats: Seq[Feat] = List(DeityFeat.ChildOfTheUndyingCourt)
 

@@ -20,14 +20,14 @@ package io.truthencode.ddo.model.feats
 import io.truthencode.ddo.support.naming.{DisplayName, DisplayProperties, Prefix}
 
 /**
-  * Created by adarr on 3/5/2017.
-  */
+ * Created by adarr on 3/5/2017.
+ */
 trait AlchemicalStudiesPrefix extends Prefix {
   self: DisplayName with DisplayProperties =>
   override def prefix: Option[String] = Some("Alchemical Studies")
 
   /**
-    * Delimits the prefix and text.
-    */
+   * Delimits the prefix and text.
+   */
   override protected val prefixSeparator: String = " - "
 }

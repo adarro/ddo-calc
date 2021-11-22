@@ -17,12 +17,12 @@
  */
 package io.truthencode.ddo.support
 
-import io.truthencode.ddo.support.TraverseOps.Joinable
-import org.scalatest.{FunSpec, Matchers}
+import org.scalatest.funspec.AnyFunSpec
+import org.scalatest.matchers.should.Matchers
 
-import scala.collection.{immutable, GenSeq}
+import scala.collection.GenSeq
 
-class JoinableTest extends FunSpec with Matchers with JoinAbleSeq[Int, GenSeq[Int]] {
+class JoinableTest extends AnyFunSpec with Matchers with JoinAbleSeq[Int, GenSeq[Int]] {
   override lazy val source: Seq[Int] = 1 to sampleSize
 
   describe("Joins (Sequence)") {

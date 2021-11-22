@@ -20,10 +20,7 @@ package io.truthencode.ddo.model.enhancement.enhancements
 import io.truthencode.ddo.model.attribute.Attribute
 import io.truthencode.ddo.model.enhancement.enhancements.classbased.ApothecaryTierThree
 
-trait ApothecaryAbilityI
-    extends ApothecaryTierThree
-    with ClassEnhancementImpl
-    with AbilitySelector {
+trait ApothecaryAbilityI extends ApothecaryTierThree with ClassEnhancementImpl with AbilitySelector {
 
   override val abilitySelections: Seq[Attribute] =
     Seq(Attribute.Intelligence, Attribute.Constitution)
@@ -33,9 +30,9 @@ trait ApothecaryAbilityI
   )
 
   /**
-    * Roman Numeral Suffix
-    *
-    * @return
-    */
+   * Roman Numeral Suffix
+   *
+   * @return
+   */
   override def rnSuffix: Int = 1
 }

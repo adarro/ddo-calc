@@ -41,10 +41,9 @@ trait DodgeChanceFeature extends Features {
 
     }
 
-
   abstract override def features: List[Feature[_]] = {
     assert(dodgeChance.value == dodgeBonusAmount)
-      super.features :+ dodgeChance
+    super.features :+ dodgeChance
   }
 
 }

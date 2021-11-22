@@ -23,19 +23,16 @@ import io.truthencode.ddo.model.skill.Skill
 import io.truthencode.ddo.support.requisite._
 
 /**
-  * Created by adarr on 4/5/2017.
-  */
+ * Created by adarr on 4/5/2017.
+ */
 trait InspireExcellence
-    extends RequiresAllOfFeat
-    with RequiresAllOfClass
-    with RequiresAllOfSkill
-    with RequiresCharacterLevel
-    with ClassRestricted {
+  extends RequiresAllOfFeat with RequiresAllOfClass with RequiresAllOfSkill with RequiresCharacterLevel
+  with ClassRestricted {
   override def allOfFeats: Seq[Feat] = List(ClassFeat.InspireHeroics)
 
-  override def allOfClass: Seq[(HeroicCharacterClass, Int)] = List((Bard,15))
+  override def allOfClass: Seq[(HeroicCharacterClass, Int)] = List((Bard, 15))
 
-  override def allOfSkill: Seq[(Skill, Int)] = List((Skill.Perform,20))
+  override def allOfSkill: Seq[(Skill, Int)] = List((Skill.Perform, 20))
 
   override val characterLevel: Int = 21
 }

@@ -20,18 +20,13 @@ package io.truthencode.ddo.model.feats
 import io.truthencode.ddo.model.attribute.Attribute
 import io.truthencode.ddo.support.requisite.{FeatRequisiteImpl, RequiresAttribute, RequiresBaB}
 
-/** Icon Feat Brutal Throw.png
-  * Brutal Throw Passive
-  * You can use your Strength bonus instead of Dexterity bonus to determine bonus to attack with Thrown weapons if it is higher.
-  *
-  * Strength 13
-  * Base Attack Bonus +1
-  */
-trait SwordsToPlowshares extends FeatRequisiteImpl
-  with Passive
-  with RequiresBaB
-  with MartialArtsFeat {
+/**
+ * Icon Feat Brutal Throw.png Brutal Throw Passive You can use your Strength bonus instead of Dexterity bonus to
+ * determine bonus to attack with Thrown weapons if it is higher.
+ *
+ * Strength 13 Base Attack Bonus +1
+ */
+trait SwordsToPlowshares extends FeatRequisiteImpl with Passive with RequiresBaB with MartialArtsFeat {
   self: GeneralFeat =>
   override def requiresBaB: Int = 1
 }
-

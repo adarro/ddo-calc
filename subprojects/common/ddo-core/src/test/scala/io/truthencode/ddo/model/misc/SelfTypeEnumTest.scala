@@ -18,16 +18,15 @@
 package io.truthencode.ddo.model.misc
 
 import com.typesafe.scalalogging.LazyLogging
-import org.scalatest.{FunSpec, Matchers}
+import org.scalatest.funspec.AnyFunSpec
+import org.scalatest.matchers.should.Matchers
 
 import scala.languageFeature.postfixOps
 
 /**
-  * Created by adarr on 2/6/2017.
-  */
-class SelfTypeEnumTest extends FunSpec with Matchers with LazyLogging {
-
-
+ * Created by adarr on 2/6/2017.
+ */
+class SelfTypeEnumTest extends AnyFunSpec with Matchers with LazyLogging {
 
   describe("Self typed enum entry hacks") {
     they("exist") {

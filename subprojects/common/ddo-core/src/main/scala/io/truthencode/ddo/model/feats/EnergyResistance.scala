@@ -21,14 +21,14 @@ import io.truthencode.ddo.support.naming.{DisplayName, FriendlyDisplay, Prefix}
 import io.truthencode.ddo.support.requisite.{FeatRequisiteImpl, FreeFeat}
 
 /**
-  * Created by adarr on 3/5/2017.
-  */
+ * Created by adarr on 3/5/2017.
+ */
 trait EnergyResistance extends Prefix with FeatRequisiteImpl with FreeFeat with Passive {
-  self:FeatRequisiteImpl with DisplayName with FriendlyDisplay =>
+  self: FeatRequisiteImpl with DisplayName with FriendlyDisplay =>
   override def prefix: Option[String] = Some("Energy Resistance")
 
   /**
-    * Delimits the prefix and text.
-    */
+   * Delimits the prefix and text.
+   */
   override protected val prefixSeparator: String = ": "
 }

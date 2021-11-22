@@ -18,16 +18,14 @@
 package io.truthencode.ddo.support.naming
 
 /**
-  * Adds optional descriptive text.
-  * Used mainly to discriminate objects such as 'Shield Proficiency (General)'
-  */
+ * Adds optional descriptive text. Used mainly to discriminate objects such as 'Shield Proficiency (General)'
+ */
 trait PostText extends DisplayProperties {
   def postText: Option[String]
 
   /**
-    * Surrounds the text with the given characters.
-    * By default, this is parenthesis.
-    */
+   * Surrounds the text with the given characters. By default, this is parenthesis.
+   */
   protected val postTextEnclosure: (String, String) = (" (", ")")
 
   def withPostText: Option[String] = {

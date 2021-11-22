@@ -21,13 +21,10 @@ import io.truthencode.ddo.model.classes.HeroicCharacterClass
 import io.truthencode.ddo.support.requisite.{FeatRequisiteImpl, RequiresAnyOfClass}
 
 /**
-  * Created by adarr on 2/21/2017.
-  */
+ * Created by adarr on 2/21/2017.
+ */
 protected[feats] trait EmpowerHealingSpell
-  extends FeatRequisiteImpl
-    with MetaMagic
-    with RequiresAnyOfClass
-    with ArtificerBonusFeat {
+  extends FeatRequisiteImpl with MetaMagic with RequiresAnyOfClass with ArtificerBonusFeat {
   self: MetaMagicFeat =>
   override def anyOfClass: Seq[(HeroicCharacterClass, Int)] =
     List(

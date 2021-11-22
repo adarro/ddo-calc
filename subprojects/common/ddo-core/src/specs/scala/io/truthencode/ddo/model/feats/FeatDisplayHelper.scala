@@ -26,9 +26,9 @@ import io.truthencode.ddo.support.naming.{Description, DisplayName, FriendlyDisp
 import scala.collection.JavaConverters._
 
 /**
-  * Created by adarr on 2/17/2017.
-  * Adds convenience and display functions for Concordion Acceptance testing against Feats in various contexts.
-  */
+ * Created by adarr on 2/17/2017. Adds convenience and display functions for Concordion Acceptance testing against Feats
+ * in various contexts.
+ */
 trait FeatDisplayHelper extends DisplayHelper {
 
   def prettyPrint(): String = {
@@ -37,12 +37,9 @@ trait FeatDisplayHelper extends DisplayHelper {
 
   def listValues(heading: String, collapse: Boolean = false): String = {
 
-    val data = enum.values
-      .map { a =>
-        s"<tr><td>${a.displayText}</td></tr>"
-      }
-      .sorted
-      .mkString
+    val data = enum.values.map { a =>
+      s"<tr><td>${a.displayText}</td></tr>"
+    }.sorted.mkString
     val header = s"<table><tr><th>$heading</th></tr>"
     val footer = "</table>"
     val table = s"$header$data$footer"
@@ -54,19 +51,15 @@ trait FeatDisplayHelper extends DisplayHelper {
   }
 
   /**
-    * Removes Sub-Feats such as Weapon Proficiencies
-    */
+   * Removes Sub-Feats such as Weapon Proficiencies
+   */
   val filterByMainFeat: PartialFunction[Entry, Entry] = {
     case x: Feat with SubFeatInformation if !x.isSubFeat => x
   }
 
-  def verify(): util.List[String] = { enum.values collect filterByMainFeat }
-    .map { x =>
-      x.displayText
-    }
-    .toList
-    .sorted
-    .asJava
+  def verify(): util.List[String] = { enum.values.collect(filterByMainFeat) }.map { x =>
+    x.displayText
+  }.toList.sorted.asJava
 
   def withNameAsJavaList(id: String): util.List[String] = withNameAsList(id).asJava
 
@@ -76,7 +69,7 @@ trait FeatDisplayHelper extends DisplayHelper {
 
   def withNameAsList(skillId: String*): Seq[String] = {
     for {
-      id    <- skillId
+      id <- skillId
       skill <- withName(id)
     } yield skill.displayText
   }

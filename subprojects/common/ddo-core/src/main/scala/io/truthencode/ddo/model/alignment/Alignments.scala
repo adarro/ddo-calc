@@ -17,33 +17,35 @@
  */
 package io.truthencode.ddo.model.alignment
 
-import enumeratum.{EnumEntry, Enum => SmartEnum}
+import enumeratum.{Enum => SmartEnum, EnumEntry}
 import io.truthencode.ddo.model.alignment.LawAxis.{Chaotic, Lawful, Neutral}
 import io.truthencode.ddo.model.alignment.MoralAxis.{Evil, Good}
 import io.truthencode.ddo.support.SearchPrefix
 
-/** Represents the dual axis Alignments
-  *
-  * @param law   The range between Lawful to Chaotic
-  * @param moral The moral range between Good and evil
-  */
+/**
+ * Represents the dual axis Alignments
+ *
+ * @param law
+ *   The range between Lawful to Chaotic
+ * @param moral
+ *   The moral range between Good and evil
+ */
 sealed class Alignments(
-    override val law: _root_.io.truthencode.ddo.model.alignment.LawAxis,
-    override val moral: MoralAxis
-) extends EnumEntry
-    with AlignmentCombination
+  override val law: _root_.io.truthencode.ddo.model.alignment.LawAxis,
+  override val moral: MoralAxis
+) extends EnumEntry with AlignmentCombination
 
-object Alignments extends SmartEnum[Alignments] with SearchPrefix{
+object Alignments extends SmartEnum[Alignments] with SearchPrefix {
 
-    /**
-     * Used when qualifying a search with a prefix.
-     * Examples include finding "HalfElf" from qualified "Race:HalfElf"
-     *
-     * @return A default or applied prefix
-     */
-    override def searchPrefixSource: String = "Alignment"
+  /**
+   * Used when qualifying a search with a prefix. Examples include finding "HalfElf" from qualified "Race:HalfElf"
+   *
+   * @return
+   *   A default or applied prefix
+   */
+  override def searchPrefixSource: String = "Alignment"
 
-    case object ChaoticGood extends Alignments(Chaotic, Good)
+  case object ChaoticGood extends Alignments(Chaotic, Good)
 
   case object ChaoticNeutral extends Alignments(Chaotic, MoralAxis.Neutral)
 

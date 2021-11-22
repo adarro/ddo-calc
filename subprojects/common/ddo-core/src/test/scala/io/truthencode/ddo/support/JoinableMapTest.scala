@@ -18,15 +18,15 @@
 package io.truthencode.ddo.support
 
 import io.truthencode.ddo.model.feats.Feat
-import org.scalatest.{FunSpec, Matchers}
+import org.scalatest.funspec.AnyFunSpec
+import org.scalatest.matchers.should.Matchers
 
-class JoinableMapTest extends FunSpec with Matchers with JoinAbleMap[String,Feat,Map[String,Feat]] {
-    override lazy val source = Feat.values.map{v => v.displayText -> v}.toMap
-
+class JoinableMapTest extends AnyFunSpec with Matchers with JoinAbleMap[String, Feat, Map[String, Feat]] {
+  override lazy val source = Feat.values.map { v => v.displayText -> v }.toMap
 
   describe("Joins") {
     they("A Left Join B should equal B Right Join A and vice versa") {
-       val f: Map[String, Feat] = Feat.values.map{ v => v.displayText -> v}.toMap
+      val f: Map[String, Feat] = Feat.values.map { v => v.displayText -> v }.toMap
 
       // a LeftJoin
       leftJoinA should contain theSameElementsAs rightJoinB
@@ -44,5 +44,5 @@ class JoinableMapTest extends FunSpec with Matchers with JoinAbleMap[String,Feat
       rightJoinA should contain theSameElementsAs commonWithB
     }
   }
-    override implicit val joinOnKeys: Boolean = true
+  override implicit val joinOnKeys: Boolean = true
 }

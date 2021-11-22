@@ -23,13 +23,10 @@ import scala.collection.mutable
 
 class FeatHolder { //extends StatusHolder[Feat] {
 
-
 //    override val enum: E = Feat
 //
 //    override lazy val available: MappedValue = mutable.Map[String,Feat]()
 //    override val unavailable: MappedValue = mutable.Map[String,Feat]()
 //    override val selected: MappedValue = mutable.Map[String,Feat]()
-
-
 
 }

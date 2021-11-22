@@ -22,14 +22,11 @@ import io.truthencode.ddo.model.classes.HeroicCharacterClass.Artificer
 import io.truthencode.ddo.support.requisite.{FeatRequisiteImpl, GrantsToClass, RequiresAllOfClass}
 
 /**
-  * Created by adarr on 2/16/2017.
-  */
+ * Created by adarr on 2/16/2017.
+ */
 protected[feats] trait ArtificerKnowledgeWondrousItems
-    extends FeatRequisiteImpl
-    with ArtificerKnowledgePrefix
-    with Passive
-    with GrantsToClass
-    with RequiresAllOfClass { self: ClassFeat =>
+  extends FeatRequisiteImpl with ArtificerKnowledgePrefix with Passive with GrantsToClass with RequiresAllOfClass {
+  self: ClassFeat =>
   private lazy val levels = List(7, 10, 13, 16, 19)
   override def anyOfClass: Seq[(HeroicCharacterClass, Int)] = levels.map { x =>
     (Artificer, x)

@@ -19,6 +19,6 @@ package io.truthencode.ddo.support.naming
 
 import io.truthencode.ddo.support.SearchPrefix
 
-trait UsingSearchPrefix extends SearchPrefix{
-val withPrefix : String
+trait UsingSearchPrefix extends SearchPrefix {
+  val withPrefix: String
 }

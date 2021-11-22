@@ -20,8 +20,9 @@ package io.truthencode.ddo.model.item.clothing
 import io.truthencode.ddo.Wearable
 import io.truthencode.ddo.model.item.WearableItem
 
-/** Includes capes, gloves etc.
-  */
+/**
+ * Includes capes, gloves etc.
+ */
 trait Clothing extends WearableItem {
   self: Wearable =>
 }

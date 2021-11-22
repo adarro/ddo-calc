@@ -25,17 +25,13 @@ import io.truthencode.ddo.model.misc.SharedCoolDown
 import io.truthencode.ddo.support.requisite.{FeatRequisiteImpl, RequiresAllOfFeat}
 
 /**
-  * [[https://ddowiki.com/page/Cleave Cleave]]
-  * Special Attack - Activate this ability to attack one or more enemies in an arc in front of you. This attack deals +1[W] damage.
-  * Cleave has a better chance to hit more enemies at once than a basic attack.
-  */
+ * [[https://ddowiki.com/page/Cleave Cleave]] Special Attack - Activate this ability to attack one or more enemies in an
+ * arc in front of you. This attack deals +1[W] damage. Cleave has a better chance to hit more enemies at once than a
+ * basic attack.
+ */
 protected[feats] trait Cleave
-    extends FeatRequisiteImpl
-    with ActiveFeat
-    with AtWillEvent
-    with RequiresAllOfFeat
-    with FighterBonusFeat
-    with SharedCoolDown {
+  extends FeatRequisiteImpl with ActiveFeat with AtWillEvent with RequiresAllOfFeat with FighterBonusFeat
+  with SharedCoolDown {
   self: GeneralFeat =>
   override val allOfFeats = List(GeneralFeat.PowerAttack)
   override lazy val anyOfFeats: Seq[GeneralFeat] = IndexedSeq.apply()

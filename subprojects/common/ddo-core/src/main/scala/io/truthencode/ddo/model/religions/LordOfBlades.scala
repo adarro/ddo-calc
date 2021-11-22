@@ -21,8 +21,8 @@ import io.truthencode.ddo.model.item.weapon.{FavoredWeapon, WeaponCategory}
 import io.truthencode.ddo.model.worlds.ForgottenRealms
 
 /**
-  * Created by adarr on 4/9/2017.
-  */
+ * Created by adarr on 4/9/2017.
+ */
 trait LordOfBlades extends ForgottenRealms with FavoredWeapon {
   override val favoredWeapon: WeaponCategory = WeaponCategory.Greatsword
 }

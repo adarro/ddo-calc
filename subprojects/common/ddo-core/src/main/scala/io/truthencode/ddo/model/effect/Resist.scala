@@ -18,7 +18,6 @@
 package io.truthencode.ddo.model.effect
 
 /**
-  * Simple Trait indicating the effect grants a Resistance
-  *
-  */
+ * Simple Trait indicating the effect grants a Resistance
+ */
 trait Resist

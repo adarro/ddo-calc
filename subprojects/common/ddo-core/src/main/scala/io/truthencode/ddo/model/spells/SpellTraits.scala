@@ -28,25 +28,25 @@ import io.truthencode.ddo.support.RomanNumeral
 import io.truthencode.ddo.support.naming.{DisplayName, FriendlyDisplay}
 import io.truthencode.ddo.support.StringUtils.Extensions
 
-import scala.collection.{Iterable, immutable}
+import scala.collection.{immutable, Iterable}
 import scala.reflect.ClassTag
 import io.truthencode.ddo.support.StringUtils._
 trait SpellTraits
 
 /**
-  * Base class for spells and spell like abilities
-  */
+ * Base class for spells and spell like abilities
+ */
 sealed trait SpellLike
 
 sealed trait SpellElement extends SpellLike
 
 object SpellElement {
   def extract[T <: SpellElement](
-      list: Iterable[SpellElement]
+    list: Iterable[SpellElement]
   )(implicit tag: ClassTag[T]): Iterable[T] = {
     list.flatMap {
       case element: T => Some(element)
-      case _          => None
+      case _ => None
     }
   }
 
@@ -54,12 +54,12 @@ object SpellElement {
     def extract[T <: SpellElement](implicit tag: ClassTag[T]): Iterable[T] = {
       elements.flatMap {
         case element: T => Some(element)
-        case _          => None
+        case _ => None
       }
     }
 
-    def getStuff[T: ClassTag](list: Seq[SpellElement]): Seq[T] = list collect {
-      case element: T => element
+    def getStuff[T: ClassTag](list: Seq[SpellElement]): Seq[T] = list.collect { case element: T =>
+      element
     }
 
     //    def extract[X: SpellElement](implicit evidence: ClassTag[X]): Option[X] = {
@@ -115,78 +115,61 @@ object SpellElement {
 
   sealed trait WithCasterClass extends SpellElement with CasterLevels
 
-  sealed trait WithSpellInfo
-      extends SpellElement
-      with WithSpellResistance
-      with SpellInfo
+  sealed trait WithSpellInfo extends SpellElement with WithSpellResistance with SpellInfo
 
 }
 
 final case class UseCoolDown(coolDown: Option[Duration]) extends WithCoolDown
 
-final case class UseCasterClass(override val casterLevels: Set[CasterWithLevel])
-    extends WithCasterClass
+final case class UseCasterClass(override val casterLevels: Set[CasterWithLevel]) extends WithCasterClass
 
-final case class UseSpellTarget(override val target: List[SpellTarget])
-    extends WithSpellTarget
+final case class UseSpellTarget(override val target: List[SpellTarget]) extends WithSpellTarget
 
 final case class UseSpellSavingThrow(
-    override val savingThrow: List[SavingThrow]
+  override val savingThrow: List[SavingThrow]
 ) extends WithSpellSavingThrow
 
-final case class UseSpellPoints(override val spellPoints: Int)
-    extends WithSpellPoints
+final case class UseSpellPoints(override val spellPoints: Int) extends WithSpellPoints
 
-final case class UseComponents(override val components: List[ComponentList])
-    extends WithComponents
+final case class UseComponents(override val components: List[ComponentList]) extends WithComponents
 
-final case class UseLevelCap(override val baseLevelCap: Option[Int])
-    extends WithLevelCap
+final case class UseLevelCap(override val baseLevelCap: Option[Int]) extends WithLevelCap
 
-final case class UseSpellEffects(override val effects: List[Effect])
-    extends WithSpellEffects
+final case class UseSpellEffects(override val effects: List[Effect]) extends WithSpellEffects
 
 final case class UseSpellInfo(
-    override val coolDown: Option[Duration],
-    override val savingThrow: List[SavingThrow],
-    override val sr: Option[Int],
-    override val target: List[SpellTarget],
-    override val components: List[ComponentList],
-    override val spellPoints: Int,
-    override val range: Range
+  override val coolDown: Option[Duration],
+  override val savingThrow: List[SavingThrow],
+  override val sr: Option[Int],
+  override val target: List[SpellTarget],
+  override val components: List[ComponentList],
+  override val spellPoints: Int,
+  override val range: Range
 ) extends WithSpellInfo
 
 final case class UseSpellName(override val name: String) extends WithName
 
-final case class UseSpellResistance(override val sr: Option[Int])
-    extends WithSpellResistance
-    with SpellResistance
+final case class UseSpellResistance(override val sr: Option[Int]) extends WithSpellResistance with SpellResistance
 
 protected final case class createSpell(
-    override val name: String = "new spell",
-    coolDown: Option[Duration] = None,
-    override val sr: Option[Int],
-    target: List[SpellTarget] = List.empty,
-    savingThrow: List[SavingThrow] = List.empty,
-    spellPoints: Int = 0,
-    components: List[ComponentList] = List.empty,
-    maxCasterLevel: CasterLevelCap = new CasterLevelCap {
-      override val baseLevelCap: Option[Int] = None
-    },
-    casterLevels: CasterLevels = new CasterLevels {
-      override def casterLevels: Set[CasterWithLevel] = Set.empty
-    },
-    range: Range,
-    effects: List[Effect] = List.empty
-) extends Spell
-    with SpellInfo
-    with EffectList
+  override val name: String = "new spell",
+  coolDown: Option[Duration] = None,
+  override val sr: Option[Int],
+  target: List[SpellTarget] = List.empty,
+  savingThrow: List[SavingThrow] = List.empty,
+  spellPoints: Int = 0,
+  components: List[ComponentList] = List.empty,
+  maxCasterLevel: CasterLevelCap = new CasterLevelCap {
+    override val baseLevelCap: Option[Int] = None
+  },
+  casterLevels: CasterLevels = new CasterLevels {
+    override def casterLevels: Set[CasterWithLevel] = Set.empty
+  },
+  range: Range,
+  effects: List[Effect] = List.empty
+) extends Spell with SpellInfo with EffectList
 
-sealed trait Spell
-    extends SpellLike
-    with EnumEntry
-    with DisplayName
-    with FriendlyDisplay {
+sealed trait Spell extends SpellLike with EnumEntry with DisplayName with FriendlyDisplay {
   def name: String
 
   // self: SpellInfo with EffectList =>
@@ -200,19 +183,21 @@ object Spell extends Enum[Spell] {
   // trait EmptySpell extends Spell
   override def values: immutable.IndexedSeq[Spell] = findValues
 
-    /**
-     * Creates a list of id's that should correspond to all the 'Summon Natures Ally' spells
-     * @return
-     */
+  /**
+   * Creates a list of id's that should correspond to all the 'Summon Natures Ally' spells
+   * @return
+   */
   def summonNatureAllySpells: immutable.Seq[String] = {
-      (1 to 8).map{RomanNumeral.toRoman}.map{rn => s"Summon Nature's Ally $rn".toPascalCase}
+    (1 to 8).map { RomanNumeral.toRoman }.map { rn => s"Summon Nature's Ally $rn".toPascalCase }
   }
 
   /**
-    * Contains the ID's of Construct Repair / Inflict damage spells
-    * @return List of Construct Damage Spells
-    *         @note Would prefer to do this in a more type-safe way in the future and needs a unit test.
-    */
+   * Contains the ID's of Construct Repair / Inflict damage spells
+   * @return
+   *   List of Construct Damage Spells
+   * @note
+   *   Would prefer to do this in a more type-safe way in the future and needs a unit test.
+   */
   def inflictSpells: immutable.Seq[String] = {
     val pre = List("Inflict", "Repair")
     val mid = List("Light", "Moderate", "Serious", "Critical")
@@ -224,11 +209,10 @@ object Spell extends Enum[Spell] {
     } yield s"$p$m$s"
     spells ++ List("Reconstruct", "Deconstruct")
   }
-  protected[spells] case class makeEmptySpell(override val name: String)
-      extends EmptySpell
+  protected[spells] case class makeEmptySpell(override val name: String) extends EmptySpell
   def ls(
-      fn: (String => Option[Spell]),
-      names: String*
+    fn: (String => Option[Spell]),
+    names: String*
   ): Seq[String => Option[Spell]] = {
     for { n <- names } yield (id: String) => {
       fn(n)
@@ -241,14 +225,14 @@ object Spell extends Enum[Spell] {
 trait SpellLikeAbility extends SpellLike
 
 protected[spells] final case class SpellDescriptor(
-    elements: Iterable[SpellElement]
+  elements: Iterable[SpellElement]
 ) extends Spell {
   override val name: String = {
     val nameOpt: Iterable[String] = for {
       e <- elements
       p = e match {
         case x: WithName => Some(x)
-        case _           => None
+        case _ => None
       }
       if p.nonEmpty
     } yield p.head.name

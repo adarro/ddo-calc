@@ -21,12 +21,8 @@ import io.truthencode.ddo.model.religions.LordOfBlades
 import io.truthencode.ddo.support.requisite.{FeatRequisiteImpl, RequiresAllOfFeat}
 
 trait BelovedOfTheLordOfBlades
-    extends FeatRequisiteImpl
-    with EberronReligionNonWarforged
-    with BelovedLevelBase
-    with RequiresAllOfFeat
-    with LordOfBlades
-    with TheLordOfBladesFeatBase { self: DeityFeat =>
+  extends FeatRequisiteImpl with EberronReligionNonWarforged with BelovedLevelBase with RequiresAllOfFeat
+  with LordOfBlades with TheLordOfBladesFeatBase { self: DeityFeat =>
 
   override def allOfFeats: Seq[Feat] = List(DeityFeat.ChildOfTheLordOfBlades)
 }

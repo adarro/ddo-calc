@@ -25,20 +25,16 @@ import io.truthencode.ddo.support.requisite.{
   RequiresAllOfFeat
 }
 
-/** Icon Feat Greater Weapon Specialization.png
-  * Greater Weapon Specialization
-  * Passive
-  * Provides an additional +2 bonus to damage rolls with the chosen weapon type and +2 stacking Melee Power or Ranged Power. This bonus stacks with the Weapon Specialization feat.
-  *
-  * @todo Weapon Focus
-  *       Weapon Specialization in same Weapon Type
-  **/
+/**
+ * Icon Feat Greater Weapon Specialization.png Greater Weapon Specialization Passive Provides an additional +2 bonus to
+ * damage rolls with the chosen weapon type and +2 stacking Melee Power or Ranged Power. This bonus stacks with the
+ * Weapon Specialization feat.
+ *
+ * @todo
+ *   Weapon Focus Weapon Specialization in same Weapon Type
+ */
 protected[feats] trait GreaterWeaponSpecializationBase
-  extends FeatRequisiteImpl
-    with ClassRequisiteImpl
-    with Passive
-    with RequiresAllOfClass
-    with FighterBonusFeat {
+  extends FeatRequisiteImpl with ClassRequisiteImpl with Passive with RequiresAllOfClass with FighterBonusFeat {
   self: GeneralFeat with RequiresAllOfFeat =>
 
   override def allOfClass: Seq[(HeroicCharacterClass, Int)] =

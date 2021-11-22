@@ -23,64 +23,64 @@ import io.truthencode.ddo.model.misc.CoolDown
 import io.truthencode.ddo.model.spells.component.ComponentList
 
 /**
-  * Encapsulates the cost, duration, range etc of a given spell
-  */
+ * Encapsulates the cost, duration, range etc of a given spell
+ */
 trait SpellInfo extends CoolDown with SpellResistance {
   // caster level needs to be applied at source site
 
   // spell failure TBD by existence of somatic / verbal / concentration / armor spell failure etc
   /**
-    * Amount of time, usually in seconds that must elapse before a given spell or ability can be used again
-    */
+   * Amount of time, usually in seconds that must elapse before a given spell or ability can be used again
+   */
   val coolDown: Option[Duration]
 
   // TBD spell result
   /**
-    * List of applicable targets [[SpellTarget]]
-    */
+   * List of applicable targets [[SpellTarget]]
+   */
   val target: List[SpellTarget]
 
-    /**
-     * Range / Area of effect such as Spherical AOE
-     */
-  val range:Range
+  /**
+   * Range / Area of effect such as Spherical AOE
+   */
+  val range: Range
 
   /**
-    * Available saving throws, if any
-    */
+   * Available saving throws, if any
+   */
   val savingThrow: List[SavingThrow]
 
   /**
-    * Spell Point Cost
-    *
-    * @return
-    */
+   * Spell Point Cost
+   *
+   * @return
+   */
   def spellPoints: Int
 
   /**
-    * Hit Point Cost
-    *
-    * @return
-    */
+   * Hit Point Cost
+   *
+   * @return
+   */
   def hitPoints: Option[Int] = None
 
   /**
-    * List of required spell components
-    *
-    * @return
-    */
+   * List of required spell components
+   *
+   * @return
+   */
   val components: List[ComponentList]
 
   val spellResistance = this
 }
 
-
 final case class CreateSpellInfo(
-                                  override val coolDown: Option[Duration],
-                                  override val savingThrow: List[SavingThrow],
-                                  override val sr: Option[Int],
-                                  override val target: List[SpellTarget],
-                                  override val components: List[ComponentList],
-                                  override val spellPoints: Int,
-                                  override val hitPoints: Option[Int] = None,
-                                  override val range: Range) extends SpellInfo
+  override val coolDown: Option[Duration],
+  override val savingThrow: List[SavingThrow],
+  override val sr: Option[Int],
+  override val target: List[SpellTarget],
+  override val components: List[ComponentList],
+  override val spellPoints: Int,
+  override val hitPoints: Option[Int] = None,
+  override val range: Range)
+  extends SpellInfo

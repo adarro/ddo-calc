@@ -17,23 +17,21 @@
  */
 package io.truthencode.ddo.model.skill
 
-import org.scalatest.{FunSpec, Matchers}
+import org.scalatest.funspec.AnyFunSpec
+import org.scalatest.matchers.should.Matchers
 
 /**
-  * Created by adarr on 2/6/2017.
-  */
-class Skill$Test extends FunSpec with Matchers {
+ * Created by adarr on 2/6/2017.
+ */
+class Skill$Test extends AnyFunSpec with Matchers {
 
   describe("Skill$Test") {
 
-    ignore("should withNameInsensitiveOption") {
-
-    }
+    ignore("should withNameInsensitiveOption") {}
 
     it("should values") {
       val v = Skill.values
-      noException should be thrownBy Skill
-        .values
+      noException should be thrownBy Skill.values
     }
 
   }

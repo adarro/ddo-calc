@@ -26,8 +26,8 @@ import scala.collection.immutable.HashSet
 import scala.reflect.ClassTag
 
 /**
-  * Determines whether the given effect is Active or Passively triggered
-  */
+ * Determines whether the given effect is Active or Passively triggered
+ */
 sealed trait ActivationType extends EnumEntry { self: TriggerEvent =>
   def activations: Set[TriggerEvent] = init
 
@@ -35,8 +35,8 @@ sealed trait ActivationType extends EnumEntry { self: TriggerEvent =>
 }
 
 /**
-  * Denotes the effect is passive and always on.
-  */
+ * Denotes the effect is passive and always on.
+ */
 trait PassiveActivation extends ActivationType with PassiveEvent {
   abstract override def activations: Set[TriggerEvent] =
     super.activations + Passive
@@ -45,18 +45,19 @@ trait PassiveActivation extends ActivationType with PassiveEvent {
 object ActivationType extends Enum[ActivationType] with LazyLogging {
 
   /**
-    * This effect is always on
-    */
+   * This effect is always on
+   */
   case object Passive extends PassiveActivation
 
   /**
-    * This effect is triggered by some means such as a toggle, threshold or status.
-    */
-  case class Active(triggers: ActiveEvent*) extends {
-    override val activatableTriggers: Set[TriggerEvent] = {
-      triggers.toSet
-    }
-  } with TriggeredActivation with LazyLogging {
+   * This effect is triggered by some means such as a toggle, threshold or status.
+   */
+  case class Active(triggers: ActiveEvent*)
+    extends {
+      override val activatableTriggers: Set[TriggerEvent] = {
+        triggers.toSet
+      }
+    } with TriggeredActivation with LazyLogging {
     override def entryName: String = {
       this.triggers.headOption match {
         case Some(x) => x.entryName
@@ -73,7 +74,7 @@ object ActivationType extends Enum[ActivationType] with LazyLogging {
   }
 
   lazy val dynamics: Seq[Active] = {
-    TriggerEvent.values.filter(p => filterActive(p)) map { x =>
+    TriggerEvent.values.filter(p => filterActive(p)).map { x =>
       Active(x.asInstanceOf[ActiveEvent])
     }
 
@@ -82,11 +83,6 @@ object ActivationType extends Enum[ActivationType] with LazyLogging {
   override lazy val values = findValues ++ dynamics
 }
 
-trait TriggeredActivation
-    extends ActivationType
-    with Trigger
-    with ActiveEvent
-    with LazyLogging { self: EnumEntry =>
-  abstract override def activations
-    : Set[TriggerEvent] = super.activations ++ activatableTriggers
+trait TriggeredActivation extends ActivationType with Trigger with ActiveEvent with LazyLogging { self: EnumEntry =>
+  abstract override def activations: Set[TriggerEvent] = super.activations ++ activatableTriggers
 }

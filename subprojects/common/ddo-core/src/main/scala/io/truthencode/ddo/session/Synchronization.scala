@@ -17,6 +17,4 @@
  */
 package io.truthencode.ddo.session
 
-class Synchronization {
-
-}
+class Synchronization {}

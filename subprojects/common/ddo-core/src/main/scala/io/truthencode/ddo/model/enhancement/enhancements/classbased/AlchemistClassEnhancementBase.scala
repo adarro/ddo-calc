@@ -19,12 +19,7 @@ package io.truthencode.ddo.model.enhancement.enhancements.classbased
 
 import io.truthencode.ddo.model.classes.HeroicCharacterClass
 import io.truthencode.ddo.model.classes.HeroicCharacterClass.Alchemist
-import io.truthencode.ddo.model.enhancement.{
-  AlchemistEnhancement,
-  Apothecary,
-  Bombardier,
-  VileChemist
-}
+import io.truthencode.ddo.model.enhancement.{AlchemistEnhancement, Apothecary, Bombardier, VileChemist}
 import io.truthencode.ddo.model.enhancement.enhancements.ClassEnhancement
 import io.truthencode.ddo.support.requisite.RequiresPointsAvailable
 import io.truthencode.ddo.support.tree.ClassTrees
@@ -39,39 +34,29 @@ trait AlchemistCoreEnhancementBase extends AlchemistClassEnhancementBase with Co
   self: ClassEnhancement with AlchemistEnhancement with RequiresPointsAvailable =>
 }
 
-trait AlchemistTierOneEnhancementBase
-    extends AlchemistClassEnhancementBase
-    with Tier1EnhancementBase {
+trait AlchemistTierOneEnhancementBase extends AlchemistClassEnhancementBase with Tier1EnhancementBase {
   self: ClassEnhancement with AlchemistEnhancement with RequiresPointsAvailable =>
- // Alchemist 1 implied via base Alchemist enhancement.
+  // Alchemist 1 implied via base Alchemist enhancement.
 }
 
-trait AlchemistTierTwoEnhancementBase
-    extends AlchemistClassEnhancementBase
-    with Tier2EnhancementBase {
+trait AlchemistTierTwoEnhancementBase extends AlchemistClassEnhancementBase with Tier2EnhancementBase {
   self: ClassEnhancement with AlchemistEnhancement with RequiresPointsAvailable =>
-    override def allOfClass: Seq[(HeroicCharacterClass, Int)] = Seq((Alchemist, 2))
+  override def allOfClass: Seq[(HeroicCharacterClass, Int)] = Seq((Alchemist, 2))
 }
 
-trait AlchemistTierThreeEnhancementBase
-    extends AlchemistClassEnhancementBase
-    with Tier3EnhancementBase {
+trait AlchemistTierThreeEnhancementBase extends AlchemistClassEnhancementBase with Tier3EnhancementBase {
   self: ClassEnhancement with AlchemistEnhancement with RequiresPointsAvailable =>
-    override def allOfClass: Seq[(HeroicCharacterClass, Int)] = Seq((Alchemist, 3))
+  override def allOfClass: Seq[(HeroicCharacterClass, Int)] = Seq((Alchemist, 3))
 }
 
-trait AlchemistTierFourEnhancementBase
-    extends AlchemistClassEnhancementBase
-    with Tier4EnhancementBase {
+trait AlchemistTierFourEnhancementBase extends AlchemistClassEnhancementBase with Tier4EnhancementBase {
   self: ClassEnhancement with AlchemistEnhancement with RequiresPointsAvailable =>
-    override def allOfClass: Seq[(HeroicCharacterClass, Int)] = Seq((Alchemist, 4))
+  override def allOfClass: Seq[(HeroicCharacterClass, Int)] = Seq((Alchemist, 4))
 }
 
-trait AlchemistTierFiveEnhancementBase
-    extends AlchemistClassEnhancementBase
-    with Tier5EnhancementBase {
+trait AlchemistTierFiveEnhancementBase extends AlchemistClassEnhancementBase with Tier5EnhancementBase {
   self: ClassEnhancement with AlchemistEnhancement with RequiresPointsAvailable =>
-    override def allOfClass: Seq[(HeroicCharacterClass, Int)] = Seq((Alchemist, 5))
+  override def allOfClass: Seq[(HeroicCharacterClass, Int)] = Seq((Alchemist, 5))
 }
 
 trait ApothecaryCore extends AlchemistCoreEnhancementBase with Apothecary {

@@ -18,10 +18,12 @@
 package io.truthencode.ddo
 
 /**
-  * A basic integer used to add / subtract values.
-  * @param symbol sign ( + / - )
-  * @param value numerical value
-  */
+ * A basic integer used to add / subtract values.
+ * @param symbol
+ *   sign ( + / - )
+ * @param value
+ *   numerical value
+ */
 case class ExtraInfo(symbol: String, value: Int) {
   require(symbol.contentEquals("+") || symbol.contentEquals("-"))
   val toInt = symbol match {

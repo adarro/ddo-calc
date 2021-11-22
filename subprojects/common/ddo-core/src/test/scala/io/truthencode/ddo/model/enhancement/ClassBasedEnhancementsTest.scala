@@ -18,17 +18,16 @@
 package io.truthencode.ddo.model.enhancement
 
 import com.typesafe.scalalogging.LazyLogging
-import org.scalatest.{FunSpec, Matchers}
+import org.scalatest.funspec.AnyFunSpec
+import org.scalatest.matchers.should.Matchers
 
-
-class ClassBasedEnhancementsTest extends FunSpec with Matchers with LazyLogging {
+class ClassBasedEnhancementsTest extends AnyFunSpec with Matchers with LazyLogging {
   describe("Single Values") {
     they("should exist for each class") {
       val f: Option[ClassBasedEnhancements] = ClassBasedEnhancements.withNameOption("FighterEnhancement")
-      f shouldNot be (empty)
-      Some("test") shouldNot be (empty)
+      f shouldNot be(empty)
+      Some("test") shouldNot be(empty)
     }
-
 
   }
 }

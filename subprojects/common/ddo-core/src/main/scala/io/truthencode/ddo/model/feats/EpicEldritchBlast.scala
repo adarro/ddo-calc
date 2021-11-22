@@ -24,14 +24,10 @@ import io.truthencode.ddo.support.requisite._
 import scala.collection.immutable
 
 /**
-  * Created by adarr on 4/6/2017.
-  */
+ * Created by adarr on 4/6/2017.
+ */
 trait EpicEldritchBlast
-    extends FeatRequisiteImpl
-    with ClassRequisiteImpl
-    with RequiresAllOfClass
-    with Passive
-    with ClassRestricted {
+  extends FeatRequisiteImpl with ClassRequisiteImpl with RequiresAllOfClass with Passive with ClassRestricted {
   override def allOfClass: immutable.Seq[(HeroicCharacterClass, Int)] =
     List((Warlock, 12))
 }

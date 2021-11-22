@@ -26,53 +26,56 @@ import io.truthencode.ddo.support.naming.{DisplayName, FriendlyDisplay}
 import scala.collection.immutable
 
 /**
-  * Points that can be spent or allocated for enhancements and epic destinies etc.
-  * @note Do we include Karma here? Likely just add a footnote and allow user to add fate points arbitrarily
-  */
+ * Points that can be spent or allocated for enhancements and epic destinies etc.
+ * @note
+ *   Do we include Karma here? Likely just add a footnote and allow user to add fate points arbitrarily
+ */
 sealed trait SpendablePoints extends EnumEntry with DisplayName with FriendlyDisplay {
   override protected def nameSource: String =
     entryName.splitByCase.toPascalCase
 }
 
 /**
-  * Action Points are used for Enhancements
-  */
+ * Action Points are used for Enhancements
+ */
 trait ActionPoints extends SpendablePoints
 
 trait EpicDestinyPoints extends SpendablePoints with Abbreviation {
 
-  /** The short form of the word
-    */
+  /**
+   * The short form of the word
+   */
   override val abbr: String = "EDP"
 
   /**
-    * @inheritdoc
-    */
+   * @inheritdoc
+   */
   override protected def nameSource: String = abbr.splitByCase.toPascalCase
 
-  /** Expands the abbr to its full value
-    */
+  /**
+   * Expands the abbr to its full value
+   */
   override def toFullWord: String = entryName.splitByCase
 }
 
 /**
-  * Accrued by completing quests on Reaper difficulty
-  */
+ * Accrued by completing quests on Reaper difficulty
+ */
 trait SurvivalPoints extends SpendablePoints
 
 /**
-  * Unlocked by achieving Karma
-  */
+ * Unlocked by achieving Karma
+ */
 trait FatePoints extends SpendablePoints
 
 object SpendablePoints extends Enum[SpendablePoints] with SearchPrefix {
 
   /**
-    * Used when qualifying a search with a prefix.
-    * Examples include finding "HalfElf" from qualified "Race:HalfElf"
-    *
-    * @return A default or applied prefix
-    */
+   * Used when qualifying a search with a prefix. Examples include finding "HalfElf" from qualified "Race:HalfElf"
+   *
+   * @return
+   *   A default or applied prefix
+   */
   override def searchPrefixSource: String = "Points"
 
   override def values: immutable.IndexedSeq[SpendablePoints] = findValues

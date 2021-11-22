@@ -20,16 +20,15 @@ package io.truthencode.ddo.support
 import scala.language.implicitConversions
 
 case class Elvis(b: Boolean) {
-    def ?[X](t: => X) = new {
-        def |(f: => X) = if(b) t else f
-    }
+  def ?[X](t: => X) = new {
+    def |(f: => X) = if (b) t else f
+  }
 }
 
 /**
- * Wholly unnecessary Utility function to bring Elvis Operator into scala
- * Appropriated by [[https://stackoverflow.com/a/4949295/400729]]
+ * Wholly unnecessary Utility function to bring Elvis Operator into scala Appropriated by
+ * [[https://stackoverflow.com/a/4949295/400729]]
  */
 object Elvis {
-    implicit def booleanToElvis(b: Boolean): Elvis = Elvis(b)
+  implicit def booleanToElvis(b: Boolean): Elvis = Elvis(b)
 }
-

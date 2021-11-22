@@ -20,8 +20,9 @@ package io.truthencode.ddo.model.item.HeldItem
 import io.truthencode.ddo.{WearLocation, Wearable}
 import io.truthencode.ddo.model.item.WearableItem
 
-trait RuneArm extends WearableItem with Wearable{
-    /** A bitmask that corresponds to one or more [io.truthencode.ddo.WearLocation] values.
-     */
-    override def allowedWearLocationFlags: Int = WearLocation.OffHand.bitValue
+trait RuneArm extends WearableItem with Wearable {
+  /**
+   * A bitmask that corresponds to one or more [io.truthencode.ddo.WearLocation] values.
+   */
+  override def allowedWearLocationFlags: Int = WearLocation.OffHand.bitValue
 }

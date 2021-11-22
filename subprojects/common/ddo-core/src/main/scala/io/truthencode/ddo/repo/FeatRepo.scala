@@ -20,6 +20,6 @@ package io.truthencode.ddo.repo
 import io.truthencode.ddo.model.feats.Feat
 
 trait FeatRepo {
-def get(id: String): Feat
+  def get(id: String): Feat
 
 }

@@ -22,27 +22,18 @@ import java.time.Duration
 import io.truthencode.ddo.activation.AtWillEvent
 import io.truthencode.ddo.model.classes.HeroicCharacterClass
 import io.truthencode.ddo.model.classes.HeroicCharacterClass.{Druid, Ranger}
-import io.truthencode.ddo.support.requisite.{
-  FeatRequisiteImpl,
-  GrantsToClass,
-  RequiresAnyOfClass
-}
+import io.truthencode.ddo.support.requisite.{FeatRequisiteImpl, GrantsToClass, RequiresAnyOfClass}
 
 /**
-  * [[https://ddowiki.com/page/Improved_Wild_Empathy Improved Wild Empathy]]
-  * This feat allows a ranger to charm an animal (similar to the Charm monster spell) for 5 minutes.
-  * It can be used 3 times / rest period with a 60 second cool down.
-  *
-  * Target: Animal, Magical Beast
-  * Save: Will
-  * @todo add Difficulty Checks
-  */
+ * [[https://ddowiki.com/page/Improved_Wild_Empathy Improved Wild Empathy]] This feat allows a ranger to charm an animal
+ * (similar to the Charm monster spell) for 5 minutes. It can be used 3 times / rest period with a 60 second cool down.
+ *
+ * Target: Animal, Magical Beast Save: Will
+ * @todo
+ *   add Difficulty Checks
+ */
 protected[feats] trait ImprovedWildEmpathy
-    extends FeatRequisiteImpl
-    with ActiveFeat
-    with AtWillEvent
-    with GrantsToClass
-    with RequiresAnyOfClass {
+  extends FeatRequisiteImpl with ActiveFeat with AtWillEvent with GrantsToClass with RequiresAnyOfClass {
   override def anyOfClass: Seq[(HeroicCharacterClass, Int)] =
     List((Druid, 7), (Ranger, 7))
 

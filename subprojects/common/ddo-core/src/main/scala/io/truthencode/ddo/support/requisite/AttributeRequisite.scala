@@ -21,8 +21,8 @@ import io.truthencode.ddo.model.attribute.Attribute
 import io.truthencode.ddo.support.requisite.RequirementImplicits.attrToReq
 
 /**
-  * Created by adarr on 2/3/2017.
-  */
+ * Created by adarr on 2/3/2017.
+ */
 sealed trait AttributeRequisite {
   self: Requisite =>
   def requiresAttribute: Seq[(Attribute, Int)] = IndexedSeq.apply()
@@ -33,7 +33,7 @@ trait FreeAttribute extends AttributeRequisite with RequiresNone with RequiredEx
 trait RequiresAttribute extends AttributeRequisite with RequiresOneOf[Requirement] with Requisite {
 
   abstract override def oneOf: Seq[Requirement] = super.oneOf ++ {
-    requiresAttribute collect attrToReq
+    requiresAttribute.collect(attrToReq)
   }
 
   //  abstract override def prerequisites: Seq[RequisiteExpression] = super.prerequisites :+ this

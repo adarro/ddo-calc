@@ -33,27 +33,26 @@ import io.truthencode.ddo.support.points.{HitPoints, Ki, SpellPoints}
 trait Character {
 
   /**
-    * Currently Just an alias for Int but denotes that it is a percentage and may need to be refined to a decimal
-    */
+   * Currently Just an alias for Int but denotes that it is a percentage and may need to be refined to a decimal
+   */
   type Pct = Int
 
   /**
-    * Name of character
-    */
+   * Name of character
+   */
   val name: String = "Unnamed"
 
   /**
-    * Character Race
-    * This should be somewhat stable, however, spells / feats may alter or replace it such as
-    * Druid shape shifting, Shrouds, Construct Mastery etc.
-    * @note May need to additionally store an array of applied types such as counting as Undead in Addition to type.
-    */
+   * Character Race This should be somewhat stable, however, spells / feats may alter or replace it such as Druid shape
+   * shifting, Shrouds, Construct Mastery etc.
+   * @note
+   *   May need to additionally store an array of applied types such as counting as Undead in Addition to type.
+   */
   val race: SimpleStatItem[Race]
 
   /**
-    * This includes both the Moral and Law axis, i.e. 'Chaotic Good'
-    * You may have exactly one alignment.
-    */
+   * This includes both the Moral and Law axis, i.e. 'Chaotic Good' You may have exactly one alignment.
+   */
   val alignment: SimpleStatItem[Alignments]
 
   // Attributes
@@ -65,60 +64,70 @@ trait Character {
   val charisma: AttributeStat
 
   /**
-    * Feats are acquired via leveling and other methods such as favor rewards.
-    * They will need to be dynamically derived by a Character Planner.
-    * @return a list of currently acquired Feats
-    */
+   * Feats are acquired via leveling and other methods such as favor rewards. They will need to be dynamically derived
+   * by a Character Planner.
+   * @return
+   *   a list of currently acquired Feats
+   */
   def feats: List[SimpleStatItem[Feat]]
 
   /**
-    * Skills are given upon character creation, but some such as Perform require trained ranks before they can be used.
-    * @return the list of skills.
-    * @note Skills are dependent on Attributes and should be evaluted after.
-    */
+   * Skills are given upon character creation, but some such as Perform require trained ranks before they can be used.
+   * @return
+   *   the list of skills.
+   * @note
+   *   Skills are dependent on Attributes and should be evaluted after.
+   */
   def skills: List[SimpleStatItem[Skill]]
 
   /**
-    * Current Character Level is derived from the amount of heroic, epic and possibly past lives
-    * @note TBD: translating past lives into levels.  May simply be a display thing.
-    */
+   * Current Character Level is derived from the amount of heroic, epic and possibly past lives
+   * @note
+   *   TBD: translating past lives into levels. May simply be a display thing.
+   */
   def characterLevel: Int
 
   /**
-    * Represents the current acquired Character classes
-    * @return current heroic classes
-    */
+   * Represents the current acquired Character classes
+   * @return
+   *   current heroic classes
+   */
   def heroicLevels: List[(Int, HeroicCharacterClass)]
 
   /**
-    * Represents the current Epic Levels
-    * @return current epic levels
-    */
+   * Represents the current Epic Levels
+   * @return
+   *   current epic levels
+   */
   def epicLevels: List[(Int, EpicCharacterClass)]
 
   /**
-    * Holds Past lives from all TR forms (Heroic, Racial, Iconic and Epic)
-    * and is used for granting past life feats and / or displaying total character levels.
-    * @return List of acquired past life feats
-    */
+   * Holds Past lives from all TR forms (Heroic, Racial, Iconic and Epic) and is used for granting past life feats and /
+   * or displaying total character levels.
+   * @return
+   *   List of acquired past life feats
+   */
   def pastLives: List[StatItem[PastLife, Int]]
 
   /**
-    * Holds currently applied enhancements from the skill tree.
-    * @note may need to create a custom type as certain enhancements are multi-tier, i.e. can spend points for up to three levels
-    */
+   * Holds currently applied enhancements from the skill tree.
+   * @note
+   *   may need to create a custom type as certain enhancements are multi-tier, i.e. can spend points for up to three
+   *   levels
+   */
   val enhancements: List[SimpleStatItem[Enhancement]]
 
   /**
-    * Holds current Epic destiny acquisitions
-    * @note will likely need to create custom type
-    */
+   * Holds current Epic destiny acquisitions
+   * @note
+   *   will likely need to create custom type
+   */
   val epicDestinies: List[SimpleStatItem[EpicDestiny]]
 
   /**
-    * Current hitpoints based on a calculation of Constitution, Feats, Level etc
-    * @return
-    */
+   * Current hitpoints based on a calculation of Constitution, Feats, Level etc
+   * @return
+   */
   def hitPoints: StatItem[HitPoints, Int]
 
   def spellPoints: StatItem[SpellPoints, Int]

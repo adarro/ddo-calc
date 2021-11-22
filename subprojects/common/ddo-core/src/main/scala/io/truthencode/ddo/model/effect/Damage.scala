@@ -27,7 +27,7 @@ trait DamageType extends Damage
 sealed trait PhysicalDamage extends DamageType
 
 trait TypedPhysicalDamage extends DamageType {
-  self : Physical =>
+  self: Physical =>
 }
 
 trait UntypedPhysicalDamage extends DamageType with UnTyped with Typeless
@@ -35,4 +35,3 @@ trait UntypedPhysicalDamage extends DamageType with UnTyped with Typeless
 trait MagicalDamage extends DamageType with Magic
 
 trait UntypedMagicalDamage extends MagicalDamage with UnTyped
-

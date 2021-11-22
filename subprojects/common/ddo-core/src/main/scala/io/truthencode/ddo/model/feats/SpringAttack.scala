@@ -20,28 +20,24 @@ package io.truthencode.ddo.model.feats
 import io.truthencode.ddo.model.attribute.Attribute
 import io.truthencode.ddo.support.requisite.{FeatRequisiteImpl, RequiresAllOfFeat, RequiresAttribute, RequiresBaB}
 
-/** Icon Feat Spring Attack.png
-  * Spring Attack
-  * Passive
-  * Character suffers no penalty to his attack roll when meleeing and moving. You will also gain a 2% dodge bonus.
-  *
-  * Dodge, Mobility
-  * Dexterity 13 , Base Attack Bonus 4, */
-protected[feats] trait SpringAttack extends FeatRequisiteImpl
-  with Passive
-  with RequiresAllOfFeat
-  with RequiresAttribute
-  with RequiresBaB
-  with FighterBonusFeat
-  with MartialArtsFeat {
+/**
+ * Icon Feat Spring Attack.png Spring Attack Passive Character suffers no penalty to his attack roll when meleeing and
+ * moving. You will also gain a 2% dodge bonus.
+ *
+ * Dodge, Mobility Dexterity 13 , Base Attack Bonus 4,
+ */
+protected[feats] trait SpringAttack
+  extends FeatRequisiteImpl with Passive with RequiresAllOfFeat with RequiresAttribute with RequiresBaB
+  with FighterBonusFeat with MartialArtsFeat {
   self: GeneralFeat =>
   override def allOfFeats: Seq[GeneralFeat] = List(GeneralFeat.Dodge, GeneralFeat.Mobility)
 
   /**
-    * The Minimum Required Base Attack Bonus
-    *
-    * @return Minimum value allowed
-    */
+   * The Minimum Required Base Attack Bonus
+   *
+   * @return
+   *   Minimum value allowed
+   */
   override def requiresBaB: Int = 4
 
   override def requiresAttribute: Seq[(Attribute, Int)] = List((Attribute.Dexterity, 13))

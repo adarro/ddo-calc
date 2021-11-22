@@ -17,6 +17,6 @@
  */
 package io.truthencode.ddo.model.enhancement.enhancements
 
-trait SubEnhancement extends SubEnhancementInformation{
-    override def isSubFeat: Boolean = true
+trait SubEnhancement extends SubEnhancementInformation {
+  override def isSubFeat: Boolean = true
 }

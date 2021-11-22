@@ -20,5 +20,5 @@ package io.truthencode.ddo.model.enhancement.enhancements.classbased
 import io.truthencode.ddo.model.enhancement.ClassBasedEnhancements
 
 trait ClassEnhancementTree {
- self : ClassBasedEnhancements =>
+  self: ClassBasedEnhancements =>
 }

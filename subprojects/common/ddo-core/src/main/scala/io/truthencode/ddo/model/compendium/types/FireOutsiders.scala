@@ -20,8 +20,8 @@ package io.truthencode.ddo.model.compendium.types
 import io.truthencode.ddo.model.compendium.types.MonsterType.FireOutsider
 
 /**
-  * Created by adarr on 3/25/2017.
-  */
+ * Created by adarr on 3/25/2017.
+ */
 trait FireOutsiders extends MainType {
   override val mainTypes = Some(FireOutsider)
 }

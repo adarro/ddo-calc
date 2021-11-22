@@ -17,15 +17,15 @@
  */
 package io.truthencode.ddo.model.feats
 
-import org.scalatest.FunSpec
+import org.scalatest.funspec.AnyFunSpec
 
 /**
-  * Created by adarr on 3/10/2017.
-  */
-class DisplayHelperTest extends FunSpec {
+ * Created by adarr on 3/10/2017.
+ */
+class DisplayHelperTest extends AnyFunSpec {
 
   ignore("testWithNameAsJavaList") {
-    it("Should return a Java compatible list"){}
+    it("Should return a Java compatible list") {}
   }
 
   describe("testWithName") {}

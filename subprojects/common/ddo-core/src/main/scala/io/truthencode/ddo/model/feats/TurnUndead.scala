@@ -24,11 +24,7 @@ import io.truthencode.ddo.support.requisite.{FeatRequisiteImpl, GrantsToClass, R
 import java.time.Duration
 
 protected[feats] trait TurnUndead
-    extends FeatRequisiteImpl
-    with ActiveFeat
-    with AtWillEvent
-    with GrantsToClass
-    with RequiresAnyOfClass {
+  extends FeatRequisiteImpl with ActiveFeat with AtWillEvent with GrantsToClass with RequiresAnyOfClass {
   self: Feat =>
   /* DDOWiki lists Bane of Undead as a prerequisite.  I am doing the other way around
        I.e. Bane of undead Grants the Feat:Turn Undead as the description suggests.

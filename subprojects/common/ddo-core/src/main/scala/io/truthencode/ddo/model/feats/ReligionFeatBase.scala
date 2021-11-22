@@ -20,8 +20,8 @@ package io.truthencode.ddo.model.feats
 import io.truthencode.ddo.model.religions.Religion
 
 /**
-  * Created by adarr on 4/10/2017.
-  */
+ * Created by adarr on 4/10/2017.
+ */
 trait ReligionFeatBase {
   def allowedReligions: List[Religion]
 }

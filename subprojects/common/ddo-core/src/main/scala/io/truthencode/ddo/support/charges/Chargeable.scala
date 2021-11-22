@@ -18,9 +18,9 @@
 package io.truthencode.ddo.support.charges
 
 /**
-  * Represents an object or ability that has Charges and can be used 'X' amount of times
-  */
+ * Represents an object or ability that has Charges and can be used 'X' amount of times
+ */
 trait Chargeable {
   def charges: Charges
-  def maxCharges : Int
+  def maxCharges: Int
 }

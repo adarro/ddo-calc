@@ -32,15 +32,15 @@ trait ClassEnhancementDisplayHelper extends EnhancementDisplayHelper with LazyLo
   override val enum: E = ClassEnhancement
   type ENH = ClassEnhancement with Tier with ActionPointRequisite with PointInTreeRequisite
 
-  val values: Seq[ENH] = enum.values collect { case x: ENH => x }
+  val values: Seq[ENH] = enum.values.collect { case x: ENH => x }
 
   lazy val mappedValues: Map[String, ClassEnhancementInfo] = {
 
-    val ee = ClassEnhancement.values collect {
-        case x: ClassEnhancement with Tier with ClassBasedEnhancements with PointInTreeRequisite with PointsAvailableRequisite with RequiresActionPoints
-            if x.tree == tree =>
-          x
-      }
+    val ee = ClassEnhancement.values.collect {
+      case x: ClassEnhancement with Tier with ClassBasedEnhancements with PointInTreeRequisite with PointsAvailableRequisite with RequiresActionPoints
+          if x.tree == tree =>
+        x
+    }
     logger.info(s"Display Helper loaded ${ee.size} values for ${tree.displayText}")
     ee.map { v =>
       logger.info(s"Loading enhancement with entry id: ${v.entryName} with key ${v.displayText}")

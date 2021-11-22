@@ -18,5 +18,5 @@
 package io.truthencode.ddo.model.enhancement.enhancements
 
 trait ParentClassEnhancement {
-    val subEnhancements: Seq[ClassEnhancement with SubEnhancement]
+  val subEnhancements: Seq[ClassEnhancement with SubEnhancement]
 }

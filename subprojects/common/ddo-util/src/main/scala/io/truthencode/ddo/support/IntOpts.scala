@@ -17,17 +17,24 @@
  */
 package io.truthencode.ddo.support
 
-import scala.util.{Try, Success, Failure}
+import scala.util.{Success, Try}
 object IntOpts {
-  implicit class SafeInt(source: String) {
-    def toIntOption: Option[Int] = Try(source.toInt) match {
-      case Success(x) => Some(x)
-      case _          => None
+  object Implicits {
+    implicit class SafeInt(source: String) {
+      def toIntOption: Option[Int] = Try(source.toInt) match {
+        case Success(x) => Some(x)
+        case _ => None
+      }
+
+      def toDoubleOption: Option[Double] = Try(source.toDouble) match {
+        case Success(x) => Some(x)
+        case _ => None
+      }
     }
 
-    def toDoubleOption:Option[Double] = Try(source.toDouble) match {
-        case Success(x) => Some(x)
-        case _          => None
-    }
   }
+
+  def toIntOption(s: String): Option[Int] = Implicits.SafeInt(s).toIntOption
+  def toDoubleOption(s: String): Option[Double] = Implicits.SafeInt(s).toDoubleOption
+
 }

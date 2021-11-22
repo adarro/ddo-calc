@@ -19,24 +19,15 @@ package io.truthencode.ddo.model.feats
 
 import io.truthencode.ddo.model.classes.HeroicCharacterClass
 import io.truthencode.ddo.model.classes.HeroicCharacterClass.Druid
-import io.truthencode.ddo.support.requisite.{
-  FeatRequisiteImpl,
-  GrantsToClass,
-  RequiresAnyOfClass
-}
+import io.truthencode.ddo.support.requisite.{FeatRequisiteImpl, GrantsToClass, RequiresAnyOfClass}
 
 /**
-  * [[https://ddowiki.com/page/Venom_Immunity Venom Immunity]]
-You are immune to ability score damage from natural poisons. (This has no effect on magical or supernatural poisons.)
-
-Notes
-A druid receives this feat for free at ninth level.
-  */
-protected[feats] trait VenomImmunity
-    extends FeatRequisiteImpl
-    with Passive
-    with GrantsToClass
-    with RequiresAnyOfClass {
+ * [[https://ddowiki.com/page/Venom_Immunity Venom Immunity]] You are immune to ability score damage from natural
+ * poisons. (This has no effect on magical or supernatural poisons.)
+ *
+ * Notes A druid receives this feat for free at ninth level.
+ */
+protected[feats] trait VenomImmunity extends FeatRequisiteImpl with Passive with GrantsToClass with RequiresAnyOfClass {
   override def anyOfClass: Seq[(HeroicCharacterClass, Int)] =
     List((Druid, 9))
 

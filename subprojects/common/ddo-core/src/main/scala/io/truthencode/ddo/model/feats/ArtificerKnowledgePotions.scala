@@ -22,17 +22,16 @@ import io.truthencode.ddo.model.classes.HeroicCharacterClass.{Alchemist, Artific
 import io.truthencode.ddo.support.requisite.{FeatRequisiteImpl, GrantsToClass, RequiresAllOfClass}
 
 /**
-  * Created by adarr on 2/16/2017.
-  */
+ * Created by adarr on 2/16/2017.
+ */
 protected[feats] trait ArtificerKnowledgePotions
-    extends FeatRequisiteImpl
-    with ArtificerKnowledgePrefix
-    with Passive
-    with GrantsToClass
-    with RequiresAllOfClass { self: ClassFeat =>
+  extends FeatRequisiteImpl with ArtificerKnowledgePrefix with Passive with GrantsToClass with RequiresAllOfClass {
+  self: ClassFeat =>
   private lazy val levels = List(2, 5, 8, 11, 14)
-  private lazy val values = for {l <- levels
-                            c <- List(Artificer,Alchemist)} yield (c,l)
+  private lazy val values = for {
+    l <- levels
+    c <- List(Artificer, Alchemist)
+  } yield (c, l)
   override def anyOfClass: Seq[(HeroicCharacterClass, Int)] = values
 
   override def grantToClass: Seq[(HeroicCharacterClass, Int)] = values

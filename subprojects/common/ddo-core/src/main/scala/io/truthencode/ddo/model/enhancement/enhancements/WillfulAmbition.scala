@@ -28,8 +28,8 @@ trait WillfulAmbition extends ApothecaryTierThree with ClassEnhancementImpl {
   override def apCostPerRank: Int = 2
 
   /**
-    * Some enhancements can be taken multiple times (generally up to three)
-    */
+   * Some enhancements can be taken multiple times (generally up to three)
+   */
   override val ranks: Int = 1
 
 }

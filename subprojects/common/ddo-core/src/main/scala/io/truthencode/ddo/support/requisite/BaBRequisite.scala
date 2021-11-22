@@ -21,17 +21,16 @@ import io.truthencode.ddo.support.requisite.Requirement.BaseAttackBonusReq
 
 import scala.language.{implicitConversions, postfixOps}
 
-
 /**
-  * Represents the Base Attack Bonus Requirement
-  * Created by adarr on 2/3/2017.
-  */
+ * Represents the Base Attack Bonus Requirement Created by adarr on 2/3/2017.
+ */
 sealed trait BaBRequisite {
   self: Requisite =>
   /**
-    * The Minimum Required Base Attack Bonus
-    * @return Minimum value allowed
-    */
+   * The Minimum Required Base Attack Bonus
+   * @return
+   *   Minimum value allowed
+   */
   def requiresBaB: Int
 }
 
@@ -44,5 +43,3 @@ trait RequiresBaB extends BaBRequisite with RequiresOneOf[Requirement] with Requ
 //  abstract override def prerequisites: Seq[RequisiteExpression] = super.prerequisites :+ this
 
 }
-
-

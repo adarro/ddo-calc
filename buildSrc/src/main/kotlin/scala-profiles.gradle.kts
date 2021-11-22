@@ -17,6 +17,14 @@
  */
 plugins {
     id("scala-conventions")
+    // This profile helps to enforce scala conventions and code quality,
+    // Use scala-conventions explicitly if you require bypassing quality checks
+    // I.e. scalafmt rule can not be followed
+    // This should be adjusted once I figure out how to conditionally circumvent this.
+    id("code-quality")
+
+    // scoverage has issues with included builds and parallel multi-module builds
+
 }
 
 

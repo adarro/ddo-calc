@@ -20,11 +20,10 @@ package io.truthencode.ddo.model.effect
 import io.truthencode.ddo.model.effect.features.Features
 
 /**
-  * Base trait representing some effect.
-  *
-  * Effects can be anything from increasing stats or abilities to
-  * granting feats etc.
-  */
+ * Base trait representing some effect.
+ *
+ * Effects can be anything from increasing stats or abilities to granting feats etc.
+ */
 trait Effect {
   self: Features =>
 }
@@ -38,10 +37,10 @@ trait EffectList {
 }
 
 /**
-  * Adds or reduces a given effect
-  *
-  * i.e. Adds 3 to STR or 2 to charisma skills etc.
-  */
+ * Adds or reduces a given effect
+ *
+ * i.e. Adds 3 to STR or 2 to charisma skills etc.
+ */
 trait AugmentEffect[T] extends Effect {
   self: Features =>
   val amount: Int

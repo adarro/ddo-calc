@@ -19,6 +19,4 @@ package io.truthencode.ddo.support
 
 import com.typesafe.scalalogging.LazyLogging
 
-package object utility extends LazyLogging {
-
-}
+package object utility extends LazyLogging {}

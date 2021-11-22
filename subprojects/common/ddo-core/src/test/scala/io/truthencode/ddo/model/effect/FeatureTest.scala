@@ -19,17 +19,16 @@ package io.truthencode.ddo.model.effect
 
 import com.typesafe.scalalogging.LazyLogging
 import io.truthencode.ddo.enhancement.BonusType
-import io.truthencode.ddo.model.effect.features.SkillFeature
 import io.truthencode.ddo.model.feats.GeneralFeat
-import io.truthencode.ddo.model.skill.Skill
 import io.truthencode.ddo.model.skill.Skill.{Listen, Spot}
 import io.truthencode.ddo.model.stats.BasicStat
 import org.scalatest.TryValues._
-import org.scalatest.{FunSpec, Matchers}
+import org.scalatest.funspec.AnyFunSpec
+import org.scalatest.matchers.should.Matchers
 
 import scala.collection.immutable
 
-class FeatureTest extends FunSpec with Matchers with LazyLogging {
+class FeatureTest extends AnyFunSpec with Matchers with LazyLogging {
 
   def fixture = new {
     val sourceInfo: SourceInfo = SourceInfo("TestContext", this)
@@ -59,9 +58,9 @@ class FeatureTest extends FunSpec with Matchers with LazyLogging {
       val param = EffectParameter.BonusType(BonusType.Feat)
       val part = EffectPart.Skill
       val feat = GeneralFeat.Alertness
-      val ff: immutable.Seq[Feature.SkillEffect] = feat.features collect {
-          case y: Feature.SkillEffect => y
-        }
+      val ff: immutable.Seq[Feature.SkillEffect] = feat.features.collect { case y: Feature.SkillEffect =>
+        y
+      }
       ff.map(_.skill) should contain allOf (Listen, Spot)
     }
 
@@ -69,14 +68,14 @@ class FeatureTest extends FunSpec with Matchers with LazyLogging {
       val param = EffectParameter.BonusType(BonusType.Feat)
       val part = EffectPart.DodgeChance
       val feat = GeneralFeat.Dodge
-      feat.features collectFirst {
-        case y: PartModifier[Int, BasicStat] with ParameterModifier[Int, BonusType] => y
+      feat.features.collectFirst { case y: PartModifier[Int, BasicStat] with ParameterModifier[Int, BonusType] =>
+        y
 
       } match {
         case Some(x) => {
-          x.parameter should be a 'success
+          (x.parameter should be).a('success)
           x.parameter.success.value should be(param)
-          x.part should be a 'success
+          (x.part should be).a('success)
           x.part.success.value should be(part)
         }
       }

@@ -28,18 +28,15 @@ import io.truthencode.ddo.support.requisite._
 import scala.collection.immutable.IndexedSeq
 
 /**
-  * Created by adarr on 2/14/2017.
-  */
-trait Feat
-    extends EnumEntry
-    with DisplayName
-    with FriendlyDisplay
-    with SubFeatInformation with SourceInfo { self: FeatType with Requisite with Inclusion =>
+ * Created by adarr on 2/14/2017.
+ */
+trait Feat extends EnumEntry with DisplayName with FriendlyDisplay with SubFeatInformation with SourceInfo {
+  self: FeatType with Requisite with Inclusion =>
 
-    override val sourceId: String = s"Feat:$entryName"
-    override val sourceRef: AnyRef = this
+  override val sourceId: String = s"Feat:$entryName"
+  override val sourceRef: AnyRef = this
 
-    override protected def nameSource: String =
+  override protected def nameSource: String =
     entryName.splitByCase.toPascalCase
 }
 
@@ -50,34 +47,33 @@ object Feat extends Enum[Feat] with FeatSearchPrefix with LazyLogging {
   }
 
   /**
-    * Filters feats which belong to racial / general feats only.
-    *
-    * This removes feats that happen to have some racial aspect but are considered
-    * under another category, such as a Deity Based feat that requires classes as well as a race.
-    *
-    * @note Not sure if we really need this method in production.
-    *       May only be useful for detecting / Acceptance testing subsets
-    */
-  val fnPureRacialFeat
-    : PartialFunction[RaceRequisite, Feat with RaceRequisite] = {
+   * Filters feats which belong to racial / general feats only.
+   *
+   * This removes feats that happen to have some racial aspect but are considered under another category, such as a
+   * Deity Based feat that requires classes as well as a race.
+   *
+   * @note
+   *   Not sure if we really need this method in production. May only be useful for detecting / Acceptance testing
+   *   subsets
+   */
+  val fnPureRacialFeat: PartialFunction[RaceRequisite, Feat with RaceRequisite] = {
     case x: RacialFeat => x
     case x: GeneralFeat => x
   }
 
-  val fnRacialFeats: PartialFunction[Feat, Feat with RaceRequisite] = {
-    case x: RaceRequisite => x
+  val fnRacialFeats: PartialFunction[Feat, Feat with RaceRequisite] = { case x: RaceRequisite =>
+    x
   }
 
-  val fnTacticalFeats: PartialFunction[Feat,Feat with Tactical] = {
-      case x: Tactical => x
+  val fnTacticalFeats: PartialFunction[Feat, Feat with Tactical] = { case x: Tactical =>
+    x
   }
 
   lazy val racialFeats: IndexedSeq[Feat with RaceRequisite] = {
-    Feat.values collect fnRacialFeats
+    Feat.values.collect(fnRacialFeats)
   }
 
-  def fnOptionToRequisite(req: RaceRequisite,
-                          opt: RequirementOption): Seq[(Race, Int)] = {
+  def fnOptionToRequisite(req: RaceRequisite, opt: RequirementOption): Seq[(Race, Int)] = {
     opt match {
       case RequirementOption.AutoGrant => req.grantsToRace
       case RequirementOption.Available => req.anyOfRace ++ req.allOfRace
@@ -89,9 +85,7 @@ object Feat extends Enum[Feat] with FeatSearchPrefix with LazyLogging {
     }
   }
 
-  def fnOptionsToRaceSequence(
-      req: RaceRequisite,
-      options: RequirementOption*): Seq[(Race, Int)] = {
+  def fnOptionsToRaceSequence(req: RaceRequisite, options: RequirementOption*): Seq[(Race, Int)] = {
     val seqOfSeq = for {
       opt <- options
 
@@ -101,22 +95,20 @@ object Feat extends Enum[Feat] with FeatSearchPrefix with LazyLogging {
 
   def featsFromRace(race: Race, opt: RequirementOption*): Seq[Feat] = {
 
-    racialFeats
-      .filter { f =>
-        containsInTuple(race, fnOptionsToRaceSequence(f, opt: _*))
-      }
-      .filterNot {
-        case _: DeityFeat => true
-        case _ => false
-      }
+    racialFeats.filter { f =>
+      containsInTuple(race, fnOptionsToRaceSequence(f, opt: _*))
+    }.filterNot {
+      case _: DeityFeat => true
+      case _ => false
+    }
   }
 
   def featsFromRace(race: Race): Seq[Feat] = {
     racialFeats.filter { f =>
-      containsInTuple(race,
-                      fnOptionsToRaceSequence(f, RequirementOption.AutoGrant))
+      containsInTuple(race, fnOptionsToRaceSequence(f, RequirementOption.AutoGrant))
     }
   }
 
   override def values: IndexedSeq[Feat] =
-    GeneralFeat.values ++ ClassFeat.values ++ RacialFeat.values ++ MetaMagicFeat.values ++ DeityFeat.values ++ EpicFeat.values}
+    GeneralFeat.values ++ ClassFeat.values ++ RacialFeat.values ++ MetaMagicFeat.values ++ DeityFeat.values ++ EpicFeat.values
+}

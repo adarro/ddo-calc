@@ -18,6 +18,6 @@
 package io.truthencode.ddo.support.points
 
 trait Progression {
-  val points : SpendablePoints
+  val points: SpendablePoints
   val amount: Int
 }

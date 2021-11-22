@@ -22,27 +22,30 @@ import enumeratum.{Enum, EnumEntry}
 import scala.collection.immutable
 
 /**
-  * The Amount at with a charge is recovered.
-  * Values range from [[io.truthencode.ddo.support.charges.RechargeAmount.None]] to [[io.truthencode.ddo.support.charges.RechargeAmount.Incremental]] to [[io.truthencode.ddo.support.charges.RechargeAmount.Full]]
-  */
+ * The Amount at with a charge is recovered. Values range from
+ * [[io.truthencode.ddo.support.charges.RechargeAmount.None]] to
+ * [[io.truthencode.ddo.support.charges.RechargeAmount.Incremental]] to
+ * [[io.truthencode.ddo.support.charges.RechargeAmount.Full]]
+ */
 sealed trait RechargeAmount extends EnumEntry
 
 object RechargeAmount extends Enum[RechargeAmount] {
   override def values: immutable.IndexedSeq[RechargeAmount] = findValues
 
   /**
-    * Restores this amount of charges
-    * @param quantity the amount of charges restored, up to Max
-    */
+   * Restores this amount of charges
+   * @param quantity
+   *   the amount of charges restored, up to Max
+   */
   case class Incremental(quantity: Int) extends RechargeAmount
 
   /**
-    * All charges are restored after specified event.  Generally Onrest
-    */
+   * All charges are restored after specified event. Generally Onrest
+   */
   case object Full extends RechargeAmount
 
-    /**
-     * An object with Charges that can not be recharged, such as some wands.
-     */
+  /**
+   * An object with Charges that can not be recharged, such as some wands.
+   */
   case object None extends RechargeAmount
 }

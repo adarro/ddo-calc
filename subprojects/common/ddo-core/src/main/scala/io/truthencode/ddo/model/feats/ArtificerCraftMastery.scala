@@ -19,20 +19,13 @@ package io.truthencode.ddo.model.feats
 
 import io.truthencode.ddo.model.classes.HeroicCharacterClass
 import io.truthencode.ddo.model.classes.HeroicCharacterClass.Artificer
-import io.truthencode.ddo.support.requisite.{
-  FeatRequisiteImpl,
-  GrantsToClass,
-  RequiresAllOfClass
-}
+import io.truthencode.ddo.support.requisite.{FeatRequisiteImpl, GrantsToClass, RequiresAllOfClass}
 
 /**
-  * Created by adarr on 2/16/2017.
-  */
+ * Created by adarr on 2/16/2017.
+ */
 protected[feats] trait ArtificerCraftMastery
-    extends FeatRequisiteImpl
-    with Passive
-    with GrantsToClass
-    with RequiresAllOfClass {
+  extends FeatRequisiteImpl with Passive with GrantsToClass with RequiresAllOfClass {
   private lazy val levels = (1 to 20).filter(_ % 2 == 0)
   override def allOfClass: Seq[(HeroicCharacterClass, Int)] = levels.map { x =>
     (Artificer, x)

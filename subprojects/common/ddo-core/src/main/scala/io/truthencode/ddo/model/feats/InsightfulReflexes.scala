@@ -20,11 +20,10 @@ package io.truthencode.ddo.model.feats
 import io.truthencode.ddo.model.attribute.Attribute
 import io.truthencode.ddo.support.requisite.{FeatRequisiteImpl, RequiresAttribute}
 
-/** Icon Feat Insightful Reflexes.png
-  * Insightful Reflexes 	Passive 	This Feat allows Player Character to use Intelligence modifier for Reflex saves, instead of Dexterity.
-  * *
-  * Intelligence 13
-  */
+/**
+ * Icon Feat Insightful Reflexes.png Insightful Reflexes Passive This Feat allows Player Character to use Intelligence
+ * modifier for Reflex saves, instead of Dexterity. * Intelligence 13
+ */
 trait InsightfulReflexes extends FeatRequisiteImpl with Passive with RequiresAttribute {
   self: GeneralFeat =>
   override def requiresAttribute: Seq[(Attribute, Int)] = List((Attribute.Intelligence, 13))

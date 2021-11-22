@@ -19,7 +19,7 @@ package io.truthencode.ddo.model.feats.races
 
 import java.util
 
-import io.truthencode.ddo.model.feats.{FeatDisplayHelper, Feat, RaceSupport}
+import io.truthencode.ddo.model.feats.{Feat, FeatDisplayHelper, RaceSupport}
 import io.truthencode.ddo.model.race.Race
 import io.truthencode.ddo.support.requisite.RequirementOption
 import org.concordion.integration.junit4.ConcordionRunner
@@ -46,7 +46,7 @@ class HalfElfFeatSpec extends FeatDisplayHelper with RaceSupport {
 
   def verifyDilettante(): util.List[String] =
     Feat
-      .featsFromRace(Race.HalfElf,RequirementOption.Available)
+      .featsFromRace(Race.HalfElf, RequirementOption.Available)
       .filter { x =>
         !x.isSubFeat && x.entryName.contains("Dilettante")
       }

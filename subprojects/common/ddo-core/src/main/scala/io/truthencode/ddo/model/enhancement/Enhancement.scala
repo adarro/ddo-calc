@@ -25,8 +25,8 @@ import io.truthencode.ddo.support.requisite.RaceRequisite
 import scala.collection.immutable
 
 /**
-  * Enhancements are acquired via the Skill Tree by spending action points.
-  */
+ * Enhancements are acquired via the Skill Tree by spending action points.
+ */
 protected[ddo] trait Enhancement extends EnumEntry with Description with DisplayName {
   self: TreeType with Tier =>
 
@@ -36,15 +36,15 @@ protected[ddo] trait Enhancement extends EnumEntry with Description with Display
 }
 
 /**
-  * Available to all races / classes but may need to be purchased via favor or VIP
-  */
+ * Available to all races / classes but may need to be purchased via favor or VIP
+ */
 trait UniversalEnhancement extends Enhancement with Universal {
   self: Tier =>
 }
 
 /**
-  * Available to a particular race.
-  */
+ * Available to a particular race.
+ */
 trait RacialEnhancement extends Enhancement with Racial {
   self: Tier with RaceRequisite =>
 }

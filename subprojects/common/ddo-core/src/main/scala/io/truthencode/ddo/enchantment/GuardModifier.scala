@@ -28,8 +28,8 @@ import io.truthencode.ddo.support.RomanNumeral.fromRoman
 import scala.language.postfixOps
 
 /**
-  * Valid prefixes and suffixes for Guard Enchantments
-  */
+ * Valid prefixes and suffixes for Guard Enchantments
+ */
 object GuardModifier extends LazyLogging {
   type Parameters = (Option[String], Option[String], Option[String])
 
@@ -38,22 +38,32 @@ object GuardModifier extends LazyLogging {
       {
         // Guards can have nothing, a prefix or a suffix
         // No Modifiers
-        (((g.prefix is empty) and (g.sPrefix is empty) and (g.suffix is empty))
-          or
+        (((g.prefix
+          .is(empty))
+          .and(g.sPrefix.is(empty))
+          .and(g.suffix.is(empty)))
+          .or(
             // Just a (valid) prefix
-            (((g.prefix is notEmpty) and (g.sPrefix is empty) and (g.suffix is empty))
-              and (filterModifiers(g.prefix) is notEmpty))
-          or
+            ((g.prefix
+              .is(notEmpty))
+              .and(g.sPrefix.is(empty))
+              .and(g.suffix.is(empty)))
+              .and(filterModifiers(g.prefix).is(notEmpty)))
+          .or(
             // Just a valid suffix
-            (((g.prefix is empty) and (g.sPrefix is empty) and (g.suffix is notEmpty))
-              and (allowedRoman(g.suffix) is notEmpty)))
+            ((g.prefix
+              .is(empty))
+              .and(g.sPrefix.is(empty))
+              .and(g.suffix.is(notEmpty)))
+              .and(allowedRoman(g.suffix).is(notEmpty))))
 
       }
     }
 
-  def apply(prefix: Option[String] = None,
-            sPrefix: Option[String] = None,
-            suffix: Option[String] = None): GuardModifier = {
+  def apply(
+    prefix: Option[String] = None,
+    sPrefix: Option[String] = None,
+    suffix: Option[String] = None): GuardModifier = {
     val o = create(prefix, sPrefix, suffix)
     val valid = validate(o)
     assert(valid == Success)
@@ -64,16 +74,12 @@ object GuardModifier extends LazyLogging {
   def apply(parameters: Parameters): GuardModifier =
     GuardModifier(parameters._1, parameters._2, parameters._3)
 
-  private def create(prefix: Option[String],
-                     sPrefix: Option[String],
-                     suffix: Option[String]): GuardModifier = {
+  private def create(prefix: Option[String], sPrefix: Option[String], suffix: Option[String]): GuardModifier = {
     new GuardModifier(prefix, sPrefix, suffix) {
       private def readResolve(): Object =
         GuardModifier(prefix, sPrefix, suffix)
 
-      def copy(prefix: Option[String],
-               sPrefix: Option[String],
-               suffix: Option[String]): GuardModifier =
+      def copy(prefix: Option[String], sPrefix: Option[String], suffix: Option[String]): GuardModifier =
         GuardModifier(prefix, sPrefix, suffix)
 
       val tuple: GuardModifier.Parameters =
@@ -82,19 +88,16 @@ object GuardModifier extends LazyLogging {
   }
 
   /**
-    * Array of allowed Guard Modifiers, may occasionally need to be updated
-    * if the game adds new ones.
-    */
-  lazy val allowedModifiers: List[String] = List(Minor, Lesser, Greater).map {
-    x =>
-      x.entryName
+   * Array of allowed Guard Modifiers, may occasionally need to be updated if the game adds new ones.
+   */
+  lazy val allowedModifiers: List[String] = List(Minor, Lesser, Greater).map { x =>
+    x.entryName
   }
 
   /**
-    * Restricts Modifiers to allowed current modifiers.
-    */
-  protected[enchantment] def filterModifiers(
-      mod: Option[String]): Option[String] =
+   * Restricts Modifiers to allowed current modifiers.
+   */
+  protected[enchantment] def filterModifiers(mod: Option[String]): Option[String] =
     (for { m <- mod } yield {
       allowedModifiers.collectFirst({
         case x: String if x.equals(m) => x
@@ -102,9 +105,8 @@ object GuardModifier extends LazyLogging {
     }) flatten
 
   /**
-    * Filters to allow supported suffixes for the guards.
-    * Currently, this is represented by a Roman Numeral 1 - 10.
-    */
+   * Filters to allow supported suffixes for the guards. Currently, this is represented by a Roman Numeral 1 - 10.
+   */
   def allowedRoman(rn: Option[String]): Option[Int] = {
     rn.flatMap { y =>
       fromRoman(y) match {
@@ -118,13 +120,9 @@ object GuardModifier extends LazyLogging {
 }
 
 abstract case class GuardModifier private[GuardModifier] (
-    prefix: Option[String],
-    sPrefix: Option[String] = None,
-    suffix: Option[String])
-    extends Prefix
-    with SecondaryPrefix
-    with Suffix {
-  def copy(prefix: Option[String],
-           sPrefix: Option[String],
-           suffix: Option[String]): GuardModifier
+  prefix: Option[String],
+  sPrefix: Option[String] = None,
+  suffix: Option[String])
+  extends Prefix with SecondaryPrefix with Suffix {
+  def copy(prefix: Option[String], sPrefix: Option[String], suffix: Option[String]): GuardModifier
 }

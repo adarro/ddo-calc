@@ -23,8 +23,9 @@ import io.truthencode.ddo.model.item.WearableItem
 /**
  * Includes Bucklers / and Towershields
  */
-trait Shield extends WearableItem with Wearable{
-    /** A bitmask that corresponds to one or more [io.truthencode.ddo.WearLocation] values.
-     */
-    override def allowedWearLocationFlags: Int = WearLocation.OffHand.bitValue
+trait Shield extends WearableItem with Wearable {
+  /**
+   * A bitmask that corresponds to one or more [io.truthencode.ddo.WearLocation] values.
+   */
+  override def allowedWearLocationFlags: Int = WearLocation.OffHand.bitValue
 }

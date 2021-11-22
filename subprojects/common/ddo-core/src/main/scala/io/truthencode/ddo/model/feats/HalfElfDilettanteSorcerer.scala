@@ -19,24 +19,15 @@ package io.truthencode.ddo.model.feats
 
 import io.truthencode.ddo.model.attribute.Attribute
 import io.truthencode.ddo.model.race.Race
-import io.truthencode.ddo.support.requisite.{
-  FeatRequisiteImpl,
-  RequiresAllOfRace,
-  RequiresAttribute
-}
+import io.truthencode.ddo.support.requisite.{FeatRequisiteImpl, RequiresAllOfRace, RequiresAttribute}
 
 /**
-  * DilettanteSorcerer.bmp
-  * Half-Elf Dilettante: Sorcerer	Passive	Able to use wands and scrolls as if you were a level one sorcerer.
-  * Half-Elf
-  * 13 Charisma
-  */
+ * DilettanteSorcerer.bmp Half-Elf Dilettante: Sorcerer Passive Able to use wands and scrolls as if you were a level one
+ * sorcerer. Half-Elf 13 Charisma
+ */
 protected[feats] trait HalfElfDilettanteSorcerer
-    extends FeatRequisiteImpl
-    with HalfElfDilettantePreFix
-    with Passive
-    with RequiresAttribute
-    with RequiresAllOfRace { self: RacialFeat =>
+  extends FeatRequisiteImpl with HalfElfDilettantePreFix with Passive with RequiresAttribute with RequiresAllOfRace {
+  self: RacialFeat =>
   override def allOfRace: Seq[(Race, Int)] = List((Race.HalfElf, 1))
 
   override def requiresAttribute: Seq[(Attribute, Int)] =

@@ -27,8 +27,8 @@ import io.truthencode.ddo.support.SearchPrefix
 import scala.collection.immutable.IndexedSeq
 
 /**
-  * Represents a DDO Race [http://ddowiki.com/page/Races]
-  */
+ * Represents a DDO Race [http://ddowiki.com/page/Races]
+ */
 sealed trait Race extends EnumEntry with AttributeModifierInit {
   self: Availability with HomeWorld with AttributeModifier =>
 }
@@ -44,27 +44,16 @@ trait ForgottenRealmsRace extends HomeWorld { self: Race =>
 trait IconicClass extends CharacterClass
 
 trait Bladeforged
-    extends Race
-    with EberronRace
-    with IconicFeature
-    with IconicClass
-    with DexterityModifier
-    with ConstitutionModifier
-    with WisdomModifier {
+  extends Race with EberronRace with IconicFeature with IconicClass with DexterityModifier with ConstitutionModifier
+  with WisdomModifier {
   override protected lazy val intModifierDexterity: Int = -2
   override protected lazy val intModifierConstitution: Int = 2
   override protected lazy val intModifierWisdom: Int = -2
 }
 // Svirfneblin
 trait DeepGnome
-    extends Race
-    with ForgottenRealmsRace
-    with IconicFeature
-    with IconicClass
-    with IntelligenceModifier
-    with WisdomModifier
-    with StrengthModifier
-    with CharismaModifier {
+  extends Race with ForgottenRealmsRace with IconicFeature with IconicClass with IntelligenceModifier
+  with WisdomModifier with StrengthModifier with CharismaModifier {
   override protected lazy val intModifierIntelligence: Int = 2
   override protected lazy val intModifierWisdom: Int = 2
   override protected lazy val intModifierStrength: Int = -2
@@ -72,25 +61,15 @@ trait DeepGnome
 }
 
 trait DragonBorn
-    extends Race
-    with EberronRace
-    with VIPFeature
-    with StrengthModifier
-    with CharismaModifier
-    with DexterityModifier {
+  extends Race with EberronRace with VIPFeature with StrengthModifier with CharismaModifier with DexterityModifier {
   override protected lazy val intModifierDexterity: Int = -2
   override protected lazy val intModifierCharisma: Int = 2
   override protected lazy val intModifierStrength: Int = 2
 }
 
 trait DrowElf
-    extends Race
-    with EberronRace
-    with FavorFeature
-    with DexterityModifier
-    with IntelligenceModifier
-    with CharismaModifier
-    with ConstitutionModifier {
+  extends Race with EberronRace with FavorFeature with DexterityModifier with IntelligenceModifier with CharismaModifier
+  with ConstitutionModifier {
 
   override protected lazy val intModifierDexterity: Int = 2
   override protected lazy val intModifierIntelligence: Int = 2
@@ -98,106 +77,58 @@ trait DrowElf
   override protected lazy val intModifierConstitution: Int = -2
 }
 
-trait Dwarf
-    extends Race
-    with EberronRace
-    with FreeToPlayFeature
-    with ConstitutionModifier
-    with CharismaModifier {
+trait Dwarf extends Race with EberronRace with FreeToPlayFeature with ConstitutionModifier with CharismaModifier {
   override protected lazy val intModifierConstitution: Int = 2
   override protected lazy val intModifierCharisma: Int = -2
 }
 
-trait Elf
-    extends Race
-    with EberronRace
-    with FreeToPlayFeature
-    with DexterityModifier
-    with ConstitutionModifier {
+trait Elf extends Race with EberronRace with FreeToPlayFeature with DexterityModifier with ConstitutionModifier {
   override protected lazy val intModifierDexterity: Int = 2
   override protected lazy val intModifierConstitution: Int = -2
 }
 
-trait Gnome
-    extends Race
-    with EberronRace
-    with PremiumFeature
-    with IntelligenceModifier
-    with StrengthModifier {
+trait Gnome extends Race with EberronRace with PremiumFeature with IntelligenceModifier with StrengthModifier {
   override protected lazy val intModifierIntelligence: Int = 2
   override protected lazy val intModifierStrength: Int = -2
 }
 
-trait Halfling
-    extends Race
-    with EberronRace
-    with FreeToPlayFeature
-    with DexterityModifier
-    with StrengthModifier {
+trait Halfling extends Race with EberronRace with FreeToPlayFeature with DexterityModifier with StrengthModifier {
   override protected lazy val intModifierDexterity: Int = 2
   override protected lazy val intModifierStrength: Int = -2
 }
 
-trait HalfElf
-    extends Race
-    with EberronRace
-    with PremiumFeature
-    with DefaultAttributeModifier
+trait HalfElf extends Race with EberronRace with PremiumFeature with DefaultAttributeModifier
 
 trait HalfOrc
-    extends Race
-    with EberronRace
-    with PremiumFeature
-    with StrengthModifier
-    with IntelligenceModifier
-    with CharismaModifier {
+  extends Race with EberronRace with PremiumFeature with StrengthModifier with IntelligenceModifier
+  with CharismaModifier {
   override protected lazy val intModifierStrength: Int = 2
   override protected lazy val intModifierIntelligence: Int = -2
   override protected lazy val intModifierCharisma: Int = -2
 }
 
-trait Human
-    extends Race
-    with EberronRace
-    with FreeToPlayFeature
-    with DefaultAttributeModifier
+trait Human extends Race with EberronRace with FreeToPlayFeature with DefaultAttributeModifier
 
 trait Morninglord
-    extends Race
-    with ForgottenRealmsRace
-    with IconicFeature
-    with IconicClass
-    with IntelligenceModifier
-    with ConstitutionModifier {
+  extends Race with ForgottenRealmsRace with IconicFeature with IconicClass with IntelligenceModifier
+  with ConstitutionModifier {
   override protected lazy val intModifierIntelligence: Int = 2
   override protected lazy val intModifierConstitution: Int = -2
 }
 
 trait PurpleDragonKnight
-    extends Race
-    with ForgottenRealmsRace
-    with IconicFeature
-    with IconicClass
-    with DefaultAttributeModifier
+  extends Race with ForgottenRealmsRace with IconicFeature with IconicClass with DefaultAttributeModifier
 
 trait Shadarkai
-    extends Race
-    with ForgottenRealmsRace
-    with IconicFeature
-    with IconicClass
-    with DexterityModifier
-    with CharismaModifier {
+  extends Race with ForgottenRealmsRace with IconicFeature with IconicClass with DexterityModifier
+  with CharismaModifier {
   override protected lazy val intModifierDexterity: Int = 2
   override protected lazy val intModifierCharisma: Int = -2
 }
 
 trait Warforged
-    extends Race
-    with EberronRace
-    with PremiumFeature
-    with ConstitutionModifier
-    with WisdomModifier
-    with CharismaModifier {
+  extends Race with EberronRace with PremiumFeature with ConstitutionModifier with WisdomModifier
+  with CharismaModifier {
   override protected lazy val intModifierConstitution: Int = 2
   override protected lazy val intModifierWisdom: Int = -2
   override protected lazy val intModifierCharisma: Int = -2
@@ -245,11 +176,11 @@ object Race extends Enum[Race] with SearchPrefix {
   override def values: IndexedSeq[Race] = findValues
 
   /**
-    * An optional delimiter such as a colon when overridden.
-    * By default, this is set to Option.None
-    *
-    * @return The delimiter, if it exists.
-    */
+   * An optional delimiter such as a colon when overridden. By default, this is set to Option.None
+   *
+   * @return
+   *   The delimiter, if it exists.
+   */
   override def delimiter: Option[String] = Some(":")
 
   override def searchPrefixSource: String = "Race"

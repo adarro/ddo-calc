@@ -20,10 +20,9 @@ package io.truthencode.ddo.model.spells
 import io.truthencode.ddo.model.classes.HeroicCharacterClass
 
 trait CasterWithLevel {
-  def characterClass : HeroicCharacterClass
-  def level:Int
+  def characterClass: HeroicCharacterClass
+  def level: Int
 }
-
 
 trait CasterLevels {
   def casterLevels: Set[CasterWithLevel]

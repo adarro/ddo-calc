@@ -21,9 +21,10 @@ import com.typesafe.scalalogging.LazyLogging
 import io.truthencode.ddo.model.effect.{Feature, SourceInfo}
 import io.truthencode.ddo.model.feats.GeneralFeat
 import io.truthencode.ddo.model.stats.BasicStat
-import org.scalatest.{FunSpec, Matchers}
+import org.scalatest.funspec.AnyFunSpec
+import org.scalatest.matchers.should.Matchers
 
-class FeaturesTest extends FunSpec with Matchers with LazyLogging {
+class FeaturesTest extends AnyFunSpec with Matchers with LazyLogging {
   val dodgeChance = BasicStat.DodgeChance.entryName // "DodgeChance"
   describe("A Features List") {
     it("Should derive a list of names / ids") {
@@ -49,7 +50,7 @@ class FeaturesTest extends FunSpec with Matchers with LazyLogging {
       s.sourceId should startWith("Feat")
       s.sourceId should endWith("Dodge")
       s.sourceRef shouldEqual d
-      v shouldEqual(d.dodgeBonusAmount)
+      v shouldEqual (d.dodgeBonusAmount)
     }
   }
 

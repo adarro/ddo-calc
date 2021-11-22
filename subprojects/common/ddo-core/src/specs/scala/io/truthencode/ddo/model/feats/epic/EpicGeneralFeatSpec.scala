@@ -17,11 +17,7 @@
  */
 package io.truthencode.ddo.model.feats.epic
 
-import io.truthencode.ddo.model.feats.{
-  EpicFeat,
-  EpicFeatFeatDisplayHelper,
-  GeneralPassive
-}
+import io.truthencode.ddo.model.feats.{EpicFeat, EpicFeatFeatDisplayHelper, GeneralPassive}
 import org.concordion.api.FullOGNL
 import org.concordion.integration.junit4.ConcordionRunner
 import org.junit.runner.RunWith
@@ -29,7 +25,7 @@ import org.junit.runner.RunWith
 @FullOGNL
 @RunWith(classOf[ConcordionRunner])
 class EpicGeneralFeatSpec extends EpicFeatFeatDisplayHelper {
-  override val filterByCategory: PartialFunction[Entry, EpicFeat] = {
-    case x: GeneralPassive => x.asInstanceOf[EpicFeat]
+  override val filterByCategory: PartialFunction[Entry, EpicFeat] = { case x: GeneralPassive =>
+    x.asInstanceOf[EpicFeat]
   }
 }

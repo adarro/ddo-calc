@@ -18,8 +18,8 @@
 package io.truthencode.ddo.model.compendium.types
 
 /**
-  * Created by adarr on 3/25/2017.
-  */
+ * Created by adarr on 3/25/2017.
+ */
 trait NativeOutsiders extends MainType {
-   override val mainTypes =Some(MonsterType.NativeOutsider)
+  override val mainTypes = Some(MonsterType.NativeOutsider)
 }

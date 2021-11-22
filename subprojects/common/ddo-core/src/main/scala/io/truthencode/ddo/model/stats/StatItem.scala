@@ -32,9 +32,10 @@ trait StatItem[T <: EnumEntry, V] {
 
 /**
  * Convenience trait used when the type is also the value, i.e. Alignment or Race is itself the value.
- * @tparam T The basic type
+ * @tparam T
+ *   The basic type
  */
-trait SimpleStatItem[T <: EnumEntry] extends StatItem[T,T]
+trait SimpleStatItem[T <: EnumEntry] extends StatItem[T, T]
 
 trait AttributeStat extends StatItem[Attribute, Int] {
   val baseValue: Int
@@ -43,14 +44,14 @@ trait AttributeStat extends StatItem[Attribute, Int] {
 // trait AStr extends AttributeStat[Strength]
 
 case class PlayerAttribute(
-    override val item: Attribute,
-    override val baseValue: Int = 0
+  override val item: Attribute,
+  override val baseValue: Int = 0
 ) extends AttributeStat {
   override def value: Int = ???
 }
 
 case class PlayerStrAttribute(
-    override val baseValue: Int = 0
+  override val baseValue: Int = 0
 ) extends AttributeStat {
 
   override def value: Int = ???
@@ -75,10 +76,10 @@ object ThrowAway {
     lazy override protected[this] val parameterToModify: A =
       BonusType.ActionBoost
     override val value: V = 3
-      override val source: SourceInfo = new SourceInfo {
-          override val sourceId: String = "Example"
-          override val sourceRef: AnyRef = this
-      }
+    override val source: SourceInfo = new SourceInfo {
+      override val sourceId: String = "Example"
+      override val sourceRef: AnyRef = this
+    }
   }
   val str = PlayerAttribute(Attribute.Strength, 6)
   // val str = PlayerAttribute(item= Strength,baseValue = 6)
@@ -110,11 +111,11 @@ object ThrowAway {
   val l = List((EffectParameter.BonusType, 3))
 
   case class Blah(
-      override val partToModify: T = Attribute.Strength,
-      override val parameterToModify: A = BonusType.ActionBoost,
-      override val value: V = 0, override val source: SourceInfo
-  ) extends PartModifier[V, T]
-      with ParameterModifier[V, A]
+    override val partToModify: T = Attribute.Strength,
+    override val parameterToModify: A = BonusType.ActionBoost,
+    override val value: V = 0,
+    override val source: SourceInfo
+  ) extends PartModifier[V, T] with ParameterModifier[V, A]
   // val strAttribute = StatEnums(Attribute.Strength,)
 
 }

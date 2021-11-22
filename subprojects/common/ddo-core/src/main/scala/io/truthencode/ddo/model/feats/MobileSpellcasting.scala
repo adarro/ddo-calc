@@ -20,26 +20,19 @@ package io.truthencode.ddo.model.feats
 import io.truthencode.ddo.model.classes.HeroicCharacterClass
 import io.truthencode.ddo.support.requisite._
 
-/** Icon Feat Mobile Spellcasting.png
-  * Mobile Spellcasting
-  * Passive
-  * Character while moving cast at half their normal movement speed, however with Mobile Spellcasting, character can move at full speed.
-  *
-  * Combat Casting, Dexterity 13,
-  * Ability to cast 2nd level spells
-  * Level 3: Artificer, Cleric, Druid, Wizard
-  * Level 4: Bard, Favored Soul, Sorcerer
-  * Level 7: Paladin, Ranger
-  *
-  * @todo Add ability to cast 2nd level spells req
-  */
+/**
+ * Icon Feat Mobile Spellcasting.png Mobile Spellcasting Passive Character while moving cast at half their normal
+ * movement speed, however with Mobile Spellcasting, character can move at full speed.
+ *
+ * Combat Casting, Dexterity 13, Ability to cast 2nd level spells Level 3: Artificer, Cleric, Druid, Wizard Level 4:
+ * Bard, Favored Soul, Sorcerer Level 7: Paladin, Ranger
+ *
+ * @todo
+ *   Add ability to cast 2nd level spells req
+ */
 protected[feats] trait MobileSpellcasting
-    extends FeatRequisiteImpl
-    with ClassRequisiteImpl
-    with Passive
-    with RequiresAllOfFeat
-    with RequiresAttribute
-    with RequiresAnyOfClass { self: GeneralFeat =>
+  extends FeatRequisiteImpl with ClassRequisiteImpl with Passive with RequiresAllOfFeat with RequiresAttribute
+  with RequiresAnyOfClass { self: GeneralFeat =>
   override def allOfFeats: Seq[GeneralFeat] = List(GeneralFeat.CombatCasting)
 
   override def anyOfClass: Seq[(HeroicCharacterClass, Int)] =

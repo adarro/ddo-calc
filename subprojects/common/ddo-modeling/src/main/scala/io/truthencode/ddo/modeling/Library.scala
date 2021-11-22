@@ -20,6 +20,6 @@
  */
 package io.truthencode.ddo.modeling
 
-class  Library {
+class Library {
   def someLibraryMethod(): Boolean = true
 }

@@ -18,8 +18,8 @@
 package io.truthencode.ddo.support.matching
 
 /**
-  * Base trait for matching strings.
-  */
+ * Base trait for matching strings.
+ */
 trait StringMatchBounds extends MatchBounds {
   val stringMatchOption: StringMatchOption
 }

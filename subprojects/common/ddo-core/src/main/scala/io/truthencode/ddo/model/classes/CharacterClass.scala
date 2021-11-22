@@ -18,6 +18,6 @@
 package io.truthencode.ddo.model.classes
 
 /**
-  * Represents one of the available
-  */
+ * Represents one of the available
+ */
 trait CharacterClass

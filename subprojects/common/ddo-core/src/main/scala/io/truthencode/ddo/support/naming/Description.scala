@@ -20,13 +20,14 @@ package io.truthencode.ddo.support.naming
 trait Description {
 
   /**
-    * A simple description of the object or effects.
-    * @note This will generally be the text as seen on ddowiki.
-    */
+   * A simple description of the object or effects.
+   * @note
+   *   This will generally be the text as seen on ddowiki.
+   */
   lazy val description: Option[String] = None
 
   /**
-    * Provides a default empty string value if no description is specified
-    */
+   * Provides a default empty string value if no description is specified
+   */
   def rawDescription: String = description.getOrElse("")
 }

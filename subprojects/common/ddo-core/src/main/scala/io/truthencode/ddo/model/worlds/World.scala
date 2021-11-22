@@ -19,12 +19,12 @@ package io.truthencode.ddo.model.worlds
 import enumeratum.{Enum, EnumEntry}
 
 /**
-  * Represents the playable source worlds.
-  */
+ * Represents the playable source worlds.
+ */
 sealed trait World extends EnumEntry
 
 object World extends Enum[World] {
   case object Eberron extends World
   case object ForgottenRealms extends World
-  override def values= findValues
+  override def values = findValues
 }

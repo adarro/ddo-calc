@@ -18,8 +18,8 @@
 package io.truthencode.ddo.support
 
 /**
-  * Created by adarr on 8/14/2016.
-  */
+ * Created by adarr on 8/14/2016.
+ */
 class ConcordionEnumBuilderHelper(helper: ConcordionEnumBuilderSupport) {
   def actual: Seq[String] = helper.actual
 
@@ -28,10 +28,10 @@ class ConcordionEnumBuilderHelper(helper: ConcordionEnumBuilderSupport) {
   def listValues(heading: String): String = helper.listValues(heading)
 
   /**
-    * Needed for Concordion / Java compatability as it does not recognize optional parameters.
-    *
-    * @return
-    */
+   * Needed for Concordion / Java compatability as it does not recognize optional parameters.
+   *
+   * @return
+   */
   def listValues(): String = helper.listValues()
 
   def getValidSingleValue: String = helper.getValidSingleValue

@@ -36,19 +36,20 @@ trait DodgeChance extends BasicStat with General
 
 trait BaseAttackBonus extends BasicStat with Abbreviation with General {
 
-  /** The short form of the word
-    */
+  /**
+   * The short form of the word
+   */
   override val abbr: String = "BaB"
 
-  /** Expands the abbr to its full value
-    */
+  /**
+   * Expands the abbr to its full value
+   */
   override def toFullWord: String = entryName
 }
 
 /**
-  * Affects Character speed when moving.
-  * (Moving while sneaking or wearing over-level equipment may reduce this speed)
-  */
+ * Affects Character speed when moving. (Moving while sneaking or wearing over-level equipment may reduce this speed)
+ */
 trait MovementSpeedModifier extends BasicStat with Movement
 
 /** amount health is allowed to go negative in an 'incapacitated' manner before death is triggered. */
@@ -156,26 +157,26 @@ trait AccelerateCostReduction extends BasicStat with SpellCasting
 trait TurnUndeadCategory extends BasicStat with TurnUndead
 
 /**
-  * Turn Check
-  * This determines the maximum number of Hit Dice a monster can have and still be affected from your turn undead attempt. If this check does not produce a number equal or higher to the monster near you that has the lowest hit dice, then you will not be able to turn at all and a message pops up saying "You lack conviction to turn the target"
-  */
+ * Turn Check This determines the maximum number of Hit Dice a monster can have and still be affected from your turn
+ * undead attempt. If this check does not produce a number equal or higher to the monster near you that has the lowest
+ * hit dice, then you will not be able to turn at all and a message pops up saying "You lack conviction to turn the
+ * target"
+ */
 trait MaxHitDice extends TurnUndeadCategory
 
 /**
-  * Turning damage: This determines the number of total Hit Dice you will be able to turn.
-  * This means that the sum of the affected monsters' hit dice must be less or equal to that number.
-  * To determine which monsters you turn, the game starts from the monster with the lowest HD (hit dice) and works its way up.
-  * For example: If you can turn 30 total hit dice and you have monsters with (5, 7, 10, 15) HD around you,
-  * you will turn the ones with (5, 7, 10) for a total of 22 hit dice and not the (15, 10, 5)
-  * that would utilize all 30 of your hit dice.
-  */
+ * Turning damage: This determines the number of total Hit Dice you will be able to turn. This means that the sum of the
+ * affected monsters' hit dice must be less or equal to that number. To determine which monsters you turn, the game
+ * starts from the monster with the lowest HD (hit dice) and works its way up. For example: If you can turn 30 total hit
+ * dice and you have monsters with (5, 7, 10, 15) HD around you, you will turn the ones with (5, 7, 10) for a total of
+ * 22 hit dice and not the (15, 10, 5) that would utilize all 30 of your hit dice.
+ */
 trait TotalHitDice extends TurnUndeadCategory
 
 /**
-  * The Number of Turns per rest your character can do.
-  * This is initially calculated by a base of 3.  Other effects such as Paladin / cleric level and some sovereign
-  * items / filigrees can increase this number.
-  */
+ * The Number of Turns per rest your character can do. This is initially calculated by a base of 3. Other effects such
+ * as Paladin / cleric level and some sovereign items / filigrees can increase this number.
+ */
 trait NumberOfTurns extends TurnUndeadCategory
 // General Combat
 protected trait GeneralCombatCategory extends BasicStat with GeneralCombat
@@ -208,9 +209,10 @@ trait TwoHandedAttackSpeedBonus extends MeleeCombatCategory
 trait QuarterstaffAttackSpeedBonus extends MeleeCombatCategory
 
 /**
-  * @note I could not find the display for Shield Bash chance on the character sheet.
-  *       however, secondary shield bash is available in the '+' menu under melee combat
-  */
+ * @note
+ *   I could not find the display for Shield Bash chance on the character sheet. however, secondary shield bash is
+ *   available in the '+' menu under melee combat
+ */
 trait ShieldBashChance extends MeleeCombatCategory
 
 trait SecondaryShieldBashChance extends MeleeCombatCategory
@@ -379,8 +381,10 @@ object BasicStat extends Enum[BasicStat] with SearchPrefix {
 
   case object OffhandHitChance extends OffhandHitChance
 
-  /** As of [[https://ddowiki.com/page/Update_49_Release_Notes#What.27s_Changing: Update 49]], this is no longer a configurable stat
-    * and is by default 50% of your Mainhand doublestrike * */
+  /**
+   * As of [[https://ddowiki.com/page/Update_49_Release_Notes#What.27s_Changing: Update 49]], this is no longer a
+   * configurable stat and is by default 50% of your Mainhand doublestrike *
+   */
   case object OffhandDoublestrike extends OffhandDoublestrike
 
   case object GlancingblowDamage extends GlancingblowDamage
@@ -410,10 +414,10 @@ object BasicStat extends Enum[BasicStat] with SearchPrefix {
   case object TurnUndeadNumberOfTurns extends NumberOfTurns
 
   /**
-    * Used when qualifying a search with a prefix.
-    * Examples include finding "HalfElf" from qualified "Race:HalfElf"
-    *
-    * @return A default or applied prefix
-    */
+   * Used when qualifying a search with a prefix. Examples include finding "HalfElf" from qualified "Race:HalfElf"
+   *
+   * @return
+   *   A default or applied prefix
+   */
   override def searchPrefixSource: String = "Stat"
 }

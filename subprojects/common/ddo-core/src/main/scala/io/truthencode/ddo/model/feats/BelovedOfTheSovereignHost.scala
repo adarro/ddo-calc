@@ -21,12 +21,8 @@ import io.truthencode.ddo.model.religions.SovereignHost
 import io.truthencode.ddo.support.requisite.{FeatRequisiteImpl, RequiresAllOfFeat}
 
 trait BelovedOfTheSovereignHost
-    extends FeatRequisiteImpl
-    with EberronReligionNonWarforged
-    with BelovedLevelBase
-    with RequiresAllOfFeat
-    with SovereignHost
-    with TheSovereignHostFeatBase { self: DeityFeat =>
+  extends FeatRequisiteImpl with EberronReligionNonWarforged with BelovedLevelBase with RequiresAllOfFeat
+  with SovereignHost with TheSovereignHostFeatBase { self: DeityFeat =>
 
   override def allOfFeats: Seq[Feat] = List(DeityFeat.ChildOfTheSovereignHost)
 }

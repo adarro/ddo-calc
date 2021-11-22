@@ -21,25 +21,15 @@ import io.truthencode.ddo.activation.AtWillEvent
 import io.truthencode.ddo.model.classes.HeroicCharacterClass
 import io.truthencode.ddo.model.classes.HeroicCharacterClass.Artificer
 import io.truthencode.ddo.model.misc.DefaultCasterCoolDown
-import io.truthencode.ddo.support.requisite.{
-  FeatRequisiteImpl,
-  GrantsToClass,
-  RequiresAllOfClass
-}
+import io.truthencode.ddo.support.requisite.{FeatRequisiteImpl, GrantsToClass, RequiresAllOfClass}
 
 /**
-  * Created by adarr on 2/16/2017.
-  * [[https://ddowiki.com/page/Inscribe_Artificer_Scroll Inscribe Artificer Scroll]]
-  * You are able to inscribe artificer spells from scrolls into your spellbook.
-  * This action will destroy the scroll.
-  */
+ * Created by adarr on 2/16/2017. [[https://ddowiki.com/page/Inscribe_Artificer_Scroll Inscribe Artificer Scroll]] You
+ * are able to inscribe artificer spells from scrolls into your spellbook. This action will destroy the scroll.
+ */
 trait InscribeArtificerScroll
-    extends FeatRequisiteImpl
-    with ActiveFeat
-    with AtWillEvent
-    with RequiresAllOfClass
-    with GrantsToClass
-    with DefaultCasterCoolDown {
+  extends FeatRequisiteImpl with ActiveFeat with AtWillEvent with RequiresAllOfClass with GrantsToClass
+  with DefaultCasterCoolDown {
   override def allOfClass: Seq[(HeroicCharacterClass, Int)] =
     List((Artificer, 1))
   override def grantToClass: Seq[(HeroicCharacterClass, Int)] =

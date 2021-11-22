@@ -20,10 +20,9 @@ package io.truthencode.ddo.model.feats
 import io.truthencode.ddo.support.requisite.RequiresCharacterLevel
 
 /**
-  * @todo add entry levels to allow for 24 or 27 vs minimum.
-  */
-protected[feats] trait MasterOfEarth
-    extends Passive
-    with RequiresCharacterLevel { self: EpicFeat =>
+ * @todo
+ *   add entry levels to allow for 24 or 27 vs minimum.
+ */
+protected[feats] trait MasterOfEarth extends Passive with RequiresCharacterLevel { self: EpicFeat =>
   override val characterLevel: Int = 24
 }

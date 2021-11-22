@@ -28,8 +28,8 @@ trait PanaceaPoultice extends ApothecaryTierThree with ClassEnhancementImpl {
   override def apCostPerRank: Int = 1
 
   /**
-    * Some enhancements can be taken multiple times (generally up to three)
-    */
+   * Some enhancements can be taken multiple times (generally up to three)
+   */
   override val ranks: Int = 3
 
 }

@@ -25,26 +25,25 @@ import com.vladsch.flexmark.util.misc.Extension
 
 /**
  * Configures and enables Flexmarks GFM Strikethroughsubscript extension
- * @see [[https://github.com/vsch/flexmark-java/wiki/Extensions#gfm-strikethroughsubscript]]
+ * @see
+ *   [[https://github.com/vsch/flexmark-java/wiki/Extensions#gfm-strikethroughsubscript]]
  */
 trait GfmStrikethroughSubscript extends Flexmark {
 
-
-  abstract override def flexmarkExtensions: Seq[Extension] = super.flexmarkExtensions :+ StrikethroughSubscriptExtension.create()
+  abstract override def flexmarkExtensions: Seq[Extension] =
+    super.flexmarkExtensions :+ StrikethroughSubscriptExtension.create()
 
   // No options currently specified
- // abstract override def calls: Seq[() => MutableDataSet] = super.calls :+ taskOptions()
+  // abstract override def calls: Seq[() => MutableDataSet] = super.calls :+ taskOptions()
 
-    /**
-     * see [[https://github.com/vsch/flexmark-java/wiki/Extensions#gfm-strikethroughsubscript]]
-     * @param dataSet
-     * @return
-     */
-  private[this] def taskOptions()(implicit dataSet: MutableDataSet): () => MutableDataSet = {
-    () =>
-      dataSet
-     //   .set(StrikethroughSubscriptExtension.STRIKETHROUGH_STYLE_HTML_CLOSE,"someCssClassLikely")
-
+  /**
+   * see [[https://github.com/vsch/flexmark-java/wiki/Extensions#gfm-strikethroughsubscript]]
+   * @param dataSet
+   * @return
+   */
+  private[this] def taskOptions()(implicit dataSet: MutableDataSet): () => MutableDataSet = { () =>
+    dataSet
+  //   .set(StrikethroughSubscriptExtension.STRIKETHROUGH_STYLE_HTML_CLOSE,"someCssClassLikely")
 
   }
 

@@ -17,5 +17,4 @@
  */
 package io.truthencode.ddo
 
-case class LevelInfo(minLevel: Int, absMinLevel:Int)
-
+case class LevelInfo(minLevel: Int, absMinLevel: Int)

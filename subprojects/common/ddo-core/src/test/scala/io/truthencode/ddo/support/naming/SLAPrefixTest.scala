@@ -19,9 +19,10 @@ package io.truthencode.ddo.support.naming
 
 import com.typesafe.scalalogging.LazyLogging
 import io.truthencode.ddo.model.enhancement.enhancements.ClassEnhancement
-import org.scalatest.{FunSpec, Matchers}
+import org.scalatest.funspec.AnyFunSpec
+import org.scalatest.matchers.should.Matchers
 
-class SLAPrefixTest extends FunSpec with Matchers with LazyLogging {
+class SLAPrefixTest extends AnyFunSpec with Matchers with LazyLogging {
   describe("SlA Prefix") {
     it("should prepend Enhancements with Spell-Like Ability:") {
       val e = ClassEnhancement.RapidCondensation

@@ -23,9 +23,9 @@ import io.truthencode.ddo.model.classes.HeroicCharacterClass
 import io.truthencode.ddo.model.classes.HeroicCharacterClass.Monk
 import io.truthencode.ddo.model.feats.{ClassFeatDisplayHelper, Feat}
 
-abstract class MonkJavaHelperFeat extends ClassFeatDisplayHelper{
+abstract class MonkJavaHelperFeat extends ClassFeatDisplayHelper {
   override val cClass: HeroicCharacterClass = Monk
   override val enum: E = Feat
-  def allBonusFeats(): util.List[String] =  bonusFeats
+  def allBonusFeats(): util.List[String] = bonusFeats
 
 }

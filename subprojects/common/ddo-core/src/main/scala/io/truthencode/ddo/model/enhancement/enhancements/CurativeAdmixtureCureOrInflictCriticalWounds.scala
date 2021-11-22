@@ -21,9 +21,7 @@ import io.truthencode.ddo.model.enhancement.enhancements.classbased.ApothecaryTi
 import io.truthencode.ddo.support.StringUtils.Extensions
 
 trait CurativeAdmixtureCureOrInflictCriticalWounds
-    extends ApothecaryTierFive
-    with ClassEnhancementImpl
-    with CurativeAdmixtureBase {
+  extends ApothecaryTierFive with ClassEnhancementImpl with CurativeAdmixtureBase {
 
   override lazy val description: Option[String] =
     Some(
@@ -34,8 +32,8 @@ trait CurativeAdmixtureCureOrInflictCriticalWounds
     )
 
   /**
-    * Some enhancements can be taken multiple times (generally up to three)
-    */
+   * Some enhancements can be taken multiple times (generally up to three)
+   */
   override val ranks: Int = 1
 
   override def displayText: String = displaySource.lowerCaseNoise

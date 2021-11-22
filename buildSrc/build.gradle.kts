@@ -27,6 +27,6 @@ repositories {
 dependencies {
     implementation("com.diffplug.spotless:spotless-plugin-gradle:6.0.0")
     implementation("org.unbroken-dome.gradle-plugins:gradle-testsets-plugin:4.0.0")
-    implementation("gradle.plugin.com.github.maiflai:gradle-scalatest:0.31")
+    implementation("org.scoverage:gradle-scoverage:7.0.0")
 
 }

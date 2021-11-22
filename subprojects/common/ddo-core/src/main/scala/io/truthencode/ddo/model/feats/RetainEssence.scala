@@ -19,20 +19,12 @@ package io.truthencode.ddo.model.feats
 
 import io.truthencode.ddo.model.classes.HeroicCharacterClass
 import io.truthencode.ddo.model.classes.HeroicCharacterClass.Artificer
-import io.truthencode.ddo.support.requisite.{
-  FeatRequisiteImpl,
-  GrantsToClass,
-  RequiresAllOfClass
-}
+import io.truthencode.ddo.support.requisite.{FeatRequisiteImpl, GrantsToClass, RequiresAllOfClass}
 
 /**
-  * Created by adarr on 2/16/2017.
-  */
-protected[feats] trait RetainEssence
-    extends FeatRequisiteImpl
-    with Passive
-    with GrantsToClass
-    with RequiresAllOfClass {
+ * Created by adarr on 2/16/2017.
+ */
+protected[feats] trait RetainEssence extends FeatRequisiteImpl with Passive with GrantsToClass with RequiresAllOfClass {
   override def allOfClass: Seq[(HeroicCharacterClass, Int)] = List((Artificer, 5))
   override def grantToClass: Seq[(HeroicCharacterClass, Int)] = List((Artificer, 5))
 }

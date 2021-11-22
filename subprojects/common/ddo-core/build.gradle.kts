@@ -28,11 +28,13 @@ dependencies {
 
     dependencies {
         implementation(project(":ddo-util"))
-        /* Platform dependent */
-        // https://mvnrepository.com/artifact/org.json4s/json4s-native
-        implementation(group = "org.json4s", name = "json4s-native_2.12", version = "3.6.7")
+
         val scalaLibraryVersion: String by project
         val scalaMajorVersion: String by project
+        /* Platform dependent */
+        // https://mvnrepository.com/artifact/org.json4s/json4s-native
+        implementation(group = "org.json4s", name = "json4s-native_$scalaMajorVersion", version = "3.6.7")
+        val scalaCheckVersion: String by project
 
         implementation(platform(project(":ddo-platform-scala")))
         implementation("org.scala-lang:scala-library:$scalaLibraryVersion")
@@ -40,12 +42,14 @@ dependencies {
         implementation(group = "com.typesafe", name = "config")
         implementation(group = "com.github.kxbmap", name = "configs_$scalaMajorVersion")
         // validation and rules
-        implementation(group = "com.wix", name = "accord-core_2.12")
+        implementation(group = "com.wix", name = "accord-core_$scalaMajorVersion")
+
         implementation(group = "ch.qos.logback", name = "logback-classic")
         implementation(group = "com.typesafe.scala-logging", name = "scala-logging_$scalaMajorVersion")
         testImplementation(group = "org.scalatest", name = "scalatest_$scalaMajorVersion")
-        testImplementation(group = "org.scalacheck", name = "scalacheck_$scalaMajorVersion", version = "1.14.0")
-        testImplementation(group = "org.mockito", name = "mockito-all")
+        testImplementation(group = "org.scalacheck", name = "scalacheck_$scalaMajorVersion")
+        testImplementation(group = "org.scalatestplus", "mockito-3-4_$scalaMajorVersion")
+        testImplementation(group = "com.wix", name = "accord-scalatest_$scalaMajorVersion")
 
         // JUnit 5
         testRuntimeOnly(group = "org.junit.platform", name = "junit-platform-engine")
@@ -60,25 +64,23 @@ dependencies {
         acceptanceTestImplementation.extendsFrom(configurations["testCompileClasspath"])
         acceptanceTestImplementation(group = "org.concordion", name = "concordion", version = concordionVersion)
         acceptanceTestImplementation(
-            group = "com.vladsch.flexmark",
-            name = "flexmark-ext-gfm-strikethrough",
-            version = "0.62.2"
+                group = "com.vladsch.flexmark",
+                name = "flexmark-ext-gfm-strikethrough",
+                version = "0.62.2"
         )
         acceptanceTestImplementation(group = "com.vladsch.flexmark", name = "flexmark-ext-emoji", version = "0.62.2")
 
         // https://mvnrepository.com/artifact/com.vladsch.flexmark/flexmark-ext-gfm-tasklist
         acceptanceTestImplementation(
-            group = "com.vladsch.flexmark",
-            name = "flexmark-ext-gfm-tasklist",
-            version = "0.62.2"
+                group = "com.vladsch.flexmark",
+                name = "flexmark-ext-gfm-tasklist",
+                version = "0.62.2"
         )
 
-        testImplementation(group = "com.wix", name = "accord-scalatest_2.12", version = "0.7.3")
         testImplementation(group = "de.neuland-bfi", name = "jade4j", version = "1.2.7")
-        testImplementation(group = "net.ruippeixotog", name = "scala-scraper_2.12", version = "2.1.0")
+        testImplementation(group = "net.ruippeixotog", name = "scala-scraper_$scalaMajorVersion", version = "2.2.1")
         testCompileOnly(group = "org.jetbrains", name = "annotations", version = "17.0.0")
 
-        implementation(group = "com.wix", name = "accord-core_2.12", version = "0.7.3")
         implementation(group = "org.jetbrains", name = "annotations", version = "17.0.0")
     }
 }
@@ -105,10 +107,10 @@ tasks.withType<ScalaCompile>().configureEach {
     scalaCompileOptions.apply {
         val scalaCompilerPlugin by configurations.getting
         additionalParameters?.plusAssign(
-            listOf(
-                "-feature", "-deprecation", "-Ywarn-dead-code", "-Xplugin:${scalaCompilerPlugin.asPath}",
-                "-P:genjavadoc:out=$buildDir/generated/java"
-            )
+                listOf(
+                        "-feature", "-deprecation", "-Ywarn-dead-code", "-Xplugin:${scalaCompilerPlugin.asPath}",
+                        "-P:genjavadoc:out=$buildDir/generated/java"
+                )
         )
         // Need to add -Ypartial-unification for Tapir
     }

@@ -18,21 +18,14 @@
 package io.truthencode.ddo.model.feats
 
 import io.truthencode.ddo.model.classes.HeroicCharacterClass
-import io.truthencode.ddo.support.requisite.{
-  ClassRequisite,
-  FeatRequisiteImpl,
-  GrantsToClass
-}
+import io.truthencode.ddo.support.requisite.{ClassRequisite, FeatRequisiteImpl, GrantsToClass}
 
 /**
-  * A Rogue with this ability gains a 3% chance to double strike with melee weapons and bypasses 10% fortification.
-  */
+ * A Rogue with this ability gains a 3% chance to double strike with melee weapons and bypasses 10% fortification.
+ */
 protected[feats] trait Opportunist
-    extends FeatRequisiteImpl
-    with ClassRequisite
-    with Passive
-    with GrantsToClass
-    with RogueOptionalAbility { self: ClassFeat =>
+  extends FeatRequisiteImpl with ClassRequisite with Passive with GrantsToClass with RogueOptionalAbility {
+  self: ClassFeat =>
   override def grantToClass: Seq[(HeroicCharacterClass, Int)] = rogueOptionMatrix
 
 }

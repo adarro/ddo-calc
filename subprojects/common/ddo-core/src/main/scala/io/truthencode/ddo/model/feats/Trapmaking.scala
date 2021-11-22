@@ -20,28 +20,18 @@ package io.truthencode.ddo.model.feats
 import io.truthencode.ddo.model.classes.HeroicCharacterClass
 import io.truthencode.ddo.model.classes.HeroicCharacterClass.{Artificer, Rogue}
 import io.truthencode.ddo.model.skill.Skill
-import io.truthencode.ddo.support.requisite.{
-  FeatRequisiteImpl,
-  GrantsToClass,
-  RequiresAnyOfClass,
-  RequiresAnyOfFeat
-}
+import io.truthencode.ddo.support.requisite.{FeatRequisiteImpl, GrantsToClass, RequiresAnyOfClass, RequiresAnyOfFeat}
 
 /**
-  * Created by adarr on 2/16/2017.
-  */
+ * Created by adarr on 2/16/2017.
+ */
 protected[feats] trait Trapmaking
-    extends FeatRequisiteImpl
-    with Passive
-    with GrantsToClass
-    with RequiresAnyOfClass
-    with RequiresAnyOfFeat {
+  extends FeatRequisiteImpl with Passive with GrantsToClass with RequiresAnyOfClass with RequiresAnyOfFeat {
   override def anyOfClass: Seq[(HeroicCharacterClass, Int)] =
     List((Artificer, 4), (Rogue, 4))
 // @todo Add Least DM of Making
   override def anyOfFeats: Seq[Feat] =
-    List(GeneralFeat.NimbleFingers,
-         GeneralFeat.SkillFocus(Skill.DisableDevice))
+    List(GeneralFeat.NimbleFingers, GeneralFeat.SkillFocus(Skill.DisableDevice))
   override def grantToClass: Seq[(HeroicCharacterClass, Int)] =
     List((Artificer, 4), (Rogue, 4))
 }

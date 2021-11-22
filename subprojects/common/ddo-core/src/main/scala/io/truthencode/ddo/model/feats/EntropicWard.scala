@@ -19,22 +19,14 @@ package io.truthencode.ddo.model.feats
 
 import io.truthencode.ddo.model.classes.HeroicCharacterClass
 import io.truthencode.ddo.model.classes.HeroicCharacterClass.Warlock
-import io.truthencode.ddo.support.requisite.{
-  FeatRequisiteImpl,
-  GrantsToClass,
-  RequiresAllOfClass,
-  RequiresAllOfFeat
-}
+import io.truthencode.ddo.support.requisite.{FeatRequisiteImpl, GrantsToClass, RequiresAllOfClass, RequiresAllOfFeat}
 
 /**
-  * +5 MRR, +25% Fortification
-  */
+ * +5 MRR, +25% Fortification
+ */
 protected[feats] trait EntropicWard
-    extends FeatRequisiteImpl
-    with Passive
-    with RequiresAllOfClass
-    with RequiresAllOfFeat
-    with GrantsToClass { self: ClassFeat =>
+  extends FeatRequisiteImpl with Passive with RequiresAllOfClass with RequiresAllOfFeat with GrantsToClass {
+  self: ClassFeat =>
 
   override def grantToClass: Seq[(HeroicCharacterClass, Int)] = Seq((Warlock, 6))
 

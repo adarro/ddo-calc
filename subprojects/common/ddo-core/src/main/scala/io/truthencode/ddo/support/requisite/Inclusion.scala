@@ -18,8 +18,8 @@
 package io.truthencode.ddo.support.requisite
 
 /**
-  * Flag used to denote inclusion logic
-  */
+ * Flag used to denote inclusion logic
+ */
 sealed trait Inclusion
 
 trait AllOf extends Inclusion
@@ -27,4 +27,3 @@ trait AllOf extends Inclusion
 trait AnyOf extends Inclusion
 
 trait NoneOf extends Inclusion
-

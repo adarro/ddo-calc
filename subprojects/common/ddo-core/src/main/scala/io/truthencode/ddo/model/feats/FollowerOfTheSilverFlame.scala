@@ -21,13 +21,8 @@ import io.truthencode.ddo.model.religions.SilverFlame
 import io.truthencode.ddo.support.requisite.FeatRequisiteImpl
 
 /**
-  * Created by adarr on 4/7/2017.
-  */
+ * Created by adarr on 4/7/2017.
+ */
 trait FollowerOfTheSilverFlame
-    extends FeatRequisiteImpl
-    with EberronReligionNonWarforged
-    with FollowerBase
-    with SilverFlame
-    with TheSilverFlameFeatBase { self: DeityFeat =>
-
-}
+  extends FeatRequisiteImpl with EberronReligionNonWarforged with FollowerBase with SilverFlame
+  with TheSilverFlameFeatBase { self: DeityFeat => }

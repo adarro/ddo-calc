@@ -22,7 +22,7 @@ import com.typesafe.scalalogging.LazyLogging
 import com.wix.accord.Violation
 import io.truthencode.ddo.support.matching.{WordMatchStrategies, WordMatchStrategy}
 
-import scala.collection.{GenMap, GenSeq, MapLike}
+import scala.collection.GenSeq
 import scala.collection.immutable.HashMap
 import scala.language.postfixOps
 import scala.util.Random
@@ -31,26 +31,25 @@ import scala.util.control.Exception.catching
 package object support extends LazyLogging {
 
   /**
-    * Current Valid range of levels considered [[http://ddowiki.com/page/Heroic Heroic Levels]]
-    */
+   * Current Valid range of levels considered [[http://ddowiki.com/page/Heroic Heroic Levels]]
+   */
   final val HeroicLevels: Range.Inclusive = 1 to 20
 
   /**
-    * The Current Max Level achievable by a player.
-    */
+   * The Current Max Level achievable by a player.
+   */
   final val LevelCap = 30
 
   /**
-    * Current valid range of levels considered [[http://ddowiki.com/page/Epic_levels Epic Levels]]
-    */
+   * Current valid range of levels considered [[http://ddowiki.com/page/Epic_levels Epic Levels]]
+   */
   final val EpicLevels: Range.Inclusive = 21 to LevelCap
 
-  final val CharacterLevels
-    : _root_.scala.collection.immutable.Range.Inclusive = HeroicLevels.min to EpicLevels.max
+  final val CharacterLevels: _root_.scala.collection.immutable.Range.Inclusive = HeroicLevels.min to EpicLevels.max
 
   /**
-    * Implicit functions for manipulating collections such as finding the Cartesian Product, Left and Right Joins
-    */
+   * Implicit functions for manipulating collections such as finding the Cartesian Product, Left and Right Joins
+   */
   object TraverseOps {
 
     // succinctly pooled from SO [[http://stackoverflow.com/a/14740340/400729]]
@@ -74,13 +73,18 @@ package object support extends LazyLogging {
     implicit class MapOps[K, V](xs: Map[K, V]) {
 
       /**
-        * Performs the traditional "Left Join" on a Map
-        * @param ys Map to Join
-        * @param joinOnKeys Join based on Keys Only, otherwise matches based on key AND value
-        * @tparam Y Key
-        * @tparam Z Value
-        * @return Subset of source consisting of unique LHS + common LHS
-        */
+       * Performs the traditional "Left Join" on a Map
+       * @param ys
+       *   Map to Join
+       * @param joinOnKeys
+       *   Join based on Keys Only, otherwise matches based on key AND value
+       * @tparam Y
+       *   Key
+       * @tparam Z
+       *   Value
+       * @return
+       *   Subset of source consisting of unique LHS + common LHS
+       */
       def leftJoin[Y >: K, Z >: V](ys: Map[Y, Z])(implicit joinOnKeys: Boolean = true): Map[K, V] = {
         if (joinOnKeys) {
           val lk = xs.keys.toSeq.leftJoin(ys.keys.toSeq)
@@ -92,20 +96,25 @@ package object support extends LazyLogging {
         }
       }
 
-        /**
-         * Performs the traditional "Left Join" on a Map
-         * @param ys Map to Join
-         * @param joinOnKeys Join based on Keys Only, otherwise matches based on key AND value
-         * @tparam Y Key
-         * @tparam Z Value
-         * @return Subset of source consisting of unique LHS + common LHS
-         */
+      /**
+       * Performs the traditional "Left Join" on a Map
+       * @param ys
+       *   Map to Join
+       * @param joinOnKeys
+       *   Join based on Keys Only, otherwise matches based on key AND value
+       * @tparam Y
+       *   Key
+       * @tparam Z
+       *   Value
+       * @return
+       *   Subset of source consisting of unique LHS + common LHS
+       */
       def rightJoin[Y >: K, Z >: V](ys: Map[Y, Z])(implicit joinOnKeys: Boolean = true): Map[Y, Z] = {
         if (joinOnKeys) {
-            val lk = ys.keys.toSeq.leftJoin(xs.keys.toSeq)
-            ys.filter { k =>
-                lk.exists(k2 => k._1.equals(k2))
-            }
+          val lk = ys.keys.toSeq.leftJoin(xs.keys.toSeq)
+          ys.filter { k =>
+            lk.exists(k2 => k._1.equals(k2))
+          }
         } else {
           ys.toList.leftJoin(xs.toList).toList.toMap
         }
@@ -114,9 +123,8 @@ package object support extends LazyLogging {
   }
 
   /**
-    * StringUtils
-    * Useful Implicits used in mapping
-    */
+   * StringUtils Useful Implicits used in mapping
+   */
   object StringUtils {
 
     // Constants
@@ -152,20 +160,21 @@ package object support extends LazyLogging {
     implicit class StringImprovements(val s: String) {
 
       /**
-        * Converts a String to an Optional Int.
-        *
-        * @return Some(Int) upon successful conversion or None for a failed attempt.
-        */
+       * Converts a String to an Optional Int.
+       *
+       * @return
+       *   Some(Int) upon successful conversion or None for a failed attempt.
+       */
       def toIntOpt: Option[Int] =
-        catching(classOf[NumberFormatException]) opt s.toInt
+        catching(classOf[NumberFormatException]).opt(s.toInt)
     }
 
     /**
-      * Mostly String manipulation utility methods.
-      * Most methods are fluent if possible.
-      *
-      * @param s source string
-      */
+     * Mostly String manipulation utility methods. Most methods are fluent if possible.
+     *
+     * @param s
+     *   source string
+     */
     implicit class Extensions(val s: String) {
 
       def lowerCaseNoise: String = {
@@ -179,12 +188,14 @@ package object support extends LazyLogging {
       }
 
       /**
-        * Splits a string using uppercase
-        *
-        * @return the string with spaces between words.
-        * @note This is currently a very simple parser that assumes input is camel-cased.  Non-camel case
-        *       may have undesired results. i.e.  TEST will return T E S T. where getFoo returns get Foo.
-        */
+       * Splits a string using uppercase
+       *
+       * @return
+       *   the string with spaces between words.
+       * @note
+       *   This is currently a very simple parser that assumes input is camel-cased. Non-camel case may have undesired
+       *   results. i.e. TEST will return T E S T. where getFoo returns get Foo.
+       */
       def splitByCase(implicit replaceSymbols: Boolean = false): String = {
         val b = new StringBuilder
         s.toCharArray.foreach {
@@ -202,9 +213,9 @@ package object support extends LazyLogging {
       }
 
       /**
-        * Replaces special characters such as ampersand to "And"
-        * @return
-        */
+       * Replaces special characters such as ampersand to "And"
+       * @return
+       */
       def symbolsToWords: String = {
         val b = new StringBuilder
         s.toCharArray.foreach { e: Char =>
@@ -225,12 +236,14 @@ package object support extends LazyLogging {
       }
 
       /**
-        * Formats string into [[http://wiki.c2.com/?PascalCase PascalCase]] or 'UpperCamelCase'
-        *
-        * @return formatted string
-        * @note this also removes space characters but does not check for characters that may be illegal
-        *       for a specific language. (i.e. underscores, commas etc)
-        */
+       * Formats string into [[http://wiki.c2.com/?PascalCase PascalCase]] or 'UpperCamelCase'
+       *
+       * @return
+       *   formatted string
+       * @note
+       *   this also removes space characters but does not check for characters that may be illegal for a specific
+       *   language. (i.e. underscores, commas etc)
+       */
       def toPascalCase: String = {
         {
           for {
@@ -241,12 +254,14 @@ package object support extends LazyLogging {
       }
 
       /**
-        * Replaces Roman Numeral Representation with Numerical value.
-        * i.e. IV -> 4
-        * @note This utility parses using Space as a delimiter.
-        *       It is generally advised to use this before other manipulations such as removing spaces or changing cases.
-        * @return the string with all Roman Numerals replaced.  No changes are made if no valid numerals are found.
-        */
+       * Replaces Roman Numeral Representation with Numerical value.
+       * i.e. IV -> 4
+       * @note
+       *   This utility parses using Space as a delimiter. It is generally advised to use this before other
+       *   manipulations such as removing spaces or changing cases.
+       * @return
+       *   the string with all Roman Numerals replaced. No changes are made if no valid numerals are found.
+       */
       def replaceRomanNumerals: String = {
         s.split(Space)
           .map {
@@ -268,43 +283,44 @@ package object support extends LazyLogging {
       }
 
       /**
-        * Filters out non alphanumeric values.
-        *
-        * @return alphanumeric values.
-        */
+       * Filters out non alphanumeric values.
+       *
+       * @return
+       *   alphanumeric values.
+       */
       def filterAlphaNumeric: String =
         s.toCharArray.filter { x =>
           x.isLetterOrDigit
         }.mkString
 
       /**
-        * Randomizes the case of the source string.
-        *
-        * @return source string with randomized upper and lower case characters.
-        */
+       * Randomizes the case of the source string.
+       *
+       * @return
+       *   source string with randomized upper and lower case characters.
+       */
       def randomCase: String = {
         val r = new Random
-        s.toCharArray
-          .map { x =>
-            if (r.nextInt > 0) x.toUpper else x.toLower
-          }
+        s.toCharArray.map { x =>
+          if (r.nextInt > 0) x.toUpper else x.toLower
+        }
           .foldLeft("")((r, c) => r + c)
       }
 
       /**
-        * Attempts to convert a string to an acronym
-        *
-        * Will use space as a delimiter, falling back on Case else None.
-        *
-        * @example
-        * {{{
-        * val wordList = List("I Believe Mom","i borrow money","IBetterMail","oracle")
-        * wordList.map(x => wordsToAcronym(x)}
-        * res0:List(Some("IBM"),Some("IBM"),Some("IBM"),None)
-        * }}}
-        */
-      def wordsToAcronym(
-        implicit wordMatchStrategy: WordMatchStrategy = WordMatchStrategies.IgnoreCaseWordStrategy
+       * Attempts to convert a string to an acronym
+       *
+       * Will use space as a delimiter, falling back on Case else None.
+       *
+       * @example
+       * {{{
+       * val wordList = List("I Believe Mom","i borrow money","IBetterMail","oracle")
+       * wordList.map(x => wordsToAcronym(x)}
+       * res0:List(Some("IBM"),Some("IBM"),Some("IBM"),None)
+       * }}}
+       */
+      def wordsToAcronym(implicit
+        wordMatchStrategy: WordMatchStrategy = WordMatchStrategies.IgnoreCaseWordStrategy
       ): Option[String] =
         s.toSanitizeOption match {
           case Some(x) if x.contains(Space) =>
@@ -314,10 +330,9 @@ package object support extends LazyLogging {
           case Some(x) =>
             Some(
               new String(
-                x.toCharArray
-                  .filter { y =>
-                    y.isLetter && y.isUpper
-                  }
+                x.toCharArray.filter { y =>
+                  y.isLetter && y.isUpper
+                }
                   .map(characterToStrategy(_, wordMatchStrategy))
               )
             )
@@ -325,26 +340,27 @@ package object support extends LazyLogging {
         }
 
       /**
-        * Applies the sanitize filter while safely wrapping value in an [[Option[String]]]
-        *
-        * @return
-        */
+       * Applies the sanitize filter while safely wrapping value in an [[Option[String]]]
+       *
+       * @return
+       */
       def toSanitizeOption: Option[String] = {
         Option(s) match {
           case Some(x) =>
             Option(x.sanitize) match {
               case Some(y) if y.nonEmpty => Some(y)
-              case _                     => None
+              case _ => None
             }
           case _ => None
         }
       }
 
       /**
-        * Sanitizes strings by removing unwanted characters
-        *
-        * @return Sanitized string.
-        */
+       * Sanitizes strings by removing unwanted characters
+       *
+       * @return
+       *   Sanitized string.
+       */
       def sanitize: String = {
         s.trim.toCharArray.filter { x =>
           x.isLetterOrDigit || x.isSpaceChar
@@ -362,8 +378,8 @@ package object support extends LazyLogging {
     private[this] val random: scala.util.Random = new scala.util.Random
 
     /**
-      * Generate a random alphanumeric string of length n
-      */
+     * Generate a random alphanumeric string of length n
+     */
     def randomAlphanumericString(n: Int): String =
       randomString({
         ('a' to 'z') ++ (0 to 9)
@@ -373,10 +389,12 @@ package object support extends LazyLogging {
       randomString(('a' to 'z').mkString)(n)
 
     /**
-      * Generate a random string of length n from the given alphabet
-      *
-      * @note see excellent source at [[http://www.bindschaedler.com/2012/04/07/elegant-random-string-generation-in-scala/ Laurent BINDSCHAEDLER's blog post]]
-      */
+     * Generate a random string of length n from the given alphabet
+     *
+     * @note
+     *   see excellent source at
+     *   [[http://www.bindschaedler.com/2012/04/07/elegant-random-string-generation-in-scala/ Laurent BINDSCHAEDLER's blog post]]
+     */
     def randomString(alphabet: String)(n: Int): String =
       Stream
         .continually(random.nextInt(alphabet.length))
@@ -387,8 +405,7 @@ package object support extends LazyLogging {
     private def characterToStrategy(c: Char, wordMatchStrategy: WordMatchStrategy): Char = {
       wordMatchStrategy match {
         case WordMatchStrategies.IgnoreCaseWordStrategy => c
-        case WordMatchStrategies.FullUpperCaseWordStrategy |
-            WordMatchStrategies.TitleCaseWordStrategy =>
+        case WordMatchStrategies.FullUpperCaseWordStrategy | WordMatchStrategies.TitleCaseWordStrategy =>
           c.toUpper
         case WordMatchStrategies.FullLowerCaseWordStrategy => c.toLower
       }
@@ -396,18 +413,19 @@ package object support extends LazyLogging {
   }
 
   /**
-    * Validation utilities and convenience routines
-    */
+   * Validation utilities and convenience routines
+   */
   object Validation {
 
     // scalastyle:off import.group
     /**
-      * Extracts violation description and message text
-      *
-      * @param v Violations
-      * @return Printable list of violations.
-      *
-      */
+     * Extracts violation description and message text
+     *
+     * @param v
+     *   Violations
+     * @return
+     *   Printable list of violations.
+     */
     @deprecated("No longer supported by Wix Validation", "Wix Validation")
     def violationToString(v: Set[Violation]): String = {
       //      val buf = new StringBuilder

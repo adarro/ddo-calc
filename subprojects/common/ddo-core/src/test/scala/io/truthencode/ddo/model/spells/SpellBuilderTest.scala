@@ -17,19 +17,15 @@
  */
 package io.truthencode.ddo.model.spells
 
-import java.time.Duration
-
 import com.typesafe.scalalogging.LazyLogging
 import io.truthencode.ddo.model.effect.EffectList
-import org.scalatest.junit.JUnitRunner
-import org.scalatest.mockito.MockitoSugar
-import org.scalatest.{FunSpec, Matchers}
+import org.scalatest.funspec.AnyFunSpec
+import org.scalatest.matchers.should.Matchers
+import org.scalatestplus.mockito.MockitoSugar
 
-class SpellBuilderTest
-    extends FunSpec
-    with Matchers
-    with MockitoSugar
-    with LazyLogging {
+import java.time.Duration
+
+class SpellBuilderTest extends AnyFunSpec with Matchers with MockitoSugar with LazyLogging {
   private final val sampleDuration = 5L
   private final val sampleLevelCap = 32
   private final val SpellPointValue = 42

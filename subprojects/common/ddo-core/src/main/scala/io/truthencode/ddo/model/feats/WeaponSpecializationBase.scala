@@ -18,25 +18,15 @@
 package io.truthencode.ddo.model.feats
 
 import io.truthencode.ddo.model.classes.HeroicCharacterClass
-import io.truthencode.ddo.support.requisite.{
-  ClassRequisiteImpl,
-  FeatRequisiteImpl,
-  RequiresAllOfClass
-}
+import io.truthencode.ddo.support.requisite.{ClassRequisiteImpl, FeatRequisiteImpl, RequiresAllOfClass}
 
-/** Weapon Specialization Passive Feats
-  * Icon Feat Weapon Specialization.png
-  * Weapon Specialization
-  * Passive
-  * Provides a +2 bonus to damage rolls with the chosen weapon type and +2 stacking Melee Power or Ranged Power.
-  * This feat can be taken multiple times, once for each weapon type.
-  */
+/**
+ * Weapon Specialization Passive Feats Icon Feat Weapon Specialization.png Weapon Specialization Passive Provides a +2
+ * bonus to damage rolls with the chosen weapon type and +2 stacking Melee Power or Ranged Power. This feat can be taken
+ * multiple times, once for each weapon type.
+ */
 protected[feats] trait WeaponSpecializationBase
-  extends FeatRequisiteImpl
-    with ClassRequisiteImpl
-    with Passive
-    with RequiresAllOfClass
-    with FighterBonusFeat {
+  extends FeatRequisiteImpl with ClassRequisiteImpl with Passive with RequiresAllOfClass with FighterBonusFeat {
   self: GeneralFeat =>
 
   override def allOfClass: Seq[(HeroicCharacterClass, Int)] =

@@ -30,13 +30,12 @@ trait SkillFeature extends Features {
   self: SourceInfo =>
   val bonusType: BonusType
 
-  val affectedSkills: List[(Skill,Int)]
+  val affectedSkills: List[(Skill, Int)]
   private val src = this
 
-  private lazy val skillChance: immutable.Seq[Feature.SkillEffect] = affectedSkills.map { f=>
-    Feature.SkillEffect(f._1,f._2,bonusType,this)
+  private lazy val skillChance: immutable.Seq[Feature.SkillEffect] = affectedSkills.map { f =>
+    Feature.SkillEffect(f._1, f._2, bonusType, this)
   }
-
 
   abstract override def features: List[Feature[_]] =
     super.features ++ skillChance

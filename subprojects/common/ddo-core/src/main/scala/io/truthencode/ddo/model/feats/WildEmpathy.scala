@@ -22,27 +22,17 @@ import java.time.Duration
 import io.truthencode.ddo.activation.OnSpellLikeAbilityEvent
 import io.truthencode.ddo.model.classes.HeroicCharacterClass
 import io.truthencode.ddo.model.classes.HeroicCharacterClass.{Druid, Ranger}
-import io.truthencode.ddo.support.requisite.{
-  FeatRequisiteImpl,
-  GrantsToClass,
-  RequiresAnyOfClass
-}
+import io.truthencode.ddo.support.requisite.{FeatRequisiteImpl, GrantsToClass, RequiresAnyOfClass}
 
 /**
-  * [[https://ddowiki.com/page/Wild_Empathy Wild Empathy]]
-  *
-  *Activate this ability to lower an animal's or beast's aggression, effectively mesmerizing them.
-  *
-  * Target: Enemy animals and magical beasts
-  * Duration: 5 Min
-  * Save: Will
-  */
+ * [[https://ddowiki.com/page/Wild_Empathy Wild Empathy]]
+ *
+ * Activate this ability to lower an animal's or beast's aggression, effectively mesmerizing them.
+ *
+ * Target: Enemy animals and magical beasts Duration: 5 Min Save: Will
+ */
 protected[feats] trait WildEmpathy
-    extends FeatRequisiteImpl
-    with ActiveFeat
-    with OnSpellLikeAbilityEvent
-    with GrantsToClass
-    with RequiresAnyOfClass {
+  extends FeatRequisiteImpl with ActiveFeat with OnSpellLikeAbilityEvent with GrantsToClass with RequiresAnyOfClass {
   override def anyOfClass: Seq[(HeroicCharacterClass, Int)] =
     List((Druid, 1), (Ranger, 1))
 

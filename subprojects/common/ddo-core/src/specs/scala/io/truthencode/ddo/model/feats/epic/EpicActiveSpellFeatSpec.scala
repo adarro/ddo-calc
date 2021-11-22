@@ -25,7 +25,7 @@ import org.junit.runner.RunWith
 @FullOGNL
 @RunWith(classOf[ConcordionRunner])
 class EpicActiveSpellFeatSpec extends EpicFeatFeatDisplayHelper {
-  override val filterByCategory: PartialFunction[Entry, EpicFeat] = {
-    case x:SpellFeats => x.asInstanceOf[EpicFeat]
+  override val filterByCategory: PartialFunction[Entry, EpicFeat] = { case x: SpellFeats =>
+    x.asInstanceOf[EpicFeat]
   }
 }

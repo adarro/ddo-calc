@@ -19,26 +19,13 @@ package io.truthencode.ddo.model.feats
 
 import io.truthencode.ddo.model.classes.HeroicCharacterClass
 import io.truthencode.ddo.model.classes.HeroicCharacterClass.Ranger
-import io.truthencode.ddo.support.requisite.{
-  ClassRequisiteImpl,
-  FeatRequisiteImpl,
-  FreeFeat,
-  GrantsToClass
-}
+import io.truthencode.ddo.support.requisite.{ClassRequisiteImpl, FeatRequisiteImpl, FreeFeat, GrantsToClass}
 
 /**
-  * Icon Feat Diehard.png
-  * Diehard
-  * Passive
-  * You automatically stabilize when incapacitated.
-  */
+ * Icon Feat Diehard.png Diehard Passive You automatically stabilize when incapacitated.
+ */
 protected[feats] trait Diehard
-  extends FeatRequisiteImpl
-    with ClassRequisiteImpl
-    with Passive
-    with FreeFeat
-    with GrantsToClass
-    with MartialArtsFeat {
+  extends FeatRequisiteImpl with ClassRequisiteImpl with Passive with FreeFeat with GrantsToClass with MartialArtsFeat {
   self: GeneralFeat =>
   override def grantToClass: Seq[(HeroicCharacterClass, Int)] = List((Ranger, 3))
 }

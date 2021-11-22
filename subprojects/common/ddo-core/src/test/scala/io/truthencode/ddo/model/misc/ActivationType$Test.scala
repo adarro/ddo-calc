@@ -21,14 +21,15 @@ import com.typesafe.scalalogging.LazyLogging
 import io.truthencode.ddo.activation.ActivationType
 import io.truthencode.ddo.activation.ActivationType.Passive
 import io.truthencode.ddo.model.effect.TriggerEvent
-import org.scalatest.{FunSpec, Matchers}
+import org.scalatest.funspec.AnyFunSpec
+import org.scalatest.matchers.should.Matchers
 
 import scala.languageFeature.postfixOps
 
 /**
-  * Created by adarr on 1/28/2017.
-  */
-class ActivationType$Test extends FunSpec with Matchers with LazyLogging {
+ * Created by adarr on 1/28/2017.
+ */
+class ActivationType$Test extends AnyFunSpec with Matchers with LazyLogging {
 
   describe("ActivationType$Test") {
     it("should generate case classes") {

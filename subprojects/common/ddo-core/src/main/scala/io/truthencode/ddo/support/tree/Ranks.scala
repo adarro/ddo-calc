@@ -20,7 +20,7 @@ package io.truthencode.ddo.support.tree
 trait Ranks {
 
   /**
-    * Some enhancements can be taken multiple times (generally up to three)
-    */
+   * Some enhancements can be taken multiple times (generally up to three)
+   */
   val ranks: Int
 }

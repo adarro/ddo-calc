@@ -18,30 +18,31 @@
 package io.truthencode.ddo.model.spells
 
 /**
-  * Holds known / available spells
-  */
+ * Holds known / available spells
+ */
 trait SpellBook {
   def knownSpells: Seq[Spell]
 
   /**
-    * A list of functions that will return spells which are castable assuming they sufficient spell points and
-    * level requirements etc.
-    * i.e. A level 3 wizard may have Power Word: Kill inscribed but will not be able to cast it until they reach the
-    * appropriate level.
-    * @return
-    */
+   * A list of functions that will return spells which are castable assuming they sufficient spell points and level
+   * requirements etc.
+   * i.e. A level 3 wizard may have Power Word: Kill inscribed but will not be able to cast it until they reach the
+   * appropriate level.
+   * @return
+   */
   def findAvailableSpells: Seq[(String) => Option[Spell]]
 
-    /**
-     * A list of string spell id's that will be loaded into the spellbook if found.
-     * @return
-     */
+  /**
+   * A list of string spell id's that will be loaded into the spellbook if found.
+   * @return
+   */
   def spellIds: Set[String]
 
-    /**
-     * Loads the spells by invoking [[io.truthencode.ddo.model.spells.SpellBook#findAvailableSpells()]] on each of the [[io.truthencode.ddo.model.spells.SpellBook#spellIds()]]
-     * @return
-     */
+  /**
+   * Loads the spells by invoking [[io.truthencode.ddo.model.spells.SpellBook#findAvailableSpells()]] on each of the
+   * [[io.truthencode.ddo.model.spells.SpellBook#spellIds()]]
+   * @return
+   */
   def loadFromIds: Seq[Option[Spell]] = {
     for {
       s <- spellIds.toSeq
@@ -57,8 +58,8 @@ trait SpellBookImpl extends SpellBook {
   override def spellIds: Set[String] = Set()
   override def findAvailableSpells: Seq[String => Option[Spell]] = {
     val seq = spellIds.toSeq
-    val fn = Spell.ls(fn = Spell.withNameOption,seq :_*)
-      IndexedSeq() ++ fn
+    val fn = Spell.ls(fn = Spell.withNameOption, seq: _*)
+    IndexedSeq() ++ fn
   }
 
 }

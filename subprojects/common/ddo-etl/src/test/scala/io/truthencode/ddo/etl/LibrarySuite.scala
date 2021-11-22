@@ -20,10 +20,10 @@
  */
 package io.truthencode.ddo.etl
 
-import org.scalatest.FunSuite
+import org.scalatest.funsuite.AnyFunSuite
 
 // @RunWith(classOf[JUnitRunner])
-class LibrarySuite extends FunSuite {
+class LibrarySuite extends AnyFunSuite {
   test("someLibraryMethod is always true") {
     def library: Library = new Library()
     assert(library.someLibraryMethod())

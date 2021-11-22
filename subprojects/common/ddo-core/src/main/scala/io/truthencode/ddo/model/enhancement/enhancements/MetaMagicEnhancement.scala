@@ -20,8 +20,8 @@ package io.truthencode.ddo.model.enhancement.enhancements
 import io.truthencode.ddo.model.feats.MetaMagicFeat
 
 /**
-  * Base trait which can be used to denote an enhancement which reduces the cost of a metamagic
-  */
+ * Base trait which can be used to denote an enhancement which reduces the cost of a metamagic
+ */
 trait MetaMagicEnhancement {
   self: ClassEnhancement =>
   val metaMagicSelections: Seq[MetaMagicFeat]

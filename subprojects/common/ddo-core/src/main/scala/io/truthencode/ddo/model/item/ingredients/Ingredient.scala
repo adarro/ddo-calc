@@ -20,6 +20,6 @@ package io.truthencode.ddo.model.item.ingredients
 import io.truthencode.ddo.model.item.Item
 
 /**
-  * Ingrediants are primarily used in crafting to create shards and apply them to items.
-  */
+ * Ingrediants are primarily used in crafting to create shards and apply them to items.
+ */
 trait Ingredient extends Item

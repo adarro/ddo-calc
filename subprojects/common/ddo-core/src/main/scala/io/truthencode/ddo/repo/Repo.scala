@@ -20,13 +20,13 @@ package io.truthencode.ddo.repo
 import io.truthencode.ddo.model.effect.DifficultyCheck
 
 case class Repo(
-    characterRepo: CharacterRepo,
-    featRepo: FeatRepo,
-    skillRepo: SkillRepo
+  characterRepo: CharacterRepo,
+  featRepo: FeatRepo,
+  skillRepo: SkillRepo
 ) {
-def calculateDC(difficultyCheck: DifficultyCheck): Unit = {
+  def calculateDC(difficultyCheck: DifficultyCheck): Unit = {
 //  difficultyCheck.statModifier.sortBy(f => f.)
 // for {dc <- difficultyCheck.statModifier
 //     if (difficultyCheck.modifierStrategy)}
-}
+  }
 }

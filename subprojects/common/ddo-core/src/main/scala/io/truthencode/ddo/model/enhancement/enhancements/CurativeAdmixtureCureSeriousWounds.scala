@@ -23,20 +23,17 @@ import io.truthencode.ddo.model.enhancement.enhancements.classbased.ApothecaryCo
 import io.truthencode.ddo.support.points.SpendablePoints
 import io.truthencode.ddo.support.tree.TreeLike
 
-trait CurativeAdmixtureCureSeriousWounds
-    extends ApothecaryCore
-    with ClassEnhancementImpl
-    with CurativeAdmixtureBase {
+trait CurativeAdmixtureCureSeriousWounds extends ApothecaryCore with ClassEnhancementImpl with CurativeAdmixtureBase {
 
   override lazy val description: Option[String] =
     Some(
       """Curative Admixture Cure Serious Wounds SLA and Curative Admixture Inflict Serious Wounds SLA that share a cooldown. (Gildleaf spells)
-               |Passive: + 1 Spell Penetration. While your Reaction is Verdanite, +5 Positive & Negative Spell Power.""".stripMargin
+        |Passive: + 1 Spell Penetration. While your Reaction is Verdanite, +5 Positive & Negative Spell Power.""".stripMargin
     )
 
   /**
-    * Some enhancements can be taken multiple times (generally up to three)
-    */
+   * Some enhancements can be taken multiple times (generally up to three)
+   */
   override val ranks: Int = 1
 
   override protected def nameSource: String = "Cure Serious Wounds"

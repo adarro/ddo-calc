@@ -18,14 +18,15 @@
 package io.truthencode.ddo.model.feats
 
 /**
-  * Created by adarr on 2/11/2017.
-  */
+ * Created by adarr on 2/11/2017.
+ */
 trait SubFeatInformation {
 
   /**
-    * Flag used for determining if this is a Sub-Feat having a common parent
-    * This is mainly useful when looking up group feats such as Weapon Specialization: WeaponType or Meta Magics
-    * @return true if this is a subfeat otherwise false (the default value).
-    */
+   * Flag used for determining if this is a Sub-Feat having a common parent This is mainly useful when looking up group
+   * feats such as Weapon Specialization: WeaponType or Meta Magics
+   * @return
+   *   true if this is a subfeat otherwise false (the default value).
+   */
   def isSubFeat: Boolean = false
 }

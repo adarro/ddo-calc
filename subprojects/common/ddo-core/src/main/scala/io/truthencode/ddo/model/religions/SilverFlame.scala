@@ -21,8 +21,8 @@ import io.truthencode.ddo.model.item.weapon.{FavoredWeapon, WeaponCategory}
 import io.truthencode.ddo.model.worlds.Eberron
 
 /**
-  * Created by adarr on 4/9/2017.
-  */
-trait SilverFlame extends Eberron with FavoredWeapon  {
+ * Created by adarr on 4/9/2017.
+ */
+trait SilverFlame extends Eberron with FavoredWeapon {
   override val favoredWeapon: WeaponCategory = WeaponCategory.Longbow
 }

@@ -25,14 +25,15 @@ import io.truthencode.ddo.support.StringUtils.Extensions
 import scala.collection.immutable.IndexedSeq
 
 /**
-  * Represents one of the eight schools of magic.
-  */
+ * Represents one of the eight schools of magic.
+ */
 sealed trait School extends EnumEntry with DisplayName with FriendlyDisplay {
   /**
-    * Sets or maps the source text for the DisplayName.
-    *
-    * @return Source text.
-    */
+   * Sets or maps the source text for the DisplayName.
+   *
+   * @return
+   *   Source text.
+   */
   override protected def nameSource: String = entryName.splitByCase
 }
 
@@ -55,11 +56,11 @@ object School extends Enum[School] with SearchPrefix {
   case object Transmutation extends School
 
   /**
-    * Used when qualifying a search with a prefix.
-    * Examples include finding "HalfElf" from qualified "Race:HalfElf"
-    *
-    * @return A default or applied prefix
-    */
+   * Used when qualifying a search with a prefix. Examples include finding "HalfElf" from qualified "Race:HalfElf"
+   *
+   * @return
+   *   A default or applied prefix
+   */
   override def searchPrefixSource: String = "School"
 
   override def values: IndexedSeq[School] = findValues

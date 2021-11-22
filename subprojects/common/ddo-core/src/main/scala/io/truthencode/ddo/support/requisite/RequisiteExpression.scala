@@ -20,16 +20,16 @@ package io.truthencode.ddo.support.requisite
 import scala.collection.IndexedSeq
 
 /**
-  * Base stackable trait used to store an array of requirements along with logic to evaluate.
-  */
+ * Base stackable trait used to store an array of requirements along with logic to evaluate.
+ */
 sealed trait RequisiteExpression {
   self: RequisiteType with Inclusion =>
   /**
-    * Array of Requirements which can be checked against a given source.
-    *
-    * @return
-    */
-  def prerequisites: Seq[RequirementSet[_, _]] = IndexedSeq()
+   * Array of Requirements which can be checked against a given source.
+   *
+   * @return
+   */
+  def prerequisites: Seq[RequirementSet[_, _]] = Seq()
 }
 
 sealed trait SimpleRequisite extends RequisiteExpression {
@@ -57,17 +57,17 @@ trait MustContainAllOf[T <: Requirement] extends ComplexRequisite with AllOf {
 
 trait MustContainAllOfImpl[T <: Requirement] extends MustContainAllOf[T] {
   self: RequisiteType =>
-  def allOf: Seq[T] = IndexedSeq()
+  def allOf: Seq[T] = Seq()
 }
 
 trait MustContainAnyOfImpl[T <: Requirement] extends MustContainAtLeastOneOf[T] {
   self: RequisiteType =>
-  def oneOf: Seq[T] = IndexedSeq()
+  def oneOf: Seq[T] = Seq()
 }
 
 trait MustContainNoneOfImpl[T <: Requirement] extends MustContainNoneOf[T] {
   self: RequisiteType =>
-  def noneOf: Seq[T] = IndexedSeq()
+  def noneOf: Seq[T] = Seq()
 }
 
 trait MustContainNoneOf[T <: Requirement] extends ComplexRequisite with NoneOf {
@@ -75,8 +75,9 @@ trait MustContainNoneOf[T <: Requirement] extends ComplexRequisite with NoneOf {
   def noneOf: Seq[T]
 }
 
-trait MustContainImpl[T <: Requirement] extends MustContainAnyOfImpl[T] with MustContainNoneOfImpl[T] with MustContainAllOfImpl[T] {
-  self : RequisiteType =>
+trait MustContainImpl[T <: Requirement]
+  extends MustContainAnyOfImpl[T] with MustContainNoneOfImpl[T] with MustContainAllOfImpl[T] {
+  self: RequisiteType =>
 }
 
 trait RequiresOneOf[T <: Requirement] extends MustContainAtLeastOneOf[T] with Require {
@@ -94,7 +95,8 @@ trait RequiresAllOf[T <: Requirement] extends MustContainAllOf[T] with Require {
 }
 
 trait RequiresNoneOf[T <: Requirement] extends MustContainNoneOf[T] with Require {
-  private[this] def makeSet: RequirementSet[RequiresNoneOf[T], RequiresNoneOf[T]] = RequirementSet(this, this, noneOf: _*)
+  private[this] def makeSet: RequirementSet[RequiresNoneOf[T], RequiresNoneOf[T]] =
+    RequirementSet(this, this, noneOf: _*)
 
   abstract override def prerequisites: Seq[RequirementSet[_, _]] = super.prerequisites :+ makeSet
 }
@@ -105,7 +107,7 @@ trait ProhibitsOneOf[+T <: Requirement] extends MustContainAtLeastOneOf[T] with 
 
   abstract override def prerequisites: Seq[RequirementSet] = super.prerequisites :+ makeSet
 }
-*/
+ */
 
 /* Providing 'One Of' likely makes no sense in this context but may be needed??? Need to investigate
 trait ProvidesOneOf[+T <: Requirement] extends MustContainAtLeastOneOf[T] with Grant {
@@ -113,7 +115,4 @@ trait ProvidesOneOf[+T <: Requirement] extends MustContainAtLeastOneOf[T] with G
 
   abstract override def prerequisites: Seq[RequirementSet] = super.prerequisites :+ makeSet
 }
-*/
-
-
-
+ */

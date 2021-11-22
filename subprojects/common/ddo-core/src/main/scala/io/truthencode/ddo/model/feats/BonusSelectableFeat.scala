@@ -21,9 +21,9 @@ import io.truthencode.ddo.model.classes.HeroicCharacterClass
 import io.truthencode.ddo.support.requisite.{ClassRequisite, Inclusion, Requisite, SelectableToClass}
 
 /**
-  * This trait indicates a particular feat can be selected in addition to the standard ones for a given class at a
-  * given level.  Specifically it flags Wizard, Fighter, Monk or other classes that gain an extra feat at certain levels.
-  */
+ * This trait indicates a particular feat can be selected in addition to the standard ones for a given class at a given
+ * level. Specifically it flags Wizard, Fighter, Monk or other classes that gain an extra feat at certain levels.
+ */
 trait BonusSelectableFeat {
   self: Feat =>
 
@@ -36,5 +36,5 @@ trait BonusSelectableFeat {
 trait BonusSelectableFeatImpl extends BonusSelectableFeat with SelectableToClass {
   self: Feat with FeatType with Requisite with Inclusion =>
   override def bonusCharacterClass: Seq[HeroicCharacterClass] = Nil
- override def bonusSelectableToClass: Seq[(HeroicCharacterClass, Int)] = Nil
+  override def bonusSelectableToClass: Seq[(HeroicCharacterClass, Int)] = Nil
 }

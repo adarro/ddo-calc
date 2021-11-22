@@ -22,16 +22,16 @@ import io.truthencode.ddo.support.naming.{DisplayName, FriendlyDisplay}
 import io.truthencode.ddo.support.requisite.GrantsToClass
 
 /**
-  * Created by adarr on 3/19/2017.
-  */
+ * Created by adarr on 3/19/2017.
+ */
 trait EnergyResistanceAcid extends EnergyResistance with FriendlyDisplay with GrantsToClass {
   self: DisplayName =>
-  private def fvsMap = (5 to 15 by 5).map((HeroicCharacterClass.FavoredSoul,_))
+  private def fvsMap = (5 to 15 by 5).map((HeroicCharacterClass.FavoredSoul, _))
 
   override def grantToClass: Seq[(HeroicCharacterClass, Int)] = fvsMap
 
   /**
-    * @inheritdoc
-    */
+   * @inheritdoc
+   */
   override protected def nameSource: String = "Acid"
 }

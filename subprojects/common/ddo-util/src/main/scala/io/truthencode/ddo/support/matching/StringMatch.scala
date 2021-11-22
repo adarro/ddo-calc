@@ -18,8 +18,8 @@
 package io.truthencode.ddo.support.matching
 
 /**
-  * Denotes match is against a String.
-  */
+ * Denotes match is against a String.
+ */
 trait StringMatch extends MatchStrategy {
   self: StringMatchBounds =>
 }

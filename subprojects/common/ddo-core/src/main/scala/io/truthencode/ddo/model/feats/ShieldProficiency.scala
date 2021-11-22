@@ -19,23 +19,15 @@ package io.truthencode.ddo.model.feats
 
 import io.truthencode.ddo.model.classes.HeroicCharacterClass
 import io.truthencode.ddo.model.classes.HeroicCharacterClass._
-import io.truthencode.ddo.support.requisite.{
-  ClassRequisiteImpl,
-  FeatRequisiteImpl,
-  FreeFeat
-}
+import io.truthencode.ddo.support.requisite.{ClassRequisiteImpl, FeatRequisiteImpl, FreeFeat}
 
 /**
-  * This feat negates the penalties from using bucklers, and small and Large Shields.
-  */
-protected[feats] trait ShieldProficiency
-    extends FeatRequisiteImpl
-    with ClassRequisiteImpl
-    with Passive
-    with FreeFeat { self: GeneralFeat =>
+ * This feat negates the penalties from using bucklers, and small and Large Shields.
+ */
+protected[feats] trait ShieldProficiency extends FeatRequisiteImpl with ClassRequisiteImpl with Passive with FreeFeat {
+  self: GeneralFeat =>
   private def firstLevelClasses =
-    List(Barbarian, Cleric, FavoredSoul, Fighter, Paladin, Ranger, Rogue).map(
-      (_, 1))
+    List(Barbarian, Cleric, FavoredSoul, Fighter, Paladin, Ranger, Rogue).map((_, 1))
   override def grantToClass: Seq[(HeroicCharacterClass, Int)] = firstLevelClasses
 
 }

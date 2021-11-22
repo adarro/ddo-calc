@@ -19,27 +19,16 @@ package io.truthencode.ddo.model.feats
 
 import io.truthencode.ddo.model.classes.HeroicCharacterClass
 import io.truthencode.ddo.model.classes.HeroicCharacterClass.{Cleric, Fighter, Paladin}
-import io.truthencode.ddo.support.requisite.{
-  ClassRequisiteImpl,
-  FeatRequisiteImpl,
-  GrantsToClass,
-  RequiresAllOfFeat
-}
+import io.truthencode.ddo.support.requisite.{ClassRequisiteImpl, FeatRequisiteImpl, GrantsToClass, RequiresAllOfFeat}
 
-/** Icon Feat Heavy Armor Proficiency.png
-  * Heavy Armor Proficiency
-  * Passive
-  * You are proficient with heavy armor, and do not suffer armor penalties to your attack rolls when wearing heavy armor.
-  * You also gain 6 + your base attack bonus in physical resistance when wearing heavy armor.
-  * *
-  * Medium Armor Proficiency
-  */
+/**
+ * Icon Feat Heavy Armor Proficiency.png Heavy Armor Proficiency Passive You are proficient with heavy armor, and do not
+ * suffer armor penalties to your attack rolls when wearing heavy armor. You also gain 6 + your base attack bonus in
+ * physical resistance when wearing heavy armor. * Medium Armor Proficiency
+ */
 protected[feats] trait HeavyArmorProficiency
-    extends FeatRequisiteImpl
-    with ClassRequisiteImpl
-    with Passive
-    with GrantsToClass
-    with RequiresAllOfFeat { self: GeneralFeat =>
+  extends FeatRequisiteImpl with ClassRequisiteImpl with Passive with GrantsToClass with RequiresAllOfFeat {
+  self: GeneralFeat =>
   private def firstLevelClasses = List(Cleric, Fighter, Paladin).map((_, 1))
   override def allOfFeats: Seq[GeneralFeat] =
     List(GeneralFeat.MediumArmorProficiency)

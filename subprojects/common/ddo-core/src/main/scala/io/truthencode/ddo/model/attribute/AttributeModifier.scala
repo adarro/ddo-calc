@@ -22,8 +22,8 @@ import io.truthencode.ddo.model.attribute.Attribute._
 import scala.collection.immutable.HashSet
 
 /**
-  * Base class for Modifying Attribute
-  */
+ * Base class for Modifying Attribute
+ */
 sealed trait AttributeModifier {
   type M = (Attribute, Int)
   def modifiedAttributes: Set[M]
@@ -33,8 +33,8 @@ trait AttributeModifierInit extends AttributeModifier {
   def modifiedAttributes: Set[M] = new HashSet[M]
 }
 /**
-  * Empty Modifier used to specify nothing special
-  */
+ * Empty Modifier used to specify nothing special
+ */
 trait DefaultAttributeModifier extends AttributeModifier
 
 trait StrengthModifier extends AttributeModifier {
@@ -78,4 +78,3 @@ trait CharismaModifier extends AttributeModifier {
   private[this] val totalModifier: M = (attributeCharisma, intModifierCharisma)
   abstract override def modifiedAttributes: Set[M] = super.modifiedAttributes + totalModifier
 }
-

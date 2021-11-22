@@ -18,10 +18,10 @@
 package io.truthencode.ddo
 
 import com.typesafe.scalalogging.LazyLogging
-import org.scalatest.{FunSpec, Matchers}
+import org.scalatest.funspec.AnyFunSpec
+import org.scalatest.matchers.should.Matchers
 
-
-class DefaultValueTest extends FunSpec with Matchers with LazyLogging {
+class DefaultValueTest extends AnyFunSpec with Matchers with LazyLogging {
   final val greeting = "Hello World"
   val noDefault: DefaultValue[String] = new DefaultValue[String] with NoDefault[String] {}
   val greetDefault = new DefaultValue[String] {

@@ -25,14 +25,10 @@ import io.truthencode.ddo.model.race.Race.Warforged
 import io.truthencode.ddo.support.requisite.{RequiresAllOfClass, RequiresAllOfFeat, RequiresNoneOfRace}
 
 /**
-  * Created by adarr on 4/3/2017.
-  */
+ * Created by adarr on 4/3/2017.
+ */
 protected[feats] trait ConstructExemplar
-  extends ClassRestricted
-    with RequiresAllOfClass
-    with RequiresNoneOfRace
-    with RequiresAllOfFeat
-    with Passive {
+  extends ClassRestricted with RequiresAllOfClass with RequiresNoneOfRace with RequiresAllOfFeat with Passive {
   self: EpicFeat =>
   override def allOfFeats: Seq[Feat] = List(ImprovedConstructEssence)
 

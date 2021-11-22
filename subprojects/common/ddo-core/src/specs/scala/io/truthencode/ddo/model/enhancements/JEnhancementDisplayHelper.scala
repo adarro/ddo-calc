@@ -27,8 +27,8 @@ import scala.beans.BeanProperty
 abstract class JEnhancementDisplayHelper extends ClassEnhancementDisplayHelper with LazyLogging {
 
   /**
-    * Java Work-around to set
-    */
+   * Java Work-around to set
+   */
   @BeanProperty
   var treeId: String = _
   override lazy val tree: ClassTrees = ClassTrees.withName(treeId)
@@ -109,10 +109,11 @@ abstract class JEnhancementDisplayHelper extends ClassEnhancementDisplayHelper w
     )
     // logger.info(s"mappvalues has ${mappedValues.size} elements")
     val ce: ClassEnhancementInfo =
-      mappedValues.getOrElse(trimmed, {
-        logger.warn(s"Failed to find Enhancement with id $enhancementId")
-        CEnhancementDumb(enhancementId)
-      })
+      mappedValues.getOrElse(
+        trimmed, {
+          logger.warn(s"Failed to find Enhancement with id $enhancementId")
+          CEnhancementDumb(enhancementId)
+        })
     logger.debug(ce.toString)
     implicit val altName: Option[String] = Some(enhancementId)
     ResultObject.apply(ce)

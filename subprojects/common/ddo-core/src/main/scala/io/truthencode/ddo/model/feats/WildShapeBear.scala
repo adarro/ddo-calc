@@ -24,14 +24,10 @@ import io.truthencode.ddo.support.naming.{DisplayName, DisplayProperties}
 import io.truthencode.ddo.support.requisite.{GrantsToClass, RequiresAllOfClass}
 
 /**
-  * Created by adarr on 3/17/2017.
-  */
-trait WildShapeBear
-    extends WildShape
-    with GrantsToClass
-    with RequiresAllOfClass
-    with DefaultCasterCoolDown {
-    self: DisplayName with DisplayProperties =>
+ * Created by adarr on 3/17/2017.
+ */
+trait WildShapeBear extends WildShape with GrantsToClass with RequiresAllOfClass with DefaultCasterCoolDown {
+  self: DisplayName with DisplayProperties =>
   override def grantToClass: Seq[(HeroicCharacterClass, Int)] =
     List((Druid, 2), (Druid, 5))
 

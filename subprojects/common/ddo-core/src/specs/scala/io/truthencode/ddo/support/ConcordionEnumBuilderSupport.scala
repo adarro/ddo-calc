@@ -23,8 +23,8 @@ import scala.collection.JavaConverters.asJavaIterableConverter
 import scala.util.Try
 
 /**
-  * Created by adarr on 1/25/2017.
-  */
+ * Created by adarr on 1/25/2017.
+ */
 trait ConcordionEnumBuilderSupport {
   implicit protected[this] val myStringOrdering: Ordering[String] = Ordering.fromLessThan[String](_ > _)
 
@@ -38,10 +38,10 @@ trait ConcordionEnumBuilderSupport {
   }
 
   /**
-    * Needed for Concordion / Java compatibility as it does not recognize optional parameters.
-    *
-    * @return
-    */
+   * Needed for Concordion / Java compatibility as it does not recognize optional parameters.
+   *
+   * @return
+   */
   def listValues(): String = {
     listValues("Expected Values")
   }
@@ -59,18 +59,18 @@ trait ConcordionEnumBuilderSupport {
     resultCount(searchString, strToBool(ignoreCase))
   }
 
-   def withNames(searchString: String, ignoreCase: Boolean): Seq[String] = {
+  def withNames(searchString: String, ignoreCase: Boolean): Seq[String] = {
     val ss = searchString.split(',').toSet.toSeq
     if (ignoreCase) {
-      for {a <- actual
-           s <- ss
-           if a.equalsIgnoreCase(s.trim)} yield s
-    }
-    else {
+      for {
+        a <- actual
+        s <- ss
+        if a.equalsIgnoreCase(s.trim)
+      } yield s
+    } else {
       ss.intersect(actual)
     }
   }
-
 
   def withNames(searchString: String, ignoreCase: String): Iterable[String] = {
     withNames(searchString, strToBool(ignoreCase))

@@ -20,10 +20,10 @@ package io.truthencode.ddo.model.feats
 import io.truthencode.ddo.model.classes.HeroicCharacterClass.Rogue
 
 /**
-  * Created by adarr on 3/26/2017.
-  */
+ * Created by adarr on 3/26/2017.
+ */
 trait RogueOptionalAbility {
-lazy val rogueOptionLevels = List(10, 13, 16, 19 )
-  lazy val rogueOptionMatrix = rogueOptionLevels.map((Rogue,_))
+  lazy val rogueOptionLevels = List(10, 13, 16, 19)
+  lazy val rogueOptionMatrix = rogueOptionLevels.map((Rogue, _))
 
 }

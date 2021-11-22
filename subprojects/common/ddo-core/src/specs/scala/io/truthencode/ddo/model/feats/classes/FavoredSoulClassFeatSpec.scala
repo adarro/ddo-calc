@@ -26,7 +26,7 @@ import org.junit.runner.RunWith
 
 @FullOGNL
 @RunWith(classOf[ConcordionRunner])
-class FavoredSoulClassFeatSpec extends ClassFeatDisplayHelper{
+class FavoredSoulClassFeatSpec extends ClassFeatDisplayHelper {
   override val cClass: HeroicCharacterClass = FavoredSoul
   override val enum: E = Feat
 }

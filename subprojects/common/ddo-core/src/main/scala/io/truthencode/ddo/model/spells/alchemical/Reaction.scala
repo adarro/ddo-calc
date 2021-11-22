@@ -25,8 +25,8 @@ import scala.collection.immutable
 sealed trait Reaction extends EnumEntry
 
 /**
-  * Reaction affects Elemental spells (Fire, Cold, Electric,Acid and poison)
-  */
+ * Reaction affects Elemental spells (Fire, Cold, Electric,Acid and poison)
+ */
 trait Pyrite extends Reaction
 
 /**

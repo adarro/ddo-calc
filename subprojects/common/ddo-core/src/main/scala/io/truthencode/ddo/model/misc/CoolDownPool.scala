@@ -22,38 +22,35 @@ import enumeratum.{Enum, EnumEntry}
 import scala.collection.immutable
 
 /**
-  * Labels shared cooldown pools / timers
-  */
+ * Labels shared cooldown pools / timers
+ */
 sealed trait CoolDownPool extends EnumEntry with PoolId
 
 object CoolDownPool extends Enum[CoolDownPool] {
   override def values: immutable.IndexedSeq[CoolDownPool] = findValues
 
-    /**
-     * Several Ranged Events use this pool.
-     *  * ManyShot
-     *  * Multitude of Missiles
-     *
-     */
+  /**
+   * Several Ranged Events use this pool. * ManyShot * Multitude of Missiles
+   */
   case object ManyShot extends CoolDownPool {
-      /**
-       * Used to group shared timer resources.
-       * It is strongly recommended to use one of the values in [[io.truthencode.ddo.model.misc.CoolDownPool]]
-       */
-      override val coolDownPoolId: String = PoolManyShot
+    /**
+     * Used to group shared timer resources. It is strongly recommended to use one of the values in
+     * [[io.truthencode.ddo.model.misc.CoolDownPool]]
+     */
+    override val coolDownPoolId: String = PoolManyShot
   }
   case object Cleave extends CoolDownPool {
-      /**
-       * Used to group shared timer resources.
-       * It is strongly recommended to use one of the values in [[io.truthencode.ddo.model.misc.CoolDownPool]]
-       */
-      override val coolDownPoolId: String = PoolCleave
+    /**
+     * Used to group shared timer resources. It is strongly recommended to use one of the values in
+     * [[io.truthencode.ddo.model.misc.CoolDownPool]]
+     */
+    override val coolDownPoolId: String = PoolCleave
   }
   case object GreatCleave extends CoolDownPool {
-      /**
-       * Used to group shared timer resources.
-       * It is strongly recommended to use one of the values in [[io.truthencode.ddo.model.misc.CoolDownPool]]
-       */
-      override val coolDownPoolId: String = PoolGreatCleave
+    /**
+     * Used to group shared timer resources. It is strongly recommended to use one of the values in
+     * [[io.truthencode.ddo.model.misc.CoolDownPool]]
+     */
+    override val coolDownPoolId: String = PoolGreatCleave
   }
 }

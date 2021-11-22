@@ -18,7 +18,7 @@
 package io.truthencode.ddo.model.enhancement
 
 /**
-  * @note may need to override display name to add Hyphen
-  *       perhaps add Hyphenate rule to display options
-  */
+ * @note
+ *   may need to override display name to add Hyphen perhaps add Hyphenate rule to display options
+ */
 trait ThiefAcrobat extends RogueEnhancement

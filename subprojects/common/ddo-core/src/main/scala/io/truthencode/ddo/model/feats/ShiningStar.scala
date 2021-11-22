@@ -19,21 +19,13 @@ package io.truthencode.ddo.model.feats
 
 import io.truthencode.ddo.model.classes.HeroicCharacterClass
 import io.truthencode.ddo.model.classes.HeroicCharacterClass.Monk
-import io.truthencode.ddo.support.requisite.{
-  FeatRequisiteImpl,
-  GrantsToClass,
-  RequiresAllOfClass
-}
+import io.truthencode.ddo.support.requisite.{FeatRequisiteImpl, GrantsToClass, RequiresAllOfClass}
 
 /**
-  * You use the combined power of Earth, Wind, and Fire to set up harmonic vibrations within your enemy that force them to dance.
-  * A successful Will save negates this effect. (DC 10 + Monk Level + Charisma mod
-  */
-trait ShiningStar
-    extends FeatRequisiteImpl
-    with Passive
-    with GrantsToClass
-    with RequiresAllOfClass {
+ * You use the combined power of Earth, Wind, and Fire to set up harmonic vibrations within your enemy that force them
+ * to dance. A successful Will save negates this effect. (DC 10 + Monk Level + Charisma mod
+ */
+trait ShiningStar extends FeatRequisiteImpl with Passive with GrantsToClass with RequiresAllOfClass {
   override def grantToClass: Seq[(HeroicCharacterClass, Int)] =
     List((Monk, 20))
 

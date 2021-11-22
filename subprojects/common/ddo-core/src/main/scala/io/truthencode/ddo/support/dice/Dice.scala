@@ -20,29 +20,28 @@ package io.truthencode.ddo.support.dice
 /**
  * Represents a Dice with Sides and Number of Dice to roll
  *
- * @example 2d6 would be 2 6 sided dice or 2 - 12
+ * @example
+ *   2d6 would be 2 6 sided dice or 2 - 12
  */
 trait Dice {
-    /**
-     * Number of Sides on the Die
-     *
-     */
+  /**
+   * Number of Sides on the Die
+   */
   val sides: Int
   val number: Int
-  def roll : Int = {
+  def roll: Int = {
     val rnd = scala.util.Random
-    val rng =Range.inclusive(1,number)
-      (for {r <- rng} yield rnd.nextInt(sides) + 1).sum
+    val rng = Range.inclusive(1, number)
+    (for { r <- rng } yield rnd.nextInt(sides) + 1).sum
   }
 }
 
 object Dice {
-    def apply(s:Int,n:Int): Dice = new Dice() {
-        /**
-         * Number of Sides on the Die
-         *
-         */
-        override val sides: Int = s
-        override val number: Int = n
-    }
+  def apply(s: Int, n: Int): Dice = new Dice() {
+    /**
+     * Number of Sides on the Die
+     */
+    override val sides: Int = s
+    override val number: Int = n
+  }
 }

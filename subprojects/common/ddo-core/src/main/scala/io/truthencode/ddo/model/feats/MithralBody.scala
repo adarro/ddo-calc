@@ -21,13 +21,10 @@ import io.truthencode.ddo.model.race.Race
 import io.truthencode.ddo.support.requisite.{FeatRequisiteImpl, RaceRequisite, RequiresAnyOfRace, RequiresAttribute}
 
 /**
-  * Created by adarr on 2/20/2017.
-  */
-trait MithralBody extends FeatRequisiteImpl
-  with RaceRequisite
-  with Passive
-  with RequiresAttribute
-  with RequiresAnyOfRace
+ * Created by adarr on 2/20/2017.
+ */
+trait MithralBody
+  extends FeatRequisiteImpl with RaceRequisite with Passive with RequiresAttribute with RequiresAnyOfRace
   with ArtificerBonusFeat {
   self: RacialFeat =>
   override def anyOfRace: Seq[(Race, Int)] =

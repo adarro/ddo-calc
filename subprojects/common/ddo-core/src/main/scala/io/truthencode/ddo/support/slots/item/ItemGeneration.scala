@@ -22,10 +22,10 @@ import enumeratum.{Enum, EnumEntry}
 import scala.collection.immutable
 
 /**
-  * Represents the type of slot
-  *
-  * Created by adarr on 5/5/2017.
-  */
+ * Represents the type of slot
+ *
+ * Created by adarr on 5/5/2017.
+ */
 sealed trait ItemGeneration extends EnumEntry
 
 object ItemGeneration extends Enum[ItemGeneration] {
@@ -36,10 +36,10 @@ object ItemGeneration extends Enum[ItemGeneration] {
 }
 
 /**
-  * Item created or upgraded via some method of crafting.
-  *
-  * This usually involves a device / workstation / altar by combinining a base item with various ingredients.
-  */
+ * Item created or upgraded via some method of crafting.
+ *
+ * This usually involves a device / workstation / altar by combinining a base item with various ingredients.
+ */
 trait Craftable extends ItemGeneration
 
 trait RandomLootGen extends ItemGeneration

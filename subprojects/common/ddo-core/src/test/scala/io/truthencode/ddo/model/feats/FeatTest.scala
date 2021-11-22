@@ -19,18 +19,11 @@ package io.truthencode.ddo.model.feats
 
 import com.typesafe.scalalogging.LazyLogging
 import io.truthencode.ddo.model.feats.ClassFeat.QuiveringPalm
-import io.truthencode.ddo.model.feats.GeneralFeat.{
-  ImprovedSunder,
-  ImprovedTrip,
-  Sap,
-  StunningBlow,
-  StunningFist,
-  Sunder,
-  Trip
-}
-import org.scalatest.{FunSpec, Matchers}
+import io.truthencode.ddo.model.feats.GeneralFeat._
+import org.scalatest.funspec.AnyFunSpec
+import org.scalatest.matchers.should.Matchers
 
-class FeatTest extends FunSpec with Matchers with LazyLogging {
+class FeatTest extends AnyFunSpec with Matchers with LazyLogging {
 
   describe("Feats") {
     it("should contain all types of feats") {
@@ -60,8 +53,8 @@ class FeatTest extends FunSpec with Matchers with LazyLogging {
         StunningFist,
         QuiveringPalm
       ) // .map(_.entryName).sorted
-      val tacticalFeats = { Feat.values collect Feat.fnTacticalFeats } // .map(_.entryName).sorted
-      tactical should contain only (tacticalFeats : _*)
+      val tacticalFeats = { Feat.values.collect(Feat.fnTacticalFeats) } // .map(_.entryName).sorted
+      tactical should contain only (tacticalFeats: _*)
 
     }
   }

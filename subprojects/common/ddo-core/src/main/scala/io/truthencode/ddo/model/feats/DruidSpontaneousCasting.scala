@@ -26,17 +26,11 @@ import io.truthencode.ddo.support.naming.Prefix
 import io.truthencode.ddo.support.requisite.{FeatRequisiteImpl, GrantsToClass, RequiresAllOfClass}
 
 /**
-  * You gain an additional spell preparation slot per spell level to cast Summon Nature's Ally spell of that level.
-  */
+ * You gain an additional spell preparation slot per spell level to cast Summon Nature's Ally spell of that level.
+ */
 protected[feats] trait DruidSpontaneousCasting
-    extends FeatRequisiteImpl
-    with ActiveFeat
-    with SpellBookImpl
-    with OnSpellCastEvent
-    with GrantsToClass
-    with RequiresAllOfClass
-    with Prefix
-    with DefaultCasterCoolDown {
+  extends FeatRequisiteImpl with ActiveFeat with SpellBookImpl with OnSpellCastEvent with GrantsToClass
+  with RequiresAllOfClass with Prefix with DefaultCasterCoolDown {
   override def allOfClass: Seq[(HeroicCharacterClass, Int)] = List((Druid, 1))
 
   override def grantToClass: Seq[(HeroicCharacterClass, Int)] = List((Druid, 1))
@@ -44,8 +38,8 @@ protected[feats] trait DruidSpontaneousCasting
   override def prefix: Option[String] = Some("Druid:")
 
   /**
-    * Delimits the prefix and text.
-    */
+   * Delimits the prefix and text.
+   */
   override protected val prefixSeparator: String = " "
   abstract override def spellIds: Set[String] =
     super.spellIds ++ Spell.summonNatureAllySpells

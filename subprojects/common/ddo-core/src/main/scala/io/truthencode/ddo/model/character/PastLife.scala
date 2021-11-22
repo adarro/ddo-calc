@@ -18,18 +18,16 @@
 package io.truthencode.ddo.model.character
 
 import enumeratum.EnumEntry
-import io.truthencode.ddo.model.classes.{
-  EpicCharacterClass,
-  HeroicCharacterClass
-}
+import io.truthencode.ddo.model.classes.{EpicCharacterClass, HeroicCharacterClass}
 import io.truthencode.ddo.model.race.{IconicClass, Race}
 
 sealed trait PastLife extends EnumEntry {
 
   /**
-    * Number of times this has been acquired.
-    * @note Past life feats apply a maximum of 3 times, so timesAcuired will return the lesser of times acquired or 3
-    */
+   * Number of times this has been acquired.
+   * @note
+   *   Past life feats apply a maximum of 3 times, so timesAcuired will return the lesser of times acquired or 3
+   */
   val timesAcquired: Int
 }
 

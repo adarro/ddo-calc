@@ -23,19 +23,18 @@ import io.truthencode.ddo.model.classes.HeroicCharacterClass.Paladin
 import io.truthencode.ddo.support.requisite._
 
 /**
-  * [[http://ddowiki.com/page/Remove_Disease Remove Disease]]
-  * At 6th level, a paladin can produce a remove disease effect, as the spell, once per rest period.
-  * It can use this ability one additional time per rest period for every three levels after 6th (twice per rest at 9th level).
-  * @note NOTE: Since Update 14, Remove Disease grants immunity to disease for 6 seconds per caster level.
-  *       The in-game tooltip incorrectly says the spell does not prevent re-infection.
-  *       @todo add Times per rest
-  */
+ * [[http://ddowiki.com/page/Remove_Disease Remove Disease]] At 6th level, a paladin can produce a remove disease
+ * effect, as the spell, once per rest period. It can use this ability one additional time per rest period for every
+ * three levels after 6th (twice per rest at 9th level).
+ * @note
+ *   NOTE: Since Update 14, Remove Disease grants immunity to disease for 6 seconds per caster level. The in-game
+ *   tooltip incorrectly says the spell does not prevent re-infection.
+ * @todo
+ *   add Times per rest
+ */
 protected[feats] trait RemoveDisease
-    extends FeatRequisiteImpl
-    with ActiveFeat
-    with OnSpellLikeAbilityEvent
-    with GrantsToClass
-    with FreeFeat { self: ClassFeat =>
+  extends FeatRequisiteImpl with ActiveFeat with OnSpellLikeAbilityEvent with GrantsToClass with FreeFeat {
+  self: ClassFeat =>
   override def grantToClass: Seq[(HeroicCharacterClass, Int)] =
     List((Paladin, 6))
 

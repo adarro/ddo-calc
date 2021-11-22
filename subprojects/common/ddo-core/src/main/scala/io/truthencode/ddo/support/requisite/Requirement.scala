@@ -19,12 +19,7 @@ package io.truthencode.ddo.support.requisite
 
 import enumeratum.{Enum, EnumEntry}
 import io.truthencode.ddo.Abbreviation
-import io.truthencode.ddo.model.alignment.{
-  AlignmentType,
-  Alignments,
-  LawAxis,
-  MoralAxis
-}
+import io.truthencode.ddo.model.alignment.{AlignmentType, Alignments, LawAxis, MoralAxis}
 import io.truthencode.ddo.model.attribute.Attribute
 import io.truthencode.ddo.model.classes.HeroicCharacterClass
 import io.truthencode.ddo.model.favor.FavorPatron
@@ -33,26 +28,27 @@ import io.truthencode.ddo.model.race.Race
 import io.truthencode.ddo.model.skill.Skill
 import io.truthencode.ddo.support.StringUtils.Extensions
 import io.truthencode.ddo.support.naming.{DisplayName, Prefix}
-import io.truthencode.ddo.support.points.{SpendablePoints, Progression}
+import io.truthencode.ddo.support.points.{Progression, SpendablePoints}
 import io.truthencode.ddo.support.tree.TreeLike
 
 import scala.collection.immutable.IndexedSeq
 
-/** Base trait used to enumerate qualifications.
-  */
+/**
+ * Base trait used to enumerate qualifications.
+ */
 sealed trait Requirement extends EnumEntry with DisplayName with Prefix {
   override def entryName: String = displaySource
 }
 
-/** Used to enumerate prerequisites or qualifications for a given feat, spell, enhancement,
-  * equipping an item etc.
-  */
+/**
+ * Used to enumerate prerequisites or qualifications for a given feat, spell, enhancement, equipping an item etc.
+ */
 object Requirement extends Enum[Requirement] {
-  private def races = Race.values map { x =>
+  private def races = Race.values.map { x =>
     ReqRace(x.entryName, 0)
   }
 
-  private def classes = HeroicCharacterClass.values map { x =>
+  private def classes = HeroicCharacterClass.values.map { x =>
     ReqClass(x.entryName, 0)
   }
 
@@ -71,168 +67,189 @@ object Requirement extends Enum[Requirement] {
     ReqSkill(id = x.entryName, amount = 0)
   }
 
-  /** @param id    the required race
-    * @param level the minimum character level.
-    * @example
-    * ReqRace("Drow",6) would represent a level 6 or greater player of the Drow race.
-    */
+  /**
+   * @param id
+   *   the required race
+   * @param level
+   *   the minimum character level.
+   * @example
+   *   ReqRace("Drow",6) would represent a level 6 or greater player of the Drow race.
+   */
   case class ReqRace(id: String, level: Int) extends Requirement {
     override def prefix: Option[String] = Some(Race.searchPrefixSource)
 
     /**
-      * @inheritdoc
-      */
+     * @inheritdoc
+     */
     override protected def nameSource: String = id.splitByCase.toPascalCase
   }
 
-  /** Represents Total Action points spent
-    *
-    * @param tree The type discriminator used to determine which tree (Epic Destiny line vs Ranger enhancement tree)
-    *             which includes point type (EDP vs Action Points vs Survival Points etc)
-    * @param amount The Total amount of points that must be spent to qualify for.
-    * Generally used as a requisite for enhancement trees
-    * @note Fate Points / Karma may need to be handled separately
-    */
-  case class ReqPointsSpentInTree(tree: TreeLike, amount: Int)
-      extends Requirement
-      with Progression {
+  /**
+   * Represents Total Action points spent
+   *
+   * @param tree
+   *   The type discriminator used to determine which tree (Epic Destiny line vs Ranger enhancement tree) which includes
+   *   point type (EDP vs Action Points vs Survival Points etc)
+   * @param amount
+   *   The Total amount of points that must be spent to qualify for. Generally used as a requisite for enhancement trees
+   * @note
+   *   Fate Points / Karma may need to be handled separately
+   */
+  case class ReqPointsSpentInTree(tree: TreeLike, amount: Int) extends Requirement with Progression {
     override def prefix: Option[String] = Some(tree.entryName)
 
     override val points: SpendablePoints = tree.pointType
 
     /**
-      * @inheritdoc
-      */
+     * @inheritdoc
+     */
     override protected def nameSource: String =
       tree.entryName.splitByCase.toPascalCase
   }
 
-  /** Represents Total Action points spent
-    *
-    * @param points The type discriminator used to determine Epic Destiny vs Action Points etc
-    * @param amount The Total amount of points that must be spent to qualify for.
-    *               Generally used as a requisite for enhancement trees
-    */
+  /**
+   * Represents Total Action points spent
+   *
+   * @param points
+   *   The type discriminator used to determine Epic Destiny vs Action Points etc
+   * @param amount
+   *   The Total amount of points that must be spent to qualify for. Generally used as a requisite for enhancement trees
+   */
   case class ReqPointsSpent(points: SpendablePoints, amount: Int) extends Requirement {
     override def prefix: Option[String] = Some(points.entryName)
 
     /**
-      * Sets or maps the source text for the DisplayName.
-      *
-      * @return Source text.
-      */
+     * Sets or maps the source text for the DisplayName.
+     *
+     * @return
+     *   Source text.
+     */
     override protected def nameSource: String = points.entryName
   }
 
-  /** Represents the Total points already spent in a given tree to qualify.
-    *
-    * @param id     the Enhancement Tree
-    * @param amount the total amount of points spent within the given tree.
-    */
-  case class ReqActionPointsInTree(id: String, amount: Int)
-      extends Requirement {
+  /**
+   * Represents the Total points already spent in a given tree to qualify.
+   *
+   * @param id
+   *   the Enhancement Tree
+   * @param amount
+   *   the total amount of points spent within the given tree.
+   */
+  case class ReqActionPointsInTree(id: String, amount: Int) extends Requirement {
     override def prefix: Option[String] = Some("ActionPointsSpentInTree")
 
     /**
-      * @inheritdoc
-      */
+     * @inheritdoc
+     */
     override protected def nameSource: String = id.splitByCase.toPascalCase
   }
 
-  case class BaseAttackBonusReq(amount: Int)
-      extends Requirement
-      with Abbreviation {
+  case class BaseAttackBonusReq(amount: Int) extends Requirement with Abbreviation {
 
-    /** The short form of the word
-      */
+    /**
+     * The short form of the word
+     */
     override val abbr: String = "BaB"
 
     override def prefix: Option[String] = None
 
     /**
-      * @inheritdoc
-      */
+     * @inheritdoc
+     */
     override protected def nameSource: String = abbr.splitByCase.toPascalCase
 
-    /** Expands the abbr to its full value
-      */
+    /**
+     * Expands the abbr to its full value
+     */
     override def toFullWord: String = entryName.splitByCase
   }
 
-  /** Represents the minimum level of a given class to qualify
-    *
-    * @param id    the id of the player class
-    * @param level the minimum level for a class.
-    */
+  /**
+   * Represents the minimum level of a given class to qualify
+   *
+   * @param id
+   *   the id of the player class
+   * @param level
+   *   the minimum level for a class.
+   */
   case class ReqClass(id: String, level: Int) extends Requirement {
     override def prefix: Option[String] =
       Some(HeroicCharacterClass.searchPrefixSource)
 
     /**
-      * @inheritdoc
-      */
+     * @inheritdoc
+     */
     override protected def nameSource: String = id.splitByCase.toPascalCase
   }
 
-  /** Represents the minimum level of a given class to qualify
-    *
-    * @param id    the patron / faction
-    * @param level the minimum amount of favor required
-    */
+  /**
+   * Represents the minimum level of a given class to qualify
+   *
+   * @param id
+   *   the patron / faction
+   * @param level
+   *   the minimum amount of favor required
+   */
   case class ReqFavorPatron(id: String, level: Int) extends Requirement {
     override def prefix: Option[String] = Some(FavorPatron.searchPrefixSource)
 
     /**
-      * @inheritdoc
-      */
+     * @inheritdoc
+     */
     override protected def nameSource: String = id.splitByCase.toPascalCase
   }
 
-  /** Represents a prerequisite enhancement, generally used as a
-    * prerequisite for a higher level enhancement.
-    *
-    * @param id the id of the enhancement
-    */
+  /**
+   * Represents a prerequisite enhancement, generally used as a prerequisite for a higher level enhancement.
+   *
+   * @param id
+   *   the id of the enhancement
+   */
   case class ReqEnhancement(id: String) extends Requirement {
     override def prefix: Option[String] = Some("Enhancement")
 
     /**
-      * @inheritdoc
-      */
+     * @inheritdoc
+     */
     override protected def nameSource: String = id.splitByCase.toPascalCase
   }
 
-    case class ReqClassEnhancement(id:String) extends Requirement {
-        /**
-          * Sets or maps the source text for the DisplayName.
-          *
-          * @return Source text.
-          */
-        override protected def nameSource: String =  id.splitByCase.toPascalCase
+  case class ReqClassEnhancement(id: String) extends Requirement {
+    /**
+     * Sets or maps the source text for the DisplayName.
+     *
+     * @return
+     *   Source text.
+     */
+    override protected def nameSource: String = id.splitByCase.toPascalCase
 
-        override def prefix: Option[String] = Some("ClassEnhancement")
-    }
+    override def prefix: Option[String] = Some("ClassEnhancement")
+  }
 
-  /** Represents a particular alignment, i.e. A Pure Good weapon requires [[io.truthencode.ddo.model.alignment.MoralAxis.Good]] (Either the law or moral axis)
-    * Some items, such as Generated armors such as Armors of Stability give bonus if the character is [[io.truthencode.ddo.model.alignment.Alignments.TrueNeutral]].
-    *
-    * @param id either a fully qualified Alignment (i.e. ChaoticGood) or one of the axis, i.e. Lawful or Evil
-    *
-    */
-  case class ReqAlignment(id: Either[AlignmentType, Alignments])
-      extends Requirement {
+  /**
+   * Represents a particular alignment, i.e. A Pure Good weapon requires
+   * [[io.truthencode.ddo.model.alignment.MoralAxis.Good]] (Either the law or moral axis) Some items, such as Generated
+   * armors such as Armors of Stability give bonus if the character is
+   * [[io.truthencode.ddo.model.alignment.Alignments.TrueNeutral]].
+   *
+   * @param id
+   *   either a fully qualified Alignment (i.e. ChaoticGood) or one of the axis, i.e. Lawful or Evil
+   */
+  case class ReqAlignment(id: Either[AlignmentType, Alignments]) extends Requirement {
 
     /**
-      * Prefixes the value with "Align" keyword.
-      *
-      * @return the Prefix based on Alignment type and scope
-      * @todo Prefix based on Axis verses fully qualified alignment
-      */
+     * Prefixes the value with "Align" keyword.
+     *
+     * @return
+     *   the Prefix based on Alignment type and scope
+     * @todo
+     *   Prefix based on Axis verses fully qualified alignment
+     */
     override def prefix: Option[String] = Some("Align")
 
     /**
-      * @inheritdoc
-      */
+     * @inheritdoc
+     */
     override protected def nameSource: String = id match {
       case Left(x: LawAxis) =>
         s"Align:{${x.entryName.splitByCase.toPascalCase}}"
@@ -243,102 +260,112 @@ object Requirement extends Enum[Requirement] {
 
   }
 
-  /** Represents the minimum Guild level a player must be to equip an item.
-    *
-    * @param id The level of the Guild the player must be a member of
-    *           @note These items are generally out of game.
-    */
+  /**
+   * Represents the minimum Guild level a player must be to equip an item.
+   *
+   * @param id
+   *   The level of the Guild the player must be a member of
+   * @note
+   *   These items are generally out of game.
+   */
   case class ReqGuildLevel(id: Int) extends Requirement {
     override def prefix: Option[String] = None
 
     /**
-      * @inheritdoc
-      */
+     * @inheritdoc
+     */
     override protected def nameSource: String = "GuildLevel"
   }
 
-  /** Represents the minimum level of the skill to activate an ability or
-    * qualify for an enhancement.
-    *
-    * @param id      Identifies the skill, i.e. 'Bluff'
-    * @param amount  the minimum trained or effective level of the skill.
-    * @param trained determines if the skill must be trained to this level or simply a total value after buffs, equipment,
-    *                 etc.
-    *                true (i.e. the base skill must be explicitly trained to this level.)
-    *                false the total effective skill must be this level.
-    * i.e. can include bonuses from items / ability scores etc.
-    */
-  case class ReqSkill(id: String, amount: Int, trained: Boolean = false)
-      extends Requirement {
+  /**
+   * Represents the minimum level of the skill to activate an ability or qualify for an enhancement.
+   *
+   * @param id
+   *   Identifies the skill, i.e. 'Bluff'
+   * @param amount
+   *   the minimum trained or effective level of the skill.
+   * @param trained
+   *   determines if the skill must be trained to this level or simply a total value after buffs, equipment, etc. true
+   *   (i.e. the base skill must be explicitly trained to this level.) false the total effective skill must be this
+   *   level.
+   * i.e. can include bonuses from items / ability scores etc.
+   */
+  case class ReqSkill(id: String, amount: Int, trained: Boolean = false) extends Requirement {
     override def prefix: Option[String] = Some(Skill.searchPrefixSource)
 
     /**
-      * @inheritdoc
-      */
+     * @inheritdoc
+     */
     override protected def nameSource: String = id.splitByCase.toPascalCase
   }
 
-  /** Represents the minimum total character level required to activate or select
-    * a skill, wear an item etc.
-    *
-    * @param characterLevel Minimum character level.
-    */
+  /**
+   * Represents the minimum total character level required to activate or select a skill, wear an item etc.
+   *
+   * @param characterLevel
+   *   Minimum character level.
+   */
   case class ReqCharacterLevel(characterLevel: Int) extends Requirement {
     override def prefix: Option[String] = None
 
     /**
-      * @inheritdoc
-      */
+     * @inheritdoc
+     */
     override protected def nameSource: String = "CharacterLevel"
   }
 
   /**
-    * Represents a Feat character must possess in order to use / attain
-    *
-    * @param id Name of the Feat
-    */
+   * Represents a Feat character must possess in order to use / attain
+   *
+   * @param id
+   *   Name of the Feat
+   */
   case class ReqFeat(id: String) extends Requirement {
     override def prefix: Option[String] = Some(Feat.searchPrefixSource)
 
     /**
-      * @inheritdoc
-      */
+     * @inheritdoc
+     */
     override protected def nameSource: String = id.splitByCase.toPascalCase
   }
 
   /**
-    * Represents an Attribute (i.e. Strength / Dexterity etc.)
-    *
-    * @param id    Name of attribute
-    * @param level Minimum level of the given Attribute.
-    */
+   * Represents an Attribute (i.e. Strength / Dexterity etc.)
+   *
+   * @param id
+   *   Name of attribute
+   * @param level
+   *   Minimum level of the given Attribute.
+   */
   case class ReqAttribute(id: String, level: Int) extends Requirement {
     override def prefix: Option[String] = Some(Attribute.searchPrefixSource)
 
     /**
-      * @inheritdoc
-      */
+     * @inheritdoc
+     */
     override protected def nameSource: String = id.splitByCase.toPascalCase
   }
-case class ReqPointsInTree(treeLike: TreeLike,amount:Int) extends Requirement {
+  case class ReqPointsInTree(treeLike: TreeLike, amount: Int) extends Requirement {
     override def prefix: Option[String] = Some(treeLike.searchPrefix)
 
     /**
      * Sets or maps the source text for the DisplayName.
      *
-     * @return Source text.
+     * @return
+     *   Source text.
      */
     override protected def nameSource: String = treeLike.entryName.splitByCase.toPascalCase
-  val pointType: SpendablePoints = treeLike.pointType
-}
+    val pointType: SpendablePoints = treeLike.pointType
+  }
   case class ReqPoints(id: String, amount: Int) extends Requirement {
     override def prefix: Option[String] = Some(SpendablePoints.searchPrefix)
 
     /**
-      * Sets or maps the source text for the DisplayName.
-      *
-      * @return Source text.
-      */
+     * Sets or maps the source text for the DisplayName.
+     *
+     * @return
+     *   Source text.
+     */
     override protected def nameSource: String = id.splitByCase.toPascalCase
   }
 

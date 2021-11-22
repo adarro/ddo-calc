@@ -20,8 +20,8 @@ package io.truthencode.ddo.model.feats
 import io.truthencode.ddo.support.requisite.{FeatRequisiteImpl, FreeFeat}
 
 /**
-  * This feat increases the character maximum hit points by 30.
-  */
+ * This feat increases the character maximum hit points by 30.
+ */
 protected[feats] trait HeroicDurability extends FeatRequisiteImpl with Passive with FreeFeat {
   self: GeneralFeat =>
 }

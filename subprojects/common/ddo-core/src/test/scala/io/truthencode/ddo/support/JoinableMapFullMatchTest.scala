@@ -18,12 +18,10 @@
 package io.truthencode.ddo.support
 
 import io.truthencode.ddo.model.feats.Feat
-import org.scalatest.{FunSpec, Matchers}
+import org.scalatest.funspec.AnyFunSpec
+import org.scalatest.matchers.should.Matchers
 
-class JoinableMapFullMatchTest
-    extends FunSpec
-    with Matchers
-    with JoinAbleMap[String, Feat, Map[String, Feat]] {
+class JoinableMapFullMatchTest extends AnyFunSpec with Matchers with JoinAbleMap[String, Feat, Map[String, Feat]] {
   override implicit val joinOnKeys: Boolean = false
 
   override lazy val source = Feat.values.map { v =>

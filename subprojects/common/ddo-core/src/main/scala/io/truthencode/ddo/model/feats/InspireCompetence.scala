@@ -24,24 +24,15 @@ import io.truthencode.ddo.model.skill.Skill
 import io.truthencode.ddo.support.requisite._
 
 /**
-  * [[https://ddowiki.com/page/Inspire_Competence Inspire Competence]]
-  * Level: Bard 3
-  * Perform: 6 ranks*
-  * Target: Bard or one nearby ally.
-  * Base Duration: 5 minutes + 30 seconds per bard level
-  * Song Description: Gives one ally a +4 Music bonus to all skill checks. As of Update 41 no longer a separate song, but part of Bardic Inspiration.
-  * *Only the base number of Perform ranks bought with skill points count toward the requirement to be able to play this song. (Skill bonuses do not count.)
-  * Created by adarr on 4/5/2017.
-  */
+ * [[https://ddowiki.com/page/Inspire_Competence Inspire Competence]] Level: Bard 3 Perform: 6 ranks* Target: Bard or
+ * one nearby ally. Base Duration: 5 minutes + 30 seconds per bard level Song Description: Gives one ally a +4 Music
+ * bonus to all skill checks. As of Update 41 no longer a separate song, but part of Bardic Inspiration. *Only the base
+ * number of Perform ranks bought with skill points count toward the requirement to be able to play this song. (Skill
+ * bonuses do not count.) Created by adarr on 4/5/2017.
+ */
 protected[feats] trait InspireCompetence
-    extends SkillRequisiteImpl
-    with RequiresAllOfSkill
-    with ClassRequisiteImpl
-    with RequiresAllOfClass
-    with GrantsToClass
-    with ActiveFeat
-    with OnSongPlayedEvent
-    with BardSongCoolDown {
+  extends SkillRequisiteImpl with RequiresAllOfSkill with ClassRequisiteImpl with RequiresAllOfClass with GrantsToClass
+  with ActiveFeat with OnSongPlayedEvent with BardSongCoolDown {
   override def allOfClass: Seq[(HeroicCharacterClass, Int)] =
     List((HeroicCharacterClass.Bard, 3))
 

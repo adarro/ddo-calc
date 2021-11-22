@@ -22,14 +22,14 @@ import io.truthencode.ddo.support.tree.TreeLike
 
 package object enhancements {
 
-    /**
-     * Simple Convinience class to expand and manipulate Tree tuples
-     * @param source Tuple of Tree and cost values
-     */
-    implicit def expanders(source: (TreeLike, Int)) = {
+  /**
+   * Simple Convinience class to expand and manipulate Tree tuples
+   * @param source
+   *   Tuple of Tree and cost values
+   */
+  implicit def expanders(source: (TreeLike, Int)) = {
 
+    (source._1, source._1.pointType, source._2)
 
-            (source._1, source._1.pointType, source._2)
-
-    }
+  }
 }

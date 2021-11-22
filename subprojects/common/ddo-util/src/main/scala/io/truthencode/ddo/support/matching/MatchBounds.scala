@@ -18,7 +18,6 @@
 package io.truthencode.ddo.support.matching
 
 /**
-  * General Trait used to determine upper and lower bounds
-  */
+ * General Trait used to determine upper and lower bounds
+ */
 trait MatchBounds
-

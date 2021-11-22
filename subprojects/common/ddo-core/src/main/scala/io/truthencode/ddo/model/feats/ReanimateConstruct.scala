@@ -21,28 +21,17 @@ import io.truthencode.ddo.activation.AtWillEvent
 import io.truthencode.ddo.model.classes.HeroicCharacterClass
 import io.truthencode.ddo.model.classes.HeroicCharacterClass.Artificer
 import io.truthencode.ddo.model.misc.DefaultCasterCoolDown
-import io.truthencode.ddo.support.requisite.{
-  FeatRequisiteImpl,
-  GrantsToClass,
-  RequiresAllOfClass
-}
+import io.truthencode.ddo.support.requisite.{FeatRequisiteImpl, GrantsToClass, RequiresAllOfClass}
 
 /**
-  * [[https://ddowiki.com/page/Reanimate_Construct Reanimate Construct]]
-  * Usage: Active
-  * Prerequisite: Artificer
-  * Description
-  * Allows an Artificer to revive their Iron Defender minion three times per rest.
-  * @todo Add Times per rest
-  * Created by adarr on 2/16/2017.
-  */
+ * [[https://ddowiki.com/page/Reanimate_Construct Reanimate Construct]] Usage: Active Prerequisite: Artificer
+ * Description Allows an Artificer to revive their Iron Defender minion three times per rest.
+ * @todo
+ *   Add Times per rest Created by adarr on 2/16/2017.
+ */
 protected[feats] trait ReanimateConstruct
-    extends FeatRequisiteImpl
-    with ActiveFeat
-    with AtWillEvent
-    with GrantsToClass
-    with RequiresAllOfClass
-    with DefaultCasterCoolDown {
+  extends FeatRequisiteImpl with ActiveFeat with AtWillEvent with GrantsToClass with RequiresAllOfClass
+  with DefaultCasterCoolDown {
   override def allOfClass: Seq[(HeroicCharacterClass, Int)] =
     List((Artificer, 1))
   override def grantToClass: Seq[(HeroicCharacterClass, Int)] =

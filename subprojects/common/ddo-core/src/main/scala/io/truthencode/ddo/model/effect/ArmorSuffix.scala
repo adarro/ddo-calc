@@ -17,7 +17,7 @@
  */
 package io.truthencode.ddo.model.effect
 
-import enumeratum.{EnumEntry, Enum => SmartEnum}
+import enumeratum.{Enum => SmartEnum, EnumEntry}
 
 sealed trait ArmorSuffix extends EnumEntry with Suffix
 object ArmorSuffix extends SmartEnum[ArmorSuffix] {
@@ -29,8 +29,8 @@ object ArmorSuffix extends SmartEnum[ArmorSuffix] {
   // case object  Crafteditemenchantments/Temporarylist  extends ArmorSuffix
   case object ElectricResistance extends ArmorSuffix with Resist with Electric
   /**
-    * Enumeration indicating All elements
-    */
+   * Enumeration indicating All elements
+   */
   case object ElementalResistance extends ArmorSuffix with Resist with ElementalResistance
   case object FalseLife extends ArmorSuffix
   case object FireResistance extends ArmorSuffix with Resist with Fire

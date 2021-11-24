@@ -80,7 +80,7 @@
         <xtend.version>2.13.0</xtend.version>
 		<!-- Scala -->
         <scala.base>2.12</scala.base>
-        <scala.minor.version>3</scala.minor.version>
+        <scala.minor.version>2.13.6</scala.minor.version>
         <scala.version>${scala.base}.${scala.minor.version}</scala.version>
         <scala.tools.version>${scala.base}</scala.tools.version>
         <scala.logging.version>3.7.2</scala.logging.version>

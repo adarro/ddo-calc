@@ -32,6 +32,7 @@
         <groupId>ddo-calc</groupId>
         <artifactId>ddo-calc-parent</artifactId>
         <version>0.1.0-alpha</version>
+        <relativePath>../../../pom.xml</relativePath>
     </parent>
     <artifactId>ddo-core</artifactId>
     <name>Core DDO Objects</name>

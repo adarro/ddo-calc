@@ -36,7 +36,7 @@ class AlertnessTest extends AnyFunSpec with Matchers with LazyLogging {
       val lf = al.namedFeatures(listen).head
       val sf = al.namedFeatures(spot).head
       lf.value shouldBe 2
-      sf.value shouldBe (2)
+      sf.value shouldBe 2
       logger.debug(Feature.printFeature(lf))
       // al.namedFeatures.size shouldBe 2
 //      val l =al.namedFeatures(listen).head

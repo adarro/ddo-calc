@@ -18,38 +18,41 @@
 
 
 import java.nio.file.Files
-    import java.nio.file.Paths
+import java.nio.file.Paths
 
 
 rootProject.name = "ddo-calc-parent"
 
 
-    pluginManagement {
-        //  Scala
-        // Coverage
-        val scoveragePluginVersion: String by settings
-        // Avro
-        val avroHuggerPluginVersion: String by settings
-        val openApiGeneratorPluginVersion: String by settings
+pluginManagement {
+    //  Scala
+    // Coverage
+    val scoveragePluginVersion: String by settings
+    // Avro
+    val avroHuggerPluginVersion: String by settings
+    val openApiGeneratorPluginVersion: String by settings
 
 
-        val kordampGradlePluginVersion: String by settings
+    val kordampGradlePluginVersion: String by settings
+    val semVerPluginVersion: String by settings
 
-        plugins{
-            id ("com.github.hierynomus.license") version "0.16.1"
-            id("com.zlad.gradle.avrohugger") version avroHuggerPluginVersion
-            id("com.chudsaviet.gradle.avrohugger") version avroHuggerPluginVersion
-            id("org.openapi.generator") version openApiGeneratorPluginVersion
-            id("org.scoverage") version scoveragePluginVersion
 
-            id("org.kordamp.gradle.project") version kordampGradlePluginVersion
-        }
+    plugins {
+        id("com.github.hierynomus.license") version "0.16.1"
+        id("com.zlad.gradle.avrohugger") version avroHuggerPluginVersion
+        id("com.chudsaviet.gradle.avrohugger") version avroHuggerPluginVersion
+        id("org.openapi.generator") version openApiGeneratorPluginVersion
+        id("org.scoverage") version scoveragePluginVersion
 
-        repositories {
-            gradlePluginPortal()
-            mavenCentral()
-        }
+        id("org.kordamp.gradle.project") version kordampGradlePluginVersion
+        id("net.thauvin.erik.gradle.semver") version semVerPluginVersion
     }
+
+    repositories {
+        gradlePluginPortal()
+        mavenCentral()
+    }
+}
 
 // at some point in the future, see if we can safely make this property optional so there is no build warning if it is
 // not specified or create a sensible default

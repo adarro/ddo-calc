@@ -22,7 +22,7 @@ import com.typesafe.scalalogging.LazyLogging
 import com.wix.accord.Violation
 import io.truthencode.ddo.support.matching.{WordMatchStrategies, WordMatchStrategy}
 
-import scala.collection.GenSeq
+import scala.collection.Seq
 import scala.collection.immutable.HashMap
 import scala.language.postfixOps
 import scala.util.Random
@@ -53,20 +53,20 @@ package object support extends LazyLogging {
   object TraverseOps {
 
     // succinctly pooled from SO [[http://stackoverflow.com/a/14740340/400729]]
-    implicit class Crossable[X](xs: Traversable[X]) {
-      def cross[Y](ys: Traversable[Y]): Traversable[(X, Y)] = for { x <- xs; y <- ys } yield (x, y)
+    implicit class Crossable[X](xs: Iterable[X]) {
+      def cross[Y](ys: Iterable[Y]): Iterable[(X, Y)] = for { x <- xs; y <- ys } yield (x, y)
     }
 
-    implicit class Joinable[X](xs: GenSeq[X]) {
+    implicit class Joinable[X](xs: Seq[X]) {
 
-      def leftJoin[Y >: X](ys: GenSeq[Y]): GenSeq[X] = {
-        val yy: GenSeq[X] = xs.intersect(ys)
-        yy.union(xs.diff(yy))
+      def leftJoin[Y >: X](ys: Seq[Y]): Seq[X] = {
+        val yy: Seq[X] = xs.intersect(ys)
+        yy.concat(xs.diff(yy))
       }
 
-      def rightJoin[Y >: X](ys: GenSeq[Y]): GenSeq[Y] = {
-        val yy: GenSeq[Y] = ys.intersect(xs)
-        yy.union(ys.diff(yy))
+      def rightJoin[Y >: X](ys: Seq[Y]): Seq[Y] = {
+        val yy: Seq[Y] = ys.intersect(xs)
+        yy.concat(ys.diff(yy))
       }
     }
 
@@ -89,7 +89,7 @@ package object support extends LazyLogging {
         if (joinOnKeys) {
           val lk = xs.keys.toSeq.leftJoin(ys.keys.toSeq)
           xs.filter { k =>
-            lk.exists(k2 => k._1.equals(k2))
+            lk.contains(k._1)
           }
         } else {
           xs.toList.leftJoin(ys.toList).toList.toMap
@@ -113,7 +113,7 @@ package object support extends LazyLogging {
         if (joinOnKeys) {
           val lk = ys.keys.toSeq.leftJoin(xs.keys.toSeq)
           ys.filter { k =>
-            lk.exists(k2 => k._1.equals(k2))
+            lk.contains(k._1)
           }
         } else {
           ys.toList.leftJoin(xs.toList).toList.toMap
@@ -302,7 +302,7 @@ package object support extends LazyLogging {
       def randomCase: String = {
         val r = new Random
         s.toCharArray.map { x =>
-          if (r.nextInt > 0) x.toUpper else x.toLower
+          if (r.nextInt() > 0) x.toUpper else x.toLower
         }
           .foldLeft("")((r, c) => r + c)
       }
@@ -396,7 +396,7 @@ package object support extends LazyLogging {
      *   [[http://www.bindschaedler.com/2012/04/07/elegant-random-string-generation-in-scala/ Laurent BINDSCHAEDLER's blog post]]
      */
     def randomString(alphabet: String)(n: Int): String =
-      Stream
+      LazyList
         .continually(random.nextInt(alphabet.length))
         .map(alphabet)
         .take(n)

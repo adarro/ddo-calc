@@ -34,8 +34,9 @@ dependencies {
         /* Platform dependent */
         // https://mvnrepository.com/artifact/org.json4s/json4s-native
         implementation(group = "org.json4s", name = "json4s-native_$scalaMajorVersion", version = "3.6.7")
-        val scalaCheckVersion: String by project
 
+        annotationProcessor("net.thauvin.erik:semver:1.2.0")
+        compileOnly("net.thauvin.erik:semver:1.2.0")
         implementation(platform(project(":ddo-platform-scala")))
         implementation("org.scala-lang:scala-library:$scalaLibraryVersion")
         implementation(group = "com.beachape", name = "enumeratum_$scalaMajorVersion")
@@ -102,16 +103,31 @@ tasks {
         outputs.upToDateWhen { false }
     }
 }
+tasks.withType<JavaCompile>().configureEach {
+    options.annotationProcessorGeneratedSourcesDirectory = file("$projectDir/src/generated/java")
+    options.compilerArgs.plusAssign("-Asemver.project.dir=$projectDir")
+    dependsOn("syncVersionFiles")
+}
 
+/**
+ * Rewrite option should default to '-rewrite' but can be set to '-indent'
+ * example ./gradlew ddo-core:scalaCompile -Ps3rewrite=-indent
+ * NOTE: this will need to be revisited when not using scala 2.13
+ * We should also incorporate the -new-syntax option here instead of below
+ */
+val rewriteOption = project.findProperty("s3rewrite")?.toString() ?: "-rewrite"
 tasks.withType<ScalaCompile>().configureEach {
     scalaCompileOptions.apply {
         val scalaCompilerPlugin by configurations.getting
+        val scalaCoptions = listOf(
+                "-feature", "-deprecation", "-Ywarn-dead-code", "-Xplugin:${scalaCompilerPlugin.asPath}",
+                "-P:genjavadoc:out=$buildDir/generated/java", "-Xsource:3", "-new-syntax"
+        ) + listOf(rewriteOption).filter {ww -> ww.isNotBlank() }
+
         additionalParameters?.plusAssign(
-                listOf(
-                        "-feature", "-deprecation", "-Ywarn-dead-code", "-Xplugin:${scalaCompilerPlugin.asPath}",
-                        "-P:genjavadoc:out=$buildDir/generated/java"
-                )
+                scalaCoptions
         )
+        logger.info("executing scala compile with options\n $scalaCoptions")
         // Need to add -Ypartial-unification for Tapir
     }
 }

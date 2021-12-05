@@ -27,5 +27,5 @@ import org.junit.runner.RunWith
 @FullOGNL
 @RunWith(classOf[ConcordionRunner])
 class Epic extends FeatDisplayHelper with DefaultFlexmark {
-  override val enum: E = Feat
+  override val displayEnum: E = Feat
 }

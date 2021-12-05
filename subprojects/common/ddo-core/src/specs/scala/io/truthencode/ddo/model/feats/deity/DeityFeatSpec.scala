@@ -17,8 +17,6 @@
  */
 package io.truthencode.ddo.model.feats.deity
 
-import java.util
-
 import com.typesafe.scalalogging.LazyLogging
 import io.truthencode.ddo.model.feats._
 import io.truthencode.ddo.model.item.weapon.FavoredWeapon
@@ -30,8 +28,10 @@ import org.concordion.api.FullOGNL
 import org.concordion.integration.junit4.ConcordionRunner
 import org.junit.runner.RunWith
 
+import java.util
 import scala.collection.immutable
-import scala.collection.JavaConverters._
+import scala.jdk.CollectionConverters.SeqHasAsJava
+
 
 @FullOGNL
 @RunWith(classOf[ConcordionRunner])
@@ -79,7 +79,7 @@ class DeityFeatSpec extends FeatDisplayHelper with LazyLogging {
   }
 
   override def verify(): util.List[String] = {
-    enum.values.map(_.displayText).asJava
+    displayEnum.values.map(_.displayText).asJava
   }
 
   var instanceWorld: Option[World] = None
@@ -105,9 +105,9 @@ class DeityFeatSpec extends FeatDisplayHelper with LazyLogging {
     logger.debug(s"Attempting to find religion $dataS for world $instanceWorld")
     val worldReligion: immutable.Seq[Entry with ReligionFeatBase] =
       instanceWorld match {
-        case Some(World.Eberron) => enum.values.collect(filterEberron)
+        case Some(World.Eberron) => displayEnum.values.collect(filterEberron)
         case Some(World.ForgottenRealms) =>
-          enum.values.collect(filterForgottenRealms)
+          displayEnum.values.collect(filterForgottenRealms)
         case _ => Nil
       }
     logger.debug(s"Located ${worldReligion.size} matching world religion feats for $instanceWorld")
@@ -121,10 +121,10 @@ class DeityFeatSpec extends FeatDisplayHelper with LazyLogging {
       case Some(x: FavoredWeapon) => x.favoredWeapon.displayText
     }
 
-    val follower = (f.collectFirst(filterFollower)).firstStringValue
-    val beloved = (f.collectFirst(filterBeloved)).firstStringValue
-    val child = (f.collectFirst(filterChild)).firstStringValue
-    val unique = (f.collectFirst(filterUnique)).firstStringValue
+    val follower = f.collectFirst(filterFollower).firstStringValue
+    val beloved = f.collectFirst(filterBeloved).firstStringValue
+    val child = f.collectFirst(filterChild).firstStringValue
+    val unique = f.collectFirst(filterUnique).firstStringValue
     val drFeats = f.collect(filterDR)
     val k = for {
       x <- drFeats
@@ -160,5 +160,5 @@ class DeityFeatSpec extends FeatDisplayHelper with LazyLogging {
     beloved: String,
     damageReduction: String)
 
-  override val enum: E = Feat
+  override val displayEnum: E = Feat
 }

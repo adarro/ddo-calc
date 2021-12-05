@@ -21,6 +21,8 @@ description = "Common misc String and convenience Utilities"
 plugins {
     id("scala-profiles")
     id("acceptance-test-conventions")
+
+    id("java9")
 }
 
 dependencies {
@@ -29,7 +31,7 @@ dependencies {
         val scalaMajorVersion: String by project
         /* Platform dependent */
         // https://mvnrepository.com/artifact/org.json4s/json4s-native
-        implementation(group = "org.json4s", name = "json4s-native_$scalaMajorVersion", version = "4.0.3")
+        implementation(group = "org.json4s", name = "json4s-native_$scalaMajorVersion")
 
         implementation(platform(project(":ddo-platform-scala")))
         implementation("org.scala-lang:scala-library:$scalaLibraryVersion")

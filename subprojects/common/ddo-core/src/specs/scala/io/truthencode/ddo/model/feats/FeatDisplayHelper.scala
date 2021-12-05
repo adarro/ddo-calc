@@ -17,13 +17,12 @@
  */
 package io.truthencode.ddo.model.feats
 
-import java.util
-
-import enumeratum.{Enum, EnumEntry}
 import io.truthencode.ddo.model.DisplayHelper
-import io.truthencode.ddo.support.naming.{Description, DisplayName, FriendlyDisplay}
 
-import scala.collection.JavaConverters._
+import java.util
+import scala.jdk.CollectionConverters.SeqHasAsJava
+
+
 
 /**
  * Created by adarr on 2/17/2017. Adds convenience and display functions for Concordion Acceptance testing against Feats
@@ -37,7 +36,7 @@ trait FeatDisplayHelper extends DisplayHelper {
 
   def listValues(heading: String, collapse: Boolean = false): String = {
 
-    val data = enum.values.map { a =>
+    val data = displayEnum.values.map { a =>
       s"<tr><td>${a.displayText}</td></tr>"
     }.sorted.mkString
     val header = s"<table><tr><th>$heading</th></tr>"
@@ -57,7 +56,7 @@ trait FeatDisplayHelper extends DisplayHelper {
     case x: Feat with SubFeatInformation if !x.isSubFeat => x
   }
 
-  def verify(): util.List[String] = { enum.values.collect(filterByMainFeat) }.map { x =>
+  def verify(): util.List[String] = { displayEnum.values.collect(filterByMainFeat) }.map { x =>
     x.displayText
   }.toList.sorted.asJava
 
@@ -75,5 +74,5 @@ trait FeatDisplayHelper extends DisplayHelper {
   }
 
   protected def withName(skillId: String): Option[Entry] =
-    enum.withNameOption(skillId)
+    displayEnum.withNameOption(skillId)
 }

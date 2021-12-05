@@ -25,5 +25,5 @@ import org.junit.runner.RunWith
 
 @RunWith(classOf[ConcordionRunner])
 class Classes extends FeatDisplayHelper with DefaultFlexmark {
-  override val enum: E = ClassFeat
+  override val displayEnum: E = ClassFeat
 }

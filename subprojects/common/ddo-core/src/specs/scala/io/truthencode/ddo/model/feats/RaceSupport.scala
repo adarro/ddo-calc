@@ -17,13 +17,14 @@
  */
 package io.truthencode.ddo.model.feats
 
-import java.util
-
 import com.typesafe.scalalogging.LazyLogging
 import io.truthencode.ddo.model.race.Race
 import io.truthencode.ddo.support.requisite.RequirementOption
 
-import scala.collection.JavaConverters._
+import java.util
+import scala.jdk.CollectionConverters.SeqHasAsJava
+
+
 
 /**
  * Created by adarr on 2/19/2017.

@@ -21,6 +21,9 @@ import io.truthencode.ddo.enhancement.BonusType
 import io.truthencode.ddo.model.effect.{Feature, ParameterModifier, PartModifier, SourceInfo}
 import io.truthencode.ddo.model.stats.BasicStat
 
+/**
+ * Base trait that provides an additional "Miss Chance" in combat.
+ */
 trait DodgeChanceFeature extends Features {
   self: SourceInfo =>
   val dodgeBonusType: BonusType

@@ -17,27 +17,28 @@
  */
 package io.truthencode.ddo.model.feats.favor
 
-import java.util
-
 import com.typesafe.scalalogging.LazyLogging
-import io.truthencode.ddo.model.feats.{EberronReligionBase, Feat, FeatDisplayHelper, ReligionFeatBase}
+import io.truthencode.ddo.model.feats.{Feat, FeatDisplayHelper}
 import io.truthencode.ddo.support.requisite.RequiresAllOfPatron
 import org.concordion.api.FullOGNL
 import org.concordion.integration.junit4.ConcordionRunner
 import org.junit.runner.RunWith
-import scala.collection.JavaConverters._
+
+import java.util
+import scala.jdk.CollectionConverters.SeqHasAsJava
+
 
 @FullOGNL
 @RunWith(classOf[ConcordionRunner])
 class FavorFeatSpec extends FeatDisplayHelper with LazyLogging {
 
-  override val enum: E = Feat
+  override val displayEnum: E = Feat
   // RequiresAllOfPatron
   private val filterFavor: PartialFunction[Entry, Entry with RequiresAllOfPatron] = { case x: RequiresAllOfPatron =>
     x
   }
 
   override def verify(): util.List[String] = {
-    enum.values.map(_.displayText).asJava
+    displayEnum.values.map(_.displayText).asJava
   }
 }

@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+
+<project name="Maven" xmlns="http://maven.apache.org/DECORATION/1.0.0"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/DECORATION/1.0.0 http://maven.apache.org/xsd/decoration-1.0.0.xsd">
+	<bannerLeft>
+		<name>The Oracle at DDO Core</name>
+		<src>http://html5-slides-template.googlecode.com/git/images/akquinet-logo-small.png</src>
+		<href>http://adarro.github.io/</href>
+	</bannerLeft>
+
+	<skin>
+		<groupId>org.apache.maven.skins</groupId>
+		<artifactId>maven-fluido-skin</artifactId>
+
+	</skin>
+	<custom>
+		<fluidoSkin>
+			<sideBarEnabled>true</sideBarEnabled>
+			<topBarEnabled>true</topBarEnabled>
+			<sourceLineNumbersEnabled>true</sourceLineNumbersEnabled>
+			<profile>pre-release</profile>
+			<facebookLike />
+			<googlePlusOne />
+			<gitHub>
+				<projectId>adarro/ddo-calc</projectId>
+				<ribbonOrientation>right</ribbonOrientation>
+				<ribbonColor>green</ribbonColor>
+			</gitHub>
+			<ohloh>
+				<projectId>ddo-calc</projectId>
+				<widget>factoids</widget>
+			</ohloh>
+			<googleSearch>
+				<sitesearch />
+			</googleSearch>
+		</fluidoSkin>
+	</custom>
+
+
+	<body>
+		<links>
+			<item name="akquinet" href="http://www.akquinet.de/en" />
+		</links>
+
+		<menu name="Regular Web Site">
+			<item name="APT Format" href="format.html" />
+			<item name="Xdoc Example" href="xdoc.html" />
+			<item name="FAQ" href="faq.html" />
+		</menu>
+
+		<menu ref="reports" />
+	</body>
+</project>

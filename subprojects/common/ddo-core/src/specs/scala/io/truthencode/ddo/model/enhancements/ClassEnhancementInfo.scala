@@ -48,9 +48,8 @@ object ClassEnhancementInfo extends LazyLogging {
 
 // scalastyle:off
   def apply(
-    classEnhancement: ClassEnhancement
-      with Tier with ClassBasedEnhancements with PointInTreeRequisite with PointsAvailableRequisite
-      with RequiresActionPoints
+    classEnhancement: ClassEnhancement with Tier with ClassBasedEnhancements with PointInTreeRequisite with
+      PointsAvailableRequisite with RequiresActionPoints
   ) = {
     val e = classEnhancement
     def id: String = e.entryName
@@ -84,7 +83,7 @@ object ClassEnhancementInfo extends LazyLogging {
             logger.warn(
               s"Failed to locate ClassEnhancement with key $key, attempting using fullText $fullText"
             )
-            val fMap = ClassEnhancement.values.map { v =>
+            ClassEnhancement.values.map { v =>
               v.displayText -> v.entryName
             }
               .find(_._1 == y) match {
@@ -123,7 +122,7 @@ object ClassEnhancementInfo extends LazyLogging {
       val description: String = e.rawDescription
       CEnhancementDumb(key, id, actionPointCost, ranks, progression, requirements, description)
     } else {
-      logger.warn((s"did not locate id, using safe wrapper for $key"))
+      logger.warn(s"did not locate id, using safe wrapper for $key")
       CEnhancementDumb(key)
     }
 

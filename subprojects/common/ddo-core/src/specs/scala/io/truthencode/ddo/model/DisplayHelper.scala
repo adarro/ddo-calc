@@ -25,5 +25,5 @@ trait DisplayHelper {
   type Entry = EnumEntry with DisplayProperties
   type E = Enum[_ <: Entry]
 
-  val enum: E
+  val displayEnum: E
 }

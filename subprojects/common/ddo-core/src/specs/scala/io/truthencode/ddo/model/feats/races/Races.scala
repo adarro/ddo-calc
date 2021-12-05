@@ -34,5 +34,5 @@ import org.junit.runner.RunWith
     Array(MarkdownExtensions.WIKILINKS, MarkdownExtensions.AUTOLINKS, MarkdownExtensions.TASKLISTITEMS)
 )
 class Races extends FeatDisplayHelper {
-  override val enum: E = RacialFeat
+  override val displayEnum: E = RacialFeat
 }

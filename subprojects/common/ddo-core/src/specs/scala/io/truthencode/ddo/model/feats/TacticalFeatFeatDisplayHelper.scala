@@ -17,14 +17,13 @@
  */
 package io.truthencode.ddo.model.feats
 
-import java.util
-
 import com.typesafe.scalalogging.LazyLogging
 
-import scala.collection.JavaConverters._
+import java.util
+import scala.jdk.CollectionConverters.SeqHasAsJava
 
 trait TacticalFeatFeatDisplayHelper extends FeatDisplayHelper with LazyLogging {
-  override val enum: E = Feat
+  override val displayEnum: E = Feat
 }
 
 abstract class TacticalFeatFeatDisplayHelperJava extends TacticalFeatFeatDisplayHelper {
@@ -34,5 +33,5 @@ abstract class TacticalFeatFeatDisplayHelperJava extends TacticalFeatFeatDisplay
     x
   }
 
-  def tacticalFeats: util.List[Entry] = { enum.values.collect(filterByTactical) }.sortBy(_.entryName).asJava
+  def tacticalFeats: util.List[Entry] = { displayEnum.values.collect(filterByTactical) }.sortBy(_.entryName).asJava
 }

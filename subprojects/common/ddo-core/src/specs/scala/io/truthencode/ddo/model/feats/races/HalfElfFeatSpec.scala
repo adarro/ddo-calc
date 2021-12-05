@@ -18,14 +18,14 @@
 package io.truthencode.ddo.model.feats.races
 
 import java.util
-
 import io.truthencode.ddo.model.feats.{Feat, FeatDisplayHelper, RaceSupport}
 import io.truthencode.ddo.model.race.Race
 import io.truthencode.ddo.support.requisite.RequirementOption
 import org.concordion.integration.junit4.ConcordionRunner
 import org.junit.runner.RunWith
 
-import scala.collection.JavaConverters._
+import scala.jdk.CollectionConverters.SeqHasAsJava
+
 
 @RunWith(classOf[ConcordionRunner])
 class HalfElfFeatSpec extends FeatDisplayHelper with RaceSupport {
@@ -33,16 +33,6 @@ class HalfElfFeatSpec extends FeatDisplayHelper with RaceSupport {
   override val raceId: Race = Race.HalfElf
 
   def verifyNonDilettante(): util.List[String] = verifyGrantedFeats
-//    Feat.featsFromRace(Race.HalfElf)
-//      .filter { x =>
-//        !x.isSubFeat && !x.entryName.contains("Dilettante")
-//      }
-//      .map { x =>
-//        x.displayText
-//      }
-//      .toList
-//      .sorted
-//      .asJava
 
   def verifyDilettante(): util.List[String] =
     Feat
@@ -57,5 +47,5 @@ class HalfElfFeatSpec extends FeatDisplayHelper with RaceSupport {
       .sorted
       .asJava
 
-  override val enum: E = Feat
+  override val displayEnum: E = Feat
 }

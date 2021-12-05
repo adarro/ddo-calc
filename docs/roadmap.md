@@ -79,9 +79,9 @@ A web client may be the next feasible client. While not the end goal, a browser 
 
 The end goal of this project. 
 
-To keep a more consistent look and feel, a more universal client will be pursued. The client may add richer feature such as importing / exporting characters to other formats such as the commonly accepted forum post format and hopefully a format that will allow importing or exporting to other popular DDO Clients so users to try this without the need to start from scratch or feel locked into this tool.
+To keep a more consistent look and feel, a more universal client will be pursued. The client may add richer feature such as importing / exporting characters to other formats such as the commonly accepted forum post format and hopefully a format that will allow importing or exporting to other popular DDO Clients so users may try this without the need to start from scratch or feel locked into this tool.
 
-Targets
+### Targets
 * Mobile / Tablet
 An Android client for mobile and or tablet. 
 * Desktop

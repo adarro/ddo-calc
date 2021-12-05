@@ -26,12 +26,11 @@ import org.concordion.api.option.FlexmarkOptions;
 import org.concordion.integration.junit4.ConcordionRunner;
 import org.junit.runner.RunWith;
 
-import java.util.Arrays;
 import java.util.List;
 
 @RunWith(ConcordionRunner.class)
 public class EpicDestinies {
-    private transient List<Extension> e = Arrays.asList(EmojiExtension.create());
+    private final transient List<Extension> e = List.of(EmojiExtension.create());
     @FlexmarkOptions
     DataSet flexmarkOptions = new MutableDataSet()
             .set(EmojiExtension.ATTR_IMAGE_SIZE, "24")

@@ -19,6 +19,7 @@
 plugins {
     id("scala-profiles")
     id("acceptance-test-conventions")
+    id("doc-uml")
 }
 
 description = "Core DDO Objects"
@@ -27,17 +28,18 @@ dependencies {
     val concordionVersion: String by project
 
     dependencies {
+        implementation(platform(project(":ddo-platform-scala")))
         implementation(project(":ddo-util"))
 
         val scalaLibraryVersion: String by project
         val scalaMajorVersion: String by project
         /* Platform dependent */
         // https://mvnrepository.com/artifact/org.json4s/json4s-native
-        implementation(group = "org.json4s", name = "json4s-native_$scalaMajorVersion", version = "3.6.7")
+        implementation(group = "org.json4s", name = "json4s-native_$scalaMajorVersion")
 
         annotationProcessor("net.thauvin.erik:semver:1.2.0")
         compileOnly("net.thauvin.erik:semver:1.2.0")
-        implementation(platform(project(":ddo-platform-scala")))
+
         implementation("org.scala-lang:scala-library:$scalaLibraryVersion")
         implementation(group = "com.beachape", name = "enumeratum_$scalaMajorVersion")
         implementation(group = "com.typesafe", name = "config")
@@ -58,8 +60,6 @@ dependencies {
         testRuntimeOnly(group = "co.helmethair", name = "scalatest-junit-runner")
         testRuntimeOnly(group = "org.junit.vintage", name = "junit-vintage-engine")
 
-        val scalaCompilerPlugin by configurations.creating
-        scalaCompilerPlugin("com.typesafe.genjavadoc:genjavadoc-plugin_$scalaLibraryVersion:0.17")
         // Concordion BDD
         val acceptanceTestImplementation by configurations.getting
         acceptanceTestImplementation.extendsFrom(configurations["testCompileClasspath"])
@@ -84,59 +84,4 @@ dependencies {
 
         implementation(group = "org.jetbrains", name = "annotations", version = "17.0.0")
     }
-}
-
-tasks {
-    withType(Test::class.java) {
-        systemProperties["concordion.output.dir"] = "${reporting.baseDir}/spec"
-    }
-    logger.info("concordion output directory: *************************************")
-    // Use the built-in JUnit support of Gradle.
-    "test"(Test::class) {
-        useJUnitPlatform {
-            includeEngines = setOf("scalatest", "vintage")
-            testLogging {
-                events("passed", "skipped", "failed")
-            }
-        }
-
-        outputs.upToDateWhen { false }
-    }
-}
-tasks.withType<JavaCompile>().configureEach {
-    options.annotationProcessorGeneratedSourcesDirectory = file("$projectDir/src/generated/java")
-    options.compilerArgs.plusAssign("-Asemver.project.dir=$projectDir")
-    dependsOn("syncVersionFiles")
-}
-
-/**
- * Rewrite option should default to '-rewrite' but can be set to '-indent'
- * example ./gradlew ddo-core:scalaCompile -Ps3rewrite=-indent
- * NOTE: this will need to be revisited when not using scala 2.13
- * We should also incorporate the -new-syntax option here instead of below
- */
-val rewriteOption = project.findProperty("s3rewrite")?.toString() ?: "-rewrite"
-tasks.withType<ScalaCompile>().configureEach {
-    scalaCompileOptions.apply {
-        val scalaCompilerPlugin by configurations.getting
-        val scalaCoptions = listOf(
-                "-feature", "-deprecation", "-Ywarn-dead-code", "-Xplugin:${scalaCompilerPlugin.asPath}",
-                "-P:genjavadoc:out=$buildDir/generated/java", "-Xsource:3", "-new-syntax"
-        ) + listOf(rewriteOption).filter {ww -> ww.isNotBlank() }
-
-        additionalParameters?.plusAssign(
-                scalaCoptions
-        )
-        logger.info("executing scala compile with options\n $scalaCoptions")
-        // Need to add -Ypartial-unification for Tapir
-    }
-}
-tasks.withType<Javadoc> {
-    dependsOn("compileScala")
-    val ss: FileTree = sourceSets["main"].allJava
-    val ft = fileTree("$buildDir/generated/java")
-    source = ss.plus(ft)
-
-    dependsOn("compileScala")
-    // source = listOf(sourceSets.main.allJava, "$buildDir/generated/java")
 }

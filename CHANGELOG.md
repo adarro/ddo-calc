@@ -10,7 +10,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 - New Class: Alchemists
 
 ### Changed
-- Testing Racial Feats to filter core feats (exclude deity based etc)
+- Testing Racial Feats to filter core feats (exclude deity based etc.)
 
 ## [0.1.0-alpha] - 2015-12-03
 ### Added

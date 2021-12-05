@@ -64,6 +64,18 @@ class FeatureTest extends AnyFunSpec with Matchers with LazyLogging {
       ff.map(_.skill) should contain allOf (Listen, Spot)
     }
 
+    it("should contain relevant source information") {
+      val feat = GeneralFeat.Alertness
+      val ff: Option[Feature.SkillEffect] = feat.features.collectFirst { case y: Feature.SkillEffect =>
+        y
+      }
+      ff should not be empty
+      val effect = ff.get
+      val source = effect.source
+      source shouldEqual (feat)
+      logger.info(Feature.printFeature(effect))
+    }
+
     it("Should be extractable from A Feat ") {
       val param = EffectParameter.BonusType(BonusType.Feat)
       val part = EffectPart.DodgeChance

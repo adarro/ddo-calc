@@ -32,7 +32,7 @@ dependencies {
     implementation("org.scoverage:gradle-scoverage:7.0.0")
     implementation("gradle.plugin.org.dripto.gradle.plugin.plantuml:plugin:0.0.3")
     implementation("com.cosminpolifronie.gradle:gradle-plantuml-plugin:1.6.0")
-    implementation("io.swagger.core.v3:swagger-gradle-plugin:2.1.11")
+    implementation("io.swagger.core.v3:swagger-gradle-plugin:2.1.11")    
 }
 
 kotlin {

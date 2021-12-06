@@ -38,12 +38,18 @@ jobs:
             # fallback to using the latest cache if no exact match is found
             - v1-dependencies-
 
-      - run: cat /dev/null | ./gradlew check
+      - run: cat /dev/null | ./gradlew check acceptanceTest
 
+      - run:
+            name: Upload CodeCov.io Data
+            command: bash <(curl -s https://codecov.io/bash)
       - save_cache:
           paths:
             - ~/.gradle
           key: v1-dependencies--{{ checksum "build.gradle.kts" }}
 
       # run tests!
-      - run: cat /dev/null | /.gradlew acceptanceTest
+    test:
+        post:
+            - if [ -e ./gradlew ]; then ./gradlew reportScoverage --continue;else gradle reportScoverage --continue;fi
+            - bash <(curl -s https://codecov.io/bash)

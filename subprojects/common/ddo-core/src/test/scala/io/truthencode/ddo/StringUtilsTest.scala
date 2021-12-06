@@ -111,24 +111,26 @@ class StringUtilsTest extends AnyFunSpec with PropertyChecks with Matchers with 
     }
   }
 
+  private val wap = "WordsAndPhrases"
+
   describe("symbolsToWords") {
     it("should replace symbols in names") {
-      val expected = "WordsAndPhrases"
-      val given = "Words&Phrases"
-      given.symbolsToWords shouldEqual expected
+      val expected = wap
+      val _given = "Words&Phrases"
+      _given.symbolsToWords shouldEqual expected
     }
     it("should not alter when there are no symbols") {
-      val original = "WordsAndPhrases"
+      val original = wap
       val expected = original
-      val given = "WordsAndPhrases".symbolsToWords
-      given.symbolsToWords shouldEqual expected
+      val _given = "WordsAndPhrases".symbolsToWords
+      _given.symbolsToWords shouldEqual expected
 
     }
     it("should gracefully coexist with splitByCase") {
       val original = "Words&Phrases"
       val expected = "Words & Phrases"
-      val given = original.splitByCase
-      given.shouldEqual(expected)
+      val _given = original.splitByCase
+      _given.shouldEqual(expected)
 
     }
   }

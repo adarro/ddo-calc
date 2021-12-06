@@ -44,7 +44,7 @@ class StringUtilsTest extends AnyFunSpec with PropertyChecks with Matchers with 
   private final val ibm = List("I Believe Mom", "i borrow money", "IBetterMail")
   private final val nullString: String = null
 
-  val strategyResults = Table(
+  private val strategyResults = Table(
     ("Strategy", "Expected"),
     (WordMatchStrategies.FullUpperCaseWordStrategy, HashSet() ++ List("IBM")),
     (WordMatchStrategies.TitleCaseWordStrategy, HashSet() ++ List("IBM")),
@@ -52,7 +52,7 @@ class StringUtilsTest extends AnyFunSpec with PropertyChecks with Matchers with 
     (WordMatchStrategies.IgnoreCaseWordStrategy, HashSet() ++ List("IBM", "ibm"))
   )
 
-  val validRomanToNumbers =
+  private val validRomanToNumbers =
     Table(
       ("given", "expected"),
       ("Some Magical Ability IX", "Some Magical Ability 9"),
@@ -61,7 +61,7 @@ class StringUtilsTest extends AnyFunSpec with PropertyChecks with Matchers with 
       ("Spaced IV II", "Spaced 4 2")
     )
 
-  val validNumbersToRoman = Table(
+  private val validNumbersToRoman = Table(
     ("given", "expected"),
     ("Some Magical Ability 9", "Some Magical Ability IX"),
     ("Cool 4 stuff", "Cool IV stuff"),
@@ -115,13 +115,13 @@ class StringUtilsTest extends AnyFunSpec with PropertyChecks with Matchers with 
     it("should replace symbols in names") {
       val expected = "WordsAndPhrases"
       val given = "Words&Phrases"
-      given.symbolsToWords shouldEqual (expected)
+      given.symbolsToWords shouldEqual expected
     }
     it("should not alter when there are no symbols") {
       val original = "WordsAndPhrases"
       val expected = original
       val given = "WordsAndPhrases".symbolsToWords
-      given.symbolsToWords shouldEqual (expected)
+      given.symbolsToWords shouldEqual expected
 
     }
     it("should gracefully coexist with splitByCase") {

@@ -29,7 +29,7 @@ jobs:
     # See: https://circleci.com/docs/2.0/configuration-reference/#steps
     steps:
       - checkout
-      - run: ./gradlew check
+      - run: ./gradlew assemble
 
       # Download and cache dependencies
       - restore_cache:

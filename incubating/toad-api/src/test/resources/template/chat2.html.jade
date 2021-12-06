@@ -1,0 +1,38 @@
+-@ val host : String = "mysite.com" 
+!!! 5
+html
+  head
+    title Socko Web Socket Example
+  body
+    script(type="text/javascript") var hostUrl="#{host}"
+    :javascript
+      var socket;
+      if (!window.WebSocket) {
+        window.WebSocket = window.MozWebSocket;
+      }
+      if (window.WebSocket) {
+        var sUrl = \"ws://" + hostUrl + "/api/\";
+        alert("attempting websocket");
+        socket = new WebSocket(sUrl); // Note the address must match the route
+        socket.onmessage = function(event) { var ta = document.getElementById('responseText'); ta.value = ta.value + '\\n' + event.data };
+        socket.onopen = function(event) { var ta = document.getElementById('responseText'); ta.value = \"Web Socket opened!\"; };
+        socket.onclose = function(event) { var ta = document.getElementById('responseText'); ta.value = ta.value + \"Web Socket closed\"; };
+      } else { 
+        alert(\"Your browser does not support Web Sockets.\");
+      }
+      
+      function send(message) {
+        if (!window.WebSocket) { alert('nothing to do, try this with a websocket capable browser!"); return; }
+        if (socket.readyState == WebSocket.OPEN) {
+        alert("sending " + message);
+        socket.send(message);
+        } else {
+        alert(\"The socket is not open.\");
+      }
+      }
+    h1 Socko Web Socket Example
+    form(onsubmit='return')
+      input(type='text' name='message' value='Hello')
+      input(type='button' value='Send web socket data' onclick='send(this.form.message.value)')
+      h3 Output
+      textarea(id='responseText' style='width: 500px;')

@@ -23,8 +23,8 @@ import com.vladsch.flexmark.util.data.MutableDataSet
 import com.vladsch.flexmark.util.misc.Extension
 
 trait GfmTaskListOptions extends Flexmark {
-  private def safeItemDone = TaskListExtension.ITEM_DONE_MARKER.getDefaultValue.removeNbsp
-  private def safeItemNotDone = TaskListExtension.ITEM_NOT_DONE_MARKER.getDefaultValue.removeNbsp
+  private def safeItemDone = TaskListExtension.ITEM_DONE_MARKER.getDefaultValue.removeNbsp()
+  private def safeItemNotDone = TaskListExtension.ITEM_NOT_DONE_MARKER.getDefaultValue.removeNbsp()
   abstract override def flexmarkExtensions: Seq[Extension] = super.flexmarkExtensions :+ TaskListExtension.create()
   abstract override def calls: Seq[() => MutableDataSet] = super.calls :+ gfmTaskOptions()
 

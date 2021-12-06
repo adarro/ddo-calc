@@ -46,7 +46,7 @@ sealed trait Feature[V] {
 object Feature {
 
   def printFeature(f: Feature[_]): String = {
-    s"Feature:\nName:\t${f.name} \nvalue:\t${f.value}\nsource:\t${f.source}\ntext:\t${f.effectText}\n "
+    s"Feature:\nName:\t${f.name.getOrElse("Unknown")} \nvalue:\t${f.value}\nsource:\t${f.source}\ntext:\t${f.effectText.getOrElse("")}\n "
   }
 
   case class SkillEffect(

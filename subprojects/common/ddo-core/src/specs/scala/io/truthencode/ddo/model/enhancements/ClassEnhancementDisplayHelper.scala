@@ -29,10 +29,10 @@ import io.truthencode.ddo.support.requisite.{
 import io.truthencode.ddo.support.tree.ClassTrees
 
 trait ClassEnhancementDisplayHelper extends EnhancementDisplayHelper with LazyLogging {
-  override val enum: E = ClassEnhancement
+  override val displayEnum: E = ClassEnhancement
   type ENH = ClassEnhancement with Tier with ActionPointRequisite with PointInTreeRequisite
 
-  val values: Seq[ENH] = enum.values.collect { case x: ENH => x }
+  val values: Seq[ENH] = displayEnum.values.collect { case x: ENH => x }
 
   lazy val mappedValues: Map[String, ClassEnhancementInfo] = {
 

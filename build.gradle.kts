@@ -18,9 +18,10 @@
 import java.util.*
 
 plugins {
-    id ("com.github.hierynomus.license") version "0.16.1"
+
     id("org.kordamp.gradle.project")
     id("net.thauvin.erik.gradle.semver")
+    `maven-publish`
 }
 
 
@@ -33,9 +34,8 @@ val gitExtension = "${project.name}.git"
 val siteScm = "${gitHubBaseSite}/$gitExtension"
 group = "io.truthencode"
 
-
 val releaseActive: Boolean? = rootProject.findProperty("release") as Boolean?
-version = VersionInfo().version
+
 
 config {
     release = if (releaseActive != null) releaseActive!! else false
@@ -44,6 +44,7 @@ config {
         vendor = "TruthEncode"
         description = "DDO Character Analyzer and Planner"
         inceptionYear = "2015"
+        version = VersionInfo().version
 
         links {
             website = gitHubBaseSite
@@ -74,19 +75,29 @@ config {
             minpom {
                 enabled = false
             }
+            jar {
+               enabled = false
+            }
         }
     }
 
     licensing {
+        excludes = setOf("**/*.md", "**/*.sql", "buildSrc\\build\\kotlin-dsl\\plugins-blocks\\extracted\\*.kts")
         licenses {
             license {
                 id = "Apache-2.0" //org.kordamp.gradle.plugin.base.model.LicenseId.APACHE_2_0
                 url = "https://www.apache.org/licenses/LICENSE-2.0.txt"
-
             }
         }
     }
 }
+
+tasks.create("showMyVersion") {
+    val v = project.version
+    println("project version: $v")
+
+}
+
 
 
 
@@ -147,22 +158,14 @@ class VersionInfo {
     }
 }
 
-//tasks.withType<com.hierynomus.gradle.license.tasks.LicenseFormat>() {
-//    header = rootProject.file("gradle/LICENSE_HEADER")
-//    ignoreFailures = true
-//    strictCheck = true
-//    URI = "https://www.apache.org/licenses/LICENSE-2.0.txt"
-//// extra.set("uri","https://www.apache.org/licenses/LICENSE-2.0.txt")
-//
-//  //  excludes(listOf("buildsrc\\build\\kotlin-dsl\\plugins-blocks\\extracted\\**"))
-//}
+
 //
 //tasks.withType<com.hierynomus.gradle.license.tasks.LicenseCheck>() {
 //    this.encoding = "UTF-8"
 //}
 
-allprojects{
-    repositories{
+allprojects {
+    repositories {
         mavenCentral()
     }
 
@@ -174,5 +177,11 @@ allprojects{
         } else {
             logger.warn("in root project, nothing doing")
         }
+    }
+    tasks.withType<ProcessResources> {
+        dependsOn(syncVersionFiles)
+    }
+    tasks.withType<com.diffplug.gradle.spotless.SpotlessTask> {
+        mustRunAfter(syncVersionFiles)
     }
 }

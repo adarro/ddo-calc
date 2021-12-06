@@ -28,5 +28,5 @@ import org.junit.runner.RunWith
 @RunWith(classOf[ConcordionRunner])
 class PaladinClassFeatSpec extends ClassFeatDisplayHelper {
   override val cClass: HeroicCharacterClass = Paladin
-  override val enum: E = Feat
+  override val displayEnum: E = Feat
 }

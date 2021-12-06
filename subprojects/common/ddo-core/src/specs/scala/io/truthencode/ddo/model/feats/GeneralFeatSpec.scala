@@ -33,6 +33,6 @@ import org.junit.runner.RunWith
 )
 @RunWith(classOf[ConcordionRunner])
 class GeneralFeatSpec extends FeatDisplayHelper {
-  val enum: E = GeneralFeat
+  val displayEnum: E = GeneralFeat
 
 }

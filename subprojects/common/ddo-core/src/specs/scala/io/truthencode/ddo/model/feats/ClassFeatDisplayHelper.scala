@@ -17,13 +17,12 @@
  */
 package io.truthencode.ddo.model.feats
 
-import java.util
-
 import com.typesafe.scalalogging.LazyLogging
 import io.truthencode.ddo.model.classes.HeroicCharacterClass
 import io.truthencode.ddo.support.requisite.{ClassRequisite, SelectableToClass}
 
-import scala.collection.JavaConverters._
+import java.util
+import scala.jdk.CollectionConverters.SeqHasAsJava
 
 /**
  * Created by Adarro on 3/5/2017.
@@ -36,7 +35,7 @@ trait ClassFeatDisplayHelper extends FeatDisplayHelper with LazyLogging {
 
   lazy val classFeatByLevelMap: Seq[(String, Seq[Int])] = {
     val levels = for {
-      f <- enum.values
+      f <- displayEnum.values
       e <- allTypesByLevelFilter(f)
     } yield f.displayText -> e
     levels
@@ -48,7 +47,7 @@ trait ClassFeatDisplayHelper extends FeatDisplayHelper with LazyLogging {
   }
 
   lazy val grantedFeats: util.List[String] = {
-    val values = { enum.values.collect(filterByGrantedTo) }.collect(filterByMainFeat)
+    val values = { displayEnum.values.collect(filterByGrantedTo) }.collect(filterByMainFeat)
     values.map(_.displayText).sorted.asJava
   }
 
@@ -119,7 +118,7 @@ trait ClassFeatDisplayHelper extends FeatDisplayHelper with LazyLogging {
     fn.flatMap(f => f(as))
 
   def grantedFeatsByLevel(level: Int): util.List[String] = {
-    val values = enum.values.map((_, level)).collect(filterByGrantedToByLevel)
+    val values = displayEnum.values.map((_, level)).collect(filterByGrantedToByLevel)
     values
       //   .filterNot(_._1.isSubFeat)
       .filter(_._2 == level)
@@ -129,7 +128,7 @@ trait ClassFeatDisplayHelper extends FeatDisplayHelper with LazyLogging {
   }
 
   def bonusFeatsByLevel(level: Int): util.List[String] = {
-    val values = enum.values.map((_, level)).collect(filterByClassBonusFeatByLevel)
+    val values = displayEnum.values.map((_, level)).collect(filterByClassBonusFeatByLevel)
     values
       .filter(_._2 == level)
       .map(_._1.displayText)
@@ -145,7 +144,7 @@ trait ClassFeatDisplayHelper extends FeatDisplayHelper with LazyLogging {
    *   List of Bonus Feat Names for the specific class sorted in Alpha ascending order.
    */
   def bonusFeats(): util.List[String] = {
-    val values = enum.values.collect(filterByClassBonusFeat)
+    val values = displayEnum.values.collect(filterByClassBonusFeat)
     values.map(_.displayText).sorted.asJava
   }
 

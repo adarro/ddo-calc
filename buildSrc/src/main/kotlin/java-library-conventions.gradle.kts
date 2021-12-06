@@ -16,6 +16,25 @@
  * limitations under the License.
  */
 plugins {
-     id("base-conventions")
-     `java-library`
+    id("base-conventions")
+    `java-library`
+}
+
+// See https://gist.github.com/adarro/0411f34ae1f048726b28e9f33e5c0a97 for JPMS revisit
+//
+java {
+    toolchain {
+        languageVersion.set(JavaLanguageVersion.of(11))
+    }
+}
+
+tasks.withType<JavaCompile>().configureEach {
+    options.generatedSourceOutputDirectory.set(file("$projectDir/src/generated/java"))
+    options.compilerArgs.plusAssign("-Asemver.project.dir=$projectDir")
+    modularity.inferModulePath.set(false)
+    // sourceCompatibility = JavaVersion.VERSION_11.toString()
+    //  targetCompatibility = JavaVersion.VERSION_11.toString()
+    dependsOn("syncVersionFiles")
+
+
 }

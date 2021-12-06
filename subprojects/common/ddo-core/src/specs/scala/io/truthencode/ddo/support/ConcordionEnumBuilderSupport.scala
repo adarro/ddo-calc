@@ -17,9 +17,8 @@
  */
 package io.truthencode.ddo.support
 
-import java.lang.Iterable
-
-import scala.collection.JavaConverters.asJavaIterableConverter
+import java.lang
+import scala.jdk.CollectionConverters.IterableHasAsJava
 import scala.util.Try
 
 /**
@@ -72,7 +71,7 @@ trait ConcordionEnumBuilderSupport {
     }
   }
 
-  def withNames(searchString: String, ignoreCase: String): Iterable[String] = {
+  def withNames(searchString: String, ignoreCase: String): lang.Iterable[String] = {
     withNames(searchString, strToBool(ignoreCase))
   }.sortWith(_ < _).asJava
 }

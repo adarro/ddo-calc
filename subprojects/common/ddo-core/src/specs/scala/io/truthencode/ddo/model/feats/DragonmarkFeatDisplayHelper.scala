@@ -21,5 +21,5 @@ package io.truthencode.ddo.model.feats
  * Created by adarr on 3/26/2017.
  */
 trait DragonmarkFeatDisplayHelper extends FeatDisplayHelper {
-  override val enum: E = DragonmarkFeat
+  override val displayEnum: E = DragonmarkFeat
 }

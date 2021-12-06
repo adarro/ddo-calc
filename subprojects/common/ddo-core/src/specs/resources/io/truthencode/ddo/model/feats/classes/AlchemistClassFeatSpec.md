@@ -10,14 +10,14 @@
 |[Arcane Lore][arcane_lore]|Passive|Represents your knowledge of the Arcane. This feat is received once for every Alchemist level.|
 |[Dismiss Charm](http://ddowiki.com/page/Dismiss_Charm) | Active |  Activate this short-ranged ability while targeting a charmed, commanded, controlled, or dominated enemy that is under your control to dispel the controlling effect. |
 |[Inscribe Alchemy Recipe](https://ddowiki.com/page/Inscribe_Alchemy_Recipe)|Active|You are able to copy alchemical formulae into your spellbooks|
-|[Magical Training](http://ddowiki.com/page/Magical_Training)| Passive | Magical training increases maximum spell points by 80. It also applies Echoes of Power if the caster drops below 12 spell points. Characters with this feat are considered proficient with orbs. As of Update 17, this feat is now a trainable feat. As of Update 19, this feat also grants +5% chance to Spell Critical.
+|[Magical Training](http://ddowiki.com/page/Magical_Training)| Passive | Magical training increases maximum spell points by 80. It also applies Echoes of Power if the caster drops below 12 spell points. Characters with this feat are considered proficient with orbs. As of Update 17, this feat is now a trainable feat. As of Update 19, this feat also grants +5% chance to Spell Critical.|
 
 ### Level 2
 
 | [ ][featLevel2] [Feats][result]| Description|
 |------------------------------------------|----|
 |[Arcane Lore][arcane_lore]|Represents your knowledge of the Arcane. This feat is received once for every Alchemist level.|
-|[Artificer Knowledge - Potions][artificer_knowledge] |(passive): Grants a +2 to UMD checks related to potion use, if any, and all potions used by the Alchemist have their caster levels increased by 1. This caster level bonus increases by 1 at Alchemist levels 5, 8, 11, and 14, and is capped by the Alchemist's Intelligence Bonus. This feat also gives damage bonuses to certain infusions.
+|[Artificer Knowledge - Potions][artificer_knowledge] |(passive): Grants a +2 to UMD checks related to potion use, if any, and all potions used by the Alchemist have their caster levels increased by 1. This caster level bonus increases by 1 at Alchemist levels 5, 8, 11, and 14, and is capped by the Alchemist's Intelligence Bonus. This feat also gives damage bonuses to certain infusions.|
 
 ### Level 3
 
@@ -37,7 +37,7 @@ Bonus Feat: An Alchemist can select a feat from the Artificer Bonus Feat list.
 | [ ][featLevel5] [Feats][result]| Description|
 |------------------------------------------|----|
 |[Arcane Lore][arcane_lore]|Represents your knowledge of the Arcane. This feat is received once for every artificer level.|
-|[Artificer Knowledge - Potions][artificer_knowledge] |(passive): All potions used by the Artificer have their caster levels increased by an additional 1, for a total of +2. This caster level bonus is capped by the Artificer's Intelligence Bonus.
+|[Artificer Knowledge - Potions][artificer_knowledge] |(passive): All potions used by the Artificer have their caster levels increased by an additional 1, for a total of +2. This caster level bonus is capped by the Artificer's Intelligence Bonus.|
 
 ### Level 6
 
@@ -58,7 +58,7 @@ Bonus Feat: An Alchemist can select a feat from the Artificer Bonus Feat list.
 | [ ][featLevel8] [Feats][result]| Description|
 |------------------------------------------|----|
 |[Arcane Lore][arcane_lore]|Represents your knowledge of the Arcane. This feat is received once for every artificer level.|
-|[Artificer Knowledge - Potions][artificer_knowledge] |(passive): All potions used by the Artificer have their caster levels increased by an additional 1, for a total of +3. This caster level bonus is capped by the Artificer's Intelligence Bonus.
+|[Artificer Knowledge - Potions][artificer_knowledge] |(passive): All potions used by the Artificer have their caster levels increased by an additional 1, for a total of +3. This caster level bonus is capped by the Artificer's Intelligence Bonus.|
 Bonus Feat: An artificer can select a feat from the Artificer Bonus Feat list.
 
 ### Level 9
@@ -78,7 +78,7 @@ Bonus Feat: An artificer can select a feat from the Artificer Bonus Feat list.
 | [ ][featLevel11] [Feats][result]| Description|
 |------------------------------------------|----|
 |[Arcane Lore][arcane_lore]|Represents your knowledge of the Arcane. This feat is received once for every artificer level.|
-|[Artificer Knowledge - Potions][artificer_knowledge]| (passive): All potions used by the Artificer have their caster levels increased by an additional 1, for a total of +4. This caster level bonus is capped by the Artificer's Intelligence Bonus.
+|[Artificer Knowledge - Potions][artificer_knowledge]| (passive): All potions used by the Artificer have their caster levels increased by an additional 1, for a total of +4. This caster level bonus is capped by the Artificer's Intelligence Bonus.|
 
 ### Level 12
 
@@ -98,7 +98,7 @@ Bonus Feat: An artificer can select a feat from the Artificer Bonus Feat list.
 | [ ][featLevel14] [Feats][result]| Description|
 |------------------------------------------|----|
 |[Arcane Lore][arcane_lore]|Represents your knowledge of the Arcane. This feat is received once for every artificer level.|
-|[Artificer Knowledge - Potions][artificer_knowledge]| (passive): All potions used by the Artificer have their caster levels increased by an additional 1, for a total of +5. This caster level bonus is capped by the Artificer's Intelligence Bonus.
+|[Artificer Knowledge - Potions][artificer_knowledge]| (passive): All potions used by the Artificer have their caster levels increased by an additional 1, for a total of +5. This caster level bonus is capped by the Artificer's Intelligence Bonus.|
 
 ### Level 15
 
@@ -127,9 +127,9 @@ Bonus Feat: An artificer can select a feat from the Artificer Bonus Feat list.
 
 ### Level 19
 
-| [ ][featLevel19] [Feats][result]| Description|
-|------------------------------------------|----|
-|[Arcane Lore][arcane_lore]|Represents your knowledge of the Arcane. This feat is received once for every artificer level.|
+| [ ][featLevel19] [Feats][result] | Description                                                                                    |
+|----------------------------------|------------------------------------------------------------------------------------------------|
+| [Arcane Lore][arcane_lore]       | Represents your knowledge of the Arcane. This feat is received once for every artificer level. |
 
 ### Level 20
 

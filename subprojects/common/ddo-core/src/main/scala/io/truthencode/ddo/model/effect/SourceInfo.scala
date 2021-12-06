@@ -28,8 +28,8 @@ trait SourceInfo {
 
 object SourceInfo {
 
-  def apply(sourceId: String, sourceRef: AnyRef): SourceInfo = new SourceInfo {
-    override val sourceId: String = sourceId
-    override val sourceRef: AnyRef = sourceRef
+  def apply(id: String, ref: AnyRef): SourceInfo = new SourceInfo {
+    override val sourceId: String = id
+    override val sourceRef: AnyRef = ref
   }
 }

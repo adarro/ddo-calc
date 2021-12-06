@@ -3,10 +3,11 @@
 version: 2.1
 orbs: 
   gradle: circleci/gradle@2.2.0
+  codecov: codecov/codecov@3.0.0
 # Define a job to be invoked later in a workflow.
 # See: https://circleci.com/docs/2.0/configuration-reference/#jobs
 jobs:
-  build:
+  build-and-test:
     # Specify the execution environment. You can specify an image from Dockerhub or use one of our Convenience Images from CircleCI's Developer Hub.
     # See: https://circleci.com/docs/2.0/configuration-reference/#docker-machine-macos-windows-executor
     docker:
@@ -30,7 +31,9 @@ jobs:
     steps:
       - checkout
       - run: ./gradlew assemble
-
+      - run: cat /dev/null | ./gradlew check acceptanceTest
+      - run: if [ -e ./gradlew ]; then ./gradlew reportScoverage --continue;else gradle reportScoverage --continue;fi
+      - codecov/upload
       # Download and cache dependencies
       - restore_cache:
           keys:
@@ -38,18 +41,12 @@ jobs:
             # fallback to using the latest cache if no exact match is found
             - v1-dependencies-
 
-      - run: cat /dev/null | ./gradlew check acceptanceTest
-
-      - run:
-            name: Upload CodeCov.io Data
-            command: bash <(curl -s https://codecov.io/bash)
       - save_cache:
           paths:
             - ~/.gradle
           key: v1-dependencies--{{ checksum "build.gradle.kts" }}
-
+workflows:
+  example-workflow:
+    jobs:
+      - build-and-test
       # run tests!
-    test:
-        post:
-            - if [ -e ./gradlew ]; then ./gradlew reportScoverage --continue;else gradle reportScoverage --continue;fi
-            - bash <(curl -s https://codecov.io/bash)

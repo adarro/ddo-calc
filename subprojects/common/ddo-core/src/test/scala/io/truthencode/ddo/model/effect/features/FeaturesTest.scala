@@ -25,7 +25,7 @@ import org.scalatest.funspec.AnyFunSpec
 import org.scalatest.matchers.should.Matchers
 
 class FeaturesTest extends AnyFunSpec with Matchers with LazyLogging {
-  val dodgeChance = BasicStat.DodgeChance.entryName // "DodgeChance"
+  private val dodgeChance = BasicStat.DodgeChance.entryName // "DodgeChance"
   describe("A Features List") {
     it("Should derive a list of names / ids") {
       val f = GeneralFeat.Dodge
@@ -37,7 +37,7 @@ class FeaturesTest extends AnyFunSpec with Matchers with LazyLogging {
 
     it("Should have a named map list of features by id") {
       val f = GeneralFeat.Dodge
-      f.namedFeatures.keys.toStream should contain(dodgeChance)
+      f.namedFeatures.keys.to(LazyList) should contain(dodgeChance)
     }
 
     it("should contain source information") {
@@ -50,7 +50,7 @@ class FeaturesTest extends AnyFunSpec with Matchers with LazyLogging {
       s.sourceId should startWith("Feat")
       s.sourceId should endWith("Dodge")
       s.sourceRef shouldEqual d
-      v shouldEqual (d.dodgeBonusAmount)
+      v shouldEqual d.dodgeBonusAmount
     }
   }
 

@@ -29,7 +29,7 @@ jobs:
     # See: https://circleci.com/docs/2.0/configuration-reference/#steps
     steps:
       - checkout
-      - run: ./gradlew check
+      - run: ./gradlew assemble
 
       # Download and cache dependencies
       - restore_cache:
@@ -38,7 +38,7 @@ jobs:
             # fallback to using the latest cache if no exact match is found
             - v1-dependencies-
 
-      - run: cat /dev/null | ./gradlew testCompile
+      - run: cat /dev/null | ./gradlew check
 
       - save_cache:
           paths:

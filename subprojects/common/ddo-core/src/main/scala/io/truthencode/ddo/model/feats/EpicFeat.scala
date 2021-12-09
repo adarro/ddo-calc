@@ -18,6 +18,7 @@
 package io.truthencode.ddo.model.feats
 
 import enumeratum.Enum
+import io.truthencode.ddo.model.effect.features.{Features, FeaturesImpl}
 import io.truthencode.ddo.model.schools.School
 import io.truthencode.ddo.support.EpicLevels
 import io.truthencode.ddo.support.StringUtils.Extensions
@@ -29,13 +30,15 @@ import scala.collection.immutable
 /**
  * Created by adarr on 2/14/2017.
  */
-sealed trait EpicFeat extends Feat with FriendlyDisplay with SubFeatInformation with RequiresCharacterLevel {
-  self: FeatType with Requisite with Inclusion with EpicFeatCategory =>
+sealed trait EpicFeat
+  extends Feat with FriendlyDisplay with SubFeatInformation with LevelRequisiteImpl with RequiresCharacterLevel
+  with FeaturesImpl {
+  self: FeatType with Requisite with Inclusion with EpicFeatCategory with Features =>
 
   /**
    * Default Minimum Level for all Epic Feats. Override this with a higher level as needed.
    */
-  override val characterLevel: Int = EpicLevels.min
+  override val requireCharacterLevel: Int = EpicLevels.min
 
 }
 

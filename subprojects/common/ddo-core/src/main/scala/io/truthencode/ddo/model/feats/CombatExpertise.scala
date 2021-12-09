@@ -17,10 +17,13 @@
  */
 package io.truthencode.ddo.model.feats
 
-import java.time.Duration
-
+import io.truthencode.ddo.enhancement.BonusType
+import io.truthencode.ddo.model.abilities.ActiveAbilities
 import io.truthencode.ddo.model.attribute.Attribute
+import io.truthencode.ddo.model.effect.features.{FeaturesImpl, GrantAbilityFeature}
 import io.truthencode.ddo.support.requisite.{FeatRequisiteImpl, RequiresAttribute}
+
+import java.time.Duration
 
 /**
  * [[https://ddowiki.com/page/Combat_Expertise Combat Expertise]] Cooldown: 30 seconds Usage: Active, Toggled Stance
@@ -30,9 +33,12 @@ import io.truthencode.ddo.support.requisite.{FeatRequisiteImpl, RequiresAttribut
  */
 protected[feats] trait CombatExpertise
   extends FeatRequisiteImpl with ActiveFeat with RequiresAttribute with MartialArtsFeat with FighterBonusFeat
-  with ArtificerBonusFeat with DefensiveCombatStance {
+  with ArtificerBonusFeat with DefensiveCombatStance with FeaturesImpl with GrantAbilityFeature {
   self: GeneralFeat =>
   override val requiresAttribute = List((Attribute.Intelligence, 13))
 
   override def coolDown: Option[Duration] = Some(Duration.ofSeconds(30))
+
+  override val grantBonusType: BonusType = BonusType.Feat
+  override val grantedAbility: ActiveAbilities = ActiveAbilities.CombatExpertise
 }

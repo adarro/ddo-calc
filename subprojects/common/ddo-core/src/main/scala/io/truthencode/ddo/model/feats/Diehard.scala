@@ -17,15 +17,21 @@
  */
 package io.truthencode.ddo.model.feats
 
+import io.truthencode.ddo.enhancement.BonusType
 import io.truthencode.ddo.model.classes.HeroicCharacterClass
 import io.truthencode.ddo.model.classes.HeroicCharacterClass.Ranger
+import io.truthencode.ddo.model.effect.features.{FeaturesImpl, UnconsciousRecoveryFeature}
 import io.truthencode.ddo.support.requisite.{ClassRequisiteImpl, FeatRequisiteImpl, FreeFeat, GrantsToClass}
 
 /**
  * Icon Feat Diehard.png Diehard Passive You automatically stabilize when incapacitated.
  */
 protected[feats] trait Diehard
-  extends FeatRequisiteImpl with ClassRequisiteImpl with Passive with FreeFeat with GrantsToClass with MartialArtsFeat {
+  extends FeatRequisiteImpl with ClassRequisiteImpl with Passive with FreeFeat with GrantsToClass with MartialArtsFeat
+  with FeaturesImpl with UnconsciousRecoveryFeature {
   self: GeneralFeat =>
   override def grantToClass: Seq[(HeroicCharacterClass, Int)] = List((Ranger, 3))
+
+  override val autoRecoveryBonus: BonusType = BonusType.Feat
+  override val isAutoRecovery: Boolean = true
 }

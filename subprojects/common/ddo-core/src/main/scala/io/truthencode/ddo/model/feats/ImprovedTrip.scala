@@ -18,8 +18,10 @@
 package io.truthencode.ddo.model.feats
 
 import java.time.Duration
-
 import io.truthencode.ddo.activation.AtWillEvent
+import io.truthencode.ddo.enhancement.BonusType
+import io.truthencode.ddo.model.abilities.ActiveAbilities
+import io.truthencode.ddo.model.effect.features.{FeaturesImpl, GrantAbilityFeature}
 import io.truthencode.ddo.support.requisite.{FeatRequisiteImpl, RequiresAllOfFeat}
 
 /**
@@ -29,9 +31,11 @@ import io.truthencode.ddo.support.requisite.{FeatRequisiteImpl, RequiresAllOfFea
  */
 protected[feats] trait ImprovedTrip
   extends FeatRequisiteImpl with ActiveFeat with Tactical with RequiresAllOfFeat with FighterBonusFeat
-  with MartialArtsFeat {
+  with MartialArtsFeat with FeaturesImpl with GrantAbilityFeature {
   self: GeneralFeat =>
   override def coolDown: Option[Duration] = Some(Duration.ofSeconds(10))
 
   override val allOfFeats = List(GeneralFeat.CombatExpertise)
+  override val grantBonusType: BonusType = BonusType.Feat
+  override val grantedAbility: ActiveAbilities = ActiveAbilities.ImprovedTrip
 }

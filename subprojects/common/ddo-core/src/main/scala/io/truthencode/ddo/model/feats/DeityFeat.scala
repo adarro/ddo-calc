@@ -18,6 +18,7 @@
 package io.truthencode.ddo.model.feats
 
 import enumeratum.Enum
+import io.truthencode.ddo.model.effect.features.{Features, FeaturesImpl}
 import io.truthencode.ddo.support.naming.FriendlyDisplay
 import io.truthencode.ddo.support.requisite._
 
@@ -28,8 +29,8 @@ import scala.collection.immutable
  */
 sealed trait DeityFeat
   extends Feat with FriendlyDisplay with SubFeatInformation with ClassRequisiteImpl with FeatMatcher
-  with ReligionFeatBaseImpl {
-  self: FeatType with Requisite with Inclusion with RequisiteType =>
+  with ReligionFeatBaseImpl with FeaturesImpl {
+  self: FeatType with Requisite with Inclusion with RequisiteType with Features =>
 
   val matchFeat: PartialFunction[Feat, DeityFeat] = { case x: DeityFeat =>
     x

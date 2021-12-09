@@ -22,7 +22,7 @@ import com.typesafe.scalalogging.LazyLogging
 import com.wix.accord.Violation
 import io.truthencode.ddo.support.matching.{WordMatchStrategies, WordMatchStrategy}
 
-import scala.collection.Seq
+
 import scala.collection.immutable.HashMap
 import scala.language.postfixOps
 import scala.util.Random
@@ -67,6 +67,10 @@ package object support extends LazyLogging {
       def rightJoin[Y >: X](ys: Seq[Y]): Seq[Y] = {
         val yy: Seq[Y] = ys.intersect(xs)
         yy.concat(ys.diff(yy))
+      }
+
+      def nSelect[Y >: X](ys: Seq[Y]): Seq[X] = {
+        xs.filterNot(ys.contains)
       }
     }
 

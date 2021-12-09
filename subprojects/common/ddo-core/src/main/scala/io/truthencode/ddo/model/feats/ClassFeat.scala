@@ -21,7 +21,8 @@ import enumeratum.Enum
 import io.truthencode.ddo.model.classes.HeroicCharacterClass
 import io.truthencode.ddo.model.classes.HeroicCharacterClass.Ranger
 import io.truthencode.ddo.model.compendium.types.{MainType, MonsterType}
-import io.truthencode.ddo.model.spells.alchemical.{Primer, Reaction}
+import io.truthencode.ddo.model.effect.features.{Features, FeaturesImpl}
+import io.truthencode.ddo.model.spells.alchemical.Reaction
 import io.truthencode.ddo.support.naming.FriendlyDisplay
 import io.truthencode.ddo.support.requisite._
 
@@ -31,8 +32,8 @@ import scala.collection.immutable
  * Created by adarr on 2/14/2017.
  */
 sealed trait ClassFeat
-  extends Feat with FriendlyDisplay with SubFeatInformation with ClassRequisiteImpl with FeatMatcher {
-  self: FeatType with Requisite with Inclusion with RequisiteType =>
+  extends Feat with FriendlyDisplay with SubFeatInformation with ClassRequisiteImpl with FeatMatcher with FeaturesImpl {
+  self: FeatType with Requisite with Inclusion with RequisiteType with Features =>
 
   val matchFeat: PartialFunction[Feat, ClassFeat] = { case x: ClassFeat =>
     x

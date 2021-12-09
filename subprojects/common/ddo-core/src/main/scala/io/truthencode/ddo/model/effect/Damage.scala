@@ -35,3 +35,8 @@ trait UntypedPhysicalDamage extends DamageType with UnTyped with Typeless
 trait MagicalDamage extends DamageType with Magic
 
 trait UntypedMagicalDamage extends MagicalDamage with UnTyped
+
+/**
+ * Bane Damage bypasses Damage Reduction
+ */
+trait BaneDamage extends DamageType

@@ -41,10 +41,10 @@ trait DodgeChanceFeature extends Features {
 
       override val source: SourceInfo = src
       override lazy val value: Int = dodgeBonusAmount
-
+      override lazy val effectText: Option[String] = Some(s"Dodge by $value%")
     }
 
-  abstract override def features: List[Feature[_]] = {
+  abstract override def features: Seq[Feature[_]] = {
     assert(dodgeChance.value == dodgeBonusAmount)
     super.features :+ dodgeChance
   }

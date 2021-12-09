@@ -27,6 +27,7 @@ import io.truthencode.ddo.support.requisite.{FeatRequisiteImpl, RequiresBaB}
  * Power.) It can be taken multiple times, once for each of the different types.
  *
  * Base Attack Bonus +1
+ * @note Not Implemented?: Artificers are restricted to Bludgeon / ranged / slash.
  */
 trait ImprovedCriticalBase
   extends FeatRequisiteImpl with Passive with RequiresBaB with FighterBonusFeat with ArtificerBonusFeat {

@@ -18,8 +18,10 @@
 package io.truthencode.ddo.model.feats
 
 import java.time.Duration
-
 import io.truthencode.ddo.activation.AtWillEvent
+import io.truthencode.ddo.enhancement.BonusType
+import io.truthencode.ddo.model.abilities.ActiveAbilities
+import io.truthencode.ddo.model.effect.features.{FeaturesImpl, GrantAbilityFeature}
 import io.truthencode.ddo.support.requisite.{FeatRequisiteImpl, RequiresAllOfFeat, RequiresAnyOfFeat}
 
 /**
@@ -33,11 +35,14 @@ import io.truthencode.ddo.support.requisite.{FeatRequisiteImpl, RequiresAllOfFea
  */
 protected[feats] trait ImprovedFeint
   extends FeatRequisiteImpl with ActiveFeat with AtWillEvent with RequiresAnyOfFeat with RequiresAllOfFeat
-  with FighterBonusFeat {
+  with FighterBonusFeat with FeaturesImpl with GrantAbilityFeature {
   self: GeneralFeat =>
   override def anyOfFeats: Seq[Feat] = List(ClassFeat.SneakAttack)
 
-  override def coolDown: Option[Duration] = Some(Duration.ofSeconds(8))
+  override def coolDown: Option[Duration] = Some(Duration.ofSeconds(6))
 
   override def allOfFeats: Seq[Feat] = List(GeneralFeat.CombatExpertise)
+
+  override val grantBonusType: BonusType = BonusType.Feat
+  override val grantedAbility: ActiveAbilities = ActiveAbilities.ImprovedFeint
 }

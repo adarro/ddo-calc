@@ -18,11 +18,13 @@
 package io.truthencode.ddo.model.feats
 
 import java.time.Duration
-
 import io.truthencode.ddo.activation.AtWillEvent
+import io.truthencode.ddo.enhancement.BonusType
+import io.truthencode.ddo.model.abilities.ActiveAbilities
 import io.truthencode.ddo.model.attribute.Attribute.Strength
 import io.truthencode.ddo.model.attribute.{Attribute, DexterityLinked, LinkedAttributeImpl, StrengthLinked}
 import io.truthencode.ddo.model.effect.DifficultyCheck
+import io.truthencode.ddo.model.effect.features.{FeaturesImpl, GrantAbilityFeature}
 import io.truthencode.ddo.support.ModifierStrategy
 import io.truthencode.ddo.support.requisite.{FeatRequisiteImpl, FreeFeat}
 
@@ -35,14 +37,12 @@ import io.truthencode.ddo.support.requisite.{FeatRequisiteImpl, FreeFeat}
 protected[feats] trait Trip
   extends FeatRequisiteImpl with ActiveFeat
   //   with DifficultyCheck
-  with LinkedAttributeImpl with DexterityLinked with StrengthLinked with Tactical with FreeFeat {
+  with LinkedAttributeImpl with DexterityLinked with StrengthLinked with Tactical with FreeFeat with FeaturesImpl
+  with GrantAbilityFeature {
   self: GeneralFeat =>
-//  override def baseDC: Int = 10
-//
-//  override def statModifier: List[Attribute] = List(Strength)
-//
-//  override def modifierStrategy: ModifierStrategy = ModifierStrategy.HighestWins
+
   override def coolDown: Option[Duration] = Some(Duration.ofSeconds(15))
   // DC of 10 + Strength modifier + related Enhancements + Vertigo.
-
+  override val grantBonusType: BonusType = BonusType.Feat
+  override val grantedAbility: ActiveAbilities = ActiveAbilities.Trip
 }

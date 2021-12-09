@@ -37,6 +37,6 @@ trait SkillFeature extends Features {
     Feature.SkillEffect(f._1, f._2, bonusType, this)
   }
 
-  abstract override def features: List[Feature[_]] =
+  abstract override def features: Seq[Feature[_]] =
     super.features ++ skillChance
 }

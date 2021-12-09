@@ -35,6 +35,6 @@ import io.truthencode.ddo.support.requisite.{FreeFeat, RequiresCharacterLevel}
 protected[feats] trait Ruin extends FreeFeat with SpellFeats with OnSpellCastEvent with RequiresCharacterLevel {
   self: EpicFeat =>
 
-  final override val characterLevel: Int = 27
+  final override val requireCharacterLevel: Int = 27
 
 }

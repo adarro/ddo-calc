@@ -34,6 +34,7 @@ import io.truthencode.ddo.model.effect.Damage
 import io.truthencode.ddo.support.naming.{DisplayName, FriendlyDisplay}
 import io.truthencode.ddo.support.{Bludgeoning, Piercing, Slashing}
 import io.truthencode.ddo.support.StringUtils.Extensions
+import io.truthencode.ddo.support.TraverseOps.Joinable
 
 import scala.collection.immutable.IndexedSeq
 
@@ -51,6 +52,8 @@ sealed trait WeaponCategory
    */
   override protected def nameSource: String =
     entryName.splitByCase.toPascalCase
+
+//  lazy val weaponClass =
 }
 
 // scalastyle:off number.of.types number.of.methods
@@ -62,6 +65,84 @@ sealed trait WeaponCategory
  */
 object WeaponCategory extends Enum[WeaponCategory] {
 
+  def weaponClassToCategory: PartialFunction[WeaponCategory, (WeaponCategory, WeaponClass)] = {
+    case x: RangeDamage => (x, WeaponClass.Ranged)
+    case x: ThrownDamage => (x, WeaponClass.Thrown)
+    case x: Bludgeoning => (x, WeaponClass.Bludgeon)
+    case x: Piercing => (x, WeaponClass.Piercing)
+    case x: Slashing => (x, WeaponClass.Slashing)
+  }
+
+  /**
+   * Used by [[improvedCriticalRangeByWeapon]] to safely locate and build an array of weapons with a specific value.
+   * This routine may be useful elsewhere (thus parameterized) but essentially a one off.
+   * @param t
+   *   Possibly null / empty value
+   * @param n
+   *   Number to add to the Tuple if t is not null.
+   * @tparam T
+   *   Type of t
+   * @return
+   *   a Option[tuple] of (t,n) or none if t is null / empty.
+   */
+  def optPlus[T](t: T, n: Int): Option[(T, Int)] = {
+    val x = Option(t)
+    Option(x) match {
+      case Some(_) => Some(t, n)
+      case _ => None
+    }
+  }
+
+    /**
+     * Filters weapons for Improved Critical Threat modifiers according to source on ddowiki
+     * [[https://ddowiki.com/page/Improved_Critical]]
+     * @return Collection of Weapons with appropriate modifiers in a Tuple i.e. Seq((Falchion,3),...)
+     */
+  def improvedCriticalRangeByWeapon: Seq[(WeaponCategory, Int)] = WeaponClass.values.flatMap { weaponClass =>
+    filterByWeaponClass(weaponClass).map { weapon =>
+      // The item we are looking for is in one of these lists
+      val a1 = icPlus1.filter(_ == weapon).flatMap(optPlus(_, 1))
+      val a2 = icPlus2.filter(_ == weapon).flatMap(optPlus(_, 2))
+      val a3 = icPlus3.filter(_ == weapon).flatMap(optPlus(_, 3))
+      val squish = (a1 ++ a2 ++ a3)
+      val squished = squish.head
+      squished
+    }
+  }
+  def filterByWeaponClass(weaponClass: WeaponClass): Seq[WeaponCategory] =
+    WeaponCategory.values.collect(weaponClassToCategory).filter(_._2 == weaponClass).map(_._1)
+
+  /**
+   * These weapons get +3 to threat range with IC
+   * @see
+   *   [[https://ddowiki.com/page/Improved_Critical]]
+   */
+  val icPlus3: Seq[WeaponCategory] =
+    LazyList(Falchion, GreatCrossbow, Kukris, Rapier, Scimitar)
+  /**
+   * These weapons get +2 to threat range with IC
+   * @see
+   *   [[https://ddowiki.com/page/Improved_Critical]]
+   */
+  val icPlus2: Seq[WeaponCategory] = LazyList(
+    BastardSword,
+    Dagger,
+    Greatsword,
+    HeavyCrossbow,
+    Khopesh,
+    LightCrossbow,
+    Longsword,
+    RepeatingHeavyCrossbow,
+    RepeatingLightCrossbow,
+    Shortsword,
+    ThrowingDagger)
+  /**
+   * These weapons get +1 to threat range with IC (Everything Not in the plus 2 / 3 lists.)
+   * @see
+   *   [[https://ddowiki.com/page/Improved_Critical]]
+   */
+  val icPlus1: Seq[WeaponCategory] = WeaponCategory.values.nSelect(icPlus3.concat(icPlus2))
+
   case object BastardSword extends WeaponCategory with ExoticWeapon with MeleeDamage with Slashing
 
   case object BattleAxe extends WeaponCategory with MartialWeapon with MeleeDamage with Slashing
@@ -70,7 +151,7 @@ object WeaponCategory extends Enum[WeaponCategory] {
 
   case object Dagger extends WeaponCategory with SimpleWeapon with MeleeDamage with Piercing
 
-  case object Dart extends WeaponCategory with SimpleWeapon with MeleeDamage with Piercing
+  case object Dart extends WeaponCategory with SimpleWeapon with ThrownDamage with Piercing
 
   case object DwarvenWarAxe extends WeaponCategory with ExoticWeapon with MeleeDamage with Piercing {
 

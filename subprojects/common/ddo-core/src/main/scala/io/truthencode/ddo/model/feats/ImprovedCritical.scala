@@ -28,6 +28,7 @@ import io.truthencode.ddo.support.requisite.{FeatRequisiteImpl, RequiresBaB}
  *
  * Base Attack Bonus +8
  */
+@deprecated("Use ImprovedCriticalBase")
 protected[feats] trait ImprovedCritical
   extends FeatRequisiteImpl with Passive with RequiresBaB with FighterBonusFeat with ArtificerBonusFeat {
   self: GeneralFeat =>

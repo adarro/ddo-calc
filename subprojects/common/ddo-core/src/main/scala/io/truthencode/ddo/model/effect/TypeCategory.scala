@@ -47,3 +47,13 @@ trait Typeless extends TypeCategory
  * subject to moving to a new or different category in the future.
  */
 trait Other extends TypeCategory
+
+/**
+ * Basic flag for Elemental type damage.
+ *
+ * @note
+ *   this only indicates there is some type of elemental damage / resist use
+ *   [[io.truthencode.ddo.model.effect.ElementalResistance]] which extends this to indicate resist for all elemental
+ *   types.
+ */
+trait Elemental extends TypeCategory

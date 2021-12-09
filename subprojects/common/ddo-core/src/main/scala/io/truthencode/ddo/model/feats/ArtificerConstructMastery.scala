@@ -19,11 +19,9 @@ package io.truthencode.ddo.model.feats
 
 import io.truthencode.ddo.activation.AtWillEvent
 import io.truthencode.ddo.model.classes.HeroicCharacterClass
-import io.truthencode.ddo.model.misc.{DefaultCasterCoolDown, DefaultSpellCoolDown}
+import io.truthencode.ddo.model.misc.DefaultCasterCoolDown
 import io.truthencode.ddo.model.spells.{SingleTarget, Spell, SpellBookImpl}
 import io.truthencode.ddo.support.requisite.{FeatRequisiteImpl, GrantsToClass, RequiresAllOfClass}
-
-import scala.collection.immutable
 
 /**
  * Created by adarr on 2/16/2017. [[https://ddowiki.com/page/Artificer_Construct_Mastery]] This feat allows an Artificer
@@ -33,8 +31,8 @@ import scala.collection.immutable
  *   Currently set as an Active Feat: AtWillEvent
  */
 protected[feats] trait ArtificerConstructMastery
-  extends FeatRequisiteImpl with ActiveFeat with GrantsToClass with RequiresAllOfClass with SpellBookImpl
-  with AtWillEvent with DefaultCasterCoolDown {
+  extends FeatRequisiteImpl  with ActiveFeat with GrantsToClass with RequiresAllOfClass
+  with SpellBookImpl with AtWillEvent with DefaultCasterCoolDown {
   override def allOfClass: Seq[(HeroicCharacterClass, Int)] =
     List((HeroicCharacterClass.Artificer, 1))
   override def grantToClass: Seq[(HeroicCharacterClass, Int)] =

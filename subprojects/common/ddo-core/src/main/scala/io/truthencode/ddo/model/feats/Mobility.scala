@@ -17,6 +17,8 @@
  */
 package io.truthencode.ddo.model.feats
 
+import io.truthencode.ddo.enhancement.BonusType
+import io.truthencode.ddo.model.effect.features.{ArmorClassAmountFeature, DodgeChanceFeature, FeaturesImpl, MaxDexBonusFeature}
 import io.truthencode.ddo.support.requisite.{FeatRequisiteImpl, RequiresAllOfFeat}
 
 /**
@@ -25,7 +27,14 @@ import io.truthencode.ddo.support.requisite.{FeatRequisiteImpl, RequiresAllOfFea
  */
 trait Mobility
   extends FeatRequisiteImpl with Passive with RequiresAllOfFeat with MartialArtsFeat with FighterBonusFeat
-  with AlchemistBonusFeat {
+  with AlchemistBonusFeat with FeaturesImpl with DodgeChanceFeature with MaxDexBonusFeature with ArmorClassAmountFeature{
   self: GeneralFeat =>
-  override def allOfFeats: Seq[GeneralFeat] = List(GeneralFeat.Dodge)
+    override protected val armorBonusType: BonusType = BonusType.Feat
+    override protected val armorBonusAmount: Int = 4
+    override val mdbBonusType: BonusType = BonusType.Feat
+    override val mdbAmount: Int = 2
+    override val dodgeBonusType: BonusType = BonusType.Feat
+    override val dodgeBonusAmount: Int = 2
+
+    override def allOfFeats: Seq[GeneralFeat] = List(GeneralFeat.Dodge)
 }

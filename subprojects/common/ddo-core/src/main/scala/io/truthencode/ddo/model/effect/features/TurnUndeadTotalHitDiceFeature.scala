@@ -41,7 +41,7 @@ trait TurnUndeadTotalHitDiceFeature extends Features {
 
     }
 
-  abstract override def features: List[Feature[_]] = {
+  abstract override def features: Seq[Feature[_]] = {
     assert(tHD.value == totalHitDiceValue)
     super.features :+ tHD
   }

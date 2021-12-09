@@ -17,10 +17,13 @@
  */
 package io.truthencode.ddo.model.feats
 
-import java.time.Duration
-
+import io.truthencode.ddo.enhancement.BonusType
+import io.truthencode.ddo.model.abilities.ActiveAbilities
 import io.truthencode.ddo.model.attribute.Attribute
+import io.truthencode.ddo.model.effect.features.{FeaturesImpl, GrantAbilityFeature}
 import io.truthencode.ddo.support.requisite.{FeatRequisiteImpl, RequiresAttribute, RequiresBaB}
+
+import java.time.Duration
 
 /**
  * Icon Feat Resilience.png [[https://ddowiki.com/page/Resilience Resilience]] Active - Defensive Combat Stance You gain
@@ -32,8 +35,11 @@ import io.truthencode.ddo.support.requisite.{FeatRequisiteImpl, RequiresAttribut
  */
 protected[feats] trait Resilience
   extends FeatRequisiteImpl with ActiveFeat with DefensiveCombatStance with RequiresAttribute with RequiresBaB
-  with FighterBonusFeat with MartialArtsFeat {
+  with FighterBonusFeat with MartialArtsFeat with FeaturesImpl with GrantAbilityFeature {
   self: GeneralFeat =>
+  override val grantBonusType: BonusType = BonusType.Feat
+  override val grantedAbility: ActiveAbilities = ActiveAbilities.Resilience
+
   override def requiresAttribute: Seq[(Attribute, Int)] =
     List((Attribute.Constitution, 13))
 

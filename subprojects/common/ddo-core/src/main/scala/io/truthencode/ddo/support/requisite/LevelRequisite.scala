@@ -18,16 +18,49 @@
 package io.truthencode.ddo.support.requisite
 
 import io.truthencode.ddo.support.requisite.Requirement.ReqCharacterLevel
+import io.truthencode.ddo.support.requisite.RequirementImplicits.characterLevelToReq
 
 /**
  * Represents the character level required to attain a feat, skill etc.
  */
 trait LevelRequisite { self: Requisite =>
-  val characterLevel: Int
+  val requireCharacterLevel: Int
+
+  def anyOfCharacterLevel: Seq[Int]
+
+  def allOfCharacterLevel: Seq[Int]
+
+  def noneOfCharacterLevel: Seq[Int]
+
+  def grantToCharacterLevel: Seq[Int]
+
+  def bonusSelectableToCharacterLevel: Seq[Int]
+}
+
+trait LevelRequisiteImpl extends MustContainImpl[Requirement] with LevelRequisite {
+  self: Requisite with RequisiteType =>
+  override val requireCharacterLevel: Int = 0
+
+  def anyOfCharacterLevel: Seq[Int] = Nil
+
+  def allOfCharacterLevel: Seq[Int] = Nil
+
+  def noneOfCharacterLevel: Seq[Int] = Nil
+
+  def grantToCharacterLevel: Seq[Int] = Nil
+
+  def bonusSelectableToCharacterLevel: Seq[Int] = Nil
 }
 
 trait RequiresCharacterLevel extends LevelRequisite with RequiresOneOf[Requirement] with Requisite {
 
   abstract override def oneOf: Seq[Requirement] =
-    super.oneOf :+ ReqCharacterLevel(characterLevel)
+    super.oneOf :+ ReqCharacterLevel(requireCharacterLevel)
+}
+
+trait GrantsToCharacterLevel
+  extends LevelRequisite with GrantExpression with RequiresOneOf[Requirement] with Requisite {
+  abstract override def oneOf: Seq[Requirement] = super.oneOf ++ {
+    grantToCharacterLevel.collect(characterLevelToReq)
+  }
 }

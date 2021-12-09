@@ -18,8 +18,10 @@
 package io.truthencode.ddo.model.feats
 
 import java.time.Duration
-
 import io.truthencode.ddo.activation.AtWillEvent
+import io.truthencode.ddo.enhancement.BonusType
+import io.truthencode.ddo.model.abilities.ActiveAbilities
+import io.truthencode.ddo.model.effect.features.{FeaturesImpl, GrantAbilityFeature}
 import io.truthencode.ddo.support.requisite.{FeatRequisiteImpl, FreeFeat}
 
 /**
@@ -34,7 +36,10 @@ import io.truthencode.ddo.support.requisite.{FeatRequisiteImpl, FreeFeat}
 protected trait Sap
   extends FeatRequisiteImpl with ActiveFeat
 //    with AtWillEvent
-  with Tactical with FreeFeat with FighterBonusFeat {
+  with Tactical with FreeFeat with FighterBonusFeat with FeaturesImpl with GrantAbilityFeature {
   self: GeneralFeat =>
-  override def coolDown: Option[Duration] = Some(Duration.ofSeconds(15))
+    override val grantBonusType: BonusType = BonusType.Feat
+    override val grantedAbility: ActiveAbilities = ActiveAbilities.Sap
+
+    override def coolDown: Option[Duration] = Some(Duration.ofSeconds(15))
 }

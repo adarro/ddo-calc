@@ -34,5 +34,5 @@ trait InspireExcellence
 
   override def allOfSkill: Seq[(Skill, Int)] = List((Skill.Perform, 20))
 
-  override val characterLevel: Int = 21
+  override val requireCharacterLevel: Int = 21
 }

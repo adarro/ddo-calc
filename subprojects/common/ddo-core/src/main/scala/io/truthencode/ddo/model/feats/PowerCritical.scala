@@ -17,6 +17,12 @@
  */
 package io.truthencode.ddo.model.feats
 
+import io.truthencode.ddo.enhancement.BonusType
+import io.truthencode.ddo.model.effect.features.{
+  ConfirmCriticalHitAmountFeature,
+  CriticalDamageAmountFeature,
+  FeaturesImpl
+}
 import io.truthencode.ddo.support.requisite.{FeatRequisiteImpl, RequiresAnyOfFeat, RequiresBaB}
 
 /**
@@ -24,8 +30,14 @@ import io.truthencode.ddo.support.requisite.{FeatRequisiteImpl, RequiresAnyOfFea
  * critical hit damage (before multipliers are applied). * Weapon Focus: Any Base Attack Bonus 4
  */
 protected[feats] trait PowerCritical
-  extends FeatRequisiteImpl with Passive with RequiresBaB with RequiresAnyOfFeat with FighterBonusFeat {
+  extends FeatRequisiteImpl with Passive with RequiresBaB with RequiresAnyOfFeat with FighterBonusFeat with FeaturesImpl
+  with ConfirmCriticalHitAmountFeature with CriticalDamageAmountFeature {
   self: GeneralFeat =>
+
+  override protected val confirmCriticalHitBonusType: BonusType = BonusType.Feat
+  override protected val confirmCriticalHitBonusAmount: Int = 2
+  override protected val criticalDamageBonusType: BonusType = BonusType.Feat
+  override protected val criticalDamageBonusAmount: Int = 2
 
   override def requiresBaB: Int = 4
 

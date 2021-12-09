@@ -45,7 +45,7 @@ class DamageDiceTest extends AnyFunSpec with PropertyChecks with Matchers with M
       "3[2d10] - 4"
     )
   val validDiceExp: TableFor1[String] = Table(
-    ("dice"),
+    "dice",
     "3[2d10] + 4",
     "1.5[1d8]",
     "1d8",
@@ -55,7 +55,7 @@ class DamageDiceTest extends AnyFunSpec with PropertyChecks with Matchers with M
     "3d4 + 2",
     "3[2d10] - 4"
   )
-  def randomDiceSets: Traversable[String] = {
+  def randomDiceSets: Iterable[String] = {
 
     @scala.annotation.tailrec
     def rng: Int = {
@@ -71,7 +71,7 @@ class DamageDiceTest extends AnyFunSpec with PropertyChecks with Matchers with M
       shuffle(PhysicalDamageType.values.map(_.entryName)).take(rng).toSet
 
     val tpl: immutable.Seq[String] =
-      for { i <- 0.to(maxFlags) } yield pl
+      for { _ <- 0.to(maxFlags) } yield pl
         .mkString(",")
     for { x <- diceSet.cross(tpl) } yield s"${x._1} ${x._2}"
   }
@@ -86,10 +86,10 @@ class DamageDiceTest extends AnyFunSpec with PropertyChecks with Matchers with M
       val dice = DamageInfo(dExp)
       dice.damageType should contain(PhysicalDamageType.Slash)
       dice.extra.toInt shouldEqual (-4)
-      dice.extra.symbol shouldEqual ("-")
-      dice.weaponModifier shouldEqual (3)
-      dice.dice.number shouldEqual (2)
-      dice.dice.sides shouldEqual (10)
+      dice.extra.symbol shouldEqual "-"
+      dice.weaponModifier shouldEqual 3
+      dice.dice.number shouldEqual 2
+      dice.dice.sides shouldEqual 10
 
     }
 

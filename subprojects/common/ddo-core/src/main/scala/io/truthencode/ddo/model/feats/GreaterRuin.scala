@@ -39,7 +39,7 @@ protected[feats] trait GreaterRuin
   extends FreeFeat with SpellFeats with SpellBookImpl with OnSpellCastEvent with Passive with RequiresCharacterLevel
   with RequiresAllOfFeat { self: EpicFeat =>
 
-  final override val characterLevel: Int = 30
+  final override val requireCharacterLevel: Int = 30
 
   override def coolDown: Option[Duration] = Some(Duration.ofSeconds(15))
 

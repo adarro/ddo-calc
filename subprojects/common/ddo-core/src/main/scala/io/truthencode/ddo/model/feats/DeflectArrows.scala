@@ -17,15 +17,21 @@
  */
 package io.truthencode.ddo.model.feats
 
+import io.truthencode.ddo.enhancement.BonusType
 import io.truthencode.ddo.model.attribute.Attribute
 import io.truthencode.ddo.model.classes.HeroicCharacterClass
 import io.truthencode.ddo.model.classes.HeroicCharacterClass.Monk
+import io.truthencode.ddo.model.effect.features.{DeflectArrowsFeature, FeaturesImpl}
 import io.truthencode.ddo.support.requisite.{FeatRequisiteImpl, RequiresAllOfClass, RequiresAttribute}
 
 trait DeflectArrows
-  extends FeatRequisiteImpl with RequiresAllOfClass with Passive with RequiresAttribute with MartialArtsFeat {
+  extends FeatRequisiteImpl with RequiresAllOfClass with Passive with RequiresAttribute
+      with MartialArtsFeat with FeaturesImpl with DeflectArrowsFeature {
   self: GeneralFeat =>
   override def requiresAttribute: Seq[(Attribute, Int)] = List((Attribute.Dexterity, 13))
 
   override def allOfClass: Seq[(HeroicCharacterClass, Int)] = List((Monk, 1))
+
+    override protected val deflectArrowsBonusType: BonusType = BonusType.Feat
+    override protected val secondsPerArrow: Int = 6
 }

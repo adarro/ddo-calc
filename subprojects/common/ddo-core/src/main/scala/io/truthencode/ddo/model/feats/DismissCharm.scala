@@ -18,7 +18,10 @@
 package io.truthencode.ddo.model.feats
 
 import io.truthencode.ddo.activation.AtWillEvent
+import io.truthencode.ddo.enhancement.BonusType
+import io.truthencode.ddo.model.abilities.ActiveAbilities
 import io.truthencode.ddo.model.classes.HeroicCharacterClass
+import io.truthencode.ddo.model.effect.features.{FeaturesImpl, GrantAbilityFeature}
 import io.truthencode.ddo.model.misc.DefaultCoolDown
 import io.truthencode.ddo.support.requisite.{ClassRequisiteImpl, FeatRequisiteImpl, FreeFeat, GrantsToClass}
 
@@ -31,8 +34,12 @@ import io.truthencode.ddo.support.requisite.{ClassRequisiteImpl, FeatRequisiteIm
  */
 protected[feats] trait DismissCharm
   extends FeatRequisiteImpl with ActiveFeat with AtWillEvent with DefaultCoolDown with FreeFeat with ClassRequisiteImpl
-  with GrantsToClass { self: GeneralFeat =>
+  with GrantsToClass with FeaturesImpl with GrantAbilityFeature { self: GeneralFeat =>
 
   override def grantToClass: Seq[(HeroicCharacterClass, Int)] =
     HeroicCharacterClass.values.map((_, 1))
+
+    override val grantBonusType: BonusType = BonusType.Feat
+    override val grantedAbility: ActiveAbilities = ActiveAbilities.DismissCharm
+
 }

@@ -22,8 +22,8 @@ import io.truthencode.ddo.support.TraverseOps.Joinable
 import scala.collection.{GenIterable, GenSeq}
 import scala.language.higherKinds
 
-trait JoinAbleSeq[+X, C <: GenSeq[X]] extends JoinAbleBase[X, C] {
-  lazy val source = GenSeq[X]()
+trait JoinAbleSeq[+X, C <: Seq[X]] extends JoinAbleBase[X, C] {
+  lazy val source = Seq[X]()
   val list = source.take(sampleSize)
   //  val list:C = source.take(sampleSize)
   val listA = list.take(portion)
@@ -34,8 +34,8 @@ trait JoinAbleSeq[+X, C <: GenSeq[X]] extends JoinAbleBase[X, C] {
   val commonWithA = list.take(sampleSize - remainder)
   val commonWithB = list.toList.takeRight(sampleSize - remainder).toSeq
 
-  val leftJoinA = listA.toSeq.leftJoin(listB)
-  val rightJoinA = listA.toSeq.rightJoin(listB)
-  val leftJoinB = listB.toSeq.leftJoin(listA)
-  val rightJoinB = listB.toSeq.rightJoin(listA)
+  val leftJoinA = listA.leftJoin(listB)
+  val rightJoinA = listA.rightJoin(listB)
+  val leftJoinB = listB.leftJoin(listA)
+  val rightJoinB = listB.rightJoin(listA)
 }

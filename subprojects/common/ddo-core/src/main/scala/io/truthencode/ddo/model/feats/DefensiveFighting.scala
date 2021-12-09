@@ -17,8 +17,11 @@
  */
 package io.truthencode.ddo.model.feats
 
-import java.time.Duration
+import io.truthencode.ddo.enhancement.BonusType
+import io.truthencode.ddo.model.abilities.ActiveAbilities
+import io.truthencode.ddo.model.effect.features.{ArmorClassPercentFeature, FeaturesImpl, GrantAbilityFeature, HitChancePercentFeature}
 
+import java.time.Duration
 import io.truthencode.ddo.support.requisite.{FeatRequisiteImpl, FreeFeat}
 
 /**
@@ -29,13 +32,22 @@ import io.truthencode.ddo.support.requisite.{FeatRequisiteImpl, FreeFeat}
  *   recklessness effects currently present on your character.
  */
 protected[feats] trait DefensiveFighting
-  extends FeatRequisiteImpl with ActiveFeat with DefensiveCombatStance with FreeFeat {
+  extends FeatRequisiteImpl with ActiveFeat with DefensiveCombatStance with FreeFeat with FeaturesImpl
+  with GrantAbilityFeature with ArmorClassPercentFeature with HitChancePercentFeature {
   self: GeneralFeat =>
-  /**
+    override val grantBonusType: BonusType = BonusType.Feat
+    override val grantedAbility: ActiveAbilities = ActiveAbilities.DefensiveFighting
+
+    /**
    * @note
    *   Set to No Cooldown but likely has some default minimal one
    * @return
    *   Cool Down Duration (Currently None)
    */
   override def coolDown: Option[Duration] = None
+
+  override protected val armorBonusAmount: Int = 5
+  override protected val armorBonusType: BonusType = BonusType.Feat
+  override protected val hitChanceBonusAmount: Int = -5
+  override protected val hitChanceBonusType: BonusType = BonusType.Feat
 }

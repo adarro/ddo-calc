@@ -15,6 +15,15 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package io.truthencode.ddo.modeling
+package io.truthencode.ddo.model.feats
 
-case class Effect(name: String, description: Option[String])
+import org.scalatest.funspec.AnyFunSpec
+import org.scalatest.matchers.should.Matchers
+
+class MetaMagicFeatTest extends AnyFunSpec with Matchers {
+  describe("Meta Magics") {
+    they("can be bestowed as Feats") {
+      noException shouldBe thrownBy(MetaMagicFeat.values)
+    }
+  }
+}

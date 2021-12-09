@@ -17,9 +17,12 @@
  */
 package io.truthencode.ddo.model.feats
 
+import io.truthencode.ddo.enhancement.BonusType
+import io.truthencode.ddo.model.abilities.ActiveAbilities
 import io.truthencode.ddo.model.attribute.Attribute
 import io.truthencode.ddo.model.classes.HeroicCharacterClass
 import io.truthencode.ddo.model.classes.HeroicCharacterClass.Ranger
+import io.truthencode.ddo.model.effect.features.{FeaturesImpl, GrantAbilityFeature}
 import io.truthencode.ddo.model.misc.DefaultCoolDown
 import io.truthencode.ddo.support.requisite._
 
@@ -45,7 +48,7 @@ import io.truthencode.ddo.support.requisite._
 protected[feats] trait ImprovedPreciseShot
   extends FeatRequisiteImpl with ActiveFeat with RequiresAllOfFeat with RequiresAttribute with RequiresBaB
   with ClassRequisiteImpl with GrantsToClass with FighterBonusFeat with ArtificerBonusFeat with OffensiveRangedStance
-  with DefaultCoolDown {
+  with DefaultCoolDown with FeaturesImpl with GrantAbilityFeature {
   self: GeneralFeat =>
   override def allOfFeats: Seq[GeneralFeat] =
     List(GeneralFeat.PointBlankShot, GeneralFeat.PreciseShot)
@@ -63,4 +66,7 @@ protected[feats] trait ImprovedPreciseShot
 
   override def grantToClass: Seq[(HeroicCharacterClass, Int)] =
     List((Ranger, 11))
+
+  override val grantBonusType: BonusType = BonusType.Feat
+  override val grantedAbility: ActiveAbilities = ActiveAbilities.ImprovedPreciseShot
 }

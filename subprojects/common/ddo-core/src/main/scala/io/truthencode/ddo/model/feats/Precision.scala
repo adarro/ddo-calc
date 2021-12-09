@@ -17,7 +17,10 @@
  */
 package io.truthencode.ddo.model.feats
 
+import io.truthencode.ddo.enhancement.BonusType
+import io.truthencode.ddo.model.abilities.ActiveAbilities
 import io.truthencode.ddo.model.attribute.Attribute
+import io.truthencode.ddo.model.effect.features.{FeaturesImpl, GrantAbilityFeature}
 import io.truthencode.ddo.model.misc.DefaultCoolDown
 import io.truthencode.ddo.support.requisite.{FeatRequisiteImpl, RequiresAttribute, RequiresBaB}
 
@@ -30,10 +33,14 @@ import io.truthencode.ddo.support.requisite.{FeatRequisiteImpl, RequiresAttribut
  */
 protected[feats] trait Precision
   extends FeatRequisiteImpl with ActiveFeat with OffensiveCombatStance with RequiresAttribute with RequiresBaB
-  with AlchemistBonusFeat with FighterBonusFeat with MartialArtsFeat with DefaultCoolDown {
+  with AlchemistBonusFeat with FighterBonusFeat with MartialArtsFeat with DefaultCoolDown with FeaturesImpl
+  with GrantAbilityFeature {
   self: GeneralFeat =>
   override def requiresAttribute: Seq[(Attribute, Int)] =
     List((Attribute.Dexterity, 13))
 
   override def requiresBaB = 1
+
+  override val grantBonusType: BonusType = BonusType.Feat
+  override val grantedAbility: ActiveAbilities = ActiveAbilities.Precision
 }

@@ -41,7 +41,7 @@ trait TurnUndeadNumberOfTurnsFeature extends Features {
 
     }
 
-  abstract override def features: List[Feature[_]] = {
+  abstract override def features: Seq[Feature[_]] = {
     assert(nHD.value == numberOfTurnsBonusAmount)
     super.features :+ nHD
   }

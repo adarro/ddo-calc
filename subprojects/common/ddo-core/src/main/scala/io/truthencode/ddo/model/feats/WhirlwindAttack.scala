@@ -18,8 +18,10 @@
 package io.truthencode.ddo.model.feats
 
 import java.time.Duration
-
 import io.truthencode.ddo.activation.AtWillEvent
+import io.truthencode.ddo.enhancement.BonusType
+import io.truthencode.ddo.model.abilities.ActiveAbilities
+import io.truthencode.ddo.model.effect.features.{FeaturesImpl, GrantAbilityFeature}
 import io.truthencode.ddo.support.requisite.{FeatRequisiteImpl, RequiresAllOfFeat, RequiresBaB}
 
 /**
@@ -35,7 +37,7 @@ import io.truthencode.ddo.support.requisite.{FeatRequisiteImpl, RequiresAllOfFea
  */
 protected[feats] trait WhirlwindAttack
   extends FeatRequisiteImpl with ActiveFeat with AtWillEvent with RequiresAllOfFeat with RequiresBaB
-  with FighterBonusFeat {
+  with FighterBonusFeat with FeaturesImpl with GrantAbilityFeature {
   self: GeneralFeat =>
 
   override def coolDown: Option[Duration] = Some(Duration.ofSeconds(5))
@@ -55,4 +57,7 @@ protected[feats] trait WhirlwindAttack
       GeneralFeat.SpringAttack,
       GeneralFeat.CombatExpertise
     )
+
+  override val grantBonusType: BonusType = BonusType.Feat
+  override val grantedAbility: ActiveAbilities = ActiveAbilities.WhirlwindAttack
 }

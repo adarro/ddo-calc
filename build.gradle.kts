@@ -24,6 +24,7 @@ plugins {
     id("net.thauvin.erik.gradle.semver")
     `maven-publish`
     id("com.dorongold.task-tree") version "2.1.0" // Temp until working solution to userhome version script
+    id("org.scoverage") apply false
 }
 
 

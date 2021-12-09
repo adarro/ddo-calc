@@ -43,6 +43,9 @@ configure<org.scoverage.ScoverageExtension> {
         cfg
     }
     checks.plusAssign(cfgs)
+    coverageOutputXML.set(true)
+    coverageOutputCobertura.set(true)
+    coverageOutputHTML.set(true)
 }
 
 /**

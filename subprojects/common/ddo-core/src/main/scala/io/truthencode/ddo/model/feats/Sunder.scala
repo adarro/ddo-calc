@@ -17,8 +17,11 @@
  */
 package io.truthencode.ddo.model.feats
 
-import java.time.Duration
+import io.truthencode.ddo.enhancement.BonusType
+import io.truthencode.ddo.model.abilities.ActiveAbilities
+import io.truthencode.ddo.model.effect.features.{FeaturesImpl, GrantAbilityFeature}
 
+import java.time.Duration
 import io.truthencode.ddo.support.requisite.{FeatRequisiteImpl, FreeFeat}
 
 /**
@@ -26,7 +29,11 @@ import io.truthencode.ddo.support.requisite.{FeatRequisiteImpl, FreeFeat}
  * the target for 12 seconds if it fails a Fortitude save (DC 10 + Str mod). Some creatures may be immune to the sunder
  * effect
  */
-protected[feats] trait Sunder extends FeatRequisiteImpl with ActiveFeat with Tactical with FreeFeat {
+protected[feats] trait Sunder
+  extends FeatRequisiteImpl with ActiveFeat with Tactical with FreeFeat with FeaturesImpl with GrantAbilityFeature {
   self: GeneralFeat =>
+  override val grantBonusType: BonusType = BonusType.Feat
+  override val grantedAbility: ActiveAbilities = ActiveAbilities.Sunder
+
   override def coolDown: Option[Duration] = Some(Duration.ofSeconds(10))
 }

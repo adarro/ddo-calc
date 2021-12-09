@@ -19,13 +19,19 @@ package io.truthencode.ddo.model.effect
 
 import com.typesafe.scalalogging.LazyLogging
 import io.truthencode.ddo.enhancement.BonusType
-import io.truthencode.ddo.model.feats.GeneralFeat
+import io.truthencode.ddo.model.effect.Feature.printFeature
+import io.truthencode.ddo.model.feats.GeneralFeat.logger
+import io.truthencode.ddo.model.feats.{Feat, GeneralFeat}
+import io.truthencode.ddo.model.item.weapon.WeaponCategory.{filterByWeaponClass, icPlus1, icPlus2, icPlus3}
+import io.truthencode.ddo.model.item.weapon.WeaponClass
 import io.truthencode.ddo.model.skill.Skill.{Listen, Spot}
 import io.truthencode.ddo.model.stats.BasicStat
 import org.scalatest.TryValues._
 import org.scalatest.funspec.AnyFunSpec
 import org.scalatest.matchers.should.Matchers
+import io.truthencode.ddo.test.tags.{FeatTest, FeatureTest, SkillTest}
 
+import scala.Option
 import scala.collection.immutable
 
 class FeatureTest extends AnyFunSpec with Matchers with LazyLogging {
@@ -33,8 +39,26 @@ class FeatureTest extends AnyFunSpec with Matchers with LazyLogging {
   def fixture = new {
     val sourceInfo: SourceInfo = SourceInfo("TestContext", this)
   }
+
+  def optPlus[T](t: T, n: Int): Option[(T, Int)] = {
+    val x = Option(t)
+    logger.info(s"Maybe add $n to $x")
+    Option(x) match {
+      case Some(_) => Some(t, n)
+      case _ => None
+    }
+  }
+
+  val featEffects = {
+    val fList = for {
+      feat <- Feat.values
+      features <- feat.namedFeatures
+      feature <- features._2
+    } yield (feat, feature)
+  }
+
   describe("A feature") {
-    it("should be able to affect a dodge chance ") {
+    it("should be able to affect a dodge chance ", FeatureTest, FeatTest) {
       val param = EffectParameter.BonusType(BonusType.Feat)
       val part = EffectPart.DodgeChance
       val partMod = new PartModifier[Int, BasicStat] with ParameterModifier[Int, BonusType] {
@@ -54,7 +78,7 @@ class FeatureTest extends AnyFunSpec with Matchers with LazyLogging {
 
     }
 
-    it("Should support Skill Augmentation") {
+    it("Should support Skill Augmentation", FeatTest, SkillTest, FeatureTest) {
       val param = EffectParameter.BonusType(BonusType.Feat)
       val part = EffectPart.Skill
       val feat = GeneralFeat.Alertness
@@ -64,7 +88,7 @@ class FeatureTest extends AnyFunSpec with Matchers with LazyLogging {
       ff.map(_.skill) should contain allOf (Listen, Spot)
     }
 
-    it("should contain relevant source information") {
+    it("should contain relevant source information", FeatTest, SkillTest, FeatureTest) {
       val feat = GeneralFeat.Alertness
       val ff: Option[Feature.SkillEffect] = feat.features.collectFirst { case y: Feature.SkillEffect =>
         y
@@ -72,37 +96,25 @@ class FeatureTest extends AnyFunSpec with Matchers with LazyLogging {
       ff should not be empty
       val effect = ff.get
       val source = effect.source
-      source shouldEqual (feat)
+      source shouldEqual feat
       logger.info(Feature.printFeature(effect))
     }
 
-    it("Should be extractable from A Feat ") {
+    it("Should be extractable using a filter like Basic Stat or BonusType", FeatureTest, FeatTest) {
       val param = EffectParameter.BonusType(BonusType.Feat)
       val part = EffectPart.DodgeChance
       val feat = GeneralFeat.Dodge
       feat.features.collectFirst { case y: PartModifier[Int, BasicStat] with ParameterModifier[Int, BonusType] =>
         y
-
       } match {
-        case Some(x) => {
-          (x.parameter should be).a('success)
+        case Some(x) =>
+          (x.parameter should be).a(Symbol("success"))
           x.parameter.success.value should be(param)
-          (x.part should be).a('success)
+          (x.part should be).a(Symbol("success"))
           x.part.success.value should be(part)
-        }
       }
-
-//      val f = feat.features.headOption
-//      f shouldBe defined
-//      f match {
-//        case Some(x: PartModifier[Int, BasicStat] with ParameterModifier[Int, BonusType]) =>
-//          x.parameter should be a 'success
-//          x.parameter.success.value should be(param)
-//          x.part should be a 'success
-//          x.part.success.value should be(part)
-//      }
-
     }
+
     it("Should be able to sort a part and parameter with a value") {
       val param = EffectParameter.BonusType(BonusType.ActionBoost)
       val part = EffectPart.Feat(GeneralFeat.Trip)
@@ -118,26 +130,38 @@ class FeatureTest extends AnyFunSpec with Matchers with LazyLogging {
 
       pm.parameter.success.value should be(param)
       pm.part.success.value should be(part)
-      //  f.parameter should be a 'success //Be Success(BonusType(ActionBoost)) (EffectParameter.BonusType)
-      // f.part should be a 'success //shouldBe (EffectPart.Feat)
-      pm.value shouldEqual 3
-//      new PartModifier[Int, GeneralFeat]
-//        with ParameterModifier[Int, BonusType] {
-//        override protected[this] val pm = GeneralFeat.Trip
-//        override val parameter: EffectParameter =
-//          EffectParameter.DifficultyCheck
-//        override val value = 2
-//          override protected[this] val p = BonusType.ActionBoost
-//      }
-//
-//      new Feature[Int] with AugmentFeatureValue {
-//        override val parameter: EffectParameter =
-//          EffectParameter.DifficultyCheck
-//        override val part: EffectPart = EffectPart.Feat(Trip)
-//        override val value: Int = 2
-//      }
-    }
 
+      pm.value shouldEqual 3
+
+    }
+  }
+  describe("Improved Critical Features") {
+    they("Should be broken down by weapon type") {
+      val result = WeaponClass.values.flatMap { weaponClass =>
+        filterByWeaponClass(weaponClass).map { weapon =>
+          icPlus1 shouldNot be(empty)
+          icPlus2 shouldNot be(empty)
+          icPlus3 shouldNot be(empty)
+          // The item we are looking for is in one of these lists
+          val a1 = icPlus1.filter(_ == weapon).flatMap(optPlus(_, 1))
+          val a2 = icPlus2.filter(_ == weapon).flatMap(optPlus(_, 2))
+          val a3 = icPlus3.filter(_ == weapon).flatMap(optPlus(_, 3))
+
+          val squish = (a1 ++ a2 ++ a3)
+          squish should have size 1
+          logger.info(s"squish is ${squish.size}")
+          val squished = squish.head
+          squished._1 shouldEqual weapon
+          squished
+        }
+      }
+    }
+    they("Should have name") {
+      val icFeat = GeneralFeat.ImprovedCritical.subFeats.head
+      icFeat.features.foreach { f =>
+        logger.info(printFeature(f))
+      }
+    }
   }
 
 }

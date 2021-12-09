@@ -16,12 +16,14 @@
  * limitations under the License.
  */
 import java.util.*
+import kotlin.math.log
 
 plugins {
 
     id("org.kordamp.gradle.project")
     id("net.thauvin.erik.gradle.semver")
     `maven-publish`
+    id("com.dorongold.task-tree") version "2.1.0" // Temp until working solution to userhome version script
 }
 
 
@@ -35,7 +37,6 @@ val siteScm = "${gitHubBaseSite}/$gitExtension"
 group = "io.truthencode"
 
 val releaseActive: Boolean? = rootProject.findProperty("release") as Boolean?
-
 
 config {
     release = if (releaseActive != null) releaseActive!! else false
@@ -76,7 +77,7 @@ config {
                 enabled = false
             }
             jar {
-               enabled = false
+                enabled = false
             }
         }
     }
@@ -92,16 +93,12 @@ config {
     }
 }
 
+
 tasks.create("showMyVersion") {
     val v = project.version
-    println("project version: $v")
-
+    logger.info("project version: $v")
+    logger.info(project.gradle.gradleVersion)
 }
-
-
-
-
-
 
 class VersionInfo {
     /**
@@ -169,19 +166,23 @@ allprojects {
         mavenCentral()
     }
 
+
     val syncVersionFiles by tasks.registering(Copy::class) {
         if (rootProject != project) {
             logger.warn("We are updating properties file in ${project.name}")
-            from(file("$rootDir/version.properties"))
+            from("$rootDir/version.properties")
             into(projectDir)
         } else {
             logger.warn("in root project, nothing doing")
         }
     }
     tasks.withType<ProcessResources> {
-        dependsOn(syncVersionFiles)
+        mustRunAfter(syncVersionFiles)
     }
     tasks.withType<com.diffplug.gradle.spotless.SpotlessTask> {
+        mustRunAfter(syncVersionFiles)
+    }
+    tasks.withType<com.hierynomus.gradle.license.tasks.LicenseCheck> {
         mustRunAfter(syncVersionFiles)
     }
 }

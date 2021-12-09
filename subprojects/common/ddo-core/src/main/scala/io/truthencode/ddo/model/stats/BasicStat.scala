@@ -19,6 +19,9 @@ package io.truthencode.ddo.model.stats
 
 import enumeratum.{Enum, EnumEntry}
 import io.truthencode.ddo.Abbreviation
+import io.truthencode.ddo.model.item.weapon.WeaponCategory
+import io.truthencode.ddo.model.schools.School
+import io.truthencode.ddo.model.spells.SpellPower
 import io.truthencode.ddo.support.SearchPrefix
 import io.truthencode.ddo.support.StringUtils.Extensions
 import io.truthencode.ddo.support.naming.{DisplayName, FriendlyDisplay}
@@ -32,7 +35,21 @@ sealed trait BasicStat extends EnumEntry with DisplayName with FriendlyDisplay {
     entryName.splitByCase.toPascalCase
 }
 
-trait DodgeChance extends BasicStat with General
+trait DodgeChance extends BasicStat with MissChance
+
+trait ArmorClass extends BasicStat with MissChance
+
+trait MaxDexterityBonus extends BasicStat with MissChance
+
+trait ToHitChance extends BasicStat with HitChance
+
+trait WeaponDamage extends BasicStat with GeneralCombat
+
+trait MeleePower extends BasicStat with MeleeCombat
+
+trait RangedPower extends BasicStat with RangedCombat
+
+trait WeaponProficiency extends BasicStat with Proficiency
 
 trait BaseAttackBonus extends BasicStat with Abbreviation with General {
 
@@ -47,6 +64,18 @@ trait BaseAttackBonus extends BasicStat with Abbreviation with General {
   override def toFullWord: String = entryName
 }
 
+/**
+ * Used to determine how much damage you can receive before becoming unconscious or dead.
+ */
+trait HitPoints extends BasicStat with Health
+
+trait SpellPoints extends BasicStat with SpellPointPool
+
+trait SpellCriticalChance extends BasicStat with SpellCasting
+
+trait SpellCriticalMultiplier extends BasicStat with SpellCasting
+
+trait SpellDifficultyCheck extends BasicStat with SpellCasting
 /**
  * Affects Character speed when moving. (Moving while sneaking or wearing over-level equipment may reduce this speed)
  */
@@ -181,75 +210,120 @@ trait NumberOfTurns extends TurnUndeadCategory
 // General Combat
 protected trait GeneralCombatCategory extends BasicStat with GeneralCombat
 
-trait FortificationBypass extends GeneralCombatCategory
+trait FortificationBypass extends BasicStat with GeneralCombatCategory
 
-trait DodgeBypass extends GeneralCombatCategory
+trait DodgeBypass extends BasicStat with GeneralCombatCategory
 
-trait HelplessDamage extends GeneralCombatCategory
+trait HelplessDamage extends BasicStat with GeneralCombatCategory
 
-trait CriticalHitConfirmation extends GeneralCombatCategory
+trait CriticalHitConfirmation extends BasicStat with GeneralCombatCategory
 
-trait CriticalHitDamage extends GeneralCombatCategory
+trait CriticalHitDamage extends BasicStat with GeneralCombatCategory
 
-trait SneakAttackHitBonus extends GeneralCombatCategory
+trait CriticalThreatRange extends BasicStat with GeneralCombatCategory
 
-trait SneakAttackDamageBonus extends GeneralCombatCategory
+trait SneakAttackHitBonus extends BasicStat with GeneralCombatCategory
 
-trait SneakAttackDice extends GeneralCombatCategory
+trait SneakAttackDamageBonus extends BasicStat with GeneralCombatCategory
+
+trait SneakAttackDice extends BasicStat with GeneralCombatCategory
 
 // Melee Combat
 trait MeleeCombatCategory extends BasicStat with MeleeCombat
 
-trait OneHandedAttackSpeedBonus extends MeleeCombatCategory
+trait OneHandedAttackSpeedBonus extends BasicStat with MeleeCombatCategory
 
-trait TwoWeaponAttackSpeedBonus extends MeleeCombatCategory
+trait TwoWeaponAttackSpeedBonus extends BasicStat with MeleeCombatCategory
 
-trait TwoHandedAttackSpeedBonus extends MeleeCombatCategory
+trait TwoHandedAttackSpeedBonus extends BasicStat with MeleeCombatCategory
 
-trait QuarterstaffAttackSpeedBonus extends MeleeCombatCategory
+trait QuarterstaffAttackSpeedBonus extends BasicStat with MeleeCombatCategory
 
 /**
  * @note
  *   I could not find the display for Shield Bash chance on the character sheet. however, secondary shield bash is
  *   available in the '+' menu under melee combat
  */
-trait ShieldBashChance extends MeleeCombatCategory
+trait ShieldBashChance extends BasicStat with MeleeCombatCategory
 
-trait SecondaryShieldBashChance extends MeleeCombatCategory
+trait SecondaryShieldBashChance extends BasicStat with MeleeCombatCategory
 
-trait OffhandHitChance extends MeleeCombatCategory
+trait OffhandHitChance extends BasicStat with MeleeCombatCategory
 
-trait OffhandDoublestrike extends MeleeCombatCategory
+trait OffhandDoublestrike extends BasicStat with MeleeCombatCategory
 
-trait GlancingblowDamage extends MeleeCombatCategory
+trait GlancingblowDamage extends BasicStat with MeleeCombatCategory
 
-trait GlancingBlowProcChance extends MeleeCombatCategory
+trait GlancingBlowProcChance extends BasicStat with MeleeCombatCategory
 
-trait MeleeThreatMultiplier extends MeleeCombatCategory
+trait MeleeThreatMultiplier extends BasicStat with MeleeCombatCategory
 
-trait StrikeThroughChance extends MeleeCombatCategory
+trait StrikeThroughChance extends BasicStat with MeleeCombatCategory
 
 // Ranged Combat
 trait RangedCombatCategory extends BasicStat with RangedCombat
 
-trait ThrownAttackSpeedBonus extends RangedCombatCategory
+trait ThrownAttackSpeedBonus extends BasicStat with RangedCombatCategory
 
-trait NonRepeatingCrossbowAttackSpeedBonus extends RangedCombatCategory
+trait NonRepeatingCrossbowAttackSpeedBonus extends BasicStat with RangedCombatCategory
 
-trait RepeatingCrossbowAttackSpeedBonus extends RangedCombatCategory
+trait RepeatingCrossbowAttackSpeedBonus extends BasicStat with RangedCombatCategory
 
-trait BowAttackSpeedBonus extends RangedCombatCategory
+trait BowAttackSpeedBonus extends BasicStat with RangedCombatCategory
 
-trait RangedThreatMultiplier extends RangedCombatCategory
+trait RangedThreatMultiplier extends BasicStat with RangedCombatCategory
 
 /** Distance from target used for point blank damage (not shown in Game UI) */
-trait PointBlankShotRange extends RangedCombatCategory
+trait PointBlankShotRange extends BasicStat with RangedCombatCategory
 
+trait AutoRecovery extends BasicStat with Recovery
+
+trait GrantedAbility extends BasicStat with Ability
 // scalastyle:off number.of.methods
 object BasicStat extends Enum[BasicStat] with SearchPrefix {
   override def values: immutable.IndexedSeq[BasicStat] = findValues
-
+  case object GrantedAbility extends GrantedAbility
+  /**
+   * The dodge mechanic works as a miss chance - a simple percentile chance to completely avoid physical attacks.
+   */
   case object DodgeChance extends DodgeChance
+
+  /**
+   * Armor Class, also called AC, represents your chance to be missed by melee attacks - the higher your AC, the less
+   * you get hit. This chance is also influenced by the attackers attack bonus.
+   */
+  case object ArmorClass extends ArmorClass
+
+  /**
+   * MDB - caps your dexterity bonus when wearing certain armor. [[https://ddowiki.com/page/Maximum_dexterity_bonus]]
+   */
+  case object MaxDexterityBonus extends MaxDexterityBonus
+
+  /**
+   * Chance to Hit, generally applies your Melee and Ranged Weapons.
+   */
+  case object ToHitChance extends ToHitChance
+
+  /**
+   * Adds Damage to equipped weapon.
+   */
+  case object ToDamage extends WeaponDamage
+
+  case object MeleePower extends MeleePower
+
+  case object RangedPower extends RangedPower
+
+  case object WeaponProficiency extends WeaponProficiency
+  /**
+   * Your Hit points
+   */
+  case object HitPoints extends HitPoints
+
+  case object SpellPoints extends SpellPoints
+
+  case class SpellCriticalChanceSchool(spellPower: SpellPower) extends SpellCriticalChance
+
+  case class SpellFocus(school: School) extends SpellDifficultyCheck
 
   case object BaseAttackBonus extends BaseAttackBonus
 
@@ -361,6 +435,8 @@ object BasicStat extends Enum[BasicStat] with SearchPrefix {
 
   case object CriticalHitDamage extends CriticalHitDamage
 
+  case object CriticalThreatRange extends CriticalThreatRange
+
   case object SneakAttackHitBonus extends SneakAttackHitBonus
 
   case object SneakAttackDamageBonus extends SneakAttackDamageBonus
@@ -420,4 +496,6 @@ object BasicStat extends Enum[BasicStat] with SearchPrefix {
    *   A default or applied prefix
    */
   override def searchPrefixSource: String = "Stat"
+
+  object AutoRecovery extends AutoRecovery
 }

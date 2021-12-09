@@ -63,7 +63,7 @@ object BonusType extends Enum[BonusType] {
   case object Artifact extends BonusType with StacksWithAny
 
   /**
-   * An [[https://ddowiki.com/page/Armor_bonus armor]] bonus is a bonus to Armor class from the armor t hat you are
+   * An [[https://ddowiki.com/page/Armor_bonus armor]] bonus is a bonus to Armor class from the armor that you are
    * wearing. Armor bonuses do not stack.
    */
   case object Armor extends BonusType with Armor with NonStacking

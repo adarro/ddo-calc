@@ -18,13 +18,14 @@
 package io.truthencode.ddo.model.attribute
 
 import io.truthencode.ddo.model.attribute.Attribute._
+import io.truthencode.ddo.model.meta.Linked
 
 import scala.collection.immutable.HashSet
 
 /**
  * Created by adarr on 1/28/2017.
  */
-trait LinkedAttribute {
+trait LinkedAttribute extends Linked {
   def linkedAttribute: Set[Attribute]
 }
 

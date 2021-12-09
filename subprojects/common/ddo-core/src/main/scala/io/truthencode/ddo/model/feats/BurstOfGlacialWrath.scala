@@ -30,6 +30,6 @@ protected[feats] trait BurstOfGlacialWrath
   with RequiresCharacterLevel { self: EpicFeat =>
   abstract override def spellIds: Set[String] =
     super.spellIds + "BurstOfGlacialWrath"
-  final override val characterLevel: Int = 24
+  final override val requireCharacterLevel: Int = 24
 
 }

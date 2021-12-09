@@ -41,7 +41,7 @@ trait TurnUndeadMaxHitDiceFeature extends Features {
 
     }
 
-  abstract override def features: List[Feature[_]] = {
+  abstract override def features: Seq[Feature[_]] = {
     assert(mHD.value == maxHitDiceBonusAmount)
     super.features :+ mHD
   }

@@ -29,14 +29,26 @@ trait Searchable[T <: EnumEntry with SearchPattern] extends Enum[T] with LazyLog
   }
 
   def tryFindByPattern(name: String): Try[T] = {
-    logger.debug("entry\t=>\tnamed")
+
+    val cls = getClass.getSimpleName
+    val msg = s"Searchable:-> ${cls} for $name"
+    logger.info(msg)
 
     values.collectFirst {
-      case p: T if p.searchPattern(name) == p.entryName => p
+      case p: T if p.searchPattern(name) == p.entryName =>
+        logger.debug(s"type (Search pattern) matched $p with ${p.entryName}")
+        p
+      case p: T if p.entryName == name =>
+        logger.debug(s"type (Direct) matched $p with ${p.entryName}")
+        p
     } match {
-      case Some(x) => Success(x)
-      case _ => Failure(new NoSuchElementException(s"Could not find element with name $name"))
+      case Some(x) =>
+        logger.debug(s"${x.entryName}")
+        Success(x)
+      case _ =>
+        val ex = new NoSuchElementException(s"Could not find element with name $name")
+        logger.error("Failed to locate element by pattern", ex)
+        Failure(ex)
     }
-
   }
 }

@@ -24,5 +24,5 @@ import io.truthencode.ddo.support.requisite.RequiresCharacterLevel
  *   add entry levels to allow for 24 or 27 vs minimum.
  */
 protected[feats] trait MasterOfTheDead extends Passive with RequiresCharacterLevel { self: EpicFeat =>
-  override val characterLevel: Int = 24
+  override val requireCharacterLevel: Int = 24
 }

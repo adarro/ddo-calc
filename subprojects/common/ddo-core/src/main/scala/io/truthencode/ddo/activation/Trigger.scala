@@ -31,6 +31,16 @@ trait Trigger {
    * @return
    *   Set of triggers that can activate it, if any.
    */
-  def activatableTriggers: Set[TriggerEvent] = new HashSet[TriggerEvent]()
+  def activatableTriggers: Seq[TriggerEvent]
   def canActivate: Boolean = activatableTriggers.nonEmpty
+}
+
+trait TriggerImpl extends Trigger {
+    /**
+     * Event Triggers that fire on some condition
+     *
+     * @return
+     * Set of triggers that can activate it, if any.
+     */
+    override def activatableTriggers: Seq[TriggerEvent] = Nil
 }

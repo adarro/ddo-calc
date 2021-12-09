@@ -17,19 +17,17 @@
  */
 package io.truthencode.ddo.model.feats
 
-import java.time.Duration
-
 import io.truthencode.ddo.activation.AtWillEvent
+import io.truthencode.ddo.enhancement.BonusType
+import io.truthencode.ddo.model.abilities.ActiveAbilities
 import io.truthencode.ddo.model.attribute.Attribute
 import io.truthencode.ddo.model.classes.HeroicCharacterClass
+import io.truthencode.ddo.model.effect.features.{FeaturesImpl, GrantAbilityFeature}
 import io.truthencode.ddo.model.misc.CoolDownPool.ManyShot
 import io.truthencode.ddo.model.misc.SharedCoolDown
-import io.truthencode.ddo.support.requisite.{
-  ClassRequisiteImpl,
-  FeatRequisiteImpl,
-  RequiresAllOfClass,
-  RequiresAttribute
-}
+import io.truthencode.ddo.support.requisite.{ClassRequisiteImpl, FeatRequisiteImpl, RequiresAllOfClass, RequiresAttribute}
+
+import java.time.Duration
 
 /**
  * Icon Feat Ten Thousand Stars.png [[https://ddowiki.com/page/Ten_Thousand_Stars Ten Thousand Stars]] Active - Ability
@@ -42,7 +40,7 @@ import io.truthencode.ddo.support.requisite.{
  */
 protected[feats] trait TenThousandStars
   extends FeatRequisiteImpl with ClassRequisiteImpl with ActiveFeat with AtWillEvent with SharedCoolDown
-  with RequiresAttribute with RequiresAllOfClass with MartialArtsFeat {
+  with RequiresAttribute with RequiresAllOfClass with MartialArtsFeat with FeaturesImpl with GrantAbilityFeature {
   self: GeneralFeat =>
 
   override def requiresAttribute: Seq[(Attribute, Int)] =
@@ -54,4 +52,7 @@ protected[feats] trait TenThousandStars
 
   override def allOfClass: Seq[(HeroicCharacterClass, Int)] =
     List((HeroicCharacterClass.Monk, 6))
+
+  override val grantBonusType: BonusType = BonusType.Feat
+  override val grantedAbility: ActiveAbilities = ActiveAbilities.TenThousandStars
 }

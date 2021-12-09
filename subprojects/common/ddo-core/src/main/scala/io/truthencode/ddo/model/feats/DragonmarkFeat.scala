@@ -17,24 +17,24 @@
  */
 package io.truthencode.ddo.model.feats
 
-import java.time.Duration
-
 import enumeratum.Enum
 import io.truthencode.ddo.activation.OnSpellLikeAbilityEvent
 import io.truthencode.ddo.model.UnknownDuration
+import io.truthencode.ddo.model.effect.features.{Features, FeaturesImpl}
 import io.truthencode.ddo.model.race.Race
 import io.truthencode.ddo.model.race.Race.{Dwarf, Elf, Gnome, HalfElf, HalfOrc, Halfling, Human}
 import io.truthencode.ddo.support.naming.FriendlyDisplay
 import io.truthencode.ddo.support.requisite._
 
+import java.time.Duration
 import scala.collection.immutable
 
 /**
  * Created by adarr on 3/26/2017.
  */
 sealed trait DragonmarkFeat
-  extends Feat with FriendlyDisplay with SubFeatInformation with FeatMatcher with FeatRequisiteImpl {
-  self: FeatType with Requisite with RequisiteType with Inclusion =>
+  extends Feat with FriendlyDisplay with SubFeatInformation with FeatMatcher with FeatRequisiteImpl with FeaturesImpl {
+  self: FeatType with Requisite with RequisiteType with Inclusion with Features =>
   val matchFeat: PartialFunction[Feat, DragonmarkFeat] = { case x: DragonmarkFeat =>
     x
   }

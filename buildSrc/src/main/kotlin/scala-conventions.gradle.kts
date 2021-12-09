@@ -65,7 +65,7 @@ tasks.withType<ScalaCompile>().configureEach {
         additionalParameters?.plusAssign(
             scalaCoptions
         )
-        logger.warn("executing scala compile with options\n $scalaCoptions")
+        logger.debug("executing scala compile with options\n $scalaCoptions")
         // Need to add -Ypartial-unification for Tapir
     }
 }

@@ -20,6 +20,7 @@ package io.truthencode.ddo.model.feats
 import com.typesafe.scalalogging.LazyLogging
 import enumeratum.{Enum, EnumEntry}
 import io.truthencode.ddo.model.effect.SourceInfo
+import io.truthencode.ddo.model.effect.features.Features
 import io.truthencode.ddo.model.race.Race
 import io.truthencode.ddo.support.StringUtils.Extensions
 import io.truthencode.ddo.support.naming.{DisplayName, FriendlyDisplay}
@@ -30,7 +31,8 @@ import scala.collection.immutable.IndexedSeq
 /**
  * Created by adarr on 2/14/2017.
  */
-trait Feat extends EnumEntry with DisplayName with FriendlyDisplay with SubFeatInformation with SourceInfo {
+trait Feat
+  extends EnumEntry with DisplayName with FriendlyDisplay with SubFeatInformation with SourceInfo with Features {
   self: FeatType with Requisite with Inclusion =>
 
   override val sourceId: String = s"Feat:$entryName"

@@ -17,14 +17,14 @@
  */
 package io.truthencode.ddo.model.feats
 
-import java.time.Duration
-
 import io.truthencode.ddo.activation.AtWillEvent
 import io.truthencode.ddo.model.classes.HeroicCharacterClass
 import io.truthencode.ddo.model.classes.HeroicCharacterClass.Alchemist
 import io.truthencode.ddo.model.feats.GeneralFeat.PointBlankShot
 import io.truthencode.ddo.model.misc.{CoolDownPool, SharedCoolDown}
 import io.truthencode.ddo.support.requisite._
+
+import java.time.Duration
 
 /**
  * For the next 20 seconds, while wielding a Simple Thrown Weapon add 100 to your Doubleshot and 2x your Base Attack

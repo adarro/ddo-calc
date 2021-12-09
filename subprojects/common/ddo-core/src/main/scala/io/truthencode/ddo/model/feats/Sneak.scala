@@ -17,6 +17,9 @@
  */
 package io.truthencode.ddo.model.feats
 
+import io.truthencode.ddo.enhancement.BonusType
+import io.truthencode.ddo.model.abilities.ActiveAbilities
+import io.truthencode.ddo.model.effect.features.{FeaturesImpl, GrantAbilityFeature}
 import io.truthencode.ddo.model.misc.DefaultCoolDown
 import io.truthencode.ddo.support.requisite.{FeatRequisiteImpl, FreeFeat}
 
@@ -26,7 +29,13 @@ import io.truthencode.ddo.support.requisite.{FeatRequisiteImpl, FreeFeat}
  * @note
  *   There have been many changes to stealth and it is worth reading, but currently not deeply invested in this
  *   code-base
+ *
+ * see [[https://github.com/truthencode/ddo-calc/discussions/9]]
  */
-protected[feats] trait Sneak extends FeatRequisiteImpl with ActiveFeat with Stance with DefaultCoolDown with FreeFeat {
+protected[feats] trait Sneak
+  extends FeatRequisiteImpl with ActiveFeat with Stance with DefaultCoolDown with FreeFeat with FeaturesImpl
+  with GrantAbilityFeature {
   self: GeneralFeat =>
+  override val grantBonusType: BonusType = BonusType.Feat
+  override val grantedAbility: ActiveAbilities = ActiveAbilities.Sneak
 }

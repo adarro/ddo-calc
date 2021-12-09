@@ -132,3 +132,22 @@ trait Repair extends Health
  * Bane damage is considered untyped and thus can not be bypassed by effects such as Damage Reduction
  */
 trait Bane extends UnTyped with Typeless
+
+trait Sonic
+
+trait Force
+
+trait RustRepair
+
+trait Acid extends Elemental
+
+trait Fire extends Elemental
+
+trait Cold extends Elemental
+
+trait Electric extends Elemental
+
+/**
+ * Reduces damage from Acid, Fire, Cold and Electric
+ */
+trait ElementalResistance extends Resist with Acid with Fire with Cold with Electric

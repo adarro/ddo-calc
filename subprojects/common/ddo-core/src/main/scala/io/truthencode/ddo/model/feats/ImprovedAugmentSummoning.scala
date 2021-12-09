@@ -29,5 +29,5 @@ protected[feats] trait ImprovedAugmentSummoning
   /**
    * Default Minimum Level for all Epic Feats. Override this with a higher level as needed.
    */
-  override val characterLevel: Int = 24
+  override val requireCharacterLevel: Int = 24
 }

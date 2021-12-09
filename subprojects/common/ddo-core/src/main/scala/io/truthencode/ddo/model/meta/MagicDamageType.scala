@@ -19,7 +19,7 @@ package io.truthencode.ddo.model.meta
 
 import enumeratum.{Enum, EnumEntry}
 import io.truthencode.ddo.NoDefault
-import io.truthencode.ddo.model.effect.{Acid, Cold, Damage, Electric, Fire, Force, Sonic}
+import io.truthencode.ddo.model.effect._
 
 import scala.collection.immutable
 
@@ -33,5 +33,8 @@ object MagicDamageType extends Enum[MagicDamageType] {
   case object Electric extends Electric with MagicDamageType
   case object Force extends Force with MagicDamageType
   case object Sonic extends Sonic with MagicDamageType
+  case object Poison extends Poison with MagicDamageType
+  case object Evil extends Evil with MagicDamageType
+  case object Good extends Good with MagicDamageType
   case object UnTyped extends MagicDamageType
 }

@@ -17,10 +17,13 @@
  */
 package io.truthencode.ddo.model.feats
 
-import java.time.Duration
-
+import io.truthencode.ddo.enhancement.BonusType
+import io.truthencode.ddo.model.abilities.ActiveAbilities
 import io.truthencode.ddo.model.attribute.Attribute
+import io.truthencode.ddo.model.effect.features.{FeaturesImpl, GrantAbilityFeature}
 import io.truthencode.ddo.support.requisite.{FeatRequisiteImpl, RequiresAttribute}
+
+import java.time.Duration
 
 /**
  * [[http://ddowiki.com/page/Power_Attack Power Attack]] This feat exchanges part of your attack bonus for extra melee
@@ -38,11 +41,14 @@ import io.truthencode.ddo.support.requisite.{FeatRequisiteImpl, RequiresAttribut
  */
 protected[feats] trait PowerAttack
   extends FeatRequisiteImpl with ActiveFeat with Stance with RequiresAttribute with MartialArtsFeat
-  with FighterBonusFeat {
+  with FighterBonusFeat with FeaturesImpl with GrantAbilityFeature {
   self: GeneralFeat =>
   override val requiresAttribute: Seq[(Attribute, Int)] = List(
     (Attribute.Strength, 13)
   )
 
   override def coolDown: Option[Duration] = Some(Duration.ofSeconds(10))
+
+  override val grantBonusType: BonusType = BonusType.Feat
+  override val grantedAbility: ActiveAbilities = ActiveAbilities.PowerAttack
 }

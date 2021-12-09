@@ -17,13 +17,16 @@
  */
 package io.truthencode.ddo.model.feats
 
-import java.time.Duration
-
 import io.truthencode.ddo.activation.AtWillEvent
+import io.truthencode.ddo.enhancement.BonusType
+import io.truthencode.ddo.model.abilities.ActiveAbilities
 import io.truthencode.ddo.model.attribute.Attribute
 import io.truthencode.ddo.model.classes.HeroicCharacterClass
 import io.truthencode.ddo.model.classes.HeroicCharacterClass.Ranger
+import io.truthencode.ddo.model.effect.features.{FeaturesImpl, GrantAbilityFeature}
 import io.truthencode.ddo.support.requisite._
+
+import java.time.Duration
 
 /**
  * Icon Feat Many Shot.png [[https://ddowiki.com/page/Manyshot Manyshot]] Active - Ability For the next 20 seconds, add
@@ -45,8 +48,12 @@ import io.truthencode.ddo.support.requisite._
  */
 protected[feats] trait Manyshot
   extends FeatRequisiteImpl with ActiveFeat with AtWillEvent with RequiresAllOfFeat with RequiresAttribute
-  with RequiresBaB with ClassRequisiteImpl with GrantsToClass with FighterBonusFeat {
+  with RequiresBaB with ClassRequisiteImpl with GrantsToClass with FighterBonusFeat with FeaturesImpl
+  with GrantAbilityFeature {
   self: GeneralFeat =>
+  override val grantBonusType: BonusType = BonusType.Feat
+  override val grantedAbility: ActiveAbilities = ActiveAbilities.Manyshot
+
   override def allOfFeats: Seq[GeneralFeat] =
     List(GeneralFeat.PointBlankShot, GeneralFeat.RapidShot)
 

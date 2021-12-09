@@ -23,6 +23,7 @@ import io.truthencode.ddo.enhancement.BonusType
 import io.truthencode.ddo.model.attribute.{Attribute => Attributes}
 import io.truthencode.ddo.model.feats.{Feat => Feats}
 import io.truthencode.ddo.model.skill.{Skill => Skills}
+import io.truthencode.ddo.model.stats.BasicStat
 
 import scala.collection.immutable
 
@@ -56,6 +57,10 @@ trait FeatEffect extends EffectPart {
   val feat: Feats
 }
 
+trait CriticalThreatRangeEffect extends EffectPart {
+    override def searchPattern(target: String): String = super.searchPattern(target)
+}
+
 /**
  * A list of available effect targets.
  * @note
@@ -72,10 +77,13 @@ object EffectPart extends Enum[EffectPart] with NoDefault[EffectPart] with Searc
   private def anySkill = Skills.values.map(Skill)
   case class Feat(override val feat: Feats) extends FeatEffect
   private def anyFeat = Feats.values.map(Feat)
+  // case class BaseThing()
+  // private def anyBasicStat = BasicStat.values.map()
   case object Spell extends EffectPart
   case object Health extends EffectPart
   case object Spellpoints extends EffectPart
   case object DodgeChance extends EffectPart
+  // case class CriticalThreatRange()
   /*
   Main
   Feats

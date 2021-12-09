@@ -17,10 +17,12 @@
  */
 package io.truthencode.ddo.model.feats
 
-import java.time.Duration
-
-import io.truthencode.ddo.activation.AtWillEvent
+import io.truthencode.ddo.enhancement.BonusType
+import io.truthencode.ddo.model.abilities.ActiveAbilities
+import io.truthencode.ddo.model.effect.features.{FeaturesImpl, GrantAbilityFeature}
 import io.truthencode.ddo.support.requisite.{FeatRequisiteImpl, FreeFeat}
+
+import java.time.Duration
 
 /**
  * Icon Feat Stunning Blow.png [[https://ddowiki.com/page/Stunning_Blow Stunning Blow]] Active - Special Attack This
@@ -28,7 +30,11 @@ import io.truthencode.ddo.support.requisite.{FeatRequisiteImpl, FreeFeat}
  * be immune to the stunning effect.
  */
 protected[feats] trait StunningBlow
-  extends FeatRequisiteImpl with ActiveFeat with FreeFeat with Tactical with FighterBonusFeat {
+  extends FeatRequisiteImpl with ActiveFeat with FreeFeat with Tactical with FighterBonusFeat with FeaturesImpl
+  with GrantAbilityFeature {
   self: GeneralFeat =>
+  override val grantBonusType: BonusType = BonusType.Feat
+  override val grantedAbility: ActiveAbilities = ActiveAbilities.StunningBlow
+
   override def coolDown: Option[Duration] = Some(Duration.ofSeconds(15))
 }

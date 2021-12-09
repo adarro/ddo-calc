@@ -23,6 +23,11 @@ import io.truthencode.ddo.model.misc.{CoolDown, DefaultCoolDown, DefaultSpellCoo
 
 /**
  * Created by adarr on 1/29/2017.
+ * @note
+ *   these should be moved out of the Feat package and renamed as they can and should be used for stances / toggles etc
+ *   that are granted via enhancements etc
+ *
+ * Also, perhaps clickies?
  */
 sealed trait FeatType
 

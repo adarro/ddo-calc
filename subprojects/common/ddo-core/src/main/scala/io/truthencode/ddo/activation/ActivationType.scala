@@ -19,27 +19,39 @@ package io.truthencode.ddo.activation
 
 import com.typesafe.scalalogging.LazyLogging
 import enumeratum.{Enum, EnumEntry}
-import io.truthencode.ddo.model.effect.TriggerEvent.Passive
 import io.truthencode.ddo.model.effect.{ActiveEvent, PassiveEvent, TriggerEvent}
 
-import scala.collection.immutable.HashSet
 import scala.reflect.ClassTag
 
 /**
  * Determines whether the given effect is Active or Passively triggered
  */
 sealed trait ActivationType extends EnumEntry { self: TriggerEvent =>
-  def activations: Set[TriggerEvent] = init
+  def activations: Seq[TriggerEvent]
+}
 
-  private[this] val init = new HashSet[TriggerEvent]()
+/**
+ * Base Implementation with an empty list of activations.
+ */
+trait ActivationTypeImpl extends ActivationType {
+  self: TriggerEvent =>
+  override def activations: Seq[TriggerEvent] = Nil
+}
+
+
+/**
+ * Underlying Trait for all Active triggers
+ */
+trait TriggeredActivation extends ActivationTypeImpl with TriggerImpl with ActiveEvent { self: EnumEntry =>
+  abstract override def activations: Seq[TriggerEvent] = super.activations ++ activatableTriggers
 }
 
 /**
  * Denotes the effect is passive and always on.
  */
-trait PassiveActivation extends ActivationType with PassiveEvent {
-  abstract override def activations: Set[TriggerEvent] =
-    super.activations + Passive
+trait PassiveActivation extends ActivationTypeImpl with PassiveEvent {
+  abstract override def activations: Seq[TriggerEvent] =
+    super.activations :+ io.truthencode.ddo.model.effect.TriggerEvent.Passive
 }
 
 object ActivationType extends Enum[ActivationType] with LazyLogging {
@@ -52,12 +64,10 @@ object ActivationType extends Enum[ActivationType] with LazyLogging {
   /**
    * This effect is triggered by some means such as a toggle, threshold or status.
    */
-  case class Active(triggers: ActiveEvent*)
-    extends {
-      override val activatableTriggers: Set[TriggerEvent] = {
-        triggers.toSet
-      }
-    } with TriggeredActivation with LazyLogging {
+  case class Active(triggers: ActiveEvent*) extends ActivationTypeImpl with TriggeredActivation with LazyLogging {
+
+    //  override val activatableTriggers(): scala.Seq[_root_.io.truthencode.ddo.model.effect.TriggerEvent] = triggers
+    override def activatableTriggers: Seq[TriggerEvent] = triggers
     override def entryName: String = {
       this.triggers.headOption match {
         case Some(x) => x.entryName
@@ -81,8 +91,4 @@ object ActivationType extends Enum[ActivationType] with LazyLogging {
   }
   @volatile
   override lazy val values = findValues ++ dynamics
-}
-
-trait TriggeredActivation extends ActivationType with Trigger with ActiveEvent with LazyLogging { self: EnumEntry =>
-  abstract override def activations: Set[TriggerEvent] = super.activations ++ activatableTriggers
 }

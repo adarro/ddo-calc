@@ -181,6 +181,13 @@ package object requisite {
       def toReq: ReqClass = classToReq(source)
     }
 
+//    val characterLevelToReq: PartialFunction[(Int,Int), ReqCharacterLevel] =
+//        new  PartialFunction[(Int,Int), ReqCharacterLevel] {
+//            override def isDefinedAt(x: (Int, Int)): Boolean = ???
+//
+//            override def apply(v1: (Int, Int)): ReqCharacterLevel = ???
+//        }
+
     val classToReq: PartialFunction[(HeroicCharacterClass, Int), ReqClass] =
       new PartialFunction[(HeroicCharacterClass, Int), ReqClass] {
 

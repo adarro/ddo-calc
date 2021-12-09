@@ -24,5 +24,5 @@ import io.truthencode.ddo.support.requisite.RequiresCharacterLevel
  */
 protected[feats] trait EpicReflexes extends Passive with RequiresCharacterLevel {
   self: EpicFeat =>
-  override val characterLevel: Int = 27
+  override val requireCharacterLevel: Int = 27
 }

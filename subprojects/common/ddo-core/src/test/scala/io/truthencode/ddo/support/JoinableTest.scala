@@ -20,9 +20,7 @@ package io.truthencode.ddo.support
 import org.scalatest.funspec.AnyFunSpec
 import org.scalatest.matchers.should.Matchers
 
-import scala.collection.GenSeq
-
-class JoinableTest extends AnyFunSpec with Matchers with JoinAbleSeq[Int, GenSeq[Int]] {
+class JoinableTest extends AnyFunSpec with Matchers with JoinAbleSeq[Int, Seq[Int]] {
   override lazy val source: Seq[Int] = 1 to sampleSize
 
   describe("Joins (Sequence)") {
@@ -39,7 +37,7 @@ class JoinableTest extends AnyFunSpec with Matchers with JoinAbleSeq[Int, GenSeq
     }
   }
   describe("Right Joins") {
-    they("should contall all the unique right side plus any common elements of the left side") {
+    they("should contain all the unique right side plus any common elements of the left side") {
       rightJoinA should contain theSameElementsAs commonWithB
     }
   }

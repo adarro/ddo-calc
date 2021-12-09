@@ -18,8 +18,11 @@
 package io.truthencode.ddo.model.feats
 
 import java.time.Duration
-
 import io.truthencode.ddo.activation.OnToggleEvent
+import io.truthencode.ddo.enhancement.BonusType
+import io.truthencode.ddo.model.abilities.ActiveAbilities
+import io.truthencode.ddo.model.effect.features.{FeaturesImpl, GrantAbilityFeature}
+import io.truthencode.ddo.model.stats.GrantedAbility
 import io.truthencode.ddo.support.requisite.{FeatRequisiteImpl, FreeFeat}
 
 /**
@@ -28,7 +31,11 @@ import io.truthencode.ddo.support.requisite.{FeatRequisiteImpl, FreeFeat}
  * @note
  *   Currently set to No Cooldown, aside from potential advanced metrics, this shouldn't be an issue.
  */
-protected[feats] trait Attack extends FeatRequisiteImpl with ActiveFeat with FreeFeat with Stance {
+protected[feats] trait Attack
+  extends FeatRequisiteImpl with ActiveFeat with FreeFeat with Stance with FeaturesImpl with GrantAbilityFeature {
   self: GeneralFeat =>
+  override val grantBonusType: BonusType = BonusType.Feat
+  override val grantedAbility: ActiveAbilities = ActiveAbilities.Attack
+
   override def coolDown: Option[Duration] = None
 }

@@ -20,9 +20,9 @@ package io.truthencode.ddo.model.effect.features
 import io.truthencode.ddo.model.effect.Feature
 
 trait Features {
-  def features: List[Feature[_]]
+  def features: Seq[Feature[_]]
 
-  def namedFeatures: Map[String, List[Feature[_]]] = features.groupBy(_.name).collect { case (Some(x), list) =>
+  def namedFeatures: Map[String, Seq[Feature[_]]] = features.groupBy(_.name).collect { case (Some(x), list) =>
     (x, list)
   }
 
@@ -51,5 +51,5 @@ object Features {
  * Default convenience implementation which initializes the features list to Nil
  */
 trait FeaturesImpl extends Features {
-  override def features: List[Feature[_]] = Nil
+  override def features: Seq[Feature[_]] = Nil
 }

@@ -20,6 +20,7 @@ package io.truthencode.ddo.model.feats
 import com.typesafe.scalalogging.LazyLogging
 import enumeratum.Enum
 import io.truthencode.ddo.model.classes.HeroicCharacterClass
+import io.truthencode.ddo.model.effect.features.{Features, FeaturesImpl}
 import io.truthencode.ddo.support.StringUtils.Extensions
 import io.truthencode.ddo.support.naming.FriendlyDisplay
 import io.truthencode.ddo.support.requisite.{Inclusion, RaceRequisiteImpl, Requisite, RequisiteType}
@@ -29,8 +30,9 @@ import scala.collection.immutable.IndexedSeq
 /**
  * Created by adarr on 2/14/2017.
  */
-sealed trait RacialFeat extends Feat with RaceRequisiteImpl with FriendlyDisplay with FeatMatcher with LazyLogging {
-  self: FeatType with Requisite with Inclusion with RequisiteType =>
+sealed trait RacialFeat
+  extends Feat with RaceRequisiteImpl with FriendlyDisplay with FeatMatcher with LazyLogging with FeaturesImpl {
+  self: FeatType with Requisite with Inclusion with RequisiteType with Features =>
   val matchFeat: PartialFunction[Feat, RacialFeat] = { case x: RacialFeat =>
     x
   }

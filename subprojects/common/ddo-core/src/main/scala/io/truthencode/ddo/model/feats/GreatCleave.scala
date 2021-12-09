@@ -17,12 +17,15 @@
  */
 package io.truthencode.ddo.model.feats
 
-import java.time.Duration
-
 import io.truthencode.ddo.activation.AtWillEvent
+import io.truthencode.ddo.enhancement.BonusType
+import io.truthencode.ddo.model.abilities.ActiveAbilities
+import io.truthencode.ddo.model.effect.features.{FeaturesImpl, GrantAbilityFeature}
 import io.truthencode.ddo.model.misc.CoolDownPool.GreatCleave
 import io.truthencode.ddo.model.misc.SharedCoolDown
 import io.truthencode.ddo.support.requisite._
+
+import java.time.Duration
 
 /**
  * [[https://ddowiki.com/page/Great_Cleave Great Cleave]] Active - Special Attack This feat attacks enemies in a wider
@@ -36,7 +39,7 @@ import io.truthencode.ddo.support.requisite._
  */
 trait GreatCleave
   extends FeatRequisiteImpl with ActiveFeat with AtWillEvent with SharedCoolDown with RequiresAllOfFeat with RequiresBaB
-  with FighterBonusFeat {
+  with FighterBonusFeat with FeaturesImpl with GrantAbilityFeature {
   self: GeneralFeat =>
   override val allOfFeats = List(GeneralFeat.Cleave)
 
@@ -51,4 +54,7 @@ trait GreatCleave
    *   Minimum value allowed
    */
   override def requiresBaB: Int = 4
+
+  override val grantBonusType: BonusType = BonusType.Feat
+  override val grantedAbility: ActiveAbilities = ActiveAbilities.GreatCleave
 }

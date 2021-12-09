@@ -25,7 +25,7 @@ import io.truthencode.ddo.support.requisite.{RequiresAllOfFeat, RequiresCharacte
  */
 protected[feats] trait OverwhelmingCritical extends Passive with RequiresCharacterLevel with RequiresAllOfFeat {
   self: EpicFeat =>
-  override val characterLevel: Int = 27
+  override val requireCharacterLevel: Int = 27
 
   override def allOfFeats: Seq[Feat] = List(GeneralFeat.ImprovedCritical)
 }

@@ -17,11 +17,16 @@
  */
 package io.truthencode.ddo.model.feats
 
+import io.truthencode.ddo.enhancement.BonusType
+import io.truthencode.ddo.model.effect.features.{FeaturesImpl, HitPointAmountFeature}
 import io.truthencode.ddo.support.requisite.{FeatRequisiteImpl, FreeFeat}
 
 /**
  * This feat increases the character maximum hit points by 30.
  */
-protected[feats] trait HeroicDurability extends FeatRequisiteImpl with Passive with FreeFeat {
+protected[feats] trait HeroicDurability
+  extends FeatRequisiteImpl with Passive with FreeFeat with FeaturesImpl with HitPointAmountFeature {
   self: GeneralFeat =>
+  override protected val hitPointBonusType: BonusType = BonusType.Feat
+  override protected val hitPointBonusAmount: Int = 30
 }

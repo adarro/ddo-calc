@@ -21,7 +21,9 @@ import enumeratum.EnumEntry
 import io.truthencode.ddo.enhancement.BonusType
 import io.truthencode.ddo.model.attribute.Attribute
 import io.truthencode.ddo.model.feats.Feat
+import io.truthencode.ddo.model.item.weapon.WeaponCategory
 import io.truthencode.ddo.model.skill.Skill
+import io.truthencode.ddo.model.stats.BasicStat
 
 import scala.util.Try
 
@@ -40,14 +42,36 @@ sealed trait Feature[V] {
     case None => None
     case Some(value) => Some(value.entryName)
   }
-  val effectText: Option[String] = None
+  lazy val effectText: Option[String] = None
+}
+
+trait DynamicFeature[V] extends Feature[V] {
+  def computedValue: V => V
 }
 
 object Feature {
 
   def printFeature(f: Feature[_]): String = {
-    s"Feature:\nName:\t${f.name.getOrElse("Unknown")} \nvalue:\t${f.value}\nsource:\t${f.source}\ntext:\t${f.effectText.getOrElse("")}\n "
+    s"\nFeature:\nName:\t${f.name.getOrElse(
+      "Unknown")} \nvalue:\t${f.value}\nsource:\t${f.source}\nid:\t\t${f.source.sourceId}\ntext:\t${f.effectText.getOrElse("")}\n"
   }
+  // scalastyle:off
+  case class CriticalThreatRangeEffect(
+    override val value: Seq[(WeaponCategory, Int)],
+    basicStat: BasicStat,
+    bonusType: BonusType,
+    override val source: SourceInfo)
+    extends PartModifier[Seq[(WeaponCategory, Int)], BasicStat]
+    with ParameterModifier[Seq[(WeaponCategory, Int)], BonusType] {
+
+    lazy override protected[this] val partToModify: BasicStat =
+      basicStat
+
+    lazy override protected[this] val parameterToModify: BonusType = bonusType
+//      override val name: String =
+    override lazy val effectText: Option[String] = Some(s"Increased Critical Threat Amount: $value%")
+  }
+  // scalastyle:on
 
   case class SkillEffect(
     skill: Skill,
@@ -72,7 +96,7 @@ object Feature {
 
     override lazy val name: Option[String] = Some(skill.withPrefix)
 
-    override val effectText: Option[String] = Some(
+    override lazy val effectText: Option[String] = Some(
       s"provides a ${numberToSignedText(value)} ${bonusType.entryName} bonus to ${partToModify.entryName}"
     )
 
@@ -102,7 +126,7 @@ trait PartModifier[V, E <: EnumEntry] extends Feature[V] {
   self: ParameterModifier[V, _] =>
   protected[this] val partToModify: E
 
-  override val part: Try[EffectPart] =
+  lazy override val part: Try[EffectPart] =
     EffectPart.tryFindByPattern(partToModify.entryName)
 }
 

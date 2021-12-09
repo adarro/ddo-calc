@@ -19,16 +19,27 @@ package io.truthencode.ddo.model.feats
 
 import com.typesafe.scalalogging.LazyLogging
 import enumeratum.Enum
+import io.truthencode.ddo.enhancement.BonusType
 import io.truthencode.ddo.model.classes.HeroicCharacterClass
 import io.truthencode.ddo.model.classes.HeroicCharacterClass.Bard
-import io.truthencode.ddo.model.effect.SourceInfo
-import io.truthencode.ddo.model.item.weapon.WeaponCategory.{Longsword, Rapier, Shortbow, Shortsword}
+import io.truthencode.ddo.model.effect.SkillEffect
+import io.truthencode.ddo.model.effect.features.{
+  CriticalThreatRangeFeature,
+  Features,
+  FeaturesImpl,
+  MeleePowerFeature,
+  RangePowerFeature,
+  SkillFeature,
+  SpellFocusFeature,
+  ToDamageByWeaponClassFeature,
+  ToHitByWeaponClassFeature,
+  WeaponProficiencyFeature
+}
+import io.truthencode.ddo.model.item.weapon.WeaponCategory._
 import io.truthencode.ddo.model.item.weapon._
 import io.truthencode.ddo.model.race.Race
 import io.truthencode.ddo.model.schools.School
 import io.truthencode.ddo.model.skill.Skill
-import io.truthencode.ddo.model.spells.alchemical.Primer
-import io.truthencode.ddo.repo.Repo
 import io.truthencode.ddo.support.StringUtils.Extensions
 import io.truthencode.ddo.support.naming.{FriendlyDisplay, PostText, Prefix}
 import io.truthencode.ddo.support.requisite._
@@ -37,8 +48,8 @@ import io.truthencode.ddo.support.requisite._
  * [[http://ddowiki.com/page/Feats Feats]] are special abilities that give your character a new capability, or improves
  * one he or she already has.
  */
-sealed trait GeneralFeat extends Feat with FriendlyDisplay with SubFeatInformation {
-  self: FeatType with Requisite with Inclusion =>
+sealed trait GeneralFeat extends Feat with FriendlyDisplay with SubFeatInformation with FeaturesImpl {
+  self: FeatType with Requisite with Inclusion with Features =>
 
 }
 
@@ -214,7 +225,25 @@ object GeneralFeat extends Enum[GeneralFeat] with FeatSearchPrefix with FeatMatc
     } yield SkillFocus(x)
 
   case class ImprovedCritical(weaponClass: WeaponClass)
-    extends GeneralFeat with ImprovedCriticalBase with SubFeat with Prefix with FriendlyDisplay {
+    extends GeneralFeat with ImprovedCriticalBase with SubFeat with Prefix with FriendlyDisplay with FeaturesImpl
+    with CriticalThreatRangeFeature {
+    val wow1 = (for {
+      weapon <- filterByWeaponClass(weaponClass)
+      a1 <- icPlus1.filter(_ == weapon)
+      a2 <- icPlus2.filter(_ == weapon)
+      a3 <- icPlus3.filter(_ == weapon)
+    } yield Seq((a1, 1), (a2, 2), (a3, 3)))
+    logger.info(s"found ${wow1.size} weapons for improved critical: ${weaponClass.entryName}")
+    val wow = wow1.flatten
+    logger.info(s"found ${wow.size} (flattened) weapons for improved critical: ${weaponClass.entryName}")
+    /**
+     * @note
+     *   Will need to look at stacking logic checks to make sure this stacks correctly (or more accurately won't) with
+     *   Keen / Impact et al.
+     */
+    override protected val criticalThreatRangeType: BonusType = BonusType.Feat
+
+    override protected val criticalThreatRangeAmount: Seq[(WeaponCategory, Int)] = wow
 
     /**
      * Delimits the prefix and text.
@@ -224,15 +253,24 @@ object GeneralFeat extends Enum[GeneralFeat] with FeatSearchPrefix with FeatMatc
     override def prefix: Option[String] = Some("Improved Critical")
 
     override protected def nameSource: String = weaponClass.displayText
+
   }
 
   case class WeaponFocus(weaponClass: WeaponClass)
-    extends GeneralFeat with WeaponFocusBase with SubFeat with Prefix with FriendlyDisplay {
+    extends GeneralFeat with WeaponFocusBase with SubFeat with Prefix with FriendlyDisplay with FeaturesImpl
+    with ToHitByWeaponClassFeature with MeleePowerFeature with RangePowerFeature {
 
     /**
      * Delimits the prefix and text.
      */
     override protected val prefixSeparator: String = ": "
+
+    override protected val toHitType: BonusType = BonusType.Feat
+    override protected val toHitAmount: Seq[(WeaponCategory, Int)] = filterByWeaponClass(weaponClass).map((_, 1))
+    override protected val meleePowerBonusType: BonusType = BonusType.Feat
+    override protected val meleePowerBonusAmount: Int = 2
+    override protected val rangePowerBonusType: BonusType = BonusType.Feat
+    override protected val rangePowerBonusAmount: Int = 2
 
     override def prefix: Option[String] = Some("Weapon Focus")
 
@@ -241,9 +279,16 @@ object GeneralFeat extends Enum[GeneralFeat] with FeatSearchPrefix with FeatMatc
 
   case class GreaterWeaponFocus(weaponClass: WeaponClass)
     extends GeneralFeat with GreaterWeaponFocusBase with RequiresAllOfFeat with SubFeat with Prefix
-    with FighterBonusFeat {
+    with FighterBonusFeat with FeaturesImpl with ToHitByWeaponClassFeature with MeleePowerFeature
+    with RangePowerFeature {
     override protected val prefixSeparator: String = ": "
 
+    override protected val toHitType: BonusType = BonusType.Feat
+    override protected val toHitAmount: Seq[(WeaponCategory, Int)] = filterByWeaponClass(weaponClass).map((_, 1))
+    override protected val meleePowerBonusType: BonusType = BonusType.Feat
+    override protected val meleePowerBonusAmount: Int = 2
+    override protected val rangePowerBonusType: BonusType = BonusType.Feat
+    override protected val rangePowerBonusAmount: Int = 2
     override def prefix: Option[String] =
       Some("GreaterWeaponFocus".splitByCase)
 
@@ -256,9 +301,16 @@ object GeneralFeat extends Enum[GeneralFeat] with FeatSearchPrefix with FeatMatc
 
   case class SuperiorWeaponFocus(weaponClass: WeaponClass)
     extends GeneralFeat with SuperiorWeaponFocusBase with RequiresAllOfFeat with SubFeat with Prefix
-    with FriendlyDisplay {
+    with FriendlyDisplay with FeaturesImpl with ToHitByWeaponClassFeature with MeleePowerFeature
+    with RangePowerFeature {
     override protected val prefixSeparator: String = ": "
 
+    override protected val toHitType: BonusType = BonusType.Feat
+    override protected val toHitAmount: Seq[(WeaponCategory, Int)] = filterByWeaponClass(weaponClass).map((_, 1))
+    override protected val meleePowerBonusType: BonusType = BonusType.Feat
+    override protected val meleePowerBonusAmount: Int = 2
+    override protected val rangePowerBonusType: BonusType = BonusType.Feat
+    override protected val rangePowerBonusAmount: Int = 2
     override def prefix: Option[String] =
       Some("SuperiorWeaponFocus".splitByCase)
 
@@ -271,11 +323,19 @@ object GeneralFeat extends Enum[GeneralFeat] with FeatSearchPrefix with FeatMatc
 
   case class WeaponSpecialization(weaponClass: WeaponClass)
     extends GeneralFeat with WeaponSpecializationBase with RequiresAllOfFeat with SubFeat with Prefix
-    with FriendlyDisplay {
+    with FriendlyDisplay with FeaturesImpl with ToDamageByWeaponClassFeature with MeleePowerFeature
+    with RangePowerFeature {
     override protected val prefixSeparator: String = ": "
 
     override def prefix: Option[String] =
       Some("Weapon Specialization".splitByCase)
+
+    override protected val toDamageType: BonusType = BonusType.Feat
+    override protected val toDamageAmount: Seq[(WeaponCategory, Int)] = filterByWeaponClass(weaponClass).map((_, 2))
+    override protected val meleePowerBonusType: BonusType = BonusType.Feat
+    override protected val meleePowerBonusAmount: Int = 2
+    override protected val rangePowerBonusType: BonusType = BonusType.Feat
+    override protected val rangePowerBonusAmount: Int = 2
 
     override def allOfFeats: Seq[GeneralFeat] = weaponFocusAny.filter { x =>
       x.weaponClass.eq(weaponClass)
@@ -286,11 +346,19 @@ object GeneralFeat extends Enum[GeneralFeat] with FeatSearchPrefix with FeatMatc
 
   case class GreaterWeaponSpecialization(weaponClass: WeaponClass)
     extends GeneralFeat with GreaterWeaponSpecializationBase with RequiresAllOfFeat with SubFeat with Prefix
+    with FeaturesImpl with ToDamageByWeaponClassFeature with MeleePowerFeature with RangePowerFeature
     with FriendlyDisplay {
     override protected val prefixSeparator: String = ": "
 
     override def prefix: Option[String] =
       Some("GreaterWeaponSpecialization".splitByCase)
+
+    override protected val toDamageType: BonusType = BonusType.Feat
+    override protected val toDamageAmount: Seq[(WeaponCategory, Int)] = filterByWeaponClass(weaponClass).map((_, 2))
+    override protected val meleePowerBonusType: BonusType = BonusType.Feat
+    override protected val meleePowerBonusAmount: Int = 2
+    override protected val rangePowerBonusType: BonusType = BonusType.Feat
+    override protected val rangePowerBonusAmount: Int = 2
 
     override def allOfFeats: Seq[GeneralFeat] =
       greaterWeaponFocusAny.filter { x =>
@@ -302,8 +370,12 @@ object GeneralFeat extends Enum[GeneralFeat] with FeatSearchPrefix with FeatMatc
     override protected def nameSource: String = weaponClass.displayText
   }
 
-  case class SpellFocus(school: School) extends GeneralFeat with SpellFocusBase with SubFeat with Prefix {
+  case class SpellFocus(school: School)
+    extends GeneralFeat with SpellFocusBase with SubFeat with Prefix with FeaturesImpl with SpellFocusFeature {
 
+    override protected val spellFocusBonusType: BonusType = BonusType.Feat
+    override protected val spellFocusDifficultyCheck: Int = 1
+    override protected val spellSchool: School = school
     /**
      * * Delimits the prefix and text.
      */
@@ -314,8 +386,11 @@ object GeneralFeat extends Enum[GeneralFeat] with FeatSearchPrefix with FeatMatc
     override protected def nameSource: String = school.displayText
   }
 
-  case class GreaterSpellFocus(school: School) extends GeneralFeat with GreaterSpellFocusBase with SubFeat with Prefix {
-
+  case class GreaterSpellFocus(school: School)
+    extends GeneralFeat with GreaterSpellFocusBase with SubFeat with Prefix with FeaturesImpl with SpellFocusFeature {
+    override protected val spellFocusBonusType: BonusType = BonusType.Feat
+    override protected val spellFocusDifficultyCheck: Int = 1
+    override protected val spellSchool: School = school
     /**
      * Delimits the prefix and text.
      */
@@ -350,8 +425,11 @@ object GeneralFeat extends Enum[GeneralFeat] with FeatSearchPrefix with FeatMatc
   case class SimpleWeaponProficiency(
     override val grantToClass: Seq[(HeroicCharacterClass, Int)],
     weapon: WeaponCategory with SimpleWeapon*
-  ) extends GeneralFeat with SimpleWeaponProficiencyBase with GrantsToClass with Prefix with SubFeat {
+  ) extends GeneralFeat with SimpleWeaponProficiencyBase with GrantsToClass with Prefix with SubFeat
+    with WeaponProficiencyFeature {
 
+    override protected val proficiencyType: BonusType = BonusType.Feat
+    override protected val proficiencyAmount: Seq[WeaponCategory] = weapon
     /**
      * Delimits the prefix and text.
      */
@@ -369,8 +447,11 @@ object GeneralFeat extends Enum[GeneralFeat] with FeatSearchPrefix with FeatMatc
     override val grantsToRace: Seq[(Race, Int)],
     override val grantToClass: Seq[(HeroicCharacterClass, Int)],
     weapon: WeaponCategory with MartialWeapon*
-  ) extends GeneralFeat with RaceRequisiteImpl with MartialWeaponProficiencyBase with Prefix with SubFeat {
+  ) extends GeneralFeat with RaceRequisiteImpl with MartialWeaponProficiencyBase with Prefix with SubFeat
+    with FeaturesImpl with WeaponProficiencyFeature {
 
+    override protected val proficiencyType: BonusType = BonusType.Feat
+    override protected val proficiencyAmount: Seq[WeaponCategory] = weapon
     /**
      * Delimits the prefix and text.
      */
@@ -387,8 +468,11 @@ object GeneralFeat extends Enum[GeneralFeat] with FeatSearchPrefix with FeatMatc
   case class ExoticWeaponProficiency(
     override val grantsToRace: Seq[(Race, Int)],
     weapon: WeaponCategory with ExoticWeapon*
-  ) extends GeneralFeat with RaceRequisiteImpl with ExoticWeaponProficiencyBase with Prefix with SubFeat {
+  ) extends GeneralFeat with RaceRequisiteImpl with ExoticWeaponProficiencyBase with Prefix with SubFeat
+    with FeaturesImpl with WeaponProficiencyFeature {
 
+    override protected val proficiencyType: BonusType = BonusType.Feat
+    override protected val proficiencyAmount: Seq[WeaponCategory] = weapon
     /**
      * Delimits the prefix and text.
      */
@@ -402,8 +486,11 @@ object GeneralFeat extends Enum[GeneralFeat] with FeatSearchPrefix with FeatMatc
     }
   }
 
-  case class SkillFocus(skill: Skill) extends GeneralFeat with SkillFocusBase with SubFeat with Prefix {
+  case class SkillFocus(skill: Skill)
+    extends GeneralFeat with SkillFocusBase with SubFeat with Prefix with FeaturesImpl with SkillFeature {
 
+    override val bonusType: BonusType = BonusType.Feat
+    override val affectedSkills: List[(Skill, Int)] = List((skill, 3))
     /**
      * Delimits the prefix and text.
      */
@@ -416,14 +503,38 @@ object GeneralFeat extends Enum[GeneralFeat] with FeatSearchPrefix with FeatMatc
 
   case object Attack extends GeneralFeat with Attack
 
+  /**
+   * Defensive Combat Stance: While using Defensive Fighting mode, you gain a 5% bonus to Armor Class and a -5% penalty
+   * to-hit.
+   *
+   * This is the standard defensive stance and is granted automatically to all characters. Casting a spell ends this
+   * mode.
+   */
   case object DefensiveFighting extends GeneralFeat with DefensiveFighting
 
+  /**
+   * Activate this short-ranged ability while targeting a charmed, commanded, controlled, or dominated enemy that is
+   * under your control to dispel the controlling effect. [https://ddowiki.com/page/Dismiss_Charm]
+   */
   case object DismissCharm extends GeneralFeat with DismissCharm
 
+  /**
+   * https://ddowiki.com/page/Sneak
+   */
   case object Sneak extends GeneralFeat with Sneak
 
   // Seq(Feat.WeaponFocusBludgeon, Feat.WeaponFocusPiercing, Feat.WeaponFocusSlashing, Feat.WeaponFocusRanged, Feat.WeaponFocusThrown)
 
+  /**
+   * A sunder attempt is a melee special attack that, when successful, results in a -10% AC penalty and - 25%
+   * Fortification to the target for 6 seconds if it fails a DC (10 + Str mod) Fortitude save. Some creatures may be
+   * immune to the sunder effect.[official].
+   *
+   * Notes:
+   *
+   * Has an unlisted prerequisite of Base Attack Bonus of 1 for most classes. Monks and Rogues receive Trip at level 1,
+   * despite their 3/4 BAB progression. https://ddowiki.com/page/Sunder
+   */
   case object Sunder extends GeneralFeat with Sunder
 
   case object Trip extends GeneralFeat with Trip {
@@ -493,7 +604,7 @@ object GeneralFeat extends Enum[GeneralFeat] with FeatSearchPrefix with FeatMatc
 
   case object SpringAttack extends GeneralFeat with SpringAttack
 
-  case object ImprovedCritical extends GeneralFeat with ImprovedCriticalBase with ParentFeat {
+  case object ImprovedCritical extends GeneralFeat with ImprovedCriticalBase with ParentFeat with FeaturesImpl {
     override val subFeats: Seq[GeneralFeat with SubFeat] = improvedCriticalAny
   }
 

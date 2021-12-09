@@ -30,13 +30,12 @@ jobs:
       with:
         arguments: build
     - name: Run Test and Reports
-      run: ./gradlew reportScoverage aggregateAllTestReports
+      run: ./gradlew aggregateScoverage aggregateAllTestReports
     - uses: actions/checkout@master
     - uses: codecov/codecov-action@v2
       with:
-        token: ${{ secrets.CODECOV_TOKEN }} # not required for public repos
-        files: ./coverage1.xml,./coverage2.xml # optional
+        token: ${{ secrets.CODECOV_TOKEN }} # not required for public repos       
         flags: unittests # optional
         name: codecov-umbrella # optional
-        fail_ci_if_error: true # optional (default = false)
+        fail_ci_if_error: false # optional (default = false)
         verbose: true # optional (default = false)

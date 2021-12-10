@@ -29,3 +29,11 @@ jobs:
       uses: gradle/gradle-build-action@4137be6a8bf7d7133955359dbd952c0ca73b1021
       with:
         arguments: build
+    - name: Run Test and Reports
+      run: ./gradlew reportScoverage aggregateAllTestReports
+    - uses: actions/checkout@master
+    - uses: codecov/codecov-action@v2
+      with:
+        token: ${{ secrets.CODECOV_TOKEN }} # not required for public repos
+        name: codecov-umbrella # optional
+        verbose: true # optional (default = false)

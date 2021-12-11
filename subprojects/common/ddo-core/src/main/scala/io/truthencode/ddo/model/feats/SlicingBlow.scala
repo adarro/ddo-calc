@@ -21,6 +21,8 @@ import java.time.Duration
 import io.truthencode.ddo.activation.AtWillEvent
 import io.truthencode.ddo.enhancement.BonusType
 import io.truthencode.ddo.model.abilities.ActiveAbilities
+import io.truthencode.ddo.model.effect
+import io.truthencode.ddo.model.effect.TriggerEvent
 import io.truthencode.ddo.model.effect.features.{FeaturesImpl, GrantAbilityFeature}
 import io.truthencode.ddo.support.requisite.{FeatRequisiteImpl, FreeFeat}
 
@@ -36,6 +38,15 @@ protected[feats] trait SlicingBlow
   extends FeatRequisiteImpl with ActiveFeat with AtWillEvent with FreeFeat with FighterBonusFeat with FeaturesImpl
   with GrantAbilityFeature {
   self: GeneralFeat =>
+  // TODO: Add Bleed Effect to slicing blow
+  override protected[this] val triggerOn: TriggerEvent = TriggerEvent.SpecialAttack
+  override protected[this] val triggerOff: TriggerEvent = TriggerEvent.OnCoolDown
+  override protected[this] val categories: Seq[effect.EffectCategories.Value] =
+    Seq(effect.EffectCategories.Ability, effect.EffectCategories.SpecialAttack)
+  override val abilityId: String = "SlicingBlow"
+  override val description: String =
+    "Special Attack Using this attack, you deal 1 point of Constitution damage to your target and deal 1d4 additional damage 2 seconds later as the target bleeds"
+
   override def coolDown: Option[Duration] = Some(Duration.ofSeconds(15))
 
   override val grantBonusType: BonusType = BonusType.Feat

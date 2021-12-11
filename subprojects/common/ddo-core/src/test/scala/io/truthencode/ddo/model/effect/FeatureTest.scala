@@ -30,11 +30,12 @@ import org.scalatest.TryValues._
 import org.scalatest.funspec.AnyFunSpec
 import org.scalatest.matchers.should.Matchers
 import io.truthencode.ddo.test.tags.{FeatTest, FeatureTest, SkillTest}
+import org.scalatestplus.mockito.MockitoSugar
 
 import scala.Option
 import scala.collection.immutable
 
-class FeatureTest extends AnyFunSpec with Matchers with LazyLogging {
+class FeatureTest extends AnyFunSpec with Matchers with MockitoSugar with LazyLogging {
 
   def fixture = new {
     val sourceInfo: SourceInfo = SourceInfo("TestContext", this)
@@ -61,14 +62,17 @@ class FeatureTest extends AnyFunSpec with Matchers with LazyLogging {
     it("should be able to affect a dodge chance ", FeatureTest, FeatTest) {
       val param = EffectParameter.BonusType(BonusType.Feat)
       val part = EffectPart.DodgeChance
+      val mockDetailedEffect = mock[DetailedEffect]
       val partMod = new PartModifier[Int, BasicStat] with ParameterModifier[Int, BonusType] {
         lazy override protected[this] val partToModify: BasicStat =
           BasicStat.DodgeChance
         lazy override protected[this] val parameterToModify: BonusType =
           BonusType.Feat
-        override val value: Int = 3
+          override val effectDetail: DetailedEffect = mockDetailedEffect
+          override val value: Int = 3
         override val source: SourceInfo = SourceInfo("ExampleDodge", this)
       }
+
       logger.info(s"found Feature Effect with Name ${partMod.name}")
       partMod.parameter.success.value should be(param)
       partMod.part.success.value should be(part)
@@ -118,6 +122,7 @@ class FeatureTest extends AnyFunSpec with Matchers with LazyLogging {
     it("Should be able to sort a part and parameter with a value") {
       val param = EffectParameter.BonusType(BonusType.ActionBoost)
       val part = EffectPart.Feat(GeneralFeat.Trip)
+      val mDetail = mock[DetailedEffect]
       val f = fixture
       val pm = new PartModifier[Int, GeneralFeat] with ParameterModifier[Int, BonusType] {
         lazy override protected[this] val partToModify: GeneralFeat =
@@ -126,6 +131,7 @@ class FeatureTest extends AnyFunSpec with Matchers with LazyLogging {
           BonusType.ActionBoost
         override val value: Int = 3
         override val source: SourceInfo = f.sourceInfo
+          override val effectDetail: DetailedEffect = mDetail
       }
 
       pm.parameter.success.value should be(param)
@@ -147,7 +153,7 @@ class FeatureTest extends AnyFunSpec with Matchers with LazyLogging {
           val a2 = icPlus2.filter(_ == weapon).flatMap(optPlus(_, 2))
           val a3 = icPlus3.filter(_ == weapon).flatMap(optPlus(_, 3))
 
-          val squish = (a1 ++ a2 ++ a3)
+          val squish = a1 ++ a2 ++ a3
           squish should have size 1
           logger.info(s"squish is ${squish.size}")
           val squished = squish.head

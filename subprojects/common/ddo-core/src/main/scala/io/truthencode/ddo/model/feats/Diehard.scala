@@ -20,6 +20,8 @@ package io.truthencode.ddo.model.feats
 import io.truthencode.ddo.enhancement.BonusType
 import io.truthencode.ddo.model.classes.HeroicCharacterClass
 import io.truthencode.ddo.model.classes.HeroicCharacterClass.Ranger
+import io.truthencode.ddo.model.effect
+import io.truthencode.ddo.model.effect.TriggerEvent
 import io.truthencode.ddo.model.effect.features.{FeaturesImpl, UnconsciousRecoveryFeature}
 import io.truthencode.ddo.support.requisite.{ClassRequisiteImpl, FeatRequisiteImpl, FreeFeat, GrantsToClass}
 
@@ -32,6 +34,10 @@ protected[feats] trait Diehard
   self: GeneralFeat =>
   override def grantToClass: Seq[(HeroicCharacterClass, Int)] = List((Ranger, 3))
 
+  lazy override protected[this] val triggerOn: TriggerEvent = TriggerEvent.OnUnconscious
+  lazy override protected[this] val triggerOff: TriggerEvent = TriggerEvent.Never
+  lazy override protected[this] val categories: Seq[effect.EffectCategories.Value] =
+    Seq(effect.EffectCategories.Ability, effect.EffectCategories.Recovery)
   override val autoRecoveryBonus: BonusType = BonusType.Feat
   override val isAutoRecovery: Boolean = true
 }

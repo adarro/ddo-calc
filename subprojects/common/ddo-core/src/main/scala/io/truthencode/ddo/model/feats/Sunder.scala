@@ -19,6 +19,8 @@ package io.truthencode.ddo.model.feats
 
 import io.truthencode.ddo.enhancement.BonusType
 import io.truthencode.ddo.model.abilities.ActiveAbilities
+import io.truthencode.ddo.model.effect
+import io.truthencode.ddo.model.effect.TriggerEvent
 import io.truthencode.ddo.model.effect.features.{FeaturesImpl, GrantAbilityFeature}
 
 import java.time.Duration
@@ -35,5 +37,11 @@ protected[feats] trait Sunder
   override val grantBonusType: BonusType = BonusType.Feat
   override val grantedAbility: ActiveAbilities = ActiveAbilities.Sunder
 
-  override def coolDown: Option[Duration] = Some(Duration.ofSeconds(10))
+    override protected[this] val triggerOn: TriggerEvent = TriggerEvent.AtWill
+    override protected[this] val triggerOff: TriggerEvent = TriggerEvent.OnCoolDown
+    override protected[this] val categories: Seq[effect.EffectCategories.Value] = Seq(effect.EffectCategories.Ability)
+    override val abilityId: String = "Sunder"
+    override val description: String = "This melee special attack, when successful, results in a -4 AC penalty to the target for 12 seconds"
+
+    override def coolDown: Option[Duration] = Some(Duration.ofSeconds(10))
 }

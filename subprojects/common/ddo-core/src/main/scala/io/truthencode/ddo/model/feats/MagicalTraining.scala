@@ -20,6 +20,8 @@ package io.truthencode.ddo.model.feats
 import io.truthencode.ddo.enhancement.BonusType
 import io.truthencode.ddo.model.classes.HeroicCharacterClass
 import io.truthencode.ddo.model.classes.HeroicCharacterClass._
+import io.truthencode.ddo.model.effect
+import io.truthencode.ddo.model.effect.TriggerEvent
 import io.truthencode.ddo.model.effect.features.{FeaturesImpl, SpellCriticalPercentFeature, SpellPointAmountFeature}
 import io.truthencode.ddo.model.spells.SpellPower
 import io.truthencode.ddo.support.requisite.{ClassRequisiteImpl, FeatRequisiteImpl, FreeFeat, GrantsToClass}
@@ -42,12 +44,17 @@ protected[feats] trait MagicalTraining
   override protected val spellPointBonusType: BonusType = BonusType.Feat
   override protected val spellPointBonusAmount: Int = 80
 
+  lazy override protected[this] val triggerOn: TriggerEvent = TriggerEvent.Passive
+  lazy override protected[this] val triggerOff: TriggerEvent = TriggerEvent.Never
+  lazy override protected[this] val categories: Seq[effect.EffectCategories.Value] = Seq(
+    effect.EffectCategories.SpellCasting)
+
   private def magicClasses =
     List(Cleric, Druid, FavoredSoul, Artificer, Sorcerer, Wizard, Warlock, Alchemist)
 
   override def grantToClass: Seq[(HeroicCharacterClass, Int)] =
     magicClasses.map((_, 1))
-val g = SpellPower.values.map((_, 5))
+  val g: Seq[(SpellPower, Int)] = SpellPower.values.map((_, 5))
   override protected val spellCriticalBonusType: BonusType = BonusType.Feat
   override protected[this] val schoolCritical: Seq[(SpellPower, Int)] = SpellPower.values.map((_, 5)).to(LazyList)
 }

@@ -19,7 +19,14 @@ package io.truthencode.ddo.model.feats
 
 import io.truthencode.ddo.enhancement.BonusType
 import io.truthencode.ddo.model.abilities.ActiveAbilities
-import io.truthencode.ddo.model.effect.features.{ArmorClassPercentFeature, FeaturesImpl, GrantAbilityFeature, HitChancePercentFeature}
+import io.truthencode.ddo.model.effect
+import io.truthencode.ddo.model.effect.TriggerEvent
+import io.truthencode.ddo.model.effect.features.{
+  ArmorClassPercentFeature,
+  FeaturesImpl,
+  GrantAbilityFeature,
+  HitChancePercentFeature
+}
 
 import java.time.Duration
 import io.truthencode.ddo.support.requisite.{FeatRequisiteImpl, FreeFeat}
@@ -35,10 +42,19 @@ protected[feats] trait DefensiveFighting
   extends FeatRequisiteImpl with ActiveFeat with DefensiveCombatStance with FreeFeat with FeaturesImpl
   with GrantAbilityFeature with ArmorClassPercentFeature with HitChancePercentFeature {
   self: GeneralFeat =>
-    override val grantBonusType: BonusType = BonusType.Feat
-    override val grantedAbility: ActiveAbilities = ActiveAbilities.DefensiveFighting
+  override val grantBonusType: BonusType = BonusType.Feat
+  override val grantedAbility: ActiveAbilities = ActiveAbilities.DefensiveFighting
 
-    /**
+  lazy override protected[this] val categories: Seq[effect.EffectCategories.Value] =
+    Seq(effect.EffectCategories.Stance, effect.EffectCategories.MissChance, effect.EffectCategories.HitChance)
+  override val abilityId: String = "DefensiveFighting"
+  override val description: String = "A stance that increases your defense"
+  lazy override protected[this] val triggerOn: TriggerEvent = TriggerEvent.OnStance
+  lazy override protected[this] val triggerOff: TriggerEvent = TriggerEvent.OnToggle
+  lazy override protected[this] val hitChanceCategories: Seq[effect.EffectCategories.Value] = Seq(
+    effect.EffectCategories.MissChance)
+
+  /**
    * @note
    *   Set to No Cooldown but likely has some default minimal one
    * @return

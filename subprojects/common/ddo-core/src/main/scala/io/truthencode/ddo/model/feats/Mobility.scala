@@ -18,7 +18,14 @@
 package io.truthencode.ddo.model.feats
 
 import io.truthencode.ddo.enhancement.BonusType
-import io.truthencode.ddo.model.effect.features.{ArmorClassAmountFeature, DodgeChanceFeature, FeaturesImpl, MaxDexBonusFeature}
+import io.truthencode.ddo.model.effect
+import io.truthencode.ddo.model.effect.TriggerEvent
+import io.truthencode.ddo.model.effect.features.{
+  ArmorClassAmountFeature,
+  DodgeChanceFeature,
+  FeaturesImpl,
+  MaxDexBonusFeature
+}
 import io.truthencode.ddo.support.requisite.{FeatRequisiteImpl, RequiresAllOfFeat}
 
 /**
@@ -27,14 +34,21 @@ import io.truthencode.ddo.support.requisite.{FeatRequisiteImpl, RequiresAllOfFea
  */
 trait Mobility
   extends FeatRequisiteImpl with Passive with RequiresAllOfFeat with MartialArtsFeat with FighterBonusFeat
-  with AlchemistBonusFeat with FeaturesImpl with DodgeChanceFeature with MaxDexBonusFeature with ArmorClassAmountFeature{
+  with AlchemistBonusFeat with FeaturesImpl with DodgeChanceFeature with MaxDexBonusFeature
+  with ArmorClassAmountFeature {
   self: GeneralFeat =>
-    override protected val armorBonusType: BonusType = BonusType.Feat
-    override protected val armorBonusAmount: Int = 4
-    override val mdbBonusType: BonusType = BonusType.Feat
-    override val mdbAmount: Int = 2
-    override val dodgeBonusType: BonusType = BonusType.Feat
-    override val dodgeBonusAmount: Int = 2
+  override protected val armorBonusType: BonusType = BonusType.Feat
+  override protected val armorBonusAmount: Int = 4
+  override val mdbBonusType: BonusType = BonusType.Feat
+  lazy override protected[this] val categories: Seq[effect.EffectCategories.Value] = Seq(
+    effect.EffectCategories.MissChance)
+  override val mdbAmount: Int = 2
+  lazy override protected[this] val triggerOn: TriggerEvent = TriggerEvent.Passive
+  lazy override protected[this] val triggerOff: TriggerEvent = TriggerEvent.Never
+  lazy override protected[this] val acTriggerOn: TriggerEvent = TriggerEvent.OnTumble
+  lazy override protected[this] val acTriggerOff: TriggerEvent = TriggerEvent.WhileOn
+  override val dodgeBonusType: BonusType = BonusType.Feat
+  override val dodgeBonusAmount: Int = 2
 
-    override def allOfFeats: Seq[GeneralFeat] = List(GeneralFeat.Dodge)
+  override def allOfFeats: Seq[GeneralFeat] = List(GeneralFeat.Dodge)
 }

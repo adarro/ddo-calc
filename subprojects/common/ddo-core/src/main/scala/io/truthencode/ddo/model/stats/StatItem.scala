@@ -20,7 +20,7 @@ package io.truthencode.ddo.model.stats
 import enumeratum.EnumEntry
 import io.truthencode.ddo.enhancement.BonusType
 import io.truthencode.ddo.model.attribute.Attribute
-import io.truthencode.ddo.model.effect.{EffectParameter, EffectPart, ParameterModifier, PartModifier, SourceInfo}
+import io.truthencode.ddo.model.effect.{DetailedEffect, EffectParameter, EffectPart, ParameterModifier, PartModifier, SourceInfo}
 
 import scala.util.Try
 
@@ -75,7 +75,8 @@ object ThrowAway {
     lazy override protected[this] val partToModify: T = Attribute.Strength
     lazy override protected[this] val parameterToModify: A =
       BonusType.ActionBoost
-    override val value: V = 3
+      override val effectDetail: DetailedEffect = ???
+      override val value: V = 3
     override val source: SourceInfo = new SourceInfo {
       override val sourceId: String = "Example"
       override val sourceRef: AnyRef = this
@@ -115,7 +116,9 @@ object ThrowAway {
     override val parameterToModify: A = BonusType.ActionBoost,
     override val value: V = 0,
     override val source: SourceInfo
-  ) extends PartModifier[V, T] with ParameterModifier[V, A]
+  ) extends PartModifier[V, T] with ParameterModifier[V, A] {
+      override val effectDetail: DetailedEffect = ???
+  }
   // val strAttribute = StatEnums(Attribute.Strength,)
 
 }

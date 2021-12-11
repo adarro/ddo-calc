@@ -18,7 +18,15 @@
 package io.truthencode.ddo.model.effect.features
 
 import io.truthencode.ddo.enhancement.BonusType
-import io.truthencode.ddo.model.effect.{Feature, ParameterModifier, PartModifier, SourceInfo}
+import io.truthencode.ddo.model.effect
+import io.truthencode.ddo.model.effect.{
+  DetailedEffect,
+  Feature,
+  ParameterModifier,
+  PartModifier,
+  SourceInfo,
+  TriggerEvent
+}
 import io.truthencode.ddo.model.stats.BasicStat
 
 /**
@@ -29,6 +37,9 @@ trait UnconsciousRangeFeature extends Features {
   val autoRecoveryBonus: BonusType
   val unconsciousRange: Int
   private val src = this
+  protected[this] val triggerOn: TriggerEvent
+  protected[this] val triggerOff: TriggerEvent
+  protected[this] val categories: Seq[effect.EffectCategories.Value]
 
   private[this] val autoRecovery =
     new PartModifier[Int, BasicStat] with ParameterModifier[Int, BonusType] {
@@ -38,7 +49,13 @@ trait UnconsciousRangeFeature extends Features {
 
       lazy override protected[this] val parameterToModify: BonusType =
         autoRecoveryBonus
-
+      override val effectDetail: DetailedEffect = DetailedEffect(
+        id = "UnconsciousRange",
+        description = "Increases the amount below 0 hitpoints you can fall before dying",
+        categories = categories.map(_.toString),
+        triggersOn = triggerOn.entryName,
+        triggersOff = triggerOff.entryName
+      )
       override val source: SourceInfo = src
       override lazy val value: Int = unconsciousRange
       override lazy val effectText: Option[String] = Some(s"Unconscious Range: $unconsciousRange")

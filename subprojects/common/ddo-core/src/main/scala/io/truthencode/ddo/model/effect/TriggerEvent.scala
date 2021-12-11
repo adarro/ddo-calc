@@ -47,6 +47,11 @@ object TriggerEvent extends IndexedEnum[TriggerEvent] {
   case object Passive extends PassiveEvent
 
   /**
+   * Used to denote that this never happens. Not useful for triggering ON events, but should be used with Passive,
+   * always on effects.
+   */
+  case object Never extends PassiveEvent
+  /**
    * Occurs on every attack
    */
   case object OnAttack extends ActiveEvent
@@ -115,6 +120,11 @@ object TriggerEvent extends IndexedEnum[TriggerEvent] {
   case object AtWill extends ActiveEvent
 
   /**
+   * Activates or deactivates on a cooldown
+   */
+  case object OnCoolDown extends ActiveEvent
+
+  /**
    * Activated while in a Tavern, generally only applies to Healing / Recovery such as the Goodberry spell or Broccoli
    */
   case object InTavern extends ActiveEvent
@@ -134,4 +144,53 @@ object TriggerEvent extends IndexedEnum[TriggerEvent] {
    * Occurs when changing form such as Druid Wild Shape
    */
   case object ShapeChange extends ActiveEvent
+
+  /**
+   * Occurs when equipping an item
+   */
+  case object OnEquip extends ActiveEvent
+
+  /**
+   * Occurs when un-equipping an item
+   */
+  case object OnUnEquip extends ActiveEvent
+
+  /**
+   * Occurs when you are centered.
+   */
+  object OnCentered extends ActiveEvent
+
+  /**
+   * Occurs when you are no longer / not centered.
+   */
+  object OnOffCentered extends ActiveEvent
+
+  /**
+   * Activated Stance Events (Implies Toggle off / on)
+   */
+  object OnStance extends ActiveEvent
+
+  /**
+   * Triggers when rendered unconscious
+   */
+  object OnUnconscious extends ActiveEvent
+
+  /**
+   * Activates / Cycles based on some timer.
+   * i.e. Deflect Arrows
+   */
+  object OnTimer extends ActiveEvent
+
+  /**
+   * Takes effect when you Tumble
+   */
+  object OnTumble extends ActiveEvent
+
+  /**
+   * Special End event. Denotes the effect ends at the end of whatever the TriggerOn event was.
+   * i.e. End of Tumble for the Mobility Feat
+   * @note
+   *   need a better name for this
+   */
+  object WhileOn extends ActiveEvent
 }

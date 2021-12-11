@@ -18,6 +18,8 @@
 package io.truthencode.ddo.model.feats
 
 import io.truthencode.ddo.enhancement.BonusType
+import io.truthencode.ddo.model.effect
+import io.truthencode.ddo.model.effect.TriggerEvent
 import io.truthencode.ddo.model.effect.features.{FeaturesImpl, HitPointAmountFeature}
 import io.truthencode.ddo.support.requisite.{FeatRequisiteImpl, FreeFeat}
 
@@ -29,4 +31,7 @@ protected[feats] trait HeroicDurability
   self: GeneralFeat =>
   override protected val hitPointBonusType: BonusType = BonusType.Feat
   override protected val hitPointBonusAmount: Int = 30
+  lazy override protected[this] val triggerOn: TriggerEvent = TriggerEvent.Passive
+  lazy override protected[this] val triggerOff: TriggerEvent = TriggerEvent.Never
+  lazy override protected[this] val categories: Seq[effect.EffectCategories.Value] = Seq(effect.EffectCategories.Health)
 }

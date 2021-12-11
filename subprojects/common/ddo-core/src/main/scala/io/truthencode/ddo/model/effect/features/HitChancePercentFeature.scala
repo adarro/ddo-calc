@@ -18,7 +18,15 @@
 package io.truthencode.ddo.model.effect.features
 
 import io.truthencode.ddo.enhancement.BonusType
-import io.truthencode.ddo.model.effect.{Feature, ParameterModifier, PartModifier, SourceInfo}
+import io.truthencode.ddo.model.effect.{
+  DetailedEffect,
+  EffectCategories,
+  Feature,
+  ParameterModifier,
+  PartModifier,
+  SourceInfo,
+  TriggerEvent
+}
 import io.truthencode.ddo.model.stats.BasicStat
 
 /**
@@ -29,7 +37,9 @@ trait HitChancePercentFeature extends Features {
   protected val hitChanceBonusType: BonusType
   protected val hitChanceBonusAmount: Int
   private val src = this
-
+  protected[this] val triggerOn: TriggerEvent
+  protected[this] val triggerOff: TriggerEvent
+  protected[this] val hitChanceCategories: Seq[EffectCategories.Value]
   private[this] val hitChanceChance =
     new PartModifier[Int, BasicStat] with ParameterModifier[Int, BonusType] {
 
@@ -38,7 +48,13 @@ trait HitChancePercentFeature extends Features {
 
       lazy override protected[this] val parameterToModify: BonusType =
         hitChanceBonusType
-
+      lazy override val effectDetail: DetailedEffect = DetailedEffect(
+        id = "ArmorClass",
+        description = "Adds damage to critical hits",
+        categories = hitChanceCategories.map(_.toString),
+        triggersOn = triggerOn.entryName,
+        triggersOff = triggerOff.entryName
+      )
       override val source: SourceInfo = src
       override lazy val value: Int = hitChanceBonusAmount
       override lazy val effectText: Option[String] = Some(s"hitChance Class by $value%")

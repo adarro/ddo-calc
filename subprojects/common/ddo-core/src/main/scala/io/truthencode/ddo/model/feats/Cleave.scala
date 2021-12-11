@@ -21,7 +21,9 @@ import java.time.Duration
 import io.truthencode.ddo.activation.AtWillEvent
 import io.truthencode.ddo.enhancement.BonusType
 import io.truthencode.ddo.model.abilities.ActiveAbilities
-import io.truthencode.ddo.model.effect.features.{FeaturesImpl, GrantAbilityFeature}
+import io.truthencode.ddo.model.effect
+import io.truthencode.ddo.model.effect.TriggerEvent
+import io.truthencode.ddo.model.effect.features.{FeaturesImpl, GrantAbilityFeature, SpecialAttackFeature}
 import io.truthencode.ddo.model.misc.CoolDownPool.Cleave
 import io.truthencode.ddo.model.misc.SharedCoolDown
 import io.truthencode.ddo.support.requisite.{FeatRequisiteImpl, RequiresAllOfFeat}
@@ -33,12 +35,16 @@ import io.truthencode.ddo.support.requisite.{FeatRequisiteImpl, RequiresAllOfFea
  */
 protected[feats] trait Cleave
   extends FeatRequisiteImpl with ActiveFeat with AtWillEvent with RequiresAllOfFeat with FighterBonusFeat
-  with FeaturesImpl with GrantAbilityFeature with SharedCoolDown {
+  with FeaturesImpl with GrantAbilityFeature with SpecialAttackFeature with SharedCoolDown {
   self: GeneralFeat =>
   override val allOfFeats = List(GeneralFeat.PowerAttack)
   override lazy val anyOfFeats: Seq[GeneralFeat] = IndexedSeq.apply()
   override lazy val noneOfFeats: Seq[GeneralFeat] = IndexedSeq.apply()
   override val coolDownPoolId: String = Cleave.coolDownPoolId
+
+  override val abilityId: String = "Cleave"
+  override val description: String =
+    "Special Attack - Activate this ability to attack one or more enemies in an arc in front of you."
 
   override def coolDown: Option[Duration] = Some(Duration.ofSeconds(5))
 

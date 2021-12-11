@@ -20,6 +20,8 @@ package io.truthencode.ddo.model.feats
 import io.truthencode.ddo.enhancement.BonusType
 import io.truthencode.ddo.model.abilities.ActiveAbilities
 import io.truthencode.ddo.model.attribute.Attribute
+import io.truthencode.ddo.model.effect
+import io.truthencode.ddo.model.effect.TriggerEvent
 import io.truthencode.ddo.model.effect.features.{FeaturesImpl, GrantAbilityFeature}
 import io.truthencode.ddo.support.requisite.{FeatRequisiteImpl, RequiresAttribute, RequiresBaB}
 
@@ -46,4 +48,10 @@ protected[feats] trait Resilience
   override def coolDown: Option[Duration] = Some(Duration.ofSeconds(6))
 
   override def requiresBaB: Int = 1
+// TODO: Add 3x spell cool down, +4 saving throw
+  override protected[this] val triggerOn: TriggerEvent = TriggerEvent.OnStance
+  override protected[this] val triggerOff: TriggerEvent = TriggerEvent.OnToggle
+  override protected[this] val categories: Seq[effect.EffectCategories.Value] = Seq(effect.EffectCategories.Stance)
+  override val abilityId: String = "Resilience"
+  override val description: String = "Defensive Combat Stance You gain a +4 to all saving throws."
 }

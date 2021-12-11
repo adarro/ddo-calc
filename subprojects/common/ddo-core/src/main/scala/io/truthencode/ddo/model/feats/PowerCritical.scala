@@ -18,6 +18,8 @@
 package io.truthencode.ddo.model.feats
 
 import io.truthencode.ddo.enhancement.BonusType
+import io.truthencode.ddo.model.effect
+import io.truthencode.ddo.model.effect.TriggerEvent
 import io.truthencode.ddo.model.effect.features.{
   ConfirmCriticalHitAmountFeature,
   CriticalDamageAmountFeature,
@@ -39,7 +41,13 @@ protected[feats] trait PowerCritical
   override protected val criticalDamageBonusType: BonusType = BonusType.Feat
   override protected val criticalDamageBonusAmount: Int = 2
 
+  lazy override protected[this] val triggerOn: TriggerEvent = TriggerEvent.Passive
+  lazy override protected[this] val triggerOff: TriggerEvent = TriggerEvent.Never
+
   override def requiresBaB: Int = 4
 
   override def anyOfFeats: Seq[GeneralFeat] = GeneralFeat.weaponFocusAny
+
+  lazy override protected[this] val categories: Seq[effect.EffectCategories.Value] = Seq(
+    effect.EffectCategories.GeneralCombat)
 }

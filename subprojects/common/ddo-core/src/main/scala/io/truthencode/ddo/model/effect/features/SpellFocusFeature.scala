@@ -18,7 +18,8 @@
 package io.truthencode.ddo.model.effect.features
 
 import io.truthencode.ddo.enhancement.BonusType
-import io.truthencode.ddo.model.effect.{Feature, ParameterModifier, PartModifier, SourceInfo}
+import io.truthencode.ddo.model.effect
+import io.truthencode.ddo.model.effect.{DetailedEffect, Feature, ParameterModifier, PartModifier, SourceInfo, TriggerEvent}
 import io.truthencode.ddo.model.schools.School
 import io.truthencode.ddo.model.stats.BasicStat
 
@@ -29,9 +30,11 @@ trait SpellFocusFeature extends Features {
   self: SourceInfo =>
   protected val spellFocusBonusType: BonusType
   protected val spellFocusDifficultyCheck: Int
-  protected val spellSchool:School
+  protected val spellSchool: School
   private val src = this
-
+  protected[this] val triggerOn: TriggerEvent
+  protected[this] val triggerOff: TriggerEvent
+  protected[this] val categories: Seq[effect.EffectCategories.Value]
   private[this] val spellFocusAmount =
     new PartModifier[Int, BasicStat] with ParameterModifier[Int, BonusType] {
 
@@ -40,7 +43,13 @@ trait SpellFocusFeature extends Features {
 
       lazy override protected[this] val parameterToModify: BonusType =
         spellFocusBonusType
-
+        override val effectDetail: DetailedEffect = DetailedEffect(
+            id = "SpellPoints",
+            description = "Increases your total spell points",
+            categories = categories.map(_.toString),
+            triggersOn = triggerOn.entryName,
+            triggersOff = triggerOff.entryName
+        )
       override val source: SourceInfo = src
       override lazy val value: Int = spellFocusDifficultyCheck
       override lazy val effectText: Option[String] = Some(s"Spell Focus $spellSchool by $value")

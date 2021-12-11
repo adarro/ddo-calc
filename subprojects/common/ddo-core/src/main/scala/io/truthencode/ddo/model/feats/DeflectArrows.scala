@@ -21,17 +21,35 @@ import io.truthencode.ddo.enhancement.BonusType
 import io.truthencode.ddo.model.attribute.Attribute
 import io.truthencode.ddo.model.classes.HeroicCharacterClass
 import io.truthencode.ddo.model.classes.HeroicCharacterClass.Monk
+import io.truthencode.ddo.model.effect
+import io.truthencode.ddo.model.effect.TriggerEvent
 import io.truthencode.ddo.model.effect.features.{DeflectArrowsFeature, FeaturesImpl}
+import io.truthencode.ddo.model.misc.CoolDown
 import io.truthencode.ddo.support.requisite.{FeatRequisiteImpl, RequiresAllOfClass, RequiresAttribute}
 
+import java.time.Duration
+
 trait DeflectArrows
-  extends FeatRequisiteImpl with RequiresAllOfClass with Passive with RequiresAttribute
-      with MartialArtsFeat with FeaturesImpl with DeflectArrowsFeature {
+  extends FeatRequisiteImpl with RequiresAllOfClass with Passive with RequiresAttribute with MartialArtsFeat
+  with FeaturesImpl with DeflectArrowsFeature with CoolDown {
   self: GeneralFeat =>
   override def requiresAttribute: Seq[(Attribute, Int)] = List((Attribute.Dexterity, 13))
 
+  /**
+   * Some duration until this action / spell / ability can be used again.
+   *
+   * @return
+   *   Some Time span which must elapse before re-activation.
+   */
+  override def coolDown: Option[Duration] = Some(Duration.ofSeconds(secondsPerArrow))
+
   override def allOfClass: Seq[(HeroicCharacterClass, Int)] = List((Monk, 1))
 
-    override protected val deflectArrowsBonusType: BonusType = BonusType.Feat
-    override protected val secondsPerArrow: Int = 6
+  override protected val deflectArrowsBonusType: BonusType = BonusType.Feat
+  override protected val secondsPerArrow: Int = 6
+  lazy override protected[this] val triggerOn: TriggerEvent = TriggerEvent.OnTimer
+  lazy override protected[this] val triggerOff: TriggerEvent = TriggerEvent.OnCoolDown
+  lazy override protected[this] val categories: Seq[effect.EffectCategories.Value] =
+    Seq(effect.EffectCategories.MissChance, effect.EffectCategories.Ability)
+
 }

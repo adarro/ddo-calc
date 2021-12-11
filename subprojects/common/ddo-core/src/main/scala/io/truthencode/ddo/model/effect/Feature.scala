@@ -43,6 +43,8 @@ sealed trait Feature[V] {
     case Some(value) => Some(value.entryName)
   }
   lazy val effectText: Option[String] = None
+  val effectDetail: DetailedEffect
+
 }
 
 trait DynamicFeature[V] extends Feature[V] {
@@ -60,7 +62,8 @@ object Feature {
     override val value: Seq[(WeaponCategory, Int)],
     basicStat: BasicStat,
     bonusType: BonusType,
-    override val source: SourceInfo)
+    override val source: SourceInfo,
+    override val effectDetail: DetailedEffect)
     extends PartModifier[Seq[(WeaponCategory, Int)], BasicStat]
     with ParameterModifier[Seq[(WeaponCategory, Int)], BonusType] {
 
@@ -77,8 +80,9 @@ object Feature {
     skill: Skill,
     override val value: Int,
     bonusType: BonusType,
-    override val source: SourceInfo
-  ) extends PartModifier[Int, Skill] with ParameterModifier[Int, BonusType] {
+    override val source: SourceInfo,
+    effectDetail: DetailedEffect)
+    extends PartModifier[Int, Skill] with ParameterModifier[Int, BonusType] {
 
     def numberToSignedText(int: Int): String = {
       if (int >= 0) {
@@ -106,8 +110,9 @@ object Feature {
     attribute: Attribute,
     override val value: Int,
     bonusType: BonusType,
-    override val source: SourceInfo
-  ) extends PartModifier[Int, Attribute] with ParameterModifier[Int, BonusType] {
+    override val source: SourceInfo,
+    effectDetail: DetailedEffect)
+    extends PartModifier[Int, Attribute] with ParameterModifier[Int, BonusType] {
     override protected[this] val partToModify: Attribute = attribute
     override protected[this] val parameterToModify: BonusType = bonusType
   }
@@ -153,5 +158,6 @@ case class EffectFeature[T](
   override val parameter: Try[EffectParameter],
   override val part: Try[EffectPart],
   override val source: SourceInfo,
-  override val value: T
-) extends Feature[T]
+  override val value: T,
+  effectDetail: DetailedEffect)
+  extends Feature[T]

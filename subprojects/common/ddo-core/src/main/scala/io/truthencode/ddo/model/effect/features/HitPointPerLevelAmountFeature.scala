@@ -18,7 +18,16 @@
 package io.truthencode.ddo.model.effect.features
 
 import io.truthencode.ddo.enhancement.BonusType
-import io.truthencode.ddo.model.effect.{DynamicFeature, Feature, ParameterModifier, PartModifier, SourceInfo}
+import io.truthencode.ddo.model.effect
+import io.truthencode.ddo.model.effect.{
+  DetailedEffect,
+  DynamicFeature,
+  Feature,
+  ParameterModifier,
+  PartModifier,
+  SourceInfo,
+  TriggerEvent
+}
 import io.truthencode.ddo.model.stats.BasicStat
 
 /**
@@ -30,6 +39,9 @@ trait HitPointPerLevelAmountFeature extends Features {
   protected val hitPointsPerLevel: Int
   private val src = this
   def calculate: Int => Int
+  protected[this] val triggerOn: TriggerEvent
+  protected[this] val triggerOff: TriggerEvent
+  protected[this] val categories: Seq[effect.EffectCategories.Value]
   private[this] val hitPointAmount =
     new PartModifier[Int, BasicStat] with ParameterModifier[Int, BonusType] with DynamicFeature[Int] {
 
@@ -38,7 +50,13 @@ trait HitPointPerLevelAmountFeature extends Features {
 
       lazy override protected[this] val parameterToModify: BonusType =
         hitPointBonusType
-
+      lazy override val effectDetail: DetailedEffect = DetailedEffect(
+        id = "HitChance",
+        description = "Increases your Hit points",
+        categories = categories.map(_.toString),
+        triggersOn = triggerOn.entryName,
+        triggersOff = triggerOff.entryName
+      )
       override val source: SourceInfo = src
       override lazy val value: Int = hitPointsPerLevel
       override lazy val effectText: Option[String] = Some(s"Hit Points by $value")

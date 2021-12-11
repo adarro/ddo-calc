@@ -18,7 +18,15 @@
 package io.truthencode.ddo.model.effect.features
 
 import io.truthencode.ddo.enhancement.BonusType
-import io.truthencode.ddo.model.effect.{Feature, ParameterModifier, PartModifier, SourceInfo}
+import io.truthencode.ddo.model.effect.{
+  DetailedEffect,
+  EffectCategories,
+  Feature,
+  ParameterModifier,
+  PartModifier,
+  SourceInfo,
+  TriggerEvent
+}
 import io.truthencode.ddo.model.stats.BasicStat
 
 /**
@@ -29,7 +37,9 @@ trait ConfirmCriticalHitAmountFeature extends Features {
   protected val confirmCriticalHitBonusType: BonusType
   protected val confirmCriticalHitBonusAmount: Int
   private val src = this
-
+  protected[this] val triggerOn: TriggerEvent
+  protected[this] val triggerOff: TriggerEvent
+  protected[this] val categories: Seq[EffectCategories.Value]
   private[this] val confirmCriticalHitChance =
     new PartModifier[Int, BasicStat] with ParameterModifier[Int, BonusType] {
 
@@ -38,7 +48,13 @@ trait ConfirmCriticalHitAmountFeature extends Features {
 
       lazy override protected[this] val parameterToModify: BonusType =
         confirmCriticalHitBonusType
-
+      lazy override val effectDetail: DetailedEffect = DetailedEffect(
+        id = "ArmorClass",
+        description = "Adds damage to critical hits",
+        categories = categories.map(_.toString),
+        triggersOn = triggerOn.entryName,
+        triggersOff = triggerOff.entryName
+      )
       override val source: SourceInfo = src
       override lazy val value: Int = confirmCriticalHitBonusAmount
       override lazy val effectText: Option[String] = Some(s"Confirm Critical Hit: $value")

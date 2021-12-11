@@ -18,13 +18,21 @@
 package io.truthencode.ddo.model.effect.features
 
 import io.truthencode.ddo.enhancement.BonusType
-import io.truthencode.ddo.model.effect.{Feature, ParameterModifier, PartModifier, SourceInfo}
+import io.truthencode.ddo.model.effect
+import io.truthencode.ddo.model.effect.{
+  DetailedEffect,
+  Feature,
+  ParameterModifier,
+  PartModifier,
+  SourceInfo,
+  TriggerEvent
+}
 import io.truthencode.ddo.model.schools.School
 import io.truthencode.ddo.model.spells.SpellPower
 import io.truthencode.ddo.model.stats.BasicStat
 
 /**
- * Affects your Maximum Spell Points by the specific Percent
+ * Affects your chance to do critical damage with specific spells
  */
 trait SpellCriticalPercentFeature extends Features {
   self: SourceInfo =>
@@ -32,7 +40,9 @@ trait SpellCriticalPercentFeature extends Features {
 
   private val src = this
   protected[this] val schoolCritical: Seq[(SpellPower, Int)]
-
+  protected[this] val triggerOn: TriggerEvent
+  protected[this] val triggerOff: TriggerEvent
+  protected[this] val categories: Seq[effect.EffectCategories.Value]
   private[this] def spellCriticalPercentChance: Seq[Feature[_]] = {
     for {
       (s, a) <- schoolCritical
@@ -44,7 +54,13 @@ trait SpellCriticalPercentFeature extends Features {
 
         lazy override protected[this] val parameterToModify: BonusType =
           spellCriticalBonusType
-
+        override val effectDetail: DetailedEffect = DetailedEffect(
+          id = "SpellPoints",
+          description = "Increases your critical spell chance",
+          categories = categories.map(_.toString),
+          triggersOn = triggerOn.entryName,
+          triggersOff = triggerOff.entryName
+        )
         override val source: SourceInfo = src
         override lazy val value: Int = a
         override lazy val effectText: Option[String] = Some(s"Spell Critical Percent Chance:$s by $value")

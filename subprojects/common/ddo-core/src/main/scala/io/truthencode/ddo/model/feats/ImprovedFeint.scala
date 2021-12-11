@@ -21,6 +21,8 @@ import java.time.Duration
 import io.truthencode.ddo.activation.AtWillEvent
 import io.truthencode.ddo.enhancement.BonusType
 import io.truthencode.ddo.model.abilities.ActiveAbilities
+import io.truthencode.ddo.model.effect
+import io.truthencode.ddo.model.effect.TriggerEvent
 import io.truthencode.ddo.model.effect.features.{FeaturesImpl, GrantAbilityFeature}
 import io.truthencode.ddo.support.requisite.{FeatRequisiteImpl, RequiresAllOfFeat, RequiresAnyOfFeat}
 
@@ -45,4 +47,9 @@ protected[feats] trait ImprovedFeint
 
   override val grantBonusType: BonusType = BonusType.Feat
   override val grantedAbility: ActiveAbilities = ActiveAbilities.ImprovedFeint
+    override protected[this] val triggerOn: TriggerEvent = TriggerEvent.AtWill
+    override protected[this] val triggerOff: TriggerEvent = TriggerEvent.OnCoolDown
+    override protected[this] val categories: Seq[effect.EffectCategories.Value] = Seq(effect.EffectCategories.Ability,effect.EffectCategories.SpecialAttack)
+    override val abilityId: String = "ImprovedFeint"
+    override val description: String = "Special Attack A tactical melee attack which Bluffs the enemy, enabling Sneak Attacks."
 }

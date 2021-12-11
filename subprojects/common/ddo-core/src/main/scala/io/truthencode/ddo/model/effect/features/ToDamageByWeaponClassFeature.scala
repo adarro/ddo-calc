@@ -18,7 +18,15 @@
 package io.truthencode.ddo.model.effect.features
 
 import io.truthencode.ddo.enhancement.BonusType
-import io.truthencode.ddo.model.effect.{Feature, ParameterModifier, PartModifier, SourceInfo}
+import io.truthencode.ddo.model.effect
+import io.truthencode.ddo.model.effect.{
+  DetailedEffect,
+  Feature,
+  ParameterModifier,
+  PartModifier,
+  SourceInfo,
+  TriggerEvent
+}
 import io.truthencode.ddo.model.item.weapon.{WeaponCategory, WeaponClass}
 import io.truthencode.ddo.model.stats.BasicStat
 
@@ -31,6 +39,9 @@ trait ToDamageByWeaponClassFeature extends Features {
   protected val toDamageType: BonusType
   protected val toDamageAmount: Seq[(WeaponCategory, Int)]
   private val src = this
+  protected[this] val triggerOn: TriggerEvent
+  protected[this] val triggerOff: TriggerEvent
+  protected[this] val categories: Seq[effect.EffectCategories.Value]
 
   private[this] val toDamageChance =
     new PartModifier[Seq[(WeaponCategory, Int)], BasicStat]
@@ -41,7 +52,13 @@ trait ToDamageByWeaponClassFeature extends Features {
 
       lazy override protected[this] val parameterToModify: BonusType =
         toDamageType
-
+      override val effectDetail: DetailedEffect = DetailedEffect(
+        id = "WeaponDamage",
+        description = "Increases damage for a given weapon type",
+        categories = categories.map(_.toString),
+        triggersOn = triggerOn.entryName,
+        triggersOff = triggerOff.entryName
+      )
       override val source: SourceInfo = src
       override lazy val value: Seq[(WeaponCategory, Int)] = toDamageAmount
       override lazy val effectText: Option[String] = Some(s"To Damage Amount: $value%")

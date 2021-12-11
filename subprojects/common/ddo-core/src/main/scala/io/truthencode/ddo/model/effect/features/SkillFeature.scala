@@ -18,7 +18,7 @@
 package io.truthencode.ddo.model.effect.features
 
 import io.truthencode.ddo.enhancement.BonusType
-import io.truthencode.ddo.model.effect.{Feature, SourceInfo}
+import io.truthencode.ddo.model.effect.{DetailedEffect, EffectCategories, Feature, SourceInfo, TriggerEvent}
 import io.truthencode.ddo.model.skill.Skill
 
 import scala.collection.immutable
@@ -34,7 +34,15 @@ trait SkillFeature extends Features {
   private val src = this
 
   private lazy val skillChance: immutable.Seq[Feature.SkillEffect] = affectedSkills.map { f =>
-    Feature.SkillEffect(f._1, f._2, bonusType, this)
+    val categories = Seq(EffectCategories.Skill).map(_.toString)
+    val effectDetail = DetailedEffect(
+      id = s"Skill:${f._1.entryName}",
+      description = "Improves skill",
+      categories = categories,
+      triggersOn = TriggerEvent.Passive.toString,
+      triggersOff = TriggerEvent.Never.toString
+    )
+    Feature.SkillEffect(f._1, f._2, bonusType, src, effectDetail)
   }
 
   abstract override def features: Seq[Feature[_]] =

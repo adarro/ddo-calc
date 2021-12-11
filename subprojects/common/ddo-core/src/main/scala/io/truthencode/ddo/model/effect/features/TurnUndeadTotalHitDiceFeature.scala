@@ -18,7 +18,15 @@
 package io.truthencode.ddo.model.effect.features
 
 import io.truthencode.ddo.enhancement.BonusType
-import io.truthencode.ddo.model.effect.{Feature, ParameterModifier, PartModifier, SourceInfo}
+import io.truthencode.ddo.model.effect
+import io.truthencode.ddo.model.effect.{
+  DetailedEffect,
+  Feature,
+  ParameterModifier,
+  PartModifier,
+  SourceInfo,
+  TriggerEvent
+}
 import io.truthencode.ddo.model.stats.BasicStat
 
 trait TurnUndeadTotalHitDiceFeature extends Features {
@@ -26,6 +34,9 @@ trait TurnUndeadTotalHitDiceFeature extends Features {
   val totalHitDiceBonusType: BonusType
   val totalHitDiceValue: Int
   private val src = this
+  protected[this] val triggerOn: TriggerEvent
+  protected[this] val triggerOff: TriggerEvent
+  protected[this] val categories: Seq[effect.EffectCategories.Value]
 
   private[this] val tHD =
     new PartModifier[Int, BasicStat] with ParameterModifier[Int, BonusType] {
@@ -35,7 +46,13 @@ trait TurnUndeadTotalHitDiceFeature extends Features {
 
       lazy override protected[this] val parameterToModify: BonusType =
         totalHitDiceBonusType
-
+      override val effectDetail: DetailedEffect = DetailedEffect(
+        id = "TurnUndeadTotalHitDice",
+        description = "Increases the Total hit dice of undead you can turn",
+        categories = categories.map(_.toString),
+        triggersOn = triggerOn.entryName,
+        triggersOff = triggerOff.entryName
+      )
       override val source: SourceInfo = src
       override lazy val value: Int = totalHitDiceValue
 

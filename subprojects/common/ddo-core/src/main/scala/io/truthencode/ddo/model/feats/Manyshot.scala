@@ -23,7 +23,10 @@ import io.truthencode.ddo.model.abilities.ActiveAbilities
 import io.truthencode.ddo.model.attribute.Attribute
 import io.truthencode.ddo.model.classes.HeroicCharacterClass
 import io.truthencode.ddo.model.classes.HeroicCharacterClass.Ranger
+import io.truthencode.ddo.model.effect
+import io.truthencode.ddo.model.effect.TriggerEvent
 import io.truthencode.ddo.model.effect.features.{FeaturesImpl, GrantAbilityFeature}
+import io.truthencode.ddo.model.misc.{CoolDown, PoolManyShot, SharedCoolDown}
 import io.truthencode.ddo.support.requisite._
 
 import java.time.Duration
@@ -49,13 +52,25 @@ import java.time.Duration
 protected[feats] trait Manyshot
   extends FeatRequisiteImpl with ActiveFeat with AtWillEvent with RequiresAllOfFeat with RequiresAttribute
   with RequiresBaB with ClassRequisiteImpl with GrantsToClass with FighterBonusFeat with FeaturesImpl
-  with GrantAbilityFeature {
+  with GrantAbilityFeature with SharedCoolDown {
   self: GeneralFeat =>
+  /**
+   * Used to group shared timer resources. It is strongly recommended to use one of the values in
+   * [[io.truthencode.ddo.model.misc.CoolDownPool]]
+   */
+  override val coolDownPoolId: String = PoolManyShot
   override val grantBonusType: BonusType = BonusType.Feat
   override val grantedAbility: ActiveAbilities = ActiveAbilities.Manyshot
-
+// TODO: Add Doubleshot feature ADD BAB +4 Feature
   override def allOfFeats: Seq[GeneralFeat] =
     List(GeneralFeat.PointBlankShot, GeneralFeat.RapidShot)
+
+  override protected[this] val triggerOn: TriggerEvent = TriggerEvent.AtWill
+  override protected[this] val triggerOff: TriggerEvent = TriggerEvent.OnCoolDown
+  override protected[this] val categories: Seq[effect.EffectCategories.Value] = Seq(effect.EffectCategories.Ability,effect.EffectCategories.RangedCombat)
+  override val abilityId: String = "ManyShot"
+  override val description: String =
+    "Ability For the next 20 seconds, add your base attack bonus * 4 to your Doubleshot and Ranged power"
 
   /**
    * The Minimum Required Base Attack Bonus

@@ -20,6 +20,8 @@ package io.truthencode.ddo.model.feats
 import io.truthencode.ddo.enhancement.BonusType
 import io.truthencode.ddo.model.abilities.ActiveAbilities
 import io.truthencode.ddo.model.attribute.Attribute
+import io.truthencode.ddo.model.effect
+import io.truthencode.ddo.model.effect.TriggerEvent
 import io.truthencode.ddo.model.effect.features.{FeaturesImpl, GrantAbilityFeature}
 import io.truthencode.ddo.model.misc.DefaultCoolDown
 import io.truthencode.ddo.support.requisite.{FeatRequisiteImpl, RequiresAttribute, RequiresBaB}
@@ -40,7 +42,13 @@ protected[feats] trait Precision
     List((Attribute.Dexterity, 13))
 
   override def requiresBaB = 1
-
+// TODO: Add reduce fort 25% and 5% tohit + rage prohibition
   override val grantBonusType: BonusType = BonusType.Feat
   override val grantedAbility: ActiveAbilities = ActiveAbilities.Precision
+  override protected[this] val triggerOn: TriggerEvent = TriggerEvent.OnStance
+  override protected[this] val triggerOff: TriggerEvent = TriggerEvent.OnToggle
+  override protected[this] val categories: Seq[effect.EffectCategories.Value] = Seq(effect.EffectCategories.Stance)
+  override val abilityId: String = "Precision"
+  override val description: String =
+    "Offensive Combat Stance While using Precision mode, you gain +5% to hit and reduce the target's fortification against your attacks by 25%"
 }

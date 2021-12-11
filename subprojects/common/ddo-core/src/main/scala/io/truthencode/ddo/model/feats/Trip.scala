@@ -23,7 +23,8 @@ import io.truthencode.ddo.enhancement.BonusType
 import io.truthencode.ddo.model.abilities.ActiveAbilities
 import io.truthencode.ddo.model.attribute.Attribute.Strength
 import io.truthencode.ddo.model.attribute.{Attribute, DexterityLinked, LinkedAttributeImpl, StrengthLinked}
-import io.truthencode.ddo.model.effect.DifficultyCheck
+import io.truthencode.ddo.model.effect
+import io.truthencode.ddo.model.effect.{DifficultyCheck, TriggerEvent}
 import io.truthencode.ddo.model.effect.features.{FeaturesImpl, GrantAbilityFeature}
 import io.truthencode.ddo.support.ModifierStrategy
 import io.truthencode.ddo.support.requisite.{FeatRequisiteImpl, FreeFeat}
@@ -41,6 +42,11 @@ protected[feats] trait Trip
   with GrantAbilityFeature {
   self: GeneralFeat =>
 
+  override protected[this] val triggerOn: TriggerEvent = TriggerEvent.AtWill
+  override protected[this] val triggerOff: TriggerEvent = TriggerEvent.OnCoolDown
+  override protected[this] val categories: Seq[effect.EffectCategories.Value] = Seq(effect.EffectCategories.Ability)
+  override val abilityId: String = "Trip"
+  override val description: String = "This feat has a chance to trip the target rendering it prone for a short time."
   override def coolDown: Option[Duration] = Some(Duration.ofSeconds(15))
   // DC of 10 + Strength modifier + related Enhancements + Vertigo.
   override val grantBonusType: BonusType = BonusType.Feat

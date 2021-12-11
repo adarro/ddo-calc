@@ -18,6 +18,8 @@
 package io.truthencode.ddo.model.feats
 
 import io.truthencode.ddo.enhancement.BonusType
+import io.truthencode.ddo.model.effect
+import io.truthencode.ddo.model.effect.TriggerEvent
 import io.truthencode.ddo.model.effect.features.{FeaturesImpl, HitPointPerLevelAmountFeature}
 import io.truthencode.ddo.providers.SimpleValueProvider
 import io.truthencode.ddo.support.requisite.{FeatRequisiteImpl, FreeFeat}
@@ -28,8 +30,8 @@ import io.truthencode.ddo.support.requisite.{FeatRequisiteImpl, FreeFeat}
  * None
  * @note
  *   The hitpoint calculation attempts to use an Implicit [[SimpleValueProvider]]. It will create and use a default
- *   [[ToughnessHitPointsPerLevelProvider]] if no implicit value is found.
- *   Although we should probably type the implicit more specifically here
+ *   [[ToughnessHitPointsPerLevelProvider]] if no implicit value is found. Although we should probably type the implicit
+ *   more specifically here
  */
 protected[feats] trait Toughness
   extends FeatRequisiteImpl with Passive with FreeFeat with MartialArtsFeat with FeaturesImpl
@@ -43,8 +45,13 @@ protected[feats] trait Toughness
     provider.createValue
   }
 
+  lazy override protected[this] val triggerOn: TriggerEvent = TriggerEvent.Passive
+  lazy override protected[this] val triggerOff: TriggerEvent = TriggerEvent.Never
+  lazy override protected[this] val categories: Seq[effect.EffectCategories.Value] = Seq(effect.EffectCategories.Health)
+
   /**
    * 3 at first level, and adds +1 for each other level. Technically
+   *
    * @example
    *   val currentLevel = 3 calculateHitPointsPerLevel(3) // 5 // Officially this would be <br /> Seq(3) ++ (2 to
    *   levelCap).map(_ => 1).sum // Effectively this is currentLevel + 2

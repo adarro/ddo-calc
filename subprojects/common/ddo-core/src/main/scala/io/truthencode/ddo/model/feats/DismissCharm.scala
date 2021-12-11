@@ -21,6 +21,8 @@ import io.truthencode.ddo.activation.AtWillEvent
 import io.truthencode.ddo.enhancement.BonusType
 import io.truthencode.ddo.model.abilities.ActiveAbilities
 import io.truthencode.ddo.model.classes.HeroicCharacterClass
+import io.truthencode.ddo.model.effect
+import io.truthencode.ddo.model.effect.TriggerEvent
 import io.truthencode.ddo.model.effect.features.{FeaturesImpl, GrantAbilityFeature}
 import io.truthencode.ddo.model.misc.DefaultCoolDown
 import io.truthencode.ddo.support.requisite.{ClassRequisiteImpl, FeatRequisiteImpl, FreeFeat, GrantsToClass}
@@ -41,5 +43,9 @@ protected[feats] trait DismissCharm
 
     override val grantBonusType: BonusType = BonusType.Feat
     override val grantedAbility: ActiveAbilities = ActiveAbilities.DismissCharm
-
+    override protected[this] val triggerOn: TriggerEvent = TriggerEvent.OnToggle
+    override protected[this] val triggerOff: TriggerEvent = TriggerEvent.OnToggle
+    override protected[this] val categories: Seq[effect.EffectCategories.Value] = Seq(effect.EffectCategories.Ability)
+    override val abilityId: String = "DismissCharm"
+    override val description: String = "Creates ability to dismiss some charmed mobs."
 }

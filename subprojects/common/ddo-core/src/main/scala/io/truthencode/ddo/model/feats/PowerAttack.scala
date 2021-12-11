@@ -20,6 +20,8 @@ package io.truthencode.ddo.model.feats
 import io.truthencode.ddo.enhancement.BonusType
 import io.truthencode.ddo.model.abilities.ActiveAbilities
 import io.truthencode.ddo.model.attribute.Attribute
+import io.truthencode.ddo.model.effect
+import io.truthencode.ddo.model.effect.TriggerEvent
 import io.truthencode.ddo.model.effect.features.{FeaturesImpl, GrantAbilityFeature}
 import io.truthencode.ddo.support.requisite.{FeatRequisiteImpl, RequiresAttribute}
 
@@ -41,11 +43,19 @@ import java.time.Duration
  */
 protected[feats] trait PowerAttack
   extends FeatRequisiteImpl with ActiveFeat with Stance with RequiresAttribute with MartialArtsFeat
-  with FighterBonusFeat with FeaturesImpl with GrantAbilityFeature {
+  with FighterBonusFeat with FeaturesImpl with GrantAbilityFeature  {
   self: GeneralFeat =>
   override val requiresAttribute: Seq[(Attribute, Int)] = List(
     (Attribute.Strength, 13)
   )
+// TODO: Add to hit penalty, Damage Bonus for PowerAttack
+  override protected[this] val triggerOn: TriggerEvent = TriggerEvent.OnStance
+  override protected[this] val triggerOff: TriggerEvent = TriggerEvent.OnToggle
+  override protected[this] val categories: Seq[effect.EffectCategories.Value] =
+    Seq(effect.EffectCategories.Ability, effect.EffectCategories.Stance, effect.EffectCategories.MeleeCombat)
+  override val abilityId: String = "PowerAttack"
+  override val description: String =
+    "This feat exchanges part of your attack bonus for extra melee damage. It reduces your hit bonus by 5, or your Base Attack Bonus, whichever is lower."
 
   override def coolDown: Option[Duration] = Some(Duration.ofSeconds(10))
 

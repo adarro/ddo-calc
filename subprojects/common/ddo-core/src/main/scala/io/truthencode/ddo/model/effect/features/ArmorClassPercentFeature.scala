@@ -18,35 +18,51 @@
 package io.truthencode.ddo.model.effect.features
 
 import io.truthencode.ddo.enhancement.BonusType
-import io.truthencode.ddo.model.effect.{Feature, ParameterModifier, PartModifier, SourceInfo}
+import io.truthencode.ddo.model.effect.{
+  DetailedEffect,
+  EffectCategories,
+  Feature,
+  ParameterModifier,
+  PartModifier,
+  SourceInfo,
+  TriggerEvent
+}
 import io.truthencode.ddo.model.stats.BasicStat
 
 /**
  * Affects armor class by the specified percentage
  */
 trait ArmorClassPercentFeature extends Features {
-    self: SourceInfo =>
-    protected val armorBonusType: BonusType
-    protected val armorBonusAmount: Int
-    private val src = this
-
-    private[this] val armorChance =
+  self: SourceInfo =>
+  protected val armorBonusType: BonusType
+  protected val armorBonusAmount: Int
+  private val src = this
+  protected[this] val triggerOn: TriggerEvent
+  protected[this] val triggerOff: TriggerEvent
+  private[this] val armorChance =
     new PartModifier[Int, BasicStat] with ParameterModifier[Int, BonusType] {
 
-    lazy override protected[this] val partToModify: BasicStat =
-    BasicStat.ArmorClass
+      lazy override protected[this] val partToModify: BasicStat =
+        BasicStat.ArmorClass
+      private val categories = Seq(EffectCategories.MissChance).map(_.toString)
+      lazy override val effectDetail: DetailedEffect = DetailedEffect(
+        id = "ArmorClass",
+        description = "Improves your Armor Class",
+        categories = categories,
+        triggersOn = triggerOn.entryName,
+        triggersOff = triggerOff.entryName
+      )
+      lazy override protected[this] val parameterToModify: BonusType =
+        armorBonusType
 
-    lazy override protected[this] val parameterToModify: BonusType =
-    armorBonusType
+      override val source: SourceInfo = src
+      override lazy val value: Int = armorBonusAmount
+      override lazy val effectText: Option[String] = Some(s"Armor Class by $value%")
+    }
 
-    override val source: SourceInfo = src
-    override lazy val value: Int = armorBonusAmount
-    override lazy val effectText: Option[String] = Some(s"Armor Class by $value%")
-}
-
-    abstract override def features: Seq[Feature[_]] = {
+  abstract override def features: Seq[Feature[_]] = {
     assert(armorChance.value == armorBonusAmount)
     super.features :+ armorChance
-}
+  }
 
 }

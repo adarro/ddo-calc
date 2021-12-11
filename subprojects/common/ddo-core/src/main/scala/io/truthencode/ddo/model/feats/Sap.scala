@@ -21,6 +21,8 @@ import java.time.Duration
 import io.truthencode.ddo.activation.AtWillEvent
 import io.truthencode.ddo.enhancement.BonusType
 import io.truthencode.ddo.model.abilities.ActiveAbilities
+import io.truthencode.ddo.model.effect
+import io.truthencode.ddo.model.effect.TriggerEvent
 import io.truthencode.ddo.model.effect.features.{FeaturesImpl, GrantAbilityFeature}
 import io.truthencode.ddo.support.requisite.{FeatRequisiteImpl, FreeFeat}
 
@@ -38,8 +40,15 @@ protected trait Sap
 //    with AtWillEvent
   with Tactical with FreeFeat with FighterBonusFeat with FeaturesImpl with GrantAbilityFeature {
   self: GeneralFeat =>
-    override val grantBonusType: BonusType = BonusType.Feat
-    override val grantedAbility: ActiveAbilities = ActiveAbilities.Sap
+  override val grantBonusType: BonusType = BonusType.Feat
+  override val grantedAbility: ActiveAbilities = ActiveAbilities.Sap
 
-    override def coolDown: Option[Duration] = Some(Duration.ofSeconds(15))
+  override def coolDown: Option[Duration] = Some(Duration.ofSeconds(15))
+
+  override protected[this] val triggerOn: TriggerEvent = TriggerEvent.SpecialAttack
+  override protected[this] val triggerOff: TriggerEvent = TriggerEvent.OnCoolDown
+  override protected[this] val categories: Seq[effect.EffectCategories.Value] =
+    Seq(effect.EffectCategories.Ability, effect.EffectCategories.SpecialAttack)
+  override val abilityId: String = "Sap"
+  override val description: String = "Special Attack This feat has a chance to render the target briefly senseless,"
 }

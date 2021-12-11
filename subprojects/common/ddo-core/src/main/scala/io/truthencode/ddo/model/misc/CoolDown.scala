@@ -85,3 +85,5 @@ trait BardSongCoolDown extends CoolDown {
   override def coolDown: Option[Duration] = Some(BardSongDefaultCoolDown)
 }
 trait SharedCoolDown extends CoolDown with PoolId
+
+

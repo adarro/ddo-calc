@@ -18,7 +18,15 @@
 package io.truthencode.ddo.model.effect.features
 
 import io.truthencode.ddo.enhancement.BonusType
-import io.truthencode.ddo.model.effect.{Feature, ParameterModifier, PartModifier, SourceInfo}
+import io.truthencode.ddo.model.effect
+import io.truthencode.ddo.model.effect.{
+  DetailedEffect,
+  Feature,
+  ParameterModifier,
+  PartModifier,
+  SourceInfo,
+  TriggerEvent
+}
 import io.truthencode.ddo.model.stats.BasicStat
 
 trait TurnUndeadNumberOfTurnsFeature extends Features {
@@ -26,10 +34,18 @@ trait TurnUndeadNumberOfTurnsFeature extends Features {
   val numberOfTurnsBonusType: BonusType
   val numberOfTurnsBonusAmount: Int
   private val src = this
-
+  protected[this] val triggerOn: TriggerEvent
+  protected[this] val triggerOff: TriggerEvent
+  protected[this] val categories: Seq[effect.EffectCategories.Value]
   private[this] val nHD =
     new PartModifier[Int, BasicStat] with ParameterModifier[Int, BonusType] {
-
+      override val effectDetail: DetailedEffect = DetailedEffect(
+        id = "TurnUndeadNumberOfTurns",
+        description = "Increases the number of times you can turn undead per rest",
+        categories = categories.map(_.toString),
+        triggersOn = triggerOn.entryName,
+        triggersOff = triggerOff.entryName
+      )
       lazy override protected[this] val partToModify: BasicStat =
         BasicStat.TurnUndeadMaxHitDice
 

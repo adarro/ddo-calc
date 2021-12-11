@@ -19,6 +19,8 @@ package io.truthencode.ddo.model.feats
 
 import io.truthencode.ddo.enhancement.BonusType
 import io.truthencode.ddo.model.abilities.ActiveAbilities
+import io.truthencode.ddo.model.effect
+import io.truthencode.ddo.model.effect.TriggerEvent
 import io.truthencode.ddo.model.effect.features.{FeaturesImpl, GrantAbilityFeature}
 import io.truthencode.ddo.support.requisite.{FeatRequisiteImpl, FreeFeat}
 
@@ -37,4 +39,11 @@ protected[feats] trait StunningBlow
   override val grantedAbility: ActiveAbilities = ActiveAbilities.StunningBlow
 
   override def coolDown: Option[Duration] = Some(Duration.ofSeconds(15))
+
+  override protected[this] val triggerOn: TriggerEvent = TriggerEvent.SpecialAttack
+  override protected[this] val triggerOff: TriggerEvent = TriggerEvent.OnCoolDown
+  override protected[this] val categories: Seq[effect.EffectCategories.Value] =
+    Seq(effect.EffectCategories.SpecialAttack, effect.EffectCategories.Ability)
+  override val abilityId: String = "StunningBlow"
+  override val description: String = "Special Attack This feat has a chance to stun the target for 6 seconds"
 }

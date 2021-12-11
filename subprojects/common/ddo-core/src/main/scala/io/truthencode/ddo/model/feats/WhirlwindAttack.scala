@@ -21,6 +21,8 @@ import java.time.Duration
 import io.truthencode.ddo.activation.AtWillEvent
 import io.truthencode.ddo.enhancement.BonusType
 import io.truthencode.ddo.model.abilities.ActiveAbilities
+import io.truthencode.ddo.model.effect
+import io.truthencode.ddo.model.effect.TriggerEvent
 import io.truthencode.ddo.model.effect.features.{FeaturesImpl, GrantAbilityFeature}
 import io.truthencode.ddo.support.requisite.{FeatRequisiteImpl, RequiresAllOfFeat, RequiresBaB}
 
@@ -60,4 +62,11 @@ protected[feats] trait WhirlwindAttack
 
   override val grantBonusType: BonusType = BonusType.Feat
   override val grantedAbility: ActiveAbilities = ActiveAbilities.WhirlwindAttack
+  override protected[this] val triggerOn: TriggerEvent = TriggerEvent.SpecialAttack
+  override protected[this] val triggerOff: TriggerEvent = TriggerEvent.OnCoolDown
+  override protected[this] val categories: Seq[effect.EffectCategories.Value] =
+    Seq(effect.EffectCategories.SpecialAttack, effect.EffectCategories.Ability)
+  override val abilityId: String = "WhirlwindAttack"
+  override val description: String =
+    "Special Attack This feat attacks all enemies in a 360 degree arc around the character."
 }

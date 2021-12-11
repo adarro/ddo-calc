@@ -22,6 +22,8 @@ import io.truthencode.ddo.model.abilities.ActiveAbilities
 import io.truthencode.ddo.model.attribute.Attribute
 import io.truthencode.ddo.model.classes.HeroicCharacterClass
 import io.truthencode.ddo.model.classes.HeroicCharacterClass.Ranger
+import io.truthencode.ddo.model.effect
+import io.truthencode.ddo.model.effect.TriggerEvent
 import io.truthencode.ddo.model.effect.features.{FeaturesImpl, GrantAbilityFeature}
 import io.truthencode.ddo.model.misc.DefaultCoolDown
 import io.truthencode.ddo.support.requisite._
@@ -52,6 +54,15 @@ protected[feats] trait ImprovedPreciseShot
   self: GeneralFeat =>
   override def allOfFeats: Seq[GeneralFeat] =
     List(GeneralFeat.PointBlankShot, GeneralFeat.PreciseShot)
+// TODO: add toggle / exclusive with Archer's Focus stance
+  // Keep an array of exclusive stances in a Map somewhere?
+  override protected[this] val triggerOn: TriggerEvent = TriggerEvent.OnStance
+  override protected[this] val triggerOff: TriggerEvent = TriggerEvent.OnToggle
+  override protected[this] val categories: Seq[effect.EffectCategories.Value] =
+    Seq(effect.EffectCategories.Stance, effect.EffectCategories.RangedCombat)
+  override val abilityId: String = "ImprovedPreciseShot"
+  override val description: String =
+    "Your ranged attacks will now pass through friends and foes to damage all foes in your path, until they strike your intended target."
 
   /**
    * The Minimum Required Base Attack Bonus

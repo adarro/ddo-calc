@@ -18,7 +18,8 @@
 package io.truthencode.ddo.model.effect.features
 
 import io.truthencode.ddo.enhancement.BonusType
-import io.truthencode.ddo.model.effect.{Feature, ParameterModifier, PartModifier, SourceInfo}
+import io.truthencode.ddo.model.effect
+import io.truthencode.ddo.model.effect.{DetailedEffect, Feature, ParameterModifier, PartModifier, SourceInfo, TriggerEvent}
 import io.truthencode.ddo.model.item.weapon.{WeaponCategory, WeaponClass}
 import io.truthencode.ddo.model.stats.BasicStat
 
@@ -32,6 +33,9 @@ trait WeaponProficiencyFeature extends Features {
   protected val proficiencyType: BonusType
   protected val proficiencyAmount: Seq[WeaponCategory]
   private val src = this
+    protected[this] val triggerOn: TriggerEvent
+    protected[this] val triggerOff: TriggerEvent
+    protected[this] val categories: Seq[effect.EffectCategories.Value]
 
   private[this] val proficiencyChance =
     new PartModifier[Seq[WeaponCategory], BasicStat]
@@ -42,7 +46,13 @@ trait WeaponProficiencyFeature extends Features {
 
       lazy override protected[this] val parameterToModify: BonusType =
         proficiencyType
-
+        override val effectDetail: DetailedEffect = DetailedEffect(
+            id = "WeaponProficiency",
+            description = "Reduce To Hit penalty when using specific weapons",
+            categories = categories.map(_.toString),
+            triggersOn = triggerOn.entryName,
+            triggersOff = triggerOff.entryName
+        )
       override val source: SourceInfo = src
       override lazy val value: Seq[WeaponCategory] = proficiencyAmount
       override lazy val effectText: Option[String] = Some(s"Weapon Proficiency: $value%")

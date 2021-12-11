@@ -18,7 +18,15 @@
 package io.truthencode.ddo.model.effect.features
 
 import io.truthencode.ddo.enhancement.BonusType
-import io.truthencode.ddo.model.effect.{Feature, ParameterModifier, PartModifier, SourceInfo}
+import io.truthencode.ddo.model.effect.{
+  DetailedEffect,
+  EffectCategories,
+  Feature,
+  ParameterModifier,
+  PartModifier,
+  SourceInfo,
+  TriggerEvent
+}
 import io.truthencode.ddo.model.stats.BasicStat
 
 /**
@@ -31,7 +39,8 @@ trait ArmorClassAmountFeature extends Features {
   protected val armorBonusType: BonusType
   protected val armorBonusAmount: Int
   private val src = this
-
+  protected[this] val acTriggerOn: TriggerEvent
+  protected[this] val acTriggerOff: TriggerEvent
   private[this] val armorChance =
     new PartModifier[Int, BasicStat] with ParameterModifier[Int, BonusType] {
 
@@ -43,7 +52,15 @@ trait ArmorClassAmountFeature extends Features {
 
       override val source: SourceInfo = src
       override lazy val value: Int = armorBonusAmount
+      private val categories = Seq(EffectCategories.MissChance).map(_.toString)
       override lazy val effectText: Option[String] = Some(s"Armor Class by $value")
+      override val effectDetail: DetailedEffect = DetailedEffect(
+        id = "ArmorClass",
+        description = "Improves your Armor Class",
+        categories = categories,
+        triggersOn = acTriggerOn.entryName,
+        triggersOff = acTriggerOff.entryName
+      )
     }
 
   abstract override def features: Seq[Feature[_]] = {

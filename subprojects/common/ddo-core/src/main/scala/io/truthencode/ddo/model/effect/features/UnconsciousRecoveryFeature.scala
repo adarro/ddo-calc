@@ -19,7 +19,15 @@ package io.truthencode.ddo.model.effect.features
 
 import io.truthencode.ddo.enhancement.BonusType
 import io.truthencode.ddo.model.abilities.ActiveAbilities
-import io.truthencode.ddo.model.effect.{Feature, ParameterModifier, PartModifier, SourceInfo}
+import io.truthencode.ddo.model.effect
+import io.truthencode.ddo.model.effect.{
+  DetailedEffect,
+  Feature,
+  ParameterModifier,
+  PartModifier,
+  SourceInfo,
+  TriggerEvent
+}
 import io.truthencode.ddo.model.stats.BasicStat
 
 /**
@@ -30,7 +38,9 @@ trait UnconsciousRecoveryFeature extends Features {
   val autoRecoveryBonus: BonusType
   val isAutoRecovery: Boolean
   private val src = this
-
+  protected[this] val triggerOn: TriggerEvent
+  protected[this] val triggerOff: TriggerEvent
+  protected[this] val categories: Seq[effect.EffectCategories.Value]
   private[this] val autoRecovery =
     new PartModifier[Boolean, BasicStat] with ParameterModifier[Boolean, BonusType] {
 
@@ -39,7 +49,13 @@ trait UnconsciousRecoveryFeature extends Features {
 
       lazy override protected[this] val parameterToModify: BonusType =
         autoRecoveryBonus
-
+      lazy override val effectDetail: DetailedEffect = DetailedEffect(
+        id = "AutoRecovery",
+        description = "Automatically recover when below 0 health",
+        categories = categories.map(_.toString),
+        triggersOn = triggerOn.entryName,
+        triggersOff = triggerOff.entryName
+      )
       override val source: SourceInfo = src
       override lazy val value: Boolean = isAutoRecovery
       override lazy val effectText: Option[String] = Some(s"Autorecovery: $isAutoRecovery")

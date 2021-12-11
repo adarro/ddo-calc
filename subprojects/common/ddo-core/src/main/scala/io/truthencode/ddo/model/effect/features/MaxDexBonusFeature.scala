@@ -18,7 +18,15 @@
 package io.truthencode.ddo.model.effect.features
 
 import io.truthencode.ddo.enhancement.BonusType
-import io.truthencode.ddo.model.effect.{Feature, ParameterModifier, PartModifier, SourceInfo}
+import io.truthencode.ddo.model.effect
+import io.truthencode.ddo.model.effect.{
+  DetailedEffect,
+  Feature,
+  ParameterModifier,
+  PartModifier,
+  SourceInfo,
+  TriggerEvent
+}
 import io.truthencode.ddo.model.stats.BasicStat
 
 /**
@@ -29,7 +37,9 @@ trait MaxDexBonusFeature extends Features {
   val mdbBonusType: BonusType
   val mdbAmount: Int
   private val src = this
-
+  protected[this] val triggerOn: TriggerEvent
+  protected[this] val triggerOff: TriggerEvent
+  protected[this] val categories: Seq[effect.EffectCategories.Value]
   private[this] val maxDexterityBonus =
     new PartModifier[Int, BasicStat] with ParameterModifier[Int, BonusType] {
 
@@ -38,7 +48,13 @@ trait MaxDexBonusFeature extends Features {
 
       lazy override protected[this] val parameterToModify: BonusType =
         mdbBonusType
-
+      lazy override val effectDetail: DetailedEffect = DetailedEffect(
+        id = "HitChance",
+        description = "Increases your Max Dexterity Bonus",
+        categories = categories.map(_.toString),
+        triggersOn = triggerOn.entryName,
+        triggersOff = triggerOff.entryName
+      )
       override val source: SourceInfo = src
       override lazy val value: Int = mdbAmount
       override lazy val effectText: Option[String] = Some(s"Max Dexterity Bonus by $value")

@@ -19,7 +19,15 @@ package io.truthencode.ddo.model.effect.features
 
 import io.truthencode.ddo.enhancement.BonusType
 import io.truthencode.ddo.model.abilities.ActiveAbilities
-import io.truthencode.ddo.model.effect.{Feature, ParameterModifier, PartModifier, SourceInfo}
+import io.truthencode.ddo.model.effect
+import io.truthencode.ddo.model.effect.{
+  DetailedEffect,
+  Feature,
+  ParameterModifier,
+  PartModifier,
+  SourceInfo,
+  TriggerEvent
+}
 import io.truthencode.ddo.model.stats.BasicStat
 
 /**
@@ -30,7 +38,11 @@ trait GrantAbilityFeature extends Features {
   val grantBonusType: BonusType
   val grantedAbility: ActiveAbilities
   private val src = this
-
+  protected[this] val triggerOn: TriggerEvent
+  protected[this] val triggerOff: TriggerEvent
+  protected[this] val categories: Seq[effect.EffectCategories.Value]
+  val abilityId: String
+  val description: String
   private[this] val dodgeChance =
     new PartModifier[ActiveAbilities, BasicStat] with ParameterModifier[ActiveAbilities, BonusType] {
 
@@ -39,7 +51,13 @@ trait GrantAbilityFeature extends Features {
 
       lazy override protected[this] val parameterToModify: BonusType =
         grantBonusType
-
+      lazy override val effectDetail: DetailedEffect = DetailedEffect(
+        id = abilityId,
+        description = description,
+        categories = categories.map(_.toString),
+        triggersOn = triggerOn.entryName,
+        triggersOff = triggerOff.entryName
+      )
       override val source: SourceInfo = src
       override lazy val value: ActiveAbilities = grantedAbility
       override lazy val effectText: Option[String] = Some(s"Granted Ability $grantedAbility")

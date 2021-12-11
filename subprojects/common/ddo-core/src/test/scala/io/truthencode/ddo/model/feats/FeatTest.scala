@@ -24,8 +24,21 @@ import org.scalatest.funspec.AnyFunSpec
 import org.scalatest.matchers.should.Matchers
 
 class FeatTest extends AnyFunSpec with Matchers with LazyLogging {
+  describe("Individual Feats") {
+    it("should be able to instantiate The Attack feat") {
+      noException shouldBe thrownBy {
+        GeneralFeat.Attack
+      }
+    }
+    it("should be able to instantiate the Great Cleave Feat") {
+      noException shouldBe thrownBy {
+        GeneralFeat.GreatCleave
+      }
+    }
+  }
 
   describe("Feats") {
+
     it("should contain all types of feats") {
       noException shouldBe thrownBy(Feat.values)
     }

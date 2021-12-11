@@ -20,13 +20,14 @@ package io.truthencode.ddo.model.feats
 import io.truthencode.ddo.enhancement.BonusType
 import io.truthencode.ddo.model.abilities.ActiveAbilities
 import io.truthencode.ddo.model.attribute.Attribute
+import io.truthencode.ddo.model.effect
+import io.truthencode.ddo.model.effect.TriggerEvent
 import io.truthencode.ddo.model.effect.features.{FeaturesImpl, GrantAbilityFeature}
 import io.truthencode.ddo.support.requisite.{FeatRequisiteImpl, RequiresAllOfFeat, RequiresAttribute, RequiresBaB}
 
 /**
  * Icon Feat Spring Attack.png Spring Attack Passive Character suffers no penalty to his attack roll when meleeing and
- * moving. You will also gain a 2% dodge bonus.
- * NOT YET IMPLEMENTED: No attack penalty for melee while moving.
+ * moving. You will also gain a 2% dodge bonus. NOT YET IMPLEMENTED: No attack penalty for melee while moving.
  *
  * Dodge, Mobility Dexterity 13 , Base Attack Bonus 4,
  */
@@ -42,10 +43,19 @@ protected[feats] trait SpringAttack
    * @return
    *   Minimum value allowed
    */
+  // scalastyle:off magic.number
   override def requiresBaB: Int = 4
+  // scalastyle:on
 
   override def requiresAttribute: Seq[(Attribute, Int)] = List((Attribute.Dexterity, 13))
 
-    override val grantBonusType: BonusType = BonusType.Feat
-    override val grantedAbility: ActiveAbilities = ActiveAbilities.SpringAttack
+  override val grantBonusType: BonusType = BonusType.Feat
+  override val grantedAbility: ActiveAbilities = ActiveAbilities.SpringAttack
+  override protected[this] val triggerOn: TriggerEvent = TriggerEvent.SpecialAttack
+  override protected[this] val triggerOff: TriggerEvent = TriggerEvent.WhileOn
+  override protected[this] val categories: Seq[effect.EffectCategories.Value] = Seq(
+    effect.EffectCategories.SpecialAttack)
+  override val abilityId: String = "SpringAttack"
+  override val description: String =
+    "Character suffers no penalty to his attack roll when meleeing and moving. You will also gain a 2% dodge bonus"
 }

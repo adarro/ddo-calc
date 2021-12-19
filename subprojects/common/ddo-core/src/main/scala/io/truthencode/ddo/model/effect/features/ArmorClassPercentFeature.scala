@@ -17,17 +17,11 @@
  */
 package io.truthencode.ddo.model.effect.features
 
+import io.truthencode.ddo.api.model.effect.DetailedEffect
 import io.truthencode.ddo.enhancement.BonusType
-import io.truthencode.ddo.model.effect.{
-  DetailedEffect,
-  EffectCategories,
-  Feature,
-  ParameterModifier,
-  PartModifier,
-  SourceInfo,
-  TriggerEvent
-}
-import io.truthencode.ddo.model.stats.BasicStat
+import io.truthencode.ddo.model.effect._
+import io.truthencode.ddo.model.stats.{BasicStat, MissChance}
+import io.truthencode.ddo.support.naming.UsingSearchPrefix
 
 /**
  * Affects armor class by the specified percentage
@@ -37,27 +31,58 @@ trait ArmorClassPercentFeature extends Features {
   protected val armorBonusType: BonusType
   protected val armorBonusAmount: Int
   private val src = this
-  protected[this] val triggerOn: TriggerEvent
-  protected[this] val triggerOff: TriggerEvent
+  protected[this] val triggerOn: Seq[TriggerEvent]
+  protected[this] val triggerOff: Seq[TriggerEvent]
   private[this] val armorChance =
-    new PartModifier[Int, BasicStat] with ParameterModifier[Int, BonusType] {
+    new PartModifier[Int, BasicStat with MissChance] with UsingSearchPrefix {
 
-      lazy override protected[this] val partToModify: BasicStat =
+      override protected[this] lazy val partToModify: BasicStat with MissChance =
         BasicStat.ArmorClass
-      private val categories = Seq(EffectCategories.MissChance).map(_.toString)
-      lazy override val effectDetail: DetailedEffect = DetailedEffect(
+
+      private val eb = EffectParameterBuilder()
+        .toggleOffValue(triggerOff: _*)
+        .toggleOnValue(triggerOn: _*)
+        .addBonusType(armorBonusType)
+        .build
+
+      override protected[this] def effectParameters: Seq[ParameterModifier[_]] = eb.modifiers
+      /**
+       * The General Description should be just that. This should not include specific values unless
+       * all instances will share that value. I.e. a Dodge Effect might state it increases your
+       * miss-chance, but omit any value such as 20%. Those values will be displayed in the
+       * effectText of a specific implementation such as the Dodge Feat or Uncanny Dodge
+       */
+      override val generalDescription: String = "Increases your Armor Class"
+      override val categories: Seq[String] = Seq(EffectCategories.MissChance).map(_.toString)
+      override lazy val effectDetail: DetailedEffect = DetailedEffect(
         id = "ArmorClass",
         description = "Improves your Armor Class",
-        categories = categories,
-        triggersOn = triggerOn.entryName,
-        triggersOff = triggerOff.entryName
+        triggersOn = triggerOn.map(_.entryName),
+        triggersOff = triggerOff.map(_.entryName)
       )
-      lazy override protected[this] val parameterToModify: BonusType =
-        armorBonusType
+      /**
+       * The main name of the effect.
+       *
+       * Naming conventions The name should be concisely non-specific.
+       * i.e. Prefer "ArmorClass" instead of "Deflection" or "Miss-Chance" Deflection is too
+       * specific as there are several stacking and non-stacking types (Natural Armor, Shield) that
+       * all contribute to your specific goal of increasing your armor class. Miss-Chance is to
+       * vague as it encompasses everything from incorporeal, dodge, armor class, arrow-deflection
+       * etc.
+       */
+      override lazy val name: String = "ArmorClass"
 
       override val source: SourceInfo = src
       override lazy val value: Int = armorBonusAmount
       override lazy val effectText: Option[String] = Some(s"Armor Class by $value%")
+      /**
+       * Used when qualifying a search with a prefix. Examples include finding "HalfElf" from
+       * qualified "Race:HalfElf"
+       *
+       * @return
+       *   A default or applied prefix
+       */
+      override def searchPrefixSource: String = partToModify.searchPrefixSource
     }
 
   abstract override def features: Seq[Feature[_]] = {

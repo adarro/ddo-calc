@@ -40,13 +40,15 @@ trait Mobility
   override protected val armorBonusType: BonusType = BonusType.Feat
   override protected val armorBonusAmount: Int = 4
   override val mdbBonusType: BonusType = BonusType.Feat
-  lazy override protected[this] val categories: Seq[effect.EffectCategories.Value] = Seq(
+  lazy override protected[this] val dodgeCategories: Seq[effect.EffectCategories.Value] = Seq(
     effect.EffectCategories.MissChance)
   override val mdbAmount: Int = 2
-  lazy override protected[this] val triggerOn: TriggerEvent = TriggerEvent.Passive
-  lazy override protected[this] val triggerOff: TriggerEvent = TriggerEvent.Never
-  lazy override protected[this] val acTriggerOn: TriggerEvent = TriggerEvent.OnTumble
-  lazy override protected[this] val acTriggerOff: TriggerEvent = TriggerEvent.WhileOn
+  override protected[this] val mdbCategories: Seq[effect.EffectCategories.Value] = Seq(
+    effect.EffectCategories.MissChance)
+  lazy override protected[this] val triggerOn: Seq[TriggerEvent] = Seq(TriggerEvent.Passive)
+  lazy override protected[this] val triggerOff: Seq[TriggerEvent] = Seq(TriggerEvent.Never)
+  lazy override protected[this] val acTriggerOn: Seq[TriggerEvent] = Seq(TriggerEvent.OnTumble)
+  lazy override protected[this] val acTriggerOff: Seq[TriggerEvent] = Seq(TriggerEvent.WhileOn)
   override val dodgeBonusType: BonusType = BonusType.Feat
   override val dodgeBonusAmount: Int = 2
 

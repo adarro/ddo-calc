@@ -27,6 +27,7 @@ import io.truthencode.ddo.support.requisite._
  * Prerequisites None
  */
 protected[feats] trait MartialWeaponProficiencyBase
-  extends FeatRequisiteImpl with RaceRequisite with ClassRequisiteImpl with MartialWeapon with Passive with FreeFeat {
-  self: Feat =>
+  extends FeatRequisiteImpl with RaceRequisite with ClassRequisiteImpl with MartialWeapon with Passive with FreeFeat
+  with WeaponProficiencyBase {
+  self: GeneralFeat =>
 }

@@ -15,7 +15,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package io.truthencode.ddo.model.effect
+package io.truthencode.ddo.api.model.effect
 
 /**
  * Represents a specific effect This includes all details such as what it modifies and when it takes effect.
@@ -23,9 +23,6 @@ package io.truthencode.ddo.model.effect
  *   This will need to uniquely identify the effect
  * @param description
  *   A description of the effect
- * @param categories
- *   An array of general categories this effect applies to. At some point this could contain values and types to aid
- *   menus and queries.
  * @param triggersOn
  *   When this effect applies. Should correspond to some state chance such as full health, unconscious, on critical hit,
  *   on miss, or Always on, etc.
@@ -36,4 +33,4 @@ package io.truthencode.ddo.model.effect
  * @see
  *   Category - Valid values
  */
-case class DetailedEffect(id: String, description: String, categories: Seq[String], triggersOn: String, triggersOff: String)
+case class DetailedEffect(id: String, description: String, triggersOn: Seq[String], triggersOff: Seq[String]) extends DetailedEffectInfo

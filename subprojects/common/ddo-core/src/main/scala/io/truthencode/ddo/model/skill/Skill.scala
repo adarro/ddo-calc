@@ -35,18 +35,8 @@ import io.truthencode.ddo.support.naming.{DisplayName, FriendlyDisplay, UsingSea
 import scala.collection.immutable.IndexedSeq
 
 sealed trait Skill
-  extends EnumEntry with DisplayName with FriendlyDisplay with LinkedAttributeImpl with UsingSearchPrefix {
+  extends EnumEntry with DisplayName with FriendlyDisplay with LinkedAttributeImpl with UsingSkillSearchPrefix {
   self: ActivationType =>
-
-  override val withPrefix: String = s"${searchPrefix}:$entryName"
-
-  /**
-   * Used when qualifying a search with a prefix. Examples include finding "HalfElf" from qualified "Race:HalfElf"
-   *
-   * @return
-   *   A default or applied prefix
-   */
-  override def searchPrefixSource: String = Skill.searchPrefix
 
   /**
    * Sets or maps the source text for the DisplayName.
@@ -194,6 +184,7 @@ object Skill extends Enum[Skill] with SearchPrefix {
 
   override def values: IndexedSeq[Skill] = findValues
 
+  override def delimiter: Option[String] = Some(":")
   /**
    * Used when qualifying a search with a prefix. Examples include finding "HalfElf" from qualified "Race:HalfElf"
    *

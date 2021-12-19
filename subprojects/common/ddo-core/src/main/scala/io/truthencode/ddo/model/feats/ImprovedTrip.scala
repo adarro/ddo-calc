@@ -17,8 +17,6 @@
  */
 package io.truthencode.ddo.model.feats
 
-import java.time.Duration
-import io.truthencode.ddo.activation.AtWillEvent
 import io.truthencode.ddo.enhancement.BonusType
 import io.truthencode.ddo.model.abilities.ActiveAbilities
 import io.truthencode.ddo.model.effect
@@ -26,23 +24,28 @@ import io.truthencode.ddo.model.effect.TriggerEvent
 import io.truthencode.ddo.model.effect.features.{FeaturesImpl, GrantAbilityFeature}
 import io.truthencode.ddo.support.requisite.{FeatRequisiteImpl, RequiresAllOfFeat}
 
+import java.time.Duration
+
 /**
- * Icon Feat Improved Trip.png [[https://ddowiki.com/page/Improved_Trip Improved Trip]] Active - Special Attack This
- * feat has a chance to trip the target, if the target fails a Balance check (DC 14 + Str mod), rendering it prone for a
- * longer period of time than Trip. Some creatures may be immune to this effect. * Combat Expertise
+ * Icon Feat Improved Trip.png [[https://ddowiki.com/page/Improved_Trip Improved Trip]] Active -
+ * Special Attack This feat has a chance to trip the target, if the target fails a Balance check (DC
+ * 14 + Str mod), rendering it prone for a longer period of time than Trip. Some creatures may be
+ * immune to this effect. * Combat Expertise
  */
 protected[feats] trait ImprovedTrip
-  extends FeatRequisiteImpl with ActiveFeat with Tactical with RequiresAllOfFeat with FighterBonusFeat
-  with MartialArtsFeat with FeaturesImpl with GrantAbilityFeature {
+  extends FeatRequisiteImpl with ActiveFeat with Tactical with RequiresAllOfFeat
+  with FighterBonusFeat with MartialArtsFeat with FeaturesImpl with GrantAbilityFeature {
   self: GeneralFeat =>
   override def coolDown: Option[Duration] = Some(Duration.ofSeconds(10))
-  override protected[this] val triggerOn: TriggerEvent = TriggerEvent.AtWill
-  override protected[this] val triggerOff: TriggerEvent = TriggerEvent.OnCoolDown
-  override protected[this] val categories: Seq[effect.EffectCategories.Value] = Seq(effect.EffectCategories.Ability)
+  override protected[this] val triggerOn: Seq[TriggerEvent] = Seq(TriggerEvent.AtWill)
+  override protected[this] val triggerOff: Seq[TriggerEvent] = Seq(TriggerEvent.OnCoolDown)
+  override protected[this] val grantAbilityCategories: Seq[effect.EffectCategories.Value] = Seq(
+    effect.EffectCategories.Ability)
   override val abilityId: String = "Trip"
-  override val description: String = "This feat has a chance to trip the target rendering it prone for a short time."
+  override val description: String =
+    "This feat has a chance to trip the target rendering it prone for a short time."
 
   override val allOfFeats = List(GeneralFeat.CombatExpertise)
   override val grantBonusType: BonusType = BonusType.Feat
-  override val grantedAbility: ActiveAbilities = ActiveAbilities.ImprovedTrip
+  override lazy val grantedAbility: ActiveAbilities = ActiveAbilities.ImprovedTrip
 }

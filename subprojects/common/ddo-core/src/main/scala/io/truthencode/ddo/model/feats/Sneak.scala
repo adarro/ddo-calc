@@ -26,24 +26,25 @@ import io.truthencode.ddo.model.misc.DefaultCoolDown
 import io.truthencode.ddo.support.requisite.{FeatRequisiteImpl, FreeFeat}
 
 /**
- * [[https://ddowiki.com/page/Sneak Sneak]] The character becomes invisible to all enemies that fail a Spot and Listen
- * skill check, opposed by Hide and Move Silently skills.
+ * [[https://ddowiki.com/page/Sneak Sneak]] The character becomes invisible to all enemies that fail
+ * a Spot and Listen skill check, opposed by Hide and Move Silently skills.
  * @note
- *   There have been many changes to stealth and it is worth reading, but currently not deeply invested in this
- *   code-base Currently we have it typed as a 'Stance'
+ *   There have been many changes to stealth and it is worth reading, but currently not deeply
+ *   invested in this code-base Currently we have it typed as a 'Stance'
  *
  * see [[https://github.com/truthencode/ddo-calc/discussions/9]]
  */
 protected[feats] trait Sneak
-  extends FeatRequisiteImpl with ActiveFeat with Stance with DefaultCoolDown with FreeFeat with FeaturesImpl
-  with GrantAbilityFeature {
+  extends FeatRequisiteImpl with ActiveFeat with Stance with DefaultCoolDown with FreeFeat
+  with FeaturesImpl with GrantAbilityFeature {
   self: GeneralFeat =>
-  override protected[this] val triggerOn: TriggerEvent = TriggerEvent.OnToggle
-  override protected[this] val triggerOff: TriggerEvent = TriggerEvent.OnToggle
-  override protected[this] val categories: Seq[effect.EffectCategories.Value] = Seq(effect.EffectCategories.Stance)
+  override protected[this] val triggerOn: Seq[TriggerEvent] = Seq(TriggerEvent.OnToggle)
+  override protected[this] val triggerOff: Seq[TriggerEvent] = Seq(TriggerEvent.OnToggle)
+  override protected[this] val grantAbilityCategories: Seq[effect.EffectCategories.Value] = Seq(
+    effect.EffectCategories.Stance)
   override val abilityId: String = "Sneak"
   override val description: String =
     "The character becomes invisible to all enemies that fail a Spot and Listen\n * skill check, opposed by Hide and Move Silently skills."
   override val grantBonusType: BonusType = BonusType.Feat
-  override val grantedAbility: ActiveAbilities = ActiveAbilities.Sneak
+  override lazy val grantedAbility: ActiveAbilities = ActiveAbilities.Sneak
 }

@@ -18,12 +18,13 @@
 package io.truthencode.ddo.model.effect
 
 import enumeratum.EnumEntry
+import io.truthencode.ddo.api.model.effect.{BasicEffectInfo, DetailedEffect}
 import io.truthencode.ddo.enhancement.BonusType
-import io.truthencode.ddo.model.attribute.Attribute
+import io.truthencode.ddo.model.attribute.{Attribute, UsingAttributeSearchPrefix}
 import io.truthencode.ddo.model.feats.Feat
 import io.truthencode.ddo.model.item.weapon.WeaponCategory
-import io.truthencode.ddo.model.skill.Skill
 import io.truthencode.ddo.model.stats.BasicStat
+import io.truthencode.ddo.support.naming.{DisplayName, UsingSearchPrefix}
 
 import scala.util.Try
 
@@ -32,13 +33,24 @@ import scala.util.Try
  * @tparam V
  *   Generally a primitive Type such as Int but may be a more complex object
  */
-sealed trait Feature[V] {
-  val parameter: Try[EffectParameter]
+sealed trait Feature[V] extends BasicEffectInfo {
+  def parameters: Seq[Try[EffectParameter]]
   val part: Try[EffectPart]
   val value: V
   val source: SourceInfo
 
-  lazy val name: Option[String] = part.toOption match {
+  /**
+   * The main name of the effect.
+   *
+   * Naming conventions The name should be concisely non-specific.
+   * i.e. Prefer "ArmorClass" instead of "Deflection" or "Miss-Chance" Deflection is too specific as
+   * there are several stacking and non-stacking types (Natural Armor, Shield) that all contribute
+   * to your specific goal of increasing your armor class. Miss-Chance is to vague as it encompasses
+   * everything from incorporeal, dodge, armor class, arrow-deflection etc.
+   */
+  override lazy val name: String = nameOption.getOrElse("Unknown")
+
+  lazy val nameOption: Option[String] = part.toOption match {
     case None => None
     case Some(value) => Some(value.entryName)
   }
@@ -54,8 +66,9 @@ trait DynamicFeature[V] extends Feature[V] {
 object Feature {
 
   def printFeature(f: Feature[_]): String = {
-    s"\nFeature:\nName:\t${f.name.getOrElse(
-      "Unknown")} \nvalue:\t${f.value}\nsource:\t${f.source}\nid:\t\t${f.source.sourceId}\ntext:\t${f.effectText.getOrElse("")}\n"
+    val categoryInfo = f.categories.mkString(",")
+    s"\nFeature:\nName:\t${f.name} \nCategories:$categoryInfo\nvalue:\t${f.value}\nsource:\t${f.source}\nid:\t\t${f.source.sourceId}\ntext:\t${f.effectText
+      .getOrElse("")}\nTriggers On:${f.effectDetail.triggersOn.mkString}\nTriggers Off:${f.effectDetail.triggersOff.mkString}"
   }
   // scalastyle:off
   case class CriticalThreatRangeEffect(
@@ -63,58 +76,66 @@ object Feature {
     basicStat: BasicStat,
     bonusType: BonusType,
     override val source: SourceInfo,
+    override val categories: Seq[String],
     override val effectDetail: DetailedEffect)
-    extends PartModifier[Seq[(WeaponCategory, Int)], BasicStat]
-    with ParameterModifier[Seq[(WeaponCategory, Int)], BonusType] {
+    extends PartModifier[Seq[(WeaponCategory, Int)], BasicStat] with UsingSearchPrefix {
 
-    lazy override protected[this] val partToModify: BasicStat =
+    override protected[this] lazy val partToModify: BasicStat = {
       basicStat
 
-    lazy override protected[this] val parameterToModify: BonusType = bonusType
-//      override val name: String =
-    override lazy val effectText: Option[String] = Some(s"Increased Critical Threat Amount: $value%")
+    }
+    private val tO = effectDetail.triggersOff.map(TriggerEvent.withName)
+    private val tN = effectDetail.triggersOn.map(TriggerEvent.withName)
+    val p = EffectParameterBuilder()
+      .toggleOffValue(tO: _*)
+      .toggleOnValue(tN: _*)
+      .addBonusType(bonusType)
+      .build
+    //  override protected[this] lazy val parameterToModify: BonusType = bonusType
+    override lazy val name: String = "Critical Threat Range"
+    override lazy val effectText: Option[String] = Some(
+      s"Increased Critical Threat Amount: $value%")
+    override val withPrefix: String = s"$searchPrefix:$nameSource"
+
+    /**
+     * Used when qualifying a search with a prefix. Examples include finding "HalfElf" from
+     * qualified "Race:HalfElf"
+     *
+     * @return
+     *   A default or applied prefix
+     */
+    override def searchPrefixSource: String = partToModify.searchPrefixSource
+
+    /**
+     * The General Description should be just that. This should not include specific values unless
+     * all instances will share that value. I.e. a Dodge Effect might state it increases your
+     * miss-chance, but omit any value such as 20%. Those values will be displayed in the effectText
+     * of a specific implementation such as the Dodge Feat or Uncanny Dodge
+     */
+    override val generalDescription: String = "Increases your chance to make a critical hit"
+
   }
   // scalastyle:on
-
-  case class SkillEffect(
-    skill: Skill,
-    override val value: Int,
-    bonusType: BonusType,
-    override val source: SourceInfo,
-    effectDetail: DetailedEffect)
-    extends PartModifier[Int, Skill] with ParameterModifier[Int, BonusType] {
-
-    def numberToSignedText(int: Int): String = {
-      if (int >= 0) {
-        s"+$int"
-      } else {
-        s"-$int"
-      }
-    }
-
-    lazy override protected[this] val partToModify: Skill =
-      skill
-
-    lazy override protected[this] val parameterToModify: BonusType =
-      bonusType
-
-    override lazy val name: Option[String] = Some(skill.withPrefix)
-
-    override lazy val effectText: Option[String] = Some(
-      s"provides a ${numberToSignedText(value)} ${bonusType.entryName} bonus to ${partToModify.entryName}"
-    )
-
-  }
 
   case class AttributeEffect(
     attribute: Attribute,
     override val value: Int,
     bonusType: BonusType,
     override val source: SourceInfo,
+    override val categories: Seq[String],
     effectDetail: DetailedEffect)
-    extends PartModifier[Int, Attribute] with ParameterModifier[Int, BonusType] {
+    extends PartModifier[Int, Attribute] with UsingAttributeSearchPrefix {
     override protected[this] val partToModify: Attribute = attribute
-    override protected[this] val parameterToModify: BonusType = bonusType
+//    override protected[this] val parameterToModify: BonusType = bonusType
+    /**
+     * The General Description should be just that. This should not include specific values unless
+     * all instances will share that value. I.e. a Dodge Effect might state it increases your
+     * miss-chance, but omit any value such as 20%. Those values will be displayed in the effectText
+     * of a specific implementation such as the Dodge Feat or Uncanny Dodge
+     */
+    override val generalDescription: String = "Increases a particular attribute score"
+
+    override lazy val name: String = withPrefix
   }
 
 }
@@ -127,37 +148,56 @@ trait AugmentFeatureValue extends Feature[Int]
  * @tparam E
  *   Entry ID / Enumeration used to qualify which part is being modified.
  */
-trait PartModifier[V, E <: EnumEntry] extends Feature[V] {
-  self: ParameterModifier[V, _] =>
+trait PartModifier[V, E <: EnumEntry] extends Feature[V] with DisplayName {
+  self: UsingSearchPrefix =>
   protected[this] val partToModify: E
 
-  lazy override val part: Try[EffectPart] =
-    EffectPart.tryFindByPattern(partToModify.entryName)
+  protected[this] def effectParameters: Seq[ParameterModifier[_]] = ???
+// FIXME add UsingSearchPrefix to type constraint
+  /**
+   * The current Seaerch-Fu is weak. Override this default function.
+   */
+  override lazy val part: Try[EffectPart] =
+    EffectPart.tryFindByPattern(partToModify.entryName, Option(withPrefix))
+
+  override lazy val parameters: Seq[Try[EffectParameter]] = effectParameters.map(_.parameter)
+
+  /**
+   * Sets or maps the source text for the DisplayName. // TODO: use the Try[part] instead of the
+   * partToModify
+   *
+   * @return
+   *   Source text.
+   */
+  override protected def nameSource: String = partToModify.entryName
+  override val withPrefix: String = s"$searchPrefix$nameSource"
 }
 
 trait FeatModifier[T, E <: Feat] extends PartModifier[T, E] {
-  self: ParameterModifier[T, _] =>
+  self: UsingSearchPrefix =>
+
 }
 
 /**
  * A parameter that SHOULD be found in EffectParameter used for validation / stacking
- * @tparam V
- *   Generally a primitive Type such as Int but may be a more complex object
  * @tparam E
  *   Enum of the parameter type being used, such as A Bonus Type of 'Action Boost'
  */
-trait ParameterModifier[V, E <: EnumEntry] extends Feature[V] {
-  self: PartModifier[V, _] =>
-  protected[this] val parameterToModify: E
+trait ParameterModifier[E <: EnumEntry] {
 
-  override lazy val parameter: Try[EffectParameter] =
-    EffectParameter.tryFindByPattern(parameterToModify.entryName)
+  protected[this] val parameterToModify: E
+  lazy val parameter: Try[EffectParameter] =
+    EffectParameter.tryFindByPattern(parameterToModify.entryName, None)
 }
 
 case class EffectFeature[T](
-  override val parameter: Try[EffectParameter],
+  parameter: Try[EffectParameter],
   override val part: Try[EffectPart],
   override val source: SourceInfo,
+  override val categories: Seq[String],
   override val value: T,
+  override val generalDescription: String,
   effectDetail: DetailedEffect)
-  extends Feature[T]
+  extends Feature[T] {
+  override def parameters: Seq[Try[EffectParameter]] = ???
+}

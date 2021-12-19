@@ -21,6 +21,7 @@ import com.wix.accord.dsl._
 import com.wix.accord.{NullSafeValidator, Validator}
 import com.wix.accord.ViolationBuilder._
 import com.wix.accord.transform.ValidationTransform
+import io.truthencode.ddo.api.model.effect.DetailedEffect
 
 /**
  * Common constants and functions for generating, reading, and evaluating effects.
@@ -40,11 +41,9 @@ package object effect {
     implicit val detailedEffectValidator: ValidationTransform.TransformedValidator[DetailedEffect] =
       validator[DetailedEffect] { d =>
         // triggers
-        d.triggersOn.is(in(triggerNames: _*))
-        d.triggersOff.is(in(triggerNames: _*))
-        d.categories.each.is(fullOf(categories))
-        // d.categories.each { category}    }
-      }
+        d.triggersOn.each.is(fullOf(triggerNames))
+        d.triggersOff.each.is(fullOf(triggerNames))
+       }
   }
 
   object EffectCategories extends Enumeration {

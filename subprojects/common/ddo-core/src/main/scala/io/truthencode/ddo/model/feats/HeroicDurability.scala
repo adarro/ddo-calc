@@ -31,7 +31,7 @@ protected[feats] trait HeroicDurability
   self: GeneralFeat =>
   override protected val hitPointBonusType: BonusType = BonusType.Feat
   override protected val hitPointBonusAmount: Int = 30
-  lazy override protected[this] val triggerOn: TriggerEvent = TriggerEvent.Passive
-  lazy override protected[this] val triggerOff: TriggerEvent = TriggerEvent.Never
-  lazy override protected[this] val categories: Seq[effect.EffectCategories.Value] = Seq(effect.EffectCategories.Health)
+  lazy override protected[this] val triggerOn: Seq[TriggerEvent] = Seq(TriggerEvent.Passive)
+  lazy override protected[this] val triggerOff: Seq[TriggerEvent] = Seq(TriggerEvent.Never)
+  lazy override protected[this] val hitPointCategories: Seq[effect.EffectCategories.Value] = Seq(effect.EffectCategories.Health)
 }

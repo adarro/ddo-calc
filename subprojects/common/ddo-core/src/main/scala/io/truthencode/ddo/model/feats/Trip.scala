@@ -17,38 +17,39 @@
  */
 package io.truthencode.ddo.model.feats
 
-import java.time.Duration
-import io.truthencode.ddo.activation.AtWillEvent
 import io.truthencode.ddo.enhancement.BonusType
 import io.truthencode.ddo.model.abilities.ActiveAbilities
-import io.truthencode.ddo.model.attribute.Attribute.Strength
-import io.truthencode.ddo.model.attribute.{Attribute, DexterityLinked, LinkedAttributeImpl, StrengthLinked}
+import io.truthencode.ddo.model.attribute.{DexterityLinked, LinkedAttributeImpl, StrengthLinked}
 import io.truthencode.ddo.model.effect
-import io.truthencode.ddo.model.effect.{DifficultyCheck, TriggerEvent}
+import io.truthencode.ddo.model.effect.TriggerEvent
 import io.truthencode.ddo.model.effect.features.{FeaturesImpl, GrantAbilityFeature}
-import io.truthencode.ddo.support.ModifierStrategy
 import io.truthencode.ddo.support.requisite.{FeatRequisiteImpl, FreeFeat}
 
+import java.time.Duration
+
 /**
- * This feat has a chance to trip the target rendering it prone for a short time. Strength or Dexterity save (whichever
- * is higher) is used to oppose a DC of 10 + Strength modifier + related Enhancements + Vertigo. Some creatures may be
- * immune to this effect. Creatures larger or stronger than you are less likely to trip. A successful Balance check
- * negates this effect (DC of 10 + Strength modifier + related Enhancements + Vertigo).
+ * This feat has a chance to trip the target rendering it prone for a short time. Strength or
+ * Dexterity save (whichever is higher) is used to oppose a DC of 10 + Strength modifier + related
+ * Enhancements + Vertigo. Some creatures may be immune to this effect. Creatures larger or stronger
+ * than you are less likely to trip. A successful Balance check negates this effect (DC of 10 +
+ * Strength modifier + related Enhancements + Vertigo).
  */
 protected[feats] trait Trip
   extends FeatRequisiteImpl with ActiveFeat
   //   with DifficultyCheck
-  with LinkedAttributeImpl with DexterityLinked with StrengthLinked with Tactical with FreeFeat with FeaturesImpl
-  with GrantAbilityFeature {
+  with LinkedAttributeImpl with DexterityLinked with StrengthLinked with Tactical with FreeFeat
+  with FeaturesImpl with GrantAbilityFeature {
   self: GeneralFeat =>
 
-  override protected[this] val triggerOn: TriggerEvent = TriggerEvent.AtWill
-  override protected[this] val triggerOff: TriggerEvent = TriggerEvent.OnCoolDown
-  override protected[this] val categories: Seq[effect.EffectCategories.Value] = Seq(effect.EffectCategories.Ability)
+  override protected[this] val triggerOn: Seq[TriggerEvent] = Seq(TriggerEvent.AtWill)
+  override protected[this] val triggerOff: Seq[TriggerEvent] = Seq(TriggerEvent.OnCoolDown)
+  override protected[this] val grantAbilityCategories: Seq[effect.EffectCategories.Value] = Seq(
+    effect.EffectCategories.Ability)
   override val abilityId: String = "Trip"
-  override val description: String = "This feat has a chance to trip the target rendering it prone for a short time."
+  override val description: String =
+    "This feat has a chance to trip the target rendering it prone for a short time."
   override def coolDown: Option[Duration] = Some(Duration.ofSeconds(15))
   // DC of 10 + Strength modifier + related Enhancements + Vertigo.
   override val grantBonusType: BonusType = BonusType.Feat
-  override val grantedAbility: ActiveAbilities = ActiveAbilities.Trip
+  override lazy val grantedAbility: ActiveAbilities = ActiveAbilities.Trip
 }

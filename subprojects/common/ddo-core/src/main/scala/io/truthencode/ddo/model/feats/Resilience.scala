@@ -28,19 +28,21 @@ import io.truthencode.ddo.support.requisite.{FeatRequisiteImpl, RequiresAttribut
 import java.time.Duration
 
 /**
- * Icon Feat Resilience.png [[https://ddowiki.com/page/Resilience Resilience]] Active - Defensive Combat Stance You gain
- * a +4 to all saving throws. Spells have three times their normal cooldown when this mode is active.
+ * Icon Feat Resilience.png [[https://ddowiki.com/page/Resilience Resilience]] Active - Defensive
+ * Combat Stance You gain a +4 to all saving throws. Spells have three times their normal cooldown
+ * when this mode is active.
  *
  * Constitution 13 Base Attack Bonus +1
  * @todo
  *   Adds 3x spell cooldown timers
  */
 protected[feats] trait Resilience
-  extends FeatRequisiteImpl with ActiveFeat with DefensiveCombatStance with RequiresAttribute with RequiresBaB
-  with FighterBonusFeat with MartialArtsFeat with FeaturesImpl with GrantAbilityFeature {
+  extends FeatRequisiteImpl with ActiveFeat with DefensiveCombatStance with RequiresAttribute
+  with RequiresBaB with FighterBonusFeat with MartialArtsFeat with FeaturesImpl
+  with GrantAbilityFeature {
   self: GeneralFeat =>
   override val grantBonusType: BonusType = BonusType.Feat
-  override val grantedAbility: ActiveAbilities = ActiveAbilities.Resilience
+  override lazy val grantedAbility: ActiveAbilities = ActiveAbilities.Resilience
 
   override def requiresAttribute: Seq[(Attribute, Int)] =
     List((Attribute.Constitution, 13))
@@ -49,9 +51,10 @@ protected[feats] trait Resilience
 
   override def requiresBaB: Int = 1
 // TODO: Add 3x spell cool down, +4 saving throw
-  override protected[this] val triggerOn: TriggerEvent = TriggerEvent.OnStance
-  override protected[this] val triggerOff: TriggerEvent = TriggerEvent.OnToggle
-  override protected[this] val categories: Seq[effect.EffectCategories.Value] = Seq(effect.EffectCategories.Stance)
+  override protected[this] val triggerOn: Seq[TriggerEvent] = Seq(TriggerEvent.OnStance)
+  override protected[this] val triggerOff: Seq[TriggerEvent] = Seq(TriggerEvent.OnToggle)
+  override protected[this] val grantAbilityCategories: Seq[effect.EffectCategories.Value] = Seq(
+    effect.EffectCategories.Stance)
   override val abilityId: String = "Resilience"
   override val description: String = "Defensive Combat Stance You gain a +4 to all saving throws."
 }

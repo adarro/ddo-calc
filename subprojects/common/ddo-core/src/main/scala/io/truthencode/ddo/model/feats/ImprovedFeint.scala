@@ -17,18 +17,24 @@
  */
 package io.truthencode.ddo.model.feats
 
-import java.time.Duration
 import io.truthencode.ddo.activation.AtWillEvent
 import io.truthencode.ddo.enhancement.BonusType
 import io.truthencode.ddo.model.abilities.ActiveAbilities
 import io.truthencode.ddo.model.effect
 import io.truthencode.ddo.model.effect.TriggerEvent
 import io.truthencode.ddo.model.effect.features.{FeaturesImpl, GrantAbilityFeature}
-import io.truthencode.ddo.support.requisite.{FeatRequisiteImpl, RequiresAllOfFeat, RequiresAnyOfFeat}
+import io.truthencode.ddo.support.requisite.{
+  FeatRequisiteImpl,
+  RequiresAllOfFeat,
+  RequiresAnyOfFeat
+}
+
+import java.time.Duration
 
 /**
- * [[https://ddowiki.com/page/Improved_Feint Improved Feint]] Icon Feat Improved Feint.png Improved Feint -- Active -
- * Special Attack A tactical melee attack which Bluffs the enemy, enabling Sneak Attacks.
+ * [[https://ddowiki.com/page/Improved_Feint Improved Feint]] Icon Feat Improved Feint.png Improved
+ * Feint -- Active - Special Attack A tactical melee attack which Bluffs the enemy, enabling Sneak
+ * Attacks.
  *
  * Combat Expertise, MustContainAtLeastOne of : Sneak Attack or Half-Elf Dilettante: Rogue
  *
@@ -36,8 +42,8 @@ import io.truthencode.ddo.support.requisite.{FeatRequisiteImpl, RequiresAllOfFea
  *   Implement MustContainAtLeastOneOf(Sneak Attack or Half-Elf Dilettante: Rogue)
  */
 protected[feats] trait ImprovedFeint
-  extends FeatRequisiteImpl with ActiveFeat with AtWillEvent with RequiresAnyOfFeat with RequiresAllOfFeat
-  with FighterBonusFeat with FeaturesImpl with GrantAbilityFeature {
+  extends FeatRequisiteImpl with ActiveFeat with AtWillEvent with RequiresAnyOfFeat
+  with RequiresAllOfFeat with FighterBonusFeat with FeaturesImpl with GrantAbilityFeature {
   self: GeneralFeat =>
   override def anyOfFeats: Seq[Feat] = List(ClassFeat.SneakAttack)
 
@@ -46,10 +52,12 @@ protected[feats] trait ImprovedFeint
   override def allOfFeats: Seq[Feat] = List(GeneralFeat.CombatExpertise)
 
   override val grantBonusType: BonusType = BonusType.Feat
-  override val grantedAbility: ActiveAbilities = ActiveAbilities.ImprovedFeint
-    override protected[this] val triggerOn: TriggerEvent = TriggerEvent.AtWill
-    override protected[this] val triggerOff: TriggerEvent = TriggerEvent.OnCoolDown
-    override protected[this] val categories: Seq[effect.EffectCategories.Value] = Seq(effect.EffectCategories.Ability,effect.EffectCategories.SpecialAttack)
-    override val abilityId: String = "ImprovedFeint"
-    override val description: String = "Special Attack A tactical melee attack which Bluffs the enemy, enabling Sneak Attacks."
+  override lazy val grantedAbility: ActiveAbilities = ActiveAbilities.ImprovedFeint
+  override protected[this] val triggerOn: Seq[TriggerEvent] = Seq(TriggerEvent.AtWill)
+  override protected[this] val triggerOff: Seq[TriggerEvent] = Seq(TriggerEvent.OnCoolDown)
+  override protected[this] val grantAbilityCategories: Seq[effect.EffectCategories.Value] =
+    Seq(effect.EffectCategories.Ability, effect.EffectCategories.SpecialAttack)
+  override val abilityId: String = "ImprovedFeint"
+  override val description: String =
+    "Special Attack A tactical melee attack which Bluffs the enemy, enabling Sneak Attacks."
 }

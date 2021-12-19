@@ -17,7 +17,6 @@
  */
 package io.truthencode.ddo.model.feats
 
-import java.time.Duration
 import io.truthencode.ddo.activation.AtWillEvent
 import io.truthencode.ddo.enhancement.BonusType
 import io.truthencode.ddo.model.abilities.ActiveAbilities
@@ -26,16 +25,19 @@ import io.truthencode.ddo.model.effect.TriggerEvent
 import io.truthencode.ddo.model.effect.features.{FeaturesImpl, GrantAbilityFeature}
 import io.truthencode.ddo.support.requisite.{FeatRequisiteImpl, RequiresAllOfFeat, RequiresBaB}
 
+import java.time.Duration
+
 /**
- * Icon Feat Whirlwind Attack.png [[https://ddowiki.com/page/Whirlwind_Attack Whirlwind Attack]] Active - Special Attack
- * This feat attacks all enemies in a 360 degree arc around the character. This attack deals +4[W] damage.
+ * Icon Feat Whirlwind Attack.png [[https://ddowiki.com/page/Whirlwind_Attack Whirlwind Attack]]
+ * Active - Special Attack This feat attacks all enemies in a 360 degree arc around the character.
+ * This attack deals +4[W] damage.
  *
  * Dodge, Mobility, Spring Attack Combat Expertise, Base Attack Bonus +4
  *
  * @note
- *   Only Combat Expertise and Spring Attack are required as feats. However, Spring Attack depends on Mobility with
- *   Depends on Dodge and are listed on the Wiki as such. Nested dependencies should be inferred and this list may
- *   remove all but explicit dependencies.
+ *   Only Combat Expertise and Spring Attack are required as feats. However, Spring Attack depends
+ *   on Mobility with Depends on Dodge and are listed on the Wiki as such. Nested dependencies
+ *   should be inferred and this list may remove all but explicit dependencies.
  */
 protected[feats] trait WhirlwindAttack
   extends FeatRequisiteImpl with ActiveFeat with AtWillEvent with RequiresAllOfFeat with RequiresBaB
@@ -61,10 +63,10 @@ protected[feats] trait WhirlwindAttack
     )
 
   override val grantBonusType: BonusType = BonusType.Feat
-  override val grantedAbility: ActiveAbilities = ActiveAbilities.WhirlwindAttack
-  override protected[this] val triggerOn: TriggerEvent = TriggerEvent.SpecialAttack
-  override protected[this] val triggerOff: TriggerEvent = TriggerEvent.OnCoolDown
-  override protected[this] val categories: Seq[effect.EffectCategories.Value] =
+  override lazy val grantedAbility: ActiveAbilities = ActiveAbilities.WhirlwindAttack
+  override protected[this] val triggerOn: Seq[TriggerEvent] = Seq(TriggerEvent.SpecialAttack)
+  override protected[this] val triggerOff: Seq[TriggerEvent] = Seq(TriggerEvent.OnCoolDown)
+  override protected[this] val grantAbilityCategories: Seq[effect.EffectCategories.Value] =
     Seq(effect.EffectCategories.SpecialAttack, effect.EffectCategories.Ability)
   override val abilityId: String = "WhirlwindAttack"
   override val description: String =

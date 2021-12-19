@@ -31,7 +31,9 @@ import io.truthencode.ddo.support.requisite.Requirement._
 import io.truthencode.ddo.support.tree.TreeLike
 
 /**
- * Created by adarr on 1/30/2017.
+ * Created by adarro on 1/30/2017. This package contains Requirement logic for applying constraints
+ * and limits to Entities such as Minimum Class Level or a required alignment / class etc.
+ * Convenience and implicit conversions
  */
 package object requisite {
   type Result = (Boolean, Option[List[Requisite]])
@@ -145,7 +147,8 @@ package object requisite {
             .withNameOption(s"${ClassEnhancement.searchPrefix}${x.entryName}")
             .isDefined
 
-        override def apply(v1: ClassEnhancement): ReqClassEnhancement = ReqClassEnhancement(v1.entryName)
+        override def apply(v1: ClassEnhancement): ReqClassEnhancement = ReqClassEnhancement(
+          v1.entryName)
       }
 //    val anyFeatToReq = new PartialFunction[Feat, ReqFeat] {
 //      override def isDefinedAt(x: Feat): Boolean =
@@ -200,8 +203,9 @@ package object requisite {
           ReqClass(v1._1.entryName, v1._2)
       }
 
-    val alignmentTypeToReq: PartialFunction[AlignmentType, ReqAlignment] = { case x: AlignmentType =>
-      ReqAlignment(Left(x))
+    val alignmentTypeToReq: PartialFunction[AlignmentType, ReqAlignment] = {
+      case x: AlignmentType =>
+        ReqAlignment(Left(x))
     }
 
     val alignmentsToReq: PartialFunction[Alignments, ReqAlignment] = { case x: Alignments =>
@@ -212,12 +216,14 @@ package object requisite {
       case x: Int if CharacterLevels contains x => ReqCharacterLevel(x)
     }
 
-    val pointToReq: PartialFunction[(SpendablePoints, Int), ReqPoints] = { case x: (SpendablePoints, Int) =>
-      ReqPoints(x._1.entryName, x._2)
+    val pointToReq: PartialFunction[(SpendablePoints, Int), ReqPoints] = {
+      case x: (SpendablePoints, Int) =>
+        ReqPoints(x._1.entryName, x._2)
     }
 
-    val progressionToReq: PartialFunction[(TreeLike, Int), ReqPointsSpentInTree] = { case (x: TreeLike, y: Int) =>
-      ReqPointsSpentInTree(x, y)
+    val progressionToReq: PartialFunction[(TreeLike, Int), ReqPointsSpentInTree] = {
+      case (x: TreeLike, y: Int) =>
+        ReqPointsSpentInTree(x, y)
 
 //              if Points.withNameOption(x._1.entryName).nonEmpty=> x._1 match {
 //              case y: ActionPoints => ReqPointsSpent(Points.ActionPoints,x._2)
@@ -226,7 +232,8 @@ package object requisite {
 //          }
     }
 
-    val progressionWithPointsToReq: PartialFunction[(TreeLike, SpendablePoints, Int), ReqPointsSpentInTree] = {
+    val progressionWithPointsToReq
+      : PartialFunction[(TreeLike, SpendablePoints, Int), ReqPointsSpentInTree] = {
       case (x: TreeLike, _, y: Int) => ReqPointsSpentInTree(x, y)
     }
 //    val pointsToReq: PartialFunction[(Points with SpendablePoint,Int),ReqPointsSpent] = {

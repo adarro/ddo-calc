@@ -52,7 +52,7 @@ package object support extends LazyLogging {
    */
   object TraverseOps {
 
-    // succinctly pooled from SO [[http://stackoverflow.com/a/14740340/400729]]
+    // succinctly pooled originally from SO [[http://stackoverflow.com/a/14740340/400729]]
     implicit class Crossable[X](xs: Iterable[X]) {
       def cross[Y](ys: Iterable[Y]): Iterable[(X, Y)] = for { x <- xs; y <- ys } yield (x, y)
     }
@@ -171,6 +171,20 @@ package object support extends LazyLogging {
        */
       def toIntOpt: Option[Int] =
         catching(classOf[NumberFormatException]).opt(s.toInt)
+    }
+
+    implicit class IntExtensions(val source: Int) {
+        /**
+         * Convenience toString to add +/- to number for text fields
+         * @return returns the number as a string prefixed with either + or -
+         */
+        def numberToSignedText: String = {
+            if (source >= 0) {
+                s"+$source"
+            } else {
+                s"-$source"
+            }
+        }
     }
 
     /**

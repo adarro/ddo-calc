@@ -28,31 +28,36 @@ import io.truthencode.ddo.support.requisite.{FeatRequisiteImpl, RequiresAttribut
 import java.time.Duration
 
 /**
- * [[http://ddowiki.com/page/Power_Attack Power Attack]] This feat exchanges part of your attack bonus for extra melee
- * damage. It reduces your hit bonus by 5, or your Base Attack Bonus, whichever is lower. Then your successful attacks
- * will have their damage increased by the same amount. Two-handed weapons get twice that damage bonus. (Unarmed strikes
- * count as one-handed.) Typically, this means one-handed weapons get +5 and two-handed get +10 to damage.
+ * [[http://ddowiki.com/page/Power_Attack Power Attack]] This feat exchanges part of your attack
+ * bonus for extra melee damage. It reduces your hit bonus by 5, or your Base Attack Bonus,
+ * whichever is lower. Then your successful attacks will have their damage increased by the same
+ * amount. Two-handed weapons get twice that damage bonus. (Unarmed strikes count as one-handed.)
+ * Typically, this means one-handed weapons get +5 and two-handed get +10 to damage.
  *
- * This feat is a stance. It may be toggled on and left active indefinitely. When deactivated, there is a 10 second
- * cooldown before it can be used again.
+ * This feat is a stance. It may be toggled on and left active indefinitely. When deactivated, there
+ * is a 10 second cooldown before it can be used again.
  *
  * @todo
- *   add Cooldown with Toggle likely inconsequential but only applies when toggling off then on again
+ *   add Cooldown with Toggle likely inconsequential but only applies when toggling off then on
+ *   again
  * @todo
  *   add Offensive Combat Stance
  */
 protected[feats] trait PowerAttack
   extends FeatRequisiteImpl with ActiveFeat with Stance with RequiresAttribute with MartialArtsFeat
-  with FighterBonusFeat with FeaturesImpl with GrantAbilityFeature  {
+  with FighterBonusFeat with FeaturesImpl with GrantAbilityFeature {
   self: GeneralFeat =>
   override val requiresAttribute: Seq[(Attribute, Int)] = List(
     (Attribute.Strength, 13)
   )
 // TODO: Add to hit penalty, Damage Bonus for PowerAttack
-  override protected[this] val triggerOn: TriggerEvent = TriggerEvent.OnStance
-  override protected[this] val triggerOff: TriggerEvent = TriggerEvent.OnToggle
-  override protected[this] val categories: Seq[effect.EffectCategories.Value] =
-    Seq(effect.EffectCategories.Ability, effect.EffectCategories.Stance, effect.EffectCategories.MeleeCombat)
+  override protected[this] val triggerOn: Seq[TriggerEvent] = Seq(TriggerEvent.OnStance)
+  override protected[this] val triggerOff: Seq[TriggerEvent] = Seq(TriggerEvent.OnToggle)
+  override protected[this] val grantAbilityCategories: Seq[effect.EffectCategories.Value] =
+    Seq(
+      effect.EffectCategories.Ability,
+      effect.EffectCategories.Stance,
+      effect.EffectCategories.MeleeCombat)
   override val abilityId: String = "PowerAttack"
   override val description: String =
     "This feat exchanges part of your attack bonus for extra melee damage. It reduces your hit bonus by 5, or your Base Attack Bonus, whichever is lower."
@@ -60,5 +65,5 @@ protected[feats] trait PowerAttack
   override def coolDown: Option[Duration] = Some(Duration.ofSeconds(10))
 
   override val grantBonusType: BonusType = BonusType.Feat
-  override val grantedAbility: ActiveAbilities = ActiveAbilities.PowerAttack
+  override lazy val grantedAbility: ActiveAbilities = ActiveAbilities.PowerAttack
 }

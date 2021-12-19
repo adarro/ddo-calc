@@ -25,8 +25,8 @@ import io.truthencode.ddo.model.effect.{Feature, TriggerEvent}
  */
 trait SpecialAttackFeature {
   self: GrantAbilityFeature =>
-  override protected[this] lazy val triggerOn: TriggerEvent = TriggerEvent.SpecialAttack
-  override protected[this] lazy val triggerOff: TriggerEvent = TriggerEvent.OnCoolDown
-  override protected[this] lazy val categories: Seq[effect.EffectCategories.Value] =
+  override protected[this] lazy val triggerOn: Seq[TriggerEvent] = Seq(TriggerEvent.SpecialAttack)
+  override protected[this] lazy val triggerOff: Seq[TriggerEvent] = Seq(TriggerEvent.OnCoolDown)
+  override protected[this] lazy val grantAbilityCategories: Seq[effect.EffectCategories.Value] =
     Seq(effect.EffectCategories.Ability, effect.EffectCategories.SpecialAttack)
 }

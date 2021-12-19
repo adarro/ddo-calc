@@ -77,9 +77,9 @@ object WeaponCategory extends Enum[WeaponCategory] {
    * Used by [[improvedCriticalRangeByWeapon]] to safely locate and build an array of weapons with a specific value.
    * This routine may be useful elsewhere (thus parameterized) but essentially a one off.
    * @param t
-   *   Possibly null / empty value
+   *   Possibly null / empty type
    * @param n
-   *   Number to add to the Tuple if t is not null.
+   *   Number to add to the Tuple pair if t is not null.
    * @tparam T
    *   Type of t
    * @return
@@ -98,7 +98,7 @@ object WeaponCategory extends Enum[WeaponCategory] {
      * [[https://ddowiki.com/page/Improved_Critical]]
      * @return Collection of Weapons with appropriate modifiers in a Tuple i.e. Seq((Falchion,3),...)
      */
-  def improvedCriticalRangeByWeapon: Seq[(WeaponCategory, Int)] = WeaponClass.values.flatMap { weaponClass =>
+  def improvedCriticalRangeByWeapon(weaponClass: WeaponClass): Seq[(WeaponCategory, Int)] = WeaponClass.values.flatMap { wc =>
     filterByWeaponClass(weaponClass).map { weapon =>
       // The item we are looking for is in one of these lists
       val a1 = icPlus1.filter(_ == weapon).flatMap(optPlus(_, 1))

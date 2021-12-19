@@ -19,6 +19,7 @@ package io.truthencode.ddo.model.abilities
 
 import enumeratum.{Enum, EnumEntry}
 import io.truthencode.ddo.model.feats.DefensiveCombatStance
+import io.truthencode.ddo.support.SearchPrefix
 import io.truthencode.ddo.support.StringUtils.Extensions
 import io.truthencode.ddo.support.naming.{DisplayName, FriendlyDisplay}
 
@@ -34,8 +35,8 @@ sealed trait ActiveAbilities extends EnumEntry with DisplayName with FriendlyDis
 trait Cleave extends ActiveAbilities
 
 // scalastyle:off number.of.methods
-object ActiveAbilities extends Enum[ActiveAbilities] {
-  override def values: IndexedSeq[ActiveAbilities] = findValues
+object ActiveAbilities extends Enum[ActiveAbilities] with SearchPrefix {
+  override lazy val values: IndexedSeq[ActiveAbilities] = findValues
   case object Attack extends ActiveAbilities
   case object BardSongs extends ActiveAbilities
   case object TurnUndead extends ActiveAbilities
@@ -68,10 +69,20 @@ object ActiveAbilities extends Enum[ActiveAbilities] {
   /**
    * Allows one to dismiss some charmed creatures.
    */
-  object DismissCharm extends ActiveAbilities
+  case object DismissCharm extends ActiveAbilities
 
-  object Sneak extends ActiveAbilities
+  case object Sneak extends ActiveAbilities
 
-  object Precision extends ActiveAbilities
+  case object Precision extends ActiveAbilities
+
+  /**
+   * Used when qualifying a search with a prefix. Examples include finding "HalfElf" from qualified "Race:HalfElf"
+   *
+   * @return
+   *   A default or applied prefix
+   */
+  override def searchPrefixSource: String = "Ability"
+
+  override def delimiter: Option[String] = Some(":")
 }
 // scalastyle:on

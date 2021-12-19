@@ -17,8 +17,9 @@
  */
 package io.truthencode.ddo.model.effect.features
 
+import io.truthencode.ddo.api.model.effect.DetailedEffect
 import io.truthencode.ddo.enhancement.BonusType
-import io.truthencode.ddo.model.effect.{DetailedEffect, Feature, ParameterModifier, PartModifier, SourceInfo}
+import io.truthencode.ddo.model.effect.{EffectCategories, Feature, ParameterModifier, PartModifier, SourceInfo}
 import io.truthencode.ddo.model.item.weapon.{WeaponCategory, WeaponClass}
 import io.truthencode.ddo.model.stats.BasicStat
 
@@ -32,11 +33,13 @@ trait CriticalThreatRangeFeature extends Features {
   protected val criticalThreatRangeAmount: Seq[(WeaponCategory, Int)]
   private val src = this
   protected[this] val effectDetail: DetailedEffect
+    val cats = LazyList(EffectCategories.GeneralCombat.toString)
   lazy val ctr: Feature.CriticalThreatRangeEffect = Feature.CriticalThreatRangeEffect(
     criticalThreatRangeAmount,
     BasicStat.CriticalThreatRange,
     criticalThreatRangeType,
     src,
+    cats,
     effectDetail)
 //  private[this] val criticalThreatRange =
 //    new PartModifier[Seq[(WeaponCategory, Int)], BasicStat]

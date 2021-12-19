@@ -44,9 +44,12 @@ protected[feats] trait MagicalTraining
   override protected val spellPointBonusType: BonusType = BonusType.Feat
   override protected val spellPointBonusAmount: Int = 80
 
-  lazy override protected[this] val triggerOn: TriggerEvent = TriggerEvent.Passive
-  lazy override protected[this] val triggerOff: TriggerEvent = TriggerEvent.Never
-  lazy override protected[this] val categories: Seq[effect.EffectCategories.Value] = Seq(
+  lazy override protected[this] val triggerOn: Seq[TriggerEvent] = Seq(TriggerEvent.Passive)
+  lazy override protected[this] val triggerOff: Seq[TriggerEvent] = Seq(TriggerEvent.Never)
+  lazy override protected[this] val spellCriticalCategories: Seq[effect.EffectCategories.Value] = Seq(
+    effect.EffectCategories.SpellCasting)
+
+  override protected[this] val spellPointAmountCategories: Seq[effect.EffectCategories.Value] = Seq(
     effect.EffectCategories.SpellCasting)
 
   private def magicClasses =

@@ -47,9 +47,9 @@ trait DeflectArrows
 
   override protected val deflectArrowsBonusType: BonusType = BonusType.Feat
   override protected val secondsPerArrow: Int = 6
-  lazy override protected[this] val triggerOn: TriggerEvent = TriggerEvent.OnTimer
-  lazy override protected[this] val triggerOff: TriggerEvent = TriggerEvent.OnCoolDown
-  lazy override protected[this] val categories: Seq[effect.EffectCategories.Value] =
+  lazy override protected[this] val triggerOn: Seq[TriggerEvent] = Seq(TriggerEvent.OnTimer)
+  lazy override protected[this] val triggerOff: Seq[TriggerEvent] = Seq(TriggerEvent.OnCoolDown)
+  lazy override protected[this] val deflectCategories: Seq[effect.EffectCategories.Value] =
     Seq(effect.EffectCategories.MissChance, effect.EffectCategories.Ability)
 
 }

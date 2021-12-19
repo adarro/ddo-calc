@@ -17,19 +17,20 @@
  */
 package io.truthencode.ddo.model.effect
 
+import com.typesafe.scalalogging.LazyLogging
 import enumeratum.{Enum, EnumEntry}
 import io.truthencode.ddo.NoDefault
 import io.truthencode.ddo.enhancement.BonusType
+import io.truthencode.ddo.model.abilities.ActiveAbilities
 import io.truthencode.ddo.model.attribute.{Attribute => Attributes}
-import io.truthencode.ddo.model.feats.{Feat => Feats}
+import io.truthencode.ddo.model.feats.{Feat => Feats, GeneralFeat, WeaponProficiencyBase}
 import io.truthencode.ddo.model.skill.{Skill => Skills}
-import io.truthencode.ddo.model.stats.BasicStat
-
-import scala.collection.immutable
+import io.truthencode.ddo.model.stats.{BasicStat, MissChance}
 
 trait SearchPattern {
   self: EnumEntry =>
-  def searchPattern(target: String = entryName): String = s"$target"
+  def searchPattern(target: String = entryName): String
+  // = s"$target"
 }
 
 /**
@@ -37,12 +38,45 @@ trait SearchPattern {
  */
 sealed trait EffectPart extends EnumEntry with SearchPattern
 
-trait SkillEffect extends EffectPart {
+trait SkillEffectPart extends EffectPart with LazyLogging {
 
-  override def searchPattern(target: String = entryName): String =
-    s"Skill($target)"
+  override def searchPattern(target: String = Searchable.stripParentheses(entryName)): String = {
+    val sp = io.truthencode.ddo.model.skill.Skill.searchPrefix
 
+    val t = Searchable.stripParentheses(entryName.replace("Skill", ""))
+//    if (target.contains("(") || target.contains("(")) {
+//      val newTarget = Searchable.stripParentheses(target)
+//      logger.info(s"Setting SearchPattern in SkillEffect to $sp target $newTarget")
+//      s"$sp$newTarget"
+//    } else {
+//      logger.info(s"Setting SearchPattern in SkillEffect to $sp target $target")
+//      s"$sp$target"
+//    }
+    s"$sp$t".replace("::", ":")
+  }
   val skill: Skills
+}
+
+trait AbilityEffectPart extends EffectPart with LazyLogging {
+
+  override def searchPattern(target: String = Searchable.stripParentheses(entryName)): String = {
+    val sp = "Ability:"
+
+    val t = Searchable.stripParentheses(entryName.replace("Ability", ""))
+    s"$sp$t".replace("::", ":")
+  }
+  val ability: ActiveAbilities
+}
+
+trait MissChanceEffectPart extends EffectPart with LazyLogging {
+
+  override def searchPattern(target: String = Searchable.stripParentheses(entryName)): String = {
+    val sp = "MissChance:"
+
+    val t = Searchable.stripParentheses(entryName.replace("MissChance", ""))
+    s"$sp$t".replace("::", ":")
+  }
+  val basicStat: BasicStat with MissChance
 }
 
 trait AttributeEffect extends EffectPart {
@@ -57,32 +91,67 @@ trait FeatEffect extends EffectPart {
   val feat: Feats
 }
 
+trait WeaponProficiencyEffect extends EffectPart {
+  override def searchPattern(target: String): String = s"Proficiency($target)"
+  val proficiency: WeaponProficiencyBase
+}
+
 trait CriticalThreatRangeEffect extends EffectPart {
-    override def searchPattern(target: String): String = super.searchPattern(target)
+  override def searchPattern(target: String): String = s"CriticalThreatRange:$target"
 }
 
 /**
  * A list of available effect targets.
  * @note
- *   This should contain all items viewable from the DDO Character menu (including the + menu) Also, should have
- *   additional effects such as Caster / Turn Undead Level
+ *   This should contain all items viewable from the DDO Character menu (including the + menu) Also,
+ *   should have additional effects such as Caster / Turn Undead Level
  */
 object EffectPart extends Enum[EffectPart] with NoDefault[EffectPart] with Searchable[EffectPart] {
-  lazy val values = findValues ++ anySkill ++ anyFeat
+
   // Attribute value affected by Base, Feat, Item, Tomes
   case class Attribute(override val attribute: Attributes) extends AttributeEffect
   private def anyAttribute = Attributes.values.map(Attribute)
   // skill key ability, total mod, rank, ability mod, misc mod
-  case class Skill(override val skill: Skills) extends SkillEffect
-  private def anySkill = Skills.values.map(Skill)
+  case class Skill(override val skill: Skills) extends SkillEffectPart {
+    override def entryName: String =
+      s"${io.truthencode.ddo.model.skill.Skill.searchPrefix}${skill}" // .replace("::",":")
+  }
+  def anySkill[effect]: Seq[Skill] = Skills.values.map(Skill)
+  case class ActiveAbility(override val ability: ActiveAbilities) extends AbilityEffectPart {
+    override def entryName: String =
+      s"${ActiveAbilities.searchPrefix}${ability}" // .replace("::",":")
+  }
+  def anyAbilities: Seq[ActiveAbility] = ActiveAbilities.values.map(ActiveAbility)
+  // Miss Chance
+  case class MissChanceEffect(override val basicStat: BasicStat with MissChance)
+    extends MissChanceEffectPart {
+    override def entryName: String = s"MissChance:${basicStat.entryName}"
+  }
+  def anyMissChance: Seq[MissChanceEffect] =
+    BasicStat.values.collect { case x: MissChance => x }.map(MissChanceEffect)
+
+  // Feats
   case class Feat(override val feat: Feats) extends FeatEffect
   private def anyFeat = Feats.values.map(Feat)
+  case class WeaponProficiency(override val proficiency: WeaponProficiencyBase)
+    extends WeaponProficiencyEffect
+  private def anyWeaponProficiency =
+    GeneralFeat.ExoticWeaponProficiency.subFeats.map(WeaponProficiency)
   // case class BaseThing()
   // private def anyBasicStat = BasicStat.values.map()
-  case object Spell extends EffectPart
-  case object Health extends EffectPart
-  case object Spellpoints extends EffectPart
-  case object DodgeChance extends EffectPart
+  case object Spell extends EffectPart {
+    override def searchPattern(target: String): String = s"Spell:$target"
+  }
+  case object Health extends EffectPart {
+    override def searchPattern(target: String): String = s"Health:$target"
+  }
+  case object Spellpoints extends EffectPart {
+    override def searchPattern(target: String): String = s"SpellPoints:$target"
+  }
+
+
+  lazy val values =
+    findValues ++ anySkill ++ anyFeat ++ anyWeaponProficiency ++ anyAbilities ++ anyMissChance
   // case class CriticalThreatRange()
   /*
   Main
@@ -228,9 +297,9 @@ object EffectPart extends Enum[EffectPart] with NoDefault[EffectPart] with Searc
  * // +6 Enhancement Bonus
  * val eb6 = Eff(Passive,Enhancement,100/6,???Atk / Dmg Bonus)
  * }}}
- * Maiming: This weapon has a twisted haft or grip and spikes along its blade, head, or point. Whenever you score a
- * critical hit with this weapon it deals an amount of extra untyped damage depending on its critical multiplier: x2 - 1
- * to 6, x3 - 2 to 12, x4 - 3 to 18.
+ * Maiming: This weapon has a twisted haft or grip and spikes along its blade, head, or point.
+ * Whenever you score a critical hit with this weapon it deals an amount of extra untyped damage
+ * depending on its critical multiplier: x2 - 1 to 6, x3 - 2 to 12, x4 - 3 to 18.
  * {{{
  *   val maiming = Eff(Critical,100,NA,100 / Multiplier(2->1d6,3->2d6,4->3d6),???,Melee/Ranged Attack)
  * }}}

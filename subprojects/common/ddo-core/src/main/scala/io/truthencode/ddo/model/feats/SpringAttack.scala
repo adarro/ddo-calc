@@ -23,17 +23,24 @@ import io.truthencode.ddo.model.attribute.Attribute
 import io.truthencode.ddo.model.effect
 import io.truthencode.ddo.model.effect.TriggerEvent
 import io.truthencode.ddo.model.effect.features.{FeaturesImpl, GrantAbilityFeature}
-import io.truthencode.ddo.support.requisite.{FeatRequisiteImpl, RequiresAllOfFeat, RequiresAttribute, RequiresBaB}
+import io.truthencode.ddo.support.requisite.{
+  FeatRequisiteImpl,
+  RequiresAllOfFeat,
+  RequiresAttribute,
+  RequiresBaB
+}
 
 /**
- * Icon Feat Spring Attack.png Spring Attack Passive Character suffers no penalty to his attack roll when meleeing and
- * moving. You will also gain a 2% dodge bonus. NOT YET IMPLEMENTED: No attack penalty for melee while moving.
+ * Icon Feat Spring Attack.png Spring Attack Passive Character suffers no penalty to his attack roll
+ * when meleeing and moving. You will also gain a 2% dodge bonus. NOT YET IMPLEMENTED: No attack
+ * penalty for melee while moving.
  *
  * Dodge, Mobility Dexterity 13 , Base Attack Bonus 4,
  */
 protected[feats] trait SpringAttack
-  extends FeatRequisiteImpl with Passive with RequiresAllOfFeat with RequiresAttribute with RequiresBaB
-  with FighterBonusFeat with MartialArtsFeat with FeaturesImpl with GrantAbilityFeature {
+  extends FeatRequisiteImpl with Passive with RequiresAllOfFeat with RequiresAttribute
+  with RequiresBaB with FighterBonusFeat with MartialArtsFeat with FeaturesImpl
+  with GrantAbilityFeature {
   self: GeneralFeat =>
   override def allOfFeats: Seq[GeneralFeat] = List(GeneralFeat.Dodge, GeneralFeat.Mobility)
 
@@ -50,10 +57,10 @@ protected[feats] trait SpringAttack
   override def requiresAttribute: Seq[(Attribute, Int)] = List((Attribute.Dexterity, 13))
 
   override val grantBonusType: BonusType = BonusType.Feat
-  override val grantedAbility: ActiveAbilities = ActiveAbilities.SpringAttack
-  override protected[this] val triggerOn: TriggerEvent = TriggerEvent.SpecialAttack
-  override protected[this] val triggerOff: TriggerEvent = TriggerEvent.WhileOn
-  override protected[this] val categories: Seq[effect.EffectCategories.Value] = Seq(
+  override lazy val grantedAbility: ActiveAbilities = ActiveAbilities.SpringAttack
+  override protected[this] val triggerOn: Seq[TriggerEvent] = Seq(TriggerEvent.SpecialAttack)
+  override protected[this] val triggerOff: Seq[TriggerEvent] = Seq(TriggerEvent.WhileOn)
+  override protected[this] val grantAbilityCategories: Seq[effect.EffectCategories.Value] = Seq(
     effect.EffectCategories.SpecialAttack)
   override val abilityId: String = "SpringAttack"
   override val description: String =

@@ -45,9 +45,9 @@ protected[feats] trait Toughness
     provider.createValue
   }
 
-  lazy override protected[this] val triggerOn: TriggerEvent = TriggerEvent.Passive
-  lazy override protected[this] val triggerOff: TriggerEvent = TriggerEvent.Never
-  lazy override protected[this] val categories: Seq[effect.EffectCategories.Value] = Seq(effect.EffectCategories.Health)
+  lazy override protected[this] val triggerOn: Seq[TriggerEvent] = Seq(TriggerEvent.Passive)
+  lazy override protected[this] val triggerOff: Seq[TriggerEvent] = Seq(TriggerEvent.Never)
+  lazy override protected[this] val hitPointPerLevelCategories: Seq[effect.EffectCategories.Value] = Seq(effect.EffectCategories.Health)
 
   /**
    * 3 at first level, and adds +1 for each other level. Technically

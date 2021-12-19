@@ -4,7 +4,7 @@
 
 |[ ][grantedFeats] [Feats][result] | Type | Description | Prerequisites | Icon |
 |----------------------------------------|--------|----|----|---|
-| [Elf][elf_feat] | Passive |You are considered an Elf. You are treated as such by magical abilities and effects, and are able to use appropriate equipment.| [Elf][elf_race] , [Sun Elf][sunelf_race]|![Icon Feat Elf.png](/images/Icon_Feat_Elf.png)|
+| [Elf][elf_feat] | Passive |You are considered an Elf. You are treated as such by magical abilities and effects, and are able to use appropriate equipment.| [Elf][elf_race] , [Sun Elf][sunelf_race]|![Icon Feat Elf.png](images/Icon_Feat_Elf.png)|
 |[Elven Keen Senses](http://www.ddowiki.com/page/Elven_Keen_Senses "Elven Keen Senses")| Passive | Elves have keen senses and gain a +2 bonus to [Listen](http://www.ddowiki.com/page/Listen "Listen"), [Search](http://www.ddowiki.com/page/Search "Search"), and [Spot](http://www.ddowiki.com/page/Spot "Spot") checks. | [Elf][elf_race] , [Sun Elf][sunelf_race]|![Icon Feat Elven.png](/images/thumb/36px-Icon_Feat_Elven.png)|
 |[Enchantment Save Bonus](http://www.ddowiki.com/page/Enchantment_Save_Bonus "Enchantment Save Bonus")| Passive |Elves are naturally resistant to enchantments, receiving a +2 bonus on saves against [enchantments](http://www.ddowiki.com/page/Enchantment "Enchantment")| [Elf][elf_race] , [Sun Elf][sunelf_race]|![Icon Feat Elven.png](/images/thumb/36px-Icon_Feat_Elven.png)|
 |[Immunity to Sleep](http://www.ddowiki.com/page/Immunity_to_Sleep "Immunity to Sleep")| Passive | Elves are naturally immune to magical sleep effects. | [Elf][elf_race] , [Sun Elf][sunelf_race]|![Icon Feat Elven.png](/images/thumb/36px-Icon_Feat_Elven.png)|

@@ -27,16 +27,17 @@ import io.truthencode.ddo.model.misc.DefaultCoolDown
 import io.truthencode.ddo.support.requisite.{FeatRequisiteImpl, RequiresAttribute, RequiresBaB}
 
 /**
- * Icon Feat Precision.png [[https://ddowiki.com/page/Precision Precision]] Active - Offensive Combat Stance While using
- * Precision mode, you gain +5% to hit and reduce the target's fortification against your attacks by 25%. Cannot be used
- * while raged. * Dexterity 13 Base Attack Bonus +1
+ * Icon Feat Precision.png [[https://ddowiki.com/page/Precision Precision]] Active - Offensive
+ * Combat Stance While using Precision mode, you gain +5% to hit and reduce the target's
+ * fortification against your attacks by 25%. Cannot be used while raged. * Dexterity 13 Base Attack
+ * Bonus +1
  * @todo
  *   add Rage Prohibition
  */
 protected[feats] trait Precision
-  extends FeatRequisiteImpl with ActiveFeat with OffensiveCombatStance with RequiresAttribute with RequiresBaB
-  with AlchemistBonusFeat with FighterBonusFeat with MartialArtsFeat with DefaultCoolDown with FeaturesImpl
-  with GrantAbilityFeature {
+  extends FeatRequisiteImpl with ActiveFeat with OffensiveCombatStance with RequiresAttribute
+  with RequiresBaB with AlchemistBonusFeat with FighterBonusFeat with MartialArtsFeat
+  with DefaultCoolDown with FeaturesImpl with GrantAbilityFeature {
   self: GeneralFeat =>
   override def requiresAttribute: Seq[(Attribute, Int)] =
     List((Attribute.Dexterity, 13))
@@ -44,10 +45,11 @@ protected[feats] trait Precision
   override def requiresBaB = 1
 // TODO: Add reduce fort 25% and 5% tohit + rage prohibition
   override val grantBonusType: BonusType = BonusType.Feat
-  override val grantedAbility: ActiveAbilities = ActiveAbilities.Precision
-  override protected[this] val triggerOn: TriggerEvent = TriggerEvent.OnStance
-  override protected[this] val triggerOff: TriggerEvent = TriggerEvent.OnToggle
-  override protected[this] val categories: Seq[effect.EffectCategories.Value] = Seq(effect.EffectCategories.Stance)
+  override lazy val grantedAbility: ActiveAbilities = ActiveAbilities.Precision
+  override protected[this] val triggerOn: Seq[TriggerEvent] = Seq(TriggerEvent.OnStance)
+  override protected[this] val triggerOff: Seq[TriggerEvent] = Seq(TriggerEvent.OnToggle)
+  override protected[this] val grantAbilityCategories: Seq[effect.EffectCategories.Value] = Seq(
+    effect.EffectCategories.Stance)
   override val abilityId: String = "Precision"
   override val description: String =
     "Offensive Combat Stance While using Precision mode, you gain +5% to hit and reduce the target's fortification against your attacks by 25%"

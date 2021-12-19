@@ -30,9 +30,9 @@ protected[feats] trait ImprovedHeroicDurability
   extends FeatRequisiteImpl with Passive with FreeFeat with FeaturesImpl with HitPointAmountFeature
   with LevelRequisiteImpl with GrantsToCharacterLevel {
   self: GeneralFeat =>
-  lazy override protected[this] val triggerOn: TriggerEvent = TriggerEvent.Passive
-  lazy override protected[this] val triggerOff: TriggerEvent = TriggerEvent.Never
-  lazy override protected[this] val categories: Seq[effect.EffectCategories.Value] = Seq(effect.EffectCategories.Health)
+  lazy override protected[this] val triggerOn: Seq[TriggerEvent] = Seq(TriggerEvent.Passive)
+  lazy override protected[this] val triggerOff: Seq[TriggerEvent] = Seq(TriggerEvent.Never)
+  lazy override protected[this] val hitPointCategories: Seq[effect.EffectCategories.Value] = Seq(effect.EffectCategories.Health)
   override protected val hitPointBonusType: BonusType = BonusType.Feat
   override protected val hitPointBonusAmount: Int = 5
 

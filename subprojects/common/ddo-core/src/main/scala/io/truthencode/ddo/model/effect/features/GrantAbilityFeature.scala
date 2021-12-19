@@ -17,18 +17,14 @@
  */
 package io.truthencode.ddo.model.effect.features
 
+import io.truthencode.ddo.api.model.effect.DetailedEffect
 import io.truthencode.ddo.enhancement.BonusType
-import io.truthencode.ddo.model.abilities.ActiveAbilities
+import io.truthencode.ddo.model.abilities.{ActiveAbilities, UsingAbilitySearchPrefix}
 import io.truthencode.ddo.model.effect
-import io.truthencode.ddo.model.effect.{
-  DetailedEffect,
-  Feature,
-  ParameterModifier,
-  PartModifier,
-  SourceInfo,
-  TriggerEvent
-}
+import io.truthencode.ddo.model.effect._
 import io.truthencode.ddo.model.stats.BasicStat
+
+import scala.util.{Success, Try}
 
 /**
  * Grants an ability such as Bard Songs, Attack or Cleave
@@ -38,34 +34,70 @@ trait GrantAbilityFeature extends Features {
   val grantBonusType: BonusType
   val grantedAbility: ActiveAbilities
   private val src = this
-  protected[this] val triggerOn: TriggerEvent
-  protected[this] val triggerOff: TriggerEvent
-  protected[this] val categories: Seq[effect.EffectCategories.Value]
+  protected[this] val triggerOn: Seq[TriggerEvent]
+  protected[this] val triggerOff: Seq[TriggerEvent]
+  protected[this] val grantAbilityCategories: Seq[effect.EffectCategories.Value]
   val abilityId: String
   val description: String
-  private[this] val dodgeChance =
-    new PartModifier[ActiveAbilities, BasicStat] with ParameterModifier[ActiveAbilities, BonusType] {
+  private[this] val abilityGranted =
+    new PartModifier[ActiveAbilities, BasicStat] with UsingAbilitySearchPrefix {
 
-      lazy override protected[this] val partToModify: BasicStat =
-        BasicStat.GrantedAbility
+      override protected[this] lazy val partToModify: BasicStat =
+        BasicStat.GrantedAbilities(grantedAbility)
 
-      lazy override protected[this] val parameterToModify: BonusType =
-        grantBonusType
-      lazy override val effectDetail: DetailedEffect = DetailedEffect(
+      private lazy val eb = EffectParameterBuilder()
+        .toggleOffValue(triggerOff: _*)
+        .toggleOnValue(triggerOn: _*)
+        .addBonusType(grantBonusType)
+        .build
+
+      override lazy val part: Try[EffectPart] = Success(EffectPart.ActiveAbility(grantedAbility))
+
+      override protected[this] def effectParameters: Seq[ParameterModifier[_]] = eb.modifiers
+      /**
+       * The General Description should be just that. This should not include specific values unless
+       * all instances will share that value. I.e. a Dodge Effect might state it increases your
+       * miss-chance, but omit any value such as 20%. Those values will be displayed in the
+       * effectText of a specific implementation such as the Dodge Feat or Uncanny Dodge
+       */
+      override val generalDescription: String =
+        "Grants an ability such as A Bard Song, Ability to Remove Disease or Turn Undead or Sprint"
+
+      /**
+       * a list of Categories useful for menu / UI placement and also for searching / querying for
+       * Miss-Chance or other desired effects.
+       *
+       * This list might be constrained or filtered by an Enumeration or CSV file. The goal is to
+       * enable quick and advanced searching for specific categories from general (Miss-Chance) to
+       * specific (evasion). In addition, it may be useful for deep searching such as increasing
+       * Spot, which should suggest not only +Spot items, but +Wisdom or eventually include a feat
+       * or enhancement that allows the use of some other value as your spot score.
+       */
+      override def categories: Seq[String] = grantAbilityCategories.map(_.toString)
+
+      override lazy val effectDetail: DetailedEffect = DetailedEffect(
         id = abilityId,
         description = description,
-        categories = categories.map(_.toString),
-        triggersOn = triggerOn.entryName,
-        triggersOff = triggerOff.entryName
+        triggersOn = triggerOn.map(_.entryName),
+        triggersOff = triggerOff.map(_.entryName)
       )
       override val source: SourceInfo = src
       override lazy val value: ActiveAbilities = grantedAbility
       override lazy val effectText: Option[String] = Some(s"Granted Ability $grantedAbility")
+
+      /**
+       * Used when qualifying a search with a prefix. Examples include finding "HalfElf" from
+       * qualified "Race:HalfElf"
+       *
+       * @return
+       *   A default or applied prefix
+       */
+      override def searchPrefixSource: String = partToModify.searchPrefixSource
     }
 
   abstract override def features: Seq[Feature[_]] = {
-    assert(dodgeChance.value == grantedAbility)
-    super.features :+ dodgeChance
+    assert(abilityGranted.value == grantedAbility)
+    super.features :+ abilityGranted
   }
 
 }

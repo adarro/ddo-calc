@@ -26,22 +26,26 @@ import io.truthencode.ddo.support.ModifierStrategy
 import scala.collection.immutable
 
 /**
- * Enumerates the possible parameter types allowed for an effect such as the Trigger, Type of bonus etc
+ * Enumerates the possible parameter types allowed for an effect such as the Trigger, Type of bonus
+ * etc
  */
-sealed trait EffectParameter extends EnumEntry with SearchPattern
+sealed trait EffectParameter extends EnumEntry with SearchPattern {
+  override def searchPattern(target: String): String = target
+}
 
 trait DifficultyCheck extends EffectParameter {
 
   /**
-   * The base difficulty check value (before modifiers such as Strength or any Feats / buffs etc. I.e. For the Trip
-   * Feat, it is a base DC of 10
+   * The base difficulty check value (before modifiers such as Strength or any Feats / buffs etc.
+   * I.e. For the Trip Feat, it is a base DC of 10
    * @return
    *   initial base Difficulty value
    */
   def baseDC: Int
 
   /**
-   * List of Attributes to base modifiers. In a general terms, the highest or lowest value will apply.
+   * List of Attributes to base modifiers. In a general terms, the highest or lowest value will
+   * apply.
    * @return
    *   list of attributes used to modify the check value.
    */
@@ -52,7 +56,6 @@ trait DifficultyCheck extends EffectParameter {
 }
 
 object EffectParameter extends SmartEnum[EffectParameter] with Searchable[EffectParameter] {
-  val values = findValues ++ bonusTypes ++ triggerEvents
   case class Trigger(triggerEvent: TriggerEvent) extends EffectParameter
   def triggerEvents: immutable.IndexedSeq[Trigger] =
     for { t <- TriggerEvent.values } yield Trigger(t)
@@ -64,4 +67,5 @@ object EffectParameter extends SmartEnum[EffectParameter] with Searchable[Effect
   case object Magnitude extends EffectParameter
   case object DifficultyCheck extends EffectParameter
   case object Target extends EffectParameter
+  val values: IndexedSeq[EffectParameter] = findValues ++ bonusTypes ++ triggerEvents
 }

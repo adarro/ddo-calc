@@ -41,13 +41,10 @@ protected[feats] trait PowerCritical
   override protected val criticalDamageBonusType: BonusType = BonusType.Feat
   override protected val criticalDamageBonusAmount: Int = 2
 
-  lazy override protected[this] val triggerOn: TriggerEvent = TriggerEvent.Passive
-  lazy override protected[this] val triggerOff: TriggerEvent = TriggerEvent.Never
+  lazy override protected[this] val triggerOn: Seq[TriggerEvent ] = Seq(TriggerEvent.Passive)
+  lazy override protected[this] val triggerOff: Seq[TriggerEvent ] = Seq(TriggerEvent.Never)
 
   override def requiresBaB: Int = 4
 
   override def anyOfFeats: Seq[GeneralFeat] = GeneralFeat.weaponFocusAny
-
-  lazy override protected[this] val categories: Seq[effect.EffectCategories.Value] = Seq(
-    effect.EffectCategories.GeneralCombat)
 }

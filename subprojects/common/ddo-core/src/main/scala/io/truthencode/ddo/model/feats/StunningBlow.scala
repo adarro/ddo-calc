@@ -27,23 +27,24 @@ import io.truthencode.ddo.support.requisite.{FeatRequisiteImpl, FreeFeat}
 import java.time.Duration
 
 /**
- * Icon Feat Stunning Blow.png [[https://ddowiki.com/page/Stunning_Blow Stunning Blow]] Active - Special Attack This
- * feat has a chance to stun the target for 6 seconds if it fails a DC (10 + Str mod) Fortitude save. Some creatures may
- * be immune to the stunning effect.
+ * Icon Feat Stunning Blow.png [[https://ddowiki.com/page/Stunning_Blow Stunning Blow]] Active -
+ * Special Attack This feat has a chance to stun the target for 6 seconds if it fails a DC (10 + Str
+ * mod) Fortitude save. Some creatures may be immune to the stunning effect.
  */
 protected[feats] trait StunningBlow
-  extends FeatRequisiteImpl with ActiveFeat with FreeFeat with Tactical with FighterBonusFeat with FeaturesImpl
-  with GrantAbilityFeature {
+  extends FeatRequisiteImpl with ActiveFeat with FreeFeat with Tactical with FighterBonusFeat
+  with FeaturesImpl with GrantAbilityFeature {
   self: GeneralFeat =>
   override val grantBonusType: BonusType = BonusType.Feat
-  override val grantedAbility: ActiveAbilities = ActiveAbilities.StunningBlow
+  override lazy val grantedAbility: ActiveAbilities = ActiveAbilities.StunningBlow
 
   override def coolDown: Option[Duration] = Some(Duration.ofSeconds(15))
 
-  override protected[this] val triggerOn: TriggerEvent = TriggerEvent.SpecialAttack
-  override protected[this] val triggerOff: TriggerEvent = TriggerEvent.OnCoolDown
-  override protected[this] val categories: Seq[effect.EffectCategories.Value] =
+  override protected[this] val triggerOn: Seq[TriggerEvent] = Seq(TriggerEvent.SpecialAttack)
+  override protected[this] val triggerOff: Seq[TriggerEvent] = Seq(TriggerEvent.OnCoolDown)
+  override protected[this] val grantAbilityCategories: Seq[effect.EffectCategories.Value] =
     Seq(effect.EffectCategories.SpecialAttack, effect.EffectCategories.Ability)
   override val abilityId: String = "StunningBlow"
-  override val description: String = "Special Attack This feat has a chance to stun the target for 6 seconds"
+  override val description: String =
+    "Special Attack This feat has a chance to stun the target for 6 seconds"
 }

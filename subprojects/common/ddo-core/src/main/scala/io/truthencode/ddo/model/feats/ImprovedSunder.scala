@@ -17,7 +17,6 @@
  */
 package io.truthencode.ddo.model.feats
 
-import io.truthencode.ddo.activation.AtWillEvent
 import io.truthencode.ddo.enhancement.BonusType
 import io.truthencode.ddo.model.abilities.ActiveAbilities
 import io.truthencode.ddo.model.effect
@@ -38,13 +37,13 @@ protected[feats] trait ImprovedSunder
   extends FeatRequisiteImpl with ActiveFeat with RequiresAllOfFeat with FighterBonusFeat with Tactical
   with DefaultCoolDown with MartialArtsFeat with FeaturesImpl with GrantAbilityFeature {
   self: GeneralFeat =>
-  override protected[this] val triggerOn: TriggerEvent = TriggerEvent.AtWill
-  override protected[this] val triggerOff: TriggerEvent = TriggerEvent.OnCoolDown
-  override protected[this] val categories: Seq[effect.EffectCategories.Value] = Seq(effect.EffectCategories.Ability)
+  override protected[this] val triggerOn: Seq[TriggerEvent] = Seq(TriggerEvent.AtWill)
+  override protected[this] val triggerOff: Seq[TriggerEvent] = Seq(TriggerEvent.OnCoolDown)
+  override protected[this] val grantAbilityCategories: Seq[effect.EffectCategories.Value] = Seq(effect.EffectCategories.Ability)
   override val abilityId: String = "Sunder"
   override val description: String =
     "This melee special attack, when successful, results in a -5 AC penalty to the target for 24 seconds"
   override val allOfFeats = List(GeneralFeat.Sunder, GeneralFeat.PowerAttack)
   override val grantBonusType: BonusType = BonusType.Feat
-  override val grantedAbility: ActiveAbilities = ActiveAbilities.ImprovedSunder
+  override lazy val grantedAbility: ActiveAbilities = ActiveAbilities.ImprovedSunder
 }

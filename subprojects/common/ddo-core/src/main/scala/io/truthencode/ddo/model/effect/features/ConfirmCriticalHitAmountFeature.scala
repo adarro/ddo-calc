@@ -17,17 +17,12 @@
  */
 package io.truthencode.ddo.model.effect.features
 
+import io.truthencode.ddo.api.model.effect.DetailedEffect
 import io.truthencode.ddo.enhancement.BonusType
-import io.truthencode.ddo.model.effect.{
-  DetailedEffect,
-  EffectCategories,
-  Feature,
-  ParameterModifier,
-  PartModifier,
-  SourceInfo,
-  TriggerEvent
-}
+import io.truthencode.ddo.model.effect
+import io.truthencode.ddo.model.effect._
 import io.truthencode.ddo.model.stats.BasicStat
+import io.truthencode.ddo.support.naming.UsingSearchPrefix
 
 /**
  * Affects your chance to confirm critical hits.
@@ -36,28 +31,58 @@ trait ConfirmCriticalHitAmountFeature extends Features {
   self: SourceInfo =>
   protected val confirmCriticalHitBonusType: BonusType
   protected val confirmCriticalHitBonusAmount: Int
+  protected[this] val triggerOn: Seq[TriggerEvent]
+  protected[this] val triggerOff: Seq[TriggerEvent]
+
   private val src = this
-  protected[this] val triggerOn: TriggerEvent
-  protected[this] val triggerOff: TriggerEvent
-  protected[this] val categories: Seq[EffectCategories.Value]
   private[this] val confirmCriticalHitChance =
-    new PartModifier[Int, BasicStat] with ParameterModifier[Int, BonusType] {
+    new PartModifier[Int, BasicStat] with UsingSearchPrefix {
+
+      /**
+       * a list of Categories useful for menu / UI placement and also for searching / querying for Miss-Chance or other
+       * desired effects.
+       *
+       * This list might be constrained or filtered by an Enumeration or CSV file. The goal is to enable quick and
+       * advanced searching for specific categories from general (Miss-Chance) to specific (evasion). In addition, it
+       * may be useful for deep searching such as increasing Spot, which should suggest not only +Spot items, but
+       * +Wisdom or eventually include a feat or enhancement that allows the use of some other value as your spot score.
+       */
+      override def categories: Seq[String] = Seq(effect.EffectCategories.GeneralCombat).map(_.toString)
 
       lazy override protected[this] val partToModify: BasicStat =
         BasicStat.CriticalHitConfirmation
 
-      lazy override protected[this] val parameterToModify: BonusType =
-        confirmCriticalHitBonusType
+        private val eb = EffectParameterBuilder()
+            .toggleOffValue(triggerOff: _*)
+            .toggleOnValue(triggerOn: _*)
+            .addBonusType(confirmCriticalHitBonusType)
+            .build
+
+        override protected[this] def effectParameters: Seq[ParameterModifier[_]] = eb.modifiers
+      /**
+       * The General Description should be just that. This should not include specific values unless all instances will
+       * share that value. I.e. a Dodge Effect might state it increases your miss-chance, but omit any value such as
+       * 20%. Those values will be displayed in the effectText of a specific implementation such as the Dodge Feat or
+       * Uncanny Dodge
+       */
+      override val generalDescription: String = "Increases chance to confirm a critical hit"
       lazy override val effectDetail: DetailedEffect = DetailedEffect(
         id = "ArmorClass",
         description = "Adds damage to critical hits",
-        categories = categories.map(_.toString),
-        triggersOn = triggerOn.entryName,
-        triggersOff = triggerOff.entryName
+        triggersOn = triggerOn.map(_.entryName),
+        triggersOff = triggerOff.map(_.entryName)
       )
       override val source: SourceInfo = src
       override lazy val value: Int = confirmCriticalHitBonusAmount
       override lazy val effectText: Option[String] = Some(s"Confirm Critical Hit: $value")
+
+      /**
+       * Used when qualifying a search with a prefix. Examples include finding "HalfElf" from qualified "Race:HalfElf"
+       *
+       * @return
+       *   A default or applied prefix
+       */
+      override def searchPrefixSource: String = partToModify.searchPrefixSource
     }
 
   abstract override def features: Seq[Feature[_]] = {

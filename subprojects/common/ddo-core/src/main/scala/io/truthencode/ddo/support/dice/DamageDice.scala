@@ -54,8 +54,8 @@ sealed trait DamageDice {
   val extra: ExtraInfo
 
   /**
-   * List of damage types applied to an attack as Slash, Pierce, Magic, Good, Acid etc. This is used for purposes of
-   * damage reduction and may further be amplified by spell / melee / ranged power.
+   * List of damage types applied to an attack as Slash, Pierce, Magic, Good, Acid etc. This is used
+   * for purposes of damage reduction and may further be amplified by spell / melee / ranged power.
    */
   val damageType: List[PhysicalDamageType]
 }
@@ -68,6 +68,14 @@ sealed trait DamageDice {
 object DamageInfo {
   val ddoDiceRegEx: Regex =
     """(\d+\.?\d*)*?((?:\[(\d+)d(\d+)\])|(?:(\d+)d(\d+)))\s*(?:([+\-])\s*(\d+))*""".r
+
+  /**
+   * Extracts the extra values / flags like 'Magic Bludgeon' etc.
+   * @param expr
+   *   inbound Text to parse
+   * @return
+   *   valid types filtered by values in PhysicalDamageType
+   */
   def extractFlags(expr: String): List[PhysicalDamageType] = {
     val template = """(\b(?i)REPLACE\b)+"""
     val tt = PhysicalDamageType.values
@@ -106,6 +114,7 @@ object DamageInfo {
     )
     ddoDiceRegEx.findFirstMatchIn(diceExp) match {
       case Some(result) =>
+        // Longhand with named values because Regex are easy to misread
         val wMod = Option(result.group(nameMap("wMod"))).getOrElse("")
         val bNumber = Option(result.group(nameMap("bracketNumber"))).getOrElse("")
         val bSides = Option(result.group(nameMap("bracketSides"))).getOrElse("")

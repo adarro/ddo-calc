@@ -25,27 +25,35 @@ import io.truthencode.ddo.model.effect
 import io.truthencode.ddo.model.effect.TriggerEvent
 import io.truthencode.ddo.model.effect.features.{FeaturesImpl, GrantAbilityFeature}
 import io.truthencode.ddo.model.misc.DefaultCoolDown
-import io.truthencode.ddo.support.requisite.{ClassRequisiteImpl, FeatRequisiteImpl, FreeFeat, GrantsToClass}
+import io.truthencode.ddo.support.requisite.{
+  ClassRequisiteImpl,
+  FeatRequisiteImpl,
+  FreeFeat,
+  GrantsToClass
+}
 
 /**
- * [[https://ddowiki.com/page/Dismiss_Charm Dismiss Charm]] Activate this short-ranged ability while targeting a
- * charmed, commanded, controlled, or dominated enemy that is under your control to dispel the controlling effect.
+ * [[https://ddowiki.com/page/Dismiss_Charm Dismiss Charm]] Activate this short-ranged ability while
+ * targeting a charmed, commanded, controlled, or dominated enemy that is under your control to
+ * dispel the controlling effect.
  *
  * @note
  *   As of Update 26 all classes now receive this feat at level 1
  */
 protected[feats] trait DismissCharm
-  extends FeatRequisiteImpl with ActiveFeat with AtWillEvent with DefaultCoolDown with FreeFeat with ClassRequisiteImpl
-  with GrantsToClass with FeaturesImpl with GrantAbilityFeature { self: GeneralFeat =>
+  extends FeatRequisiteImpl with ActiveFeat with AtWillEvent with DefaultCoolDown with FreeFeat
+  with ClassRequisiteImpl with GrantsToClass with FeaturesImpl with GrantAbilityFeature {
+  self: GeneralFeat =>
 
   override def grantToClass: Seq[(HeroicCharacterClass, Int)] =
     HeroicCharacterClass.values.map((_, 1))
 
-    override val grantBonusType: BonusType = BonusType.Feat
-    override val grantedAbility: ActiveAbilities = ActiveAbilities.DismissCharm
-    override protected[this] val triggerOn: TriggerEvent = TriggerEvent.OnToggle
-    override protected[this] val triggerOff: TriggerEvent = TriggerEvent.OnToggle
-    override protected[this] val categories: Seq[effect.EffectCategories.Value] = Seq(effect.EffectCategories.Ability)
-    override val abilityId: String = "DismissCharm"
-    override val description: String = "Creates ability to dismiss some charmed mobs."
+  override val grantBonusType: BonusType = BonusType.Feat
+  override lazy val grantedAbility: ActiveAbilities = ActiveAbilities.DismissCharm
+  override protected[this] val triggerOn: Seq[TriggerEvent] = Seq(TriggerEvent.OnToggle)
+  override protected[this] val triggerOff: Seq[TriggerEvent] = Seq(TriggerEvent.OnToggle)
+  override protected[this] val grantAbilityCategories: Seq[effect.EffectCategories.Value] = Seq(
+    effect.EffectCategories.Ability)
+  override val abilityId: String = "DismissCharm"
+  override val description: String = "Creates ability to dismiss some charmed mobs."
 }

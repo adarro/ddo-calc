@@ -17,10 +17,10 @@
  */
 package io.truthencode.ddo.model.spells
 
-import java.time.Duration
-
 import io.truthencode.ddo.model.misc.CoolDown
 import io.truthencode.ddo.model.spells.component.ComponentList
+
+import java.time.Duration
 
 /**
  * Encapsulates the cost, duration, range etc of a given spell
@@ -30,7 +30,8 @@ trait SpellInfo extends CoolDown with SpellResistance {
 
   // spell failure TBD by existence of somatic / verbal / concentration / armor spell failure etc
   /**
-   * Amount of time, usually in seconds that must elapse before a given spell or ability can be used again
+   * Amount of time, usually in seconds that must elapse before a given spell or ability can be used
+   * again
    */
   val coolDown: Option[Duration]
 
@@ -49,6 +50,13 @@ trait SpellInfo extends CoolDown with SpellResistance {
    * Available saving throws, if any
    */
   val savingThrow: List[SavingThrow]
+  /**
+   * List of required spell components
+   *
+   * @return
+   */
+  val components: List[ComponentList]
+  val spellResistance = this
 
   /**
    * Spell Point Cost
@@ -63,15 +71,6 @@ trait SpellInfo extends CoolDown with SpellResistance {
    * @return
    */
   def hitPoints: Option[Int] = None
-
-  /**
-   * List of required spell components
-   *
-   * @return
-   */
-  val components: List[ComponentList]
-
-  val spellResistance = this
 }
 
 final case class CreateSpellInfo(

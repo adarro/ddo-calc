@@ -22,11 +22,12 @@ import io.truthencode.ddo.model.race.Race
 import io.truthencode.ddo.support.requisite.{FeatRequisiteImpl, RequiresAllOfRace, RequiresAttribute}
 
 /**
- * DilettanteBarbarian.bmp Half-Elf Dilettante: Barbarian Passive Damage Reduction 1/- (does not stack with Barbarian
- * Damage Reduction).
+ * DilettanteBarbarian.bmp Half-Elf Dilettante: Barbarian Passive Damage Reduction 1/- (does not
+ * stack with Barbarian Damage Reduction).
  */
 trait HalfElfDilettanteBarbarian
-  extends FeatRequisiteImpl with HalfElfDilettantePreFix with Passive with RequiresAttribute with RequiresAllOfRace {
+  extends FeatRequisiteImpl with HalfElfDilettantePreFix with Passive with RequiresAttribute
+  with RequiresAllOfRace {
   self: RacialFeat =>
   override def allOfRace: Seq[(Race, Int)] = List((Race.HalfElf, 1))
 

@@ -38,6 +38,7 @@ protected[feats] trait Sneak
   extends FeatRequisiteImpl with ActiveFeat with Stance with DefaultCoolDown with FreeFeat
   with FeaturesImpl with GrantAbilityFeature {
   self: GeneralFeat =>
+  override lazy val grantedAbility: ActiveAbilities = ActiveAbilities.Sneak
   override protected[this] val triggerOn: Seq[TriggerEvent] = Seq(TriggerEvent.OnToggle)
   override protected[this] val triggerOff: Seq[TriggerEvent] = Seq(TriggerEvent.OnToggle)
   override protected[this] val grantAbilityCategories: Seq[effect.EffectCategories.Value] = Seq(
@@ -46,5 +47,4 @@ protected[feats] trait Sneak
   override val description: String =
     "The character becomes invisible to all enemies that fail a Spot and Listen\n * skill check, opposed by Hide and Move Silently skills."
   override val grantBonusType: BonusType = BonusType.Feat
-  override lazy val grantedAbility: ActiveAbilities = ActiveAbilities.Sneak
 }

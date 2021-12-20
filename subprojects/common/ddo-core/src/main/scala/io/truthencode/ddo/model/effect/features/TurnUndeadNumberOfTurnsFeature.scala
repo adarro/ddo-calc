@@ -28,10 +28,10 @@ trait TurnUndeadNumberOfTurnsFeature extends Features {
   self: SourceInfo =>
   val numberOfTurnsBonusType: BonusType
   val numberOfTurnsBonusAmount: Int
-  private val src = this
   protected[this] val triggerOn: Seq[TriggerEvent]
   protected[this] val triggerOff: Seq[TriggerEvent]
   protected[this] val turnUndeadNumOfTurnscategories: Seq[effect.EffectCategories.Value]
+  private val src = this
   private[this] val nHD =
     new PartModifier[Int, BasicStat] with UsingSearchPrefix {
       /**

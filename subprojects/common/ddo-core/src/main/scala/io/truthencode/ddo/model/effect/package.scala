@@ -29,21 +29,20 @@ import io.truthencode.ddo.api.model.effect.DetailedEffect
 package object effect {
   // scalastyle:off
   object Validation {
+    lazy val triggerNames: Seq[String] = TriggerEvent.values.map(_.entryName)
+    lazy val categories: Seq[String] = EffectCategories.values.map(_.toString).toSeq
 
     def fullOf[T <: AnyRef](options: Seq[T]): Validator[T] =
       new NullSafeValidator[T](
         test = options.contains,
         failure = _ -> s"is not one of (${options.mkString(",")})"
       )
-
-    lazy val triggerNames: Seq[String] = TriggerEvent.values.map(_.entryName)
-    lazy val categories: Seq[String] = EffectCategories.values.map(_.toString).toSeq
     implicit val detailedEffectValidator: ValidationTransform.TransformedValidator[DetailedEffect] =
       validator[DetailedEffect] { d =>
         // triggers
         d.triggersOn.each.is(fullOf(triggerNames))
         d.triggersOff.each.is(fullOf(triggerNames))
-       }
+      }
   }
 
   object EffectCategories extends Enumeration {
@@ -61,8 +60,8 @@ package object effect {
     HitChance,
 
     /**
-     * Corresponds to damage reduction from 'Elemental' sources such as Fire. This includes protection / resistance and
-     * absorption.
+     * Corresponds to damage reduction from 'Elemental' sources such as Fire. This includes
+     * protection / resistance and absorption.
      */
     ElementalDefenses,
 
@@ -82,9 +81,10 @@ package object effect {
     SpecialAttack,
 
     /**
-     * A very general category that applies to general and specific spell casting. These should include casting costs,
-     * cool-downs, stopping ability (silence / deafness) Spell power MAY fall under this or possibly split into another
-     * category as Critical Multiplier / Potentcy and Universal spell power like effects
+     * A very general category that applies to general and specific spell casting. These should
+     * include casting costs, cool-downs, stopping ability (silence / deafness) Spell power MAY fall
+     * under this or possibly split into another category as Critical Multiplier / Potentcy and
+     * Universal spell power like effects
      */
     SpellCasting,
 
@@ -104,13 +104,14 @@ package object effect {
     RangedCombat,
 
     /**
-     * Effects that alter the power, range or other undead specific effects. This should also include things that
-     * increase the amount of Turns.
+     * Effects that alter the power, range or other undead specific effects. This should also
+     * include things that increase the amount of Turns.
      */
     TurnUndead,
 
     /**
-     * General, Misc. or Main stats generally appear on the main character sheet such as Base Attack Bonus
+     * General, Misc. or Main stats generally appear on the main character sheet such as Base Attack
+     * Bonus
      *
      * @note
      *   BAB may be moved to general combat.
@@ -118,9 +119,9 @@ package object effect {
     General,
 
     /**
-     * Your ability stat (Strength, Charisma etc) Not super useful by itself, but indicates the effect provides an
-     * ability. The power and extent of that ability may depend on other things. Examples may include Bard Songs,
-     * Sunder, Attack etc.
+     * Your ability stat (Strength, Charisma etc) Not super useful by itself, but indicates the
+     * effect provides an ability. The power and extent of that ability may depend on other things.
+     * Examples may include Bard Songs, Sunder, Attack etc.
      */
     Ability,
 

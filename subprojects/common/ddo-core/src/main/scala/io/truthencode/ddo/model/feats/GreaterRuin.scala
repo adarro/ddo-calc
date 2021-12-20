@@ -17,27 +17,28 @@
  */
 package io.truthencode.ddo.model.feats
 
-import java.time.Duration
-
 import io.truthencode.ddo.activation.OnSpellCastEvent
 import io.truthencode.ddo.model.spells.SpellBookImpl
 import io.truthencode.ddo.support.requisite.{FreeFeat, RequiresAllOfFeat, RequiresCharacterLevel}
 
+import java.time.Duration
+
 /**
- * Created by adarr on 4/3/2017. [[https://ddowiki.com/page/Greater_Ruin Greater Ruin]] Name: Greater Ruin School:
- * Transmutation (Force) Special: Epic Feats, level 30 Components: None Spell Point Cost: 150 Metamagic: Empower,
- * Maximize, Quicken Target: Foe Range: Standard Duration: Instantaneous Saving Throw: No Spell Resistance: No Cooldown:
- * 15 seconds
+ * Created by adarr on 4/3/2017. [[https://ddowiki.com/page/Greater_Ruin Greater Ruin]] Name:
+ * Greater Ruin School: Transmutation (Force) Special: Epic Feats, level 30 Components: None Spell
+ * Point Cost: 150 Metamagic: Empower, Maximize, Quicken Target: Foe Range: Standard Duration:
+ * Instantaneous Saving Throw: No Spell Resistance: No Cooldown: 15 seconds
  *
  * Deals 1000 untyped damage to a single enemy. (No saving throw.)
  *
  * @note
- *   Force Spell Power applies to this spell. Using metamagic feats increases the cost. Taking the Greater Ruin feat
- *   also grants you +140 maximum spell points. Has a separate cool-down timer from Ruin.
+ *   Force Spell Power applies to this spell. Using metamagic feats increases the cost. Taking the
+ *   Greater Ruin feat also grants you +140 maximum spell points. Has a separate cool-down timer
+ *   from Ruin.
  */
 protected[feats] trait GreaterRuin
-  extends FreeFeat with SpellFeats with SpellBookImpl with OnSpellCastEvent with Passive with RequiresCharacterLevel
-  with RequiresAllOfFeat { self: EpicFeat =>
+  extends FreeFeat with SpellFeats with SpellBookImpl with OnSpellCastEvent with Passive
+  with RequiresCharacterLevel with RequiresAllOfFeat { self: EpicFeat =>
 
   final override val requireCharacterLevel: Int = 30
 

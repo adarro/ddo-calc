@@ -22,15 +22,17 @@ import io.truthencode.ddo.model.classes.HeroicCharacterClass.Alchemist
 import io.truthencode.ddo.support.requisite.{ClassRequisiteImpl, FeatRequisiteImpl, GrantsToClass, RequiresAllOfClass}
 
 /**
- * Alchemists hava a unique way of combining their spells as they cast them. As an Alchemist, your spells are each
- * associated with a different Primer: Crimsonite, Gildleaf, or Ceruleite. Casting a spell from a single Primer and then
- * casting a spell from a different Primer will activate a Reaction depending on the Primer of the spells cast.
- * Reactions come in three variants: Pyrite, Verudite or Orchidium.
+ * Alchemists hava a unique way of combining their spells as they cast them. As an Alchemist, your
+ * spells are each associated with a different Primer: Crimsonite, Gildleaf, or Ceruleite. Casting a
+ * spell from a single Primer and then casting a spell from a different Primer will activate a
+ * Reaction depending on the Primer of the spells cast. Reactions come in three variants: Pyrite,
+ * Verudite or Orchidium.
  * @see
  *   [[https://ddowiki.com/page/Alchemical_Spellcasting]]
  */
 protected[feats] trait AlchemicalSpellcasting
-  extends FeatRequisiteImpl with ClassRequisiteImpl with GrantsToClass with RequiresAllOfClass with Passive {
+  extends FeatRequisiteImpl with ClassRequisiteImpl with GrantsToClass with RequiresAllOfClass
+  with Passive {
   private[this] val cls = (Alchemist, 1)
   abstract override def grantToClass: Seq[(HeroicCharacterClass, Int)] = super.grantToClass :+ cls
 

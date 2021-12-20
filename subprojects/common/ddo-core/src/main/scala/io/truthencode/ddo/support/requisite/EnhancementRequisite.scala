@@ -34,7 +34,8 @@ sealed trait ClassEnhancementRequisite {
   def noneOfClassEnhancements: Seq[ClassEnhancement] // = IndexedSeq.apply()
 }
 
-trait ClassEnhancementRequisiteImpl extends MustContainImpl[Requirement] with ClassEnhancementRequisite {
+trait ClassEnhancementRequisiteImpl
+  extends MustContainImpl[Requirement] with ClassEnhancementRequisite {
   self: Requisite with RequisiteType =>
   def anyOfClassEnhancements: Seq[ClassEnhancement] = IndexedSeq.apply()
 
@@ -56,23 +57,27 @@ object ClassEnhancementRequisite {
 /**
  * A free ClassEnhancement has no prerequisites and can be taken by any class at any level.
  */
-trait FreeClassEnhancement extends ClassEnhancementRequisite with RequiresNone with RequiredExpression with Requisite
+trait FreeClassEnhancement
+  extends ClassEnhancementRequisite with RequiresNone with RequiredExpression with Requisite
 
-trait RequiresAnyOfClassEnhancement extends ClassEnhancementRequisite with RequiresOneOf[Requirement] with Requisite {
+trait RequiresAnyOfClassEnhancement
+  extends ClassEnhancementRequisite with RequiresOneOf[Requirement] with Requisite {
 
   abstract override def oneOf: Seq[Requirement] = super.oneOf ++ {
     anyOfClassEnhancements.collect(classEnhancementToReq)
   }
 }
 
-trait RequiresAllOfClassEnhancement extends ClassEnhancementRequisite with RequiresAllOf[Requirement] with Requisite {
+trait RequiresAllOfClassEnhancement
+  extends ClassEnhancementRequisite with RequiresAllOf[Requirement] with Requisite {
 
   abstract override def allOf: Seq[Requirement] = super.allOf ++ {
     allOfClassEnhancements.collect(classEnhancementToReq)
   }
 }
 
-trait RequiresNoneOfClassEnhancement extends ClassEnhancementRequisite with RequiresNoneOf[Requirement] with Requisite {
+trait RequiresNoneOfClassEnhancement
+  extends ClassEnhancementRequisite with RequiresNoneOf[Requirement] with Requisite {
 
   abstract override def noneOf: Seq[Requirement] = super.noneOf ++ {
     noneOfClassEnhancements.collect(classEnhancementToReq)

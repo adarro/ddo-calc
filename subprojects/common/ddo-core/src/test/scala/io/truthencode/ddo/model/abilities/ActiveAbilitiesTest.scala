@@ -24,7 +24,7 @@ class ActiveAbilitiesTest extends AnyFunSpec with Matchers {
   describe("Active Abilities") {
     they("Should be enumerated") {
       noException shouldBe thrownBy {
-          ActiveAbilities.values
+        ActiveAbilities.values
       }
     }
   }

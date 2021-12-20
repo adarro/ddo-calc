@@ -14,5 +14,7 @@
 | Trip                              |
 
 [existingFeat]: - "c:verify-rows=#feat:tacticalFeats()"
+
 [_matchStrategy_]: - "c:matchStrategy=KeyMatch"
+
 [result]: - "?=#feat"

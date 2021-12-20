@@ -31,11 +31,10 @@ trait SpellPointPercentFeature extends Features {
   self: SourceInfo =>
   protected val spellPointBonusType: BonusType
   protected val spellPointBonusPercent: Int
-  private val src = this
   protected[this] val triggerOn: Seq[TriggerEvent]
   protected[this] val triggerOff: Seq[TriggerEvent]
   protected[this] val spellPointPctCategories: Seq[effect.EffectCategories.Value]
-
+  private val src = this
   private[this] val spellPointPercent =
     new PartModifier[Int, BasicStat] with UsingSearchPrefix {
 

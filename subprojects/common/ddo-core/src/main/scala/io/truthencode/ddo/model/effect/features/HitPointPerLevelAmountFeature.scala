@@ -31,11 +31,10 @@ trait HitPointPerLevelAmountFeature extends Features {
   self: SourceInfo =>
   protected val hitPointBonusType: BonusType
   protected val hitPointsPerLevel: Int
-  private val src = this
-  def calculate: Int => Int
   protected[this] val triggerOn: Seq[TriggerEvent]
   protected[this] val triggerOff: Seq[TriggerEvent]
   protected[this] val hitPointPerLevelCategories: Seq[effect.EffectCategories.Value]
+  private val src = this
   private[this] val hitPointAmount =
     new PartModifier[Int, BasicStat] with DynamicFeature[Int] with UsingSearchPrefix {
 
@@ -91,6 +90,8 @@ trait HitPointPerLevelAmountFeature extends Features {
        */
       override def searchPrefixSource: String = partToModify.searchPrefixSource
     }
+
+  def calculate: Int => Int
 
   abstract override def features: Seq[Feature[_]] = {
     assert(hitPointAmount.value == hitPointsPerLevel)

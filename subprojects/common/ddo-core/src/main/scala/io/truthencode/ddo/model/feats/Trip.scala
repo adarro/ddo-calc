@@ -41,6 +41,7 @@ protected[feats] trait Trip
   with FeaturesImpl with GrantAbilityFeature {
   self: GeneralFeat =>
 
+  override lazy val grantedAbility: ActiveAbilities = ActiveAbilities.Trip
   override protected[this] val triggerOn: Seq[TriggerEvent] = Seq(TriggerEvent.AtWill)
   override protected[this] val triggerOff: Seq[TriggerEvent] = Seq(TriggerEvent.OnCoolDown)
   override protected[this] val grantAbilityCategories: Seq[effect.EffectCategories.Value] = Seq(
@@ -48,8 +49,8 @@ protected[feats] trait Trip
   override val abilityId: String = "Trip"
   override val description: String =
     "This feat has a chance to trip the target rendering it prone for a short time."
-  override def coolDown: Option[Duration] = Some(Duration.ofSeconds(15))
   // DC of 10 + Strength modifier + related Enhancements + Vertigo.
   override val grantBonusType: BonusType = BonusType.Feat
-  override lazy val grantedAbility: ActiveAbilities = ActiveAbilities.Trip
+
+  override def coolDown: Option[Duration] = Some(Duration.ofSeconds(15))
 }

@@ -55,17 +55,13 @@ protected[feats] trait Manyshot
   with RequiresAttribute with RequiresBaB with ClassRequisiteImpl with GrantsToClass
   with FighterBonusFeat with FeaturesImpl with GrantAbilityFeature with SharedCoolDown {
   self: GeneralFeat =>
+  override lazy val grantedAbility: ActiveAbilities = ActiveAbilities.Manyshot
   /**
    * Used to group shared timer resources. It is strongly recommended to use one of the values in
    * [[io.truthencode.ddo.model.misc.CoolDownPool]]
    */
   override val coolDownPoolId: String = PoolManyShot
   override val grantBonusType: BonusType = BonusType.Feat
-  override lazy val grantedAbility: ActiveAbilities = ActiveAbilities.Manyshot
-// TODO: Add Doubleshot feature ADD BAB +4 Feature
-  override def allOfFeats: Seq[GeneralFeat] =
-    List(GeneralFeat.PointBlankShot, GeneralFeat.RapidShot)
-
   override protected[this] val triggerOn: Seq[TriggerEvent] = Seq(TriggerEvent.AtWill)
   override protected[this] val triggerOff: Seq[TriggerEvent] = Seq(TriggerEvent.OnCoolDown)
   override protected[this] val grantAbilityCategories: Seq[effect.EffectCategories.Value] =
@@ -73,6 +69,10 @@ protected[feats] trait Manyshot
   override val abilityId: String = "ManyShot"
   override val description: String =
     "Ability For the next 20 seconds, add your base attack bonus * 4 to your Doubleshot and Ranged power"
+
+// TODO: Add Doubleshot feature ADD BAB +4 Feature
+  override def allOfFeats: Seq[GeneralFeat] =
+    List(GeneralFeat.PointBlankShot, GeneralFeat.RapidShot)
 
   /**
    * The Minimum Required Base Attack Bonus

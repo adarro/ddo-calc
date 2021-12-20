@@ -18,8 +18,9 @@ Least Dragonmarks are Feats, but the Lesser and Greater marks are now enhancemen
 |Least Dragonmark of Storm | Passive / Active | Balance +2, Spell-Like Ability: Gust of Wind |
 |Least Dragonmark of Warding | Passive / Active | Search +2, Spell-Like Ability: Neutralize Poison  |
 
-
 [existingFeat]: - "c:verify-rows=#feat:verify()"
+
 [_matchStrategy_]: - "c:matchStrategy=KeyMatch"
+
 [result]: - "?=#feat"
 

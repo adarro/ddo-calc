@@ -17,7 +17,7 @@
  */
 package io.truthencode.ddo.model.effect
 
-import enumeratum.{Enum => SmartEnum, EnumEntry}
+import enumeratum.{EnumEntry, Enum => SmartEnum}
 import io.truthencode.ddo.enhancement.{BonusType => Bonus}
 import io.truthencode.ddo.model.attribute.Attribute
 import io.truthencode.ddo.repo.Repo
@@ -56,16 +56,23 @@ trait DifficultyCheck extends EffectParameter {
 }
 
 object EffectParameter extends SmartEnum[EffectParameter] with Searchable[EffectParameter] {
-  case class Trigger(triggerEvent: TriggerEvent) extends EffectParameter
+  val values: IndexedSeq[EffectParameter] = findValues ++ bonusTypes ++ triggerEvents
+
   def triggerEvents: immutable.IndexedSeq[Trigger] =
     for { t <- TriggerEvent.values } yield Trigger(t)
+
+  def bonusTypes: immutable.IndexedSeq[BonusType] =
+    for { b <- Bonus.values } yield BonusType(b)
+
+  case class Trigger(triggerEvent: TriggerEvent) extends EffectParameter
+
   case class BonusType(bonus: Bonus) extends EffectParameter {
     override def searchPattern(target: String): String = s"BonusType($target)"
   }
-  def bonusTypes: immutable.IndexedSeq[BonusType] =
-    for { b <- Bonus.values } yield BonusType(b)
+
   case object Magnitude extends EffectParameter
+
   case object DifficultyCheck extends EffectParameter
+
   case object Target extends EffectParameter
-  val values: IndexedSeq[EffectParameter] = findValues ++ bonusTypes ++ triggerEvents
 }

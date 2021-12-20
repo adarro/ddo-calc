@@ -42,6 +42,7 @@ class FeatTest extends AnyFunSpec with Matchers with LazyLogging {
     it("should contain all types of feats") {
       noException shouldBe thrownBy(Feat.values)
     }
+
     it("should automatically create proper display text / name") {
       val feats = Feat.values
       feats.foreach { x =>
@@ -51,7 +52,6 @@ class FeatTest extends AnyFunSpec with Matchers with LazyLogging {
           "displayText" -> x.displayText
         )
         logger.debug(s"Id Info $idInfo")
-
       }
     }
 

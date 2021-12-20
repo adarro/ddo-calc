@@ -18,25 +18,21 @@
 package io.truthencode.ddo.model.feats
 
 import io.truthencode.ddo.model.classes.HeroicCharacterClass
-import io.truthencode.ddo.support.requisite.{
-  ClassRequisiteImpl,
-  FeatRequisiteImpl,
-  RequiresAllOfFeat,
-  RequiresAnyOfClass
-}
+import io.truthencode.ddo.support.requisite.{ClassRequisiteImpl, FeatRequisiteImpl, RequiresAllOfFeat, RequiresAnyOfClass}
 
 /**
- * Icon Feat Improved Mental Toughness.png Improved Mental Toughness Passive This feat increases the character maximum
- * spell points by 10 at level 1, and 5 spell points for each additional level. Also increases your spell critical
- * chance by 1%. Stacks with Mental Toughness.
+ * Icon Feat Improved Mental Toughness.png Improved Mental Toughness Passive This feat increases the
+ * character maximum spell points by 10 at level 1, and 5 spell points for each additional level.
+ * Also increases your spell critical chance by 1%. Stacks with Mental Toughness.
  *
  * @todo
- *   Need to add ability to cast X Level spells as requisite Mental Toughness, Ability to cast 3rd level spells Level 5:
- *   Cleric, Druid, Wizard Level 6: Favored Soul, Sorcerer Level 7: Artificer, Bard; Level 10: Paladin, Ranger
+ *   Need to add ability to cast X Level spells as requisite Mental Toughness, Ability to cast 3rd
+ *   level spells Level 5: Cleric, Druid, Wizard Level 6: Favored Soul, Sorcerer Level 7: Artificer,
+ *   Bard; Level 10: Paladin, Ranger
  */
 protected[feats] trait ImprovedMentalToughness
-  extends FeatRequisiteImpl with ClassRequisiteImpl with Passive with RequiresAllOfFeat with RequiresAnyOfClass
-  with AlchemistBonusFeat { self: GeneralFeat =>
+  extends FeatRequisiteImpl with ClassRequisiteImpl with Passive with RequiresAllOfFeat
+  with RequiresAnyOfClass with AlchemistBonusFeat { self: GeneralFeat =>
   override def allOfFeats: Seq[GeneralFeat] = List(GeneralFeat.MentalToughness)
 
   override def anyOfClass: Seq[(HeroicCharacterClass, Int)] =

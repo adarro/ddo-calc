@@ -31,10 +31,10 @@ trait UnconsciousRecoveryFeature extends Features {
   self: SourceInfo =>
   val autoRecoveryBonus: BonusType
   val isAutoRecovery: Boolean
-  private val src = this
   protected[this] val triggerOn: Seq[TriggerEvent]
   protected[this] val triggerOff: Seq[TriggerEvent]
   protected[this] val unconsciousRecoveryCategories: Seq[effect.EffectCategories.Value]
+  private val src = this
   private[this] val autoRecovery =
     new PartModifier[Boolean, BasicStat] with UsingSearchPrefix {
 

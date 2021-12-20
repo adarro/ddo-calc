@@ -11,8 +11,8 @@
 |[![ApothecaryCurativeAdmixtureHeal.png](/images/ApothecaryCurativeAdmixtureHeal.png)](/page/File:ApothecaryCurativeAdmixtureHeal.png)|**[Curative Admixture: Heal](https://www.ddowiki.com/edit/Curative_Admixture:_Heal?redlink=1)**| Curative Admixture Heal SLA and Curative Admixture Harm SLA that share a cooldown (Gildleaf spells). Passive: While your Reaction is Verdanite, +1 Transmutation DC| [AP Cost][ap]: 1 | Ranks: 1 | [Progression][progression_lnk]: 30 | Requires: Spill the Bad Stuff, Alchemist Level 18 |
 |[![ApothecaryGeniusNeverDies.png](/images/ApothecaryGeniusNeverDies.png)](/page/File:ApothecaryGeniusNeverDies.png)|**[Genius Never Dies!](https://www.ddowiki.com/edit/Genius_Never_Dies!?redlink=1)**| +4 Intelligence. +20 Concentration. You gain +1000 Unconsciousness Range, the [Diehard](/page/Diehard) feat, and +1 Spell Penetration. +4 Intelligence Passive: While your Reaction is Verdanite, +2 Transmutation DC|[AP Cost][ap]: 1 | Ranks: 1 |[Progression][progression_lnk]: 40 | Requires: Curative Admixture: Heal, Alchemist Level 20|
 
-
 ## [Tier1](-)
+
 [tier1](- "#tier")
 <span concordion:execute = "#tier = setUpTier(#tier)"></span>
 Requires Determination, Alchemist Level 1
@@ -26,33 +26,39 @@ Requires Determination, Alchemist Level 1
 |[![ApothecarySoothingPoultices.png](/images/ApothecarySoothingPoultices.png)](/page/File:ApothecarySoothingPoultices.png)|**[Soothing Poultices](https://www.ddowiki.com/edit/Soothing_Poultices?redlink=1 "Soothing Poultices (page does not exist)")**| While your Reaction is Verdanite, when you cast spells on yourself of allies you grant temporary hitpoints equal to third/half/full Intelligence. These last for three minutes.| [AP Cost][ap]: 1 | Ranks: 3 | [Progression][progression_lnk]: 1 |<small>No requirements</small>|
 
 ## [Tier2](-)
+
 [tier2](- "#tier")
 <span concordion:execute = "#tier = setUpTier(#tier)"></span>
 Requires Determination, Alchemist Level 2
 
-|Icon|[ ][setUpEnhancement]  [Enhancement][enhancement] | [Description][description] | [AP Cost][apcost] | [Ranks][ranks] | [Progression][progression]| Requirements |
-|---|---|---|---|---|---|---|
-|[![ApothecaryHaleAndHearty.png](/images/ApothecaryHaleAndHearty.png)](/page/File:ApothecaryHaleAndHearty.png)|**[Hale & Hearty](https://www.ddowiki.com/edit/Hale_%26_Hearty?redlink=1 "Hale & Hearty (page does not exist)")**| +[3/6/10] Positive and Negative Healing Amplification| [AP Cost][ap]: 1 |Ranks: 3 | [Progression][progression_lnk]: 5 |<small>No requirements</small>|
-|[![ApothecarySpellCriticalII.png](/images/ApothecarySpellCriticalII.png)](/page/File:ApothecarySpellCriticalII.png)|**[Spell Critical Chance: Positive & Negative II](https://www.ddowiki.com/edit/Spell_Critical_Chance:_Positive_%26_Negative_II?redlink=1 "Spell Critical Chance: Positive & Negative II (page does not exist)")**| +2% chance to critically hit with Positive and Negative Spells.| [AP Cost][ap]: 2 | Ranks: 1 | [Progression][progression_lnk]: 5 | <small>Requires: Spell Critical Chance: Positive & Negative I</small>|
-|[![ApothecaryStoneOfTheScholar.png](/images/ApothecaryStoneOfTheScholar.png)](/page/File:ApothecaryStoneOfTheScholar.png)|**[Stone of the Scholar](https://www.ddowiki.com/edit/Stone_of_the_Scholar?redlink=1 "Stone of the Scholar (page does not exist)")**| Stone of the Scholar: Alchemist's Stone Toggle: While wielding an Orb in your off-hand, you gain +10 Healing Amplification and +20 Positive Spell Power. You can only have one Alchemist's Stone Toggle active at a time. | [AP Cost][ap]: 2 | Ranks: 1 | [Progression][progression_lnk]: 5 | <small>No requirements</small> |
-|[![ApothecaryLifeSalve.png](/images/ApothecaryLifeSalve.png)](/page/File:ApothecaryLifeSalve.png)|**[Life Salve](https://www.ddowiki.com/edit/Life_Salve?redlink=1 "Life Salve (page does not exist)")**| Training this Enhancement also grants you a similar ability Death Salve. Target player, hireling, or pet takes 100% base healing from Positive spells for the next 3 minutes (or until target dies.) Has no effect on NPC allies or allies that already take 100% base Positive healing. This overrides their innate base healing from Positive spells for the duration. Shares a cooldown with Death Salve and Converter. _Note: cannot be used on self._ | [AP Cost][ap]: 2 | Ranks: 1 | [Progression][progression_lnk]: 5 | <small>No requirements</small> |
+| Icon                                                                                                                      | [ ][setUpEnhancement]  [Enhancement][enhancement]                                                                                                                                                                 | [Description][description]                                                                                                                                                                                                                                                                                                                                                                                                                                 | [AP Cost][apcost] | [Ranks][ranks] | [Progression][progression]        | Requirements                                                          |
+|---------------------------------------------------------------------------------------------------------------------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|-------------------|----------------|-----------------------------------|-----------------------------------------------------------------------|
+| [![ApothecaryHaleAndHearty.png](/images/ApothecaryHaleAndHearty.png)](/page/File:ApothecaryHaleAndHearty.png)             | **[Hale & Hearty](https://www.ddowiki.com/edit/Hale_%26_Hearty?redlink=1 "Hale & Hearty (page does not exist)")**                                                                                                 | +[3/6/10] Positive and Negative Healing Amplification                                                                                                                                                                                                                                                                                                                                                                                                      | [AP Cost][ap]: 1  | Ranks: 3       | [Progression][progression_lnk]: 5 | <small>No requirements</small>                                        |
+| [![ApothecarySpellCriticalII.png](/images/ApothecarySpellCriticalII.png)](/page/File:ApothecarySpellCriticalII.png)       | **[Spell Critical Chance: Positive & Negative II](https://www.ddowiki.com/edit/Spell_Critical_Chance:_Positive_%26_Negative_II?redlink=1 "Spell Critical Chance: Positive & Negative II (page does not exist)")** | +2% chance to critically hit with Positive and Negative Spells.                                                                                                                                                                                                                                                                                                                                                                                            | [AP Cost][ap]: 2  | Ranks: 1       | [Progression][progression_lnk]: 5 | <small>Requires: Spell Critical Chance: Positive & Negative I</small> |
+| [![ApothecaryStoneOfTheScholar.png](/images/ApothecaryStoneOfTheScholar.png)](/page/File:ApothecaryStoneOfTheScholar.png) | **[Stone of the Scholar](https://www.ddowiki.com/edit/Stone_of_the_Scholar?redlink=1 "Stone of the Scholar (page does not exist)")**                                                                              | Stone of the Scholar: Alchemist's Stone Toggle: While wielding an Orb in your off-hand, you gain +10 Healing Amplification and +20 Positive Spell Power. You can only have one Alchemist's Stone Toggle active at a time.                                                                                                                                                                                                                                  | [AP Cost][ap]: 2  | Ranks: 1       | [Progression][progression_lnk]: 5 | <small>No requirements</small>                                        |
+| [![ApothecaryLifeSalve.png](/images/ApothecaryLifeSalve.png)](/page/File:ApothecaryLifeSalve.png)                         | **[Life Salve](https://www.ddowiki.com/edit/Life_Salve?redlink=1 "Life Salve (page does not exist)")**                                                                                                            | Training this Enhancement also grants you a similar ability Death Salve. Target player, hireling, or pet takes 100% base healing from Positive spells for the next 3 minutes (or until target dies.) Has no effect on NPC allies or allies that already take 100% base Positive healing. This overrides their innate base healing from Positive spells for the duration. Shares a cooldown with Death Salve and Converter. _Note: cannot be used on self._ | [AP Cost][ap]: 2  | Ranks: 1       | [Progression][progression_lnk]: 5 | <small>No requirements</small>                                        |
 
+
+Note: cannot be used on
+self._ | [AP Cost][ap]: 2 | Ranks: 1 | [Progression][progression_lnk]: 5 | <small>No requirements</small> |
 
 ## [Tier3](-)
+
 [tier3](- "#tier")
 <span concordion:execute = "#tier = setUpTier(#tier)"></span>
 
 Requires Alchemist level 3, 10 APS spent in tree
 
-|Icon|[ ][setUpEnhancement]  [Enhancement][enhancement] | [Description][description] | [AP Cost][apcost] | [Ranks][ranks] | [Progression][progression]| Requirements |
-|---|---|---|---|---|---|---|
-|  |**[Panacea Poultice](https://www.ddowiki.com/edit/Panacea_Poultice?redlink=1 "Panacea Poultice (page does not exist)")**| (Gildleaf SLA): Target ally at touch range takes the [Panacea](/page/Panacea "Panacea") effect. (6/3/1 spell point, 12/8/6 second cooldown). | [AP Cost][ap]: 1 | Ranks: 3 | [Progression][progression_lnk]: 10 | <small>No requirements</small> |
-|  |**[Safety Goggles](https://www.ddowiki.com/edit/Safety_Goggles?redlink=1 "Safety Goggles (page does not exist)")**| +[1/2/3] Armor Class and +[2/4/6] Resistance to Fire, Cold, Acid and Electric damage. Rank 3: Blindness Immunity. | [AP Cost][ap]: 1 | Ranks: 3 | [Progression][progression_lnk]: 10 | <small>No requirements</small> |
-|  |**[Spell Critical Chance: Positive & Negative III](https://www.ddowiki.com/edit/Spell_Critical_Chance:_Positive_%26_Negative_III?redlink=1 "Spell Critical Chance: Positive & Negative III (page does not exist)")**| +2% chance to critically hit with Positive and Negative Spells. | [AP Cost][ap]: 2 | Ranks: 1 | [Progression][progression_lnk]: 10 | <small>Requires: Spell Critical Chance: Positive & Negative II</small> |
-|  |**[Willful Ambition](https://www.ddowiki.com/edit/Willful_Ambition?redlink=1 "Willful Ambition (page does not exist)")**| When your Reaction is Verdanite, you gain +1 Will Save, +1 for every 5 Alchemist Levels you have. | [AP Cost][ap]: 2 | Ranks: 1 | [Progression][progression_lnk]: 10 | <small>No requirements</small> |
-|  |**[Ability I](https://www.ddowiki.com/edit/Ability_I?redlink=1 "Ability I (page does not exist)")**| +1 to either Intelligence or Constitution | [AP Cost][ap]: 2 | Ranks: 1 | [Progression][progression_lnk]: 10 | <small>No requirements</small> |
+| Icon | [ ][setUpEnhancement]  [Enhancement][enhancement]                                                                                                                                                                    | [Description][description]                                                                                                                   | [AP Cost][apcost] | [Ranks][ranks] | [Progression][progression]         | Requirements                                                           |
+|------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|----------------------------------------------------------------------------------------------------------------------------------------------|-------------------|----------------|------------------------------------|------------------------------------------------------------------------|
+|      | **[Panacea Poultice](https://www.ddowiki.com/edit/Panacea_Poultice?redlink=1 "Panacea Poultice (page does not exist)")**                                                                                             | (Gildleaf SLA): Target ally at touch range takes the [Panacea](/page/Panacea "Panacea") effect. (6/3/1 spell point, 12/8/6 second cooldown). | [AP Cost][ap]: 1  | Ranks: 3       | [Progression][progression_lnk]: 10 | <small>No requirements</small>                                         |
+|      | **[Safety Goggles](https://www.ddowiki.com/edit/Safety_Goggles?redlink=1 "Safety Goggles (page does not exist)")**                                                                                                   | +[1/2/3] Armor Class and +[2/4/6] Resistance to Fire, Cold, Acid and Electric damage. Rank 3: Blindness Immunity.                            | [AP Cost][ap]: 1  | Ranks: 3       | [Progression][progression_lnk]: 10 | <small>No requirements</small>                                         |
+|      | **[Spell Critical Chance: Positive & Negative III](https://www.ddowiki.com/edit/Spell_Critical_Chance:_Positive_%26_Negative_III?redlink=1 "Spell Critical Chance: Positive & Negative III (page does not exist)")** | +2% chance to critically hit with Positive and Negative Spells.                                                                              | [AP Cost][ap]: 2  | Ranks: 1       | [Progression][progression_lnk]: 10 | <small>Requires: Spell Critical Chance: Positive & Negative II</small> |
+|      | **[Willful Ambition](https://www.ddowiki.com/edit/Willful_Ambition?redlink=1 "Willful Ambition (page does not exist)")**                                                                                             | When your Reaction is Verdanite, you gain +1 Will Save, +1 for every 5 Alchemist Levels you have.                                            | [AP Cost][ap]: 2  | Ranks: 1       | [Progression][progression_lnk]: 10 | <small>No requirements</small>                                         |
+|      | **[Ability I](https://www.ddowiki.com/edit/Ability_I?redlink=1 "Ability I (page does not exist)")**                                                                                                                  | +1 to either Intelligence or Constitution                                                                                                    | [AP Cost][ap]: 2  | Ranks: 1       | [Progression][progression_lnk]: 10 | <small>No requirements</small>                                         |
 
 ## Tier Four [[edit](https://www.ddowiki.com/edit/Apothecary_enhancements?section=5 "Edit section: Tier Four")]
+
 [tier4](- "#tier")
 <span concordion:execute = "#tier = setUpTier(#tier)"></span>
 Requires Alchemist level 4, 20 APS spent in tree
@@ -65,6 +71,7 @@ Requires Alchemist level 4, 20 APS spent in tree
 |  |**[Ability II](https://www.ddowiki.com/edit/Ability_II?redlink=1 "Ability II (page does not exist)")**| +1 to either Intelligence or Constitution | [AP Cost][ap]: 2 | Ranks: 1 | [Progression][progression_lnk]: 20 | <small>Requires: Ability II</small> |
 
 ## Tier Five [[edit](https://www.ddowiki.com/edit/Apothecary_enhancements?section=6 "Edit section: Tier Five")]
+
 [tier5](- "#tier")
 <span concordion:execute = "#tier = setUpTier(#tier)"></span>
 Requires Alchemist Level 5, Character Level 12, 30 APs spent in tree
@@ -77,19 +84,29 @@ Requires Alchemist Level 5, Character Level 12, 30 APs spent in tree
 |  |**[Dissolve](https://www.ddowiki.com/edit/Dissolve?redlink=1 "Dissolve (page does not exist)")**| Target enemy at touch range that is Fascinated, Sleeping, Dancing, Dazed, Tripped, Mesmerized, Paralyzed, Petrified, or Stunned must make a Fortitude save (d20 + your Heal skill) or die instantly. (20 second cooldown) | [AP Cost][ap]: 2 | Ranks: 1 | [Progression][progression_lnk]: 30 | <small>No requirements</small> |
 |  |**[Deadly Neurotoxin/Nightshade](https://www.ddowiki.com/edit/Deadly_Neurotoxin/Nightshade?redlink=1 "Deadly Neurotoxin/Nightshade (page does not exist)")**| Choose between Deadly Neurotoxin and Nightshade. Deadly Neurotoxin: Offensive Gildleaf or Ceruleite Spells will reduce your targets Armor Class and Magical Resistance rating by -1 per stack, max 5. Nightshade: Spell point Cost: 10, Cooldown: 30 seconds, Metamagics: Quicken, Accelerate Primer: Gildleaf Target enemy falls asleep for 6 seconds with no save. | [AP Cost][ap]: 1 | Ranks: 1 | [Progression][progression_lnk]: 30 | <small>No requirements</small> |
 
-Retrieved from "[https://ddowiki.com/index.php?title=Apothecary_enhancements&oldid=447470](https://ddowiki.com/index.php?title=Apothecary_enhancements&oldid=447470) "[Category](/page/Special:Categories "Special:Categories"):
+Retrieved
+from "[https://ddowiki.com/index.php?title=Apothecary_enhancements&oldid=447470](https://ddowiki.com/index.php?title=Apothecary_enhancements&oldid=447470) "[Category](/page/Special:Categories "Special:Categories"):
 
 [enhancement]: - "#enhancementId"
 
 [_matchStrategy_]: - "c:matchStrategy=KeyMatch"
+
 [setUpTier]: - "#tier = resetTier(#tier)"
+
 [setUpEnhancement]: - "#result = loadFromKey(#enhancementId)"
+
 [description]: - "?=#result.description()"
+
 [apcost]: - "?=#result.apcost()"
+
 [ranks]: - "?=#result.ranks()"
+
 [progression]: - "?=#result.progression()"
+
 [requirements]: - "?=#result.requirements()"
+
 [ap]: https://ddowiki.com/page/Action_point
+
 [progression_lnk]:  https://ddowiki.com/page/Progression
 
 

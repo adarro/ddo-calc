@@ -33,10 +33,10 @@ trait SpellFocusFeature extends Features {
   protected val spellFocusBonusType: BonusType
   protected val spellFocusDifficultyCheck: Int
   protected val spellSchool: School
-  private val src = this
   protected[this] val triggerOn: Seq[TriggerEvent]
   protected[this] val triggerOff: Seq[TriggerEvent]
   protected[this] val spellFocusCategories: Seq[effect.EffectCategories.Value]
+  private val src = this
   private[this] val spellFocusAmount =
     new PartModifier[Int, BasicStat] with UsingSearchPrefix {
 

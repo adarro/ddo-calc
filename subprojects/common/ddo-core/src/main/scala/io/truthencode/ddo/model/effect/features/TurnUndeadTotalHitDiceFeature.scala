@@ -28,11 +28,10 @@ trait TurnUndeadTotalHitDiceFeature extends Features {
   self: SourceInfo =>
   val totalHitDiceBonusType: BonusType
   val totalHitDiceValue: Int
-  private val src = this
   protected[this] val triggerOn: Seq[TriggerEvent]
   protected[this] val triggerOff: Seq[TriggerEvent]
   protected[this] val turnUndeadTotalHDCategories: Seq[effect.EffectCategories.Value]
-
+  private val src = this
   private[this] val tHD =
     new PartModifier[Int, BasicStat] with UsingSearchPrefix {
 

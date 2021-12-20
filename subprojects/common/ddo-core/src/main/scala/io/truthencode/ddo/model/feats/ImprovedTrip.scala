@@ -36,7 +36,7 @@ protected[feats] trait ImprovedTrip
   extends FeatRequisiteImpl with ActiveFeat with Tactical with RequiresAllOfFeat
   with FighterBonusFeat with MartialArtsFeat with FeaturesImpl with GrantAbilityFeature {
   self: GeneralFeat =>
-  override def coolDown: Option[Duration] = Some(Duration.ofSeconds(10))
+  override lazy val grantedAbility: ActiveAbilities = ActiveAbilities.ImprovedTrip
   override protected[this] val triggerOn: Seq[TriggerEvent] = Seq(TriggerEvent.AtWill)
   override protected[this] val triggerOff: Seq[TriggerEvent] = Seq(TriggerEvent.OnCoolDown)
   override protected[this] val grantAbilityCategories: Seq[effect.EffectCategories.Value] = Seq(
@@ -47,5 +47,6 @@ protected[feats] trait ImprovedTrip
 
   override val allOfFeats = List(GeneralFeat.CombatExpertise)
   override val grantBonusType: BonusType = BonusType.Feat
-  override lazy val grantedAbility: ActiveAbilities = ActiveAbilities.ImprovedTrip
+
+  override def coolDown: Option[Duration] = Some(Duration.ofSeconds(10))
 }

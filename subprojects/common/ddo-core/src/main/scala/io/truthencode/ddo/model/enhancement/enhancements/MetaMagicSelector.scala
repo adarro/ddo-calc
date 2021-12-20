@@ -18,23 +18,24 @@
 package io.truthencode.ddo.model.enhancement.enhancements
 
 import io.truthencode.ddo.model.enhancement.Tier
-import io.truthencode.ddo.support.naming.{EfficientMetamagicPrefix, RomanNumeralAffix}
+import io.truthencode.ddo.support.naming.EfficientMetamagicPrefix
 import io.truthencode.ddo.support.requisite.ActionPointRequisite
 
 /**
  * Basic support for adding +1 of some stat in an enhancement.
  *
  * @note
- *   trait manipulates diplay text so mix in AFTER other text manipulations to ensure Roman Numeral / key integrity.
+ *   trait manipulates diplay text so mix in AFTER other text manipulations to ensure Roman Numeral
+ *   / key integrity.
  */
 trait MetaMagicSelector extends MetaMagicEnhancement with EfficientMetamagicPrefix {
   self: ClassEnhancement with Tier with ActionPointRequisite =>
-
-  override def apCostPerRank: Int = 2
 
   /**
    * Some enhancements can be taken multiple times (generally up to three)
    */
   override val ranks: Int = 1
+
+  override def apCostPerRank: Int = 2
 
 }

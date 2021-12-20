@@ -21,8 +21,8 @@ import io.truthencode.ddo.model.religions.Amaunator
 import io.truthencode.ddo.support.requisite.{FeatRequisiteImpl, RequiresAllOfFeat}
 
 trait BelovedOfAmaunator
-  extends FeatRequisiteImpl with ForgottenRealmsReligionNonWarforged with BelovedLevelBase with RequiresAllOfFeat
-  with Amaunator with AmaunatorFeatBase { self: DeityFeat =>
+  extends FeatRequisiteImpl with ForgottenRealmsReligionNonWarforged with BelovedLevelBase
+  with RequiresAllOfFeat with Amaunator with AmaunatorFeatBase { self: DeityFeat =>
 
   override def allOfFeats: Seq[Feat] = List(DeityFeat.ChildOfAmaunator)
 }

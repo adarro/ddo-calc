@@ -17,11 +17,11 @@
  */
 package io.truthencode.ddo.model.feats.classes
 
-import java.util
-
 import io.truthencode.ddo.model.classes.HeroicCharacterClass
 import io.truthencode.ddo.model.classes.HeroicCharacterClass.Monk
 import io.truthencode.ddo.model.feats.{ClassFeatDisplayHelper, Feat}
+
+import java.util
 
 abstract class MonkJavaHelperFeat extends ClassFeatDisplayHelper {
   override val cClass: HeroicCharacterClass = Monk

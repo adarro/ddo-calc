@@ -29,16 +29,6 @@ class EffectParameterBuilder[T <: EffectParameterBuilder.EffectParams] protected
   ingredients: Seq[ParameterModifier[_]]) {
   import EffectParameterBuilder.EffectParams._
 
-  def filterByType[U <: EnumEntry]: PartialFunction[ParameterModifier[_], ParameterModifier[U]] =
-    new PartialFunction[ParameterModifier[_], ParameterModifier[U]] {
-      override def isDefinedAt(x: ParameterModifier[_]): Boolean = x match {
-        case x: ParameterModifier[U] => true
-      }
-
-      override def apply(v1: ParameterModifier[_]): ParameterModifier[U] =
-        v1.asInstanceOf[ParameterModifier[U]]
-    }
-
   /**
    * Determines when the given effect is triggered on. Required
    * @param toggleOn
@@ -48,18 +38,28 @@ class EffectParameterBuilder[T <: EffectParameterBuilder.EffectParams] protected
    */
   def toggleOnValue(toggleOn: TriggerEvent*): EffectParameterBuilder[T with ToggleOnParam] = {
 
-      val npm = toggleOn.map { t =>
+    val npm = toggleOn.map { t =>
       {
-          new ParameterModifier[TriggerEvent] {
-              override protected[this] val parameterToModify: TriggerEvent = t
-              override lazy val parameter: Try[EffectParameter] = Success(EffectParameter.Trigger(t))
-          }
+        new ParameterModifier[TriggerEvent] {
+          override protected[this] val parameterToModify: TriggerEvent = t
+          override lazy val parameter: Try[EffectParameter] = Success(EffectParameter.Trigger(t))
+        }
       }
-      }
+    }
     val allGoodStuff: Seq[ParameterModifier[TriggerEvent]] =
       ingredients.collect(filterByType[TriggerEvent]) ++ npm
     EffectParameterBuilder(ingredients ++ allGoodStuff.toSet.toSeq)
   }
+
+  def filterByType[U <: EnumEntry]: PartialFunction[ParameterModifier[_], ParameterModifier[U]] =
+    new PartialFunction[ParameterModifier[_], ParameterModifier[U]] {
+      override def isDefinedAt(x: ParameterModifier[_]): Boolean = x match {
+        case x: ParameterModifier[U] => true
+      }
+
+      override def apply(v1: ParameterModifier[_]): ParameterModifier[U] =
+        v1.asInstanceOf[ParameterModifier[U]]
+    }
 
   /**
    * Determines when the given effect is triggered off. Required
@@ -77,7 +77,8 @@ class EffectParameterBuilder[T <: EffectParameterBuilder.EffectParams] protected
         }
       }
     }
-    val pp: EffectParameterBuilder[T with ToggleOffParam] = EffectParameterBuilder(ingredients ++ npm)
+    val pp: EffectParameterBuilder[T with ToggleOffParam] = EffectParameterBuilder(
+      ingredients ++ npm)
     EffectParameterBuilder(ingredients ++ npm)
   }
 
@@ -135,21 +136,25 @@ class EffectParameterBuilder[T <: EffectParameterBuilder.EffectParams] protected
 
 object EffectParameterBuilder {
 
-  sealed trait EffectParams
-  object EffectParams {
-    sealed trait EmptyParameters extends EffectParams
-    sealed trait ToggleOnParam extends EffectParams
-    sealed trait ToggleOffParam extends EffectParams
-    sealed trait BonusTypeParam extends EffectParams
-
-    type FullPizza = EmptyParameters with ToggleOnParam with ToggleOffParam with BonusTypeParam
-  }
+  def apply(): EffectParameterBuilder[EffectParams.EmptyParameters] =
+    apply[EffectParams.EmptyParameters](Seq())
 
   def apply[T <: EffectParams](ingredients: Seq[ParameterModifier[_]]): EffectParameterBuilder[T] =
     new EffectParameterBuilder[T](ingredients)
 
-  def apply(): EffectParameterBuilder[EffectParams.EmptyParameters] =
-    apply[EffectParams.EmptyParameters](Seq())
+  sealed trait EffectParams
+
+  object EffectParams {
+    type FullPizza = EmptyParameters with ToggleOnParam with ToggleOffParam with BonusTypeParam
+
+    sealed trait EmptyParameters extends EffectParams
+
+    sealed trait ToggleOnParam extends EffectParams
+
+    sealed trait ToggleOffParam extends EffectParams
+
+    sealed trait BonusTypeParam extends EffectParams
+  }
 
 //  def makePizzaWithOptional: EffectParameterList[Int, EffectParameter] =
 //    EffectParameterBuilder[Int, EffectParameter]()

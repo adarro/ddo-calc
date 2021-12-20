@@ -17,22 +17,23 @@
  */
 package io.truthencode.ddo.model.enhancement
 
-import io.truthencode.ddo.support.StringUtils.Extensions
 import enumeratum.{Enum, EnumEntry}
-import io.truthencode.ddo.support.naming.{DisplayName, FriendlyDisplay}
+import io.truthencode.ddo.support.StringUtils.Extensions
+import io.truthencode.ddo.support.naming.DisplayName
 
 import scala.collection.immutable
 
 /**
- * An enhancement Tier separates Enhancements into various levels and require increasing pre-requisites such as a
- * certain number of Action points spent
+ * An enhancement Tier separates Enhancements into various levels and require increasing
+ * pre-requisites such as a certain number of Action points spent
  */
 sealed trait Tier extends EnumEntry with DisplayName {
+
+  val tier: String
 
   override protected def nameSource: String = {
     entryName.splitByCase.toPascalCase
   }
-  val tier: String
 }
 
 trait Core extends Tier {
@@ -60,11 +61,17 @@ trait Tier5 extends Tier {
 }
 
 object Tier extends Enum[Tier] {
-  case object Core extends Core
-  case object Tier1 extends Tier1
-  case object Tier2 extends Tier2
-  case object Tier3 extends Tier3
-  case object Tier4 extends Tier4
-  case object Tier5 extends Tier5
   override def values: immutable.IndexedSeq[Tier] = findValues
+
+  case object Core extends Core
+
+  case object Tier1 extends Tier1
+
+  case object Tier2 extends Tier2
+
+  case object Tier3 extends Tier3
+
+  case object Tier4 extends Tier4
+
+  case object Tier5 extends Tier5
 }

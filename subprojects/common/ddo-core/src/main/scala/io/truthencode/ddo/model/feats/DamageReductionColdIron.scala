@@ -25,9 +25,9 @@ import io.truthencode.ddo.support.requisite.{FeatRequisiteImpl, RequiresAllOfCla
 import scala.collection.immutable
 
 trait DamageReductionColdIron
-  extends FeatRequisiteImpl with EberronReligionNonWarforged with DamageReductionLevelBase with RequiresAnyOfFeat
-  with RequiresAllOfClass with UndyingCourt with TheUndyingCourtFeatBase with SovereignHost
-  with TheSovereignHostFeatBase {
+  extends FeatRequisiteImpl with EberronReligionNonWarforged with DamageReductionLevelBase
+  with RequiresAnyOfFeat with RequiresAllOfClass with UndyingCourt with TheUndyingCourtFeatBase
+  with SovereignHost with TheSovereignHostFeatBase {
   self: DeityFeat =>
 
   override def nameSource: String = "Cold Iron"

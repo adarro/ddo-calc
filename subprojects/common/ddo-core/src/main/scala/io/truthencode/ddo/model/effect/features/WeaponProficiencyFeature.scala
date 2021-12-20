@@ -34,11 +34,10 @@ trait WeaponProficiencyFeature extends Features {
 
   protected val proficiencyType: BonusType
   protected val proficiencyAmount: Seq[WeaponCategory]
-  private val src = this
   protected[this] val triggerOn: Seq[TriggerEvent]
   protected[this] val triggerOff: Seq[TriggerEvent]
   protected[this] val weaponProficiencyCategories: Seq[effect.EffectCategories.Value]
-
+  private val src = this
   private[this] val proficiencyChance =
     new PartModifier[Seq[WeaponCategory], BasicStat] with UsingSearchPrefix {
 

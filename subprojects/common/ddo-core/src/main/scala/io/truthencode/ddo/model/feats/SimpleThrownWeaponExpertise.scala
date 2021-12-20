@@ -18,18 +18,11 @@
 package io.truthencode.ddo.model.feats
 
 import io.truthencode.ddo.model.attribute.Attribute
-import io.truthencode.ddo.model.classes.HeroicCharacterClass
-import io.truthencode.ddo.model.classes.HeroicCharacterClass.Alchemist
-import io.truthencode.ddo.support.requisite.{
-  ClassRequisiteImpl,
-  FeatRequisiteImpl,
-  RequiresAllOfClass,
-  RequiresAttribute
-}
+import io.truthencode.ddo.support.requisite.{FeatRequisiteImpl, RequiresAttribute}
 
 /**
- * You are skilled with the use of Simple Thrown Weapons (Throwing Daggers and Darts) and while using one, you gain
- * Doubleshot equal to your Dexterity.
+ * You are skilled with the use of Simple Thrown Weapons (Throwing Daggers and Darts) and while
+ * using one, you gain Doubleshot equal to your Dexterity.
  *
  * @see
  *   [[https://ddowiki.com/page/Simple_Thrown_Weapon_Expertise]]

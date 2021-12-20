@@ -27,11 +27,10 @@ import scala.collection.immutable
  */
 sealed trait StoreLocation extends EnumEntry with BitWise {
 
+  override lazy val bitValue: Int = bitValues(this)
   private lazy val bitValues = StoreLocation.valuesToIndex.map { x =>
     x._1 -> toBitMask(x._2)
   }
-
-  override lazy val bitValue: Int = bitValues(this)
 
 }
 
@@ -73,8 +72,8 @@ trait ColorAugment extends ItemEmbed {
 }
 
 /**
- * Object can be slotted onto character, such as a sword or helmet. Items with this value should further be constrained
- * with corresponding WearLocation.
+ * Object can be slotted onto character, such as a sword or helmet. Items with this value should
+ * further be constrained with corresponding WearLocation.
  */
 trait ItemEquip extends StoreLocation {
   self: WearLocation =>
@@ -86,6 +85,68 @@ trait ItemEquip extends StoreLocation {
  * Distinct values for location slots.
  */
 object StoreLocation extends Enum[StoreLocation] with BitSupport {
+
+  override type T = StoreLocation
+  /**
+   * Object can be slotted onto character, such as a sword or helmet. Items with this value should
+   * further be constrained with corresponding WearLocation.
+   */
+  lazy val Equipment: immutable.Seq[StoreLocation with ItemEquip] =
+    StoreLocation.values.collect(fnEquipment)
+  lazy val Augments: immutable.Seq[StoreLocation with ColorAugment] =
+    StoreLocation.values.collect(fnAugments)
+  lazy val GuildAugments: immutable.Seq[StoreLocation with GuildAugment] =
+    StoreLocation.values.collect(fnGuildAugments)
+  lazy val Filigrees: immutable.Seq[StoreLocation with Filigree] =
+    StoreLocation.values.collect(fnFiligrees)
+  override lazy val bitValues: Map[StoreLocation, Int] = valuesToIndex.map { x =>
+    val wl = x._1
+    val v = x._2
+    wl -> Math.pow(2.0, v).toInt
+  }
+  val values: immutable.IndexedSeq[StoreLocation] =
+    findValues ++ generateEquipmentSlot ++ generateAugmentValues
+  val fnEquipment: PartialFunction[StoreLocation, StoreLocation with ItemEquip] = {
+    case x: ItemEquip =>
+      x
+  }
+  val fnAugments: PartialFunction[StoreLocation, StoreLocation with ColorAugment] = {
+    case x: ColorAugment =>
+      x
+  }
+  val fnGuildAugments: PartialFunction[StoreLocation, StoreLocation with GuildAugment] = {
+    case x: GuildAugment =>
+      x
+  }
+  val fnFiligrees: PartialFunction[StoreLocation, StoreLocation with Filigree] = {
+    case x: Filigree =>
+      x
+  }
+
+  protected def generateAugmentValues: immutable.Seq[ItemEmbed with AugmentLocation] = {
+    for {
+      aug <- AugmentLocation.values
+    } yield aug match {
+      case x: GeneralAugmentLocation => AugmentLocationSlot(x)
+      case x: GuildAugmentLocation => GuildSlotLocation(x)
+      case x: FiligreeLocation => FiligreeSlotLocation(x)
+    }
+  }
+
+  protected def generateEquipmentSlot: immutable.Seq[EquippedLocation] = {
+    for { s <- WearLocation.values } yield EquippedLocation(s)
+  }
+
+  case class AugmentLocationSlot(generalAugment: GeneralAugmentLocation)
+    extends ColorAugment with GeneralAugmentLocation
+
+  case class GuildSlotLocation(guildAugment: GuildAugmentLocation)
+    extends GuildAugment with GuildAugmentLocation
+
+  case class FiligreeSlotLocation(filigreeLocation: FiligreeLocation)
+    extends Filigree with FiligreeLocation
+
+  case class EquippedLocation(wearLocation: WearLocation) extends ItemEquip with EquipmentSlot
 
   case object Equipped extends Inventory
 
@@ -112,75 +173,16 @@ object StoreLocation extends Enum[StoreLocation] with BitSupport {
   case object MountBag extends Bag
 
   /**
-   * Stores Item augments and filigrees when can be slotted into equipment augment slots and sentient items.
+   * Stores Item augments and filigrees when can be slotted into equipment augment slots and
+   * sentient items.
    */
   case object AugmentBag extends Bag
 
   case object Quiver extends StoreLocation
 
   /**
-   * Item can be stored in Active Inventory. This should be true by default for most object unless they are some
-   * invisible quest item or effect.
+   * Item can be stored in Active Inventory. This should be true by default for most object unless
+   * they are some invisible quest item or effect.
    */
   case object ActiveInventory extends Inventory
-
-  case class AugmentLocationSlot(generalAugment: GeneralAugmentLocation)
-    extends ColorAugment with GeneralAugmentLocation
-
-  case class GuildSlotLocation(guildAugment: GuildAugmentLocation) extends GuildAugment with GuildAugmentLocation
-
-  case class FiligreeSlotLocation(filigreeLocation: FiligreeLocation) extends Filigree with FiligreeLocation
-
-  case class EquippedLocation(wearLocation: WearLocation) extends ItemEquip with EquipmentSlot
-
-  protected def generateAugmentValues: immutable.Seq[ItemEmbed with AugmentLocation] = {
-    for {
-      aug <- AugmentLocation.values
-    } yield aug match {
-      case x: GeneralAugmentLocation => AugmentLocationSlot(x)
-      case x: GuildAugmentLocation => GuildSlotLocation(x)
-      case x: FiligreeLocation => FiligreeSlotLocation(x)
-    }
-  }
-
-  protected def generateEquipmentSlot: immutable.Seq[EquippedLocation] = {
-    for { s <- WearLocation.values } yield EquippedLocation(s)
-  }
-
-  val values: immutable.IndexedSeq[StoreLocation] = findValues ++ generateEquipmentSlot ++ generateAugmentValues
-  override type T = StoreLocation
-
-  val fnEquipment: PartialFunction[StoreLocation, StoreLocation with ItemEquip] = { case x: ItemEquip =>
-    x
-  }
-
-  val fnAugments: PartialFunction[StoreLocation, StoreLocation with ColorAugment] = { case x: ColorAugment =>
-    x
-  }
-
-  val fnGuildAugments: PartialFunction[StoreLocation, StoreLocation with GuildAugment] = { case x: GuildAugment =>
-    x
-  }
-
-  val fnFiligrees: PartialFunction[StoreLocation, StoreLocation with Filigree] = { case x: Filigree =>
-    x
-  }
-
-  /**
-   * Object can be slotted onto character, such as a sword or helmet. Items with this value should further be
-   * constrained with corresponding WearLocation.
-   */
-  lazy val Equipment: immutable.Seq[StoreLocation with ItemEquip] = StoreLocation.values.collect(fnEquipment)
-
-  lazy val Augments: immutable.Seq[StoreLocation with ColorAugment] = StoreLocation.values.collect(fnAugments)
-
-  lazy val GuildAugments: immutable.Seq[StoreLocation with GuildAugment] = StoreLocation.values.collect(fnGuildAugments)
-
-  lazy val Filigrees: immutable.Seq[StoreLocation with Filigree] = StoreLocation.values.collect(fnFiligrees)
-
-  override lazy val bitValues: Map[StoreLocation, Int] = valuesToIndex.map { x =>
-    val wl = x._1
-    val v = x._2
-    wl -> Math.pow(2.0, v).toInt
-  }
 }

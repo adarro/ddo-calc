@@ -18,31 +18,27 @@
 package io.truthencode.ddo.model.feats
 
 import io.truthencode.ddo.enhancement.BonusType
-import io.truthencode.ddo.model.effect
 import io.truthencode.ddo.model.effect.TriggerEvent
-import io.truthencode.ddo.model.effect.features.{
-  ConfirmCriticalHitAmountFeature,
-  CriticalDamageAmountFeature,
-  FeaturesImpl
-}
+import io.truthencode.ddo.model.effect.features.{ConfirmCriticalHitAmountFeature, CriticalDamageAmountFeature, FeaturesImpl}
 import io.truthencode.ddo.support.requisite.{FeatRequisiteImpl, RequiresAnyOfFeat, RequiresBaB}
 
 /**
- * Icon Feat Power Critical.png Power Critical Passive Provides a +2 bonus to confirm critical hits and +2 bonus to
- * critical hit damage (before multipliers are applied). * Weapon Focus: Any Base Attack Bonus 4
+ * Icon Feat Power Critical.png Power Critical Passive Provides a +2 bonus to confirm critical hits
+ * and +2 bonus to critical hit damage (before multipliers are applied). * Weapon Focus: Any Base
+ * Attack Bonus 4
  */
 protected[feats] trait PowerCritical
-  extends FeatRequisiteImpl with Passive with RequiresBaB with RequiresAnyOfFeat with FighterBonusFeat with FeaturesImpl
-  with ConfirmCriticalHitAmountFeature with CriticalDamageAmountFeature {
+  extends FeatRequisiteImpl with Passive with RequiresBaB with RequiresAnyOfFeat
+  with FighterBonusFeat with FeaturesImpl with ConfirmCriticalHitAmountFeature
+  with CriticalDamageAmountFeature {
   self: GeneralFeat =>
 
+  override protected[this] lazy val triggerOn: Seq[TriggerEvent] = Seq(TriggerEvent.Passive)
+  override protected[this] lazy val triggerOff: Seq[TriggerEvent] = Seq(TriggerEvent.Never)
   override protected val confirmCriticalHitBonusType: BonusType = BonusType.Feat
   override protected val confirmCriticalHitBonusAmount: Int = 2
   override protected val criticalDamageBonusType: BonusType = BonusType.Feat
   override protected val criticalDamageBonusAmount: Int = 2
-
-  lazy override protected[this] val triggerOn: Seq[TriggerEvent ] = Seq(TriggerEvent.Passive)
-  lazy override protected[this] val triggerOff: Seq[TriggerEvent ] = Seq(TriggerEvent.Never)
 
   override def requiresBaB: Int = 4
 

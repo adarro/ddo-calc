@@ -28,6 +28,17 @@ sealed trait Attribute extends EnumEntry with Abbreviation
 
 object Attribute extends Enum[Attribute] with SearchPrefix {
 
+  val values = findValues
+
+  /**
+   * Used when qualifying a search with a prefix. Examples include finding "HalfElf" from qualified
+   * "Race:HalfElf"
+   *
+   * @return
+   *   A default or applied prefix
+   */
+  override def searchPrefixSource: String = "Attribute"
+
   case object Strength extends Strength
 
   case object Dexterity extends Dexterity
@@ -39,16 +50,6 @@ object Attribute extends Enum[Attribute] with SearchPrefix {
   case object Constitution extends Constitution
 
   case object Charisma extends Charisma
-
-  val values = findValues
-
-  /**
-   * Used when qualifying a search with a prefix. Examples include finding "HalfElf" from qualified "Race:HalfElf"
-   *
-   * @return
-   *   A default or applied prefix
-   */
-  override def searchPrefixSource: String = "Attribute"
 }
 
 protected trait Strength extends Attribute {

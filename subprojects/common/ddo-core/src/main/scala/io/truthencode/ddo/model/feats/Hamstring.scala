@@ -38,17 +38,16 @@ protected[feats] trait Hamstring
   extends FeatRequisiteImpl with ActiveFeat with AtWillEvent with RequiresAllOfFeat
   with FighterBonusFeat with FeaturesImpl with GrantAbilityFeature {
   self: GeneralFeat =>
-  override val grantBonusType: BonusType = BonusType.Feat
   override lazy val grantedAbility: ActiveAbilities = ActiveAbilities.Hamstring
-
-  override def coolDown: Option[Duration] = Some(Duration.ofSeconds(15))
-
+  override protected[this] lazy val grantAbilityCategories: Seq[effect.EffectCategories.Value] =
+    Seq(effect.EffectCategories.Ability, effect.EffectCategories.SpecialAttack)
+  override val grantBonusType: BonusType = BonusType.Feat
   override val allOfFeats = List(ClassFeat.SneakAttack)
   override protected[this] val triggerOn: Seq[TriggerEvent] = Seq(TriggerEvent.SpecialAttack)
   override protected[this] val triggerOff: Seq[TriggerEvent] = Seq(TriggerEvent.OnCoolDown)
-  override protected[this] lazy val grantAbilityCategories: Seq[effect.EffectCategories.Value] =
-    Seq(effect.EffectCategories.Ability, effect.EffectCategories.SpecialAttack)
   override val abilityId: String = "Hamstring"
   override val description: String =
     "Special Attack This melee special attack, when successful, reduces the target's movement rate by half for 12 seconds."
+
+  override def coolDown: Option[Duration] = Some(Duration.ofSeconds(15))
 }

@@ -18,21 +18,24 @@
 package io.truthencode.ddo.model.feats
 
 import io.truthencode.ddo.model.classes.HeroicCharacterClass
-import io.truthencode.ddo.model.classes.HeroicCharacterClass.{Alchemist, Artificer, Bard, Sorcerer, Wizard}
+import io.truthencode.ddo.model.classes.HeroicCharacterClass._
 import io.truthencode.ddo.support.requisite.{FeatRequisiteImpl, GrantsToClass}
 
 /**
- * This feat grants represents your knowledge of the Arcane. Characters with this feat are granted special
- * quest-specific dialog options/object interactions that classes without this feat otherwise could not perform. It may
- * also allow certain skill checks to learn insight into specific situations.
+ * This feat grants represents your knowledge of the Arcane. Characters with this feat are granted
+ * special quest-specific dialog options/object interactions that classes without this feat
+ * otherwise could not perform. It may also allow certain skill checks to learn insight into
+ * specific situations.
  */
-protected[feats] trait ArcaneLore extends FeatRequisiteImpl with Passive with StackableFeat with GrantsToClass {
+protected[feats] trait ArcaneLore
+  extends FeatRequisiteImpl with Passive with StackableFeat with GrantsToClass {
+
+  override def grantToClass: Seq[(HeroicCharacterClass, Int)] =
+    grantedClasses
 
   private def grantedClasses =
     for {
       gc <- List(Alchemist, Artificer, Bard, Sorcerer, Wizard)
       l <- 1 to 20
     } yield (gc, l)
-  override def grantToClass: Seq[(HeroicCharacterClass, Int)] =
-    grantedClasses
 }

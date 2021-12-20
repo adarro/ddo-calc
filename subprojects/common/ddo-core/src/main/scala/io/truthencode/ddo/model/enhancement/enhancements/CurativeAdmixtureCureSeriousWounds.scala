@@ -23,7 +23,8 @@ import io.truthencode.ddo.model.enhancement.enhancements.classbased.ApothecaryCo
 import io.truthencode.ddo.support.points.SpendablePoints
 import io.truthencode.ddo.support.tree.TreeLike
 
-trait CurativeAdmixtureCureSeriousWounds extends ApothecaryCore with ClassEnhancementImpl with CurativeAdmixtureBase {
+trait CurativeAdmixtureCureSeriousWounds
+  extends ApothecaryCore with ClassEnhancementImpl with CurativeAdmixtureBase {
 
   override lazy val description: Option[String] =
     Some(
@@ -36,14 +37,14 @@ trait CurativeAdmixtureCureSeriousWounds extends ApothecaryCore with ClassEnhanc
    */
   override val ranks: Int = 1
 
-  override protected def nameSource: String = "Cure Serious Wounds"
+  override def allOfClass: Seq[(HeroicCharacterClass, Int)] = Seq((Alchemist, 6))
   //  abstract override def displaySource: String = "Cure Serious Wounds"
   // override def displaySource: String = "Cure Serious Wounds"
-
-  override def allOfClass: Seq[(HeroicCharacterClass, Int)] = Seq((Alchemist, 6))
 
   override def progressionInTree: Seq[(TreeLike, SpendablePoints, Int)] = Seq((tree, 10))
 
   override def apCostPerRank: Int = 1
+
+  override protected def nameSource: String = "Cure Serious Wounds"
 
 }

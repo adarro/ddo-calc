@@ -18,16 +18,16 @@
 package io.truthencode.ddo.model.stats
 
 /**
- * Used to generally classify a stat or effect such as Saving Throws or Movement. These should generally correspond to
- * the Game Client Menu although some are not visible from the UI NOTE: May not exactly match in game UI for UX
- * purposes. (i.e. Dodge chance / AC / Incorporeal should fall under Avoidance Defense although we are expecting it to
- * appear under main display)
+ * Used to generally classify a stat or effect such as Saving Throws or Movement. These should
+ * generally correspond to the Game Client Menu although some are not visible from the UI NOTE: May
+ * not exactly match in game UI for UX purposes. (i.e. Dodge chance / AC / Incorporeal should fall
+ * under Avoidance Defense although we are expecting it to appear under main display)
  */
 sealed trait Category
 
 /**
- * Corresponds to effects contributing to your total Miss-chance. These include concealment / dodge / incorporeal etc.
- * https://ddowiki.com/page/Miss_chance
+ * Corresponds to effects contributing to your total Miss-chance. These include concealment / dodge
+ * / incorporeal etc. https://ddowiki.com/page/Miss_chance
  */
 trait MissChance extends Category
 
@@ -42,8 +42,8 @@ trait MissChancePenalty extends Category
 trait HitChance extends Category
 
 /**
- * Corresponds to damage reduction from 'Elemental' sources such as Fire. This includes protection / resistance and
- * absorption.
+ * Corresponds to damage reduction from 'Elemental' sources such as Fire. This includes protection /
+ * resistance and absorption.
  */
 trait ElementalDefenses extends Category
 
@@ -63,9 +63,10 @@ trait Movement extends Category
 trait SpecialAttack extends Category
 
 /**
- * A very general category that applies to general and specific spell casting. These should include casting costs,
- * cool-downs, stopping ability (silence / deafness) Spell power MAY fall under this or possibly split into another
- * category as Critical Multiplier / Potentcy and Universal spell power like effects
+ * A very general category that applies to general and specific spell casting. These should include
+ * casting costs, cool-downs, stopping ability (silence / deafness) Spell power MAY fall under this
+ * or possibly split into another category as Critical Multiplier / Potentcy and Universal spell
+ * power like effects
  */
 trait SpellCasting extends Category
 
@@ -85,21 +86,22 @@ trait MeleeCombat extends Category
 trait RangedCombat extends Category
 
 /**
- * Effects that alter the power, range or other undead specific effects. This should also include things that increase
- * the amount of Turns.
+ * Effects that alter the power, range or other undead specific effects. This should also include
+ * things that increase the amount of Turns.
  */
 trait TurnUndead extends Category
 
 /**
- * General, Misc. or Main stats generally appear on the main character sheet such as Base Attack Bonus
+ * General, Misc. or Main stats generally appear on the main character sheet such as Base Attack
+ * Bonus
  * @note
  *   BAB may be moved to general combat.
  */
 trait General extends Category
 
 /**
- * Not super useful by itself, but indicates the effect provides an ability. The power and extent of that ability may
- * depend on other things. Examples may include Bard Songs, Sunder, Attack etc.
+ * Not super useful by itself, but indicates the effect provides an ability. The power and extent of
+ * that ability may depend on other things. Examples may include Bard Songs, Sunder, Attack etc.
  */
 trait Ability extends Category
 

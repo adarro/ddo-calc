@@ -21,8 +21,8 @@ import io.truthencode.ddo.model.religions.BloodOfVol
 import io.truthencode.ddo.support.requisite.{FeatRequisiteImpl, RequiresAllOfFeat}
 
 trait BelovedOfTheBloodOfVol
-  extends FeatRequisiteImpl with EberronReligionNonWarforged with BelovedLevelBase with RequiresAllOfFeat
-  with BloodOfVol with TheBloodOfVolFeatBase { self: DeityFeat =>
+  extends FeatRequisiteImpl with EberronReligionNonWarforged with BelovedLevelBase
+  with RequiresAllOfFeat with BloodOfVol with TheBloodOfVolFeatBase { self: DeityFeat =>
 
   override def allOfFeats: Seq[Feat] = List(DeityFeat.ChildOfTheBloodOfVol)
 }

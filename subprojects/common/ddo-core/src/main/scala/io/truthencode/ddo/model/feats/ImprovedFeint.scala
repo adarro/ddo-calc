@@ -23,11 +23,7 @@ import io.truthencode.ddo.model.abilities.ActiveAbilities
 import io.truthencode.ddo.model.effect
 import io.truthencode.ddo.model.effect.TriggerEvent
 import io.truthencode.ddo.model.effect.features.{FeaturesImpl, GrantAbilityFeature}
-import io.truthencode.ddo.support.requisite.{
-  FeatRequisiteImpl,
-  RequiresAllOfFeat,
-  RequiresAnyOfFeat
-}
+import io.truthencode.ddo.support.requisite.{FeatRequisiteImpl, RequiresAllOfFeat, RequiresAnyOfFeat}
 
 import java.time.Duration
 
@@ -45,14 +41,8 @@ protected[feats] trait ImprovedFeint
   extends FeatRequisiteImpl with ActiveFeat with AtWillEvent with RequiresAnyOfFeat
   with RequiresAllOfFeat with FighterBonusFeat with FeaturesImpl with GrantAbilityFeature {
   self: GeneralFeat =>
-  override def anyOfFeats: Seq[Feat] = List(ClassFeat.SneakAttack)
-
-  override def coolDown: Option[Duration] = Some(Duration.ofSeconds(6))
-
-  override def allOfFeats: Seq[Feat] = List(GeneralFeat.CombatExpertise)
-
-  override val grantBonusType: BonusType = BonusType.Feat
   override lazy val grantedAbility: ActiveAbilities = ActiveAbilities.ImprovedFeint
+  override val grantBonusType: BonusType = BonusType.Feat
   override protected[this] val triggerOn: Seq[TriggerEvent] = Seq(TriggerEvent.AtWill)
   override protected[this] val triggerOff: Seq[TriggerEvent] = Seq(TriggerEvent.OnCoolDown)
   override protected[this] val grantAbilityCategories: Seq[effect.EffectCategories.Value] =
@@ -60,4 +50,10 @@ protected[feats] trait ImprovedFeint
   override val abilityId: String = "ImprovedFeint"
   override val description: String =
     "Special Attack A tactical melee attack which Bluffs the enemy, enabling Sneak Attacks."
+
+  override def anyOfFeats: Seq[Feat] = List(ClassFeat.SneakAttack)
+
+  override def coolDown: Option[Duration] = Some(Duration.ofSeconds(6))
+
+  override def allOfFeats: Seq[Feat] = List(GeneralFeat.CombatExpertise)
 }

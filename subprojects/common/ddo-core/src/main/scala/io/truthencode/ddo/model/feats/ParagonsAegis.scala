@@ -24,11 +24,13 @@ import io.truthencode.ddo.support.requisite.{FeatRequisiteImpl, GrantsToClass, R
 /**
  * +5 Magical Resistance Rating This feat can be granted multiple times.
  */
-protected[feats] trait ParagonsAegis extends FeatRequisiteImpl with Passive with RequiresAllOfClass with GrantsToClass {
+protected[feats] trait ParagonsAegis
+  extends FeatRequisiteImpl with Passive with RequiresAllOfClass with GrantsToClass {
   self: ClassFeat =>
-  private def artiLevels = 12 to 20 by 2
   override def grantToClass: Seq[(HeroicCharacterClass, Int)] =
     artiLevels.map((Warlock, _))
+
+  private def artiLevels = 12 to 20 by 2
 
   override protected def nameSource: String = "Paragon's Aegis"
 }

@@ -18,23 +18,23 @@
 package io.truthencode.ddo.support.tree
 
 import enumeratum.{Enum, EnumEntry}
-import io.truthencode.ddo.Abbreviation
-import io.truthencode.ddo.support.SearchPrefix
 import io.truthencode.ddo.support.StringUtils.Extensions
 import io.truthencode.ddo.support.naming.{DisplayName, FriendlyDisplay}
 
 import scala.collection.immutable
-sealed trait UniversalTrees extends EnumEntry with UniversalTree with DisplayName with FriendlyDisplay {
-  override protected def nameSource: String =
-    entryName.splitByCase.toPascalCase
-
+sealed trait UniversalTrees
+  extends EnumEntry with UniversalTree with DisplayName with FriendlyDisplay {
   /**
-   * Used when qualifying a search with a prefix. Examples include finding "HalfElf" from qualified "Race:HalfElf"
+   * Used when qualifying a search with a prefix. Examples include finding "HalfElf" from qualified
+   * "Race:HalfElf"
    *
    * @return
    *   A default or applied prefix
    */
   override def searchPrefixSource: String = "UniversalEnhancement"
+
+  override protected def nameSource: String =
+    entryName.splitByCase.toPascalCase
 }
 
 trait Falconry extends UniversalTrees
@@ -42,9 +42,11 @@ trait HarperAgent extends UniversalTrees
 trait VistaniKnifeFighter extends UniversalTrees with TreePrefix
 
 object UniversalTrees extends Enum[UniversalTrees] {
-  case object Falconry extends Falconry
-  case object HarperAgent extends HarperAgent
-  case object VistaniKnifeFighter extends VistaniKnifeFighter
-
   override def values: immutable.IndexedSeq[UniversalTrees] = findValues
+
+  case object Falconry extends Falconry
+
+  case object HarperAgent extends HarperAgent
+
+  case object VistaniKnifeFighter extends VistaniKnifeFighter
 }

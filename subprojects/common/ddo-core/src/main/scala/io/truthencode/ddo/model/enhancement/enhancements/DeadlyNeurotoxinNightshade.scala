@@ -29,13 +29,13 @@ trait DeadlyNeurotoxinNightshade extends ApothecaryTierFive with ClassEnhancemen
       |
       |Target enemy falls asleep for 6 seconds with no save.""".stripMargin
   )
-
-  override def displayText: String = "Deadly Neurotoxin/Nightshade"
-  override def apCostPerRank: Int = 1
-
   /**
    * Some enhancements can be taken multiple times (generally up to three)
    */
   override val ranks: Int = 1
+
+  override def displayText: String = "Deadly Neurotoxin/Nightshade"
+
+  override def apCostPerRank: Int = 1
 
 }

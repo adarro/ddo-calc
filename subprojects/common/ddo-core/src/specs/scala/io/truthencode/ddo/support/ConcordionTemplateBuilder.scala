@@ -39,25 +39,6 @@ class ConcordionTemplateBuilder extends LazyLogging {
     c
   }
 
-  def nameToClass[T: ClassTag](cls: T): Option[Enum[_ <: EnumEntry]] = {
-    val cName = cls.getClass.getName
-    cls match {
-      case x: Companionable =>
-        logger.info(s"Casting $cName from Companionable")
-        Some(x.companion.asInstanceOf[Enum[_ <: EnumEntry]])
-      case x: Enum[_] =>
-        logger.info(s"Returning Enum from base")
-        Some(x)
-      case _: EnumEntry =>
-        logger.info(s"EnumEntry located $cName")
-        None
-      case _: AnyRef =>
-        logger.warn(s"nameToClass resolved $cName")
-        None
-      case _ => None
-    }
-  }
-
   def renderEnum(fqn: String): Option[String] = {
     val path = s"$basePath/Enum.jade"
     val cpPath = getClass.getResource(path).getFile
@@ -88,6 +69,25 @@ class ConcordionTemplateBuilder extends LazyLogging {
     }
   }
 
+  def nameToClass[T: ClassTag](cls: T): Option[Enum[_ <: EnumEntry]] = {
+    val cName = cls.getClass.getName
+    cls match {
+      case x: Companionable =>
+        logger.info(s"Casting $cName from Companionable")
+        Some(x.companion.asInstanceOf[Enum[_ <: EnumEntry]])
+      case x: Enum[_] =>
+        logger.info(s"Returning Enum from base")
+        Some(x)
+      case _: EnumEntry =>
+        logger.info(s"EnumEntry located $cName")
+        None
+      case _: AnyRef =>
+        logger.warn(s"nameToClass resolved $cName")
+        None
+      case _ => None
+    }
+  }
+
   /*def findCompanion[E <: Companion[EnumEntry]](entry: E): Enum[_ <: EnumEntry] = {
     entry.comp
   }*/
@@ -102,7 +102,8 @@ class ConcordionTemplateBuilder extends LazyLogging {
     val sLen = 10
     val invalid = (for { x <- 0 to 3 } yield randomAlphaString(sLen).randomCase).asJava
     val singleValue =
-      source.values.headOption.map { h => h.toString }.getOrElse("Please specify at least one value for this enum")
+      source.values.headOption.map { h => h.toString }
+        .getOrElse("Please specify at least one value for this enum")
     model.put("name", name)
     model.put("values", values)
     model.put("invalidValues", invalid)

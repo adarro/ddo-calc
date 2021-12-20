@@ -29,15 +29,6 @@ import scala.collection.immutable
  */
 trait SkillFeature extends Features {
   self: SourceInfo =>
-  val bonusType: BonusType
-  val skillTriggerOn: Seq[TriggerEvent] = Seq(TriggerEvent.Passive)
-  val skillTriggerOff: Seq[TriggerEvent] = Seq(TriggerEvent.Never)
-
-  val affectedSkills: List[(Skill, Int)]
-  private val src = this
-
-
-
   private lazy val skillChance: immutable.Seq[SkillEffect] = affectedSkills.map { f =>
     val categories = Seq(EffectCategories.Skill).map(_.toString)
     val effectDetail = DetailedEffect(
@@ -46,13 +37,18 @@ trait SkillFeature extends Features {
       triggersOn = skillTriggerOn.map(_.entryName),
       triggersOff = skillTriggerOff.map(_.entryName)
     )
-      val eb = EffectParameterBuilder()
-          .toggleOffValue(skillTriggerOff: _*)
-          .toggleOnValue(skillTriggerOn: _*)
-          .addBonusType(bonusType)
-          .build
-    SkillEffect(f._1, f._2, bonusType, src, categories,eb.modifiers, effectDetail)
+    val eb = EffectParameterBuilder()
+      .toggleOffValue(skillTriggerOff: _*)
+      .toggleOnValue(skillTriggerOn: _*)
+      .addBonusType(bonusType)
+      .build
+    SkillEffect(f._1, f._2, bonusType, src, categories, eb.modifiers, effectDetail)
   }
+  val bonusType: BonusType
+  val skillTriggerOn: Seq[TriggerEvent] = Seq(TriggerEvent.Passive)
+  val skillTriggerOff: Seq[TriggerEvent] = Seq(TriggerEvent.Never)
+  val affectedSkills: List[(Skill, Int)]
+  private val src = this
 
   abstract override def features: Seq[Feature[_]] =
     super.features ++ skillChance

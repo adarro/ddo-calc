@@ -31,10 +31,10 @@ trait HitPointPercentFeature extends Features {
   self: SourceInfo =>
   protected val hitPointBonusType: BonusType
   protected val hitPointBonusPercent: Int
-  private val src = this
   protected[this] val triggerOn: Seq[TriggerEvent]
   protected[this] val triggerOff: Seq[TriggerEvent]
   protected[this] val hitPointPctCategories: Seq[effect.EffectCategories.Value]
+  private val src = this
   private[this] val hitPointPercent =
     new PartModifier[Int, BasicStat] with UsingSearchPrefix {
 

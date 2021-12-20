@@ -24,8 +24,8 @@ import io.truthencode.ddo.support.requisite.{FeatRequisiteImpl, RequiresAllOfFea
  * Created by adarr on 4/7/2017.
  */
 trait ChildOfTheSovereignHost
-  extends FeatRequisiteImpl with EberronReligionNonWarforged with ChildLevelBase with RequiresAllOfFeat
-  with SovereignHost with TheSovereignHostFeatBase { self: DeityFeat =>
+  extends FeatRequisiteImpl with EberronReligionNonWarforged with ChildLevelBase
+  with RequiresAllOfFeat with SovereignHost with TheSovereignHostFeatBase { self: DeityFeat =>
 
   override def allOfFeats: Seq[Feat] =
     List(DeityFeat.FollowerOfTheSovereignHost)

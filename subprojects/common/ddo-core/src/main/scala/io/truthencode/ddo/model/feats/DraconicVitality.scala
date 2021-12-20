@@ -23,6 +23,7 @@ import io.truthencode.ddo.support.requisite.{FeatRequisiteImpl, RequiresAllOfPat
 /**
  * Grants +2 bonus to your Diplomacy and Intimidate
  */
-protected[feats] trait DraconicVitality extends FeatRequisiteImpl with Passive with RequiresAllOfPatron {
+protected[feats] trait DraconicVitality
+  extends FeatRequisiteImpl with Passive with RequiresAllOfPatron {
   override def allOfPatron: Seq[(FavorPatron, Int)] = List((FavorPatron.AgentsOfArgonnessen, 150))
 }

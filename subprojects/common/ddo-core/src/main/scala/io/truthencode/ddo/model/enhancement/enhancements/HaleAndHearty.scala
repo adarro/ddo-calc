@@ -17,24 +17,20 @@
  */
 package io.truthencode.ddo.model.enhancement.enhancements
 
-import io.truthencode.ddo.model.classes.HeroicCharacterClass
-import io.truthencode.ddo.model.classes.HeroicCharacterClass.Alchemist
 import io.truthencode.ddo.model.enhancement.enhancements.classbased.ApothecaryTierTwo
-import io.truthencode.ddo.support.points.SpendablePoints
-import io.truthencode.ddo.support.tree.TreeLike
 
 trait HaleAndHearty extends ApothecaryTierTwo with ClassEnhancementImpl {
 
   override lazy val description: Option[String] = Some(
     " +[3/6/10] Positive and Negative Healing Amplification"
   )
-  override def apCostPerRank: Int = 1
-
-  override protected def nameSource: String = "Hale & Hearty"
-
   /**
    * Some enhancements can be taken multiple times (generally up to three)
    */
   override val ranks: Int = 3
+
+  override def apCostPerRank: Int = 1
+
+  override protected def nameSource: String = "Hale & Hearty"
 
 }

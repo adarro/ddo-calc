@@ -23,7 +23,8 @@ import io.truthencode.ddo.support.requisite.{FeatRequisiteImpl, RaceRequisite, R
 /**
  * Created by adarr on 2/20/2017.
  */
-trait DrowSpellResistance extends FeatRequisiteImpl with RaceRequisite with Passive with RequiresAllOfRace {
+trait DrowSpellResistance
+  extends FeatRequisiteImpl with RaceRequisite with Passive with RequiresAllOfRace {
   override def allOfRace: Seq[(Race, Int)] = List((Race.DrowElf, 1))
 
   override def grantsToRace: Seq[(Race, Int)] = List((Race.DrowElf, 1))

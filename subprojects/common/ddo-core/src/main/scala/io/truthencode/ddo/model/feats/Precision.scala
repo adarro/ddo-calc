@@ -39,13 +39,9 @@ protected[feats] trait Precision
   with RequiresBaB with AlchemistBonusFeat with FighterBonusFeat with MartialArtsFeat
   with DefaultCoolDown with FeaturesImpl with GrantAbilityFeature {
   self: GeneralFeat =>
-  override def requiresAttribute: Seq[(Attribute, Int)] =
-    List((Attribute.Dexterity, 13))
-
-  override def requiresBaB = 1
+  override lazy val grantedAbility: ActiveAbilities = ActiveAbilities.Precision
 // TODO: Add reduce fort 25% and 5% tohit + rage prohibition
   override val grantBonusType: BonusType = BonusType.Feat
-  override lazy val grantedAbility: ActiveAbilities = ActiveAbilities.Precision
   override protected[this] val triggerOn: Seq[TriggerEvent] = Seq(TriggerEvent.OnStance)
   override protected[this] val triggerOff: Seq[TriggerEvent] = Seq(TriggerEvent.OnToggle)
   override protected[this] val grantAbilityCategories: Seq[effect.EffectCategories.Value] = Seq(
@@ -53,4 +49,9 @@ protected[feats] trait Precision
   override val abilityId: String = "Precision"
   override val description: String =
     "Offensive Combat Stance While using Precision mode, you gain +5% to hit and reduce the target's fortification against your attacks by 25%"
+
+  override def requiresAttribute: Seq[(Attribute, Int)] =
+    List((Attribute.Dexterity, 13))
+
+  override def requiresBaB = 1
 }

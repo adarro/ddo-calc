@@ -28,28 +28,29 @@ sealed trait SpellArea extends EnumEntry
 
 object SpellArea extends Enum[SpellArea] {
 
+  override def values: immutable.IndexedSeq[SpellArea] = findValues
+
   /**
-   * A cone-shaped spell shoots away from you in a quarter-circle centered on your target. Listed as "Conal AOE" in
-   * spell descriptions.
+   * A cone-shaped spell shoots away from you in a quarter-circle centered on your target. Listed as
+   * "Conal AOE" in spell descriptions.
    */
   case object Cone extends SpellArea
 
   /**
-   * A line-shaped spell shoots away from you in a line in the direction you designate. A line-shaped spell affects all
-   * valid targets that the line passes through.
+   * A line-shaped spell shoots away from you in a line in the direction you designate. A
+   * line-shaped spell affects all valid targets that the line passes through.
    */
   case object Line extends SpellArea
 
   /**
-   * A sphere-shaped spell expands from its point of origin to fill a spherical area. Listed as "Spherical AOE" in spell
-   * descriptions.
+   * A sphere-shaped spell expands from its point of origin to fill a spherical area. Listed as
+   * "Spherical AOE" in spell descriptions.
    */
   case object Sphere extends SpellArea
 
   /**
-   * A circular-shaped spell expands from its point of origin to effect a full 360 degree circle. These spells generally
-   * either have no Z-axis (height) limitations, or have very large ones.
+   * A circular-shaped spell expands from its point of origin to effect a full 360 degree circle.
+   * These spells generally either have no Z-axis (height) limitations, or have very large ones.
    */
   case object Circular extends SpellArea
-  override def values: immutable.IndexedSeq[SpellArea] = findValues
 }

@@ -24,7 +24,8 @@ import io.truthencode.ddo.support.requisite.{FeatRequisiteImpl, GrantsToClass, R
 /**
  * Created by adarr on 3/17/2017.
  */
-trait ArmorClassBonus extends FeatRequisiteImpl with Passive with GrantsToClass with RequiresAnyOfClass {
+trait ArmorClassBonus
+  extends FeatRequisiteImpl with Passive with GrantsToClass with RequiresAnyOfClass {
   override def grantToClass: Seq[(HeroicCharacterClass, Int)] =
     List((Monk, 1))
 

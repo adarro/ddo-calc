@@ -38,11 +38,11 @@ trait ActivationTypeImpl extends ActivationType {
   override def activations: Seq[TriggerEvent] = Nil
 }
 
-
 /**
  * Underlying Trait for all Active triggers
  */
-trait TriggeredActivation extends ActivationTypeImpl with TriggerImpl with ActiveEvent { self: EnumEntry =>
+trait TriggeredActivation extends ActivationTypeImpl with TriggerImpl with ActiveEvent {
+  self: EnumEntry =>
   abstract override def activations: Seq[TriggerEvent] = super.activations ++ activatableTriggers
 }
 
@@ -56,15 +56,27 @@ trait PassiveActivation extends ActivationTypeImpl with PassiveEvent {
 
 object ActivationType extends Enum[ActivationType] with LazyLogging {
 
-  /**
-   * This effect is always on
-   */
-  case object Passive extends PassiveActivation
+  lazy val dynamics: Seq[Active] = {
+    TriggerEvent.values.filter(p => filterActive(p)).map { x =>
+      Active(x.asInstanceOf[ActiveEvent])
+    }
+
+  }
+  @volatile
+  override lazy val values = findValues ++ dynamics
+
+  private def filterActive[T <: TriggerEvent: ClassTag](c: T): Boolean = {
+    c match {
+      case _: ActiveEvent => true
+      case _ => false
+    }
+  }
 
   /**
    * This effect is triggered by some means such as a toggle, threshold or status.
    */
-  case class Active(triggers: ActiveEvent*) extends ActivationTypeImpl with TriggeredActivation with LazyLogging {
+  case class Active(triggers: ActiveEvent*)
+    extends ActivationTypeImpl with TriggeredActivation with LazyLogging {
 
     //  override val activatableTriggers(): scala.Seq[_root_.io.truthencode.ddo.model.effect.TriggerEvent] = triggers
     override def activatableTriggers: Seq[TriggerEvent] = triggers
@@ -76,19 +88,8 @@ object ActivationType extends Enum[ActivationType] with LazyLogging {
     }
   }
 
-  private def filterActive[T <: TriggerEvent: ClassTag](c: T): Boolean = {
-    c match {
-      case _: ActiveEvent => true
-      case _ => false
-    }
-  }
-
-  lazy val dynamics: Seq[Active] = {
-    TriggerEvent.values.filter(p => filterActive(p)).map { x =>
-      Active(x.asInstanceOf[ActiveEvent])
-    }
-
-  }
-  @volatile
-  override lazy val values = findValues ++ dynamics
+  /**
+   * This effect is always on
+   */
+  case object Passive extends PassiveActivation
 }

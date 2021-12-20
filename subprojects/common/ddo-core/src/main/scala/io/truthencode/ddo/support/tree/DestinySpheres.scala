@@ -24,17 +24,19 @@ import io.truthencode.ddo.support.naming.{DisplayName, FriendlyDisplay}
 
 import scala.collection.immutable
 
-sealed trait DestinySpheres extends EnumEntry with DestinySphere with DisplayName with FriendlyDisplay {
-  override protected def nameSource: String =
-    entryName.splitByCase.toPascalCase
-
+sealed trait DestinySpheres
+  extends EnumEntry with DestinySphere with DisplayName with FriendlyDisplay {
   /**
-   * Used when qualifying a search with a prefix. Examples include finding "HalfElf" from qualified "Race:HalfElf"
+   * Used when qualifying a search with a prefix. Examples include finding "HalfElf" from qualified
+   * "Race:HalfElf"
    *
    * @return
    *   A default or applied prefix
    */
   override def searchPrefixSource: String = "DestinySphere"
+
+  override protected def nameSource: String =
+    entryName.splitByCase.toPascalCase
 }
 
 trait Arcane extends DestinySpheres
@@ -44,16 +46,21 @@ trait Primal extends DestinySpheres
 
 object DestinySpheres extends Enum[DestinySpheres] with SearchPrefix {
   override def values: immutable.IndexedSeq[DestinySpheres] = findValues
-  case object Arcane extends Arcane
-  case object Divine extends Divine
-  case object Martial extends Martial
-  case object Primal extends Primal
 
   /**
-   * Used when qualifying a search with a prefix. Examples include finding "HalfElf" from qualified "Race:HalfElf"
+   * Used when qualifying a search with a prefix. Examples include finding "HalfElf" from qualified
+   * "Race:HalfElf"
    *
    * @return
    *   A default or applied prefix
    */
   override def searchPrefixSource: String = "Sphere"
+
+  case object Arcane extends Arcane
+
+  case object Divine extends Divine
+
+  case object Martial extends Martial
+
+  case object Primal extends Primal
 }

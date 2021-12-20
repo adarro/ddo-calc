@@ -34,10 +34,11 @@ trait RomanNumeralAffix {
    */
   def rnSuffix: Int
 
-  override protected def nameSource: String = s"Ability"
+  override def displayText: String = displaySource.replaceNumbersWithRomanNumerals
 
   override def displaySource: String =
     s"$nameSource ${RomanNumeral.toRoman(rnSuffix)}".replaceRomanNumerals
-  override def displayText: String = displaySource.replaceNumbersWithRomanNumerals
+
+  override protected def nameSource: String = s"Ability"
 
 }

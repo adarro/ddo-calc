@@ -23,6 +23,7 @@ import io.truthencode.ddo.support.requisite.RequiresCharacterLevel
  * @todo
  *   add entry levels to allow for 24 or 27 vs minimum.
  */
-protected[feats] trait MasterOfArtifice extends Passive with RequiresCharacterLevel { self: EpicFeat =>
+protected[feats] trait MasterOfArtifice extends Passive with RequiresCharacterLevel {
+  self: EpicFeat =>
   override val requireCharacterLevel: Int = 24
 }

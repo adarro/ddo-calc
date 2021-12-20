@@ -22,9 +22,11 @@ import io.truthencode.ddo.model.item.weapon.FavoredWeapon
 import io.truthencode.ddo.support.requisite.{RaceRequisiteImpl, RequiresAllOfClass, RequiresAllOfFeat}
 
 /**
- * This trait may be renamed if someone has a suggestion for a better name for the 3rd tier / 6th level ability
+ * This trait may be renamed if someone has a suggestion for a better name for the 3rd tier / 6th
+ * level ability
  */
-trait DeityUniqueLevelBase extends ReligionFeatBase with RaceRequisiteImpl with RequiresAllOfClass with UniqueLevel {
+trait DeityUniqueLevelBase
+  extends ReligionFeatBase with RaceRequisiteImpl with RequiresAllOfClass with UniqueLevel {
   self: FavoredWeapon with RequiresAllOfFeat =>
   List(Cleric, Paladin, FavoredSoul).map((_, 6))
 

@@ -24,17 +24,19 @@ import io.truthencode.ddo.support.naming.{DisplayName, FriendlyDisplay}
 
 import scala.collection.immutable
 
-sealed trait EpicDestiny extends EnumEntry with DestinySphere with DisplayName with FriendlyDisplay {
-  override protected def nameSource: String =
-    entryName.splitByCase.toPascalCase
-
+sealed trait EpicDestiny
+  extends EnumEntry with DestinySphere with DisplayName with FriendlyDisplay {
   /**
-   * Used when qualifying a search with a prefix. Examples include finding "HalfElf" from qualified "Race:HalfElf"
+   * Used when qualifying a search with a prefix. Examples include finding "HalfElf" from qualified
+   * "Race:HalfElf"
    *
    * @return
    *   A default or applied prefix
    */
   override def searchPrefixSource: String = "Destiny"
+
+  override protected def nameSource: String =
+    entryName.splitByCase.toPascalCase
 }
 // Arcane
 trait DraconicIncarnation extends EpicDestiny
@@ -57,27 +59,40 @@ trait ShiradiChampion extends EpicDestiny
 
 object EpicDestiny extends Enum[EpicDestiny] with SearchPrefix {
   override def values: immutable.IndexedSeq[EpicDestiny] = findValues
-  case object DraconicIncarnation extends DraconicIncarnation
-  case object Fatesinger extends Fatesinger
-  case object Magister extends Magister
-  // Divine
-  case object Crusader extends Crusader
-  case object ExaltedAngel extends ExaltedAngel
-  case object UnyieldingSentinel extends UnyieldingSentinel
-  // Martial
-  case object GrandmasterOfFlowers extends GrandmasterOfFlowers
-  case object LegendaryDreadnought extends LegendaryDreadnought
-  case object ShadowDancer extends ShadowDancer
-  // Primal
-  case object FuryOfTheWild extends FuryOfTheWild
-  case object PrimalAvatar extends PrimalAvatar
-  case object ShiradiChampion extends ShiradiChampion
 
   /**
-   * Used when qualifying a search with a prefix. Examples include finding "HalfElf" from qualified "Race:HalfElf"
+   * Used when qualifying a search with a prefix. Examples include finding "HalfElf" from qualified
+   * "Race:HalfElf"
    *
    * @return
    *   A default or applied prefix
    */
   override def searchPrefixSource: String = "Destiny"
+
+  case object DraconicIncarnation extends DraconicIncarnation
+
+  case object Fatesinger extends Fatesinger
+
+  case object Magister extends Magister
+
+  // Divine
+  case object Crusader extends Crusader
+
+  case object ExaltedAngel extends ExaltedAngel
+
+  case object UnyieldingSentinel extends UnyieldingSentinel
+
+  // Martial
+  case object GrandmasterOfFlowers extends GrandmasterOfFlowers
+
+  case object LegendaryDreadnought extends LegendaryDreadnought
+
+  case object ShadowDancer extends ShadowDancer
+
+  // Primal
+  case object FuryOfTheWild extends FuryOfTheWild
+
+  case object PrimalAvatar extends PrimalAvatar
+
+  case object ShiradiChampion extends ShiradiChampion
 }

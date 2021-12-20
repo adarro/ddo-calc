@@ -37,8 +37,9 @@ trait CurativeAdmixtureCureOrInflictCriticalWounds
   override val ranks: Int = 1
 
   override def displayText: String = displaySource.lowerCaseNoise
-  override protected def nameSource: String = "Cure Or Inflict Critical Wounds"
 
   override def apCostPerRank: Int = 1
+
+  override protected def nameSource: String = "Cure Or Inflict Critical Wounds"
 
 }

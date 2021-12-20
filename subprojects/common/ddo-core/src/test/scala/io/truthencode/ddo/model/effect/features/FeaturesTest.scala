@@ -18,12 +18,10 @@
 package io.truthencode.ddo.model.effect.features
 
 import com.typesafe.scalalogging.LazyLogging
-import enumeratum.{Enum, EnumEntry}
 import io.truthencode.ddo.model.effect.Feature.printFeature
 import io.truthencode.ddo.model.effect.{Feature, SourceInfo}
 import io.truthencode.ddo.model.feats.{Feat, GeneralFeat}
 import io.truthencode.ddo.model.stats.BasicStat
-import io.truthencode.ddo.support.naming.DisplayProperties
 import org.scalatest.OptionValues.convertOptionToValuable
 import org.scalatest.funspec.AnyFunSpec
 import org.scalatest.matchers.should.Matchers
@@ -33,7 +31,6 @@ import scala.language.postfixOps
 class FeaturesTest extends AnyFunSpec with Matchers with LazyLogging {
   private val dodgeChance = BasicStat.DodgeChance.withPrefix // "DodgeChance"
 
-
   describe("A Features List") {
     it("Should be magical") {
       import Features.FeatureExtractor
@@ -41,14 +38,14 @@ class FeaturesTest extends AnyFunSpec with Matchers with LazyLogging {
       val fm = Feat.featureMap
       fs.size shouldEqual fm.size
 
-
-      fm.foreach { m =>       {
+      fm.foreach { m =>
+        {
           val eId = m._1.entryName
-        val fId = m._2.name
-        val pf = printFeature(m._2)
-        val ed = m._2.effectDetail
-        logger.info(s"\nEntity: $eId, Feature: $fId \n$pf\n$ed")
-      }
+          val fId = m._2.name
+          val pf = printFeature(m._2)
+          val ed = m._2.effectDetail
+          logger.info(s"\nEntity: $eId, Feature: $fId \n$pf\n$ed")
+        }
 
       }
       val irslt = for {

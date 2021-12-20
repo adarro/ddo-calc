@@ -27,13 +27,21 @@
 | Silvanus   | [Maul](http://ddowiki.com/page/Maul "Maul")                            | [Favored by Silvanus](http://ddowiki.com/page/Favored_by_Silvanus "Favored by Silvanus")                                  | [Child of Silvanus](http://ddowiki.com/page/Child_of_Silvanus "Child of Silvanus")                               | [Blessing of Silvanus](http://ddowiki.com/page/Blessing_of_Silvanus "Blessing of Silvanus")                | [Beloved of Silvanus](http://ddowiki.com/page/Beloved_of_Silvanus "Beloved of Silvanus")                                                         | Damage Reduction: [TBD](http://ddowiki.com/page/TBD "TBD")                                                                                                                                                                               |
 
 [religion]: - "#religionId"
+
 [setUpReligion]: - "#result = loadFromKey(#religionId)"
+
 [_matchStrategy_]: - "c:matchStrategy=KeyMatch"
+
 [unique]: - "?=#result.unique()"
+
 [followerOf]: - "?=#result.follow()"
+
 [childOf]: - "?=#result.child()"
+
 [belovedOf]: = "?=#result.beloved()"
+
 [favoredWeapon]: - "?=#result.favoredWeapon()"
+
 [damageReduction]: - "?=#result.damageReduction()"
 
 

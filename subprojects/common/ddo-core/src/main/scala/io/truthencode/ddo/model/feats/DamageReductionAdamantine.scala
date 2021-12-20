@@ -25,8 +25,9 @@ import io.truthencode.ddo.support.requisite.{FeatRequisiteImpl, RequiresAllOfCla
 import scala.collection.immutable
 
 trait DamageReductionAdamantine
-  extends FeatRequisiteImpl with EberronReligionWarforged with DamageReductionLevelBase with RequiresAnyOfFeat
-  with RequiresAllOfClass with LordOfBlades with TheLordOfBladesFeatBase { self: DeityFeat =>
+  extends FeatRequisiteImpl with EberronReligionWarforged with DamageReductionLevelBase
+  with RequiresAnyOfFeat with RequiresAllOfClass with LordOfBlades with TheLordOfBladesFeatBase {
+  self: DeityFeat =>
 
   override def nameSource: String = "Adamantine"
 

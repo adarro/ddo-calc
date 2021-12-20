@@ -21,8 +21,8 @@ import io.truthencode.ddo.model.religions.Silvanus
 import io.truthencode.ddo.support.requisite.{FeatRequisiteImpl, RequiresAllOfFeat}
 
 trait BelovedOfSilvanus
-  extends FeatRequisiteImpl with ForgottenRealmsReligionNonWarforged with BelovedLevelBase with RequiresAllOfFeat
-  with Silvanus with SilvanusFeatBase {
+  extends FeatRequisiteImpl with ForgottenRealmsReligionNonWarforged with BelovedLevelBase
+  with RequiresAllOfFeat with Silvanus with SilvanusFeatBase {
   self: DeityFeat =>
 
   override def allOfFeats: Seq[Feat] = List(DeityFeat.ChildOfSilvanus)

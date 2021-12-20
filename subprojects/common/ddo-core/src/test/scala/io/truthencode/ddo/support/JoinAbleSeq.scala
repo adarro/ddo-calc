@@ -19,23 +19,20 @@ package io.truthencode.ddo.support
 
 import io.truthencode.ddo.support.TraverseOps.Joinable
 
-import scala.collection.{GenIterable, GenSeq}
-import scala.language.higherKinds
-
 trait JoinAbleSeq[+X, C <: Seq[X]] extends JoinAbleBase[X, C] {
-  lazy val source = Seq[X]()
-  val list = source.take(sampleSize)
+  lazy val source: Seq[X] = Seq[X]()
+  val list: Seq[X] = source.take(sampleSize)
   //  val list:C = source.take(sampleSize)
-  val listA = list.take(portion)
-  val listB = list.toList.takeRight(portion)
-  val onlyB = list.toList.takeRight(remainder)
-  val onlyA = list.take(remainder)
-  val common = listA.intersect(listB)
-  val commonWithA = list.take(sampleSize - remainder)
-  val commonWithB = list.toList.takeRight(sampleSize - remainder).toSeq
+  val listA: Seq[X] = list.take(portion)
+  val listB: Seq[X] = list.toList.takeRight(portion)
+  val onlyB: Seq[X] = list.toList.takeRight(remainder)
+  val onlyA: Seq[X] = list.take(remainder)
+  val common: Seq[X] = listA.intersect(listB)
+  val commonWithA: Seq[X] = list.take(sampleSize - remainder)
+  val commonWithB: Seq[X] = list.toList.takeRight(sampleSize - remainder)
 
-  val leftJoinA = listA.leftJoin(listB)
-  val rightJoinA = listA.rightJoin(listB)
-  val leftJoinB = listB.leftJoin(listA)
-  val rightJoinB = listB.rightJoin(listA)
+  val leftJoinA: Seq[X] = listA.leftJoin(listB)
+  val rightJoinA: Seq[X] = listA.rightJoin(listB)
+  val leftJoinB: Seq[X] = listB.leftJoin(listA)
+  val rightJoinB: Seq[X] = listB.rightJoin(listA)
 }

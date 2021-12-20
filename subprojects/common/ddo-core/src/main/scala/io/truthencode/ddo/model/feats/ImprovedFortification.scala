@@ -18,13 +18,7 @@
 package io.truthencode.ddo.model.feats
 
 import io.truthencode.ddo.model.race.Race
-import io.truthencode.ddo.support.requisite.{
-  FeatRequisiteImpl,
-  RaceRequisite,
-  RequiresAnyOfRace,
-  RequiresAttribute,
-  RequiresBaB
-}
+import io.truthencode.ddo.support.requisite._
 
 /**
  * Created by adarr on 2/20/2017.

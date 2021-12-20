@@ -27,20 +27,26 @@ object FeatConverters {
 
   val featByWeaponProficiency: PartialFunction[WeaponCategory, GeneralFeat with SubFeat] = {
     case x: SimpleWeapon
-        if GeneralFeat.SimpleWeaponProficiency.subFeats.exists(p => p.displayText.contains(x.displayText)) =>
-      GeneralFeat.SimpleWeaponProficiency.subFeats.find(p => p.displayText.contains(x.displayText)) match {
+        if GeneralFeat.SimpleWeaponProficiency.subFeats.exists(p =>
+          p.displayText.contains(x.displayText)) =>
+      GeneralFeat.SimpleWeaponProficiency.subFeats.find(p =>
+        p.displayText.contains(x.displayText)) match {
         case Some(f: GeneralFeat with SubFeat) => f
       }
 
     case x: MartialWeapon
-        if GeneralFeat.MartialWeaponProficiency.subFeats.exists(p => p.displayText.contains(x.displayText)) =>
-      GeneralFeat.MartialWeaponProficiency.subFeats.find(p => p.displayText.contains(x.displayText)) match {
+        if GeneralFeat.MartialWeaponProficiency.subFeats.exists(p =>
+          p.displayText.contains(x.displayText)) =>
+      GeneralFeat.MartialWeaponProficiency.subFeats.find(p =>
+        p.displayText.contains(x.displayText)) match {
         case Some(f: GeneralFeat with SubFeat) => f
       }
 
     case x: ExoticWeapon
-        if GeneralFeat.ExoticWeaponProficiency.subFeats.exists(p => p.displayText.contains(x.displayText)) =>
-      GeneralFeat.ExoticWeaponProficiency.subFeats.find(p => p.displayText.contains(x.displayText)) match {
+        if GeneralFeat.ExoticWeaponProficiency.subFeats.exists(p =>
+          p.displayText.contains(x.displayText)) =>
+      GeneralFeat.ExoticWeaponProficiency.subFeats.find(p =>
+        p.displayText.contains(x.displayText)) match {
         case Some(f: GeneralFeat with SubFeat) => f
       }
 

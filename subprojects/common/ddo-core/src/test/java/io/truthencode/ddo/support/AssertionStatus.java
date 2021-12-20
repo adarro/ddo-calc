@@ -24,8 +24,10 @@ public class AssertionStatus {
     /**
      * Convenience method used to determine assertion status.
      * Used internally to conditionally ignore assertion based unit tests.
+     *
      * @return true if assertions are enabled.
-     */@SuppressWarnings("PMD.DataflowAnomalyAnalysis")
+     */
+    @SuppressWarnings("PMD.DataflowAnomalyAnalysis")
     public static boolean isEnabled() { //    @org.jetbrains.annotations.Contract(pure = true)
         boolean assertOn = false;
         // *assigns* true if assertions are on.

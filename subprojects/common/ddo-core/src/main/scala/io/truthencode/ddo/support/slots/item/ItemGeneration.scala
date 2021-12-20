@@ -29,16 +29,20 @@ import scala.collection.immutable
 sealed trait ItemGeneration extends EnumEntry
 
 object ItemGeneration extends Enum[ItemGeneration] {
-  case object Craftable extends Craftable
-  case object RandomLoot extends RandomLootGen
-  case object NamedLoot extends NamedLoot
   override def values: immutable.IndexedSeq[ItemGeneration] = findValues
+
+  case object Craftable extends Craftable
+
+  case object RandomLoot extends RandomLootGen
+
+  case object NamedLoot extends NamedLoot
 }
 
 /**
  * Item created or upgraded via some method of crafting.
  *
- * This usually involves a device / workstation / altar by combinining a base item with various ingredients.
+ * This usually involves a device / workstation / altar by combinining a base item with various
+ * ingredients.
  */
 trait Craftable extends ItemGeneration
 

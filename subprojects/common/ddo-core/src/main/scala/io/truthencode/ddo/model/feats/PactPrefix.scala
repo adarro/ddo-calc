@@ -24,7 +24,7 @@ import io.truthencode.ddo.support.naming.{DisplayName, FriendlyDisplay, Prefix}
  */
 protected[feats] trait PactPrefix extends Prefix {
   self: DisplayName with FriendlyDisplay =>
-  override def prefix: Option[String] = Some("Pact")
-
   override protected val prefixSeparator: String = ": "
+
+  override def prefix: Option[String] = Some("Pact")
 }

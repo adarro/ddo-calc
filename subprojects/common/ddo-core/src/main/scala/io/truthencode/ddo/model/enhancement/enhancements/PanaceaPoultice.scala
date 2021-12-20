@@ -24,12 +24,11 @@ trait PanaceaPoultice extends ApothecaryTierThree with ClassEnhancementImpl {
   override lazy val description: Option[String] = Some(
     "(Gildleaf SLA): Target ally at touch range takes the Panacea effect. (6/3/1 spell point, 12/8/6 second cooldown)."
   )
-
-  override def apCostPerRank: Int = 1
-
   /**
    * Some enhancements can be taken multiple times (generally up to three)
    */
   override val ranks: Int = 3
+
+  override def apCostPerRank: Int = 1
 
 }

@@ -10,16 +10,28 @@
 | [Immunity to Sleep](http://ddowiki.com/page/Immunity_to_Sleep "Immunity to Sleep") | Passive | Half Elves are naturally immune to magical sleep effects. | Drow Elf, Elf, Half-Elf, Sun Elf |
 
 [existingFeat]: - "c:verify-rows=#feat:verifyNonDilettante()"
+
 [_matchStrategy_]: - "c:matchStrategy=KeyMatch"
+
 [result]: - "?=#feat"
 
 ## Dilettante feats
 
-Dilettante feats are special [feats](http://ddowiki.com/page/Feat "Feat") available to [Half-Elves](http://ddowiki.com/page/Half-Elves "Half-Elves"). They enable a Half-Elf to garner some of the abilities of another class other than the class they have chosen. A Half-Elf can choose any one of these feats he or she meets the listed requirements for at [character creation](http://ddowiki.com/page/Character_creation "Character creation").
+Dilettante feats are special [feats](http://ddowiki.com/page/Feat "Feat") available
+to [Half-Elves](http://ddowiki.com/page/Half-Elves "Half-Elves"). They enable a Half-Elf to garner some of the abilities
+of another class other than the class they have chosen. A Half-Elf can choose any one of these feats he or she meets the
+listed requirements for at [character creation](http://ddowiki.com/page/Character_creation "Character creation").
 
-When retraining feats by talking to [Fred](http://ddowiki.com/page/Fred "Fred"), ability increase [tome](http://ddowiki.com/page/Tome "Tome") bonuses are NOT counted for prerequisites, however, ability increases from <span class="has_tooltip" style="cursor: pointer; border-bottom: 1px dashed #999999;">[level-up](http://ddowiki.com/page/Ability "Ability")<span class="tooltip" style="z-index: 10000; border: 1px solid #333333; background-color: #EEEEEE; border-radius: 3px; box-shadow: 3px 5px 10px; top: 14px; left: -125px; text-align: center; padding: 5px; width: 250px; max-width: 450px; cursor: text; margin: 0px;" data-skip="true">Characters can increase an [ability](http://ddowiki.com/page/Ability "Ability") by one at levels: 4, 8, 12, 16, 20, and 24.</span></span> ARE counted. [(Nov 2012 forum post)](http://forums.ddo.com/showthread.php?t=399599)
+When retraining feats by talking to [Fred](http://ddowiki.com/page/Fred "Fred"), ability
+increase [tome](http://ddowiki.com/page/Tome "Tome") bonuses are NOT counted for prerequisites, however, ability
+increases
+from <span class="has_tooltip" style="cursor: pointer; border-bottom: 1px dashed #999999;">[level-up](http://ddowiki.com/page/Ability "Ability")<span class="tooltip" style="z-index: 10000; border: 1px solid #333333; background-color: #EEEEEE; border-radius: 3px; box-shadow: 3px 5px 10px; top: 14px; left: -125px; text-align: center; padding: 5px; width: 250px; max-width: 450px; cursor: text; margin: 0px;" data-skip="true">
+Characters can increase an [ability](http://ddowiki.com/page/Ability "Ability") by one at levels: 4, 8, 12, 16, 20, and
+24.</span></span> ARE counted. [(Nov 2012 forum post)](http://forums.ddo.com/showthread.php?t=399599)
 
-Along with various bonuses, you, with these feats, count as a level one of the class for item use purposes (class restricted items, [scrolls](http://ddowiki.com/page/Scroll "Scroll") and [wands](http://ddowiki.com/page/Wand "Wand")). These feats are not recommended for characters with actual levels of the class.
+Along with various bonuses, you, with these feats, count as a level one of the class for item use purposes (class
+restricted items, [scrolls](http://ddowiki.com/page/Scroll "Scroll") and [wands](http://ddowiki.com/page/Wand "Wand")).
+These feats are not recommended for characters with actual levels of the class.
 
 | [ ][existingDilettanteFeat] [Feats][result]| Type | Description | Prerequisites |
 |---|---|----|---|
@@ -39,5 +51,7 @@ Along with various bonuses, you, with these feats, count as a level one of the c
 | [Half-Elf Dilettante: Wizard](http://ddowiki.com/page/Half-Elf_Dilettante:_Wizard "Half-Elf Dilettante: Wizard") | Passive | Able to use wands and scrolls as if you were a level one wizard. |*   Half-Elf*   13 Intelligence |
 
 [existingDilettanteFeat]: - "c:verify-rows=#feat:verifyDilettante()"
+
 [_matchStrategy_]: - "c:matchStrategy=KeyMatch"
+
 [result]: - "?=#feat"

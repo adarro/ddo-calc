@@ -30,8 +30,8 @@ import scala.collection.immutable
  * Created by adarr on 4/6/2017.
  */
 trait ImprovedMartialArts
-  extends FeatRequisiteImpl with FreeFeat with RequiresAllOfFeat with ClassRequisiteImpl with RequiresAllOfClass
-  with RequiresAttribute with ClassRestricted { self: EpicFeat =>
+  extends FeatRequisiteImpl with FreeFeat with RequiresAllOfFeat with ClassRequisiteImpl
+  with RequiresAllOfClass with RequiresAttribute with ClassRestricted { self: EpicFeat =>
   override def allOfClass: immutable.Seq[(HeroicCharacterClass, Int)] =
     List((Monk, 12))
 

@@ -22,14 +22,16 @@ import io.truthencode.ddo.support.naming.{DisplayName, UsingSearchPrefix}
 trait UsingSkillSearchPrefix extends UsingSearchPrefix {
   self: DisplayName =>
 
-  private val defaultDelimiter = Skill.delimiter.getOrElse("")
   /**
-   * Adds the search prefix used for uniquely identifying and disambiguating the skill in cases of a name conflict. Also
-   * aids object creation when associating the Parent Entity
+   * Adds the search prefix used for uniquely identifying and disambiguating the skill in cases of a
+   * name conflict. Also aids object creation when associating the Parent Entity
    */
   override val withPrefix: String = s"$searchPrefix$nameSource"
+  private val defaultDelimiter = Skill.delimiter.getOrElse("")
+
   /**
-   * Used when qualifying a search with a prefix. Examples include finding "HalfElf" from qualified "Race:HalfElf"
+   * Used when qualifying a search with a prefix. Examples include finding "HalfElf" from qualified
+   * "Race:HalfElf"
    *
    * @return
    *   A default or applied prefix

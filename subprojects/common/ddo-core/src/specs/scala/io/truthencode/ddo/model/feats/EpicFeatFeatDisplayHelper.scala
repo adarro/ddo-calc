@@ -20,7 +20,8 @@ import java.util
 import scala.jdk.CollectionConverters.SeqHasAsJava
 
 /**
- * Verifies basic creation of Epic Feats, categorized as per [[http://ddowiki.com/page/Epic_Feats ddo Epic Feats]].
+ * Verifies basic creation of Epic Feats, categorized as per
+ * [[http://ddowiki.com/page/Epic_Feats ddo Epic Feats]].
  */
 trait EpicFeatFeatDisplayHelper extends FeatDisplayHelper {
 

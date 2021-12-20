@@ -31,12 +31,16 @@ import io.truthencode.ddo.support.naming.UsingSearchPrefix
 trait SpellCriticalPercentFeature extends Features {
   self: SourceInfo =>
   protected val spellCriticalBonusType: BonusType
-
-  private val src = this
   protected[this] val schoolCritical: Seq[(SpellPower, Int)]
   protected[this] val triggerOn: Seq[TriggerEvent]
   protected[this] val triggerOff: Seq[TriggerEvent]
   protected[this] val spellCriticalCategories: Seq[effect.EffectCategories.Value]
+  private val src = this
+
+  abstract override def features: Seq[Feature[_]] = {
+    super.features ++ spellCriticalPercentChance
+  }
+
   private[this] def spellCriticalPercentChance: Seq[Feature[_]] = {
     for {
       (s, a) <- schoolCritical
@@ -95,10 +99,6 @@ trait SpellCriticalPercentFeature extends Features {
         override def searchPrefixSource: String = partToModify.searchPrefixSource
       }
     }
-  }
-
-  abstract override def features: Seq[Feature[_]] = {
-    super.features ++ spellCriticalPercentChance
   }
 
 }

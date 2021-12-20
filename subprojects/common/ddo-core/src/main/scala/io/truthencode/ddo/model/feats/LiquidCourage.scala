@@ -28,7 +28,8 @@ import io.truthencode.ddo.support.requisite.{ClassRequisiteImpl, FeatRequisiteIm
  *   [[https://ddowiki.com/page/Liquid_Courage]]
  */
 protected[feats] trait LiquidCourage
-  extends FeatRequisiteImpl with ClassRequisiteImpl with RequiresAllOfClass with AlchemistBonusFeat with Passive {
+  extends FeatRequisiteImpl with ClassRequisiteImpl with RequiresAllOfClass with AlchemistBonusFeat
+  with Passive {
   self: ClassFeat =>
   private[this] val cls = (Alchemist, 8)
 

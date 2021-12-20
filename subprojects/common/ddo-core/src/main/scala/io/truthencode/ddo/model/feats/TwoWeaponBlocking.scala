@@ -20,10 +20,12 @@ package io.truthencode.ddo.model.feats
 import io.truthencode.ddo.support.requisite.{FeatRequisiteImpl, RequiresAllOfFeat}
 
 /**
- * Icon Feat Two Weapon Blocking.png Two Weapon Blocking Passive Increases amount of damage you can block when defending
- * with two weapons. ( This bonus does not apply when fighting unarmed/with handwraps.) * Two Weapon Fighting
+ * Icon Feat Two Weapon Blocking.png Two Weapon Blocking Passive Increases amount of damage you can
+ * block when defending with two weapons. ( This bonus does not apply when fighting unarmed/with
+ * handwraps.) * Two Weapon Fighting
  */
-trait TwoWeaponBlocking extends FeatRequisiteImpl with Passive with RequiresAllOfFeat with FighterBonusFeat {
+trait TwoWeaponBlocking
+  extends FeatRequisiteImpl with Passive with RequiresAllOfFeat with FighterBonusFeat {
   self: GeneralFeat =>
   override def allOfFeats: Seq[GeneralFeat] = List(GeneralFeat.TwoWeaponFighting)
 }

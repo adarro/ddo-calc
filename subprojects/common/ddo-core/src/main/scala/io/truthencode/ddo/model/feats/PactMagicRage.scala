@@ -25,11 +25,11 @@ import io.truthencode.ddo.support.requisite.{FeatRequisiteImpl, GrantsToClass, R
  * Adds the spell Rage to your spellbook @ Level 2
  */
 protected[feats] trait PactMagicRage
-  extends FeatRequisiteImpl with Passive with RequiresAllOfClass with GrantsToClass with PactMagicPrefix
-  with RequiresAllOfFeat { self: ClassFeat =>
-  override protected def nameSource: String = "Rage"
-
+  extends FeatRequisiteImpl with Passive with RequiresAllOfClass with GrantsToClass
+  with PactMagicPrefix with RequiresAllOfFeat { self: ClassFeat =>
   override def grantToClass: Seq[(HeroicCharacterClass, Int)] = List((Warlock, 5))
 
   override def allOfFeats: Seq[Feat] = List(ClassFeat.PactFiend)
+
+  override protected def nameSource: String = "Rage"
 }

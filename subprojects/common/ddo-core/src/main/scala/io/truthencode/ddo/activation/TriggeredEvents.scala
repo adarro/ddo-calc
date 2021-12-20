@@ -25,46 +25,53 @@ import io.truthencode.ddo.model.feats.Toggle
  * Occurs on every attack
  */
 trait AttackEvent extends TriggeredActivation {
-  abstract override def activatableTriggers: Seq[TriggerEvent] = super.activatableTriggers :+ OnAttack
+  abstract override def activatableTriggers: Seq[TriggerEvent] =
+    super.activatableTriggers :+ OnAttack
 }
 
 /**
  * Occurs on a specific range of attack rolls
  */
 trait AttackRollEvent extends TriggeredActivation {
-  abstract override def activatableTriggers: Seq[TriggerEvent] = super.activatableTriggers :+ OnAttackRoll
+  abstract override def activatableTriggers: Seq[TriggerEvent] =
+    super.activatableTriggers :+ OnAttackRoll
 }
 
 /**
  * Occurs when you are damaged (hit)
  */
 trait OnDamageEvent extends TriggeredActivation {
-  abstract override def activatableTriggers: Seq[TriggerEvent] = super.activatableTriggers :+ OnDamage
+  abstract override def activatableTriggers: Seq[TriggerEvent] =
+    super.activatableTriggers :+ OnDamage
 }
 
 /**
  * Occurs when you are hit by a spell
  */
 trait OnSpellHitEvent extends TriggeredActivation {
-  abstract override def activatableTriggers: Seq[TriggerEvent] = super.activatableTriggers :+ OnSpellHit
+  abstract override def activatableTriggers: Seq[TriggerEvent] =
+    super.activatableTriggers :+ OnSpellHit
 }
 
 trait HealthyEvent extends TriggeredActivation {
-  abstract override def activatableTriggers: Seq[TriggerEvent] = super.activatableTriggers :+ OnHealthy
+  abstract override def activatableTriggers: Seq[TriggerEvent] =
+    super.activatableTriggers :+ OnHealthy
 }
 
 /**
  * Occurs when you cast a spell
  */
 trait OnSpellCastEvent extends TriggeredActivation {
-  abstract override def activatableTriggers: Seq[TriggerEvent] = super.activatableTriggers :+ OnSpellCast
+  abstract override def activatableTriggers: Seq[TriggerEvent] =
+    super.activatableTriggers :+ OnSpellCast
 }
 
 /**
  * Occurs when you cast a spell like ability
  */
 trait OnSpellLikeAbilityEvent extends TriggeredActivation {
-  abstract override def activatableTriggers: Seq[TriggerEvent] = super.activatableTriggers :+ OnSpellLikeAbility
+  abstract override def activatableTriggers: Seq[TriggerEvent] =
+    super.activatableTriggers :+ OnSpellLikeAbility
 }
 
 trait OnSongPlayedEvent extends TriggeredActivation {
@@ -76,7 +83,8 @@ trait OnSongPlayedEvent extends TriggeredActivation {
  * Occurs when you are killed
  */
 trait OnDeathEvent extends TriggeredActivation {
-  abstract override def activatableTriggers: Seq[TriggerEvent] = super.activatableTriggers :+ OnDeath
+  abstract override def activatableTriggers: Seq[TriggerEvent] =
+    super.activatableTriggers :+ OnDeath
 }
 
 /**
@@ -85,7 +93,8 @@ trait OnDeathEvent extends TriggeredActivation {
  * Hit points fall below 0
  */
 trait OnIncapacitatedEvent extends TriggeredActivation {
-  abstract override def activatableTriggers: Seq[TriggerEvent] = super.activatableTriggers :+ OnIncapacitated
+  abstract override def activatableTriggers: Seq[TriggerEvent] =
+    super.activatableTriggers :+ OnIncapacitated
 }
 
 /**
@@ -99,7 +108,8 @@ trait OnRestEvent extends TriggeredActivation {
  * Player can toggle this effect on / off
  */
 trait OnToggleEvent extends TriggeredActivation with Toggle {
-  abstract override def activatableTriggers: Seq[TriggerEvent] = super.activatableTriggers :+ OnToggle
+  abstract override def activatableTriggers: Seq[TriggerEvent] =
+    super.activatableTriggers :+ OnToggle
 }
 
 trait AtWillEvent extends TriggeredActivation {

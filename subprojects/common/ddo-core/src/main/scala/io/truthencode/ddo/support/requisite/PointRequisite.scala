@@ -18,11 +18,7 @@
 package io.truthencode.ddo.support.requisite
 
 import io.truthencode.ddo.support.points.SpendablePoints
-import io.truthencode.ddo.support.requisite.RequirementImplicits.{
-  pointToReq,
-  progressionToReq,
-  progressionWithPointsToReq
-}
+import io.truthencode.ddo.support.requisite.RequirementImplicits.{pointToReq, progressionWithPointsToReq}
 import io.truthencode.ddo.support.tree.TreeLike
 
 /**
@@ -34,8 +30,8 @@ sealed trait PointRequisite {
 }
 
 /**
- * Represents a progression in a given area such as 20 action points spent in a particular tree to qualify for an
- * enhancement.
+ * Represents a progression in a given area such as 20 action points spent in a particular tree to
+ * qualify for an enhancement.
  */
 sealed trait PointInTreeRequisite extends PointRequisite {
   self: Requisite =>
@@ -79,23 +75,27 @@ trait PointsInTreeRequisiteImpl extends MustContainImpl[Requirement] with PointI
   override def progressionInTree: Seq[(TreeLike, SpendablePoints, Int)] = Nil
 }
 
-trait RequiresPointsInTree extends PointInTreeRequisite with RequiresAllOf[Requirement] with Requisite {
+trait RequiresPointsInTree
+  extends PointInTreeRequisite with RequiresAllOf[Requirement] with Requisite {
 
   abstract override def allOf: Seq[Requirement] = super.allOf ++ {
     progressionInTree.collect(progressionWithPointsToReq)
   }
 }
 
-trait PointsAvailableRequisiteImpl extends MustContainImpl[Requirement] with PointsAvailableRequisite {
+trait PointsAvailableRequisiteImpl
+  extends MustContainImpl[Requirement] with PointsAvailableRequisite {
   self: Requisite with RequisiteType =>
   override def pointsAvailable: Seq[(SpendablePoints, Int)] = Nil
 }
 
 /**
- * Denotes the amount of points needed (or that must be available) to acquire this Enhancement. This is less specific
- * than [[RequiresPointsInTree]], which specifics the amount of points spent in a specific tree.
+ * Denotes the amount of points needed (or that must be available) to acquire this Enhancement. This
+ * is less specific than [[RequiresPointsInTree]], which specifics the amount of points spent in a
+ * specific tree.
  */
-trait RequiresPointsAvailable extends PointsAvailableRequisite with RequiresAllOf[Requirement] with Requisite {
+trait RequiresPointsAvailable
+  extends PointsAvailableRequisite with RequiresAllOf[Requirement] with Requisite {
 
   abstract override def allOf: Seq[Requirement] = super.allOf ++ {
     pointsAvailable.collect(pointToReq)

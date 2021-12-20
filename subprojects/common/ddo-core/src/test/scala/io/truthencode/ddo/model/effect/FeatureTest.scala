@@ -23,12 +23,7 @@ import io.truthencode.ddo.enhancement.BonusType
 import io.truthencode.ddo.model.effect.Feature.printFeature
 import io.truthencode.ddo.model.effect.features.SkillEffect
 import io.truthencode.ddo.model.feats.{Feat, GeneralFeat}
-import io.truthencode.ddo.model.item.weapon.WeaponCategory.{
-  filterByWeaponClass,
-  icPlus1,
-  icPlus2,
-  icPlus3
-}
+import io.truthencode.ddo.model.item.weapon.WeaponCategory.{filterByWeaponClass, icPlus1, icPlus2, icPlus3}
 import io.truthencode.ddo.model.item.weapon.WeaponClass
 import io.truthencode.ddo.model.skill.Skill.{Listen, Spot}
 import io.truthencode.ddo.model.stats.{BasicStat, MissChance}
@@ -44,6 +39,14 @@ import scala.util.{Success, Try}
 
 class FeatureTest extends AnyFunSpec with Matchers with MockitoSugar with LazyLogging {
 
+  val featEffects: Unit = {
+    val fList = for {
+      feat <- Feat.values
+      features <- feat.namedFeatures
+      feature <- features._2
+    } yield (feat, feature)
+  }
+
   def fixture = new {
     val sourceInfo: SourceInfo = SourceInfo("TestContext", this)
   }
@@ -55,14 +58,6 @@ class FeatureTest extends AnyFunSpec with Matchers with MockitoSugar with LazyLo
       case Some(_) => Some(t, n)
       case _ => None
     }
-  }
-
-  val featEffects: Unit = {
-    val fList = for {
-      feat <- Feat.values
-      features <- feat.namedFeatures
-      feature <- features._2
-    } yield (feat, feature)
   }
 
   describe("A feature") {

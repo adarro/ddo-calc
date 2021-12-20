@@ -25,12 +25,7 @@ import io.truthencode.ddo.model.effect
 import io.truthencode.ddo.model.effect.TriggerEvent
 import io.truthencode.ddo.model.effect.features.{FeaturesImpl, GrantAbilityFeature}
 import io.truthencode.ddo.model.misc.DefaultCoolDown
-import io.truthencode.ddo.support.requisite.{
-  ClassRequisiteImpl,
-  FeatRequisiteImpl,
-  FreeFeat,
-  GrantsToClass
-}
+import io.truthencode.ddo.support.requisite.{ClassRequisiteImpl, FeatRequisiteImpl, FreeFeat, GrantsToClass}
 
 /**
  * [[https://ddowiki.com/page/Dismiss_Charm Dismiss Charm]] Activate this short-ranged ability while
@@ -45,15 +40,15 @@ protected[feats] trait DismissCharm
   with ClassRequisiteImpl with GrantsToClass with FeaturesImpl with GrantAbilityFeature {
   self: GeneralFeat =>
 
-  override def grantToClass: Seq[(HeroicCharacterClass, Int)] =
-    HeroicCharacterClass.values.map((_, 1))
-
-  override val grantBonusType: BonusType = BonusType.Feat
   override lazy val grantedAbility: ActiveAbilities = ActiveAbilities.DismissCharm
+  override val grantBonusType: BonusType = BonusType.Feat
   override protected[this] val triggerOn: Seq[TriggerEvent] = Seq(TriggerEvent.OnToggle)
   override protected[this] val triggerOff: Seq[TriggerEvent] = Seq(TriggerEvent.OnToggle)
   override protected[this] val grantAbilityCategories: Seq[effect.EffectCategories.Value] = Seq(
     effect.EffectCategories.Ability)
   override val abilityId: String = "DismissCharm"
   override val description: String = "Creates ability to dismiss some charmed mobs."
+
+  override def grantToClass: Seq[(HeroicCharacterClass, Int)] =
+    HeroicCharacterClass.values.map((_, 1))
 }

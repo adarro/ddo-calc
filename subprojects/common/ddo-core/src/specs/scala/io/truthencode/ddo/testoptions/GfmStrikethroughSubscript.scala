@@ -17,9 +17,7 @@
  */
 package io.truthencode.ddo.testoptions
 
-import _root_.io.truthencode.ddo.testoptions.Flexmark._
 import com.vladsch.flexmark.ext.gfm.strikethrough.StrikethroughSubscriptExtension
-import com.vladsch.flexmark.ext.gfm.tasklist.{TaskListExtension, TaskListItemPlacement}
 import com.vladsch.flexmark.util.data.MutableDataSet
 import com.vladsch.flexmark.util.misc.Extension
 

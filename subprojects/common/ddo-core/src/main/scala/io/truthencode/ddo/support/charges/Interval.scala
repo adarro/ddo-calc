@@ -22,7 +22,8 @@ import enumeratum.{Enum, EnumEntry}
 import scala.collection.immutable
 
 /**
- * Represents the timespan or interval which triggers a charge to be recovered such as Rest or Duration
+ * Represents the timespan or interval which triggers a charge to be recovered such as Rest or
+ * Duration
  */
 sealed trait Interval extends EnumEntry
 

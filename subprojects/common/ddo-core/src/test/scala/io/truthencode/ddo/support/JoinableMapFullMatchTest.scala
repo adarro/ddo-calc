@@ -21,8 +21,9 @@ import io.truthencode.ddo.model.feats.Feat
 import org.scalatest.funspec.AnyFunSpec
 import org.scalatest.matchers.should.Matchers
 
-class JoinableMapFullMatchTest extends AnyFunSpec with Matchers with JoinAbleMap[String, Feat, Map[String, Feat]] {
-  override implicit val joinOnKeys: Boolean = false
+class JoinableMapFullMatchTest
+  extends AnyFunSpec with Matchers with JoinAbleMap[String, Feat, Map[String, Feat]] {
+  implicit override val joinOnKeys: Boolean = false
 
   override lazy val source = Feat.values.map { v =>
     v.displayText -> v

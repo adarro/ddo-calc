@@ -26,24 +26,27 @@ import io.truthencode.ddo.model.misc.DefaultCoolDown
 import io.truthencode.ddo.support.requisite.{FeatRequisiteImpl, RequiresAllOfFeat}
 
 /**
- * Icon Feat Improved Sunder.png [[https://ddowiki.com/page/Improved_Sunder Improved Sunder]] Active - Special Attack
- * This melee special attack results in a -5 AC penalty and -10% fortification to the target for 24 seconds, if the
- * target fails a Fortitude save (DC 14 + Str mod). Whether successful or unsuccessful, this attack will also reduce an
- * enemy's Fortitude saves by 3, stacking up to 5 times. Some creatures may be immune to the sunder effect.
+ * Icon Feat Improved Sunder.png [[https://ddowiki.com/page/Improved_Sunder Improved Sunder]] Active
+ * - Special Attack This melee special attack results in a -5 AC penalty and -10% fortification to
+ * the target for 24 seconds, if the target fails a Fortitude save (DC 14 + Str mod). Whether
+ * successful or unsuccessful, this attack will also reduce an enemy's Fortitude saves by 3,
+ * stacking up to 5 times. Some creatures may be immune to the sunder effect.
  *
  * Sunder Power Attack
  */
 protected[feats] trait ImprovedSunder
-  extends FeatRequisiteImpl with ActiveFeat with RequiresAllOfFeat with FighterBonusFeat with Tactical
-  with DefaultCoolDown with MartialArtsFeat with FeaturesImpl with GrantAbilityFeature {
+  extends FeatRequisiteImpl with ActiveFeat with RequiresAllOfFeat with FighterBonusFeat
+  with Tactical with DefaultCoolDown with MartialArtsFeat with FeaturesImpl
+  with GrantAbilityFeature {
   self: GeneralFeat =>
+  override lazy val grantedAbility: ActiveAbilities = ActiveAbilities.ImprovedSunder
   override protected[this] val triggerOn: Seq[TriggerEvent] = Seq(TriggerEvent.AtWill)
   override protected[this] val triggerOff: Seq[TriggerEvent] = Seq(TriggerEvent.OnCoolDown)
-  override protected[this] val grantAbilityCategories: Seq[effect.EffectCategories.Value] = Seq(effect.EffectCategories.Ability)
+  override protected[this] val grantAbilityCategories: Seq[effect.EffectCategories.Value] = Seq(
+    effect.EffectCategories.Ability)
   override val abilityId: String = "Sunder"
   override val description: String =
     "This melee special attack, when successful, results in a -5 AC penalty to the target for 24 seconds"
   override val allOfFeats = List(GeneralFeat.Sunder, GeneralFeat.PowerAttack)
   override val grantBonusType: BonusType = BonusType.Feat
-  override lazy val grantedAbility: ActiveAbilities = ActiveAbilities.ImprovedSunder
 }

@@ -30,9 +30,9 @@ trait ArmorClassPercentFeature extends Features {
   self: SourceInfo =>
   protected val armorBonusType: BonusType
   protected val armorBonusAmount: Int
-  private val src = this
   protected[this] val triggerOn: Seq[TriggerEvent]
   protected[this] val triggerOff: Seq[TriggerEvent]
+  private val src = this
   private[this] val armorChance =
     new PartModifier[Int, BasicStat with MissChance] with UsingSearchPrefix {
 

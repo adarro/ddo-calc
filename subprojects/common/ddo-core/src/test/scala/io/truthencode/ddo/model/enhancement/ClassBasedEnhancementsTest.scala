@@ -24,7 +24,8 @@ import org.scalatest.matchers.should.Matchers
 class ClassBasedEnhancementsTest extends AnyFunSpec with Matchers with LazyLogging {
   describe("Single Values") {
     they("should exist for each class") {
-      val f: Option[ClassBasedEnhancements] = ClassBasedEnhancements.withNameOption("FighterEnhancement")
+      val f: Option[ClassBasedEnhancements] =
+        ClassBasedEnhancements.withNameOption("FighterEnhancement")
       f shouldNot be(empty)
       Some("test") shouldNot be(empty)
     }

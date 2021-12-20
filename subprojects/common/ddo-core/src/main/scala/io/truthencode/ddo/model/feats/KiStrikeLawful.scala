@@ -22,15 +22,17 @@ import io.truthencode.ddo.model.classes.HeroicCharacterClass.Monk
 import io.truthencode.ddo.support.requisite.{FeatRequisiteImpl, GrantsToClass, RequiresAllOfClass}
 
 /**
- * [[http://ddowiki.com/page/Ki_Strike:_Magic]] All of your unarmed melee attacks are empowered with ki and are
- * considered magical for damage reduction purposes.
+ * [[http://ddowiki.com/page/Ki_Strike:_Magic]] All of your unarmed melee attacks are empowered with
+ * ki and are considered magical for damage reduction purposes.
  */
 protected[feats] trait KiStrikeLawful
-  extends FeatRequisiteImpl with Passive with GrantsToClass with KiStrikePrefix with RequiresAllOfClass {
+  extends FeatRequisiteImpl with Passive with GrantsToClass with KiStrikePrefix
+  with RequiresAllOfClass {
   self: ClassFeat =>
 
-  override protected def nameSource: String = "Lawful"
-
   override def grantToClass: Seq[(HeroicCharacterClass, Int)] = List((Monk, 10))
+
   override def allOfClass: Seq[(HeroicCharacterClass, Int)] = List((Monk, 10))
+
+  override protected def nameSource: String = "Lawful"
 }

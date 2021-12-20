@@ -17,10 +17,10 @@
  */
 package io.truthencode.ddo.model.feats
 
+import io.truthencode.ddo.model.FeatConverters.featByWeaponProficiency
 import io.truthencode.ddo.model.classes.HeroicCharacterClass
 import io.truthencode.ddo.model.classes.HeroicCharacterClass.Artificer
 import io.truthencode.ddo.model.item.weapon.WeaponCategory
-import io.truthencode.ddo.model.FeatConverters.featByWeaponProficiency
 import io.truthencode.ddo.support.requisite.{FeatRequisiteImpl, GrantsToClass, RequiresAllOfFeat}
 
 /**
@@ -29,7 +29,8 @@ import io.truthencode.ddo.support.requisite.{FeatRequisiteImpl, GrantsToClass, R
  * Proficiency: Light Crossbows
  */
 protected[feats] trait RapidReload
-  extends FeatRequisiteImpl with Passive with RequiresAllOfFeat with GrantsToClass with FighterBonusFeat {
+  extends FeatRequisiteImpl with Passive with RequiresAllOfFeat with GrantsToClass
+  with FighterBonusFeat {
   self: ClassFeat =>
   override def grantToClass: Seq[(HeroicCharacterClass, Int)] = List((Artificer, 1))
 

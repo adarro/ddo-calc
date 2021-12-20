@@ -38,44 +38,47 @@ trait HitChancePercentFeature extends Features {
     new PartModifier[Int, BasicStat] with UsingSearchPrefix {
 
       /**
-       * Used when qualifying a search with a prefix. Examples include finding "HalfElf" from qualified "Race:HalfElf"
+       * Used when qualifying a search with a prefix. Examples include finding "HalfElf" from
+       * qualified "Race:HalfElf"
        *
        * @return
        *   A default or applied prefix
        */
       override def searchPrefixSource: String = partToModify.searchPrefixSource
 
-      lazy override protected[this] val partToModify: BasicStat =
+      override protected[this] lazy val partToModify: BasicStat =
         BasicStat.ToHitChance
 
       /**
-       * The General Description should be just that. This should not include specific values unless all instances will
-       * share that value. I.e. a Dodge Effect might state it increases your miss-chance, but omit any value such as
-       * 20%. Those values will be displayed in the effectText of a specific implementation such as the Dodge Feat or
-       * Uncanny Dodge
+       * The General Description should be just that. This should not include specific values unless
+       * all instances will share that value. I.e. a Dodge Effect might state it increases your
+       * miss-chance, but omit any value such as 20%. Those values will be displayed in the
+       * effectText of a specific implementation such as the Dodge Feat or Uncanny Dodge
        */
-      override val generalDescription: String = "Increases your chance to hit by a certain percentage"
+      override val generalDescription: String =
+        "Increases your chance to hit by a certain percentage"
 
       /**
-       * a list of Categories useful for menu / UI placement and also for searching / querying for Miss-Chance or other
-       * desired effects.
+       * a list of Categories useful for menu / UI placement and also for searching / querying for
+       * Miss-Chance or other desired effects.
        *
-       * This list might be constrained or filtered by an Enumeration or CSV file. The goal is to enable quick and
-       * advanced searching for specific categories from general (Miss-Chance) to specific (evasion). In addition, it
-       * may be useful for deep searching such as increasing Spot, which should suggest not only +Spot items, but
-       * +Wisdom or eventually include a feat or enhancement that allows the use of some other value as your spot score.
+       * This list might be constrained or filtered by an Enumeration or CSV file. The goal is to
+       * enable quick and advanced searching for specific categories from general (Miss-Chance) to
+       * specific (evasion). In addition, it may be useful for deep searching such as increasing
+       * Spot, which should suggest not only +Spot items, but +Wisdom or eventually include a feat
+       * or enhancement that allows the use of some other value as your spot score.
        */
       override def categories: Seq[String] = hitChanceCategories.map(_.toString)
 
-        private val eb = EffectParameterBuilder()
-            .toggleOffValue(triggerOff: _*)
-            .toggleOnValue(triggerOn: _*)
-            .addBonusType(hitChanceBonusType)
-            .build
+      private val eb = EffectParameterBuilder()
+        .toggleOffValue(triggerOff: _*)
+        .toggleOnValue(triggerOn: _*)
+        .addBonusType(hitChanceBonusType)
+        .build
 
-        override protected[this] def effectParameters: Seq[ParameterModifier[_]] = eb.modifiers
+      override protected[this] def effectParameters: Seq[ParameterModifier[_]] = eb.modifiers
 
-      lazy override val effectDetail: DetailedEffect = DetailedEffect(
+      override lazy val effectDetail: DetailedEffect = DetailedEffect(
         id = "ArmorClass",
         description = "Adds damage to critical hits",
         triggersOn = triggerOn.map(_.entryName),

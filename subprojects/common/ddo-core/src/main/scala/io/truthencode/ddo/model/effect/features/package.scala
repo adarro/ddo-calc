@@ -25,26 +25,14 @@ import io.truthencode.ddo.support.StringUtils.IntExtensions
 package object features {
 
   case class SkillEffect(
-                            skill: Skill,
-                            override val value: Int,
-                            bonusType: BonusType,
-                            override val source: SourceInfo,
-                            override val categories: Seq[String],
-                            override val effectParameters: Seq[ParameterModifier[_]],
-                            effectDetail: DetailedEffect)
+    skill: Skill,
+    override val value: Int,
+    bonusType: BonusType,
+    override val source: SourceInfo,
+    override val categories: Seq[String],
+    override val effectParameters: Seq[ParameterModifier[_]],
+    effectDetail: DetailedEffect)
     extends PartModifier[Int, Skill] with UsingSkillSearchPrefix {
-
-    /**
-     * The General Description should be just that. This should not include specific values unless
-     * all instances will share that value. I.e. a Dodge Effect might state it increases your
-     * miss-chance, but omit any value such as 20%. Those values will be displayed in the effectText
-     * of a specific implementation such as the Dodge Feat or Uncanny Dodge
-     */
-    override val generalDescription: String = "Increases a particular skill"
-
-    override protected[this] lazy val partToModify: Skill =
-      skill
-    //    override lazy val name: Option[String] = Some(skill.withPrefix)
 
     /**
      * The main name of the effect.
@@ -59,6 +47,16 @@ package object features {
     override lazy val effectText: Option[String] = Some(
       s"provides a ${value.numberToSignedText} ${bonusType.entryName} bonus to ${partToModify.entryName}"
     )
+    //    override lazy val name: Option[String] = Some(skill.withPrefix)
+    override protected[this] lazy val partToModify: Skill =
+      skill
+    /**
+     * The General Description should be just that. This should not include specific values unless
+     * all instances will share that value. I.e. a Dodge Effect might state it increases your
+     * miss-chance, but omit any value such as 20%. Those values will be displayed in the effectText
+     * of a specific implementation such as the Dodge Feat or Uncanny Dodge
+     */
+    override val generalDescription: String = "Increases a particular skill"
 
     //    override protected[this] def parameters: Seq[ParameterModifier[Int, _]] = effectParameters
   }

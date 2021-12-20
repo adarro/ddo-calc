@@ -40,11 +40,11 @@ trait DodgeChanceFeature extends Features {
   private[this] val dodgeChance =
     new PartModifier[Int, BasicStat with MissChance] with UsingSearchPrefix {
 
-        override protected[this] lazy val partToModify: BasicStat with MissChance =
+      override protected[this] lazy val partToModify: BasicStat with MissChance =
         BasicStat.DodgeChance
-        override lazy val part: Try[EffectPart] = Success(EffectPart.MissChanceEffect(partToModify))
+      override lazy val part: Try[EffectPart] = Success(EffectPart.MissChanceEffect(partToModify))
 
-        private lazy val eb = EffectParameterBuilder()
+      private lazy val eb = EffectParameterBuilder()
         .toggleOffValue(triggerOff: _*)
         .toggleOnValue(triggerOn: _*)
         .addBonusType(dodgeBonusType)

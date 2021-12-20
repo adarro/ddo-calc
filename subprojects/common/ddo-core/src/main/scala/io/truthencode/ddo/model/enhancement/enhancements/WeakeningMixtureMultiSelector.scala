@@ -18,33 +18,33 @@
 package io.truthencode.ddo.model.enhancement.enhancements
 
 import io.truthencode.ddo.model.enhancement.enhancements.classbased.BombardierTierFive
-import io.truthencode.ddo.support.naming.{DisplayProperties, FriendlyDisplay, SLAPrefix, WeakeningMixturePrefix}
+import io.truthencode.ddo.support.naming.{DisplayProperties, FriendlyDisplay, WeakeningMixturePrefix}
 
 import scala.collection.immutable
 
 trait WeakeningMixtureMultiSelector
-  extends BombardierTierFive with ClassEnhancementImpl with WeakeningMixturePrefix with SubEnhancement
-  with DisplayProperties with FriendlyDisplay with MultiSelectorKeyGeneratorImpl {
-  def element: String
-
+  extends BombardierTierFive with ClassEnhancementImpl with WeakeningMixturePrefix
+  with SubEnhancement with DisplayProperties with FriendlyDisplay
+  with MultiSelectorKeyGeneratorImpl {
   override lazy val description: Option[String] = Some(
     s"Throw a vial that explodes with ($element) on impact, dealing 1d6+3 (element) damage per Caster Level to all enemies nearby. (Max Caster Level 10)"
   )
-  override def displayText: String = withPrefix.getOrElse("") + nameSource
-
-  /**
-   * Some enhancements have multiple ranks. This is the cost for each rank. Older versions had increasing costs which
-   * has been streamlined to a linear progression.
-   *
-   * @return
-   */
-  override def apCostPerRank: Int = 1
-
+  protected lazy val keys: immutable.Seq[String] =
+    keyList.map(v => s"$prefix$v")
   /**
    * Some enhancements can be taken multiple times (generally up to three)
    */
   override val ranks: Int = 1
 
-  protected lazy val keys: immutable.Seq[String] =
-    keyList.map(v => s"$prefix$v")
+  def element: String
+
+  override def displayText: String = withPrefix.getOrElse("") + nameSource
+
+  /**
+   * Some enhancements have multiple ranks. This is the cost for each rank. Older versions had
+   * increasing costs which has been streamlined to a linear progression.
+   *
+   * @return
+   */
+  override def apCostPerRank: Int = 1
 }

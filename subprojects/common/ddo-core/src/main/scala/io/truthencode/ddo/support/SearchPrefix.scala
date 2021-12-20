@@ -22,11 +22,14 @@ package io.truthencode.ddo.support
  */
 trait SearchPrefix {
   /**
-   * Used when qualifying a search with a prefix. Examples include finding "HalfElf" from qualified "Race:HalfElf"
+   * Used when qualifying a search with a prefix. Examples include finding "HalfElf" from qualified
+   * "Race:HalfElf"
    * @return
    *   A default or applied prefix
    */
   def searchPrefixSource: String
+
+  def searchPrefix: String = s"""$searchPrefixSource${delimiter.getOrElse("")}"""
 
   /**
    * An optional delimiter such as a colon when overridden. By default, this is set to Option.None
@@ -34,5 +37,4 @@ trait SearchPrefix {
    *   The delimiter, if it exists.
    */
   def delimiter: Option[String] = None
-  def searchPrefix: String = s"""$searchPrefixSource${delimiter.getOrElse("")}"""
 }

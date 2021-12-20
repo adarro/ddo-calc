@@ -25,13 +25,14 @@ import org.junit.runner.RunWith
 import java.util
 import scala.jdk.CollectionConverters.SeqHasAsJava
 
-
 @FullOGNL
 @RunWith(classOf[ConcordionRunner])
 @ConcordionOptions(
   declareNamespaces = Array("ext", "urn:concordion-extensions:2010"),
-  markdownExtensions =
-    Array(MarkdownExtensions.WIKILINKS, MarkdownExtensions.AUTOLINKS, MarkdownExtensions.TASKLISTITEMS))
+  markdownExtensions = Array(
+    MarkdownExtensions.WIKILINKS,
+    MarkdownExtensions.AUTOLINKS,
+    MarkdownExtensions.TASKLISTITEMS))
 class SkillSpec {
   val skillEnum: Skill.type = Skill
 

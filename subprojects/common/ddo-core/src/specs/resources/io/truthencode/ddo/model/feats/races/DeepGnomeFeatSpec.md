@@ -13,14 +13,21 @@
 |**[Small Size Bonus](http://ddowiki.com/page/Small_Size_Bonus "Small Size Bonus")**  | As a [Small](http://ddowiki.com/page/Small "Small") creature, [Gnomes](http://ddowiki.com/page/Gnome "Gnome") gain a +1 [size bonus](http://ddowiki.com/page/Size_bonus "Size bonus") to [attack rolls](http://ddowiki.com/page/Attack_roll "Attack roll") and [Armor Class](http://ddowiki.com/page/Armor_Class "Armor Class"), and a +4 bonus on [Hide](http://ddowiki.com/page/Hide "Hide") checks.| Passive  |   |![Icon Feat Halfling Agility.png](/images/Icon_Feat_Halfling_Agility.png)|
 
 [grantedFeats]: - "c:verify-rows=#feat:verifyGrantedFeats()"
+
 [availableFeats]: - "c:verify-rows=#feat:verifyAvailableFeats()"
+
 [_matchStrategy_]: - "c:matchStrategy=KeyMatch"
+
 [result]: - "?=#feat"
+
 [elf_feat]: http://www.ddowiki.com/edit/Elf_(feat)?redlink=1 "Elf (feat) (page does not exist)"
+
 [elf_race]: http://www.ddowiki.com/page/Elf "Elf"
+
 [sunelf_race]: http://www.ddowiki.com/page/Sun_Elf_(Morninglord) "Sun Elf (Morninglord)"
 
 ![Attribution-ShareAlike 2.5](/images/somerights20.png)
 
-[Attribution-ShareAlike 2.5](https://creativecommons.org/licenses/by-sa/2.5/) Images and general information available from http://ddowiki.com
+[Attribution-ShareAlike 2.5](https://creativecommons.org/licenses/by-sa/2.5/) Images and general information available
+from http://ddowiki.com
 

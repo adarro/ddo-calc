@@ -31,10 +31,10 @@ trait MeleePowerFeature extends Features {
   self: SourceInfo =>
   protected val meleePowerBonusType: BonusType
   protected val meleePowerBonusAmount: Int
-  private val src = this
   protected[this] val triggerOn: Seq[TriggerEvent]
   protected[this] val triggerOff: Seq[TriggerEvent]
   protected[this] val meleePowerCategories: Seq[effect.EffectCategories.Value]
+  private val src = this
   private[this] val meleePowerAmount =
     new PartModifier[Int, BasicStat] with UsingSearchPrefix {
 

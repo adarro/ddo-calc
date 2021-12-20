@@ -34,11 +34,6 @@ import scala.util.Try
  *   Generally a primitive Type such as Int but may be a more complex object
  */
 sealed trait Feature[V] extends BasicEffectInfo {
-  def parameters: Seq[Try[EffectParameter]]
-  val part: Try[EffectPart]
-  val value: V
-  val source: SourceInfo
-
   /**
    * The main name of the effect.
    *
@@ -49,13 +44,17 @@ sealed trait Feature[V] extends BasicEffectInfo {
    * everything from incorporeal, dodge, armor class, arrow-deflection etc.
    */
   override lazy val name: String = nameOption.getOrElse("Unknown")
-
   lazy val nameOption: Option[String] = part.toOption match {
     case None => None
     case Some(value) => Some(value.entryName)
   }
   lazy val effectText: Option[String] = None
+  val part: Try[EffectPart]
+  val value: V
+  val source: SourceInfo
   val effectDetail: DetailedEffect
+
+  def parameters: Seq[Try[EffectParameter]]
 
 }
 
@@ -80,22 +79,29 @@ object Feature {
     override val effectDetail: DetailedEffect)
     extends PartModifier[Seq[(WeaponCategory, Int)], BasicStat] with UsingSearchPrefix {
 
-    override protected[this] lazy val partToModify: BasicStat = {
-      basicStat
-
-    }
-    private val tO = effectDetail.triggersOff.map(TriggerEvent.withName)
-    private val tN = effectDetail.triggersOn.map(TriggerEvent.withName)
-    val p = EffectParameterBuilder()
-      .toggleOffValue(tO: _*)
-      .toggleOnValue(tN: _*)
-      .addBonusType(bonusType)
-      .build
     //  override protected[this] lazy val parameterToModify: BonusType = bonusType
     override lazy val name: String = "Critical Threat Range"
     override lazy val effectText: Option[String] = Some(
       s"Increased Critical Threat Amount: $value%")
+    override protected[this] lazy val partToModify: BasicStat = {
+      basicStat
+
+    }
     override val withPrefix: String = s"$searchPrefix:$nameSource"
+    /**
+     * The General Description should be just that. This should not include specific values unless
+     * all instances will share that value. I.e. a Dodge Effect might state it increases your
+     * miss-chance, but omit any value such as 20%. Those values will be displayed in the effectText
+     * of a specific implementation such as the Dodge Feat or Uncanny Dodge
+     */
+    override val generalDescription: String = "Increases your chance to make a critical hit"
+    lazy val p = EffectParameterBuilder()
+      .toggleOffValue(tO: _*)
+      .toggleOnValue(tN: _*)
+      .addBonusType(bonusType)
+      .build
+    private val tO = effectDetail.triggersOff.map(TriggerEvent.withName)
+    private val tN = effectDetail.triggersOn.map(TriggerEvent.withName)
 
     /**
      * Used when qualifying a search with a prefix. Examples include finding "HalfElf" from
@@ -105,14 +111,6 @@ object Feature {
      *   A default or applied prefix
      */
     override def searchPrefixSource: String = partToModify.searchPrefixSource
-
-    /**
-     * The General Description should be just that. This should not include specific values unless
-     * all instances will share that value. I.e. a Dodge Effect might state it increases your
-     * miss-chance, but omit any value such as 20%. Those values will be displayed in the effectText
-     * of a specific implementation such as the Dodge Feat or Uncanny Dodge
-     */
-    override val generalDescription: String = "Increases your chance to make a critical hit"
 
   }
   // scalastyle:on
@@ -125,8 +123,9 @@ object Feature {
     override val categories: Seq[String],
     effectDetail: DetailedEffect)
     extends PartModifier[Int, Attribute] with UsingAttributeSearchPrefix {
-    override protected[this] val partToModify: Attribute = attribute
+    override lazy val name: String = withPrefix
 //    override protected[this] val parameterToModify: BonusType = bonusType
+    override protected[this] val partToModify: Attribute = attribute
     /**
      * The General Description should be just that. This should not include specific values unless
      * all instances will share that value. I.e. a Dodge Effect might state it increases your
@@ -134,8 +133,6 @@ object Feature {
      * of a specific implementation such as the Dodge Feat or Uncanny Dodge
      */
     override val generalDescription: String = "Increases a particular attribute score"
-
-    override lazy val name: String = withPrefix
   }
 
 }
@@ -150,17 +147,17 @@ trait AugmentFeatureValue extends Feature[Int]
  */
 trait PartModifier[V, E <: EnumEntry] extends Feature[V] with DisplayName {
   self: UsingSearchPrefix =>
-  protected[this] val partToModify: E
-
-  protected[this] def effectParameters: Seq[ParameterModifier[_]] = ???
-// FIXME add UsingSearchPrefix to type constraint
   /**
    * The current Seaerch-Fu is weak. Override this default function.
    */
   override lazy val part: Try[EffectPart] =
     EffectPart.tryFindByPattern(partToModify.entryName, Option(withPrefix))
-
   override lazy val parameters: Seq[Try[EffectParameter]] = effectParameters.map(_.parameter)
+// FIXME add UsingSearchPrefix to type constraint
+  override val withPrefix: String = s"$searchPrefix$nameSource"
+  protected[this] val partToModify: E
+
+  protected[this] def effectParameters: Seq[ParameterModifier[_]] = ???
 
   /**
    * Sets or maps the source text for the DisplayName. // TODO: use the Try[part] instead of the
@@ -170,7 +167,6 @@ trait PartModifier[V, E <: EnumEntry] extends Feature[V] with DisplayName {
    *   Source text.
    */
   override protected def nameSource: String = partToModify.entryName
-  override val withPrefix: String = s"$searchPrefix$nameSource"
 }
 
 trait FeatModifier[T, E <: Feat] extends PartModifier[T, E] {
@@ -185,9 +181,9 @@ trait FeatModifier[T, E <: Feat] extends PartModifier[T, E] {
  */
 trait ParameterModifier[E <: EnumEntry] {
 
-  protected[this] val parameterToModify: E
   lazy val parameter: Try[EffectParameter] =
     EffectParameter.tryFindByPattern(parameterToModify.entryName, None)
+  protected[this] val parameterToModify: E
 }
 
 case class EffectFeature[T](

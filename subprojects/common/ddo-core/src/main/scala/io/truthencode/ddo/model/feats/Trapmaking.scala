@@ -26,7 +26,8 @@ import io.truthencode.ddo.support.requisite.{FeatRequisiteImpl, GrantsToClass, R
  * Created by adarr on 2/16/2017.
  */
 protected[feats] trait Trapmaking
-  extends FeatRequisiteImpl with Passive with GrantsToClass with RequiresAnyOfClass with RequiresAnyOfFeat {
+  extends FeatRequisiteImpl with Passive with GrantsToClass with RequiresAnyOfClass
+  with RequiresAnyOfFeat {
   override def anyOfClass: Seq[(HeroicCharacterClass, Int)] =
     List((Artificer, 4), (Rogue, 4))
 // @todo Add Least DM of Making

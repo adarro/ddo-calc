@@ -33,7 +33,8 @@ trait StatItem[T <: EnumEntry, V] {
 }
 
 /**
- * Convenience trait used when the type is also the value, i.e. Alignment or Race is itself the value.
+ * Convenience trait used when the type is also the value, i.e. Alignment or Race is itself the
+ * value.
  * @tparam T
  *   The basic type
  */
@@ -56,10 +57,10 @@ case class PlayerStrAttribute(
   override val baseValue: Int = 0
 ) extends AttributeStat {
 
-  override def value: Int = ???
-
   //   override val item: A = Attribute.Strength
   override val item: Attribute = Attribute.Strength
+
+  override def value: Int = ???
 }
 
 object ThrowAway {
@@ -73,28 +74,30 @@ object ThrowAway {
     )
   )
   // val a = new AttributeStat[Attribute.Strength] {}
-  val f: PartModifier[V, T] with UsingSearchPrefix = new PartModifier[V, T]  with UsingSearchPrefix {
+  val f: PartModifier[V, T] with UsingSearchPrefix = new PartModifier[V, T] with UsingSearchPrefix {
     /**
-     * The General Description should be just that. This should not include specific values unless all instances will
-     * share that value. I.e. a Dodge Effect might state it increases your miss-chance, but omit any value such as 20%.
-     * Those values will be displayed in the effectText of a specific implementation such as the Dodge Feat or Uncanny
-     * Dodge
+     * The General Description should be just that. This should not include specific values unless
+     * all instances will share that value. I.e. a Dodge Effect might state it increases your
+     * miss-chance, but omit any value such as 20%. Those values will be displayed in the effectText
+     * of a specific implementation such as the Dodge Feat or Uncanny Dodge
      */
     override val generalDescription: String = "Some specifically vague description"
 
     /**
-     * a list of Categories useful for menu / UI placement and also for searching / querying for Miss-Chance or other
-     * desired effects.
+     * a list of Categories useful for menu / UI placement and also for searching / querying for
+     * Miss-Chance or other desired effects.
      *
-     * This list might be constrained or filtered by an Enumeration or CSV file. The goal is to enable quick and
-     * advanced searching for specific categories from general (Miss-Chance) to specific (evasion). In addition, it may
-     * be useful for deep searching such as increasing Spot, which should suggest not only +Spot items, but +Wisdom or
-     * eventually include a feat or enhancement that allows the use of some other value as your spot score.
+     * This list might be constrained or filtered by an Enumeration or CSV file. The goal is to
+     * enable quick and advanced searching for specific categories from general (Miss-Chance) to
+     * specific (evasion). In addition, it may be useful for deep searching such as increasing Spot,
+     * which should suggest not only +Spot items, but +Wisdom or eventually include a feat or
+     * enhancement that allows the use of some other value as your spot score.
      */
     override def categories: Seq[String] = Seq(EffectCategories.General.toString)
 
     /**
-     * Used when qualifying a search with a prefix. Examples include finding "HalfElf" from qualified "Race:HalfElf"
+     * Used when qualifying a search with a prefix. Examples include finding "HalfElf" from
+     * qualified "Race:HalfElf"
      *
      * @return
      *   A default or applied prefix
@@ -115,9 +118,11 @@ object ThrowAway {
       override val sourceId: String = "Example"
       override val sourceRef: AnyRef = this
     }
-      override protected[this] val partToModify: T = ???
+    override protected[this] val partToModify: T = ???
   }
   val str: PlayerAttribute = PlayerAttribute(Attribute.Strength, 6)
+  val l = List((EffectParameter.BonusType, 3))
+
   // val str = PlayerAttribute(item= Strength,baseValue = 6)
   def doStr(): Unit = {
     val mm: Map[Try[EffectPart], List[PartModifier[V, T]]] =
@@ -143,8 +148,6 @@ object ThrowAway {
 //    }}
 
   }
-
-  val l = List((EffectParameter.BonusType, 3))
 
   // val strAttribute = StatEnums(Attribute.Strength,)
 

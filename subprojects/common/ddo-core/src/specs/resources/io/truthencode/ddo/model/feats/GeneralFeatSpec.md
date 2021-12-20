@@ -14,12 +14,14 @@ Searching for [Attack](- "#searchString") will return:
 |-------------------------------------|
 | Attack                              |
 
-
 [search]: - "c:verify-rows=#username:withNameAsJavaList(#searchString)"
+
 [_matchStrategy_]: - "c:matchStrategy=KeyMatch"
+
 [match]: - "?=#username"
 
 Feats can be searched with many case options.
+
 * sensitive (default)
 * insensitive
 * Uppercase
@@ -30,10 +32,7 @@ Feats can be searched with many case options.
 
 Verifying all known General Feats (from DDO Wiki)
 
-| Errata  |   |
-|:-:|:-:|
-|  Rapid Reload | Listed on Main page, but moved to Class (Artificer) Category   |
-|   |   |
+| Errata | | |:-:|:-:| | Rapid Reload | Listed on Main page, but moved to Class (Artificer) Category | | | |
 
 | Unimplemented Feats |
 |---------------------|
@@ -160,7 +159,8 @@ Verifying all known General Feats (from DDO Wiki)
 | Whirlwind Attack                    |
 | Zen Archery                         |
 
-
 [existingFeat]: - "c:verify-rows=#feat:verify()"
+
 [_matchStrategy_]: - "c:matchStrategy=KeyMatch"
+
 [result]: - "?=#feat"

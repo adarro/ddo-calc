@@ -18,14 +18,15 @@
 /**
  * Copyright (C) 2015 Andre White (adarro@gmail.com)
  *
- * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with
- * the License. You may obtain a copy of the License at
+ * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except
+ * in compliance with the License. You may obtain a copy of the License at
  *
  * http://www.apache.org/licenses/LICENSE-2.0
  *
- * Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on
- * an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the
- * specific language governing permissions and limitations under the License.
+ * Unless required by applicable law or agreed to in writing, software distributed under the License
+ * is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express
+ * or implied. See the License for the specific language governing permissions and limitations under
+ * the License.
  */
 package io.truthencode.ddo
 
@@ -41,8 +42,8 @@ import scala.collection.immutable.HashSet
 
 class StringUtilsTest extends AnyFunSpec with PropertyChecks with Matchers with LazyLogging {
   final private val meaningOfLife = 42
-  private final val ibm = List("I Believe Mom", "i borrow money", "IBetterMail")
-  private final val nullString: String = null
+  final private val ibm = List("I Believe Mom", "i borrow money", "IBetterMail")
+  final private val nullString: String = null
 
   private val strategyResults = Table(
     ("Strategy", "Expected"),

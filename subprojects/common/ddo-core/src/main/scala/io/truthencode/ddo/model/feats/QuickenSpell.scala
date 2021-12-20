@@ -24,11 +24,12 @@ import io.truthencode.ddo.support.requisite.{FeatRequisiteImpl, RequiresAnyOfCla
  * Created by adarr on 2/21/2017.
  *
  * @todo
- *   verify ability to cast spells is ~= Class/Level. Possibly also a naturally aspired min casting stat? I.e. Cleric/1
- *   + WIS 12?
+ *   verify ability to cast spells is ~= Class/Level. Possibly also a naturally aspired min casting
+ *   stat? I.e. Cleric/1 + WIS 12?
  */
 trait QuickenSpell
-  extends FeatRequisiteImpl with MetaMagic with RequiresAnyOfClass with ArtificerBonusFeat with AlchemistBonusFeat {
+  extends FeatRequisiteImpl with MetaMagic with RequiresAnyOfClass with ArtificerBonusFeat
+  with AlchemistBonusFeat {
   self: MetaMagicFeat =>
 
   override def anyOfClass: Seq[(HeroicCharacterClass, Int)] =

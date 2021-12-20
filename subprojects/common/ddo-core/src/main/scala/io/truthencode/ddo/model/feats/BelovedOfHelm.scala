@@ -21,8 +21,8 @@ import io.truthencode.ddo.model.religions.Helm
 import io.truthencode.ddo.support.requisite.{FeatRequisiteImpl, RequiresAllOfFeat}
 
 trait BelovedOfHelm
-  extends FeatRequisiteImpl with ForgottenRealmsReligionNonWarforged with BelovedLevelBase with RequiresAllOfFeat
-  with Helm with HelmFeatBase { self: DeityFeat =>
+  extends FeatRequisiteImpl with ForgottenRealmsReligionNonWarforged with BelovedLevelBase
+  with RequiresAllOfFeat with Helm with HelmFeatBase { self: DeityFeat =>
 
   override def allOfFeats: Seq[Feat] = List(DeityFeat.ChildOfHelm)
 }

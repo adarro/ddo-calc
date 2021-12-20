@@ -31,6 +31,10 @@ import scala.collection.immutable
 sealed trait BasicStat
   extends EnumEntry with DisplayName with FriendlyDisplay with UsingSearchPrefix {
   self: Category =>
+  override protected lazy val nameSource: String =
+    entryName.splitByCase.toPascalCase
+  override val withPrefix: String = s"$searchPrefix$nameSource"
+
   override def searchPrefix: String = s"""$searchPrefixSource${delimiter.getOrElse("")}"""
 
   /**
@@ -40,15 +44,12 @@ sealed trait BasicStat
    *   A default prefix "BasicStat"
    */
   override def searchPrefixSource: String = "BasicStat"
-  override val withPrefix: String = s"$searchPrefix$nameSource"
-  override protected lazy val nameSource: String =
-    entryName.splitByCase.toPascalCase
 }
 
 trait DodgeChance extends BasicStat with MissChance {
-  override def searchPrefixSource: String = "MissChance"
-
   override lazy val delimiter: Option[String] = Some(":")
+
+  override def searchPrefixSource: String = "MissChance"
 }
 
 trait ArmorClass extends BasicStat with MissChance
@@ -303,10 +304,26 @@ trait GrantedAbility extends BasicStat with Ability with UsingAbilitySearchPrefi
 // scalastyle:off number.of.methods
 object BasicStat extends Enum[BasicStat] with SearchPrefix {
 
+  lazy val allGrantedAbilities: Seq[GrantedAbilities] = ActiveAbilities.values.map(GrantedAbilities)
+
+  /**
+   * Used when qualifying a search with a prefix. Examples include finding "HalfElf" from qualified
+   * "Race:HalfElf"
+   *
+   * @return
+   *   A default or applied prefix
+   */
+  override def searchPrefixSource: String = "Stat"
+
+  override def values: immutable.IndexedSeq[BasicStat] = findValues ++ allGrantedAbilities
+
   case class GrantedAbilities(override val ability: ActiveAbilities) extends GrantedAbility {
     override lazy val entryName: String = s"${ability.entryName}"
   }
-  lazy val allGrantedAbilities: Seq[GrantedAbilities] = ActiveAbilities.values.map(GrantedAbilities)
+
+  case class SpellCriticalChanceSchool(spellPower: SpellPower) extends SpellCriticalChance
+
+  case class SpellFocus(school: School) extends SpellDifficultyCheck
 
   /**
    * The dodge mechanic works as a miss chance - a simple percentile chance to completely avoid
@@ -343,16 +360,13 @@ object BasicStat extends Enum[BasicStat] with SearchPrefix {
   case object RangedPower extends RangedPower
 
   case object WeaponProficiency extends WeaponProficiency
+
   /**
    * Your Hit points
    */
   case object HitPoints extends HitPoints
 
   case object SpellPoints extends SpellPoints
-
-  case class SpellCriticalChanceSchool(spellPower: SpellPower) extends SpellCriticalChance
-
-  case class SpellFocus(school: School) extends SpellDifficultyCheck
 
   case object BaseAttackBonus extends BaseAttackBonus
 
@@ -518,16 +532,5 @@ object BasicStat extends Enum[BasicStat] with SearchPrefix {
 
   case object TurnUndeadNumberOfTurns extends NumberOfTurns
 
-  /**
-   * Used when qualifying a search with a prefix. Examples include finding "HalfElf" from qualified
-   * "Race:HalfElf"
-   *
-   * @return
-   *   A default or applied prefix
-   */
-  override def searchPrefixSource: String = "Stat"
-
   case object AutoRecovery extends AutoRecovery
-
-  override def values: immutable.IndexedSeq[BasicStat] = findValues ++ allGrantedAbilities
 }

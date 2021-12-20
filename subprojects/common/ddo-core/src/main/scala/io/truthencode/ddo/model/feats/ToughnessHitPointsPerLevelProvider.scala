@@ -19,6 +19,7 @@ package io.truthencode.ddo.model.feats
 
 import io.truthencode.ddo.providers.SimpleValueProvider
 
-class ToughnessHitPointsPerLevelProvider extends SimpleValueProvider[Int] with HitPointsPerLevelProvider {
-    override def createValue: Int => Int = createValue
+class ToughnessHitPointsPerLevelProvider
+  extends SimpleValueProvider[Int] with HitPointsPerLevelProvider {
+  override def createValue: Int => Int = createValue
 }

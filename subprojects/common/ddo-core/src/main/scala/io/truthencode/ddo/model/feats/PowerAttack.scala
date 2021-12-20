@@ -47,6 +47,7 @@ protected[feats] trait PowerAttack
   extends FeatRequisiteImpl with ActiveFeat with Stance with RequiresAttribute with MartialArtsFeat
   with FighterBonusFeat with FeaturesImpl with GrantAbilityFeature {
   self: GeneralFeat =>
+  override lazy val grantedAbility: ActiveAbilities = ActiveAbilities.PowerAttack
   override val requiresAttribute: Seq[(Attribute, Int)] = List(
     (Attribute.Strength, 13)
   )
@@ -61,9 +62,7 @@ protected[feats] trait PowerAttack
   override val abilityId: String = "PowerAttack"
   override val description: String =
     "This feat exchanges part of your attack bonus for extra melee damage. It reduces your hit bonus by 5, or your Base Attack Bonus, whichever is lower."
+  override val grantBonusType: BonusType = BonusType.Feat
 
   override def coolDown: Option[Duration] = Some(Duration.ofSeconds(10))
-
-  override val grantBonusType: BonusType = BonusType.Feat
-  override lazy val grantedAbility: ActiveAbilities = ActiveAbilities.PowerAttack
 }

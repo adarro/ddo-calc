@@ -24,8 +24,6 @@ import io.truthencode.ddo.support.requisite.RequirementOption
 import java.util
 import scala.jdk.CollectionConverters.SeqHasAsJava
 
-
-
 /**
  * Created by adarr on 2/19/2017.
  */

@@ -28,10 +28,10 @@ trait TurnUndeadMaxHitDiceFeature extends Features {
   self: SourceInfo =>
   val maxHitDiceBonusType: BonusType
   val maxHitDiceBonusAmount: Int
-  private val src = this
   protected[this] val triggerOn: Seq[TriggerEvent]
   protected[this] val triggerOff: Seq[TriggerEvent]
   protected[this] val turnUndeadMHDCategories: Seq[effect.EffectCategories.Value]
+  private val src = this
   private[this] val mHD =
     new PartModifier[Int, BasicStat] with UsingSearchPrefix {
 

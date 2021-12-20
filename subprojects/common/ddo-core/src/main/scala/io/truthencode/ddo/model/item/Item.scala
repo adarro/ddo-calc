@@ -33,8 +33,8 @@ trait Item extends MetaData {
   val description: Option[String]
 
   /**
-   * requiredRaces - list of races the player or pet MUST be to naturally equip the item unless they can bypass with a
-   * high enough UMD.
+   * requiredRaces - list of races the player or pet MUST be to naturally equip the item unless they
+   * can bypass with a high enough UMD.
    */
   val requiredRaces: List[Race] = Nil
   /**
@@ -55,14 +55,15 @@ trait Item extends MetaData {
   val minimumLevel: Int
 
   /**
-   * Represents the absolute minimum level of the item. This is usually due to augments or crafting or other alterations
-   * to a base item.
+   * Represents the absolute minimum level of the item. This is usually due to augments or crafting
+   * or other alterations to a base item.
    */
   val absoluteMinimumLevel: Option[Int]
 
   /**
-   * Use Magical Device [[http://ddowiki.com/page/Use_Magic_Device UMD]] Skill level needed to bypass certain
-   * restrictions such as using wands below level or out of class or bypassing race restrictions.
+   * Use Magical Device [[http://ddowiki.com/page/Use_Magic_Device UMD]] Skill level needed to
+   * bypass certain restrictions such as using wands below level or out of class or bypassing race
+   * restrictions.
    */
   val umd: Int
 
@@ -77,7 +78,8 @@ trait Item extends MetaData {
 
   /**
    * Represents monetary in game amount. plat / gold / copper. Low Priority
-   * i.e. Base Value: 7pp 5gp TODO: Base Value may need to be a double or something to better represent
+   * i.e. Base Value: 7pp 5gp TODO: Base Value may need to be a double or something to better
+   * represent
    */
   val baseValue: Option[Coins]
   /**
@@ -89,8 +91,8 @@ trait Item extends MetaData {
   /**
    * Durability
    *
-   * The durability is the toughness of the item. The higher the durability, the more damage it can withstand before
-   * breaking. The material also contributes to this value.
+   * The durability is the toughness of the item. The higher the durability, the more damage it can
+   * withstand before breaking. The material also contributes to this value.
    *
    * @note
    *   For purposes of this API, only maximum durability is considered. Not instance.
@@ -103,14 +105,15 @@ trait Item extends MetaData {
    * I.e. bows - typically wood, plate mail may be steel or dwarven iron.
    *
    * @example
-   *   Druids (and their pets) can wear leather armour. Generally they wear light armour or cloth, however, there are a
-   *   few medium armours made from chiten or carapace that would not violate the druidic oath.
+   *   Druids (and their pets) can wear leather armour. Generally they wear light armour or cloth,
+   *   however, there are a few medium armours made from chiten or carapace that would not violate
+   *   the druidic oath.
    */
   val material: Option[Material]
 
   /**
-   * Hardness Generally based on the material and influences how quickly durability is decreased. Adamantum and Diamond
-   * would have a higher rating that wood.
+   * Hardness Generally based on the material and influences how quickly durability is decreased.
+   * Adamantum and Diamond would have a higher rating that wood.
    */
   val hardness: Int
 

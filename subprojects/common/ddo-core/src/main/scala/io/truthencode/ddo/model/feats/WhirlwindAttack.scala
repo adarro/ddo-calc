@@ -44,6 +44,16 @@ protected[feats] trait WhirlwindAttack
   with FighterBonusFeat with FeaturesImpl with GrantAbilityFeature {
   self: GeneralFeat =>
 
+  override lazy val grantedAbility: ActiveAbilities = ActiveAbilities.WhirlwindAttack
+  override val grantBonusType: BonusType = BonusType.Feat
+  override protected[this] val triggerOn: Seq[TriggerEvent] = Seq(TriggerEvent.SpecialAttack)
+  override protected[this] val triggerOff: Seq[TriggerEvent] = Seq(TriggerEvent.OnCoolDown)
+  override protected[this] val grantAbilityCategories: Seq[effect.EffectCategories.Value] =
+    Seq(effect.EffectCategories.SpecialAttack, effect.EffectCategories.Ability)
+  override val abilityId: String = "WhirlwindAttack"
+  override val description: String =
+    "Special Attack This feat attacks all enemies in a 360 degree arc around the character."
+
   override def coolDown: Option[Duration] = Some(Duration.ofSeconds(5))
 
   /**
@@ -61,14 +71,4 @@ protected[feats] trait WhirlwindAttack
       GeneralFeat.SpringAttack,
       GeneralFeat.CombatExpertise
     )
-
-  override val grantBonusType: BonusType = BonusType.Feat
-  override lazy val grantedAbility: ActiveAbilities = ActiveAbilities.WhirlwindAttack
-  override protected[this] val triggerOn: Seq[TriggerEvent] = Seq(TriggerEvent.SpecialAttack)
-  override protected[this] val triggerOff: Seq[TriggerEvent] = Seq(TriggerEvent.OnCoolDown)
-  override protected[this] val grantAbilityCategories: Seq[effect.EffectCategories.Value] =
-    Seq(effect.EffectCategories.SpecialAttack, effect.EffectCategories.Ability)
-  override val abilityId: String = "WhirlwindAttack"
-  override val description: String =
-    "Special Attack This feat attacks all enemies in a 360 degree arc around the character."
 }

@@ -21,19 +21,20 @@ import io.truthencode.ddo.model.enhancement.enhancements.classbased.BombardierTi
 import io.truthencode.ddo.support.naming.SLAPrefix
 
 trait SLASmokeBomb extends BombardierTierFour with ClassEnhancementImpl with SLAPrefix {
-  override def displayText: String = withPrefix.getOrElse("") + nameSource
-  /**
-   * Some enhancements have multiple ranks. This is the cost for each rank. Older versions had increasing costs which
-   * has been streamlined to a linear progression.
-   *
-   * @return
-   */
-  override def apCostPerRank: Int = 1
-
   /**
    * Some enhancements can be taken multiple times (generally up to three)
    */
   override val ranks: Int = 3
 
+  override def displayText: String = withPrefix.getOrElse("") + nameSource
+
   override protected def nameSource: String = "Smoke Bomb"
+
+  /**
+   * Some enhancements have multiple ranks. This is the cost for each rank. Older versions had
+   * increasing costs which has been streamlined to a linear progression.
+   *
+   * @return
+   */
+  override def apCostPerRank: Int = 1
 }

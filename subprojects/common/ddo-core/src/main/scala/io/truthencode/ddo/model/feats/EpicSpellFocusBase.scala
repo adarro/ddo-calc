@@ -19,16 +19,11 @@ package io.truthencode.ddo.model.feats
 
 import io.truthencode.ddo.model.classes.HeroicCharacterClass
 import io.truthencode.ddo.model.classes.HeroicCharacterClass._
-import io.truthencode.ddo.support.requisite.{
-  ClassRequisiteImpl,
-  FeatRequisiteImpl,
-  RequiresAllOfFeat,
-  RequiresAnyOfClass
-}
+import io.truthencode.ddo.support.requisite.{ClassRequisiteImpl, FeatRequisiteImpl, RequiresAllOfFeat, RequiresAnyOfClass}
 
 /**
- * Usage: Passive Prerequisite: Greater Spell Focus feat of the same spell school and Lv 11 Cleric/Druid/Wizard, or Lv
- * 12 Sorcerer/Favored Soul, or Lv 15 Artificer, or Lv 16 Bard
+ * Usage: Passive Prerequisite: Greater Spell Focus feat of the same spell school and Lv 11
+ * Cleric/Druid/Wizard, or Lv 12 Sorcerer/Favored Soul, or Lv 15 Artificer, or Lv 16 Bard
  */
 trait EpicSpellFocusBase
   extends FeatRequisiteImpl with ClassRequisiteImpl with SpellCastingPassive with RequiresAnyOfClass

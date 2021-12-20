@@ -31,11 +31,10 @@ trait UnconsciousRangeFeature extends Features {
   self: SourceInfo =>
   val autoRecoveryBonus: BonusType
   val unconsciousRange: Int
-  private val src = this
   protected[this] val triggerOn: Seq[TriggerEvent]
   protected[this] val triggerOff: Seq[TriggerEvent]
   protected[this] val unconsciousRangeCategories: Seq[effect.EffectCategories.Value]
-
+  private val src = this
   private[this] val autoRecovery =
     new PartModifier[Int, BasicStat] with UsingSearchPrefix {
 

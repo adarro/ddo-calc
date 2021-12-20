@@ -21,11 +21,12 @@ import io.truthencode.ddo.model.classes.HeroicCharacterClass
 import io.truthencode.ddo.support.requisite.{ClassRequisiteImpl, FeatRequisiteImpl, RequiresAllOfClass}
 
 /**
- * Icon Feat Nimble Fingers.png Nimble Fingers Passive Provides a +2 bonus to the character's Disable Device and Open
- * Lock skills. * Level 1: Rogue
+ * Icon Feat Nimble Fingers.png Nimble Fingers Passive Provides a +2 bonus to the character's
+ * Disable Device and Open Lock skills. * Level 1: Rogue
  */
 protected[feats] trait NimbleFingers
-  extends FeatRequisiteImpl with ClassRequisiteImpl with Passive with RequiresAllOfClass { self: GeneralFeat =>
+  extends FeatRequisiteImpl with ClassRequisiteImpl with Passive with RequiresAllOfClass {
+  self: GeneralFeat =>
   override def allOfClass: Seq[(HeroicCharacterClass, Int)] =
     List((HeroicCharacterClass.Rogue, 1))
 }

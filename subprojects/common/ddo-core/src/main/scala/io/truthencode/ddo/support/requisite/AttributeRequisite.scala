@@ -28,7 +28,8 @@ sealed trait AttributeRequisite {
   def requiresAttribute: Seq[(Attribute, Int)] = IndexedSeq.apply()
 }
 
-trait FreeAttribute extends AttributeRequisite with RequiresNone with RequiredExpression with Requisite
+trait FreeAttribute
+  extends AttributeRequisite with RequiresNone with RequiredExpression with Requisite
 
 trait RequiresAttribute extends AttributeRequisite with RequiresOneOf[Requirement] with Requisite {
 

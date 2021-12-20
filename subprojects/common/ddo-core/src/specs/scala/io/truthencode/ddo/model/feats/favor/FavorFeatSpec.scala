@@ -27,15 +27,15 @@ import org.junit.runner.RunWith
 import java.util
 import scala.jdk.CollectionConverters.SeqHasAsJava
 
-
 @FullOGNL
 @RunWith(classOf[ConcordionRunner])
 class FavorFeatSpec extends FeatDisplayHelper with LazyLogging {
 
   override val displayEnum: E = Feat
   // RequiresAllOfPatron
-  private val filterFavor: PartialFunction[Entry, Entry with RequiresAllOfPatron] = { case x: RequiresAllOfPatron =>
-    x
+  private val filterFavor: PartialFunction[Entry, Entry with RequiresAllOfPatron] = {
+    case x: RequiresAllOfPatron =>
+      x
   }
 
   override def verify(): util.List[String] = {

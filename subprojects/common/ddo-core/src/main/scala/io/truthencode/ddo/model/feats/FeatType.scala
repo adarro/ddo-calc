@@ -24,8 +24,8 @@ import io.truthencode.ddo.model.misc.{CoolDown, DefaultCoolDown, DefaultSpellCoo
 /**
  * Created by adarr on 1/29/2017.
  * @note
- *   these should be moved out of the Feat package and renamed as they can and should be used for stances / toggles etc
- *   that are granted via enhancements etc
+ *   these should be moved out of the Feat package and renamed as they can and should be used for
+ *   stances / toggles etc that are granted via enhancements etc
  *
  * Also, perhaps clickies?
  */
@@ -37,31 +37,33 @@ sealed trait FeatType
 trait Toggle extends FeatType
 
 /**
- * This effect is a stance, which means it can be on or off, but may also have some stacking restrictions.
- * i.e. only one offensive combat stance may be active at any given time, and automatically toggles off a defensive
- * combat stance, however it may be combined with a non-conflicting stance, such as a wizards undead shroud or the
- * iconic feat Amauntor's Flames.
+ * This effect is a stance, which means it can be on or off, but may also have some stacking
+ * restrictions.
+ * i.e. only one offensive combat stance may be active at any given time, and automatically toggles
+ * off a defensive combat stance, however it may be combined with a non-conflicting stance, such as
+ * a wizards undead shroud or the iconic feat Amauntor's Flames.
  */
 trait Stance extends FeatType with Toggle with ActiveFeat with OnToggleEvent with DefaultCoolDown
 
 /**
- * This effect must be explicitly activated and is generally a short-term effect such as uncanny dodge and may be
- * subject to a cool-down.
+ * This effect must be explicitly activated and is generally a short-term effect such as uncanny
+ * dodge and may be subject to a cool-down.
  */
 trait ActiveFeat extends FeatType with CoolDown {
   self: ActiveEvent =>
 }
 
 /**
- * This stance has effects that increase your defense by increasing your dodge, armor class or other defensive measures.
+ * This stance has effects that increase your defense by increasing your dodge, armor class or other
+ * defensive measures.
  *
  * It is exclusive of Offense combat stances.
  */
 trait DefensiveCombatStance extends FeatType with Stance
 
 /**
- * This effect increasing your offensive capabilities by increasing damage, critical multiplier, spell dc / penetration
- * etc.
+ * This effect increasing your offensive capabilities by increasing damage, critical multiplier,
+ * spell dc / penetration etc.
  *
  * It is exclusive of Defensive Combat stances.
  */
@@ -73,20 +75,22 @@ trait OffensiveCombatStance extends FeatType with Stance
 trait RangedCombatStance extends FeatType with Stance
 
 /**
- * Listed on Improved Precise Shot, need to see what Archer's focus and any other ranged stance such as Inquisitive uses
+ * Listed on Improved Precise Shot, need to see what Archer's focus and any other ranged stance such
+ * as Inquisitive uses
  * @todo
  *   is this a duplicate of RangedCombatStance?
  */
 trait OffensiveRangedStance extends FeatType with Stance
 
 /**
- * This provides beneficial effects to spells and spell like abilities such as extending length, range or power.
+ * This provides beneficial effects to spells and spell like abilities such as extending length,
+ * range or power.
  */
 trait MetaMagic extends FeatType with Stance
 
 /**
- * This effect is considered permanent and always on. A given feat or ability may provide both active and passive
- * effects.
+ * This effect is considered permanent and always on. A given feat or ability may provide both
+ * active and passive effects.
  */
 trait Passive extends FeatType
 
@@ -95,8 +99,8 @@ trait SpecialAttack extends FeatType
 trait Ability extends FeatType
 
 /**
- * This is a tactical Feat such as Trip and Stunning Blow which can generally be affected by things such as Combat
- * Mastery
+ * This is a tactical Feat such as Trip and Stunning Blow which can generally be affected by things
+ * such as Combat Mastery
  */
 trait Tactical extends FeatType with OnMeleeSpecialAttack
 
@@ -107,7 +111,8 @@ sealed trait EpicFeatCategory extends FeatType
 
 protected[feats] trait GeneralPassive extends EpicFeatCategory with Passive
 protected[feats] trait RangedCombatPassive extends EpicFeatCategory with Passive
-protected[feats] trait SpellFeats extends EpicFeatCategory with ActiveFeat with DefaultSpellCoolDown {
+protected[feats] trait SpellFeats
+  extends EpicFeatCategory with ActiveFeat with DefaultSpellCoolDown {
   self: ActiveEvent =>
 }
 protected[feats] trait SpellCastingPassive extends EpicFeatCategory with Passive

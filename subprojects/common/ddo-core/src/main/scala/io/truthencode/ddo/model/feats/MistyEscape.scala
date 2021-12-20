@@ -17,20 +17,21 @@
  */
 package io.truthencode.ddo.model.feats
 
-import java.time.Duration
-
 import io.truthencode.ddo.activation.OnSpellLikeAbilityEvent
 import io.truthencode.ddo.model.classes.HeroicCharacterClass
 import io.truthencode.ddo.model.classes.HeroicCharacterClass.Warlock
 import io.truthencode.ddo.support.requisite.{FeatRequisiteImpl, GrantsToClass, RequiresAllOfClass, RequiresAllOfFeat}
 
+import java.time.Duration
+
 /**
- * [[https://ddowiki.com/page/Misty_Escape Misty Escape]] You become invisible and charge forward. During your escape,
- * you move through monsters as if you were ethereal. These effects last for six seconds.
+ * [[https://ddowiki.com/page/Misty_Escape Misty Escape]] You become invisible and charge forward.
+ * During your escape, you move through monsters as if you were ethereal. These effects last for six
+ * seconds.
  */
 protected[feats] trait MistyEscape
-  extends FeatRequisiteImpl with ActiveFeat with OnSpellLikeAbilityEvent with RequiresAllOfClass with RequiresAllOfFeat
-  with GrantsToClass { self: ClassFeat =>
+  extends FeatRequisiteImpl with ActiveFeat with OnSpellLikeAbilityEvent with RequiresAllOfClass
+  with RequiresAllOfFeat with GrantsToClass { self: ClassFeat =>
 
   override def grantToClass: Seq[(HeroicCharacterClass, Int)] =
     Seq((Warlock, 15))

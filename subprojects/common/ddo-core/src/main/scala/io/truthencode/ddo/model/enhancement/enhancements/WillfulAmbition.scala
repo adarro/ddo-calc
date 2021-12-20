@@ -24,12 +24,11 @@ trait WillfulAmbition extends ApothecaryTierThree with ClassEnhancementImpl {
   override lazy val description: Option[String] = Some(
     "When your Reaction is Verdanite, you gain +1 Will Save, +1 for every 5 Alchemist Levels you have."
   )
-
-  override def apCostPerRank: Int = 2
-
   /**
    * Some enhancements can be taken multiple times (generally up to three)
    */
   override val ranks: Int = 1
+
+  override def apCostPerRank: Int = 2
 
 }

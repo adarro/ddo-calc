@@ -33,7 +33,8 @@ trait RaceRequisite {
   def grantsToRace: Seq[(Race, Int)]
 }
 
-trait RaceRequisiteImpl extends MustContainImpl[Requirement] with RaceRequisite { self: Requisite with RequisiteType =>
+trait RaceRequisiteImpl extends MustContainImpl[Requirement] with RaceRequisite {
+  self: Requisite with RequisiteType =>
   override def anyOfRace: Seq[(Race, Int)] = Nil
 
   override def allOfRace: Seq[(Race, Int)] = Nil
@@ -66,7 +67,8 @@ trait RequiresNoneOfRace extends RaceRequisite with RequiresNoneOf[Requirement] 
   }
 }
 
-trait GrantsToRace extends RaceRequisite with GrantExpression with RequiresOneOf[Requirement] with Requisite {
+trait GrantsToRace
+  extends RaceRequisite with GrantExpression with RequiresOneOf[Requirement] with Requisite {
   abstract override def oneOf: Seq[Requirement] = super.oneOf ++ {
     grantsToRace.collect(raceToReq)
   }

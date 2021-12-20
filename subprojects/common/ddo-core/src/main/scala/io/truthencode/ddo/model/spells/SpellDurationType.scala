@@ -30,7 +30,8 @@ sealed trait SpellDurationType
 trait Instant extends SpellDurationType
 
 /**
- * Effect lasts until an external event such as resting at a shrine or quaffing a remove curse removes it.
+ * Effect lasts until an external event such as resting at a shrine or quaffing a remove curse
+ * removes it.
  */
 trait Permanent extends SpellDurationType
 

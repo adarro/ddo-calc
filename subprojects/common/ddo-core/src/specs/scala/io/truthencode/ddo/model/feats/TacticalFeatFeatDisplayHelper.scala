@@ -33,5 +33,7 @@ abstract class TacticalFeatFeatDisplayHelperJava extends TacticalFeatFeatDisplay
     x
   }
 
-  def tacticalFeats: util.List[Entry] = { displayEnum.values.collect(filterByTactical) }.sortBy(_.entryName).asJava
+  def tacticalFeats: util.List[Entry] = { displayEnum.values.collect(filterByTactical) }
+    .sortBy(_.entryName)
+    .asJava
 }

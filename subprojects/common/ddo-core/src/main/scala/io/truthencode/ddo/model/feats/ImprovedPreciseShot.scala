@@ -55,8 +55,7 @@ protected[feats] trait ImprovedPreciseShot
   with ArtificerBonusFeat with OffensiveRangedStance with DefaultCoolDown with FeaturesImpl
   with GrantAbilityFeature {
   self: GeneralFeat =>
-  override def allOfFeats: Seq[GeneralFeat] =
-    List(GeneralFeat.PointBlankShot, GeneralFeat.PreciseShot)
+  override lazy val grantedAbility: ActiveAbilities = ActiveAbilities.ImprovedPreciseShot
 // TODO: add toggle / exclusive with Archer's Focus stance
   // Keep an array of exclusive stances in a Map somewhere?
   override protected[this] val triggerOn: Seq[TriggerEvent] = Seq(TriggerEvent.OnStance)
@@ -66,6 +65,10 @@ protected[feats] trait ImprovedPreciseShot
   override val abilityId: String = "ImprovedPreciseShot"
   override val description: String =
     "Your ranged attacks will now pass through friends and foes to damage all foes in your path, until they strike your intended target."
+  override val grantBonusType: BonusType = BonusType.Feat
+
+  override def allOfFeats: Seq[GeneralFeat] =
+    List(GeneralFeat.PointBlankShot, GeneralFeat.PreciseShot)
 
   /**
    * The Minimum Required Base Attack Bonus
@@ -80,7 +83,4 @@ protected[feats] trait ImprovedPreciseShot
 
   override def grantToClass: Seq[(HeroicCharacterClass, Int)] =
     List((Ranger, 11))
-
-  override val grantBonusType: BonusType = BonusType.Feat
-  override lazy val grantedAbility: ActiveAbilities = ActiveAbilities.ImprovedPreciseShot
 }

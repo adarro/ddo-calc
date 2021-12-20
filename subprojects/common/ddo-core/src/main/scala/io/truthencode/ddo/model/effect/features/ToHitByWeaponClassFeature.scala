@@ -34,11 +34,10 @@ trait ToHitByWeaponClassFeature extends Features {
 
   protected val toHitType: BonusType
   protected val toHitAmount: Seq[(WeaponCategory, Int)]
-  private val src = this
   protected[this] val triggerOn: Seq[TriggerEvent]
   protected[this] val triggerOff: Seq[TriggerEvent]
   protected[this] val toHitWcCategories: Seq[effect.EffectCategories.Value]
-
+  private val src = this
   private[this] val toHitChance =
     new PartModifier[Seq[(WeaponCategory, Int)], BasicStat] with UsingSearchPrefix {
 

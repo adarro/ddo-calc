@@ -41,15 +41,8 @@ protected[feats] trait Resilience
   with RequiresBaB with FighterBonusFeat with MartialArtsFeat with FeaturesImpl
   with GrantAbilityFeature {
   self: GeneralFeat =>
-  override val grantBonusType: BonusType = BonusType.Feat
   override lazy val grantedAbility: ActiveAbilities = ActiveAbilities.Resilience
-
-  override def requiresAttribute: Seq[(Attribute, Int)] =
-    List((Attribute.Constitution, 13))
-
-  override def coolDown: Option[Duration] = Some(Duration.ofSeconds(6))
-
-  override def requiresBaB: Int = 1
+  override val grantBonusType: BonusType = BonusType.Feat
 // TODO: Add 3x spell cool down, +4 saving throw
   override protected[this] val triggerOn: Seq[TriggerEvent] = Seq(TriggerEvent.OnStance)
   override protected[this] val triggerOff: Seq[TriggerEvent] = Seq(TriggerEvent.OnToggle)
@@ -57,4 +50,11 @@ protected[feats] trait Resilience
     effect.EffectCategories.Stance)
   override val abilityId: String = "Resilience"
   override val description: String = "Defensive Combat Stance You gain a +4 to all saving throws."
+
+  override def requiresAttribute: Seq[(Attribute, Int)] =
+    List((Attribute.Constitution, 13))
+
+  override def coolDown: Option[Duration] = Some(Duration.ofSeconds(6))
+
+  override def requiresBaB: Int = 1
 }

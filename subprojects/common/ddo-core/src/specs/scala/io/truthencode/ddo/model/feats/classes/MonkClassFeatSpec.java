@@ -18,8 +18,8 @@
 package io.truthencode.ddo.model.feats.classes;
 
 import org.concordion.api.FullOGNL;
-import org.junit.runner.RunWith;
 import org.concordion.integration.junit4.ConcordionRunner;
+import org.junit.runner.RunWith;
 
 @FullOGNL
 @RunWith(ConcordionRunner.class)

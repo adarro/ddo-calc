@@ -17,24 +17,28 @@
  */
 package io.truthencode.ddo
 
-import enumeratum.{Enum => SmartEnum, EnumEntry}
+import enumeratum.{EnumEntry, Enum => SmartEnum}
 
 /**
- * should indicate the base value (in platinum type denominations) This should probably be expanded to a general DDO
- * Denomination to support the concept of cost. i.e. plat would simply be the listed item price (which is generally
- * quite useless and uninteresting) but Astral Shards or Turbine points could be noted if the item is available from the
- * DDO Store etc.
+ * should indicate the base value (in platinum type denominations) This should probably be expanded
+ * to a general DDO Denomination to support the concept of cost. i.e. plat would simply be the
+ * listed item price (which is generally quite useless and uninteresting) but Astral Shards or
+ * Turbine points could be noted if the item is available from the DDO Store etc.
  */
 sealed abstract class MonetaryValue extends EnumEntry
 /**
- * should indicate the base value (in platinum type denominations) This should probably be expanded to a general DDO
- * Denomination to support the concept of cost. i.e. plat would simply be the listed item price (which is generally
- * quite useless and uninteresting) but Astral Shards or Turbine points could be noted if the item is available from the
- * DDO Store etc.
+ * should indicate the base value (in platinum type denominations) This should probably be expanded
+ * to a general DDO Denomination to support the concept of cost. i.e. plat would simply be the
+ * listed item price (which is generally quite useless and uninteresting) but Astral Shards or
+ * Turbine points could be noted if the item is available from the DDO Store etc.
  */
 object MonetaryValue extends SmartEnum[MonetaryValue] {
-  case class Coins(plat: Int = 0, gold: Int = 0, silver: Int = 0, copper: Int = 0) extends MonetaryValue
-  case class AstralShards(amount: Int) extends MonetaryValue
-  case class TurbinePoints(amount: Int) extends MonetaryValue
   val values = findValues
+
+  case class Coins(plat: Int = 0, gold: Int = 0, silver: Int = 0, copper: Int = 0)
+    extends MonetaryValue
+
+  case class AstralShards(amount: Int) extends MonetaryValue
+
+  case class TurbinePoints(amount: Int) extends MonetaryValue
 }

@@ -61,13 +61,22 @@ object MetaMagicFeat extends Enum[MetaMagicFeat] {
       (HeroicCharacterClass.Paladin, 4),
       (HeroicCharacterClass.Ranger, 4)
     )
-  case object EmpowerHealingSpell extends MetaMagicFeat with EmpowerHealingSpell
-  case object EmpowerSpell extends MetaMagicFeat with EmpowerSpell
-  case object EnlargeSpell extends MetaMagicFeat with EnlargeSpell
-  case object EschewMaterials extends MetaMagicFeat with EschewMaterials
-  case object ExtendSpell extends MetaMagicFeat with ExtendSpell
-  case object HeightenSpell extends MetaMagicFeat with HeightenSpell
-  case object MaximizeSpell extends MetaMagicFeat with MaximizeSpell
-  case object QuickenSpell extends MetaMagicFeat with QuickenSpell
+
   override def values: IndexedSeq[MetaMagicFeat] = findValues
+
+  case object EmpowerHealingSpell extends MetaMagicFeat with EmpowerHealingSpell
+
+  case object EmpowerSpell extends MetaMagicFeat with EmpowerSpell
+
+  case object EnlargeSpell extends MetaMagicFeat with EnlargeSpell
+
+  case object EschewMaterials extends MetaMagicFeat with EschewMaterials
+
+  case object ExtendSpell extends MetaMagicFeat with ExtendSpell
+
+  case object HeightenSpell extends MetaMagicFeat with HeightenSpell
+
+  case object MaximizeSpell extends MetaMagicFeat with MaximizeSpell
+
+  case object QuickenSpell extends MetaMagicFeat with QuickenSpell
 }

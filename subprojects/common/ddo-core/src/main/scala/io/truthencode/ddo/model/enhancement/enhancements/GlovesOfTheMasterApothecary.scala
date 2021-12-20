@@ -24,12 +24,11 @@ trait GlovesOfTheMasterApothecary extends ApothecaryTierFive with ClassEnhanceme
   override lazy val description: Option[String] = Some(
     """+5 Use Magic Device, +10 Universal Spell Power. You have a 15% chance to retain a copy of any single-use Positive, Negative, or Repair Healing Potion that you drink.""".stripMargin
   )
-
-  override def apCostPerRank: Int = 2
-
   /**
    * Some enhancements can be taken multiple times (generally up to three)
    */
   override val ranks: Int = 1
+
+  override def apCostPerRank: Int = 2
 
 }

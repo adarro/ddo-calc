@@ -51,6 +51,7 @@
 |[Arcane Lore][arcane_lore]| Passive | Represents your knowledge of the religious. This feat is received once for every favored soul level.|  |  |
 
 ### Level 5
+
 | [ ][featLevel5] [Feats][result]| Type | Description| Prerequisite | Icon |
 |------------------------------------------|----|----|---|---|
 |[Arcane Lore][arcane_lore]| Passive | Represents your knowledge of the religious. This feat is received once for every favored soul level.|  |  |
@@ -87,7 +88,6 @@
 |[Inspire Greatness](http://ddowiki.com/page/Inspire_Greatness "Inspire Greatness") |[active](http://ddowiki.com/page/Active_feat "Active feat") | A bard of 9th level or higher with 12 or more [ranks](http://ddowiki.com/page/Rank_%28skill%29 "Rank (skill)") in a Perform skill can use its music or poetics to help an ally excel in combat. The ally must be within 30 feet and able to see and hear the bard. The bard must also be able to see the ally. The ally gets a +2 attack roll competence bonus, a +1 fortitude save competence bonus, and 2 temporary [hit dice](http://ddowiki.com/page/Hit_dice "Hit dice").|requires a minimum of 12 skill [ranks](http://ddowiki.com/page/Rank_%28skill%29 "Rank (skill)") in [Perform](http://ddowiki.com/page/Perform "Perform")|  |
 | **[Religious Lore](http://ddowiki.com/page/Religious_Lore "Religious Lore")** | [passive](http://ddowiki.com/page/Passive_feat "Passive feat") | This feat grants represents your knowledge of religion. Obtain at level 1, 3, 5, 7, etc. of bard taken.|  |  |
 | **[Wilderness Lore](http://ddowiki.com/page/Wilderness_Lore "Wilderness Lore")**| [passive](http://ddowiki.com/page/Passive_feat "Passive feat")| This feat grants represents your knowledge of the wilderness. | Obtain at level 1, 3, 5, 7, etc. of bard taken. |  |
-
 
 ### Level 10
 
@@ -140,7 +140,6 @@
 |------------------------------------------|----|----|---|---|
 |[Arcane Lore][arcane_lore]| Passive | Represents your knowledge of the religious. This feat is received once for every favored soul level.|  |  |
 
-
 ### Level 17
 
 | [ ][featLevel17] [Feats][result]| Type | Description| Prerequisite | Icon |
@@ -155,8 +154,6 @@
 |------------------------------------------|----|----|---|---|
 |[Arcane Lore][arcane_lore]| Passive | Represents your knowledge of the religious. This feat is received once for every favored soul level.|  |  |
 |[Mass Suggestion](http://ddowiki.com/page/Mass_Suggestion_%28song%29 "Mass Suggestion (song)") |[active](http://ddowiki.com/page/Active_feat "Active feat")| A bard of 18th [level](http://ddowiki.com/page/Level "Level") or higher with 21 or more [ranks](http://ddowiki.com/page/Rank_%28skill%29 "Rank (skill)") in a [Perform](http://ddowiki.com/page/Perform "Perform") [skill](http://ddowiki.com/page/Skill "Skill") can activate this bard ability to charm multiple fascinated foes for a short time.| requires a minimum of 21 skill [ranks](http://ddowiki.com/page/Rank_%28skill%29 "Rank (skill)") in [Perform](http://ddowiki.com/page/Perform "Perform")|  |
-
-
 
 ### Level 19
 
@@ -173,42 +170,72 @@
 |[Arcane Lore][arcane_lore]| Passive | Represents your knowledge of the religious. This feat is received once for every favored soul level.|  |  |
 |[Improved Inspire Courage](http://ddowiki.com/page/Improved_Inspire_Courage "Improved Inspire Courage") |[Passive](http://ddowiki.com/page/Passive_feat "Passive feat") | This feat increases the bonuses of the Inspire Courage feat (i.e., attack and damage bonuses, and [saving throws](http://ddowiki.com/page/Saving_throw "Saving throw") vs. [charm](http://ddowiki.com/page/Charm "Charm") and [fear](http://ddowiki.com/page/Fear "Fear") effects) by an additional +1, for a total of +4. | requires [Inspire Courage](http://ddowiki.com/page/Inspire_Courage "Inspire Courage")) | |
 
-|[Wilderness Lore][wilderness_lore]| (passive): Represents your knowledge of the wilderness. This feat is received once for every druid level.
+|[Wilderness Lore][wilderness_lore]| (passive): Represents your knowledge of the wilderness. This feat is received once
+for every druid level.
 
 [existingFeat]: - "c:verify-rows=#feat:grantedFeats()"
+
 [_matchStrategy_]: - "c:matchStrategy=KeyMatch"
+
 [result]: - "?=#feat"
+
 [elf_feat]: http://www.ddowiki.com/edit/Elf_(feat)?redlink=1 "Elf (feat) (page does not exist)"
+
 [elf_race]: http://www.ddowiki.com/page/Elf "Elf"
+
 [sunelf_race]: http://www.ddowiki.com/page/Sun_Elf_(Morninglord) "Sun Elf (Morninglord)"
 ![Attribution-ShareAlike 2.5](/images/somerights20.png)
-[Attribution-ShareAlike 2.5](https://creativecommons.org/licenses/by-sa/2.5/) Images and general information available from http://ddowiki.com
+[Attribution-ShareAlike 2.5](https://creativecommons.org/licenses/by-sa/2.5/) Images and general information available
+from http://ddowiki.com
 
 [arcane_lore]: http://ddowiki.com/page/Arcane_lore "Arcane Lore"
+
 [religious_lore]: http://ddowiki.com/page/Religious_Lore "Religious Lore"
+
 [wilderness_lore]: http://ddowiki.com/page/Wilderness_Lore "Wilderness Lore"
 
 [featLevel1]: - "c:verify-rows=#feat:grantedFeatsByLevel(1)"
+
 [featLevel2]: - "c:verify-rows=#feat:grantedFeatsByLevel(2)"
+
 [featLevel3]: - "c:verify-rows=#feat:grantedFeatsByLevel(3)"
+
 [featLevel4]: - "c:verify-rows=#feat:grantedFeatsByLevel(4)"
+
 [featLevel5]: - "c:verify-rows=#feat:grantedFeatsByLevel(5)"
+
 [featLevel6]: - "c:verify-rows=#feat:grantedFeatsByLevel(6)"
+
 [featLevel7]: - "c:verify-rows=#feat:grantedFeatsByLevel(7)"
+
 [featLevel8]: - "c:verify-rows=#feat:grantedFeatsByLevel(8)"
+
 [featLevel9]: - "c:verify-rows=#feat:grantedFeatsByLevel(9)"
+
 [featLevel10]: - "c:verify-rows=#feat:grantedFeatsByLevel(10)"
+
 [featLevel11]: - "c:verify-rows=#feat:grantedFeatsByLevel(11)"
+
 [featLevel12]: - "c:verify-rows=#feat:grantedFeatsByLevel(12)"
+
 [featLevel13]: - "c:verify-rows=#feat:grantedFeatsByLevel(13)"
+
 [featLevel14]: - "c:verify-rows=#feat:grantedFeatsByLevel(14)"
+
 [featLevel15]: - "c:verify-rows=#feat:grantedFeatsByLevel(15)"
+
 [featLevel16]: - "c:verify-rows=#feat:grantedFeatsByLevel(16)"
+
 [featLevel17]: - "c:verify-rows=#feat:grantedFeatsByLevel(17)"
+
 [featLevel18]: - "c:verify-rows=#feat:grantedFeatsByLevel(18)"
+
 [featLevel19]: - "c:verify-rows=#feat:grantedFeatsByLevel(19)"
+
 [featLevel20]: - "c:verify-rows=#feat:grantedFeatsByLevel(20)"
+
 [_matchStrategy_]: - "c:matchStrategy=KeyMatch"
+
 [result]: - "?=#feat"
 
 [martial_weapon]: http://ddowiki.com/page/Category:Martial_weapons "Martial Weapons"

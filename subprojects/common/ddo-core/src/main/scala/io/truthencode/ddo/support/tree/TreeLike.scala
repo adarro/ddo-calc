@@ -17,10 +17,7 @@
  */
 package io.truthencode.ddo.support.tree
 
-import enumeratum.EnumEntry
-import io.truthencode.ddo.support.naming.{DisplayName, FriendlyDisplay}
 import enumeratum.{Enum, EnumEntry}
-import io.truthencode.ddo.Abbreviation
 import io.truthencode.ddo.support.SearchPrefix
 import io.truthencode.ddo.support.StringUtils.Extensions
 import io.truthencode.ddo.support.naming.{DisplayName, FriendlyDisplay}
@@ -28,9 +25,10 @@ import io.truthencode.ddo.support.points.SpendablePoints
 
 import scala.collection.immutable
 sealed trait TreeLike extends EnumEntry with DisplayName with FriendlyDisplay with SearchPrefix {
+  val pointType: SpendablePoints
+
   override protected def nameSource: String =
     entryName.splitByCase.toPascalCase
-  val pointType: SpendablePoints
 }
 
 object TreeLike extends Enum[TreeLike] {
@@ -39,7 +37,8 @@ object TreeLike extends Enum[TreeLike] {
 }
 
 /**
- * Represents Enhancement Trees such as Universal and Class Enhancement trees (Pale Master, Falconry etc)
+ * Represents Enhancement Trees such as Universal and Class Enhancement trees (Pale Master, Falconry
+ * etc)
  */
 trait EnhancementTree extends TreeLike {
   override val pointType: SpendablePoints = SpendablePoints.ActionPoints

@@ -23,15 +23,17 @@ import io.truthencode.ddo.model.classes.HeroicCharacterClass.Ranger
 import io.truthencode.ddo.support.requisite.{FeatRequisiteImpl, GrantsToClass, RequiresAllOfClass}
 
 /**
- * [[https://ddowiki.com/page/Hide_in_Plain_Sight Hide in Plain Sight]] You are a master when it comes to hiding in
- * places others think impossible. You gain +1 Hide and +1 Move Silently for every three seconds you stand still, up to
- * +5. While you are sneaking and standing still (for 3 seconds), enemies don't gain Spot bonuses until they get much
- * closer to you, and the bonuses are smaller. [Update 19, not tested]
+ * [[https://ddowiki.com/page/Hide_in_Plain_Sight Hide in Plain Sight]] You are a master when it
+ * comes to hiding in places others think impossible. You gain +1 Hide and +1 Move Silently for
+ * every three seconds you stand still, up to +5. While you are sneaking and standing still (for 3
+ * seconds), enemies don't gain Spot bonuses until they get much closer to you, and the bonuses are
+ * smaller. [Update 19, not tested]
  *
  * Also available in Shadowdancer epic destiny.
  */
 protected[feats] trait HideInPlainSight
-  extends FeatRequisiteImpl with Passive with AtWillEvent with GrantsToClass with RequiresAllOfClass {
+  extends FeatRequisiteImpl with Passive with AtWillEvent with GrantsToClass
+  with RequiresAllOfClass {
   override def allOfClass: Seq[(HeroicCharacterClass, Int)] = List((Ranger, 17))
 
   override def grantToClass: Seq[(HeroicCharacterClass, Int)] =

@@ -17,8 +17,8 @@
  */
 package io.truthencode.ddo.model.item.HeldItem
 
-import io.truthencode.ddo.{WearLocation, Wearable}
 import io.truthencode.ddo.model.item.WearableItem
+import io.truthencode.ddo.{WearLocation, Wearable}
 
 trait Wand extends WearableItem with Wearable {
 

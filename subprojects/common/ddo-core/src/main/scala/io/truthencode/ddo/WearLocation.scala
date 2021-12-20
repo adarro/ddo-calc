@@ -27,11 +27,10 @@ import scala.collection.immutable
  */
 sealed trait WearLocation extends EnumEntry with BitWise {
 
+  override lazy val bitValue: Int = bitValues(this)
   private lazy val bitValues = WearLocation.valuesToIndex.map { x =>
     x._1 -> toBitMask(x._2)
   }
-
-  override lazy val bitValue: Int = bitValues(this)
 
 }
 
@@ -51,6 +50,14 @@ trait HeldItem extends EquipmentSlot
  * Distinct values for location slots.
  */
 object WearLocation extends Enum[WearLocation] with BitSupport {
+
+  override type T = WearLocation
+  override lazy val bitValues: Map[WearLocation, Int] = valuesToIndex.map { x =>
+    val wl = x._1
+    val v = x._2
+    wl -> Math.pow(2.0, v).toInt
+  }
+  val values: immutable.IndexedSeq[WearLocation] = findValues
 
   /**
    * Headwear such as Helmets
@@ -110,7 +117,8 @@ object WearLocation extends Enum[WearLocation] with BitSupport {
   case object MainHand extends HeldItem
 
   /**
-   * OffHand holds shield, Orbs, rune arms etc. and will be unavailable when using two handed weapons or bows.
+   * OffHand holds shield, Orbs, rune arms etc. and will be unavailable when using two handed
+   * weapons or bows.
    */
   case object OffHand extends HeldItem
 
@@ -128,13 +136,4 @@ object WearLocation extends Enum[WearLocation] with BitSupport {
   case object Ammo extends EquipmentSlot
 
   case object Quiver extends EquipmentSlot
-
-  val values: immutable.IndexedSeq[WearLocation] = findValues
-  override type T = WearLocation
-
-  override lazy val bitValues: Map[WearLocation, Int] = valuesToIndex.map { x =>
-    val wl = x._1
-    val v = x._2
-    wl -> Math.pow(2.0, v).toInt
-  }
 }

@@ -33,11 +33,10 @@ trait ToDamageByWeaponClassFeature extends Features {
   self: SourceInfo =>
   protected val toDamageType: BonusType
   protected val toDamageAmount: Seq[(WeaponCategory, Int)]
-  private val src = this
   protected[this] val triggerOn: Seq[TriggerEvent]
   protected[this] val triggerOff: Seq[TriggerEvent]
   protected[this] val toDmgWcCategories: Seq[effect.EffectCategories.Value]
-
+  private val src = this
   private[this] val toDamageChance =
     new PartModifier[Seq[(WeaponCategory, Int)], BasicStat] with UsingSearchPrefix {
 

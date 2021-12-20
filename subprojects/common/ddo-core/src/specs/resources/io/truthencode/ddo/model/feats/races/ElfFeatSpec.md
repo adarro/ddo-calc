@@ -13,14 +13,18 @@
 |[Martial Weapon Proficiency: Rapier](http://www.ddowiki.com/page/Martial_Weapon_Proficiency#Rapier "Martial Weapon Proficiency") | Passive |You do not suffer a -4 penalty on attack rolls when using a Rapier.|[Elf][elf_race] , [Sun Elf][sunelf_race]|![Icon Feat Martial Weapon Proficiency.png](/images/thumb/36px-Icon_Feat_Martial_Weapon_Proficiency.png)|
 |[Martial Weapon Proficiency: Shortbow](http://www.ddowiki.com/page/Martial_Weapon_Proficiency#Shortbow "Martial Weapon Proficiency")| Passive  | You do not suffer a -4 penalty on attack rolls when using a Shortbow. | [Elf][elf_race] , [Sun Elf][sunelf_race] |![Icon Feat Martial Weapon Proficiency.png](/images/thumb/36px-Icon_Feat_Martial_Weapon_Proficiency.png) |
 
-
 [_matchStrategy_]: - "c:matchStrategy=KeyMatch"
+
 [result]: - "?=#feat"
+
 [elf_feat]: http://www.ddowiki.com/edit/Elf_(feat)?redlink=1 "Elf (feat) (page does not exist)"
+
 [elf_race]: http://www.ddowiki.com/page/Elf "Elf"
+
 [sunelf_race]: http://www.ddowiki.com/page/Sun_Elf_(Morninglord) "Sun Elf (Morninglord)"
 ![Attribution-ShareAlike 2.5](/images/somerights20.png)
-[Attribution-ShareAlike 2.5](https://creativecommons.org/licenses/by-sa/2.5/) Images and general information available from http://ddowiki.com
+[Attribution-ShareAlike 2.5](https://creativecommons.org/licenses/by-sa/2.5/) Images and general information available
+from http://ddowiki.com
 
 
 [grantedFeats]: - "c:verify-rows=#feat:verifyGrantedFeats()"

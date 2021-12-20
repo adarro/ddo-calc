@@ -18,14 +18,15 @@
 /**
  * Copyright (C) 2015 Andre White (adarro@gmail.com)
  *
- * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with
- * the License. You may obtain a copy of the License at
+ * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except
+ * in compliance with the License. You may obtain a copy of the License at
  *
  * http://www.apache.org/licenses/LICENSE-2.0
  *
- * Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on
- * an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the
- * specific language governing permissions and limitations under the License.
+ * Unless required by applicable law or agreed to in writing, software distributed under the License
+ * is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express
+ * or implied. See the License for the specific language governing permissions and limitations under
+ * the License.
  */
 package io.truthencode.ddo
 
@@ -40,10 +41,13 @@ import scala.collection.immutable
 /**
  * Stores the binding status of an item.
  *
- * As this is basically a database / analysis tool, it is primarily for identifying if and when any binding may occur,
- * which is useful when attempting to acquire said item.
+ * As this is basically a database / analysis tool, it is primarily for identifying if and when any
+ * binding may occur, which is useful when attempting to acquire said item.
  */
-sealed abstract class BindingFlags(override val entryName: String, status: BindingStatus, event: BindingEvent)
+sealed abstract class BindingFlags(
+  override val entryName: String,
+  status: BindingStatus,
+  event: BindingEvent)
   extends EnumEntry with Abbreviation with DefaultValue[BindingFlags] {
   override lazy val default: Option[Unbound.type] = BindingFlags.default
   val abbr: String = entryName
@@ -69,26 +73,29 @@ object BindingFlags extends Enum[BindingFlags] with DefaultValue[BindingFlags] w
   /**
    * Attempts to mangle an Enumeration using free text.
    *
-   * There is no extensive rule set, but DDO commonly uses acronyms such as BTC for Bound to Account, so we are
-   * translating Binds|Bound to Account to BTA etc.
+   * There is no extensive rule set, but DDO commonly uses acronyms such as BTC for Bound to
+   * Account, so we are translating Binds|Bound to Account to BTA etc.
    *
    * @param words
    *   Optional String of text to translate.
    * @param strategy
-   *   Implicit strategy used to determine matching constraints such as Upper / Lowercase / Preserve Case, full word
-   *   etc.
+   *   Implicit strategy used to determine matching constraints such as Upper / Lowercase / Preserve
+   *   Case, full word etc.
    * @return
    *   [BindingFlags] from name or None if no data or no matching data is found.
    * @note
-   *   First catches 'Unbound' Next Attempts to extract abbreviation using space or case to separate words
+   *   First catches 'Unbound' Next Attempts to extract abbreviation using space or case to separate
+   *   words
    *
    * Finally defaults to None
    *
-   * If you have the exact words without spaces, it may be more performant to use the 'withName' variant. NOTE: This
-   * enumeration is keyed by Acronym, so BTCoE will match, where 'Bound to Character On Equip' will fail.
+   * If you have the exact words without spaces, it may be more performant to use the 'withName'
+   * variant. NOTE: This enumeration is keyed by Acronym, so BTCoE will match, where 'Bound to
+   * Character On Equip' will fail.
    */
   def fromWords(words: Option[String])(implicit
-    strategy: WordMatchStrategy = WordMatchStrategies.TitleCaseWordStrategy): Option[BindingFlags] = {
+    strategy: WordMatchStrategy = WordMatchStrategies.TitleCaseWordStrategy)
+    : Option[BindingFlags] = {
     words match {
       case Some(x) if x.equalsIgnoreCase(BindingFlags.Unbound.toFullWord) =>
         Some(BindingFlags.Unbound)
@@ -121,15 +128,18 @@ object BindingFlags extends Enum[BindingFlags] with DefaultValue[BindingFlags] w
     def toFullWord: String = "Bound To Character On Acquire"
   }
 
-  case object BoundToAccount extends BindingFlags("BTA", BindingStatus.BindsToAccount, BindingEvent.None) {
+  case object BoundToAccount
+    extends BindingFlags("BTA", BindingStatus.BindsToAccount, BindingEvent.None) {
     def toFullWord: String = "Bound To Account"
   }
 
-  case object BoundToCharacter extends BindingFlags("BTC", BindingStatus.BindsToCharacter, BindingEvent.None) {
+  case object BoundToCharacter
+    extends BindingFlags("BTC", BindingStatus.BindsToCharacter, BindingEvent.None) {
     def toFullWord: String = "Bound To Character"
   }
 
-  case object BoundToAccountOnEquip extends BindingFlags("BTAoE", BindingStatus.BindsToAccount, BindingEvent.OnEquip) {
+  case object BoundToAccountOnEquip
+    extends BindingFlags("BTAoE", BindingStatus.BindsToAccount, BindingEvent.OnEquip) {
     def toFullWord: String = "Bound To Account On Equip"
   }
 

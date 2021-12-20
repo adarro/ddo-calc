@@ -18,24 +18,25 @@
 package io.truthencode.ddo.model.feats
 
 import io.truthencode.ddo.model.race.Race
-import io.truthencode.ddo.support.requisite.{FeatRequisiteImpl, RaceRequisite, RequiresAllOfRace}
 import io.truthencode.ddo.support.StringUtils.Extensions
 import io.truthencode.ddo.support.naming.Prefix
+import io.truthencode.ddo.support.requisite.{FeatRequisiteImpl, RaceRequisite, RequiresAllOfRace}
 /**
  * Created by adarr on 2/20/2017.
  */
-trait HalfOrcBlood extends FeatRequisiteImpl with RaceRequisite with Passive with Prefix with RequiresAllOfRace {
+trait HalfOrcBlood
+  extends FeatRequisiteImpl with RaceRequisite with Passive with Prefix with RequiresAllOfRace {
   self: RacialFeat =>
-  override def allOfRace: Seq[(Race, Int)] = List((Race.HalfOrc, 1))
-
   /**
    * Delimits the prefix and text.
    */
   override protected val prefixSeparator: String = " "
 
-  override protected def nameSource: String = "Orc Blood".toPascalCase
+  override def allOfRace: Seq[(Race, Int)] = List((Race.HalfOrc, 1))
 
   override def grantsToRace: Seq[(Race, Int)] = List((Race.HalfOrc, 1))
 
   override def prefix: Option[String] = Some("Half-Orc")
+
+  override protected def nameSource: String = "Orc Blood".toPascalCase
 }

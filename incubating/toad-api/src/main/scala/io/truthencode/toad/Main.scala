@@ -20,7 +20,7 @@ package io.truthencode.toad
 import io.truthencode.toad.config.Bootstrap._
 
 object Main {
-  def main(args: Array[String]) {
+  def main(args: Array[String]): Unit = {
     //  val (serverIp, serverPort, hostName) = (serverInfo.ip,serverInfo.port,serverInfo.hostName)
     init()
     status()

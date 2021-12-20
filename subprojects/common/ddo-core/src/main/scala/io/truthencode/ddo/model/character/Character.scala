@@ -33,7 +33,8 @@ import io.truthencode.ddo.support.points.{HitPoints, Ki, SpellPoints}
 trait Character {
 
   /**
-   * Currently Just an alias for Int but denotes that it is a percentage and may need to be refined to a decimal
+   * Currently Just an alias for Int but denotes that it is a percentage and may need to be refined
+   * to a decimal
    */
   type Pct = Int
 
@@ -43,15 +44,17 @@ trait Character {
   val name: String = "Unnamed"
 
   /**
-   * Character Race This should be somewhat stable, however, spells / feats may alter or replace it such as Druid shape
-   * shifting, Shrouds, Construct Mastery etc.
+   * Character Race This should be somewhat stable, however, spells / feats may alter or replace it
+   * such as Druid shape shifting, Shrouds, Construct Mastery etc.
    * @note
-   *   May need to additionally store an array of applied types such as counting as Undead in Addition to type.
+   *   May need to additionally store an array of applied types such as counting as Undead in
+   *   Addition to type.
    */
   val race: SimpleStatItem[Race]
 
   /**
-   * This includes both the Moral and Law axis, i.e. 'Chaotic Good' You may have exactly one alignment.
+   * This includes both the Moral and Law axis, i.e. 'Chaotic Good' You may have exactly one
+   * alignment.
    */
   val alignment: SimpleStatItem[Alignments]
 
@@ -62,17 +65,33 @@ trait Character {
   val intelligence: AttributeStat
   val wisdom: AttributeStat
   val charisma: AttributeStat
+  /**
+   * Holds currently applied enhancements from the skill tree.
+   * @note
+   *   may need to create a custom type as certain enhancements are multi-tier, i.e. can spend
+   *   points for up to three levels
+   */
+  val enhancements: List[SimpleStatItem[Enhancement]]
+  /**
+   * Holds current Epic destiny acquisitions
+   * @note
+   *   will likely need to create custom type
+   */
+  val epicDestinies: List[SimpleStatItem[EpicDestiny]]
+  /* Equipment Slots */
+  val equipment: List[WearableItem]
 
   /**
-   * Feats are acquired via leveling and other methods such as favor rewards. They will need to be dynamically derived
-   * by a Character Planner.
+   * Feats are acquired via leveling and other methods such as favor rewards. They will need to be
+   * dynamically derived by a Character Planner.
    * @return
    *   a list of currently acquired Feats
    */
   def feats: List[SimpleStatItem[Feat]]
 
   /**
-   * Skills are given upon character creation, but some such as Perform require trained ranks before they can be used.
+   * Skills are given upon character creation, but some such as Perform require trained ranks before
+   * they can be used.
    * @return
    *   the list of skills.
    * @note
@@ -102,27 +121,12 @@ trait Character {
   def epicLevels: List[(Int, EpicCharacterClass)]
 
   /**
-   * Holds Past lives from all TR forms (Heroic, Racial, Iconic and Epic) and is used for granting past life feats and /
-   * or displaying total character levels.
+   * Holds Past lives from all TR forms (Heroic, Racial, Iconic and Epic) and is used for granting
+   * past life feats and / or displaying total character levels.
    * @return
    *   List of acquired past life feats
    */
   def pastLives: List[StatItem[PastLife, Int]]
-
-  /**
-   * Holds currently applied enhancements from the skill tree.
-   * @note
-   *   may need to create a custom type as certain enhancements are multi-tier, i.e. can spend points for up to three
-   *   levels
-   */
-  val enhancements: List[SimpleStatItem[Enhancement]]
-
-  /**
-   * Holds current Epic destiny acquisitions
-   * @note
-   *   will likely need to create custom type
-   */
-  val epicDestinies: List[SimpleStatItem[EpicDestiny]]
 
   /**
    * Current hitpoints based on a calculation of Constitution, Feats, Level etc
@@ -150,32 +154,48 @@ trait Character {
 
   //  General Combat
   def helplessDamage: StatItem[HelplessDamage, Pct]
+
   def criticalHitConfirmation: StatItem[CriticalHitConfirmation, Int]
+
   def criticalHitDamage: StatItem[CriticalHitDamage, Int]
+
   def fortificationBypass: StatItem[FortificationBypass, Pct]
+
   def dodgeBypass: StatItem[DodgeBypass, Pct]
+
   def sneakAttackDamageBonus: StatItem[SneakAttackDamageBonus, Int]
+
   def sneakAttackHitBonus: StatItem[SneakAttackHitBonus, Int]
-  def sneakAttackDice: StatItem[SneakAttackHitBonus, Dice]
   //    Melee
 
+  def sneakAttackDice: StatItem[SneakAttackHitBonus, Dice]
+
   def oneHandedAttackSpeedBonus: StatItem[OneHandedAttackSpeedBonus, Pct]
+
   def twoHandedAttackSpeedBonus: StatItem[TwoHandedAttackSpeedBonus, Pct]
+
   def twoWeaponAttackSpeedBonus: StatItem[TwoWeaponAttackSpeedBonus, Pct]
+
   def quarterstaffAttackSpeedBonus: StatItem[QuarterstaffAttackSpeedBonus, Pct]
+
   def shieldBashChance: StatItem[ShieldBashChance, Pct]
+
   def secondaryShieldBashChance: StatItem[SecondaryShieldBashChance, Pct]
+
   def offhandHitChance: StatItem[OffhandHitChance, Pct]
+
   def offhandDoublestrike: StatItem[OffhandDoublestrike, Pct]
-  def strikeThroughChance: StatItem[StrikeThroughChance, Pct]
 
   // def meleeThreatMultiplier: StatItem[MeleeThreatMultiplier,Pct]
 
+  def strikeThroughChance: StatItem[StrikeThroughChance, Pct]
+
   //    Ranged Attack
   def bowAttackSpeedBonus: StatItem[BowAttackSpeedBonus, Pct]
+
   def thrownAttackSpeedBonus: StatItem[ThrownAttackSpeedBonus, Pct]
+
   def nonRepeatingCrossbowAttackSpeedBonus: StatItem[NonRepeatingCrossbowAttackSpeedBonus, Pct]
-  def repeatingCrossbowAttackSpeedBonus: StatItem[RepeatingCrossbowAttackSpeedBonus, Pct]
   // def rangedThreatMultiplier: StatItem[RangedThreatMultiplier,Pct]
   // Effective hit points?
 
@@ -247,6 +267,5 @@ trait Character {
      Possibly calculate Base Chance at Level
    */
 
-  /* Equipment Slots */
-  val equipment: List[WearableItem]
+  def repeatingCrossbowAttackSpeedBonus: StatItem[RepeatingCrossbowAttackSpeedBonus, Pct]
 }

@@ -18,9 +18,9 @@
 package io.truthencode.ddo.enchantment
 
 import com.typesafe.scalalogging.LazyLogging
-import com.wix.accord.{validate, Success}
-import com.wix.accord.dsl.{empty, notEmpty, validator, Contextualizer, ValidatorBooleanOps}
+import com.wix.accord.dsl.{Contextualizer, ValidatorBooleanOps, empty, notEmpty, validator}
 import com.wix.accord.transform.ValidationTransform.TransformedValidator
+import com.wix.accord.{Success, validate}
 import io.truthencode.ddo.enchantment.Modifier.{Greater, Lesser, Minor}
 import io.truthencode.ddo.model.effect.{Prefix, SecondaryPrefix, Suffix}
 import io.truthencode.ddo.support.RomanNumeral.fromRoman
@@ -59,6 +59,13 @@ object GuardModifier extends LazyLogging {
 
       }
     }
+  /**
+   * Array of allowed Guard Modifiers, may occasionally need to be updated if the game adds new
+   * ones.
+   */
+  lazy val allowedModifiers: List[String] = List(Minor, Lesser, Greater).map { x =>
+    x.entryName
+  }
 
   def apply(
     prefix: Option[String] = None,
@@ -74,24 +81,18 @@ object GuardModifier extends LazyLogging {
   def apply(parameters: Parameters): GuardModifier =
     GuardModifier(parameters._1, parameters._2, parameters._3)
 
-  private def create(prefix: Option[String], sPrefix: Option[String], suffix: Option[String]): GuardModifier = {
-    new GuardModifier(prefix, sPrefix, suffix) {
-      private def readResolve(): Object =
-        GuardModifier(prefix, sPrefix, suffix)
-
-      def copy(prefix: Option[String], sPrefix: Option[String], suffix: Option[String]): GuardModifier =
-        GuardModifier(prefix, sPrefix, suffix)
-
-      val tuple: GuardModifier.Parameters =
-        (prefix, sPrefix, suffix)
-    }
-  }
-
   /**
-   * Array of allowed Guard Modifiers, may occasionally need to be updated if the game adds new ones.
+   * Filters to allow supported suffixes for the guards. Currently, this is represented by a Roman
+   * Numeral 1 - 10.
    */
-  lazy val allowedModifiers: List[String] = List(Minor, Lesser, Greater).map { x =>
-    x.entryName
+  def allowedRoman(rn: Option[String]): Option[Int] = {
+    rn.flatMap { y =>
+      fromRoman(y) match {
+        case x: Int if 1 until 11 contains x =>
+          logger.info(s"AllowedRoman $y->$x"); Some(x)
+        case _ => logger.info(s"AllowedRoman $y -> None"); None
+      }
+    }
   }
 
   /**
@@ -104,16 +105,22 @@ object GuardModifier extends LazyLogging {
       })
     }) flatten
 
-  /**
-   * Filters to allow supported suffixes for the guards. Currently, this is represented by a Roman Numeral 1 - 10.
-   */
-  def allowedRoman(rn: Option[String]): Option[Int] = {
-    rn.flatMap { y =>
-      fromRoman(y) match {
-        case x: Int if 1 until 11 contains x =>
-          logger.info(s"AllowedRoman $y->$x"); Some(x)
-        case _ => logger.info(s"AllowedRoman $y -> None"); None
-      }
+  private def create(
+    prefix: Option[String],
+    sPrefix: Option[String],
+    suffix: Option[String]): GuardModifier = {
+    new GuardModifier(prefix, sPrefix, suffix) {
+      private def readResolve(): Object =
+        GuardModifier(prefix, sPrefix, suffix)
+
+      def copy(
+        prefix: Option[String],
+        sPrefix: Option[String],
+        suffix: Option[String]): GuardModifier =
+        GuardModifier(prefix, sPrefix, suffix)
+
+      val tuple: GuardModifier.Parameters =
+        (prefix, sPrefix, suffix)
     }
   }
 

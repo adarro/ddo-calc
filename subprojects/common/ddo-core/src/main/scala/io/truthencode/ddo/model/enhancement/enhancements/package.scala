@@ -17,7 +17,6 @@
  */
 package io.truthencode.ddo.model.enhancement
 
-import io.truthencode.ddo.support.points.SpendablePoints
 import io.truthencode.ddo.support.tree.TreeLike
 
 package object enhancements {

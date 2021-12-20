@@ -18,20 +18,22 @@
 package io.truthencode.ddo.model.feats
 
 import com.typesafe.scalalogging.LazyLogging
-import io.truthencode.ddo.model.effect.features.Features
 import io.truthencode.ddo.model.feats.GeneralFeat.ExoticWeaponProficiency
 import io.truthencode.ddo.support.naming.DisplayProperties
 import org.scalatest.funspec.AnyFunSpec
 
 class WeaponProficiencyTest extends AnyFunSpec with LazyLogging {
-  lazy val exotics: Seq[GeneralFeat with SubFeat with ExoticWeaponProficiency] = GeneralFeat.ExoticWeaponProficiency.subFeats.map {
+  lazy val exotics: Seq[GeneralFeat with SubFeat with ExoticWeaponProficiency] =
+    GeneralFeat.ExoticWeaponProficiency.subFeats.map {
       x: GeneralFeat with SubFeat with ExoticWeaponProficiency with DisplayProperties => x
-  }
+    }
   describe("Weapon proficiency: Bastard Sword") {
     they("Exist") {
 
       exotics.foreach { e =>
-          logger.info(s"entryName: ${e.displayText} | ${e.entryName} | Display Source ${e.displaySource} ") }
+        logger.info(
+          s"entryName: ${e.displayText} | ${e.entryName} | Display Source ${e.displaySource} ")
+      }
     }
   }
 }

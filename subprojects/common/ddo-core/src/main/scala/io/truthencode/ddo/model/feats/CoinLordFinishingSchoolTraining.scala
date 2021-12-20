@@ -23,6 +23,7 @@ import io.truthencode.ddo.support.requisite.{FeatRequisiteImpl, RequiresAllOfPat
 /**
  * Grants +2 bonus to your Diplomacy and Intimidate
  */
-protected[feats] trait CoinLordFinishingSchoolTraining extends FeatRequisiteImpl with Passive with RequiresAllOfPatron {
+protected[feats] trait CoinLordFinishingSchoolTraining
+  extends FeatRequisiteImpl with Passive with RequiresAllOfPatron {
   override def allOfPatron: Seq[(FavorPatron, Int)] = List((FavorPatron.TheCoinLords, 400))
 }

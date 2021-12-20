@@ -24,12 +24,12 @@ import io.truthencode.ddo.support.tree.TreeLike
 trait AlchemicalResistance extends BombardierCore with ClassEnhancementImpl {
 
   override lazy val description: Option[String] = Some("+2 Magical Resistance Rating")
-  override def apCostPerRank: Int = 1
-
   /**
    * Some enhancements can be taken multiple times (generally up to three)
    */
   override val ranks: Int = 1
+
+  override def apCostPerRank: Int = 1
 
   override def progressionInTree: Seq[(TreeLike, SpendablePoints, Int)] = Seq((tree, 0))
 }

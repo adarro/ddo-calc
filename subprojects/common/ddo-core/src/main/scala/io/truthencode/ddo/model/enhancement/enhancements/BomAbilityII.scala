@@ -21,6 +21,12 @@ import io.truthencode.ddo.model.attribute.Attribute
 import io.truthencode.ddo.model.enhancement.enhancements.classbased.BombardierTierFour
 
 trait BomAbilityII extends BombardierTierFour with ClassEnhancementImpl with AbilitySelector {
+  override val abilitySelections: Seq[Attribute] = Seq(Attribute.Intelligence)
+  /**
+   * Some enhancements can be taken multiple times (generally up to three)
+   */
+  override val ranks: Int = 1
+
   /**
    * Roman Numeral Suffix
    *
@@ -28,18 +34,11 @@ trait BomAbilityII extends BombardierTierFour with ClassEnhancementImpl with Abi
    */
   override def rnSuffix: Int = 2
 
-  override val abilitySelections: Seq[Attribute] = Seq(Attribute.Intelligence)
-
   /**
-   * Some enhancements have multiple ranks. This is the cost for each rank. Older versions had increasing costs which
-   * has been streamlined to a linear progression.
+   * Some enhancements have multiple ranks. This is the cost for each rank. Older versions had
+   * increasing costs which has been streamlined to a linear progression.
    *
    * @return
    */
   override def apCostPerRank: Int = 2
-
-  /**
-   * Some enhancements can be taken multiple times (generally up to three)
-   */
-  override val ranks: Int = 1
 }

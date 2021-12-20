@@ -26,6 +26,8 @@ sealed trait Numbers extends EnumEntry
  * magnitude etc.
  */
 object Numbers extends Enum[Numbers] {
+  override def values: IndexedSeq[Numbers] = findValues
+
   /**
    * Used to amplify a given value. // TODO: Implement Magnitude then change this to a case class
    * applying [[io.truthencode.ddo.model.effect.Magnitude]]
@@ -36,5 +38,4 @@ object Numbers extends Enum[Numbers] {
    * Will be used for flagging / calculating saves / difficult checks.
    */
   case object DifficultyCheck extends Numbers
-  override def values: IndexedSeq[Numbers] = findValues
 }

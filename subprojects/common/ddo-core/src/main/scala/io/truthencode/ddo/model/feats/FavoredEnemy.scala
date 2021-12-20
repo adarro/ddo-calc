@@ -17,22 +17,23 @@
  */
 package io.truthencode.ddo.model.feats
 
-import java.time.Duration
-
 import io.truthencode.ddo.model.classes.HeroicCharacterClass
 import io.truthencode.ddo.model.classes.HeroicCharacterClass.Ranger
 import io.truthencode.ddo.model.compendium.types.MainType
 import io.truthencode.ddo.model.misc.CoolDown
 import io.truthencode.ddo.support.requisite.{FeatRequisiteImpl, FreeFeat, GrantsToClass}
 
+import java.time.Duration
+
 /**
- * [[https://ddowiki.com/page/Favored_Enemy Favored Enemy]] Activate this ability to lower an animal's or beast's
- * aggression, effectively mesmerizing them.
+ * [[https://ddowiki.com/page/Favored_Enemy Favored Enemy]] Activate this ability to lower an
+ * animal's or beast's aggression, effectively mesmerizing them.
  *
  * Target: Enemy animals and magical beasts Duration: 5 Min Save: Will
  */
 protected[feats] trait FavoredEnemy
-  extends FeatRequisiteImpl with Passive with GrantsToClass with CoolDown with FreeFeat { self: MainType =>
+  extends FeatRequisiteImpl with Passive with GrantsToClass with CoolDown with FreeFeat {
+  self: MainType =>
   override def grantToClass: Seq[(HeroicCharacterClass, Int)] =
     List((Ranger, 1))
 

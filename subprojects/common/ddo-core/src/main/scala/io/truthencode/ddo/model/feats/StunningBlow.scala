@@ -35,11 +35,8 @@ protected[feats] trait StunningBlow
   extends FeatRequisiteImpl with ActiveFeat with FreeFeat with Tactical with FighterBonusFeat
   with FeaturesImpl with GrantAbilityFeature {
   self: GeneralFeat =>
-  override val grantBonusType: BonusType = BonusType.Feat
   override lazy val grantedAbility: ActiveAbilities = ActiveAbilities.StunningBlow
-
-  override def coolDown: Option[Duration] = Some(Duration.ofSeconds(15))
-
+  override val grantBonusType: BonusType = BonusType.Feat
   override protected[this] val triggerOn: Seq[TriggerEvent] = Seq(TriggerEvent.SpecialAttack)
   override protected[this] val triggerOff: Seq[TriggerEvent] = Seq(TriggerEvent.OnCoolDown)
   override protected[this] val grantAbilityCategories: Seq[effect.EffectCategories.Value] =
@@ -47,4 +44,6 @@ protected[feats] trait StunningBlow
   override val abilityId: String = "StunningBlow"
   override val description: String =
     "Special Attack This feat has a chance to stun the target for 6 seconds"
+
+  override def coolDown: Option[Duration] = Some(Duration.ofSeconds(15))
 }

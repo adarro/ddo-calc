@@ -19,7 +19,7 @@ package io.truthencode.ddo.support.naming
 
 trait WildShapePrefix extends Prefix {
   self: DisplayName with DisplayProperties =>
-  def prefix: Option[String] = Some("Wild Shape")
-
   override protected val prefixSeparator: String = ": "
+
+  def prefix: Option[String] = Some("Wild Shape")
 }

@@ -28,6 +28,8 @@ import scala.collection.immutable.IndexedSeq
 sealed trait AvailabilityLevel extends EnumEntry
 
 object AvailabilityLevel extends Enum[AvailabilityLevel] {
+  override def values: IndexedSeq[AvailabilityLevel] = findValues
+
   case object FreeToPlay extends AvailabilityLevel with Abbreviation {
     /**
      * The short form of the word
@@ -39,9 +41,12 @@ object AvailabilityLevel extends Enum[AvailabilityLevel] {
      */
     override def toFullWord: String = this.toString
   }
+
   case object Favor extends AvailabilityLevel
+
   case object Premium extends AvailabilityLevel
+
   case object VIP extends AvailabilityLevel
+
   case object Iconic extends AvailabilityLevel
-  override def values: IndexedSeq[AvailabilityLevel] = findValues
 }

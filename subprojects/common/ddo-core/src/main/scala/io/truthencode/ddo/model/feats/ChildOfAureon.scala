@@ -21,7 +21,7 @@ import io.truthencode.ddo.model.religions.Aureon
 import io.truthencode.ddo.support.requisite.{FeatRequisiteImpl, RequiresAllOfFeat}
 
 trait ChildOfAureon
-  extends FeatRequisiteImpl with EberronReligionNonWarforged with ChildLevelBase with RequiresAllOfFeat with Aureon
-  with AureonFeatBase { self: DeityFeat =>
+  extends FeatRequisiteImpl with EberronReligionNonWarforged with ChildLevelBase
+  with RequiresAllOfFeat with Aureon with AureonFeatBase { self: DeityFeat =>
   override def allOfFeats: Seq[Feat] = List(DeityFeat.FollowerOfAureon)
 }

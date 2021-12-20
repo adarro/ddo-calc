@@ -22,12 +22,14 @@ import io.truthencode.ddo.model.race.Race
 import io.truthencode.ddo.support.requisite.{FeatRequisiteImpl, RequiresAllOfRace, RequiresAttribute}
 
 /**
- * DilettanteBard.bmp Half-Elf Dilettante: Bard Active Can produce a Bardic Fascinate effect three times per rest that
- * mesmerizes nearby enemies, with a Will DC based on a Perform check (or 1d20 + Charisma Modifier if untrained) to
- * negate. Able to use wands and scrolls as if you were a level one bard. Half-Elf 13 Charisma
+ * DilettanteBard.bmp Half-Elf Dilettante: Bard Active Can produce a Bardic Fascinate effect three
+ * times per rest that mesmerizes nearby enemies, with a Will DC based on a Perform check (or 1d20 +
+ * Charisma Modifier if untrained) to negate. Able to use wands and scrolls as if you were a level
+ * one bard. Half-Elf 13 Charisma
  */
 trait HalfElfDilettanteBard
-  extends FeatRequisiteImpl with HalfElfDilettantePreFix with Passive with RequiresAttribute with RequiresAllOfRace {
+  extends FeatRequisiteImpl with HalfElfDilettantePreFix with Passive with RequiresAttribute
+  with RequiresAllOfRace {
   self: RacialFeat =>
   override def allOfRace: Seq[(Race, Int)] = List((Race.HalfElf, 1))
 

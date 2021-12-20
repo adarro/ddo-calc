@@ -27,12 +27,7 @@ import io.truthencode.ddo.model.effect.TriggerEvent
 import io.truthencode.ddo.model.effect.features.{FeaturesImpl, GrantAbilityFeature}
 import io.truthencode.ddo.model.misc.CoolDownPool.ManyShot
 import io.truthencode.ddo.model.misc.SharedCoolDown
-import io.truthencode.ddo.support.requisite.{
-  ClassRequisiteImpl,
-  FeatRequisiteImpl,
-  RequiresAllOfClass,
-  RequiresAttribute
-}
+import io.truthencode.ddo.support.requisite.{ClassRequisiteImpl, FeatRequisiteImpl, RequiresAllOfClass, RequiresAttribute}
 
 import java.time.Duration
 
@@ -53,22 +48,23 @@ protected[feats] trait TenThousandStars
   with FeaturesImpl with GrantAbilityFeature {
   self: GeneralFeat =>
 
-  override def requiresAttribute: Seq[(Attribute, Int)] =
-    List((Attribute.Dexterity, 13))
-
+  override lazy val grantedAbility: ActiveAbilities = ActiveAbilities.TenThousandStars
   override val coolDownPoolId: String = ManyShot.coolDownPoolId
-
-  override def coolDown: Option[Duration] = Some(Duration.ofSeconds(60))
-// TODO: CoolDownPool 10K stars now has 1 minute cool down and puts Manyshot on 30 cool-down
-  override def allOfClass: Seq[(HeroicCharacterClass, Int)] =
-    List((HeroicCharacterClass.Monk, 6))
   override protected[this] val triggerOn: Seq[TriggerEvent] = Seq(TriggerEvent.AtWill)
   override protected[this] val triggerOff: Seq[TriggerEvent] = Seq(TriggerEvent.OnCoolDown)
   override protected[this] val grantAbilityCategories: Seq[effect.EffectCategories.Value] =
     Seq(effect.EffectCategories.Ability, effect.EffectCategories.RangedCombat)
   override val grantBonusType: BonusType = BonusType.Feat
-  override lazy val grantedAbility: ActiveAbilities = ActiveAbilities.TenThousandStars
   override val abilityId: String = "TenThousandStars"
   override val description: String =
     "or the next 30 seconds, add your Wisdom ability score to your Ranged Power and add your monk level * 5 to your Doubleshot."
+
+  override def requiresAttribute: Seq[(Attribute, Int)] =
+    List((Attribute.Dexterity, 13))
+
+  override def coolDown: Option[Duration] = Some(Duration.ofSeconds(60))
+
+// TODO: CoolDownPool 10K stars now has 1 minute cool down and puts Manyshot on 30 cool-down
+  override def allOfClass: Seq[(HeroicCharacterClass, Int)] =
+    List((HeroicCharacterClass.Monk, 6))
 }

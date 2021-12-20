@@ -18,25 +18,28 @@
 package io.truthencode.ddo.model.feats
 
 import io.truthencode.ddo.model.classes.HeroicCharacterClass
-import io.truthencode.ddo.model.classes.HeroicCharacterClass.{Alchemist, Artificer}
+import io.truthencode.ddo.model.classes.HeroicCharacterClass.Artificer
 import io.truthencode.ddo.support.requisite.{FeatRequisiteImpl, GrantsToClass, RequiresAnyOfClass}
 
 /**
- * Created by adarr on 2/16/2017. [[https://ddowiki.com/page/Artificer_Knowledge]] This feat grants you benefits based
- * on your Artificer or Alchemist level.
+ * Created by adarr on 2/16/2017. [[https://ddowiki.com/page/Artificer_Knowledge]] This feat grants
+ * you benefits based on your Artificer or Alchemist level.
  *
- * Scrolls: Artificer level 1. Grants a +2 to UMD checks related to scroll use, and all scrolls used by the Artificer
- * have their caster levels increased by 1. This caster level bonus increases by 1 at Artificer levels 4, 7, 10, and 13,
- * and is capped by the Artificer's Intelligence Bonus. Bug: Currently Artificer Knowledge's UMD check bonus won't work
- * correctly. "Chance to activate" on item description include this feat bonus, but feat bonus does not affect when you
- * use scroll. So if you have this feat and description says 100%, then there is 10% chance to you will fail to
- * activate. The chance to activate does actually increase as it's supposed to. What actually happens is the UMD
- * requirement is lowered by 2. The feat then erroneously counts the knowledge feat for UMD bonus (creating a false
- * bonus of 4) that shows up on the tooltip but doesn't actually happen when using the item. The best thing to do is
- * keep track of your UMD and measure it against the item's stated UMD requirement
+ * Scrolls: Artificer level 1. Grants a +2 to UMD checks related to scroll use, and all scrolls used
+ * by the Artificer have their caster levels increased by 1. This caster level bonus increases by 1
+ * at Artificer levels 4, 7, 10, and 13, and is capped by the Artificer's Intelligence Bonus. Bug:
+ * Currently Artificer Knowledge's UMD check bonus won't work correctly. "Chance to activate" on
+ * item description include this feat bonus, but feat bonus does not affect when you use scroll. So
+ * if you have this feat and description says 100%, then there is 10% chance to you will fail to
+ * activate. The chance to activate does actually increase as it's supposed to. What actually
+ * happens is the UMD requirement is lowered by 2. The feat then erroneously counts the knowledge
+ * feat for UMD bonus (creating a false bonus of 4) that shows up on the tooltip but doesn't
+ * actually happen when using the item. The best thing to do is keep track of your UMD and measure
+ * it against the item's stated UMD requirement
  */
 protected[feats] trait ArtificerKnowledgeScrolls
-  extends FeatRequisiteImpl with ArtificerKnowledgePrefix with Passive with GrantsToClass with RequiresAnyOfClass {
+  extends FeatRequisiteImpl with ArtificerKnowledgePrefix with Passive with GrantsToClass
+  with RequiresAnyOfClass {
   self: ClassFeat =>
   private lazy val levels = List(1, 4, 7, 10, 13)
 // This could be written in a simple map, but I am unsure ATM if Alchemist get it to.  And it's easier to simply add / remove them.

@@ -17,4 +17,5 @@
  */
 package io.truthencode.ddo.testoptions
 
-trait DefaultFlexmark extends FlexmarkImpl with GfmStrikethroughSubscript with GfmTaskListOptions with Emoji
+trait DefaultFlexmark
+  extends FlexmarkImpl with GfmStrikethroughSubscript with GfmTaskListOptions with Emoji

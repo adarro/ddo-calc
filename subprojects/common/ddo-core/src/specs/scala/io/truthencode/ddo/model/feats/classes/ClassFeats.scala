@@ -19,7 +19,6 @@ package io.truthencode.ddo.model.feats.classes
 
 import io.truthencode.ddo.model.feats.{ClassFeat, FeatDisplayHelper}
 import io.truthencode.ddo.testoptions.DefaultFlexmark
-import org.concordion.api.option.{ConcordionOptions, MarkdownExtensions}
 import org.concordion.integration.junit4.ConcordionRunner
 import org.junit.runner.RunWith
 

@@ -109,7 +109,7 @@ object VertxService {
    * Initializes the Vertx engine synchronously
    *
    * @note
-   *   internally calls [[startVertXAsync()]] with a blocking call.
+   *   internally calls [[io.truthencode.toad.verticle.VertxService#startVertXAsync()]] with a blocking call.
    * @param timeout
    *   maximum wait time to block before failing. (defaults to [[DefaultDuration]]
    * @return

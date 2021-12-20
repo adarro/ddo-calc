@@ -40,6 +40,7 @@ protected[feats] trait SlicingBlow
   extends FeatRequisiteImpl with ActiveFeat with AtWillEvent with FreeFeat with FighterBonusFeat
   with FeaturesImpl with GrantAbilityFeature {
   self: GeneralFeat =>
+  override lazy val grantedAbility: ActiveAbilities = ActiveAbilities.SlicingBlow
   // TODO: Add Bleed Effect to slicing blow
   override protected[this] val triggerOn: Seq[TriggerEvent] = Seq(TriggerEvent.SpecialAttack)
   override protected[this] val triggerOff: Seq[TriggerEvent] = Seq(TriggerEvent.OnCoolDown)
@@ -48,9 +49,7 @@ protected[feats] trait SlicingBlow
   override val abilityId: String = "SlicingBlow"
   override val description: String =
     "Special Attack Using this attack, you deal 1 point of Constitution damage to your target and deal 1d4 additional damage 2 seconds later as the target bleeds"
+  override val grantBonusType: BonusType = BonusType.Feat
 
   override def coolDown: Option[Duration] = Some(Duration.ofSeconds(15))
-
-  override val grantBonusType: BonusType = BonusType.Feat
-  override lazy val grantedAbility: ActiveAbilities = ActiveAbilities.SlicingBlow
 }

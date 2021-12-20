@@ -17,9 +17,8 @@
  */
 package io.truthencode.ddo.model.alignment
 
-import io.truthencode.ddo.support.{ConcordionEnumBuilderHelper, ConcordionEnumBuilderSupport}
+import io.truthencode.ddo.support.ConcordionEnumBuilderSupport
 import org.concordion.api.FullOGNL
-import org.concordion.api.extension.Extensions
 //import org.concordion.ext.EmbedExtension
 import org.concordion.integration.junit4.ConcordionRunner
 import org.junit.runner.RunWith

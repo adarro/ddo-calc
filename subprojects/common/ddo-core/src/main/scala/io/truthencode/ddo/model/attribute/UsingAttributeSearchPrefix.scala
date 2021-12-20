@@ -19,15 +19,16 @@ package io.truthencode.ddo.model.attribute
 
 import io.truthencode.ddo.support.naming.{DisplayName, UsingSearchPrefix}
 
-trait UsingAttributeSearchPrefix extends UsingSearchPrefix{
-    self: DisplayName =>
-    override val withPrefix: String = s"$searchPrefix:$nameSource"
+trait UsingAttributeSearchPrefix extends UsingSearchPrefix {
+  self: DisplayName =>
+  override val withPrefix: String = s"$searchPrefix:$nameSource"
 
-    /**
-     * Used when qualifying a search with a prefix. Examples include finding "HalfElf" from qualified "Race:HalfElf"
-     *
-     * @return
-     *   A default or applied prefix
-     */
-    override def searchPrefixSource: String = Attribute.searchPrefix
+  /**
+   * Used when qualifying a search with a prefix. Examples include finding "HalfElf" from qualified
+   * "Race:HalfElf"
+   *
+   * @return
+   *   A default or applied prefix
+   */
+  override def searchPrefixSource: String = Attribute.searchPrefix
 }

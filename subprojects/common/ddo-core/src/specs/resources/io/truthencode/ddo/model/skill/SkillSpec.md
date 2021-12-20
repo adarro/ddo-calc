@@ -1,6 +1,7 @@
 # Skill
 
-[Skills](http://ddowiki.com/page/Skills "DDO Wiki: Skills") are abilities that characters can use to accomplish or enhance something.
+[Skills](http://ddowiki.com/page/Skills "DDO Wiki: Skills") are abilities that characters can use to accomplish or
+enhance something.
 
 In this context, we encapsulate all supported skills here.
 
@@ -17,10 +18,13 @@ Searching for [Balance](- "#searchString") will return:
 | Balance |
 
 [search]: - "c:verify-rows=#username:withNameAsList(#searchString)"
+
 [_matchStrategy_]: - "c:matchStrategy=KeyMatch"
+
 [match]: - "?=#username"
 
 Skills can be searched with many case options.
+
 * Case sensitive (default)
 * Case insensitive
 * Uppercase

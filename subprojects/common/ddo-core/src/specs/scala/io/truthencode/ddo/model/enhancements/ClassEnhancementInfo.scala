@@ -21,12 +21,7 @@ import com.typesafe.scalalogging.LazyLogging
 import io.truthencode.ddo.model.enhancement.enhancements.ClassEnhancement
 import io.truthencode.ddo.model.enhancement.{ClassBasedEnhancements, Tier}
 import io.truthencode.ddo.support.StringUtils._
-import io.truthencode.ddo.support.requisite.{
-  ActionPointRequisite,
-  PointInTreeRequisite,
-  PointsAvailableRequisite,
-  RequiresActionPoints
-}
+import io.truthencode.ddo.support.requisite.{ActionPointRequisite, PointInTreeRequisite, PointsAvailableRequisite, RequiresActionPoints}
 
 trait ClassEnhancementInfo {
   type ENH = ClassEnhancement with Tier with ActionPointRequisite with PointInTreeRequisite
@@ -48,8 +43,9 @@ object ClassEnhancementInfo extends LazyLogging {
 
 // scalastyle:off
   def apply(
-    classEnhancement: ClassEnhancement with Tier with ClassBasedEnhancements with PointInTreeRequisite with
-      PointsAvailableRequisite with RequiresActionPoints
+    classEnhancement: ClassEnhancement
+      with Tier with ClassBasedEnhancements with PointInTreeRequisite with PointsAvailableRequisite
+      with RequiresActionPoints
   ) = {
     val e = classEnhancement
     def id: String = e.entryName
@@ -145,23 +141,9 @@ case class CEnhancement(
 )(implicit identifier: String = name.toPascalCase.filterAlphaNumeric)
   extends ClassEnhancementInfo with LazyLogging {
 
-  private def _enh = {
-    logger.info(s"locating values with entryname eq $id")
-    val v = values.find(p => p.entryName.equals(identifier))
-    logger.info(s"result ${v}")
-    v
-  }
-  //  require(_enh.nonEmpty,s"No value found matching Id $id")
-
-  private val enh: ENH = _enh.get
-
-  /**
-   * The string id used to create the object
-   */
-  override def id: String = enh.entryName
   override val actionPointCost: Int = enh.apCostPerRank
+  //  require(_enh.nonEmpty,s"No value found matching Id $id")
   override val ranks: Int = enh.ranks
-
   override val progression: Int = enh.progressionInTree.find { p =>
     p._1 == enh.tree
   } match {
@@ -169,7 +151,19 @@ case class CEnhancement(
     case _ => 0
   } // .flatMap{x => x._3} //.flatMap {p => p._3}
   override val requirements: Option[List[String]] = None
-
   override val description: String = enh.rawDescription
+  private val enh: ENH = _enh.get
+
+  private def _enh = {
+    logger.info(s"locating values with entryname eq $id")
+    val v = values.find(p => p.entryName.equals(identifier))
+    logger.info(s"result ${v}")
+    v
+  }
+
+  /**
+   * The string id used to create the object
+   */
+  override def id: String = enh.entryName
 
 }

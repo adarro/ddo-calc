@@ -22,11 +22,12 @@ import io.truthencode.ddo.model.race.Race
 import io.truthencode.ddo.support.requisite.{FeatRequisiteImpl, RequiresAllOfRace, RequiresAttribute}
 
 /**
- * Druid.png Half-Elf Dilettante: Druid Passive Able to use wands and scrolls as if you were a level one druid. Half-Elf
- * 13 Wisdom
+ * Druid.png Half-Elf Dilettante: Druid Passive Able to use wands and scrolls as if you were a level
+ * one druid. Half-Elf 13 Wisdom
  */
 trait HalfElfDilettanteDruid
-  extends FeatRequisiteImpl with HalfElfDilettantePreFix with Passive with RequiresAttribute with RequiresAllOfRace {
+  extends FeatRequisiteImpl with HalfElfDilettantePreFix with Passive with RequiresAttribute
+  with RequiresAllOfRace {
   self: RacialFeat =>
   override def allOfRace: Seq[(Race, Int)] = List((Race.HalfElf, 1))
 

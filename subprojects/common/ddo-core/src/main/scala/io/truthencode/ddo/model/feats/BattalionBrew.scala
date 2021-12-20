@@ -19,7 +19,7 @@ package io.truthencode.ddo.model.feats
 
 import io.truthencode.ddo.model.classes.HeroicCharacterClass
 import io.truthencode.ddo.model.classes.HeroicCharacterClass.Alchemist
-import io.truthencode.ddo.support.requisite.{ClassRequisiteImpl, FeatRequisiteImpl, GrantsToClass, RequiresAllOfClass}
+import io.truthencode.ddo.support.requisite.{ClassRequisiteImpl, FeatRequisiteImpl, RequiresAllOfClass}
 
 /**
  * You can use Intelligence for to hit and damage rolls with simple weapons.
@@ -28,7 +28,8 @@ import io.truthencode.ddo.support.requisite.{ClassRequisiteImpl, FeatRequisiteIm
  *   [[https://ddowiki.com/page/Battalion_Brew]]
  */
 protected[feats] trait BattalionBrew
-  extends FeatRequisiteImpl with ClassRequisiteImpl with RequiresAllOfClass with AlchemistBonusFeat with Passive {
+  extends FeatRequisiteImpl with ClassRequisiteImpl with RequiresAllOfClass with AlchemistBonusFeat
+  with Passive {
   self: ClassFeat =>
   private[this] val cls = (Alchemist, 4)
 

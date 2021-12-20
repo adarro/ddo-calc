@@ -21,12 +21,7 @@ import io.truthencode.ddo.enhancement.BonusType
 import io.truthencode.ddo.model.abilities.ActiveAbilities
 import io.truthencode.ddo.model.effect
 import io.truthencode.ddo.model.effect.TriggerEvent
-import io.truthencode.ddo.model.effect.features.{
-  ArmorClassPercentFeature,
-  FeaturesImpl,
-  GrantAbilityFeature,
-  HitChancePercentFeature
-}
+import io.truthencode.ddo.model.effect.features.{ArmorClassPercentFeature, FeaturesImpl, GrantAbilityFeature, HitChancePercentFeature}
 import io.truthencode.ddo.support.requisite.{FeatRequisiteImpl, FreeFeat}
 
 import java.time.Duration
@@ -43,20 +38,23 @@ protected[feats] trait DefensiveFighting
   with FeaturesImpl with GrantAbilityFeature with ArmorClassPercentFeature
   with HitChancePercentFeature {
   self: GeneralFeat =>
-  override val grantBonusType: BonusType = BonusType.Feat
   override lazy val grantedAbility: ActiveAbilities = ActiveAbilities.DefensiveFighting
-
   override protected[this] lazy val grantAbilityCategories: Seq[effect.EffectCategories.Value] =
     Seq(
       effect.EffectCategories.Stance,
       effect.EffectCategories.MissChance,
       effect.EffectCategories.HitChance)
-  override val abilityId: String = "DefensiveFighting"
-  override val description: String = "A stance that increases your defense"
   override protected[this] lazy val triggerOn: Seq[TriggerEvent] = Seq(TriggerEvent.OnStance)
   override protected[this] lazy val triggerOff: Seq[TriggerEvent] = Seq(TriggerEvent.OnToggle)
   override protected[this] lazy val hitChanceCategories: Seq[effect.EffectCategories.Value] = Seq(
     effect.EffectCategories.MissChance)
+  override val grantBonusType: BonusType = BonusType.Feat
+  override val abilityId: String = "DefensiveFighting"
+  override val description: String = "A stance that increases your defense"
+  override protected val armorBonusAmount: Int = 5
+  override protected val armorBonusType: BonusType = BonusType.Feat
+  override protected val hitChanceBonusAmount: Int = -5
+  override protected val hitChanceBonusType: BonusType = BonusType.Feat
 
   /**
    * @note
@@ -65,9 +63,4 @@ protected[feats] trait DefensiveFighting
    *   Cool Down Duration (Currently None)
    */
   override def coolDown: Option[Duration] = None
-
-  override protected val armorBonusAmount: Int = 5
-  override protected val armorBonusType: BonusType = BonusType.Feat
-  override protected val hitChanceBonusAmount: Int = -5
-  override protected val hitChanceBonusType: BonusType = BonusType.Feat
 }

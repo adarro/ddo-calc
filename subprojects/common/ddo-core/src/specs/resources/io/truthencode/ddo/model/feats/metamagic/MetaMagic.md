@@ -14,11 +14,16 @@
 | [Quicken Spell](http://ddowiki.com/page/Quicken_Spell)                 | While this feat is activated, spells cast twice as fast and cannot be interrupted by enemy attacks, though all spells will cost 10 more spell points to cast. | Metamagic     | ![Icon Feat Quicken Spell.png](/images/Icon_Feat_Quicken_Spell.png)                 |
 
 ![Attribution-ShareAlike 2.5](/images/somerights20.png)
-[Attribution-ShareAlike 2.5](https://creativecommons.org/licenses/by-sa/2.5/) Images and general information available from http://ddowiki.com
+[Attribution-ShareAlike 2.5](https://creativecommons.org/licenses/by-sa/2.5/) Images and general information available
+from http://ddowiki.com
 
 [race_feat]: http://ddowiki.com/page/Category&#58;Racial_feats
+
 [cls_feat]: http://ddowiki.com/page/Category&#58;Class_feats
+
 [existingFeat]: - "c:verify-rows=#feat:verifyFeats()"
+
 [_matchStrategy_]: - "c:matchStrategy=KeyMatch"
+
 [result]: - "?=#feat"
 

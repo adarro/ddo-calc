@@ -19,7 +19,6 @@ package io.truthencode.ddo.model.feats.races
 
 import io.truthencode.ddo.model.feats.{ConcordionResourcesBundleSpec, RaceSupport}
 import io.truthencode.ddo.model.race.Race
-import org.concordion.api.ConcordionResources
 import org.concordion.integration.junit4.ConcordionRunner
 import org.junit.runner.RunWith
 

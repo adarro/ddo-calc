@@ -23,17 +23,19 @@ import io.truthencode.ddo.support.naming.SpellCriticalPrefix
 
 trait SpellCriticalElementalAndPoisonIII
   extends BombardierTierThree with ClassEnhancementImpl with SpellCriticalPrefix {
-  override protected def nameSource: String = "Elemental And Poison III".replaceRomanNumerals.lowerCaseNoise
   /**
-   * Some enhancements have multiple ranks. This is the cost for each rank. Older versions had increasing costs which
-   * has been streamlined to a linear progression.
+   * Some enhancements can be taken multiple times (generally up to three)
+   */
+  override val ranks: Int = 1
+
+  /**
+   * Some enhancements have multiple ranks. This is the cost for each rank. Older versions had
+   * increasing costs which has been streamlined to a linear progression.
    *
    * @return
    */
   override def apCostPerRank: Int = 2
 
-  /**
-   * Some enhancements can be taken multiple times (generally up to three)
-   */
-  override val ranks: Int = 1
+  override protected def nameSource: String =
+    "Elemental And Poison III".replaceRomanNumerals.lowerCaseNoise
 }

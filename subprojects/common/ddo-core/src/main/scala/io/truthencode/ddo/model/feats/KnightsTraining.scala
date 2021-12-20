@@ -17,20 +17,14 @@
  */
 package io.truthencode.ddo.model.feats
 
-import io.truthencode.ddo.support.requisite.{
-  ClassRequisiteImpl,
-  FeatRequisiteImpl,
-  GrantsToClass,
-  RequiresAllOfFeat,
-  RequiresAnyOfFeat,
-  RequiresBaB
-}
+import io.truthencode.ddo.support.requisite.{FeatRequisiteImpl, GrantsToClass, RequiresBaB}
 
 protected[feats] trait KnightsTraining
   extends FeatRequisiteImpl
   // with ClassRequisiteImpl
   with Passive with RequiresBaB with FighterBonusFeat with GrantsToClass {
   self: GeneralFeat =>
-  override def requiresBaB: Int = 4
   override val displayText = "Knight's Training"
+
+  override def requiresBaB: Int = 4
 }

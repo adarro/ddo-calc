@@ -34,8 +34,8 @@ sealed trait ExpendablePoints extends EnumEntry with DisplayName with FriendlyDi
 }
 
 /**
- * Represents the general health or Life. Players are incapacitated when this falls below zero and die if it falls too
- * far into the negative.
+ * Represents the general health or Life. Players are incapacitated when this falls below zero and
+ * die if it falls too far into the negative.
  */
 trait HitPoints extends ExpendablePoints
 
@@ -50,6 +50,17 @@ trait SpellPoints extends ExpendablePoints
 trait Ki extends ExpendablePoints
 
 object ExpendablePoints extends Enum[ExpendablePoints] with SearchPrefix {
+
+  /**
+   * Used when qualifying a search with a prefix. Examples include finding "HalfElf" from qualified
+   * "Race:HalfElf"
+   *
+   * @return
+   *   A default or applied prefix
+   */
+  override def searchPrefixSource: String = "Points"
+
+  override def values: immutable.IndexedSeq[ExpendablePoints] = findValues
 
   /**
    * @inheritdoc
@@ -87,14 +98,4 @@ object ExpendablePoints extends Enum[ExpendablePoints] with SearchPrefix {
      */
     override def toFullWord: String = entryName
   }
-
-  /**
-   * Used when qualifying a search with a prefix. Examples include finding "HalfElf" from qualified "Race:HalfElf"
-   *
-   * @return
-   *   A default or applied prefix
-   */
-  override def searchPrefixSource: String = "Points"
-
-  override def values: immutable.IndexedSeq[ExpendablePoints] = findValues
 }

@@ -28,7 +28,8 @@ import scala.collection.immutable
 /**
  * Points that can be spent or allocated for enhancements and epic destinies etc.
  * @note
- *   Do we include Karma here? Likely just add a footnote and allow user to add fate points arbitrarily
+ *   Do we include Karma here? Likely just add a footnote and allow user to add fate points
+ *   arbitrarily
  */
 sealed trait SpendablePoints extends EnumEntry with DisplayName with FriendlyDisplay {
   override protected def nameSource: String =
@@ -48,14 +49,14 @@ trait EpicDestinyPoints extends SpendablePoints with Abbreviation {
   override val abbr: String = "EDP"
 
   /**
-   * @inheritdoc
-   */
-  override protected def nameSource: String = abbr.splitByCase.toPascalCase
-
-  /**
    * Expands the abbr to its full value
    */
   override def toFullWord: String = entryName.splitByCase
+
+  /**
+   * @inheritdoc
+   */
+  override protected def nameSource: String = abbr.splitByCase.toPascalCase
 }
 
 /**
@@ -71,7 +72,8 @@ trait FatePoints extends SpendablePoints
 object SpendablePoints extends Enum[SpendablePoints] with SearchPrefix {
 
   /**
-   * Used when qualifying a search with a prefix. Examples include finding "HalfElf" from qualified "Race:HalfElf"
+   * Used when qualifying a search with a prefix. Examples include finding "HalfElf" from qualified
+   * "Race:HalfElf"
    *
    * @return
    *   A default or applied prefix

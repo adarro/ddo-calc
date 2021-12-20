@@ -39,34 +39,36 @@ trait ConfirmCriticalHitAmountFeature extends Features {
     new PartModifier[Int, BasicStat] with UsingSearchPrefix {
 
       /**
-       * a list of Categories useful for menu / UI placement and also for searching / querying for Miss-Chance or other
-       * desired effects.
+       * a list of Categories useful for menu / UI placement and also for searching / querying for
+       * Miss-Chance or other desired effects.
        *
-       * This list might be constrained or filtered by an Enumeration or CSV file. The goal is to enable quick and
-       * advanced searching for specific categories from general (Miss-Chance) to specific (evasion). In addition, it
-       * may be useful for deep searching such as increasing Spot, which should suggest not only +Spot items, but
-       * +Wisdom or eventually include a feat or enhancement that allows the use of some other value as your spot score.
+       * This list might be constrained or filtered by an Enumeration or CSV file. The goal is to
+       * enable quick and advanced searching for specific categories from general (Miss-Chance) to
+       * specific (evasion). In addition, it may be useful for deep searching such as increasing
+       * Spot, which should suggest not only +Spot items, but +Wisdom or eventually include a feat
+       * or enhancement that allows the use of some other value as your spot score.
        */
-      override def categories: Seq[String] = Seq(effect.EffectCategories.GeneralCombat).map(_.toString)
+      override def categories: Seq[String] =
+        Seq(effect.EffectCategories.GeneralCombat).map(_.toString)
 
-      lazy override protected[this] val partToModify: BasicStat =
+      override protected[this] lazy val partToModify: BasicStat =
         BasicStat.CriticalHitConfirmation
 
-        private val eb = EffectParameterBuilder()
-            .toggleOffValue(triggerOff: _*)
-            .toggleOnValue(triggerOn: _*)
-            .addBonusType(confirmCriticalHitBonusType)
-            .build
+      private val eb = EffectParameterBuilder()
+        .toggleOffValue(triggerOff: _*)
+        .toggleOnValue(triggerOn: _*)
+        .addBonusType(confirmCriticalHitBonusType)
+        .build
 
-        override protected[this] def effectParameters: Seq[ParameterModifier[_]] = eb.modifiers
+      override protected[this] def effectParameters: Seq[ParameterModifier[_]] = eb.modifiers
       /**
-       * The General Description should be just that. This should not include specific values unless all instances will
-       * share that value. I.e. a Dodge Effect might state it increases your miss-chance, but omit any value such as
-       * 20%. Those values will be displayed in the effectText of a specific implementation such as the Dodge Feat or
-       * Uncanny Dodge
+       * The General Description should be just that. This should not include specific values unless
+       * all instances will share that value. I.e. a Dodge Effect might state it increases your
+       * miss-chance, but omit any value such as 20%. Those values will be displayed in the
+       * effectText of a specific implementation such as the Dodge Feat or Uncanny Dodge
        */
       override val generalDescription: String = "Increases chance to confirm a critical hit"
-      lazy override val effectDetail: DetailedEffect = DetailedEffect(
+      override lazy val effectDetail: DetailedEffect = DetailedEffect(
         id = "ArmorClass",
         description = "Adds damage to critical hits",
         triggersOn = triggerOn.map(_.entryName),
@@ -77,7 +79,8 @@ trait ConfirmCriticalHitAmountFeature extends Features {
       override lazy val effectText: Option[String] = Some(s"Confirm Critical Hit: $value")
 
       /**
-       * Used when qualifying a search with a prefix. Examples include finding "HalfElf" from qualified "Race:HalfElf"
+       * Used when qualifying a search with a prefix. Examples include finding "HalfElf" from
+       * qualified "Race:HalfElf"
        *
        * @return
        *   A default or applied prefix

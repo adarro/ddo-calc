@@ -24,7 +24,8 @@ import io.truthencode.ddo.support.requisite.{FeatRequisiteImpl, GrantsToClass, R
 /**
  * +1 to Will Saves
  */
-protected[feats] trait ThoughtShield extends FeatRequisiteImpl with Passive with RequiresAllOfClass with GrantsToClass {
+protected[feats] trait ThoughtShield
+  extends FeatRequisiteImpl with Passive with RequiresAllOfClass with GrantsToClass {
   self: ClassFeat =>
 
   override def grantToClass: Seq[(HeroicCharacterClass, Int)] = List((Warlock, 4))

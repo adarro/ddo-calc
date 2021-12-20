@@ -23,18 +23,20 @@ import io.truthencode.ddo.model.religions.SovereignHost
 import io.truthencode.ddo.support.requisite.{FeatRequisiteImpl, RequiresAllOfFeat}
 
 /**
- * [[https://ddowiki.com/page/Unyielding_Sovereignty Unyielding Sovereignty]] Usage: Active Prerequisite: Level 6:
- * Cleric, Favored Soul, Paladin; Follower of the Sovereign Host Description You are a devoted follower of the Sovereign
- * Host, and your faith has been rewarded. Activate this ability to fully heal hit point damage done to a targeted ally,
- * remove ability damage, death penalty effects, negative levels, and the conditions blinded, confused, dazed, dazzled,
- * deafened, diseased, exhausted, fatigued, feebleminded, insanity, nauseated, poisoned, and stunned.
+ * [[https://ddowiki.com/page/Unyielding_Sovereignty Unyielding Sovereignty]] Usage: Active
+ * Prerequisite: Level 6: Cleric, Favored Soul, Paladin; Follower of the Sovereign Host Description
+ * You are a devoted follower of the Sovereign Host, and your faith has been rewarded. Activate this
+ * ability to fully heal hit point damage done to a targeted ally, remove ability damage, death
+ * penalty effects, negative levels, and the conditions blinded, confused, dazed, dazzled, deafened,
+ * diseased, exhausted, fatigued, feebleminded, insanity, nauseated, poisoned, and stunned.
  *
  * @todo
  *   check for times per rest etc Created by adarr on 4/7/2017.
  */
 trait UnyieldingSovereignty
-  extends FeatRequisiteImpl with EberronReligionNonWarforged with DeityUniqueLevelBase with RequiresAllOfFeat
-  with SovereignHost with TheSovereignHostFeatBase with ActiveFeat with AtWillEvent with DefaultCoolDown {
+  extends FeatRequisiteImpl with EberronReligionNonWarforged with DeityUniqueLevelBase
+  with RequiresAllOfFeat with SovereignHost with TheSovereignHostFeatBase with ActiveFeat
+  with AtWillEvent with DefaultCoolDown {
   self: DeityFeat =>
 
   override def allOfFeats: Seq[Feat] = List(DeityFeat.ChildOfTheSovereignHost)

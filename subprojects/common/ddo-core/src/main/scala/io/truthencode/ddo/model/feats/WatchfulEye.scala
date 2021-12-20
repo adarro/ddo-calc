@@ -20,7 +20,8 @@ package io.truthencode.ddo.model.feats
 import io.truthencode.ddo.support.requisite.RequiresCharacterLevel
 
 /**
- * If you pass within 5 feet of a trap, you make a Search check to notice it as if actively Searching.
+ * If you pass within 5 feet of a trap, you make a Search check to notice it as if actively
+ * Searching.
  *
  * @note
  *   You still need the Trapfinding feat to successfully Search for difficult traps.

@@ -33,12 +33,12 @@ trait GrantAbilityFeature extends Features {
   self: SourceInfo =>
   val grantBonusType: BonusType
   val grantedAbility: ActiveAbilities
-  private val src = this
+  val abilityId: String
+  val description: String
   protected[this] val triggerOn: Seq[TriggerEvent]
   protected[this] val triggerOff: Seq[TriggerEvent]
   protected[this] val grantAbilityCategories: Seq[effect.EffectCategories.Value]
-  val abilityId: String
-  val description: String
+  private val src = this
   private[this] val abilityGranted =
     new PartModifier[ActiveAbilities, BasicStat] with UsingAbilitySearchPrefix {
 

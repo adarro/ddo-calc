@@ -21,11 +21,12 @@ import io.truthencode.ddo.model.classes.HeroicCharacterClass
 import io.truthencode.ddo.support.requisite.{ClassRequisite, FeatRequisiteImpl, GrantsToClass}
 
 /**
- * A rogue with this ability gains +1 to all skills. This ability may be taken multiple times. Notes This ability may be
- * taken multiple times.
+ * A rogue with this ability gains +1 to all skills. This ability may be taken multiple times. Notes
+ * This ability may be taken multiple times.
  */
 protected[feats] trait SlipperyMind
-  extends FeatRequisiteImpl with ClassRequisite with Passive with GrantsToClass with RogueOptionalAbility {
+  extends FeatRequisiteImpl with ClassRequisite with Passive with GrantsToClass
+  with RogueOptionalAbility {
   self: ClassFeat =>
   override def grantToClass: Seq[(HeroicCharacterClass, Int)] = rogueOptionMatrix
 

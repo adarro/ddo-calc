@@ -19,12 +19,10 @@ package io.truthencode.ddo.model.enhancement.enhancements
 
 import io.truthencode.ddo.model.classes.HeroicCharacterClass
 import io.truthencode.ddo.model.classes.HeroicCharacterClass.Alchemist
-import io.truthencode.ddo.model.enhancement.Tier1
 import io.truthencode.ddo.model.enhancement.enhancements.classbased.ApothecaryTierOne
-import io.truthencode.ddo.support.points.SpendablePoints
-import io.truthencode.ddo.support.tree.TreeLike
 
-trait CurativeAdmixtureCureLightWounds extends ApothecaryTierOne with ClassEnhancementImpl with CurativeAdmixtureBase {
+trait CurativeAdmixtureCureLightWounds
+  extends ApothecaryTierOne with ClassEnhancementImpl with CurativeAdmixtureBase {
 
   override lazy val description: Option[String] =
     Some(
@@ -38,15 +36,15 @@ trait CurativeAdmixtureCureLightWounds extends ApothecaryTierOne with ClassEnhan
    */
   override val ranks: Int = 3
 
-  override protected def nameSource: String = "CureLightWounds"
+  override def allOfClass: Seq[(HeroicCharacterClass, Int)] = Seq((Alchemist, 1))
 
   //  abstract override def displaySource: String = "Cure Serious Wounds"
   // override def displaySource: String = "Cure Serious Wounds"
 
-  override def allOfClass: Seq[(HeroicCharacterClass, Int)] = Seq((Alchemist, 1))
+  override def apCostPerRank: Int = 1
 
   // override def progressionInTree: Seq[(TreeLike, SpendablePoints, Int)] = Seq((tree, 1))
 
-  override def apCostPerRank: Int = 1
+  override protected def nameSource: String = "CureLightWounds"
 
 }

@@ -30,14 +30,15 @@ trait CoolDown {
 }
 
 /**
- * A default CoolDown currently used for unknown / inconsequential values such as toggling Auto Attack
+ * A default CoolDown currently used for unknown / inconsequential values such as toggling Auto
+ * Attack
  */
 trait DefaultCoolDown extends CoolDown {
 
   /**
-   * This is a default cool down which is currently using [[io.truthencode.ddo.model.GlobalMinimumCoolDown]] for a
-   * value. This may be adjusted or changed as knowledge increases. However, it is also hopeful to deprecate this for a
-   * specified value.
+   * This is a default cool down which is currently using
+   * [[io.truthencode.ddo.model.GlobalMinimumCoolDown]] for a value. This may be adjusted or changed
+   * as knowledge increases. However, it is also hopeful to deprecate this for a specified value.
    * @return
    *   Some Time span which must elapse before re-activation.
    */
@@ -59,7 +60,8 @@ trait DefaultSpellCoolDown extends CoolDown {
 }
 
 /**
- * The standard cooldown for Artificer, Druid, Cleric, Favored Soul, Wizard, and Bard spells is 1.5 + 0.5*level seconds
+ * The standard cooldown for Artificer, Druid, Cleric, Favored Soul, Wizard, and Bard spells is 1.5
+ * + 0.5*level seconds
  * @todo
  *   Need to see if Warlocks are in this category
  */
@@ -78,12 +80,10 @@ trait DefaultMagicCoolDown extends DefaultSpellCoolDown
 trait BardSongCoolDown extends CoolDown {
 
   /**
-   * This is a temporary and arbitrary cooldown assuming aura bard songs have a timer. Typically, aside from instant
-   * songs, the cool down will expire well before the song finishes.
+   * This is a temporary and arbitrary cooldown assuming aura bard songs have a timer. Typically,
+   * aside from instant songs, the cool down will expire well before the song finishes.
    */
   final val BardSongDefaultCoolDown = Duration.ofSeconds(3)
   override def coolDown: Option[Duration] = Some(BardSongDefaultCoolDown)
 }
 trait SharedCoolDown extends CoolDown with PoolId
-
-

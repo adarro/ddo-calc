@@ -35,9 +35,8 @@ protected[feats] trait Sunder
   extends FeatRequisiteImpl with ActiveFeat with Tactical with FreeFeat with FeaturesImpl
   with GrantAbilityFeature {
   self: GeneralFeat =>
-  override val grantBonusType: BonusType = BonusType.Feat
   override lazy val grantedAbility: ActiveAbilities = ActiveAbilities.Sunder
-
+  override val grantBonusType: BonusType = BonusType.Feat
   override protected[this] val triggerOn: Seq[TriggerEvent] = Seq(TriggerEvent.AtWill)
   override protected[this] val triggerOff: Seq[TriggerEvent] = Seq(TriggerEvent.OnCoolDown)
   override protected[this] val grantAbilityCategories: Seq[effect.EffectCategories.Value] = Seq(

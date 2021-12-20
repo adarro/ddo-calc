@@ -24,11 +24,12 @@ import io.truthencode.ddo.model.misc.DefaultCoolDown
 import io.truthencode.ddo.support.requisite.{FeatRequisiteImpl, GrantsToClass, RequiresAllOfClass}
 
 /**
- * [[https://ddowiki.com/page/Call_Wolf_Companion Call Wolf Companion]] Allows a druid to call her wolf companion.
+ * [[https://ddowiki.com/page/Call_Wolf_Companion Call Wolf Companion]] Allows a druid to call her
+ * wolf companion.
  */
 protected[feats] trait CallWolfCompanion
-  extends FeatRequisiteImpl with ActiveFeat with AtWillEvent with GrantsToClass with RequiresAllOfClass
-  with DefaultCoolDown {
+  extends FeatRequisiteImpl with ActiveFeat with AtWillEvent with GrantsToClass
+  with RequiresAllOfClass with DefaultCoolDown {
   override def allOfClass: Seq[(HeroicCharacterClass, Int)] = List((Druid, 1))
 
   override def grantToClass: Seq[(HeroicCharacterClass, Int)] = List((Druid, 1))

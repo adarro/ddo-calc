@@ -18,7 +18,7 @@
 package io.truthencode.ddo.model.effect.features
 
 import io.truthencode.ddo.model.effect
-import io.truthencode.ddo.model.effect.{Feature, TriggerEvent}
+import io.truthencode.ddo.model.effect.TriggerEvent
 
 /**
  * Convenience trait to set activation etc for special attacks

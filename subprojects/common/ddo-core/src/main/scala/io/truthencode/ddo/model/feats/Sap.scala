@@ -40,11 +40,8 @@ protected trait Sap
 //    with AtWillEvent
   with Tactical with FreeFeat with FighterBonusFeat with FeaturesImpl with GrantAbilityFeature {
   self: GeneralFeat =>
-  override val grantBonusType: BonusType = BonusType.Feat
   override lazy val grantedAbility: ActiveAbilities = ActiveAbilities.Sap
-
-  override def coolDown: Option[Duration] = Some(Duration.ofSeconds(15))
-
+  override val grantBonusType: BonusType = BonusType.Feat
   override protected[this] val triggerOn: Seq[TriggerEvent] = Seq(TriggerEvent.SpecialAttack)
   override protected[this] val triggerOff: Seq[TriggerEvent] = Seq(TriggerEvent.OnCoolDown)
   override protected[this] val grantAbilityCategories: Seq[effect.EffectCategories.Value] =
@@ -52,4 +49,6 @@ protected trait Sap
   override val abilityId: String = "Sap"
   override val description: String =
     "Special Attack This feat has a chance to render the target briefly senseless,"
+
+  override def coolDown: Option[Duration] = Some(Duration.ofSeconds(15))
 }

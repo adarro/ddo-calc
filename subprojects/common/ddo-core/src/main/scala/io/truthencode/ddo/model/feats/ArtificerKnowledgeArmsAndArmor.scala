@@ -25,7 +25,8 @@ import io.truthencode.ddo.support.requisite.{FeatRequisiteImpl, GrantsToClass, R
  * Created by adarr on 2/16/2017.
  */
 protected[feats] trait ArtificerKnowledgeArmsAndArmor
-  extends FeatRequisiteImpl with ArtificerKnowledgePrefix with Passive with GrantsToClass with RequiresAllOfClass {
+  extends FeatRequisiteImpl with ArtificerKnowledgePrefix with Passive with GrantsToClass
+  with RequiresAllOfClass {
   self: ClassFeat =>
   private lazy val levels = List(5, 8, 11, 14, 17)
   override def anyOfClass: Seq[(HeroicCharacterClass, Int)] = levels.map { x =>

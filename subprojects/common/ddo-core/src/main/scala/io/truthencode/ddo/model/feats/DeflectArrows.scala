@@ -25,13 +25,19 @@ import io.truthencode.ddo.model.effect
 import io.truthencode.ddo.model.effect.TriggerEvent
 import io.truthencode.ddo.model.effect.features.{DeflectArrowsFeature, FeaturesImpl}
 import io.truthencode.ddo.model.misc.CoolDown
-import io.truthencode.ddo.support.requisite.{FeatRequisiteImpl, RequiresAllOfClass, RequiresAttribute}
+import io.truthencode.ddo.support.requisite.{
+  AttributeRequisiteImpl,
+  FeatRequisiteImpl,
+  RequiresAllOfAttribute,
+  RequiresAllOfClass
+}
 
 import java.time.Duration
 
 trait DeflectArrows
-  extends FeatRequisiteImpl with RequiresAllOfClass with Passive with RequiresAttribute
-  with MartialArtsFeat with FeaturesImpl with DeflectArrowsFeature with CoolDown {
+  extends FeatRequisiteImpl with RequiresAllOfClass with Passive with AttributeRequisiteImpl
+  with RequiresAllOfAttribute with MartialArtsFeat with FeaturesImpl with DeflectArrowsFeature
+  with CoolDown {
   self: GeneralFeat =>
   override protected[this] lazy val triggerOn: Seq[TriggerEvent] = Seq(TriggerEvent.OnTimer)
   override protected[this] lazy val triggerOff: Seq[TriggerEvent] = Seq(TriggerEvent.OnCoolDown)
@@ -40,7 +46,7 @@ trait DeflectArrows
   override protected val deflectArrowsBonusType: BonusType = BonusType.Feat
   override protected val secondsPerArrow: Int = 6
 
-  override def requiresAttribute: Seq[(Attribute, Int)] = List((Attribute.Dexterity, 13))
+  override def allOfAttributes: Seq[(Attribute, Int)] = List((Attribute.Dexterity, 13))
 
   /**
    * Some duration until this action / spell / ability can be used again.

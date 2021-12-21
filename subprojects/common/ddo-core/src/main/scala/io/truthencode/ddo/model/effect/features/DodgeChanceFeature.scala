@@ -81,7 +81,7 @@ trait DodgeChanceFeature extends Features {
       override lazy val value: Int = dodgeBonusAmount
       override lazy val effectText: Option[String] = Some(s"Dodge by $value%")
 
-      override def delimiter: Option[String] = Some(":")
+      override def searchDelimiter: Option[String] = Some(":")
       /**
        * Used when qualifying a search with a prefix. Examples include finding "HalfElf" from
        * qualified "Race:HalfElf"

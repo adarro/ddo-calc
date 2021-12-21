@@ -18,7 +18,7 @@
 package io.truthencode.ddo.model.feats
 
 import io.truthencode.ddo.model.attribute.Attribute
-import io.truthencode.ddo.support.requisite.{FeatRequisiteImpl, RequiresAllOfFeat, RequiresAttribute, RequiresBaB}
+import io.truthencode.ddo.support.requisite._
 
 /**
  * Icon Feat Shot On The Run.png Shot on the Run Passive Negates the penalty to your attack roll for
@@ -26,11 +26,12 @@ import io.truthencode.ddo.support.requisite.{FeatRequisiteImpl, RequiresAllOfFea
  * Dexterity 13, Base Attack Bonus 4+
  */
 protected[feats] trait ShotOnTheRun
-  extends FeatRequisiteImpl with Passive with RequiresAllOfFeat with RequiresAttribute
-  with RequiresBaB with FighterBonusFeat with ArtificerBonusFeat with AlchemistBonusFeat {
+  extends FeatRequisiteImpl with Passive with RequiresAllOfFeat with AttributeRequisiteImpl
+  with RequiresAllOfAttribute with RequiresBaB with FighterBonusFeat with ArtificerBonusFeat
+  with AlchemistBonusFeat {
   self: GeneralFeat =>
 
-  override def requiresAttribute: Seq[(Attribute, Int)] =
+  override def allOfAttributes: Seq[(Attribute, Int)] =
     List((Attribute.Dexterity, 13))
 
   override def allOfFeats: Seq[GeneralFeat] =

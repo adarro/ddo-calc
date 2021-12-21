@@ -17,13 +17,30 @@
  */
 package io.truthencode.ddo.support.requisite
 
+import enumeratum.{Enum, EnumEntry}
+
 /**
  * Flag used to denote inclusion logic
  */
-sealed trait Inclusion
+sealed trait Inclusion extends EnumEntry {
+  def inclusionType: String
+}
 
-trait AllOf extends Inclusion
+trait AllOf extends Inclusion {
+  override def inclusionType: String = "All Of"
+}
 
-trait AnyOf extends Inclusion
+trait AnyOf extends Inclusion {
+  override def inclusionType: String = "Any Of"
+}
 
-trait NoneOf extends Inclusion
+trait NoneOf extends Inclusion {
+  override def inclusionType: String = "None Of"
+}
+
+object Inclusion extends Enum[Inclusion] {
+  case object AllOf extends AllOf
+  case object AnyOf extends AnyOf
+  case object NoneOf extends NoneOf
+  override def values: IndexedSeq[Inclusion] = findValues
+}

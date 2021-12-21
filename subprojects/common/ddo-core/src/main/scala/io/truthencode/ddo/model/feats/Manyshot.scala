@@ -51,8 +51,8 @@ import java.time.Duration
  *   add 20 second Active
  */
 protected[feats] trait Manyshot
-  extends FeatRequisiteImpl with ActiveFeat with AtWillEvent with RequiresAllOfFeat
-  with RequiresAttribute with RequiresBaB with ClassRequisiteImpl with GrantsToClass
+  extends FeatRequisiteImpl  with ClassRequisiteImpl with ActiveFeat with AtWillEvent with RequiresAllOfFeat
+  with AttributeRequisiteImpl with RequiresAllOfAttribute with RequiresBaB with GrantsToClass
   with FighterBonusFeat with FeaturesImpl with GrantAbilityFeature with SharedCoolDown {
   self: GeneralFeat =>
   override lazy val grantedAbility: ActiveAbilities = ActiveAbilities.Manyshot
@@ -82,7 +82,7 @@ protected[feats] trait Manyshot
    */
   override def requiresBaB: Int = 6
 
-  override def requiresAttribute: Seq[(Attribute, Int)] =
+  override def allOfAttributes: Seq[(Attribute, Int)] =
     List((Attribute.Dexterity, 17))
 
   override def grantToClass: Seq[(HeroicCharacterClass, Int)] =

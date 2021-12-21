@@ -19,6 +19,7 @@ package io.truthencode.ddo.support.requisite
 
 import io.truthencode.ddo.model.classes.HeroicCharacterClass
 import io.truthencode.ddo.support.requisite.RequirementImplicits.classToReq
+import io.truthencode.ddo.support.requisite.RequirementImplicits.ClassImplicits
 
 /**
  * Represents Character class based restrictions and allowances Created by adarr on 1/30/2017.
@@ -60,7 +61,9 @@ trait FreeClass extends ClassRequisite with RequiresNone with RequiredExpression
 trait RequiresAnyOfClass extends ClassRequisite with RequiresOneOf[Requirement] with Requisite {
 
   abstract override def oneOf: Seq[Requirement] = super.oneOf ++ {
-    anyOfClass.collect(classToReq)
+    val aoc = anyOfClass.map(_.toReq)
+    assert(aoc.nonEmpty)
+    aoc
   }
 }
 
@@ -71,7 +74,7 @@ trait RequiresAnyOfClass extends ClassRequisite with RequiresOneOf[Requirement] 
 trait RequiresAllOfClass extends ClassRequisite with RequiresAllOf[Requirement] with Requisite {
 
   abstract override def allOf: Seq[Requirement] = super.allOf ++ {
-    allOfClass.collect(classToReq)
+    allOfClass.map(_.toReq)
   }
 }
 
@@ -82,7 +85,7 @@ trait RequiresAllOfClass extends ClassRequisite with RequiresAllOf[Requirement] 
 trait RequiresNoneOfClass extends ClassRequisite with RequiresNoneOf[Requirement] with Requisite {
 
   abstract override def noneOf: Seq[Requirement] = super.noneOf ++ {
-    noneOfClass.collect(classToReq)
+    noneOfClass.map(_.toReq)
   }
 }
 
@@ -92,7 +95,9 @@ trait RequiresNoneOfClass extends ClassRequisite with RequiresNoneOf[Requirement
 trait GrantsToClass
   extends ClassRequisite with GrantExpression with RequiresOneOf[Requirement] with Requisite {
   abstract override def oneOf: Seq[Requirement] = super.oneOf ++ {
-    grantToClass.collect(classToReq)
+    val gtc = grantToClass.map(_.toReq)
+    if (grantToClass.nonEmpty) assert(gtc.nonEmpty)
+    gtc
   }
 }
 
@@ -103,6 +108,6 @@ trait GrantsToClass
 trait SelectableToClass
   extends ClassRequisite with ClassRequisiteImpl with RequiresOneOf[Requirement] with Requisite {
   abstract override def oneOf: Seq[Requirement] = super.oneOf ++ {
-    bonusSelectableToClass.collect(classToReq)
+    bonusSelectableToClass.map(_.toReq)
   }
 }

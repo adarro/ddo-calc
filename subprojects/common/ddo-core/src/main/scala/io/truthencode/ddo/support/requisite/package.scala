@@ -73,7 +73,7 @@ package object requisite {
       }
 
     implicit class AttributeImplicits(val source: (Attribute, Int)) {
-      def toReq: ReqAttribute = attrToReq(source)
+      def toReq: ReqAttribute = ReqAttribute(source._1.toString,source._2)
     }
 
     val attrToReq: PartialFunction[(Attribute, Int), ReqAttribute] =
@@ -105,7 +105,7 @@ package object requisite {
       }
 
     implicit class FeatImplicits(val source: Feat with EnumEntry) {
-      def toReq: ReqFeat = featToReq(source)
+      def toReq: ReqFeat = ReqFeat(source.entryName)
     }
 
     val matchGeneralFeat: PartialFunction[Feat, GeneralFeat] = { case x: GeneralFeat =>
@@ -181,7 +181,7 @@ package object requisite {
       }
 
     implicit class ClassImplicits(val source: (HeroicCharacterClass, Int)) {
-      def toReq: ReqClass = classToReq(source)
+      def toReq: ReqClass = ReqClass(source._1.toString,source._2)
     }
 
 //    val characterLevelToReq: PartialFunction[(Int,Int), ReqCharacterLevel] =
@@ -191,7 +191,13 @@ package object requisite {
 //            override def apply(v1: (Int, Int)): ReqCharacterLevel = ???
 //        }
 
-    val classToReq: PartialFunction[(HeroicCharacterClass, Int), ReqClass] =
+
+    def classToReq(hc: Tuple2[HeroicCharacterClass, Int]*): Seq[ReqClass] = {
+      hc.map { h =>
+        ReqClass(h._1.toString, h._2)
+      }
+    }
+    val classToReqOld: PartialFunction[(HeroicCharacterClass, Int), ReqClass] =
       new PartialFunction[(HeroicCharacterClass, Int), ReqClass] {
 
         override def isDefinedAt(x: (HeroicCharacterClass, Int)): Boolean =

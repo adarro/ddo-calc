@@ -18,7 +18,11 @@
 package io.truthencode.ddo.model.feats
 
 import io.truthencode.ddo.model.attribute.Attribute
-import io.truthencode.ddo.support.requisite.{FeatRequisiteImpl, RequiresAttribute}
+import io.truthencode.ddo.support.requisite.{
+  AttributeRequisiteImpl,
+  FeatRequisiteImpl,
+  RequiresAllOfAttribute
+}
 
 /**
  * You are skilled with the use of Simple Thrown Weapons (Throwing Daggers and Darts) and while
@@ -28,9 +32,10 @@ import io.truthencode.ddo.support.requisite.{FeatRequisiteImpl, RequiresAttribut
  *   [[https://ddowiki.com/page/Simple_Thrown_Weapon_Expertise]]
  */
 protected[feats] trait SimpleThrownWeaponExpertise
-  extends FeatRequisiteImpl with RequiresAttribute with AlchemistBonusFeat with Passive {
+  extends FeatRequisiteImpl with AttributeRequisiteImpl with RequiresAllOfAttribute
+  with AlchemistBonusFeat with Passive {
   self: GeneralFeat =>
 //  private[this] val cls = (Alchemist, 12)
-  override val requiresAttribute = Seq((Attribute.Dexterity, 13))
+  override val allOfAttributes = Seq((Attribute.Dexterity, 13))
 
 }

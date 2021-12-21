@@ -19,7 +19,12 @@ package io.truthencode.ddo.model.feats
 
 import io.truthencode.ddo.model.attribute.Attribute
 import io.truthencode.ddo.model.race.Race
-import io.truthencode.ddo.support.requisite.{FeatRequisiteImpl, RequiresAllOfRace, RequiresAttribute}
+import io.truthencode.ddo.support.requisite.{
+  AttributeRequisiteImpl,
+  FeatRequisiteImpl,
+  RequiresAllOfAttribute,
+  RequiresAllOfRace
+}
 
 /**
  * Warlock.png Half-Elf Dilettante: Warlock Passive Able to use wands and scrolls as if you were a
@@ -28,11 +33,11 @@ import io.truthencode.ddo.support.requisite.{FeatRequisiteImpl, RequiresAllOfRac
  * Charisma
  */
 protected[feats] trait HalfElfDilettanteWarlock
-  extends FeatRequisiteImpl with HalfElfDilettantePreFix with Passive with RequiresAttribute
-  with RequiresAllOfRace {
+  extends FeatRequisiteImpl with HalfElfDilettantePreFix with Passive with AttributeRequisiteImpl
+  with RequiresAllOfAttribute with RequiresAllOfRace {
   self: RacialFeat =>
   override def allOfRace: Seq[(Race, Int)] = List((Race.HalfElf, 1))
 
-  override def requiresAttribute: Seq[(Attribute, Int)] =
+  override def allOfAttributes: Seq[(Attribute, Int)] =
     List((Attribute.Charisma, 13))
 }

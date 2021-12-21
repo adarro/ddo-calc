@@ -24,8 +24,8 @@ import io.truthencode.ddo.support.requisite._
  * Created by adarr on 2/20/2017.
  */
 trait ImprovedFortification
-  extends FeatRequisiteImpl with RaceRequisite with Passive with RequiresAttribute with RequiresBaB
-  with RequiresAnyOfRace with ArtificerBonusFeat {
+  extends FeatRequisiteImpl with RaceRequisite with Passive with RequiresBaB with RequiresAnyOfRace
+  with ArtificerBonusFeat {
   self: RacialFeat =>
   override def anyOfRace: Seq[(Race, Int)] =
     List((Race.Warforged, 1), (Race.Bladeforged, 1))

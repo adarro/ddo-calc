@@ -20,7 +20,7 @@ package io.truthencode.ddo.model.feats
 import io.truthencode.ddo.model.attribute.Attribute
 import io.truthencode.ddo.model.classes.HeroicCharacterClass
 import io.truthencode.ddo.model.classes.HeroicCharacterClass.Ranger
-import io.truthencode.ddo.support.requisite.{ClassRequisiteImpl, FeatRequisiteImpl, GrantsToClass, RequiresAttribute}
+import io.truthencode.ddo.support.requisite._
 
 /**
  * Prerequisites Icon Feat Two Weapon Fighting.png Two Weapon Fighting Passive Reduces the to-hit
@@ -34,9 +34,10 @@ import io.truthencode.ddo.support.requisite.{ClassRequisiteImpl, FeatRequisiteIm
  */
 trait TwoWeaponFighting
   extends FeatRequisiteImpl with Passive with ClassRequisiteImpl with GrantsToClass
-  with RequiresAttribute with FighterBonusFeat with MartialArtsFeat {
+  with AttributeRequisiteImpl with RequiresAllOfAttribute with FighterBonusFeat
+  with MartialArtsFeat {
   self: GeneralFeat =>
-  override def requiresAttribute: Seq[(Attribute, Int)] =
+  override def allOfAttributes: Seq[(Attribute, Int)] =
     List((Attribute.Dexterity, 15))
 
   override def grantToClass: Seq[(HeroicCharacterClass, Int)] = List((Ranger, 2))

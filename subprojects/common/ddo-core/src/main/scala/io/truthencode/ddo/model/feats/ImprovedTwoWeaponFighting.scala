@@ -32,14 +32,15 @@ import io.truthencode.ddo.support.requisite._
  */
 trait ImprovedTwoWeaponFighting
   extends FeatRequisiteImpl with ClassRequisiteImpl with Passive with RequiresAllOfFeat
-  with RequiresAttribute with RequiresBaB with GrantsToClass with FighterBonusFeat {
+  with AttributeRequisiteImpl with RequiresAllOfAttribute with RequiresBaB with GrantsToClass
+  with FighterBonusFeat {
   self: GeneralFeat =>
   override def requiresBaB: Int = 6
 
   override def allOfFeats: Seq[GeneralFeat] =
     List(GeneralFeat.TwoWeaponFighting)
 
-  override def requiresAttribute: Seq[(Attribute, Int)] =
+  override def allOfAttributes: Seq[(Attribute, Int)] =
     List((Attribute.Dexterity, 17))
 
   override def grantToClass: Seq[(HeroicCharacterClass, Int)] = List((Ranger, 6))

@@ -18,7 +18,11 @@
 package io.truthencode.ddo.model.feats
 
 import io.truthencode.ddo.model.attribute.Attribute
-import io.truthencode.ddo.support.requisite.{FeatRequisiteImpl, RequiresAttribute}
+import io.truthencode.ddo.support.requisite.{
+  AttributeRequisiteImpl,
+  FeatRequisiteImpl,
+  RequiresAllOfAttribute
+}
 
 /**
  * Icon Feat Type Description Prerequisites Icon Feat Two Handed Fighting.png Two Handed Fighting
@@ -29,8 +33,8 @@ import io.truthencode.ddo.support.requisite.{FeatRequisiteImpl, RequiresAttribut
  * Strength 15
  */
 trait TwoHandedFighting
-  extends FeatRequisiteImpl with Passive with RequiresAttribute with FighterBonusFeat
-  with MartialArtsFeat with ArtificerBonusFeat {
+  extends FeatRequisiteImpl with Passive with AttributeRequisiteImpl with RequiresAllOfAttribute
+  with FighterBonusFeat with MartialArtsFeat with ArtificerBonusFeat {
   self: GeneralFeat =>
-  override def requiresAttribute: Seq[(Attribute, Int)] = List((Attribute.Strength, 15))
+  override def allOfAttributes: Seq[(Attribute, Int)] = List((Attribute.Strength, 15))
 }

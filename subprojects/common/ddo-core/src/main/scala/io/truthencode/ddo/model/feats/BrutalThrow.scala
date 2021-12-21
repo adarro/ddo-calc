@@ -18,7 +18,12 @@
 package io.truthencode.ddo.model.feats
 
 import io.truthencode.ddo.model.attribute.Attribute
-import io.truthencode.ddo.support.requisite.{FeatRequisiteImpl, RequiresAttribute, RequiresBaB}
+import io.truthencode.ddo.support.requisite.{
+  AttributeRequisiteImpl,
+  FeatRequisiteImpl,
+  RequiresAllOfAttribute,
+  RequiresBaB
+}
 
 /**
  * Icon Feat Brutal Throw.png Brutal Throw Passive You can use your Strength bonus instead of
@@ -27,10 +32,10 @@ import io.truthencode.ddo.support.requisite.{FeatRequisiteImpl, RequiresAttribut
  * Strength 13 Base Attack Bonus +1
  */
 trait BrutalThrow
-  extends FeatRequisiteImpl with Passive with RequiresAttribute with RequiresBaB
-  with FighterBonusFeat {
+  extends FeatRequisiteImpl with Passive with AttributeRequisiteImpl with RequiresAllOfAttribute
+  with RequiresBaB with FighterBonusFeat {
   self: GeneralFeat =>
-  override def requiresAttribute: Seq[(Attribute, Int)] = List((Attribute.Strength, 13))
+  override def allOfAttributes: Seq[(Attribute, Int)] = List((Attribute.Strength, 13))
 
   override def requiresBaB: Int = 1
 }

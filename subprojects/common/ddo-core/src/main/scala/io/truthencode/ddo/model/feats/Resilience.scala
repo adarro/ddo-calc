@@ -23,7 +23,12 @@ import io.truthencode.ddo.model.attribute.Attribute
 import io.truthencode.ddo.model.effect
 import io.truthencode.ddo.model.effect.TriggerEvent
 import io.truthencode.ddo.model.effect.features.{FeaturesImpl, GrantAbilityFeature}
-import io.truthencode.ddo.support.requisite.{FeatRequisiteImpl, RequiresAttribute, RequiresBaB}
+import io.truthencode.ddo.support.requisite.{
+  AttributeRequisiteImpl,
+  FeatRequisiteImpl,
+  RequiresAllOfAttribute,
+  RequiresBaB
+}
 
 import java.time.Duration
 
@@ -37,9 +42,9 @@ import java.time.Duration
  *   Adds 3x spell cooldown timers
  */
 protected[feats] trait Resilience
-  extends FeatRequisiteImpl with ActiveFeat with DefensiveCombatStance with RequiresAttribute
-  with RequiresBaB with FighterBonusFeat with MartialArtsFeat with FeaturesImpl
-  with GrantAbilityFeature {
+  extends FeatRequisiteImpl with ActiveFeat with DefensiveCombatStance with AttributeRequisiteImpl
+  with RequiresAllOfAttribute with RequiresBaB with FighterBonusFeat with MartialArtsFeat
+  with FeaturesImpl with GrantAbilityFeature {
   self: GeneralFeat =>
   override lazy val grantedAbility: ActiveAbilities = ActiveAbilities.Resilience
   override val grantBonusType: BonusType = BonusType.Feat
@@ -51,7 +56,7 @@ protected[feats] trait Resilience
   override val abilityId: String = "Resilience"
   override val description: String = "Defensive Combat Stance You gain a +4 to all saving throws."
 
-  override def requiresAttribute: Seq[(Attribute, Int)] =
+  override def allOfAttributes: Seq[(Attribute, Int)] =
     List((Attribute.Constitution, 13))
 
   override def coolDown: Option[Duration] = Some(Duration.ofSeconds(6))

@@ -35,7 +35,7 @@ sealed trait BasicStat
     entryName.splitByCase.toPascalCase
   override val withPrefix: String = s"$searchPrefix$nameSource"
 
-  override def searchPrefix: String = s"""$searchPrefixSource${delimiter.getOrElse("")}"""
+  override def searchPrefix: String = s"""$searchPrefixSource${searchDelimiter.getOrElse("")}"""
 
   /**
    * Override this function for a more specific match such as "ToHitChance"
@@ -47,7 +47,7 @@ sealed trait BasicStat
 }
 
 trait DodgeChance extends BasicStat with MissChance {
-  override lazy val delimiter: Option[String] = Some(":")
+  override lazy val searchDelimiter: Option[String] = Some(":")
 
   override def searchPrefixSource: String = "MissChance"
 }

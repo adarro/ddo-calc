@@ -34,10 +34,10 @@ import io.truthencode.ddo.support.requisite._
  *   Apply multi-conditional logic dor Shuriken Expertise
  */
 protected[feats] trait ShurikenExpertise
-  extends FeatRequisiteImpl with RaceRequisiteImpl with Passive with RequiresAttribute
-  with RequiresAnyOfFeat with MartialArtsFeat {
+  extends FeatRequisiteImpl with RaceRequisiteImpl with Passive with AttributeRequisiteImpl
+  with RequiresAllOfAttribute with RequiresAnyOfFeat with MartialArtsFeat {
   self: GeneralFeat =>
-  override def requiresAttribute: Seq[(Attribute, Int)] =
+  override def allOfAttributes: Seq[(Attribute, Int)] =
     List((Attribute.Dexterity, 13))
 
   override def anyOfFeats: Seq[Feat] =

@@ -24,7 +24,12 @@ import io.truthencode.ddo.model.effect
 import io.truthencode.ddo.model.effect.TriggerEvent
 import io.truthencode.ddo.model.effect.features.{FeaturesImpl, GrantAbilityFeature}
 import io.truthencode.ddo.model.misc.DefaultCoolDown
-import io.truthencode.ddo.support.requisite.{FeatRequisiteImpl, RequiresAttribute, RequiresBaB}
+import io.truthencode.ddo.support.requisite.{
+  AttributeRequisiteImpl,
+  FeatRequisiteImpl,
+  RequiresAllOfAttribute,
+  RequiresBaB
+}
 
 /**
  * Icon Feat Precision.png [[https://ddowiki.com/page/Precision Precision]] Active - Offensive
@@ -35,9 +40,9 @@ import io.truthencode.ddo.support.requisite.{FeatRequisiteImpl, RequiresAttribut
  *   add Rage Prohibition
  */
 protected[feats] trait Precision
-  extends FeatRequisiteImpl with ActiveFeat with OffensiveCombatStance with RequiresAttribute
-  with RequiresBaB with AlchemistBonusFeat with FighterBonusFeat with MartialArtsFeat
-  with DefaultCoolDown with FeaturesImpl with GrantAbilityFeature {
+  extends FeatRequisiteImpl with ActiveFeat with OffensiveCombatStance with AttributeRequisiteImpl
+  with RequiresAllOfAttribute with RequiresBaB with AlchemistBonusFeat with FighterBonusFeat
+  with MartialArtsFeat with DefaultCoolDown with FeaturesImpl with GrantAbilityFeature {
   self: GeneralFeat =>
   override lazy val grantedAbility: ActiveAbilities = ActiveAbilities.Precision
 // TODO: Add reduce fort 25% and 5% tohit + rage prohibition
@@ -50,7 +55,7 @@ protected[feats] trait Precision
   override val description: String =
     "Offensive Combat Stance While using Precision mode, you gain +5% to hit and reduce the target's fortification against your attacks by 25%"
 
-  override def requiresAttribute: Seq[(Attribute, Int)] =
+  override def allOfAttributes: Seq[(Attribute, Int)] =
     List((Attribute.Dexterity, 13))
 
   override def requiresBaB = 1

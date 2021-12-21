@@ -19,7 +19,12 @@ package io.truthencode.ddo.model.feats
 
 import io.truthencode.ddo.model.attribute.Attribute
 import io.truthencode.ddo.model.race.Race
-import io.truthencode.ddo.support.requisite.{FeatRequisiteImpl, RequiresAllOfRace, RequiresAttribute}
+import io.truthencode.ddo.support.requisite.{
+  AttributeRequisiteImpl,
+  FeatRequisiteImpl,
+  RequiresAllOfAttribute,
+  RequiresAllOfRace
+}
 
 /**
  * Half-Elf Dilettante: Monk Passive Proficiency with the quarterstaff, kama, and shuriken, and can
@@ -28,10 +33,10 @@ import io.truthencode.ddo.support.requisite.{FeatRequisiteImpl, RequiresAllOfRac
  * Half-Elf 13 Wisdom
  */
 trait HalfElfDilettanteMonk
-  extends FeatRequisiteImpl with HalfElfDilettantePreFix with Passive with RequiresAttribute
-  with RequiresAllOfRace {
+  extends FeatRequisiteImpl with HalfElfDilettantePreFix with Passive with AttributeRequisiteImpl
+  with RequiresAllOfAttribute with RequiresAllOfRace {
   self: RacialFeat =>
   override def allOfRace: Seq[(Race, Int)] = List((Race.HalfElf, 1))
 
-  override def requiresAttribute: Seq[(Attribute, Int)] = List((Attribute.Wisdom, 13))
+  override def allOfAttributes: Seq[(Attribute, Int)] = List((Attribute.Wisdom, 13))
 }

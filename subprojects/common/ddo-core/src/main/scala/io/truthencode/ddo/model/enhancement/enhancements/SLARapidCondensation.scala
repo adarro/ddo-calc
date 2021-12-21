@@ -27,7 +27,6 @@ trait SLARapidCondensation extends BombardierTierTwo with ClassEnhancementImpl w
    */
   override val ranks: Int = 3
 
-  // Manually overriding until proper Acronym Case preservation
   override def displayText: String = withPrefix.getOrElse("") + nameSource
 
   override protected def nameSource: String = "Rapid Condensation"

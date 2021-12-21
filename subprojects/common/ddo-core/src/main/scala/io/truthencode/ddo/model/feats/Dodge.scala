@@ -22,18 +22,23 @@ import io.truthencode.ddo.model.attribute.Attribute
 import io.truthencode.ddo.model.effect
 import io.truthencode.ddo.model.effect.TriggerEvent
 import io.truthencode.ddo.model.effect.features.{DodgeChanceFeature, FeaturesImpl}
-import io.truthencode.ddo.support.requisite.{FeatRequisiteImpl, RequiresAttribute}
+import io.truthencode.ddo.support.requisite.{
+  AttributeRequisiteImpl,
+  FeatRequisiteImpl,
+  RequiresAllOfAttribute
+}
 
 /**
  * Usage: Passive Prerequisite: Dexterity 13+ Description This feat grants a 3% Dodge bonus. *
  *
- * A Fighter may select this feat as one of his fighter bonus feats.
- * A Monk may select this feat as one of his martial arts feats.
- * An Alchemist may select this feat as one of his fighter bonus feats.
+ * A Fighter may select this feat as one of his fighter bonus feats. A Monk may select this feat as
+ * one of his martial arts feats. An Alchemist may select this feat as one of his fighter bonus
+ * feats.
  */
 trait Dodge
-  extends FeatRequisiteImpl with Passive with RequiresAttribute with FighterBonusFeat
-  with AlchemistBonusFeat with MartialArtsFeat with FeaturesImpl with DodgeChanceFeature {
+  extends FeatRequisiteImpl with Passive with AttributeRequisiteImpl with RequiresAllOfAttribute
+  with FighterBonusFeat with AlchemistBonusFeat with MartialArtsFeat with FeaturesImpl
+  with DodgeChanceFeature {
   self: GeneralFeat =>
 
   override protected[this] lazy val triggerOn: Seq[TriggerEvent] = Seq(TriggerEvent.Passive)
@@ -43,6 +48,6 @@ trait Dodge
   override val dodgeBonusType: BonusType = BonusType.Feat
   override val dodgeBonusAmount: Int = 3
 
-  override def requiresAttribute: Seq[(Attribute, Int)] =
+  override def allOfAttributes: Seq[(Attribute, Int)] =
     List((Attribute.Dexterity, 13))
 }

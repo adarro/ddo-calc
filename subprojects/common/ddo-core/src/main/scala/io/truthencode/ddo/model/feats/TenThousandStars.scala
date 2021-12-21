@@ -27,7 +27,7 @@ import io.truthencode.ddo.model.effect.TriggerEvent
 import io.truthencode.ddo.model.effect.features.{FeaturesImpl, GrantAbilityFeature}
 import io.truthencode.ddo.model.misc.CoolDownPool.ManyShot
 import io.truthencode.ddo.model.misc.SharedCoolDown
-import io.truthencode.ddo.support.requisite.{ClassRequisiteImpl, FeatRequisiteImpl, RequiresAllOfClass, RequiresAttribute}
+import io.truthencode.ddo.support.requisite._
 
 import java.time.Duration
 
@@ -44,7 +44,7 @@ import java.time.Duration
  */
 protected[feats] trait TenThousandStars
   extends FeatRequisiteImpl with ClassRequisiteImpl with ActiveFeat with AtWillEvent
-  with SharedCoolDown with RequiresAttribute with RequiresAllOfClass with MartialArtsFeat
+  with SharedCoolDown with AttributeRequisiteImpl with RequiresAllOfAttribute with RequiresAllOfClass with MartialArtsFeat
   with FeaturesImpl with GrantAbilityFeature {
   self: GeneralFeat =>
 
@@ -59,7 +59,7 @@ protected[feats] trait TenThousandStars
   override val description: String =
     "or the next 30 seconds, add your Wisdom ability score to your Ranged Power and add your monk level * 5 to your Doubleshot."
 
-  override def requiresAttribute: Seq[(Attribute, Int)] =
+  override def allOfAttributes: Seq[(Attribute, Int)] =
     List((Attribute.Dexterity, 13))
 
   override def coolDown: Option[Duration] = Some(Duration.ofSeconds(60))

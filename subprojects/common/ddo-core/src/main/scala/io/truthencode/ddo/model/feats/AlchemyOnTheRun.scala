@@ -19,7 +19,12 @@ package io.truthencode.ddo.model.feats
 
 import io.truthencode.ddo.model.classes.HeroicCharacterClass
 import io.truthencode.ddo.model.classes.HeroicCharacterClass.Alchemist
-import io.truthencode.ddo.support.requisite.{ClassRequisiteImpl, FeatRequisiteImpl, GrantsToClass, RequiresAllOfClass}
+import io.truthencode.ddo.support.requisite.{
+  ClassRequisiteImpl,
+  FeatRequisiteImpl,
+  GrantsToClass,
+  RequiresAllOfClass
+}
 
 /**
  * You are able to move while drinking potions
@@ -30,7 +35,7 @@ import io.truthencode.ddo.support.requisite.{ClassRequisiteImpl, FeatRequisiteIm
 protected[feats] trait AlchemyOnTheRun
   extends FeatRequisiteImpl with ClassRequisiteImpl with GrantsToClass with RequiresAllOfClass
   with Passive {
-  private[this] val cls = (Alchemist, 3)
+  val cls: (HeroicCharacterClass.Alchemist.type, Int) = (Alchemist, 3)
   abstract override def grantToClass: Seq[(HeroicCharacterClass, Int)] = super.grantToClass :+ cls
 
   abstract override def allOfClass: Seq[(HeroicCharacterClass, Int)] = super.allOfClass :+ cls

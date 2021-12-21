@@ -50,7 +50,7 @@ import io.truthencode.ddo.support.requisite._
  * races, particularly Halflings.
  */
 protected[feats] trait ImprovedPreciseShot
-  extends FeatRequisiteImpl with ActiveFeat with RequiresAllOfFeat with RequiresAttribute
+  extends FeatRequisiteImpl with ActiveFeat with RequiresAllOfFeat with AttributeRequisiteImpl with RequiresAllOfAttribute
   with RequiresBaB with ClassRequisiteImpl with GrantsToClass with FighterBonusFeat
   with ArtificerBonusFeat with OffensiveRangedStance with DefaultCoolDown with FeaturesImpl
   with GrantAbilityFeature {
@@ -78,7 +78,7 @@ protected[feats] trait ImprovedPreciseShot
    */
   override def requiresBaB: Int = 11
 
-  override def requiresAttribute: Seq[(Attribute, Int)] =
+  override def allOfAttributes: Seq[(Attribute, Int)] =
     List((Attribute.Dexterity, 19))
 
   override def grantToClass: Seq[(HeroicCharacterClass, Int)] =

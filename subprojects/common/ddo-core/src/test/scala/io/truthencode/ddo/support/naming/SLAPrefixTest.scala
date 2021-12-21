@@ -19,16 +19,23 @@ package io.truthencode.ddo.support.naming
 
 import com.typesafe.scalalogging.LazyLogging
 import io.truthencode.ddo.model.enhancement.enhancements.ClassEnhancement
+import io.truthencode.ddo.model.feats.ClassFeat
 import org.scalatest.funspec.AnyFunSpec
 import org.scalatest.matchers.should.Matchers
+
+import scala.language.postfixOps
 
 class SLAPrefixTest extends AnyFunSpec with Matchers with LazyLogging {
   describe("SlA Prefix") {
     it("should prepend Enhancements with Spell-Like Ability:") {
       val e = ClassEnhancement.RapidCondensation
       val s = ClassEnhancement.SpellCriticalChancePositiveAndNegativeIII
+      val sb = ClassEnhancement.SmokeBomb
+      val ks = ClassFeat.KiStrikeMagic
       logger.info(s"evaluating ${e.entryName} and ${s.entryName}")
       e.displayText shouldEqual "Spell-Like Ability: Rapid Condensation"
+      sb.displayText shouldEqual "Spell-Like Ability: Smoke Bomb"
+      ks.displayText shouldEqual "Ki Strike: Magic"
     }
   }
 }

@@ -23,7 +23,7 @@ import io.truthencode.ddo.model.attribute.Attribute
 import io.truthencode.ddo.model.effect
 import io.truthencode.ddo.model.effect.TriggerEvent
 import io.truthencode.ddo.model.effect.features.{FeaturesImpl, GrantAbilityFeature}
-import io.truthencode.ddo.support.requisite.{FeatRequisiteImpl, RequiresAttribute}
+import io.truthencode.ddo.support.requisite.{AttributeRequisiteImpl, FeatRequisiteImpl, RequiresAllOfAttribute}
 
 import java.time.Duration
 
@@ -44,11 +44,11 @@ import java.time.Duration
  *   add Offensive Combat Stance
  */
 protected[feats] trait PowerAttack
-  extends FeatRequisiteImpl with ActiveFeat with Stance with RequiresAttribute with MartialArtsFeat
+  extends FeatRequisiteImpl with ActiveFeat with Stance with AttributeRequisiteImpl with RequiresAllOfAttribute with MartialArtsFeat
   with FighterBonusFeat with FeaturesImpl with GrantAbilityFeature {
   self: GeneralFeat =>
   override lazy val grantedAbility: ActiveAbilities = ActiveAbilities.PowerAttack
-  override val requiresAttribute: Seq[(Attribute, Int)] = List(
+  override val allOfAttributes: Seq[(Attribute, Int)] = List(
     (Attribute.Strength, 13)
   )
 // TODO: Add to hit penalty, Damage Bonus for PowerAttack

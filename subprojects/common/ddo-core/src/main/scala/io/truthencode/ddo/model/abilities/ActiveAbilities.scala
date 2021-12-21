@@ -47,7 +47,7 @@ object ActiveAbilities extends Enum[ActiveAbilities] with SearchPrefix {
    */
   override def searchPrefixSource: String = "Ability"
 
-  override def delimiter: Option[String] = Some(":")
+  override def searchDelimiter: Option[String] = Some(":")
 
   case object Attack extends ActiveAbilities
 

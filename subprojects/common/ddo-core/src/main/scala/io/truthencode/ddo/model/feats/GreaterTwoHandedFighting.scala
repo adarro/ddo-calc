@@ -18,7 +18,7 @@
 package io.truthencode.ddo.model.feats
 
 import io.truthencode.ddo.model.attribute.Attribute
-import io.truthencode.ddo.support.requisite.{FeatRequisiteImpl, RequiresAllOfFeat, RequiresAttribute, RequiresBaB}
+import io.truthencode.ddo.support.requisite._
 
 /**
  * Icon Feat Greater Two Handed Fighting.png Greater Two Handed Fighting Passive Increases the
@@ -28,10 +28,10 @@ import io.truthencode.ddo.support.requisite.{FeatRequisiteImpl, RequiresAllOfFea
  * Fighting Strength 17 Base Attack Bonus +11
  */
 trait GreaterTwoHandedFighting
-  extends FeatRequisiteImpl with Passive with RequiresAllOfFeat with RequiresAttribute
-  with RequiresBaB with FighterBonusFeat {
+  extends FeatRequisiteImpl with Passive with RequiresAllOfFeat with AttributeRequisiteImpl
+  with RequiresAllOfAttribute with RequiresBaB with FighterBonusFeat {
   self: GeneralFeat =>
-  override def requiresAttribute: Seq[(Attribute, Int)] = List((Attribute.Strength, 17))
+  override def allOfAttributes: Seq[(Attribute, Int)] = List((Attribute.Strength, 17))
 
   override def requiresBaB: Int = 11
 

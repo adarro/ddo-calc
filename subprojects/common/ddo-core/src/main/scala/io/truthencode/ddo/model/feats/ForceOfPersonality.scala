@@ -18,14 +18,19 @@
 package io.truthencode.ddo.model.feats
 
 import io.truthencode.ddo.model.attribute.Attribute
-import io.truthencode.ddo.support.requisite.{FeatRequisiteImpl, RequiresAttribute}
+import io.truthencode.ddo.support.requisite.{
+  AttributeRequisiteImpl,
+  FeatRequisiteImpl,
+  RequiresAllOfAttribute
+}
 
 /**
  * Icon Feat Type Description Prerequisites Icon Feat Force Of Personality.png Force of Personality
  * Passive This Feat allows Player Character to use Charisma modifier for Will saves, instead of
  * Wisdom. * Charisma 13
  */
-trait ForceOfPersonality extends FeatRequisiteImpl with Passive with RequiresAttribute {
+trait ForceOfPersonality
+  extends FeatRequisiteImpl with Passive with AttributeRequisiteImpl with RequiresAllOfAttribute {
   self: GeneralFeat =>
-  override def requiresAttribute: Seq[(Attribute, Int)] = List((Attribute.Charisma, 13))
+  override def allOfAttributes: Seq[(Attribute, Int)] = List((Attribute.Charisma, 13))
 }

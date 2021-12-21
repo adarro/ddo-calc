@@ -17,6 +17,7 @@
  */
 package io.truthencode.ddo.model.feats
 
+import io.truthencode.ddo.model.attribute.Attribute
 import io.truthencode.ddo.model.classes.HeroicCharacterClass
 import io.truthencode.ddo.support.requisite._
 
@@ -32,7 +33,8 @@ import io.truthencode.ddo.support.requisite._
  */
 protected[feats] trait MobileSpellcasting
   extends FeatRequisiteImpl with ClassRequisiteImpl with Passive with RequiresAllOfFeat
-  with RequiresAttribute with RequiresAnyOfClass { self: GeneralFeat =>
+  with AttributeRequisiteImpl with RequiresAllOfAttribute with RequiresAnyOfClass {
+  self: GeneralFeat =>
   override def allOfFeats: Seq[GeneralFeat] = List(GeneralFeat.CombatCasting)
 
   override def anyOfClass: Seq[(HeroicCharacterClass, Int)] =
@@ -47,4 +49,6 @@ protected[feats] trait MobileSpellcasting
       (HeroicCharacterClass.Paladin, 7),
       (HeroicCharacterClass.Ranger, 7)
     )
+
+  override def allOfAttributes: Seq[(Attribute, Int)] = Seq((Attribute.Dexterity, 13))
 }

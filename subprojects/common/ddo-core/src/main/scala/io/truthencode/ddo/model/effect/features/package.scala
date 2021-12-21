@@ -43,7 +43,7 @@ package object features {
      * contribute to your specific goal of increasing your armor class. Miss-Chance is to vague as
      * it encompasses everything from incorporeal, dodge, armor class, arrow-deflection etc.
      */
-    override lazy val name: String = withPrefix
+    override lazy val name: String = withPrefix.replace("::",":")
     override lazy val effectText: Option[String] = Some(
       s"provides a ${value.numberToSignedText} ${bonusType.entryName} bonus to ${partToModify.entryName}"
     )

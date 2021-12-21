@@ -162,7 +162,7 @@ object Race extends Enum[Race] with SearchPrefix {
    * @return
    *   The delimiter, if it exists.
    */
-  override def delimiter: Option[String] = Some(":")
+  override def searchDelimiter: Option[String] = Some(":")
 
   override def searchPrefixSource: String = "Race"
 

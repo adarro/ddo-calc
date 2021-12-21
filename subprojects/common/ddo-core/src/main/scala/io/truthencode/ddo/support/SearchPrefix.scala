@@ -29,12 +29,12 @@ trait SearchPrefix {
    */
   def searchPrefixSource: String
 
-  def searchPrefix: String = s"""$searchPrefixSource${delimiter.getOrElse("")}"""
+  def searchPrefix: String = s"""$searchPrefixSource${searchDelimiter.getOrElse("")}"""
 
   /**
    * An optional delimiter such as a colon when overridden. By default, this is set to Option.None
    * @return
    *   The delimiter, if it exists.
    */
-  def delimiter: Option[String] = None
+  def searchDelimiter: Option[String] = Some(":")
 }

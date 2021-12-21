@@ -31,12 +31,12 @@ import io.truthencode.ddo.support.requisite._
  */
 protected[feats] trait RapidShot
   extends FeatRequisiteImpl with ClassRequisiteImpl with Passive with RequiresAllOfFeat
-  with RequiresAttribute with GrantsToClass with ArtificerBonusFeat with AlchemistBonusFeat
-  with FighterBonusFeat {
+  with AttributeRequisiteImpl with RequiresAllOfAttribute with GrantsToClass with ArtificerBonusFeat
+  with AlchemistBonusFeat with FighterBonusFeat {
   self: GeneralFeat =>
   override def grantToClass: Seq[(HeroicCharacterClass, Int)] = List((Ranger, 2))
 
-  override def requiresAttribute: Seq[(Attribute, Int)] =
+  override def allOfAttributes: Seq[(Attribute, Int)] =
     List((Attribute.Dexterity, 13))
 
   override def allOfFeats: Seq[GeneralFeat] = List(GeneralFeat.PointBlankShot)

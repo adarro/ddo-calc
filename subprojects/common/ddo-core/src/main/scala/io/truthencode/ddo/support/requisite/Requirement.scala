@@ -151,7 +151,7 @@ object Requirement extends Enum[Requirement] {
     override protected def nameSource: String = id.splitByCase.toPascalCase
   }
 
-  case class BaseAttackBonusReq(amount: Int) extends Requirement with Abbreviation {
+  case class ReqBaseAttackBonus(amount: Int) extends Requirement with Abbreviation {
 
     /**
      * The short form of the word

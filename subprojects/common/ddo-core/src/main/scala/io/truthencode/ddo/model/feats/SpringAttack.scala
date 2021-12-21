@@ -23,7 +23,7 @@ import io.truthencode.ddo.model.attribute.Attribute
 import io.truthencode.ddo.model.effect
 import io.truthencode.ddo.model.effect.TriggerEvent
 import io.truthencode.ddo.model.effect.features.{FeaturesImpl, GrantAbilityFeature}
-import io.truthencode.ddo.support.requisite.{FeatRequisiteImpl, RequiresAllOfFeat, RequiresAttribute, RequiresBaB}
+import io.truthencode.ddo.support.requisite._
 
 /**
  * Icon Feat Spring Attack.png Spring Attack Passive Character suffers no penalty to his attack roll
@@ -33,9 +33,9 @@ import io.truthencode.ddo.support.requisite.{FeatRequisiteImpl, RequiresAllOfFea
  * Dodge, Mobility Dexterity 13 , Base Attack Bonus 4,
  */
 protected[feats] trait SpringAttack
-  extends FeatRequisiteImpl with Passive with RequiresAllOfFeat with RequiresAttribute
-  with RequiresBaB with FighterBonusFeat with MartialArtsFeat with FeaturesImpl
-  with GrantAbilityFeature {
+  extends FeatRequisiteImpl with Passive with RequiresAllOfFeat with AttributeRequisiteImpl
+  with RequiresAllOfAttribute with RequiresBaB with FighterBonusFeat with MartialArtsFeat
+  with FeaturesImpl with GrantAbilityFeature {
   self: GeneralFeat =>
   override lazy val grantedAbility: ActiveAbilities = ActiveAbilities.SpringAttack
   override val grantBonusType: BonusType = BonusType.Feat
@@ -59,5 +59,5 @@ protected[feats] trait SpringAttack
   // scalastyle:off magic.number
   override def requiresBaB: Int = 4
 
-  override def requiresAttribute: Seq[(Attribute, Int)] = List((Attribute.Dexterity, 13))
+  override def allOfAttributes: Seq[(Attribute, Int)] = List((Attribute.Dexterity, 13))
 }

@@ -23,7 +23,7 @@ import io.truthencode.ddo.model.attribute.Attribute
 import io.truthencode.ddo.model.effect
 import io.truthencode.ddo.model.effect.TriggerEvent
 import io.truthencode.ddo.model.effect.features.{ArmorClassPercentFeature, FeaturesImpl, GrantAbilityFeature}
-import io.truthencode.ddo.support.requisite.{FeatRequisiteImpl, RequiresAttribute}
+import io.truthencode.ddo.support.requisite.{AttributeRequisiteImpl, FeatRequisiteImpl, RequiresAllOfAttribute}
 
 import java.time.Duration
 
@@ -35,7 +35,7 @@ import java.time.Duration
  * dispels and wards against all Rage effects.
  */
 protected[feats] trait CombatExpertise
-  extends FeatRequisiteImpl with ActiveFeat with RequiresAttribute with MartialArtsFeat
+  extends FeatRequisiteImpl with ActiveFeat with AttributeRequisiteImpl with RequiresAllOfAttribute with MartialArtsFeat
   with FighterBonusFeat with ArtificerBonusFeat with DefensiveCombatStance with FeaturesImpl
   with GrantAbilityFeature with ArmorClassPercentFeature {
   self: GeneralFeat =>
@@ -44,7 +44,7 @@ protected[feats] trait CombatExpertise
   override protected[this] lazy val triggerOff: Seq[TriggerEvent] = Seq(TriggerEvent.OnSpellCast)
   override protected[this] lazy val grantAbilityCategories: Seq[effect.EffectCategories.Value] =
     Seq(effect.EffectCategories.Stance)
-  override val requiresAttribute = List((Attribute.Intelligence, 13))
+  override val allOfAttributes = List((Attribute.Intelligence, 13))
   override val grantBonusType: BonusType = BonusType.Feat
   override protected val armorBonusType: BonusType = BonusType.Feat
   override protected val armorBonusAmount: Int = 10

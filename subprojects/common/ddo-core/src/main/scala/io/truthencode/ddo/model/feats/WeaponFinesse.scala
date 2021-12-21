@@ -18,7 +18,12 @@
 package io.truthencode.ddo.model.feats
 
 import io.truthencode.ddo.model.attribute.Attribute
-import io.truthencode.ddo.support.requisite.{FeatRequisiteImpl, RequiresAttribute, RequiresBaB}
+import io.truthencode.ddo.support.requisite.{
+  AttributeRequisiteImpl,
+  FeatRequisiteImpl,
+  RequiresAllOfAttribute,
+  RequiresBaB
+}
 
 /**
  * Icon Feat Weapon Finesse.png Weapon Finesse Passive This feat allows the character to apply their
@@ -27,10 +32,10 @@ import io.truthencode.ddo.support.requisite.{FeatRequisiteImpl, RequiresAttribut
  * Dexterity 13 Base Attack Bonus +1 *
  */
 trait WeaponFinesse
-  extends FeatRequisiteImpl with Passive with RequiresAttribute with RequiresBaB
-  with FighterBonusFeat with MartialArtsFeat {
+  extends FeatRequisiteImpl with Passive with AttributeRequisiteImpl with RequiresAllOfAttribute
+  with RequiresBaB with FighterBonusFeat with MartialArtsFeat {
   self: GeneralFeat =>
-  override def requiresAttribute: Seq[(Attribute, Int)] = List((Attribute.Dexterity, 13))
+  override def allOfAttributes: Seq[(Attribute, Int)] = List((Attribute.Dexterity, 13))
 
   override def requiresBaB: Int = 1
 }

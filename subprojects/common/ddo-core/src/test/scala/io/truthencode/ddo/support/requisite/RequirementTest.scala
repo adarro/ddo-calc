@@ -27,12 +27,12 @@ import org.scalatest.matchers.should.Matchers
 class RequirementTest extends AnyFunSpec with Matchers with LazyLogging {
   describe("Something with Requisites") {
     they("Should be readable") {
-      val enumList = Seq(GeneralFeat.Manyshot)
+      val enumList = Seq(GeneralFeat.Alertness, GeneralFeat.Manyshot, GeneralFeat.Dodge)
       val values = for {
         f <- enumList.collect { case x: RequisiteExpression with RequisiteType with Inclusion => x }
         pr <- f.prerequisites
         if f.prerequisites.nonEmpty
-      } yield ValueWithRequirements(f, pr.reqType, pr.incl, pr.req)
+      } yield ValueWithRequirements(f, pr.reqType, pr.incl, pr.groupKey, pr.req)
 
       logger.info(values.size.toString)
       values.foreach { v =>
@@ -51,7 +51,7 @@ class RequirementTest extends AnyFunSpec with Matchers with LazyLogging {
 
           }
           val ss = "lsdkf"
-          logger.info(s"${v.requisiteType}: ${v.includeType} ${r.entryName} $req ")
+          logger.info(s"${v.groupKey} ${v.requisiteType}: ${v.includeType} ${r.entryName} $req ")
         }
       }
     }
@@ -61,6 +61,7 @@ class RequirementTest extends AnyFunSpec with Matchers with LazyLogging {
     f: EnumEntry with RequisiteExpression,
     reqType: RequisiteType,
     incl: Inclusion,
+    groupKey: String,
     req: Seq[Requirement]) {
     val requisiteType: String = reqType.requisiteType
 

@@ -51,9 +51,10 @@ import java.time.Duration
  *   add 20 second Active
  */
 protected[feats] trait Manyshot
-  extends FeatRequisiteImpl  with ClassRequisiteImpl with ActiveFeat with AtWillEvent with RequiresAllOfFeat
-  with AttributeRequisiteImpl with RequiresAllOfAttribute with RequiresBaB with GrantsToClass
-  with FighterBonusFeat with FeaturesImpl with GrantAbilityFeature with SharedCoolDown {
+  extends FeatRequisiteImpl with ClassRequisiteImpl with ActiveFeat with AtWillEvent
+  with RequiresAllOfFeat with AttributeRequisiteImpl with RequiresAllOfAttribute with RequiresBaB
+  with GrantsToClass with FighterBonusFeat with FeaturesImpl with GrantAbilityFeature
+  with SharedCoolDown {
   self: GeneralFeat =>
   override lazy val grantedAbility: ActiveAbilities = ActiveAbilities.Manyshot
   /**
@@ -64,6 +65,7 @@ protected[feats] trait Manyshot
   override val grantBonusType: BonusType = BonusType.Feat
   override protected[this] val triggerOn: Seq[TriggerEvent] = Seq(TriggerEvent.AtWill)
   override protected[this] val triggerOff: Seq[TriggerEvent] = Seq(TriggerEvent.OnCoolDown)
+
   override protected[this] val grantAbilityCategories: Seq[effect.EffectCategories.Value] =
     Seq(effect.EffectCategories.Ability, effect.EffectCategories.RangedCombat)
   override val abilityId: String = "ManyShot"
@@ -84,6 +86,10 @@ protected[feats] trait Manyshot
 
   override def allOfAttributes: Seq[(Attribute, Int)] =
     List((Attribute.Dexterity, 17))
+
+  override def gkBonusSelectableClasses: String = "BonusSelection"
+
+  override def gkGrantClasses: String = "classGrant"
 
   override def grantToClass: Seq[(HeroicCharacterClass, Int)] =
     List((Ranger, 6))

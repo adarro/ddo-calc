@@ -45,6 +45,24 @@ sealed trait Requirement extends EnumEntry with DisplayName with Prefix {
  * an item etc.
  */
 object Requirement extends Enum[Requirement] {
+  case class GroupedRequirement[T <: Requirement](t: T, key: String) extends Requirement {
+    /**
+     * Sets or maps the source text for the DisplayName.
+     *
+     * @return
+     *   Source text.
+     */
+    override protected def nameSource: String = t.displaySource
+
+    /**
+     * Optional Prefix, used to separate sub-items such as Spell Critical Schools and also to
+     * disambiguate certain entities such as Feat: precision.
+     *
+     * @return
+     *   The optional prefix.
+     */
+    override def prefix: Option[String] = t.prefix
+  }
   def values: IndexedSeq[Requirement] =
     findValues ++ races ++ classes ++ alignments ++ skills
 

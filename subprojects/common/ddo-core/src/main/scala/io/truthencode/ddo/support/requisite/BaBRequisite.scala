@@ -17,7 +17,7 @@
  */
 package io.truthencode.ddo.support.requisite
 
-import io.truthencode.ddo.support.requisite.Requirement.ReqBaseAttackBonus
+import io.truthencode.ddo.support.requisite.Requirement.{GroupedRequirement, ReqBaseAttackBonus}
 
 import scala.language.{implicitConversions, postfixOps}
 
@@ -32,13 +32,15 @@ sealed trait BaBRequisite {
    *   Minimum value allowed
    */
   def requiresBaB: Int
+  def gkAllBaB: String = defaultGroupKey
 }
 
 trait FreeBaB extends BaBRequisite with RequiresNone with RequiredExpression with Requisite
 
-trait RequiresBaB extends BaBRequisite with RequiresOneOf[Requirement] with Requisite {
+trait RequiresBaB extends BaBRequisite with RequiresAllOf[Requirement] with Requisite {
 
-  abstract override def oneOf: Seq[Requirement] = super.oneOf :+ ReqBaseAttackBonus(requiresBaB)
+  abstract override def allOf: Seq[Requirement] =
+    super.allOf :+ GroupedRequirement(ReqBaseAttackBonus(requiresBaB), gkAllBaB)
 
 //  abstract override def prerequisites: Seq[RequisiteExpression] = super.prerequisites :+ this
 

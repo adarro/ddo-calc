@@ -18,13 +18,17 @@
 package io.truthencode.ddo.support.requisite
 
 import io.truthencode.ddo.model.classes.HeroicCharacterClass
-import io.truthencode.ddo.support.requisite.RequirementImplicits.classToReq
+import io.truthencode.ddo.support.requisite.Requirement.GroupedRequirement
 import io.truthencode.ddo.support.requisite.RequirementImplicits.ClassImplicits
 
 /**
  * Represents Character class based restrictions and allowances Created by adarr on 1/30/2017.
  */
 trait ClassRequisite {
+  def gkBonusSelectableClasses: String
+  def gkGrantClasses: String
+  def gkRequiredClasses: String
+  def gkProhibitedClasses: String
   def anyOfClass: Seq[(HeroicCharacterClass, Int)]
 
   def allOfClass: Seq[(HeroicCharacterClass, Int)]
@@ -42,6 +46,12 @@ trait ClassRequisite {
  */
 trait ClassRequisiteImpl extends MustContainImpl[Requirement] with ClassRequisite {
   self: Requisite with RequisiteType =>
+  def gkRequiredClasses: String = defaultGroupKey
+  def gkGrantClasses: String = defaultGroupKey
+  def gkBonusSelectableClasses: String = defaultGroupKey
+
+  override def gkProhibitedClasses: String = defaultGroupKey
+
   override def anyOfClass: Seq[(HeroicCharacterClass, Int)] = Nil
 
   override def allOfClass: Seq[(HeroicCharacterClass, Int)] = Nil
@@ -61,9 +71,7 @@ trait FreeClass extends ClassRequisite with RequiresNone with RequiredExpression
 trait RequiresAnyOfClass extends ClassRequisite with RequiresOneOf[Requirement] with Requisite {
 
   abstract override def oneOf: Seq[Requirement] = super.oneOf ++ {
-    val aoc = anyOfClass.map(_.toReq)
-    assert(aoc.nonEmpty)
-    aoc
+    anyOfClass.map(_.toReq).map(GroupedRequirement(_, gkRequiredClasses))
   }
 }
 
@@ -74,7 +82,7 @@ trait RequiresAnyOfClass extends ClassRequisite with RequiresOneOf[Requirement] 
 trait RequiresAllOfClass extends ClassRequisite with RequiresAllOf[Requirement] with Requisite {
 
   abstract override def allOf: Seq[Requirement] = super.allOf ++ {
-    allOfClass.map(_.toReq)
+    allOfClass.map(_.toReq).map(GroupedRequirement(_, gkRequiredClasses))
   }
 }
 
@@ -85,7 +93,7 @@ trait RequiresAllOfClass extends ClassRequisite with RequiresAllOf[Requirement] 
 trait RequiresNoneOfClass extends ClassRequisite with RequiresNoneOf[Requirement] with Requisite {
 
   abstract override def noneOf: Seq[Requirement] = super.noneOf ++ {
-    noneOfClass.map(_.toReq)
+    noneOfClass.map(_.toReq).map(GroupedRequirement(_, gkProhibitedClasses))
   }
 }
 
@@ -95,9 +103,7 @@ trait RequiresNoneOfClass extends ClassRequisite with RequiresNoneOf[Requirement
 trait GrantsToClass
   extends ClassRequisite with GrantExpression with RequiresOneOf[Requirement] with Requisite {
   abstract override def oneOf: Seq[Requirement] = super.oneOf ++ {
-    val gtc = grantToClass.map(_.toReq)
-    if (grantToClass.nonEmpty) assert(gtc.nonEmpty)
-    gtc
+    grantToClass.map(_.toReq).map(GroupedRequirement(_, gkGrantClasses))
   }
 }
 
@@ -108,6 +114,6 @@ trait GrantsToClass
 trait SelectableToClass
   extends ClassRequisite with ClassRequisiteImpl with RequiresOneOf[Requirement] with Requisite {
   abstract override def oneOf: Seq[Requirement] = super.oneOf ++ {
-    bonusSelectableToClass.map(_.toReq)
+    bonusSelectableToClass.map(_.toReq).map(GroupedRequirement(_, gkBonusSelectableClasses))
   }
 }

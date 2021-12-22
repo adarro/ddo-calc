@@ -37,7 +37,7 @@ import io.truthencode.ddo.support.tree.TreeLike
  */
 package object requisite {
   type Result = (Boolean, Option[List[Requisite]])
-
+  final val defaultGroupKey = "default"
   object RequirementImplicits {
 
     implicit class PatronImplicits(val source: (FavorPatron, Int)) {
@@ -73,7 +73,7 @@ package object requisite {
       }
 
     implicit class AttributeImplicits(val source: (Attribute, Int)) {
-      def toReq: ReqAttribute = ReqAttribute(source._1.toString,source._2)
+      def toReq: ReqAttribute = ReqAttribute(source._1.toString, source._2)
     }
 
     val attrToReq: PartialFunction[(Attribute, Int), ReqAttribute] =
@@ -181,7 +181,7 @@ package object requisite {
       }
 
     implicit class ClassImplicits(val source: (HeroicCharacterClass, Int)) {
-      def toReq: ReqClass = ReqClass(source._1.toString,source._2)
+      def toReq: ReqClass = ReqClass(source._1.toString, source._2)
     }
 
 //    val characterLevelToReq: PartialFunction[(Int,Int), ReqCharacterLevel] =
@@ -190,7 +190,6 @@ package object requisite {
 //
 //            override def apply(v1: (Int, Int)): ReqCharacterLevel = ???
 //        }
-
 
     def classToReq(hc: Tuple2[HeroicCharacterClass, Int]*): Seq[ReqClass] = {
       hc.map { h =>

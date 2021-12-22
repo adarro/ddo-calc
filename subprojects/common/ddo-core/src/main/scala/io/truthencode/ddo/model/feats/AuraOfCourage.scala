@@ -24,13 +24,14 @@ import io.truthencode.ddo.model.misc.DefaultCoolDown
 import io.truthencode.ddo.support.requisite._
 
 /**
- * [[http://ddowiki.com/page/Aura_of_Courage Aura of Courage]] Beginning at 3rd level, a Paladin is immune to fear
- * (magical or otherwise). Each ally within 10 feet of the paladin gains a +4 morale bonus on saving throws against fear
- * effects for 9 seconds. This ability functions while the paladin is conscious, but not if she is unconscious or dead.
+ * [[http://ddowiki.com/page/Aura_of_Courage Aura of Courage]] Beginning at 3rd level, a Paladin is
+ * immune to fear (magical or otherwise). Each ally within 10 feet of the paladin gains a +4 morale
+ * bonus on saving throws against fear effects for 9 seconds. This ability functions while the
+ * paladin is conscious, but not if she is unconscious or dead.
  */
 protected[feats] trait AuraOfCourage
-  extends FeatRequisiteImpl with Passive with ActiveFeat with HealthyEvent with GrantsToClass with RequiresAllOfClass
-  with DefaultCoolDown { self: ClassFeat =>
+  extends FeatRequisiteImpl with Passive with ActiveFeat with HealthyEvent with GrantsToClass
+  with RequiresAllOfClass with DefaultCoolDown { self: ClassFeat =>
   override def grantToClass: Seq[(HeroicCharacterClass, Int)] =
     List((Paladin, 3))
 

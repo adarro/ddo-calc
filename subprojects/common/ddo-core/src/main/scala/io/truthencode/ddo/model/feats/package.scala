@@ -24,7 +24,8 @@ import scala.reflect.ClassTag
  */
 package object feats {
   /**
-   * see [[http://stackoverflow.com/questions/41014979/elegant-way-to-chain-scala-partial-functions SO]]
+   * see
+   * [[http://stackoverflow.com/questions/41014979/elegant-way-to-chain-scala-partial-functions SO]]
    * @param pf
    *   Generic Partial Function to chain
    *

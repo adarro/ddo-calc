@@ -26,51 +26,53 @@ import io.truthencode.ddo.model.classes.HeroicCharacterClass.Ranger
 import io.truthencode.ddo.model.effect
 import io.truthencode.ddo.model.effect.TriggerEvent
 import io.truthencode.ddo.model.effect.features.{FeaturesImpl, GrantAbilityFeature}
-import io.truthencode.ddo.model.misc.{CoolDown, PoolManyShot, SharedCoolDown}
+import io.truthencode.ddo.model.misc.{PoolManyShot, SharedCoolDown}
 import io.truthencode.ddo.support.requisite._
 
 import java.time.Duration
 
 /**
- * Icon Feat Many Shot.png [[https://ddowiki.com/page/Manyshot Manyshot]] Active - Ability For the next 20 seconds, add
- * your base attack bonus * 4 to your Doubleshot and Ranged power. This ability puts Ten Thousand Stars on a 30 second
- * cooldown.
+ * Icon Feat Many Shot.png [[https://ddowiki.com/page/Manyshot Manyshot]] Active - Ability For the
+ * next 20 seconds, add your base attack bonus * 4 to your Doubleshot and Ranged power. This ability
+ * puts Ten Thousand Stars on a 30 second cooldown.
  *
  * Cooldown: 2 minutes.
  *
  * Point Blank Shot, Rapid Shot Dexterity 17, Base Attack Bonus +6
  *
  * @note
- *   This feat does not work with thrown weapons or crossbows. Rangers receive this feat for free at level 6, even if
- *   the prerequisites are not met. Using this ability places Ten Thousand Stars on a 30 second cool-down if its current
- *   cool-down is less than 30 seconds. Tip: Increase your Base attack bonus, for example using Tenser's Transformation,
- *   to receive maximum benefit from this feat. Fighters may select this feat as one of their fighter bonus feats.
+ *   This feat does not work with thrown weapons or crossbows. Rangers receive this feat for free at
+ *   level 6, even if the prerequisites are not met. Using this ability places Ten Thousand Stars on
+ *   a 30 second cool-down if its current cool-down is less than 30 seconds. Tip: Increase your Base
+ *   attack bonus, for example using Tenser's Transformation, to receive maximum benefit from this
+ *   feat. Fighters may select this feat as one of their fighter bonus feats.
  *
  * @todo
  *   add 20 second Active
  */
 protected[feats] trait Manyshot
-  extends FeatRequisiteImpl with ActiveFeat with AtWillEvent with RequiresAllOfFeat with RequiresAttribute
-  with RequiresBaB with ClassRequisiteImpl with GrantsToClass with FighterBonusFeat with FeaturesImpl
-  with GrantAbilityFeature with SharedCoolDown {
+  extends FeatRequisiteImpl  with ClassRequisiteImpl with ActiveFeat with AtWillEvent with RequiresAllOfFeat
+  with AttributeRequisiteImpl with RequiresAllOfAttribute with RequiresBaB with GrantsToClass
+  with FighterBonusFeat with FeaturesImpl with GrantAbilityFeature with SharedCoolDown {
   self: GeneralFeat =>
+  override lazy val grantedAbility: ActiveAbilities = ActiveAbilities.Manyshot
   /**
    * Used to group shared timer resources. It is strongly recommended to use one of the values in
    * [[io.truthencode.ddo.model.misc.CoolDownPool]]
    */
   override val coolDownPoolId: String = PoolManyShot
   override val grantBonusType: BonusType = BonusType.Feat
-  override val grantedAbility: ActiveAbilities = ActiveAbilities.Manyshot
-// TODO: Add Doubleshot feature ADD BAB +4 Feature
-  override def allOfFeats: Seq[GeneralFeat] =
-    List(GeneralFeat.PointBlankShot, GeneralFeat.RapidShot)
-
-  override protected[this] val triggerOn: TriggerEvent = TriggerEvent.AtWill
-  override protected[this] val triggerOff: TriggerEvent = TriggerEvent.OnCoolDown
-  override protected[this] val categories: Seq[effect.EffectCategories.Value] = Seq(effect.EffectCategories.Ability,effect.EffectCategories.RangedCombat)
+  override protected[this] val triggerOn: Seq[TriggerEvent] = Seq(TriggerEvent.AtWill)
+  override protected[this] val triggerOff: Seq[TriggerEvent] = Seq(TriggerEvent.OnCoolDown)
+  override protected[this] val grantAbilityCategories: Seq[effect.EffectCategories.Value] =
+    Seq(effect.EffectCategories.Ability, effect.EffectCategories.RangedCombat)
   override val abilityId: String = "ManyShot"
   override val description: String =
     "Ability For the next 20 seconds, add your base attack bonus * 4 to your Doubleshot and Ranged power"
+
+// TODO: Add Doubleshot feature ADD BAB +4 Feature
+  override def allOfFeats: Seq[GeneralFeat] =
+    List(GeneralFeat.PointBlankShot, GeneralFeat.RapidShot)
 
   /**
    * The Minimum Required Base Attack Bonus
@@ -80,7 +82,7 @@ protected[feats] trait Manyshot
    */
   override def requiresBaB: Int = 6
 
-  override def requiresAttribute: Seq[(Attribute, Int)] =
+  override def allOfAttributes: Seq[(Attribute, Int)] =
     List((Attribute.Dexterity, 17))
 
   override def grantToClass: Seq[(HeroicCharacterClass, Int)] =

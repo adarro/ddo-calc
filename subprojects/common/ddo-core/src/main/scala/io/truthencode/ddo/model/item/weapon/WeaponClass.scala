@@ -18,14 +18,14 @@
 package io.truthencode.ddo.model.item.weapon
 
 import enumeratum.{Enum, EnumEntry}
-import io.truthencode.ddo.support.{Deferred, PhysicalDamage}
 import io.truthencode.ddo.support.naming.DisplayName
+import io.truthencode.ddo.support.{Deferred, PhysicalDamage}
 
 import scala.collection.immutable.IndexedSeq
 
 /**
- * This trait is used to map weapons for purposes such as determining weapon specialization and should correspond
- * directly to such Feats.
+ * This trait is used to map weapons for purposes such as determining weapon specialization and
+ * should correspond directly to such Feats.
  */
 sealed trait WeaponClass extends EnumEntry with DisplayName {
   self: DefaultDeliveryMethod with PhysicalDamage =>
@@ -40,6 +40,8 @@ sealed trait WeaponClass extends EnumEntry with DisplayName {
 
 object WeaponClass extends Enum[WeaponClass] {
 
+  override def values: IndexedSeq[WeaponClass] = findValues
+
   case object Bludgeon extends WeaponClassBludgeoning
 
   case object Piercing extends WeaponClassPiercing
@@ -49,15 +51,16 @@ object WeaponClass extends Enum[WeaponClass] {
   case object Ranged extends WeaponClassRanged
 
   case object Thrown extends WeaponClassThrown
-
-  override def values: IndexedSeq[WeaponClass] = findValues
 }
 
-sealed trait WeaponClassBludgeoning extends WeaponClass with MeleeDamage with io.truthencode.ddo.support.Bludgeoning
+sealed trait WeaponClassBludgeoning
+  extends WeaponClass with MeleeDamage with io.truthencode.ddo.support.Bludgeoning
 
-sealed trait WeaponClassPiercing extends WeaponClass with MeleeDamage with io.truthencode.ddo.support.Piercing
+sealed trait WeaponClassPiercing
+  extends WeaponClass with MeleeDamage with io.truthencode.ddo.support.Piercing
 
-sealed trait WeaponClassSlashing extends WeaponClass with MeleeDamage with io.truthencode.ddo.support.Slashing
+sealed trait WeaponClassSlashing
+  extends WeaponClass with MeleeDamage with io.truthencode.ddo.support.Slashing
 
 sealed trait WeaponClassRanged extends WeaponClass with RangeDamage with Deferred
 

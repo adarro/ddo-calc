@@ -17,23 +17,16 @@
  */
 package io.truthencode.ddo.model.enhancement.enhancements
 
-import io.truthencode.ddo.model.classes.HeroicCharacterClass
-import io.truthencode.ddo.model.classes.HeroicCharacterClass.Alchemist
 import io.truthencode.ddo.model.enhancement.enhancements.classbased.ApothecaryTierOne
-import io.truthencode.ddo.model.enhancement.{Apothecary, Tier1}
-import io.truthencode.ddo.support.points.SpendablePoints
-import io.truthencode.ddo.support.requisite._
-import io.truthencode.ddo.support.tree.{ClassTrees, TreeLike}
 
 trait EnergyOfTheScholar extends ApothecaryTierOne with ClassEnhancementImpl {
   // Will Save +1
 
   override lazy val description: Option[String] = Some("+[30/60/90] Maximum Spell Points")
-
-  override def apCostPerRank: Int = 1
-
   /**
    * Some enhancements can be taken multiple times (generally up to three)
    */
   override val ranks: Int = 3
+
+  override def apCostPerRank: Int = 1
 }

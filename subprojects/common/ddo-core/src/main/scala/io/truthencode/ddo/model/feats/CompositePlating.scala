@@ -18,16 +18,16 @@
 package io.truthencode.ddo.model.feats
 
 import io.truthencode.ddo.model.race.Race
-import io.truthencode.ddo.support.requisite._
+import io.truthencode.ddo.support.requisite.{FeatRequisiteImpl, GrantsToRace, RaceRequisiteImpl}
 
 /**
  * @todo
  *   change this to grant (need to create GrantsToRace trait)
  */
 trait CompositePlating
-  extends FeatRequisiteImpl with RaceRequisiteImpl with Passive with RequiresAttribute with GrantsToRace {
+  extends FeatRequisiteImpl with RaceRequisiteImpl with Passive with GrantsToRace {
   self: RacialFeat =>
-  private def wfTraits = List((Race.Warforged, 1), (Race.Bladeforged, 1))
-
   override def grantsToRace: Seq[(Race, Int)] = wfTraits
+
+  private def wfTraits = List((Race.Warforged, 1), (Race.Bladeforged, 1))
 }

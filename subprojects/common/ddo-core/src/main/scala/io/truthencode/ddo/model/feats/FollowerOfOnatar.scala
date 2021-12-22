@@ -24,7 +24,8 @@ import io.truthencode.ddo.support.requisite.FeatRequisiteImpl
  * Created by adarr on 4/7/2017.
  */
 trait FollowerOfOnatar
-  extends FeatRequisiteImpl with EberronReligionNonWarforged with FollowerBase with Onatar with OnatarFeatBase {
+  extends FeatRequisiteImpl with EberronReligionNonWarforged with FollowerBase with Onatar
+  with OnatarFeatBase {
   self: DeityFeat =>
 
 }

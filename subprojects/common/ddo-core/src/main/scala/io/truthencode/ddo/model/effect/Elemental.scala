@@ -22,8 +22,7 @@ package io.truthencode.ddo.model.effect
  *
  * @note
  *   this only indicates there is some type of elemental damage / resist use
- *   [[io.truthencode.ddo.model.effect.ElementalResistance]] which extends this to indicate resist for all elemental
- *   types.
+ *   [[io.truthencode.ddo.model.effect.ElementalResistance]] which extends this to indicate resist
+ *   for all elemental types.
  */
 trait ElementalOld
-

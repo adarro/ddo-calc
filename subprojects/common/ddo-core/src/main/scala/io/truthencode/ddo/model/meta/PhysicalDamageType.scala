@@ -19,17 +19,7 @@ package io.truthencode.ddo.model.meta
 
 import enumeratum.{Enum, EnumEntry}
 import io.truthencode.ddo.NoDefault
-import io.truthencode.ddo.model.effect.{
-  Bludgeoning,
-  Damage,
-  DamageType,
-  MagicalDamage,
-  PhysicalDamage,
-  Piercing,
-  Slashing,
-  TypedPhysicalDamage,
-  UntypedPhysicalDamage
-}
+import io.truthencode.ddo.model.effect._
 
 /**
  * Basic damage for (generally) physical damage
@@ -43,13 +33,16 @@ sealed trait PhysicalDamageType extends EnumEntry with Damage with NoDefault[Phy
  */
 object PhysicalDamageType extends Enum[PhysicalDamageType] {
 
+  val values = findValues
+
   /**
    * Unique damage such as casts spell or other non-basic effect.
    */
   case object Special extends PhysicalDamageType with UntypedPhysicalDamage
 
   /**
-   * Blunt force such as delivered by clubs maces and hammers and the crushing boulders of an ice storm
+   * Blunt force such as delivered by clubs maces and hammers and the crushing boulders of an ice
+   * storm
    */
   case object Bludgeon extends PhysicalDamageType with TypedPhysicalDamage with Bludgeoning
 
@@ -67,6 +60,4 @@ object PhysicalDamageType extends Enum[PhysicalDamageType] {
    * Damage done by Magical means such as a spell or a weapon with an enhancement of +1 or better
    */
   case object Magic extends PhysicalDamageType with MagicalDamage
-
-  val values = findValues
 }

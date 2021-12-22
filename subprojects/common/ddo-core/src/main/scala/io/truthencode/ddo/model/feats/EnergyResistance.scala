@@ -25,10 +25,10 @@ import io.truthencode.ddo.support.requisite.{FeatRequisiteImpl, FreeFeat}
  */
 trait EnergyResistance extends Prefix with FeatRequisiteImpl with FreeFeat with Passive {
   self: FeatRequisiteImpl with DisplayName with FriendlyDisplay =>
-  override def prefix: Option[String] = Some("Energy Resistance")
-
   /**
    * Delimits the prefix and text.
    */
   override protected val prefixSeparator: String = ": "
+
+  override def prefix: Option[String] = Some("Energy Resistance")
 }

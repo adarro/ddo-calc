@@ -26,8 +26,8 @@ trait StoneOfTheSavant extends BombardierTierTwo with ClassEnhancementImpl {
   override val ranks: Int = 1
 
   /**
-   * Some enhancements have multiple ranks. This is the cost for each rank. Older versions had increasing costs which
-   * has been streamlined to a linear progression.
+   * Some enhancements have multiple ranks. This is the cost for each rank. Older versions had
+   * increasing costs which has been streamlined to a linear progression.
    *
    * @return
    */

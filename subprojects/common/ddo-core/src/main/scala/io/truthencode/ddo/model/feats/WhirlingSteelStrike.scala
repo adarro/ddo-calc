@@ -26,9 +26,19 @@ import io.truthencode.ddo.model.effect.features.{FeaturesImpl, GrantAbilityFeatu
 import io.truthencode.ddo.support.requisite.{ClassRequisiteImpl, FeatRequisiteImpl, RequiresAllOfClass}
 
 trait WhirlingSteelStrike
-  extends FeatRequisiteImpl with ClassRequisiteImpl with Passive with RequiresAllOfClass with FighterBonusFeat
-  with MartialArtsFeat with FeaturesImpl with GrantAbilityFeature {
+  extends FeatRequisiteImpl with ClassRequisiteImpl with Passive with RequiresAllOfClass
+  with FighterBonusFeat with MartialArtsFeat with FeaturesImpl with GrantAbilityFeature {
   self: GeneralFeat =>
+  override lazy val grantedAbility: ActiveAbilities = ActiveAbilities.WhirlingSteelStrike
+  override val grantBonusType: BonusType = BonusType.Feat
+  override protected[this] val triggerOn: Seq[TriggerEvent] = Seq(TriggerEvent.OnCentered)
+  override protected[this] val triggerOff: Seq[TriggerEvent] = Seq(TriggerEvent.OnOffCentered)
+  override protected[this] val grantAbilityCategories: Seq[effect.EffectCategories.Value] = Seq(
+    effect.EffectCategories.Ability)
+  override val abilityId: String = "WhirlingSteelStrike"
+  override val description: String =
+    "You treat longswords as if they were monk weapons, remaining centered when you wield them."
+
   override def allOfFeats: Seq[Feat] = Seq(Feat.withName("Weapon Focus: Slashing"))
 
   override def anyOfFeats: Seq[Feat] = Seq(
@@ -38,12 +48,4 @@ trait WhirlingSteelStrike
 
   override def allOfClass: Seq[(HeroicCharacterClass, Int)] =
     List((HeroicCharacterClass.Monk, 1))
-
-  override val grantBonusType: BonusType = BonusType.Feat
-  override val grantedAbility: ActiveAbilities = ActiveAbilities.WhirlingSteelStrike
-    override protected[this] val triggerOn: TriggerEvent = TriggerEvent.OnCentered
-    override protected[this] val triggerOff: TriggerEvent = TriggerEvent.OnOffCentered
-    override protected[this] val categories: Seq[effect.EffectCategories.Value] = Seq(effect.EffectCategories.Ability)
-    override val abilityId: String = "WhirlingSteelStrike"
-    override val description: String = "You treat longswords as if they were monk weapons, remaining centered when you wield them."
 }

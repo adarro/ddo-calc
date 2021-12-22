@@ -17,20 +17,18 @@
  */
 package io.truthencode.ddo.model.spells
 
-import java.time.Duration
-
 import enumeratum.{Enum, EnumEntry}
 import io.truthencode.ddo.model.effect.{Effect, EffectList}
 import io.truthencode.ddo.model.misc.CoolDown
-import io.truthencode.ddo.model.spells.component.ComponentList
 import io.truthencode.ddo.model.spells.SpellElement._
+import io.truthencode.ddo.model.spells.component.ComponentList
 import io.truthencode.ddo.support.RomanNumeral
-import io.truthencode.ddo.support.naming.{DisplayName, FriendlyDisplay}
 import io.truthencode.ddo.support.StringUtils.Extensions
+import io.truthencode.ddo.support.naming.{DisplayName, FriendlyDisplay}
 
-import scala.collection.{immutable, Iterable}
+import java.time.Duration
+import scala.collection.{Iterable, immutable}
 import scala.reflect.ClassTag
-import io.truthencode.ddo.support.StringUtils._
 trait SpellTraits
 
 /**
@@ -121,7 +119,8 @@ object SpellElement {
 
 final case class UseCoolDown(coolDown: Option[Duration]) extends WithCoolDown
 
-final case class UseCasterClass(override val casterLevels: Set[CasterWithLevel]) extends WithCasterClass
+final case class UseCasterClass(override val casterLevels: Set[CasterWithLevel])
+  extends WithCasterClass
 
 final case class UseSpellTarget(override val target: List[SpellTarget]) extends WithSpellTarget
 
@@ -149,9 +148,10 @@ final case class UseSpellInfo(
 
 final case class UseSpellName(override val name: String) extends WithName
 
-final case class UseSpellResistance(override val sr: Option[Int]) extends WithSpellResistance with SpellResistance
+final case class UseSpellResistance(override val sr: Option[Int])
+  extends WithSpellResistance with SpellResistance
 
-protected final case class createSpell(
+final protected case class createSpell(
   override val name: String = "new spell",
   coolDown: Option[Duration] = None,
   override val sr: Option[Int],
@@ -209,7 +209,7 @@ object Spell extends Enum[Spell] {
     } yield s"$p$m$s"
     spells ++ List("Reconstruct", "Deconstruct")
   }
-  protected[spells] case class makeEmptySpell(override val name: String) extends EmptySpell
+
   def ls(
     fn: (String => Option[Spell]),
     names: String*
@@ -220,11 +220,13 @@ object Spell extends Enum[Spell] {
 
   }
 
+  protected[spells] case class makeEmptySpell(override val name: String) extends EmptySpell
+
 }
 
 trait SpellLikeAbility extends SpellLike
 
-protected[spells] final case class SpellDescriptor(
+final protected[spells] case class SpellDescriptor(
   elements: Iterable[SpellElement]
 ) extends Spell {
   override val name: String = {

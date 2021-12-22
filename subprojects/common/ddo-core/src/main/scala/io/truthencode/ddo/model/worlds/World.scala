@@ -24,7 +24,9 @@ import enumeratum.{Enum, EnumEntry}
 sealed trait World extends EnumEntry
 
 object World extends Enum[World] {
-  case object Eberron extends World
-  case object ForgottenRealms extends World
   override def values = findValues
+
+  case object Eberron extends World
+
+  case object ForgottenRealms extends World
 }

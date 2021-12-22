@@ -17,31 +17,35 @@
  */
 package io.truthencode.ddo.model.feats
 
-import java.time.Duration
-import io.truthencode.ddo.activation.OnToggleEvent
 import io.truthencode.ddo.enhancement.BonusType
 import io.truthencode.ddo.model.abilities.ActiveAbilities
 import io.truthencode.ddo.model.effect
 import io.truthencode.ddo.model.effect.TriggerEvent
 import io.truthencode.ddo.model.effect.features.{FeaturesImpl, GrantAbilityFeature}
-import io.truthencode.ddo.model.stats.GrantedAbility
 import io.truthencode.ddo.support.requisite.{FeatRequisiteImpl, FreeFeat}
 
+import java.time.Duration
+
 /**
- * [[https://ddowiki.com/page/Attack Attack]] This is the standard attack for all characters. It can be toggled on to
- * attack repeatedly until your target is defeated, or activated once by right-clicking the mouse.
+ * [[https://ddowiki.com/page/Attack Attack]] This is the standard attack for all characters. It can
+ * be toggled on to attack repeatedly until your target is defeated, or activated once by
+ * right-clicking the mouse.
  * @note
- *   Currently set to No Cooldown, aside from potential advanced metrics, this shouldn't be an issue.
+ *   Currently set to No Cooldown, aside from potential advanced metrics, this shouldn't be an
+ *   issue.
  */
 protected[feats] trait Attack
-  extends FeatRequisiteImpl with ActiveFeat with FreeFeat with Stance with FeaturesImpl with GrantAbilityFeature {
+  extends FeatRequisiteImpl with ActiveFeat with FreeFeat with Stance with FeaturesImpl
+  with GrantAbilityFeature {
   self: GeneralFeat =>
+  override lazy val grantedAbility: ActiveAbilities = ActiveAbilities.Attack
+  override protected[this] lazy val triggerOn: Seq[TriggerEvent] = Seq(TriggerEvent.OnToggle)
+  override protected[this] lazy val triggerOff: Seq[TriggerEvent] = Seq(TriggerEvent.OnToggle)
+  override protected[this] lazy val grantAbilityCategories: Seq[effect.EffectCategories.Value] =
+    Seq(effect.EffectCategories.Stance)
   override val grantBonusType: BonusType = BonusType.Feat
-  override val grantedAbility: ActiveAbilities = ActiveAbilities.Attack
-  override protected[this] lazy val triggerOn: TriggerEvent = TriggerEvent.OnToggle
   override val abilityId: String = "Attack"
   override val description: String = "Toggles auto - continuous attack on / off."
-  override protected[this] lazy val triggerOff: TriggerEvent = TriggerEvent.OnToggle
-  override protected[this] lazy val categories: Seq[effect.EffectCategories.Value] = Seq(effect.EffectCategories.Stance)
+
   override def coolDown: Option[Duration] = None
 }

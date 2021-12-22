@@ -17,14 +17,18 @@
  */
 package io.truthencode.ddo.model.effect.features
 
+import enumeratum.{Enum, EnumEntry}
 import io.truthencode.ddo.model.effect.Feature
+import io.truthencode.ddo.support.naming.DisplayProperties
 
 trait Features {
   def features: Seq[Feature[_]]
 
-  def namedFeatures: Map[String, Seq[Feature[_]]] = features.groupBy(_.name).collect { case (Some(x), list) =>
-    (x, list)
-  }
+  def namedFeatures: Map[String, Seq[Feature[_]]] = features.groupBy(_.name)
+  def namedOptionFeatures: Map[String, Seq[Feature[_]]] =
+    features.groupBy(_.nameOption).collect { case (Some(x), list) =>
+      (x, list)
+    }
 
 }
 
@@ -35,7 +39,8 @@ object Features {
     }
 
     /**
-     * Keys are generally expected to be prefixed (i.e. Skill:Listen or Feat:Alertness) to avoid ambiguity.
+     * Keys are generally expected to be prefixed (i.e. Skill:Listen or Feat:Alertness) to avoid
+     * ambiguity.
      * @param name
      *   (prefixed) id of the feature
      * @return
@@ -44,6 +49,18 @@ object Features {
     def hasNamedFeature(name: String): Boolean = {
       source.namedFeatures.contains(name)
     }
+  }
+
+  type Entry = EnumEntry with Features with DisplayProperties
+  type E = Enum[_ <: Entry]
+  implicit class FeatureExtractor(source: E) {
+    def featureMap: Map[Entry, Feature[_]] = featureSet.toMap
+
+    def featureSet: IndexedSeq[(Entry, Feature[_])] = for {
+      container <- source.values
+      features <- container.namedFeatures
+      feature <- features._2
+    } yield (container, feature)
   }
 }
 

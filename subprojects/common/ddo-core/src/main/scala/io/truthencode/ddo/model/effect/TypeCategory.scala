@@ -27,8 +27,8 @@ trait MaterialBased extends TypeCategory
 trait Health extends TypeCategory
 
 /**
- * Shape or delivery method (Yes, we need a better name for this) such as Dealing Cold via Piercing Icicles or
- * bludgeoning rocks of ice.
+ * Shape or delivery method (Yes, we need a better name for this) such as Dealing Cold via Piercing
+ * Icicles or bludgeoning rocks of ice.
  */
 trait Form extends TypeCategory
 
@@ -38,13 +38,14 @@ trait Form extends TypeCategory
 trait AlignmentBased extends TypeCategory
 
 /**
- * Typeless is a special flag used to denote all-encompassing or impregnable effects such as DR/ or untyped damage.
+ * Typeless is a special flag used to denote all-encompassing or impregnable effects such as DR/ or
+ * untyped damage.
  */
 trait Typeless extends TypeCategory
 
 /**
- * Currently a placeholder for errata, undefined and or non-categorized types such as magic or light. These may be
- * subject to moving to a new or different category in the future.
+ * Currently a placeholder for errata, undefined and or non-categorized types such as magic or
+ * light. These may be subject to moving to a new or different category in the future.
  */
 trait Other extends TypeCategory
 
@@ -53,7 +54,7 @@ trait Other extends TypeCategory
  *
  * @note
  *   this only indicates there is some type of elemental damage / resist use
- *   [[io.truthencode.ddo.model.effect.ElementalResistance]] which extends this to indicate resist for all elemental
- *   types.
+ *   [[io.truthencode.ddo.model.effect.ElementalResistance]] which extends this to indicate resist
+ *   for all elemental types.
  */
 trait Elemental extends TypeCategory

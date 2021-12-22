@@ -19,8 +19,6 @@ package io.truthencode.ddo.activation
 
 import io.truthencode.ddo.model.effect.TriggerEvent
 
-import scala.collection.immutable.HashSet
-
 /**
  * Created by adarr on 2/6/2017.
  */
@@ -36,11 +34,11 @@ trait Trigger {
 }
 
 trait TriggerImpl extends Trigger {
-    /**
-     * Event Triggers that fire on some condition
-     *
-     * @return
-     * Set of triggers that can activate it, if any.
-     */
-    override def activatableTriggers: Seq[TriggerEvent] = Nil
+  /**
+   * Event Triggers that fire on some condition
+   *
+   * @return
+   *   Set of triggers that can activate it, if any.
+   */
+  override def activatableTriggers: Seq[TriggerEvent] = Nil
 }

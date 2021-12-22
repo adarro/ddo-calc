@@ -21,8 +21,8 @@ import io.truthencode.ddo.model.item.weapon.SimpleWeapon
 import io.truthencode.ddo.support.requisite.{ClassRequisiteImpl, FeatRequisiteImpl, FreeFeat}
 
 /**
- * Icon Feat Simple Weapon Proficiency.png Simple Weapon Proficiency Passive This feat negates the penalty from using
- * any of the simple weapons while untrained.
+ * Icon Feat Simple Weapon Proficiency.png Simple Weapon Proficiency Passive This feat negates the
+ * penalty from using any of the simple weapons while untrained.
  *
  * None
  */

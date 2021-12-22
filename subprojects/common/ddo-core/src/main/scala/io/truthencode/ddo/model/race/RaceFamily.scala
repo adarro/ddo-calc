@@ -22,7 +22,8 @@ import enumeratum.{Enum, EnumEntry}
 import scala.collection.immutable.{HashSet, IndexedSeq}
 
 /**
- * Groups Individual race types into main families. Used primarily for Race restricted equipment i.e.
+ * Groups Individual race types into main families. Used primarily for Race restricted equipment
+ * i.e.
  */
 sealed trait RaceFamily extends EnumEntry {
   def includedRaces: Set[Race]
@@ -79,6 +80,8 @@ protected trait Orcish extends RaceFamily {
 
 object RaceFamily extends Enum[RaceFamily] {
 
+  override def values: IndexedSeq[RaceFamily] = findValues
+
   /**
    * Includes Standard Elves along with Drow, Sun and Half-elves
    */
@@ -123,6 +126,4 @@ object RaceFamily extends Enum[RaceFamily] {
    * Includes the Iconic Shadarkai
    */
   case object Shadarkai extends RaceFamilyImpl with ShadarkaiKind
-
-  override def values: IndexedSeq[RaceFamily] = findValues
 }

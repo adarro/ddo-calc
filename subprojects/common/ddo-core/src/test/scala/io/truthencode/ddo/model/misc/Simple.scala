@@ -28,7 +28,8 @@ sealed trait values extends EnumEntry
 
 object Simple extends Enum[Simple] {
 
-  object Basic extends values with Simple
+  override def values: scala.collection.immutable.IndexedSeq[io.truthencode.ddo.model.misc.Simple] =
+    findValues
 
-  override def values: scala.collection.immutable.IndexedSeq[io.truthencode.ddo.model.misc.Simple] = findValues
+  object Basic extends values with Simple
 }

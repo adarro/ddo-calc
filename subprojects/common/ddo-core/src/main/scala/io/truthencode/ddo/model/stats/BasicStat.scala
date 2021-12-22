@@ -19,23 +19,38 @@ package io.truthencode.ddo.model.stats
 
 import enumeratum.{Enum, EnumEntry}
 import io.truthencode.ddo.Abbreviation
-import io.truthencode.ddo.model.item.weapon.WeaponCategory
+import io.truthencode.ddo.model.abilities.{ActiveAbilities, UsingAbilitySearchPrefix}
 import io.truthencode.ddo.model.schools.School
 import io.truthencode.ddo.model.spells.SpellPower
 import io.truthencode.ddo.support.SearchPrefix
 import io.truthencode.ddo.support.StringUtils.Extensions
-import io.truthencode.ddo.support.naming.{DisplayName, FriendlyDisplay}
+import io.truthencode.ddo.support.naming.{DisplayName, FriendlyDisplay, UsingSearchPrefix}
 
 import scala.collection.immutable
 
-sealed trait BasicStat extends EnumEntry with DisplayName with FriendlyDisplay {
+sealed trait BasicStat
+  extends EnumEntry with DisplayName with FriendlyDisplay with UsingSearchPrefix {
   self: Category =>
-
-  override protected def nameSource: String =
+  override protected lazy val nameSource: String =
     entryName.splitByCase.toPascalCase
+  override val withPrefix: String = s"$searchPrefix$nameSource"
+
+  override def searchPrefix: String = s"""$searchPrefixSource${searchDelimiter.getOrElse("")}"""
+
+  /**
+   * Override this function for a more specific match such as "ToHitChance"
+   *
+   * @return
+   *   A default prefix "BasicStat"
+   */
+  override def searchPrefixSource: String = "BasicStat"
 }
 
-trait DodgeChance extends BasicStat with MissChance
+trait DodgeChance extends BasicStat with MissChance {
+  override lazy val searchDelimiter: Option[String] = Some(":")
+
+  override def searchPrefixSource: String = "MissChance"
+}
 
 trait ArmorClass extends BasicStat with MissChance
 
@@ -77,11 +92,14 @@ trait SpellCriticalMultiplier extends BasicStat with SpellCasting
 
 trait SpellDifficultyCheck extends BasicStat with SpellCasting
 /**
- * Affects Character speed when moving. (Moving while sneaking or wearing over-level equipment may reduce this speed)
+ * Affects Character speed when moving. (Moving while sneaking or wearing over-level equipment may
+ * reduce this speed)
  */
 trait MovementSpeedModifier extends BasicStat with Movement
 
-/** amount health is allowed to go negative in an 'incapacitated' manner before death is triggered. */
+/**
+ * amount health is allowed to go negative in an 'incapacitated' manner before death is triggered.
+ */
 trait UnconsciousRange extends BasicStat with General
 // Saving Throws
 
@@ -186,25 +204,27 @@ trait AccelerateCostReduction extends BasicStat with SpellCasting
 trait TurnUndeadCategory extends BasicStat with TurnUndead
 
 /**
- * Turn Check This determines the maximum number of Hit Dice a monster can have and still be affected from your turn
- * undead attempt. If this check does not produce a number equal or higher to the monster near you that has the lowest
- * hit dice, then you will not be able to turn at all and a message pops up saying "You lack conviction to turn the
- * target"
+ * Turn Check This determines the maximum number of Hit Dice a monster can have and still be
+ * affected from your turn undead attempt. If this check does not produce a number equal or higher
+ * to the monster near you that has the lowest hit dice, then you will not be able to turn at all
+ * and a message pops up saying "You lack conviction to turn the target"
  */
 trait MaxHitDice extends TurnUndeadCategory
 
 /**
- * Turning damage: This determines the number of total Hit Dice you will be able to turn. This means that the sum of the
- * affected monsters' hit dice must be less or equal to that number. To determine which monsters you turn, the game
- * starts from the monster with the lowest HD (hit dice) and works its way up. For example: If you can turn 30 total hit
- * dice and you have monsters with (5, 7, 10, 15) HD around you, you will turn the ones with (5, 7, 10) for a total of
- * 22 hit dice and not the (15, 10, 5) that would utilize all 30 of your hit dice.
+ * Turning damage: This determines the number of total Hit Dice you will be able to turn. This means
+ * that the sum of the affected monsters' hit dice must be less or equal to that number. To
+ * determine which monsters you turn, the game starts from the monster with the lowest HD (hit dice)
+ * and works its way up. For example: If you can turn 30 total hit dice and you have monsters with
+ * (5, 7, 10, 15) HD around you, you will turn the ones with (5, 7, 10) for a total of 22 hit dice
+ * and not the (15, 10, 5) that would utilize all 30 of your hit dice.
  */
 trait TotalHitDice extends TurnUndeadCategory
 
 /**
- * The Number of Turns per rest your character can do. This is initially calculated by a base of 3. Other effects such
- * as Paladin / cleric level and some sovereign items / filigrees can increase this number.
+ * The Number of Turns per rest your character can do. This is initially calculated by a base of 3.
+ * Other effects such as Paladin / cleric level and some sovereign items / filigrees can increase
+ * this number.
  */
 trait NumberOfTurns extends TurnUndeadCategory
 // General Combat
@@ -241,8 +261,8 @@ trait QuarterstaffAttackSpeedBonus extends BasicStat with MeleeCombatCategory
 
 /**
  * @note
- *   I could not find the display for Shield Bash chance on the character sheet. however, secondary shield bash is
- *   available in the '+' menu under melee combat
+ *   I could not find the display for Shield Bash chance on the character sheet. however, secondary
+ *   shield bash is available in the '+' menu under melee combat
  */
 trait ShieldBashChance extends BasicStat with MeleeCombatCategory
 
@@ -278,24 +298,50 @@ trait PointBlankShotRange extends BasicStat with RangedCombatCategory
 
 trait AutoRecovery extends BasicStat with Recovery
 
-trait GrantedAbility extends BasicStat with Ability
+trait GrantedAbility extends BasicStat with Ability with UsingAbilitySearchPrefix {
+  val ability: ActiveAbilities
+}
 // scalastyle:off number.of.methods
 object BasicStat extends Enum[BasicStat] with SearchPrefix {
-  override def values: immutable.IndexedSeq[BasicStat] = findValues
-  case object GrantedAbility extends GrantedAbility
-  /**
-   * The dodge mechanic works as a miss chance - a simple percentile chance to completely avoid physical attacks.
-   */
-  case object DodgeChance extends DodgeChance
+
+  lazy val allGrantedAbilities: Seq[GrantedAbilities] = ActiveAbilities.values.map(GrantedAbilities)
 
   /**
-   * Armor Class, also called AC, represents your chance to be missed by melee attacks - the higher your AC, the less
-   * you get hit. This chance is also influenced by the attackers attack bonus.
+   * Used when qualifying a search with a prefix. Examples include finding "HalfElf" from qualified
+   * "Race:HalfElf"
+   *
+   * @return
+   *   A default or applied prefix
+   */
+  override def searchPrefixSource: String = "Stat"
+
+  override def values: immutable.IndexedSeq[BasicStat] = findValues ++ allGrantedAbilities
+
+  case class GrantedAbilities(override val ability: ActiveAbilities) extends GrantedAbility {
+    override lazy val entryName: String = s"${ability.entryName}"
+  }
+
+  case class SpellCriticalChanceSchool(spellPower: SpellPower) extends SpellCriticalChance
+
+  case class SpellFocus(school: School) extends SpellDifficultyCheck
+
+  /**
+   * The dodge mechanic works as a miss chance - a simple percentile chance to completely avoid
+   * physical attacks.
+   */
+  case object DodgeChance extends DodgeChance {
+    override def entryName: String = "Dodge"
+  }
+
+  /**
+   * Armor Class, also called AC, represents your chance to be missed by melee attacks - the higher
+   * your AC, the less you get hit. This chance is also influenced by the attackers attack bonus.
    */
   case object ArmorClass extends ArmorClass
 
   /**
-   * MDB - caps your dexterity bonus when wearing certain armor. [[https://ddowiki.com/page/Maximum_dexterity_bonus]]
+   * MDB - caps your dexterity bonus when wearing certain armor.
+   * [[https://ddowiki.com/page/Maximum_dexterity_bonus]]
    */
   case object MaxDexterityBonus extends MaxDexterityBonus
 
@@ -314,16 +360,13 @@ object BasicStat extends Enum[BasicStat] with SearchPrefix {
   case object RangedPower extends RangedPower
 
   case object WeaponProficiency extends WeaponProficiency
+
   /**
    * Your Hit points
    */
   case object HitPoints extends HitPoints
 
   case object SpellPoints extends SpellPoints
-
-  case class SpellCriticalChanceSchool(spellPower: SpellPower) extends SpellCriticalChance
-
-  case class SpellFocus(school: School) extends SpellDifficultyCheck
 
   case object BaseAttackBonus extends BaseAttackBonus
 
@@ -458,8 +501,8 @@ object BasicStat extends Enum[BasicStat] with SearchPrefix {
   case object OffhandHitChance extends OffhandHitChance
 
   /**
-   * As of [[https://ddowiki.com/page/Update_49_Release_Notes#What.27s_Changing: Update 49]], this is no longer a
-   * configurable stat and is by default 50% of your Mainhand doublestrike *
+   * As of [[https://ddowiki.com/page/Update_49_Release_Notes#What.27s_Changing: Update 49]], this
+   * is no longer a configurable stat and is by default 50% of your Mainhand doublestrike *
    */
   case object OffhandDoublestrike extends OffhandDoublestrike
 
@@ -489,13 +532,5 @@ object BasicStat extends Enum[BasicStat] with SearchPrefix {
 
   case object TurnUndeadNumberOfTurns extends NumberOfTurns
 
-  /**
-   * Used when qualifying a search with a prefix. Examples include finding "HalfElf" from qualified "Race:HalfElf"
-   *
-   * @return
-   *   A default or applied prefix
-   */
-  override def searchPrefixSource: String = "Stat"
-
-  object AutoRecovery extends AutoRecovery
+  case object AutoRecovery extends AutoRecovery
 }

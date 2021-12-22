@@ -22,28 +22,32 @@ import io.truthencode.ddo.model.attribute.Attribute
 import io.truthencode.ddo.model.effect
 import io.truthencode.ddo.model.effect.TriggerEvent
 import io.truthencode.ddo.model.effect.features.{DodgeChanceFeature, FeaturesImpl}
-import io.truthencode.ddo.support.requisite.{FeatRequisiteImpl, RequiresAttribute}
+import io.truthencode.ddo.support.requisite.{
+  AttributeRequisiteImpl,
+  FeatRequisiteImpl,
+  RequiresAllOfAttribute
+}
 
 /**
  * Usage: Passive Prerequisite: Dexterity 13+ Description This feat grants a 3% Dodge bonus. *
  *
- * @todo
- *   A Fighter may select this feat as one of his fighter bonus feats.
- * @todo
- *   A Monk may select this feat as one of his martial arts feats.
+ * A Fighter may select this feat as one of his fighter bonus feats. A Monk may select this feat as
+ * one of his martial arts feats. An Alchemist may select this feat as one of his fighter bonus
+ * feats.
  */
 trait Dodge
-  extends FeatRequisiteImpl with Passive with RequiresAttribute with FighterBonusFeat with AlchemistBonusFeat
-  with MartialArtsFeat with FeaturesImpl with DodgeChanceFeature {
+  extends FeatRequisiteImpl with Passive with AttributeRequisiteImpl with RequiresAllOfAttribute
+  with FighterBonusFeat with AlchemistBonusFeat with MartialArtsFeat with FeaturesImpl
+  with DodgeChanceFeature {
   self: GeneralFeat =>
 
-  override def requiresAttribute: Seq[(Attribute, Int)] =
-    List((Attribute.Dexterity, 13))
-
-  lazy override protected[this] val triggerOn: TriggerEvent = TriggerEvent.Passive
-  lazy override protected[this] val triggerOff: TriggerEvent = TriggerEvent.Never
-  lazy override protected[this] val categories: Seq[effect.EffectCategories.Value] =
+  override protected[this] lazy val triggerOn: Seq[TriggerEvent] = Seq(TriggerEvent.Passive)
+  override protected[this] lazy val triggerOff: Seq[TriggerEvent] = Seq(TriggerEvent.Never)
+  override protected[this] lazy val dodgeCategories: Seq[effect.EffectCategories.Value] =
     Seq(effect.EffectCategories.Ability, effect.EffectCategories.MissChance)
   override val dodgeBonusType: BonusType = BonusType.Feat
   override val dodgeBonusAmount: Int = 3
+
+  override def allOfAttributes: Seq[(Attribute, Int)] =
+    List((Attribute.Dexterity, 13))
 }

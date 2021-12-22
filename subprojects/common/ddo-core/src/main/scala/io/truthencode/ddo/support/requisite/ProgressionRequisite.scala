@@ -46,12 +46,14 @@ sealed trait ProgressionInTreeRequisite extends ProgressionRequisite {
  * @note
  *   we should be able to create just one of these instead of a Race / Class / Feat etc specific one
  */
-trait ProgressionRequisiteImpl extends MustContainImpl[Requirement] with ProgressionInTreeRequisite {
+trait ProgressionRequisiteImpl
+  extends MustContainImpl[Requirement] with ProgressionInTreeRequisite {
   self: Requisite with RequisiteType =>
   override def pointsInTree: Seq[(TreeLike, Int)] = Nil
 }
 
-trait RequiresTreeProgression extends ProgressionInTreeRequisite with RequiresAllOf[Requirement] with Requisite {
+trait RequiresTreeProgression
+  extends ProgressionInTreeRequisite with RequiresAllOf[Requirement] with Requisite {
 
   abstract override def allOf: Seq[Requirement] = super.allOf ++ {
     pointsInTree.collect(progressionToReq)

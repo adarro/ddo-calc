@@ -29,15 +29,16 @@ import io.truthencode.ddo.support.requisite.{ClassRequisiteImpl, FeatRequisiteIm
  * Icon Feat Diehard.png Diehard Passive You automatically stabilize when incapacitated.
  */
 protected[feats] trait Diehard
-  extends FeatRequisiteImpl with ClassRequisiteImpl with Passive with FreeFeat with GrantsToClass with MartialArtsFeat
-  with FeaturesImpl with UnconsciousRecoveryFeature {
+  extends FeatRequisiteImpl with ClassRequisiteImpl with Passive with FreeFeat with GrantsToClass
+  with MartialArtsFeat with FeaturesImpl with UnconsciousRecoveryFeature {
   self: GeneralFeat =>
-  override def grantToClass: Seq[(HeroicCharacterClass, Int)] = List((Ranger, 3))
-
-  lazy override protected[this] val triggerOn: TriggerEvent = TriggerEvent.OnUnconscious
-  lazy override protected[this] val triggerOff: TriggerEvent = TriggerEvent.Never
-  lazy override protected[this] val categories: Seq[effect.EffectCategories.Value] =
+  override protected[this] lazy val triggerOn: Seq[TriggerEvent] = Seq(TriggerEvent.OnUnconscious)
+  override protected[this] lazy val triggerOff: Seq[TriggerEvent] = Seq(TriggerEvent.Never)
+  override protected[this] lazy val unconsciousRecoveryCategories
+    : Seq[effect.EffectCategories.Value] =
     Seq(effect.EffectCategories.Ability, effect.EffectCategories.Recovery)
   override val autoRecoveryBonus: BonusType = BonusType.Feat
   override val isAutoRecovery: Boolean = true
+
+  override def grantToClass: Seq[(HeroicCharacterClass, Int)] = List((Ranger, 3))
 }

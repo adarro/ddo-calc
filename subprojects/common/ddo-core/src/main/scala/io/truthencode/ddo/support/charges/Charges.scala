@@ -18,8 +18,9 @@
 package io.truthencode.ddo.support.charges
 
 /**
- * Represents a finite amount of uses that can is usually resist on Rest or after a certain period of time. Examples of
- * charges are the Paladin ability Lay On Hands, Smite Evil, Turn Undead as well as DragonMarks and wands.
+ * Represents a finite amount of uses that can is usually resist on Rest or after a certain period
+ * of time. Examples of charges are the Paladin ability Lay On Hands, Smite Evil, Turn Undead as
+ * well as DragonMarks and wands.
  */
 trait Charges {
   def max: Int

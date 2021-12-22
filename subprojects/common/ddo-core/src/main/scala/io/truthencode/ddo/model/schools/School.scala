@@ -19,8 +19,8 @@ package io.truthencode.ddo.model.schools
 
 import enumeratum.{Enum, EnumEntry}
 import io.truthencode.ddo.support.SearchPrefix
-import io.truthencode.ddo.support.naming.{DisplayName, FriendlyDisplay}
 import io.truthencode.ddo.support.StringUtils.Extensions
+import io.truthencode.ddo.support.naming.{DisplayName, FriendlyDisplay}
 
 import scala.collection.immutable.IndexedSeq
 
@@ -39,6 +39,17 @@ sealed trait School extends EnumEntry with DisplayName with FriendlyDisplay {
 
 object School extends Enum[School] with SearchPrefix {
 
+  /**
+   * Used when qualifying a search with a prefix. Examples include finding "HalfElf" from qualified
+   * "Race:HalfElf"
+   *
+   * @return
+   *   A default or applied prefix
+   */
+  override def searchPrefixSource: String = "School"
+
+  override def values: IndexedSeq[School] = findValues
+
   case object Abjuration extends School
 
   case object Conjuration extends School
@@ -54,14 +65,4 @@ object School extends Enum[School] with SearchPrefix {
   case object Necromancy extends School
 
   case object Transmutation extends School
-
-  /**
-   * Used when qualifying a search with a prefix. Examples include finding "HalfElf" from qualified "Race:HalfElf"
-   *
-   * @return
-   *   A default or applied prefix
-   */
-  override def searchPrefixSource: String = "School"
-
-  override def values: IndexedSeq[School] = findValues
 }

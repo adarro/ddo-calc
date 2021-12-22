@@ -35,9 +35,9 @@ trait SimpleDuration extends DurationExp {
 }
 
 /**
- * Represents a level based modifier that may increase / decrease duration. Used to represent 3 seconds per level
- * represent multiplier for each time a certain feat is acquired such as - 1 second per religious feat stepped
- * progressive such as reduced at levels 1,4,8 16 and 20
+ * Represents a level based modifier that may increase / decrease duration. Used to represent 3
+ * seconds per level represent multiplier for each time a certain feat is acquired such as - 1
+ * second per religious feat stepped progressive such as reduced at levels 1,4,8 16 and 20
  */
 trait PerLevelDuration extends DurationExp {
 

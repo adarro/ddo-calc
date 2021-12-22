@@ -18,22 +18,12 @@
 package io.truthencode.ddo.model.enhancements
 
 import com.typesafe.scalalogging.LazyLogging
-import io.truthencode.ddo.model.enhancement.{ClassBasedEnhancements, Tier}
 import io.truthencode.ddo.model.enhancement.enhancements.ClassEnhancement
-import io.truthencode.ddo.support.requisite.{
-  ActionPointRequisite,
-  PointInTreeRequisite,
-  PointsAvailableRequisite,
-  RequiresActionPoints
-}
-import io.truthencode.ddo.support.tree.ClassTrees
+import io.truthencode.ddo.model.enhancement.{ClassBasedEnhancements, Tier}
+import io.truthencode.ddo.support.requisite.{ActionPointRequisite, PointInTreeRequisite, PointsAvailableRequisite, RequiresActionPoints}
 
 trait ClassEnhancementDisplayHelper extends EnhancementDisplayHelper with LazyLogging {
-  override val displayEnum: E = ClassEnhancement
   type ENH = ClassEnhancement with Tier with ActionPointRequisite with PointInTreeRequisite
-
-  val values: Seq[ENH] = displayEnum.values.collect { case x: ENH => x }
-
   lazy val mappedValues: Map[String, ClassEnhancementInfo] = {
 
     val ee = ClassEnhancement.values.collect {
@@ -51,5 +41,7 @@ trait ClassEnhancementDisplayHelper extends EnhancementDisplayHelper with LazyLo
       c.name -> c
     }.toMap
   }
+  override val displayEnum: E = ClassEnhancement
+  val values: Seq[ENH] = displayEnum.values.collect { case x: ENH => x }
 
 }

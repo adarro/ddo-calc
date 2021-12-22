@@ -32,41 +32,31 @@ import java.util
 import scala.collection.immutable
 import scala.jdk.CollectionConverters.SeqHasAsJava
 
-
 @FullOGNL
 @RunWith(classOf[ConcordionRunner])
 class DeityFeatSpec extends FeatDisplayHelper with LazyLogging {
 
+  override val displayEnum: E = Feat
   private val filterEberron: PartialFunction[Entry, Entry with ReligionFeatBase] = {
     case x: EberronReligionBase with ReligionFeatBase => x
   }
-
   private val filterForgottenRealms: PartialFunction[Entry, Entry with ReligionFeatBase] = {
     case x: ForgottenRealmsReligionBase with ReligionFeatBase => x
   }
-
   private val filterFollower: PartialFunction[Entry, Entry] = { case x: FollowerOfLevel =>
     x
   }
-
   private val filterChild: PartialFunction[Entry, Entry] = { case x: ChildOfLevel =>
     x
   }
-
   private val filterBeloved: PartialFunction[Entry, Entry] = { case x: BelovedOfLevel =>
     x
   }
-
   private val filterUnique: PartialFunction[Entry, Entry] = { case x: UniqueLevel =>
     x
   }
-
   private val filterDR: PartialFunction[Entry, Entry with DisplayName with Prefix] = {
     case x: DamageReductionLevel with DisplayName with Prefix => x
-  }
-
-  private val filterFavoredWeapons: PartialFunction[Entry, Entry with FavoredWeapon] = { case x: FavoredWeapon =>
-    x
   }
 
   implicit class ListEntryOpts(source: Option[Entry]) {
@@ -77,27 +67,18 @@ class DeityFeatSpec extends FeatDisplayHelper with LazyLogging {
       }
     }
   }
+  private val filterFavoredWeapons: PartialFunction[Entry, Entry with FavoredWeapon] = {
+    case x: FavoredWeapon =>
+      x
+  }
+  var instanceWorld: Option[World] = None
 
   override def verify(): util.List[String] = {
     displayEnum.values.map(_.displayText).asJava
   }
 
-  var instanceWorld: Option[World] = None
-
   def setUpWorld(TEXT: String): Unit = {
     instanceWorld = World.withNameOption(TEXT.toPascalCase)
-  }
-
-  def findReligion(id: String): Option[Religion] = Religion.withNameOption(id)
-
-  case class ReligionWeapon(r: FavoredWeapon, re: Religion)
-
-  def myFilter(f: List[Entry with ReligionFeatBase], rOpt: Option[Religion]): List[Entry] = {
-    for {
-      x <- f
-      o <- x.allowedReligions
-      if rOpt.contains(o)
-    } yield x
   }
 
   def loadFromKey(data: String): ResultObject = {
@@ -151,6 +132,18 @@ class DeityFeatSpec extends FeatDisplayHelper with LazyLogging {
 
   }
 
+  def findReligion(id: String): Option[Religion] = Religion.withNameOption(id)
+
+  def myFilter(f: List[Entry with ReligionFeatBase], rOpt: Option[Religion]): List[Entry] = {
+    for {
+      x <- f
+      o <- x.allowedReligions
+      if rOpt.contains(o)
+    } yield x
+  }
+
+  case class ReligionWeapon(r: FavoredWeapon, re: Religion)
+
   case class ResultObject(
     religion: String,
     favoredWeapon: String,
@@ -159,6 +152,4 @@ class DeityFeatSpec extends FeatDisplayHelper with LazyLogging {
     unique: String,
     beloved: String,
     damageReduction: String)
-
-  override val displayEnum: E = Feat
 }

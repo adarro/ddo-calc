@@ -18,23 +18,20 @@
 package io.truthencode.ddo.model.feats
 
 import io.truthencode.ddo.model.classes.HeroicCharacterClass
-import io.truthencode.ddo.support.requisite.{
-  ClassRequisiteImpl,
-  FeatRequisiteImpl,
-  RequiresAllOfClass,
-  RequiresAllOfFeat
-}
+import io.truthencode.ddo.support.requisite.{ClassRequisiteImpl, FeatRequisiteImpl, RequiresAllOfClass, RequiresAllOfFeat}
 
 /**
- * Icon Feat Superior Weapon Focus.png Superior Weapon Focus Passive Provides an additional +1 bonus to attack rolls
- * with the chosen weapon type and additional +2 stacking Melee Power or Ranged Power.
+ * Icon Feat Superior Weapon Focus.png Superior Weapon Focus Passive Provides an additional +1 bonus
+ * to attack rolls with the chosen weapon type and additional +2 stacking Melee Power or Ranged
+ * Power.
  *
  * @todo
- *   add Level 16 Fighter req Level 16: Fighter, Greater Weapon Focus Greater Weapon Specialization in the same Specific
- *   Weapon Type
+ *   add Level 16 Fighter req Level 16: Fighter, Greater Weapon Focus Greater Weapon Specialization
+ *   in the same Specific Weapon Type
  */
 protected[feats] trait SuperiorWeaponFocusBase
-  extends FeatRequisiteImpl with ClassRequisiteImpl with Passive with RequiresAllOfClass with FighterBonusFeat {
+  extends FeatRequisiteImpl with ClassRequisiteImpl with Passive with RequiresAllOfClass
+  with FighterBonusFeat {
   self: GeneralFeat with RequiresAllOfFeat =>
 
   override def anyOfClass: Seq[(HeroicCharacterClass, Int)] =

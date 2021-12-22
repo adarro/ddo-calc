@@ -23,7 +23,8 @@ import io.truthencode.ddo.support.requisite.{FeatRequisiteImpl, RaceRequisite, R
 /**
  * Created by adarr on 2/20/2017.
  */
-trait HalflingBravery extends FeatRequisiteImpl with RaceRequisite with Passive with RequiresAllOfRace {
+trait HalflingBravery
+  extends FeatRequisiteImpl with RaceRequisite with Passive with RequiresAllOfRace {
   self: RacialFeat =>
   override def allOfRace: Seq[(Race, Int)] = List((Race.Halfling, 1))
 

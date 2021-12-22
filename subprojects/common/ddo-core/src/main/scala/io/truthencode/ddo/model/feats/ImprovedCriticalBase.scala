@@ -22,15 +22,18 @@ import io.truthencode.ddo.support.requisite.{FeatRequisiteImpl, RequiresBaB}
 /**
  * Weapon Focus Passive Feats
  *
- * Icon Feat Weapon Focus.png Weapon Focus Passive Provides a +1 bonus to attack rolls with the chosen weapon type
- * Bludgeoning (includes animal form), Piercing, Ranged, Slashing or Thrown and +2 stacking Melee Power or Ranged
- * Power.) It can be taken multiple times, once for each of the different types.
+ * Icon Feat Weapon Focus.png Weapon Focus Passive Provides a +1 bonus to attack rolls with the
+ * chosen weapon type Bludgeoning (includes animal form), Piercing, Ranged, Slashing or Thrown and
+ * +2 stacking Melee Power or Ranged Power.) It can be taken multiple times, once for each of the
+ * different types.
  *
  * Base Attack Bonus +1
- * @note Not Implemented?: Artificers are restricted to Bludgeon / ranged / slash.
+ * @note
+ *   Not Implemented?: Artificers are restricted to Bludgeon / ranged / slash.
  */
 trait ImprovedCriticalBase
-  extends FeatRequisiteImpl with Passive with RequiresBaB with FighterBonusFeat with ArtificerBonusFeat {
+  extends FeatRequisiteImpl with Passive with RequiresBaB with FighterBonusFeat
+  with ArtificerBonusFeat {
 
   self: GeneralFeat =>
 

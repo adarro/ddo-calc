@@ -20,7 +20,7 @@ package io.truthencode.ddo.enchantment
 import com.wix.accord._
 import com.wix.accord.dsl._
 import io.truthencode.ddo.enchantment.Modifier._
-import io.truthencode.ddo.model.effect.{Passive, _}
+import io.truthencode.ddo.model.effect._
 
 trait GuardFlag {
   val guard: Guards
@@ -45,19 +45,6 @@ object Guard extends ((Guards, Option[GuardModifier]) => Guard) {
   def apply(parameters: Parameters): Guard =
     Guard(parameters._1, parameters._2)
 
-  private def create(guard: Guards, affixes: Option[GuardModifier]): Guard = {
-    new Guard(guard, affixes) {
-      private def readResolve(): Object =
-        Guard(guard, affixes)
-
-      def copy(guard: Guards, affixes: Option[GuardModifier]): Guard =
-        Guard(guard, affixes)
-
-      val tuple: Guard.Parameters =
-        (guard, affixes)
-    }
-  }
-
   def modifier(affixes: Option[GuardModifier]): Int = {
     affixes match {
       case Some(afx) =>
@@ -73,12 +60,27 @@ object Guard extends ((Guards, Option[GuardModifier]) => Guard) {
     }
   }
 
+  private def create(guard: Guards, affixes: Option[GuardModifier]): Guard = {
+    new Guard(guard, affixes) {
+      private def readResolve(): Object =
+        Guard(guard, affixes)
+
+      def copy(guard: Guards, affixes: Option[GuardModifier]): Guard =
+        Guard(guard, affixes)
+
+      val tuple: Guard.Parameters =
+        (guard, affixes)
+    }
+  }
+
 }
 
-abstract case class Guard private[Guard] (override val guard: Guards, affixes: Option[GuardModifier])
+abstract case class Guard private[Guard] (
+  override val guard: Guards,
+  affixes: Option[GuardModifier])
   extends Enchantment with GuardFlag with Passive {
-  def copy(guard: Guards, affixes: Option[GuardModifier]): Guard
-
   val effects: List[Effect] = Nil
+
+  def copy(guard: Guards, affixes: Option[GuardModifier]): Guard
 
 }

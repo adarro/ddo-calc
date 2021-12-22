@@ -23,7 +23,8 @@ import io.truthencode.ddo.support.requisite.{FeatRequisiteImpl, RaceRequisite, R
 /**
  * Created by adarr on 2/20/2017.
  */
-trait SpellSaveBonus extends FeatRequisiteImpl with RaceRequisite with Passive with RequiresAnyOfRace {
+trait SpellSaveBonus
+  extends FeatRequisiteImpl with RaceRequisite with Passive with RequiresAnyOfRace {
   override def anyOfRace: Seq[(Race, Int)] =
     List((Race.DrowElf, 1), (Race.Dwarf, 1))
 

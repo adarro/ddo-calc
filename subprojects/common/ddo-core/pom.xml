@@ -26,7 +26,8 @@
 	is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY 
 	KIND, either express or implied. See the License for the specific language 
 	governing permissions and limitations under the License. -->
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+<project xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://maven.apache.org/POM/4.0.0"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
     <parent>
         <groupId>ddo-calc</groupId>
@@ -41,17 +42,17 @@
 
     </properties>
     <dependencies>
-    <!-- Scala -->
+        <!-- Scala -->
         <dependency>
             <groupId>org.scala-lang</groupId>
             <artifactId>scala-library</artifactId>
         </dependency>
-    <!-- YASU - enumerations -->
+        <!-- YASU - enumerations -->
         <dependency>
             <groupId>com.beachape</groupId>
             <artifactId>enumeratum_${scala.base}</artifactId>
         </dependency>
-    <!-- Configuration Management -->
+        <!-- Configuration Management -->
         <dependency>
             <groupId>com.typesafe</groupId>
             <artifactId>config</artifactId>
@@ -60,12 +61,12 @@
             <groupId>com.github.kxbmap</groupId>
             <artifactId>configs_${scala.base}</artifactId>
         </dependency>
-    <!-- Validation -->
+        <!-- Validation -->
         <dependency>
             <groupId>com.wix</groupId>
             <artifactId>accord-core_${scala.tools.version}</artifactId>
         </dependency>
-    <!-- Logging -->
+        <!-- Logging -->
         <dependency>
             <groupId>com.typesafe.scala-logging</groupId>
             <artifactId>scala-logging_${scala.tools.version}</artifactId>
@@ -80,9 +81,9 @@
             <version>15.0</version>
             <optional>true</optional>
         </dependency>
-    <!-- ****************************************************** TEST DEPENDENCIES 
-			****************************************************** -->
-    <!-- Unit Testing -->
+        <!-- ****************************************************** TEST DEPENDENCIES
+                ****************************************************** -->
+        <!-- Unit Testing -->
         <dependency>
             <groupId>org.scalatest</groupId>
             <artifactId>scalatest_${scala.tools.version}</artifactId>
@@ -98,7 +99,7 @@
             <artifactId>junit</artifactId>
             <scope>test</scope>
         </dependency>
-    <!-- Concordion Acceptance Testing Framework -->
+        <!-- Concordion Acceptance Testing Framework -->
         <dependency>
             <groupId>org.concordion</groupId>
             <artifactId>concordion</artifactId>
@@ -109,27 +110,27 @@
             <artifactId>concordion-embed-extension</artifactId>
             <scope>test</scope>
         </dependency>
-    <!-- https://mvnrepository.com/artifact/org.concordion/concordion-collapse-output-extension -->
+        <!-- https://mvnrepository.com/artifact/org.concordion/concordion-collapse-output-extension -->
         <dependency>
             <groupId>org.concordion</groupId>
             <artifactId>concordion-collapse-output-extension</artifactId>
             <scope>test</scope>
         </dependency>
-    <!-- Validation Integration -->
+        <!-- Validation Integration -->
         <dependency>
             <groupId>com.wix</groupId>
             <artifactId>accord-scalatest_${scala.tools.version}</artifactId>
             <scope>test</scope>
         </dependency>
-    <!--Template engine used for generating base specs (Concordion) Plan to 
-			deprecate -->
+        <!--Template engine used for generating base specs (Concordion) Plan to
+                deprecate -->
         <dependency>
             <groupId>de.neuland-bfi</groupId>
             <artifactId>jade4j</artifactId>
             <scope>test</scope>
         </dependency>
-    <!-- Web Scraping for more functional tests -->
-    <!-- Web Scraping Utility -->
+        <!-- Web Scraping for more functional tests -->
+        <!-- Web Scraping Utility -->
         <dependency>
             <groupId>net.ruippeixotog</groupId>
             <artifactId>scala-scraper_${scala.tools.version}</artifactId>
@@ -208,7 +209,7 @@
                     </execution>
                 </executions>
             </plugin>
-      <!-- Disable maven compiler -->
+            <!-- Disable maven compiler -->
             <plugin>
                 <artifactId>maven-compiler-plugin</artifactId>
                 <executions>
@@ -224,7 +225,7 @@
             </plugin>
 
             <plugin>
-        <!-- see http://davidb.github.com/scala-maven-plugin -->
+                <!-- see http://davidb.github.com/scala-maven-plugin -->
                 <groupId>net.alchim31.maven</groupId>
                 <artifactId>scala-maven-plugin</artifactId>
             </plugin>
@@ -236,10 +237,10 @@
                         <concordion.output.dir>target/concordion</concordion.output.dir>
                     </systemProperties>
                     <properties>
-            <!--<property> -->
-            <!--<name>listener</name> -->
-            <!--<value>org.evosuite.runtime.InitializingListener</value> -->
-            <!--</property> -->
+                        <!--<property> -->
+                        <!--<name>listener</name> -->
+                        <!--<value>org.evosuite.runtime.InitializingListener</value> -->
+                        <!--</property> -->
                     </properties>
 
                     <excludes>
@@ -247,14 +248,14 @@
                         <exclude>**/*Builder.scala</exclude>
                         <exclude>**/*Helper.scala</exclude>
                         <exclude>**/*IT.scala</exclude>
-            <!-- <exclude>**/*Spec.scala</exclude> -->
+                        <!-- <exclude>**/*Spec.scala</exclude> -->
                     </excludes>
                     <includes>
                         <include>*/model/**</include>
                         <include>*/support/**</include>
-            <!--<include>**/*Spec.java</include> -->
-            <!--<include>**/*Spec.scala</include> -->
-            <!--<include>**/*.scala</include> -->
+                        <!--<include>**/*Spec.java</include> -->
+                        <!--<include>**/*Spec.scala</include> -->
+                        <!--<include>**/*.scala</include> -->
                     </includes>
                     <skipTests>${skip.tests}</skipTests>
                 </configuration>
@@ -275,13 +276,13 @@
                                 <exclude>**/*Test.*</exclude>
                                 <exclude>**/*Builder.*</exclude>
                                 <exclude>**/*Helper.*</exclude>
-                <!-- <exclude>**/*Spec.scala</exclude> -->
+                                <!-- <exclude>**/*Spec.scala</exclude> -->
                             </excludes>
                         </configuration>
                     </execution>
                 </executions>
             </plugin>
-      <!-- enable scalatest -->
+            <!-- enable scalatest -->
             <plugin>
                 <groupId>org.scalatest</groupId>
                 <artifactId>scalatest-maven-plugin</artifactId>

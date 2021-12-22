@@ -17,20 +17,21 @@
  */
 package io.truthencode.ddo.model.feats
 
-import java.time.Duration
-
 import io.truthencode.ddo.activation.AtWillEvent
 import io.truthencode.ddo.model.classes.HeroicCharacterClass
 import io.truthencode.ddo.model.classes.HeroicCharacterClass.Monk
 import io.truthencode.ddo.support.requisite.{FeatRequisiteImpl, GrantsToClass, RequiresAllOfClass}
 
+import java.time.Duration
+
 /**
- * At the cost of 10 Ki, a monk can use this ability to make horizontal leaps, closing to targets, traversing chasms, or
- * zipping past enemies with less chance of being detected. There is a cool-down of three seconds on this feat and can
- * only be used on yourself.
+ * At the cost of 10 Ki, a monk can use this ability to make horizontal leaps, closing to targets,
+ * traversing chasms, or zipping past enemies with less chance of being detected. There is a
+ * cool-down of three seconds on this feat and can only be used on yourself.
  */
 trait AbundantStep
-  extends FeatRequisiteImpl with ActiveFeat with AtWillEvent with GrantsToClass with RequiresAllOfClass {
+  extends FeatRequisiteImpl with ActiveFeat with AtWillEvent with GrantsToClass
+  with RequiresAllOfClass {
   override def grantToClass: Seq[(HeroicCharacterClass, Int)] =
     List((Monk, 12))
 

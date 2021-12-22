@@ -18,24 +18,43 @@
 package io.truthencode.ddo.support.requisite
 
 import io.truthencode.ddo.model.attribute.Attribute
-import io.truthencode.ddo.support.requisite.RequirementImplicits.attrToReq
+import io.truthencode.ddo.support.requisite.RequirementImplicits.AttributeImplicits
 
 /**
  * Created by adarr on 2/3/2017.
  */
 sealed trait AttributeRequisite {
   self: Requisite =>
-  def requiresAttribute: Seq[(Attribute, Int)] = IndexedSeq.apply()
+  def allOfAttributes: Seq[(Attribute, Int)]
+  def anyOfAttributes: Seq[(Attribute, Int)]
+  def noneOfAttributes: Seq[(Attribute, Int)]
 }
 
-trait FreeAttribute extends AttributeRequisite with RequiresNone with RequiredExpression with Requisite
+trait AttributeRequisiteImpl extends MustContainImpl[Requirement] with AttributeRequisite {
+  self: Requisite with RequisiteType =>
+  def anyOfAttributes: Seq[(Attribute, Int)] = Nil
 
-trait RequiresAttribute extends AttributeRequisite with RequiresOneOf[Requirement] with Requisite {
+  def allOfAttributes: Seq[(Attribute, Int)] = Nil
+
+  def noneOfAttributes: Seq[(Attribute, Int)] = Nil
+}
+
+trait FreeAttribute
+  extends AttributeRequisite with RequiresNone with RequiredExpression with Requisite
+
+trait RequiresAnyOfAttribute
+  extends AttributeRequisite with RequiresOneOf[Requirement] with Requisite {
 
   abstract override def oneOf: Seq[Requirement] = super.oneOf ++ {
-    requiresAttribute.collect(attrToReq)
+    allOfAttributes.map(_.toReq)
   }
 
-  //  abstract override def prerequisites: Seq[RequisiteExpression] = super.prerequisites :+ this
+}
 
+trait RequiresAllOfAttribute
+  extends AttributeRequisite with RequiresAllOf[Requirement] with Requisite {
+
+  abstract override def allOf: Seq[Requirement] = super.allOf ++ {
+    allOfAttributes.map(_.toReq)
+  }
 }

@@ -19,17 +19,23 @@ package io.truthencode.ddo.model.feats
 
 import io.truthencode.ddo.model.attribute.Attribute
 import io.truthencode.ddo.model.race.Race
-import io.truthencode.ddo.support.requisite.{FeatRequisiteImpl, RequiresAllOfRace, RequiresAttribute}
+import io.truthencode.ddo.support.requisite.{
+  AttributeRequisiteImpl,
+  FeatRequisiteImpl,
+  RequiresAllOfAttribute,
+  RequiresAllOfRace
+}
 
 /**
- * DilettanteRanger.bmp Half-Elf Dilettante: Ranger Passive Proficiency with all martial ranged weapons, and can add up
- * to 2 points of your Strength bonus to bow damage. Able to use wands and scrolls as if you were a level one ranger.
- * Half-Elf 13 Dexterity
+ * DilettanteRanger.bmp Half-Elf Dilettante: Ranger Passive Proficiency with all martial ranged
+ * weapons, and can add up to 2 points of your Strength bonus to bow damage. Able to use wands and
+ * scrolls as if you were a level one ranger. Half-Elf 13 Dexterity
  */
 protected[feats] trait HalfElfDilettanteRanger
-  extends FeatRequisiteImpl with HalfElfDilettantePreFix with Passive with RequiresAttribute with RequiresAllOfRace {
+  extends FeatRequisiteImpl with HalfElfDilettantePreFix with Passive with AttributeRequisiteImpl
+  with RequiresAllOfAttribute with RequiresAllOfRace {
   self: RacialFeat =>
   override def allOfRace: Seq[(Race, Int)] = List((Race.HalfElf, 1))
 
-  override def requiresAttribute: Seq[(Attribute, Int)] = List((Attribute.Dexterity, 13))
+  override def allOfAttributes: Seq[(Attribute, Int)] = List((Attribute.Dexterity, 13))
 }

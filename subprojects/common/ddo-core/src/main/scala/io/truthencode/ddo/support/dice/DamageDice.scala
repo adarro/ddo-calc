@@ -54,8 +54,8 @@ sealed trait DamageDice {
   val extra: ExtraInfo
 
   /**
-   * List of damage types applied to an attack as Slash, Pierce, Magic, Good, Acid etc. This is used for purposes of
-   * damage reduction and may further be amplified by spell / melee / ranged power.
+   * List of damage types applied to an attack as Slash, Pierce, Magic, Good, Acid etc. This is used
+   * for purposes of damage reduction and may further be amplified by spell / melee / ranged power.
    */
   val damageType: List[PhysicalDamageType]
 }
@@ -68,31 +68,7 @@ sealed trait DamageDice {
 object DamageInfo {
   val ddoDiceRegEx: Regex =
     """(\d+\.?\d*)*?((?:\[(\d+)d(\d+)\])|(?:(\d+)d(\d+)))\s*(?:([+\-])\s*(\d+))*""".r
-  def extractFlags(expr: String): List[PhysicalDamageType] = {
-    val template = """(\b(?i)REPLACE\b)+"""
-    val tt = PhysicalDamageType.values
-      .map(_.entryName)
-      .map(template.replace("REPLACE", _))
-      .mkString("|")
-    tt.r
-      .findAllIn(expr)
-      .toList
-      .flatMap(PhysicalDamageType.withNameInsensitiveOption)
 
-  }
-
-  def apply(
-    w: Double,
-    d: Dice,
-    e: ExtraInfo,
-    dt: List[PhysicalDamageType]
-  ): DamageInfo =
-    new DamageInfo(
-      w: Double,
-      d: Dice,
-      e: ExtraInfo,
-      dt: List[PhysicalDamageType]
-    ) {} // abstract class implementation intentionally empty
   def apply(diceExp: String): DamageInfo = {
 
     val nameMap = Map(
@@ -106,6 +82,7 @@ object DamageInfo {
     )
     ddoDiceRegEx.findFirstMatchIn(diceExp) match {
       case Some(result) =>
+        // Longhand with named values because Regex are easy to misread
         val wMod = Option(result.group(nameMap("wMod"))).getOrElse("")
         val bNumber = Option(result.group(nameMap("bracketNumber"))).getOrElse("")
         val bSides = Option(result.group(nameMap("bracketSides"))).getOrElse("")
@@ -137,6 +114,39 @@ object DamageInfo {
         )
     }
   }
+
+  /**
+   * Extracts the extra values / flags like 'Magic Bludgeon' etc.
+   * @param expr
+   *   inbound Text to parse
+   * @return
+   *   valid types filtered by values in PhysicalDamageType
+   */
+  def extractFlags(expr: String): List[PhysicalDamageType] = {
+    val template = """(\b(?i)REPLACE\b)+"""
+    val tt = PhysicalDamageType.values
+      .map(_.entryName)
+      .map(template.replace("REPLACE", _))
+      .mkString("|")
+    tt.r
+      .findAllIn(expr)
+      .toList
+      .flatMap(PhysicalDamageType.withNameInsensitiveOption)
+
+  }
+
+  def apply(
+    w: Double,
+    d: Dice,
+    e: ExtraInfo,
+    dt: List[PhysicalDamageType]
+  ): DamageInfo =
+    new DamageInfo(
+      w: Double,
+      d: Dice,
+      e: ExtraInfo,
+      dt: List[PhysicalDamageType]
+    ) {} // abstract class implementation intentionally empty
 }
 
 abstract case class DamageInfo private[DamageInfo] (
@@ -145,9 +155,6 @@ abstract case class DamageInfo private[DamageInfo] (
   override val extra: ExtraInfo,
   override val damageType: List[PhysicalDamageType]
 ) extends DamageDice {
-  // to ensure validation and possible singleton-ness, must override readResolve to use explicit companion object apply method
-  private def readResolve(): Object =
-    DamageInfo.apply(weaponModifier, dice, extra, damageType)
   def copy(
     w: Double,
     d: Dice,
@@ -155,12 +162,6 @@ abstract case class DamageInfo private[DamageInfo] (
     dt: List[PhysicalDamageType]
   ): DamageInfo =
     DamageInfo.apply(w, d, e, dt)
-
-  private def doubleToIntFunction = weaponModifier match {
-    case 0 | 1 => ""
-    case x: Double if x.isWhole => x.toInt.toString
-    case _ => weaponModifier.toString
-  }
 
   // if (weaponModifier.isWhole()) { weaponModifier.toInt.toString} else {weaponModifier.toString}
   override def toString: String = {
@@ -177,4 +178,14 @@ abstract case class DamageInfo private[DamageInfo] (
     s"$wm$extra$dt"
 
   }
+
+  private def doubleToIntFunction = weaponModifier match {
+    case 0 | 1 => ""
+    case x: Double if x.isWhole => x.toInt.toString
+    case _ => weaponModifier.toString
+  }
+
+  // to ensure validation and possible singleton-ness, must override readResolve to use explicit companion object apply method
+  private def readResolve(): Object =
+    DamageInfo.apply(weaponModifier, dice, extra, damageType)
 }

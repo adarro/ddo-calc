@@ -24,8 +24,8 @@ import io.truthencode.ddo.support.requisite.{FeatRequisiteImpl, RequiresAllOfFea
  * Created by adarr on 4/7/2017.
  */
 trait ChildOfTheLordOfBlades
-  extends FeatRequisiteImpl with EberronReligionNonWarforged with ChildLevelBase with RequiresAllOfFeat
-  with LordOfBlades with TheLordOfBladesFeatBase { self: DeityFeat =>
+  extends FeatRequisiteImpl with EberronReligionNonWarforged with ChildLevelBase
+  with RequiresAllOfFeat with LordOfBlades with TheLordOfBladesFeatBase { self: DeityFeat =>
 
   override def allOfFeats: Seq[Feat] =
     List(DeityFeat.FollowerOfTheLordOfBlades)

@@ -18,17 +18,23 @@
 package io.truthencode.ddo.model.feats
 
 import io.truthencode.ddo.model.attribute.Attribute
-import io.truthencode.ddo.support.requisite.{RequiresAllOfFeat, RequiresAttribute, RequiresCharacterLevel}
+import io.truthencode.ddo.support.requisite.{
+  AttributeRequisiteImpl,
+  RequiresAllOfAttribute,
+  RequiresAllOfFeat,
+  RequiresCharacterLevel
+}
 
 /**
  * Epic Feat that can be taken at level 21 or 24.
  */
 protected[feats] trait EpicToughness
-  extends Passive with RequiresCharacterLevel with RequiresAllOfFeat with RequiresAttribute {
+  extends Passive with AttributeRequisiteImpl with RequiresCharacterLevel
+  with RequiresAllOfAttribute with RequiresAllOfFeat {
   self: EpicFeat =>
   override val requireCharacterLevel: Int = 27
 
   override def allOfFeats: Seq[Feat] = List(GeneralFeat.Toughness)
 
-  override def requiresAttribute: Seq[(Attribute, Int)] = List((Attribute.Constitution, 21))
+  override def allOfAttributes: Seq[(Attribute, Int)] = List((Attribute.Constitution, 21))
 }

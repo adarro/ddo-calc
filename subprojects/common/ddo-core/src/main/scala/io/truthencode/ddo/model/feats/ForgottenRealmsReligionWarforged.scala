@@ -25,6 +25,7 @@ import io.truthencode.ddo.support.requisite.{RaceRequisiteImpl, RequiresAllOfRac
  * Created by adarr on 4/6/2017.
  */
 trait ForgottenRealmsReligionWarforged
-  extends RaceRequisiteImpl with RequiresAllOfRace with ForgottenRealmsReligionBase { self: DeityFeat =>
+  extends RaceRequisiteImpl with RequiresAllOfRace with ForgottenRealmsReligionBase {
+  self: DeityFeat =>
   override def allOfRace: Seq[(Race, Int)] = List((Warforged, 1))
 }

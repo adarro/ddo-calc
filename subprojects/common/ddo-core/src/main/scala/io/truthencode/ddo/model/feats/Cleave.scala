@@ -17,37 +17,35 @@
  */
 package io.truthencode.ddo.model.feats
 
-import java.time.Duration
 import io.truthencode.ddo.activation.AtWillEvent
 import io.truthencode.ddo.enhancement.BonusType
 import io.truthencode.ddo.model.abilities.ActiveAbilities
-import io.truthencode.ddo.model.effect
-import io.truthencode.ddo.model.effect.TriggerEvent
 import io.truthencode.ddo.model.effect.features.{FeaturesImpl, GrantAbilityFeature, SpecialAttackFeature}
 import io.truthencode.ddo.model.misc.CoolDownPool.Cleave
 import io.truthencode.ddo.model.misc.SharedCoolDown
 import io.truthencode.ddo.support.requisite.{FeatRequisiteImpl, RequiresAllOfFeat}
 
+import java.time.Duration
+
 /**
- * [[https://ddowiki.com/page/Cleave Cleave]] Special Attack - Activate this ability to attack one or more enemies in an
- * arc in front of you. This attack deals +1[W] damage. Cleave has a better chance to hit more enemies at once than a
- * basic attack.
+ * [[https://ddowiki.com/page/Cleave Cleave]] Special Attack - Activate this ability to attack one
+ * or more enemies in an arc in front of you. This attack deals +1[W] damage. Cleave has a better
+ * chance to hit more enemies at once than a basic attack.
  */
 protected[feats] trait Cleave
-  extends FeatRequisiteImpl with ActiveFeat with AtWillEvent with RequiresAllOfFeat with FighterBonusFeat
-  with FeaturesImpl with GrantAbilityFeature with SpecialAttackFeature with SharedCoolDown {
+  extends FeatRequisiteImpl with ActiveFeat with AtWillEvent with RequiresAllOfFeat
+  with FighterBonusFeat with FeaturesImpl with GrantAbilityFeature with SpecialAttackFeature
+  with SharedCoolDown {
   self: GeneralFeat =>
-  override val allOfFeats = List(GeneralFeat.PowerAttack)
   override lazy val anyOfFeats: Seq[GeneralFeat] = IndexedSeq.apply()
   override lazy val noneOfFeats: Seq[GeneralFeat] = IndexedSeq.apply()
+  override lazy val grantedAbility: ActiveAbilities = ActiveAbilities.Cleave
+  override val allOfFeats = List(GeneralFeat.PowerAttack)
   override val coolDownPoolId: String = Cleave.coolDownPoolId
-
   override val abilityId: String = "Cleave"
   override val description: String =
     "Special Attack - Activate this ability to attack one or more enemies in an arc in front of you."
+  override val grantBonusType: BonusType = BonusType.Feat
 
   override def coolDown: Option[Duration] = Some(Duration.ofSeconds(5))
-
-  override val grantBonusType: BonusType = BonusType.Feat
-  override val grantedAbility: ActiveAbilities = ActiveAbilities.Cleave
 }

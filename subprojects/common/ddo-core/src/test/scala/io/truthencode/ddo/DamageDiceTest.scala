@@ -30,7 +30,8 @@ import scala.collection.immutable
 import scala.util.Random
 import scala.util.Random.shuffle
 
-class DamageDiceTest extends AnyFunSpec with PropertyChecks with Matchers with MockitoSugar with LazyLogging {
+class DamageDiceTest
+  extends AnyFunSpec with PropertyChecks with Matchers with MockitoSugar with LazyLogging {
 
   final val maxFlags = 4
   val diceSet =
@@ -96,7 +97,7 @@ class DamageDiceTest extends AnyFunSpec with PropertyChecks with Matchers with M
     they("should convert to string and back") {
 
       forAll(validDiceExp) { (s: String) =>
-        logger.debug("evaluating $s")
+        logger.debug(s"evaluating $s")
         val res = DamageInfo(s)
         res.toString shouldEqual s
       }

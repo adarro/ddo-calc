@@ -18,13 +18,19 @@
 package io.truthencode.ddo.model.feats
 
 import io.truthencode.ddo.model.attribute.Attribute
-import io.truthencode.ddo.support.requisite.{RequiresAllOfFeat, RequiresAttribute}
+import io.truthencode.ddo.support.requisite.{
+  AttributeRequisiteImpl,
+  RequiresAllOfAttribute,
+  RequiresAllOfFeat
+}
 
 /**
  * Created by adarr on 4/3/2017.
  */
-protected[feats] trait CombatArchery extends RequiresAllOfFeat with RequiresAttribute with Passive { self: EpicFeat =>
-  override def requiresAttribute: Seq[(Attribute, Int)] =
+protected[feats] trait CombatArchery
+  extends RequiresAllOfFeat with AttributeRequisiteImpl with RequiresAllOfAttribute with Passive {
+  self: EpicFeat =>
+  override def allOfAttributes: Seq[(Attribute, Int)] =
     List((Attribute.Dexterity, 21))
 
   override def allOfFeats: Seq[Feat] = List(GeneralFeat.PointBlankShot)

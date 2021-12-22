@@ -19,9 +19,11 @@ package io.truthencode.ddo.support
 
 trait JoinAbleBase[+X, C <: Iterable[X]] {
   val sampleSize = 15
+
+  def remainder: Int = sampleSize - portion
+
 //  implicit def asSeq(x: C) = x.toSeq
   def portion: Int = sampleSize / 2 + (sampleSize / 3)
-  def remainder: Int = sampleSize - portion
 //  val source: C
 //  val list: C
 //  val listA: C

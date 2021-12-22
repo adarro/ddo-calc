@@ -25,7 +25,8 @@ import io.truthencode.ddo.support.requisite.RequiresAnyOfClass
 /**
  * Base properties common to all follower Deity Feats
  */
-trait FollowerBase extends Passive with FollowerOfLevel with RequiresAnyOfClass with ReligionFeatBase {
+trait FollowerBase
+  extends Passive with FollowerOfLevel with RequiresAnyOfClass with ReligionFeatBase {
   self: FavoredWeapon =>
   override def anyOfClass: Seq[(HeroicCharacterClass, Int)] =
     List(Cleric, Paladin, FavoredSoul).map((_, 1))

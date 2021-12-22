@@ -17,7 +17,7 @@
  */
 package io.truthencode.ddo.model.feats.epic
 
-import io.truthencode.ddo.model.feats.{EpicFeat, EpicFeatCategory, EpicFeatFeatDisplayHelper, EpicMetaMagic}
+import io.truthencode.ddo.model.feats.{EpicFeat, EpicFeatFeatDisplayHelper, EpicMetaMagic}
 import org.concordion.api.FullOGNL
 import org.concordion.integration.junit4.ConcordionRunner
 import org.junit.runner.RunWith

@@ -27,11 +27,13 @@ import io.truthencode.ddo.support.requisite.{FeatRequisiteImpl, FreeFeat}
  * This feat increases the character maximum hit points by 30.
  */
 protected[feats] trait HeroicDurability
-  extends FeatRequisiteImpl with Passive with FreeFeat with FeaturesImpl with HitPointAmountFeature {
+  extends FeatRequisiteImpl with Passive with FreeFeat with FeaturesImpl
+  with HitPointAmountFeature {
   self: GeneralFeat =>
+  override protected[this] lazy val triggerOn: Seq[TriggerEvent] = Seq(TriggerEvent.Passive)
+  override protected[this] lazy val triggerOff: Seq[TriggerEvent] = Seq(TriggerEvent.Never)
+  override protected[this] lazy val hitPointCategories: Seq[effect.EffectCategories.Value] = Seq(
+    effect.EffectCategories.Health)
   override protected val hitPointBonusType: BonusType = BonusType.Feat
   override protected val hitPointBonusAmount: Int = 30
-  lazy override protected[this] val triggerOn: TriggerEvent = TriggerEvent.Passive
-  lazy override protected[this] val triggerOff: TriggerEvent = TriggerEvent.Never
-  lazy override protected[this] val categories: Seq[effect.EffectCategories.Value] = Seq(effect.EffectCategories.Health)
 }

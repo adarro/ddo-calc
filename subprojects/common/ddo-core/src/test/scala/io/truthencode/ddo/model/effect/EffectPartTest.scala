@@ -20,20 +20,66 @@ package io.truthencode.ddo.model.effect
 import com.typesafe.scalalogging.LazyLogging
 import io.truthencode.ddo.model.effect.Feature.printFeature
 import io.truthencode.ddo.model.feats.GeneralFeat
+import io.truthencode.ddo.model.stats.{BasicStat, MissChance}
 import org.scalatest.funspec.AnyFunSpec
 import org.scalatest.matchers.should.Matchers
 
+import scala.language.postfixOps
+
 class EffectPartTest extends AnyFunSpec with Matchers with LazyLogging {
   describe("effectPart") {
-    it("is") {
-       EffectPart.values.foreach{ ep =>
-           logger.info(s"${ep.entryName}   ${ep.searchPattern()}")
-       }
+    ignore("is") {
+      EffectPart.values.foreach { ep =>
+        logger.info(s"$ep.name ${ep.entryName}   ${ep.searchPattern()}")
+      }
     }
-    they("could be") {
-      val thingWithFeature = GeneralFeat.Alertness
-      logger.info(printFeature(thingWithFeature.features.head))
+
+    they("have baked-in search patterns") {
+      EffectPart.anyAbilities.foreach { ep =>
+        val sp = ep.searchPattern()
+        val en = ep.entryName
+        logger.info(s"spat => $sp ${ep.searchPattern(ep.entryName)} en $en")
+      }
+    }
+
+    they("may override naming") {
+      val entry = EffectPart.MissChanceEffect(BasicStat.DodgeChance)
+      val partToModify: BasicStat with MissChance =
+        BasicStat.DodgeChance
+      val entry2 = EffectPart.MissChanceEffect(partToModify)
+      entry shouldEqual entry2
+      entry.entryName shouldEqual "MissChance:Dodge"
 
     }
+
+    they("should identify and recognize MissChance effects") {
+
+      val eut = GeneralFeat.Dodge
+      List(eut).foreach { thingWithFeature =>
+        thingWithFeature.features.foreach { f =>
+          logger.info(printFeature(f))
+        }
+      }
+    }
+
+    they("should identify and recognize Granted Ability effects") {
+
+      val eut = GeneralFeat.Attack
+      List(eut).foreach { thingWithFeature =>
+        thingWithFeature.features.foreach { f =>
+          logger.info(printFeature(f))
+        }
+      }
+    }
+
+    they("should identify and recognize skill effects") {
+      val alertness = GeneralFeat.Alertness
+      List(alertness).foreach { thingWithFeature =>
+        thingWithFeature.features.foreach { f =>
+          logger.info(printFeature(f))
+        }
+      }
+    }
   }
+
 }

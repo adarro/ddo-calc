@@ -32,7 +32,9 @@ trait DefaultValue[T] {
   def isDefault[D <: T](other: DefaultValue[D]): Boolean = {
     this.default match {
       case Some(x) =>
-        other.hasDefault && other.default.contains(x) //  == other // this.defaultValue.equals(other.defaultValue)
+        other.hasDefault && other.default.contains(
+          x
+        ) //  == other // this.defaultValue.equals(other.defaultValue)
       case _ => false
     }
   }

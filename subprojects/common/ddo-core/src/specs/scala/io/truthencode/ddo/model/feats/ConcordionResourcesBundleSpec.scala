@@ -24,6 +24,6 @@ import org.junit.runner.RunWith
 /**
  * Created by adarr on 2/19/2017.
  */
-@ConcordionResources(Array("/images/*.png"))
+@ConcordionResources(Array("/images/*.png", "resources/*.png"))
 @RunWith(classOf[ConcordionRunner])
 trait ConcordionResourcesBundleSpec

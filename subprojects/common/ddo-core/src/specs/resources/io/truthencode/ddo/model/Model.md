@@ -1,9 +1,10 @@
 # Model
+
 <!-- @suppress UnexpandedAcronym SymbolWithSpace ParenthesizedSentence -->
 This package contains Representative objects to mirror of DDO.
 
-
 ## [Basic stuff](- "Categories")
+
 A corresponding package to each major concept:
 
 * [x] [Skill](skill/SkillSpec.html "c:run") - Sneak, Attack etc.

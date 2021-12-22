@@ -25,15 +25,28 @@ import io.truthencode.ddo.model.effect
 import io.truthencode.ddo.model.effect.TriggerEvent
 import io.truthencode.ddo.model.effect.features.{DeflectArrowsFeature, FeaturesImpl}
 import io.truthencode.ddo.model.misc.CoolDown
-import io.truthencode.ddo.support.requisite.{FeatRequisiteImpl, RequiresAllOfClass, RequiresAttribute}
+import io.truthencode.ddo.support.requisite.{
+  AttributeRequisiteImpl,
+  FeatRequisiteImpl,
+  RequiresAllOfAttribute,
+  RequiresAllOfClass
+}
 
 import java.time.Duration
 
 trait DeflectArrows
-  extends FeatRequisiteImpl with RequiresAllOfClass with Passive with RequiresAttribute with MartialArtsFeat
-  with FeaturesImpl with DeflectArrowsFeature with CoolDown {
+  extends FeatRequisiteImpl with RequiresAllOfClass with Passive with AttributeRequisiteImpl
+  with RequiresAllOfAttribute with MartialArtsFeat with FeaturesImpl with DeflectArrowsFeature
+  with CoolDown {
   self: GeneralFeat =>
-  override def requiresAttribute: Seq[(Attribute, Int)] = List((Attribute.Dexterity, 13))
+  override protected[this] lazy val triggerOn: Seq[TriggerEvent] = Seq(TriggerEvent.OnTimer)
+  override protected[this] lazy val triggerOff: Seq[TriggerEvent] = Seq(TriggerEvent.OnCoolDown)
+  override protected[this] lazy val deflectCategories: Seq[effect.EffectCategories.Value] =
+    Seq(effect.EffectCategories.MissChance, effect.EffectCategories.Ability)
+  override protected val deflectArrowsBonusType: BonusType = BonusType.Feat
+  override protected val secondsPerArrow: Int = 6
+
+  override def allOfAttributes: Seq[(Attribute, Int)] = List((Attribute.Dexterity, 13))
 
   /**
    * Some duration until this action / spell / ability can be used again.
@@ -44,12 +57,5 @@ trait DeflectArrows
   override def coolDown: Option[Duration] = Some(Duration.ofSeconds(secondsPerArrow))
 
   override def allOfClass: Seq[(HeroicCharacterClass, Int)] = List((Monk, 1))
-
-  override protected val deflectArrowsBonusType: BonusType = BonusType.Feat
-  override protected val secondsPerArrow: Int = 6
-  lazy override protected[this] val triggerOn: TriggerEvent = TriggerEvent.OnTimer
-  lazy override protected[this] val triggerOff: TriggerEvent = TriggerEvent.OnCoolDown
-  lazy override protected[this] val categories: Seq[effect.EffectCategories.Value] =
-    Seq(effect.EffectCategories.MissChance, effect.EffectCategories.Ability)
 
 }

@@ -32,7 +32,8 @@ import scala.collection.immutable
  * Created by adarr on 2/14/2017.
  */
 sealed trait ClassFeat
-  extends Feat with FriendlyDisplay with SubFeatInformation with ClassRequisiteImpl with FeatMatcher with FeaturesImpl {
+  extends Feat with FriendlyDisplay with SubFeatInformation with ClassRequisiteImpl with FeatMatcher
+  with FeaturesImpl {
   self: FeatType with Requisite with Inclusion with RequisiteType with Features =>
 
   val matchFeat: PartialFunction[Feat, ClassFeat] = { case x: ClassFeat =>
@@ -52,6 +53,11 @@ object ClassFeat extends Enum[ClassFeat] with FeatSearchPrefix {
 
   override lazy val values: immutable.IndexedSeq[ClassFeat] = findValues ++ alchemicalStudies
 
+  def alchemicalStudies: immutable.Seq[AlchemicalStudies] = {
+    // for comprehension vs map since we'll likely add Reaction info the Feat Trait
+    for { r <- Reaction.values } yield AlchemicalStudies(r)
+  }
+
   protected def favoredEnemies: immutable.IndexedSeq[FavoredEnemyType] = {
     for { m <- MonsterType.values } yield FavoredEnemyType(Some(m))
   }
@@ -59,12 +65,19 @@ object ClassFeat extends Enum[ClassFeat] with FeatSearchPrefix {
   case class FavoredEnemyType(mainTypes: Option[MonsterType])
     extends ClassFeat with FavoredEnemy with MainType with SubFeat
 
+  // Alchemists
+  case class AlchemicalStudies(reaction: Reaction) extends ClassFeat with AlchemicalStudiesBase {
+
+    override protected def nameSource: String = reaction.entryName
+  }
+
   /**
    * @todo
-   *   Need to add Grants for Gnomish / Deep Gnome Tier 4/ Deep Wood Stalker Tier 5 Harper Tier 4, Epic Primal Avatar
-   *   Tier 2
+   *   Need to add Grants for Gnomish / Deep Gnome Tier 4/ Deep Wood Stalker Tier 5 Harper Tier 4,
+   *   Epic Primal Avatar Tier 2
    */
-  case object FavoredEnemy extends ClassFeat with FeatRequisiteImpl with GrantsToClass with ParentFeat with Passive {
+  case object FavoredEnemy
+    extends ClassFeat with FeatRequisiteImpl with GrantsToClass with ParentFeat with Passive {
 
     override val subFeats: immutable.IndexedSeq[FavoredEnemyType] =
       favoredEnemies
@@ -72,17 +85,6 @@ object ClassFeat extends Enum[ClassFeat] with FeatSearchPrefix {
 
     override def grantToClass: Seq[(HeroicCharacterClass, Int)] =
       rangerLevels.map((Ranger, _))
-  }
-
-  // Alchemists
-  case class AlchemicalStudies(reaction: Reaction) extends ClassFeat with AlchemicalStudiesBase {
-
-    override protected def nameSource: String = reaction.entryName
-  }
-
-  def alchemicalStudies: immutable.Seq[AlchemicalStudies] = {
-    // for comprehension vs map since we'll likely add Reaction info the Feat Trait
-    for { r <- Reaction.values } yield AlchemicalStudies(r)
   }
 
   case object AlchemicalSpellcasting extends ClassFeat with AlchemicalSpellcasting
@@ -134,7 +136,8 @@ object ClassFeat extends Enum[ClassFeat] with FeatSearchPrefix {
     override protected def nameSource: String = "Potions"
   }
 
-  case object ArtificerKnowledgeWondrousItems extends ClassFeat with ArtificerKnowledgeWondrousItems {
+  case object ArtificerKnowledgeWondrousItems
+    extends ClassFeat with ArtificerKnowledgeWondrousItems {
     override protected def nameSource: String = "Wondrous Items"
   }
 

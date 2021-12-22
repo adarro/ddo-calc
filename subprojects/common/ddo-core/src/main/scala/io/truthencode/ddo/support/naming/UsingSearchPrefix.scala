@@ -20,5 +20,11 @@ package io.truthencode.ddo.support.naming
 import io.truthencode.ddo.support.SearchPrefix
 
 trait UsingSearchPrefix extends SearchPrefix {
+  /**
+   * Concatenates the prefix with the main value. Enums should typically use entryName, and others
+   * likely namesource from DisplayProperties
+   * @example
+   *   override val withPrefix: String = s"${searchPrefix}:$nameSource"
+   */
   val withPrefix: String
 }

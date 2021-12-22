@@ -22,13 +22,15 @@ import io.truthencode.ddo.model.classes.HeroicCharacterClass.Druid
 import io.truthencode.ddo.support.requisite.{FeatRequisiteImpl, GrantsToClass, RequiresAllOfClass}
 
 /**
- * [[https://ddowiki.com/page/Druidic_Oath Druidic Oath]] All druids take an oath that prohibits them from wearing metal
- * armor, using metal shields or orbs, and using rune arms. Doing so suppresses your druidic abilities. Warforged druids
- * are forbidden from taking armor feats other than Composite Plating.
+ * [[https://ddowiki.com/page/Druidic_Oath Druidic Oath]] All druids take an oath that prohibits
+ * them from wearing metal armor, using metal shields or orbs, and using rune arms. Doing so
+ * suppresses your druidic abilities. Warforged druids are forbidden from taking armor feats other
+ * than Composite Plating.
  * @todo
  *   Do we need to add an event trigger to suppress druid abilities?
  */
-protected[feats] trait DruidicOath extends FeatRequisiteImpl with Passive with GrantsToClass with RequiresAllOfClass {
+protected[feats] trait DruidicOath
+  extends FeatRequisiteImpl with Passive with GrantsToClass with RequiresAllOfClass {
   override def allOfClass: Seq[(HeroicCharacterClass, Int)] = List((Druid, 1))
 
   override def grantToClass: Seq[(HeroicCharacterClass, Int)] = List((Druid, 1))

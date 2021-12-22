@@ -19,6 +19,7 @@ package io.truthencode.ddo.support.requisite
 
 import io.truthencode.ddo.model.classes.HeroicCharacterClass
 import io.truthencode.ddo.support.requisite.RequirementImplicits.classToReq
+import io.truthencode.ddo.support.requisite.RequirementImplicits.ClassImplicits
 
 /**
  * Represents Character class based restrictions and allowances Created by adarr on 1/30/2017.
@@ -36,8 +37,8 @@ trait ClassRequisite {
 }
 
 /**
- * Base implementation setting all required values to a default empty set. Stackable traits may then override and
- * augment selected values.
+ * Base implementation setting all required values to a default empty set. Stackable traits may then
+ * override and augment selected values.
  */
 trait ClassRequisiteImpl extends MustContainImpl[Requirement] with ClassRequisite {
   self: Requisite with RequisiteType =>
@@ -60,7 +61,9 @@ trait FreeClass extends ClassRequisite with RequiresNone with RequiredExpression
 trait RequiresAnyOfClass extends ClassRequisite with RequiresOneOf[Requirement] with Requisite {
 
   abstract override def oneOf: Seq[Requirement] = super.oneOf ++ {
-    anyOfClass.collect(classToReq)
+    val aoc = anyOfClass.map(_.toReq)
+    assert(aoc.nonEmpty)
+    aoc
   }
 }
 
@@ -71,36 +74,40 @@ trait RequiresAnyOfClass extends ClassRequisite with RequiresOneOf[Requirement] 
 trait RequiresAllOfClass extends ClassRequisite with RequiresAllOf[Requirement] with Requisite {
 
   abstract override def allOf: Seq[Requirement] = super.allOf ++ {
-    allOfClass.collect(classToReq)
+    allOfClass.map(_.toReq)
   }
 }
 
 /**
- * Feature is prohibited for a given set of classes. This is often used as an exclusive selector, i.e. you can choose
- * one thing or the other, but one excludes the other.
+ * Feature is prohibited for a given set of classes. This is often used as an exclusive selector,
+ * i.e. you can choose one thing or the other, but one excludes the other.
  */
 trait RequiresNoneOfClass extends ClassRequisite with RequiresNoneOf[Requirement] with Requisite {
 
   abstract override def noneOf: Seq[Requirement] = super.noneOf ++ {
-    noneOfClass.collect(classToReq)
+    noneOfClass.map(_.toReq)
   }
 }
 
 /**
  * This feature is automatically granted to a particular class or set of classes.
  */
-trait GrantsToClass extends ClassRequisite with GrantExpression with RequiresOneOf[Requirement] with Requisite {
+trait GrantsToClass
+  extends ClassRequisite with GrantExpression with RequiresOneOf[Requirement] with Requisite {
   abstract override def oneOf: Seq[Requirement] = super.oneOf ++ {
-    grantToClass.collect(classToReq)
+    val gtc = grantToClass.map(_.toReq)
+    if (grantToClass.nonEmpty) assert(gtc.nonEmpty)
+    gtc
   }
 }
 
 /**
- * This feature becomes selectable to a given class, generally at a particular level. Specifically, this applies to
- * Feats to allow bonus feat selection such as Monk Bonus feats.
+ * This feature becomes selectable to a given class, generally at a particular level. Specifically,
+ * this applies to Feats to allow bonus feat selection such as Monk Bonus feats.
  */
-trait SelectableToClass extends ClassRequisite with ClassRequisiteImpl with RequiresOneOf[Requirement] with Requisite {
+trait SelectableToClass
+  extends ClassRequisite with ClassRequisiteImpl with RequiresOneOf[Requirement] with Requisite {
   abstract override def oneOf: Seq[Requirement] = super.oneOf ++ {
-    bonusSelectableToClass.collect(classToReq)
+    bonusSelectableToClass.map(_.toReq)
   }
 }

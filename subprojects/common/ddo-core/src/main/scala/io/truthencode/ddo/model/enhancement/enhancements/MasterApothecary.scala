@@ -25,12 +25,11 @@ trait MasterApothecary extends ApothecaryTierFive with ClassEnhancementImpl {
     """You have no Max Caster Level with Curative Admixtures and any Gildleaf Alchemist Spells. +2 To Transmutation DCs, and +1 Spell Penetration
       |""".stripMargin
   )
-
-  override def apCostPerRank: Int = 2
-
   /**
    * Some enhancements can be taken multiple times (generally up to three)
    */
   override val ranks: Int = 1
+
+  override def apCostPerRank: Int = 2
 
 }

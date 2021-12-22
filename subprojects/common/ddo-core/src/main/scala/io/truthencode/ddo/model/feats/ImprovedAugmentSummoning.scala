@@ -23,11 +23,12 @@ import io.truthencode.ddo.support.requisite.{FreeFeat, RequiresAllOfFeat, Requir
  * Created by adarr on 4/3/2017.
  */
 protected[feats] trait ImprovedAugmentSummoning
-  extends FreeFeat with SpellCastingPassive with RequiresAllOfFeat with RequiresCharacterLevel { self: EpicFeat =>
-  override def allOfFeats: Seq[Feat] = List(GeneralFeat.AugmentSummoning)
-
+  extends FreeFeat with SpellCastingPassive with RequiresAllOfFeat with RequiresCharacterLevel {
+  self: EpicFeat =>
   /**
    * Default Minimum Level for all Epic Feats. Override this with a higher level as needed.
    */
   override val requireCharacterLevel: Int = 24
+
+  override def allOfFeats: Seq[Feat] = List(GeneralFeat.AugmentSummoning)
 }

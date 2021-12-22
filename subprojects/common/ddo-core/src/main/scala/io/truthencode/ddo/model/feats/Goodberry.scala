@@ -17,17 +17,18 @@
  */
 package io.truthencode.ddo.model.feats
 
-import io.truthencode.ddo.activation.{AtWillEvent, OnTavern}
+import io.truthencode.ddo.activation.OnTavern
 import io.truthencode.ddo.model.classes.HeroicCharacterClass
 import io.truthencode.ddo.model.classes.HeroicCharacterClass.Druid
 import io.truthencode.ddo.model.misc.DefaultCasterCoolDown
 import io.truthencode.ddo.support.requisite.{FeatRequisiteImpl, GrantsToClass, RequiresAllOfClass}
 
 /**
- * [[https://ddowiki.com/page/Goodberry Goodberry]] Transmutes natural matter around you into Goodberries. Goodberries
- * are infused with primal magic, and provide a full meal's nourishment. If eaten in a tavern, they act as tavern food
- * and drink, refilling your health and spell points. When cast, Goodberries appear in your inventory. The higher the
- * caster level, the more nourishing the Goodberries are.
+ * [[https://ddowiki.com/page/Goodberry Goodberry]] Transmutes natural matter around you into
+ * Goodberries. Goodberries are infused with primal magic, and provide a full meal's nourishment. If
+ * eaten in a tavern, they act as tavern food and drink, refilling your health and spell points.
+ * When cast, Goodberries appear in your inventory. The higher the caster level, the more nourishing
+ * the Goodberries are.
  */
 protected[feats] trait Goodberry
   extends FeatRequisiteImpl with ActiveFeat with OnTavern with GrantsToClass with RequiresAllOfClass

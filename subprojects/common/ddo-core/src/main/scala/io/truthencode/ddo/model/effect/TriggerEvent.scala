@@ -38,17 +38,17 @@ trait PassiveEvent extends TriggerEvent
 trait ActiveEvent extends TriggerEvent
 
 /**
- * @todo
- *   Need to add Hitpoint level (Percent) for events triggered when below 50% health etc.
+ * Enumerates all valid trigger event typse
  */
+// scalastyle:off number.of.methods
 object TriggerEvent extends IndexedEnum[TriggerEvent] {
   @volatile
   override lazy val values: immutable.IndexedSeq[TriggerEvent] = findValues
   case object Passive extends PassiveEvent
 
   /**
-   * Used to denote that this never happens. Not useful for triggering ON events, but should be used with Passive,
-   * always on effects.
+   * Used to denote that this never happens. Not useful for triggering ON events, but should be used
+   * with Passive, always on effects.
    */
   case object Never extends PassiveEvent
   /**
@@ -104,11 +104,21 @@ object TriggerEvent extends IndexedEnum[TriggerEvent] {
   case object OnRest extends ActiveEvent
 
   /**
-   * For lack of a better word, this is a rough translation of "Not Incapacitated" for effects that work unless you're
-   * helpless / incapacitated such as Aura of Courage
+   * For lack of a better word, this is a rough translation of "Not Incapacitated" for effects that
+   * work unless you're helpless / incapacitated such as Aura of Courage, the opposite of
+   * [[OnUnconscious]] trigger
    */
   case object OnHealthy extends ActiveEvent
 
+  /**
+   * Triggers when a certain percentage of health falls below the threshold
+   */
+  case object OnHealthLevelBelow extends ActiveEvent
+
+  /**
+   * Triggers on a ceratin percentage of health raises above the threshold
+   */
+  case object OnHealthLevelAbove extends ActiveEvent
   /**
    * Can be toggled on / off as desired
    */
@@ -125,13 +135,14 @@ object TriggerEvent extends IndexedEnum[TriggerEvent] {
   case object OnCoolDown extends ActiveEvent
 
   /**
-   * Activated while in a Tavern, generally only applies to Healing / Recovery such as the Goodberry spell or Broccoli
+   * Activated while in a Tavern, generally only applies to Healing / Recovery such as the Goodberry
+   * spell or Broccoli
    */
   case object InTavern extends ActiveEvent
 
   /**
-   * [[https://ddowiki.com/page/Melee_special_attack Special Melee and Tactical attacks]] such as Trip, Sunder, Stunning
-   * / Slicing blow
+   * [[https://ddowiki.com/page/Melee_special_attack Special Melee and Tactical attacks]] such as
+   * Trip, Sunder, Stunning / Slicing blow
    */
   case object SpecialAttack extends ActiveEvent
 
@@ -194,3 +205,4 @@ object TriggerEvent extends IndexedEnum[TriggerEvent] {
    */
   object WhileOn extends ActiveEvent
 }
+// scalastyle:on

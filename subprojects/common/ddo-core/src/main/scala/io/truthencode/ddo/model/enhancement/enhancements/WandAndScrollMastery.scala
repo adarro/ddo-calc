@@ -21,20 +21,19 @@ import io.truthencode.ddo.model.enhancement.enhancements.classbased.BombardierTi
 
 trait WandAndScrollMastery extends BombardierTierOne with ClassEnhancementImpl {
 
-  /**
-   * Some enhancements have multiple ranks. This is the cost for each rank. Older versions had increasing costs which
-   * has been streamlined to a linear progression.
-   *
-   * @return
-   */
-  override def apCostPerRank: Int = 1
-
+  override lazy val description: Option[String] = Some(
+    "+[25/50/75]% damage and healing from your wands, scrolls, and other items that cast spells, and +[1/3/6] to the save DCs of your offensive wands"
+  )
   /**
    * Some enhancements can be taken multiple times (generally up to three)
    */
   override val ranks: Int = 3
 
-  override lazy val description: Option[String] = Some(
-    "+[25/50/75]% damage and healing from your wands, scrolls, and other items that cast spells, and +[1/3/6] to the save DCs of your offensive wands"
-  )
+  /**
+   * Some enhancements have multiple ranks. This is the cost for each rank. Older versions had
+   * increasing costs which has been streamlined to a linear progression.
+   *
+   * @return
+   */
+  override def apCostPerRank: Int = 1
 }

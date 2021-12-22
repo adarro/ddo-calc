@@ -25,18 +25,19 @@ import io.truthencode.ddo.model.skill.Skill
 import io.truthencode.ddo.support.requisite._
 
 /**
- * [[https://ddowiki.com/page/Improved_Inspire_Courage Improved Inspire Courage]] Level: Bard 8 Perform: 3 ranks*
- * Target: Bard and all nearby allies Base Duration: 4 minutes Song Description: Gives a +2 (total) morale bonus to
- * attack rolls, damage rolls, and saving throws versus fear. At Bard level 14, these bonuses rise to +3, and at Bard
- * level 20 they rise to +4. Notes: Each of these bonuses can be raised through Warchanter enhancements (maximum +3) and
- * the Fatesinger epic destiny. The song's duration can be raised through Spellsinger enhancements (+60% lingering song,
- * +20% core ability), Fatesinger epic destiny, and Lasting Inspiration epic feat. *Only the base number of Perform
- * ranks bought with skill points count toward the requirement to be able to play this song. (Skill bonuses do not
- * count.) See also Inspire Courage Created by adarr on 4/5/2017.
+ * [[https://ddowiki.com/page/Improved_Inspire_Courage Improved Inspire Courage]] Level: Bard 8
+ * Perform: 3 ranks* Target: Bard and all nearby allies Base Duration: 4 minutes Song Description:
+ * Gives a +2 (total) morale bonus to attack rolls, damage rolls, and saving throws versus fear. At
+ * Bard level 14, these bonuses rise to +3, and at Bard level 20 they rise to +4. Notes: Each of
+ * these bonuses can be raised through Warchanter enhancements (maximum +3) and the Fatesinger epic
+ * destiny. The song's duration can be raised through Spellsinger enhancements (+60% lingering song,
+ * +20% core ability), Fatesinger epic destiny, and Lasting Inspiration epic feat. *Only the base
+ * number of Perform ranks bought with skill points count toward the requirement to be able to play
+ * this song. (Skill bonuses do not count.) See also Inspire Courage Created by adarr on 4/5/2017.
  */
 protected[feats] trait ImprovedInspireCourage
-  extends SkillRequisiteImpl with RequiresAllOfSkill with ClassRequisiteImpl with RequiresAllOfClass with GrantsToClass
-  with ActiveFeat with OnSongPlayedEvent with BardSongCoolDown {
+  extends SkillRequisiteImpl with RequiresAllOfSkill with ClassRequisiteImpl with RequiresAllOfClass
+  with GrantsToClass with ActiveFeat with OnSongPlayedEvent with BardSongCoolDown {
   override def allOfClass: Seq[(HeroicCharacterClass, Int)] =
     List((HeroicCharacterClass.Bard, 8))
 

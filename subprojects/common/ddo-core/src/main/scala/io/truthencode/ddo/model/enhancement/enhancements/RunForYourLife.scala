@@ -24,13 +24,13 @@ trait RunForYourLife extends ApothecaryTierFour with ClassEnhancementImpl {
   override lazy val description: Option[String] = Some(
     """While your Reaction is Verdanite, you gain 1% Movement Speed per Alchemist Level.""".stripMargin
   )
-
-  override def displayText: String = "Run for your life!"
-  override def apCostPerRank: Int = 2
-
   /**
    * Some enhancements can be taken multiple times (generally up to three)
    */
   override val ranks: Int = 1
+
+  override def displayText: String = "Run for your life!"
+
+  override def apCostPerRank: Int = 2
 
 }

@@ -18,19 +18,25 @@
 package io.truthencode.ddo.model.feats
 
 import io.truthencode.ddo.model.attribute.Attribute
-import io.truthencode.ddo.support.requisite.{FeatRequisiteImpl, RequiresAllOfFeat, RequiresAttribute}
+import io.truthencode.ddo.support.requisite.{
+  AttributeRequisiteImpl,
+  FeatRequisiteImpl,
+  RequiresAllOfAttribute,
+  RequiresAllOfFeat
+}
 
 /**
- * Icon Feat Oversized Two Weapon Fighting.png Oversized Two Weapon Fighting Passive When wielding a one handed weapon
- * in your off-hand, you take penalties for fighting with two weapons as if you were wielding a light weapon on your
- * offhand.
+ * Icon Feat Oversized Two Weapon Fighting.png Oversized Two Weapon Fighting Passive When wielding a
+ * one handed weapon in your off-hand, you take penalties for fighting with two weapons as if you
+ * were wielding a light weapon on your offhand.
  *
  * Two Weapon Fighting Strength 12
  */
 trait OversizedTwoWeaponFighting
-  extends FeatRequisiteImpl with Passive with RequiresAllOfFeat with RequiresAttribute with FighterBonusFeat {
+  extends FeatRequisiteImpl with Passive with RequiresAllOfFeat with AttributeRequisiteImpl
+  with RequiresAllOfAttribute with FighterBonusFeat {
   self: GeneralFeat =>
-  override def requiresAttribute: Seq[(Attribute, Int)] = List((Attribute.Strength, 12))
+  override def allOfAttributes: Seq[(Attribute, Int)] = List((Attribute.Strength, 12))
 
   override def allOfFeats: Seq[GeneralFeat] = List(GeneralFeat.TwoWeaponFighting)
 }

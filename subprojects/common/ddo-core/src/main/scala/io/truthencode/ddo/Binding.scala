@@ -33,6 +33,9 @@ sealed trait BindingStatus extends EnumEntry with DefaultValue[BindingStatus] {
  */
 object BindingStatus extends Enum[BindingStatus] with DefaultValue[BindingStatus] {
 
+  override lazy val default = Some(BindingStatus.Unbound)
+  val values = findValues // IndexedSeq(BindsToAccount, BindsToCharacter, Unbound)
+
   /**
    * Item can be transferred between characters on the same account.
    *
@@ -49,8 +52,6 @@ object BindingStatus extends Enum[BindingStatus] with DefaultValue[BindingStatus
    * Item does not have any restrictions.
    */
   case object Unbound extends BindingStatus
-  val values = findValues // IndexedSeq(BindsToAccount, BindsToCharacter, Unbound)
-  override lazy val default = Some(BindingStatus.Unbound)
 }
 
 /**
@@ -62,6 +63,9 @@ sealed trait BindingEvent extends EnumEntry with NoDefault[BindingEvent]
  * Triggers for binding.
  */
 object BindingEvent extends Enum[BindingEvent] with DefaultValue[BindingEvent] {
+
+  override lazy val default = Some(BindingEvent.None)
+  val values = findValues
 
   /**
    * Occurs when you receive the item, such as a quest reward or upon crafting.
@@ -77,6 +81,4 @@ object BindingEvent extends Enum[BindingEvent] with DefaultValue[BindingEvent] {
    * No binding occurs.
    */
   case object None extends BindingEvent
-  val values = findValues
-  override lazy val default = Some(BindingEvent.None)
 }

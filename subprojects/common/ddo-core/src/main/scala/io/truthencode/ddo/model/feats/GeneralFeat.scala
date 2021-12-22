@@ -19,23 +19,13 @@ package io.truthencode.ddo.model.feats
 
 import com.typesafe.scalalogging.LazyLogging
 import enumeratum.Enum
+import io.truthencode.ddo.api.model.effect.DetailedEffect
 import io.truthencode.ddo.enhancement.BonusType
 import io.truthencode.ddo.model.classes.HeroicCharacterClass
 import io.truthencode.ddo.model.classes.HeroicCharacterClass.Bard
 import io.truthencode.ddo.model.effect
-import io.truthencode.ddo.model.effect.{DetailedEffect, EffectCategories, SkillEffect, TriggerEvent}
-import io.truthencode.ddo.model.effect.features.{
-  CriticalThreatRangeFeature,
-  Features,
-  FeaturesImpl,
-  MeleePowerFeature,
-  RangePowerFeature,
-  SkillFeature,
-  SpellFocusFeature,
-  ToDamageByWeaponClassFeature,
-  ToHitByWeaponClassFeature,
-  WeaponProficiencyFeature
-}
+import io.truthencode.ddo.model.effect.TriggerEvent
+import io.truthencode.ddo.model.effect.features._
 import io.truthencode.ddo.model.item.weapon.WeaponCategory._
 import io.truthencode.ddo.model.item.weapon._
 import io.truthencode.ddo.model.race.Race
@@ -46,10 +36,11 @@ import io.truthencode.ddo.support.naming.{FriendlyDisplay, PostText, Prefix}
 import io.truthencode.ddo.support.requisite._
 
 /**
- * [[http://ddowiki.com/page/Feats Feats]] are special abilities that give your character a new capability, or improves
- * one he or she already has.
+ * [[http://ddowiki.com/page/Feats Feats]] are special abilities that give your character a new
+ * capability, or improves one he or she already has.
  */
-sealed trait GeneralFeat extends Feat with FriendlyDisplay with SubFeatInformation with FeaturesImpl {
+sealed trait GeneralFeat
+  extends Feat with FriendlyDisplay with SubFeatInformation with FeaturesImpl {
   self: FeatType with Requisite with Inclusion with Features =>
 
 }
@@ -58,7 +49,8 @@ sealed trait GeneralFeat extends Feat with FriendlyDisplay with SubFeatInformati
  * General Feats aren't specific to a particular race or class.
  */
 // scalastyle:off number.of.methods
-object GeneralFeat extends Enum[GeneralFeat] with FeatSearchPrefix with FeatMatcher with LazyLogging {
+object GeneralFeat
+  extends Enum[GeneralFeat] with FeatSearchPrefix with FeatMatcher with LazyLogging {
 
   override lazy val values =
     findValues ++
@@ -226,38 +218,34 @@ object GeneralFeat extends Enum[GeneralFeat] with FeatSearchPrefix with FeatMatc
     } yield SkillFocus(x)
 
   case class ImprovedCritical(weaponClass: WeaponClass)
-    extends GeneralFeat with ImprovedCriticalBase with SubFeat with Prefix with FriendlyDisplay with FeaturesImpl
-    with CriticalThreatRangeFeature {
-    val cats = LazyList(EffectCategories.GeneralCombat.toString)
-    lazy override protected[this] val effectDetail: DetailedEffect = DetailedEffect(
+    extends GeneralFeat with ImprovedCriticalBase with SubFeat with Prefix with FriendlyDisplay
+    with FeaturesImpl with CriticalThreatRangeFeature {
+
+    override protected[this] lazy val effectDetail: DetailedEffect = DetailedEffect(
       id = "CriticalThreatRange",
       description = "Improves your critical threat range for a specific weapon",
-      categories = cats,
-      triggersOn = TriggerEvent.OnEquip.toString,
-      triggersOff = TriggerEvent.OnUnEquip.toString
+      triggersOn = Seq(TriggerEvent.OnEquip.toString),
+      triggersOff = Seq(TriggerEvent.OnUnEquip.toString)
     )
-    val wow1: Seq[Seq[(WeaponCategory, Int)]] = for {
-      weapon <- filterByWeaponClass(weaponClass)
-      a1 <- icPlus1.filter(_ == weapon)
-      a2 <- icPlus2.filter(_ == weapon)
-      a3 <- icPlus3.filter(_ == weapon)
-    } yield Seq((a1, 1), (a2, 2), (a3, 3))
-    logger.info(s"found ${wow1.size} weapons for improved critical: ${weaponClass.entryName}")
-    val wow: Seq[(WeaponCategory, Int)] = wow1.flatten
-    logger.info(s"found ${wow.size} (flattened) weapons for improved critical: ${weaponClass.entryName}")
     /**
      * @note
-     *   Will need to look at stacking logic checks to make sure this stacks correctly (or more accurately won't) with
-     *   Keen / Impact et al.
+     *   Will need to look at stacking logic checks to make sure this stacks correctly (or more
+     *   accurately won't) with Keen / Impact et al.
      */
     override protected val criticalThreatRangeType: BonusType = BonusType.Feat
-
     override protected val criticalThreatRangeAmount: Seq[(WeaponCategory, Int)] = wow
-
     /**
      * Delimits the prefix and text.
      */
     override protected val prefixSeparator: String = ": "
+//    val wow1: Seq[Seq[(WeaponCategory, Int)]] = for {
+//      weapon <- filterByWeaponClass(weaponClass)
+//      a1 <- icPlus1.filter(_ == weapon)
+//      a2 <- icPlus2.filter(_ == weapon)
+//      a3 <- icPlus3.filter(_ == weapon)
+//    } yield Seq((a1, 1), (a2, 2), (a3, 3))
+    // logger.info(s"found ${wow1.size} weapons for improved critical: ${weaponClass.entryName}")
+    val wow: Seq[(WeaponCategory, Int)] = improvedCriticalRangeByWeapon(weaponClass) // wow1.flatten
 
     override def prefix: Option[String] = Some("Improved Critical")
 
@@ -266,25 +254,30 @@ object GeneralFeat extends Enum[GeneralFeat] with FeatSearchPrefix with FeatMatc
   }
 
   case class WeaponFocus(weaponClass: WeaponClass)
-    extends GeneralFeat with WeaponFocusBase with SubFeat with Prefix with FriendlyDisplay with FeaturesImpl
-    with ToHitByWeaponClassFeature with MeleePowerFeature with RangePowerFeature {
+    extends GeneralFeat with WeaponFocusBase with SubFeat with Prefix with FriendlyDisplay
+    with FeaturesImpl with ToHitByWeaponClassFeature with MeleePowerFeature with RangePowerFeature {
 
+    override protected[this] lazy val triggerOn: Seq[TriggerEvent] = Seq(TriggerEvent.Passive)
+    override protected[this] lazy val triggerOff: Seq[TriggerEvent] = Seq(TriggerEvent.Never)
+    override protected[this] lazy val meleePowerCategories: Seq[effect.EffectCategories.Value] =
+      Seq(effect.EffectCategories.GeneralCombat)
+    private[this] lazy val allCategories =
+      meleePowerCategories ++ toHitWcCategories ++ rangePowerCategories
+    override protected[this] val toHitWcCategories: Seq[effect.EffectCategories.Value] = Seq(
+      effect.EffectCategories.GeneralCombat)
+    override protected[this] val rangePowerCategories: Seq[effect.EffectCategories.Value] = Seq(
+      effect.EffectCategories.GeneralCombat)
     /**
      * Delimits the prefix and text.
      */
     override protected val prefixSeparator: String = ": "
-
     override protected val toHitType: BonusType = BonusType.Feat
-    override protected val toHitAmount: Seq[(WeaponCategory, Int)] = filterByWeaponClass(weaponClass).map((_, 1))
+    override protected val toHitAmount: Seq[(WeaponCategory, Int)] =
+      filterByWeaponClass(weaponClass).map((_, 1))
     override protected val meleePowerBonusType: BonusType = BonusType.Feat
     override protected val meleePowerBonusAmount: Int = 2
     override protected val rangePowerBonusType: BonusType = BonusType.Feat
     override protected val rangePowerBonusAmount: Int = 2
-
-    lazy override protected[this] val triggerOn: TriggerEvent = TriggerEvent.Passive
-    lazy override protected[this] val triggerOff: TriggerEvent = TriggerEvent.Never
-    lazy override protected[this] val categories: Seq[effect.EffectCategories.Value] = Seq(
-      effect.EffectCategories.GeneralCombat)
 
     override def prefix: Option[String] = Some("Weapon Focus")
 
@@ -295,13 +288,18 @@ object GeneralFeat extends Enum[GeneralFeat] with FeatSearchPrefix with FeatMatc
     extends GeneralFeat with GreaterWeaponFocusBase with RequiresAllOfFeat with SubFeat with Prefix
     with FighterBonusFeat with FeaturesImpl with ToHitByWeaponClassFeature with MeleePowerFeature
     with RangePowerFeature {
+    override protected[this] lazy val triggerOn: Seq[TriggerEvent] = Seq(TriggerEvent.Passive)
+    override protected[this] lazy val triggerOff: Seq[TriggerEvent] = Seq(TriggerEvent.Never)
+    override protected[this] lazy val meleePowerCategories: Seq[effect.EffectCategories.Value] =
+      Seq(effect.EffectCategories.GeneralCombat)
     override protected val prefixSeparator: String = ": "
-    lazy override protected[this] val triggerOn: TriggerEvent = TriggerEvent.Passive
-    lazy override protected[this] val triggerOff: TriggerEvent = TriggerEvent.Never
-    lazy override protected[this] val categories: Seq[effect.EffectCategories.Value] = Seq(
+    override protected[this] val toHitWcCategories: Seq[effect.EffectCategories.Value] = Seq(
+      effect.EffectCategories.GeneralCombat)
+    override protected[this] val rangePowerCategories: Seq[effect.EffectCategories.Value] = Seq(
       effect.EffectCategories.GeneralCombat)
     override protected val toHitType: BonusType = BonusType.Feat
-    override protected val toHitAmount: Seq[(WeaponCategory, Int)] = filterByWeaponClass(weaponClass).map((_, 1))
+    override protected val toHitAmount: Seq[(WeaponCategory, Int)] =
+      filterByWeaponClass(weaponClass).map((_, 1))
     override protected val meleePowerBonusType: BonusType = BonusType.Feat
     override protected val meleePowerBonusAmount: Int = 2
     override protected val rangePowerBonusType: BonusType = BonusType.Feat
@@ -320,17 +318,23 @@ object GeneralFeat extends Enum[GeneralFeat] with FeatSearchPrefix with FeatMatc
     extends GeneralFeat with SuperiorWeaponFocusBase with RequiresAllOfFeat with SubFeat with Prefix
     with FriendlyDisplay with FeaturesImpl with ToHitByWeaponClassFeature with MeleePowerFeature
     with RangePowerFeature {
+    override protected[this] lazy val triggerOn: Seq[TriggerEvent] = Seq(TriggerEvent.Passive)
+    override protected[this] lazy val triggerOff: Seq[TriggerEvent] = Seq(TriggerEvent.Never)
+    override protected[this] lazy val meleePowerCategories: Seq[effect.EffectCategories.Value] =
+      Seq(effect.EffectCategories.GeneralCombat)
     override protected val prefixSeparator: String = ": "
-    lazy override protected[this] val triggerOn: TriggerEvent = TriggerEvent.Passive
-    lazy override protected[this] val triggerOff: TriggerEvent = TriggerEvent.Never
-    lazy override protected[this] val categories: Seq[effect.EffectCategories.Value] = Seq(
-      effect.EffectCategories.GeneralCombat)
     override protected val toHitType: BonusType = BonusType.Feat
-    override protected val toHitAmount: Seq[(WeaponCategory, Int)] = filterByWeaponClass(weaponClass).map((_, 1))
+    override protected val toHitAmount: Seq[(WeaponCategory, Int)] =
+      filterByWeaponClass(weaponClass).map((_, 1))
     override protected val meleePowerBonusType: BonusType = BonusType.Feat
     override protected val meleePowerBonusAmount: Int = 2
     override protected val rangePowerBonusType: BonusType = BonusType.Feat
     override protected val rangePowerBonusAmount: Int = 2
+    override protected[this] val toHitWcCategories: Seq[effect.EffectCategories.Value] = Seq(
+      effect.EffectCategories.GeneralCombat)
+    override protected[this] val rangePowerCategories: Seq[effect.EffectCategories.Value] = Seq(
+      effect.EffectCategories.GeneralCombat)
+
     override def prefix: Option[String] =
       Some("SuperiorWeaponFocus".splitByCase)
 
@@ -342,23 +346,28 @@ object GeneralFeat extends Enum[GeneralFeat] with FeatSearchPrefix with FeatMatc
   }
 
   case class WeaponSpecialization(weaponClass: WeaponClass)
-    extends GeneralFeat with WeaponSpecializationBase with RequiresAllOfFeat with SubFeat with Prefix
-    with FriendlyDisplay with FeaturesImpl with ToDamageByWeaponClassFeature with MeleePowerFeature
-    with RangePowerFeature {
+    extends GeneralFeat with WeaponSpecializationBase with RequiresAllOfFeat with SubFeat
+    with Prefix with FriendlyDisplay with FeaturesImpl with ToDamageByWeaponClassFeature
+    with MeleePowerFeature with RangePowerFeature {
+    override protected[this] lazy val triggerOn: Seq[TriggerEvent] = Seq(TriggerEvent.Passive)
+    override protected[this] lazy val triggerOff: Seq[TriggerEvent] = Seq(TriggerEvent.Never)
+    override protected[this] lazy val meleePowerCategories: Seq[effect.EffectCategories.Value] =
+      Seq(effect.EffectCategories.GeneralCombat)
     override protected val prefixSeparator: String = ": "
-
-    override def prefix: Option[String] =
-      Some("Weapon Specialization".splitByCase)
-    lazy override protected[this] val triggerOn: TriggerEvent = TriggerEvent.Passive
-    lazy override protected[this] val triggerOff: TriggerEvent = TriggerEvent.Never
-    lazy override protected[this] val categories: Seq[effect.EffectCategories.Value] = Seq(
+    override protected[this] val toDmgWcCategories: Seq[effect.EffectCategories.Value] = Seq(
+      effect.EffectCategories.GeneralCombat)
+    override protected[this] val rangePowerCategories: Seq[effect.EffectCategories.Value] = Seq(
       effect.EffectCategories.GeneralCombat)
     override protected val toDamageType: BonusType = BonusType.Feat
-    override protected val toDamageAmount: Seq[(WeaponCategory, Int)] = filterByWeaponClass(weaponClass).map((_, 2))
+    override protected val toDamageAmount: Seq[(WeaponCategory, Int)] =
+      filterByWeaponClass(weaponClass).map((_, 2))
     override protected val meleePowerBonusType: BonusType = BonusType.Feat
     override protected val meleePowerBonusAmount: Int = 2
     override protected val rangePowerBonusType: BonusType = BonusType.Feat
     override protected val rangePowerBonusAmount: Int = 2
+
+    override def prefix: Option[String] =
+      Some("Weapon Specialization".splitByCase)
 
     override def allOfFeats: Seq[GeneralFeat] = weaponFocusAny.filter { x =>
       x.weaponClass.eq(weaponClass)
@@ -368,23 +377,28 @@ object GeneralFeat extends Enum[GeneralFeat] with FeatSearchPrefix with FeatMatc
   }
 
   case class GreaterWeaponSpecialization(weaponClass: WeaponClass)
-    extends GeneralFeat with GreaterWeaponSpecializationBase with RequiresAllOfFeat with SubFeat with Prefix
-    with FeaturesImpl with ToDamageByWeaponClassFeature with MeleePowerFeature with RangePowerFeature
-    with FriendlyDisplay {
+    extends GeneralFeat with GreaterWeaponSpecializationBase with RequiresAllOfFeat with SubFeat
+    with Prefix with FeaturesImpl with ToDamageByWeaponClassFeature with MeleePowerFeature
+    with RangePowerFeature with FriendlyDisplay {
+    override protected[this] lazy val triggerOn: Seq[TriggerEvent] = Seq(TriggerEvent.Passive)
+    override protected[this] lazy val triggerOff: Seq[TriggerEvent] = Seq(TriggerEvent.Never)
+    override protected[this] lazy val meleePowerCategories: Seq[effect.EffectCategories.Value] =
+      Seq(effect.EffectCategories.GeneralCombat)
     override protected val prefixSeparator: String = ": "
-    lazy override protected[this] val triggerOn: TriggerEvent = TriggerEvent.Passive
-    lazy override protected[this] val triggerOff: TriggerEvent = TriggerEvent.Never
-    lazy override protected[this] val categories: Seq[effect.EffectCategories.Value] = Seq(
+    override protected[this] val toDmgWcCategories: Seq[effect.EffectCategories.Value] = Seq(
       effect.EffectCategories.GeneralCombat)
-    override def prefix: Option[String] =
-      Some("GreaterWeaponSpecialization".splitByCase)
-
+    override protected[this] val rangePowerCategories: Seq[effect.EffectCategories.Value] = Seq(
+      effect.EffectCategories.GeneralCombat)
     override protected val toDamageType: BonusType = BonusType.Feat
-    override protected val toDamageAmount: Seq[(WeaponCategory, Int)] = filterByWeaponClass(weaponClass).map((_, 2))
+    override protected val toDamageAmount: Seq[(WeaponCategory, Int)] =
+      filterByWeaponClass(weaponClass).map((_, 2))
     override protected val meleePowerBonusType: BonusType = BonusType.Feat
     override protected val meleePowerBonusAmount: Int = 2
     override protected val rangePowerBonusType: BonusType = BonusType.Feat
     override protected val rangePowerBonusAmount: Int = 2
+
+    override def prefix: Option[String] =
+      Some("GreaterWeaponSpecialization".splitByCase)
 
     override def allOfFeats: Seq[GeneralFeat] =
       greaterWeaponFocusAny.filter { x =>
@@ -397,11 +411,12 @@ object GeneralFeat extends Enum[GeneralFeat] with FeatSearchPrefix with FeatMatc
   }
 
   case class SpellFocus(school: School)
-    extends GeneralFeat with SpellFocusBase with SubFeat with Prefix with FeaturesImpl with SpellFocusFeature {
-    lazy override protected[this] val triggerOn: TriggerEvent = TriggerEvent.Passive
-    lazy override protected[this] val triggerOff: TriggerEvent = TriggerEvent.Never
-    lazy override protected[this] val categories: Seq[effect.EffectCategories.Value] = Seq(
-      effect.EffectCategories.SpellCasting)
+    extends GeneralFeat with SpellFocusBase with SubFeat with Prefix with FeaturesImpl
+    with SpellFocusFeature {
+    override protected[this] lazy val triggerOn: Seq[TriggerEvent] = Seq(TriggerEvent.Passive)
+    override protected[this] lazy val triggerOff: Seq[TriggerEvent] = Seq(TriggerEvent.Never)
+    override protected[this] lazy val spellFocusCategories: Seq[effect.EffectCategories.Value] =
+      Seq(effect.EffectCategories.SpellCasting)
     override protected val spellFocusBonusType: BonusType = BonusType.Feat
     override protected val spellFocusDifficultyCheck: Int = 1
     override protected val spellSchool: School = school
@@ -416,11 +431,12 @@ object GeneralFeat extends Enum[GeneralFeat] with FeatSearchPrefix with FeatMatc
   }
 
   case class GreaterSpellFocus(school: School)
-    extends GeneralFeat with GreaterSpellFocusBase with SubFeat with Prefix with FeaturesImpl with SpellFocusFeature {
-    lazy override protected[this] val triggerOn: TriggerEvent = TriggerEvent.Passive
-    lazy override protected[this] val triggerOff: TriggerEvent = TriggerEvent.Never
-    lazy override protected[this] val categories: Seq[effect.EffectCategories.Value] = Seq(
-      effect.EffectCategories.SpellCasting)
+    extends GeneralFeat with GreaterSpellFocusBase with SubFeat with Prefix with FeaturesImpl
+    with SpellFocusFeature {
+    override protected[this] lazy val triggerOn: Seq[TriggerEvent] = Seq(TriggerEvent.Passive)
+    override protected[this] lazy val triggerOff: Seq[TriggerEvent] = Seq(TriggerEvent.Never)
+    override protected[this] lazy val spellFocusCategories: Seq[effect.EffectCategories.Value] =
+      Seq(effect.EffectCategories.SpellCasting)
     override protected val spellFocusBonusType: BonusType = BonusType.Feat
     override protected val spellFocusDifficultyCheck: Int = 1
     override protected val spellSchool: School = school
@@ -448,22 +464,24 @@ object GeneralFeat extends Enum[GeneralFeat] with FeatSearchPrefix with FeatMatc
    * @param weapon
    *   The Simple Weapon Category (i.e. Short Sword, Dagger, Light Crossbow)
    * @note
-   *   Every class except Wizards, Monks, and Druids get this feat for free at level 1. Wizards are only proficient in a
-   *   subset of Simple weapons: (Club, Dagger, Quarterstaff, Heavy Crossbow, Light Crossbow, and Throwing Dagger).
-   *   Monks are proficient with these simple weapons: Club, Dagger, Quarterstaff, Heavy Crossbow, Light Crossbow and of
-   *   course Handwraps (Unarmed) Monks are also proficient with a few non-simple weapons: The Handaxe (Martial), The
-   *   Kama (Exotic) and the Shuriken (Exotic) Druids are proficient with these simple weapons: Club, Dagger, Dart,
-   *   Quarterstaff, Sickle, and Unarmed. Druids are also proficient with the Martial class Scimitar.
+   *   Every class except Wizards, Monks, and Druids get this feat for free at level 1. Wizards are
+   *   only proficient in a subset of Simple weapons: (Club, Dagger, Quarterstaff, Heavy Crossbow,
+   *   Light Crossbow, and Throwing Dagger). Monks are proficient with these simple weapons: Club,
+   *   Dagger, Quarterstaff, Heavy Crossbow, Light Crossbow and of course Handwraps (Unarmed) Monks
+   *   are also proficient with a few non-simple weapons: The Handaxe (Martial), The Kama (Exotic)
+   *   and the Shuriken (Exotic) Druids are proficient with these simple weapons: Club, Dagger,
+   *   Dart, Quarterstaff, Sickle, and Unarmed. Druids are also proficient with the Martial class
+   *   Scimitar.
    */
   case class SimpleWeaponProficiency(
     override val grantToClass: Seq[(HeroicCharacterClass, Int)],
     weapon: WeaponCategory with SimpleWeapon*
   ) extends GeneralFeat with SimpleWeaponProficiencyBase with GrantsToClass with Prefix with SubFeat
     with WeaponProficiencyFeature {
-    lazy override protected[this] val triggerOn: TriggerEvent = TriggerEvent.Passive
-    lazy override protected[this] val triggerOff: TriggerEvent = TriggerEvent.Never
-    lazy override protected[this] val categories: Seq[effect.EffectCategories.Value] = Seq(
-      effect.EffectCategories.GeneralCombat)
+    override protected[this] lazy val triggerOn: Seq[TriggerEvent] = Seq(TriggerEvent.Passive)
+    override protected[this] lazy val triggerOff: Seq[TriggerEvent] = Seq(TriggerEvent.Never)
+    override protected[this] lazy val weaponProficiencyCategories
+      : Seq[effect.EffectCategories.Value] = Seq(effect.EffectCategories.GeneralCombat)
     override protected val proficiencyType: BonusType = BonusType.Feat
     override protected val proficiencyAmount: Seq[WeaponCategory] = weapon
     /**
@@ -483,12 +501,12 @@ object GeneralFeat extends Enum[GeneralFeat] with FeatSearchPrefix with FeatMatc
     override val grantsToRace: Seq[(Race, Int)],
     override val grantToClass: Seq[(HeroicCharacterClass, Int)],
     weapon: WeaponCategory with MartialWeapon*
-  ) extends GeneralFeat with RaceRequisiteImpl with MartialWeaponProficiencyBase with Prefix with SubFeat
-    with FeaturesImpl with WeaponProficiencyFeature {
-    lazy override protected[this] val triggerOn: TriggerEvent = TriggerEvent.Passive
-    lazy override protected[this] val triggerOff: TriggerEvent = TriggerEvent.Never
-    lazy override protected[this] val categories: Seq[effect.EffectCategories.Value] = Seq(
-      effect.EffectCategories.GeneralCombat)
+  ) extends GeneralFeat with RaceRequisiteImpl with MartialWeaponProficiencyBase with Prefix
+    with SubFeat with FeaturesImpl with WeaponProficiencyFeature {
+    override protected[this] lazy val triggerOn: Seq[TriggerEvent] = Seq(TriggerEvent.Passive)
+    override protected[this] lazy val triggerOff: Seq[TriggerEvent] = Seq(TriggerEvent.Never)
+    override protected[this] lazy val weaponProficiencyCategories
+      : Seq[effect.EffectCategories.Value] = Seq(effect.EffectCategories.GeneralCombat)
 
     override protected val proficiencyType: BonusType = BonusType.Feat
     override protected val proficiencyAmount: Seq[WeaponCategory] = weapon
@@ -508,12 +526,12 @@ object GeneralFeat extends Enum[GeneralFeat] with FeatSearchPrefix with FeatMatc
   case class ExoticWeaponProficiency(
     override val grantsToRace: Seq[(Race, Int)],
     weapon: WeaponCategory with ExoticWeapon*
-  ) extends GeneralFeat with RaceRequisiteImpl with ExoticWeaponProficiencyBase with Prefix with SubFeat
-    with FeaturesImpl with WeaponProficiencyFeature {
-    lazy override protected[this] val triggerOn: TriggerEvent = TriggerEvent.Passive
-    lazy override protected[this] val triggerOff: TriggerEvent = TriggerEvent.Never
-    lazy override protected[this] val categories: Seq[effect.EffectCategories.Value] = Seq(
-      effect.EffectCategories.GeneralCombat)
+  ) extends GeneralFeat with RaceRequisiteImpl with ExoticWeaponProficiencyBase with Prefix
+    with SubFeat with FeaturesImpl with WeaponProficiencyFeature {
+    override protected[this] lazy val triggerOn: Seq[TriggerEvent] = Seq(TriggerEvent.Passive)
+    override protected[this] lazy val triggerOff: Seq[TriggerEvent] = Seq(TriggerEvent.Never)
+    override protected[this] lazy val weaponProficiencyCategories
+      : Seq[effect.EffectCategories.Value] = Seq(effect.EffectCategories.GeneralCombat)
     override protected val proficiencyType: BonusType = BonusType.Feat
     override protected val proficiencyAmount: Seq[WeaponCategory] = weapon
     /**
@@ -530,7 +548,8 @@ object GeneralFeat extends Enum[GeneralFeat] with FeatSearchPrefix with FeatMatc
   }
 
   case class SkillFocus(skill: Skill)
-    extends GeneralFeat with SkillFocusBase with SubFeat with Prefix with FeaturesImpl with SkillFeature {
+    extends GeneralFeat with SkillFocusBase with SubFeat with Prefix with FeaturesImpl
+    with SkillFeature {
 
     override val bonusType: BonusType = BonusType.Feat
     override val affectedSkills: List[(Skill, Int)] = List((skill, 3))
@@ -547,17 +566,18 @@ object GeneralFeat extends Enum[GeneralFeat] with FeatSearchPrefix with FeatMatc
   case object Attack extends GeneralFeat with Attack
 
   /**
-   * Defensive Combat Stance: While using Defensive Fighting mode, you gain a 5% bonus to Armor Class and a -5% penalty
-   * to-hit.
+   * Defensive Combat Stance: While using Defensive Fighting mode, you gain a 5% bonus to Armor
+   * Class and a -5% penalty to-hit.
    *
-   * This is the standard defensive stance and is granted automatically to all characters. Casting a spell ends this
-   * mode.
+   * This is the standard defensive stance and is granted automatically to all characters. Casting a
+   * spell ends this mode.
    */
   case object DefensiveFighting extends GeneralFeat with DefensiveFighting
 
   /**
-   * Activate this short-ranged ability while targeting a charmed, commanded, controlled, or dominated enemy that is
-   * under your control to dispel the controlling effect. [https://ddowiki.com/page/Dismiss_Charm]
+   * Activate this short-ranged ability while targeting a charmed, commanded, controlled, or
+   * dominated enemy that is under your control to dispel the controlling effect.
+   * [https://ddowiki.com/page/Dismiss_Charm]
    */
   case object DismissCharm extends GeneralFeat with DismissCharm
 
@@ -569,14 +589,14 @@ object GeneralFeat extends Enum[GeneralFeat] with FeatSearchPrefix with FeatMatc
   // Seq(Feat.WeaponFocusBludgeon, Feat.WeaponFocusPiercing, Feat.WeaponFocusSlashing, Feat.WeaponFocusRanged, Feat.WeaponFocusThrown)
 
   /**
-   * A sunder attempt is a melee special attack that, when successful, results in a -10% AC penalty and - 25%
-   * Fortification to the target for 6 seconds if it fails a DC (10 + Str mod) Fortitude save. Some creatures may be
-   * immune to the sunder effect.[official].
+   * A sunder attempt is a melee special attack that, when successful, results in a -10% AC penalty
+   * and - 25% Fortification to the target for 6 seconds if it fails a DC (10 + Str mod) Fortitude
+   * save. Some creatures may be immune to the sunder effect.[official].
    *
    * Notes:
    *
-   * Has an unlisted prerequisite of Base Attack Bonus of 1 for most classes. Monks and Rogues receive Trip at level 1,
-   * despite their 3/4 BAB progression. https://ddowiki.com/page/Sunder
+   * Has an unlisted prerequisite of Base Attack Bonus of 1 for most classes. Monks and Rogues
+   * receive Trip at level 1, despite their 3/4 BAB progression. https://ddowiki.com/page/Sunder
    */
   case object Sunder extends GeneralFeat with Sunder
 
@@ -647,7 +667,8 @@ object GeneralFeat extends Enum[GeneralFeat] with FeatSearchPrefix with FeatMatc
 
   case object SpringAttack extends GeneralFeat with SpringAttack
 
-  case object ImprovedCritical extends GeneralFeat with ImprovedCriticalBase with ParentFeat with FeaturesImpl {
+  case object ImprovedCritical
+    extends GeneralFeat with ImprovedCriticalBase with ParentFeat with FeaturesImpl {
     override val subFeats: Seq[GeneralFeat with SubFeat] = improvedCriticalAny
   }
 
@@ -715,14 +736,16 @@ object GeneralFeat extends Enum[GeneralFeat] with FeatSearchPrefix with FeatMatc
     override def allOfFeats: Seq[GeneralFeat] = List(GeneralFeat.WeaponFocus)
   }
 
-  case object WeaponSpecialization extends GeneralFeat with WeaponSpecializationBase with ParentFeat {
+  case object WeaponSpecialization
+    extends GeneralFeat with WeaponSpecializationBase with ParentFeat {
 
     override val subFeats: Seq[GeneralFeat with SubFeat] =
       weaponSpecializationAny
   }
 
   case object GreaterWeaponSpecialization
-    extends GeneralFeat with GreaterWeaponSpecializationBase with RequiresAllOfFeat with ParentFeat {
+    extends GeneralFeat with GreaterWeaponSpecializationBase with RequiresAllOfFeat
+    with ParentFeat {
 
     override val subFeats: Seq[GeneralFeat with SubFeat] =
       greaterWeaponSpecializationAny
@@ -776,17 +799,18 @@ object GeneralFeat extends Enum[GeneralFeat] with FeatSearchPrefix with FeatMatc
 
   /**
    * @todo
-   *   Verify if Stunning Fist is actually listed as a General Feat or if we should make a separate Prefix for Martial
-   *   Feats (Monk)
+   *   Verify if Stunning Fist is actually listed as a General Feat or if we should make a separate
+   *   Prefix for Martial Feats (Monk)
    */
   case object StunningFist extends GeneralFeat with StunningFist
 
   /**
-   * You can use your [Wisdom](/page/Wisdom "Wisdom") bonus instead of [Dexterity](/page/Dexterity "Dexterity") bonus to
-   * determine bonus to attack with ranged missile weapons if it is higher.
+   * You can use your [Wisdom](/page/Wisdom "Wisdom") bonus instead of [Dexterity](/page/Dexterity
+   * "Dexterity") bonus to determine bonus to attack with ranged missile weapons if it is higher.
    *
-   * * Does <u>not</u> apply to [thrown weapons](/page/Thrown_weapon "Thrown weapon"). * [Shortbows](/page/Shortbow
-   * "Shortbow") and [Longbows](/page/Longbow "Longbow") are considered [Ki weapons](/page/Ki_weapons "Ki weapons").
+   * * Does <u>not</u> apply to [thrown weapons](/page/Thrown_weapon "Thrown weapon"). *
+   * [Shortbows](/page/Shortbow "Shortbow") and [Longbows](/page/Longbow "Longbow") are considered
+   * [Ki weapons](/page/Ki_weapons "Ki weapons").
    */
   case object ZenArchery extends GeneralFeat with ZenArchery
 
@@ -849,7 +873,7 @@ object GeneralFeat extends Enum[GeneralFeat] with FeatSearchPrefix with FeatMatc
   case object ExoticWeaponProficiency
     extends GeneralFeat with RaceRequisiteImpl with ExoticWeaponProficiencyBase with ParentFeat {
 
-    override val subFeats: Seq[GeneralFeat with SubFeat] =
+    override val subFeats: Seq[ExoticWeaponProficiency] =
       exoticWeaponProficiencies
 
     override def prefix: Option[String] = None
@@ -904,7 +928,8 @@ object GeneralFeat extends Enum[GeneralFeat] with FeatSearchPrefix with FeatMatc
   case object InsightfulReflexes extends GeneralFeat with InsightfulReflexes
 
   // FavorPatron awarded free feats
-  case object CoinLordFinishingSchoolTraining extends GeneralFeat with CoinLordFinishingSchoolTraining
+  case object CoinLordFinishingSchoolTraining
+    extends GeneralFeat with CoinLordFinishingSchoolTraining
 
   // Exchange feats
   // case object FeatRespecToken extends Feat with FeatRespecToken

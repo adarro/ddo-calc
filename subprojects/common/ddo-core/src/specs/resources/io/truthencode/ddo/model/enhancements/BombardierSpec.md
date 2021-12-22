@@ -2,17 +2,18 @@
 
 ## [Core](- "setUpTier(#TEXT)")
 
-|Icon|[ ][setUpEnhancement]  [Enhancement][enhancement] | Description (Unvalidated) | [AP Cost][apcost] | [Ranks][ranks] | [Progression][progression]| Requirements |
-|---|---|---|---|---|---|---|
-| |**Alchemical Resistance**| +2 Magical Resistance Rating | AP Cost: 1 | Ranks: 1 | Progression: 0 | <small>Requires: Alchemist Level 1</small> |
-| |**Arcane Oil**| All equipped weapons are considered Spellcasting Implements.<br/>While in Pyrite Reaction, you gain +5 Fire, Cold, Electric, Acid, and Poison Spell Power. | AP Cost: 1 | Ranks: 1 | Progression: 5 | <small>Requires: Alchemical Resistance, Alchemist Level 3</small> |
-| |**Liquid Power I**| Select an Element to specialize in.<br />Liquid Power Acid: You gain +1 Caster Level with Acid Spells.<br/>Liquid Power Cold: You gain +1 Caster Level with Cold Spells.<br/>Liquid Power Electric: You gain +1 Caster Level with Electric Spells.<br/>Liquid Power Fire: You gain +1 Caster Level with Fire Spells.<br/>Liquid Power Poison: You gain +1 Caster Level with Poison Spells. While in Pyrite Reaction, you gain +5 Fire, Cold, Electric, Acid, and Poison Spell Power | AP Cost: 1 | Ranks: 1 | Progression: 10 | <small>Requires: Arcane Oil, Alchemist Level 6</small> |
-| |**Liquid Power II**| Select an Element to specialize in.<br/>Liquid Power Acid: You gain +1 Caster Level with Acid Spells.<br/>Liquid Power Cold: You gain +1 Caster Level with Cold Spells.<br/>Liquid Power Electric: You gain +1 Caster Level with Electric Spells.<br/>Liquid Power Fire: You gain +1 Caster Level with Fire Spells.<br/>Liquid Power Poison: You gain +1 Caster Level with Poison Spells. While in Pyrite Reaction, you gain +2% Fire, Cold, Electric, Acid, and Poison Spell Critical Damage. | AP Cost: 1 | Ranks: 1 | Progression: 20 | <small>Requires: Liquid Power I, Alchemist Level 12</small> |
-| |**Liquid Power III**| Select an Element to specialize in.<br/>Liquid Power Acid: You gain +1 Caster Level with Acid Spells, and 1 extra Burning Ambition Dice.<br/>Liquid Power Cold: You gain +1 Caster Level with Cold Spells, and 1 extra Burning Ambition Dice.<br/>Liquid Power Electric: You gain +1 Caster Level with Electric Spells, and 1 extra Burning Ambition Dice.<br/>Liquid Power Fire: You gain +1 Caster Level with Fire Spells, and 1 extra Burning Ambition Dice.<br/>Liquid Power Poison: You gain +1 Caster Level with Poison Spells, and 1 extra Burning Ambition Dice. While in Pyrite Reaction, you gain +1 Conjuration DC. | AP Cost: 1 | Ranks: 1 | Progression: 30 | <small>Requires: Liquid Power II, Alchemist Level 18</small> |
-| |**Multivial**| Select an Element to specialize in.<br/>SLA:Multivial of Acid(SP:15, Cooldown:12 seconds)<br/>SLA:Multivial of Frost(SP:15, Cooldown:12 seconds)<br/>SLA:Multivial of Sparks(SP:15, Cooldown:12 seconds)<br/>SLA:Multivial of Flame(SP:15, Cooldown:12 seconds)<br/>SLA:Multivial of Poison(SP:15, Cooldown:12 seconds)Primer Element:Crimsonite (Red),Passive: +4 Intelligence, and 2 extra Burning Ambition Dice. While in Pyrite Reaction, you gain +2 Conjuration DCs. | AP Cost: 1 | Ranks: 1 | Progression: 40 | <small>Requires: Liquid Power III, Alchemist Level 20</small> |
+| Icon | [ ][setUpEnhancement]  [Enhancement][enhancement] | Description (Unvalidated)                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      | [AP Cost][apcost] | [Ranks][ranks] | [Progression][progression] | Requirements                                                      |
+|------|---------------------------------------------------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|-------------------|----------------|----------------------------|-------------------------------------------------------------------|
+|      | **Alchemical Resistance**                         | +2 Magical Resistance Rating                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                   | AP Cost: 1        | Ranks: 1       | Progression: 0             | <small>Requires: Alchemist Level 1</small>                        |
+|      | **Arcane Oil**                                    | All equipped weapons are considered Spellcasting Implements.<br/>While in Pyrite Reaction, you gain +5 Fire, Cold, Electric, Acid, and Poison Spell Power.                                                                                                                                                                                                                                                                                                                                                                                                                                                                     | AP Cost: 1        | Ranks: 1       | Progression: 5             | <small>Requires: Alchemical Resistance, Alchemist Level 3</small> |
+|      | **Liquid Power I**                                | Select an Element to specialize in.<br />Liquid Power Acid: You gain +1 Caster Level with Acid Spells.<br/>Liquid Power Cold: You gain +1 Caster Level with Cold Spells.<br/>Liquid Power Electric: You gain +1 Caster Level with Electric Spells.<br/>Liquid Power Fire: You gain +1 Caster Level with Fire Spells.<br/>Liquid Power Poison: You gain +1 Caster Level with Poison Spells. While in Pyrite Reaction, you gain +5 Fire, Cold, Electric, Acid, and Poison Spell Power                                                                                                                                            | AP Cost: 1        | Ranks: 1       | Progression: 10            | <small>Requires: Arcane Oil, Alchemist Level 6</small>            |
+|      | **Liquid Power II**                               | Select an Element to specialize in.<br/>Liquid Power Acid: You gain +1 Caster Level with Acid Spells.<br/>Liquid Power Cold: You gain +1 Caster Level with Cold Spells.<br/>Liquid Power Electric: You gain +1 Caster Level with Electric Spells.<br/>Liquid Power Fire: You gain +1 Caster Level with Fire Spells.<br/>Liquid Power Poison: You gain +1 Caster Level with Poison Spells. While in Pyrite Reaction, you gain +2% Fire, Cold, Electric, Acid, and Poison Spell Critical Damage.                                                                                                                                 | AP Cost: 1        | Ranks: 1       | Progression: 20            | <small>Requires: Liquid Power I, Alchemist Level 12</small>       |
+|      | **Liquid Power III**                              | Select an Element to specialize in.<br/>Liquid Power Acid: You gain +1 Caster Level with Acid Spells, and 1 extra Burning Ambition Dice.<br/>Liquid Power Cold: You gain +1 Caster Level with Cold Spells, and 1 extra Burning Ambition Dice.<br/>Liquid Power Electric: You gain +1 Caster Level with Electric Spells, and 1 extra Burning Ambition Dice.<br/>Liquid Power Fire: You gain +1 Caster Level with Fire Spells, and 1 extra Burning Ambition Dice.<br/>Liquid Power Poison: You gain +1 Caster Level with Poison Spells, and 1 extra Burning Ambition Dice. While in Pyrite Reaction, you gain +1 Conjuration DC. | AP Cost: 1        | Ranks: 1       | Progression: 30            | <small>Requires: Liquid Power II, Alchemist Level 18</small>      |
+|      | **Multivial**                                     | Select an Element to specialize in.<br/>SLA:Multivial of Acid(SP:15, Cooldown:12 seconds)<br/>SLA:Multivial of Frost(SP:15, Cooldown:12 seconds)<br/>SLA:Multivial of Sparks(SP:15, Cooldown:12 seconds)<br/>SLA:Multivial of Flame(SP:15, Cooldown:12 seconds)<br/>SLA:Multivial of Poison(SP:15, Cooldown:12 seconds)Primer Element:Crimsonite (Red),Passive: +4 Intelligence, and 2 extra Burning Ambition Dice. While in Pyrite Reaction, you gain +2 Conjuration DCs.                                                                                                                                                     | AP Cost: 1        | Ranks: 1       | Progression: 40            | <small>Requires: Liquid Power III, Alchemist Level 20</small>     |
 
 
 ## [Tier1](-)
+
 [[edit](https://www.ddowiki.com/edit/Bombardier_enhancements?section=2 "Edit section: Tier One")]
 [tier1](- "#tier")
 <span concordion:execute = "#tier = setUpTier(#tier)"></span>
@@ -26,9 +27,8 @@ Alchemical Resistance, Alchemist Level 1
 |  | **[Spell Critical: Elemental and Poison I](https://www.ddowiki.com/edit/Spell_Critical:_Elemental_and_Poison_I?redlink=1 "Spell Critical: Elemental and Poison I (page does not exist)")**| Your Acid, Cold, Electric, Fire, and Poison damage spells have an additional 1% chance to critically hit. | [AP Cost](https://www.ddowiki.com/page/Action_point "Action point"): 2 | Ranks: 1 | [Progression](https://www.ddowiki.com/page/Progression "Progression"): 1 | <small>No requirements</small> |
 |  | **[Wand and Scroll Mastery](https://www.ddowiki.com/page/Wand_and_Scroll_Mastery "Wand and Scroll Mastery")**| +[25/50/75]% damage and healing from your wands, scrolls, and other items that cast spells, and +[1/3/6] to the save DCs of your offensive wands. | [AP Cost](https://www.ddowiki.com/page/Action_point "Action point"): 1 | Ranks: 3 | [Progression](https://www.ddowiki.com/page/Progression "Progression"): 1 | <small>No requirements</small> |
 
-
-
 ## Tier Two [[edit](https://www.ddowiki.com/edit/Bombardier_enhancements?section=3 "Edit section: Tier Two")]
+
 [tier2](- "#tier")
 <span concordion:execute = "#tier = setUpTier(#tier)"></span>
 Requires Alchemist level 2, 5 APS spent in tree
@@ -41,8 +41,8 @@ Requires Alchemist level 2, 5 APS spent in tree
 |  | **[Spell Critical: Elemental and Poison II](https://www.ddowiki.com/edit/Spell_Critical:_Elemental_and_Poison_II?redlink=1 "Spell Critical: Elemental and Poison II (page does not exist)")**| Your Acid, Cold, Electric, Fire, and Poison damage spells have an additional 1% chance to critically hit. | [AP Cost](https://www.ddowiki.com/page/Action_point "Action point"): 2 | Ranks: 1 | [Progression](https://www.ddowiki.com/page/Progression "Progression"): 5 | <small>Requires: Spell Critical: Elemental and Poison I</small> |
 |  | **[Elemental Defenses](https://www.ddowiki.com/edit/Elemental_Defenses?redlink=1 "Elemental Defenses (page does not exist)")**| When enemy spells deal elemental damage against you, there's a 25% chance you'll gain [10/20/30] temporary hitpoints for 30 seconds. This can trigger up to once every 12 seconds. (Elemental Damage includes Acid, Cold, Electric, Fire, Sonic.) | [AP Cost](https://www.ddowiki.com/page/Action_point "Action point"): 1 | Ranks: 3 | [Progression](https://www.ddowiki.com/page/Progression "Progression"): 5 | <small>No requirements</small> |
 
-
 ## [Tier3](-) Tier Three [[edit](https://www.ddowiki.com/edit/Bombardier_enhancements?section=4 "Edit section: Tier Three")]
+
 [tier3](- "#tier")
 <span concordion:execute = "#tier = setUpTier(#tier)"></span>
 Requires Alchemist level 3, 10 APS spent in tree
@@ -55,6 +55,7 @@ Requires Alchemist level 3, 10 APS spent in tree
 |  | **[Ability I](https://www.ddowiki.com/edit/Ability_I?redlink=1 "Ability I (page does not exist)")**| +1 to Intelligence | [AP Cost](https://www.ddowiki.com/page/Action_point "Action point"): 2 | Ranks: 1 | [Progression](https://www.ddowiki.com/page/Progression "Progression"): 10 | <small>No requirements</small> |
 
 ## Tier Four [[edit](https://www.ddowiki.com/edit/Bombardier_enhancements?section=5 "Edit section: Tier Four")]
+
 [tier4](- "#tier")
 <span concordion:execute = "#tier = setUpTier(#tier)"></span>
 Requires Alchemist level 4, 20 APS spent in tree
@@ -67,7 +68,8 @@ Requires Alchemist level 4, 20 APS spent in tree
 |  | **[Spell Critical: Elemental and Poison IV](https://www.ddowiki.com/edit/Spell_Critical:_Elemental_and_Poison_IV?redlink=1 "Spell Critical: Elemental and Poison IV (page does not exist)")**| Your Acid, Cold, Electric, Fire, and Poison damage spells have an additional 1% chance to critically hit. | [AP Cost](https://www.ddowiki.com/page/Action_point "Action point"): 2 | Ranks: 1 | [Progression](https://www.ddowiki.com/page/Progression "Progression"): 20 | <small>Requires: Spell Critical: Elemental and Poison III</small> |
 |  | **[Ability II](https://www.ddowiki.com/edit/Ability_II?redlink=1 "Ability II (page does not exist)")**| +1 to Intelligence | [AP Cost](https://www.ddowiki.com/page/Action_point "Action point"): 2 | Ranks: 1 | [Progression](https://www.ddowiki.com/page/Progression "Progression"): 20 | <small>Requires: Ability I</small> |
 
-##  Tier Five [[edit](https://www.ddowiki.com/edit/Bombardier_enhancements?section=6 "Edit section: Tier Five")]
+## Tier Five [[edit](https://www.ddowiki.com/edit/Bombardier_enhancements?section=6 "Edit section: Tier Five")]
+
 [tier5](- "#tier")
 <span concordion:execute = "#tier = setUpTier(#tier)"></span>
 
@@ -81,18 +83,27 @@ Requires Alchemist Level 5, Character Level 12, 30 APs spent in tree
 |  | **[Conjuration Focus](https://www.ddowiki.com/page/Conjuration_Focus "Conjuration Focus")**| +2 to Conjuration DCs | [AP Cost](https://www.ddowiki.com/page/Action_point "Action point"): 2 | Ranks: 1 | [Progression](https://www.ddowiki.com/page/Progression "Progression"): 30 | <small>No requirements</small> |
 |  | **[Weakening Mixture](https://www.ddowiki.com/edit/Weakening_Mixture?redlink=1 "Weakening Mixture (page does not exist)")**| Select an Element to specialize in.<br/> Weakening Mixture Acid: When cast an Acid spell on a creature that is immune to Acid, it makes them vulnerable to Acid for a short period of time.<br/> Weakening Mixture Cold: When cast on a Cold spell on a creature that is immune to Cold, it makes them vulnerable to Cold for a short period of time.<br/> Weakening Mixture Electric: When cast an Electric spell on a creature that is immune to Electric, it makes them vulnerable to Electric for a short period of time.<br/> Weakening Mixture Fire: When cast on a Fire spell on a creature that is immune to Fire, it makes them vulnerable to Fire for a short period of time.<br/> Weakening Mixture Poison: When cast on a Poison spell on a creature that is immune to Poison, it makes them vulnerable to Poison for a short period of time. Note: Any spell of the proper element can remove immunities. Tested working for Sorcerer, Alchemist, and Artificer spells. | [AP Cost](https://www.ddowiki.com/page/Action_point "Action point"): 1 | Ranks: 1 | [Progression](https://www.ddowiki.com/page/Progression "Progression"): 30 | <small>No requirements</small> |
 
-
-Retrieved from "[https://ddowiki.com/index.php?title=Bombardier_enhancements&oldid=437703](https://ddowiki.com/index.php?title=Bombardier_enhancements&oldid=437703) "[Category](https://www.ddowiki.com/page/Special:Categories "Special:Categories"):
+Retrieved
+from "[https://ddowiki.com/index.php?title=Bombardier_enhancements&oldid=437703](https://ddowiki.com/index.php?title=Bombardier_enhancements&oldid=437703) "[Category](https://www.ddowiki.com/page/Special:Categories "Special:Categories"):
 
 [enhancement]: - "#enhancementId"
 
 [_matchStrategy_]: - "c:matchStrategy=KeyMatch"
+
 [setUpTier]: - "#tier = resetTier(#tier)"
+
 [setUpEnhancement]: - "#result = loadFromKey(#enhancementId)"
+
 [description]: - "?=#result.description()"
+
 [apcost]: - "?=#result.apcost()"
+
 [ranks]: - "?=#result.ranks()"
+
 [progression]: - "?=#result.progression()"
+
 [requirements]: - "?=#result.requirements()"
+
 [ap]: https://ddowiki.comhttps://www.ddowiki.com/page/Action_point
+
 [progression_lnk]:  https://ddowiki.comhttps://www.ddowiki.com/page/Progression

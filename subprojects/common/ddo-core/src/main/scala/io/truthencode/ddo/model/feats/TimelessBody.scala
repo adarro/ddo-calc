@@ -24,7 +24,8 @@ import io.truthencode.ddo.support.requisite.{FeatRequisiteImpl, GrantsToClass, R
 /**
  * Created by adarr on 3/17/2017.
  */
-trait TimelessBody extends FeatRequisiteImpl with Passive with GrantsToClass with RequiresAnyOfClass {
+trait TimelessBody
+  extends FeatRequisiteImpl with Passive with GrantsToClass with RequiresAnyOfClass {
   override def grantToClass: Seq[(HeroicCharacterClass, Int)] =
     List((Druid, 15), (Monk, 17))
 

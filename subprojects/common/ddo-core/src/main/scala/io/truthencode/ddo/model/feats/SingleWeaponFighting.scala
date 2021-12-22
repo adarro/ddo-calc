@@ -21,17 +21,18 @@ import io.truthencode.ddo.model.skill.Skill
 import io.truthencode.ddo.support.requisite.{FeatRequisiteImpl, RequiresAnyOfSkill, SkillRequisiteImpl}
 
 /**
- * Icon Feat Single Weapon Fighting.png Single Weapon Fighting Passive While Single Weapon Fighting, you gain +10%
- * Combat Style bonus to attack speed and 2 Melee Power.
+ * Icon Feat Single Weapon Fighting.png Single Weapon Fighting Passive While Single Weapon Fighting,
+ * you gain +10% Combat Style bonus to attack speed and 2 Melee Power.
  *
- * Single Weapon Fighting: Requires fighting with a single one-handed weapon, and wielding only an orb, runearm, or
- * nothing in your off hand.
+ * Single Weapon Fighting: Requires fighting with a single one-handed weapon, and wielding only an
+ * orb, runearm, or nothing in your off hand.
  *
- * Note: Actually increases base number of attacks per second from 1.4 to 1.6.[Unverified] 2 ranks of Balance
+ * Note: Actually increases base number of attacks per second from 1.4 to 1.6.[Unverified] 2 ranks
+ * of Balance
  */
 protected[feats] trait SingleWeaponFighting
-  extends FeatRequisiteImpl with SkillRequisiteImpl with Passive with RequiresAnyOfSkill with FighterBonusFeat
-  with MartialArtsFeat {
+  extends FeatRequisiteImpl with SkillRequisiteImpl with Passive with RequiresAnyOfSkill
+  with FighterBonusFeat with MartialArtsFeat {
   self: GeneralFeat =>
   override def oneOfSkill: Seq[(Skill, Int)] = List((Skill.Balance, 2))
 }

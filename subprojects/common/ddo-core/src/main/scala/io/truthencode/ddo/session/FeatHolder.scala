@@ -17,10 +17,6 @@
  */
 package io.truthencode.ddo.session
 
-import io.truthencode.ddo.model.feats.Feat
-
-import scala.collection.mutable
-
 class FeatHolder { //extends StatusHolder[Feat] {
 
 //    override val enum: E = Feat

@@ -18,8 +18,8 @@
 package io.truthencode.ddo.model.meta
 
 /**
- * Base trait used to indicate the affect / ability can be improved / reduced based on an additional statistic.
- * Implementation examples would include Strength (by default) for weapon damage or the Perform skill for Sonic spell
- * power
+ * Base trait used to indicate the affect / ability can be improved / reduced based on an additional
+ * statistic. Implementation examples would include Strength (by default) for weapon damage or the
+ * Perform skill for Sonic spell power
  */
 trait Linked

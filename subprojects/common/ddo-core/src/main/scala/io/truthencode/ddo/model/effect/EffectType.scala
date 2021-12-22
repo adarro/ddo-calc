@@ -17,15 +17,16 @@
  */
 package io.truthencode.ddo.model.effect
 
-import enumeratum.{Enum => SmartEnum, EnumEntry}
+import enumeratum.{EnumEntry, Enum => SmartEnum}
 
 sealed trait AugmentEffectType extends EnumEntry
 
 object AugmentEffectType extends SmartEnum[AugmentEffectType] {
-  case object Attribute extends AugmentEffectType
-  case object Skill extends AugmentEffectType
-
   override val values = findValues
+
+  case object Attribute extends AugmentEffectType
+
+  case object Skill extends AugmentEffectType
 }
 
 sealed trait GrantEffectType extends EnumEntry

@@ -24,7 +24,7 @@ import io.truthencode.ddo.support.requisite._
  * Created by adarr on 2/20/2017.
  */
 trait WarforgedTraits
-  extends FeatRequisiteImpl with RaceRequisiteImpl with Passive with RequiresAttribute with GrantsToRace {
+  extends FeatRequisiteImpl with RaceRequisiteImpl with Passive with GrantsToRace {
   self: RacialFeat =>
   private val wfTraits = List((Race.Warforged, 1), (Race.Bladeforged, 1))
 

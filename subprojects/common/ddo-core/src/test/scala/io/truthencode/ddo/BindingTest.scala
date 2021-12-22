@@ -18,7 +18,7 @@
 package io.truthencode.ddo
 
 import com.typesafe.scalalogging.LazyLogging
-import io.truthencode.ddo.support.StringUtils.{randomAlphanumericString, Extensions}
+import io.truthencode.ddo.support.StringUtils.{Extensions, randomAlphanumericString}
 import io.truthencode.ddo.support.matching.{WordMatchStrategies, WordMatchStrategy}
 import org.scalactic.Equality
 import org.scalatest.funspec.AnyFunSpec
@@ -40,7 +40,9 @@ class BindingTest extends AnyFunSpec with Matchers with MockitoSugar with LazyLo
   final val numCharacters = 10
   final val randWords = for { _ <- 1 to 5 } yield randomAlphanumericString(numCharacters)
   final val bindMap = possibleText.map { words =>
-    (words, if (words.equalsIgnoreCase(Unbound)) Unbound else words.wordsToAcronym.getOrElse(Unbound))
+    (
+      words,
+      if (words.equalsIgnoreCase(Unbound)) Unbound else words.wordsToAcronym.getOrElse(Unbound))
   }.toMap.map { case (k, v) => v -> k }
   final val abbr = possibleText.map { words =>
     if (words.equalsIgnoreCase(Unbound)) Unbound else words.wordsToAcronym.getOrElse(Unbound)

@@ -17,23 +17,24 @@
  */
 package io.truthencode.ddo.model.feats
 
-import java.time.Duration
-
 import io.truthencode.ddo.activation.AtWillEvent
 import io.truthencode.ddo.model.religions.Helm
 import io.truthencode.ddo.support.requisite.{FeatRequisiteImpl, RequiresAllOfFeat}
 
+import java.time.Duration
+
 /**
- * Created by adarr on 4/7/2017. [[https://ddowiki.com/page/Ever_Watchful Ever Watchful]] You are a devoted follower of
- * Helm, and your faith has been rewarded. Activate this ability to draw upon the vigilance of Helm for 24 seconds plus
- * 6 seconds per Religious Lore feat you have.
+ * Created by adarr on 4/7/2017. [[https://ddowiki.com/page/Ever_Watchful Ever Watchful]] You are a
+ * devoted follower of Helm, and your faith has been rewarded. Activate this ability to draw upon
+ * the vigilance of Helm for 24 seconds plus 6 seconds per Religious Lore feat you have.
  *
- * In this state, you gain True Seeing, +5 Sacred bonus to Spot and Search, +4 Wisdom, +5 to Fortitude saves, and PRR
- * equal to the number of Religious Lore feats you have.
+ * In this state, you gain True Seeing, +5 Sacred bonus to Spot and Search, +4 Wisdom, +5 to
+ * Fortitude saves, and PRR equal to the number of Religious Lore feats you have.
  */
 trait EverWatchful
-  extends FeatRequisiteImpl with ForgottenRealmsReligionNonWarforged with DeityUniqueLevelBase with RequiresAllOfFeat
-  with Helm with HelmFeatBase with ActiveFeat with AtWillEvent { self: DeityFeat =>
+  extends FeatRequisiteImpl with ForgottenRealmsReligionNonWarforged with DeityUniqueLevelBase
+  with RequiresAllOfFeat with Helm with HelmFeatBase with ActiveFeat with AtWillEvent {
+  self: DeityFeat =>
 
   override def coolDown: Option[Duration] = Some(Duration.ofMinutes(10))
 

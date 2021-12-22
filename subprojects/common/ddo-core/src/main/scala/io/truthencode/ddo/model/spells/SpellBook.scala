@@ -24,10 +24,10 @@ trait SpellBook {
   def knownSpells: Seq[Spell]
 
   /**
-   * A list of functions that will return spells which are castable assuming they sufficient spell points and level
-   * requirements etc.
-   * i.e. A level 3 wizard may have Power Word: Kill inscribed but will not be able to cast it until they reach the
-   * appropriate level.
+   * A list of functions that will return spells which are castable assuming they sufficient spell
+   * points and level requirements etc.
+   * i.e. A level 3 wizard may have Power Word: Kill inscribed but will not be able to cast it until
+   * they reach the appropriate level.
    * @return
    */
   def findAvailableSpells: Seq[(String) => Option[Spell]]
@@ -39,7 +39,8 @@ trait SpellBook {
   def spellIds: Set[String]
 
   /**
-   * Loads the spells by invoking [[io.truthencode.ddo.model.spells.SpellBook#findAvailableSpells()]] on each of the
+   * Loads the spells by invoking
+   * [[io.truthencode.ddo.model.spells.SpellBook#findAvailableSpells()]] on each of the
    * [[io.truthencode.ddo.model.spells.SpellBook#spellIds()]]
    * @return
    */
@@ -55,11 +56,12 @@ trait SpellBook {
 trait SpellBookImpl extends SpellBook {
   override def knownSpells: Seq[Spell] = IndexedSeq()
 
-  override def spellIds: Set[String] = Set()
   override def findAvailableSpells: Seq[String => Option[Spell]] = {
     val seq = spellIds.toSeq
     val fn = Spell.ls(fn = Spell.withNameOption, seq: _*)
     IndexedSeq() ++ fn
   }
+
+  override def spellIds: Set[String] = Set()
 
 }

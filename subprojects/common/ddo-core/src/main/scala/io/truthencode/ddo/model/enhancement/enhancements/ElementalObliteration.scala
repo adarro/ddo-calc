@@ -19,19 +19,20 @@ package io.truthencode.ddo.model.enhancement.enhancements
 
 import io.truthencode.ddo.model.enhancement.enhancements.classbased.BombardierTierFive
 
-trait ElementalObliteration extends BombardierTierFive with ClassEnhancementImpl with ParentClassEnhancement {
+trait ElementalObliteration
+  extends BombardierTierFive with ClassEnhancementImpl with ParentClassEnhancement {
   self: ClassEnhancement =>
-
-  /**
-   * Some enhancements have multiple ranks. This is the cost for each rank. Older versions had increasing costs which
-   * has been streamlined to a linear progression.
-   *
-   * @return
-   */
-  override def apCostPerRank: Int = 1
 
   /**
    * Some enhancements can be taken multiple times (generally up to three)
    */
   override val ranks: Int = 3
+
+  /**
+   * Some enhancements have multiple ranks. This is the cost for each rank. Older versions had
+   * increasing costs which has been streamlined to a linear progression.
+   *
+   * @return
+   */
+  override def apCostPerRank: Int = 1
 }

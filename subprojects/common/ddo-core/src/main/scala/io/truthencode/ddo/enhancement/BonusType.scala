@@ -24,10 +24,11 @@ import scala.collection.immutable
 
 /**
  * A Bonus type represents the classifier of a given effect for the purposes of stacking.
- * I.e. Plate armor and a shield each provide bonuses to your Armor Class and have a cumulative benefit. Wearing a
- * shield and casting a 'Shield spell' will not. Only the highest of the two will apply to your total armor class.
- * (Overlapping can sometimes still benefit as the shield spell may provide less armor class than equipping a tower
- * shield, but it also protects against magic missiles.
+ * I.e. Plate armor and a shield each provide bonuses to your Armor Class and have a cumulative
+ * benefit. Wearing a shield and casting a 'Shield spell' will not. Only the highest of the two will
+ * apply to your total armor class. (Overlapping can sometimes still benefit as the shield spell may
+ * provide less armor class than equipping a tower shield, but it also protects against magic
+ * missiles.
  */
 sealed trait BonusType extends EnumEntry {
 
@@ -42,8 +43,8 @@ trait Armor extends BonusType {
 }
 
 /**
- * Encapsulates the [[https://ddowiki.com/page/Category:Bonus_types]] Several Bonus types are not listed / tagged by the
- * above link. Examples include Armor related ones such as Deflection Bonus
+ * Encapsulates the [[https://ddowiki.com/page/Category:Bonus_types]] Several Bonus types are not
+ * listed / tagged by the above link. Examples include Armor related ones such as Deflection Bonus
  */
 // scalastyle:off number.of.methods
 object BonusType extends Enum[BonusType] {
@@ -57,55 +58,57 @@ object BonusType extends Enum[BonusType] {
   case object Alchemical extends BonusType with NonStacking
 
   /**
-   * An [[https://ddowiki.com/page/Artifact_bonus Artifact Bonus]] Artifact bonus is a rare bonus type, mostly available
-   * granted by item sets. This bonus stacks with all other bonuses.
+   * An [[https://ddowiki.com/page/Artifact_bonus Artifact Bonus]] Artifact bonus is a rare bonus
+   * type, mostly available granted by item sets. This bonus stacks with all other bonuses.
    */
   case object Artifact extends BonusType with StacksWithAny
 
   /**
-   * An [[https://ddowiki.com/page/Armor_bonus armor]] bonus is a bonus to Armor class from the armor that you are
-   * wearing. Armor bonuses do not stack.
+   * An [[https://ddowiki.com/page/Armor_bonus armor]] bonus is a bonus to Armor class from the
+   * armor that you are wearing. Armor bonuses do not stack.
    */
   case object Armor extends BonusType with Armor with NonStacking
 
   /**
-   * A [[https://ddowiki.com/page/Circumstance_bonus circumstance bonus]] (or penalty) arises from specific conditional
-   * factors impacting the success of the task at hand. Circumstance bonuses stack with all other bonuses, including
-   * other circumstance bonuses, unless they arise from essentially the same source.
+   * A [[https://ddowiki.com/page/Circumstance_bonus circumstance bonus]] (or penalty) arises from
+   * specific conditional factors impacting the success of the task at hand. Circumstance bonuses
+   * stack with all other bonuses, including other circumstance bonuses, unless they arise from
+   * essentially the same source.
    */
   case object Circumstance extends BonusType with StacksWithAny
 
   /**
    * Some feats and enhancements, usually related to some of the fighting styles, grant a
-   * [[https://ddowiki.com/page/Combat_Style_bonus Combat Style bonus]]. Multiple bonuses of the same type don't stack.
+   * [[https://ddowiki.com/page/Combat_Style_bonus Combat Style bonus]]. Multiple bonuses of the
+   * same type don't stack.
    *
    * Sources for Combat Style bonuses:
    */
   case object CombatStyle extends BonusType with NonStacking
 
   /**
-   * A [[https://ddowiki.com/page/Competence_bonus competence bonus]] is a type of bonus. It can apply to most anything,
-   * but most frequently applies to skills.
+   * A [[https://ddowiki.com/page/Competence_bonus competence bonus]] is a type of bonus. It can
+   * apply to most anything, but most frequently applies to skills.
    */
   case object Competence extends BonusType with NonStacking
 
   /**
-   * A [[https://ddowiki.com/page/Deflection_bonus deflection bonus]] affects Armor Class and is granted by a spell or
-   * magic effect that makes attacks veer off harmlessly. Deflection bonuses stack with all other bonuses to AC except
-   * other deflection bonuses.
+   * A [[https://ddowiki.com/page/Deflection_bonus deflection bonus]] affects Armor Class and is
+   * granted by a spell or magic effect that makes attacks veer off harmlessly. Deflection bonuses
+   * stack with all other bonuses to AC except other deflection bonuses.
    */
   case object Deflection extends BonusType with Armor with NonStacking
 
   /**
-   * [[https://ddowiki.com/page/Determination_bonus Determination bonus]] was introduced in Update 26. Multiple
-   * determination bonuses don't stack, only the highest applies.
+   * [[https://ddowiki.com/page/Determination_bonus Determination bonus]] was introduced in Update
+   * 26. Multiple determination bonuses don't stack, only the highest applies.
    */
   case object Determination extends BonusType with NonStacking
 
   /**
-   * The [[https://ddowiki.com/page/Dexterity_bonus dexterity bonus]] is a bonus to AC equal to your dexterity modifier.
-   * It may be capped by the armor or tower shield your character is wearing, as well by encumbrance (since these impose
-   * a maximum dexterity bonus).
+   * The [[https://ddowiki.com/page/Dexterity_bonus dexterity bonus]] is a bonus to AC equal to your
+   * dexterity modifier. It may be capped by the armor or tower shield your character is wearing, as
+   * well by encumbrance (since these impose a maximum dexterity bonus).
    */
   case object Dexterity extends BonusType with Armor with NonStacking
 
@@ -116,76 +119,81 @@ object BonusType extends Enum[BonusType] {
   case object Divine extends BonusType with NonStacking
 
   /**
-   * [[https://ddowiki.com/page/Dodge_bonus Dodge Bonus Mechanic]] This check is done independent of the miss chance
-   * resulting from Armor Class and other measures of not getting hit, such as Concealment or Incorporeality. Stacked
-   * pre-update 19 and as of update 42 there is a Hard cap of 95%
+   * [[https://ddowiki.com/page/Dodge_bonus Dodge Bonus Mechanic]] This check is done independent of
+   * the miss chance resulting from Armor Class and other measures of not getting hit, such as
+   * Concealment or Incorporeality. Stacked pre-update 19 and as of update 42 there is a Hard cap of
+   * 95%
    */
   case object Dodge extends BonusType with Armor with NonStacking
 
   /**
-   * An [[https://ddowiki.com/page/Enhancement_bonus enhancement bonus]] represents a magical increase in the
-   * effectiveness of an item.
+   * An [[https://ddowiki.com/page/Enhancement_bonus enhancement bonus]] represents a magical
+   * increase in the effectiveness of an item.
    */
   case object Enhancement extends BonusType with NonStacking
 
   /**
-   * [[https://ddowiki.com/page/Epic_bonus Epic bonus]] is a rare bonus type found only on a handful of old epic items
-   * (created via Epic Crafting). It gives a stacking bonus to a particular saving throw.
+   * [[https://ddowiki.com/page/Epic_bonus Epic bonus]] is a rare bonus type found only on a handful
+   * of old epic items (created via Epic Crafting). It gives a stacking bonus to a particular saving
+   * throw.
    */
   case object Epic extends BonusType with StacksWithAny
 
   /**
-   * Some magic items grant an equipment bonus to Spell Power, increasing the damage dealt/healed by your spells.
-   * Weapons are a common source of [[https://ddowiki.com/page/Equipment_bonus equipment bonus]]
+   * Some magic items grant an equipment bonus to Spell Power, increasing the damage dealt/healed by
+   * your spells. Weapons are a common source of
+   * [[https://ddowiki.com/page/Equipment_bonus equipment bonus]]
    */
   case object Equipment extends BonusType with NonStacking
 
   /**
    * Exceptional bonuses are rare bonuses generally only found on high level loot.
-   * [[https://ddowiki.com/page/Exceptional_bonus Exceptional bonuses]] stack with all other bonuses, but not with other
-   * exceptional bonuses.
+   * [[https://ddowiki.com/page/Exceptional_bonus Exceptional bonuses]] stack with all other
+   * bonuses, but not with other exceptional bonuses.
    */
   case object Exceptional extends BonusType with NonStacking
 
   /**
-   * A feat bonus is granted by [[https://ddowiki.com/page/Feat_bonus feats]]. Feats can grant bonuses of many kind,
-   * from hit points (Toughness) to skills (Skill focus) to armor class (Dodge).
+   * A feat bonus is granted by [[https://ddowiki.com/page/Feat_bonus feats]]. Feats can grant
+   * bonuses of many kind, from hit points (Toughness) to skills (Skill focus) to armor class
+   * (Dodge).
    *
    * Feat bonuses do stack.
    */
   case object Feat extends BonusType with StacksWithAny
 
   /**
-   * When the [[https://ddowiki.com/page/Festive_bonus Festive bonus]] was originally introduced in Update 28 Patch 1 it
-   * was known as a Spooky bonus. It was renamed in Update 30 to support being used on non-scary things.
+   * When the [[https://ddowiki.com/page/Festive_bonus Festive bonus]] was originally introduced in
+   * Update 28 Patch 1 it was known as a Spooky bonus. It was renamed in Update 30 to support being
+   * used on non-scary things.
    */
   case object Festive extends BonusType with NonStacking
 
   /**
-   * A [[https://ddowiki.com/page/Guild_bonus Guild bonus]] stacks with other bonus types but not with other Guild
-   * bonuses
+   * A [[https://ddowiki.com/page/Guild_bonus Guild bonus]] stacks with other bonus types but not
+   * with other Guild bonuses
    */
   case object Guild extends BonusType with NonStacking
 
   /**
    * Spellcasting Implements, such as Thaumaturgy staffs, grant an
-   * [[https://ddowiki.com/page/Implement_bonus implement bonus]] to Spell Power, increasing the damage dealt/healed by
-   * spells.
+   * [[https://ddowiki.com/page/Implement_bonus implement bonus]] to Spell Power, increasing the
+   * damage dealt/healed by spells.
    */
   case object Implement extends BonusType with NonStacking
 
   /**
    * A bonus to an ability score or skill resulting from powerful magic, such as a wish.
-   * [[https://ddowiki.com/page/Inherent_bonus Inherent bonuses]] cannot be dispelled. A character is limited to a total
-   * inherent bonus of +8 to any ability score. Multiple inherent bonuses to a particular ability score do not stack, so
-   * only the best one applies.
+   * [[https://ddowiki.com/page/Inherent_bonus Inherent bonuses]] cannot be dispelled. A character
+   * is limited to a total inherent bonus of +8 to any ability score. Multiple inherent bonuses to a
+   * particular ability score do not stack, so only the best one applies.
    */
   case object Inherent extends BonusType with NonStacking
 
   /**
-   * An [[https://ddowiki.com/page/Insight_bonus insight bonus]] improves performance of a given activity by granting
-   * the character an almost precognitive knowledge of what might occur. Multiple insight bonuses do not stack, only the
-   * highest applies.
+   * An [[https://ddowiki.com/page/Insight_bonus insight bonus]] improves performance of a given
+   * activity by granting the character an almost precognitive knowledge of what might occur.
+   * Multiple insight bonuses do not stack, only the highest applies.
    */
   case object Insight extends BonusType with NonStacking
 
@@ -199,100 +207,108 @@ object BonusType extends Enum[BonusType] {
   case object Legendary extends BonusType with NonStacking
 
   /**
-   * A [[https://ddowiki.com/page/Luck_bonus luck bonus]] represents good (or bad) fortune. Multiple luck bonuses on the
-   * same character or object do not stack. Only the highest luck bonus applies.
+   * A [[https://ddowiki.com/page/Luck_bonus luck bonus]] represents good (or bad) fortune. Multiple
+   * luck bonuses on the same character or object do not stack. Only the highest luck bonus applies.
    */
   case object Luck extends BonusType with NonStacking
 
   /**
-   * [[https://ddowiki.com/page/Miscellaneous_bonus Miscellaneous Armor bonuses]] The following miscellaneous bonuses to
-   * Armor Class stack with each other in DDO, but miscellaneous bonuses coming from the same source don't stack (ie - 2
-   * paladins' aura).
+   * [[https://ddowiki.com/page/Miscellaneous_bonus Miscellaneous Armor bonuses]] The following
+   * miscellaneous bonuses to Armor Class stack with each other in DDO, but miscellaneous bonuses
+   * coming from the same source don't stack (ie - 2 paladins' aura).
    */
   case object Miscellaneous extends BonusType with Armor with StacksWithAllButSame
 
   /**
-   * A [[https://ddowiki.com/page/Morale_bonus morale bonus]] represents the effects of greater hope, courage, and
-   * determination (or hopelessness, cowardice, and despair in the case of a morale penalty). Multiple morale bonuses on
-   * the same character do not stack. Only the highest morale bonus applies. Non-intelligent creatures (creatures with
-   * an Intelligence of 0 or no Intelligence at all) cannot benefit from morale bonuses.
+   * A [[https://ddowiki.com/page/Morale_bonus morale bonus]] represents the effects of greater
+   * hope, courage, and determination (or hopelessness, cowardice, and despair in the case of a
+   * morale penalty). Multiple morale bonuses on the same character do not stack. Only the highest
+   * morale bonus applies. Non-intelligent creatures (creatures with an Intelligence of 0 or no
+   * Intelligence at all) cannot benefit from morale bonuses.
    */
   case object Morale extends BonusType with NonStacking
 
   /**
-   * Some songs, chants, and enhancements available to Bards grant [[https://ddowiki.com/page/Music_bonus Music bonus]].
+   * Some songs, chants, and enhancements available to Bards grant
+   * [[https://ddowiki.com/page/Music_bonus Music bonus]].
    */
   case object Music extends BonusType with NonStacking
 
   /**
-   * [[https://ddowiki.com/page/Mythic_bonus Mythic bonus]] was introduced in Update 25. Mythic bonuses stack
-   * differently than most bonus types: see quote below. The Mythic bonuses from each slot stack with one another
+   * [[https://ddowiki.com/page/Mythic_bonus Mythic bonus]] was introduced in Update 25. Mythic
+   * bonuses stack differently than most bonus types: see quote below. The Mythic bonuses from each
+   * slot stack with one another
    */
   case object Mythic extends BonusType with StacksWithAny
 
   /**
-   * [[https://ddowiki.com/page/Natural_armor_bonus Natural armor]] represents a creature's hide or magical effects that
-   * make skin thicker (such as Barkskin). Natural armor provides a bonus to AC. Some natural armor bonuses stack.
+   * [[https://ddowiki.com/page/Natural_armor_bonus Natural armor]] represents a creature's hide or
+   * magical effects that make skin thicker (such as Barkskin). Natural armor provides a bonus to
+   * AC. Some natural armor bonuses stack.
    * @todo
    *   Figure out how / what natural armor bonuses stack
    * @note
-   *   This should apply to 'plain natural armor' text that states 'Natural Armor' may not actually be that. i.e. Rough
-   *   Hide
+   *   This should apply to 'plain natural armor' text that states 'Natural Armor' may not actually
+   *   be that. i.e. Rough Hide
    */
   case object NaturalArmor extends BonusType with Armor with NonStacking
 
   /**
-   * [[https://ddowiki.com/page/Primal_bonus Primal bonus]] reflects your close ties to the raw nature and to the spirit
-   * world. This bonus stacks with all other bonuses.
+   * [[https://ddowiki.com/page/Primal_bonus Primal bonus]] reflects your close ties to the raw
+   * nature and to the spirit world. This bonus stacks with all other bonuses.
    */
   case object Primal extends BonusType with Armor with NonStacking
 
   /**
-   * A [[https://ddowiki.com/page/Profane_bonus profane bonus]] (or penalty) stems from the power of evil. Multiple
-   * profane bonuses on the same character or object do not stack. Only the highest profane bonus applies.
+   * A [[https://ddowiki.com/page/Profane_bonus profane bonus]] (or penalty) stems from the power of
+   * evil. Multiple profane bonuses on the same character or object do not stack. Only the highest
+   * profane bonus applies.
    */
   case object Profane extends BonusType with NonStacking
 
   /**
-   * [[https://ddowiki.com/page/Psionic_bonus Psionic bonus]] represents the power of mind over matter. In a character's
-   * mind, anything can happen
+   * [[https://ddowiki.com/page/Psionic_bonus Psionic bonus]] represents the power of mind over
+   * matter. In a character's mind, anything can happen
    * @note
    *   This is currently set not to stack, but there is no textual verification on the wiki.
    */
   case object Psionic extends BonusType with NonStacking
 
   /**
-   * A [[https://ddowiki.com/page/Quality_bonus quality bonus]] makes a character better at an action through sheer good
-   * workmanship of the item in question. Like most bonus types, multiple quality bonuses do not stack, only the
-   * greatest bonus applies.
+   * A [[https://ddowiki.com/page/Quality_bonus quality bonus]] makes a character better at an
+   * action through sheer good workmanship of the item in question. Like most bonus types, multiple
+   * quality bonuses do not stack, only the greatest bonus applies.
    */
   case object Quality extends BonusType with NonStacking
 
   /**
-   * [[https://ddowiki.com/page/Rage_bonus Rage Bonus]] Your concentrated fury grants you additional benefits.
+   * [[https://ddowiki.com/page/Rage_bonus Rage Bonus]] Your concentrated fury grants you additional
+   * benefits.
    */
   case object Rage extends BonusType with NonStacking
 
   /**
-   * [[https://ddowiki.com/page/Reaper_bonus Reaper Bonus]] Named chest loot from quests run on Reaper difficulty has a
-   * chance to gain an additional enchantment
+   * [[https://ddowiki.com/page/Reaper_bonus Reaper Bonus]] Named chest loot from quests run on
+   * Reaper difficulty has a chance to gain an additional enchantment
    */
   case object Reaper extends BonusType with StacksWithAny
 
   /**
-   * A [[https://ddowiki.com/page/Resistance_bonus resistance bonus]] gives a bonus to saving throws.
+   * A [[https://ddowiki.com/page/Resistance_bonus resistance bonus]] gives a bonus to saving
+   * throws.
    */
   case object Resistance extends BonusType with NonStacking
 
   /**
-   * [[https://ddowiki.com/page/Sacred_bonus Sacred Bonus]] A bonus that stems from the power of good. Multiple sacred
-   * bonuses on the same character or object do not stack. Only the highest sacred bonus applies.
+   * [[https://ddowiki.com/page/Sacred_bonus Sacred Bonus]] A bonus that stems from the power of
+   * good. Multiple sacred bonuses on the same character or object do not stack. Only the highest
+   * sacred bonus applies.
    */
   case object Sacred extends BonusType with NonStacking
 
   /**
-   * A shield bonus is a specific class of bonus to Armor Class normally provided by shields. Multiple shield bonuses do
-   * not stack.
+   * A shield bonus is a specific class of bonus to Armor Class normally provided by shields.
+   * Multiple shield bonuses do not stack.
    * @note
    *   Two Weapon Defense is not treated as shield bonus in DDO.
    */
@@ -316,8 +332,8 @@ object BonusType extends Enum[BonusType] {
   /**
    * [[https://ddowiki.com/page/Special_bonus]] stubbed from wiki.
    * @todo
-   *   Determine if this is an actual bonus type that exists on an item / feat etc. If not, it may simply be a trait to
-   *   denote special handling required.
+   *   Determine if this is an actual bonus type that exists on an item / feat etc. If not, it may
+   *   simply be a trait to denote special handling required.
    */
   // case object Special extends BonusType
 

@@ -30,8 +30,10 @@ import org.junit.runner.RunWith
 @RunWith(classOf[ConcordionRunner])
 @ConcordionOptions(
   declareNamespaces = Array("ext", "urn:concordion-extensions:2010"),
-  markdownExtensions =
-    Array(MarkdownExtensions.WIKILINKS, MarkdownExtensions.AUTOLINKS, MarkdownExtensions.TASKLISTITEMS)
+  markdownExtensions = Array(
+    MarkdownExtensions.WIKILINKS,
+    MarkdownExtensions.AUTOLINKS,
+    MarkdownExtensions.TASKLISTITEMS)
 )
 class Races extends FeatDisplayHelper {
   override val displayEnum: E = RacialFeat

@@ -18,14 +18,12 @@
 package io.truthencode.ddo.model.feats
 
 import com.typesafe.scalalogging.LazyLogging
-import io.truthencode.ddo.model.classes.HeroicCharacterClass
 import io.truthencode.ddo.model.effect.Feature
 import io.truthencode.ddo.model.effect.Feature.printFeature
 import io.truthencode.ddo.model.feats.GeneralFeat.SimpleWeaponProficiency
 import io.truthencode.ddo.model.item.weapon.WeaponCategory
 import org.scalatest.funspec.AnyFunSpec
 import org.scalatest.matchers.should.Matchers
-import org.slf4j.LoggerFactory
 
 /**
  * Created by adarr on 2/7/2017.

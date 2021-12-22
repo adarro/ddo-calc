@@ -24,10 +24,12 @@ import io.truthencode.ddo.support.requisite.{ClassRequisiteImpl, FeatRequisiteIm
 /**
  * This feat negates the penalties from using bucklers, and small and Large Shields.
  */
-protected[feats] trait ShieldProficiency extends FeatRequisiteImpl with ClassRequisiteImpl with Passive with FreeFeat {
+protected[feats] trait ShieldProficiency
+  extends FeatRequisiteImpl with ClassRequisiteImpl with Passive with FreeFeat {
   self: GeneralFeat =>
+  override def grantToClass: Seq[(HeroicCharacterClass, Int)] = firstLevelClasses
+
   private def firstLevelClasses =
     List(Barbarian, Cleric, FavoredSoul, Fighter, Paladin, Ranger, Rogue).map((_, 1))
-  override def grantToClass: Seq[(HeroicCharacterClass, Int)] = firstLevelClasses
 
 }

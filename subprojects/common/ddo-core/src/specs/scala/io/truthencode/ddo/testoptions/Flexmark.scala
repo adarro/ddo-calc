@@ -28,14 +28,16 @@ import scala.jdk.CollectionConverters.SeqHasAsJava
  * Scala wrapper for applying flexmark options to Concordion specs.
  */
 trait Flexmark {
-  def flexmarkExtensions: Seq[Extension]
-  def calls: Seq[() => MutableDataSet]
   import Flexmark._
   @FlexmarkOptions val flexmarkOptions: MutableDataSet = {
     calls.foreach(f => f())
     ds.set(Parser.EXTENSIONS, flexmarkExtensions.toList.toJavaList)
 
   }
+
+  def flexmarkExtensions: Seq[Extension]
+
+  def calls: Seq[() => MutableDataSet]
 }
 
 object Flexmark {
@@ -71,14 +73,15 @@ object Flexmark {
   }
   implicit class HtmlEscape(source: String) {
 
-      /**
-       * Replaces HTML breaking space"&nbsp;" with entity "&#160"
-       * @return Entity for html escaped non-breaking space.
-       */
+    /**
+     * Replaces HTML breaking space"&nbsp;" with entity "&#160"
+     * @return
+     *   Entity for html escaped non-breaking space.
+     */
     def removeNbsp(): String = {
       source.replace("&nbsp;", "&#160;")
     }
   }
-  implicit lazy val ds = new MutableDataSet()
+  implicit lazy val ds: MutableDataSet = new MutableDataSet()
 
 }

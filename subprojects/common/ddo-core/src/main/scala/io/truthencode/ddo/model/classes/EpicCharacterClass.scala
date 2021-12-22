@@ -19,7 +19,6 @@ package io.truthencode.ddo.model.classes
 
 import enumeratum.{Enum, EnumEntry}
 import io.truthencode.ddo.model.misc.{Availability, FreeToPlayFeature}
-import io.truthencode.ddo.support.SearchPrefix
 
 import scala.collection.immutable
 

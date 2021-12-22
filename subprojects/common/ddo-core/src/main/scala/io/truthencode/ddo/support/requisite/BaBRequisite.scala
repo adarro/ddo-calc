@@ -17,7 +17,7 @@
  */
 package io.truthencode.ddo.support.requisite
 
-import io.truthencode.ddo.support.requisite.Requirement.BaseAttackBonusReq
+import io.truthencode.ddo.support.requisite.Requirement.ReqBaseAttackBonus
 
 import scala.language.{implicitConversions, postfixOps}
 
@@ -38,7 +38,7 @@ trait FreeBaB extends BaBRequisite with RequiresNone with RequiredExpression wit
 
 trait RequiresBaB extends BaBRequisite with RequiresOneOf[Requirement] with Requisite {
 
-  abstract override def oneOf: Seq[Requirement] = super.oneOf :+ BaseAttackBonusReq(requiresBaB)
+  abstract override def oneOf: Seq[Requirement] = super.oneOf :+ ReqBaseAttackBonus(requiresBaB)
 
 //  abstract override def prerequisites: Seq[RequisiteExpression] = super.prerequisites :+ this
 

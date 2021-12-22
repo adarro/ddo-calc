@@ -33,7 +33,7 @@ public class EpicDestinies {
     private final transient List<Extension> e = List.of(EmojiExtension.create());
     @FlexmarkOptions
     DataSet flexmarkOptions = new MutableDataSet()
-            .set(EmojiExtension.ATTR_IMAGE_SIZE, "24")
-            .set(Parser.EXTENSIONS, e);
+        .set(EmojiExtension.ATTR_IMAGE_SIZE, "24")
+        .set(Parser.EXTENSIONS, e);
 
 }

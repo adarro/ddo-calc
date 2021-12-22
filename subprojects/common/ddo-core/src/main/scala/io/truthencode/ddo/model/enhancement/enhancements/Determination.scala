@@ -19,18 +19,18 @@ package io.truthencode.ddo.model.enhancement.enhancements
 
 import io.truthencode.ddo.model.enhancement.enhancements.classbased.ApothecaryCore
 import io.truthencode.ddo.support.points.SpendablePoints
-import io.truthencode.ddo.support.tree.{ClassTrees, TreeLike}
+import io.truthencode.ddo.support.tree.TreeLike
 
 trait Determination extends ApothecaryCore with ClassEnhancementImpl {
   // Will Save +1
   // override val tree: ClassTrees = ClassTrees.Apothecary
   override lazy val description: Option[String] = Some("+1 Will Save")
-  override def apCostPerRank: Int = 1
-
   /**
    * Some enhancements can be taken multiple times (generally up to three)
    */
   override val ranks: Int = 1
+
+  override def apCostPerRank: Int = 1
 
   // override def allOfClass: Seq[(HeroicCharacterClass, Int)] = Seq((Alchemist, 1))
 

@@ -17,7 +17,6 @@
  */
 package io.truthencode.ddo.model.feats
 
-import java.time.Duration
 import io.truthencode.ddo.activation.AtWillEvent
 import io.truthencode.ddo.enhancement.BonusType
 import io.truthencode.ddo.model.abilities.ActiveAbilities
@@ -26,28 +25,29 @@ import io.truthencode.ddo.model.effect.TriggerEvent
 import io.truthencode.ddo.model.effect.features.{FeaturesImpl, GrantAbilityFeature}
 import io.truthencode.ddo.support.requisite.{FeatRequisiteImpl, RequiresAllOfFeat}
 
+import java.time.Duration
+
 /**
- * Icon Feat Hamstring.png [[https://ddowiki.com/page/Hamstring Hamstring]] Hamstring Active - Special Attack This melee
- * special attack, when successful, reduces the target's movement rate by half for 12 seconds. Some creatures may be
- * immune to the hamstring effect.
+ * Icon Feat Hamstring.png [[https://ddowiki.com/page/Hamstring Hamstring]] Hamstring Active -
+ * Special Attack This melee special attack, when successful, reduces the target's movement rate by
+ * half for 12 seconds. Some creatures may be immune to the hamstring effect.
  *
  * Sneak Attack
  */
 protected[feats] trait Hamstring
-  extends FeatRequisiteImpl with ActiveFeat with AtWillEvent with RequiresAllOfFeat with FighterBonusFeat
-  with FeaturesImpl with GrantAbilityFeature {
+  extends FeatRequisiteImpl with ActiveFeat with AtWillEvent with RequiresAllOfFeat
+  with FighterBonusFeat with FeaturesImpl with GrantAbilityFeature {
   self: GeneralFeat =>
-  override val grantBonusType: BonusType = BonusType.Feat
-  override val grantedAbility: ActiveAbilities = ActiveAbilities.Hamstring
-
-  override def coolDown: Option[Duration] = Some(Duration.ofSeconds(15))
-
-  override val allOfFeats = List(ClassFeat.SneakAttack)
-  override protected[this] val triggerOn: TriggerEvent = TriggerEvent.SpecialAttack
-  override protected[this] val triggerOff: TriggerEvent = TriggerEvent.OnCoolDown
-  override protected[this] val categories: Seq[effect.EffectCategories.Value] =
+  override lazy val grantedAbility: ActiveAbilities = ActiveAbilities.Hamstring
+  override protected[this] lazy val grantAbilityCategories: Seq[effect.EffectCategories.Value] =
     Seq(effect.EffectCategories.Ability, effect.EffectCategories.SpecialAttack)
+  override val grantBonusType: BonusType = BonusType.Feat
+  override val allOfFeats = List(ClassFeat.SneakAttack)
+  override protected[this] val triggerOn: Seq[TriggerEvent] = Seq(TriggerEvent.SpecialAttack)
+  override protected[this] val triggerOff: Seq[TriggerEvent] = Seq(TriggerEvent.OnCoolDown)
   override val abilityId: String = "Hamstring"
   override val description: String =
     "Special Attack This melee special attack, when successful, reduces the target's movement rate by half for 12 seconds."
+
+  override def coolDown: Option[Duration] = Some(Duration.ofSeconds(15))
 }

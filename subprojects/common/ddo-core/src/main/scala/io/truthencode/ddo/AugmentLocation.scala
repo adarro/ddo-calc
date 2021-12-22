@@ -27,11 +27,10 @@ import scala.collection.immutable
  */
 sealed trait AugmentLocation extends EnumEntry with BitWise {
 
+  override lazy val bitValue: Int = bitValues(this)
   private lazy val bitValues = AugmentLocation.valuesToIndex.map { x =>
     x._1 -> toBitMask(x._2)
   }
-
-  override lazy val bitValue: Int = bitValues(this)
 
 }
 
@@ -56,8 +55,17 @@ trait FiligreeLocation extends AugmentLocation
 object AugmentLocation extends Enum[AugmentLocation] with BitSupport {
 
   // Augments (Ruby / Sapphire etc)
+  override type T = AugmentLocation
+  override lazy val bitValues: Map[AugmentLocation, Int] = valuesToIndex.map { x =>
+    val wl = x._1
+    val v = x._2
+    wl -> Math.pow(2.0, v).toInt
+  }
+  val values: immutable.IndexedSeq[AugmentLocation] = findValues
+
   /**
-   * Typically Rubies which add additional damage types, spell power and / or bypass damage reduction
+   * Typically Rubies which add additional damage types, spell power and / or bypass damage
+   * reduction
    */
   case object RedAugmentSlot extends GeneralAugmentLocation
 
@@ -76,6 +84,8 @@ object AugmentLocation extends Enum[AugmentLocation] with BitSupport {
    */
   case object GreenAugmentSlot extends GeneralAugmentLocation
 
+  // Guild Augments
+
   /**
    * Supports Yellow Augments and Diamonds
    */
@@ -92,8 +102,6 @@ object AugmentLocation extends Enum[AugmentLocation] with BitSupport {
    *   all augment slots support colorless augments.
    */
   case object ColorlessAugmentSlot extends GeneralAugmentLocation
-
-  // Guild Augments
 
   /**
    * Supports Tiny Augments and can only be equipped by a character in a guild of a certain size.
@@ -126,13 +134,4 @@ object AugmentLocation extends Enum[AugmentLocation] with BitSupport {
    *   Minor Artifacts have a lower maximum number of slots (currently between 1 and 3) possible.
    */
   case object MinorArtifactSlot extends FiligreeLocation
-
-  val values: immutable.IndexedSeq[AugmentLocation] = findValues
-  override type T = AugmentLocation
-
-  override lazy val bitValues: Map[AugmentLocation, Int] = valuesToIndex.map { x =>
-    val wl = x._1
-    val v = x._2
-    wl -> Math.pow(2.0, v).toInt
-  }
 }

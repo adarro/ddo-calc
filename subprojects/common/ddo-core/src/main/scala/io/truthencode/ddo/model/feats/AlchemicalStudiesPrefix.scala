@@ -24,10 +24,10 @@ import io.truthencode.ddo.support.naming.{DisplayName, DisplayProperties, Prefix
  */
 trait AlchemicalStudiesPrefix extends Prefix {
   self: DisplayName with DisplayProperties =>
-  override def prefix: Option[String] = Some("Alchemical Studies")
-
   /**
    * Delimits the prefix and text.
    */
   override protected val prefixSeparator: String = " - "
+
+  override def prefix: Option[String] = Some("Alchemical Studies")
 }

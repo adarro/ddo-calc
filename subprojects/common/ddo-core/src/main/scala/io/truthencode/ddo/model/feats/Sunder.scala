@@ -22,26 +22,28 @@ import io.truthencode.ddo.model.abilities.ActiveAbilities
 import io.truthencode.ddo.model.effect
 import io.truthencode.ddo.model.effect.TriggerEvent
 import io.truthencode.ddo.model.effect.features.{FeaturesImpl, GrantAbilityFeature}
-
-import java.time.Duration
 import io.truthencode.ddo.support.requisite.{FeatRequisiteImpl, FreeFeat}
 
+import java.time.Duration
+
 /**
- * [[https://ddowiki.com/page/Sunder Sunder]] This melee special attack, when successful, results in a -4 AC penalty to
- * the target for 12 seconds if it fails a Fortitude save (DC 10 + Str mod). Some creatures may be immune to the sunder
- * effect
+ * [[https://ddowiki.com/page/Sunder Sunder]] This melee special attack, when successful, results in
+ * a -4 AC penalty to the target for 12 seconds if it fails a Fortitude save (DC 10 + Str mod). Some
+ * creatures may be immune to the sunder effect
  */
 protected[feats] trait Sunder
-  extends FeatRequisiteImpl with ActiveFeat with Tactical with FreeFeat with FeaturesImpl with GrantAbilityFeature {
+  extends FeatRequisiteImpl with ActiveFeat with Tactical with FreeFeat with FeaturesImpl
+  with GrantAbilityFeature {
   self: GeneralFeat =>
+  override lazy val grantedAbility: ActiveAbilities = ActiveAbilities.Sunder
   override val grantBonusType: BonusType = BonusType.Feat
-  override val grantedAbility: ActiveAbilities = ActiveAbilities.Sunder
+  override protected[this] val triggerOn: Seq[TriggerEvent] = Seq(TriggerEvent.AtWill)
+  override protected[this] val triggerOff: Seq[TriggerEvent] = Seq(TriggerEvent.OnCoolDown)
+  override protected[this] val grantAbilityCategories: Seq[effect.EffectCategories.Value] = Seq(
+    effect.EffectCategories.Ability)
+  override val abilityId: String = "Sunder"
+  override val description: String =
+    "This melee special attack, when successful, results in a -4 AC penalty to the target for 12 seconds"
 
-    override protected[this] val triggerOn: TriggerEvent = TriggerEvent.AtWill
-    override protected[this] val triggerOff: TriggerEvent = TriggerEvent.OnCoolDown
-    override protected[this] val categories: Seq[effect.EffectCategories.Value] = Seq(effect.EffectCategories.Ability)
-    override val abilityId: String = "Sunder"
-    override val description: String = "This melee special attack, when successful, results in a -4 AC penalty to the target for 12 seconds"
-
-    override def coolDown: Option[Duration] = Some(Duration.ofSeconds(10))
+  override def coolDown: Option[Duration] = Some(Duration.ofSeconds(10))
 }

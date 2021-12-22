@@ -31,7 +31,7 @@ object EnumExtensions {
   private def findEnum[E <: EnumEntry: Enum, A <: Enum[_ <: EnumEntry]](v: E) = implicitly[Enum[E]]
 
 //  final implicit class EnumCompanionOps[E <: EnumEntry:Enum[E],A <: Enum[E]](
-  final implicit class EnumCompanionOps[A <: Enum[_ <: EnumEntry]](
+  implicit final class EnumCompanionOps[A <: Enum[_ <: EnumEntry]](
     val comp: A
   ) {
     def exists(id: String): Boolean = {
@@ -76,10 +76,6 @@ object EnumExtensions {
       }
     }
 
-    def bitValues: Map[EnumEntry, Double] = comp.valuesToIndex.map { x =>
-      x._1 -> Math.pow(2.0, x._2)
-    }
-
     /**
      * A list of enum values matching the BitMask
      *
@@ -99,6 +95,10 @@ object EnumExtensions {
       } yield sc.toSeq
     }
 
+    def bitValues: Map[EnumEntry, Double] = comp.valuesToIndex.map { x =>
+      x._1 -> Math.pow(2.0, x._2)
+    }
+
     def fromWords(words: String): Option[EnumEntry] = {
       words.wordsToAcronym match {
         case Some(x) => comp.withNameOption(x.toPascalCase)
@@ -107,7 +107,7 @@ object EnumExtensions {
     }
 
   }
-  final implicit class E2[E <: EnumEntry: Enum](val e: E) {
+  implicit final class E2[E <: EnumEntry: Enum](val e: E) {
     def foo = {
       //    e.bitValues
     }

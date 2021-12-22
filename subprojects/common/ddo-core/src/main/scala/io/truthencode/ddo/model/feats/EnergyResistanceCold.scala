@@ -26,9 +26,9 @@ import io.truthencode.ddo.support.requisite.GrantsToClass
  */
 trait EnergyResistanceCold extends EnergyResistance with FriendlyDisplay with GrantsToClass {
   self: DisplayName =>
-  private def fvsMap = (5 to 15 by 5).map((HeroicCharacterClass.FavoredSoul, _))
-
   override def grantToClass: Seq[(HeroicCharacterClass, Int)] = fvsMap
+
+  private def fvsMap = (5 to 15 by 5).map((HeroicCharacterClass.FavoredSoul, _))
 
   /**
    * @inheritdoc

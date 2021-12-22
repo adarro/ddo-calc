@@ -18,8 +18,8 @@
 package io.truthencode.ddo.model.spells
 
 import io.truthencode.ddo.model.effect.EffectList
-import io.truthencode.ddo.model.spells.component.ComponentList
 import io.truthencode.ddo.model.spells.SpellElement._
+import io.truthencode.ddo.model.spells.component.ComponentList
 
 import scala.collection.immutable
 
@@ -38,7 +38,7 @@ object SpellBuilder {
   // def apply(): SpellBuilder[Pizza.EmptyPizza] = apply[Pizza.EmptyPizza](Seq())
 }
 
-protected abstract class BaseSpellBuilder[T <: Spell] protected (
+abstract protected class BaseSpellBuilder[T <: Spell] protected (
   elements: Set[SpellElement]
 ) {
 
@@ -89,7 +89,8 @@ protected abstract class BaseSpellBuilder[T <: Spell] protected (
   def build(implicit ev: T =:= CompleteSpell): Spell
 }
 
-class SpellBuilder[T <: Spell](elements: Set[SpellElement] = Set.empty) extends BaseSpellBuilder[T](elements) {
+class SpellBuilder[T <: Spell](elements: Set[SpellElement] = Set.empty)
+  extends BaseSpellBuilder[T](elements) {
 
   //  override def addCoolDown(
   //                            cd: Option[Duration]): BaseSpellBuilder[T with CoolDown] =

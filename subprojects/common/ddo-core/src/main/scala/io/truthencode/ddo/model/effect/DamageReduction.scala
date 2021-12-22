@@ -64,8 +64,8 @@ trait Lawful extends Alignment with AlignmentBased
 trait Aligned extends Good with Evil with Chaotic with Lawful
 
 /**
- * Pertains to the material substance used for an item which may affect the damage type dealt, such as a Silver
- * Longsword dealing 'Silver' Damage which can harm a Vampire.
+ * Pertains to the material substance used for an item which may affect the damage type dealt, such
+ * as a Silver Longsword dealing 'Silver' Damage which can harm a Vampire.
  */
 trait Material extends MaterialBased {
   self: TypeCategory =>
@@ -100,7 +100,8 @@ trait Silver extends Material
  *
  * Internally used as convenience trait that is more concise / useful for flagging "DR/-"
  */
-trait FullMaterial extends Adamantine with Byeshk with ColdIron with Crystal with Mithral with Silver
+trait FullMaterial
+  extends Adamantine with Byeshk with ColdIron with Crystal with Mithral with Silver
 
 trait Magic extends Other
 trait Light extends Other
@@ -119,7 +120,8 @@ trait Poison extends Health
 trait Positive extends Health
 
 /**
- * Infuses with Negative Energy. Heals the Undead, harms the truly living with no effect on living constructs.
+ * Infuses with Negative Energy. Heals the Undead, harms the truly living with no effect on living
+ * constructs.
  */
 trait Negative extends Health
 
@@ -129,7 +131,8 @@ trait Negative extends Health
 trait Repair extends Health
 
 /**
- * Bane damage is considered untyped and thus can not be bypassed by effects such as Damage Reduction
+ * Bane damage is considered untyped and thus can not be bypassed by effects such as Damage
+ * Reduction
  */
 trait Bane extends UnTyped with Typeless
 

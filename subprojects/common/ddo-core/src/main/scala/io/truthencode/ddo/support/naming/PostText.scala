@@ -18,15 +18,19 @@
 package io.truthencode.ddo.support.naming
 
 /**
- * Adds optional descriptive text. Used mainly to discriminate objects such as 'Shield Proficiency (General)'
+ * Adds optional descriptive text. Used mainly to discriminate objects such as 'Shield Proficiency
+ * (General)'
  */
 trait PostText extends DisplayProperties {
-  def postText: Option[String]
-
   /**
    * Surrounds the text with the given characters. By default, this is parenthesis.
+   * The default behavior should mimic case classes.
    */
   protected val postTextEnclosure: (String, String) = (" (", ")")
+
+  def postText: Option[String]
+
+  abstract override def displaySource: String = super.displaySource + withPostText.getOrElse("")
 
   def withPostText: Option[String] = {
     val (x, y) = postTextEnclosure
@@ -35,8 +39,6 @@ trait PostText extends DisplayProperties {
       case _ => None
     }
   }
-
-  abstract override def displaySource: String = super.displaySource + withPostText.getOrElse("")
 
   def hasPostText: Boolean = postText.isDefined
 }

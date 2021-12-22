@@ -17,7 +17,7 @@
  */
 package io.truthencode.ddo.model.alignment
 
-import enumeratum.{Enum => SmartEnum, EnumEntry}
+import enumeratum.{EnumEntry, Enum => SmartEnum}
 import io.truthencode.ddo.model.alignment.LawAxis.{Chaotic, Lawful, Neutral}
 import io.truthencode.ddo.model.alignment.MoralAxis.{Evil, Good}
 import io.truthencode.ddo.support.SearchPrefix
@@ -37,8 +37,11 @@ sealed class Alignments(
 
 object Alignments extends SmartEnum[Alignments] with SearchPrefix {
 
+  val values = findValues
+
   /**
-   * Used when qualifying a search with a prefix. Examples include finding "HalfElf" from qualified "Race:HalfElf"
+   * Used when qualifying a search with a prefix. Examples include finding "HalfElf" from qualified
+   * "Race:HalfElf"
    *
    * @return
    *   A default or applied prefix
@@ -62,6 +65,4 @@ object Alignments extends SmartEnum[Alignments] with SearchPrefix {
   case object LawfulNeutral extends Alignments(Lawful, MoralAxis.Neutral)
 
   case object LawfulEvil extends Alignments(Lawful, Evil)
-
-  val values = findValues
 }

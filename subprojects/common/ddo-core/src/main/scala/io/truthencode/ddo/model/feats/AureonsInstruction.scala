@@ -17,24 +17,27 @@
  */
 package io.truthencode.ddo.model.feats
 
-import java.time.Duration
-
 import io.truthencode.ddo.activation.AtWillEvent
 import io.truthencode.ddo.model.religions.Aureon
 import io.truthencode.ddo.support.naming.DisplayProperties
 import io.truthencode.ddo.support.requisite.{FeatRequisiteImpl, RequiresAllOfFeat}
 
+import java.time.Duration
+
 /**
- * Created by adarr on 4/7/2017. [[https://ddowiki.com/page/Aureon%27s_Instruction Aureon's Instruction]] You are a
- * devoted follower of Aureon, and your faith has been rewarded. Activate this ability to channel the power of Aureon's
- * wisdom for 24 seconds plus 6 seconds per Religious Lore feat you have.
+ * Created by adarr on 4/7/2017.
+ * [[https://ddowiki.com/page/Aureon%27s_Instruction Aureon's Instruction]] You are a devoted
+ * follower of Aureon, and your faith has been rewarded. Activate this ability to channel the power
+ * of Aureon's wisdom for 24 seconds plus 6 seconds per Religious Lore feat you have.
  *
- * In this state, you gain +4 Wisdom, +3 to Spell Penetration, +2 to your effective level for Turn Undead, +4 to maximum
- * Hit Dice affected when using Turn Undead, and +4 to the total Hit Dice affected by Turn Undead.
+ * In this state, you gain +4 Wisdom, +3 to Spell Penetration, +2 to your effective level for Turn
+ * Undead, +4 to maximum Hit Dice affected when using Turn Undead, and +4 to the total Hit Dice
+ * affected by Turn Undead.
  */
 trait AureonsInstruction
-  extends FeatRequisiteImpl with EberronReligionNonWarforged with DeityUniqueLevelBase with RequiresAllOfFeat
-  with Aureon with AureonFeatBase with ActiveFeat with AtWillEvent with DisplayProperties { self: DeityFeat =>
+  extends FeatRequisiteImpl with EberronReligionNonWarforged with DeityUniqueLevelBase
+  with RequiresAllOfFeat with Aureon with AureonFeatBase with ActiveFeat with AtWillEvent
+  with DisplayProperties { self: DeityFeat =>
 
   override def coolDown: Option[Duration] = Some(Duration.ofMinutes(10))
 

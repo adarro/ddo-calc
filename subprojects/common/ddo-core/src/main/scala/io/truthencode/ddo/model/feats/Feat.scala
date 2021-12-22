@@ -32,7 +32,8 @@ import scala.collection.immutable.IndexedSeq
  * Created by adarr on 2/14/2017.
  */
 trait Feat
-  extends EnumEntry with DisplayName with FriendlyDisplay with SubFeatInformation with SourceInfo with Features {
+  extends EnumEntry with DisplayName with FriendlyDisplay with SubFeatInformation with SourceInfo
+  with Features {
   self: FeatType with Requisite with Inclusion =>
 
   override val sourceId: String = s"Feat:$entryName"
@@ -43,20 +44,18 @@ trait Feat
 }
 
 object Feat extends Enum[Feat] with FeatSearchPrefix with LazyLogging {
-  def containsInTuple[T](target: T, search: Seq[(T, _)]*): Boolean = {
-    val s: Seq[(T, _)] = search.flatMap(_.zipWithIndex).map(_._1)
-    s.exists(_._1 == target)
+  lazy val racialFeats: IndexedSeq[Feat with RaceRequisite] = {
+    Feat.values.collect(fnRacialFeats)
   }
-
   /**
    * Filters feats which belong to racial / general feats only.
    *
-   * This removes feats that happen to have some racial aspect but are considered under another category, such as a
-   * Deity Based feat that requires classes as well as a race.
+   * This removes feats that happen to have some racial aspect but are considered under another
+   * category, such as a Deity Based feat that requires classes as well as a race.
    *
    * @note
-   *   Not sure if we really need this method in production. May only be useful for detecting / Acceptance testing
-   *   subsets
+   *   Not sure if we really need this method in production. May only be useful for detecting /
+   *   Acceptance testing subsets
    */
   val fnPureRacialFeat: PartialFunction[RaceRequisite, Feat with RaceRequisite] = {
     case x: RacialFeat => x
@@ -71,8 +70,27 @@ object Feat extends Enum[Feat] with FeatSearchPrefix with LazyLogging {
     x
   }
 
-  lazy val racialFeats: IndexedSeq[Feat with RaceRequisite] = {
-    Feat.values.collect(fnRacialFeats)
+  def featsFromRace(race: Race, opt: RequirementOption*): Seq[Feat] = {
+
+    racialFeats.filter { f =>
+      containsInTuple(race, fnOptionsToRaceSequence(f, opt: _*))
+    }.filterNot {
+      case _: DeityFeat => true
+      case _ => false
+    }
+  }
+
+  def containsInTuple[T](target: T, search: Seq[(T, _)]*): Boolean = {
+    val s: Seq[(T, _)] = search.flatMap(_.zipWithIndex).map(_._1)
+    s.exists(_._1 == target)
+  }
+
+  def fnOptionsToRaceSequence(req: RaceRequisite, options: RequirementOption*): Seq[(Race, Int)] = {
+    val seqOfSeq = for {
+      opt <- options
+
+    } yield fnOptionToRequisite(req = req, opt = opt)
+    seqOfSeq.flatten
   }
 
   def fnOptionToRequisite(req: RaceRequisite, opt: RequirementOption): Seq[(Race, Int)] = {
@@ -84,24 +102,6 @@ object Feat extends Enum[Feat] with FeatSearchPrefix with LazyLogging {
       //        throw NotImplementedException
       //      case RequirementOption.SelectableAsBonus => ???
       //      case RequirementOption.SelectableWithRestriction => ???
-    }
-  }
-
-  def fnOptionsToRaceSequence(req: RaceRequisite, options: RequirementOption*): Seq[(Race, Int)] = {
-    val seqOfSeq = for {
-      opt <- options
-
-    } yield fnOptionToRequisite(req = req, opt = opt)
-    seqOfSeq.flatten
-  }
-
-  def featsFromRace(race: Race, opt: RequirementOption*): Seq[Feat] = {
-
-    racialFeats.filter { f =>
-      containsInTuple(race, fnOptionsToRaceSequence(f, opt: _*))
-    }.filterNot {
-      case _: DeityFeat => true
-      case _ => false
     }
   }
 

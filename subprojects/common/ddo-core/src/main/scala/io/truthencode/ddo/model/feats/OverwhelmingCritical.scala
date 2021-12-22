@@ -23,7 +23,8 @@ import io.truthencode.ddo.support.requisite.{RequiresAllOfFeat, RequiresCharacte
  * @todo
  *   Needs to follow parent feat format like weapon focus
  */
-protected[feats] trait OverwhelmingCritical extends Passive with RequiresCharacterLevel with RequiresAllOfFeat {
+protected[feats] trait OverwhelmingCritical
+  extends Passive with RequiresCharacterLevel with RequiresAllOfFeat {
   self: EpicFeat =>
   override val requireCharacterLevel: Int = 27
 

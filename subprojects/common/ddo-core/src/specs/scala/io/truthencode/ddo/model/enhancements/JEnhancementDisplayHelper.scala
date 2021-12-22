@@ -20,24 +20,62 @@ package io.truthencode.ddo.model.enhancements
 import com.typesafe.scalalogging.LazyLogging
 import io.truthencode.ddo.model.enhancement.Tier
 import io.truthencode.ddo.support.tree.ClassTrees
-import java.io
 
 import scala.beans.BeanProperty
 
 abstract class JEnhancementDisplayHelper extends ClassEnhancementDisplayHelper with LazyLogging {
 
+  override lazy val tree: ClassTrees = ClassTrees.withName(treeId)
   /**
    * Java Work-around to set
    */
   @BeanProperty
   var treeId: String = _
-  override lazy val tree: ClassTrees = ClassTrees.withName(treeId)
-
   @BeanProperty
   var currentTier: String = _
 
   @BeanProperty
   var currentEnhancement: String = _
+
+  // [enhancement] | [Description][description] | [AP_Cost][apcost] | [Ranks][ranks] | [Progression][progression]| [Requirements][requirements]|
+  def tier: Tier =
+    Tier
+      .withNameOption(currentTier)
+      .getOrElse({
+        logger.error(
+          s"Could not find a valid Tier using ID $currentTier defaulting to ${Tier.Core.entryName}"
+        )
+        Tier.Core
+      })
+
+  def loadFromKey(enhancementId: String): ResultObject = {
+    val trimmed = enhancementId.trim
+    logger.info(
+      s"************* Attempting to load Enhancement ResultObject using key: [$trimmed]"
+    )
+    // logger.info(s"mappvalues has ${mappedValues.size} elements")
+    val ce: ClassEnhancementInfo =
+      mappedValues.getOrElse(
+        trimmed, {
+          logger.warn(s"Failed to find Enhancement with id $enhancementId")
+          CEnhancementDumb(enhancementId)
+        })
+    logger.debug(ce.toString)
+    implicit val altName: Option[String] = Some(enhancementId)
+    ResultObject.apply(ce)
+
+  }
+
+  sealed trait prefixes {
+    val text: String
+    val separator: String = ": "
+
+    def prefix(value: Int): String = prefix(value.toString)
+
+    def prefix(value: String): String = {
+      s"$text$separator$value"
+    }
+  }
 
   case class ResultObject(
     enhancement: String,
@@ -47,16 +85,6 @@ abstract class JEnhancementDisplayHelper extends ClassEnhancementDisplayHelper w
     progression: String,
     requirements: String
   )
-
-  sealed trait prefixes {
-    val text: String
-    val separator: String = ": "
-
-    def prefix(value: String): String = {
-      s"$text$separator$value"
-    }
-    def prefix(value: Int): String = prefix(value.toString)
-  }
 
   case object Prefix_AP extends prefixes {
     override val text: String = "AP Cost"
@@ -89,35 +117,6 @@ abstract class JEnhancementDisplayHelper extends ClassEnhancementDisplayHelper w
       )
 
     }
-  }
-
-  // [enhancement] | [Description][description] | [AP_Cost][apcost] | [Ranks][ranks] | [Progression][progression]| [Requirements][requirements]|
-  def tier: Tier =
-    Tier
-      .withNameOption(currentTier)
-      .getOrElse({
-        logger.error(
-          s"Could not find a valid Tier using ID $currentTier defaulting to ${Tier.Core.entryName}"
-        )
-        Tier.Core
-      })
-
-  def loadFromKey(enhancementId: String): ResultObject = {
-    val trimmed = enhancementId.trim
-    logger.info(
-      s"************* Attempting to load Enhancement ResultObject using key: [$trimmed]"
-    )
-    // logger.info(s"mappvalues has ${mappedValues.size} elements")
-    val ce: ClassEnhancementInfo =
-      mappedValues.getOrElse(
-        trimmed, {
-          logger.warn(s"Failed to find Enhancement with id $enhancementId")
-          CEnhancementDumb(enhancementId)
-        })
-    logger.debug(ce.toString)
-    implicit val altName: Option[String] = Some(enhancementId)
-    ResultObject.apply(ce)
-
   }
 
 }

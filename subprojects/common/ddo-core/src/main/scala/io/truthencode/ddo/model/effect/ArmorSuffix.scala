@@ -17,7 +17,7 @@
  */
 package io.truthencode.ddo.model.effect
 
-import enumeratum.{Enum => SmartEnum, EnumEntry}
+import enumeratum.{EnumEntry, Enum => SmartEnum}
 
 sealed trait ArmorSuffix extends EnumEntry with Suffix
 object ArmorSuffix extends SmartEnum[ArmorSuffix] {
@@ -42,7 +42,8 @@ object ArmorSuffix extends SmartEnum[ArmorSuffix] {
   case object LightResistance extends ArmorSuffix with DamageReduction with Light
   case object Power extends ArmorSuffix
   case object Prisms extends ArmorSuffix with ElementalResistance
-  // TODO: Need to add Protection to Reinforcement
+  // TODO: Need full pass on Suffix etc as many deep changes since 2017
+  //  Need to add Protection to Reinforcement
   case object Reinforcement extends ArmorSuffix with DamageReduction with FullPhysical
   case object Shadow extends ArmorSuffix
   case object SilentMoves extends ArmorSuffix

@@ -22,16 +22,17 @@ import io.truthencode.ddo.model.classes.HeroicCharacterClass.Warlock
 import io.truthencode.ddo.support.requisite.{FeatRequisiteImpl, GrantsToClass, RequiresAllOfClass, RequiresAllOfFeat}
 
 /**
- * Plunge one enemy's mind into an illusory realm. That enemy is dazed and cannot act for 20 seconds. E ach time this
- * enemy is damaged, there's a 10% chance they break free.
+ * Plunge one enemy's mind into an illusory realm. That enemy is dazed and cannot act for 20
+ * seconds. E ach time this enemy is damaged, there's a 10% chance they break free.
  */
 protected[feats] trait DarkOnesLuck
-  extends FeatRequisiteImpl with Passive with RequiresAllOfClass with RequiresAllOfFeat with GrantsToClass {
+  extends FeatRequisiteImpl with Passive with RequiresAllOfClass with RequiresAllOfFeat
+  with GrantsToClass {
   self: ClassFeat =>
-
-  override protected def nameSource: String = "Dark One's Luck"
 
   override def grantToClass: Seq[(HeroicCharacterClass, Int)] = Seq((Warlock, 6))
 
   override def allOfFeats: Seq[Feat] = Seq(ClassFeat.PactFiend)
+
+  override protected def nameSource: String = "Dark One's Luck"
 }

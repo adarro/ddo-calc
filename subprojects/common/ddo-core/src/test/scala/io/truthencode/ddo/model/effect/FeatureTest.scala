@@ -18,24 +18,34 @@
 package io.truthencode.ddo.model.effect
 
 import com.typesafe.scalalogging.LazyLogging
+import io.truthencode.ddo.api.model.effect.DetailedEffect
 import io.truthencode.ddo.enhancement.BonusType
 import io.truthencode.ddo.model.effect.Feature.printFeature
-import io.truthencode.ddo.model.feats.GeneralFeat.logger
+import io.truthencode.ddo.model.effect.features.SkillEffect
 import io.truthencode.ddo.model.feats.{Feat, GeneralFeat}
 import io.truthencode.ddo.model.item.weapon.WeaponCategory.{filterByWeaponClass, icPlus1, icPlus2, icPlus3}
 import io.truthencode.ddo.model.item.weapon.WeaponClass
 import io.truthencode.ddo.model.skill.Skill.{Listen, Spot}
-import io.truthencode.ddo.model.stats.BasicStat
+import io.truthencode.ddo.model.stats.{BasicStat, MissChance}
+import io.truthencode.ddo.support.naming.UsingSearchPrefix
+import io.truthencode.ddo.test.tags.{FeatTest, FeatureTest, SkillTest}
 import org.scalatest.TryValues._
 import org.scalatest.funspec.AnyFunSpec
 import org.scalatest.matchers.should.Matchers
-import io.truthencode.ddo.test.tags.{FeatTest, FeatureTest, SkillTest}
 import org.scalatestplus.mockito.MockitoSugar
 
-import scala.Option
 import scala.collection.immutable
+import scala.util.{Success, Try}
 
 class FeatureTest extends AnyFunSpec with Matchers with MockitoSugar with LazyLogging {
+
+  val featEffects: Unit = {
+    val fList = for {
+      feat <- Feat.values
+      features <- feat.namedFeatures
+      feature <- features._2
+    } yield (feat, feature)
+  }
 
   def fixture = new {
     val sourceInfo: SourceInfo = SourceInfo("TestContext", this)
@@ -50,31 +60,60 @@ class FeatureTest extends AnyFunSpec with Matchers with MockitoSugar with LazyLo
     }
   }
 
-  val featEffects = {
-    val fList = for {
-      feat <- Feat.values
-      features <- feat.namedFeatures
-      feature <- features._2
-    } yield (feat, feature)
-  }
-
   describe("A feature") {
     it("should be able to affect a dodge chance ", FeatureTest, FeatTest) {
       val param = EffectParameter.BonusType(BonusType.Feat)
-      val part = EffectPart.DodgeChance
+      val part = EffectPart.MissChanceEffect(BasicStat.DodgeChance)
       val mockDetailedEffect = mock[DetailedEffect]
-      val partMod = new PartModifier[Int, BasicStat] with ParameterModifier[Int, BonusType] {
-        lazy override protected[this] val partToModify: BasicStat =
+      val partMod = new PartModifier[Int, BasicStat with MissChance] with UsingSearchPrefix {
+        /**
+         * Used when qualifying a search with a prefix. Examples include finding "HalfElf" from
+         * qualified "Race:HalfElf"
+         *
+         * @return
+         *   A default or applied prefix
+         */
+        override def searchPrefixSource: String = partToModify.searchPrefixSource
+        override lazy val part: Try[EffectPart] = Success(EffectPart.MissChanceEffect(partToModify))
+        /**
+         * The General Description should be just that. This should not include specific values
+         * unless all instances will share that value. I.e. a Dodge Effect might state it increases
+         * your miss-chance, but omit any value such as 20%. Those values will be displayed in the
+         * effectText of a specific implementation such as the Dodge Feat or Uncanny Dodge
+         */
+        override val generalDescription: String =
+          "Increases your chance to completely dodge an attack"
+
+        /**
+         * a list of Categories useful for menu / UI placement and also for searching / querying for
+         * Miss-Chance or other desired effects.
+         *
+         * This list might be constrained or filtered by an Enumeration or CSV file. The goal is to
+         * enable quick and advanced searching for specific categories from general (Miss-Chance) to
+         * specific (evasion). In addition, it may be useful for deep searching such as increasing
+         * Spot, which should suggest not only +Spot items, but +Wisdom or eventually include a feat
+         * or enhancement that allows the use of some other value as your spot score.
+         */
+        override def categories: Seq[String] =
+          Seq(EffectCategories.General, EffectCategories.MissChance).map(_.toString)
+
+        override protected[this] lazy val partToModify: BasicStat with MissChance =
           BasicStat.DodgeChance
-        lazy override protected[this] val parameterToModify: BonusType =
-          BonusType.Feat
-          override val effectDetail: DetailedEffect = mockDetailedEffect
-          override val value: Int = 3
+        private val eb = EffectParameterBuilder()
+          .toggleOffValue(TriggerEvent.OnDeath)
+          .toggleOnValue(TriggerEvent.Passive)
+          .addBonusType(BonusType.Feat)
+          .build
+
+        override protected[this] def effectParameters: Seq[ParameterModifier[_]] = eb.modifiers
+        override val effectDetail: DetailedEffect = mockDetailedEffect
+        override val value: Int = 3
         override val source: SourceInfo = SourceInfo("ExampleDodge", this)
       }
 
       logger.info(s"found Feature Effect with Name ${partMod.name}")
-      partMod.parameter.success.value should be(param)
+      partMod.parameters should contain(Success(param))
+      // partMod.parameters.foreach(_.success.value should be(param))
       partMod.part.success.value should be(part)
       //  f.parameter should be a 'success //Be Success(BonusType(ActionBoost)) (EffectParameter.BonusType)
       // f.part should be a 'success //shouldBe (EffectPart.Feat)
@@ -84,9 +123,9 @@ class FeatureTest extends AnyFunSpec with Matchers with MockitoSugar with LazyLo
 
     it("Should support Skill Augmentation", FeatTest, SkillTest, FeatureTest) {
       val param = EffectParameter.BonusType(BonusType.Feat)
-      val part = EffectPart.Skill
+      // val part = EffectPart.SkillPart
       val feat = GeneralFeat.Alertness
-      val ff: immutable.Seq[Feature.SkillEffect] = feat.features.collect { case y: Feature.SkillEffect =>
+      val ff: immutable.Seq[SkillEffect] = feat.features.collect { case y: SkillEffect =>
         y
       }
       ff.map(_.skill) should contain allOf (Listen, Spot)
@@ -94,7 +133,7 @@ class FeatureTest extends AnyFunSpec with Matchers with MockitoSugar with LazyLo
 
     it("should contain relevant source information", FeatTest, SkillTest, FeatureTest) {
       val feat = GeneralFeat.Alertness
-      val ff: Option[Feature.SkillEffect] = feat.features.collectFirst { case y: Feature.SkillEffect =>
+      val ff: Option[SkillEffect] = feat.features.collectFirst { case y: SkillEffect =>
         y
       }
       ff should not be empty
@@ -106,14 +145,18 @@ class FeatureTest extends AnyFunSpec with Matchers with MockitoSugar with LazyLo
 
     it("Should be extractable using a filter like Basic Stat or BonusType", FeatureTest, FeatTest) {
       val param = EffectParameter.BonusType(BonusType.Feat)
-      val part = EffectPart.DodgeChance
+      val part = EffectPart.MissChanceEffect(BasicStat.DodgeChance)
       val feat = GeneralFeat.Dodge
-      feat.features.collectFirst { case y: PartModifier[Int, BasicStat] with ParameterModifier[Int, BonusType] =>
+      feat.features.collectFirst { case y: PartModifier[Int, BasicStat] =>
         y
       } match {
         case Some(x) =>
-          (x.parameter should be).a(Symbol("success"))
-          x.parameter.success.value should be(param)
+          x.parameters.foreach(_ should be a Symbol("Success"))
+          x.parameters
+            .flatten(_.toOption)
+            .filter(_.entryName.contains("Bonus"))
+            .map(_ should be(param))
+
           (x.part should be).a(Symbol("success"))
           x.part.success.value should be(part)
       }
@@ -124,23 +167,62 @@ class FeatureTest extends AnyFunSpec with Matchers with MockitoSugar with LazyLo
       val part = EffectPart.Feat(GeneralFeat.Trip)
       val mDetail = mock[DetailedEffect]
       val f = fixture
-      val pm = new PartModifier[Int, GeneralFeat] with ParameterModifier[Int, BonusType] {
-        lazy override protected[this] val partToModify: GeneralFeat =
+      val pm = new PartModifier[Int, GeneralFeat] with UsingSearchPrefix {
+        override protected[this] lazy val partToModify: GeneralFeat =
           GeneralFeat.Trip
-        lazy override protected[this] val parameterToModify: BonusType =
-          BonusType.ActionBoost
+
+        /**
+         * The General Description should be just that. This should not include specific values
+         * unless all instances will share that value. I.e. a Dodge Effect might state it increases
+         * your miss-chance, but omit any value such as 20%. Those values will be displayed in the
+         * effectText of a specific implementation such as the Dodge Feat or Uncanny Dodge
+         */
+        override val generalDescription: String = "Not an ability to do illegal drugs"
+
+        /**
+         * a list of Categories useful for menu / UI placement and also for searching / querying for
+         * Miss-Chance or other desired effects.
+         *
+         * This list might be constrained or filtered by an Enumeration or CSV file. The goal is to
+         * enable quick and advanced searching for specific categories from general (Miss-Chance) to
+         * specific (evasion). In addition, it may be useful for deep searching such as increasing
+         * Spot, which should suggest not only +Spot items, but +Wisdom or eventually include a feat
+         * or enhancement that allows the use of some other value as your spot score.
+         */
+        override def categories: Seq[String] = Seq(EffectCategories.SpecialAttack).map(_.toString)
+
+        /**
+         * Used when qualifying a search with a prefix. Examples include finding "HalfElf" from
+         * qualified "Race:HalfElf"
+         *
+         * @return
+         *   A default or applied prefix
+         */
+        override def searchPrefixSource: String = GeneralFeat.searchPrefixSource
+
+        override lazy val part: Try[EffectPart] = Success(EffectPart.Feat(partToModify))
+        private val eb = EffectParameterBuilder()
+          .toggleOffValue(TriggerEvent.OnAttackRoll)
+          .toggleOnValue(TriggerEvent.OnRest)
+          .addBonusType(BonusType.ActionBoost)
+          .build
+
+        override protected[this] def effectParameters: Seq[ParameterModifier[_]] = eb.modifiers
         override val value: Int = 3
         override val source: SourceInfo = f.sourceInfo
-          override val effectDetail: DetailedEffect = mDetail
+        override val effectDetail: DetailedEffect = mDetail
       }
-
-      pm.parameter.success.value should be(param)
+      val bonuses: Seq[EffectParameter] =
+        pm.parameters.flatMap(_.toOption).filter(_.entryName.contains("Bonus"))
+      bonuses should contain(param)
+      //   pm.parameters.foreach(_.success.value should be(param))
       pm.part.success.value should be(part)
 
       pm.value shouldEqual 3
 
     }
   }
+
   describe("Improved Critical Features") {
     they("Should be broken down by weapon type") {
       val result = WeaponClass.values.flatMap { weaponClass =>

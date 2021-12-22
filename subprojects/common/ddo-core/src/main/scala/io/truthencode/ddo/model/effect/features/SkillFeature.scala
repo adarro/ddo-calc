@@ -17,8 +17,9 @@
  */
 package io.truthencode.ddo.model.effect.features
 
+import io.truthencode.ddo.api.model.effect.DetailedEffect
 import io.truthencode.ddo.enhancement.BonusType
-import io.truthencode.ddo.model.effect.{DetailedEffect, EffectCategories, Feature, SourceInfo, TriggerEvent}
+import io.truthencode.ddo.model.effect._
 import io.truthencode.ddo.model.skill.Skill
 
 import scala.collection.immutable
@@ -28,22 +29,26 @@ import scala.collection.immutable
  */
 trait SkillFeature extends Features {
   self: SourceInfo =>
-  val bonusType: BonusType
-
-  val affectedSkills: List[(Skill, Int)]
-  private val src = this
-
-  private lazy val skillChance: immutable.Seq[Feature.SkillEffect] = affectedSkills.map { f =>
+  private lazy val skillChance: immutable.Seq[SkillEffect] = affectedSkills.map { f =>
     val categories = Seq(EffectCategories.Skill).map(_.toString)
     val effectDetail = DetailedEffect(
       id = s"Skill:${f._1.entryName}",
       description = "Improves skill",
-      categories = categories,
-      triggersOn = TriggerEvent.Passive.toString,
-      triggersOff = TriggerEvent.Never.toString
+      triggersOn = skillTriggerOn.map(_.entryName),
+      triggersOff = skillTriggerOff.map(_.entryName)
     )
-    Feature.SkillEffect(f._1, f._2, bonusType, src, effectDetail)
+    val eb = EffectParameterBuilder()
+      .toggleOffValue(skillTriggerOff: _*)
+      .toggleOnValue(skillTriggerOn: _*)
+      .addBonusType(bonusType)
+      .build
+    SkillEffect(f._1, f._2, bonusType, src, categories, eb.modifiers, effectDetail)
   }
+  val bonusType: BonusType
+  val skillTriggerOn: Seq[TriggerEvent] = Seq(TriggerEvent.Passive)
+  val skillTriggerOff: Seq[TriggerEvent] = Seq(TriggerEvent.Never)
+  val affectedSkills: List[(Skill, Int)]
+  private val src = this
 
   abstract override def features: Seq[Feature[_]] =
     super.features ++ skillChance

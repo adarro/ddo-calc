@@ -27,34 +27,37 @@ import io.truthencode.ddo.model.spells.SpellPower
 import io.truthencode.ddo.support.requisite.{ClassRequisiteImpl, FeatRequisiteImpl, FreeFeat, GrantsToClass}
 
 /**
- * This feat increases the maximum spell points by 80, increases the spell critical chance by 5% and grants Echoes of
- * Power if the spell points pool drops below 12.
+ * This feat increases the maximum spell points by 80, increases the spell critical chance by 5% and
+ * grants Echoes of Power if the spell points pool drops below 12.
  *
  * @note
- *   granted Level 1 : Cleric, Druid, Favored Soul, Artificer, Sorcerer, Wizard, Warlock granted via enhancement for:
- *   Bard - third rank of Magical Studies from Spellsinger enhancements Ranger - third rank of Energy of the Wild from
- *   Arcane Archer enhancements
+ *   granted Level 1 : Cleric, Druid, Favored Soul, Artificer, Sorcerer, Wizard, Warlock granted via
+ *   enhancement for: Bard - third rank of Magical Studies from Spellsinger enhancements Ranger -
+ *   third rank of Energy of the Wild from Arcane Archer enhancements
  *
  * Any other class as a trainable feat
  */
 protected[feats] trait MagicalTraining
-  extends FeatRequisiteImpl with Passive with FreeFeat with ClassRequisiteImpl with GrantsToClass with FeaturesImpl
-  with SpellPointAmountFeature with SpellCriticalPercentFeature { self: GeneralFeat =>
+  extends FeatRequisiteImpl with Passive with FreeFeat with ClassRequisiteImpl with GrantsToClass
+  with FeaturesImpl with SpellPointAmountFeature with SpellCriticalPercentFeature {
+  self: GeneralFeat =>
+  override protected[this] lazy val triggerOn: Seq[TriggerEvent] = Seq(TriggerEvent.Passive)
+  override protected[this] lazy val triggerOff: Seq[TriggerEvent] = Seq(TriggerEvent.Never)
+  override protected[this] lazy val spellCriticalCategories: Seq[effect.EffectCategories.Value] =
+    Seq(effect.EffectCategories.SpellCasting)
   // TODO: Need to add Echoes of Power effect (Magical Training etc.) [Low Priority]
   override protected val spellPointBonusType: BonusType = BonusType.Feat
   override protected val spellPointBonusAmount: Int = 80
-
-  lazy override protected[this] val triggerOn: TriggerEvent = TriggerEvent.Passive
-  lazy override protected[this] val triggerOff: TriggerEvent = TriggerEvent.Never
-  lazy override protected[this] val categories: Seq[effect.EffectCategories.Value] = Seq(
+  override protected[this] val spellPointAmountCategories: Seq[effect.EffectCategories.Value] = Seq(
     effect.EffectCategories.SpellCasting)
-
-  private def magicClasses =
-    List(Cleric, Druid, FavoredSoul, Artificer, Sorcerer, Wizard, Warlock, Alchemist)
+  override protected val spellCriticalBonusType: BonusType = BonusType.Feat
+  override protected[this] val schoolCritical: Seq[(SpellPower, Int)] =
+    SpellPower.values.map((_, 5)).to(LazyList)
+  val g: Seq[(SpellPower, Int)] = SpellPower.values.map((_, 5))
 
   override def grantToClass: Seq[(HeroicCharacterClass, Int)] =
     magicClasses.map((_, 1))
-  val g: Seq[(SpellPower, Int)] = SpellPower.values.map((_, 5))
-  override protected val spellCriticalBonusType: BonusType = BonusType.Feat
-  override protected[this] val schoolCritical: Seq[(SpellPower, Int)] = SpellPower.values.map((_, 5)).to(LazyList)
+
+  private def magicClasses =
+    List(Cleric, Druid, FavoredSoul, Artificer, Sorcerer, Wizard, Warlock, Alchemist)
 }

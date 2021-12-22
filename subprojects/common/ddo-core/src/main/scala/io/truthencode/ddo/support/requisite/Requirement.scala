@@ -41,9 +41,13 @@ sealed trait Requirement extends EnumEntry with DisplayName with Prefix {
 }
 
 /**
- * Used to enumerate prerequisites or qualifications for a given feat, spell, enhancement, equipping an item etc.
+ * Used to enumerate prerequisites or qualifications for a given feat, spell, enhancement, equipping
+ * an item etc.
  */
 object Requirement extends Enum[Requirement] {
+  def values: IndexedSeq[Requirement] =
+    findValues ++ races ++ classes ++ alignments ++ skills
+
   private def races = Race.values.map { x =>
     ReqRace(x.entryName, 0)
   }
@@ -88,17 +92,19 @@ object Requirement extends Enum[Requirement] {
    * Represents Total Action points spent
    *
    * @param tree
-   *   The type discriminator used to determine which tree (Epic Destiny line vs Ranger enhancement tree) which includes
-   *   point type (EDP vs Action Points vs Survival Points etc)
+   *   The type discriminator used to determine which tree (Epic Destiny line vs Ranger enhancement
+   *   tree) which includes point type (EDP vs Action Points vs Survival Points etc)
    * @param amount
-   *   The Total amount of points that must be spent to qualify for. Generally used as a requisite for enhancement trees
+   *   The Total amount of points that must be spent to qualify for. Generally used as a requisite
+   *   for enhancement trees
    * @note
    *   Fate Points / Karma may need to be handled separately
    */
-  case class ReqPointsSpentInTree(tree: TreeLike, amount: Int) extends Requirement with Progression {
-    override def prefix: Option[String] = Some(tree.entryName)
-
+  case class ReqPointsSpentInTree(tree: TreeLike, amount: Int)
+    extends Requirement with Progression {
     override val points: SpendablePoints = tree.pointType
+
+    override def prefix: Option[String] = Some(tree.entryName)
 
     /**
      * @inheritdoc
@@ -113,7 +119,8 @@ object Requirement extends Enum[Requirement] {
    * @param points
    *   The type discriminator used to determine Epic Destiny vs Action Points etc
    * @param amount
-   *   The Total amount of points that must be spent to qualify for. Generally used as a requisite for enhancement trees
+   *   The Total amount of points that must be spent to qualify for. Generally used as a requisite
+   *   for enhancement trees
    */
   case class ReqPointsSpent(points: SpendablePoints, amount: Int) extends Requirement {
     override def prefix: Option[String] = Some(points.entryName)
@@ -144,7 +151,7 @@ object Requirement extends Enum[Requirement] {
     override protected def nameSource: String = id.splitByCase.toPascalCase
   }
 
-  case class BaseAttackBonusReq(amount: Int) extends Requirement with Abbreviation {
+  case class ReqBaseAttackBonus(amount: Int) extends Requirement with Abbreviation {
 
     /**
      * The short form of the word
@@ -154,14 +161,14 @@ object Requirement extends Enum[Requirement] {
     override def prefix: Option[String] = None
 
     /**
-     * @inheritdoc
-     */
-    override protected def nameSource: String = abbr.splitByCase.toPascalCase
-
-    /**
      * Expands the abbr to its full value
      */
     override def toFullWord: String = entryName.splitByCase
+
+    /**
+     * @inheritdoc
+     */
+    override protected def nameSource: String = abbr.splitByCase.toPascalCase
   }
 
   /**
@@ -200,7 +207,8 @@ object Requirement extends Enum[Requirement] {
   }
 
   /**
-   * Represents a prerequisite enhancement, generally used as a prerequisite for a higher level enhancement.
+   * Represents a prerequisite enhancement, generally used as a prerequisite for a higher level
+   * enhancement.
    *
    * @param id
    *   the id of the enhancement
@@ -215,6 +223,8 @@ object Requirement extends Enum[Requirement] {
   }
 
   case class ReqClassEnhancement(id: String) extends Requirement {
+    override def prefix: Option[String] = Some("ClassEnhancement")
+
     /**
      * Sets or maps the source text for the DisplayName.
      *
@@ -222,14 +232,12 @@ object Requirement extends Enum[Requirement] {
      *   Source text.
      */
     override protected def nameSource: String = id.splitByCase.toPascalCase
-
-    override def prefix: Option[String] = Some("ClassEnhancement")
   }
 
   /**
    * Represents a particular alignment, i.e. A Pure Good weapon requires
-   * [[io.truthencode.ddo.model.alignment.MoralAxis.Good]] (Either the law or moral axis) Some items, such as Generated
-   * armors such as Armors of Stability give bonus if the character is
+   * [[io.truthencode.ddo.model.alignment.MoralAxis.Good]] (Either the law or moral axis) Some
+   * items, such as Generated armors such as Armors of Stability give bonus if the character is
    * [[io.truthencode.ddo.model.alignment.Alignments.TrueNeutral]].
    *
    * @param id
@@ -285,9 +293,9 @@ object Requirement extends Enum[Requirement] {
    * @param amount
    *   the minimum trained or effective level of the skill.
    * @param trained
-   *   determines if the skill must be trained to this level or simply a total value after buffs, equipment, etc. true
-   *   (i.e. the base skill must be explicitly trained to this level.) false the total effective skill must be this
-   *   level.
+   *   determines if the skill must be trained to this level or simply a total value after buffs,
+   *   equipment, etc. true (i.e. the base skill must be explicitly trained to this level.) false
+   *   the total effective skill must be this level.
    * i.e. can include bonuses from items / ability scores etc.
    */
   case class ReqSkill(id: String, amount: Int, trained: Boolean = false) extends Requirement {
@@ -300,7 +308,8 @@ object Requirement extends Enum[Requirement] {
   }
 
   /**
-   * Represents the minimum total character level required to activate or select a skill, wear an item etc.
+   * Represents the minimum total character level required to activate or select a skill, wear an
+   * item etc.
    *
    * @param characterLevel
    *   Minimum character level.
@@ -345,7 +354,10 @@ object Requirement extends Enum[Requirement] {
      */
     override protected def nameSource: String = id.splitByCase.toPascalCase
   }
+
   case class ReqPointsInTree(treeLike: TreeLike, amount: Int) extends Requirement {
+    val pointType: SpendablePoints = treeLike.pointType
+
     override def prefix: Option[String] = Some(treeLike.searchPrefix)
 
     /**
@@ -355,8 +367,8 @@ object Requirement extends Enum[Requirement] {
      *   Source text.
      */
     override protected def nameSource: String = treeLike.entryName.splitByCase.toPascalCase
-    val pointType: SpendablePoints = treeLike.pointType
   }
+
   case class ReqPoints(id: String, amount: Int) extends Requirement {
     override def prefix: Option[String] = Some(SpendablePoints.searchPrefix)
 
@@ -368,7 +380,4 @@ object Requirement extends Enum[Requirement] {
      */
     override protected def nameSource: String = id.splitByCase.toPascalCase
   }
-
-  def values: IndexedSeq[Requirement] =
-    findValues ++ races ++ classes ++ alignments ++ skills
 }

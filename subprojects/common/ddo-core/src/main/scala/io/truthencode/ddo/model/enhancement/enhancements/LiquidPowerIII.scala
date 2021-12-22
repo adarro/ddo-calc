@@ -26,9 +26,6 @@ import io.truthencode.ddo.support.tree.TreeLike
 
 trait LiquidPowerIII extends BombardierCore with ClassEnhancementImpl {
 
-  override protected def nameSource: String = "Liquid Power III".replaceRomanNumerals
-  override def displayText: String = displaySource.replaceNumbersWithRomanNumerals
-
   override lazy val description: Option[String] = Some(
     """Select an Element to specialize in.
       |BombadierLiquidPowerAcidI.png Liquid Power Acid: You gain +1 Caster Level with Acid Spells.
@@ -39,15 +36,18 @@ trait LiquidPowerIII extends BombardierCore with ClassEnhancementImpl {
       |While in Pyrite Reaction, you gain +1 Conjuration DC.
       |""".stripMargin
   )
-
-  override def apCostPerRank: Int = 1
-
   /**
    * Some enhancements can be taken multiple times (generally up to three)
    */
   override val ranks: Int = 1
 
+  override def displayText: String = displaySource.replaceNumbersWithRomanNumerals
+
+  override def apCostPerRank: Int = 1
+
   override def allOfClass: Seq[(HeroicCharacterClass, Int)] = Seq((Alchemist, 18))
 
   override def progressionInTree: Seq[(TreeLike, SpendablePoints, Int)] = Seq((tree, 30))
+
+  override protected def nameSource: String = "Liquid Power III".replaceRomanNumerals
 }

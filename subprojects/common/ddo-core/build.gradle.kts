@@ -30,6 +30,7 @@ dependencies {
     dependencies {
         implementation(platform(project(":ddo-platform-scala")))
         implementation(project(":ddo-util"))
+        implementation(project(":ddo-modeling"))
 
         val scalaLibraryVersion: String by project
         val scalaMajorVersion: String by project

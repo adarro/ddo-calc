@@ -17,13 +17,12 @@
  */
 package io.truthencode.ddo.model.feats.metamagic
 
-import java.util
 import io.truthencode.ddo.model.feats.MetaMagicFeat
 import org.concordion.integration.junit4.ConcordionRunner
 import org.junit.runner.RunWith
 
+import java.util
 import scala.jdk.CollectionConverters.SeqHasAsJava
-
 
 @RunWith(classOf[ConcordionRunner])
 class MetaMagic {

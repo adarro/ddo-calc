@@ -21,11 +21,13 @@ import io.truthencode.ddo.model.classes.HeroicCharacterClass
 import io.truthencode.ddo.support.requisite.{ClassRequisite, FeatRequisiteImpl, GrantsToClass}
 
 /**
- * A rogue with this ability can sneak attack opponents with such precision that his or her blows weaken and hamper
- * them. An opponent damaged by a sneak attack also takes 2 points of Strength damage.
+ * A rogue with this ability can sneak attack opponents with such precision that his or her blows
+ * weaken and hamper them. An opponent damaged by a sneak attack also takes 2 points of Strength
+ * damage.
  */
 protected[feats] trait CripplingStrike
-  extends FeatRequisiteImpl with ClassRequisite with Passive with GrantsToClass with RogueOptionalAbility {
+  extends FeatRequisiteImpl with ClassRequisite with Passive with GrantsToClass
+  with RogueOptionalAbility {
   self: ClassFeat =>
   override def grantToClass: Seq[(HeroicCharacterClass, Int)] = rogueOptionMatrix
 

@@ -24,12 +24,11 @@ trait StoneOfTheScholar extends ApothecaryTierTwo with ClassEnhancementImpl {
   override lazy val description: Option[String] = Some(
     "Stone of the Scholar: Alchemist's Stone Toggle: While wielding an Orb in your off-hand, you gain +10 Healing Amplification and +20 Positive Spell Power. You can only have one Alchemist's Stone Toggle active at a time."
   )
-
-  override def apCostPerRank: Int = 2
-
   /**
    * Some enhancements can be taken multiple times (generally up to three)
    */
   override val ranks: Int = 1
+
+  override def apCostPerRank: Int = 2
 
 }

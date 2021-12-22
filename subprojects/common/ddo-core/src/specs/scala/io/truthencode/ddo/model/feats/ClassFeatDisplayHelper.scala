@@ -31,8 +31,6 @@ trait ClassFeatDisplayHelper extends FeatDisplayHelper with LazyLogging {
 
   type FNLevel = Entry => Seq[(HeroicCharacterClass, Int)]
   type FNClass = Entry => Seq[HeroicCharacterClass]
-  val cClass: HeroicCharacterClass
-
   lazy val classFeatByLevelMap: Seq[(String, Seq[Int])] = {
     val levels = for {
       f <- displayEnum.values
@@ -45,12 +43,11 @@ trait ClassFeatDisplayHelper extends FeatDisplayHelper with LazyLogging {
       }
       .to(Seq)
   }
-
   lazy val grantedFeats: util.List[String] = {
     val values = { displayEnum.values.collect(filterByGrantedTo) }.collect(filterByMainFeat)
     values.map(_.displayText).sorted.asJava
   }
-
+  val cClass: HeroicCharacterClass
 // Currently no sub-feats with Class based restrictions?
   val filterByAllOf: PartialFunction[Entry, Entry] = {
     case x: ClassRequisite if x.allOfClass.exists(isDefinedForClass(_)) => x
@@ -70,7 +67,8 @@ trait ClassFeatDisplayHelper extends FeatDisplayHelper with LazyLogging {
   }
 
   val filterByClassBonusFeat: PartialFunction[Entry, Entry] = {
-    case x: BonusSelectableFeat with SubFeatInformation if x.bonusCharacterClass.contains(cClass) && !x.isSubFeat =>
+    case x: BonusSelectableFeat with SubFeatInformation
+        if x.bonusCharacterClass.contains(cClass) && !x.isSubFeat =>
       lazy val msg = s"Entry ${x.displayText} matched type and character class $cClass"
       lazy val idInfo = Map(
         "entryName" -> x.entryName,
@@ -90,7 +88,8 @@ trait ClassFeatDisplayHelper extends FeatDisplayHelper with LazyLogging {
       (x, y)
   }
 
-  val existing: PartialFunction[Entry, Entry] = filterByAllOf.orElse(filterByAnyOf).orElse(filterByGrantedTo)
+  val existing: PartialFunction[Entry, Entry] =
+    filterByAllOf.orElse(filterByAnyOf).orElse(filterByGrantedTo)
 
   def isDefinedForClass(e: (HeroicCharacterClass, Int), level: Option[Int] = None): Boolean =
     e._1.eq(cClass) && isEqualOrEmpty(e._2, level)
@@ -137,8 +136,8 @@ trait ClassFeatDisplayHelper extends FeatDisplayHelper with LazyLogging {
   }
 
   /**
-   * Retrieves Display Text for bonus feats as a Java List. (Use of parenthesis needed when calling from Java
-   * (concordion)
+   * Retrieves Display Text for bonus feats as a Java List. (Use of parenthesis needed when calling
+   * from Java (concordion)
    *
    * @return
    *   List of Bonus Feat Names for the specific class sorted in Alpha ascending order.

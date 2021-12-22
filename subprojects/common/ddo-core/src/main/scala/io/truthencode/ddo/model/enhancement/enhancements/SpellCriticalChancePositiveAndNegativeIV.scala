@@ -34,8 +34,8 @@ trait SpellCriticalChancePositiveAndNegativeIV
    */
   override val ranks: Int = 1
 
-  override protected def nameSource: String = "Positive & Negative IV".replaceRomanNumerals
-
   override def apCostPerRank: Int = 2
+
+  override protected def nameSource: String = "Positive & Negative IV".replaceRomanNumerals
 
 }

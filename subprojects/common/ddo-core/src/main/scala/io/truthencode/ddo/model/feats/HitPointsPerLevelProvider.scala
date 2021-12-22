@@ -23,8 +23,8 @@ trait HitPointsPerLevelProvider {
    * 3 at first level, and adds +1 for each other level. Technically
    *
    * @example
-   *   val currentLevel = 3 calculateHitPointsPerLevel(3) // 5 // Officially this would be Seq(3) ++ (2 to
-   *   levelCap).map(_ => 1).sum // Effectively this is currentLevel + 2
+   *   val currentLevel = 3 calculateHitPointsPerLevel(3) // 5 // Officially this would be Seq(3) ++
+   *   (2 to levelCap).map(_ => 1).sum // Effectively this is currentLevel + 2
    * @param currentLevel
    *   Current Character Level
    * @return

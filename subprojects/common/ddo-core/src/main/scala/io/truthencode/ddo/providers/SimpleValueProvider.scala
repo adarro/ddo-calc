@@ -18,5 +18,5 @@
 package io.truthencode.ddo.providers
 
 abstract class SimpleValueProvider[V] {
-def createValue:V => V
+  def createValue: V => V
 }

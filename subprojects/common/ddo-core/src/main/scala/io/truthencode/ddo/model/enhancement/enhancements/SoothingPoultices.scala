@@ -24,12 +24,11 @@ trait SoothingPoultices extends ApothecaryTierOne with ClassEnhancementImpl {
   override lazy val description: Option[String] = Some(
     """While your Reaction is Verdanite, when you cast spells on yourself of allies you grant temporary hitpoints equal to third/half/full Intelligence. These last for three minutes."""
   )
-
-  override def apCostPerRank: Int = 1
-
   /**
    * Some enhancements can be taken multiple times (generally up to three)
    */
   override val ranks: Int = 3
+
+  override def apCostPerRank: Int = 1
 
 }

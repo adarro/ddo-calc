@@ -21,7 +21,8 @@ import io.truthencode.ddo.model.religions.Aureon
 import io.truthencode.ddo.support.requisite.FeatRequisiteImpl
 
 trait FollowerOfAureon
-  extends FeatRequisiteImpl with EberronReligionNonWarforged with FollowerBase with Aureon with AureonFeatBase {
+  extends FeatRequisiteImpl with EberronReligionNonWarforged with FollowerBase with Aureon
+  with AureonFeatBase {
   self: DeityFeat =>
 
 }

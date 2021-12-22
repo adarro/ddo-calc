@@ -20,33 +20,31 @@ package io.truthencode.ddo.model.feats
 import io.truthencode.ddo.enhancement.BonusType
 import io.truthencode.ddo.model.effect
 import io.truthencode.ddo.model.effect.TriggerEvent
-import io.truthencode.ddo.model.effect.features.{
-  ArmorClassAmountFeature,
-  DodgeChanceFeature,
-  FeaturesImpl,
-  MaxDexBonusFeature
-}
+import io.truthencode.ddo.model.effect.features.{ArmorClassAmountFeature, DodgeChanceFeature, FeaturesImpl, MaxDexBonusFeature}
 import io.truthencode.ddo.support.requisite.{FeatRequisiteImpl, RequiresAllOfFeat}
 
 /**
- * Icon Feat Mobility.png Mobility Passive Increases the maximum dexterity bonus permitted by armor and tower shields by
- * 2, and adds a +4 bonus to Armor Class while the character is tumbling. You will also gain a 2% dodge bonus. Dodge
+ * Icon Feat Mobility.png Mobility Passive Increases the maximum dexterity bonus permitted by armor
+ * and tower shields by 2, and adds a +4 bonus to Armor Class while the character is tumbling. You
+ * will also gain a 2% dodge bonus. Dodge
  */
 trait Mobility
-  extends FeatRequisiteImpl with Passive with RequiresAllOfFeat with MartialArtsFeat with FighterBonusFeat
-  with AlchemistBonusFeat with FeaturesImpl with DodgeChanceFeature with MaxDexBonusFeature
-  with ArmorClassAmountFeature {
+  extends FeatRequisiteImpl with Passive with RequiresAllOfFeat with MartialArtsFeat
+  with FighterBonusFeat with AlchemistBonusFeat with FeaturesImpl with DodgeChanceFeature
+  with MaxDexBonusFeature with ArmorClassAmountFeature {
   self: GeneralFeat =>
+  override protected[this] lazy val dodgeCategories: Seq[effect.EffectCategories.Value] = Seq(
+    effect.EffectCategories.MissChance)
+  override protected[this] lazy val triggerOn: Seq[TriggerEvent] = Seq(TriggerEvent.Passive)
+  override protected[this] lazy val triggerOff: Seq[TriggerEvent] = Seq(TriggerEvent.Never)
+  override protected[this] lazy val acTriggerOn: Seq[TriggerEvent] = Seq(TriggerEvent.OnTumble)
+  override protected[this] lazy val acTriggerOff: Seq[TriggerEvent] = Seq(TriggerEvent.WhileOn)
   override protected val armorBonusType: BonusType = BonusType.Feat
   override protected val armorBonusAmount: Int = 4
   override val mdbBonusType: BonusType = BonusType.Feat
-  lazy override protected[this] val categories: Seq[effect.EffectCategories.Value] = Seq(
-    effect.EffectCategories.MissChance)
   override val mdbAmount: Int = 2
-  lazy override protected[this] val triggerOn: TriggerEvent = TriggerEvent.Passive
-  lazy override protected[this] val triggerOff: TriggerEvent = TriggerEvent.Never
-  lazy override protected[this] val acTriggerOn: TriggerEvent = TriggerEvent.OnTumble
-  lazy override protected[this] val acTriggerOff: TriggerEvent = TriggerEvent.WhileOn
+  override protected[this] val mdbCategories: Seq[effect.EffectCategories.Value] = Seq(
+    effect.EffectCategories.MissChance)
   override val dodgeBonusType: BonusType = BonusType.Feat
   override val dodgeBonusAmount: Int = 2
 

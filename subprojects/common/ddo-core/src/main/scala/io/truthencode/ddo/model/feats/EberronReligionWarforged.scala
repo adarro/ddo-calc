@@ -24,7 +24,8 @@ import io.truthencode.ddo.support.requisite.{RaceRequisiteImpl, RequiresAllOfRac
 /**
  * Created by adarr on 4/6/2017.
  */
-trait EberronReligionWarforged extends RaceRequisiteImpl with RequiresAllOfRace with EberronReligionBase {
+trait EberronReligionWarforged
+  extends RaceRequisiteImpl with RequiresAllOfRace with EberronReligionBase {
   self: DeityFeat =>
   override def allOfRace: Seq[(Race, Int)] = List((Warforged, 1))
 }

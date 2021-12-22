@@ -25,41 +25,45 @@ import io.truthencode.ddo.providers.SimpleValueProvider
 import io.truthencode.ddo.support.requisite.{FeatRequisiteImpl, FreeFeat}
 
 /**
- * Icon Feat Toughness.png Toughness Passive This feat Increases your hit points by +3 at first level, and adds +1
- * additional hit point for each additional level. This feat can be taken multiple times, so that the effects stack. *
- * None
+ * Icon Feat Toughness.png Toughness Passive This feat Increases your hit points by +3 at first
+ * level, and adds +1 additional hit point for each additional level. This feat can be taken
+ * multiple times, so that the effects stack. * None
  * @note
- *   The hitpoint calculation attempts to use an Implicit [[SimpleValueProvider]]. It will create and use a default
- *   [[ToughnessHitPointsPerLevelProvider]] if no implicit value is found. Although we should probably type the implicit
- *   more specifically here
+ *   The hitpoint calculation attempts to use an Implicit [[SimpleValueProvider]]. It will create
+ *   and use a default [[ToughnessHitPointsPerLevelProvider]] if no implicit value is found.
+ *   Although we should probably type the implicit more specifically here
  */
 protected[feats] trait Toughness
   extends FeatRequisiteImpl with Passive with FreeFeat with MartialArtsFeat with FeaturesImpl
   with HitPointPerLevelAmountFeature {
   self: GeneralFeat =>
+  override protected[this] lazy val triggerOn: Seq[TriggerEvent] = Seq(TriggerEvent.Passive)
+  override protected[this] lazy val triggerOff: Seq[TriggerEvent] = Seq(TriggerEvent.Never)
+  override protected[this] lazy val hitPointPerLevelCategories: Seq[effect.EffectCategories.Value] =
+    Seq(effect.EffectCategories.Health)
   override protected val hitPointBonusType: BonusType = BonusType.Feat
   override protected val hitPointsPerLevel: Int = 0
-  def provider: SimpleValueProvider[Int] = new ToughnessHitPointsPerLevelProvider()
-  def doMath[Int](implicit
-    provider: SimpleValueProvider[Int] = provider.asInstanceOf[SimpleValueProvider[Int]]): Int => Int = {
-    provider.createValue
-  }
 
-  lazy override protected[this] val triggerOn: TriggerEvent = TriggerEvent.Passive
-  lazy override protected[this] val triggerOff: TriggerEvent = TriggerEvent.Never
-  lazy override protected[this] val categories: Seq[effect.EffectCategories.Value] = Seq(effect.EffectCategories.Health)
+  def provider: SimpleValueProvider[Int] = new ToughnessHitPointsPerLevelProvider()
 
   /**
    * 3 at first level, and adds +1 for each other level. Technically
    *
    * @example
-   *   val currentLevel = 3 calculateHitPointsPerLevel(3) // 5 // Officially this would be <br /> Seq(3) ++ (2 to
-   *   levelCap).map(_ => 1).sum // Effectively this is currentLevel + 2
+   *   val currentLevel = 3 calculateHitPointsPerLevel(3) // 5 // Officially this would be <br />
+   *   Seq(3) ++ (2 to levelCap).map(_ => 1).sum // Effectively this is currentLevel + 2
    * @param currentLevel
    *   Current Character Level
    * @return
    *   Additional Hit Points
    */
   def calculateHitPointsPerLevel(currentLevel: Int): Int = { currentLevel + 2 }
+
   override def calculate: Int => Int = doMath
+
+  def doMath[Int](implicit
+    provider: SimpleValueProvider[Int] = provider.asInstanceOf[SimpleValueProvider[Int]])
+    : Int => Int = {
+    provider.createValue
+  }
 }

@@ -22,10 +22,11 @@ import io.truthencode.ddo.model.classes.HeroicCharacterClass.Monk
 import io.truthencode.ddo.support.requisite.{FeatRequisiteImpl, GrantsToClass, RequiresAnyOfClass}
 
 /**
- * You have transcended your former race and are now considered a Lawful Outsider. You have gained Damage Reduction 10 /
- * Epic. Warforged retain most living construct traits.
+ * You have transcended your former race and are now considered a Lawful Outsider. You have gained
+ * Damage Reduction 10 / Epic. Warforged retain most living construct traits.
  */
-trait PerfectSelf extends FeatRequisiteImpl with Passive with GrantsToClass with RequiresAnyOfClass {
+trait PerfectSelf
+  extends FeatRequisiteImpl with Passive with GrantsToClass with RequiresAnyOfClass {
   override def grantToClass: Seq[(HeroicCharacterClass, Int)] =
     List((Monk, 20))
 

@@ -24,7 +24,8 @@ import io.truthencode.ddo.support.requisite.{FeatRequisiteImpl, GrantsToClass, R
 /**
  * Created by adarr on 2/16/2017.
  */
-protected[feats] trait Trapfinding extends FeatRequisiteImpl with Passive with GrantsToClass with RequiresAnyOfClass {
+protected[feats] trait Trapfinding
+  extends FeatRequisiteImpl with Passive with GrantsToClass with RequiresAnyOfClass {
   override def anyOfClass: Seq[(HeroicCharacterClass, Int)] =
     List((Rogue, 1), (Artificer, 1))
 

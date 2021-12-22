@@ -26,9 +26,9 @@ import org.scalatestplus.mockito.MockitoSugar
 import java.time.Duration
 
 class SpellBuilderTest extends AnyFunSpec with Matchers with MockitoSugar with LazyLogging {
-  private final val sampleDuration = 5L
-  private final val sampleLevelCap = 32
-  private final val SpellPointValue = 42
+  final private val sampleDuration = 5L
+  final private val sampleLevelCap = 32
+  final private val SpellPointValue = 42
   private val coolDown = mock[Option[Duration]]
   private val casterLevel = mock[CasterWithLevel]
   private val spellTarget = mock[SpellTarget]

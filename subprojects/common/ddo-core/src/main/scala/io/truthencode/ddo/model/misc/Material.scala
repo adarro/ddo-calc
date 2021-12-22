@@ -17,14 +17,14 @@
  */
 package io.truthencode.ddo.model.misc
 
-import enumeratum.{Enum => SmartEnum, EnumEntry}
+import enumeratum.{EnumEntry, Enum => SmartEnum}
 
 /**
  * Represents the material make up of an object.
  *
  * @note
- *   This is not to be confused with Material Components, which are used for spells or crafting etc. This is 'Steel',
- *   'Cloth' etc.
+ *   This is not to be confused with Material Components, which are used for spells or crafting etc.
+ *   This is 'Steel', 'Cloth' etc.
  */
 sealed trait Material extends EnumEntry
 // scalastyle:off number.of.types number.of.methods.in.type

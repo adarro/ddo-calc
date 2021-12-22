@@ -25,4 +25,5 @@ package io.truthencode.ddo.model.effect
  */
 trait Affix
 
-case class Affixes(prefix: String, sPrefix: String, suffix: String) extends Prefix with SecondaryPrefix with Suffix
+case class Affixes(prefix: String, sPrefix: String, suffix: String)
+  extends Prefix with SecondaryPrefix with Suffix

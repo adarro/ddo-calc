@@ -22,9 +22,11 @@ import io.truthencode.ddo.support.requisite.{Inclusion, Requisite, SelectableToC
 
 trait FighterBonusFeat extends SelectableToClass with BonusSelectableFeatImpl {
   self: Feat with FeatType with Requisite with Inclusion =>
-  private[this] val myCharClass: HeroicCharacterClass = HeroicCharacterClass.Fighter
   override val levels: Set[Int] = Set(1) ++ (2 to 20 by 2).toSet
-  abstract override def bonusCharacterClass: Seq[HeroicCharacterClass] = super.bonusCharacterClass :+ myCharClass
+  private[this] val myCharClass: HeroicCharacterClass = HeroicCharacterClass.Fighter
+
+  abstract override def bonusCharacterClass: Seq[HeroicCharacterClass] =
+    super.bonusCharacterClass :+ myCharClass
 
   abstract override def bonusSelectableToClass: Seq[(HeroicCharacterClass, Int)] = {
 

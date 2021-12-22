@@ -21,8 +21,8 @@ import io.truthencode.ddo.model.religions.Vulkoor
 import io.truthencode.ddo.support.requisite.{FeatRequisiteImpl, RequiresAllOfFeat}
 
 trait BelovedOfVulkoor
-  extends FeatRequisiteImpl with EberronReligionNonWarforged with BelovedLevelBase with RequiresAllOfFeat with Vulkoor
-  with TheVulkoorFeatBase { self: DeityFeat =>
+  extends FeatRequisiteImpl with EberronReligionNonWarforged with BelovedLevelBase
+  with RequiresAllOfFeat with Vulkoor with TheVulkoorFeatBase { self: DeityFeat =>
 
   override def allOfFeats: Seq[Feat] = List(DeityFeat.ChildOfVulkoor)
 }

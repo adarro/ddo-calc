@@ -21,12 +21,7 @@ import io.truthencode.ddo.model.classes.HeroicCharacterClass
 import io.truthencode.ddo.model.classes.HeroicCharacterClass.Artificer
 import io.truthencode.ddo.model.race.Race
 import io.truthencode.ddo.model.race.Race.Warforged
-import io.truthencode.ddo.support.requisite.{
-  FeatRequisiteImpl,
-  RaceRequisiteImpl,
-  RequiresAllOfClass,
-  RequiresNoneOfRace
-}
+import io.truthencode.ddo.support.requisite.{FeatRequisiteImpl, RaceRequisiteImpl, RequiresAllOfClass, RequiresNoneOfRace}
 
 /**
  * Created by adarr on 4/5/2017.

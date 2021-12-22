@@ -25,16 +25,10 @@ import scala.util.Try
  * Created by adarr on 1/25/2017.
  */
 trait ConcordionEnumBuilderSupport {
-  implicit protected[this] val myStringOrdering: Ordering[String] = Ordering.fromLessThan[String](_ > _)
+  implicit protected[this] val myStringOrdering: Ordering[String] =
+    Ordering.fromLessThan[String](_ > _)
 
   def actual: Seq[String]
-
-  def listValues(heading: String): String = {
-    val data = actual.map { a => s"<tr><td>$a</td></tr>" }.mkString
-    val header = s"<table><tr><th>$heading</th></tr>"
-    val footer = "</table>"
-    s"$header$data$footer"
-  }
 
   /**
    * Needed for Concordion / Java compatibility as it does not recognize optional parameters.
@@ -45,17 +39,24 @@ trait ConcordionEnumBuilderSupport {
     listValues("Expected Values")
   }
 
+  def listValues(heading: String): String = {
+    val data = actual.map { a => s"<tr><td>$a</td></tr>" }.mkString
+    val header = s"<table><tr><th>$heading</th></tr>"
+    val footer = "</table>"
+    s"$header$data$footer"
+  }
+
   def getValidSingleValue: String =
     actual.headOption.getOrElse("Please specify at least one value for this enum")
+
+  def resultCount(searchString: String, ignoreCase: String): Int = {
+    resultCount(searchString, strToBool(ignoreCase))
+  }
 
   protected def strToBool(s: String): Boolean = Try(s.toBoolean).getOrElse(false)
 
   protected[this] def resultCount(searchString: String, ignoreCase: Boolean): Int = {
     withNames(searchString, ignoreCase = ignoreCase).size
-  }
-
-  def resultCount(searchString: String, ignoreCase: String): Int = {
-    resultCount(searchString, strToBool(ignoreCase))
   }
 
   def withNames(searchString: String, ignoreCase: Boolean): Seq[String] = {

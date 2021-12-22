@@ -21,8 +21,8 @@ import io.truthencode.ddo.model.religions.SilverFlame
 import io.truthencode.ddo.support.requisite.{FeatRequisiteImpl, RequiresAllOfFeat}
 
 trait BelovedOfTheSilverFlame
-  extends FeatRequisiteImpl with EberronReligionNonWarforged with BelovedLevelBase with RequiresAllOfFeat
-  with SilverFlame with TheSilverFlameFeatBase { self: DeityFeat =>
+  extends FeatRequisiteImpl with EberronReligionNonWarforged with BelovedLevelBase
+  with RequiresAllOfFeat with SilverFlame with TheSilverFlameFeatBase { self: DeityFeat =>
 
   override def allOfFeats: Seq[Feat] = List(DeityFeat.ChildOfTheSilverFlame)
 }

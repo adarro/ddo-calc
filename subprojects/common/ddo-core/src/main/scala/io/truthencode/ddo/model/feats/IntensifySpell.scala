@@ -22,6 +22,7 @@ import io.truthencode.ddo.support.requisite.RequiresCharacterLevel
 /**
  * Created by adarr on 4/3/2017.
  */
-protected[feats] trait IntensifySpell extends EpicMetaMagic with RequiresCharacterLevel { self: EpicFeat =>
+protected[feats] trait IntensifySpell extends EpicMetaMagic with RequiresCharacterLevel {
+  self: EpicFeat =>
   override val requireCharacterLevel: Int = 24
 }

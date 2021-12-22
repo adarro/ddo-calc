@@ -25,6 +25,8 @@ import io.truthencode.ddo.support.StringUtils.Extensions
 trait SpellCriticalPrefix extends Prefix {
   self: DisplayName =>
   override def prefix: Option[String] = Some("Spell Critical")
+
+  override protected val prefixSeparator: String = ": "
   abstract override def displayText: String = super.displaySource.replaceNumbersWithRomanNumerals
 
 }

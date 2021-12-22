@@ -23,11 +23,12 @@ import io.truthencode.ddo.support.naming.PostText
 import io.truthencode.ddo.support.requisite.{FeatRequisiteImpl, GrantsToClass, RequiresAllOfClass}
 
 /**
- * [[http://ddowiki.com/page/Fast_Movement_(barbarian_class_feat)]] The Fast Movement class feat allows a Barbarian to
- * move 10% faster.
+ * [[http://ddowiki.com/page/Fast_Movement_(barbarian_class_feat)]] The Fast Movement class feat
+ * allows a Barbarian to move 10% faster.
  */
 protected[feats] trait FastMovementBarbarian
-  extends FeatRequisiteImpl with Passive with GrantsToClass with PostText with RequiresAllOfClass { self: ClassFeat =>
+  extends FeatRequisiteImpl with Passive with GrantsToClass with PostText with RequiresAllOfClass {
+  self: ClassFeat =>
   override def grantToClass: Seq[(HeroicCharacterClass, Int)] = List((Barbarian, 1))
   override def nameSource: String = "Fast Movement"
   override def postText: Option[String] = Some("Barbarian Class Feat")

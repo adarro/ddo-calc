@@ -1,28 +1,28 @@
-  <skin>
-      <groupId>org.apache.maven.skins</groupId>
-      <artifactId>maven-fluido-skin</artifactId>
-      <version>1.6</version>
+<skin>
+    <groupId>org.apache.maven.skins</groupId>
+    <artifactId>maven-fluido-skin</artifactId>
+    <version>1.6</version>
 
-  </skin>
+</skin>
 <custom>
- <fluidoSkin>
-      <sideBarEnabled>true</sideBarEnabled>
-      <topBarEnabled>true</topBarEnabled>
-      <sourceLineNumbersEnabled>true</sourceLineNumbersEnabled>
-      <profile>pre-release</profile>
-      <facebookLike/>
-      <googlePlusOne/>
-      <gitHub>
+<fluidoSkin>
+    <sideBarEnabled>true</sideBarEnabled>
+    <topBarEnabled>true</topBarEnabled>
+    <sourceLineNumbersEnabled>true</sourceLineNumbersEnabled>
+    <profile>pre-release</profile>
+    <facebookLike/>
+    <googlePlusOne/>
+    <gitHub>
         <projectId>adarro/ddo-calc</projectId>
         <ribbonOrientation>right</ribbonOrientation>
         <ribbonColor>green</ribbonColor>
-      </gitHub>
-      <ohloh>
+    </gitHub>
+    <ohloh>
         <projectId>ddo-calc</projectId>
         <widget>factoids</widget>
-      </ohloh>
-      <googleSearch>
+    </ohloh>
+    <googleSearch>
         <sitesearch/>
-      </googleSearch>
-    </fluidoSkin>
+    </googleSearch>
+</fluidoSkin>
 </custom>

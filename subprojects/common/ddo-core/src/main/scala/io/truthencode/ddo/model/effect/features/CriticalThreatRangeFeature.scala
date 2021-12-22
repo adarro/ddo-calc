@@ -17,27 +17,30 @@
  */
 package io.truthencode.ddo.model.effect.features
 
+import io.truthencode.ddo.api.model.effect.DetailedEffect
 import io.truthencode.ddo.enhancement.BonusType
-import io.truthencode.ddo.model.effect.{DetailedEffect, Feature, ParameterModifier, PartModifier, SourceInfo}
-import io.truthencode.ddo.model.item.weapon.{WeaponCategory, WeaponClass}
+import io.truthencode.ddo.model.effect.{EffectCategories, Feature, SourceInfo}
+import io.truthencode.ddo.model.item.weapon.WeaponCategory
 import io.truthencode.ddo.model.stats.BasicStat
 
 /**
- * Increases your Weapons Critical Threat range Different Weapon types have greater or lesser bonuses and it may or may
- * not apply to shields, depending on the feat / enhancement.
+ * Increases your Weapons Critical Threat range Different Weapon types have greater or lesser
+ * bonuses and it may or may not apply to shields, depending on the feat / enhancement.
  */
 trait CriticalThreatRangeFeature extends Features {
   self: SourceInfo =>
-  protected val criticalThreatRangeType: BonusType
-  protected val criticalThreatRangeAmount: Seq[(WeaponCategory, Int)]
-  private val src = this
-  protected[this] val effectDetail: DetailedEffect
   lazy val ctr: Feature.CriticalThreatRangeEffect = Feature.CriticalThreatRangeEffect(
     criticalThreatRangeAmount,
     BasicStat.CriticalThreatRange,
     criticalThreatRangeType,
     src,
+    cats,
     effectDetail)
+  val cats = LazyList(EffectCategories.GeneralCombat.toString)
+  protected val criticalThreatRangeType: BonusType
+  protected val criticalThreatRangeAmount: Seq[(WeaponCategory, Int)]
+  protected[this] val effectDetail: DetailedEffect
+  private val src = this
 //  private[this] val criticalThreatRange =
 //    new PartModifier[Seq[(WeaponCategory, Int)], BasicStat]
 //      with ParameterModifier[Seq[(WeaponCategory, Int)], BonusType] {

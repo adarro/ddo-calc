@@ -17,13 +17,30 @@
  */
 package io.truthencode.ddo.support.requisite
 
+import enumeratum.{Enum, EnumEntry}
+
 /**
  * Flag used to determine whether a given expression is granting, requiring or prohibiting.
  */
-sealed trait RequisiteType
+sealed trait RequisiteType extends EnumEntry {
+  def requisiteType: String
+}
 
-trait Grant extends RequisiteType
+trait Grant extends RequisiteType {
+  override def requisiteType: String = "Grants"
+}
 
-trait Prohibit extends RequisiteType
+trait Prohibit extends RequisiteType {
+  override def requisiteType: String = "Prohibits"
+}
 
-trait Require extends RequisiteType
+trait Require extends RequisiteType {
+  override def requisiteType: String = "Requires"
+}
+
+object RequisiteType extends Enum[RequisiteType] {
+  case object Grant extends Grant
+  case object Prohibit extends Prohibit
+  case object Require extends Require
+  override def values: IndexedSeq[RequisiteType] = findValues
+}

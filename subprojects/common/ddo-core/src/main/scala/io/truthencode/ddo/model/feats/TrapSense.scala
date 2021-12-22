@@ -19,16 +19,20 @@ package io.truthencode.ddo.model.feats
 
 import io.truthencode.ddo.model.classes.HeroicCharacterClass
 import io.truthencode.ddo.model.classes.HeroicCharacterClass.{Barbarian, Rogue}
-import io.truthencode.ddo.support.requisite.{FeatRequisiteImpl, FreeFeat, GrantsToClass}
 import io.truthencode.ddo.support.TraverseOps.Crossable
+import io.truthencode.ddo.support.requisite.{FeatRequisiteImpl, FreeFeat, GrantsToClass}
 
 /**
- * [[http://ddowiki.com/page/Trap_Sense Trap Sense]] This class feat of Barbarians and Rogues grants the following
- * bonuses: +1 on reflex saving throws vs. traps +1 Armor Class vs. trap attacks.
+ * [[http://ddowiki.com/page/Trap_Sense Trap Sense]] This class feat of Barbarians and Rogues grants
+ * the following bonuses: +1 on reflex saving throws vs. traps +1 Armor Class vs. trap attacks.
  */
-protected[feats] trait TrapSense extends FeatRequisiteImpl with Passive with GrantsToClass with FreeFeat {
+protected[feats] trait TrapSense
+  extends FeatRequisiteImpl with Passive with GrantsToClass with FreeFeat {
   self: ClassFeat =>
+  override def grantToClass: Seq[(HeroicCharacterClass, Int)] =
+    (classMatrix.cross(levelMatrix)).toSeq
+
   private def levelMatrix = 3 to 20 by 3
+
   private def classMatrix = List(Barbarian, Rogue)
-  override def grantToClass: Seq[(HeroicCharacterClass, Int)] = (classMatrix.cross(levelMatrix)).toSeq
 }

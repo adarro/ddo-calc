@@ -18,7 +18,7 @@
 package io.truthencode.ddo.model.affect
 
 /**
- * Trait for determining what a given entity affects such as The Feat Tactical Mastery Affects Trip (and other tactical
- * feats) Difficulty Check.
+ * Trait for determining what a given entity affects such as The Feat Tactical Mastery Affects Trip
+ * (and other tactical feats) Difficulty Check.
  */
 trait Affecting

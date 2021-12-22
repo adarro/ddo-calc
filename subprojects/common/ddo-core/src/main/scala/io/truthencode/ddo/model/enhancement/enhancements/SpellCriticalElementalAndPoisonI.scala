@@ -21,25 +21,26 @@ import io.truthencode.ddo.model.enhancement.enhancements.classbased.BombardierTi
 import io.truthencode.ddo.support.StringUtils.Extensions
 import io.truthencode.ddo.support.naming.SpellCriticalPrefix
 
-trait SpellCriticalElementalAndPoisonI extends BombardierTierOne with ClassEnhancementImpl with SpellCriticalPrefix {
-
-  /**
-   * Some enhancements have multiple ranks. This is the cost for each rank. Older versions had increasing costs which
-   * has been streamlined to a linear progression.
-   *
-   * @return
-   */
-  override def apCostPerRank: Int = 2
-
-  /**
-   * Some enhancements can be taken multiple times (generally up to three)
-   */
-  override val ranks: Int = 1
-
-  override protected def nameSource: String = "Elemental And Poison I".lowerCaseNoise.replaceRomanNumerals
+trait SpellCriticalElementalAndPoisonI
+  extends BombardierTierOne with ClassEnhancementImpl with SpellCriticalPrefix {
 
   override lazy val description: Option[String] =
     Some(
       "n I: Your Acid, Cold, Electric, Fire, and Poison damage spells have an additional 1% chance to critically hit."
     )
+  /**
+   * Some enhancements can be taken multiple times (generally up to three)
+   */
+  override val ranks: Int = 1
+
+  /**
+   * Some enhancements have multiple ranks. This is the cost for each rank. Older versions had
+   * increasing costs which has been streamlined to a linear progression.
+   *
+   * @return
+   */
+  override def apCostPerRank: Int = 2
+
+  override protected def nameSource: String =
+    "Elemental And Poison I".lowerCaseNoise.replaceRomanNumerals
 }

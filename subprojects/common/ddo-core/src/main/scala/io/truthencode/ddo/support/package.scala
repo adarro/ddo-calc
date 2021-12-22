@@ -22,7 +22,6 @@ import com.typesafe.scalalogging.LazyLogging
 import com.wix.accord.Violation
 import io.truthencode.ddo.support.matching.{WordMatchStrategies, WordMatchStrategy}
 
-
 import scala.collection.immutable.HashMap
 import scala.language.postfixOps
 import scala.util.Random
@@ -45,14 +44,16 @@ package object support extends LazyLogging {
    */
   final val EpicLevels: Range.Inclusive = 21 to LevelCap
 
-  final val CharacterLevels: _root_.scala.collection.immutable.Range.Inclusive = HeroicLevels.min to EpicLevels.max
+  final val CharacterLevels: _root_.scala.collection.immutable.Range.Inclusive =
+    HeroicLevels.min to EpicLevels.max
 
   /**
-   * Implicit functions for manipulating collections such as finding the Cartesian Product, Left and Right Joins
+   * Implicit functions for manipulating collections such as finding the Cartesian Product, Left and
+   * Right Joins
    */
   object TraverseOps {
 
-    // succinctly pooled from SO [[http://stackoverflow.com/a/14740340/400729]]
+    // succinctly pooled originally from SO [[http://stackoverflow.com/a/14740340/400729]]
     implicit class Crossable[X](xs: Iterable[X]) {
       def cross[Y](ys: Iterable[Y]): Iterable[(X, Y)] = for { x <- xs; y <- ys } yield (x, y)
     }
@@ -89,7 +90,8 @@ package object support extends LazyLogging {
        * @return
        *   Subset of source consisting of unique LHS + common LHS
        */
-      def leftJoin[Y >: K, Z >: V](ys: Map[Y, Z])(implicit joinOnKeys: Boolean = true): Map[K, V] = {
+      def leftJoin[Y >: K, Z >: V](ys: Map[Y, Z])(implicit
+        joinOnKeys: Boolean = true): Map[K, V] = {
         if (joinOnKeys) {
           val lk = xs.keys.toSeq.leftJoin(ys.keys.toSeq)
           xs.filter { k =>
@@ -113,7 +115,8 @@ package object support extends LazyLogging {
        * @return
        *   Subset of source consisting of unique LHS + common LHS
        */
-      def rightJoin[Y >: K, Z >: V](ys: Map[Y, Z])(implicit joinOnKeys: Boolean = true): Map[Y, Z] = {
+      def rightJoin[Y >: K, Z >: V](ys: Map[Y, Z])(implicit
+        joinOnKeys: Boolean = true): Map[Y, Z] = {
         if (joinOnKeys) {
           val lk = ys.keys.toSeq.leftJoin(xs.keys.toSeq)
           ys.filter { k =>
@@ -173,6 +176,21 @@ package object support extends LazyLogging {
         catching(classOf[NumberFormatException]).opt(s.toInt)
     }
 
+    implicit class IntExtensions(val source: Int) {
+      /**
+       * Convenience toString to add +/- to number for text fields
+       * @return
+       *   returns the number as a string prefixed with either + or -
+       */
+      def numberToSignedText: String = {
+        if (source >= 0) {
+          s"+$source"
+        } else {
+          s"-$source"
+        }
+      }
+    }
+
     /**
      * Mostly String manipulation utility methods. Most methods are fluent if possible.
      *
@@ -180,6 +198,12 @@ package object support extends LazyLogging {
      *   source string
      */
     implicit class Extensions(val s: String) {
+
+      lazy val specialSymbols: Map[Char, String] = {
+        HashMap {
+          '&' -> "And"
+        }
+      }
 
       def lowerCaseNoise: String = {
         val noise = config.getStringList("io.truthencode.ddo.support.noiseWords")
@@ -197,8 +221,8 @@ package object support extends LazyLogging {
        * @return
        *   the string with spaces between words.
        * @note
-       *   This is currently a very simple parser that assumes input is camel-cased. Non-camel case may have undesired
-       *   results. i.e. TEST will return T E S T. where getFoo returns get Foo.
+       *   This is currently a very simple parser that assumes input is camel-cased. Non-camel case
+       *   may have undesired results. i.e. TEST will return T E S T. where getFoo returns get Foo.
        */
       def splitByCase(implicit replaceSymbols: Boolean = false): String = {
         val b = new StringBuilder
@@ -233,20 +257,14 @@ package object support extends LazyLogging {
         b.mkString.trim
       }
 
-      lazy val specialSymbols: Map[Char, String] = {
-        HashMap {
-          '&' -> "And"
-        }
-      }
-
       /**
        * Formats string into [[http://wiki.c2.com/?PascalCase PascalCase]] or 'UpperCamelCase'
        *
        * @return
        *   formatted string
        * @note
-       *   this also removes space characters but does not check for characters that may be illegal for a specific
-       *   language. (i.e. underscores, commas etc)
+       *   this also removes space characters but does not check for characters that may be illegal
+       *   for a specific language. (i.e. underscores, commas etc)
        */
       def toPascalCase: String = {
         {
@@ -261,10 +279,11 @@ package object support extends LazyLogging {
        * Replaces Roman Numeral Representation with Numerical value.
        * i.e. IV -> 4
        * @note
-       *   This utility parses using Space as a delimiter. It is generally advised to use this before other
-       *   manipulations such as removing spaces or changing cases.
+       *   This utility parses using Space as a delimiter. It is generally advised to use this
+       *   before other manipulations such as removing spaces or changing cases.
        * @return
-       *   the string with all Roman Numerals replaced. No changes are made if no valid numerals are found.
+       *   the string with all Roman Numerals replaced. No changes are made if no valid numerals are
+       *   found.
        */
       def replaceRomanNumerals: String = {
         s.split(Space)
@@ -389,9 +408,6 @@ package object support extends LazyLogging {
         ('a' to 'z') ++ (0 to 9)
       }.mkString)(n)
 
-    def randomAlphaString(n: Int): String =
-      randomString(('a' to 'z').mkString)(n)
-
     /**
      * Generate a random string of length n from the given alphabet
      *
@@ -406,10 +422,14 @@ package object support extends LazyLogging {
         .take(n)
         .mkString
 
+    def randomAlphaString(n: Int): String =
+      randomString(('a' to 'z').mkString)(n)
+
     private def characterToStrategy(c: Char, wordMatchStrategy: WordMatchStrategy): Char = {
       wordMatchStrategy match {
         case WordMatchStrategies.IgnoreCaseWordStrategy => c
-        case WordMatchStrategies.FullUpperCaseWordStrategy | WordMatchStrategies.TitleCaseWordStrategy =>
+        case WordMatchStrategies.FullUpperCaseWordStrategy |
+            WordMatchStrategies.TitleCaseWordStrategy =>
           c.toUpper
         case WordMatchStrategies.FullLowerCaseWordStrategy => c.toLower
       }

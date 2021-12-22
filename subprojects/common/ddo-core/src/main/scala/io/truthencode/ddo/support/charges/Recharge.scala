@@ -26,7 +26,8 @@ trait Recharge {
   val rechargeType: Either[() => Interval, Interval]
 }
 
-case class FullRechargeRate(override val rechargeType: Either[() => Interval, Interval]) extends Recharge {
+case class FullRechargeRate(override val rechargeType: Either[() => Interval, Interval])
+  extends Recharge {
 
   override val rechargeRate: Either[() => RechargeAmount, RechargeAmount] = Right(
     RechargeAmount.Full

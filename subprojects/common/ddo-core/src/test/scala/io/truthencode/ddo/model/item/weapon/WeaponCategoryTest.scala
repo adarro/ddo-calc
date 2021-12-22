@@ -18,25 +18,8 @@
 package io.truthencode.ddo.model.item.weapon
 
 import io.truthencode.ddo.model.effect.Damage
+import io.truthencode.ddo.model.item.weapon.WeaponCategory._
 import io.truthencode.ddo.support.TraverseOps._
-import io.truthencode.ddo.model.item.weapon.WeaponCategory.{
-  BastardSword,
-  Dagger,
-  Falchion,
-  GreatCrossbow,
-  Greatsword,
-  HeavyCrossbow,
-  Khopesh,
-  Kukris,
-  LightCrossbow,
-  Longsword,
-  Rapier,
-  RepeatingHeavyCrossbow,
-  RepeatingLightCrossbow,
-  Scimitar,
-  Shortsword,
-  ThrowingDagger
-}
 import io.truthencode.ddo.support.{Bludgeoning, Piercing, Slashing}
 import org.scalatest.funspec.AnyFunSpec
 import org.scalatest.matchers.should.Matchers
@@ -48,21 +31,18 @@ class WeaponCategoryTest extends AnyFunSpec with Matchers {
     WeaponClass.Ranged
   }
 
-  def typedToWeaponClass
-    : PartialFunction[DefaultDeliveryMethod with Damage, (DefaultDeliveryMethod with Damage, WeaponClass)] = {
+  def typedToWeaponClass: PartialFunction[
+    DefaultDeliveryMethod with Damage,
+    (DefaultDeliveryMethod with Damage, WeaponClass)] = {
     case x: RangeDamage => (x, WeaponClass.Ranged)
     case x: ThrownDamage => (x, WeaponClass.Thrown)
     case x: Bludgeoning => (x, WeaponClass.Bludgeon)
     case x: Piercing => (x, WeaponClass.Piercing)
     case x: Slashing => (x, WeaponClass.Slashing)
   }
-  def weaponClassToCategory: PartialFunction[WeaponCategory, (WeaponCategory, WeaponClass)] = {
-    case x: RangeDamage => (x, WeaponClass.Ranged)
-    case x: ThrownDamage => (x, WeaponClass.Thrown)
-    case x: Bludgeoning => (x, WeaponClass.Bludgeon)
-    case x: Piercing => (x, WeaponClass.Piercing)
-    case x: Slashing => (x, WeaponClass.Slashing)
-  }
+
+  def filterByWeaponClass(weaponClass: WeaponClass): Seq[WeaponCategory] =
+    WeaponCategory.values.collect(weaponClassToCategory).filter(_._2 == weaponClass).map(_._1)
 
 //    def weaponClassToCategory: PartialFunction[WeaponClass, WeaponCategory] = {
 //      case x:WeaponClassBludgeoning => x.
@@ -75,8 +55,13 @@ class WeaponCategoryTest extends AnyFunSpec with Matchers {
 //      case x:WeaponClassThrown =>
 //  }
 
-  def filterByWeaponClass(weaponClass: WeaponClass): Seq[WeaponCategory] =
-    WeaponCategory.values.collect(weaponClassToCategory).filter(_._2 == weaponClass).map(_._1)
+  def weaponClassToCategory: PartialFunction[WeaponCategory, (WeaponCategory, WeaponClass)] = {
+    case x: RangeDamage => (x, WeaponClass.Ranged)
+    case x: ThrownDamage => (x, WeaponClass.Thrown)
+    case x: Bludgeoning => (x, WeaponClass.Bludgeon)
+    case x: Piercing => (x, WeaponClass.Piercing)
+    case x: Slashing => (x, WeaponClass.Slashing)
+  }
 
   describe("Weapon Categories") {
     they("should derive associated Weapon Class") {
@@ -86,7 +71,12 @@ class WeaponCategoryTest extends AnyFunSpec with Matchers {
       val filtered = WeaponCategory.filterByWeaponClass(wcFilter)
       logger.info(filtered.mkString)
       val plus3 =
-        LazyList(WeaponCategory.Falchion, WeaponCategory.GreatCrossbow, WeaponCategory.Kukris, Rapier, Scimitar)
+        LazyList(
+          WeaponCategory.Falchion,
+          WeaponCategory.GreatCrossbow,
+          WeaponCategory.Kukris,
+          Rapier,
+          Scimitar)
       val plus2 = LazyList(
         BastardSword,
         Dagger,

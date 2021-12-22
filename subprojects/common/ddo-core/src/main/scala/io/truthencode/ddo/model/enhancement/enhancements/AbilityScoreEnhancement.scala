@@ -20,8 +20,8 @@ package io.truthencode.ddo.model.enhancement.enhancements
 import io.truthencode.ddo.model.attribute.Attribute
 
 /**
- * Base trait which can be used to denote an enhancement which adds a bonus to an ability score such as Ability I in the
- * Vile Chemist and Bombardier trees.
+ * Base trait which can be used to denote an enhancement which adds a bonus to an ability score such
+ * as Ability I in the Vile Chemist and Bombardier trees.
  */
 trait AbilityScoreEnhancement {
   self: ClassEnhancement =>

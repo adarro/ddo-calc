@@ -24,7 +24,7 @@ import io.truthencode.ddo.support.naming.{DisplayName, FriendlyDisplay, Prefix}
  */
 protected[feats] trait DragonmarkPrefix extends Prefix {
   self: DisplayName with FriendlyDisplay =>
-  override def prefix: Option[String] = Some("Least Dragonmark Of")
-
   override protected val prefixSeparator: String = " "
+
+  override def prefix: Option[String] = Some("Least Dragonmark Of")
 }

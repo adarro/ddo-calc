@@ -34,7 +34,8 @@ trait AlignmentRequisite {
    * @return
    *   Required Alignments
    * @note
-   *   This implementation may change as there can be at most two required alignment parts, one from each axis.
+   *   This implementation may change as there can be at most two required alignment parts, one from
+   *   each axis.
    */
   def allOfAlignmentType: Seq[AlignmentType]
 
@@ -86,7 +87,8 @@ trait AlignmentRequisiteImpl extends AlignmentRequisite {
    * @return
    *   Required Alignments
    * @note
-   *   This implementation may change as there can be at most two required alignment parts, one from each axis.
+   *   This implementation may change as there can be at most two required alignment parts, one from
+   *   each axis.
    */
   override def allOfAlignmentType: Seq[AlignmentType] = Nil
 
@@ -137,7 +139,8 @@ trait RequiresOneOfAxis extends AlignmentRequisite with RequiresAllOf[Requiremen
 /**
  * Requires NONE of the following alignment types, i.e. Must not be Good or Lawful
  */
-trait RequiresNoneOfAxis extends AlignmentRequisite with RequiresNoneOf[Requirement] with Requisite {
+trait RequiresNoneOfAxis
+  extends AlignmentRequisite with RequiresNoneOf[Requirement] with Requisite {
   abstract override def noneOf: Seq[Requirement] = super.noneOf ++ {
     noneOfAlignmentType.collect(alignmentTypeToReq)
   }
@@ -146,7 +149,8 @@ trait RequiresNoneOfAxis extends AlignmentRequisite with RequiresNoneOf[Requirem
 /**
  * Requires one of the listed Alignments (I.e. Lawful Good or Neutral Evil
  */
-trait RequiresOneOfAlignment extends AlignmentRequisite with RequiresAllOf[Requirement] with Requisite {
+trait RequiresOneOfAlignment
+  extends AlignmentRequisite with RequiresAllOf[Requirement] with Requisite {
   abstract override def allOf: Seq[Requirement] = super.allOf ++ {
     allOfAlignments.collect(alignmentsToReq)
   }
@@ -156,7 +160,8 @@ trait RequiresOneOfAlignment extends AlignmentRequisite with RequiresAllOf[Requi
  * Requires that None of these alignments are true, i.e. Not True Neutral
  */
 trait RequiresNoneOfAlignment
-  extends AlignmentRequisite with AlignmentRequisiteImpl with RequiresNoneOf[Requirement] with Requisite {
+  extends AlignmentRequisite with AlignmentRequisiteImpl with RequiresNoneOf[Requirement]
+  with Requisite {
   abstract override def noneOf: Seq[Requirement] = super.noneOf ++ {
     noneOfAlignments.collect(alignmentsToReq)
   }

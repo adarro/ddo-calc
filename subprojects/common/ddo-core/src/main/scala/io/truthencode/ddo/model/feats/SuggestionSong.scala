@@ -24,20 +24,21 @@ import io.truthencode.ddo.model.skill.Skill
 import io.truthencode.ddo.support.requisite._
 
 /**
- * [[https://ddowiki.com/page/Suggestion_(song) Suggestion (song)]] Level: Bard 6 Perform: 9 ranks* Target: One enemy
- * affected by Fascinate Base Duration: 30+6*(1/2 Bard level) seconds Saving Throw: Will save negates, 10+½ Bard
- * level+Charisma modifier Song Description: This song charms a single foe that is currently under the effects of the
- * bardic Fascinate song. Notes: This song does not work on enemies that have been mesmerized by any other bardic song,
- * such as Music of the Dead, Music of the Makers, or Enthrallment. This song benefits from effects that increase song
- * duration. *Only the base number of Perform ranks bought with skill points count toward the requirement to be able to
- * play this song. (Skill bonuses do not count.)
+ * [[https://ddowiki.com/page/Suggestion_(song) Suggestion (song)]] Level: Bard 6 Perform: 9 ranks*
+ * Target: One enemy affected by Fascinate Base Duration: 30+6*(1/2 Bard level) seconds Saving
+ * Throw: Will save negates, 10+½ Bard level+Charisma modifier Song Description: This song charms a
+ * single foe that is currently under the effects of the bardic Fascinate song. Notes: This song
+ * does not work on enemies that have been mesmerized by any other bardic song, such as Music of the
+ * Dead, Music of the Makers, or Enthrallment. This song benefits from effects that increase song
+ * duration. *Only the base number of Perform ranks bought with skill points count toward the
+ * requirement to be able to play this song. (Skill bonuses do not count.)
  *
  * @note
  *   may need to change name to 'Suggestion'
  */
 protected[feats] trait SuggestionSong
-  extends SkillRequisiteImpl with RequiresAllOfSkill with ClassRequisiteImpl with RequiresAllOfClass with GrantsToClass
-  with ActiveFeat with OnSongPlayedEvent with BardSongCoolDown {
+  extends SkillRequisiteImpl with RequiresAllOfSkill with ClassRequisiteImpl with RequiresAllOfClass
+  with GrantsToClass with ActiveFeat with OnSongPlayedEvent with BardSongCoolDown {
   override def allOfClass: Seq[(HeroicCharacterClass, Int)] =
     List((HeroicCharacterClass.Bard, 6))
 

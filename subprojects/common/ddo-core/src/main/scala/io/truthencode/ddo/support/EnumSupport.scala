@@ -33,8 +33,22 @@ object EnumSupport {
     }
   }
 
-  val anyToEnum: PartialFunction[AnyRef, enumeratum.Enum[EnumEntry]] = { case x: enumeratum.Enum[EnumEntry] =>
-    x
+  val anyToEnum: PartialFunction[AnyRef, enumeratum.Enum[EnumEntry]] = {
+    case x: enumeratum.Enum[EnumEntry] =>
+      x
+  }
+
+  /**
+   * Attempts to extract a named [[enumeratum.EnumEntry]] from a fully qualified class name
+   * @param fqn
+   *   fully qualified class name of the enumeration
+   * @param id
+   *   string name of the value to extract. (Case Sensitive)
+   * @return
+   *   The EnumEntry value or [[scala.None]] if value can not be found.
+   */
+  def tryEntryFromString(fqn: String, id: String): Option[EnumEntry] = {
+    tryEnumFromString(fqn).flatMap(_.withNameOption(id))
   }
 
   /**
@@ -45,8 +59,9 @@ object EnumSupport {
    *   The Enum Companion object or None
    *
    * @note
-   *   Internally uses a [[scala.util.Try]] and will safely return [[None]] for any cast exceptions. Also allows base
-   *   trait name to invoke Companion. i.e. org.example.baseTrait vs Companion org.example.baseTrait$
+   *   Internally uses a [[scala.util.Try]] and will safely return [[None]] for any cast exceptions.
+   *   Also allows base trait name to invoke Companion. i.e. org.example.baseTrait vs Companion
+   *   org.example.baseTrait$
    */
   def tryEnumFromString(fqn: String): Option[Enum[EnumEntry]] = {
     // Testing naming pattern for companion object
@@ -63,19 +78,6 @@ object EnumSupport {
         Some(x).collect(anyToEnum)
       case _ => None
     }
-  }
-
-  /**
-   * Attempts to extract a named [[enumeratum.EnumEntry]] from a fully qualified class name
-   * @param fqn
-   *   fully qualified class name of the enumeration
-   * @param id
-   *   string name of the value to extract. (Case Sensitive)
-   * @return
-   *   The EnumEntry value or [[scala.None]] if value can not be found.
-   */
-  def tryEntryFromString(fqn: String, id: String): Option[EnumEntry] = {
-    tryEnumFromString(fqn).flatMap(_.withNameOption(id))
   }
 
 }

@@ -27,45 +27,44 @@ import io.truthencode.ddo.model.effect.TriggerEvent
 import io.truthencode.ddo.model.effect.features.{FeaturesImpl, GrantAbilityFeature}
 import io.truthencode.ddo.model.misc.CoolDownPool.ManyShot
 import io.truthencode.ddo.model.misc.SharedCoolDown
-import io.truthencode.ddo.support.requisite.{
-  ClassRequisiteImpl,
-  FeatRequisiteImpl,
-  RequiresAllOfClass,
-  RequiresAttribute
-}
+import io.truthencode.ddo.support.requisite._
 
 import java.time.Duration
 
 /**
- * Icon Feat Ten Thousand Stars.png [[https://ddowiki.com/page/Ten_Thousand_Stars Ten Thousand Stars]] Active - Ability
- * For the next 30 seconds, add your Wisdom ability score to your Ranged Power and add your monk level * 5 to your
- * Doubleshot. This ability puts Manyshot on a 30 second cooldown. Cooldown: one minute.
+ * Icon Feat Ten Thousand Stars.png
+ * [[https://ddowiki.com/page/Ten_Thousand_Stars Ten Thousand Stars]] Active - Ability For the next
+ * 30 seconds, add your Wisdom ability score to your Ranged Power and add your monk level * 5 to
+ * your Doubleshot. This ability puts Manyshot on a 30 second cooldown. Cooldown: one minute.
  * @fixme
- *   Currently have only one cooldown pool, but this has a 1 minute cooldown and adds Manyshot cooldown event.
+ *   Currently have only one cooldown pool, but this has a 1 minute cooldown and adds Manyshot
+ *   cooldown event.
  *
  * Level 6: Monk Dexterity 13
  */
 protected[feats] trait TenThousandStars
-  extends FeatRequisiteImpl with ClassRequisiteImpl with ActiveFeat with AtWillEvent with SharedCoolDown
-  with RequiresAttribute with RequiresAllOfClass with MartialArtsFeat with FeaturesImpl with GrantAbilityFeature {
+  extends FeatRequisiteImpl with ClassRequisiteImpl with ActiveFeat with AtWillEvent
+  with SharedCoolDown with AttributeRequisiteImpl with RequiresAllOfAttribute with RequiresAllOfClass with MartialArtsFeat
+  with FeaturesImpl with GrantAbilityFeature {
   self: GeneralFeat =>
 
-  override def requiresAttribute: Seq[(Attribute, Int)] =
-    List((Attribute.Dexterity, 13))
-
+  override lazy val grantedAbility: ActiveAbilities = ActiveAbilities.TenThousandStars
   override val coolDownPoolId: String = ManyShot.coolDownPoolId
-
-  override def coolDown: Option[Duration] = Some(Duration.ofSeconds(60))
-// TODO: CoolDownPool 10K stars now has 1 minute cool down and puts Manyshot on 30 cool-down
-  override def allOfClass: Seq[(HeroicCharacterClass, Int)] =
-    List((HeroicCharacterClass.Monk, 6))
-  override protected[this] val triggerOn: TriggerEvent = TriggerEvent.AtWill
-  override protected[this] val triggerOff: TriggerEvent = TriggerEvent.OnCoolDown
-  override protected[this] val categories: Seq[effect.EffectCategories.Value] =
+  override protected[this] val triggerOn: Seq[TriggerEvent] = Seq(TriggerEvent.AtWill)
+  override protected[this] val triggerOff: Seq[TriggerEvent] = Seq(TriggerEvent.OnCoolDown)
+  override protected[this] val grantAbilityCategories: Seq[effect.EffectCategories.Value] =
     Seq(effect.EffectCategories.Ability, effect.EffectCategories.RangedCombat)
   override val grantBonusType: BonusType = BonusType.Feat
-  override val grantedAbility: ActiveAbilities = ActiveAbilities.TenThousandStars
   override val abilityId: String = "TenThousandStars"
   override val description: String =
     "or the next 30 seconds, add your Wisdom ability score to your Ranged Power and add your monk level * 5 to your Doubleshot."
+
+  override def allOfAttributes: Seq[(Attribute, Int)] =
+    List((Attribute.Dexterity, 13))
+
+  override def coolDown: Option[Duration] = Some(Duration.ofSeconds(60))
+
+// TODO: CoolDownPool 10K stars now has 1 minute cool down and puts Manyshot on 30 cool-down
+  override def allOfClass: Seq[(HeroicCharacterClass, Int)] =
+    List((HeroicCharacterClass.Monk, 6))
 }

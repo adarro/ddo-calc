@@ -18,7 +18,7 @@
 package io.truthencode.ddo.support.requisite
 
 import io.truthencode.ddo.model.feats.Feat
-import io.truthencode.ddo.support.requisite.RequirementImplicits.featToReq
+import io.truthencode.ddo.support.requisite.RequirementImplicits.{FeatImplicits, featToReq}
 
 import scala.language.{implicitConversions, postfixOps}
 import scala.languageFeature.higherKinds
@@ -61,20 +61,20 @@ trait FreeFeat extends FeatRequisite with RequiresNone with RequiredExpression w
 trait RequiresAnyOfFeat extends FeatRequisite with RequiresOneOf[Requirement] with Requisite {
 
   abstract override def oneOf: Seq[Requirement] = super.oneOf ++ {
-    anyOfFeats.collect(featToReq)
+    anyOfFeats.map(_.toReq)
   }
 }
 
 trait RequiresAllOfFeat extends FeatRequisite with RequiresAllOf[Requirement] with Requisite {
 
   abstract override def allOf: Seq[Requirement] = super.allOf ++ {
-    allOfFeats.collect(featToReq)
+    allOfFeats.map(_.toReq)
   }
 }
 
 trait RequiresNoneOfFeat extends FeatRequisite with RequiresNoneOf[Requirement] with Requisite {
 
   abstract override def noneOf: Seq[Requirement] = super.noneOf ++ {
-    noneOfFeats.collect(featToReq)
+    noneOfFeats.map(_.toReq)
   }
 }

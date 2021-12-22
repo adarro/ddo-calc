@@ -17,8 +17,6 @@
  */
 package io.truthencode.ddo.support.requisite
 
-import scala.collection.IndexedSeq
-
 /**
  * Base stackable trait used to store an array of requirements along with logic to evaluate.
  */
@@ -29,7 +27,7 @@ sealed trait RequisiteExpression {
    *
    * @return
    */
-  def prerequisites: Seq[RequirementSet[_, _]] = Seq()
+  def prerequisites: Seq[RequirementSet[RequisiteType, Inclusion]] = Seq()
 }
 
 sealed trait SimpleRequisite extends RequisiteExpression {
@@ -83,22 +81,24 @@ trait MustContainImpl[T <: Requirement]
 trait RequiresOneOf[T <: Requirement] extends MustContainAtLeastOneOf[T] with Require {
   // val f: RequirementSet[RequiresOneOf[T], RequiresOneOf[T]] = RequirementSet(this, this, oneOf: _*)
 
-  private[this] def makeSet: RequirementSet[RequiresOneOf[T], RequiresOneOf[T]] = RequirementSet(this, this, oneOf: _*)
+  abstract override def prerequisites: Seq[RequirementSet[RequisiteType, Inclusion]] = super.prerequisites :+ makeSet
 
-  abstract override def prerequisites: Seq[RequirementSet[_, _]] = super.prerequisites :+ makeSet
+  private[this] def makeSet: RequirementSet[Require, Inclusion] =
+    RequirementSet(RequisiteType.Require,Inclusion.AnyOf, oneOf: _*)
 }
 
 trait RequiresAllOf[T <: Requirement] extends MustContainAllOf[T] with Require {
-  private[this] def makeSet: RequirementSet[RequiresAllOf[T], RequiresAllOf[T]] = RequirementSet(this, this, allOf: _*)
+  abstract override def prerequisites: Seq[RequirementSet[RequisiteType, Inclusion]] = super.prerequisites :+ makeSet
 
-  abstract override def prerequisites: Seq[RequirementSet[_, _]] = super.prerequisites :+ makeSet
+  private[this] def makeSet: RequirementSet[Require, Inclusion] =
+    RequirementSet( RequisiteType.Require, Inclusion.AllOf, allOf: _*)
 }
 
 trait RequiresNoneOf[T <: Requirement] extends MustContainNoneOf[T] with Require {
-  private[this] def makeSet: RequirementSet[RequiresNoneOf[T], RequiresNoneOf[T]] =
-    RequirementSet(this, this, noneOf: _*)
+  abstract override def prerequisites: Seq[RequirementSet[RequisiteType, Inclusion]] = super.prerequisites :+ makeSet
 
-  abstract override def prerequisites: Seq[RequirementSet[_, _]] = super.prerequisites :+ makeSet
+  private[this] def makeSet: RequirementSet[RequisiteType, Inclusion] =
+    RequirementSet(RequisiteType.Require, Inclusion.NoneOf, noneOf: _*)
 }
 
 /* Prohibiting 'One Of' does not make any sense in this context.

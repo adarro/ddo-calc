@@ -23,7 +23,8 @@ import io.truthencode.ddo.support.requisite.{FeatRequisiteImpl, GrantsToRace}
 /**
  * Created by adarr on 2/18/2017.
  */
-trait HalfElfSocialGraces extends FeatRequisiteImpl with Passive with GrantsToRace with HalfElfPrefix {
+trait HalfElfSocialGraces
+  extends FeatRequisiteImpl with Passive with GrantsToRace with HalfElfPrefix {
   self: RacialFeat =>
   override def grantsToRace: Seq[(Race, Int)] = List((Race.HalfElf, 1))
 

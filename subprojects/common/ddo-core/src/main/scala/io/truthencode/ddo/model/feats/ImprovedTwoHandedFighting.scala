@@ -18,21 +18,21 @@
 package io.truthencode.ddo.model.feats
 
 import io.truthencode.ddo.model.attribute.Attribute
-import io.truthencode.ddo.support.requisite.{FeatRequisiteImpl, RequiresAllOfFeat, RequiresAttribute, RequiresBaB}
+import io.truthencode.ddo.support.requisite._
 
 /**
- * Icon Feat Improved Two Handed Fighting.png Improved Two Handed Fighting Passive Increases the damage of glancing blow
- * attacks when wielding a two-handed weapon by an additional 10%. Also increases the chance for weapon effects to
- * trigger on glancing blows by an additional 3% (6%) and an additional +2 Combat Style bonus to Melee Power (total of
- * +4).
+ * Icon Feat Improved Two Handed Fighting.png Improved Two Handed Fighting Passive Increases the
+ * damage of glancing blow attacks when wielding a two-handed weapon by an additional 10%. Also
+ * increases the chance for weapon effects to trigger on glancing blows by an additional 3% (6%) and
+ * an additional +2 Combat Style bonus to Melee Power (total of +4).
  *
  * Two Handed Fighting Strength 17 Base Attack Bonus +6
  */
 trait ImprovedTwoHandedFighting
-  extends FeatRequisiteImpl with Passive with RequiresAllOfFeat with RequiresAttribute with RequiresBaB
-  with FighterBonusFeat with MartialArtsFeat {
+  extends FeatRequisiteImpl with Passive with RequiresAllOfFeat with AttributeRequisiteImpl
+  with RequiresAllOfAttribute with RequiresBaB with FighterBonusFeat with MartialArtsFeat {
   self: GeneralFeat =>
-  override def requiresAttribute: Seq[(Attribute, Int)] = List((Attribute.Strength, 17))
+  override def allOfAttributes: Seq[(Attribute, Int)] = List((Attribute.Strength, 17))
 
   override def requiresBaB: Int = 6
 

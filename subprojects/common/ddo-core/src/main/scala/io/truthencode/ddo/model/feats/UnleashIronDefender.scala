@@ -17,15 +17,16 @@
  */
 package io.truthencode.ddo.model.feats
 
-import io.truthencode.ddo.activation.{AtWillEvent, OnSummon}
+import io.truthencode.ddo.activation.OnSummon
 import io.truthencode.ddo.model.classes.HeroicCharacterClass
 import io.truthencode.ddo.model.classes.HeroicCharacterClass.Artificer
 import io.truthencode.ddo.model.misc.DefaultCasterCoolDown
 import io.truthencode.ddo.support.requisite.{FeatRequisiteImpl, GrantsToClass, RequiresAllOfClass}
 
 /**
- * [[https://ddowiki.com/page/Unleash_Iron_Defender Unleash Iron Defender]] Usage: Active Prerequisite: Artificer
- * Description This feat allows an Artificer to summon a Iron Defender Homunculus Created by adarr on 2/16/2017.
+ * [[https://ddowiki.com/page/Unleash_Iron_Defender Unleash Iron Defender]] Usage: Active
+ * Prerequisite: Artificer Description This feat allows an Artificer to summon a Iron Defender
+ * Homunculus Created by adarr on 2/16/2017.
  */
 protected[feats] trait UnleashIronDefender
   extends FeatRequisiteImpl with ActiveFeat with OnSummon with GrantsToClass with RequiresAllOfClass

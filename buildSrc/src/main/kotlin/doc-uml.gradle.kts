@@ -21,6 +21,7 @@
 plugins {
     id("com.cosminpolifronie.gradle.plantuml")
     id("org.dripto.gradle.plugin.plantuml.plantuml-generator")
+    id("ms.ralph.gradle.dependency-plantuml-exporter")
 }
 
 tasks.withType(org.dripto.gradle.plugin.plantuml.task.PlantUmlGeneratorTask::class.java) {
@@ -39,7 +40,7 @@ tasks.withType(org.dripto.gradle.plugin.plantuml.task.PlantUmlGeneratorTask::cla
 plantUml {
     render(
         mapOf(
-            "input" to "${buildDir}/diagrams/*.puml",
+            "input" to "${buildDir}/diagrams/class-diagram.puml",
             "output" to "${project.buildDir.absolutePath}/reports/diagrams",
             "format" to "png",
             "withMetadata" to true

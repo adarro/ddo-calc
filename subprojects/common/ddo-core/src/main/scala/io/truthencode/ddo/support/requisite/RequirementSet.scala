@@ -18,7 +18,8 @@
 package io.truthencode.ddo.support.requisite
 
 /**
- * Encapsulates A requirement with relevant context for evaluating against a provided set of requirements.
+ * Encapsulates A requirement with relevant context for evaluating against a provided set of
+ * requirements.
  *
  * @param reqType
  *   Whether this provides, requires or prevents
@@ -27,7 +28,10 @@ package io.truthencode.ddo.support.requisite
  * @param req
  *   MustContainAtLeastOne or more Requirements.
  */
-case class RequirementSet[+T <: RequisiteType, +U <: Inclusion](reqType: T, incl: U, req: Requirement*)
+case class RequirementSet[+T <: RequisiteType, +U <: Inclusion](
+  reqType: T,
+  incl: U,
+  req: Requirement*)
 
 // case class RequirementSet(reqType: RequisiteType, incl: Inclusion, req: Requirement*)
 

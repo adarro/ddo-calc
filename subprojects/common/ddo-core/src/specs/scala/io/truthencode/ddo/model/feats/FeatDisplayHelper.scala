@@ -22,13 +22,18 @@ import io.truthencode.ddo.model.DisplayHelper
 import java.util
 import scala.jdk.CollectionConverters.SeqHasAsJava
 
-
-
 /**
- * Created by adarr on 2/17/2017. Adds convenience and display functions for Concordion Acceptance testing against Feats
- * in various contexts.
+ * Created by adarr on 2/17/2017. Adds convenience and display functions for Concordion Acceptance
+ * testing against Feats in various contexts.
  */
 trait FeatDisplayHelper extends DisplayHelper {
+
+  /**
+   * Removes Sub-Feats such as Weapon Proficiencies
+   */
+  val filterByMainFeat: PartialFunction[Entry, Entry] = {
+    case x: Feat with SubFeatInformation if !x.isSubFeat => x
+  }
 
   def prettyPrint(): String = {
     listValues("Current Supported Feats", collapse = true)
@@ -49,22 +54,11 @@ trait FeatDisplayHelper extends DisplayHelper {
     }
   }
 
-  /**
-   * Removes Sub-Feats such as Weapon Proficiencies
-   */
-  val filterByMainFeat: PartialFunction[Entry, Entry] = {
-    case x: Feat with SubFeatInformation if !x.isSubFeat => x
-  }
-
   def verify(): util.List[String] = { displayEnum.values.collect(filterByMainFeat) }.map { x =>
     x.displayText
   }.toList.sorted.asJava
 
   def withNameAsJavaList(id: String): util.List[String] = withNameAsList(id).asJava
-
-  def findByName(skillId: String): String = {
-    withNameAsList(skillId).headOption.orNull
-  }
 
   def withNameAsList(skillId: String*): Seq[String] = {
     for {
@@ -75,4 +69,8 @@ trait FeatDisplayHelper extends DisplayHelper {
 
   protected def withName(skillId: String): Option[Entry] =
     displayEnum.withNameOption(skillId)
+
+  def findByName(skillId: String): String = {
+    withNameAsList(skillId).headOption.orNull
+  }
 }

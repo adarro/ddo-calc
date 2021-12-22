@@ -17,17 +17,18 @@
  */
 package io.truthencode.ddo.model.feats
 
-import java.time.Duration
-
 import io.truthencode.ddo.activation.AtWillEvent
 import io.truthencode.ddo.model.classes.HeroicCharacterClass
 import io.truthencode.ddo.model.classes.HeroicCharacterClass.Warlock
 import io.truthencode.ddo.model.misc.CoolDown
 import io.truthencode.ddo.support.requisite.{FeatRequisiteImpl, GrantsToClass, RequiresAllOfClass, RequiresAllOfFeat}
 
+import java.time.Duration
+
 /**
- * [[https://ddowiki.com/page/Dark_Delirium Dark Delirium]] Plunge one enemy's mind into an illusory realm. That enemy
- * is dazed and cannot act for 20 seconds. Each time this enemy is damaged, there's a 10% chance they break free.
+ * [[https://ddowiki.com/page/Dark_Delirium Dark Delirium]] Plunge one enemy's mind into an illusory
+ * realm. That enemy is dazed and cannot act for 20 seconds. Each time this enemy is damaged,
+ * there's a 10% chance they break free.
  * @todo
  *   Should this be flagged as an SLA?
  */

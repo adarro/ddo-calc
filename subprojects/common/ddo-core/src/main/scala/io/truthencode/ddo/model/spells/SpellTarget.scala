@@ -25,10 +25,11 @@ import scala.collection.immutable
  * Keywords that describe what the spell affects.
  *
  * @note
- *   This is not the same thing as whether you have to aim the spell by highlighting something first. Some spells always
- *   affect an area around you no matter what you have highlighted. In many cases a spell will not hit its intended
- *   target, even if it's legal, due to intervening obstacles or other enemies. Some spells are cast at a default
- *   direction or target if your highlighted target is illegal.
+ *   This is not the same thing as whether you have to aim the spell by highlighting something
+ *   first. Some spells always affect an area around you no matter what you have highlighted. In
+ *   many cases a spell will not hit its intended target, even if it's legal, due to intervening
+ *   obstacles or other enemies. Some spells are cast at a default direction or target if your
+ *   highlighted target is illegal.
  */
 sealed trait SpellTarget extends EnumEntry
 
@@ -46,8 +47,9 @@ object SpellTarget extends Enum[SpellTarget] {
   case object Friend extends SingleTarget
 
   /**
-   * Any PC, NPC, or creature other than yourself that isn't hostile to you. This can include hirelings, summoned
-   * creatures, friendly combative NPCs, and other players both in and outside your party.
+   * Any PC, NPC, or creature other than yourself that isn't hostile to you. This can include
+   * hirelings, summoned creatures, friendly combative NPCs, and other players both in and outside
+   * your party.
    */
   case object Ally extends SingleTarget
 
@@ -57,9 +59,10 @@ object SpellTarget extends Enum[SpellTarget] {
   case object Foe extends SingleTarget
 
   /**
-   * The spell creates a stationary effect centered on its initial target (or at the spot along a line to that target at
-   * the spell's maximum range, if that target is too far away). The effect does not move with the target afterwards.
-   * Also used for spells that summon things to specify where that thing is initially created.
+   * The spell creates a stationary effect centered on its initial target (or at the spot along a
+   * line to that target at the spell's maximum range, if that target is too far away). The effect
+   * does not move with the target afterwards. Also used for spells that summon things to specify
+   * where that thing is initially created.
    */
   case object Positional extends SpellTarget
 

@@ -19,12 +19,13 @@ package io.truthencode.ddo.model.abilities
 
 import enumeratum.{Enum, EnumEntry}
 import io.truthencode.ddo.model.feats.DefensiveCombatStance
+import io.truthencode.ddo.support.SearchPrefix
 import io.truthencode.ddo.support.StringUtils.Extensions
 import io.truthencode.ddo.support.naming.{DisplayName, FriendlyDisplay}
 
 /**
- * Represents an ability that must be granted and activated. This may be as simple as the Attack, a toggle, Ability to
- * Sing bard songs but also Cleave et al.
+ * Represents an ability that must be granted and activated. This may be as simple as the Attack, a
+ * toggle, Ability to Sing bard songs but also Cleave et al.
  */
 sealed trait ActiveAbilities extends EnumEntry with DisplayName with FriendlyDisplay {
   override protected def nameSource: String =
@@ -34,33 +35,70 @@ sealed trait ActiveAbilities extends EnumEntry with DisplayName with FriendlyDis
 trait Cleave extends ActiveAbilities
 
 // scalastyle:off number.of.methods
-object ActiveAbilities extends Enum[ActiveAbilities] {
-  override def values: IndexedSeq[ActiveAbilities] = findValues
+object ActiveAbilities extends Enum[ActiveAbilities] with SearchPrefix {
+  override lazy val values: IndexedSeq[ActiveAbilities] = findValues
+
+  /**
+   * Used when qualifying a search with a prefix. Examples include finding "HalfElf" from qualified
+   * "Race:HalfElf"
+   *
+   * @return
+   *   A default or applied prefix
+   */
+  override def searchPrefixSource: String = "Ability"
+
+  override def searchDelimiter: Option[String] = Some(":")
+
   case object Attack extends ActiveAbilities
+
   case object BardSongs extends ActiveAbilities
+
   case object TurnUndead extends ActiveAbilities
+
   case object Cleave extends Cleave
+
   case object GreatCleave extends Cleave
+
   case object SupremeCleave extends Cleave
+
   case object ExaltedCleave extends Cleave
+
   case object Trip extends ActiveAbilities
+
   case object ImprovedTrip extends ActiveAbilities
+
   case object Sunder extends ActiveAbilities
+
   case object ImprovedSunder extends ActiveAbilities
+
   case object Sap extends ActiveAbilities
+
   case object Hamstring extends ActiveAbilities
+
   case object ImprovedFeint extends ActiveAbilities
+
   case object SlicingBlow extends ActiveAbilities
+
   case object WhirlingSteelStrike extends ActiveAbilities
+
   case object WhirlwindAttack extends ActiveAbilities
+
   case object CombatExpertise extends ActiveAbilities
+
   case object Manyshot extends ActiveAbilities
+
   case object TenThousandStars extends ActiveAbilities
+
   case object PowerAttack extends ActiveAbilities
+
   case object ImprovedPreciseShot extends ActiveAbilities
+
   case object Resilience extends ActiveAbilities
+
   case object StunningFist extends ActiveAbilities
+
   case object StunningBlow extends ActiveAbilities
+
   case object SpringAttack extends ActiveAbilities
 
   case object DefensiveFighting extends ActiveAbilities with DefensiveCombatStance
@@ -68,10 +106,10 @@ object ActiveAbilities extends Enum[ActiveAbilities] {
   /**
    * Allows one to dismiss some charmed creatures.
    */
-  object DismissCharm extends ActiveAbilities
+  case object DismissCharm extends ActiveAbilities
 
-  object Sneak extends ActiveAbilities
+  case object Sneak extends ActiveAbilities
 
-  object Precision extends ActiveAbilities
+  case object Precision extends ActiveAbilities
 }
 // scalastyle:on

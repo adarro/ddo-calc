@@ -19,18 +19,24 @@ package io.truthencode.ddo.model.feats
 
 import io.truthencode.ddo.model.attribute.Attribute
 import io.truthencode.ddo.model.race.Race
-import io.truthencode.ddo.support.requisite.{FeatRequisiteImpl, RequiresAllOfRace, RequiresAttribute}
+import io.truthencode.ddo.support.requisite.{
+  AttributeRequisiteImpl,
+  FeatRequisiteImpl,
+  RequiresAllOfAttribute,
+  RequiresAllOfRace
+}
 
 /**
- * DilettantePaladin.bmp Half-Elf Dilettante: Paladin Passive Can add up to 2 points of your Charisma bonus to all saves
- * (does not stack with the Divine Grace ability). Able to use wands and scrolls as if you were a level one paladin.
- * Half-Elf, 13 Charisma
+ * DilettantePaladin.bmp Half-Elf Dilettante: Paladin Passive Can add up to 2 points of your
+ * Charisma bonus to all saves (does not stack with the Divine Grace ability). Able to use wands and
+ * scrolls as if you were a level one paladin. Half-Elf, 13 Charisma
  */
 protected[feats] trait HalfElfDilettantePaladin
-  extends FeatRequisiteImpl with HalfElfDilettantePreFix with Passive with RequiresAttribute with RequiresAllOfRace {
+  extends FeatRequisiteImpl with HalfElfDilettantePreFix with Passive with AttributeRequisiteImpl
+  with RequiresAllOfAttribute with RequiresAllOfRace {
   self: RacialFeat =>
   override def allOfRace: Seq[(Race, Int)] = List((Race.HalfElf, 1))
 
-  override def requiresAttribute: Seq[(Attribute, Int)] =
+  override def allOfAttributes: Seq[(Attribute, Int)] =
     List((Attribute.Charisma, 13))
 }

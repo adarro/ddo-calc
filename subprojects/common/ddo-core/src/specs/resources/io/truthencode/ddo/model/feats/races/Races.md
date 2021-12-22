@@ -2,7 +2,8 @@
 
 ## Race Specific Feats
 
-Each race or race-family may have traits exclusive to it.  For example, all elves  (Drow, Sun and true elves) are naturally immune to sleep.
+Each race or race-family may have traits exclusive to it. For example, all elves  (Drow, Sun and true elves) are
+naturally immune to sleep.
 
 * [Bladeforged](BladeforgedFeatSpec.html)
 * [Deep Gnome (Svirfneblin)](DeepGnomeFeatSpec.html)

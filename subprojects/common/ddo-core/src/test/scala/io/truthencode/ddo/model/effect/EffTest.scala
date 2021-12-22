@@ -20,6 +20,7 @@ package io.truthencode.ddo.model.effect
 import io.truthencode.ddo.enhancement.BonusType
 import io.truthencode.ddo.model.effect.EffectPart.Feat
 import io.truthencode.ddo.model.feats.{Feat => Feats}
+import io.truthencode.ddo.model.stats.BasicStat
 import io.truthencode.ddo.support.dice.{DamageDice, DamageInfo}
 import org.scalatest.funspec.AnyFunSpec
 import org.scalatest.matchers.should.Matchers
@@ -28,6 +29,7 @@ import org.scalatest.matchers.should.Matchers
 class EffTest extends AnyFunSpec with Matchers {
   describe("An Effect (EFF)") {
     it("should not need a description") {
+      val preStar = BasicStat.values
       //  typical random loot such as Warrior's boots of X
       val featList = Feats.values.collect(Feats.fnTacticalFeats)
       val randomLootWarriorPrefix =

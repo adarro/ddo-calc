@@ -14,7 +14,9 @@ Epic Active Spell feats[[edit](http://ddowiki.com/edit/Epic_Feats?section=4 "Edi
 | **[Greater Ruin](http://ddowiki.com/edit/Greater_Ruin?redlink=1 "Greater Ruin (page does not exist)")** | Active - Spell | Spell Point Cost: 150. Target: Foe Deal 1000 untyped damage to a single enemy. (No saving throw.) Cooldown: 15 seconds. Passive: +140 Maximum Spell points.                                                                                                                                                                      | *  Level 30 *  [Ruin](http://ddowiki.com/page/Ruin "Ruin") | ![Icon Greater Ruin.png](/images/Icon_Greater_Ruin.png)                     |
 
 [existingFeat]: - "c:verify-rows=#feat:verify()"
+
 [_matchStrategy_]: - "c:matchStrategy=KeyMatch"
+
 [result]: - "?=#feat"
 
 

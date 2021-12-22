@@ -47,19 +47,19 @@ sealed trait LawAxis extends EnumEntry with AlignmentType with NoDefault[LawAxis
 
 object LawAxis extends Enum[LawAxis] with BitSupport with SearchPrefix {
   type T = LawAxis
+  val values: immutable.IndexedSeq[T] = findValues
+  val bitValues: Map[T, Int] = valuesToIndex.map { x =>
+    x._1 -> Math.pow(2.0, x._2).toInt
+  }
 
   /**
-   * Used when qualifying a search with a prefix. Examples include finding "HalfElf" from qualified "Race:HalfElf"
+   * Used when qualifying a search with a prefix. Examples include finding "HalfElf" from qualified
+   * "Race:HalfElf"
    *
    * @return
    *   A default or applied prefix
    */
   override def searchPrefixSource: String = "LawAxis"
-
-  val values: immutable.IndexedSeq[T] = findValues
-  val bitValues: Map[T, Int] = valuesToIndex.map { x =>
-    x._1 -> Math.pow(2.0, x._2).toInt
-  }
 
   case object Chaotic extends LawAxis
 
@@ -82,19 +82,20 @@ sealed trait MoralAxis extends EnumEntry with AlignmentType with NoDefault[Moral
 
 object MoralAxis extends Enum[MoralAxis] with BitSupport with SearchPrefix {
 
-  /**
-   * Used when qualifying a search with a prefix. Examples include finding "HalfElf" from qualified "Race:HalfElf"
-   *
-   * @return
-   *   A default or applied prefix
-   */
-  override def searchPrefixSource: String = "MoralAxis"
-
   type T = MoralAxis
   val values: immutable.IndexedSeq[MoralAxis] = findValues
   val bitValues: Map[T, Int] = valuesToIndex.map { x =>
     x._1 -> Math.pow(2.0, x._2).toInt
   }
+
+  /**
+   * Used when qualifying a search with a prefix. Examples include finding "HalfElf" from qualified
+   * "Race:HalfElf"
+   *
+   * @return
+   *   A default or applied prefix
+   */
+  override def searchPrefixSource: String = "MoralAxis"
 
   case object Good extends MoralAxis
 

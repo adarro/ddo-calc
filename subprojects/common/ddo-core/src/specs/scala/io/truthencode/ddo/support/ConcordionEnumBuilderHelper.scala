@@ -23,7 +23,8 @@ package io.truthencode.ddo.support
 class ConcordionEnumBuilderHelper(helper: ConcordionEnumBuilderSupport) {
   def actual: Seq[String] = helper.actual
 
-  implicit private val myStringOrdering: scala.math.Ordering[String] = Ordering.fromLessThan[String](_ > _)
+  implicit private val myStringOrdering: scala.math.Ordering[String] =
+    Ordering.fromLessThan[String](_ > _)
 
   def listValues(heading: String): String = helper.listValues(heading)
 
@@ -36,7 +37,8 @@ class ConcordionEnumBuilderHelper(helper: ConcordionEnumBuilderSupport) {
 
   def getValidSingleValue: String = helper.getValidSingleValue
 
-  def resultCount(searchString: String, ignoreCase: String): Int = helper.resultCount(searchString, ignoreCase)
+  def resultCount(searchString: String, ignoreCase: String): Int =
+    helper.resultCount(searchString, ignoreCase)
 
   def withNames(searchString: String, ignoreCase: Boolean): Seq[String] = {
     helper.withNames(searchString, ignoreCase = ignoreCase)

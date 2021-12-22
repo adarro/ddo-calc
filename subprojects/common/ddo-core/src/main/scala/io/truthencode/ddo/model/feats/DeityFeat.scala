@@ -60,7 +60,8 @@ object DeityFeat extends Enum[DeityFeat] with FeatSearchPrefix with FeatMatcher 
   }
 
   /**
-   * Used when qualifying a search with a prefix. Examples include finding "HalfElf" from qualified "Race:HalfElf"
+   * Used when qualifying a search with a prefix. Examples include finding "HalfElf" from qualified
+   * "Race:HalfElf"
    *
    * @return
    *   A default or applied prefix

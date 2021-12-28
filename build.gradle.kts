@@ -16,7 +16,6 @@
  * limitations under the License.
  */
 import java.util.*
-import kotlin.math.log
 
 plugins {
 
@@ -83,7 +82,14 @@ config {
     }
 
     licensing {
-        excludes = setOf("**/*.md", "**/*.sql", "buildSrc\\build\\kotlin-dsl\\plugins-blocks\\extracted\\*.kts")
+        excludes = setOf(
+            "**/*.md",
+            "**/*.sql",
+            "**/avro/**/*.scala",
+            "buildSrc\\build\\kotlin-dsl\\plugins-blocks\\extracted\\*.kts",
+            "**/*.conf"
+        )
+        includes = setOf("src/main/java/**/*.java","src/main/scala/*.scala")
         licenses {
             license {
                 id = "Apache-2.0" //org.kordamp.gradle.plugin.base.model.LicenseId.APACHE_2_0

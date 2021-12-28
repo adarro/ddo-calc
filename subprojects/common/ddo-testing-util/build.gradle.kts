@@ -19,7 +19,7 @@
 description = "Shared Testing and convenience Utilities (Intended for Test Scope)"
 
 plugins {
-    id("scala-profiles")
+    id("scala-library-profile")
     id("acceptance-test-conventions")
 }
 val scalaLibraryVersion: String by project

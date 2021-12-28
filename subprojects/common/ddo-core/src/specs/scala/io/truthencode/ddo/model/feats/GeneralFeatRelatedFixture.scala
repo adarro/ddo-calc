@@ -24,17 +24,17 @@ import org.concordion.api.option.{ConcordionOptions, MarkdownExtensions}
 import org.concordion.integration.junit4.ConcordionRunner
 import org.junit.runner.RunWith
 
-@FullOGNL
-//@Extensions(Array(classOf[EmbedExtension], classOf[CollapseOutputExtension]))
-@ConcordionOptions(
-  declareNamespaces = Array("ext", "urn:concordion-extensions:2010"),
-  markdownExtensions = Array(
-    MarkdownExtensions.WIKILINKS,
-    MarkdownExtensions.AUTOLINKS,
-    MarkdownExtensions.TASKLISTITEMS)
-)
-@RunWith(classOf[ConcordionRunner])
-class GeneralFeatSpec extends FeatDisplayHelper {
+//@FullOGNL
+////@Extensions(Array(classOf[EmbedExtension], classOf[CollapseOutputExtension]))
+//@ConcordionOptions(
+//  declareNamespaces = Array("ext", "urn:concordion-extensions:2010"),
+//  markdownExtensions = Array(
+//    MarkdownExtensions.WIKILINKS,
+//    MarkdownExtensions.AUTOLINKS,
+//    MarkdownExtensions.TASKLISTITEMS)
+//)
+//@RunWith(classOf[ConcordionRunner])
+class GeneralFeatRelatedFixture extends FeatDisplayHelper {
   val displayEnum: E = GeneralFeat
 
 }

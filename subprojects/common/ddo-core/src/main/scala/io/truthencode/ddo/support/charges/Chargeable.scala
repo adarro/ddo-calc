@@ -22,5 +22,5 @@ package io.truthencode.ddo.support.charges
  */
 trait Chargeable {
   def charges: Charges
-  def maxCharges: Int
+
 }

@@ -52,7 +52,7 @@ trait RequiresAnyOfAttribute
   extends AttributeRequisite with RequiresOneOf[Requirement] with Requisite {
 
   abstract override def oneOf: Seq[Requirement] = super.oneOf ++ {
-    allOfAttributes.map(_.toReq).map(GroupedRequirement(_, gkAnyAttributes))
+    allOfAttributes.map(_.toReq).map(GroupedRequirement(_, gkAnyAttributes, RequisiteType.Require))
   }
 
 }
@@ -60,6 +60,6 @@ trait RequiresAnyOfAttribute
 trait RequiresAllOfAttribute
   extends AttributeRequisite with RequiresAllOf[Requirement] with Requisite {
   abstract override def allOf: Seq[Requirement] = super.allOf ++ {
-    allOfAttributes.map(_.toReq).map(GroupedRequirement(_, gkAllAttributes))
+    allOfAttributes.map(_.toReq).map(GroupedRequirement(_, gkAllAttributes, RequisiteType.Require))
   }
 }

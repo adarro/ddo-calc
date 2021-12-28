@@ -40,7 +40,10 @@ trait FreeBaB extends BaBRequisite with RequiresNone with RequiredExpression wit
 trait RequiresBaB extends BaBRequisite with RequiresAllOf[Requirement] with Requisite {
 
   abstract override def allOf: Seq[Requirement] =
-    super.allOf :+ GroupedRequirement(ReqBaseAttackBonus(requiresBaB), gkAllBaB)
+    super.allOf :+ GroupedRequirement(
+      ReqBaseAttackBonus(requiresBaB),
+      gkAllBaB,
+      RequisiteType.Require)
 
 //  abstract override def prerequisites: Seq[RequisiteExpression] = super.prerequisites :+ this
 

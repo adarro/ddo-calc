@@ -17,8 +17,9 @@
  */
 plugins {
     scala
-    id("java-library-conventions")
+
     id("org.scoverage")
+    id("code-quality")
 }
 
 

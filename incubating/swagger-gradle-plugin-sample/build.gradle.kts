@@ -16,7 +16,7 @@
  * limitations under the License.
  */
 plugins {
-    id("scala-profiles")
+    id("scala-library-profile")
     id("openapi-conventions")
 }
 

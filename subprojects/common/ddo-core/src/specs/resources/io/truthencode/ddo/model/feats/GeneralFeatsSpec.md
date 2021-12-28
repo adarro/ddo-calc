@@ -98,7 +98,7 @@ Verifying all known General Feats (from DDO Wiki)
 | Lightning Reflexes                  |
 | Luck of Heroes                      |
 | Magical Training                    |
-| Manyshot                            |
+| Manyshot                            | 
 | Martial Weapon Proficiency          |
 | Medium Armor Proficiency            |
 | Mental Toughness                    |

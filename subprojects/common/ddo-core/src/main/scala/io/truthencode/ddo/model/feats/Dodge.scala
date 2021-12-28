@@ -50,4 +50,6 @@ trait Dodge
 
   override def allOfAttributes: Seq[(Attribute, Int)] =
     List((Attribute.Dexterity, 13))
+
+  override def gkBonusSelectableClasses: String = "BonusSelection"
 }

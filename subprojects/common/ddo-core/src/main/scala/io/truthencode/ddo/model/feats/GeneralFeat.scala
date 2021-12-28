@@ -233,6 +233,7 @@ object GeneralFeat
      *   accurately won't) with Keen / Impact et al.
      */
     override protected val criticalThreatRangeType: BonusType = BonusType.Feat
+    val wow: Seq[(WeaponCategory, Int)] = improvedCriticalRangeByWeapon(weaponClass) // wow1.flatten
     override protected val criticalThreatRangeAmount: Seq[(WeaponCategory, Int)] = wow
     /**
      * Delimits the prefix and text.
@@ -245,7 +246,6 @@ object GeneralFeat
 //      a3 <- icPlus3.filter(_ == weapon)
 //    } yield Seq((a1, 1), (a2, 2), (a3, 3))
     // logger.info(s"found ${wow1.size} weapons for improved critical: ${weaponClass.entryName}")
-    val wow: Seq[(WeaponCategory, Int)] = improvedCriticalRangeByWeapon(weaponClass) // wow1.flatten
 
     override def prefix: Option[String] = Some("Improved Critical")
 

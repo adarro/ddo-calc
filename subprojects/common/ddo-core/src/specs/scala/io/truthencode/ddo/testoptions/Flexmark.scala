@@ -66,8 +66,8 @@ object Flexmark {
     }
   }
 
-  implicit class TupOpts(source: Seq[Tuple2[_, _]]) {
-    def toJavaList: java.util.List[Tuple2[_, _]] = {
+  implicit class TupOpts(source: Seq[(_, _)]) {
+    def toJavaList: java.util.List[(_, _)] = {
       source.asJava
     }
   }

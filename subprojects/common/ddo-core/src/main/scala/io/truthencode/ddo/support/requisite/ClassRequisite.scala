@@ -71,7 +71,7 @@ trait FreeClass extends ClassRequisite with RequiresNone with RequiredExpression
 trait RequiresAnyOfClass extends ClassRequisite with RequiresOneOf[Requirement] with Requisite {
 
   abstract override def oneOf: Seq[Requirement] = super.oneOf ++ {
-    anyOfClass.map(_.toReq).map(GroupedRequirement(_, gkRequiredClasses))
+    anyOfClass.map(_.toReq).map(GroupedRequirement(_, gkRequiredClasses,RequisiteType.Require))
   }
 }
 
@@ -82,7 +82,7 @@ trait RequiresAnyOfClass extends ClassRequisite with RequiresOneOf[Requirement] 
 trait RequiresAllOfClass extends ClassRequisite with RequiresAllOf[Requirement] with Requisite {
 
   abstract override def allOf: Seq[Requirement] = super.allOf ++ {
-    allOfClass.map(_.toReq).map(GroupedRequirement(_, gkRequiredClasses))
+    allOfClass.map(_.toReq).map(GroupedRequirement(_, gkRequiredClasses,RequisiteType.Require))
   }
 }
 
@@ -93,7 +93,7 @@ trait RequiresAllOfClass extends ClassRequisite with RequiresAllOf[Requirement] 
 trait RequiresNoneOfClass extends ClassRequisite with RequiresNoneOf[Requirement] with Requisite {
 
   abstract override def noneOf: Seq[Requirement] = super.noneOf ++ {
-    noneOfClass.map(_.toReq).map(GroupedRequirement(_, gkProhibitedClasses))
+    noneOfClass.map(_.toReq).map(GroupedRequirement(_, gkProhibitedClasses,RequisiteType.Prohibit))
   }
 }
 
@@ -103,7 +103,7 @@ trait RequiresNoneOfClass extends ClassRequisite with RequiresNoneOf[Requirement
 trait GrantsToClass
   extends ClassRequisite with GrantExpression with RequiresOneOf[Requirement] with Requisite {
   abstract override def oneOf: Seq[Requirement] = super.oneOf ++ {
-    grantToClass.map(_.toReq).map(GroupedRequirement(_, gkGrantClasses))
+    grantToClass.map(_.toReq).map(GroupedRequirement(_, gkGrantClasses,RequisiteType.Grant))
   }
 }
 
@@ -114,6 +114,6 @@ trait GrantsToClass
 trait SelectableToClass
   extends ClassRequisite with ClassRequisiteImpl with RequiresOneOf[Requirement] with Requisite {
   abstract override def oneOf: Seq[Requirement] = super.oneOf ++ {
-    bonusSelectableToClass.map(_.toReq).map(GroupedRequirement(_, gkBonusSelectableClasses))
+    bonusSelectableToClass.map(_.toReq).map(GroupedRequirement(_, gkBonusSelectableClasses,RequisiteType.Require))
   }
 }

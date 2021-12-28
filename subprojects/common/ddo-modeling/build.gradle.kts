@@ -17,7 +17,7 @@
  */
 
 plugins {
-    id("scala-profiles")
+    id("scala-library-profile")
     id("com.zlad.gradle.avrohugger")
     id("com.github.lkishalmi.gatling") version "3.2.9"
     id("org.openapi.generator")

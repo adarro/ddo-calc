@@ -19,6 +19,7 @@ package io.truthencode.ddo.support.charges
 
 import enumeratum.{Enum, EnumEntry}
 
+import java.time.Duration
 import scala.collection.immutable
 
 /**
@@ -28,6 +29,10 @@ import scala.collection.immutable
 sealed trait Interval extends EnumEntry
 
 trait ResetOnRest extends Interval
+
+trait TimeDuration extends Interval {
+  val duration: Duration
+}
 
 trait ResetOnDuration extends Interval
 
@@ -39,6 +44,7 @@ object Interval extends Enum[Interval] {
    */
   case object PerRest extends ResetOnRest
 
+  case class OnTimer(override val duration: Duration) extends TimeDuration
   /**
    * Replenished after time elapses
    */

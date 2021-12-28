@@ -90,11 +90,11 @@ trait RequiresOneOf[T <: Requirement] extends MustContainAtLeastOneOf[T] with Re
 
   private[this] def makeSet: Seq[RequirementSet[RequisiteType, Inclusion]] = {
     val adapted = oneOf.map {
-      case GroupedRequirement(x, t) => (t, x)
-      case t: T => (defaultGroupKey, t)
+      case GroupedRequirement(x, t, r) => (t, x, r)
+      case t: T => (defaultGroupKey, t, RequisiteType.Require)
     }.groupBy(_._1)
       .map { v =>
-        RequirementSet(RequisiteType.Require, Inclusion.AnyOf, v._1, v._2.map(_._2): _*)
+        RequirementSet(v._2.head._3, Inclusion.AnyOf, v._1, v._2.map(_._2): _*)
       }
       .toSeq
     // RequirementSet(RequisiteType.Require, Inclusion.AnyOf, defaultGroupKey, oneOf: _*)
@@ -106,15 +106,14 @@ trait RequiresAllOf[T <: Requirement] extends MustContainAllOf[T] with Require {
   abstract override def prerequisites: Seq[RequirementSet[RequisiteType, Inclusion]] =
     super.prerequisites ++ makeSet
 
-  private[this] def makeSet
-    : Seq[RequirementSet[RequisiteType.Require.type, Inclusion.AllOf.type]] = {
+  private[this] def makeSet: Seq[RequirementSet[RequisiteType, Inclusion]] = {
 //      RequirementSet(RequisiteType.Require, Inclusion.AllOf, defaultGroupKey, allOf: _*)
     val adapted = allOf.map {
-      case GroupedRequirement(x, t) => (t, x)
-      case t: T => (defaultGroupKey, t)
+      case GroupedRequirement(x, t, r) => (t, x, r)
+      case t: T => (defaultGroupKey, t, RequisiteType.Require)
     }.groupBy(_._1)
       .map { v =>
-        RequirementSet(RequisiteType.Require, Inclusion.AllOf, v._1, v._2.map(_._2): _*)
+        RequirementSet(v._2.head._3, Inclusion.AllOf, v._1, v._2.map(_._2): _*)
       }
       .toSeq
     // RequirementSet(RequisiteType.Require, Inclusion.AnyOf, defaultGroupKey, oneOf: _*)

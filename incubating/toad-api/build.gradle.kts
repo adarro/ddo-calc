@@ -22,7 +22,7 @@
  */
 
 plugins {
-    id("scala-profiles")
+    id("scala-library-profile")
     `maven-publish`
 }
 
@@ -82,19 +82,26 @@ dependencies {
     implementation("io.vertx:vertx-core:$vertxVersion")
     implementation("io.vertx:vertx-web:$vertxVersion")
     implementation("io.vertx:vertx-mongo-client:$vertxVersion")
+    implementation("io.vertx:vertx-zookeeper:$vertxVersion")
     // implementation("io.vertx:vertx-mongo-embedded-db:$vertxVersion")
-    implementation("io.vertx:vertx-hazelcast:$vertxVersion") {
-        exclude(group="com.hazelcast", module = "hazelcast")
-    }
+//    implementation("io.vertx:vertx-hazelcast:$vertxVersion") {
+//        exclude(group="com.hazelcast", module = "hazelcast")
+//    }
     implementation("io.vertx:vertx-codegen:$vertxVersion")
     // implementation("io.vertx:vertx-lang-js:$vertxVersion")
     implementation("io.vertx:vertx-auth-shiro:$vertxVersion")
     implementation("org.apache.shiro:shiro-core:1.8.0")
     implementation("org.apache.camel:camel-core:$camelVersion")
     implementation("org.apache.camel:camel-vertx:$camelVersion")
-    implementation("org.apache.camel:camel-hazelcast:$camelVersion") {
-        exclude(group="com.hazelcast", module = "hazelcast")
-    }
+    implementation("org.apache.camel:camel-vertx:$camelVersion")
+    implementation("org.apache.camel:camel-pulsar:$camelVersion")
+    implementation("org.apache.camel:camel-main:$camelVersion")
+    /* swapping to Zookeeper over hazelcast due to Java 9+ issues + Pulsar is using Zookeeper
+    So we can attempt to save a bit of overhead
+     */
+//    implementation("org.apache.camel:camel-hazelcast:$camelVersion") {
+//        exclude(group="com.hazelcast", module = "hazelcast")
+//    }
     implementation("org.javassist:javassist:3.20.0-GA")
     // testImplementation("org.scalatra.scalate:scalate-test_$scalaMajorVersion:$scalateVersion")
     testImplementation("org.apache.httpcomponents:httpclient:4.5.13")

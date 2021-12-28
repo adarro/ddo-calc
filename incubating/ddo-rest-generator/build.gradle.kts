@@ -24,7 +24,7 @@
  */
 
 plugins {
-    id("scala-profiles")
+    id("scala-library-profile")
     id("acceptance-test-conventions")
     id("openapi-conventions")
 }

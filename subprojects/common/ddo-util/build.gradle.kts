@@ -19,7 +19,7 @@
 description = "Common misc String and convenience Utilities"
 
 plugins {
-    id("scala-profiles")
+    id( "scala-library-profile")
     id("acceptance-test-conventions")
 }
 val scalaLibraryVersion: String by project

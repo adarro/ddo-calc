@@ -64,18 +64,17 @@ public class EchoServer {
         }
     }
 
-    private static DaemonStatus Status = DaemonStatus.STOPPED;
     private static ServerCommand cmd = ServerCommand.START;
 
     public static void ServerDaemon() throws IOException {
-        Status = DaemonStatus.STARTING;
+        DaemonStatus status = DaemonStatus.STARTING;
         Selector selector = Selector.open();
         ServerSocketChannel serverSocket = ServerSocketChannel.open();
         serverSocket.bind(new InetSocketAddress("localhost", 5454));
         serverSocket.configureBlocking(false);
         serverSocket.register(selector, SelectionKey.OP_ACCEPT);
         ByteBuffer buffer = ByteBuffer.allocate(256);
-        Status = DaemonStatus.RUNNING;
+        status = DaemonStatus.RUNNING;
         cmd = ServerCommand.CONTINUE;
         while (cmd != ServerCommand.STOP) {
             selector.select();
@@ -126,7 +125,7 @@ public class EchoServer {
     }
 
 
-    public static Process start() throws IOException, InterruptedException {
+    public static Process start() throws IOException {
         String javaHome = System.getProperty("java.home");
         String javaBin = javaHome + File.separator + "bin" + File.separator + "java";
         String classpath = System.getProperty("java.class.path");

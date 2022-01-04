@@ -34,7 +34,7 @@
     <version>0.1.0-alpha</version>
     <packaging>pom</packaging>
     <name>DDO Calculations</name>
-    <description>DDO Calculator for damage, planning and analysis (Super POM + Aggegator)</description>
+    <description>DDO Calculator for damage, planning and analysis (Super POM + Aggregator)</description>
     <modules>
 		<!--<module>qa-tools</module>
         <module>ddo-plot</module> -->

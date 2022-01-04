@@ -79,7 +79,8 @@ trait GrantAbilityFeature extends Features {
         id = abilityId,
         description = description,
         triggersOn = triggerOn.map(_.entryName),
-        triggersOff = triggerOff.map(_.entryName)
+        triggersOff = triggerOff.map(_.entryName),
+        bonusType = grantBonusType.entryName
       )
       override val source: SourceInfo = src
       override lazy val value: ActiveAbilities = grantedAbility

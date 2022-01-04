@@ -87,7 +87,8 @@ trait DoubleShotFeature extends Features {
         description =
           "grants a character a chance to do additional damage with their ranged or thrown weapon any time they make an attack.",
         triggersOn = doubleShotTriggerOn.map(_.entryName),
-        triggersOff = doubleShotTriggerOff.map(_.entryName)
+        triggersOff = doubleShotTriggerOff.map(_.entryName),
+        bonusType = doubleShotBonusType.entryName
       )
       override val source: SourceInfo = src
       override lazy val value: Int = doubleShotValue

@@ -69,7 +69,7 @@ logger.info("checking $projectFolders for sub-projects")
  *  should be an Extension, but can not inline compile as one in settings.gradle.kts
  *  so we're doing a quick one off verses polluting a buildSrc, um... further
  *
- *  @param str the string to parsee
+ *  @param str the string to parse
  *  @return the first part of the string
  */
 fun readFirstPart(str: String): String = str.split(".").first()
@@ -113,10 +113,11 @@ projectFolders.forEach { dirName ->
     }
 }
 
-logger.info("Adding included builds")
+
 
 if (System.getenv("enableCompositeBuild") == "true") {
-    file("examples").listFiles().filter { ft -> ft.isDirectory }.forEach { moduleBuild: File ->
+    logger.info("Adding included builds")
+    file("examples").listFiles()?.filter { ft -> ft.isDirectory }?.forEach { moduleBuild: File ->
         includeBuild(moduleBuild)
     }
 }

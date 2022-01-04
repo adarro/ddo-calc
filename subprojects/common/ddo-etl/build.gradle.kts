@@ -31,7 +31,15 @@ plugins {
 description = "Common ETL module for storing / loading data from web / user etc"
 
 dependencies {
+    /*
+    might use  https://github.com/nrinaudo
+     for etl regex support
+     xpath and csv also
 
+     Also, monocle for idiomatic updating of immutable objects (i.e. case classes)
+     https://www.optics.dev/Monocle/
+     (Need scala 3 to update optional fields and single element in list)
+     */
     val scalaLibraryVersion: String by project
     val scalaMajorVersion: String by project
     // https://mvnrepository.com/artifact/org.json4s/json4s-native

@@ -59,7 +59,8 @@ trait TurnUndeadNumberOfTurnsFeature extends Features {
         id = "TurnUndeadNumberOfTurns",
         description = "Increases the number of times you can turn undead per rest",
         triggersOn = triggerOn.map(_.entryName),
-        triggersOff = triggerOff.map(_.entryName)
+        triggersOff = triggerOff.map(_.entryName),
+        bonusType = numberOfTurnsBonusType.entryName
       )
       override protected[this] lazy val partToModify: BasicStat =
         BasicStat.TurnUndeadMaxHitDice

@@ -17,23 +17,37 @@
  */
 package io.truthencode.ddo.subscription
 
-import com.sksamuel.pulsar4s.{PulsarAsyncClient, PulsarClient, PulsarClientConfig, Topic}
+import com.sksamuel.pulsar4s._
+import com.sksamuel.pulsar4s.avro.avroSchema
+import com.sksamuel.pulsar4s.monixs.MonixAsyncHandler
+import io.truthencode.ddo.model.protocol.ChangeValueInt
+import io.truthencode.ddo.test.tags.IntegrationTest
 import org.mockito.scalatest.MockitoSugar
 import org.scalatest.BeforeAndAfterAll
 import org.scalatest.funspec.AnyFunSpec
 import org.scalatest.matchers.should.Matchers
+import wvlet.log.LogSupport
 
 import java.beans.{PropertyChangeEvent, PropertyChangeListener}
+import java.util.UUID
+import java.util.concurrent.TimeUnit
+import scala.concurrent.Await
+import scala.concurrent.duration.{Duration, DurationInt, FiniteDuration}
+import scala.language.postfixOps
 
 class AbilityProviderTest
-  extends AnyFunSpec with BeforeAndAfterAll with MockitoSugar with Matchers {
-  lazy val serviceUrl = "pulsar://localhost:6650"
-  lazy val pcfg = PulsarClientConfig(serviceUrl)
-  var pc: PulsarAsyncClient = _
+  extends AnyFunSpec with BeforeAndAfterAll with MockitoSugar with Matchers with LogSupport {
+  import monix.execution.Scheduler.Implicits.global
+  lazy val serviceUrl: String =
+    TestContainers.pulsarTestContainer.getPulsarBrokerUrl // "pulsar://localhost:6650"
+  lazy val pcfg: PulsarClientConfig = PulsarClientConfig(serviceUrl)
+  lazy val pc: PulsarAsyncClient = PulsarClient(pcfg)
   val nv = 5
   val changeValueKey = "IntValue"
+
+  val maxTimeOut: FiniteDuration = Duration.create(15, TimeUnit.SECONDS)
   describe("An ability") {
-    it("Should support atomic updates") {
+    it("Should support atomic updates", IntegrationTest) {
       val s = "Strength"
       val topic = Topic(genAttrPrefix(s))
       val ap = AbilityProvider(s, pc, topic)
@@ -48,7 +62,7 @@ class AbilityProviderTest
       //  verify(listener,times(1))
 
     }
-    it("should support property change notifications") {
+    it("should support property change notifications", IntegrationTest) {
       val s = "Dexterity"
       val topic = Topic(genAttrPrefix(s))
       val ap = AbilityProvider(s, pc, topic)
@@ -70,17 +84,44 @@ class AbilityProviderTest
         }
       }
       ap.addPropertyChangeListener(changeValueKey, listener)
-      ap.update(expectedValue)
+      val result = ap.update(expectedValue)
+      Await.result(Await.result(result, 15.seconds).runToFuture, 15.seconds)
+
       fired shouldBe true
     }
   }
 
+  it("should send notification messages") {
+//    implicit val schema: Schema[ChangeValueInt] = Schema.AVRO(classOf[ChangeValueInt])
+    import MonixAsyncHandler._
+    import monix.execution.Scheduler.Implicits.global
+    val expectedValue = 42
+    val s = "Wisdom"
+    val topic = Topic(genAttrPrefix(s))
+    val ap = AbilityProvider(s, pc, topic)
+    val inboundSubscription: String = s"${s}-change-handler_${UUID.randomUUID()}"
+    val client = PulsarClient(pcfg)
+    val consumer = client.consumer[ChangeValueInt](
+      ConsumerConfig(topics = Seq(topic), subscriptionName = Subscription(inboundSubscription)))
+    consumer.seekEarliest()
+    val t = consumer.receiveAsync
+    val result = ap.update(expectedValue)
+    Await.result(Await.result(result, 15.seconds).runToFuture, 15.seconds)
+    ap.readCurrentValue shouldEqual expectedValue
+    val f = t.runToFuture
+    val result2 = Await.result(f, maxTimeOut)
+    result2.value.currentValue shouldBe expectedValue
+    consumer.close()
+  }
+
   override protected def afterAll(): Unit = {
+    TestContainers.pulsarTestContainer.stop()
     pc.close()
   }
 
   override protected def beforeAll(): Unit = {
+    TestContainers.pulsarTestContainer.start()
 
-    pc = PulsarClient(pcfg)
+//    pc = PulsarClient(pcfg)
   }
 }

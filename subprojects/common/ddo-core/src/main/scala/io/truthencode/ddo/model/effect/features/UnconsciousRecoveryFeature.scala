@@ -82,7 +82,8 @@ trait UnconsciousRecoveryFeature extends Features {
         id = "AutoRecovery",
         description = "Automatically recover when below 0 health",
         triggersOn = triggerOn.map(_.entryName),
-        triggersOff = triggerOff.map(_.entryName)
+        triggersOff = triggerOff.map(_.entryName),
+        bonusType = autoRecoveryBonus.entryName
       )
       override val source: SourceInfo = src
       override lazy val value: Boolean = isAutoRecovery

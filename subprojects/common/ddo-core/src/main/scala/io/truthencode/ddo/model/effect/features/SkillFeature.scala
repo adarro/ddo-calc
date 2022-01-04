@@ -35,7 +35,8 @@ trait SkillFeature extends Features {
       id = s"Skill:${f._1.entryName}",
       description = "Improves skill",
       triggersOn = skillTriggerOn.map(_.entryName),
-      triggersOff = skillTriggerOff.map(_.entryName)
+      triggersOff = skillTriggerOff.map(_.entryName),
+      bonusType = bonusType.entryName
     )
     val eb = EffectParameterBuilder()
       .toggleOffValue(skillTriggerOff: _*)

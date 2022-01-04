@@ -39,21 +39,38 @@ object SimpleScalaVerticle {
 }
 
 class SimpleScalaVerticle extends AbstractVerticle {
-  private[this] lazy val mongo = MongoClient.createShared(vertx, config)
-  // this nonsense is simple to avoid 'Magic numbers' or adding a bunch of format off meta comments
-  val s404 = 404
-  val s200 = 200
-  val s400 = 400
-  val s204 = 204
-  override def start(fut: Promise[Void]): Unit = {
-    if (config.size > 0) {
+  private val log = toad.SimpleScalaVerticle.log
+  private[this] lazy val mongo = {
+    val cfg = Vertx.currentContext.config
+    var uri = cfg.getString("mongo_uri")
+    if (uri == null) {
+      log.info("mongo_uri not specified, defaulting to localhost  27017")
+      uri = "mongodb://localhost:27017"
+    }
+    var db = cfg.getString("mongo_db")
+    if (db == null) {
+      log.info("mongo_db not specified, defaulting to test")
+      db = "test"
+    }
+
+    val mongoconfig = new JsonObject().put("connection_string", uri).put("db_name", db)
+    if (mongoconfig.size > 0) {
       toad.SimpleScalaVerticle.log.info("Mongo config")
-      for ((k, v) <- config.getMap.asScala) {
+      for ((k, v) <- mongoconfig.getMap.asScala) {
         toad.SimpleScalaVerticle.log.info(s"k:$k\tv:$v")
       }
     } else {
       toad.SimpleScalaVerticle.log.info("Using default Mongo config")
     }
+    MongoClient.createShared(vertx, mongoconfig)
+  }
+  // this nonsense is simply to avoid 'Magic numbers' or adding a bunch of format off meta comments
+  val s404 = 404
+  val s200 = 200
+  val s400 = 400
+  val s204 = 204
+  override def start(fut: Promise[Void]): Unit = {
+
     createSomeData(
       (_: AsyncResult[Void]) => {
         startWebApp((http: AsyncResult[HttpServer]) => completeStartup(http, fut))
@@ -64,7 +81,7 @@ class SimpleScalaVerticle extends AbstractVerticle {
   private val id1 = "id"
 
   private def startWebApp(next: Handler[AsyncResult[HttpServer]]): Unit = {
-    SimpleScalaVerticle.log.info("Starting verticle asyncly")
+    log.info("Starting verticle async")
     val router: Router = Router.router(vertx)
     router
       .route("/")
@@ -79,7 +96,8 @@ class SimpleScalaVerticle extends AbstractVerticle {
 
     router
       .route("/test/")
-      .handler((x: RoutingContext) => toad.SimpleScalaVerticle.log.info("we d" + id1 + " something"))
+      .handler((x: RoutingContext) =>
+        toad.SimpleScalaVerticle.log.info("we d" + id1 + " something"))
 
     router
       .route("/")

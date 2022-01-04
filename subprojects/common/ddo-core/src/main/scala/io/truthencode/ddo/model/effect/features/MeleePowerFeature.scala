@@ -81,7 +81,8 @@ trait MeleePowerFeature extends Features {
         id = "HitChance",
         description = "Increases your Melee Power Rating",
         triggersOn = triggerOn.map(_.entryName),
-        triggersOff = triggerOff.map(_.entryName)
+        triggersOff = triggerOff.map(_.entryName),
+        bonusType = meleePowerBonusType.entryName
       )
       override val source: SourceInfo = src
       override lazy val value: Int = meleePowerBonusAmount

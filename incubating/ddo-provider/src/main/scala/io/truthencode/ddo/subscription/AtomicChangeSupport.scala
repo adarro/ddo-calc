@@ -16,6 +16,9 @@
  * limitations under the License.
  */
 package io.truthencode.ddo.subscription
+import monix.eval.Task
+import monix.execution.CancelableFuture
+
 import java.beans.{PropertyChangeListener, PropertyChangeSupport}
 import scala.concurrent.stm.Ref
 
@@ -33,8 +36,14 @@ trait AtomicChangeSupport[T] {
     valueNotification.removePropertyChangeListener(listener)
   }
 
+  def executeParallel[A](a: Task[A]*): Task[Seq[A]] = {
+    val aList: Seq[Task[A]] = a.toIndexedSeq
+    Task.parSequence(aList)
+  }
+
   protected val changeValueKey = "IntValue"
   protected val currentValue: Ref[T]
-  protected val prevValue:Ref[T]
-    def update(newValue:T): Unit
+  protected val prevValue: Ref[T]
+  protected val hasChanged: Ref[Boolean] = Ref(false)
+  def update(newValue: T): CancelableFuture[Task[Seq[Unit]]]
 }

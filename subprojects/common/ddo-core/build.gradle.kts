@@ -57,6 +57,7 @@ dependencies {
         testImplementation(group = "com.wix", name = "accord-scalatest_$scalaMajorVersion")
 
 
+
         // JUnit 5
         testRuntimeOnly(group = "org.junit.platform", name = "junit-platform-engine")
         testRuntimeOnly(group = "org.junit.platform", name = "junit-platform-launcher")

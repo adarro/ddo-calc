@@ -1,0 +1,82 @@
+@namespace("io.truthencode.ddo.model.protocol.parsers")
+protocol WeaponInfo {
+    import idl "DamageInfo.avdl";
+    import idl "CriticalThreatRange.avdl";
+
+    /**  */
+    record Weapon {
+        /** Name of the Item */
+        union{null, string} name;
+        /** General Level of Martial training required to wield */
+        union{null, Weapon_proficiencyUnderscoreclass} proficiency_class;
+        /** Screen shot or image URI */
+        union{null, string} image;
+        union{null, DamageTrait} damage;
+        union{null, DamageInfo} damage_type;
+        union{null, CriticalThreatRange} critical_threat_range;
+        /** The type of weapon such as long sword Axe etc */
+        union{null, Weapon_weaponUnderscorecategory} weapon_category;
+        /** Race required to use item without a UMD Check */
+        union{null, array<string>} required_race;
+        /** Race absolutely required (no bypass) to use item */
+        union{null, array<string>} abs_required_race;
+        /** Races specifically not allowed to use */
+        union{null, array<string>} abs_restricted_race;
+        /** Minimum character level required to use item */
+        union{null, int} min_level;
+        /** Altered minimum level usually caused as a side-effect of additional enchantments which may increase the requirement */
+        union{null, int} abs_min_level;
+        /** Trait such as Lawful needed to use item */
+        union{null, array<string>} required_trait;
+        /** Use Magical Device DC */
+        union{null, string} umd;
+        /** Allowed slots such as one handed (main or off hand) / two handed */
+        union{null, array<string>} handedness;
+        /** Attribute(s) that modify the attack roll */
+        union{null, array<string>} attack_mod;
+        /** Attribute(s) that modify the damage roll */
+        union{null, array<string>} damage_mod;
+        /** Character or Account binding, if any */
+        union{null, string} binding;
+        /** tensile strength, how hard it is to damage */
+        union{null, int} durability;
+        /** Allowed slots for the item to be equipped */
+        union{null, Weapon_wearUnderscorelocation} wear_location;
+        /** material made from */
+        union{null, Weapon_material} material;
+        /** physical toughness of the item */
+        union{null, int} hardness;
+        /** Monetary value of item */
+        union{null, string} base_value;
+        /** weight in pounds */
+        union{null, int} weight;
+        /** Text describing the location of the item */
+        union{null, string} location;
+        /** Collection of Enchantments on the item. */
+        union{null, array<string>} enchantments;
+        /** Used to support One of the following */
+        union{null, array<string>} enchantments_choice;
+        /** If an item can be upgraded, instructions or the name of the upgraded item may appear here. */
+        union{null, string} upgradeable;
+        /** descriptive text of the item */
+        union{null, string} description_text;
+        /** Any sets this item belongs to that give bonuses when all items are equipped. */
+        union{null, array<string>} sets;
+    }
+
+    enum Weapon_proficiencyUnderscoreclass {Simple, Martial, Exotic}
+
+    enum Weapon_weaponUnderscorecategory {
+        BastardSword, BattleAxe, Club, Dagger, Dart, DwarvenWarAxe, Falchion, GreatAxe, GreatClub, GreatCrossbow,
+            GreatSword, HandAxe, Handwrap, HeavyCrossbow, HeavyMace, HeavyPick, Kama, Khopesh, Kukris, LightCrossbow,
+            LightHammer, LightMace, LightPick, Longbow, Longsword, Maul, Morningstar, Quarterstaff, Rapier,
+            RepeatingHeavyCrossbow, RepeatingLightCrossbow, Scimitar, Shortbow, ShortSword, Shuriken, Sickle,
+            SimpleProjectile, ThrowingAxe, ThrowingDagger, ThrowingHammer, WarHammer}
+
+    enum Weapon_wearUnderscorelocation {MainHand, OffHand, TwoHand}
+
+    enum Weapon_material {
+        Adamantine, Blueshine, Bone, Byeshk, Cloth, Cold_Iron, Crystal, Darkleaf, Darkwood, Densewood, Dwarven_Iron,
+            Feyleather, Flametouched_Iron, Flesh, Force, Gem, Glass, Ice, Leather, Light, Magesteel, Mithral,
+            Planeforged_Steel, Rust, Silver, Spiritcraft_Leather, Spiritforged_Iron, Steel, Stone, Wood}
+}

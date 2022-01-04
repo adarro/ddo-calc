@@ -17,12 +17,12 @@
  */
 package io.truthencode.ddo.subscription
 
+//import com.sksamuel.pulsar4s._
 import com.sksamuel.pulsar4s._
-//import com.sksamuel.pulsar4s.avro._
+import com.sksamuel.pulsar4s.avro.avroSchema
 import com.sksamuel.pulsar4s.monixs.MonixAsyncHandler
+import com.typesafe.scalalogging.LazyLogging
 import io.truthencode.ddo.model.protocol.{ChangeType, ChangeValueInt}
-import org.apache.pulsar.client.api.Schema
-import wvlet.log.LogSupport
 
 import java.beans.{PropertyChangeEvent, PropertyChangeListener}
 import javax.annotation.{PostConstruct, PreDestroy}
@@ -34,15 +34,9 @@ import scala.util.{Failure, Success}
  *   Name / ID of Ability
  */
 case class AbilityProvider(name: String, override val client: PulsarAsyncClient, topic: Topic)
-  extends PulsarEnabled with LogSupport with AtomicChangeSupport[Int] {
+  extends PulsarEnabled with LazyLogging with AtomicIntChangeSupport {
   import MonixAsyncHandler._
   import monix.execution.Scheduler.Implicits.global
-
-  import scala.concurrent.stm._
-
-  implicit val schema: Schema[ChangeValueInt] = Schema.AVRO(classOf[ChangeValueInt])
-  def readCurrentValue: Int = currentValue.single.get
-  def readPreviousValue: Int = prevValue.single.get
 
   @PostConstruct
   def startUp(): Unit = {
@@ -62,53 +56,23 @@ case class AbilityProvider(name: String, override val client: PulsarAsyncClient,
       val nv = evt.getNewValue.asInstanceOf[Int]
       val ct = if (ov < nv) ChangeType.INCREASE else ChangeType.DECREASE
       val change = ChangeValueInt(n, nv, ov, ct)
-      sendThings(change)
+      //    sendThings(change)
 
     }
   }
 
   def producer: Producer[ChangeValueInt] = client.producer[ChangeValueInt](ProducerConfig(topic))
-  private def sendThings(change: ChangeValueInt): Unit = {
-    val t = producer.sendAsync(change)
-    val f = t.runToFuture.onComplete { fx =>
-      fx match {
-        case Success(x) => info(s"Message with ID ${x.entryId} successfully sent")
-        case Failure(e) => error(s"Message failed Error ${e.getMessage}", e)
-      }
-      producer.close()
-    }
-  }
-
-  override protected val currentValue: Ref[Int] = Ref(0)
-  override protected val prevValue: Ref[Int] = Ref(0)
-
-  override def update(newValue: Int): Unit = {
-    atomic { implicit txn =>
-      // Only set / notify on actual change of values
-      if (currentValue() != newValue) {
-        prevValue() = currentValue()
-        currentValue() = newValue
-      }
-    }
-    valueNotification.firePropertyChange(
-      changeValueKey,
-      prevValue.single.get,
-      currentValue.single.get)
-  }
 
   lazy val inboundTopic: String = s"${name}-changes"
   lazy val inboundSubscription: String = s"${name}-change-handler"
   def readStuff(): Unit = {
-    val consumer = client.consumer(
+    val consumer = client.consumer[ChangeValueInt](
       ConsumerConfig(topics = Seq(topic), subscriptionName = Subscription(inboundSubscription)))
     consumer.seekEarliest()
     val t = consumer.receiveAsync
-    t.runToFuture.onComplete { fx =>
-      fx match {
-        case Success(x) => info(s"Message with ID ${x.messageId} successfully sent")
-        case Failure(e) => error(s"Error", e)
-      }
-
+    t.runToFuture.onComplete {
+      case Success(x) => logger.info(s"Message with ID ${x.messageId} successfully received")
+      case Failure(e) => logger.error(s"Error", e)
     }
   }
 }

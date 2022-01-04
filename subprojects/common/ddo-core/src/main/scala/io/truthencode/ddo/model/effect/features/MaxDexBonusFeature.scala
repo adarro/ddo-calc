@@ -81,7 +81,8 @@ trait MaxDexBonusFeature extends Features {
         id = "HitChance",
         description = "Increases your Max Dexterity Bonus",
         triggersOn = triggerOn.map(_.entryName),
-        triggersOff = triggerOff.map(_.entryName)
+        triggersOff = triggerOff.map(_.entryName),
+        bonusType = mdbBonusType.entryName
       )
       override val source: SourceInfo = src
       override lazy val value: Int = mdbAmount

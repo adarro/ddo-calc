@@ -19,9 +19,10 @@ package io.truthencode.ddo.subscription
 
 import com.sksamuel.pulsar4s.monixs.MonixAsyncHandler
 import com.sksamuel.pulsar4s.{Producer, ProducerConfig, PulsarAsyncClient, Topic}
+import io.truthencode.ddo.model.protocol.{ChangeType, ChangeValueInt}
 import org.apache.pulsar.client.api.Schema
-import wvlet.log.LogSupport
 
+import java.beans.{PropertyChangeEvent, PropertyChangeListener}
 import javax.annotation.{PostConstruct, PreDestroy}
 import scala.util.{Failure, Success}
 
@@ -32,32 +33,45 @@ import scala.util.{Failure, Success}
  *   Name / ID of Ability
  */
 case class HealthProvider(name: String, override val client: PulsarAsyncClient, topic: Topic)
-  extends PulsarEnabled with LogSupport {
+  extends PulsarEnabled with AtomicIntChangeSupport {
   import MonixAsyncHandler._
   import monix.execution.Scheduler.Implicits.global
 
-  implicit val schema: Schema[String] = Schema.STRING
-  def readCurrentValue: () => Int = { () => 0 }
+  implicit val schema: Schema[ChangeValueInt] = Schema.AVRO(classOf[ChangeValueInt])
 
   @PostConstruct
   def startUp(): Unit = {
-    info(s"Started up Health Provider $name")
-    sendThings()
+    logger.info(s"Started up Health Provider $name")
+    addPropertyChangeListener(listener = valueChangeListener)
+
   }
 
   @PreDestroy
   def shutDown(): Unit = {
+    logger.info(s"Shutting down health provider $name")
     client.close()
   }
 
-  def producer: Producer[String] = client.producer(ProducerConfig(topic))
+  private lazy val valueChangeListener = new PropertyChangeListener {
+    override def propertyChange(evt: PropertyChangeEvent): Unit = {
+      val n = evt.getPropertyName
+      val ov = evt.getOldValue.asInstanceOf[Int]
+      val nv = evt.getNewValue.asInstanceOf[Int]
+      val ct = if (ov < nv) ChangeType.INCREASE else ChangeType.DECREASE
+      val change = ChangeValueInt(n, nv, ov, ct)
+      changeNotify(change)
 
-  def sendThings(): Unit = {
-    val t = producer.sendAsync(s"Ability $name wibble!")
-    t.runToFuture.onComplete { fx =>
+    }
+  }
+
+  def producer: Producer[ChangeValueInt] = client.producer(ProducerConfig(topic))
+
+  private def changeNotify(change: ChangeValueInt): Unit = {
+    val t = producer.sendAsync(change)
+    val f: Unit = t.runToFuture.onComplete { fx =>
       fx match {
-        case Success(x) => info(s"Message with ID ${x.entryId} successfully sent")
-        case Failure(e) => error(s"Error", e)
+        case Success(x) => logger.info(s"$name Message with ID ${x.entryId} successfully sent")
+        case Failure(e) => logger.error(s"Message failed Error ${e.getMessage}", e)
       }
       producer.close()
     }

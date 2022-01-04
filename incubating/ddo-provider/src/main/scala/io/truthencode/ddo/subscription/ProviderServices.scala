@@ -19,10 +19,12 @@ package io.truthencode.ddo.subscription
 
 import com.sksamuel.pulsar4s.{PulsarAsyncClient, PulsarClient, PulsarClientConfig, Topic}
 import io.truthencode.ddo.subscription.config.CamelConfig
-import io.truthencode.ddo.subscription.http.AdminWeb
+import io.truthencode.ddo.subscription.http.{AdminWeb, SessionRouter}
 import io.truthencode.ddo.subscription.service.StatusService
 import wvlet.airframe.config._
-import wvlet.airframe.{DesignWithContext, newDesign}
+import wvlet.airframe.http.Router
+import wvlet.airframe.http.finagle.FinagleServerConfig
+import wvlet.airframe.{newDesign, DesignWithContext}
 import wvlet.log.LogSupport
 
 object ProviderServices extends App with LogSupport {
@@ -65,10 +67,13 @@ object ProviderServices extends App with LogSupport {
     newDesign
 
   val cfgDesign = coreDesign
+    .bind[SessionRouter]
+    .toSingleton
     .withConfigPaths(Seq("config"))
     .withConfigEnv(env = "development", defaultEnv = "default")
     .bindConfigFromYaml[CamelConfig]("camel.yaml")
     .bindConfigFromYaml[MqServerConfig]("mqserver.yaml")
+    .bindConfigFromYaml[FinagleServerConfig]("finagle-server.yaml")
     .bind[PulsarAsyncClient]
     .toProvider { mq: MqServerConfig => PulsarClient(mq.pulsarClientConfig) }
 
@@ -116,14 +121,18 @@ object ProviderServices extends App with LogSupport {
       SkillProvider("MoveSilently", dp, pc, t)
     }
     .bind[HealthProvider]
-    .toProvider { (pc: PulsarAsyncClient, t: Topic) => HealthProvider("Hitpoints", pc, t) }
+    .toProvider { (pc: PulsarAsyncClient) =>
+      val healthTopicName = genAttrPrefix("hitPoints")
+      val t = Topic(healthTopicName)
+      HealthProvider("Hitpoints", pc, t)
+    }
     .bind[CamelRouting]
     .toSingleton
     .bind[AdminWeb]
     .toSingleton
     .bind[CamelPulsarPush]
-    .toProvider { (cr: CamelRouting, mq: MqServerConfig, msp: MoveSilentlyProvider, aw: AdminWeb) =>
-      CamelPulsarPush(cr.context, msp, mq.serviceUrl, aw)
+    .toProvider { (cr: CamelRouting, mq: MqServerConfig, msp: MoveSilentlyProvider) =>
+      CamelPulsarPush(cr.context, msp, mq.serviceUrl)
     }
 
   //      .bind[SkillProvider]
@@ -134,22 +143,57 @@ object ProviderServices extends App with LogSupport {
   val testDesign =
     attrDesign.bind[Env].toInstance("test")
   val productionDesign =
-    coreDesign
+    attrDesign
       .bind[Env]
       .toInstance("production")
       .withProductionMode
 
-
-
-  def runWithSession[T](design:DesignWithContext[T]): Unit = {
+  def runWithSession[T](design: DesignWithContext[T]): Unit = {
     design.withSession { session =>
-        info("Starting Daemon")
-        val app = session.build[CamelPulsarPush]
-        info("returned from starting daemon")
+      info(s"Starting Session: ${session.name}")
+      val app = session.build[FinagleServerConfig]
+      val router = Router.add[SessionRouter]
+      //   info(s"router before ${app.router.isEmpty}")
+//      val route = SessionRouter(session)
+      app.withRouter(router).start { s =>
+        s.waitServerTermination
+      }
+      info("returned from starting daemon")
     }
   }
 
-    runWithSession(attrDesign)
+  def runWithBuild[T](design: DesignWithContext[T]): Unit = {
+    design.build[FinagleServerConfig] { app =>
+      info(s"router before ${app.router.isEmpty}")
+      val router = Router.add[SessionRouter]
+      app.withRouter(router).start { s =>
+        s.waitServerTermination
+      }
+      info("returned from starting daemon")
+    }
+
+  }
+  attrDesign.build[FinagleServerConfig] { app =>
+    info(s"router before ${app.router.isEmpty}")
+    val router = Router.add[SessionRouter]
+    app.withRouter(router).start { s =>
+      s.waitServerTermination
+      info("inside start but after termination")
+    }
+    info("returned from starting daemon")
+  }
+//    runWithSession(testDesign)
+//  runWithBuild(testDesign)
+
+//  testDesign.build[FinagleServerConfig] { server =>
+////    val router = Router.add[MyApi]
+////    server.withRouter(router)
+//    server.start { s =>
+//      s.waitServerTermination
+//    }
+//  }
+
+//  runWithSession(attrDesign)
 //  attrDesign.build[CamelPulsarPush] { c =>
 //    info("Starting Daemon")
 //    c.startDaemon()

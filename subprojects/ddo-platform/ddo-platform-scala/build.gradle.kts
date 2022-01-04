@@ -63,6 +63,8 @@ dependencies {
         api("org.mockito:mockito-core:$mockitoVersion")
         api("com.wix:accord-core_${scalaMajorVersion}:${accordVersion}")
         api("com.wix:accord-scalatest_${scalaMajorVersion}:$accordVersion")
+        // JUnit
+
         api("org.junit.jupiter:junit-jupiter:$junitPlatformVersion")
         // A library providing a DSL for loading and extracting content from HTML pages.
         api("net.ruippeixotog:scala-scraper_$scalaMajorVersion:$scalaScraperVersion")

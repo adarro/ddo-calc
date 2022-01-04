@@ -34,6 +34,10 @@ dependencies {
         implementation(group = "com.beachape", name = "enumeratum_$scalaMajorVersion")
         implementation(group = "com.typesafe", name = "config")
         implementation(group = "com.github.kxbmap", name = "configs_$scalaMajorVersion")
+
+        // database
+
+
         // validation and rules
         implementation(group = "com.wix", name = "accord-core_$scalaMajorVersion")
         implementation(group = "ch.qos.logback", name = "logback-classic")

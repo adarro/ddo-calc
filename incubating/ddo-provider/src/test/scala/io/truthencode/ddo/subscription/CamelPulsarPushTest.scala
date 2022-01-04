@@ -18,24 +18,38 @@
 package io.truthencode.ddo.subscription
 
 import com.sksamuel.pulsar4s.{PulsarClient => SClient, PulsarClientConfig, Topic}
+import io.truthencode.ddo.test.tags.IntegrationTest
 import org.apache.camel.component.pulsar.{PulsarComponent, PulsarComponentConfigurer}
 import org.apache.camel.impl.DefaultCamelContext
 import org.apache.camel.{CamelExecutionException, ExchangePattern}
 import org.apache.pulsar.client.api.PulsarClient
+import org.scalatest.BeforeAndAfterAll
 import org.scalatest.funspec.AnyFunSpec
 import org.scalatest.matchers.should.Matchers
 import wvlet.log.LogSupport
 
-class CamelPulsarPushTest extends AnyFunSpec with Matchers with LogSupport {
+import scala.language.postfixOps
+
+class CamelPulsarPushTest extends AnyFunSpec with Matchers with LogSupport with BeforeAndAfterAll {
+
+  override protected def beforeAll(): Unit = {
+    TestContainers.pulsarTestContainer.start()
+
+  }
+
+  override protected def afterAll(): Unit = {
+    TestContainers.pulsarTestContainer.stop()
+  }
 
   val attr = "Dexterity"
   val topicId = genAttrPrefix(attr)
   val topic = Topic(topicId)
   val rString = "pulsar:" + genAttrPrefix(attr)
-  val serviceUrl = "pulsar://localhost:6650"
+  lazy val serviceUrl = TestContainers.pulsarServiceUrl
+//  lazy val serviceUrl = "pulsar://localhost:6650"
   describe("Pulsar") {
 
-    it("should Receive from Camel") {
+    it("should Receive from Camel", IntegrationTest) {
 
       val context = new DefaultCamelContext
       val n = new PulsarComponent(context)
@@ -62,12 +76,14 @@ class CamelPulsarPushTest extends AnyFunSpec with Matchers with LogSupport {
       }
       context.stop()
     }
-    ignore("Should receive from Pulsar Client (Monix)") {
+
+    it("Should receive from Pulsar Client (Monix)", IntegrationTest) {
       val client = SClient(PulsarClientConfig(serviceUrl))
       val dexProvider = AbilityProvider(attr, client, topic)
       val sneakProvider = SkillProvider("Sneak", dexProvider, client, topic)
       sneakProvider.subscribe()
       dexProvider.update(42)
+      dexProvider.readCurrentValue shouldEqual 42
     }
   }
 }

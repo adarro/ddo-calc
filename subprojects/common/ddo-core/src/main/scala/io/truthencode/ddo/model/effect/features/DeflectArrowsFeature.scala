@@ -81,7 +81,8 @@ trait DeflectArrowsFeature extends Features {
         id = "DeflectArrows",
         description = "Automatically Deflect some incoming missiles",
         triggersOn = triggerOn.map(_.entryName),
-        triggersOff = triggerOff.map(_.entryName)
+        triggersOff = triggerOff.map(_.entryName),
+        bonusType = deflectArrowsBonusType.entryName
       )
       override val source: SourceInfo = src
       override lazy val value: Int = secondsPerArrow

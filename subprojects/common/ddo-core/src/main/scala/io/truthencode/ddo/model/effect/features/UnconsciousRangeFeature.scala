@@ -82,7 +82,8 @@ trait UnconsciousRangeFeature extends Features {
         id = "UnconsciousRange",
         description = "Increases the amount below 0 hitpoints you can fall before dying",
         triggersOn = triggerOn.map(_.entryName),
-        triggersOff = triggerOff.map(_.entryName)
+        triggersOff = triggerOff.map(_.entryName),
+        bonusType = autoRecoveryBonus.entryName
       )
       override val source: SourceInfo = src
       override lazy val value: Int = unconsciousRange

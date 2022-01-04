@@ -26,8 +26,7 @@ import javax.annotation.PostConstruct
 case class CamelPulsarPush(
   context: CamelContext,
   skillProvider: SkillProvider,
-  serviceUrl: String,
-  adminWeb: AdminWeb)
+  serviceUrl: String)
   extends LogSupport {
   @PostConstruct
   def pushOnStart(): Unit = {
@@ -38,13 +37,13 @@ case class CamelPulsarPush(
     routeSomething()
   }
 
-  @PostConstruct
-  def startDaemon(): Unit = {
-    info("CP Staring Web Admin Daemon")
-    adminWeb.startServer()
-    info("leaving CPP startDaemon")
-
-  }
+//  @PostConstruct
+//  def startDaemon(): Unit = {
+//    info("CP Staring Web Admin Daemon")
+//    adminWeb.startServer()
+//    info("leaving CPP startDaemon")
+//
+//  }
 
   def routeSomething(): Unit = {
     for (i <- 0 until 10) {

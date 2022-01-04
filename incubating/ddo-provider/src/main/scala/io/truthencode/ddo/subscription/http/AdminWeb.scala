@@ -17,21 +17,28 @@
  */
 package io.truthencode.ddo.subscription.http
 import io.truthencode.ddo.subscription.service.StatusService
+import wvlet.airframe.{Session, newDesign}
 import wvlet.airframe.http.Router
 import wvlet.airframe.http.finagle._
 import wvlet.log.LogSupport
 
-case class AdminWeb(port: Int = defaultHttpAdminPort) extends LogSupport {
+case class AdminWeb(port: Int = defaultHttpAdminPort, session: Session) extends LogSupport {
 
   // Define API routes. This will read all @Endpoint annotations in MyApi
   // You can add more routes by using `.add[X]` method.
-  val router = Router.add[MyApi]
-  lazy val fServer = Finagle.server
-    .withPort(port)
-    .withRouter(router)
+
+
   val adminHttpServerId = "adminHttp"
   def startServer(): Unit = {
     info(s"Starting Admin server on port $port")
+      val router = Router.add[AdminApi]
+      lazy val fServer = Finagle.server
+          .withPort(port)
+          .withRouter(router)
+//    newFinagleServerDesign()
+//    val childDesign = newDesign
+//        .bind[MyApi].toSingleton
+
     fServer.start { server =>
       // Finagle http server will start here
       // To keep running the server, run `server.waitServerTermination`:

@@ -80,7 +80,8 @@ trait RangePowerFeature extends Features {
         id = "HitChance",
         description = "Increases your chance to Hit",
         triggersOn = triggerOn.map(_.entryName),
-        triggersOff = triggerOff.map(_.entryName)
+        triggersOff = triggerOff.map(_.entryName),
+        bonusType = rangePowerBonusType.entryName
       )
       override val source: SourceInfo = src
       override lazy val value: Int = rangePowerBonusAmount

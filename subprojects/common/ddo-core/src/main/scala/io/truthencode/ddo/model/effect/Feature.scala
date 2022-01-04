@@ -18,7 +18,7 @@
 package io.truthencode.ddo.model.effect
 
 import enumeratum.EnumEntry
-import io.truthencode.ddo.api.model.effect.{BasicEffectInfo, DetailedEffect}
+import io.truthencode.ddo.api.model.effect.{BasicEffectInfo, DetailedEffect, FullEffect}
 import io.truthencode.ddo.enhancement.BonusType
 import io.truthencode.ddo.model.attribute.{Attribute, UsingAttributeSearchPrefix}
 import io.truthencode.ddo.model.feats.Feat
@@ -64,6 +64,27 @@ trait DynamicFeature[V] extends Feature[V] {
 
 object Feature {
 
+  implicit class EffectOps(source: Feature[_]) {
+    def asFullEffect: FullEffect = {
+      val ed = source.effectDetail
+      val iValOpt = source.value match {
+        case x: Int => Some(x)
+        case _ => None
+      }
+      FullEffect(
+        ed.id,
+        source.effectText.getOrElse(ed.description),
+        ed.triggersOn,
+        ed.triggersOff,
+        source.name,
+        source.generalDescription,
+        source.categories,
+        ed.bonusType,
+        iValOpt
+      )
+    }
+  }
+
   def printFeature(f: Feature[_]): String = {
     val categoryInfo = f.categories.mkString(",")
     s"\nFeature:\nName:\t${f.name} \nCategories:$categoryInfo\nvalue:\t${f.value}\nsource:\t${f.source}\nid:\t\t${f.source.sourceId}\ntext:\t${f.effectText
@@ -95,7 +116,7 @@ object Feature {
      * of a specific implementation such as the Dodge Feat or Uncanny Dodge
      */
     override val generalDescription: String = "Increases your chance to make a critical hit"
-    lazy val p = EffectParameterBuilder()
+    private lazy val p = EffectParameterBuilder()
       .toggleOffValue(tO: _*)
       .toggleOnValue(tN: _*)
       .addBonusType(bonusType)

@@ -55,12 +55,15 @@ val hazelcastVersion: String by project
 val junitScalaTestVersion: String by project
 val junitPlatformVersion: String by project
 val junitLauncherVersion: String by project
+val verticesVersion:String by project
 val monixVersion: String by project
 
 dependencies {
     implementation(platform(project(":ddo-platform-scala")))
+    testImplementation(project(":ddo-testing-util"))
     implementation(group = "io.monix", name = "monix-eval_$scalaMajorVersion", version = monixVersion)
     implementation(group = "io.monix", name = "monix-execution_$scalaMajorVersion", version = monixVersion)
+    implementation(group = "io.monix", name = "monix-reactive_$scalaMajorVersion", version = monixVersion)
     implementation("com.hazelcast:hazelcast:$hazelcastVersion")
     implementation("org.scala-lang:scala-library:$scalaLibraryVersion")
     implementation("org.scala-lang:scala-reflect:$scalaLibraryVersion")
@@ -82,13 +85,11 @@ dependencies {
     implementation("io.vertx:vertx-core:$vertxVersion")
     implementation("io.vertx:vertx-web:$vertxVersion")
     implementation("io.vertx:vertx-mongo-client:$vertxVersion")
-    implementation("io.vertx:vertx-zookeeper:$vertxVersion")
-    // implementation("io.vertx:vertx-mongo-embedded-db:$vertxVersion")
-//    implementation("io.vertx:vertx-hazelcast:$vertxVersion") {
-//        exclude(group="com.hazelcast", module = "hazelcast")
-//    }
+    implementation("io.vertx:vertx-ignite:$vertxVersion")
+
+    implementation(group="io.github.davidgregory084", name="vertices-core_$scalaMajorVersion",version = verticesVersion)
+
     implementation("io.vertx:vertx-codegen:$vertxVersion")
-    // implementation("io.vertx:vertx-lang-js:$vertxVersion")
     implementation("io.vertx:vertx-auth-shiro:$vertxVersion")
     implementation("org.apache.shiro:shiro-core:1.8.0")
     implementation("org.apache.camel:camel-core:$camelVersion")
@@ -96,12 +97,21 @@ dependencies {
     implementation("org.apache.camel:camel-vertx:$camelVersion")
     implementation("org.apache.camel:camel-pulsar:$camelVersion")
     implementation("org.apache.camel:camel-main:$camelVersion")
+    testImplementation("org.apache.camel:camel-test-junit5:$camelVersion")
+    testImplementation("org.apache.camel:camel-testcontainers-junit5:$camelVersion")
+
+    testImplementation("org.testcontainers:mongodb:1.16.2")
+    testImplementation("org.testcontainers:junit-jupiter:1.16.2")
+
+
     /* swapping to Zookeeper over hazelcast due to Java 9+ issues + Pulsar is using Zookeeper
     So we can attempt to save a bit of overhead
      */
 //    implementation("org.apache.camel:camel-hazelcast:$camelVersion") {
 //        exclude(group="com.hazelcast", module = "hazelcast")
 //    }
+    implementation(group = "io.monix", name = "monix-eval_$scalaMajorVersion", version = monixVersion)
+
     implementation("org.javassist:javassist:3.20.0-GA")
     // testImplementation("org.scalatra.scalate:scalate-test_$scalaMajorVersion:$scalateVersion")
     testImplementation("org.apache.httpcomponents:httpclient:4.5.13")
@@ -137,9 +147,6 @@ dependencies {
     // Embed web server for testing// https://mvnrepository.com/artifact/org.eclipse.jetty/jetty-server
     testImplementation("org.eclipse.jetty:jetty-server:11.0.7")
 
-    // testImplementation("io.vertx:vertx-unit:$vertxVersion")
-    // old mongo embed works with < 12.12 may need different provider
-    // testImplementation("com.github.simplyscala:scalatest-embedmongo_$scalaMajorVersion:0.2.4")
 }
 
 group = "io.truthencode"
@@ -157,7 +164,7 @@ publishing {
 tasks {
     withType(Test::class.java) {
         useJUnitPlatform {
-            includeEngines = setOf("scalatest", "junit-jupyter")
+            includeEngines = setOf("scalatest", "junit-jupiter")
             testLogging {
                 events("passed", "skipped", "failed")
             }

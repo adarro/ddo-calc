@@ -70,21 +70,8 @@ public class EchoClient {
     }
 
     public static void main(String[] args) throws IOException {
-       // EchoClient client = EchoClient.start();
-        // create a BufferedReader using System.in
-        //    BufferedReader obj = new BufferedReader(new InputStreamReader(System.in));
-        String str = "";
-        // Create the console object
-//        Console cnsl
-//            = System.console();
-//
-//        if (cnsl == null) {
-//            System.out.println(
-//                "No console available");
-//            return;
-//        }
 
-        // Read line
+        String str = "";
 
         System.out.println("Enter lines of text.");
         System.out.println("Enter 'stop' to quit.");
@@ -94,11 +81,10 @@ public class EchoClient {
                 switch (str) {
                     case "stop":
                         System.out.println("Sending stop command");
-              //          client.sendMessage("WwiBblE");
+
                         break;
                     default:
                         System.out.println("Sending msg" + str);
-              //          client.sendMessage(str);
                         break;
 
                 }

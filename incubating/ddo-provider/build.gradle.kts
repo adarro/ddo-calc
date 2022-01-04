@@ -40,6 +40,8 @@ dependencies {
 
     implementation(platform(project(":ddo-platform-scala")))
     implementation(project(":ddo-modeling"))
+    testImplementation(project(":ddo-testing-util"))
+
     implementation(dependencyNotation = "org.scala-lang:scala-library:$scalaLibraryVersion")
     implementation(group = "com.beachape", name = "enumeratum_$scalaMajorVersion")
     implementation(group = "com.typesafe", name = "config")
@@ -55,8 +57,11 @@ dependencies {
     implementation("org.scala-stm:scala-stm_2.13:0.11.1")
 
     // Monix
+    // Monix-bio is new and isn't version aligned with others
+    val monixBioVersion = "1.2.0"
     implementation(group = "io.monix", name = "monix-eval_$scalaMajorVersion", version = monixVersion)
     implementation(group = "io.monix", name = "monix-execution_$scalaMajorVersion", version = monixVersion)
+    implementation(group = "io.monix", name = "monix-bio_$scalaMajorVersion", version = monixBioVersion)
 
     // MQ++ (Pulsar)
     implementation(group = "org.apache.pulsar", name = "pulsar-client-all", version = pulsarVersion)
@@ -78,6 +83,11 @@ dependencies {
         version = pulsar4sVersion
     )
 
+    testImplementation("org.testcontainers:pulsar:1.16.2")
+    testImplementation("org.apache.camel:camel-testcontainers-junit5:$camelVersion")
+
+    testImplementation("org.testcontainers:mongodb:1.16.2")
+    testImplementation("org.testcontainers:junit-jupiter:1.16.2")
 
     // validation and rules
     implementation(group = "com.wix", name = "accord-core_$scalaMajorVersion")
@@ -278,9 +288,17 @@ tasks.getAt("clean").dependsOn("cleanGeneratedScala")
 
 tasks {
     // Use the built-in JUnit support of Gradle.
+
     "test"(Test::class) {
         useJUnitPlatform {
             includeEngines = setOf("scalatest", "junit-jupiter")
+            if (ci.isCi)
+                excludeTags = setOf(
+                    "Integration",
+                    "io.truthencode.tags.Integration",
+                    "FunctionOnly",
+                    "io.truthencode.tags.FunctionOnly"
+                )
             testLogging {
                 events("passed", "skipped", "failed")
             }

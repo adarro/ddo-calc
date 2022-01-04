@@ -103,7 +103,7 @@ package object support extends LazyLogging {
       }
 
       /**
-       * Performs the traditional "Left Join" on a Map
+       * Performs the traditional "Right Join" on a Map
        * @param ys
        *   Map to Join
        * @param joinOnKeys
@@ -113,7 +113,7 @@ package object support extends LazyLogging {
        * @tparam Z
        *   Value
        * @return
-       *   Subset of source consisting of unique LHS + common LHS
+       *   Subset of source consisting of unique RHS + common RHS
        */
       def rightJoin[Y >: K, Z >: V](ys: Map[Y, Z])(implicit
         joinOnKeys: Boolean = true): Map[Y, Z] = {

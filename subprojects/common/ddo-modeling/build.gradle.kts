@@ -24,6 +24,11 @@ plugins {
 }
 
 dependencies {
+    /*
+    https://github.com/fthomas/refined
+    check out refined library for compile time constraints
+    unsure how  helpful this will be as most data will need runtime validation (aka wix)
+     */
     // Use Scala $scalaMajorVersion in our library project
     val scalaLibraryVersion: String by project
     val scalaMajorVersion: String by project
@@ -66,9 +71,10 @@ val generatedScalaSourceDir = "${project.projectDir}/src/main/avro"
  * @constructor a new instance
  */
 data class ApiSpec(
-        val spec: String,
-        val schemaDir: String,
-        val generatedSrcDir: String)
+    val spec: String,
+    val schemaDir: String,
+    val generatedSrcDir: String
+)
 
 /**
  * Package spec holds the basic header information for the API
@@ -81,10 +87,10 @@ data class ApiSpec(
  */
 @Suppress("CUSTOM_GETTERS_SETTERS", "NO_CORRESPONDING_PROPERTY")
 data class PackageSpec(
-        val basePackage: String = "io.truthencode.ddo",
-        val apiPackage: String = "api",
-        val invokerPackage: String = "invoker",
-        val modelPackage: String = "models.model"
+    val basePackage: String = "io.truthencode.ddo",
+    val apiPackage: String = "api",
+    val invokerPackage: String = "invoker",
+    val modelPackage: String = "models.model"
 ) {
     /**
      * Api qualified api package name
@@ -116,7 +122,7 @@ val defaultApiSpec = ApiSpec(apiSpec, schemaDir, generatedScalaSourceDir)
 // val defaultPackageSpec =
 // PackageSpec("io.truthencode.ddo.api","io.truthencode.ddo.invoker","io.truthencode.ddo.models.model")
 val schemas =
-        mapOf("ddoModel" to defaultApiSpec, "parseHub" to defaultApiSpec.copy(spec = "$rootDir/specs/parsehub.yaml"))
+    mapOf("ddoModel" to defaultApiSpec, "parseHub" to defaultApiSpec.copy(spec = "$rootDir/specs/parsehub.yaml"))
 val specs = mapOf("parseHub" to PackageSpec(basePackage = "io.truthencode.ddo.etl.parsehub"))
 
 openApiValidate {
@@ -128,6 +134,10 @@ avrohugger {
         this.from(schemaDir)
     }
     this.destinationDirectory.set(File(generatedScalaSourceDir))
+    typeMapping {
+        protocolType = com.zlad.gradle.avrohugger.AvrohuggerExtension.ScalaADT
+        enumType = com.zlad.gradle.avrohugger.AvrohuggerExtension.ScalaCaseObjectEnum
+    }
 }
 val schemaList = listOf("parseHub")
 
@@ -195,7 +205,7 @@ tasks.create<Delete>("cleanGeneratedScala") {
     delete = setOf(generatedScalaSourceDir)
 }
 
-tasks.getAt("clean").dependsOn("cleanAvroSchema", "cleanGeneratedScala")
+tasks.getAt("clean").dependsOn("cleanGeneratedScala")
 
 tasks {
     // Use the built-in JUnit support of Gradle.

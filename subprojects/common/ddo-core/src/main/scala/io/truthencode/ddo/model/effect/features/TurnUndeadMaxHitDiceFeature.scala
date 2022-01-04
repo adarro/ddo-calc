@@ -78,7 +78,8 @@ trait TurnUndeadMaxHitDiceFeature extends Features {
         id = "TurnUndeadMaxHitDice",
         description = "Increases the maximum hit dice of undead you can turn",
         triggersOn = triggerOn.map(_.entryName),
-        triggersOff = triggerOff.map(_.entryName)
+        triggersOff = triggerOff.map(_.entryName),
+        bonusType = maxHitDiceBonusType.entryName
       )
       override val source: SourceInfo = src
       override lazy val value: Int = maxHitDiceBonusAmount

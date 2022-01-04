@@ -19,13 +19,11 @@ package io.truthencode.ddo.support
 
 import io.truthencode.ddo.support.TraverseOps.MapOps
 
-import scala.language.higherKinds
-
 trait JoinAbleMap[X, Y, C <: Map[X, Y]] extends JoinAbleBase[(X, Y), C] {
   implicit val joinOnKeys: Boolean // = false
-  val someBool = implicitly[Boolean] // : Boolean = false
+  private val someBool = implicitly[Boolean] // : Boolean = false
   val source: Map[X, Y] // = Map[X, Y]()
-  val list = source.take(sampleSize)
+  private val list = source.take(sampleSize)
   val listA: Map[X, Y] = list.take(portion)
   val listB: Map[X, Y] = list.takeRight(portion)
   val onlyB: Map[X, Y] = list.takeRight(remainder)

@@ -72,7 +72,8 @@ trait HitChanceAmountFeature extends Features {
         id = "HitChance",
         description = "Increase Hit Chance",
         triggersOn = triggerOn.map(_.entryName),
-        triggersOff = triggerOff.map(_.entryName)
+        triggersOff = triggerOff.map(_.entryName),
+        bonusType = hitChanceBonusType.entryName
       )
       override val source: SourceInfo = src
       override lazy val value: Int = hitChanceBonusAmount

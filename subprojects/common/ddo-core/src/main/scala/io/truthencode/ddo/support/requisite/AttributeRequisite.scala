@@ -18,6 +18,7 @@
 package io.truthencode.ddo.support.requisite
 
 import io.truthencode.ddo.model.attribute.Attribute
+import io.truthencode.ddo.support.requisite.Requirement.GroupedRequirement
 import io.truthencode.ddo.support.requisite.RequirementImplicits.AttributeImplicits
 
 /**
@@ -25,6 +26,9 @@ import io.truthencode.ddo.support.requisite.RequirementImplicits.AttributeImplic
  */
 sealed trait AttributeRequisite {
   self: Requisite =>
+  def gkAllAttributes: String
+  def gkAnyAttributes: String
+//  def gkNoneAttributes: String
   def allOfAttributes: Seq[(Attribute, Int)]
   def anyOfAttributes: Seq[(Attribute, Int)]
   def noneOfAttributes: Seq[(Attribute, Int)]
@@ -33,6 +37,8 @@ sealed trait AttributeRequisite {
 trait AttributeRequisiteImpl extends MustContainImpl[Requirement] with AttributeRequisite {
   self: Requisite with RequisiteType =>
   def anyOfAttributes: Seq[(Attribute, Int)] = Nil
+  override def gkAllAttributes: String = defaultGroupKey
+  override def gkAnyAttributes: String = defaultGroupKey
 
   def allOfAttributes: Seq[(Attribute, Int)] = Nil
 
@@ -46,15 +52,14 @@ trait RequiresAnyOfAttribute
   extends AttributeRequisite with RequiresOneOf[Requirement] with Requisite {
 
   abstract override def oneOf: Seq[Requirement] = super.oneOf ++ {
-    allOfAttributes.map(_.toReq)
+    allOfAttributes.map(_.toReq).map(GroupedRequirement(_, gkAnyAttributes, RequisiteType.Require))
   }
 
 }
 
 trait RequiresAllOfAttribute
   extends AttributeRequisite with RequiresAllOf[Requirement] with Requisite {
-
   abstract override def allOf: Seq[Requirement] = super.allOf ++ {
-    allOfAttributes.map(_.toReq)
+    allOfAttributes.map(_.toReq).map(GroupedRequirement(_, gkAllAttributes, RequisiteType.Require))
   }
 }

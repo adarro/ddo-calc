@@ -82,7 +82,8 @@ trait SpellPointPercentFeature extends Features {
         id = "SpellPoints",
         description = "Increases your total spell points",
         triggersOn = triggerOn.map(_.entryName),
-        triggersOff = triggerOff.map(_.entryName)
+        triggersOff = triggerOff.map(_.entryName),
+        bonusType = spellPointBonusType.entryName
       )
       override val source: SourceInfo = src
       override lazy val value: Int = spellPointBonusPercent

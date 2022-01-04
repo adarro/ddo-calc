@@ -36,7 +36,8 @@ import scala.collection.immutable.IndexedSeq
 /**
  * Base trait used to enumerate qualifications.
  */
-sealed trait Requirement extends EnumEntry with DisplayName with Prefix {
+sealed trait Requirement
+  extends EnumEntry with DisplayName with Prefix with DefaultRequirementSort {
   override def entryName: String = displaySource
 }
 
@@ -45,6 +46,27 @@ sealed trait Requirement extends EnumEntry with DisplayName with Prefix {
  * an item etc.
  */
 object Requirement extends Enum[Requirement] {
+  case class GroupedRequirement[T <: Requirement](t: T, key: String, reqType: RequisiteType)
+    extends Requirement {
+      override def alphaSortKey: String = key
+
+      /**
+     * Sets or maps the source text for the DisplayName.
+     *
+     * @return
+     *   Source text.
+     */
+    override protected def nameSource: String = t.displaySource
+
+    /**
+     * Optional Prefix, used to separate sub-items such as Spell Critical Schools and also to
+     * disambiguate certain entities such as Feat: precision.
+     *
+     * @return
+     *   The optional prefix.
+     */
+    override def prefix: Option[String] = t.prefix
+  }
   def values: IndexedSeq[Requirement] =
     findValues ++ races ++ classes ++ alignments ++ skills
 
@@ -79,13 +101,17 @@ object Requirement extends Enum[Requirement] {
    * @example
    *   ReqRace("Drow",6) would represent a level 6 or greater player of the Drow race.
    */
-  case class ReqRace(id: String, level: Int) extends Requirement {
+  case class ReqRace(id: String, level: Int) extends Requirement with NumberRequirementSort {
     override def prefix: Option[String] = Some(Race.searchPrefixSource)
 
     /**
      * @inheritdoc
      */
     override protected def nameSource: String = id.splitByCase.toPascalCase
+
+    override def numericalSortKey: Int = level
+
+    override def alphaSortKey: String = id
   }
 
   /**
@@ -111,6 +137,8 @@ object Requirement extends Enum[Requirement] {
      */
     override protected def nameSource: String =
       tree.entryName.splitByCase.toPascalCase
+
+    override def alphaSortKey: String = tree.pointType.displayText
   }
 
   /**
@@ -124,6 +152,8 @@ object Requirement extends Enum[Requirement] {
    */
   case class ReqPointsSpent(points: SpendablePoints, amount: Int) extends Requirement {
     override def prefix: Option[String] = Some(points.entryName)
+
+    override def alphaSortKey: String = nameSource
 
     /**
      * Sets or maps the source text for the DisplayName.
@@ -145,13 +175,20 @@ object Requirement extends Enum[Requirement] {
   case class ReqActionPointsInTree(id: String, amount: Int) extends Requirement {
     override def prefix: Option[String] = Some("ActionPointsSpentInTree")
 
+    override def alphaSortKey: String = nameSource
+
     /**
      * @inheritdoc
      */
     override protected def nameSource: String = id.splitByCase.toPascalCase
   }
 
-  case class ReqBaseAttackBonus(amount: Int) extends Requirement with Abbreviation {
+  case class ReqBaseAttackBonus(amount: Int)
+    extends Requirement with Abbreviation with NumberRequirementSort {
+
+    override def alphaSortKey: String = abbr
+
+    override def numericalSortKey: Int = amount
 
     /**
      * The short form of the word
@@ -169,6 +206,8 @@ object Requirement extends Enum[Requirement] {
      * @inheritdoc
      */
     override protected def nameSource: String = abbr.splitByCase.toPascalCase
+
+    override def displayText: String = s"Base Attack Bonus: $amount"
   }
 
   /**
@@ -179,7 +218,7 @@ object Requirement extends Enum[Requirement] {
    * @param level
    *   the minimum level for a class.
    */
-  case class ReqClass(id: String, level: Int) extends Requirement {
+  case class ReqClass(id: String, level: Int) extends Requirement with NumberRequirementSort {
     override def prefix: Option[String] =
       Some(HeroicCharacterClass.searchPrefixSource)
 
@@ -187,6 +226,12 @@ object Requirement extends Enum[Requirement] {
      * @inheritdoc
      */
     override protected def nameSource: String = id.splitByCase.toPascalCase
+
+    override def displayText: String = s"$id: $level"
+
+    override def numericalSortKey: Int = level
+
+    override def alphaSortKey: String = id
   }
 
   /**
@@ -197,13 +242,17 @@ object Requirement extends Enum[Requirement] {
    * @param level
    *   the minimum amount of favor required
    */
-  case class ReqFavorPatron(id: String, level: Int) extends Requirement {
+  case class ReqFavorPatron(id: String, level: Int) extends Requirement with NumberRequirementSort {
     override def prefix: Option[String] = Some(FavorPatron.searchPrefixSource)
 
     /**
      * @inheritdoc
      */
     override protected def nameSource: String = id.splitByCase.toPascalCase
+
+    override def numericalSortKey: Int = level
+
+    override def alphaSortKey: String = id
   }
 
   /**
@@ -216,6 +265,8 @@ object Requirement extends Enum[Requirement] {
   case class ReqEnhancement(id: String) extends Requirement {
     override def prefix: Option[String] = Some("Enhancement")
 
+    override def alphaSortKey: String = id
+
     /**
      * @inheritdoc
      */
@@ -224,6 +275,8 @@ object Requirement extends Enum[Requirement] {
 
   case class ReqClassEnhancement(id: String) extends Requirement {
     override def prefix: Option[String] = Some("ClassEnhancement")
+
+    override def alphaSortKey: String = id
 
     /**
      * Sets or maps the source text for the DisplayName.
@@ -244,6 +297,8 @@ object Requirement extends Enum[Requirement] {
    *   either a fully qualified Alignment (i.e. ChaoticGood) or one of the axis, i.e. Lawful or Evil
    */
   case class ReqAlignment(id: Either[AlignmentType, Alignments]) extends Requirement {
+
+    override def alphaSortKey: String = nameSource
 
     /**
      * Prefixes the value with "Align" keyword.
@@ -276,7 +331,11 @@ object Requirement extends Enum[Requirement] {
    * @note
    *   These items are generally out of game.
    */
-  case class ReqGuildLevel(id: Int) extends Requirement {
+  case class ReqGuildLevel(id: Int) extends Requirement with NumberRequirementSort {
+    override def numericalSortKey: Int = id
+
+    override def alphaSortKey: String = nameSource
+
     override def prefix: Option[String] = None
 
     /**
@@ -298,13 +357,23 @@ object Requirement extends Enum[Requirement] {
    *   the total effective skill must be this level.
    * i.e. can include bonuses from items / ability scores etc.
    */
-  case class ReqSkill(id: String, amount: Int, trained: Boolean = false) extends Requirement {
+  case class ReqSkill(id: String, amount: Int, trained: Boolean = false)
+    extends Requirement with NumberRequirementSort {
     override def prefix: Option[String] = Some(Skill.searchPrefixSource)
+
+    override def alphaSortKey: String = id
+
+    override def displayText: String = {
+      val pf = if (trained) s"(Trained) " else ""
+      s"${pf}Ranks in $id: $amount"
+    }
 
     /**
      * @inheritdoc
      */
     override protected def nameSource: String = id.splitByCase.toPascalCase
+
+    override def numericalSortKey: Int = amount
   }
 
   /**
@@ -314,13 +383,19 @@ object Requirement extends Enum[Requirement] {
    * @param characterLevel
    *   Minimum character level.
    */
-  case class ReqCharacterLevel(characterLevel: Int) extends Requirement {
+  case class ReqCharacterLevel(characterLevel: Int) extends Requirement with NumberRequirementSort {
+    override def numericalSortKey: Int = characterLevel
+
+    override def alphaSortKey: String = entryName
+
     override def prefix: Option[String] = None
 
     /**
      * @inheritdoc
      */
     override protected def nameSource: String = "CharacterLevel"
+
+    override def displayText: String = entryName + s": $characterLevel"
   }
 
   /**
@@ -332,10 +407,14 @@ object Requirement extends Enum[Requirement] {
   case class ReqFeat(id: String) extends Requirement {
     override def prefix: Option[String] = Some(Feat.searchPrefixSource)
 
+    override def alphaSortKey: String = id
+
     /**
      * @inheritdoc
      */
     override protected def nameSource: String = id.splitByCase.toPascalCase
+
+    override def displayText: String = Feat.withName(id).displayText
   }
 
   /**
@@ -346,17 +425,25 @@ object Requirement extends Enum[Requirement] {
    * @param level
    *   Minimum level of the given Attribute.
    */
-  case class ReqAttribute(id: String, level: Int) extends Requirement {
-    override def prefix: Option[String] = Some(Attribute.searchPrefixSource)
+  case class ReqAttribute(id: String, level: Int) extends Requirement with NumberRequirementSort {
+    override def numericalSortKey: Int = level
+
+    override def alphaSortKey: String = id
+
+    override def prefix: Option[String] = Option(Attribute.searchPrefixSource)
 
     /**
      * @inheritdoc
      */
     override protected def nameSource: String = id.splitByCase.toPascalCase
+
+    override def displayText: String = s"$id: $level"
   }
 
   case class ReqPointsInTree(treeLike: TreeLike, amount: Int) extends Requirement {
     val pointType: SpendablePoints = treeLike.pointType
+
+    override def alphaSortKey: String = treeLike.entryName
 
     override def prefix: Option[String] = Some(treeLike.searchPrefix)
 
@@ -371,6 +458,8 @@ object Requirement extends Enum[Requirement] {
 
   case class ReqPoints(id: String, amount: Int) extends Requirement {
     override def prefix: Option[String] = Some(SpendablePoints.searchPrefix)
+
+    override def alphaSortKey: String = id
 
     /**
      * Sets or maps the source text for the DisplayName.

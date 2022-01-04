@@ -71,7 +71,8 @@ trait CriticalDamageAmountFeature extends Features {
         id = "ArmorClass",
         description = "Adds damage to critical hits",
         triggersOn = triggerOn.map(_.entryName),
-        triggersOff = triggerOff.map(_.entryName)
+        triggersOff = triggerOff.map(_.entryName),
+        bonusType = criticalDamageBonusType.entryName
       )
       override val source: SourceInfo = src
       override lazy val value: Int = criticalDamageBonusAmount

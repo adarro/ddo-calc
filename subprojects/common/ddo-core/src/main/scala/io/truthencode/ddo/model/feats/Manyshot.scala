@@ -25,8 +25,14 @@ import io.truthencode.ddo.model.classes.HeroicCharacterClass
 import io.truthencode.ddo.model.classes.HeroicCharacterClass.Ranger
 import io.truthencode.ddo.model.effect
 import io.truthencode.ddo.model.effect.TriggerEvent
-import io.truthencode.ddo.model.effect.features.{FeaturesImpl, GrantAbilityFeature}
+import io.truthencode.ddo.model.effect.features.{
+  DoubleShotFeature,
+  FeaturesImpl,
+  GrantAbilityFeature
+}
 import io.truthencode.ddo.model.misc.{PoolManyShot, SharedCoolDown}
+import io.truthencode.ddo.providers.SimpleValueProvider
+import io.truthencode.ddo.support.charges.{Chargeable, Rechargeable, TimedCharge}
 import io.truthencode.ddo.support.requisite._
 
 import java.time.Duration
@@ -51,19 +57,27 @@ import java.time.Duration
  *   add 20 second Active
  */
 protected[feats] trait Manyshot
-  extends FeatRequisiteImpl  with ClassRequisiteImpl with ActiveFeat with AtWillEvent with RequiresAllOfFeat
-  with AttributeRequisiteImpl with RequiresAllOfAttribute with RequiresBaB with GrantsToClass
-  with FighterBonusFeat with FeaturesImpl with GrantAbilityFeature with SharedCoolDown {
+  extends FeatRequisiteImpl with ClassRequisiteImpl with ActiveFeat with AtWillEvent
+  with RequiresAllOfFeat with AttributeRequisiteImpl with RequiresAllOfAttribute with RequiresBaB
+  with GrantsToClass with FighterBonusFeat with FeaturesImpl with GrantAbilityFeature
+  with DoubleShotFeature with SharedCoolDown with Chargeable {
   self: GeneralFeat =>
   override lazy val grantedAbility: ActiveAbilities = ActiveAbilities.Manyshot
+  override protected[this] val triggerOn: Seq[TriggerEvent] = Seq(TriggerEvent.AtWill)
+  override protected[this] val triggerOff: Seq[TriggerEvent] = Seq(TriggerEvent.OnCoolDown)
+
+  override def doubleShotEffectText: Option[String] = Some(
+    "You gain Doubleshot equal to 1.5x your Base Attack Bonus with Longbows and Shortbows.")
+
   /**
    * Used to group shared timer resources. It is strongly recommended to use one of the values in
    * [[io.truthencode.ddo.model.misc.CoolDownPool]]
    */
   override val coolDownPoolId: String = PoolManyShot
   override val grantBonusType: BonusType = BonusType.Feat
-  override protected[this] val triggerOn: Seq[TriggerEvent] = Seq(TriggerEvent.AtWill)
-  override protected[this] val triggerOff: Seq[TriggerEvent] = Seq(TriggerEvent.OnCoolDown)
+  override protected[this] val doubleShotTriggerOn: Seq[TriggerEvent] = Seq(TriggerEvent.Passive)
+  override protected[this] val doubleShotTriggerOff: Seq[TriggerEvent] = Seq(TriggerEvent.Never)
+
   override protected[this] val grantAbilityCategories: Seq[effect.EffectCategories.Value] =
     Seq(effect.EffectCategories.Ability, effect.EffectCategories.RangedCombat)
   override val abilityId: String = "ManyShot"
@@ -85,8 +99,30 @@ protected[feats] trait Manyshot
   override def allOfAttributes: Seq[(Attribute, Int)] =
     List((Attribute.Dexterity, 17))
 
+  override def gkBonusSelectableClasses: String = "BonusSelection"
+
+  override def gkGrantClasses: String = "ClassGrant"
+
   override def grantToClass: Seq[(HeroicCharacterClass, Int)] =
     List((Ranger, 6))
 
   override def coolDown: Option[Duration] = Some(Duration.ofMinutes(2))
+  def provider = new BabPercentAmpPerLevelProvider()
+
+  override protected val doubleShotBonusType: BonusType = BonusType.Feat
+  override protected val doubleShotValue: Int = 0
+  override protected[this] val doubleShotCategories: Seq[effect.EffectCategories.Value] = Seq(
+    effect.EffectCategories.RangedCombat)
+  override def calculate: Int => Int = doMath
+
+  def doMath[Int](implicit
+    provider: SimpleValueProvider[Int] = provider.asInstanceOf[SimpleValueProvider[Int]])
+    : Int => Int = {
+    provider.createValue
+  }
+  val maxCharges: Int = 3
+  val chargeQuantity: Option[Int] = Some(1)
+  val chargeInterval: Duration = Duration.ofSeconds(12)
+  override def charges: Rechargeable =
+    TimedCharge(chargeQuantity, maxCharges, chargeInterval)
 }

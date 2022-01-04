@@ -32,6 +32,7 @@ dependencies {
     implementation("com.cosminpolifronie.gradle:gradle-plantuml-plugin:1.6.0")
     implementation("io.swagger.core.v3:swagger-gradle-plugin:2.1.11")
     implementation("gradle.plugin.ms.ralph.gradle:gradle-dependency-plantuml-exporter-plugin:1.0.0")
+    implementation("be.vbgn.gradle:ci-detect-plugin:0.5.0")
 }
 
 kotlin {

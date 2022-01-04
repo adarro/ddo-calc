@@ -225,14 +225,16 @@ object GeneralFeat
       id = "CriticalThreatRange",
       description = "Improves your critical threat range for a specific weapon",
       triggersOn = Seq(TriggerEvent.OnEquip.toString),
-      triggersOff = Seq(TriggerEvent.OnUnEquip.toString)
+      triggersOff = Seq(TriggerEvent.OnUnEquip.toString),
+      bonusType = criticalThreatRangeType.entryName
     )
     /**
      * @note
      *   Will need to look at stacking logic checks to make sure this stacks correctly (or more
      *   accurately won't) with Keen / Impact et al.
      */
-    override protected val criticalThreatRangeType: BonusType = BonusType.Feat
+    override protected lazy val criticalThreatRangeType: BonusType = BonusType.Feat
+    val wow: Seq[(WeaponCategory, Int)] = improvedCriticalRangeByWeapon(weaponClass) // wow1.flatten
     override protected val criticalThreatRangeAmount: Seq[(WeaponCategory, Int)] = wow
     /**
      * Delimits the prefix and text.
@@ -245,7 +247,6 @@ object GeneralFeat
 //      a3 <- icPlus3.filter(_ == weapon)
 //    } yield Seq((a1, 1), (a2, 2), (a3, 3))
     // logger.info(s"found ${wow1.size} weapons for improved critical: ${weaponClass.entryName}")
-    val wow: Seq[(WeaponCategory, Int)] = improvedCriticalRangeByWeapon(weaponClass) // wow1.flatten
 
     override def prefix: Option[String] = Some("Improved Critical")
 
@@ -271,12 +272,12 @@ object GeneralFeat
      * Delimits the prefix and text.
      */
     override protected val prefixSeparator: String = ": "
-    override protected val toHitType: BonusType = BonusType.Feat
+    override protected lazy val toHitType: BonusType = BonusType.Feat
     override protected val toHitAmount: Seq[(WeaponCategory, Int)] =
       filterByWeaponClass(weaponClass).map((_, 1))
-    override protected val meleePowerBonusType: BonusType = BonusType.Feat
+    override protected lazy val meleePowerBonusType: BonusType = BonusType.Feat
     override protected val meleePowerBonusAmount: Int = 2
-    override protected val rangePowerBonusType: BonusType = BonusType.Feat
+    override protected lazy val rangePowerBonusType: BonusType = BonusType.Feat
     override protected val rangePowerBonusAmount: Int = 2
 
     override def prefix: Option[String] = Some("Weapon Focus")
@@ -297,12 +298,12 @@ object GeneralFeat
       effect.EffectCategories.GeneralCombat)
     override protected[this] val rangePowerCategories: Seq[effect.EffectCategories.Value] = Seq(
       effect.EffectCategories.GeneralCombat)
-    override protected val toHitType: BonusType = BonusType.Feat
+    override protected lazy val toHitType: BonusType = BonusType.Feat
     override protected val toHitAmount: Seq[(WeaponCategory, Int)] =
       filterByWeaponClass(weaponClass).map((_, 1))
-    override protected val meleePowerBonusType: BonusType = BonusType.Feat
+    override protected lazy val meleePowerBonusType: BonusType = BonusType.Feat
     override protected val meleePowerBonusAmount: Int = 2
-    override protected val rangePowerBonusType: BonusType = BonusType.Feat
+    override protected lazy val rangePowerBonusType: BonusType = BonusType.Feat
     override protected val rangePowerBonusAmount: Int = 2
     override def prefix: Option[String] =
       Some("GreaterWeaponFocus".splitByCase)
@@ -323,12 +324,12 @@ object GeneralFeat
     override protected[this] lazy val meleePowerCategories: Seq[effect.EffectCategories.Value] =
       Seq(effect.EffectCategories.GeneralCombat)
     override protected val prefixSeparator: String = ": "
-    override protected val toHitType: BonusType = BonusType.Feat
+    override protected lazy val toHitType: BonusType = BonusType.Feat
     override protected val toHitAmount: Seq[(WeaponCategory, Int)] =
       filterByWeaponClass(weaponClass).map((_, 1))
-    override protected val meleePowerBonusType: BonusType = BonusType.Feat
+    override protected lazy val meleePowerBonusType: BonusType = BonusType.Feat
     override protected val meleePowerBonusAmount: Int = 2
-    override protected val rangePowerBonusType: BonusType = BonusType.Feat
+    override protected lazy val rangePowerBonusType: BonusType = BonusType.Feat
     override protected val rangePowerBonusAmount: Int = 2
     override protected[this] val toHitWcCategories: Seq[effect.EffectCategories.Value] = Seq(
       effect.EffectCategories.GeneralCombat)
@@ -358,12 +359,12 @@ object GeneralFeat
       effect.EffectCategories.GeneralCombat)
     override protected[this] val rangePowerCategories: Seq[effect.EffectCategories.Value] = Seq(
       effect.EffectCategories.GeneralCombat)
-    override protected val toDamageType: BonusType = BonusType.Feat
+    override protected lazy val toDamageType: BonusType = BonusType.Feat
     override protected val toDamageAmount: Seq[(WeaponCategory, Int)] =
       filterByWeaponClass(weaponClass).map((_, 2))
-    override protected val meleePowerBonusType: BonusType = BonusType.Feat
+    override protected lazy val meleePowerBonusType: BonusType = BonusType.Feat
     override protected val meleePowerBonusAmount: Int = 2
-    override protected val rangePowerBonusType: BonusType = BonusType.Feat
+    override protected lazy val rangePowerBonusType: BonusType = BonusType.Feat
     override protected val rangePowerBonusAmount: Int = 2
 
     override def prefix: Option[String] =
@@ -389,12 +390,12 @@ object GeneralFeat
       effect.EffectCategories.GeneralCombat)
     override protected[this] val rangePowerCategories: Seq[effect.EffectCategories.Value] = Seq(
       effect.EffectCategories.GeneralCombat)
-    override protected val toDamageType: BonusType = BonusType.Feat
+    override protected lazy val toDamageType: BonusType = BonusType.Feat
     override protected val toDamageAmount: Seq[(WeaponCategory, Int)] =
       filterByWeaponClass(weaponClass).map((_, 2))
-    override protected val meleePowerBonusType: BonusType = BonusType.Feat
+    override protected lazy val meleePowerBonusType: BonusType = BonusType.Feat
     override protected val meleePowerBonusAmount: Int = 2
-    override protected val rangePowerBonusType: BonusType = BonusType.Feat
+    override protected lazy val rangePowerBonusType: BonusType = BonusType.Feat
     override protected val rangePowerBonusAmount: Int = 2
 
     override def prefix: Option[String] =
@@ -417,7 +418,7 @@ object GeneralFeat
     override protected[this] lazy val triggerOff: Seq[TriggerEvent] = Seq(TriggerEvent.Never)
     override protected[this] lazy val spellFocusCategories: Seq[effect.EffectCategories.Value] =
       Seq(effect.EffectCategories.SpellCasting)
-    override protected val spellFocusBonusType: BonusType = BonusType.Feat
+    override protected lazy val spellFocusBonusType: BonusType = BonusType.Feat
     override protected val spellFocusDifficultyCheck: Int = 1
     override protected val spellSchool: School = school
     /**
@@ -437,7 +438,7 @@ object GeneralFeat
     override protected[this] lazy val triggerOff: Seq[TriggerEvent] = Seq(TriggerEvent.Never)
     override protected[this] lazy val spellFocusCategories: Seq[effect.EffectCategories.Value] =
       Seq(effect.EffectCategories.SpellCasting)
-    override protected val spellFocusBonusType: BonusType = BonusType.Feat
+    override protected lazy val spellFocusBonusType: BonusType = BonusType.Feat
     override protected val spellFocusDifficultyCheck: Int = 1
     override protected val spellSchool: School = school
     /**
@@ -482,7 +483,7 @@ object GeneralFeat
     override protected[this] lazy val triggerOff: Seq[TriggerEvent] = Seq(TriggerEvent.Never)
     override protected[this] lazy val weaponProficiencyCategories
       : Seq[effect.EffectCategories.Value] = Seq(effect.EffectCategories.GeneralCombat)
-    override protected val proficiencyType: BonusType = BonusType.Feat
+    override protected lazy val proficiencyType: BonusType = BonusType.Feat
     override protected val proficiencyAmount: Seq[WeaponCategory] = weapon
     /**
      * Delimits the prefix and text.
@@ -508,7 +509,7 @@ object GeneralFeat
     override protected[this] lazy val weaponProficiencyCategories
       : Seq[effect.EffectCategories.Value] = Seq(effect.EffectCategories.GeneralCombat)
 
-    override protected val proficiencyType: BonusType = BonusType.Feat
+    override protected lazy val proficiencyType: BonusType = BonusType.Feat
     override protected val proficiencyAmount: Seq[WeaponCategory] = weapon
     /**
      * Delimits the prefix and text.
@@ -532,7 +533,7 @@ object GeneralFeat
     override protected[this] lazy val triggerOff: Seq[TriggerEvent] = Seq(TriggerEvent.Never)
     override protected[this] lazy val weaponProficiencyCategories
       : Seq[effect.EffectCategories.Value] = Seq(effect.EffectCategories.GeneralCombat)
-    override protected val proficiencyType: BonusType = BonusType.Feat
+    override protected lazy val proficiencyType: BonusType = BonusType.Feat
     override protected val proficiencyAmount: Seq[WeaponCategory] = weapon
     /**
      * Delimits the prefix and text.
@@ -551,7 +552,7 @@ object GeneralFeat
     extends GeneralFeat with SkillFocusBase with SubFeat with Prefix with FeaturesImpl
     with SkillFeature {
 
-    override val bonusType: BonusType = BonusType.Feat
+    override lazy val bonusType: BonusType = BonusType.Feat
     override val affectedSkills: List[(Skill, Int)] = List((skill, 3))
     /**
      * Delimits the prefix and text.

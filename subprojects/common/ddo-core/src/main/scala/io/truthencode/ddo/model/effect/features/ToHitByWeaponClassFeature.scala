@@ -76,7 +76,8 @@ trait ToHitByWeaponClassFeature extends Features {
         id = "ToHitChance",
         description = "Increases To Hit chance for a given weapon type",
         triggersOn = triggerOn.map(_.entryName),
-        triggersOff = triggerOff.map(_.entryName)
+        triggersOff = triggerOff.map(_.entryName),
+        bonusType = toHitType.entryName
       )
       override val source: SourceInfo = src
       override lazy val value: Seq[(WeaponCategory, Int)] = toHitAmount

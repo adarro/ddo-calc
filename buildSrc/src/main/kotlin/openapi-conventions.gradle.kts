@@ -25,7 +25,7 @@ plugins {
 //if (project.pluginManager.findPlugin("java") === null)
 //    project.apply { java }
 tasks.withType<ResolveTask>().configureEach {
-    outputFileName = "PetStoreAPI"
+  //  outputFileName = "PetStoreAPI"
 //    //outputFormat = "JSONANDYAML"
     outputFormat = ResolveTask.Format.JSONANDYAML
     prettyPrint = true

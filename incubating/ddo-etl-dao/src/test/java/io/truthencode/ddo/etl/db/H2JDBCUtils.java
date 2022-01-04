@@ -73,9 +73,9 @@ public class H2JDBCUtils {
 
     }
 
-    public static String SqlCreateTable = streamToString(exampleTableSql(createTableSql));
+    public static final String SqlCreateTable = streamToString(exampleTableSql(createTableSql));
 
-    public static String SqlDropTable = streamToString(exampleTableSql(dropTableSql));
+    public static final String SqlDropTable = streamToString(exampleTableSql(dropTableSql));
 
     public static Connection getConnection() {
         try {

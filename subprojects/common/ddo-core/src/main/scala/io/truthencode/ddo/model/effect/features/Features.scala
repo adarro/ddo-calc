@@ -18,6 +18,7 @@
 package io.truthencode.ddo.model.effect.features
 
 import enumeratum.{Enum, EnumEntry}
+import io.truthencode.ddo.api.model.effect.FullEffect
 import io.truthencode.ddo.model.effect.Feature
 import io.truthencode.ddo.support.naming.DisplayProperties
 
@@ -29,6 +30,8 @@ trait Features {
     features.groupBy(_.nameOption).collect { case (Some(x), list) =>
       (x, list)
     }
+
+  def effects: Seq[FullEffect] = features.map(_.asFullEffect)
 
 }
 

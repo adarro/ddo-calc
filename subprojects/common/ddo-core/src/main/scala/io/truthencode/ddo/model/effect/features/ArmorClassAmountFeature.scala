@@ -91,7 +91,8 @@ trait ArmorClassAmountFeature extends Features {
         id = "ArmorClass",
         description = "Improves your Armor Class",
         triggersOn = acTriggerOn.map(_.entryName),
-        triggersOff = acTriggerOff.map(_.entryName)
+        triggersOff = acTriggerOff.map(_.entryName),
+        bonusType = armorBonusType.entryName
       )
 
       /**

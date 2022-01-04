@@ -29,17 +29,17 @@
     },
     {
       "name": "damage",
-      "type": ["null", "io.truthencode.ddo.models.model.Damage"],
+      "type": ["null", "io.truthencode.ddo.model.protocol.Damage"],
       "doc": ""
     },
     {
       "name": "damage_type",
-      "type": ["null", "io.truthencode.ddo.models.model.DamageType"],
+      "type": ["null", "io.truthencode.ddo.model.protocol.DamageType"],
       "doc": ""
     },
     {
       "name": "critical_threat_range",
-      "type": ["null", "io.truthencode.ddo.models.model.CriticalThreatRange"],
+      "type": ["null", "io.truthencode.ddo.model.protocol.CriticalThreatRange"],
       "doc": ""
     },
     {
@@ -124,7 +124,7 @@
     },
     {
       "name": "abs_min_level",
-      "type": ["null", ],
+      "type": ["null", "int"],
       "doc": "Altered minimum level usually caused as a side-effect of additional enchantments which may increase the requirement"
     },
     {

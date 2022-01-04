@@ -39,7 +39,7 @@ trait Mobility
   override protected[this] lazy val triggerOff: Seq[TriggerEvent] = Seq(TriggerEvent.Never)
   override protected[this] lazy val acTriggerOn: Seq[TriggerEvent] = Seq(TriggerEvent.OnTumble)
   override protected[this] lazy val acTriggerOff: Seq[TriggerEvent] = Seq(TriggerEvent.WhileOn)
-  override protected val armorBonusType: BonusType = BonusType.Feat
+  override protected lazy val armorBonusType: BonusType = BonusType.Feat
   override protected val armorBonusAmount: Int = 4
   override val mdbBonusType: BonusType = BonusType.Feat
   override val mdbAmount: Int = 2

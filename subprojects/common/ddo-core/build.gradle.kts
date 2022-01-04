@@ -17,7 +17,7 @@
  */
 
 plugins {
-    id("scala-profiles")
+    id("scala-library-profile")
     id("acceptance-test-conventions")
     id("doc-uml")
 }
@@ -57,6 +57,7 @@ dependencies {
         testImplementation(group = "com.wix", name = "accord-scalatest_$scalaMajorVersion")
 
 
+
         // JUnit 5
         testRuntimeOnly(group = "org.junit.platform", name = "junit-platform-engine")
         testRuntimeOnly(group = "org.junit.platform", name = "junit-platform-launcher")
@@ -67,19 +68,22 @@ dependencies {
         val acceptanceTestImplementation by configurations.getting
         acceptanceTestImplementation.extendsFrom(configurations["testCompileClasspath"])
         acceptanceTestImplementation(group = "org.concordion", name = "concordion", version = concordionVersion)
-        acceptanceTestImplementation(
-            group = "com.vladsch.flexmark",
-            name = "flexmark-ext-gfm-strikethrough",
-            version = "0.62.2"
-        )
-        acceptanceTestImplementation(group = "com.vladsch.flexmark", name = "flexmark-ext-emoji", version = "0.62.2")
+        // flexmark (mostly for concordion / markdown)
+        acceptanceTestImplementation("com.vladsch.flexmark:flexmark-all:0.62.2")
 
-        // https://mvnrepository.com/artifact/com.vladsch.flexmark/flexmark-ext-gfm-tasklist
-        acceptanceTestImplementation(
-            group = "com.vladsch.flexmark",
-            name = "flexmark-ext-gfm-tasklist",
-            version = "0.62.2"
-        )
+//        acceptanceTestImplementation(
+//            group = "com.vladsch.flexmark",
+//            name = "flexmark-ext-gfm-strikethrough",
+//            version = "0.62.2"
+//        )
+//        acceptanceTestImplementation(group = "com.vladsch.flexmark", name = "flexmark-ext-emoji", version = "0.62.2")
+//        acceptanceTestImplementation ("com.vladsch.flexmark:flexmark-ext-yaml-front-matter:0.62.2")
+//        // https://mvnrepository.com/artifact/com.vladsch.flexmark/flexmark-ext-gfm-tasklist
+//        acceptanceTestImplementation(
+//            group = "com.vladsch.flexmark",
+//            name = "flexmark-ext-gfm-tasklist",
+//            version = "0.62.2"
+//        )
 
         testImplementation(group = "de.neuland-bfi", name = "jade4j", version = "1.2.7")
         testImplementation(group = "net.ruippeixotog", name = "scala-scraper_$scalaMajorVersion", version = "2.2.1")

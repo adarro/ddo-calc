@@ -18,19 +18,29 @@
 package io.truthencode.ddo.api.model.effect
 
 /**
- * Represents a specific effect This includes all details such as what it modifies and when it takes effect.
+ * Represents a specific effect This includes all details such as what it modifies and when it takes
+ * effect.
  * @param id
  *   This will need to uniquely identify the effect
  * @param description
  *   A description of the effect
  * @param triggersOn
- *   When this effect applies. Should correspond to some state chance such as full health, unconscious, on critical hit,
- *   on miss, or Always on, etc.
+ *   When this effect applies. Should correspond to some state chance such as full health,
+ *   unconscious, on critical hit, on miss, or Always on, etc.
  * @param triggersOff
- *   When this effect does not apply. Could be, never or some duration or any of the list from triggersOn.
+ *   When this effect does not apply. Could be, never or some duration or any of the list from
+ *   triggersOn.
+ * @param bonusType
+ *   Used to determine stacking rules for applying this effect
  * @see
  *   TriggerEvent - Valid values for trigger on / off values.
  * @see
  *   Category - Valid values
  */
-case class DetailedEffect(id: String, description: String, triggersOn: Seq[String], triggersOff: Seq[String]) extends DetailedEffectInfo
+case class DetailedEffect(
+  id: String,
+  description: String,
+  triggersOn: Seq[String],
+  triggersOff: Seq[String],
+  bonusType: String)
+  extends DetailedEffectInfo

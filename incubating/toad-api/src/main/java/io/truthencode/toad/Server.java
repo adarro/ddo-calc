@@ -20,12 +20,12 @@ package io.truthencode.toad;
 
 import com.hazelcast.core.HazelcastInstance;
 import com.hazelcast.core.HazelcastInstanceAware;
-import com.hazelcast.core.IExecutorService;
 import io.truthencode.toad.verticle.MyFirstVerticle;
 import io.vertx.core.DeploymentOptions;
 import io.vertx.core.Vertx;
 import io.vertx.core.VertxOptions;
-import io.vertx.spi.cluster.hazelcast.HazelcastClusterManager;
+import io.vertx.core.spi.cluster.ClusterManager;
+import io.vertx.spi.cluster.ignite.IgniteClusterManager;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -62,7 +62,9 @@ class Server {
      * Initializes Vertx in a clustered environment.
      */
     private void initVertxCluster() {
-        HazelcastClusterManager clusterManager = new HazelcastClusterManager();
+
+         ClusterManager clusterManager = new IgniteClusterManager();
+
 
         VertxOptions options = new VertxOptions().setClusterManager(clusterManager);
 
@@ -78,15 +80,15 @@ class Server {
             }
         });
 
-
-        Runtime.getRuntime().addShutdownHook(new Thread(() -> {
-            log.info("Shutting down Hazelcast");
-            HazelcastInstance instance = clusterManager.getHazelcastInstance();
-            if (instance.getPartitionService().isClusterSafe()) {
-                IExecutorService svc = instance.getExecutorService(Server.class.getName());
-                svc.executeOnAllMembers(new ShutdownMember());
-            }
-        }));
+// Unsure if we need to add shutdownhook for ZK as we did for Hazelcast
+//        Runtime.getRuntime().addShutdownHook(new Thread(() -> {
+//            log.info("Shutting down Hazelcast");
+//            Zookeeper instance = clusterManager.
+//            if (instance.getPartitionService().isClusterSafe()) {
+//                IExecutorService svc = instance.getExecutorService(Server.class.getName());
+//                svc.executeOnAllMembers(new ShutdownMember());
+//            }
+//        }));
     }
 
     /**

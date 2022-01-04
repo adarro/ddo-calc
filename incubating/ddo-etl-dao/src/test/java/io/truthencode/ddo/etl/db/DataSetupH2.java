@@ -33,7 +33,7 @@ public class DataSetupH2 {
 
     private static final Logger LOGGER = LoggerFactory.getLogger(DataSetupH2.class);
 
-    public static void main(String[] argv) throws SQLException {
+    public static void main(String[] argv) {
         DataSetupH2 createTableExample = new DataSetupH2();
         createTableExample.createTable();
     }
@@ -69,7 +69,7 @@ public class DataSetupH2 {
         // Step 1: Establishing a Connection
         try (Connection connection = H2JDBCUtils.getConnection();
              // Step 2:Create a statement using connection object
-             Statement statement = connection.createStatement();) {
+             Statement statement = connection.createStatement()) {
 
             // Step 3: Execute the query or update query
             return statement.execute(sql);
@@ -88,7 +88,7 @@ public class DataSetupH2 {
         // Step 1: Establishing a Connection
         // Step 2:Create a statement using connection object
         try (
-            Statement statement = connection.createStatement();) {
+            Statement statement = connection.createStatement()) {
             for (String stmt : sql) {
                 LOGGER.info("executing sql {}", stmt);
                 // Step 3: Execute the query or update query

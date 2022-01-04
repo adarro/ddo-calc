@@ -51,3 +51,12 @@ object FeatureTest extends Tag("io.truthencode.tags.Feature")
 object FeatTest extends Tag("io.truthencode.tags.Feat")
 
 object SkillTest extends Tag("io.truthencode.tags.Skill")
+
+object FunctionalTest extends Tag("io.truthencode.tags.Function")
+
+/**
+ * Tests basic functionality of a given library or interaction between.
+ * Does not affect production code but illustrates the use.
+ * i.e. verify running a Camel Context inside a Vertx instance using a Monix execution context.
+ */
+object  FunctionLOnly extends Tag("io.truthencode.tags.FunctionOnly")

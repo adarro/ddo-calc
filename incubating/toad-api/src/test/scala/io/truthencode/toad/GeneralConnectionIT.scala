@@ -18,8 +18,13 @@
 package io.truthencode.toad
 
 import io.lemonlabs.uri.typesafe.dsl.{stringToUriDsl, urlToUrlDsl}
+import io.truthencode.toad.config.Implicits.vertx
 import io.truthencode.toad.config.{serverIp, serverPort}
-import io.truthencode.toad.verticle.{DeploymentOptionMerger, WebSSLCapableServerVerticle}
+import io.truthencode.toad.verticle.{
+  DemoVerticle,
+  DeploymentOptionMerger,
+  WebSSLCapableServerVerticle
+}
 import io.vertx.core.DeploymentOptions
 import io.vertx.core.http.HttpClientOptions
 import io.vertx.ext.web.client.WebClient
@@ -33,6 +38,11 @@ import scala.language.reflectiveCalls
 
 class GeneralConnectionIT extends AnyFunSpec with Matchers {
   val logger: Logger = LoggerFactory.getLogger(getClass.getSimpleName)
+  /*
+  This needs to match what is in the Config object.
+  It's duplicated here for 'ease of use'
+   */
+//  final val defaultHttpPort = 8180
   lazy val fixture = new {
 
     io.truthencode.toad.config.Bootstrap.init()
@@ -69,7 +79,7 @@ class GeneralConnectionIT extends AnyFunSpec with Matchers {
       vertx.deployVerticle(sslVerticle, new DeploymentOptions().mergeConfig())
       logger.info("Launched vert")
       val cOpts = new HttpClientOptions()
-        .setDefaultPort(8080)
+        .setDefaultPort(serverPort.toInt)
         .setTrustAll(true)
       val client = vertx.createHttpClient(cOpts)
       val webClient = WebClient.wrap(client)
@@ -83,15 +93,27 @@ class GeneralConnectionIT extends AnyFunSpec with Matchers {
   }
 
   describe("Non-existent resources") {
-    it("Should return a NOT_IMPLEMENTED error") {
+    ignore("Should NOT return a NOT_IMPLEMENTED error") {
       // FIXME web routes should return 404 for not found and Not implemented for unsupported
       val f = fixture
       import f._
+      vertx.deployVerticle(new DemoVerticle, new DeploymentOptions().mergeConfig())
       val uri = other / "weapons" ? ("p1" -> "one") & ("p2" -> 2) & ("p3" -> true)
       val client = HttpClients.createDefault()
       val response = client.execute(new HttpGet(uri.toJavaURI))
       val returnCode = response.getStatusLine.getStatusCode
       returnCode should equal(404)
+    }
+    it("Should connect to valid services") {
+
+      val f = fixture
+      vertx.deployVerticle(new DemoVerticle, new DeploymentOptions().mergeConfig())
+      logger.info("Launched vert")
+      val uri = f.root / "" ? ("p1" -> "one") & ("p2" -> 2) & ("p3" -> true)
+      val client = HttpClients.createDefault()
+      val response = client.execute(new HttpGet(uri.toJavaURI))
+      val returnCode = response.getStatusLine.getStatusCode
+      returnCode should equal(200)
     }
   }
 }

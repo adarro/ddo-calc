@@ -1,0 +1,7 @@
+default: &default
+    serverPort: 8880
+    name: finagleAdmin
+development:
+    <<: *default
+production:
+    name: DeadHorse

@@ -1,0 +1,11 @@
+@namespace("io.truthencode.ddo.model.protocol")
+protocol ValueChange {
+    enum ChangeType {INCREASE, DECREASE, NOCHANGE}
+
+    record ChangeValueInt {
+        string id;
+        int currentValue;
+        int prevValue;
+        ChangeType changeType;
+    }
+}

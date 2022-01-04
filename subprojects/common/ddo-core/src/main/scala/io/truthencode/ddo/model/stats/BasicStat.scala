@@ -296,6 +296,8 @@ trait RangedThreatMultiplier extends BasicStat with RangedCombatCategory
 /** Distance from target used for point blank damage (not shown in Game UI) */
 trait PointBlankShotRange extends BasicStat with RangedCombatCategory
 
+trait DoubleShot extends BasicStat with RangedCombatCategory
+
 trait AutoRecovery extends BasicStat with Recovery
 
 trait GrantedAbility extends BasicStat with Ability with UsingAbilitySearchPrefix {
@@ -533,4 +535,6 @@ object BasicStat extends Enum[BasicStat] with SearchPrefix {
   case object TurnUndeadNumberOfTurns extends NumberOfTurns
 
   case object AutoRecovery extends AutoRecovery
+
+  case object DoubleShot extends DoubleShot
 }

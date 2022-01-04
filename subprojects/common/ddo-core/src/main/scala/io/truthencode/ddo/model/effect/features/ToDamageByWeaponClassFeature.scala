@@ -75,7 +75,8 @@ trait ToDamageByWeaponClassFeature extends Features {
         id = "WeaponDamage",
         description = "Increases damage for a given weapon type",
         triggersOn = triggerOn.map(_.entryName),
-        triggersOff = triggerOff.map(_.entryName)
+        triggersOff = triggerOff.map(_.entryName),
+        bonusType = toDamageType.entryName
       )
       override val source: SourceInfo = src
       override lazy val value: Seq[(WeaponCategory, Int)] = toDamageAmount

@@ -1,0 +1,6 @@
+default: &default
+    autostart: false
+development:
+    <<: *default
+production:
+    autostart: true

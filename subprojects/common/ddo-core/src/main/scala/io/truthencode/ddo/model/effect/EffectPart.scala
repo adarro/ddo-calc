@@ -96,6 +96,8 @@ trait FeatEffect extends EffectPart {
     s"Feat($target)"
 }
 
+trait DoubleShotEffect extends EffectPart
+
 trait WeaponProficiencyEffect extends EffectPart {
   val proficiency: WeaponProficiencyBase
 
@@ -161,6 +163,10 @@ object EffectPart extends Enum[EffectPart] with NoDefault[EffectPart] with Searc
   // private def anyBasicStat = BasicStat.values.map()
   case object Spell extends EffectPart {
     override def searchPattern(target: String): String = s"Spell:$target"
+  }
+
+  case object DoubleShot extends EffectPart {
+      override def searchPattern(target: String): String = s"DoubleShot"
   }
 
   case object Health extends EffectPart {

@@ -41,7 +41,7 @@ class JoinableMapTest
     }
   }
   describe("Right Joins") {
-    they("should contall all the unique right side plus any common elements of the left side") {
+    they("should contain all the unique right side plus any common elements of the left side") {
       rightJoinA should contain theSameElementsAs commonWithB
     }
   }

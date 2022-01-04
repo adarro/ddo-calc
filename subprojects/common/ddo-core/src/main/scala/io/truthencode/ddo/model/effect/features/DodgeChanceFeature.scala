@@ -75,7 +75,8 @@ trait DodgeChanceFeature extends Features {
         id = "Dodge",
         description = "Chance to dodge an attack",
         triggersOn = triggerOn.map(_.entryName),
-        triggersOff = triggerOff.map(_.entryName)
+        triggersOff = triggerOff.map(_.entryName),
+        bonusType = dodgeBonusType.entryName
       )
       override val source: SourceInfo = src
       override lazy val value: Int = dodgeBonusAmount

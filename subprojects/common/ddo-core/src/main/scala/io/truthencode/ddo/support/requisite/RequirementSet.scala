@@ -31,6 +31,7 @@ package io.truthencode.ddo.support.requisite
 case class RequirementSet[+T <: RequisiteType, +U <: Inclusion](
   reqType: T,
   incl: U,
+  groupKey: String,
   req: Requirement*)
 
 // case class RequirementSet(reqType: RequisiteType, incl: Inclusion, req: Requirement*)

@@ -84,7 +84,8 @@ trait WeaponProficiencyFeature extends Features {
         id = "WeaponProficiency",
         description = "Reduce To Hit penalty when using specific weapons",
         triggersOn = triggerOn.map(_.entryName),
-        triggersOff = triggerOff.map(_.entryName)
+        triggersOff = triggerOff.map(_.entryName),
+        bonusType = proficiencyType.entryName
       )
       override val source: SourceInfo = src
       override lazy val value: Seq[WeaponCategory] = proficiencyAmount

@@ -73,7 +73,8 @@ trait HitPointPerLevelAmountFeature extends Features {
         id = "HitChance",
         description = "Increases your Hit points",
         triggersOn = triggerOn.map(_.entryName),
-        triggersOff = triggerOff.map(_.entryName)
+        triggersOff = triggerOff.map(_.entryName),
+        bonusType = hitPointBonusType.entryName
       )
       override val source: SourceInfo = src
       override lazy val value: Int = hitPointsPerLevel

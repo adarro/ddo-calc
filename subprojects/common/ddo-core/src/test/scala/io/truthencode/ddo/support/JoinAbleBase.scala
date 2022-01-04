@@ -22,33 +22,6 @@ trait JoinAbleBase[+X, C <: Iterable[X]] {
 
   def remainder: Int = sampleSize - portion
 
-//  implicit def asSeq(x: C) = x.toSeq
   def portion: Int = sampleSize / 2 + (sampleSize / 3)
-//  val source: C
-//  val list: C
-//  val listA: C
-//  val listB: C
-//  val onlyB: C
-//  val onlyA: C
-//  val common: C
-//  val commonWithA: C
-//  val commonWithB: C
-//
-//  val leftJoinA: C
-//  val rightJoinA: C
-//  val leftJoinB: C
-//  val rightJoinB: C
-
-  //  def foo[B,K,V](c:C,rhs:B)(implicit ev:B =:= C ,ev2:C <:< Map[_,_]) = {
-  //    c match {
-  //        case x:Map[_,_] =>c.toMap.leftJoin(rhs.toMap)
-  //    }
-  //  }
-  //  val fnLJ: PartialFunction[C,Map[K,V]] = {
-  //
-  //  }
-  // def bar[A,B]( b: B)(implicit ev: B <:< C <:< MapLike[X,]) = (a,b)
-
-  // def lj[A](x:X)(implicit ev:B)
 
 }

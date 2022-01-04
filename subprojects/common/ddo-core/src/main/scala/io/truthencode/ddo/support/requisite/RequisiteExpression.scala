@@ -17,6 +17,8 @@
  */
 package io.truthencode.ddo.support.requisite
 
+import io.truthencode.ddo.support.requisite.Requirement.GroupedRequirement
+
 /**
  * Base stackable trait used to store an array of requirements along with logic to evaluate.
  */
@@ -45,6 +47,8 @@ sealed trait ComplexRequisite extends RequisiteExpression {
 trait MustContainAtLeastOneOf[T <: Requirement] extends ComplexRequisite with AnyOf {
   self: RequisiteType =>
   // def oneOf: Seq[ReqSet[MustContainAtLeastOneOf[T], AnyOf]] = IndexedSeq()
+//  val s = GroupedRequirement[T]("foo")
+//  def oneOf: Seq[GroupedRequirement[T]]
   def oneOf: Seq[T]
 }
 
@@ -81,24 +85,49 @@ trait MustContainImpl[T <: Requirement]
 trait RequiresOneOf[T <: Requirement] extends MustContainAtLeastOneOf[T] with Require {
   // val f: RequirementSet[RequiresOneOf[T], RequiresOneOf[T]] = RequirementSet(this, this, oneOf: _*)
 
-  abstract override def prerequisites: Seq[RequirementSet[RequisiteType, Inclusion]] = super.prerequisites :+ makeSet
+  abstract override def prerequisites: Seq[RequirementSet[RequisiteType, Inclusion]] =
+    super.prerequisites ++ makeSet
 
-  private[this] def makeSet: RequirementSet[Require, Inclusion] =
-    RequirementSet(RequisiteType.Require,Inclusion.AnyOf, oneOf: _*)
+  private[this] def makeSet: Seq[RequirementSet[RequisiteType, Inclusion]] = {
+    val adapted = oneOf.map {
+      case GroupedRequirement(x, t, r) => (t, x, r)
+      case t: T => (defaultGroupKey, t, RequisiteType.Require)
+    }.groupBy(_._1)
+      .map { v =>
+        RequirementSet(v._2.head._3, Inclusion.AnyOf, v._1, v._2.map(_._2): _*)
+      }
+      .toSeq
+    // RequirementSet(RequisiteType.Require, Inclusion.AnyOf, defaultGroupKey, oneOf: _*)
+    adapted
+  }
 }
 
 trait RequiresAllOf[T <: Requirement] extends MustContainAllOf[T] with Require {
-  abstract override def prerequisites: Seq[RequirementSet[RequisiteType, Inclusion]] = super.prerequisites :+ makeSet
+  abstract override def prerequisites: Seq[RequirementSet[RequisiteType, Inclusion]] =
+    super.prerequisites ++ makeSet
 
-  private[this] def makeSet: RequirementSet[Require, Inclusion] =
-    RequirementSet( RequisiteType.Require, Inclusion.AllOf, allOf: _*)
+  private[this] def makeSet: Seq[RequirementSet[RequisiteType, Inclusion]] = {
+//      RequirementSet(RequisiteType.Require, Inclusion.AllOf, defaultGroupKey, allOf: _*)
+    val adapted = allOf.map {
+      case GroupedRequirement(x, t, r) => (t, x, r)
+      case t: T => (defaultGroupKey, t, RequisiteType.Require)
+    }.groupBy(_._1)
+      .map { v =>
+        RequirementSet(v._2.head._3, Inclusion.AllOf, v._1, v._2.map(_._2): _*)
+      }
+      .toSeq
+    // RequirementSet(RequisiteType.Require, Inclusion.AnyOf, defaultGroupKey, oneOf: _*)
+    adapted
+  }
+
 }
 
 trait RequiresNoneOf[T <: Requirement] extends MustContainNoneOf[T] with Require {
-  abstract override def prerequisites: Seq[RequirementSet[RequisiteType, Inclusion]] = super.prerequisites :+ makeSet
+  abstract override def prerequisites: Seq[RequirementSet[RequisiteType, Inclusion]] =
+    super.prerequisites :+ makeSet
 
   private[this] def makeSet: RequirementSet[RequisiteType, Inclusion] =
-    RequirementSet(RequisiteType.Require, Inclusion.NoneOf, noneOf: _*)
+    RequirementSet(RequisiteType.Require, Inclusion.NoneOf, defaultGroupKey, noneOf: _*)
 }
 
 /* Prohibiting 'One Of' does not make any sense in this context.

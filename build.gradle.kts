@@ -1,4 +1,4 @@
-/*
+    /*
  * SPDX-License-Identifier: Apache-2.0
  *
  * Copyright 2015-2021 Andre White.
@@ -16,7 +16,6 @@
  * limitations under the License.
  */
 import java.util.*
-import kotlin.math.log
 
 plugins {
 
@@ -24,6 +23,8 @@ plugins {
     id("net.thauvin.erik.gradle.semver")
     `maven-publish`
     id("com.dorongold.task-tree") version "2.1.0" // Temp until working solution to userhome version script
+    id ("com.github.ManifestClasspath") version "0.1.0-RELEASE"
+  //  id ("be.vbgn.ci-detect") version "0.1.0"
 }
 
 
@@ -74,7 +75,7 @@ config {
 
         artifacts {
             minpom {
-                enabled = false
+                enabled = true
             }
             jar {
                 enabled = false
@@ -83,7 +84,14 @@ config {
     }
 
     licensing {
-        excludes = setOf("**/*.md", "**/*.sql", "buildSrc\\build\\kotlin-dsl\\plugins-blocks\\extracted\\*.kts")
+        excludes = setOf(
+            "**/*.md",
+            "**/*.sql",
+            "**/avro/**/*.scala",
+            "buildSrc\\build\\kotlin-dsl\\plugins-blocks\\extracted\\*.kts",
+            "**/*.conf"
+        )
+        includes = setOf("src/main/java/**/*.java","src/main/scala/*.scala")
         licenses {
             license {
                 id = "Apache-2.0" //org.kordamp.gradle.plugin.base.model.LicenseId.APACHE_2_0

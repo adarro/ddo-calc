@@ -24,6 +24,7 @@ import io.truthencode.ddo.model.feats.{Feat, GeneralFeat}
 import io.truthencode.ddo.model.stats.BasicStat
 import org.scalatest.OptionValues.convertOptionToValuable
 import org.scalatest.funspec.AnyFunSpec
+import org.scalatest.matchers.must.Matchers.defined
 import org.scalatest.matchers.should.Matchers
 
 import scala.language.postfixOps
@@ -48,9 +49,9 @@ class FeaturesTest extends AnyFunSpec with Matchers with LazyLogging {
         }
 
       }
-      val irslt = for {
-        (k, v) <- fm
-      } yield (k, v.name -> (v, v.effectDetail))
+//      val irslt = for {
+//        (k, v) <- fm
+//      } yield (k, v.name -> (v, v.effectDetail))
 
     }
 
@@ -79,6 +80,22 @@ class FeaturesTest extends AnyFunSpec with Matchers with LazyLogging {
       s.sourceId should endWith("Dodge")
       s.sourceRef shouldEqual d
       v.value shouldEqual d.dodgeBonusAmount
+    }
+
+    it("Can be converted to a FullEffect") {
+      val f = GeneralFeat.Dodge
+      val fe = f.features.map(_.asFullEffect)
+      fe.foreach { ef =>
+          logger.info(ef.toString)
+      }
+    }
+
+    it("Can emit effects") {
+      val f = GeneralFeat.Cleave
+      f.effects.foreach { ef =>
+        val i = ef.intValue
+          ef.intValue shouldBe empty
+          logger.info(ef.toString)}
     }
   }
 

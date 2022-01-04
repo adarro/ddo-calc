@@ -17,8 +17,10 @@
  */
 plugins {
     scala
-    id("java-library-conventions")
+
     id("org.scoverage")
+    id("code-quality")
+    id("be.vbgn.ci-detect")
 }
 
 
@@ -51,7 +53,7 @@ configure<org.scoverage.ScoverageExtension> {
  * NOTE: this will need to be revisited when not using scala 2.13
  * We should also incorporate the -new-syntax option here instead of below
  */
-val rewriteOption = project.findProperty("s3rewrite")?.toString() ?: "-rewrite"
+val rewriteOption = project.findProperty("s3rewrite")?.toString() ?: ""
 tasks.withType<ScalaCompile>().configureEach {
     scalaCompileOptions.apply {
         val scalaCompilerPlugin by configurations.getting
@@ -89,6 +91,8 @@ tasks {
     "test"(Test::class) {
         useJUnitPlatform {
             includeEngines = setOf("scalatest", "vintage")
+            if (ci.isCi)
+                excludeTags = setOf("Integration", "io.truthencode.tags.Integration","FunctionOnly","io.truthencode.tags.FunctionOnly")
             testLogging {
                 events("passed", "skipped", "failed")
             }

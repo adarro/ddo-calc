@@ -79,7 +79,8 @@ trait TurnUndeadTotalHitDiceFeature extends Features {
         id = "TurnUndeadTotalHitDice",
         description = "Increases the Total hit dice of undead you can turn",
         triggersOn = triggerOn.map(_.entryName),
-        triggersOff = triggerOff.map(_.entryName)
+        triggersOff = triggerOff.map(_.entryName),
+        bonusType = totalHitDiceBonusType.entryName
       )
       override val source: SourceInfo = src
       override lazy val value: Int = totalHitDiceValue

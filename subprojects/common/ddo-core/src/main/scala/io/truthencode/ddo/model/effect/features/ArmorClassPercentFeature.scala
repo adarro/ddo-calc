@@ -58,7 +58,8 @@ trait ArmorClassPercentFeature extends Features {
         id = "ArmorClass",
         description = "Improves your Armor Class",
         triggersOn = triggerOn.map(_.entryName),
-        triggersOff = triggerOff.map(_.entryName)
+        triggersOff = triggerOff.map(_.entryName),
+        bonusType = armorBonusType.toString
       )
       /**
        * The main name of the effect.

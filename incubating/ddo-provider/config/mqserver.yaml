@@ -1,0 +1,6 @@
+default: &default
+    serviceUrl: pulsar://localhost:6650
+development:
+    <<: *default
+production:
+    name: Diesel

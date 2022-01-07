@@ -28,13 +28,18 @@ java {
     }
 }
 
-tasks.withType<JavaCompile>().configureEach {
-    options.generatedSourceOutputDirectory.set(file("$projectDir/src/generated/java"))
-    options.compilerArgs.plusAssign("-Asemver.project.dir=$projectDir")
-    modularity.inferModulePath.set(false)
-    // sourceCompatibility = JavaVersion.VERSION_11.toString()
-    //  targetCompatibility = JavaVersion.VERSION_11.toString()
-    dependsOn("syncVersionFiles")
-
-
+tasks {
+    named("jar",Jar::class)  {
+        // AffixSlot is being duplicated but unsure why
+        duplicatesStrategy  = DuplicatesStrategy.WARN
+    }
+    withType<JavaCompile>().configureEach {
+        options.generatedSourceOutputDirectory.set(file("$projectDir/src/generated/java"))
+        options.compilerArgs.plusAssign("-Asemver.project.dir=$projectDir")
+        modularity.inferModulePath.set(false)
+        // sourceCompatibility = JavaVersion.VERSION_11.toString()
+        //  targetCompatibility = JavaVersion.VERSION_11.toString()
+        dependsOn("syncVersionFiles")
+    }
 }
+

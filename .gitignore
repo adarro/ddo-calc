@@ -188,3 +188,11 @@ mill
 
 rslt.txt
 /main.code-workspace
+
+# misc build outputs
+**/bin/*
+
+# apache ignite folder
+**/ignite/*
+# auto generated files
+**/version.properties

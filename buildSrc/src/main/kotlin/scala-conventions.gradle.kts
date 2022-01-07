@@ -26,9 +26,10 @@ plugins {
 
 dependencies {
     val scalaLibraryVersion: String by project
+    val scalaMajorVersion: String by project
     val scalaCompilerPlugin by configurations.creating
     scalaCompilerPlugin("com.typesafe.genjavadoc:genjavadoc-plugin_$scalaLibraryVersion:0.18")
-    compileOnly("org.scoverage:scalac-scoverage-plugin_2.13.7:1.4.10")
+    compileOnly("org.scoverage:scalac-scoverage-plugin_$scalaMajorVersion.7:1.4.10")
 
 }
 
@@ -40,12 +41,23 @@ configure<org.scoverage.ScoverageExtension> {
         Pair(org.scoverage.CoverageType.Statement, 0.75.toBigDecimal())
     ).map { p ->
         val cfg = org.scoverage.ScoverageExtension.CheckConfig()
-        cfg.setProperty("coverageType",p.key)
-        cfg.setProperty("minimumRate",p.value)
+        cfg.setProperty("coverageType", p.key)
+        cfg.setProperty("minimumRate", p.value)
         cfg
     }
     checks.plusAssign(cfgs)
 }
+
+/**
+ * Scala2compiler options
+ * These are options that will be added only when compiling against Scala 2.x
+ */
+val scala2CompilerOptions = sequenceOf(
+    "-feature", "-deprecation", "-Ywarn-dead-code",
+    "-Xsource:3"
+)
+
+val scala3CompilerOptions = sequenceOf("-deprecation")
 
 /**
  * Rewrite option should default to '-rewrite' but can be set to '-indent'
@@ -54,19 +66,186 @@ configure<org.scoverage.ScoverageExtension> {
  * We should also incorporate the -new-syntax option here instead of below
  */
 val rewriteOption = project.findProperty("s3rewrite")?.toString() ?: ""
+
+enum class MigrationDirection {
+    FromScala3,
+    ToScala3,
+    None
+}
+
+enum class MigrationPhase {
+    Initial,
+    Second,
+    None
+}
+
+fun migrationOptions(): Migration {
+    return when (rewriteOption) {
+        "toScala3First" -> Migration(MigrationDirection.ToScala3, MigrationPhase.Initial)
+        "toScala3Second" -> Migration(MigrationDirection.ToScala3, MigrationPhase.Second)
+        "fromScala3First" -> Migration(MigrationDirection.FromScala3, MigrationPhase.Initial)
+        "fromScala3Second" -> Migration(MigrationDirection.FromScala3, MigrationPhase.Second)
+        else -> Migration(MigrationDirection.None, MigrationPhase.None)
+    }
+
+}
+
+data class Migration(val direction: MigrationDirection, val phase: MigrationPhase) {
+
+    // -rewrite or null
+    private val action: String? = if (direction != MigrationDirection.None) "-rewrite" else null
+
+    // Braces vs Significant Indentation
+    private val syntax = Pair("-noindent", "-indent")
+
+    // Control new vs old control structure
+    private val structure = Pair("-old-syntax", "-new-syntax")
+
+    val opt: Sequence<String> = when (direction) {
+        MigrationDirection.ToScala3 -> {
+
+            when (phase) {
+                MigrationPhase.Initial -> {
+                    sequenceOf(action.orEmpty(), structure.second)
+                }
+                MigrationPhase.Second -> {
+                    sequenceOf(action.orEmpty(), syntax.second)
+                }
+                else -> {
+                    emptySequence()
+                }
+            }
+        }
+        MigrationDirection.FromScala3 -> {
+            when (phase) {
+                MigrationPhase.Initial -> {
+                    sequenceOf(action.orEmpty(), syntax.first)
+                }
+                MigrationPhase.Second -> {
+                    sequenceOf(action.orEmpty(), structure.first)
+                }
+                else -> {
+                    emptySequence()
+                }
+            }
+        }
+        MigrationDirection.None -> emptySequence()
+    }
+
+}
+
+fun tryFindScalaVersionDependencies(proj: Project, timing: String): List<Dependency> {
+    logger.warn("${proj.name.toUpperCase()} $timing +++++++++++++(FROM CONVENTION)++++++++++++++++++++++++++}")
+    val cfg = proj.configurations["implementation"].dependencies
+
+    // TODO: Add org check for scala-lang
+    val sz = cfg.size
+    if (sz > 0) {
+        val ncRegx = """scala[\d]?-library.*""".toRegex()
+        val sl = cfg.filter { it.name.matches(ncRegx) }
+        if (sl.isEmpty()) {
+            logger.warn("\t$sz not found")
+            cfg.forEach { d -> logger.warn("\t$d.name}") }
+
+        } else {
+            logger.warn("found matches")
+            sl.forEach { d -> logger.warn("\t${d.name}") }
+            cfg.forEach { d ->
+                logger.warn(d.name)
+            }
+            return sl
+        }
+    }
+    return emptyList()
+
+}
+
+fun tryReadScalaVersion(proj: Project, timing: String): Int {
+    val dep = tryFindScalaVersionDependencies(proj, timing)
+    val s3 = dep.filter { it.name.startsWith("scala3") }
+    return if (s3.isEmpty()) 2 else 3
+}
+
+/**
+ * Make options
+ * Conditionally adds compiler options based on if you're migrating between versions, using Scala 2 or Scala 3
+ * @note Dependencies may or not yet be resolved / available depending on when (doLast / afterEvaluate) or buildSrc vs Root vs sub-project
+ * @param proj current project being compiled.
+ * @param timing testing only parameter to display when running.
+ *
+ * @return values from [scala2CompilerOptions], [scala3CompilerOptions] or [rewrite options](https://docs.scala-lang.org/scala3/guides/migration/tooling-migration-mode.html) (if specified)
+ * returns an empty list when no scala-library is found on path.
+ */
+fun makeOptions(proj: Project, timing: String): Sequence<String> {
+    val sv = tryReadScalaVersion(proj, timing)
+    val mo = migrationOptions()
+    logger.debug("Detected ScalaVersion $sv using options $mo")
+    // Current 'safe' option is not to attempt a migration from 2 to 3 if using scala3
+    // Scala 2x lib may be on path regardless of S3 / S2 due to legacy / BOM enforcedPlatform import etc. ::frown:: (I'm looking at you Quarkus!)
+    val compilerOpt = when (sv) {
+        3 -> {
+            when (mo.direction) {
+                MigrationDirection.ToScala3, MigrationDirection.None -> {
+                    if (mo.direction == MigrationDirection.ToScala3)
+                        logger.warn("Migrating code to Scala3 skipped re-write options as it appears Scala3 is already on your classpath")
+                    scala3CompilerOptions
+                }
+                MigrationDirection.FromScala3 -> {
+                    // just add re-write options
+                    mo.opt
+                }
+            }
+        }
+        2 -> {
+            // Scala 2 options
+            when (mo.direction) {
+                MigrationDirection.None -> {
+                    // Just add S2
+                    scala2CompilerOptions
+                }
+                MigrationDirection.FromScala3, MigrationDirection.ToScala3 -> {
+                    // we're migrating, so just use mo
+                    mo.opt
+                }
+            }
+        }
+        else -> {
+            logger.warn("Could not determine scala library on path")
+            emptySequence()
+        }
+    }
+    return compilerOpt
+}
+
+
+
 tasks.withType<ScalaCompile>().configureEach {
+
+    doLast {
+
+        val co = makeOptions(project, "last")
+        val msg = co.joinToString { it }
+        logger.info("derived compiler options\n $msg")
+    }
+
+    tryFindScalaVersionDependencies(project, "inConfigure")
+    this.project // scala-library
     scalaCompileOptions.apply {
         val scalaCompilerPlugin by configurations.getting
+
         val jDocCompilerPlugin =
             listOf("-P:genjavadoc:out=$buildDir/generated/java", "-Xplugin:${scalaCompilerPlugin.asPath}")
         val scalaCoptions = listOf(
             "-feature", "-deprecation", "-Ywarn-dead-code",
-            "-Xsource:3", "-new-syntax"
-        ) + listOf(rewriteOption).filter { ww -> ww.isNotBlank() }
+            "-Xsource:3"
+        )
 
         additionalParameters?.plusAssign(
             scalaCoptions
         )
+        val mo = migrationOptions()
+
+        logger.warn(" Migration options ${mo.opt}")
         logger.debug("executing scala compile with options\n $scalaCoptions")
         // Need to add -Ypartial-unification for Tapir
     }
@@ -92,7 +271,12 @@ tasks {
         useJUnitPlatform {
             includeEngines = setOf("scalatest", "vintage")
             if (ci.isCi)
-                excludeTags = setOf("Integration", "io.truthencode.tags.Integration","FunctionOnly","io.truthencode.tags.FunctionOnly")
+                excludeTags = setOf(
+                    "Integration",
+                    "io.truthencode.tags.Integration",
+                    "FunctionOnly",
+                    "io.truthencode.tags.FunctionOnly"
+                )
             testLogging {
                 events("passed", "skipped", "failed")
             }

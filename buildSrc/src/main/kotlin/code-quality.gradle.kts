@@ -20,6 +20,7 @@ import org.gradle.kotlin.dsl.provideDelegate
 
 plugins {
     id("com.diffplug.spotless")
+    id("com.javiersc.gradle.plugins.dependency.updates")
 }
 
 enum class ScriptLanguage { GradleBuild, KotlinScriptBuild }

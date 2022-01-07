@@ -33,17 +33,25 @@ dependencies {
     implementation("io.swagger.core.v3:swagger-gradle-plugin:2.1.11")
     implementation("gradle.plugin.ms.ralph.gradle:gradle-dependency-plantuml-exporter-plugin:1.0.0")
     implementation("be.vbgn.gradle:ci-detect-plugin:0.5.0")
+    implementation("com.javiersc.gradle-plugins:dependency-updates:0.1.0-rc.39")
+    implementation("io.spring.gradle:dependency-management-plugin:1.0.11.RELEASE")
+
+//    implementation("io.spring.dependency-management") version "1.0.11.RELEASE"
 }
 
 kotlin {
     this.target {
         this.compilations.all {
-            this.kotlinOptions {
-                jvmTarget = "11"
-                languageVersion = JavaVersion.VERSION_11.toString()
-            }
+//            this.kotlinOptions {
+//             //   jvmTarget = "11"
+//                languageVersion = JavaVersion.VERSION_11.toString()
+//            }
         }
     }
+    jvmToolchain {
+        (this as JavaToolchainSpec).languageVersion.set(JavaLanguageVersion.of(11)) // "8"
+    }
+
 }
 
 

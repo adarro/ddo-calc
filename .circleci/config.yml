@@ -3,12 +3,12 @@
 version: 2.1
 orbs: 
   gradle: circleci/gradle@2.2.0
-  codecov: codecov/codecov@3.0.0
-  coverage-reporter: codacy/coverage-reporter@13.5.3
+  codecov: codecov/codecov@3.2.3
+  coverage-reporter: codacy/coverage-reporter@13.9.17
 # Define a job to be invoked later in a workflow.
 # See: https://circleci.com/docs/2.0/configuration-reference/#jobs
 jobs:
-  build-and-test:
+  build_and_test:
     # Specify the execution environment. You can specify an image from Dockerhub or use one of our Convenience Images from CircleCI's Developer Hub.
     # See: https://circleci.com/docs/2.0/configuration-reference/#docker-machine-macos-windows-executor
     docker:
@@ -34,9 +34,10 @@ jobs:
       - run: ./gradlew assemble
       - run: cat /dev/null | ./gradlew check acceptanceTest
       - run: if [ -e ./gradlew ]; then ./gradlew reportScoverage --continue;else gradle reportScoverage --continue;fi
-      - codecov/upload:
-          validate: true        
+      - codecov/upload
       - coverage-reporter/send_report:
+          coverage-reports: 'report.xml,coverage.info'
+          project-token: $CODACY_PROJECT_TOKEN
       # Download and cache dependencies
       - restore_cache:
           keys:
@@ -51,5 +52,5 @@ jobs:
 workflows:
   example-workflow:
     jobs:
-      - build-and-test
+      - build_and_test
       # run tests!

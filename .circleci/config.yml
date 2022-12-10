@@ -13,7 +13,7 @@ jobs:
     # See: https://circleci.com/docs/2.0/configuration-reference/#docker-machine-macos-windows-executor
     docker:
       # specify the version you desire here
-      - image: ubuntu-2204:2022.04.1
+      - image: cimg/base:2021.04
         auth:
           username: $docker_user
           password: $docker_token

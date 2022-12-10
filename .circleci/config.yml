@@ -15,8 +15,8 @@ jobs:
       # specify the version you desire here
       - image: ubuntu-2204:2022.04.1
         auth:
-          username: adarro
-          password: $DOCKERHUB_PASSWORD
+          username: $docker_user
+          password: $docker_token
 
       # Specify service dependencies here if necessary
       # CircleCI maintains a library of pre-built images
@@ -55,5 +55,7 @@ jobs:
 workflows:
   example-workflow:
     jobs:
-      - build_and_test
+      - build_and_test:
+          context:
+          - docker_creds
       # run tests!

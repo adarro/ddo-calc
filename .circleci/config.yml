@@ -35,7 +35,7 @@ jobs:
     steps:
       - checkout
       - run: ./gradlew assemble
-      - run: cat /dev/null | ./gradlew check acceptanceTest
+      - run: cat /dev/null | ./gradlew check
       - run: if [ -e ./gradlew ]; then ./gradlew reportScoverage --continue;else gradle reportScoverage --continue;fi
       - codecov/upload
       - coverage-reporter/send_report:

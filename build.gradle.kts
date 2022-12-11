@@ -1,4 +1,4 @@
-    /*
+/*
  * SPDX-License-Identifier: Apache-2.0
  *
  * Copyright 2015-2021 Andre White.
@@ -24,6 +24,7 @@ plugins {
     `maven-publish`
     id("com.dorongold.task-tree") version "2.1.0" // Temp until working solution to userhome version script
     id ("com.github.ManifestClasspath") version "0.1.0-RELEASE"
+    `build-dashboard`
   //  id ("be.vbgn.ci-detect") version "0.1.0"
 }
 

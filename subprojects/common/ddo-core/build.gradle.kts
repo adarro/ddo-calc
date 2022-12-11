@@ -16,6 +16,7 @@
  * limitations under the License.
  */
 
+ // ddo-core
 plugins {
     id("scala-library-profile")
     id("acceptance-test-conventions")
@@ -91,4 +92,13 @@ dependencies {
 
         implementation(group = "org.jetbrains", name = "annotations", version = "17.0.0")
     }
+}
+
+// need to compile some scala files for java interopt support for Concordion acceptance tests...
+
+
+tasks.named<AbstractCompile>("compileJava") {
+    // Java also depends on the result of Groovy compilation
+    // (which automatically makes it depend of compileGroovy)
+    classpath += files(sourceSets["main"].get().scala.classesDirectory)
 }

@@ -1,0 +1,4 @@
+gradle 7.6
+dotty 3.2.1
+scala 12.13.10
+kotlin 1.7.10

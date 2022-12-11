@@ -24,6 +24,7 @@
 plugins {
     id("scala-library-profile")
     `maven-publish`
+    id("be.vbgn.ci-detect")
 }
 
 repositories {
@@ -165,6 +166,13 @@ tasks {
     withType(Test::class.java) {
         useJUnitPlatform {
             includeEngines = setOf("scalatest", "junit-jupiter")
+            if (ci.isCi)
+            excludeTags = setOf(
+                "Integration",
+                "io.truthencode.tags.Integration",
+                "FunctionOnly",
+                "io.truthencode.tags.FunctionOnly"
+            )
             testLogging {
                 events("passed", "skipped", "failed")
             }

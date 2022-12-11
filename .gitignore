@@ -80,6 +80,7 @@ qa-tools/qa-tools.iml
 /.ensime_cache/
 ### Gradle template
 .gradle
+local.properties
 build/
 
 # Ignore Gradle GUI config
@@ -196,3 +197,5 @@ rslt.txt
 **/ignite/*
 # auto generated files
 **/version.properties
+incubating/ddo-antlr/src/generated/java/*
+local.properties

@@ -87,7 +87,7 @@
         <scala.binary.full.version>${scala.version}</scala.binary.full.version>
         <scoverage.plugin.version>1.3.0</scoverage.plugin.version>
         <scalafix.version>0.3.2</scalafix.version>
-        <accord.version>0.7.1</accord.version>
+        <accord.version>0.7.6</accord.version>
 		<!-- Kotlin -->
         <kotlin.version>1.6.0</kotlin.version>
         <license.id>apache_v2</license.id>

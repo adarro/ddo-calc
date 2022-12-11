@@ -89,7 +89,7 @@
         <scalafix.version>0.3.2</scalafix.version>
         <accord.version>0.7.6</accord.version>
 		<!-- Kotlin -->
-        <kotlin.version>1.6.0</kotlin.version>
+        <kotlin.version>1.7.22</kotlin.version>
         <license.id>apache_v2</license.id>
         <jrbroker.version>7.4.8</jrbroker.version>
         <global.properties.file>${project.build.outputDirectory}/${project.groupId}.properties</global.properties.file>

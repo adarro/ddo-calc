@@ -96,7 +96,7 @@
 		<!-- R Analytics -->
         <fluentr.version>1.1</fluentr.version>
 		<!-- Testing -->
-        <junit.version>4.13.1</junit.version>
+        <junit.version>4.13.2</junit.version>
         <cola.version>0.5.5</cola.version>
         <mockito.version>2.0.2-beta</mockito.version>
         <jnario.version>1.0.0</jnario.version>

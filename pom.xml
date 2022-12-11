@@ -67,7 +67,7 @@
 		<!--Data / Persistence -->
         <slick.version>3.2.1</slick.version>
 		<!-- Avro -->
-        <avro.version>1.8.2</avro.version>
+        <avro.version>1.11.1</avro.version>
         <avro.scala.version>1.8.0</avro.scala.version>
 		<!-- Scalate Templating engine -->
         <scalatra.version>1.8.0</scalatra.version>

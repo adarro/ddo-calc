@@ -65,7 +65,7 @@
 		<!-- API Standards / REST -->
         <swagger.version>3.0.0-rc1</swagger.version>
 		<!--Data / Persistence -->
-        <slick.version>3.2.1</slick.version>
+        <slick.version>3.3.3</slick.version>
 		<!-- Avro -->
         <avro.version>1.8.2</avro.version>
         <avro.scala.version>1.8.0</avro.scala.version>

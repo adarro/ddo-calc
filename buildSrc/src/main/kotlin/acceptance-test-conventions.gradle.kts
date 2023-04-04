@@ -26,7 +26,7 @@ testSets {
             "acceptanceTest" {
                 exclude(
                     "**/*Spec.scala",
-                    // "**/*Helper*",
+                    // "**/*Helper.java",
                     "**/*Builder*"
                 )
             }

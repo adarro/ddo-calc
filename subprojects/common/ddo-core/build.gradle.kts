@@ -56,8 +56,6 @@ dependencies {
         testImplementation(group = "org.scalatestplus", "mockito-3-4_$scalaMajorVersion")
         testImplementation(group = "com.wix", name = "accord-scalatest_$scalaMajorVersion")
 
-
-
         // JUnit 5
         testRuntimeOnly(group = "org.junit.platform", name = "junit-platform-engine")
         testRuntimeOnly(group = "org.junit.platform", name = "junit-platform-launcher")
@@ -90,5 +88,16 @@ dependencies {
         testCompileOnly(group = "org.jetbrains", name = "annotations", version = "17.0.0")
 
         implementation(group = "org.jetbrains", name = "annotations", version = "17.0.0")
+    }
+}
+
+sourceSets {
+    this.getByName("acceptanceTest") {
+        java {
+            setSrcDirs(listOf<String>())
+        }
+        scala {
+            setSrcDirs(listOf("test/scala"))
+        }
     }
 }

@@ -11,9 +11,12 @@ jobs:
   build_and_test:
     # Specify the execution environment. You can specify an image from Dockerhub or use one of our Convenience Images from CircleCI's Developer Hub.
     # See: https://circleci.com/docs/2.0/configuration-reference/#docker-machine-macos-windows-executor
-    machine:
+    docker:
       # specify the version you desire here
-      - image: ubuntu-2204:2022.04.1
+      - image: cimg/openjdk:11.0
+        auth:
+          username: $docker_user
+          password: $docker_token
 
       # Specify service dependencies here if necessary
       # CircleCI maintains a library of pre-built images
@@ -32,7 +35,7 @@ jobs:
     steps:
       - checkout
       - run: ./gradlew assemble
-      - run: cat /dev/null | ./gradlew check acceptanceTest
+      - run: cat /dev/null | ./gradlew reportScoverage aggregateAllTestReports
       - run: if [ -e ./gradlew ]; then ./gradlew reportScoverage --continue;else gradle reportScoverage --continue;fi
       - codecov/upload
       - coverage-reporter/send_report:
@@ -52,5 +55,7 @@ jobs:
 workflows:
   example-workflow:
     jobs:
-      - build_and_test
+      - build_and_test:
+          context:
+          - docker_creds
       # run tests!

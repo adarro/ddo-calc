@@ -244,9 +244,6 @@ tasks.withType<ScalaCompile>().configureEach {
     tryFindScalaVersionDependencies(project, "inConfigure")
     this.project // scala-library
     scalaCompileOptions.apply {
-        val scalaCompilerPlugin by configurations.getting
-
-        listOf("-P:genjavadoc:out=$buildDir/generated/java", "-Xplugin:${scalaCompilerPlugin.asPath}")
         val scalaCoptions = listOf(
             "-feature", "-deprecation", "-Ywarn-dead-code",
             "-Xsource:3"
@@ -258,7 +255,7 @@ tasks.withType<ScalaCompile>().configureEach {
         val mo = migrationOptions()
 
         logger.warn(" Migration options ${mo.opt}")
-        logger.debug("executing scala compile with options\n $scalaCoptions")
+        logger.debug("executing scala compile with options\n {}",scalaCoptions)
         // Need to add -Ypartial-unification for Tapir
     }
 }

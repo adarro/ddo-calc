@@ -25,16 +25,17 @@ plugins {
 
 
 dependencies {
-    val scalaLibraryVersion: String by project
     val scalaMajorVersion: String by project
-    val scalaCompilerPlugin by configurations.creating    
-    compileOnly("org.scoverage:scalac-scoverage-plugin_$scalaMajorVersion.7:1.4.10")
+    val scoverageMinorVersion: String by project
+    val scoveragePluginVersion: String by project
+    compileOnly("org.scoverage:scalac-scoverage-plugin_$scalaMajorVersion.$scoverageMinorVersion:$scoveragePluginVersion")
 
 }
 
 
 configure<org.scoverage.ScoverageExtension> {
-    scoverageVersion.set("1.4.10")
+    val scoveragePluginVersion: String by project
+    scoverageVersion.set(scoveragePluginVersion)
     val cfgs = mapOf(
         Pair(org.scoverage.CoverageType.Branch, 0.5.toBigDecimal()),
         Pair(org.scoverage.CoverageType.Statement, 0.75.toBigDecimal())
@@ -48,7 +49,7 @@ configure<org.scoverage.ScoverageExtension> {
 }
 
 /**
- * Scala2compiler options
+ * scala2CompilerOptions options
  * These are options that will be added only when compiling against Scala 2.x
  */
 val scala2CompilerOptions = sequenceOf(
@@ -56,6 +57,9 @@ val scala2CompilerOptions = sequenceOf(
     "-Xsource:3"
 )
 
+/**
+ * These are the default options added when compiling against Scala 3.x
+ */
 val scala3CompilerOptions = sequenceOf("-deprecation")
 
 /**
@@ -107,27 +111,33 @@ data class Migration(val direction: MigrationDirection, val phase: MigrationPhas
                 MigrationPhase.Initial -> {
                     sequenceOf(action.orEmpty(), structure.second)
                 }
+
                 MigrationPhase.Second -> {
                     sequenceOf(action.orEmpty(), syntax.second)
                 }
+
                 else -> {
                     emptySequence()
                 }
             }
         }
+
         MigrationDirection.FromScala3 -> {
             when (phase) {
                 MigrationPhase.Initial -> {
                     sequenceOf(action.orEmpty(), syntax.first)
                 }
+
                 MigrationPhase.Second -> {
                     sequenceOf(action.orEmpty(), structure.first)
                 }
+
                 else -> {
                     emptySequence()
                 }
             }
         }
+
         MigrationDirection.None -> emptySequence()
     }
 
@@ -140,7 +150,7 @@ fun tryFindScalaVersionDependencies(proj: Project, timing: String): List<Depende
     // TODO: Add org check for scala-lang
     val sz = cfg.size
     if (sz > 0) {
-        val ncRegx = """scala[\d]?-library.*""".toRegex()
+        val ncRegx = """scala\d?-library.*""".toRegex()
         val sl = cfg.filter { it.name.matches(ncRegx) }
         if (sl.isEmpty()) {
             logger.warn("\t$sz not found")
@@ -168,7 +178,7 @@ fun tryReadScalaVersion(proj: Project, timing: String): Int {
 /**
  * Make options
  * Conditionally adds compiler options based on if you're migrating between versions, using Scala 2 or Scala 3
- * @note Dependencies may or not yet be resolved / available depending on when (doLast / afterEvaluate) or buildSrc vs Root vs sub-project
+ * @note Dependencies may or not yet be resolved / available depending on when (doLast / afterEvaluate) or buildSrc vs Root vs subproject
  * @param proj current project being compiled.
  * @param timing testing only parameter to display when running.
  *
@@ -178,7 +188,7 @@ fun tryReadScalaVersion(proj: Project, timing: String): Int {
 fun makeOptions(proj: Project, timing: String): Sequence<String> {
     val sv = tryReadScalaVersion(proj, timing)
     val mo = migrationOptions()
-    logger.debug("Detected ScalaVersion $sv using options $mo")
+    logger.debug("Detected ScalaVersion {} using options {}", sv, mo)
     // Current 'safe' option is not to attempt a migration from 2 to 3 if using scala3
     // Scala 2x lib may be on path regardless of S3 / S2 due to legacy / BOM enforcedPlatform import etc. ::frown:: (I'm looking at you Quarkus!)
     val compilerOpt = when (sv) {
@@ -189,12 +199,14 @@ fun makeOptions(proj: Project, timing: String): Sequence<String> {
                         logger.warn("Migrating code to Scala3 skipped re-write options as it appears Scala3 is already on your classpath")
                     scala3CompilerOptions
                 }
+
                 MigrationDirection.FromScala3 -> {
                     // just add re-write options
                     mo.opt
                 }
             }
         }
+
         2 -> {
             // Scala 2 options
             when (mo.direction) {
@@ -202,12 +214,14 @@ fun makeOptions(proj: Project, timing: String): Sequence<String> {
                     // Just add S2
                     scala2CompilerOptions
                 }
+
                 MigrationDirection.FromScala3, MigrationDirection.ToScala3 -> {
                     // we're migrating, so just use mo
                     mo.opt
                 }
             }
         }
+
         else -> {
             logger.warn("Could not determine scala library on path")
             emptySequence()
@@ -232,8 +246,7 @@ tasks.withType<ScalaCompile>().configureEach {
     scalaCompileOptions.apply {
         val scalaCompilerPlugin by configurations.getting
 
-        val jDocCompilerPlugin =
-            listOf("-P:genjavadoc:out=$buildDir/generated/java", "-Xplugin:${scalaCompilerPlugin.asPath}")
+        listOf("-P:genjavadoc:out=$buildDir/generated/java", "-Xplugin:${scalaCompilerPlugin.asPath}")
         val scalaCoptions = listOf(
             "-feature", "-deprecation", "-Ywarn-dead-code",
             "-Xsource:3"

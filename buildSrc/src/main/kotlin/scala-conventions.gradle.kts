@@ -1,5 +1,5 @@
-import io.truthencode.build.ext.BuildVersion
-import io.truthencode.build.ext.Version
+import io.truthencode.building.ext.BuildVersion
+import io.truthencode.building.ext.Version
 import org.gradle.api.artifacts.Dependency
 import org.gradle.jvm.toolchain.JavaLanguageVersion
 import java.lang.IllegalStateException

@@ -196,3 +196,6 @@ rslt.txt
 **/ignite/*
 # auto generated files
 **/version.properties
+
+# local properties
+local.properties

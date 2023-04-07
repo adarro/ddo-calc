@@ -2,9 +2,9 @@
 # See: https://circleci.com/docs/2.0/sample-config/
 version: 2.1
 orbs: 
-  gradle: circleci/gradle@2.2.0
-  codecov: codecov/codecov@3.2.3
-  coverage-reporter: codacy/coverage-reporter@13.9.17
+  gradle: circleci/gradle@3.0.0
+  codecov: codecov/codecov@3.2.4
+  coverage-reporter: codacy/coverage-reporter@13.13.0
 # Define a job to be invoked later in a workflow.
 # See: https://circleci.com/docs/2.0/configuration-reference/#jobs
 jobs:
@@ -13,7 +13,8 @@ jobs:
     # See: https://circleci.com/docs/2.0/configuration-reference/#docker-machine-macos-windows-executor
     docker:
       # specify the version you desire here
-      - image: cimg/openjdk:11.0
+      # old image cimg/openjdk:11.0
+      - image: oracle/graalvm-ce:latest 
         auth:
           username: $docker_user
           password: $docker_token
@@ -53,7 +54,7 @@ jobs:
             - ~/.gradle
           key: v1-dependencies--{{ checksum "build.gradle.kts" }}
 workflows:
-  example-workflow:
+  default-workflow:
     jobs:
       - build_and_test:
           context:

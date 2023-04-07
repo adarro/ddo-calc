@@ -15,5 +15,8 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-
+plugins {
+    id("se.patrikerdes.use-latest-versions") // version "0.2.18"
+    id("com.github.ben-manes.versions") // version "0.41.0"
+}
 

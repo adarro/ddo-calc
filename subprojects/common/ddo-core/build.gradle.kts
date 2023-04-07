@@ -67,7 +67,7 @@ dependencies {
         acceptanceTestImplementation.extendsFrom(configurations["testCompileClasspath"])
         acceptanceTestImplementation(group = "org.concordion", name = "concordion", version = concordionVersion)
         // flexmark (mostly for concordion / markdown)
-        acceptanceTestImplementation("com.vladsch.flexmark:flexmark-all:0.62.2")
+        acceptanceTestImplementation("com.vladsch.flexmark:flexmark-all:0.64.0")
 
 //        acceptanceTestImplementation(
 //            group = "com.vladsch.flexmark",
@@ -83,11 +83,11 @@ dependencies {
 //            version = "0.62.2"
 //        )
 
-        testImplementation(group = "de.neuland-bfi", name = "jade4j", version = "1.2.7")
+        testImplementation(group = "de.neuland-bfi", name = "jade4j", version = "1.3.2")
         testImplementation(group = "net.ruippeixotog", name = "scala-scraper_$scalaMajorVersion", version = "2.2.1")
-        testCompileOnly(group = "org.jetbrains", name = "annotations", version = "17.0.0")
+        testCompileOnly(group = "org.jetbrains", name = "annotations", version = "24.0.1")
 
-        implementation(group = "org.jetbrains", name = "annotations", version = "17.0.0")
+        implementation(group = "org.jetbrains", name = "annotations", version = "24.0.1")
     }
 }
 

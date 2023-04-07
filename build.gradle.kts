@@ -22,8 +22,9 @@ plugins {
     id("org.kordamp.gradle.project")
     id("net.thauvin.erik.gradle.semver")
     `maven-publish`
-    id("com.dorongold.task-tree") version "2.1.0" // Temp until working solution to userhome version script
+    id("com.dorongold.task-tree") version "2.1.1" // Temp until working solution to userhome version script
     id ("com.github.ManifestClasspath") version "0.1.0-RELEASE"
+    id("base-conventions")
   //  id ("be.vbgn.ci-detect") version "0.1.0"
 }
 

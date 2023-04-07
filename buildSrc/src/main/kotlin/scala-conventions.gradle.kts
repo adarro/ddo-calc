@@ -1,3 +1,9 @@
+import io.truthencode.build.ext.BuildVersion
+import io.truthencode.build.ext.Version
+import org.gradle.api.artifacts.Dependency
+import org.gradle.jvm.toolchain.JavaLanguageVersion
+import java.lang.IllegalStateException
+
 /*
  * SPDX-License-Identifier: Apache-2.0
  *
@@ -32,6 +38,11 @@ dependencies {
 
 }
 
+/**
+ * Used to assist scala plugin in determining -target vs -release flags
+ */
+data class LanguageVersionInfo(val scalaVersion: String, val javaVersion: String, val usingToolchain: Boolean)
+
 
 configure<org.scoverage.ScoverageExtension> {
     val scoveragePluginVersion: String by project
@@ -53,8 +64,7 @@ configure<org.scoverage.ScoverageExtension> {
  * These are options that will be added only when compiling against Scala 2.x
  */
 val scala2CompilerOptions = sequenceOf(
-    "-feature", "-deprecation", "-Ywarn-dead-code",
-    "-Xsource:3"
+    "-feature", "-deprecation", "-Ywarn-dead-code", "-Xsource:3"
 )
 
 /**
@@ -71,15 +81,11 @@ val scala3CompilerOptions = sequenceOf("-deprecation")
 val rewriteOption = project.findProperty("s3rewrite")?.toString() ?: ""
 
 enum class MigrationDirection {
-    FromScala3,
-    ToScala3,
-    None
+    FromScala3, ToScala3, None
 }
 
 enum class MigrationPhase {
-    Initial,
-    Second,
-    None
+    Initial, Second, None
 }
 
 fun migrationOptions(): Migration {
@@ -169,10 +175,102 @@ fun tryFindScalaVersionDependencies(proj: Project, timing: String): List<Depende
 
 }
 
-fun tryReadScalaVersion(proj: Project, timing: String): Int {
+fun tryReadScalaVersion(proj: Project, timing: String): Version? {
     val dep = tryFindScalaVersionDependencies(proj, timing)
-    val s3 = dep.filter { it.name.startsWith("scala3") }
-    return if (s3.isEmpty()) 2 else 3
+    return tryGuessScalaVersionFromDependencies(dep)
+}
+
+fun tryGuessScalaVersionFromDependencies(deps: List<Dependency>): Version? {
+    val org = "org.scala-lang"
+    val s3Pat = "scala3-library_3"
+    val s2Pat = s3Pat.replace("3", "").replace("_", "")
+    val sList = listOf(s2Pat, s3Pat)
+
+    return deps.filter { d -> return@filter (d.group?.contentEquals(org) ?: false) && sList.contains(d.name) }
+        .map { Version(it.version!!) }.firstOrNull()
+}
+
+/**
+ * Toolchains can be overridden by configuration
+ *
+ *     tasks.register<Test>("testsOn17") {
+ *         javaLauncher.set(javaToolchains.launcherFor {
+ *             languageVersion.set(JavaLanguageVersion.of(17))
+ *         })
+ *     }
+ *
+ * so this is a hack at best atm
+ */
+fun tryJavaVersionFromToolChain(proj: Project): JavaLanguageVersion? {
+    logger.warn("${proj.name} Attempting Toolchain read via Java Plugin")
+    if (project.plugins.hasPlugin("java")) {
+        // val j = project.plugins.getPlugin(JavaPlugin::class.java)
+        logger.warn("Plugin was applied to ${project.name}, attempting to access JavaPluginExtension")
+        var tcs: JavaToolchainSpec? = null
+        java {
+            tcs = toolchain
+        }
+        logger.warn("Returning value from JavaPluginExtension")
+        return tcs?.languageVersion?.orNull
+    } else {
+        logger.warn("no java plugin (yet defined) cannot determine if JavaToolChain is in use")
+    }
+    return null
+}
+
+/**
+ * attempt to determine whether to use -target or -release based on Scala Version, Java Version and whether they are using a toolchain.
+ * [Scala Plugin](https://docs.gradle.org/8.0.1/userguide/scala_plugin.html#sec:scala_target)
+ *
+ * | Scala version                  | Toolchain in use | Parameter value                |
+ * |--------------------------------|------------------|--------------------------------|
+ * | version < `2.13.1`             | yes              | `-target:jvm-1.<java_version>` |
+ * |                                | no               | `-target:jvm-1.8`              |
+ * | `2.13.1` <= version < `2.13.9` | yes              | `-target:<java_version>`       |
+ * |                                | no               | `-target:8`                    |
+ * | `2.13.9` <= version < `3.0`    | yes              | `-release:<java_version>`      |
+ * |                                | no               | `-target:8`                    |
+ * | `3.0` <= version               | yes              | `-release:<java_version>`      |
+ * |                                | no               | `-Xtarget:8`                   |
+ *
+ */
+fun tryGuessTargetOrReleaseFlag(proj: Project, timing: String, sv:Version): String {
+    logger.warn("attempting toolchain check")
+    val tc = tryJavaVersionFromToolChain(proj)
+    val hasToolchain = tc != null
+    if (tc != null) {
+        logger.warn("tool chain was not null and has java version of $tc")
+    } else {
+        logger.warn("tc has no value, will need to determine Java value another way")
+    }
+
+    val sv2131 = Version("2.13.1")
+    val sv2139 = Version("2.13.9")
+    val sv30 = Version("3", "0", BuildVersion("0"))
+    val jv = tc.let { it?.asInt().toString() } ?: "8"
+    return when {
+        sv < sv2131 -> when {
+            hasToolchain -> "-target:jvm-1.$jv"
+            else -> "-target:jvm-1.8"
+        }
+
+        (sv2131 <= sv) && sv < sv2139 -> when {
+            hasToolchain -> "-target:$jv"
+            else -> "-target:8"
+        }
+
+        (sv2139 <= sv) && sv < sv30 -> when {
+            hasToolchain -> "-release:$jv"
+            else -> "-target:8"
+        }
+
+        sv30 <= sv -> when {
+            hasToolchain -> "-release:$jv"
+            else -> "-Xtarget:8"
+        }
+
+        else -> throw IllegalStateException("version clause should be exhaustive!")
+    }
 }
 
 /**
@@ -186,17 +284,17 @@ fun tryReadScalaVersion(proj: Project, timing: String): Int {
  * returns an empty list when no scala-library is found on path.
  */
 fun makeOptions(proj: Project, timing: String): Sequence<String> {
-    val sv = tryReadScalaVersion(proj, timing)
+val sv = tryReadScalaVersion(proj, timing)!!
+    val targetReleaseFlag = tryGuessTargetOrReleaseFlag(proj, timing,sv)
     val mo = migrationOptions()
     logger.debug("Detected ScalaVersion {} using options {}", sv, mo)
     // Current 'safe' option is not to attempt a migration from 2 to 3 if using scala3
     // Scala 2x lib may be on path regardless of S3 / S2 due to legacy / BOM enforcedPlatform import etc. ::frown:: (I'm looking at you Quarkus!)
-    val compilerOpt = when (sv) {
+    val compilerOpt = when (sv.major.toInt()) {
         3 -> {
             when (mo.direction) {
                 MigrationDirection.ToScala3, MigrationDirection.None -> {
-                    if (mo.direction == MigrationDirection.ToScala3)
-                        logger.warn("Migrating code to Scala3 skipped re-write options as it appears Scala3 is already on your classpath")
+                    if (mo.direction == MigrationDirection.ToScala3) logger.warn("Migrating code to Scala3 skipped re-write options as it appears Scala3 is already on your classpath")
                     scala3CompilerOptions
                 }
 
@@ -227,7 +325,7 @@ fun makeOptions(proj: Project, timing: String): Sequence<String> {
             emptySequence()
         }
     }
-    return compilerOpt
+    return compilerOpt.plus(targetReleaseFlag)
 }
 
 
@@ -245,8 +343,7 @@ tasks.withType<ScalaCompile>().configureEach {
     this.project // scala-library
     scalaCompileOptions.apply {
         val scalaCoptions = listOf(
-            "-feature", "-deprecation", "-Ywarn-dead-code",
-            "-Xsource:3"
+            "-feature", "-deprecation", "-Ywarn-dead-code", "-Xsource:3"
         )
 
         additionalParameters?.plusAssign(
@@ -255,7 +352,7 @@ tasks.withType<ScalaCompile>().configureEach {
         val mo = migrationOptions()
 
         logger.warn(" Migration options ${mo.opt}")
-        logger.debug("executing scala compile with options\n {}",scalaCoptions)
+        logger.debug("executing scala compile with options\n {}", scalaCoptions)
         // Need to add -Ypartial-unification for Tapir
     }
 }
@@ -279,13 +376,9 @@ tasks {
     "test"(Test::class) {
         useJUnitPlatform {
             includeEngines = setOf("scalatest", "vintage")
-            if (ci.isCi)
-                excludeTags = setOf(
-                    "Integration",
-                    "io.truthencode.tags.Integration",
-                    "FunctionOnly",
-                    "io.truthencode.tags.FunctionOnly"
-                )
+            if (ci.isCi) excludeTags = setOf(
+                "Integration", "io.truthencode.tags.Integration", "FunctionOnly", "io.truthencode.tags.FunctionOnly"
+            )
             testLogging {
                 events("passed", "skipped", "failed")
             }

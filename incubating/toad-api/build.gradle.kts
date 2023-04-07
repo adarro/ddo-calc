@@ -76,7 +76,7 @@ dependencies {
     // Logging
     implementation("com.tersesystems.blindsight:blindsight-logstash_$scalaMajorVersion:1.5.2")
     // https://mvnrepository.com/artifact/com.tersesystems.logback/logback-structured-config
-    implementation("com.tersesystems.logback:logback-structured-config:1.0.1")
+    implementation("com.tersesystems.logback:logback-structured-config:1.0.3")
     compileOnly("org.slf4j:jul-to-slf4j:$slf4jVersion")
     // implementation(group = "ch.qos.logback", name = "logback-classic")
     // implementation(group = "com.typesafe.scala-logging", name = "scala-logging_$scalaMajorVersion")
@@ -91,7 +91,7 @@ dependencies {
 
     implementation("io.vertx:vertx-codegen:$vertxVersion")
     implementation("io.vertx:vertx-auth-shiro:$vertxVersion")
-    implementation("org.apache.shiro:shiro-core:1.8.0")
+    implementation("org.apache.shiro:shiro-core:1.11.0")
     implementation("org.apache.camel:camel-core:$camelVersion")
     implementation("org.apache.camel:camel-vertx:$camelVersion")
     implementation("org.apache.camel:camel-vertx:$camelVersion")
@@ -100,8 +100,8 @@ dependencies {
     testImplementation("org.apache.camel:camel-test-junit5:$camelVersion")
     testImplementation("org.apache.camel:camel-testcontainers-junit5:$camelVersion")
 
-    testImplementation("org.testcontainers:mongodb:1.16.2")
-    testImplementation("org.testcontainers:junit-jupiter:1.16.2")
+    testImplementation("org.testcontainers:mongodb:1.18.0")
+    testImplementation("org.testcontainers:junit-jupiter:1.18.0")
 
 
     /* swapping to Zookeeper over hazelcast due to Java 9+ issues + Pulsar is using Zookeeper
@@ -112,15 +112,17 @@ dependencies {
 //    }
     implementation(group = "io.monix", name = "monix-eval_$scalaMajorVersion", version = monixVersion)
 
-    implementation("org.javassist:javassist:3.20.0-GA")
+    implementation("org.javassist:javassist:3.29.2-GA")
     // testImplementation("org.scalatra.scalate:scalate-test_$scalaMajorVersion:$scalateVersion")
-    testImplementation("org.apache.httpcomponents:httpclient:4.5.13")
-    testImplementation("org.evosuite:evosuite-standalone-runtime:1.0.5")
+    // Future versions are now httpclient5
+    // https://mvnrepository.com/artifact/org.apache.httpcomponents.client5/httpclient5
+    testImplementation("org.apache.httpcomponents:httpclient:4.5.14")
+    testImplementation("org.evosuite:evosuite-standalone-runtime:1.0.6")
     testImplementation("org.scalatest:scalatest_$scalaMajorVersion:$scalaTestVersion")
 
     // Uri mangling (formerly netaporter)
     // https://mvnrepository.com/artifact/io.lemonlabs/scala-uri
-    implementation("io.lemonlabs:scala-uri_2.13:4.0.0-M3")
+    implementation("io.lemonlabs:scala-uri_2.13:4.0.3")
 
     // testImplementation("io.vertx:vertx-core:$vertxVersion")
 
@@ -145,7 +147,7 @@ dependencies {
     testImplementation("io.vertx:vertx-web-client:$vertxVersion")
 
     // Embed web server for testing// https://mvnrepository.com/artifact/org.eclipse.jetty/jetty-server
-    testImplementation("org.eclipse.jetty:jetty-server:11.0.7")
+    testImplementation("org.eclipse.jetty:jetty-server:11.0.14")
 
 }
 

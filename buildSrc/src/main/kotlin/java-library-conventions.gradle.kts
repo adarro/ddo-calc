@@ -24,7 +24,9 @@ plugins {
 //
 java {
     toolchain {
+        logger.warn("Java-Library-Convention ====> setting Java ToolChain to J11, Vend: GRAAL_VM in ${project.name}")
         languageVersion.set(JavaLanguageVersion.of(11))
+        vendor.set(JvmVendorSpec.GRAAL_VM)
     }
 }
 

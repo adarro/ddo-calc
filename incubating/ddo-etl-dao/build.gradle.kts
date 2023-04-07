@@ -47,19 +47,19 @@ dependencies {
     implementation(group = "com.github.kxbmap", name = "configs_$scalaMajorVersion")
 
     // Quill  / Monix async
-    implementation(group = "io.getquill", name = "quill-sql_$scalaMajorVersion", version = quillVersion)
-    implementation(group = "io.getquill", name = "quill-core_$scalaMajorVersion", version = quillVersion)
-    implementation(group = "io.getquill", name = "quill-monix_$scalaMajorVersion", version = quillVersion)
+//    implementation(group = "io.getquill", name = "quill-sql_$scalaMajorVersion", version = quillVersion)
+//    implementation(group = "io.getquill", name = "quill-core_$scalaMajorVersion", version = quillVersion)
+//    implementation(group = "io.getquill", name = "quill-monix_$scalaMajorVersion", version = quillVersion)
     implementation(group = "io.getquill", name = "quill-jdbc-monix_$scalaMajorVersion", version = quillVersion)
     // Unsure if I really need this but occasionally get a noclass def for ZIO/Fail
     // https://mvnrepository.com/artifact/dev.zio/zio
-    implementation("dev.zio:zio_2.13:1.0.12")
+//    implementation("dev.zio:zio_2.13:2.0.10")
 
     implementation(group = "io.monix", name = "monix-eval_$scalaMajorVersion", version = monixVersion)
     implementation(group = "io.monix", name = "monix-reactive_$scalaMajorVersion", version = monixVersion)
 
     // Testing Database
-    testImplementation("com.h2database:h2:1.4.200")
+    testImplementation("com.h2database:h2:2.1.214")
 
     // validation and rules
     implementation(group = "ch.qos.logback", name = "logback-classic")

@@ -20,10 +20,10 @@ plugins {
 }
 
 testSets {
-    this.create("integrationTest", {
+    this.create("integrationTest") {
         this.dirName = "itest"
         createArtifact = true
-    })
+    }
 //    "integrationTest" {
 //        dirName = "itest"
 //        sourceSet.java {

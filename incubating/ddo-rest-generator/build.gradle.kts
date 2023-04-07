@@ -34,8 +34,6 @@ description = "REST services DDO objects"
 dependencies {
     val scalaLibraryVersion: String by project
     val scalaMajorVersion: String by project
-    val quillVersion: String by project
-    val monixVersion: String by project
 
     // https://mvnrepository.com/artifact/org.json4s/json4s-native
     implementation(group = "org.json4s", name = "json4s-native_$scalaMajorVersion", version = "3.6.7")
@@ -50,10 +48,10 @@ dependencies {
     // Quill
     // Unsure if I really need this but occasionally get a noclass def for ZIO/Fail
     // https://mvnrepository.com/artifact/dev.zio/zio
-    implementation("dev.zio:zio_2.13:1.0.12")
-    compileOnly("org.apache.commons:commons-lang3:3.7")
-    compileOnly("javax.ws.rs:javax.ws.rs-api:2.1")
-    compileOnly("javax.servlet:javax.servlet-api:3.1.0")
+    implementation("dev.zio:zio_2.13:2.0.10")
+    compileOnly("org.apache.commons:commons-lang3:3.12.0")
+    compileOnly("javax.ws.rs:javax.ws.rs-api:2.1.1")
+    compileOnly("javax.servlet:javax.servlet-api:4.0.1")
 
     // validation and rules
     implementation(group = "ch.qos.logback", name = "logback-classic")

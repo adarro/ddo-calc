@@ -14,6 +14,7 @@ jobs:
     docker:
       # specify the version you desire here
       # old image cimg/openjdk:11.0
+      - image: cimg/base:2022.09
       - image: springci/graalvm-ce:java11-0.12.x
         auth:
           username: $docker_user

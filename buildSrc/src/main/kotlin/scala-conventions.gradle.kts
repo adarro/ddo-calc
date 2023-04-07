@@ -234,7 +234,7 @@ fun tryJavaVersionFromToolChain(proj: Project): JavaLanguageVersion? {
  * |                                | no               | `-Xtarget:8`                   |
  *
  */
-fun tryGuessTargetOrReleaseFlag(proj: Project, timing: String, sv:Version): String {
+fun tryGuessTargetOrReleaseFlag(proj: Project, timing: String, sv: Version): String {
     logger.warn("attempting toolchain check")
     val tc = tryJavaVersionFromToolChain(proj)
     val hasToolchain = tc != null
@@ -284,10 +284,12 @@ fun tryGuessTargetOrReleaseFlag(proj: Project, timing: String, sv:Version): Stri
  * returns an empty list when no scala-library is found on path.
  */
 fun makeOptions(proj: Project, timing: String): Sequence<String> {
-val sv = tryReadScalaVersion(proj, timing)!!
-    val targetReleaseFlag = tryGuessTargetOrReleaseFlag(proj, timing,sv)
+    val sv = tryReadScalaVersion(proj, timing)
+    sv ?: return emptySequence()
+
+    val targetReleaseFlag = tryGuessTargetOrReleaseFlag(proj, timing, sv)
     val mo = migrationOptions()
-    logger.debug("Detected ScalaVersion {} using options {}", sv, mo)
+    logger.warn("Detected ScalaVersion {} using options {}", sv, mo)
     // Current 'safe' option is not to attempt a migration from 2 to 3 if using scala3
     // Scala 2x lib may be on path regardless of S3 / S2 due to legacy / BOM enforcedPlatform import etc. ::frown:: (I'm looking at you Quarkus!)
     val compilerOpt = when (sv.major.toInt()) {
@@ -328,32 +330,73 @@ val sv = tryReadScalaVersion(proj, timing)!!
     return compilerOpt.plus(targetReleaseFlag)
 }
 
+// A task that displays a greeting
+abstract class ScalaCompileHelperTask : DefaultTask() {
+    // Configurable by the user
+    @get:Input
+    abstract val defaultFlags: Property<Sequence<String>>
 
+    @get:Input
+    abstract val defaultScala3Flags:Property<Sequence<String>>
+
+    @get:Input
+    abstract val defaultScala2Flags:Property<Sequence<String>>
+
+    // Read-only property calculated from the greeting
+    @Internal
+    val message: Provider<Sequence<String>> = defaultFlags.map { it + " from Gradle" }
+
+    @TaskAction
+    fun printMessage() {
+        logger.quiet(message.get().toString())
+    }
+}
 
 tasks.withType<ScalaCompile>().configureEach {
+    val sOpts = makeOptions(project, "scompile configureEach")
+    doFirst {
 
-    doLast {
+        val co = makeOptions(project, "scompile doLast")
+        if (sOpts != co) {
+            logger.warn("new scala compiler options available, replacing $sOpts with $co")
+            scalaCompileOptions.apply {
 
-        val co = makeOptions(project, "last")
+                additionalParameters?.plusAssign(
+                    co
+                )
+
+
+                logger.warn(" Migration options updated ${co}")
+                logger.warn("[doLast] executing scala compile with options\n {}", co)
+                // Need to add -Ypartial-unification for Tapir
+            }
+        }
         val msg = co.joinToString { it }
-        logger.info("derived compiler options\n $msg")
+        logger.warn("derived compiler options\n $msg")
     }
 
     tryFindScalaVersionDependencies(project, "inConfigure")
-    this.project // scala-library
-    scalaCompileOptions.apply {
-        val scalaCoptions = listOf(
-            "-feature", "-deprecation", "-Ywarn-dead-code", "-Xsource:3"
-        )
+    //   this.project // scala-library
+//    val scalaCoptions = listOf(
+//        "-feature", "-deprecation", "-Ywarn-dead-code", "-Xsource:3"
+//    )
+    val mo = migrationOptions()
+    logger.warn("scala options for ${project.name} $sOpts $mo")
+    if (sOpts.count() == 0) {
+        logger.warn("No scala dependencies available at this time, will not add custom arguments")
+    } else {
+        logger.warn("Applying custom scala compiler options")
+        scalaCompileOptions.apply {
 
-        additionalParameters?.plusAssign(
-            scalaCoptions
-        )
-        val mo = migrationOptions()
+            additionalParameters?.plusAssign(
+                sOpts
+            )
 
-        logger.warn(" Migration options ${mo.opt}")
-        logger.debug("executing scala compile with options\n {}", scalaCoptions)
-        // Need to add -Ypartial-unification for Tapir
+
+            logger.warn(" Migration options ${mo.opt}")
+            logger.warn("executing scala compile with options\n {}", sOpts)
+            // Need to add -Ypartial-unification for Tapir
+        }
     }
 }
 

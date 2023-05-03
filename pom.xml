@@ -109,7 +109,7 @@
         <spring.boot.version>1.5.0.RELEASE</spring.boot.version>
 		<!-- Misc Utilities -->
 		<!-- Web Scraping -->
-        <scalascraper.version>1.2.0</scalascraper.version>
+        <scalascraper.version>3.1.0</scalascraper.version>
 		<!-- Deployment / Deploy / Stage -->
         <maven-deploy-plugin.version>2.8.2</maven-deploy-plugin.version>
 		<!-- Analytics -->

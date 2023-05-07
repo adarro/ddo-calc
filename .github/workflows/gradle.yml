@@ -1,6 +1,10 @@
 name: Run Gradle on PRs
 
-on: pull_request
+on: 
+  push:
+    branches: [master]
+  pull_request:
+    branches: [master]
 
 jobs:
   gradle:
@@ -20,7 +24,7 @@ jobs:
       with:
         gradle-version: wrapper
         arguments: build --scan
-    -name: Run test and Coverage  
+    - name: Run test and Coverage  
       uses: gradle/gradle-build-action@v2
       with:
           gradle-version: wrapper
@@ -30,4 +34,3 @@ jobs:
         token: ${{ secrets.CODECOV_TOKEN }} # not required for public repos
         name: codecov-umbrella # optional 
         verbose: true # optional (default = false)
-

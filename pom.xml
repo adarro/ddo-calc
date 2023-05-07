@@ -141,7 +141,7 @@
             <dependency>
                 <groupId>io.vertx</groupId>
                 <artifactId>vertx-web-scala_${scala.base}</artifactId>
-                <version>3.5.0</version>
+                <version>3.9.1</version>
             </dependency>
             <dependency>
                 <groupId>io.vertx</groupId>

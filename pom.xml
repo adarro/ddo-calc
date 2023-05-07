@@ -70,7 +70,7 @@
         <avro.version>1.11.1</avro.version>
         <avro.scala.version>1.8.0</avro.scala.version>
 		<!-- Scalate Templating engine -->
-        <scalatra.version>1.8.0</scalatra.version>
+        <scalatra.version>1.9.8</scalatra.version>
 		<!--<couchbase.version>1.1.0-525</couchbase.version> -->
 		<!-- Counchbase (lite) only deploys Native (Linux) on repo, so reproducability 
 			and development on windows is... limited at best. -->

@@ -23,6 +23,32 @@ plugins {
     id("doc-uml")
 }
 
+testing {
+    suites {
+        val test by getting(JvmTestSuite::class) {
+            useJUnitJupiter()
+        }
+
+        register<JvmTestSuite>("integrationTest") {
+            dependencies {
+                implementation(project())
+            }
+
+            targets {
+                all {
+                    testTask.configure {
+                        shouldRunAfter(test)
+                    }
+                }
+            }
+        }
+    }
+}
+
+tasks.named("check") {
+    dependsOn(testing.suites.named("integrationTest"))
+}
+
 description = "Core DDO Objects"
 
 dependencies {
@@ -56,8 +82,6 @@ dependencies {
         testImplementation(group = "org.scalacheck", name = "scalacheck_$scalaMajorVersion")
         testImplementation(group = "org.scalatestplus", "mockito-3-4_$scalaMajorVersion")
         testImplementation(group = "com.wix", name = "accord-scalatest_$scalaMajorVersion")
-
-
 
         // JUnit 5
         testRuntimeOnly(group = "org.junit.platform", name = "junit-platform-engine")
@@ -94,11 +118,13 @@ dependencies {
     }
 }
 
-// need to compile some scala files for java interopt support for Concordion acceptance tests...
-
-
-tasks.named<AbstractCompile>("compileJava") {
-    // Java also depends on the result of Groovy compilation
-    // (which automatically makes it depend of compileGroovy)
-    classpath += files(sourceSets["main"].get().scala.classesDirectory)
+sourceSets {
+    this.getByName("acceptanceTest") {
+        java {
+            setSrcDirs(listOf<String>())
+        }
+        scala {
+            setSrcDirs(listOf("test/scala"))
+        }
+    }
 }

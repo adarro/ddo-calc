@@ -56,11 +56,11 @@ dependencies {
 
 // OpenApi code / schema generation
 
-val apiSpec = "$rootDir/specs/ddo-fatespinner-oas3-swagger.yaml"
+val apiSpec: FileCollection = project.rootProject.layout.files("$rootDir/specs/ddo-fatespinner-oas3-swagger.yaml")
 // Location of Avro schema files
-val schemaDir = "${project.projectDir}/src/main/resources/schemas/avro"
+val schemaDir: FileCollection = layout.files("src/main/resources/schemas/avro")
 // Location of ??
-val generatedScalaSourceDir = "${project.projectDir}/src/main/avro"
+val generatedScalaSourceDir = layout.files("src/main/avro")
 
 /**
  * Api spec OpenAPI specification generation information
@@ -73,7 +73,7 @@ val generatedScalaSourceDir = "${project.projectDir}/src/main/avro"
 data class ApiSpec(
     val spec: String,
     val schemaDir: String,
-    val generatedSrcDir: String
+    val generatedSrcDir: String,
 )
 
 /**
@@ -90,7 +90,7 @@ data class PackageSpec(
     val basePackage: String = "io.truthencode.ddo",
     val apiPackage: String = "api",
     val invokerPackage: String = "invoker",
-    val modelPackage: String = "models.model"
+    val modelPackage: String = "models.model",
 ) {
     /**
      * Api qualified api package name
@@ -118,7 +118,7 @@ data class PackageSpec(
         }
 }
 
-val defaultApiSpec = ApiSpec(apiSpec, schemaDir, generatedScalaSourceDir)
+val defaultApiSpec = ApiSpec(apiSpec.asPath, schemaDir.asPath, generatedScalaSourceDir.asPath)
 // val defaultPackageSpec =
 // PackageSpec("io.truthencode.ddo.api","io.truthencode.ddo.invoker","io.truthencode.ddo.models.model")
 val schemas =
@@ -126,14 +126,14 @@ val schemas =
 val specs = mapOf("parseHub" to PackageSpec(basePackage = "io.truthencode.ddo.etl.parsehub"))
 
 openApiValidate {
-    inputSpec.set(apiSpec)
+    inputSpec.set(apiSpec.asPath)
 }
 
 avrohugger {
     this.sourceDirectories {
         this.from(schemaDir)
     }
-    this.destinationDirectory.set(File(generatedScalaSourceDir))
+    this.destinationDirectory.set(generatedScalaSourceDir.singleFile)
     typeMapping {
         protocolType = com.zlad.gradle.avrohugger.AvrohuggerExtension.ScalaADT
         enumType = com.zlad.gradle.avrohugger.AvrohuggerExtension.ScalaCaseObjectEnum
@@ -173,8 +173,8 @@ run {
 task("genModel", org.openapitools.generator.gradle.plugin.tasks.GenerateTask::class) {
     verbose.set(true)
     generatorName.set("scala-lagom-server")
-    inputSpec.set(apiSpec)
-    outputDir.set("$buildDir/generated/lagom")
+    inputSpec.set(apiSpec.asPath)
+    outputDir.set(layout.buildDirectory.dir("generated/lagom").get().asFile.path)
 
     apiPackage.set("io.truthencode.ddo.api")
     invokerPackage.set("io.truthencode.ddo.invoker")
@@ -185,27 +185,31 @@ task("genGatling", org.openapitools.generator.gradle.plugin.tasks.GenerateTask::
     verbose.set(true)
     val id = "scala-gatling"
     generatorName.set(id)
-    inputSpec.set(apiSpec)
-    outputDir.set("$buildDir/generated/$id")
+    inputSpec.set(apiSpec.asPath)
+    outputDir.set(layout.buildDirectory.dir("generated/$id").get().asFile.path)
 
     apiPackage.set("io.truthencode.ddo.api")
     invokerPackage.set("io.truthencode.ddo.invoker")
     modelPackage.set("io.truthencode.ddo.models.model")
 }
 
-tasks.create<Delete>("cleanAvroSchema") {
+tasks.register<Delete>("cleanAvroSchema") {
     description = "Clears generated Schemas Directory"
     group = "source generation"
     delete = setOf(schemaDir)
 }
 
-tasks.create<Delete>("cleanGeneratedScala") {
+tasks.register<Delete>("cleanGeneratedScala") {
     description = "Cleans generated scala directory"
     group = "source generation"
     delete = setOf(generatedScalaSourceDir)
 }
 
-tasks.getAt("clean").dependsOn("cleanGeneratedScala")
+val cleanTask = tasks.named("clean")
+
+if (cleanTask.isPresent) {
+    cleanTask.get().dependsOn("cleanGeneratedScala")
+}
 
 tasks {
     // Use the built-in JUnit support of Gradle.
@@ -217,4 +221,12 @@ tasks {
             }
         }
     }
+    val sv = named("syncVersionFiles").get()
+    // BUG: should not need to declare task dependencies when tasks use non-conflicting outputs
+    val gas = named("generateAvroScala").get()
+    gas.mustRunAfter(named("syncVersionFiles"))
+    withType<com.hierynomus.gradle.license.tasks.LicenseCheck> {
+        mustRunAfter(gas)
+    }
 }
+

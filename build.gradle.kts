@@ -1,24 +1,24 @@
 /*
- * SPDX-License-Identifier: Apache-2.0
- *
- * Copyright 2015-2021 Andre White.
- *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- *     https://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
- */
+* SPDX-License-Identifier: Apache-2.0
+*
+* Copyright 2015-2021 Andre White.
+*
+* Licensed under the Apache License, Version 2.0 (the "License");
+* you may not use this file except in compliance with the License.
+* You may obtain a copy of the License at
+*
+*     https://www.apache.org/licenses/LICENSE-2.0
+*
+* Unless required by applicable law or agreed to in writing, software
+* distributed under the License is distributed on an "AS IS" BASIS,
+* WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+* See the License for the specific language governing permissions and
+* limitations under the License.
+*/
 import java.util.*
 
 plugins {
-
+    id("code-quality")
     id("org.kordamp.gradle.project")
     id("net.thauvin.erik.gradle.semver")
     `maven-publish`
@@ -90,20 +90,19 @@ config {
             "**/*.sql",
             "**/avro/**/*.scala",
             "buildSrc\\build\\kotlin-dsl\\plugins-blocks\\extracted\\*.kts",
-            "**/*.conf"
+            "**/*.conf",
         )
-        includes = setOf("src/main/java/**/*.java","src/main/scala/*.scala")
+        includes = setOf("src/main/java/**/*.java", "src/main/scala/*.scala")
         licenses {
             license {
-                id = "Apache-2.0" //org.kordamp.gradle.plugin.base.model.LicenseId.APACHE_2_0
+                id = "Apache-2.0" // org.kordamp.gradle.plugin.base.model.LicenseId.APACHE_2_0
                 url = "https://www.apache.org/licenses/LICENSE-2.0.txt"
             }
         }
     }
 }
 
-
-tasks.create("showMyVersion") {
+tasks.register("showMyVersion") {
     val v = project.version
     logger.info("project version: $v")
     logger.info(project.gradle.gradleVersion)
@@ -164,23 +163,23 @@ class VersionInfo {
     }
 }
 
-
 //
-//tasks.withType<com.hierynomus.gradle.license.tasks.LicenseCheck>() {
+// tasks.withType<com.hierynomus.gradle.license.tasks.LicenseCheck>() {
 //    this.encoding = "UTF-8"
-//}
+// }
+
+val foo = project.rootProject.layout.files("version.properties")
 
 allprojects {
     repositories {
         mavenCentral()
     }
 
-
     val syncVersionFiles by tasks.registering(Copy::class) {
         if (rootProject != project) {
             logger.warn("We are updating properties file in ${project.name}")
-            from("$rootDir/version.properties")
-            into(projectDir)
+            from(foo)
+            into(layout.projectDirectory)
         } else {
             logger.warn("in root project, nothing doing")
         }

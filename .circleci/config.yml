@@ -1,56 +1,61 @@
 # Scala CircleCI 2.0 configuration file
 # See: https://circleci.com/docs/2.0/sample-config/
 version: 2.1
-orbs: 
-  gradle: circleci/gradle@2.2.0
-  codecov: codecov/codecov@3.2.3
-  coverage-reporter: codacy/coverage-reporter@13.9.17
+orbs:
+    gradle: circleci/gradle@2.2.0
+    codecov: codecov/codecov@3.2.3
+    coverage-reporter: codacy/coverage-reporter@13.9.17
 # Define a job to be invoked later in a workflow.
 # See: https://circleci.com/docs/2.0/configuration-reference/#jobs
 jobs:
-  build_and_test:
-    # Specify the execution environment. You can specify an image from Dockerhub or use one of our Convenience Images from CircleCI's Developer Hub.
-    # See: https://circleci.com/docs/2.0/configuration-reference/#docker-machine-macos-windows-executor
-    machine:
-      # specify the version you desire here
-      - image: ubuntu-2204:2022.04.1
+    build_and_test:
+        # Specify the execution environment. You can specify an image from Dockerhub or use one of our Convenience Images from CircleCI's Developer Hub.
+        # See: https://circleci.com/docs/2.0/configuration-reference/#docker-machine-macos-windows-executor
+        docker:
+            # specify the version you desire here
+            - image: cimg/openjdk:11.0
+              auth:
+                  username: $docker_user
+                  password: $docker_token
 
-      # Specify service dependencies here if necessary
-      # CircleCI maintains a library of pre-built images
-      # documented at https://circleci.com/docs/2.0/circleci-images/
-      # - image: circleci/postgres:9.4
+            # Specify service dependencies here if necessary
+            # CircleCI maintains a library of pre-built images
+            # documented at https://circleci.com/docs/2.0/circleci-images/
+            # - image: circleci/postgres:9.4
 
-    working_directory: ~/repo
+        working_directory: ~/repo
 
-    environment:
-      # Customize the JVM maximum heap limit
-      JVM_OPTS: -Xmx3200m
-      TERM: dumb
+        environment:
+            # Customize the JVM maximum heap limit
+            JVM_OPTS: -Xmx3200m
+            TERM: dumb
 
-    # Add steps to the job
-    # See: https://circleci.com/docs/2.0/configuration-reference/#steps
-    steps:
-      - checkout
-      - run: ./gradlew assemble
-      - run: cat /dev/null | ./gradlew check acceptanceTest
-      - run: if [ -e ./gradlew ]; then ./gradlew reportScoverage --continue;else gradle reportScoverage --continue;fi
-      - codecov/upload
-      - coverage-reporter/send_report:
-          coverage-reports: 'report.xml,coverage.info'
-          project-token: $CODACY_PROJECT_TOKEN
-      # Download and cache dependencies
-      - restore_cache:
-          keys:
-            - v1-dependencies-{{ checksum "build.gradle.kts" }}
-            # fallback to using the latest cache if no exact match is found
-            - v1-dependencies-
+        # Add steps to the job
+        # See: https://circleci.com/docs/2.0/configuration-reference/#steps
+        steps:
+            - checkout
+            - run: ./gradlew assemble
+            - run: cat /dev/null | ./gradlew reportScoverage aggregateAllTestReports
+            - run: if [ -e ./gradlew ]; then ./gradlew reportScoverage aggregateAllTestReports --continue;else gradle reportScoverage aggregateAllTestReports --continue;fi
+            - codecov/upload
+            - coverage-reporter/send_report:
+                  coverage-reports: report.xml,coverage.info
+                  project-token: $CODACY_PROJECT_TOKEN
+            # Download and cache dependencies
+            - restore_cache:
+                  keys:
+                      - v1-dependencies-{{ checksum "build.gradle.kts" }}
+                      # fallback to using the latest cache if no exact match is found
+                      - v1-dependencies-
 
-      - save_cache:
-          paths:
-            - ~/.gradle
-          key: v1-dependencies--{{ checksum "build.gradle.kts" }}
+            - save_cache:
+                  paths:
+                      - ~/.gradle
+                  key: v1-dependencies--{{ checksum "build.gradle.kts" }}
 workflows:
-  example-workflow:
-    jobs:
-      - build_and_test
-      # run tests!
+    example-workflow:
+        jobs:
+            - build_and_test:
+                  context:
+                      - docker_creds
+            # run tests!

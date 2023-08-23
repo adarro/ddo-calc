@@ -199,3 +199,7 @@ rslt.txt
 **/version.properties
 incubating/ddo-antlr/src/generated/java/*
 local.properties
+
+.quarkus/
+/subprojects/common/ddo-modeling/src/main/avro/
+/subprojects/common/ddo-core/src/generated/java/io/truthencode/ddo/core/GeneratedVersion.java

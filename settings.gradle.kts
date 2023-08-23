@@ -121,3 +121,5 @@ if (System.getenv("enableCompositeBuild") == "true") {
         includeBuild(moduleBuild)
     }
 }
+
+includeBuild("build-logic")

@@ -28,6 +28,8 @@ dependencies {
     implementation("com.diffplug.spotless:spotless-plugin-gradle:6.0.0")
     implementation("org.unbroken-dome.gradle-plugins:gradle-testsets-plugin:4.0.0")
     implementation("org.scoverage:gradle-scoverage:7.0.0")
+    // plant uml
+    implementation("io.freefair.gradle:plantuml-plugin:8.2.2")
     implementation("gradle.plugin.org.dripto.gradle.plugin.plantuml:plugin:0.0.3")
     implementation("com.cosminpolifronie.gradle:gradle-plantuml-plugin:1.6.0")
     implementation("io.swagger.core.v3:swagger-gradle-plugin:2.1.11")
@@ -40,14 +42,14 @@ dependencies {
 }
 
 kotlin {
-    this.target {
-        this.compilations.all {
-//            this.kotlinOptions {
-//             //   jvmTarget = "11"
-//                languageVersion = JavaVersion.VERSION_11.toString()
-//            }
-        }
-    }
+//    this.target {
+//        this.compilations.all {
+////            this.kotlinOptions {
+////             //   jvmTarget = "11"
+////                languageVersion = JavaVersion.VERSION_11.toString()
+////            }
+//        }
+//    }
     jvmToolchain {
         (this as JavaToolchainSpec).languageVersion.set(JavaLanguageVersion.of(11)) // "8"
     }
@@ -55,7 +57,7 @@ kotlin {
 }
 
 
-tasks.withType<org.jetbrains.kotlin.gradle.tasks.KotlinCompile>().configureEach {
-    this.sourceCompatibility = "11"
-    this.targetCompatibility = "11"
-}
+//tasks.withType<org.jetbrains.kotlin.gradle.tasks.KotlinCompile>().configureEach {
+//    this.sourceCompatibility = "11"
+//    this.targetCompatibility = "11"
+//}

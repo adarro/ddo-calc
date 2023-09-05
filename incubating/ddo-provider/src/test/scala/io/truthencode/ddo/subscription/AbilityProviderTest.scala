@@ -26,6 +26,7 @@ import org.mockito.scalatest.MockitoSugar
 import org.scalatest.BeforeAndAfterAll
 import org.scalatest.funspec.AnyFunSpec
 import org.scalatest.matchers.should.Matchers
+import org.testcontainers.junit.jupiter.Testcontainers
 import wvlet.log.LogSupport
 
 import java.beans.{PropertyChangeEvent, PropertyChangeListener}
@@ -35,6 +36,7 @@ import scala.concurrent.Await
 import scala.concurrent.duration.{Duration, DurationInt, FiniteDuration}
 import scala.language.postfixOps
 
+@Testcontainers(disabledWithoutDocker = true)
 class AbilityProviderTest
   extends AnyFunSpec with BeforeAndAfterAll with MockitoSugar with Matchers with LogSupport {
   import monix.execution.Scheduler.Implicits.global

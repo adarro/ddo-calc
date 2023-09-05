@@ -16,10 +16,12 @@
  * limitations under the License.
  */
 
+ // ddo-core
 plugins {
     id("scala-library-profile")
-    id("acceptance-test-conventions")
-    id("doc-uml")
+//    id("ru.vyarus.mkdocs") // version "3.0.0"
+//    id("acceptance-test-conventions")
+//    id("doc-uml")
 }
 
 testing {
@@ -89,11 +91,11 @@ dependencies {
         testRuntimeOnly(group = "org.junit.vintage", name = "junit-vintage-engine")
 
         // Concordion BDD
-        val acceptanceTestImplementation by configurations.getting
-        acceptanceTestImplementation.extendsFrom(configurations["testCompileClasspath"])
-        acceptanceTestImplementation(group = "org.concordion", name = "concordion", version = concordionVersion)
-        // flexmark (mostly for concordion / markdown)
-        acceptanceTestImplementation("com.vladsch.flexmark:flexmark-all:0.62.2")
+//        val acceptanceTestImplementation by configurations.getting
+//        acceptanceTestImplementation.extendsFrom(configurations["testCompileClasspath"])
+//        acceptanceTestImplementation(group = "org.concordion", name = "concordion", version = concordionVersion)
+//        // flexmark (mostly for concordion / markdown)
+//        acceptanceTestImplementation("com.vladsch.flexmark:flexmark-all:0.62.2")
 
 //        acceptanceTestImplementation(
 //            group = "com.vladsch.flexmark",
@@ -117,13 +119,13 @@ dependencies {
     }
 }
 
-sourceSets {
-    this.getByName("acceptanceTest") {
-        java {
-            setSrcDirs(listOf<String>())
-        }
-        scala {
-            setSrcDirs(listOf("test/scala"))
-        }
-    }
-}
+//sourceSets {
+//    this.getByName("acceptanceTest") {
+//        java {
+//            setSrcDirs(listOf<String>())
+//        }
+//        scala {
+//            setSrcDirs(listOf("test/scala"))
+//        }
+//    }
+//}

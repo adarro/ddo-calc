@@ -35,6 +35,8 @@ pluginManagement {
 
     val kordampGradlePluginVersion: String by settings
     val semVerPluginVersion: String by settings
+    val mooltiverseNyxPluginVersion: String by settings
+    val foojayResolverPluginVersionversion: String by settings
 
 
     plugins {
@@ -43,9 +45,12 @@ pluginManagement {
         id("com.chudsaviet.gradle.avrohugger") version avroHuggerPluginVersion
         id("org.openapi.generator") version openApiGeneratorPluginVersion
         id("org.scoverage") version scoveragePluginVersion
+        id("com.mooltiverse.oss.nyx") version mooltiverseNyxPluginVersion
+        id("org.gradle.toolchains.foojay-resolver-convention") version foojayResolverPluginVersionversion
 
         id("org.kordamp.gradle.project") version kordampGradlePluginVersion
         id("net.thauvin.erik.gradle.semver") version semVerPluginVersion
+        id("ru.vyarus.mkdocs") version "3.0.0"
     }
 
     repositories {
@@ -54,6 +59,10 @@ pluginManagement {
     }
 }
 
+plugins {
+    id("com.mooltiverse.oss.nyx")
+    id("org.gradle.toolchains.foojay-resolver-convention")
+}
 // at some point in the future, see if we can safely make this property optional so there is no build warning if it is
 // not specified or create a sensible default
 val projectFolderDelimiter: String by settings
@@ -85,7 +94,7 @@ projectFolders.forEach { dirName ->
     Files.find(
         directory,
         Integer.MAX_VALUE,
-        { path: java.nio.file.Path, attributes: java.nio.file.attribute.BasicFileAttributes ->
+        { _: java.nio.file.Path, attributes: java.nio.file.attribute.BasicFileAttributes ->
             attributes.isDirectory
         }).use { dir ->
         dir.forEach { dr ->
@@ -94,7 +103,7 @@ projectFolders.forEach { dirName ->
             val files = dr.toFile()
                 .listFiles { _, str -> str.matches(Regex("($customName|build)\\.gradle(\\.kts)?")) }
 
-            if (files?.isNullOrEmpty() != true) {
+            if (files?.isEmpty() != true) {
                 if (files.size != 1) {
                     logger.warn("Multiple build files located in project directory $dr")
                 }

@@ -35,6 +35,8 @@ buildNumber.properties
 # RStudio files
 .Rproj.user/
 
+**/.antlr/
+
 # produced vignettes
 vignettes/*.html
 vignettes/*.pdf
@@ -80,7 +82,11 @@ qa-tools/qa-tools.iml
 /.ensime_cache/
 ### Gradle template
 .gradle
+local.properties
 build/
+
+# temporary items
+testprojects
 
 # Ignore Gradle GUI config
 gradle-app.setting
@@ -196,3 +202,9 @@ rslt.txt
 **/ignite/*
 # auto generated files
 **/version.properties
+incubating/ddo-antlr/src/generated/java/*
+local.properties
+
+.quarkus/
+/subprojects/common/ddo-modeling/src/main/avro/
+/subprojects/common/ddo-core/src/generated/java/io/truthencode/ddo/core/GeneratedVersion.java

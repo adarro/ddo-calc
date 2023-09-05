@@ -16,6 +16,7 @@
  * limitations under the License.
  */
 plugins {
-    id("java-library-conventions")
     id("scala-conventions")
+    id("java-library-conventions")
+
 }

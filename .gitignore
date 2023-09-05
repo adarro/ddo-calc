@@ -35,6 +35,8 @@ buildNumber.properties
 # RStudio files
 .Rproj.user/
 
+**/.antlr/
+
 # produced vignettes
 vignettes/*.html
 vignettes/*.pdf
@@ -82,6 +84,9 @@ qa-tools/qa-tools.iml
 .gradle
 local.properties
 build/
+
+# temporary items
+testprojects
 
 # Ignore Gradle GUI config
 gradle-app.setting

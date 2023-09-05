@@ -25,7 +25,7 @@
 
 plugins {
     id("scala-conventions")
-    id("acceptance-test-conventions")
+//    id("acceptance-test-conventions")
 }
 
 description = "Common ETL module for storing / loading data from web / user etc"

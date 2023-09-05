@@ -1,16 +1,21 @@
+import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
+
 plugins {
-    kotlin("jvm") version "1.7.10"
+//    kotlin("jvm") version "1.9.10"
+    id("djaxonomy.kotlin-library-conventions")
     antlr
-    id("java-library-conventions")
-    id("be.vbgn.ci-detect")
+//    id("java-library-conventions")
+//    id("be.vbgn.ci-detect")
     id("code-quality")
     idea
+//    id("djaxonomy.kotlin-test-conventions")
+
 }
 
 dependencies {
 
     testImplementation(enforcedPlatform("org.junit:junit-bom:5.8.2"))
-    // antlr("org.antlr:antlr:3.5.2")   // use ANTLR version 3
+
     antlr("org.antlr:antlr4:4.10.1") // use ANTLR version 4
     implementation("ch.qos.logback:logback-core:1.2.11")
     implementation("ch.qos.logback:logback-classic:1.2.11")
@@ -25,11 +30,13 @@ dependencies {
     testRuntimeOnly(group = "org.junit.jupiter", name = "junit-jupiter-engine")
 
 }
+
 repositories {
     mavenCentral()
 }
-//val javaGenPath = File("src/generated/java")
-val antlrJavaPath = PackagePath("src/generated/java","io.truthencode.ddo.grammer.antlr")
+
+val antlrJavaPath = PackagePath(project.layout.buildDirectory.dir("generated-src/java").get().asFile.path, "io.truthencode.ddo.grammar.antlr")
+
 data class PackagePath(val source: String, val packageName: String) {
     /**
      * Property stores the base output folder.
@@ -39,6 +46,7 @@ data class PackagePath(val source: String, val packageName: String) {
     fun packageToPath(packageId: String): File {
         val ps = System.getProperty("file.separator")
         val np = packageId.replace(".", ps)
+        logger.warn("baseOutputFolder: $baseOutputFolder")
         return File(baseOutputFolder, np)
     }
 
@@ -66,7 +74,7 @@ idea {
 
 kotlin {
     this.sourceSets.named("main") {
-        kotlin.srcDir(antlrJavaPath.baseOutputFolder)
+//        kotlin.srcDir(antlrJavaPath.baseOutputFolder)
         this.kotlin.sourceDirectories.plus(antlrJavaPath.baseOutputFolder)
     }
 }
@@ -75,31 +83,41 @@ kotlin {
 tasks {
     generateGrammarSource {
         maxHeapSize = "64m"
+//        arguments = arguments + listOf("-visitor", "-long-messages", "-lib", antlrJavaPath.packageFolder.absolutePath)
         arguments = arguments + listOf("-visitor", "-long-messages", "-package", "io.truthencode.ddo.grammer.antlr")
         outputDirectory = antlrJavaPath.packageFolder
+//        logger.error("outputting generated antlr classes to ${antlrJavaPath.packageFolder}")
 
     }
 
-    withType(Test::class.java) {
-        systemProperties["concordion.output.dir"] = "${reporting.baseDir}/spec"
+    withType(KotlinCompile::class) {
+        dependsOn(generateGrammarSource)
     }
-    logger.info("concordion output directory: *************************************")
-    // Use the built-in JUnit support of Gradle.
-    "test"(Test::class) {
-        useJUnitPlatform {
-            includeEngines = setOf("junit-jupiter", "vintage")
-            if (ci.isCi)
-                excludeTags = setOf(
-                    "Integration",
-                    "io.truthencode.tags.Integration",
-                    "FunctionOnly",
-                    "io.truthencode.tags.FunctionOnly"
-                )
-            testLogging {
-                events("passed", "skipped", "failed")
-            }
-        }
 
-        outputs.upToDateWhen { false }
+    named("compileTestKotlin") {
+        dependsOn(generateTestGrammarSource)
     }
+
+//    withType(Test::class.java) {
+//        systemProperties["concordion.output.dir"] = "${reporting.baseDir}/spec"
+//    }
+//    logger.info("concordion output directory: *************************************")
+//    // Use the built-in JUnit support of Gradle.
+//    "test"(Test::class) {
+//        useJUnitPlatform {
+//            includeEngines = setOf("junit-jupiter", "vintage")
+////            if (ci.isCi)
+////                excludeTags = setOf(
+////                    "Integration",
+////                    "io.truthencode.tags.Integration",
+////                    "FunctionOnly",
+////                    "io.truthencode.tags.FunctionOnly"
+////                )
+//            testLogging {
+//                events("passed", "skipped", "failed")
+//            }
+//        }
+//
+//        outputs.upToDateWhen { false }
+//    }
 }

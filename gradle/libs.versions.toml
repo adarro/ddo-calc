@@ -1,0 +1,133 @@
+[versions]
+ch-qos-logback = "1.2.11"
+com-clever-cloud-pulsar4s = "2.8.1"
+com-wix = "0.7.6"
+io-getquill = "3.11.0"
+io-vertx = "4.2.3"
+org-apache-camel = "3.13.0"
+org-jacoco = "0.8.9"
+org-junit-jupiter = "5.8.2"
+org-scoverage = "1.4.10"
+org-testcontainers = "1.16.2"
+org-wvlet-airframe = "21.12.1"
+
+[libraries]
+ch-qos-logback-logback-classic = { module = "ch.qos.logback:logback-classic", version.ref = "ch-qos-logback" }
+ch-qos-logback-logback-core = { module = "ch.qos.logback:logback-core", version.ref = "ch-qos-logback" }
+co-helmethair-scalatest-junit-runner = "co.helmethair:scalatest-junit-runner:0.1.10"
+com-beachape-enumeratum_2-13 = "com.beachape:enumeratum_2.13:1.7.0"
+com-clever-cloud-pulsar4s-pulsar4s-avro_2-13 = { module = "com.clever-cloud.pulsar4s:pulsar4s-avro_2.13", version.ref = "com-clever-cloud-pulsar4s" }
+com-clever-cloud-pulsar4s-pulsar4s-core_2-13 = { module = "com.clever-cloud.pulsar4s:pulsar4s-core_2.13", version.ref = "com-clever-cloud-pulsar4s" }
+com-clever-cloud-pulsar4s-pulsar4s-monix_2-13 = { module = "com.clever-cloud.pulsar4s:pulsar4s-monix_2.13", version.ref = "com-clever-cloud-pulsar4s" }
+com-geirsson-scalafmt-core_2-13 = "com.geirsson:scalafmt-core_2.13:3.1.1"
+com-github-kxbmap-configs_2-13 = "com.github.kxbmap:configs_2.13:0.6.1"
+com-h2database-h2 = "com.h2database:h2:1.4.200"
+com-hazelcast = "com.hazelcast:hazelcast:5.0"
+com-tersesystems-blindsight-blindsight-logstash_2-13 = "com.tersesystems.blindsight:blindsight-logstash_2.13:1.5.2"
+com-tersesystems-logback-logback-structured-config = "com.tersesystems.logback:logback-structured-config:1.0.1"
+com-typesafe-akka-akka-actor_2-13 = "com.typesafe.akka:akka-actor_2.13:2.6.16"
+com-typesafe-config = "com.typesafe:config:1.4.2"
+com-typesafe-genjavadoc-genjavadoc-plugin_2-13-7 = "com.typesafe.genjavadoc:genjavadoc-plugin_2.13.7:0.18"
+com-typesafe-scala-logging-scala-logging_2-13 = "com.typesafe.scala-logging:scala-logging_2.13:3.9.2"
+com-vladsch-flexmark-flexmark-all = "com.vladsch.flexmark:flexmark-all:0.62.2"
+com-wix-accord-core_2-13 = { module = "com.wix:accord-core_2.13", version.ref = "com-wix" }
+com-wix-accord-scalatest_2-13 = { module = "com.wix:accord-scalatest_2.13", version.ref = "com-wix" }
+de-neuland-bfi-jade4j = "de.neuland-bfi:jade4j:1.2.7"
+dev-zio-zio_2-13 = "dev.zio:zio_2.13:1.0.12"
+io-gatling-highcharts-gatling-charts-highcharts = "io.gatling.highcharts:gatling-charts-highcharts:3.2.1"
+io-getquill-quill-core_2-13 = { module = "io.getquill:quill-core_2.13", version.ref = "io-getquill" }
+io-getquill-quill-jdbc-monix_2-13 = { module = "io.getquill:quill-jdbc-monix_2.13", version.ref = "io-getquill" }
+io-getquill-quill-monix_2-13 = { module = "io.getquill:quill-monix_2.13", version.ref = "io-getquill" }
+io-getquill-quill-sql_2-13 = { module = "io.getquill:quill-sql_2.13", version.ref = "io-getquill" }
+io-github-davidgregory084-vertices-core_2-13 = "io.github.davidgregory084:vertices-core_2.13:0.1.2"
+io-lemonlabs-scala-uri_2-13 = "io.lemonlabs:scala-uri_2.13:4.0.0-M3"
+io-monix-monix-bio_2-13 = "io.monix:monix-bio_2.13:1.2.0"
+io-monix-monix-eval_2-13 = "io.monix:monix-eval_2.13:3.4.0"
+io-monix-monix-execution_2-13 = "io.monix:monix-execution_2.13:3.4.0"
+io-monix-monix-reactive_2-13 = "io.monix:monix-reactive_2.13:3.4.0"
+io-swagger-core-v3-swagger-jaxrs2 = "io.swagger.core.v3:swagger-jaxrs2:2.1.11"
+io-vertx-vertx-auth-shiro = { module = "io.vertx:vertx-auth-shiro", version.ref = "io-vertx" }
+io-vertx-vertx-codegen = { module = "io.vertx:vertx-codegen", version.ref = "io-vertx" }
+io-vertx-vertx-core = { module = "io.vertx:vertx-core", version.ref = "io-vertx" }
+io-vertx-vertx-ignite = { module = "io.vertx:vertx-ignite", version.ref = "io-vertx" }
+io-vertx-vertx-junit5 = { module = "io.vertx:vertx-junit5", version.ref = "io-vertx" }
+io-vertx-vertx-mongo-client = { module = "io.vertx:vertx-mongo-client", version.ref = "io-vertx" }
+io-vertx-vertx-web = { module = "io.vertx:vertx-web", version.ref = "io-vertx" }
+io-vertx-vertx-web-client = { module = "io.vertx:vertx-web-client", version.ref = "io-vertx" }
+javax-servlet-javax-servlet-api = "javax.servlet:javax.servlet-api:3.1.0"
+javax-ws-rs-javax-ws-rs-api = "javax.ws.rs:javax.ws.rs-api:2.1"
+net-ruippeixotog-scala-scraper_2-13 = "net.ruippeixotog:scala-scraper_2.13:2.2.1"
+net-sourceforge-plantuml = "net.sourceforge.plantuml:plantuml:1.2023.10"
+net-thauvin-erik-semver = "net.thauvin.erik:semver:1.2.0"
+org-antlr-antlr4 = "org.antlr:antlr4:4.10.1"
+org-apache-camel-camel-componentdsl = { module = "org.apache.camel:camel-componentdsl", version.ref = "org-apache-camel" }
+org-apache-camel-camel-core = { module = "org.apache.camel:camel-core", version.ref = "org-apache-camel" }
+org-apache-camel-camel-main = { module = "org.apache.camel:camel-main", version.ref = "org-apache-camel" }
+org-apache-camel-camel-pulsar = { module = "org.apache.camel:camel-pulsar", version.ref = "org-apache-camel" }
+org-apache-camel-camel-test-junit5 = { module = "org.apache.camel:camel-test-junit5", version.ref = "org-apache-camel" }
+org-apache-camel-camel-testcontainers-junit5 = { module = "org.apache.camel:camel-testcontainers-junit5", version.ref = "org-apache-camel" }
+org-apache-camel-camel-vertx = { module = "org.apache.camel:camel-vertx", version.ref = "org-apache-camel" }
+org-apache-commons-commons-lang3 = "org.apache.commons:commons-lang3:3.7"
+org-apache-httpcomponents-httpclient = "org.apache.httpcomponents:httpclient:4.5.13"
+org-apache-logging-log4j-log4j-core = "org.apache.logging.log4j:log4j-core:2.17.1"
+org-apache-pulsar-pulsar-client-all = "org.apache.pulsar:pulsar-client-all:2.9.1"
+org-apache-shiro-shiro-core = "org.apache.shiro:shiro-core:1.8.0"
+org-concordion = "org.concordion:concordion:3.1.3"
+org-concordion-concordion-collapse-output-extension = "org.concordion:concordion-collapse-output-extension:1.0.0"
+org-concordion-concordion-embed-extension = "org.concordion:concordion-embed-extension:1.2.0"
+org-eclipse-jetty-jetty-server = "org.eclipse.jetty:jetty-server:11.0.7"
+org-evosuite-evosuite-standalone-runtime = "org.evosuite:evosuite-standalone-runtime:1.0.5"
+org-jacoco-org-jacoco-agent = { module = "org.jacoco:org.jacoco.agent", version.ref = "org-jacoco" }
+org-jacoco-org-jacoco-ant = { module = "org.jacoco:org.jacoco.ant", version.ref = "org-jacoco" }
+org-javassist = "org.javassist:javassist:3.20.0-GA"
+org-jetbrains-annotations = "org.jetbrains:annotations:13.0"
+org-jetbrains-kotlin-kotlin-build-tools-impl = "org.jetbrains.kotlin:kotlin-build-tools-impl:1.9.10"
+org-jetbrains-kotlin-kotlin-compiler-embeddable = "org.jetbrains.kotlin:kotlin-compiler-embeddable:1.9.10"
+org-jetbrains-kotlin-kotlin-klib-commonizer-embeddable = "org.jetbrains.kotlin:kotlin-klib-commonizer-embeddable:1.9.10"
+org-jetbrains-kotlin-kotlin-reflect = "org.jetbrains.kotlin:kotlin-reflect:1.9.0"
+org-jetbrains-kotlin-kotlin-scripting-compiler-embeddable = "org.jetbrains.kotlin:kotlin-scripting-compiler-embeddable:1.9.10"
+org-jetbrains-kotlin-kotlin-stdlib = "org.jetbrains.kotlin:kotlin-stdlib:1.9.0"
+org-jetbrains-kotlin-kotlin-stdlib-common = "org.jetbrains.kotlin:kotlin-stdlib-common:1.9.0"
+org-jetbrains-kotlin-kotlin-stdlib-jdk7 = "org.jetbrains.kotlin:kotlin-stdlib-jdk7:1.9.0"
+org-jetbrains-kotlin-kotlin-stdlib-jdk8 = "org.jetbrains.kotlin:kotlin-stdlib-jdk8:1.9.0"
+org-json4s-json4s-native_2-13 = "org.json4s:json4s-native_2.13:4.0.3"
+org-junit-junit-bom = "org.junit:junit-bom:5.8.2"
+org-junit-jupiter-junit-jupiter = { module = "org.junit.jupiter:junit-jupiter", version.ref = "org-junit-jupiter" }
+org-junit-jupiter-junit-jupiter-api = { module = "org.junit.jupiter:junit-jupiter-api", version.ref = "org-junit-jupiter" }
+org-junit-jupiter-junit-jupiter-engine = { module = "org.junit.jupiter:junit-jupiter-engine", version.ref = "org-junit-jupiter" }
+org-junit-platform-junit-platform-engine = "org.junit.platform:junit-platform-engine:1.8.1"
+org-junit-platform-junit-platform-launcher = "org.junit.platform:junit-platform-launcher:1.8.1"
+org-junit-platform-junit-platform-runner = "org.junit.platform:junit-platform-runner:1.8.2"
+org-junit-vintage-junit-vintage-engine = "org.junit.vintage:junit-vintage-engine:5.8.2"
+org-mockito-mockito-core = "org.mockito:mockito-core:3.4.6"
+org-mockito-mockito-scala-scalatest_2-13 = "org.mockito:mockito-scala-scalatest_2.13:1.16.49"
+org-scala-lang-scala-compiler = "org.scala-lang:scala-compiler:2.13.7"
+org-scala-lang-scala-library = "org.scala-lang:scala-library:2.12.8"
+org-scala-lang-scala-reflect = "org.scala-lang:scala-reflect:2.13.7"
+org-scala-stm-scala-stm_2-13 = "org.scala-stm:scala-stm_2.13:0.11.1"
+org-scalacheck-scalacheck_2-13 = "org.scalacheck:scalacheck_2.13:1.15.4"
+org-scalatest-scalatest_2-13 = "org.scalatest:scalatest_2.13:3.3.0-SNAP3"
+org-scalatestplus-mockito-3-4_2-13 = "org.scalatestplus:mockito-3-4_2.13:3.3.0.0-SNAP3"
+org-scalatra-scalate-scalate-core_2-13 = "org.scalatra.scalate:scalate-core_2.13:1.9.7"
+org-scoverage-scalac-scoverage-plugin_2-13-7 = { module = "org.scoverage:scalac-scoverage-plugin_2.13.7", version.ref = "org-scoverage" }
+org-scoverage-scalac-scoverage-runtime_2-13 = { module = "org.scoverage:scalac-scoverage-runtime_2.13", version.ref = "org-scoverage" }
+org-slf4j-jul-to-slf4j = "org.slf4j:jul-to-slf4j:1.8.0-beta4"
+org-slf4j-slf4j-api = "org.slf4j:slf4j-api:1.7.36"
+org-testcontainers-junit-jupiter = { module = "org.testcontainers:junit-jupiter", version.ref = "org-testcontainers" }
+org-testcontainers-mongodb = { module = "org.testcontainers:mongodb", version.ref = "org-testcontainers" }
+org-testcontainers-pulsar = { module = "org.testcontainers:pulsar", version.ref = "org-testcontainers" }
+org-wvlet-airframe-airframe-config_2-13 = { module = "org.wvlet.airframe:airframe-config_2.13", version.ref = "org-wvlet-airframe" }
+org-wvlet-airframe-airframe-http-finagle_2-13 = { module = "org.wvlet.airframe:airframe-http-finagle_2.13", version.ref = "org-wvlet-airframe" }
+org-wvlet-airframe-airframe_2-13 = { module = "org.wvlet.airframe:airframe_2.13", version.ref = "org-wvlet-airframe" }
+
+[plugins]
+com-dorongold-task-tree = "com.dorongold.task-tree:2.1.0"
+com-github-ManifestClasspath = "com.github.ManifestClasspath:0.1.0-RELEASE"
+com-github-ben-manes-versions = "com.github.ben-manes.versions:0.41.0"
+com-github-lkishalmi-gatling = "com.github.lkishalmi.gatling:3.2.9"
+com-zlad-gradle-avrohugger = "com.zlad.gradle.avrohugger:0.7.0"
+net-thauvin-erik-gradle-semver = "net.thauvin.erik.gradle.semver:1.0.4"
+nl-littlerobots-version-catalog-update = "nl.littlerobots.version-catalog-update:0.8.1"
+org-jetbrains-kotlin-jvm = "org.jetbrains.kotlin.jvm:1.9.10"
+org-kordamp-gradle-project = "org.kordamp.gradle.project:0.51.0"
+org-openapi-generator = "org.openapi.generator:4.2.2"

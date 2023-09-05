@@ -1,5 +1,7 @@
 parser grammar EnchantmentsParser;
 
+@header { package io.truthencode.ddo.grammar.antlar; }
+
 options { tokenVocab = EnchantmentsLexer; }
 
 parse returns [List<String> row]

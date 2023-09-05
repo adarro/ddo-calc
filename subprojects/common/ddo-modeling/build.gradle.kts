@@ -221,12 +221,12 @@ tasks {
             }
         }
     }
-    val sv = named("syncVersionFiles").get()
-    // BUG: should not need to declare task dependencies when tasks use non-conflicting outputs
-    val gas = named("generateAvroScala").get()
-    gas.mustRunAfter(named("syncVersionFiles"))
-    withType<com.hierynomus.gradle.license.tasks.LicenseCheck> {
-        mustRunAfter(gas)
-    }
+//    val sv = named("syncVersionFiles").get()
+//    // BUG: should not need to declare task dependencies when tasks use non-conflicting outputs
+//    val gas = named("generateAvroScala").get()
+//    gas.mustRunAfter(named("syncVersionFiles"))
+//    withType<com.hierynomus.gradle.license.tasks.LicenseCheck> {
+//        mustRunAfter(gas)
+//    }
 }
 

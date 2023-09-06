@@ -16,6 +16,7 @@
 * limitations under the License.
 */
 import com.mooltiverse.oss.nyx.state.State
+import org.jetbrains.kotlin.util.collectionUtils.concat
 import ru.vyarus.gradle.plugin.python.task.PythonTask
 import java.text.SimpleDateFormat
 import java.util.*
@@ -67,12 +68,28 @@ mkdocs {
 
 }
 
+val devRequirementsIn = listOf(
+    "pip-tools:7.3.0",
+)
+
+val requirementsIn = listOf(
+    "mkdocs-monorepo-plugin:1.0.5",
+    "mkdocs-markdownextradata-plugin:0.2.5",
+    "mike:1.1.2",
+    "plantuml-markdown:3.9.2",
+)
+
+tasks.register("generateRequirementsIn") {
+    val rIn = layout.projectDirectory.file("requirements.in")
+    this.outputs.files(rIn)
+    val rTxt = requirementsIn.joinToString("\n") { it.replace(":","==") }
+    logger.error("rText : \n$rTxt")
+    rIn.asFile.writeText(rTxt)
+}
+
 python {
     this.pip(
-        "mkdocs-monorepo-plugin:1.0.5",
-        "mkdocs-markdownextradata-plugin:0.2.5",
-        "mike:1.1.2",
-        "plantuml-markdown:3.9.2",
+        requirementsIn.concat(devRequirementsIn)
     )
     installVirtualenv = true
 
@@ -96,13 +113,24 @@ tasks.register("dumpSomeDiagnostics") {
 // Currently need to manually verify this matches mkdocs.yml value
 tasks.register("syncDocVersion", PythonTask::class) {
     dependsOn(project.tasks.named("nyxInfer"))
+    val nyxState: State = project.findProperty("nyxState") as State
+    module = "mike"
+    command = "deploy --push --update-aliases ${nyxState.version}${mkDocAlias()}\n"
     doLast {
         if (project.hasProperty("nyxState")) {
-            val nyxState: State = project.findProperty("nyxState") as State
-            module = "mike"
-            command = "deploy --push --update-aliases ${nyxState.version}${mkDocAlias()}\n"
+
             run()
         }
+    }
+}
+
+
+tasks.register("syncRequirements", PythonTask::class) {
+    dependsOn(tasks.named("nyxInfer"), tasks.named("generateRequirementsIn"))
+    module = "piptools"
+    command = "compile"
+    doLast {
+        run()
     }
 }
 

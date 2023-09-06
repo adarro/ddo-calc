@@ -3,11 +3,11 @@ site_name: DDO Calculator
 # Meta tags (placed in header)
 site_description: DDO component and object calculator
 site_author: Andre White
-site_url: https://you.github.io/ddo-calc-parent
+site_url: https://truthencode.github.io/ddo-calc-parent
 
 # Repository (add link to repository on each page)
 repo_name: ddo-calc-parent
-repo_url: http://github.com/you/ddo-calc-parent
+repo_url: http://github.com/truthencode/ddo-calc-parent
 #edit_uri: edit/master/src/doc/docs/
 
 #Copyright (shown at the footer)

@@ -13,7 +13,7 @@ jobs:
         # See: https://circleci.com/docs/2.0/configuration-reference/#docker-machine-macos-windows-executor
         docker:
             # specify the version you desire here
-            - image: cimg/openjdk:11.0
+            - image: cimg/openjdk:17.0
               auth:
                   username: $docker_user
                   password: $docker_token

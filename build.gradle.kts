@@ -27,7 +27,7 @@ plugins {
     id("node-conventions")
 
     idea
-    id("net.thauvin.erik.gradle.semver")
+//    id("net.thauvin.erik.gradle.semver")
     `maven-publish`
     id("com.dorongold.task-tree") version "2.1.0" // Temp until working solution to userhome version script
     id("com.github.ManifestClasspath") version "0.1.0-RELEASE"
@@ -58,7 +58,7 @@ group = "io.truthencode"
 
 // MkDocs config
 mkdocs {
-    sourcesDir = "doc"
+    sourcesDir = "."
     strict = false
     with(publish) {
         this.generateVersionsFile = true
@@ -84,7 +84,7 @@ tasks.register("dumpSomeDiagnostics") {
         if (project.hasProperty("nyxState")) {
             val nyxState: State = project.findProperty("nyxState") as State
             println(nyxState.bump)
-            println(nyxState.directory.getAbsolutePath())
+            println(nyxState.directory.absolutePath)
             println(nyxState.scheme.toString())
             println(SimpleDateFormat("HH:mm:ss dd/MM/yyyy", Locale.US).format(java.util.Date(nyxState.timestamp)))
             println(nyxState.version)
@@ -250,8 +250,11 @@ val syncVersionFilesFromRoot by tasks.registering(Copy::class) {
     } else {
         logger.warn("in root project, propagating properties")
         rootProject.allprojects.forEach {
-            from(foo)
-            into(it.layout.buildDirectory)
+            if (it != rootProject) {
+                logger.warn("copy to -> ${it.name}")
+                from(foo)
+                into(it.layout.buildDirectory)
+            }
         }
 
 

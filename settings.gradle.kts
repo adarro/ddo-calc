@@ -33,8 +33,8 @@ pluginManagement {
     val openApiGeneratorPluginVersion: String by settings
 
 
-    val kordampGradlePluginVersion: String by settings
-    val semVerPluginVersion: String by settings
+//    val kordampGradlePluginVersion: String by settings
+//    val semVerPluginVersion: String by settings
     val mooltiverseNyxPluginVersion: String by settings
     val foojayResolverPluginVersionversion: String by settings
 
@@ -48,8 +48,8 @@ pluginManagement {
         id("com.mooltiverse.oss.nyx") version mooltiverseNyxPluginVersion
         id("org.gradle.toolchains.foojay-resolver-convention") version foojayResolverPluginVersionversion
 
-        id("org.kordamp.gradle.project") version kordampGradlePluginVersion
-        id("net.thauvin.erik.gradle.semver") version semVerPluginVersion
+//        id("org.kordamp.gradle.project") version kordampGradlePluginVersion
+//        id("net.thauvin.erik.gradle.semver") version semVerPluginVersion
         id("ru.vyarus.mkdocs") version "3.0.0"
     }
 

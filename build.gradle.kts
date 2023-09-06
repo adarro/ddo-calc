@@ -86,7 +86,7 @@ tasks.register("dumpSomeDiagnostics") {
             println(nyxState.bump)
             println(nyxState.directory.absolutePath)
             println(nyxState.scheme.toString())
-            println(SimpleDateFormat("HH:mm:ss dd/MM/yyyy", Locale.US).format(java.util.Date(nyxState.timestamp)))
+            println(SimpleDateFormat("HH:mm:ss dd/MM/yyyy", Locale.US).format(Date(nyxState.timestamp)))
             println(nyxState.version)
         }
 
@@ -99,7 +99,9 @@ tasks.register("syncDocVersion", PythonTask::class) {
     doLast {
         if (project.hasProperty("nyxState")) {
             val nyxState: State = project.findProperty("nyxState") as State
-            val cmd = "mike deploy --push --update-aliases ${nyxState.version}${mkDocAlias()}\n"
+            module = "mike"
+            command = "deploy --push --update-aliases ${nyxState.version}${mkDocAlias()}\n"
+            run()
         }
     }
 }
@@ -236,12 +238,6 @@ class VersionInfo {
 
 val foo = project.rootProject.layout.files("version.properties")
 
-fun bar() {
-    val vp = project.rootProject.layout.files("version.properties").singleFile
-    project.rootProject.allprojects.forEach {
-
-    }
-}
 
 val syncVersionFilesFromRoot by tasks.registering(Copy::class) {
     if (rootProject != project) {

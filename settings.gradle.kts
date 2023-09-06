@@ -76,6 +76,7 @@ logger.info("checking $projectFolders for sub-projects")
 /**
  *  reads the first part of a string up to the "."
  *  should be an Extension, but can not inline compile as one in settings.gradle.kts
+ *
  *  so we're doing a quick one off verses polluting a buildSrc, um... further
  *
  *  @param str the string to parse
@@ -104,7 +105,7 @@ projectFolders.forEach { dirName ->
                 .listFiles { _, str -> str.matches(Regex("($customName|build)\\.gradle(\\.kts)?")) }
 
             if (files?.isEmpty() != true) {
-                if (files.size != 1) {
+                if (files!!.size != 1) {
                     logger.warn("Multiple build files located in project directory $dr")
                 }
                 val projectDir = rootDir.toPath().relativize(dr)

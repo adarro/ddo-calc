@@ -1,0 +1,4 @@
+mkdocs-monorepo-plugin==1.0.5
+mkdocs-markdownextradata-plugin==0.2.5
+mike==1.1.2
+plantuml-markdown==3.9.2

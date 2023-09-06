@@ -98,6 +98,7 @@ dependencies {
 kotlin {
     jvmToolchain {
         (this as JavaToolchainSpec).languageVersion.set(JavaLanguageVersion.of(defaultJavaToolChainVersion ?: "17")) // "8"
-        (this as JavaToolchainSpec).vendor.set(JvmVendorSpec.GRAAL_VM)
+        // GraalvmToolchain support doesn't work for CI systems. Circle CI requires custom image since deprecating cicrleci/graal in favor of cimg/openjdk
+        // (this as JavaToolchainSpec).vendor.set(JvmVendorSpec.GRAAL_VM)
     }
 }

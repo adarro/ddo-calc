@@ -66,8 +66,8 @@ dependencies {
         // https://mvnrepository.com/artifact/org.json4s/json4s-native
         implementation(group = "org.json4s", name = "json4s-native_$scalaMajorVersion")
 
-        annotationProcessor("net.thauvin.erik:semver:1.2.0")
-        compileOnly("net.thauvin.erik:semver:1.2.0")
+//        annotationProcessor("net.thauvin.erik:semver:1.2.0")
+//        compileOnly("net.thauvin.erik:semver:1.2.0")
 
         implementation("org.scala-lang:scala-library:$scalaLibraryVersion")
         implementation(group = "com.beachape", name = "enumeratum_$scalaMajorVersion")

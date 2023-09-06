@@ -33,8 +33,8 @@ pluginManagement {
     val openApiGeneratorPluginVersion: String by settings
 
 
-    val kordampGradlePluginVersion: String by settings
-    val semVerPluginVersion: String by settings
+//    val kordampGradlePluginVersion: String by settings
+//    val semVerPluginVersion: String by settings
     val mooltiverseNyxPluginVersion: String by settings
     val foojayResolverPluginVersionversion: String by settings
 
@@ -48,8 +48,8 @@ pluginManagement {
         id("com.mooltiverse.oss.nyx") version mooltiverseNyxPluginVersion
         id("org.gradle.toolchains.foojay-resolver-convention") version foojayResolverPluginVersionversion
 
-        id("org.kordamp.gradle.project") version kordampGradlePluginVersion
-        id("net.thauvin.erik.gradle.semver") version semVerPluginVersion
+//        id("org.kordamp.gradle.project") version kordampGradlePluginVersion
+//        id("net.thauvin.erik.gradle.semver") version semVerPluginVersion
         id("ru.vyarus.mkdocs") version "3.0.0"
     }
 
@@ -76,6 +76,7 @@ logger.info("checking $projectFolders for sub-projects")
 /**
  *  reads the first part of a string up to the "."
  *  should be an Extension, but can not inline compile as one in settings.gradle.kts
+ *
  *  so we're doing a quick one off verses polluting a buildSrc, um... further
  *
  *  @param str the string to parse
@@ -104,7 +105,7 @@ projectFolders.forEach { dirName ->
                 .listFiles { _, str -> str.matches(Regex("($customName|build)\\.gradle(\\.kts)?")) }
 
             if (files?.isEmpty() != true) {
-                if (files.size != 1) {
+                if (files!!.size != 1) {
                     logger.warn("Multiple build files located in project directory $dr")
                 }
                 val projectDir = rootDir.toPath().relativize(dr)

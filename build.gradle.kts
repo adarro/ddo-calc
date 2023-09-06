@@ -27,7 +27,7 @@ plugins {
     id("node-conventions")
 
     idea
-    id("net.thauvin.erik.gradle.semver")
+//    id("net.thauvin.erik.gradle.semver")
     `maven-publish`
     id("com.dorongold.task-tree") version "2.1.0" // Temp until working solution to userhome version script
     id("com.github.ManifestClasspath") version "0.1.0-RELEASE"
@@ -58,7 +58,7 @@ group = "io.truthencode"
 
 // MkDocs config
 mkdocs {
-    sourcesDir = "doc"
+    sourcesDir = "."
     strict = false
     with(publish) {
         this.generateVersionsFile = true
@@ -84,9 +84,9 @@ tasks.register("dumpSomeDiagnostics") {
         if (project.hasProperty("nyxState")) {
             val nyxState: State = project.findProperty("nyxState") as State
             println(nyxState.bump)
-            println(nyxState.directory.getAbsolutePath())
+            println(nyxState.directory.absolutePath)
             println(nyxState.scheme.toString())
-            println(SimpleDateFormat("HH:mm:ss dd/MM/yyyy", Locale.US).format(java.util.Date(nyxState.timestamp)))
+            println(SimpleDateFormat("HH:mm:ss dd/MM/yyyy", Locale.US).format(Date(nyxState.timestamp)))
             println(nyxState.version)
         }
 
@@ -99,7 +99,9 @@ tasks.register("syncDocVersion", PythonTask::class) {
     doLast {
         if (project.hasProperty("nyxState")) {
             val nyxState: State = project.findProperty("nyxState") as State
-            val cmd = "mike deploy --push --update-aliases ${nyxState.version}${mkDocAlias()}\n"
+            module = "mike"
+            command = "deploy --push --update-aliases ${nyxState.version}${mkDocAlias()}\n"
+            run()
         }
     }
 }
@@ -236,12 +238,6 @@ class VersionInfo {
 
 val foo = project.rootProject.layout.files("version.properties")
 
-fun bar() {
-    val vp = project.rootProject.layout.files("version.properties").singleFile
-    project.rootProject.allprojects.forEach {
-
-    }
-}
 
 val syncVersionFilesFromRoot by tasks.registering(Copy::class) {
     if (rootProject != project) {
@@ -250,8 +246,11 @@ val syncVersionFilesFromRoot by tasks.registering(Copy::class) {
     } else {
         logger.warn("in root project, propagating properties")
         rootProject.allprojects.forEach {
-            from(foo)
-            into(it.layout.buildDirectory)
+            if (it != rootProject) {
+                logger.warn("copy to -> ${it.name}")
+                from(foo)
+                into(it.layout.buildDirectory)
+            }
         }
 
 

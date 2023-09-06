@@ -13,7 +13,7 @@ jobs:
         # See: https://circleci.com/docs/2.0/configuration-reference/#docker-machine-macos-windows-executor
         docker:
             # specify the version you desire here
-            - image: cimg/openjdk:11.0
+            - image: cimg/openjdk:17.0
               auth:
                   username: $docker_user
                   password: $docker_token
@@ -35,8 +35,7 @@ jobs:
         steps:
             - checkout
             - run: ./gradlew assemble
-            - run: cat /dev/null | ./gradlew reportScoverage aggregateAllTestReports
-            - run: if [ -e ./gradlew ]; then ./gradlew reportScoverage aggregateAllTestReports --continue;else gradle reportScoverage aggregateAllTestReports --continue;fi
+            - run: if [ -e ./gradlew ]; then ./gradlew reportScoverage --continue;else gradle reportScoverage --continue;fi
             - codecov/upload
             - coverage-reporter/send_report:
                   coverage-reports: report.xml,coverage.info

@@ -73,6 +73,7 @@ val devRequirementsIn = listOf(
 )
 
 val requirementsIn = listOf(
+    "mkdocs-material:9.2.8",
     "mkdocs-monorepo-plugin:1.0.5",
     "mkdocs-markdownextradata-plugin:0.2.5",
     "mike:1.1.2",

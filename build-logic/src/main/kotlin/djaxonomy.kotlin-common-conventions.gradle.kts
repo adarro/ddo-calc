@@ -51,6 +51,7 @@ dependencies {
     implementation("com.sksamuel.hoplite:hoplite-yaml:$hopliteVersion")
 }
 
+// TODO: Either Consolidate kotlin / java toolchain or make sure there are no conflicts if they are set different within the same project.
 kotlin {
     jvmToolchain {
 //        check(this is JavaToolchainSpec)

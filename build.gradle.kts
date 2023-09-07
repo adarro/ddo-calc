@@ -16,7 +16,6 @@
 * limitations under the License.
 */
 import com.mooltiverse.oss.nyx.state.State
-import org.jetbrains.kotlin.util.collectionUtils.concat
 import ru.vyarus.gradle.plugin.python.task.PythonTask
 import java.text.SimpleDateFormat
 import java.util.*
@@ -24,8 +23,10 @@ import java.util.*
 plugins {
 //    id("code-quality")
     // id("org.kordamp.gradle.project")
+//    scala apply (false)
+    id("org.scoverage") apply (false)
     // may need node support
-    id("node-conventions")
+//    id("node-conventions")
 
     idea
 //    id("net.thauvin.erik.gradle.semver")
@@ -37,10 +38,12 @@ plugins {
     id("com.github.ben-manes.versions") version "0.41.0"
     id("nl.littlerobots.version-catalog-update") version "0.8.1"
     id("ru.vyarus.mkdocs")
+
 //    id("ru.vyarus.mkdocs")  version "3.0.0" apply (false)
     //  id ("be.vbgn.ci-detect") version "0.1.0"
 }
 
+apply(plugin = "org.scoverage")
 // general project information
 val projectName = project.name
 val gitHubAccountName = "truthencode"
@@ -93,7 +96,7 @@ tasks.register("generateRequirementsIn") {
 
 python {
     this.pip(
-        requirementsIn.concat(devRequirementsIn),
+        requirementsIn.plus(devRequirementsIn),
     )
     installVirtualenv = true
 }

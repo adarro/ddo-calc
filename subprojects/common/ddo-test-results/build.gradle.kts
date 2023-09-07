@@ -17,6 +17,7 @@ reporting {
     }
 }
 
+description = "Utility class for aggregating Reports"
 // Transliterated Groovy -> Kotlin from
 // https://gist.githubusercontent.com/nikialeksey/7cefae6b3104ce9a2c765197343bc436/raw/fb61c7d35480f9ae16650aefbb31c9c11420bec4/dependency-report.gradle
 // Inspired by https://gist.github.com/tzachz/419478fc8b009e953f5e5dc39f3f3a2a

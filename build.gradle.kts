@@ -41,14 +41,13 @@ plugins {
     //  id ("be.vbgn.ci-detect") version "0.1.0"
 }
 
-
 // general project information
 val projectName = project.name
 val gitHubAccountName = "truthencode"
 val gitHubBaseSite = "https://github.com/$gitHubAccountName/${project.name}"
-val siteIssueTracker = "${gitHubBaseSite}/issues"
+val siteIssueTracker = "$gitHubBaseSite/issues"
 val gitExtension = "${project.name}.git"
-val siteScm = "${gitHubBaseSite}/$gitExtension"
+val siteScm = "$gitHubBaseSite/$gitExtension"
 
 // Used for versioned documentation
 val mkDocsLatestAlias: String? by project
@@ -64,8 +63,6 @@ mkdocs {
     with(publish) {
         this.generateVersionsFile = true
     }
-
-
 }
 
 val devRequirementsIn = listOf(
@@ -89,17 +86,16 @@ val requirementsIn = listOf(
 tasks.register("generateRequirementsIn") {
     val rIn = layout.projectDirectory.file("requirements.in")
     this.outputs.files(rIn)
-    val rTxt = requirementsIn.joinToString("\n") { it.replace(":","==") }
+    val rTxt = requirementsIn.joinToString("\n") { it.replace(":", "==") }
     logger.error("rText : \n$rTxt")
     rIn.asFile.writeText(rTxt)
 }
 
 python {
     this.pip(
-        requirementsIn.concat(devRequirementsIn)
+        requirementsIn.concat(devRequirementsIn),
     )
     installVirtualenv = true
-
 }
 
 tasks.register("dumpSomeDiagnostics") {
@@ -113,7 +109,6 @@ tasks.register("dumpSomeDiagnostics") {
             println(SimpleDateFormat("HH:mm:ss dd/MM/yyyy", Locale.US).format(Date(nyxState.timestamp)))
             println(nyxState.version)
         }
-
     }
 }
 
@@ -130,7 +125,6 @@ tasks.register("syncDocVersion", PythonTask::class) {
         }
     }
 }
-
 
 tasks.register("syncRequirements", PythonTask::class) {
     dependsOn(tasks.named("nyxInfer"), tasks.named("generateRequirementsIn"))
@@ -232,7 +226,6 @@ class VersionInfo {
         return readOptionalProperty(props, key, defaultValue)
     }
 
-
     val props = versionProperties()
     val major = optionalProperty("version.major", "0")?.toInt()
     val minor = optionalProperty("version.minor", "0")?.toInt()
@@ -255,7 +248,9 @@ class VersionInfo {
         fun readOptionalProperty(prop: Properties, key: String, defaultValue: String? = null): String? {
             val oKey = if (prop.containsKey(key)) {
                 prop.getProperty(key)
-            } else null
+            } else {
+                null
+            }
             val pKey = when {
                 oKey.isNullOrBlank() -> null
                 else -> prop.getProperty(key)
@@ -273,11 +268,9 @@ class VersionInfo {
 
 val foo = project.rootProject.layout.files("version.properties")
 
-
 val syncVersionFilesFromRoot by tasks.registering(Copy::class) {
     if (rootProject != project) {
         logger.warn("This task should only be run from the root project")
-
     } else {
         logger.warn("in root project, propagating properties")
         rootProject.allprojects.forEach {
@@ -287,8 +280,6 @@ val syncVersionFilesFromRoot by tasks.registering(Copy::class) {
                 into(it.layout.buildDirectory)
             }
         }
-
-
     }
 }
 

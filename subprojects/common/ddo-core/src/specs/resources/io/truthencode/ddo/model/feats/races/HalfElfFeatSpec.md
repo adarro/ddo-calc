@@ -49,9 +49,10 @@ These feats are not recommended for characters with actual levels of the class.
 | [Half-Elf Dilettante: Sorcerer](http://ddowiki.com/page/Half-Elf_Dilettante:_Sorcerer "Half-Elf Dilettante: Sorcerer") | Passive | Able to use wands and scrolls as if you were a level one sorcerer. |*   Half-Elf*   13 Charisma |
 | [Half-Elf Dilettante: Warlock](http://ddowiki.com/page/Half-Elf_Dilettante:_Warlock "Half-Elf Dilettante: Warlock") | Passive | Able to use wands and scrolls as if you were a level one warlock. Toggle: You deal 1D4 extra Fire damage with attacks and spells. This trigger at most once every two seconds. This toggle is exclusive with Warlock Pact toggles. |*   Half-Elf*   13 Charisma |
 | [Half-Elf Dilettante: Wizard](http://ddowiki.com/page/Half-Elf_Dilettante:_Wizard "Half-Elf Dilettante: Wizard") | Passive | Able to use wands and scrolls as if you were a level one wizard. |*   Half-Elf*   13 Intelligence |
-
+<!-- markdownlint-disable MD053 -->
 [existingDilettanteFeat]: - "c:verify-rows=#feat:verifyDilettante()"
 
 [_matchStrategy_]: - "c:matchStrategy=KeyMatch"
 
 [result]: - "?=#feat"
+<!-- markdownlint-enable MD053 -->

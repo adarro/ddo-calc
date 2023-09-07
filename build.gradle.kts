@@ -73,11 +73,17 @@ val devRequirementsIn = listOf(
 )
 
 val requirementsIn = listOf(
+    "mkdocs:1.5.2",
     "mkdocs-material:9.2.8", // trans req: regex which may require cc (gcc et all)
     "mkdocs-monorepo-plugin:1.0.5",
     "mkdocs-markdownextradata-plugin:0.2.5",
+    "mkdocs-graphviz:1.5.3",
     "mike:1.1.2",
     "plantuml-markdown:3.9.2",
+    "mkdocs-embed-file-plugins:2.0.6",
+    "mkdocs-callouts:1.9.0",
+    "mkdocs-awesome-pages-plugin:2.9.2",
+    "mkdocs-include-markdown-plugin:6.0.1",
 )
 
 tasks.register("generateRequirementsIn") {

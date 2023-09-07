@@ -1,0 +1,13 @@
+strict digraph {
+splines=ortho
+"ddo-modeling" -> "ddo-platform-scala"
+"ddo-testing-util" -> "ddo-platform-scala"
+"ddo-test-results" -> "ddo-core"
+"ddo-core" -> "ddo-platform-scala"
+"ddo-core" -> "ddo-util"
+"ddo-core" -> "ddo-modeling"
+"ddo-core" -> "ddo-core"
+"ddo-core" -> "ddo-testing-util"
+"ddo-etl" -> "ddo-platform-scala"
+"ddo-util" -> "ddo-platform-scala"
+}

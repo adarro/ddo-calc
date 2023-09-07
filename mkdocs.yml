@@ -40,8 +40,16 @@ theme:
 plugins:
     - monorepo
     - search
+    - awesome-pages
     #    Required for variables support (https://github.com/rosscdh/mkdocs-markdownextradata-plugin)
     - markdownextradata
+    - embed_file:
+        callouts: true
+        # custom-attribute: 'assets/css/custom_attributes.css' //need to be the same as in the config!
+        language_message: 'file does not currently exists.'
+    - include-markdown:
+        opening_tag: "{!"
+        closing_tag: "!}"
 
 
 extra:
@@ -132,6 +140,11 @@ markdown_extensions:
                 'stdlib',
                 'license'
             ]                   # theme will not be set if listed commands present (default as listed)
+    - mkdocs_graphviz
+    - nl2br
+
+extra_javascript:
+    - https://cdn.jsdelivr.net/gh/rod2ik/cdn@main/mkdocs/javascripts/mkdocs-graphviz.js
 
 #nav:
 #    -   Home: index.md

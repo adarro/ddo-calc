@@ -117,30 +117,30 @@ tasks.register<NodeTask>("run") {
 val buildTaskUsingNpx = tasks.register<NpxTask>("buildNpx") {
     dependsOn(tasks.npmInstall)
     command.set("babel")
-    args.set(listOf("src", "--out-dir", "${buildDir}/npx-output"))
+    args.set(listOf("src", "--out-dir", "${layout.buildDirectory}/npx-output"))
     inputs.dir("src")
-    outputs.dir("${buildDir}/npx-output")
+    outputs.dir("${layout.buildDirectory}/npx-output")
 }
 
 val buildTaskUsingNpm = tasks.register<NpmTask>("buildNpm") {
     dependsOn(tasks.npmInstall)
     npmCommand.set(listOf("run", "build"))
-    args.set(listOf("--", "--out-dir", "${buildDir}/npm-output"))
+    args.set(listOf("--", "--out-dir", "${layout.buildDirectory}/npm-output"))
     inputs.dir("src")
-    outputs.dir("${buildDir}/npm-output")
+    outputs.dir("${layout.buildDirectory}/npm-output")
 }
 
 val buildTaskUsingYarn = tasks.register<YarnTask>("buildYarn") {
     dependsOn(tasks.npmInstall)
     yarnCommand.set(listOf("run", "build"))
-    args.set(listOf("--out-dir", "${buildDir}/yarn-output"))
+    args.set(listOf("--out-dir", "${layout.buildDirectory}/yarn-output"))
     inputs.dir("src")
-    outputs.dir("${buildDir}/yarn-output")
+    outputs.dir("${layout.buildDirectory}/yarn-output")
 }
 
 tasks.register<Zip>("package") {
     archiveFileName.set("app.zip")
-    destinationDirectory.set(buildDir)
+    destinationDirectory.set(layout.buildDirectory)
     from(buildTaskUsingNpx) {
         into("npx")
     }

@@ -84,7 +84,7 @@ Modules: ddo-core
 
 ### Named Items
 
-Named Items include all named equipment from quests, raids etc. These effects need to be parsed from a text source.
+[Named Items](https://ddowiki.com/page/Category:Named_items_by_update) include all named equipment from quests, raids etc. These effects need to be parsed from a text source.
 
 An additional layer is needed to parse these values as we are capturing the actual effects as opposed to a basic regular
 expression against the source. I.e. [Cloak of the Zephyr](https://ddowiki.com/page/Item:Cloak_of_the_Zephyr) grants

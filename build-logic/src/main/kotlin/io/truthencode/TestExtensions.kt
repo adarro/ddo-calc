@@ -27,14 +27,14 @@ interface KotlinAnnotationProcessingExtension {
     val kotlinTestMode: Property<TestMode>
 }
 
-
 enum class TestTypes {
     Unit(TestSuiteType.UNIT_TEST),
     Integration(TestSuiteType.INTEGRATION_TEST),
     Functional(TestSuiteType.FUNCTIONAL_TEST),
     Performance(TestSuiteType.PERFORMANCE_TEST),
     Acceptance("acceptance-test"),
-    Custom("custom-test");
+    Custom("custom-test"),
+    ;
 
     var id: String? = null
     var defaultName: String? = null
@@ -43,7 +43,7 @@ enum class TestTypes {
         TestSuiteType.UNIT_TEST,
         TestSuiteType.FUNCTIONAL_TEST,
         TestSuiteType.INTEGRATION_TEST,
-        TestSuiteType.PERFORMANCE_TEST
+        TestSuiteType.PERFORMANCE_TEST,
     )
 
     constructor()
@@ -72,15 +72,11 @@ enum class TestTypes {
             }
         }
 
-
         fun fromNamingConvention(key: String): TestTypes {
             return TestTypes.values().find { it.defaultName == key } ?: Custom
         }
     }
-
 }
-
-
 
 class TestBuildSupport(proj: Project) {
     private val koTestVersion: String by proj

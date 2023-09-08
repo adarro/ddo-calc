@@ -23,7 +23,6 @@ plugins {
 //    id("com.github.lkishalmi.gatling") version "3.2.9"
     //  id("io.gatling.gradle") version "3.9.5.5" replaces above
     id("org.openapi.generator")
-
 }
 
 dependencies {

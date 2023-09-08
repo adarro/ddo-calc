@@ -77,7 +77,7 @@ class DamageDiceTest
     for { x <- diceSet.cross(tpl) } yield s"${x._1} ${x._2}"
   }
   describe("DnD Dice") {
-    they("should support 3[2D4 + 3] flags syntax") {
+    they("should support W[nDn + n] flags syntax") {
       randomDiceSets.foreach { d =>
         noException shouldBe thrownBy(DamageInfo.apply(d))
       }

@@ -18,8 +18,10 @@
 
 plugins {
     id("scala-library-profile")
+    id("djaxonomy.test-conventions")
     id("com.zlad.gradle.avrohugger")
-    id("com.github.lkishalmi.gatling") version "3.2.9"
+//    id("com.github.lkishalmi.gatling") version "3.2.9"
+    //  id("io.gatling.gradle") version "3.9.5.5" replaces above
     id("org.openapi.generator")
 }
 
@@ -45,13 +47,13 @@ dependencies {
     implementation(group = "com.wix", name = "accord-core_$scalaMajorVersion")
     implementation(group = "ch.qos.logback", name = "logback-classic")
     implementation(group = "com.typesafe.scala-logging", name = "scala-logging_$scalaMajorVersion")
-    testImplementation(group = "org.scalatest", name = "scalatest_$scalaMajorVersion")
-    testImplementation(group = "org.mockito", name = "mockito-core")
-
-    // JUnit 5
-    testRuntimeOnly(group = "org.junit.platform", name = "junit-platform-engine")
-    testRuntimeOnly(group = "org.junit.platform", name = "junit-platform-launcher")
-    testRuntimeOnly(group = "co.helmethair", name = "scalatest-junit-runner")
+//    testImplementation(group = "org.scalatest", name = "scalatest_$scalaMajorVersion")
+//    testImplementation(group = "org.mockito", name = "mockito-core")
+//
+//    // JUnit 5
+//    testRuntimeOnly(group = "org.junit.platform", name = "junit-platform-engine")
+//    testRuntimeOnly(group = "org.junit.platform", name = "junit-platform-launcher")
+//    testRuntimeOnly(group = "co.helmethair", name = "scalatest-junit-runner")
 }
 
 // OpenApi code / schema generation
@@ -143,10 +145,11 @@ val schemaList = listOf("parseHub")
 
 // Create Tasks to generate Avro Schemas for our OpenAPI specs
 
-val genAvroSchemaTask = task("genAvroSchema") {
-    this.group = "OpenAPI Tools"
-    dependsOn("openApiValidate")
-}
+val genAvroSchemaTask =
+    task("genAvroSchema") {
+        this.group = "OpenAPI Tools"
+        dependsOn("openApiValidate")
+    }
 
 run {
     @Suppress("IDENTIFIER_LENGTH")
@@ -229,4 +232,3 @@ tasks {
 //        mustRunAfter(gas)
 //    }
 }
-

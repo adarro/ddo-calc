@@ -34,6 +34,7 @@ val kotlinVersion: String by project
 val quarkusPlatformVersion: String by project
 val jandexPluginVersion: String by project
 val defaultJavaToolChainVersion: String? by project
+val kasechangeVersion: String by project
 
 dependencies {
     // tool languages
@@ -45,10 +46,8 @@ dependencies {
     // doc generation (requires python)
 //    implementation("com.palantir.baseline:gradle-baseline-java:$palantirPluginVersion")
 
-
     // CI build support
     implementation("be.vbgn.gradle:ci-detect-plugin:0.5.0")
-
 
 //    implementation("org.unbroken-dome.gradle-plugins:gradle-testsets-plugin:4.0.0")
     // scala
@@ -77,7 +76,12 @@ dependencies {
     // Database
     implementation("app.cash.sqldelight:gradle-plugin:2.0.0-alpha05")
 
-    /* to here */
+    // String utils
+    // camel / snake etc
+    // universal dependency for Gradle 5.3 and above
+    // in case of multiplatform project, just specify the dependency for commonMain/commonTest source set
+    implementation("net.pearx.kasechange:kasechange:$kasechangeVersion")
+    // to here
     //    implementation("com.diffplug.spotless-changelog:spotless-changelog-plugin-gradle:2.4.0")
 //    implementation("org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlinPluginVersion")
     // implementation("com.palantir.baseline:com.palantir.gradle-baseline-config:$palantirPluginVersion")
@@ -92,7 +96,6 @@ dependencies {
 //
 // implementation("app.cash.sqldelight:runtime-jvm:2.0.0-alpha05")
 //    implementation("ru.vyarus:gradle-mkdocs-plugin:3.0.0")
-
 }
 
 kotlin {

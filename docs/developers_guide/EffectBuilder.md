@@ -39,14 +39,15 @@ mindmapDiagram {
 +++ Named Items
 ++++ Augments <<sblue>>
 ++++ Filigrees <<sblue>>
-+++ Random Loot 
++++ Random Loot
 +++ Crafted Items
-+++ Set bonus 
++++ Set bonus
 
 
 @endmindmap
 
 ```
+
 ### Entity effects
 
 Entities in this context include All feats, enhancements, destinies, skills, attributes etc. These are represented by
@@ -122,7 +123,7 @@ Even if this and random loot are not fully comprehensive, simply having the abil
 slot available, and I'm trying to increase my 'Y'" could now return a list of effects that let you know there are
 craft-able, named items or random loot effects available (or unavailable) even if it doesn't have a specific item. I.e.
 it will be aware that an Insight Bonus to 'Y' can be Cannith crafted to that 'X' slot, but random loot only has that
-effect on a different slot.  
+effect on a different slot.
 
 ### Augments / Filigrees
 
@@ -132,7 +133,6 @@ These will follow the same principles as the Named items.
 
 Set bonuses will be handled in the same way as any other named enchantments, with a triggerOn condition of 'X' equipped items / augments.
 Required Modules: ddo-etl, ddo-dao
-
 
 ### Temporary effects
 

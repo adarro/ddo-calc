@@ -33,9 +33,10 @@ val kte = project.extensions.create<KotlinTestKitExtension>("KotlinTestKitExtens
 kte.useKotlinTestKit.convention(KotlinTestKits.KoTest)
 afterEvaluate {
 
-    val testMode = findProperty("kotlinTestMode")?.toString()
-        ?.let(io.truthencode.djaxonomy.etc.TestMode::valueOf)
-        ?: io.truthencode.djaxonomy.etc.TestMode.REFLECT
+    val testMode =
+        findProperty("kotlinTestMode")?.toString()
+            ?.let(io.truthencode.djaxonomy.etc.TestMode::valueOf)
+            ?: io.truthencode.djaxonomy.etc.TestMode.REFLECT
     logger.warn("${project.name} kotlinTestMode: $testMode (dependencies)")
     when (testMode) {
         io.truthencode.djaxonomy.etc.TestMode.REFLECT -> {
@@ -61,74 +62,71 @@ afterEvaluate {
             }
         }
     }
-
 }
+
 // Extensions are just plain objects, there is no interface/type
-class MyExtension(foo: String) {
-
-
-}
+// class MyExtension(foo: String)
 
 // Add new extensions via the extension container
-//val myExt = project.extensions.create("custom", MyExtension::class, "bar")
+// val myExt = project.extensions.create("custom", MyExtension::class, "bar")
 //                       («name»,   «type»,       «constructor args», …)
 
-//myExt {
+// myExt {
 //
-//}
+// }
 
-//val theRealState =
+// val theRealState =
 //    theState() // project.extensions.create("theState", TheStateExtension::class) // TheStateExtension.theState()
 //
-//theRealState {
+// theRealState {
 //    theDeepState {}
 //
-//}
+// }
 //
-//// 1: DSL-like
-//theState {
+// // 1: DSL-like
+// theState {
 //    theDeepState {
 //        theDeepestState {
 //            undermine "the will of the people"
 //        }
 //    }
-//}
+// }
 
 // extensions appear as properties on the target object by the given name
 
 afterEvaluate {
-    val testMode = findProperty("kotlinTestSuite")?.toString()
-        ?.let(KotlinTestKits::valueOf)
-        ?: KotlinTestKits.KoTest
+    val testMode =
+        findProperty("kotlinTestSuite")?.toString()
+            ?.let(KotlinTestKits::valueOf)
+            ?: KotlinTestKits.KoTest
     logger.warn("${project.name} kotlinTestMode: $testMode (JvmTestSuite)")
     testing {
 
         val ts = TestBuildSupport(project)
 
-
-
         suites {
 
-            val test = when (testMode) {
-                KotlinTestKits.KoTest -> {
-                    logger.warn("configuring KoTest for Unit testing (from kts)")
-                    val test: JvmTestSuite by getting(JvmTestSuite::class, ts.applyKoTest)
-                    test
-                }
-
-                KotlinTestKits.KotlinTest -> {
-                    logger.warn("configuring KotlinTest for Unit testing (from kts)")
-                    val test by getting(JvmTestSuite::class) {
-                        useKotlinTest()
+            val test =
+                when (testMode) {
+                    KotlinTestKits.KoTest -> {
+                        logger.warn("configuring KoTest for Unit testing (from kts)")
+                        val test: JvmTestSuite by getting(JvmTestSuite::class, ts.applyKoTest)
+                        test
                     }
-                    test
-                }
 
-                else -> {
-                    val test by getting(JvmTestSuite::class)
-                    test
+                    KotlinTestKits.KotlinTest -> {
+                        logger.warn("configuring KotlinTest for Unit testing (from kts)")
+                        val test by getting(JvmTestSuite::class) {
+                            useKotlinTest()
+                        }
+                        test
+                    }
+
+                    else -> {
+                        val test by getting(JvmTestSuite::class)
+                        test
+                    }
                 }
-            }
 
             //        val functionalTest by registering(JvmTestSuite::class) {
             //            dependencies {

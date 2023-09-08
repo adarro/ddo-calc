@@ -39,6 +39,7 @@ pluginManagement {
         id("com.palantir.baseline") version palantirPluginVersion
         id("com.palantir.baseline-config") version palantirPluginVersion
         id("org.inferred.processors") version "3.7.0"
+        id("org.scoverage") version "8.0.3"
 //        id("ru.vyarus.mkdocs") version "3.0.0"
     }
 }

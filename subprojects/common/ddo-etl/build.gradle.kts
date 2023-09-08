@@ -26,6 +26,7 @@
 plugins {
     id("scala-conventions")
 //    id("acceptance-test-conventions")
+    id("djaxonomy.test-conventions")
 }
 
 description = "Common ETL module for storing / loading data from web / user etc"
@@ -65,25 +66,13 @@ dependencies {
     implementation(group = "com.wix", name = "accord-core_$scalaMajorVersion")
     implementation(group = "ch.qos.logback", name = "logback-classic")
     implementation(group = "com.typesafe.scala-logging", name = "scala-logging_$scalaMajorVersion")
-    testImplementation(group = "org.scalatest", name = "scalatest_$scalaMajorVersion")
-    testImplementation(group = "org.scalacheck", name = "scalacheck_$scalaMajorVersion", version = "1.14.0")
-    testImplementation(group = "org.mockito", name = "mockito-core")
-
-    // JUnit 5
-    testRuntimeOnly(group = "org.junit.platform", name = "junit-platform-engine")
-    testRuntimeOnly(group = "org.junit.platform", name = "junit-platform-launcher")
-    testRuntimeOnly(group = "co.helmethair", name = "scalatest-junit-runner")
-    testRuntimeOnly(group = "org.junit.vintage", name = "junit-vintage-engine")
-}
-
-tasks {
-    // Use the built-in JUnit support of Gradle.
-    "test"(Test::class) {
-        useJUnitPlatform {
-            includeEngines = setOf("scalatest", "vintage")
-            testLogging {
-                events("passed", "skipped", "failed")
-            }
-        }
-    }
+//    testImplementation(group = "org.scalatest", name = "scalatest_$scalaMajorVersion")
+//    testImplementation(group = "org.scalacheck", name = "scalacheck_$scalaMajorVersion", version = "1.14.0")
+//    testImplementation(group = "org.mockito", name = "mockito-core")
+//
+//    // JUnit 5
+//    testRuntimeOnly(group = "org.junit.platform", name = "junit-platform-engine")
+//    testRuntimeOnly(group = "org.junit.platform", name = "junit-platform-launcher")
+//    testRuntimeOnly(group = "co.helmethair", name = "scalatest-junit-runner")
+//    testRuntimeOnly(group = "org.junit.vintage", name = "junit-vintage-engine")
 }

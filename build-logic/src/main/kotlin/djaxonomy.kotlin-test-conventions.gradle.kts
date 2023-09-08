@@ -64,7 +64,7 @@ afterEvaluate {
 }
 
 // Extensions are just plain objects, there is no interface/type
-class MyExtension(foo: String)
+// class MyExtension(foo: String)
 
 // Add new extensions via the extension container
 // val myExt = project.extensions.create("custom", MyExtension::class, "bar")

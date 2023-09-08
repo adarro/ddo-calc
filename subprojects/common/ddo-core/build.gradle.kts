@@ -20,31 +20,10 @@
 plugins {
     id("scala-library-profile")
 //    id("ru.vyarus.mkdocs") // version "3.0.0"
-//    id("acceptance-test-conventions")
+    id("djaxonomy.test-conventions")
 //    id("doc-uml")
 }
 
-testing {
-    suites {
-        val test by getting(JvmTestSuite::class) {
-            useJUnitJupiter()
-        }
-
-        register<JvmTestSuite>("integrationTest") {
-            dependencies {
-                implementation(project())
-            }
-
-            targets {
-                all {
-                    testTask.configure {
-                        shouldRunAfter(test)
-                    }
-                }
-            }
-        }
-    }
-}
 
 tasks.named("check") {
     dependsOn(testing.suites.named("integrationTest"))

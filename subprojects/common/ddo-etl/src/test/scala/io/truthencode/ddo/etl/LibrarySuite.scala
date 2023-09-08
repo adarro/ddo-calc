@@ -27,5 +27,6 @@ class LibrarySuite extends AnyFunSuite {
   test("someLibraryMethod is always true") {
     def library: Library = new Library()
     assert(library.someLibraryMethod())
+    assert(false)
   }
 }

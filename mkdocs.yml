@@ -17,18 +17,18 @@ copyright: >
 
 # Material theme
 theme:
-    name: 'material'
+    name: material
     palette:
-        -   media: "(prefers-color-scheme: light)"
-            scheme: default
-            toggle:
-                icon: material/toggle-switch-off-outline
-                name: Switch to dark mode
-        -   media: "(prefers-color-scheme: dark)"
-            scheme: slate
-            toggle:
-                icon: material/toggle-switch
-                name: Switch to light mode
+        - media: "(prefers-color-scheme: light)"
+          scheme: default
+          toggle:
+              icon: material/toggle-switch-off-outline
+              name: Switch to dark mode
+        - media: "(prefers-color-scheme: dark)"
+          scheme: slate
+          toggle:
+              icon: material/toggle-switch
+              name: Switch to light mode
     features:
         #- navigation.tabs
         #- navigation.tabs.sticky
@@ -44,13 +44,12 @@ plugins:
     #    Required for variables support (https://github.com/rosscdh/mkdocs-markdownextradata-plugin)
     - markdownextradata
     - embed_file:
-        callouts: true
-        # custom-attribute: 'assets/css/custom_attributes.css' //need to be the same as in the config!
-        language_message: 'file does not currently exists.'
+          callouts: true
+          # custom-attribute: 'assets/css/custom_attributes.css' //need to be the same as in the config!
+          language_message: file does not currently exists.
     - include-markdown:
-        opening_tag: "{!"
-        closing_tag: "!}"
-
+          opening_tag: "{!"
+          closing_tag: "!}"
 
 extra:
     version:
@@ -63,7 +62,6 @@ extra:
             as to measure the effectiveness of our documentation and whether users
             find what they're searching for. With your consent, you're helping us to
             make our documentation better.
-
 
 #  palette:
 #    primary: 'indigo'
@@ -92,60 +90,54 @@ markdown_extensions:
     - footnotes
     - meta
     - md_in_html
-    -   toc:
-            permalink: true
+    - toc:
+          permalink: true
 
     # Python Markdown Extensions
-    -   pymdownx.arithmatex:
-            generic: true
-    -   pymdownx.betterem:
-            smart_enable: all
+    - pymdownx.arithmatex:
+          generic: true
+    - pymdownx.betterem:
+          smart_enable: all
     - pymdownx.caret
     - pymdownx.details
-    -   pymdownx.emoji:
-            emoji_index: !!python/name:materialx.emoji.twemoji
-            emoji_generator: !!python/name:materialx.emoji.to_svg
+    - pymdownx.emoji:
+          emoji_index: !!python/name:materialx.emoji.twemoji
+          emoji_generator: !!python/name:materialx.emoji.to_svg
     - pymdownx.highlight
     - pymdownx.inlinehilite
     - pymdownx.keys
     - pymdownx.mark
     - pymdownx.smartsymbols
     - pymdownx.superfences
-    -   pymdownx.tabbed:
-            alternate_style: true
-    -   pymdownx.tasklist:
-            custom_checkbox: true
+    - pymdownx.tabbed:
+          alternate_style: true
+    - pymdownx.tasklist:
+          custom_checkbox: true
     - pymdownx.tilde
     # plantuml
-    -   plantuml_markdown:
-            server: http://www.plantuml.com/plantuml  # PlantUML server, for remote rendering
-            # other global options
-            insecure: False                           # set to True if the server uses self-signed certificates
-            cachedir: /tmp                            # set a non-empty value to enable caching
-            base_dir: .                               # where to search for diagrams to include
-            config:                                   # PlantUML config file, relative to base_dir (a PlantUML file included in every diagram)
-            format: png                               # default diagram image format
-            classes: class1,class2                    # default diagram classes
-            encoding: utf-8                           # character encoding for external files (default utf-8)
-            title: UML diagram                        # default title (tooltip) for diagram images
-            alt: UML diagram image                    # default `alt` attribute for diagram images
-            image_maps: True                          # generate image maps when the format is png and there are hyperlinks
-            priority: 30                              # plugin priority; the higher, the sooner will be applied (default 30)
-            http_method: GET                          # GET or POST  - note that plantuml.com only supports GET (default GET)
-            fallback_to_get: True                     # When using POST, should GET be used as fallback (POST will fail if @startuml/@enduml tags not used) (default True)
-            theme: bluegray                           # theme to be set, can be overridden inside puml files, (default none)
-            puml_notheme_cmdlist: [
-                'version',
-                'listfonts',
-                'stdlib',
-                'license'
-            ]                   # theme will not be set if listed commands present (default as listed)
+    - plantuml_markdown:
+          server: http://www.plantuml.com/plantuml # PlantUML server, for remote rendering
+          # other global options
+          insecure: False # set to True if the server uses self-signed certificates
+          cachedir: /tmp # set a non-empty value to enable caching
+          base_dir: . # where to search for diagrams to include
+          config: # PlantUML config file, relative to base_dir (a PlantUML file included in every diagram)
+          format: png # default diagram image format
+          classes: class1,class2 # default diagram classes
+          encoding: utf-8 # character encoding for external files (default utf-8)
+          title: UML diagram # default title (tooltip) for diagram images
+          alt: UML diagram image # default `alt` attribute for diagram images
+          image_maps: True # generate image maps when the format is png and there are hyperlinks
+          priority: 30 # plugin priority; the higher, the sooner will be applied (default 30)
+          http_method: GET # GET or POST  - note that plantuml.com only supports GET (default GET)
+          fallback_to_get: True # When using POST, should GET be used as fallback (POST will fail if @startuml/@enduml tags not used) (default True)
+          theme: bluegray # theme to be set, can be overridden inside puml files, (default none)
+          puml_notheme_cmdlist: ["version", "listfonts", "stdlib", "license"] # theme will not be set if listed commands present (default as listed)
     - mkdocs_graphviz
     - nl2br
 
 extra_javascript:
     - https://cdn.jsdelivr.net/gh/rod2ik/cdn@main/mkdocs/javascripts/mkdocs-graphviz.js
-
 #nav:
 #    -   Home: index.md
 #    -   User guide:

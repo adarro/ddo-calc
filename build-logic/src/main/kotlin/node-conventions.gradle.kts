@@ -147,7 +147,7 @@ tasks.register<Zip>("package") {
     from(buildTaskUsingNpm) {
         into("npm")
     }
-    from (buildTaskUsingYarn) {
+    from(buildTaskUsingYarn) {
         into("yarn")
     }
 }

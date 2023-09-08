@@ -61,38 +61,35 @@ afterEvaluate {
             }
         }
     }
-
 }
+
 // Extensions are just plain objects, there is no interface/type
-class MyExtension(foo: String) {
-
-
-}
+class MyExtension(foo: String)
 
 // Add new extensions via the extension container
-//val myExt = project.extensions.create("custom", MyExtension::class, "bar")
+// val myExt = project.extensions.create("custom", MyExtension::class, "bar")
 //                       («name»,   «type»,       «constructor args», …)
 
-//myExt {
+// myExt {
 //
-//}
+// }
 
-//val theRealState =
+// val theRealState =
 //    theState() // project.extensions.create("theState", TheStateExtension::class) // TheStateExtension.theState()
 //
-//theRealState {
+// theRealState {
 //    theDeepState {}
 //
-//}
+// }
 //
-//// 1: DSL-like
-//theState {
+// // 1: DSL-like
+// theState {
 //    theDeepState {
 //        theDeepestState {
 //            undermine "the will of the people"
 //        }
 //    }
-//}
+// }
 
 // extensions appear as properties on the target object by the given name
 
@@ -104,8 +101,6 @@ afterEvaluate {
     testing {
 
         val ts = TestBuildSupport(project)
-
-
 
         suites {
 

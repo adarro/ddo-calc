@@ -58,16 +58,16 @@ dependencies {
         implementation(group = "ch.qos.logback", name = "logback-classic")
         implementation(group = "com.typesafe.scala-logging", name = "scala-logging_$scalaMajorVersion")
         testImplementation(project(":ddo-testing-util"))
-        testImplementation(group = "org.scalatest", name = "scalatest_$scalaMajorVersion")
-        testImplementation(group = "org.scalacheck", name = "scalacheck_$scalaMajorVersion")
-        testImplementation(group = "org.scalatestplus", "mockito-3-4_$scalaMajorVersion")
-        testImplementation(group = "com.wix", name = "accord-scalatest_$scalaMajorVersion")
+        // testImplementation(group = "org.scalatest", name = "scalatest_$scalaMajorVersion")
+        // testImplementation(group = "org.scalacheck", name = "scalacheck_$scalaMajorVersion")
+        // testImplementation(group = "org.scalatestplus", "mockito-3-4_$scalaMajorVersion")
+        // testImplementation(group = "com.wix", name = "accord-scalatest_$scalaMajorVersion")
 
-        // JUnit 5
-        testRuntimeOnly(group = "org.junit.platform", name = "junit-platform-engine")
-        testRuntimeOnly(group = "org.junit.platform", name = "junit-platform-launcher")
-        testRuntimeOnly(group = "co.helmethair", name = "scalatest-junit-runner")
-        testRuntimeOnly(group = "org.junit.vintage", name = "junit-vintage-engine")
+        // // JUnit 5
+        // testRuntimeOnly(group = "org.junit.platform", name = "junit-platform-engine")
+        // testRuntimeOnly(group = "org.junit.platform", name = "junit-platform-launcher")
+        // testRuntimeOnly(group = "co.helmethair", name = "scalatest-junit-runner")
+        // testRuntimeOnly(group = "org.junit.vintage", name = "junit-vintage-engine")
 
         // Concordion BDD
 //        val acceptanceTestImplementation by configurations.getting

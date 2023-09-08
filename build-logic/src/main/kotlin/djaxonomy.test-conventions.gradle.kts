@@ -53,10 +53,29 @@ fun JvmTestSuite.applyKotlinTest() {
 val junitScalaTestVersion: String by project
 val junitPlatformVersion: String by project
 
+val scalaTestPlusMockitoVersion: String by project
+val scalaCheckVersion: String by project
+val scalaTestVersion: String by project
+val accordVersion: String by project
+val scalaMajorVersion: String by project
+
+val mockitoVersion: String by project
+
 fun JvmTestSuite.applyScalaTest() {
     dependencies {
         runtimeOnly("co.helmethair:scalatest-junit-runner:$junitScalaTestVersion")
         runtimeOnly("org.junit.vintage:junit-vintage-engine:$junitPlatformVersion")
+        implementation("org.scalatest:scalatest_$scalaMajorVersion:$scalaTestVersion")
+        implementation("org.scalacheck:scalacheck_$scalaMajorVersion:$scalaCheckVersion")
+        implementation("org.scalatestplus:mockito-3-4_$scalaMajorVersion:$scalaTestPlusMockitoVersion")
+        implementation("org.mockito:mockito-core:$mockitoVersion")
+        implementation("com.wix:accord-core_${scalaMajorVersion}:${accordVersion}")
+        implementation("com.wix:accord-scalatest_${scalaMajorVersion}:$accordVersion")
+        // JUnit
+         
+        
+        
+        
     }
 
     targets.all {

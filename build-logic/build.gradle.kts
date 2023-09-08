@@ -46,10 +46,8 @@ dependencies {
     // doc generation (requires python)
 //    implementation("com.palantir.baseline:gradle-baseline-java:$palantirPluginVersion")
 
-
     // CI build support
     implementation("be.vbgn.gradle:ci-detect-plugin:0.5.0")
-
 
 //    implementation("org.unbroken-dome.gradle-plugins:gradle-testsets-plugin:4.0.0")
     // scala
@@ -98,7 +96,6 @@ dependencies {
 //
 // implementation("app.cash.sqldelight:runtime-jvm:2.0.0-alpha05")
 //    implementation("ru.vyarus:gradle-mkdocs-plugin:3.0.0")
-
 }
 
 kotlin {

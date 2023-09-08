@@ -32,22 +32,15 @@ extension.useKotlinTestKit.convention(
 fun JvmTestSuite.applyKoTest() {
     val koTestVersion: String = (findProperty("koTestVersion") ?: embeddedKotlinVersion).toString()
 
-
     dependencies {
         implementation("io.kotest:kotest-runner-junit5:$koTestVersion")
         implementation("io.kotest:kotest-assertions-core:$koTestVersion")
         implementation("io.kotest:kotest-property:$koTestVersion")
     }
-
-
 }
 
 fun JvmTestSuite.applyKotlinTest() {
-
-
     useKotlinTest()
-
-
 }
 
 val junitScalaTestVersion: String by project
@@ -69,13 +62,9 @@ fun JvmTestSuite.applyScalaTest() {
         implementation("org.scalacheck:scalacheck_$scalaMajorVersion:$scalaCheckVersion")
         implementation("org.scalatestplus:mockito-3-4_$scalaMajorVersion:$scalaTestPlusMockitoVersion")
         implementation("org.mockito:mockito-core:$mockitoVersion")
-        implementation("com.wix:accord-core_${scalaMajorVersion}:${accordVersion}")
-        implementation("com.wix:accord-scalatest_${scalaMajorVersion}:$accordVersion")
+        implementation("com.wix:accord-core_$scalaMajorVersion:$accordVersion")
+        implementation("com.wix:accord-scalatest_$scalaMajorVersion:$accordVersion")
         // JUnit
-         
-        
-        
-        
     }
 
     targets.all {
@@ -101,7 +90,6 @@ project.testing {
         configureEach {
             if (this is JvmTestSuite) {
                 val tt: TestTypes = TestTypes.fromNamingConvention(name)
-
 
 // Kotlin specific
                 if (project.plugins.hasPlugin("org.jetbrains.kotlin.jvm")) {
@@ -142,10 +130,7 @@ project.testing {
                             logger.error("no config ATM (applying Jupiter as default")
                             useJUnitJupiter()
                         }
-
                     }
-
-
                 }
             }
             /*
@@ -169,8 +154,7 @@ project.testing {
         }
     }
 
-         */
-
+             */
         } // config
     }
 }

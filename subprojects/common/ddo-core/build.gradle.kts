@@ -16,14 +16,13 @@
  * limitations under the License.
  */
 
- // ddo-core
+// ddo-core
 plugins {
     id("scala-library-profile")
 //    id("ru.vyarus.mkdocs") // version "3.0.0"
     id("djaxonomy.test-conventions")
 //    id("doc-uml")
 }
-
 
 tasks.named("check") {
     dependsOn(testing.suites.named("integrationTest"))
@@ -98,7 +97,7 @@ dependencies {
     }
 }
 
-//sourceSets {
+// sourceSets {
 //    this.getByName("acceptanceTest") {
 //        java {
 //            setSrcDirs(listOf<String>())
@@ -107,4 +106,4 @@ dependencies {
 //            setSrcDirs(listOf("test/scala"))
 //        }
 //    }
-//}
+// }

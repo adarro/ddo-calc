@@ -34,6 +34,7 @@ val kotlinVersion: String by project
 val quarkusPlatformVersion: String by project
 val jandexPluginVersion: String by project
 val defaultJavaToolChainVersion: String? by project
+val kasechangeVersion: String by project
 
 dependencies {
     // tool languages
@@ -77,6 +78,11 @@ dependencies {
     // Database
     implementation("app.cash.sqldelight:gradle-plugin:2.0.0-alpha05")
 
+    // String utils
+    // camel / snake etc
+    // universal dependency for Gradle 5.3 and above
+    // in case of multiplatform project, just specify the dependency for commonMain/commonTest source set
+    implementation("net.pearx.kasechange:kasechange:$kasechangeVersion")
     /* to here */
     //    implementation("com.diffplug.spotless-changelog:spotless-changelog-plugin-gradle:2.4.0")
 //    implementation("org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlinPluginVersion")

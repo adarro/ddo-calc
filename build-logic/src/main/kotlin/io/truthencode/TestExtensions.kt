@@ -1,6 +1,8 @@
 package io.truthencode.djaxonomy.etc
 
+import net.pearx.kasechange.toCamelCase
 import org.gradle.api.Project
+import org.gradle.api.attributes.TestSuiteType
 import org.gradle.api.plugins.jvm.JvmTestSuite
 import org.gradle.api.provider.Property
 import org.gradle.kotlin.dsl.invoke
@@ -24,6 +26,90 @@ interface KotlinAnnotationProcessingExtension {
 
     val kotlinTestMode: Property<TestMode>
 }
+
+enum class Day {
+    MONDAY(1, "Monday"),
+    TUESDAY(2, "Tuesday"),
+    WEDNESDAY(3, "Wednesday"),
+    THURSDAY(4, "Thursday"),
+    FRIDAY(5, "Friday"),
+    SATURDAY(6, "Saturday"),
+    SUNDAY(7, "Sunday"); // end of the constants
+
+    // custom properties with default values
+    var dayOfWeek: Int? = null
+    var printableName: String? = null
+
+    constructor()
+
+    // custom constructors
+    constructor(
+        dayOfWeek: Int,
+        printableName: String
+    ) {
+        this.dayOfWeek = dayOfWeek
+        this.printableName = printableName
+    }
+
+    // custom method
+    fun customToString(): String {
+        return "[${dayOfWeek}] -> $printableName"
+    }
+}
+
+enum class TestTypes {
+    Unit(TestSuiteType.UNIT_TEST),
+    Integration(TestSuiteType.INTEGRATION_TEST),
+    Functional(TestSuiteType.FUNCTIONAL_TEST),
+    Performance(TestSuiteType.PERFORMANCE_TEST),
+    Acceptance("acceptance-test"),
+    Custom("custom-test");
+
+    var id: String? = null
+    var defaultName: String? = null
+    var testSuiteType: String? = null
+    val knownSuiteNames = listOf(
+        TestSuiteType.UNIT_TEST,
+        TestSuiteType.FUNCTIONAL_TEST,
+        TestSuiteType.INTEGRATION_TEST,
+        TestSuiteType.PERFORMANCE_TEST
+    )
+
+    constructor()
+
+    constructor(id: String) {
+        this.id = id
+        this.defaultName = when (id) {
+            TestSuiteType.UNIT_TEST -> "test"
+            else -> id.toCamelCase()
+        }
+        if (knownSuiteNames.contains(id)) {
+            this.testSuiteType = id
+        }
+    }
+
+    companion object {
+
+        fun fromTestSuiteType(id: String): TestTypes {
+            return when (id) {
+                TestSuiteType.UNIT_TEST -> Unit
+                TestSuiteType.INTEGRATION_TEST -> Integration
+                TestSuiteType.FUNCTIONAL_TEST -> Functional
+                TestSuiteType.PERFORMANCE_TEST -> Performance
+                "acceptance-test" -> Acceptance // Static Duck-typing ATM
+                else -> Custom
+            }
+        }
+
+
+        fun fromNamingConvention(key: String): TestTypes {
+            return TestTypes.values().find { it.defaultName == key } ?: TestTypes.Custom
+        }
+    }
+
+}
+
+
 
 class TestBuildSupport(proj: Project) {
     private val koTestVersion: String by proj

@@ -1,6 +1,6 @@
 import io.truthencode.djaxonomy.etc.KotlinTestKitExtension
 import io.truthencode.djaxonomy.etc.KotlinTestKits
-import io.truthencode.djaxonomy.etc.TestBuildSupport
+import io.truthencode.djaxonomy.etc.TestTypes
 
 /*
  * SPDX-License-Identifier: Apache-2.0
@@ -29,52 +29,129 @@ extension.useKotlinTestKit.convention(
     KotlinTestKits.KoTest,
 )
 
+fun JvmTestSuite.applyKoTest() {
+    val koTestVersion: String = (findProperty("koTestVersion") ?: embeddedKotlinVersion).toString()
+
+
+    dependencies {
+        implementation("io.kotest:kotest-runner-junit5:$koTestVersion")
+        implementation("io.kotest:kotest-assertions-core:$koTestVersion")
+        implementation("io.kotest:kotest-property:$koTestVersion")
+    }
+
+
+}
+
+fun JvmTestSuite.applyKotlinTest() {
+
+
+    useKotlinTest()
+
+
+}
+
+val junitScalaTestVersion: String by project
+val junitPlatformVersion: String by project
+
+fun JvmTestSuite.applyScalaTest() {
+    dependencies {
+        runtimeOnly("co.helmethair:scalatest-junit-runner:$junitScalaTestVersion")
+        runtimeOnly("org.junit.vintage:junit-vintage-engine:$junitPlatformVersion")
+    }
+
+    targets.all {
+        testTask.configure {
+            useJUnitPlatform {
+                includeEngines = setOf("scalatest", "vintage")
+                testLogging {
+                    events("passed", "skipped", "failed")
+                }
+            }
+        }
+    }
+}
+
 project.testing {
     suites {
-        apply {
-            if (plugins.hasPlugin("org.jetbrains.kotlin.jvm")) {
-                val ts = TestBuildSupport(project)
-                when (extension.useKotlinTestKit.get()) {
-                    KotlinTestKits.KoTest -> {
-                        logger.warn("configuring KoTest for Unit testing")
+        val integrationTest by registering(JvmTestSuite::class)
 
-                        val test: JvmTestSuite by getting(JvmTestSuite::class, ts.applyKoTest)
-                    }
+        val functionalTest by registering(JvmTestSuite::class)
+        val performanceTest by registering(JvmTestSuite::class)
+        val test by getting(JvmTestSuite::class)
+        val acceptanceTest = register<JvmTestSuite>("acceptanceTest")
+        configureEach {
+            if (this is JvmTestSuite) {
+                val tt: TestTypes = TestTypes.fromNamingConvention(name)
 
-                    KotlinTestKits.KotlinTest -> {
-                        logger.warn("configuring KotlinTest for Unit testing")
-                        val test by getting(JvmTestSuite::class) {
-                            useKotlinTest()
+
+// Kotlin specific
+                if (project.plugins.hasPlugin("org.jetbrains.kotlin.jvm")) {
+                    logger.error("Configuring Kotlin Testing for ${project.name}")
+                    when (extension.useKotlinTestKit.get()) {
+                        KotlinTestKits.KoTest -> {
+                            logger.warn("configuring KoTest for Unit testing")
+                            test.applyKoTest()
                         }
+
+                        KotlinTestKits.KotlinTest -> {
+                            logger.warn("configuring KotlinTest for Unit testing")
+
+                            test.applyKotlinTest()
+                        }
+
+                        else -> {}
+                    }
+                }
+
+                // Scala Specific
+                if (project.plugins.hasPlugin("scala")) {
+
+                    logger.error("Configuring ${project.name} for Scala ${tt.name} Testing :  ${this.name} ")
+
+                    when (tt) {
+                        TestTypes.Unit -> {
+                            logger.error(("Configuring standard Unit Test for scala"))
+                            test.applyScalaTest()
+                        }
+
+                        TestTypes.Acceptance -> {
+                            useJUnitJupiter()
+                            logger.error("adding scala acceptance stuff")
+                        }
+
+                        else -> {
+                            logger.error("no config ATM (applying Jupiter as default")
+                            useJUnitJupiter()
+                        }
+
                     }
 
-                    else -> {
-                        val test by getting(JvmTestSuite::class)
-                    }
+
                 }
             }
             /*
-                   val functionalTest by registering(JvmTestSuite::class) {
+               val functionalTest by registering(JvmTestSuite::class) {
 
-            dependencies {
-                implementation(project())
-            }
+        dependencies {
+            implementation(project())
         }
-        register<JvmTestSuite>("integrationTest") {
-            dependencies {
-                implementation(project())
-          }
+    }
+    register<JvmTestSuite>("integrationTest") {
+        dependencies {
+            implementation(project())
+      }
 
-            targets {
-                all {
-                    testTask.configure {
-                        shouldRunAfter(t)
-                    }
+        targets {
+            all {
+                testTask.configure {
+                    shouldRunAfter(t)
                 }
             }
         }
+    }
 
-             */
-        }
+         */
+
+        } // config
     }
 }

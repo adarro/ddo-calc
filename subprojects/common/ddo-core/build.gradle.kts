@@ -16,34 +16,12 @@
  * limitations under the License.
  */
 
- // ddo-core
+// ddo-core
 plugins {
     id("scala-library-profile")
 //    id("ru.vyarus.mkdocs") // version "3.0.0"
-//    id("acceptance-test-conventions")
+    id("djaxonomy.test-conventions")
 //    id("doc-uml")
-}
-
-testing {
-    suites {
-        val test by getting(JvmTestSuite::class) {
-            useJUnitJupiter()
-        }
-
-        register<JvmTestSuite>("integrationTest") {
-            dependencies {
-                implementation(project())
-            }
-
-            targets {
-                all {
-                    testTask.configure {
-                        shouldRunAfter(test)
-                    }
-                }
-            }
-        }
-    }
 }
 
 tasks.named("check") {
@@ -62,7 +40,7 @@ dependencies {
 
         val scalaLibraryVersion: String by project
         val scalaMajorVersion: String by project
-        /* Platform dependent */
+        // Platform dependent
         // https://mvnrepository.com/artifact/org.json4s/json4s-native
         implementation(group = "org.json4s", name = "json4s-native_$scalaMajorVersion")
 
@@ -79,16 +57,16 @@ dependencies {
         implementation(group = "ch.qos.logback", name = "logback-classic")
         implementation(group = "com.typesafe.scala-logging", name = "scala-logging_$scalaMajorVersion")
         testImplementation(project(":ddo-testing-util"))
-        testImplementation(group = "org.scalatest", name = "scalatest_$scalaMajorVersion")
-        testImplementation(group = "org.scalacheck", name = "scalacheck_$scalaMajorVersion")
-        testImplementation(group = "org.scalatestplus", "mockito-3-4_$scalaMajorVersion")
-        testImplementation(group = "com.wix", name = "accord-scalatest_$scalaMajorVersion")
+        // testImplementation(group = "org.scalatest", name = "scalatest_$scalaMajorVersion")
+        // testImplementation(group = "org.scalacheck", name = "scalacheck_$scalaMajorVersion")
+        // testImplementation(group = "org.scalatestplus", "mockito-3-4_$scalaMajorVersion")
+        // testImplementation(group = "com.wix", name = "accord-scalatest_$scalaMajorVersion")
 
-        // JUnit 5
-        testRuntimeOnly(group = "org.junit.platform", name = "junit-platform-engine")
-        testRuntimeOnly(group = "org.junit.platform", name = "junit-platform-launcher")
-        testRuntimeOnly(group = "co.helmethair", name = "scalatest-junit-runner")
-        testRuntimeOnly(group = "org.junit.vintage", name = "junit-vintage-engine")
+        // // JUnit 5
+        // testRuntimeOnly(group = "org.junit.platform", name = "junit-platform-engine")
+        // testRuntimeOnly(group = "org.junit.platform", name = "junit-platform-launcher")
+        // testRuntimeOnly(group = "co.helmethair", name = "scalatest-junit-runner")
+        // testRuntimeOnly(group = "org.junit.vintage", name = "junit-vintage-engine")
 
         // Concordion BDD
 //        val acceptanceTestImplementation by configurations.getting
@@ -119,7 +97,7 @@ dependencies {
     }
 }
 
-//sourceSets {
+// sourceSets {
 //    this.getByName("acceptanceTest") {
 //        java {
 //            setSrcDirs(listOf<String>())
@@ -128,4 +106,4 @@ dependencies {
 //            setSrcDirs(listOf("test/scala"))
 //        }
 //    }
-//}
+// }

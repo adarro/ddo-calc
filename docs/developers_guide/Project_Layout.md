@@ -4,6 +4,6 @@ Current Inter-project layout
 
 ```dot
 {!
-   include "./project-dependencies.dot"   
+   include "./project-dependencies.dot"
 !}
 ```

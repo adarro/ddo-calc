@@ -16,7 +16,6 @@
 * limitations under the License.
 */
 import com.mooltiverse.oss.nyx.state.State
-import org.jetbrains.kotlin.util.collectionUtils.concat
 import ru.vyarus.gradle.plugin.python.task.PythonTask
 import java.text.SimpleDateFormat
 import java.util.*
@@ -24,8 +23,10 @@ import java.util.*
 plugins {
 //    id("code-quality")
     // id("org.kordamp.gradle.project")
+//    scala apply (false)
+    id("org.scoverage") apply (false)
     // may need node support
-    id("node-conventions")
+//    id("node-conventions")
 
     idea
 //    id("net.thauvin.erik.gradle.semver")
@@ -37,21 +38,23 @@ plugins {
     id("com.github.ben-manes.versions") version "0.41.0"
     id("nl.littlerobots.version-catalog-update") version "0.8.1"
     id("ru.vyarus.mkdocs")
+
 //    id("ru.vyarus.mkdocs")  version "3.0.0" apply (false)
     //  id ("be.vbgn.ci-detect") version "0.1.0"
 }
 
-
+apply(plugin = "org.scoverage")
 // general project information
 val projectName = project.name
 val gitHubAccountName = "truthencode"
 val gitHubBaseSite = "https://github.com/$gitHubAccountName/${project.name}"
-val siteIssueTracker = "${gitHubBaseSite}/issues"
+val siteIssueTracker = "$gitHubBaseSite/issues"
 val gitExtension = "${project.name}.git"
-val siteScm = "${gitHubBaseSite}/$gitExtension"
+val siteScm = "$gitHubBaseSite/$gitExtension"
 
 // Used for versioned documentation
 val mkDocsLatestAlias: String? by project
+
 fun mkDocAlias(): String {
     return mkDocsLatestAlias ?: "Latest"
 }
@@ -64,42 +67,41 @@ mkdocs {
     with(publish) {
         this.generateVersionsFile = true
     }
-
-
 }
 
-val devRequirementsIn = listOf(
-    "pip-tools:7.3.0",
-)
+val devRequirementsIn =
+    listOf(
+        "pip-tools:7.3.0",
+    )
 
-val requirementsIn = listOf(
-    "mkdocs:1.5.2",
-    "mkdocs-material:9.2.8", // trans req: regex which may require cc (gcc et all)
-    "mkdocs-monorepo-plugin:1.0.5",
-    "mkdocs-markdownextradata-plugin:0.2.5",
-    "mkdocs-graphviz:1.5.3",
-    "mike:1.1.2",
-    "plantuml-markdown:3.9.2",
-    "mkdocs-embed-file-plugins:2.0.6",
-    "mkdocs-callouts:1.9.0",
-    "mkdocs-awesome-pages-plugin:2.9.2",
-    "mkdocs-include-markdown-plugin:6.0.1",
-)
+val requirementsIn =
+    listOf(
+        "mkdocs:1.5.2",
+        "mkdocs-material:9.2.8", // trans req: regex which may require cc (gcc et all)
+        "mkdocs-monorepo-plugin:1.0.5",
+        "mkdocs-markdownextradata-plugin:0.2.5",
+        "mkdocs-graphviz:1.5.3",
+        "mike:1.1.2",
+        "plantuml-markdown:3.9.2",
+        "mkdocs-embed-file-plugins:2.0.6",
+        "mkdocs-callouts:1.9.0",
+        "mkdocs-awesome-pages-plugin:2.9.2",
+        "mkdocs-include-markdown-plugin:6.0.1",
+    )
 
 tasks.register("generateRequirementsIn") {
     val rIn = layout.projectDirectory.file("requirements.in")
     this.outputs.files(rIn)
-    val rTxt = requirementsIn.joinToString("\n") { it.replace(":","==") }
+    val rTxt = requirementsIn.joinToString("\n") { it.replace(":", "==") }
     logger.error("rText : \n$rTxt")
     rIn.asFile.writeText(rTxt)
 }
 
 python {
     this.pip(
-        requirementsIn.concat(devRequirementsIn)
+        requirementsIn.plus(devRequirementsIn),
     )
     installVirtualenv = true
-
 }
 
 tasks.register("dumpSomeDiagnostics") {
@@ -113,7 +115,6 @@ tasks.register("dumpSomeDiagnostics") {
             println(SimpleDateFormat("HH:mm:ss dd/MM/yyyy", Locale.US).format(Date(nyxState.timestamp)))
             println(nyxState.version)
         }
-
     }
 }
 
@@ -131,7 +132,6 @@ tasks.register("syncDocVersion", PythonTask::class) {
     }
 }
 
-
 tasks.register("syncRequirements", PythonTask::class) {
     dependsOn(tasks.named("nyxInfer"), tasks.named("generateRequirementsIn"))
     module = "piptools"
@@ -140,6 +140,20 @@ tasks.register("syncRequirements", PythonTask::class) {
         run()
     }
 }
+
+/*
+
+Reporting tasks
+// coverage
+reportScoverage
+
+
+// aggregate
+aggregateScoverage
+testAggregateTestReport
+buildDashboard
+
+ */
 
 // val releaseActive: Boolean? = rootProject.findProperty("release") as Boolean?
 
@@ -228,10 +242,12 @@ class VersionInfo {
         return prop
     }
 
-    private fun optionalProperty(key: String, defaultValue: String? = null): String? {
+    private fun optionalProperty(
+        key: String,
+        defaultValue: String? = null,
+    ): String? {
         return readOptionalProperty(props, key, defaultValue)
     }
-
 
     val props = versionProperties()
     val major = optionalProperty("version.major", "0")?.toInt()
@@ -252,14 +268,22 @@ class VersionInfo {
     val version = "$major$separator$minor$separator$patch$prerelease$buildMeta"
 
     companion object {
-        fun readOptionalProperty(prop: Properties, key: String, defaultValue: String? = null): String? {
-            val oKey = if (prop.containsKey(key)) {
-                prop.getProperty(key)
-            } else null
-            val pKey = when {
-                oKey.isNullOrBlank() -> null
-                else -> prop.getProperty(key)
-            }
+        fun readOptionalProperty(
+            prop: Properties,
+            key: String,
+            defaultValue: String? = null,
+        ): String? {
+            val oKey =
+                if (prop.containsKey(key)) {
+                    prop.getProperty(key)
+                } else {
+                    null
+                }
+            val pKey =
+                when {
+                    oKey.isNullOrBlank() -> null
+                    else -> prop.getProperty(key)
+                }
 
             return pKey ?: defaultValue
         }
@@ -273,11 +297,9 @@ class VersionInfo {
 
 val foo = project.rootProject.layout.files("version.properties")
 
-
 val syncVersionFilesFromRoot by tasks.registering(Copy::class) {
     if (rootProject != project) {
         logger.warn("This task should only be run from the root project")
-
     } else {
         logger.warn("in root project, propagating properties")
         rootProject.allprojects.forEach {
@@ -287,8 +309,6 @@ val syncVersionFilesFromRoot by tasks.registering(Copy::class) {
                 into(it.layout.buildDirectory)
             }
         }
-
-
     }
 }
 

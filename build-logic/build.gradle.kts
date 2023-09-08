@@ -81,7 +81,7 @@ dependencies {
     // universal dependency for Gradle 5.3 and above
     // in case of multiplatform project, just specify the dependency for commonMain/commonTest source set
     implementation("net.pearx.kasechange:kasechange:$kasechangeVersion")
-    /* to here */
+    // to here
     //    implementation("com.diffplug.spotless-changelog:spotless-changelog-plugin-gradle:2.4.0")
 //    implementation("org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlinPluginVersion")
     // implementation("com.palantir.baseline:com.palantir.gradle-baseline-config:$palantirPluginVersion")

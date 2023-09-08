@@ -10,7 +10,7 @@ set -o errexit
 # rather than that of the last item in a pipeline.
 set -o pipefail
 
-find . -iname "cobertura.xml" |
+find . -iname "cobertura.xml" -print0 |
     xargs bash <(curl -Ls https://coverage.codacy.com/get.sh) report \
         --partial -l Scala -r
 

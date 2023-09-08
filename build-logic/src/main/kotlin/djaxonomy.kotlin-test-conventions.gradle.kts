@@ -33,9 +33,10 @@ val kte = project.extensions.create<KotlinTestKitExtension>("KotlinTestKitExtens
 kte.useKotlinTestKit.convention(KotlinTestKits.KoTest)
 afterEvaluate {
 
-    val testMode = findProperty("kotlinTestMode")?.toString()
-        ?.let(io.truthencode.djaxonomy.etc.TestMode::valueOf)
-        ?: io.truthencode.djaxonomy.etc.TestMode.REFLECT
+    val testMode =
+        findProperty("kotlinTestMode")?.toString()
+            ?.let(io.truthencode.djaxonomy.etc.TestMode::valueOf)
+            ?: io.truthencode.djaxonomy.etc.TestMode.REFLECT
     logger.warn("${project.name} kotlinTestMode: $testMode (dependencies)")
     when (testMode) {
         io.truthencode.djaxonomy.etc.TestMode.REFLECT -> {
@@ -94,9 +95,10 @@ afterEvaluate {
 // extensions appear as properties on the target object by the given name
 
 afterEvaluate {
-    val testMode = findProperty("kotlinTestSuite")?.toString()
-        ?.let(KotlinTestKits::valueOf)
-        ?: KotlinTestKits.KoTest
+    val testMode =
+        findProperty("kotlinTestSuite")?.toString()
+            ?.let(KotlinTestKits::valueOf)
+            ?: KotlinTestKits.KoTest
     logger.warn("${project.name} kotlinTestMode: $testMode (JvmTestSuite)")
     testing {
 
@@ -104,26 +106,27 @@ afterEvaluate {
 
         suites {
 
-            val test = when (testMode) {
-                KotlinTestKits.KoTest -> {
-                    logger.warn("configuring KoTest for Unit testing (from kts)")
-                    val test: JvmTestSuite by getting(JvmTestSuite::class, ts.applyKoTest)
-                    test
-                }
-
-                KotlinTestKits.KotlinTest -> {
-                    logger.warn("configuring KotlinTest for Unit testing (from kts)")
-                    val test by getting(JvmTestSuite::class) {
-                        useKotlinTest()
+            val test =
+                when (testMode) {
+                    KotlinTestKits.KoTest -> {
+                        logger.warn("configuring KoTest for Unit testing (from kts)")
+                        val test: JvmTestSuite by getting(JvmTestSuite::class, ts.applyKoTest)
+                        test
                     }
-                    test
-                }
 
-                else -> {
-                    val test by getting(JvmTestSuite::class)
-                    test
+                    KotlinTestKits.KotlinTest -> {
+                        logger.warn("configuring KotlinTest for Unit testing (from kts)")
+                        val test by getting(JvmTestSuite::class) {
+                            useKotlinTest()
+                        }
+                        test
+                    }
+
+                    else -> {
+                        val test by getting(JvmTestSuite::class)
+                        test
+                    }
                 }
-            }
 
             //        val functionalTest by registering(JvmTestSuite::class) {
             //            dependencies {

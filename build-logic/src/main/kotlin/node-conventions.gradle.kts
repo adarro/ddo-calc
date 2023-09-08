@@ -41,62 +41,65 @@ tasks.yarn {
     }
 }
 
-val testTaskUsingNpx = tasks.register<NpxTask>("testNpx") {
-    dependsOn(tasks.npmInstall)
-    command.set("mocha")
-    args.set(listOf("test", "--grep", "should say hello"))
-    ignoreExitValue.set(false)
-    environment.set(mapOf("MY_CUSTOM_VARIABLE" to "hello"))
-    workingDir.set(projectDir)
-    execOverrides {
-        standardOutput = System.out
+val testTaskUsingNpx =
+    tasks.register<NpxTask>("testNpx") {
+        dependsOn(tasks.npmInstall)
+        command.set("mocha")
+        args.set(listOf("test", "--grep", "should say hello"))
+        ignoreExitValue.set(false)
+        environment.set(mapOf("MY_CUSTOM_VARIABLE" to "hello"))
+        workingDir.set(projectDir)
+        execOverrides {
+            standardOutput = System.out
+        }
+        inputs.dir("node_modules")
+        inputs.file("package.json")
+        inputs.dir("src")
+        inputs.dir("test")
+        outputs.upToDateWhen {
+            true
+        }
     }
-    inputs.dir("node_modules")
-    inputs.file("package.json")
-    inputs.dir("src")
-    inputs.dir("test")
-    outputs.upToDateWhen {
-        true
-    }
-}
 
-val testTaskUsingNpm = tasks.register<NpmTask>("testNpm") {
-    dependsOn(tasks.npmInstall)
-    npmCommand.set(listOf("run", "test"))
-    args.set(listOf("test"))
-    ignoreExitValue.set(false)
-    environment.set(mapOf("MY_CUSTOM_VARIABLE" to "hello"))
-    workingDir.set(projectDir)
-    execOverrides {
-        standardOutput = System.out
+val testTaskUsingNpm =
+    tasks.register<NpmTask>("testNpm") {
+        dependsOn(tasks.npmInstall)
+        npmCommand.set(listOf("run", "test"))
+        args.set(listOf("test"))
+        ignoreExitValue.set(false)
+        environment.set(mapOf("MY_CUSTOM_VARIABLE" to "hello"))
+        workingDir.set(projectDir)
+        execOverrides {
+            standardOutput = System.out
+        }
+        inputs.dir("node_modules")
+        inputs.file("package.json")
+        inputs.dir("src")
+        inputs.dir("test")
+        outputs.upToDateWhen {
+            true
+        }
     }
-    inputs.dir("node_modules")
-    inputs.file("package.json")
-    inputs.dir("src")
-    inputs.dir("test")
-    outputs.upToDateWhen {
-        true
-    }
-}
 
-val testTaskUsingYarn = tasks.register<YarnTask>("testYarn") {
-    dependsOn(tasks.npmInstall)
-    yarnCommand.set(listOf("run", "test"))
-    args.set(listOf("test"))
-    ignoreExitValue.set(false)
-    environment.set(mapOf("MY_CUSTOM_VARIABLE" to "hello"))
-    workingDir.set(projectDir)
-    execOverrides {
-        standardOutput = System.out
+val testTaskUsingYarn =
+    tasks.register<YarnTask>("testYarn") {
+        dependsOn(tasks.npmInstall)
+        yarnCommand.set(listOf("run", "test"))
+        args.set(listOf("test"))
+        ignoreExitValue.set(false)
+        environment.set(mapOf("MY_CUSTOM_VARIABLE" to "hello"))
+        workingDir.set(projectDir)
+        execOverrides {
+            standardOutput = System.out
+        }
+        inputs.dir("node_modules")
+        inputs.file("package.json")
+        inputs.dir("src")
+        inputs.dir("test")
+        outputs.upToDateWhen {
+            true
+        }
     }
-    inputs.dir("node_modules")
-    inputs.file("package.json")
-    inputs.dir("src")
-    inputs.dir("test")
-    outputs.upToDateWhen {
-        true
-    }
-}
 
 tasks.register<NodeTask>("run") {
     dependsOn(testTaskUsingNpx, testTaskUsingNpm, testTaskUsingYarn)
@@ -114,29 +117,32 @@ tasks.register<NodeTask>("run") {
     }
 }
 
-val buildTaskUsingNpx = tasks.register<NpxTask>("buildNpx") {
-    dependsOn(tasks.npmInstall)
-    command.set("babel")
-    args.set(listOf("src", "--out-dir", "${layout.buildDirectory}/npx-output"))
-    inputs.dir("src")
-    outputs.dir("${layout.buildDirectory}/npx-output")
-}
+val buildTaskUsingNpx =
+    tasks.register<NpxTask>("buildNpx") {
+        dependsOn(tasks.npmInstall)
+        command.set("babel")
+        args.set(listOf("src", "--out-dir", "${layout.buildDirectory}/npx-output"))
+        inputs.dir("src")
+        outputs.dir("${layout.buildDirectory}/npx-output")
+    }
 
-val buildTaskUsingNpm = tasks.register<NpmTask>("buildNpm") {
-    dependsOn(tasks.npmInstall)
-    npmCommand.set(listOf("run", "build"))
-    args.set(listOf("--", "--out-dir", "${layout.buildDirectory}/npm-output"))
-    inputs.dir("src")
-    outputs.dir("${layout.buildDirectory}/npm-output")
-}
+val buildTaskUsingNpm =
+    tasks.register<NpmTask>("buildNpm") {
+        dependsOn(tasks.npmInstall)
+        npmCommand.set(listOf("run", "build"))
+        args.set(listOf("--", "--out-dir", "${layout.buildDirectory}/npm-output"))
+        inputs.dir("src")
+        outputs.dir("${layout.buildDirectory}/npm-output")
+    }
 
-val buildTaskUsingYarn = tasks.register<YarnTask>("buildYarn") {
-    dependsOn(tasks.npmInstall)
-    yarnCommand.set(listOf("run", "build"))
-    args.set(listOf("--out-dir", "${layout.buildDirectory}/yarn-output"))
-    inputs.dir("src")
-    outputs.dir("${layout.buildDirectory}/yarn-output")
-}
+val buildTaskUsingYarn =
+    tasks.register<YarnTask>("buildYarn") {
+        dependsOn(tasks.npmInstall)
+        yarnCommand.set(listOf("run", "build"))
+        args.set(listOf("--out-dir", "${layout.buildDirectory}/yarn-output"))
+        inputs.dir("src")
+        outputs.dir("${layout.buildDirectory}/yarn-output")
+    }
 
 tasks.register<Zip>("package") {
     archiveFileName.set("app.zip")

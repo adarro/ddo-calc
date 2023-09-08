@@ -40,7 +40,7 @@ dependencies {
 
         val scalaLibraryVersion: String by project
         val scalaMajorVersion: String by project
-        /* Platform dependent */
+        // Platform dependent
         // https://mvnrepository.com/artifact/org.json4s/json4s-native
         implementation(group = "org.json4s", name = "json4s-native_$scalaMajorVersion")
 

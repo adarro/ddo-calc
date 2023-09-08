@@ -54,6 +54,7 @@ val siteScm = "$gitHubBaseSite/$gitExtension"
 
 // Used for versioned documentation
 val mkDocsLatestAlias: String? by project
+
 fun mkDocAlias(): String {
     return mkDocsLatestAlias ?: "Latest"
 }
@@ -68,23 +69,25 @@ mkdocs {
     }
 }
 
-val devRequirementsIn = listOf(
-    "pip-tools:7.3.0",
-)
+val devRequirementsIn =
+    listOf(
+        "pip-tools:7.3.0",
+    )
 
-val requirementsIn = listOf(
-    "mkdocs:1.5.2",
-    "mkdocs-material:9.2.8", // trans req: regex which may require cc (gcc et all)
-    "mkdocs-monorepo-plugin:1.0.5",
-    "mkdocs-markdownextradata-plugin:0.2.5",
-    "mkdocs-graphviz:1.5.3",
-    "mike:1.1.2",
-    "plantuml-markdown:3.9.2",
-    "mkdocs-embed-file-plugins:2.0.6",
-    "mkdocs-callouts:1.9.0",
-    "mkdocs-awesome-pages-plugin:2.9.2",
-    "mkdocs-include-markdown-plugin:6.0.1",
-)
+val requirementsIn =
+    listOf(
+        "mkdocs:1.5.2",
+        "mkdocs-material:9.2.8", // trans req: regex which may require cc (gcc et all)
+        "mkdocs-monorepo-plugin:1.0.5",
+        "mkdocs-markdownextradata-plugin:0.2.5",
+        "mkdocs-graphviz:1.5.3",
+        "mike:1.1.2",
+        "plantuml-markdown:3.9.2",
+        "mkdocs-embed-file-plugins:2.0.6",
+        "mkdocs-callouts:1.9.0",
+        "mkdocs-awesome-pages-plugin:2.9.2",
+        "mkdocs-include-markdown-plugin:6.0.1",
+    )
 
 tasks.register("generateRequirementsIn") {
     val rIn = layout.projectDirectory.file("requirements.in")
@@ -137,6 +140,20 @@ tasks.register("syncRequirements", PythonTask::class) {
         run()
     }
 }
+
+/*
+
+Reporting tasks
+// coverage
+reportScoverage
+
+
+// aggregate
+aggregateScoverage
+testAggregateTestReport
+buildDashboard
+
+ */
 
 // val releaseActive: Boolean? = rootProject.findProperty("release") as Boolean?
 
@@ -225,7 +242,10 @@ class VersionInfo {
         return prop
     }
 
-    private fun optionalProperty(key: String, defaultValue: String? = null): String? {
+    private fun optionalProperty(
+        key: String,
+        defaultValue: String? = null,
+    ): String? {
         return readOptionalProperty(props, key, defaultValue)
     }
 
@@ -248,16 +268,22 @@ class VersionInfo {
     val version = "$major$separator$minor$separator$patch$prerelease$buildMeta"
 
     companion object {
-        fun readOptionalProperty(prop: Properties, key: String, defaultValue: String? = null): String? {
-            val oKey = if (prop.containsKey(key)) {
-                prop.getProperty(key)
-            } else {
-                null
-            }
-            val pKey = when {
-                oKey.isNullOrBlank() -> null
-                else -> prop.getProperty(key)
-            }
+        fun readOptionalProperty(
+            prop: Properties,
+            key: String,
+            defaultValue: String? = null,
+        ): String? {
+            val oKey =
+                if (prop.containsKey(key)) {
+                    prop.getProperty(key)
+                } else {
+                    null
+                }
+            val pKey =
+                when {
+                    oKey.isNullOrBlank() -> null
+                    else -> prop.getProperty(key)
+                }
 
             return pKey ?: defaultValue
         }

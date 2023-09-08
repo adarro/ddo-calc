@@ -40,7 +40,10 @@ tasks.register("moduleDependencyReport") {
 }
 
 // recursively print dependencies to file and move on to child projects
-fun printDeps(writer: Writer, project: Project) {
+fun printDeps(
+    writer: Writer,
+    project: Project,
+) {
     if (!project.name
             .contains("test")
     ) {

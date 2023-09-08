@@ -145,10 +145,11 @@ val schemaList = listOf("parseHub")
 
 // Create Tasks to generate Avro Schemas for our OpenAPI specs
 
-val genAvroSchemaTask = task("genAvroSchema") {
-    this.group = "OpenAPI Tools"
-    dependsOn("openApiValidate")
-}
+val genAvroSchemaTask =
+    task("genAvroSchema") {
+        this.group = "OpenAPI Tools"
+        dependsOn("openApiValidate")
+    }
 
 run {
     @Suppress("IDENTIFIER_LENGTH")

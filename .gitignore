@@ -13,6 +13,8 @@ hs*.log
 
 docsold/
 
+subprojects/common/ddo-modeling/src/main/avro/io/truthencode/ddo/model/protocol/
+
 #Maven exclusions
 target/
 pom.xml.tag

@@ -46,18 +46,63 @@ fun JvmTestSuite.applyKotlinTest() {
 val junitScalaTestVersion: String by project
 val junitPlatformVersion: String by project
 
+val scalaLibraryVersion: String by project
+val enumeratumVersion: String by project
+val logbackVersion: String by project
+
 val scalaTestPlusMockitoVersion: String by project
 val scalaCheckVersion: String by project
 val scalaTestVersion: String by project
 val accordVersion: String by project
 val scalaMajorVersion: String by project
+val scalaLoggingVersion: String by project
 
 val mockitoVersion: String by project
+val concordionVersion: String by project
+val flexmarkVersion: String by project
+val typeSafeConfigVersion: String by project
+
+fun JvmTestSuite.applyConcordionAcceptanceTest() {
+    dependencies {
+        implementation(project())
+        implementation("org.concordion:concordion:$concordionVersion")
+        // flexmark (mostly for concordion / markdown)
+        implementation("com.vladsch.flexmark:flexmark-all:$flexmarkVersion") // 0.62.2 -> 0.64.8
+//        implementation("com.vladsch.flexmark:ext-gfm-strikethrough:$flexmarkVersion")
+//        implementation("com.vladsch.flexmark:flexmark-ext-emoji:$flexmarkVersion")
+//        implementation("com.vladsch.flexmark:flexmark-ext-yaml-front-matter:$flexmarkVersion")
+//        implementation("com.vladsch.flexmark:flexmark-ext-gfm-tasklist:$flexmarkVersion")
+    }
+}
+
+fun JvmTestSuite.applyScalaDepends() {
+    dependencies {
+        implementation("org.scala-lang:scala-library:$scalaLibraryVersion")
+        implementation("ch.qos.logback:logback-classic:$logbackVersion")
+        implementation("com.typesafe.scala-logging:scala-logging_$scalaMajorVersion:$scalaLoggingVersion")
+        implementation("com.beachape:enumeratum_$scalaMajorVersion:$enumeratumVersion")
+        implementation("com.typesafe:config:$typeSafeConfigVersion")
+    }
+}
+
+fun JvmTestSuite.applyVintageEngine() {
+    dependencies {
+        runtimeOnly("org.junit.vintage:junit-vintage-engine:$junitPlatformVersion")
+    }
+}
+
+fun JvmTestSuite.applyJupiterEngine() {
+    dependencies {
+        runtimeOnly("org.junit.jupiter:junit-jupiter-engine:$junitPlatformVersion")
+    }
+}
 
 fun JvmTestSuite.applyScalaTest() {
     dependencies {
         runtimeOnly("co.helmethair:scalatest-junit-runner:$junitScalaTestVersion")
-        runtimeOnly("org.junit.vintage:junit-vintage-engine:$junitPlatformVersion")
+
+        // runtimeOnly("org.junit.vintage:junit-vintage-engine:5.10.0")
+
         implementation("org.scalatest:scalatest_$scalaMajorVersion:$scalaTestVersion")
         implementation("org.scalacheck:scalacheck_$scalaMajorVersion:$scalaCheckVersion")
         implementation("org.scalatestplus:mockito-3-4_$scalaMajorVersion:$scalaTestPlusMockitoVersion")
@@ -118,12 +163,29 @@ project.testing {
                     when (tt) {
                         TestTypes.Unit -> {
                             logger.error(("Configuring standard Unit Test for scala"))
-                            test.applyScalaTest()
+                            this.applyScalaTest()
                         }
 
                         TestTypes.Acceptance -> {
                             useJUnitJupiter()
+                            this.applyScalaDepends()
+                            this.applyJupiterEngine()
+                            this.applyVintageEngine()
                             logger.error("adding scala acceptance stuff")
+                            dependencies {
+                                implementation("de.neuland-bfi:jade4j:1.2.7")
+                            }
+                            targets.all {
+                                testTask.configure {
+                                    useJUnitPlatform {
+                                        //  includeEngines = setOf("vintage")
+                                        //    includeEngines("junit-jupiter", "junit-vintage")
+                                        testLogging {
+                                            events("passed", "skipped", "failed")
+                                        }
+                                    }
+                                }
+                            }
                         }
 
                         else -> {
@@ -132,29 +194,15 @@ project.testing {
                         }
                     }
                 }
-            }
-            /*
-               val functionalTest by registering(JvmTestSuite::class) {
 
-        dependencies {
-            implementation(project())
-        }
-    }
-    register<JvmTestSuite>("integrationTest") {
-        dependencies {
-            implementation(project())
-      }
-
-        targets {
-            all {
-                testTask.configure {
-                    shouldRunAfter(t)
+                // Concordian BDD Acceptance
+                if (tt == TestTypes.Acceptance) {
+                    logger.error("applying Concordion Acceptance")
+                    this.applyConcordionAcceptanceTest()
+                    this.applyVintageEngine()
+                    this.applyJupiterEngine()
                 }
             }
         }
-    }
-
-             */
-        } // config
     }
 }

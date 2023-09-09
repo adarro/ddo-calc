@@ -1,6 +1,7 @@
 version: 0.1
-cli:  
+cli:
     version: 1.15.0
+
 plugins:
     sources:
         - id: trunk

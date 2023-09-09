@@ -1,4 +1,4 @@
-# List of technologies used or considered for use.
+# List of technologies used or considered for use
 
 Build quality / development tools These are generally implemented via gradle plugins or triggered of CI/CD builds to
 improve code quality / security and or mind map or visualize concepts.
@@ -37,16 +37,23 @@ result comparison. Scala3 has integrated features similar to docusaurus, so like
 Scala3 upgrade. Possible alternatives are [Znai](https://testingisdocumenting.org/znai/introduction/getting-started/) or
 Docusaurus. We can go aDoc if needed but would prefer Markdown.
 
+### Allure
+
+[Allue](https://github.com/allure-framework) is a reporting aggregation service that works with Junit4 , Junit5, Scalatest, Cucumber and more.
+
 ### OpenAPI
+
 Embedding a Swagger UI for the OpenAPI spec in the docs
 
 ### Jupyter
+
 Would eventually like to integrate a Jupyter notebook in the doc site.
 This would be useful for a living calculator, quick web checks and possibly even spark integration.
-The default is very Python focused, but R / Scala kernels exist.  Ideally embedding a Graal Scala Jupyter.
+The default is very Python focused, but R / Scala kernels exist. Ideally embedding a Graal Scala Jupyter.
 There are also a handful of Proof of concept polygot notebooks out there, mostly built in Smalltalk.
 
 ## Front End
+
 Front End Using Kafka streams, we can update running totals and properties in an event-driven manner for character
 builders such as feats possessed, stances / abilities toggled, items equipped to dynamically show average damage, DR
 breaking, crit profiles, hit-points etc. without having to re-evaluate every effect in place.
@@ -57,6 +64,10 @@ filtering by requirements as they are discovered.
 Camel - camel can route these topics in the background to update the databases, run further more process intensive
 operations etc without affecting the flow of the builder.
 
-Vert.x Vert.x can expose the API as a RESTful service and react via the event bus with Camel. 
+Vert.x Vert.x can expose the API as a RESTful service and react via the event bus with Camel.
 
+## Apache Isis
 
+Rapid prototyping where Domain Objects become the UI.
+[Apache ~~Isis~~ Causeway](https://causeway.apache.org)
+May have potential direct-integration issues as a JPMS Java app, but as a RESTful DTO Front-end it could be extremely useful.

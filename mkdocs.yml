@@ -138,6 +138,7 @@ markdown_extensions:
 
 extra_javascript:
     - https://cdn.jsdelivr.net/gh/rod2ik/cdn@main/mkdocs/javascripts/mkdocs-graphviz.js
+    - https://cdn.jsdelivr.net/gh/eddymens/markdown-external-link-script@v2.0.0/main.min.js
 #nav:
 #    -   Home: index.md
 #    -   User guide:

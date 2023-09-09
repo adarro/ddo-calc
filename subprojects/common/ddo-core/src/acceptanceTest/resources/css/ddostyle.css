@@ -1,0 +1,1043 @@
+/**
+ * SPDX-License-Identifier: Apache-2.0
+ *
+ * Copyright 2015-2021 Andre White.
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *     https://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+body.page-Main_Page h1.firstHeading {
+    display: none;
+}
+
+#p-logo,
+#p-logo a {
+    height: 65px !important;
+}
+
+tr.mw-table-row-done {
+    font-size: smaller;
+    text-decoration: line-through;
+    text-decoration: line-through wavy #dd0000;
+    background-color: #feeded;
+}
+
+tr.sticky-header {
+    position: -webkit-sticky !important;
+    position: sticky !important;
+    top: 0px !important;
+    z-index: 1 !important;
+}
+
+div.scrollBox table.wikitable {
+    margin-top: 0px !important;
+}
+
+td.diff-context,
+td.diff-deletedline,
+td.diff-addedline {
+    font-size: larger !important;
+    font-family: monospace;
+}
+
+span.redlink > a.external.text {
+    background: none !important;
+    color: #ba0000 !important;
+    padding: 0px !important;
+}
+
+.tall-header > th {
+    max-width: 1px;
+    white-space: pre-wrap;
+    word-wrap: break-word;
+}
+
+.emailLink {
+    display: none;
+}
+
+.boxCell {
+    background-color: #ffffff;
+    border: 1px solid #aaaaaa;
+    border-radius: 5px;
+    padding: 5px;
+    vertical-align: top;
+    width: 33%;
+}
+
+.homeCell {
+    padding: 5px;
+    font-weight: bold;
+    margin: 3px;
+    text-align: center;
+}
+
+.boxCellIcon {
+    float: right !important;
+}
+
+#whatsNew,
+.whatsNew {
+    overflow: auto !important;
+}
+
+div.whatsNewSection {
+    background-color: #fa8072;
+    margin: 3px;
+    text-align: center;
+}
+
+div.whatsNewLamannia {
+    background-color: #d9d9ff !important;
+}
+
+@media (min-width: 2048px) {
+    #whatsNew,
+    .whatsNew {
+        width: 1591px;
+    }
+
+    div.whatsNewSection {
+        width: 510px;
+    }
+}
+
+@media (max-width: 1920px) {
+    #whatsNew,
+    .whatsNew {
+        width: 1326px;
+    }
+
+    div.whatsNewSection {
+        width: 422px;
+    }
+}
+
+@media (max-width: 1600px) {
+    #whatsNew,
+    .whatsNew {
+        width: 11194px;
+    }
+
+    div.whatsNewSection {
+        width: 378px;
+    }
+}
+
+@media (max-width: 1440px) {
+    #whatsNew,
+    .whatsNew {
+        width: 1061px;
+    }
+
+    div.whatsNewSection {
+        width: 334px;
+    }
+}
+
+@media (max-width: 1280px) {
+    #whatsNew,
+    .whatsNew {
+        width: 849px;
+    }
+
+    div.whatsNewSection {
+        width: 263px;
+    }
+}
+
+@media (max-width: 1024px) {
+    #whatsNew,
+    .whatsNew {
+        width: 663px;
+    }
+
+    div.whatsNewSection {
+        width: 201px;
+    }
+}
+
+@media (max-width: 800px) {
+    #whatsNew,
+    .whatsNew {
+        width: 530px;
+    }
+
+    div.whatsNewSection {
+        width: 157px;
+    }
+}
+
+@media (max-width: 640px) {
+    #whatsNew,
+    .whatsNew {
+        width: 398px;
+    }
+
+    div.whatsNewSection {
+        width: 112px;
+    }
+}
+
+@media (max-width: 480px) {
+    #whatsNew,
+    .whatsNew {
+        width: 346px;
+    }
+
+    div.whatsNewSection {
+        width: 97px;
+    }
+}
+
+td.homeWhatsNewCell {
+    background-color: #ffffff;
+    border: 1px solid #aaaaaa;
+    border-radius: 5px;
+    vertical-align: top;
+}
+
+.whatsNewSectionContent {
+    background-color: #ffffff;
+    align: left;
+}
+
+.homeSiteMapCell {
+    background-color: palegoldenrod;
+}
+
+.homeAboutCell {
+    background-color: lightskyblue;
+}
+
+.IPA {
+    font-family:
+        Chrysanthi Unicode,
+        Doulos SIL,
+        Gentium,
+        GentiumAlt,
+        Code2000,
+        TITUS Cyberbit Basic,
+        DejaVu Sans,
+        Bitstream Vera Sans,
+        Bitstream Cyberbit,
+        Arial Unicode MS,
+        Lucida Sans Unicode,
+        Hiragino Kaku Gothic Pro,
+        Matrix Unicode;
+}
+
+.Unicode {
+    font-family:
+        TITUS Cyberbit Basic,
+        Code2000,
+        Doulos SIL,
+        Chrysanthi Unicode,
+        Bitstream Cyberbit,
+        Bitstream CyberBase,
+        Bitstream Vera,
+        Thryomanes,
+        Gentium,
+        GentiumAlt,
+        Visual Geez Unicode,
+        Lucida Grande,
+        Arial Unicode MS,
+        Microsoft Sans Serif,
+        Lucida Sans Unicode;
+}
+
+.polytonic {
+    font-family:
+        Athena,
+        Gentium,
+        Palatino Linotype,
+        Arial Unicode MS,
+        Lucida Sans Unicode,
+        Lucida Grande,
+        Code2000;
+}
+
+.developer-show,
+.widgeteditor-show,
+.steward-show,
+.bureaucrat-show,
+.sysop-show,
+.superuser-show,
+.ddowikivip-show,
+.user-show,
+.self-show {
+    display: none;
+}
+
+.mw-charinsert-buttons {
+    border: 1px solid #aaaaaa;
+    font-size: 110%;
+    margin-top: 10px;
+    padding: 1px;
+    text-align: center;
+}
+
+.mw-charinsert-buttons a {
+    background-color: #ccddee !important;
+    border: thin #006699 outset;
+    color: #000000;
+    font-size: 0.9em;
+    font-weight: bold;
+    padding: 0em 0.1em 0.1em;
+    text-decoration: none;
+}
+
+.mw-charinsert-buttons a:hover,
+.mw-charinsert-buttons a:active {
+    background-color: #bbccdd;
+    border-style: inset;
+}
+
+.client-js .mw-edittools-section {
+    display: inline;
+}
+
+.client-js .mw-edittools-section input[type="button"] {
+    font-size: 0.9em;
+    margin-left: 1px;
+    padding: 0px 1px;
+}
+
+span.has_tooltip {
+    position: relative;
+}
+
+span.has_tooltip span.tooltip {
+    display: none;
+}
+
+span.has_tooltip:hover span.tooltip {
+    display: block;
+    left: 13px;
+    position: absolute;
+    top: 9px;
+    width: 200%;
+}
+
+pre {
+    max-width: 1200px;
+    min-width: 300px;
+    overflow: auto;
+    white-space: pre-wrap !important;
+    word-wrap: break-word;
+}
+
+.navbox {
+    border: 1px solid #aaaaaa;
+    clear: both;
+    font-size: 88%;
+    margin: auto;
+    padding: 1px;
+    text-align: center;
+    width: 100%;
+}
+
+.navbox-inner,
+.navbox-subgroup {
+    width: 100%;
+}
+
+.navbox-group,
+.navbox-title,
+.navbox-abovebelow {
+    padding: 0.25em 1em;
+    line-height: 1.5em;
+    text-align: center;
+}
+
+th.navbox-group {
+    white-space: nowrap;
+    text-align: right;
+}
+
+.navbox,
+.navbox-subgroup {
+    background-color: #fdfdfd;
+}
+
+.navbox-list {
+    line-height: 1.8em;
+    border-color: #fdfdfd;
+}
+
+.navbox th,
+.navbox-title {
+    background-color: #ccccff;
+}
+
+.navbox-abovebelow,
+th.navbox-group,
+.navbox-subgroup .navbox-title {
+    background-color: #ddddff;
+}
+
+.navbox-subgroup .navbox-group,
+.navbox-subgroup .navbox-abovebelow {
+    background-color: #e6e6ff;
+}
+
+.navbox-even {
+    background-color: #f7f7f7;
+}
+
+.navbox-odd {
+    background: transparent;
+}
+
+table.navbox + table.navbox {
+    margin-top: -1px;
+}
+
+.navbox .hlist td dl,
+.navbox .hlist td ol,
+.navbox .hlist td ul,
+.navbox td.hlist dl,
+.navbox td.hlist ol,
+.navbox td.hlist ul {
+    padding: 0.125em 0em;
+}
+
+ol + table.navbox,
+ul + table.navbox {
+    margin-top: 0.5em;
+}
+
+.collapseButton {
+    float: right;
+    font-weight: normal;
+    margin-left: 0.5em;
+    text-align: right;
+    width: auto;
+}
+
+.mw-collapsible-toggle {
+    font-weight: normal;
+    text-align: right;
+}
+
+.navbox .mw-collapsible-toggle {
+    width: 6em;
+}
+
+.hidden {
+    display: none;
+}
+
+table.ItemDisplayTemplateOuterTable {
+    background-color: #cceeff;
+    border-collapse: collapse;
+}
+
+table.ItemDisplayTemplateOuterTable tr {
+    vertical-align: top;
+}
+
+table.ItemDisplayTemplateOuterTable th {
+    background-color: #aaccff;
+    padding: 2px 10px;
+    vertical-align: middle;
+    white-space: nowrap;
+}
+
+table.ItemDisplayTemplateOuterTable td.ItemDisplayTemplateExampleValue {
+    background-color: #ffffff;
+    padding-top: 15px;
+}
+
+table.ItemDisplayTemplateOuterTable td {
+    background-color: #cceeff;
+    padding: 2px 10px;
+}
+
+table.ItemDisplayAmmunitionOuterTable {
+    width: 100%;
+    background-color: #f0d1e0;
+    border-collapse: collapse;
+}
+
+table.ItemDisplayAmmunitionOuterTable tr {
+    vertical-align: top;
+}
+
+table.ItemDisplayAmmunitionOuterTable td {
+    width: 100%;
+}
+
+table.ItemDisplayAmmunitionDetailsTable {
+    background-color: #f0d1e0;
+    width: 100%;
+}
+
+table.ItemDisplayAmmunitionDetailsTable th {
+    background-color: #e6b2cc;
+    padding: 2px 10px;
+    vertical-align: middle;
+    white-space: nowrap;
+}
+
+table.ItemDisplayAmmunitionDetailsTable td {
+    background-color: #ebc2d6;
+    padding: 2px 10px;
+}
+
+table.ItemDisplayAmmunitionImagesTable {
+    background-color: #f0d1e0;
+    padding: 10px 0px;
+    width: 100%;
+}
+
+table.ItemDisplayAmmunitionImagesTable tr {
+}
+
+table.ItemDisplayAmmunitionImagesTable td {
+    padding: 15px 10px;
+}
+
+table.ItemDisplayArmorOuterTable {
+    background-color: #e0d1b2;
+    border-collapse: collapse;
+    width: 100%;
+}
+
+table.ItemDisplayArmorOuterTable tr {
+    vertical-align: top;
+}
+
+table.ItemDisplayArmorOuterTable td {
+    width: 100%;
+}
+
+table.ItemDisplayArmorDetailsTable {
+    background-color: #e0d1b2;
+    width: 100%;
+}
+
+table.ItemDisplayArmorDetailsTable th {
+    background-color: #ccb280;
+    padding: 2px 10px;
+    vertical-align: middle;
+    white-space: nowrap;
+}
+
+table.ItemDisplayArmorDetailsTable td {
+    background-color: #d6c299;
+    padding: 2px 10px;
+}
+
+table.ItemDisplayArmorImagesTable {
+    background-color: #e0d1b2;
+    padding: 10px 0px;
+    width: 100%;
+}
+
+table.ItemDisplayArmorImagesTable tr {
+}
+
+table.ItemDisplayArmorImagesTable td {
+    padding: 15px 10px;
+}
+
+table.ItemDisplayComponentOuterTable {
+    background-color: #cceeff;
+    border-collapse: collapse;
+    width: 100%;
+}
+
+table.ItemDisplayComponentOuterTable tr {
+    vertical-align: top;
+}
+
+table.ItemDisplayComponentOuterTable td {
+    width: 100%;
+}
+
+table.ItemDisplayComponentDetailsTable {
+    background-color: #cceeff;
+    width: 100%;
+}
+
+table.ItemDisplayComponentDetailsTable th {
+    background-color: #a3becc;
+    padding: 2px 10px;
+    vertical-align: middle;
+    white-space: nowrap;
+}
+
+table.ItemDisplayComponentDetailsTable td {
+    background-color: #b8d6e6;
+    padding: 2px 10px;
+}
+
+table.ItemDisplayComponentImagesTable {
+    background-color: #cceeff;
+    padding: 10px 0px;
+    width: 100%;
+}
+
+table.ItemDisplayComponentImagesTable tr {
+}
+
+table.ItemDisplayComponentImagesTable td {
+    padding: 15px 10px;
+}
+
+div.mw-warning-with-logexcerpt,
+div.mw-lag-warn-high,
+div.mw-cascadeprotectedwarning,
+div#mw-protect-cascadeon {
+    background: none repeat scroll 0% 0% #ffdbdb;
+    border: 1px solid #bb7070;
+    clear: both;
+    margin: 0.2em 0px;
+    padding: 0.25em 0.9em;
+}
+
+.center {
+    text-align: center !important;
+    width: inherit !important;
+}
+
+.middle {
+    vertical-align: middle;
+}
+
+.citation::before {
+    content: "[ ";
+}
+
+.citation::after {
+    content: " ]";
+}
+
+.citation {
+    font-size: smaller;
+    font-variant-position: super;
+    vertical-align: super;
+    font-weight: bold;
+}
+
+.hlist dl,
+.hlist ol,
+.hlist ul {
+    margin: 0;
+    padding: 0;
+}
+
+.hlist dd,
+.hlist dt,
+.hlist li {
+    margin: 0;
+    display: inline;
+}
+
+.hlist.inline,
+.hlist.inline dl,
+.hlist.inline ol,
+.hlist.inline ul,
+.hlist dl dl,
+.hlist dl ol,
+.hlist dl ul,
+.hlist ol dl,
+.hlist ol ol,
+.hlist ol ul,
+.hlist ul dl,
+.hlist ul ol,
+.hlist ul ul {
+    display: inline;
+}
+
+.hlist .mw-empty-li {
+    display: none;
+}
+
+.hlist dt:after {
+    content: ":";
+}
+
+.hlist dd:after,
+.hlist li:after {
+    content: " · ";
+    font-weight: bold;
+}
+
+.hlist dd:last-child:after,
+.hlist dt:last-child:after,
+.hlist li:last-child:after {
+    content: none;
+}
+
+.hlist dd dd:first-child:before,
+.hlist dd dt:first-child:before,
+.hlist dd li:first-child:before,
+.hlist dt dd:first-child:before,
+.hlist dt dt:first-child:before,
+.hlist dt li:first-child:before,
+.hlist li dd:first-child:before,
+.hlist li dt:first-child:before,
+.hlist li li:first-child:before {
+    content: " (";
+    font-weight: normal;
+}
+
+.hlist dd dd:last-child:after,
+.hlist dd dt:last-child:after,
+.hlist dd li:last-child:after,
+.hlist dt dd:last-child:after,
+.hlist dt dt:last-child:after,
+.hlist dt li:last-child:after,
+.hlist li dd:last-child:after,
+.hlist li dt:last-child:after,
+.hlist li li:last-child:after {
+    content: ")";
+    font-weight: normal;
+}
+
+.hlist ol {
+    counter-reset: listitem;
+}
+
+.hlist ol > li {
+    counter-increment: listitem;
+}
+
+.hlist ol > li:before {
+    content: " " counter(listitem) "\a0";
+}
+
+.hlist dd ol > li:first-child:before,
+.hlist dt ol > li:first-child:before,
+.hlist li ol > li:first-child:before {
+    content: " (" counter(listitem) "\a0";
+}
+
+.plainlist ol,
+.plainlist ul {
+    line-height: inherit;
+    list-style: none none;
+    margin: 0;
+}
+
+.plainlist ol li,
+.plainlist ul li {
+    margin-bottom: 0;
+}
+
+.toclimit-2 .toclevel-1 ul,
+.toclimit-3 .toclevel-2 ul,
+.toclimit-4 .toclevel-3 ul,
+.toclimit-5 .toclevel-4 ul,
+.toclimit-6 .toclevel-5 ul,
+.toclimit-7 .toclevel-6 ul {
+    display: none;
+}
+
+span.snip {
+    font-size: smaller;
+    font-weight: bold;
+    font-style: italic;
+}
+
+span.calc_xp_bonus {
+    font-style: italic !important;
+}
+
+span.calc_xp_bonus:before {
+    content: " (";
+}
+
+span.calc_xp_bonus:after {
+    content: ")";
+}
+
+table.padone > tbody > tr > td {
+    padding: 0em 1em !important;
+}
+
+th.Fephead,
+td.Fephead {
+    background-color: #ccff99;
+    border: 2px solid #aadd77;
+    border-bottom-width: 0;
+}
+
+th.fEphead,
+td.fEphead {
+    background-color: #f0e68c;
+    border: 2px solid #db9200;
+    border-bottom-width: 0;
+}
+
+th.fePhead,
+td.fePhead {
+    background-color: #ffa07a;
+    border: 2px solid #ff8058;
+    border-bottom-width: 0;
+}
+
+th.Fepcell,
+td.Fepcell {
+    background-color: #eeffcc;
+    border: 2px solid #aadd77;
+    border-top-width: 0;
+}
+
+th.fEpcell,
+td.fEpcell {
+    background-color: #fafad2;
+    border: 2px solid #db9200;
+    border-top-width: 0;
+}
+
+th.fePcell,
+td.fePcell {
+    background-color: #ffdab9;
+    border: 2px solid #ff8058;
+    border-top-width: 0;
+}
+
+span.has_tooltip {
+    position: relative;
+}
+
+span.has_tooltip span.tooltip {
+    display: none;
+}
+
+span.has_tooltip:hover span.tooltip {
+    display: block;
+    width: 200%;
+    position: absolute;
+    top: 9px;
+    left: 13px;
+}
+
+div.post {
+    margin: 0px;
+    margin-right: 5px;
+    margin-top: 5px;
+    padding: 9px;
+    border-top: 4px solid #658296;
+    border-bottom: 4px solid #658296;
+    border-left: 1px dashed #658296;
+    border-right: 1px dashed #658296;
+    background: #f9f9f9;
+}
+
+div.post .sig {
+    margin: 0px;
+    margin-left: 10px;
+    margin-top: 5px;
+    padding: 4px;
+    font-size: 80%;
+    font-weight: bold;
+    border-top: 1px dashed #999999;
+    border-left: 4px solid #999999;
+}
+
+div.post:hover .sig {
+    border-top: 1px dashed #666666;
+    border-left: 4px solid #666666;
+}
+
+.usermessage {
+    margin: 6px 0px;
+}
+
+.inlineunhider .inlineunhide {
+    display: none;
+}
+
+.inlineunhider:hover .inlineunhide {
+    display: inline;
+}
+
+small.inlineunhide {
+    clear: both;
+    float: right;
+    font-style: italic;
+    font-weight: normal;
+}
+
+table.itemTable {
+    clear: right;
+    border: 1px solid #ffff00;
+    border-bottom-width: 3px;
+    border-right-width: 2px;
+    margin: 4px auto;
+    width: 98%;
+}
+
+table.itemTable.jewelry {
+    background-color: #ffbbbb;
+}
+
+table.itemTable.clothing {
+    background-color: #ddaaff;
+}
+
+table.itemTable.weapon,
+table.itemTable.wand,
+table.itemTable.runearm,
+table.itemTable.cosmetic {
+    background-color: #ccff99;
+}
+
+table.itemTable.ammunition {
+    background-color: #ff9999;
+}
+
+table.itemTable.armor {
+    background-color: #f0dc82;
+}
+
+table.itemTable.shield {
+    background-color: #aaccff;
+}
+
+table.itemTable.quiver {
+    background-color: #eebbee;
+}
+
+table.itemTable tr {
+    text-align: center;
+}
+
+table.itemTable td {
+    vertical-align: middle;
+}
+
+table.itemTable td.frame {
+    font-weight: bold;
+}
+
+table.itemTable td.desc {
+    text-align: left;
+    padding-left: 3px;
+}
+
+table.itemTable td.frame.undefinedSlot {
+    background-color: #ffff00;
+}
+
+table.itemTable td.frame.jewelry {
+    background-color: #ffbbbb;
+}
+
+table.itemTable td.frame.clothing {
+    background-color: #ddaaff;
+}
+
+table.itemTable td.frame.weapon,
+table.itemTable td.frame.wand,
+table.itemTable td.frame.runearm,
+table.itemTable td.frame.cosmetic {
+    background-color: #ccff99;
+}
+
+table.itemTable td.frame.ammunition {
+    background-color: #ff9999;
+}
+
+table.itemTable td.frame.armor {
+    background-color: #f0dc82;
+}
+
+table.itemTable td.frame.shield {
+    background-color: #aaccff;
+}
+
+table.itemTable td.frame.quiver {
+    background-color: #eebbee;
+}
+
+td.desc.undefinedSlot {
+    background-color: #e6d8ad;
+}
+
+td.desc.jewelry {
+    background-color: #ffe4e1;
+}
+
+td.desc.clothing {
+    background-color: #eeddff;
+}
+
+table.itemTable td.desc.weapon,
+table.itemTable td.desc.wand,
+table.itemTable td.desc.runearm,
+table.itemTable td.desc.cosmetic {
+    background-color: #eeffcc;
+}
+
+table.itemTable td.desc.ammunition {
+    background-color: #ffcccc;
+}
+
+table.itemTable td.desc.armor {
+    background-color: #fffacd;
+}
+
+table.itemTable td.desc.shield {
+    background-color: #cceeff;
+}
+
+table.itemTable td.desc.quiver {
+    background-color: #f0e4f0;
+}
+
+table.itemTable td.image {
+    vertical-align: top;
+    min-width: 426px;
+    max-width: 426px;
+}
+
+table.itemTable.mount {
+    background-color: #bbffbb;
+}
+
+table.itemTable td.frame.mount {
+    background-color: #bbffbb;
+}
+
+table.itemTable td.desc.mount {
+    background-color: #aaeeaa;
+}
+
+table > thead > tr.sticky {
+    position: -webkit-sticky;
+    position: sticky;
+    top: 0px;
+    z-index: 1;
+}
+
+div.clickable a {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+    background-color: #f7f7f7;
+    padding-right: 5px;
+}
+
+div.clickable a img {
+    padding: 1em;
+}
+
+div.clickable a.external.text {
+    background-image: none;
+    padding-right: 5px;
+}

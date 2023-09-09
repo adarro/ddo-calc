@@ -89,11 +89,22 @@ dependencies {
 //            version = "0.62.2"
 //        )
 
-        testImplementation(group = "de.neuland-bfi", name = "jade4j", version = "1.2.7")
-        testImplementation(group = "net.ruippeixotog", name = "scala-scraper_$scalaMajorVersion", version = "2.2.1")
-        testCompileOnly(group = "org.jetbrains", name = "annotations", version = "17.0.0")
+        // testImplementation(group = "de.neuland-bfi", name = "jade4j", version = "1.2.7")
+        // testImplementation(group = "net.ruippeixotog", name = "scala-scraper_$scalaMajorVersion", version = "2.2.1")
+        // testCompileOnly(group = "org.jetbrains", name = "annotations", version = "17.0.0")
 
         implementation(group = "org.jetbrains", name = "annotations", version = "17.0.0")
+    }
+}
+
+testing {
+    suites {
+        withType(JvmTestSuite::class).matching { it.name in listOf("acceptanceTest") }.configureEach {
+
+            dependencies {
+                implementation(project(":ddo-modeling"))
+            }
+        }
     }
 }
 

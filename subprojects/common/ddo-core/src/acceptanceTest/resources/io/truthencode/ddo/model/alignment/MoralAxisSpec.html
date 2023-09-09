@@ -1,0 +1,104 @@
+<!--
+
+    SPDX-License-Identifier: Apache-2.0
+
+    Copyright 2015-2021 Andre White.
+
+    Licensed under the Apache License, Version 2.0 (the "License");
+    you may not use this file except in compliance with the License.
+    You may obtain a copy of the License at
+
+        https://www.apache.org/licenses/LICENSE-2.0
+
+    Unless required by applicable law or agreed to in writing, software
+    distributed under the License is distributed on an "AS IS" BASIS,
+    WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+    See the License for the specific language governing permissions and
+    limitations under the License.
+
+-->
+<!DOCTYPE html>
+<html
+    xmlns:c="http://www.concordion.org/2007/concordion"
+    xmlns:ext="urn:concordion-extensions:2010"
+>
+    <head>
+        <title>Moral Axis</title>
+    </head>
+    <body>
+        <h1>Enter Title - Moral Axis</h1>
+        <p>
+            Simple summary, possibly adding a link<a
+                href="http://ddowiki.com/page/Alignment"
+                >online external doc for reference</a
+            >
+        </p>
+        <h2>Moral Axis</h2>
+        Moral Axis discrete values, which can be derived from case insensitive
+        string values
+        <div class="example">
+            <span ext:embed="helper().listValues('Moral Axis')"></span>
+        </div>
+        <h3>Case Sensitive Operations</h3>
+        <div c:example="caseSensitive">
+            When case insensitivity is<span c:set="#ignoreCase">true</span>
+            <p>
+                Then a search for "<b c:set="#searchString">Evil,Good,Neutral</b
+                >" should return: (Alpha Sort used for verification)
+            </p>
+            <table
+                c:verifyRows="#value : helper().withNames(#searchString,#ignoreCase)"
+            >
+                <tr>
+                    <th c:assertEquals="#value">Matching Values</th>
+                </tr>
+                <tr>
+                    <td>Evil</td>
+                </tr>
+                <tr>
+                    <td>Good</td>
+                </tr>
+                <tr>
+                    <td>Neutral</td>
+                </tr>
+            </table>
+        </div>
+        <h3>Case Insensitive Operations</h3>
+        <div c:example="caseInSensitive">
+            When case insensitivity is&#160;<span c:set="#ignoreCase"
+                >false</span
+            >
+            <p>
+                Search for "<b c:set="#searchString">[evIl, GOOD, nEUTrAL]</b>"
+                should return: (Alpha Sort used for verification)
+            </p>
+            <div>
+                Should return<span
+                    c:assertEquals="helper().resultCount(#searchString,#ignoreCase)"
+                    >0</span
+                >
+                results
+            </div>
+        </div>
+        <h3>Invalid Values</h3>
+        <div c:example="invalidValues">
+            Invalid values should be gracefully filtered out.
+            <div>
+                Search for "<b c:set="#searchString">Good,fake,Doesn't exist</b
+                >should return:
+                <span ext:embed="helper().getValidSingleValue()" />
+                <p>Case-Sensitive?:<span c:set="#ignoreCase">false</span></p>
+                <table
+                    c:verifyRows="#value : helper().withNames(#searchString,#ignoreCase)"
+                >
+                    <tr>
+                        <th c:assertEquals="#value">Matching Values</th>
+                    </tr>
+                    <tr>
+                        <td>Good</td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+    </body>
+</html>

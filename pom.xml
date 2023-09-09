@@ -77,7 +77,7 @@
         <couchbase.version>1.1.0</couchbase.version>
 		<!-- Languages -->
 		<!-- Extend -->
-        <xtend.version>2.13.0</xtend.version>
+        <xtend.version>2.32.0</xtend.version>
 		<!-- Scala -->
         <scala.base>2.12</scala.base>
         <scala.minor.version>2.13.6</scala.minor.version>

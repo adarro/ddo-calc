@@ -592,7 +592,7 @@
                 <plugin>
                     <groupId>pl.project13.maven</groupId>
                     <artifactId>git-commit-id-plugin</artifactId>
-                    <version>2.2.0</version>
+                    <version>4.9.10</version>
 
                     <configuration>
 						<!-- If you'd like to tell the plugin where your .git directory is, 
@@ -606,7 +606,7 @@
 						<!-- that's the default value -->
                         <dateFormat>dd.MM.yyyy '@' HH:mm:ss z</dateFormat>
 
-						<!-- @since 2.2.0 -->
+						<!-- @since 4.9.10 -->
 						<!-- If you want to set the timezone of the dateformat to anything 
 							in particular you can do this by using this option. As a general warning 
 							try to avoid three-letter time zone IDs because the same abbreviation are 

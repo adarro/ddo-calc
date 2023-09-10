@@ -1,50 +1,68 @@
 [versions]
-ch-qos-logback = "1.4.11"
 com-wix = "0.7.6"
-io-getquill = "4.6.1"
-io-monix = "3.4.1"
-org-jetbrains-kotlin = "1.9.0"
-org-junit-jupiter = "5.10.0"
-org-scoverage = "2.0.10"
+getquill = "4.6.1"
+junit-engine = "5.10.0"
+junit-jupiter = "5.10.0"
+junit-platform = "1.10.0"
+# @pin We all move together
+kotlin = "1.9.0"
+logback = "1.4.11"
+mockito = "5.10.0"
+monix = "3.4.1"
+org-scoverage = "2.0.11"
+# @keep -> scalaMajorVersion
+scala2-suffix = "2.13"
+# @pin -> scalaLibraryVersion
+scala2-version = "2.13.10"
 
 [libraries]
-ch-qos-logback-logback-classic = { module = "ch.qos.logback:logback-classic", version.ref = "ch-qos-logback" }
-co-helmethair-scalatest-junit-runner = "co.helmethair:scalatest-junit-runner:0.2.0"
-com-beachape-enumeratum_2-13 = "com.beachape:enumeratum_2.13:1.7.3"
-com-geirsson-scalafmt-core_2-13 = "com.geirsson:scalafmt-core_2.13:3.1.1"
-com-github-kxbmap-configs_2-13 = "com.github.kxbmap:configs_2.13:0.6.1"
-com-typesafe-config = "com.typesafe:config:1.4.2"
-com-typesafe-scala-logging-scala-logging_2-13 = "com.typesafe.scala-logging:scala-logging_2.13:3.9.5"
-com-wix-accord-core_2-13 = { module = "com.wix:accord-core_2.13", version.ref = "com-wix" }
-com-wix-accord-scalatest_2-13 = { module = "com.wix:accord-scalatest_2.13", version.ref = "com-wix" }
-de-neuland-bfi-jade4j = "de.neuland-bfi:jade4j:1.3.2"
-io-getquill-quill-core_2-13 = { module = "io.getquill:quill-core_2.13", version.ref = "io-getquill" }
-io-getquill-quill-monix_2-13 = { module = "io.getquill:quill-monix_2.13", version.ref = "io-getquill" }
-io-getquill-quill-sql_2-13 = { module = "io.getquill:quill-sql_2.13", version.ref = "io-getquill" }
-io-monix-monix-eval_2-13 = { module = "io.monix:monix-eval_2.13", version.ref = "io-monix" }
-io-monix-monix-reactive_2-13 = { module = "io.monix:monix-reactive_2.13", version.ref = "io-monix" }
-net-ruippeixotog-scala-scraper_2-13 = "net.ruippeixotog:scala-scraper_2.13:3.1.0"
-org-apache-logging-log4j-log4j-core = "org.apache.logging.log4j:log4j-core:3.0.0-alpha1"
-org-concordion = "org.concordion:concordion:4.0.1"
-org-concordion-concordion-collapse-output-extension = "org.concordion:concordion-collapse-output-extension:1.0.0"
-org-concordion-concordion-embed-extension = "org.concordion:concordion-embed-extension:1.2.0"
+apache-logging-log4j-log4j-core = "org.apache.logging.log4j:log4j-core:3.0.0-alpha1"
+concordion = "org.concordion:concordion:4.0.1"
+concordion-collapse-output-extension = "org.concordion:concordion-collapse-output-extension:1.0.0"
+concordion-embed-extension = "org.concordion:concordion-embed-extension:1.2.0"
+enumeratum-s213 = "com.beachape:enumeratum_2.13:1.7.3"
+jade4j = "de.neuland-bfi:jade4j:1.3.2"
+json4s-native-s213 = "org.json4s:json4s-native_2.13:4.1.0-M3"
+junit-jupiter = { module = "org.junit.jupiter:junit-jupiter", version.ref = "junit-jupiter" }
+junit-platform-engine = { module = "org.junit.platform:junit-platform-engine", version.ref = "junit-platform" }
+junit-platform-launcher = { module = "org.junit.platform:junit-platform-launcher", version.ref = "junit-platform" }
+junit-platform-runner = { module = "org.junit.platform:junit-platform-runner", version.ref = "junit-engine" }
+junit-vintage-engine = { module = "org.junit.vintage:junit-vintage-engine", version.ref = "junit-engine" }
+kotlin-reflect = { module = "org.jetbrains.kotlin:kotlin-reflect", version.ref = "kotlin" }
+kotlin-stdlib = { module = "org.jetbrains.kotlin:kotlin-stdlib", version.ref = "kotlin" }
+kotlin-stdlib-common = { module = "org.jetbrains.kotlin:kotlin-stdlib-common", version.ref = "kotlin" }
+kotlin-stdlib-jdk7 = { module = "org.jetbrains.kotlin:kotlin-stdlib-jdk7", version.ref = "kotlin" }
+kotlin-stdlib-jdk8 = { module = "org.jetbrains.kotlin:kotlin-stdlib-jdk8", version.ref = "kotlin" }
+kxbmap-configs-s213 = "com.github.kxbmap:configs_2.13:0.6.1"
+logback-classic = { module = "ch.qos.logback:logback-classic", version.ref = "logback" }
+mockito-core = { module = "org.mockito:mockito-core", version.ref = "mockito" }
+monix-eval-s213 = { module = "io.monix:monix-eval_2.13", version.ref = "monix" }
+monix-reactive-s213 = { module = "io.monix:monix-reactive_2.13", version.ref = "monix" }
 org-jetbrains-annotations = "org.jetbrains:annotations:24.0.1"
-org-jetbrains-kotlin-kotlin-reflect = { module = "org.jetbrains.kotlin:kotlin-reflect", version.ref = "org-jetbrains-kotlin" }
-org-jetbrains-kotlin-kotlin-stdlib = { module = "org.jetbrains.kotlin:kotlin-stdlib", version.ref = "org-jetbrains-kotlin" }
-org-jetbrains-kotlin-kotlin-stdlib-common = { module = "org.jetbrains.kotlin:kotlin-stdlib-common", version.ref = "org-jetbrains-kotlin" }
-org-jetbrains-kotlin-kotlin-stdlib-jdk7 = { module = "org.jetbrains.kotlin:kotlin-stdlib-jdk7", version.ref = "org-jetbrains-kotlin" }
-org-jetbrains-kotlin-kotlin-stdlib-jdk8 = { module = "org.jetbrains.kotlin:kotlin-stdlib-jdk8", version.ref = "org-jetbrains-kotlin" }
-org-json4s-json4s-native_2-13 = "org.json4s:json4s-native_2.13:4.1.0-M3"
-org-junit-jupiter-junit-jupiter = { module = "org.junit.jupiter:junit-jupiter", version.ref = "org-junit-jupiter" }
-org-junit-platform-junit-platform-engine = "org.junit.platform:junit-platform-engine:1.10.0"
-org-junit-platform-junit-platform-launcher = "org.junit.platform:junit-platform-launcher:1.10.0"
-org-junit-platform-junit-platform-runner = "org.junit.platform:junit-platform-runner:5.8.2"
-org-junit-vintage-junit-vintage-engine = "org.junit.vintage:junit-vintage-engine:5.10.0"
-org-mockito-mockito-core = "org.mockito:mockito-core:5.5.0"
-org-scalacheck-scalacheck_2-13 = "org.scalacheck:scalacheck_2.13:1.17.0"
-org-scalatest-scalatest_2-13 = "org.scalatest:scalatest_2.13:3.3.0-SNAP4"
-org-scalatestplus-mockito-3-4_2-13 = "org.scalatestplus:mockito-3-4_2.13:3.3.0.0-SNAP3"
-org-scoverage-scalac-scoverage-runtime_2-13 = { module = "org.scoverage:scalac-scoverage-runtime_2.13", version.ref = "org-scoverage" }
+quill-core-s213 = { module = "io.getquill:quill-core_2.13", version.ref = "getquill" }
+quill-monix-s213 = { module = "io.getquill:quill-monix_2.13", version.ref = "getquill" }
+quill-sql-s213 = { module = "io.getquill:quill-sql_2.13", version.ref = "getquill" }
+ruippeixotog-scala-scraper-s213 = "net.ruippeixotog:scala-scraper_2.13:3.1.0"
+scala2-library = { module = "org.scala-lang:scala-library", version.ref = "scala2-version" }
+scalacheck-s213 = "org.scalacheck:scalacheck_2.13:1.17.0"
+scalafmt-core-s213 = "com.geirsson:scalafmt-core_2.13:3.1.1"
+scalatest-junit-runner = "co.helmethair:scalatest-junit-runner:0.2.0"
+scalatest-plus-mockito-s213 = "org.scalatestplus:mockito-3-4_2.13:3.3.0.0-SNAP3"
+scalatest-s213 = "org.scalatest:scalatest_2.13:3.3.0-SNAP4"
+scoverage-runtime-s213 = { module = "org.scoverage:scalac-scoverage-runtime_2.13", version.ref = "org-scoverage" }
+typesafe-config = "com.typesafe:config:1.4.2"
+typesafe-scala-logging-s213 = "com.typesafe.scala-logging:scala-logging_2.13:3.9.5"
+wix-accord-core-s213 = { module = "com.wix:accord-core_2.13", version.ref = "com-wix" }
+wix-accord-scalatest-s213 = { module = "com.wix:accord-scalatest_2.13", version.ref = "com-wix" }
+
+[bundles]
+concordion = [
+  "concordion",
+  "concordion-collapse-output-extension",
+  "concordion-embed-extension",
+]
+#scala-logging = ["typesafe-scala-logging-s213", "typesafe-config"]
+scala-wix = ["wix-accord-core-s213", "wix-accord-scalatest-s213"]
 
 [plugins]
 com-dorongold-task-tree = "com.dorongold.task-tree:2.1.1"

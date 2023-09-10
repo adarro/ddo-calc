@@ -38,7 +38,7 @@ pluginManagement {
     plugins {
         id("com.github.hierynomus.license") version "0.16.1"
         id("com.zlad.gradle.avrohugger") version avroHuggerPluginVersion
-        id("com.chudsaviet.gradle.avrohugger") version avroHuggerPluginVersion
+        // id("com.chudsaviet.gradle.avrohugger") version avroHuggerPluginVersion
         id("org.openapi.generator") version openApiGeneratorPluginVersion
         id("org.scoverage") version scoveragePluginVersion
         id("com.mooltiverse.oss.nyx") version mooltiverseNyxPluginVersion

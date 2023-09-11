@@ -26,6 +26,7 @@ import scala.language.{implicitConversions, postfixOps}
  */
 sealed trait BaBRequisite {
   self: Requisite =>
+
   /**
    * The Minimum Required Base Attack Bonus
    * @return

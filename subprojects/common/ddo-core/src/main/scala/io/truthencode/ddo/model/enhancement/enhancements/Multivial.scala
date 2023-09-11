@@ -37,6 +37,7 @@ trait Multivial extends BombardierCore with ClassEnhancementImpl {
       |While in Pyrite Reaction, you gain +2 Conjuration DCs.
       |""".stripMargin
   )
+
   /**
    * Some enhancements can be taken multiple times (generally up to three)
    */

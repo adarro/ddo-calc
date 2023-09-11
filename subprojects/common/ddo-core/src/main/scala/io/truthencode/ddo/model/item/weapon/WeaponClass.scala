@@ -29,6 +29,7 @@ import scala.collection.immutable.IndexedSeq
  */
 sealed trait WeaponClass extends EnumEntry with DisplayName {
   self: DefaultDeliveryMethod with PhysicalDamage =>
+
   /**
    * Sets or maps the source text for the DisplayName.
    *

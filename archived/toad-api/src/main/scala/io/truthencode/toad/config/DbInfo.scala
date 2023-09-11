@@ -23,10 +23,22 @@ import configs.syntax._
 /**
  * Created by adarr on 7/15/2016.
  */
-case class DbInfo(host: String, port: Int, uuid: String, userId: String, pwd: Array[Char], url: String)
+case class DbInfo(
+  host: String,
+  port: Int,
+  uuid: String,
+  userId: String,
+  pwd: Array[Char],
+  url: String)
 
 object DbInfo {
-  def apply(host: String, port: Int, uuid: String, userId: String, pwd: String, url: String): DbInfo =
+  def apply(
+    host: String,
+    port: Int,
+    uuid: String,
+    userId: String,
+    pwd: String,
+    url: String): DbInfo =
     DbInfo(host, port, uuid, userId, pwd.toCharArray, url)
 
   def apply: DbInfo = {

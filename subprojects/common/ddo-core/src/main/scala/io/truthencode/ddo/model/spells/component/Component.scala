@@ -41,6 +41,7 @@ sealed trait Component {
  */
 trait MaterialComponent extends Component {
   override val componentType: ComponentType = ComponentType.MaterialComponent
+
   /**
    * The name of the component.
    *

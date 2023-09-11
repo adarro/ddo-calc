@@ -18,7 +18,11 @@
 package io.truthencode.ddo.model.feats
 
 import io.truthencode.ddo.model.classes.HeroicCharacterClass
-import io.truthencode.ddo.support.requisite.{ClassRequisiteImpl, FeatRequisiteImpl, RequiresAllOfClass}
+import io.truthencode.ddo.support.requisite.{
+  ClassRequisiteImpl,
+  FeatRequisiteImpl,
+  RequiresAllOfClass
+}
 
 /**
  * Icon Enhancement Instinctive Fighting.png Natural Fighting Passive This feat improves the double

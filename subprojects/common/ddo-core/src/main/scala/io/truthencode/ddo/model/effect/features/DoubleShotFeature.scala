@@ -74,6 +74,7 @@ trait DoubleShotFeature extends Features {
         .build
 
       override protected[this] def effectParameters: Seq[ParameterModifier[_]] = eb.modifiers
+
       /**
        * The General Description should be just that. This should not include specific values unless
        * all instances will share that value. I.e. a Dodge Effect might state it increases your

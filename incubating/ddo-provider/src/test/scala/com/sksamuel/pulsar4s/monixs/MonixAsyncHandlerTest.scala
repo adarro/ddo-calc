@@ -30,12 +30,10 @@ import java.util.UUID
 import scala.concurrent.Await
 import scala.concurrent.duration._
 
-
-
 /**
- * This test simply validates library use and environment.
- * It is currently failing when ran with other tests using the Pulsar TestContainer.
- * It passes running stand-alone and with an actual (non-testcontainers.org) pulsar environment (i.e. full docker or assumed production server)
+ * This test simply validates library use and environment. It is currently failing when ran with
+ * other tests using the Pulsar TestContainer. It passes running stand-alone and with an actual
+ * (non-testcontainers.org) pulsar environment (i.e. full docker or assumed production server)
  */
 @Ignore
 class MonixAsyncHandlerTest extends AnyFunSuite with Matchers with BeforeAndAfterAll {

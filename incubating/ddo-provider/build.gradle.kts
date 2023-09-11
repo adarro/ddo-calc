@@ -24,7 +24,6 @@ plugins {
     id("com.github.lkishalmi.gatling") version "3.2.9"
     id("org.openapi.generator")
 //    id("integration-test-conventions")
-
 }
 
 dependencies {
@@ -70,17 +69,17 @@ dependencies {
     implementation(
         group = "com.clever-cloud.pulsar4s",
         name = "pulsar4s-core_$scalaMajorVersion",
-        version = pulsar4sVersion
+        version = pulsar4sVersion,
     )
     implementation(
         group = "com.clever-cloud.pulsar4s",
         name = "pulsar4s-monix_$scalaMajorVersion",
-        version = pulsar4sVersion
+        version = pulsar4sVersion,
     )
     implementation(
         group = "com.clever-cloud.pulsar4s",
         name = "pulsar4s-avro_$scalaMajorVersion",
-        version = pulsar4sVersion
+        version = pulsar4sVersion,
     )
 
     testImplementation("org.testcontainers:pulsar:1.16.2")
@@ -97,13 +96,11 @@ dependencies {
 //    testImplementation(group = "org.mockito", name = "mockito-core")
     testImplementation("org.mockito:mockito-scala-scalatest_$scalaMajorVersion:1.16.49")
 
-
 // go camel
     implementation("org.apache.camel:camel-core:$camelVersion")
     implementation("org.apache.camel:camel-pulsar:$camelVersion")
     implementation(dependencyNotation = "org.apache.camel:camel-componentdsl:$camelVersion")
     implementation("org.apache.camel:camel-main:$camelVersion")
-
 
     // JUnit 5
     testRuntimeOnly(group = "org.junit.platform", name = "junit-platform-engine")
@@ -147,7 +144,7 @@ val generatedScalaSourceDir = layout.files("src/main/avro")
 data class ApiSpec(
     val spec: String,
     val schemaDir: String,
-    val generatedSrcDir: String
+    val generatedSrcDir: String,
 )
 
 /**
@@ -164,7 +161,7 @@ data class PackageSpec(
     val basePackage: String = "io.truthencode.ddo",
     val apiPackage: String = "api",
     val invokerPackage: String = "invoker",
-    val modelPackage: String = "models.model"
+    val modelPackage: String = "models.model",
 ) {
     /**
      * Api qualified api package name
@@ -213,16 +210,16 @@ avrohugger {
         protocolType = AvrohuggerExtension.ScalaADT
         enumType = AvrohuggerExtension.ScalaCaseObjectEnum
     }
-
 }
 val schemaList = listOf("parseHub")
 
 // Create Tasks to generate Avro Schemas for our OpenAPI specs
 
-val genAvroSchemaTask = task("genAvroSchema") {
-    this.group = "OpenAPI Tools"
-    dependsOn("openApiValidate")
-}
+val genAvroSchemaTask =
+    task("genAvroSchema") {
+        this.group = "OpenAPI Tools"
+        dependsOn("openApiValidate")
+    }
 
 run {
     @Suppress("IDENTIFIER_LENGTH")
@@ -281,9 +278,9 @@ tasks.create<Delete>("cleanGeneratedScala") {
     delete = setOf(generatedScalaSourceDir)
 }
 
-//tasks.withType(com.hierynomus.gradle.license.tasks.LicenseFormat::class) {
+// tasks.withType(com.hierynomus.gradle.license.tasks.LicenseFormat::class) {
 //    excludes.add("src/main/avro/**/*.scala")
-//}
+// }
 
 tasks.getAt("clean").dependsOn("cleanGeneratedScala")
 
@@ -293,13 +290,15 @@ tasks {
     "test"(Test::class) {
         useJUnitPlatform {
             includeEngines = setOf("scalatest", "junit-jupiter")
-            if (ci.isCi)
-                excludeTags = setOf(
-                    "Integration",
-                    "io.truthencode.tags.Integration",
-                    "FunctionOnly",
-                    "io.truthencode.tags.FunctionOnly"
-                )
+            if (ci.isCi) {
+                excludeTags =
+                    setOf(
+                        "Integration",
+                        "io.truthencode.tags.Integration",
+                        "FunctionOnly",
+                        "io.truthencode.tags.FunctionOnly",
+                    )
+            }
             testLogging {
                 events("passed", "skipped", "failed")
             }
@@ -314,4 +313,3 @@ tasks {
 //        mustRunAfter(gas)
 //    }
 }
-

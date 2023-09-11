@@ -28,6 +28,7 @@ trait SpillTheBadStuff extends ApothecaryCore with ClassEnhancementImpl {
   override lazy val description: Option[String] = Some(
     "Gildleaf Offensive SLA: Deals 1d6+4 per Caster Level of a random type of damage to enemies in a short cone. The damage all scales with Positive Spell Power. Affected enemies have a chance to be Blinded, Dazed, Silenced, Tripped, Stunned, or Paralyzed. (Fortitude save negates).\nPassive: While your Reaction is Verdanite, +2% Positive & Negative Spell Critical Damage & 5% Magical Efficiency (reduced spell point cost)"
   )
+
   /**
    * Some enhancements can be taken multiple times (generally up to three)
    */

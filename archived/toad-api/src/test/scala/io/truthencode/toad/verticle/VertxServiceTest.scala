@@ -45,7 +45,9 @@ class VertxServiceTest extends AnyFunSpec with Matchers {
     val timerTask: Task[Boolean] =
       for {
         _ <- Task.sleep(10.seconds)
-        r <- Task { logger.info(s"Waiting... completed: ${taskToDo.isCompleted}"); taskToDo.isCompleted }
+        r <- Task {
+          logger.info(s"Waiting... completed: ${taskToDo.isCompleted}"); taskToDo.isCompleted
+        }
       } yield r
     val result = Await.result(taskToDo, 45.seconds)
     timerTask

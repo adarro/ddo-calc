@@ -13,21 +13,18 @@ In this context, we encapsulate all supported skills here.
 
 Searching for [Balance](- "#searchString") will return:
 
-| [ ][search] [Matching Skills][match]|
-|------------------------------------------|
-| Balance |
+| [ ][search] [Matching Skills][match] |
+| ------------------------------------ |
+| Balance                              |
 
 [search]: - "c:verify-rows=#username:withNameAsList(#searchString)"
-
 [_matchStrategy_]: - "c:matchStrategy=KeyMatch"
-
 [match]: - "?=#username"
 
 Skills can be searched with many case options.
 
-* Case sensitive (default)
-* Case insensitive
-* Uppercase
-* Lowercase
-* Snake / Camel case
-
+-   Case sensitive (default)
+-   Case insensitive
+-   Uppercase
+-   Lowercase
+-   Snake / Camel case

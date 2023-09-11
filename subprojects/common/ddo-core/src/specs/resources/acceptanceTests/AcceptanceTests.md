@@ -1,3 +1,3 @@
 # AcceptanceTests
 
-* [Model](../io/truthencode/ddo/model/Model.html "c:run")
+-   [Model](../io/truthencode/ddo/model/Model.html "c:run")

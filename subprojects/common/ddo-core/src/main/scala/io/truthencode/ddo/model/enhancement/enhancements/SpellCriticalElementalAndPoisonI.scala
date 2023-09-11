@@ -28,6 +28,7 @@ trait SpellCriticalElementalAndPoisonI
     Some(
       "n I: Your Acid, Cold, Electric, Fire, and Poison damage spells have an additional 1% chance to critically hit."
     )
+
   /**
    * Some enhancements can be taken multiple times (generally up to three)
    */

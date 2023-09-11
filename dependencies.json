@@ -1,244 +1,244 @@
 {
-  "libraries": [
-    {
-      "updateVersion": "1.3.0-alpha5",
-      "group": "ch.qos.logback",
-      "name": "logback-classic",
-      "version": "1.2.3"
-    },
-    {
-      "group": "co.helmethair",
-      "name": "scalatest-junit-runner",
-      "version": "none"
-    },
-    {
-      "updateVersion": "1.6.1",
-      "group": "com.beachape",
-      "name": "enumeratum_2.12",
-      "version": "1.5.13"
-    },
-    {
-      "updateVersion": "2.0.0-RC1",
-      "group": "com.geirsson",
-      "name": "scalafmt-core_2.12",
-      "version": "1.6.0-RC4-11-9e33ebdb"
-    },
-    {
-      "group": "com.github.fkorotkov.libraries",
-      "name": "com.github.fkorotkov.libraries.gradle.plugin",
-      "version": "1.1"
-    },
-    {
-      "updateVersion": "0.6.1",
-      "group": "com.github.kxbmap",
-      "name": "configs_2.12",
-      "version": "0.4.4"
-    },
-    {
-      "updateVersion": "3.3.4",
-      "group": "com.github.lkishalmi.gatling",
-      "name": "com.github.lkishalmi.gatling.gradle.plugin",
-      "version": "3.2.9"
-    },
-    {
-      "updateVersion": "0.31",
-      "group": "com.github.maiflai.scalatest",
-      "name": "com.github.maiflai.scalatest.gradle.plugin",
-      "version": "0.25"
-    },
-    {
-      "updateVersion": "3.9.3",
-      "group": "com.typesafe.scala-logging",
-      "name": "scala-logging_2.12",
-      "version": "3.9.2"
-    },
-    {
-      "updateVersion": "1.4.1",
-      "group": "com.typesafe",
-      "name": "config",
-      "version": "1.4.0"
-    },
-    {
-      "group": "com.vladsch.flexmark",
-      "name": "flexmark-ext-emoji",
-      "version": "0.62.2"
-    },
-    {
-      "group": "com.vladsch.flexmark",
-      "name": "flexmark-ext-gfm-strikethrough",
-      "version": "0.62.2"
-    },
-    {
-      "group": "com.vladsch.flexmark",
-      "name": "flexmark-ext-gfm-tasklist",
-      "version": "0.62.2"
-    },
-    {
-      "updateVersion": "0.7.6",
-      "group": "com.wix",
-      "name": "accord-core_2.12",
-      "version": "0.7.3"
-    },
-    {
-      "updateVersion": "0.7.6",
-      "group": "com.wix",
-      "name": "accord-scalatest_2.12",
-      "version": "0.7.3"
-    },
-    {
-      "updateVersion": "0.5.0",
-      "group": "com.zlad.gradle.avrohugger",
-      "name": "com.zlad.gradle.avrohugger.gradle.plugin",
-      "version": "0.4.0"
-    },
-    {
-      "updateVersion": "1.3.2",
-      "group": "de.neuland-bfi",
-      "name": "jade4j",
-      "version": "1.2.7"
-    },
-    {
-      "updateVersion": "3.5.1",
-      "group": "io.gatling.highcharts",
-      "name": "gatling-charts-highcharts",
-      "version": "3.2.1"
-    },
-    {
-      "updateVersion": "4.13.2",
-      "group": "junit",
-      "name": "junit",
-      "version": "4.12"
-    },
-    {
-      "updateVersion": "2.2.0",
-      "group": "net.ruippeixotog",
-      "name": "scala-scraper_2.12",
-      "version": "2.1.0"
-    },
-    {
-      "group": "org.concordion",
-      "name": "concordion",
-      "version": "3.0.1"
-    },
-    {
-      "group": "org.ec4j.editorconfig",
-      "name": "org.ec4j.editorconfig.gradle.plugin",
-      "version": "0.0.3"
-    },
-    {
-      "updateVersion": "0.0.8",
-      "group": "org.ec4j.maven",
-      "name": "ec4j-linters",
-      "version": "0.0.7"
-    },
-    {
-      "updateVersion": "20.1.0",
-      "group": "org.jetbrains",
-      "name": "annotations",
-      "version": "17.0.0"
-    },
-    {
-      "updateVersion": "3.7.0-M16",
-      "group": "org.json4s",
-      "name": "json4s-native_2.12",
-      "version": "3.6.7"
-    },
-    {
-      "group": "org.junit.platform",
-      "name": "junit-platform-engine",
-      "version": "none"
-    },
-    {
-      "group": "org.junit.platform",
-      "name": "junit-platform-launcher",
-      "version": "none"
-    },
-    {
-      "group": "org.junit.vintage",
-      "name": "junit-vintage-engine",
-      "version": "none"
-    },
-    {
-      "updateVersion": "0.45.0",
-      "group": "org.kordamp.gradle.project",
-      "name": "org.kordamp.gradle.project.gradle.plugin",
-      "version": "0.31.2"
-    },
-    {
-      "group": "org.mockito",
-      "name": "mockito-all",
-      "version": "2.0.2-beta"
-    },
-    {
-      "updateVersion": "5.1.0",
-      "group": "org.openapi.generator",
-      "name": "org.openapi.generator.gradle.plugin",
-      "version": "4.2.2"
-    },
-    {
-      "updateVersion": "2.0.0-RC1",
-      "group": "org.scala-lang.modules",
-      "name": "scala-xml_2.12",
-      "version": "1.2.0"
-    },
-    {
-      "updateVersion": "2.13.5",
-      "group": "org.scala-lang",
-      "name": "scala-library",
-      "version": "2.12.10"
-    },
-    {
-      "updateVersion": "2.13.5",
-      "group": "org.scala-lang",
-      "name": "scala-library",
-      "version": "2.12.8"
-    },
-    {
-      "updateVersion": "1.15.4",
-      "group": "org.scalacheck",
-      "name": "scalacheck_2.12",
-      "version": "1.14.0"
-    },
-    {
-      "updateVersion": "3.3.0-SNAP3",
-      "group": "org.scalatest",
-      "name": "scalatest_2.12",
-      "version": "3.0.8"
-    },
-    {
-      "updateVersion": "3.3.0-SNAP3",
-      "group": "org.scalatest",
-      "name": "scalatest_2.12",
-      "version": "3.2.0-SNAP10"
-    },
-    {
-      "updateVersion": "5.0.0",
-      "group": "org.scoverage",
-      "name": "org.scoverage.gradle.plugin",
-      "version": "3.1.5"
-    },
-    {
-      "updateVersion": "1.4.2",
-      "group": "org.scoverage",
-      "name": "scalac-scoverage-plugin_2.12",
-      "version": "1.3.1"
-    },
-    {
-      "updateVersion": "1.4.2",
-      "group": "org.scoverage",
-      "name": "scalac-scoverage-runtime_2.12",
-      "version": "1.3.1"
-    },
-    {
-      "updateVersion": "2.3.5",
-      "group": "org.shipkit.java",
-      "name": "org.shipkit.java.gradle.plugin",
-      "version": "2.2.6"
-    },
-    {
-      "group": "org.unbroken-dome.test-sets",
-      "name": "org.unbroken-dome.test-sets.gradle.plugin",
-      "version": "3.0.1"
-    }
-  ]
+    "libraries": [
+        {
+            "updateVersion": "1.3.0-alpha5",
+            "group": "ch.qos.logback",
+            "name": "logback-classic",
+            "version": "1.2.3"
+        },
+        {
+            "group": "co.helmethair",
+            "name": "scalatest-junit-runner",
+            "version": "none"
+        },
+        {
+            "updateVersion": "1.6.1",
+            "group": "com.beachape",
+            "name": "enumeratum_2.12",
+            "version": "1.5.13"
+        },
+        {
+            "updateVersion": "2.0.0-RC1",
+            "group": "com.geirsson",
+            "name": "scalafmt-core_2.12",
+            "version": "1.6.0-RC4-11-9e33ebdb"
+        },
+        {
+            "group": "com.github.fkorotkov.libraries",
+            "name": "com.github.fkorotkov.libraries.gradle.plugin",
+            "version": "1.1"
+        },
+        {
+            "updateVersion": "0.6.1",
+            "group": "com.github.kxbmap",
+            "name": "configs_2.12",
+            "version": "0.4.4"
+        },
+        {
+            "updateVersion": "3.3.4",
+            "group": "com.github.lkishalmi.gatling",
+            "name": "com.github.lkishalmi.gatling.gradle.plugin",
+            "version": "3.2.9"
+        },
+        {
+            "updateVersion": "0.31",
+            "group": "com.github.maiflai.scalatest",
+            "name": "com.github.maiflai.scalatest.gradle.plugin",
+            "version": "0.25"
+        },
+        {
+            "updateVersion": "3.9.3",
+            "group": "com.typesafe.scala-logging",
+            "name": "scala-logging_2.12",
+            "version": "3.9.2"
+        },
+        {
+            "updateVersion": "1.4.1",
+            "group": "com.typesafe",
+            "name": "config",
+            "version": "1.4.0"
+        },
+        {
+            "group": "com.vladsch.flexmark",
+            "name": "flexmark-ext-emoji",
+            "version": "0.62.2"
+        },
+        {
+            "group": "com.vladsch.flexmark",
+            "name": "flexmark-ext-gfm-strikethrough",
+            "version": "0.62.2"
+        },
+        {
+            "group": "com.vladsch.flexmark",
+            "name": "flexmark-ext-gfm-tasklist",
+            "version": "0.62.2"
+        },
+        {
+            "updateVersion": "0.7.6",
+            "group": "com.wix",
+            "name": "accord-core_2.12",
+            "version": "0.7.3"
+        },
+        {
+            "updateVersion": "0.7.6",
+            "group": "com.wix",
+            "name": "accord-scalatest_2.12",
+            "version": "0.7.3"
+        },
+        {
+            "updateVersion": "0.5.0",
+            "group": "com.zlad.gradle.avrohugger",
+            "name": "com.zlad.gradle.avrohugger.gradle.plugin",
+            "version": "0.4.0"
+        },
+        {
+            "updateVersion": "1.3.2",
+            "group": "de.neuland-bfi",
+            "name": "jade4j",
+            "version": "1.2.7"
+        },
+        {
+            "updateVersion": "3.5.1",
+            "group": "io.gatling.highcharts",
+            "name": "gatling-charts-highcharts",
+            "version": "3.2.1"
+        },
+        {
+            "updateVersion": "4.13.2",
+            "group": "junit",
+            "name": "junit",
+            "version": "4.12"
+        },
+        {
+            "updateVersion": "2.2.0",
+            "group": "net.ruippeixotog",
+            "name": "scala-scraper_2.12",
+            "version": "2.1.0"
+        },
+        {
+            "group": "org.concordion",
+            "name": "concordion",
+            "version": "3.0.1"
+        },
+        {
+            "group": "org.ec4j.editorconfig",
+            "name": "org.ec4j.editorconfig.gradle.plugin",
+            "version": "0.0.3"
+        },
+        {
+            "updateVersion": "0.0.8",
+            "group": "org.ec4j.maven",
+            "name": "ec4j-linters",
+            "version": "0.0.7"
+        },
+        {
+            "updateVersion": "20.1.0",
+            "group": "org.jetbrains",
+            "name": "annotations",
+            "version": "17.0.0"
+        },
+        {
+            "updateVersion": "3.7.0-M16",
+            "group": "org.json4s",
+            "name": "json4s-native_2.12",
+            "version": "3.6.7"
+        },
+        {
+            "group": "org.junit.platform",
+            "name": "junit-platform-engine",
+            "version": "none"
+        },
+        {
+            "group": "org.junit.platform",
+            "name": "junit-platform-launcher",
+            "version": "none"
+        },
+        {
+            "group": "org.junit.vintage",
+            "name": "junit-vintage-engine",
+            "version": "none"
+        },
+        {
+            "updateVersion": "0.45.0",
+            "group": "org.kordamp.gradle.project",
+            "name": "org.kordamp.gradle.project.gradle.plugin",
+            "version": "0.31.2"
+        },
+        {
+            "group": "org.mockito",
+            "name": "mockito-all",
+            "version": "2.0.2-beta"
+        },
+        {
+            "updateVersion": "5.1.0",
+            "group": "org.openapi.generator",
+            "name": "org.openapi.generator.gradle.plugin",
+            "version": "4.2.2"
+        },
+        {
+            "updateVersion": "2.0.0-RC1",
+            "group": "org.scala-lang.modules",
+            "name": "scala-xml_2.12",
+            "version": "1.2.0"
+        },
+        {
+            "updateVersion": "2.13.5",
+            "group": "org.scala-lang",
+            "name": "scala-library",
+            "version": "2.12.10"
+        },
+        {
+            "updateVersion": "2.13.5",
+            "group": "org.scala-lang",
+            "name": "scala-library",
+            "version": "2.12.8"
+        },
+        {
+            "updateVersion": "1.15.4",
+            "group": "org.scalacheck",
+            "name": "scalacheck_2.12",
+            "version": "1.14.0"
+        },
+        {
+            "updateVersion": "3.3.0-SNAP3",
+            "group": "org.scalatest",
+            "name": "scalatest_2.12",
+            "version": "3.0.8"
+        },
+        {
+            "updateVersion": "3.3.0-SNAP3",
+            "group": "org.scalatest",
+            "name": "scalatest_2.12",
+            "version": "3.2.0-SNAP10"
+        },
+        {
+            "updateVersion": "5.0.0",
+            "group": "org.scoverage",
+            "name": "org.scoverage.gradle.plugin",
+            "version": "3.1.5"
+        },
+        {
+            "updateVersion": "1.4.2",
+            "group": "org.scoverage",
+            "name": "scalac-scoverage-plugin_2.12",
+            "version": "1.3.1"
+        },
+        {
+            "updateVersion": "1.4.2",
+            "group": "org.scoverage",
+            "name": "scalac-scoverage-runtime_2.12",
+            "version": "1.3.1"
+        },
+        {
+            "updateVersion": "2.3.5",
+            "group": "org.shipkit.java",
+            "name": "org.shipkit.java.gradle.plugin",
+            "version": "2.2.6"
+        },
+        {
+            "group": "org.unbroken-dome.test-sets",
+            "name": "org.unbroken-dome.test-sets.gradle.plugin",
+            "version": "3.0.1"
+        }
+    ]
 }

@@ -19,7 +19,6 @@ package io.truthencode.ddo.model.feats
 
 import io.truthencode.ddo.providers.SimpleValueProvider
 
-class BabPercentAmpPerLevelProvider
-  extends SimpleValueProvider[Int] with DoubleShotForBabProvider {
+class BabPercentAmpPerLevelProvider extends SimpleValueProvider[Int] with DoubleShotForBabProvider {
   override def createValue: Int => Int = createValue
 }

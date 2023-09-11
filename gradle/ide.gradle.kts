@@ -26,30 +26,29 @@ allprojects {
         // TODO: editorConfig is also in quality-checks, which is where I believe it belongs.  Need to choose
         //   plugin("org.ec4j.editorconfig")
     }
-
-
 }
 
 configure<org.gradle.plugins.ide.idea.model.IdeaModel> {
     project {
         vcs = "Git"
         ipr {
-            beforeMerged(Action<org.gradle.plugins.ide.idea.model.Project> {              
-                modulePaths.clear()
-            })
+            beforeMerged(
+                Action<org.gradle.plugins.ide.idea.model.Project> {
+                    modulePaths.clear()
+                },
+            )
         }
-           
+
         module {
             iml {
-                whenMerged(Action<Module> {
-                    dependencies.forEach {
-                        (it as ModuleDependency).isExported = true
-                    }
-                })
+                whenMerged(
+                    Action<Module> {
+                        dependencies.forEach {
+                            (it as ModuleDependency).isExported = true
+                        }
+                    },
+                )
             }
         }
-
     }
 }
-
-

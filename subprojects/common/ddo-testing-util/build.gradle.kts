@@ -28,7 +28,6 @@ dependencies {
         val scalaLibraryVersion: String by project
         val scalaMajorVersion: String by project
 
-
         implementation(platform(project(":ddo-platform-scala")))
         implementation("org.scala-lang:scala-library:$scalaLibraryVersion")
         implementation(group = "com.beachape", name = "enumeratum_$scalaMajorVersion")
@@ -36,7 +35,6 @@ dependencies {
         implementation(group = "com.github.kxbmap", name = "configs_$scalaMajorVersion")
 
         // database
-
 
         // validation and rules
         implementation(group = "com.wix", name = "accord-core_$scalaMajorVersion")

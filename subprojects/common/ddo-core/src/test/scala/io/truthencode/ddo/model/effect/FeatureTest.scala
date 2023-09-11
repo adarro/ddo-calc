@@ -23,7 +23,12 @@ import io.truthencode.ddo.enhancement.BonusType
 import io.truthencode.ddo.model.effect.Feature.printFeature
 import io.truthencode.ddo.model.effect.features.SkillEffect
 import io.truthencode.ddo.model.feats.{Feat, GeneralFeat}
-import io.truthencode.ddo.model.item.weapon.WeaponCategory.{filterByWeaponClass, icPlus1, icPlus2, icPlus3}
+import io.truthencode.ddo.model.item.weapon.WeaponCategory.{
+  filterByWeaponClass,
+  icPlus1,
+  icPlus2,
+  icPlus3
+}
 import io.truthencode.ddo.model.item.weapon.WeaponClass
 import io.truthencode.ddo.model.skill.Skill.{Listen, Spot}
 import io.truthencode.ddo.model.stats.{BasicStat, MissChance}
@@ -66,6 +71,7 @@ class FeatureTest extends AnyFunSpec with Matchers with MockitoSugar with LazyLo
       val part = EffectPart.MissChanceEffect(BasicStat.DodgeChance)
       val mockDetailedEffect = mock[DetailedEffect]
       val partMod = new PartModifier[Int, BasicStat with MissChance] with UsingSearchPrefix {
+
         /**
          * Used when qualifying a search with a prefix. Examples include finding "HalfElf" from
          * qualified "Race:HalfElf"
@@ -75,6 +81,7 @@ class FeatureTest extends AnyFunSpec with Matchers with MockitoSugar with LazyLo
          */
         override def searchPrefixSource: String = partToModify.searchPrefixSource
         override lazy val part: Try[EffectPart] = Success(EffectPart.MissChanceEffect(partToModify))
+
         /**
          * The General Description should be just that. This should not include specific values
          * unless all instances will share that value. I.e. a Dodge Effect might state it increases
@@ -128,7 +135,7 @@ class FeatureTest extends AnyFunSpec with Matchers with MockitoSugar with LazyLo
       val ff: immutable.Seq[SkillEffect] = feat.features.collect { case y: SkillEffect =>
         y
       }
-      ff.map(_.skill) should contain allOf (Listen, Spot)
+      (ff.map(_.skill) should contain).allOf(Listen, Spot)
     }
 
     it("should contain relevant source information", FeatTest, SkillTest, FeatureTest) {

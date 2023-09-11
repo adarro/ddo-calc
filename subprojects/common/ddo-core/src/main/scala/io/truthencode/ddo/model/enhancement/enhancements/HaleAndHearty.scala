@@ -24,6 +24,7 @@ trait HaleAndHearty extends ApothecaryTierTwo with ClassEnhancementImpl {
   override lazy val description: Option[String] = Some(
     " +[3/6/10] Positive and Negative Healing Amplification"
   )
+
   /**
    * Some enhancements can be taken multiple times (generally up to three)
    */

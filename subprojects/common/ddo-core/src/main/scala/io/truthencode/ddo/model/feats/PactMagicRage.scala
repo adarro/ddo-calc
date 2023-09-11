@@ -19,7 +19,12 @@ package io.truthencode.ddo.model.feats
 
 import io.truthencode.ddo.model.classes.HeroicCharacterClass
 import io.truthencode.ddo.model.classes.HeroicCharacterClass.Warlock
-import io.truthencode.ddo.support.requisite.{FeatRequisiteImpl, GrantsToClass, RequiresAllOfClass, RequiresAllOfFeat}
+import io.truthencode.ddo.support.requisite.{
+  FeatRequisiteImpl,
+  GrantsToClass,
+  RequiresAllOfClass,
+  RequiresAllOfFeat
+}
 
 /**
  * Adds the spell Rage to your spellbook @ Level 2

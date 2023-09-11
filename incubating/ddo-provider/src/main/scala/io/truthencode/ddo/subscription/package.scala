@@ -48,6 +48,6 @@ package object subscription {
   type HaggleProvider = SkillProvider
 
   final val attributeTopicPrefix = "non-persistent://sample/standalone/ns1/"
-  def genAttrPrefix(t:String):String = s"$attributeTopicPrefix$t"
+  def genAttrPrefix(t: String): String = s"$attributeTopicPrefix$t"
 
 }

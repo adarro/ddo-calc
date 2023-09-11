@@ -45,6 +45,7 @@ object Interval extends Enum[Interval] {
   case object PerRest extends ResetOnRest
 
   case class OnTimer(override val duration: Duration) extends TimeDuration
+
   /**
    * Replenished after time elapses
    */

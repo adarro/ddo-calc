@@ -21,7 +21,12 @@ import io.truthencode.ddo.enhancement.BonusType
 import io.truthencode.ddo.model.abilities.ActiveAbilities
 import io.truthencode.ddo.model.effect
 import io.truthencode.ddo.model.effect.TriggerEvent
-import io.truthencode.ddo.model.effect.features.{ArmorClassPercentFeature, FeaturesImpl, GrantAbilityFeature, HitChancePercentFeature}
+import io.truthencode.ddo.model.effect.features.{
+  ArmorClassPercentFeature,
+  FeaturesImpl,
+  GrantAbilityFeature,
+  HitChancePercentFeature
+}
 import io.truthencode.ddo.support.requisite.{FeatRequisiteImpl, FreeFeat}
 
 import java.time.Duration

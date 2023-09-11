@@ -46,6 +46,7 @@ trait ArmorClassPercentFeature extends Features {
         .build
 
       override protected[this] def effectParameters: Seq[ParameterModifier[_]] = eb.modifiers
+
       /**
        * The General Description should be just that. This should not include specific values unless
        * all instances will share that value. I.e. a Dodge Effect might state it increases your
@@ -61,21 +62,22 @@ trait ArmorClassPercentFeature extends Features {
         triggersOff = triggerOff.map(_.entryName),
         bonusType = armorBonusType.toString
       )
+
       /**
        * The main name of the effect.
        *
-       * Naming conventions The name should be concisely non-specific.
-       * i.e. Prefer "ArmorClass" instead of "Deflection" or "Miss-Chance" Deflection is too
-       * specific as there are several stacking and non-stacking types (Natural Armor, Shield) that
-       * all contribute to your specific goal of increasing your armor class. Miss-Chance is to
-       * vague as it encompasses everything from incorporeal, dodge, armor class, arrow-deflection
-       * etc.
+       * Naming conventions The name should be concisely non-specific. i.e. Prefer "ArmorClass"
+       * instead of "Deflection" or "Miss-Chance" Deflection is too specific as there are several
+       * stacking and non-stacking types (Natural Armor, Shield) that all contribute to your
+       * specific goal of increasing your armor class. Miss-Chance is to vague as it encompasses
+       * everything from incorporeal, dodge, armor class, arrow-deflection etc.
        */
       override lazy val name: String = "ArmorClass"
 
       override val source: SourceInfo = src
       override lazy val value: Int = armorBonusAmount
       override lazy val effectText: Option[String] = Some(s"Armor Class by $value%")
+
       /**
        * Used when qualifying a search with a prefix. Examples include finding "HalfElf" from
        * qualified "Race:HalfElf"

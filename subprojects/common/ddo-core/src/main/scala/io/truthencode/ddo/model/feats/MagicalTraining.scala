@@ -22,9 +22,18 @@ import io.truthencode.ddo.model.classes.HeroicCharacterClass
 import io.truthencode.ddo.model.classes.HeroicCharacterClass._
 import io.truthencode.ddo.model.effect
 import io.truthencode.ddo.model.effect.TriggerEvent
-import io.truthencode.ddo.model.effect.features.{FeaturesImpl, SpellCriticalPercentFeature, SpellPointAmountFeature}
+import io.truthencode.ddo.model.effect.features.{
+  FeaturesImpl,
+  SpellCriticalPercentFeature,
+  SpellPointAmountFeature
+}
 import io.truthencode.ddo.model.spells.SpellPower
-import io.truthencode.ddo.support.requisite.{ClassRequisiteImpl, FeatRequisiteImpl, FreeFeat, GrantsToClass}
+import io.truthencode.ddo.support.requisite.{
+  ClassRequisiteImpl,
+  FeatRequisiteImpl,
+  FreeFeat,
+  GrantsToClass
+}
 
 /**
  * This feat increases the maximum spell points by 80, increases the spell critical chance by 5% and

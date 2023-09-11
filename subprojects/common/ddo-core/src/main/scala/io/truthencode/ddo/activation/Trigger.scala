@@ -34,6 +34,7 @@ trait Trigger {
 }
 
 trait TriggerImpl extends Trigger {
+
   /**
    * Event Triggers that fire on some condition
    *

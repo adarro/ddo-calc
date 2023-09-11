@@ -18,7 +18,11 @@
 package io.truthencode.ddo.model.feats
 
 import io.truthencode.ddo.model.skill.Skill
-import io.truthencode.ddo.support.requisite.{FeatRequisiteImpl, RequiresAnyOfSkill, SkillRequisiteImpl}
+import io.truthencode.ddo.support.requisite.{
+  FeatRequisiteImpl,
+  RequiresAnyOfSkill,
+  SkillRequisiteImpl
+}
 
 /**
  * Icon Feat Single Weapon Fighting.png Single Weapon Fighting Passive While Single Weapon Fighting,

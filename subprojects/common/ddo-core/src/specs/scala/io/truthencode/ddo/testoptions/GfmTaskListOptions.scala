@@ -34,9 +34,9 @@ trait GfmTaskListOptions extends Flexmark {
       .set(TaskListExtension.ITEM_NOT_DONE_MARKER, safeItemNotDone)
       .set(TaskListExtension.FORMAT_LIST_ITEM_PLACEMENT, TaskListItemPlacement.INCOMPLETE_FIRST)
 
-  //    var d = dataSet
-  //    oThingsToSet.foreach(e => d = d.set(e._1, e._2))
-  //    d
+    //    var d = dataSet
+    //    oThingsToSet.foreach(e => d = d.set(e._1, e._2))
+    //    d
 
   }
 

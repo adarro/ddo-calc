@@ -28,14 +28,17 @@ import io.truthencode.ddo.support.dice.DamageDice
  *   prefix or Roman Numerals (regular) = 1d8 damage, base price modifier: +2
  */
 trait Magnitude {
+
   /**
    * Percent chance to occur
    */
   val chance: Int
+
   /**
    * Damage Dice
    */
   val damage: DamageDice
+
   /**
    * Base Price Modifier
    */

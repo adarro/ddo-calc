@@ -18,7 +18,8 @@
 package io.truthencode.ddo.support.charges
 
 trait Rechargeable extends Charges {
-    val quantity:Option[Int]
+  val quantity: Option[Int]
+
   /**
    * The rate charges are recovered
    */

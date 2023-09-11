@@ -34,14 +34,15 @@ import scala.util.Try
  *   Generally a primitive Type such as Int but may be a more complex object
  */
 sealed trait Feature[V] extends BasicEffectInfo {
+
   /**
    * The main name of the effect.
    *
-   * Naming conventions The name should be concisely non-specific.
-   * i.e. Prefer "ArmorClass" instead of "Deflection" or "Miss-Chance" Deflection is too specific as
-   * there are several stacking and non-stacking types (Natural Armor, Shield) that all contribute
-   * to your specific goal of increasing your armor class. Miss-Chance is to vague as it encompasses
-   * everything from incorporeal, dodge, armor class, arrow-deflection etc.
+   * Naming conventions The name should be concisely non-specific. i.e. Prefer "ArmorClass" instead
+   * of "Deflection" or "Miss-Chance" Deflection is too specific as there are several stacking and
+   * non-stacking types (Natural Armor, Shield) that all contribute to your specific goal of
+   * increasing your armor class. Miss-Chance is to vague as it encompasses everything from
+   * incorporeal, dodge, armor class, arrow-deflection etc.
    */
   override lazy val name: String = nameOption.getOrElse("Unknown")
   lazy val nameOption: Option[String] = part.toOption match {
@@ -88,7 +89,7 @@ object Feature {
   def printFeature(f: Feature[_]): String = {
     val categoryInfo = f.categories.mkString(",")
     s"\nFeature:\nName:\t${f.name} \nCategories:$categoryInfo\nvalue:\t${f.value}\nsource:\t${f.source}\nid:\t\t${f.source.sourceId}\ntext:\t${f.effectText
-      .getOrElse("")}\nTriggers On:${f.effectDetail.triggersOn.mkString}\nTriggers Off:${f.effectDetail.triggersOff.mkString}"
+        .getOrElse("")}\nTriggers On:${f.effectDetail.triggersOn.mkString}\nTriggers Off:${f.effectDetail.triggersOff.mkString}"
   }
   // scalastyle:off
   case class CriticalThreatRangeEffect(
@@ -109,6 +110,7 @@ object Feature {
 
     }
     override val withPrefix: String = s"$searchPrefix:$nameSource"
+
     /**
      * The General Description should be just that. This should not include specific values unless
      * all instances will share that value. I.e. a Dodge Effect might state it increases your
@@ -147,6 +149,7 @@ object Feature {
     override lazy val name: String = withPrefix
 //    override protected[this] val parameterToModify: BonusType = bonusType
     override protected[this] val partToModify: Attribute = attribute
+
     /**
      * The General Description should be just that. This should not include specific values unless
      * all instances will share that value. I.e. a Dodge Effect might state it increases your
@@ -168,6 +171,7 @@ trait AugmentFeatureValue extends Feature[Int]
  */
 trait PartModifier[V, E <: EnumEntry] extends Feature[V] with DisplayName {
   self: UsingSearchPrefix =>
+
   /**
    * The current Seaerch-Fu is weak. Override this default function.
    */

@@ -50,10 +50,10 @@ import io.truthencode.ddo.support.requisite._
  * races, particularly Halflings.
  */
 protected[feats] trait ImprovedPreciseShot
-  extends FeatRequisiteImpl with ActiveFeat with RequiresAllOfFeat with AttributeRequisiteImpl with RequiresAllOfAttribute
-  with RequiresBaB with ClassRequisiteImpl with GrantsToClass with FighterBonusFeat
-  with ArtificerBonusFeat with OffensiveRangedStance with DefaultCoolDown with FeaturesImpl
-  with GrantAbilityFeature {
+  extends FeatRequisiteImpl with ActiveFeat with RequiresAllOfFeat with AttributeRequisiteImpl
+  with RequiresAllOfAttribute with RequiresBaB with ClassRequisiteImpl with GrantsToClass
+  with FighterBonusFeat with ArtificerBonusFeat with OffensiveRangedStance with DefaultCoolDown
+  with FeaturesImpl with GrantAbilityFeature {
   self: GeneralFeat =>
   override lazy val grantedAbility: ActiveAbilities = ActiveAbilities.ImprovedPreciseShot
 // TODO: add toggle / exclusive with Archer's Focus stance

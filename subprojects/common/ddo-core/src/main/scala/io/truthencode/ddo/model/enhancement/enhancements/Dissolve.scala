@@ -24,6 +24,7 @@ trait Dissolve extends ApothecaryTierFive with ClassEnhancementImpl {
   override lazy val description: Option[String] = Some(
     """Target enemy at touch range that is Fascinated, Sleeping, Dancing, Dazed, Tripped, Mesmerized, Paralyzed, Petrified, or Stunned must make a Fortitude save (d20 + your Heal skill) or die instantly. (20 second cooldown)""".stripMargin
   )
+
   /**
    * Some enhancements can be taken multiple times (generally up to three)
    */

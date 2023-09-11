@@ -18,15 +18,16 @@
 package io.truthencode.ddo.support.requisite
 
 /**
- * Used to sort by alpha order first, then number.
- * Override the reverse value to sort by number first.
+ * Used to sort by alpha order first, then number. Override the reverse value to sort by number
+ * first.
  */
 trait NumberRequirementSort extends DefaultRequirementSort {
   def numericalSortKey: Int
 
-    /**
-     * Set this to false to denote a desire to sort by number first.
-     * @return true if an number sort is desired, false otherwise
-     */
-  def reverse:Boolean = false
+  /**
+   * Set this to false to denote a desire to sort by number first.
+   * @return
+   *   true if an number sort is desired, false otherwise
+   */
+  def reverse: Boolean = false
 }

@@ -18,25 +18,30 @@
 package io.truthencode.ddo.api.model.effect
 
 trait DetailedEffectInfo {
+
   /**
    * This will need to uniquely identify the effect
    */
   val id: String
+
   /**
    * A specific description of the effect This should include the affected value, such as "Armor
    * Class by 3%"
    */
   val description: String
+
   /**
    * When this effect applies. Should correspond to some state chance such as full health,
    * unconscious, on critical hit, on miss, or Always on, etc.
    */
   val triggersOn: Seq[String]
+
   /**
    * When this effect does not apply. Could be, never or some duration or any of the list from
    * triggersOn
    */
   val triggersOff: Seq[String]
+
   /**
    * The type of bonus determines stacking rules.
    */

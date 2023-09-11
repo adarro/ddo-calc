@@ -19,7 +19,11 @@ package io.truthencode.ddo.model.feats
 
 import io.truthencode.ddo.model.classes.HeroicCharacterClass.{Cleric, FavoredSoul, Paladin}
 import io.truthencode.ddo.model.item.weapon.FavoredWeapon
-import io.truthencode.ddo.support.requisite.{RaceRequisiteImpl, RequiresAllOfClass, RequiresAllOfFeat}
+import io.truthencode.ddo.support.requisite.{
+  RaceRequisiteImpl,
+  RequiresAllOfClass,
+  RequiresAllOfFeat
+}
 
 /**
  * This trait may be renamed if someone has a suggestion for a better name for the 3rd tier / 6th

@@ -21,6 +21,7 @@ import io.truthencode.ddo.model.enhancement.enhancements.classbased.BombardierTi
 import io.truthencode.ddo.support.naming.SLAPrefix
 
 trait SLASmokeBomb extends BombardierTierFour with ClassEnhancementImpl with SLAPrefix {
+
   /**
    * Some enhancements can be taken multiple times (generally up to three)
    */

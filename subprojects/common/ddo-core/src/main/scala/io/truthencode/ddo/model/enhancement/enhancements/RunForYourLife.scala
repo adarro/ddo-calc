@@ -24,6 +24,7 @@ trait RunForYourLife extends ApothecaryTierFour with ClassEnhancementImpl {
   override lazy val description: Option[String] = Some(
     """While your Reaction is Verdanite, you gain 1% Movement Speed per Alchemist Level.""".stripMargin
   )
+
   /**
    * Some enhancements can be taken multiple times (generally up to three)
    */

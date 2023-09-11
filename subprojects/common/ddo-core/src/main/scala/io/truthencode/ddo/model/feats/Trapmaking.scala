@@ -20,7 +20,12 @@ package io.truthencode.ddo.model.feats
 import io.truthencode.ddo.model.classes.HeroicCharacterClass
 import io.truthencode.ddo.model.classes.HeroicCharacterClass.{Artificer, Rogue}
 import io.truthencode.ddo.model.skill.Skill
-import io.truthencode.ddo.support.requisite.{FeatRequisiteImpl, GrantsToClass, RequiresAnyOfClass, RequiresAnyOfFeat}
+import io.truthencode.ddo.support.requisite.{
+  FeatRequisiteImpl,
+  GrantsToClass,
+  RequiresAnyOfClass,
+  RequiresAnyOfFeat
+}
 
 /**
  * Created by adarr on 2/16/2017.

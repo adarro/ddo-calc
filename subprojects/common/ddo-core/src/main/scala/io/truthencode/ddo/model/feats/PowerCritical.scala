@@ -19,7 +19,11 @@ package io.truthencode.ddo.model.feats
 
 import io.truthencode.ddo.enhancement.BonusType
 import io.truthencode.ddo.model.effect.TriggerEvent
-import io.truthencode.ddo.model.effect.features.{ConfirmCriticalHitAmountFeature, CriticalDamageAmountFeature, FeaturesImpl}
+import io.truthencode.ddo.model.effect.features.{
+  ConfirmCriticalHitAmountFeature,
+  CriticalDamageAmountFeature,
+  FeaturesImpl
+}
 import io.truthencode.ddo.support.requisite.{FeatRequisiteImpl, RequiresAnyOfFeat, RequiresBaB}
 
 /**

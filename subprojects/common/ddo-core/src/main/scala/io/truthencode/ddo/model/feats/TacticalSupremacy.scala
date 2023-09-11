@@ -18,7 +18,11 @@
 package io.truthencode.ddo.model.feats
 
 import io.truthencode.ddo.model.classes.HeroicCharacterClass
-import io.truthencode.ddo.support.requisite.{ClassRequisiteImpl, FeatRequisiteImpl, RequiresAllOfClass}
+import io.truthencode.ddo.support.requisite.{
+  ClassRequisiteImpl,
+  FeatRequisiteImpl,
+  RequiresAllOfClass
+}
 
 /**
  * Icon Tactical Training.png Tactical Supremacy Passive +8 bonus to Tactics DC's.

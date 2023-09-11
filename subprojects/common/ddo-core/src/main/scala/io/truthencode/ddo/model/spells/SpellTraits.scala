@@ -27,7 +27,7 @@ import io.truthencode.ddo.support.StringUtils.Extensions
 import io.truthencode.ddo.support.naming.{DisplayName, FriendlyDisplay}
 
 import java.time.Duration
-import scala.collection.{Iterable, immutable}
+import scala.collection.{immutable, Iterable}
 import scala.reflect.ClassTag
 trait SpellTraits
 

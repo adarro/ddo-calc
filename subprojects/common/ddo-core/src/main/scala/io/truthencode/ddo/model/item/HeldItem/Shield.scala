@@ -24,6 +24,7 @@ import io.truthencode.ddo.{WearLocation, Wearable}
  * Includes Bucklers / and Towershields
  */
 trait Shield extends WearableItem with Wearable {
+
   /**
    * A bitmask that corresponds to one or more [io.truthencode.ddo.WearLocation] values.
    */

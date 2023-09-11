@@ -32,11 +32,13 @@ case class ValueWithRequirements(
 }
 
 object ValueWithRequirements extends LazyLogging {
+
   /**
    * Used for guessing how we should sort something
    */
   object SortType extends Enumeration {
     type SortType = Value
+
     /**
      * Sort by Alpha Key
      */

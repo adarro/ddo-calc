@@ -32,6 +32,7 @@ import io.truthencode.ddo.support.requisite.{FeatRequisiteImpl, GrantsToClass, R
 protected[feats] trait DruidSpontaneousCasting
   extends FeatRequisiteImpl with ActiveFeat with SpellBookImpl with OnSpellCastEvent
   with GrantsToClass with RequiresAllOfClass with Prefix with DefaultCasterCoolDown {
+
   /**
    * Delimits the prefix and text.
    */

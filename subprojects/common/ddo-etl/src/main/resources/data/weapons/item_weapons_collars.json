@@ -16,710 +16,603 @@
  * limitations under the License.
  */
 {
- "item": [
-  {
-   "weapon": [
-    {
-     "name": "Thrall of the Fire Temple",
-     "damangeAndType": "Handwrap",
-     "minLevel": "7",
-     "binding": "Unbound",
-     "quest": "Temple of Elemental Evil Part One, and Temple of Elemental Evil Part Two end chests, rare encounter chests, pyramid chest",
-     "criticalProfile": "Bludgeoning",
-     "enchantments": "+3 Enhancement Bonus",
-     "enchantments_url": "https://ddowiki.com/page/Enhancement_bonus",
-     "errata": "Bludgeoning",
-     "weaponDetail": [
-      {
-       "proficiency": "Simple Weapon Proficiency",
-       "name": "Thrall of the Fire Temple",
-       "damangeAndType": "Handwrap",
-       "criticalThreatRange": "20 / x2",
-       "weaponType": [
+    "item": [
         {
-         "weaponCategory": "Collar",
-         "damageCategory": "/ Bludgeoning weapons"
+            "weapon": [
+                {
+                    "name": "Thrall of the Fire Temple",
+                    "damangeAndType": "Handwrap",
+                    "minLevel": "7",
+                    "binding": "Unbound",
+                    "quest": "Temple of Elemental Evil Part One, and Temple of Elemental Evil Part Two end chests, rare encounter chests, pyramid chest",
+                    "criticalProfile": "Bludgeoning",
+                    "enchantments": "+3 Enhancement Bonus",
+                    "enchantments_url": "https://ddowiki.com/page/Enhancement_bonus",
+                    "errata": "Bludgeoning",
+                    "weaponDetail": [
+                        {
+                            "proficiency": "Simple Weapon Proficiency",
+                            "name": "Thrall of the Fire Temple",
+                            "damangeAndType": "Handwrap",
+                            "criticalThreatRange": "20 / x2",
+                            "weaponType": [
+                                {
+                                    "weaponCategory": "Collar",
+                                    "damageCategory": "/ Bludgeoning weapons"
+                                }
+                            ],
+                            "absRaceRequired": "Pet",
+                            "minLevel": "7",
+                            "requiredTrait": "None",
+                            "umd": "No UMD needed",
+                            "handedness": "",
+                            "attackMod": "STR",
+                            "damageMod": "STR",
+                            "binding": "Unbound",
+                            "binding_url": "https://ddowiki.com/page/Bind",
+                            "durability": "90",
+                            "material": "Silver",
+                            "material_url": "https://ddowiki.com/page/Silver",
+                            "hardness": "8",
+                            "baseValue": "2,803pp",
+                            "weight": "0.5 lbs",
+                            "upgradable": "Not upgradeable",
+                            "description": "\"There are benefits to submitting to the path of flame.\" ~Alrrem",
+                            "enchantments": [
+                                {
+                                    "enchantment": [
+                                        {
+                                            "name": "+3 Enhancement Bonus",
+                                            "name_url": "https://ddowiki.com/page/Enhancement_bonus",
+                                            "fullText": "+3 Enhancement Bonus"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "enchantment": [
+                                        {
+                                            "name": "Fire Vulnerability",
+                                            "name_url": "https://ddowiki.com/page/Vulnerable",
+                                            "fullText": "Fire Vulnerability"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "enchantment": [
+                                        {
+                                            "name": "Fire Guard II",
+                                            "name_url": "https://ddowiki.com/page/Fire_Guard",
+                                            "fullText": "Fire Guard II"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "enchantment": [
+                                        {
+                                            "name": "Flaming II",
+                                            "name_url": "https://ddowiki.com/page/Elemental_(weapon)#Flaming",
+                                            "fullText": "Flaming II"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "enchantment": [
+                                        {
+                                            "name": "Fire Resistance +10",
+                                            "name_url": "https://ddowiki.com/page/Fire_Resistance",
+                                            "fullText": "Fire Resistance +10"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "enchantment": [
+                                        {
+                                            "name": "Mythic Weapon Boost",
+                                            "name_url": "https://ddowiki.com/page/Mythic_Boost",
+                                            "fullText": "Mythic Weapon Boost +2 or +4"
+                                        }
+                                    ]
+                                }
+                            ],
+                            "locationInformation": [
+                                {
+                                    "location": "Temple of Elemental Evil Part Two",
+                                    "location_url": "https://ddowiki.com/page/Temple_of_Elemental_Evil_Part_Two",
+                                    "locationExtra": ", and"
+                                }
+                            ]
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "weapon": [
+                {
+                    "name": "Hound of the Night",
+                    "damangeAndType": "2[1d6] + 5 Bludgeon, Adamantine, Magic",
+                    "minLevel": "10",
+                    "binding": "Unbound",
+                    "quest": "Wrath of the Earth, end chest",
+                    "criticalProfile": "Bludgeoning",
+                    "enchantments": "+5 Enhancement Bonus",
+                    "enchantments_url": "https://ddowiki.com/page/Enhancement_bonus",
+                    "errata": "Bludgeoning",
+                    "weaponDetail": [
+                        {
+                            "proficiency": "Simple Weapon Proficiency",
+                            "name": "Hound of the Night",
+                            "damangeAndType": "2[1d6] + 5 Bludgeon, Adamantine, Magic",
+                            "criticalThreatRange": "20 / x2",
+                            "weaponType": [
+                                {
+                                    "weaponCategory": "Collar",
+                                    "damageCategory": "/ Bludgeoning weapons"
+                                }
+                            ],
+                            "absRaceRequired": "Pet",
+                            "minLevel": "10",
+                            "requiredTrait": "None",
+                            "umd": "No UMD needed",
+                            "handedness": "",
+                            "attackMod": "STR",
+                            "damageMod": "STR",
+                            "binding": "Unbound",
+                            "binding_url": "https://ddowiki.com/page/Bind",
+                            "durability": "220",
+                            "material": "Silver",
+                            "material_url": "https://ddowiki.com/page/Silver",
+                            "hardness": "23",
+                            "baseValue": "4,003pp",
+                            "weight": "0.5 lbs",
+                            "upgradable": "Not upgradeable",
+                            "description": "\"Guard dogs have been used throughout Barovia over the years, grim reminders that none are welcome.\"",
+                            "enchantments": [
+                                {
+                                    "enchantment": [
+                                        {
+                                            "name": "+5 Enhancement Bonus",
+                                            "name_url": "https://ddowiki.com/page/Enhancement_bonus",
+                                            "fullText": "+5 Enhancement Bonus"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "enchantment": [
+                                        {
+                                            "name": "Frostbite",
+                                            "name_url": "https://ddowiki.com/page/Frostbite_(enchantment)",
+                                            "fullText": "Frostbite"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "enchantment": [
+                                        {
+                                            "name": "Speed +15",
+                                            "name_url": "https://ddowiki.com/page/Speed",
+                                            "fullText": "Speed +15"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "enchantment": [
+                                        {
+                                            "name": "Deadly +5",
+                                            "name_url": "https://ddowiki.com/page/Deadly",
+                                            "fullText": "Deadly +5"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "enchantment": [
+                                        {
+                                            "name": "Doublestrike 6%",
+                                            "name_url": "https://ddowiki.com/page/Doublestrike",
+                                            "fullText": "Doublestrike 6%"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "oneOfEnchantment": [
+                                        {},
+                                        {},
+                                        {},
+                                        {},
+                                        {},
+                                        {},
+                                        {},
+                                        {},
+                                        {},
+                                        {},
+                                        {},
+                                        {},
+                                        {},
+                                        {},
+                                        {},
+                                        {}
+                                    ],
+                                    "enchantment": [
+                                        {
+                                            "fullText": "Empty Red Augment Slot"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "oneOfEnchantment": [
+                                        {},
+                                        {},
+                                        {},
+                                        {},
+                                        {},
+                                        {},
+                                        {},
+                                        {},
+                                        {},
+                                        {},
+                                        {},
+                                        {},
+                                        {},
+                                        {},
+                                        {},
+                                        {},
+                                        {},
+                                        {},
+                                        {},
+                                        {},
+                                        {},
+                                        {},
+                                        {},
+                                        {},
+                                        {}
+                                    ],
+                                    "enchantment": [
+                                        {
+                                            "fullText": "Empty Purple Augment Slot"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "enchantment": [
+                                        {
+                                            "name": "Mythic Weapon Boost",
+                                            "name_url": "https://ddowiki.com/page/Mythic_Boost",
+                                            "fullText": "Mythic Weapon Boost +2 or +4"
+                                        }
+                                    ]
+                                }
+                            ],
+                            "locationInformation": [
+                                {
+                                    "location": "Wrath of the Earth",
+                                    "location_url": "https://ddowiki.com/page/Wrath_of_the_Earth",
+                                    "locationExtra": ", end chest"
+                                }
+                            ]
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "weapon": [
+                {
+                    "name": "Epic Thrall of the Fire Temple",
+                    "damangeAndType": "5[1d6] + 7 Bludgeon, Adamantine, Magic",
+                    "minLevel": "22",
+                    "binding": "Unbound",
+                    "quest": "Temple of Elemental Evil Part One, and Temple of Elemental Evil Part Two end chests, rare encounter chests, pyramid chest",
+                    "criticalProfile": "Critical Profile: 18-20 / x5\nBludgeoning",
+                    "enchantments": "+7 Enhancement Bonus",
+                    "enchantments_url": "https://ddowiki.com/page/Enhancement_bonus",
+                    "errata": "Critical Profile: 18-20 / x5\nBludgeoning",
+                    "weaponDetail": [
+                        {
+                            "proficiency": "Simple Weapon Proficiency",
+                            "name": "Epic Thrall of the Fire Temple",
+                            "damangeAndType": "5[1d6] + 7 Bludgeon, Adamantine, Magic",
+                            "criticalThreatRange": "18-20 / x5",
+                            "weaponType": [
+                                {
+                                    "weaponCategory": "Collar",
+                                    "damageCategory": "/ Bludgeoning weapons"
+                                }
+                            ],
+                            "absRaceRequired": "Pet",
+                            "minLevel": "22",
+                            "requiredTrait": "None",
+                            "umd": "No UMD needed",
+                            "handedness": "",
+                            "attackMod": "STR",
+                            "damageMod": "STR",
+                            "binding": "Unbound",
+                            "binding_url": "https://ddowiki.com/page/Bind",
+                            "durability": "250",
+                            "material": "Silver",
+                            "material_url": "https://ddowiki.com/page/Silver",
+                            "hardness": "26",
+                            "baseValue": "8,803pp",
+                            "weight": "0.5 lbs",
+                            "upgradable": "Not upgradeable",
+                            "description": "\"There are benefits to submitting to the path of flame.\" ~Alrrem",
+                            "enchantments": [
+                                {
+                                    "enchantment": [
+                                        {
+                                            "name": "+7 Enhancement Bonus",
+                                            "name_url": "https://ddowiki.com/page/Enhancement_bonus",
+                                            "fullText": "+7 Enhancement Bonus"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "enchantment": [
+                                        {
+                                            "name": "Fire Vulnerability",
+                                            "name_url": "https://ddowiki.com/page/Vulnerable",
+                                            "fullText": "Fire Vulnerability"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "enchantment": [
+                                        {
+                                            "name": "Deadly IX",
+                                            "name_url": "https://ddowiki.com/page/Deadly",
+                                            "fullText": "Deadly IX"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "enchantment": [
+                                        {
+                                            "name": "Flaming X",
+                                            "name_url": "https://ddowiki.com/page/Elemental_(weapon)#Flaming",
+                                            "fullText": "Flaming X"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "enchantment": [
+                                        {
+                                            "name": "Speed XV",
+                                            "name_url": "https://ddowiki.com/page/Speed",
+                                            "fullText": "Speed XV"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "enchantment": [
+                                        {
+                                            "name": "Greater Flaming Blast",
+                                            "name_url": "https://ddowiki.com/page/Elemental_Blast#Greater_Flaming_Blast",
+                                            "fullText": "Greater Flaming Blast"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "oneOfEnchantment": [
+                                        {},
+                                        {},
+                                        {},
+                                        {},
+                                        {},
+                                        {},
+                                        {},
+                                        {},
+                                        {},
+                                        {},
+                                        {},
+                                        {},
+                                        {},
+                                        {},
+                                        {},
+                                        {},
+                                        {},
+                                        {},
+                                        {},
+                                        {},
+                                        {},
+                                        {},
+                                        {},
+                                        {},
+                                        {}
+                                    ],
+                                    "enchantment": [
+                                        {
+                                            "fullText": "Empty Purple Augment Slot"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "enchantment": [
+                                        {
+                                            "name": "Mythic Weapon Boost",
+                                            "name_url": "https://ddowiki.com/page/Mythic_Boost",
+                                            "fullText": "Mythic Weapon Boost +2 or +4"
+                                        }
+                                    ]
+                                }
+                            ],
+                            "locationInformation": [
+                                {
+                                    "location": "Temple of Elemental Evil Part Two",
+                                    "location_url": "https://ddowiki.com/page/Temple_of_Elemental_Evil_Part_Two",
+                                    "locationExtra": ", and"
+                                }
+                            ]
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "weapon": [
+                {
+                    "name": "Legendary Hound of the Night",
+                    "damangeAndType": "5[1d6+2] + 15 Bludgeon, Adamantine, Magic",
+                    "minLevel": "29",
+                    "binding": "Unbound",
+                    "quest": "Wrath of the Earth, end chest",
+                    "criticalProfile": "Critical Profile: 18-20 / x5\nBludgeoning",
+                    "enchantments": "+15 Enhancement Bonus",
+                    "enchantments_url": "https://ddowiki.com/page/Enhancement_bonus",
+                    "errata": "Critical Profile: 18-20 / x5\nBludgeoning",
+                    "weaponDetail": [
+                        {
+                            "proficiency": "Simple Weapon Proficiency",
+                            "name": "Legendary Hound of the Night",
+                            "damangeAndType": "5[1d6+2] + 15 Bludgeon, Adamantine, Magic",
+                            "criticalThreatRange": "18-20 / x5",
+                            "weaponType": [
+                                {
+                                    "weaponCategory": "Collar",
+                                    "damageCategory": "/ Bludgeoning weapons"
+                                }
+                            ],
+                            "absRaceRequired": "Pet",
+                            "minLevel": "29",
+                            "requiredTrait": "None",
+                            "umd": "No UMD needed",
+                            "handedness": "",
+                            "attackMod": "STR",
+                            "damageMod": "STR",
+                            "binding": "Unbound",
+                            "binding_url": "https://ddowiki.com/page/Bind",
+                            "durability": "410",
+                            "material": "Silver",
+                            "material_url": "https://ddowiki.com/page/Silver",
+                            "hardness": "42",
+                            "baseValue": "11,603pp",
+                            "weight": "0.5 lbs",
+                            "upgradable": "Not upgradeable",
+                            "description": "Guard dogs have been used throughout Barovia over the years, grim reminders that none are welcome.",
+                            "enchantments": [
+                                {
+                                    "enchantment": [
+                                        {
+                                            "name": "+15 Enhancement Bonus",
+                                            "name_url": "https://ddowiki.com/page/Enhancement_bonus",
+                                            "fullText": "+15 Enhancement Bonus"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "enchantment": [
+                                        {
+                                            "name": "Frostbite",
+                                            "name_url": "https://ddowiki.com/page/Frostbite_(enchantment)",
+                                            "fullText": "Frostbite"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "enchantment": [
+                                        {
+                                            "name": "Speed +30",
+                                            "name_url": "https://ddowiki.com/page/Speed",
+                                            "fullText": "Speed +30"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "enchantment": [
+                                        {
+                                            "name": "Deadly +16",
+                                            "name_url": "https://ddowiki.com/page/Deadly",
+                                            "fullText": "Deadly +16"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "enchantment": [
+                                        {
+                                            "name": "Doublestrike 22%",
+                                            "name_url": "https://ddowiki.com/page/Doublestrike",
+                                            "fullText": "Doublestrike 22%"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "oneOfEnchantment": [
+                                        {},
+                                        {},
+                                        {},
+                                        {},
+                                        {},
+                                        {},
+                                        {},
+                                        {},
+                                        {},
+                                        {},
+                                        {},
+                                        {},
+                                        {},
+                                        {},
+                                        {},
+                                        {}
+                                    ],
+                                    "enchantment": [
+                                        {
+                                            "fullText": "Empty Red Augment Slot"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "oneOfEnchantment": [
+                                        {},
+                                        {},
+                                        {},
+                                        {},
+                                        {},
+                                        {},
+                                        {},
+                                        {},
+                                        {},
+                                        {},
+                                        {},
+                                        {},
+                                        {},
+                                        {},
+                                        {},
+                                        {},
+                                        {},
+                                        {},
+                                        {},
+                                        {},
+                                        {},
+                                        {},
+                                        {},
+                                        {},
+                                        {}
+                                    ],
+                                    "enchantment": [
+                                        {
+                                            "fullText": "Empty Purple Augment Slot"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "enchantment": [
+                                        {
+                                            "name": "Mythic Weapon Boost",
+                                            "name_url": "https://ddowiki.com/page/Mythic_Boost",
+                                            "fullText": "Mythic Weapon Boost +2 or +4"
+                                        }
+                                    ]
+                                }
+                            ],
+                            "locationInformation": [
+                                {
+                                    "location": "Wrath of the Earth",
+                                    "location_url": "https://ddowiki.com/page/Wrath_of_the_Earth",
+                                    "locationExtra": ", end chest"
+                                }
+                            ]
+                        }
+                    ]
+                }
+            ]
         }
-       ],
-       "absRaceRequired": "Pet",
-       "minLevel": "7",
-       "requiredTrait": "None",
-       "umd": "No UMD needed",
-       "handedness": "",
-       "attackMod": "STR",
-       "damageMod": "STR",
-       "binding": "Unbound",
-       "binding_url": "https://ddowiki.com/page/Bind",
-       "durability": "90",
-       "material": "Silver",
-       "material_url": "https://ddowiki.com/page/Silver",
-       "hardness": "8",
-       "baseValue": "2,803pp",
-       "weight": "0.5 lbs",
-       "upgradable": "Not upgradeable",
-       "description": "\"There are benefits to submitting to the path of flame.\" ~Alrrem",
-       "enchantments": [
-        {
-         "enchantment": [
-          {
-           "name": "+3 Enhancement Bonus",
-           "name_url": "https://ddowiki.com/page/Enhancement_bonus",
-           "fullText": "+3 Enhancement Bonus"
-          }
-         ]
-        },
-        {
-         "enchantment": [
-          {
-           "name": "Fire Vulnerability",
-           "name_url": "https://ddowiki.com/page/Vulnerable",
-           "fullText": "Fire Vulnerability"
-          }
-         ]
-        },
-        {
-         "enchantment": [
-          {
-           "name": "Fire Guard II",
-           "name_url": "https://ddowiki.com/page/Fire_Guard",
-           "fullText": "Fire Guard II"
-          }
-         ]
-        },
-        {
-         "enchantment": [
-          {
-           "name": "Flaming II",
-           "name_url": "https://ddowiki.com/page/Elemental_(weapon)#Flaming",
-           "fullText": "Flaming II"
-          }
-         ]
-        },
-        {
-         "enchantment": [
-          {
-           "name": "Fire Resistance +10",
-           "name_url": "https://ddowiki.com/page/Fire_Resistance",
-           "fullText": "Fire Resistance +10"
-          }
-         ]
-        },
-        {
-         "enchantment": [
-          {
-           "name": "Mythic Weapon Boost",
-           "name_url": "https://ddowiki.com/page/Mythic_Boost",
-           "fullText": "Mythic Weapon Boost +2 or +4"
-          }
-         ]
-        }
-       ],
-       "locationInformation": [
-        {
-         "location": "Temple of Elemental Evil Part Two",
-         "location_url": "https://ddowiki.com/page/Temple_of_Elemental_Evil_Part_Two",
-         "locationExtra": ", and"
-        }
-       ]
-      }
-     ]
-    }
-   ]
-  },
-  {
-   "weapon": [
-    {
-     "name": "Hound of the Night",
-     "damangeAndType": "2[1d6] + 5 Bludgeon, Adamantine, Magic",
-     "minLevel": "10",
-     "binding": "Unbound",
-     "quest": "Wrath of the Earth, end chest",
-     "criticalProfile": "Bludgeoning",
-     "enchantments": "+5 Enhancement Bonus",
-     "enchantments_url": "https://ddowiki.com/page/Enhancement_bonus",
-     "errata": "Bludgeoning",
-     "weaponDetail": [
-      {
-       "proficiency": "Simple Weapon Proficiency",
-       "name": "Hound of the Night",
-       "damangeAndType": "2[1d6] + 5 Bludgeon, Adamantine, Magic",
-       "criticalThreatRange": "20 / x2",
-       "weaponType": [
-        {
-         "weaponCategory": "Collar",
-         "damageCategory": "/ Bludgeoning weapons"
-        }
-       ],
-       "absRaceRequired": "Pet",
-       "minLevel": "10",
-       "requiredTrait": "None",
-       "umd": "No UMD needed",
-       "handedness": "",
-       "attackMod": "STR",
-       "damageMod": "STR",
-       "binding": "Unbound",
-       "binding_url": "https://ddowiki.com/page/Bind",
-       "durability": "220",
-       "material": "Silver",
-       "material_url": "https://ddowiki.com/page/Silver",
-       "hardness": "23",
-       "baseValue": "4,003pp",
-       "weight": "0.5 lbs",
-       "upgradable": "Not upgradeable",
-       "description": "\"Guard dogs have been used throughout Barovia over the years, grim reminders that none are welcome.\"",
-       "enchantments": [
-        {
-         "enchantment": [
-          {
-           "name": "+5 Enhancement Bonus",
-           "name_url": "https://ddowiki.com/page/Enhancement_bonus",
-           "fullText": "+5 Enhancement Bonus"
-          }
-         ]
-        },
-        {
-         "enchantment": [
-          {
-           "name": "Frostbite",
-           "name_url": "https://ddowiki.com/page/Frostbite_(enchantment)",
-           "fullText": "Frostbite"
-          }
-         ]
-        },
-        {
-         "enchantment": [
-          {
-           "name": "Speed +15",
-           "name_url": "https://ddowiki.com/page/Speed",
-           "fullText": "Speed +15"
-          }
-         ]
-        },
-        {
-         "enchantment": [
-          {
-           "name": "Deadly +5",
-           "name_url": "https://ddowiki.com/page/Deadly",
-           "fullText": "Deadly +5"
-          }
-         ]
-        },
-        {
-         "enchantment": [
-          {
-           "name": "Doublestrike 6%",
-           "name_url": "https://ddowiki.com/page/Doublestrike",
-           "fullText": "Doublestrike 6%"
-          }
-         ]
-        },
-        {
-         "oneOfEnchantment": [
-          {
-          },
-          {
-          },
-          {
-          },
-          {
-          },
-          {
-          },
-          {
-          },
-          {
-          },
-          {
-          },
-          {
-          },
-          {
-          },
-          {
-          },
-          {
-          },
-          {
-          },
-          {
-          },
-          {
-          },
-          {
-          }
-         ],
-         "enchantment": [
-          {
-           "fullText": "Empty Red Augment Slot"
-          }
-         ]
-        },
-        {
-         "oneOfEnchantment": [
-          {
-          },
-          {
-          },
-          {
-          },
-          {
-          },
-          {
-          },
-          {
-          },
-          {
-          },
-          {
-          },
-          {
-          },
-          {
-          },
-          {
-          },
-          {
-          },
-          {
-          },
-          {
-          },
-          {
-          },
-          {
-          },
-          {
-          },
-          {
-          },
-          {
-          },
-          {
-          },
-          {
-          },
-          {
-          },
-          {
-          },
-          {
-          },
-          {
-          }
-         ],
-         "enchantment": [
-          {
-           "fullText": "Empty Purple Augment Slot"
-          }
-         ]
-        },
-        {
-         "enchantment": [
-          {
-           "name": "Mythic Weapon Boost",
-           "name_url": "https://ddowiki.com/page/Mythic_Boost",
-           "fullText": "Mythic Weapon Boost +2 or +4"
-          }
-         ]
-        }
-       ],
-       "locationInformation": [
-        {
-         "location": "Wrath of the Earth",
-         "location_url": "https://ddowiki.com/page/Wrath_of_the_Earth",
-         "locationExtra": ", end chest"
-        }
-       ]
-      }
-     ]
-    }
-   ]
-  },
-  {
-   "weapon": [
-    {
-     "name": "Epic Thrall of the Fire Temple",
-     "damangeAndType": "5[1d6] + 7 Bludgeon, Adamantine, Magic",
-     "minLevel": "22",
-     "binding": "Unbound",
-     "quest": "Temple of Elemental Evil Part One, and Temple of Elemental Evil Part Two end chests, rare encounter chests, pyramid chest",
-     "criticalProfile": "Critical Profile: 18-20 / x5\nBludgeoning",
-     "enchantments": "+7 Enhancement Bonus",
-     "enchantments_url": "https://ddowiki.com/page/Enhancement_bonus",
-     "errata": "Critical Profile: 18-20 / x5\nBludgeoning",
-     "weaponDetail": [
-      {
-       "proficiency": "Simple Weapon Proficiency",
-       "name": "Epic Thrall of the Fire Temple",
-       "damangeAndType": "5[1d6] + 7 Bludgeon, Adamantine, Magic",
-       "criticalThreatRange": "18-20 / x5",
-       "weaponType": [
-        {
-         "weaponCategory": "Collar",
-         "damageCategory": "/ Bludgeoning weapons"
-        }
-       ],
-       "absRaceRequired": "Pet",
-       "minLevel": "22",
-       "requiredTrait": "None",
-       "umd": "No UMD needed",
-       "handedness": "",
-       "attackMod": "STR",
-       "damageMod": "STR",
-       "binding": "Unbound",
-       "binding_url": "https://ddowiki.com/page/Bind",
-       "durability": "250",
-       "material": "Silver",
-       "material_url": "https://ddowiki.com/page/Silver",
-       "hardness": "26",
-       "baseValue": "8,803pp",
-       "weight": "0.5 lbs",
-       "upgradable": "Not upgradeable",
-       "description": "\"There are benefits to submitting to the path of flame.\" ~Alrrem",
-       "enchantments": [
-        {
-         "enchantment": [
-          {
-           "name": "+7 Enhancement Bonus",
-           "name_url": "https://ddowiki.com/page/Enhancement_bonus",
-           "fullText": "+7 Enhancement Bonus"
-          }
-         ]
-        },
-        {
-         "enchantment": [
-          {
-           "name": "Fire Vulnerability",
-           "name_url": "https://ddowiki.com/page/Vulnerable",
-           "fullText": "Fire Vulnerability"
-          }
-         ]
-        },
-        {
-         "enchantment": [
-          {
-           "name": "Deadly IX",
-           "name_url": "https://ddowiki.com/page/Deadly",
-           "fullText": "Deadly IX"
-          }
-         ]
-        },
-        {
-         "enchantment": [
-          {
-           "name": "Flaming X",
-           "name_url": "https://ddowiki.com/page/Elemental_(weapon)#Flaming",
-           "fullText": "Flaming X"
-          }
-         ]
-        },
-        {
-         "enchantment": [
-          {
-           "name": "Speed XV",
-           "name_url": "https://ddowiki.com/page/Speed",
-           "fullText": "Speed XV"
-          }
-         ]
-        },
-        {
-         "enchantment": [
-          {
-           "name": "Greater Flaming Blast",
-           "name_url": "https://ddowiki.com/page/Elemental_Blast#Greater_Flaming_Blast",
-           "fullText": "Greater Flaming Blast"
-          }
-         ]
-        },
-        {
-         "oneOfEnchantment": [
-          {
-          },
-          {
-          },
-          {
-          },
-          {
-          },
-          {
-          },
-          {
-          },
-          {
-          },
-          {
-          },
-          {
-          },
-          {
-          },
-          {
-          },
-          {
-          },
-          {
-          },
-          {
-          },
-          {
-          },
-          {
-          },
-          {
-          },
-          {
-          },
-          {
-          },
-          {
-          },
-          {
-          },
-          {
-          },
-          {
-          },
-          {
-          },
-          {
-          }
-         ],
-         "enchantment": [
-          {
-           "fullText": "Empty Purple Augment Slot"
-          }
-         ]
-        },
-        {
-         "enchantment": [
-          {
-           "name": "Mythic Weapon Boost",
-           "name_url": "https://ddowiki.com/page/Mythic_Boost",
-           "fullText": "Mythic Weapon Boost +2 or +4"
-          }
-         ]
-        }
-       ],
-       "locationInformation": [
-        {
-         "location": "Temple of Elemental Evil Part Two",
-         "location_url": "https://ddowiki.com/page/Temple_of_Elemental_Evil_Part_Two",
-         "locationExtra": ", and"
-        }
-       ]
-      }
-     ]
-    }
-   ]
-  },
-  {
-   "weapon": [
-    {
-     "name": "Legendary Hound of the Night",
-     "damangeAndType": "5[1d6+2] + 15 Bludgeon, Adamantine, Magic",
-     "minLevel": "29",
-     "binding": "Unbound",
-     "quest": "Wrath of the Earth, end chest",
-     "criticalProfile": "Critical Profile: 18-20 / x5\nBludgeoning",
-     "enchantments": "+15 Enhancement Bonus",
-     "enchantments_url": "https://ddowiki.com/page/Enhancement_bonus",
-     "errata": "Critical Profile: 18-20 / x5\nBludgeoning",
-     "weaponDetail": [
-      {
-       "proficiency": "Simple Weapon Proficiency",
-       "name": "Legendary Hound of the Night",
-       "damangeAndType": "5[1d6+2] + 15 Bludgeon, Adamantine, Magic",
-       "criticalThreatRange": "18-20 / x5",
-       "weaponType": [
-        {
-         "weaponCategory": "Collar",
-         "damageCategory": "/ Bludgeoning weapons"
-        }
-       ],
-       "absRaceRequired": "Pet",
-       "minLevel": "29",
-       "requiredTrait": "None",
-       "umd": "No UMD needed",
-       "handedness": "",
-       "attackMod": "STR",
-       "damageMod": "STR",
-       "binding": "Unbound",
-       "binding_url": "https://ddowiki.com/page/Bind",
-       "durability": "410",
-       "material": "Silver",
-       "material_url": "https://ddowiki.com/page/Silver",
-       "hardness": "42",
-       "baseValue": "11,603pp",
-       "weight": "0.5 lbs",
-       "upgradable": "Not upgradeable",
-       "description": "Guard dogs have been used throughout Barovia over the years, grim reminders that none are welcome.",
-       "enchantments": [
-        {
-         "enchantment": [
-          {
-           "name": "+15 Enhancement Bonus",
-           "name_url": "https://ddowiki.com/page/Enhancement_bonus",
-           "fullText": "+15 Enhancement Bonus"
-          }
-         ]
-        },
-        {
-         "enchantment": [
-          {
-           "name": "Frostbite",
-           "name_url": "https://ddowiki.com/page/Frostbite_(enchantment)",
-           "fullText": "Frostbite"
-          }
-         ]
-        },
-        {
-         "enchantment": [
-          {
-           "name": "Speed +30",
-           "name_url": "https://ddowiki.com/page/Speed",
-           "fullText": "Speed +30"
-          }
-         ]
-        },
-        {
-         "enchantment": [
-          {
-           "name": "Deadly +16",
-           "name_url": "https://ddowiki.com/page/Deadly",
-           "fullText": "Deadly +16"
-          }
-         ]
-        },
-        {
-         "enchantment": [
-          {
-           "name": "Doublestrike 22%",
-           "name_url": "https://ddowiki.com/page/Doublestrike",
-           "fullText": "Doublestrike 22%"
-          }
-         ]
-        },
-        {
-         "oneOfEnchantment": [
-          {
-          },
-          {
-          },
-          {
-          },
-          {
-          },
-          {
-          },
-          {
-          },
-          {
-          },
-          {
-          },
-          {
-          },
-          {
-          },
-          {
-          },
-          {
-          },
-          {
-          },
-          {
-          },
-          {
-          },
-          {
-          }
-         ],
-         "enchantment": [
-          {
-           "fullText": "Empty Red Augment Slot"
-          }
-         ]
-        },
-        {
-         "oneOfEnchantment": [
-          {
-          },
-          {
-          },
-          {
-          },
-          {
-          },
-          {
-          },
-          {
-          },
-          {
-          },
-          {
-          },
-          {
-          },
-          {
-          },
-          {
-          },
-          {
-          },
-          {
-          },
-          {
-          },
-          {
-          },
-          {
-          },
-          {
-          },
-          {
-          },
-          {
-          },
-          {
-          },
-          {
-          },
-          {
-          },
-          {
-          },
-          {
-          },
-          {
-          }
-         ],
-         "enchantment": [
-          {
-           "fullText": "Empty Purple Augment Slot"
-          }
-         ]
-        },
-        {
-         "enchantment": [
-          {
-           "name": "Mythic Weapon Boost",
-           "name_url": "https://ddowiki.com/page/Mythic_Boost",
-           "fullText": "Mythic Weapon Boost +2 or +4"
-          }
-         ]
-        }
-       ],
-       "locationInformation": [
-        {
-         "location": "Wrath of the Earth",
-         "location_url": "https://ddowiki.com/page/Wrath_of_the_Earth",
-         "locationExtra": ", end chest"
-        }
-       ]
-      }
-     ]
-    }
-   ]
-  }
- ]
+    ]
 }

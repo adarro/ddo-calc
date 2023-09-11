@@ -34,13 +34,13 @@ val configsVersion: String by project
 val logbackVersion: String by project
 val jetBrainsAnnotationVersion: String by project
 val junitPlatformVersion: String by project
-val junitLauncherVersion:String by project
+val junitLauncherVersion: String by project
 val concordionVersion: String by project
 val concordionExtEmbedVersion: String by project
 val concordionExtCollapseOutputVersion: String by project
 val scalaFmtVersion: String by project
 val junitScalaTestVersion: String by project
-val json4sNativeVersion:String by project
+val json4sNativeVersion: String by project
 
 dependencies {
 
@@ -49,7 +49,7 @@ dependencies {
         // api(group = "org.scala-lang", name = "scala-library", version = scalaLibraryVersion)
         api("org.scala-lang:scala-library:$scalaLibraryVersion")
         api("ch.qos.logback:logback-classic:$logbackVersion")
-        api("com.typesafe.scala-logging:scala-logging_${scalaMajorVersion}:$scalaLoggingVersion")
+        api("com.typesafe.scala-logging:scala-logging_$scalaMajorVersion:$scalaLoggingVersion")
         api("org.jetbrains:annotations:$jetBrainsAnnotationVersion")
         api("com.geirsson:scalafmt-core_$scalaMajorVersion:$scalaFmtVersion")
         // Test Dependencies
@@ -61,8 +61,8 @@ dependencies {
         api("org.scalacheck:scalacheck_$scalaMajorVersion:$scalaCheckVersion")
         api("org.scalatestplus:mockito-3-4_$scalaMajorVersion:$scalaTestPlusMockitoVersion")
         api("org.mockito:mockito-core:$mockitoVersion")
-        api("com.wix:accord-core_${scalaMajorVersion}:${accordVersion}")
-        api("com.wix:accord-scalatest_${scalaMajorVersion}:$accordVersion")
+        api("com.wix:accord-core_$scalaMajorVersion:$accordVersion")
+        api("com.wix:accord-scalatest_$scalaMajorVersion:$accordVersion")
         // JUnit
 
         api("org.junit.jupiter:junit-jupiter:$junitPlatformVersion")
@@ -70,10 +70,10 @@ dependencies {
         api("net.ruippeixotog:scala-scraper_$scalaMajorVersion:$scalaScraperVersion")
         api("com.beachape:enumeratum_$scalaMajorVersion:$enumeratumVersion")
         api("com.typesafe:config:$typeSafeConfigVersion")
-        api("com.github.kxbmap:configs_${scalaMajorVersion}:$configsVersion")
+        api("com.github.kxbmap:configs_$scalaMajorVersion:$configsVersion")
 
         // json libs
-        api("org.json4s:json4s-native_${scalaMajorVersion}:$json4sNativeVersion")
+        api("org.json4s:json4s-native_$scalaMajorVersion:$json4sNativeVersion")
 
         // JUnit5
         runtime("co.helmethair:scalatest-junit-runner:$junitScalaTestVersion")
@@ -82,7 +82,7 @@ dependencies {
         runtime("org.junit.platform:junit-platform-launcher:$junitLauncherVersion")
         api("org.junit.platform:junit-platform-runner:$junitPlatformVersion")
 
-        // Acceptance Testing 
+        // Acceptance Testing
         // val acceptanceTestImplementation by configurations.getting
         // acceptanceTestImplementation.extendsFrom(configurations["testCompileClasspath"])
         api("org.concordion:concordion:$concordionVersion")

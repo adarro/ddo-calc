@@ -22,9 +22,10 @@ plugins {
 
 val defaultJavaToolChainVersion: String by project
 val jacocoToolVersion: String by project
-val javaToolchainVersion = provider {
-    defaultJavaToolChainVersion.toInt()
-}
+val javaToolchainVersion =
+    provider {
+        defaultJavaToolChainVersion.toInt()
+    }
 // val defaultJavaToolchainVersion = provider {
 //    javaToolchains.launcherFor {
 //        languageVersion.set(JavaLanguageVersion.of(defaultJavaToolChainVersion))

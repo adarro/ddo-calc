@@ -19,7 +19,12 @@ package io.truthencode.ddo.model.feats
 
 import io.truthencode.ddo.model.classes.HeroicCharacterClass
 import io.truthencode.ddo.model.classes.HeroicCharacterClass.{Barbarian, Bard, Rogue}
-import io.truthencode.ddo.support.requisite.{ClassRequisite, FeatRequisiteImpl, GrantsToClass, RequiresAnyOfClass}
+import io.truthencode.ddo.support.requisite.{
+  ClassRequisite,
+  FeatRequisiteImpl,
+  GrantsToClass,
+  RequiresAnyOfClass
+}
 
 /**
  * A rogue with this ability gains +1 to all skills. This ability may be taken multiple times. Notes

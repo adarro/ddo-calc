@@ -18,7 +18,10 @@
 package io.truthencode.ddo.support.requisite
 
 import io.truthencode.ddo.support.points.SpendablePoints
-import io.truthencode.ddo.support.requisite.RequirementImplicits.{pointToReq, progressionWithPointsToReq}
+import io.truthencode.ddo.support.requisite.RequirementImplicits.{
+  pointToReq,
+  progressionWithPointsToReq
+}
 import io.truthencode.ddo.support.tree.TreeLike
 
 /**

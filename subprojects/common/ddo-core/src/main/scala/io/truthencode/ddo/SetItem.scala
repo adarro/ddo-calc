@@ -24,6 +24,7 @@ import io.truthencode.ddo.model.item.Item
  * An Item set provides bonuses when equipping some or all of the items in the set.
  */
 trait SetItem {
+
   /**
    * Name of set, such as Anger's Wrath
    */

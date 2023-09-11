@@ -25,9 +25,8 @@ trait SpellBook {
 
   /**
    * A list of functions that will return spells which are castable assuming they sufficient spell
-   * points and level requirements etc.
-   * i.e. A level 3 wizard may have Power Word: Kill inscribed but will not be able to cast it until
-   * they reach the appropriate level.
+   * points and level requirements etc. i.e. A level 3 wizard may have Power Word: Kill inscribed
+   * but will not be able to cast it until they reach the appropriate level.
    * @return
    */
   def findAvailableSpells: Seq[(String) => Option[Spell]]

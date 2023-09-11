@@ -21,6 +21,7 @@ package io.truthencode.ddo.support
  * Created by adarr on 2/10/2017.
  */
 trait SearchPrefix {
+
   /**
    * Used when qualifying a search with a prefix. Examples include finding "HalfElf" from qualified
    * "Race:HalfElf"

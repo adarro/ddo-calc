@@ -21,7 +21,12 @@ import com.typesafe.scalalogging.LazyLogging
 import io.truthencode.ddo.model.enhancement.enhancements.ClassEnhancement
 import io.truthencode.ddo.model.enhancement.{ClassBasedEnhancements, Tier}
 import io.truthencode.ddo.support.StringUtils._
-import io.truthencode.ddo.support.requisite.{ActionPointRequisite, PointInTreeRequisite, PointsAvailableRequisite, RequiresActionPoints}
+import io.truthencode.ddo.support.requisite.{
+  ActionPointRequisite,
+  PointInTreeRequisite,
+  PointsAvailableRequisite,
+  RequiresActionPoints
+}
 
 trait ClassEnhancementInfo {
   type ENH = ClassEnhancement with Tier with ActionPointRequisite with PointInTreeRequisite

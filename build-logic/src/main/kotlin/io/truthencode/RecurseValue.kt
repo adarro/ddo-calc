@@ -1,4 +1,7 @@
 package io.truthencode.djaxonomy.etc
 
-enum class RecurseValue { FINITE, INFINITE, NONE
+enum class RecurseValue {
+    FINITE,
+    INFINITE,
+    NONE,
 }

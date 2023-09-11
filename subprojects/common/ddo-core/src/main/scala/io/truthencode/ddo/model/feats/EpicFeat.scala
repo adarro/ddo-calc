@@ -61,6 +61,7 @@ object EpicFeat extends Enum[EpicFeat] with FeatSearchPrefix with FeatMatcher {
 
   case class EpicSpellFocus(school: School)
     extends EpicSpellFocusBase with EpicFeat with SubFeat with Prefix {
+
     /**
      * Delimits the prefix and text.
      */

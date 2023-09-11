@@ -21,6 +21,7 @@ import io.truthencode.ddo.model.enhancement.enhancements.classbased.BombardierTi
 import io.truthencode.ddo.support.StringUtils.Extensions
 
 trait EfficientMetamagicsI extends BombardierTierTwo with ClassEnhancementImpl {
+
   /**
    * Some enhancements can be taken multiple times (generally up to three)
    */

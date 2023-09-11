@@ -18,9 +18,9 @@
 package io.truthencode.ddo.enchantment
 
 import com.typesafe.scalalogging.LazyLogging
-import com.wix.accord.dsl.{Contextualizer, ValidatorBooleanOps, empty, notEmpty, validator}
+import com.wix.accord.dsl.{empty, notEmpty, validator, Contextualizer, ValidatorBooleanOps}
 import com.wix.accord.transform.ValidationTransform.TransformedValidator
-import com.wix.accord.{Success, validate}
+import com.wix.accord.{validate, Success}
 import io.truthencode.ddo.enchantment.Modifier.{Greater, Lesser, Minor}
 import io.truthencode.ddo.model.effect.{Prefix, SecondaryPrefix, Suffix}
 import io.truthencode.ddo.support.RomanNumeral.fromRoman
@@ -59,6 +59,7 @@ object GuardModifier extends LazyLogging {
 
       }
     }
+
   /**
    * Array of allowed Guard Modifiers, may occasionally need to be updated if the game adds new
    * ones.

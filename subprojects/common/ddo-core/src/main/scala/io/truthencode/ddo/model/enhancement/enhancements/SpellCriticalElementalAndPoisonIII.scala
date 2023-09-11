@@ -23,6 +23,7 @@ import io.truthencode.ddo.support.naming.SpellCriticalPrefix
 
 trait SpellCriticalElementalAndPoisonIII
   extends BombardierTierThree with ClassEnhancementImpl with SpellCriticalPrefix {
+
   /**
    * Some enhancements can be taken multiple times (generally up to three)
    */

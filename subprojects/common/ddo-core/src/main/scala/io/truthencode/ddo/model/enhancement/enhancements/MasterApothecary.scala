@@ -25,6 +25,7 @@ trait MasterApothecary extends ApothecaryTierFive with ClassEnhancementImpl {
     """You have no Max Caster Level with Curative Admixtures and any Gildleaf Alchemist Spells. +2 To Transmutation DCs, and +1 Spell Penetration
       |""".stripMargin
   )
+
   /**
    * Some enhancements can be taken multiple times (generally up to three)
    */

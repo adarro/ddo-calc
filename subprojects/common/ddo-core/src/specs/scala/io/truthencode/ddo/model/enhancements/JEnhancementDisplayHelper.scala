@@ -26,6 +26,7 @@ import scala.beans.BeanProperty
 abstract class JEnhancementDisplayHelper extends ClassEnhancementDisplayHelper with LazyLogging {
 
   override lazy val tree: ClassTrees = ClassTrees.withName(treeId)
+
   /**
    * Java Work-around to set
    */

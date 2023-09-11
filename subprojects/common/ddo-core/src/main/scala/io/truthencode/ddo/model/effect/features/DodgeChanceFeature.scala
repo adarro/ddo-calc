@@ -51,6 +51,7 @@ trait DodgeChanceFeature extends Features {
         .build
 
       override protected[this] def effectParameters: Seq[ParameterModifier[_]] = eb.modifiers
+
       /**
        * The General Description should be just that. This should not include specific values unless
        * all instances will share that value. I.e. a Dodge Effect might state it increases your
@@ -83,6 +84,7 @@ trait DodgeChanceFeature extends Features {
       override lazy val effectText: Option[String] = Some(s"Dodge by $value%")
 
       override def searchDelimiter: Option[String] = Some(":")
+
       /**
        * Used when qualifying a search with a prefix. Examples include finding "HalfElf" from
        * qualified "Race:HalfElf"

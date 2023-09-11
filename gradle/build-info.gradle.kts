@@ -22,19 +22,19 @@ plugins {
 // general project information
 val projectName = project.name
 val gitHubAccountName = "truthencode"
-val gitHubBaseSite= "https://github.com/$gitHubAccountName/${project.name}"
-val siteIssueTracker = "${gitHubBaseSite}/issues"
+val gitHubBaseSite = "https://github.com/$gitHubAccountName/${project.name}"
+val siteIssueTracker = "$gitHubBaseSite/issues"
 val gitExtension = "${project.name}.git"
-val siteScm = "${gitHubBaseSite}/$gitExtension"
+val siteScm = "$gitHubBaseSite/$gitExtension"
 
 val releaseActive: Boolean? = rootProject.findProperty("release") as Boolean?
-//configure<ProjectConfigurationExtention> {
+// configure<ProjectConfigurationExtention> {
 //
-//}
-//configure<org.kordamp.gradle.plugin.base.ProjectConfigurationExtension> {
+// }
+// configure<org.kordamp.gradle.plugin.base.ProjectConfigurationExtension> {
 //
-//}
-//pluginManager.apply(org.kordamp.gradle.plugin.project::class.java)
+// }
+// pluginManager.apply(org.kordamp.gradle.plugin.project::class.java)
 config {
     release = if (releaseActive != null) releaseActive!! else false
 
@@ -52,7 +52,7 @@ config {
 
         scm {
             url = gitHubBaseSite
-            developerConnection = "scm:git:git@github.com:$gitHubAccountName/${gitExtension}"
+            developerConnection = "scm:git:git@github.com:$gitHubAccountName/$gitExtension"
             connection = "scm:git:git://github.com/github.com/$gitHubAccountName/$gitExtension"
         }
 
@@ -68,7 +68,7 @@ config {
     licensing {
         licenses {
             license {
-                id = "Apache-2.0" //org.kordamp.gradle.plugin.base.model.LicenseId.APACHE_2_0
+                id = "Apache-2.0" // org.kordamp.gradle.plugin.base.model.LicenseId.APACHE_2_0
             }
         }
     }

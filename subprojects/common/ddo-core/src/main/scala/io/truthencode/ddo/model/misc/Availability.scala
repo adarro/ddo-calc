@@ -48,6 +48,7 @@ trait FavorFeature extends Availability {
   abstract override def availabilityLevels: Set[AvailabilityLevel] =
     super.availabilityLevels + AvailabilityLevel.Favor
 }
+
 /**
  * Feature is available for purchase via DDO Store
  */

@@ -34,6 +34,7 @@ trait TurnUndeadNumberOfTurnsFeature extends Features {
   private val src = this
   private[this] val nHD =
     new PartModifier[Int, BasicStat] with UsingSearchPrefix {
+
       /**
        * The General Description should be just that. This should not include specific values unless
        * all instances will share that value. I.e. a Dodge Effect might state it increases your

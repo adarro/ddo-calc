@@ -24,11 +24,13 @@ import io.truthencode.ddo.model.skill.Skill.{Heal, Perform, Repair, Spellcraft}
 import io.truthencode.ddo.support.SearchPrefix
 import io.truthencode.ddo.support.StringUtils.Extensions
 import io.truthencode.ddo.support.naming.{DisplayName, FriendlyDisplay}
+
 /**
  * Represents one of the eight schools of magic.
  */
 sealed trait SpellPower
   extends EnumEntry with DisplayName with FriendlyDisplay with SkillLinkedPower {
+
   /**
    * Sets or maps the source text for the DisplayName.
    *

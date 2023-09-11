@@ -19,6 +19,6 @@ package io.truthencode.ddo.subscription
 
 import org.apache.pulsar.client.api.PulsarClient
 
-case class PClient (serviceUrl: String) extends PulsarClientService {
-   lazy val client: PulsarClient = PulsarClient.builder().serviceUrl(serviceUrl).build()
+case class PClient(serviceUrl: String) extends PulsarClientService {
+  lazy val client: PulsarClient = PulsarClient.builder().serviceUrl(serviceUrl).build()
 }

@@ -1,38 +1,36 @@
 # Resources:
-- [Apimatic](https://apimatic.io) Spec Toolkit (Swagger, API Blueprint)
-- [Codacy](http://codacy.com) Code quality metrics
-- [Travis-CI](http://travis-ci.com) Continuous Integration
-- [Github](http://github.com) Code Repository / Issue tracking
 
-- [ ] Generate All Models (Swagger 2.0)
-- - [ ] Items
-- - - [ ] Weapon
-- - - - [ ] Tests
-- - - [ ] Shield
-- - - - [ ] Tests
-- - - [ ] Handwrap
-- - - - [ ] Tests
-- - - [ ] Collar
-- - - - [ ] Tests
-- - - [ ] Helmet
-- - - - [ ] Tests
-- - - [ ] Boots
-- - - - [ ] Tests
-- - - [ ] Necklace
-- - - - [ ] Tests
-- - - [ ] Ring
-- - - - [ ] Tests
-- - - [ ] Trinket
-- - - - [ ] Tests
-- - - [ ] Quiver
-- - - - [ ] Tests
-- - [ ] Feat
-- - [ ] Enhancement
-- - [ ] Skill
-- - [ ] Attribute
-- - [ ] Race
-- - [ ] Class
-- [ ] Generate Stub Classes
+-   [Apimatic](https://apimatic.io) Spec Toolkit (Swagger, API Blueprint)
+-   [Codacy](http://codacy.com) Code quality metrics
+-   [Travis-CI](http://travis-ci.com) Continuous Integration
+-   [Github](http://github.com) Code Repository / Issue tracking
 
-
-
+-   [ ] Generate All Models (Swagger 2.0)
+-   -   [ ] Items
+-   -   -   [ ] Weapon
+-   -   -   -   [ ] Tests
+-   -   -   [ ] Shield
+-   -   -   -   [ ] Tests
+-   -   -   [ ] Handwrap
+-   -   -   -   [ ] Tests
+-   -   -   [ ] Collar
+-   -   -   -   [ ] Tests
+-   -   -   [ ] Helmet
+-   -   -   -   [ ] Tests
+-   -   -   [ ] Boots
+-   -   -   -   [ ] Tests
+-   -   -   [ ] Necklace
+-   -   -   -   [ ] Tests
+-   -   -   [ ] Ring
+-   -   -   -   [ ] Tests
+-   -   -   [ ] Trinket
+-   -   -   -   [ ] Tests
+-   -   -   [ ] Quiver
+-   -   -   -   [ ] Tests
+-   -   [ ] Feat
+-   -   [ ] Enhancement
+-   -   [ ] Skill
+-   -   [ ] Attribute
+-   -   [ ] Race
+-   -   [ ] Class
+-   [ ] Generate Stub Classes

@@ -51,6 +51,7 @@ object TriggerEvent extends IndexedEnum[TriggerEvent] {
    * with Passive, always on effects.
    */
   case object Never extends PassiveEvent
+
   /**
    * Occurs on every attack
    */
@@ -119,6 +120,7 @@ object TriggerEvent extends IndexedEnum[TriggerEvent] {
    * Triggers on a ceratin percentage of health raises above the threshold
    */
   case object OnHealthLevelAbove extends ActiveEvent
+
   /**
    * Can be toggled on / off as desired
    */
@@ -187,8 +189,7 @@ object TriggerEvent extends IndexedEnum[TriggerEvent] {
   object OnUnconscious extends ActiveEvent
 
   /**
-   * Activates / Cycles based on some timer.
-   * i.e. Deflect Arrows
+   * Activates / Cycles based on some timer. i.e. Deflect Arrows
    */
   object OnTimer extends ActiveEvent
 
@@ -198,8 +199,8 @@ object TriggerEvent extends IndexedEnum[TriggerEvent] {
   object OnTumble extends ActiveEvent
 
   /**
-   * Special End event. Denotes the effect ends at the end of whatever the TriggerOn event was.
-   * i.e. End of Tumble for the Mobility Feat
+   * Special End event. Denotes the effect ends at the end of whatever the TriggerOn event was. i.e.
+   * End of Tumble for the Mobility Feat
    * @note
    *   need a better name for this
    */

@@ -23,6 +23,7 @@ import io.truthencode.ddo.support.naming.RomanNumeralAffix
 // TODO: Need to add mutliselector support similar to Martial Weapon Proficiency:x
 trait EfficientMetamagicsII
   extends BombardierTierThree with ClassEnhancementImpl with RomanNumeralAffix {
+
   /**
    * Some enhancements can be taken multiple times (generally up to three)
    */

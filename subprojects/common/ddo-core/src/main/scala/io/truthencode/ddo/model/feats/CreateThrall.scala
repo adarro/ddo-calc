@@ -22,7 +22,12 @@ import io.truthencode.ddo.model.classes.HeroicCharacterClass
 import io.truthencode.ddo.model.classes.HeroicCharacterClass.Warlock
 import io.truthencode.ddo.model.misc.DefaultCasterCoolDown
 import io.truthencode.ddo.model.spells.SpellLikeAbility
-import io.truthencode.ddo.support.requisite.{FeatRequisiteImpl, GrantsToClass, RequiresAllOfClass, RequiresAllOfFeat}
+import io.truthencode.ddo.support.requisite.{
+  FeatRequisiteImpl,
+  GrantsToClass,
+  RequiresAllOfClass,
+  RequiresAllOfFeat
+}
 
 /**
  * [[https://ddowiki.com/page/Create_Thrall Create Thrall]] Official: Target enemy fights for you 60

@@ -20,7 +20,11 @@ package io.truthencode.ddo.model.feats
 import io.truthencode.ddo.activation.AtWillEvent
 import io.truthencode.ddo.enhancement.BonusType
 import io.truthencode.ddo.model.abilities.ActiveAbilities
-import io.truthencode.ddo.model.effect.features.{FeaturesImpl, GrantAbilityFeature, SpecialAttackFeature}
+import io.truthencode.ddo.model.effect.features.{
+  FeaturesImpl,
+  GrantAbilityFeature,
+  SpecialAttackFeature
+}
 import io.truthencode.ddo.model.misc.CoolDownPool.GreatCleave
 import io.truthencode.ddo.model.misc.SharedCoolDown
 import io.truthencode.ddo.support.requisite._

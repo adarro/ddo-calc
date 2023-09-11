@@ -27,7 +27,9 @@ data class Recursion(override val recurseValue: RecurseValue, override val depth
 
     companion object {
         val RecurseNone = Recursion(RecurseValue.NONE, 0)
+
         fun RecurseSome(depth: Int) = Recursion(RecurseValue.FINITE, depth)
+
         val RecurseInfinite = Recursion(RecurseValue.INFINITE, Int.MAX_VALUE)
     }
 }

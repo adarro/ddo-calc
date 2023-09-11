@@ -30,7 +30,6 @@ class RechargeableTest extends AnyFunSpec with Matchers with LazyLogging {
     they("should handle 3 charges, you regain 1 charge every 12 seconds") {
       val expectedText = "should handle 3 charges, you regain 1 charge every 12 seconds"
 
-
       val expectedMaxCharges: Int = 3
       val expectedQuantity: Option[Int] = Some(1)
       val expectedInterval: Duration = Duration.ofSeconds(12)

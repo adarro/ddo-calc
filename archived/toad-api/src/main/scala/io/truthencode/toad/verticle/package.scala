@@ -28,7 +28,8 @@ import org.slf4j.{Logger, LoggerFactory}
 import scala.language.implicitConversions
 
 /**
- * The verticle package contains VertX related utilities and Verticles as well as any Vertx specific implicits.
+ * The verticle package contains VertX related utilities and Verticles as well as any Vertx specific
+ * implicits.
  */
 package object verticle {
 
@@ -36,11 +37,12 @@ package object verticle {
    * Vert.x specific implicits mostly used for Java / Scala compatibility.
    */
   object Event2HandlerImplicits {
+
     /**
      * Maps java events to scala handlers used mostly to transliterate Vert.x Java lambdas to Scala.
      *
      * @example
-     * {{{
+     *   {{{
      *   // Java
      *   Vertx.clusteredVertx(options, evt -> {
      *   if (evt.succeeded()) //do something with vertx
@@ -56,7 +58,7 @@ package object verticle {
      *   else
      *     log.error("insightful message",res.cause)
      *     }
-     * }}}
+     *   }}}
      * @note
      *   also works where for AsyncResult[Unit]
      * @param event
@@ -80,7 +82,9 @@ package object verticle {
 
   implicit class DeploymentOptionMerger(helper: DeploymentOptions) {
     val logger: Logger = LoggerFactory.getLogger(getClass.getSimpleName)
-    def mergeConfig(opt: Option[Config] = None, mergeOption: MergeOption = MergeOption.MERGE): DeploymentOptions = {
+    def mergeConfig(
+      opt: Option[Config] = None,
+      mergeOption: MergeOption = MergeOption.MERGE): DeploymentOptions = {
       val json: JsonObject = opt match {
         case Some(x) => x.root
         case None => cfg.root()

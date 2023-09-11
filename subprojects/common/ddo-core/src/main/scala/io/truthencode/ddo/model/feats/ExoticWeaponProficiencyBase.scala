@@ -32,6 +32,7 @@ protected[feats] trait ExoticWeaponProficiencyBase
   extends FeatRequisiteImpl with RaceRequisite with ClassRequisiteImpl with Prefix with Passive
   with RequiresBaB with WeaponProficiencyBase with ExoticWeapon with FighterBonusFeat {
   self: GeneralFeat =>
+
   /**
    * Delimits the prefix and text.
    */

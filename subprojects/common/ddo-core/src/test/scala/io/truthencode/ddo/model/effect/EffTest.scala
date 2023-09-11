@@ -37,14 +37,17 @@ class EffTest extends AnyFunSpec with Matchers {
           TriggerEvent.Passive,
           bonusType = BonusType.Enhancement,
           magnitude = new Magnitude {
+
             /**
              * Percent chance to occur
              */
             override val chance: Int = 4
+
             /**
              * Damage Dice
              */
             override val damage: DamageDice = DamageInfo("2d1")
+
             /**
              * Base Price Modifier
              */

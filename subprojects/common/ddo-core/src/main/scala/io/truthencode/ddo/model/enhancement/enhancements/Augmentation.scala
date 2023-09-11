@@ -24,6 +24,7 @@ trait Augmentation extends BombardierTierFive with ClassEnhancementImpl {
   override lazy val description: Option[String] = Some(
     "+2 Caster Levels with Crimsonite and Gildleaf spells."
   )
+
   /**
    * Some enhancements can be taken multiple times (generally up to three)
    */

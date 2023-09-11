@@ -21,6 +21,7 @@ import io.truthencode.ddo.model.enhancement.enhancements.classbased.BombardierTi
 
 trait WeakeningMixture
   extends BombardierTierFive with ClassEnhancementImpl with ParentClassEnhancement {
+
   /**
    * Some enhancements can be taken multiple times (generally up to three)
    */

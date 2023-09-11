@@ -26,6 +26,7 @@ import scala.collection.immutable
 
 sealed trait DestinySpheres
   extends EnumEntry with DestinySphere with DisplayName with FriendlyDisplay {
+
   /**
    * Used when qualifying a search with a prefix. Examples include finding "HalfElf" from qualified
    * "Race:HalfElf"

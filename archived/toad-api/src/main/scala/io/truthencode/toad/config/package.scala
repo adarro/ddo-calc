@@ -30,13 +30,14 @@ import org.slf4j.{Logger, LoggerFactory}
 import scala.language.implicitConversions
 
 /**
- * Stores and / or retrieves general configuration information used by the sub-systems. Also used as a base reference
- * for Implicit objects.
+ * Stores and / or retrieves general configuration information used by the sub-systems. Also used as
+ * a base reference for Implicit objects.
  */
 package object config {
 
   /**
-   * Implicit services such as the template engine, Default Akka Actor system, Vertx main instance etc.
+   * Implicit services such as the template engine, Default Akka Actor system, Vertx main instance
+   * etc.
    */
   object Implicits {
     implicit lazy val engine = new TemplateEngine

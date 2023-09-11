@@ -3,7 +3,7 @@
 ## [Granted Feats](- "granted")
 
 | [ ][existingFeat] [Feats][result]                            | Type    | Description                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                             | Prerequisites                               | Icon |
-|--------------------------------------------------------------|---------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|---------------------------------------------|------|
+| ------------------------------------------------------------ | ------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------- | ---- |
 | [Dismiss Charm](http://ddowiki.com/page/Dismiss_Charm)       | Active  | Activate this short-ranged ability while targeting a charmed, commanded, controlled, or dominated enemy that is under your control to dispel the controlling effect.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    |                                             |      |
 | [Heavy Armor Proficiency][heavy_armor]                       | Passive | Benefit: You are proficient with heavy armor, and do not suffer the armor check penalty to attack rolls when wearing heavy armor. You also gain 6 + your base attack bonus in physical resistance when wearing heavy armor.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                             | Cleric Level 1                              |      |
 | [Light Armor Proficiency][light_armor]                       | Passive | Benefit: You are proficient with light armor, and do not suffer the armor check penalty to attack rolls when wearing light armor. You also gain 2 + 1/2 of your base attack bonus in physical resistance when wearing light armor. Note that a piece of armor with an ACP of 0 can be worn without penalty by all characters whether they're proficient with it or not. You will however still be reminded in the upper right corner of the screen that you are not proficient with what you are wearing. Note: The armor check penalty to skills (if any) and arcane spell failure (if any) of the armor you equip will still apply.                                                                                                                                                                                                   | Cleric Level 1                              |      |
@@ -17,34 +17,23 @@
 
 The following feats are not yet implemented
 
-* Turn Undead (active and passive): This feat allows the character to halt, or at higher levels destroy, undead
-  creatures. The character can do this (3 + their charisma modifier) times per day. While turning undead is an active
-  skill, this feat is passive as it adds to the total amount of turns per day. While enhancements from both Cleric and
-  Paladin stack, as far as number and power of turns, the base number of turns do not stack with each other.
+-   Turn Undead (active and passive): This feat allows the character to halt, or at higher levels destroy, undead
+    creatures. The character can do this (3 + their charisma modifier) times per day. While turning undead is an active
+    skill, this feat is passive as it adds to the total amount of turns per day. While enhancements from both Cleric and
+    Paladin stack, as far as number and power of turns, the base number of turns do not stack with each other.
 
 [light_armor]: http://ddowiki.com/page/Light_Armor_Proficiency "Light Armor Proficiency"
-
 [medium_armor]: http://ddowiki.com/page/Medium_Armor_Proficiency "Medium Armor Proficiency"
-
 [heavy_armor]: http://ddowiki.com/page/Heavy_Armor_Proficiency "Heavy Armor Proficiency"
-
 [religious_lore]: http://ddowiki.com/page/Religious_Lore "Religious Lore"
-
 [shield_feat]: http://ddowiki.com/page/Shield_Proficiency_(General) "Shield Proficiency"
-
 [existingFeat]: - "c:verify-rows=#feat:grantedFeats()"
-
 [_matchStrategy_]: - "c:matchStrategy=KeyMatch"
-
 [result]: - "?=#feat"
-
 [elf_feat]: http://www.ddowiki.com/edit/Elf_(feat)?redlink=1 "Elf (feat) (page does not exist)"
-
 [elf_race]: http://www.ddowiki.com/page/Elf "Elf"
-
 [sunelf_race]: http://www.ddowiki.com/page/Sun_Elf_(Morninglord) "Sun Elf (Morninglord)"
+
 ![Attribution-ShareAlike 2.5](/images/somerights20.png)
 [Attribution-ShareAlike 2.5](https://creativecommons.org/licenses/by-sa/2.5/) Images and general information available
 from http://ddowiki.com
-
-

@@ -509,10 +509,6 @@
                                     <requireJavaVersion>
                                         <version>${jvm.version}</version>
                                     </requireJavaVersion>
-                                    <!-- <requirePluginVersions> -->
-                                    <!-- <phases>clean,deploy,site</phases> -->
-                                    <!-- <unCheckedPluginList>org.apache.maven.plugins:maven-clean-plugin,org.apache.maven.plugins:maven-install-plugin,org.apache.maven.plugins:maven-site-plugin,org.apache.maven.plugins:maven-deploy-plugin</unCheckedPluginList> -->
-                                    <!-- </requirePluginVersions> -->
                                 </rules>
                                 <fail>true</fail>
                             </configuration>
@@ -531,17 +527,15 @@
                             <email>adarro@gmail.com</email>
                         </properties>
                         <includes>
-                            <!-- <include>src/main/java/**/*.java</include> -->
                             <include>src/main/scala/**/*.scala</include>
                             <include>src/test/scala/**/*.scala</include>
                             <include>src/main/java/**/*.java</include>
                             <include>src/test/java/**/*.java</include>
-                            <!-- <include>**/*.xml</include> -->
-                            <!-- <include>**/*.kt</include> -->
-                            <!-- <include>**/*.r</include> -->
+                            <include>**/*.xml</include>
+                            <include>**/*.kt</include>
+                            <include>**/*.r</include>
                         </includes>
                         <excludes>
-                            <!-- <exclude>**/.*/**</exclude> -->
                             <exclude>**/test*</exclude>
                             <exclude>target/**</exclude>
                             <exclude>**/AndroidManifest.xml</exclude>
@@ -565,11 +559,6 @@
                         </execution>
                     </executions>
                 </plugin>
-                <!-- <plugin> <groupId>com.github.goldin</groupId> <artifactId>find-maven-plugin</artifactId> 
-					<version>0.2.5</version> <executions> <execution> <id>find-notice-file</id> 
-					<goals> <goal>find</goal> </goals> <phase>validate</phase> <configuration> 
-					<propertyName>notice.file</propertyName> <file>NOTICE</file> </configuration> 
-					</execution> </executions> </plugin> -->
                 <plugin>
                     <groupId>org.codehaus.mojo</groupId>
                     <artifactId>build-helper-maven-plugin</artifactId>
@@ -676,7 +665,7 @@
 							being emitted into the resulting files. Please note that the strings here 
 							are Java regexes ({@code .*} is globbing, not plain {@code *}). -->
                         <excludeProperties>
-                            <!-- <excludeProperty>git.user.*</excludeProperty> -->
+                            <!-- excludeProperty>git.user.*</excludeProperty> -->
                         </excludeProperties>
 
                         <!-- @since 2.1.14 -->
@@ -687,7 +676,7 @@
 							note that the strings here are Java regexes ({@code .*} is globbing, not 
 							plain {@code *}). -->
                         <includeOnlyProperties>
-                            <!-- <includeOnlyProperty>^git.commit.id.full$</includeOnlyProperty> -->
+                            <!-- includeOnlyProperty>^git.commit.id.full$</includeOnlyProperty> -->
                         </includeOnlyProperties>
 
                         <!-- @since 2.1.10 -->
@@ -880,7 +869,6 @@
                             </goals>
                             <configuration>
                                 <args>
-                                    <!-- <arg>-make:transitive</arg> flag is deprecated in 2.11+ -->
                                     <arg>-dependencyfile</arg>
                                     <arg>-deprecation</arg>
                                     <arg>-feature</arg>
@@ -888,16 +876,8 @@
                                     <arg>-Xlint</arg>
                                     <arg>-Xcheckinit</arg>
                                     <arg>-Yrangepos</arg>
-                                    <!-- <arg>${project.build.directory}/.scala_dependencies</arg> -->
                                 </args>
                                 <compileOrder>JavaThenScala</compileOrder>
-                                <!--<compilerPlugins> -->
-                                <!--<compilerPlugin> -->
-                                <!--<groupId>ch.epfl.scala</groupId> -->
-                                <!--<artifactId>scalafix-nsc_${scala.tools.version}</artifactId> -->
-                                <!--<version>${scalafix.version}</version> -->
-                                <!--</compilerPlugin> -->
-                                <!--</compilerPlugins> -->
                             </configuration>
                         </execution>
                         <execution>
@@ -907,7 +887,6 @@
                             </goals>
                             <configuration>
                                 <args>
-                                    <!-- <arg>-make:transitive</arg> flag is deprecated in 2.11+ -->
                                     <arg>-dependencyfile</arg>
                                     <arg>-deprecation</arg>
                                     <arg>-feature</arg>
@@ -915,16 +894,12 @@
                                     <arg>-Xlint</arg>
                                     <arg>-Xcheckinit</arg>
                                     <arg>-Yrangepos</arg>
-                                    <!-- <arg>${project.build.directory}/.scala_dependencies</arg> -->
                                 </args>
                                 <includes>
                                     <include>**/*.java</include>
                                     <include>**/*.scala</include>
-                                    <!--<include>*Test.scala</include> -->
-                                    <!--<include>*IT.scala</include> -->
                                 </includes>
                                 <excludes>
-                                    <!--<exclude>**/*.scala</exclude> -->
                                 </excludes>
                             </configuration>
                         </execution>
@@ -1026,7 +1001,7 @@
                             <goals>
                                 <goal>compile</goal>
                                 <goal>testCompile</goal>
-                                <!-- <goal>xtend-install-debug-info</goal> -->
+                                <goal>xtend-install-debug-info</goal>
                             </goals>
                             <configuration>
                                 <outputDirectory>${project.build.directory}/xtend-gen/main</outputDirectory>
@@ -1211,11 +1186,6 @@
                 <version>2.9</version>
                 <inherited>false</inherited>
             </plugin>
-            <!--<plugin> -->
-            <!--<groupId>de.smartics.maven.plugin</groupId> -->
-            <!--<artifactId>alias-maven-plugin</artifactId> -->
-            <!--<version>RELEASE</version> -->
-            <!--</plugin> -->
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-pmd-plugin</artifactId>
@@ -1308,8 +1278,6 @@
     </issueManagement>
     <!-- Add JitPack for github as dependencies if needed -->
     <repositories>
-        <!-- <repository> <id>EvoSuite</id> <name>EvoSuite Repository</name> <url>http://www.evosuite.org/m2</url> 
-			</repository> -->
         <repository>
             <id>SpringIO</id>
             <name>Spring.IO releases</name>
@@ -1335,8 +1303,6 @@
             <id>smartics-public</id>
             <url>https://www.smartics.eu/nexus/content//groups/public-group</url>
         </pluginRepository>
-        <!-- <pluginRepository> <id>EvoSuite</id> <name>EvoSuite Repository</name> 
-			<url>http://www.evosuite.org/m2</url> </pluginRepository> -->
         <pluginRepository>
             <id>sonatype-releases</id>
             <url>http://oss.sonatype.org/content/repositories/releases</url>

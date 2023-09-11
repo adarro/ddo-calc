@@ -1,10 +1,17 @@
-    name: "Workflow"
-    on: ["push"]
-    jobs:
-      build:
-        runs-on: "ubuntu-latest"
-        steps:
-          - uses: "actions/checkout@master"
-          - name: "TODO to Issue"
-            uses: "alstr/todo-to-issue-action@v4.5"
-            id: "todo"
+name: Create issues from todos
+
+on:
+  push:
+    branches:
+     - master
+
+jobs:
+  todos:
+    runs-on: ubuntu-latest
+      steps:
+        - uses: actions/checkout@v1
+        - name: todo-actions
+          uses: dtinth/todo-actions@master
+          env:
+            GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+            TODO_ACTIONS_MONGO_URL: ${{ secrets.TODO_ACTIONS_MONGO_URL }}

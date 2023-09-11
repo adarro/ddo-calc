@@ -28,6 +28,7 @@ trait ApothecaryAbilityII
   )
   override val abilitySelections: Seq[Attribute] =
     Seq(Attribute.Intelligence, Attribute.Constitution)
+
   /**
    * Some enhancements can be taken multiple times (generally up to three)
    */

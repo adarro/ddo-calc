@@ -26,6 +26,7 @@ trait AbilityIBombardier
   override lazy val description: Option[String] = Some(
     "+1 to Intelligence"
   )
+
   /**
    * Some enhancements can be taken multiple times (generally up to three)
    */

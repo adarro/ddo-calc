@@ -21,6 +21,7 @@ package io.truthencode.ddo.model.item.weapon
  * Base trait to provide a field for weapon proficiency
  */
 sealed trait WeaponProficiency {
+
   /**
    * MustContainAtLeastOne of the [[io.truthencode.ddo.model.item.weapon.ProficiencyClass]] values.
    */
@@ -33,12 +34,14 @@ sealed trait WeaponProficiency {
 trait MartialWeapon extends WeaponProficiency {
   override val proficiency: ProficiencyClass = ProficiencyClass.Martial
 }
+
 /**
  * Weapon generally requires no special training to use.
  */
 trait SimpleWeapon extends WeaponProficiency {
   override val proficiency: ProficiencyClass = ProficiencyClass.Simple
 }
+
 /**
  * Weapon is extremely rare or requires extensive training.
  */

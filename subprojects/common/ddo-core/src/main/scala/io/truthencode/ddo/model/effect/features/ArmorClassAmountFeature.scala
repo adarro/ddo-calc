@@ -55,15 +55,15 @@ trait ArmorClassAmountFeature extends Features {
       /**
        * The main name of the effect.
        *
-       * Naming conventions The name should be concisely non-specific.
-       * i.e. Prefer "ArmorClass" instead of "Deflection" or "Miss-Chance" Deflection is too
-       * specific as there are several stacking and non-stacking types (Natural Armor, Shield) that
-       * all contribute to your specific goal of increasing your armor class. Miss-Chance is to
-       * vague as it encompasses everything from incorporeal, dodge, armor class, arrow-deflection
-       * etc.
+       * Naming conventions The name should be concisely non-specific. i.e. Prefer "ArmorClass"
+       * instead of "Deflection" or "Miss-Chance" Deflection is too specific as there are several
+       * stacking and non-stacking types (Natural Armor, Shield) that all contribute to your
+       * specific goal of increasing your armor class. Miss-Chance is to vague as it encompasses
+       * everything from incorporeal, dodge, armor class, arrow-deflection etc.
        */
       override lazy val name: String = "ArmorClass"
       override val source: SourceInfo = src
+
       /**
        * The General Description should be just that. This should not include specific values unless
        * all instances will share that value. I.e. a Dodge Effect might state it increases your

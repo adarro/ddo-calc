@@ -75,6 +75,7 @@ object ThrowAway {
   )
   // val a = new AttributeStat[Attribute.Strength] {}
   val f: PartModifier[V, T] with UsingSearchPrefix = new PartModifier[V, T] with UsingSearchPrefix {
+
     /**
      * The General Description should be just that. This should not include specific values unless
      * all instances will share that value. I.e. a Dodge Effect might state it increases your

@@ -24,6 +24,7 @@ import io.truthencode.ddo.support.naming.{DisplayName, FriendlyDisplay}
 import scala.collection.immutable
 
 sealed trait ReaperTrees extends EnumEntry with ReaperTree with DisplayName with FriendlyDisplay {
+
   /**
    * Used when qualifying a search with a prefix. Examples include finding "HalfElf" from qualified
    * "Race:HalfElf"

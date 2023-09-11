@@ -20,6 +20,7 @@ package io.truthencode.ddo.model.enhancement.enhancements
 import io.truthencode.ddo.support.SearchPrefix
 
 trait ClassEnhancementSearchPrefix extends SearchPrefix {
+
   /**
    * Used when qualifying a search with a prefix. Examples include finding "HalfElf" from qualified
    * "Race:HalfElf"

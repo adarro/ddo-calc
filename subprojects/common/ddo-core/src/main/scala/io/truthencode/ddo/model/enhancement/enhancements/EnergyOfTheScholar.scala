@@ -23,6 +23,7 @@ trait EnergyOfTheScholar extends ApothecaryTierOne with ClassEnhancementImpl {
   // Will Save +1
 
   override lazy val description: Option[String] = Some("+[30/60/90] Maximum Spell Points")
+
   /**
    * Some enhancements can be taken multiple times (generally up to three)
    */

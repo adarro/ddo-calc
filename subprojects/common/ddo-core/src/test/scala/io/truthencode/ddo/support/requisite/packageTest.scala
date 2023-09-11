@@ -45,11 +45,11 @@ class packageTest extends AnyFunSpec with Matchers with LazyLogging {
     }
   }
   describe("Feat to requisite") {
-    it("should convert a feat requirement to a Requirement Case Class "){
-        def allOfFeats: Seq[GeneralFeat] =
-            List(GeneralFeat.PointBlankShot, GeneralFeat.RapidShot)
-       val aof =  allOfFeats.map(_.toReq)
-      aof  should not be empty
+    it("should convert a feat requirement to a Requirement Case Class ") {
+      def allOfFeats: Seq[GeneralFeat] =
+        List(GeneralFeat.PointBlankShot, GeneralFeat.RapidShot)
+      val aof = allOfFeats.map(_.toReq)
+      aof should not be empty
     }
   }
 }

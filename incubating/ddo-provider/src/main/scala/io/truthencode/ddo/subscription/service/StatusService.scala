@@ -40,7 +40,7 @@ object StatusService extends LogSupport {
   def registerServer[T <: AnyRef](id: String, service: T): Unit = {
     serviceMap.put(id, service)
   }
-  def getService(id:String): Option[AnyRef] = {
+  def getService(id: String): Option[AnyRef] = {
     serviceMap.get(id)
   }
   private val defaultSocketAddress = 5454

@@ -21,15 +21,18 @@ package io.truthencode.ddo.support.naming
  * Mixin Used to prefix a name. Useful for categories to alter 'Dwarf' into 'Race:Dwarf'
  */
 trait Prefix extends DisplayProperties {
+
   /**
    * Delimits the prefix and text. Default value is ": "
    */
   protected val prefixSeparator: String = ":"
 
-    /**
-     * Optional Prefix, used to separate sub-items such as Spell Critical Schools and also to disambiguate certain entities such as Feat: precision.
-     * @return The optional prefix.
-     */
+  /**
+   * Optional Prefix, used to separate sub-items such as Spell Critical Schools and also to
+   * disambiguate certain entities such as Feat: precision.
+   * @return
+   *   The optional prefix.
+   */
   def prefix: Option[String]
 
   abstract override def displaySource: String = withPrefix.getOrElse("") + super.displaySource

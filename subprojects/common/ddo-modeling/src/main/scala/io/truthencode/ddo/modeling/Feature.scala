@@ -18,9 +18,11 @@
 package io.truthencode.ddo.modeling
 
 /**
- * The base effect, which might not have a 1:1 value with it's implemented counterpart.
- * This is roughly equivalent to an 'effect'.
- * @param name Internal Name of the effect
- * @param description A basic description of the effect. (This might include some interpolation variables)
+ * The base effect, which might not have a 1:1 value with it's implemented counterpart. This is
+ * roughly equivalent to an 'effect'.
+ * @param name
+ *   Internal Name of the effect
+ * @param description
+ *   A basic description of the effect. (This might include some interpolation variables)
  */
 case class Feature(name: String, description: Option[String])

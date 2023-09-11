@@ -21,10 +21,12 @@ trait DefaultType {
   self: DefaultType =>
   type Storage
   type SelfMap = Map[String, Any]
+
   /**
    * The default value for the object
    */
   lazy val defaultType: Option[Storage] = None
+
   /**
    * True if value is default value, otherwise false.
    * @note
@@ -36,6 +38,7 @@ trait DefaultType {
       case _ => false
     }
   }
+
   /**
    * True if there is a default value.
    */

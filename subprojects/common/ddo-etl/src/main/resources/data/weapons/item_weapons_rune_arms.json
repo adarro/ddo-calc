@@ -16,1085 +16,1085 @@
  * limitations under the License.
  */
 {
- "item": [
-  {
-   "weapon": [
-    {
-     "name": "Ice Rune Arm",
-     "damangeAndType": "Cold Bolts",
-     "minLevel": "Bound to Character on Acquire",
-     "binding": "",
-     "quest": "Maximum Charge Tier: III\nRune Arm Imbue: Cold II\nCold Bolts\nCraftable Rune Arm: (+3)",
-     "criticalProfile": "DDO Store, Not available anywhere else",
-     "errata": "DDO Store, Not available anywhere else"
-    }
-   ]
-  },
-  {
-   "weapon": [
-    {
-     "name": "Chulchannad's Claw",
-     "damangeAndType": "Cold Bolts",
-     "minLevel": "Bound to Account on Acquire",
-     "binding": "",
-     "quest": "Maximum Charge Tier: II\nRune Arm Imbue: Cold I\nCold Bolts\nCold Absorption 10%\nInherent Cold Resistance - 10\nCraftable Rune Arm: (+3)",
-     "criticalProfile": "The Maleficent Cabal, End reward",
-     "errata": "The Maleficent Cabal, End reward"
-    }
-   ]
-  },
-  {
-   "weapon": [
-    {
-     "name": "The Devourer's Hunger",
-     "damangeAndType": "Cold Bolts",
-     "minLevel": "Bound to Account on Acquire",
-     "binding": "",
-     "quest": "Maximum Charge Tier: III\nRune Arm Imbue: Cold II\nCold Bolts\nGlaciation +48\nFalse Life\nCraftable Rune Arm: (+3)",
-     "criticalProfile": "Cult of the Six, End reward",
-     "errata": "Cult of the Six, End reward"
-    }
-   ]
-  },
-  {
-   "weapon": [
-    {
-     "name": "Chill of Winter (Level 13)",
-     "damangeAndType": "Cold Bolts",
-     "minLevel": "Bound to Account on Acquire",
-     "binding": "",
-     "quest": "Maximum Charge Tier: IV\nRune Arm Imbue: Cold III\nCold Bolts\nFreezing Ice Guard\nInherent Cold Resistance - 5\nCraftable Rune Arm: (+5)",
-     "criticalProfile": "Gianthold Tor, White Dragon chest",
-     "errata": "Gianthold Tor, White Dragon chest"
-    }
-   ]
-  },
-  {
-   "weapon": [
-    {
-     "name": "Greater Ice Rune Arm",
-     "damangeAndType": "Cold Bolts",
-     "minLevel": "Bound to Character on Acquire",
-     "binding": "",
-     "quest": "Maximum Charge Tier: IV\nRune Arm Imbue: Cold III\nCold Bolts\nCraftable Rune Arm: (+5)",
-     "criticalProfile": "DDO Store, Not available anywhere else",
-     "errata": "DDO Store, Not available anywhere else"
-    }
-   ]
-  },
-  {
-   "weapon": [
-    {
-     "name": "Quarantine",
-     "damangeAndType": "Cold Bolts",
-     "minLevel": "Bound to Account on Acquire",
-     "binding": "",
-     "quest": "Maximum Charge Tier: V\nRune Arm Imbue: Cold IV\nGlaciation +90\nEvocation Focus +3\nNatural Armor +7\nOccasional Overcooling\nEmpty Green Augment Slot\nRenegade Champion",
-     "criticalProfile": "Quarantine, End Chest",
-     "errata": "Quarantine, End Chest"
-    }
-   ]
-  },
-  {
-   "weapon": [
-    {
-     "name": "Chill of Winter (Level 23)",
-     "damangeAndType": "Cold Bolts",
-     "minLevel": "Bound to Character on Equip",
-     "binding": "",
-     "quest": "Maximum Charge Tier: V\nRune Arm Imbue: Cold IV\nCold Bolts\nFreezing Ice Guard\nInherent Cold Resistance - 5\nEmpty Yellow Augment Slot\nEmpty Colorless Augment Slot",
-     "criticalProfile": "Return to Gianthold Tor, White Dragon chest (Epic Normal)",
-     "errata": "Return to Gianthold Tor, White Dragon chest (Epic Normal)"
-    }
-   ]
-  },
-  {
-   "weapon": [
-    {
-     "name": "Chill of Winter (Level 24)",
-     "damangeAndType": "Cold Bolts",
-     "minLevel": "Bound to Character on Equip",
-     "binding": "",
-     "quest": "Maximum Charge Tier: V\nRune Arm Imbue: Cold V\nCold Bolts\nFreezing Ice Guard\nInherent Cold Resistance - 10\nEmpty Green Augment Slot\nEmpty Colorless Augment Slot",
-     "criticalProfile": "Return to Gianthold Tor, White Dragon chest (Epic Hard)",
-     "errata": "Return to Gianthold Tor, White Dragon chest (Epic Hard)"
-    }
-   ]
-  },
-  {
-   "weapon": [
-    {
-     "name": "Chill of Winter (Level 25)",
-     "damangeAndType": "Cold Bolts",
-     "minLevel": "Bound to Character on Equip",
-     "binding": "",
-     "quest": "Maximum Charge Tier: V\nRune Arm Imbue: Cold V\nCold Bolts\nFreezing Ice Guard\nInherent Cold Resistance - 5\nInherent Cold Resistance - 10\nEmpty Green Augment Slot\nEmpty Yellow Augment Slot",
-     "criticalProfile": "Return to Gianthold Tor, White Dragon chest (Epic Elite)",
-     "errata": "Return to Gianthold Tor, White Dragon chest (Epic Elite)"
-    }
-   ]
-  },
-  {
-   "weapon": [
-    {
-     "name": "Legendary Quarantine",
-     "damangeAndType": "Cold Bolts",
-     "minLevel": "Bound to Account on Acquire",
-     "binding": "",
-     "quest": "Maximum Charge Tier: V\nRune Arm Imbue: Cold VI\nGlaciation +202\nEvocation Focus +8\nNatural Armor +19\nOccasional Overcooling\nEmpty Green Augment Slot\nRenegade Champion (Legendary)",
-     "criticalProfile": "Quarantine, End Chest",
-     "errata": "Quarantine, End Chest"
-    }
-   ]
-  },
-  {
-   "weapon": [
-    {
-     "name": "Acid Rune Arm",
-     "damangeAndType": "Acid Shot",
-     "minLevel": "Bound to Character on Acquire",
-     "binding": "",
-     "quest": "Maximum Charge Tier: III\nRune Arm Imbue: Acid II\nAcid Shot\nCraftable Rune Arm: (+3)",
-     "criticalProfile": "DDO Store, Not available anywhere else",
-     "errata": "DDO Store, Not available anywhere else"
-    }
-   ]
-  },
-  {
-   "weapon": [
-    {
-     "name": "The Pea Shooter",
-     "damangeAndType": "Acid Shot",
-     "minLevel": "Bound to Account on Acquire",
-     "binding": "",
-     "quest": "Maximum Charge Tier: III\nRune Arm Imbue: Acid II\nAcid Shot\nPotency +28\nInherent Acid Resistance - 5\nCraftable Rune Arm: (+3)",
-     "criticalProfile": "Into the Deep, End reward",
-     "errata": "Into the Deep, End reward"
-    }
-   ]
-  },
-  {
-   "weapon": [
-    {
-     "name": "Greater Acid Rune Arm",
-     "damangeAndType": "Acid Shot",
-     "minLevel": "Bound to Character on Acquire",
-     "binding": "",
-     "quest": "Maximum Charge Tier: IV\nRune Arm Imbue: Acid III\nAcid Shot\nCraftable Rune Arm: (+5)",
-     "criticalProfile": "DDO Store, Not available anywhere else",
-     "errata": "DDO Store, Not available anywhere else"
-    }
-   ]
-  },
-  {
-   "weapon": [
-    {
-     "name": "The Turmoil Within (Level 13)",
-     "damangeAndType": "Acid Shot",
-     "minLevel": "Bound to Account on Acquire",
-     "binding": "",
-     "quest": "Maximum Charge Tier: IV\nRune Arm Imbue: Acid III\nAcid Shot\nAttack Bonus +2\nInherent Acid Resistance - 5\nCraftable Rune Arm: (+5)",
-     "criticalProfile": "Gianthold Tor, Black Dragon chest",
-     "errata": "Gianthold Tor, Black Dragon chest"
-    }
-   ]
-  },
-  {
-   "weapon": [
-    {
-     "name": "Corruption of Nature (Level 15)",
-     "damangeAndType": "Acid Shot",
-     "minLevel": "Bound to Character on Equip",
-     "binding": "",
-     "quest": "Maximum Charge Tier: IV\nRune Arm Imbue: Acid III\nCorrosion +78\nPotency +52\nRough Hide +3",
-     "criticalProfile": "Outbreak, End chest",
-     "errata": "Outbreak, End chest"
-    }
-   ]
-  },
-  {
-   "weapon": [
-    {
-     "name": "Corruption of Nature (Level 16)",
-     "damangeAndType": "Acid Shot",
-     "minLevel": "Bound to Character on Equip",
-     "binding": "",
-     "quest": "Maximum Charge Tier: IV\nRune Arm Imbue: Acid III\nCorrosion +78\nPotency +52\nRough Hide +3",
-     "criticalProfile": "Outbreak, End chest",
-     "errata": "Outbreak, End chest"
-    }
-   ]
-  },
-  {
-   "weapon": [
-    {
-     "name": "Corruption of Nature (Level 17)",
-     "damangeAndType": "Acid Shot",
-     "minLevel": "Bound to Character on Equip",
-     "binding": "",
-     "quest": "Maximum Charge Tier: IV\nRune Arm Imbue: Acid IV\nCorrosion +84\nPotency +56\nRough Hide +4",
-     "criticalProfile": "Outbreak, End chest",
-     "errata": "Outbreak, End chest"
-    }
-   ]
-  },
-  {
-   "weapon": [
-    {
-     "name": "Glorious Obscenity",
-     "damangeAndType": "Acid Shot",
-     "minLevel": "Bound to Account",
-     "binding": "",
-     "quest": "Maximum Charge Tier: V\nRune Arm Imbue: Acid IV\nAcid Shot\nEnhanced Spot +5\nSeeker 6\nMind Turbulence\nTaint of Chaos\nCraftable Rune Arm: (+5)",
-     "criticalProfile": "Reign of Madness, End reward",
-     "errata": "Reign of Madness, End reward"
-    }
-   ]
-  },
-  {
-   "weapon": [
-    {
-     "name": "Corruption of Nature (level 22)",
-     "damangeAndType": "Acid Shot",
-     "minLevel": "Bound to Character on Equip",
-     "binding": "",
-     "quest": "Maximum Charge Tier: V\nRune Arm Imbue: Acid IV\nCorrosion +102\nPotency +68\nRough Hide +4\nInsightful Intelligence +2",
-     "criticalProfile": "Outbreak, End chest",
-     "errata": "Outbreak, End chest"
-    }
-   ]
-  },
-  {
-   "weapon": [
-    {
-     "name": "The Turmoil Within (Level 23)",
-     "damangeAndType": "Acid Shot",
-     "minLevel": "Bound to Character on Equip",
-     "binding": "",
-     "quest": "Maximum Charge Tier: V\nRune Arm Imbue: Acid IV\nAcid Shot\nAttack Bonus +4\nInherent Acid Resistance - 5\nEmpty Yellow Augment Slot\nEmpty Colorless Augment Slot",
-     "criticalProfile": "Return to Gianthold Tor, Black Dragon chest (Epic Normal)",
-     "errata": "Return to Gianthold Tor, Black Dragon chest (Epic Normal)"
-    }
-   ]
-  },
-  {
-   "weapon": [
-    {
-     "name": "Corruption of Nature (level 23)",
-     "damangeAndType": "Acid Shot",
-     "minLevel": "Bound to Character on Equip",
-     "binding": "",
-     "quest": "Maximum Charge Tier: V\nRune Arm Imbue: Acid V\nCorrosion +108\nPotency +72\nRough Hide +5\nInsightful Intelligence +3",
-     "criticalProfile": "Outbreak, End chest",
-     "errata": "Outbreak, End chest"
-    }
-   ]
-  },
-  {
-   "weapon": [
-    {
-     "name": "The Turmoil Within (Level 24)",
-     "damangeAndType": "Acid Shot",
-     "minLevel": "Bound to Character on Equip",
-     "binding": "",
-     "quest": "Maximum Charge Tier: V\nRune Arm Imbue: Acid V\nAcid Shot\nAttack Bonus +4\nInherent Acid Resistance - 10\nEmpty Green Augment Slot\nEmpty Colorless Augment Slot",
-     "criticalProfile": "Return to Gianthold Tor, Black Dragon chest (Epic Hard)",
-     "errata": "Return to Gianthold Tor, Black Dragon chest (Epic Hard)"
-    }
-   ]
-  },
-  {
-   "weapon": [
-    {
-     "name": "Corruption of Nature (level 24)",
-     "damangeAndType": "Acid Shot",
-     "minLevel": "Bound to Character on Equip",
-     "binding": "",
-     "quest": "Maximum Charge Tier: V\nRune Arm Imbue: Acid V\nCorrosion +114\nPotency +76\nRough Hide +6\nInsightful Intelligence +3",
-     "criticalProfile": "Outbreak, End chest",
-     "errata": "Outbreak, End chest"
-    }
-   ]
-  },
-  {
-   "weapon": [
-    {
-     "name": "The Turmoil Within (Level 25)",
-     "damangeAndType": "Acid Shot",
-     "minLevel": "Bound to Character on Equip",
-     "binding": "",
-     "quest": "Maximum Charge Tier: V\nRune Arm Imbue: Acid V\nAcid Shot\nAttack Bonus +4\nInherent Acid Resistance - 5\nInherent Acid Resistance - 10\nEmpty Green Augment Slot\nEmpty Yellow Augment Slot",
-     "criticalProfile": "Return to Gianthold Tor, Black Dragon chest (Epic Elite)",
-     "errata": "Return to Gianthold Tor, Black Dragon chest (Epic Elite)"
-    }
-   ]
-  },
-  {
-   "weapon": [
-    {
-     "name": "Flicker",
-     "damangeAndType": "Electrical Lash",
-     "minLevel": "Bound to Account on Acquire",
-     "binding": "",
-     "quest": "Maximum Charge Tier: II\nRune Arm Imbue: Electrical I\nElectrical Lash\nReflex Save +2\nPower II\nCraftable Rune Arm: (+2)",
-     "criticalProfile": "The Seal of Shan-To-Kor, End reward",
-     "errata": "The Seal of Shan-To-Kor, End reward"
-    }
-   ]
-  },
-  {
-   "weapon": [
-    {
-     "name": "Chimera's Breath",
-     "damangeAndType": "Electrical Blast",
-     "minLevel": "Bound to Account on Acquire",
-     "binding": "",
-     "quest": "Maximum Charge Tier: III\nRune Arm Imbue: Electrical II\nElectrical Blast\nFeat: Proficiency: Bastard Sword\nDiehard\nCraftable Rune Arm: (+3)",
-     "criticalProfile": "The Tide Turns, End chest",
-     "errata": "The Tide Turns, End chest"
-    }
-   ]
-  },
-  {
-   "weapon": [
-    {
-     "name": "Lightning Rune Arm",
-     "damangeAndType": "Electrical Blast",
-     "minLevel": "Bound to Character on Acquire",
-     "binding": "",
-     "quest": "Maximum Charge Tier: III\nRune Arm Imbue: Electrical II\nElectrical Blast\nCraftable Rune Arm: (+3)",
-     "criticalProfile": "DDO Store, Not available anywhere else",
-     "errata": "DDO Store, Not available anywhere else"
-    }
-   ]
-  },
-  {
-   "weapon": [
-    {
-     "name": "The Disciplinator",
-     "damangeAndType": "Electrical Lash",
-     "minLevel": "Bound to Character on Acquire",
-     "binding": "",
-     "quest": "Maximum Charge Tier: III\nRune Arm Imbue: Electrical II\nElectrical Lash\nSmiting Weapons\nExceptional Fortification (+10%)\nCraftable Rune Arm: (+4)",
-     "criticalProfile": "Plane of Night, Raid warded chest",
-     "errata": "Plane of Night, Raid warded chest"
-    }
-   ]
-  },
-  {
-   "weapon": [
-    {
-     "name": "Greater Lightning Rune Arm",
-     "damangeAndType": "Electrical Blast",
-     "minLevel": "Bound to Character on Acquire",
-     "binding": "",
-     "quest": "Maximum Charge Tier: IV\nRune Arm Imbue: Electrical III\nElectrical Blast\nCraftable Rune Arm: (+5)",
-     "criticalProfile": "DDO Store, Not available anywhere else",
-     "errata": "DDO Store, Not available anywhere else"
-    }
-   ]
-  },
-  {
-   "weapon": [
-    {
-     "name": "Arcing Sky (Level 13)",
-     "damangeAndType": "Electrical Blast",
-     "minLevel": "Bound to Account on Acquire",
-     "binding": "",
-     "quest": "Maximum Charge Tier: IV\nRune Arm Imbue: Electrical III\nElectrical Blast\nDodge +6%\nInherent Electric Resistance - 5\nCraftable Rune Arm: (+5)",
-     "criticalProfile": "Gianthold Tor, Blue Dragon",
-     "errata": "Gianthold Tor, Blue Dragon"
-    }
-   ]
-  },
-  {
-   "weapon": [
-    {
-     "name": "The Arc Welder (long range)",
-     "damangeAndType": "Electrical Storm",
-     "minLevel": "Bound to Account on Acquire",
-     "binding": "",
-     "quest": "Maximum Charge Tier: V\nRune Arm Imbue: Electrical IV\nMagnetism +94\nLightning Lore +14%\nInsightful Combat Mastery +3\nQuality Combat Mastery +2\nEmpty Green Augment Slot",
-     "criticalProfile": "Graveyard Shift, End chest",
-     "errata": "Graveyard Shift, End chest"
-    }
-   ]
-  },
-  {
-   "weapon": [
-    {
-     "name": "The Arc Welder (close range)",
-     "damangeAndType": "Electrical Blast",
-     "minLevel": "Bound to Account on Acquire",
-     "binding": "",
-     "quest": "Maximum Charge Tier: V\nRune Arm Imbue: Electrical IV\nMagnetism +94\nLightning Lore +14%\nInsightful Combat Mastery +3\nQuality Combat Mastery +2\nEmpty Green Augment Slot",
-     "criticalProfile": "Third Time's a Charm, End chest",
-     "errata": "Third Time's a Charm, End chest"
-    }
-   ]
-  },
-  {
-   "weapon": [
-    {
-     "name": "Toven's Hammer",
-     "damangeAndType": "Electrical Storm",
-     "minLevel": "Bound to Character on Acquire",
-     "binding": "",
-     "quest": "Maximum Charge Tier: V\nRune Arm Imbue: Electrical IV\nElectrical Storm\nLightning Strike Weapons\nPotency +48\nExceptional Fortification (+10%)\nMissing Parts\nCraftable Rune Arm: (+5)",
-     "criticalProfile": "The Master Artificer, Rightside End Chest",
-     "errata": "The Master Artificer, Rightside End Chest"
-    }
-   ]
-  },
-  {
-   "weapon": [
-    {
-     "name": "Arcing Sky (Level 23)",
-     "damangeAndType": "Electrical Blast",
-     "minLevel": "Bound to Character on Equip",
-     "binding": "",
-     "quest": "Maximum Charge Tier: V\nRune Arm Imbue: Electrical IV\nElectrical Blast\nDodge +8%\nInherent Electric Resistance - 5\nEmpty Yellow Augment Slot\nEmpty Colorless Augment Slot",
-     "criticalProfile": "Return to Gianthold Tor, Blue Dragon chest (Epic Normal)",
-     "errata": "Return to Gianthold Tor, Blue Dragon chest (Epic Normal)"
-    }
-   ]
-  },
-  {
-   "weapon": [
-    {
-     "name": "Arcing Sky (Level 24)",
-     "damangeAndType": "Electrical Blast",
-     "minLevel": "Bound to Character on Equip",
-     "binding": "",
-     "quest": "Maximum Charge Tier: V\nRune Arm Imbue: Electrical V\nElectrical Blast\nDodge +8%\nInherent Electric Resistance - 10\nEmpty Green Augment Slot\nEmpty Colorless Augment Slot",
-     "criticalProfile": "Return to Gianthold Tor, Blue Dragon chest (Epic Hard)",
-     "errata": "Return to Gianthold Tor, Blue Dragon chest (Epic Hard)"
-    }
-   ]
-  },
-  {
-   "weapon": [
-    {
-     "name": "St. Mu'Ray's Fire",
-     "damangeAndType": "Electrical Storm",
-     "minLevel": "Bound to Character on Acquire",
-     "binding": "",
-     "quest": "Maximum Charge Tier: V\nRune Arm Imbue: Electrical VI\nMagnetism +114\nInherent Electric Resistance - 10\nEmpty Blue Augment Slot\nSpell Lore VIII\nLightning Lore VII",
-     "criticalProfile": "Precious Cargo, End chest",
-     "errata": "Precious Cargo, End chest"
-    }
-   ]
-  },
-  {
-   "weapon": [
-    {
-     "name": "Arcing Sky (Level 25)",
-     "damangeAndType": "Electrical Blast",
-     "minLevel": "Bound to Character on Equip",
-     "binding": "",
-     "quest": "Maximum Charge Tier: V\nRune Arm Imbue: Electrical V\nElectrical Blast\nDodge +8%\nInherent Electric Resistance - 5\nInherent Electric Resistance - 10\nEmpty Green Augment Slot\nEmpty Yellow Augment Slot",
-     "criticalProfile": "Return to Gianthold Tor, Blue Dragon chest (Epic Elite)",
-     "errata": "Return to Gianthold Tor, Blue Dragon chest (Epic Elite)"
-    }
-   ]
-  },
-  {
-   "weapon": [
-    {
-     "name": "The Legendary Arc Welder (close range)",
-     "damangeAndType": "Electrical Blast",
-     "minLevel": "Bound to Account on Acquire",
-     "binding": "",
-     "quest": "Maximum Charge Tier: V\nRune Arm Imbue: Electrical VI\nMagnetism +185\nLightning Lore +27%\nInsightful Combat Mastery +7\nQuality Combat Mastery +4\nEmpty Green Augment Slot",
-     "criticalProfile": "Third Time's a Charm, End chest",
-     "errata": "Third Time's a Charm, End chest"
-    }
-   ]
-  },
-  {
-   "weapon": [
-    {
-     "name": "The Legendary Arc Welder (long range)",
-     "damangeAndType": "Electrical Storm",
-     "minLevel": "Bound to Account on Acquire",
-     "binding": "",
-     "quest": "Maximum Charge Tier: V\nRune Arm Imbue: Electrical VI\nMagnetism +185\nLightning Lore +27%\nInsightful Combat Mastery +7\nQuality Combat Mastery +4\nEmpty Green Augment Slot",
-     "criticalProfile": "Graveyard Shift, End chest",
-     "errata": "Graveyard Shift, End chest"
-    }
-   ]
-  },
-  {
-   "weapon": [
-    {
-     "name": "Flame Warden",
-     "damangeAndType": "Fire Blast",
-     "minLevel": "Bound to Account on Acquire",
-     "binding": "",
-     "quest": "Maximum Charge Tier: II\nRune Arm Imbue: Fire I\nFire Blast\nLesser Fire Resistance\nReflex Save +1\nCraftable Rune Arm: (+2)",
-     "criticalProfile": "The Lost Seekers, End reward",
-     "errata": "The Lost Seekers, End reward"
-    }
-   ]
-  },
-  {
-   "weapon": [
-    {
-     "name": "Fire Rune Arm",
-     "damangeAndType": "Fire Blast",
-     "minLevel": "Bound to Character on Acquire",
-     "binding": "",
-     "quest": "Maximum Charge Tier: III\nRune Arm Imbue: Fire II\nFire Blast\nCraftable Rune Arm: (+3)",
-     "criticalProfile": "DDO Store, Not available anywhere else",
-     "errata": "DDO Store, Not available anywhere else"
-    }
-   ]
-  },
-  {
-   "weapon": [
-    {
-     "name": "Khyber's Fury",
-     "damangeAndType": "Exploding Fire Shot",
-     "minLevel": "Bound to Account on Acquire",
-     "binding": "",
-     "quest": "Maximum Charge Tier: II\nRune Arm Imbue: Fire I\nExploding Fire Shot\nFortification +75%\nCraftable Rune Arm: (+3)",
-     "criticalProfile": "Assault on Splinterskull, End reward",
-     "errata": "Assault on Splinterskull, End reward"
-    }
-   ]
-  },
-  {
-   "weapon": [
-    {
-     "name": "Strinati's Hand Cannon",
-     "damangeAndType": "Exploding Cannon Shot",
-     "minLevel": "Bound to Character on Equip",
-     "binding": "",
-     "quest": "Maximum Charge Tier: III\nRune Arm Imbue: Fire II\nExploding Cannon Shot\nWizardry II\nCraftable Rune Arm: (+3)",
-     "criticalProfile": "Three-Barrel Cove (heroic), Cannoneer Strinati's Chest (Rare Encounter)",
-     "errata": "Three-Barrel Cove (heroic), Cannoneer Strinati's Chest (Rare Encounter)"
-    }
-   ]
-  },
-  {
-   "weapon": [
-    {
-     "name": "Hand of the Tombs",
-     "damangeAndType": "Exploding Fire Shot",
-     "minLevel": "Bound to Character on Equip",
-     "binding": "",
-     "quest": "Maximum Charge Tier: III\nRune Arm Imbue: Fire II\nExploding Fire Shot\nDisrupting Weapons\nInherent Fire Resistance - 5\nCraftable Rune Arm: (+4)",
-     "criticalProfile": "The Chamber of Raiyum, Treasure Chamber",
-     "errata": "The Chamber of Raiyum, Treasure Chamber"
-    }
-   ]
-  },
-  {
-   "weapon": [
-    {
-     "name": "Blight Inferno",
-     "damangeAndType": "Corrupted Fire Blast",
-     "minLevel": "Bound to Account on Acquire",
-     "binding": "",
-     "quest": "Maximum Charge Tier: IV\nRune Arm Imbue: Fire III\nCorrupted Fire Blast\nCombustion +77\nQuality Combustion +18\nFire Lore +11%\nTira's Splendor\nEmpty Green Augment Slot\nAdherent of the Mists Set (Heroic)",
-     "criticalProfile": "Mad Tea Party, End Chest",
-     "errata": "Mad Tea Party, End Chest"
-    }
-   ]
-  },
-  {
-   "weapon": [
-    {
-     "name": "Suppressive Fire",
-     "damangeAndType": "Corrupted Exploding Fire Shot",
-     "minLevel": "Bound to Account on Acquire",
-     "binding": "",
-     "quest": "Maximum Charge Tier: IV\nRune Arm Imbue: Fire III\nCorrupted Exploding Fire Shot\nCombustion +77\nImmunity to Fear\nFire Resistance +21\nTira's Splendor\nEmpty Green Augment Slot\nAdherent of the Mists Set (Heroic)",
-     "criticalProfile": "The Final Vintage, End Chest",
-     "errata": "The Final Vintage, End Chest"
-    }
-   ]
-  },
-  {
-   "weapon": [
-    {
-     "name": "Trial by Fire",
-     "damangeAndType": "Fire Blast",
-     "minLevel": "Bound to Account on Acquire",
-     "binding": "",
-     "quest": "Maximum Charge Tier: III\nRune Arm Imbue: Fire II\nFire Blast\nVitality +20\nInherent Fire Resistance - 5\nCraftable Rune Arm: (+4)",
-     "criticalProfile": "Attack on Stormreach, End reward",
-     "errata": "Attack on Stormreach, End reward"
-    }
-   ]
-  },
-  {
-   "weapon": [
-    {
-     "name": "Greater Fire Rune Arm",
-     "damangeAndType": "Fire Blast",
-     "minLevel": "Bound to Character on Acquire",
-     "binding": "",
-     "quest": "Maximum Charge Tier: IV\nRune Arm Imbue: Fire III\nFire Blast\nCraftable Rune Arm: (+5)",
-     "criticalProfile": "DDO Store, Not available anywhere else",
-     "errata": "DDO Store, Not available anywhere else"
-    }
-   ]
-  },
-  {
-   "weapon": [
-    {
-     "name": "Breaking the Bank",
-     "damangeAndType": "Gold Shot",
-     "minLevel": "Bound to Account on Acquire",
-     "binding": "",
-     "quest": "Maximum Charge Tier: V\nRune Arm Imbue: Fire IV\nPotency +60\nExceptional Alluring Skills Bonus +5\nCombustion +94\nImmunity to Fear\nEmpty Green Augment Slot",
-     "criticalProfile": "Reach for the Sky, End Chest",
-     "errata": "Reach for the Sky, End Chest"
-    }
-   ]
-  },
-  {
-   "weapon": [
-    {
-     "name": "Animus",
-     "damangeAndType": "Exploding Fire Shot",
-     "minLevel": "Bound to Account on Acquire",
-     "binding": "",
-     "quest": "Maximum Charge Tier: V\nRune Arm Imbue: Fire IV\nExploding Fire Shot\nBanishing Weapons\nTaint of Evil\nCraftable Rune Arm: (+5)",
-     "criticalProfile": "Devil Assault (quest), End Chest",
-     "errata": "Devil Assault (quest), End Chest"
-    }
-   ]
-  },
-  {
-   "weapon": [
-    {
-     "name": "Glass Cannon (tier 3)",
-     "damangeAndType": "[[F:|36x36px]]\nExploding Cannon Shot",
-     "minLevel": "Bound to Account on Acquire",
-     "binding": "",
-     "quest": "Maximum Charge Tier: V\nRune Arm Imbue: Fire V, Bludgeon V\nFortification Penalty (-25%)",
-     "criticalProfile": "Treasure of Crystal Cove, Turn in 80 Stolen Star Rubies, 750 Gold Doubloons, 750 Silver Doubloons",
-     "errata": "Treasure of Crystal Cove, Turn in 80 Stolen Star Rubies, 750 Gold Doubloons, 750 Silver Doubloons"
-    }
-   ]
-  },
-  {
-   "weapon": [
-    {
-     "name": "Glass Cannon (tier 1)",
-     "damangeAndType": "Exploding Cannon Shot",
-     "minLevel": "Bound to Account on Acquire",
-     "binding": "",
-     "quest": "Maximum Charge Tier: V\nRune Arm Imbue: Fire V, Bludgeon V\nUpgradeable - Tier 1\nFortification Penalty (-25%)",
-     "criticalProfile": "Treasure of Crystal Cove, Turn in Euphonia's Barter Box",
-     "errata": "Treasure of Crystal Cove, Turn in Euphonia's Barter Box"
-    }
-   ]
-  },
-  {
-   "weapon": [
-    {
-     "name": "Glass Cannon (tier 2)",
-     "damangeAndType": "[[F:|36x36px]]\nExploding Cannon Shot",
-     "minLevel": "Bound to Account on Acquire",
-     "binding": "",
-     "quest": "Maximum Charge Tier: V\nRune Arm Imbue: Fire V, Bludgeon V\nFortification Penalty (-25%)",
-     "criticalProfile": "Treasure of Crystal Cove, Turn in 80 Stolen Star Rubies, 750 Gold Doubloons, 750 Silver Doubloons",
-     "errata": "Treasure of Crystal Cove, Turn in 80 Stolen Star Rubies, 750 Gold Doubloons, 750 Silver Doubloons"
-    }
-   ]
-  },
-  {
-   "weapon": [
-    {
-     "name": "Legendary Breaking the Bank",
-     "damangeAndType": "Gold Shot",
-     "minLevel": "Bound to Account on Acquire",
-     "binding": "",
-     "quest": "Maximum Charge Tier: V\nRune Arm Imbue: Fire V\nPotency +154\nExceptional Alluring Skills Bonus +10\nCombustion +214\nImmunity to Fear\nEmpty Green Augment Slot",
-     "criticalProfile": "Reach for the Sky, End Chest",
-     "errata": "Reach for the Sky, End Chest"
-    }
-   ]
-  },
-  {
-   "weapon": [
-    {
-     "name": "Legendary Suppressive Fire",
-     "damangeAndType": "Corrupted Exploding Fire Shot",
-     "minLevel": "Bound to Account on Acquire",
-     "binding": "",
-     "quest": "Maximum Charge Tier: V\nRune Arm Imbue: Fire VI\nCorrupted Exploding Fire Shot\nCombustion +202\nImmunity to Fear\nFire Resistance +76\nTira's Splendor\nEmpty Green Augment Slot\nAdherent of the Mists Set (Legendary)",
-     "criticalProfile": "The Final Vintage, End Chest",
-     "errata": "The Final Vintage, End Chest"
-    }
-   ]
-  },
-  {
-   "weapon": [
-    {
-     "name": "Legendary Blight Inferno",
-     "damangeAndType": "Corrupted Fire Blast",
-     "minLevel": "Bound to Account on Acquire",
-     "binding": "",
-     "quest": "Maximum Charge Tier: V\nRune Arm Imbue: Fire VI\nCorrupted Fire Blast\nCombustion +202\nQuality Combustion +50\nFire Lore +29%\nTira's Splendor\nEmpty Green Augment Slot\nAdherent of the Mists Set (Legendary)",
-     "criticalProfile": "Mad Tea Party, End Chest",
-     "errata": "Mad Tea Party, End Chest"
-    }
-   ]
-  },
-  {
-   "weapon": [
-    {
-     "name": "Thought Spike",
-     "damangeAndType": "Force Shot",
-     "minLevel": "Bound to Character on Acquire",
-     "binding": "",
-     "quest": "Maximum Charge Tier: II\nRune Arm Imbue: Force I\nForce Shot\nWill Save +1\nCraftable Rune Arm: (+2)",
-     "criticalProfile": "Redemption, End reward",
-     "errata": "Redemption, End reward"
-    }
-   ]
-  },
-  {
-   "weapon": [
-    {
-     "name": "Thought Spike (starter)",
-     "damangeAndType": "Force Shot",
-     "minLevel": "Bound to Character on Acquire",
-     "binding": "",
-     "quest": "Maximum Charge Tier: II\nRune Arm Imbue: Force I\nWill Save +1\nStarter\nCraftable Rune Arm: (+2)",
-     "criticalProfile": "The Voyage, End reward",
-     "errata": "The Voyage, End reward"
-    }
-   ]
-  },
-  {
-   "weapon": [
-    {
-     "name": "Candlelight",
-     "damangeAndType": "Light Spirals",
-     "minLevel": "Bound to Account on Acquire",
-     "binding": "",
-     "quest": "Maximum Charge Tier: II\nRune Arm Imbue: Light I\nLight Spirals\nLesser Undead Guard\nLesser False Life\nCraftable Rune Arm: (+2)",
-     "criticalProfile": "Catacombs, End reward",
-     "errata": "Catacombs, End reward"
-    }
-   ]
-  },
-  {
-   "weapon": [
-    {
-     "name": "Radiant Rune Arm",
-     "damangeAndType": "Light Spirals",
-     "minLevel": "Bound to Character on Acquire",
-     "binding": "",
-     "quest": "Maximum Charge Tier: III\nRune Arm Imbue: Light II\nLight Spirals\nCraftable Rune Arm: (+3)",
-     "criticalProfile": "DDO Store, Not available anywhere else",
-     "errata": "DDO Store, Not available anywhere else"
-    }
-   ]
-  },
-  {
-   "weapon": [
-    {
-     "name": "Force Rune Arm",
-     "damangeAndType": "Force Shot",
-     "minLevel": "Bound to Character on Acquire",
-     "binding": "",
-     "quest": "Maximum Charge Tier: III\nRune Arm Imbue: Force II\nForce Shot\nCraftable Rune Arm: (+3)",
-     "criticalProfile": "DDO Store, Not available anywhere else",
-     "errata": "DDO Store, Not available anywhere else"
-    }
-   ]
-  },
-  {
-   "weapon": [
-    {
-     "name": "Coronach",
-     "damangeAndType": "Light Spirals",
-     "minLevel": "Bound to Account on Acquire",
-     "binding": "",
-     "quest": "Maximum Charge Tier: III\nRune Arm Imbue: Light II\nLight Spirals\nLife Shield\nCoronach\nCraftable Rune Arm: (+3)",
-     "criticalProfile": "Delera's Tomb, End reward",
-     "errata": "Delera's Tomb, End reward"
-    }
-   ]
-  },
-  {
-   "weapon": [
-    {
-     "name": "Coronach (historic)",
-     "damangeAndType": "Disrupt Undead",
-     "minLevel": "Bound to Account on Acquire",
-     "binding": "",
-     "quest": "Maximum Charge Tier:\nRune Arm Imbue: Light II\nLife Shield\nCraftable Rune Arm: (+3)",
-     "criticalProfile": "",
-     "errata": ""
-    }
-   ]
-  },
-  {
-   "weapon": [
-    {
-     "name": "The Astral Projector",
-     "damangeAndType": "Ghost Shot",
-     "minLevel": "Bound to Account on Acquire",
-     "binding": "",
-     "quest": "Maximum Charge Tier: III\nRune Arm Imbue: Evil Shot II\nRadiance +66\nLifesealed +18\nGhostly\nDisrupting Weapons\nEmpty Green Augment Slot",
-     "criticalProfile": "The Night Revels",
-     "errata": "The Night Revels"
-    }
-   ]
-  },
-  {
-   "weapon": [
-    {
-     "name": "Recoyle",
-     "damangeAndType": "Force Shot",
-     "minLevel": "Bound to Account on Acquire",
-     "binding": "",
-     "quest": "Maximum Charge Tier: III\nRune Arm Imbue: Force II\nForce Shot\nImpulse +54\nAnathema\nCraftable Rune Arm: (+4)",
-     "criticalProfile": "The Abandoned Excavation, End reward",
-     "errata": "The Abandoned Excavation, End reward"
-    }
-   ]
-  },
-  {
-   "weapon": [
-    {
-     "name": "Titan's Fist",
-     "damangeAndType": "Force Shot",
-     "minLevel": "Bound to Character on Acquire",
-     "binding": "",
-     "quest": "Maximum Charge Tier: IV\nRune Arm Imbue: Force III\nForce Shot\nIntelligence +6\nKinetic Lore V\nCraftable Rune Arm: (+4)",
-     "criticalProfile": "The Titan Awakes, Raid Warded chest",
-     "errata": "The Titan Awakes, Raid Warded chest"
-    }
-   ]
-  },
-  {
-   "weapon": [
-    {
-     "name": "Arm of the Archons",
-     "damangeAndType": "Force Shot",
-     "minLevel": "Bound to Account on Acquire",
-     "binding": "",
-     "quest": "Maximum Charge Tier: IV\nRune Arm Imbue: Force IV\nForce Shot\nImpulse +72\nSheltering +3\nEmpty Green Augment Slot",
-     "criticalProfile": "The Archons' Trial, End chest",
-     "errata": "The Archons' Trial, End chest"
-    }
-   ]
-  },
-  {
-   "weapon": [
-    {
-     "name": "Greater Radiant Rune Arm",
-     "damangeAndType": "Light Spirals",
-     "minLevel": "Bound to Character on Acquire",
-     "binding": "",
-     "quest": "Maximum Charge Tier: IV\nRune Arm Imbue: Light III\nLight Spirals\nCraftable Rune Arm: (+5)",
-     "criticalProfile": "DDO Store, Not available anywhere else",
-     "errata": "DDO Store, Not available anywhere else"
-    }
-   ]
-  },
-  {
-   "weapon": [
-    {
-     "name": "Greater Force Rune Arm",
-     "damangeAndType": "Force Shot",
-     "minLevel": "Bound to Character on Acquire",
-     "binding": "",
-     "quest": "Maximum Charge Tier: IV\nRune Arm Imbue: Force III\nForce Shot\nCraftable Rune Arm: (+5)",
-     "criticalProfile": "DDO Store, Not available anywhere else",
-     "errata": "DDO Store, Not available anywhere else"
-    }
-   ]
-  },
-  {
-   "weapon": [
-    {
-     "name": "Whirling Words",
-     "damangeAndType": "Book Shot",
-     "minLevel": "Bound to Account",
-     "binding": "",
-     "quest": "Maximum Charge Tier: V\nRune Arm Imbue: Bludgeon IV\nInsightful Spell Resistance +8\nQuality Magical Sheltering +4\nQuality Potency +13\nInsightful Concentration +7\nEmpty Green Augment Slot",
-     "criticalProfile": "Tower of Frost, End chest",
-     "errata": "Tower of Frost, End chest"
-    }
-   ]
-  },
-  {
-   "weapon": [
-    {
-     "name": "Tira's Splendor",
-     "damangeAndType": "Light Spirals",
-     "minLevel": "Bound to Account on Acquire",
-     "binding": "",
-     "quest": "Maximum Charge Tier: V\nRune Arm Imbue: Light IV\nLight Spirals\nEquipment Healing Amplification +40\nDeathblock\nTira's Splendor\nEmbodiment of Law\nCraftable Rune Arm: (+5)",
-     "criticalProfile": "The Subterrane - Central, Garamol chest",
-     "errata": "The Subterrane - Central, Garamol chest"
-    }
-   ]
-  },
-  {
-   "weapon": [
-    {
-     "name": "The Dumpster Fire",
-     "damangeAndType": "Trash Shot",
-     "minLevel": "Bound to Account on Acquire",
-     "binding": "",
-     "quest": "Maximum Charge Tier: V\nRune Arm Imbue: Bludgeon IV, Fire IV\nCombustion +94\nFire Lore +14%\nShield +8\nEmpty Green Augment Slot",
-     "criticalProfile": "Scavenger Hunt, End chest",
-     "errata": "Scavenger Hunt, End chest"
-    }
-   ]
-  },
-  {
-   "weapon": [
-    {
-     "name": "Resplendence",
-     "damangeAndType": "Light Spirals",
-     "minLevel": "Bound to Account on Acquire",
-     "binding": "",
-     "quest": "Maximum Charge Tier: V\nRune Arm Imbue: Light IV\nRadiance +90\nGhostly\nLife Shield\nUndead Guard\nEmpty Yellow Augment Slot",
-     "criticalProfile": "Fashion Madness, End chest",
-     "errata": "Fashion Madness, End chest"
-    }
-   ]
-  },
-  {
-   "weapon": [
-    {
-     "name": "Lucid Dreams",
-     "damangeAndType": "Force Shot",
-     "minLevel": "Bound to Account on Acquire",
-     "binding": "",
-     "quest": "Maximum Charge Tier: V\nRune Arm Imbue: Force IV\nForce Shot\nNightmare Guard\nPotency +48\nSpell Lore VI\nMind Drain\nWill Save -2\nCraftable Rune Arm: (+5)",
-     "criticalProfile": "The Mindsunder, Disc locked optional end chest",
-     "errata": "The Mindsunder, Disc locked optional end chest"
-    }
-   ]
-  },
-  {
-   "weapon": [
-    {
-     "name": "Archaic Device",
-     "damangeAndType": "Force Shot",
-     "minLevel": "Bound to Character on Equip or Bound to Character on Acquire",
-     "binding": "",
-     "quest": "Maximum Charge Tier: V\nRune Arm Imbue: Force IV\nForce Shot\nPotency +60\nProtection +6\nElemental Absorption 5%",
-     "criticalProfile": "The Lost Thread, End chest ; Menace of the Underdark: The Darkening, Quest chain end reward",
-     "errata": "The Lost Thread, End chest ; Menace of the Underdark: The Darkening, Quest chain end reward"
-    }
-   ]
-  },
-  {
-   "weapon": [
-    {
-     "name": "The Epic Astral Projector",
-     "damangeAndType": "Ghost Shot",
-     "minLevel": "Bound to Account on Acquire",
-     "binding": "",
-     "quest": "Maximum Charge Tier: V\nRune Arm Imbue: Evil Shot IV\nRadiance +115\nLifesealed +28\nGhostly\nDisrupting Weapons\nEmpty Green Augment Slot",
-     "criticalProfile": "The Night Revels, Turn in Joe Candymaker,\n120 50 50 50 50",
-     "errata": "The Night Revels, Turn in Joe Candymaker,\n120 50 50 50 50"
-    }
-   ]
-  },
-  {
-   "weapon": [
-    {
-     "name": "Glass Cannon",
-     "damangeAndType": "Exploding Cannon Shot",
-     "minLevel": "Bound to Account on Acquire",
-     "binding": "",
-     "quest": "Maximum Charge Tier: V\nRune Arm Imbue: Bludgeon V, Fire V\nImpulse +125\nKinetic Lore +18%\nIntelligence +11\nFortification Penalty (-25%)\nEmpty Green Augment Slot",
-     "criticalProfile": "Treasure of Crystal Cove, Euphonia's Barter Box",
-     "errata": "Treasure of Crystal Cove, Euphonia's Barter Box"
-    }
-   ]
-  },
-  {
-   "weapon": [
-    {
-     "name": "Epic Resplendence",
-     "damangeAndType": "Light Spirals",
-     "minLevel": "Bound to Account on Acquire",
-     "binding": "",
-     "quest": "Maximum Charge Tier: V\nRune Arm Imbue: Light IV\nRadiance +150\nGhostly\nLife Shield\nUndead Guard\nEmpty Yellow Augment Slot",
-     "criticalProfile": "Fashion Madness, End chest",
-     "errata": "Fashion Madness, End chest"
-    }
-   ]
-  },
-  {
-   "weapon": [
-    {
-     "name": "Epic Whirling Words",
-     "damangeAndType": "Book Shot",
-     "minLevel": "Bound to Account",
-     "binding": "",
-     "quest": "Maximum Charge Tier: V\nRune Arm Imbue: Bludgeon VI\nInsightful Spell Resistance +20\nQuality Magical Sheltering +7\nQuality Potency +23\nConcentration +9\nEmpty Green Augment Slot",
-     "criticalProfile": "Tower of Frost, End chest",
-     "errata": "Tower of Frost, End chest"
-    }
-   ]
-  },
-  {
-   "weapon": [
-    {
-     "name": "Knives Eternal",
-     "damangeAndType": "Knife Shot",
-     "minLevel": "Bound to Character on Acquire",
-     "binding": "",
-     "quest": "Maximum Charge Tier: V\nRune Arm Imbue: Knife Shot VI\nSpike Guard\nImpulse +150\nKinetic Lore XII\nSpiked\nUpgradeable - Primary Augment (Empty Yellow Augment Slot , Empty Blue Augment Slot , or Empty Red Augment Slot )\nUpgradeable - Secondary Augment (Empty Green Augment Slot , Empty Orange Augment Slot , or Empty Purple Augment Slot )",
-     "criticalProfile": "The Mark of Death, Warded chest",
-     "errata": "The Mark of Death, Warded chest"
-    }
-   ]
-  },
-  {
-   "weapon": [
-    {
-     "name": "Epic Arm of the Archons",
-     "damangeAndType": "Force Shot",
-     "minLevel": "Bound to Account on Acquire",
-     "binding": "",
-     "quest": "Maximum Charge Tier: V\nRune Arm Imbue: Force VI\nForce Shot\nImpulse +150\nSheltering +30\nImmunity to Fear\nMagical Resistance: +2 Quality\nEmpty Green Augment Slot",
-     "criticalProfile": "The Archons' Trial, End chest",
-     "errata": "The Archons' Trial, End chest"
-    }
-   ]
-  },
-  {
-   "weapon": [
-    {
-     "name": "The Legendary Dumpster Fire",
-     "damangeAndType": "Trash Shot",
-     "minLevel": "Bound to Account on Acquire",
-     "binding": "",
-     "quest": "Maximum Charge Tier: V\nRune Arm Imbue: Bludgeon V, Fire V\nCombustion +214\nFire Lore +31%\nShield +21\nEmpty Green Augment Slot",
-     "criticalProfile": "Scavenger Hunt, End Chest",
-     "errata": "Scavenger Hunt, End Chest"
-    }
-   ]
-  },
-  {
-   "weapon": [
-    {
-     "name": "Machination of Madness",
-     "damangeAndType": "[[F:|36x36px]]\nBee Shot",
-     "minLevel": "Bound to Character on Acquire",
-     "binding": "",
-     "quest": "Maximum Charge Tier: V\nRune Arm Imbue: Knife Shot VI\nTaint of Chaos\nRune Arm Charge Rate: 30%\nImpulse +159\nNatural Armor +15\nInsightful Repair Amplification +31\nInsightful Evocation Focus +3\nEmpty Yellow Augment Slot\nEmpty Green Augment Slot",
-     "criticalProfile": "Legendary Hound of Xoriat, Raid chest",
-     "errata": "Legendary Hound of Xoriat, Raid chest"
-    }
-   ]
-  }
- ]
+    "item": [
+        {
+            "weapon": [
+                {
+                    "name": "Ice Rune Arm",
+                    "damangeAndType": "Cold Bolts",
+                    "minLevel": "Bound to Character on Acquire",
+                    "binding": "",
+                    "quest": "Maximum Charge Tier: III\nRune Arm Imbue: Cold II\nCold Bolts\nCraftable Rune Arm: (+3)",
+                    "criticalProfile": "DDO Store, Not available anywhere else",
+                    "errata": "DDO Store, Not available anywhere else"
+                }
+            ]
+        },
+        {
+            "weapon": [
+                {
+                    "name": "Chulchannad's Claw",
+                    "damangeAndType": "Cold Bolts",
+                    "minLevel": "Bound to Account on Acquire",
+                    "binding": "",
+                    "quest": "Maximum Charge Tier: II\nRune Arm Imbue: Cold I\nCold Bolts\nCold Absorption 10%\nInherent Cold Resistance - 10\nCraftable Rune Arm: (+3)",
+                    "criticalProfile": "The Maleficent Cabal, End reward",
+                    "errata": "The Maleficent Cabal, End reward"
+                }
+            ]
+        },
+        {
+            "weapon": [
+                {
+                    "name": "The Devourer's Hunger",
+                    "damangeAndType": "Cold Bolts",
+                    "minLevel": "Bound to Account on Acquire",
+                    "binding": "",
+                    "quest": "Maximum Charge Tier: III\nRune Arm Imbue: Cold II\nCold Bolts\nGlaciation +48\nFalse Life\nCraftable Rune Arm: (+3)",
+                    "criticalProfile": "Cult of the Six, End reward",
+                    "errata": "Cult of the Six, End reward"
+                }
+            ]
+        },
+        {
+            "weapon": [
+                {
+                    "name": "Chill of Winter (Level 13)",
+                    "damangeAndType": "Cold Bolts",
+                    "minLevel": "Bound to Account on Acquire",
+                    "binding": "",
+                    "quest": "Maximum Charge Tier: IV\nRune Arm Imbue: Cold III\nCold Bolts\nFreezing Ice Guard\nInherent Cold Resistance - 5\nCraftable Rune Arm: (+5)",
+                    "criticalProfile": "Gianthold Tor, White Dragon chest",
+                    "errata": "Gianthold Tor, White Dragon chest"
+                }
+            ]
+        },
+        {
+            "weapon": [
+                {
+                    "name": "Greater Ice Rune Arm",
+                    "damangeAndType": "Cold Bolts",
+                    "minLevel": "Bound to Character on Acquire",
+                    "binding": "",
+                    "quest": "Maximum Charge Tier: IV\nRune Arm Imbue: Cold III\nCold Bolts\nCraftable Rune Arm: (+5)",
+                    "criticalProfile": "DDO Store, Not available anywhere else",
+                    "errata": "DDO Store, Not available anywhere else"
+                }
+            ]
+        },
+        {
+            "weapon": [
+                {
+                    "name": "Quarantine",
+                    "damangeAndType": "Cold Bolts",
+                    "minLevel": "Bound to Account on Acquire",
+                    "binding": "",
+                    "quest": "Maximum Charge Tier: V\nRune Arm Imbue: Cold IV\nGlaciation +90\nEvocation Focus +3\nNatural Armor +7\nOccasional Overcooling\nEmpty Green Augment Slot\nRenegade Champion",
+                    "criticalProfile": "Quarantine, End Chest",
+                    "errata": "Quarantine, End Chest"
+                }
+            ]
+        },
+        {
+            "weapon": [
+                {
+                    "name": "Chill of Winter (Level 23)",
+                    "damangeAndType": "Cold Bolts",
+                    "minLevel": "Bound to Character on Equip",
+                    "binding": "",
+                    "quest": "Maximum Charge Tier: V\nRune Arm Imbue: Cold IV\nCold Bolts\nFreezing Ice Guard\nInherent Cold Resistance - 5\nEmpty Yellow Augment Slot\nEmpty Colorless Augment Slot",
+                    "criticalProfile": "Return to Gianthold Tor, White Dragon chest (Epic Normal)",
+                    "errata": "Return to Gianthold Tor, White Dragon chest (Epic Normal)"
+                }
+            ]
+        },
+        {
+            "weapon": [
+                {
+                    "name": "Chill of Winter (Level 24)",
+                    "damangeAndType": "Cold Bolts",
+                    "minLevel": "Bound to Character on Equip",
+                    "binding": "",
+                    "quest": "Maximum Charge Tier: V\nRune Arm Imbue: Cold V\nCold Bolts\nFreezing Ice Guard\nInherent Cold Resistance - 10\nEmpty Green Augment Slot\nEmpty Colorless Augment Slot",
+                    "criticalProfile": "Return to Gianthold Tor, White Dragon chest (Epic Hard)",
+                    "errata": "Return to Gianthold Tor, White Dragon chest (Epic Hard)"
+                }
+            ]
+        },
+        {
+            "weapon": [
+                {
+                    "name": "Chill of Winter (Level 25)",
+                    "damangeAndType": "Cold Bolts",
+                    "minLevel": "Bound to Character on Equip",
+                    "binding": "",
+                    "quest": "Maximum Charge Tier: V\nRune Arm Imbue: Cold V\nCold Bolts\nFreezing Ice Guard\nInherent Cold Resistance - 5\nInherent Cold Resistance - 10\nEmpty Green Augment Slot\nEmpty Yellow Augment Slot",
+                    "criticalProfile": "Return to Gianthold Tor, White Dragon chest (Epic Elite)",
+                    "errata": "Return to Gianthold Tor, White Dragon chest (Epic Elite)"
+                }
+            ]
+        },
+        {
+            "weapon": [
+                {
+                    "name": "Legendary Quarantine",
+                    "damangeAndType": "Cold Bolts",
+                    "minLevel": "Bound to Account on Acquire",
+                    "binding": "",
+                    "quest": "Maximum Charge Tier: V\nRune Arm Imbue: Cold VI\nGlaciation +202\nEvocation Focus +8\nNatural Armor +19\nOccasional Overcooling\nEmpty Green Augment Slot\nRenegade Champion (Legendary)",
+                    "criticalProfile": "Quarantine, End Chest",
+                    "errata": "Quarantine, End Chest"
+                }
+            ]
+        },
+        {
+            "weapon": [
+                {
+                    "name": "Acid Rune Arm",
+                    "damangeAndType": "Acid Shot",
+                    "minLevel": "Bound to Character on Acquire",
+                    "binding": "",
+                    "quest": "Maximum Charge Tier: III\nRune Arm Imbue: Acid II\nAcid Shot\nCraftable Rune Arm: (+3)",
+                    "criticalProfile": "DDO Store, Not available anywhere else",
+                    "errata": "DDO Store, Not available anywhere else"
+                }
+            ]
+        },
+        {
+            "weapon": [
+                {
+                    "name": "The Pea Shooter",
+                    "damangeAndType": "Acid Shot",
+                    "minLevel": "Bound to Account on Acquire",
+                    "binding": "",
+                    "quest": "Maximum Charge Tier: III\nRune Arm Imbue: Acid II\nAcid Shot\nPotency +28\nInherent Acid Resistance - 5\nCraftable Rune Arm: (+3)",
+                    "criticalProfile": "Into the Deep, End reward",
+                    "errata": "Into the Deep, End reward"
+                }
+            ]
+        },
+        {
+            "weapon": [
+                {
+                    "name": "Greater Acid Rune Arm",
+                    "damangeAndType": "Acid Shot",
+                    "minLevel": "Bound to Character on Acquire",
+                    "binding": "",
+                    "quest": "Maximum Charge Tier: IV\nRune Arm Imbue: Acid III\nAcid Shot\nCraftable Rune Arm: (+5)",
+                    "criticalProfile": "DDO Store, Not available anywhere else",
+                    "errata": "DDO Store, Not available anywhere else"
+                }
+            ]
+        },
+        {
+            "weapon": [
+                {
+                    "name": "The Turmoil Within (Level 13)",
+                    "damangeAndType": "Acid Shot",
+                    "minLevel": "Bound to Account on Acquire",
+                    "binding": "",
+                    "quest": "Maximum Charge Tier: IV\nRune Arm Imbue: Acid III\nAcid Shot\nAttack Bonus +2\nInherent Acid Resistance - 5\nCraftable Rune Arm: (+5)",
+                    "criticalProfile": "Gianthold Tor, Black Dragon chest",
+                    "errata": "Gianthold Tor, Black Dragon chest"
+                }
+            ]
+        },
+        {
+            "weapon": [
+                {
+                    "name": "Corruption of Nature (Level 15)",
+                    "damangeAndType": "Acid Shot",
+                    "minLevel": "Bound to Character on Equip",
+                    "binding": "",
+                    "quest": "Maximum Charge Tier: IV\nRune Arm Imbue: Acid III\nCorrosion +78\nPotency +52\nRough Hide +3",
+                    "criticalProfile": "Outbreak, End chest",
+                    "errata": "Outbreak, End chest"
+                }
+            ]
+        },
+        {
+            "weapon": [
+                {
+                    "name": "Corruption of Nature (Level 16)",
+                    "damangeAndType": "Acid Shot",
+                    "minLevel": "Bound to Character on Equip",
+                    "binding": "",
+                    "quest": "Maximum Charge Tier: IV\nRune Arm Imbue: Acid III\nCorrosion +78\nPotency +52\nRough Hide +3",
+                    "criticalProfile": "Outbreak, End chest",
+                    "errata": "Outbreak, End chest"
+                }
+            ]
+        },
+        {
+            "weapon": [
+                {
+                    "name": "Corruption of Nature (Level 17)",
+                    "damangeAndType": "Acid Shot",
+                    "minLevel": "Bound to Character on Equip",
+                    "binding": "",
+                    "quest": "Maximum Charge Tier: IV\nRune Arm Imbue: Acid IV\nCorrosion +84\nPotency +56\nRough Hide +4",
+                    "criticalProfile": "Outbreak, End chest",
+                    "errata": "Outbreak, End chest"
+                }
+            ]
+        },
+        {
+            "weapon": [
+                {
+                    "name": "Glorious Obscenity",
+                    "damangeAndType": "Acid Shot",
+                    "minLevel": "Bound to Account",
+                    "binding": "",
+                    "quest": "Maximum Charge Tier: V\nRune Arm Imbue: Acid IV\nAcid Shot\nEnhanced Spot +5\nSeeker 6\nMind Turbulence\nTaint of Chaos\nCraftable Rune Arm: (+5)",
+                    "criticalProfile": "Reign of Madness, End reward",
+                    "errata": "Reign of Madness, End reward"
+                }
+            ]
+        },
+        {
+            "weapon": [
+                {
+                    "name": "Corruption of Nature (level 22)",
+                    "damangeAndType": "Acid Shot",
+                    "minLevel": "Bound to Character on Equip",
+                    "binding": "",
+                    "quest": "Maximum Charge Tier: V\nRune Arm Imbue: Acid IV\nCorrosion +102\nPotency +68\nRough Hide +4\nInsightful Intelligence +2",
+                    "criticalProfile": "Outbreak, End chest",
+                    "errata": "Outbreak, End chest"
+                }
+            ]
+        },
+        {
+            "weapon": [
+                {
+                    "name": "The Turmoil Within (Level 23)",
+                    "damangeAndType": "Acid Shot",
+                    "minLevel": "Bound to Character on Equip",
+                    "binding": "",
+                    "quest": "Maximum Charge Tier: V\nRune Arm Imbue: Acid IV\nAcid Shot\nAttack Bonus +4\nInherent Acid Resistance - 5\nEmpty Yellow Augment Slot\nEmpty Colorless Augment Slot",
+                    "criticalProfile": "Return to Gianthold Tor, Black Dragon chest (Epic Normal)",
+                    "errata": "Return to Gianthold Tor, Black Dragon chest (Epic Normal)"
+                }
+            ]
+        },
+        {
+            "weapon": [
+                {
+                    "name": "Corruption of Nature (level 23)",
+                    "damangeAndType": "Acid Shot",
+                    "minLevel": "Bound to Character on Equip",
+                    "binding": "",
+                    "quest": "Maximum Charge Tier: V\nRune Arm Imbue: Acid V\nCorrosion +108\nPotency +72\nRough Hide +5\nInsightful Intelligence +3",
+                    "criticalProfile": "Outbreak, End chest",
+                    "errata": "Outbreak, End chest"
+                }
+            ]
+        },
+        {
+            "weapon": [
+                {
+                    "name": "The Turmoil Within (Level 24)",
+                    "damangeAndType": "Acid Shot",
+                    "minLevel": "Bound to Character on Equip",
+                    "binding": "",
+                    "quest": "Maximum Charge Tier: V\nRune Arm Imbue: Acid V\nAcid Shot\nAttack Bonus +4\nInherent Acid Resistance - 10\nEmpty Green Augment Slot\nEmpty Colorless Augment Slot",
+                    "criticalProfile": "Return to Gianthold Tor, Black Dragon chest (Epic Hard)",
+                    "errata": "Return to Gianthold Tor, Black Dragon chest (Epic Hard)"
+                }
+            ]
+        },
+        {
+            "weapon": [
+                {
+                    "name": "Corruption of Nature (level 24)",
+                    "damangeAndType": "Acid Shot",
+                    "minLevel": "Bound to Character on Equip",
+                    "binding": "",
+                    "quest": "Maximum Charge Tier: V\nRune Arm Imbue: Acid V\nCorrosion +114\nPotency +76\nRough Hide +6\nInsightful Intelligence +3",
+                    "criticalProfile": "Outbreak, End chest",
+                    "errata": "Outbreak, End chest"
+                }
+            ]
+        },
+        {
+            "weapon": [
+                {
+                    "name": "The Turmoil Within (Level 25)",
+                    "damangeAndType": "Acid Shot",
+                    "minLevel": "Bound to Character on Equip",
+                    "binding": "",
+                    "quest": "Maximum Charge Tier: V\nRune Arm Imbue: Acid V\nAcid Shot\nAttack Bonus +4\nInherent Acid Resistance - 5\nInherent Acid Resistance - 10\nEmpty Green Augment Slot\nEmpty Yellow Augment Slot",
+                    "criticalProfile": "Return to Gianthold Tor, Black Dragon chest (Epic Elite)",
+                    "errata": "Return to Gianthold Tor, Black Dragon chest (Epic Elite)"
+                }
+            ]
+        },
+        {
+            "weapon": [
+                {
+                    "name": "Flicker",
+                    "damangeAndType": "Electrical Lash",
+                    "minLevel": "Bound to Account on Acquire",
+                    "binding": "",
+                    "quest": "Maximum Charge Tier: II\nRune Arm Imbue: Electrical I\nElectrical Lash\nReflex Save +2\nPower II\nCraftable Rune Arm: (+2)",
+                    "criticalProfile": "The Seal of Shan-To-Kor, End reward",
+                    "errata": "The Seal of Shan-To-Kor, End reward"
+                }
+            ]
+        },
+        {
+            "weapon": [
+                {
+                    "name": "Chimera's Breath",
+                    "damangeAndType": "Electrical Blast",
+                    "minLevel": "Bound to Account on Acquire",
+                    "binding": "",
+                    "quest": "Maximum Charge Tier: III\nRune Arm Imbue: Electrical II\nElectrical Blast\nFeat: Proficiency: Bastard Sword\nDiehard\nCraftable Rune Arm: (+3)",
+                    "criticalProfile": "The Tide Turns, End chest",
+                    "errata": "The Tide Turns, End chest"
+                }
+            ]
+        },
+        {
+            "weapon": [
+                {
+                    "name": "Lightning Rune Arm",
+                    "damangeAndType": "Electrical Blast",
+                    "minLevel": "Bound to Character on Acquire",
+                    "binding": "",
+                    "quest": "Maximum Charge Tier: III\nRune Arm Imbue: Electrical II\nElectrical Blast\nCraftable Rune Arm: (+3)",
+                    "criticalProfile": "DDO Store, Not available anywhere else",
+                    "errata": "DDO Store, Not available anywhere else"
+                }
+            ]
+        },
+        {
+            "weapon": [
+                {
+                    "name": "The Disciplinator",
+                    "damangeAndType": "Electrical Lash",
+                    "minLevel": "Bound to Character on Acquire",
+                    "binding": "",
+                    "quest": "Maximum Charge Tier: III\nRune Arm Imbue: Electrical II\nElectrical Lash\nSmiting Weapons\nExceptional Fortification (+10%)\nCraftable Rune Arm: (+4)",
+                    "criticalProfile": "Plane of Night, Raid warded chest",
+                    "errata": "Plane of Night, Raid warded chest"
+                }
+            ]
+        },
+        {
+            "weapon": [
+                {
+                    "name": "Greater Lightning Rune Arm",
+                    "damangeAndType": "Electrical Blast",
+                    "minLevel": "Bound to Character on Acquire",
+                    "binding": "",
+                    "quest": "Maximum Charge Tier: IV\nRune Arm Imbue: Electrical III\nElectrical Blast\nCraftable Rune Arm: (+5)",
+                    "criticalProfile": "DDO Store, Not available anywhere else",
+                    "errata": "DDO Store, Not available anywhere else"
+                }
+            ]
+        },
+        {
+            "weapon": [
+                {
+                    "name": "Arcing Sky (Level 13)",
+                    "damangeAndType": "Electrical Blast",
+                    "minLevel": "Bound to Account on Acquire",
+                    "binding": "",
+                    "quest": "Maximum Charge Tier: IV\nRune Arm Imbue: Electrical III\nElectrical Blast\nDodge +6%\nInherent Electric Resistance - 5\nCraftable Rune Arm: (+5)",
+                    "criticalProfile": "Gianthold Tor, Blue Dragon",
+                    "errata": "Gianthold Tor, Blue Dragon"
+                }
+            ]
+        },
+        {
+            "weapon": [
+                {
+                    "name": "The Arc Welder (long range)",
+                    "damangeAndType": "Electrical Storm",
+                    "minLevel": "Bound to Account on Acquire",
+                    "binding": "",
+                    "quest": "Maximum Charge Tier: V\nRune Arm Imbue: Electrical IV\nMagnetism +94\nLightning Lore +14%\nInsightful Combat Mastery +3\nQuality Combat Mastery +2\nEmpty Green Augment Slot",
+                    "criticalProfile": "Graveyard Shift, End chest",
+                    "errata": "Graveyard Shift, End chest"
+                }
+            ]
+        },
+        {
+            "weapon": [
+                {
+                    "name": "The Arc Welder (close range)",
+                    "damangeAndType": "Electrical Blast",
+                    "minLevel": "Bound to Account on Acquire",
+                    "binding": "",
+                    "quest": "Maximum Charge Tier: V\nRune Arm Imbue: Electrical IV\nMagnetism +94\nLightning Lore +14%\nInsightful Combat Mastery +3\nQuality Combat Mastery +2\nEmpty Green Augment Slot",
+                    "criticalProfile": "Third Time's a Charm, End chest",
+                    "errata": "Third Time's a Charm, End chest"
+                }
+            ]
+        },
+        {
+            "weapon": [
+                {
+                    "name": "Toven's Hammer",
+                    "damangeAndType": "Electrical Storm",
+                    "minLevel": "Bound to Character on Acquire",
+                    "binding": "",
+                    "quest": "Maximum Charge Tier: V\nRune Arm Imbue: Electrical IV\nElectrical Storm\nLightning Strike Weapons\nPotency +48\nExceptional Fortification (+10%)\nMissing Parts\nCraftable Rune Arm: (+5)",
+                    "criticalProfile": "The Master Artificer, Rightside End Chest",
+                    "errata": "The Master Artificer, Rightside End Chest"
+                }
+            ]
+        },
+        {
+            "weapon": [
+                {
+                    "name": "Arcing Sky (Level 23)",
+                    "damangeAndType": "Electrical Blast",
+                    "minLevel": "Bound to Character on Equip",
+                    "binding": "",
+                    "quest": "Maximum Charge Tier: V\nRune Arm Imbue: Electrical IV\nElectrical Blast\nDodge +8%\nInherent Electric Resistance - 5\nEmpty Yellow Augment Slot\nEmpty Colorless Augment Slot",
+                    "criticalProfile": "Return to Gianthold Tor, Blue Dragon chest (Epic Normal)",
+                    "errata": "Return to Gianthold Tor, Blue Dragon chest (Epic Normal)"
+                }
+            ]
+        },
+        {
+            "weapon": [
+                {
+                    "name": "Arcing Sky (Level 24)",
+                    "damangeAndType": "Electrical Blast",
+                    "minLevel": "Bound to Character on Equip",
+                    "binding": "",
+                    "quest": "Maximum Charge Tier: V\nRune Arm Imbue: Electrical V\nElectrical Blast\nDodge +8%\nInherent Electric Resistance - 10\nEmpty Green Augment Slot\nEmpty Colorless Augment Slot",
+                    "criticalProfile": "Return to Gianthold Tor, Blue Dragon chest (Epic Hard)",
+                    "errata": "Return to Gianthold Tor, Blue Dragon chest (Epic Hard)"
+                }
+            ]
+        },
+        {
+            "weapon": [
+                {
+                    "name": "St. Mu'Ray's Fire",
+                    "damangeAndType": "Electrical Storm",
+                    "minLevel": "Bound to Character on Acquire",
+                    "binding": "",
+                    "quest": "Maximum Charge Tier: V\nRune Arm Imbue: Electrical VI\nMagnetism +114\nInherent Electric Resistance - 10\nEmpty Blue Augment Slot\nSpell Lore VIII\nLightning Lore VII",
+                    "criticalProfile": "Precious Cargo, End chest",
+                    "errata": "Precious Cargo, End chest"
+                }
+            ]
+        },
+        {
+            "weapon": [
+                {
+                    "name": "Arcing Sky (Level 25)",
+                    "damangeAndType": "Electrical Blast",
+                    "minLevel": "Bound to Character on Equip",
+                    "binding": "",
+                    "quest": "Maximum Charge Tier: V\nRune Arm Imbue: Electrical V\nElectrical Blast\nDodge +8%\nInherent Electric Resistance - 5\nInherent Electric Resistance - 10\nEmpty Green Augment Slot\nEmpty Yellow Augment Slot",
+                    "criticalProfile": "Return to Gianthold Tor, Blue Dragon chest (Epic Elite)",
+                    "errata": "Return to Gianthold Tor, Blue Dragon chest (Epic Elite)"
+                }
+            ]
+        },
+        {
+            "weapon": [
+                {
+                    "name": "The Legendary Arc Welder (close range)",
+                    "damangeAndType": "Electrical Blast",
+                    "minLevel": "Bound to Account on Acquire",
+                    "binding": "",
+                    "quest": "Maximum Charge Tier: V\nRune Arm Imbue: Electrical VI\nMagnetism +185\nLightning Lore +27%\nInsightful Combat Mastery +7\nQuality Combat Mastery +4\nEmpty Green Augment Slot",
+                    "criticalProfile": "Third Time's a Charm, End chest",
+                    "errata": "Third Time's a Charm, End chest"
+                }
+            ]
+        },
+        {
+            "weapon": [
+                {
+                    "name": "The Legendary Arc Welder (long range)",
+                    "damangeAndType": "Electrical Storm",
+                    "minLevel": "Bound to Account on Acquire",
+                    "binding": "",
+                    "quest": "Maximum Charge Tier: V\nRune Arm Imbue: Electrical VI\nMagnetism +185\nLightning Lore +27%\nInsightful Combat Mastery +7\nQuality Combat Mastery +4\nEmpty Green Augment Slot",
+                    "criticalProfile": "Graveyard Shift, End chest",
+                    "errata": "Graveyard Shift, End chest"
+                }
+            ]
+        },
+        {
+            "weapon": [
+                {
+                    "name": "Flame Warden",
+                    "damangeAndType": "Fire Blast",
+                    "minLevel": "Bound to Account on Acquire",
+                    "binding": "",
+                    "quest": "Maximum Charge Tier: II\nRune Arm Imbue: Fire I\nFire Blast\nLesser Fire Resistance\nReflex Save +1\nCraftable Rune Arm: (+2)",
+                    "criticalProfile": "The Lost Seekers, End reward",
+                    "errata": "The Lost Seekers, End reward"
+                }
+            ]
+        },
+        {
+            "weapon": [
+                {
+                    "name": "Fire Rune Arm",
+                    "damangeAndType": "Fire Blast",
+                    "minLevel": "Bound to Character on Acquire",
+                    "binding": "",
+                    "quest": "Maximum Charge Tier: III\nRune Arm Imbue: Fire II\nFire Blast\nCraftable Rune Arm: (+3)",
+                    "criticalProfile": "DDO Store, Not available anywhere else",
+                    "errata": "DDO Store, Not available anywhere else"
+                }
+            ]
+        },
+        {
+            "weapon": [
+                {
+                    "name": "Khyber's Fury",
+                    "damangeAndType": "Exploding Fire Shot",
+                    "minLevel": "Bound to Account on Acquire",
+                    "binding": "",
+                    "quest": "Maximum Charge Tier: II\nRune Arm Imbue: Fire I\nExploding Fire Shot\nFortification +75%\nCraftable Rune Arm: (+3)",
+                    "criticalProfile": "Assault on Splinterskull, End reward",
+                    "errata": "Assault on Splinterskull, End reward"
+                }
+            ]
+        },
+        {
+            "weapon": [
+                {
+                    "name": "Strinati's Hand Cannon",
+                    "damangeAndType": "Exploding Cannon Shot",
+                    "minLevel": "Bound to Character on Equip",
+                    "binding": "",
+                    "quest": "Maximum Charge Tier: III\nRune Arm Imbue: Fire II\nExploding Cannon Shot\nWizardry II\nCraftable Rune Arm: (+3)",
+                    "criticalProfile": "Three-Barrel Cove (heroic), Cannoneer Strinati's Chest (Rare Encounter)",
+                    "errata": "Three-Barrel Cove (heroic), Cannoneer Strinati's Chest (Rare Encounter)"
+                }
+            ]
+        },
+        {
+            "weapon": [
+                {
+                    "name": "Hand of the Tombs",
+                    "damangeAndType": "Exploding Fire Shot",
+                    "minLevel": "Bound to Character on Equip",
+                    "binding": "",
+                    "quest": "Maximum Charge Tier: III\nRune Arm Imbue: Fire II\nExploding Fire Shot\nDisrupting Weapons\nInherent Fire Resistance - 5\nCraftable Rune Arm: (+4)",
+                    "criticalProfile": "The Chamber of Raiyum, Treasure Chamber",
+                    "errata": "The Chamber of Raiyum, Treasure Chamber"
+                }
+            ]
+        },
+        {
+            "weapon": [
+                {
+                    "name": "Blight Inferno",
+                    "damangeAndType": "Corrupted Fire Blast",
+                    "minLevel": "Bound to Account on Acquire",
+                    "binding": "",
+                    "quest": "Maximum Charge Tier: IV\nRune Arm Imbue: Fire III\nCorrupted Fire Blast\nCombustion +77\nQuality Combustion +18\nFire Lore +11%\nTira's Splendor\nEmpty Green Augment Slot\nAdherent of the Mists Set (Heroic)",
+                    "criticalProfile": "Mad Tea Party, End Chest",
+                    "errata": "Mad Tea Party, End Chest"
+                }
+            ]
+        },
+        {
+            "weapon": [
+                {
+                    "name": "Suppressive Fire",
+                    "damangeAndType": "Corrupted Exploding Fire Shot",
+                    "minLevel": "Bound to Account on Acquire",
+                    "binding": "",
+                    "quest": "Maximum Charge Tier: IV\nRune Arm Imbue: Fire III\nCorrupted Exploding Fire Shot\nCombustion +77\nImmunity to Fear\nFire Resistance +21\nTira's Splendor\nEmpty Green Augment Slot\nAdherent of the Mists Set (Heroic)",
+                    "criticalProfile": "The Final Vintage, End Chest",
+                    "errata": "The Final Vintage, End Chest"
+                }
+            ]
+        },
+        {
+            "weapon": [
+                {
+                    "name": "Trial by Fire",
+                    "damangeAndType": "Fire Blast",
+                    "minLevel": "Bound to Account on Acquire",
+                    "binding": "",
+                    "quest": "Maximum Charge Tier: III\nRune Arm Imbue: Fire II\nFire Blast\nVitality +20\nInherent Fire Resistance - 5\nCraftable Rune Arm: (+4)",
+                    "criticalProfile": "Attack on Stormreach, End reward",
+                    "errata": "Attack on Stormreach, End reward"
+                }
+            ]
+        },
+        {
+            "weapon": [
+                {
+                    "name": "Greater Fire Rune Arm",
+                    "damangeAndType": "Fire Blast",
+                    "minLevel": "Bound to Character on Acquire",
+                    "binding": "",
+                    "quest": "Maximum Charge Tier: IV\nRune Arm Imbue: Fire III\nFire Blast\nCraftable Rune Arm: (+5)",
+                    "criticalProfile": "DDO Store, Not available anywhere else",
+                    "errata": "DDO Store, Not available anywhere else"
+                }
+            ]
+        },
+        {
+            "weapon": [
+                {
+                    "name": "Breaking the Bank",
+                    "damangeAndType": "Gold Shot",
+                    "minLevel": "Bound to Account on Acquire",
+                    "binding": "",
+                    "quest": "Maximum Charge Tier: V\nRune Arm Imbue: Fire IV\nPotency +60\nExceptional Alluring Skills Bonus +5\nCombustion +94\nImmunity to Fear\nEmpty Green Augment Slot",
+                    "criticalProfile": "Reach for the Sky, End Chest",
+                    "errata": "Reach for the Sky, End Chest"
+                }
+            ]
+        },
+        {
+            "weapon": [
+                {
+                    "name": "Animus",
+                    "damangeAndType": "Exploding Fire Shot",
+                    "minLevel": "Bound to Account on Acquire",
+                    "binding": "",
+                    "quest": "Maximum Charge Tier: V\nRune Arm Imbue: Fire IV\nExploding Fire Shot\nBanishing Weapons\nTaint of Evil\nCraftable Rune Arm: (+5)",
+                    "criticalProfile": "Devil Assault (quest), End Chest",
+                    "errata": "Devil Assault (quest), End Chest"
+                }
+            ]
+        },
+        {
+            "weapon": [
+                {
+                    "name": "Glass Cannon (tier 3)",
+                    "damangeAndType": "[[F:|36x36px]]\nExploding Cannon Shot",
+                    "minLevel": "Bound to Account on Acquire",
+                    "binding": "",
+                    "quest": "Maximum Charge Tier: V\nRune Arm Imbue: Fire V, Bludgeon V\nFortification Penalty (-25%)",
+                    "criticalProfile": "Treasure of Crystal Cove, Turn in 80 Stolen Star Rubies, 750 Gold Doubloons, 750 Silver Doubloons",
+                    "errata": "Treasure of Crystal Cove, Turn in 80 Stolen Star Rubies, 750 Gold Doubloons, 750 Silver Doubloons"
+                }
+            ]
+        },
+        {
+            "weapon": [
+                {
+                    "name": "Glass Cannon (tier 1)",
+                    "damangeAndType": "Exploding Cannon Shot",
+                    "minLevel": "Bound to Account on Acquire",
+                    "binding": "",
+                    "quest": "Maximum Charge Tier: V\nRune Arm Imbue: Fire V, Bludgeon V\nUpgradeable - Tier 1\nFortification Penalty (-25%)",
+                    "criticalProfile": "Treasure of Crystal Cove, Turn in Euphonia's Barter Box",
+                    "errata": "Treasure of Crystal Cove, Turn in Euphonia's Barter Box"
+                }
+            ]
+        },
+        {
+            "weapon": [
+                {
+                    "name": "Glass Cannon (tier 2)",
+                    "damangeAndType": "[[F:|36x36px]]\nExploding Cannon Shot",
+                    "minLevel": "Bound to Account on Acquire",
+                    "binding": "",
+                    "quest": "Maximum Charge Tier: V\nRune Arm Imbue: Fire V, Bludgeon V\nFortification Penalty (-25%)",
+                    "criticalProfile": "Treasure of Crystal Cove, Turn in 80 Stolen Star Rubies, 750 Gold Doubloons, 750 Silver Doubloons",
+                    "errata": "Treasure of Crystal Cove, Turn in 80 Stolen Star Rubies, 750 Gold Doubloons, 750 Silver Doubloons"
+                }
+            ]
+        },
+        {
+            "weapon": [
+                {
+                    "name": "Legendary Breaking the Bank",
+                    "damangeAndType": "Gold Shot",
+                    "minLevel": "Bound to Account on Acquire",
+                    "binding": "",
+                    "quest": "Maximum Charge Tier: V\nRune Arm Imbue: Fire V\nPotency +154\nExceptional Alluring Skills Bonus +10\nCombustion +214\nImmunity to Fear\nEmpty Green Augment Slot",
+                    "criticalProfile": "Reach for the Sky, End Chest",
+                    "errata": "Reach for the Sky, End Chest"
+                }
+            ]
+        },
+        {
+            "weapon": [
+                {
+                    "name": "Legendary Suppressive Fire",
+                    "damangeAndType": "Corrupted Exploding Fire Shot",
+                    "minLevel": "Bound to Account on Acquire",
+                    "binding": "",
+                    "quest": "Maximum Charge Tier: V\nRune Arm Imbue: Fire VI\nCorrupted Exploding Fire Shot\nCombustion +202\nImmunity to Fear\nFire Resistance +76\nTira's Splendor\nEmpty Green Augment Slot\nAdherent of the Mists Set (Legendary)",
+                    "criticalProfile": "The Final Vintage, End Chest",
+                    "errata": "The Final Vintage, End Chest"
+                }
+            ]
+        },
+        {
+            "weapon": [
+                {
+                    "name": "Legendary Blight Inferno",
+                    "damangeAndType": "Corrupted Fire Blast",
+                    "minLevel": "Bound to Account on Acquire",
+                    "binding": "",
+                    "quest": "Maximum Charge Tier: V\nRune Arm Imbue: Fire VI\nCorrupted Fire Blast\nCombustion +202\nQuality Combustion +50\nFire Lore +29%\nTira's Splendor\nEmpty Green Augment Slot\nAdherent of the Mists Set (Legendary)",
+                    "criticalProfile": "Mad Tea Party, End Chest",
+                    "errata": "Mad Tea Party, End Chest"
+                }
+            ]
+        },
+        {
+            "weapon": [
+                {
+                    "name": "Thought Spike",
+                    "damangeAndType": "Force Shot",
+                    "minLevel": "Bound to Character on Acquire",
+                    "binding": "",
+                    "quest": "Maximum Charge Tier: II\nRune Arm Imbue: Force I\nForce Shot\nWill Save +1\nCraftable Rune Arm: (+2)",
+                    "criticalProfile": "Redemption, End reward",
+                    "errata": "Redemption, End reward"
+                }
+            ]
+        },
+        {
+            "weapon": [
+                {
+                    "name": "Thought Spike (starter)",
+                    "damangeAndType": "Force Shot",
+                    "minLevel": "Bound to Character on Acquire",
+                    "binding": "",
+                    "quest": "Maximum Charge Tier: II\nRune Arm Imbue: Force I\nWill Save +1\nStarter\nCraftable Rune Arm: (+2)",
+                    "criticalProfile": "The Voyage, End reward",
+                    "errata": "The Voyage, End reward"
+                }
+            ]
+        },
+        {
+            "weapon": [
+                {
+                    "name": "Candlelight",
+                    "damangeAndType": "Light Spirals",
+                    "minLevel": "Bound to Account on Acquire",
+                    "binding": "",
+                    "quest": "Maximum Charge Tier: II\nRune Arm Imbue: Light I\nLight Spirals\nLesser Undead Guard\nLesser False Life\nCraftable Rune Arm: (+2)",
+                    "criticalProfile": "Catacombs, End reward",
+                    "errata": "Catacombs, End reward"
+                }
+            ]
+        },
+        {
+            "weapon": [
+                {
+                    "name": "Radiant Rune Arm",
+                    "damangeAndType": "Light Spirals",
+                    "minLevel": "Bound to Character on Acquire",
+                    "binding": "",
+                    "quest": "Maximum Charge Tier: III\nRune Arm Imbue: Light II\nLight Spirals\nCraftable Rune Arm: (+3)",
+                    "criticalProfile": "DDO Store, Not available anywhere else",
+                    "errata": "DDO Store, Not available anywhere else"
+                }
+            ]
+        },
+        {
+            "weapon": [
+                {
+                    "name": "Force Rune Arm",
+                    "damangeAndType": "Force Shot",
+                    "minLevel": "Bound to Character on Acquire",
+                    "binding": "",
+                    "quest": "Maximum Charge Tier: III\nRune Arm Imbue: Force II\nForce Shot\nCraftable Rune Arm: (+3)",
+                    "criticalProfile": "DDO Store, Not available anywhere else",
+                    "errata": "DDO Store, Not available anywhere else"
+                }
+            ]
+        },
+        {
+            "weapon": [
+                {
+                    "name": "Coronach",
+                    "damangeAndType": "Light Spirals",
+                    "minLevel": "Bound to Account on Acquire",
+                    "binding": "",
+                    "quest": "Maximum Charge Tier: III\nRune Arm Imbue: Light II\nLight Spirals\nLife Shield\nCoronach\nCraftable Rune Arm: (+3)",
+                    "criticalProfile": "Delera's Tomb, End reward",
+                    "errata": "Delera's Tomb, End reward"
+                }
+            ]
+        },
+        {
+            "weapon": [
+                {
+                    "name": "Coronach (historic)",
+                    "damangeAndType": "Disrupt Undead",
+                    "minLevel": "Bound to Account on Acquire",
+                    "binding": "",
+                    "quest": "Maximum Charge Tier:\nRune Arm Imbue: Light II\nLife Shield\nCraftable Rune Arm: (+3)",
+                    "criticalProfile": "",
+                    "errata": ""
+                }
+            ]
+        },
+        {
+            "weapon": [
+                {
+                    "name": "The Astral Projector",
+                    "damangeAndType": "Ghost Shot",
+                    "minLevel": "Bound to Account on Acquire",
+                    "binding": "",
+                    "quest": "Maximum Charge Tier: III\nRune Arm Imbue: Evil Shot II\nRadiance +66\nLifesealed +18\nGhostly\nDisrupting Weapons\nEmpty Green Augment Slot",
+                    "criticalProfile": "The Night Revels",
+                    "errata": "The Night Revels"
+                }
+            ]
+        },
+        {
+            "weapon": [
+                {
+                    "name": "Recoyle",
+                    "damangeAndType": "Force Shot",
+                    "minLevel": "Bound to Account on Acquire",
+                    "binding": "",
+                    "quest": "Maximum Charge Tier: III\nRune Arm Imbue: Force II\nForce Shot\nImpulse +54\nAnathema\nCraftable Rune Arm: (+4)",
+                    "criticalProfile": "The Abandoned Excavation, End reward",
+                    "errata": "The Abandoned Excavation, End reward"
+                }
+            ]
+        },
+        {
+            "weapon": [
+                {
+                    "name": "Titan's Fist",
+                    "damangeAndType": "Force Shot",
+                    "minLevel": "Bound to Character on Acquire",
+                    "binding": "",
+                    "quest": "Maximum Charge Tier: IV\nRune Arm Imbue: Force III\nForce Shot\nIntelligence +6\nKinetic Lore V\nCraftable Rune Arm: (+4)",
+                    "criticalProfile": "The Titan Awakes, Raid Warded chest",
+                    "errata": "The Titan Awakes, Raid Warded chest"
+                }
+            ]
+        },
+        {
+            "weapon": [
+                {
+                    "name": "Arm of the Archons",
+                    "damangeAndType": "Force Shot",
+                    "minLevel": "Bound to Account on Acquire",
+                    "binding": "",
+                    "quest": "Maximum Charge Tier: IV\nRune Arm Imbue: Force IV\nForce Shot\nImpulse +72\nSheltering +3\nEmpty Green Augment Slot",
+                    "criticalProfile": "The Archons' Trial, End chest",
+                    "errata": "The Archons' Trial, End chest"
+                }
+            ]
+        },
+        {
+            "weapon": [
+                {
+                    "name": "Greater Radiant Rune Arm",
+                    "damangeAndType": "Light Spirals",
+                    "minLevel": "Bound to Character on Acquire",
+                    "binding": "",
+                    "quest": "Maximum Charge Tier: IV\nRune Arm Imbue: Light III\nLight Spirals\nCraftable Rune Arm: (+5)",
+                    "criticalProfile": "DDO Store, Not available anywhere else",
+                    "errata": "DDO Store, Not available anywhere else"
+                }
+            ]
+        },
+        {
+            "weapon": [
+                {
+                    "name": "Greater Force Rune Arm",
+                    "damangeAndType": "Force Shot",
+                    "minLevel": "Bound to Character on Acquire",
+                    "binding": "",
+                    "quest": "Maximum Charge Tier: IV\nRune Arm Imbue: Force III\nForce Shot\nCraftable Rune Arm: (+5)",
+                    "criticalProfile": "DDO Store, Not available anywhere else",
+                    "errata": "DDO Store, Not available anywhere else"
+                }
+            ]
+        },
+        {
+            "weapon": [
+                {
+                    "name": "Whirling Words",
+                    "damangeAndType": "Book Shot",
+                    "minLevel": "Bound to Account",
+                    "binding": "",
+                    "quest": "Maximum Charge Tier: V\nRune Arm Imbue: Bludgeon IV\nInsightful Spell Resistance +8\nQuality Magical Sheltering +4\nQuality Potency +13\nInsightful Concentration +7\nEmpty Green Augment Slot",
+                    "criticalProfile": "Tower of Frost, End chest",
+                    "errata": "Tower of Frost, End chest"
+                }
+            ]
+        },
+        {
+            "weapon": [
+                {
+                    "name": "Tira's Splendor",
+                    "damangeAndType": "Light Spirals",
+                    "minLevel": "Bound to Account on Acquire",
+                    "binding": "",
+                    "quest": "Maximum Charge Tier: V\nRune Arm Imbue: Light IV\nLight Spirals\nEquipment Healing Amplification +40\nDeathblock\nTira's Splendor\nEmbodiment of Law\nCraftable Rune Arm: (+5)",
+                    "criticalProfile": "The Subterrane - Central, Garamol chest",
+                    "errata": "The Subterrane - Central, Garamol chest"
+                }
+            ]
+        },
+        {
+            "weapon": [
+                {
+                    "name": "The Dumpster Fire",
+                    "damangeAndType": "Trash Shot",
+                    "minLevel": "Bound to Account on Acquire",
+                    "binding": "",
+                    "quest": "Maximum Charge Tier: V\nRune Arm Imbue: Bludgeon IV, Fire IV\nCombustion +94\nFire Lore +14%\nShield +8\nEmpty Green Augment Slot",
+                    "criticalProfile": "Scavenger Hunt, End chest",
+                    "errata": "Scavenger Hunt, End chest"
+                }
+            ]
+        },
+        {
+            "weapon": [
+                {
+                    "name": "Resplendence",
+                    "damangeAndType": "Light Spirals",
+                    "minLevel": "Bound to Account on Acquire",
+                    "binding": "",
+                    "quest": "Maximum Charge Tier: V\nRune Arm Imbue: Light IV\nRadiance +90\nGhostly\nLife Shield\nUndead Guard\nEmpty Yellow Augment Slot",
+                    "criticalProfile": "Fashion Madness, End chest",
+                    "errata": "Fashion Madness, End chest"
+                }
+            ]
+        },
+        {
+            "weapon": [
+                {
+                    "name": "Lucid Dreams",
+                    "damangeAndType": "Force Shot",
+                    "minLevel": "Bound to Account on Acquire",
+                    "binding": "",
+                    "quest": "Maximum Charge Tier: V\nRune Arm Imbue: Force IV\nForce Shot\nNightmare Guard\nPotency +48\nSpell Lore VI\nMind Drain\nWill Save -2\nCraftable Rune Arm: (+5)",
+                    "criticalProfile": "The Mindsunder, Disc locked optional end chest",
+                    "errata": "The Mindsunder, Disc locked optional end chest"
+                }
+            ]
+        },
+        {
+            "weapon": [
+                {
+                    "name": "Archaic Device",
+                    "damangeAndType": "Force Shot",
+                    "minLevel": "Bound to Character on Equip or Bound to Character on Acquire",
+                    "binding": "",
+                    "quest": "Maximum Charge Tier: V\nRune Arm Imbue: Force IV\nForce Shot\nPotency +60\nProtection +6\nElemental Absorption 5%",
+                    "criticalProfile": "The Lost Thread, End chest ; Menace of the Underdark: The Darkening, Quest chain end reward",
+                    "errata": "The Lost Thread, End chest ; Menace of the Underdark: The Darkening, Quest chain end reward"
+                }
+            ]
+        },
+        {
+            "weapon": [
+                {
+                    "name": "The Epic Astral Projector",
+                    "damangeAndType": "Ghost Shot",
+                    "minLevel": "Bound to Account on Acquire",
+                    "binding": "",
+                    "quest": "Maximum Charge Tier: V\nRune Arm Imbue: Evil Shot IV\nRadiance +115\nLifesealed +28\nGhostly\nDisrupting Weapons\nEmpty Green Augment Slot",
+                    "criticalProfile": "The Night Revels, Turn in Joe Candymaker,\n120 50 50 50 50",
+                    "errata": "The Night Revels, Turn in Joe Candymaker,\n120 50 50 50 50"
+                }
+            ]
+        },
+        {
+            "weapon": [
+                {
+                    "name": "Glass Cannon",
+                    "damangeAndType": "Exploding Cannon Shot",
+                    "minLevel": "Bound to Account on Acquire",
+                    "binding": "",
+                    "quest": "Maximum Charge Tier: V\nRune Arm Imbue: Bludgeon V, Fire V\nImpulse +125\nKinetic Lore +18%\nIntelligence +11\nFortification Penalty (-25%)\nEmpty Green Augment Slot",
+                    "criticalProfile": "Treasure of Crystal Cove, Euphonia's Barter Box",
+                    "errata": "Treasure of Crystal Cove, Euphonia's Barter Box"
+                }
+            ]
+        },
+        {
+            "weapon": [
+                {
+                    "name": "Epic Resplendence",
+                    "damangeAndType": "Light Spirals",
+                    "minLevel": "Bound to Account on Acquire",
+                    "binding": "",
+                    "quest": "Maximum Charge Tier: V\nRune Arm Imbue: Light IV\nRadiance +150\nGhostly\nLife Shield\nUndead Guard\nEmpty Yellow Augment Slot",
+                    "criticalProfile": "Fashion Madness, End chest",
+                    "errata": "Fashion Madness, End chest"
+                }
+            ]
+        },
+        {
+            "weapon": [
+                {
+                    "name": "Epic Whirling Words",
+                    "damangeAndType": "Book Shot",
+                    "minLevel": "Bound to Account",
+                    "binding": "",
+                    "quest": "Maximum Charge Tier: V\nRune Arm Imbue: Bludgeon VI\nInsightful Spell Resistance +20\nQuality Magical Sheltering +7\nQuality Potency +23\nConcentration +9\nEmpty Green Augment Slot",
+                    "criticalProfile": "Tower of Frost, End chest",
+                    "errata": "Tower of Frost, End chest"
+                }
+            ]
+        },
+        {
+            "weapon": [
+                {
+                    "name": "Knives Eternal",
+                    "damangeAndType": "Knife Shot",
+                    "minLevel": "Bound to Character on Acquire",
+                    "binding": "",
+                    "quest": "Maximum Charge Tier: V\nRune Arm Imbue: Knife Shot VI\nSpike Guard\nImpulse +150\nKinetic Lore XII\nSpiked\nUpgradeable - Primary Augment (Empty Yellow Augment Slot , Empty Blue Augment Slot , or Empty Red Augment Slot )\nUpgradeable - Secondary Augment (Empty Green Augment Slot , Empty Orange Augment Slot , or Empty Purple Augment Slot )",
+                    "criticalProfile": "The Mark of Death, Warded chest",
+                    "errata": "The Mark of Death, Warded chest"
+                }
+            ]
+        },
+        {
+            "weapon": [
+                {
+                    "name": "Epic Arm of the Archons",
+                    "damangeAndType": "Force Shot",
+                    "minLevel": "Bound to Account on Acquire",
+                    "binding": "",
+                    "quest": "Maximum Charge Tier: V\nRune Arm Imbue: Force VI\nForce Shot\nImpulse +150\nSheltering +30\nImmunity to Fear\nMagical Resistance: +2 Quality\nEmpty Green Augment Slot",
+                    "criticalProfile": "The Archons' Trial, End chest",
+                    "errata": "The Archons' Trial, End chest"
+                }
+            ]
+        },
+        {
+            "weapon": [
+                {
+                    "name": "The Legendary Dumpster Fire",
+                    "damangeAndType": "Trash Shot",
+                    "minLevel": "Bound to Account on Acquire",
+                    "binding": "",
+                    "quest": "Maximum Charge Tier: V\nRune Arm Imbue: Bludgeon V, Fire V\nCombustion +214\nFire Lore +31%\nShield +21\nEmpty Green Augment Slot",
+                    "criticalProfile": "Scavenger Hunt, End Chest",
+                    "errata": "Scavenger Hunt, End Chest"
+                }
+            ]
+        },
+        {
+            "weapon": [
+                {
+                    "name": "Machination of Madness",
+                    "damangeAndType": "[[F:|36x36px]]\nBee Shot",
+                    "minLevel": "Bound to Character on Acquire",
+                    "binding": "",
+                    "quest": "Maximum Charge Tier: V\nRune Arm Imbue: Knife Shot VI\nTaint of Chaos\nRune Arm Charge Rate: 30%\nImpulse +159\nNatural Armor +15\nInsightful Repair Amplification +31\nInsightful Evocation Focus +3\nEmpty Yellow Augment Slot\nEmpty Green Augment Slot",
+                    "criticalProfile": "Legendary Hound of Xoriat, Raid chest",
+                    "errata": "Legendary Hound of Xoriat, Raid chest"
+                }
+            ]
+        }
+    ]
 }

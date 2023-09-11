@@ -22,6 +22,7 @@ import io.truthencode.ddo.support.naming.{DisplayName, DisplayProperties, SLAPre
 
 trait SLARapidCondensation extends BombardierTierTwo with ClassEnhancementImpl with SLAPrefix {
   self: DisplayName with DisplayProperties =>
+
   /**
    * Some enhancements can be taken multiple times (generally up to three)
    */

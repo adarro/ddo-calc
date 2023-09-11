@@ -31,7 +31,12 @@
 package io.truthencode.ddo
 
 import io.truthencode.ddo.model.attribute.{Attribute => Attrib}
-import io.truthencode.ddo.model.item.weapon.{DeliveryType, Handedness, ProficiencyClass, WeaponCategory => wcat}
+import io.truthencode.ddo.model.item.weapon.{
+  DeliveryType,
+  Handedness,
+  ProficiencyClass,
+  WeaponCategory => wcat
+}
 import io.truthencode.ddo.model.misc.Material
 import io.truthencode.ddo.support.dice.DamageDice
 

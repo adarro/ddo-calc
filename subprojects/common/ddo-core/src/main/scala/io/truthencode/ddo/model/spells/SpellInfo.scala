@@ -50,6 +50,7 @@ trait SpellInfo extends CoolDown with SpellResistance {
    * Available saving throws, if any
    */
   val savingThrow: List[SavingThrow]
+
   /**
    * List of required spell components
    *

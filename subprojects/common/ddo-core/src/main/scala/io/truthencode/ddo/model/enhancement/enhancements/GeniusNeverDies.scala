@@ -30,6 +30,7 @@ trait GeniusNeverDies extends ApothecaryCore with ClassEnhancementImpl {
       |+4 Intelligence
       |Passive: While your Reaction is Verdanite, +2 Transmutation DC """.stripMargin
   )
+
   /**
    * Some enhancements can be taken multiple times (generally up to three)
    */

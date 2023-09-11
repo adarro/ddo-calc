@@ -21,6 +21,7 @@ import io.truthencode.ddo.model.item.WearableItem
 import io.truthencode.ddo.{WearLocation, Wearable}
 
 trait RuneArm extends WearableItem with Wearable {
+
   /**
    * A bitmask that corresponds to one or more [io.truthencode.ddo.WearLocation] values.
    */

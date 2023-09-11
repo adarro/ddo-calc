@@ -16,2398 +16,2148 @@
  * limitations under the License.
  */
 {
- "item": [
-  {
-   "weapon": [
-    {
-     "name": "Shadow Star",
-     "damangeAndType": "1.50 [2d3] + 1 Slash, Magic",
-     "minLevel": "2",
-     "binding": "Bound to Account on Acquire",
-     "quest": "The Seal of Shan-To-Kor",
-     "criticalProfile": "Critical Profile: 19-20 / x2",
-     "enchantments": "+2 Enhancement Bonus",
-     "enchantments_url": "https://ddowiki.com/page/Enhancement_bonus",
-     "errata": "Critical Profile: 19-20 / x2",
-     "weaponDetail": [
-      {
-       "proficiency": "Exotic Weapon Proficiency",
-       "name": "Shadow Star",
-       "damangeAndType": "1.50 [2d3] + 1 Slash, Magic",
-       "criticalThreatRange": "19-20 / x2",
-       "weaponType": [
+    "item": [
         {
-         "weaponCategory": "Shuriken",
-         "damageCategory": "/ Thrown weapons"
+            "weapon": [
+                {
+                    "name": "Shadow Star",
+                    "damangeAndType": "1.50 [2d3] + 1 Slash, Magic",
+                    "minLevel": "2",
+                    "binding": "Bound to Account on Acquire",
+                    "quest": "The Seal of Shan-To-Kor",
+                    "criticalProfile": "Critical Profile: 19-20 / x2",
+                    "enchantments": "+2 Enhancement Bonus",
+                    "enchantments_url": "https://ddowiki.com/page/Enhancement_bonus",
+                    "errata": "Critical Profile: 19-20 / x2",
+                    "weaponDetail": [
+                        {
+                            "proficiency": "Exotic Weapon Proficiency",
+                            "name": "Shadow Star",
+                            "damangeAndType": "1.50 [2d3] + 1 Slash, Magic",
+                            "criticalThreatRange": "19-20 / x2",
+                            "weaponType": [
+                                {
+                                    "weaponCategory": "Shuriken",
+                                    "damageCategory": "/ Thrown weapons"
+                                }
+                            ],
+                            "absRaceRequired": "None",
+                            "minLevel": "2",
+                            "requiredTrait": "None",
+                            "umd": "No UMD needed",
+                            "handedness": "",
+                            "attackMod": "DEX",
+                            "damageMod": "STR",
+                            "binding": "Bound to Account on Acquire",
+                            "binding_url": "https://ddowiki.com/page/Bind",
+                            "durability": "35",
+                            "material": "Steel",
+                            "material_url": "https://ddowiki.com/page/Steel",
+                            "hardness": "12",
+                            "baseValue": "800pp 2sp",
+                            "weight": "0.50 lbs",
+                            "upgradable": "Not upgradeable",
+                            "description": "Magical Shurikens are a favorite weapon of Hobgoblin Assassins. They are incredibly accurate and enchanted to return to whoever throws it.",
+                            "enchantments": [
+                                {
+                                    "enchantment": [
+                                        {
+                                            "name": "+2 Enhancement Bonus",
+                                            "name_url": "https://ddowiki.com/page/Enhancement_bonus",
+                                            "fullText": "+2 Enhancement Bonus"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "enchantment": [
+                                        {
+                                            "name": "Deception",
+                                            "name_url": "https://ddowiki.com/page/Deception",
+                                            "fullText": "Deception"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "enchantment": [
+                                        {
+                                            "name": "Returning",
+                                            "name_url": "https://ddowiki.com/page/Returning",
+                                            "fullText": "Returning"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "enchantment": [
+                                        {
+                                            "name": "Keen I",
+                                            "name_url": "https://ddowiki.com/page/Keen",
+                                            "fullText": "Keen I"
+                                        }
+                                    ]
+                                }
+                            ],
+                            "locationInformation": [
+                                {
+                                    "location": "The Seal of Shan-To-Kor",
+                                    "location_url": "https://ddowiki.com/page/The_Seal_of_Shan-To-Kor",
+                                    "locationExtra": ", End reward"
+                                }
+                            ]
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "weapon": [
+                {
+                    "name": "Snowstar",
+                    "damangeAndType": "1.50[1d4] + 4 Slash, Magic",
+                    "minLevel": "8",
+                    "binding": "Bound to Account on Acquire",
+                    "quest": "Cult of the Six",
+                    "criticalProfile": "Critical Profile: 16-20 / x2",
+                    "enchantments": "+4 Enhancement Bonus",
+                    "enchantments_url": "https://ddowiki.com/page/Enhancement_bonus",
+                    "errata": "Critical Profile: 16-20 / x2",
+                    "weaponDetail": [
+                        {
+                            "proficiency": "Exotic Weapon Proficiency",
+                            "name": "Snowstar",
+                            "damangeAndType": "1.50[1d4] + 4 Slash, Magic",
+                            "criticalThreatRange": "16-20 / x2",
+                            "weaponType": [
+                                {
+                                    "weaponCategory": "Shuriken",
+                                    "damageCategory": "/ Thrown weapons"
+                                }
+                            ],
+                            "absRaceRequired": "None",
+                            "minLevel": "8",
+                            "requiredTrait": "None",
+                            "umd": "No UMD needed",
+                            "handedness": "",
+                            "attackMod": "Dex",
+                            "damageMod": "Str",
+                            "binding": "Bound to Account on Acquire",
+                            "binding_url": "https://ddowiki.com/page/Bind",
+                            "durability": "65",
+                            "material": "Steel",
+                            "material_url": "https://ddowiki.com/page/Steel",
+                            "hardness": "15",
+                            "baseValue": "3,200pp 2sp",
+                            "weight": "0.50 lbs",
+                            "upgradable": "Not upgradeable",
+                            "description": "A perfectly formed icy crystal, razor-sharp and well-suited for throwing. Strange, it doesn't seem to melt.",
+                            "enchantments": [
+                                {
+                                    "enchantment": [
+                                        {
+                                            "name": "+4 Enhancement Bonus",
+                                            "name_url": "https://ddowiki.com/page/Enhancement_bonus",
+                                            "fullText": "+4 Enhancement Bonus"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "enchantment": [
+                                        {
+                                            "name": "Returning",
+                                            "name_url": "https://ddowiki.com/page/Returning",
+                                            "fullText": "Returning"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "enchantment": [
+                                        {
+                                            "name": "Icy Burst",
+                                            "name_url": "https://ddowiki.com/page/Elemental_Burst#Icy_Burst",
+                                            "fullText": "Icy Burst"
+                                        }
+                                    ]
+                                }
+                            ],
+                            "locationInformation": [
+                                {
+                                    "location": "Cult of the Six",
+                                    "location_url": "https://ddowiki.com/page/Cult_of_the_Six",
+                                    "locationExtra": ", End reward"
+                                }
+                            ]
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "weapon": [
+                {
+                    "name": "Macabre Shuriken*",
+                    "damangeAndType": "1.50[1d2] +5 Piercing, Evil, Magic",
+                    "minLevel": "10",
+                    "binding": "Bound to Character on Acquire",
+                    "quest": "Blue Water Inn",
+                    "criticalProfile": "Critical Profile:",
+                    "enchantments": "+5 Enhancement Bonus",
+                    "enchantments_url": "https://ddowiki.com/page/Enhancement_bonus",
+                    "itemId": "Macabre Shuriken",
+                    "url": "https://ddowiki.com/page/Item:Macabre_Shuriken",
+                    "errata": "Critical Profile:"
+                }
+            ]
+        },
+        {
+            "weapon": [
+                {
+                    "name": "Barovian Shuriken*",
+                    "damangeAndType": "1.50[1d2] +5 Piercing, Good, Silver, Magic",
+                    "minLevel": "10",
+                    "binding": "Bound to Character on Acquire",
+                    "quest": "Blue Water Inn",
+                    "criticalProfile": "",
+                    "enchantments": "+5 Enhancement Bonus",
+                    "enchantments_url": "https://ddowiki.com/page/Enhancement_bonus",
+                    "itemId": "Barovian Shuriken",
+                    "url": "https://ddowiki.com/page/Item:Barovian_Shuriken",
+                    "errata": ""
+                }
+            ]
+        },
+        {
+            "weapon": [
+                {
+                    "name": "Alchemical Shuriken",
+                    "damangeAndType": "2 [1d2] + 5 Slash, Magic",
+                    "minLevel": "12",
+                    "binding": "Unbound",
+                    "quest": "The Master Artificer, Either End chest",
+                    "criticalProfile": "",
+                    "enchantments": "+5 Enhancement Bonus",
+                    "enchantments_url": "https://ddowiki.com/page/Enhancement_bonus",
+                    "errata": "",
+                    "weaponDetail": [
+                        {
+                            "proficiency": "Exotic Weapon Proficiency",
+                            "name": "Alchemical Shuriken",
+                            "damangeAndType": "2 [1d2] + 5 Slash, Magic",
+                            "criticalThreatRange": "20 / x2",
+                            "weaponType": [
+                                {
+                                    "weaponCategory": "Shuriken",
+                                    "damageCategory": "/ Thrown weapons"
+                                }
+                            ],
+                            "absRaceRequired": "None",
+                            "minLevel": "12",
+                            "requiredTrait": "None",
+                            "umd": "No UMD needed",
+                            "handedness": "",
+                            "attackMod": "DEX",
+                            "damageMod": "STR",
+                            "binding": "Unbound",
+                            "binding_url": "https://ddowiki.com/page/Bind",
+                            "durability": "85",
+                            "material": "Steel",
+                            "material_url": "https://ddowiki.com/page/Steel",
+                            "hardness": "17",
+                            "baseValue": "10,200pp 2sp",
+                            "weight": "0.50 lbs",
+                            "upgradable": "Alchemical Crafting",
+                            "description": "A tiny circular throwing weapon with a serrated edge. Favored by the plentiful ninjas of House Cannith.",
+                            "enchantments": [
+                                {
+                                    "enchantment": [
+                                        {
+                                            "name": "+5 Enhancement Bonus",
+                                            "name_url": "https://ddowiki.com/page/Enhancement_bonus",
+                                            "fullText": "+5 Enhancement Bonus"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "enchantment": [
+                                        {
+                                            "name": "Alchemical (Prototype)",
+                                            "name_url": "https://ddowiki.com/page/Alchemical_Crafting",
+                                            "fullText": "Alchemical (Prototype)"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "enchantment": [
+                                        {
+                                            "name": "Returning",
+                                            "name_url": "https://ddowiki.com/page/Returning",
+                                            "fullText": "Returning"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "enchantment": [
+                                        {
+                                            "name": "Mythic Weapon Boost",
+                                            "name_url": "https://ddowiki.com/page/Mythic_Boost",
+                                            "fullText": "Mythic Weapon Boost +2 or +4"
+                                        }
+                                    ]
+                                }
+                            ],
+                            "locationInformation": [
+                                {
+                                    "location": "The Master Artificer",
+                                    "location_url": "https://ddowiki.com/page/The_Master_Artificer",
+                                    "locationExtra": ", Either End chest"
+                                }
+                            ]
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "weapon": [
+                {
+                    "name": "Green Steel Shuriken",
+                    "damangeAndType": "1.50 [1d2] + 5 Slash, Evil, Magic",
+                    "minLevel": "12",
+                    "binding": "Bound to Character on Equip",
+                    "quest": "Altar of Fecundity, Manufactured Ingredient Recipes",
+                    "criticalProfile": "",
+                    "enchantments": "+5 Enhancement Bonus",
+                    "enchantments_url": "https://ddowiki.com/page/Enhancement_bonus",
+                    "errata": "",
+                    "weaponDetail": [
+                        {
+                            "proficiency": "Exotic Weapon Proficiency",
+                            "name": "Green Steel Shuriken",
+                            "damangeAndType": "1.50 [1d2] + 5 Slash, Evil, Magic",
+                            "criticalThreatRange": "20 / x2",
+                            "weaponType": [
+                                {
+                                    "weaponCategory": "Shuriken",
+                                    "damageCategory": "/ Thrown weapons"
+                                }
+                            ],
+                            "absRaceRequired": "None",
+                            "minLevel": "12",
+                            "requiredTrait": "None",
+                            "umd": "No UMD needed",
+                            "handedness": "",
+                            "attackMod": "DEX",
+                            "damageMod": "STR",
+                            "binding": "Bound to Character on Equip",
+                            "binding_url": "https://ddowiki.com/page/Bind",
+                            "durability": "65",
+                            "material": "Steel",
+                            "material_url": "https://ddowiki.com/page/Steel",
+                            "hardness": "15",
+                            "baseValue": "5,400pp 2sp",
+                            "weight": "4 lbs",
+                            "upgradable": "Green Steel",
+                            "tips": [
+                                {
+                                    "tip": "+5 Green Steel Shuriken"
+                                },
+                                {
+                                    "tip": "Ore of Travail\nLocust Husk\nChipmunk Funk\nGlistening Pebbles\nGreen Briar Twigs\nEberron Energy Cell"
+                                },
+                                {
+                                    "tip": "Red Taper\nGlistening Pebbles\nGreen Briar Twigs\nLammanian Lily Petals\nChipmunk Funk\nEberron Energy Cell"
+                                },
+                                {
+                                    "tip": "Wondrous Scarab\nChipmunk Funk\nGlistening Pebbles OR Green Briar Twigs\nBitterscrub Fungus\nLammanian Lily Petals\nEberron Energy Cell"
+                                },
+                                {
+                                    "tip": "Shavarath Signet Stone\nShavarath Stone of Might\nShavarath Stone of Battle\nShavarath Stone of Strategy\nShavarath Stone of Foresight\nShavarath Stone of Victory"
+                                },
+                                {
+                                    "tip": "Large Splintered Horn"
+                                }
+                            ],
+                            "description": "A tiny circular throwing weapon with a serrated edge. Favored by the plentiful ninjas of Shavarath.",
+                            "enchantments": [
+                                {
+                                    "enchantment": [
+                                        {
+                                            "name": "+5 Enhancement Bonus",
+                                            "name_url": "https://ddowiki.com/page/Enhancement_bonus",
+                                            "fullText": "+5 Enhancement Bonus"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "enchantment": [
+                                        {
+                                            "name": "Green Steel",
+                                            "name_url": "https://ddowiki.com/page/Green_Steel",
+                                            "fullText": "Green Steel"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "enchantment": [
+                                        {
+                                            "name": "Returning",
+                                            "name_url": "https://ddowiki.com/page/Returning",
+                                            "fullText": "Returning"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "enchantment": [
+                                        {
+                                            "name": "Mythic Weapon Boost",
+                                            "name_url": "https://ddowiki.com/page/Mythic_Boost",
+                                            "fullText": "Mythic Weapon Boost +2 or +4"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "oneOfEnchantment": [{}, {}, {}, {}, {}],
+                                    "enchantment": [
+                                        {
+                                            "name": "Ore of Travail",
+                                            "name_url": "https://ddowiki.com/page/Ore_of_Travail",
+                                            "fullText": "Locust Husk\nChipmunk Funk\nGlistening Pebbles\nGreen Briar Twigs\nEberron Energy Cell"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "oneOfEnchantment": [{}, {}, {}, {}, {}],
+                                    "enchantment": [
+                                        {
+                                            "name": "Red Taper",
+                                            "name_url": "https://ddowiki.com/page/Red_Taper",
+                                            "fullText": "Glistening Pebbles\nGreen Briar Twigs\nLammanian Lily Petals\nChipmunk Funk\nEberron Energy Cell"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "oneOfEnchantment": [{}, {}, {}, {}, {}],
+                                    "enchantment": [
+                                        {
+                                            "name": "Wondrous Scarab",
+                                            "name_url": "https://ddowiki.com/page/Wondrous_Scarab",
+                                            "fullText": "Chipmunk Funk\nGlistening Pebbles OR Green Briar Twigs\nBitterscrub Fungus\nLammanian Lily Petals\nEberron Energy Cell"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "oneOfEnchantment": [{}, {}, {}, {}, {}],
+                                    "enchantment": [{}]
+                                },
+                                {
+                                    "enchantment": [
+                                        {
+                                            "name": "Large Splintered Horn",
+                                            "name_url": "https://ddowiki.com/page/Large_Splintered_Horn",
+                                            "fullText": "Large Splintered Horn"
+                                        }
+                                    ]
+                                }
+                            ],
+                            "locationInformation": [
+                                {
+                                    "location": "Manufactured Ingredient Recipes",
+                                    "location_url": "https://ddowiki.com/page/Altar_of_Fecundity_-_Manufactured_Ingredient_Recipes",
+                                    "locationExtra": ","
+                                }
+                            ]
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "weapon": [
+                {
+                    "name": "Dawnbringer (level 13)",
+                    "damangeAndType": "2[1d2] +5 Slash, Good, Magic",
+                    "minLevel": "13",
+                    "binding": "Bound to Account on Acquire",
+                    "quest": "The Devil's Details, End chest",
+                    "criticalProfile": "",
+                    "enchantments": "+5 Enhancement Bonus",
+                    "enchantments_url": "https://ddowiki.com/page/Enhancement_bonus",
+                    "errata": "",
+                    "weaponDetail": [
+                        {
+                            "proficiency": "Exotic Weapon Proficiency",
+                            "name": "Dawnbringer (level 13)",
+                            "damangeAndType": "2[1d2] +5 Slash, Good, Magic",
+                            "criticalThreatRange": "20 / x2",
+                            "weaponType": [
+                                {
+                                    "weaponCategory": "Shuriken",
+                                    "damageCategory": "/ Thrown weapons"
+                                }
+                            ],
+                            "absRaceRequired": "None",
+                            "minLevel": "13",
+                            "requiredTrait": "None",
+                            "umd": "No UMD needed",
+                            "handedness": "",
+                            "attackMod": "DEX",
+                            "damageMod": "STR",
+                            "binding": "Bound to Account on Acquire",
+                            "binding_url": "https://ddowiki.com/page/Bind",
+                            "durability": "95",
+                            "material": "Flametouched Iron",
+                            "material_url": "https://ddowiki.com/page/Flametouched_Iron",
+                            "hardness": "24",
+                            "baseValue": "5,300pp 2sp",
+                            "weight": "0.50 lbs",
+                            "upgradable": "Not upgradeable",
+                            "description": "The first star shines the brightest.",
+                            "enchantments": [
+                                {
+                                    "enchantment": [
+                                        {
+                                            "name": "+5 Enhancement Bonus",
+                                            "name_url": "https://ddowiki.com/page/Enhancement_bonus",
+                                            "fullText": "+5 Enhancement Bonus"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "enchantment": [
+                                        {
+                                            "name": "Returning",
+                                            "name_url": "https://ddowiki.com/page/Returning",
+                                            "fullText": "Returning"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "enchantment": [
+                                        {
+                                            "name": "Vorpal",
+                                            "name_url": "https://ddowiki.com/page/Vorpal#Vorpal",
+                                            "fullText": "Vorpal"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "enchantment": [
+                                        {
+                                            "name": "Deadly III",
+                                            "name_url": "https://ddowiki.com/page/Deadly",
+                                            "fullText": "Deadly III"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "enchantment": [
+                                        {
+                                            "name": "Bloodletter III",
+                                            "name_url": "https://ddowiki.com/page/Bloodletter",
+                                            "fullText": "Bloodletter III"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "oneOfEnchantment": [
+                                        {},
+                                        {},
+                                        {},
+                                        {},
+                                        {},
+                                        {},
+                                        {},
+                                        {},
+                                        {},
+                                        {},
+                                        {},
+                                        {},
+                                        {},
+                                        {},
+                                        {},
+                                        {},
+                                        {},
+                                        {},
+                                        {},
+                                        {},
+                                        {},
+                                        {},
+                                        {},
+                                        {},
+                                        {}
+                                    ],
+                                    "enchantment": [
+                                        {
+                                            "fullText": "Empty Orange Augment Slot"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "enchantment": [
+                                        {
+                                            "name": "Flametouched Iron",
+                                            "name_url": "https://ddowiki.com/page/Flametouched_Iron",
+                                            "fullText": "Flametouched Iron"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "enchantment": [
+                                        {
+                                            "name": "Mythic Weapon Boost",
+                                            "name_url": "https://ddowiki.com/page/Mythic_Boost",
+                                            "fullText": "Mythic Weapon Boost +2 or +4"
+                                        }
+                                    ]
+                                }
+                            ],
+                            "locationInformation": [
+                                {
+                                    "location": "The Devil's Details",
+                                    "location_url": "https://ddowiki.com/page/The_Devil%27s_Details",
+                                    "locationExtra": ", End chest"
+                                }
+                            ]
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "weapon": [
+                {
+                    "name": "The Morning Star (Level 14)",
+                    "damangeAndType": "[1d2] + 4 Slash, Magic",
+                    "minLevel": "14",
+                    "binding": "Bound to Character on Equip",
+                    "quest": "Friends in Low Places, End chest (Heroic Normal) ;\nShadow Over Wheloon, Quest chain end reward (Heroic)",
+                    "criticalProfile": "",
+                    "enchantments": "Returning",
+                    "enchantments_url": "https://ddowiki.com/page/Returning",
+                    "errata": "",
+                    "weaponDetail": [
+                        {
+                            "proficiency": "Exotic Weapon Proficiency",
+                            "name": "The Morning Star (Level 14)",
+                            "damangeAndType": "[1d2] + 4 Slash, Magic",
+                            "criticalThreatRange": "20 / x2",
+                            "weaponType": [
+                                {
+                                    "weaponCategory": "Shuriken",
+                                    "damageCategory": "/ Thrown weapons"
+                                }
+                            ],
+                            "absRaceRequired": "None",
+                            "minLevel": "14",
+                            "requiredTrait": "None",
+                            "umd": "No UMD needed",
+                            "handedness": "",
+                            "attackMod": "DEX",
+                            "damageMod": "STR",
+                            "binding": "Bound to Character on Equip",
+                            "binding_url": "https://ddowiki.com/page/Bind",
+                            "durability": "95",
+                            "material": "Steel",
+                            "material_url": "https://ddowiki.com/page/Steel",
+                            "hardness": "18",
+                            "baseValue": "5,600pp 2sp",
+                            "weight": "0.50 lbs",
+                            "upgradable": "Not upgradeable",
+                            "description": "Sometimes the only star you need is the sun in the sky.",
+                            "enchantments": [
+                                {
+                                    "enchantment": [
+                                        {
+                                            "name": "Returning",
+                                            "name_url": "https://ddowiki.com/page/Returning",
+                                            "fullText": "Returning"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "enchantment": [
+                                        {
+                                            "name": "+4 Enhancement Bonus",
+                                            "name_url": "https://ddowiki.com/page/Enhancement_bonus",
+                                            "fullText": "+4 Enhancement Bonus"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "enchantment": [
+                                        {
+                                            "name": "Solar I",
+                                            "name_url": "https://ddowiki.com/page/Elemental_(weapon)#Solar",
+                                            "fullText": "Solar I"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "enchantment": [
+                                        {
+                                            "name": "Flaming II",
+                                            "name_url": "https://ddowiki.com/page/Elemental_(weapon)#Flaming",
+                                            "fullText": "Flaming II"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "enchantment": [
+                                        {
+                                            "name": "Ghostbane I",
+                                            "name_url": "https://ddowiki.com/page/Ghostbane",
+                                            "fullText": "Ghostbane I"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "oneOfEnchantment": [
+                                        {},
+                                        {},
+                                        {},
+                                        {},
+                                        {},
+                                        {},
+                                        {},
+                                        {},
+                                        {},
+                                        {},
+                                        {},
+                                        {},
+                                        {},
+                                        {},
+                                        {},
+                                        {}
+                                    ],
+                                    "enchantment": [
+                                        {
+                                            "fullText": "Empty Red Augment Slot"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "enchantment": [
+                                        {
+                                            "name": "Mythic Weapon Boost",
+                                            "name_url": "https://ddowiki.com/page/Mythic_Boost",
+                                            "fullText": "Mythic Weapon Boost +2 or +4"
+                                        }
+                                    ]
+                                }
+                            ],
+                            "locationInformation": [
+                                {
+                                    "location": "Shadow Over Wheloon",
+                                    "location_url": "https://ddowiki.com/page/Shadow_Over_Wheloon",
+                                    "locationExtra": ", End chest (Heroic Normal) ;"
+                                }
+                            ]
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "weapon": [
+                {
+                    "name": "Arc Ricochet",
+                    "damangeAndType": "2[1d2] + 5 Slash, Bludgeon, Magic",
+                    "minLevel": "15",
+                    "binding": "Bound to Account on Acquire",
+                    "quest": "Ruinous Schemes, End chest",
+                    "criticalProfile": "",
+                    "enchantments": "Returning",
+                    "enchantments_url": "https://ddowiki.com/page/Returning",
+                    "errata": "",
+                    "weaponDetail": [
+                        {
+                            "proficiency": "Exotic Weapon Proficiency",
+                            "name": "Arc Ricochet",
+                            "damangeAndType": "2[1d2] + 5 Slash, Bludgeon, Magic",
+                            "criticalThreatRange": "20 / x2",
+                            "weaponType": [
+                                {
+                                    "weaponCategory": "Shuriken",
+                                    "damageCategory": "/ Thrown weapons"
+                                }
+                            ],
+                            "absRaceRequired": "None",
+                            "minLevel": "15",
+                            "requiredTrait": "None",
+                            "umd": "No UMD needed",
+                            "handedness": "",
+                            "attackMod": "DEX",
+                            "damageMod": "STR",
+                            "binding": "Bound to Account on Acquire",
+                            "binding_url": "https://ddowiki.com/page/Bind",
+                            "durability": "165",
+                            "material": "Steel",
+                            "material_url": "https://ddowiki.com/page/Steel",
+                            "hardness": "25",
+                            "baseValue": "6,018pp 2sp",
+                            "weight": "0.50 lbs",
+                            "upgradable": "Not upgradeable",
+                            "description": "Lightning flickers between the barbs on this shuriken.",
+                            "enchantments": [
+                                {
+                                    "enchantment": [
+                                        {
+                                            "name": "Returning",
+                                            "name_url": "https://ddowiki.com/page/Returning",
+                                            "fullText": "Returning"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "enchantment": [
+                                        {
+                                            "name": "+5 Enhancement Bonus",
+                                            "name_url": "https://ddowiki.com/page/Enhancement_bonus",
+                                            "fullText": "+5 Enhancement Bonus"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "enchantment": [
+                                        {
+                                            "name": "Vorpal",
+                                            "name_url": "https://ddowiki.com/page/Vorpal#Vorpal",
+                                            "fullText": "Vorpal"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "enchantment": [
+                                        {
+                                            "name": "Reverberating 4",
+                                            "name_url": "https://ddowiki.com/page/Reverberating",
+                                            "fullText": "Reverberating 4"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "enchantment": [
+                                        {
+                                            "name": "Jolting 9",
+                                            "name_url": "https://ddowiki.com/page/Jolting",
+                                            "fullText": "Jolting 9"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "enchantment": [
+                                        {
+                                            "name": "Blunted Ammunition",
+                                            "name_url": "https://ddowiki.com/page/Blunted_Ammunition",
+                                            "fullText": "Blunted Ammunition"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "oneOfEnchantment": [
+                                        {},
+                                        {},
+                                        {},
+                                        {},
+                                        {},
+                                        {},
+                                        {},
+                                        {},
+                                        {},
+                                        {},
+                                        {},
+                                        {},
+                                        {},
+                                        {},
+                                        {},
+                                        {}
+                                    ],
+                                    "enchantment": [
+                                        {
+                                            "fullText": "Empty Red Augment Slot"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "enchantment": [
+                                        {
+                                            "name": "Mythic Weapon Boost",
+                                            "name_url": "https://ddowiki.com/page/Mythic_Boost",
+                                            "fullText": "Mythic Weapon Boost +2 or +4"
+                                        }
+                                    ]
+                                }
+                            ],
+                            "locationInformation": [
+                                {
+                                    "location": "Ruinous Schemes",
+                                    "location_url": "https://ddowiki.com/page/Ruinous_Schemes",
+                                    "locationExtra": ", End chest"
+                                }
+                            ]
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "weapon": [
+                {
+                    "name": "The Morning Star (Level 15)",
+                    "damangeAndType": "[1d2] + 5 Slash, Magic",
+                    "minLevel": "15",
+                    "binding": "Bound to Character on Equip",
+                    "quest": "Friends in Low Places, End chest (Heroic Hard)",
+                    "criticalProfile": "",
+                    "enchantments": "Returning",
+                    "enchantments_url": "https://ddowiki.com/page/Returning",
+                    "errata": "",
+                    "weaponDetail": [
+                        {
+                            "proficiency": "Exotic Weapon Proficiency",
+                            "name": "The Morning Star (Level 15)",
+                            "damangeAndType": "[1d2] + 5 Slash, Magic",
+                            "criticalThreatRange": "20 / x2",
+                            "weaponType": [
+                                {
+                                    "weaponCategory": "Shuriken",
+                                    "damageCategory": "/ Thrown weapons"
+                                }
+                            ],
+                            "absRaceRequired": "None",
+                            "minLevel": "15",
+                            "requiredTrait": "None",
+                            "umd": "No UMD needed",
+                            "handedness": "",
+                            "attackMod": "DEX",
+                            "damageMod": "STR",
+                            "binding": "Bound to Character on Equip",
+                            "binding_url": "https://ddowiki.com/page/Bind",
+                            "durability": "105",
+                            "material": "Steel",
+                            "material_url": "https://ddowiki.com/page/Steel",
+                            "hardness": "19",
+                            "baseValue": "6,000pp 2sp",
+                            "weight": "0.50 lbs",
+                            "upgradable": "Not upgradeable",
+                            "description": "Sometimes the only star you need is the sun in the sky.",
+                            "enchantments": [
+                                {
+                                    "enchantment": [
+                                        {
+                                            "name": "Returning",
+                                            "name_url": "https://ddowiki.com/page/Returning",
+                                            "fullText": "Returning"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "enchantment": [
+                                        {
+                                            "name": "+5 Enhancement Bonus",
+                                            "name_url": "https://ddowiki.com/page/Enhancement_bonus",
+                                            "fullText": "+5 Enhancement Bonus"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "enchantment": [
+                                        {
+                                            "name": "Solar I",
+                                            "name_url": "https://ddowiki.com/page/Elemental_(weapon)#Solar",
+                                            "fullText": "Solar I"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "enchantment": [
+                                        {
+                                            "name": "Flaming II",
+                                            "name_url": "https://ddowiki.com/page/Elemental_(weapon)#Flaming",
+                                            "fullText": "Flaming II"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "enchantment": [
+                                        {
+                                            "name": "Ghostbane II",
+                                            "name_url": "https://ddowiki.com/page/Ghostbane",
+                                            "fullText": "Ghostbane II"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "oneOfEnchantment": [
+                                        {},
+                                        {},
+                                        {},
+                                        {},
+                                        {},
+                                        {},
+                                        {},
+                                        {},
+                                        {},
+                                        {},
+                                        {},
+                                        {},
+                                        {},
+                                        {},
+                                        {},
+                                        {}
+                                    ],
+                                    "enchantment": [
+                                        {
+                                            "fullText": "Empty Red Augment Slot"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "enchantment": [
+                                        {
+                                            "name": "Mythic Weapon Boost",
+                                            "name_url": "https://ddowiki.com/page/Mythic_Boost",
+                                            "fullText": "Mythic Weapon Boost +2 or +4"
+                                        }
+                                    ]
+                                }
+                            ],
+                            "locationInformation": [
+                                {
+                                    "location": "Friends in Low Places",
+                                    "location_url": "https://ddowiki.com/page/Friends_in_Low_Places",
+                                    "locationExtra": ", End chest (Heroic Hard)"
+                                }
+                            ]
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "weapon": [
+                {
+                    "name": "The Morning Star (Level 16)",
+                    "damangeAndType": "[1d2] + 5 Slash, Magic",
+                    "minLevel": "16",
+                    "binding": "Bound to Character on Equip",
+                    "quest": "Friends in Low Places, End chest (Heroic Elite)",
+                    "criticalProfile": "",
+                    "enchantments": "Returning",
+                    "enchantments_url": "https://ddowiki.com/page/Returning",
+                    "errata": "",
+                    "weaponDetail": [
+                        {
+                            "proficiency": "Exotic Weapon Proficiency",
+                            "name": "The Morning Star (Level 16)",
+                            "damangeAndType": "[1d2] + 5 Slash, Magic",
+                            "criticalThreatRange": "20 / x2",
+                            "weaponType": [
+                                {
+                                    "weaponCategory": "Shuriken",
+                                    "damageCategory": "/ Thrown weapons"
+                                }
+                            ],
+                            "absRaceRequired": "None",
+                            "minLevel": "16",
+                            "requiredTrait": "None",
+                            "umd": "No UMD needed",
+                            "handedness": "",
+                            "attackMod": "DEX",
+                            "damageMod": "STR",
+                            "binding": "Bound to Character on Equip",
+                            "binding_url": "https://ddowiki.com/page/Bind",
+                            "durability": "105",
+                            "material": "Steel",
+                            "material_url": "https://ddowiki.com/page/Steel",
+                            "hardness": "19",
+                            "baseValue": "6,400pp 2sp",
+                            "weight": "0.50 lbs",
+                            "upgradable": "Not upgradeable",
+                            "description": "Sometimes the only star you need is the sun in the sky.",
+                            "enchantments": [
+                                {
+                                    "enchantment": [
+                                        {
+                                            "name": "Returning",
+                                            "name_url": "https://ddowiki.com/page/Returning",
+                                            "fullText": "Returning"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "enchantment": [
+                                        {
+                                            "name": "+5 Enhancement Bonus",
+                                            "name_url": "https://ddowiki.com/page/Enhancement_bonus",
+                                            "fullText": "+5 Enhancement Bonus"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "enchantment": [
+                                        {
+                                            "name": "Solar II",
+                                            "name_url": "https://ddowiki.com/page/Elemental_(weapon)#Solar",
+                                            "fullText": "Solar II"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "enchantment": [
+                                        {
+                                            "name": "Flaming III",
+                                            "name_url": "https://ddowiki.com/page/Elemental_(weapon)#Flaming",
+                                            "fullText": "Flaming III"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "enchantment": [
+                                        {
+                                            "name": "Ghostbane II",
+                                            "name_url": "https://ddowiki.com/page/Ghostbane",
+                                            "fullText": "Ghostbane II"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "oneOfEnchantment": [
+                                        {},
+                                        {},
+                                        {},
+                                        {},
+                                        {},
+                                        {},
+                                        {},
+                                        {},
+                                        {},
+                                        {},
+                                        {},
+                                        {},
+                                        {},
+                                        {},
+                                        {},
+                                        {}
+                                    ],
+                                    "enchantment": [
+                                        {
+                                            "fullText": "Empty Red Augment Slot"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "enchantment": [
+                                        {
+                                            "name": "Mythic Weapon Boost",
+                                            "name_url": "https://ddowiki.com/page/Mythic_Boost",
+                                            "fullText": "Mythic Weapon Boost +2 or +4"
+                                        }
+                                    ]
+                                }
+                            ],
+                            "locationInformation": [
+                                {
+                                    "location": "Friends in Low Places",
+                                    "location_url": "https://ddowiki.com/page/Friends_in_Low_Places",
+                                    "locationExtra": ", End chest (Heroic Elite)"
+                                }
+                            ]
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "weapon": [
+                {
+                    "name": "Thunder-Forged Alloy Shuriken",
+                    "damangeAndType": "3.50 [1d2] + 9 Slash, Silver, Adamantine, Mithral, Cold Iron, Magic, Byeshk",
+                    "minLevel": "22",
+                    "binding": "Unbound",
+                    "quest": "Magma Forge, Crafted from various ingredients",
+                    "criticalProfile": "",
+                    "enchantments": "+9 Enhancement Bonus",
+                    "enchantments_url": "https://ddowiki.com/page/Enhancement_bonus",
+                    "errata": "",
+                    "weaponDetail": [
+                        {
+                            "proficiency": "Exotic Weapon Proficiency",
+                            "name": "Thunder-Forged Alloy Shuriken",
+                            "damangeAndType": "3.50 [1d2] + 9 Slash, Silver, Adamantine, Mithral, Cold Iron, Magic, Byeshk",
+                            "criticalThreatRange": "20 / x2",
+                            "weaponType": [
+                                {
+                                    "weaponCategory": "Shuriken",
+                                    "damageCategory": "/ Thrown weapons"
+                                }
+                            ],
+                            "absRaceRequired": "None",
+                            "minLevel": "22",
+                            "requiredTrait": "None",
+                            "umd": "No UMD needed",
+                            "handedness": "",
+                            "attackMod": "DEX",
+                            "damageMod": "STR",
+                            "binding": "Unbound",
+                            "binding_url": "https://ddowiki.com/page/Bind",
+                            "durability": "145",
+                            "material": "Adamantine",
+                            "material_url": "https://ddowiki.com/page/Adamantine",
+                            "hardness": "29",
+                            "baseValue": "8,800pp 2sp",
+                            "weight": "0.50 lbs",
+                            "upgradable": "Thunder-Forged",
+                            "tips": [
+                                {
+                                    "tip": "20 Thunder-Forged Dwarven Ingots"
+                                },
+                                {
+                                    "tip": "15 Commendations of Valor"
+                                }
+                            ],
+                            "description": "A shuriken forged from metals long in proximity to dragons under Thunderholme.",
+                            "enchantments": [
+                                {
+                                    "enchantment": [
+                                        {
+                                            "name": "+9 Enhancement Bonus",
+                                            "name_url": "https://ddowiki.com/page/Enhancement_bonus",
+                                            "fullText": "+9 Enhancement Bonus"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "oneOfEnchantment": [
+                                        {},
+                                        {},
+                                        {},
+                                        {},
+                                        {},
+                                        {},
+                                        {},
+                                        {},
+                                        {},
+                                        {},
+                                        {},
+                                        {},
+                                        {},
+                                        {},
+                                        {},
+                                        {},
+                                        {},
+                                        {},
+                                        {},
+                                        {},
+                                        {},
+                                        {},
+                                        {},
+                                        {},
+                                        {}
+                                    ],
+                                    "enchantment": [
+                                        {
+                                            "fullText": "Empty Orange Augment Slot"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "enchantment": [
+                                        {
+                                            "name": "Returning",
+                                            "name_url": "https://ddowiki.com/page/Returning",
+                                            "fullText": "Returning"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "enchantment": [
+                                        {
+                                            "name": "Thunder-Forged (Tier 0)",
+                                            "name_url": "https://ddowiki.com/page/Thunder-Forged",
+                                            "fullText": "Thunder-Forged (Tier 0)"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "enchantment": [
+                                        {
+                                            "name": "Mythic Weapon Boost",
+                                            "name_url": "https://ddowiki.com/page/Mythic_Boost",
+                                            "fullText": "Mythic Weapon Boost +2 or +4"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "enchantment": [
+                                        {
+                                            "fullText": "20 Thunder-Forged Dwarven Ingots",
+                                            "fullText_url": "https://ddowiki.com/page/Item:Thunder-Forged_Dwarven_Ingot"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "enchantment": [
+                                        {
+                                            "fullText": "15 Commendations of Valor",
+                                            "fullText_url": "https://ddowiki.com/page/Item:Commendation_of_Valor"
+                                        }
+                                    ]
+                                }
+                            ],
+                            "locationInformation": [
+                                {
+                                    "location": "Magma Forge",
+                                    "location_url": "https://ddowiki.com/page/Magma_Forge",
+                                    "locationExtra": ", Crafted from various ingredients"
+                                }
+                            ]
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "weapon": [
+                {
+                    "name": "The Morning Star (Level 25)",
+                    "damangeAndType": "2 [1d2] + 7 Slash, Magic",
+                    "minLevel": "25",
+                    "binding": "Bound to Character on Equip",
+                    "quest": "Friends in Low Places, End chest (Epic Normal) ;\nShadow Over Wheloon, Quest chain end reward (Epic)",
+                    "criticalProfile": "",
+                    "enchantments": "Returning",
+                    "enchantments_url": "https://ddowiki.com/page/Returning",
+                    "errata": "",
+                    "weaponDetail": [
+                        {
+                            "proficiency": "Exotic Weapon Proficiency",
+                            "name": "The Morning Star (Level 25)",
+                            "damangeAndType": "2 [1d2] + 7 Slash, Magic",
+                            "criticalThreatRange": "20 / x2",
+                            "weaponType": [
+                                {
+                                    "weaponCategory": "Shuriken",
+                                    "damageCategory": "/ Thrown weapons"
+                                }
+                            ],
+                            "absRaceRequired": "None",
+                            "minLevel": "25",
+                            "requiredTrait": "None",
+                            "umd": "No UMD needed",
+                            "handedness": "",
+                            "attackMod": "DEX",
+                            "damageMod": "STR",
+                            "binding": "Bound to Character on Equip",
+                            "binding_url": "https://ddowiki.com/page/Bind",
+                            "durability": "175",
+                            "material": "Steel",
+                            "material_url": "https://ddowiki.com/page/Steel",
+                            "hardness": "26",
+                            "baseValue": "10,000pp 2sp",
+                            "weight": "0.50 lbs",
+                            "upgradable": "Not upgradeable",
+                            "description": "Sometimes the only star you need is the sun in the sky.",
+                            "enchantments": [
+                                {
+                                    "enchantment": [
+                                        {
+                                            "name": "Returning",
+                                            "name_url": "https://ddowiki.com/page/Returning",
+                                            "fullText": "Returning"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "enchantment": [
+                                        {
+                                            "name": "+7 Enhancement Bonus",
+                                            "name_url": "https://ddowiki.com/page/Enhancement_bonus",
+                                            "fullText": "+7 Enhancement Bonus"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "enchantment": [
+                                        {
+                                            "name": "Solar IV",
+                                            "name_url": "https://ddowiki.com/page/Elemental_(weapon)#Solar",
+                                            "fullText": "Solar IV"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "enchantment": [
+                                        {
+                                            "name": "Flaming V",
+                                            "name_url": "https://ddowiki.com/page/Elemental_(weapon)#Flaming",
+                                            "fullText": "Flaming V"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "enchantment": [
+                                        {
+                                            "name": "Ghostbane IV",
+                                            "name_url": "https://ddowiki.com/page/Ghostbane",
+                                            "fullText": "Ghostbane IV"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "oneOfEnchantment": [
+                                        {},
+                                        {},
+                                        {},
+                                        {},
+                                        {},
+                                        {},
+                                        {},
+                                        {},
+                                        {},
+                                        {},
+                                        {},
+                                        {},
+                                        {},
+                                        {},
+                                        {},
+                                        {}
+                                    ],
+                                    "enchantment": [
+                                        {
+                                            "fullText": "Empty Red Augment Slot"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "enchantment": [
+                                        {
+                                            "name": "Mythic Weapon Boost",
+                                            "name_url": "https://ddowiki.com/page/Mythic_Boost",
+                                            "fullText": "Mythic Weapon Boost +2 or +4"
+                                        }
+                                    ]
+                                }
+                            ],
+                            "locationInformation": [
+                                {
+                                    "location": "Shadow Over Wheloon",
+                                    "location_url": "https://ddowiki.com/page/Shadow_Over_Wheloon",
+                                    "locationExtra": ", End chest (Epic Normal) ;"
+                                }
+                            ]
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "weapon": [
+                {
+                    "name": "Legendary Green Steel Shuriken",
+                    "damangeAndType": "5[1d2] + 14 Slash, Evil, Magic",
+                    "minLevel": "26",
+                    "binding": "Bound to Character on Acquire",
+                    "quest": "Altar of Fecundity, Manufactured Ingredient Recipes",
+                    "criticalProfile": "",
+                    "enchantments": "+14 Enhancement Bonus",
+                    "enchantments_url": "https://ddowiki.com/page/Enhancement_bonus",
+                    "errata": "",
+                    "weaponDetail": [
+                        {
+                            "proficiency": "Exotic Weapon Proficiency",
+                            "name": "Legendary Green Steel Shuriken",
+                            "damangeAndType": "5[1d2] + 14 Slash, Evil, Magic",
+                            "criticalThreatRange": "20 / x2",
+                            "weaponType": [
+                                {
+                                    "weaponCategory": "Shuriken",
+                                    "damageCategory": "/ Thrown weapons"
+                                }
+                            ],
+                            "absRaceRequired": "None",
+                            "minLevel": "26",
+                            "requiredTrait": "None",
+                            "umd": "No UMD needed",
+                            "handedness": "",
+                            "attackMod": "DEX",
+                            "damageMod": "STR",
+                            "binding": "Bound to Character on Acquire",
+                            "binding_url": "https://ddowiki.com/page/Bind",
+                            "durability": "225",
+                            "material": "Steel",
+                            "material_url": "https://ddowiki.com/page/Steel",
+                            "hardness": "31",
+                            "baseValue": "30,051pp 3gp 3sp 6cp",
+                            "weight": "0.50 lbs",
+                            "upgradable": "Not upgradeable",
+                            "tips": [
+                                {
+                                    "tip": "+14 Legendary Green Steel Shuriken"
+                                },
+                                {
+                                    "tip": "100 Codex Runes"
+                                },
+                                {
+                                    "tip": "100 Commendations of Valor"
+                                },
+                                {
+                                    "tip": "Altar of Fecundity"
+                                }
+                            ],
+                            "description": "A tiny circular throwing weapon with a serrated edge. Favored by the plentiful ninjas of Shavarath.",
+                            "enchantments": [
+                                {
+                                    "enchantment": [
+                                        {
+                                            "name": "+14 Enhancement Bonus",
+                                            "name_url": "https://ddowiki.com/page/Enhancement_bonus",
+                                            "fullText": "+14 Enhancement Bonus"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "enchantment": [
+                                        {
+                                            "name": "Legendary Green Steel",
+                                            "name_url": "https://ddowiki.com/page/Legendary_Green_Steel",
+                                            "fullText": "Legendary Green Steel"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "enchantment": [
+                                        {
+                                            "name": "Returning",
+                                            "name_url": "https://ddowiki.com/page/Returning",
+                                            "fullText": "Returning"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "enchantment": [
+                                        {
+                                            "name": "Mythic Weapon Boost",
+                                            "name_url": "https://ddowiki.com/page/Mythic_Boost",
+                                            "fullText": "Mythic Weapon Boost +2 or +4"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "enchantment": [
+                                        {
+                                            "fullText": "Codex Runes",
+                                            "fullText_url": "https://ddowiki.com/page/Item:Codex_Rune"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "enchantment": [
+                                        {
+                                            "fullText": "100 Commendations of Valor",
+                                            "fullText_url": "https://ddowiki.com/page/Item:Commendation_of_Valor"
+                                        }
+                                    ]
+                                }
+                            ],
+                            "locationInformation": [
+                                {
+                                    "location": "Manufactured Ingredient Recipes",
+                                    "location_url": "https://ddowiki.com/page/Altar_of_Fecundity_-_Manufactured_Ingredient_Recipes",
+                                    "locationExtra": ","
+                                }
+                            ]
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "weapon": [
+                {
+                    "name": "The Morning Star (Level 26)",
+                    "damangeAndType": "2 [1d2] + 8 Slash, Magic",
+                    "minLevel": "26",
+                    "binding": "Bound to Character on Equip",
+                    "quest": "Friends in Low Places, End chest (Epic Hard)",
+                    "criticalProfile": "",
+                    "enchantments": "Returning",
+                    "enchantments_url": "https://ddowiki.com/page/Returning",
+                    "errata": "",
+                    "weaponDetail": [
+                        {
+                            "proficiency": "Exotic Weapon Proficiency",
+                            "name": "The Morning Star (Level 26)",
+                            "damangeAndType": "2 [1d2] + 8 Slash, Magic",
+                            "criticalThreatRange": "20 / x2",
+                            "weaponType": [
+                                {
+                                    "weaponCategory": "Shuriken",
+                                    "damageCategory": "/ Thrown weapons"
+                                }
+                            ],
+                            "absRaceRequired": "None",
+                            "minLevel": "26",
+                            "requiredTrait": "None",
+                            "umd": "No UMD needed",
+                            "handedness": "",
+                            "attackMod": "DEX",
+                            "damageMod": "STR",
+                            "binding": "Bound to Character on Equip",
+                            "binding_url": "https://ddowiki.com/page/Bind",
+                            "durability": "185",
+                            "material": "Steel",
+                            "material_url": "https://ddowiki.com/page/Steel",
+                            "hardness": "27",
+                            "baseValue": "10,400pp 2sp",
+                            "weight": "0.50 lbs",
+                            "upgradable": "Not upgradeable",
+                            "description": "Sometimes the only star you need is the sun in the sky.",
+                            "enchantments": [
+                                {
+                                    "enchantment": [
+                                        {
+                                            "name": "Returning",
+                                            "name_url": "https://ddowiki.com/page/Returning",
+                                            "fullText": "Returning"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "enchantment": [
+                                        {
+                                            "name": "+8 Enhancement Bonus",
+                                            "name_url": "https://ddowiki.com/page/Enhancement_bonus",
+                                            "fullText": "+8 Enhancement Bonus"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "enchantment": [
+                                        {
+                                            "name": "Solar IV",
+                                            "name_url": "https://ddowiki.com/page/Elemental_(weapon)#Solar",
+                                            "fullText": "Solar IV"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "enchantment": [
+                                        {
+                                            "name": "Flaming V",
+                                            "name_url": "https://ddowiki.com/page/Elemental_(weapon)#Flaming",
+                                            "fullText": "Flaming V"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "enchantment": [
+                                        {
+                                            "name": "Ghostbane V",
+                                            "name_url": "https://ddowiki.com/page/Ghostbane",
+                                            "fullText": "Ghostbane V"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "oneOfEnchantment": [
+                                        {},
+                                        {},
+                                        {},
+                                        {},
+                                        {},
+                                        {},
+                                        {},
+                                        {},
+                                        {},
+                                        {},
+                                        {},
+                                        {},
+                                        {},
+                                        {},
+                                        {},
+                                        {}
+                                    ],
+                                    "enchantment": [
+                                        {
+                                            "fullText": "Empty Red Augment Slot"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "enchantment": [
+                                        {
+                                            "name": "Mythic Weapon Boost",
+                                            "name_url": "https://ddowiki.com/page/Mythic_Boost",
+                                            "fullText": "Mythic Weapon Boost +2 or +4"
+                                        }
+                                    ]
+                                }
+                            ],
+                            "locationInformation": [
+                                {
+                                    "location": "Friends in Low Places",
+                                    "location_url": "https://ddowiki.com/page/Friends_in_Low_Places",
+                                    "locationExtra": ", End chest (Epic Hard)"
+                                }
+                            ]
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "weapon": [
+                {
+                    "name": "The Morning Star (Level 27)",
+                    "damangeAndType": "2 [1d2] + 8 Slash, Magic",
+                    "minLevel": "27",
+                    "binding": "Bound to Character on Equip",
+                    "quest": "Friends in Low Places, End chest (Epic Elite)",
+                    "criticalProfile": "",
+                    "enchantments": "Returning",
+                    "enchantments_url": "https://ddowiki.com/page/Returning",
+                    "errata": "",
+                    "weaponDetail": [
+                        {
+                            "proficiency": "Exotic Weapon Proficiency",
+                            "name": "The Morning Star (Level 27)",
+                            "damangeAndType": "2 [1d2] + 8 Slash, Magic",
+                            "criticalThreatRange": "20 / x2",
+                            "weaponType": [
+                                {
+                                    "weaponCategory": "Shuriken",
+                                    "damageCategory": "/ Thrown weapons"
+                                }
+                            ],
+                            "absRaceRequired": "None",
+                            "minLevel": "27",
+                            "requiredTrait": "None",
+                            "umd": "No UMD needed",
+                            "handedness": "",
+                            "attackMod": "DEX",
+                            "damageMod": "STR",
+                            "binding": "Bound to Character on Equip",
+                            "binding_url": "https://ddowiki.com/page/Bind",
+                            "durability": "195",
+                            "material": "Steel",
+                            "material_url": "https://ddowiki.com/page/Steel",
+                            "hardness": "28",
+                            "baseValue": "10,800pp 2sp",
+                            "weight": "0.50 lbs",
+                            "upgradable": "Not upgradeable",
+                            "description": "Sometimes the only star you need is the sun in the sky.",
+                            "enchantments": [
+                                {
+                                    "enchantment": [
+                                        {
+                                            "name": "Returning",
+                                            "name_url": "https://ddowiki.com/page/Returning",
+                                            "fullText": "Returning"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "enchantment": [
+                                        {
+                                            "name": "+8 Enhancement Bonus",
+                                            "name_url": "https://ddowiki.com/page/Enhancement_bonus",
+                                            "fullText": "+8 Enhancement Bonus"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "enchantment": [
+                                        {
+                                            "name": "Solar V",
+                                            "name_url": "https://ddowiki.com/page/Elemental_(weapon)#Solar",
+                                            "fullText": "Solar V"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "enchantment": [
+                                        {
+                                            "name": "Flaming VI",
+                                            "name_url": "https://ddowiki.com/page/Elemental_(weapon)#Flaming",
+                                            "fullText": "Flaming VI"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "enchantment": [
+                                        {
+                                            "name": "Ghostbane V",
+                                            "name_url": "https://ddowiki.com/page/Ghostbane",
+                                            "fullText": "Ghostbane V"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "oneOfEnchantment": [
+                                        {},
+                                        {},
+                                        {},
+                                        {},
+                                        {},
+                                        {},
+                                        {},
+                                        {},
+                                        {},
+                                        {},
+                                        {},
+                                        {},
+                                        {},
+                                        {},
+                                        {},
+                                        {}
+                                    ],
+                                    "enchantment": [
+                                        {
+                                            "fullText": "Empty Red Augment Slot"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "enchantment": [
+                                        {
+                                            "name": "Mythic Weapon Boost",
+                                            "name_url": "https://ddowiki.com/page/Mythic_Boost",
+                                            "fullText": "Mythic Weapon Boost +2 or +4"
+                                        }
+                                    ]
+                                }
+                            ],
+                            "locationInformation": [
+                                {
+                                    "location": "Friends in Low Places",
+                                    "location_url": "https://ddowiki.com/page/Friends_in_Low_Places",
+                                    "locationExtra": ", End chest (Epic Elite)"
+                                }
+                            ]
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "weapon": [
+                {
+                    "name": "Dawnbringer (level 28)",
+                    "damangeAndType": "5.50[1d2] + 12 Slash, Good, Magic",
+                    "minLevel": "28",
+                    "binding": "Bound to Account on Acquire",
+                    "quest": "The Devil's Details, End chest",
+                    "criticalProfile": "",
+                    "enchantments": "+12 Enhancement Bonus",
+                    "enchantments_url": "https://ddowiki.com/page/Enhancement_bonus",
+                    "errata": "",
+                    "weaponDetail": [
+                        {
+                            "proficiency": "Exotic Weapon Proficiency",
+                            "name": "Dawnbringer (level 28)",
+                            "damangeAndType": "5.50[1d2] + 12 Slash, Good, Magic",
+                            "criticalThreatRange": "20 /x2",
+                            "weaponType": [
+                                {
+                                    "weaponCategory": "Shuriken",
+                                    "damageCategory": "/ Thrown weapons"
+                                }
+                            ],
+                            "absRaceRequired": "None",
+                            "minLevel": "28",
+                            "requiredTrait": "None",
+                            "umd": "No UMD needed",
+                            "handedness": "",
+                            "attackMod": "DEX",
+                            "damageMod": "STR",
+                            "binding": "Bound to Account on Acquire",
+                            "binding_url": "https://ddowiki.com/page/Bind",
+                            "durability": "205",
+                            "material": "Steel",
+                            "material_url": "https://ddowiki.com/page/Steel",
+                            "hardness": "35",
+                            "baseValue": "11,300pp 2sp",
+                            "weight": "0.50 lbs",
+                            "upgradable": "Not upgradeable",
+                            "description": "The first star shines the brightest.",
+                            "enchantments": [
+                                {
+                                    "enchantment": [
+                                        {
+                                            "name": "+12 Enhancement Bonus",
+                                            "name_url": "https://ddowiki.com/page/Enhancement_bonus",
+                                            "fullText": "+12 Enhancement Bonus"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "enchantment": [
+                                        {
+                                            "name": "Returning",
+                                            "name_url": "https://ddowiki.com/page/Returning",
+                                            "fullText": "Returning"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "enchantment": [
+                                        {
+                                            "name": "Sovereign Vorpal",
+                                            "name_url": "https://ddowiki.com/page/Vorpal#Sovereign_Vorpal",
+                                            "fullText": "Sovereign Vorpal"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "enchantment": [
+                                        {
+                                            "name": "Deadly XI",
+                                            "name_url": "https://ddowiki.com/page/Deadly",
+                                            "fullText": "Deadly XI"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "enchantment": [
+                                        {
+                                            "name": "Bloodletter VII",
+                                            "name_url": "https://ddowiki.com/page/Bloodletter",
+                                            "fullText": "Bloodletter VII"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "enchantment": [
+                                        {
+                                            "name": "Ranged Power +6",
+                                            "name_url": "https://ddowiki.com/page/Ranged_Power",
+                                            "fullText": "Ranged Power +6"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "oneOfEnchantment": [
+                                        {},
+                                        {},
+                                        {},
+                                        {},
+                                        {},
+                                        {},
+                                        {},
+                                        {},
+                                        {},
+                                        {},
+                                        {},
+                                        {},
+                                        {},
+                                        {},
+                                        {},
+                                        {},
+                                        {},
+                                        {},
+                                        {},
+                                        {},
+                                        {},
+                                        {},
+                                        {},
+                                        {},
+                                        {}
+                                    ],
+                                    "enchantment": [
+                                        {
+                                            "fullText": "Empty Orange Augment Slot"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "enchantment": [
+                                        {
+                                            "name": "Flametouched Iron",
+                                            "name_url": "https://ddowiki.com/page/Flametouched_Iron",
+                                            "fullText": "Flametouched Iron"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "enchantment": [
+                                        {
+                                            "name": "Mythic Weapon Boost",
+                                            "name_url": "https://ddowiki.com/page/Mythic_Boost",
+                                            "fullText": "Mythic Weapon Boost +2 or +4"
+                                        }
+                                    ]
+                                }
+                            ],
+                            "locationInformation": [
+                                {
+                                    "location": "The Devil's Details",
+                                    "location_url": "https://ddowiki.com/page/The_Devil%27s_Details",
+                                    "locationExtra": ", End chest"
+                                }
+                            ]
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "weapon": [
+                {
+                    "name": "Spite, the Fractured Shards*",
+                    "damangeAndType": "7[1d2+3] + 15 Pierce, Magic",
+                    "minLevel": "28",
+                    "binding": "Bound to Character on Acquire",
+                    "quest": "Old Baba's Hut, Raid Chest",
+                    "criticalProfile": "Critical Profile: 19-20 /x2",
+                    "enchantments": "+15 Enhancement Bonus",
+                    "enchantments_url": "https://ddowiki.com/page/Enhancement_bonus",
+                    "itemId": "Spite, the Fractured Shards",
+                    "url": "https://ddowiki.com/page/Item:Spite,_the_Fractured_Shards",
+                    "errata": "Critical Profile: 19-20 /x2"
+                }
+            ]
+        },
+        {
+            "weapon": [
+                {
+                    "name": "Legendary Arc Ricochet",
+                    "damangeAndType": "5.5[1d2+2] + 15 Slash, Bludgeon, Magic",
+                    "minLevel": "29",
+                    "binding": "Bound to Account on Acquire",
+                    "quest": "Ruinous Schemes, End chest",
+                    "criticalProfile": "",
+                    "enchantments": "Returning",
+                    "enchantments_url": "https://ddowiki.com/page/Returning",
+                    "errata": "",
+                    "weaponDetail": [
+                        {
+                            "proficiency": "Exotic Weapon Proficiency",
+                            "name": "Legendary Arc Ricochet",
+                            "damangeAndType": "5.5[1d2+2] + 15 Slash, Bludgeon, Magic",
+                            "criticalThreatRange": "20 / x2",
+                            "weaponType": [
+                                {
+                                    "weaponCategory": "Shuriken",
+                                    "damageCategory": "/ Thrown weapons"
+                                }
+                            ],
+                            "absRaceRequired": "None",
+                            "minLevel": "29",
+                            "requiredTrait": "None",
+                            "umd": "No UMD needed",
+                            "handedness": "",
+                            "attackMod": "DEX",
+                            "damageMod": "STR",
+                            "binding": "Bound to Account on Acquire",
+                            "binding_url": "https://ddowiki.com/page/Bind",
+                            "durability": "305",
+                            "material": "Steel",
+                            "material_url": "https://ddowiki.com/page/Steel",
+                            "hardness": "39",
+                            "baseValue": "11,618pp 2sp",
+                            "weight": "0.50 lbs",
+                            "upgradable": "Not upgradeable",
+                            "description": "Lightning flickers between the barbs on this shuriken.",
+                            "enchantments": [
+                                {
+                                    "enchantment": [
+                                        {
+                                            "name": "Returning",
+                                            "name_url": "https://ddowiki.com/page/Returning",
+                                            "fullText": "Returning"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "enchantment": [
+                                        {
+                                            "name": "+15 Enhancement Bonus",
+                                            "name_url": "https://ddowiki.com/page/Enhancement_bonus",
+                                            "fullText": "+15 Enhancement Bonus"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "enchantment": [
+                                        {
+                                            "name": "Superior Vorpal",
+                                            "name_url": "https://ddowiki.com/page/Vorpal#Superior_Vorpal",
+                                            "fullText": "Superior Vorpal"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "enchantment": [
+                                        {
+                                            "name": "Reverberating 9",
+                                            "name_url": "https://ddowiki.com/page/Reverberating",
+                                            "fullText": "Reverberating 9"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "enchantment": [
+                                        {
+                                            "name": "Jolting 22",
+                                            "name_url": "https://ddowiki.com/page/Jolting",
+                                            "fullText": "Jolting 22"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "enchantment": [
+                                        {
+                                            "name": "Blunted Ammunition",
+                                            "name_url": "https://ddowiki.com/page/Blunted_Ammunition",
+                                            "fullText": "Blunted Ammunition"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "oneOfEnchantment": [
+                                        {},
+                                        {},
+                                        {},
+                                        {},
+                                        {},
+                                        {},
+                                        {},
+                                        {},
+                                        {},
+                                        {},
+                                        {},
+                                        {},
+                                        {},
+                                        {},
+                                        {},
+                                        {}
+                                    ],
+                                    "enchantment": [
+                                        {
+                                            "fullText": "Empty Red Augment Slot"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "enchantment": [
+                                        {
+                                            "name": "Mythic Weapon Boost",
+                                            "name_url": "https://ddowiki.com/page/Mythic_Boost",
+                                            "fullText": "Mythic Weapon Boost +2 or +4"
+                                        }
+                                    ]
+                                }
+                            ],
+                            "locationInformation": [
+                                {
+                                    "location": "Ruinous Schemes",
+                                    "location_url": "https://ddowiki.com/page/Ruinous_Schemes",
+                                    "locationExtra": ", End chest"
+                                }
+                            ]
+                        }
+                    ]
+                }
+            ]
         }
-       ],
-       "absRaceRequired": "None",
-       "minLevel": "2",
-       "requiredTrait": "None",
-       "umd": "No UMD needed",
-       "handedness": "",
-       "attackMod": "DEX",
-       "damageMod": "STR",
-       "binding": "Bound to Account on Acquire",
-       "binding_url": "https://ddowiki.com/page/Bind",
-       "durability": "35",
-       "material": "Steel",
-       "material_url": "https://ddowiki.com/page/Steel",
-       "hardness": "12",
-       "baseValue": "800pp 2sp",
-       "weight": "0.50 lbs",
-       "upgradable": "Not upgradeable",
-       "description": "Magical Shurikens are a favorite weapon of Hobgoblin Assassins. They are incredibly accurate and enchanted to return to whoever throws it.",
-       "enchantments": [
-        {
-         "enchantment": [
-          {
-           "name": "+2 Enhancement Bonus",
-           "name_url": "https://ddowiki.com/page/Enhancement_bonus",
-           "fullText": "+2 Enhancement Bonus"
-          }
-         ]
-        },
-        {
-         "enchantment": [
-          {
-           "name": "Deception",
-           "name_url": "https://ddowiki.com/page/Deception",
-           "fullText": "Deception"
-          }
-         ]
-        },
-        {
-         "enchantment": [
-          {
-           "name": "Returning",
-           "name_url": "https://ddowiki.com/page/Returning",
-           "fullText": "Returning"
-          }
-         ]
-        },
-        {
-         "enchantment": [
-          {
-           "name": "Keen I",
-           "name_url": "https://ddowiki.com/page/Keen",
-           "fullText": "Keen I"
-          }
-         ]
-        }
-       ],
-       "locationInformation": [
-        {
-         "location": "The Seal of Shan-To-Kor",
-         "location_url": "https://ddowiki.com/page/The_Seal_of_Shan-To-Kor",
-         "locationExtra": ", End reward"
-        }
-       ]
-      }
-     ]
-    }
-   ]
-  },
-  {
-   "weapon": [
-    {
-     "name": "Snowstar",
-     "damangeAndType": "1.50[1d4] + 4 Slash, Magic",
-     "minLevel": "8",
-     "binding": "Bound to Account on Acquire",
-     "quest": "Cult of the Six",
-     "criticalProfile": "Critical Profile: 16-20 / x2",
-     "enchantments": "+4 Enhancement Bonus",
-     "enchantments_url": "https://ddowiki.com/page/Enhancement_bonus",
-     "errata": "Critical Profile: 16-20 / x2",
-     "weaponDetail": [
-      {
-       "proficiency": "Exotic Weapon Proficiency",
-       "name": "Snowstar",
-       "damangeAndType": "1.50[1d4] + 4 Slash, Magic",
-       "criticalThreatRange": "16-20 / x2",
-       "weaponType": [
-        {
-         "weaponCategory": "Shuriken",
-         "damageCategory": "/ Thrown weapons"
-        }
-       ],
-       "absRaceRequired": "None",
-       "minLevel": "8",
-       "requiredTrait": "None",
-       "umd": "No UMD needed",
-       "handedness": "",
-       "attackMod": "Dex",
-       "damageMod": "Str",
-       "binding": "Bound to Account on Acquire",
-       "binding_url": "https://ddowiki.com/page/Bind",
-       "durability": "65",
-       "material": "Steel",
-       "material_url": "https://ddowiki.com/page/Steel",
-       "hardness": "15",
-       "baseValue": "3,200pp 2sp",
-       "weight": "0.50 lbs",
-       "upgradable": "Not upgradeable",
-       "description": "A perfectly formed icy crystal, razor-sharp and well-suited for throwing. Strange, it doesn't seem to melt.",
-       "enchantments": [
-        {
-         "enchantment": [
-          {
-           "name": "+4 Enhancement Bonus",
-           "name_url": "https://ddowiki.com/page/Enhancement_bonus",
-           "fullText": "+4 Enhancement Bonus"
-          }
-         ]
-        },
-        {
-         "enchantment": [
-          {
-           "name": "Returning",
-           "name_url": "https://ddowiki.com/page/Returning",
-           "fullText": "Returning"
-          }
-         ]
-        },
-        {
-         "enchantment": [
-          {
-           "name": "Icy Burst",
-           "name_url": "https://ddowiki.com/page/Elemental_Burst#Icy_Burst",
-           "fullText": "Icy Burst"
-          }
-         ]
-        }
-       ],
-       "locationInformation": [
-        {
-         "location": "Cult of the Six",
-         "location_url": "https://ddowiki.com/page/Cult_of_the_Six",
-         "locationExtra": ", End reward"
-        }
-       ]
-      }
-     ]
-    }
-   ]
-  },
-  {
-   "weapon": [
-    {
-     "name": "Macabre Shuriken*",
-     "damangeAndType": "1.50[1d2] +5 Piercing, Evil, Magic",
-     "minLevel": "10",
-     "binding": "Bound to Character on Acquire",
-     "quest": "Blue Water Inn",
-     "criticalProfile": "Critical Profile:",
-     "enchantments": "+5 Enhancement Bonus",
-     "enchantments_url": "https://ddowiki.com/page/Enhancement_bonus",
-     "itemId": "Macabre Shuriken",
-     "url": "https://ddowiki.com/page/Item:Macabre_Shuriken",
-     "errata": "Critical Profile:"
-    }
-   ]
-  },
-  {
-   "weapon": [
-    {
-     "name": "Barovian Shuriken*",
-     "damangeAndType": "1.50[1d2] +5 Piercing, Good, Silver, Magic",
-     "minLevel": "10",
-     "binding": "Bound to Character on Acquire",
-     "quest": "Blue Water Inn",
-     "criticalProfile": "",
-     "enchantments": "+5 Enhancement Bonus",
-     "enchantments_url": "https://ddowiki.com/page/Enhancement_bonus",
-     "itemId": "Barovian Shuriken",
-     "url": "https://ddowiki.com/page/Item:Barovian_Shuriken",
-     "errata": ""
-    }
-   ]
-  },
-  {
-   "weapon": [
-    {
-     "name": "Alchemical Shuriken",
-     "damangeAndType": "2 [1d2] + 5 Slash, Magic",
-     "minLevel": "12",
-     "binding": "Unbound",
-     "quest": "The Master Artificer, Either End chest",
-     "criticalProfile": "",
-     "enchantments": "+5 Enhancement Bonus",
-     "enchantments_url": "https://ddowiki.com/page/Enhancement_bonus",
-     "errata": "",
-     "weaponDetail": [
-      {
-       "proficiency": "Exotic Weapon Proficiency",
-       "name": "Alchemical Shuriken",
-       "damangeAndType": "2 [1d2] + 5 Slash, Magic",
-       "criticalThreatRange": "20 / x2",
-       "weaponType": [
-        {
-         "weaponCategory": "Shuriken",
-         "damageCategory": "/ Thrown weapons"
-        }
-       ],
-       "absRaceRequired": "None",
-       "minLevel": "12",
-       "requiredTrait": "None",
-       "umd": "No UMD needed",
-       "handedness": "",
-       "attackMod": "DEX",
-       "damageMod": "STR",
-       "binding": "Unbound",
-       "binding_url": "https://ddowiki.com/page/Bind",
-       "durability": "85",
-       "material": "Steel",
-       "material_url": "https://ddowiki.com/page/Steel",
-       "hardness": "17",
-       "baseValue": "10,200pp 2sp",
-       "weight": "0.50 lbs",
-       "upgradable": "Alchemical Crafting",
-       "description": "A tiny circular throwing weapon with a serrated edge. Favored by the plentiful ninjas of House Cannith.",
-       "enchantments": [
-        {
-         "enchantment": [
-          {
-           "name": "+5 Enhancement Bonus",
-           "name_url": "https://ddowiki.com/page/Enhancement_bonus",
-           "fullText": "+5 Enhancement Bonus"
-          }
-         ]
-        },
-        {
-         "enchantment": [
-          {
-           "name": "Alchemical (Prototype)",
-           "name_url": "https://ddowiki.com/page/Alchemical_Crafting",
-           "fullText": "Alchemical (Prototype)"
-          }
-         ]
-        },
-        {
-         "enchantment": [
-          {
-           "name": "Returning",
-           "name_url": "https://ddowiki.com/page/Returning",
-           "fullText": "Returning"
-          }
-         ]
-        },
-        {
-         "enchantment": [
-          {
-           "name": "Mythic Weapon Boost",
-           "name_url": "https://ddowiki.com/page/Mythic_Boost",
-           "fullText": "Mythic Weapon Boost +2 or +4"
-          }
-         ]
-        }
-       ],
-       "locationInformation": [
-        {
-         "location": "The Master Artificer",
-         "location_url": "https://ddowiki.com/page/The_Master_Artificer",
-         "locationExtra": ", Either End chest"
-        }
-       ]
-      }
-     ]
-    }
-   ]
-  },
-  {
-   "weapon": [
-    {
-     "name": "Green Steel Shuriken",
-     "damangeAndType": "1.50 [1d2] + 5 Slash, Evil, Magic",
-     "minLevel": "12",
-     "binding": "Bound to Character on Equip",
-     "quest": "Altar of Fecundity, Manufactured Ingredient Recipes",
-     "criticalProfile": "",
-     "enchantments": "+5 Enhancement Bonus",
-     "enchantments_url": "https://ddowiki.com/page/Enhancement_bonus",
-     "errata": "",
-     "weaponDetail": [
-      {
-       "proficiency": "Exotic Weapon Proficiency",
-       "name": "Green Steel Shuriken",
-       "damangeAndType": "1.50 [1d2] + 5 Slash, Evil, Magic",
-       "criticalThreatRange": "20 / x2",
-       "weaponType": [
-        {
-         "weaponCategory": "Shuriken",
-         "damageCategory": "/ Thrown weapons"
-        }
-       ],
-       "absRaceRequired": "None",
-       "minLevel": "12",
-       "requiredTrait": "None",
-       "umd": "No UMD needed",
-       "handedness": "",
-       "attackMod": "DEX",
-       "damageMod": "STR",
-       "binding": "Bound to Character on Equip",
-       "binding_url": "https://ddowiki.com/page/Bind",
-       "durability": "65",
-       "material": "Steel",
-       "material_url": "https://ddowiki.com/page/Steel",
-       "hardness": "15",
-       "baseValue": "5,400pp 2sp",
-       "weight": "4 lbs",
-       "upgradable": "Green Steel",
-       "tips": [
-        {
-         "tip": "+5 Green Steel Shuriken"
-        },
-        {
-         "tip": "Ore of Travail\nLocust Husk\nChipmunk Funk\nGlistening Pebbles\nGreen Briar Twigs\nEberron Energy Cell"
-        },
-        {
-         "tip": "Red Taper\nGlistening Pebbles\nGreen Briar Twigs\nLammanian Lily Petals\nChipmunk Funk\nEberron Energy Cell"
-        },
-        {
-         "tip": "Wondrous Scarab\nChipmunk Funk\nGlistening Pebbles OR Green Briar Twigs\nBitterscrub Fungus\nLammanian Lily Petals\nEberron Energy Cell"
-        },
-        {
-         "tip": "Shavarath Signet Stone\nShavarath Stone of Might\nShavarath Stone of Battle\nShavarath Stone of Strategy\nShavarath Stone of Foresight\nShavarath Stone of Victory"
-        },
-        {
-         "tip": "Large Splintered Horn"
-        }
-       ],
-       "description": "A tiny circular throwing weapon with a serrated edge. Favored by the plentiful ninjas of Shavarath.",
-       "enchantments": [
-        {
-         "enchantment": [
-          {
-           "name": "+5 Enhancement Bonus",
-           "name_url": "https://ddowiki.com/page/Enhancement_bonus",
-           "fullText": "+5 Enhancement Bonus"
-          }
-         ]
-        },
-        {
-         "enchantment": [
-          {
-           "name": "Green Steel",
-           "name_url": "https://ddowiki.com/page/Green_Steel",
-           "fullText": "Green Steel"
-          }
-         ]
-        },
-        {
-         "enchantment": [
-          {
-           "name": "Returning",
-           "name_url": "https://ddowiki.com/page/Returning",
-           "fullText": "Returning"
-          }
-         ]
-        },
-        {
-         "enchantment": [
-          {
-           "name": "Mythic Weapon Boost",
-           "name_url": "https://ddowiki.com/page/Mythic_Boost",
-           "fullText": "Mythic Weapon Boost +2 or +4"
-          }
-         ]
-        },
-        {
-         "oneOfEnchantment": [
-          {
-          },
-          {
-          },
-          {
-          },
-          {
-          },
-          {
-          }
-         ],
-         "enchantment": [
-          {
-           "name": "Ore of Travail",
-           "name_url": "https://ddowiki.com/page/Ore_of_Travail",
-           "fullText": "Locust Husk\nChipmunk Funk\nGlistening Pebbles\nGreen Briar Twigs\nEberron Energy Cell"
-          }
-         ]
-        },
-        {
-         "oneOfEnchantment": [
-          {
-          },
-          {
-          },
-          {
-          },
-          {
-          },
-          {
-          }
-         ],
-         "enchantment": [
-          {
-           "name": "Red Taper",
-           "name_url": "https://ddowiki.com/page/Red_Taper",
-           "fullText": "Glistening Pebbles\nGreen Briar Twigs\nLammanian Lily Petals\nChipmunk Funk\nEberron Energy Cell"
-          }
-         ]
-        },
-        {
-         "oneOfEnchantment": [
-          {
-          },
-          {
-          },
-          {
-          },
-          {
-          },
-          {
-          }
-         ],
-         "enchantment": [
-          {
-           "name": "Wondrous Scarab",
-           "name_url": "https://ddowiki.com/page/Wondrous_Scarab",
-           "fullText": "Chipmunk Funk\nGlistening Pebbles OR Green Briar Twigs\nBitterscrub Fungus\nLammanian Lily Petals\nEberron Energy Cell"
-          }
-         ]
-        },
-        {
-         "oneOfEnchantment": [
-          {
-          },
-          {
-          },
-          {
-          },
-          {
-          },
-          {
-          }
-         ],
-         "enchantment": [
-          {
-          }
-         ]
-        },
-        {
-         "enchantment": [
-          {
-           "name": "Large Splintered Horn",
-           "name_url": "https://ddowiki.com/page/Large_Splintered_Horn",
-           "fullText": "Large Splintered Horn"
-          }
-         ]
-        }
-       ],
-       "locationInformation": [
-        {
-         "location": "Manufactured Ingredient Recipes",
-         "location_url": "https://ddowiki.com/page/Altar_of_Fecundity_-_Manufactured_Ingredient_Recipes",
-         "locationExtra": ","
-        }
-       ]
-      }
-     ]
-    }
-   ]
-  },
-  {
-   "weapon": [
-    {
-     "name": "Dawnbringer (level 13)",
-     "damangeAndType": "2[1d2] +5 Slash, Good, Magic",
-     "minLevel": "13",
-     "binding": "Bound to Account on Acquire",
-     "quest": "The Devil's Details, End chest",
-     "criticalProfile": "",
-     "enchantments": "+5 Enhancement Bonus",
-     "enchantments_url": "https://ddowiki.com/page/Enhancement_bonus",
-     "errata": "",
-     "weaponDetail": [
-      {
-       "proficiency": "Exotic Weapon Proficiency",
-       "name": "Dawnbringer (level 13)",
-       "damangeAndType": "2[1d2] +5 Slash, Good, Magic",
-       "criticalThreatRange": "20 / x2",
-       "weaponType": [
-        {
-         "weaponCategory": "Shuriken",
-         "damageCategory": "/ Thrown weapons"
-        }
-       ],
-       "absRaceRequired": "None",
-       "minLevel": "13",
-       "requiredTrait": "None",
-       "umd": "No UMD needed",
-       "handedness": "",
-       "attackMod": "DEX",
-       "damageMod": "STR",
-       "binding": "Bound to Account on Acquire",
-       "binding_url": "https://ddowiki.com/page/Bind",
-       "durability": "95",
-       "material": "Flametouched Iron",
-       "material_url": "https://ddowiki.com/page/Flametouched_Iron",
-       "hardness": "24",
-       "baseValue": "5,300pp 2sp",
-       "weight": "0.50 lbs",
-       "upgradable": "Not upgradeable",
-       "description": "The first star shines the brightest.",
-       "enchantments": [
-        {
-         "enchantment": [
-          {
-           "name": "+5 Enhancement Bonus",
-           "name_url": "https://ddowiki.com/page/Enhancement_bonus",
-           "fullText": "+5 Enhancement Bonus"
-          }
-         ]
-        },
-        {
-         "enchantment": [
-          {
-           "name": "Returning",
-           "name_url": "https://ddowiki.com/page/Returning",
-           "fullText": "Returning"
-          }
-         ]
-        },
-        {
-         "enchantment": [
-          {
-           "name": "Vorpal",
-           "name_url": "https://ddowiki.com/page/Vorpal#Vorpal",
-           "fullText": "Vorpal"
-          }
-         ]
-        },
-        {
-         "enchantment": [
-          {
-           "name": "Deadly III",
-           "name_url": "https://ddowiki.com/page/Deadly",
-           "fullText": "Deadly III"
-          }
-         ]
-        },
-        {
-         "enchantment": [
-          {
-           "name": "Bloodletter III",
-           "name_url": "https://ddowiki.com/page/Bloodletter",
-           "fullText": "Bloodletter III"
-          }
-         ]
-        },
-        {
-         "oneOfEnchantment": [
-          {
-          },
-          {
-          },
-          {
-          },
-          {
-          },
-          {
-          },
-          {
-          },
-          {
-          },
-          {
-          },
-          {
-          },
-          {
-          },
-          {
-          },
-          {
-          },
-          {
-          },
-          {
-          },
-          {
-          },
-          {
-          },
-          {
-          },
-          {
-          },
-          {
-          },
-          {
-          },
-          {
-          },
-          {
-          },
-          {
-          },
-          {
-          },
-          {
-          }
-         ],
-         "enchantment": [
-          {
-           "fullText": "Empty Orange Augment Slot"
-          }
-         ]
-        },
-        {
-         "enchantment": [
-          {
-           "name": "Flametouched Iron",
-           "name_url": "https://ddowiki.com/page/Flametouched_Iron",
-           "fullText": "Flametouched Iron"
-          }
-         ]
-        },
-        {
-         "enchantment": [
-          {
-           "name": "Mythic Weapon Boost",
-           "name_url": "https://ddowiki.com/page/Mythic_Boost",
-           "fullText": "Mythic Weapon Boost +2 or +4"
-          }
-         ]
-        }
-       ],
-       "locationInformation": [
-        {
-         "location": "The Devil's Details",
-         "location_url": "https://ddowiki.com/page/The_Devil%27s_Details",
-         "locationExtra": ", End chest"
-        }
-       ]
-      }
-     ]
-    }
-   ]
-  },
-  {
-   "weapon": [
-    {
-     "name": "The Morning Star (Level 14)",
-     "damangeAndType": "[1d2] + 4 Slash, Magic",
-     "minLevel": "14",
-     "binding": "Bound to Character on Equip",
-     "quest": "Friends in Low Places, End chest (Heroic Normal) ;\nShadow Over Wheloon, Quest chain end reward (Heroic)",
-     "criticalProfile": "",
-     "enchantments": "Returning",
-     "enchantments_url": "https://ddowiki.com/page/Returning",
-     "errata": "",
-     "weaponDetail": [
-      {
-       "proficiency": "Exotic Weapon Proficiency",
-       "name": "The Morning Star (Level 14)",
-       "damangeAndType": "[1d2] + 4 Slash, Magic",
-       "criticalThreatRange": "20 / x2",
-       "weaponType": [
-        {
-         "weaponCategory": "Shuriken",
-         "damageCategory": "/ Thrown weapons"
-        }
-       ],
-       "absRaceRequired": "None",
-       "minLevel": "14",
-       "requiredTrait": "None",
-       "umd": "No UMD needed",
-       "handedness": "",
-       "attackMod": "DEX",
-       "damageMod": "STR",
-       "binding": "Bound to Character on Equip",
-       "binding_url": "https://ddowiki.com/page/Bind",
-       "durability": "95",
-       "material": "Steel",
-       "material_url": "https://ddowiki.com/page/Steel",
-       "hardness": "18",
-       "baseValue": "5,600pp 2sp",
-       "weight": "0.50 lbs",
-       "upgradable": "Not upgradeable",
-       "description": "Sometimes the only star you need is the sun in the sky.",
-       "enchantments": [
-        {
-         "enchantment": [
-          {
-           "name": "Returning",
-           "name_url": "https://ddowiki.com/page/Returning",
-           "fullText": "Returning"
-          }
-         ]
-        },
-        {
-         "enchantment": [
-          {
-           "name": "+4 Enhancement Bonus",
-           "name_url": "https://ddowiki.com/page/Enhancement_bonus",
-           "fullText": "+4 Enhancement Bonus"
-          }
-         ]
-        },
-        {
-         "enchantment": [
-          {
-           "name": "Solar I",
-           "name_url": "https://ddowiki.com/page/Elemental_(weapon)#Solar",
-           "fullText": "Solar I"
-          }
-         ]
-        },
-        {
-         "enchantment": [
-          {
-           "name": "Flaming II",
-           "name_url": "https://ddowiki.com/page/Elemental_(weapon)#Flaming",
-           "fullText": "Flaming II"
-          }
-         ]
-        },
-        {
-         "enchantment": [
-          {
-           "name": "Ghostbane I",
-           "name_url": "https://ddowiki.com/page/Ghostbane",
-           "fullText": "Ghostbane I"
-          }
-         ]
-        },
-        {
-         "oneOfEnchantment": [
-          {
-          },
-          {
-          },
-          {
-          },
-          {
-          },
-          {
-          },
-          {
-          },
-          {
-          },
-          {
-          },
-          {
-          },
-          {
-          },
-          {
-          },
-          {
-          },
-          {
-          },
-          {
-          },
-          {
-          },
-          {
-          }
-         ],
-         "enchantment": [
-          {
-           "fullText": "Empty Red Augment Slot"
-          }
-         ]
-        },
-        {
-         "enchantment": [
-          {
-           "name": "Mythic Weapon Boost",
-           "name_url": "https://ddowiki.com/page/Mythic_Boost",
-           "fullText": "Mythic Weapon Boost +2 or +4"
-          }
-         ]
-        }
-       ],
-       "locationInformation": [
-        {
-         "location": "Shadow Over Wheloon",
-         "location_url": "https://ddowiki.com/page/Shadow_Over_Wheloon",
-         "locationExtra": ", End chest (Heroic Normal) ;"
-        }
-       ]
-      }
-     ]
-    }
-   ]
-  },
-  {
-   "weapon": [
-    {
-     "name": "Arc Ricochet",
-     "damangeAndType": "2[1d2] + 5 Slash, Bludgeon, Magic",
-     "minLevel": "15",
-     "binding": "Bound to Account on Acquire",
-     "quest": "Ruinous Schemes, End chest",
-     "criticalProfile": "",
-     "enchantments": "Returning",
-     "enchantments_url": "https://ddowiki.com/page/Returning",
-     "errata": "",
-     "weaponDetail": [
-      {
-       "proficiency": "Exotic Weapon Proficiency",
-       "name": "Arc Ricochet",
-       "damangeAndType": "2[1d2] + 5 Slash, Bludgeon, Magic",
-       "criticalThreatRange": "20 / x2",
-       "weaponType": [
-        {
-         "weaponCategory": "Shuriken",
-         "damageCategory": "/ Thrown weapons"
-        }
-       ],
-       "absRaceRequired": "None",
-       "minLevel": "15",
-       "requiredTrait": "None",
-       "umd": "No UMD needed",
-       "handedness": "",
-       "attackMod": "DEX",
-       "damageMod": "STR",
-       "binding": "Bound to Account on Acquire",
-       "binding_url": "https://ddowiki.com/page/Bind",
-       "durability": "165",
-       "material": "Steel",
-       "material_url": "https://ddowiki.com/page/Steel",
-       "hardness": "25",
-       "baseValue": "6,018pp 2sp",
-       "weight": "0.50 lbs",
-       "upgradable": "Not upgradeable",
-       "description": "Lightning flickers between the barbs on this shuriken.",
-       "enchantments": [
-        {
-         "enchantment": [
-          {
-           "name": "Returning",
-           "name_url": "https://ddowiki.com/page/Returning",
-           "fullText": "Returning"
-          }
-         ]
-        },
-        {
-         "enchantment": [
-          {
-           "name": "+5 Enhancement Bonus",
-           "name_url": "https://ddowiki.com/page/Enhancement_bonus",
-           "fullText": "+5 Enhancement Bonus"
-          }
-         ]
-        },
-        {
-         "enchantment": [
-          {
-           "name": "Vorpal",
-           "name_url": "https://ddowiki.com/page/Vorpal#Vorpal",
-           "fullText": "Vorpal"
-          }
-         ]
-        },
-        {
-         "enchantment": [
-          {
-           "name": "Reverberating 4",
-           "name_url": "https://ddowiki.com/page/Reverberating",
-           "fullText": "Reverberating 4"
-          }
-         ]
-        },
-        {
-         "enchantment": [
-          {
-           "name": "Jolting 9",
-           "name_url": "https://ddowiki.com/page/Jolting",
-           "fullText": "Jolting 9"
-          }
-         ]
-        },
-        {
-         "enchantment": [
-          {
-           "name": "Blunted Ammunition",
-           "name_url": "https://ddowiki.com/page/Blunted_Ammunition",
-           "fullText": "Blunted Ammunition"
-          }
-         ]
-        },
-        {
-         "oneOfEnchantment": [
-          {
-          },
-          {
-          },
-          {
-          },
-          {
-          },
-          {
-          },
-          {
-          },
-          {
-          },
-          {
-          },
-          {
-          },
-          {
-          },
-          {
-          },
-          {
-          },
-          {
-          },
-          {
-          },
-          {
-          },
-          {
-          }
-         ],
-         "enchantment": [
-          {
-           "fullText": "Empty Red Augment Slot"
-          }
-         ]
-        },
-        {
-         "enchantment": [
-          {
-           "name": "Mythic Weapon Boost",
-           "name_url": "https://ddowiki.com/page/Mythic_Boost",
-           "fullText": "Mythic Weapon Boost +2 or +4"
-          }
-         ]
-        }
-       ],
-       "locationInformation": [
-        {
-         "location": "Ruinous Schemes",
-         "location_url": "https://ddowiki.com/page/Ruinous_Schemes",
-         "locationExtra": ", End chest"
-        }
-       ]
-      }
-     ]
-    }
-   ]
-  },
-  {
-   "weapon": [
-    {
-     "name": "The Morning Star (Level 15)",
-     "damangeAndType": "[1d2] + 5 Slash, Magic",
-     "minLevel": "15",
-     "binding": "Bound to Character on Equip",
-     "quest": "Friends in Low Places, End chest (Heroic Hard)",
-     "criticalProfile": "",
-     "enchantments": "Returning",
-     "enchantments_url": "https://ddowiki.com/page/Returning",
-     "errata": "",
-     "weaponDetail": [
-      {
-       "proficiency": "Exotic Weapon Proficiency",
-       "name": "The Morning Star (Level 15)",
-       "damangeAndType": "[1d2] + 5 Slash, Magic",
-       "criticalThreatRange": "20 / x2",
-       "weaponType": [
-        {
-         "weaponCategory": "Shuriken",
-         "damageCategory": "/ Thrown weapons"
-        }
-       ],
-       "absRaceRequired": "None",
-       "minLevel": "15",
-       "requiredTrait": "None",
-       "umd": "No UMD needed",
-       "handedness": "",
-       "attackMod": "DEX",
-       "damageMod": "STR",
-       "binding": "Bound to Character on Equip",
-       "binding_url": "https://ddowiki.com/page/Bind",
-       "durability": "105",
-       "material": "Steel",
-       "material_url": "https://ddowiki.com/page/Steel",
-       "hardness": "19",
-       "baseValue": "6,000pp 2sp",
-       "weight": "0.50 lbs",
-       "upgradable": "Not upgradeable",
-       "description": "Sometimes the only star you need is the sun in the sky.",
-       "enchantments": [
-        {
-         "enchantment": [
-          {
-           "name": "Returning",
-           "name_url": "https://ddowiki.com/page/Returning",
-           "fullText": "Returning"
-          }
-         ]
-        },
-        {
-         "enchantment": [
-          {
-           "name": "+5 Enhancement Bonus",
-           "name_url": "https://ddowiki.com/page/Enhancement_bonus",
-           "fullText": "+5 Enhancement Bonus"
-          }
-         ]
-        },
-        {
-         "enchantment": [
-          {
-           "name": "Solar I",
-           "name_url": "https://ddowiki.com/page/Elemental_(weapon)#Solar",
-           "fullText": "Solar I"
-          }
-         ]
-        },
-        {
-         "enchantment": [
-          {
-           "name": "Flaming II",
-           "name_url": "https://ddowiki.com/page/Elemental_(weapon)#Flaming",
-           "fullText": "Flaming II"
-          }
-         ]
-        },
-        {
-         "enchantment": [
-          {
-           "name": "Ghostbane II",
-           "name_url": "https://ddowiki.com/page/Ghostbane",
-           "fullText": "Ghostbane II"
-          }
-         ]
-        },
-        {
-         "oneOfEnchantment": [
-          {
-          },
-          {
-          },
-          {
-          },
-          {
-          },
-          {
-          },
-          {
-          },
-          {
-          },
-          {
-          },
-          {
-          },
-          {
-          },
-          {
-          },
-          {
-          },
-          {
-          },
-          {
-          },
-          {
-          },
-          {
-          }
-         ],
-         "enchantment": [
-          {
-           "fullText": "Empty Red Augment Slot"
-          }
-         ]
-        },
-        {
-         "enchantment": [
-          {
-           "name": "Mythic Weapon Boost",
-           "name_url": "https://ddowiki.com/page/Mythic_Boost",
-           "fullText": "Mythic Weapon Boost +2 or +4"
-          }
-         ]
-        }
-       ],
-       "locationInformation": [
-        {
-         "location": "Friends in Low Places",
-         "location_url": "https://ddowiki.com/page/Friends_in_Low_Places",
-         "locationExtra": ", End chest (Heroic Hard)"
-        }
-       ]
-      }
-     ]
-    }
-   ]
-  },
-  {
-   "weapon": [
-    {
-     "name": "The Morning Star (Level 16)",
-     "damangeAndType": "[1d2] + 5 Slash, Magic",
-     "minLevel": "16",
-     "binding": "Bound to Character on Equip",
-     "quest": "Friends in Low Places, End chest (Heroic Elite)",
-     "criticalProfile": "",
-     "enchantments": "Returning",
-     "enchantments_url": "https://ddowiki.com/page/Returning",
-     "errata": "",
-     "weaponDetail": [
-      {
-       "proficiency": "Exotic Weapon Proficiency",
-       "name": "The Morning Star (Level 16)",
-       "damangeAndType": "[1d2] + 5 Slash, Magic",
-       "criticalThreatRange": "20 / x2",
-       "weaponType": [
-        {
-         "weaponCategory": "Shuriken",
-         "damageCategory": "/ Thrown weapons"
-        }
-       ],
-       "absRaceRequired": "None",
-       "minLevel": "16",
-       "requiredTrait": "None",
-       "umd": "No UMD needed",
-       "handedness": "",
-       "attackMod": "DEX",
-       "damageMod": "STR",
-       "binding": "Bound to Character on Equip",
-       "binding_url": "https://ddowiki.com/page/Bind",
-       "durability": "105",
-       "material": "Steel",
-       "material_url": "https://ddowiki.com/page/Steel",
-       "hardness": "19",
-       "baseValue": "6,400pp 2sp",
-       "weight": "0.50 lbs",
-       "upgradable": "Not upgradeable",
-       "description": "Sometimes the only star you need is the sun in the sky.",
-       "enchantments": [
-        {
-         "enchantment": [
-          {
-           "name": "Returning",
-           "name_url": "https://ddowiki.com/page/Returning",
-           "fullText": "Returning"
-          }
-         ]
-        },
-        {
-         "enchantment": [
-          {
-           "name": "+5 Enhancement Bonus",
-           "name_url": "https://ddowiki.com/page/Enhancement_bonus",
-           "fullText": "+5 Enhancement Bonus"
-          }
-         ]
-        },
-        {
-         "enchantment": [
-          {
-           "name": "Solar II",
-           "name_url": "https://ddowiki.com/page/Elemental_(weapon)#Solar",
-           "fullText": "Solar II"
-          }
-         ]
-        },
-        {
-         "enchantment": [
-          {
-           "name": "Flaming III",
-           "name_url": "https://ddowiki.com/page/Elemental_(weapon)#Flaming",
-           "fullText": "Flaming III"
-          }
-         ]
-        },
-        {
-         "enchantment": [
-          {
-           "name": "Ghostbane II",
-           "name_url": "https://ddowiki.com/page/Ghostbane",
-           "fullText": "Ghostbane II"
-          }
-         ]
-        },
-        {
-         "oneOfEnchantment": [
-          {
-          },
-          {
-          },
-          {
-          },
-          {
-          },
-          {
-          },
-          {
-          },
-          {
-          },
-          {
-          },
-          {
-          },
-          {
-          },
-          {
-          },
-          {
-          },
-          {
-          },
-          {
-          },
-          {
-          },
-          {
-          }
-         ],
-         "enchantment": [
-          {
-           "fullText": "Empty Red Augment Slot"
-          }
-         ]
-        },
-        {
-         "enchantment": [
-          {
-           "name": "Mythic Weapon Boost",
-           "name_url": "https://ddowiki.com/page/Mythic_Boost",
-           "fullText": "Mythic Weapon Boost +2 or +4"
-          }
-         ]
-        }
-       ],
-       "locationInformation": [
-        {
-         "location": "Friends in Low Places",
-         "location_url": "https://ddowiki.com/page/Friends_in_Low_Places",
-         "locationExtra": ", End chest (Heroic Elite)"
-        }
-       ]
-      }
-     ]
-    }
-   ]
-  },
-  {
-   "weapon": [
-    {
-     "name": "Thunder-Forged Alloy Shuriken",
-     "damangeAndType": "3.50 [1d2] + 9 Slash, Silver, Adamantine, Mithral, Cold Iron, Magic, Byeshk",
-     "minLevel": "22",
-     "binding": "Unbound",
-     "quest": "Magma Forge, Crafted from various ingredients",
-     "criticalProfile": "",
-     "enchantments": "+9 Enhancement Bonus",
-     "enchantments_url": "https://ddowiki.com/page/Enhancement_bonus",
-     "errata": "",
-     "weaponDetail": [
-      {
-       "proficiency": "Exotic Weapon Proficiency",
-       "name": "Thunder-Forged Alloy Shuriken",
-       "damangeAndType": "3.50 [1d2] + 9 Slash, Silver, Adamantine, Mithral, Cold Iron, Magic, Byeshk",
-       "criticalThreatRange": "20 / x2",
-       "weaponType": [
-        {
-         "weaponCategory": "Shuriken",
-         "damageCategory": "/ Thrown weapons"
-        }
-       ],
-       "absRaceRequired": "None",
-       "minLevel": "22",
-       "requiredTrait": "None",
-       "umd": "No UMD needed",
-       "handedness": "",
-       "attackMod": "DEX",
-       "damageMod": "STR",
-       "binding": "Unbound",
-       "binding_url": "https://ddowiki.com/page/Bind",
-       "durability": "145",
-       "material": "Adamantine",
-       "material_url": "https://ddowiki.com/page/Adamantine",
-       "hardness": "29",
-       "baseValue": "8,800pp 2sp",
-       "weight": "0.50 lbs",
-       "upgradable": "Thunder-Forged",
-       "tips": [
-        {
-         "tip": "20 Thunder-Forged Dwarven Ingots"
-        },
-        {
-         "tip": "15 Commendations of Valor"
-        }
-       ],
-       "description": "A shuriken forged from metals long in proximity to dragons under Thunderholme.",
-       "enchantments": [
-        {
-         "enchantment": [
-          {
-           "name": "+9 Enhancement Bonus",
-           "name_url": "https://ddowiki.com/page/Enhancement_bonus",
-           "fullText": "+9 Enhancement Bonus"
-          }
-         ]
-        },
-        {
-         "oneOfEnchantment": [
-          {
-          },
-          {
-          },
-          {
-          },
-          {
-          },
-          {
-          },
-          {
-          },
-          {
-          },
-          {
-          },
-          {
-          },
-          {
-          },
-          {
-          },
-          {
-          },
-          {
-          },
-          {
-          },
-          {
-          },
-          {
-          },
-          {
-          },
-          {
-          },
-          {
-          },
-          {
-          },
-          {
-          },
-          {
-          },
-          {
-          },
-          {
-          },
-          {
-          }
-         ],
-         "enchantment": [
-          {
-           "fullText": "Empty Orange Augment Slot"
-          }
-         ]
-        },
-        {
-         "enchantment": [
-          {
-           "name": "Returning",
-           "name_url": "https://ddowiki.com/page/Returning",
-           "fullText": "Returning"
-          }
-         ]
-        },
-        {
-         "enchantment": [
-          {
-           "name": "Thunder-Forged (Tier 0)",
-           "name_url": "https://ddowiki.com/page/Thunder-Forged",
-           "fullText": "Thunder-Forged (Tier 0)"
-          }
-         ]
-        },
-        {
-         "enchantment": [
-          {
-           "name": "Mythic Weapon Boost",
-           "name_url": "https://ddowiki.com/page/Mythic_Boost",
-           "fullText": "Mythic Weapon Boost +2 or +4"
-          }
-         ]
-        },
-        {
-         "enchantment": [
-          {
-           "fullText": "20 Thunder-Forged Dwarven Ingots",
-           "fullText_url": "https://ddowiki.com/page/Item:Thunder-Forged_Dwarven_Ingot"
-          }
-         ]
-        },
-        {
-         "enchantment": [
-          {
-           "fullText": "15 Commendations of Valor",
-           "fullText_url": "https://ddowiki.com/page/Item:Commendation_of_Valor"
-          }
-         ]
-        }
-       ],
-       "locationInformation": [
-        {
-         "location": "Magma Forge",
-         "location_url": "https://ddowiki.com/page/Magma_Forge",
-         "locationExtra": ", Crafted from various ingredients"
-        }
-       ]
-      }
-     ]
-    }
-   ]
-  },
-  {
-   "weapon": [
-    {
-     "name": "The Morning Star (Level 25)",
-     "damangeAndType": "2 [1d2] + 7 Slash, Magic",
-     "minLevel": "25",
-     "binding": "Bound to Character on Equip",
-     "quest": "Friends in Low Places, End chest (Epic Normal) ;\nShadow Over Wheloon, Quest chain end reward (Epic)",
-     "criticalProfile": "",
-     "enchantments": "Returning",
-     "enchantments_url": "https://ddowiki.com/page/Returning",
-     "errata": "",
-     "weaponDetail": [
-      {
-       "proficiency": "Exotic Weapon Proficiency",
-       "name": "The Morning Star (Level 25)",
-       "damangeAndType": "2 [1d2] + 7 Slash, Magic",
-       "criticalThreatRange": "20 / x2",
-       "weaponType": [
-        {
-         "weaponCategory": "Shuriken",
-         "damageCategory": "/ Thrown weapons"
-        }
-       ],
-       "absRaceRequired": "None",
-       "minLevel": "25",
-       "requiredTrait": "None",
-       "umd": "No UMD needed",
-       "handedness": "",
-       "attackMod": "DEX",
-       "damageMod": "STR",
-       "binding": "Bound to Character on Equip",
-       "binding_url": "https://ddowiki.com/page/Bind",
-       "durability": "175",
-       "material": "Steel",
-       "material_url": "https://ddowiki.com/page/Steel",
-       "hardness": "26",
-       "baseValue": "10,000pp 2sp",
-       "weight": "0.50 lbs",
-       "upgradable": "Not upgradeable",
-       "description": "Sometimes the only star you need is the sun in the sky.",
-       "enchantments": [
-        {
-         "enchantment": [
-          {
-           "name": "Returning",
-           "name_url": "https://ddowiki.com/page/Returning",
-           "fullText": "Returning"
-          }
-         ]
-        },
-        {
-         "enchantment": [
-          {
-           "name": "+7 Enhancement Bonus",
-           "name_url": "https://ddowiki.com/page/Enhancement_bonus",
-           "fullText": "+7 Enhancement Bonus"
-          }
-         ]
-        },
-        {
-         "enchantment": [
-          {
-           "name": "Solar IV",
-           "name_url": "https://ddowiki.com/page/Elemental_(weapon)#Solar",
-           "fullText": "Solar IV"
-          }
-         ]
-        },
-        {
-         "enchantment": [
-          {
-           "name": "Flaming V",
-           "name_url": "https://ddowiki.com/page/Elemental_(weapon)#Flaming",
-           "fullText": "Flaming V"
-          }
-         ]
-        },
-        {
-         "enchantment": [
-          {
-           "name": "Ghostbane IV",
-           "name_url": "https://ddowiki.com/page/Ghostbane",
-           "fullText": "Ghostbane IV"
-          }
-         ]
-        },
-        {
-         "oneOfEnchantment": [
-          {
-          },
-          {
-          },
-          {
-          },
-          {
-          },
-          {
-          },
-          {
-          },
-          {
-          },
-          {
-          },
-          {
-          },
-          {
-          },
-          {
-          },
-          {
-          },
-          {
-          },
-          {
-          },
-          {
-          },
-          {
-          }
-         ],
-         "enchantment": [
-          {
-           "fullText": "Empty Red Augment Slot"
-          }
-         ]
-        },
-        {
-         "enchantment": [
-          {
-           "name": "Mythic Weapon Boost",
-           "name_url": "https://ddowiki.com/page/Mythic_Boost",
-           "fullText": "Mythic Weapon Boost +2 or +4"
-          }
-         ]
-        }
-       ],
-       "locationInformation": [
-        {
-         "location": "Shadow Over Wheloon",
-         "location_url": "https://ddowiki.com/page/Shadow_Over_Wheloon",
-         "locationExtra": ", End chest (Epic Normal) ;"
-        }
-       ]
-      }
-     ]
-    }
-   ]
-  },
-  {
-   "weapon": [
-    {
-     "name": "Legendary Green Steel Shuriken",
-     "damangeAndType": "5[1d2] + 14 Slash, Evil, Magic",
-     "minLevel": "26",
-     "binding": "Bound to Character on Acquire",
-     "quest": "Altar of Fecundity, Manufactured Ingredient Recipes",
-     "criticalProfile": "",
-     "enchantments": "+14 Enhancement Bonus",
-     "enchantments_url": "https://ddowiki.com/page/Enhancement_bonus",
-     "errata": "",
-     "weaponDetail": [
-      {
-       "proficiency": "Exotic Weapon Proficiency",
-       "name": "Legendary Green Steel Shuriken",
-       "damangeAndType": "5[1d2] + 14 Slash, Evil, Magic",
-       "criticalThreatRange": "20 / x2",
-       "weaponType": [
-        {
-         "weaponCategory": "Shuriken",
-         "damageCategory": "/ Thrown weapons"
-        }
-       ],
-       "absRaceRequired": "None",
-       "minLevel": "26",
-       "requiredTrait": "None",
-       "umd": "No UMD needed",
-       "handedness": "",
-       "attackMod": "DEX",
-       "damageMod": "STR",
-       "binding": "Bound to Character on Acquire",
-       "binding_url": "https://ddowiki.com/page/Bind",
-       "durability": "225",
-       "material": "Steel",
-       "material_url": "https://ddowiki.com/page/Steel",
-       "hardness": "31",
-       "baseValue": "30,051pp 3gp 3sp 6cp",
-       "weight": "0.50 lbs",
-       "upgradable": "Not upgradeable",
-       "tips": [
-        {
-         "tip": "+14 Legendary Green Steel Shuriken"
-        },
-        {
-         "tip": "100 Codex Runes"
-        },
-        {
-         "tip": "100 Commendations of Valor"
-        },
-        {
-         "tip": "Altar of Fecundity"
-        }
-       ],
-       "description": "A tiny circular throwing weapon with a serrated edge. Favored by the plentiful ninjas of Shavarath.",
-       "enchantments": [
-        {
-         "enchantment": [
-          {
-           "name": "+14 Enhancement Bonus",
-           "name_url": "https://ddowiki.com/page/Enhancement_bonus",
-           "fullText": "+14 Enhancement Bonus"
-          }
-         ]
-        },
-        {
-         "enchantment": [
-          {
-           "name": "Legendary Green Steel",
-           "name_url": "https://ddowiki.com/page/Legendary_Green_Steel",
-           "fullText": "Legendary Green Steel"
-          }
-         ]
-        },
-        {
-         "enchantment": [
-          {
-           "name": "Returning",
-           "name_url": "https://ddowiki.com/page/Returning",
-           "fullText": "Returning"
-          }
-         ]
-        },
-        {
-         "enchantment": [
-          {
-           "name": "Mythic Weapon Boost",
-           "name_url": "https://ddowiki.com/page/Mythic_Boost",
-           "fullText": "Mythic Weapon Boost +2 or +4"
-          }
-         ]
-        },
-        {
-         "enchantment": [
-          {
-           "fullText": "Codex Runes",
-           "fullText_url": "https://ddowiki.com/page/Item:Codex_Rune"
-          }
-         ]
-        },
-        {
-         "enchantment": [
-          {
-           "fullText": "100 Commendations of Valor",
-           "fullText_url": "https://ddowiki.com/page/Item:Commendation_of_Valor"
-          }
-         ]
-        }
-       ],
-       "locationInformation": [
-        {
-         "location": "Manufactured Ingredient Recipes",
-         "location_url": "https://ddowiki.com/page/Altar_of_Fecundity_-_Manufactured_Ingredient_Recipes",
-         "locationExtra": ","
-        }
-       ]
-      }
-     ]
-    }
-   ]
-  },
-  {
-   "weapon": [
-    {
-     "name": "The Morning Star (Level 26)",
-     "damangeAndType": "2 [1d2] + 8 Slash, Magic",
-     "minLevel": "26",
-     "binding": "Bound to Character on Equip",
-     "quest": "Friends in Low Places, End chest (Epic Hard)",
-     "criticalProfile": "",
-     "enchantments": "Returning",
-     "enchantments_url": "https://ddowiki.com/page/Returning",
-     "errata": "",
-     "weaponDetail": [
-      {
-       "proficiency": "Exotic Weapon Proficiency",
-       "name": "The Morning Star (Level 26)",
-       "damangeAndType": "2 [1d2] + 8 Slash, Magic",
-       "criticalThreatRange": "20 / x2",
-       "weaponType": [
-        {
-         "weaponCategory": "Shuriken",
-         "damageCategory": "/ Thrown weapons"
-        }
-       ],
-       "absRaceRequired": "None",
-       "minLevel": "26",
-       "requiredTrait": "None",
-       "umd": "No UMD needed",
-       "handedness": "",
-       "attackMod": "DEX",
-       "damageMod": "STR",
-       "binding": "Bound to Character on Equip",
-       "binding_url": "https://ddowiki.com/page/Bind",
-       "durability": "185",
-       "material": "Steel",
-       "material_url": "https://ddowiki.com/page/Steel",
-       "hardness": "27",
-       "baseValue": "10,400pp 2sp",
-       "weight": "0.50 lbs",
-       "upgradable": "Not upgradeable",
-       "description": "Sometimes the only star you need is the sun in the sky.",
-       "enchantments": [
-        {
-         "enchantment": [
-          {
-           "name": "Returning",
-           "name_url": "https://ddowiki.com/page/Returning",
-           "fullText": "Returning"
-          }
-         ]
-        },
-        {
-         "enchantment": [
-          {
-           "name": "+8 Enhancement Bonus",
-           "name_url": "https://ddowiki.com/page/Enhancement_bonus",
-           "fullText": "+8 Enhancement Bonus"
-          }
-         ]
-        },
-        {
-         "enchantment": [
-          {
-           "name": "Solar IV",
-           "name_url": "https://ddowiki.com/page/Elemental_(weapon)#Solar",
-           "fullText": "Solar IV"
-          }
-         ]
-        },
-        {
-         "enchantment": [
-          {
-           "name": "Flaming V",
-           "name_url": "https://ddowiki.com/page/Elemental_(weapon)#Flaming",
-           "fullText": "Flaming V"
-          }
-         ]
-        },
-        {
-         "enchantment": [
-          {
-           "name": "Ghostbane V",
-           "name_url": "https://ddowiki.com/page/Ghostbane",
-           "fullText": "Ghostbane V"
-          }
-         ]
-        },
-        {
-         "oneOfEnchantment": [
-          {
-          },
-          {
-          },
-          {
-          },
-          {
-          },
-          {
-          },
-          {
-          },
-          {
-          },
-          {
-          },
-          {
-          },
-          {
-          },
-          {
-          },
-          {
-          },
-          {
-          },
-          {
-          },
-          {
-          },
-          {
-          }
-         ],
-         "enchantment": [
-          {
-           "fullText": "Empty Red Augment Slot"
-          }
-         ]
-        },
-        {
-         "enchantment": [
-          {
-           "name": "Mythic Weapon Boost",
-           "name_url": "https://ddowiki.com/page/Mythic_Boost",
-           "fullText": "Mythic Weapon Boost +2 or +4"
-          }
-         ]
-        }
-       ],
-       "locationInformation": [
-        {
-         "location": "Friends in Low Places",
-         "location_url": "https://ddowiki.com/page/Friends_in_Low_Places",
-         "locationExtra": ", End chest (Epic Hard)"
-        }
-       ]
-      }
-     ]
-    }
-   ]
-  },
-  {
-   "weapon": [
-    {
-     "name": "The Morning Star (Level 27)",
-     "damangeAndType": "2 [1d2] + 8 Slash, Magic",
-     "minLevel": "27",
-     "binding": "Bound to Character on Equip",
-     "quest": "Friends in Low Places, End chest (Epic Elite)",
-     "criticalProfile": "",
-     "enchantments": "Returning",
-     "enchantments_url": "https://ddowiki.com/page/Returning",
-     "errata": "",
-     "weaponDetail": [
-      {
-       "proficiency": "Exotic Weapon Proficiency",
-       "name": "The Morning Star (Level 27)",
-       "damangeAndType": "2 [1d2] + 8 Slash, Magic",
-       "criticalThreatRange": "20 / x2",
-       "weaponType": [
-        {
-         "weaponCategory": "Shuriken",
-         "damageCategory": "/ Thrown weapons"
-        }
-       ],
-       "absRaceRequired": "None",
-       "minLevel": "27",
-       "requiredTrait": "None",
-       "umd": "No UMD needed",
-       "handedness": "",
-       "attackMod": "DEX",
-       "damageMod": "STR",
-       "binding": "Bound to Character on Equip",
-       "binding_url": "https://ddowiki.com/page/Bind",
-       "durability": "195",
-       "material": "Steel",
-       "material_url": "https://ddowiki.com/page/Steel",
-       "hardness": "28",
-       "baseValue": "10,800pp 2sp",
-       "weight": "0.50 lbs",
-       "upgradable": "Not upgradeable",
-       "description": "Sometimes the only star you need is the sun in the sky.",
-       "enchantments": [
-        {
-         "enchantment": [
-          {
-           "name": "Returning",
-           "name_url": "https://ddowiki.com/page/Returning",
-           "fullText": "Returning"
-          }
-         ]
-        },
-        {
-         "enchantment": [
-          {
-           "name": "+8 Enhancement Bonus",
-           "name_url": "https://ddowiki.com/page/Enhancement_bonus",
-           "fullText": "+8 Enhancement Bonus"
-          }
-         ]
-        },
-        {
-         "enchantment": [
-          {
-           "name": "Solar V",
-           "name_url": "https://ddowiki.com/page/Elemental_(weapon)#Solar",
-           "fullText": "Solar V"
-          }
-         ]
-        },
-        {
-         "enchantment": [
-          {
-           "name": "Flaming VI",
-           "name_url": "https://ddowiki.com/page/Elemental_(weapon)#Flaming",
-           "fullText": "Flaming VI"
-          }
-         ]
-        },
-        {
-         "enchantment": [
-          {
-           "name": "Ghostbane V",
-           "name_url": "https://ddowiki.com/page/Ghostbane",
-           "fullText": "Ghostbane V"
-          }
-         ]
-        },
-        {
-         "oneOfEnchantment": [
-          {
-          },
-          {
-          },
-          {
-          },
-          {
-          },
-          {
-          },
-          {
-          },
-          {
-          },
-          {
-          },
-          {
-          },
-          {
-          },
-          {
-          },
-          {
-          },
-          {
-          },
-          {
-          },
-          {
-          },
-          {
-          }
-         ],
-         "enchantment": [
-          {
-           "fullText": "Empty Red Augment Slot"
-          }
-         ]
-        },
-        {
-         "enchantment": [
-          {
-           "name": "Mythic Weapon Boost",
-           "name_url": "https://ddowiki.com/page/Mythic_Boost",
-           "fullText": "Mythic Weapon Boost +2 or +4"
-          }
-         ]
-        }
-       ],
-       "locationInformation": [
-        {
-         "location": "Friends in Low Places",
-         "location_url": "https://ddowiki.com/page/Friends_in_Low_Places",
-         "locationExtra": ", End chest (Epic Elite)"
-        }
-       ]
-      }
-     ]
-    }
-   ]
-  },
-  {
-   "weapon": [
-    {
-     "name": "Dawnbringer (level 28)",
-     "damangeAndType": "5.50[1d2] + 12 Slash, Good, Magic",
-     "minLevel": "28",
-     "binding": "Bound to Account on Acquire",
-     "quest": "The Devil's Details, End chest",
-     "criticalProfile": "",
-     "enchantments": "+12 Enhancement Bonus",
-     "enchantments_url": "https://ddowiki.com/page/Enhancement_bonus",
-     "errata": "",
-     "weaponDetail": [
-      {
-       "proficiency": "Exotic Weapon Proficiency",
-       "name": "Dawnbringer (level 28)",
-       "damangeAndType": "5.50[1d2] + 12 Slash, Good, Magic",
-       "criticalThreatRange": "20 /x2",
-       "weaponType": [
-        {
-         "weaponCategory": "Shuriken",
-         "damageCategory": "/ Thrown weapons"
-        }
-       ],
-       "absRaceRequired": "None",
-       "minLevel": "28",
-       "requiredTrait": "None",
-       "umd": "No UMD needed",
-       "handedness": "",
-       "attackMod": "DEX",
-       "damageMod": "STR",
-       "binding": "Bound to Account on Acquire",
-       "binding_url": "https://ddowiki.com/page/Bind",
-       "durability": "205",
-       "material": "Steel",
-       "material_url": "https://ddowiki.com/page/Steel",
-       "hardness": "35",
-       "baseValue": "11,300pp 2sp",
-       "weight": "0.50 lbs",
-       "upgradable": "Not upgradeable",
-       "description": "The first star shines the brightest.",
-       "enchantments": [
-        {
-         "enchantment": [
-          {
-           "name": "+12 Enhancement Bonus",
-           "name_url": "https://ddowiki.com/page/Enhancement_bonus",
-           "fullText": "+12 Enhancement Bonus"
-          }
-         ]
-        },
-        {
-         "enchantment": [
-          {
-           "name": "Returning",
-           "name_url": "https://ddowiki.com/page/Returning",
-           "fullText": "Returning"
-          }
-         ]
-        },
-        {
-         "enchantment": [
-          {
-           "name": "Sovereign Vorpal",
-           "name_url": "https://ddowiki.com/page/Vorpal#Sovereign_Vorpal",
-           "fullText": "Sovereign Vorpal"
-          }
-         ]
-        },
-        {
-         "enchantment": [
-          {
-           "name": "Deadly XI",
-           "name_url": "https://ddowiki.com/page/Deadly",
-           "fullText": "Deadly XI"
-          }
-         ]
-        },
-        {
-         "enchantment": [
-          {
-           "name": "Bloodletter VII",
-           "name_url": "https://ddowiki.com/page/Bloodletter",
-           "fullText": "Bloodletter VII"
-          }
-         ]
-        },
-        {
-         "enchantment": [
-          {
-           "name": "Ranged Power +6",
-           "name_url": "https://ddowiki.com/page/Ranged_Power",
-           "fullText": "Ranged Power +6"
-          }
-         ]
-        },
-        {
-         "oneOfEnchantment": [
-          {
-          },
-          {
-          },
-          {
-          },
-          {
-          },
-          {
-          },
-          {
-          },
-          {
-          },
-          {
-          },
-          {
-          },
-          {
-          },
-          {
-          },
-          {
-          },
-          {
-          },
-          {
-          },
-          {
-          },
-          {
-          },
-          {
-          },
-          {
-          },
-          {
-          },
-          {
-          },
-          {
-          },
-          {
-          },
-          {
-          },
-          {
-          },
-          {
-          }
-         ],
-         "enchantment": [
-          {
-           "fullText": "Empty Orange Augment Slot"
-          }
-         ]
-        },
-        {
-         "enchantment": [
-          {
-           "name": "Flametouched Iron",
-           "name_url": "https://ddowiki.com/page/Flametouched_Iron",
-           "fullText": "Flametouched Iron"
-          }
-         ]
-        },
-        {
-         "enchantment": [
-          {
-           "name": "Mythic Weapon Boost",
-           "name_url": "https://ddowiki.com/page/Mythic_Boost",
-           "fullText": "Mythic Weapon Boost +2 or +4"
-          }
-         ]
-        }
-       ],
-       "locationInformation": [
-        {
-         "location": "The Devil's Details",
-         "location_url": "https://ddowiki.com/page/The_Devil%27s_Details",
-         "locationExtra": ", End chest"
-        }
-       ]
-      }
-     ]
-    }
-   ]
-  },
-  {
-   "weapon": [
-    {
-     "name": "Spite, the Fractured Shards*",
-     "damangeAndType": "7[1d2+3] + 15 Pierce, Magic",
-     "minLevel": "28",
-     "binding": "Bound to Character on Acquire",
-     "quest": "Old Baba's Hut, Raid Chest",
-     "criticalProfile": "Critical Profile: 19-20 /x2",
-     "enchantments": "+15 Enhancement Bonus",
-     "enchantments_url": "https://ddowiki.com/page/Enhancement_bonus",
-     "itemId": "Spite, the Fractured Shards",
-     "url": "https://ddowiki.com/page/Item:Spite,_the_Fractured_Shards",
-     "errata": "Critical Profile: 19-20 /x2"
-    }
-   ]
-  },
-  {
-   "weapon": [
-    {
-     "name": "Legendary Arc Ricochet",
-     "damangeAndType": "5.5[1d2+2] + 15 Slash, Bludgeon, Magic",
-     "minLevel": "29",
-     "binding": "Bound to Account on Acquire",
-     "quest": "Ruinous Schemes, End chest",
-     "criticalProfile": "",
-     "enchantments": "Returning",
-     "enchantments_url": "https://ddowiki.com/page/Returning",
-     "errata": "",
-     "weaponDetail": [
-      {
-       "proficiency": "Exotic Weapon Proficiency",
-       "name": "Legendary Arc Ricochet",
-       "damangeAndType": "5.5[1d2+2] + 15 Slash, Bludgeon, Magic",
-       "criticalThreatRange": "20 / x2",
-       "weaponType": [
-        {
-         "weaponCategory": "Shuriken",
-         "damageCategory": "/ Thrown weapons"
-        }
-       ],
-       "absRaceRequired": "None",
-       "minLevel": "29",
-       "requiredTrait": "None",
-       "umd": "No UMD needed",
-       "handedness": "",
-       "attackMod": "DEX",
-       "damageMod": "STR",
-       "binding": "Bound to Account on Acquire",
-       "binding_url": "https://ddowiki.com/page/Bind",
-       "durability": "305",
-       "material": "Steel",
-       "material_url": "https://ddowiki.com/page/Steel",
-       "hardness": "39",
-       "baseValue": "11,618pp 2sp",
-       "weight": "0.50 lbs",
-       "upgradable": "Not upgradeable",
-       "description": "Lightning flickers between the barbs on this shuriken.",
-       "enchantments": [
-        {
-         "enchantment": [
-          {
-           "name": "Returning",
-           "name_url": "https://ddowiki.com/page/Returning",
-           "fullText": "Returning"
-          }
-         ]
-        },
-        {
-         "enchantment": [
-          {
-           "name": "+15 Enhancement Bonus",
-           "name_url": "https://ddowiki.com/page/Enhancement_bonus",
-           "fullText": "+15 Enhancement Bonus"
-          }
-         ]
-        },
-        {
-         "enchantment": [
-          {
-           "name": "Superior Vorpal",
-           "name_url": "https://ddowiki.com/page/Vorpal#Superior_Vorpal",
-           "fullText": "Superior Vorpal"
-          }
-         ]
-        },
-        {
-         "enchantment": [
-          {
-           "name": "Reverberating 9",
-           "name_url": "https://ddowiki.com/page/Reverberating",
-           "fullText": "Reverberating 9"
-          }
-         ]
-        },
-        {
-         "enchantment": [
-          {
-           "name": "Jolting 22",
-           "name_url": "https://ddowiki.com/page/Jolting",
-           "fullText": "Jolting 22"
-          }
-         ]
-        },
-        {
-         "enchantment": [
-          {
-           "name": "Blunted Ammunition",
-           "name_url": "https://ddowiki.com/page/Blunted_Ammunition",
-           "fullText": "Blunted Ammunition"
-          }
-         ]
-        },
-        {
-         "oneOfEnchantment": [
-          {
-          },
-          {
-          },
-          {
-          },
-          {
-          },
-          {
-          },
-          {
-          },
-          {
-          },
-          {
-          },
-          {
-          },
-          {
-          },
-          {
-          },
-          {
-          },
-          {
-          },
-          {
-          },
-          {
-          },
-          {
-          }
-         ],
-         "enchantment": [
-          {
-           "fullText": "Empty Red Augment Slot"
-          }
-         ]
-        },
-        {
-         "enchantment": [
-          {
-           "name": "Mythic Weapon Boost",
-           "name_url": "https://ddowiki.com/page/Mythic_Boost",
-           "fullText": "Mythic Weapon Boost +2 or +4"
-          }
-         ]
-        }
-       ],
-       "locationInformation": [
-        {
-         "location": "Ruinous Schemes",
-         "location_url": "https://ddowiki.com/page/Ruinous_Schemes",
-         "locationExtra": ", End chest"
-        }
-       ]
-      }
-     ]
-    }
-   ]
-  }
- ]
+    ]
 }

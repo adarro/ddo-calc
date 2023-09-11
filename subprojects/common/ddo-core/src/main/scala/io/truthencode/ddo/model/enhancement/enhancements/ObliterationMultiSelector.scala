@@ -30,6 +30,7 @@ trait ObliterationMultiSelector
   )
   protected lazy val keys: immutable.Seq[String] =
     keyList.map(v => s"$prefix$v")
+
   /**
    * Some enhancements can be taken multiple times (generally up to three)
    */

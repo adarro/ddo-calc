@@ -17,7 +17,7 @@
  */
 package io.truthencode.ddo.model.effect
 
-import enumeratum.{EnumEntry, Enum => SmartEnum}
+import enumeratum.{Enum => SmartEnum, EnumEntry}
 import io.truthencode.ddo.enhancement.{BonusType => Bonus}
 import io.truthencode.ddo.model.attribute.Attribute
 import io.truthencode.ddo.repo.Repo

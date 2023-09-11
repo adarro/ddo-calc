@@ -18,6 +18,7 @@
 package io.truthencode.ddo.model.enhancement.enhancements
 
 trait SubEnhancementInformation {
+
   /**
    * Flag used for determining if this is a Sub-Enhancement having a common parent This is mainly
    * useful when looking up multi-selector group enhancements such as Elemental Obliteration

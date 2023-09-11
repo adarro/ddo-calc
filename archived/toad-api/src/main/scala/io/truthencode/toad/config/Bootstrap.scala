@@ -27,10 +27,10 @@ import scala.concurrent.duration.DurationInt
 import scala.jdk.CollectionConverters.IterableHasAsScala
 
 /**
- * Configures and initializes template / routing etc engines. Please see i.t.t.config Package object for important
- * implicits in scope including the following: Template engines (Jade / mustache etc) via i.t.t.a.Actors Akka actor
- * system Vertx engine Camel Routing Vertx scala integration isn't quite there for 3.x so we'll do that portion in Java
- * until then.
+ * Configures and initializes template / routing etc engines. Please see i.t.t.config Package object
+ * for important implicits in scope including the following: Template engines (Jade / mustache etc)
+ * via i.t.t.a.Actors Akka actor system Vertx engine Camel Routing Vertx scala integration isn't
+ * quite there for 3.x so we'll do that portion in Java until then.
  */
 object Bootstrap {
   val logger: Logger = LoggerFactory.getLogger(getClass.getSimpleName)
@@ -40,10 +40,8 @@ object Bootstrap {
   def init(): Unit = {
     logger.info("Bootstrapping")
     import Implicits._
- //   slowInit()
+    //   slowInit()
   }
-
-
 
   // Spin up Vertx
   // Let's create a simple vertx route
@@ -107,16 +105,17 @@ object Bootstrap {
   // Socko Webserver routing (should migrate to camel routing to vertx)
 
   /**
-   * val routes = Routing.Routes val webServer = new WebServer(WebServerConfig("OpenShift", serverIp, serverPort.toInt),
-   * routes, system) Runtime.getRuntime.addShutdownHook(new Thread { override def run { vertx.close() webServer.stop() }
-   * }) webServer.start()
+   * val routes = Routing.Routes val webServer = new WebServer(WebServerConfig("OpenShift",
+   * serverIp, serverPort.toInt), routes, system) Runtime.getRuntime.addShutdownHook(new Thread {
+   * override def run { vertx.close() webServer.stop() } }) webServer.start()
    */
 
   /**
    * Displays configured ip, port and hostname to info logger.
    */
   def status(): Unit = {
-    logger.info(s"server configured for @ $serverIp on port $serverPort, and should be available on $hostName")
+    logger.info(
+      s"server configured for @ $serverIp on port $serverPort, and should be available on $hostName")
 
   }
 

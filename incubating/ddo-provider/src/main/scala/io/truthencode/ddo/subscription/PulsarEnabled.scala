@@ -20,5 +20,5 @@ package io.truthencode.ddo.subscription
 import com.sksamuel.pulsar4s.PulsarAsyncClient
 
 trait PulsarEnabled {
-val client: PulsarAsyncClient
+  val client: PulsarAsyncClient
 }

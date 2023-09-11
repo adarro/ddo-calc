@@ -18,7 +18,7 @@
 package io.truthencode.ddo.support.requisite
 
 import io.truthencode.ddo.model.feats.Feat
-import io.truthencode.ddo.support.requisite.RequirementImplicits.{FeatImplicits, featToReq}
+import io.truthencode.ddo.support.requisite.RequirementImplicits.{featToReq, FeatImplicits}
 
 import scala.language.{implicitConversions, postfixOps}
 import scala.languageFeature.higherKinds

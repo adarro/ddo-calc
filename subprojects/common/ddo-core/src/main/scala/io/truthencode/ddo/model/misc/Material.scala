@@ -17,7 +17,7 @@
  */
 package io.truthencode.ddo.model.misc
 
-import enumeratum.{EnumEntry, Enum => SmartEnum}
+import enumeratum.{Enum => SmartEnum, EnumEntry}
 
 /**
  * Represents the material make up of an object.

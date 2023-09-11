@@ -33,10 +33,9 @@ import java.time.Duration
  *
  * @note
  *   This feat effectively replaces [[https://ddowiki.com/page/Uncanny_Dodge UncannyDodge]] if the
- *   character has both.
- * i.e. Does not stack, but improves the Dodge feat with an improved Active ability. As of Update
- * 14, using this ability is no longer restricted by number of uses per rest. However, it is
- * restricted by cooldown.
+ *   character has both. i.e. Does not stack, but improves the Dodge feat with an improved Active
+ *   ability. As of Update 14, using this ability is no longer restricted by number of uses per
+ *   rest. However, it is restricted by cooldown.
  * @todo
  *   Need to add Passive Dodge Bonus
  */

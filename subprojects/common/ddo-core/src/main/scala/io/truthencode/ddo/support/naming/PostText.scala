@@ -22,9 +22,10 @@ package io.truthencode.ddo.support.naming
  * (General)'
  */
 trait PostText extends DisplayProperties {
+
   /**
-   * Surrounds the text with the given characters. By default, this is parenthesis.
-   * The default behavior should mimic case classes.
+   * Surrounds the text with the given characters. By default, this is parenthesis. The default
+   * behavior should mimic case classes.
    */
   protected val postTextEnclosure: (String, String) = (" (", ")")
 

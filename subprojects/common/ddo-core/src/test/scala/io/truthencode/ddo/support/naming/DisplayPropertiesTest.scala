@@ -28,6 +28,7 @@ import scala.language.postfixOps
  * Testing name / identity and search prefixs, affixes and separators.
  */
 class DisplayPropertiesTest extends AnyFunSpec with Matchers with LazyLogging {
+
   /**
    * A basic prefix that uses the text parameter value as thee display source with no additional
    * manipulation.
@@ -35,6 +36,7 @@ class DisplayPropertiesTest extends AnyFunSpec with Matchers with LazyLogging {
    *   main text source
    */
   case class SimplePrefix(text: String) extends DisplayName with Prefix {
+
     /**
      * Optional Prefix, used to separate sub-items such as Spell Critical Schools and also to
      * disambiguate certain entities such as Feat: precision.
@@ -54,6 +56,7 @@ class DisplayPropertiesTest extends AnyFunSpec with Matchers with LazyLogging {
   }
 
   case class SkillSearchPrefix(text: String) extends DisplayName with UsingSkillSearchPrefix {
+
     /**
      * Sets or maps the source text for the DisplayName.
      *

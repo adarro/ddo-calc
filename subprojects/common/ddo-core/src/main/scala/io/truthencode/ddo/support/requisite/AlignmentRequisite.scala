@@ -18,12 +18,14 @@
 package io.truthencode.ddo.support.requisite
 
 import io.truthencode.ddo.model.alignment.{AlignmentType, Alignments}
-import io.truthencode.ddo.support.requisite.RequirementImplicits.{alignmentTypeToReq, alignmentsToReq}
+import io.truthencode.ddo.support.requisite.RequirementImplicits.{
+  alignmentTypeToReq,
+  alignmentsToReq
+}
 trait AlignmentRequisite {
 
   /**
-   * Allowed if Character has Any of these Alignments
-   * i.e. Can be Neutral or Good or Chaotic etc
+   * Allowed if Character has Any of these Alignments i.e. Can be Neutral or Good or Chaotic etc
    * @return
    *   Allowed Types
    */
@@ -73,8 +75,7 @@ trait AlignmentRequisite {
 trait AlignmentRequisiteImpl extends AlignmentRequisite {
 
   /**
-   * Allowed if Character has Any of these Alignments
-   * i.e. Can be Neutral or Good or Chaotic etc
+   * Allowed if Character has Any of these Alignments i.e. Can be Neutral or Good or Chaotic etc
    *
    * @return
    *   Allowed Types

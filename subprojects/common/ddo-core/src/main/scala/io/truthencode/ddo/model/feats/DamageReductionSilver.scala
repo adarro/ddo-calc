@@ -20,7 +20,11 @@ package io.truthencode.ddo.model.feats
 import io.truthencode.ddo.model.classes.HeroicCharacterClass
 import io.truthencode.ddo.model.classes.HeroicCharacterClass.FavoredSoul
 import io.truthencode.ddo.model.religions.{Amaunator, SilverFlame, SovereignHost}
-import io.truthencode.ddo.support.requisite.{FeatRequisiteImpl, RequiresAllOfClass, RequiresAnyOfFeat}
+import io.truthencode.ddo.support.requisite.{
+  FeatRequisiteImpl,
+  RequiresAllOfClass,
+  RequiresAnyOfFeat
+}
 
 import scala.collection.immutable
 

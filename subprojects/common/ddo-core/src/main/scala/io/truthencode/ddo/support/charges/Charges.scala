@@ -23,5 +23,5 @@ package io.truthencode.ddo.support.charges
  * well as DragonMarks and wands.
  */
 trait Charges {
-    def maxCharges: Int
+  def maxCharges: Int
 }

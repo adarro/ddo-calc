@@ -21,6 +21,7 @@ package io.truthencode.ddo.support.requisite
  * Created by adarr on 1/30/2017.
  */
 sealed trait GrantOrRevokeExpression {
+
   /**
    * Automatically granted this feat / skill / ability when this criteria is met
    */

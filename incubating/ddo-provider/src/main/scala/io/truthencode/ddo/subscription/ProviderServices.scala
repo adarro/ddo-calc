@@ -35,6 +35,7 @@ object ProviderServices extends App with LogSupport {
   type IntelligenceScore = String
   type CharismaScore = String
   type ConstitutionScore = String
+
   /**
    * Monitors strength scores and modifiers.
    */

@@ -31,6 +31,7 @@ object AvailabilityLevel extends Enum[AvailabilityLevel] {
   override def values: IndexedSeq[AvailabilityLevel] = findValues
 
   case object FreeToPlay extends AvailabilityLevel with Abbreviation {
+
     /**
      * The short form of the word
      */

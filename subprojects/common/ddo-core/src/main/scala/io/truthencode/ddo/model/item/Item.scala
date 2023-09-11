@@ -27,6 +27,7 @@ import io.truthencode.ddo.{BindingFlags, MetaData, SetItem}
  * A general Item, which can be a Weapon, Armor, potion, scroll etc.
  */
 trait Item extends MetaData {
+
   /**
    * A Friendly, Kobold readable description or explanation of the item.
    */
@@ -37,6 +38,7 @@ trait Item extends MetaData {
    * can bypass with a high enough UMD.
    */
   val requiredRaces: List[Race] = Nil
+
   /**
    * A list of races that a player MUST be to equip the item.
    */
@@ -71,20 +73,20 @@ trait Item extends MetaData {
    * Additional Effects such as enchantments on a Weapon
    */
   val effects: List[Effect] = Nil
+
   /**
    * //TODO: create set bonus case classes
    */
   val setBonus: List[SetItem] = Nil
 
   /**
-   * Represents monetary in game amount. plat / gold / copper. Low Priority
-   * i.e. Base Value: 7pp 5gp TODO: Base Value may need to be a double or something to better
-   * represent
+   * Represents monetary in game amount. plat / gold / copper. Low Priority i.e. Base Value: 7pp 5gp
+   * TODO: Base Value may need to be a double or something to better represent
    */
   val baseValue: Option[Coins]
+
   /**
-   * Weight of item, in pounds
-   * i.e. Weight: 2 lbs
+   * Weight of item, in pounds i.e. Weight: 2 lbs
    */
   val weight: Option[Int]
 
@@ -95,14 +97,14 @@ trait Item extends MetaData {
    * withstand before breaking. The material also contributes to this value.
    *
    * @note
-   *   For purposes of this API, only maximum durability is considered. Not instance.
-   * i.e. Durability 120 means 120 / 120, your actual item may have wear.
+   *   For purposes of this API, only maximum durability is considered. Not instance. i.e.
+   *   Durability 120 means 120 / 120, your actual item may have wear.
    */
   val durability: Int
 
   /**
-   * Material what the item is "made from"
-   * I.e. bows - typically wood, plate mail may be steel or dwarven iron.
+   * Material what the item is "made from" I.e. bows - typically wood, plate mail may be steel or
+   * dwarven iron.
    *
    * @example
    *   Druids (and their pets) can wear leather armour. Generally they wear light armour or cloth,

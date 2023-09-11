@@ -21,7 +21,12 @@ import enumeratum.Enum
 import io.truthencode.ddo.model.classes.HeroicCharacterClass
 import io.truthencode.ddo.model.effect.features.FeaturesImpl
 import io.truthencode.ddo.support.naming.FriendlyDisplay
-import io.truthencode.ddo.support.requisite.{ClassRequisiteImpl, Inclusion, Requisite, RequisiteType}
+import io.truthencode.ddo.support.requisite.{
+  ClassRequisiteImpl,
+  Inclusion,
+  Requisite,
+  RequisiteType
+}
 
 import scala.collection.immutable.IndexedSeq
 

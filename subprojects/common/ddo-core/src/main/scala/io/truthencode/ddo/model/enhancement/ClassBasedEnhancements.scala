@@ -22,7 +22,12 @@ import io.truthencode.ddo.model.classes.HeroicCharacterClass
 import io.truthencode.ddo.model.classes.HeroicCharacterClass._
 import io.truthencode.ddo.support.StringUtils.Extensions
 import io.truthencode.ddo.support.naming.DisplayName
-import io.truthencode.ddo.support.requisite.{ClassRequisite, ClassRequisiteImpl, RequiresAllOfClass, RequiresAnyOfClass}
+import io.truthencode.ddo.support.requisite.{
+  ClassRequisite,
+  ClassRequisiteImpl,
+  RequiresAllOfClass,
+  RequiresAnyOfClass
+}
 
 import scala.collection.immutable
 

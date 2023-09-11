@@ -20,7 +20,12 @@ package io.truthencode.ddo.model.feats
 import io.truthencode.ddo.enhancement.BonusType
 import io.truthencode.ddo.model.effect
 import io.truthencode.ddo.model.effect.TriggerEvent
-import io.truthencode.ddo.model.effect.features.{ArmorClassAmountFeature, DodgeChanceFeature, FeaturesImpl, MaxDexBonusFeature}
+import io.truthencode.ddo.model.effect.features.{
+  ArmorClassAmountFeature,
+  DodgeChanceFeature,
+  FeaturesImpl,
+  MaxDexBonusFeature
+}
 import io.truthencode.ddo.support.requisite.{FeatRequisiteImpl, RequiresAllOfFeat}
 
 /**

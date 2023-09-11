@@ -21,51 +21,52 @@ import io.truthencode.ddo.support.requisite.ValueWithRequirements.sortWithChaos
 
 case class SemiOrderedRequirements(valueWithRequirements: ValueWithRequirements*) {
 
-    /**
-     * Required Requisites unless specifically granted by an overriding rule.
-     * @return
-     *   Required Requisites
-     */
-    def prerequisites: Seq[ValueWithRequirements] = {
-        valueWithRequirements.filter { v => v.groupKey.equals(requiredGroupKey) }
-    }
+  /**
+   * Required Requisites unless specifically granted by an overriding rule.
+   * @return
+   *   Required Requisites
+   */
+  def prerequisites: Seq[ValueWithRequirements] = {
+    valueWithRequirements.filter { v => v.groupKey.equals(requiredGroupKey) }
+  }
 
-    def displayPrerequisites: Seq[String] = {
-        for {
-            p <- prerequisites
-            r:Requirement <- p.req.sortWith((x,y) => sortWithChaos(x,y))
-        } yield r.displayText
-    }
+  def displayPrerequisites: Seq[String] = {
+    for {
+      p <- prerequisites
+      r: Requirement <- p.req.sortWith((x, y) => sortWithChaos(x, y))
+    } yield r.displayText
+  }
 
-    /**
-     * Can select based as a bonus when this criteria is met.
-     * @return
-     *   Bonus Selections
-     */
-    def bonusSelectable: Seq[ValueWithRequirements] = {
-        valueWithRequirements.filter { v => v.groupKey.equals("BonusSelection") }
-    }
+  /**
+   * Can select based as a bonus when this criteria is met.
+   * @return
+   *   Bonus Selections
+   */
+  def bonusSelectable: Seq[ValueWithRequirements] = {
+    valueWithRequirements.filter { v => v.groupKey.equals("BonusSelection") }
+  }
 
-    def displayBonusSelections: Seq[String] = {
-        for {
-            p <- bonusSelectable.sorted
-            r <-  p.req.sortWith((x,y) => sortWithChaos(x,y))
-        } yield r.displayText
-    }
-    /**
-     * Includes any automatically granted requirements
-     * @return
-     *   Automatically granted requirements
-     */
-    def grantedBy: Seq[ValueWithRequirements] = {
-        valueWithRequirements.filter { v => v.groupKey.contains("Grant") }
-    }
+  def displayBonusSelections: Seq[String] = {
+    for {
+      p <- bonusSelectable.sorted
+      r <- p.req.sortWith((x, y) => sortWithChaos(x, y))
+    } yield r.displayText
+  }
 
-    def displayGranted: Seq[String] = {
-        for {
-            p <- grantedBy.sorted
-            r <-  p.req.sortWith((x,y) => sortWithChaos(x,y))
-        } yield r.displayText
-    }
+  /**
+   * Includes any automatically granted requirements
+   * @return
+   *   Automatically granted requirements
+   */
+  def grantedBy: Seq[ValueWithRequirements] = {
+    valueWithRequirements.filter { v => v.groupKey.contains("Grant") }
+  }
+
+  def displayGranted: Seq[String] = {
+    for {
+      p <- grantedBy.sorted
+      r <- p.req.sortWith((x, y) => sortWithChaos(x, y))
+    } yield r.displayText
+  }
 
 }

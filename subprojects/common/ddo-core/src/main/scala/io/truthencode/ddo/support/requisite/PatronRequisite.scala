@@ -18,6 +18,7 @@
 package io.truthencode.ddo.support.requisite
 import io.truthencode.ddo.model.favor.FavorPatron
 import io.truthencode.ddo.support.requisite.RequirementImplicits.patronToReq
+
 /**
  * Created by adarr on 2/11/2017.
  */

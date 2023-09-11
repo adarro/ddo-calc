@@ -24,6 +24,7 @@ import io.truthencode.ddo.enumeration.EnumExtensions._
  * Indicates the given object can be stored in some sort of bank or container.
  */
 trait Storable {
+
   /**
    * A list of allowed location slots
    *

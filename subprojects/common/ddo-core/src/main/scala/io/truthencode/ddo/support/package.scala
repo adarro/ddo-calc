@@ -177,6 +177,7 @@ package object support extends LazyLogging {
     }
 
     implicit class IntExtensions(val source: Int) {
+
       /**
        * Convenience toString to add +/- to number for text fields
        * @return
@@ -276,8 +277,7 @@ package object support extends LazyLogging {
       }
 
       /**
-       * Replaces Roman Numeral Representation with Numerical value.
-       * i.e. IV -> 4
+       * Replaces Roman Numeral Representation with Numerical value. i.e. IV -> 4
        * @note
        *   This utility parses using Space as a delimiter. It is generally advised to use this
        *   before other manipulations such as removing spaces or changing cases.
@@ -336,11 +336,11 @@ package object support extends LazyLogging {
        * Will use space as a delimiter, falling back on Case else None.
        *
        * @example
-       * {{{
+       *   {{{
        * val wordList = List("I Believe Mom","i borrow money","IBetterMail","oracle")
        * wordList.map(x => wordsToAcronym(x)}
        * res0:List(Some("IBM"),Some("IBM"),Some("IBM"),None)
-       * }}}
+       *   }}}
        */
       def wordsToAcronym(implicit
         wordMatchStrategy: WordMatchStrategy = WordMatchStrategies.IgnoreCaseWordStrategy

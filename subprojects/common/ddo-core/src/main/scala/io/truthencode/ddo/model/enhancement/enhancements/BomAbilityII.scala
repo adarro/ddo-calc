@@ -22,6 +22,7 @@ import io.truthencode.ddo.model.enhancement.enhancements.classbased.BombardierTi
 
 trait BomAbilityII extends BombardierTierFour with ClassEnhancementImpl with AbilitySelector {
   override val abilitySelections: Seq[Attribute] = Seq(Attribute.Intelligence)
+
   /**
    * Some enhancements can be taken multiple times (generally up to three)
    */

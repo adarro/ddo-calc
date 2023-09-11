@@ -91,7 +91,7 @@ dependencies {
     implementation(
         group = "io.github.davidgregory084",
         name = "vertices-core_$scalaMajorVersion",
-        version = verticesVersion
+        version = verticesVersion,
     )
 
     implementation("io.vertx:vertx-codegen:$vertxVersion")
@@ -107,7 +107,6 @@ dependencies {
 
     testImplementation("org.testcontainers:mongodb:1.16.2")
     testImplementation("org.testcontainers:junit-jupiter:1.16.2")
-
 
     /* swapping to Zookeeper over hazelcast due to Java 9+ issues + Pulsar is using Zookeeper
     So we can attempt to save a bit of overhead
@@ -151,14 +150,13 @@ dependencies {
 
     // Embed web server for testing// https://mvnrepository.com/artifact/org.eclipse.jetty/jetty-server
     testImplementation("org.eclipse.jetty:jetty-server:11.0.7")
-
 }
 
 group = "io.truthencode"
 version = "0.0.1-SNAPSHOT"
 description = "TOAD Api"
-//java.sourceCompatibility = JavaVersion.VERSION_11
-//java.targetCompatibility = JavaVersion.VERSION_11
+// java.sourceCompatibility = JavaVersion.VERSION_11
+// java.targetCompatibility = JavaVersion.VERSION_11
 
 publishing {
     publications.create<MavenPublication>("maven") {
@@ -170,13 +168,15 @@ tasks {
     withType(Test::class.java) {
         useJUnitPlatform {
             includeEngines = setOf("scalatest", "junit-jupiter")
-            if (ci.isCi)
-                excludeTags = setOf(
-                    "Integration",
-                    "io.truthencode.tags.Integration",
-                    "FunctionOnly",
-                    "io.truthencode.tags.FunctionOnly"
-                )
+            if (ci.isCi) {
+                excludeTags =
+                    setOf(
+                        "Integration",
+                        "io.truthencode.tags.Integration",
+                        "FunctionOnly",
+                        "io.truthencode.tags.FunctionOnly",
+                    )
+            }
             testLogging {
                 events("passed", "skipped", "failed")
             }
@@ -187,7 +187,7 @@ tasks {
     // logger.info("concordion output directory: *************************************")
     // // Use the built-in JUnit support of Gradle.
     // "test"(Test::class) {
-    // 
+    //
     // }
 }
 

@@ -65,6 +65,7 @@ trait Character {
   val intelligence: AttributeStat
   val wisdom: AttributeStat
   val charisma: AttributeStat
+
   /**
    * Holds currently applied enhancements from the skill tree.
    * @note
@@ -72,6 +73,7 @@ trait Character {
    *   points for up to three levels
    */
   val enhancements: List[SimpleStatItem[Enhancement]]
+
   /**
    * Holds current Epic destiny acquisitions
    * @note

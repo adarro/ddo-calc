@@ -24,6 +24,7 @@ import io.truthencode.ddo.support.requisite.Requirement.GroupedRequirement
  */
 sealed trait RequisiteExpression {
   self: RequisiteType with Inclusion =>
+
   /**
    * Array of Requirements which can be checked against a given source.
    *

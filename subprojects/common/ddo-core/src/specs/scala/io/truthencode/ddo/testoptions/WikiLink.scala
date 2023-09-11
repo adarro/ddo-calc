@@ -42,11 +42,11 @@ trait WikiLink extends Flexmark {
    * @return
    *   Mutated dataset with specified default options
    */
-  private[this] def wikiLinkTaskOptions()(implicit dataSet: MutableDataSet): () => MutableDataSet = { () =>
+  private[this] def wikiLinkTaskOptions()(implicit
+    dataSet: MutableDataSet): () => MutableDataSet = { () =>
     dataSet
       .set(WikiLinkExtension.IMAGE_LINKS, Boolean.box(true))
 
   }
-
 
 }

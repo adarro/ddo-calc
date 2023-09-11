@@ -48,9 +48,9 @@ sealed trait Requirement
 object Requirement extends Enum[Requirement] {
   case class GroupedRequirement[T <: Requirement](t: T, key: String, reqType: RequisiteType)
     extends Requirement {
-      override def alphaSortKey: String = key
+    override def alphaSortKey: String = key
 
-      /**
+    /**
      * Sets or maps the source text for the DisplayName.
      *
      * @return
@@ -354,8 +354,8 @@ object Requirement extends Enum[Requirement] {
    * @param trained
    *   determines if the skill must be trained to this level or simply a total value after buffs,
    *   equipment, etc. true (i.e. the base skill must be explicitly trained to this level.) false
-   *   the total effective skill must be this level.
-   * i.e. can include bonuses from items / ability scores etc.
+   *   the total effective skill must be this level. i.e. can include bonuses from items / ability
+   *   scores etc.
    */
   case class ReqSkill(id: String, amount: Int, trained: Boolean = false)
     extends Requirement with NumberRequirementSort {

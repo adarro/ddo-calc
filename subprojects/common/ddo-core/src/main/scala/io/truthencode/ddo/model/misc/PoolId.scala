@@ -18,6 +18,7 @@
 package io.truthencode.ddo.model.misc
 
 trait PoolId {
+
   /**
    * Used to group shared timer resources. It is strongly recommended to use one of the values in
    * [[io.truthencode.ddo.model.misc.CoolDownPool]]

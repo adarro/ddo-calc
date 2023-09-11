@@ -37,10 +37,12 @@ object CaseMatchOption extends Enum[CaseMatchOption] {
    * Compares or manipulates based on UpperCase
    */
   case object UpperCase extends CaseMatchOption
+
   /**
    * Compares or manipulates based on LowerCase
    */
   case object LowerCase extends CaseMatchOption
+
   /**
    * Compares or manipulates ignoring or preserving case
    */

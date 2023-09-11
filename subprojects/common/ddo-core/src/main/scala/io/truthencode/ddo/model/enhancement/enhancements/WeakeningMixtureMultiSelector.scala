@@ -18,7 +18,11 @@
 package io.truthencode.ddo.model.enhancement.enhancements
 
 import io.truthencode.ddo.model.enhancement.enhancements.classbased.BombardierTierFive
-import io.truthencode.ddo.support.naming.{DisplayProperties, FriendlyDisplay, WeakeningMixturePrefix}
+import io.truthencode.ddo.support.naming.{
+  DisplayProperties,
+  FriendlyDisplay,
+  WeakeningMixturePrefix
+}
 
 import scala.collection.immutable
 
@@ -31,6 +35,7 @@ trait WeakeningMixtureMultiSelector
   )
   protected lazy val keys: immutable.Seq[String] =
     keyList.map(v => s"$prefix$v")
+
   /**
    * Some enhancements can be taken multiple times (generally up to three)
    */

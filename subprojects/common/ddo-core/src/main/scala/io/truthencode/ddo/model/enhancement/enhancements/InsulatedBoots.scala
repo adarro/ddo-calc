@@ -27,6 +27,7 @@ trait InsulatedBoots extends ApothecaryTierFour with ClassEnhancementImpl {
       |
       |Not quite fashionable, but they'll keep you standing!""".stripMargin
   )
+
   /**
    * Some enhancements can be taken multiple times (generally up to three)
    */

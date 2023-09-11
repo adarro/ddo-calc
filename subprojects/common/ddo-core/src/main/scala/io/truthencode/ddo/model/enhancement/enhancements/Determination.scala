@@ -25,6 +25,7 @@ trait Determination extends ApothecaryCore with ClassEnhancementImpl {
   // Will Save +1
   // override val tree: ClassTrees = ClassTrees.Apothecary
   override lazy val description: Option[String] = Some("+1 Will Save")
+
   /**
    * Some enhancements can be taken multiple times (generally up to three)
    */

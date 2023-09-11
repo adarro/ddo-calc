@@ -34,59 +34,71 @@ val configsVersion: String by project
 val logbackVersion: String by project
 val jetBrainsAnnotationVersion: String by project
 val junitPlatformVersion: String by project
-val junitLauncherVersion:String by project
+val junitLauncherVersion: String by project
 val concordionVersion: String by project
 val concordionExtEmbedVersion: String by project
 val concordionExtCollapseOutputVersion: String by project
 val scalaFmtVersion: String by project
 val junitScalaTestVersion: String by project
-val json4sNativeVersion:String by project
+val json4sNativeVersion: String by project
 
 dependencies {
 
     constraints {
         // Must use single string notation, group / name / version will give an error and apply as a dependency
         // api(group = "org.scala-lang", name = "scala-library", version = scalaLibraryVersion)
-        api("org.scala-lang:scala-library:$scalaLibraryVersion")
-        api("ch.qos.logback:logback-classic:$logbackVersion")
-        api("com.typesafe.scala-logging:scala-logging_${scalaMajorVersion}:$scalaLoggingVersion")
-        api("org.jetbrains:annotations:$jetBrainsAnnotationVersion")
-        api("com.geirsson:scalafmt-core_$scalaMajorVersion:$scalaFmtVersion")
+        api(libs.scala2.library)
+        api(libs.logback.classic)
+        api(libs.typesafe.scala.logging.s213)
+
+        api(libs.scalafmt.core.s213)
         // Test Dependencies
+
+// Monix https://monix.io
+        api(libs.monix.eval.s213)
+        api(libs.monix.reactive.s213)
+
+// Quill https://getquill.io
+        api(libs.quill.core.s213)
+        api(libs.quill.sql.s213)
+        api(libs.quill.monix.s213)
 
         // These dependencies, in implementation, should extend some api denoting test implementation, so perhaps create an apiTest / apiAcceptanceTest config?
 
         // Unit Testing
-        api("org.scalatest:scalatest_$scalaMajorVersion:$scalaTestVersion")
+        api(libs.scalatest.s213)
         api("org.scalacheck:scalacheck_$scalaMajorVersion:$scalaCheckVersion")
-        api("org.scalatestplus:mockito-3-4_$scalaMajorVersion:$scalaTestPlusMockitoVersion")
-        api("org.mockito:mockito-core:$mockitoVersion")
-        api("com.wix:accord-core_${scalaMajorVersion}:${accordVersion}")
-        api("com.wix:accord-scalatest_${scalaMajorVersion}:$accordVersion")
-        // JUnit
+        api(libs.scalatest.plus.mockito.s213)
+        api(libs.mockito.core)
+        api(libs.wix.accord.core.s213)
+        api(libs.wix.accord.scalatest.s213)
 
-        api("org.junit.jupiter:junit-jupiter:$junitPlatformVersion")
+        // TODO: Pull this constraints out of scala and into common
+        api(libs.org.jetbrains.annotations)
+        // JUnit
+        api(libs.junit.jupiter)
+
         // A library providing a DSL for loading and extracting content from HTML pages.
-        api("net.ruippeixotog:scala-scraper_$scalaMajorVersion:$scalaScraperVersion")
-        api("com.beachape:enumeratum_$scalaMajorVersion:$enumeratumVersion")
-        api("com.typesafe:config:$typeSafeConfigVersion")
-        api("com.github.kxbmap:configs_${scalaMajorVersion}:$configsVersion")
+        api(libs.ruippeixotog.scala.scraper.s213)
+        api(libs.enumeratum.s213)
+        api(libs.typesafe.config)
+        api(libs.kxbmap.configs.s213)
 
         // json libs
-        api("org.json4s:json4s-native_${scalaMajorVersion}:$json4sNativeVersion")
+        api(libs.json4s.native.s213)
 
         // JUnit5
-        runtime("co.helmethair:scalatest-junit-runner:$junitScalaTestVersion")
-        runtime("org.junit.vintage:junit-vintage-engine:$junitPlatformVersion")
-        runtime("org.junit.platform:junit-platform-engine:$junitLauncherVersion")
-        runtime("org.junit.platform:junit-platform-launcher:$junitLauncherVersion")
-        api("org.junit.platform:junit-platform-runner:$junitPlatformVersion")
+        runtime(libs.scalatest.junit.runner)
+        runtime(libs.junit.vintage.engine)
+        runtime(libs.junit.platform.engine)
+        runtime(libs.junit.platform.launcher)
+        api(libs.junit.platform.runner)
 
-        // Acceptance Testing 
+        // Acceptance Testing
         // val acceptanceTestImplementation by configurations.getting
         // acceptanceTestImplementation.extendsFrom(configurations["testCompileClasspath"])
-        api("org.concordion:concordion:$concordionVersion")
-        api("org.concordion:concordion-embed-extension:$concordionExtEmbedVersion")
-        api("org.concordion:concordion-collapse-output-extension:$concordionExtCollapseOutputVersion")
+        api(libs.concordion)
+        api(libs.concordion.collapse.output.extension)
+        api(libs.concordion.embed.extension)
     }
 }

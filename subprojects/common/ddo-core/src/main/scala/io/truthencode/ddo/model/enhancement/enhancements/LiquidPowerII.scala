@@ -36,6 +36,7 @@ trait LiquidPowerII extends BombardierCore with ClassEnhancementImpl {
       |While in Pyrite Reaction, you gain +2% Fire, Cold, Electric, Acid, and Poison Spell Critical Damage.
       |""".stripMargin
   )
+
   /**
    * Some enhancements can be taken multiple times (generally up to three)
    */

@@ -47,6 +47,7 @@ object Feat extends Enum[Feat] with FeatSearchPrefix with LazyLogging {
   lazy val racialFeats: IndexedSeq[Feat with RaceRequisite] = {
     Feat.values.collect(fnRacialFeats)
   }
+
   /**
    * Filters feats which belong to racial / general feats only.
    *

@@ -18,7 +18,12 @@
 package io.truthencode.ddo.model.feats
 
 import io.truthencode.ddo.model.classes.HeroicCharacterClass
-import io.truthencode.ddo.support.requisite.{ClassRequisiteImpl, FeatRequisiteImpl, RequiresAllOfFeat, RequiresAnyOfClass}
+import io.truthencode.ddo.support.requisite.{
+  ClassRequisiteImpl,
+  FeatRequisiteImpl,
+  RequiresAllOfFeat,
+  RequiresAnyOfClass
+}
 
 /**
  * Icon Feat Improved Mental Toughness.png Improved Mental Toughness Passive This feat increases the

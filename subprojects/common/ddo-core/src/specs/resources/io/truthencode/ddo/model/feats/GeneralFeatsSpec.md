@@ -11,22 +11,20 @@ General Feats aren't tied to any specific race or class.
 Searching for [Attack](- "#searchString") will return:
 
 | [ ][search] [Matching Feats][match] |
-|-------------------------------------|
+| ----------------------------------- |
 | Attack                              |
 
 [search]: - "c:verify-rows=#username:withNameAsJavaList(#searchString)"
-
 [_matchStrategy_]: - "c:matchStrategy=KeyMatch"
-
 [match]: - "?=#username"
 
 Feats can be searched with many case options.
 
-* sensitive (default)
-* insensitive
-* Uppercase
-* Lowercase
-* Snake / Camel case
+-   sensitive (default)
+-   insensitive
+-   Uppercase
+-   Lowercase
+-   Snake / Camel case
 
 ## [Verify Known Feats](- "enumerate")
 
@@ -35,13 +33,13 @@ Verifying all known General Feats (from DDO Wiki)
 | Errata | | |:-:|:-:| | Rapid Reload | Listed on Main page, but moved to Class (Artificer) Category | | | |
 
 | Unimplemented Feats |
-|---------------------|
+| ------------------- |
 | Extra Turning       |
 | Feat Respec Token   |
 | Improved Turning    |
 
 | [ ][existingFeat] [Feats][result]   |
-|-------------------------------------|
+| ----------------------------------- |
 | Acrobatic                           |
 | Alertness                           |
 | Athletic                            |
@@ -98,7 +96,7 @@ Verifying all known General Feats (from DDO Wiki)
 | Lightning Reflexes                  |
 | Luck of Heroes                      |
 | Magical Training                    |
-| Manyshot                            | 
+| Manyshot                            |
 | Martial Weapon Proficiency          |
 | Medium Armor Proficiency            |
 | Mental Toughness                    |
@@ -160,7 +158,5 @@ Verifying all known General Feats (from DDO Wiki)
 | Zen Archery                         |
 
 [existingFeat]: - "c:verify-rows=#feat:verify()"
-
 [_matchStrategy_]: - "c:matchStrategy=KeyMatch"
-
 [result]: - "?=#feat"

@@ -1,1 +1,16 @@
-{"name":"sbt","version":"1.6.2","bspVersion":"2.0.0-M5","languages":["scala"],"argv":["/home/adarro/.sdkman/candidates/java/22.0.0.2.r11-grl/bin/java","-Xms100m","-Xmx100m","-classpath","/home/adarro/.sdkman/candidates/sbt/1.6.2/bin/sbt-launch.jar","-Dsbt.script=/home/adarro/.sdkman/candidates/sbt/current/bin/sbt","xsbt.boot.Boot","-bsp"]}
+{
+    "name": "sbt",
+    "version": "1.6.2",
+    "bspVersion": "2.0.0-M5",
+    "languages": ["scala"],
+    "argv": [
+        "/home/adarro/.sdkman/candidates/java/22.0.0.2.r11-grl/bin/java",
+        "-Xms100m",
+        "-Xmx100m",
+        "-classpath",
+        "/home/adarro/.sdkman/candidates/sbt/1.6.2/bin/sbt-launch.jar",
+        "-Dsbt.script=/home/adarro/.sdkman/candidates/sbt/current/bin/sbt",
+        "xsbt.boot.Boot",
+        "-bsp"
+    ]
+}

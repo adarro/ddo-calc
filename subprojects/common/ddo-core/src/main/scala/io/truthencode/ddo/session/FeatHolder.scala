@@ -17,7 +17,7 @@
  */
 package io.truthencode.ddo.session
 
-class FeatHolder { //extends StatusHolder[Feat] {
+class FeatHolder { // extends StatusHolder[Feat] {
 
 //    override val enum: E = Feat
 //

@@ -23,6 +23,7 @@ package io.truthencode.ddo.support.naming
  * manipulators.
  */
 trait DisplayName extends DisplayProperties {
+
   /**
    * @inheritdoc
    */

@@ -17,4 +17,4 @@
  */
 package io.truthencode.ddo.subscription.config
 
-case class CamelConfig (autostart:Boolean = true)
+case class CamelConfig(autostart: Boolean = true)

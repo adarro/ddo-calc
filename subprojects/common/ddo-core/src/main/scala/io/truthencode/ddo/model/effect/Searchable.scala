@@ -41,7 +41,7 @@ trait Searchable[T <: EnumEntry with SearchPattern] extends Enum[T] with LazyLog
     val msg = s"\nSearchable:-> $cls for $name ${usePattern.getOrElse(sp)} target  $targetPattern"
     logger.info(msg)
     val rslt = values.filter { v =>
-     // logger.debug(s"sp => tp ${v.searchPattern()} => $targetPattern")
+      // logger.debug(s"sp => tp ${v.searchPattern()} => $targetPattern")
       v.searchPattern() == targetPattern
     }
 //    val rslt = values.flatMap { v =>

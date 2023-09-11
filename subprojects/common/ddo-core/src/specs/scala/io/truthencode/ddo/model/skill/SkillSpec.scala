@@ -32,7 +32,8 @@ import scala.jdk.CollectionConverters.SeqHasAsJava
   markdownExtensions = Array(
     MarkdownExtensions.WIKILINKS,
     MarkdownExtensions.AUTOLINKS,
-    MarkdownExtensions.TASKLISTITEMS))
+    MarkdownExtensions.TASKLISTITEMS)
+)
 class SkillSpec {
   val skillEnum: Skill.type = Skill
 

@@ -16,14 +16,17 @@
  * limitations under the License.
  */
 package io.truthencode.ddo
+
 /**
  * Used to supply some default value or None if there is no default.
  */
 trait DefaultValue[T] {
+
   /**
    * The default value for the object
    */
   lazy val default: Option[T] = None
+
   /**
    * True if value is default value, otherwise false.
    * @note
@@ -38,6 +41,7 @@ trait DefaultValue[T] {
       case _ => false
     }
   }
+
   /**
    * True if there is a default value.
    */

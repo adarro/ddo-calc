@@ -12,7 +12,7 @@ lint:
         - checkov@2.4.9
         - osv-scanner@1.3.6
         - trivy@0.45.0
-        - trufflehog@3.54.3
+        - trufflehog@3.54.4
         - taplo@0.8.1
         - actionlint@1.6.25
         - dotenv-linter@3.3.0
@@ -22,7 +22,7 @@ lint:
         - markdownlint@0.36.0
         - oxipng@8.0.0
         - prettier@3.0.3
-        - renovate@36.88.0
+        - renovate@36.91.0
         - scalafmt@3.7.14
         - shellcheck@0.9.0
         - shfmt@3.6.0
@@ -35,6 +35,7 @@ runtimes:
         - python@3.10.8
 actions:
     disabled:
+        - trunk-check-pre-commit
         - trunk-announce
         - trunk-check-pre-push
         - trunk-fmt-pre-commit

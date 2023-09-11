@@ -46,7 +46,7 @@ dependencies {
     val scalaMajorVersion: String by project
     // https://mvnrepository.com/artifact/org.json4s/json4s-native
     implementation(group = "org.json4s", name = "json4s-native_$scalaMajorVersion")
-    
+
     implementation("org.scala-lang:scala-library:$scalaLibraryVersion")
     implementation(group = "com.beachape", name = "enumeratum_$scalaMajorVersion")
     implementation(group = "com.typesafe", name = "config")
@@ -55,13 +55,13 @@ dependencies {
     /* DB, Query etc
     // Quill Scala Query QSQL
      https://github.com/getquill/quill */
-    implementation(group="io.getquill",name="quill-core_$scalaMajorVersion")
+    implementation(group = "io.getquill", name = "quill-core_$scalaMajorVersion")
     /* Quill - Monix Integration
     Monix Task / Eval https://monix.io/docs/current/intro/hello-world.html */
-    implementation(group="io.getquill", name="quill-monix_$scalaMajorVersion")
-    implementation(group="io.getquill", name="quill-sql_$scalaMajorVersion")
-    implementation(group="io.monix", name="monix-eval_$scalaMajorVersion")
-    implementation(group="io.monix", name="monix-reactive_$scalaMajorVersion")
+    implementation(group = "io.getquill", name = "quill-monix_$scalaMajorVersion")
+    implementation(group = "io.getquill", name = "quill-sql_$scalaMajorVersion")
+    implementation(group = "io.monix", name = "monix-eval_$scalaMajorVersion")
+    implementation(group = "io.monix", name = "monix-reactive_$scalaMajorVersion")
 
     // validation and rules
     implementation(group = "com.wix", name = "accord-core_$scalaMajorVersion")

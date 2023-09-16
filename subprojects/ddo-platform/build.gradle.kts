@@ -15,18 +15,30 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-group = "io.truthencode"
-version = "0.1-SNAPSHOT"
+// group = "io.truthencode"
+// version = "0.1-SNAPSHOT"
 
 plugins {
     `java-platform`
 }
 
-val scalaLibraryVersion: String by project
+description = "Project BOM.  Contains common dependencies for projects."
+
+
+javaPlatform {
+  allowDependencies()
+}
 
 dependencies {
-//    constraints {
-//        // this.
-//        api(group = "org.scala-lang", name = "scala-library", version = scalaLibraryVersion)
-//    }
+   constraints {
+    api(libs.logback.classic)
+        api(libs.org.jetbrains.annotations)
+        // JUnit
+        api(libs.junit.jupiter)
+       
+   }
+ 
+  // api(platform(":ddo-platform-scala"))
+  // api(platform(":ddo-platform-kotlin"))
+
 }

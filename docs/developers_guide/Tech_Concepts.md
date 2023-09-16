@@ -14,6 +14,24 @@ Initial Data population / object builder
    using Avro, manipulating and reading data becomes typesafe using Avro to Java / Scala libraries.
 
 These entities can be persisted in one or more databases.
+## Validation
+
+### [Wix-Accord](https://github.com/wix-incubator/accord) 
+My first choice for object validation (Scala).  
+It has since been retired.
+
+### [Octopus](https://github.com/krzemin/octopus)
+Appears similar with integration with Catz / Scalaz but not scala 3 and last active 3 years ago.
+
+### [Parisksha](https://github.com/ayushworks/pariksha)
+Same as above with Catz and 4 years since last active.
+
+## Transformation
+
+### Chimney (https://github.com/scalalandio/chimney)
+Scala Object mangler / mapper to assist going from similar forms.
+Useful where User DTO ~= User Db Entity ~= User Login etc
+
 
 ## Packaging
 
@@ -53,6 +71,12 @@ The default is very Python focused, but R / Scala kernels exist. Ideally embeddi
 There are also a handful of Proof of concept polygot notebooks out there, mostly built in Smalltalk.
 
 ## Front End
+
+### Endpoints
+
+[Tapir](https://github.com/softwaremill/tapir)
+allows defining and documentation of http endpoints that can be implemented via other technologies
+such as Vert.x or Akka.
 
 Front End Using Kafka streams, we can update running totals and properties in an event-driven manner for character
 builders such as feats possessed, stances / abilities toggled, items equipped to dynamically show average damage, DR

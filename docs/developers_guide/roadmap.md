@@ -27,8 +27,7 @@ When combined, you should be able to truly see what a given toon does.
 -   Reverse build selection: Most people have a Legendary in mind, then
     start from level 1 trying to muddle through seeing what they end up with.
     Start by Adding how you want to end up.
-    i.e. At level 30, I want a Power-striking, Bastard sword swinging, Self
-    repairing automaton. So I start by selecting
+    i.e. At level 30, I want a Power-striking, Bastard sword swinging, self-repairing automaton. So I start by selecting
     [Scion of Mechanus](https://ddowiki.com/page/Scion_of_Mechanus),
     [Power Attack](https://ddowiki.com/page/Power_Attack) and
     [Proficiency: Bastard Sword](https://ddowiki.com/page/Proficiency:_Bastard_Sword)
@@ -40,55 +39,55 @@ When combined, you should be able to truly see what a given toon does.
     [Tenser's Transformation](https://ddowiki.com/page/Tenser%27s_Transformation).
     Who knows? Tucows can rise again!
 
-# Stages
+## Stages
 
 The order of operations will be the Backbone API / core, followed by the clients. Although I would like to make the world's best character planner, I believe a comprehensive framework would be more beneficial to the DDO world at large.
 
-## Backbone
+### Backbone
 
 Backbone should be a restful API. Ideally swagger / open API endpoints by OData internally using Apache Avro as a common serializer / storage. This should allow
 Client options to develop third parties without the need to wait for an official client.
 
-### API
+#### API
 
 [OpenAPI (Swagger)](https://www.openapis.org/) / [OData](https://www.odata.org/)
 This specification will drive development and serve as the public facing API with documentation.
 Third parties can interact by viewing / downloading the swagger document and or querying the odata $metadata.
 
-### Core
+#### Core
 
 Mostly internal, it contains object logic that contains meta-data such as stacking rules, damage etc.
 
-### Data
+#### Data
 
 TBD: Data storage. A central store for core internal aspects as well as user-local data stores such as storing individual characters / builds etc.
 
-### Misc
+#### Misc
 
 Additional support / utility / ETL libraries
 
-## Clients
+### Clients
 
 Client apps and services that allow users to interact with the API in a more friendly fashion.
 
-### CLI (Command Line Interface)
+#### CLI (Command Line Interface)
 
 a command line client will be likely be priority. This allows the more tech savvy to progress while also making intregration / regression and test client automation maintainable.
 
-### GUI
+#### GUI
 
-#### Web clients
+##### Web clients
 
 Browser
 A web client may be the next feasible client. While not the end goal, a browser based site with mobile in mind would allow the most widespread access to desktop (windows / Linux / Mac), mobile and tablet users.
 
-### Rich clients
+#### Rich clients
 
 The end goal of this project.
 
 To keep a more consistent look and feel, a more universal client will be pursued. The client may add richer feature such as importing / exporting characters to other formats such as the commonly accepted forum post format and hopefully a format that will allow importing or exporting to other popular DDO Clients so users may try this without the need to start from scratch or feel locked into this tool.
 
-### Targets
+#### Targets
 
 -   Mobile / Tablet
     An Android client for mobile and or tablet.

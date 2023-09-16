@@ -36,17 +36,17 @@ dependencies {
     val scalaMajorVersion: String by project
 
     implementation(enforcedPlatform(project(":ddo-platform-scala")))
-    implementation("org.scala-lang:scala-library:$scalaLibraryVersion")
-    implementation(group = "com.beachape", name = "enumeratum_$scalaMajorVersion")
-    implementation(group = "com.typesafe", name = "config")
-    implementation(group = "com.github.kxbmap", name = "configs_$scalaMajorVersion")
+    implementation(libs.scala2.library)
+    implementation(libs.enumeratum.s213)
+    implementation(libs.typesafe.config)
+    implementation(libs.kxbmap.configs.s213)
 
-    implementation(group = "org.json4s", name = "json4s-native_$scalaMajorVersion")
+    implementation(libs.json4s.native.s213)
 
     // validation and rules
-    implementation(group = "com.wix", name = "accord-core_$scalaMajorVersion")
-    implementation(group = "ch.qos.logback", name = "logback-classic")
-    implementation(group = "com.typesafe.scala-logging", name = "scala-logging_$scalaMajorVersion")
+    implementation(libs.wix.accord.core.s213)
+    implementation(libs.logback.classic)
+    implementation(libs.typesafe.scala.logging.s213)
 //    testImplementation(group = "org.scalatest", name = "scalatest_$scalaMajorVersion")
 //    testImplementation(group = "org.mockito", name = "mockito-core")
 //
@@ -62,7 +62,7 @@ val apiSpec: FileCollection = project.rootProject.layout.files("$rootDir/specs/d
 // Location of Avro schema files
 val schemaDir: FileCollection = layout.files("src/main/resources/schemas/avro")
 // Location of ??
-val generatedScalaSourceDir = layout.files("src/main/avro")
+val generatedScalaSourceDir = layout.buildDirectory.files("src/main/avro")
 
 /**
  * Api spec OpenAPI specification generation information

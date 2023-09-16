@@ -3,10 +3,10 @@ protocol CriticalThreatRange {
     /**  */
     record CriticalThreatRange {
         /** Lower bound for critical multiplier */
-        union{null, int} min;
+        int? min;
         /** Upper bound for critical multiplier */
-        union{null, int} max;
+        int? max;
         /** Number to multiply the damage roll by */
-        union{null, int} multiplier;
+        int? multiplier;
     }
 }

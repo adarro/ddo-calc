@@ -30,7 +30,7 @@ tasks.named("check") {
 
 description = "Core DDO Objects"
 
-dependencies {
+
     val concordionVersion: String by project
 
     dependencies {
@@ -42,20 +42,20 @@ dependencies {
         val scalaMajorVersion: String by project
         // Platform dependent
         // https://mvnrepository.com/artifact/org.json4s/json4s-native
-        implementation(group = "org.json4s", name = "json4s-native_$scalaMajorVersion")
+        implementation(libs.json4s.native.s213)
 
 //        annotationProcessor("net.thauvin.erik:semver:1.2.0")
 //        compileOnly("net.thauvin.erik:semver:1.2.0")
 
         implementation(libs.scala2.library)
-        implementation(group = "com.beachape", name = "enumeratum_$scalaMajorVersion")
-        implementation(group = "com.typesafe", name = "config")
+        implementation(libs.enumeratum.s213)
+        implementation(libs.typesafe.config)
         implementation(group = "com.github.kxbmap", name = "configs_$scalaMajorVersion")
         // validation and rules
-        implementation(group = "com.wix", name = "accord-core_$scalaMajorVersion")
+        implementation(libs.wix.accord.core.s213)
 
-        implementation(group = "ch.qos.logback", name = "logback-classic")
-        implementation(group = "com.typesafe.scala-logging", name = "scala-logging_$scalaMajorVersion")
+        implementation(libs.logback.classic)
+        implementation(libs.typesafe.scala.logging.s213)
         testImplementation(project(":ddo-testing-util"))
         // testImplementation(group = "org.scalatest", name = "scalatest_$scalaMajorVersion")
         // testImplementation(group = "org.scalacheck", name = "scalacheck_$scalaMajorVersion")
@@ -95,7 +95,7 @@ dependencies {
 
         implementation(group = "org.jetbrains", name = "annotations", version = "17.0.0")
     }
-}
+
 
 testing {
     suites {

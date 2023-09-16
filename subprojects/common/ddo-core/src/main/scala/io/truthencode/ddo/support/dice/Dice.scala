@@ -46,4 +46,8 @@ object Dice {
     override val sides: Int = s
     override val number: Int = n
   }
+
+  def parse(s:String): Unit = {
+    val regx = """\[\d+d\d+\]""".r
+  }
 }

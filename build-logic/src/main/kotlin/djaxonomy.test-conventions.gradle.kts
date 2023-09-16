@@ -19,10 +19,18 @@ import io.truthencode.djaxonomy.etc.TestTypes
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
+import org.gradle.accessors.dm.LibrariesForLibs
+
 plugins {
     id("djaxonomy.java-common-conventions")
     `jvm-test-suite`
 }
+
+tasks.withType(Test::class.java) {
+    systemProperties["concordion.output.dir"] = "${reporting.baseDir}/tests"
+}
+
+val libs = the<LibrariesForLibs>()
 
 val extension = project.extensions.create<KotlinTestKitExtension>("KotlinTestKits")
 extension.useKotlinTestKit.convention(
@@ -33,7 +41,7 @@ fun JvmTestSuite.applyKoTest() {
     val koTestVersion: String = (findProperty("koTestVersion") ?: embeddedKotlinVersion).toString()
 
     dependencies {
-        implementation("io.kotest:kotest-runner-junit5:$koTestVersion")
+        implementation(libs.kotest.runner.junit.jvm)
         implementation("io.kotest:kotest-assertions-core:$koTestVersion")
         implementation("io.kotest:kotest-property:$koTestVersion")
     }
@@ -43,72 +51,50 @@ fun JvmTestSuite.applyKotlinTest() {
     useKotlinTest()
 }
 
-val junitScalaTestVersion: String by project
-val junitPlatformVersion: String by project
-
-val scalaLibraryVersion: String by project
-val enumeratumVersion: String by project
-val logbackVersion: String by project
-
-val scalaTestPlusMockitoVersion: String by project
-val scalaCheckVersion: String by project
-val scalaTestVersion: String by project
-val accordVersion: String by project
-val scalaMajorVersion: String by project
-val scalaLoggingVersion: String by project
-
-val mockitoVersion: String by project
-val concordionVersion: String by project
-val flexmarkVersion: String by project
-val typeSafeConfigVersion: String by project
 
 fun JvmTestSuite.applyConcordionAcceptanceTest() {
     dependencies {
         implementation(project())
-        implementation("org.concordion:concordion:$concordionVersion")
+        implementation(libs.concordion)
         // flexmark (mostly for concordion / markdown)
-        implementation("com.vladsch.flexmark:flexmark-all:$flexmarkVersion") // 0.62.2 -> 0.64.8
-//        implementation("com.vladsch.flexmark:ext-gfm-strikethrough:$flexmarkVersion")
-//        implementation("com.vladsch.flexmark:flexmark-ext-emoji:$flexmarkVersion")
-//        implementation("com.vladsch.flexmark:flexmark-ext-yaml-front-matter:$flexmarkVersion")
-//        implementation("com.vladsch.flexmark:flexmark-ext-gfm-tasklist:$flexmarkVersion")
+        implementation(libs.flexmark.all)
     }
 }
 
 fun JvmTestSuite.applyScalaDepends() {
     dependencies {
-        implementation("org.scala-lang:scala-library:$scalaLibraryVersion")
-        implementation("ch.qos.logback:logback-classic:$logbackVersion")
-        implementation("com.typesafe.scala-logging:scala-logging_$scalaMajorVersion:$scalaLoggingVersion")
-        implementation("com.beachape:enumeratum_$scalaMajorVersion:$enumeratumVersion")
-        implementation("com.typesafe:config:$typeSafeConfigVersion")
+        implementation(libs.scala2.library)
+        implementation(libs.logback.classic)
+        implementation(libs.typesafe.scala.logging.s213)
+        implementation(libs.enumeratum.s213)
+        implementation(libs.typesafe.config)
     }
 }
 
 fun JvmTestSuite.applyVintageEngine() {
     dependencies {
-        runtimeOnly("org.junit.vintage:junit-vintage-engine:$junitPlatformVersion")
+        runtimeOnly(libs.junit.vintage.engine)
     }
 }
 
 fun JvmTestSuite.applyJupiterEngine() {
     dependencies {
-        runtimeOnly("org.junit.jupiter:junit-jupiter-engine:$junitPlatformVersion")
+        runtimeOnly(libs.junit.jupiter.engine)
     }
 }
 
 fun JvmTestSuite.applyScalaTest() {
     dependencies {
-        runtimeOnly("co.helmethair:scalatest-junit-runner:$junitScalaTestVersion")
-
+        runtimeOnly(libs.scalatest.plus.junit)
         // runtimeOnly("org.junit.vintage:junit-vintage-engine:5.10.0")
+        implementation(libs.scalatest.s213)
+        implementation(libs.scalatest.plus.mockito.s213)
 
-        implementation("org.scalatest:scalatest_$scalaMajorVersion:$scalaTestVersion")
-        implementation("org.scalacheck:scalacheck_$scalaMajorVersion:$scalaCheckVersion")
-        implementation("org.scalatestplus:mockito-3-4_$scalaMajorVersion:$scalaTestPlusMockitoVersion")
-        implementation("org.mockito:mockito-core:$mockitoVersion")
-        implementation("com.wix:accord-core_$scalaMajorVersion:$accordVersion")
-        implementation("com.wix:accord-scalatest_$scalaMajorVersion:$accordVersion")
+        implementation(libs.mockito.core)
+        implementation(libs.wix.accord.core.s213)
+        implementation(libs.wix.accord.scalatest.s213)
+
+        implementation(libs.scalatest.plus.scalacheck)
         // JUnit
     }
 
@@ -138,17 +124,17 @@ project.testing {
 
 // Kotlin specific
                 if (project.plugins.hasPlugin("org.jetbrains.kotlin.jvm")) {
-                    logger.error("Configuring Kotlin Testing for ${project.name}")
+                    logger.info("Configuring Kotlin Testing for ${project.name}")
                     when (extension.useKotlinTestKit.get()) {
                         KotlinTestKits.KoTest -> {
                             logger.warn("configuring KoTest for Unit testing")
-                            test.applyKoTest()
+                            this.applyKoTest()
                         }
 
                         KotlinTestKits.KotlinTest -> {
                             logger.warn("configuring KotlinTest for Unit testing")
 
-                            test.applyKotlinTest()
+                            this.applyKotlinTest()
                         }
 
                         else -> {}
@@ -158,11 +144,11 @@ project.testing {
                 // Scala Specific
                 if (project.plugins.hasPlugin("scala")) {
 
-                    logger.error("Configuring ${project.name} for Scala ${tt.name} Testing :  ${this.name} ")
+                    logger.info("Configuring ${project.name} for Scala ${tt.name} Testing :  ${this.name} ")
 
                     when (tt) {
                         TestTypes.Unit -> {
-                            logger.error(("Configuring standard Unit Test for scala"))
+                            logger.info(("Configuring standard Unit Test for scala"))
                             this.applyScalaTest()
                         }
 
@@ -171,9 +157,9 @@ project.testing {
                             this.applyScalaDepends()
                             this.applyJupiterEngine()
                             this.applyVintageEngine()
-                            logger.error("adding scala acceptance stuff")
+                            logger.info("adding scala acceptance stuff")
                             dependencies {
-                                implementation("de.neuland-bfi:jade4j:1.2.7")
+                                implementation(libs.jade4j)
                             }
                             targets.all {
                                 testTask.configure {
@@ -189,7 +175,7 @@ project.testing {
                         }
 
                         else -> {
-                            logger.error("no config ATM (applying Jupiter as default")
+                            logger.info("no config ATM (applying Jupiter as default")
                             useJUnitJupiter()
                         }
                     }
@@ -197,7 +183,9 @@ project.testing {
 
                 // Concordian BDD Acceptance
                 if (tt == TestTypes.Acceptance) {
-                    logger.error("applying Concordion Acceptance")
+                    logger.info("applying Concordion Acceptance")
+
+                    //  systemProperties["concordion.output.dir"] = "${reporting.baseDir}/spec"
                     this.applyConcordionAcceptanceTest()
                     this.applyVintageEngine()
                     this.applyJupiterEngine()

@@ -1,33 +1,52 @@
 [versions]
-com-wix = "0.7.6"
+accord = "0.7.6"
+antlr = "4.13.1"
+flexmark = "0.64.8"
 getquill = "4.6.1"
+# TODO: jade4j became pug, should check for an update at some point
+jade4j = "1.3.2"
 junit-engine = "5.10.0"
 junit-jupiter = "5.10.0"
 junit-platform = "1.10.0"
+kotest = "5.7.2"
 # @pin We all move together
 kotlin = "1.9.0"
 logback = "1.4.11"
 mockito = "5.5.0"
 monix = "3.4.1"
+moshi = "1.15.0"
 org-scoverage = "2.0.11"
 # @keep -> scalaMajorVersion
 scala2-suffix = "2.13"
 # @pin -> scalaLibraryVersion
 scala2-version = "2.13.10"
+scalaFmt = "3.1.1"
+scalacheck = "1.17.0"
+scalatest = "3.3.0.0-SNAP3"
+scalatestplus = "3.2.17.0"
+scoverage = "2.0.11"
 
 [libraries]
+antlr4 = { module = "org.antlr:antlr4", version.ref = "antlr" }
 apache-logging-log4j-log4j-core = "org.apache.logging.log4j:log4j-core:3.0.0-alpha1"
 concordion = "org.concordion:concordion:4.0.1"
 concordion-collapse-output-extension = "org.concordion:concordion-collapse-output-extension:1.0.0"
 concordion-embed-extension = "org.concordion:concordion-embed-extension:1.2.0"
+chimney-s213 = "io.scalaland:chimney_2.13:0.8.0-M1"
 enumeratum-s213 = "com.beachape:enumeratum_2.13:1.7.3"
-jade4j = "de.neuland-bfi:jade4j:1.3.2"
+flexmark-all = { module = "com.vladsch.flexmark:flexmark-all", version.ref = "flexmark" }
+jade4j = { module = "de.neuland-bfi:jade4j", version.ref = "jade4j" }
 json4s-native-s213 = "org.json4s:json4s-native_2.13:4.1.0-M3"
 junit-jupiter = { module = "org.junit.jupiter:junit-jupiter", version.ref = "junit-jupiter" }
+junit-jupiter-engine = { module = "org.junit.jupiter:junit-jupiter-engine", version.ref = "junit-engine" }
 junit-platform-engine = { module = "org.junit.platform:junit-platform-engine", version.ref = "junit-platform" }
 junit-platform-launcher = { module = "org.junit.platform:junit-platform-launcher", version.ref = "junit-platform" }
 junit-platform-runner = { module = "org.junit.platform:junit-platform-runner", version.ref = "junit-engine" }
 junit-vintage-engine = { module = "org.junit.vintage:junit-vintage-engine", version.ref = "junit-engine" }
+kotest-assertions-core-jvm = { module = "io.kotest:kotest-assertions-core-jvm", version.ref = "kotest" }
+kotest-property-jvm = { module = "io.kotest:kotest-property-jvm", version.ref = "kotest" }
+kotest-runner-junit-jvm = { module = "io.kotest:kotest-runner-junit5-jvm", version.ref = "kotest" }
+kotlin-bom = { module = "org.jetbrains.kotlin:kotlin-bom", version.ref = "kotlin" }
 kotlin-reflect = { module = "org.jetbrains.kotlin:kotlin-reflect", version.ref = "kotlin" }
 kotlin-stdlib = { module = "org.jetbrains.kotlin:kotlin-stdlib", version.ref = "kotlin" }
 kotlin-stdlib-common = { module = "org.jetbrains.kotlin:kotlin-stdlib-common", version.ref = "kotlin" }
@@ -44,25 +63,39 @@ quill-monix-s213 = { module = "io.getquill:quill-monix_2.13", version.ref = "get
 quill-sql-s213 = { module = "io.getquill:quill-sql_2.13", version.ref = "getquill" }
 ruippeixotog-scala-scraper-s213 = "net.ruippeixotog:scala-scraper_2.13:3.1.0"
 scala2-library = { module = "org.scala-lang:scala-library", version.ref = "scala2-version" }
-scalacheck-s213 = "org.scalacheck:scalacheck_2.13:1.17.0"
-scalafmt-core-s213 = "com.geirsson:scalafmt-core_2.13:3.1.1"
+scalacheck-s213 = { module = "org.scalacheck:scalacheck_2.13", version.ref = "scalacheck" }
+scalafmt-core-s213 = { module = "com.geirsson:scalafmt-core_2.13", version.ref = "scalaFmt" }
 scalatest-junit-runner = "co.helmethair:scalatest-junit-runner:0.2.0"
-scalatest-plus-mockito-s213 = "org.scalatestplus:mockito-3-4_2.13:3.3.0.0-SNAP3"
+scalatest-plus-mockito-s213 = { module = "org.scalatestplus:mockito-3-4_2.13", version.ref = "scalatest" }
+scalatest-plus-junit = { module ="org.scalatestplus:junit-5-10_2.13",version.ref="scalatestplus"}
+scalatest-plus-scalacheck = {module="org.scalatestplus:scalacheck-1-17_2.13",version.ref="scalatestplus"}
 scalatest-s213 = "org.scalatest:scalatest_2.13:3.3.0-SNAP4"
 scoverage-runtime-s213 = { module = "org.scoverage:scalac-scoverage-runtime_2.13", version.ref = "org-scoverage" }
+squareup-moshi = { module = "com.squareup.moshi:moshi", version.ref = "moshi" }
+squareup-moshi-adapters = { module = "com.squareup.moshi:moshi-adapters", version.ref = "moshi" }
+squareup-moshi-kotlin = { module = "com.squareup.moshi:moshi-kotlin", version.ref = "moshi" }
+squareup-moshi-kotlin-codegen = { module = "com.squareup.moshi:moshi-kotlin-codegen", version.ref = "moshi" }
 typesafe-config = "com.typesafe:config:1.4.2"
 typesafe-scala-logging-s213 = "com.typesafe.scala-logging:scala-logging_2.13:3.9.5"
-wix-accord-core-s213 = { module = "com.wix:accord-core_2.13", version.ref = "com-wix" }
-wix-accord-scalatest-s213 = { module = "com.wix:accord-scalatest_2.13", version.ref = "com-wix" }
+wix-accord-core-s213 = { module = "com.wix:accord-core_2.13", version.ref = "accord" }
+wix-accord-scalatest-s213 = { module = "com.wix:accord-scalatest_2.13", version.ref = "accord" }
 
 [bundles]
 concordion = [
-  "concordion",
-  "concordion-collapse-output-extension",
-  "concordion-embed-extension",
+    "concordion",
+    "concordion-collapse-output-extension",
+    "concordion-embed-extension",
+]
+kotest = [
+    "kotest-assertions-core-jvm",
+    "kotest-property-jvm",
+    "kotest-runner-junit-jvm",
 ]
 #scala-logging = ["typesafe-scala-logging-s213", "typesafe-config"]
-scala-wix = ["wix-accord-core-s213", "wix-accord-scalatest-s213"]
+scala-wix = [
+    "wix-accord-core-s213",
+    "wix-accord-scalatest-s213",
+]
 
 [plugins]
 com-dorongold-task-tree = "com.dorongold.task-tree:2.1.1"

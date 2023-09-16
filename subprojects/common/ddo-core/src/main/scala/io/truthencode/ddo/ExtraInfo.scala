@@ -36,3 +36,21 @@ case class ExtraInfo(symbol: String, value: Int) {
     case _ => s" $symbol $value"
   }
 }
+
+object ExtraInfo {
+    /**
+     * Creates an ExtraInfo object, adding the symbol based on the value of the Int.
+     * @param i Additional value to add.
+     * @return signed ExtraInfo object
+     */
+    def apply(i: Int): ExtraInfo = {
+    val sym =
+      if (i < 0) {
+        "-"
+      } else {
+        "+"
+      }
+
+    ExtraInfo(sym, i)
+  }
+}

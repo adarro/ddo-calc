@@ -37,6 +37,8 @@ val defaultJavaToolChainVersion: String? by project
 val kasechangeVersion: String by project
 
 dependencies {
+    // enable gradle catalog for included convention plugins
+    implementation(files(libs.javaClass.superclass.protectionDomain.codeSource.location))
     // tool languages
     // node
     implementation("com.github.node-gradle:gradle-node-plugin:7.0.0")

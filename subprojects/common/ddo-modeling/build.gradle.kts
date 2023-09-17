@@ -19,7 +19,7 @@
 plugins {
     id("scala-library-profile")
     id("djaxonomy.test-conventions")
-    id("com.zlad.gradle.avrohugger")
+    // id("com.zlad.gradle.avrohugger")
 //    id("com.github.lkishalmi.gatling") version "3.2.9"
     //  id("io.gatling.gradle") version "3.9.5.5" replaces above
     id("org.openapi.generator")
@@ -36,7 +36,11 @@ dependencies {
     val scalaMajorVersion: String by project
 
     implementation(enforcedPlatform(project(":ddo-platform-scala")))
-    implementation(libs.scala2.library)
+    implementation(libs.scala2.library) {
+        version {
+            strictly("2.13.10")
+        }
+    }
     implementation(libs.enumeratum.s213)
     implementation(libs.typesafe.config)
     implementation(libs.kxbmap.configs.s213)
@@ -131,16 +135,16 @@ openApiValidate {
     inputSpec.set(apiSpec.asPath)
 }
 
-avrohugger {
-    this.sourceDirectories {
-        this.from(schemaDir)
-    }
-    this.destinationDirectory.set(generatedScalaSourceDir.singleFile)
-    typeMapping {
-        protocolType = com.zlad.gradle.avrohugger.AvrohuggerExtension.ScalaADT
-        enumType = com.zlad.gradle.avrohugger.AvrohuggerExtension.ScalaCaseObjectEnum
-    }
-}
+// avrohugger {
+//     this.sourceDirectories {
+//         this.from(schemaDir)
+//     }
+//     this.destinationDirectory.set(generatedScalaSourceDir.singleFile)
+//     typeMapping {
+//         protocolType = com.zlad.gradle.avrohugger.AvrohuggerExtension.ScalaADT
+//         enumType = com.zlad.gradle.avrohugger.AvrohuggerExtension.ScalaCaseObjectEnum
+//     }
+// }
 val schemaList = listOf("parseHub")
 
 // Create Tasks to generate Avro Schemas for our OpenAPI specs

@@ -51,7 +51,6 @@ fun JvmTestSuite.applyKotlinTest() {
     useKotlinTest()
 }
 
-
 fun JvmTestSuite.applyConcordionAcceptanceTest() {
     dependencies {
         implementation(project())

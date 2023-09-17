@@ -25,8 +25,29 @@ scalacheck = "1.17.0"
 scalatest = "3.3.0.0-SNAP3"
 scalatestplus = "3.2.17.0"
 scoverage = "2.0.11"
+quarkus-s3 = "0.0.1"
+scala3-version = "3.1.0"
+quarkus = "3.4.0"
+
+# Scala Jackson at time of writing doesn't support Scala 3 Enum's natively. It requires another library.
+# That library doesn't support same version of Jackson that Quarkus BOM uses (2.12.5), so this is the best compromise
+# https://search.maven.org/artifact/com.github.pjfanning/jackson-module-scala3-enum_3/2.12.3/jar
+# @pin
+jackson = "2.12.3"
 
 [libraries]
+#Gradle properties
+quarkiverse-scala-s3 = { module = "io.quarkiverse.scala:quarkus-scala3", version.ref = "quarkus-s3" }
+quarkus-bom = { module = "io.quarkus.platform:quarkus-bom", version.ref = "quarkus" }
+quarkus-arc = { module = "io.quarkus:quarkus-arc", version.ref = "quarkus" }
+quarkus-resteasy-reactive = { module = "io.quarkus:quarkus-resteasy-reactive", version.ref = "quarkus" }
+fasterxml-jackson-module = { module = "com.fasterxml.jackson.module:jackson-module-scala_3", version.ref = "jackson" }
+jackson-module-enum = { module = "com.github.pjfanning:jackson-module-scala3-enum_3", version.ref = "jackson" }
+# quarkus-junit5 = {module="io.quarkus:quarkus-junit5", version.ref="quarkus"} # -- versioned transitively via quarkus bom
+# rest-assured-core = {module"io.rest-assured:rest-assured", version.ref="rest-assured"} # -- versioned transitively via quarkus bom
+scala-compiler-s3 = { module = "org.scala-lang:scala3-compiler_3", version.ref = "scala3-version" }
+scala-library-s3 = { module = "org.scala-lang:scala3-library_3", version.ref = "scala3-version" }
+
 antlr4 = { module = "org.antlr:antlr4", version.ref = "antlr" }
 apache-logging-log4j-log4j-core = "org.apache.logging.log4j:log4j-core:3.0.0-alpha1"
 concordion = "org.concordion:concordion:4.0.1"
@@ -67,8 +88,8 @@ scalacheck-s213 = { module = "org.scalacheck:scalacheck_2.13", version.ref = "sc
 scalafmt-core-s213 = { module = "com.geirsson:scalafmt-core_2.13", version.ref = "scalaFmt" }
 scalatest-junit-runner = "co.helmethair:scalatest-junit-runner:0.2.0"
 scalatest-plus-mockito-s213 = { module = "org.scalatestplus:mockito-3-4_2.13", version.ref = "scalatest" }
-scalatest-plus-junit = { module ="org.scalatestplus:junit-5-10_2.13",version.ref="scalatestplus"}
-scalatest-plus-scalacheck = {module="org.scalatestplus:scalacheck-1-17_2.13",version.ref="scalatestplus"}
+scalatest-plus-junit = { module = "org.scalatestplus:junit-5-10_2.13", version.ref = "scalatestplus" }
+scalatest-plus-scalacheck = { module = "org.scalatestplus:scalacheck-1-17_2.13", version.ref = "scalatestplus" }
 scalatest-s213 = "org.scalatest:scalatest_2.13:3.3.0-SNAP4"
 scoverage-runtime-s213 = { module = "org.scoverage:scalac-scoverage-runtime_2.13", version.ref = "org-scoverage" }
 squareup-moshi = { module = "com.squareup.moshi:moshi", version.ref = "moshi" }
@@ -82,20 +103,17 @@ wix-accord-scalatest-s213 = { module = "com.wix:accord-scalatest_2.13", version.
 
 [bundles]
 concordion = [
-    "concordion",
-    "concordion-collapse-output-extension",
-    "concordion-embed-extension",
+  "concordion",
+  "concordion-collapse-output-extension",
+  "concordion-embed-extension",
 ]
 kotest = [
-    "kotest-assertions-core-jvm",
-    "kotest-property-jvm",
-    "kotest-runner-junit-jvm",
+  "kotest-assertions-core-jvm",
+  "kotest-property-jvm",
+  "kotest-runner-junit-jvm",
 ]
 #scala-logging = ["typesafe-scala-logging-s213", "typesafe-config"]
-scala-wix = [
-    "wix-accord-core-s213",
-    "wix-accord-scalatest-s213",
-]
+scala-wix = ["wix-accord-core-s213", "wix-accord-scalatest-s213"]
 
 [plugins]
 com-dorongold-task-tree = "com.dorongold.task-tree:2.1.1"

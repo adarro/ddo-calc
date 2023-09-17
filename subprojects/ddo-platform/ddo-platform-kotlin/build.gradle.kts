@@ -24,7 +24,6 @@ plugins {
 
 description = "Project BOM.  Contains common dependencies for scala projects."
 
-
 dependencies {
     constraints {
         api(libs.kotlin.bom)

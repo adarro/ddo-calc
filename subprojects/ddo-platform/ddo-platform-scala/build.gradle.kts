@@ -75,8 +75,6 @@ dependencies {
         api(libs.wix.accord.core.s213)
         api(libs.wix.accord.scalatest.s213)
 
-        
-
         // A library providing a DSL for loading and extracting content from HTML pages.
         api(libs.ruippeixotog.scala.scraper.s213)
         api(libs.enumeratum.s213)

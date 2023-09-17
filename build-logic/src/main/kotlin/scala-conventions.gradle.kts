@@ -36,19 +36,20 @@ val libs = the<LibrariesForLibs>()
 //
 // }
 
- configure<org.scoverage.ScoverageExtension> {
+configure<org.scoverage.ScoverageExtension> {
     scoverageVersion.set(libs.versions.scoverage)
-    val cfgs = mapOf(
-        Pair(org.scoverage.CoverageType.Branch, 0.5.toBigDecimal()),
-        Pair(org.scoverage.CoverageType.Statement, 0.75.toBigDecimal())
-    ).map { p ->
-        val cfg = org.scoverage.ScoverageExtension.CheckConfig()
-        cfg.setProperty("coverageType", p.key)
-        cfg.setProperty("minimumRate", p.value)
-        cfg
-    }
+    val cfgs =
+        mapOf(
+            Pair(org.scoverage.CoverageType.Branch, 0.5.toBigDecimal()),
+            Pair(org.scoverage.CoverageType.Statement, 0.75.toBigDecimal()),
+        ).map { p ->
+            val cfg = org.scoverage.ScoverageExtension.CheckConfig()
+            cfg.setProperty("coverageType", p.key)
+            cfg.setProperty("minimumRate", p.value)
+            cfg
+        }
     checks.plusAssign(cfgs)
- }
+}
 
 //
 //

@@ -1,22 +1,20 @@
 /**
-  * Copyright (C) 2015 Andre White (adarro@gmail.com)
-  *
-  * Licensed under the Apache License, Version 2.0 (the "License");
-  * you may not use this file except in compliance with the License.
-  * You may obtain a copy of the License at
-  *
-  * http://www.apache.org/licenses/LICENSE-2.0
-  *
-  * Unless required by applicable law or agreed to in writing, software
-  * distributed under the License is distributed on an "AS IS" BASIS,
-  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-  * See the License for the specific language governing permissions and
-  * limitations under the License.
-  */
+ * Copyright (C) 2015 Andre White (adarro@gmail.com)
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except
+ * in compliance with the License. You may obtain a copy of the License at
+ *
+ * http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software distributed under the License
+ * is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express
+ * or implied. See the License for the specific language governing permissions and limitations under
+ * the License.
+ */
 package io.truthencode.ddo.web.mapping
 
 import com.typesafe.scalalogging.LazyLogging
-import enumeratum.{EnumEntry, Enum => SmartEnum}
+import enumeratum.{Enum => SmartEnum, EnumEntry}
 import io.truthencode.ddo.DDOObject
 import io.truthencode.ddo.model.item.{Item, Potion}
 import io.truthencode.ddo.model.item.armor.Armor
@@ -27,16 +25,14 @@ import scala.collection.immutable
 import scala.language.{existentials, postfixOps}
 
 /**
-  * Utility object for mapping DDOWiki tables and fields to objects
-  */
+ * Utility object for mapping DDOWiki tables and fields to objects
+ */
 object FieldMapper extends LazyLogging {
 
   /**
-    * Convenience class to hold a list or single value string list.
-    *
-    */
-  sealed abstract class ItemType(words: Either[String, List[String]])
-      extends EnumEntry {
+   * Convenience class to hold a list or single value string list.
+   */
+  sealed abstract class ItemType(words: Either[String, List[String]]) extends EnumEntry {
     val wordList: List[String] = words match {
       case Right(x) => x
       case Left(x) => List(x)
@@ -44,35 +40,34 @@ object FieldMapper extends LazyLogging {
   }
 
   /**
-    * Enumeration to hold the possible item type values along with keywords used to map the fields
-    */
+   * Enumeration to hold the possible item type values along with keywords used to map the fields
+   */
   object ItemType extends SmartEnum[ItemType] {
     val values: immutable.IndexedSeq[ItemType] = findValues
 
     /**
-      * A wieldable weapon
-      */
+     * A wieldable weapon
+     */
     case object Weapon extends ItemType(Left("Proficiency Class"))
 
     /**
-      * An equipable armor
-      */
+     * An equipable armor
+     */
     case object Armor extends ItemType(Left("Armor Type"))
 
     /**
-      * A potion
-      */
-    case object Potion
-        extends ItemType(Right(List("Acquired from", "Located in")))
+     * A potion
+     */
+    case object Potion extends ItemType(Right(List("Acquired from", "Located in")))
 
     /**
-      * Bracers, Boots, Belts etc.
-      */
+     * Bracers, Boots, Belts etc.
+     */
     case object Clothing extends ItemType(Left("Item Type"))
 
     /**
-      * Rings etc.
-      */
+     * Rings etc.
+     */
     case object Jewelery extends ItemType(Left("Item Type"))
 
   }
@@ -82,24 +77,29 @@ object FieldMapper extends LazyLogging {
   // Bloodletter III
   // Risk and Reward
   /**
-    * Determines the type of Item from a set up keywords.
-    *
-    * @param words list of words pulled from various fields using the mapping
-    *              provided by [[FieldMapper.ItemType.values]]
-    * @return an [[ItemType]] if found, otherwise None
-    */
+   * Determines the type of Item from a set up keywords.
+   *
+   * @param words
+   *   list of words pulled from various fields using the mapping provided by
+   *   [[FieldMapper.ItemType.values]]
+   * @return
+   *   an [[ItemType]] if found, otherwise None
+   */
   def fieldType(words: Set[String]): Option[ItemType] =
     FieldMapper.ItemType.values.find { x =>
       words.intersect(x.wordList.toSet).nonEmpty
     }
 
   /**
-    * Extracts weapon information from the DDOWiki site.
-    *
-    * @param source HTML data from the site
-    * @return A Weapon object scrapped from the site or None
-    */
-  def weaponFromWiki(source: Map[String, Any])(implicit strategy: WordMatchStrategy): Option[DDOObject.Weapon] = {
+   * Extracts weapon information from the DDOWiki site.
+   *
+   * @param source
+   *   HTML data from the site
+   * @return
+   *   A Weapon object scrapped from the site or None
+   */
+  def weaponFromWiki(source: Map[String, Any])(implicit
+    strategy: WordMatchStrategy): Option[DDOObject.Weapon] = {
     val keys = source.keySet
     val types = fieldType(keys)
     logger.info(s"Filtered type: $types")
@@ -138,8 +138,7 @@ object FieldMapper extends LazyLogging {
           umd = WikiParser.umdDc(source),
           weight = WikiParser.weight(source), // Members declared in io.truthencode.ddo.Weapon
           attackModifier = WikiParser.attackModifier(source),
-          critical =
-            WikiParser.criticalProfile(WikiParser.criticalThreat(source)),
+          critical = WikiParser.criticalProfile(WikiParser.criticalThreat(source)),
           damage = WikiParser.damage(source),
           damageModifier = WikiParser.damageModifier(source),
           handedness = WikiParser.handedness(source),
@@ -155,20 +154,22 @@ object FieldMapper extends LazyLogging {
   }
 
   /**
-    * WikiToProperty
-    * Reads sourced data from DDOWiki and attempts to mangle it into readable properties.
-    *
-    * @param source a collection of properties that should generally
-    *               be in the form of simple strings or JSoup Elements.
-    * @return A DDO Item wrapped in an Option
-    * @note
-    * Breaking cases:
-    * Divine Vengeance has multiple versions based on level and class that equips it. (RealmssofDespair terms.. a morph)
-    * http://ddowiki.com/page/Item:Divine_Vengeance
-    * Sun blade is a slashing short sword, but has 'see note' in the damage type field
-    * http://ddowiki.com/page/Item:Sun_Blade
-    */
-  def wikiToItem[T <: Item](source: Map[String, Any])(implicit strategy: WordMatchStrategy): Option[Item] = {
+   * WikiToProperty Reads sourced data from DDOWiki and attempts to mangle it into readable
+   * properties.
+   *
+   * @param source
+   *   a collection of properties that should generally be in the form of simple strings or JSoup
+   *   Elements.
+   * @return
+   *   A DDO Item wrapped in an Option
+   * @note
+   *   Breaking cases: Divine Vengeance has multiple versions based on level and class that equips
+   *   it. (RealmssofDespair terms.. a morph) http://ddowiki.com/page/Item:Divine_Vengeance Sun
+   *   blade is a slashing short sword, but has 'see note' in the damage type field
+   *   http://ddowiki.com/page/Item:Sun_Blade
+   */
+  def wikiToItem[T <: Item](source: Map[String, Any])(implicit
+    strategy: WordMatchStrategy): Option[Item] = {
 
     val keys = source.keySet
     val types = fieldType(keys)

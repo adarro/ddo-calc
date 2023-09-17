@@ -59,7 +59,7 @@ fun projectList(): MutableList<String> {
     logger.error("projectList called")
     val sb = mutableListOf<String>()
     findProjects(sb, project.rootProject)
-    logger.debug("findProject results: $sb")
+    logger.debug("findProject results: {}", sb)
     return sb
 }
 
@@ -86,7 +86,6 @@ Should be called with mdDocsBuild task
  Task creates a .dot file with all inter-module dependencies
  Supports any depth of nested modules
 
-
  */
 tasks.register("moduleDependencyReport") {
     description = "Creates a .dot file with all inter-module dependencies"
@@ -112,7 +111,7 @@ tasks.register("moduleDependencyReport") {
 
 // tasks.named("mkDocsBuild") {
 //     dependsOn(tasks.named("moduleDependencyReport"))
-// }   
+// }
 
 // recursively print dependencies to file and move on to child projects
 fun printDeps(

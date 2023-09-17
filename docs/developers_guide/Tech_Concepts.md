@@ -14,24 +14,28 @@ Initial Data population / object builder
    using Avro, manipulating and reading data becomes typesafe using Avro to Java / Scala libraries.
 
 These entities can be persisted in one or more databases.
+
 ## Validation
 
-### [Wix-Accord](https://github.com/wix-incubator/accord) 
+### [Wix-Accord](https://github.com/wix-incubator/accord)
+
 My first choice for object validation (Scala).  
 It has since been retired.
 
 ### [Octopus](https://github.com/krzemin/octopus)
+
 Appears similar with integration with Catz / Scalaz but not scala 3 and last active 3 years ago.
 
 ### [Parisksha](https://github.com/ayushworks/pariksha)
+
 Same as above with Catz and 4 years since last active.
 
 ## Transformation
 
 ### Chimney (https://github.com/scalalandio/chimney)
+
 Scala Object mangler / mapper to assist going from similar forms.
 Useful where User DTO ~= User Db Entity ~= User Login etc
-
 
 ## Packaging
 

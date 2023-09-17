@@ -24,21 +24,18 @@ plugins {
 
 description = "Project BOM.  Contains common dependencies for projects."
 
-
 javaPlatform {
-  allowDependencies()
+    allowDependencies()
 }
 
 dependencies {
-   constraints {
-    api(libs.logback.classic)
+    constraints {
+        api(libs.logback.classic)
         api(libs.org.jetbrains.annotations)
         // JUnit
         api(libs.junit.jupiter)
-       
-   }
- 
-  // api(platform(":ddo-platform-scala"))
-  // api(platform(":ddo-platform-kotlin"))
+    }
 
+    // api(platform(":ddo-platform-scala"))
+    // api(platform(":ddo-platform-kotlin"))
 }

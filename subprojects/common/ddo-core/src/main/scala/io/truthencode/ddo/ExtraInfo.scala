@@ -28,7 +28,7 @@ case class ExtraInfo(symbol: String, value: Int) {
   require(symbol.contentEquals("+") || symbol.contentEquals("-"))
   val toInt = symbol match {
     case "+" => Math.abs(value)
-    case "-" => -1 * (value)
+    case "-" => -1 * value
   }
 
   override def toString: String = value match {
@@ -38,12 +38,15 @@ case class ExtraInfo(symbol: String, value: Int) {
 }
 
 object ExtraInfo {
-    /**
-     * Creates an ExtraInfo object, adding the symbol based on the value of the Int.
-     * @param i Additional value to add.
-     * @return signed ExtraInfo object
-     */
-    def apply(i: Int): ExtraInfo = {
+
+  /**
+   * Creates an ExtraInfo object, adding the symbol based on the value of the Int.
+   * @param i
+   *   Additional value to add.
+   * @return
+   *   signed ExtraInfo object
+   */
+  def apply(i: Int): ExtraInfo = {
     val sym =
       if (i < 0) {
         "-"

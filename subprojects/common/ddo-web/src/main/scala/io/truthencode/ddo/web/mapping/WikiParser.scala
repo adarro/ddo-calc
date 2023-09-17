@@ -24,13 +24,19 @@ import io.truthencode.ddo.model.attribute.Attribute
 import io.truthencode.ddo.model.item.weapon._
 import io.truthencode.ddo.model.meta.PhysicalDamageType
 import io.truthencode.ddo.model.misc.Material
-import io.truthencode.ddo.support.StringUtils.{Comma, EmptyString, ForwardSlash, Space, StringImprovements}
+import io.truthencode.ddo.support.StringUtils.{
+  Comma,
+  EmptyString,
+  ForwardSlash,
+  Space,
+  StringImprovements
+}
 import io.truthencode.ddo.support.dice.{DamageInfo, Dice}
 import io.truthencode.ddo.support.matching.{WordMatchStrategies, WordMatchStrategy}
 import io.truthencode.ddo.web.mapping.ElementSupport.ElementToElementOps
 import io.truthencode.ddo.web.mapping.Extractor._
-
-import scala.collection.JavaConverters._
+import scala.jdk.CollectionConverters._
+//import scala.collection.JavaConverters._
 import scala.language.{existentials, postfixOps, reflectiveCalls}
 import scala.util.Try
 
@@ -279,7 +285,8 @@ object WikiParser extends LazyLogging {
    * @return
    *   Binding status or None if missing / invalid data
    */
-  def binding(source: Map[String, Any])(implicit strategy: WordMatchStrategy): Option[BindingFlags] = {
+  def binding(source: Map[String, Any])(implicit
+    strategy: WordMatchStrategy): Option[BindingFlags] = {
     simpleExtractor(source.get(Field.Binding), "a") match {
       case Some(x: String) =>
         BindingFlags.fromWords(x)
@@ -614,20 +621,19 @@ object WikiParser extends LazyLogging {
   def damageValue(dts: Option[damageExtractor]): Option[DamageInfo] = {
     dts match {
       case Some(dmg) =>
-
-     val     w = dmg.wMod
+        val w = dmg.wMod
 //    val d = Dice(dmg.dice)
-    val e = ExtraInfo(dmg.extra)
-    val dt = dmg.damageType.flatMap(PhysicalDamageType.withNameInsensitiveOption)
-        Some(DamageInfo (
-           w = dmg.wMod,
-           d=Dice(1,1), // TODO: Replace with actual implementation
-           e= ExtraInfo(dmg.extra),
-           dt =dmg.damageType.flatMap(PhysicalDamageType.withNameInsensitiveOption)
-    ))
+        val e = ExtraInfo(dmg.extra)
+        val dt = dmg.damageType.flatMap(PhysicalDamageType.withNameInsensitiveOption)
+        Some(
+          DamageInfo(
+            w = dmg.wMod,
+            d = Dice(1, 1), // TODO: Replace with actual implementation
+            e = ExtraInfo(dmg.extra),
+            dt = dmg.damageType.flatMap(PhysicalDamageType.withNameInsensitiveOption)
+          ))
       case _ => None
     }
   }
-
 
 }

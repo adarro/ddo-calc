@@ -1,17 +1,16 @@
-/** Copyright (C) 2015 Andre White (adarro@gmail.com)
-  *
-  * Licensed under the Apache License, Version 2.0 (the "License");
-  * you may not use this file except in compliance with the License.
-  * You may obtain a copy of the License at
-  *
-  * http://www.apache.org/licenses/LICENSE-2.0
-  *
-  * Unless required by applicable law or agreed to in writing, software
-  * distributed under the License is distributed on an "AS IS" BASIS,
-  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-  * See the License for the specific language governing permissions and
-  * limitations under the License.
-  */
+/**
+ * Copyright (C) 2015 Andre White (adarro@gmail.com)
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except
+ * in compliance with the License. You may obtain a copy of the License at
+ *
+ * http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software distributed under the License
+ * is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express
+ * or implied. See the License for the specific language governing permissions and limitations under
+ * the License.
+ */
 package io.truthencode.ddo
 
 import java.net.URLEncoder
@@ -23,22 +22,27 @@ import com.typesafe.scalalogging.LazyLogging
 
 package object web {
 
-  /** Takes an ID string and translates it to URL escaped and wiki specific format.
-    *
-    * @param s - the input string
-    * @return Url Escaped string
-    * @example
-    * {{{
-    * val key = "Brigand's Cutlass"
-    * val escaped = ToWikiUrlString(key)
-    *
-    * /res: Brigand'_Cutlass
-    * }}}
-    * @note some items are actually URL escaped, but may appear at both.
-    *       i.e. Anger's Wrath is linked to Anger%27s_Step AND Anger's_Step
-    * @todo may need to see if any are on one but not the other. It appears the un-escaped
-    *       apostrophe is more common.
-    */
+  /**
+   * Takes an ID string and translates it to URL escaped and wiki specific format.
+   *
+   * @param s
+   *   \- the input string
+   * @return
+   *   Url Escaped string
+   * @example
+   *   {{{
+   * val key = "Brigand's Cutlass"
+   * val escaped = ToWikiUrlString(key)
+   *
+   * /res: Brigand'_Cutlass
+   *   }}}
+   * @note
+   *   some items are actually URL escaped, but may appear at both. i.e. Anger's Wrath is linked to
+   *   Anger%27s_Step AND Anger's_Step
+   * @todo
+   *   may need to see if any are on one but not the other. It appears the un-escaped apostrophe is
+   *   more common.
+   */
   def toWikiUrlString(s: String, escapeApostrophe: Boolean = false): String = {
     val x = s.replace(Space, UnderScore).trim()
     if (escapeApostrophe) URLEncoder.encode(x, "UTF-8") else x
@@ -50,15 +54,18 @@ package object web {
   // where it's convenient to place the configuration.
 
   // we have a constructor allowing the app to provide a custom Config
-  /** WebContext
-    * Convenience class to read formatted URI's
-    *
-    * @param config - Configuration Resource
-    * @param lib    - Resource Group (defaults to ddowiki-lib)
-    * @param id     - key within the resource group containing the URL
-    *               defaults to "item"
-    */
-  class WebContext(config: Config, lib: String = "ddowiki-lib", id: String = "item") extends LazyLogging {
+  /**
+   * WebContext Convenience class to read formatted URI's
+   *
+   * @param config
+   *   \- Configuration Resource
+   * @param lib
+   *   \- Resource Group (defaults to ddowiki-lib)
+   * @param id
+   *   \- key within the resource group containing the URL defaults to "item"
+   */
+  class WebContext(config: Config, lib: String = "ddowiki-lib", id: String = "item")
+    extends LazyLogging {
 
     // This verifies that the Config is sane and has our
     // reference config. Importantly, we specify the "simple-lib"

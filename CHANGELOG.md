@@ -19,6 +19,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 ## [0.1.0-alpha] - 2015-12-03
 
 <!-- trunk-ignore(markdownlint/MD024) -->
+
 ### Added
 
 [Unreleased]: https://github.com/truthencode/ddo-calc/0.1.0-alpha...HEAD

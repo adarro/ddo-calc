@@ -77,7 +77,6 @@ scoverage aggregates to ./build/reports/scoverage/
 testAggregateTestReport aggregates to ./subprojects/common/ddo-test-results/build/reports/tests/[test-type]
  */
 
-
 val devRequirementsIn =
     listOf(
         "pip-tools:7.3.0",
@@ -149,7 +148,6 @@ tasks.register("syncRequirements", PythonTask::class) {
         run()
     }
 }
-
 
 /*
 
@@ -327,9 +325,9 @@ allprojects {
         mavenCentral()
     }
 
-tasks.register("printConfigurations") {
+    tasks.register("printConfigurations") {
         doLast {
-            println ("Project Name: $project.name configurations:")
+            println("Project Name: $project.name configurations:")
             configurations.forEach {
                 println("\t$it.name")
             }
@@ -354,5 +352,3 @@ tasks.register("printConfigurations") {
 //        mustRunAfter(syncVersionFiles)
 //    }
 }
-
-    

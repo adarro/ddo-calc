@@ -15,9 +15,7 @@
 
 ## Overview
 
-```
-DDO Calculations, Planner and Plotting
-```
+### DDO Calculations, Planner and Plotting
 
 This is a macro service that I am creating to become more familiar with alternative JVM languages and multiple platforms.
 

@@ -17,8 +17,9 @@
  */
 package io.truthencode.ddo.model.item.HeldItem
 
+import io.truthencode.ddo.Wearable
 import io.truthencode.ddo.model.item.WearableItem
-import io.truthencode.ddo.{WearLocation, Wearable}
+import io.truthencode.ddo.support.slots.WearLocation
 
 trait RuneArm extends WearableItem with Wearable {
 

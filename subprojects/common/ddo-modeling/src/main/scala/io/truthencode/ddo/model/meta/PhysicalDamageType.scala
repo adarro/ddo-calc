@@ -22,7 +22,8 @@ import io.truthencode.ddo.NoDefault
 import io.truthencode.ddo.model.effect._
 
 /**
- * Basic damage for (generally) physical damage
+ * Basic damage for (generally) physical damage such as melee weapons or projectiles (arrows /
+ * bolts) in addition to physical components to spells such as bludgeon damage from 'Ice Storm'.
  */
 sealed trait PhysicalDamageType extends EnumEntry with Damage with NoDefault[PhysicalDamageType] {
   self: DamageType =>

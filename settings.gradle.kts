@@ -47,6 +47,7 @@ pluginManagement {
 //        id("org.kordamp.gradle.project") version kordampGradlePluginVersion
 //        id("net.thauvin.erik.gradle.semver") version semVerPluginVersion
         id("ru.vyarus.mkdocs") version "3.0.0"
+        id("io.quarkus") version "3.3.3"
     }
 
     repositories {
@@ -129,3 +130,4 @@ if (System.getenv("enableCompositeBuild") == "true") {
 }
 
 includeBuild("build-logic")
+// includeBuild("include/ddo-avro")

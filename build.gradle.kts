@@ -69,6 +69,14 @@ mkdocs {
     }
 }
 
+/* TODO: Docuemtation Task
+Include Acceptance tests and possibly coverage in mkdocs
+
+depend on testAggregateTestReport (needs check) and aggregateScoverage
+scoverage aggregates to ./build/reports/scoverage/
+testAggregateTestReport aggregates to ./subprojects/common/ddo-test-results/build/reports/tests/[test-type]
+ */
+
 val devRequirementsIn =
     listOf(
         "pip-tools:7.3.0",
@@ -317,6 +325,14 @@ allprojects {
         mavenCentral()
     }
 
+    tasks.register("printConfigurations") {
+        doLast {
+            println("Project Name: $project.name configurations:")
+            configurations.forEach {
+                println("\t$it.name")
+            }
+        }
+    }
 //    val syncVersionFiles by tasks.registering(Copy::class) {
 //        if (rootProject != project) {
 //            logger.warn("We are updating properties file in ${project.name}")

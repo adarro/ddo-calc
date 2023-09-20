@@ -22,16 +22,21 @@ plugins {
     `java-platform`
 }
 
-val scalaLibraryVersion: String by project
+description = "Project BOM.  Contains common dependencies for scala projects."
 
 dependencies {
     constraints {
-
+        api(libs.kotlin.bom)
         api(libs.kotlin.reflect)
         api(libs.kotlin.stdlib)
         api(libs.kotlin.stdlib.jdk8)
         api(libs.kotlin.stdlib.jdk7)
         api(libs.kotlin.stdlib.common)
         // TODO: Add moshi-kotlin / reflect et all to kotlin-platform
+        api(libs.bundles.kotest)
+        api(libs.squareup.moshi.kotlin)
+        api(libs.squareup.moshi)
+        api(libs.squareup.moshi.adapters)
+        api(libs.squareup.moshi.kotlin.codegen)
     }
 }

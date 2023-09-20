@@ -39,7 +39,7 @@ jobs:
             - codecov/upload
             - coverage-reporter/send_report:
                   coverage-reports: build/reports/scoverage/cobertura.xml
-                  project-token: $CODACY_PROJECT_TOKEN
+                  project-token: $CODACY_API_TOKEN
             # Download and cache dependencies
             - restore_cache:
                   keys:

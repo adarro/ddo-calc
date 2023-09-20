@@ -21,6 +21,7 @@ import io.truthencode.ddo.support.naming.{DisplayName, UsingSearchPrefix}
 
 trait UsingAbilitySearchPrefix extends UsingSearchPrefix {
   self: DisplayName =>
+
   /**
    * Adds the search prefix used for uniquely identifying and disambiguating the skill in cases of a
    * name conflict. Also aids object creation when associating the Parent Entity

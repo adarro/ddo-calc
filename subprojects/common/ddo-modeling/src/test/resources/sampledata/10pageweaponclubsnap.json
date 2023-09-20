@@ -1,607 +1,577 @@
 {
- "item": [
-  {
-   "weapon": [
-    {
-     "name": "Madstone Rod",
-     "damangeAndType": "1d6 + 1 Bludgeon, Magic",
-     "minLevel": "1",
-     "binding": "Unbound",
-     "quest": "Gianthold Tor, At the end of each dragon fight",
-     "criticalProfile": "",
-     "enchantments": "+1 Enhancement Bonus",
-     "enchantments_url": "https://ddowiki.com/page/Enhancement_bonus",
-     "errata": "",
-     "weaponDetail": [
-      {
-       "proficiency": "Simple Weapon Proficiency",
-       "name": "Madstone Rod",
-       "damangeAndType": "No",
-       "criticalThreatRange": "1d6 + 1 Bludgeon, Magic",
-       "weaponType": [
+    "item": [
         {
-         "damageCategory": "20 / x2"
-        }
-       ],
-       "absRaceRequired": "Club / Bludgeoning weapons",
-       "minLevel": "None",
-       "requiredTrait": "None",
-       "umd": "Wizard, Sorcerer, Bard",
-       "handedness": "Can't be UMD'd",
-       "damageMod": "STR",
-       "durability": "Unbound",
-       "hardness": "Wood",
-       "baseValue": "13",
-       "weight": "1cp",
-       "upgradable": "+1 Enhancement Bonus\nDispel Madstone Effects — 50 Charges\nMythic Weapon Boost +2 or +4",
-       "enchantments": [
-        {
-         "enchantment": [
-          {
-           "name": "+1 Enhancement Bonus",
-           "name_url": "https://ddowiki.com/page/Enhancement_bonus",
-           "fullText": "+1 Enhancement Bonus"
-          }
-         ]
+            "weapon": [
+                {
+                    "name": "Madstone Rod",
+                    "damangeAndType": "1d6 + 1 Bludgeon, Magic",
+                    "minLevel": "1",
+                    "binding": "Unbound",
+                    "quest": "Gianthold Tor, At the end of each dragon fight",
+                    "criticalProfile": "",
+                    "enchantments": "+1 Enhancement Bonus",
+                    "enchantments_url": "https://ddowiki.com/page/Enhancement_bonus",
+                    "errata": "",
+                    "weaponDetail": [
+                        {
+                            "proficiency": "Simple Weapon Proficiency",
+                            "name": "Madstone Rod",
+                            "damangeAndType": "No",
+                            "criticalThreatRange": "1d6 + 1 Bludgeon, Magic",
+                            "weaponType": [
+                                {
+                                    "damageCategory": "20 / x2"
+                                }
+                            ],
+                            "absRaceRequired": "Club / Bludgeoning weapons",
+                            "minLevel": "None",
+                            "requiredTrait": "None",
+                            "umd": "Wizard, Sorcerer, Bard",
+                            "handedness": "Can't be UMD'd",
+                            "damageMod": "STR",
+                            "durability": "Unbound",
+                            "hardness": "Wood",
+                            "baseValue": "13",
+                            "weight": "1cp",
+                            "upgradable": "+1 Enhancement Bonus\nDispel Madstone Effects — 50 Charges\nMythic Weapon Boost +2 or +4",
+                            "enchantments": [
+                                {
+                                    "enchantment": [
+                                        {
+                                            "name": "+1 Enhancement Bonus",
+                                            "name_url": "https://ddowiki.com/page/Enhancement_bonus",
+                                            "fullText": "+1 Enhancement Bonus"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "enchantment": [
+                                        {
+                                            "name": "Dispel Madstone Effects",
+                                            "name_url": "https://ddowiki.com/page/Dispel_Madstone_Effects",
+                                            "fullText": "—"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "enchantment": [
+                                        {
+                                            "name": "Mythic Weapon Boost",
+                                            "name_url": "https://ddowiki.com/page/Mythic_Boost",
+                                            "fullText": "Mythic Weapon Boost +2 or +4"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "enchantment": [
+                                        {
+                                            "fullText": "This item cannot be fed to sentient jewels."
+                                        }
+                                    ]
+                                },
+                                {
+                                    "enchantment": [
+                                        {
+                                            "fullText": "Stormreaver",
+                                            "fullText_url": "https://ddowiki.com/page/Stormreaver"
+                                        }
+                                    ]
+                                }
+                            ],
+                            "locationInformation": [{}]
+                        }
+                    ]
+                }
+            ]
         },
         {
-         "enchantment": [
-          {
-           "name": "Dispel Madstone Effects",
-           "name_url": "https://ddowiki.com/page/Dispel_Madstone_Effects",
-           "fullText": "—"
-          }
-         ]
+            "weapon": [
+                {
+                    "name": "Scepter of Siberys",
+                    "damangeAndType": "1 + 0 Bludgeon",
+                    "minLevel": "1",
+                    "binding": "Unbound",
+                    "quest": "Special event items, Hide and Seek",
+                    "criticalProfile": "",
+                    "enchantments": "Use Magic Device +1",
+                    "enchantments_url": "https://ddowiki.com/page/Use_Magic_Device",
+                    "errata": "",
+                    "weaponDetail": [
+                        {
+                            "proficiency": "Simple Weapon Proficiency",
+                            "name": "Scepter of Siberys",
+                            "damangeAndType": "Yes",
+                            "criticalThreatRange": "1 + 0 Bludgeon",
+                            "weaponType": [
+                                {
+                                    "damageCategory": "20 / x2"
+                                }
+                            ],
+                            "absRaceRequired": "Club / Bludgeoning weapons",
+                            "minLevel": "None",
+                            "requiredTrait": "None",
+                            "umd": "None",
+                            "handedness": "No UMD needed",
+                            "damageMod": "STR",
+                            "durability": "Unbound",
+                            "hardness": "None",
+                            "baseValue": "Unbreakable",
+                            "weight": "1cp",
+                            "upgradable": "Use Magic Device +1\nMythic Weapon Boost +2 or +4",
+                            "enchantments": [
+                                {
+                                    "enchantment": [
+                                        {
+                                            "name": "Use Magic Device +1",
+                                            "name_url": "https://ddowiki.com/page/Use_Magic_Device",
+                                            "fullText": "Use Magic Device +1"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "enchantment": [
+                                        {
+                                            "name": "Mythic Weapon Boost",
+                                            "name_url": "https://ddowiki.com/page/Mythic_Boost",
+                                            "fullText": "Mythic Weapon Boost +2 or +4"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "enchantment": [
+                                        {
+                                            "fullText": "This item cannot be fed to sentient jewels."
+                                        }
+                                    ]
+                                }
+                            ],
+                            "locationInformation": [{}]
+                        }
+                    ]
+                }
+            ]
         },
         {
-         "enchantment": [
-          {
-           "name": "Mythic Weapon Boost",
-           "name_url": "https://ddowiki.com/page/Mythic_Boost",
-           "fullText": "Mythic Weapon Boost +2 or +4"
-          }
-         ]
+            "weapon": [
+                {
+                    "name": "Bouquet of Flowers",
+                    "damangeAndType": "[1d2] + 0, Slash",
+                    "minLevel": "1",
+                    "binding": "Bound to Character on Equip",
+                    "quest": "DDO Store, general buffs",
+                    "criticalProfile": "Damage Modifier: CHA\nAttack Modifier: CHA",
+                    "enchantments": "Good Hope",
+                    "enchantments_url": "https://ddowiki.com/page/Good_Hope",
+                    "errata": "Damage Modifier: CHA\nAttack Modifier: CHA",
+                    "weaponDetail": [
+                        {
+                            "proficiency": "Simple Weapon Proficiency",
+                            "name": "Bouquet of Flowers",
+                            "damangeAndType": "No",
+                            "criticalThreatRange": "[1d2] + 0, Slash",
+                            "weaponType": [
+                                {
+                                    "damageCategory": "20 / x2"
+                                }
+                            ],
+                            "absRaceRequired": "Club / Bludgeoning weapons",
+                            "minLevel": "None",
+                            "requiredTrait": "None",
+                            "umd": "None",
+                            "handedness": "No UMD needed",
+                            "damageMod": "CHA",
+                            "durability": "Bound to Character on Equip",
+                            "hardness": "Wood",
+                            "baseValue": "8",
+                            "weight": "1cp",
+                            "upgradable": "Good Hope — 20 Charges",
+                            "enchantments": [
+                                {
+                                    "enchantment": [
+                                        {
+                                            "name": "Good Hope",
+                                            "name_url": "https://ddowiki.com/page/Good_Hope",
+                                            "fullText": "—"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "enchantment": [
+                                        {
+                                            "fullText": "This item cannot be fed to sentient jewels."
+                                        }
+                                    ]
+                                }
+                            ],
+                            "locationInformation": [{}]
+                        }
+                    ]
+                }
+            ]
         },
         {
-         "enchantment": [
-          {
-           "fullText": "This item cannot be fed to sentient jewels."
-          }
-         ]
+            "weapon": [
+                {
+                    "name": "Rod of Greater Teleport",
+                    "damangeAndType": "[1d6] +1 Bludgeoning, Magic",
+                    "minLevel": "1",
+                    "binding": "Bound to Account on Acquire",
+                    "quest": "DDO Store, Fast Travel",
+                    "criticalProfile": "",
+                    "enchantments": "+2 Enhancement Bonus",
+                    "enchantments_url": "https://ddowiki.com/page/Enhancement_bonus",
+                    "errata": "",
+                    "weaponDetail": [
+                        {
+                            "proficiency": "Simple Weapon Proficiency",
+                            "name": "Rod of Greater Teleport",
+                            "damangeAndType": "No",
+                            "criticalThreatRange": "[1d6] +1 Bludgeoning, Magic",
+                            "weaponType": [
+                                {
+                                    "damageCategory": "20 / x2"
+                                }
+                            ],
+                            "absRaceRequired": "Club / Bludgeoning weapons",
+                            "minLevel": "None",
+                            "requiredTrait": "None",
+                            "umd": "None",
+                            "handedness": "No UMD needed",
+                            "damageMod": "STR",
+                            "durability": "Bound to Account on Acquire",
+                            "hardness": "Wood",
+                            "baseValue": "9",
+                            "weight": "1cp",
+                            "upgradable": "+2 Enhancement Bonus\nGreater Teleport — 50 Charges (Recharged/Day:0)\nMythic Weapon Boost +2 or +4",
+                            "tips": [
+                                {
+                                    "tip": "Greater Teleport"
+                                }
+                            ],
+                            "enchantments": [
+                                {
+                                    "enchantment": [
+                                        {
+                                            "name": "+2 Enhancement Bonus",
+                                            "name_url": "https://ddowiki.com/page/Enhancement_bonus",
+                                            "fullText": "+2 Enhancement Bonus"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "enchantment": [
+                                        {
+                                            "name": "Greater Teleport",
+                                            "name_url": "https://ddowiki.com/page/Greater_Teleport",
+                                            "fullText": "—"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "enchantment": [
+                                        {
+                                            "name": "Mythic Weapon Boost",
+                                            "name_url": "https://ddowiki.com/page/Mythic_Boost",
+                                            "fullText": "Mythic Weapon Boost +2 or +4"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "enchantment": [
+                                        {
+                                            "fullText": "This item cannot be fed to sentient jewels."
+                                        }
+                                    ]
+                                }
+                            ],
+                            "locationInformation": [{}]
+                        }
+                    ]
+                }
+            ]
         },
         {
-         "enchantment": [
-          {
-           "fullText": "Stormreaver",
-           "fullText_url": "https://ddowiki.com/page/Stormreaver"
-          }
-         ]
-        }
-       ],
-       "locationInformation": [
-        {
-        }
-       ]
-      }
-     ]
-    }
-   ]
-  },
-  {
-   "weapon": [
-    {
-     "name": "Scepter of Siberys",
-     "damangeAndType": "1 + 0 Bludgeon",
-     "minLevel": "1",
-     "binding": "Unbound",
-     "quest": "Special event items, Hide and Seek",
-     "criticalProfile": "",
-     "enchantments": "Use Magic Device +1",
-     "enchantments_url": "https://ddowiki.com/page/Use_Magic_Device",
-     "errata": "",
-     "weaponDetail": [
-      {
-       "proficiency": "Simple Weapon Proficiency",
-       "name": "Scepter of Siberys",
-       "damangeAndType": "Yes",
-       "criticalThreatRange": "1 + 0 Bludgeon",
-       "weaponType": [
-        {
-         "damageCategory": "20 / x2"
-        }
-       ],
-       "absRaceRequired": "Club / Bludgeoning weapons",
-       "minLevel": "None",
-       "requiredTrait": "None",
-       "umd": "None",
-       "handedness": "No UMD needed",
-       "damageMod": "STR",
-       "durability": "Unbound",
-       "hardness": "None",
-       "baseValue": "Unbreakable",
-       "weight": "1cp",
-       "upgradable": "Use Magic Device +1\nMythic Weapon Boost +2 or +4",
-       "enchantments": [
-        {
-         "enchantment": [
-          {
-           "name": "Use Magic Device +1",
-           "name_url": "https://ddowiki.com/page/Use_Magic_Device",
-           "fullText": "Use Magic Device +1"
-          }
-         ]
+            "weapon": [
+                {
+                    "name": "Wayfinder's Scepter",
+                    "damangeAndType": "[1] + 0 Bludgeon",
+                    "minLevel": "1",
+                    "binding": "Unbound",
+                    "quest": "Special event items, Item Finding Reward",
+                    "criticalProfile": "",
+                    "enchantments": "Search +1",
+                    "enchantments_url": "https://ddowiki.com/page/Search",
+                    "errata": "",
+                    "weaponDetail": [
+                        {
+                            "proficiency": "Simple Weapon Proficiency",
+                            "name": "Wayfinder's Scepter",
+                            "damangeAndType": "Yes",
+                            "criticalThreatRange": "[1] + 0 Bludgeon",
+                            "weaponType": [
+                                {
+                                    "damageCategory": "20 / x2"
+                                }
+                            ],
+                            "absRaceRequired": "Club / Bludgeoning weapons",
+                            "minLevel": "None",
+                            "requiredTrait": "None",
+                            "umd": "None",
+                            "handedness": "No UMD needed",
+                            "damageMod": "STR",
+                            "durability": "Unbound",
+                            "hardness": "Wood",
+                            "baseValue": "Unbreakable",
+                            "weight": "1cp",
+                            "upgradable": "Search +1",
+                            "enchantments": [
+                                {
+                                    "enchantment": [
+                                        {
+                                            "name": "Search +1",
+                                            "name_url": "https://ddowiki.com/page/Search",
+                                            "fullText": "Search +1"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "enchantment": [
+                                        {
+                                            "fullText": "This item cannot be fed to sentient jewels."
+                                        }
+                                    ]
+                                },
+                                {
+                                    "enchantment": [{}]
+                                }
+                            ],
+                            "locationInformation": [{}]
+                        }
+                    ]
+                }
+            ]
         },
         {
-         "enchantment": [
-          {
-           "name": "Mythic Weapon Boost",
-           "name_url": "https://ddowiki.com/page/Mythic_Boost",
-           "fullText": "Mythic Weapon Boost +2 or +4"
-          }
-         ]
+            "weapon": [
+                {
+                    "name": "Romag's Club of Earthen Dominion",
+                    "damangeAndType": "[1d6] +0 Bludgeon",
+                    "minLevel": "1",
+                    "binding": "Unbound, Drops on leaving adventure",
+                    "quest": "Temple of Elemental Evil Part One, Romag's Chamber or Prison chest",
+                    "criticalProfile": "",
+                    "errata": "",
+                    "weaponDetail": [
+                        {
+                            "proficiency": "Simple Weapon Proficiency",
+                            "name": "Romag's Club of Earthen Dominion",
+                            "damangeAndType": "No",
+                            "criticalThreatRange": "[1d6] +0 Bludgeon",
+                            "weaponType": [
+                                {
+                                    "damageCategory": "20 / x2"
+                                }
+                            ],
+                            "absRaceRequired": "Club / Bludgeoning weapons",
+                            "minLevel": "None",
+                            "requiredTrait": "None",
+                            "umd": "None",
+                            "handedness": "No UMD needed",
+                            "damageMod": "STR",
+                            "durability": "Unbound, Drops on leaving adventure",
+                            "hardness": "Wood",
+                            "baseValue": "5",
+                            "weight": "1cp",
+                            "upgradable": "Mastery over Earth Elementals",
+                            "enchantments": [
+                                {
+                                    "enchantment": [
+                                        {
+                                            "fullText": "Mastery over Earth Elementals"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "enchantment": [
+                                        {
+                                            "fullText": "This item cannot be fed to sentient jewels."
+                                        }
+                                    ]
+                                }
+                            ],
+                            "locationInformation": [{}]
+                        }
+                    ]
+                }
+            ]
         },
         {
-         "enchantment": [
-          {
-           "fullText": "This item cannot be fed to sentient jewels."
-          }
-         ]
-        }
-       ],
-       "locationInformation": [
-        {
-        }
-       ]
-      }
-     ]
-    }
-   ]
-  },
-  {
-   "weapon": [
-    {
-     "name": "Bouquet of Flowers",
-     "damangeAndType": "[1d2] + 0, Slash",
-     "minLevel": "1",
-     "binding": "Bound to Character on Equip",
-     "quest": "DDO Store, general buffs",
-     "criticalProfile": "Damage Modifier: CHA\nAttack Modifier: CHA",
-     "enchantments": "Good Hope",
-     "enchantments_url": "https://ddowiki.com/page/Good_Hope",
-     "errata": "Damage Modifier: CHA\nAttack Modifier: CHA",
-     "weaponDetail": [
-      {
-       "proficiency": "Simple Weapon Proficiency",
-       "name": "Bouquet of Flowers",
-       "damangeAndType": "No",
-       "criticalThreatRange": "[1d2] + 0, Slash",
-       "weaponType": [
-        {
-         "damageCategory": "20 / x2"
-        }
-       ],
-       "absRaceRequired": "Club / Bludgeoning weapons",
-       "minLevel": "None",
-       "requiredTrait": "None",
-       "umd": "None",
-       "handedness": "No UMD needed",
-       "damageMod": "CHA",
-       "durability": "Bound to Character on Equip",
-       "hardness": "Wood",
-       "baseValue": "8",
-       "weight": "1cp",
-       "upgradable": "Good Hope — 20 Charges",
-       "enchantments": [
-        {
-         "enchantment": [
-          {
-           "name": "Good Hope",
-           "name_url": "https://ddowiki.com/page/Good_Hope",
-           "fullText": "—"
-          }
-         ]
+            "weapon": [
+                {
+                    "name": "Short Broom of Mystery",
+                    "damangeAndType": "[1d6] +0 Bludgeoning",
+                    "minLevel": "1",
+                    "binding": "Bound to Account on Acquire, Exclusive",
+                    "quest": "The Night Revels",
+                    "criticalProfile": "",
+                    "enchantments": "Purple Faerie Fire",
+                    "enchantments_url": "https://ddowiki.com/page/Purple_Faerie_Fire",
+                    "errata": "",
+                    "weaponDetail": [
+                        {
+                            "proficiency": "Simple Weapon Proficiency",
+                            "name": "Short Broom of Mystery",
+                            "damangeAndType": "No",
+                            "criticalThreatRange": "[1d6] +0 Bludgeoning",
+                            "weaponType": [
+                                {
+                                    "damageCategory": "20 / x2"
+                                }
+                            ],
+                            "absRaceRequired": "Club / Bludgeoning weapons",
+                            "minLevel": "None",
+                            "requiredTrait": "None",
+                            "umd": "None",
+                            "handedness": "No UMD needed",
+                            "damageMod": "STR",
+                            "durability": "Bound to Account on Acquire, Exclusive",
+                            "hardness": "Wood",
+                            "baseValue": "5",
+                            "weight": "20pp",
+                            "upgradable": "Purple Faerie Fire — 3 Charges (Recharged/Day:1)",
+                            "enchantments": [
+                                {
+                                    "enchantment": [
+                                        {
+                                            "name": "Purple Faerie Fire",
+                                            "name_url": "https://ddowiki.com/page/Purple_Faerie_Fire",
+                                            "fullText": "—"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "enchantment": [
+                                        {
+                                            "fullText": "This item cannot be fed to sentient jewels."
+                                        }
+                                    ]
+                                },
+                                {
+                                    "enchantment": [{}]
+                                }
+                            ],
+                            "locationInformation": [{}]
+                        }
+                    ]
+                }
+            ]
         },
         {
-         "enchantment": [
-          {
-           "fullText": "This item cannot be fed to sentient jewels."
-          }
-         ]
-        }
-       ],
-       "locationInformation": [
-        {
-        }
-       ]
-      }
-     ]
-    }
-   ]
-  },
-  {
-   "weapon": [
-    {
-     "name": "Rod of Greater Teleport",
-     "damangeAndType": "[1d6] +1 Bludgeoning, Magic",
-     "minLevel": "1",
-     "binding": "Bound to Account on Acquire",
-     "quest": "DDO Store, Fast Travel",
-     "criticalProfile": "",
-     "enchantments": "+2 Enhancement Bonus",
-     "enchantments_url": "https://ddowiki.com/page/Enhancement_bonus",
-     "errata": "",
-     "weaponDetail": [
-      {
-       "proficiency": "Simple Weapon Proficiency",
-       "name": "Rod of Greater Teleport",
-       "damangeAndType": "No",
-       "criticalThreatRange": "[1d6] +1 Bludgeoning, Magic",
-       "weaponType": [
-        {
-         "damageCategory": "20 / x2"
-        }
-       ],
-       "absRaceRequired": "Club / Bludgeoning weapons",
-       "minLevel": "None",
-       "requiredTrait": "None",
-       "umd": "None",
-       "handedness": "No UMD needed",
-       "damageMod": "STR",
-       "durability": "Bound to Account on Acquire",
-       "hardness": "Wood",
-       "baseValue": "9",
-       "weight": "1cp",
-       "upgradable": "+2 Enhancement Bonus\nGreater Teleport — 50 Charges (Recharged/Day:0)\nMythic Weapon Boost +2 or +4",
-       "tips": [
-        {
-         "tip": "Greater Teleport"
-        }
-       ],
-       "enchantments": [
-        {
-         "enchantment": [
-          {
-           "name": "+2 Enhancement Bonus",
-           "name_url": "https://ddowiki.com/page/Enhancement_bonus",
-           "fullText": "+2 Enhancement Bonus"
-          }
-         ]
+            "weapon": [
+                {
+                    "name": "Smoldering Cudgel",
+                    "damangeAndType": "[1d6] + 0 Bludgeon",
+                    "minLevel": "1",
+                    "binding": "Unbound, Drops on death",
+                    "quest": "Ghost of a Chance, Found in Fire Pit",
+                    "criticalProfile": "",
+                    "enchantments": "Fire Touch",
+                    "enchantments_url": "https://ddowiki.com/page/Fire_Touch",
+                    "errata": "",
+                    "weaponDetail": [
+                        {
+                            "proficiency": "Simple Weapon Proficiency",
+                            "name": "Smoldering Cudgel",
+                            "damangeAndType": "No",
+                            "criticalThreatRange": "[1d6] + 0 Bludgeon",
+                            "weaponType": [
+                                {
+                                    "damageCategory": "20 / x2"
+                                }
+                            ],
+                            "absRaceRequired": "Club / Bludgeoning weapons",
+                            "minLevel": "None",
+                            "requiredTrait": "None",
+                            "umd": "None",
+                            "handedness": "No UMD needed",
+                            "damageMod": "STR",
+                            "durability": "Unbound, Drops on death",
+                            "hardness": "Wood",
+                            "baseValue": "6",
+                            "weight": "1cp",
+                            "upgradable": "Fire Touch\nSpot -5\nCommand +2\nPerform +1",
+                            "enchantments": [
+                                {
+                                    "enchantment": [
+                                        {
+                                            "name": "Fire Touch",
+                                            "name_url": "https://ddowiki.com/page/Fire_Touch",
+                                            "fullText": "Fire Touch"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "enchantment": [
+                                        {
+                                            "name": "Spot -5",
+                                            "name_url": "https://ddowiki.com/page/Spot",
+                                            "fullText": "Spot -5"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "enchantment": [
+                                        {
+                                            "name": "Command +2",
+                                            "name_url": "https://ddowiki.com/page/Command_(enchantment)",
+                                            "fullText": "Command +2"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "enchantment": [
+                                        {
+                                            "name": "Perform +1",
+                                            "name_url": "https://ddowiki.com/page/Perform",
+                                            "fullText": "Perform +1"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "enchantment": [
+                                        {
+                                            "fullText": "This item cannot be fed to sentient jewels."
+                                        }
+                                    ]
+                                },
+                                {
+                                    "enchantment": [
+                                        {
+                                            "fullText": "Brekik",
+                                            "fullText_url": "https://ddowiki.com/page/Brekik"
+                                        }
+                                    ]
+                                }
+                            ],
+                            "locationInformation": [{}]
+                        }
+                    ]
+                }
+            ]
         },
         {
-         "enchantment": [
-          {
-           "name": "Greater Teleport",
-           "name_url": "https://ddowiki.com/page/Greater_Teleport",
-           "fullText": "—"
-          }
-         ]
-        },
-        {
-         "enchantment": [
-          {
-           "name": "Mythic Weapon Boost",
-           "name_url": "https://ddowiki.com/page/Mythic_Boost",
-           "fullText": "Mythic Weapon Boost +2 or +4"
-          }
-         ]
-        },
-        {
-         "enchantment": [
-          {
-           "fullText": "This item cannot be fed to sentient jewels."
-          }
-         ]
+            "weapon": [
+                {
+                    "name": "Rod of Teleport",
+                    "damangeAndType": "[1d6] +1 Bludgeoning, Magic",
+                    "minLevel": "1",
+                    "quest": "Anniversary Card Collection",
+                    "criticalProfile": "",
+                    "enchantments": "+1 Enhancement Bonus",
+                    "enchantments_url": "https://ddowiki.com/page/Enhancement_bonus",
+                    "errata": ""
+                }
+            ]
         }
-       ],
-       "locationInformation": [
-        {
-        }
-       ]
-      }
-     ]
-    }
-   ]
-  },
-  {
-   "weapon": [
-    {
-     "name": "Wayfinder's Scepter",
-     "damangeAndType": "[1] + 0 Bludgeon",
-     "minLevel": "1",
-     "binding": "Unbound",
-     "quest": "Special event items, Item Finding Reward",
-     "criticalProfile": "",
-     "enchantments": "Search +1",
-     "enchantments_url": "https://ddowiki.com/page/Search",
-     "errata": "",
-     "weaponDetail": [
-      {
-       "proficiency": "Simple Weapon Proficiency",
-       "name": "Wayfinder's Scepter",
-       "damangeAndType": "Yes",
-       "criticalThreatRange": "[1] + 0 Bludgeon",
-       "weaponType": [
-        {
-         "damageCategory": "20 / x2"
-        }
-       ],
-       "absRaceRequired": "Club / Bludgeoning weapons",
-       "minLevel": "None",
-       "requiredTrait": "None",
-       "umd": "None",
-       "handedness": "No UMD needed",
-       "damageMod": "STR",
-       "durability": "Unbound",
-       "hardness": "Wood",
-       "baseValue": "Unbreakable",
-       "weight": "1cp",
-       "upgradable": "Search +1",
-       "enchantments": [
-        {
-         "enchantment": [
-          {
-           "name": "Search +1",
-           "name_url": "https://ddowiki.com/page/Search",
-           "fullText": "Search +1"
-          }
-         ]
-        },
-        {
-         "enchantment": [
-          {
-           "fullText": "This item cannot be fed to sentient jewels."
-          }
-         ]
-        },
-        {
-         "enchantment": [
-          {
-          }
-         ]
-        }
-       ],
-       "locationInformation": [
-        {
-        }
-       ]
-      }
-     ]
-    }
-   ]
-  },
-  {
-   "weapon": [
-    {
-     "name": "Romag's Club of Earthen Dominion",
-     "damangeAndType": "[1d6] +0 Bludgeon",
-     "minLevel": "1",
-     "binding": "Unbound, Drops on leaving adventure",
-     "quest": "Temple of Elemental Evil Part One, Romag's Chamber or Prison chest",
-     "criticalProfile": "",
-     "errata": "",
-     "weaponDetail": [
-      {
-       "proficiency": "Simple Weapon Proficiency",
-       "name": "Romag's Club of Earthen Dominion",
-       "damangeAndType": "No",
-       "criticalThreatRange": "[1d6] +0 Bludgeon",
-       "weaponType": [
-        {
-         "damageCategory": "20 / x2"
-        }
-       ],
-       "absRaceRequired": "Club / Bludgeoning weapons",
-       "minLevel": "None",
-       "requiredTrait": "None",
-       "umd": "None",
-       "handedness": "No UMD needed",
-       "damageMod": "STR",
-       "durability": "Unbound, Drops on leaving adventure",
-       "hardness": "Wood",
-       "baseValue": "5",
-       "weight": "1cp",
-       "upgradable": "Mastery over Earth Elementals",
-       "enchantments": [
-        {
-         "enchantment": [
-          {
-           "fullText": "Mastery over Earth Elementals"
-          }
-         ]
-        },
-        {
-         "enchantment": [
-          {
-           "fullText": "This item cannot be fed to sentient jewels."
-          }
-         ]
-        }
-       ],
-       "locationInformation": [
-        {
-        }
-       ]
-      }
-     ]
-    }
-   ]
-  },
-  {
-   "weapon": [
-    {
-     "name": "Short Broom of Mystery",
-     "damangeAndType": "[1d6] +0 Bludgeoning",
-     "minLevel": "1",
-     "binding": "Bound to Account on Acquire, Exclusive",
-     "quest": "The Night Revels",
-     "criticalProfile": "",
-     "enchantments": "Purple Faerie Fire",
-     "enchantments_url": "https://ddowiki.com/page/Purple_Faerie_Fire",
-     "errata": "",
-     "weaponDetail": [
-      {
-       "proficiency": "Simple Weapon Proficiency",
-       "name": "Short Broom of Mystery",
-       "damangeAndType": "No",
-       "criticalThreatRange": "[1d6] +0 Bludgeoning",
-       "weaponType": [
-        {
-         "damageCategory": "20 / x2"
-        }
-       ],
-       "absRaceRequired": "Club / Bludgeoning weapons",
-       "minLevel": "None",
-       "requiredTrait": "None",
-       "umd": "None",
-       "handedness": "No UMD needed",
-       "damageMod": "STR",
-       "durability": "Bound to Account on Acquire, Exclusive",
-       "hardness": "Wood",
-       "baseValue": "5",
-       "weight": "20pp",
-       "upgradable": "Purple Faerie Fire — 3 Charges (Recharged/Day:1)",
-       "enchantments": [
-        {
-         "enchantment": [
-          {
-           "name": "Purple Faerie Fire",
-           "name_url": "https://ddowiki.com/page/Purple_Faerie_Fire",
-           "fullText": "—"
-          }
-         ]
-        },
-        {
-         "enchantment": [
-          {
-           "fullText": "This item cannot be fed to sentient jewels."
-          }
-         ]
-        },
-        {
-         "enchantment": [
-          {
-          }
-         ]
-        }
-       ],
-       "locationInformation": [
-        {
-        }
-       ]
-      }
-     ]
-    }
-   ]
-  },
-  {
-   "weapon": [
-    {
-     "name": "Smoldering Cudgel",
-     "damangeAndType": "[1d6] + 0 Bludgeon",
-     "minLevel": "1",
-     "binding": "Unbound, Drops on death",
-     "quest": "Ghost of a Chance, Found in Fire Pit",
-     "criticalProfile": "",
-     "enchantments": "Fire Touch",
-     "enchantments_url": "https://ddowiki.com/page/Fire_Touch",
-     "errata": "",
-     "weaponDetail": [
-      {
-       "proficiency": "Simple Weapon Proficiency",
-       "name": "Smoldering Cudgel",
-       "damangeAndType": "No",
-       "criticalThreatRange": "[1d6] + 0 Bludgeon",
-       "weaponType": [
-        {
-         "damageCategory": "20 / x2"
-        }
-       ],
-       "absRaceRequired": "Club / Bludgeoning weapons",
-       "minLevel": "None",
-       "requiredTrait": "None",
-       "umd": "None",
-       "handedness": "No UMD needed",
-       "damageMod": "STR",
-       "durability": "Unbound, Drops on death",
-       "hardness": "Wood",
-       "baseValue": "6",
-       "weight": "1cp",
-       "upgradable": "Fire Touch\nSpot -5\nCommand +2\nPerform +1",
-       "enchantments": [
-        {
-         "enchantment": [
-          {
-           "name": "Fire Touch",
-           "name_url": "https://ddowiki.com/page/Fire_Touch",
-           "fullText": "Fire Touch"
-          }
-         ]
-        },
-        {
-         "enchantment": [
-          {
-           "name": "Spot -5",
-           "name_url": "https://ddowiki.com/page/Spot",
-           "fullText": "Spot -5"
-          }
-         ]
-        },
-        {
-         "enchantment": [
-          {
-           "name": "Command +2",
-           "name_url": "https://ddowiki.com/page/Command_(enchantment)",
-           "fullText": "Command +2"
-          }
-         ]
-        },
-        {
-         "enchantment": [
-          {
-           "name": "Perform +1",
-           "name_url": "https://ddowiki.com/page/Perform",
-           "fullText": "Perform +1"
-          }
-         ]
-        },
-        {
-         "enchantment": [
-          {
-           "fullText": "This item cannot be fed to sentient jewels."
-          }
-         ]
-        },
-        {
-         "enchantment": [
-          {
-           "fullText": "Brekik",
-           "fullText_url": "https://ddowiki.com/page/Brekik"
-          }
-         ]
-        }
-       ],
-       "locationInformation": [
-        {
-        }
-       ]
-      }
-     ]
-    }
-   ]
-  },
-  {
-   "weapon": [
-    {
-     "name": "Rod of Teleport",
-     "damangeAndType": "[1d6] +1 Bludgeoning, Magic",
-     "minLevel": "1",
-     "quest": "Anniversary Card Collection",
-     "criticalProfile": "",
-     "enchantments": "+1 Enhancement Bonus",
-     "enchantments_url": "https://ddowiki.com/page/Enhancement_bonus",
-     "errata": ""
-    }
-   ]
-  }
- ]
+    ]
 }

@@ -24,6 +24,7 @@ trait WandAndScrollMastery extends BombardierTierOne with ClassEnhancementImpl {
   override lazy val description: Option[String] = Some(
     "+[25/50/75]% damage and healing from your wands, scrolls, and other items that cast spells, and +[1/3/6] to the save DCs of your offensive wands"
   )
+
   /**
    * Some enhancements can be taken multiple times (generally up to three)
    */

@@ -16,1222 +16,1115 @@
  * limitations under the License.
  */
 {
- "item": [
-  {
-   "weapon": [
-    {
-     "name": "Lump of Coal",
-     "damangeAndType": "[1d2] + 0 Bludgeon",
-     "minLevel": "1",
-     "binding": "Unbound",
-     "quest": "Festivult, Random reward for turning in coins",
-     "criticalProfile": "",
-     "errata": "",
-     "weaponDetail": [
-      {
-       "proficiency": "Simple Weapon Proficiency",
-       "name": "Lump of Coal",
-       "damangeAndType": "[1d2] + 0 Bludgeon",
-       "criticalThreatRange": "20 / x2",
-       "weaponType": [
+    "item": [
         {
-         "weaponCategory": "Dart",
-         "damageCategory": "/ Thrown weapons"
+            "weapon": [
+                {
+                    "name": "Lump of Coal",
+                    "damangeAndType": "[1d2] + 0 Bludgeon",
+                    "minLevel": "1",
+                    "binding": "Unbound",
+                    "quest": "Festivult, Random reward for turning in coins",
+                    "criticalProfile": "",
+                    "errata": "",
+                    "weaponDetail": [
+                        {
+                            "proficiency": "Simple Weapon Proficiency",
+                            "name": "Lump of Coal",
+                            "damangeAndType": "[1d2] + 0 Bludgeon",
+                            "criticalThreatRange": "20 / x2",
+                            "weaponType": [
+                                {
+                                    "weaponCategory": "Dart",
+                                    "damageCategory": "/ Thrown weapons"
+                                }
+                            ],
+                            "absRaceRequired": "None",
+                            "minLevel": "None",
+                            "requiredTrait": "None",
+                            "umd": "No UMD needed",
+                            "handedness": "",
+                            "attackMod": "DEX",
+                            "damageMod": "STR",
+                            "binding": "Unbound",
+                            "binding_url": "https://ddowiki.com/page/Bind",
+                            "durability": "25",
+                            "material": "Stone",
+                            "material_url": "https://ddowiki.com/page/Stone",
+                            "hardness": "6",
+                            "baseValue": "5cp",
+                            "weight": "0.5 lbs",
+                            "upgradable": "Not upgradeable",
+                            "tips": [
+                                {
+                                    "tip": "This item cannot be fed to sentient jewels."
+                                },
+                                {
+                                    "tip": "Multiple Drop Locations; Comes from Festivult, Winter Festival, by killing Duergar, or can be purchased from Avarandi Rivetfingers located in Guild Airships Proving Ground amenity. Can stack to 50 per stack."
+                                }
+                            ],
+                            "description": "A lump of coal. You must have been very naughty.",
+                            "enchantments": [
+                                {
+                                    "enchantment": [
+                                        {
+                                            "name": "Mythic Weapon Boost",
+                                            "name_url": "https://ddowiki.com/page/Mythic_Boost",
+                                            "fullText": "Mythic Weapon Boost +2 or +4"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "enchantment": [
+                                        {
+                                            "fullText": "This item cannot be fed to sentient jewels."
+                                        }
+                                    ]
+                                },
+                                {
+                                    "enchantment": [
+                                        {
+                                            "fullText": "Guild Airships",
+                                            "fullText_url": "https://ddowiki.com/page/Guild_Airships"
+                                        }
+                                    ]
+                                }
+                            ],
+                            "locationInformation": [
+                                {
+                                    "location": "Festivult",
+                                    "location_url": "https://ddowiki.com/page/Festivult",
+                                    "locationExtra": ", Random reward for turning in coins"
+                                }
+                            ]
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "weapon": [
+                {
+                    "name": "Pumpkin Head",
+                    "damangeAndType": "[1] + 0 Bludgeon",
+                    "minLevel": "5",
+                    "binding": "Unbound",
+                    "criticalProfile": "Critical Profile: 20 / x1",
+                    "errata": "Critical Profile: 20 / x1",
+                    "weaponDetail": [
+                        {
+                            "proficiency": "Simple Weapon Proficiency",
+                            "name": "Pumpkin Head",
+                            "damangeAndType": "[1] + 0 Bludgeon",
+                            "criticalThreatRange": "20 / x1",
+                            "weaponType": [
+                                {
+                                    "weaponCategory": "Dart",
+                                    "damageCategory": "/ Thrown weapons"
+                                }
+                            ],
+                            "absRaceRequired": "None",
+                            "minLevel": "5",
+                            "requiredTrait": "None",
+                            "umd": "No UMD needed",
+                            "handedness": "",
+                            "attackMod": "DEX",
+                            "damageMod": "STR",
+                            "binding": "Unbound",
+                            "binding_url": "https://ddowiki.com/page/Bind",
+                            "durability": "13",
+                            "material": "Wood",
+                            "material_url": "https://ddowiki.com/page/Wood",
+                            "hardness": "7",
+                            "baseValue": "5cp",
+                            "weight": "0.05 lbs",
+                            "upgradable": "Not upgradeable",
+                            "tips": [
+                                {
+                                    "tip": "Potion of the Party Pooper"
+                                }
+                            ],
+                            "description": "Trick or Treat! Throw this at your friends!",
+                            "enchantments": [
+                                {
+                                    "enchantment": [
+                                        {
+                                            "name": "Mythic Weapon Boost",
+                                            "name_url": "https://ddowiki.com/page/Mythic_Boost",
+                                            "fullText": "Mythic Weapon Boost +2 or +4"
+                                        }
+                                    ]
+                                }
+                            ],
+                            "locationInformation": [
+                                {
+                                    "location": "Motes of Night",
+                                    "location_url": "https://ddowiki.com/page/Item:Mote_of_Night"
+                                }
+                            ]
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "weapon": [
+                {
+                    "name": "Nightforge Spike",
+                    "damangeAndType": "1.50 [1d4] + 5 Pierce, Adamantine, Magic",
+                    "minLevel": "8",
+                    "binding": "Bound to Character on Acquire",
+                    "quest": "A Relic of a Sovereign Past",
+                    "criticalProfile": "Critical Profile: 16-20 / x3",
+                    "enchantments": "+5 Enhancement Bonus",
+                    "enchantments_url": "https://ddowiki.com/page/Enhancement_bonus",
+                    "errata": "Critical Profile: 16-20 / x3",
+                    "weaponDetail": [
+                        {
+                            "proficiency": "Simple Weapon Proficiency",
+                            "name": "Nightforge Spike",
+                            "damangeAndType": "1.50 [1d4] + 5 Pierce, Adamantine, Magic",
+                            "criticalThreatRange": "16-20 / x3",
+                            "weaponType": [
+                                {
+                                    "weaponCategory": "Dart",
+                                    "damageCategory": "/ Thrown weapons"
+                                }
+                            ],
+                            "absRaceRequired": "None",
+                            "minLevel": "8",
+                            "requiredTrait": "None",
+                            "umd": "No UMD needed",
+                            "handedness": "",
+                            "attackMod": "DEX",
+                            "damageMod": "STR",
+                            "binding": "Bound to Character on Acquire",
+                            "binding_url": "https://ddowiki.com/page/Bind",
+                            "durability": "65",
+                            "material": "Adamantine",
+                            "material_url": "https://ddowiki.com/page/Adamantine",
+                            "hardness": "25",
+                            "baseValue": "3,500pp 5cp",
+                            "weight": "0.50 lbs",
+                            "upgradable": "Not upgradeable",
+                            "description": "Weighted darts of forged adamantine. A skilled thrower can hurl them with surprising force and accuracy.",
+                            "enchantments": [
+                                {
+                                    "enchantment": [
+                                        {
+                                            "name": "+5 Enhancement Bonus",
+                                            "name_url": "https://ddowiki.com/page/Enhancement_bonus",
+                                            "fullText": "+5 Enhancement Bonus"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "oneOfEnchantment": [
+                                        {},
+                                        {},
+                                        {},
+                                        {},
+                                        {},
+                                        {},
+                                        {},
+                                        {},
+                                        {},
+                                        {},
+                                        {},
+                                        {},
+                                        {},
+                                        {},
+                                        {},
+                                        {}
+                                    ],
+                                    "enchantment": [
+                                        {
+                                            "fullText": "Empty Red Augment Slot"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "enchantment": [
+                                        {
+                                            "name": "Adamantine",
+                                            "name_url": "https://ddowiki.com/page/Adamantine",
+                                            "fullText": "Adamantine"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "enchantment": [
+                                        {
+                                            "name": "Returning",
+                                            "name_url": "https://ddowiki.com/page/Returning",
+                                            "fullText": "Returning"
+                                        }
+                                    ]
+                                }
+                            ],
+                            "locationInformation": [
+                                {
+                                    "location": "Adamantine Ore",
+                                    "location_url": "https://ddowiki.com/page/Adamantine_Ore",
+                                    "locationExtra": ", Turn in 10"
+                                }
+                            ]
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "weapon": [
+                {
+                    "name": "Alchemical Dart*",
+                    "damangeAndType": "2 [1d4] + 5 Pierce, Magic",
+                    "minLevel": "12",
+                    "binding": "Unbound",
+                    "quest": "The Master Artificer, Either End chest",
+                    "criticalProfile": "",
+                    "enchantments": "+5 Enhancement Bonus",
+                    "enchantments_url": "https://ddowiki.com/page/Enhancement_bonus",
+                    "itemId": "Alchemical Dart",
+                    "url": "https://ddowiki.com/page/Item:Alchemical_Dart",
+                    "errata": ""
+                }
+            ]
+        },
+        {
+            "weapon": [
+                {
+                    "name": "Returning Snowball",
+                    "damangeAndType": "1.5[1d4] +5 Bludgeon, Magic",
+                    "minLevel": "14",
+                    "binding": "Bound to Account",
+                    "quest": "Tower of Frost, End chest",
+                    "criticalProfile": "Critical Profile: 18-20/ x2\nDamage Modifier:",
+                    "enchantments": "+5 Enhancement Bonus",
+                    "enchantments_url": "https://ddowiki.com/page/Enhancement_bonus",
+                    "errata": "Critical Profile: 18-20/ x2\nDamage Modifier:",
+                    "weaponDetail": [
+                        {
+                            "proficiency": "Simple Weapon Proficiency",
+                            "name": "Returning Snowball",
+                            "damangeAndType": "1.5[1d4] +5 Bludgeon, Magic",
+                            "criticalThreatRange": "18-20/ x2",
+                            "weaponType": [
+                                {
+                                    "weaponCategory": "Dart",
+                                    "damageCategory": "/ Thrown weapons"
+                                }
+                            ],
+                            "absRaceRequired": "None",
+                            "minLevel": "14",
+                            "requiredTrait": "None",
+                            "umd": "No UMD needed",
+                            "handedness": "",
+                            "attackMod": "DEX",
+                            "damageMod": "N/A",
+                            "binding": "Bound to Account",
+                            "binding_url": "https://ddowiki.com/page/Bind",
+                            "durability": "155",
+                            "material": "Ice",
+                            "material_url": "https://ddowiki.com/page/Ice",
+                            "hardness": "19",
+                            "baseValue": "5,600pp 1cp",
+                            "weight": "0.50 lbs",
+                            "upgradable": "Not upgradeable",
+                            "description": "A snowball.",
+                            "enchantments": [
+                                {
+                                    "enchantment": [
+                                        {
+                                            "name": "+5 Enhancement Bonus",
+                                            "name_url": "https://ddowiki.com/page/Enhancement_bonus",
+                                            "fullText": "+5 Enhancement Bonus"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "enchantment": [
+                                        {
+                                            "name": "Humanoid Bane 3",
+                                            "name_url": "https://ddowiki.com/page/Bane_(enchantment)",
+                                            "fullText": "Humanoid Bane 3"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "enchantment": [
+                                        {
+                                            "name": "Frostbite",
+                                            "name_url": "https://ddowiki.com/page/Frostbite_(enchantment)",
+                                            "fullText": "Frostbite"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "enchantment": [
+                                        {
+                                            "name": "Freezing 8",
+                                            "name_url": "https://ddowiki.com/page/Freezing",
+                                            "fullText": "Freezing 8"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "enchantment": [
+                                        {
+                                            "name": "Chilling 3",
+                                            "name_url": "https://ddowiki.com/page/Chilling",
+                                            "fullText": "Chilling 3"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "oneOfEnchantment": [
+                                        {},
+                                        {},
+                                        {},
+                                        {},
+                                        {},
+                                        {},
+                                        {},
+                                        {},
+                                        {},
+                                        {},
+                                        {},
+                                        {},
+                                        {},
+                                        {},
+                                        {},
+                                        {},
+                                        {},
+                                        {},
+                                        {},
+                                        {},
+                                        {},
+                                        {},
+                                        {},
+                                        {},
+                                        {}
+                                    ],
+                                    "enchantment": [
+                                        {
+                                            "fullText": "Empty Orange Augment Slot"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "enchantment": [
+                                        {
+                                            "name": "Returning",
+                                            "name_url": "https://ddowiki.com/page/Returning",
+                                            "fullText": "Returning"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "enchantment": [
+                                        {
+                                            "name": "Mythic Weapon Boost",
+                                            "name_url": "https://ddowiki.com/page/Mythic_Boost",
+                                            "fullText": "Mythic Weapon Boost +2 or +4"
+                                        }
+                                    ]
+                                }
+                            ],
+                            "locationInformation": [
+                                {
+                                    "location": "Tower of Frost",
+                                    "location_url": "https://ddowiki.com/page/Tower_of_Frost",
+                                    "locationExtra": ", End chest"
+                                }
+                            ]
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "weapon": [
+                {
+                    "name": "+5 Heirloom Spelltouched Dart*",
+                    "damangeAndType": "2 [1d4] +5 Pierce, Magic",
+                    "minLevel": "20",
+                    "binding": "Bound to Character on Acquire",
+                    "quest": "Underdark Arena: Ring of Fire, End chest",
+                    "criticalProfile": "",
+                    "enchantments": "+5 Enhancement Bonus",
+                    "enchantments_url": "https://ddowiki.com/page/Enhancement_bonus",
+                    "itemId": "+5 Heirloom Spelltouched Dart",
+                    "url": "https://ddowiki.com/page/Item:%2B5_Heirloom_Spelltouched_Dart",
+                    "errata": ""
+                }
+            ]
+        },
+        {
+            "weapon": [
+                {
+                    "name": "Thunder-Forged Alloy Dart",
+                    "damangeAndType": "3.50 [1d4] + 9 Pierce, Silver, Adamantine, Mithral, Cold Iron, Magic, Byeshk",
+                    "minLevel": "22",
+                    "binding": "Unbound",
+                    "quest": "Magma Forge, Crafted from various ingredients",
+                    "criticalProfile": "",
+                    "enchantments": "+9 Enhancement Bonus",
+                    "enchantments_url": "https://ddowiki.com/page/Enhancement_bonus",
+                    "errata": "",
+                    "weaponDetail": [
+                        {
+                            "proficiency": "Simple Weapon Proficiency",
+                            "name": "Thunder-Forged Alloy Dart",
+                            "damangeAndType": "3.50 [1d4] + 9 Pierce, Silver, Adamantine, Mithral, Cold Iron, Magic, Byeshk",
+                            "criticalThreatRange": "20 / x2",
+                            "weaponType": [
+                                {
+                                    "weaponCategory": "Dart",
+                                    "damageCategory": "/ Thrown weapons"
+                                }
+                            ],
+                            "absRaceRequired": "None",
+                            "minLevel": "22",
+                            "requiredTrait": "None",
+                            "umd": "No UMD needed",
+                            "handedness": "",
+                            "attackMod": "DEX",
+                            "damageMod": "STR",
+                            "binding": "Unbound",
+                            "binding_url": "https://ddowiki.com/page/Bind",
+                            "durability": "145",
+                            "material": "Adamantine",
+                            "material_url": "https://ddowiki.com/page/Adamantine",
+                            "hardness": "28",
+                            "baseValue": "8,800pp 6cp",
+                            "weight": "0.50 lbs",
+                            "upgradable": "Thunder-Forged",
+                            "tips": [
+                                {
+                                    "tip": "20 Thunder-Forged Dwarven Ingots"
+                                },
+                                {
+                                    "tip": "15 Commendations of Valor"
+                                }
+                            ],
+                            "description": "A dart forged from metals long in proximity to dragons under Thunderholme.",
+                            "enchantments": [
+                                {
+                                    "enchantment": [
+                                        {
+                                            "name": "+9 Enhancement Bonus",
+                                            "name_url": "https://ddowiki.com/page/Enhancement_bonus",
+                                            "fullText": "+9 Enhancement Bonus"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "oneOfEnchantment": [
+                                        {},
+                                        {},
+                                        {},
+                                        {},
+                                        {},
+                                        {},
+                                        {},
+                                        {},
+                                        {},
+                                        {},
+                                        {},
+                                        {},
+                                        {},
+                                        {},
+                                        {},
+                                        {},
+                                        {},
+                                        {},
+                                        {},
+                                        {},
+                                        {},
+                                        {},
+                                        {},
+                                        {},
+                                        {}
+                                    ],
+                                    "enchantment": [
+                                        {
+                                            "fullText": "Empty Orange Augment Slot"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "enchantment": [
+                                        {
+                                            "name": "Returning",
+                                            "name_url": "https://ddowiki.com/page/Returning",
+                                            "fullText": "Returning"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "enchantment": [
+                                        {
+                                            "name": "Thunder-Forged (Tier 0)",
+                                            "name_url": "https://ddowiki.com/page/Thunder-Forged",
+                                            "fullText": "Thunder-Forged (Tier 0)"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "enchantment": [
+                                        {
+                                            "name": "Mythic Weapon Boost",
+                                            "name_url": "https://ddowiki.com/page/Mythic_Boost",
+                                            "fullText": "Mythic Weapon Boost +2 or +4"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "enchantment": [
+                                        {
+                                            "fullText": "20 Thunder-Forged Dwarven Ingots",
+                                            "fullText_url": "https://ddowiki.com/page/Item:Thunder-Forged_Dwarven_Ingot"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "enchantment": [
+                                        {
+                                            "fullText": "15 Commendations of Valor",
+                                            "fullText_url": "https://ddowiki.com/page/Item:Commendation_of_Valor"
+                                        }
+                                    ]
+                                }
+                            ],
+                            "locationInformation": [
+                                {
+                                    "location": "Magma Forge",
+                                    "location_url": "https://ddowiki.com/page/Magma_Forge",
+                                    "locationExtra": ", Crafted from various ingredients"
+                                }
+                            ]
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "weapon": [
+                {
+                    "name": "Coffin Nail",
+                    "damangeAndType": "4[1d4] + 7 Pierce, Magic",
+                    "minLevel": "24",
+                    "binding": "Bound to Account on Acquire",
+                    "quest": "A Legend Revisited, End chest",
+                    "criticalProfile": "Critical Profile: 19-20 / x2",
+                    "enchantments": "+7 Enhancement Bonus",
+                    "enchantments_url": "https://ddowiki.com/page/Enhancement_bonus",
+                    "errata": "Critical Profile: 19-20 / x2",
+                    "weaponDetail": [
+                        {
+                            "proficiency": "Simple Weapon Proficiency",
+                            "name": "Coffin Nail",
+                            "damangeAndType": "4[1d4] + 7 Pierce, Magic",
+                            "criticalThreatRange": "19-20 / x2",
+                            "weaponType": [
+                                {
+                                    "weaponCategory": "Dart",
+                                    "damageCategory": "/ Thrown weapons"
+                                }
+                            ],
+                            "absRaceRequired": "None",
+                            "minLevel": "24",
+                            "requiredTrait": "None",
+                            "umd": "No UMD needed",
+                            "handedness": "",
+                            "attackMod": "DEX",
+                            "damageMod": "STR",
+                            "binding": "Bound to Account on Acquire",
+                            "binding_url": "https://ddowiki.com/page/Bind",
+                            "durability": "180",
+                            "material": "Steel",
+                            "material_url": "https://ddowiki.com/page/Steel",
+                            "hardness": "25",
+                            "baseValue": "9,600pp 6cp",
+                            "weight": "0.50 lbs",
+                            "upgradable": "Not upgradeable",
+                            "description": "The damnable old pirate wouldn't stay dead in the box until they put this nail through it.",
+                            "enchantments": [
+                                {
+                                    "enchantment": [
+                                        {
+                                            "name": "+7 Enhancement Bonus",
+                                            "name_url": "https://ddowiki.com/page/Enhancement_bonus",
+                                            "fullText": "+7 Enhancement Bonus"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "enchantment": [
+                                        {
+                                            "name": "Returning",
+                                            "name_url": "https://ddowiki.com/page/Returning",
+                                            "fullText": "Returning"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "enchantment": [
+                                        {
+                                            "name": "Doubleshot 8%",
+                                            "name_url": "https://ddowiki.com/page/Doubleshot",
+                                            "fullText": "Doubleshot 8%"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "enchantment": [
+                                        {
+                                            "name": "Keen III",
+                                            "name_url": "https://ddowiki.com/page/Keen",
+                                            "fullText": "Keen III"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "enchantment": [
+                                        {
+                                            "name": "Improved Paralyzing",
+                                            "name_url": "https://ddowiki.com/page/Improved_Paralyzing",
+                                            "fullText": "Improved Paralyzing"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "enchantment": [
+                                        {
+                                            "name": "Improved Slowburst",
+                                            "name_url": "https://ddowiki.com/page/Slowburst",
+                                            "fullText": "Improved Slowburst"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "enchantment": [
+                                        {
+                                            "name": "Improved Vorpal",
+                                            "name_url": "https://ddowiki.com/page/Vorpal#Improved_Vorpal",
+                                            "fullText": "Improved Vorpal"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "oneOfEnchantment": [
+                                        {},
+                                        {},
+                                        {},
+                                        {},
+                                        {},
+                                        {},
+                                        {},
+                                        {},
+                                        {},
+                                        {},
+                                        {},
+                                        {},
+                                        {},
+                                        {},
+                                        {},
+                                        {}
+                                    ],
+                                    "enchantment": [
+                                        {
+                                            "fullText": "Empty Red Augment Slot"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "enchantment": [
+                                        {
+                                            "name": "Mythic Weapon Boost",
+                                            "name_url": "https://ddowiki.com/page/Mythic_Boost",
+                                            "fullText": "Mythic Weapon Boost +2 or +4"
+                                        }
+                                    ]
+                                }
+                            ],
+                            "locationInformation": [
+                                {
+                                    "location": "A Legend Revisited",
+                                    "location_url": "https://ddowiki.com/page/A_Legend_Revisited",
+                                    "locationExtra": ", End chest"
+                                }
+                            ]
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "weapon": [
+                {
+                    "name": "Legendary Green Steel Dart",
+                    "damangeAndType": "5[1d4] + 14 Pierce, Evil, Magic",
+                    "minLevel": "26",
+                    "binding": "Bound to Character on Acquire",
+                    "quest": "Altar of Fecundity, Manufactured Ingredient Recipes",
+                    "criticalProfile": "",
+                    "enchantments": "+14 Enhancement Bonus",
+                    "enchantments_url": "https://ddowiki.com/page/Enhancement_bonus",
+                    "errata": "",
+                    "weaponDetail": [
+                        {
+                            "proficiency": "Simple Weapon Proficiency",
+                            "name": "Legendary Green Steel Dart",
+                            "damangeAndType": "5[1d4] + 14 Pierce, Evil, Magic",
+                            "criticalThreatRange": "20 / x2",
+                            "weaponType": [
+                                {
+                                    "weaponCategory": "Dart",
+                                    "damageCategory": "/ Thrown weapons"
+                                }
+                            ],
+                            "absRaceRequired": "None",
+                            "minLevel": "26",
+                            "requiredTrait": "None",
+                            "umd": "No UMD needed",
+                            "handedness": "",
+                            "attackMod": "DEX",
+                            "damageMod": "STR",
+                            "binding": "Bound to Character on Acquire",
+                            "binding_url": "https://ddowiki.com/page/Bind",
+                            "durability": "225",
+                            "material": "Steel",
+                            "material_url": "https://ddowiki.com/page/Steel",
+                            "hardness": "31",
+                            "baseValue": "30,051pp 3gp 3sp 6cp",
+                            "weight": "0.50 lbs",
+                            "upgradable": "Not upgradeable",
+                            "tips": [
+                                {
+                                    "tip": "+14 Legendary Green Steel Dart"
+                                },
+                                {
+                                    "tip": "100 Codex Runes"
+                                },
+                                {
+                                    "tip": "100 Commendations of Valor"
+                                },
+                                {
+                                    "tip": "Altar of Fecundity"
+                                }
+                            ],
+                            "description": "A small weapon the size of an arrow, with a weighted head. You're quite surprised that the devils of Shavarath would bother having a recipe for darts.",
+                            "enchantments": [
+                                {
+                                    "enchantment": [
+                                        {
+                                            "name": "+14 Enhancement Bonus",
+                                            "name_url": "https://ddowiki.com/page/Enhancement_bonus",
+                                            "fullText": "+14 Enhancement Bonus"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "enchantment": [
+                                        {
+                                            "name": "Legendary Green Steel",
+                                            "name_url": "https://ddowiki.com/page/Legendary_Green_Steel",
+                                            "fullText": "Legendary Green Steel"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "enchantment": [
+                                        {
+                                            "name": "Returning",
+                                            "name_url": "https://ddowiki.com/page/Returning",
+                                            "fullText": "Returning"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "enchantment": [
+                                        {
+                                            "name": "Mythic Weapon Boost",
+                                            "name_url": "https://ddowiki.com/page/Mythic_Boost",
+                                            "fullText": "Mythic Weapon Boost +2 or +4"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "enchantment": [
+                                        {
+                                            "fullText": "Codex Runes",
+                                            "fullText_url": "https://ddowiki.com/page/Item:Codex_Rune"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "enchantment": [
+                                        {
+                                            "fullText": "100 Commendations of Valor",
+                                            "fullText_url": "https://ddowiki.com/page/Item:Commendation_of_Valor"
+                                        }
+                                    ]
+                                }
+                            ],
+                            "locationInformation": [
+                                {
+                                    "location": "Manufactured Ingredient Recipes",
+                                    "location_url": "https://ddowiki.com/page/Altar_of_Fecundity_-_Manufactured_Ingredient_Recipes",
+                                    "locationExtra": ","
+                                }
+                            ]
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "weapon": [
+                {
+                    "name": "Epic Returning Snowball",
+                    "damangeAndType": "5[1d4] +13 Bludgeon, Cold, Magic",
+                    "minLevel": "27",
+                    "binding": "Bound to Account",
+                    "quest": "Tower of Frost, End chest",
+                    "criticalProfile": "Critical Profile: 18-20 / x2",
+                    "enchantments": "+13 Enhancement Bonus",
+                    "enchantments_url": "https://ddowiki.com/page/Enhancement_bonus",
+                    "errata": "Critical Profile: 18-20 / x2",
+                    "weaponDetail": [
+                        {
+                            "proficiency": "Simple Weapon Proficiency",
+                            "name": "Epic Returning Snowball",
+                            "damangeAndType": "5[1d4] +13 Bludgeon, Cold, Magic",
+                            "criticalThreatRange": "18-20 / x2",
+                            "weaponType": [
+                                {
+                                    "weaponCategory": "Dart",
+                                    "damageCategory": "/ Thrown weapons"
+                                }
+                            ],
+                            "absRaceRequired": "None",
+                            "minLevel": "27",
+                            "requiredTrait": "None",
+                            "umd": "No UMD needed",
+                            "handedness": "",
+                            "attackMod": "DEX",
+                            "damageMod": "STR",
+                            "binding": "Bound to Account",
+                            "binding_url": "https://ddowiki.com/page/Bind",
+                            "durability": "285",
+                            "material": "Ice",
+                            "material_url": "https://ddowiki.com/page/Ice",
+                            "hardness": "32",
+                            "baseValue": "10,800pp 2cp",
+                            "weight": "0.50 lbs",
+                            "upgradable": "Not upgradeable",
+                            "description": "A snowball.",
+                            "enchantments": [
+                                {
+                                    "enchantment": [
+                                        {
+                                            "name": "+13 Enhancement Bonus",
+                                            "name_url": "https://ddowiki.com/page/Enhancement_bonus",
+                                            "fullText": "+13 Enhancement Bonus"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "enchantment": [
+                                        {
+                                            "name": "Humanoid Bane 6",
+                                            "name_url": "https://ddowiki.com/page/Bane_(enchantment)",
+                                            "fullText": "Humanoid Bane 6"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "enchantment": [
+                                        {
+                                            "name": "Frostbite",
+                                            "name_url": "https://ddowiki.com/page/Frostbite_(enchantment)",
+                                            "fullText": "Frostbite"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "enchantment": [
+                                        {
+                                            "name": "Freezing 13",
+                                            "name_url": "https://ddowiki.com/page/Freezing",
+                                            "fullText": "Freezing 13"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "enchantment": [
+                                        {
+                                            "name": "Chilling 6",
+                                            "name_url": "https://ddowiki.com/page/Chilling",
+                                            "fullText": "Chilling 6"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "oneOfEnchantment": [
+                                        {},
+                                        {},
+                                        {},
+                                        {},
+                                        {},
+                                        {},
+                                        {},
+                                        {},
+                                        {},
+                                        {},
+                                        {},
+                                        {},
+                                        {},
+                                        {},
+                                        {},
+                                        {},
+                                        {},
+                                        {},
+                                        {},
+                                        {},
+                                        {},
+                                        {},
+                                        {},
+                                        {},
+                                        {}
+                                    ],
+                                    "enchantment": [
+                                        {
+                                            "fullText": "Empty Orange Augment Slot"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "enchantment": [
+                                        {
+                                            "name": "Returning",
+                                            "name_url": "https://ddowiki.com/page/Returning",
+                                            "fullText": "Returning"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "enchantment": [
+                                        {
+                                            "name": "Mythic Weapon Boost",
+                                            "name_url": "https://ddowiki.com/page/Mythic_Boost",
+                                            "fullText": "Mythic Weapon Boost +2 or +4"
+                                        }
+                                    ]
+                                }
+                            ],
+                            "locationInformation": [
+                                {
+                                    "location": "Tower of Frost",
+                                    "location_url": "https://ddowiki.com/page/Tower_of_Frost",
+                                    "locationExtra": ", End chest"
+                                }
+                            ]
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "weapon": [
+                {
+                    "name": "Legendary Twisted Missile*",
+                    "damangeAndType": "5.50[1d4+2] +15 Slash, Magic",
+                    "minLevel": "29",
+                    "binding": "Bound to Account on Acquire",
+                    "quest": "Soul Survivor, end chest",
+                    "criticalProfile": "",
+                    "enchantments": "+15 Enhancement Bonus",
+                    "enchantments_url": "https://ddowiki.com/page/Enhancement_bonus",
+                    "itemId": "Legendary Twisted Missile",
+                    "url": "https://ddowiki.com/page/Item:Legendary_Twisted_Missile",
+                    "errata": ""
+                }
+            ]
+        },
+        {
+            "weapon": [
+                {
+                    "name": "Snowball",
+                    "damangeAndType": "[1] + 0 Bludgeon",
+                    "minLevel": "1",
+                    "binding": "Bound to Account on Acquire",
+                    "quest": "Risia Ice Games",
+                    "criticalProfile": "Critical Profile: 20 / x1",
+                    "enchantments": "Icy Burst",
+                    "enchantments_url": "https://ddowiki.com/page/Elemental_Burst#Icy_Burst",
+                    "errata": "Critical Profile: 20 / x1",
+                    "weaponDetail": [
+                        {
+                            "proficiency": "Simple Weapon Proficiency",
+                            "name": "Snowball",
+                            "damangeAndType": "[1] + 0 Bludgeon",
+                            "criticalThreatRange": "20 / x1",
+                            "weaponType": [
+                                {
+                                    "weaponCategory": "Dart",
+                                    "damageCategory": "/ Thrown weapons"
+                                }
+                            ],
+                            "absRaceRequired": "None",
+                            "minLevel": "None",
+                            "requiredTrait": "None",
+                            "umd": "No UMD needed",
+                            "handedness": "",
+                            "attackMod": "DEX",
+                            "damageMod": "STR",
+                            "binding": "Bound to Account on Acquire",
+                            "binding_url": "https://ddowiki.com/page/Bind",
+                            "durability": "25",
+                            "material": "Ice",
+                            "material_url": "https://ddowiki.com/page/Ice",
+                            "hardness": "6",
+                            "baseValue": "1cp",
+                            "weight": "0.50 lbs",
+                            "upgradable": "Not upgradeable",
+                            "tips": [
+                                {
+                                    "tip": "This item cannot be fed to sentient jewels."
+                                }
+                            ],
+                            "description": "A well packed snowball with perfect heft.",
+                            "enchantments": [
+                                {
+                                    "enchantment": [
+                                        {
+                                            "name": "Icy Burst",
+                                            "name_url": "https://ddowiki.com/page/Elemental_Burst#Icy_Burst",
+                                            "fullText": "Icy Burst"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "enchantment": [
+                                        {
+                                            "fullText": "This item cannot be fed to sentient jewels."
+                                        }
+                                    ]
+                                }
+                            ],
+                            "locationInformation": [
+                                {
+                                    "location": "Risia Ice Games",
+                                    "location_url": "https://ddowiki.com/page/Risia_Ice_Games"
+                                }
+                            ]
+                        }
+                    ]
+                }
+            ]
         }
-       ],
-       "absRaceRequired": "None",
-       "minLevel": "None",
-       "requiredTrait": "None",
-       "umd": "No UMD needed",
-       "handedness": "",
-       "attackMod": "DEX",
-       "damageMod": "STR",
-       "binding": "Unbound",
-       "binding_url": "https://ddowiki.com/page/Bind",
-       "durability": "25",
-       "material": "Stone",
-       "material_url": "https://ddowiki.com/page/Stone",
-       "hardness": "6",
-       "baseValue": "5cp",
-       "weight": "0.5 lbs",
-       "upgradable": "Not upgradeable",
-       "tips": [
-        {
-         "tip": "This item cannot be fed to sentient jewels."
-        },
-        {
-         "tip": "Multiple Drop Locations; Comes from Festivult, Winter Festival, by killing Duergar, or can be purchased from Avarandi Rivetfingers located in Guild Airships Proving Ground amenity. Can stack to 50 per stack."
-        }
-       ],
-       "description": "A lump of coal. You must have been very naughty.",
-       "enchantments": [
-        {
-         "enchantment": [
-          {
-           "name": "Mythic Weapon Boost",
-           "name_url": "https://ddowiki.com/page/Mythic_Boost",
-           "fullText": "Mythic Weapon Boost +2 or +4"
-          }
-         ]
-        },
-        {
-         "enchantment": [
-          {
-           "fullText": "This item cannot be fed to sentient jewels."
-          }
-         ]
-        },
-        {
-         "enchantment": [
-          {
-           "fullText": "Guild Airships",
-           "fullText_url": "https://ddowiki.com/page/Guild_Airships"
-          }
-         ]
-        }
-       ],
-       "locationInformation": [
-        {
-         "location": "Festivult",
-         "location_url": "https://ddowiki.com/page/Festivult",
-         "locationExtra": ", Random reward for turning in coins"
-        }
-       ]
-      }
-     ]
-    }
-   ]
-  },
-  {
-   "weapon": [
-    {
-     "name": "Pumpkin Head",
-     "damangeAndType": "[1] + 0 Bludgeon",
-     "minLevel": "5",
-     "binding": "Unbound",
-     "criticalProfile": "Critical Profile: 20 / x1",
-     "errata": "Critical Profile: 20 / x1",
-     "weaponDetail": [
-      {
-       "proficiency": "Simple Weapon Proficiency",
-       "name": "Pumpkin Head",
-       "damangeAndType": "[1] + 0 Bludgeon",
-       "criticalThreatRange": "20 / x1",
-       "weaponType": [
-        {
-         "weaponCategory": "Dart",
-         "damageCategory": "/ Thrown weapons"
-        }
-       ],
-       "absRaceRequired": "None",
-       "minLevel": "5",
-       "requiredTrait": "None",
-       "umd": "No UMD needed",
-       "handedness": "",
-       "attackMod": "DEX",
-       "damageMod": "STR",
-       "binding": "Unbound",
-       "binding_url": "https://ddowiki.com/page/Bind",
-       "durability": "13",
-       "material": "Wood",
-       "material_url": "https://ddowiki.com/page/Wood",
-       "hardness": "7",
-       "baseValue": "5cp",
-       "weight": "0.05 lbs",
-       "upgradable": "Not upgradeable",
-       "tips": [
-        {
-         "tip": "Potion of the Party Pooper"
-        }
-       ],
-       "description": "Trick or Treat! Throw this at your friends!",
-       "enchantments": [
-        {
-         "enchantment": [
-          {
-           "name": "Mythic Weapon Boost",
-           "name_url": "https://ddowiki.com/page/Mythic_Boost",
-           "fullText": "Mythic Weapon Boost +2 or +4"
-          }
-         ]
-        }
-       ],
-       "locationInformation": [
-        {
-         "location": "Motes of Night",
-         "location_url": "https://ddowiki.com/page/Item:Mote_of_Night"
-        }
-       ]
-      }
-     ]
-    }
-   ]
-  },
-  {
-   "weapon": [
-    {
-     "name": "Nightforge Spike",
-     "damangeAndType": "1.50 [1d4] + 5 Pierce, Adamantine, Magic",
-     "minLevel": "8",
-     "binding": "Bound to Character on Acquire",
-     "quest": "A Relic of a Sovereign Past",
-     "criticalProfile": "Critical Profile: 16-20 / x3",
-     "enchantments": "+5 Enhancement Bonus",
-     "enchantments_url": "https://ddowiki.com/page/Enhancement_bonus",
-     "errata": "Critical Profile: 16-20 / x3",
-     "weaponDetail": [
-      {
-       "proficiency": "Simple Weapon Proficiency",
-       "name": "Nightforge Spike",
-       "damangeAndType": "1.50 [1d4] + 5 Pierce, Adamantine, Magic",
-       "criticalThreatRange": "16-20 / x3",
-       "weaponType": [
-        {
-         "weaponCategory": "Dart",
-         "damageCategory": "/ Thrown weapons"
-        }
-       ],
-       "absRaceRequired": "None",
-       "minLevel": "8",
-       "requiredTrait": "None",
-       "umd": "No UMD needed",
-       "handedness": "",
-       "attackMod": "DEX",
-       "damageMod": "STR",
-       "binding": "Bound to Character on Acquire",
-       "binding_url": "https://ddowiki.com/page/Bind",
-       "durability": "65",
-       "material": "Adamantine",
-       "material_url": "https://ddowiki.com/page/Adamantine",
-       "hardness": "25",
-       "baseValue": "3,500pp 5cp",
-       "weight": "0.50 lbs",
-       "upgradable": "Not upgradeable",
-       "description": "Weighted darts of forged adamantine. A skilled thrower can hurl them with surprising force and accuracy.",
-       "enchantments": [
-        {
-         "enchantment": [
-          {
-           "name": "+5 Enhancement Bonus",
-           "name_url": "https://ddowiki.com/page/Enhancement_bonus",
-           "fullText": "+5 Enhancement Bonus"
-          }
-         ]
-        },
-        {
-         "oneOfEnchantment": [
-          {
-          },
-          {
-          },
-          {
-          },
-          {
-          },
-          {
-          },
-          {
-          },
-          {
-          },
-          {
-          },
-          {
-          },
-          {
-          },
-          {
-          },
-          {
-          },
-          {
-          },
-          {
-          },
-          {
-          },
-          {
-          }
-         ],
-         "enchantment": [
-          {
-           "fullText": "Empty Red Augment Slot"
-          }
-         ]
-        },
-        {
-         "enchantment": [
-          {
-           "name": "Adamantine",
-           "name_url": "https://ddowiki.com/page/Adamantine",
-           "fullText": "Adamantine"
-          }
-         ]
-        },
-        {
-         "enchantment": [
-          {
-           "name": "Returning",
-           "name_url": "https://ddowiki.com/page/Returning",
-           "fullText": "Returning"
-          }
-         ]
-        }
-       ],
-       "locationInformation": [
-        {
-         "location": "Adamantine Ore",
-         "location_url": "https://ddowiki.com/page/Adamantine_Ore",
-         "locationExtra": ", Turn in 10"
-        }
-       ]
-      }
-     ]
-    }
-   ]
-  },
-  {
-   "weapon": [
-    {
-     "name": "Alchemical Dart*",
-     "damangeAndType": "2 [1d4] + 5 Pierce, Magic",
-     "minLevel": "12",
-     "binding": "Unbound",
-     "quest": "The Master Artificer, Either End chest",
-     "criticalProfile": "",
-     "enchantments": "+5 Enhancement Bonus",
-     "enchantments_url": "https://ddowiki.com/page/Enhancement_bonus",
-     "itemId": "Alchemical Dart",
-     "url": "https://ddowiki.com/page/Item:Alchemical_Dart",
-     "errata": ""
-    }
-   ]
-  },
-  {
-   "weapon": [
-    {
-     "name": "Returning Snowball",
-     "damangeAndType": "1.5[1d4] +5 Bludgeon, Magic",
-     "minLevel": "14",
-     "binding": "Bound to Account",
-     "quest": "Tower of Frost, End chest",
-     "criticalProfile": "Critical Profile: 18-20/ x2\nDamage Modifier:",
-     "enchantments": "+5 Enhancement Bonus",
-     "enchantments_url": "https://ddowiki.com/page/Enhancement_bonus",
-     "errata": "Critical Profile: 18-20/ x2\nDamage Modifier:",
-     "weaponDetail": [
-      {
-       "proficiency": "Simple Weapon Proficiency",
-       "name": "Returning Snowball",
-       "damangeAndType": "1.5[1d4] +5 Bludgeon, Magic",
-       "criticalThreatRange": "18-20/ x2",
-       "weaponType": [
-        {
-         "weaponCategory": "Dart",
-         "damageCategory": "/ Thrown weapons"
-        }
-       ],
-       "absRaceRequired": "None",
-       "minLevel": "14",
-       "requiredTrait": "None",
-       "umd": "No UMD needed",
-       "handedness": "",
-       "attackMod": "DEX",
-       "damageMod": "N/A",
-       "binding": "Bound to Account",
-       "binding_url": "https://ddowiki.com/page/Bind",
-       "durability": "155",
-       "material": "Ice",
-       "material_url": "https://ddowiki.com/page/Ice",
-       "hardness": "19",
-       "baseValue": "5,600pp 1cp",
-       "weight": "0.50 lbs",
-       "upgradable": "Not upgradeable",
-       "description": "A snowball.",
-       "enchantments": [
-        {
-         "enchantment": [
-          {
-           "name": "+5 Enhancement Bonus",
-           "name_url": "https://ddowiki.com/page/Enhancement_bonus",
-           "fullText": "+5 Enhancement Bonus"
-          }
-         ]
-        },
-        {
-         "enchantment": [
-          {
-           "name": "Humanoid Bane 3",
-           "name_url": "https://ddowiki.com/page/Bane_(enchantment)",
-           "fullText": "Humanoid Bane 3"
-          }
-         ]
-        },
-        {
-         "enchantment": [
-          {
-           "name": "Frostbite",
-           "name_url": "https://ddowiki.com/page/Frostbite_(enchantment)",
-           "fullText": "Frostbite"
-          }
-         ]
-        },
-        {
-         "enchantment": [
-          {
-           "name": "Freezing 8",
-           "name_url": "https://ddowiki.com/page/Freezing",
-           "fullText": "Freezing 8"
-          }
-         ]
-        },
-        {
-         "enchantment": [
-          {
-           "name": "Chilling 3",
-           "name_url": "https://ddowiki.com/page/Chilling",
-           "fullText": "Chilling 3"
-          }
-         ]
-        },
-        {
-         "oneOfEnchantment": [
-          {
-          },
-          {
-          },
-          {
-          },
-          {
-          },
-          {
-          },
-          {
-          },
-          {
-          },
-          {
-          },
-          {
-          },
-          {
-          },
-          {
-          },
-          {
-          },
-          {
-          },
-          {
-          },
-          {
-          },
-          {
-          },
-          {
-          },
-          {
-          },
-          {
-          },
-          {
-          },
-          {
-          },
-          {
-          },
-          {
-          },
-          {
-          },
-          {
-          }
-         ],
-         "enchantment": [
-          {
-           "fullText": "Empty Orange Augment Slot"
-          }
-         ]
-        },
-        {
-         "enchantment": [
-          {
-           "name": "Returning",
-           "name_url": "https://ddowiki.com/page/Returning",
-           "fullText": "Returning"
-          }
-         ]
-        },
-        {
-         "enchantment": [
-          {
-           "name": "Mythic Weapon Boost",
-           "name_url": "https://ddowiki.com/page/Mythic_Boost",
-           "fullText": "Mythic Weapon Boost +2 or +4"
-          }
-         ]
-        }
-       ],
-       "locationInformation": [
-        {
-         "location": "Tower of Frost",
-         "location_url": "https://ddowiki.com/page/Tower_of_Frost",
-         "locationExtra": ", End chest"
-        }
-       ]
-      }
-     ]
-    }
-   ]
-  },
-  {
-   "weapon": [
-    {
-     "name": "+5 Heirloom Spelltouched Dart*",
-     "damangeAndType": "2 [1d4] +5 Pierce, Magic",
-     "minLevel": "20",
-     "binding": "Bound to Character on Acquire",
-     "quest": "Underdark Arena: Ring of Fire, End chest",
-     "criticalProfile": "",
-     "enchantments": "+5 Enhancement Bonus",
-     "enchantments_url": "https://ddowiki.com/page/Enhancement_bonus",
-     "itemId": "+5 Heirloom Spelltouched Dart",
-     "url": "https://ddowiki.com/page/Item:%2B5_Heirloom_Spelltouched_Dart",
-     "errata": ""
-    }
-   ]
-  },
-  {
-   "weapon": [
-    {
-     "name": "Thunder-Forged Alloy Dart",
-     "damangeAndType": "3.50 [1d4] + 9 Pierce, Silver, Adamantine, Mithral, Cold Iron, Magic, Byeshk",
-     "minLevel": "22",
-     "binding": "Unbound",
-     "quest": "Magma Forge, Crafted from various ingredients",
-     "criticalProfile": "",
-     "enchantments": "+9 Enhancement Bonus",
-     "enchantments_url": "https://ddowiki.com/page/Enhancement_bonus",
-     "errata": "",
-     "weaponDetail": [
-      {
-       "proficiency": "Simple Weapon Proficiency",
-       "name": "Thunder-Forged Alloy Dart",
-       "damangeAndType": "3.50 [1d4] + 9 Pierce, Silver, Adamantine, Mithral, Cold Iron, Magic, Byeshk",
-       "criticalThreatRange": "20 / x2",
-       "weaponType": [
-        {
-         "weaponCategory": "Dart",
-         "damageCategory": "/ Thrown weapons"
-        }
-       ],
-       "absRaceRequired": "None",
-       "minLevel": "22",
-       "requiredTrait": "None",
-       "umd": "No UMD needed",
-       "handedness": "",
-       "attackMod": "DEX",
-       "damageMod": "STR",
-       "binding": "Unbound",
-       "binding_url": "https://ddowiki.com/page/Bind",
-       "durability": "145",
-       "material": "Adamantine",
-       "material_url": "https://ddowiki.com/page/Adamantine",
-       "hardness": "28",
-       "baseValue": "8,800pp 6cp",
-       "weight": "0.50 lbs",
-       "upgradable": "Thunder-Forged",
-       "tips": [
-        {
-         "tip": "20 Thunder-Forged Dwarven Ingots"
-        },
-        {
-         "tip": "15 Commendations of Valor"
-        }
-       ],
-       "description": "A dart forged from metals long in proximity to dragons under Thunderholme.",
-       "enchantments": [
-        {
-         "enchantment": [
-          {
-           "name": "+9 Enhancement Bonus",
-           "name_url": "https://ddowiki.com/page/Enhancement_bonus",
-           "fullText": "+9 Enhancement Bonus"
-          }
-         ]
-        },
-        {
-         "oneOfEnchantment": [
-          {
-          },
-          {
-          },
-          {
-          },
-          {
-          },
-          {
-          },
-          {
-          },
-          {
-          },
-          {
-          },
-          {
-          },
-          {
-          },
-          {
-          },
-          {
-          },
-          {
-          },
-          {
-          },
-          {
-          },
-          {
-          },
-          {
-          },
-          {
-          },
-          {
-          },
-          {
-          },
-          {
-          },
-          {
-          },
-          {
-          },
-          {
-          },
-          {
-          }
-         ],
-         "enchantment": [
-          {
-           "fullText": "Empty Orange Augment Slot"
-          }
-         ]
-        },
-        {
-         "enchantment": [
-          {
-           "name": "Returning",
-           "name_url": "https://ddowiki.com/page/Returning",
-           "fullText": "Returning"
-          }
-         ]
-        },
-        {
-         "enchantment": [
-          {
-           "name": "Thunder-Forged (Tier 0)",
-           "name_url": "https://ddowiki.com/page/Thunder-Forged",
-           "fullText": "Thunder-Forged (Tier 0)"
-          }
-         ]
-        },
-        {
-         "enchantment": [
-          {
-           "name": "Mythic Weapon Boost",
-           "name_url": "https://ddowiki.com/page/Mythic_Boost",
-           "fullText": "Mythic Weapon Boost +2 or +4"
-          }
-         ]
-        },
-        {
-         "enchantment": [
-          {
-           "fullText": "20 Thunder-Forged Dwarven Ingots",
-           "fullText_url": "https://ddowiki.com/page/Item:Thunder-Forged_Dwarven_Ingot"
-          }
-         ]
-        },
-        {
-         "enchantment": [
-          {
-           "fullText": "15 Commendations of Valor",
-           "fullText_url": "https://ddowiki.com/page/Item:Commendation_of_Valor"
-          }
-         ]
-        }
-       ],
-       "locationInformation": [
-        {
-         "location": "Magma Forge",
-         "location_url": "https://ddowiki.com/page/Magma_Forge",
-         "locationExtra": ", Crafted from various ingredients"
-        }
-       ]
-      }
-     ]
-    }
-   ]
-  },
-  {
-   "weapon": [
-    {
-     "name": "Coffin Nail",
-     "damangeAndType": "4[1d4] + 7 Pierce, Magic",
-     "minLevel": "24",
-     "binding": "Bound to Account on Acquire",
-     "quest": "A Legend Revisited, End chest",
-     "criticalProfile": "Critical Profile: 19-20 / x2",
-     "enchantments": "+7 Enhancement Bonus",
-     "enchantments_url": "https://ddowiki.com/page/Enhancement_bonus",
-     "errata": "Critical Profile: 19-20 / x2",
-     "weaponDetail": [
-      {
-       "proficiency": "Simple Weapon Proficiency",
-       "name": "Coffin Nail",
-       "damangeAndType": "4[1d4] + 7 Pierce, Magic",
-       "criticalThreatRange": "19-20 / x2",
-       "weaponType": [
-        {
-         "weaponCategory": "Dart",
-         "damageCategory": "/ Thrown weapons"
-        }
-       ],
-       "absRaceRequired": "None",
-       "minLevel": "24",
-       "requiredTrait": "None",
-       "umd": "No UMD needed",
-       "handedness": "",
-       "attackMod": "DEX",
-       "damageMod": "STR",
-       "binding": "Bound to Account on Acquire",
-       "binding_url": "https://ddowiki.com/page/Bind",
-       "durability": "180",
-       "material": "Steel",
-       "material_url": "https://ddowiki.com/page/Steel",
-       "hardness": "25",
-       "baseValue": "9,600pp 6cp",
-       "weight": "0.50 lbs",
-       "upgradable": "Not upgradeable",
-       "description": "The damnable old pirate wouldn't stay dead in the box until they put this nail through it.",
-       "enchantments": [
-        {
-         "enchantment": [
-          {
-           "name": "+7 Enhancement Bonus",
-           "name_url": "https://ddowiki.com/page/Enhancement_bonus",
-           "fullText": "+7 Enhancement Bonus"
-          }
-         ]
-        },
-        {
-         "enchantment": [
-          {
-           "name": "Returning",
-           "name_url": "https://ddowiki.com/page/Returning",
-           "fullText": "Returning"
-          }
-         ]
-        },
-        {
-         "enchantment": [
-          {
-           "name": "Doubleshot 8%",
-           "name_url": "https://ddowiki.com/page/Doubleshot",
-           "fullText": "Doubleshot 8%"
-          }
-         ]
-        },
-        {
-         "enchantment": [
-          {
-           "name": "Keen III",
-           "name_url": "https://ddowiki.com/page/Keen",
-           "fullText": "Keen III"
-          }
-         ]
-        },
-        {
-         "enchantment": [
-          {
-           "name": "Improved Paralyzing",
-           "name_url": "https://ddowiki.com/page/Improved_Paralyzing",
-           "fullText": "Improved Paralyzing"
-          }
-         ]
-        },
-        {
-         "enchantment": [
-          {
-           "name": "Improved Slowburst",
-           "name_url": "https://ddowiki.com/page/Slowburst",
-           "fullText": "Improved Slowburst"
-          }
-         ]
-        },
-        {
-         "enchantment": [
-          {
-           "name": "Improved Vorpal",
-           "name_url": "https://ddowiki.com/page/Vorpal#Improved_Vorpal",
-           "fullText": "Improved Vorpal"
-          }
-         ]
-        },
-        {
-         "oneOfEnchantment": [
-          {
-          },
-          {
-          },
-          {
-          },
-          {
-          },
-          {
-          },
-          {
-          },
-          {
-          },
-          {
-          },
-          {
-          },
-          {
-          },
-          {
-          },
-          {
-          },
-          {
-          },
-          {
-          },
-          {
-          },
-          {
-          }
-         ],
-         "enchantment": [
-          {
-           "fullText": "Empty Red Augment Slot"
-          }
-         ]
-        },
-        {
-         "enchantment": [
-          {
-           "name": "Mythic Weapon Boost",
-           "name_url": "https://ddowiki.com/page/Mythic_Boost",
-           "fullText": "Mythic Weapon Boost +2 or +4"
-          }
-         ]
-        }
-       ],
-       "locationInformation": [
-        {
-         "location": "A Legend Revisited",
-         "location_url": "https://ddowiki.com/page/A_Legend_Revisited",
-         "locationExtra": ", End chest"
-        }
-       ]
-      }
-     ]
-    }
-   ]
-  },
-  {
-   "weapon": [
-    {
-     "name": "Legendary Green Steel Dart",
-     "damangeAndType": "5[1d4] + 14 Pierce, Evil, Magic",
-     "minLevel": "26",
-     "binding": "Bound to Character on Acquire",
-     "quest": "Altar of Fecundity, Manufactured Ingredient Recipes",
-     "criticalProfile": "",
-     "enchantments": "+14 Enhancement Bonus",
-     "enchantments_url": "https://ddowiki.com/page/Enhancement_bonus",
-     "errata": "",
-     "weaponDetail": [
-      {
-       "proficiency": "Simple Weapon Proficiency",
-       "name": "Legendary Green Steel Dart",
-       "damangeAndType": "5[1d4] + 14 Pierce, Evil, Magic",
-       "criticalThreatRange": "20 / x2",
-       "weaponType": [
-        {
-         "weaponCategory": "Dart",
-         "damageCategory": "/ Thrown weapons"
-        }
-       ],
-       "absRaceRequired": "None",
-       "minLevel": "26",
-       "requiredTrait": "None",
-       "umd": "No UMD needed",
-       "handedness": "",
-       "attackMod": "DEX",
-       "damageMod": "STR",
-       "binding": "Bound to Character on Acquire",
-       "binding_url": "https://ddowiki.com/page/Bind",
-       "durability": "225",
-       "material": "Steel",
-       "material_url": "https://ddowiki.com/page/Steel",
-       "hardness": "31",
-       "baseValue": "30,051pp 3gp 3sp 6cp",
-       "weight": "0.50 lbs",
-       "upgradable": "Not upgradeable",
-       "tips": [
-        {
-         "tip": "+14 Legendary Green Steel Dart"
-        },
-        {
-         "tip": "100 Codex Runes"
-        },
-        {
-         "tip": "100 Commendations of Valor"
-        },
-        {
-         "tip": "Altar of Fecundity"
-        }
-       ],
-       "description": "A small weapon the size of an arrow, with a weighted head. You're quite surprised that the devils of Shavarath would bother having a recipe for darts.",
-       "enchantments": [
-        {
-         "enchantment": [
-          {
-           "name": "+14 Enhancement Bonus",
-           "name_url": "https://ddowiki.com/page/Enhancement_bonus",
-           "fullText": "+14 Enhancement Bonus"
-          }
-         ]
-        },
-        {
-         "enchantment": [
-          {
-           "name": "Legendary Green Steel",
-           "name_url": "https://ddowiki.com/page/Legendary_Green_Steel",
-           "fullText": "Legendary Green Steel"
-          }
-         ]
-        },
-        {
-         "enchantment": [
-          {
-           "name": "Returning",
-           "name_url": "https://ddowiki.com/page/Returning",
-           "fullText": "Returning"
-          }
-         ]
-        },
-        {
-         "enchantment": [
-          {
-           "name": "Mythic Weapon Boost",
-           "name_url": "https://ddowiki.com/page/Mythic_Boost",
-           "fullText": "Mythic Weapon Boost +2 or +4"
-          }
-         ]
-        },
-        {
-         "enchantment": [
-          {
-           "fullText": "Codex Runes",
-           "fullText_url": "https://ddowiki.com/page/Item:Codex_Rune"
-          }
-         ]
-        },
-        {
-         "enchantment": [
-          {
-           "fullText": "100 Commendations of Valor",
-           "fullText_url": "https://ddowiki.com/page/Item:Commendation_of_Valor"
-          }
-         ]
-        }
-       ],
-       "locationInformation": [
-        {
-         "location": "Manufactured Ingredient Recipes",
-         "location_url": "https://ddowiki.com/page/Altar_of_Fecundity_-_Manufactured_Ingredient_Recipes",
-         "locationExtra": ","
-        }
-       ]
-      }
-     ]
-    }
-   ]
-  },
-  {
-   "weapon": [
-    {
-     "name": "Epic Returning Snowball",
-     "damangeAndType": "5[1d4] +13 Bludgeon, Cold, Magic",
-     "minLevel": "27",
-     "binding": "Bound to Account",
-     "quest": "Tower of Frost, End chest",
-     "criticalProfile": "Critical Profile: 18-20 / x2",
-     "enchantments": "+13 Enhancement Bonus",
-     "enchantments_url": "https://ddowiki.com/page/Enhancement_bonus",
-     "errata": "Critical Profile: 18-20 / x2",
-     "weaponDetail": [
-      {
-       "proficiency": "Simple Weapon Proficiency",
-       "name": "Epic Returning Snowball",
-       "damangeAndType": "5[1d4] +13 Bludgeon, Cold, Magic",
-       "criticalThreatRange": "18-20 / x2",
-       "weaponType": [
-        {
-         "weaponCategory": "Dart",
-         "damageCategory": "/ Thrown weapons"
-        }
-       ],
-       "absRaceRequired": "None",
-       "minLevel": "27",
-       "requiredTrait": "None",
-       "umd": "No UMD needed",
-       "handedness": "",
-       "attackMod": "DEX",
-       "damageMod": "STR",
-       "binding": "Bound to Account",
-       "binding_url": "https://ddowiki.com/page/Bind",
-       "durability": "285",
-       "material": "Ice",
-       "material_url": "https://ddowiki.com/page/Ice",
-       "hardness": "32",
-       "baseValue": "10,800pp 2cp",
-       "weight": "0.50 lbs",
-       "upgradable": "Not upgradeable",
-       "description": "A snowball.",
-       "enchantments": [
-        {
-         "enchantment": [
-          {
-           "name": "+13 Enhancement Bonus",
-           "name_url": "https://ddowiki.com/page/Enhancement_bonus",
-           "fullText": "+13 Enhancement Bonus"
-          }
-         ]
-        },
-        {
-         "enchantment": [
-          {
-           "name": "Humanoid Bane 6",
-           "name_url": "https://ddowiki.com/page/Bane_(enchantment)",
-           "fullText": "Humanoid Bane 6"
-          }
-         ]
-        },
-        {
-         "enchantment": [
-          {
-           "name": "Frostbite",
-           "name_url": "https://ddowiki.com/page/Frostbite_(enchantment)",
-           "fullText": "Frostbite"
-          }
-         ]
-        },
-        {
-         "enchantment": [
-          {
-           "name": "Freezing 13",
-           "name_url": "https://ddowiki.com/page/Freezing",
-           "fullText": "Freezing 13"
-          }
-         ]
-        },
-        {
-         "enchantment": [
-          {
-           "name": "Chilling 6",
-           "name_url": "https://ddowiki.com/page/Chilling",
-           "fullText": "Chilling 6"
-          }
-         ]
-        },
-        {
-         "oneOfEnchantment": [
-          {
-          },
-          {
-          },
-          {
-          },
-          {
-          },
-          {
-          },
-          {
-          },
-          {
-          },
-          {
-          },
-          {
-          },
-          {
-          },
-          {
-          },
-          {
-          },
-          {
-          },
-          {
-          },
-          {
-          },
-          {
-          },
-          {
-          },
-          {
-          },
-          {
-          },
-          {
-          },
-          {
-          },
-          {
-          },
-          {
-          },
-          {
-          },
-          {
-          }
-         ],
-         "enchantment": [
-          {
-           "fullText": "Empty Orange Augment Slot"
-          }
-         ]
-        },
-        {
-         "enchantment": [
-          {
-           "name": "Returning",
-           "name_url": "https://ddowiki.com/page/Returning",
-           "fullText": "Returning"
-          }
-         ]
-        },
-        {
-         "enchantment": [
-          {
-           "name": "Mythic Weapon Boost",
-           "name_url": "https://ddowiki.com/page/Mythic_Boost",
-           "fullText": "Mythic Weapon Boost +2 or +4"
-          }
-         ]
-        }
-       ],
-       "locationInformation": [
-        {
-         "location": "Tower of Frost",
-         "location_url": "https://ddowiki.com/page/Tower_of_Frost",
-         "locationExtra": ", End chest"
-        }
-       ]
-      }
-     ]
-    }
-   ]
-  },
-  {
-   "weapon": [
-    {
-     "name": "Legendary Twisted Missile*",
-     "damangeAndType": "5.50[1d4+2] +15 Slash, Magic",
-     "minLevel": "29",
-     "binding": "Bound to Account on Acquire",
-     "quest": "Soul Survivor, end chest",
-     "criticalProfile": "",
-     "enchantments": "+15 Enhancement Bonus",
-     "enchantments_url": "https://ddowiki.com/page/Enhancement_bonus",
-     "itemId": "Legendary Twisted Missile",
-     "url": "https://ddowiki.com/page/Item:Legendary_Twisted_Missile",
-     "errata": ""
-    }
-   ]
-  },
-  {
-   "weapon": [
-    {
-     "name": "Snowball",
-     "damangeAndType": "[1] + 0 Bludgeon",
-     "minLevel": "1",
-     "binding": "Bound to Account on Acquire",
-     "quest": "Risia Ice Games",
-     "criticalProfile": "Critical Profile: 20 / x1",
-     "enchantments": "Icy Burst",
-     "enchantments_url": "https://ddowiki.com/page/Elemental_Burst#Icy_Burst",
-     "errata": "Critical Profile: 20 / x1",
-     "weaponDetail": [
-      {
-       "proficiency": "Simple Weapon Proficiency",
-       "name": "Snowball",
-       "damangeAndType": "[1] + 0 Bludgeon",
-       "criticalThreatRange": "20 / x1",
-       "weaponType": [
-        {
-         "weaponCategory": "Dart",
-         "damageCategory": "/ Thrown weapons"
-        }
-       ],
-       "absRaceRequired": "None",
-       "minLevel": "None",
-       "requiredTrait": "None",
-       "umd": "No UMD needed",
-       "handedness": "",
-       "attackMod": "DEX",
-       "damageMod": "STR",
-       "binding": "Bound to Account on Acquire",
-       "binding_url": "https://ddowiki.com/page/Bind",
-       "durability": "25",
-       "material": "Ice",
-       "material_url": "https://ddowiki.com/page/Ice",
-       "hardness": "6",
-       "baseValue": "1cp",
-       "weight": "0.50 lbs",
-       "upgradable": "Not upgradeable",
-       "tips": [
-        {
-         "tip": "This item cannot be fed to sentient jewels."
-        }
-       ],
-       "description": "A well packed snowball with perfect heft.",
-       "enchantments": [
-        {
-         "enchantment": [
-          {
-           "name": "Icy Burst",
-           "name_url": "https://ddowiki.com/page/Elemental_Burst#Icy_Burst",
-           "fullText": "Icy Burst"
-          }
-         ]
-        },
-        {
-         "enchantment": [
-          {
-           "fullText": "This item cannot be fed to sentient jewels."
-          }
-         ]
-        }
-       ],
-       "locationInformation": [
-        {
-         "location": "Risia Ice Games",
-         "location_url": "https://ddowiki.com/page/Risia_Ice_Games"
-        }
-       ]
-      }
-     ]
-    }
-   ]
-  }
- ]
+    ]
 }

@@ -29,8 +29,8 @@ dependencies {
         val scalaLibraryVersion: String by project
         val scalaMajorVersion: String by project
 
-        implementation(platform(project(":ddo-platform-scala")))
-        /* Platform dependent */
+        implementation(enforcedPlatform(project(":ddo-platform-scala")))
+        // Platform dependent
         // https://mvnrepository.com/artifact/org.json4s/json4s-native
 //        implementation(group = "org.json4s", name = "json4s-native_$scalaMajorVersion")
 //        implementation(group = "org.scala-lang", name = "scala-library")

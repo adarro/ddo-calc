@@ -16,821 +16,743 @@
  * limitations under the License.
  */
 {
- "item": [
-  {
-   "weapon": [
-    {
-     "name": "Dwarven Thrower",
-     "damangeAndType": "[1d8] + 3 Slash, Magic",
-     "minLevel": "6",
-     "binding": "Bound to Character on Equip",
-     "quest": "The Subterrane - Central, Garamol's chest",
-     "criticalProfile": "Critical Profile: 20 / x3",
-     "enchantments": "+3 Enhancement Bonus",
-     "enchantments_url": "https://ddowiki.com/page/Enhancement_bonus",
-     "errata": "Critical Profile: 20 / x3",
-     "weaponDetail": [
-      {
-       "proficiency": "Martial Weapon Proficiency",
-       "name": "Dwarven Thrower",
-       "damangeAndType": "[1d8] + 3 Slash, Magic",
-       "criticalThreatRange": "20 / x3",
-       "weaponType": [
+    "item": [
         {
-         "weaponCategory": "Throwing Axe",
-         "damageCategory": "/ Thrown weapons"
+            "weapon": [
+                {
+                    "name": "Dwarven Thrower",
+                    "damangeAndType": "[1d8] + 3 Slash, Magic",
+                    "minLevel": "6",
+                    "binding": "Bound to Character on Equip",
+                    "quest": "The Subterrane - Central, Garamol's chest",
+                    "criticalProfile": "Critical Profile: 20 / x3",
+                    "enchantments": "+3 Enhancement Bonus",
+                    "enchantments_url": "https://ddowiki.com/page/Enhancement_bonus",
+                    "errata": "Critical Profile: 20 / x3",
+                    "weaponDetail": [
+                        {
+                            "proficiency": "Martial Weapon Proficiency",
+                            "name": "Dwarven Thrower",
+                            "damangeAndType": "[1d8] + 3 Slash, Magic",
+                            "criticalThreatRange": "20 / x3",
+                            "weaponType": [
+                                {
+                                    "weaponCategory": "Throwing Axe",
+                                    "damageCategory": "/ Thrown weapons"
+                                }
+                            ],
+                            "absRaceRequired": "None",
+                            "minLevel": "6",
+                            "requiredTrait": "Dwarf",
+                            "umd": "14",
+                            "handedness": "",
+                            "attackMod": "DEX",
+                            "damageMod": "STR",
+                            "binding": "Bound to Character on Equip",
+                            "binding_url": "https://ddowiki.com/page/Bind",
+                            "durability": "70",
+                            "material": "Steel",
+                            "material_url": "https://ddowiki.com/page/Steel",
+                            "hardness": "14",
+                            "baseValue": "2,400pp 6gp",
+                            "weight": "2 lbs",
+                            "upgradable": "Not upgradeable",
+                            "tips": [
+                                {
+                                    "tip": "Multiple Drop Locations"
+                                },
+                                {
+                                    "tip": "Garamol's chest at a high droprate."
+                                },
+                                {
+                                    "tip": "Rare drop in any Level 7 Chest."
+                                },
+                                {
+                                    "tip": "Also seen to drop very rarely from breakables in the Threnal Ruins."
+                                },
+                                {
+                                    "tip": "Old version (pre-U18) base damage has been upgrade from d6 to d8 and is Unbound."
+                                }
+                            ],
+                            "description": "This throwing axe is of obviously dwarven make.",
+                            "enchantments": [
+                                {
+                                    "enchantment": [
+                                        {
+                                            "name": "+3 Enhancement Bonus",
+                                            "name_url": "https://ddowiki.com/page/Enhancement_bonus",
+                                            "fullText": "+3 Enhancement Bonus"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "enchantment": [
+                                        {
+                                            "name": "Extra damage vs Giants",
+                                            "name_url": "https://ddowiki.com/page/Extra_damage_vs_Giants",
+                                            "fullText": "Extra damage vs Giants"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "enchantment": [
+                                        {
+                                            "name": "Returning",
+                                            "name_url": "https://ddowiki.com/page/Returning",
+                                            "fullText": "Returning"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "enchantment": [
+                                        {
+                                            "name": "Extra damage vs non-Giants",
+                                            "name_url": "https://ddowiki.com/page/Extra_damage_vs_non-Giants",
+                                            "fullText": "Extra damage vs non-Giants"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "enchantment": [
+                                        {
+                                            "name": "Mythic Weapon Boost",
+                                            "name_url": "https://ddowiki.com/page/Mythic_Boost",
+                                            "fullText": "Mythic Weapon Boost +2 or +4"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "enchantment": [
+                                        {
+                                            "fullText": "Garamol",
+                                            "fullText_url": "https://ddowiki.com/page/Garamol"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "enchantment": [{}]
+                                },
+                                {
+                                    "enchantment": [{}]
+                                },
+                                {
+                                    "enchantment": [
+                                        {
+                                            "name": "Unbound",
+                                            "name_url": "https://ddowiki.com/page/Bind",
+                                            "fullText": "Unbound"
+                                        }
+                                    ]
+                                }
+                            ],
+                            "locationInformation": [
+                                {
+                                    "location": "Garamol",
+                                    "location_url": "https://ddowiki.com/page/Garamol",
+                                    "locationExtra": ","
+                                }
+                            ]
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "weapon": [
+                {
+                    "name": "Returning Axe of Embers",
+                    "damangeAndType": "1.50 [2d4] + 5 Fire, Magic",
+                    "minLevel": "10",
+                    "binding": "Bound to Character on Equip",
+                    "quest": "The Twilight Forge, 2nd Gauntlet chest",
+                    "criticalProfile": "Critical Profile: 20 / x3",
+                    "enchantments": "+5 Enhancement Bonus",
+                    "enchantments_url": "https://ddowiki.com/page/Enhancement_bonus",
+                    "errata": "Critical Profile: 20 / x3",
+                    "weaponDetail": [
+                        {
+                            "proficiency": "Martial Weapon Proficiency",
+                            "name": "Returning Axe of Embers",
+                            "damangeAndType": "1.50 [2d4] + 5 Fire, Magic",
+                            "criticalThreatRange": "20 / x3",
+                            "weaponType": [
+                                {
+                                    "weaponCategory": "Throwing Axe",
+                                    "damageCategory": "/ Thrown weapons"
+                                }
+                            ],
+                            "absRaceRequired": "None",
+                            "minLevel": "10",
+                            "requiredTrait": "None",
+                            "umd": "No UMD needed",
+                            "handedness": "",
+                            "attackMod": "DEX",
+                            "damageMod": "STR",
+                            "binding": "Bound to Character on Equip",
+                            "binding_url": "https://ddowiki.com/page/Bind",
+                            "durability": "90",
+                            "material": "Flametouched Iron",
+                            "material_url": "https://ddowiki.com/page/Flametouched_Iron",
+                            "hardness": "16",
+                            "baseValue": "4,000pp 6gp",
+                            "weight": "2 lbs",
+                            "upgradable": "Not upgradeable",
+                            "description": "This powerful flametouched throwing axe was handmade in the depths of the Twilight Forge foundry thousands of years ago.",
+                            "enchantments": [
+                                {
+                                    "enchantment": [
+                                        {
+                                            "name": "+5 Enhancement Bonus",
+                                            "name_url": "https://ddowiki.com/page/Enhancement_bonus",
+                                            "fullText": "+5 Enhancement Bonus"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "enchantment": [
+                                        {
+                                            "name": "Returning",
+                                            "name_url": "https://ddowiki.com/page/Returning",
+                                            "fullText": "Returning"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "enchantment": [
+                                        {
+                                            "name": "Mythic Weapon Boost",
+                                            "name_url": "https://ddowiki.com/page/Mythic_Boost",
+                                            "fullText": "Mythic Weapon Boost +2 or +4"
+                                        }
+                                    ]
+                                }
+                            ],
+                            "locationInformation": [
+                                {
+                                    "location": "The Twilight Forge",
+                                    "location_url": "https://ddowiki.com/page/The_Twilight_Forge",
+                                    "locationExtra": ", 2nd Gauntlet chest"
+                                }
+                            ]
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "weapon": [
+                {
+                    "name": "Alchemical Throwing Axe",
+                    "damangeAndType": "2 [1d6] + 5 Slash, Magic",
+                    "minLevel": "12",
+                    "binding": "Unbound",
+                    "quest": "The Master Artificer, Either End chest",
+                    "criticalProfile": "Critical Profile: 20 / x3",
+                    "enchantments": "+5 Enhancement Bonus",
+                    "enchantments_url": "https://ddowiki.com/page/Enhancement_bonus",
+                    "errata": "Critical Profile: 20 / x3",
+                    "weaponDetail": [
+                        {
+                            "proficiency": "Martial Weapon Proficiency",
+                            "name": "Alchemical Throwing Axe",
+                            "damangeAndType": "2 [1d6] + 5 Slash, Magic",
+                            "criticalThreatRange": "20 / x3",
+                            "weaponType": [
+                                {
+                                    "weaponCategory": "Throwing Axe",
+                                    "damageCategory": "/ Thrown weapons"
+                                }
+                            ],
+                            "absRaceRequired": "None",
+                            "minLevel": "12",
+                            "requiredTrait": "None",
+                            "umd": "No UMD needed",
+                            "handedness": "",
+                            "attackMod": "DEX",
+                            "damageMod": "STR",
+                            "binding": "Unbound",
+                            "binding_url": "https://ddowiki.com/page/Bind",
+                            "durability": "100",
+                            "material": "Steel",
+                            "material_url": "https://ddowiki.com/page/Steel",
+                            "hardness": "17",
+                            "baseValue": "10,200pp 6gp",
+                            "weight": "2 lbs",
+                            "upgradable": "Alchemical Crafting",
+                            "description": "A small, light axe design for throwing.",
+                            "enchantments": [
+                                {
+                                    "enchantment": [
+                                        {
+                                            "name": "+5 Enhancement Bonus",
+                                            "name_url": "https://ddowiki.com/page/Enhancement_bonus",
+                                            "fullText": "+5 Enhancement Bonus"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "enchantment": [
+                                        {
+                                            "name": "Alchemical (Prototype)",
+                                            "name_url": "https://ddowiki.com/page/Alchemical_Crafting",
+                                            "fullText": "Alchemical (Prototype)"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "enchantment": [
+                                        {
+                                            "name": "Returning",
+                                            "name_url": "https://ddowiki.com/page/Returning",
+                                            "fullText": "Returning"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "enchantment": [
+                                        {
+                                            "name": "Mythic Weapon Boost",
+                                            "name_url": "https://ddowiki.com/page/Mythic_Boost",
+                                            "fullText": "Mythic Weapon Boost +2 or +4"
+                                        }
+                                    ]
+                                }
+                            ],
+                            "locationInformation": [
+                                {
+                                    "location": "The Master Artificer",
+                                    "location_url": "https://ddowiki.com/page/The_Master_Artificer",
+                                    "locationExtra": ", Either End chest"
+                                }
+                            ]
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "weapon": [
+                {
+                    "name": "Green Steel Throwing Axe",
+                    "damangeAndType": "1.50 [1d6] +5 Slash, Evil, Magic",
+                    "minLevel": "12",
+                    "binding": "Bound to Character on Equip",
+                    "quest": "Altar of Fecundity, Manufactured Ingredient Recipes",
+                    "criticalProfile": "Critical Profile: 20 / x3",
+                    "enchantments": "+5 Enhancement Bonus",
+                    "enchantments_url": "https://ddowiki.com/page/Enhancement_bonus",
+                    "errata": "Critical Profile: 20 / x3",
+                    "weaponDetail": [
+                        {
+                            "proficiency": "Martial Weapon Proficiency",
+                            "name": "Green Steel Throwing Axe",
+                            "damangeAndType": "1.50 [1d6] +5 Slash, Evil, Magic",
+                            "criticalThreatRange": "20 / x3",
+                            "weaponType": [
+                                {
+                                    "weaponCategory": "Throwing Axe",
+                                    "damageCategory": "/ Thrown weapons"
+                                }
+                            ],
+                            "absRaceRequired": "None",
+                            "minLevel": "12",
+                            "requiredTrait": "None",
+                            "umd": "No UMD needed",
+                            "handedness": "",
+                            "attackMod": "DEX",
+                            "damageMod": "STR",
+                            "binding": "Bound to Character on Equip",
+                            "binding_url": "https://ddowiki.com/page/Bind",
+                            "durability": "80",
+                            "material": "Steel",
+                            "material_url": "https://ddowiki.com/page/Steel",
+                            "hardness": "15",
+                            "baseValue": "5,400pp 6gp",
+                            "weight": "2 lbs",
+                            "upgradable": "Green Steel",
+                            "tips": [
+                                {
+                                    "tip": "+5 Green Steel Throwing Axe"
+                                },
+                                {
+                                    "tip": "Ore of Travail\nLocust Husk\nChipmunk Funk\nGlistening Pebbles\nGreen Briar Twigs\nEberron Energy Cell"
+                                },
+                                {
+                                    "tip": "Red Taper\nGlistening Pebbles\nGreen Briar Twigs\nLammanian Lily Petals\nChipmunk Funk\nEberron Energy Cell"
+                                },
+                                {
+                                    "tip": "Wondrous Oil\nLocust Husk\nLammanian Lily Petals\nChipmunk Funk\nBitterscrub Fungus OR Green Briar Twigs\nEberron Energy Cell"
+                                },
+                                {
+                                    "tip": "Shavarath Signet Stone\nShavarath Stone of Might\nShavarath Stone of Battle\nShavarath Stone of Strategy\nShavarath Stone of Foresight\nShavarath Stone of Victory"
+                                },
+                                {
+                                    "tip": "Large Splintered Horn"
+                                }
+                            ],
+                            "description": "A small, light axe design for throwing.",
+                            "enchantments": [
+                                {
+                                    "enchantment": [
+                                        {
+                                            "name": "+5 Enhancement Bonus",
+                                            "name_url": "https://ddowiki.com/page/Enhancement_bonus",
+                                            "fullText": "+5 Enhancement Bonus"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "enchantment": [
+                                        {
+                                            "name": "Green Steel",
+                                            "name_url": "https://ddowiki.com/page/Green_Steel",
+                                            "fullText": "Green Steel"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "enchantment": [
+                                        {
+                                            "name": "Returning",
+                                            "name_url": "https://ddowiki.com/page/Returning",
+                                            "fullText": "Returning"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "enchantment": [
+                                        {
+                                            "name": "Mythic Weapon Boost",
+                                            "name_url": "https://ddowiki.com/page/Mythic_Boost",
+                                            "fullText": "Mythic Weapon Boost +2 or +4"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "oneOfEnchantment": [{}, {}, {}, {}, {}],
+                                    "enchantment": [
+                                        {
+                                            "name": "Ore of Travail",
+                                            "name_url": "https://ddowiki.com/page/Ore_of_Travail",
+                                            "fullText": "Locust Husk\nChipmunk Funk\nGlistening Pebbles\nGreen Briar Twigs\nEberron Energy Cell"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "oneOfEnchantment": [{}, {}, {}, {}, {}],
+                                    "enchantment": [
+                                        {
+                                            "name": "Red Taper",
+                                            "name_url": "https://ddowiki.com/page/Red_Taper",
+                                            "fullText": "Glistening Pebbles\nGreen Briar Twigs\nLammanian Lily Petals\nChipmunk Funk\nEberron Energy Cell"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "oneOfEnchantment": [{}, {}, {}, {}, {}],
+                                    "enchantment": [
+                                        {
+                                            "name": "Wondrous Oil",
+                                            "name_url": "https://ddowiki.com/page/Wondrous_Oil",
+                                            "fullText": "Locust Husk\nLammanian Lily Petals\nChipmunk Funk\nBitterscrub Fungus OR Green Briar Twigs\nEberron Energy Cell"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "oneOfEnchantment": [{}, {}, {}, {}, {}],
+                                    "enchantment": [{}]
+                                },
+                                {
+                                    "enchantment": [
+                                        {
+                                            "name": "Large Splintered Horn",
+                                            "name_url": "https://ddowiki.com/page/Large_Splintered_Horn",
+                                            "fullText": "Large Splintered Horn"
+                                        }
+                                    ]
+                                }
+                            ],
+                            "locationInformation": [
+                                {
+                                    "location": "Manufactured Ingredient Recipes",
+                                    "location_url": "https://ddowiki.com/page/Altar_of_Fecundity_-_Manufactured_Ingredient_Recipes",
+                                    "locationExtra": ","
+                                }
+                            ]
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "weapon": [
+                {
+                    "name": "Thunder-Forged Alloy Throwing Axe",
+                    "damangeAndType": "3.50 [1d6] + 9 Slash, Silver, Adamantine, Mithral, Cold Iron, Magic, Byeshk",
+                    "minLevel": "22",
+                    "binding": "Unbound",
+                    "quest": "Magma Forge, Crafted from various ingredients",
+                    "criticalProfile": "Critical Profile: 20 / x3",
+                    "enchantments": "+9 Enhancement Bonus",
+                    "enchantments_url": "https://ddowiki.com/page/Enhancement_bonus",
+                    "errata": "Critical Profile: 20 / x3",
+                    "weaponDetail": [
+                        {
+                            "proficiency": "Martial Weapon Proficiency",
+                            "name": "Thunder-Forged Alloy Throwing Axe",
+                            "damangeAndType": "3.50 [1d6] + 9 Slash, Silver, Adamantine, Mithral, Cold Iron, Magic, Byeshk",
+                            "criticalThreatRange": "20 / x3",
+                            "weaponType": [
+                                {
+                                    "weaponCategory": "Throwing Axe",
+                                    "damageCategory": "/ Thrown weapons"
+                                }
+                            ],
+                            "absRaceRequired": "None",
+                            "minLevel": "22",
+                            "requiredTrait": "None",
+                            "umd": "No UMD needed",
+                            "handedness": "",
+                            "attackMod": "DEX",
+                            "damageMod": "STR",
+                            "binding": "Unbound",
+                            "binding_url": "https://ddowiki.com/page/Bind",
+                            "durability": "160",
+                            "material": "Adamantine",
+                            "material_url": "https://ddowiki.com/page/Adamantine",
+                            "hardness": "30",
+                            "baseValue": "8,800pp 6gp",
+                            "weight": "2 lbs",
+                            "upgradable": "Thunder-Forged",
+                            "tips": [
+                                {
+                                    "tip": "20 Thunder-Forged Dwarven Ingots"
+                                },
+                                {
+                                    "tip": "15 Commendations of Valor"
+                                }
+                            ],
+                            "description": "A great crossbow forged from metals long in proximity to dragons under Thunderholme.",
+                            "enchantments": [
+                                {
+                                    "enchantment": [
+                                        {
+                                            "name": "+9 Enhancement Bonus",
+                                            "name_url": "https://ddowiki.com/page/Enhancement_bonus",
+                                            "fullText": "+9 Enhancement Bonus"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "oneOfEnchantment": [
+                                        {},
+                                        {},
+                                        {},
+                                        {},
+                                        {},
+                                        {},
+                                        {},
+                                        {},
+                                        {},
+                                        {},
+                                        {},
+                                        {},
+                                        {},
+                                        {},
+                                        {},
+                                        {},
+                                        {},
+                                        {},
+                                        {},
+                                        {},
+                                        {},
+                                        {},
+                                        {},
+                                        {},
+                                        {}
+                                    ],
+                                    "enchantment": [
+                                        {
+                                            "fullText": "Empty Orange Augment Slot"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "enchantment": [
+                                        {
+                                            "name": "Returning",
+                                            "name_url": "https://ddowiki.com/page/Returning",
+                                            "fullText": "Returning"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "enchantment": [
+                                        {
+                                            "name": "Thunder-Forged (Tier 0)",
+                                            "name_url": "https://ddowiki.com/page/Thunder-Forged",
+                                            "fullText": "Thunder-Forged (Tier 0)"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "enchantment": [
+                                        {
+                                            "name": "Mythic Weapon Boost",
+                                            "name_url": "https://ddowiki.com/page/Mythic_Boost",
+                                            "fullText": "Mythic Weapon Boost +2 or +4"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "enchantment": [
+                                        {
+                                            "fullText": "20 Thunder-Forged Dwarven Ingots",
+                                            "fullText_url": "https://ddowiki.com/page/Item:Thunder-Forged_Dwarven_Ingot"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "enchantment": [
+                                        {
+                                            "fullText": "15 Commendations of Valor",
+                                            "fullText_url": "https://ddowiki.com/page/Item:Commendation_of_Valor"
+                                        }
+                                    ]
+                                }
+                            ],
+                            "locationInformation": [
+                                {
+                                    "location": "Magma Forge",
+                                    "location_url": "https://ddowiki.com/page/Magma_Forge",
+                                    "locationExtra": ", Crafted from various ingredients"
+                                }
+                            ]
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "weapon": [
+                {
+                    "name": "Legendary Green Steel Throwing Axe",
+                    "damangeAndType": "5[1d6] + 14 Slash, Evil, Magic",
+                    "minLevel": "26",
+                    "binding": "Bound to Character on Acquire",
+                    "quest": "Altar of Fecundity, Manufactured Ingredient Recipes",
+                    "criticalProfile": "Critical Profile: 20 / x3",
+                    "enchantments": "+14 Enhancement Bonus",
+                    "enchantments_url": "https://ddowiki.com/page/Enhancement_bonus",
+                    "errata": "Critical Profile: 20 / x3",
+                    "weaponDetail": [
+                        {
+                            "proficiency": "Martial Weapon Proficiency",
+                            "name": "Legendary Green Steel Throwing Axe",
+                            "damangeAndType": "Make and manage your own professional website with Squarespace's all-in-one platform. Squarespace",
+                            "criticalThreatRange": "20 / x3",
+                            "weaponType": [
+                                {
+                                    "weaponCategory": "Throwing Axe",
+                                    "damageCategory": "/ Thrown weapons"
+                                }
+                            ],
+                            "absRaceRequired": "None",
+                            "minLevel": "26",
+                            "requiredTrait": "None",
+                            "umd": "No UMD needed",
+                            "handedness": "",
+                            "attackMod": "DEX",
+                            "damageMod": "STR",
+                            "binding": "Bound to Character on Acquire",
+                            "binding_url": "https://ddowiki.com/page/Bind",
+                            "durability": "240",
+                            "material": "Steel",
+                            "material_url": "https://ddowiki.com/page/Steel",
+                            "hardness": "31",
+                            "baseValue": "30,051pp 3gp 3sp 6cp",
+                            "weight": "2 lbs",
+                            "upgradable": "Not upgradeable",
+                            "tips": [
+                                {
+                                    "tip": "+14 Legendary Green Steel Throwing Axe"
+                                },
+                                {
+                                    "tip": "100 Codex Runes"
+                                },
+                                {
+                                    "tip": "100 Commendations of Valor"
+                                },
+                                {
+                                    "tip": "Altar of Fecundity"
+                                }
+                            ],
+                            "description": "A small, light axe designed for throwing.",
+                            "enchantments": [
+                                {
+                                    "enchantment": [
+                                        {
+                                            "name": "+14 Enhancement Bonus",
+                                            "name_url": "https://ddowiki.com/page/Enhancement_bonus",
+                                            "fullText": "+14 Enhancement Bonus"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "enchantment": [
+                                        {
+                                            "name": "Legendary Green Steel",
+                                            "name_url": "https://ddowiki.com/page/Legendary_Green_Steel",
+                                            "fullText": "Legendary Green Steel"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "enchantment": [
+                                        {
+                                            "name": "Returning",
+                                            "name_url": "https://ddowiki.com/page/Returning",
+                                            "fullText": "Returning"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "enchantment": [
+                                        {
+                                            "name": "Mythic Weapon Boost",
+                                            "name_url": "https://ddowiki.com/page/Mythic_Boost",
+                                            "fullText": "Mythic Weapon Boost +2 or +4"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "enchantment": [
+                                        {
+                                            "fullText": "Codex Runes",
+                                            "fullText_url": "https://ddowiki.com/page/Item:Codex_Rune"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "enchantment": [
+                                        {
+                                            "fullText": "100 Commendations of Valor",
+                                            "fullText_url": "https://ddowiki.com/page/Item:Commendation_of_Valor"
+                                        }
+                                    ]
+                                }
+                            ],
+                            "locationInformation": [
+                                {
+                                    "location": "Manufactured Ingredient Recipes",
+                                    "location_url": "https://ddowiki.com/page/Altar_of_Fecundity_-_Manufactured_Ingredient_Recipes",
+                                    "locationExtra": ","
+                                }
+                            ]
+                        }
+                    ]
+                }
+            ]
         }
-       ],
-       "absRaceRequired": "None",
-       "minLevel": "6",
-       "requiredTrait": "Dwarf",
-       "umd": "14",
-       "handedness": "",
-       "attackMod": "DEX",
-       "damageMod": "STR",
-       "binding": "Bound to Character on Equip",
-       "binding_url": "https://ddowiki.com/page/Bind",
-       "durability": "70",
-       "material": "Steel",
-       "material_url": "https://ddowiki.com/page/Steel",
-       "hardness": "14",
-       "baseValue": "2,400pp 6gp",
-       "weight": "2 lbs",
-       "upgradable": "Not upgradeable",
-       "tips": [
-        {
-         "tip": "Multiple Drop Locations"
-        },
-        {
-         "tip": "Garamol's chest at a high droprate."
-        },
-        {
-         "tip": "Rare drop in any Level 7 Chest."
-        },
-        {
-         "tip": "Also seen to drop very rarely from breakables in the Threnal Ruins."
-        },
-        {
-         "tip": "Old version (pre-U18) base damage has been upgrade from d6 to d8 and is Unbound."
-        }
-       ],
-       "description": "This throwing axe is of obviously dwarven make.",
-       "enchantments": [
-        {
-         "enchantment": [
-          {
-           "name": "+3 Enhancement Bonus",
-           "name_url": "https://ddowiki.com/page/Enhancement_bonus",
-           "fullText": "+3 Enhancement Bonus"
-          }
-         ]
-        },
-        {
-         "enchantment": [
-          {
-           "name": "Extra damage vs Giants",
-           "name_url": "https://ddowiki.com/page/Extra_damage_vs_Giants",
-           "fullText": "Extra damage vs Giants"
-          }
-         ]
-        },
-        {
-         "enchantment": [
-          {
-           "name": "Returning",
-           "name_url": "https://ddowiki.com/page/Returning",
-           "fullText": "Returning"
-          }
-         ]
-        },
-        {
-         "enchantment": [
-          {
-           "name": "Extra damage vs non-Giants",
-           "name_url": "https://ddowiki.com/page/Extra_damage_vs_non-Giants",
-           "fullText": "Extra damage vs non-Giants"
-          }
-         ]
-        },
-        {
-         "enchantment": [
-          {
-           "name": "Mythic Weapon Boost",
-           "name_url": "https://ddowiki.com/page/Mythic_Boost",
-           "fullText": "Mythic Weapon Boost +2 or +4"
-          }
-         ]
-        },
-        {
-         "enchantment": [
-          {
-           "fullText": "Garamol",
-           "fullText_url": "https://ddowiki.com/page/Garamol"
-          }
-         ]
-        },
-        {
-         "enchantment": [
-          {
-          }
-         ]
-        },
-        {
-         "enchantment": [
-          {
-          }
-         ]
-        },
-        {
-         "enchantment": [
-          {
-           "name": "Unbound",
-           "name_url": "https://ddowiki.com/page/Bind",
-           "fullText": "Unbound"
-          }
-         ]
-        }
-       ],
-       "locationInformation": [
-        {
-         "location": "Garamol",
-         "location_url": "https://ddowiki.com/page/Garamol",
-         "locationExtra": ","
-        }
-       ]
-      }
-     ]
-    }
-   ]
-  },
-  {
-   "weapon": [
-    {
-     "name": "Returning Axe of Embers",
-     "damangeAndType": "1.50 [2d4] + 5 Fire, Magic",
-     "minLevel": "10",
-     "binding": "Bound to Character on Equip",
-     "quest": "The Twilight Forge, 2nd Gauntlet chest",
-     "criticalProfile": "Critical Profile: 20 / x3",
-     "enchantments": "+5 Enhancement Bonus",
-     "enchantments_url": "https://ddowiki.com/page/Enhancement_bonus",
-     "errata": "Critical Profile: 20 / x3",
-     "weaponDetail": [
-      {
-       "proficiency": "Martial Weapon Proficiency",
-       "name": "Returning Axe of Embers",
-       "damangeAndType": "1.50 [2d4] + 5 Fire, Magic",
-       "criticalThreatRange": "20 / x3",
-       "weaponType": [
-        {
-         "weaponCategory": "Throwing Axe",
-         "damageCategory": "/ Thrown weapons"
-        }
-       ],
-       "absRaceRequired": "None",
-       "minLevel": "10",
-       "requiredTrait": "None",
-       "umd": "No UMD needed",
-       "handedness": "",
-       "attackMod": "DEX",
-       "damageMod": "STR",
-       "binding": "Bound to Character on Equip",
-       "binding_url": "https://ddowiki.com/page/Bind",
-       "durability": "90",
-       "material": "Flametouched Iron",
-       "material_url": "https://ddowiki.com/page/Flametouched_Iron",
-       "hardness": "16",
-       "baseValue": "4,000pp 6gp",
-       "weight": "2 lbs",
-       "upgradable": "Not upgradeable",
-       "description": "This powerful flametouched throwing axe was handmade in the depths of the Twilight Forge foundry thousands of years ago.",
-       "enchantments": [
-        {
-         "enchantment": [
-          {
-           "name": "+5 Enhancement Bonus",
-           "name_url": "https://ddowiki.com/page/Enhancement_bonus",
-           "fullText": "+5 Enhancement Bonus"
-          }
-         ]
-        },
-        {
-         "enchantment": [
-          {
-           "name": "Returning",
-           "name_url": "https://ddowiki.com/page/Returning",
-           "fullText": "Returning"
-          }
-         ]
-        },
-        {
-         "enchantment": [
-          {
-           "name": "Mythic Weapon Boost",
-           "name_url": "https://ddowiki.com/page/Mythic_Boost",
-           "fullText": "Mythic Weapon Boost +2 or +4"
-          }
-         ]
-        }
-       ],
-       "locationInformation": [
-        {
-         "location": "The Twilight Forge",
-         "location_url": "https://ddowiki.com/page/The_Twilight_Forge",
-         "locationExtra": ", 2nd Gauntlet chest"
-        }
-       ]
-      }
-     ]
-    }
-   ]
-  },
-  {
-   "weapon": [
-    {
-     "name": "Alchemical Throwing Axe",
-     "damangeAndType": "2 [1d6] + 5 Slash, Magic",
-     "minLevel": "12",
-     "binding": "Unbound",
-     "quest": "The Master Artificer, Either End chest",
-     "criticalProfile": "Critical Profile: 20 / x3",
-     "enchantments": "+5 Enhancement Bonus",
-     "enchantments_url": "https://ddowiki.com/page/Enhancement_bonus",
-     "errata": "Critical Profile: 20 / x3",
-     "weaponDetail": [
-      {
-       "proficiency": "Martial Weapon Proficiency",
-       "name": "Alchemical Throwing Axe",
-       "damangeAndType": "2 [1d6] + 5 Slash, Magic",
-       "criticalThreatRange": "20 / x3",
-       "weaponType": [
-        {
-         "weaponCategory": "Throwing Axe",
-         "damageCategory": "/ Thrown weapons"
-        }
-       ],
-       "absRaceRequired": "None",
-       "minLevel": "12",
-       "requiredTrait": "None",
-       "umd": "No UMD needed",
-       "handedness": "",
-       "attackMod": "DEX",
-       "damageMod": "STR",
-       "binding": "Unbound",
-       "binding_url": "https://ddowiki.com/page/Bind",
-       "durability": "100",
-       "material": "Steel",
-       "material_url": "https://ddowiki.com/page/Steel",
-       "hardness": "17",
-       "baseValue": "10,200pp 6gp",
-       "weight": "2 lbs",
-       "upgradable": "Alchemical Crafting",
-       "description": "A small, light axe design for throwing.",
-       "enchantments": [
-        {
-         "enchantment": [
-          {
-           "name": "+5 Enhancement Bonus",
-           "name_url": "https://ddowiki.com/page/Enhancement_bonus",
-           "fullText": "+5 Enhancement Bonus"
-          }
-         ]
-        },
-        {
-         "enchantment": [
-          {
-           "name": "Alchemical (Prototype)",
-           "name_url": "https://ddowiki.com/page/Alchemical_Crafting",
-           "fullText": "Alchemical (Prototype)"
-          }
-         ]
-        },
-        {
-         "enchantment": [
-          {
-           "name": "Returning",
-           "name_url": "https://ddowiki.com/page/Returning",
-           "fullText": "Returning"
-          }
-         ]
-        },
-        {
-         "enchantment": [
-          {
-           "name": "Mythic Weapon Boost",
-           "name_url": "https://ddowiki.com/page/Mythic_Boost",
-           "fullText": "Mythic Weapon Boost +2 or +4"
-          }
-         ]
-        }
-       ],
-       "locationInformation": [
-        {
-         "location": "The Master Artificer",
-         "location_url": "https://ddowiki.com/page/The_Master_Artificer",
-         "locationExtra": ", Either End chest"
-        }
-       ]
-      }
-     ]
-    }
-   ]
-  },
-  {
-   "weapon": [
-    {
-     "name": "Green Steel Throwing Axe",
-     "damangeAndType": "1.50 [1d6] +5 Slash, Evil, Magic",
-     "minLevel": "12",
-     "binding": "Bound to Character on Equip",
-     "quest": "Altar of Fecundity, Manufactured Ingredient Recipes",
-     "criticalProfile": "Critical Profile: 20 / x3",
-     "enchantments": "+5 Enhancement Bonus",
-     "enchantments_url": "https://ddowiki.com/page/Enhancement_bonus",
-     "errata": "Critical Profile: 20 / x3",
-     "weaponDetail": [
-      {
-       "proficiency": "Martial Weapon Proficiency",
-       "name": "Green Steel Throwing Axe",
-       "damangeAndType": "1.50 [1d6] +5 Slash, Evil, Magic",
-       "criticalThreatRange": "20 / x3",
-       "weaponType": [
-        {
-         "weaponCategory": "Throwing Axe",
-         "damageCategory": "/ Thrown weapons"
-        }
-       ],
-       "absRaceRequired": "None",
-       "minLevel": "12",
-       "requiredTrait": "None",
-       "umd": "No UMD needed",
-       "handedness": "",
-       "attackMod": "DEX",
-       "damageMod": "STR",
-       "binding": "Bound to Character on Equip",
-       "binding_url": "https://ddowiki.com/page/Bind",
-       "durability": "80",
-       "material": "Steel",
-       "material_url": "https://ddowiki.com/page/Steel",
-       "hardness": "15",
-       "baseValue": "5,400pp 6gp",
-       "weight": "2 lbs",
-       "upgradable": "Green Steel",
-       "tips": [
-        {
-         "tip": "+5 Green Steel Throwing Axe"
-        },
-        {
-         "tip": "Ore of Travail\nLocust Husk\nChipmunk Funk\nGlistening Pebbles\nGreen Briar Twigs\nEberron Energy Cell"
-        },
-        {
-         "tip": "Red Taper\nGlistening Pebbles\nGreen Briar Twigs\nLammanian Lily Petals\nChipmunk Funk\nEberron Energy Cell"
-        },
-        {
-         "tip": "Wondrous Oil\nLocust Husk\nLammanian Lily Petals\nChipmunk Funk\nBitterscrub Fungus OR Green Briar Twigs\nEberron Energy Cell"
-        },
-        {
-         "tip": "Shavarath Signet Stone\nShavarath Stone of Might\nShavarath Stone of Battle\nShavarath Stone of Strategy\nShavarath Stone of Foresight\nShavarath Stone of Victory"
-        },
-        {
-         "tip": "Large Splintered Horn"
-        }
-       ],
-       "description": "A small, light axe design for throwing.",
-       "enchantments": [
-        {
-         "enchantment": [
-          {
-           "name": "+5 Enhancement Bonus",
-           "name_url": "https://ddowiki.com/page/Enhancement_bonus",
-           "fullText": "+5 Enhancement Bonus"
-          }
-         ]
-        },
-        {
-         "enchantment": [
-          {
-           "name": "Green Steel",
-           "name_url": "https://ddowiki.com/page/Green_Steel",
-           "fullText": "Green Steel"
-          }
-         ]
-        },
-        {
-         "enchantment": [
-          {
-           "name": "Returning",
-           "name_url": "https://ddowiki.com/page/Returning",
-           "fullText": "Returning"
-          }
-         ]
-        },
-        {
-         "enchantment": [
-          {
-           "name": "Mythic Weapon Boost",
-           "name_url": "https://ddowiki.com/page/Mythic_Boost",
-           "fullText": "Mythic Weapon Boost +2 or +4"
-          }
-         ]
-        },
-        {
-         "oneOfEnchantment": [
-          {
-          },
-          {
-          },
-          {
-          },
-          {
-          },
-          {
-          }
-         ],
-         "enchantment": [
-          {
-           "name": "Ore of Travail",
-           "name_url": "https://ddowiki.com/page/Ore_of_Travail",
-           "fullText": "Locust Husk\nChipmunk Funk\nGlistening Pebbles\nGreen Briar Twigs\nEberron Energy Cell"
-          }
-         ]
-        },
-        {
-         "oneOfEnchantment": [
-          {
-          },
-          {
-          },
-          {
-          },
-          {
-          },
-          {
-          }
-         ],
-         "enchantment": [
-          {
-           "name": "Red Taper",
-           "name_url": "https://ddowiki.com/page/Red_Taper",
-           "fullText": "Glistening Pebbles\nGreen Briar Twigs\nLammanian Lily Petals\nChipmunk Funk\nEberron Energy Cell"
-          }
-         ]
-        },
-        {
-         "oneOfEnchantment": [
-          {
-          },
-          {
-          },
-          {
-          },
-          {
-          },
-          {
-          }
-         ],
-         "enchantment": [
-          {
-           "name": "Wondrous Oil",
-           "name_url": "https://ddowiki.com/page/Wondrous_Oil",
-           "fullText": "Locust Husk\nLammanian Lily Petals\nChipmunk Funk\nBitterscrub Fungus OR Green Briar Twigs\nEberron Energy Cell"
-          }
-         ]
-        },
-        {
-         "oneOfEnchantment": [
-          {
-          },
-          {
-          },
-          {
-          },
-          {
-          },
-          {
-          }
-         ],
-         "enchantment": [
-          {
-          }
-         ]
-        },
-        {
-         "enchantment": [
-          {
-           "name": "Large Splintered Horn",
-           "name_url": "https://ddowiki.com/page/Large_Splintered_Horn",
-           "fullText": "Large Splintered Horn"
-          }
-         ]
-        }
-       ],
-       "locationInformation": [
-        {
-         "location": "Manufactured Ingredient Recipes",
-         "location_url": "https://ddowiki.com/page/Altar_of_Fecundity_-_Manufactured_Ingredient_Recipes",
-         "locationExtra": ","
-        }
-       ]
-      }
-     ]
-    }
-   ]
-  },
-  {
-   "weapon": [
-    {
-     "name": "Thunder-Forged Alloy Throwing Axe",
-     "damangeAndType": "3.50 [1d6] + 9 Slash, Silver, Adamantine, Mithral, Cold Iron, Magic, Byeshk",
-     "minLevel": "22",
-     "binding": "Unbound",
-     "quest": "Magma Forge, Crafted from various ingredients",
-     "criticalProfile": "Critical Profile: 20 / x3",
-     "enchantments": "+9 Enhancement Bonus",
-     "enchantments_url": "https://ddowiki.com/page/Enhancement_bonus",
-     "errata": "Critical Profile: 20 / x3",
-     "weaponDetail": [
-      {
-       "proficiency": "Martial Weapon Proficiency",
-       "name": "Thunder-Forged Alloy Throwing Axe",
-       "damangeAndType": "3.50 [1d6] + 9 Slash, Silver, Adamantine, Mithral, Cold Iron, Magic, Byeshk",
-       "criticalThreatRange": "20 / x3",
-       "weaponType": [
-        {
-         "weaponCategory": "Throwing Axe",
-         "damageCategory": "/ Thrown weapons"
-        }
-       ],
-       "absRaceRequired": "None",
-       "minLevel": "22",
-       "requiredTrait": "None",
-       "umd": "No UMD needed",
-       "handedness": "",
-       "attackMod": "DEX",
-       "damageMod": "STR",
-       "binding": "Unbound",
-       "binding_url": "https://ddowiki.com/page/Bind",
-       "durability": "160",
-       "material": "Adamantine",
-       "material_url": "https://ddowiki.com/page/Adamantine",
-       "hardness": "30",
-       "baseValue": "8,800pp 6gp",
-       "weight": "2 lbs",
-       "upgradable": "Thunder-Forged",
-       "tips": [
-        {
-         "tip": "20 Thunder-Forged Dwarven Ingots"
-        },
-        {
-         "tip": "15 Commendations of Valor"
-        }
-       ],
-       "description": "A great crossbow forged from metals long in proximity to dragons under Thunderholme.",
-       "enchantments": [
-        {
-         "enchantment": [
-          {
-           "name": "+9 Enhancement Bonus",
-           "name_url": "https://ddowiki.com/page/Enhancement_bonus",
-           "fullText": "+9 Enhancement Bonus"
-          }
-         ]
-        },
-        {
-         "oneOfEnchantment": [
-          {
-          },
-          {
-          },
-          {
-          },
-          {
-          },
-          {
-          },
-          {
-          },
-          {
-          },
-          {
-          },
-          {
-          },
-          {
-          },
-          {
-          },
-          {
-          },
-          {
-          },
-          {
-          },
-          {
-          },
-          {
-          },
-          {
-          },
-          {
-          },
-          {
-          },
-          {
-          },
-          {
-          },
-          {
-          },
-          {
-          },
-          {
-          },
-          {
-          }
-         ],
-         "enchantment": [
-          {
-           "fullText": "Empty Orange Augment Slot"
-          }
-         ]
-        },
-        {
-         "enchantment": [
-          {
-           "name": "Returning",
-           "name_url": "https://ddowiki.com/page/Returning",
-           "fullText": "Returning"
-          }
-         ]
-        },
-        {
-         "enchantment": [
-          {
-           "name": "Thunder-Forged (Tier 0)",
-           "name_url": "https://ddowiki.com/page/Thunder-Forged",
-           "fullText": "Thunder-Forged (Tier 0)"
-          }
-         ]
-        },
-        {
-         "enchantment": [
-          {
-           "name": "Mythic Weapon Boost",
-           "name_url": "https://ddowiki.com/page/Mythic_Boost",
-           "fullText": "Mythic Weapon Boost +2 or +4"
-          }
-         ]
-        },
-        {
-         "enchantment": [
-          {
-           "fullText": "20 Thunder-Forged Dwarven Ingots",
-           "fullText_url": "https://ddowiki.com/page/Item:Thunder-Forged_Dwarven_Ingot"
-          }
-         ]
-        },
-        {
-         "enchantment": [
-          {
-           "fullText": "15 Commendations of Valor",
-           "fullText_url": "https://ddowiki.com/page/Item:Commendation_of_Valor"
-          }
-         ]
-        }
-       ],
-       "locationInformation": [
-        {
-         "location": "Magma Forge",
-         "location_url": "https://ddowiki.com/page/Magma_Forge",
-         "locationExtra": ", Crafted from various ingredients"
-        }
-       ]
-      }
-     ]
-    }
-   ]
-  },
-  {
-   "weapon": [
-    {
-     "name": "Legendary Green Steel Throwing Axe",
-     "damangeAndType": "5[1d6] + 14 Slash, Evil, Magic",
-     "minLevel": "26",
-     "binding": "Bound to Character on Acquire",
-     "quest": "Altar of Fecundity, Manufactured Ingredient Recipes",
-     "criticalProfile": "Critical Profile: 20 / x3",
-     "enchantments": "+14 Enhancement Bonus",
-     "enchantments_url": "https://ddowiki.com/page/Enhancement_bonus",
-     "errata": "Critical Profile: 20 / x3",
-     "weaponDetail": [
-      {
-       "proficiency": "Martial Weapon Proficiency",
-       "name": "Legendary Green Steel Throwing Axe",
-       "damangeAndType": "Make and manage your own professional website with Squarespace's all-in-one platform. Squarespace",
-       "criticalThreatRange": "20 / x3",
-       "weaponType": [
-        {
-         "weaponCategory": "Throwing Axe",
-         "damageCategory": "/ Thrown weapons"
-        }
-       ],
-       "absRaceRequired": "None",
-       "minLevel": "26",
-       "requiredTrait": "None",
-       "umd": "No UMD needed",
-       "handedness": "",
-       "attackMod": "DEX",
-       "damageMod": "STR",
-       "binding": "Bound to Character on Acquire",
-       "binding_url": "https://ddowiki.com/page/Bind",
-       "durability": "240",
-       "material": "Steel",
-       "material_url": "https://ddowiki.com/page/Steel",
-       "hardness": "31",
-       "baseValue": "30,051pp 3gp 3sp 6cp",
-       "weight": "2 lbs",
-       "upgradable": "Not upgradeable",
-       "tips": [
-        {
-         "tip": "+14 Legendary Green Steel Throwing Axe"
-        },
-        {
-         "tip": "100 Codex Runes"
-        },
-        {
-         "tip": "100 Commendations of Valor"
-        },
-        {
-         "tip": "Altar of Fecundity"
-        }
-       ],
-       "description": "A small, light axe designed for throwing.",
-       "enchantments": [
-        {
-         "enchantment": [
-          {
-           "name": "+14 Enhancement Bonus",
-           "name_url": "https://ddowiki.com/page/Enhancement_bonus",
-           "fullText": "+14 Enhancement Bonus"
-          }
-         ]
-        },
-        {
-         "enchantment": [
-          {
-           "name": "Legendary Green Steel",
-           "name_url": "https://ddowiki.com/page/Legendary_Green_Steel",
-           "fullText": "Legendary Green Steel"
-          }
-         ]
-        },
-        {
-         "enchantment": [
-          {
-           "name": "Returning",
-           "name_url": "https://ddowiki.com/page/Returning",
-           "fullText": "Returning"
-          }
-         ]
-        },
-        {
-         "enchantment": [
-          {
-           "name": "Mythic Weapon Boost",
-           "name_url": "https://ddowiki.com/page/Mythic_Boost",
-           "fullText": "Mythic Weapon Boost +2 or +4"
-          }
-         ]
-        },
-        {
-         "enchantment": [
-          {
-           "fullText": "Codex Runes",
-           "fullText_url": "https://ddowiki.com/page/Item:Codex_Rune"
-          }
-         ]
-        },
-        {
-         "enchantment": [
-          {
-           "fullText": "100 Commendations of Valor",
-           "fullText_url": "https://ddowiki.com/page/Item:Commendation_of_Valor"
-          }
-         ]
-        }
-       ],
-       "locationInformation": [
-        {
-         "location": "Manufactured Ingredient Recipes",
-         "location_url": "https://ddowiki.com/page/Altar_of_Fecundity_-_Manufactured_Ingredient_Recipes",
-         "locationExtra": ","
-        }
-       ]
-      }
-     ]
-    }
-   ]
-  }
- ]
+    ]
 }

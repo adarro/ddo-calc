@@ -24,6 +24,7 @@ trait SafetyGoggles extends ApothecaryTierThree with ClassEnhancementImpl {
   override lazy val description: Option[String] = Some(
     " +[1/2/3] Armor Class and +[2/4/6] Resistance to Fire, Cold, Acid and Electric damage. Rank 3: Blindness Immunity."
   )
+
   /**
    * Some enhancements can be taken multiple times (generally up to three)
    */

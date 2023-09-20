@@ -18,7 +18,10 @@
 package io.truthencode.ddo.model.enhancement.enhancements
 
 import io.truthencode.ddo.model.enhancement.enhancements.classbased.BombardierTierFive
-import io.truthencode.ddo.support.requisite.{ClassEnhancementRequisiteImpl, RequiresAllOfClassEnhancement}
+import io.truthencode.ddo.support.requisite.{
+  ClassEnhancementRequisiteImpl,
+  RequiresAllOfClassEnhancement
+}
 
 trait InfernoOfCreation
   extends ClassEnhancementRequisiteImpl with BombardierTierFive with ClassEnhancementImpl
@@ -27,6 +30,7 @@ trait InfernoOfCreation
   override lazy val description: Option[String] = Some(
     "When your Reaction is Pyrite, you gain +1 Burning Ambition die, and your harmful Crimsonite spells apply a stack of vulnerability to enemies that have at least 3 different elements of Burning Ambition.\nVulnerable: You take 1% more damage for 3 seconds. This effect stacks up to 20 times, and loses one stack on expiration."
   )
+
   /**
    * Some enhancements can be taken multiple times (generally up to three)
    */

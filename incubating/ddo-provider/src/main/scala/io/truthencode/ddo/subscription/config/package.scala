@@ -20,7 +20,7 @@ package io.truthencode.ddo.subscription
 import wvlet.airframe.config.Config
 
 package object config {
-    val config: Config =
-        Config(env="development", configPaths=Seq("config"))
-            .registerFromYaml[CamelConfig]("camel.yaml")
+  val config: Config =
+    Config(env = "development", configPaths = Seq("config"))
+      .registerFromYaml[CamelConfig]("camel.yaml")
 }

@@ -27,6 +27,7 @@ ui -> core
 
 @enduml
 ```
+
 ```plantuml
 @startuml
 start
@@ -36,11 +37,10 @@ if (Query Effect) is (Exists In Local Db?) then
     :return;
 else (Need to Add)
     :Add to local;
-    
+
 
 @enduml
 ```
-
 
 ```scala
 
@@ -53,11 +53,10 @@ sequenceDiagram
     participant Local_DB
     participant Cloud_DB
     participant User
-    
+
 
 
 ```
-
 
 ```mermaid
 sequenceDiagram

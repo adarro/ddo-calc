@@ -36,6 +36,7 @@ trait LiquidPowerIII extends BombardierCore with ClassEnhancementImpl {
       |While in Pyrite Reaction, you gain +1 Conjuration DC.
       |""".stripMargin
   )
+
   /**
    * Some enhancements can be taken multiple times (generally up to three)
    */

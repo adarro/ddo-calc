@@ -29,6 +29,7 @@ trait AlchemicalShield extends ApothecaryCore with ClassEnhancementImpl {
   override lazy val description: Option[String] = Some(
     "While in cloth armor or in Composite Plating, you have a +4 Alchemical bonus to AC and are protected from Magic Missiles. While your Reaction is Verdanite, +5 Positive & Negative Spell Power."
   )
+
   /**
    * Some enhancements can be taken multiple times (generally up to three)
    */

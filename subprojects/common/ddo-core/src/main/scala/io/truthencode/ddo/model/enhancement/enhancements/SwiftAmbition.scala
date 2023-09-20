@@ -20,6 +20,7 @@ package io.truthencode.ddo.model.enhancement.enhancements
 import io.truthencode.ddo.model.enhancement.enhancements.classbased.BombardierTierThree
 
 trait SwiftAmbition extends BombardierTierThree with ClassEnhancementImpl {
+
   /**
    * Some enhancements can be taken multiple times (generally up to three)
    */

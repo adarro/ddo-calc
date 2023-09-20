@@ -23,6 +23,7 @@ import io.truthencode.ddo.enumeration.EnumExtensions._
  * Indicates the given object can be equipped / wielded etc.
  */
 trait Wearable {
+
   /**
    * A list of allowed location slots
    *

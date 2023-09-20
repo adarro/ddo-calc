@@ -17,9 +17,10 @@
  */
 package io.truthencode.ddo.test.tags
 import org.scalatest.Tag
+
 /**
- * Tags for filtering Scalatests [[https://www.scalatest.org/user_guide/tagging_your_tests]] Tests or accesses a
- * Database
+ * Tags for filtering Scalatests [[https://www.scalatest.org/user_guide/tagging_your_tests]] Tests
+ * or accesses a Database
  */
 object DBTest extends Tag("io.truthencode.tags.Database")
 
@@ -55,8 +56,8 @@ object SkillTest extends Tag("io.truthencode.tags.Skill")
 object FunctionalTest extends Tag("io.truthencode.tags.Function")
 
 /**
- * Tests basic functionality of a given library or interaction between.
- * Does not affect production code but illustrates the use.
- * i.e. verify running a Camel Context inside a Vertx instance using a Monix execution context.
+ * Tests basic functionality of a given library or interaction between. Does not affect production
+ * code but illustrates the use. i.e. verify running a Camel Context inside a Vertx instance using a
+ * Monix execution context.
  */
-object  FunctionLOnly extends Tag("io.truthencode.tags.FunctionOnly")
+object FunctionLOnly extends Tag("io.truthencode.tags.FunctionOnly")

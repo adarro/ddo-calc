@@ -34,6 +34,7 @@ import io.truthencode.ddo.{WearLocation, Wearable}
  *   Lore VI Potency +80 Superior Lightning Resistance Blue Augment Slot
  */
 trait Armor extends WearableItem with Wearable {
+
   /**
    * A bitmask that corresponds to one or more [io.truthencode.ddo.WearLocation] values.
    */

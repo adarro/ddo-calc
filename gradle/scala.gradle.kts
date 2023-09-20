@@ -16,10 +16,9 @@
  * limitations under the License.
  */
 /*
- * Include (apply from) to configure common dependencies and source set configurations for Scala projects 
+ * Include (apply from) to configure common dependencies and source set configurations for Scala projects
  */
 // import org.unbrokendome.gradle.plugins.testsets.dsl.testSets
-
 
 pluginManager.withPlugin("scala-profiles") {
     val implementation by configurations.getting
@@ -30,18 +29,18 @@ pluginManager.withPlugin("scala-profiles") {
     dependencies {
         implementation(platform(project(":ddo-platform-scala")))
         implementation("org.scala-lang:scala-library:$scalaLibraryVersion")
-        implementation(group = "com.beachape", name = "enumeratum_${scalaMajorVersion}")
+        implementation(group = "com.beachape", name = "enumeratum_$scalaMajorVersion")
         implementation(group = "com.typesafe", name = "config")
-        implementation(group = "com.github.kxbmap", name = "configs_${scalaMajorVersion}")
+        implementation(group = "com.github.kxbmap", name = "configs_$scalaMajorVersion")
         // validation and rules
-        implementation(group = "com.wix", name = "accord-core_${scalaMajorVersion}")
+        implementation(group = "com.wix", name = "accord-core_$scalaMajorVersion")
         implementation(group = "ch.qos.logback", name = "logback-classic")
-        implementation(group = "com.typesafe.scala-logging", name = "scala-logging_${scalaMajorVersion}")
+        implementation(group = "com.typesafe.scala-logging", name = "scala-logging_$scalaMajorVersion")
         testImplementation(group = "org.scalatest", name = "scalatest_$scalaMajorVersion")
         // Needed for scalatest html reports (formerly depended on pegdown)
-        testRuntimeOnly ("com.vladsch.flexmark:flexmark-all:0.35.10")
+        testRuntimeOnly("com.vladsch.flexmark:flexmark-all:0.35.10")
         testImplementation(group = "org.mockito", name = "mockito-all")
-        testImplementation(group = "org.scalacheck", name = "scalacheck_$scalaMajorVersion")//, version = "1.15.4")
+        testImplementation(group = "org.scalacheck", name = "scalacheck_$scalaMajorVersion") // , version = "1.15.4")
         // JUnit 5
         testRuntimeOnly(group = "org.junit.platform", name = "junit-platform-engine")
         testRuntimeOnly(group = "org.junit.platform", name = "junit-platform-launcher")

@@ -18,7 +18,12 @@
 package io.truthencode.ddo.model.feats
 
 import io.truthencode.ddo.model.classes.HeroicCharacterClass
-import io.truthencode.ddo.support.requisite.{ClassRequisiteImpl, FeatRequisiteImpl, RequiresAllOfClass, RequiresAllOfFeat}
+import io.truthencode.ddo.support.requisite.{
+  ClassRequisiteImpl,
+  FeatRequisiteImpl,
+  RequiresAllOfClass,
+  RequiresAllOfFeat
+}
 
 /**
  * Icon Feat Superior Weapon Focus.png Superior Weapon Focus Passive Provides an additional +1 bonus

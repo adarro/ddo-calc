@@ -36,6 +36,7 @@ trait LiquidPowerI extends BombardierCore with ClassEnhancementImpl {
       |While in Pyrite Reaction, you gain +5 Fire, Cold, Electric, Acid, and Poison Spell Power
       |""".stripMargin
   )
+
   /**
    * Some enhancements can be taken multiple times (generally up to three)
    */

@@ -91,6 +91,7 @@ trait SpellCriticalChance extends BasicStat with SpellCasting
 trait SpellCriticalMultiplier extends BasicStat with SpellCasting
 
 trait SpellDifficultyCheck extends BasicStat with SpellCasting
+
 /**
  * Affects Character speed when moving. (Moving while sneaking or wearing over-level equipment may
  * reduce this speed)

@@ -23,7 +23,12 @@ import io.truthencode.ddo.model.classes.HeroicCharacterClass.Ranger
 import io.truthencode.ddo.model.effect
 import io.truthencode.ddo.model.effect.TriggerEvent
 import io.truthencode.ddo.model.effect.features.{FeaturesImpl, UnconsciousRecoveryFeature}
-import io.truthencode.ddo.support.requisite.{ClassRequisiteImpl, FeatRequisiteImpl, FreeFeat, GrantsToClass}
+import io.truthencode.ddo.support.requisite.{
+  ClassRequisiteImpl,
+  FeatRequisiteImpl,
+  FreeFeat,
+  GrantsToClass
+}
 
 /**
  * Icon Feat Diehard.png Diehard Passive You automatically stabilize when incapacitated.

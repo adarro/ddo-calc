@@ -1,236 +1,236 @@
-swagger: '2.0'
+swagger: "2.0"
 info:
-  version: 1.0.0
-  title: Uber API
-  description: Move your app forward with the Uber API
-  termsOfService: 'http://swagger.io/terms/'
-  contact:
-    name: Andre White
-    email: adarro@gmail.com
-    url: 'http://truthencode.wordpress.org'
-  license:
-    name: Apachev2
-    url: 'http://www.apache.org/licenses/LICENSE-2.0'
-host: 'localhost:8888'
+    version: 1.0.0
+    title: Uber API
+    description: Move your app forward with the Uber API
+    termsOfService: "http://swagger.io/terms/"
+    contact:
+        name: Andre White
+        email: adarro@gmail.com
+        url: "http://truthencode.wordpress.org"
+    license:
+        name: Apachev2
+        url: "http://www.apache.org/licenses/LICENSE-2.0"
+host: "localhost:8888"
 basePath: /api
 schemes:
-  - https
-  - http
-  - ws
-  - wss
+    - https
+    - http
+    - ws
+    - wss
 consumes:
-  - application/json
+    - application/json
 produces:
-  - application/json
-  - application/xml
+    - application/json
+    - application/xml
 paths:
-  /items/weapon:
-    get:
-      operationId: listWeapons
-      summary: Retrieves available weapons
-      description: 'Service used to retrieve weapons as per [DDOWiki](http://ddowiki.com/page/Category:Weapons)'
-      parameters:
-        - name: tags
-          in: query
-          description: tags to filter by
-          required: false
-          type: array
-          collectionFormat: csv
-          items:
-            type: string
-        - name: limit
-          in: query
-          description: maximum number of results to return
-          required: false
-          type: integer
-          format: int32
-      tags:
-        - Weapons
-      responses:
-        '200':
-          description: Weapons found matching the given criteria
-          schema:
-            type: array
-            items:
-              $ref: '#/definitions/Weapon'
-        default:
-          description: Unexpected error
-          schema:
-            $ref: '#/definitions/Error'
+    /items/weapon:
+        get:
+            operationId: listWeapons
+            summary: Retrieves available weapons
+            description: "Service used to retrieve weapons as per [DDOWiki](http://ddowiki.com/page/Category:Weapons)"
+            parameters:
+                - name: tags
+                  in: query
+                  description: tags to filter by
+                  required: false
+                  type: array
+                  collectionFormat: csv
+                  items:
+                      type: string
+                - name: limit
+                  in: query
+                  description: maximum number of results to return
+                  required: false
+                  type: integer
+                  format: int32
+            tags:
+                - Weapons
+            responses:
+                "200":
+                    description: Weapons found matching the given criteria
+                    schema:
+                        type: array
+                        items:
+                            $ref: "#/definitions/Weapon"
+                default:
+                    description: Unexpected error
+                    schema:
+                        $ref: "#/definitions/Error"
 definitions:
-  Error:
-    type: object
-    properties:
-      code:
-        type: integer
-        format: int32
-      message:
-        type: string
-      fields:
-        type: string
-  Weapon:
-    type: object
-    properties:
-      name:
-        type: string
-        description: Name of the Item
-      proficiency_class:
-        type: string
-        description: General Level of Martial training required to wield
-      image:
-        type: string
-        description: Screen shot or image URI
-      damage:
-        $ref: '#/definitions/Damage'
-      damage_type:
-        $ref: '#/definitions/Damage_Type'
-      critical_threat_range:
-        $ref: '#/definitions/Critical_Threat_Range'
-      weapon_type:
-        description: The type of weapon such as long sword Axe etc
-        type: string
-      somev:
-        description: blah
-        type: string
-      required_race:
-        type: array
-        items:
-          type: string
-        description: Race required to use item without a UMD Check
-      abs_required_race:
-        description: Race absolutely required (no bypass) to use item
-        type: array
-        items:
-          type: string
-      min_level:
-        type: integer
-        format: int32
-      required_trait:
-        description: Trait such as Lawful needed to use item
-        type: array
-        items:
-          type: string
-      umd:
-        type: string
-        description: Use Magical Device DC
-      handedness:
-        description: Allowed slots such as one handed (main or off hand) / two handed
-        type: array
-        items:
-          type: string
-      attack_mod:
-        description: Attribute(s) that modify the attack roll
-        type: array
-        items:
-          type: string
-      damage_mod:
-        description: Attribute(s) that modify the damage roll
-        type: array
-        items:
-          type: string
-      binding:
-        description: 'Character or Account binding, if any'
-        type: string
-      durability:
-        description: 'tensile strength, how hard it is to damage'
-        type: integer
-        format: int32
-      material:
-        description: material made from
-        type: string
-        enum:
-          - Adamantine
-          - Blueshine
-          - Bone
-          - Byeshk
-          - Cloth
-          - Cold_Iron
-          - Crystal
-          - Darkleaf
-          - Darkwood
-          - Densewood
-          - Dwarven_Iron
-          - Feyleather
-          - Flametouched_Iron
-          - Flesh
-          - Force
-          - Gem
-          - Glass
-          - Ice
-          - Leather
-          - Light
-          - Magesteel
-          - Mithral
-          - Planeforged_Steel
-          - Rust
-          - Silver
-          - Spiritcraft_Leather
-          - Spiritforged_Iron
-          - Steel
-          - Stone
-          - Wood
-      hardness:
-        description: physical toughness of the item
-        type: integer
-        format: int32
-      base_value:
-        description: Monetary value of item
-        type: string
-      weight:
-        type: integer
-        format: int32
-        description: weight in pounds
-      location:
-        description: Text describing the location of the item
-        type: string
-      enchantments:
-        description: Collection of Enchantments on the item.
-        type: array
-        items:
-          type: string
-      enchantments_choice:
-        description: Used to support One of the following
-        type: array
-        items:
-          type: string
-      upgradeable:
-        description: text describing if an item can be upgraded to something else and optionally details on steps to obtain it.
-        type: string
-      description_text:
-        description: descriptive text of the item
-        type: string
-  Damage:
-    properties:
-      dice_modifier:
-        type: integer
-        format: int32
-        description: Multiplier for the dice
-      dice:
-        type: string
-        description: Dice expression in the form of nDm
-      extra:
-        type: integer
-        format: int32
-        description: Additional Damage after the dice
-      damage_type:
-        $ref: '#/definitions/Damage_Type'
-  Damage_Type:
-    properties:
-      value:
-        type: string
-        enum:
-          - Bludgeon
-          - Pierce
-          - Slash
-          - Magic
-  Critical_Threat_Range:
-    properties:
-      min:
-        type: integer
-        format: int32
-      max:
-        type: integer
-        format: int32
-      multiplier:
-        type: integer
-        format: int32
+    Error:
+        type: object
+        properties:
+            code:
+                type: integer
+                format: int32
+            message:
+                type: string
+            fields:
+                type: string
+    Weapon:
+        type: object
+        properties:
+            name:
+                type: string
+                description: Name of the Item
+            proficiency_class:
+                type: string
+                description: General Level of Martial training required to wield
+            image:
+                type: string
+                description: Screen shot or image URI
+            damage:
+                $ref: "#/definitions/Damage"
+            damage_type:
+                $ref: "#/definitions/Damage_Type"
+            critical_threat_range:
+                $ref: "#/definitions/Critical_Threat_Range"
+            weapon_type:
+                description: The type of weapon such as long sword Axe etc
+                type: string
+            somev:
+                description: blah
+                type: string
+            required_race:
+                type: array
+                items:
+                    type: string
+                description: Race required to use item without a UMD Check
+            abs_required_race:
+                description: Race absolutely required (no bypass) to use item
+                type: array
+                items:
+                    type: string
+            min_level:
+                type: integer
+                format: int32
+            required_trait:
+                description: Trait such as Lawful needed to use item
+                type: array
+                items:
+                    type: string
+            umd:
+                type: string
+                description: Use Magical Device DC
+            handedness:
+                description: Allowed slots such as one handed (main or off hand) / two handed
+                type: array
+                items:
+                    type: string
+            attack_mod:
+                description: Attribute(s) that modify the attack roll
+                type: array
+                items:
+                    type: string
+            damage_mod:
+                description: Attribute(s) that modify the damage roll
+                type: array
+                items:
+                    type: string
+            binding:
+                description: "Character or Account binding, if any"
+                type: string
+            durability:
+                description: "tensile strength, how hard it is to damage"
+                type: integer
+                format: int32
+            material:
+                description: material made from
+                type: string
+                enum:
+                    - Adamantine
+                    - Blueshine
+                    - Bone
+                    - Byeshk
+                    - Cloth
+                    - Cold_Iron
+                    - Crystal
+                    - Darkleaf
+                    - Darkwood
+                    - Densewood
+                    - Dwarven_Iron
+                    - Feyleather
+                    - Flametouched_Iron
+                    - Flesh
+                    - Force
+                    - Gem
+                    - Glass
+                    - Ice
+                    - Leather
+                    - Light
+                    - Magesteel
+                    - Mithral
+                    - Planeforged_Steel
+                    - Rust
+                    - Silver
+                    - Spiritcraft_Leather
+                    - Spiritforged_Iron
+                    - Steel
+                    - Stone
+                    - Wood
+            hardness:
+                description: physical toughness of the item
+                type: integer
+                format: int32
+            base_value:
+                description: Monetary value of item
+                type: string
+            weight:
+                type: integer
+                format: int32
+                description: weight in pounds
+            location:
+                description: Text describing the location of the item
+                type: string
+            enchantments:
+                description: Collection of Enchantments on the item.
+                type: array
+                items:
+                    type: string
+            enchantments_choice:
+                description: Used to support One of the following
+                type: array
+                items:
+                    type: string
+            upgradeable:
+                description: text describing if an item can be upgraded to something else and optionally details on steps to obtain it.
+                type: string
+            description_text:
+                description: descriptive text of the item
+                type: string
+    Damage:
+        properties:
+            dice_modifier:
+                type: integer
+                format: int32
+                description: Multiplier for the dice
+            dice:
+                type: string
+                description: Dice expression in the form of nDm
+            extra:
+                type: integer
+                format: int32
+                description: Additional Damage after the dice
+            damage_type:
+                $ref: "#/definitions/Damage_Type"
+    Damage_Type:
+        properties:
+            value:
+                type: string
+                enum:
+                    - Bludgeon
+                    - Pierce
+                    - Slash
+                    - Magic
+    Critical_Threat_Range:
+        properties:
+            min:
+                type: integer
+                format: int32
+            max:
+                type: integer
+                format: int32
+            multiplier:
+                type: integer
+                format: int32

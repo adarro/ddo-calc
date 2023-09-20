@@ -16,1935 +16,1797 @@
  * limitations under the License.
  */
 {
- "item": [
-  {
-   "weapon": [
-    {
-     "name": "Spectral Throwing Dagger (level 4)",
-     "damangeAndType": "[1d4] + 2 Pierce, Magic",
-     "minLevel": "4",
-     "binding": "Bound to Account on Acquire",
-     "quest": "The Night Revels",
-     "criticalProfile": "",
-     "enchantments": "+2 Enhancement Bonus",
-     "enchantments_url": "https://ddowiki.com/page/Enhancement_bonus",
-     "errata": "",
-     "weaponDetail": [
-      {
-       "proficiency": "Simple Weapon Proficiency",
-       "name": "Spectral Throwing Dagger (level 4)",
-       "damangeAndType": "[1d4] + 2 Pierce, Magic",
-       "criticalThreatRange": "19-20 / x2",
-       "weaponType": [
+    "item": [
         {
-         "weaponCategory": "Throwing Dagger",
-         "damageCategory": "/ Thrown weapons"
+            "weapon": [
+                {
+                    "name": "Spectral Throwing Dagger (level 4)",
+                    "damangeAndType": "[1d4] + 2 Pierce, Magic",
+                    "minLevel": "4",
+                    "binding": "Bound to Account on Acquire",
+                    "quest": "The Night Revels",
+                    "criticalProfile": "",
+                    "enchantments": "+2 Enhancement Bonus",
+                    "enchantments_url": "https://ddowiki.com/page/Enhancement_bonus",
+                    "errata": "",
+                    "weaponDetail": [
+                        {
+                            "proficiency": "Simple Weapon Proficiency",
+                            "name": "Spectral Throwing Dagger (level 4)",
+                            "damangeAndType": "[1d4] + 2 Pierce, Magic",
+                            "criticalThreatRange": "19-20 / x2",
+                            "weaponType": [
+                                {
+                                    "weaponCategory": "Throwing Dagger",
+                                    "damageCategory": "/ Thrown weapons"
+                                }
+                            ],
+                            "absRaceRequired": "None",
+                            "minLevel": "4",
+                            "requiredTrait": "None",
+                            "umd": "No UMD needed",
+                            "handedness": "",
+                            "attackMod": "DEX",
+                            "damageMod": "STR",
+                            "binding": "Bound to Account on Acquire",
+                            "binding_url": "https://ddowiki.com/page/Bind",
+                            "durability": "60",
+                            "material": "Force",
+                            "material_url": "https://ddowiki.com/page/Force_(material)",
+                            "hardness": "20",
+                            "baseValue": "1,600pp 2gp",
+                            "weight": "1.00 lbs",
+                            "upgradable": "The Night Revels to Spectral Throwing Dagger (level 8)",
+                            "description": "The residual power left behind as thousands of Spectral Dragon Scales crumbled to dust formed these ethereal blades.",
+                            "enchantments": [
+                                {
+                                    "enchantment": [
+                                        {
+                                            "name": "+2 Enhancement Bonus",
+                                            "name_url": "https://ddowiki.com/page/Enhancement_bonus",
+                                            "fullText": "+2 Enhancement Bonus"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "enchantment": [
+                                        {
+                                            "name": "Returning",
+                                            "name_url": "https://ddowiki.com/page/Returning",
+                                            "fullText": "Returning"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "enchantment": [
+                                        {
+                                            "name": "Ghostbane 2",
+                                            "name_url": "https://ddowiki.com/page/Ghostbane",
+                                            "fullText": "Ghostbane 2"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "enchantment": [
+                                        {
+                                            "name": "Evil Outsider Bane 2",
+                                            "name_url": "https://ddowiki.com/page/Bane_(enchantment)",
+                                            "fullText": "Evil Outsider Bane 2"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "enchantment": [
+                                        {
+                                            "name": "Crushing 4",
+                                            "name_url": "https://ddowiki.com/page/Crushing",
+                                            "fullText": "Crushing 4"
+                                        }
+                                    ]
+                                }
+                            ],
+                            "locationInformation": [
+                                {
+                                    "location": "Joe Candymaker",
+                                    "location_url": "https://ddowiki.com/page/Joe_Candymaker",
+                                    "locationExtra": ", Turn in various ingredients at"
+                                }
+                            ]
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "weapon": [
+                {
+                    "name": "Noxious Fang*",
+                    "damangeAndType": "1d4 + 2 Pierce, Magic",
+                    "minLevel": "4",
+                    "binding": "Bound to Account on Acquire",
+                    "quest": "The Snitch, Mandible's chest (optional named spider)",
+                    "criticalProfile": "",
+                    "enchantments": "+2 Enhancement Bonus",
+                    "enchantments_url": "https://ddowiki.com/page/Enhancement_bonus",
+                    "itemId": "Noxious Fang",
+                    "url": "https://ddowiki.com/page/Item:Noxious_Fang",
+                    "errata": ""
+                }
+            ]
+        },
+        {
+            "weapon": [
+                {
+                    "name": "Lynnabel's Bug Killer (level 5)*",
+                    "damangeAndType": "[2d4] +2 Pierce, Magic",
+                    "minLevel": "5",
+                    "binding": "Bound to Account on Acquire",
+                    "quest": "Anniversary Party",
+                    "criticalProfile": "",
+                    "enchantments": "+2 Enhancement Bonus",
+                    "enchantments_url": "https://ddowiki.com/page/Enhancement_bonus",
+                    "itemId": "Lynnabel's Bug Killer (level 5)",
+                    "url": "https://ddowiki.com/page/Item:Lynnabel%27s_Bug_Killer_(level_5)",
+                    "errata": ""
+                }
+            ]
+        },
+        {
+            "weapon": [
+                {
+                    "name": "Chill Shard",
+                    "damangeAndType": "[1d4] + 3 Pierce, Magic",
+                    "minLevel": "6",
+                    "binding": "Bound to Character on Equip",
+                    "quest": "Caverns of Korromar, Akuul's chest",
+                    "criticalProfile": "",
+                    "enchantments": "+3 Enhancement Bonus",
+                    "enchantments_url": "https://ddowiki.com/page/Enhancement_bonus",
+                    "errata": "",
+                    "weaponDetail": [
+                        {
+                            "proficiency": "Simple Weapon Proficiency",
+                            "name": "Chill Shard",
+                            "damangeAndType": "[1d4] + 3 Pierce, Magic",
+                            "criticalThreatRange": "19-20 / x2",
+                            "weaponType": [
+                                {
+                                    "weaponCategory": "Throwing Dagger",
+                                    "damageCategory": "/ Thrown weapons"
+                                }
+                            ],
+                            "absRaceRequired": "None",
+                            "minLevel": "6",
+                            "requiredTrait": "None",
+                            "umd": "No UMD needed",
+                            "handedness": "",
+                            "attackMod": "DEX",
+                            "damageMod": "STR",
+                            "binding": "Bound to Character on Equip",
+                            "binding_url": "https://ddowiki.com/page/Bind",
+                            "durability": "80",
+                            "material": "Steel",
+                            "material_url": "https://ddowiki.com/page/Steel",
+                            "hardness": "14",
+                            "baseValue": "2,400pp 2gp",
+                            "weight": "1 lbs",
+                            "upgradable": "Not upgradeable",
+                            "description": "A short simple weapon with a pointed blade balanced for throwing",
+                            "enchantments": [
+                                {
+                                    "enchantment": [
+                                        {
+                                            "name": "+3 Enhancement Bonus",
+                                            "name_url": "https://ddowiki.com/page/Enhancement_bonus",
+                                            "fullText": "+3 Enhancement Bonus"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "enchantment": [
+                                        {
+                                            "name": "Frost",
+                                            "name_url": "https://ddowiki.com/page/Elemental_(weapon)#Frost",
+                                            "fullText": "Frost"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "enchantment": [
+                                        {
+                                            "name": "Returning",
+                                            "name_url": "https://ddowiki.com/page/Returning",
+                                            "fullText": "Returning"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "oneOfEnchantment": [
+                                        {},
+                                        {},
+                                        {},
+                                        {},
+                                        {},
+                                        {},
+                                        {},
+                                        {},
+                                        {},
+                                        {},
+                                        {},
+                                        {},
+                                        {},
+                                        {},
+                                        {},
+                                        {}
+                                    ],
+                                    "enchantment": [
+                                        {
+                                            "fullText": "Empty Red Augment Slot"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "enchantment": [
+                                        {
+                                            "name": "Mythic Weapon Boost",
+                                            "name_url": "https://ddowiki.com/page/Mythic_Boost",
+                                            "fullText": "Mythic Weapon Boost +2 or +4"
+                                        }
+                                    ]
+                                }
+                            ],
+                            "locationInformation": [
+                                {
+                                    "location": "Akuul",
+                                    "location_url": "https://ddowiki.com/page/Akuul",
+                                    "locationExtra": ","
+                                }
+                            ]
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "weapon": [
+                {
+                    "name": "Spectral Throwing Dagger (level 8)",
+                    "damangeAndType": "1.50[1d4] + 3 Pierce, Magic",
+                    "minLevel": "8",
+                    "binding": "Bound to Account on Acquire",
+                    "quest": "The Night Revels",
+                    "criticalProfile": "",
+                    "enchantments": "+3 Enhancement Bonus",
+                    "enchantments_url": "https://ddowiki.com/page/Enhancement_bonus",
+                    "errata": "",
+                    "weaponDetail": [
+                        {
+                            "proficiency": "Simple Weapon Proficiency",
+                            "name": "Spectral Throwing Dagger (level 8)",
+                            "damangeAndType": "1.50[1d4] + 3 Pierce, Magic",
+                            "criticalThreatRange": "19-20 / x2",
+                            "weaponType": [
+                                {
+                                    "weaponCategory": "Throwing Dagger",
+                                    "damageCategory": "/ Thrown weapons"
+                                }
+                            ],
+                            "absRaceRequired": "None",
+                            "minLevel": "8",
+                            "requiredTrait": "None",
+                            "umd": "No UMD needed",
+                            "handedness": "",
+                            "attackMod": "DEX",
+                            "damageMod": "STR",
+                            "binding": "Bound to Account on Acquire",
+                            "binding_url": "https://ddowiki.com/page/Bind",
+                            "durability": "90",
+                            "material": "Force",
+                            "material_url": "https://ddowiki.com/page/Force_(material)",
+                            "hardness": "23",
+                            "baseValue": "3,200pp 2gp",
+                            "weight": "1.00 lbs",
+                            "upgradable": "The Night Revels to Spectral Throwing Dagger (level 12)",
+                            "description": "The residual power left behind as thousands of Spectral Dragon Scales crumbled to dust formed these ethereal blades.",
+                            "enchantments": [
+                                {
+                                    "enchantment": [
+                                        {
+                                            "name": "+3 Enhancement Bonus",
+                                            "name_url": "https://ddowiki.com/page/Enhancement_bonus",
+                                            "fullText": "+3 Enhancement Bonus"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "enchantment": [
+                                        {
+                                            "name": "Returning",
+                                            "name_url": "https://ddowiki.com/page/Returning",
+                                            "fullText": "Returning"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "enchantment": [
+                                        {
+                                            "name": "Ghostbane 2",
+                                            "name_url": "https://ddowiki.com/page/Ghostbane",
+                                            "fullText": "Ghostbane 2"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "enchantment": [
+                                        {
+                                            "name": "Evil Outsider Bane 2",
+                                            "name_url": "https://ddowiki.com/page/Bane_(enchantment)",
+                                            "fullText": "Evil Outsider Bane 2"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "enchantment": [
+                                        {
+                                            "name": "Vorpal",
+                                            "name_url": "https://ddowiki.com/page/Vorpal#Vorpal",
+                                            "fullText": "Vorpal"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "enchantment": [
+                                        {
+                                            "name": "Crushing 6",
+                                            "name_url": "https://ddowiki.com/page/Crushing",
+                                            "fullText": "Crushing 6"
+                                        }
+                                    ]
+                                }
+                            ],
+                            "locationInformation": [
+                                {
+                                    "location": "Joe Candymaker",
+                                    "location_url": "https://ddowiki.com/page/Joe_Candymaker",
+                                    "locationExtra": ", Turn in various ingredients at"
+                                }
+                            ]
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "weapon": [
+                {
+                    "name": "Lynnabel's Bug Killer (level 10)*",
+                    "damangeAndType": "1.50[2d4] +4 Pierce, Magic",
+                    "minLevel": "10",
+                    "binding": "Bound to Account on Acquire",
+                    "quest": "Anniversary Party",
+                    "criticalProfile": "",
+                    "enchantments": "+4 Enhancement Bonus",
+                    "enchantments_url": "https://ddowiki.com/page/Enhancement_bonus",
+                    "itemId": "Lynnabel's Bug Killer (level 10)",
+                    "url": "https://ddowiki.com/page/Item:Lynnabel%27s_Bug_Killer_(level_10)",
+                    "errata": ""
+                }
+            ]
+        },
+        {
+            "weapon": [
+                {
+                    "name": "Spectral Throwing Dagger (level 12)",
+                    "damangeAndType": "2[1d4] + 4 Pierce, Magic",
+                    "minLevel": "12",
+                    "binding": "Bound to Account on Acquire",
+                    "quest": "The Night Revels",
+                    "criticalProfile": "",
+                    "enchantments": "+4 Enhancement Bonus",
+                    "enchantments_url": "https://ddowiki.com/page/Enhancement_bonus",
+                    "errata": "",
+                    "weaponDetail": [
+                        {
+                            "proficiency": "Simple Weapon Proficiency",
+                            "name": "Spectral Throwing Dagger (level 12)",
+                            "damangeAndType": "2[1d4] + 4 Pierce, Magic",
+                            "criticalThreatRange": "19-20 / x2",
+                            "weaponType": [
+                                {
+                                    "weaponCategory": "Throwing Dagger",
+                                    "damageCategory": "/ Thrown weapons"
+                                }
+                            ],
+                            "absRaceRequired": "None",
+                            "minLevel": "12",
+                            "requiredTrait": "None",
+                            "umd": "No UMD needed",
+                            "handedness": "",
+                            "attackMod": "DEX",
+                            "damageMod": "STR",
+                            "binding": "Bound to Account on Acquire",
+                            "binding_url": "https://ddowiki.com/page/Bind",
+                            "durability": "110",
+                            "material": "Force",
+                            "material_url": "https://ddowiki.com/page/Force_(material)",
+                            "hardness": "25",
+                            "baseValue": "4,800pp 2gp",
+                            "weight": "1.00 lbs",
+                            "upgradable": "The Night Revels to Spectral Throwing Dagger (level 16)",
+                            "description": "The residual power left behind as thousands of Spectral Dragon Scales crumbled to dust formed these ethereal blades.",
+                            "enchantments": [
+                                {
+                                    "enchantment": [
+                                        {
+                                            "name": "+4 Enhancement Bonus",
+                                            "name_url": "https://ddowiki.com/page/Enhancement_bonus",
+                                            "fullText": "+4 Enhancement Bonus"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "enchantment": [
+                                        {
+                                            "name": "Returning",
+                                            "name_url": "https://ddowiki.com/page/Returning",
+                                            "fullText": "Returning"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "enchantment": [
+                                        {
+                                            "name": "Ghostbane 3",
+                                            "name_url": "https://ddowiki.com/page/Ghostbane",
+                                            "fullText": "Ghostbane 3"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "enchantment": [
+                                        {
+                                            "name": "Evil Outsider Bane 3",
+                                            "name_url": "https://ddowiki.com/page/Bane_(enchantment)",
+                                            "fullText": "Evil Outsider Bane 3"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "enchantment": [
+                                        {
+                                            "name": "Vorpal",
+                                            "name_url": "https://ddowiki.com/page/Vorpal#Vorpal",
+                                            "fullText": "Vorpal"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "enchantment": [
+                                        {
+                                            "name": "Crushing 7",
+                                            "name_url": "https://ddowiki.com/page/Crushing",
+                                            "fullText": "Crushing 7"
+                                        }
+                                    ]
+                                }
+                            ],
+                            "locationInformation": [
+                                {
+                                    "location": "Joe Candymaker",
+                                    "location_url": "https://ddowiki.com/page/Joe_Candymaker",
+                                    "locationExtra": ", Turn in various ingredients at"
+                                }
+                            ]
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "weapon": [
+                {
+                    "name": "Alchemical Throwing Dagger*",
+                    "damangeAndType": "2 [1d4] + 5 Pierce, Magic",
+                    "minLevel": "12",
+                    "binding": "Unbound",
+                    "quest": "The Master Artificer, Either End chest",
+                    "criticalProfile": "",
+                    "enchantments": "+5 Enhancement Bonus",
+                    "enchantments_url": "https://ddowiki.com/page/Enhancement_bonus",
+                    "itemId": "Alchemical Throwing Dagger",
+                    "url": "https://ddowiki.com/page/Item:Alchemical_Throwing_Dagger",
+                    "errata": ""
+                }
+            ]
+        },
+        {
+            "weapon": [
+                {
+                    "name": "Green Steel Throwing Dagger",
+                    "damangeAndType": "1.50 [1d4] +5 Pierce, Evil, Magic",
+                    "minLevel": "12",
+                    "binding": "Bound to Character on Equip",
+                    "quest": "Altar of Fecundity, Manufactured Ingredient Recipes",
+                    "criticalProfile": "",
+                    "enchantments": "+5 Enhancement Bonus",
+                    "enchantments_url": "https://ddowiki.com/page/Enhancement_bonus",
+                    "errata": "",
+                    "weaponDetail": [
+                        {
+                            "proficiency": "Simple Weapon Proficiency",
+                            "name": "Green Steel Throwing Dagger",
+                            "damangeAndType": "1.50 [1d4] +5 Pierce, Evil, Magic",
+                            "criticalThreatRange": "19-20 / x2",
+                            "weaponType": [
+                                {
+                                    "weaponCategory": "Throwing Dagger",
+                                    "damageCategory": "/ Thrown weapons"
+                                }
+                            ],
+                            "absRaceRequired": "None",
+                            "minLevel": "12",
+                            "requiredTrait": "None",
+                            "umd": "No UMD needed",
+                            "handedness": "",
+                            "attackMod": "DEX",
+                            "damageMod": "STR",
+                            "binding": "Bound to Character on Equip",
+                            "binding_url": "https://ddowiki.com/page/Bind",
+                            "durability": "90",
+                            "material": "Steel",
+                            "material_url": "https://ddowiki.com/page/Steel",
+                            "hardness": "15",
+                            "baseValue": "5,400pp 2gp",
+                            "weight": "1 lbs",
+                            "upgradable": "Green Steel",
+                            "tips": [
+                                {
+                                    "tip": "Ore of Travail\nLocust Husk\nChipmunk Funk\nGlistening Pebbles\nGreen Briar Twigs\nEberron Energy Cell"
+                                },
+                                {
+                                    "tip": "Blue Taper\nGlistening Pebbles\nGreen Briar Twigs\nBitterscrub Fungus\nChipmunk Funk\nEberron Energy Cell"
+                                },
+                                {
+                                    "tip": "Wondrous Scarab\nChipmunk Funk\nGlistening Pebbles OR Green Briar Twigs\nBitterscrub Fungus\nLammanian Lily Petals\nEberron Energy Cell"
+                                },
+                                {
+                                    "tip": "Shavarath Signet Stone\nShavarath Stone of Might\nShavarath Stone of Battle\nShavarath Stone of Strategy\nShavarath Stone of Foresight\nShavarath Stone of Victory"
+                                },
+                                {
+                                    "tip": "Medium Splintered Horn"
+                                }
+                            ],
+                            "description": "A short simple weapon with a pointed blade balanced for throwing.",
+                            "enchantments": [
+                                {
+                                    "enchantment": [
+                                        {
+                                            "name": "+5 Enhancement Bonus",
+                                            "name_url": "https://ddowiki.com/page/Enhancement_bonus",
+                                            "fullText": "+5 Enhancement Bonus"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "enchantment": [
+                                        {
+                                            "name": "Green Steel",
+                                            "name_url": "https://ddowiki.com/page/Green_Steel",
+                                            "fullText": "Green Steel"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "enchantment": [
+                                        {
+                                            "name": "Returning",
+                                            "name_url": "https://ddowiki.com/page/Returning",
+                                            "fullText": "Returning"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "enchantment": [
+                                        {
+                                            "name": "Mythic Weapon Boost",
+                                            "name_url": "https://ddowiki.com/page/Mythic_Boost",
+                                            "fullText": "Mythic Weapon Boost +2 or +4"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "oneOfEnchantment": [{}, {}, {}, {}, {}],
+                                    "enchantment": [
+                                        {
+                                            "name": "Ore of Travail",
+                                            "name_url": "https://ddowiki.com/page/Ore_of_Travail",
+                                            "fullText": "Locust Husk\nChipmunk Funk\nGlistening Pebbles\nGreen Briar Twigs\nEberron Energy Cell"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "oneOfEnchantment": [{}, {}, {}, {}, {}],
+                                    "enchantment": [
+                                        {
+                                            "name": "Blue Taper",
+                                            "name_url": "https://ddowiki.com/page/Blue_Taper",
+                                            "fullText": "Glistening Pebbles\nGreen Briar Twigs\nBitterscrub Fungus\nChipmunk Funk\nEberron Energy Cell"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "oneOfEnchantment": [{}, {}, {}, {}, {}],
+                                    "enchantment": [
+                                        {
+                                            "name": "Wondrous Scarab",
+                                            "name_url": "https://ddowiki.com/page/Wondrous_Scarab",
+                                            "fullText": "Chipmunk Funk\nGlistening Pebbles OR Green Briar Twigs\nBitterscrub Fungus\nLammanian Lily Petals\nEberron Energy Cell"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "oneOfEnchantment": [{}, {}, {}, {}, {}],
+                                    "enchantment": [{}]
+                                },
+                                {
+                                    "enchantment": [
+                                        {
+                                            "name": "Medium Splintered Horn",
+                                            "name_url": "https://ddowiki.com/page/Medium_Splintered_Horn",
+                                            "fullText": "Medium Splintered Horn"
+                                        }
+                                    ]
+                                }
+                            ],
+                            "locationInformation": [
+                                {
+                                    "location": "Manufactured Ingredient Recipes",
+                                    "location_url": "https://ddowiki.com/page/Altar_of_Fecundity_-_Manufactured_Ingredient_Recipes",
+                                    "locationExtra": ","
+                                }
+                            ]
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "weapon": [
+                {
+                    "name": "Return to Sender",
+                    "damangeAndType": "1.50 [1d4] +5 Pierce, Magic",
+                    "minLevel": "14",
+                    "binding": "Bound to Account on Acquire",
+                    "quest": "Tavern Brawl, End chest",
+                    "criticalProfile": "",
+                    "enchantments": "Returning",
+                    "enchantments_url": "https://ddowiki.com/page/Returning",
+                    "errata": "",
+                    "weaponDetail": [
+                        {
+                            "proficiency": "Simple Weapon Proficiency",
+                            "name": "Return to Sender",
+                            "damangeAndType": "1.50 [1d4] +5 Pierce, Magic",
+                            "criticalThreatRange": "19-20 / x2",
+                            "weaponType": [
+                                {
+                                    "weaponCategory": "Throwing Dagger",
+                                    "damageCategory": "/ Thrown weapons"
+                                }
+                            ],
+                            "absRaceRequired": "None",
+                            "minLevel": "14",
+                            "requiredTrait": "None",
+                            "umd": "No UMD needed",
+                            "handedness": "",
+                            "attackMod": "DEX",
+                            "damageMod": "STR",
+                            "binding": "Bound to Account on Acquire",
+                            "binding_url": "https://ddowiki.com/page/Bind",
+                            "durability": "120",
+                            "material": "Steel",
+                            "material_url": "https://ddowiki.com/page/Steel",
+                            "hardness": "18",
+                            "baseValue": "5,620pp",
+                            "weight": "1 lbs",
+                            "upgradable": "Not upgradeable",
+                            "tips": [
+                                {
+                                    "tip": "Bug:"
+                                },
+                                {
+                                    "tip": "Return to Sender"
+                                },
+                                {
+                                    "tip": "Improved Precise Shot"
+                                },
+                                {
+                                    "tip": "DDO Forums"
+                                }
+                            ],
+                            "description": "Magically Murderous Missive.",
+                            "enchantments": [
+                                {
+                                    "enchantment": [
+                                        {
+                                            "name": "Returning",
+                                            "name_url": "https://ddowiki.com/page/Returning",
+                                            "fullText": "Returning"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "enchantment": [
+                                        {
+                                            "name": "+5 Enhancement Bonus",
+                                            "name_url": "https://ddowiki.com/page/Enhancement_bonus",
+                                            "fullText": "+5 Enhancement Bonus"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "enchantment": [
+                                        {
+                                            "name": "Solar II",
+                                            "name_url": "https://ddowiki.com/page/Elemental_(weapon)#Solar",
+                                            "fullText": "Solar II"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "enchantment": [
+                                        {
+                                            "name": "Phlebotomizing",
+                                            "name_url": "https://ddowiki.com/page/Bleed#Phlebotomizing",
+                                            "fullText": "Phlebotomizing"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "enchantment": [
+                                        {
+                                            "name": "Paralyzing",
+                                            "name_url": "https://ddowiki.com/page/Paralyzing",
+                                            "fullText": "Paralyzing"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "oneOfEnchantment": [
+                                        {},
+                                        {},
+                                        {},
+                                        {},
+                                        {},
+                                        {},
+                                        {},
+                                        {},
+                                        {},
+                                        {},
+                                        {},
+                                        {},
+                                        {},
+                                        {},
+                                        {},
+                                        {},
+                                        {},
+                                        {},
+                                        {},
+                                        {},
+                                        {},
+                                        {},
+                                        {},
+                                        {},
+                                        {}
+                                    ],
+                                    "enchantment": [
+                                        {
+                                            "fullText": "Empty Orange Augment Slot"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "enchantment": [
+                                        {
+                                            "name": "Mythic Weapon Boost",
+                                            "name_url": "https://ddowiki.com/page/Mythic_Boost",
+                                            "fullText": "Mythic Weapon Boost +2 or +4"
+                                        }
+                                    ]
+                                }
+                            ],
+                            "locationInformation": [
+                                {
+                                    "location": "Tavern Brawl",
+                                    "location_url": "https://ddowiki.com/page/Tavern_Brawl",
+                                    "locationExtra": ", End chest"
+                                }
+                            ]
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "weapon": [
+                {
+                    "name": "Lynnabel's Bug Killer (level 15)*",
+                    "damangeAndType": "1.50[2d4] +5 Pierce, Magic",
+                    "minLevel": "15",
+                    "binding": "Bound to Account on Acquire",
+                    "quest": "Anniversary Party",
+                    "criticalProfile": "",
+                    "enchantments": "+5 Enhancement Bonus",
+                    "enchantments_url": "https://ddowiki.com/page/Enhancement_bonus",
+                    "itemId": "Lynnabel's Bug Killer (level 15)",
+                    "url": "https://ddowiki.com/page/Item:Lynnabel%27s_Bug_Killer_(level_15)",
+                    "errata": ""
+                }
+            ]
+        },
+        {
+            "weapon": [
+                {
+                    "name": "Spectral Throwing Dagger (level 16)",
+                    "damangeAndType": "2[1d4] + 5 Pierce, Magic",
+                    "minLevel": "16",
+                    "binding": "Bound to Account on Acquire",
+                    "quest": "The Night Revels",
+                    "criticalProfile": "",
+                    "enchantments": "+5 Enhancement Bonus",
+                    "enchantments_url": "https://ddowiki.com/page/Enhancement_bonus",
+                    "errata": "",
+                    "weaponDetail": [
+                        {
+                            "proficiency": "Simple Weapon Proficiency",
+                            "name": "Spectral Throwing Dagger (level 16)",
+                            "damangeAndType": "2[1d4] + 5 Pierce, Magic",
+                            "criticalThreatRange": "19-20 / x2",
+                            "weaponType": [
+                                {
+                                    "weaponCategory": "Throwing Dagger",
+                                    "damageCategory": "/ Thrown weapons"
+                                }
+                            ],
+                            "absRaceRequired": "None",
+                            "minLevel": "16",
+                            "requiredTrait": "None",
+                            "umd": "No UMD needed",
+                            "handedness": "",
+                            "attackMod": "DEX",
+                            "damageMod": "STR",
+                            "binding": "Bound to Account on Acquire",
+                            "binding_url": "https://ddowiki.com/page/Bind",
+                            "durability": "130",
+                            "material": "Force",
+                            "material_url": "https://ddowiki.com/page/Force_(material)",
+                            "hardness": "27",
+                            "baseValue": "6,400pp 2gp",
+                            "weight": "1.00 lbs",
+                            "upgradable": "The Night Revels to Spectral Throwing Dagger (level 20)",
+                            "description": "The residual power left behind as thousands of Spectral Dragon Scales crumbled to dust formed these ethereal blades.",
+                            "enchantments": [
+                                {
+                                    "enchantment": [
+                                        {
+                                            "name": "+5 Enhancement Bonus",
+                                            "name_url": "https://ddowiki.com/page/Enhancement_bonus",
+                                            "fullText": "+5 Enhancement Bonus"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "enchantment": [
+                                        {
+                                            "name": "Returning",
+                                            "name_url": "https://ddowiki.com/page/Returning",
+                                            "fullText": "Returning"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "enchantment": [
+                                        {
+                                            "name": "Ghostbane 4",
+                                            "name_url": "https://ddowiki.com/page/Ghostbane",
+                                            "fullText": "Ghostbane 4"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "enchantment": [
+                                        {
+                                            "name": "Evil Outsider Bane 4",
+                                            "name_url": "https://ddowiki.com/page/Bane_(enchantment)",
+                                            "fullText": "Evil Outsider Bane 4"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "enchantment": [
+                                        {
+                                            "name": "Vorpal",
+                                            "name_url": "https://ddowiki.com/page/Vorpal#Vorpal",
+                                            "fullText": "Vorpal"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "enchantment": [
+                                        {
+                                            "name": "Crushing 9",
+                                            "name_url": "https://ddowiki.com/page/Crushing",
+                                            "fullText": "Crushing 9"
+                                        }
+                                    ]
+                                }
+                            ],
+                            "locationInformation": [
+                                {
+                                    "location": "Joe Candymaker",
+                                    "location_url": "https://ddowiki.com/page/Joe_Candymaker",
+                                    "locationExtra": ", Turn in various ingredients at"
+                                }
+                            ]
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "weapon": [
+                {
+                    "name": "Lynnabel's Bug Killer (level 20)*",
+                    "damangeAndType": "2[2d4] +6 Pierce, Magic",
+                    "minLevel": "20",
+                    "binding": "Bound to Account on Acquire",
+                    "quest": "Anniversary Party",
+                    "criticalProfile": "",
+                    "enchantments": "+6 Enhancement Bonus",
+                    "enchantments_url": "https://ddowiki.com/page/Enhancement_bonus",
+                    "itemId": "Lynnabel's Bug Killer (level 20)",
+                    "url": "https://ddowiki.com/page/Item:Lynnabel%27s_Bug_Killer_(level_20)",
+                    "errata": ""
+                }
+            ]
+        },
+        {
+            "weapon": [
+                {
+                    "name": "Spectral Throwing Dagger (level 20)",
+                    "damangeAndType": "2.50[1d4] + 6 Pierce, Magic",
+                    "minLevel": "20",
+                    "binding": "Bound to Account on Acquire",
+                    "quest": "The Night Revels",
+                    "criticalProfile": "",
+                    "enchantments": "+6 Enhancement Bonus",
+                    "enchantments_url": "https://ddowiki.com/page/Enhancement_bonus",
+                    "errata": "",
+                    "weaponDetail": [
+                        {
+                            "proficiency": "Simple Weapon Proficiency",
+                            "name": "Spectral Throwing Dagger (level 20)",
+                            "damangeAndType": "2.50[1d4] + 6 Pierce, Magic",
+                            "criticalThreatRange": "19-20 / x2",
+                            "weaponType": [
+                                {
+                                    "weaponCategory": "Throwing Dagger",
+                                    "damageCategory": "/ Thrown weapons"
+                                }
+                            ],
+                            "absRaceRequired": "None",
+                            "minLevel": "20",
+                            "requiredTrait": "None",
+                            "umd": "No UMD needed",
+                            "handedness": "",
+                            "attackMod": "DEX",
+                            "damageMod": "STR",
+                            "binding": "Bound to Account on Acquire",
+                            "binding_url": "https://ddowiki.com/page/Bind",
+                            "durability": "150",
+                            "material": "Force",
+                            "material_url": "https://ddowiki.com/page/Force_(material)",
+                            "hardness": "29",
+                            "baseValue": "8,000pp 2gp",
+                            "weight": "1.00 lbs",
+                            "upgradable": "The Night Revels to Spectral Throwing Dagger (level 24)",
+                            "description": "The residual power left behind as thousands of Spectral Dragon Scales crumbled to dust formed these ethereal blades.",
+                            "enchantments": [
+                                {
+                                    "enchantment": [
+                                        {
+                                            "name": "+6 Enhancement Bonus",
+                                            "name_url": "https://ddowiki.com/page/Enhancement_bonus",
+                                            "fullText": "+6 Enhancement Bonus"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "enchantment": [
+                                        {
+                                            "name": "Returning",
+                                            "name_url": "https://ddowiki.com/page/Returning",
+                                            "fullText": "Returning"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "enchantment": [
+                                        {
+                                            "name": "Ghostbane 4",
+                                            "name_url": "https://ddowiki.com/page/Ghostbane",
+                                            "fullText": "Ghostbane 4"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "enchantment": [
+                                        {
+                                            "name": "Evil Outsider Bane 4",
+                                            "name_url": "https://ddowiki.com/page/Bane_(enchantment)",
+                                            "fullText": "Evil Outsider Bane 4"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "enchantment": [
+                                        {
+                                            "name": "Improved Vorpal",
+                                            "name_url": "https://ddowiki.com/page/Vorpal#Improved_Vorpal",
+                                            "fullText": "Improved Vorpal"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "enchantment": [
+                                        {
+                                            "name": "Crushing 10",
+                                            "name_url": "https://ddowiki.com/page/Crushing",
+                                            "fullText": "Crushing 10"
+                                        }
+                                    ]
+                                }
+                            ],
+                            "locationInformation": [
+                                {
+                                    "location": "Joe Candymaker",
+                                    "location_url": "https://ddowiki.com/page/Joe_Candymaker",
+                                    "locationExtra": ", Turn in various ingredients at"
+                                }
+                            ]
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "weapon": [
+                {
+                    "name": "Epic Noxious Fang*",
+                    "damangeAndType": "2 [1d4] + 9 Pierce, Magic",
+                    "minLevel": "20",
+                    "binding": "Bound to Character on Acquire",
+                    "criticalProfile": "",
+                    "enchantments": "+9 Enhancement Bonus",
+                    "enchantments_url": "https://ddowiki.com/page/Enhancement_bonus",
+                    "itemId": "Epic Noxious Fang",
+                    "url": "https://ddowiki.com/page/Item:Epic_Noxious_Fang",
+                    "errata": ""
+                }
+            ]
+        },
+        {
+            "weapon": [
+                {
+                    "name": "Thunder-Forged Alloy Throwing Dagger",
+                    "damangeAndType": "3.50 [1d4] + 9 Pierce, Silver, Adamantine, Mithral, Cold Iron, Magic, Byeshk",
+                    "minLevel": "22",
+                    "binding": "Unbound",
+                    "quest": "Magma Forge, Crafted from various ingredients",
+                    "criticalProfile": "",
+                    "enchantments": "+9 Enhancement Bonus",
+                    "enchantments_url": "https://ddowiki.com/page/Enhancement_bonus",
+                    "errata": "",
+                    "weaponDetail": [
+                        {
+                            "proficiency": "Simple Weapon Proficiency",
+                            "name": "Thunder-Forged Alloy Throwing Dagger",
+                            "damangeAndType": "3.50 [1d4] + 9 Pierce, Silver, Adamantine, Mithral, Cold Iron, Magic, Byeshk",
+                            "criticalThreatRange": "19-20 / x2",
+                            "weaponType": [
+                                {
+                                    "weaponCategory": "Throwing Dagger",
+                                    "damageCategory": "/ Thrown weapons"
+                                }
+                            ],
+                            "absRaceRequired": "None",
+                            "minLevel": "22",
+                            "requiredTrait": "None",
+                            "umd": "No UMD needed",
+                            "handedness": "",
+                            "attackMod": "DEX",
+                            "damageMod": "STR",
+                            "binding": "Unbound",
+                            "binding_url": "https://ddowiki.com/page/Bind",
+                            "durability": "170",
+                            "material": "Adamantine",
+                            "material_url": "https://ddowiki.com/page/Adamantine",
+                            "hardness": "31",
+                            "baseValue": "8,800pp 2gp",
+                            "weight": "1.00 lbs",
+                            "upgradable": "Thunder-Forged",
+                            "tips": [
+                                {
+                                    "tip": "20 Thunder-Forged Dwarven Ingots"
+                                },
+                                {
+                                    "tip": "15 Commendations of Valor"
+                                }
+                            ],
+                            "description": "A throwing dagger forged from metals long in proximity to dragons under Thunderholme.",
+                            "enchantments": [
+                                {
+                                    "enchantment": [
+                                        {
+                                            "name": "+9 Enhancement Bonus",
+                                            "name_url": "https://ddowiki.com/page/Enhancement_bonus",
+                                            "fullText": "+9 Enhancement Bonus"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "oneOfEnchantment": [
+                                        {},
+                                        {},
+                                        {},
+                                        {},
+                                        {},
+                                        {},
+                                        {},
+                                        {},
+                                        {},
+                                        {},
+                                        {},
+                                        {},
+                                        {},
+                                        {},
+                                        {},
+                                        {},
+                                        {},
+                                        {},
+                                        {},
+                                        {},
+                                        {},
+                                        {},
+                                        {},
+                                        {},
+                                        {}
+                                    ],
+                                    "enchantment": [
+                                        {
+                                            "fullText": "Empty Orange Augment Slot"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "enchantment": [
+                                        {
+                                            "name": "Returning",
+                                            "name_url": "https://ddowiki.com/page/Returning",
+                                            "fullText": "Returning"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "enchantment": [
+                                        {
+                                            "name": "Thunder-Forged (Tier 0)",
+                                            "name_url": "https://ddowiki.com/page/Thunder-Forged",
+                                            "fullText": "Thunder-Forged (Tier 0)"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "enchantment": [
+                                        {
+                                            "name": "Mythic Weapon Boost",
+                                            "name_url": "https://ddowiki.com/page/Mythic_Boost",
+                                            "fullText": "Mythic Weapon Boost +2 or +4"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "enchantment": [
+                                        {
+                                            "fullText": "20 Thunder-Forged Dwarven Ingots",
+                                            "fullText_url": "https://ddowiki.com/page/Item:Thunder-Forged_Dwarven_Ingot"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "enchantment": [
+                                        {
+                                            "fullText": "15 Commendations of Valor",
+                                            "fullText_url": "https://ddowiki.com/page/Item:Commendation_of_Valor"
+                                        }
+                                    ]
+                                }
+                            ],
+                            "locationInformation": [
+                                {
+                                    "location": "Magma Forge",
+                                    "location_url": "https://ddowiki.com/page/Magma_Forge",
+                                    "locationExtra": ", Crafted from various ingredients"
+                                }
+                            ]
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "weapon": [
+                {
+                    "name": "Spectral Throwing Dagger (level 24)",
+                    "damangeAndType": "2.50[1d4] + 7 Pierce, Magic",
+                    "minLevel": "24",
+                    "binding": "Bound to Account on Acquire",
+                    "quest": "The Night Revels",
+                    "criticalProfile": "",
+                    "enchantments": "+7 Enhancement Bonus",
+                    "enchantments_url": "https://ddowiki.com/page/Enhancement_bonus",
+                    "errata": "",
+                    "weaponDetail": [
+                        {
+                            "proficiency": "Simple Weapon Proficiency",
+                            "name": "Spectral Throwing Dagger (level 24)",
+                            "damangeAndType": "2.50[1d4] + 7 Pierce, Magic",
+                            "criticalThreatRange": "19-20 / x2",
+                            "weaponType": [
+                                {
+                                    "weaponCategory": "Throwing Dagger",
+                                    "damageCategory": "/ Thrown weapons"
+                                }
+                            ],
+                            "absRaceRequired": "None",
+                            "minLevel": "24",
+                            "requiredTrait": "None",
+                            "umd": "No UMD needed",
+                            "handedness": "",
+                            "attackMod": "DEX",
+                            "damageMod": "STR",
+                            "binding": "Bound to Account on Acquire",
+                            "binding_url": "https://ddowiki.com/page/Bind",
+                            "durability": "190",
+                            "material": "Force",
+                            "material_url": "https://ddowiki.com/page/Force_(material)",
+                            "hardness": "33",
+                            "baseValue": "9,600pp 2gp",
+                            "weight": "1.00 lbs",
+                            "upgradable": "The Night Revels to Spectral Throwing Dagger (level 28)",
+                            "description": "The residual power left behind as thousands of Spectral Dragon Scales crumbled to dust formed these ethereal blades.",
+                            "enchantments": [
+                                {
+                                    "enchantment": [
+                                        {
+                                            "name": "+7 Enhancement Bonus",
+                                            "name_url": "https://ddowiki.com/page/Enhancement_bonus",
+                                            "fullText": "+7 Enhancement Bonus"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "enchantment": [
+                                        {
+                                            "name": "Returning",
+                                            "name_url": "https://ddowiki.com/page/Returning",
+                                            "fullText": "Returning"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "enchantment": [
+                                        {
+                                            "name": "Ghostbane 5",
+                                            "name_url": "https://ddowiki.com/page/Ghostbane",
+                                            "fullText": "Ghostbane 5"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "enchantment": [
+                                        {
+                                            "name": "Evil Outsider Bane 5",
+                                            "name_url": "https://ddowiki.com/page/Bane_(enchantment)",
+                                            "fullText": "Evil Outsider Bane 5"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "enchantment": [
+                                        {
+                                            "name": "Greater Vorpal",
+                                            "name_url": "https://ddowiki.com/page/Vorpal#Greater_Vorpal",
+                                            "fullText": "Greater Vorpal"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "enchantment": [
+                                        {
+                                            "name": "Crushing 12",
+                                            "name_url": "https://ddowiki.com/page/Crushing",
+                                            "fullText": "Crushing 12"
+                                        }
+                                    ]
+                                }
+                            ],
+                            "locationInformation": [
+                                {
+                                    "location": "Joe Candymaker",
+                                    "location_url": "https://ddowiki.com/page/Joe_Candymaker",
+                                    "locationExtra": ", Turn in various ingredients at"
+                                }
+                            ]
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "weapon": [
+                {
+                    "name": "Lynnabel's Bug Killer (level 25)*",
+                    "damangeAndType": "2.50[2d4] +7 Pierce, Magic",
+                    "minLevel": "25",
+                    "binding": "Bound to Account on Acquire",
+                    "quest": "Anniversary Party",
+                    "criticalProfile": "",
+                    "enchantments": "+7 Enhancement Bonus",
+                    "enchantments_url": "https://ddowiki.com/page/Enhancement_bonus",
+                    "itemId": "Lynnabel's Bug Killer (level 25)",
+                    "url": "https://ddowiki.com/page/Item:Lynnabel%27s_Bug_Killer_(level_25)",
+                    "errata": ""
+                }
+            ]
+        },
+        {
+            "weapon": [
+                {
+                    "name": "Legendary Green Steel Throwing Dagger",
+                    "damangeAndType": "5[1d4] + 14 Pierce, Evil, Magic",
+                    "minLevel": "26",
+                    "binding": "Bound to Character on Acquire",
+                    "quest": "Altar of Fecundity, Manufactured Ingredient Recipes",
+                    "criticalProfile": "",
+                    "enchantments": "+14 Enhancement Bonus",
+                    "enchantments_url": "https://ddowiki.com/page/Enhancement_bonus",
+                    "errata": "",
+                    "weaponDetail": [
+                        {
+                            "proficiency": "Simple Weapon Proficiency",
+                            "name": "Legendary Green Steel Throwing Dagger",
+                            "damangeAndType": "5[1d4] + 14 Pierce, Evil, Magic",
+                            "criticalThreatRange": "19-20 / x2",
+                            "weaponType": [
+                                {
+                                    "weaponCategory": "Throwing Dagger",
+                                    "damageCategory": "/ Thrown weapons"
+                                }
+                            ],
+                            "absRaceRequired": "None",
+                            "minLevel": "26",
+                            "requiredTrait": "None",
+                            "umd": "No UMD needed",
+                            "handedness": "",
+                            "attackMod": "DEX",
+                            "damageMod": "STR",
+                            "binding": "Bound to Character on Acquire",
+                            "binding_url": "https://ddowiki.com/page/Bind",
+                            "durability": "250",
+                            "material": "Steel",
+                            "material_url": "https://ddowiki.com/page/Steel",
+                            "hardness": "31",
+                            "baseValue": "30,051pp 3gp 3sp 6cp",
+                            "weight": "1 lbs",
+                            "upgradable": "Not upgradeable",
+                            "tips": [
+                                {
+                                    "tip": "+14 Legendary Green Steel Throwing Dagger"
+                                },
+                                {
+                                    "tip": "100 Codex Runes"
+                                },
+                                {
+                                    "tip": "100 Commendations of Valor"
+                                },
+                                {
+                                    "tip": "Altar of Fecundity"
+                                }
+                            ],
+                            "description": "A short simple weapon with a pointed blade balanced for throwing.",
+                            "enchantments": [
+                                {
+                                    "enchantment": [
+                                        {
+                                            "name": "+14 Enhancement Bonus",
+                                            "name_url": "https://ddowiki.com/page/Enhancement_bonus",
+                                            "fullText": "+14 Enhancement Bonus"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "enchantment": [
+                                        {
+                                            "name": "Legendary Green Steel",
+                                            "name_url": "https://ddowiki.com/page/Legendary_Green_Steel",
+                                            "fullText": "Legendary Green Steel"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "enchantment": [
+                                        {
+                                            "name": "Returning",
+                                            "name_url": "https://ddowiki.com/page/Returning",
+                                            "fullText": "Returning"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "enchantment": [
+                                        {
+                                            "name": "Mythic Weapon Boost",
+                                            "name_url": "https://ddowiki.com/page/Mythic_Boost",
+                                            "fullText": "Mythic Weapon Boost +2 or +4"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "enchantment": [
+                                        {
+                                            "fullText": "Codex Runes",
+                                            "fullText_url": "https://ddowiki.com/page/Item:Codex_Rune"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "enchantment": [
+                                        {
+                                            "fullText": "100 Commendations of Valor",
+                                            "fullText_url": "https://ddowiki.com/page/Item:Commendation_of_Valor"
+                                        }
+                                    ]
+                                }
+                            ],
+                            "locationInformation": [
+                                {
+                                    "location": "Manufactured Ingredient Recipes",
+                                    "location_url": "https://ddowiki.com/page/Altar_of_Fecundity_-_Manufactured_Ingredient_Recipes",
+                                    "locationExtra": ","
+                                }
+                            ]
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "weapon": [
+                {
+                    "name": "Fate, the Knower of All*",
+                    "damangeAndType": "5.5 [1d4+3] +15 Pierce, Silver, Adamantine, Mithral, Cold Iron, Magic, Byeshk",
+                    "minLevel": "28",
+                    "binding": "Bound to Character on Acquire",
+                    "quest": "Old Baba's Hut, Raid Chest",
+                    "criticalProfile": "",
+                    "enchantments": "+15 Enhancement Bonus",
+                    "enchantments_url": "https://ddowiki.com/page/Enhancement_bonus",
+                    "itemId": "Fate, the Knower of All",
+                    "url": "https://ddowiki.com/page/Item:Fate,_the_Knower_of_All",
+                    "errata": ""
+                }
+            ]
+        },
+        {
+            "weapon": [
+                {
+                    "name": "Spectral Throwing Dagger (level 28)",
+                    "damangeAndType": "5.50[1d4] + 12 Pierce, Magic",
+                    "minLevel": "28",
+                    "binding": "Bound to Account on Acquire",
+                    "quest": "The Night Revels",
+                    "criticalProfile": "",
+                    "enchantments": "+12 Enhancement Bonus",
+                    "enchantments_url": "https://ddowiki.com/page/Enhancement_bonus",
+                    "errata": "",
+                    "weaponDetail": [
+                        {
+                            "proficiency": "Simple Weapon Proficiency",
+                            "name": "Spectral Throwing Dagger (level 28)",
+                            "damangeAndType": "5.50[1d4] + 12 Pierce, Magic",
+                            "criticalThreatRange": "19-20 / x2",
+                            "weaponType": [
+                                {
+                                    "weaponCategory": "Throwing Dagger",
+                                    "damageCategory": "/ Thrown weapons"
+                                }
+                            ],
+                            "absRaceRequired": "None",
+                            "minLevel": "28",
+                            "requiredTrait": "None",
+                            "umd": "No UMD needed",
+                            "handedness": "",
+                            "attackMod": "DEX",
+                            "damageMod": "STR",
+                            "binding": "Bound to Account on Acquire",
+                            "binding_url": "https://ddowiki.com/page/Bind",
+                            "durability": "230",
+                            "material": "Force",
+                            "material_url": "https://ddowiki.com/page/Force_(material)",
+                            "hardness": "37",
+                            "baseValue": "11,200pp 2gp",
+                            "weight": "1.00 lbs",
+                            "upgradable": "Not upgradeable",
+                            "description": "The residual power left behind as thousands of Spectral Dragon Scales crumbled to dust formed these ethereal blades.",
+                            "enchantments": [
+                                {
+                                    "enchantment": [
+                                        {
+                                            "name": "+12 Enhancement Bonus",
+                                            "name_url": "https://ddowiki.com/page/Enhancement_bonus",
+                                            "fullText": "+12 Enhancement Bonus"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "enchantment": [
+                                        {
+                                            "name": "Returning",
+                                            "name_url": "https://ddowiki.com/page/Returning",
+                                            "fullText": "Returning"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "enchantment": [
+                                        {
+                                            "name": "Ghostbane 8",
+                                            "name_url": "https://ddowiki.com/page/Ghostbane",
+                                            "fullText": "Ghostbane 8"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "enchantment": [
+                                        {
+                                            "name": "Evil Outsider Bane 8",
+                                            "name_url": "https://ddowiki.com/page/Bane_(enchantment)",
+                                            "fullText": "Evil Outsider Bane 8"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "enchantment": [
+                                        {
+                                            "name": "Superior Vorpal",
+                                            "name_url": "https://ddowiki.com/page/Vorpal#Superior_Vorpal",
+                                            "fullText": "Superior Vorpal"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "enchantment": [
+                                        {
+                                            "name": "Crushing 19",
+                                            "name_url": "https://ddowiki.com/page/Crushing",
+                                            "fullText": "Crushing 19"
+                                        }
+                                    ]
+                                }
+                            ],
+                            "locationInformation": [
+                                {
+                                    "location": "Joe Candymaker",
+                                    "location_url": "https://ddowiki.com/page/Joe_Candymaker",
+                                    "locationExtra": ", Turn in various ingredients at"
+                                }
+                            ]
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "weapon": [
+                {
+                    "name": "Epic Return to Sender",
+                    "damangeAndType": "5 [1d4] +12 Pierce, Magic",
+                    "minLevel": "28",
+                    "binding": "Bound to Account on Acquire",
+                    "quest": "Tavern Brawl, End Chest",
+                    "criticalProfile": "",
+                    "enchantments": "+12 Enhancement Bonus",
+                    "enchantments_url": "https://ddowiki.com/page/Enhancement_bonus",
+                    "errata": "",
+                    "weaponDetail": [
+                        {
+                            "proficiency": "Simple Weapon Proficiency",
+                            "name": "Epic Return to Sender",
+                            "damangeAndType": "5 [1d4] +12 Pierce, Magic",
+                            "criticalThreatRange": "19-20 / x2",
+                            "weaponType": [
+                                {
+                                    "weaponCategory": "Throwing Dagger",
+                                    "damageCategory": "/ Thrown weapons"
+                                }
+                            ],
+                            "absRaceRequired": "None",
+                            "minLevel": "28",
+                            "requiredTrait": "None",
+                            "umd": "No UMD needed",
+                            "handedness": "",
+                            "attackMod": "DEX",
+                            "damageMod": "STR",
+                            "binding": "Bound to Account on Acquire",
+                            "binding_url": "https://ddowiki.com/page/Bind",
+                            "durability": "230",
+                            "material": "Steel",
+                            "material_url": "https://ddowiki.com/page/Steel",
+                            "hardness": "29",
+                            "baseValue": "11,220pp",
+                            "weight": "1.00 lbs",
+                            "upgradable": "Not upgradeable",
+                            "tips": [
+                                {
+                                    "tip": "Bug:"
+                                },
+                                {
+                                    "tip": "Return to Sender"
+                                },
+                                {
+                                    "tip": "Improved Precise Shot"
+                                },
+                                {
+                                    "tip": "DDO Forums"
+                                }
+                            ],
+                            "description": "Magically Murderous Missive",
+                            "enchantments": [
+                                {
+                                    "enchantment": [
+                                        {
+                                            "name": "+12 Enhancement Bonus",
+                                            "name_url": "https://ddowiki.com/page/Enhancement_bonus",
+                                            "fullText": "+12 Enhancement Bonus"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "enchantment": [
+                                        {
+                                            "name": "Returning",
+                                            "name_url": "https://ddowiki.com/page/Returning",
+                                            "fullText": "Returning"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "enchantment": [
+                                        {
+                                            "name": "Solar VI",
+                                            "name_url": "https://ddowiki.com/page/Elemental_(weapon)#Solar",
+                                            "fullText": "Solar VI"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "enchantment": [
+                                        {
+                                            "name": "Greater Bleeding",
+                                            "name_url": "https://ddowiki.com/page/Bleed#Greater_Bleeding",
+                                            "fullText": "Greater Bleeding"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "enchantment": [
+                                        {
+                                            "name": "Improved Paralyzing",
+                                            "name_url": "https://ddowiki.com/page/Improved_Paralyzing",
+                                            "fullText": "Improved Paralyzing"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "oneOfEnchantment": [
+                                        {},
+                                        {},
+                                        {},
+                                        {},
+                                        {},
+                                        {},
+                                        {},
+                                        {},
+                                        {},
+                                        {},
+                                        {},
+                                        {},
+                                        {},
+                                        {},
+                                        {},
+                                        {},
+                                        {},
+                                        {},
+                                        {},
+                                        {},
+                                        {},
+                                        {},
+                                        {},
+                                        {},
+                                        {}
+                                    ],
+                                    "enchantment": [
+                                        {
+                                            "fullText": "Empty Orange Augment Slot"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "enchantment": [
+                                        {
+                                            "name": "Mythic Weapon Boost",
+                                            "name_url": "https://ddowiki.com/page/Mythic_Boost",
+                                            "fullText": "Mythic Weapon Boost +2 or +4"
+                                        }
+                                    ]
+                                }
+                            ],
+                            "locationInformation": [
+                                {
+                                    "location": "Tavern Brawl",
+                                    "location_url": "https://ddowiki.com/page/Tavern_Brawl",
+                                    "locationExtra": ", End Chest"
+                                }
+                            ]
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "weapon": [
+                {
+                    "name": "The Wide Open Sky*",
+                    "damangeAndType": "5[1d4+3] + 15 Pierce, Good, Magic",
+                    "minLevel": "29",
+                    "binding": "Bound to Character on Acquire",
+                    "quest": "Project Nemesis, Warded Chest",
+                    "criticalProfile": "",
+                    "enchantments": "+15 Enhancement Bonus",
+                    "enchantments_url": "https://ddowiki.com/page/Enhancement_bonus",
+                    "itemId": "The Wide Open Sky",
+                    "url": "https://ddowiki.com/page/Item:The_Wide_Open_Sky",
+                    "errata": ""
+                }
+            ]
+        },
+        {
+            "weapon": [
+                {
+                    "name": "Lynnabel's Bug Killer (level 30)*",
+                    "damangeAndType": "5[2d4] + 14 Pierce, Magic",
+                    "minLevel": "30",
+                    "binding": "Bound to Account on Acquire",
+                    "quest": "Anniversary Party",
+                    "criticalProfile": "",
+                    "enchantments": "+14 Enhancement Bonus",
+                    "enchantments_url": "https://ddowiki.com/page/Enhancement_bonus",
+                    "itemId": "Lynnabel's Bug Killer (level 30)",
+                    "url": "https://ddowiki.com/page/Item:Lynnabel%27s_Bug_Killer_(level_30)",
+                    "errata": ""
+                }
+            ]
         }
-       ],
-       "absRaceRequired": "None",
-       "minLevel": "4",
-       "requiredTrait": "None",
-       "umd": "No UMD needed",
-       "handedness": "",
-       "attackMod": "DEX",
-       "damageMod": "STR",
-       "binding": "Bound to Account on Acquire",
-       "binding_url": "https://ddowiki.com/page/Bind",
-       "durability": "60",
-       "material": "Force",
-       "material_url": "https://ddowiki.com/page/Force_(material)",
-       "hardness": "20",
-       "baseValue": "1,600pp 2gp",
-       "weight": "1.00 lbs",
-       "upgradable": "The Night Revels to Spectral Throwing Dagger (level 8)",
-       "description": "The residual power left behind as thousands of Spectral Dragon Scales crumbled to dust formed these ethereal blades.",
-       "enchantments": [
-        {
-         "enchantment": [
-          {
-           "name": "+2 Enhancement Bonus",
-           "name_url": "https://ddowiki.com/page/Enhancement_bonus",
-           "fullText": "+2 Enhancement Bonus"
-          }
-         ]
-        },
-        {
-         "enchantment": [
-          {
-           "name": "Returning",
-           "name_url": "https://ddowiki.com/page/Returning",
-           "fullText": "Returning"
-          }
-         ]
-        },
-        {
-         "enchantment": [
-          {
-           "name": "Ghostbane 2",
-           "name_url": "https://ddowiki.com/page/Ghostbane",
-           "fullText": "Ghostbane 2"
-          }
-         ]
-        },
-        {
-         "enchantment": [
-          {
-           "name": "Evil Outsider Bane 2",
-           "name_url": "https://ddowiki.com/page/Bane_(enchantment)",
-           "fullText": "Evil Outsider Bane 2"
-          }
-         ]
-        },
-        {
-         "enchantment": [
-          {
-           "name": "Crushing 4",
-           "name_url": "https://ddowiki.com/page/Crushing",
-           "fullText": "Crushing 4"
-          }
-         ]
-        }
-       ],
-       "locationInformation": [
-        {
-         "location": "Joe Candymaker",
-         "location_url": "https://ddowiki.com/page/Joe_Candymaker",
-         "locationExtra": ", Turn in various ingredients at"
-        }
-       ]
-      }
-     ]
-    }
-   ]
-  },
-  {
-   "weapon": [
-    {
-     "name": "Noxious Fang*",
-     "damangeAndType": "1d4 + 2 Pierce, Magic",
-     "minLevel": "4",
-     "binding": "Bound to Account on Acquire",
-     "quest": "The Snitch, Mandible's chest (optional named spider)",
-     "criticalProfile": "",
-     "enchantments": "+2 Enhancement Bonus",
-     "enchantments_url": "https://ddowiki.com/page/Enhancement_bonus",
-     "itemId": "Noxious Fang",
-     "url": "https://ddowiki.com/page/Item:Noxious_Fang",
-     "errata": ""
-    }
-   ]
-  },
-  {
-   "weapon": [
-    {
-     "name": "Lynnabel's Bug Killer (level 5)*",
-     "damangeAndType": "[2d4] +2 Pierce, Magic",
-     "minLevel": "5",
-     "binding": "Bound to Account on Acquire",
-     "quest": "Anniversary Party",
-     "criticalProfile": "",
-     "enchantments": "+2 Enhancement Bonus",
-     "enchantments_url": "https://ddowiki.com/page/Enhancement_bonus",
-     "itemId": "Lynnabel's Bug Killer (level 5)",
-     "url": "https://ddowiki.com/page/Item:Lynnabel%27s_Bug_Killer_(level_5)",
-     "errata": ""
-    }
-   ]
-  },
-  {
-   "weapon": [
-    {
-     "name": "Chill Shard",
-     "damangeAndType": "[1d4] + 3 Pierce, Magic",
-     "minLevel": "6",
-     "binding": "Bound to Character on Equip",
-     "quest": "Caverns of Korromar, Akuul's chest",
-     "criticalProfile": "",
-     "enchantments": "+3 Enhancement Bonus",
-     "enchantments_url": "https://ddowiki.com/page/Enhancement_bonus",
-     "errata": "",
-     "weaponDetail": [
-      {
-       "proficiency": "Simple Weapon Proficiency",
-       "name": "Chill Shard",
-       "damangeAndType": "[1d4] + 3 Pierce, Magic",
-       "criticalThreatRange": "19-20 / x2",
-       "weaponType": [
-        {
-         "weaponCategory": "Throwing Dagger",
-         "damageCategory": "/ Thrown weapons"
-        }
-       ],
-       "absRaceRequired": "None",
-       "minLevel": "6",
-       "requiredTrait": "None",
-       "umd": "No UMD needed",
-       "handedness": "",
-       "attackMod": "DEX",
-       "damageMod": "STR",
-       "binding": "Bound to Character on Equip",
-       "binding_url": "https://ddowiki.com/page/Bind",
-       "durability": "80",
-       "material": "Steel",
-       "material_url": "https://ddowiki.com/page/Steel",
-       "hardness": "14",
-       "baseValue": "2,400pp 2gp",
-       "weight": "1 lbs",
-       "upgradable": "Not upgradeable",
-       "description": "A short simple weapon with a pointed blade balanced for throwing",
-       "enchantments": [
-        {
-         "enchantment": [
-          {
-           "name": "+3 Enhancement Bonus",
-           "name_url": "https://ddowiki.com/page/Enhancement_bonus",
-           "fullText": "+3 Enhancement Bonus"
-          }
-         ]
-        },
-        {
-         "enchantment": [
-          {
-           "name": "Frost",
-           "name_url": "https://ddowiki.com/page/Elemental_(weapon)#Frost",
-           "fullText": "Frost"
-          }
-         ]
-        },
-        {
-         "enchantment": [
-          {
-           "name": "Returning",
-           "name_url": "https://ddowiki.com/page/Returning",
-           "fullText": "Returning"
-          }
-         ]
-        },
-        {
-         "oneOfEnchantment": [
-          {
-          },
-          {
-          },
-          {
-          },
-          {
-          },
-          {
-          },
-          {
-          },
-          {
-          },
-          {
-          },
-          {
-          },
-          {
-          },
-          {
-          },
-          {
-          },
-          {
-          },
-          {
-          },
-          {
-          },
-          {
-          }
-         ],
-         "enchantment": [
-          {
-           "fullText": "Empty Red Augment Slot"
-          }
-         ]
-        },
-        {
-         "enchantment": [
-          {
-           "name": "Mythic Weapon Boost",
-           "name_url": "https://ddowiki.com/page/Mythic_Boost",
-           "fullText": "Mythic Weapon Boost +2 or +4"
-          }
-         ]
-        }
-       ],
-       "locationInformation": [
-        {
-         "location": "Akuul",
-         "location_url": "https://ddowiki.com/page/Akuul",
-         "locationExtra": ","
-        }
-       ]
-      }
-     ]
-    }
-   ]
-  },
-  {
-   "weapon": [
-    {
-     "name": "Spectral Throwing Dagger (level 8)",
-     "damangeAndType": "1.50[1d4] + 3 Pierce, Magic",
-     "minLevel": "8",
-     "binding": "Bound to Account on Acquire",
-     "quest": "The Night Revels",
-     "criticalProfile": "",
-     "enchantments": "+3 Enhancement Bonus",
-     "enchantments_url": "https://ddowiki.com/page/Enhancement_bonus",
-     "errata": "",
-     "weaponDetail": [
-      {
-       "proficiency": "Simple Weapon Proficiency",
-       "name": "Spectral Throwing Dagger (level 8)",
-       "damangeAndType": "1.50[1d4] + 3 Pierce, Magic",
-       "criticalThreatRange": "19-20 / x2",
-       "weaponType": [
-        {
-         "weaponCategory": "Throwing Dagger",
-         "damageCategory": "/ Thrown weapons"
-        }
-       ],
-       "absRaceRequired": "None",
-       "minLevel": "8",
-       "requiredTrait": "None",
-       "umd": "No UMD needed",
-       "handedness": "",
-       "attackMod": "DEX",
-       "damageMod": "STR",
-       "binding": "Bound to Account on Acquire",
-       "binding_url": "https://ddowiki.com/page/Bind",
-       "durability": "90",
-       "material": "Force",
-       "material_url": "https://ddowiki.com/page/Force_(material)",
-       "hardness": "23",
-       "baseValue": "3,200pp 2gp",
-       "weight": "1.00 lbs",
-       "upgradable": "The Night Revels to Spectral Throwing Dagger (level 12)",
-       "description": "The residual power left behind as thousands of Spectral Dragon Scales crumbled to dust formed these ethereal blades.",
-       "enchantments": [
-        {
-         "enchantment": [
-          {
-           "name": "+3 Enhancement Bonus",
-           "name_url": "https://ddowiki.com/page/Enhancement_bonus",
-           "fullText": "+3 Enhancement Bonus"
-          }
-         ]
-        },
-        {
-         "enchantment": [
-          {
-           "name": "Returning",
-           "name_url": "https://ddowiki.com/page/Returning",
-           "fullText": "Returning"
-          }
-         ]
-        },
-        {
-         "enchantment": [
-          {
-           "name": "Ghostbane 2",
-           "name_url": "https://ddowiki.com/page/Ghostbane",
-           "fullText": "Ghostbane 2"
-          }
-         ]
-        },
-        {
-         "enchantment": [
-          {
-           "name": "Evil Outsider Bane 2",
-           "name_url": "https://ddowiki.com/page/Bane_(enchantment)",
-           "fullText": "Evil Outsider Bane 2"
-          }
-         ]
-        },
-        {
-         "enchantment": [
-          {
-           "name": "Vorpal",
-           "name_url": "https://ddowiki.com/page/Vorpal#Vorpal",
-           "fullText": "Vorpal"
-          }
-         ]
-        },
-        {
-         "enchantment": [
-          {
-           "name": "Crushing 6",
-           "name_url": "https://ddowiki.com/page/Crushing",
-           "fullText": "Crushing 6"
-          }
-         ]
-        }
-       ],
-       "locationInformation": [
-        {
-         "location": "Joe Candymaker",
-         "location_url": "https://ddowiki.com/page/Joe_Candymaker",
-         "locationExtra": ", Turn in various ingredients at"
-        }
-       ]
-      }
-     ]
-    }
-   ]
-  },
-  {
-   "weapon": [
-    {
-     "name": "Lynnabel's Bug Killer (level 10)*",
-     "damangeAndType": "1.50[2d4] +4 Pierce, Magic",
-     "minLevel": "10",
-     "binding": "Bound to Account on Acquire",
-     "quest": "Anniversary Party",
-     "criticalProfile": "",
-     "enchantments": "+4 Enhancement Bonus",
-     "enchantments_url": "https://ddowiki.com/page/Enhancement_bonus",
-     "itemId": "Lynnabel's Bug Killer (level 10)",
-     "url": "https://ddowiki.com/page/Item:Lynnabel%27s_Bug_Killer_(level_10)",
-     "errata": ""
-    }
-   ]
-  },
-  {
-   "weapon": [
-    {
-     "name": "Spectral Throwing Dagger (level 12)",
-     "damangeAndType": "2[1d4] + 4 Pierce, Magic",
-     "minLevel": "12",
-     "binding": "Bound to Account on Acquire",
-     "quest": "The Night Revels",
-     "criticalProfile": "",
-     "enchantments": "+4 Enhancement Bonus",
-     "enchantments_url": "https://ddowiki.com/page/Enhancement_bonus",
-     "errata": "",
-     "weaponDetail": [
-      {
-       "proficiency": "Simple Weapon Proficiency",
-       "name": "Spectral Throwing Dagger (level 12)",
-       "damangeAndType": "2[1d4] + 4 Pierce, Magic",
-       "criticalThreatRange": "19-20 / x2",
-       "weaponType": [
-        {
-         "weaponCategory": "Throwing Dagger",
-         "damageCategory": "/ Thrown weapons"
-        }
-       ],
-       "absRaceRequired": "None",
-       "minLevel": "12",
-       "requiredTrait": "None",
-       "umd": "No UMD needed",
-       "handedness": "",
-       "attackMod": "DEX",
-       "damageMod": "STR",
-       "binding": "Bound to Account on Acquire",
-       "binding_url": "https://ddowiki.com/page/Bind",
-       "durability": "110",
-       "material": "Force",
-       "material_url": "https://ddowiki.com/page/Force_(material)",
-       "hardness": "25",
-       "baseValue": "4,800pp 2gp",
-       "weight": "1.00 lbs",
-       "upgradable": "The Night Revels to Spectral Throwing Dagger (level 16)",
-       "description": "The residual power left behind as thousands of Spectral Dragon Scales crumbled to dust formed these ethereal blades.",
-       "enchantments": [
-        {
-         "enchantment": [
-          {
-           "name": "+4 Enhancement Bonus",
-           "name_url": "https://ddowiki.com/page/Enhancement_bonus",
-           "fullText": "+4 Enhancement Bonus"
-          }
-         ]
-        },
-        {
-         "enchantment": [
-          {
-           "name": "Returning",
-           "name_url": "https://ddowiki.com/page/Returning",
-           "fullText": "Returning"
-          }
-         ]
-        },
-        {
-         "enchantment": [
-          {
-           "name": "Ghostbane 3",
-           "name_url": "https://ddowiki.com/page/Ghostbane",
-           "fullText": "Ghostbane 3"
-          }
-         ]
-        },
-        {
-         "enchantment": [
-          {
-           "name": "Evil Outsider Bane 3",
-           "name_url": "https://ddowiki.com/page/Bane_(enchantment)",
-           "fullText": "Evil Outsider Bane 3"
-          }
-         ]
-        },
-        {
-         "enchantment": [
-          {
-           "name": "Vorpal",
-           "name_url": "https://ddowiki.com/page/Vorpal#Vorpal",
-           "fullText": "Vorpal"
-          }
-         ]
-        },
-        {
-         "enchantment": [
-          {
-           "name": "Crushing 7",
-           "name_url": "https://ddowiki.com/page/Crushing",
-           "fullText": "Crushing 7"
-          }
-         ]
-        }
-       ],
-       "locationInformation": [
-        {
-         "location": "Joe Candymaker",
-         "location_url": "https://ddowiki.com/page/Joe_Candymaker",
-         "locationExtra": ", Turn in various ingredients at"
-        }
-       ]
-      }
-     ]
-    }
-   ]
-  },
-  {
-   "weapon": [
-    {
-     "name": "Alchemical Throwing Dagger*",
-     "damangeAndType": "2 [1d4] + 5 Pierce, Magic",
-     "minLevel": "12",
-     "binding": "Unbound",
-     "quest": "The Master Artificer, Either End chest",
-     "criticalProfile": "",
-     "enchantments": "+5 Enhancement Bonus",
-     "enchantments_url": "https://ddowiki.com/page/Enhancement_bonus",
-     "itemId": "Alchemical Throwing Dagger",
-     "url": "https://ddowiki.com/page/Item:Alchemical_Throwing_Dagger",
-     "errata": ""
-    }
-   ]
-  },
-  {
-   "weapon": [
-    {
-     "name": "Green Steel Throwing Dagger",
-     "damangeAndType": "1.50 [1d4] +5 Pierce, Evil, Magic",
-     "minLevel": "12",
-     "binding": "Bound to Character on Equip",
-     "quest": "Altar of Fecundity, Manufactured Ingredient Recipes",
-     "criticalProfile": "",
-     "enchantments": "+5 Enhancement Bonus",
-     "enchantments_url": "https://ddowiki.com/page/Enhancement_bonus",
-     "errata": "",
-     "weaponDetail": [
-      {
-       "proficiency": "Simple Weapon Proficiency",
-       "name": "Green Steel Throwing Dagger",
-       "damangeAndType": "1.50 [1d4] +5 Pierce, Evil, Magic",
-       "criticalThreatRange": "19-20 / x2",
-       "weaponType": [
-        {
-         "weaponCategory": "Throwing Dagger",
-         "damageCategory": "/ Thrown weapons"
-        }
-       ],
-       "absRaceRequired": "None",
-       "minLevel": "12",
-       "requiredTrait": "None",
-       "umd": "No UMD needed",
-       "handedness": "",
-       "attackMod": "DEX",
-       "damageMod": "STR",
-       "binding": "Bound to Character on Equip",
-       "binding_url": "https://ddowiki.com/page/Bind",
-       "durability": "90",
-       "material": "Steel",
-       "material_url": "https://ddowiki.com/page/Steel",
-       "hardness": "15",
-       "baseValue": "5,400pp 2gp",
-       "weight": "1 lbs",
-       "upgradable": "Green Steel",
-       "tips": [
-        {
-         "tip": "Ore of Travail\nLocust Husk\nChipmunk Funk\nGlistening Pebbles\nGreen Briar Twigs\nEberron Energy Cell"
-        },
-        {
-         "tip": "Blue Taper\nGlistening Pebbles\nGreen Briar Twigs\nBitterscrub Fungus\nChipmunk Funk\nEberron Energy Cell"
-        },
-        {
-         "tip": "Wondrous Scarab\nChipmunk Funk\nGlistening Pebbles OR Green Briar Twigs\nBitterscrub Fungus\nLammanian Lily Petals\nEberron Energy Cell"
-        },
-        {
-         "tip": "Shavarath Signet Stone\nShavarath Stone of Might\nShavarath Stone of Battle\nShavarath Stone of Strategy\nShavarath Stone of Foresight\nShavarath Stone of Victory"
-        },
-        {
-         "tip": "Medium Splintered Horn"
-        }
-       ],
-       "description": "A short simple weapon with a pointed blade balanced for throwing.",
-       "enchantments": [
-        {
-         "enchantment": [
-          {
-           "name": "+5 Enhancement Bonus",
-           "name_url": "https://ddowiki.com/page/Enhancement_bonus",
-           "fullText": "+5 Enhancement Bonus"
-          }
-         ]
-        },
-        {
-         "enchantment": [
-          {
-           "name": "Green Steel",
-           "name_url": "https://ddowiki.com/page/Green_Steel",
-           "fullText": "Green Steel"
-          }
-         ]
-        },
-        {
-         "enchantment": [
-          {
-           "name": "Returning",
-           "name_url": "https://ddowiki.com/page/Returning",
-           "fullText": "Returning"
-          }
-         ]
-        },
-        {
-         "enchantment": [
-          {
-           "name": "Mythic Weapon Boost",
-           "name_url": "https://ddowiki.com/page/Mythic_Boost",
-           "fullText": "Mythic Weapon Boost +2 or +4"
-          }
-         ]
-        },
-        {
-         "oneOfEnchantment": [
-          {
-          },
-          {
-          },
-          {
-          },
-          {
-          },
-          {
-          }
-         ],
-         "enchantment": [
-          {
-           "name": "Ore of Travail",
-           "name_url": "https://ddowiki.com/page/Ore_of_Travail",
-           "fullText": "Locust Husk\nChipmunk Funk\nGlistening Pebbles\nGreen Briar Twigs\nEberron Energy Cell"
-          }
-         ]
-        },
-        {
-         "oneOfEnchantment": [
-          {
-          },
-          {
-          },
-          {
-          },
-          {
-          },
-          {
-          }
-         ],
-         "enchantment": [
-          {
-           "name": "Blue Taper",
-           "name_url": "https://ddowiki.com/page/Blue_Taper",
-           "fullText": "Glistening Pebbles\nGreen Briar Twigs\nBitterscrub Fungus\nChipmunk Funk\nEberron Energy Cell"
-          }
-         ]
-        },
-        {
-         "oneOfEnchantment": [
-          {
-          },
-          {
-          },
-          {
-          },
-          {
-          },
-          {
-          }
-         ],
-         "enchantment": [
-          {
-           "name": "Wondrous Scarab",
-           "name_url": "https://ddowiki.com/page/Wondrous_Scarab",
-           "fullText": "Chipmunk Funk\nGlistening Pebbles OR Green Briar Twigs\nBitterscrub Fungus\nLammanian Lily Petals\nEberron Energy Cell"
-          }
-         ]
-        },
-        {
-         "oneOfEnchantment": [
-          {
-          },
-          {
-          },
-          {
-          },
-          {
-          },
-          {
-          }
-         ],
-         "enchantment": [
-          {
-          }
-         ]
-        },
-        {
-         "enchantment": [
-          {
-           "name": "Medium Splintered Horn",
-           "name_url": "https://ddowiki.com/page/Medium_Splintered_Horn",
-           "fullText": "Medium Splintered Horn"
-          }
-         ]
-        }
-       ],
-       "locationInformation": [
-        {
-         "location": "Manufactured Ingredient Recipes",
-         "location_url": "https://ddowiki.com/page/Altar_of_Fecundity_-_Manufactured_Ingredient_Recipes",
-         "locationExtra": ","
-        }
-       ]
-      }
-     ]
-    }
-   ]
-  },
-  {
-   "weapon": [
-    {
-     "name": "Return to Sender",
-     "damangeAndType": "1.50 [1d4] +5 Pierce, Magic",
-     "minLevel": "14",
-     "binding": "Bound to Account on Acquire",
-     "quest": "Tavern Brawl, End chest",
-     "criticalProfile": "",
-     "enchantments": "Returning",
-     "enchantments_url": "https://ddowiki.com/page/Returning",
-     "errata": "",
-     "weaponDetail": [
-      {
-       "proficiency": "Simple Weapon Proficiency",
-       "name": "Return to Sender",
-       "damangeAndType": "1.50 [1d4] +5 Pierce, Magic",
-       "criticalThreatRange": "19-20 / x2",
-       "weaponType": [
-        {
-         "weaponCategory": "Throwing Dagger",
-         "damageCategory": "/ Thrown weapons"
-        }
-       ],
-       "absRaceRequired": "None",
-       "minLevel": "14",
-       "requiredTrait": "None",
-       "umd": "No UMD needed",
-       "handedness": "",
-       "attackMod": "DEX",
-       "damageMod": "STR",
-       "binding": "Bound to Account on Acquire",
-       "binding_url": "https://ddowiki.com/page/Bind",
-       "durability": "120",
-       "material": "Steel",
-       "material_url": "https://ddowiki.com/page/Steel",
-       "hardness": "18",
-       "baseValue": "5,620pp",
-       "weight": "1 lbs",
-       "upgradable": "Not upgradeable",
-       "tips": [
-        {
-         "tip": "Bug:"
-        },
-        {
-         "tip": "Return to Sender"
-        },
-        {
-         "tip": "Improved Precise Shot"
-        },
-        {
-         "tip": "DDO Forums"
-        }
-       ],
-       "description": "Magically Murderous Missive.",
-       "enchantments": [
-        {
-         "enchantment": [
-          {
-           "name": "Returning",
-           "name_url": "https://ddowiki.com/page/Returning",
-           "fullText": "Returning"
-          }
-         ]
-        },
-        {
-         "enchantment": [
-          {
-           "name": "+5 Enhancement Bonus",
-           "name_url": "https://ddowiki.com/page/Enhancement_bonus",
-           "fullText": "+5 Enhancement Bonus"
-          }
-         ]
-        },
-        {
-         "enchantment": [
-          {
-           "name": "Solar II",
-           "name_url": "https://ddowiki.com/page/Elemental_(weapon)#Solar",
-           "fullText": "Solar II"
-          }
-         ]
-        },
-        {
-         "enchantment": [
-          {
-           "name": "Phlebotomizing",
-           "name_url": "https://ddowiki.com/page/Bleed#Phlebotomizing",
-           "fullText": "Phlebotomizing"
-          }
-         ]
-        },
-        {
-         "enchantment": [
-          {
-           "name": "Paralyzing",
-           "name_url": "https://ddowiki.com/page/Paralyzing",
-           "fullText": "Paralyzing"
-          }
-         ]
-        },
-        {
-         "oneOfEnchantment": [
-          {
-          },
-          {
-          },
-          {
-          },
-          {
-          },
-          {
-          },
-          {
-          },
-          {
-          },
-          {
-          },
-          {
-          },
-          {
-          },
-          {
-          },
-          {
-          },
-          {
-          },
-          {
-          },
-          {
-          },
-          {
-          },
-          {
-          },
-          {
-          },
-          {
-          },
-          {
-          },
-          {
-          },
-          {
-          },
-          {
-          },
-          {
-          },
-          {
-          }
-         ],
-         "enchantment": [
-          {
-           "fullText": "Empty Orange Augment Slot"
-          }
-         ]
-        },
-        {
-         "enchantment": [
-          {
-           "name": "Mythic Weapon Boost",
-           "name_url": "https://ddowiki.com/page/Mythic_Boost",
-           "fullText": "Mythic Weapon Boost +2 or +4"
-          }
-         ]
-        }
-       ],
-       "locationInformation": [
-        {
-         "location": "Tavern Brawl",
-         "location_url": "https://ddowiki.com/page/Tavern_Brawl",
-         "locationExtra": ", End chest"
-        }
-       ]
-      }
-     ]
-    }
-   ]
-  },
-  {
-   "weapon": [
-    {
-     "name": "Lynnabel's Bug Killer (level 15)*",
-     "damangeAndType": "1.50[2d4] +5 Pierce, Magic",
-     "minLevel": "15",
-     "binding": "Bound to Account on Acquire",
-     "quest": "Anniversary Party",
-     "criticalProfile": "",
-     "enchantments": "+5 Enhancement Bonus",
-     "enchantments_url": "https://ddowiki.com/page/Enhancement_bonus",
-     "itemId": "Lynnabel's Bug Killer (level 15)",
-     "url": "https://ddowiki.com/page/Item:Lynnabel%27s_Bug_Killer_(level_15)",
-     "errata": ""
-    }
-   ]
-  },
-  {
-   "weapon": [
-    {
-     "name": "Spectral Throwing Dagger (level 16)",
-     "damangeAndType": "2[1d4] + 5 Pierce, Magic",
-     "minLevel": "16",
-     "binding": "Bound to Account on Acquire",
-     "quest": "The Night Revels",
-     "criticalProfile": "",
-     "enchantments": "+5 Enhancement Bonus",
-     "enchantments_url": "https://ddowiki.com/page/Enhancement_bonus",
-     "errata": "",
-     "weaponDetail": [
-      {
-       "proficiency": "Simple Weapon Proficiency",
-       "name": "Spectral Throwing Dagger (level 16)",
-       "damangeAndType": "2[1d4] + 5 Pierce, Magic",
-       "criticalThreatRange": "19-20 / x2",
-       "weaponType": [
-        {
-         "weaponCategory": "Throwing Dagger",
-         "damageCategory": "/ Thrown weapons"
-        }
-       ],
-       "absRaceRequired": "None",
-       "minLevel": "16",
-       "requiredTrait": "None",
-       "umd": "No UMD needed",
-       "handedness": "",
-       "attackMod": "DEX",
-       "damageMod": "STR",
-       "binding": "Bound to Account on Acquire",
-       "binding_url": "https://ddowiki.com/page/Bind",
-       "durability": "130",
-       "material": "Force",
-       "material_url": "https://ddowiki.com/page/Force_(material)",
-       "hardness": "27",
-       "baseValue": "6,400pp 2gp",
-       "weight": "1.00 lbs",
-       "upgradable": "The Night Revels to Spectral Throwing Dagger (level 20)",
-       "description": "The residual power left behind as thousands of Spectral Dragon Scales crumbled to dust formed these ethereal blades.",
-       "enchantments": [
-        {
-         "enchantment": [
-          {
-           "name": "+5 Enhancement Bonus",
-           "name_url": "https://ddowiki.com/page/Enhancement_bonus",
-           "fullText": "+5 Enhancement Bonus"
-          }
-         ]
-        },
-        {
-         "enchantment": [
-          {
-           "name": "Returning",
-           "name_url": "https://ddowiki.com/page/Returning",
-           "fullText": "Returning"
-          }
-         ]
-        },
-        {
-         "enchantment": [
-          {
-           "name": "Ghostbane 4",
-           "name_url": "https://ddowiki.com/page/Ghostbane",
-           "fullText": "Ghostbane 4"
-          }
-         ]
-        },
-        {
-         "enchantment": [
-          {
-           "name": "Evil Outsider Bane 4",
-           "name_url": "https://ddowiki.com/page/Bane_(enchantment)",
-           "fullText": "Evil Outsider Bane 4"
-          }
-         ]
-        },
-        {
-         "enchantment": [
-          {
-           "name": "Vorpal",
-           "name_url": "https://ddowiki.com/page/Vorpal#Vorpal",
-           "fullText": "Vorpal"
-          }
-         ]
-        },
-        {
-         "enchantment": [
-          {
-           "name": "Crushing 9",
-           "name_url": "https://ddowiki.com/page/Crushing",
-           "fullText": "Crushing 9"
-          }
-         ]
-        }
-       ],
-       "locationInformation": [
-        {
-         "location": "Joe Candymaker",
-         "location_url": "https://ddowiki.com/page/Joe_Candymaker",
-         "locationExtra": ", Turn in various ingredients at"
-        }
-       ]
-      }
-     ]
-    }
-   ]
-  },
-  {
-   "weapon": [
-    {
-     "name": "Lynnabel's Bug Killer (level 20)*",
-     "damangeAndType": "2[2d4] +6 Pierce, Magic",
-     "minLevel": "20",
-     "binding": "Bound to Account on Acquire",
-     "quest": "Anniversary Party",
-     "criticalProfile": "",
-     "enchantments": "+6 Enhancement Bonus",
-     "enchantments_url": "https://ddowiki.com/page/Enhancement_bonus",
-     "itemId": "Lynnabel's Bug Killer (level 20)",
-     "url": "https://ddowiki.com/page/Item:Lynnabel%27s_Bug_Killer_(level_20)",
-     "errata": ""
-    }
-   ]
-  },
-  {
-   "weapon": [
-    {
-     "name": "Spectral Throwing Dagger (level 20)",
-     "damangeAndType": "2.50[1d4] + 6 Pierce, Magic",
-     "minLevel": "20",
-     "binding": "Bound to Account on Acquire",
-     "quest": "The Night Revels",
-     "criticalProfile": "",
-     "enchantments": "+6 Enhancement Bonus",
-     "enchantments_url": "https://ddowiki.com/page/Enhancement_bonus",
-     "errata": "",
-     "weaponDetail": [
-      {
-       "proficiency": "Simple Weapon Proficiency",
-       "name": "Spectral Throwing Dagger (level 20)",
-       "damangeAndType": "2.50[1d4] + 6 Pierce, Magic",
-       "criticalThreatRange": "19-20 / x2",
-       "weaponType": [
-        {
-         "weaponCategory": "Throwing Dagger",
-         "damageCategory": "/ Thrown weapons"
-        }
-       ],
-       "absRaceRequired": "None",
-       "minLevel": "20",
-       "requiredTrait": "None",
-       "umd": "No UMD needed",
-       "handedness": "",
-       "attackMod": "DEX",
-       "damageMod": "STR",
-       "binding": "Bound to Account on Acquire",
-       "binding_url": "https://ddowiki.com/page/Bind",
-       "durability": "150",
-       "material": "Force",
-       "material_url": "https://ddowiki.com/page/Force_(material)",
-       "hardness": "29",
-       "baseValue": "8,000pp 2gp",
-       "weight": "1.00 lbs",
-       "upgradable": "The Night Revels to Spectral Throwing Dagger (level 24)",
-       "description": "The residual power left behind as thousands of Spectral Dragon Scales crumbled to dust formed these ethereal blades.",
-       "enchantments": [
-        {
-         "enchantment": [
-          {
-           "name": "+6 Enhancement Bonus",
-           "name_url": "https://ddowiki.com/page/Enhancement_bonus",
-           "fullText": "+6 Enhancement Bonus"
-          }
-         ]
-        },
-        {
-         "enchantment": [
-          {
-           "name": "Returning",
-           "name_url": "https://ddowiki.com/page/Returning",
-           "fullText": "Returning"
-          }
-         ]
-        },
-        {
-         "enchantment": [
-          {
-           "name": "Ghostbane 4",
-           "name_url": "https://ddowiki.com/page/Ghostbane",
-           "fullText": "Ghostbane 4"
-          }
-         ]
-        },
-        {
-         "enchantment": [
-          {
-           "name": "Evil Outsider Bane 4",
-           "name_url": "https://ddowiki.com/page/Bane_(enchantment)",
-           "fullText": "Evil Outsider Bane 4"
-          }
-         ]
-        },
-        {
-         "enchantment": [
-          {
-           "name": "Improved Vorpal",
-           "name_url": "https://ddowiki.com/page/Vorpal#Improved_Vorpal",
-           "fullText": "Improved Vorpal"
-          }
-         ]
-        },
-        {
-         "enchantment": [
-          {
-           "name": "Crushing 10",
-           "name_url": "https://ddowiki.com/page/Crushing",
-           "fullText": "Crushing 10"
-          }
-         ]
-        }
-       ],
-       "locationInformation": [
-        {
-         "location": "Joe Candymaker",
-         "location_url": "https://ddowiki.com/page/Joe_Candymaker",
-         "locationExtra": ", Turn in various ingredients at"
-        }
-       ]
-      }
-     ]
-    }
-   ]
-  },
-  {
-   "weapon": [
-    {
-     "name": "Epic Noxious Fang*",
-     "damangeAndType": "2 [1d4] + 9 Pierce, Magic",
-     "minLevel": "20",
-     "binding": "Bound to Character on Acquire",
-     "criticalProfile": "",
-     "enchantments": "+9 Enhancement Bonus",
-     "enchantments_url": "https://ddowiki.com/page/Enhancement_bonus",
-     "itemId": "Epic Noxious Fang",
-     "url": "https://ddowiki.com/page/Item:Epic_Noxious_Fang",
-     "errata": ""
-    }
-   ]
-  },
-  {
-   "weapon": [
-    {
-     "name": "Thunder-Forged Alloy Throwing Dagger",
-     "damangeAndType": "3.50 [1d4] + 9 Pierce, Silver, Adamantine, Mithral, Cold Iron, Magic, Byeshk",
-     "minLevel": "22",
-     "binding": "Unbound",
-     "quest": "Magma Forge, Crafted from various ingredients",
-     "criticalProfile": "",
-     "enchantments": "+9 Enhancement Bonus",
-     "enchantments_url": "https://ddowiki.com/page/Enhancement_bonus",
-     "errata": "",
-     "weaponDetail": [
-      {
-       "proficiency": "Simple Weapon Proficiency",
-       "name": "Thunder-Forged Alloy Throwing Dagger",
-       "damangeAndType": "3.50 [1d4] + 9 Pierce, Silver, Adamantine, Mithral, Cold Iron, Magic, Byeshk",
-       "criticalThreatRange": "19-20 / x2",
-       "weaponType": [
-        {
-         "weaponCategory": "Throwing Dagger",
-         "damageCategory": "/ Thrown weapons"
-        }
-       ],
-       "absRaceRequired": "None",
-       "minLevel": "22",
-       "requiredTrait": "None",
-       "umd": "No UMD needed",
-       "handedness": "",
-       "attackMod": "DEX",
-       "damageMod": "STR",
-       "binding": "Unbound",
-       "binding_url": "https://ddowiki.com/page/Bind",
-       "durability": "170",
-       "material": "Adamantine",
-       "material_url": "https://ddowiki.com/page/Adamantine",
-       "hardness": "31",
-       "baseValue": "8,800pp 2gp",
-       "weight": "1.00 lbs",
-       "upgradable": "Thunder-Forged",
-       "tips": [
-        {
-         "tip": "20 Thunder-Forged Dwarven Ingots"
-        },
-        {
-         "tip": "15 Commendations of Valor"
-        }
-       ],
-       "description": "A throwing dagger forged from metals long in proximity to dragons under Thunderholme.",
-       "enchantments": [
-        {
-         "enchantment": [
-          {
-           "name": "+9 Enhancement Bonus",
-           "name_url": "https://ddowiki.com/page/Enhancement_bonus",
-           "fullText": "+9 Enhancement Bonus"
-          }
-         ]
-        },
-        {
-         "oneOfEnchantment": [
-          {
-          },
-          {
-          },
-          {
-          },
-          {
-          },
-          {
-          },
-          {
-          },
-          {
-          },
-          {
-          },
-          {
-          },
-          {
-          },
-          {
-          },
-          {
-          },
-          {
-          },
-          {
-          },
-          {
-          },
-          {
-          },
-          {
-          },
-          {
-          },
-          {
-          },
-          {
-          },
-          {
-          },
-          {
-          },
-          {
-          },
-          {
-          },
-          {
-          }
-         ],
-         "enchantment": [
-          {
-           "fullText": "Empty Orange Augment Slot"
-          }
-         ]
-        },
-        {
-         "enchantment": [
-          {
-           "name": "Returning",
-           "name_url": "https://ddowiki.com/page/Returning",
-           "fullText": "Returning"
-          }
-         ]
-        },
-        {
-         "enchantment": [
-          {
-           "name": "Thunder-Forged (Tier 0)",
-           "name_url": "https://ddowiki.com/page/Thunder-Forged",
-           "fullText": "Thunder-Forged (Tier 0)"
-          }
-         ]
-        },
-        {
-         "enchantment": [
-          {
-           "name": "Mythic Weapon Boost",
-           "name_url": "https://ddowiki.com/page/Mythic_Boost",
-           "fullText": "Mythic Weapon Boost +2 or +4"
-          }
-         ]
-        },
-        {
-         "enchantment": [
-          {
-           "fullText": "20 Thunder-Forged Dwarven Ingots",
-           "fullText_url": "https://ddowiki.com/page/Item:Thunder-Forged_Dwarven_Ingot"
-          }
-         ]
-        },
-        {
-         "enchantment": [
-          {
-           "fullText": "15 Commendations of Valor",
-           "fullText_url": "https://ddowiki.com/page/Item:Commendation_of_Valor"
-          }
-         ]
-        }
-       ],
-       "locationInformation": [
-        {
-         "location": "Magma Forge",
-         "location_url": "https://ddowiki.com/page/Magma_Forge",
-         "locationExtra": ", Crafted from various ingredients"
-        }
-       ]
-      }
-     ]
-    }
-   ]
-  },
-  {
-   "weapon": [
-    {
-     "name": "Spectral Throwing Dagger (level 24)",
-     "damangeAndType": "2.50[1d4] + 7 Pierce, Magic",
-     "minLevel": "24",
-     "binding": "Bound to Account on Acquire",
-     "quest": "The Night Revels",
-     "criticalProfile": "",
-     "enchantments": "+7 Enhancement Bonus",
-     "enchantments_url": "https://ddowiki.com/page/Enhancement_bonus",
-     "errata": "",
-     "weaponDetail": [
-      {
-       "proficiency": "Simple Weapon Proficiency",
-       "name": "Spectral Throwing Dagger (level 24)",
-       "damangeAndType": "2.50[1d4] + 7 Pierce, Magic",
-       "criticalThreatRange": "19-20 / x2",
-       "weaponType": [
-        {
-         "weaponCategory": "Throwing Dagger",
-         "damageCategory": "/ Thrown weapons"
-        }
-       ],
-       "absRaceRequired": "None",
-       "minLevel": "24",
-       "requiredTrait": "None",
-       "umd": "No UMD needed",
-       "handedness": "",
-       "attackMod": "DEX",
-       "damageMod": "STR",
-       "binding": "Bound to Account on Acquire",
-       "binding_url": "https://ddowiki.com/page/Bind",
-       "durability": "190",
-       "material": "Force",
-       "material_url": "https://ddowiki.com/page/Force_(material)",
-       "hardness": "33",
-       "baseValue": "9,600pp 2gp",
-       "weight": "1.00 lbs",
-       "upgradable": "The Night Revels to Spectral Throwing Dagger (level 28)",
-       "description": "The residual power left behind as thousands of Spectral Dragon Scales crumbled to dust formed these ethereal blades.",
-       "enchantments": [
-        {
-         "enchantment": [
-          {
-           "name": "+7 Enhancement Bonus",
-           "name_url": "https://ddowiki.com/page/Enhancement_bonus",
-           "fullText": "+7 Enhancement Bonus"
-          }
-         ]
-        },
-        {
-         "enchantment": [
-          {
-           "name": "Returning",
-           "name_url": "https://ddowiki.com/page/Returning",
-           "fullText": "Returning"
-          }
-         ]
-        },
-        {
-         "enchantment": [
-          {
-           "name": "Ghostbane 5",
-           "name_url": "https://ddowiki.com/page/Ghostbane",
-           "fullText": "Ghostbane 5"
-          }
-         ]
-        },
-        {
-         "enchantment": [
-          {
-           "name": "Evil Outsider Bane 5",
-           "name_url": "https://ddowiki.com/page/Bane_(enchantment)",
-           "fullText": "Evil Outsider Bane 5"
-          }
-         ]
-        },
-        {
-         "enchantment": [
-          {
-           "name": "Greater Vorpal",
-           "name_url": "https://ddowiki.com/page/Vorpal#Greater_Vorpal",
-           "fullText": "Greater Vorpal"
-          }
-         ]
-        },
-        {
-         "enchantment": [
-          {
-           "name": "Crushing 12",
-           "name_url": "https://ddowiki.com/page/Crushing",
-           "fullText": "Crushing 12"
-          }
-         ]
-        }
-       ],
-       "locationInformation": [
-        {
-         "location": "Joe Candymaker",
-         "location_url": "https://ddowiki.com/page/Joe_Candymaker",
-         "locationExtra": ", Turn in various ingredients at"
-        }
-       ]
-      }
-     ]
-    }
-   ]
-  },
-  {
-   "weapon": [
-    {
-     "name": "Lynnabel's Bug Killer (level 25)*",
-     "damangeAndType": "2.50[2d4] +7 Pierce, Magic",
-     "minLevel": "25",
-     "binding": "Bound to Account on Acquire",
-     "quest": "Anniversary Party",
-     "criticalProfile": "",
-     "enchantments": "+7 Enhancement Bonus",
-     "enchantments_url": "https://ddowiki.com/page/Enhancement_bonus",
-     "itemId": "Lynnabel's Bug Killer (level 25)",
-     "url": "https://ddowiki.com/page/Item:Lynnabel%27s_Bug_Killer_(level_25)",
-     "errata": ""
-    }
-   ]
-  },
-  {
-   "weapon": [
-    {
-     "name": "Legendary Green Steel Throwing Dagger",
-     "damangeAndType": "5[1d4] + 14 Pierce, Evil, Magic",
-     "minLevel": "26",
-     "binding": "Bound to Character on Acquire",
-     "quest": "Altar of Fecundity, Manufactured Ingredient Recipes",
-     "criticalProfile": "",
-     "enchantments": "+14 Enhancement Bonus",
-     "enchantments_url": "https://ddowiki.com/page/Enhancement_bonus",
-     "errata": "",
-     "weaponDetail": [
-      {
-       "proficiency": "Simple Weapon Proficiency",
-       "name": "Legendary Green Steel Throwing Dagger",
-       "damangeAndType": "5[1d4] + 14 Pierce, Evil, Magic",
-       "criticalThreatRange": "19-20 / x2",
-       "weaponType": [
-        {
-         "weaponCategory": "Throwing Dagger",
-         "damageCategory": "/ Thrown weapons"
-        }
-       ],
-       "absRaceRequired": "None",
-       "minLevel": "26",
-       "requiredTrait": "None",
-       "umd": "No UMD needed",
-       "handedness": "",
-       "attackMod": "DEX",
-       "damageMod": "STR",
-       "binding": "Bound to Character on Acquire",
-       "binding_url": "https://ddowiki.com/page/Bind",
-       "durability": "250",
-       "material": "Steel",
-       "material_url": "https://ddowiki.com/page/Steel",
-       "hardness": "31",
-       "baseValue": "30,051pp 3gp 3sp 6cp",
-       "weight": "1 lbs",
-       "upgradable": "Not upgradeable",
-       "tips": [
-        {
-         "tip": "+14 Legendary Green Steel Throwing Dagger"
-        },
-        {
-         "tip": "100 Codex Runes"
-        },
-        {
-         "tip": "100 Commendations of Valor"
-        },
-        {
-         "tip": "Altar of Fecundity"
-        }
-       ],
-       "description": "A short simple weapon with a pointed blade balanced for throwing.",
-       "enchantments": [
-        {
-         "enchantment": [
-          {
-           "name": "+14 Enhancement Bonus",
-           "name_url": "https://ddowiki.com/page/Enhancement_bonus",
-           "fullText": "+14 Enhancement Bonus"
-          }
-         ]
-        },
-        {
-         "enchantment": [
-          {
-           "name": "Legendary Green Steel",
-           "name_url": "https://ddowiki.com/page/Legendary_Green_Steel",
-           "fullText": "Legendary Green Steel"
-          }
-         ]
-        },
-        {
-         "enchantment": [
-          {
-           "name": "Returning",
-           "name_url": "https://ddowiki.com/page/Returning",
-           "fullText": "Returning"
-          }
-         ]
-        },
-        {
-         "enchantment": [
-          {
-           "name": "Mythic Weapon Boost",
-           "name_url": "https://ddowiki.com/page/Mythic_Boost",
-           "fullText": "Mythic Weapon Boost +2 or +4"
-          }
-         ]
-        },
-        {
-         "enchantment": [
-          {
-           "fullText": "Codex Runes",
-           "fullText_url": "https://ddowiki.com/page/Item:Codex_Rune"
-          }
-         ]
-        },
-        {
-         "enchantment": [
-          {
-           "fullText": "100 Commendations of Valor",
-           "fullText_url": "https://ddowiki.com/page/Item:Commendation_of_Valor"
-          }
-         ]
-        }
-       ],
-       "locationInformation": [
-        {
-         "location": "Manufactured Ingredient Recipes",
-         "location_url": "https://ddowiki.com/page/Altar_of_Fecundity_-_Manufactured_Ingredient_Recipes",
-         "locationExtra": ","
-        }
-       ]
-      }
-     ]
-    }
-   ]
-  },
-  {
-   "weapon": [
-    {
-     "name": "Fate, the Knower of All*",
-     "damangeAndType": "5.5 [1d4+3] +15 Pierce, Silver, Adamantine, Mithral, Cold Iron, Magic, Byeshk",
-     "minLevel": "28",
-     "binding": "Bound to Character on Acquire",
-     "quest": "Old Baba's Hut, Raid Chest",
-     "criticalProfile": "",
-     "enchantments": "+15 Enhancement Bonus",
-     "enchantments_url": "https://ddowiki.com/page/Enhancement_bonus",
-     "itemId": "Fate, the Knower of All",
-     "url": "https://ddowiki.com/page/Item:Fate,_the_Knower_of_All",
-     "errata": ""
-    }
-   ]
-  },
-  {
-   "weapon": [
-    {
-     "name": "Spectral Throwing Dagger (level 28)",
-     "damangeAndType": "5.50[1d4] + 12 Pierce, Magic",
-     "minLevel": "28",
-     "binding": "Bound to Account on Acquire",
-     "quest": "The Night Revels",
-     "criticalProfile": "",
-     "enchantments": "+12 Enhancement Bonus",
-     "enchantments_url": "https://ddowiki.com/page/Enhancement_bonus",
-     "errata": "",
-     "weaponDetail": [
-      {
-       "proficiency": "Simple Weapon Proficiency",
-       "name": "Spectral Throwing Dagger (level 28)",
-       "damangeAndType": "5.50[1d4] + 12 Pierce, Magic",
-       "criticalThreatRange": "19-20 / x2",
-       "weaponType": [
-        {
-         "weaponCategory": "Throwing Dagger",
-         "damageCategory": "/ Thrown weapons"
-        }
-       ],
-       "absRaceRequired": "None",
-       "minLevel": "28",
-       "requiredTrait": "None",
-       "umd": "No UMD needed",
-       "handedness": "",
-       "attackMod": "DEX",
-       "damageMod": "STR",
-       "binding": "Bound to Account on Acquire",
-       "binding_url": "https://ddowiki.com/page/Bind",
-       "durability": "230",
-       "material": "Force",
-       "material_url": "https://ddowiki.com/page/Force_(material)",
-       "hardness": "37",
-       "baseValue": "11,200pp 2gp",
-       "weight": "1.00 lbs",
-       "upgradable": "Not upgradeable",
-       "description": "The residual power left behind as thousands of Spectral Dragon Scales crumbled to dust formed these ethereal blades.",
-       "enchantments": [
-        {
-         "enchantment": [
-          {
-           "name": "+12 Enhancement Bonus",
-           "name_url": "https://ddowiki.com/page/Enhancement_bonus",
-           "fullText": "+12 Enhancement Bonus"
-          }
-         ]
-        },
-        {
-         "enchantment": [
-          {
-           "name": "Returning",
-           "name_url": "https://ddowiki.com/page/Returning",
-           "fullText": "Returning"
-          }
-         ]
-        },
-        {
-         "enchantment": [
-          {
-           "name": "Ghostbane 8",
-           "name_url": "https://ddowiki.com/page/Ghostbane",
-           "fullText": "Ghostbane 8"
-          }
-         ]
-        },
-        {
-         "enchantment": [
-          {
-           "name": "Evil Outsider Bane 8",
-           "name_url": "https://ddowiki.com/page/Bane_(enchantment)",
-           "fullText": "Evil Outsider Bane 8"
-          }
-         ]
-        },
-        {
-         "enchantment": [
-          {
-           "name": "Superior Vorpal",
-           "name_url": "https://ddowiki.com/page/Vorpal#Superior_Vorpal",
-           "fullText": "Superior Vorpal"
-          }
-         ]
-        },
-        {
-         "enchantment": [
-          {
-           "name": "Crushing 19",
-           "name_url": "https://ddowiki.com/page/Crushing",
-           "fullText": "Crushing 19"
-          }
-         ]
-        }
-       ],
-       "locationInformation": [
-        {
-         "location": "Joe Candymaker",
-         "location_url": "https://ddowiki.com/page/Joe_Candymaker",
-         "locationExtra": ", Turn in various ingredients at"
-        }
-       ]
-      }
-     ]
-    }
-   ]
-  },
-  {
-   "weapon": [
-    {
-     "name": "Epic Return to Sender",
-     "damangeAndType": "5 [1d4] +12 Pierce, Magic",
-     "minLevel": "28",
-     "binding": "Bound to Account on Acquire",
-     "quest": "Tavern Brawl, End Chest",
-     "criticalProfile": "",
-     "enchantments": "+12 Enhancement Bonus",
-     "enchantments_url": "https://ddowiki.com/page/Enhancement_bonus",
-     "errata": "",
-     "weaponDetail": [
-      {
-       "proficiency": "Simple Weapon Proficiency",
-       "name": "Epic Return to Sender",
-       "damangeAndType": "5 [1d4] +12 Pierce, Magic",
-       "criticalThreatRange": "19-20 / x2",
-       "weaponType": [
-        {
-         "weaponCategory": "Throwing Dagger",
-         "damageCategory": "/ Thrown weapons"
-        }
-       ],
-       "absRaceRequired": "None",
-       "minLevel": "28",
-       "requiredTrait": "None",
-       "umd": "No UMD needed",
-       "handedness": "",
-       "attackMod": "DEX",
-       "damageMod": "STR",
-       "binding": "Bound to Account on Acquire",
-       "binding_url": "https://ddowiki.com/page/Bind",
-       "durability": "230",
-       "material": "Steel",
-       "material_url": "https://ddowiki.com/page/Steel",
-       "hardness": "29",
-       "baseValue": "11,220pp",
-       "weight": "1.00 lbs",
-       "upgradable": "Not upgradeable",
-       "tips": [
-        {
-         "tip": "Bug:"
-        },
-        {
-         "tip": "Return to Sender"
-        },
-        {
-         "tip": "Improved Precise Shot"
-        },
-        {
-         "tip": "DDO Forums"
-        }
-       ],
-       "description": "Magically Murderous Missive",
-       "enchantments": [
-        {
-         "enchantment": [
-          {
-           "name": "+12 Enhancement Bonus",
-           "name_url": "https://ddowiki.com/page/Enhancement_bonus",
-           "fullText": "+12 Enhancement Bonus"
-          }
-         ]
-        },
-        {
-         "enchantment": [
-          {
-           "name": "Returning",
-           "name_url": "https://ddowiki.com/page/Returning",
-           "fullText": "Returning"
-          }
-         ]
-        },
-        {
-         "enchantment": [
-          {
-           "name": "Solar VI",
-           "name_url": "https://ddowiki.com/page/Elemental_(weapon)#Solar",
-           "fullText": "Solar VI"
-          }
-         ]
-        },
-        {
-         "enchantment": [
-          {
-           "name": "Greater Bleeding",
-           "name_url": "https://ddowiki.com/page/Bleed#Greater_Bleeding",
-           "fullText": "Greater Bleeding"
-          }
-         ]
-        },
-        {
-         "enchantment": [
-          {
-           "name": "Improved Paralyzing",
-           "name_url": "https://ddowiki.com/page/Improved_Paralyzing",
-           "fullText": "Improved Paralyzing"
-          }
-         ]
-        },
-        {
-         "oneOfEnchantment": [
-          {
-          },
-          {
-          },
-          {
-          },
-          {
-          },
-          {
-          },
-          {
-          },
-          {
-          },
-          {
-          },
-          {
-          },
-          {
-          },
-          {
-          },
-          {
-          },
-          {
-          },
-          {
-          },
-          {
-          },
-          {
-          },
-          {
-          },
-          {
-          },
-          {
-          },
-          {
-          },
-          {
-          },
-          {
-          },
-          {
-          },
-          {
-          },
-          {
-          }
-         ],
-         "enchantment": [
-          {
-           "fullText": "Empty Orange Augment Slot"
-          }
-         ]
-        },
-        {
-         "enchantment": [
-          {
-           "name": "Mythic Weapon Boost",
-           "name_url": "https://ddowiki.com/page/Mythic_Boost",
-           "fullText": "Mythic Weapon Boost +2 or +4"
-          }
-         ]
-        }
-       ],
-       "locationInformation": [
-        {
-         "location": "Tavern Brawl",
-         "location_url": "https://ddowiki.com/page/Tavern_Brawl",
-         "locationExtra": ", End Chest"
-        }
-       ]
-      }
-     ]
-    }
-   ]
-  },
-  {
-   "weapon": [
-    {
-     "name": "The Wide Open Sky*",
-     "damangeAndType": "5[1d4+3] + 15 Pierce, Good, Magic",
-     "minLevel": "29",
-     "binding": "Bound to Character on Acquire",
-     "quest": "Project Nemesis, Warded Chest",
-     "criticalProfile": "",
-     "enchantments": "+15 Enhancement Bonus",
-     "enchantments_url": "https://ddowiki.com/page/Enhancement_bonus",
-     "itemId": "The Wide Open Sky",
-     "url": "https://ddowiki.com/page/Item:The_Wide_Open_Sky",
-     "errata": ""
-    }
-   ]
-  },
-  {
-   "weapon": [
-    {
-     "name": "Lynnabel's Bug Killer (level 30)*",
-     "damangeAndType": "5[2d4] + 14 Pierce, Magic",
-     "minLevel": "30",
-     "binding": "Bound to Account on Acquire",
-     "quest": "Anniversary Party",
-     "criticalProfile": "",
-     "enchantments": "+14 Enhancement Bonus",
-     "enchantments_url": "https://ddowiki.com/page/Enhancement_bonus",
-     "itemId": "Lynnabel's Bug Killer (level 30)",
-     "url": "https://ddowiki.com/page/Item:Lynnabel%27s_Bug_Killer_(level_30)",
-     "errata": ""
-    }
-   ]
-  }
- ]
+    ]
 }

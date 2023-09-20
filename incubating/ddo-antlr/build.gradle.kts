@@ -9,7 +9,6 @@ plugins {
     id("code-quality")
     idea
 //    id("djaxonomy.kotlin-test-conventions")
-
 }
 
 dependencies {
@@ -28,14 +27,14 @@ dependencies {
 //    testRuntimeOnly(group = "co.helmethair", name = "scalatest-junit-runner")
     testRuntimeOnly(group = "org.junit.vintage", name = "junit-vintage-engine")
     testRuntimeOnly(group = "org.junit.jupiter", name = "junit-jupiter-engine")
-
 }
 
 repositories {
     mavenCentral()
 }
 
-val antlrJavaPath = PackagePath(project.layout.buildDirectory.dir("generated-src/java").get().asFile.path, "io.truthencode.ddo.grammar.antlr")
+val antlrJavaPath =
+    PackagePath(project.layout.buildDirectory.dir("generated-src/java").get().asFile.path, "io.truthencode.ddo.grammar.antlr")
 
 data class PackagePath(val source: String, val packageName: String) {
     /**
@@ -43,6 +42,7 @@ data class PackagePath(val source: String, val packageName: String) {
      * This should generally be similar to 'src/generated/java'
      */
     val baseOutputFolder: File = File(source)
+
     fun packageToPath(packageId: String): File {
         val ps = System.getProperty("file.separator")
         val np = packageId.replace(".", ps)
@@ -52,13 +52,11 @@ data class PackagePath(val source: String, val packageName: String) {
 
     val packageFolder: File
         get() = packageToPath(packageName)
-
 }
 // src/generated/java/EnchantmentsParserVisitor.java
 sourceSets {
     named("main") {
         java.sourceDirectories.files.plus(antlrJavaPath.baseOutputFolder)
-
     }
 }
 
@@ -71,14 +69,12 @@ idea {
     }
 }
 
-
 kotlin {
     this.sourceSets.named("main") {
 //        kotlin.srcDir(antlrJavaPath.baseOutputFolder)
         this.kotlin.sourceDirectories.plus(antlrJavaPath.baseOutputFolder)
     }
 }
-
 
 tasks {
     generateGrammarSource {
@@ -87,7 +83,6 @@ tasks {
         arguments = arguments + listOf("-visitor", "-long-messages", "-package", "io.truthencode.ddo.grammer.antlr")
         outputDirectory = antlrJavaPath.packageFolder
 //        logger.error("outputting generated antlr classes to ${antlrJavaPath.packageFolder}")
-
     }
 
     withType(KotlinCompile::class) {
@@ -106,13 +101,13 @@ tasks {
 //    "test"(Test::class) {
 //        useJUnitPlatform {
 //            includeEngines = setOf("junit-jupiter", "vintage")
-////            if (ci.isCi)
-////                excludeTags = setOf(
-////                    "Integration",
-////                    "io.truthencode.tags.Integration",
-////                    "FunctionOnly",
-////                    "io.truthencode.tags.FunctionOnly"
-////                )
+// //            if (ci.isCi)
+// //                excludeTags = setOf(
+// //                    "Integration",
+// //                    "io.truthencode.tags.Integration",
+// //                    "FunctionOnly",
+// //                    "io.truthencode.tags.FunctionOnly"
+// //                )
 //            testLogging {
 //                events("passed", "skipped", "failed")
 //            }

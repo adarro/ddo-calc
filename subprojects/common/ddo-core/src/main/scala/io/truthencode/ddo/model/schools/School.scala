@@ -28,6 +28,7 @@ import scala.collection.immutable.IndexedSeq
  * Represents one of the eight schools of magic.
  */
 sealed trait School extends EnumEntry with DisplayName with FriendlyDisplay {
+
   /**
    * Sets or maps the source text for the DisplayName.
    *

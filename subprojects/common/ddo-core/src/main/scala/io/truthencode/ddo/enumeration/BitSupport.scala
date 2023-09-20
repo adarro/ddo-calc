@@ -19,7 +19,7 @@ package io.truthencode.ddo.enumeration
 
 import enumeratum.EnumEntry
 
-import scala.reflect.{ClassTag, classTag}
+import scala.reflect.{classTag, ClassTag}
 
 /**
  * Created by adarr on 1/22/2017.

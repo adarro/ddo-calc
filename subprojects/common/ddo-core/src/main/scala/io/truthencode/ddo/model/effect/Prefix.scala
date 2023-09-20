@@ -26,6 +26,7 @@ trait HasPrefix extends Prefix {
 trait SecondaryPrefix extends Affix
 
 trait HasSecondaryPrefix extends SecondaryPrefix {
+
   /**
    * Secondary prefix
    */

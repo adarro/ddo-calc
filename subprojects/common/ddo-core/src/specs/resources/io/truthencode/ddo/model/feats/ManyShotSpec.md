@@ -19,7 +19,7 @@ to 1.5x your Base Attack Bonus with Longbows and Shortbows.
 Requirements needed to select this feat
 
 | [ ][prereq] [Prerequisites][result] |
-|-------------------------------------|
+| ----------------------------------- |
 | Base Attack Bonus: 6                |
 | Dexterity: 17                       |
 | Point Blank Shot                    |
@@ -30,10 +30,10 @@ Requirements needed to select this feat
 Can be selected in addition to the normal level progression
 
 | [ ][bonus] [Bonus Feats][result] |
-|----------------------------------|
+| -------------------------------- |
 | Fighter: 1                       |
 | Fighter: 2                       |
-| Fighter: 4                       | 
+| Fighter: 4                       |
 | Fighter: 6                       |
 | Fighter: 8                       |
 | Fighter: 10                      |
@@ -48,15 +48,10 @@ Can be selected in addition to the normal level progression
 Includes any classes or other exceptions that provide this automatically
 
 | [ ][granted] [Granted][result] |
-|--------------------------------|
+| ------------------------------ |
 | Ranger: 6                      |
 
 [prereq]: - "c:verify-rows=#feat:verifyPrerequisites()"
-
 [bonus]: - "c:verify-rows=#feat:verifyBonusSelections()"
-
 [granted]: - "c:verify-rows=#feat:verifyGrantSelections()"
-
 [result]: - "?=#feat"
-
-

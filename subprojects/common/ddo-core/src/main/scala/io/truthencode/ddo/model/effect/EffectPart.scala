@@ -23,7 +23,7 @@ import io.truthencode.ddo.NoDefault
 import io.truthencode.ddo.enhancement.BonusType
 import io.truthencode.ddo.model.abilities.ActiveAbilities
 import io.truthencode.ddo.model.attribute.{Attribute => Attributes}
-import io.truthencode.ddo.model.feats.{GeneralFeat, WeaponProficiencyBase, Feat => Feats}
+import io.truthencode.ddo.model.feats.{Feat => Feats, GeneralFeat, WeaponProficiencyBase}
 import io.truthencode.ddo.model.skill.{Skill => Skills}
 import io.truthencode.ddo.model.stats.{BasicStat, MissChance}
 
@@ -166,7 +166,7 @@ object EffectPart extends Enum[EffectPart] with NoDefault[EffectPart] with Searc
   }
 
   case object DoubleShot extends EffectPart {
-      override def searchPattern(target: String): String = s"DoubleShot"
+    override def searchPattern(target: String): String = s"DoubleShot"
   }
 
   case object Health extends EffectPart {

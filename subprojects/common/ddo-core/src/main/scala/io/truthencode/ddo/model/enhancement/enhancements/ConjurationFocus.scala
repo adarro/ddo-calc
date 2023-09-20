@@ -21,6 +21,7 @@ import io.truthencode.ddo.model.enhancement.enhancements.classbased.BombardierTi
 
 trait ConjurationFocus extends BombardierTierFive with ClassEnhancementImpl {
   override lazy val description: Option[String] = Some("+2 to Conjuration DCs")
+
   /**
    * Some enhancements can be taken multiple times (generally up to three)
    */

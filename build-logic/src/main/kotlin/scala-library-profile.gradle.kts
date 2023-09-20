@@ -18,5 +18,4 @@
 plugins {
     id("scala-conventions")
     id("java-library-conventions")
-
 }

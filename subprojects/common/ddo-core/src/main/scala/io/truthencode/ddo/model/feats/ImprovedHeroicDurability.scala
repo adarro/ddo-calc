@@ -21,7 +21,12 @@ import io.truthencode.ddo.enhancement.BonusType
 import io.truthencode.ddo.model.effect
 import io.truthencode.ddo.model.effect.TriggerEvent
 import io.truthencode.ddo.model.effect.features.{FeaturesImpl, HitPointAmountFeature}
-import io.truthencode.ddo.support.requisite.{FeatRequisiteImpl, FreeFeat, GrantsToCharacterLevel, LevelRequisiteImpl}
+import io.truthencode.ddo.support.requisite.{
+  FeatRequisiteImpl,
+  FreeFeat,
+  GrantsToCharacterLevel,
+  LevelRequisiteImpl
+}
 
 /**
  * This feat increases the character maximum hit points by +5. Automatically granted at levels

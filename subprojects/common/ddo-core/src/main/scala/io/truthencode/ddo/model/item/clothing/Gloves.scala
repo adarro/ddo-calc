@@ -20,6 +20,7 @@ package io.truthencode.ddo.model.item.clothing
 import io.truthencode.ddo.{WearLocation, Wearable}
 
 trait Gloves extends Clothing with Wearable {
+
   /**
    * A bitmask that corresponds to one or more [io.truthencode.ddo.WearLocation] values.
    */

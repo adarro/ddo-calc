@@ -16,1830 +16,1723 @@
  * limitations under the License.
  */
 {
- "item": [
-  {
-   "weapon": [
-    {
-     "name": "Pick of Endless Light (level 4)",
-     "damangeAndType": "[1d4] + 2 Pierce, Magic",
-     "minLevel": "4",
-     "binding": "Bound to Account on Acquire",
-     "quest": "The Night Revels",
-     "criticalProfile": "",
-     "enchantments": "+2 Enhancement Bonus",
-     "enchantments_url": "https://ddowiki.com/page/Enhancement_bonus",
-     "errata": "",
-     "weaponDetail": [
-      {
-       "proficiency": "Martial Weapon Proficiency",
-       "name": "Pick of Endless Light (level 4)",
-       "damangeAndType": "[1d4] + 2 Pierce, Magic",
-       "criticalThreatRange": "20 / x4",
-       "weaponType": [
+    "item": [
         {
-         "weaponCategory": "Light Pick",
-         "damageCategory": "/ Piercing weapons"
+            "weapon": [
+                {
+                    "name": "Pick of Endless Light (level 4)",
+                    "damangeAndType": "[1d4] + 2 Pierce, Magic",
+                    "minLevel": "4",
+                    "binding": "Bound to Account on Acquire",
+                    "quest": "The Night Revels",
+                    "criticalProfile": "",
+                    "enchantments": "+2 Enhancement Bonus",
+                    "enchantments_url": "https://ddowiki.com/page/Enhancement_bonus",
+                    "errata": "",
+                    "weaponDetail": [
+                        {
+                            "proficiency": "Martial Weapon Proficiency",
+                            "name": "Pick of Endless Light (level 4)",
+                            "damangeAndType": "[1d4] + 2 Pierce, Magic",
+                            "criticalThreatRange": "20 / x4",
+                            "weaponType": [
+                                {
+                                    "weaponCategory": "Light Pick",
+                                    "damageCategory": "/ Piercing weapons"
+                                }
+                            ],
+                            "absRaceRequired": "None",
+                            "minLevel": "4",
+                            "requiredTrait": "None",
+                            "umd": "No UMD needed",
+                            "handedness": "",
+                            "attackMod": "STR",
+                            "damageMod": "STR",
+                            "binding": "Bound to Account on Acquire",
+                            "binding_url": "https://ddowiki.com/page/Bind",
+                            "durability": "85",
+                            "material": "Steel",
+                            "material_url": "https://ddowiki.com/page/Steel",
+                            "hardness": "12",
+                            "baseValue": "1,620pp",
+                            "weight": "3 lbs",
+                            "upgradable": "Not upgradeable",
+                            "description": "This pick is light upon light; both brilliant and lacking in weight.",
+                            "enchantments": [
+                                {
+                                    "enchantment": [
+                                        {
+                                            "name": "+2 Enhancement Bonus",
+                                            "name_url": "https://ddowiki.com/page/Enhancement_bonus",
+                                            "fullText": "+2 Enhancement Bonus"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "enchantment": [
+                                        {
+                                            "name": "Lesser Undead Bane",
+                                            "name_url": "https://ddowiki.com/page/Bane_(enchantment)",
+                                            "fullText": "Lesser Undead Bane"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "enchantment": [
+                                        {
+                                            "name": "Incandescence",
+                                            "name_url": "https://ddowiki.com/page/Incandescence",
+                                            "fullText": "Incandescence"
+                                        }
+                                    ]
+                                }
+                            ],
+                            "locationInformation": [
+                                {
+                                    "location": "Joe Candymaker",
+                                    "location_url": "https://ddowiki.com/page/Joe_Candymaker",
+                                    "locationExtra": ", Turn in various ingredients at"
+                                }
+                            ]
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "weapon": [
+                {
+                    "name": "+3 Combustion Scorched Light Pick*",
+                    "damangeAndType": "1.50[1d4] + 3 Pierce, Magic",
+                    "minLevel": "7",
+                    "binding": "Unbound",
+                    "quest": "Temple of Elemental Evil Part One, and Temple of Elemental Evil Part Two any chest",
+                    "criticalProfile": "",
+                    "enchantments": "Spellcasting Implement +9",
+                    "enchantments_url": "https://ddowiki.com/page/Spellcasting_Implement",
+                    "itemId": "+3 Combustion Scorched Light Pick",
+                    "url": "https://ddowiki.com/page/Item:%2B3_Combustion_Scorched_Light_Pick",
+                    "errata": ""
+                }
+            ]
+        },
+        {
+            "weapon": [
+                {
+                    "name": "+3 Energized Light Pick*",
+                    "damangeAndType": "1.50[1d4] + 3 Pierce, Magic",
+                    "minLevel": "7",
+                    "binding": "Unbound",
+                    "quest": "Temple of Elemental Evil Part One, and Temple of Elemental Evil Part Two any chest",
+                    "criticalProfile": "",
+                    "enchantments": "+3 Enhancement Bonus",
+                    "enchantments_url": "https://ddowiki.com/page/Enhancement_bonus",
+                    "itemId": "+3 Energized Light Pick",
+                    "url": "https://ddowiki.com/page/Item:%2B3_Energized_Light_Pick",
+                    "errata": ""
+                }
+            ]
+        },
+        {
+            "weapon": [
+                {
+                    "name": "+3 Etched Light Pick*",
+                    "damangeAndType": "1.50[1d4] + 3 Pierce, Magic",
+                    "minLevel": "7",
+                    "binding": "Unbound",
+                    "quest": "Temple of Elemental Evil Part One, and Temple of Elemental Evil Part Two any chest",
+                    "criticalProfile": "",
+                    "enchantments": "+3 Enhancement Bonus",
+                    "enchantments_url": "https://ddowiki.com/page/Enhancement_bonus",
+                    "itemId": "+3 Etched Light Pick",
+                    "url": "https://ddowiki.com/page/Item:%2B3_Etched_Light_Pick",
+                    "errata": ""
+                }
+            ]
+        },
+        {
+            "weapon": [
+                {
+                    "name": "+3 Glaciation Doused Light Pick*",
+                    "damangeAndType": "1.50[1d4] + 3 Pierce, Magic",
+                    "minLevel": "7",
+                    "binding": "Unbound",
+                    "quest": "Temple of Elemental Evil Part One, and Temple of Elemental Evil Part Two any chest",
+                    "criticalProfile": "",
+                    "enchantments": "Spellcasting Implement +9",
+                    "enchantments_url": "https://ddowiki.com/page/Spellcasting_Implement",
+                    "itemId": "+3 Glaciation Doused Light Pick",
+                    "url": "https://ddowiki.com/page/Item:%2B3_Glaciation_Doused_Light_Pick",
+                    "errata": ""
+                }
+            ]
+        },
+        {
+            "weapon": [
+                {
+                    "name": "+3 Magnetism Electrified Light Pick*",
+                    "damangeAndType": "1.50[1d4] + 3 Pierce, Magic",
+                    "minLevel": "7",
+                    "binding": "Unbound",
+                    "quest": "Temple of Elemental Evil Part One, and Temple of Elemental Evil Part Two any chest",
+                    "criticalProfile": "",
+                    "enchantments": "Spellcasting Implement +9",
+                    "enchantments_url": "https://ddowiki.com/page/Spellcasting_Implement",
+                    "itemId": "+3 Magnetism Electrified Light Pick",
+                    "url": "https://ddowiki.com/page/Item:%2B3_Magnetism_Electrified_Light_Pick",
+                    "errata": ""
+                }
+            ]
+        },
+        {
+            "weapon": [
+                {
+                    "name": "+3 Quenched Light Pick",
+                    "damangeAndType": "1.50[1d4] + 3 Pierce, Magic",
+                    "minLevel": "7",
+                    "binding": "Unbound",
+                    "quest": "Temple of Elemental Evil Part One, and Temple of Elemental Evil Part Two any chest",
+                    "criticalProfile": "",
+                    "enchantments": "+3 Enhancement Bonus",
+                    "enchantments_url": "https://ddowiki.com/page/Enhancement_bonus",
+                    "errata": "",
+                    "weaponDetail": [
+                        {
+                            "proficiency": "Martial Weapon Proficiency",
+                            "name": "+3 Quenched Light Pick",
+                            "damangeAndType": "1.50[1d4] + 3 Pierce, Magic",
+                            "criticalThreatRange": "20 / x4",
+                            "weaponType": [
+                                {
+                                    "weaponCategory": "Light Pick",
+                                    "damageCategory": "/ Piercing weapons"
+                                }
+                            ],
+                            "absRaceRequired": "None",
+                            "minLevel": "7",
+                            "requiredTrait": "None",
+                            "umd": "No UMD needed",
+                            "handedness": "",
+                            "attackMod": "STR",
+                            "damageMod": "STR",
+                            "binding": "Unbound",
+                            "binding_url": "https://ddowiki.com/page/Bind",
+                            "durability": "115",
+                            "material": "Steel",
+                            "material_url": "https://ddowiki.com/page/Steel",
+                            "hardness": "15",
+                            "baseValue": "2,820pp",
+                            "weight": "3 lbs",
+                            "upgradable": "ToEE Crafting",
+                            "description": "A weapon found deep within the Temple of Elemental Evil.",
+                            "enchantments": [
+                                {
+                                    "enchantment": [
+                                        {
+                                            "name": "+3 Enhancement Bonus",
+                                            "name_url": "https://ddowiki.com/page/Enhancement_bonus",
+                                            "fullText": "+3 Enhancement Bonus"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "enchantment": [
+                                        {
+                                            "name": "Upgradeable Item (Temple of Elemental Evil)",
+                                            "name_url": "https://ddowiki.com/page/Overgrown_Workbench",
+                                            "fullText": "Upgradeable Item (Temple of Elemental Evil)"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "enchantment": [{}]
+                                },
+                                {
+                                    "enchantment": [
+                                        {
+                                            "name": "Mythic Weapon Boost",
+                                            "name_url": "https://ddowiki.com/page/Mythic_Boost",
+                                            "fullText": "Mythic Weapon Boost +2 or +4"
+                                        }
+                                    ]
+                                }
+                            ],
+                            "locationInformation": [
+                                {
+                                    "location": "Temple of Elemental Evil Part Two",
+                                    "location_url": "https://ddowiki.com/page/Temple_of_Elemental_Evil_Part_Two",
+                                    "locationExtra": ", and"
+                                }
+                            ]
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "weapon": [
+                {
+                    "name": "+3 Smoldering Light Pick*",
+                    "damangeAndType": "1.50[1d4] + 3 Pierce, Magic",
+                    "minLevel": "7",
+                    "binding": "Unbound",
+                    "quest": "Temple of Elemental Evil Part One, and Temple of Elemental Evil Part Two any chest",
+                    "criticalProfile": "",
+                    "enchantments": "+3 Enhancement Bonus",
+                    "enchantments_url": "https://ddowiki.com/page/Enhancement_bonus",
+                    "itemId": "+3 Smoldering Light Pick",
+                    "url": "https://ddowiki.com/page/Item:%2B3_Smoldering_Light_Pick",
+                    "errata": ""
+                }
+            ]
+        },
+        {
+            "weapon": [
+                {
+                    "name": "+3 Corrosion Caustic Light Pick*",
+                    "damangeAndType": "1.50[1d4] + 3 Pierce, Magic",
+                    "minLevel": "7",
+                    "binding": "Unbound",
+                    "quest": "Temple of Elemental Evil Part One, and Temple of Elemental Evil Part Two any chest",
+                    "criticalProfile": "",
+                    "enchantments": "Spellcasting Implement +9",
+                    "enchantments_url": "https://ddowiki.com/page/Spellcasting_Implement",
+                    "itemId": "+3 Corrosion Caustic Light Pick",
+                    "url": "https://ddowiki.com/page/Item:%2B3_Corrosion_Caustic_Light_Pick",
+                    "errata": ""
+                }
+            ]
+        },
+        {
+            "weapon": [
+                {
+                    "name": "Pick of Endless Light (level 8)",
+                    "damangeAndType": "[1d4] + 3 Pierce, Magic",
+                    "minLevel": "8",
+                    "binding": "Bound to Account on Acquire",
+                    "quest": "The Night Revels",
+                    "criticalProfile": "",
+                    "enchantments": "+3 Enhancement Bonus",
+                    "enchantments_url": "https://ddowiki.com/page/Enhancement_bonus",
+                    "errata": "",
+                    "weaponDetail": [
+                        {
+                            "proficiency": "Martial Weapon Proficiency",
+                            "name": "Pick of Endless Light (level 8)",
+                            "damangeAndType": "[1d4] + 3 Pierce, Magic",
+                            "criticalThreatRange": "20 / x4",
+                            "weaponType": [
+                                {
+                                    "weaponCategory": "Light Pick",
+                                    "damageCategory": "/ Piercing weapons"
+                                }
+                            ],
+                            "absRaceRequired": "None",
+                            "minLevel": "8",
+                            "requiredTrait": "None",
+                            "umd": "No UMD needed",
+                            "handedness": "",
+                            "attackMod": "STR",
+                            "damageMod": "STR",
+                            "binding": "Bound to Account on Acquire",
+                            "binding_url": "https://ddowiki.com/page/Bind",
+                            "durability": "115",
+                            "material": "Steel",
+                            "material_url": "https://ddowiki.com/page/Steel",
+                            "hardness": "15",
+                            "baseValue": "3,220pp",
+                            "weight": "3 lbs",
+                            "upgradable": "Night Revels to Pick of Endless Light (Level 12)",
+                            "description": "This pick is light upon light; both brilliant and lacking in weight.",
+                            "enchantments": [
+                                {
+                                    "enchantment": [
+                                        {
+                                            "name": "+3 Enhancement Bonus",
+                                            "name_url": "https://ddowiki.com/page/Enhancement_bonus",
+                                            "fullText": "+3 Enhancement Bonus"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "enchantment": [
+                                        {
+                                            "name": "Undead Bane",
+                                            "name_url": "https://ddowiki.com/page/Bane_(enchantment)",
+                                            "fullText": "Undead Bane"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "enchantment": [
+                                        {
+                                            "name": "Incandescence",
+                                            "name_url": "https://ddowiki.com/page/Incandescence",
+                                            "fullText": "Incandescence"
+                                        }
+                                    ]
+                                }
+                            ],
+                            "locationInformation": [
+                                {
+                                    "location": "Joe Candymaker",
+                                    "location_url": "https://ddowiki.com/page/Joe_Candymaker",
+                                    "locationExtra": ", Turn in"
+                                }
+                            ]
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "weapon": [
+                {
+                    "name": "Pick of Endless Light (level 12)",
+                    "damangeAndType": "1.50[1d4] + 4 Pierce, Magic",
+                    "minLevel": "12",
+                    "binding": "Bound to Account on Acquire",
+                    "quest": "The Night Revels",
+                    "criticalProfile": "",
+                    "enchantments": "+4 Enhancement Bonus",
+                    "enchantments_url": "https://ddowiki.com/page/Enhancement_bonus",
+                    "errata": "",
+                    "weaponDetail": [
+                        {
+                            "proficiency": "Martial Weapon Proficiency",
+                            "name": "Pick of Endless Light (level 12)",
+                            "damangeAndType": "1.50[1d4] + 4 Pierce, Magic",
+                            "criticalThreatRange": "20 / x4",
+                            "weaponType": [
+                                {
+                                    "weaponCategory": "Light Pick",
+                                    "damageCategory": "/ Piercing weapons"
+                                }
+                            ],
+                            "absRaceRequired": "None",
+                            "minLevel": "12",
+                            "requiredTrait": "None",
+                            "umd": "No UMD needed",
+                            "handedness": "",
+                            "attackMod": "STR",
+                            "damageMod": "STR",
+                            "binding": "Bound to Account on Acquire",
+                            "binding_url": "https://ddowiki.com/page/Bind",
+                            "durability": "135",
+                            "material": "Steel",
+                            "material_url": "https://ddowiki.com/page/Steel",
+                            "hardness": "17",
+                            "baseValue": "4,820pp",
+                            "weight": "3 lbs",
+                            "upgradable": "Night Revels to Pick of Endless Light (Level 16)",
+                            "description": "This pick is light upon light; both brilliant and lacking in weight.",
+                            "enchantments": [
+                                {
+                                    "enchantment": [
+                                        {
+                                            "name": "+4 Enhancement Bonus",
+                                            "name_url": "https://ddowiki.com/page/Enhancement_bonus",
+                                            "fullText": "+4 Enhancement Bonus"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "enchantment": [
+                                        {
+                                            "name": "Undead Bane",
+                                            "name_url": "https://ddowiki.com/page/Bane_(enchantment)",
+                                            "fullText": "Undead Bane"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "enchantment": [
+                                        {
+                                            "name": "Brilliance",
+                                            "name_url": "https://ddowiki.com/page/Brilliance_(enchantment)",
+                                            "fullText": "Brilliance"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "enchantment": [
+                                        {
+                                            "name": "Light Bringer",
+                                            "name_url": "https://ddowiki.com/page/Light_Bringer",
+                                            "fullText": "Light Bringer"
+                                        }
+                                    ]
+                                }
+                            ],
+                            "locationInformation": [
+                                {
+                                    "location": "Joe Candymaker",
+                                    "location_url": "https://ddowiki.com/page/Joe_Candymaker",
+                                    "locationExtra": ", Turn in"
+                                }
+                            ]
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "weapon": [
+                {
+                    "name": "Alchemical Light Pick",
+                    "damangeAndType": "2 [1d4] + 5 Pierce, Magic",
+                    "minLevel": "12",
+                    "binding": "Unbound",
+                    "quest": "The Master Artificer, Either End chest",
+                    "criticalProfile": "",
+                    "enchantments": "+5 Enhancement Bonus",
+                    "enchantments_url": "https://ddowiki.com/page/Enhancement_bonus",
+                    "errata": "",
+                    "weaponDetail": [
+                        {
+                            "proficiency": "Martial Weapon Proficiency",
+                            "name": "Alchemical Light Pick",
+                            "damangeAndType": "2 [1d4] + 5 Pierce, Magic",
+                            "criticalThreatRange": "20 / x4",
+                            "weaponType": [
+                                {
+                                    "weaponCategory": "Light Pick",
+                                    "damageCategory": "/ Piercing weapons"
+                                }
+                            ],
+                            "absRaceRequired": "None",
+                            "minLevel": "12",
+                            "requiredTrait": "None",
+                            "umd": "No UMD needed",
+                            "handedness": "",
+                            "attackMod": "STR",
+                            "damageMod": "STR",
+                            "binding": "Unbound",
+                            "binding_url": "https://ddowiki.com/page/Bind",
+                            "durability": "135",
+                            "material": "Steel",
+                            "material_url": "https://ddowiki.com/page/Steel",
+                            "hardness": "17",
+                            "baseValue": "10,200pp 4gp",
+                            "weight": "3 lbs",
+                            "upgradable": "Alchemical Crafting",
+                            "description": "A smaller hammer with a sharp, pointed head designed to concentrate the force of its blow on a small area. Similar to a miner's pick, but smaller and reinforced for battle.",
+                            "enchantments": [
+                                {
+                                    "enchantment": [
+                                        {
+                                            "name": "+5 Enhancement Bonus",
+                                            "name_url": "https://ddowiki.com/page/Enhancement_bonus",
+                                            "fullText": "+5 Enhancement Bonus"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "enchantment": [
+                                        {
+                                            "name": "Alchemical (Prototype)",
+                                            "name_url": "https://ddowiki.com/page/Alchemical_Crafting",
+                                            "fullText": "Alchemical (Prototype)"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "enchantment": [
+                                        {
+                                            "name": "Mythic Weapon Boost",
+                                            "name_url": "https://ddowiki.com/page/Mythic_Boost",
+                                            "fullText": "Mythic Weapon Boost +2 or +4"
+                                        }
+                                    ]
+                                }
+                            ],
+                            "locationInformation": [
+                                {
+                                    "location": "The Master Artificer",
+                                    "location_url": "https://ddowiki.com/page/The_Master_Artificer",
+                                    "locationExtra": ", Either End chest"
+                                }
+                            ]
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "weapon": [
+                {
+                    "name": "Green Steel Light Pick",
+                    "damangeAndType": "1.50 [1d4] + 5 Pierce, Evil, Magic",
+                    "minLevel": "12",
+                    "binding": "Bound to Character on Equip",
+                    "quest": "Altar of Fecundity, Manufactured Ingredient Recipes",
+                    "criticalProfile": "",
+                    "enchantments": "+5 Enhancement Bonus",
+                    "enchantments_url": "https://ddowiki.com/page/Enhancement_bonus",
+                    "errata": "",
+                    "weaponDetail": [
+                        {
+                            "proficiency": "Martial Weapon Proficiency",
+                            "name": "Green Steel Light Pick",
+                            "damangeAndType": "1.50 [1d4] + 5 Pierce, Evil, Magic",
+                            "criticalThreatRange": "20 / x4",
+                            "weaponType": [
+                                {
+                                    "weaponCategory": "Light Pick",
+                                    "damageCategory": "/ Piercing weapons"
+                                }
+                            ],
+                            "absRaceRequired": "None",
+                            "minLevel": "12",
+                            "requiredTrait": "None",
+                            "umd": "No UMD needed",
+                            "handedness": "",
+                            "attackMod": "STR",
+                            "damageMod": "STR",
+                            "binding": "Bound to Character on Equip",
+                            "binding_url": "https://ddowiki.com/page/Bind",
+                            "durability": "115",
+                            "material": "Steel",
+                            "material_url": "https://ddowiki.com/page/Steel",
+                            "hardness": "15",
+                            "baseValue": "5,400pp 4gp",
+                            "weight": "3 lbs",
+                            "upgradable": "Green Steel",
+                            "tips": [
+                                {
+                                    "tip": "+5 Green Steel Light Pick"
+                                },
+                                {
+                                    "tip": "Ore of Travail\nLocust Husk\nChipmunk Funk\nGlistening Pebbles\nGreen Briar Twigs\nEberron Energy Cell"
+                                },
+                                {
+                                    "tip": "Wondrous Balm\nLocust Husk\nGlistening Pebbles OR Green Briar Twigs\nBitterscrub Fungus\nLammanian Lily Petals\nEberron Energy Cell"
+                                },
+                                {
+                                    "tip": "Red Taper\nGlistening Pebbles\nGreen Briar Twigs\nLammanian Lily Petals\nChipmunk Funk\nEberron Energy Cell"
+                                },
+                                {
+                                    "tip": "Shavarath Signet Stone\nShavarath Stone of Might\nShavarath Stone of Battle\nShavarath Stone of Strategy\nShavarath Stone of Foresight\nShavarath Stone of Victory"
+                                },
+                                {
+                                    "tip": "Medium Splintered Horn"
+                                }
+                            ],
+                            "description": "A small hammer with a sharp, pointed head designed to concentrate the force of its blow on a small area. Similar to a miner's pick, but smaller and reinforced for battle.",
+                            "enchantments": [
+                                {
+                                    "enchantment": [
+                                        {
+                                            "name": "+5 Enhancement Bonus",
+                                            "name_url": "https://ddowiki.com/page/Enhancement_bonus",
+                                            "fullText": "+5 Enhancement Bonus"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "enchantment": [
+                                        {
+                                            "name": "Green Steel",
+                                            "name_url": "https://ddowiki.com/page/Green_Steel",
+                                            "fullText": "Green Steel"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "enchantment": [
+                                        {
+                                            "name": "Mythic Weapon Boost",
+                                            "name_url": "https://ddowiki.com/page/Mythic_Boost",
+                                            "fullText": "Mythic Weapon Boost +2 or +4"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "oneOfEnchantment": [{}, {}, {}, {}, {}],
+                                    "enchantment": [
+                                        {
+                                            "name": "Ore of Travail",
+                                            "name_url": "https://ddowiki.com/page/Ore_of_Travail",
+                                            "fullText": "Locust Husk\nChipmunk Funk\nGlistening Pebbles\nGreen Briar Twigs\nEberron Energy Cell"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "oneOfEnchantment": [{}, {}, {}, {}, {}],
+                                    "enchantment": [
+                                        {
+                                            "name": "Wondrous Balm",
+                                            "name_url": "https://ddowiki.com/page/Wondrous_Balm",
+                                            "fullText": "Locust Husk\nGlistening Pebbles OR Green Briar Twigs\nBitterscrub Fungus\nLammanian Lily Petals\nEberron Energy Cell"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "oneOfEnchantment": [{}, {}, {}, {}, {}],
+                                    "enchantment": [
+                                        {
+                                            "name": "Red Taper",
+                                            "name_url": "https://ddowiki.com/page/Red_Taper",
+                                            "fullText": "Glistening Pebbles\nGreen Briar Twigs\nLammanian Lily Petals\nChipmunk Funk\nEberron Energy Cell"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "oneOfEnchantment": [{}, {}, {}, {}, {}],
+                                    "enchantment": [{}]
+                                },
+                                {
+                                    "enchantment": [
+                                        {
+                                            "name": "Medium Splintered Horn",
+                                            "name_url": "https://ddowiki.com/page/Medium_Splintered_Horn",
+                                            "fullText": "Medium Splintered Horn"
+                                        }
+                                    ]
+                                }
+                            ],
+                            "locationInformation": [
+                                {
+                                    "location": "Manufactured Ingredient Recipes",
+                                    "location_url": "https://ddowiki.com/page/Altar_of_Fecundity_-_Manufactured_Ingredient_Recipes",
+                                    "locationExtra": ","
+                                }
+                            ]
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "weapon": [
+                {
+                    "name": "Planar Spike",
+                    "damangeAndType": "1.5[1d4] +5 Pierce, Magic",
+                    "minLevel": "14",
+                    "binding": "Bound to Account on Acquire",
+                    "quest": "Toxic Treatment, End chest",
+                    "criticalProfile": "",
+                    "enchantments": "+5 Enhancement Bonus",
+                    "enchantments_url": "https://ddowiki.com/page/Enhancement_bonus",
+                    "errata": "",
+                    "weaponDetail": [
+                        {
+                            "proficiency": "Martial Weapon Proficiency",
+                            "name": "Planar Spike",
+                            "damangeAndType": "1.5[1d4] +5 Pierce, Magic",
+                            "criticalThreatRange": "20 / x4",
+                            "weaponType": [
+                                {
+                                    "weaponCategory": "Light Pick",
+                                    "damageCategory": "/ Piercing weapons"
+                                }
+                            ],
+                            "absRaceRequired": "None",
+                            "minLevel": "14",
+                            "requiredTrait": "None",
+                            "umd": "No UMD needed",
+                            "handedness": "",
+                            "attackMod": "STR",
+                            "damageMod": "STR",
+                            "binding": "Bound to Account on Acquire",
+                            "binding_url": "https://ddowiki.com/page/Bind",
+                            "durability": "205",
+                            "material": "Steel",
+                            "material_url": "https://ddowiki.com/page/Steel",
+                            "hardness": "24",
+                            "baseValue": "5,600pp 4gp",
+                            "weight": "3 lbs",
+                            "upgradable": "Not upgradeable",
+                            "description": "Something very wrong lies somewhere deep within.",
+                            "enchantments": [
+                                {
+                                    "enchantment": [
+                                        {
+                                            "name": "+5 Enhancement Bonus",
+                                            "name_url": "https://ddowiki.com/page/Enhancement_bonus",
+                                            "fullText": "+5 Enhancement Bonus"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "enchantment": [
+                                        {
+                                            "name": "Trace of Madness",
+                                            "name_url": "https://ddowiki.com/page/Trace_of_Madness",
+                                            "fullText": "Trace of Madness"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "enchantment": [
+                                        {
+                                            "name": "Piercing 3",
+                                            "name_url": "https://ddowiki.com/page/Piercing",
+                                            "fullText": "Piercing 3"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "enchantment": [
+                                        {
+                                            "name": "Heartseeker I",
+                                            "name_url": "https://ddowiki.com/page/Heartseeker",
+                                            "fullText": "Heartseeker I"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "enchantment": [
+                                        {
+                                            "name": "Screeching 8",
+                                            "name_url": "https://ddowiki.com/page/Screeching",
+                                            "fullText": "Screeching 8"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "enchantment": [
+                                        {
+                                            "name": "Maiming 3",
+                                            "name_url": "https://ddowiki.com/page/Maiming",
+                                            "fullText": "Maiming 3"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "oneOfEnchantment": [
+                                        {},
+                                        {},
+                                        {},
+                                        {},
+                                        {},
+                                        {},
+                                        {},
+                                        {},
+                                        {},
+                                        {},
+                                        {},
+                                        {},
+                                        {},
+                                        {},
+                                        {},
+                                        {}
+                                    ],
+                                    "enchantment": [
+                                        {
+                                            "fullText": "Empty Red Augment Slot"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "enchantment": [
+                                        {
+                                            "name": "Mythic Weapon Boost",
+                                            "name_url": "https://ddowiki.com/page/Mythic_Boost",
+                                            "fullText": "Mythic Weapon Boost +2 or +4"
+                                        }
+                                    ]
+                                }
+                            ],
+                            "locationInformation": [
+                                {
+                                    "location": "Toxic Treatment",
+                                    "location_url": "https://ddowiki.com/page/Toxic_Treatment",
+                                    "locationExtra": ", End chest"
+                                }
+                            ]
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "weapon": [
+                {
+                    "name": "Pick of Endless Light (level 16)",
+                    "damangeAndType": "1.50[1d4] + 5 Pierce, Magic",
+                    "minLevel": "16",
+                    "binding": "Bound to Account on Acquire",
+                    "quest": "The Night Revels",
+                    "criticalProfile": "",
+                    "enchantments": "+5 Enhancement Bonus",
+                    "enchantments_url": "https://ddowiki.com/page/Enhancement_bonus",
+                    "errata": "",
+                    "weaponDetail": [
+                        {
+                            "proficiency": "Martial Weapon Proficiency",
+                            "name": "Pick of Endless Light (level 16)",
+                            "damangeAndType": "1.50[1d4] + 5 Pierce, Magic",
+                            "criticalThreatRange": "20 / x4",
+                            "weaponType": [
+                                {
+                                    "weaponCategory": "Light Pick",
+                                    "damageCategory": "/ Piercing weapons"
+                                }
+                            ],
+                            "absRaceRequired": "None",
+                            "minLevel": "16",
+                            "requiredTrait": "None",
+                            "umd": "No UMD needed",
+                            "handedness": "",
+                            "attackMod": "STR",
+                            "damageMod": "STR",
+                            "binding": "Bound to Account on Acquire",
+                            "binding_url": "https://ddowiki.com/page/Bind",
+                            "durability": "155",
+                            "material": "Steel",
+                            "material_url": "https://ddowiki.com/page/Steel",
+                            "hardness": "19",
+                            "baseValue": "6,420pp",
+                            "weight": "3 lbs",
+                            "upgradable": "Night Revels to Pick of Endless Light (Level 20)",
+                            "description": "This pick is light upon light; both brilliant and lacking in weight.",
+                            "enchantments": [
+                                {
+                                    "enchantment": [
+                                        {
+                                            "name": "+5 Enhancement Bonus",
+                                            "name_url": "https://ddowiki.com/page/Enhancement_bonus",
+                                            "fullText": "+5 Enhancement Bonus"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "enchantment": [
+                                        {
+                                            "name": "Greater Undead Bane",
+                                            "name_url": "https://ddowiki.com/page/Bane_(enchantment)",
+                                            "fullText": "Greater Undead Bane"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "enchantment": [
+                                        {
+                                            "name": "Brilliance",
+                                            "name_url": "https://ddowiki.com/page/Brilliance_(enchantment)",
+                                            "fullText": "Brilliance"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "enchantment": [
+                                        {
+                                            "name": "Light Bringer",
+                                            "name_url": "https://ddowiki.com/page/Light_Bringer",
+                                            "fullText": "Light Bringer"
+                                        }
+                                    ]
+                                }
+                            ],
+                            "locationInformation": [
+                                {
+                                    "location": "Joe Candymaker",
+                                    "location_url": "https://ddowiki.com/page/Joe_Candymaker",
+                                    "locationExtra": ", Turn in"
+                                }
+                            ]
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "weapon": [
+                {
+                    "name": "Pick of Endless Light (level 20)",
+                    "damangeAndType": "2[1d4] + 6 Pierce, Magic",
+                    "minLevel": "20",
+                    "binding": "Bound to Account on Acquire",
+                    "quest": "The Night Revels",
+                    "criticalProfile": "",
+                    "enchantments": "+6 Enhancement Bonus",
+                    "enchantments_url": "https://ddowiki.com/page/Enhancement_bonus",
+                    "errata": "",
+                    "weaponDetail": [
+                        {
+                            "proficiency": "Martial Weapon Proficiency",
+                            "name": "Pick of Endless Light (level 20)",
+                            "damangeAndType": "2[1d4] + 6 Pierce, Magic",
+                            "criticalThreatRange": "20 / x4",
+                            "weaponType": [
+                                {
+                                    "weaponCategory": "Light Pick",
+                                    "damageCategory": "/ Piercing weapons"
+                                }
+                            ],
+                            "absRaceRequired": "None",
+                            "minLevel": "20",
+                            "requiredTrait": "None",
+                            "umd": "No UMD needed",
+                            "handedness": "",
+                            "attackMod": "STR",
+                            "damageMod": "STR",
+                            "binding": "Bound to Account on Acquire",
+                            "binding_url": "https://ddowiki.com/page/Bind",
+                            "durability": "175",
+                            "material": "Steel",
+                            "material_url": "https://ddowiki.com/page/Steel",
+                            "hardness": "21",
+                            "baseValue": "8,020pp",
+                            "weight": "3 lbs",
+                            "upgradable": "Night Revels to Pick of Endless Light (Level 24)",
+                            "description": "This pick is light upon light; both brilliant and lacking in weight.",
+                            "enchantments": [
+                                {
+                                    "enchantment": [
+                                        {
+                                            "name": "+6 Enhancement Bonus",
+                                            "name_url": "https://ddowiki.com/page/Enhancement_bonus",
+                                            "fullText": "+6 Enhancement Bonus"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "enchantment": [
+                                        {
+                                            "name": "Greater Undead Bane",
+                                            "name_url": "https://ddowiki.com/page/Bane_(enchantment)",
+                                            "fullText": "Greater Undead Bane"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "enchantment": [
+                                        {
+                                            "name": "Brilliance",
+                                            "name_url": "https://ddowiki.com/page/Brilliance_(enchantment)",
+                                            "fullText": "Brilliance"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "enchantment": [
+                                        {
+                                            "name": "Light Bringer",
+                                            "name_url": "https://ddowiki.com/page/Light_Bringer",
+                                            "fullText": "Light Bringer"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "enchantment": [
+                                        {
+                                            "name": "Radiant Blast",
+                                            "name_url": "https://ddowiki.com/page/Radiant_Blast",
+                                            "fullText": "Radiant Blast"
+                                        }
+                                    ]
+                                }
+                            ],
+                            "locationInformation": [
+                                {
+                                    "location": "Joe Candymaker",
+                                    "location_url": "https://ddowiki.com/page/Joe_Candymaker",
+                                    "locationExtra": ", Turn in"
+                                }
+                            ]
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "weapon": [
+                {
+                    "name": "Thunder-Forged Alloy Light Pick",
+                    "damangeAndType": "3.50 [1d4] + 9 Pierce, Silver, Adamantine, Mithral, Cold Iron, Magic, Byeshk",
+                    "minLevel": "22",
+                    "binding": "Unbound",
+                    "quest": "Magma Forge, Crafted from various ingredients",
+                    "criticalProfile": "",
+                    "enchantments": "+9 Enhancement Bonus",
+                    "enchantments_url": "https://ddowiki.com/page/Enhancement_bonus",
+                    "errata": "",
+                    "weaponDetail": [
+                        {
+                            "proficiency": "Martial Weapon Proficiency",
+                            "name": "Thunder-Forged Alloy Light Pick",
+                            "damangeAndType": "3.50 [1d4] + 9 Pierce, Silver, Adamantine, Mithral, Cold Iron, Magic, Byeshk",
+                            "criticalThreatRange": "20 / x4",
+                            "weaponType": [
+                                {
+                                    "weaponCategory": "Light Pick",
+                                    "damageCategory": "/ Piercing weapons"
+                                }
+                            ],
+                            "absRaceRequired": "None",
+                            "minLevel": "22",
+                            "requiredTrait": "None",
+                            "umd": "No UMD needed",
+                            "handedness": "",
+                            "attackMod": "STR",
+                            "damageMod": "STR",
+                            "binding": "Unbound",
+                            "binding_url": "https://ddowiki.com/page/Bind",
+                            "durability": "195",
+                            "material": "Adamantine",
+                            "material_url": "https://ddowiki.com/page/Adamantine",
+                            "hardness": "42",
+                            "baseValue": "8,800pp 4gp",
+                            "weight": "3 lbs",
+                            "upgradable": "Thunder-Forged",
+                            "tips": [
+                                {
+                                    "tip": "20 Thunder-Forged Dwarven Ingots"
+                                },
+                                {
+                                    "tip": "15 Commendations of Valor"
+                                }
+                            ],
+                            "description": "A light pick forged from metals long in proximity to dragons under Thunderholme.",
+                            "enchantments": [
+                                {
+                                    "enchantment": [
+                                        {
+                                            "name": "+9 Enhancement Bonus",
+                                            "name_url": "https://ddowiki.com/page/Enhancement_bonus",
+                                            "fullText": "+9 Enhancement Bonus"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "oneOfEnchantment": [
+                                        {},
+                                        {},
+                                        {},
+                                        {},
+                                        {},
+                                        {},
+                                        {},
+                                        {},
+                                        {},
+                                        {},
+                                        {},
+                                        {},
+                                        {},
+                                        {},
+                                        {},
+                                        {},
+                                        {},
+                                        {},
+                                        {},
+                                        {},
+                                        {},
+                                        {},
+                                        {},
+                                        {},
+                                        {}
+                                    ],
+                                    "enchantment": [
+                                        {
+                                            "fullText": "Empty Orange Augment Slot"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "enchantment": [
+                                        {
+                                            "name": "Thunder-Forged (Tier 0)",
+                                            "name_url": "https://ddowiki.com/page/Thunder-Forged",
+                                            "fullText": "Thunder-Forged (Tier 0)"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "enchantment": [
+                                        {
+                                            "name": "Mythic Weapon Boost",
+                                            "name_url": "https://ddowiki.com/page/Mythic_Boost",
+                                            "fullText": "Mythic Weapon Boost +2 or +4"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "enchantment": [
+                                        {
+                                            "fullText": "20 Thunder-Forged Dwarven Ingots",
+                                            "fullText_url": "https://ddowiki.com/page/Item:Thunder-Forged_Dwarven_Ingot"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "enchantment": [
+                                        {
+                                            "fullText": "15 Commendations of Valor",
+                                            "fullText_url": "https://ddowiki.com/page/Item:Commendation_of_Valor"
+                                        }
+                                    ]
+                                }
+                            ],
+                            "locationInformation": [
+                                {
+                                    "location": "Magma Forge",
+                                    "location_url": "https://ddowiki.com/page/Magma_Forge",
+                                    "locationExtra": ", Crafted from various ingredients"
+                                }
+                            ]
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "weapon": [
+                {
+                    "name": "Pick of Endless Light (level 24)",
+                    "damangeAndType": "2[1d4] + 7 Pierce, Magic",
+                    "minLevel": "24",
+                    "binding": "Bound to Account on Acquire",
+                    "quest": "The Night Revels",
+                    "criticalProfile": "",
+                    "enchantments": "+7 Enhancement Bonus",
+                    "enchantments_url": "https://ddowiki.com/page/Enhancement_bonus",
+                    "errata": "",
+                    "weaponDetail": [
+                        {
+                            "proficiency": "Martial Weapon Proficiency",
+                            "name": "Pick of Endless Light (level 24)",
+                            "damangeAndType": "2[1d4] + 7 Pierce, Magic",
+                            "criticalThreatRange": "20 / x4",
+                            "weaponType": [
+                                {
+                                    "weaponCategory": "Light Pick",
+                                    "damageCategory": "/ Piercing weapons"
+                                }
+                            ],
+                            "absRaceRequired": "None",
+                            "minLevel": "24",
+                            "requiredTrait": "None",
+                            "umd": "No UMD needed",
+                            "handedness": "",
+                            "attackMod": "STR",
+                            "damageMod": "STR",
+                            "binding": "Bound to Account on Acquire",
+                            "binding_url": "https://ddowiki.com/page/Bind",
+                            "durability": "215",
+                            "material": "Steel",
+                            "material_url": "https://ddowiki.com/page/Steel",
+                            "hardness": "25",
+                            "baseValue": "9,620pp",
+                            "weight": "3 lbs",
+                            "upgradable": "Night Revels to Pick of Endless Light (level 28)",
+                            "description": "This pick is light upon light; both brilliant and lacking in weight.",
+                            "enchantments": [
+                                {
+                                    "enchantment": [
+                                        {
+                                            "name": "+7 Enhancement Bonus",
+                                            "name_url": "https://ddowiki.com/page/Enhancement_bonus",
+                                            "fullText": "+7 Enhancement Bonus"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "enchantment": [
+                                        {
+                                            "name": "Greater Undead Bane",
+                                            "name_url": "https://ddowiki.com/page/Bane_(enchantment)",
+                                            "fullText": "Greater Undead Bane"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "enchantment": [
+                                        {
+                                            "name": "Coruscating",
+                                            "name_url": "https://ddowiki.com/page/Coruscating",
+                                            "fullText": "Coruscating"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "enchantment": [
+                                        {
+                                            "name": "Light Bringer",
+                                            "name_url": "https://ddowiki.com/page/Light_Bringer",
+                                            "fullText": "Light Bringer"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "enchantment": [
+                                        {
+                                            "name": "Greater Sunburst",
+                                            "name_url": "https://ddowiki.com/page/Sun_Burst#Greater_Sunburst",
+                                            "fullText": "Greater Sunburst"
+                                        }
+                                    ]
+                                }
+                            ],
+                            "locationInformation": [
+                                {
+                                    "location": "Joe Candymaker",
+                                    "location_url": "https://ddowiki.com/page/Joe_Candymaker",
+                                    "locationExtra": ", Turn in"
+                                }
+                            ]
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "weapon": [
+                {
+                    "name": "Legendary Green Steel Light Pick",
+                    "damangeAndType": "5[1d4] + 14 Pierce, Evil, Magic",
+                    "minLevel": "26",
+                    "binding": "Bound to Character on Acquire",
+                    "quest": "Altar of Fecundity, Manufactured Ingredient Recipes",
+                    "criticalProfile": "",
+                    "enchantments": "+14 Enhancement Bonus",
+                    "enchantments_url": "https://ddowiki.com/page/Enhancement_bonus",
+                    "errata": "",
+                    "weaponDetail": [
+                        {
+                            "proficiency": "Martial Weapon Proficiency",
+                            "name": "Legendary Green Steel Light Pick",
+                            "damangeAndType": "5[1d4] + 14 Pierce, Evil, Magic",
+                            "criticalThreatRange": "20 / x4",
+                            "weaponType": [
+                                {
+                                    "weaponCategory": "Light Pick",
+                                    "damageCategory": "/ Piercing weapons"
+                                }
+                            ],
+                            "absRaceRequired": "None",
+                            "minLevel": "26",
+                            "requiredTrait": "None",
+                            "umd": "No UMD needed",
+                            "handedness": "",
+                            "attackMod": "STR",
+                            "damageMod": "STR",
+                            "binding": "Bound to Character on Acquire",
+                            "binding_url": "https://ddowiki.com/page/Bind",
+                            "durability": "275",
+                            "material": "Steel",
+                            "material_url": "https://ddowiki.com/page/Steel",
+                            "hardness": "31",
+                            "baseValue": "30,051pp 3gp 3sp 6cp",
+                            "weight": "3 lbs",
+                            "upgradable": "Not upgradeable",
+                            "tips": [
+                                {
+                                    "tip": "+14 Legendary Green Steel Light Pick"
+                                },
+                                {
+                                    "tip": "100 Codex Runes"
+                                },
+                                {
+                                    "tip": "100 Commendations of Valor"
+                                },
+                                {
+                                    "tip": "Altar of Fecundity"
+                                }
+                            ],
+                            "description": "A small hammer with a sharp, pointed head designed to concentrate the force of its blow on a small area. Similar to a miner's pick, but smaller and reinforced for battle.",
+                            "enchantments": [
+                                {
+                                    "enchantment": [
+                                        {
+                                            "name": "+14 Enhancement Bonus",
+                                            "name_url": "https://ddowiki.com/page/Enhancement_bonus",
+                                            "fullText": "+14 Enhancement Bonus"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "enchantment": [
+                                        {
+                                            "name": "Legendary Green Steel",
+                                            "name_url": "https://ddowiki.com/page/Legendary_Green_Steel",
+                                            "fullText": "Legendary Green Steel"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "enchantment": [
+                                        {
+                                            "name": "Mythic Weapon Boost",
+                                            "name_url": "https://ddowiki.com/page/Mythic_Boost",
+                                            "fullText": "Mythic Weapon Boost +2 or +4"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "enchantment": [
+                                        {
+                                            "fullText": "Codex Runes",
+                                            "fullText_url": "https://ddowiki.com/page/Item:Codex_Rune"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "enchantment": [
+                                        {
+                                            "fullText": "100 Commendations of Valor",
+                                            "fullText_url": "https://ddowiki.com/page/Item:Commendation_of_Valor"
+                                        }
+                                    ]
+                                }
+                            ],
+                            "locationInformation": [
+                                {
+                                    "location": "Manufactured Ingredient Recipes",
+                                    "location_url": "https://ddowiki.com/page/Altar_of_Fecundity_-_Manufactured_Ingredient_Recipes",
+                                    "locationExtra": ","
+                                }
+                            ]
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "weapon": [
+                {
+                    "name": "+7 Glaciation Epic Doused Light Pick*",
+                    "damangeAndType": "5[1d4] + 7 Pierce, Magic",
+                    "minLevel": "26",
+                    "binding": "Unbound",
+                    "quest": "Temple of Elemental Evil Part One, and Temple of Elemental Evil Part Two any chest",
+                    "criticalProfile": "",
+                    "enchantments": "Spellcasting Implement +21",
+                    "enchantments_url": "https://ddowiki.com/page/Spellcasting_Implement",
+                    "itemId": "+7 Glaciation Epic Doused Light Pick",
+                    "url": "https://ddowiki.com/page/Item:%2B7_Glaciation_Epic_Doused_Light_Pick",
+                    "errata": ""
+                }
+            ]
+        },
+        {
+            "weapon": [
+                {
+                    "name": "+7 Epic Smoldering Light Pick*",
+                    "damangeAndType": "5[1d4] + 7 Pierce, Magic",
+                    "minLevel": "26",
+                    "binding": "Unbound",
+                    "quest": "Temple of Elemental Evil Part One, and Temple of Elemental Evil Part Two any chest",
+                    "criticalProfile": "",
+                    "enchantments": "+7 Enhancement Bonus",
+                    "enchantments_url": "https://ddowiki.com/page/Enhancement_bonus",
+                    "itemId": "+7 Epic Smoldering Light Pick",
+                    "url": "https://ddowiki.com/page/Item:%2B7_Epic_Smoldering_Light_Pick",
+                    "errata": ""
+                }
+            ]
+        },
+        {
+            "weapon": [
+                {
+                    "name": "+7 Epic Quenched Light Pick*",
+                    "damangeAndType": "5[1d4] + 7 Pierce, Magic",
+                    "minLevel": "26",
+                    "binding": "Unbound",
+                    "quest": "Temple of Elemental Evil Part One, and Temple of Elemental Evil Part Two any chest",
+                    "criticalProfile": "",
+                    "enchantments": "+7 Enhancement Bonus",
+                    "enchantments_url": "https://ddowiki.com/page/Enhancement_bonus",
+                    "itemId": "+7 Epic Quenched Light Pick",
+                    "url": "https://ddowiki.com/page/Item:%2B7_Epic_Quenched_Light_Pick",
+                    "errata": ""
+                }
+            ]
+        },
+        {
+            "weapon": [
+                {
+                    "name": "+7 Epic Etched Light Pick*",
+                    "damangeAndType": "5[1d4] + 7 Pierce, Magic",
+                    "minLevel": "26",
+                    "binding": "Unbound",
+                    "quest": "Temple of Elemental Evil Part One, and Temple of Elemental Evil Part Two any chest",
+                    "criticalProfile": "",
+                    "enchantments": "+7 Enhancement Bonus",
+                    "enchantments_url": "https://ddowiki.com/page/Enhancement_bonus",
+                    "itemId": "+7 Epic Etched Light Pick",
+                    "url": "https://ddowiki.com/page/Item:%2B7_Epic_Etched_Light_Pick",
+                    "errata": ""
+                }
+            ]
+        },
+        {
+            "weapon": [
+                {
+                    "name": "+7 Corrosion Epic Caustic Light Pick*",
+                    "damangeAndType": "5[1d4] + 7 Pierce, Magic",
+                    "minLevel": "26",
+                    "binding": "Unbound",
+                    "quest": "Temple of Elemental Evil Part One, and Temple of Elemental Evil Part Two any chest",
+                    "criticalProfile": "",
+                    "enchantments": "Spellcasting Implement +21",
+                    "enchantments_url": "https://ddowiki.com/page/Spellcasting_Implement",
+                    "itemId": "+7 Corrosion Epic Caustic Light Pick",
+                    "url": "https://ddowiki.com/page/Item:%2B7_Corrosion_Epic_Caustic_Light_Pick",
+                    "errata": ""
+                }
+            ]
+        },
+        {
+            "weapon": [
+                {
+                    "name": "+7 Magnetism Epic Electrified Light Pick*",
+                    "damangeAndType": "5[1d4] + 7 Pierce, Magic",
+                    "minLevel": "26",
+                    "binding": "Unbound",
+                    "quest": "Temple of Elemental Evil Part One, and Temple of Elemental Evil Part Two any chest",
+                    "criticalProfile": "",
+                    "enchantments": "Spellcasting Implement +21",
+                    "enchantments_url": "https://ddowiki.com/page/Spellcasting_Implement",
+                    "itemId": "+7 Magnetism Epic Electrified Light Pick",
+                    "url": "https://ddowiki.com/page/Item:%2B7_Magnetism_Epic_Electrified_Light_Pick",
+                    "errata": ""
+                }
+            ]
+        },
+        {
+            "weapon": [
+                {
+                    "name": "Pick of Endless Light (level 28)",
+                    "damangeAndType": "5[1d4] + 12 Pierce, Magic",
+                    "minLevel": "28",
+                    "binding": "Bound to Account on Acquire",
+                    "quest": "The Night Revels",
+                    "criticalProfile": "",
+                    "enchantments": "+12 Enhancement Bonus",
+                    "enchantments_url": "https://ddowiki.com/page/Enhancement_bonus",
+                    "errata": "",
+                    "weaponDetail": [
+                        {
+                            "proficiency": "Martial Weapon Proficiency",
+                            "name": "Pick of Endless Light (level 28)",
+                            "damangeAndType": "5[1d4] + 12 Pierce, Magic",
+                            "criticalThreatRange": "20 / x4",
+                            "weaponType": [
+                                {
+                                    "weaponCategory": "Light Pick",
+                                    "damageCategory": "/ Piercing weapons"
+                                }
+                            ],
+                            "absRaceRequired": "None",
+                            "minLevel": "28",
+                            "requiredTrait": "None",
+                            "umd": "No UMD needed",
+                            "handedness": "",
+                            "attackMod": "STR",
+                            "damageMod": "STR",
+                            "binding": "Bound to Account on Acquire",
+                            "binding_url": "https://ddowiki.com/page/Bind",
+                            "durability": "255",
+                            "material": "Steel",
+                            "material_url": "https://ddowiki.com/page/Steel",
+                            "hardness": "29",
+                            "baseValue": "11,220pp",
+                            "weight": "3 lbs",
+                            "upgradable": "Night Revels",
+                            "description": "This pick is light upon light; both brilliant and lacking in weight.",
+                            "enchantments": [
+                                {
+                                    "enchantment": [
+                                        {
+                                            "name": "+12 Enhancement Bonus",
+                                            "name_url": "https://ddowiki.com/page/Enhancement_bonus",
+                                            "fullText": "+12 Enhancement Bonus"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "enchantment": [
+                                        {
+                                            "name": "Greater Undead Bane",
+                                            "name_url": "https://ddowiki.com/page/Bane_(enchantment)",
+                                            "fullText": "Greater Undead Bane"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "enchantment": [
+                                        {
+                                            "name": "Coruscating",
+                                            "name_url": "https://ddowiki.com/page/Coruscating",
+                                            "fullText": "Coruscating"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "enchantment": [
+                                        {
+                                            "name": "Light Bringer",
+                                            "name_url": "https://ddowiki.com/page/Light_Bringer",
+                                            "fullText": "Light Bringer"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "enchantment": [
+                                        {
+                                            "name": "Greater Sunburst",
+                                            "name_url": "https://ddowiki.com/page/Sun_Burst#Greater_Sunburst",
+                                            "fullText": "Greater Sunburst"
+                                        }
+                                    ]
+                                }
+                            ],
+                            "locationInformation": [
+                                {
+                                    "location": "Joe Candymaker",
+                                    "location_url": "https://ddowiki.com/page/Joe_Candymaker",
+                                    "locationExtra": ", Turn in"
+                                }
+                            ]
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "weapon": [
+                {
+                    "name": "Legendary Planar Spike",
+                    "damangeAndType": "5[1d4+2] + 15 Pierce, Magic",
+                    "minLevel": "29",
+                    "binding": "Bound to Account on Acquire",
+                    "quest": "Toxic Treatment, End chest",
+                    "criticalProfile": "",
+                    "enchantments": "+15 Enhancement Bonus",
+                    "enchantments_url": "https://ddowiki.com/page/Enhancement_bonus",
+                    "errata": "",
+                    "weaponDetail": [
+                        {
+                            "proficiency": "Martial Weapon Proficiency",
+                            "name": "Legendary Planar Spike",
+                            "damangeAndType": "5[1d4+2] + 15 Pierce, Magic",
+                            "criticalThreatRange": "20 / x4",
+                            "weaponType": [
+                                {
+                                    "weaponCategory": "Light Pick",
+                                    "damageCategory": "/ Piercing weapons"
+                                }
+                            ],
+                            "absRaceRequired": "None",
+                            "minLevel": "29",
+                            "requiredTrait": "None",
+                            "umd": "No UMD needed",
+                            "handedness": "",
+                            "attackMod": "STR",
+                            "damageMod": "STR",
+                            "binding": "Bound to Account on Acquire",
+                            "binding_url": "https://ddowiki.com/page/Bind",
+                            "durability": "355",
+                            "material": "Steel",
+                            "material_url": "https://ddowiki.com/page/Steel",
+                            "hardness": "39",
+                            "baseValue": "11,600pp 4gp",
+                            "weight": "3 lbs",
+                            "upgradable": "Not upgradeable",
+                            "description": "Something very wrong lies somewhere deep within.",
+                            "enchantments": [
+                                {
+                                    "enchantment": [
+                                        {
+                                            "name": "+15 Enhancement Bonus",
+                                            "name_url": "https://ddowiki.com/page/Enhancement_bonus",
+                                            "fullText": "+15 Enhancement Bonus"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "enchantment": [
+                                        {
+                                            "name": "Trace of Madness",
+                                            "name_url": "https://ddowiki.com/page/Trace_of_Madness",
+                                            "fullText": "Trace of Madness"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "enchantment": [
+                                        {
+                                            "name": "Piercing 9",
+                                            "name_url": "https://ddowiki.com/page/Piercing",
+                                            "fullText": "Piercing 9"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "enchantment": [
+                                        {
+                                            "name": "Heartseeker VII",
+                                            "name_url": "https://ddowiki.com/page/Heartseeker",
+                                            "fullText": "Heartseeker VII"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "enchantment": [
+                                        {
+                                            "name": "Screeching 20",
+                                            "name_url": "https://ddowiki.com/page/Screeching",
+                                            "fullText": "Screeching 20"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "enchantment": [
+                                        {
+                                            "name": "Maiming 9",
+                                            "name_url": "https://ddowiki.com/page/Maiming",
+                                            "fullText": "Maiming 9"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "oneOfEnchantment": [
+                                        {},
+                                        {},
+                                        {},
+                                        {},
+                                        {},
+                                        {},
+                                        {},
+                                        {},
+                                        {},
+                                        {},
+                                        {},
+                                        {},
+                                        {},
+                                        {},
+                                        {},
+                                        {}
+                                    ],
+                                    "enchantment": [
+                                        {
+                                            "fullText": "Empty Red Augment Slot"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "enchantment": [
+                                        {
+                                            "name": "Mythic Weapon Boost",
+                                            "name_url": "https://ddowiki.com/page/Mythic_Boost",
+                                            "fullText": "Mythic Weapon Boost +2 or +4"
+                                        }
+                                    ]
+                                }
+                            ],
+                            "locationInformation": [
+                                {
+                                    "location": "Toxic Treatment",
+                                    "location_url": "https://ddowiki.com/page/Toxic_Treatment",
+                                    "locationExtra": ", End chest"
+                                }
+                            ]
+                        }
+                    ]
+                }
+            ]
         }
-       ],
-       "absRaceRequired": "None",
-       "minLevel": "4",
-       "requiredTrait": "None",
-       "umd": "No UMD needed",
-       "handedness": "",
-       "attackMod": "STR",
-       "damageMod": "STR",
-       "binding": "Bound to Account on Acquire",
-       "binding_url": "https://ddowiki.com/page/Bind",
-       "durability": "85",
-       "material": "Steel",
-       "material_url": "https://ddowiki.com/page/Steel",
-       "hardness": "12",
-       "baseValue": "1,620pp",
-       "weight": "3 lbs",
-       "upgradable": "Not upgradeable",
-       "description": "This pick is light upon light; both brilliant and lacking in weight.",
-       "enchantments": [
-        {
-         "enchantment": [
-          {
-           "name": "+2 Enhancement Bonus",
-           "name_url": "https://ddowiki.com/page/Enhancement_bonus",
-           "fullText": "+2 Enhancement Bonus"
-          }
-         ]
-        },
-        {
-         "enchantment": [
-          {
-           "name": "Lesser Undead Bane",
-           "name_url": "https://ddowiki.com/page/Bane_(enchantment)",
-           "fullText": "Lesser Undead Bane"
-          }
-         ]
-        },
-        {
-         "enchantment": [
-          {
-           "name": "Incandescence",
-           "name_url": "https://ddowiki.com/page/Incandescence",
-           "fullText": "Incandescence"
-          }
-         ]
-        }
-       ],
-       "locationInformation": [
-        {
-         "location": "Joe Candymaker",
-         "location_url": "https://ddowiki.com/page/Joe_Candymaker",
-         "locationExtra": ", Turn in various ingredients at"
-        }
-       ]
-      }
-     ]
-    }
-   ]
-  },
-  {
-   "weapon": [
-    {
-     "name": "+3 Combustion Scorched Light Pick*",
-     "damangeAndType": "1.50[1d4] + 3 Pierce, Magic",
-     "minLevel": "7",
-     "binding": "Unbound",
-     "quest": "Temple of Elemental Evil Part One, and Temple of Elemental Evil Part Two any chest",
-     "criticalProfile": "",
-     "enchantments": "Spellcasting Implement +9",
-     "enchantments_url": "https://ddowiki.com/page/Spellcasting_Implement",
-     "itemId": "+3 Combustion Scorched Light Pick",
-     "url": "https://ddowiki.com/page/Item:%2B3_Combustion_Scorched_Light_Pick",
-     "errata": ""
-    }
-   ]
-  },
-  {
-   "weapon": [
-    {
-     "name": "+3 Energized Light Pick*",
-     "damangeAndType": "1.50[1d4] + 3 Pierce, Magic",
-     "minLevel": "7",
-     "binding": "Unbound",
-     "quest": "Temple of Elemental Evil Part One, and Temple of Elemental Evil Part Two any chest",
-     "criticalProfile": "",
-     "enchantments": "+3 Enhancement Bonus",
-     "enchantments_url": "https://ddowiki.com/page/Enhancement_bonus",
-     "itemId": "+3 Energized Light Pick",
-     "url": "https://ddowiki.com/page/Item:%2B3_Energized_Light_Pick",
-     "errata": ""
-    }
-   ]
-  },
-  {
-   "weapon": [
-    {
-     "name": "+3 Etched Light Pick*",
-     "damangeAndType": "1.50[1d4] + 3 Pierce, Magic",
-     "minLevel": "7",
-     "binding": "Unbound",
-     "quest": "Temple of Elemental Evil Part One, and Temple of Elemental Evil Part Two any chest",
-     "criticalProfile": "",
-     "enchantments": "+3 Enhancement Bonus",
-     "enchantments_url": "https://ddowiki.com/page/Enhancement_bonus",
-     "itemId": "+3 Etched Light Pick",
-     "url": "https://ddowiki.com/page/Item:%2B3_Etched_Light_Pick",
-     "errata": ""
-    }
-   ]
-  },
-  {
-   "weapon": [
-    {
-     "name": "+3 Glaciation Doused Light Pick*",
-     "damangeAndType": "1.50[1d4] + 3 Pierce, Magic",
-     "minLevel": "7",
-     "binding": "Unbound",
-     "quest": "Temple of Elemental Evil Part One, and Temple of Elemental Evil Part Two any chest",
-     "criticalProfile": "",
-     "enchantments": "Spellcasting Implement +9",
-     "enchantments_url": "https://ddowiki.com/page/Spellcasting_Implement",
-     "itemId": "+3 Glaciation Doused Light Pick",
-     "url": "https://ddowiki.com/page/Item:%2B3_Glaciation_Doused_Light_Pick",
-     "errata": ""
-    }
-   ]
-  },
-  {
-   "weapon": [
-    {
-     "name": "+3 Magnetism Electrified Light Pick*",
-     "damangeAndType": "1.50[1d4] + 3 Pierce, Magic",
-     "minLevel": "7",
-     "binding": "Unbound",
-     "quest": "Temple of Elemental Evil Part One, and Temple of Elemental Evil Part Two any chest",
-     "criticalProfile": "",
-     "enchantments": "Spellcasting Implement +9",
-     "enchantments_url": "https://ddowiki.com/page/Spellcasting_Implement",
-     "itemId": "+3 Magnetism Electrified Light Pick",
-     "url": "https://ddowiki.com/page/Item:%2B3_Magnetism_Electrified_Light_Pick",
-     "errata": ""
-    }
-   ]
-  },
-  {
-   "weapon": [
-    {
-     "name": "+3 Quenched Light Pick",
-     "damangeAndType": "1.50[1d4] + 3 Pierce, Magic",
-     "minLevel": "7",
-     "binding": "Unbound",
-     "quest": "Temple of Elemental Evil Part One, and Temple of Elemental Evil Part Two any chest",
-     "criticalProfile": "",
-     "enchantments": "+3 Enhancement Bonus",
-     "enchantments_url": "https://ddowiki.com/page/Enhancement_bonus",
-     "errata": "",
-     "weaponDetail": [
-      {
-       "proficiency": "Martial Weapon Proficiency",
-       "name": "+3 Quenched Light Pick",
-       "damangeAndType": "1.50[1d4] + 3 Pierce, Magic",
-       "criticalThreatRange": "20 / x4",
-       "weaponType": [
-        {
-         "weaponCategory": "Light Pick",
-         "damageCategory": "/ Piercing weapons"
-        }
-       ],
-       "absRaceRequired": "None",
-       "minLevel": "7",
-       "requiredTrait": "None",
-       "umd": "No UMD needed",
-       "handedness": "",
-       "attackMod": "STR",
-       "damageMod": "STR",
-       "binding": "Unbound",
-       "binding_url": "https://ddowiki.com/page/Bind",
-       "durability": "115",
-       "material": "Steel",
-       "material_url": "https://ddowiki.com/page/Steel",
-       "hardness": "15",
-       "baseValue": "2,820pp",
-       "weight": "3 lbs",
-       "upgradable": "ToEE Crafting",
-       "description": "A weapon found deep within the Temple of Elemental Evil.",
-       "enchantments": [
-        {
-         "enchantment": [
-          {
-           "name": "+3 Enhancement Bonus",
-           "name_url": "https://ddowiki.com/page/Enhancement_bonus",
-           "fullText": "+3 Enhancement Bonus"
-          }
-         ]
-        },
-        {
-         "enchantment": [
-          {
-           "name": "Upgradeable Item (Temple of Elemental Evil)",
-           "name_url": "https://ddowiki.com/page/Overgrown_Workbench",
-           "fullText": "Upgradeable Item (Temple of Elemental Evil)"
-          }
-         ]
-        },
-        {
-         "enchantment": [
-          {
-          }
-         ]
-        },
-        {
-         "enchantment": [
-          {
-           "name": "Mythic Weapon Boost",
-           "name_url": "https://ddowiki.com/page/Mythic_Boost",
-           "fullText": "Mythic Weapon Boost +2 or +4"
-          }
-         ]
-        }
-       ],
-       "locationInformation": [
-        {
-         "location": "Temple of Elemental Evil Part Two",
-         "location_url": "https://ddowiki.com/page/Temple_of_Elemental_Evil_Part_Two",
-         "locationExtra": ", and"
-        }
-       ]
-      }
-     ]
-    }
-   ]
-  },
-  {
-   "weapon": [
-    {
-     "name": "+3 Smoldering Light Pick*",
-     "damangeAndType": "1.50[1d4] + 3 Pierce, Magic",
-     "minLevel": "7",
-     "binding": "Unbound",
-     "quest": "Temple of Elemental Evil Part One, and Temple of Elemental Evil Part Two any chest",
-     "criticalProfile": "",
-     "enchantments": "+3 Enhancement Bonus",
-     "enchantments_url": "https://ddowiki.com/page/Enhancement_bonus",
-     "itemId": "+3 Smoldering Light Pick",
-     "url": "https://ddowiki.com/page/Item:%2B3_Smoldering_Light_Pick",
-     "errata": ""
-    }
-   ]
-  },
-  {
-   "weapon": [
-    {
-     "name": "+3 Corrosion Caustic Light Pick*",
-     "damangeAndType": "1.50[1d4] + 3 Pierce, Magic",
-     "minLevel": "7",
-     "binding": "Unbound",
-     "quest": "Temple of Elemental Evil Part One, and Temple of Elemental Evil Part Two any chest",
-     "criticalProfile": "",
-     "enchantments": "Spellcasting Implement +9",
-     "enchantments_url": "https://ddowiki.com/page/Spellcasting_Implement",
-     "itemId": "+3 Corrosion Caustic Light Pick",
-     "url": "https://ddowiki.com/page/Item:%2B3_Corrosion_Caustic_Light_Pick",
-     "errata": ""
-    }
-   ]
-  },
-  {
-   "weapon": [
-    {
-     "name": "Pick of Endless Light (level 8)",
-     "damangeAndType": "[1d4] + 3 Pierce, Magic",
-     "minLevel": "8",
-     "binding": "Bound to Account on Acquire",
-     "quest": "The Night Revels",
-     "criticalProfile": "",
-     "enchantments": "+3 Enhancement Bonus",
-     "enchantments_url": "https://ddowiki.com/page/Enhancement_bonus",
-     "errata": "",
-     "weaponDetail": [
-      {
-       "proficiency": "Martial Weapon Proficiency",
-       "name": "Pick of Endless Light (level 8)",
-       "damangeAndType": "[1d4] + 3 Pierce, Magic",
-       "criticalThreatRange": "20 / x4",
-       "weaponType": [
-        {
-         "weaponCategory": "Light Pick",
-         "damageCategory": "/ Piercing weapons"
-        }
-       ],
-       "absRaceRequired": "None",
-       "minLevel": "8",
-       "requiredTrait": "None",
-       "umd": "No UMD needed",
-       "handedness": "",
-       "attackMod": "STR",
-       "damageMod": "STR",
-       "binding": "Bound to Account on Acquire",
-       "binding_url": "https://ddowiki.com/page/Bind",
-       "durability": "115",
-       "material": "Steel",
-       "material_url": "https://ddowiki.com/page/Steel",
-       "hardness": "15",
-       "baseValue": "3,220pp",
-       "weight": "3 lbs",
-       "upgradable": "Night Revels to Pick of Endless Light (Level 12)",
-       "description": "This pick is light upon light; both brilliant and lacking in weight.",
-       "enchantments": [
-        {
-         "enchantment": [
-          {
-           "name": "+3 Enhancement Bonus",
-           "name_url": "https://ddowiki.com/page/Enhancement_bonus",
-           "fullText": "+3 Enhancement Bonus"
-          }
-         ]
-        },
-        {
-         "enchantment": [
-          {
-           "name": "Undead Bane",
-           "name_url": "https://ddowiki.com/page/Bane_(enchantment)",
-           "fullText": "Undead Bane"
-          }
-         ]
-        },
-        {
-         "enchantment": [
-          {
-           "name": "Incandescence",
-           "name_url": "https://ddowiki.com/page/Incandescence",
-           "fullText": "Incandescence"
-          }
-         ]
-        }
-       ],
-       "locationInformation": [
-        {
-         "location": "Joe Candymaker",
-         "location_url": "https://ddowiki.com/page/Joe_Candymaker",
-         "locationExtra": ", Turn in"
-        }
-       ]
-      }
-     ]
-    }
-   ]
-  },
-  {
-   "weapon": [
-    {
-     "name": "Pick of Endless Light (level 12)",
-     "damangeAndType": "1.50[1d4] + 4 Pierce, Magic",
-     "minLevel": "12",
-     "binding": "Bound to Account on Acquire",
-     "quest": "The Night Revels",
-     "criticalProfile": "",
-     "enchantments": "+4 Enhancement Bonus",
-     "enchantments_url": "https://ddowiki.com/page/Enhancement_bonus",
-     "errata": "",
-     "weaponDetail": [
-      {
-       "proficiency": "Martial Weapon Proficiency",
-       "name": "Pick of Endless Light (level 12)",
-       "damangeAndType": "1.50[1d4] + 4 Pierce, Magic",
-       "criticalThreatRange": "20 / x4",
-       "weaponType": [
-        {
-         "weaponCategory": "Light Pick",
-         "damageCategory": "/ Piercing weapons"
-        }
-       ],
-       "absRaceRequired": "None",
-       "minLevel": "12",
-       "requiredTrait": "None",
-       "umd": "No UMD needed",
-       "handedness": "",
-       "attackMod": "STR",
-       "damageMod": "STR",
-       "binding": "Bound to Account on Acquire",
-       "binding_url": "https://ddowiki.com/page/Bind",
-       "durability": "135",
-       "material": "Steel",
-       "material_url": "https://ddowiki.com/page/Steel",
-       "hardness": "17",
-       "baseValue": "4,820pp",
-       "weight": "3 lbs",
-       "upgradable": "Night Revels to Pick of Endless Light (Level 16)",
-       "description": "This pick is light upon light; both brilliant and lacking in weight.",
-       "enchantments": [
-        {
-         "enchantment": [
-          {
-           "name": "+4 Enhancement Bonus",
-           "name_url": "https://ddowiki.com/page/Enhancement_bonus",
-           "fullText": "+4 Enhancement Bonus"
-          }
-         ]
-        },
-        {
-         "enchantment": [
-          {
-           "name": "Undead Bane",
-           "name_url": "https://ddowiki.com/page/Bane_(enchantment)",
-           "fullText": "Undead Bane"
-          }
-         ]
-        },
-        {
-         "enchantment": [
-          {
-           "name": "Brilliance",
-           "name_url": "https://ddowiki.com/page/Brilliance_(enchantment)",
-           "fullText": "Brilliance"
-          }
-         ]
-        },
-        {
-         "enchantment": [
-          {
-           "name": "Light Bringer",
-           "name_url": "https://ddowiki.com/page/Light_Bringer",
-           "fullText": "Light Bringer"
-          }
-         ]
-        }
-       ],
-       "locationInformation": [
-        {
-         "location": "Joe Candymaker",
-         "location_url": "https://ddowiki.com/page/Joe_Candymaker",
-         "locationExtra": ", Turn in"
-        }
-       ]
-      }
-     ]
-    }
-   ]
-  },
-  {
-   "weapon": [
-    {
-     "name": "Alchemical Light Pick",
-     "damangeAndType": "2 [1d4] + 5 Pierce, Magic",
-     "minLevel": "12",
-     "binding": "Unbound",
-     "quest": "The Master Artificer, Either End chest",
-     "criticalProfile": "",
-     "enchantments": "+5 Enhancement Bonus",
-     "enchantments_url": "https://ddowiki.com/page/Enhancement_bonus",
-     "errata": "",
-     "weaponDetail": [
-      {
-       "proficiency": "Martial Weapon Proficiency",
-       "name": "Alchemical Light Pick",
-       "damangeAndType": "2 [1d4] + 5 Pierce, Magic",
-       "criticalThreatRange": "20 / x4",
-       "weaponType": [
-        {
-         "weaponCategory": "Light Pick",
-         "damageCategory": "/ Piercing weapons"
-        }
-       ],
-       "absRaceRequired": "None",
-       "minLevel": "12",
-       "requiredTrait": "None",
-       "umd": "No UMD needed",
-       "handedness": "",
-       "attackMod": "STR",
-       "damageMod": "STR",
-       "binding": "Unbound",
-       "binding_url": "https://ddowiki.com/page/Bind",
-       "durability": "135",
-       "material": "Steel",
-       "material_url": "https://ddowiki.com/page/Steel",
-       "hardness": "17",
-       "baseValue": "10,200pp 4gp",
-       "weight": "3 lbs",
-       "upgradable": "Alchemical Crafting",
-       "description": "A smaller hammer with a sharp, pointed head designed to concentrate the force of its blow on a small area. Similar to a miner's pick, but smaller and reinforced for battle.",
-       "enchantments": [
-        {
-         "enchantment": [
-          {
-           "name": "+5 Enhancement Bonus",
-           "name_url": "https://ddowiki.com/page/Enhancement_bonus",
-           "fullText": "+5 Enhancement Bonus"
-          }
-         ]
-        },
-        {
-         "enchantment": [
-          {
-           "name": "Alchemical (Prototype)",
-           "name_url": "https://ddowiki.com/page/Alchemical_Crafting",
-           "fullText": "Alchemical (Prototype)"
-          }
-         ]
-        },
-        {
-         "enchantment": [
-          {
-           "name": "Mythic Weapon Boost",
-           "name_url": "https://ddowiki.com/page/Mythic_Boost",
-           "fullText": "Mythic Weapon Boost +2 or +4"
-          }
-         ]
-        }
-       ],
-       "locationInformation": [
-        {
-         "location": "The Master Artificer",
-         "location_url": "https://ddowiki.com/page/The_Master_Artificer",
-         "locationExtra": ", Either End chest"
-        }
-       ]
-      }
-     ]
-    }
-   ]
-  },
-  {
-   "weapon": [
-    {
-     "name": "Green Steel Light Pick",
-     "damangeAndType": "1.50 [1d4] + 5 Pierce, Evil, Magic",
-     "minLevel": "12",
-     "binding": "Bound to Character on Equip",
-     "quest": "Altar of Fecundity, Manufactured Ingredient Recipes",
-     "criticalProfile": "",
-     "enchantments": "+5 Enhancement Bonus",
-     "enchantments_url": "https://ddowiki.com/page/Enhancement_bonus",
-     "errata": "",
-     "weaponDetail": [
-      {
-       "proficiency": "Martial Weapon Proficiency",
-       "name": "Green Steel Light Pick",
-       "damangeAndType": "1.50 [1d4] + 5 Pierce, Evil, Magic",
-       "criticalThreatRange": "20 / x4",
-       "weaponType": [
-        {
-         "weaponCategory": "Light Pick",
-         "damageCategory": "/ Piercing weapons"
-        }
-       ],
-       "absRaceRequired": "None",
-       "minLevel": "12",
-       "requiredTrait": "None",
-       "umd": "No UMD needed",
-       "handedness": "",
-       "attackMod": "STR",
-       "damageMod": "STR",
-       "binding": "Bound to Character on Equip",
-       "binding_url": "https://ddowiki.com/page/Bind",
-       "durability": "115",
-       "material": "Steel",
-       "material_url": "https://ddowiki.com/page/Steel",
-       "hardness": "15",
-       "baseValue": "5,400pp 4gp",
-       "weight": "3 lbs",
-       "upgradable": "Green Steel",
-       "tips": [
-        {
-         "tip": "+5 Green Steel Light Pick"
-        },
-        {
-         "tip": "Ore of Travail\nLocust Husk\nChipmunk Funk\nGlistening Pebbles\nGreen Briar Twigs\nEberron Energy Cell"
-        },
-        {
-         "tip": "Wondrous Balm\nLocust Husk\nGlistening Pebbles OR Green Briar Twigs\nBitterscrub Fungus\nLammanian Lily Petals\nEberron Energy Cell"
-        },
-        {
-         "tip": "Red Taper\nGlistening Pebbles\nGreen Briar Twigs\nLammanian Lily Petals\nChipmunk Funk\nEberron Energy Cell"
-        },
-        {
-         "tip": "Shavarath Signet Stone\nShavarath Stone of Might\nShavarath Stone of Battle\nShavarath Stone of Strategy\nShavarath Stone of Foresight\nShavarath Stone of Victory"
-        },
-        {
-         "tip": "Medium Splintered Horn"
-        }
-       ],
-       "description": "A small hammer with a sharp, pointed head designed to concentrate the force of its blow on a small area. Similar to a miner's pick, but smaller and reinforced for battle.",
-       "enchantments": [
-        {
-         "enchantment": [
-          {
-           "name": "+5 Enhancement Bonus",
-           "name_url": "https://ddowiki.com/page/Enhancement_bonus",
-           "fullText": "+5 Enhancement Bonus"
-          }
-         ]
-        },
-        {
-         "enchantment": [
-          {
-           "name": "Green Steel",
-           "name_url": "https://ddowiki.com/page/Green_Steel",
-           "fullText": "Green Steel"
-          }
-         ]
-        },
-        {
-         "enchantment": [
-          {
-           "name": "Mythic Weapon Boost",
-           "name_url": "https://ddowiki.com/page/Mythic_Boost",
-           "fullText": "Mythic Weapon Boost +2 or +4"
-          }
-         ]
-        },
-        {
-         "oneOfEnchantment": [
-          {
-          },
-          {
-          },
-          {
-          },
-          {
-          },
-          {
-          }
-         ],
-         "enchantment": [
-          {
-           "name": "Ore of Travail",
-           "name_url": "https://ddowiki.com/page/Ore_of_Travail",
-           "fullText": "Locust Husk\nChipmunk Funk\nGlistening Pebbles\nGreen Briar Twigs\nEberron Energy Cell"
-          }
-         ]
-        },
-        {
-         "oneOfEnchantment": [
-          {
-          },
-          {
-          },
-          {
-          },
-          {
-          },
-          {
-          }
-         ],
-         "enchantment": [
-          {
-           "name": "Wondrous Balm",
-           "name_url": "https://ddowiki.com/page/Wondrous_Balm",
-           "fullText": "Locust Husk\nGlistening Pebbles OR Green Briar Twigs\nBitterscrub Fungus\nLammanian Lily Petals\nEberron Energy Cell"
-          }
-         ]
-        },
-        {
-         "oneOfEnchantment": [
-          {
-          },
-          {
-          },
-          {
-          },
-          {
-          },
-          {
-          }
-         ],
-         "enchantment": [
-          {
-           "name": "Red Taper",
-           "name_url": "https://ddowiki.com/page/Red_Taper",
-           "fullText": "Glistening Pebbles\nGreen Briar Twigs\nLammanian Lily Petals\nChipmunk Funk\nEberron Energy Cell"
-          }
-         ]
-        },
-        {
-         "oneOfEnchantment": [
-          {
-          },
-          {
-          },
-          {
-          },
-          {
-          },
-          {
-          }
-         ],
-         "enchantment": [
-          {
-          }
-         ]
-        },
-        {
-         "enchantment": [
-          {
-           "name": "Medium Splintered Horn",
-           "name_url": "https://ddowiki.com/page/Medium_Splintered_Horn",
-           "fullText": "Medium Splintered Horn"
-          }
-         ]
-        }
-       ],
-       "locationInformation": [
-        {
-         "location": "Manufactured Ingredient Recipes",
-         "location_url": "https://ddowiki.com/page/Altar_of_Fecundity_-_Manufactured_Ingredient_Recipes",
-         "locationExtra": ","
-        }
-       ]
-      }
-     ]
-    }
-   ]
-  },
-  {
-   "weapon": [
-    {
-     "name": "Planar Spike",
-     "damangeAndType": "1.5[1d4] +5 Pierce, Magic",
-     "minLevel": "14",
-     "binding": "Bound to Account on Acquire",
-     "quest": "Toxic Treatment, End chest",
-     "criticalProfile": "",
-     "enchantments": "+5 Enhancement Bonus",
-     "enchantments_url": "https://ddowiki.com/page/Enhancement_bonus",
-     "errata": "",
-     "weaponDetail": [
-      {
-       "proficiency": "Martial Weapon Proficiency",
-       "name": "Planar Spike",
-       "damangeAndType": "1.5[1d4] +5 Pierce, Magic",
-       "criticalThreatRange": "20 / x4",
-       "weaponType": [
-        {
-         "weaponCategory": "Light Pick",
-         "damageCategory": "/ Piercing weapons"
-        }
-       ],
-       "absRaceRequired": "None",
-       "minLevel": "14",
-       "requiredTrait": "None",
-       "umd": "No UMD needed",
-       "handedness": "",
-       "attackMod": "STR",
-       "damageMod": "STR",
-       "binding": "Bound to Account on Acquire",
-       "binding_url": "https://ddowiki.com/page/Bind",
-       "durability": "205",
-       "material": "Steel",
-       "material_url": "https://ddowiki.com/page/Steel",
-       "hardness": "24",
-       "baseValue": "5,600pp 4gp",
-       "weight": "3 lbs",
-       "upgradable": "Not upgradeable",
-       "description": "Something very wrong lies somewhere deep within.",
-       "enchantments": [
-        {
-         "enchantment": [
-          {
-           "name": "+5 Enhancement Bonus",
-           "name_url": "https://ddowiki.com/page/Enhancement_bonus",
-           "fullText": "+5 Enhancement Bonus"
-          }
-         ]
-        },
-        {
-         "enchantment": [
-          {
-           "name": "Trace of Madness",
-           "name_url": "https://ddowiki.com/page/Trace_of_Madness",
-           "fullText": "Trace of Madness"
-          }
-         ]
-        },
-        {
-         "enchantment": [
-          {
-           "name": "Piercing 3",
-           "name_url": "https://ddowiki.com/page/Piercing",
-           "fullText": "Piercing 3"
-          }
-         ]
-        },
-        {
-         "enchantment": [
-          {
-           "name": "Heartseeker I",
-           "name_url": "https://ddowiki.com/page/Heartseeker",
-           "fullText": "Heartseeker I"
-          }
-         ]
-        },
-        {
-         "enchantment": [
-          {
-           "name": "Screeching 8",
-           "name_url": "https://ddowiki.com/page/Screeching",
-           "fullText": "Screeching 8"
-          }
-         ]
-        },
-        {
-         "enchantment": [
-          {
-           "name": "Maiming 3",
-           "name_url": "https://ddowiki.com/page/Maiming",
-           "fullText": "Maiming 3"
-          }
-         ]
-        },
-        {
-         "oneOfEnchantment": [
-          {
-          },
-          {
-          },
-          {
-          },
-          {
-          },
-          {
-          },
-          {
-          },
-          {
-          },
-          {
-          },
-          {
-          },
-          {
-          },
-          {
-          },
-          {
-          },
-          {
-          },
-          {
-          },
-          {
-          },
-          {
-          }
-         ],
-         "enchantment": [
-          {
-           "fullText": "Empty Red Augment Slot"
-          }
-         ]
-        },
-        {
-         "enchantment": [
-          {
-           "name": "Mythic Weapon Boost",
-           "name_url": "https://ddowiki.com/page/Mythic_Boost",
-           "fullText": "Mythic Weapon Boost +2 or +4"
-          }
-         ]
-        }
-       ],
-       "locationInformation": [
-        {
-         "location": "Toxic Treatment",
-         "location_url": "https://ddowiki.com/page/Toxic_Treatment",
-         "locationExtra": ", End chest"
-        }
-       ]
-      }
-     ]
-    }
-   ]
-  },
-  {
-   "weapon": [
-    {
-     "name": "Pick of Endless Light (level 16)",
-     "damangeAndType": "1.50[1d4] + 5 Pierce, Magic",
-     "minLevel": "16",
-     "binding": "Bound to Account on Acquire",
-     "quest": "The Night Revels",
-     "criticalProfile": "",
-     "enchantments": "+5 Enhancement Bonus",
-     "enchantments_url": "https://ddowiki.com/page/Enhancement_bonus",
-     "errata": "",
-     "weaponDetail": [
-      {
-       "proficiency": "Martial Weapon Proficiency",
-       "name": "Pick of Endless Light (level 16)",
-       "damangeAndType": "1.50[1d4] + 5 Pierce, Magic",
-       "criticalThreatRange": "20 / x4",
-       "weaponType": [
-        {
-         "weaponCategory": "Light Pick",
-         "damageCategory": "/ Piercing weapons"
-        }
-       ],
-       "absRaceRequired": "None",
-       "minLevel": "16",
-       "requiredTrait": "None",
-       "umd": "No UMD needed",
-       "handedness": "",
-       "attackMod": "STR",
-       "damageMod": "STR",
-       "binding": "Bound to Account on Acquire",
-       "binding_url": "https://ddowiki.com/page/Bind",
-       "durability": "155",
-       "material": "Steel",
-       "material_url": "https://ddowiki.com/page/Steel",
-       "hardness": "19",
-       "baseValue": "6,420pp",
-       "weight": "3 lbs",
-       "upgradable": "Night Revels to Pick of Endless Light (Level 20)",
-       "description": "This pick is light upon light; both brilliant and lacking in weight.",
-       "enchantments": [
-        {
-         "enchantment": [
-          {
-           "name": "+5 Enhancement Bonus",
-           "name_url": "https://ddowiki.com/page/Enhancement_bonus",
-           "fullText": "+5 Enhancement Bonus"
-          }
-         ]
-        },
-        {
-         "enchantment": [
-          {
-           "name": "Greater Undead Bane",
-           "name_url": "https://ddowiki.com/page/Bane_(enchantment)",
-           "fullText": "Greater Undead Bane"
-          }
-         ]
-        },
-        {
-         "enchantment": [
-          {
-           "name": "Brilliance",
-           "name_url": "https://ddowiki.com/page/Brilliance_(enchantment)",
-           "fullText": "Brilliance"
-          }
-         ]
-        },
-        {
-         "enchantment": [
-          {
-           "name": "Light Bringer",
-           "name_url": "https://ddowiki.com/page/Light_Bringer",
-           "fullText": "Light Bringer"
-          }
-         ]
-        }
-       ],
-       "locationInformation": [
-        {
-         "location": "Joe Candymaker",
-         "location_url": "https://ddowiki.com/page/Joe_Candymaker",
-         "locationExtra": ", Turn in"
-        }
-       ]
-      }
-     ]
-    }
-   ]
-  },
-  {
-   "weapon": [
-    {
-     "name": "Pick of Endless Light (level 20)",
-     "damangeAndType": "2[1d4] + 6 Pierce, Magic",
-     "minLevel": "20",
-     "binding": "Bound to Account on Acquire",
-     "quest": "The Night Revels",
-     "criticalProfile": "",
-     "enchantments": "+6 Enhancement Bonus",
-     "enchantments_url": "https://ddowiki.com/page/Enhancement_bonus",
-     "errata": "",
-     "weaponDetail": [
-      {
-       "proficiency": "Martial Weapon Proficiency",
-       "name": "Pick of Endless Light (level 20)",
-       "damangeAndType": "2[1d4] + 6 Pierce, Magic",
-       "criticalThreatRange": "20 / x4",
-       "weaponType": [
-        {
-         "weaponCategory": "Light Pick",
-         "damageCategory": "/ Piercing weapons"
-        }
-       ],
-       "absRaceRequired": "None",
-       "minLevel": "20",
-       "requiredTrait": "None",
-       "umd": "No UMD needed",
-       "handedness": "",
-       "attackMod": "STR",
-       "damageMod": "STR",
-       "binding": "Bound to Account on Acquire",
-       "binding_url": "https://ddowiki.com/page/Bind",
-       "durability": "175",
-       "material": "Steel",
-       "material_url": "https://ddowiki.com/page/Steel",
-       "hardness": "21",
-       "baseValue": "8,020pp",
-       "weight": "3 lbs",
-       "upgradable": "Night Revels to Pick of Endless Light (Level 24)",
-       "description": "This pick is light upon light; both brilliant and lacking in weight.",
-       "enchantments": [
-        {
-         "enchantment": [
-          {
-           "name": "+6 Enhancement Bonus",
-           "name_url": "https://ddowiki.com/page/Enhancement_bonus",
-           "fullText": "+6 Enhancement Bonus"
-          }
-         ]
-        },
-        {
-         "enchantment": [
-          {
-           "name": "Greater Undead Bane",
-           "name_url": "https://ddowiki.com/page/Bane_(enchantment)",
-           "fullText": "Greater Undead Bane"
-          }
-         ]
-        },
-        {
-         "enchantment": [
-          {
-           "name": "Brilliance",
-           "name_url": "https://ddowiki.com/page/Brilliance_(enchantment)",
-           "fullText": "Brilliance"
-          }
-         ]
-        },
-        {
-         "enchantment": [
-          {
-           "name": "Light Bringer",
-           "name_url": "https://ddowiki.com/page/Light_Bringer",
-           "fullText": "Light Bringer"
-          }
-         ]
-        },
-        {
-         "enchantment": [
-          {
-           "name": "Radiant Blast",
-           "name_url": "https://ddowiki.com/page/Radiant_Blast",
-           "fullText": "Radiant Blast"
-          }
-         ]
-        }
-       ],
-       "locationInformation": [
-        {
-         "location": "Joe Candymaker",
-         "location_url": "https://ddowiki.com/page/Joe_Candymaker",
-         "locationExtra": ", Turn in"
-        }
-       ]
-      }
-     ]
-    }
-   ]
-  },
-  {
-   "weapon": [
-    {
-     "name": "Thunder-Forged Alloy Light Pick",
-     "damangeAndType": "3.50 [1d4] + 9 Pierce, Silver, Adamantine, Mithral, Cold Iron, Magic, Byeshk",
-     "minLevel": "22",
-     "binding": "Unbound",
-     "quest": "Magma Forge, Crafted from various ingredients",
-     "criticalProfile": "",
-     "enchantments": "+9 Enhancement Bonus",
-     "enchantments_url": "https://ddowiki.com/page/Enhancement_bonus",
-     "errata": "",
-     "weaponDetail": [
-      {
-       "proficiency": "Martial Weapon Proficiency",
-       "name": "Thunder-Forged Alloy Light Pick",
-       "damangeAndType": "3.50 [1d4] + 9 Pierce, Silver, Adamantine, Mithral, Cold Iron, Magic, Byeshk",
-       "criticalThreatRange": "20 / x4",
-       "weaponType": [
-        {
-         "weaponCategory": "Light Pick",
-         "damageCategory": "/ Piercing weapons"
-        }
-       ],
-       "absRaceRequired": "None",
-       "minLevel": "22",
-       "requiredTrait": "None",
-       "umd": "No UMD needed",
-       "handedness": "",
-       "attackMod": "STR",
-       "damageMod": "STR",
-       "binding": "Unbound",
-       "binding_url": "https://ddowiki.com/page/Bind",
-       "durability": "195",
-       "material": "Adamantine",
-       "material_url": "https://ddowiki.com/page/Adamantine",
-       "hardness": "42",
-       "baseValue": "8,800pp 4gp",
-       "weight": "3 lbs",
-       "upgradable": "Thunder-Forged",
-       "tips": [
-        {
-         "tip": "20 Thunder-Forged Dwarven Ingots"
-        },
-        {
-         "tip": "15 Commendations of Valor"
-        }
-       ],
-       "description": "A light pick forged from metals long in proximity to dragons under Thunderholme.",
-       "enchantments": [
-        {
-         "enchantment": [
-          {
-           "name": "+9 Enhancement Bonus",
-           "name_url": "https://ddowiki.com/page/Enhancement_bonus",
-           "fullText": "+9 Enhancement Bonus"
-          }
-         ]
-        },
-        {
-         "oneOfEnchantment": [
-          {
-          },
-          {
-          },
-          {
-          },
-          {
-          },
-          {
-          },
-          {
-          },
-          {
-          },
-          {
-          },
-          {
-          },
-          {
-          },
-          {
-          },
-          {
-          },
-          {
-          },
-          {
-          },
-          {
-          },
-          {
-          },
-          {
-          },
-          {
-          },
-          {
-          },
-          {
-          },
-          {
-          },
-          {
-          },
-          {
-          },
-          {
-          },
-          {
-          }
-         ],
-         "enchantment": [
-          {
-           "fullText": "Empty Orange Augment Slot"
-          }
-         ]
-        },
-        {
-         "enchantment": [
-          {
-           "name": "Thunder-Forged (Tier 0)",
-           "name_url": "https://ddowiki.com/page/Thunder-Forged",
-           "fullText": "Thunder-Forged (Tier 0)"
-          }
-         ]
-        },
-        {
-         "enchantment": [
-          {
-           "name": "Mythic Weapon Boost",
-           "name_url": "https://ddowiki.com/page/Mythic_Boost",
-           "fullText": "Mythic Weapon Boost +2 or +4"
-          }
-         ]
-        },
-        {
-         "enchantment": [
-          {
-           "fullText": "20 Thunder-Forged Dwarven Ingots",
-           "fullText_url": "https://ddowiki.com/page/Item:Thunder-Forged_Dwarven_Ingot"
-          }
-         ]
-        },
-        {
-         "enchantment": [
-          {
-           "fullText": "15 Commendations of Valor",
-           "fullText_url": "https://ddowiki.com/page/Item:Commendation_of_Valor"
-          }
-         ]
-        }
-       ],
-       "locationInformation": [
-        {
-         "location": "Magma Forge",
-         "location_url": "https://ddowiki.com/page/Magma_Forge",
-         "locationExtra": ", Crafted from various ingredients"
-        }
-       ]
-      }
-     ]
-    }
-   ]
-  },
-  {
-   "weapon": [
-    {
-     "name": "Pick of Endless Light (level 24)",
-     "damangeAndType": "2[1d4] + 7 Pierce, Magic",
-     "minLevel": "24",
-     "binding": "Bound to Account on Acquire",
-     "quest": "The Night Revels",
-     "criticalProfile": "",
-     "enchantments": "+7 Enhancement Bonus",
-     "enchantments_url": "https://ddowiki.com/page/Enhancement_bonus",
-     "errata": "",
-     "weaponDetail": [
-      {
-       "proficiency": "Martial Weapon Proficiency",
-       "name": "Pick of Endless Light (level 24)",
-       "damangeAndType": "2[1d4] + 7 Pierce, Magic",
-       "criticalThreatRange": "20 / x4",
-       "weaponType": [
-        {
-         "weaponCategory": "Light Pick",
-         "damageCategory": "/ Piercing weapons"
-        }
-       ],
-       "absRaceRequired": "None",
-       "minLevel": "24",
-       "requiredTrait": "None",
-       "umd": "No UMD needed",
-       "handedness": "",
-       "attackMod": "STR",
-       "damageMod": "STR",
-       "binding": "Bound to Account on Acquire",
-       "binding_url": "https://ddowiki.com/page/Bind",
-       "durability": "215",
-       "material": "Steel",
-       "material_url": "https://ddowiki.com/page/Steel",
-       "hardness": "25",
-       "baseValue": "9,620pp",
-       "weight": "3 lbs",
-       "upgradable": "Night Revels to Pick of Endless Light (level 28)",
-       "description": "This pick is light upon light; both brilliant and lacking in weight.",
-       "enchantments": [
-        {
-         "enchantment": [
-          {
-           "name": "+7 Enhancement Bonus",
-           "name_url": "https://ddowiki.com/page/Enhancement_bonus",
-           "fullText": "+7 Enhancement Bonus"
-          }
-         ]
-        },
-        {
-         "enchantment": [
-          {
-           "name": "Greater Undead Bane",
-           "name_url": "https://ddowiki.com/page/Bane_(enchantment)",
-           "fullText": "Greater Undead Bane"
-          }
-         ]
-        },
-        {
-         "enchantment": [
-          {
-           "name": "Coruscating",
-           "name_url": "https://ddowiki.com/page/Coruscating",
-           "fullText": "Coruscating"
-          }
-         ]
-        },
-        {
-         "enchantment": [
-          {
-           "name": "Light Bringer",
-           "name_url": "https://ddowiki.com/page/Light_Bringer",
-           "fullText": "Light Bringer"
-          }
-         ]
-        },
-        {
-         "enchantment": [
-          {
-           "name": "Greater Sunburst",
-           "name_url": "https://ddowiki.com/page/Sun_Burst#Greater_Sunburst",
-           "fullText": "Greater Sunburst"
-          }
-         ]
-        }
-       ],
-       "locationInformation": [
-        {
-         "location": "Joe Candymaker",
-         "location_url": "https://ddowiki.com/page/Joe_Candymaker",
-         "locationExtra": ", Turn in"
-        }
-       ]
-      }
-     ]
-    }
-   ]
-  },
-  {
-   "weapon": [
-    {
-     "name": "Legendary Green Steel Light Pick",
-     "damangeAndType": "5[1d4] + 14 Pierce, Evil, Magic",
-     "minLevel": "26",
-     "binding": "Bound to Character on Acquire",
-     "quest": "Altar of Fecundity, Manufactured Ingredient Recipes",
-     "criticalProfile": "",
-     "enchantments": "+14 Enhancement Bonus",
-     "enchantments_url": "https://ddowiki.com/page/Enhancement_bonus",
-     "errata": "",
-     "weaponDetail": [
-      {
-       "proficiency": "Martial Weapon Proficiency",
-       "name": "Legendary Green Steel Light Pick",
-       "damangeAndType": "5[1d4] + 14 Pierce, Evil, Magic",
-       "criticalThreatRange": "20 / x4",
-       "weaponType": [
-        {
-         "weaponCategory": "Light Pick",
-         "damageCategory": "/ Piercing weapons"
-        }
-       ],
-       "absRaceRequired": "None",
-       "minLevel": "26",
-       "requiredTrait": "None",
-       "umd": "No UMD needed",
-       "handedness": "",
-       "attackMod": "STR",
-       "damageMod": "STR",
-       "binding": "Bound to Character on Acquire",
-       "binding_url": "https://ddowiki.com/page/Bind",
-       "durability": "275",
-       "material": "Steel",
-       "material_url": "https://ddowiki.com/page/Steel",
-       "hardness": "31",
-       "baseValue": "30,051pp 3gp 3sp 6cp",
-       "weight": "3 lbs",
-       "upgradable": "Not upgradeable",
-       "tips": [
-        {
-         "tip": "+14 Legendary Green Steel Light Pick"
-        },
-        {
-         "tip": "100 Codex Runes"
-        },
-        {
-         "tip": "100 Commendations of Valor"
-        },
-        {
-         "tip": "Altar of Fecundity"
-        }
-       ],
-       "description": "A small hammer with a sharp, pointed head designed to concentrate the force of its blow on a small area. Similar to a miner's pick, but smaller and reinforced for battle.",
-       "enchantments": [
-        {
-         "enchantment": [
-          {
-           "name": "+14 Enhancement Bonus",
-           "name_url": "https://ddowiki.com/page/Enhancement_bonus",
-           "fullText": "+14 Enhancement Bonus"
-          }
-         ]
-        },
-        {
-         "enchantment": [
-          {
-           "name": "Legendary Green Steel",
-           "name_url": "https://ddowiki.com/page/Legendary_Green_Steel",
-           "fullText": "Legendary Green Steel"
-          }
-         ]
-        },
-        {
-         "enchantment": [
-          {
-           "name": "Mythic Weapon Boost",
-           "name_url": "https://ddowiki.com/page/Mythic_Boost",
-           "fullText": "Mythic Weapon Boost +2 or +4"
-          }
-         ]
-        },
-        {
-         "enchantment": [
-          {
-           "fullText": "Codex Runes",
-           "fullText_url": "https://ddowiki.com/page/Item:Codex_Rune"
-          }
-         ]
-        },
-        {
-         "enchantment": [
-          {
-           "fullText": "100 Commendations of Valor",
-           "fullText_url": "https://ddowiki.com/page/Item:Commendation_of_Valor"
-          }
-         ]
-        }
-       ],
-       "locationInformation": [
-        {
-         "location": "Manufactured Ingredient Recipes",
-         "location_url": "https://ddowiki.com/page/Altar_of_Fecundity_-_Manufactured_Ingredient_Recipes",
-         "locationExtra": ","
-        }
-       ]
-      }
-     ]
-    }
-   ]
-  },
-  {
-   "weapon": [
-    {
-     "name": "+7 Glaciation Epic Doused Light Pick*",
-     "damangeAndType": "5[1d4] + 7 Pierce, Magic",
-     "minLevel": "26",
-     "binding": "Unbound",
-     "quest": "Temple of Elemental Evil Part One, and Temple of Elemental Evil Part Two any chest",
-     "criticalProfile": "",
-     "enchantments": "Spellcasting Implement +21",
-     "enchantments_url": "https://ddowiki.com/page/Spellcasting_Implement",
-     "itemId": "+7 Glaciation Epic Doused Light Pick",
-     "url": "https://ddowiki.com/page/Item:%2B7_Glaciation_Epic_Doused_Light_Pick",
-     "errata": ""
-    }
-   ]
-  },
-  {
-   "weapon": [
-    {
-     "name": "+7 Epic Smoldering Light Pick*",
-     "damangeAndType": "5[1d4] + 7 Pierce, Magic",
-     "minLevel": "26",
-     "binding": "Unbound",
-     "quest": "Temple of Elemental Evil Part One, and Temple of Elemental Evil Part Two any chest",
-     "criticalProfile": "",
-     "enchantments": "+7 Enhancement Bonus",
-     "enchantments_url": "https://ddowiki.com/page/Enhancement_bonus",
-     "itemId": "+7 Epic Smoldering Light Pick",
-     "url": "https://ddowiki.com/page/Item:%2B7_Epic_Smoldering_Light_Pick",
-     "errata": ""
-    }
-   ]
-  },
-  {
-   "weapon": [
-    {
-     "name": "+7 Epic Quenched Light Pick*",
-     "damangeAndType": "5[1d4] + 7 Pierce, Magic",
-     "minLevel": "26",
-     "binding": "Unbound",
-     "quest": "Temple of Elemental Evil Part One, and Temple of Elemental Evil Part Two any chest",
-     "criticalProfile": "",
-     "enchantments": "+7 Enhancement Bonus",
-     "enchantments_url": "https://ddowiki.com/page/Enhancement_bonus",
-     "itemId": "+7 Epic Quenched Light Pick",
-     "url": "https://ddowiki.com/page/Item:%2B7_Epic_Quenched_Light_Pick",
-     "errata": ""
-    }
-   ]
-  },
-  {
-   "weapon": [
-    {
-     "name": "+7 Epic Etched Light Pick*",
-     "damangeAndType": "5[1d4] + 7 Pierce, Magic",
-     "minLevel": "26",
-     "binding": "Unbound",
-     "quest": "Temple of Elemental Evil Part One, and Temple of Elemental Evil Part Two any chest",
-     "criticalProfile": "",
-     "enchantments": "+7 Enhancement Bonus",
-     "enchantments_url": "https://ddowiki.com/page/Enhancement_bonus",
-     "itemId": "+7 Epic Etched Light Pick",
-     "url": "https://ddowiki.com/page/Item:%2B7_Epic_Etched_Light_Pick",
-     "errata": ""
-    }
-   ]
-  },
-  {
-   "weapon": [
-    {
-     "name": "+7 Corrosion Epic Caustic Light Pick*",
-     "damangeAndType": "5[1d4] + 7 Pierce, Magic",
-     "minLevel": "26",
-     "binding": "Unbound",
-     "quest": "Temple of Elemental Evil Part One, and Temple of Elemental Evil Part Two any chest",
-     "criticalProfile": "",
-     "enchantments": "Spellcasting Implement +21",
-     "enchantments_url": "https://ddowiki.com/page/Spellcasting_Implement",
-     "itemId": "+7 Corrosion Epic Caustic Light Pick",
-     "url": "https://ddowiki.com/page/Item:%2B7_Corrosion_Epic_Caustic_Light_Pick",
-     "errata": ""
-    }
-   ]
-  },
-  {
-   "weapon": [
-    {
-     "name": "+7 Magnetism Epic Electrified Light Pick*",
-     "damangeAndType": "5[1d4] + 7 Pierce, Magic",
-     "minLevel": "26",
-     "binding": "Unbound",
-     "quest": "Temple of Elemental Evil Part One, and Temple of Elemental Evil Part Two any chest",
-     "criticalProfile": "",
-     "enchantments": "Spellcasting Implement +21",
-     "enchantments_url": "https://ddowiki.com/page/Spellcasting_Implement",
-     "itemId": "+7 Magnetism Epic Electrified Light Pick",
-     "url": "https://ddowiki.com/page/Item:%2B7_Magnetism_Epic_Electrified_Light_Pick",
-     "errata": ""
-    }
-   ]
-  },
-  {
-   "weapon": [
-    {
-     "name": "Pick of Endless Light (level 28)",
-     "damangeAndType": "5[1d4] + 12 Pierce, Magic",
-     "minLevel": "28",
-     "binding": "Bound to Account on Acquire",
-     "quest": "The Night Revels",
-     "criticalProfile": "",
-     "enchantments": "+12 Enhancement Bonus",
-     "enchantments_url": "https://ddowiki.com/page/Enhancement_bonus",
-     "errata": "",
-     "weaponDetail": [
-      {
-       "proficiency": "Martial Weapon Proficiency",
-       "name": "Pick of Endless Light (level 28)",
-       "damangeAndType": "5[1d4] + 12 Pierce, Magic",
-       "criticalThreatRange": "20 / x4",
-       "weaponType": [
-        {
-         "weaponCategory": "Light Pick",
-         "damageCategory": "/ Piercing weapons"
-        }
-       ],
-       "absRaceRequired": "None",
-       "minLevel": "28",
-       "requiredTrait": "None",
-       "umd": "No UMD needed",
-       "handedness": "",
-       "attackMod": "STR",
-       "damageMod": "STR",
-       "binding": "Bound to Account on Acquire",
-       "binding_url": "https://ddowiki.com/page/Bind",
-       "durability": "255",
-       "material": "Steel",
-       "material_url": "https://ddowiki.com/page/Steel",
-       "hardness": "29",
-       "baseValue": "11,220pp",
-       "weight": "3 lbs",
-       "upgradable": "Night Revels",
-       "description": "This pick is light upon light; both brilliant and lacking in weight.",
-       "enchantments": [
-        {
-         "enchantment": [
-          {
-           "name": "+12 Enhancement Bonus",
-           "name_url": "https://ddowiki.com/page/Enhancement_bonus",
-           "fullText": "+12 Enhancement Bonus"
-          }
-         ]
-        },
-        {
-         "enchantment": [
-          {
-           "name": "Greater Undead Bane",
-           "name_url": "https://ddowiki.com/page/Bane_(enchantment)",
-           "fullText": "Greater Undead Bane"
-          }
-         ]
-        },
-        {
-         "enchantment": [
-          {
-           "name": "Coruscating",
-           "name_url": "https://ddowiki.com/page/Coruscating",
-           "fullText": "Coruscating"
-          }
-         ]
-        },
-        {
-         "enchantment": [
-          {
-           "name": "Light Bringer",
-           "name_url": "https://ddowiki.com/page/Light_Bringer",
-           "fullText": "Light Bringer"
-          }
-         ]
-        },
-        {
-         "enchantment": [
-          {
-           "name": "Greater Sunburst",
-           "name_url": "https://ddowiki.com/page/Sun_Burst#Greater_Sunburst",
-           "fullText": "Greater Sunburst"
-          }
-         ]
-        }
-       ],
-       "locationInformation": [
-        {
-         "location": "Joe Candymaker",
-         "location_url": "https://ddowiki.com/page/Joe_Candymaker",
-         "locationExtra": ", Turn in"
-        }
-       ]
-      }
-     ]
-    }
-   ]
-  },
-  {
-   "weapon": [
-    {
-     "name": "Legendary Planar Spike",
-     "damangeAndType": "5[1d4+2] + 15 Pierce, Magic",
-     "minLevel": "29",
-     "binding": "Bound to Account on Acquire",
-     "quest": "Toxic Treatment, End chest",
-     "criticalProfile": "",
-     "enchantments": "+15 Enhancement Bonus",
-     "enchantments_url": "https://ddowiki.com/page/Enhancement_bonus",
-     "errata": "",
-     "weaponDetail": [
-      {
-       "proficiency": "Martial Weapon Proficiency",
-       "name": "Legendary Planar Spike",
-       "damangeAndType": "5[1d4+2] + 15 Pierce, Magic",
-       "criticalThreatRange": "20 / x4",
-       "weaponType": [
-        {
-         "weaponCategory": "Light Pick",
-         "damageCategory": "/ Piercing weapons"
-        }
-       ],
-       "absRaceRequired": "None",
-       "minLevel": "29",
-       "requiredTrait": "None",
-       "umd": "No UMD needed",
-       "handedness": "",
-       "attackMod": "STR",
-       "damageMod": "STR",
-       "binding": "Bound to Account on Acquire",
-       "binding_url": "https://ddowiki.com/page/Bind",
-       "durability": "355",
-       "material": "Steel",
-       "material_url": "https://ddowiki.com/page/Steel",
-       "hardness": "39",
-       "baseValue": "11,600pp 4gp",
-       "weight": "3 lbs",
-       "upgradable": "Not upgradeable",
-       "description": "Something very wrong lies somewhere deep within.",
-       "enchantments": [
-        {
-         "enchantment": [
-          {
-           "name": "+15 Enhancement Bonus",
-           "name_url": "https://ddowiki.com/page/Enhancement_bonus",
-           "fullText": "+15 Enhancement Bonus"
-          }
-         ]
-        },
-        {
-         "enchantment": [
-          {
-           "name": "Trace of Madness",
-           "name_url": "https://ddowiki.com/page/Trace_of_Madness",
-           "fullText": "Trace of Madness"
-          }
-         ]
-        },
-        {
-         "enchantment": [
-          {
-           "name": "Piercing 9",
-           "name_url": "https://ddowiki.com/page/Piercing",
-           "fullText": "Piercing 9"
-          }
-         ]
-        },
-        {
-         "enchantment": [
-          {
-           "name": "Heartseeker VII",
-           "name_url": "https://ddowiki.com/page/Heartseeker",
-           "fullText": "Heartseeker VII"
-          }
-         ]
-        },
-        {
-         "enchantment": [
-          {
-           "name": "Screeching 20",
-           "name_url": "https://ddowiki.com/page/Screeching",
-           "fullText": "Screeching 20"
-          }
-         ]
-        },
-        {
-         "enchantment": [
-          {
-           "name": "Maiming 9",
-           "name_url": "https://ddowiki.com/page/Maiming",
-           "fullText": "Maiming 9"
-          }
-         ]
-        },
-        {
-         "oneOfEnchantment": [
-          {
-          },
-          {
-          },
-          {
-          },
-          {
-          },
-          {
-          },
-          {
-          },
-          {
-          },
-          {
-          },
-          {
-          },
-          {
-          },
-          {
-          },
-          {
-          },
-          {
-          },
-          {
-          },
-          {
-          },
-          {
-          }
-         ],
-         "enchantment": [
-          {
-           "fullText": "Empty Red Augment Slot"
-          }
-         ]
-        },
-        {
-         "enchantment": [
-          {
-           "name": "Mythic Weapon Boost",
-           "name_url": "https://ddowiki.com/page/Mythic_Boost",
-           "fullText": "Mythic Weapon Boost +2 or +4"
-          }
-         ]
-        }
-       ],
-       "locationInformation": [
-        {
-         "location": "Toxic Treatment",
-         "location_url": "https://ddowiki.com/page/Toxic_Treatment",
-         "locationExtra": ", End chest"
-        }
-       ]
-      }
-     ]
-    }
-   ]
-  }
- ]
+    ]
 }

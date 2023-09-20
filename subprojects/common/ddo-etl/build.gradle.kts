@@ -32,6 +32,7 @@ plugins {
 description = "Common ETL module for storing / loading data from web / user etc"
 
 dependencies {
+    implementation(enforcedPlatform(project(":ddo-platform-scala")))
     /*
     might use  https://github.com/nrinaudo
      for etl regex support
@@ -44,8 +45,8 @@ dependencies {
     val scalaLibraryVersion: String by project
     val scalaMajorVersion: String by project
     // https://mvnrepository.com/artifact/org.json4s/json4s-native
-    implementation(group = "org.json4s", name = "json4s-native_$scalaMajorVersion", version = "3.6.7")
-    implementation(platform(project(":ddo-platform-scala")))
+    implementation(group = "org.json4s", name = "json4s-native_$scalaMajorVersion")
+
     implementation("org.scala-lang:scala-library:$scalaLibraryVersion")
     implementation(group = "com.beachape", name = "enumeratum_$scalaMajorVersion")
     implementation(group = "com.typesafe", name = "config")
@@ -54,13 +55,13 @@ dependencies {
     /* DB, Query etc
     // Quill Scala Query QSQL
      https://github.com/getquill/quill */
-    implementation("io.getquill:quill-core_$scalaMajorVersion:3.11.0")
+    implementation(group = "io.getquill", name = "quill-core_$scalaMajorVersion")
     /* Quill - Monix Integration
     Monix Task / Eval https://monix.io/docs/current/intro/hello-world.html */
-    implementation("io.getquill:quill-monix_$scalaMajorVersion:3.11.0")
-    implementation("io.getquill:quill-sql_$scalaMajorVersion:3.11.0")
-    implementation("io.monix:monix-eval_$scalaMajorVersion:3.4.0")
-    implementation("io.monix:monix-reactive_$scalaMajorVersion:3.4.0")
+    implementation(group = "io.getquill", name = "quill-monix_$scalaMajorVersion")
+    implementation(group = "io.getquill", name = "quill-sql_$scalaMajorVersion")
+    implementation(group = "io.monix", name = "monix-eval_$scalaMajorVersion")
+    implementation(group = "io.monix", name = "monix-reactive_$scalaMajorVersion")
 
     // validation and rules
     implementation(group = "com.wix", name = "accord-core_$scalaMajorVersion")

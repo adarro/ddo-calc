@@ -43,9 +43,13 @@ class EngineRenderingTest extends AnyFunSpec with Matchers {
     val webRoot: String = "webroot"
     val router = Router.router(vertx)
     router.route("/template/*").handler(StaticHandler.create(webRoot).setIndexPage("index.html"))
-    vertx.createHttpServer(new HttpServerOptions().setPort(testPort)).requestHandler(router).listen().onSuccess { ar =>
-      logger.info(s"Started Test Vertx service on ${ar.actualPort()}")
-    }
+    vertx
+      .createHttpServer(new HttpServerOptions().setPort(testPort))
+      .requestHandler(router)
+      .listen()
+      .onSuccess { ar =>
+        logger.info(s"Started Test Vertx service on ${ar.actualPort()}")
+      }
 
   }
 

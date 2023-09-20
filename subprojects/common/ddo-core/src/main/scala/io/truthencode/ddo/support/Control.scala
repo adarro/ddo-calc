@@ -18,6 +18,7 @@
 package io.truthencode.ddo.support
 
 import scala.language.reflectiveCalls
+
 /**
  * Created by adarr on 8/15/2016.
  */

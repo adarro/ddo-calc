@@ -23,7 +23,6 @@ class MultiUpdateTest extends AsyncFunSpec with Matchers with LazyLogging {
       def notifyChannel(cv: ChangeValueInt): Task[Unit] = Task { doNoop() }
       def notifyListener(cv: ChangeValueInt): Task[Unit] = Task { doNoop() }
 
-
       def massUpA[A](a: Task[A]*): Task[Seq[A]] = {
         val aList: Seq[Task[A]] = a.toIndexedSeq
         Task.parSequence(aList)
@@ -39,7 +38,6 @@ class MultiUpdateTest extends AsyncFunSpec with Matchers with LazyLogging {
         .map(c => massUpA(notifyChannel(c), notifyListener(c)))
         .flatMap(_ => Task(succeed))
       cm.runToFuture
-
 
     }
 

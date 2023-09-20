@@ -31,7 +31,7 @@ plugins {
  https://github.com/KyoriPowered/indra/wiki/indra-licenser-spotless adds improvement wrapper on spotless (i.e. template replacement)
  but currently only supports kotlin, java (no explicit scala)
 */
-//indraSpotlessLicenser {
+// indraSpotlessLicenser {
 //    licenseHeaderFile(rootProject.file("license_header.txt")) // default value
 //    headerFormat { doubleSlash() } // default: slashStar()
 //    languageFormatOverride("kotlin") { prefix("/// ") } // default: unset, optional
@@ -40,11 +40,10 @@ plugins {
 //    extraConfig {
 //        // configre options provided by Spotless itself
 //    }
-//}
-//license {
+// }
+// license {
 //    header = rootProject.file("gradle/LICENSE_HEADER")
-//}
-
+// }
 
 enum class ScriptLanguage { GradleBuild, KotlinScriptBuild }
 
@@ -52,7 +51,11 @@ fun buildLang(): ScriptLanguage {
     return if (project.buildFile.name.endsWith("kts")) ScriptLanguage.KotlinScriptBuild else ScriptLanguage.GradleBuild
 }
 
-fun walkBack(fileName: String, recurse: Recursion, proj: Project = project.rootProject): java.io.File? {
+fun walkBack(
+    fileName: String,
+    recurse: Recursion,
+    proj: Project = project.rootProject,
+): java.io.File? {
     val f = proj.file(fileName)
     return if (f.exists()) {
         f
@@ -134,7 +137,7 @@ configure<com.diffplug.gradle.spotless.SpotlessExtension> {
             // version and configFile are both optional
             scalafmt(scalaFmtVersion).configFile(rootProject.file(".scalafmt.conf"))
             target("*.scala")
-            licenseHeaderFile(project.rootProject.file("gradle/LICENSE_HEADER_SPOTLESS"),"package")
+            licenseHeaderFile(project.rootProject.file("gradle/LICENSE_HEADER_SPOTLESS"), "package")
         }
     }
 }

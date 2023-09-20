@@ -44,8 +44,8 @@ import java.time.Duration
  */
 protected[feats] trait TenThousandStars
   extends FeatRequisiteImpl with ClassRequisiteImpl with ActiveFeat with AtWillEvent
-  with SharedCoolDown with AttributeRequisiteImpl with RequiresAllOfAttribute with RequiresAllOfClass with MartialArtsFeat
-  with FeaturesImpl with GrantAbilityFeature {
+  with SharedCoolDown with AttributeRequisiteImpl with RequiresAllOfAttribute
+  with RequiresAllOfClass with MartialArtsFeat with FeaturesImpl with GrantAbilityFeature {
   self: GeneralFeat =>
 
   override lazy val grantedAbility: ActiveAbilities = ActiveAbilities.TenThousandStars

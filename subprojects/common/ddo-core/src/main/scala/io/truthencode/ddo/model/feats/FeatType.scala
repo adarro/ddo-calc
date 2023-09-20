@@ -38,10 +38,9 @@ trait Toggle extends FeatType
 
 /**
  * This effect is a stance, which means it can be on or off, but may also have some stacking
- * restrictions.
- * i.e. only one offensive combat stance may be active at any given time, and automatically toggles
- * off a defensive combat stance, however it may be combined with a non-conflicting stance, such as
- * a wizards undead shroud or the iconic feat Amauntor's Flames.
+ * restrictions. i.e. only one offensive combat stance may be active at any given time, and
+ * automatically toggles off a defensive combat stance, however it may be combined with a
+ * non-conflicting stance, such as a wizards undead shroud or the iconic feat Amauntor's Flames.
  */
 trait Stance extends FeatType with Toggle with ActiveFeat with OnToggleEvent with DefaultCoolDown
 

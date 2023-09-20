@@ -32,6 +32,7 @@ sealed trait AttributeModifier {
 trait AttributeModifierInit extends AttributeModifier {
   def modifiedAttributes: Set[M] = new HashSet[M]
 }
+
 /**
  * Empty Modifier used to specify nothing special
  */

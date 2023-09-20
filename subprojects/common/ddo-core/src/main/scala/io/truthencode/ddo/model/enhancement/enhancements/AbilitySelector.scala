@@ -29,6 +29,7 @@ import io.truthencode.ddo.support.requisite.ActionPointRequisite
  */
 trait AbilitySelector extends AbilityScoreEnhancement with RomanNumeralAffix {
   self: ClassEnhancement with Tier with ActionPointRequisite =>
+
   /**
    * Some enhancements can be taken multiple times (generally up to three)
    */

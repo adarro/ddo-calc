@@ -29,6 +29,7 @@ trait DeadlyNeurotoxinNightshade extends ApothecaryTierFive with ClassEnhancemen
       |
       |Target enemy falls asleep for 6 seconds with no save.""".stripMargin
   )
+
   /**
    * Some enhancements can be taken multiple times (generally up to three)
    */

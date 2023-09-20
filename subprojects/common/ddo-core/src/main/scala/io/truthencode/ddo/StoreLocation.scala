@@ -87,6 +87,7 @@ trait ItemEquip extends StoreLocation {
 object StoreLocation extends Enum[StoreLocation] with BitSupport {
 
   override type T = StoreLocation
+
   /**
    * Object can be slotted onto character, such as a sword or helmet. Items with this value should
    * further be constrained with corresponding WearLocation.

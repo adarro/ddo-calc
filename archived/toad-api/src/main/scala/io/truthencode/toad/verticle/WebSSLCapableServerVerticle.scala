@@ -35,9 +35,9 @@ import java.security.cert.{Certificate, CertificateException}
 import java.util.Date
 
 /**
- * A [[io.vertx.core.Verticle]] which starts up the HTTP server for the web application UI. Based on the given
- * configuration, the web server may be configured for SSL using a self-generated SSL cert or a provided SSL certificate
- * file. The application accepts P12, PEM, and JKS files.
+ * A [[io.vertx.core.Verticle]] which starts up the HTTP server for the web application UI. Based on
+ * the given configuration, the web server may be configured for SSL using a self-generated SSL cert
+ * or a provided SSL certificate file. The application accepts P12, PEM, and JKS files.
  *
  * The web server also configures handlers for the Auth Service and the
  * [[io.vertx.ext.web.handler.sockjs.SockJSHandler]]event bus bridge.
@@ -47,12 +47,14 @@ import java.util.Date
  */
 class WebSSLCapableServerVerticle extends AbstractVerticle with DefaultBridgeOptions {
   val logger: Logger = LoggerFactory.getLogger(getClass.getSimpleName)
+
   /**
-   * Start this [[io.vertx.core.Verticle]] asynchronously and notify the deploying verticle on success or failure
+   * Start this [[io.vertx.core.Verticle]] asynchronously and notify the deploying verticle on
+   * success or failure
    *
    * @param startFuture
-   *   A [[java.util.concurrent.Future]] with which to notify the deploying [[io.vertx.core.Verticle]] about success or
-   *   failure
+   *   A [[java.util.concurrent.Future]] with which to notify the deploying
+   *   [[io.vertx.core.Verticle]] about success or failure
    * @throws Exception
    *   If there is an uncaught error.
    */
@@ -106,7 +108,8 @@ class WebSSLCapableServerVerticle extends AbstractVerticle with DefaultBridgeOpt
           if (config.containsKey("certificate-path")) {
             val certPath = config.getString("certificate-path")
             // Use a Java Keystore File
-            if (certPath.toLowerCase().endsWith("jks") && config.getString("certificate-password") != null) {
+            if (certPath.toLowerCase().endsWith("jks") && config.getString(
+                "certificate-password") != null) {
               httpOpts.setKeyStoreOptions(
                 new JksOptions()
                   .setPassword(config.getString("certificate-password"))
@@ -130,7 +133,8 @@ class WebSSLCapableServerVerticle extends AbstractVerticle with DefaultBridgeOpt
                   .setKeyPath(certPath))
               httpOpts.setSsl(true)
             } else {
-              startFuture.fail("A certificate file was provided, but a password for that file was not.")
+              startFuture.fail(
+                "A certificate file was provided, but a password for that file was not.")
             }
           } else
             try {
@@ -139,20 +143,26 @@ class WebSSLCapableServerVerticle extends AbstractVerticle with DefaultBridgeOpt
               val store = KeyStore.getInstance("JKS")
               store.load(null, null)
               val keypair = new CertAndKeyGen("RSA", "SHA256WithRSA", null)
-              val x500Name = new X500Name("localhost", "IT", "unknown", "unknown", "unknown", "unknown")
+              val x500Name =
+                new X500Name("localhost", "IT", "unknown", "unknown", "unknown", "unknown")
               keypair.generate(1024)
               val privKey = keypair.getPrivateKey
               val chain = new Array[Certificate](1) // ( 1) ;
-              val cert: Certificate = keypair.getSelfCertificate(x500Name, new Date(), 365 * 24 * 60 * 60)
+              val cert: Certificate =
+                keypair.getSelfCertificate(x500Name, new Date(), 365 * 24 * 60 * 60)
               chain(0) = cert
               store.setKeyEntry("selfsigned", privKey, "changeit".toCharArray, chain)
               store.store(new FileOutputStream(".keystore"), "changeit".toCharArray)
-              httpOpts.setKeyStoreOptions(new JksOptions().setPath(".keystore").setPassword("changeit"))
+              httpOpts.setKeyStoreOptions(
+                new JksOptions().setPath(".keystore").setPassword("changeit"))
               httpOpts.setSsl(true)
             } catch {
-              case ex @ (_: KeyStoreException | _: IOException | _: NoSuchAlgorithmException | _: CertificateException |
-                  _: NoSuchProviderException | _: InvalidKeyException | _: SignatureException) =>
-                logger.error("Failed to generate a self-signed cert and other SSL configuration methods failed.", ex)
+              case ex @ (_: KeyStoreException | _: IOException | _: NoSuchAlgorithmException |
+                  _: CertificateException | _: NoSuchProviderException | _: InvalidKeyException |
+                  _: SignatureException) =>
+                logger.error(
+                  "Failed to generate a self-signed cert and other SSL configuration methods failed.",
+                  ex)
                 startFuture.fail(ex)
             }
           future.complete(httpOpts)
@@ -161,7 +171,10 @@ class WebSSLCapableServerVerticle extends AbstractVerticle with DefaultBridgeOpt
       val result = new Handler[AsyncResult[HttpServerOptions]] {
         override def handle(event: AsyncResult[HttpServerOptions]): Unit = {
           if (event.succeeded()) {
-            vertx.createHttpServer(event.result()).requestHandler(router).listen(bindPort, bindAddress)
+            vertx
+              .createHttpServer(event.result())
+              .requestHandler(router)
+              .listen(bindPort, bindAddress)
             logger.info(s"SSL Web server now listening on @ $bindAddress:$bindPort")
           }
 

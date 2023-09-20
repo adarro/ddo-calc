@@ -57,6 +57,7 @@ sealed abstract class BindingFlags(
  * Distinct value of binding options.
  */
 object BindingFlags extends Enum[BindingFlags] with DefaultValue[BindingFlags] with LazyLogging {
+
   /**
    * Returns the default binding status (BindingFlags.Unbound)
    */

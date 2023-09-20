@@ -20,22 +20,20 @@ plugins {
 //    id("code-quality")
     id("be.vbgn.ci-detect")
     scala
-  //  java // apply (false)
+    //  java // apply (false)
     id("org.scoverage")
 }
 
-
-//dependencies {
+// dependencies {
 //    val scalaLibraryVersion: String by project
 //    val scalaMajorVersion: String by project
 //    val scalaCompilerPlugin by configurations.creating
 //    scalaCompilerPlugin("com.typesafe.genjavadoc:genjavadoc-plugin_$scalaLibraryVersion:0.18")
 //     compileOnly("org.scoverage:scalac-scoverage-plugin_$scalaMajorVersion.7:1.4.10")
 //
-//}
+// }
 
-
-//configure<org.scoverage.ScoverageExtension> {
+// configure<org.scoverage.ScoverageExtension> {
 //    scoverageVersion.set("2.0.10")
 //    val cfgs = mapOf(
 //        Pair(org.scoverage.CoverageType.Branch, 0.5.toBigDecimal()),
@@ -47,12 +45,11 @@ plugins {
 //        cfg
 //    }
 //    checks.plusAssign(cfgs)
-//}
-
+// }
 
 //
 //
-//tasks.withType<ScalaCompile>().configureEach {
+// tasks.withType<ScalaCompile>().configureEach {
 //
 //    doLast {
 //
@@ -64,7 +61,7 @@ plugins {
 //    tryFindScalaVersionDependencies(project, "inConfigure")
 //    this.project // scala-library
 //    scalaCompileOptions.apply {
-////        val scalaCompilerPlugin by configurations.getting
+// //        val scalaCompilerPlugin by configurations.getting
 //        val scalaCoptions = listOf(
 //            "-feature", "-deprecation", "-Ywarn-dead-code",
 //            "-Xsource:3"
@@ -80,9 +77,9 @@ plugins {
 //        logger.debug("executing scala compile with options\n $scalaCoptions")
 //        // Need to add -Ypartial-unification for Tapir
 //    }
-//}
+// }
 
-//tasks {
+// tasks {
 //    withType(Test::class.java) {
 //        systemProperties["concordion.output.dir"] = "${reporting.baseDir}/spec"
 //    }
@@ -105,4 +102,4 @@ plugins {
 //
 //        outputs.upToDateWhen { false }
 //    }
-//}
+// }

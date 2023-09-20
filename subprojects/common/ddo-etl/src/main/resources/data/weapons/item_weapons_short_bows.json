@@ -16,1419 +16,1234 @@
  * limitations under the License.
  */
 {
- "item": [
-  {
-   "weapon": [
-    {
-     "name": "Ember Shortbow",
-     "damangeAndType": "[1d6] + 0 Pierce",
-     "minLevel": "1",
-     "binding": "Bound to Character on Acquire",
-     "quest": "The Grotto, Sahuagin High Priestess's chest",
-     "criticalProfile": "",
-     "enchantments": "Masterwork",
-     "enchantments_url": "https://ddowiki.com/page/Masterwork",
-     "errata": "",
-     "weaponDetail": [
-      {
-       "proficiency": "Martial Weapon Proficiency",
-       "name": "Ember Shortbow",
-       "damangeAndType": "[1d6] + 0 Pierce",
-       "criticalThreatRange": "20 / x3",
-       "weaponType": [
+    "item": [
         {
-         "weaponCategory": "Short Bow",
-         "damageCategory": "/ Ranged weapons"
+            "weapon": [
+                {
+                    "name": "Ember Shortbow",
+                    "damangeAndType": "[1d6] + 0 Pierce",
+                    "minLevel": "1",
+                    "binding": "Bound to Character on Acquire",
+                    "quest": "The Grotto, Sahuagin High Priestess's chest",
+                    "criticalProfile": "",
+                    "enchantments": "Masterwork",
+                    "enchantments_url": "https://ddowiki.com/page/Masterwork",
+                    "errata": "",
+                    "weaponDetail": [
+                        {
+                            "proficiency": "Martial Weapon Proficiency",
+                            "name": "Ember Shortbow",
+                            "damangeAndType": "[1d6] + 0 Pierce",
+                            "criticalThreatRange": "20 / x3",
+                            "weaponType": [
+                                {
+                                    "weaponCategory": "Short Bow",
+                                    "damageCategory": "/ Ranged weapons"
+                                }
+                            ],
+                            "absRaceRequired": "None",
+                            "minLevel": "None",
+                            "requiredTrait": "None",
+                            "umd": "No UMD needed",
+                            "handedness": "",
+                            "attackMod": "DEX",
+                            "damageMod": "N/A",
+                            "binding": "Bound to Character on Acquire",
+                            "binding_url": "https://ddowiki.com/page/Bind",
+                            "durability": "75",
+                            "material": "Wood",
+                            "material_url": "https://ddowiki.com/page/Wood",
+                            "hardness": "6",
+                            "baseValue": "233pp",
+                            "weight": "2 lbs",
+                            "upgradable": "Not upgradeable",
+                            "tips": [
+                                {
+                                    "tip": "This item cannot be fed to sentient jewels."
+                                },
+                                {
+                                    "tip": "All Barbarians, Bards, Fighters, Rangers, and Rogues get this automatically upon completing (or electing to skip) The Grotto."
+                                }
+                            ],
+                            "description": "This shortbow is carved with symbols and is warm to the touch.",
+                            "enchantments": [
+                                {
+                                    "enchantment": [
+                                        {
+                                            "name": "Masterwork",
+                                            "name_url": "https://ddowiki.com/page/Masterwork",
+                                            "fullText": "Masterwork"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "enchantment": [
+                                        {
+                                            "name": "Fire Touch",
+                                            "name_url": "https://ddowiki.com/page/Elemental_Touch#Fire_Touch",
+                                            "fullText": "Fire Touch"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "enchantment": [
+                                        {
+                                            "name": "Starter",
+                                            "name_url": "https://ddowiki.com/page/Starter",
+                                            "fullText": "Starter"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "enchantment": [
+                                        {
+                                            "name": "Mythic Weapon Boost",
+                                            "name_url": "https://ddowiki.com/page/Mythic_Boost",
+                                            "fullText": "Mythic Weapon Boost +2 or +4"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "enchantment": [
+                                        {
+                                            "fullText": "This item cannot be fed to sentient jewels."
+                                        }
+                                    ]
+                                },
+                                {
+                                    "enchantment": [
+                                        {
+                                            "fullText": "The Grotto",
+                                            "fullText_url": "https://ddowiki.com/page/The_Grotto"
+                                        }
+                                    ]
+                                }
+                            ],
+                            "locationInformation": [
+                                {
+                                    "location": "Sahuagin High Priestess",
+                                    "location_url": "https://ddowiki.com/page/Sahuagin_High_Priestess",
+                                    "locationExtra": ","
+                                }
+                            ]
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "weapon": [
+                {
+                    "name": "+1 Starter Shortbow*",
+                    "damangeAndType": "1d6 + 1 Pierce, Magic",
+                    "minLevel": "2",
+                    "binding": "Bound to Character on Acquire",
+                    "quest": "The Voyage",
+                    "criticalProfile": "",
+                    "enchantments": "+1 Enhancement Bonus",
+                    "enchantments_url": "https://ddowiki.com/page/Enhancement_bonus",
+                    "itemId": "+1 Starter Shortbow",
+                    "url": "https://ddowiki.com/page/Item:%2B1_Starter_Shortbow",
+                    "errata": ""
+                }
+            ]
+        },
+        {
+            "weapon": [
+                {
+                    "name": "Scorpion Tail Shortbow",
+                    "damangeAndType": "[1d6] + 2 Pierce, Magic",
+                    "minLevel": "4",
+                    "binding": "Bound to Character on Equip",
+                    "quest": "Redwillow's Ruins, Ravenous' Chest",
+                    "criticalProfile": "",
+                    "enchantments": "+2 Enhancement Bonus",
+                    "enchantments_url": "https://ddowiki.com/page/Enhancement_bonus",
+                    "errata": "",
+                    "weaponDetail": [
+                        {
+                            "proficiency": "Martial Weapon Proficiency",
+                            "name": "Scorpion Tail Shortbow",
+                            "damangeAndType": "[1d6] + 2 Pierce, Magic",
+                            "criticalThreatRange": "20 / x3",
+                            "weaponType": [
+                                {
+                                    "weaponCategory": "Short Bow",
+                                    "damageCategory": "/ Ranged weapons"
+                                }
+                            ],
+                            "absRaceRequired": "None",
+                            "minLevel": "4",
+                            "requiredTrait": "None",
+                            "umd": "No UMD needed",
+                            "handedness": "",
+                            "attackMod": "DEX",
+                            "damageMod": "n/a",
+                            "binding": "Bound to Character on Equip",
+                            "binding_url": "https://ddowiki.com/page/Bind",
+                            "durability": "85",
+                            "material": "Wood",
+                            "material_url": "https://ddowiki.com/page/Wood",
+                            "hardness": "7",
+                            "baseValue": "1,603pp",
+                            "weight": "2 lbs",
+                            "upgradable": "Not upgradeable",
+                            "description": "A smaller wooden bow with a shorter firing distance.",
+                            "enchantments": [
+                                {
+                                    "enchantment": [
+                                        {
+                                            "name": "+2 Enhancement Bonus",
+                                            "name_url": "https://ddowiki.com/page/Enhancement_bonus",
+                                            "fullText": "+2 Enhancement Bonus"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "enchantment": [
+                                        {
+                                            "name": "Poison",
+                                            "name_url": "https://ddowiki.com/page/Poison_(enchantment)",
+                                            "fullText": "Poison"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "oneOfEnchantment": [
+                                        {},
+                                        {},
+                                        {},
+                                        {},
+                                        {},
+                                        {},
+                                        {},
+                                        {},
+                                        {},
+                                        {},
+                                        {},
+                                        {},
+                                        {},
+                                        {},
+                                        {},
+                                        {}
+                                    ],
+                                    "enchantment": [
+                                        {
+                                            "fullText": "Empty Red Augment Slot"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "enchantment": [
+                                        {
+                                            "name": "Mythic Weapon Boost",
+                                            "name_url": "https://ddowiki.com/page/Mythic_Boost",
+                                            "fullText": "Mythic Weapon Boost +2 or +4"
+                                        }
+                                    ]
+                                }
+                            ],
+                            "locationInformation": [
+                                {
+                                    "location": "Ravenous",
+                                    "location_url": "https://ddowiki.com/page/Ravenous",
+                                    "locationExtra": ","
+                                }
+                            ]
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "weapon": [
+                {
+                    "name": "Collapsible Shortbow",
+                    "damangeAndType": "1.50 [1d6] + 5 Pierce, Magic",
+                    "minLevel": "10",
+                    "binding": "Bound to Character on Equip",
+                    "quest": "Sands of Menechtarun, Firebrand Area: Lieutenant Ayurro's chest (Rare Encounter)",
+                    "criticalProfile": "",
+                    "enchantments": "+5 Enhancement Bonus",
+                    "enchantments_url": "https://ddowiki.com/page/Enhancement_bonus",
+                    "errata": "",
+                    "weaponDetail": [
+                        {
+                            "proficiency": "Martial Weapon Proficiency",
+                            "name": "Collapsible Shortbow",
+                            "damangeAndType": "1.50 [1d6] + 5 Pierce, Magic",
+                            "criticalThreatRange": "20 / x3",
+                            "weaponType": [
+                                {
+                                    "weaponCategory": "Short Bow",
+                                    "damageCategory": "/ Ranged weapons"
+                                }
+                            ],
+                            "absRaceRequired": "None",
+                            "minLevel": "10",
+                            "requiredTrait": "None",
+                            "umd": "No UMD needed",
+                            "handedness": "",
+                            "attackMod": "DEX",
+                            "damageMod": "N/A",
+                            "binding": "Bound to Character on Equip",
+                            "binding_url": "https://ddowiki.com/page/Bind",
+                            "durability": "125",
+                            "material": "Wood",
+                            "material_url": "https://ddowiki.com/page/Wood",
+                            "hardness": "11",
+                            "baseValue": "4,003pp",
+                            "weight": "2 lbs",
+                            "upgradable": "Epic Crafting to Epic Collapsible Shortbow",
+                            "description": "A small bow ingeniously jointed to collapse into a small pack. Wielding this bow, allows a rogue to perform prodigious athletic feats.",
+                            "enchantments": [
+                                {
+                                    "enchantment": [
+                                        {
+                                            "name": "+5 Enhancement Bonus",
+                                            "name_url": "https://ddowiki.com/page/Enhancement_bonus",
+                                            "fullText": "+5 Enhancement Bonus"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "enchantment": [
+                                        {
+                                            "name": "Jump +11",
+                                            "name_url": "https://ddowiki.com/page/Jump_(skill)",
+                                            "fullText": "Jump +11"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "enchantment": [
+                                        {
+                                            "name": "Swim +11",
+                                            "name_url": "https://ddowiki.com/page/Swim",
+                                            "fullText": "Swim +11"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "enchantment": [
+                                        {
+                                            "name": "Tumble +11",
+                                            "name_url": "https://ddowiki.com/page/Tumble_(skill)",
+                                            "fullText": "Tumble +11"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "oneOfEnchantment": [
+                                        {},
+                                        {},
+                                        {},
+                                        {},
+                                        {},
+                                        {},
+                                        {},
+                                        {},
+                                        {},
+                                        {},
+                                        {},
+                                        {},
+                                        {},
+                                        {},
+                                        {},
+                                        {},
+                                        {},
+                                        {},
+                                        {},
+                                        {},
+                                        {},
+                                        {},
+                                        {},
+                                        {},
+                                        {}
+                                    ],
+                                    "enchantment": [
+                                        {
+                                            "fullText": "Empty Purple Augment Slot"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "oneOfEnchantment": [
+                                        {},
+                                        {},
+                                        {},
+                                        {},
+                                        {},
+                                        {},
+                                        {},
+                                        {},
+                                        {},
+                                        {},
+                                        {},
+                                        {},
+                                        {},
+                                        {},
+                                        {},
+                                        {}
+                                    ],
+                                    "enchantment": [
+                                        {
+                                            "fullText": "Empty Red Augment Slot"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "enchantment": [
+                                        {
+                                            "name": "Mythic Weapon Boost",
+                                            "name_url": "https://ddowiki.com/page/Mythic_Boost",
+                                            "fullText": "Mythic Weapon Boost +2 or +4"
+                                        }
+                                    ]
+                                }
+                            ],
+                            "locationInformation": [
+                                {
+                                    "location": "Lieutenant Ayurro",
+                                    "location_url": "https://ddowiki.com/page/Lieutenant_Ayurro",
+                                    "locationExtra": ", Firebrand Area:"
+                                }
+                            ]
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "weapon": [
+                {
+                    "name": "Alchemical Shortbow",
+                    "damangeAndType": "2 [1d6] + 5 Pierce, Magic",
+                    "minLevel": "12",
+                    "binding": "Unbound",
+                    "quest": "The Master Artificer, Either End chest",
+                    "criticalProfile": "",
+                    "enchantments": "+5 Enhancement Bonus",
+                    "enchantments_url": "https://ddowiki.com/page/Enhancement_bonus",
+                    "errata": "",
+                    "weaponDetail": [
+                        {
+                            "proficiency": "Martial Weapon Proficiency",
+                            "name": "Alchemical Shortbow",
+                            "damangeAndType": "2 [1d6] + 5 Pierce, Magic",
+                            "criticalThreatRange": "20 / x3",
+                            "weaponType": [
+                                {
+                                    "weaponCategory": "Short Bow",
+                                    "damageCategory": "/ Ranged weapons"
+                                }
+                            ],
+                            "absRaceRequired": "None",
+                            "minLevel": "12",
+                            "requiredTrait": "None",
+                            "umd": "No UMD needed",
+                            "handedness": "",
+                            "attackMod": "DEX",
+                            "damageMod": "N/A",
+                            "binding": "Unbound",
+                            "binding_url": "https://ddowiki.com/page/Bind",
+                            "durability": "135",
+                            "material": "Steel",
+                            "material_url": "https://ddowiki.com/page/Steel",
+                            "hardness": "17",
+                            "baseValue": "10,203pp",
+                            "weight": "2 lbs",
+                            "upgradable": "Alchemical Crafting",
+                            "description": "A smaller wooden bow with a shorter firing distance.",
+                            "enchantments": [
+                                {
+                                    "enchantment": [
+                                        {
+                                            "name": "+5 Enhancement Bonus",
+                                            "name_url": "https://ddowiki.com/page/Enhancement_bonus",
+                                            "fullText": "+5 Enhancement Bonus"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "enchantment": [
+                                        {
+                                            "name": "Alchemical (Prototype)",
+                                            "name_url": "https://ddowiki.com/page/Alchemical_Crafting",
+                                            "fullText": "Alchemical (Prototype)"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "enchantment": [
+                                        {
+                                            "name": "Mythic Weapon Boost",
+                                            "name_url": "https://ddowiki.com/page/Mythic_Boost",
+                                            "fullText": "Mythic Weapon Boost +2 or +4"
+                                        }
+                                    ]
+                                }
+                            ],
+                            "locationInformation": [
+                                {
+                                    "location": "The Master Artificer",
+                                    "location_url": "https://ddowiki.com/page/The_Master_Artificer",
+                                    "locationExtra": ", Either End chest"
+                                }
+                            ]
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "weapon": [
+                {
+                    "name": "Green Steel Shortbow",
+                    "damangeAndType": "1.50 [1d6] + 5 Pierce, Evil, Magic",
+                    "minLevel": "12",
+                    "binding": "Bound to Character on Acquire",
+                    "quest": "Altar of Fecundity, Manufactured Ingredient Recipes",
+                    "criticalProfile": "",
+                    "enchantments": "+5 Enhancement Bonus",
+                    "enchantments_url": "https://ddowiki.com/page/Enhancement_bonus",
+                    "errata": "",
+                    "weaponDetail": [
+                        {
+                            "proficiency": "Martial Weapon Proficiency",
+                            "name": "Green Steel Shortbow",
+                            "damangeAndType": "1.50 [1d6] + 5 Pierce, Evil, Magic",
+                            "criticalThreatRange": "20 / x3",
+                            "weaponType": [
+                                {
+                                    "weaponCategory": "Short Bow",
+                                    "damageCategory": "/ Ranged weapons"
+                                }
+                            ],
+                            "absRaceRequired": "None",
+                            "minLevel": "12",
+                            "requiredTrait": "None",
+                            "umd": "No UMD needed",
+                            "handedness": "",
+                            "attackMod": "DEX",
+                            "damageMod": "N/A",
+                            "binding": "Bound to Character on Acquire",
+                            "binding_url": "https://ddowiki.com/page/Bind",
+                            "durability": "115",
+                            "material": "Steel",
+                            "material_url": "https://ddowiki.com/page/Steel",
+                            "hardness": "15",
+                            "baseValue": "5,403pp",
+                            "weight": "2 lbs",
+                            "upgradable": "Green Steel",
+                            "tips": [
+                                {
+                                    "tip": "+5 Green Steel Shortbow"
+                                },
+                                {
+                                    "tip": "Ore of Travail\nLocust Husk\nChipmunk Funk\nGlistening Pebbles\nGreen Briar Twigs\nEberron Energy Cell"
+                                },
+                                {
+                                    "tip": "Blue Taper\nGlistening Pebbles\nGreen Briar Twigs\nBitterscrub Fungus\nChipmunk Funk\nEberron Energy Cell"
+                                },
+                                {
+                                    "tip": "Wondrous Oil\nLocust Husk\nLammanian Lily Petals\nChipmunk Funk\nBitterscrub Fungus OR Green Briar Twigs\nEberron Energy Cell"
+                                },
+                                {
+                                    "tip": "Shavarath Signet Stone\nShavarath Stone of Might\nShavarath Stone of Battle\nShavarath Stone of Strategy\nShavarath Stone of Foresight\nShavarath Stone of Victory"
+                                },
+                                {
+                                    "tip": "Large Splintered Horn"
+                                }
+                            ],
+                            "description": "A smaller wooden bow with a shorter firing distance.",
+                            "enchantments": [
+                                {
+                                    "enchantment": [
+                                        {
+                                            "name": "+5 Enhancement Bonus",
+                                            "name_url": "https://ddowiki.com/page/Enhancement_bonus",
+                                            "fullText": "+5 Enhancement Bonus"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "enchantment": [
+                                        {
+                                            "name": "Green Steel",
+                                            "name_url": "https://ddowiki.com/page/Green_Steel",
+                                            "fullText": "Green Steel"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "enchantment": [
+                                        {
+                                            "name": "Mythic Weapon Boost",
+                                            "name_url": "https://ddowiki.com/page/Mythic_Boost",
+                                            "fullText": "Mythic Weapon Boost +2 or +4"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "oneOfEnchantment": [{}, {}, {}, {}, {}],
+                                    "enchantment": [
+                                        {
+                                            "name": "Ore of Travail",
+                                            "name_url": "https://ddowiki.com/page/Ore_of_Travail",
+                                            "fullText": "Locust Husk\nChipmunk Funk\nGlistening Pebbles\nGreen Briar Twigs\nEberron Energy Cell"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "oneOfEnchantment": [{}, {}, {}, {}, {}],
+                                    "enchantment": [
+                                        {
+                                            "name": "Blue Taper",
+                                            "name_url": "https://ddowiki.com/page/Blue_Taper",
+                                            "fullText": "Glistening Pebbles\nGreen Briar Twigs\nBitterscrub Fungus\nChipmunk Funk\nEberron Energy Cell"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "oneOfEnchantment": [{}, {}, {}, {}, {}],
+                                    "enchantment": [
+                                        {
+                                            "name": "Wondrous Oil",
+                                            "name_url": "https://ddowiki.com/page/Wondrous_Oil",
+                                            "fullText": "Locust Husk\nLammanian Lily Petals\nChipmunk Funk\nBitterscrub Fungus OR Green Briar Twigs\nEberron Energy Cell"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "oneOfEnchantment": [{}, {}, {}, {}, {}],
+                                    "enchantment": [{}]
+                                },
+                                {
+                                    "enchantment": [
+                                        {
+                                            "name": "Large Splintered Horn",
+                                            "name_url": "https://ddowiki.com/page/Large_Splintered_Horn",
+                                            "fullText": "Large Splintered Horn"
+                                        }
+                                    ]
+                                }
+                            ],
+                            "locationInformation": [
+                                {
+                                    "location": "Manufactured Ingredient Recipes",
+                                    "location_url": "https://ddowiki.com/page/Altar_of_Fecundity_-_Manufactured_Ingredient_Recipes",
+                                    "locationExtra": ","
+                                }
+                            ]
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "weapon": [
+                {
+                    "name": "Hunter of Wilds",
+                    "damangeAndType": "1.5[1d6] + 5 Pierce, Chaotic, Magic",
+                    "minLevel": "14",
+                    "binding": "Bound to Account on Acquire",
+                    "quest": "The Madness of Crowds, End chest",
+                    "criticalProfile": "Critical Profile: 19-20 / x3",
+                    "enchantments": "+5 Enhancement Bonus",
+                    "enchantments_url": "https://ddowiki.com/page/Enhancement_bonus",
+                    "errata": "Critical Profile: 19-20 / x3",
+                    "weaponDetail": [
+                        {
+                            "proficiency": "Martial Weapon Proficiency",
+                            "name": "Hunter of Wilds",
+                            "damangeAndType": "1.5[1d6] + 5 Pierce, Chaotic, Magic",
+                            "criticalThreatRange": "19-20 / x3",
+                            "weaponType": [
+                                {
+                                    "weaponCategory": "Short Bow",
+                                    "damageCategory": "/ Ranged weapons"
+                                }
+                            ],
+                            "absRaceRequired": "None",
+                            "minLevel": "14",
+                            "requiredTrait": "None",
+                            "umd": "No UMD needed",
+                            "handedness": "",
+                            "attackMod": "DEX",
+                            "damageMod": "N/A",
+                            "binding": "Bound to Account on Acquire",
+                            "binding_url": "https://ddowiki.com/page/Bind",
+                            "durability": "205",
+                            "material": "Steel",
+                            "material_url": "https://ddowiki.com/page/Steel",
+                            "hardness": "24",
+                            "baseValue": "5,603pp",
+                            "weight": "2 lbs",
+                            "upgradable": "Not upgradeable",
+                            "description": "A bow can be vital to survival in the wild. Still, it cannot stop the menace of isolation, or what follows...",
+                            "enchantments": [
+                                {
+                                    "enchantment": [
+                                        {
+                                            "name": "+5 Enhancement Bonus",
+                                            "name_url": "https://ddowiki.com/page/Enhancement_bonus",
+                                            "fullText": "+5 Enhancement Bonus"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "enchantment": [
+                                        {
+                                            "name": "Trace of Madness",
+                                            "name_url": "https://ddowiki.com/page/Trace_of_Madness",
+                                            "fullText": "Trace of Madness"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "enchantment": [
+                                        {
+                                            "name": "Elasticity",
+                                            "name_url": "https://ddowiki.com/page/Elasticity",
+                                            "fullText": "Elasticity"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "enchantment": [
+                                        {
+                                            "name": "Anarchic 3",
+                                            "name_url": "https://ddowiki.com/page/Alignment_damage_(weapon)",
+                                            "fullText": "Anarchic 3"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "enchantment": [
+                                        {
+                                            "name": "Heartseeker I",
+                                            "name_url": "https://ddowiki.com/page/Heartseeker",
+                                            "fullText": "Heartseeker I"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "enchantment": [
+                                        {
+                                            "name": "Keen I",
+                                            "name_url": "https://ddowiki.com/page/Keen",
+                                            "fullText": "Keen I"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "oneOfEnchantment": [
+                                        {},
+                                        {},
+                                        {},
+                                        {},
+                                        {},
+                                        {},
+                                        {},
+                                        {},
+                                        {},
+                                        {},
+                                        {},
+                                        {},
+                                        {},
+                                        {},
+                                        {},
+                                        {}
+                                    ],
+                                    "enchantment": [
+                                        {
+                                            "fullText": "Empty Red Augment Slot"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "enchantment": [
+                                        {
+                                            "name": "Mythic Weapon Boost",
+                                            "name_url": "https://ddowiki.com/page/Mythic_Boost",
+                                            "fullText": "Mythic Weapon Boost +2 or +4"
+                                        }
+                                    ]
+                                }
+                            ],
+                            "locationInformation": [
+                                {
+                                    "location": "The Madness of Crowds",
+                                    "location_url": "https://ddowiki.com/page/The_Madness_of_Crowds",
+                                    "locationExtra": ", End chest"
+                                }
+                            ]
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "weapon": [
+                {
+                    "name": "Epic Collapsible Shortbow",
+                    "damangeAndType": "2d6 + 6 Slash, Pierce, Magic",
+                    "minLevel": "20",
+                    "binding": "Bound to Character on Acquire",
+                    "criticalProfile": "Critical Profile: 18-20 / x3",
+                    "enchantments": "+6 Enhancement Bonus",
+                    "enchantments_url": "https://ddowiki.com/page/Enhancement_bonus",
+                    "errata": "Critical Profile: 18-20 / x3",
+                    "weaponDetail": [
+                        {
+                            "proficiency": "Martial Weapon Proficiency",
+                            "name": "Epic Collapsible Shortbow",
+                            "damangeAndType": "2d6 + 6 Slash, Pierce, Magic",
+                            "criticalThreatRange": "18-20 / x3",
+                            "weaponType": [
+                                {
+                                    "weaponCategory": "Short Bow",
+                                    "damageCategory": "/ Ranged weapons"
+                                }
+                            ],
+                            "absRaceRequired": "None",
+                            "minLevel": "20",
+                            "requiredTrait": "None",
+                            "umd": "No UMD needed",
+                            "handedness": "",
+                            "attackMod": "DEX",
+                            "damageMod": "N/A",
+                            "binding": "Bound to Character on Acquire",
+                            "binding_url": "https://ddowiki.com/page/Bind",
+                            "durability": "145",
+                            "material": "Wood",
+                            "material_url": "https://ddowiki.com/page/Wood",
+                            "hardness": "13",
+                            "baseValue": "12,803pp",
+                            "weight": "2 lbs",
+                            "upgradable": "Fully upgraded",
+                            "tips": [
+                                {
+                                    "tip": "Update 28 Patch 1"
+                                },
+                                {
+                                    "tip": "threat range"
+                                },
+                                {
+                                    "tip": "Improved Critical"
+                                }
+                            ],
+                            "description": "A small bow ingeniously jointed to collapse into a small pack. Wielding this bow, allows a rogue to perform prodigious athletic feats.",
+                            "enchantments": [
+                                {
+                                    "enchantment": [
+                                        {
+                                            "name": "+6 Enhancement Bonus",
+                                            "name_url": "https://ddowiki.com/page/Enhancement_bonus",
+                                            "fullText": "+6 Enhancement Bonus"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "enchantment": [
+                                        {
+                                            "name": "Force Burst",
+                                            "name_url": "https://ddowiki.com/page/Force_(enchantment)",
+                                            "fullText": "Force Burst"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "enchantment": [
+                                        {
+                                            "name": "Jump +15",
+                                            "name_url": "https://ddowiki.com/page/Jump_(skill)",
+                                            "fullText": "Jump +15"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "enchantment": [
+                                        {
+                                            "name": "Swim +15",
+                                            "name_url": "https://ddowiki.com/page/Swim",
+                                            "fullText": "Swim +15"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "enchantment": [
+                                        {
+                                            "name": "Tumble +15",
+                                            "name_url": "https://ddowiki.com/page/Tumble_(skill)",
+                                            "fullText": "Tumble +15"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "enchantment": [
+                                        {
+                                            "name": "Sneak Attack Bonus +4",
+                                            "name_url": "https://ddowiki.com/page/Sneak_Attack_Bonus",
+                                            "fullText": "Sneak Attack Bonus +4"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "oneOfEnchantment": [
+                                        {},
+                                        {},
+                                        {},
+                                        {},
+                                        {},
+                                        {},
+                                        {},
+                                        {}
+                                    ],
+                                    "enchantment": [
+                                        {
+                                            "fullText": "Empty Colorless Augment Slot"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "oneOfEnchantment": [
+                                        {},
+                                        {},
+                                        {},
+                                        {},
+                                        {},
+                                        {},
+                                        {},
+                                        {},
+                                        {},
+                                        {},
+                                        {},
+                                        {},
+                                        {},
+                                        {},
+                                        {},
+                                        {}
+                                    ],
+                                    "enchantment": [
+                                        {
+                                            "fullText": "Empty Red Augment Slot"
+                                        }
+                                    ]
+                                }
+                            ],
+                            "locationInformation": [
+                                {
+                                    "location": "Collapsible Shortbow",
+                                    "location_url": "https://ddowiki.com/page/Collapsible_Shortbow",
+                                    "locationExtra": "of"
+                                }
+                            ]
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "weapon": [
+                {
+                    "name": "Thunder-Forged Alloy Shortbow",
+                    "damangeAndType": "3.50 [1d6] + 9 Pierce, Silver, Adamantine, Mithral, Cold Iron, Magic, Byeshk",
+                    "minLevel": "22",
+                    "binding": "Unbound",
+                    "quest": "Magma Forge, Crafted from various ingredients",
+                    "criticalProfile": "",
+                    "enchantments": "+9 Enhancement Bonus",
+                    "enchantments_url": "https://ddowiki.com/page/Enhancement_bonus",
+                    "errata": "",
+                    "weaponDetail": [
+                        {
+                            "proficiency": "Martial Weapon Proficiency",
+                            "name": "Thunder-Forged Alloy Shortbow",
+                            "damangeAndType": "3.50 [1d6] + 9 Pierce, Silver, Adamantine, Mithral, Cold Iron, Magic, Byeshk",
+                            "criticalThreatRange": "20 / x3",
+                            "weaponType": [
+                                {
+                                    "weaponCategory": "Short Bow",
+                                    "damageCategory": "/ Ranged weapons"
+                                }
+                            ],
+                            "absRaceRequired": "None",
+                            "minLevel": "22",
+                            "requiredTrait": "None",
+                            "umd": "No UMD needed",
+                            "handedness": "",
+                            "attackMod": "DEX",
+                            "damageMod": "N/A",
+                            "binding": "Unbound",
+                            "binding_url": "https://ddowiki.com/page/Bind",
+                            "durability": "195",
+                            "material": "Adamantine",
+                            "material_url": "https://ddowiki.com/page/Adamantine",
+                            "hardness": "34",
+                            "baseValue": "8,803pp",
+                            "weight": "2 lbs",
+                            "upgradable": "Thunder-Forged",
+                            "tips": [
+                                {
+                                    "tip": "20 Thunder-Forged Dwarven Ingots"
+                                },
+                                {
+                                    "tip": "15 Commendations of Valor"
+                                }
+                            ],
+                            "description": "A longbow forged from metals long in proximity to dragons under Thunderholme.",
+                            "enchantments": [
+                                {
+                                    "enchantment": [
+                                        {
+                                            "name": "+9 Enhancement Bonus",
+                                            "name_url": "https://ddowiki.com/page/Enhancement_bonus",
+                                            "fullText": "+9 Enhancement Bonus"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "oneOfEnchantment": [
+                                        {},
+                                        {},
+                                        {},
+                                        {},
+                                        {},
+                                        {},
+                                        {},
+                                        {},
+                                        {},
+                                        {},
+                                        {},
+                                        {},
+                                        {},
+                                        {},
+                                        {},
+                                        {},
+                                        {},
+                                        {},
+                                        {},
+                                        {},
+                                        {},
+                                        {},
+                                        {},
+                                        {},
+                                        {}
+                                    ],
+                                    "enchantment": [
+                                        {
+                                            "fullText": "Empty Orange Augment Slot"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "enchantment": [
+                                        {
+                                            "name": "Thunder-Forged (Tier 0)",
+                                            "name_url": "https://ddowiki.com/page/Thunder-Forged",
+                                            "fullText": "Thunder-Forged (Tier 0)"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "enchantment": [
+                                        {
+                                            "name": "Mythic Weapon Boost",
+                                            "name_url": "https://ddowiki.com/page/Mythic_Boost",
+                                            "fullText": "Mythic Weapon Boost +2 or +4"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "enchantment": [
+                                        {
+                                            "fullText": "20 Thunder-Forged Dwarven Ingots",
+                                            "fullText_url": "https://ddowiki.com/page/Item:Thunder-Forged_Dwarven_Ingot"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "enchantment": [
+                                        {
+                                            "fullText": "15 Commendations of Valor",
+                                            "fullText_url": "https://ddowiki.com/page/Item:Commendation_of_Valor"
+                                        }
+                                    ]
+                                }
+                            ],
+                            "locationInformation": [
+                                {
+                                    "location": "Magma Forge",
+                                    "location_url": "https://ddowiki.com/page/Magma_Forge",
+                                    "locationExtra": ", Crafted from various ingredients"
+                                }
+                            ]
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "weapon": [
+                {
+                    "name": "Legendary Green Steel Shortbow*",
+                    "damangeAndType": "5[1d6] + 14 Pierce, Evil, Magic",
+                    "minLevel": "26",
+                    "binding": "Bound to Character on Acquire",
+                    "quest": "Altar of Fecundity, Manufactured Ingredient Recipes",
+                    "criticalProfile": "",
+                    "enchantments": "+14 Enhancement Bonus",
+                    "enchantments_url": "https://ddowiki.com/page/Enhancement_bonus",
+                    "itemId": "Legendary Green Steel Shortbow",
+                    "url": "https://ddowiki.com/page/Item:Legendary_Green_Steel_Shortbow",
+                    "errata": ""
+                }
+            ]
+        },
+        {
+            "weapon": [
+                {
+                    "name": "Legendary Hunter of Wilds",
+                    "damangeAndType": "7[1d6+2] + 15 Pierce, Chaotic, Magic",
+                    "minLevel": "29",
+                    "binding": "Bound to Account on Acquire",
+                    "quest": "The Madness of Crowds, End Chest",
+                    "criticalProfile": "Critical Profile: 19-20 / x3",
+                    "enchantments": "+15 Enhancement Bonus",
+                    "enchantments_url": "https://ddowiki.com/page/Enhancement_bonus",
+                    "errata": "Critical Profile: 19-20 / x3",
+                    "weaponDetail": [
+                        {
+                            "proficiency": "Martial Weapon Proficiency",
+                            "name": "Legendary Hunter of Wilds",
+                            "damangeAndType": "7[1d6+2] + 15 Pierce, Chaotic, Magic",
+                            "criticalThreatRange": "19-20 / x3",
+                            "weaponType": [
+                                {
+                                    "weaponCategory": "Short Bow",
+                                    "damageCategory": "/ Ranged weapons"
+                                }
+                            ],
+                            "absRaceRequired": "None",
+                            "minLevel": "29",
+                            "requiredTrait": "None",
+                            "umd": "No UMD needed",
+                            "handedness": "",
+                            "attackMod": "DEX",
+                            "damageMod": "N/A",
+                            "binding": "Bound to Account on Acquire",
+                            "binding_url": "https://ddowiki.com/page/Bind",
+                            "durability": "355",
+                            "material": "Steel",
+                            "material_url": "https://ddowiki.com/page/Steel",
+                            "hardness": "39",
+                            "baseValue": "11,603pp",
+                            "weight": "2.0 lbs",
+                            "upgradable": "Not upgradeable",
+                            "description": "A bow can be vital to survival in the wild. Still, it cannot stop the menace of isolation, or what follows...",
+                            "enchantments": [
+                                {
+                                    "enchantment": [
+                                        {
+                                            "name": "+15 Enhancement Bonus",
+                                            "name_url": "https://ddowiki.com/page/Enhancement_bonus",
+                                            "fullText": "+15 Enhancement Bonus"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "enchantment": [
+                                        {
+                                            "name": "Trace of Madness",
+                                            "name_url": "https://ddowiki.com/page/Trace_of_Madness",
+                                            "fullText": "Trace of Madness"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "enchantment": [
+                                        {
+                                            "name": "Elasticity",
+                                            "name_url": "https://ddowiki.com/page/Elasticity",
+                                            "fullText": "Elasticity"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "enchantment": [
+                                        {
+                                            "name": "Anarchic 9",
+                                            "name_url": "https://ddowiki.com/page/Alignment_damage_(weapon)",
+                                            "fullText": "Anarchic 9"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "enchantment": [
+                                        {
+                                            "name": "Heartseeker VII",
+                                            "name_url": "https://ddowiki.com/page/Heartseeker",
+                                            "fullText": "Heartseeker VII"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "enchantment": [
+                                        {
+                                            "name": "Keen V",
+                                            "name_url": "https://ddowiki.com/page/Keen",
+                                            "fullText": "Keen V"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "oneOfEnchantment": [
+                                        {},
+                                        {},
+                                        {},
+                                        {},
+                                        {},
+                                        {},
+                                        {},
+                                        {},
+                                        {},
+                                        {},
+                                        {},
+                                        {},
+                                        {},
+                                        {},
+                                        {},
+                                        {}
+                                    ],
+                                    "enchantment": [
+                                        {
+                                            "fullText": "Empty Red Augment Slot"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "enchantment": [
+                                        {
+                                            "name": "Mythic Weapon Boost",
+                                            "name_url": "https://ddowiki.com/page/Mythic_Boost",
+                                            "fullText": "Mythic Weapon Boost +2 or +4"
+                                        }
+                                    ]
+                                }
+                            ],
+                            "locationInformation": [
+                                {
+                                    "location": "The Madness of Crowds",
+                                    "location_url": "https://ddowiki.com/page/The_Madness_of_Crowds",
+                                    "locationExtra": ", End Chest"
+                                }
+                            ]
+                        }
+                    ]
+                }
+            ]
         }
-       ],
-       "absRaceRequired": "None",
-       "minLevel": "None",
-       "requiredTrait": "None",
-       "umd": "No UMD needed",
-       "handedness": "",
-       "attackMod": "DEX",
-       "damageMod": "N/A",
-       "binding": "Bound to Character on Acquire",
-       "binding_url": "https://ddowiki.com/page/Bind",
-       "durability": "75",
-       "material": "Wood",
-       "material_url": "https://ddowiki.com/page/Wood",
-       "hardness": "6",
-       "baseValue": "233pp",
-       "weight": "2 lbs",
-       "upgradable": "Not upgradeable",
-       "tips": [
-        {
-         "tip": "This item cannot be fed to sentient jewels."
-        },
-        {
-         "tip": "All Barbarians, Bards, Fighters, Rangers, and Rogues get this automatically upon completing (or electing to skip) The Grotto."
-        }
-       ],
-       "description": "This shortbow is carved with symbols and is warm to the touch.",
-       "enchantments": [
-        {
-         "enchantment": [
-          {
-           "name": "Masterwork",
-           "name_url": "https://ddowiki.com/page/Masterwork",
-           "fullText": "Masterwork"
-          }
-         ]
-        },
-        {
-         "enchantment": [
-          {
-           "name": "Fire Touch",
-           "name_url": "https://ddowiki.com/page/Elemental_Touch#Fire_Touch",
-           "fullText": "Fire Touch"
-          }
-         ]
-        },
-        {
-         "enchantment": [
-          {
-           "name": "Starter",
-           "name_url": "https://ddowiki.com/page/Starter",
-           "fullText": "Starter"
-          }
-         ]
-        },
-        {
-         "enchantment": [
-          {
-           "name": "Mythic Weapon Boost",
-           "name_url": "https://ddowiki.com/page/Mythic_Boost",
-           "fullText": "Mythic Weapon Boost +2 or +4"
-          }
-         ]
-        },
-        {
-         "enchantment": [
-          {
-           "fullText": "This item cannot be fed to sentient jewels."
-          }
-         ]
-        },
-        {
-         "enchantment": [
-          {
-           "fullText": "The Grotto",
-           "fullText_url": "https://ddowiki.com/page/The_Grotto"
-          }
-         ]
-        }
-       ],
-       "locationInformation": [
-        {
-         "location": "Sahuagin High Priestess",
-         "location_url": "https://ddowiki.com/page/Sahuagin_High_Priestess",
-         "locationExtra": ","
-        }
-       ]
-      }
-     ]
-    }
-   ]
-  },
-  {
-   "weapon": [
-    {
-     "name": "+1 Starter Shortbow*",
-     "damangeAndType": "1d6 + 1 Pierce, Magic",
-     "minLevel": "2",
-     "binding": "Bound to Character on Acquire",
-     "quest": "The Voyage",
-     "criticalProfile": "",
-     "enchantments": "+1 Enhancement Bonus",
-     "enchantments_url": "https://ddowiki.com/page/Enhancement_bonus",
-     "itemId": "+1 Starter Shortbow",
-     "url": "https://ddowiki.com/page/Item:%2B1_Starter_Shortbow",
-     "errata": ""
-    }
-   ]
-  },
-  {
-   "weapon": [
-    {
-     "name": "Scorpion Tail Shortbow",
-     "damangeAndType": "[1d6] + 2 Pierce, Magic",
-     "minLevel": "4",
-     "binding": "Bound to Character on Equip",
-     "quest": "Redwillow's Ruins, Ravenous' Chest",
-     "criticalProfile": "",
-     "enchantments": "+2 Enhancement Bonus",
-     "enchantments_url": "https://ddowiki.com/page/Enhancement_bonus",
-     "errata": "",
-     "weaponDetail": [
-      {
-       "proficiency": "Martial Weapon Proficiency",
-       "name": "Scorpion Tail Shortbow",
-       "damangeAndType": "[1d6] + 2 Pierce, Magic",
-       "criticalThreatRange": "20 / x3",
-       "weaponType": [
-        {
-         "weaponCategory": "Short Bow",
-         "damageCategory": "/ Ranged weapons"
-        }
-       ],
-       "absRaceRequired": "None",
-       "minLevel": "4",
-       "requiredTrait": "None",
-       "umd": "No UMD needed",
-       "handedness": "",
-       "attackMod": "DEX",
-       "damageMod": "n/a",
-       "binding": "Bound to Character on Equip",
-       "binding_url": "https://ddowiki.com/page/Bind",
-       "durability": "85",
-       "material": "Wood",
-       "material_url": "https://ddowiki.com/page/Wood",
-       "hardness": "7",
-       "baseValue": "1,603pp",
-       "weight": "2 lbs",
-       "upgradable": "Not upgradeable",
-       "description": "A smaller wooden bow with a shorter firing distance.",
-       "enchantments": [
-        {
-         "enchantment": [
-          {
-           "name": "+2 Enhancement Bonus",
-           "name_url": "https://ddowiki.com/page/Enhancement_bonus",
-           "fullText": "+2 Enhancement Bonus"
-          }
-         ]
-        },
-        {
-         "enchantment": [
-          {
-           "name": "Poison",
-           "name_url": "https://ddowiki.com/page/Poison_(enchantment)",
-           "fullText": "Poison"
-          }
-         ]
-        },
-        {
-         "oneOfEnchantment": [
-          {
-          },
-          {
-          },
-          {
-          },
-          {
-          },
-          {
-          },
-          {
-          },
-          {
-          },
-          {
-          },
-          {
-          },
-          {
-          },
-          {
-          },
-          {
-          },
-          {
-          },
-          {
-          },
-          {
-          },
-          {
-          }
-         ],
-         "enchantment": [
-          {
-           "fullText": "Empty Red Augment Slot"
-          }
-         ]
-        },
-        {
-         "enchantment": [
-          {
-           "name": "Mythic Weapon Boost",
-           "name_url": "https://ddowiki.com/page/Mythic_Boost",
-           "fullText": "Mythic Weapon Boost +2 or +4"
-          }
-         ]
-        }
-       ],
-       "locationInformation": [
-        {
-         "location": "Ravenous",
-         "location_url": "https://ddowiki.com/page/Ravenous",
-         "locationExtra": ","
-        }
-       ]
-      }
-     ]
-    }
-   ]
-  },
-  {
-   "weapon": [
-    {
-     "name": "Collapsible Shortbow",
-     "damangeAndType": "1.50 [1d6] + 5 Pierce, Magic",
-     "minLevel": "10",
-     "binding": "Bound to Character on Equip",
-     "quest": "Sands of Menechtarun, Firebrand Area: Lieutenant Ayurro's chest (Rare Encounter)",
-     "criticalProfile": "",
-     "enchantments": "+5 Enhancement Bonus",
-     "enchantments_url": "https://ddowiki.com/page/Enhancement_bonus",
-     "errata": "",
-     "weaponDetail": [
-      {
-       "proficiency": "Martial Weapon Proficiency",
-       "name": "Collapsible Shortbow",
-       "damangeAndType": "1.50 [1d6] + 5 Pierce, Magic",
-       "criticalThreatRange": "20 / x3",
-       "weaponType": [
-        {
-         "weaponCategory": "Short Bow",
-         "damageCategory": "/ Ranged weapons"
-        }
-       ],
-       "absRaceRequired": "None",
-       "minLevel": "10",
-       "requiredTrait": "None",
-       "umd": "No UMD needed",
-       "handedness": "",
-       "attackMod": "DEX",
-       "damageMod": "N/A",
-       "binding": "Bound to Character on Equip",
-       "binding_url": "https://ddowiki.com/page/Bind",
-       "durability": "125",
-       "material": "Wood",
-       "material_url": "https://ddowiki.com/page/Wood",
-       "hardness": "11",
-       "baseValue": "4,003pp",
-       "weight": "2 lbs",
-       "upgradable": "Epic Crafting to Epic Collapsible Shortbow",
-       "description": "A small bow ingeniously jointed to collapse into a small pack. Wielding this bow, allows a rogue to perform prodigious athletic feats.",
-       "enchantments": [
-        {
-         "enchantment": [
-          {
-           "name": "+5 Enhancement Bonus",
-           "name_url": "https://ddowiki.com/page/Enhancement_bonus",
-           "fullText": "+5 Enhancement Bonus"
-          }
-         ]
-        },
-        {
-         "enchantment": [
-          {
-           "name": "Jump +11",
-           "name_url": "https://ddowiki.com/page/Jump_(skill)",
-           "fullText": "Jump +11"
-          }
-         ]
-        },
-        {
-         "enchantment": [
-          {
-           "name": "Swim +11",
-           "name_url": "https://ddowiki.com/page/Swim",
-           "fullText": "Swim +11"
-          }
-         ]
-        },
-        {
-         "enchantment": [
-          {
-           "name": "Tumble +11",
-           "name_url": "https://ddowiki.com/page/Tumble_(skill)",
-           "fullText": "Tumble +11"
-          }
-         ]
-        },
-        {
-         "oneOfEnchantment": [
-          {
-          },
-          {
-          },
-          {
-          },
-          {
-          },
-          {
-          },
-          {
-          },
-          {
-          },
-          {
-          },
-          {
-          },
-          {
-          },
-          {
-          },
-          {
-          },
-          {
-          },
-          {
-          },
-          {
-          },
-          {
-          },
-          {
-          },
-          {
-          },
-          {
-          },
-          {
-          },
-          {
-          },
-          {
-          },
-          {
-          },
-          {
-          },
-          {
-          }
-         ],
-         "enchantment": [
-          {
-           "fullText": "Empty Purple Augment Slot"
-          }
-         ]
-        },
-        {
-         "oneOfEnchantment": [
-          {
-          },
-          {
-          },
-          {
-          },
-          {
-          },
-          {
-          },
-          {
-          },
-          {
-          },
-          {
-          },
-          {
-          },
-          {
-          },
-          {
-          },
-          {
-          },
-          {
-          },
-          {
-          },
-          {
-          },
-          {
-          }
-         ],
-         "enchantment": [
-          {
-           "fullText": "Empty Red Augment Slot"
-          }
-         ]
-        },
-        {
-         "enchantment": [
-          {
-           "name": "Mythic Weapon Boost",
-           "name_url": "https://ddowiki.com/page/Mythic_Boost",
-           "fullText": "Mythic Weapon Boost +2 or +4"
-          }
-         ]
-        }
-       ],
-       "locationInformation": [
-        {
-         "location": "Lieutenant Ayurro",
-         "location_url": "https://ddowiki.com/page/Lieutenant_Ayurro",
-         "locationExtra": ", Firebrand Area:"
-        }
-       ]
-      }
-     ]
-    }
-   ]
-  },
-  {
-   "weapon": [
-    {
-     "name": "Alchemical Shortbow",
-     "damangeAndType": "2 [1d6] + 5 Pierce, Magic",
-     "minLevel": "12",
-     "binding": "Unbound",
-     "quest": "The Master Artificer, Either End chest",
-     "criticalProfile": "",
-     "enchantments": "+5 Enhancement Bonus",
-     "enchantments_url": "https://ddowiki.com/page/Enhancement_bonus",
-     "errata": "",
-     "weaponDetail": [
-      {
-       "proficiency": "Martial Weapon Proficiency",
-       "name": "Alchemical Shortbow",
-       "damangeAndType": "2 [1d6] + 5 Pierce, Magic",
-       "criticalThreatRange": "20 / x3",
-       "weaponType": [
-        {
-         "weaponCategory": "Short Bow",
-         "damageCategory": "/ Ranged weapons"
-        }
-       ],
-       "absRaceRequired": "None",
-       "minLevel": "12",
-       "requiredTrait": "None",
-       "umd": "No UMD needed",
-       "handedness": "",
-       "attackMod": "DEX",
-       "damageMod": "N/A",
-       "binding": "Unbound",
-       "binding_url": "https://ddowiki.com/page/Bind",
-       "durability": "135",
-       "material": "Steel",
-       "material_url": "https://ddowiki.com/page/Steel",
-       "hardness": "17",
-       "baseValue": "10,203pp",
-       "weight": "2 lbs",
-       "upgradable": "Alchemical Crafting",
-       "description": "A smaller wooden bow with a shorter firing distance.",
-       "enchantments": [
-        {
-         "enchantment": [
-          {
-           "name": "+5 Enhancement Bonus",
-           "name_url": "https://ddowiki.com/page/Enhancement_bonus",
-           "fullText": "+5 Enhancement Bonus"
-          }
-         ]
-        },
-        {
-         "enchantment": [
-          {
-           "name": "Alchemical (Prototype)",
-           "name_url": "https://ddowiki.com/page/Alchemical_Crafting",
-           "fullText": "Alchemical (Prototype)"
-          }
-         ]
-        },
-        {
-         "enchantment": [
-          {
-           "name": "Mythic Weapon Boost",
-           "name_url": "https://ddowiki.com/page/Mythic_Boost",
-           "fullText": "Mythic Weapon Boost +2 or +4"
-          }
-         ]
-        }
-       ],
-       "locationInformation": [
-        {
-         "location": "The Master Artificer",
-         "location_url": "https://ddowiki.com/page/The_Master_Artificer",
-         "locationExtra": ", Either End chest"
-        }
-       ]
-      }
-     ]
-    }
-   ]
-  },
-  {
-   "weapon": [
-    {
-     "name": "Green Steel Shortbow",
-     "damangeAndType": "1.50 [1d6] + 5 Pierce, Evil, Magic",
-     "minLevel": "12",
-     "binding": "Bound to Character on Acquire",
-     "quest": "Altar of Fecundity, Manufactured Ingredient Recipes",
-     "criticalProfile": "",
-     "enchantments": "+5 Enhancement Bonus",
-     "enchantments_url": "https://ddowiki.com/page/Enhancement_bonus",
-     "errata": "",
-     "weaponDetail": [
-      {
-       "proficiency": "Martial Weapon Proficiency",
-       "name": "Green Steel Shortbow",
-       "damangeAndType": "1.50 [1d6] + 5 Pierce, Evil, Magic",
-       "criticalThreatRange": "20 / x3",
-       "weaponType": [
-        {
-         "weaponCategory": "Short Bow",
-         "damageCategory": "/ Ranged weapons"
-        }
-       ],
-       "absRaceRequired": "None",
-       "minLevel": "12",
-       "requiredTrait": "None",
-       "umd": "No UMD needed",
-       "handedness": "",
-       "attackMod": "DEX",
-       "damageMod": "N/A",
-       "binding": "Bound to Character on Acquire",
-       "binding_url": "https://ddowiki.com/page/Bind",
-       "durability": "115",
-       "material": "Steel",
-       "material_url": "https://ddowiki.com/page/Steel",
-       "hardness": "15",
-       "baseValue": "5,403pp",
-       "weight": "2 lbs",
-       "upgradable": "Green Steel",
-       "tips": [
-        {
-         "tip": "+5 Green Steel Shortbow"
-        },
-        {
-         "tip": "Ore of Travail\nLocust Husk\nChipmunk Funk\nGlistening Pebbles\nGreen Briar Twigs\nEberron Energy Cell"
-        },
-        {
-         "tip": "Blue Taper\nGlistening Pebbles\nGreen Briar Twigs\nBitterscrub Fungus\nChipmunk Funk\nEberron Energy Cell"
-        },
-        {
-         "tip": "Wondrous Oil\nLocust Husk\nLammanian Lily Petals\nChipmunk Funk\nBitterscrub Fungus OR Green Briar Twigs\nEberron Energy Cell"
-        },
-        {
-         "tip": "Shavarath Signet Stone\nShavarath Stone of Might\nShavarath Stone of Battle\nShavarath Stone of Strategy\nShavarath Stone of Foresight\nShavarath Stone of Victory"
-        },
-        {
-         "tip": "Large Splintered Horn"
-        }
-       ],
-       "description": "A smaller wooden bow with a shorter firing distance.",
-       "enchantments": [
-        {
-         "enchantment": [
-          {
-           "name": "+5 Enhancement Bonus",
-           "name_url": "https://ddowiki.com/page/Enhancement_bonus",
-           "fullText": "+5 Enhancement Bonus"
-          }
-         ]
-        },
-        {
-         "enchantment": [
-          {
-           "name": "Green Steel",
-           "name_url": "https://ddowiki.com/page/Green_Steel",
-           "fullText": "Green Steel"
-          }
-         ]
-        },
-        {
-         "enchantment": [
-          {
-           "name": "Mythic Weapon Boost",
-           "name_url": "https://ddowiki.com/page/Mythic_Boost",
-           "fullText": "Mythic Weapon Boost +2 or +4"
-          }
-         ]
-        },
-        {
-         "oneOfEnchantment": [
-          {
-          },
-          {
-          },
-          {
-          },
-          {
-          },
-          {
-          }
-         ],
-         "enchantment": [
-          {
-           "name": "Ore of Travail",
-           "name_url": "https://ddowiki.com/page/Ore_of_Travail",
-           "fullText": "Locust Husk\nChipmunk Funk\nGlistening Pebbles\nGreen Briar Twigs\nEberron Energy Cell"
-          }
-         ]
-        },
-        {
-         "oneOfEnchantment": [
-          {
-          },
-          {
-          },
-          {
-          },
-          {
-          },
-          {
-          }
-         ],
-         "enchantment": [
-          {
-           "name": "Blue Taper",
-           "name_url": "https://ddowiki.com/page/Blue_Taper",
-           "fullText": "Glistening Pebbles\nGreen Briar Twigs\nBitterscrub Fungus\nChipmunk Funk\nEberron Energy Cell"
-          }
-         ]
-        },
-        {
-         "oneOfEnchantment": [
-          {
-          },
-          {
-          },
-          {
-          },
-          {
-          },
-          {
-          }
-         ],
-         "enchantment": [
-          {
-           "name": "Wondrous Oil",
-           "name_url": "https://ddowiki.com/page/Wondrous_Oil",
-           "fullText": "Locust Husk\nLammanian Lily Petals\nChipmunk Funk\nBitterscrub Fungus OR Green Briar Twigs\nEberron Energy Cell"
-          }
-         ]
-        },
-        {
-         "oneOfEnchantment": [
-          {
-          },
-          {
-          },
-          {
-          },
-          {
-          },
-          {
-          }
-         ],
-         "enchantment": [
-          {
-          }
-         ]
-        },
-        {
-         "enchantment": [
-          {
-           "name": "Large Splintered Horn",
-           "name_url": "https://ddowiki.com/page/Large_Splintered_Horn",
-           "fullText": "Large Splintered Horn"
-          }
-         ]
-        }
-       ],
-       "locationInformation": [
-        {
-         "location": "Manufactured Ingredient Recipes",
-         "location_url": "https://ddowiki.com/page/Altar_of_Fecundity_-_Manufactured_Ingredient_Recipes",
-         "locationExtra": ","
-        }
-       ]
-      }
-     ]
-    }
-   ]
-  },
-  {
-   "weapon": [
-    {
-     "name": "Hunter of Wilds",
-     "damangeAndType": "1.5[1d6] + 5 Pierce, Chaotic, Magic",
-     "minLevel": "14",
-     "binding": "Bound to Account on Acquire",
-     "quest": "The Madness of Crowds, End chest",
-     "criticalProfile": "Critical Profile: 19-20 / x3",
-     "enchantments": "+5 Enhancement Bonus",
-     "enchantments_url": "https://ddowiki.com/page/Enhancement_bonus",
-     "errata": "Critical Profile: 19-20 / x3",
-     "weaponDetail": [
-      {
-       "proficiency": "Martial Weapon Proficiency",
-       "name": "Hunter of Wilds",
-       "damangeAndType": "1.5[1d6] + 5 Pierce, Chaotic, Magic",
-       "criticalThreatRange": "19-20 / x3",
-       "weaponType": [
-        {
-         "weaponCategory": "Short Bow",
-         "damageCategory": "/ Ranged weapons"
-        }
-       ],
-       "absRaceRequired": "None",
-       "minLevel": "14",
-       "requiredTrait": "None",
-       "umd": "No UMD needed",
-       "handedness": "",
-       "attackMod": "DEX",
-       "damageMod": "N/A",
-       "binding": "Bound to Account on Acquire",
-       "binding_url": "https://ddowiki.com/page/Bind",
-       "durability": "205",
-       "material": "Steel",
-       "material_url": "https://ddowiki.com/page/Steel",
-       "hardness": "24",
-       "baseValue": "5,603pp",
-       "weight": "2 lbs",
-       "upgradable": "Not upgradeable",
-       "description": "A bow can be vital to survival in the wild. Still, it cannot stop the menace of isolation, or what follows...",
-       "enchantments": [
-        {
-         "enchantment": [
-          {
-           "name": "+5 Enhancement Bonus",
-           "name_url": "https://ddowiki.com/page/Enhancement_bonus",
-           "fullText": "+5 Enhancement Bonus"
-          }
-         ]
-        },
-        {
-         "enchantment": [
-          {
-           "name": "Trace of Madness",
-           "name_url": "https://ddowiki.com/page/Trace_of_Madness",
-           "fullText": "Trace of Madness"
-          }
-         ]
-        },
-        {
-         "enchantment": [
-          {
-           "name": "Elasticity",
-           "name_url": "https://ddowiki.com/page/Elasticity",
-           "fullText": "Elasticity"
-          }
-         ]
-        },
-        {
-         "enchantment": [
-          {
-           "name": "Anarchic 3",
-           "name_url": "https://ddowiki.com/page/Alignment_damage_(weapon)",
-           "fullText": "Anarchic 3"
-          }
-         ]
-        },
-        {
-         "enchantment": [
-          {
-           "name": "Heartseeker I",
-           "name_url": "https://ddowiki.com/page/Heartseeker",
-           "fullText": "Heartseeker I"
-          }
-         ]
-        },
-        {
-         "enchantment": [
-          {
-           "name": "Keen I",
-           "name_url": "https://ddowiki.com/page/Keen",
-           "fullText": "Keen I"
-          }
-         ]
-        },
-        {
-         "oneOfEnchantment": [
-          {
-          },
-          {
-          },
-          {
-          },
-          {
-          },
-          {
-          },
-          {
-          },
-          {
-          },
-          {
-          },
-          {
-          },
-          {
-          },
-          {
-          },
-          {
-          },
-          {
-          },
-          {
-          },
-          {
-          },
-          {
-          }
-         ],
-         "enchantment": [
-          {
-           "fullText": "Empty Red Augment Slot"
-          }
-         ]
-        },
-        {
-         "enchantment": [
-          {
-           "name": "Mythic Weapon Boost",
-           "name_url": "https://ddowiki.com/page/Mythic_Boost",
-           "fullText": "Mythic Weapon Boost +2 or +4"
-          }
-         ]
-        }
-       ],
-       "locationInformation": [
-        {
-         "location": "The Madness of Crowds",
-         "location_url": "https://ddowiki.com/page/The_Madness_of_Crowds",
-         "locationExtra": ", End chest"
-        }
-       ]
-      }
-     ]
-    }
-   ]
-  },
-  {
-   "weapon": [
-    {
-     "name": "Epic Collapsible Shortbow",
-     "damangeAndType": "2d6 + 6 Slash, Pierce, Magic",
-     "minLevel": "20",
-     "binding": "Bound to Character on Acquire",
-     "criticalProfile": "Critical Profile: 18-20 / x3",
-     "enchantments": "+6 Enhancement Bonus",
-     "enchantments_url": "https://ddowiki.com/page/Enhancement_bonus",
-     "errata": "Critical Profile: 18-20 / x3",
-     "weaponDetail": [
-      {
-       "proficiency": "Martial Weapon Proficiency",
-       "name": "Epic Collapsible Shortbow",
-       "damangeAndType": "2d6 + 6 Slash, Pierce, Magic",
-       "criticalThreatRange": "18-20 / x3",
-       "weaponType": [
-        {
-         "weaponCategory": "Short Bow",
-         "damageCategory": "/ Ranged weapons"
-        }
-       ],
-       "absRaceRequired": "None",
-       "minLevel": "20",
-       "requiredTrait": "None",
-       "umd": "No UMD needed",
-       "handedness": "",
-       "attackMod": "DEX",
-       "damageMod": "N/A",
-       "binding": "Bound to Character on Acquire",
-       "binding_url": "https://ddowiki.com/page/Bind",
-       "durability": "145",
-       "material": "Wood",
-       "material_url": "https://ddowiki.com/page/Wood",
-       "hardness": "13",
-       "baseValue": "12,803pp",
-       "weight": "2 lbs",
-       "upgradable": "Fully upgraded",
-       "tips": [
-        {
-         "tip": "Update 28 Patch 1"
-        },
-        {
-         "tip": "threat range"
-        },
-        {
-         "tip": "Improved Critical"
-        }
-       ],
-       "description": "A small bow ingeniously jointed to collapse into a small pack. Wielding this bow, allows a rogue to perform prodigious athletic feats.",
-       "enchantments": [
-        {
-         "enchantment": [
-          {
-           "name": "+6 Enhancement Bonus",
-           "name_url": "https://ddowiki.com/page/Enhancement_bonus",
-           "fullText": "+6 Enhancement Bonus"
-          }
-         ]
-        },
-        {
-         "enchantment": [
-          {
-           "name": "Force Burst",
-           "name_url": "https://ddowiki.com/page/Force_(enchantment)",
-           "fullText": "Force Burst"
-          }
-         ]
-        },
-        {
-         "enchantment": [
-          {
-           "name": "Jump +15",
-           "name_url": "https://ddowiki.com/page/Jump_(skill)",
-           "fullText": "Jump +15"
-          }
-         ]
-        },
-        {
-         "enchantment": [
-          {
-           "name": "Swim +15",
-           "name_url": "https://ddowiki.com/page/Swim",
-           "fullText": "Swim +15"
-          }
-         ]
-        },
-        {
-         "enchantment": [
-          {
-           "name": "Tumble +15",
-           "name_url": "https://ddowiki.com/page/Tumble_(skill)",
-           "fullText": "Tumble +15"
-          }
-         ]
-        },
-        {
-         "enchantment": [
-          {
-           "name": "Sneak Attack Bonus +4",
-           "name_url": "https://ddowiki.com/page/Sneak_Attack_Bonus",
-           "fullText": "Sneak Attack Bonus +4"
-          }
-         ]
-        },
-        {
-         "oneOfEnchantment": [
-          {
-          },
-          {
-          },
-          {
-          },
-          {
-          },
-          {
-          },
-          {
-          },
-          {
-          },
-          {
-          }
-         ],
-         "enchantment": [
-          {
-           "fullText": "Empty Colorless Augment Slot"
-          }
-         ]
-        },
-        {
-         "oneOfEnchantment": [
-          {
-          },
-          {
-          },
-          {
-          },
-          {
-          },
-          {
-          },
-          {
-          },
-          {
-          },
-          {
-          },
-          {
-          },
-          {
-          },
-          {
-          },
-          {
-          },
-          {
-          },
-          {
-          },
-          {
-          },
-          {
-          }
-         ],
-         "enchantment": [
-          {
-           "fullText": "Empty Red Augment Slot"
-          }
-         ]
-        }
-       ],
-       "locationInformation": [
-        {
-         "location": "Collapsible Shortbow",
-         "location_url": "https://ddowiki.com/page/Collapsible_Shortbow",
-         "locationExtra": "of"
-        }
-       ]
-      }
-     ]
-    }
-   ]
-  },
-  {
-   "weapon": [
-    {
-     "name": "Thunder-Forged Alloy Shortbow",
-     "damangeAndType": "3.50 [1d6] + 9 Pierce, Silver, Adamantine, Mithral, Cold Iron, Magic, Byeshk",
-     "minLevel": "22",
-     "binding": "Unbound",
-     "quest": "Magma Forge, Crafted from various ingredients",
-     "criticalProfile": "",
-     "enchantments": "+9 Enhancement Bonus",
-     "enchantments_url": "https://ddowiki.com/page/Enhancement_bonus",
-     "errata": "",
-     "weaponDetail": [
-      {
-       "proficiency": "Martial Weapon Proficiency",
-       "name": "Thunder-Forged Alloy Shortbow",
-       "damangeAndType": "3.50 [1d6] + 9 Pierce, Silver, Adamantine, Mithral, Cold Iron, Magic, Byeshk",
-       "criticalThreatRange": "20 / x3",
-       "weaponType": [
-        {
-         "weaponCategory": "Short Bow",
-         "damageCategory": "/ Ranged weapons"
-        }
-       ],
-       "absRaceRequired": "None",
-       "minLevel": "22",
-       "requiredTrait": "None",
-       "umd": "No UMD needed",
-       "handedness": "",
-       "attackMod": "DEX",
-       "damageMod": "N/A",
-       "binding": "Unbound",
-       "binding_url": "https://ddowiki.com/page/Bind",
-       "durability": "195",
-       "material": "Adamantine",
-       "material_url": "https://ddowiki.com/page/Adamantine",
-       "hardness": "34",
-       "baseValue": "8,803pp",
-       "weight": "2 lbs",
-       "upgradable": "Thunder-Forged",
-       "tips": [
-        {
-         "tip": "20 Thunder-Forged Dwarven Ingots"
-        },
-        {
-         "tip": "15 Commendations of Valor"
-        }
-       ],
-       "description": "A longbow forged from metals long in proximity to dragons under Thunderholme.",
-       "enchantments": [
-        {
-         "enchantment": [
-          {
-           "name": "+9 Enhancement Bonus",
-           "name_url": "https://ddowiki.com/page/Enhancement_bonus",
-           "fullText": "+9 Enhancement Bonus"
-          }
-         ]
-        },
-        {
-         "oneOfEnchantment": [
-          {
-          },
-          {
-          },
-          {
-          },
-          {
-          },
-          {
-          },
-          {
-          },
-          {
-          },
-          {
-          },
-          {
-          },
-          {
-          },
-          {
-          },
-          {
-          },
-          {
-          },
-          {
-          },
-          {
-          },
-          {
-          },
-          {
-          },
-          {
-          },
-          {
-          },
-          {
-          },
-          {
-          },
-          {
-          },
-          {
-          },
-          {
-          },
-          {
-          }
-         ],
-         "enchantment": [
-          {
-           "fullText": "Empty Orange Augment Slot"
-          }
-         ]
-        },
-        {
-         "enchantment": [
-          {
-           "name": "Thunder-Forged (Tier 0)",
-           "name_url": "https://ddowiki.com/page/Thunder-Forged",
-           "fullText": "Thunder-Forged (Tier 0)"
-          }
-         ]
-        },
-        {
-         "enchantment": [
-          {
-           "name": "Mythic Weapon Boost",
-           "name_url": "https://ddowiki.com/page/Mythic_Boost",
-           "fullText": "Mythic Weapon Boost +2 or +4"
-          }
-         ]
-        },
-        {
-         "enchantment": [
-          {
-           "fullText": "20 Thunder-Forged Dwarven Ingots",
-           "fullText_url": "https://ddowiki.com/page/Item:Thunder-Forged_Dwarven_Ingot"
-          }
-         ]
-        },
-        {
-         "enchantment": [
-          {
-           "fullText": "15 Commendations of Valor",
-           "fullText_url": "https://ddowiki.com/page/Item:Commendation_of_Valor"
-          }
-         ]
-        }
-       ],
-       "locationInformation": [
-        {
-         "location": "Magma Forge",
-         "location_url": "https://ddowiki.com/page/Magma_Forge",
-         "locationExtra": ", Crafted from various ingredients"
-        }
-       ]
-      }
-     ]
-    }
-   ]
-  },
-  {
-   "weapon": [
-    {
-     "name": "Legendary Green Steel Shortbow*",
-     "damangeAndType": "5[1d6] + 14 Pierce, Evil, Magic",
-     "minLevel": "26",
-     "binding": "Bound to Character on Acquire",
-     "quest": "Altar of Fecundity, Manufactured Ingredient Recipes",
-     "criticalProfile": "",
-     "enchantments": "+14 Enhancement Bonus",
-     "enchantments_url": "https://ddowiki.com/page/Enhancement_bonus",
-     "itemId": "Legendary Green Steel Shortbow",
-     "url": "https://ddowiki.com/page/Item:Legendary_Green_Steel_Shortbow",
-     "errata": ""
-    }
-   ]
-  },
-  {
-   "weapon": [
-    {
-     "name": "Legendary Hunter of Wilds",
-     "damangeAndType": "7[1d6+2] + 15 Pierce, Chaotic, Magic",
-     "minLevel": "29",
-     "binding": "Bound to Account on Acquire",
-     "quest": "The Madness of Crowds, End Chest",
-     "criticalProfile": "Critical Profile: 19-20 / x3",
-     "enchantments": "+15 Enhancement Bonus",
-     "enchantments_url": "https://ddowiki.com/page/Enhancement_bonus",
-     "errata": "Critical Profile: 19-20 / x3",
-     "weaponDetail": [
-      {
-       "proficiency": "Martial Weapon Proficiency",
-       "name": "Legendary Hunter of Wilds",
-       "damangeAndType": "7[1d6+2] + 15 Pierce, Chaotic, Magic",
-       "criticalThreatRange": "19-20 / x3",
-       "weaponType": [
-        {
-         "weaponCategory": "Short Bow",
-         "damageCategory": "/ Ranged weapons"
-        }
-       ],
-       "absRaceRequired": "None",
-       "minLevel": "29",
-       "requiredTrait": "None",
-       "umd": "No UMD needed",
-       "handedness": "",
-       "attackMod": "DEX",
-       "damageMod": "N/A",
-       "binding": "Bound to Account on Acquire",
-       "binding_url": "https://ddowiki.com/page/Bind",
-       "durability": "355",
-       "material": "Steel",
-       "material_url": "https://ddowiki.com/page/Steel",
-       "hardness": "39",
-       "baseValue": "11,603pp",
-       "weight": "2.0 lbs",
-       "upgradable": "Not upgradeable",
-       "description": "A bow can be vital to survival in the wild. Still, it cannot stop the menace of isolation, or what follows...",
-       "enchantments": [
-        {
-         "enchantment": [
-          {
-           "name": "+15 Enhancement Bonus",
-           "name_url": "https://ddowiki.com/page/Enhancement_bonus",
-           "fullText": "+15 Enhancement Bonus"
-          }
-         ]
-        },
-        {
-         "enchantment": [
-          {
-           "name": "Trace of Madness",
-           "name_url": "https://ddowiki.com/page/Trace_of_Madness",
-           "fullText": "Trace of Madness"
-          }
-         ]
-        },
-        {
-         "enchantment": [
-          {
-           "name": "Elasticity",
-           "name_url": "https://ddowiki.com/page/Elasticity",
-           "fullText": "Elasticity"
-          }
-         ]
-        },
-        {
-         "enchantment": [
-          {
-           "name": "Anarchic 9",
-           "name_url": "https://ddowiki.com/page/Alignment_damage_(weapon)",
-           "fullText": "Anarchic 9"
-          }
-         ]
-        },
-        {
-         "enchantment": [
-          {
-           "name": "Heartseeker VII",
-           "name_url": "https://ddowiki.com/page/Heartseeker",
-           "fullText": "Heartseeker VII"
-          }
-         ]
-        },
-        {
-         "enchantment": [
-          {
-           "name": "Keen V",
-           "name_url": "https://ddowiki.com/page/Keen",
-           "fullText": "Keen V"
-          }
-         ]
-        },
-        {
-         "oneOfEnchantment": [
-          {
-          },
-          {
-          },
-          {
-          },
-          {
-          },
-          {
-          },
-          {
-          },
-          {
-          },
-          {
-          },
-          {
-          },
-          {
-          },
-          {
-          },
-          {
-          },
-          {
-          },
-          {
-          },
-          {
-          },
-          {
-          }
-         ],
-         "enchantment": [
-          {
-           "fullText": "Empty Red Augment Slot"
-          }
-         ]
-        },
-        {
-         "enchantment": [
-          {
-           "name": "Mythic Weapon Boost",
-           "name_url": "https://ddowiki.com/page/Mythic_Boost",
-           "fullText": "Mythic Weapon Boost +2 or +4"
-          }
-         ]
-        }
-       ],
-       "locationInformation": [
-        {
-         "location": "The Madness of Crowds",
-         "location_url": "https://ddowiki.com/page/The_Madness_of_Crowds",
-         "locationExtra": ", End Chest"
-        }
-       ]
-      }
-     ]
-    }
-   ]
-  }
- ]
+    ]
 }

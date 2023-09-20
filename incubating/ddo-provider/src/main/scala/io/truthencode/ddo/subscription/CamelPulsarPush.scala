@@ -23,10 +23,7 @@ import wvlet.log.LogSupport
 
 import javax.annotation.PostConstruct
 
-case class CamelPulsarPush(
-  context: CamelContext,
-  skillProvider: SkillProvider,
-  serviceUrl: String)
+case class CamelPulsarPush(context: CamelContext, skillProvider: SkillProvider, serviceUrl: String)
   extends LogSupport {
   @PostConstruct
   def pushOnStart(): Unit = {

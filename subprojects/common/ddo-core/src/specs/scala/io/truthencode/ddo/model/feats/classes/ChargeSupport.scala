@@ -35,9 +35,9 @@ trait ChargeSupport {
     @BeanProperty var maxCharges: Int,
     @BeanProperty var quantity: java.util.OptionalInt,
     @BeanProperty var interval: Optional[Duration]) {
-    var safeInterval: Long =  interval.toScala match {
-        case Some(x) => x.toSeconds
-        case None => -99L
+    var safeInterval: Long = interval.toScala match {
+      case Some(x) => x.toSeconds
+      case None => -99L
     }
   }
   def readChargeInfo[T <: Chargeable](s: T): ChargeInfo = {
@@ -64,6 +64,5 @@ trait ChargeSupport {
       else { None }
     ChargeInfo(resultMaxCharges, q.toJavaPrimitive, d.toJava)
   }
-
 
 }

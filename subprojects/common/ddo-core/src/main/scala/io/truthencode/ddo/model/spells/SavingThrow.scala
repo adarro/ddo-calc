@@ -59,6 +59,7 @@ object Sample {
 
 case class SavingThrow(saveType: List[SpellSave], savingThrowResult: SavingThrowResult)
   extends SpellSaveImpl with SavingThrowResults {
+
   /**
    * Sets or maps the source text for the DisplayName.
    *

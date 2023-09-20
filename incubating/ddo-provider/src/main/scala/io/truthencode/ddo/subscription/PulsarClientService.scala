@@ -22,10 +22,10 @@ import org.apache.pulsar.client.api.PulsarClient
 
 import javax.annotation.{PostConstruct, PreDestroy}
 
-trait PulsarClientService extends LazyLogging{
-def client: PulsarClient
+trait PulsarClientService extends LazyLogging {
+  def client: PulsarClient
   @PostConstruct
-  def startUp() : Unit = {
+  def startUp(): Unit = {
     logger.info("Warming up and we should have a client")
   }
 

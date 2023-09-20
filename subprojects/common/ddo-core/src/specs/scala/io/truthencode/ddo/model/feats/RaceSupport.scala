@@ -41,7 +41,7 @@ trait RaceSupport extends LazyLogging {
       .toJava
 
     logger.info(s"verify ${RequirementOption.AutoGrant.entryName} racial feats located ${f
-      .size()} values for Race $raceId ")
+        .size()} values for Race $raceId ")
     logger.debug(s"values: $f")
     f
   }
@@ -52,7 +52,7 @@ trait RaceSupport extends LazyLogging {
       .toJava
 
     logger.info(s"verify ${RequirementOption.Available.entryName} racial feats located ${f
-      .size()} values for Race $raceId ")
+        .size()} values for Race $raceId ")
     logger.debug(s"values: $f")
     f
   }

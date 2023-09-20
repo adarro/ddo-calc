@@ -16,2102 +16,1890 @@
  * limitations under the License.
  */
 {
- "item": [
-  {
-   "weapon": [
-    {
-     "name": "Midnight Greetings",
-     "damangeAndType": "[1d4] + 2 Slash, Magic",
-     "minLevel": "5",
-     "binding": "Bound to Account on Acquire",
-     "quest": "The Tide Turns, End chest",
-     "criticalProfile": "Damage Modifier: STR, DEX\nAttack Modifier: STR, DEX",
-     "enchantments": "+2 Enhancement Bonus",
-     "enchantments_url": "https://ddowiki.com/page/Enhancement_bonus",
-     "errata": "Damage Modifier: STR, DEX\nAttack Modifier: STR, DEX",
-     "weaponDetail": [
-      {
-       "proficiency": "Martial Weapon Proficiency",
-       "name": "Midnight Greetings",
-       "damangeAndType": "[1d4] + 2 Slash, Magic",
-       "criticalThreatRange": "18-20 / x2",
-       "weaponType": [
+    "item": [
         {
-         "weaponCategory": "Kukri",
-         "damageCategory": "/ Slashing weapons"
+            "weapon": [
+                {
+                    "name": "Midnight Greetings",
+                    "damangeAndType": "[1d4] + 2 Slash, Magic",
+                    "minLevel": "5",
+                    "binding": "Bound to Account on Acquire",
+                    "quest": "The Tide Turns, End chest",
+                    "criticalProfile": "Damage Modifier: STR, DEX\nAttack Modifier: STR, DEX",
+                    "enchantments": "+2 Enhancement Bonus",
+                    "enchantments_url": "https://ddowiki.com/page/Enhancement_bonus",
+                    "errata": "Damage Modifier: STR, DEX\nAttack Modifier: STR, DEX",
+                    "weaponDetail": [
+                        {
+                            "proficiency": "Martial Weapon Proficiency",
+                            "name": "Midnight Greetings",
+                            "damangeAndType": "[1d4] + 2 Slash, Magic",
+                            "criticalThreatRange": "18-20 / x2",
+                            "weaponType": [
+                                {
+                                    "weaponCategory": "Kukri",
+                                    "damageCategory": "/ Slashing weapons"
+                                }
+                            ],
+                            "absRaceRequired": "None",
+                            "minLevel": "5",
+                            "requiredTrait": "None",
+                            "umd": "No UMD needed",
+                            "handedness": "",
+                            "attackMod": "STR, DEX",
+                            "damageMod": "STR, DEX",
+                            "binding": "Bound to Account on Acquire",
+                            "binding_url": "https://ddowiki.com/page/Bind",
+                            "durability": "90",
+                            "material": "Steel",
+                            "material_url": "https://ddowiki.com/page/Steel",
+                            "hardness": "15",
+                            "baseValue": "2,000pp 8gp",
+                            "weight": "2 lbs",
+                            "upgradable": "Epic Crafting to Epic Midnight Greetings",
+                            "description": "A fine blade used by assassins, Midnight Greetings deals significant damage when wielded by a combatant with a sharp mind. Monks may use this weapon without becoming uncentered.",
+                            "enchantments": [
+                                {
+                                    "enchantment": [
+                                        {
+                                            "name": "+2 Enhancement Bonus",
+                                            "name_url": "https://ddowiki.com/page/Enhancement_bonus",
+                                            "fullText": "+2 Enhancement Bonus"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "enchantment": [
+                                        {
+                                            "name": "Entropic 2",
+                                            "name_url": "https://ddowiki.com/page/Entropic",
+                                            "fullText": "Entropic 2"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "enchantment": [
+                                        {
+                                            "name": "Deception +2",
+                                            "name_url": "https://ddowiki.com/page/Deception",
+                                            "fullText": "Deception +2"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "enchantment": [
+                                        {
+                                            "name": "Deception",
+                                            "name_url": "https://ddowiki.com/page/Deception",
+                                            "fullText": "Deception"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "oneOfEnchantment": [
+                                        {},
+                                        {},
+                                        {},
+                                        {},
+                                        {},
+                                        {},
+                                        {},
+                                        {},
+                                        {},
+                                        {},
+                                        {},
+                                        {},
+                                        {},
+                                        {},
+                                        {},
+                                        {}
+                                    ],
+                                    "enchantment": [
+                                        {
+                                            "fullText": "Empty Red Augment Slot"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "enchantment": [
+                                        {
+                                            "name": "Mythic Weapon Boost",
+                                            "name_url": "https://ddowiki.com/page/Mythic_Boost",
+                                            "fullText": "Mythic Weapon Boost +2 or +4"
+                                        }
+                                    ]
+                                }
+                            ],
+                            "locationInformation": [
+                                {
+                                    "location": "The Tide Turns",
+                                    "location_url": "https://ddowiki.com/page/The_Tide_Turns",
+                                    "locationExtra": ", End chest"
+                                }
+                            ]
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "weapon": [
+                {
+                    "name": "Filthy Kukri",
+                    "damangeAndType": "[1d4] + 1 Slash, Magic",
+                    "minLevel": "5",
+                    "binding": "Bound to Account on Equip",
+                    "quest": "The Tide Turns, Any End chest",
+                    "criticalProfile": "Critical Profile: 19-20 / x2\nDamage Modifier: STR,DEX",
+                    "enchantments": "+1 Enhancement Bonus",
+                    "enchantments_url": "https://ddowiki.com/page/Enhancement_bonus",
+                    "errata": "Critical Profile: 19-20 / x2\nDamage Modifier: STR,DEX",
+                    "weaponDetail": [
+                        {
+                            "proficiency": "Martial Weapon Proficiency",
+                            "name": "Filthy Kukri",
+                            "damangeAndType": "[1d4] + 1 Slash, Magic",
+                            "criticalThreatRange": "19-20 / x2",
+                            "weaponType": [
+                                {
+                                    "weaponCategory": "Kukri",
+                                    "damageCategory": "/ Slashing weapons"
+                                }
+                            ],
+                            "absRaceRequired": "None",
+                            "minLevel": "5",
+                            "requiredTrait": "None",
+                            "umd": "No UMD needed",
+                            "handedness": "",
+                            "attackMod": "STR",
+                            "damageMod": "STR,DEX",
+                            "binding": "Bound to Account on Equip",
+                            "binding_url": "https://ddowiki.com/page/Bind",
+                            "durability": "70",
+                            "material": "Steel",
+                            "material_url": "https://ddowiki.com/page/Steel",
+                            "hardness": "13",
+                            "baseValue": "1,800pp 8gp",
+                            "weight": "2 lbs",
+                            "upgradable": "Unraveling Enchantments to Midnight Greetings",
+                            "description": "From the muck caked on the blade, it appears that this kukri was left in a swamp for a few decades. There's something extremely strange about the balance of it.",
+                            "enchantments": [
+                                {
+                                    "enchantment": [
+                                        {
+                                            "name": "+1 Enhancement Bonus",
+                                            "name_url": "https://ddowiki.com/page/Enhancement_bonus",
+                                            "fullText": "+1 Enhancement Bonus"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "enchantment": [
+                                        {
+                                            "name": "Deception",
+                                            "name_url": "https://ddowiki.com/page/Deception",
+                                            "fullText": "Deception"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "enchantment": [
+                                        {
+                                            "name": "Unraveling Enchantments",
+                                            "name_url": "https://ddowiki.com/page/Unraveling_Enchantments",
+                                            "fullText": "Unraveling Enchantments"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "enchantment": [
+                                        {
+                                            "name": "Mythic Weapon Boost",
+                                            "name_url": "https://ddowiki.com/page/Mythic_Boost",
+                                            "fullText": "Mythic Weapon Boost +2 or +4"
+                                        }
+                                    ]
+                                }
+                            ],
+                            "locationInformation": [
+                                {
+                                    "location": "The Tide Turns",
+                                    "location_url": "https://ddowiki.com/page/The_Tide_Turns",
+                                    "locationExtra": ", Any End chest"
+                                }
+                            ]
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "weapon": [
+                {
+                    "name": "Giant Stalker's Knife",
+                    "damangeAndType": "[1d4] + 3 Slash, Magic",
+                    "minLevel": "6",
+                    "binding": "Bound to Character on Equip",
+                    "quest": "Gwylan's Stand, Suropox's chest",
+                    "criticalProfile": "",
+                    "enchantments": "+3 Enhancement Bonus",
+                    "enchantments_url": "https://ddowiki.com/page/Enhancement_bonus",
+                    "errata": "",
+                    "weaponDetail": [
+                        {
+                            "proficiency": "Martial Weapon Proficiency",
+                            "name": "Giant Stalker's Knife",
+                            "damangeAndType": "[1d4] + 3 Slash, Magic",
+                            "criticalThreatRange": "18-20 / x2",
+                            "weaponType": [
+                                {
+                                    "weaponCategory": "Kukri",
+                                    "damageCategory": "/ Slashing weapons"
+                                }
+                            ],
+                            "absRaceRequired": "None",
+                            "minLevel": "6",
+                            "requiredTrait": "None",
+                            "umd": "No UMD needed",
+                            "handedness": "",
+                            "attackMod": "STR",
+                            "damageMod": "STR",
+                            "binding": "Bound to Character on Equip",
+                            "binding_url": "https://ddowiki.com/page/Bind",
+                            "durability": "80",
+                            "material": "Steel",
+                            "material_url": "https://ddowiki.com/page/Steel",
+                            "hardness": "14",
+                            "baseValue": "2,400pp 8gp",
+                            "weight": "2 lbs",
+                            "upgradable": "Not upgradeable",
+                            "description": "This heavy, curved knife was created by the elves of Xen'drik to us in their rebellion against the giants.",
+                            "enchantments": [
+                                {
+                                    "enchantment": [
+                                        {
+                                            "name": "+3 Enhancement Bonus",
+                                            "name_url": "https://ddowiki.com/page/Enhancement_bonus",
+                                            "fullText": "+3 Enhancement Bonus"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "enchantment": [
+                                        {
+                                            "name": "Greater Giant Bane",
+                                            "name_url": "https://ddowiki.com/page/Bane_(enchantment)",
+                                            "fullText": "Greater Giant Bane"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "oneOfEnchantment": [
+                                        {},
+                                        {},
+                                        {},
+                                        {},
+                                        {},
+                                        {},
+                                        {},
+                                        {},
+                                        {},
+                                        {},
+                                        {},
+                                        {},
+                                        {},
+                                        {},
+                                        {},
+                                        {}
+                                    ],
+                                    "enchantment": [
+                                        {
+                                            "fullText": "Empty Red Augment Slot"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "enchantment": [
+                                        {
+                                            "name": "Mythic Weapon Boost",
+                                            "name_url": "https://ddowiki.com/page/Mythic_Boost",
+                                            "fullText": "Mythic Weapon Boost +2 or +4"
+                                        }
+                                    ]
+                                }
+                            ],
+                            "locationInformation": [
+                                {
+                                    "location": "Suropox",
+                                    "location_url": "https://ddowiki.com/page/Suropox",
+                                    "locationExtra": ","
+                                }
+                            ]
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "weapon": [
+                {
+                    "name": "+3 Combustion Scorched Kukri*",
+                    "damangeAndType": "1.5[1d4] + 7 Slash, Magic",
+                    "minLevel": "7",
+                    "binding": "Unbound",
+                    "quest": "Temple of Elemental Evil Part One, and Temple of Elemental Evil Part Two any chest",
+                    "criticalProfile": "",
+                    "enchantments": "+3 Enhancement Bonus",
+                    "enchantments_url": "https://ddowiki.com/page/Enhancement_bonus",
+                    "itemId": "+3 Combustion Scorched Kukri",
+                    "url": "https://ddowiki.com/page/Item:%2B3_Combustion_Scorched_Kukri",
+                    "errata": ""
+                }
+            ]
+        },
+        {
+            "weapon": [
+                {
+                    "name": "+3 Corrosion Caustic Kukri",
+                    "damangeAndType": "1.5[1d4] + 7 Slash, Magic",
+                    "minLevel": "7",
+                    "binding": "Unbound",
+                    "quest": "Temple of Elemental Evil Part One, and Temple of Elemental Evil Part Two any chest",
+                    "criticalProfile": "",
+                    "enchantments": "+3 Enhancement Bonus",
+                    "enchantments_url": "https://ddowiki.com/page/Enhancement_bonus",
+                    "errata": "",
+                    "weaponDetail": [
+                        {
+                            "proficiency": "Martial Weapon Proficiency",
+                            "name": "+3 Corrosion Caustic Kukri",
+                            "damangeAndType": "1.5[1d4] + 7 Slash, Magic",
+                            "criticalThreatRange": "18-20 / x2",
+                            "weaponType": [
+                                {
+                                    "weaponCategory": "Kukri",
+                                    "damageCategory": "/ Slashing weapons"
+                                }
+                            ],
+                            "absRaceRequired": "None",
+                            "minLevel": "7",
+                            "requiredTrait": "None",
+                            "umd": "No UMD needed",
+                            "handedness": "",
+                            "attackMod": "STR",
+                            "damageMod": "STR",
+                            "binding": "Unbound",
+                            "binding_url": "https://ddowiki.com/page/Bind",
+                            "durability": "90",
+                            "material": "Steel",
+                            "material_url": "https://ddowiki.com/page/Steel",
+                            "hardness": "15",
+                            "baseValue": "2,820pp",
+                            "weight": "2 lbs",
+                            "upgradable": "ToEE Crafting",
+                            "description": "A weapon found deep within the Temple of Elemental Evil.",
+                            "enchantments": [
+                                {
+                                    "enchantment": [
+                                        {
+                                            "name": "+3 Enhancement Bonus",
+                                            "name_url": "https://ddowiki.com/page/Enhancement_bonus",
+                                            "fullText": "+3 Enhancement Bonus"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "enchantment": [
+                                        {
+                                            "name": "Upgradeable Item (Temple of Elemental Evil)",
+                                            "name_url": "https://ddowiki.com/page/Overgrown_Workbench",
+                                            "fullText": "Upgradeable Item (Temple of Elemental Evil)"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "enchantment": [{}]
+                                },
+                                {
+                                    "enchantment": [
+                                        {
+                                            "name": "Mythic Weapon Boost",
+                                            "name_url": "https://ddowiki.com/page/Mythic_Boost",
+                                            "fullText": "Mythic Weapon Boost +2 or +4"
+                                        }
+                                    ]
+                                }
+                            ],
+                            "locationInformation": [
+                                {
+                                    "location": "Temple of Elemental Evil Part Two",
+                                    "location_url": "https://ddowiki.com/page/Temple_of_Elemental_Evil_Part_Two",
+                                    "locationExtra": ", and"
+                                }
+                            ]
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "weapon": [
+                {
+                    "name": "+3 Energized Kukri*",
+                    "damangeAndType": "1.50[1d4] + 3 Slash, Magic",
+                    "minLevel": "7",
+                    "binding": "Unbound",
+                    "quest": "Temple of Elemental Evil Part One, and Temple of Elemental Evil Part Two any chest",
+                    "criticalProfile": "",
+                    "enchantments": "+3 Enhancement Bonus",
+                    "enchantments_url": "https://ddowiki.com/page/Enhancement_bonus",
+                    "itemId": "+3 Energized Kukri",
+                    "url": "https://ddowiki.com/page/Item:%2B3_Energized_Kukri",
+                    "errata": ""
+                }
+            ]
+        },
+        {
+            "weapon": [
+                {
+                    "name": "+3 Etched Kukri*",
+                    "damangeAndType": "1.50[1d4] + 3 Slash, Magic",
+                    "minLevel": "7",
+                    "binding": "Unbound",
+                    "quest": "Temple of Elemental Evil Part One, and Temple of Elemental Evil Part Two any chest",
+                    "criticalProfile": "",
+                    "enchantments": "+3 Enhancement Bonus",
+                    "enchantments_url": "https://ddowiki.com/page/Enhancement_bonus",
+                    "itemId": "+3 Etched Kukri",
+                    "url": "https://ddowiki.com/page/Item:%2B3_Etched_Kukri",
+                    "errata": ""
+                }
+            ]
+        },
+        {
+            "weapon": [
+                {
+                    "name": "+3 Quenched Kukri*",
+                    "damangeAndType": "1.50[1d4] + 3 Slash, Magic",
+                    "minLevel": "7",
+                    "binding": "Unbound",
+                    "quest": "Temple of Elemental Evil Part One, and Temple of Elemental Evil Part Two any chest",
+                    "criticalProfile": "",
+                    "enchantments": "+3 Enhancement Bonus",
+                    "enchantments_url": "https://ddowiki.com/page/Enhancement_bonus",
+                    "itemId": "+3 Quenched Kukri",
+                    "url": "https://ddowiki.com/page/Item:%2B3_Quenched_Kukri",
+                    "errata": ""
+                }
+            ]
+        },
+        {
+            "weapon": [
+                {
+                    "name": "+3 Smoldering Kukri*",
+                    "damangeAndType": "1.50[1d4] + 3 Slash, Magic",
+                    "minLevel": "7",
+                    "binding": "Unbound",
+                    "quest": "Temple of Elemental Evil Part One, and Temple of Elemental Evil Part Two any chest",
+                    "criticalProfile": "",
+                    "enchantments": "+3 Enhancement Bonus",
+                    "enchantments_url": "https://ddowiki.com/page/Enhancement_bonus",
+                    "itemId": "+3 Smoldering Kukri",
+                    "url": "https://ddowiki.com/page/Item:%2B3_Smoldering_Kukri",
+                    "errata": ""
+                }
+            ]
+        },
+        {
+            "weapon": [
+                {
+                    "name": "Tchurvul's Kukri",
+                    "damangeAndType": "[1d4] + 1 Slash, Magic",
+                    "minLevel": "8",
+                    "binding": "Unbound",
+                    "quest": "Special event items, Emerald Claw Conspiracy, Randomly dropped by Tchurvul.",
+                    "criticalProfile": "",
+                    "enchantments": "+1 Enhancement Bonus",
+                    "enchantments_url": "https://ddowiki.com/page/Enhancement_bonus",
+                    "errata": "",
+                    "weaponDetail": [
+                        {
+                            "proficiency": "Martial Weapon Proficiency",
+                            "name": "Tchurvul's Kukri",
+                            "damangeAndType": "[1d4] + 1 Slash, Magic",
+                            "criticalThreatRange": "18-20 / x2",
+                            "weaponType": [
+                                {
+                                    "weaponCategory": "Kukri",
+                                    "damageCategory": "/ Slashing weapons"
+                                }
+                            ],
+                            "absRaceRequired": "None",
+                            "minLevel": "8",
+                            "requiredTrait": "None",
+                            "umd": "No UMD needed",
+                            "handedness": "",
+                            "attackMod": "STR",
+                            "damageMod": "STR",
+                            "binding": "Unbound",
+                            "binding_url": "https://ddowiki.com/page/Bind",
+                            "durability": "160",
+                            "material": "Steel",
+                            "material_url": "https://ddowiki.com/page/Steel",
+                            "hardness": "22",
+                            "baseValue": "12,800pp 8gp",
+                            "weight": "2 lbs",
+                            "upgradable": "Not upgradeable",
+                            "description": "This weapon has been crafted by the minions of Tchurvul the Vulture.",
+                            "enchantments": [
+                                {
+                                    "enchantment": [
+                                        {
+                                            "name": "+1 Enhancement Bonus",
+                                            "name_url": "https://ddowiki.com/page/Enhancement_bonus",
+                                            "fullText": "+1 Enhancement Bonus"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "enchantment": [
+                                        {
+                                            "name": "Curse of Repulsiveness",
+                                            "name_url": "https://ddowiki.com/page/Cursed",
+                                            "fullText": "Curse of Repulsiveness"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "enchantment": [
+                                        {
+                                            "name": "Melee Alacrity 10%",
+                                            "name_url": "https://ddowiki.com/page/Melee_Alacrity",
+                                            "fullText": "Melee Alacrity 10%"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "enchantment": [
+                                        {
+                                            "fullText": "Tchurvul's Touch",
+                                            "fullText_url": "https://ddowiki.com/page/Tchurvul%27s_Touch"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "enchantment": [
+                                        {
+                                            "name": "Mythic Weapon Boost",
+                                            "name_url": "https://ddowiki.com/page/Mythic_Boost",
+                                            "fullText": "Mythic Weapon Boost +2 or +4"
+                                        }
+                                    ]
+                                }
+                            ],
+                            "locationInformation": [
+                                {
+                                    "location": "Emerald Claw Conspiracy, Randomly dropped by Tchurvul.",
+                                    "location_url": "https://ddowiki.com/page/Special_event_history#Emerald_Claw_Conspiracy_.28September_14.2C_2007_-_December_7.2C_2007_.29",
+                                    "locationExtra": ","
+                                }
+                            ]
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "weapon": [
+                {
+                    "name": "Blood Machete",
+                    "damangeAndType": "1.50[1d6] + 4 Slash, Magic",
+                    "minLevel": "8",
+                    "binding": "Bound to Account on Acquire",
+                    "quest": "Cult of the Six",
+                    "criticalProfile": "",
+                    "enchantments": "+4 Enhancement Bonus",
+                    "enchantments_url": "https://ddowiki.com/page/Enhancement_bonus",
+                    "errata": "",
+                    "weaponDetail": [
+                        {
+                            "proficiency": "Martial Weapon Proficiency",
+                            "name": "Blood Machete",
+                            "damangeAndType": "1.50[1d6] + 4 Slash, Magic",
+                            "criticalThreatRange": "18-20 / x2",
+                            "weaponType": [
+                                {
+                                    "weaponCategory": "Kukri",
+                                    "damageCategory": "/ Slashing weapons"
+                                }
+                            ],
+                            "absRaceRequired": "None",
+                            "minLevel": "8",
+                            "requiredTrait": "None",
+                            "umd": "No UMD needed",
+                            "handedness": "",
+                            "attackMod": "STR",
+                            "damageMod": "STR",
+                            "binding": "Bound to Account on Acquire",
+                            "binding_url": "https://ddowiki.com/page/Bind",
+                            "durability": "90",
+                            "material": "Steel",
+                            "material_url": "https://ddowiki.com/page/Steel",
+                            "hardness": "15",
+                            "baseValue": "3,200pp 8gp",
+                            "weight": "2 lbs",
+                            "upgradable": "Not upgradeable",
+                            "description": "The spirit haunting this cursed blade compel the wielder to acts of pure savagery. Even now, blood still drips from its cutting edge.",
+                            "enchantments": [
+                                {
+                                    "enchantment": [
+                                        {
+                                            "name": "+4 Enhancement Bonus",
+                                            "name_url": "https://ddowiki.com/page/Enhancement_bonus",
+                                            "fullText": "+4 Enhancement Bonus"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "enchantment": [
+                                        {
+                                            "name": "Slicing",
+                                            "name_url": "https://ddowiki.com/page/Bleed#Slicing",
+                                            "fullText": "Slicing"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "enchantment": [
+                                        {
+                                            "name": "Rage",
+                                            "name_url": "https://ddowiki.com/page/Rage_(spell)",
+                                            "fullText": "—"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "oneOfEnchantment": [
+                                        {},
+                                        {},
+                                        {},
+                                        {},
+                                        {},
+                                        {},
+                                        {},
+                                        {},
+                                        {},
+                                        {},
+                                        {},
+                                        {},
+                                        {},
+                                        {},
+                                        {},
+                                        {},
+                                        {},
+                                        {},
+                                        {},
+                                        {},
+                                        {},
+                                        {},
+                                        {},
+                                        {},
+                                        {}
+                                    ],
+                                    "enchantment": [
+                                        {
+                                            "fullText": "Empty Purple Augment Slot"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "oneOfEnchantment": [
+                                        {},
+                                        {},
+                                        {},
+                                        {},
+                                        {},
+                                        {},
+                                        {},
+                                        {},
+                                        {},
+                                        {},
+                                        {},
+                                        {},
+                                        {},
+                                        {},
+                                        {},
+                                        {}
+                                    ],
+                                    "enchantment": [
+                                        {
+                                            "fullText": "Empty Red Augment Slot"
+                                        }
+                                    ]
+                                }
+                            ],
+                            "locationInformation": [
+                                {
+                                    "location": "Cult of the Six",
+                                    "location_url": "https://ddowiki.com/page/Cult_of_the_Six",
+                                    "locationExtra": ", End reward"
+                                }
+                            ]
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "weapon": [
+                {
+                    "name": "Green Steel Kukri",
+                    "damangeAndType": "1.50[1d4] + 5 Slash, Evil, Magic",
+                    "minLevel": "12",
+                    "binding": "Bound to Character on Equip",
+                    "quest": "Altar of Fecundity, Manufactured Ingredient Recipes",
+                    "criticalProfile": "",
+                    "enchantments": "+5 Enhancement Bonus",
+                    "enchantments_url": "https://ddowiki.com/page/Enhancement_bonus",
+                    "errata": "",
+                    "weaponDetail": [
+                        {
+                            "proficiency": "Martial Weapon Proficiency",
+                            "name": "Green Steel Kukri",
+                            "damangeAndType": "1.50[1d4] + 5 Slash, Evil, Magic",
+                            "criticalThreatRange": "18-20 / x2",
+                            "weaponType": [
+                                {
+                                    "weaponCategory": "Kukri",
+                                    "damageCategory": "/ Slashing weapons"
+                                }
+                            ],
+                            "absRaceRequired": "None",
+                            "minLevel": "12",
+                            "requiredTrait": "None",
+                            "umd": "No UMD needed",
+                            "handedness": "",
+                            "attackMod": "STR",
+                            "damageMod": "STR",
+                            "binding": "Bound to Character on Equip",
+                            "binding_url": "https://ddowiki.com/page/Bind",
+                            "durability": "90",
+                            "material": "Steel",
+                            "material_url": "https://ddowiki.com/page/Steel",
+                            "hardness": "15",
+                            "baseValue": "5,400pp 8gp",
+                            "weight": "2",
+                            "upgradable": "Green Steel",
+                            "tips": [
+                                {
+                                    "tip": "+5 Green Steel Kukri"
+                                },
+                                {
+                                    "tip": "Ore of Travail\nLocust Husk\nChipmunk Funk\nGlistening Pebbles\nGreen Briar Twigs\nEberron Energy Cell"
+                                },
+                                {
+                                    "tip": "Yellow Taper\nLocust Husk\nGlistening Pebbles\nBitterscrub Fungus\nGreen Briar Twigs\nEberron Energy Cell"
+                                },
+                                {
+                                    "tip": "Wondrous Oil\nLocust Husk\nLammanian Lily Petals\nChipmunk Funk\nBitterscrub Fungus OR Green Briar Twigs\nEberron Energy Cell"
+                                },
+                                {
+                                    "tip": "Shavarath Signet Stone\nShavarath Stone of Might\nShavarath Stone of Battle\nShavarath Stone of Strategy\nShavarath Stone of Foresight\nShavarath Stone of Victory"
+                                },
+                                {
+                                    "tip": "Medium Splintered Horn"
+                                }
+                            ],
+                            "description": "A heavy, curved knife with a shard edge on the inside of the curve.",
+                            "enchantments": [
+                                {
+                                    "enchantment": [
+                                        {
+                                            "name": "+5 Enhancement Bonus",
+                                            "name_url": "https://ddowiki.com/page/Enhancement_bonus",
+                                            "fullText": "+5 Enhancement Bonus"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "enchantment": [
+                                        {
+                                            "name": "Green Steel",
+                                            "name_url": "https://ddowiki.com/page/Green_Steel",
+                                            "fullText": "Green Steel"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "enchantment": [
+                                        {
+                                            "name": "Mythic Weapon Boost",
+                                            "name_url": "https://ddowiki.com/page/Mythic_Boost",
+                                            "fullText": "Mythic Weapon Boost +2 or +4"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "oneOfEnchantment": [{}, {}, {}, {}, {}],
+                                    "enchantment": [
+                                        {
+                                            "name": "Ore of Travail",
+                                            "name_url": "https://ddowiki.com/page/Ore_of_Travail",
+                                            "fullText": "Locust Husk\nChipmunk Funk\nGlistening Pebbles\nGreen Briar Twigs\nEberron Energy Cell"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "oneOfEnchantment": [{}, {}, {}, {}, {}],
+                                    "enchantment": [
+                                        {
+                                            "name": "Yellow Taper",
+                                            "name_url": "https://ddowiki.com/page/Yellow_Taper",
+                                            "fullText": "Locust Husk\nGlistening Pebbles\nBitterscrub Fungus\nGreen Briar Twigs\nEberron Energy Cell"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "oneOfEnchantment": [{}, {}, {}, {}, {}],
+                                    "enchantment": [
+                                        {
+                                            "name": "Wondrous Oil",
+                                            "name_url": "https://ddowiki.com/page/Wondrous_Oil",
+                                            "fullText": "Locust Husk\nLammanian Lily Petals\nChipmunk Funk\nBitterscrub Fungus OR Green Briar Twigs\nEberron Energy Cell"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "oneOfEnchantment": [{}, {}, {}, {}, {}],
+                                    "enchantment": [{}]
+                                },
+                                {
+                                    "enchantment": [
+                                        {
+                                            "name": "Medium Splintered Horn",
+                                            "name_url": "https://ddowiki.com/page/Medium_Splintered_Horn",
+                                            "fullText": "Medium Splintered Horn"
+                                        }
+                                    ]
+                                }
+                            ],
+                            "locationInformation": [
+                                {
+                                    "location": "Manufactured Ingredient Recipes",
+                                    "location_url": "https://ddowiki.com/page/Altar_of_Fecundity_-_Manufactured_Ingredient_Recipes",
+                                    "locationExtra": ","
+                                }
+                            ]
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "weapon": [
+                {
+                    "name": "Green Blade",
+                    "damangeAndType": "[1d4] + 5 Slash, Magic",
+                    "minLevel": "12",
+                    "binding": "Bound to Character on Acquire",
+                    "quest": "Zawabi's Revenge, Warded Chest",
+                    "criticalProfile": "",
+                    "enchantments": "+5 Enhancement Bonus",
+                    "enchantments_url": "https://ddowiki.com/page/Enhancement_bonus",
+                    "errata": "",
+                    "weaponDetail": [
+                        {
+                            "proficiency": "Martial Weapon Proficiency",
+                            "name": "Green Blade",
+                            "damangeAndType": "[1d4] + 5 Slash, Magic",
+                            "criticalThreatRange": "18-20 / x2",
+                            "weaponType": [
+                                {
+                                    "weaponCategory": "Kukri",
+                                    "damageCategory": "/ Slashing weapons"
+                                }
+                            ],
+                            "absRaceRequired": "None",
+                            "minLevel": "12",
+                            "requiredTrait": "None",
+                            "umd": "No UMD needed",
+                            "handedness": "",
+                            "attackMod": "STR",
+                            "damageMod": "STR",
+                            "binding": "Bound to Character on Acquire",
+                            "binding_url": "https://ddowiki.com/page/Bind",
+                            "durability": "110",
+                            "material": "Steel",
+                            "material_url": "https://ddowiki.com/page/Steel",
+                            "hardness": "17",
+                            "baseValue": "9,800pp 8gp",
+                            "weight": "2 lbs",
+                            "upgradable": "Epic Crafting to Epic Green Blade",
+                            "description": "A simple knife with a curved green tinged blade and a handle of polished densewood. Holding the dagger, you feel a rush of arcane power. This is no mere dagger.",
+                            "enchantments": [
+                                {
+                                    "enchantment": [
+                                        {
+                                            "name": "+5 Enhancement Bonus",
+                                            "name_url": "https://ddowiki.com/page/Enhancement_bonus",
+                                            "fullText": "+5 Enhancement Bonus"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "enchantment": [
+                                        {
+                                            "name": "Spell Lore VI",
+                                            "name_url": "https://ddowiki.com/page/Spell_Lore",
+                                            "fullText": "Spell Lore VI"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "enchantment": [
+                                        {
+                                            "name": "Force Burst",
+                                            "name_url": "https://ddowiki.com/page/Force_(enchantment)",
+                                            "fullText": "Force Burst"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "enchantment": [
+                                        {
+                                            "name": "Mythic Weapon Boost",
+                                            "name_url": "https://ddowiki.com/page/Mythic_Boost",
+                                            "fullText": "Mythic Weapon Boost +2 or +4"
+                                        }
+                                    ]
+                                }
+                            ],
+                            "locationInformation": [
+                                {
+                                    "location": "Zawabi's Revenge",
+                                    "location_url": "https://ddowiki.com/page/Zawabi%27s_Revenge",
+                                    "locationExtra": ", Warded Chest"
+                                }
+                            ]
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "weapon": [
+                {
+                    "name": "Alchemical Kukri",
+                    "damangeAndType": "2 [1d4] + 5 Slash, Magic",
+                    "minLevel": "12",
+                    "binding": "Unbound",
+                    "quest": "The Master Artificer, Either End chest",
+                    "criticalProfile": "",
+                    "enchantments": "+5 Enhancement Bonus",
+                    "enchantments_url": "https://ddowiki.com/page/Enhancement_bonus",
+                    "errata": "",
+                    "weaponDetail": [
+                        {
+                            "proficiency": "Martial Weapon Proficiency",
+                            "name": "Alchemical Kukri",
+                            "damangeAndType": "2 [1d4] + 5 Slash, Magic",
+                            "criticalThreatRange": "18-20 / x2",
+                            "weaponType": [
+                                {
+                                    "weaponCategory": "Kukri",
+                                    "damageCategory": "/ Slashing weapons"
+                                }
+                            ],
+                            "absRaceRequired": "None",
+                            "minLevel": "12",
+                            "requiredTrait": "None",
+                            "umd": "No UMD needed",
+                            "handedness": "",
+                            "attackMod": "STR",
+                            "damageMod": "STR",
+                            "binding": "Unbound",
+                            "binding_url": "https://ddowiki.com/page/Bind",
+                            "durability": "110",
+                            "material": "Steel",
+                            "material_url": "https://ddowiki.com/page/Steel",
+                            "hardness": "17",
+                            "baseValue": "10,200pp 8gp",
+                            "weight": "2 lbs",
+                            "upgradable": "Alchemical Crafting",
+                            "description": "A heavy, curved knife with a sharp edge on the inside of the curve.",
+                            "enchantments": [
+                                {
+                                    "enchantment": [
+                                        {
+                                            "name": "+5 Enhancement Bonus",
+                                            "name_url": "https://ddowiki.com/page/Enhancement_bonus",
+                                            "fullText": "+5 Enhancement Bonus"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "enchantment": [
+                                        {
+                                            "name": "Alchemical (Prototype)",
+                                            "name_url": "https://ddowiki.com/page/Alchemical_Crafting",
+                                            "fullText": "Alchemical (Prototype)"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "enchantment": [
+                                        {
+                                            "name": "Mythic Weapon Boost",
+                                            "name_url": "https://ddowiki.com/page/Mythic_Boost",
+                                            "fullText": "Mythic Weapon Boost +2 or +4"
+                                        }
+                                    ]
+                                }
+                            ],
+                            "locationInformation": [
+                                {
+                                    "location": "The Master Artificer",
+                                    "location_url": "https://ddowiki.com/page/The_Master_Artificer",
+                                    "locationExtra": ", Either End chest"
+                                }
+                            ]
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "weapon": [
+                {
+                    "name": "Epic Green Blade",
+                    "damangeAndType": "2[1d4] + 6 Slash, Magic",
+                    "minLevel": "20",
+                    "binding": "Bound to Character on Acquire",
+                    "criticalProfile": "",
+                    "enchantments": "Spellcasting Implement +21",
+                    "enchantments_url": "https://ddowiki.com/page/Spellcasting_Implement",
+                    "errata": "",
+                    "weaponDetail": [
+                        {
+                            "proficiency": "Martial Weapon Proficiency",
+                            "name": "Epic Green Blade",
+                            "damangeAndType": "2[1d4] + 6 Slash, Magic",
+                            "criticalThreatRange": "18-20 / x2",
+                            "weaponType": [
+                                {
+                                    "weaponCategory": "Kukri",
+                                    "damageCategory": "/ Slashing weapons"
+                                }
+                            ],
+                            "absRaceRequired": "None",
+                            "minLevel": "20",
+                            "requiredTrait": "None",
+                            "umd": "No UMD needed",
+                            "handedness": "",
+                            "attackMod": "STR",
+                            "damageMod": "STR",
+                            "binding": "Bound to Character on Acquire",
+                            "binding_url": "https://ddowiki.com/page/Bind",
+                            "durability": "140",
+                            "material": "Steel",
+                            "material_url": "https://ddowiki.com/page/Steel",
+                            "hardness": "20",
+                            "baseValue": "20,000pp 8gp",
+                            "weight": "2 lbs",
+                            "upgradable": "Fully upgraded",
+                            "description": "A simple knife with a curved green tinged blade and a handle of polished densewood. Holding the dagger, you feel a rush of arcane power. This is no mere dagger.",
+                            "enchantments": [
+                                {
+                                    "enchantment": [
+                                        {
+                                            "name": "Spellcasting Implement +21",
+                                            "name_url": "https://ddowiki.com/page/Spellcasting_Implement",
+                                            "fullText": "Spellcasting Implement +21"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "enchantment": [
+                                        {
+                                            "name": "+7 Enhancement Bonus",
+                                            "name_url": "https://ddowiki.com/page/Enhancement_bonus",
+                                            "fullText": "+7 Enhancement Bonus"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "enchantment": [
+                                        {
+                                            "name": "Force Burst",
+                                            "name_url": "https://ddowiki.com/page/Force_(enchantment)",
+                                            "fullText": "Force Burst"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "enchantment": [
+                                        {
+                                            "name": "Spell Lore VI",
+                                            "name_url": "https://ddowiki.com/page/Spell_Lore",
+                                            "fullText": "Spell Lore VI"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "enchantment": [
+                                        {
+                                            "name": "Potency +52",
+                                            "name_url": "https://ddowiki.com/page/Potency",
+                                            "fullText": "Potency +52"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "enchantment": [
+                                        {
+                                            "name": "Spell Penetration III",
+                                            "name_url": "https://ddowiki.com/page/Spell_penetration",
+                                            "fullText": "Spell Penetration III"
+                                        }
+                                    ]
+                                }
+                            ],
+                            "locationInformation": [
+                                {
+                                    "location": "Green Blade",
+                                    "location_url": "https://ddowiki.com/page/Green_Blade",
+                                    "locationExtra": "of"
+                                }
+                            ]
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "weapon": [
+                {
+                    "name": "Epic Midnight Greetings",
+                    "damangeAndType": "2 [1d6] +6 to +10 Slash, Magic",
+                    "minLevel": "20",
+                    "binding": "Bound to Character on Acquire",
+                    "quest": "Epic Crafting, upgrade of Midnight Greetings",
+                    "criticalProfile": "Damage Modifier: STR, DEX\nAttack Modifier: STR, DEX",
+                    "enchantments": "+6 Enhancement Bonus",
+                    "enchantments_url": "https://ddowiki.com/page/Enhancement_bonus",
+                    "errata": "Damage Modifier: STR, DEX\nAttack Modifier: STR, DEX",
+                    "weaponDetail": [
+                        {
+                            "proficiency": "Martial Weapon Proficiency",
+                            "name": "Epic Midnight Greetings",
+                            "damangeAndType": "2 [1d6] +6 to +10 Slash, Magic",
+                            "criticalThreatRange": "18-20 / x2",
+                            "weaponType": [
+                                {
+                                    "weaponCategory": "Kukri",
+                                    "damageCategory": "/ Slashing weapons"
+                                }
+                            ],
+                            "absRaceRequired": "None",
+                            "minLevel": "20",
+                            "requiredTrait": "None",
+                            "umd": "No UMD needed",
+                            "handedness": "",
+                            "attackMod": "STR, DEX",
+                            "damageMod": "STR, DEX",
+                            "binding": "Bound to Character on Acquire",
+                            "binding_url": "https://ddowiki.com/page/Bind",
+                            "durability": "130",
+                            "material": "Steel",
+                            "material_url": "https://ddowiki.com/page/Steel",
+                            "hardness": "19",
+                            "baseValue": "16,200pp 8gp",
+                            "weight": "2 lbs",
+                            "upgradable": "Fully upgraded",
+                            "tips": [
+                                {
+                                    "tip": "Enhancement bonus is equal to Int modifier (min 6, max 10). It will use the higher of Strength or Dexterity for to-hit and damage."
+                                }
+                            ],
+                            "description": "A fine blade used by assassins, Midnight Greetings deals significant damage when wielded by a combatant with a sharp mind. Monks may use this weapon without becoming un-centered.",
+                            "enchantments": [
+                                {
+                                    "enchantment": [
+                                        {
+                                            "name": "+6 Enhancement Bonus",
+                                            "name_url": "https://ddowiki.com/page/Enhancement_bonus",
+                                            "fullText": "+6 Enhancement Bonus"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "enchantment": [
+                                        {
+                                            "name": "Improved Deception",
+                                            "name_url": "https://ddowiki.com/page/Deception#Improved_Deception",
+                                            "fullText": "Improved Deception"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "enchantment": [
+                                        {
+                                            "name": "Finesse",
+                                            "name_url": "https://ddowiki.com/page/Finesse",
+                                            "fullText": "Finesse"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "enchantment": [
+                                        {
+                                            "name": "Disintegration",
+                                            "name_url": "https://ddowiki.com/page/Disintegration",
+                                            "fullText": "Disintegration"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "enchantment": [
+                                        {
+                                            "name": "Assassination +2",
+                                            "name_url": "https://ddowiki.com/page/Assassination",
+                                            "fullText": "Assassination +2"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "enchantment": [
+                                        {
+                                            "name": "Improved Paralyzing",
+                                            "name_url": "https://ddowiki.com/page/Improved_Paralyzing",
+                                            "fullText": "Improved Paralyzing"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "enchantment": [
+                                        {
+                                            "name": "Clever Strike",
+                                            "name_url": "https://ddowiki.com/page/Clever_Strike",
+                                            "fullText": "Clever Strike"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "oneOfEnchantment": [
+                                        {},
+                                        {},
+                                        {},
+                                        {},
+                                        {},
+                                        {},
+                                        {},
+                                        {},
+                                        {},
+                                        {},
+                                        {},
+                                        {},
+                                        {},
+                                        {},
+                                        {},
+                                        {}
+                                    ],
+                                    "enchantment": [
+                                        {
+                                            "fullText": "Empty Red Augment Slot"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "enchantment": [
+                                        {
+                                            "name": "Mythic Weapon Boost",
+                                            "name_url": "https://ddowiki.com/page/Mythic_Boost",
+                                            "fullText": "Mythic Weapon Boost +2 or +4"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "enchantment": [{}]
+                                }
+                            ],
+                            "locationInformation": [
+                                {
+                                    "location": "Midnight Greetings",
+                                    "location_url": "https://ddowiki.com/page/Midnight_Greetings",
+                                    "locationExtra": "of"
+                                }
+                            ]
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "weapon": [
+                {
+                    "name": "Thunder-Forged Alloy Kukri",
+                    "damangeAndType": "3.50 [1d4] + 9 Slash, Silver, Adamantine, Mithral, Cold Iron, Magic, Byeshk",
+                    "minLevel": "22",
+                    "binding": "Unbound",
+                    "quest": "Magma Forge, Crafted from various ingredients",
+                    "criticalProfile": "",
+                    "enchantments": "+9 Enhancement Bonus",
+                    "enchantments_url": "https://ddowiki.com/page/Enhancement_bonus",
+                    "errata": "",
+                    "weaponDetail": [
+                        {
+                            "proficiency": "Martial Weapon Proficiency",
+                            "name": "Thunder-Forged Alloy Kukri",
+                            "damangeAndType": "3.50 [1d4] + 9 Slash, Silver, Adamantine, Mithral, Cold Iron, Magic, Byeshk",
+                            "criticalThreatRange": "18-20 / x2",
+                            "weaponType": [
+                                {
+                                    "weaponCategory": "Kukri",
+                                    "damageCategory": "/ Slashing weapons"
+                                }
+                            ],
+                            "absRaceRequired": "None",
+                            "minLevel": "22",
+                            "requiredTrait": "None",
+                            "umd": "No UMD needed",
+                            "handedness": "",
+                            "attackMod": "STR",
+                            "damageMod": "STR",
+                            "binding": "Unbound",
+                            "binding_url": "https://ddowiki.com/page/Bind",
+                            "durability": "170",
+                            "material": "Adamantine",
+                            "material_url": "https://ddowiki.com/page/Adamantine",
+                            "hardness": "39",
+                            "baseValue": "8,800pp 8gp",
+                            "weight": "2 lbs",
+                            "upgradable": "Thunder-Forged",
+                            "tips": [
+                                {
+                                    "tip": "20 Thunder-Forged Dwarven Ingots"
+                                },
+                                {
+                                    "tip": "15 Commendations of Valor"
+                                }
+                            ],
+                            "description": "A kukri forged from metals long in proximity to dragons under Thunderholme.",
+                            "enchantments": [
+                                {
+                                    "enchantment": [
+                                        {
+                                            "name": "+9 Enhancement Bonus",
+                                            "name_url": "https://ddowiki.com/page/Enhancement_bonus",
+                                            "fullText": "+9 Enhancement Bonus"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "oneOfEnchantment": [
+                                        {},
+                                        {},
+                                        {},
+                                        {},
+                                        {},
+                                        {},
+                                        {},
+                                        {},
+                                        {},
+                                        {},
+                                        {},
+                                        {},
+                                        {},
+                                        {},
+                                        {},
+                                        {},
+                                        {},
+                                        {},
+                                        {},
+                                        {},
+                                        {},
+                                        {},
+                                        {},
+                                        {},
+                                        {}
+                                    ],
+                                    "enchantment": [
+                                        {
+                                            "fullText": "Empty Orange Augment Slot"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "enchantment": [
+                                        {
+                                            "name": "Thunder-Forged (Tier 0)",
+                                            "name_url": "https://ddowiki.com/page/Thunder-Forged",
+                                            "fullText": "Thunder-Forged (Tier 0)"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "enchantment": [
+                                        {
+                                            "name": "Mythic Weapon Boost",
+                                            "name_url": "https://ddowiki.com/page/Mythic_Boost",
+                                            "fullText": "Mythic Weapon Boost +2 or +4"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "enchantment": [
+                                        {
+                                            "fullText": "20 Thunder-Forged Dwarven Ingots",
+                                            "fullText_url": "https://ddowiki.com/page/Item:Thunder-Forged_Dwarven_Ingot"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "enchantment": [
+                                        {
+                                            "fullText": "15 Commendations of Valor",
+                                            "fullText_url": "https://ddowiki.com/page/Item:Commendation_of_Valor"
+                                        }
+                                    ]
+                                }
+                            ],
+                            "locationInformation": [
+                                {
+                                    "location": "Magma Forge",
+                                    "location_url": "https://ddowiki.com/page/Magma_Forge",
+                                    "locationExtra": ", Crafted from various ingredients"
+                                }
+                            ]
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "weapon": [
+                {
+                    "name": "+7 Magnetism Epic Electrified Kukri*",
+                    "damangeAndType": "5[1d4] + 7 Slash, Magic",
+                    "minLevel": "26",
+                    "binding": "Unbound",
+                    "quest": "Temple of Elemental Evil Part One, and Temple of Elemental Evil Part Two any chest",
+                    "criticalProfile": "",
+                    "enchantments": "Spellcasting Implement +21",
+                    "enchantments_url": "https://ddowiki.com/page/Spellcasting_Implement",
+                    "itemId": "+7 Magnetism Epic Electrified Kukri",
+                    "url": "https://ddowiki.com/page/Item:%2B7_Magnetism_Epic_Electrified_Kukri",
+                    "errata": ""
+                }
+            ]
+        },
+        {
+            "weapon": [
+                {
+                    "name": "+7 Epic Smoldering Kukri*",
+                    "damangeAndType": "5[1d4] + 7 Slash, Magic",
+                    "minLevel": "26",
+                    "binding": "Unbound",
+                    "quest": "Temple of Elemental Evil Part One, and Temple of Elemental Evil Part Two any chest",
+                    "criticalProfile": "",
+                    "enchantments": "+7 Enhancement Bonus",
+                    "enchantments_url": "https://ddowiki.com/page/Enhancement_bonus",
+                    "itemId": "+7 Epic Smoldering Kukri",
+                    "url": "https://ddowiki.com/page/Item:%2B7_Epic_Smoldering_Kukri",
+                    "errata": ""
+                }
+            ]
+        },
+        {
+            "weapon": [
+                {
+                    "name": "+7 Epic Quenched Kukri*",
+                    "damangeAndType": "5[1d4] + 7 Slash, Magic",
+                    "minLevel": "26",
+                    "binding": "Unbound",
+                    "quest": "Temple of Elemental Evil Part One, and Temple of Elemental Evil Part Two any chest",
+                    "criticalProfile": "",
+                    "enchantments": "+7 Enhancement Bonus",
+                    "enchantments_url": "https://ddowiki.com/page/Enhancement_bonus",
+                    "itemId": "+7 Epic Quenched Kukri",
+                    "url": "https://ddowiki.com/page/Item:%2B7_Epic_Quenched_Kukri",
+                    "errata": ""
+                }
+            ]
+        },
+        {
+            "weapon": [
+                {
+                    "name": "+7 Epic Etched Kukri*",
+                    "damangeAndType": "5[1d4] + 7 Slash, Magic",
+                    "minLevel": "26",
+                    "binding": "Unbound",
+                    "quest": "Temple of Elemental Evil Part One, and Temple of Elemental Evil Part Two any chest",
+                    "criticalProfile": "",
+                    "enchantments": "+7 Enhancement Bonus",
+                    "enchantments_url": "https://ddowiki.com/page/Enhancement_bonus",
+                    "itemId": "+7 Epic Etched Kukri",
+                    "url": "https://ddowiki.com/page/Item:%2B7_Epic_Etched_Kukri",
+                    "errata": ""
+                }
+            ]
+        },
+        {
+            "weapon": [
+                {
+                    "name": "+7 Epic Energized Kukri*",
+                    "damangeAndType": "5[1d4] + 7 Slash, Magic",
+                    "minLevel": "26",
+                    "binding": "Unbound",
+                    "quest": "Temple of Elemental Evil Part One, and Temple of Elemental Evil Part Two any chest",
+                    "criticalProfile": "",
+                    "enchantments": "+7 Enhancement Bonus",
+                    "enchantments_url": "https://ddowiki.com/page/Enhancement_bonus",
+                    "itemId": "+7 Epic Energized Kukri",
+                    "url": "https://ddowiki.com/page/Item:%2B7_Epic_Energized_Kukri",
+                    "errata": ""
+                }
+            ]
+        },
+        {
+            "weapon": [
+                {
+                    "name": "Legendary Green Steel Kukri",
+                    "damangeAndType": "5[1d4] + 14 Slash, Evil, Magic",
+                    "minLevel": "26",
+                    "binding": "Bound to Character on Acquire",
+                    "quest": "Altar of Fecundity, Manufactured Ingredient Recipes",
+                    "criticalProfile": "",
+                    "enchantments": "+14 Enhancement Bonus",
+                    "enchantments_url": "https://ddowiki.com/page/Enhancement_bonus",
+                    "errata": "",
+                    "weaponDetail": [
+                        {
+                            "proficiency": "Martial Weapon Proficiency",
+                            "name": "Legendary Green Steel Kukri",
+                            "damangeAndType": "5[1d4] + 14 Slash, Evil, Magic",
+                            "criticalThreatRange": "18-20 / x2",
+                            "weaponType": [
+                                {
+                                    "weaponCategory": "Kukri",
+                                    "damageCategory": "/ Slashing weapons"
+                                }
+                            ],
+                            "absRaceRequired": "None",
+                            "minLevel": "26",
+                            "requiredTrait": "None",
+                            "umd": "No UMD needed",
+                            "handedness": "",
+                            "attackMod": "STR",
+                            "damageMod": "STR",
+                            "binding": "Bound to Character on Acquire",
+                            "binding_url": "https://ddowiki.com/page/Bind",
+                            "durability": "250",
+                            "material": "Steel",
+                            "material_url": "https://ddowiki.com/page/Steel",
+                            "hardness": "31",
+                            "baseValue": "30,051pp 3gp 3sp 6cp",
+                            "weight": "2 lbs",
+                            "upgradable": "Not upgradeable",
+                            "tips": [
+                                {
+                                    "tip": "+14 Legendary Green Steel Kukri"
+                                },
+                                {
+                                    "tip": "100 Codex Runes"
+                                },
+                                {
+                                    "tip": "100 Commendations of Valor"
+                                },
+                                {
+                                    "tip": "Altar of Fecundity"
+                                }
+                            ],
+                            "description": "A heavy, curved knife with a sharp edge on the inside of the curve.",
+                            "enchantments": [
+                                {
+                                    "enchantment": [
+                                        {
+                                            "name": "+14 Enhancement Bonus",
+                                            "name_url": "https://ddowiki.com/page/Enhancement_bonus",
+                                            "fullText": "+14 Enhancement Bonus"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "enchantment": [
+                                        {
+                                            "name": "Legendary Green Steel",
+                                            "name_url": "https://ddowiki.com/page/Legendary_Green_Steel",
+                                            "fullText": "Legendary Green Steel"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "enchantment": [
+                                        {
+                                            "name": "Mythic Weapon Boost",
+                                            "name_url": "https://ddowiki.com/page/Mythic_Boost",
+                                            "fullText": "Mythic Weapon Boost +2 or +4"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "enchantment": [
+                                        {
+                                            "fullText": "Codex Runes",
+                                            "fullText_url": "https://ddowiki.com/page/Item:Codex_Rune"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "enchantment": [
+                                        {
+                                            "fullText": "100 Commendations of Valor",
+                                            "fullText_url": "https://ddowiki.com/page/Item:Commendation_of_Valor"
+                                        }
+                                    ]
+                                }
+                            ],
+                            "locationInformation": [
+                                {
+                                    "location": "Manufactured Ingredient Recipes",
+                                    "location_url": "https://ddowiki.com/page/Altar_of_Fecundity_-_Manufactured_Ingredient_Recipes",
+                                    "locationExtra": ","
+                                }
+                            ]
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "weapon": [
+                {
+                    "name": "+7 Corrosion Epic Caustic Kukri*",
+                    "damangeAndType": "5[1d4] + 7 Slash, Magic",
+                    "minLevel": "26",
+                    "binding": "Unbound",
+                    "quest": "Temple of Elemental Evil Part One, and Temple of Elemental Evil Part Two any chest",
+                    "criticalProfile": "",
+                    "enchantments": "Spellcasting Implement +21",
+                    "enchantments_url": "https://ddowiki.com/page/Spellcasting_Implement",
+                    "itemId": "+7 Corrosion Epic Caustic Kukri",
+                    "url": "https://ddowiki.com/page/Item:%2B7_Corrosion_Epic_Caustic_Kukri",
+                    "errata": ""
+                }
+            ]
+        },
+        {
+            "weapon": [
+                {
+                    "name": "+7 Combustion Epic Scorched Kukri*",
+                    "damangeAndType": "5[1d4] + 7 Slash, Magic",
+                    "minLevel": "26",
+                    "binding": "Unbound",
+                    "quest": "Temple of Elemental Evil Part One, and Temple of Elemental Evil Part Two any chest",
+                    "criticalProfile": "",
+                    "enchantments": "Spellcasting Implement +21",
+                    "enchantments_url": "https://ddowiki.com/page/Spellcasting_Implement",
+                    "itemId": "+7 Combustion Epic Scorched Kukri",
+                    "url": "https://ddowiki.com/page/Item:%2B7_Combustion_Epic_Scorched_Kukri",
+                    "errata": ""
+                }
+            ]
+        },
+        {
+            "weapon": [
+                {
+                    "name": "Morninglord's Kukri*",
+                    "damangeAndType": "5[1d6+2]+15 Slashing, Good, Silver, Magic",
+                    "minLevel": "29",
+                    "binding": "Bound to Character on Acquire",
+                    "quest": "Blue Water Inn",
+                    "criticalProfile": "",
+                    "enchantments": "+15 Enhancement Bonus",
+                    "enchantments_url": "https://ddowiki.com/page/Enhancement_bonus",
+                    "itemId": "Morninglord's Kukri",
+                    "url": "https://ddowiki.com/page/Item:Morninglord%27s_Kukri",
+                    "errata": ""
+                }
+            ]
+        },
+        {
+            "weapon": [
+                {
+                    "name": "The Labrythine Edge",
+                    "damangeAndType": "7[1d4+3] +15 Slash, Evil, Magic",
+                    "minLevel": "29",
+                    "binding": "Bound to Character on Equip",
+                    "quest": "Project Nemesis, End chest",
+                    "criticalProfile": "Critical Profile: 15-20 / x2",
+                    "enchantments": "+15 Enhancement Bonus",
+                    "enchantments_url": "https://ddowiki.com/page/Enhancement_bonus",
+                    "errata": "Critical Profile: 15-20 / x2",
+                    "weaponDetail": [
+                        {
+                            "proficiency": "Martial Weapon Proficiency",
+                            "name": "The Labrythine Edge",
+                            "damangeAndType": "7[1d4+3] +15 Slash, Evil, Magic",
+                            "criticalThreatRange": "15-20 / x2",
+                            "weaponType": [
+                                {
+                                    "weaponCategory": "Kukri",
+                                    "damageCategory": "/ Slashing weapons"
+                                }
+                            ],
+                            "absRaceRequired": "None",
+                            "minLevel": "29",
+                            "requiredTrait": "None",
+                            "umd": "No UMD needed",
+                            "handedness": "",
+                            "attackMod": "STR",
+                            "damageMod": "STR",
+                            "binding": "Bound to Character on Equip",
+                            "binding_url": "https://ddowiki.com/page/Bind",
+                            "durability": "330",
+                            "material": "Adamantine",
+                            "material_url": "https://ddowiki.com/page/Adamantine",
+                            "hardness": "39",
+                            "baseValue": "11,600pp",
+                            "weight": "2 lbs",
+                            "upgradable": "Not upgradeable",
+                            "tips": [
+                                {
+                                    "tip": "DDO Forums"
+                                }
+                            ],
+                            "description": "The poisoned kukri was taken from the hands of a ferocious Gnoll named Gish, and it built to cause incredible damage to your enemies. A strange pattern is inlaid upon the blade. It reacts strangely to blood.",
+                            "enchantments": [
+                                {
+                                    "enchantment": [
+                                        {
+                                            "name": "+15 Enhancement Bonus",
+                                            "name_url": "https://ddowiki.com/page/Enhancement_bonus",
+                                            "fullText": "+15 Enhancement Bonus"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "oneOfEnchantment": [
+                                        {},
+                                        {},
+                                        {},
+                                        {},
+                                        {},
+                                        {},
+                                        {},
+                                        {},
+                                        {},
+                                        {},
+                                        {},
+                                        {},
+                                        {},
+                                        {},
+                                        {},
+                                        {},
+                                        {},
+                                        {},
+                                        {},
+                                        {},
+                                        {},
+                                        {},
+                                        {},
+                                        {},
+                                        {},
+                                        {},
+                                        {
+                                            "enchantment": [
+                                                {
+                                                    "name": "Fetters of Unreality",
+                                                    "url": "https://ddowiki.com/page/Fetters_of_Unreality"
+                                                }
+                                            ]
+                                        },
+                                        {
+                                            "enchantment": [
+                                                {
+                                                    "name": "Completed Weapon",
+                                                    "url": "https://ddowiki.com/edit/Completed_Weapon?redlink=1"
+                                                }
+                                            ]
+                                        }
+                                    ],
+                                    "enchantment": [
+                                        {
+                                            "name": "Nearly Finished",
+                                            "name_url": "https://ddowiki.com/page/Nearly_Finished",
+                                            "fullText": "Empty Purple Augment Slot\nFetters of Unreality\nCompleted Weapon"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "enchantment": [
+                                        {
+                                            "name": "Keen V",
+                                            "name_url": "https://ddowiki.com/page/Keen",
+                                            "fullText": "Keen V"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "enchantment": [
+                                        {
+                                            "name": "Identity Crisis",
+                                            "name_url": "https://ddowiki.com/page/Identity_Crisis",
+                                            "fullText": "Identity Crisis"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "enchantment": [{}]
+                                },
+                                {
+                                    "oneOfEnchantment": [
+                                        {},
+                                        {},
+                                        {},
+                                        {},
+                                        {},
+                                        {},
+                                        {},
+                                        {},
+                                        {},
+                                        {},
+                                        {},
+                                        {},
+                                        {},
+                                        {},
+                                        {},
+                                        {}
+                                    ],
+                                    "enchantment": [
+                                        {
+                                            "fullText": "Empty Red Augment Slot"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "enchantment": [
+                                        {
+                                            "name": "Mythic Weapon Boost",
+                                            "name_url": "https://ddowiki.com/page/Mythic_Boost",
+                                            "fullText": "Mythic Weapon Boost +2 or +4"
+                                        }
+                                    ]
+                                }
+                            ],
+                            "locationInformation": [
+                                {
+                                    "location": "Project Nemesis",
+                                    "location_url": "https://ddowiki.com/page/Project_Nemesis",
+                                    "locationExtra": ", End chest"
+                                }
+                            ]
+                        }
+                    ]
+                }
+            ]
         }
-       ],
-       "absRaceRequired": "None",
-       "minLevel": "5",
-       "requiredTrait": "None",
-       "umd": "No UMD needed",
-       "handedness": "",
-       "attackMod": "STR, DEX",
-       "damageMod": "STR, DEX",
-       "binding": "Bound to Account on Acquire",
-       "binding_url": "https://ddowiki.com/page/Bind",
-       "durability": "90",
-       "material": "Steel",
-       "material_url": "https://ddowiki.com/page/Steel",
-       "hardness": "15",
-       "baseValue": "2,000pp 8gp",
-       "weight": "2 lbs",
-       "upgradable": "Epic Crafting to Epic Midnight Greetings",
-       "description": "A fine blade used by assassins, Midnight Greetings deals significant damage when wielded by a combatant with a sharp mind. Monks may use this weapon without becoming uncentered.",
-       "enchantments": [
-        {
-         "enchantment": [
-          {
-           "name": "+2 Enhancement Bonus",
-           "name_url": "https://ddowiki.com/page/Enhancement_bonus",
-           "fullText": "+2 Enhancement Bonus"
-          }
-         ]
-        },
-        {
-         "enchantment": [
-          {
-           "name": "Entropic 2",
-           "name_url": "https://ddowiki.com/page/Entropic",
-           "fullText": "Entropic 2"
-          }
-         ]
-        },
-        {
-         "enchantment": [
-          {
-           "name": "Deception +2",
-           "name_url": "https://ddowiki.com/page/Deception",
-           "fullText": "Deception +2"
-          }
-         ]
-        },
-        {
-         "enchantment": [
-          {
-           "name": "Deception",
-           "name_url": "https://ddowiki.com/page/Deception",
-           "fullText": "Deception"
-          }
-         ]
-        },
-        {
-         "oneOfEnchantment": [
-          {
-          },
-          {
-          },
-          {
-          },
-          {
-          },
-          {
-          },
-          {
-          },
-          {
-          },
-          {
-          },
-          {
-          },
-          {
-          },
-          {
-          },
-          {
-          },
-          {
-          },
-          {
-          },
-          {
-          },
-          {
-          }
-         ],
-         "enchantment": [
-          {
-           "fullText": "Empty Red Augment Slot"
-          }
-         ]
-        },
-        {
-         "enchantment": [
-          {
-           "name": "Mythic Weapon Boost",
-           "name_url": "https://ddowiki.com/page/Mythic_Boost",
-           "fullText": "Mythic Weapon Boost +2 or +4"
-          }
-         ]
-        }
-       ],
-       "locationInformation": [
-        {
-         "location": "The Tide Turns",
-         "location_url": "https://ddowiki.com/page/The_Tide_Turns",
-         "locationExtra": ", End chest"
-        }
-       ]
-      }
-     ]
-    }
-   ]
-  },
-  {
-   "weapon": [
-    {
-     "name": "Filthy Kukri",
-     "damangeAndType": "[1d4] + 1 Slash, Magic",
-     "minLevel": "5",
-     "binding": "Bound to Account on Equip",
-     "quest": "The Tide Turns, Any End chest",
-     "criticalProfile": "Critical Profile: 19-20 / x2\nDamage Modifier: STR,DEX",
-     "enchantments": "+1 Enhancement Bonus",
-     "enchantments_url": "https://ddowiki.com/page/Enhancement_bonus",
-     "errata": "Critical Profile: 19-20 / x2\nDamage Modifier: STR,DEX",
-     "weaponDetail": [
-      {
-       "proficiency": "Martial Weapon Proficiency",
-       "name": "Filthy Kukri",
-       "damangeAndType": "[1d4] + 1 Slash, Magic",
-       "criticalThreatRange": "19-20 / x2",
-       "weaponType": [
-        {
-         "weaponCategory": "Kukri",
-         "damageCategory": "/ Slashing weapons"
-        }
-       ],
-       "absRaceRequired": "None",
-       "minLevel": "5",
-       "requiredTrait": "None",
-       "umd": "No UMD needed",
-       "handedness": "",
-       "attackMod": "STR",
-       "damageMod": "STR,DEX",
-       "binding": "Bound to Account on Equip",
-       "binding_url": "https://ddowiki.com/page/Bind",
-       "durability": "70",
-       "material": "Steel",
-       "material_url": "https://ddowiki.com/page/Steel",
-       "hardness": "13",
-       "baseValue": "1,800pp 8gp",
-       "weight": "2 lbs",
-       "upgradable": "Unraveling Enchantments to Midnight Greetings",
-       "description": "From the muck caked on the blade, it appears that this kukri was left in a swamp for a few decades. There's something extremely strange about the balance of it.",
-       "enchantments": [
-        {
-         "enchantment": [
-          {
-           "name": "+1 Enhancement Bonus",
-           "name_url": "https://ddowiki.com/page/Enhancement_bonus",
-           "fullText": "+1 Enhancement Bonus"
-          }
-         ]
-        },
-        {
-         "enchantment": [
-          {
-           "name": "Deception",
-           "name_url": "https://ddowiki.com/page/Deception",
-           "fullText": "Deception"
-          }
-         ]
-        },
-        {
-         "enchantment": [
-          {
-           "name": "Unraveling Enchantments",
-           "name_url": "https://ddowiki.com/page/Unraveling_Enchantments",
-           "fullText": "Unraveling Enchantments"
-          }
-         ]
-        },
-        {
-         "enchantment": [
-          {
-           "name": "Mythic Weapon Boost",
-           "name_url": "https://ddowiki.com/page/Mythic_Boost",
-           "fullText": "Mythic Weapon Boost +2 or +4"
-          }
-         ]
-        }
-       ],
-       "locationInformation": [
-        {
-         "location": "The Tide Turns",
-         "location_url": "https://ddowiki.com/page/The_Tide_Turns",
-         "locationExtra": ", Any End chest"
-        }
-       ]
-      }
-     ]
-    }
-   ]
-  },
-  {
-   "weapon": [
-    {
-     "name": "Giant Stalker's Knife",
-     "damangeAndType": "[1d4] + 3 Slash, Magic",
-     "minLevel": "6",
-     "binding": "Bound to Character on Equip",
-     "quest": "Gwylan's Stand, Suropox's chest",
-     "criticalProfile": "",
-     "enchantments": "+3 Enhancement Bonus",
-     "enchantments_url": "https://ddowiki.com/page/Enhancement_bonus",
-     "errata": "",
-     "weaponDetail": [
-      {
-       "proficiency": "Martial Weapon Proficiency",
-       "name": "Giant Stalker's Knife",
-       "damangeAndType": "[1d4] + 3 Slash, Magic",
-       "criticalThreatRange": "18-20 / x2",
-       "weaponType": [
-        {
-         "weaponCategory": "Kukri",
-         "damageCategory": "/ Slashing weapons"
-        }
-       ],
-       "absRaceRequired": "None",
-       "minLevel": "6",
-       "requiredTrait": "None",
-       "umd": "No UMD needed",
-       "handedness": "",
-       "attackMod": "STR",
-       "damageMod": "STR",
-       "binding": "Bound to Character on Equip",
-       "binding_url": "https://ddowiki.com/page/Bind",
-       "durability": "80",
-       "material": "Steel",
-       "material_url": "https://ddowiki.com/page/Steel",
-       "hardness": "14",
-       "baseValue": "2,400pp 8gp",
-       "weight": "2 lbs",
-       "upgradable": "Not upgradeable",
-       "description": "This heavy, curved knife was created by the elves of Xen'drik to us in their rebellion against the giants.",
-       "enchantments": [
-        {
-         "enchantment": [
-          {
-           "name": "+3 Enhancement Bonus",
-           "name_url": "https://ddowiki.com/page/Enhancement_bonus",
-           "fullText": "+3 Enhancement Bonus"
-          }
-         ]
-        },
-        {
-         "enchantment": [
-          {
-           "name": "Greater Giant Bane",
-           "name_url": "https://ddowiki.com/page/Bane_(enchantment)",
-           "fullText": "Greater Giant Bane"
-          }
-         ]
-        },
-        {
-         "oneOfEnchantment": [
-          {
-          },
-          {
-          },
-          {
-          },
-          {
-          },
-          {
-          },
-          {
-          },
-          {
-          },
-          {
-          },
-          {
-          },
-          {
-          },
-          {
-          },
-          {
-          },
-          {
-          },
-          {
-          },
-          {
-          },
-          {
-          }
-         ],
-         "enchantment": [
-          {
-           "fullText": "Empty Red Augment Slot"
-          }
-         ]
-        },
-        {
-         "enchantment": [
-          {
-           "name": "Mythic Weapon Boost",
-           "name_url": "https://ddowiki.com/page/Mythic_Boost",
-           "fullText": "Mythic Weapon Boost +2 or +4"
-          }
-         ]
-        }
-       ],
-       "locationInformation": [
-        {
-         "location": "Suropox",
-         "location_url": "https://ddowiki.com/page/Suropox",
-         "locationExtra": ","
-        }
-       ]
-      }
-     ]
-    }
-   ]
-  },
-  {
-   "weapon": [
-    {
-     "name": "+3 Combustion Scorched Kukri*",
-     "damangeAndType": "1.5[1d4] + 7 Slash, Magic",
-     "minLevel": "7",
-     "binding": "Unbound",
-     "quest": "Temple of Elemental Evil Part One, and Temple of Elemental Evil Part Two any chest",
-     "criticalProfile": "",
-     "enchantments": "+3 Enhancement Bonus",
-     "enchantments_url": "https://ddowiki.com/page/Enhancement_bonus",
-     "itemId": "+3 Combustion Scorched Kukri",
-     "url": "https://ddowiki.com/page/Item:%2B3_Combustion_Scorched_Kukri",
-     "errata": ""
-    }
-   ]
-  },
-  {
-   "weapon": [
-    {
-     "name": "+3 Corrosion Caustic Kukri",
-     "damangeAndType": "1.5[1d4] + 7 Slash, Magic",
-     "minLevel": "7",
-     "binding": "Unbound",
-     "quest": "Temple of Elemental Evil Part One, and Temple of Elemental Evil Part Two any chest",
-     "criticalProfile": "",
-     "enchantments": "+3 Enhancement Bonus",
-     "enchantments_url": "https://ddowiki.com/page/Enhancement_bonus",
-     "errata": "",
-     "weaponDetail": [
-      {
-       "proficiency": "Martial Weapon Proficiency",
-       "name": "+3 Corrosion Caustic Kukri",
-       "damangeAndType": "1.5[1d4] + 7 Slash, Magic",
-       "criticalThreatRange": "18-20 / x2",
-       "weaponType": [
-        {
-         "weaponCategory": "Kukri",
-         "damageCategory": "/ Slashing weapons"
-        }
-       ],
-       "absRaceRequired": "None",
-       "minLevel": "7",
-       "requiredTrait": "None",
-       "umd": "No UMD needed",
-       "handedness": "",
-       "attackMod": "STR",
-       "damageMod": "STR",
-       "binding": "Unbound",
-       "binding_url": "https://ddowiki.com/page/Bind",
-       "durability": "90",
-       "material": "Steel",
-       "material_url": "https://ddowiki.com/page/Steel",
-       "hardness": "15",
-       "baseValue": "2,820pp",
-       "weight": "2 lbs",
-       "upgradable": "ToEE Crafting",
-       "description": "A weapon found deep within the Temple of Elemental Evil.",
-       "enchantments": [
-        {
-         "enchantment": [
-          {
-           "name": "+3 Enhancement Bonus",
-           "name_url": "https://ddowiki.com/page/Enhancement_bonus",
-           "fullText": "+3 Enhancement Bonus"
-          }
-         ]
-        },
-        {
-         "enchantment": [
-          {
-           "name": "Upgradeable Item (Temple of Elemental Evil)",
-           "name_url": "https://ddowiki.com/page/Overgrown_Workbench",
-           "fullText": "Upgradeable Item (Temple of Elemental Evil)"
-          }
-         ]
-        },
-        {
-         "enchantment": [
-          {
-          }
-         ]
-        },
-        {
-         "enchantment": [
-          {
-           "name": "Mythic Weapon Boost",
-           "name_url": "https://ddowiki.com/page/Mythic_Boost",
-           "fullText": "Mythic Weapon Boost +2 or +4"
-          }
-         ]
-        }
-       ],
-       "locationInformation": [
-        {
-         "location": "Temple of Elemental Evil Part Two",
-         "location_url": "https://ddowiki.com/page/Temple_of_Elemental_Evil_Part_Two",
-         "locationExtra": ", and"
-        }
-       ]
-      }
-     ]
-    }
-   ]
-  },
-  {
-   "weapon": [
-    {
-     "name": "+3 Energized Kukri*",
-     "damangeAndType": "1.50[1d4] + 3 Slash, Magic",
-     "minLevel": "7",
-     "binding": "Unbound",
-     "quest": "Temple of Elemental Evil Part One, and Temple of Elemental Evil Part Two any chest",
-     "criticalProfile": "",
-     "enchantments": "+3 Enhancement Bonus",
-     "enchantments_url": "https://ddowiki.com/page/Enhancement_bonus",
-     "itemId": "+3 Energized Kukri",
-     "url": "https://ddowiki.com/page/Item:%2B3_Energized_Kukri",
-     "errata": ""
-    }
-   ]
-  },
-  {
-   "weapon": [
-    {
-     "name": "+3 Etched Kukri*",
-     "damangeAndType": "1.50[1d4] + 3 Slash, Magic",
-     "minLevel": "7",
-     "binding": "Unbound",
-     "quest": "Temple of Elemental Evil Part One, and Temple of Elemental Evil Part Two any chest",
-     "criticalProfile": "",
-     "enchantments": "+3 Enhancement Bonus",
-     "enchantments_url": "https://ddowiki.com/page/Enhancement_bonus",
-     "itemId": "+3 Etched Kukri",
-     "url": "https://ddowiki.com/page/Item:%2B3_Etched_Kukri",
-     "errata": ""
-    }
-   ]
-  },
-  {
-   "weapon": [
-    {
-     "name": "+3 Quenched Kukri*",
-     "damangeAndType": "1.50[1d4] + 3 Slash, Magic",
-     "minLevel": "7",
-     "binding": "Unbound",
-     "quest": "Temple of Elemental Evil Part One, and Temple of Elemental Evil Part Two any chest",
-     "criticalProfile": "",
-     "enchantments": "+3 Enhancement Bonus",
-     "enchantments_url": "https://ddowiki.com/page/Enhancement_bonus",
-     "itemId": "+3 Quenched Kukri",
-     "url": "https://ddowiki.com/page/Item:%2B3_Quenched_Kukri",
-     "errata": ""
-    }
-   ]
-  },
-  {
-   "weapon": [
-    {
-     "name": "+3 Smoldering Kukri*",
-     "damangeAndType": "1.50[1d4] + 3 Slash, Magic",
-     "minLevel": "7",
-     "binding": "Unbound",
-     "quest": "Temple of Elemental Evil Part One, and Temple of Elemental Evil Part Two any chest",
-     "criticalProfile": "",
-     "enchantments": "+3 Enhancement Bonus",
-     "enchantments_url": "https://ddowiki.com/page/Enhancement_bonus",
-     "itemId": "+3 Smoldering Kukri",
-     "url": "https://ddowiki.com/page/Item:%2B3_Smoldering_Kukri",
-     "errata": ""
-    }
-   ]
-  },
-  {
-   "weapon": [
-    {
-     "name": "Tchurvul's Kukri",
-     "damangeAndType": "[1d4] + 1 Slash, Magic",
-     "minLevel": "8",
-     "binding": "Unbound",
-     "quest": "Special event items, Emerald Claw Conspiracy, Randomly dropped by Tchurvul.",
-     "criticalProfile": "",
-     "enchantments": "+1 Enhancement Bonus",
-     "enchantments_url": "https://ddowiki.com/page/Enhancement_bonus",
-     "errata": "",
-     "weaponDetail": [
-      {
-       "proficiency": "Martial Weapon Proficiency",
-       "name": "Tchurvul's Kukri",
-       "damangeAndType": "[1d4] + 1 Slash, Magic",
-       "criticalThreatRange": "18-20 / x2",
-       "weaponType": [
-        {
-         "weaponCategory": "Kukri",
-         "damageCategory": "/ Slashing weapons"
-        }
-       ],
-       "absRaceRequired": "None",
-       "minLevel": "8",
-       "requiredTrait": "None",
-       "umd": "No UMD needed",
-       "handedness": "",
-       "attackMod": "STR",
-       "damageMod": "STR",
-       "binding": "Unbound",
-       "binding_url": "https://ddowiki.com/page/Bind",
-       "durability": "160",
-       "material": "Steel",
-       "material_url": "https://ddowiki.com/page/Steel",
-       "hardness": "22",
-       "baseValue": "12,800pp 8gp",
-       "weight": "2 lbs",
-       "upgradable": "Not upgradeable",
-       "description": "This weapon has been crafted by the minions of Tchurvul the Vulture.",
-       "enchantments": [
-        {
-         "enchantment": [
-          {
-           "name": "+1 Enhancement Bonus",
-           "name_url": "https://ddowiki.com/page/Enhancement_bonus",
-           "fullText": "+1 Enhancement Bonus"
-          }
-         ]
-        },
-        {
-         "enchantment": [
-          {
-           "name": "Curse of Repulsiveness",
-           "name_url": "https://ddowiki.com/page/Cursed",
-           "fullText": "Curse of Repulsiveness"
-          }
-         ]
-        },
-        {
-         "enchantment": [
-          {
-           "name": "Melee Alacrity 10%",
-           "name_url": "https://ddowiki.com/page/Melee_Alacrity",
-           "fullText": "Melee Alacrity 10%"
-          }
-         ]
-        },
-        {
-         "enchantment": [
-          {
-           "fullText": "Tchurvul's Touch",
-           "fullText_url": "https://ddowiki.com/page/Tchurvul%27s_Touch"
-          }
-         ]
-        },
-        {
-         "enchantment": [
-          {
-           "name": "Mythic Weapon Boost",
-           "name_url": "https://ddowiki.com/page/Mythic_Boost",
-           "fullText": "Mythic Weapon Boost +2 or +4"
-          }
-         ]
-        }
-       ],
-       "locationInformation": [
-        {
-         "location": "Emerald Claw Conspiracy, Randomly dropped by Tchurvul.",
-         "location_url": "https://ddowiki.com/page/Special_event_history#Emerald_Claw_Conspiracy_.28September_14.2C_2007_-_December_7.2C_2007_.29",
-         "locationExtra": ","
-        }
-       ]
-      }
-     ]
-    }
-   ]
-  },
-  {
-   "weapon": [
-    {
-     "name": "Blood Machete",
-     "damangeAndType": "1.50[1d6] + 4 Slash, Magic",
-     "minLevel": "8",
-     "binding": "Bound to Account on Acquire",
-     "quest": "Cult of the Six",
-     "criticalProfile": "",
-     "enchantments": "+4 Enhancement Bonus",
-     "enchantments_url": "https://ddowiki.com/page/Enhancement_bonus",
-     "errata": "",
-     "weaponDetail": [
-      {
-       "proficiency": "Martial Weapon Proficiency",
-       "name": "Blood Machete",
-       "damangeAndType": "1.50[1d6] + 4 Slash, Magic",
-       "criticalThreatRange": "18-20 / x2",
-       "weaponType": [
-        {
-         "weaponCategory": "Kukri",
-         "damageCategory": "/ Slashing weapons"
-        }
-       ],
-       "absRaceRequired": "None",
-       "minLevel": "8",
-       "requiredTrait": "None",
-       "umd": "No UMD needed",
-       "handedness": "",
-       "attackMod": "STR",
-       "damageMod": "STR",
-       "binding": "Bound to Account on Acquire",
-       "binding_url": "https://ddowiki.com/page/Bind",
-       "durability": "90",
-       "material": "Steel",
-       "material_url": "https://ddowiki.com/page/Steel",
-       "hardness": "15",
-       "baseValue": "3,200pp 8gp",
-       "weight": "2 lbs",
-       "upgradable": "Not upgradeable",
-       "description": "The spirit haunting this cursed blade compel the wielder to acts of pure savagery. Even now, blood still drips from its cutting edge.",
-       "enchantments": [
-        {
-         "enchantment": [
-          {
-           "name": "+4 Enhancement Bonus",
-           "name_url": "https://ddowiki.com/page/Enhancement_bonus",
-           "fullText": "+4 Enhancement Bonus"
-          }
-         ]
-        },
-        {
-         "enchantment": [
-          {
-           "name": "Slicing",
-           "name_url": "https://ddowiki.com/page/Bleed#Slicing",
-           "fullText": "Slicing"
-          }
-         ]
-        },
-        {
-         "enchantment": [
-          {
-           "name": "Rage",
-           "name_url": "https://ddowiki.com/page/Rage_(spell)",
-           "fullText": "—"
-          }
-         ]
-        },
-        {
-         "oneOfEnchantment": [
-          {
-          },
-          {
-          },
-          {
-          },
-          {
-          },
-          {
-          },
-          {
-          },
-          {
-          },
-          {
-          },
-          {
-          },
-          {
-          },
-          {
-          },
-          {
-          },
-          {
-          },
-          {
-          },
-          {
-          },
-          {
-          },
-          {
-          },
-          {
-          },
-          {
-          },
-          {
-          },
-          {
-          },
-          {
-          },
-          {
-          },
-          {
-          },
-          {
-          }
-         ],
-         "enchantment": [
-          {
-           "fullText": "Empty Purple Augment Slot"
-          }
-         ]
-        },
-        {
-         "oneOfEnchantment": [
-          {
-          },
-          {
-          },
-          {
-          },
-          {
-          },
-          {
-          },
-          {
-          },
-          {
-          },
-          {
-          },
-          {
-          },
-          {
-          },
-          {
-          },
-          {
-          },
-          {
-          },
-          {
-          },
-          {
-          },
-          {
-          }
-         ],
-         "enchantment": [
-          {
-           "fullText": "Empty Red Augment Slot"
-          }
-         ]
-        }
-       ],
-       "locationInformation": [
-        {
-         "location": "Cult of the Six",
-         "location_url": "https://ddowiki.com/page/Cult_of_the_Six",
-         "locationExtra": ", End reward"
-        }
-       ]
-      }
-     ]
-    }
-   ]
-  },
-  {
-   "weapon": [
-    {
-     "name": "Green Steel Kukri",
-     "damangeAndType": "1.50[1d4] + 5 Slash, Evil, Magic",
-     "minLevel": "12",
-     "binding": "Bound to Character on Equip",
-     "quest": "Altar of Fecundity, Manufactured Ingredient Recipes",
-     "criticalProfile": "",
-     "enchantments": "+5 Enhancement Bonus",
-     "enchantments_url": "https://ddowiki.com/page/Enhancement_bonus",
-     "errata": "",
-     "weaponDetail": [
-      {
-       "proficiency": "Martial Weapon Proficiency",
-       "name": "Green Steel Kukri",
-       "damangeAndType": "1.50[1d4] + 5 Slash, Evil, Magic",
-       "criticalThreatRange": "18-20 / x2",
-       "weaponType": [
-        {
-         "weaponCategory": "Kukri",
-         "damageCategory": "/ Slashing weapons"
-        }
-       ],
-       "absRaceRequired": "None",
-       "minLevel": "12",
-       "requiredTrait": "None",
-       "umd": "No UMD needed",
-       "handedness": "",
-       "attackMod": "STR",
-       "damageMod": "STR",
-       "binding": "Bound to Character on Equip",
-       "binding_url": "https://ddowiki.com/page/Bind",
-       "durability": "90",
-       "material": "Steel",
-       "material_url": "https://ddowiki.com/page/Steel",
-       "hardness": "15",
-       "baseValue": "5,400pp 8gp",
-       "weight": "2",
-       "upgradable": "Green Steel",
-       "tips": [
-        {
-         "tip": "+5 Green Steel Kukri"
-        },
-        {
-         "tip": "Ore of Travail\nLocust Husk\nChipmunk Funk\nGlistening Pebbles\nGreen Briar Twigs\nEberron Energy Cell"
-        },
-        {
-         "tip": "Yellow Taper\nLocust Husk\nGlistening Pebbles\nBitterscrub Fungus\nGreen Briar Twigs\nEberron Energy Cell"
-        },
-        {
-         "tip": "Wondrous Oil\nLocust Husk\nLammanian Lily Petals\nChipmunk Funk\nBitterscrub Fungus OR Green Briar Twigs\nEberron Energy Cell"
-        },
-        {
-         "tip": "Shavarath Signet Stone\nShavarath Stone of Might\nShavarath Stone of Battle\nShavarath Stone of Strategy\nShavarath Stone of Foresight\nShavarath Stone of Victory"
-        },
-        {
-         "tip": "Medium Splintered Horn"
-        }
-       ],
-       "description": "A heavy, curved knife with a shard edge on the inside of the curve.",
-       "enchantments": [
-        {
-         "enchantment": [
-          {
-           "name": "+5 Enhancement Bonus",
-           "name_url": "https://ddowiki.com/page/Enhancement_bonus",
-           "fullText": "+5 Enhancement Bonus"
-          }
-         ]
-        },
-        {
-         "enchantment": [
-          {
-           "name": "Green Steel",
-           "name_url": "https://ddowiki.com/page/Green_Steel",
-           "fullText": "Green Steel"
-          }
-         ]
-        },
-        {
-         "enchantment": [
-          {
-           "name": "Mythic Weapon Boost",
-           "name_url": "https://ddowiki.com/page/Mythic_Boost",
-           "fullText": "Mythic Weapon Boost +2 or +4"
-          }
-         ]
-        },
-        {
-         "oneOfEnchantment": [
-          {
-          },
-          {
-          },
-          {
-          },
-          {
-          },
-          {
-          }
-         ],
-         "enchantment": [
-          {
-           "name": "Ore of Travail",
-           "name_url": "https://ddowiki.com/page/Ore_of_Travail",
-           "fullText": "Locust Husk\nChipmunk Funk\nGlistening Pebbles\nGreen Briar Twigs\nEberron Energy Cell"
-          }
-         ]
-        },
-        {
-         "oneOfEnchantment": [
-          {
-          },
-          {
-          },
-          {
-          },
-          {
-          },
-          {
-          }
-         ],
-         "enchantment": [
-          {
-           "name": "Yellow Taper",
-           "name_url": "https://ddowiki.com/page/Yellow_Taper",
-           "fullText": "Locust Husk\nGlistening Pebbles\nBitterscrub Fungus\nGreen Briar Twigs\nEberron Energy Cell"
-          }
-         ]
-        },
-        {
-         "oneOfEnchantment": [
-          {
-          },
-          {
-          },
-          {
-          },
-          {
-          },
-          {
-          }
-         ],
-         "enchantment": [
-          {
-           "name": "Wondrous Oil",
-           "name_url": "https://ddowiki.com/page/Wondrous_Oil",
-           "fullText": "Locust Husk\nLammanian Lily Petals\nChipmunk Funk\nBitterscrub Fungus OR Green Briar Twigs\nEberron Energy Cell"
-          }
-         ]
-        },
-        {
-         "oneOfEnchantment": [
-          {
-          },
-          {
-          },
-          {
-          },
-          {
-          },
-          {
-          }
-         ],
-         "enchantment": [
-          {
-          }
-         ]
-        },
-        {
-         "enchantment": [
-          {
-           "name": "Medium Splintered Horn",
-           "name_url": "https://ddowiki.com/page/Medium_Splintered_Horn",
-           "fullText": "Medium Splintered Horn"
-          }
-         ]
-        }
-       ],
-       "locationInformation": [
-        {
-         "location": "Manufactured Ingredient Recipes",
-         "location_url": "https://ddowiki.com/page/Altar_of_Fecundity_-_Manufactured_Ingredient_Recipes",
-         "locationExtra": ","
-        }
-       ]
-      }
-     ]
-    }
-   ]
-  },
-  {
-   "weapon": [
-    {
-     "name": "Green Blade",
-     "damangeAndType": "[1d4] + 5 Slash, Magic",
-     "minLevel": "12",
-     "binding": "Bound to Character on Acquire",
-     "quest": "Zawabi's Revenge, Warded Chest",
-     "criticalProfile": "",
-     "enchantments": "+5 Enhancement Bonus",
-     "enchantments_url": "https://ddowiki.com/page/Enhancement_bonus",
-     "errata": "",
-     "weaponDetail": [
-      {
-       "proficiency": "Martial Weapon Proficiency",
-       "name": "Green Blade",
-       "damangeAndType": "[1d4] + 5 Slash, Magic",
-       "criticalThreatRange": "18-20 / x2",
-       "weaponType": [
-        {
-         "weaponCategory": "Kukri",
-         "damageCategory": "/ Slashing weapons"
-        }
-       ],
-       "absRaceRequired": "None",
-       "minLevel": "12",
-       "requiredTrait": "None",
-       "umd": "No UMD needed",
-       "handedness": "",
-       "attackMod": "STR",
-       "damageMod": "STR",
-       "binding": "Bound to Character on Acquire",
-       "binding_url": "https://ddowiki.com/page/Bind",
-       "durability": "110",
-       "material": "Steel",
-       "material_url": "https://ddowiki.com/page/Steel",
-       "hardness": "17",
-       "baseValue": "9,800pp 8gp",
-       "weight": "2 lbs",
-       "upgradable": "Epic Crafting to Epic Green Blade",
-       "description": "A simple knife with a curved green tinged blade and a handle of polished densewood. Holding the dagger, you feel a rush of arcane power. This is no mere dagger.",
-       "enchantments": [
-        {
-         "enchantment": [
-          {
-           "name": "+5 Enhancement Bonus",
-           "name_url": "https://ddowiki.com/page/Enhancement_bonus",
-           "fullText": "+5 Enhancement Bonus"
-          }
-         ]
-        },
-        {
-         "enchantment": [
-          {
-           "name": "Spell Lore VI",
-           "name_url": "https://ddowiki.com/page/Spell_Lore",
-           "fullText": "Spell Lore VI"
-          }
-         ]
-        },
-        {
-         "enchantment": [
-          {
-           "name": "Force Burst",
-           "name_url": "https://ddowiki.com/page/Force_(enchantment)",
-           "fullText": "Force Burst"
-          }
-         ]
-        },
-        {
-         "enchantment": [
-          {
-           "name": "Mythic Weapon Boost",
-           "name_url": "https://ddowiki.com/page/Mythic_Boost",
-           "fullText": "Mythic Weapon Boost +2 or +4"
-          }
-         ]
-        }
-       ],
-       "locationInformation": [
-        {
-         "location": "Zawabi's Revenge",
-         "location_url": "https://ddowiki.com/page/Zawabi%27s_Revenge",
-         "locationExtra": ", Warded Chest"
-        }
-       ]
-      }
-     ]
-    }
-   ]
-  },
-  {
-   "weapon": [
-    {
-     "name": "Alchemical Kukri",
-     "damangeAndType": "2 [1d4] + 5 Slash, Magic",
-     "minLevel": "12",
-     "binding": "Unbound",
-     "quest": "The Master Artificer, Either End chest",
-     "criticalProfile": "",
-     "enchantments": "+5 Enhancement Bonus",
-     "enchantments_url": "https://ddowiki.com/page/Enhancement_bonus",
-     "errata": "",
-     "weaponDetail": [
-      {
-       "proficiency": "Martial Weapon Proficiency",
-       "name": "Alchemical Kukri",
-       "damangeAndType": "2 [1d4] + 5 Slash, Magic",
-       "criticalThreatRange": "18-20 / x2",
-       "weaponType": [
-        {
-         "weaponCategory": "Kukri",
-         "damageCategory": "/ Slashing weapons"
-        }
-       ],
-       "absRaceRequired": "None",
-       "minLevel": "12",
-       "requiredTrait": "None",
-       "umd": "No UMD needed",
-       "handedness": "",
-       "attackMod": "STR",
-       "damageMod": "STR",
-       "binding": "Unbound",
-       "binding_url": "https://ddowiki.com/page/Bind",
-       "durability": "110",
-       "material": "Steel",
-       "material_url": "https://ddowiki.com/page/Steel",
-       "hardness": "17",
-       "baseValue": "10,200pp 8gp",
-       "weight": "2 lbs",
-       "upgradable": "Alchemical Crafting",
-       "description": "A heavy, curved knife with a sharp edge on the inside of the curve.",
-       "enchantments": [
-        {
-         "enchantment": [
-          {
-           "name": "+5 Enhancement Bonus",
-           "name_url": "https://ddowiki.com/page/Enhancement_bonus",
-           "fullText": "+5 Enhancement Bonus"
-          }
-         ]
-        },
-        {
-         "enchantment": [
-          {
-           "name": "Alchemical (Prototype)",
-           "name_url": "https://ddowiki.com/page/Alchemical_Crafting",
-           "fullText": "Alchemical (Prototype)"
-          }
-         ]
-        },
-        {
-         "enchantment": [
-          {
-           "name": "Mythic Weapon Boost",
-           "name_url": "https://ddowiki.com/page/Mythic_Boost",
-           "fullText": "Mythic Weapon Boost +2 or +4"
-          }
-         ]
-        }
-       ],
-       "locationInformation": [
-        {
-         "location": "The Master Artificer",
-         "location_url": "https://ddowiki.com/page/The_Master_Artificer",
-         "locationExtra": ", Either End chest"
-        }
-       ]
-      }
-     ]
-    }
-   ]
-  },
-  {
-   "weapon": [
-    {
-     "name": "Epic Green Blade",
-     "damangeAndType": "2[1d4] + 6 Slash, Magic",
-     "minLevel": "20",
-     "binding": "Bound to Character on Acquire",
-     "criticalProfile": "",
-     "enchantments": "Spellcasting Implement +21",
-     "enchantments_url": "https://ddowiki.com/page/Spellcasting_Implement",
-     "errata": "",
-     "weaponDetail": [
-      {
-       "proficiency": "Martial Weapon Proficiency",
-       "name": "Epic Green Blade",
-       "damangeAndType": "2[1d4] + 6 Slash, Magic",
-       "criticalThreatRange": "18-20 / x2",
-       "weaponType": [
-        {
-         "weaponCategory": "Kukri",
-         "damageCategory": "/ Slashing weapons"
-        }
-       ],
-       "absRaceRequired": "None",
-       "minLevel": "20",
-       "requiredTrait": "None",
-       "umd": "No UMD needed",
-       "handedness": "",
-       "attackMod": "STR",
-       "damageMod": "STR",
-       "binding": "Bound to Character on Acquire",
-       "binding_url": "https://ddowiki.com/page/Bind",
-       "durability": "140",
-       "material": "Steel",
-       "material_url": "https://ddowiki.com/page/Steel",
-       "hardness": "20",
-       "baseValue": "20,000pp 8gp",
-       "weight": "2 lbs",
-       "upgradable": "Fully upgraded",
-       "description": "A simple knife with a curved green tinged blade and a handle of polished densewood. Holding the dagger, you feel a rush of arcane power. This is no mere dagger.",
-       "enchantments": [
-        {
-         "enchantment": [
-          {
-           "name": "Spellcasting Implement +21",
-           "name_url": "https://ddowiki.com/page/Spellcasting_Implement",
-           "fullText": "Spellcasting Implement +21"
-          }
-         ]
-        },
-        {
-         "enchantment": [
-          {
-           "name": "+7 Enhancement Bonus",
-           "name_url": "https://ddowiki.com/page/Enhancement_bonus",
-           "fullText": "+7 Enhancement Bonus"
-          }
-         ]
-        },
-        {
-         "enchantment": [
-          {
-           "name": "Force Burst",
-           "name_url": "https://ddowiki.com/page/Force_(enchantment)",
-           "fullText": "Force Burst"
-          }
-         ]
-        },
-        {
-         "enchantment": [
-          {
-           "name": "Spell Lore VI",
-           "name_url": "https://ddowiki.com/page/Spell_Lore",
-           "fullText": "Spell Lore VI"
-          }
-         ]
-        },
-        {
-         "enchantment": [
-          {
-           "name": "Potency +52",
-           "name_url": "https://ddowiki.com/page/Potency",
-           "fullText": "Potency +52"
-          }
-         ]
-        },
-        {
-         "enchantment": [
-          {
-           "name": "Spell Penetration III",
-           "name_url": "https://ddowiki.com/page/Spell_penetration",
-           "fullText": "Spell Penetration III"
-          }
-         ]
-        }
-       ],
-       "locationInformation": [
-        {
-         "location": "Green Blade",
-         "location_url": "https://ddowiki.com/page/Green_Blade",
-         "locationExtra": "of"
-        }
-       ]
-      }
-     ]
-    }
-   ]
-  },
-  {
-   "weapon": [
-    {
-     "name": "Epic Midnight Greetings",
-     "damangeAndType": "2 [1d6] +6 to +10 Slash, Magic",
-     "minLevel": "20",
-     "binding": "Bound to Character on Acquire",
-     "quest": "Epic Crafting, upgrade of Midnight Greetings",
-     "criticalProfile": "Damage Modifier: STR, DEX\nAttack Modifier: STR, DEX",
-     "enchantments": "+6 Enhancement Bonus",
-     "enchantments_url": "https://ddowiki.com/page/Enhancement_bonus",
-     "errata": "Damage Modifier: STR, DEX\nAttack Modifier: STR, DEX",
-     "weaponDetail": [
-      {
-       "proficiency": "Martial Weapon Proficiency",
-       "name": "Epic Midnight Greetings",
-       "damangeAndType": "2 [1d6] +6 to +10 Slash, Magic",
-       "criticalThreatRange": "18-20 / x2",
-       "weaponType": [
-        {
-         "weaponCategory": "Kukri",
-         "damageCategory": "/ Slashing weapons"
-        }
-       ],
-       "absRaceRequired": "None",
-       "minLevel": "20",
-       "requiredTrait": "None",
-       "umd": "No UMD needed",
-       "handedness": "",
-       "attackMod": "STR, DEX",
-       "damageMod": "STR, DEX",
-       "binding": "Bound to Character on Acquire",
-       "binding_url": "https://ddowiki.com/page/Bind",
-       "durability": "130",
-       "material": "Steel",
-       "material_url": "https://ddowiki.com/page/Steel",
-       "hardness": "19",
-       "baseValue": "16,200pp 8gp",
-       "weight": "2 lbs",
-       "upgradable": "Fully upgraded",
-       "tips": [
-        {
-         "tip": "Enhancement bonus is equal to Int modifier (min 6, max 10). It will use the higher of Strength or Dexterity for to-hit and damage."
-        }
-       ],
-       "description": "A fine blade used by assassins, Midnight Greetings deals significant damage when wielded by a combatant with a sharp mind. Monks may use this weapon without becoming un-centered.",
-       "enchantments": [
-        {
-         "enchantment": [
-          {
-           "name": "+6 Enhancement Bonus",
-           "name_url": "https://ddowiki.com/page/Enhancement_bonus",
-           "fullText": "+6 Enhancement Bonus"
-          }
-         ]
-        },
-        {
-         "enchantment": [
-          {
-           "name": "Improved Deception",
-           "name_url": "https://ddowiki.com/page/Deception#Improved_Deception",
-           "fullText": "Improved Deception"
-          }
-         ]
-        },
-        {
-         "enchantment": [
-          {
-           "name": "Finesse",
-           "name_url": "https://ddowiki.com/page/Finesse",
-           "fullText": "Finesse"
-          }
-         ]
-        },
-        {
-         "enchantment": [
-          {
-           "name": "Disintegration",
-           "name_url": "https://ddowiki.com/page/Disintegration",
-           "fullText": "Disintegration"
-          }
-         ]
-        },
-        {
-         "enchantment": [
-          {
-           "name": "Assassination +2",
-           "name_url": "https://ddowiki.com/page/Assassination",
-           "fullText": "Assassination +2"
-          }
-         ]
-        },
-        {
-         "enchantment": [
-          {
-           "name": "Improved Paralyzing",
-           "name_url": "https://ddowiki.com/page/Improved_Paralyzing",
-           "fullText": "Improved Paralyzing"
-          }
-         ]
-        },
-        {
-         "enchantment": [
-          {
-           "name": "Clever Strike",
-           "name_url": "https://ddowiki.com/page/Clever_Strike",
-           "fullText": "Clever Strike"
-          }
-         ]
-        },
-        {
-         "oneOfEnchantment": [
-          {
-          },
-          {
-          },
-          {
-          },
-          {
-          },
-          {
-          },
-          {
-          },
-          {
-          },
-          {
-          },
-          {
-          },
-          {
-          },
-          {
-          },
-          {
-          },
-          {
-          },
-          {
-          },
-          {
-          },
-          {
-          }
-         ],
-         "enchantment": [
-          {
-           "fullText": "Empty Red Augment Slot"
-          }
-         ]
-        },
-        {
-         "enchantment": [
-          {
-           "name": "Mythic Weapon Boost",
-           "name_url": "https://ddowiki.com/page/Mythic_Boost",
-           "fullText": "Mythic Weapon Boost +2 or +4"
-          }
-         ]
-        },
-        {
-         "enchantment": [
-          {
-          }
-         ]
-        }
-       ],
-       "locationInformation": [
-        {
-         "location": "Midnight Greetings",
-         "location_url": "https://ddowiki.com/page/Midnight_Greetings",
-         "locationExtra": "of"
-        }
-       ]
-      }
-     ]
-    }
-   ]
-  },
-  {
-   "weapon": [
-    {
-     "name": "Thunder-Forged Alloy Kukri",
-     "damangeAndType": "3.50 [1d4] + 9 Slash, Silver, Adamantine, Mithral, Cold Iron, Magic, Byeshk",
-     "minLevel": "22",
-     "binding": "Unbound",
-     "quest": "Magma Forge, Crafted from various ingredients",
-     "criticalProfile": "",
-     "enchantments": "+9 Enhancement Bonus",
-     "enchantments_url": "https://ddowiki.com/page/Enhancement_bonus",
-     "errata": "",
-     "weaponDetail": [
-      {
-       "proficiency": "Martial Weapon Proficiency",
-       "name": "Thunder-Forged Alloy Kukri",
-       "damangeAndType": "3.50 [1d4] + 9 Slash, Silver, Adamantine, Mithral, Cold Iron, Magic, Byeshk",
-       "criticalThreatRange": "18-20 / x2",
-       "weaponType": [
-        {
-         "weaponCategory": "Kukri",
-         "damageCategory": "/ Slashing weapons"
-        }
-       ],
-       "absRaceRequired": "None",
-       "minLevel": "22",
-       "requiredTrait": "None",
-       "umd": "No UMD needed",
-       "handedness": "",
-       "attackMod": "STR",
-       "damageMod": "STR",
-       "binding": "Unbound",
-       "binding_url": "https://ddowiki.com/page/Bind",
-       "durability": "170",
-       "material": "Adamantine",
-       "material_url": "https://ddowiki.com/page/Adamantine",
-       "hardness": "39",
-       "baseValue": "8,800pp 8gp",
-       "weight": "2 lbs",
-       "upgradable": "Thunder-Forged",
-       "tips": [
-        {
-         "tip": "20 Thunder-Forged Dwarven Ingots"
-        },
-        {
-         "tip": "15 Commendations of Valor"
-        }
-       ],
-       "description": "A kukri forged from metals long in proximity to dragons under Thunderholme.",
-       "enchantments": [
-        {
-         "enchantment": [
-          {
-           "name": "+9 Enhancement Bonus",
-           "name_url": "https://ddowiki.com/page/Enhancement_bonus",
-           "fullText": "+9 Enhancement Bonus"
-          }
-         ]
-        },
-        {
-         "oneOfEnchantment": [
-          {
-          },
-          {
-          },
-          {
-          },
-          {
-          },
-          {
-          },
-          {
-          },
-          {
-          },
-          {
-          },
-          {
-          },
-          {
-          },
-          {
-          },
-          {
-          },
-          {
-          },
-          {
-          },
-          {
-          },
-          {
-          },
-          {
-          },
-          {
-          },
-          {
-          },
-          {
-          },
-          {
-          },
-          {
-          },
-          {
-          },
-          {
-          },
-          {
-          }
-         ],
-         "enchantment": [
-          {
-           "fullText": "Empty Orange Augment Slot"
-          }
-         ]
-        },
-        {
-         "enchantment": [
-          {
-           "name": "Thunder-Forged (Tier 0)",
-           "name_url": "https://ddowiki.com/page/Thunder-Forged",
-           "fullText": "Thunder-Forged (Tier 0)"
-          }
-         ]
-        },
-        {
-         "enchantment": [
-          {
-           "name": "Mythic Weapon Boost",
-           "name_url": "https://ddowiki.com/page/Mythic_Boost",
-           "fullText": "Mythic Weapon Boost +2 or +4"
-          }
-         ]
-        },
-        {
-         "enchantment": [
-          {
-           "fullText": "20 Thunder-Forged Dwarven Ingots",
-           "fullText_url": "https://ddowiki.com/page/Item:Thunder-Forged_Dwarven_Ingot"
-          }
-         ]
-        },
-        {
-         "enchantment": [
-          {
-           "fullText": "15 Commendations of Valor",
-           "fullText_url": "https://ddowiki.com/page/Item:Commendation_of_Valor"
-          }
-         ]
-        }
-       ],
-       "locationInformation": [
-        {
-         "location": "Magma Forge",
-         "location_url": "https://ddowiki.com/page/Magma_Forge",
-         "locationExtra": ", Crafted from various ingredients"
-        }
-       ]
-      }
-     ]
-    }
-   ]
-  },
-  {
-   "weapon": [
-    {
-     "name": "+7 Magnetism Epic Electrified Kukri*",
-     "damangeAndType": "5[1d4] + 7 Slash, Magic",
-     "minLevel": "26",
-     "binding": "Unbound",
-     "quest": "Temple of Elemental Evil Part One, and Temple of Elemental Evil Part Two any chest",
-     "criticalProfile": "",
-     "enchantments": "Spellcasting Implement +21",
-     "enchantments_url": "https://ddowiki.com/page/Spellcasting_Implement",
-     "itemId": "+7 Magnetism Epic Electrified Kukri",
-     "url": "https://ddowiki.com/page/Item:%2B7_Magnetism_Epic_Electrified_Kukri",
-     "errata": ""
-    }
-   ]
-  },
-  {
-   "weapon": [
-    {
-     "name": "+7 Epic Smoldering Kukri*",
-     "damangeAndType": "5[1d4] + 7 Slash, Magic",
-     "minLevel": "26",
-     "binding": "Unbound",
-     "quest": "Temple of Elemental Evil Part One, and Temple of Elemental Evil Part Two any chest",
-     "criticalProfile": "",
-     "enchantments": "+7 Enhancement Bonus",
-     "enchantments_url": "https://ddowiki.com/page/Enhancement_bonus",
-     "itemId": "+7 Epic Smoldering Kukri",
-     "url": "https://ddowiki.com/page/Item:%2B7_Epic_Smoldering_Kukri",
-     "errata": ""
-    }
-   ]
-  },
-  {
-   "weapon": [
-    {
-     "name": "+7 Epic Quenched Kukri*",
-     "damangeAndType": "5[1d4] + 7 Slash, Magic",
-     "minLevel": "26",
-     "binding": "Unbound",
-     "quest": "Temple of Elemental Evil Part One, and Temple of Elemental Evil Part Two any chest",
-     "criticalProfile": "",
-     "enchantments": "+7 Enhancement Bonus",
-     "enchantments_url": "https://ddowiki.com/page/Enhancement_bonus",
-     "itemId": "+7 Epic Quenched Kukri",
-     "url": "https://ddowiki.com/page/Item:%2B7_Epic_Quenched_Kukri",
-     "errata": ""
-    }
-   ]
-  },
-  {
-   "weapon": [
-    {
-     "name": "+7 Epic Etched Kukri*",
-     "damangeAndType": "5[1d4] + 7 Slash, Magic",
-     "minLevel": "26",
-     "binding": "Unbound",
-     "quest": "Temple of Elemental Evil Part One, and Temple of Elemental Evil Part Two any chest",
-     "criticalProfile": "",
-     "enchantments": "+7 Enhancement Bonus",
-     "enchantments_url": "https://ddowiki.com/page/Enhancement_bonus",
-     "itemId": "+7 Epic Etched Kukri",
-     "url": "https://ddowiki.com/page/Item:%2B7_Epic_Etched_Kukri",
-     "errata": ""
-    }
-   ]
-  },
-  {
-   "weapon": [
-    {
-     "name": "+7 Epic Energized Kukri*",
-     "damangeAndType": "5[1d4] + 7 Slash, Magic",
-     "minLevel": "26",
-     "binding": "Unbound",
-     "quest": "Temple of Elemental Evil Part One, and Temple of Elemental Evil Part Two any chest",
-     "criticalProfile": "",
-     "enchantments": "+7 Enhancement Bonus",
-     "enchantments_url": "https://ddowiki.com/page/Enhancement_bonus",
-     "itemId": "+7 Epic Energized Kukri",
-     "url": "https://ddowiki.com/page/Item:%2B7_Epic_Energized_Kukri",
-     "errata": ""
-    }
-   ]
-  },
-  {
-   "weapon": [
-    {
-     "name": "Legendary Green Steel Kukri",
-     "damangeAndType": "5[1d4] + 14 Slash, Evil, Magic",
-     "minLevel": "26",
-     "binding": "Bound to Character on Acquire",
-     "quest": "Altar of Fecundity, Manufactured Ingredient Recipes",
-     "criticalProfile": "",
-     "enchantments": "+14 Enhancement Bonus",
-     "enchantments_url": "https://ddowiki.com/page/Enhancement_bonus",
-     "errata": "",
-     "weaponDetail": [
-      {
-       "proficiency": "Martial Weapon Proficiency",
-       "name": "Legendary Green Steel Kukri",
-       "damangeAndType": "5[1d4] + 14 Slash, Evil, Magic",
-       "criticalThreatRange": "18-20 / x2",
-       "weaponType": [
-        {
-         "weaponCategory": "Kukri",
-         "damageCategory": "/ Slashing weapons"
-        }
-       ],
-       "absRaceRequired": "None",
-       "minLevel": "26",
-       "requiredTrait": "None",
-       "umd": "No UMD needed",
-       "handedness": "",
-       "attackMod": "STR",
-       "damageMod": "STR",
-       "binding": "Bound to Character on Acquire",
-       "binding_url": "https://ddowiki.com/page/Bind",
-       "durability": "250",
-       "material": "Steel",
-       "material_url": "https://ddowiki.com/page/Steel",
-       "hardness": "31",
-       "baseValue": "30,051pp 3gp 3sp 6cp",
-       "weight": "2 lbs",
-       "upgradable": "Not upgradeable",
-       "tips": [
-        {
-         "tip": "+14 Legendary Green Steel Kukri"
-        },
-        {
-         "tip": "100 Codex Runes"
-        },
-        {
-         "tip": "100 Commendations of Valor"
-        },
-        {
-         "tip": "Altar of Fecundity"
-        }
-       ],
-       "description": "A heavy, curved knife with a sharp edge on the inside of the curve.",
-       "enchantments": [
-        {
-         "enchantment": [
-          {
-           "name": "+14 Enhancement Bonus",
-           "name_url": "https://ddowiki.com/page/Enhancement_bonus",
-           "fullText": "+14 Enhancement Bonus"
-          }
-         ]
-        },
-        {
-         "enchantment": [
-          {
-           "name": "Legendary Green Steel",
-           "name_url": "https://ddowiki.com/page/Legendary_Green_Steel",
-           "fullText": "Legendary Green Steel"
-          }
-         ]
-        },
-        {
-         "enchantment": [
-          {
-           "name": "Mythic Weapon Boost",
-           "name_url": "https://ddowiki.com/page/Mythic_Boost",
-           "fullText": "Mythic Weapon Boost +2 or +4"
-          }
-         ]
-        },
-        {
-         "enchantment": [
-          {
-           "fullText": "Codex Runes",
-           "fullText_url": "https://ddowiki.com/page/Item:Codex_Rune"
-          }
-         ]
-        },
-        {
-         "enchantment": [
-          {
-           "fullText": "100 Commendations of Valor",
-           "fullText_url": "https://ddowiki.com/page/Item:Commendation_of_Valor"
-          }
-         ]
-        }
-       ],
-       "locationInformation": [
-        {
-         "location": "Manufactured Ingredient Recipes",
-         "location_url": "https://ddowiki.com/page/Altar_of_Fecundity_-_Manufactured_Ingredient_Recipes",
-         "locationExtra": ","
-        }
-       ]
-      }
-     ]
-    }
-   ]
-  },
-  {
-   "weapon": [
-    {
-     "name": "+7 Corrosion Epic Caustic Kukri*",
-     "damangeAndType": "5[1d4] + 7 Slash, Magic",
-     "minLevel": "26",
-     "binding": "Unbound",
-     "quest": "Temple of Elemental Evil Part One, and Temple of Elemental Evil Part Two any chest",
-     "criticalProfile": "",
-     "enchantments": "Spellcasting Implement +21",
-     "enchantments_url": "https://ddowiki.com/page/Spellcasting_Implement",
-     "itemId": "+7 Corrosion Epic Caustic Kukri",
-     "url": "https://ddowiki.com/page/Item:%2B7_Corrosion_Epic_Caustic_Kukri",
-     "errata": ""
-    }
-   ]
-  },
-  {
-   "weapon": [
-    {
-     "name": "+7 Combustion Epic Scorched Kukri*",
-     "damangeAndType": "5[1d4] + 7 Slash, Magic",
-     "minLevel": "26",
-     "binding": "Unbound",
-     "quest": "Temple of Elemental Evil Part One, and Temple of Elemental Evil Part Two any chest",
-     "criticalProfile": "",
-     "enchantments": "Spellcasting Implement +21",
-     "enchantments_url": "https://ddowiki.com/page/Spellcasting_Implement",
-     "itemId": "+7 Combustion Epic Scorched Kukri",
-     "url": "https://ddowiki.com/page/Item:%2B7_Combustion_Epic_Scorched_Kukri",
-     "errata": ""
-    }
-   ]
-  },
-  {
-   "weapon": [
-    {
-     "name": "Morninglord's Kukri*",
-     "damangeAndType": "5[1d6+2]+15 Slashing, Good, Silver, Magic",
-     "minLevel": "29",
-     "binding": "Bound to Character on Acquire",
-     "quest": "Blue Water Inn",
-     "criticalProfile": "",
-     "enchantments": "+15 Enhancement Bonus",
-     "enchantments_url": "https://ddowiki.com/page/Enhancement_bonus",
-     "itemId": "Morninglord's Kukri",
-     "url": "https://ddowiki.com/page/Item:Morninglord%27s_Kukri",
-     "errata": ""
-    }
-   ]
-  },
-  {
-   "weapon": [
-    {
-     "name": "The Labrythine Edge",
-     "damangeAndType": "7[1d4+3] +15 Slash, Evil, Magic",
-     "minLevel": "29",
-     "binding": "Bound to Character on Equip",
-     "quest": "Project Nemesis, End chest",
-     "criticalProfile": "Critical Profile: 15-20 / x2",
-     "enchantments": "+15 Enhancement Bonus",
-     "enchantments_url": "https://ddowiki.com/page/Enhancement_bonus",
-     "errata": "Critical Profile: 15-20 / x2",
-     "weaponDetail": [
-      {
-       "proficiency": "Martial Weapon Proficiency",
-       "name": "The Labrythine Edge",
-       "damangeAndType": "7[1d4+3] +15 Slash, Evil, Magic",
-       "criticalThreatRange": "15-20 / x2",
-       "weaponType": [
-        {
-         "weaponCategory": "Kukri",
-         "damageCategory": "/ Slashing weapons"
-        }
-       ],
-       "absRaceRequired": "None",
-       "minLevel": "29",
-       "requiredTrait": "None",
-       "umd": "No UMD needed",
-       "handedness": "",
-       "attackMod": "STR",
-       "damageMod": "STR",
-       "binding": "Bound to Character on Equip",
-       "binding_url": "https://ddowiki.com/page/Bind",
-       "durability": "330",
-       "material": "Adamantine",
-       "material_url": "https://ddowiki.com/page/Adamantine",
-       "hardness": "39",
-       "baseValue": "11,600pp",
-       "weight": "2 lbs",
-       "upgradable": "Not upgradeable",
-       "tips": [
-        {
-         "tip": "DDO Forums"
-        }
-       ],
-       "description": "The poisoned kukri was taken from the hands of a ferocious Gnoll named Gish, and it built to cause incredible damage to your enemies. A strange pattern is inlaid upon the blade. It reacts strangely to blood.",
-       "enchantments": [
-        {
-         "enchantment": [
-          {
-           "name": "+15 Enhancement Bonus",
-           "name_url": "https://ddowiki.com/page/Enhancement_bonus",
-           "fullText": "+15 Enhancement Bonus"
-          }
-         ]
-        },
-        {
-         "oneOfEnchantment": [
-          {
-          },
-          {
-          },
-          {
-          },
-          {
-          },
-          {
-          },
-          {
-          },
-          {
-          },
-          {
-          },
-          {
-          },
-          {
-          },
-          {
-          },
-          {
-          },
-          {
-          },
-          {
-          },
-          {
-          },
-          {
-          },
-          {
-          },
-          {
-          },
-          {
-          },
-          {
-          },
-          {
-          },
-          {
-          },
-          {
-          },
-          {
-          },
-          {
-          },
-          {
-          },
-          {
-           "enchantment": [
-            {
-             "name": "Fetters of Unreality",
-             "url": "https://ddowiki.com/page/Fetters_of_Unreality"
-            }
-           ]
-          },
-          {
-           "enchantment": [
-            {
-             "name": "Completed Weapon",
-             "url": "https://ddowiki.com/edit/Completed_Weapon?redlink=1"
-            }
-           ]
-          }
-         ],
-         "enchantment": [
-          {
-           "name": "Nearly Finished",
-           "name_url": "https://ddowiki.com/page/Nearly_Finished",
-           "fullText": "Empty Purple Augment Slot\nFetters of Unreality\nCompleted Weapon"
-          }
-         ]
-        },
-        {
-         "enchantment": [
-          {
-           "name": "Keen V",
-           "name_url": "https://ddowiki.com/page/Keen",
-           "fullText": "Keen V"
-          }
-         ]
-        },
-        {
-         "enchantment": [
-          {
-           "name": "Identity Crisis",
-           "name_url": "https://ddowiki.com/page/Identity_Crisis",
-           "fullText": "Identity Crisis"
-          }
-         ]
-        },
-        {
-         "enchantment": [
-          {
-          }
-         ]
-        },
-        {
-         "oneOfEnchantment": [
-          {
-          },
-          {
-          },
-          {
-          },
-          {
-          },
-          {
-          },
-          {
-          },
-          {
-          },
-          {
-          },
-          {
-          },
-          {
-          },
-          {
-          },
-          {
-          },
-          {
-          },
-          {
-          },
-          {
-          },
-          {
-          }
-         ],
-         "enchantment": [
-          {
-           "fullText": "Empty Red Augment Slot"
-          }
-         ]
-        },
-        {
-         "enchantment": [
-          {
-           "name": "Mythic Weapon Boost",
-           "name_url": "https://ddowiki.com/page/Mythic_Boost",
-           "fullText": "Mythic Weapon Boost +2 or +4"
-          }
-         ]
-        }
-       ],
-       "locationInformation": [
-        {
-         "location": "Project Nemesis",
-         "location_url": "https://ddowiki.com/page/Project_Nemesis",
-         "locationExtra": ", End chest"
-        }
-       ]
-      }
-     ]
-    }
-   ]
-  }
- ]
+    ]
 }

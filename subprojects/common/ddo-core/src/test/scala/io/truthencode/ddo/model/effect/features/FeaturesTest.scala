@@ -86,7 +86,7 @@ class FeaturesTest extends AnyFunSpec with Matchers with LazyLogging {
       val f = GeneralFeat.Dodge
       val fe = f.features.map(_.asFullEffect)
       fe.foreach { ef =>
-          logger.info(ef.toString)
+        logger.info(ef.toString)
       }
     }
 
@@ -94,8 +94,9 @@ class FeaturesTest extends AnyFunSpec with Matchers with LazyLogging {
       val f = GeneralFeat.Cleave
       f.effects.foreach { ef =>
         val i = ef.intValue
-          ef.intValue shouldBe empty
-          logger.info(ef.toString)}
+        ef.intValue shouldBe empty
+        logger.info(ef.toString)
+      }
     }
   }
 

@@ -6,9 +6,8 @@ When executing a restful query, we need to figure out first, if we have that ite
 
 Locating an item or an effect:
 
-* Wiki - Item is on the wiki
-* Code - Item / Effect is programmatically generated
-* Database - Item / Effect is retrieved from a database
-    * Master Database
-    * Some Local Client Database
-
+-   Wiki - Item is on the wiki
+-   Code - Item / Effect is programmatically generated
+-   Database - Item / Effect is retrieved from a database
+    -   Master Database
+    -   Some Local Client Database

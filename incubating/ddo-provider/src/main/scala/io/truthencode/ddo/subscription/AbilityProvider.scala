@@ -27,6 +27,7 @@ import io.truthencode.ddo.model.protocol.{ChangeType, ChangeValueInt}
 import java.beans.{PropertyChangeEvent, PropertyChangeListener}
 import javax.annotation.{PostConstruct, PreDestroy}
 import scala.util.{Failure, Success}
+
 /**
  * Provides value for an Ability Score (i.e. Strength / Wisdom)
  *

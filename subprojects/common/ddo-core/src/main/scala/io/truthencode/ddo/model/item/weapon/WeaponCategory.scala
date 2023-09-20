@@ -69,6 +69,7 @@ object WeaponCategory extends Enum[WeaponCategory] {
 
   //  RuneArm,
   lazy val values: IndexedSeq[WeaponCategory] = findValues
+
   /**
    * These weapons get +3 to threat range with IC
    * @see
@@ -76,6 +77,7 @@ object WeaponCategory extends Enum[WeaponCategory] {
    */
   val icPlus3: Seq[WeaponCategory] =
     LazyList(Falchion, GreatCrossbow, Kukris, Rapier, Scimitar)
+
   /**
    * These weapons get +2 to threat range with IC
    * @see
@@ -93,6 +95,7 @@ object WeaponCategory extends Enum[WeaponCategory] {
     RepeatingLightCrossbow,
     Shortsword,
     ThrowingDagger)
+
   /**
    * These weapons get +1 to threat range with IC (Everything Not in the plus 2 / 3 lists.)
    * @see

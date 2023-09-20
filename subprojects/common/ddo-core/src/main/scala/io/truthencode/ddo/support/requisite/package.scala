@@ -37,11 +37,13 @@ import io.truthencode.ddo.support.tree.TreeLike
  */
 package object requisite {
   type Result = (Boolean, Option[List[Requisite]])
+
   /**
    * Default grouping key. Assumes a required value when none is specified, thus it is effectively
    * equivalent to [[requiredGroupKey]] at this time, but may change in the future.
    */
   final val defaultGroupKey = "Prerequisite"
+
   /**
    * This constant represents Required Groupings
    */

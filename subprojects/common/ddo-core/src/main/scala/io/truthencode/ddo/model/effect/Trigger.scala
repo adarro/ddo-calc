@@ -20,6 +20,7 @@ package io.truthencode.ddo.model.effect
 trait Trigger {
   val triggerEvent: TriggerEvent
 }
+
 /**
  * Effect is passive and pervasive
  *

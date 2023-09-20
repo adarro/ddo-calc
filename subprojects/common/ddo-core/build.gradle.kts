@@ -34,7 +34,7 @@ dependencies {
     val concordionVersion: String by project
 
     dependencies {
-        implementation(platform(project(":ddo-platform-scala")))
+        implementation(enforcedPlatform(project(":ddo-platform-scala")))
         implementation(project(":ddo-util"))
         implementation(project(":ddo-modeling"))
 
@@ -47,7 +47,7 @@ dependencies {
 //        annotationProcessor("net.thauvin.erik:semver:1.2.0")
 //        compileOnly("net.thauvin.erik:semver:1.2.0")
 
-        implementation("org.scala-lang:scala-library:$scalaLibraryVersion")
+        implementation(libs.scala2.library)
         implementation(group = "com.beachape", name = "enumeratum_$scalaMajorVersion")
         implementation(group = "com.typesafe", name = "config")
         implementation(group = "com.github.kxbmap", name = "configs_$scalaMajorVersion")

@@ -16,1204 +16,1089 @@
  * limitations under the License.
  */
 {
- "item": [
-  {
-   "weapon": [
-    {
-     "name": "Swift Demise",
-     "damangeAndType": "[1d10] + 3 Pierce, Magic",
-     "minLevel": "6",
-     "binding": "Bound to Character on Equip",
-     "quest": "Gwylan's Stand, Maneater's chest",
-     "criticalProfile": "Critical Profile: 19-20 / x3",
-     "enchantments": "+3 Enhancement Bonus",
-     "enchantments_url": "https://ddowiki.com/page/Enhancement_bonus",
-     "errata": "Critical Profile: 19-20 / x3",
-     "weaponDetail": [
-      {
-       "proficiency": "Simple Weapon Proficiency",
-       "name": "Swift Demise",
-       "damangeAndType": "[1d10] + 3 Pierce, Magic",
-       "criticalThreatRange": "19-20 / x3",
-       "weaponType": [
+    "item": [
         {
-         "weaponCategory": "Heavy Crossbow",
-         "damageCategory": "/ Ranged weapons"
+            "weapon": [
+                {
+                    "name": "Swift Demise",
+                    "damangeAndType": "[1d10] + 3 Pierce, Magic",
+                    "minLevel": "6",
+                    "binding": "Bound to Character on Equip",
+                    "quest": "Gwylan's Stand, Maneater's chest",
+                    "criticalProfile": "Critical Profile: 19-20 / x3",
+                    "enchantments": "+3 Enhancement Bonus",
+                    "enchantments_url": "https://ddowiki.com/page/Enhancement_bonus",
+                    "errata": "Critical Profile: 19-20 / x3",
+                    "weaponDetail": [
+                        {
+                            "proficiency": "Simple Weapon Proficiency",
+                            "name": "Swift Demise",
+                            "damangeAndType": "[1d10] + 3 Pierce, Magic",
+                            "criticalThreatRange": "19-20 / x3",
+                            "weaponType": [
+                                {
+                                    "weaponCategory": "Heavy Crossbow",
+                                    "damageCategory": "/ Ranged weapons"
+                                }
+                            ],
+                            "absRaceRequired": "None",
+                            "minLevel": "6",
+                            "requiredTrait": "None",
+                            "umd": "No UMD needed",
+                            "handedness": "",
+                            "attackMod": "DEX",
+                            "damageMod": "N/A",
+                            "binding": "Bound to Character on Equip",
+                            "binding_url": "https://ddowiki.com/page/Bind",
+                            "durability": "125",
+                            "material": "Wood",
+                            "material_url": "https://ddowiki.com/page/Wood",
+                            "hardness": "9",
+                            "baseValue": "2,405pp",
+                            "weight": "8 lbs",
+                            "upgradable": "Not upgradeable",
+                            "description": "A ranged weapon consisting of a small bow mounted crosswise on a heavy wooden stock. This weapon is large enough to require a winch for reloading, yet is surprisingly simple to use.",
+                            "enchantments": [
+                                {
+                                    "enchantment": [
+                                        {
+                                            "name": "+3 Enhancement Bonus",
+                                            "name_url": "https://ddowiki.com/page/Enhancement_bonus",
+                                            "fullText": "+3 Enhancement Bonus"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "enchantment": [
+                                        {
+                                            "name": "Crippling",
+                                            "name_url": "https://ddowiki.com/page/Crippling",
+                                            "fullText": "Crippling"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "oneOfEnchantment": [
+                                        {},
+                                        {},
+                                        {},
+                                        {},
+                                        {},
+                                        {},
+                                        {},
+                                        {},
+                                        {},
+                                        {},
+                                        {},
+                                        {},
+                                        {},
+                                        {},
+                                        {},
+                                        {}
+                                    ],
+                                    "enchantment": [
+                                        {
+                                            "fullText": "Empty Red Augment Slot"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "enchantment": [
+                                        {
+                                            "name": "Mythic Weapon Boost",
+                                            "name_url": "https://ddowiki.com/page/Mythic_Boost",
+                                            "fullText": "Mythic Weapon Boost +2 or +4"
+                                        }
+                                    ]
+                                }
+                            ],
+                            "locationInformation": [
+                                {
+                                    "location": "Maneater",
+                                    "location_url": "https://ddowiki.com/page/Maneater",
+                                    "locationExtra": ","
+                                }
+                            ]
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "weapon": [
+                {
+                    "name": "+3 Energized Heavy Crossbow*",
+                    "damangeAndType": "1.50[1d10] + 3 Pierce, Magic",
+                    "minLevel": "7",
+                    "binding": "Unbound",
+                    "quest": "Temple of Elemental Evil Part One, and Temple of Elemental Evil Part Two any chest",
+                    "criticalProfile": "",
+                    "enchantments": "+3 Enhancement Bonus",
+                    "enchantments_url": "https://ddowiki.com/page/Enhancement_bonus",
+                    "itemId": "+3 Energized Heavy Crossbow",
+                    "url": "https://ddowiki.com/page/Item:%2B3_Energized_Heavy_Crossbow",
+                    "errata": ""
+                }
+            ]
+        },
+        {
+            "weapon": [
+                {
+                    "name": "+3 Etched Heavy Crossbow*",
+                    "damangeAndType": "1.50[1d10] + 3 Pierce, Magic",
+                    "minLevel": "7",
+                    "binding": "Unbound",
+                    "quest": "Temple of Elemental Evil Part One, and Temple of Elemental Evil Part Two any chest",
+                    "criticalProfile": "",
+                    "enchantments": "+3 Enhancement Bonus",
+                    "enchantments_url": "https://ddowiki.com/page/Enhancement_bonus",
+                    "itemId": "+3 Etched Heavy Crossbow",
+                    "url": "https://ddowiki.com/page/Item:%2B3_Etched_Heavy_Crossbow",
+                    "errata": ""
+                }
+            ]
+        },
+        {
+            "weapon": [
+                {
+                    "name": "+3 Quenched Heavy Crossbow*",
+                    "damangeAndType": "1.50[1d10] + 3 Pierce, Magic",
+                    "minLevel": "7",
+                    "binding": "Unbound",
+                    "quest": "Temple of Elemental Evil Part One, and Temple of Elemental Evil Part Two any chest",
+                    "criticalProfile": "",
+                    "enchantments": "+3 Enhancement Bonus",
+                    "enchantments_url": "https://ddowiki.com/page/Enhancement_bonus",
+                    "itemId": "+3 Quenched Heavy Crossbow",
+                    "url": "https://ddowiki.com/page/Item:%2B3_Quenched_Heavy_Crossbow",
+                    "errata": ""
+                }
+            ]
+        },
+        {
+            "weapon": [
+                {
+                    "name": "+3 Smoldering Heavy Crossbow",
+                    "damangeAndType": "1.50[1d10] + 3 Pierce, Magic",
+                    "minLevel": "7",
+                    "binding": "Unbound",
+                    "quest": "Temple of Elemental Evil Part One, and Temple of Elemental Evil Part Two any chest",
+                    "criticalProfile": "",
+                    "enchantments": "+3 Enhancement Bonus",
+                    "enchantments_url": "https://ddowiki.com/page/Enhancement_bonus",
+                    "errata": "",
+                    "weaponDetail": [
+                        {
+                            "proficiency": "Simple Weapon Proficiency",
+                            "name": "+3 Smoldering Heavy Crossbow",
+                            "damangeAndType": "1.50[1d10] + 3 Pierce, Magic",
+                            "criticalThreatRange": "19-20 / x2",
+                            "weaponType": [
+                                {
+                                    "weaponCategory": "Heavy Crossbow",
+                                    "damageCategory": "/ Ranged weapons"
+                                }
+                            ],
+                            "absRaceRequired": "None",
+                            "minLevel": "7",
+                            "requiredTrait": "None",
+                            "umd": "No UMD needed",
+                            "handedness": "",
+                            "attackMod": "DEX",
+                            "damageMod": "N/A",
+                            "binding": "Unbound",
+                            "binding_url": "https://ddowiki.com/page/Bind",
+                            "durability": "135",
+                            "material": "Steel",
+                            "material_url": "https://ddowiki.com/page/Steel",
+                            "hardness": "15",
+                            "baseValue": "2,820pp",
+                            "weight": "8 lbs",
+                            "upgradable": "ToEE Crafting",
+                            "enchantments": [
+                                {
+                                    "enchantment": [
+                                        {
+                                            "name": "+3 Enhancement Bonus",
+                                            "name_url": "https://ddowiki.com/page/Enhancement_bonus",
+                                            "fullText": "+3 Enhancement Bonus"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "enchantment": [
+                                        {
+                                            "name": "Upgradeable Item (Temple of Elemental Evil)",
+                                            "name_url": "https://ddowiki.com/page/Overgrown_Workbench",
+                                            "fullText": "Upgradeable Item (Temple of Elemental Evil)"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "enchantment": [{}]
+                                },
+                                {
+                                    "enchantment": [
+                                        {
+                                            "name": "Mythic Weapon Boost",
+                                            "name_url": "https://ddowiki.com/page/Mythic_Boost",
+                                            "fullText": "Mythic Weapon Boost +2 or +4"
+                                        }
+                                    ]
+                                }
+                            ],
+                            "locationInformation": [
+                                {
+                                    "location": "Temple of Elemental Evil Part Two",
+                                    "location_url": "https://ddowiki.com/page/Temple_of_Elemental_Evil_Part_Two",
+                                    "locationExtra": ", and"
+                                }
+                            ]
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "weapon": [
+                {
+                    "name": "Alchemical Heavy Crossbow",
+                    "damangeAndType": "2 [1d10] + 5 Pierce, Magic",
+                    "minLevel": "12",
+                    "binding": "Unbound",
+                    "quest": "The Master Artificer, Either End chest",
+                    "criticalProfile": "",
+                    "enchantments": "+5 Enhancement Bonus",
+                    "enchantments_url": "https://ddowiki.com/page/Enhancement_bonus",
+                    "errata": "",
+                    "weaponDetail": [
+                        {
+                            "proficiency": "Simple Weapon Proficiency",
+                            "name": "Alchemical Heavy Crossbow",
+                            "damangeAndType": "2 [1d10] + 5 Pierce, Magic",
+                            "criticalThreatRange": "19-20 / x2",
+                            "weaponType": [
+                                {
+                                    "weaponCategory": "Heavy Crossbow",
+                                    "damageCategory": "/ Ranged weapons"
+                                }
+                            ],
+                            "absRaceRequired": "None",
+                            "minLevel": "12",
+                            "requiredTrait": "None",
+                            "umd": "No UMD needed",
+                            "handedness": "",
+                            "attackMod": "DEX",
+                            "damageMod": "N/A",
+                            "binding": "Unbound",
+                            "binding_url": "https://ddowiki.com/page/Bind",
+                            "durability": "155",
+                            "material": "Steel",
+                            "material_url": "https://ddowiki.com/page/Steel",
+                            "hardness": "17",
+                            "baseValue": "10,205pp",
+                            "weight": "8 lbs",
+                            "upgradable": "Alchemical Crafting",
+                            "description": "A ranged weapon consisting of a small bow mounted crosswise on a heavy wooden stock. This weapon is large enough to require a winch for reloading, yet is surprisingly simple to use.",
+                            "enchantments": [
+                                {
+                                    "enchantment": [
+                                        {
+                                            "name": "+5 Enhancement Bonus",
+                                            "name_url": "https://ddowiki.com/page/Enhancement_bonus",
+                                            "fullText": "+5 Enhancement Bonus"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "enchantment": [
+                                        {
+                                            "name": "Alchemical (Prototype)",
+                                            "name_url": "https://ddowiki.com/page/Alchemical_Crafting",
+                                            "fullText": "Alchemical (Prototype)"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "enchantment": [
+                                        {
+                                            "name": "Mythic Weapon Boost",
+                                            "name_url": "https://ddowiki.com/page/Mythic_Boost",
+                                            "fullText": "Mythic Weapon Boost +2 or +4"
+                                        }
+                                    ]
+                                }
+                            ],
+                            "locationInformation": [
+                                {
+                                    "location": "The Master Artificer",
+                                    "location_url": "https://ddowiki.com/page/The_Master_Artificer",
+                                    "locationExtra": ", Either End chest"
+                                }
+                            ]
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "weapon": [
+                {
+                    "name": "Green Steel Heavy Crossbow",
+                    "damangeAndType": "1.50 [1d10] + 5 Pierce, Evil, Magic",
+                    "minLevel": "12",
+                    "binding": "Bound to Character on Equip",
+                    "quest": "Altar of Fecundity, Manufactured Ingredient Recipes",
+                    "criticalProfile": "",
+                    "enchantments": "+5 Enhancement Bonus",
+                    "enchantments_url": "https://ddowiki.com/page/Enhancement_bonus",
+                    "errata": "",
+                    "weaponDetail": [
+                        {
+                            "proficiency": "Simple Weapon Proficiency",
+                            "name": "Green Steel Heavy Crossbow",
+                            "damangeAndType": "1.50 [1d10] + 5 Pierce, Evil, Magic",
+                            "criticalThreatRange": "19-20 / x2",
+                            "weaponType": [
+                                {
+                                    "weaponCategory": "Heavy Crossbow",
+                                    "damageCategory": "/ Ranged weapons"
+                                }
+                            ],
+                            "absRaceRequired": "None",
+                            "minLevel": "12",
+                            "requiredTrait": "None",
+                            "umd": "No UMD needed",
+                            "handedness": "",
+                            "attackMod": "DEX",
+                            "damageMod": "N/A",
+                            "binding": "Bound to Character on Equip",
+                            "binding_url": "https://ddowiki.com/page/Bind",
+                            "durability": "135",
+                            "material": "Steel",
+                            "material_url": "https://ddowiki.com/page/Steel",
+                            "hardness": "15",
+                            "baseValue": "5,405pp",
+                            "weight": "8 lbs",
+                            "upgradable": "Green Steel",
+                            "tips": [
+                                {
+                                    "tip": "+5 Green Steel Heavy Crossbow"
+                                },
+                                {
+                                    "tip": "Ore of Travail\nLocust Husk\nChipmunk Funk\nGlistening Pebbles\nGreen Briar Twigs\nEberron Energy Cell"
+                                },
+                                {
+                                    "tip": "Blue Taper\nGlistening Pebbles\nGreen Briar Twigs\nBitterscrub Fungus\nChipmunk Funk\nEberron Energy Cell"
+                                },
+                                {
+                                    "tip": "Wondrous Jewel\nLocust Husk\nChipmunk Funk\nBitterscrub Fungus\nGlistening Pebbles OR Green Briar Twigs\nEberron Energy Cell"
+                                },
+                                {
+                                    "tip": "Shavarath Signet Stone\nShavarath Stone of Might\nShavarath Stone of Battle\nShavarath Stone of Strategy\nShavarath Stone of Foresight\nShavarath Stone of Victory"
+                                },
+                                {
+                                    "tip": "Large Splintered Horn"
+                                }
+                            ],
+                            "description": "A ranged weapon consisting of a small bow mounted crosswise on a heavy wooden stock. This weapon is large enough to require a winch for reloading, yet is surprisingly simple to use.",
+                            "enchantments": [
+                                {
+                                    "enchantment": [
+                                        {
+                                            "name": "+5 Enhancement Bonus",
+                                            "name_url": "https://ddowiki.com/page/Enhancement_bonus",
+                                            "fullText": "+5 Enhancement Bonus"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "enchantment": [
+                                        {
+                                            "name": "Green Steel",
+                                            "name_url": "https://ddowiki.com/page/Green_Steel",
+                                            "fullText": "Green Steel"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "enchantment": [
+                                        {
+                                            "name": "Mythic Weapon Boost",
+                                            "name_url": "https://ddowiki.com/page/Mythic_Boost",
+                                            "fullText": "Mythic Weapon Boost +2 or +4"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "oneOfEnchantment": [{}, {}, {}, {}, {}],
+                                    "enchantment": [
+                                        {
+                                            "name": "Ore of Travail",
+                                            "name_url": "https://ddowiki.com/page/Ore_of_Travail",
+                                            "fullText": "Locust Husk\nChipmunk Funk\nGlistening Pebbles\nGreen Briar Twigs\nEberron Energy Cell"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "oneOfEnchantment": [{}, {}, {}, {}, {}],
+                                    "enchantment": [
+                                        {
+                                            "name": "Blue Taper",
+                                            "name_url": "https://ddowiki.com/page/Blue_Taper",
+                                            "fullText": "Glistening Pebbles\nGreen Briar Twigs\nBitterscrub Fungus\nChipmunk Funk\nEberron Energy Cell"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "oneOfEnchantment": [{}, {}, {}, {}, {}],
+                                    "enchantment": [
+                                        {
+                                            "name": "Wondrous Jewel",
+                                            "name_url": "https://ddowiki.com/page/Wondrous_Jewel",
+                                            "fullText": "Locust Husk\nChipmunk Funk\nBitterscrub Fungus\nGlistening Pebbles OR Green Briar Twigs\nEberron Energy Cell"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "oneOfEnchantment": [{}, {}, {}, {}, {}],
+                                    "enchantment": [{}]
+                                },
+                                {
+                                    "enchantment": [
+                                        {
+                                            "name": "Large Splintered Horn",
+                                            "name_url": "https://ddowiki.com/page/Large_Splintered_Horn",
+                                            "fullText": "Large Splintered Horn"
+                                        }
+                                    ]
+                                }
+                            ],
+                            "locationInformation": [
+                                {
+                                    "location": "Manufactured Ingredient Recipes",
+                                    "location_url": "https://ddowiki.com/page/Altar_of_Fecundity_-_Manufactured_Ingredient_Recipes",
+                                    "locationExtra": ","
+                                }
+                            ]
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "weapon": [
+                {
+                    "name": "Storm",
+                    "damangeAndType": "[1d12] + 4 Pierce, Magic",
+                    "minLevel": "12",
+                    "binding": "Bound to Character on Acquire",
+                    "quest": "Zawabi's Revenge, Raid Warded chest",
+                    "criticalProfile": "Critical Profile: 17-20 / x2",
+                    "enchantments": "+4 Enhancement Bonus",
+                    "enchantments_url": "https://ddowiki.com/page/Enhancement_bonus",
+                    "errata": "Critical Profile: 17-20 / x2",
+                    "weaponDetail": [
+                        {
+                            "proficiency": "Simple Weapon Proficiency",
+                            "name": "Storm",
+                            "damangeAndType": "[1d12] + 4 Pierce, Magic",
+                            "criticalThreatRange": "17-20 / x2",
+                            "weaponType": [
+                                {
+                                    "weaponCategory": "Heavy Crossbow",
+                                    "damageCategory": "/ Ranged weapons"
+                                }
+                            ],
+                            "absRaceRequired": "None",
+                            "minLevel": "12",
+                            "requiredTrait": "None",
+                            "umd": "No UMD needed",
+                            "handedness": "",
+                            "attackMod": "DEX",
+                            "damageMod": "n/a",
+                            "binding": "Bound to Character on Acquire",
+                            "binding_url": "https://ddowiki.com/page/Bind",
+                            "durability": "155",
+                            "material": "Wood",
+                            "material_url": "https://ddowiki.com/page/Wood",
+                            "hardness": "12",
+                            "baseValue": "9,805pp",
+                            "weight": "8 lbs",
+                            "upgradable": "Epic Crafting to Epic Storm",
+                            "description": "This gnoll-built weapon is crude but carries an aura of magic. Its bolts fly through the air with great power and accuracy.",
+                            "enchantments": [
+                                {
+                                    "enchantment": [
+                                        {
+                                            "name": "+4 Enhancement Bonus",
+                                            "name_url": "https://ddowiki.com/page/Enhancement_bonus",
+                                            "fullText": "+4 Enhancement Bonus"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "enchantment": [
+                                        {
+                                            "name": "Shocking Burst",
+                                            "name_url": "https://ddowiki.com/page/Elemental_Burst#Shocking_Burst",
+                                            "fullText": "Shocking Burst"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "enchantment": [
+                                        {
+                                            "name": "Thundering",
+                                            "name_url": "https://ddowiki.com/page/Thundering",
+                                            "fullText": "Thundering"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "enchantment": [
+                                        {
+                                            "name": "Attack Bonus +4",
+                                            "name_url": "https://ddowiki.com/page/Attack_bonus",
+                                            "fullText": "Attack Bonus +4"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "enchantment": [
+                                        {
+                                            "name": "Keen I",
+                                            "name_url": "https://ddowiki.com/page/Keen",
+                                            "fullText": "Keen I"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "enchantment": [
+                                        {
+                                            "name": "Mythic Weapon Boost",
+                                            "name_url": "https://ddowiki.com/page/Mythic_Boost",
+                                            "fullText": "Mythic Weapon Boost +2 or +4"
+                                        }
+                                    ]
+                                }
+                            ],
+                            "locationInformation": [
+                                {
+                                    "location": "Zawabi's Revenge",
+                                    "location_url": "https://ddowiki.com/page/Zawabi%27s_Revenge",
+                                    "locationExtra": ", Raid Warded chest"
+                                }
+                            ]
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "weapon": [
+                {
+                    "name": "Epic Storm",
+                    "damangeAndType": "2[1d12] + 6 Pierce, Magic",
+                    "minLevel": "20",
+                    "binding": "Bound to Character on Acquire",
+                    "criticalProfile": "Critical Profile: 17-20 / x3",
+                    "enchantments": "+6 Enhancement Bonus",
+                    "enchantments_url": "https://ddowiki.com/page/Enhancement_bonus",
+                    "errata": "Critical Profile: 17-20 / x3",
+                    "weaponDetail": [
+                        {
+                            "proficiency": "Simple Weapon Proficiency",
+                            "name": "Epic Storm",
+                            "damangeAndType": "2[1d12] + 6 Pierce, Magic",
+                            "criticalThreatRange": "17-20 / x3",
+                            "weaponType": [
+                                {
+                                    "weaponCategory": "Heavy Crossbow",
+                                    "damageCategory": "/ Ranged weapons"
+                                }
+                            ],
+                            "absRaceRequired": "None",
+                            "minLevel": "20",
+                            "requiredTrait": "None",
+                            "umd": "No UMD needed",
+                            "handedness": "",
+                            "attackMod": "DEX",
+                            "damageMod": "N/A",
+                            "binding": "Bound to Character on Acquire",
+                            "binding_url": "https://ddowiki.com/page/Bind",
+                            "durability": "185",
+                            "material": "Wood",
+                            "material_url": "https://ddowiki.com/page/Wood",
+                            "hardness": "15",
+                            "baseValue": "20,005pp",
+                            "weight": "8 lbs",
+                            "upgradable": "Fully upgraded",
+                            "description": "This gnoll-built weapon is crude but carries an aura of magic. Its bolts fly through the air with great power and accuracy.",
+                            "enchantments": [
+                                {
+                                    "enchantment": [
+                                        {
+                                            "name": "+6 Enhancement Bonus",
+                                            "name_url": "https://ddowiki.com/page/Enhancement_bonus",
+                                            "fullText": "+6 Enhancement Bonus"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "enchantment": [
+                                        {
+                                            "name": "Shocking Burst",
+                                            "name_url": "https://ddowiki.com/page/Elemental_Burst#Shocking_Burst",
+                                            "fullText": "Shocking Burst"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "enchantment": [
+                                        {
+                                            "name": "Lightning Storm Guard",
+                                            "name_url": "https://ddowiki.com/page/Lightning_Storm_Guard",
+                                            "fullText": "Lightning Storm Guard"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "enchantment": [
+                                        {
+                                            "name": "Thundering",
+                                            "name_url": "https://ddowiki.com/page/Thundering",
+                                            "fullText": "Thundering"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "enchantment": [
+                                        {
+                                            "name": "Lightning Strike",
+                                            "name_url": "https://ddowiki.com/page/Lightning_Strike",
+                                            "fullText": "Lightning Strike"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "enchantment": [
+                                        {
+                                            "name": "Attack Bonus +4",
+                                            "name_url": "https://ddowiki.com/page/Attack_bonus",
+                                            "fullText": "Attack Bonus +4"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "enchantment": [
+                                        {
+                                            "name": "Keen I",
+                                            "name_url": "https://ddowiki.com/page/Keen",
+                                            "fullText": "Keen I"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "enchantment": [
+                                        {
+                                            "name": "Lightning Lore V",
+                                            "name_url": "https://ddowiki.com/page/Spell_Lore",
+                                            "fullText": "Lightning Lore V"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "oneOfEnchantment": [
+                                        {},
+                                        {},
+                                        {},
+                                        {},
+                                        {},
+                                        {},
+                                        {},
+                                        {}
+                                    ],
+                                    "enchantment": [
+                                        {
+                                            "fullText": "Empty Colorless Augment Slot"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "oneOfEnchantment": [
+                                        {},
+                                        {},
+                                        {},
+                                        {},
+                                        {},
+                                        {},
+                                        {},
+                                        {},
+                                        {},
+                                        {},
+                                        {},
+                                        {},
+                                        {},
+                                        {},
+                                        {},
+                                        {}
+                                    ],
+                                    "enchantment": [
+                                        {
+                                            "fullText": "Empty Red Augment Slot"
+                                        }
+                                    ]
+                                }
+                            ],
+                            "locationInformation": [
+                                {
+                                    "location": "Storm",
+                                    "location_url": "https://ddowiki.com/page/Storm",
+                                    "locationExtra": "of"
+                                }
+                            ]
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "weapon": [
+                {
+                    "name": "Thunder-Forged Alloy Heavy Crossbow",
+                    "damangeAndType": "3.50 [1d10] + 9 Pierce, Silver, Adamantine, Mithral, Cold Iron, Magic, Byeshk",
+                    "minLevel": "22",
+                    "binding": "Unbound",
+                    "quest": "Magma Forge, Crafted from various ingredients",
+                    "criticalProfile": "",
+                    "enchantments": "+9 Enhancement Bonus",
+                    "enchantments_url": "https://ddowiki.com/page/Enhancement_bonus",
+                    "errata": "",
+                    "weaponDetail": [
+                        {
+                            "proficiency": "Simple Weapon Proficiency",
+                            "name": "Thunder-Forged Alloy Heavy Crossbow",
+                            "damangeAndType": "3.50 [1d10] + 9 Pierce, Silver, Adamantine, Mithral, Cold Iron, Magic, Byeshk",
+                            "criticalThreatRange": "19-20 / x2",
+                            "weaponType": [
+                                {
+                                    "weaponCategory": "Heavy Crossbow",
+                                    "damageCategory": "/ Ranged weapons"
+                                }
+                            ],
+                            "absRaceRequired": "None",
+                            "minLevel": "22",
+                            "requiredTrait": "None",
+                            "umd": "No UMD needed",
+                            "handedness": "",
+                            "attackMod": "DEX",
+                            "damageMod": "N/A",
+                            "binding": "Unbound",
+                            "binding_url": "https://ddowiki.com/page/Bind",
+                            "durability": "215",
+                            "material": "Adamantine",
+                            "material_url": "https://ddowiki.com/page/Adamantine",
+                            "hardness": "29",
+                            "baseValue": "8,805pp",
+                            "weight": "8 lbs",
+                            "upgradable": "Thunder-Forged",
+                            "tips": [
+                                {
+                                    "tip": "20 Thunder-Forged Dwarven Ingots"
+                                },
+                                {
+                                    "tip": "15 Commendations of Valor"
+                                }
+                            ],
+                            "description": "A great crossbow forged from metals long in proximity to dragons under Thunderholme.",
+                            "enchantments": [
+                                {
+                                    "enchantment": [
+                                        {
+                                            "name": "+9 Enhancement Bonus",
+                                            "name_url": "https://ddowiki.com/page/Enhancement_bonus",
+                                            "fullText": "+9 Enhancement Bonus"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "oneOfEnchantment": [
+                                        {},
+                                        {},
+                                        {},
+                                        {},
+                                        {},
+                                        {},
+                                        {},
+                                        {},
+                                        {},
+                                        {},
+                                        {},
+                                        {},
+                                        {},
+                                        {},
+                                        {},
+                                        {},
+                                        {},
+                                        {},
+                                        {},
+                                        {},
+                                        {},
+                                        {},
+                                        {},
+                                        {},
+                                        {}
+                                    ],
+                                    "enchantment": [
+                                        {
+                                            "fullText": "Empty Orange Augment Slot"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "enchantment": [
+                                        {
+                                            "name": "Thunder-Forged (Tier 0)",
+                                            "name_url": "https://ddowiki.com/page/Thunder-Forged",
+                                            "fullText": "Thunder-Forged (Tier 0)"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "enchantment": [
+                                        {
+                                            "name": "Mythic Weapon Boost",
+                                            "name_url": "https://ddowiki.com/page/Mythic_Boost",
+                                            "fullText": "Mythic Weapon Boost +2 or +4"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "enchantment": [
+                                        {
+                                            "fullText": "20 Thunder-Forged Dwarven Ingots",
+                                            "fullText_url": "https://ddowiki.com/page/Item:Thunder-Forged_Dwarven_Ingot"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "enchantment": [
+                                        {
+                                            "fullText": "15 Commendations of Valor",
+                                            "fullText_url": "https://ddowiki.com/page/Item:Commendation_of_Valor"
+                                        }
+                                    ]
+                                }
+                            ],
+                            "locationInformation": [
+                                {
+                                    "location": "Magma Forge",
+                                    "location_url": "https://ddowiki.com/page/Magma_Forge",
+                                    "locationExtra": ", Crafted from various ingredients"
+                                }
+                            ]
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "weapon": [
+                {
+                    "name": "+7 Epic Energized Heavy Crossbow*",
+                    "damangeAndType": "5[1d10] + 7 Pierce, Magic",
+                    "minLevel": "26",
+                    "binding": "Unbound",
+                    "quest": "Temple of Elemental Evil Part One, and Temple of Elemental Evil Part Two any chest",
+                    "criticalProfile": "",
+                    "enchantments": "+7 Enhancement Bonus",
+                    "enchantments_url": "https://ddowiki.com/page/Enhancement_bonus",
+                    "itemId": "+7 Epic Energized Heavy Crossbow",
+                    "url": "https://ddowiki.com/page/Item:%2B7_Epic_Energized_Heavy_Crossbow",
+                    "errata": ""
+                }
+            ]
+        },
+        {
+            "weapon": [
+                {
+                    "name": "+7 Epic Etched Heavy Crossbow*",
+                    "damangeAndType": "5[1d10] + 7 Pierce, Magic",
+                    "minLevel": "26",
+                    "binding": "Unbound",
+                    "quest": "Temple of Elemental Evil Part One, and Temple of Elemental Evil Part Two any chest",
+                    "criticalProfile": "",
+                    "enchantments": "+7 Enhancement Bonus",
+                    "enchantments_url": "https://ddowiki.com/page/Enhancement_bonus",
+                    "itemId": "+7 Epic Etched Heavy Crossbow",
+                    "url": "https://ddowiki.com/page/Item:%2B7_Epic_Etched_Heavy_Crossbow",
+                    "errata": ""
+                }
+            ]
+        },
+        {
+            "weapon": [
+                {
+                    "name": "+7 Epic Quenched Heavy Crossbow*",
+                    "damangeAndType": "5[1d10] + 7 Pierce, Magic",
+                    "minLevel": "26",
+                    "binding": "Unbound",
+                    "quest": "Temple of Elemental Evil Part One, and Temple of Elemental Evil Part Two any chest",
+                    "criticalProfile": "",
+                    "enchantments": "+7 Enhancement Bonus",
+                    "enchantments_url": "https://ddowiki.com/page/Enhancement_bonus",
+                    "itemId": "+7 Epic Quenched Heavy Crossbow",
+                    "url": "https://ddowiki.com/page/Item:%2B7_Epic_Quenched_Heavy_Crossbow",
+                    "errata": ""
+                }
+            ]
+        },
+        {
+            "weapon": [
+                {
+                    "name": "+7 Epic Smoldering Heavy Crossbow*",
+                    "damangeAndType": "5[1d10] + 7 Pierce, Magic",
+                    "minLevel": "26",
+                    "binding": "Unbound",
+                    "quest": "Temple of Elemental Evil Part One, and Temple of Elemental Evil Part Two any chest",
+                    "criticalProfile": "",
+                    "enchantments": "+7 Enhancement Bonus",
+                    "enchantments_url": "https://ddowiki.com/page/Enhancement_bonus",
+                    "itemId": "+7 Epic Smoldering Heavy Crossbow",
+                    "url": "https://ddowiki.com/page/Item:%2B7_Epic_Smoldering_Heavy_Crossbow",
+                    "errata": ""
+                }
+            ]
+        },
+        {
+            "weapon": [
+                {
+                    "name": "Legendary Green Steel Heavy Crossbow",
+                    "damangeAndType": "5[1d10] + 14 Pierce, Evil, Magic",
+                    "minLevel": "26",
+                    "binding": "Bound to Character on Acquire",
+                    "quest": "Altar of Fecundity, Manufactured Ingredient Recipes",
+                    "criticalProfile": "",
+                    "enchantments": "+14 Enhancement Bonus",
+                    "enchantments_url": "https://ddowiki.com/page/Enhancement_bonus",
+                    "errata": "",
+                    "weaponDetail": [
+                        {
+                            "proficiency": "Simple Weapon Proficiency",
+                            "name": "Legendary Green Steel Heavy Crossbow",
+                            "damangeAndType": "5[1d10] + 14 Pierce, Evil, Magic",
+                            "criticalThreatRange": "19-20 / x2",
+                            "weaponType": [
+                                {
+                                    "weaponCategory": "Heavy Crossbow",
+                                    "damageCategory": "/ Ranged weapons"
+                                }
+                            ],
+                            "absRaceRequired": "None",
+                            "minLevel": "26",
+                            "requiredTrait": "None",
+                            "umd": "No UMD needed",
+                            "handedness": "",
+                            "attackMod": "DEX",
+                            "damageMod": "N/A",
+                            "binding": "Bound to Character on Acquire",
+                            "binding_url": "https://ddowiki.com/page/Bind",
+                            "durability": "295",
+                            "material": "Steel",
+                            "material_url": "https://ddowiki.com/page/Steel",
+                            "hardness": "31",
+                            "baseValue": "30,051pp 3gp 3sp 6cp",
+                            "weight": "8 lbs",
+                            "upgradable": "Not upgradeable",
+                            "tips": [
+                                {
+                                    "tip": "+14 Legendary Green Steel Heavy Crossbow"
+                                },
+                                {
+                                    "tip": "100 Codex Runes"
+                                },
+                                {
+                                    "tip": "100 Commendations of Valor"
+                                },
+                                {
+                                    "tip": "Altar of Fecundity"
+                                }
+                            ],
+                            "description": "A ranged weapon consisting of a small bow mounted crosswise on a heavy wooden stock. This weapon is large enough to require a winch for reloading, yet is surprisingly simple to use.",
+                            "enchantments": [
+                                {
+                                    "enchantment": [
+                                        {
+                                            "name": "+14 Enhancement Bonus",
+                                            "name_url": "https://ddowiki.com/page/Enhancement_bonus",
+                                            "fullText": "+14 Enhancement Bonus"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "enchantment": [
+                                        {
+                                            "name": "Legendary Green Steel",
+                                            "name_url": "https://ddowiki.com/page/Legendary_Green_Steel",
+                                            "fullText": "Legendary Green Steel"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "enchantment": [
+                                        {
+                                            "name": "Mythic Weapon Boost",
+                                            "name_url": "https://ddowiki.com/page/Mythic_Boost",
+                                            "fullText": "Mythic Weapon Boost +2 or +4"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "enchantment": [
+                                        {
+                                            "fullText": "Codex Runes",
+                                            "fullText_url": "https://ddowiki.com/page/Item:Codex_Rune"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "enchantment": [
+                                        {
+                                            "fullText": "100 Commendations of Valor",
+                                            "fullText_url": "https://ddowiki.com/page/Item:Commendation_of_Valor"
+                                        }
+                                    ]
+                                }
+                            ],
+                            "locationInformation": [
+                                {
+                                    "location": "Manufactured Ingredient Recipes",
+                                    "location_url": "https://ddowiki.com/page/Altar_of_Fecundity_-_Manufactured_Ingredient_Recipes",
+                                    "locationExtra": ","
+                                }
+                            ]
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "weapon": [
+                {
+                    "name": "The Hallowed Splinters*",
+                    "damangeAndType": "5[1d10+3] + 15 Pierce, Bludgeon, Good, Magic",
+                    "minLevel": "29",
+                    "binding": "Bound to Character on Acquire",
+                    "quest": "Project Nemesis, End chest",
+                    "criticalProfile": "",
+                    "enchantments": "+15 Enhancement Bonus",
+                    "enchantments_url": "https://ddowiki.com/page/Enhancement_bonus",
+                    "itemId": "The Hallowed Splinters",
+                    "url": "https://ddowiki.com/page/Item:The_Hallowed_Splinters",
+                    "errata": ""
+                }
+            ]
         }
-       ],
-       "absRaceRequired": "None",
-       "minLevel": "6",
-       "requiredTrait": "None",
-       "umd": "No UMD needed",
-       "handedness": "",
-       "attackMod": "DEX",
-       "damageMod": "N/A",
-       "binding": "Bound to Character on Equip",
-       "binding_url": "https://ddowiki.com/page/Bind",
-       "durability": "125",
-       "material": "Wood",
-       "material_url": "https://ddowiki.com/page/Wood",
-       "hardness": "9",
-       "baseValue": "2,405pp",
-       "weight": "8 lbs",
-       "upgradable": "Not upgradeable",
-       "description": "A ranged weapon consisting of a small bow mounted crosswise on a heavy wooden stock. This weapon is large enough to require a winch for reloading, yet is surprisingly simple to use.",
-       "enchantments": [
-        {
-         "enchantment": [
-          {
-           "name": "+3 Enhancement Bonus",
-           "name_url": "https://ddowiki.com/page/Enhancement_bonus",
-           "fullText": "+3 Enhancement Bonus"
-          }
-         ]
-        },
-        {
-         "enchantment": [
-          {
-           "name": "Crippling",
-           "name_url": "https://ddowiki.com/page/Crippling",
-           "fullText": "Crippling"
-          }
-         ]
-        },
-        {
-         "oneOfEnchantment": [
-          {
-          },
-          {
-          },
-          {
-          },
-          {
-          },
-          {
-          },
-          {
-          },
-          {
-          },
-          {
-          },
-          {
-          },
-          {
-          },
-          {
-          },
-          {
-          },
-          {
-          },
-          {
-          },
-          {
-          },
-          {
-          }
-         ],
-         "enchantment": [
-          {
-           "fullText": "Empty Red Augment Slot"
-          }
-         ]
-        },
-        {
-         "enchantment": [
-          {
-           "name": "Mythic Weapon Boost",
-           "name_url": "https://ddowiki.com/page/Mythic_Boost",
-           "fullText": "Mythic Weapon Boost +2 or +4"
-          }
-         ]
-        }
-       ],
-       "locationInformation": [
-        {
-         "location": "Maneater",
-         "location_url": "https://ddowiki.com/page/Maneater",
-         "locationExtra": ","
-        }
-       ]
-      }
-     ]
-    }
-   ]
-  },
-  {
-   "weapon": [
-    {
-     "name": "+3 Energized Heavy Crossbow*",
-     "damangeAndType": "1.50[1d10] + 3 Pierce, Magic",
-     "minLevel": "7",
-     "binding": "Unbound",
-     "quest": "Temple of Elemental Evil Part One, and Temple of Elemental Evil Part Two any chest",
-     "criticalProfile": "",
-     "enchantments": "+3 Enhancement Bonus",
-     "enchantments_url": "https://ddowiki.com/page/Enhancement_bonus",
-     "itemId": "+3 Energized Heavy Crossbow",
-     "url": "https://ddowiki.com/page/Item:%2B3_Energized_Heavy_Crossbow",
-     "errata": ""
-    }
-   ]
-  },
-  {
-   "weapon": [
-    {
-     "name": "+3 Etched Heavy Crossbow*",
-     "damangeAndType": "1.50[1d10] + 3 Pierce, Magic",
-     "minLevel": "7",
-     "binding": "Unbound",
-     "quest": "Temple of Elemental Evil Part One, and Temple of Elemental Evil Part Two any chest",
-     "criticalProfile": "",
-     "enchantments": "+3 Enhancement Bonus",
-     "enchantments_url": "https://ddowiki.com/page/Enhancement_bonus",
-     "itemId": "+3 Etched Heavy Crossbow",
-     "url": "https://ddowiki.com/page/Item:%2B3_Etched_Heavy_Crossbow",
-     "errata": ""
-    }
-   ]
-  },
-  {
-   "weapon": [
-    {
-     "name": "+3 Quenched Heavy Crossbow*",
-     "damangeAndType": "1.50[1d10] + 3 Pierce, Magic",
-     "minLevel": "7",
-     "binding": "Unbound",
-     "quest": "Temple of Elemental Evil Part One, and Temple of Elemental Evil Part Two any chest",
-     "criticalProfile": "",
-     "enchantments": "+3 Enhancement Bonus",
-     "enchantments_url": "https://ddowiki.com/page/Enhancement_bonus",
-     "itemId": "+3 Quenched Heavy Crossbow",
-     "url": "https://ddowiki.com/page/Item:%2B3_Quenched_Heavy_Crossbow",
-     "errata": ""
-    }
-   ]
-  },
-  {
-   "weapon": [
-    {
-     "name": "+3 Smoldering Heavy Crossbow",
-     "damangeAndType": "1.50[1d10] + 3 Pierce, Magic",
-     "minLevel": "7",
-     "binding": "Unbound",
-     "quest": "Temple of Elemental Evil Part One, and Temple of Elemental Evil Part Two any chest",
-     "criticalProfile": "",
-     "enchantments": "+3 Enhancement Bonus",
-     "enchantments_url": "https://ddowiki.com/page/Enhancement_bonus",
-     "errata": "",
-     "weaponDetail": [
-      {
-       "proficiency": "Simple Weapon Proficiency",
-       "name": "+3 Smoldering Heavy Crossbow",
-       "damangeAndType": "1.50[1d10] + 3 Pierce, Magic",
-       "criticalThreatRange": "19-20 / x2",
-       "weaponType": [
-        {
-         "weaponCategory": "Heavy Crossbow",
-         "damageCategory": "/ Ranged weapons"
-        }
-       ],
-       "absRaceRequired": "None",
-       "minLevel": "7",
-       "requiredTrait": "None",
-       "umd": "No UMD needed",
-       "handedness": "",
-       "attackMod": "DEX",
-       "damageMod": "N/A",
-       "binding": "Unbound",
-       "binding_url": "https://ddowiki.com/page/Bind",
-       "durability": "135",
-       "material": "Steel",
-       "material_url": "https://ddowiki.com/page/Steel",
-       "hardness": "15",
-       "baseValue": "2,820pp",
-       "weight": "8 lbs",
-       "upgradable": "ToEE Crafting",
-       "enchantments": [
-        {
-         "enchantment": [
-          {
-           "name": "+3 Enhancement Bonus",
-           "name_url": "https://ddowiki.com/page/Enhancement_bonus",
-           "fullText": "+3 Enhancement Bonus"
-          }
-         ]
-        },
-        {
-         "enchantment": [
-          {
-           "name": "Upgradeable Item (Temple of Elemental Evil)",
-           "name_url": "https://ddowiki.com/page/Overgrown_Workbench",
-           "fullText": "Upgradeable Item (Temple of Elemental Evil)"
-          }
-         ]
-        },
-        {
-         "enchantment": [
-          {
-          }
-         ]
-        },
-        {
-         "enchantment": [
-          {
-           "name": "Mythic Weapon Boost",
-           "name_url": "https://ddowiki.com/page/Mythic_Boost",
-           "fullText": "Mythic Weapon Boost +2 or +4"
-          }
-         ]
-        }
-       ],
-       "locationInformation": [
-        {
-         "location": "Temple of Elemental Evil Part Two",
-         "location_url": "https://ddowiki.com/page/Temple_of_Elemental_Evil_Part_Two",
-         "locationExtra": ", and"
-        }
-       ]
-      }
-     ]
-    }
-   ]
-  },
-  {
-   "weapon": [
-    {
-     "name": "Alchemical Heavy Crossbow",
-     "damangeAndType": "2 [1d10] + 5 Pierce, Magic",
-     "minLevel": "12",
-     "binding": "Unbound",
-     "quest": "The Master Artificer, Either End chest",
-     "criticalProfile": "",
-     "enchantments": "+5 Enhancement Bonus",
-     "enchantments_url": "https://ddowiki.com/page/Enhancement_bonus",
-     "errata": "",
-     "weaponDetail": [
-      {
-       "proficiency": "Simple Weapon Proficiency",
-       "name": "Alchemical Heavy Crossbow",
-       "damangeAndType": "2 [1d10] + 5 Pierce, Magic",
-       "criticalThreatRange": "19-20 / x2",
-       "weaponType": [
-        {
-         "weaponCategory": "Heavy Crossbow",
-         "damageCategory": "/ Ranged weapons"
-        }
-       ],
-       "absRaceRequired": "None",
-       "minLevel": "12",
-       "requiredTrait": "None",
-       "umd": "No UMD needed",
-       "handedness": "",
-       "attackMod": "DEX",
-       "damageMod": "N/A",
-       "binding": "Unbound",
-       "binding_url": "https://ddowiki.com/page/Bind",
-       "durability": "155",
-       "material": "Steel",
-       "material_url": "https://ddowiki.com/page/Steel",
-       "hardness": "17",
-       "baseValue": "10,205pp",
-       "weight": "8 lbs",
-       "upgradable": "Alchemical Crafting",
-       "description": "A ranged weapon consisting of a small bow mounted crosswise on a heavy wooden stock. This weapon is large enough to require a winch for reloading, yet is surprisingly simple to use.",
-       "enchantments": [
-        {
-         "enchantment": [
-          {
-           "name": "+5 Enhancement Bonus",
-           "name_url": "https://ddowiki.com/page/Enhancement_bonus",
-           "fullText": "+5 Enhancement Bonus"
-          }
-         ]
-        },
-        {
-         "enchantment": [
-          {
-           "name": "Alchemical (Prototype)",
-           "name_url": "https://ddowiki.com/page/Alchemical_Crafting",
-           "fullText": "Alchemical (Prototype)"
-          }
-         ]
-        },
-        {
-         "enchantment": [
-          {
-           "name": "Mythic Weapon Boost",
-           "name_url": "https://ddowiki.com/page/Mythic_Boost",
-           "fullText": "Mythic Weapon Boost +2 or +4"
-          }
-         ]
-        }
-       ],
-       "locationInformation": [
-        {
-         "location": "The Master Artificer",
-         "location_url": "https://ddowiki.com/page/The_Master_Artificer",
-         "locationExtra": ", Either End chest"
-        }
-       ]
-      }
-     ]
-    }
-   ]
-  },
-  {
-   "weapon": [
-    {
-     "name": "Green Steel Heavy Crossbow",
-     "damangeAndType": "1.50 [1d10] + 5 Pierce, Evil, Magic",
-     "minLevel": "12",
-     "binding": "Bound to Character on Equip",
-     "quest": "Altar of Fecundity, Manufactured Ingredient Recipes",
-     "criticalProfile": "",
-     "enchantments": "+5 Enhancement Bonus",
-     "enchantments_url": "https://ddowiki.com/page/Enhancement_bonus",
-     "errata": "",
-     "weaponDetail": [
-      {
-       "proficiency": "Simple Weapon Proficiency",
-       "name": "Green Steel Heavy Crossbow",
-       "damangeAndType": "1.50 [1d10] + 5 Pierce, Evil, Magic",
-       "criticalThreatRange": "19-20 / x2",
-       "weaponType": [
-        {
-         "weaponCategory": "Heavy Crossbow",
-         "damageCategory": "/ Ranged weapons"
-        }
-       ],
-       "absRaceRequired": "None",
-       "minLevel": "12",
-       "requiredTrait": "None",
-       "umd": "No UMD needed",
-       "handedness": "",
-       "attackMod": "DEX",
-       "damageMod": "N/A",
-       "binding": "Bound to Character on Equip",
-       "binding_url": "https://ddowiki.com/page/Bind",
-       "durability": "135",
-       "material": "Steel",
-       "material_url": "https://ddowiki.com/page/Steel",
-       "hardness": "15",
-       "baseValue": "5,405pp",
-       "weight": "8 lbs",
-       "upgradable": "Green Steel",
-       "tips": [
-        {
-         "tip": "+5 Green Steel Heavy Crossbow"
-        },
-        {
-         "tip": "Ore of Travail\nLocust Husk\nChipmunk Funk\nGlistening Pebbles\nGreen Briar Twigs\nEberron Energy Cell"
-        },
-        {
-         "tip": "Blue Taper\nGlistening Pebbles\nGreen Briar Twigs\nBitterscrub Fungus\nChipmunk Funk\nEberron Energy Cell"
-        },
-        {
-         "tip": "Wondrous Jewel\nLocust Husk\nChipmunk Funk\nBitterscrub Fungus\nGlistening Pebbles OR Green Briar Twigs\nEberron Energy Cell"
-        },
-        {
-         "tip": "Shavarath Signet Stone\nShavarath Stone of Might\nShavarath Stone of Battle\nShavarath Stone of Strategy\nShavarath Stone of Foresight\nShavarath Stone of Victory"
-        },
-        {
-         "tip": "Large Splintered Horn"
-        }
-       ],
-       "description": "A ranged weapon consisting of a small bow mounted crosswise on a heavy wooden stock. This weapon is large enough to require a winch for reloading, yet is surprisingly simple to use.",
-       "enchantments": [
-        {
-         "enchantment": [
-          {
-           "name": "+5 Enhancement Bonus",
-           "name_url": "https://ddowiki.com/page/Enhancement_bonus",
-           "fullText": "+5 Enhancement Bonus"
-          }
-         ]
-        },
-        {
-         "enchantment": [
-          {
-           "name": "Green Steel",
-           "name_url": "https://ddowiki.com/page/Green_Steel",
-           "fullText": "Green Steel"
-          }
-         ]
-        },
-        {
-         "enchantment": [
-          {
-           "name": "Mythic Weapon Boost",
-           "name_url": "https://ddowiki.com/page/Mythic_Boost",
-           "fullText": "Mythic Weapon Boost +2 or +4"
-          }
-         ]
-        },
-        {
-         "oneOfEnchantment": [
-          {
-          },
-          {
-          },
-          {
-          },
-          {
-          },
-          {
-          }
-         ],
-         "enchantment": [
-          {
-           "name": "Ore of Travail",
-           "name_url": "https://ddowiki.com/page/Ore_of_Travail",
-           "fullText": "Locust Husk\nChipmunk Funk\nGlistening Pebbles\nGreen Briar Twigs\nEberron Energy Cell"
-          }
-         ]
-        },
-        {
-         "oneOfEnchantment": [
-          {
-          },
-          {
-          },
-          {
-          },
-          {
-          },
-          {
-          }
-         ],
-         "enchantment": [
-          {
-           "name": "Blue Taper",
-           "name_url": "https://ddowiki.com/page/Blue_Taper",
-           "fullText": "Glistening Pebbles\nGreen Briar Twigs\nBitterscrub Fungus\nChipmunk Funk\nEberron Energy Cell"
-          }
-         ]
-        },
-        {
-         "oneOfEnchantment": [
-          {
-          },
-          {
-          },
-          {
-          },
-          {
-          },
-          {
-          }
-         ],
-         "enchantment": [
-          {
-           "name": "Wondrous Jewel",
-           "name_url": "https://ddowiki.com/page/Wondrous_Jewel",
-           "fullText": "Locust Husk\nChipmunk Funk\nBitterscrub Fungus\nGlistening Pebbles OR Green Briar Twigs\nEberron Energy Cell"
-          }
-         ]
-        },
-        {
-         "oneOfEnchantment": [
-          {
-          },
-          {
-          },
-          {
-          },
-          {
-          },
-          {
-          }
-         ],
-         "enchantment": [
-          {
-          }
-         ]
-        },
-        {
-         "enchantment": [
-          {
-           "name": "Large Splintered Horn",
-           "name_url": "https://ddowiki.com/page/Large_Splintered_Horn",
-           "fullText": "Large Splintered Horn"
-          }
-         ]
-        }
-       ],
-       "locationInformation": [
-        {
-         "location": "Manufactured Ingredient Recipes",
-         "location_url": "https://ddowiki.com/page/Altar_of_Fecundity_-_Manufactured_Ingredient_Recipes",
-         "locationExtra": ","
-        }
-       ]
-      }
-     ]
-    }
-   ]
-  },
-  {
-   "weapon": [
-    {
-     "name": "Storm",
-     "damangeAndType": "[1d12] + 4 Pierce, Magic",
-     "minLevel": "12",
-     "binding": "Bound to Character on Acquire",
-     "quest": "Zawabi's Revenge, Raid Warded chest",
-     "criticalProfile": "Critical Profile: 17-20 / x2",
-     "enchantments": "+4 Enhancement Bonus",
-     "enchantments_url": "https://ddowiki.com/page/Enhancement_bonus",
-     "errata": "Critical Profile: 17-20 / x2",
-     "weaponDetail": [
-      {
-       "proficiency": "Simple Weapon Proficiency",
-       "name": "Storm",
-       "damangeAndType": "[1d12] + 4 Pierce, Magic",
-       "criticalThreatRange": "17-20 / x2",
-       "weaponType": [
-        {
-         "weaponCategory": "Heavy Crossbow",
-         "damageCategory": "/ Ranged weapons"
-        }
-       ],
-       "absRaceRequired": "None",
-       "minLevel": "12",
-       "requiredTrait": "None",
-       "umd": "No UMD needed",
-       "handedness": "",
-       "attackMod": "DEX",
-       "damageMod": "n/a",
-       "binding": "Bound to Character on Acquire",
-       "binding_url": "https://ddowiki.com/page/Bind",
-       "durability": "155",
-       "material": "Wood",
-       "material_url": "https://ddowiki.com/page/Wood",
-       "hardness": "12",
-       "baseValue": "9,805pp",
-       "weight": "8 lbs",
-       "upgradable": "Epic Crafting to Epic Storm",
-       "description": "This gnoll-built weapon is crude but carries an aura of magic. Its bolts fly through the air with great power and accuracy.",
-       "enchantments": [
-        {
-         "enchantment": [
-          {
-           "name": "+4 Enhancement Bonus",
-           "name_url": "https://ddowiki.com/page/Enhancement_bonus",
-           "fullText": "+4 Enhancement Bonus"
-          }
-         ]
-        },
-        {
-         "enchantment": [
-          {
-           "name": "Shocking Burst",
-           "name_url": "https://ddowiki.com/page/Elemental_Burst#Shocking_Burst",
-           "fullText": "Shocking Burst"
-          }
-         ]
-        },
-        {
-         "enchantment": [
-          {
-           "name": "Thundering",
-           "name_url": "https://ddowiki.com/page/Thundering",
-           "fullText": "Thundering"
-          }
-         ]
-        },
-        {
-         "enchantment": [
-          {
-           "name": "Attack Bonus +4",
-           "name_url": "https://ddowiki.com/page/Attack_bonus",
-           "fullText": "Attack Bonus +4"
-          }
-         ]
-        },
-        {
-         "enchantment": [
-          {
-           "name": "Keen I",
-           "name_url": "https://ddowiki.com/page/Keen",
-           "fullText": "Keen I"
-          }
-         ]
-        },
-        {
-         "enchantment": [
-          {
-           "name": "Mythic Weapon Boost",
-           "name_url": "https://ddowiki.com/page/Mythic_Boost",
-           "fullText": "Mythic Weapon Boost +2 or +4"
-          }
-         ]
-        }
-       ],
-       "locationInformation": [
-        {
-         "location": "Zawabi's Revenge",
-         "location_url": "https://ddowiki.com/page/Zawabi%27s_Revenge",
-         "locationExtra": ", Raid Warded chest"
-        }
-       ]
-      }
-     ]
-    }
-   ]
-  },
-  {
-   "weapon": [
-    {
-     "name": "Epic Storm",
-     "damangeAndType": "2[1d12] + 6 Pierce, Magic",
-     "minLevel": "20",
-     "binding": "Bound to Character on Acquire",
-     "criticalProfile": "Critical Profile: 17-20 / x3",
-     "enchantments": "+6 Enhancement Bonus",
-     "enchantments_url": "https://ddowiki.com/page/Enhancement_bonus",
-     "errata": "Critical Profile: 17-20 / x3",
-     "weaponDetail": [
-      {
-       "proficiency": "Simple Weapon Proficiency",
-       "name": "Epic Storm",
-       "damangeAndType": "2[1d12] + 6 Pierce, Magic",
-       "criticalThreatRange": "17-20 / x3",
-       "weaponType": [
-        {
-         "weaponCategory": "Heavy Crossbow",
-         "damageCategory": "/ Ranged weapons"
-        }
-       ],
-       "absRaceRequired": "None",
-       "minLevel": "20",
-       "requiredTrait": "None",
-       "umd": "No UMD needed",
-       "handedness": "",
-       "attackMod": "DEX",
-       "damageMod": "N/A",
-       "binding": "Bound to Character on Acquire",
-       "binding_url": "https://ddowiki.com/page/Bind",
-       "durability": "185",
-       "material": "Wood",
-       "material_url": "https://ddowiki.com/page/Wood",
-       "hardness": "15",
-       "baseValue": "20,005pp",
-       "weight": "8 lbs",
-       "upgradable": "Fully upgraded",
-       "description": "This gnoll-built weapon is crude but carries an aura of magic. Its bolts fly through the air with great power and accuracy.",
-       "enchantments": [
-        {
-         "enchantment": [
-          {
-           "name": "+6 Enhancement Bonus",
-           "name_url": "https://ddowiki.com/page/Enhancement_bonus",
-           "fullText": "+6 Enhancement Bonus"
-          }
-         ]
-        },
-        {
-         "enchantment": [
-          {
-           "name": "Shocking Burst",
-           "name_url": "https://ddowiki.com/page/Elemental_Burst#Shocking_Burst",
-           "fullText": "Shocking Burst"
-          }
-         ]
-        },
-        {
-         "enchantment": [
-          {
-           "name": "Lightning Storm Guard",
-           "name_url": "https://ddowiki.com/page/Lightning_Storm_Guard",
-           "fullText": "Lightning Storm Guard"
-          }
-         ]
-        },
-        {
-         "enchantment": [
-          {
-           "name": "Thundering",
-           "name_url": "https://ddowiki.com/page/Thundering",
-           "fullText": "Thundering"
-          }
-         ]
-        },
-        {
-         "enchantment": [
-          {
-           "name": "Lightning Strike",
-           "name_url": "https://ddowiki.com/page/Lightning_Strike",
-           "fullText": "Lightning Strike"
-          }
-         ]
-        },
-        {
-         "enchantment": [
-          {
-           "name": "Attack Bonus +4",
-           "name_url": "https://ddowiki.com/page/Attack_bonus",
-           "fullText": "Attack Bonus +4"
-          }
-         ]
-        },
-        {
-         "enchantment": [
-          {
-           "name": "Keen I",
-           "name_url": "https://ddowiki.com/page/Keen",
-           "fullText": "Keen I"
-          }
-         ]
-        },
-        {
-         "enchantment": [
-          {
-           "name": "Lightning Lore V",
-           "name_url": "https://ddowiki.com/page/Spell_Lore",
-           "fullText": "Lightning Lore V"
-          }
-         ]
-        },
-        {
-         "oneOfEnchantment": [
-          {
-          },
-          {
-          },
-          {
-          },
-          {
-          },
-          {
-          },
-          {
-          },
-          {
-          },
-          {
-          }
-         ],
-         "enchantment": [
-          {
-           "fullText": "Empty Colorless Augment Slot"
-          }
-         ]
-        },
-        {
-         "oneOfEnchantment": [
-          {
-          },
-          {
-          },
-          {
-          },
-          {
-          },
-          {
-          },
-          {
-          },
-          {
-          },
-          {
-          },
-          {
-          },
-          {
-          },
-          {
-          },
-          {
-          },
-          {
-          },
-          {
-          },
-          {
-          },
-          {
-          }
-         ],
-         "enchantment": [
-          {
-           "fullText": "Empty Red Augment Slot"
-          }
-         ]
-        }
-       ],
-       "locationInformation": [
-        {
-         "location": "Storm",
-         "location_url": "https://ddowiki.com/page/Storm",
-         "locationExtra": "of"
-        }
-       ]
-      }
-     ]
-    }
-   ]
-  },
-  {
-   "weapon": [
-    {
-     "name": "Thunder-Forged Alloy Heavy Crossbow",
-     "damangeAndType": "3.50 [1d10] + 9 Pierce, Silver, Adamantine, Mithral, Cold Iron, Magic, Byeshk",
-     "minLevel": "22",
-     "binding": "Unbound",
-     "quest": "Magma Forge, Crafted from various ingredients",
-     "criticalProfile": "",
-     "enchantments": "+9 Enhancement Bonus",
-     "enchantments_url": "https://ddowiki.com/page/Enhancement_bonus",
-     "errata": "",
-     "weaponDetail": [
-      {
-       "proficiency": "Simple Weapon Proficiency",
-       "name": "Thunder-Forged Alloy Heavy Crossbow",
-       "damangeAndType": "3.50 [1d10] + 9 Pierce, Silver, Adamantine, Mithral, Cold Iron, Magic, Byeshk",
-       "criticalThreatRange": "19-20 / x2",
-       "weaponType": [
-        {
-         "weaponCategory": "Heavy Crossbow",
-         "damageCategory": "/ Ranged weapons"
-        }
-       ],
-       "absRaceRequired": "None",
-       "minLevel": "22",
-       "requiredTrait": "None",
-       "umd": "No UMD needed",
-       "handedness": "",
-       "attackMod": "DEX",
-       "damageMod": "N/A",
-       "binding": "Unbound",
-       "binding_url": "https://ddowiki.com/page/Bind",
-       "durability": "215",
-       "material": "Adamantine",
-       "material_url": "https://ddowiki.com/page/Adamantine",
-       "hardness": "29",
-       "baseValue": "8,805pp",
-       "weight": "8 lbs",
-       "upgradable": "Thunder-Forged",
-       "tips": [
-        {
-         "tip": "20 Thunder-Forged Dwarven Ingots"
-        },
-        {
-         "tip": "15 Commendations of Valor"
-        }
-       ],
-       "description": "A great crossbow forged from metals long in proximity to dragons under Thunderholme.",
-       "enchantments": [
-        {
-         "enchantment": [
-          {
-           "name": "+9 Enhancement Bonus",
-           "name_url": "https://ddowiki.com/page/Enhancement_bonus",
-           "fullText": "+9 Enhancement Bonus"
-          }
-         ]
-        },
-        {
-         "oneOfEnchantment": [
-          {
-          },
-          {
-          },
-          {
-          },
-          {
-          },
-          {
-          },
-          {
-          },
-          {
-          },
-          {
-          },
-          {
-          },
-          {
-          },
-          {
-          },
-          {
-          },
-          {
-          },
-          {
-          },
-          {
-          },
-          {
-          },
-          {
-          },
-          {
-          },
-          {
-          },
-          {
-          },
-          {
-          },
-          {
-          },
-          {
-          },
-          {
-          },
-          {
-          }
-         ],
-         "enchantment": [
-          {
-           "fullText": "Empty Orange Augment Slot"
-          }
-         ]
-        },
-        {
-         "enchantment": [
-          {
-           "name": "Thunder-Forged (Tier 0)",
-           "name_url": "https://ddowiki.com/page/Thunder-Forged",
-           "fullText": "Thunder-Forged (Tier 0)"
-          }
-         ]
-        },
-        {
-         "enchantment": [
-          {
-           "name": "Mythic Weapon Boost",
-           "name_url": "https://ddowiki.com/page/Mythic_Boost",
-           "fullText": "Mythic Weapon Boost +2 or +4"
-          }
-         ]
-        },
-        {
-         "enchantment": [
-          {
-           "fullText": "20 Thunder-Forged Dwarven Ingots",
-           "fullText_url": "https://ddowiki.com/page/Item:Thunder-Forged_Dwarven_Ingot"
-          }
-         ]
-        },
-        {
-         "enchantment": [
-          {
-           "fullText": "15 Commendations of Valor",
-           "fullText_url": "https://ddowiki.com/page/Item:Commendation_of_Valor"
-          }
-         ]
-        }
-       ],
-       "locationInformation": [
-        {
-         "location": "Magma Forge",
-         "location_url": "https://ddowiki.com/page/Magma_Forge",
-         "locationExtra": ", Crafted from various ingredients"
-        }
-       ]
-      }
-     ]
-    }
-   ]
-  },
-  {
-   "weapon": [
-    {
-     "name": "+7 Epic Energized Heavy Crossbow*",
-     "damangeAndType": "5[1d10] + 7 Pierce, Magic",
-     "minLevel": "26",
-     "binding": "Unbound",
-     "quest": "Temple of Elemental Evil Part One, and Temple of Elemental Evil Part Two any chest",
-     "criticalProfile": "",
-     "enchantments": "+7 Enhancement Bonus",
-     "enchantments_url": "https://ddowiki.com/page/Enhancement_bonus",
-     "itemId": "+7 Epic Energized Heavy Crossbow",
-     "url": "https://ddowiki.com/page/Item:%2B7_Epic_Energized_Heavy_Crossbow",
-     "errata": ""
-    }
-   ]
-  },
-  {
-   "weapon": [
-    {
-     "name": "+7 Epic Etched Heavy Crossbow*",
-     "damangeAndType": "5[1d10] + 7 Pierce, Magic",
-     "minLevel": "26",
-     "binding": "Unbound",
-     "quest": "Temple of Elemental Evil Part One, and Temple of Elemental Evil Part Two any chest",
-     "criticalProfile": "",
-     "enchantments": "+7 Enhancement Bonus",
-     "enchantments_url": "https://ddowiki.com/page/Enhancement_bonus",
-     "itemId": "+7 Epic Etched Heavy Crossbow",
-     "url": "https://ddowiki.com/page/Item:%2B7_Epic_Etched_Heavy_Crossbow",
-     "errata": ""
-    }
-   ]
-  },
-  {
-   "weapon": [
-    {
-     "name": "+7 Epic Quenched Heavy Crossbow*",
-     "damangeAndType": "5[1d10] + 7 Pierce, Magic",
-     "minLevel": "26",
-     "binding": "Unbound",
-     "quest": "Temple of Elemental Evil Part One, and Temple of Elemental Evil Part Two any chest",
-     "criticalProfile": "",
-     "enchantments": "+7 Enhancement Bonus",
-     "enchantments_url": "https://ddowiki.com/page/Enhancement_bonus",
-     "itemId": "+7 Epic Quenched Heavy Crossbow",
-     "url": "https://ddowiki.com/page/Item:%2B7_Epic_Quenched_Heavy_Crossbow",
-     "errata": ""
-    }
-   ]
-  },
-  {
-   "weapon": [
-    {
-     "name": "+7 Epic Smoldering Heavy Crossbow*",
-     "damangeAndType": "5[1d10] + 7 Pierce, Magic",
-     "minLevel": "26",
-     "binding": "Unbound",
-     "quest": "Temple of Elemental Evil Part One, and Temple of Elemental Evil Part Two any chest",
-     "criticalProfile": "",
-     "enchantments": "+7 Enhancement Bonus",
-     "enchantments_url": "https://ddowiki.com/page/Enhancement_bonus",
-     "itemId": "+7 Epic Smoldering Heavy Crossbow",
-     "url": "https://ddowiki.com/page/Item:%2B7_Epic_Smoldering_Heavy_Crossbow",
-     "errata": ""
-    }
-   ]
-  },
-  {
-   "weapon": [
-    {
-     "name": "Legendary Green Steel Heavy Crossbow",
-     "damangeAndType": "5[1d10] + 14 Pierce, Evil, Magic",
-     "minLevel": "26",
-     "binding": "Bound to Character on Acquire",
-     "quest": "Altar of Fecundity, Manufactured Ingredient Recipes",
-     "criticalProfile": "",
-     "enchantments": "+14 Enhancement Bonus",
-     "enchantments_url": "https://ddowiki.com/page/Enhancement_bonus",
-     "errata": "",
-     "weaponDetail": [
-      {
-       "proficiency": "Simple Weapon Proficiency",
-       "name": "Legendary Green Steel Heavy Crossbow",
-       "damangeAndType": "5[1d10] + 14 Pierce, Evil, Magic",
-       "criticalThreatRange": "19-20 / x2",
-       "weaponType": [
-        {
-         "weaponCategory": "Heavy Crossbow",
-         "damageCategory": "/ Ranged weapons"
-        }
-       ],
-       "absRaceRequired": "None",
-       "minLevel": "26",
-       "requiredTrait": "None",
-       "umd": "No UMD needed",
-       "handedness": "",
-       "attackMod": "DEX",
-       "damageMod": "N/A",
-       "binding": "Bound to Character on Acquire",
-       "binding_url": "https://ddowiki.com/page/Bind",
-       "durability": "295",
-       "material": "Steel",
-       "material_url": "https://ddowiki.com/page/Steel",
-       "hardness": "31",
-       "baseValue": "30,051pp 3gp 3sp 6cp",
-       "weight": "8 lbs",
-       "upgradable": "Not upgradeable",
-       "tips": [
-        {
-         "tip": "+14 Legendary Green Steel Heavy Crossbow"
-        },
-        {
-         "tip": "100 Codex Runes"
-        },
-        {
-         "tip": "100 Commendations of Valor"
-        },
-        {
-         "tip": "Altar of Fecundity"
-        }
-       ],
-       "description": "A ranged weapon consisting of a small bow mounted crosswise on a heavy wooden stock. This weapon is large enough to require a winch for reloading, yet is surprisingly simple to use.",
-       "enchantments": [
-        {
-         "enchantment": [
-          {
-           "name": "+14 Enhancement Bonus",
-           "name_url": "https://ddowiki.com/page/Enhancement_bonus",
-           "fullText": "+14 Enhancement Bonus"
-          }
-         ]
-        },
-        {
-         "enchantment": [
-          {
-           "name": "Legendary Green Steel",
-           "name_url": "https://ddowiki.com/page/Legendary_Green_Steel",
-           "fullText": "Legendary Green Steel"
-          }
-         ]
-        },
-        {
-         "enchantment": [
-          {
-           "name": "Mythic Weapon Boost",
-           "name_url": "https://ddowiki.com/page/Mythic_Boost",
-           "fullText": "Mythic Weapon Boost +2 or +4"
-          }
-         ]
-        },
-        {
-         "enchantment": [
-          {
-           "fullText": "Codex Runes",
-           "fullText_url": "https://ddowiki.com/page/Item:Codex_Rune"
-          }
-         ]
-        },
-        {
-         "enchantment": [
-          {
-           "fullText": "100 Commendations of Valor",
-           "fullText_url": "https://ddowiki.com/page/Item:Commendation_of_Valor"
-          }
-         ]
-        }
-       ],
-       "locationInformation": [
-        {
-         "location": "Manufactured Ingredient Recipes",
-         "location_url": "https://ddowiki.com/page/Altar_of_Fecundity_-_Manufactured_Ingredient_Recipes",
-         "locationExtra": ","
-        }
-       ]
-      }
-     ]
-    }
-   ]
-  },
-  {
-   "weapon": [
-    {
-     "name": "The Hallowed Splinters*",
-     "damangeAndType": "5[1d10+3] + 15 Pierce, Bludgeon, Good, Magic",
-     "minLevel": "29",
-     "binding": "Bound to Character on Acquire",
-     "quest": "Project Nemesis, End chest",
-     "criticalProfile": "",
-     "enchantments": "+15 Enhancement Bonus",
-     "enchantments_url": "https://ddowiki.com/page/Enhancement_bonus",
-     "itemId": "The Hallowed Splinters",
-     "url": "https://ddowiki.com/page/Item:The_Hallowed_Splinters",
-     "errata": ""
-    }
-   ]
-  }
- ]
+    ]
 }

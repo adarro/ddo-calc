@@ -36,6 +36,7 @@ trait SpellvialSelection extends BombardierTierOne with ClassEnhancementImpl {
       |DND Dice: Deals 1d6+2 (element) damage per caster level, max 10d6+20
       |""".stripMargin
   )
+
   /**
    * Some enhancements can be taken multiple times (generally up to three)
    */

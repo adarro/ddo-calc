@@ -16,2779 +16,2430 @@
  * limitations under the License.
  */
 {
- "item": [
-  {
-   "weapon": [
-    {
-     "name": "Moldy Light Crossbow",
-     "damangeAndType": "[1d8] + -1 Pierce",
-     "minLevel": "1",
-     "binding": "Bound to Character on Acquire",
-     "quest": "Shipwreck Shore, Jeets Shimis",
-     "criticalProfile": "",
-     "enchantments": "Starter",
-     "enchantments_url": "https://ddowiki.com/page/Starter",
-     "errata": "",
-     "weaponDetail": [
-      {
-       "proficiency": "Simple Weapon Proficiency",
-       "name": "Moldy Light Crossbow",
-       "damangeAndType": "[1d8] + -1 Pierce",
-       "criticalThreatRange": "19-20 / x2",
-       "weaponType": [
+    "item": [
         {
-         "weaponCategory": "Light Crossbow",
-         "damageCategory": "/ Ranged weapons"
+            "weapon": [
+                {
+                    "name": "Moldy Light Crossbow",
+                    "damangeAndType": "[1d8] + -1 Pierce",
+                    "minLevel": "1",
+                    "binding": "Bound to Character on Acquire",
+                    "quest": "Shipwreck Shore, Jeets Shimis",
+                    "criticalProfile": "",
+                    "enchantments": "Starter",
+                    "enchantments_url": "https://ddowiki.com/page/Starter",
+                    "errata": "",
+                    "weaponDetail": [
+                        {
+                            "proficiency": "Simple Weapon Proficiency",
+                            "name": "Moldy Light Crossbow",
+                            "damangeAndType": "[1d8] + -1 Pierce",
+                            "criticalThreatRange": "19-20 / x2",
+                            "weaponType": [
+                                {
+                                    "weaponCategory": "Light Crossbow",
+                                    "damageCategory": "/ Ranged weapons"
+                                }
+                            ],
+                            "absRaceRequired": "None",
+                            "minLevel": "None",
+                            "requiredTrait": "None",
+                            "umd": "No UMD needed",
+                            "handedness": "",
+                            "attackMod": "DEX",
+                            "damageMod": "N/A",
+                            "binding": "Bound to Character on Acquire",
+                            "binding_url": "https://ddowiki.com/page/Bind",
+                            "durability": "85",
+                            "material": "Wood",
+                            "material_url": "https://ddowiki.com/page/Wood",
+                            "hardness": "6",
+                            "baseValue": "3pp 5gp",
+                            "weight": "4 lbs",
+                            "upgradable": "Not upgradeable",
+                            "tips": [
+                                {
+                                    "tip": "This item cannot be fed to sentient jewels."
+                                },
+                                {
+                                    "tip": "This is one of the starting weapon selection choices from the Rogue, Jeets Shimis in the game's starting area, Shipwreck Shore."
+                                }
+                            ],
+                            "description": "A small crossbow. The stock is damp, and riddled with fine cracks. Double-click on this weapon to equip it.",
+                            "enchantments": [
+                                {
+                                    "enchantment": [
+                                        {
+                                            "name": "Starter",
+                                            "name_url": "https://ddowiki.com/page/Starter",
+                                            "fullText": "Starter"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "enchantment": [
+                                        {
+                                            "fullText": "damage",
+                                            "fullText_url": "https://ddowiki.com/page/Damage"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "enchantment": [
+                                        {
+                                            "name": "Mythic Weapon Boost",
+                                            "name_url": "https://ddowiki.com/page/Mythic_Boost",
+                                            "fullText": "Mythic Weapon Boost +2 or +4"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "enchantment": [
+                                        {
+                                            "fullText": "This item cannot be fed to sentient jewels."
+                                        }
+                                    ]
+                                },
+                                {
+                                    "enchantment": [{}]
+                                }
+                            ],
+                            "locationInformation": [
+                                {
+                                    "location": "Jeets Shimis",
+                                    "location_url": "https://ddowiki.com/page/Jeets_Shimis",
+                                    "locationExtra": ","
+                                }
+                            ]
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "weapon": [
+                {
+                    "name": "Guidance",
+                    "damangeAndType": "[1d8] + 2 Pierce, Good, Magic",
+                    "minLevel": "2",
+                    "binding": "Bound to Account on Acquire",
+                    "quest": "Catacombs",
+                    "criticalProfile": "",
+                    "enchantments": "+2 Enhancement Bonus",
+                    "enchantments_url": "https://ddowiki.com/page/Enhancement_bonus",
+                    "errata": "",
+                    "weaponDetail": [
+                        {
+                            "proficiency": "Simple Weapon Proficiency",
+                            "name": "Guidance",
+                            "damangeAndType": "[1d8] + 2 Pierce, Good, Magic",
+                            "criticalThreatRange": "19-20 / x2",
+                            "weaponType": [
+                                {
+                                    "weaponCategory": "Light Crossbow",
+                                    "damageCategory": "/ Ranged weapons"
+                                }
+                            ],
+                            "absRaceRequired": "None",
+                            "minLevel": "2",
+                            "requiredTrait": "None",
+                            "umd": "No UMD needed",
+                            "handedness": "",
+                            "attackMod": "DEX",
+                            "damageMod": "N/A",
+                            "binding": "Bound to Account on Acquire",
+                            "binding_url": "https://ddowiki.com/page/Bind",
+                            "durability": "85",
+                            "material": "Wood",
+                            "material_url": "https://ddowiki.com/page/Wood",
+                            "hardness": "6",
+                            "baseValue": "803pp 5gp",
+                            "weight": "4 lbs",
+                            "upgradable": "Not upgradeable",
+                            "description": "The crossbow Guidance is loathed by the enemies of the Silver Flame.",
+                            "enchantments": [
+                                {
+                                    "enchantment": [
+                                        {
+                                            "name": "+2 Enhancement Bonus",
+                                            "name_url": "https://ddowiki.com/page/Enhancement_bonus",
+                                            "fullText": "+2 Enhancement Bonus"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "enchantment": [
+                                        {
+                                            "name": "Holy",
+                                            "name_url": "https://ddowiki.com/page/Alignment_damage_(weapon)#Holy",
+                                            "fullText": "Holy"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "oneOfEnchantment": [
+                                        {},
+                                        {},
+                                        {},
+                                        {},
+                                        {},
+                                        {},
+                                        {},
+                                        {},
+                                        {},
+                                        {},
+                                        {},
+                                        {},
+                                        {},
+                                        {},
+                                        {},
+                                        {},
+                                        {},
+                                        {},
+                                        {},
+                                        {},
+                                        {},
+                                        {},
+                                        {},
+                                        {},
+                                        {}
+                                    ],
+                                    "enchantment": [
+                                        {
+                                            "fullText": "Empty Purple Augment Slot"
+                                        }
+                                    ]
+                                }
+                            ],
+                            "locationInformation": [
+                                {
+                                    "location": "Catacombs",
+                                    "location_url": "https://ddowiki.com/page/Catacombs",
+                                    "locationExtra": ", End reward"
+                                }
+                            ]
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "weapon": [
+                {
+                    "name": "Poison-Tipped Crossbow",
+                    "damangeAndType": "[1d8] + 3 Pierce, Magic",
+                    "minLevel": "4",
+                    "binding": "Bound to Character on Equip",
+                    "quest": "Redwillow's Ruins",
+                    "criticalProfile": "",
+                    "enchantments": "+3 Enhancement Bonus",
+                    "enchantments_url": "https://ddowiki.com/page/Enhancement_bonus",
+                    "errata": "",
+                    "weaponDetail": [
+                        {
+                            "proficiency": "Simple Weapon Proficiency",
+                            "name": "Poison-Tipped Crossbow",
+                            "damangeAndType": "[1d8] + 3 Pierce, Magic",
+                            "criticalThreatRange": "19-20 / x2",
+                            "weaponType": [
+                                {
+                                    "weaponCategory": "Light Crossbow",
+                                    "damageCategory": "/ Ranged weapons"
+                                }
+                            ],
+                            "absRaceRequired": "None",
+                            "minLevel": "4",
+                            "requiredTrait": "None",
+                            "umd": "No UMD needed",
+                            "handedness": "",
+                            "attackMod": "DEX",
+                            "damageMod": "N/A",
+                            "binding": "Bound to Character on Equip",
+                            "binding_url": "https://ddowiki.com/page/Bind",
+                            "durability": "95",
+                            "material": "Wood",
+                            "material_url": "https://ddowiki.com/page/Wood",
+                            "hardness": "7",
+                            "baseValue": "1,603pp 5gp",
+                            "weight": "4 lbs",
+                            "upgradable": "Not upgradeable",
+                            "description": "A simple ranged weapon consisting of a small bow mounted crosswise on a light wooden stock.",
+                            "enchantments": [
+                                {
+                                    "enchantment": [
+                                        {
+                                            "name": "+3 Enhancement Bonus",
+                                            "name_url": "https://ddowiki.com/page/Enhancement_bonus",
+                                            "fullText": "+3 Enhancement Bonus"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "enchantment": [
+                                        {
+                                            "name": "Poison",
+                                            "name_url": "https://ddowiki.com/page/Poison_(enchantment)",
+                                            "fullText": "Poison"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "oneOfEnchantment": [
+                                        {},
+                                        {},
+                                        {},
+                                        {},
+                                        {},
+                                        {},
+                                        {},
+                                        {},
+                                        {},
+                                        {},
+                                        {},
+                                        {},
+                                        {},
+                                        {},
+                                        {},
+                                        {}
+                                    ],
+                                    "enchantment": [
+                                        {
+                                            "fullText": "Empty Red Augment Slot"
+                                        }
+                                    ]
+                                }
+                            ],
+                            "locationInformation": [
+                                {
+                                    "location": "Redwillow's Ruins",
+                                    "location_url": "https://ddowiki.com/page/Redwillow%27s_Ruins"
+                                }
+                            ]
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "weapon": [
+                {
+                    "name": "The Diplomancer (level 5)",
+                    "damangeAndType": "[1d8] +2 Pierce, Magic",
+                    "minLevel": "5",
+                    "binding": "Bound to Account on Acquire",
+                    "quest": "Anniversary Party",
+                    "criticalProfile": "",
+                    "enchantments": "+2 Enhancement Bonus",
+                    "enchantments_url": "https://ddowiki.com/page/Enhancement_bonus",
+                    "errata": "",
+                    "weaponDetail": [
+                        {
+                            "proficiency": "Simple Weapon Proficiency",
+                            "name": "The Diplomancer (level 5)",
+                            "damangeAndType": "[1d8] +2 Pierce, Magic",
+                            "criticalThreatRange": "19-20 / x2",
+                            "weaponType": [
+                                {
+                                    "weaponCategory": "Light Crossbow",
+                                    "damageCategory": "/ Ranged weapons"
+                                }
+                            ],
+                            "absRaceRequired": "None",
+                            "minLevel": "5",
+                            "requiredTrait": "None",
+                            "umd": "No UMD needed",
+                            "handedness": "",
+                            "attackMod": "DEX",
+                            "damageMod": "N/A",
+                            "binding": "Bound to Account on Acquire",
+                            "binding_url": "https://ddowiki.com/page/Bind",
+                            "durability": "75",
+                            "material": "Wood",
+                            "material_url": "https://ddowiki.com/page/Wood",
+                            "hardness": "10",
+                            "baseValue": "3pp 5gp",
+                            "weight": "4 lbs",
+                            "upgradable": "Not upgradeable",
+                            "description": "Ask questions first. Shoot later.",
+                            "enchantments": [
+                                {
+                                    "enchantment": [
+                                        {
+                                            "name": "+2 Enhancement Bonus",
+                                            "name_url": "https://ddowiki.com/page/Enhancement_bonus",
+                                            "fullText": "+2 Enhancement Bonus"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "enchantment": [
+                                        {
+                                            "name": "Bleeding 2",
+                                            "name_url": "https://ddowiki.com/page/Bleeding",
+                                            "fullText": "Bleeding 2"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "enchantment": [
+                                        {
+                                            "name": "Impactful 2",
+                                            "name_url": "https://ddowiki.com/page/Impactful",
+                                            "fullText": "Impactful 2"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "enchantment": [
+                                        {
+                                            "name": "Distant Diversion +6%",
+                                            "name_url": "https://ddowiki.com/page/Diversion",
+                                            "fullText": "Distant Diversion +6%"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "enchantment": [
+                                        {
+                                            "name": "Diplomacy +7",
+                                            "name_url": "https://ddowiki.com/page/Diplomacy",
+                                            "fullText": "Diplomacy +7"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "oneOfEnchantment": [
+                                        {},
+                                        {},
+                                        {},
+                                        {},
+                                        {},
+                                        {},
+                                        {},
+                                        {},
+                                        {},
+                                        {},
+                                        {},
+                                        {},
+                                        {},
+                                        {},
+                                        {},
+                                        {},
+                                        {},
+                                        {},
+                                        {},
+                                        {},
+                                        {},
+                                        {},
+                                        {},
+                                        {},
+                                        {}
+                                    ],
+                                    "enchantment": [
+                                        {
+                                            "fullText": "Empty Orange Augment Slot"
+                                        }
+                                    ]
+                                }
+                            ],
+                            "locationInformation": [
+                                {
+                                    "location": "Party Favors",
+                                    "location_url": "https://ddowiki.com/page/Item:Party_Favor",
+                                    "locationExtra": ", Turn in 10"
+                                }
+                            ]
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "weapon": [
+                {
+                    "name": "Smoldering Light Crossbow*",
+                    "damangeAndType": "1.50[1d8] + 3 Pierce, Magic",
+                    "minLevel": "7",
+                    "binding": "Unbound",
+                    "quest": "Temple of Elemental Evil Part One, and Temple of Elemental Evil Part Two any chest",
+                    "criticalProfile": "",
+                    "enchantments": "+3 Enhancement Bonus",
+                    "enchantments_url": "https://ddowiki.com/page/Enhancement_bonus",
+                    "itemId": "Smoldering Light Crossbow",
+                    "url": "https://ddowiki.com/page/Item:Smoldering_Light_Crossbow",
+                    "errata": ""
+                }
+            ]
+        },
+        {
+            "weapon": [
+                {
+                    "name": "Etched Light Crossbow*",
+                    "damangeAndType": "1.50[1d8] + 3 Pierce, Magic",
+                    "minLevel": "7",
+                    "binding": "Unbound",
+                    "quest": "Temple of Elemental Evil Part One, and Temple of Elemental Evil Part Two any chest",
+                    "criticalProfile": "",
+                    "enchantments": "+3 Enhancement Bonus",
+                    "enchantments_url": "https://ddowiki.com/page/Enhancement_bonus",
+                    "itemId": "Etched Light Crossbow",
+                    "url": "https://ddowiki.com/page/Item:Etched_Light_Crossbow",
+                    "errata": ""
+                }
+            ]
+        },
+        {
+            "weapon": [
+                {
+                    "name": "Quenched Light Crossbow*",
+                    "damangeAndType": "1.50[1d8] + 3 Pierce, Magic",
+                    "minLevel": "7",
+                    "binding": "Unbound",
+                    "quest": "Temple of Elemental Evil Part One, and Temple of Elemental Evil Part Two any chest",
+                    "criticalProfile": "",
+                    "enchantments": "+3 Enhancement Bonus",
+                    "enchantments_url": "https://ddowiki.com/page/Enhancement_bonus",
+                    "itemId": "Quenched Light Crossbow",
+                    "url": "https://ddowiki.com/page/Item:Quenched_Light_Crossbow",
+                    "errata": ""
+                }
+            ]
+        },
+        {
+            "weapon": [
+                {
+                    "name": "Energized Light Crossbow",
+                    "damangeAndType": "1.50[1d8] + 3 Pierce, Magic",
+                    "minLevel": "7",
+                    "binding": "Unbound",
+                    "quest": "Temple of Elemental Evil Part One, and Temple of Elemental Evil Part Two any chest",
+                    "criticalProfile": "",
+                    "enchantments": "+3 Enhancement Bonus",
+                    "enchantments_url": "https://ddowiki.com/page/Enhancement_bonus",
+                    "errata": "",
+                    "weaponDetail": [
+                        {
+                            "proficiency": "Simple Weapon Proficiency",
+                            "name": "Energized Light Crossbow",
+                            "damangeAndType": "1.50[1d8] + 3 Pierce, Magic",
+                            "criticalThreatRange": "19-20 / x2",
+                            "weaponType": [
+                                {
+                                    "weaponCategory": "Light Crossbow",
+                                    "damageCategory": "/ Ranged weapons"
+                                }
+                            ],
+                            "absRaceRequired": "None",
+                            "minLevel": "7",
+                            "requiredTrait": "None",
+                            "umd": "No UMD needed",
+                            "handedness": "",
+                            "attackMod": "DEX",
+                            "damageMod": "N/A",
+                            "binding": "Unbound",
+                            "binding_url": "https://ddowiki.com/page/Bind",
+                            "durability": "125",
+                            "material": "Wood",
+                            "material_url": "https://ddowiki.com/page/Wood",
+                            "hardness": "10",
+                            "baseValue": "2,820pp",
+                            "weight": "4 lbs",
+                            "upgradable": "ToEE Crafting",
+                            "description": "A weapon found deep within the Temple of Elemental Evil.",
+                            "enchantments": [
+                                {
+                                    "enchantment": [
+                                        {
+                                            "name": "+3 Enhancement Bonus",
+                                            "name_url": "https://ddowiki.com/page/Enhancement_bonus",
+                                            "fullText": "+3 Enhancement Bonus"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "enchantment": [
+                                        {
+                                            "name": "Upgradeable Item (Temple of Elemental Evil)",
+                                            "name_url": "https://ddowiki.com/page/Overgrown_Workbench",
+                                            "fullText": "Upgradeable Item (Temple of Elemental Evil)"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "enchantment": [{}]
+                                },
+                                {
+                                    "enchantment": [
+                                        {
+                                            "name": "Mythic Weapon Boost",
+                                            "name_url": "https://ddowiki.com/page/Mythic_Boost",
+                                            "fullText": "Mythic Weapon Boost +2 or +4"
+                                        }
+                                    ]
+                                }
+                            ],
+                            "locationInformation": [
+                                {
+                                    "location": "Temple of Elemental Evil Part Two",
+                                    "location_url": "https://ddowiki.com/page/Temple_of_Elemental_Evil_Part_Two",
+                                    "locationExtra": ", and"
+                                }
+                            ]
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "weapon": [
+                {
+                    "name": "Ratcatcher",
+                    "damangeAndType": "1.50 [1d8] + 4 Pierce, Magic",
+                    "minLevel": "8",
+                    "binding": "Bound to Account on Acquire",
+                    "quest": "The Abandoned Excavation",
+                    "criticalProfile": "Critical Profile: 17-20 / x3",
+                    "enchantments": "+4 Enhancement Bonus",
+                    "enchantments_url": "https://ddowiki.com/page/Enhancement_bonus",
+                    "errata": "Critical Profile: 17-20 / x3",
+                    "weaponDetail": [
+                        {
+                            "proficiency": "Simple Weapon Proficiency",
+                            "name": "Ratcatcher",
+                            "damangeAndType": "1.50 [1d8] + 4 Pierce, Magic",
+                            "criticalThreatRange": "17-20 / x3",
+                            "weaponType": [
+                                {
+                                    "weaponCategory": "Light Crossbow",
+                                    "damageCategory": "/ Ranged weapons"
+                                }
+                            ],
+                            "absRaceRequired": "None",
+                            "minLevel": "8",
+                            "requiredTrait": "None",
+                            "umd": "No UMD needed",
+                            "handedness": "",
+                            "attackMod": "DEX",
+                            "damageMod": "N/A",
+                            "binding": "Bound to Account on Acquire",
+                            "binding_url": "https://ddowiki.com/page/Bind",
+                            "durability": "125",
+                            "material": "Wood",
+                            "material_url": "https://ddowiki.com/page/Wood",
+                            "hardness": "10",
+                            "baseValue": "3,203pp 5gp",
+                            "weight": "4 lbs",
+                            "upgradable": "Not upgradeable",
+                            "description": "A small crossbow custom-made for a halfling.",
+                            "enchantments": [
+                                {
+                                    "enchantment": [
+                                        {
+                                            "name": "+4 Enhancement Bonus",
+                                            "name_url": "https://ddowiki.com/page/Enhancement_bonus",
+                                            "fullText": "+4 Enhancement Bonus"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "enchantment": [
+                                        {
+                                            "name": "Vermin Bane",
+                                            "name_url": "https://ddowiki.com/page/Bane_(enchantment)",
+                                            "fullText": "Vermin Bane"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "oneOfEnchantment": [
+                                        {},
+                                        {},
+                                        {},
+                                        {},
+                                        {},
+                                        {},
+                                        {},
+                                        {},
+                                        {},
+                                        {},
+                                        {},
+                                        {},
+                                        {},
+                                        {},
+                                        {},
+                                        {}
+                                    ],
+                                    "enchantment": [
+                                        {
+                                            "fullText": "Empty Red Augment Slot"
+                                        }
+                                    ]
+                                }
+                            ],
+                            "locationInformation": [
+                                {
+                                    "location": "The Abandoned Excavation",
+                                    "location_url": "https://ddowiki.com/page/The_Abandoned_Excavation",
+                                    "locationExtra": ", End reward"
+                                }
+                            ]
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "weapon": [
+                {
+                    "name": "The Diplomancer (level 10)",
+                    "damangeAndType": "1.50[1d8] +4 Pierce, Magic",
+                    "minLevel": "10",
+                    "binding": "Bound to Account on Acquire",
+                    "quest": "Anniversary Party",
+                    "criticalProfile": "",
+                    "enchantments": "+4 Enhancement Bonus",
+                    "enchantments_url": "https://ddowiki.com/page/Enhancement_bonus",
+                    "errata": "",
+                    "weaponDetail": [
+                        {
+                            "proficiency": "Simple Weapon Proficiency",
+                            "name": "The Diplomancer (level 10)",
+                            "damangeAndType": "1.50[1d8] +4 Pierce, Magic",
+                            "criticalThreatRange": "19-20 / x2",
+                            "weaponType": [
+                                {
+                                    "weaponCategory": "Light Crossbow",
+                                    "damageCategory": "/ Ranged weapons"
+                                }
+                            ],
+                            "absRaceRequired": "None",
+                            "minLevel": "10",
+                            "requiredTrait": "None",
+                            "umd": "No UMD needed",
+                            "handedness": "",
+                            "attackMod": "DEX",
+                            "damageMod": "N/A",
+                            "binding": "Bound to Account on Acquire",
+                            "binding_url": "https://ddowiki.com/page/Bind",
+                            "durability": "75",
+                            "material": "Wood",
+                            "material_url": "https://ddowiki.com/page/Wood",
+                            "hardness": "10",
+                            "baseValue": "3pp",
+                            "weight": "4 lbs",
+                            "upgradable": "Not upgradeable",
+                            "description": "Ask questions first. Shoot later.",
+                            "enchantments": [
+                                {
+                                    "enchantment": [
+                                        {
+                                            "name": "+4 Enhancement Bonus",
+                                            "name_url": "https://ddowiki.com/page/Enhancement_bonus",
+                                            "fullText": "+4 Enhancement Bonus"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "enchantment": [
+                                        {
+                                            "name": "Bleeding 3",
+                                            "name_url": "https://ddowiki.com/page/Bleeding",
+                                            "fullText": "Bleeding 3"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "enchantment": [
+                                        {
+                                            "name": "Impactful 3",
+                                            "name_url": "https://ddowiki.com/page/Impactful",
+                                            "fullText": "Impactful 3"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "enchantment": [
+                                        {
+                                            "name": "Distant Diversion +9%",
+                                            "name_url": "https://ddowiki.com/page/Diversion",
+                                            "fullText": "Distant Diversion +9%"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "enchantment": [
+                                        {
+                                            "name": "Diplomacy +12",
+                                            "name_url": "https://ddowiki.com/page/Diplomacy",
+                                            "fullText": "Diplomacy +12"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "oneOfEnchantment": [
+                                        {},
+                                        {},
+                                        {},
+                                        {},
+                                        {},
+                                        {},
+                                        {},
+                                        {},
+                                        {},
+                                        {},
+                                        {},
+                                        {},
+                                        {},
+                                        {},
+                                        {},
+                                        {},
+                                        {},
+                                        {},
+                                        {},
+                                        {},
+                                        {},
+                                        {},
+                                        {},
+                                        {},
+                                        {}
+                                    ],
+                                    "enchantment": [
+                                        {
+                                            "fullText": "Empty Orange Augment Slot"
+                                        }
+                                    ]
+                                }
+                            ],
+                            "locationInformation": [
+                                {
+                                    "location": "Party Favors",
+                                    "location_url": "https://ddowiki.com/page/Item:Party_Favor",
+                                    "locationExtra": ", Turn in 20"
+                                }
+                            ]
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "weapon": [
+                {
+                    "name": "Alchemical Light Crossbow",
+                    "damangeAndType": "2 [1d8] + 5 Pierce, Magic",
+                    "minLevel": "12",
+                    "binding": "Unbound",
+                    "quest": "The Master Artificer, Either End chest",
+                    "criticalProfile": "",
+                    "enchantments": "+5 Enhancement Bonus",
+                    "enchantments_url": "https://ddowiki.com/page/Enhancement_bonus",
+                    "errata": "",
+                    "weaponDetail": [
+                        {
+                            "proficiency": "Simple Weapon Proficiency",
+                            "name": "Alchemical Light Crossbow",
+                            "damangeAndType": "2 [1d8] + 5 Pierce, Magic",
+                            "criticalThreatRange": "19-20 / x2",
+                            "weaponType": [
+                                {
+                                    "weaponCategory": "Light Crossbow",
+                                    "damageCategory": "/ Ranged weapons"
+                                }
+                            ],
+                            "absRaceRequired": "None",
+                            "minLevel": "12",
+                            "requiredTrait": "None",
+                            "umd": "No UMD needed",
+                            "handedness": "",
+                            "attackMod": "DEX",
+                            "damageMod": "N/A",
+                            "binding": "Unbound",
+                            "binding_url": "https://ddowiki.com/page/Bind",
+                            "durability": "145",
+                            "material": "Steel",
+                            "material_url": "https://ddowiki.com/page/Steel",
+                            "hardness": "17",
+                            "baseValue": "10,203pp 5gp",
+                            "weight": "4 lbs",
+                            "upgradable": "Alchemical Crafting",
+                            "description": "A simple ranged weapon consisting of a small bow mounted crosswise on a heavy wooden stock.",
+                            "enchantments": [
+                                {
+                                    "enchantment": [
+                                        {
+                                            "name": "+5 Enhancement Bonus",
+                                            "name_url": "https://ddowiki.com/page/Enhancement_bonus",
+                                            "fullText": "+5 Enhancement Bonus"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "enchantment": [
+                                        {
+                                            "name": "Alchemical (Prototype)",
+                                            "name_url": "https://ddowiki.com/page/Alchemical_Crafting",
+                                            "fullText": "Alchemical (Prototype)"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "enchantment": [
+                                        {
+                                            "name": "Mythic Weapon Boost",
+                                            "name_url": "https://ddowiki.com/page/Mythic_Boost",
+                                            "fullText": "Mythic Weapon Boost +2 or +4"
+                                        }
+                                    ]
+                                }
+                            ],
+                            "locationInformation": [
+                                {
+                                    "location": "The Master Artificer",
+                                    "location_url": "https://ddowiki.com/page/The_Master_Artificer",
+                                    "locationExtra": ", Either End chest"
+                                }
+                            ]
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "weapon": [
+                {
+                    "name": "Green Steel Light Crossbow",
+                    "damangeAndType": "1.50 [1d8] + 5 Pierce, Evil, Magic",
+                    "minLevel": "12",
+                    "binding": "Bound to Character on Equip",
+                    "quest": "Altar of Fecundity, Manufactured Ingredient Recipes",
+                    "criticalProfile": "",
+                    "enchantments": "+5 Enhancement Bonus",
+                    "enchantments_url": "https://ddowiki.com/page/Enhancement_bonus",
+                    "errata": "",
+                    "weaponDetail": [
+                        {
+                            "proficiency": "Simple Weapon Proficiency",
+                            "name": "Green Steel Light Crossbow",
+                            "damangeAndType": "1.50 [1d8] + 5 Pierce, Evil, Magic",
+                            "criticalThreatRange": "19-20 / x2",
+                            "weaponType": [
+                                {
+                                    "weaponCategory": "Light Crossbow",
+                                    "damageCategory": "/ Ranged weapons"
+                                }
+                            ],
+                            "absRaceRequired": "None",
+                            "minLevel": "12",
+                            "requiredTrait": "None",
+                            "umd": "No UMD needed",
+                            "handedness": "",
+                            "attackMod": "DEX",
+                            "damageMod": "N/A",
+                            "binding": "Bound to Character on Equip",
+                            "binding_url": "https://ddowiki.com/page/Bind",
+                            "durability": "125",
+                            "material": "Steel",
+                            "material_url": "https://ddowiki.com/page/Steel",
+                            "hardness": "15",
+                            "baseValue": "5,403pp 5gp",
+                            "weight": "4 lbs",
+                            "upgradable": "Green Steel",
+                            "tips": [
+                                {
+                                    "tip": "+5 Green Steel Light Crossbow"
+                                },
+                                {
+                                    "tip": "Ore of Travail\nLocust Husk\nChipmunk Funk\nGlistening Pebbles\nGreen Briar Twigs\nEberron Energy Cell"
+                                },
+                                {
+                                    "tip": "Blue Taper\nGlistening Pebbles\nGreen Briar Twigs\nBitterscrub Fungus\nChipmunk Funk\nEberron Energy Cell"
+                                },
+                                {
+                                    "tip": "Wondrous Oil\nLocust Husk\nLammanian Lily Petals\nChipmunk Funk\nBitterscrub Fungus OR Green Briar Twigs\nEberron Energy Cell"
+                                },
+                                {
+                                    "tip": "Shavarath Signet Stone\nShavarath Stone of Might\nShavarath Stone of Battle\nShavarath Stone of Strategy\nShavarath Stone of Foresight\nShavarath Stone of Victory"
+                                },
+                                {
+                                    "tip": "Medium Splintered Horn"
+                                }
+                            ],
+                            "description": "A simple ranged weapon consisting of a small bow mounted crosswise on a light wooden stock.",
+                            "enchantments": [
+                                {
+                                    "enchantment": [
+                                        {
+                                            "name": "+5 Enhancement Bonus",
+                                            "name_url": "https://ddowiki.com/page/Enhancement_bonus",
+                                            "fullText": "+5 Enhancement Bonus"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "enchantment": [
+                                        {
+                                            "name": "Green Steel",
+                                            "name_url": "https://ddowiki.com/page/Green_Steel",
+                                            "fullText": "Green Steel"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "enchantment": [
+                                        {
+                                            "name": "Mythic Weapon Boost",
+                                            "name_url": "https://ddowiki.com/page/Mythic_Boost",
+                                            "fullText": "Mythic Weapon Boost +2 or +4"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "oneOfEnchantment": [{}, {}, {}, {}, {}],
+                                    "enchantment": [
+                                        {
+                                            "name": "Ore of Travail",
+                                            "name_url": "https://ddowiki.com/page/Ore_of_Travail",
+                                            "fullText": "Locust Husk\nChipmunk Funk\nGlistening Pebbles\nGreen Briar Twigs\nEberron Energy Cell"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "oneOfEnchantment": [{}, {}, {}, {}, {}],
+                                    "enchantment": [
+                                        {
+                                            "name": "Blue Taper",
+                                            "name_url": "https://ddowiki.com/page/Blue_Taper",
+                                            "fullText": "Glistening Pebbles\nGreen Briar Twigs\nBitterscrub Fungus\nChipmunk Funk\nEberron Energy Cell"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "oneOfEnchantment": [{}, {}, {}, {}, {}],
+                                    "enchantment": [
+                                        {
+                                            "name": "Wondrous Oil",
+                                            "name_url": "https://ddowiki.com/page/Wondrous_Oil",
+                                            "fullText": "Locust Husk\nLammanian Lily Petals\nChipmunk Funk\nBitterscrub Fungus OR Green Briar Twigs\nEberron Energy Cell"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "oneOfEnchantment": [{}, {}, {}, {}, {}],
+                                    "enchantment": [{}]
+                                },
+                                {
+                                    "enchantment": [
+                                        {
+                                            "name": "Medium Splintered Horn",
+                                            "name_url": "https://ddowiki.com/page/Medium_Splintered_Horn",
+                                            "fullText": "Medium Splintered Horn"
+                                        }
+                                    ]
+                                }
+                            ],
+                            "locationInformation": [
+                                {
+                                    "location": "Manufactured Ingredient Recipes",
+                                    "location_url": "https://ddowiki.com/page/Altar_of_Fecundity_-_Manufactured_Ingredient_Recipes",
+                                    "locationExtra": ","
+                                }
+                            ]
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "weapon": [
+                {
+                    "name": "Nightshade Shooter",
+                    "damangeAndType": "2[1d8] +5 Pierce, Magic",
+                    "minLevel": "15",
+                    "binding": "Bound to Account on Acquire",
+                    "quest": "The Same Old Song, End chest",
+                    "criticalProfile": "",
+                    "enchantments": "+5 Enhancement Bonus",
+                    "enchantments_url": "https://ddowiki.com/page/Enhancement_bonus",
+                    "errata": "",
+                    "weaponDetail": [
+                        {
+                            "proficiency": "Simple Weapon Proficiency",
+                            "name": "Nightshade Shooter",
+                            "damangeAndType": "If you are looking for destiny 2 account recovery, boosting or account carry broadcast-pa.com",
+                            "criticalThreatRange": "19-20 / x2",
+                            "weaponType": [
+                                {
+                                    "weaponCategory": "Light Crossbow",
+                                    "damageCategory": "/ Ranged weapons"
+                                }
+                            ],
+                            "absRaceRequired": "None",
+                            "minLevel": "15",
+                            "requiredTrait": "None",
+                            "umd": "No UMD needed",
+                            "handedness": "",
+                            "attackMod": "DEX",
+                            "damageMod": "N/A",
+                            "binding": "Bound to Account on Acquire",
+                            "binding_url": "https://ddowiki.com/page/Bind",
+                            "durability": "225",
+                            "material": "Adamantine",
+                            "material_url": "https://ddowiki.com/page/Adamantine",
+                            "hardness": "25",
+                            "baseValue": "6,003pp 5gp",
+                            "weight": "4 lbs",
+                            "upgradable": "Not upgradeable",
+                            "description": "Fires bolts that have been prepared with an incredibly powerful poison. Handle with care.",
+                            "enchantments": [
+                                {
+                                    "enchantment": [
+                                        {
+                                            "name": "+5 Enhancement Bonus",
+                                            "name_url": "https://ddowiki.com/page/Enhancement_bonus",
+                                            "fullText": "+5 Enhancement Bonus"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "enchantment": [
+                                        {
+                                            "name": "Vorpal",
+                                            "name_url": "https://ddowiki.com/page/Vorpal#Vorpal",
+                                            "fullText": "Vorpal"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "enchantment": [
+                                        {
+                                            "name": "Poisonous 4",
+                                            "name_url": "https://ddowiki.com/page/Poisonous",
+                                            "fullText": "Poisonous 4"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "enchantment": [
+                                        {
+                                            "name": "Nightshade Venom",
+                                            "name_url": "https://ddowiki.com/page/Nightshade_Venom",
+                                            "fullText": "Nightshade Venom"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "enchantment": [
+                                        {
+                                            "name": "Wounding",
+                                            "name_url": "https://ddowiki.com/page/Wounding",
+                                            "fullText": "Wounding 2"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "oneOfEnchantment": [
+                                        {},
+                                        {},
+                                        {},
+                                        {},
+                                        {},
+                                        {},
+                                        {},
+                                        {},
+                                        {},
+                                        {},
+                                        {},
+                                        {},
+                                        {},
+                                        {},
+                                        {},
+                                        {}
+                                    ],
+                                    "enchantment": [
+                                        {
+                                            "fullText": "Empty Red Augment Slot"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "enchantment": [
+                                        {
+                                            "name": "Mythic Weapon Boost",
+                                            "name_url": "https://ddowiki.com/page/Mythic_Boost",
+                                            "fullText": "Mythic Weapon Boost +2 or +4"
+                                        }
+                                    ]
+                                }
+                            ],
+                            "locationInformation": [
+                                {
+                                    "location": "The Same Old Song",
+                                    "location_url": "https://ddowiki.com/page/The_Same_Old_Song",
+                                    "locationExtra": ", End chest"
+                                }
+                            ]
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "weapon": [
+                {
+                    "name": "Sureshot*",
+                    "damangeAndType": "2[1d8] + 3 Pierce, Chaotic, Magic",
+                    "minLevel": "15",
+                    "binding": "Bound to Character on Acquire",
+                    "quest": "Advance to level 15",
+                    "criticalProfile": "",
+                    "enchantments": "+3 Enhancement Bonus",
+                    "enchantments_url": "https://ddowiki.com/page/Enhancement_bonus",
+                    "itemId": "Sureshot",
+                    "url": "https://ddowiki.com/page/Item:Sureshot",
+                    "errata": ""
+                }
+            ]
+        },
+        {
+            "weapon": [
+                {
+                    "name": "The Diplomancer (level 15)",
+                    "damangeAndType": "1.50[1d8] +5 Pierce, Magic",
+                    "minLevel": "15",
+                    "binding": "Bound to Account on Acquire",
+                    "quest": "Anniversary Party",
+                    "criticalProfile": "",
+                    "enchantments": "+5 Enhancement Bonus",
+                    "enchantments_url": "https://ddowiki.com/page/Enhancement_bonus",
+                    "errata": "",
+                    "weaponDetail": [
+                        {
+                            "proficiency": "Simple Weapon Proficiency",
+                            "name": "The Diplomancer (level 15)",
+                            "damangeAndType": "1.50[1d8] +5 Pierce, Magic",
+                            "criticalThreatRange": "19-20 / x2",
+                            "weaponType": [
+                                {
+                                    "weaponCategory": "Light Crossbow",
+                                    "damageCategory": "/ Ranged weapons"
+                                }
+                            ],
+                            "absRaceRequired": "None",
+                            "minLevel": "15",
+                            "requiredTrait": "None",
+                            "umd": "No UMD needed",
+                            "handedness": "",
+                            "attackMod": "DEX",
+                            "damageMod": "N/A",
+                            "binding": "Bound to Account on Acquire",
+                            "binding_url": "https://ddowiki.com/page/Bind",
+                            "durability": "75",
+                            "material": "Wood",
+                            "material_url": "https://ddowiki.com/page/Wood",
+                            "hardness": "10",
+                            "baseValue": "3pp 5gp",
+                            "weight": "4 lbs",
+                            "upgradable": "Not upgradeable",
+                            "description": "Ask questions first. Shoot later.",
+                            "enchantments": [
+                                {
+                                    "enchantment": [
+                                        {
+                                            "name": "+5 Enhancement Bonus",
+                                            "name_url": "https://ddowiki.com/page/Enhancement_bonus",
+                                            "fullText": "+5 Enhancement Bonus"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "enchantment": [
+                                        {
+                                            "name": "Bleeding 4",
+                                            "name_url": "https://ddowiki.com/page/Bleeding",
+                                            "fullText": "Bleeding 4"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "enchantment": [
+                                        {
+                                            "name": "Impactful 4",
+                                            "name_url": "https://ddowiki.com/page/Impactful",
+                                            "fullText": "Impactful 4"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "enchantment": [
+                                        {
+                                            "name": "Distant Diversion +12%",
+                                            "name_url": "https://ddowiki.com/page/Diversion",
+                                            "fullText": "Distant Diversion +12%"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "enchantment": [
+                                        {
+                                            "name": "Diplomacy +16",
+                                            "name_url": "https://ddowiki.com/page/Diplomacy",
+                                            "fullText": "Diplomacy +16"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "oneOfEnchantment": [
+                                        {},
+                                        {},
+                                        {},
+                                        {},
+                                        {},
+                                        {},
+                                        {},
+                                        {},
+                                        {},
+                                        {},
+                                        {},
+                                        {},
+                                        {},
+                                        {},
+                                        {},
+                                        {},
+                                        {},
+                                        {},
+                                        {},
+                                        {},
+                                        {},
+                                        {},
+                                        {},
+                                        {},
+                                        {}
+                                    ],
+                                    "enchantment": [
+                                        {
+                                            "fullText": "Empty Orange Augment Slot"
+                                        }
+                                    ]
+                                }
+                            ],
+                            "locationInformation": [
+                                {
+                                    "location": "Party Favors",
+                                    "location_url": "https://ddowiki.com/page/Item:Party_Favor",
+                                    "locationExtra": ", Turn in 40"
+                                }
+                            ]
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "weapon": [
+                {
+                    "name": "Screamshatter",
+                    "damangeAndType": "1.5[1d8] + 5 Pierce, Magic",
+                    "minLevel": "17",
+                    "binding": "Bound to Account on Acquire",
+                    "quest": "Safety in Numbers, End Chest",
+                    "criticalProfile": "",
+                    "enchantments": "+5 Enhancement Bonus",
+                    "enchantments_url": "https://ddowiki.com/page/Enhancement_bonus",
+                    "errata": "",
+                    "weaponDetail": [
+                        {
+                            "proficiency": "Simple Weapon Proficiency",
+                            "name": "Screamshatter",
+                            "damangeAndType": "1.5[1d8] + 5 Pierce, Magic",
+                            "criticalThreatRange": "19-20 / x2",
+                            "weaponType": [
+                                {
+                                    "weaponCategory": "Light Crossbow",
+                                    "damageCategory": "/ Ranged weapons"
+                                }
+                            ],
+                            "absRaceRequired": "None",
+                            "minLevel": "17",
+                            "requiredTrait": "None",
+                            "umd": "No UMD needed",
+                            "handedness": "",
+                            "attackMod": "Dex",
+                            "damageMod": "N/A",
+                            "binding": "Bound to Account on Acquire",
+                            "binding_url": "https://ddowiki.com/page/Bind",
+                            "durability": "245",
+                            "material": "Adamantine",
+                            "material_url": "https://ddowiki.com/page/Adamantine",
+                            "hardness": "27",
+                            "baseValue": "6,803pp 5gp",
+                            "weight": "4 lbs",
+                            "upgradable": "Not upgradeable",
+                            "description": "Bolts fired from this weapon fire so fast it sounds like they're screaming.",
+                            "enchantments": [
+                                {
+                                    "enchantment": [
+                                        {
+                                            "name": "+5 Enhancement Bonus",
+                                            "name_url": "https://ddowiki.com/page/Enhancement_bonus",
+                                            "fullText": "+5 Enhancement Bonus"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "enchantment": [
+                                        {
+                                            "name": "Reverberating 4",
+                                            "name_url": "https://ddowiki.com/page/Reverberating",
+                                            "fullText": "Reverberating 4"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "enchantment": [
+                                        {
+                                            "name": "Screeching 9",
+                                            "name_url": "https://ddowiki.com/page/Screeching",
+                                            "fullText": "Screeching 9"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "enchantment": [
+                                        {
+                                            "name": "Improved Destruction",
+                                            "name_url": "https://ddowiki.com/page/Destruction_(enchantment)#Improved_Destruction",
+                                            "fullText": "Improved Destruction"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "enchantment": [
+                                        {
+                                            "name": "Lightning Strike",
+                                            "name_url": "https://ddowiki.com/page/Lightning_Strike",
+                                            "fullText": "Lightning Strike"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "oneOfEnchantment": [
+                                        {},
+                                        {},
+                                        {},
+                                        {},
+                                        {},
+                                        {},
+                                        {},
+                                        {},
+                                        {},
+                                        {},
+                                        {},
+                                        {},
+                                        {},
+                                        {},
+                                        {},
+                                        {}
+                                    ],
+                                    "enchantment": [
+                                        {
+                                            "fullText": "Empty Red Augment Slot"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "enchantment": [
+                                        {
+                                            "name": "Mythic Weapon Boost",
+                                            "name_url": "https://ddowiki.com/page/Mythic_Boost",
+                                            "fullText": "Mythic Weapon Boost +2 or +4"
+                                        }
+                                    ]
+                                }
+                            ],
+                            "locationInformation": [
+                                {
+                                    "location": "Safety in Numbers",
+                                    "location_url": "https://ddowiki.com/page/Safety_in_Numbers",
+                                    "locationExtra": ", End Chest"
+                                }
+                            ]
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "weapon": [
+                {
+                    "name": "The Diplomancer (level 20)",
+                    "damangeAndType": "2[1d8] +6 Pierce, Magic",
+                    "minLevel": "20",
+                    "binding": "Bound to Account on Acquire",
+                    "quest": "Anniversary Party",
+                    "criticalProfile": "",
+                    "enchantments": "+6 Enhancement Bonus",
+                    "enchantments_url": "https://ddowiki.com/page/Enhancement_bonus",
+                    "errata": "",
+                    "weaponDetail": [
+                        {
+                            "proficiency": "Simple Weapon Proficiency",
+                            "name": "The Diplomancer (level 20)",
+                            "damangeAndType": "2[1d8] +6 Pierce, Magic",
+                            "criticalThreatRange": "19-20 / x2",
+                            "weaponType": [
+                                {
+                                    "weaponCategory": "Light Crossbow",
+                                    "damageCategory": "/ Ranged weapons"
+                                }
+                            ],
+                            "absRaceRequired": "None",
+                            "minLevel": "20",
+                            "requiredTrait": "None",
+                            "umd": "No UMD needed",
+                            "handedness": "",
+                            "attackMod": "DEX",
+                            "damageMod": "N/A",
+                            "binding": "Bound to Account on Acquire",
+                            "binding_url": "https://ddowiki.com/page/Bind",
+                            "durability": "75",
+                            "material": "Wood",
+                            "material_url": "https://ddowiki.com/page/Wood",
+                            "hardness": "10",
+                            "baseValue": "3pp 5gp",
+                            "weight": "4 lbs",
+                            "upgradable": "Not upgradeable",
+                            "description": "Ask questions first. Shoot later.",
+                            "enchantments": [
+                                {
+                                    "enchantment": [
+                                        {
+                                            "name": "+6 Enhancement Bonus",
+                                            "name_url": "https://ddowiki.com/page/Enhancement_bonus",
+                                            "fullText": "+6 Enhancement Bonus"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "enchantment": [
+                                        {
+                                            "name": "Bleeding 4",
+                                            "name_url": "https://ddowiki.com/page/Bleeding",
+                                            "fullText": "Bleeding 4"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "enchantment": [
+                                        {
+                                            "name": "Impactful 4",
+                                            "name_url": "https://ddowiki.com/page/Impactful",
+                                            "fullText": "Impactful 4"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "enchantment": [
+                                        {
+                                            "name": "Distant Diversion +15%",
+                                            "name_url": "https://ddowiki.com/page/Diversion",
+                                            "fullText": "Distant Diversion +15%"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "enchantment": [
+                                        {
+                                            "name": "Diplomacy +17",
+                                            "name_url": "https://ddowiki.com/page/Diplomacy",
+                                            "fullText": "Diplomacy +17"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "oneOfEnchantment": [
+                                        {},
+                                        {},
+                                        {},
+                                        {},
+                                        {},
+                                        {},
+                                        {},
+                                        {},
+                                        {},
+                                        {},
+                                        {},
+                                        {},
+                                        {},
+                                        {},
+                                        {},
+                                        {},
+                                        {},
+                                        {},
+                                        {},
+                                        {},
+                                        {},
+                                        {},
+                                        {},
+                                        {},
+                                        {}
+                                    ],
+                                    "enchantment": [
+                                        {
+                                            "fullText": "Empty Orange Augment Slot"
+                                        }
+                                    ]
+                                }
+                            ],
+                            "locationInformation": [
+                                {
+                                    "location": "Party Favors",
+                                    "location_url": "https://ddowiki.com/page/Item:Party_Favor",
+                                    "locationExtra": ", Turn in 60"
+                                }
+                            ]
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "weapon": [
+                {
+                    "name": "Thunder-Forged Alloy Light Crossbow",
+                    "damangeAndType": "3.50 [1d8] + 9 Pierce, Silver, Adamantine, Mithral, Cold Iron, Magic, Byeshk",
+                    "minLevel": "22",
+                    "binding": "Unbound",
+                    "quest": "Magma Forge, Crafted from various ingredients",
+                    "criticalProfile": "",
+                    "enchantments": "+9 Enhancement Bonus",
+                    "enchantments_url": "https://ddowiki.com/page/Enhancement_bonus",
+                    "errata": "",
+                    "weaponDetail": [
+                        {
+                            "proficiency": "Simple Weapon Proficiency",
+                            "name": "Thunder-Forged Alloy Light Crossbow",
+                            "damangeAndType": "3.50 [1d8] + 9 Pierce, Silver, Adamantine, Mithral, Cold Iron, Magic, Byeshk",
+                            "criticalThreatRange": "19-20 / x2",
+                            "weaponType": [
+                                {
+                                    "weaponCategory": "Light Crossbow",
+                                    "damageCategory": "/ Ranged weapons"
+                                }
+                            ],
+                            "absRaceRequired": "None",
+                            "minLevel": "22",
+                            "requiredTrait": "None",
+                            "umd": "No UMD needed",
+                            "handedness": "",
+                            "attackMod": "DEX",
+                            "damageMod": "N/A",
+                            "binding": "Unbound",
+                            "binding_url": "https://ddowiki.com/page/Bind",
+                            "durability": "205",
+                            "material": "Adamantine",
+                            "material_url": "https://ddowiki.com/page/Adamantine",
+                            "hardness": "30",
+                            "baseValue": "8,803pp 5gp",
+                            "weight": "4 lbs",
+                            "upgradable": "Thunder-Forged",
+                            "tips": [
+                                {
+                                    "tip": "20 Thunder-Forged Dwarven Ingots"
+                                },
+                                {
+                                    "tip": "15 Commendations of Valor"
+                                }
+                            ],
+                            "description": "A great crossbow forged from metals long in proximity to dragons under Thunderholme.",
+                            "enchantments": [
+                                {
+                                    "enchantment": [
+                                        {
+                                            "name": "+9 Enhancement Bonus",
+                                            "name_url": "https://ddowiki.com/page/Enhancement_bonus",
+                                            "fullText": "+9 Enhancement Bonus"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "oneOfEnchantment": [
+                                        {},
+                                        {},
+                                        {},
+                                        {},
+                                        {},
+                                        {},
+                                        {},
+                                        {},
+                                        {},
+                                        {},
+                                        {},
+                                        {},
+                                        {},
+                                        {},
+                                        {},
+                                        {},
+                                        {},
+                                        {},
+                                        {},
+                                        {},
+                                        {},
+                                        {},
+                                        {},
+                                        {},
+                                        {}
+                                    ],
+                                    "enchantment": [
+                                        {
+                                            "fullText": "Empty Orange Augment Slot"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "enchantment": [
+                                        {
+                                            "name": "Thunder-Forged (Tier 0)",
+                                            "name_url": "https://ddowiki.com/page/Thunder-Forged",
+                                            "fullText": "Thunder-Forged (Tier 0)"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "enchantment": [
+                                        {
+                                            "name": "Mythic Weapon Boost",
+                                            "name_url": "https://ddowiki.com/page/Mythic_Boost",
+                                            "fullText": "Mythic Weapon Boost +2 or +4"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "enchantment": [
+                                        {
+                                            "fullText": "20 Thunder-Forged Dwarven Ingots",
+                                            "fullText_url": "https://ddowiki.com/page/Item:Thunder-Forged_Dwarven_Ingot"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "enchantment": [
+                                        {
+                                            "fullText": "15 Commendations of Valor",
+                                            "fullText_url": "https://ddowiki.com/page/Item:Commendation_of_Valor"
+                                        }
+                                    ]
+                                }
+                            ],
+                            "locationInformation": [
+                                {
+                                    "location": "Magma Forge",
+                                    "location_url": "https://ddowiki.com/page/Magma_Forge",
+                                    "locationExtra": ", Crafted from various ingredients"
+                                }
+                            ]
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "weapon": [
+                {
+                    "name": "The Diplomancer (level 25)",
+                    "damangeAndType": "2.50[1d8] +7 Pierce, Magic",
+                    "minLevel": "25",
+                    "binding": "Bound to Account on Acquire",
+                    "quest": "Anniversary Party",
+                    "criticalProfile": "",
+                    "enchantments": "+7 Enhancement Bonus",
+                    "enchantments_url": "https://ddowiki.com/page/Enhancement_bonus",
+                    "errata": "",
+                    "weaponDetail": [
+                        {
+                            "proficiency": "Simple Weapon Proficiency",
+                            "name": "The Diplomancer (level 25)",
+                            "damangeAndType": "2.50[1d8] +7 Pierce, Magic",
+                            "criticalThreatRange": "19-20 / x2",
+                            "weaponType": [
+                                {
+                                    "weaponCategory": "Light Crossbow",
+                                    "damageCategory": "/ Ranged weapons"
+                                }
+                            ],
+                            "absRaceRequired": "None",
+                            "minLevel": "25",
+                            "requiredTrait": "None",
+                            "umd": "No UMD needed",
+                            "handedness": "",
+                            "attackMod": "DEX",
+                            "damageMod": "N/A",
+                            "binding": "Bound to Account on Acquire",
+                            "binding_url": "https://ddowiki.com/page/Bind",
+                            "durability": "75",
+                            "material": "Wood",
+                            "material_url": "https://ddowiki.com/page/Wood",
+                            "hardness": "10",
+                            "baseValue": "3pp 5gp",
+                            "weight": "4 lbs",
+                            "upgradable": "Not upgradeable",
+                            "description": "Ask questions first. Shoot later.",
+                            "enchantments": [
+                                {
+                                    "enchantment": [
+                                        {
+                                            "name": "+7 Enhancement Bonus",
+                                            "name_url": "https://ddowiki.com/page/Enhancement_bonus",
+                                            "fullText": "+7 Enhancement Bonus"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "enchantment": [
+                                        {
+                                            "name": "Bleeding 5",
+                                            "name_url": "https://ddowiki.com/page/Bleeding",
+                                            "fullText": "Bleeding 5"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "enchantment": [
+                                        {
+                                            "name": "Impactful 5",
+                                            "name_url": "https://ddowiki.com/page/Impactful",
+                                            "fullText": "Impactful 5"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "enchantment": [
+                                        {
+                                            "name": "Distant Diversion +18%",
+                                            "name_url": "https://ddowiki.com/page/Diversion",
+                                            "fullText": "Distant Diversion +18%"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "enchantment": [
+                                        {
+                                            "name": "Diplomacy +19",
+                                            "name_url": "https://ddowiki.com/page/Diplomacy",
+                                            "fullText": "Diplomacy +19"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "oneOfEnchantment": [
+                                        {},
+                                        {},
+                                        {},
+                                        {},
+                                        {},
+                                        {},
+                                        {},
+                                        {},
+                                        {},
+                                        {},
+                                        {},
+                                        {},
+                                        {},
+                                        {},
+                                        {},
+                                        {},
+                                        {},
+                                        {},
+                                        {},
+                                        {},
+                                        {},
+                                        {},
+                                        {},
+                                        {},
+                                        {}
+                                    ],
+                                    "enchantment": [
+                                        {
+                                            "fullText": "Empty Orange Augment Slot"
+                                        }
+                                    ]
+                                }
+                            ],
+                            "locationInformation": [
+                                {
+                                    "location": "Party Favors",
+                                    "location_url": "https://ddowiki.com/page/Item:Party_Favor",
+                                    "locationExtra": ", Turn in 80"
+                                }
+                            ]
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "weapon": [
+                {
+                    "name": "Legendary Green Steel Light Crossbow",
+                    "damangeAndType": "5[1d8] + 14 Pierce, Evil, Magic",
+                    "minLevel": "26",
+                    "binding": "Bound to Character on Acquire",
+                    "quest": "Altar of Fecundity, Manufactured Ingredient Recipes",
+                    "criticalProfile": "",
+                    "enchantments": "+14 Enhancement Bonus",
+                    "enchantments_url": "https://ddowiki.com/page/Enhancement_bonus",
+                    "errata": "",
+                    "weaponDetail": [
+                        {
+                            "proficiency": "Simple Weapon Proficiency",
+                            "name": "Legendary Green Steel Light Crossbow",
+                            "damangeAndType": "5[1d8] + 14 Pierce, Evil, Magic",
+                            "criticalThreatRange": "19-20 / x2",
+                            "weaponType": [
+                                {
+                                    "weaponCategory": "Light Crossbow",
+                                    "damageCategory": "/ Ranged weapons"
+                                }
+                            ],
+                            "absRaceRequired": "None",
+                            "minLevel": "26",
+                            "requiredTrait": "None",
+                            "umd": "No UMD needed",
+                            "handedness": "",
+                            "attackMod": "DEX",
+                            "damageMod": "N/A",
+                            "binding": "Bound to Character on Acquire",
+                            "binding_url": "https://ddowiki.com/page/Bind",
+                            "durability": "285",
+                            "material": "Steel",
+                            "material_url": "https://ddowiki.com/page/Steel",
+                            "hardness": "31",
+                            "baseValue": "30,051pp 3gp 3sp 6cp",
+                            "weight": "4 lbs",
+                            "upgradable": "Not upgradeable",
+                            "tips": [
+                                {
+                                    "tip": "+14 Legendary Green Steel Light Crossbow"
+                                },
+                                {
+                                    "tip": "100 Codex Runes"
+                                },
+                                {
+                                    "tip": "100 Commendations of Valor"
+                                },
+                                {
+                                    "tip": "Altar of Fecundity"
+                                }
+                            ],
+                            "description": "A simple ranged weapon consisting of a small bow mounted crosswise on a light wooden stock.",
+                            "enchantments": [
+                                {
+                                    "enchantment": [
+                                        {
+                                            "name": "+14 Enhancement Bonus",
+                                            "name_url": "https://ddowiki.com/page/Enhancement_bonus",
+                                            "fullText": "+14 Enhancement Bonus"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "enchantment": [
+                                        {
+                                            "name": "Legendary Green Steel",
+                                            "name_url": "https://ddowiki.com/page/Legendary_Green_Steel",
+                                            "fullText": "Legendary Green Steel"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "enchantment": [
+                                        {
+                                            "name": "Mythic Weapon Boost",
+                                            "name_url": "https://ddowiki.com/page/Mythic_Boost",
+                                            "fullText": "Mythic Weapon Boost +2 or +4"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "enchantment": [
+                                        {
+                                            "fullText": "Codex Runes",
+                                            "fullText_url": "https://ddowiki.com/page/Item:Codex_Rune"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "enchantment": [
+                                        {
+                                            "fullText": "100 Commendations of Valor",
+                                            "fullText_url": "https://ddowiki.com/page/Item:Commendation_of_Valor"
+                                        }
+                                    ]
+                                }
+                            ],
+                            "locationInformation": [
+                                {
+                                    "location": "Manufactured Ingredient Recipes",
+                                    "location_url": "https://ddowiki.com/page/Altar_of_Fecundity_-_Manufactured_Ingredient_Recipes",
+                                    "locationExtra": ","
+                                }
+                            ]
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "weapon": [
+                {
+                    "name": "Epic Smoldering Light Crossbow*",
+                    "damangeAndType": "5[1d8] + 7 Pierce, Magic",
+                    "minLevel": "26",
+                    "binding": "Unbound",
+                    "quest": "Temple of Elemental Evil Part One, and Temple of Elemental Evil Part Two any chest",
+                    "criticalProfile": "",
+                    "enchantments": "+7 Enhancement Bonus",
+                    "enchantments_url": "https://ddowiki.com/page/Enhancement_bonus",
+                    "itemId": "Epic Smoldering Light Crossbow",
+                    "url": "https://ddowiki.com/page/Item:Epic_Smoldering_Light_Crossbow",
+                    "errata": ""
+                }
+            ]
+        },
+        {
+            "weapon": [
+                {
+                    "name": "Epic Quenched Light Crossbow*",
+                    "damangeAndType": "5[1d8] + 7 Pierce, Magic",
+                    "minLevel": "26",
+                    "binding": "Unbound",
+                    "quest": "Temple of Elemental Evil Part One, and Temple of Elemental Evil Part Two any chest",
+                    "criticalProfile": "",
+                    "enchantments": "+7 Enhancement Bonus",
+                    "enchantments_url": "https://ddowiki.com/page/Enhancement_bonus",
+                    "itemId": "Epic Quenched Light Crossbow",
+                    "url": "https://ddowiki.com/page/Item:Epic_Quenched_Light_Crossbow",
+                    "errata": ""
+                }
+            ]
+        },
+        {
+            "weapon": [
+                {
+                    "name": "Epic Etched Light Crossbow*",
+                    "damangeAndType": "5[1d8] + 7 Pierce, Magic",
+                    "minLevel": "26",
+                    "binding": "Unbound",
+                    "quest": "Temple of Elemental Evil Part One, and Temple of Elemental Evil Part Two any chest",
+                    "criticalProfile": "",
+                    "enchantments": "+7 Enhancement Bonus",
+                    "enchantments_url": "https://ddowiki.com/page/Enhancement_bonus",
+                    "itemId": "Epic Etched Light Crossbow",
+                    "url": "https://ddowiki.com/page/Item:Epic_Etched_Light_Crossbow",
+                    "errata": ""
+                }
+            ]
+        },
+        {
+            "weapon": [
+                {
+                    "name": "Legendary Screamshatter",
+                    "damangeAndType": "5[1d8+2] + 15 Pierce, Magic",
+                    "minLevel": "29",
+                    "binding": "Bound to Account on Acquire",
+                    "quest": "Safety in Numbers, End Chest",
+                    "criticalProfile": "",
+                    "enchantments": "+15 Enhancement Bonus",
+                    "enchantments_url": "https://ddowiki.com/page/Enhancement_bonus",
+                    "errata": "",
+                    "weaponDetail": [
+                        {
+                            "proficiency": "Simple Weapon Proficiency",
+                            "name": "Legendary Screamshatter",
+                            "damangeAndType": "5[1d8+2] + 15 Pierce, Magic",
+                            "criticalThreatRange": "19-20 / x2",
+                            "weaponType": [
+                                {
+                                    "weaponCategory": "Light Crossbow",
+                                    "damageCategory": "/ Ranged weapons"
+                                }
+                            ],
+                            "absRaceRequired": "None",
+                            "minLevel": "29",
+                            "requiredTrait": "None",
+                            "umd": "No UMD needed",
+                            "handedness": "",
+                            "attackMod": "Dex",
+                            "damageMod": "N/A",
+                            "binding": "Bound to Account on Acquire",
+                            "binding_url": "https://ddowiki.com/page/Bind",
+                            "durability": "365",
+                            "material": "Adamantine",
+                            "material_url": "https://ddowiki.com/page/Adamantine",
+                            "hardness": "39",
+                            "baseValue": "11,603pp 5gp",
+                            "weight": "4 lbs",
+                            "upgradable": "Not upgradeable",
+                            "description": "Bolts fired from this weapon fire so fast it sounds like they're screaming.",
+                            "enchantments": [
+                                {
+                                    "enchantment": [
+                                        {
+                                            "name": "+15 Enhancement Bonus",
+                                            "name_url": "https://ddowiki.com/page/Enhancement_bonus",
+                                            "fullText": "+15 Enhancement Bonus"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "enchantment": [
+                                        {
+                                            "name": "Reverberating 9",
+                                            "name_url": "https://ddowiki.com/page/Reverberating",
+                                            "fullText": "Reverberating 9"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "enchantment": [
+                                        {
+                                            "name": "Screeching 22",
+                                            "name_url": "https://ddowiki.com/page/Screeching",
+                                            "fullText": "Screeching 22"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "enchantment": [
+                                        {
+                                            "name": "Improved Destruction",
+                                            "name_url": "https://ddowiki.com/page/Destruction_(enchantment)#Improved_Destruction",
+                                            "fullText": "Improved Destruction"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "enchantment": [
+                                        {
+                                            "name": "Lightning Strike",
+                                            "name_url": "https://ddowiki.com/page/Lightning_Strike",
+                                            "fullText": "Lightning Strike"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "oneOfEnchantment": [
+                                        {},
+                                        {},
+                                        {},
+                                        {},
+                                        {},
+                                        {},
+                                        {},
+                                        {},
+                                        {},
+                                        {},
+                                        {},
+                                        {},
+                                        {},
+                                        {},
+                                        {},
+                                        {}
+                                    ],
+                                    "enchantment": [
+                                        {
+                                            "fullText": "Empty Red Augment Slot"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "enchantment": [
+                                        {
+                                            "name": "Mythic Weapon Boost",
+                                            "name_url": "https://ddowiki.com/page/Mythic_Boost",
+                                            "fullText": "Mythic Weapon Boost +2 or +4"
+                                        }
+                                    ]
+                                }
+                            ],
+                            "locationInformation": [
+                                {
+                                    "location": "Safety in Numbers",
+                                    "location_url": "https://ddowiki.com/page/Safety_in_Numbers",
+                                    "locationExtra": ", End Chest"
+                                }
+                            ]
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "weapon": [
+                {
+                    "name": "Legendary Nightshade Shooter",
+                    "damangeAndType": "5.5[1d8+2] + 15 Pierce, Magic",
+                    "minLevel": "29",
+                    "binding": "Bound to Account on Acquire",
+                    "quest": "The Same Old Song, End Chest",
+                    "criticalProfile": "",
+                    "enchantments": "+15 Enhancement Bonus",
+                    "enchantments_url": "https://ddowiki.com/page/Enhancement_bonus",
+                    "errata": "",
+                    "weaponDetail": [
+                        {
+                            "proficiency": "Simple Weapon Proficiency",
+                            "name": "Legendary Nightshade Shooter",
+                            "damangeAndType": "Don't wait another day to get small business insurance. Hiscox Business Insurance",
+                            "criticalThreatRange": "19-20 / x2",
+                            "weaponType": [
+                                {
+                                    "weaponCategory": "Light Crossbow",
+                                    "damageCategory": "/ Ranged weapons"
+                                }
+                            ],
+                            "absRaceRequired": "None",
+                            "minLevel": "29",
+                            "requiredTrait": "None",
+                            "umd": "No UMD needed",
+                            "handedness": "",
+                            "attackMod": "Dex",
+                            "damageMod": "N/A",
+                            "binding": "Bound to Account on Acquire",
+                            "binding_url": "https://ddowiki.com/page/Bind",
+                            "durability": "365",
+                            "material": "Adamantine",
+                            "material_url": "https://ddowiki.com/page/Adamantine",
+                            "hardness": "39",
+                            "baseValue": "11,603pp 5gp",
+                            "weight": "4 lbs",
+                            "upgradable": "Not upgradeable",
+                            "description": "Fires bolts that have been prepared with an incredibly powerful poison. Handle with care.",
+                            "enchantments": [
+                                {
+                                    "enchantment": [
+                                        {
+                                            "name": "+15 Enhancement Bonus",
+                                            "name_url": "https://ddowiki.com/page/Enhancement_bonus",
+                                            "fullText": "+15 Enhancement Bonus"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "enchantment": [
+                                        {
+                                            "name": "Sovereign Vorpal",
+                                            "name_url": "https://ddowiki.com/page/Vorpal#Sovereign_Vorpal",
+                                            "fullText": "Sovereign Vorpal"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "enchantment": [
+                                        {
+                                            "name": "Poisonous 9",
+                                            "name_url": "https://ddowiki.com/page/Poisonous",
+                                            "fullText": "Poisonous 9"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "enchantment": [
+                                        {
+                                            "name": "Twining Hemlock",
+                                            "name_url": "https://ddowiki.com/edit/Twining_Hemlock?redlink=1",
+                                            "fullText": "Twining Hemlock"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "enchantment": [
+                                        {
+                                            "name": "Wounding",
+                                            "name_url": "https://ddowiki.com/page/Wounding",
+                                            "fullText": "Wounding 5"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "oneOfEnchantment": [
+                                        {},
+                                        {},
+                                        {},
+                                        {},
+                                        {},
+                                        {},
+                                        {},
+                                        {},
+                                        {},
+                                        {},
+                                        {},
+                                        {},
+                                        {},
+                                        {},
+                                        {},
+                                        {}
+                                    ],
+                                    "enchantment": [
+                                        {
+                                            "fullText": "Empty Red Augment Slot"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "enchantment": [
+                                        {
+                                            "name": "Mythic Weapon Boost",
+                                            "name_url": "https://ddowiki.com/page/Mythic_Boost",
+                                            "fullText": "Mythic Weapon Boost +2 or +4"
+                                        }
+                                    ]
+                                }
+                            ],
+                            "locationInformation": [
+                                {
+                                    "location": "The Same Old Song",
+                                    "location_url": "https://ddowiki.com/page/The_Same_Old_Song",
+                                    "locationExtra": ", End Chest"
+                                }
+                            ]
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "weapon": [
+                {
+                    "name": "The Diplomancer (level 30)",
+                    "damangeAndType": "5[1d8] +14 Pierce, Magic",
+                    "minLevel": "30",
+                    "binding": "Bound to Account on Acquire",
+                    "quest": "Anniversary Party",
+                    "criticalProfile": "",
+                    "enchantments": "+14 Enhancement Bonus",
+                    "enchantments_url": "https://ddowiki.com/page/Enhancement_bonus",
+                    "errata": "",
+                    "weaponDetail": [
+                        {
+                            "proficiency": "Simple Weapon Proficiency",
+                            "name": "The Diplomancer (level 30)",
+                            "damangeAndType": "5[1d8] +14 Pierce, Magic",
+                            "criticalThreatRange": "19-20 / x2",
+                            "weaponType": [
+                                {
+                                    "weaponCategory": "Light Crossbow",
+                                    "damageCategory": "/ Ranged weapons"
+                                }
+                            ],
+                            "absRaceRequired": "None",
+                            "minLevel": "30",
+                            "requiredTrait": "None",
+                            "umd": "No UMD needed",
+                            "handedness": "",
+                            "attackMod": "DEX",
+                            "damageMod": "N/A",
+                            "binding": "Bound to Account on Acquire",
+                            "binding_url": "https://ddowiki.com/page/Bind",
+                            "durability": "75",
+                            "material": "Wood",
+                            "material_url": "https://ddowiki.com/page/Wood",
+                            "hardness": "10",
+                            "baseValue": "3pp 5gp",
+                            "weight": "4 lbs",
+                            "upgradable": "Not upgradeable",
+                            "description": "Ask questions first. Shoot later.",
+                            "enchantments": [
+                                {
+                                    "enchantment": [
+                                        {
+                                            "name": "+14 Enhancement Bonus",
+                                            "name_url": "https://ddowiki.com/page/Enhancement_bonus",
+                                            "fullText": "+14 Enhancement Bonus"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "enchantment": [
+                                        {
+                                            "name": "Bleeding 7",
+                                            "name_url": "https://ddowiki.com/page/Bleeding",
+                                            "fullText": "Bleeding 7"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "enchantment": [
+                                        {
+                                            "name": "Impactful 7",
+                                            "name_url": "https://ddowiki.com/page/Impactful",
+                                            "fullText": "Impactful 7"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "enchantment": [
+                                        {
+                                            "name": "Distant Diversion +23%",
+                                            "name_url": "https://ddowiki.com/page/Diversion",
+                                            "fullText": "Distant Diversion +23%"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "enchantment": [
+                                        {
+                                            "name": "Diplomacy +22",
+                                            "name_url": "https://ddowiki.com/page/Diplomacy",
+                                            "fullText": "Diplomacy +22"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "oneOfEnchantment": [
+                                        {},
+                                        {},
+                                        {},
+                                        {},
+                                        {},
+                                        {},
+                                        {},
+                                        {},
+                                        {},
+                                        {},
+                                        {},
+                                        {},
+                                        {},
+                                        {},
+                                        {},
+                                        {},
+                                        {},
+                                        {},
+                                        {},
+                                        {},
+                                        {},
+                                        {},
+                                        {},
+                                        {},
+                                        {}
+                                    ],
+                                    "enchantment": [
+                                        {
+                                            "fullText": "Empty Orange Augment Slot"
+                                        }
+                                    ]
+                                }
+                            ],
+                            "locationInformation": [
+                                {
+                                    "location": "Party Favors",
+                                    "location_url": "https://ddowiki.com/page/Item:Party_Favor",
+                                    "locationExtra": ", Turn in 100"
+                                }
+                            ]
+                        }
+                    ]
+                }
+            ]
         }
-       ],
-       "absRaceRequired": "None",
-       "minLevel": "None",
-       "requiredTrait": "None",
-       "umd": "No UMD needed",
-       "handedness": "",
-       "attackMod": "DEX",
-       "damageMod": "N/A",
-       "binding": "Bound to Character on Acquire",
-       "binding_url": "https://ddowiki.com/page/Bind",
-       "durability": "85",
-       "material": "Wood",
-       "material_url": "https://ddowiki.com/page/Wood",
-       "hardness": "6",
-       "baseValue": "3pp 5gp",
-       "weight": "4 lbs",
-       "upgradable": "Not upgradeable",
-       "tips": [
-        {
-         "tip": "This item cannot be fed to sentient jewels."
-        },
-        {
-         "tip": "This is one of the starting weapon selection choices from the Rogue, Jeets Shimis in the game's starting area, Shipwreck Shore."
-        }
-       ],
-       "description": "A small crossbow. The stock is damp, and riddled with fine cracks. Double-click on this weapon to equip it.",
-       "enchantments": [
-        {
-         "enchantment": [
-          {
-           "name": "Starter",
-           "name_url": "https://ddowiki.com/page/Starter",
-           "fullText": "Starter"
-          }
-         ]
-        },
-        {
-         "enchantment": [
-          {
-           "fullText": "damage",
-           "fullText_url": "https://ddowiki.com/page/Damage"
-          }
-         ]
-        },
-        {
-         "enchantment": [
-          {
-           "name": "Mythic Weapon Boost",
-           "name_url": "https://ddowiki.com/page/Mythic_Boost",
-           "fullText": "Mythic Weapon Boost +2 or +4"
-          }
-         ]
-        },
-        {
-         "enchantment": [
-          {
-           "fullText": "This item cannot be fed to sentient jewels."
-          }
-         ]
-        },
-        {
-         "enchantment": [
-          {
-          }
-         ]
-        }
-       ],
-       "locationInformation": [
-        {
-         "location": "Jeets Shimis",
-         "location_url": "https://ddowiki.com/page/Jeets_Shimis",
-         "locationExtra": ","
-        }
-       ]
-      }
-     ]
-    }
-   ]
-  },
-  {
-   "weapon": [
-    {
-     "name": "Guidance",
-     "damangeAndType": "[1d8] + 2 Pierce, Good, Magic",
-     "minLevel": "2",
-     "binding": "Bound to Account on Acquire",
-     "quest": "Catacombs",
-     "criticalProfile": "",
-     "enchantments": "+2 Enhancement Bonus",
-     "enchantments_url": "https://ddowiki.com/page/Enhancement_bonus",
-     "errata": "",
-     "weaponDetail": [
-      {
-       "proficiency": "Simple Weapon Proficiency",
-       "name": "Guidance",
-       "damangeAndType": "[1d8] + 2 Pierce, Good, Magic",
-       "criticalThreatRange": "19-20 / x2",
-       "weaponType": [
-        {
-         "weaponCategory": "Light Crossbow",
-         "damageCategory": "/ Ranged weapons"
-        }
-       ],
-       "absRaceRequired": "None",
-       "minLevel": "2",
-       "requiredTrait": "None",
-       "umd": "No UMD needed",
-       "handedness": "",
-       "attackMod": "DEX",
-       "damageMod": "N/A",
-       "binding": "Bound to Account on Acquire",
-       "binding_url": "https://ddowiki.com/page/Bind",
-       "durability": "85",
-       "material": "Wood",
-       "material_url": "https://ddowiki.com/page/Wood",
-       "hardness": "6",
-       "baseValue": "803pp 5gp",
-       "weight": "4 lbs",
-       "upgradable": "Not upgradeable",
-       "description": "The crossbow Guidance is loathed by the enemies of the Silver Flame.",
-       "enchantments": [
-        {
-         "enchantment": [
-          {
-           "name": "+2 Enhancement Bonus",
-           "name_url": "https://ddowiki.com/page/Enhancement_bonus",
-           "fullText": "+2 Enhancement Bonus"
-          }
-         ]
-        },
-        {
-         "enchantment": [
-          {
-           "name": "Holy",
-           "name_url": "https://ddowiki.com/page/Alignment_damage_(weapon)#Holy",
-           "fullText": "Holy"
-          }
-         ]
-        },
-        {
-         "oneOfEnchantment": [
-          {
-          },
-          {
-          },
-          {
-          },
-          {
-          },
-          {
-          },
-          {
-          },
-          {
-          },
-          {
-          },
-          {
-          },
-          {
-          },
-          {
-          },
-          {
-          },
-          {
-          },
-          {
-          },
-          {
-          },
-          {
-          },
-          {
-          },
-          {
-          },
-          {
-          },
-          {
-          },
-          {
-          },
-          {
-          },
-          {
-          },
-          {
-          },
-          {
-          }
-         ],
-         "enchantment": [
-          {
-           "fullText": "Empty Purple Augment Slot"
-          }
-         ]
-        }
-       ],
-       "locationInformation": [
-        {
-         "location": "Catacombs",
-         "location_url": "https://ddowiki.com/page/Catacombs",
-         "locationExtra": ", End reward"
-        }
-       ]
-      }
-     ]
-    }
-   ]
-  },
-  {
-   "weapon": [
-    {
-     "name": "Poison-Tipped Crossbow",
-     "damangeAndType": "[1d8] + 3 Pierce, Magic",
-     "minLevel": "4",
-     "binding": "Bound to Character on Equip",
-     "quest": "Redwillow's Ruins",
-     "criticalProfile": "",
-     "enchantments": "+3 Enhancement Bonus",
-     "enchantments_url": "https://ddowiki.com/page/Enhancement_bonus",
-     "errata": "",
-     "weaponDetail": [
-      {
-       "proficiency": "Simple Weapon Proficiency",
-       "name": "Poison-Tipped Crossbow",
-       "damangeAndType": "[1d8] + 3 Pierce, Magic",
-       "criticalThreatRange": "19-20 / x2",
-       "weaponType": [
-        {
-         "weaponCategory": "Light Crossbow",
-         "damageCategory": "/ Ranged weapons"
-        }
-       ],
-       "absRaceRequired": "None",
-       "minLevel": "4",
-       "requiredTrait": "None",
-       "umd": "No UMD needed",
-       "handedness": "",
-       "attackMod": "DEX",
-       "damageMod": "N/A",
-       "binding": "Bound to Character on Equip",
-       "binding_url": "https://ddowiki.com/page/Bind",
-       "durability": "95",
-       "material": "Wood",
-       "material_url": "https://ddowiki.com/page/Wood",
-       "hardness": "7",
-       "baseValue": "1,603pp 5gp",
-       "weight": "4 lbs",
-       "upgradable": "Not upgradeable",
-       "description": "A simple ranged weapon consisting of a small bow mounted crosswise on a light wooden stock.",
-       "enchantments": [
-        {
-         "enchantment": [
-          {
-           "name": "+3 Enhancement Bonus",
-           "name_url": "https://ddowiki.com/page/Enhancement_bonus",
-           "fullText": "+3 Enhancement Bonus"
-          }
-         ]
-        },
-        {
-         "enchantment": [
-          {
-           "name": "Poison",
-           "name_url": "https://ddowiki.com/page/Poison_(enchantment)",
-           "fullText": "Poison"
-          }
-         ]
-        },
-        {
-         "oneOfEnchantment": [
-          {
-          },
-          {
-          },
-          {
-          },
-          {
-          },
-          {
-          },
-          {
-          },
-          {
-          },
-          {
-          },
-          {
-          },
-          {
-          },
-          {
-          },
-          {
-          },
-          {
-          },
-          {
-          },
-          {
-          },
-          {
-          }
-         ],
-         "enchantment": [
-          {
-           "fullText": "Empty Red Augment Slot"
-          }
-         ]
-        }
-       ],
-       "locationInformation": [
-        {
-         "location": "Redwillow's Ruins",
-         "location_url": "https://ddowiki.com/page/Redwillow%27s_Ruins"
-        }
-       ]
-      }
-     ]
-    }
-   ]
-  },
-  {
-   "weapon": [
-    {
-     "name": "The Diplomancer (level 5)",
-     "damangeAndType": "[1d8] +2 Pierce, Magic",
-     "minLevel": "5",
-     "binding": "Bound to Account on Acquire",
-     "quest": "Anniversary Party",
-     "criticalProfile": "",
-     "enchantments": "+2 Enhancement Bonus",
-     "enchantments_url": "https://ddowiki.com/page/Enhancement_bonus",
-     "errata": "",
-     "weaponDetail": [
-      {
-       "proficiency": "Simple Weapon Proficiency",
-       "name": "The Diplomancer (level 5)",
-       "damangeAndType": "[1d8] +2 Pierce, Magic",
-       "criticalThreatRange": "19-20 / x2",
-       "weaponType": [
-        {
-         "weaponCategory": "Light Crossbow",
-         "damageCategory": "/ Ranged weapons"
-        }
-       ],
-       "absRaceRequired": "None",
-       "minLevel": "5",
-       "requiredTrait": "None",
-       "umd": "No UMD needed",
-       "handedness": "",
-       "attackMod": "DEX",
-       "damageMod": "N/A",
-       "binding": "Bound to Account on Acquire",
-       "binding_url": "https://ddowiki.com/page/Bind",
-       "durability": "75",
-       "material": "Wood",
-       "material_url": "https://ddowiki.com/page/Wood",
-       "hardness": "10",
-       "baseValue": "3pp 5gp",
-       "weight": "4 lbs",
-       "upgradable": "Not upgradeable",
-       "description": "Ask questions first. Shoot later.",
-       "enchantments": [
-        {
-         "enchantment": [
-          {
-           "name": "+2 Enhancement Bonus",
-           "name_url": "https://ddowiki.com/page/Enhancement_bonus",
-           "fullText": "+2 Enhancement Bonus"
-          }
-         ]
-        },
-        {
-         "enchantment": [
-          {
-           "name": "Bleeding 2",
-           "name_url": "https://ddowiki.com/page/Bleeding",
-           "fullText": "Bleeding 2"
-          }
-         ]
-        },
-        {
-         "enchantment": [
-          {
-           "name": "Impactful 2",
-           "name_url": "https://ddowiki.com/page/Impactful",
-           "fullText": "Impactful 2"
-          }
-         ]
-        },
-        {
-         "enchantment": [
-          {
-           "name": "Distant Diversion +6%",
-           "name_url": "https://ddowiki.com/page/Diversion",
-           "fullText": "Distant Diversion +6%"
-          }
-         ]
-        },
-        {
-         "enchantment": [
-          {
-           "name": "Diplomacy +7",
-           "name_url": "https://ddowiki.com/page/Diplomacy",
-           "fullText": "Diplomacy +7"
-          }
-         ]
-        },
-        {
-         "oneOfEnchantment": [
-          {
-          },
-          {
-          },
-          {
-          },
-          {
-          },
-          {
-          },
-          {
-          },
-          {
-          },
-          {
-          },
-          {
-          },
-          {
-          },
-          {
-          },
-          {
-          },
-          {
-          },
-          {
-          },
-          {
-          },
-          {
-          },
-          {
-          },
-          {
-          },
-          {
-          },
-          {
-          },
-          {
-          },
-          {
-          },
-          {
-          },
-          {
-          },
-          {
-          }
-         ],
-         "enchantment": [
-          {
-           "fullText": "Empty Orange Augment Slot"
-          }
-         ]
-        }
-       ],
-       "locationInformation": [
-        {
-         "location": "Party Favors",
-         "location_url": "https://ddowiki.com/page/Item:Party_Favor",
-         "locationExtra": ", Turn in 10"
-        }
-       ]
-      }
-     ]
-    }
-   ]
-  },
-  {
-   "weapon": [
-    {
-     "name": "Smoldering Light Crossbow*",
-     "damangeAndType": "1.50[1d8] + 3 Pierce, Magic",
-     "minLevel": "7",
-     "binding": "Unbound",
-     "quest": "Temple of Elemental Evil Part One, and Temple of Elemental Evil Part Two any chest",
-     "criticalProfile": "",
-     "enchantments": "+3 Enhancement Bonus",
-     "enchantments_url": "https://ddowiki.com/page/Enhancement_bonus",
-     "itemId": "Smoldering Light Crossbow",
-     "url": "https://ddowiki.com/page/Item:Smoldering_Light_Crossbow",
-     "errata": ""
-    }
-   ]
-  },
-  {
-   "weapon": [
-    {
-     "name": "Etched Light Crossbow*",
-     "damangeAndType": "1.50[1d8] + 3 Pierce, Magic",
-     "minLevel": "7",
-     "binding": "Unbound",
-     "quest": "Temple of Elemental Evil Part One, and Temple of Elemental Evil Part Two any chest",
-     "criticalProfile": "",
-     "enchantments": "+3 Enhancement Bonus",
-     "enchantments_url": "https://ddowiki.com/page/Enhancement_bonus",
-     "itemId": "Etched Light Crossbow",
-     "url": "https://ddowiki.com/page/Item:Etched_Light_Crossbow",
-     "errata": ""
-    }
-   ]
-  },
-  {
-   "weapon": [
-    {
-     "name": "Quenched Light Crossbow*",
-     "damangeAndType": "1.50[1d8] + 3 Pierce, Magic",
-     "minLevel": "7",
-     "binding": "Unbound",
-     "quest": "Temple of Elemental Evil Part One, and Temple of Elemental Evil Part Two any chest",
-     "criticalProfile": "",
-     "enchantments": "+3 Enhancement Bonus",
-     "enchantments_url": "https://ddowiki.com/page/Enhancement_bonus",
-     "itemId": "Quenched Light Crossbow",
-     "url": "https://ddowiki.com/page/Item:Quenched_Light_Crossbow",
-     "errata": ""
-    }
-   ]
-  },
-  {
-   "weapon": [
-    {
-     "name": "Energized Light Crossbow",
-     "damangeAndType": "1.50[1d8] + 3 Pierce, Magic",
-     "minLevel": "7",
-     "binding": "Unbound",
-     "quest": "Temple of Elemental Evil Part One, and Temple of Elemental Evil Part Two any chest",
-     "criticalProfile": "",
-     "enchantments": "+3 Enhancement Bonus",
-     "enchantments_url": "https://ddowiki.com/page/Enhancement_bonus",
-     "errata": "",
-     "weaponDetail": [
-      {
-       "proficiency": "Simple Weapon Proficiency",
-       "name": "Energized Light Crossbow",
-       "damangeAndType": "1.50[1d8] + 3 Pierce, Magic",
-       "criticalThreatRange": "19-20 / x2",
-       "weaponType": [
-        {
-         "weaponCategory": "Light Crossbow",
-         "damageCategory": "/ Ranged weapons"
-        }
-       ],
-       "absRaceRequired": "None",
-       "minLevel": "7",
-       "requiredTrait": "None",
-       "umd": "No UMD needed",
-       "handedness": "",
-       "attackMod": "DEX",
-       "damageMod": "N/A",
-       "binding": "Unbound",
-       "binding_url": "https://ddowiki.com/page/Bind",
-       "durability": "125",
-       "material": "Wood",
-       "material_url": "https://ddowiki.com/page/Wood",
-       "hardness": "10",
-       "baseValue": "2,820pp",
-       "weight": "4 lbs",
-       "upgradable": "ToEE Crafting",
-       "description": "A weapon found deep within the Temple of Elemental Evil.",
-       "enchantments": [
-        {
-         "enchantment": [
-          {
-           "name": "+3 Enhancement Bonus",
-           "name_url": "https://ddowiki.com/page/Enhancement_bonus",
-           "fullText": "+3 Enhancement Bonus"
-          }
-         ]
-        },
-        {
-         "enchantment": [
-          {
-           "name": "Upgradeable Item (Temple of Elemental Evil)",
-           "name_url": "https://ddowiki.com/page/Overgrown_Workbench",
-           "fullText": "Upgradeable Item (Temple of Elemental Evil)"
-          }
-         ]
-        },
-        {
-         "enchantment": [
-          {
-          }
-         ]
-        },
-        {
-         "enchantment": [
-          {
-           "name": "Mythic Weapon Boost",
-           "name_url": "https://ddowiki.com/page/Mythic_Boost",
-           "fullText": "Mythic Weapon Boost +2 or +4"
-          }
-         ]
-        }
-       ],
-       "locationInformation": [
-        {
-         "location": "Temple of Elemental Evil Part Two",
-         "location_url": "https://ddowiki.com/page/Temple_of_Elemental_Evil_Part_Two",
-         "locationExtra": ", and"
-        }
-       ]
-      }
-     ]
-    }
-   ]
-  },
-  {
-   "weapon": [
-    {
-     "name": "Ratcatcher",
-     "damangeAndType": "1.50 [1d8] + 4 Pierce, Magic",
-     "minLevel": "8",
-     "binding": "Bound to Account on Acquire",
-     "quest": "The Abandoned Excavation",
-     "criticalProfile": "Critical Profile: 17-20 / x3",
-     "enchantments": "+4 Enhancement Bonus",
-     "enchantments_url": "https://ddowiki.com/page/Enhancement_bonus",
-     "errata": "Critical Profile: 17-20 / x3",
-     "weaponDetail": [
-      {
-       "proficiency": "Simple Weapon Proficiency",
-       "name": "Ratcatcher",
-       "damangeAndType": "1.50 [1d8] + 4 Pierce, Magic",
-       "criticalThreatRange": "17-20 / x3",
-       "weaponType": [
-        {
-         "weaponCategory": "Light Crossbow",
-         "damageCategory": "/ Ranged weapons"
-        }
-       ],
-       "absRaceRequired": "None",
-       "minLevel": "8",
-       "requiredTrait": "None",
-       "umd": "No UMD needed",
-       "handedness": "",
-       "attackMod": "DEX",
-       "damageMod": "N/A",
-       "binding": "Bound to Account on Acquire",
-       "binding_url": "https://ddowiki.com/page/Bind",
-       "durability": "125",
-       "material": "Wood",
-       "material_url": "https://ddowiki.com/page/Wood",
-       "hardness": "10",
-       "baseValue": "3,203pp 5gp",
-       "weight": "4 lbs",
-       "upgradable": "Not upgradeable",
-       "description": "A small crossbow custom-made for a halfling.",
-       "enchantments": [
-        {
-         "enchantment": [
-          {
-           "name": "+4 Enhancement Bonus",
-           "name_url": "https://ddowiki.com/page/Enhancement_bonus",
-           "fullText": "+4 Enhancement Bonus"
-          }
-         ]
-        },
-        {
-         "enchantment": [
-          {
-           "name": "Vermin Bane",
-           "name_url": "https://ddowiki.com/page/Bane_(enchantment)",
-           "fullText": "Vermin Bane"
-          }
-         ]
-        },
-        {
-         "oneOfEnchantment": [
-          {
-          },
-          {
-          },
-          {
-          },
-          {
-          },
-          {
-          },
-          {
-          },
-          {
-          },
-          {
-          },
-          {
-          },
-          {
-          },
-          {
-          },
-          {
-          },
-          {
-          },
-          {
-          },
-          {
-          },
-          {
-          }
-         ],
-         "enchantment": [
-          {
-           "fullText": "Empty Red Augment Slot"
-          }
-         ]
-        }
-       ],
-       "locationInformation": [
-        {
-         "location": "The Abandoned Excavation",
-         "location_url": "https://ddowiki.com/page/The_Abandoned_Excavation",
-         "locationExtra": ", End reward"
-        }
-       ]
-      }
-     ]
-    }
-   ]
-  },
-  {
-   "weapon": [
-    {
-     "name": "The Diplomancer (level 10)",
-     "damangeAndType": "1.50[1d8] +4 Pierce, Magic",
-     "minLevel": "10",
-     "binding": "Bound to Account on Acquire",
-     "quest": "Anniversary Party",
-     "criticalProfile": "",
-     "enchantments": "+4 Enhancement Bonus",
-     "enchantments_url": "https://ddowiki.com/page/Enhancement_bonus",
-     "errata": "",
-     "weaponDetail": [
-      {
-       "proficiency": "Simple Weapon Proficiency",
-       "name": "The Diplomancer (level 10)",
-       "damangeAndType": "1.50[1d8] +4 Pierce, Magic",
-       "criticalThreatRange": "19-20 / x2",
-       "weaponType": [
-        {
-         "weaponCategory": "Light Crossbow",
-         "damageCategory": "/ Ranged weapons"
-        }
-       ],
-       "absRaceRequired": "None",
-       "minLevel": "10",
-       "requiredTrait": "None",
-       "umd": "No UMD needed",
-       "handedness": "",
-       "attackMod": "DEX",
-       "damageMod": "N/A",
-       "binding": "Bound to Account on Acquire",
-       "binding_url": "https://ddowiki.com/page/Bind",
-       "durability": "75",
-       "material": "Wood",
-       "material_url": "https://ddowiki.com/page/Wood",
-       "hardness": "10",
-       "baseValue": "3pp",
-       "weight": "4 lbs",
-       "upgradable": "Not upgradeable",
-       "description": "Ask questions first. Shoot later.",
-       "enchantments": [
-        {
-         "enchantment": [
-          {
-           "name": "+4 Enhancement Bonus",
-           "name_url": "https://ddowiki.com/page/Enhancement_bonus",
-           "fullText": "+4 Enhancement Bonus"
-          }
-         ]
-        },
-        {
-         "enchantment": [
-          {
-           "name": "Bleeding 3",
-           "name_url": "https://ddowiki.com/page/Bleeding",
-           "fullText": "Bleeding 3"
-          }
-         ]
-        },
-        {
-         "enchantment": [
-          {
-           "name": "Impactful 3",
-           "name_url": "https://ddowiki.com/page/Impactful",
-           "fullText": "Impactful 3"
-          }
-         ]
-        },
-        {
-         "enchantment": [
-          {
-           "name": "Distant Diversion +9%",
-           "name_url": "https://ddowiki.com/page/Diversion",
-           "fullText": "Distant Diversion +9%"
-          }
-         ]
-        },
-        {
-         "enchantment": [
-          {
-           "name": "Diplomacy +12",
-           "name_url": "https://ddowiki.com/page/Diplomacy",
-           "fullText": "Diplomacy +12"
-          }
-         ]
-        },
-        {
-         "oneOfEnchantment": [
-          {
-          },
-          {
-          },
-          {
-          },
-          {
-          },
-          {
-          },
-          {
-          },
-          {
-          },
-          {
-          },
-          {
-          },
-          {
-          },
-          {
-          },
-          {
-          },
-          {
-          },
-          {
-          },
-          {
-          },
-          {
-          },
-          {
-          },
-          {
-          },
-          {
-          },
-          {
-          },
-          {
-          },
-          {
-          },
-          {
-          },
-          {
-          },
-          {
-          }
-         ],
-         "enchantment": [
-          {
-           "fullText": "Empty Orange Augment Slot"
-          }
-         ]
-        }
-       ],
-       "locationInformation": [
-        {
-         "location": "Party Favors",
-         "location_url": "https://ddowiki.com/page/Item:Party_Favor",
-         "locationExtra": ", Turn in 20"
-        }
-       ]
-      }
-     ]
-    }
-   ]
-  },
-  {
-   "weapon": [
-    {
-     "name": "Alchemical Light Crossbow",
-     "damangeAndType": "2 [1d8] + 5 Pierce, Magic",
-     "minLevel": "12",
-     "binding": "Unbound",
-     "quest": "The Master Artificer, Either End chest",
-     "criticalProfile": "",
-     "enchantments": "+5 Enhancement Bonus",
-     "enchantments_url": "https://ddowiki.com/page/Enhancement_bonus",
-     "errata": "",
-     "weaponDetail": [
-      {
-       "proficiency": "Simple Weapon Proficiency",
-       "name": "Alchemical Light Crossbow",
-       "damangeAndType": "2 [1d8] + 5 Pierce, Magic",
-       "criticalThreatRange": "19-20 / x2",
-       "weaponType": [
-        {
-         "weaponCategory": "Light Crossbow",
-         "damageCategory": "/ Ranged weapons"
-        }
-       ],
-       "absRaceRequired": "None",
-       "minLevel": "12",
-       "requiredTrait": "None",
-       "umd": "No UMD needed",
-       "handedness": "",
-       "attackMod": "DEX",
-       "damageMod": "N/A",
-       "binding": "Unbound",
-       "binding_url": "https://ddowiki.com/page/Bind",
-       "durability": "145",
-       "material": "Steel",
-       "material_url": "https://ddowiki.com/page/Steel",
-       "hardness": "17",
-       "baseValue": "10,203pp 5gp",
-       "weight": "4 lbs",
-       "upgradable": "Alchemical Crafting",
-       "description": "A simple ranged weapon consisting of a small bow mounted crosswise on a heavy wooden stock.",
-       "enchantments": [
-        {
-         "enchantment": [
-          {
-           "name": "+5 Enhancement Bonus",
-           "name_url": "https://ddowiki.com/page/Enhancement_bonus",
-           "fullText": "+5 Enhancement Bonus"
-          }
-         ]
-        },
-        {
-         "enchantment": [
-          {
-           "name": "Alchemical (Prototype)",
-           "name_url": "https://ddowiki.com/page/Alchemical_Crafting",
-           "fullText": "Alchemical (Prototype)"
-          }
-         ]
-        },
-        {
-         "enchantment": [
-          {
-           "name": "Mythic Weapon Boost",
-           "name_url": "https://ddowiki.com/page/Mythic_Boost",
-           "fullText": "Mythic Weapon Boost +2 or +4"
-          }
-         ]
-        }
-       ],
-       "locationInformation": [
-        {
-         "location": "The Master Artificer",
-         "location_url": "https://ddowiki.com/page/The_Master_Artificer",
-         "locationExtra": ", Either End chest"
-        }
-       ]
-      }
-     ]
-    }
-   ]
-  },
-  {
-   "weapon": [
-    {
-     "name": "Green Steel Light Crossbow",
-     "damangeAndType": "1.50 [1d8] + 5 Pierce, Evil, Magic",
-     "minLevel": "12",
-     "binding": "Bound to Character on Equip",
-     "quest": "Altar of Fecundity, Manufactured Ingredient Recipes",
-     "criticalProfile": "",
-     "enchantments": "+5 Enhancement Bonus",
-     "enchantments_url": "https://ddowiki.com/page/Enhancement_bonus",
-     "errata": "",
-     "weaponDetail": [
-      {
-       "proficiency": "Simple Weapon Proficiency",
-       "name": "Green Steel Light Crossbow",
-       "damangeAndType": "1.50 [1d8] + 5 Pierce, Evil, Magic",
-       "criticalThreatRange": "19-20 / x2",
-       "weaponType": [
-        {
-         "weaponCategory": "Light Crossbow",
-         "damageCategory": "/ Ranged weapons"
-        }
-       ],
-       "absRaceRequired": "None",
-       "minLevel": "12",
-       "requiredTrait": "None",
-       "umd": "No UMD needed",
-       "handedness": "",
-       "attackMod": "DEX",
-       "damageMod": "N/A",
-       "binding": "Bound to Character on Equip",
-       "binding_url": "https://ddowiki.com/page/Bind",
-       "durability": "125",
-       "material": "Steel",
-       "material_url": "https://ddowiki.com/page/Steel",
-       "hardness": "15",
-       "baseValue": "5,403pp 5gp",
-       "weight": "4 lbs",
-       "upgradable": "Green Steel",
-       "tips": [
-        {
-         "tip": "+5 Green Steel Light Crossbow"
-        },
-        {
-         "tip": "Ore of Travail\nLocust Husk\nChipmunk Funk\nGlistening Pebbles\nGreen Briar Twigs\nEberron Energy Cell"
-        },
-        {
-         "tip": "Blue Taper\nGlistening Pebbles\nGreen Briar Twigs\nBitterscrub Fungus\nChipmunk Funk\nEberron Energy Cell"
-        },
-        {
-         "tip": "Wondrous Oil\nLocust Husk\nLammanian Lily Petals\nChipmunk Funk\nBitterscrub Fungus OR Green Briar Twigs\nEberron Energy Cell"
-        },
-        {
-         "tip": "Shavarath Signet Stone\nShavarath Stone of Might\nShavarath Stone of Battle\nShavarath Stone of Strategy\nShavarath Stone of Foresight\nShavarath Stone of Victory"
-        },
-        {
-         "tip": "Medium Splintered Horn"
-        }
-       ],
-       "description": "A simple ranged weapon consisting of a small bow mounted crosswise on a light wooden stock.",
-       "enchantments": [
-        {
-         "enchantment": [
-          {
-           "name": "+5 Enhancement Bonus",
-           "name_url": "https://ddowiki.com/page/Enhancement_bonus",
-           "fullText": "+5 Enhancement Bonus"
-          }
-         ]
-        },
-        {
-         "enchantment": [
-          {
-           "name": "Green Steel",
-           "name_url": "https://ddowiki.com/page/Green_Steel",
-           "fullText": "Green Steel"
-          }
-         ]
-        },
-        {
-         "enchantment": [
-          {
-           "name": "Mythic Weapon Boost",
-           "name_url": "https://ddowiki.com/page/Mythic_Boost",
-           "fullText": "Mythic Weapon Boost +2 or +4"
-          }
-         ]
-        },
-        {
-         "oneOfEnchantment": [
-          {
-          },
-          {
-          },
-          {
-          },
-          {
-          },
-          {
-          }
-         ],
-         "enchantment": [
-          {
-           "name": "Ore of Travail",
-           "name_url": "https://ddowiki.com/page/Ore_of_Travail",
-           "fullText": "Locust Husk\nChipmunk Funk\nGlistening Pebbles\nGreen Briar Twigs\nEberron Energy Cell"
-          }
-         ]
-        },
-        {
-         "oneOfEnchantment": [
-          {
-          },
-          {
-          },
-          {
-          },
-          {
-          },
-          {
-          }
-         ],
-         "enchantment": [
-          {
-           "name": "Blue Taper",
-           "name_url": "https://ddowiki.com/page/Blue_Taper",
-           "fullText": "Glistening Pebbles\nGreen Briar Twigs\nBitterscrub Fungus\nChipmunk Funk\nEberron Energy Cell"
-          }
-         ]
-        },
-        {
-         "oneOfEnchantment": [
-          {
-          },
-          {
-          },
-          {
-          },
-          {
-          },
-          {
-          }
-         ],
-         "enchantment": [
-          {
-           "name": "Wondrous Oil",
-           "name_url": "https://ddowiki.com/page/Wondrous_Oil",
-           "fullText": "Locust Husk\nLammanian Lily Petals\nChipmunk Funk\nBitterscrub Fungus OR Green Briar Twigs\nEberron Energy Cell"
-          }
-         ]
-        },
-        {
-         "oneOfEnchantment": [
-          {
-          },
-          {
-          },
-          {
-          },
-          {
-          },
-          {
-          }
-         ],
-         "enchantment": [
-          {
-          }
-         ]
-        },
-        {
-         "enchantment": [
-          {
-           "name": "Medium Splintered Horn",
-           "name_url": "https://ddowiki.com/page/Medium_Splintered_Horn",
-           "fullText": "Medium Splintered Horn"
-          }
-         ]
-        }
-       ],
-       "locationInformation": [
-        {
-         "location": "Manufactured Ingredient Recipes",
-         "location_url": "https://ddowiki.com/page/Altar_of_Fecundity_-_Manufactured_Ingredient_Recipes",
-         "locationExtra": ","
-        }
-       ]
-      }
-     ]
-    }
-   ]
-  },
-  {
-   "weapon": [
-    {
-     "name": "Nightshade Shooter",
-     "damangeAndType": "2[1d8] +5 Pierce, Magic",
-     "minLevel": "15",
-     "binding": "Bound to Account on Acquire",
-     "quest": "The Same Old Song, End chest",
-     "criticalProfile": "",
-     "enchantments": "+5 Enhancement Bonus",
-     "enchantments_url": "https://ddowiki.com/page/Enhancement_bonus",
-     "errata": "",
-     "weaponDetail": [
-      {
-       "proficiency": "Simple Weapon Proficiency",
-       "name": "Nightshade Shooter",
-       "damangeAndType": "If you are looking for destiny 2 account recovery, boosting or account carry broadcast-pa.com",
-       "criticalThreatRange": "19-20 / x2",
-       "weaponType": [
-        {
-         "weaponCategory": "Light Crossbow",
-         "damageCategory": "/ Ranged weapons"
-        }
-       ],
-       "absRaceRequired": "None",
-       "minLevel": "15",
-       "requiredTrait": "None",
-       "umd": "No UMD needed",
-       "handedness": "",
-       "attackMod": "DEX",
-       "damageMod": "N/A",
-       "binding": "Bound to Account on Acquire",
-       "binding_url": "https://ddowiki.com/page/Bind",
-       "durability": "225",
-       "material": "Adamantine",
-       "material_url": "https://ddowiki.com/page/Adamantine",
-       "hardness": "25",
-       "baseValue": "6,003pp 5gp",
-       "weight": "4 lbs",
-       "upgradable": "Not upgradeable",
-       "description": "Fires bolts that have been prepared with an incredibly powerful poison. Handle with care.",
-       "enchantments": [
-        {
-         "enchantment": [
-          {
-           "name": "+5 Enhancement Bonus",
-           "name_url": "https://ddowiki.com/page/Enhancement_bonus",
-           "fullText": "+5 Enhancement Bonus"
-          }
-         ]
-        },
-        {
-         "enchantment": [
-          {
-           "name": "Vorpal",
-           "name_url": "https://ddowiki.com/page/Vorpal#Vorpal",
-           "fullText": "Vorpal"
-          }
-         ]
-        },
-        {
-         "enchantment": [
-          {
-           "name": "Poisonous 4",
-           "name_url": "https://ddowiki.com/page/Poisonous",
-           "fullText": "Poisonous 4"
-          }
-         ]
-        },
-        {
-         "enchantment": [
-          {
-           "name": "Nightshade Venom",
-           "name_url": "https://ddowiki.com/page/Nightshade_Venom",
-           "fullText": "Nightshade Venom"
-          }
-         ]
-        },
-        {
-         "enchantment": [
-          {
-           "name": "Wounding",
-           "name_url": "https://ddowiki.com/page/Wounding",
-           "fullText": "Wounding 2"
-          }
-         ]
-        },
-        {
-         "oneOfEnchantment": [
-          {
-          },
-          {
-          },
-          {
-          },
-          {
-          },
-          {
-          },
-          {
-          },
-          {
-          },
-          {
-          },
-          {
-          },
-          {
-          },
-          {
-          },
-          {
-          },
-          {
-          },
-          {
-          },
-          {
-          },
-          {
-          }
-         ],
-         "enchantment": [
-          {
-           "fullText": "Empty Red Augment Slot"
-          }
-         ]
-        },
-        {
-         "enchantment": [
-          {
-           "name": "Mythic Weapon Boost",
-           "name_url": "https://ddowiki.com/page/Mythic_Boost",
-           "fullText": "Mythic Weapon Boost +2 or +4"
-          }
-         ]
-        }
-       ],
-       "locationInformation": [
-        {
-         "location": "The Same Old Song",
-         "location_url": "https://ddowiki.com/page/The_Same_Old_Song",
-         "locationExtra": ", End chest"
-        }
-       ]
-      }
-     ]
-    }
-   ]
-  },
-  {
-   "weapon": [
-    {
-     "name": "Sureshot*",
-     "damangeAndType": "2[1d8] + 3 Pierce, Chaotic, Magic",
-     "minLevel": "15",
-     "binding": "Bound to Character on Acquire",
-     "quest": "Advance to level 15",
-     "criticalProfile": "",
-     "enchantments": "+3 Enhancement Bonus",
-     "enchantments_url": "https://ddowiki.com/page/Enhancement_bonus",
-     "itemId": "Sureshot",
-     "url": "https://ddowiki.com/page/Item:Sureshot",
-     "errata": ""
-    }
-   ]
-  },
-  {
-   "weapon": [
-    {
-     "name": "The Diplomancer (level 15)",
-     "damangeAndType": "1.50[1d8] +5 Pierce, Magic",
-     "minLevel": "15",
-     "binding": "Bound to Account on Acquire",
-     "quest": "Anniversary Party",
-     "criticalProfile": "",
-     "enchantments": "+5 Enhancement Bonus",
-     "enchantments_url": "https://ddowiki.com/page/Enhancement_bonus",
-     "errata": "",
-     "weaponDetail": [
-      {
-       "proficiency": "Simple Weapon Proficiency",
-       "name": "The Diplomancer (level 15)",
-       "damangeAndType": "1.50[1d8] +5 Pierce, Magic",
-       "criticalThreatRange": "19-20 / x2",
-       "weaponType": [
-        {
-         "weaponCategory": "Light Crossbow",
-         "damageCategory": "/ Ranged weapons"
-        }
-       ],
-       "absRaceRequired": "None",
-       "minLevel": "15",
-       "requiredTrait": "None",
-       "umd": "No UMD needed",
-       "handedness": "",
-       "attackMod": "DEX",
-       "damageMod": "N/A",
-       "binding": "Bound to Account on Acquire",
-       "binding_url": "https://ddowiki.com/page/Bind",
-       "durability": "75",
-       "material": "Wood",
-       "material_url": "https://ddowiki.com/page/Wood",
-       "hardness": "10",
-       "baseValue": "3pp 5gp",
-       "weight": "4 lbs",
-       "upgradable": "Not upgradeable",
-       "description": "Ask questions first. Shoot later.",
-       "enchantments": [
-        {
-         "enchantment": [
-          {
-           "name": "+5 Enhancement Bonus",
-           "name_url": "https://ddowiki.com/page/Enhancement_bonus",
-           "fullText": "+5 Enhancement Bonus"
-          }
-         ]
-        },
-        {
-         "enchantment": [
-          {
-           "name": "Bleeding 4",
-           "name_url": "https://ddowiki.com/page/Bleeding",
-           "fullText": "Bleeding 4"
-          }
-         ]
-        },
-        {
-         "enchantment": [
-          {
-           "name": "Impactful 4",
-           "name_url": "https://ddowiki.com/page/Impactful",
-           "fullText": "Impactful 4"
-          }
-         ]
-        },
-        {
-         "enchantment": [
-          {
-           "name": "Distant Diversion +12%",
-           "name_url": "https://ddowiki.com/page/Diversion",
-           "fullText": "Distant Diversion +12%"
-          }
-         ]
-        },
-        {
-         "enchantment": [
-          {
-           "name": "Diplomacy +16",
-           "name_url": "https://ddowiki.com/page/Diplomacy",
-           "fullText": "Diplomacy +16"
-          }
-         ]
-        },
-        {
-         "oneOfEnchantment": [
-          {
-          },
-          {
-          },
-          {
-          },
-          {
-          },
-          {
-          },
-          {
-          },
-          {
-          },
-          {
-          },
-          {
-          },
-          {
-          },
-          {
-          },
-          {
-          },
-          {
-          },
-          {
-          },
-          {
-          },
-          {
-          },
-          {
-          },
-          {
-          },
-          {
-          },
-          {
-          },
-          {
-          },
-          {
-          },
-          {
-          },
-          {
-          },
-          {
-          }
-         ],
-         "enchantment": [
-          {
-           "fullText": "Empty Orange Augment Slot"
-          }
-         ]
-        }
-       ],
-       "locationInformation": [
-        {
-         "location": "Party Favors",
-         "location_url": "https://ddowiki.com/page/Item:Party_Favor",
-         "locationExtra": ", Turn in 40"
-        }
-       ]
-      }
-     ]
-    }
-   ]
-  },
-  {
-   "weapon": [
-    {
-     "name": "Screamshatter",
-     "damangeAndType": "1.5[1d8] + 5 Pierce, Magic",
-     "minLevel": "17",
-     "binding": "Bound to Account on Acquire",
-     "quest": "Safety in Numbers, End Chest",
-     "criticalProfile": "",
-     "enchantments": "+5 Enhancement Bonus",
-     "enchantments_url": "https://ddowiki.com/page/Enhancement_bonus",
-     "errata": "",
-     "weaponDetail": [
-      {
-       "proficiency": "Simple Weapon Proficiency",
-       "name": "Screamshatter",
-       "damangeAndType": "1.5[1d8] + 5 Pierce, Magic",
-       "criticalThreatRange": "19-20 / x2",
-       "weaponType": [
-        {
-         "weaponCategory": "Light Crossbow",
-         "damageCategory": "/ Ranged weapons"
-        }
-       ],
-       "absRaceRequired": "None",
-       "minLevel": "17",
-       "requiredTrait": "None",
-       "umd": "No UMD needed",
-       "handedness": "",
-       "attackMod": "Dex",
-       "damageMod": "N/A",
-       "binding": "Bound to Account on Acquire",
-       "binding_url": "https://ddowiki.com/page/Bind",
-       "durability": "245",
-       "material": "Adamantine",
-       "material_url": "https://ddowiki.com/page/Adamantine",
-       "hardness": "27",
-       "baseValue": "6,803pp 5gp",
-       "weight": "4 lbs",
-       "upgradable": "Not upgradeable",
-       "description": "Bolts fired from this weapon fire so fast it sounds like they're screaming.",
-       "enchantments": [
-        {
-         "enchantment": [
-          {
-           "name": "+5 Enhancement Bonus",
-           "name_url": "https://ddowiki.com/page/Enhancement_bonus",
-           "fullText": "+5 Enhancement Bonus"
-          }
-         ]
-        },
-        {
-         "enchantment": [
-          {
-           "name": "Reverberating 4",
-           "name_url": "https://ddowiki.com/page/Reverberating",
-           "fullText": "Reverberating 4"
-          }
-         ]
-        },
-        {
-         "enchantment": [
-          {
-           "name": "Screeching 9",
-           "name_url": "https://ddowiki.com/page/Screeching",
-           "fullText": "Screeching 9"
-          }
-         ]
-        },
-        {
-         "enchantment": [
-          {
-           "name": "Improved Destruction",
-           "name_url": "https://ddowiki.com/page/Destruction_(enchantment)#Improved_Destruction",
-           "fullText": "Improved Destruction"
-          }
-         ]
-        },
-        {
-         "enchantment": [
-          {
-           "name": "Lightning Strike",
-           "name_url": "https://ddowiki.com/page/Lightning_Strike",
-           "fullText": "Lightning Strike"
-          }
-         ]
-        },
-        {
-         "oneOfEnchantment": [
-          {
-          },
-          {
-          },
-          {
-          },
-          {
-          },
-          {
-          },
-          {
-          },
-          {
-          },
-          {
-          },
-          {
-          },
-          {
-          },
-          {
-          },
-          {
-          },
-          {
-          },
-          {
-          },
-          {
-          },
-          {
-          }
-         ],
-         "enchantment": [
-          {
-           "fullText": "Empty Red Augment Slot"
-          }
-         ]
-        },
-        {
-         "enchantment": [
-          {
-           "name": "Mythic Weapon Boost",
-           "name_url": "https://ddowiki.com/page/Mythic_Boost",
-           "fullText": "Mythic Weapon Boost +2 or +4"
-          }
-         ]
-        }
-       ],
-       "locationInformation": [
-        {
-         "location": "Safety in Numbers",
-         "location_url": "https://ddowiki.com/page/Safety_in_Numbers",
-         "locationExtra": ", End Chest"
-        }
-       ]
-      }
-     ]
-    }
-   ]
-  },
-  {
-   "weapon": [
-    {
-     "name": "The Diplomancer (level 20)",
-     "damangeAndType": "2[1d8] +6 Pierce, Magic",
-     "minLevel": "20",
-     "binding": "Bound to Account on Acquire",
-     "quest": "Anniversary Party",
-     "criticalProfile": "",
-     "enchantments": "+6 Enhancement Bonus",
-     "enchantments_url": "https://ddowiki.com/page/Enhancement_bonus",
-     "errata": "",
-     "weaponDetail": [
-      {
-       "proficiency": "Simple Weapon Proficiency",
-       "name": "The Diplomancer (level 20)",
-       "damangeAndType": "2[1d8] +6 Pierce, Magic",
-       "criticalThreatRange": "19-20 / x2",
-       "weaponType": [
-        {
-         "weaponCategory": "Light Crossbow",
-         "damageCategory": "/ Ranged weapons"
-        }
-       ],
-       "absRaceRequired": "None",
-       "minLevel": "20",
-       "requiredTrait": "None",
-       "umd": "No UMD needed",
-       "handedness": "",
-       "attackMod": "DEX",
-       "damageMod": "N/A",
-       "binding": "Bound to Account on Acquire",
-       "binding_url": "https://ddowiki.com/page/Bind",
-       "durability": "75",
-       "material": "Wood",
-       "material_url": "https://ddowiki.com/page/Wood",
-       "hardness": "10",
-       "baseValue": "3pp 5gp",
-       "weight": "4 lbs",
-       "upgradable": "Not upgradeable",
-       "description": "Ask questions first. Shoot later.",
-       "enchantments": [
-        {
-         "enchantment": [
-          {
-           "name": "+6 Enhancement Bonus",
-           "name_url": "https://ddowiki.com/page/Enhancement_bonus",
-           "fullText": "+6 Enhancement Bonus"
-          }
-         ]
-        },
-        {
-         "enchantment": [
-          {
-           "name": "Bleeding 4",
-           "name_url": "https://ddowiki.com/page/Bleeding",
-           "fullText": "Bleeding 4"
-          }
-         ]
-        },
-        {
-         "enchantment": [
-          {
-           "name": "Impactful 4",
-           "name_url": "https://ddowiki.com/page/Impactful",
-           "fullText": "Impactful 4"
-          }
-         ]
-        },
-        {
-         "enchantment": [
-          {
-           "name": "Distant Diversion +15%",
-           "name_url": "https://ddowiki.com/page/Diversion",
-           "fullText": "Distant Diversion +15%"
-          }
-         ]
-        },
-        {
-         "enchantment": [
-          {
-           "name": "Diplomacy +17",
-           "name_url": "https://ddowiki.com/page/Diplomacy",
-           "fullText": "Diplomacy +17"
-          }
-         ]
-        },
-        {
-         "oneOfEnchantment": [
-          {
-          },
-          {
-          },
-          {
-          },
-          {
-          },
-          {
-          },
-          {
-          },
-          {
-          },
-          {
-          },
-          {
-          },
-          {
-          },
-          {
-          },
-          {
-          },
-          {
-          },
-          {
-          },
-          {
-          },
-          {
-          },
-          {
-          },
-          {
-          },
-          {
-          },
-          {
-          },
-          {
-          },
-          {
-          },
-          {
-          },
-          {
-          },
-          {
-          }
-         ],
-         "enchantment": [
-          {
-           "fullText": "Empty Orange Augment Slot"
-          }
-         ]
-        }
-       ],
-       "locationInformation": [
-        {
-         "location": "Party Favors",
-         "location_url": "https://ddowiki.com/page/Item:Party_Favor",
-         "locationExtra": ", Turn in 60"
-        }
-       ]
-      }
-     ]
-    }
-   ]
-  },
-  {
-   "weapon": [
-    {
-     "name": "Thunder-Forged Alloy Light Crossbow",
-     "damangeAndType": "3.50 [1d8] + 9 Pierce, Silver, Adamantine, Mithral, Cold Iron, Magic, Byeshk",
-     "minLevel": "22",
-     "binding": "Unbound",
-     "quest": "Magma Forge, Crafted from various ingredients",
-     "criticalProfile": "",
-     "enchantments": "+9 Enhancement Bonus",
-     "enchantments_url": "https://ddowiki.com/page/Enhancement_bonus",
-     "errata": "",
-     "weaponDetail": [
-      {
-       "proficiency": "Simple Weapon Proficiency",
-       "name": "Thunder-Forged Alloy Light Crossbow",
-       "damangeAndType": "3.50 [1d8] + 9 Pierce, Silver, Adamantine, Mithral, Cold Iron, Magic, Byeshk",
-       "criticalThreatRange": "19-20 / x2",
-       "weaponType": [
-        {
-         "weaponCategory": "Light Crossbow",
-         "damageCategory": "/ Ranged weapons"
-        }
-       ],
-       "absRaceRequired": "None",
-       "minLevel": "22",
-       "requiredTrait": "None",
-       "umd": "No UMD needed",
-       "handedness": "",
-       "attackMod": "DEX",
-       "damageMod": "N/A",
-       "binding": "Unbound",
-       "binding_url": "https://ddowiki.com/page/Bind",
-       "durability": "205",
-       "material": "Adamantine",
-       "material_url": "https://ddowiki.com/page/Adamantine",
-       "hardness": "30",
-       "baseValue": "8,803pp 5gp",
-       "weight": "4 lbs",
-       "upgradable": "Thunder-Forged",
-       "tips": [
-        {
-         "tip": "20 Thunder-Forged Dwarven Ingots"
-        },
-        {
-         "tip": "15 Commendations of Valor"
-        }
-       ],
-       "description": "A great crossbow forged from metals long in proximity to dragons under Thunderholme.",
-       "enchantments": [
-        {
-         "enchantment": [
-          {
-           "name": "+9 Enhancement Bonus",
-           "name_url": "https://ddowiki.com/page/Enhancement_bonus",
-           "fullText": "+9 Enhancement Bonus"
-          }
-         ]
-        },
-        {
-         "oneOfEnchantment": [
-          {
-          },
-          {
-          },
-          {
-          },
-          {
-          },
-          {
-          },
-          {
-          },
-          {
-          },
-          {
-          },
-          {
-          },
-          {
-          },
-          {
-          },
-          {
-          },
-          {
-          },
-          {
-          },
-          {
-          },
-          {
-          },
-          {
-          },
-          {
-          },
-          {
-          },
-          {
-          },
-          {
-          },
-          {
-          },
-          {
-          },
-          {
-          },
-          {
-          }
-         ],
-         "enchantment": [
-          {
-           "fullText": "Empty Orange Augment Slot"
-          }
-         ]
-        },
-        {
-         "enchantment": [
-          {
-           "name": "Thunder-Forged (Tier 0)",
-           "name_url": "https://ddowiki.com/page/Thunder-Forged",
-           "fullText": "Thunder-Forged (Tier 0)"
-          }
-         ]
-        },
-        {
-         "enchantment": [
-          {
-           "name": "Mythic Weapon Boost",
-           "name_url": "https://ddowiki.com/page/Mythic_Boost",
-           "fullText": "Mythic Weapon Boost +2 or +4"
-          }
-         ]
-        },
-        {
-         "enchantment": [
-          {
-           "fullText": "20 Thunder-Forged Dwarven Ingots",
-           "fullText_url": "https://ddowiki.com/page/Item:Thunder-Forged_Dwarven_Ingot"
-          }
-         ]
-        },
-        {
-         "enchantment": [
-          {
-           "fullText": "15 Commendations of Valor",
-           "fullText_url": "https://ddowiki.com/page/Item:Commendation_of_Valor"
-          }
-         ]
-        }
-       ],
-       "locationInformation": [
-        {
-         "location": "Magma Forge",
-         "location_url": "https://ddowiki.com/page/Magma_Forge",
-         "locationExtra": ", Crafted from various ingredients"
-        }
-       ]
-      }
-     ]
-    }
-   ]
-  },
-  {
-   "weapon": [
-    {
-     "name": "The Diplomancer (level 25)",
-     "damangeAndType": "2.50[1d8] +7 Pierce, Magic",
-     "minLevel": "25",
-     "binding": "Bound to Account on Acquire",
-     "quest": "Anniversary Party",
-     "criticalProfile": "",
-     "enchantments": "+7 Enhancement Bonus",
-     "enchantments_url": "https://ddowiki.com/page/Enhancement_bonus",
-     "errata": "",
-     "weaponDetail": [
-      {
-       "proficiency": "Simple Weapon Proficiency",
-       "name": "The Diplomancer (level 25)",
-       "damangeAndType": "2.50[1d8] +7 Pierce, Magic",
-       "criticalThreatRange": "19-20 / x2",
-       "weaponType": [
-        {
-         "weaponCategory": "Light Crossbow",
-         "damageCategory": "/ Ranged weapons"
-        }
-       ],
-       "absRaceRequired": "None",
-       "minLevel": "25",
-       "requiredTrait": "None",
-       "umd": "No UMD needed",
-       "handedness": "",
-       "attackMod": "DEX",
-       "damageMod": "N/A",
-       "binding": "Bound to Account on Acquire",
-       "binding_url": "https://ddowiki.com/page/Bind",
-       "durability": "75",
-       "material": "Wood",
-       "material_url": "https://ddowiki.com/page/Wood",
-       "hardness": "10",
-       "baseValue": "3pp 5gp",
-       "weight": "4 lbs",
-       "upgradable": "Not upgradeable",
-       "description": "Ask questions first. Shoot later.",
-       "enchantments": [
-        {
-         "enchantment": [
-          {
-           "name": "+7 Enhancement Bonus",
-           "name_url": "https://ddowiki.com/page/Enhancement_bonus",
-           "fullText": "+7 Enhancement Bonus"
-          }
-         ]
-        },
-        {
-         "enchantment": [
-          {
-           "name": "Bleeding 5",
-           "name_url": "https://ddowiki.com/page/Bleeding",
-           "fullText": "Bleeding 5"
-          }
-         ]
-        },
-        {
-         "enchantment": [
-          {
-           "name": "Impactful 5",
-           "name_url": "https://ddowiki.com/page/Impactful",
-           "fullText": "Impactful 5"
-          }
-         ]
-        },
-        {
-         "enchantment": [
-          {
-           "name": "Distant Diversion +18%",
-           "name_url": "https://ddowiki.com/page/Diversion",
-           "fullText": "Distant Diversion +18%"
-          }
-         ]
-        },
-        {
-         "enchantment": [
-          {
-           "name": "Diplomacy +19",
-           "name_url": "https://ddowiki.com/page/Diplomacy",
-           "fullText": "Diplomacy +19"
-          }
-         ]
-        },
-        {
-         "oneOfEnchantment": [
-          {
-          },
-          {
-          },
-          {
-          },
-          {
-          },
-          {
-          },
-          {
-          },
-          {
-          },
-          {
-          },
-          {
-          },
-          {
-          },
-          {
-          },
-          {
-          },
-          {
-          },
-          {
-          },
-          {
-          },
-          {
-          },
-          {
-          },
-          {
-          },
-          {
-          },
-          {
-          },
-          {
-          },
-          {
-          },
-          {
-          },
-          {
-          },
-          {
-          }
-         ],
-         "enchantment": [
-          {
-           "fullText": "Empty Orange Augment Slot"
-          }
-         ]
-        }
-       ],
-       "locationInformation": [
-        {
-         "location": "Party Favors",
-         "location_url": "https://ddowiki.com/page/Item:Party_Favor",
-         "locationExtra": ", Turn in 80"
-        }
-       ]
-      }
-     ]
-    }
-   ]
-  },
-  {
-   "weapon": [
-    {
-     "name": "Legendary Green Steel Light Crossbow",
-     "damangeAndType": "5[1d8] + 14 Pierce, Evil, Magic",
-     "minLevel": "26",
-     "binding": "Bound to Character on Acquire",
-     "quest": "Altar of Fecundity, Manufactured Ingredient Recipes",
-     "criticalProfile": "",
-     "enchantments": "+14 Enhancement Bonus",
-     "enchantments_url": "https://ddowiki.com/page/Enhancement_bonus",
-     "errata": "",
-     "weaponDetail": [
-      {
-       "proficiency": "Simple Weapon Proficiency",
-       "name": "Legendary Green Steel Light Crossbow",
-       "damangeAndType": "5[1d8] + 14 Pierce, Evil, Magic",
-       "criticalThreatRange": "19-20 / x2",
-       "weaponType": [
-        {
-         "weaponCategory": "Light Crossbow",
-         "damageCategory": "/ Ranged weapons"
-        }
-       ],
-       "absRaceRequired": "None",
-       "minLevel": "26",
-       "requiredTrait": "None",
-       "umd": "No UMD needed",
-       "handedness": "",
-       "attackMod": "DEX",
-       "damageMod": "N/A",
-       "binding": "Bound to Character on Acquire",
-       "binding_url": "https://ddowiki.com/page/Bind",
-       "durability": "285",
-       "material": "Steel",
-       "material_url": "https://ddowiki.com/page/Steel",
-       "hardness": "31",
-       "baseValue": "30,051pp 3gp 3sp 6cp",
-       "weight": "4 lbs",
-       "upgradable": "Not upgradeable",
-       "tips": [
-        {
-         "tip": "+14 Legendary Green Steel Light Crossbow"
-        },
-        {
-         "tip": "100 Codex Runes"
-        },
-        {
-         "tip": "100 Commendations of Valor"
-        },
-        {
-         "tip": "Altar of Fecundity"
-        }
-       ],
-       "description": "A simple ranged weapon consisting of a small bow mounted crosswise on a light wooden stock.",
-       "enchantments": [
-        {
-         "enchantment": [
-          {
-           "name": "+14 Enhancement Bonus",
-           "name_url": "https://ddowiki.com/page/Enhancement_bonus",
-           "fullText": "+14 Enhancement Bonus"
-          }
-         ]
-        },
-        {
-         "enchantment": [
-          {
-           "name": "Legendary Green Steel",
-           "name_url": "https://ddowiki.com/page/Legendary_Green_Steel",
-           "fullText": "Legendary Green Steel"
-          }
-         ]
-        },
-        {
-         "enchantment": [
-          {
-           "name": "Mythic Weapon Boost",
-           "name_url": "https://ddowiki.com/page/Mythic_Boost",
-           "fullText": "Mythic Weapon Boost +2 or +4"
-          }
-         ]
-        },
-        {
-         "enchantment": [
-          {
-           "fullText": "Codex Runes",
-           "fullText_url": "https://ddowiki.com/page/Item:Codex_Rune"
-          }
-         ]
-        },
-        {
-         "enchantment": [
-          {
-           "fullText": "100 Commendations of Valor",
-           "fullText_url": "https://ddowiki.com/page/Item:Commendation_of_Valor"
-          }
-         ]
-        }
-       ],
-       "locationInformation": [
-        {
-         "location": "Manufactured Ingredient Recipes",
-         "location_url": "https://ddowiki.com/page/Altar_of_Fecundity_-_Manufactured_Ingredient_Recipes",
-         "locationExtra": ","
-        }
-       ]
-      }
-     ]
-    }
-   ]
-  },
-  {
-   "weapon": [
-    {
-     "name": "Epic Smoldering Light Crossbow*",
-     "damangeAndType": "5[1d8] + 7 Pierce, Magic",
-     "minLevel": "26",
-     "binding": "Unbound",
-     "quest": "Temple of Elemental Evil Part One, and Temple of Elemental Evil Part Two any chest",
-     "criticalProfile": "",
-     "enchantments": "+7 Enhancement Bonus",
-     "enchantments_url": "https://ddowiki.com/page/Enhancement_bonus",
-     "itemId": "Epic Smoldering Light Crossbow",
-     "url": "https://ddowiki.com/page/Item:Epic_Smoldering_Light_Crossbow",
-     "errata": ""
-    }
-   ]
-  },
-  {
-   "weapon": [
-    {
-     "name": "Epic Quenched Light Crossbow*",
-     "damangeAndType": "5[1d8] + 7 Pierce, Magic",
-     "minLevel": "26",
-     "binding": "Unbound",
-     "quest": "Temple of Elemental Evil Part One, and Temple of Elemental Evil Part Two any chest",
-     "criticalProfile": "",
-     "enchantments": "+7 Enhancement Bonus",
-     "enchantments_url": "https://ddowiki.com/page/Enhancement_bonus",
-     "itemId": "Epic Quenched Light Crossbow",
-     "url": "https://ddowiki.com/page/Item:Epic_Quenched_Light_Crossbow",
-     "errata": ""
-    }
-   ]
-  },
-  {
-   "weapon": [
-    {
-     "name": "Epic Etched Light Crossbow*",
-     "damangeAndType": "5[1d8] + 7 Pierce, Magic",
-     "minLevel": "26",
-     "binding": "Unbound",
-     "quest": "Temple of Elemental Evil Part One, and Temple of Elemental Evil Part Two any chest",
-     "criticalProfile": "",
-     "enchantments": "+7 Enhancement Bonus",
-     "enchantments_url": "https://ddowiki.com/page/Enhancement_bonus",
-     "itemId": "Epic Etched Light Crossbow",
-     "url": "https://ddowiki.com/page/Item:Epic_Etched_Light_Crossbow",
-     "errata": ""
-    }
-   ]
-  },
-  {
-   "weapon": [
-    {
-     "name": "Legendary Screamshatter",
-     "damangeAndType": "5[1d8+2] + 15 Pierce, Magic",
-     "minLevel": "29",
-     "binding": "Bound to Account on Acquire",
-     "quest": "Safety in Numbers, End Chest",
-     "criticalProfile": "",
-     "enchantments": "+15 Enhancement Bonus",
-     "enchantments_url": "https://ddowiki.com/page/Enhancement_bonus",
-     "errata": "",
-     "weaponDetail": [
-      {
-       "proficiency": "Simple Weapon Proficiency",
-       "name": "Legendary Screamshatter",
-       "damangeAndType": "5[1d8+2] + 15 Pierce, Magic",
-       "criticalThreatRange": "19-20 / x2",
-       "weaponType": [
-        {
-         "weaponCategory": "Light Crossbow",
-         "damageCategory": "/ Ranged weapons"
-        }
-       ],
-       "absRaceRequired": "None",
-       "minLevel": "29",
-       "requiredTrait": "None",
-       "umd": "No UMD needed",
-       "handedness": "",
-       "attackMod": "Dex",
-       "damageMod": "N/A",
-       "binding": "Bound to Account on Acquire",
-       "binding_url": "https://ddowiki.com/page/Bind",
-       "durability": "365",
-       "material": "Adamantine",
-       "material_url": "https://ddowiki.com/page/Adamantine",
-       "hardness": "39",
-       "baseValue": "11,603pp 5gp",
-       "weight": "4 lbs",
-       "upgradable": "Not upgradeable",
-       "description": "Bolts fired from this weapon fire so fast it sounds like they're screaming.",
-       "enchantments": [
-        {
-         "enchantment": [
-          {
-           "name": "+15 Enhancement Bonus",
-           "name_url": "https://ddowiki.com/page/Enhancement_bonus",
-           "fullText": "+15 Enhancement Bonus"
-          }
-         ]
-        },
-        {
-         "enchantment": [
-          {
-           "name": "Reverberating 9",
-           "name_url": "https://ddowiki.com/page/Reverberating",
-           "fullText": "Reverberating 9"
-          }
-         ]
-        },
-        {
-         "enchantment": [
-          {
-           "name": "Screeching 22",
-           "name_url": "https://ddowiki.com/page/Screeching",
-           "fullText": "Screeching 22"
-          }
-         ]
-        },
-        {
-         "enchantment": [
-          {
-           "name": "Improved Destruction",
-           "name_url": "https://ddowiki.com/page/Destruction_(enchantment)#Improved_Destruction",
-           "fullText": "Improved Destruction"
-          }
-         ]
-        },
-        {
-         "enchantment": [
-          {
-           "name": "Lightning Strike",
-           "name_url": "https://ddowiki.com/page/Lightning_Strike",
-           "fullText": "Lightning Strike"
-          }
-         ]
-        },
-        {
-         "oneOfEnchantment": [
-          {
-          },
-          {
-          },
-          {
-          },
-          {
-          },
-          {
-          },
-          {
-          },
-          {
-          },
-          {
-          },
-          {
-          },
-          {
-          },
-          {
-          },
-          {
-          },
-          {
-          },
-          {
-          },
-          {
-          },
-          {
-          }
-         ],
-         "enchantment": [
-          {
-           "fullText": "Empty Red Augment Slot"
-          }
-         ]
-        },
-        {
-         "enchantment": [
-          {
-           "name": "Mythic Weapon Boost",
-           "name_url": "https://ddowiki.com/page/Mythic_Boost",
-           "fullText": "Mythic Weapon Boost +2 or +4"
-          }
-         ]
-        }
-       ],
-       "locationInformation": [
-        {
-         "location": "Safety in Numbers",
-         "location_url": "https://ddowiki.com/page/Safety_in_Numbers",
-         "locationExtra": ", End Chest"
-        }
-       ]
-      }
-     ]
-    }
-   ]
-  },
-  {
-   "weapon": [
-    {
-     "name": "Legendary Nightshade Shooter",
-     "damangeAndType": "5.5[1d8+2] + 15 Pierce, Magic",
-     "minLevel": "29",
-     "binding": "Bound to Account on Acquire",
-     "quest": "The Same Old Song, End Chest",
-     "criticalProfile": "",
-     "enchantments": "+15 Enhancement Bonus",
-     "enchantments_url": "https://ddowiki.com/page/Enhancement_bonus",
-     "errata": "",
-     "weaponDetail": [
-      {
-       "proficiency": "Simple Weapon Proficiency",
-       "name": "Legendary Nightshade Shooter",
-       "damangeAndType": "Don't wait another day to get small business insurance. Hiscox Business Insurance",
-       "criticalThreatRange": "19-20 / x2",
-       "weaponType": [
-        {
-         "weaponCategory": "Light Crossbow",
-         "damageCategory": "/ Ranged weapons"
-        }
-       ],
-       "absRaceRequired": "None",
-       "minLevel": "29",
-       "requiredTrait": "None",
-       "umd": "No UMD needed",
-       "handedness": "",
-       "attackMod": "Dex",
-       "damageMod": "N/A",
-       "binding": "Bound to Account on Acquire",
-       "binding_url": "https://ddowiki.com/page/Bind",
-       "durability": "365",
-       "material": "Adamantine",
-       "material_url": "https://ddowiki.com/page/Adamantine",
-       "hardness": "39",
-       "baseValue": "11,603pp 5gp",
-       "weight": "4 lbs",
-       "upgradable": "Not upgradeable",
-       "description": "Fires bolts that have been prepared with an incredibly powerful poison. Handle with care.",
-       "enchantments": [
-        {
-         "enchantment": [
-          {
-           "name": "+15 Enhancement Bonus",
-           "name_url": "https://ddowiki.com/page/Enhancement_bonus",
-           "fullText": "+15 Enhancement Bonus"
-          }
-         ]
-        },
-        {
-         "enchantment": [
-          {
-           "name": "Sovereign Vorpal",
-           "name_url": "https://ddowiki.com/page/Vorpal#Sovereign_Vorpal",
-           "fullText": "Sovereign Vorpal"
-          }
-         ]
-        },
-        {
-         "enchantment": [
-          {
-           "name": "Poisonous 9",
-           "name_url": "https://ddowiki.com/page/Poisonous",
-           "fullText": "Poisonous 9"
-          }
-         ]
-        },
-        {
-         "enchantment": [
-          {
-           "name": "Twining Hemlock",
-           "name_url": "https://ddowiki.com/edit/Twining_Hemlock?redlink=1",
-           "fullText": "Twining Hemlock"
-          }
-         ]
-        },
-        {
-         "enchantment": [
-          {
-           "name": "Wounding",
-           "name_url": "https://ddowiki.com/page/Wounding",
-           "fullText": "Wounding 5"
-          }
-         ]
-        },
-        {
-         "oneOfEnchantment": [
-          {
-          },
-          {
-          },
-          {
-          },
-          {
-          },
-          {
-          },
-          {
-          },
-          {
-          },
-          {
-          },
-          {
-          },
-          {
-          },
-          {
-          },
-          {
-          },
-          {
-          },
-          {
-          },
-          {
-          },
-          {
-          }
-         ],
-         "enchantment": [
-          {
-           "fullText": "Empty Red Augment Slot"
-          }
-         ]
-        },
-        {
-         "enchantment": [
-          {
-           "name": "Mythic Weapon Boost",
-           "name_url": "https://ddowiki.com/page/Mythic_Boost",
-           "fullText": "Mythic Weapon Boost +2 or +4"
-          }
-         ]
-        }
-       ],
-       "locationInformation": [
-        {
-         "location": "The Same Old Song",
-         "location_url": "https://ddowiki.com/page/The_Same_Old_Song",
-         "locationExtra": ", End Chest"
-        }
-       ]
-      }
-     ]
-    }
-   ]
-  },
-  {
-   "weapon": [
-    {
-     "name": "The Diplomancer (level 30)",
-     "damangeAndType": "5[1d8] +14 Pierce, Magic",
-     "minLevel": "30",
-     "binding": "Bound to Account on Acquire",
-     "quest": "Anniversary Party",
-     "criticalProfile": "",
-     "enchantments": "+14 Enhancement Bonus",
-     "enchantments_url": "https://ddowiki.com/page/Enhancement_bonus",
-     "errata": "",
-     "weaponDetail": [
-      {
-       "proficiency": "Simple Weapon Proficiency",
-       "name": "The Diplomancer (level 30)",
-       "damangeAndType": "5[1d8] +14 Pierce, Magic",
-       "criticalThreatRange": "19-20 / x2",
-       "weaponType": [
-        {
-         "weaponCategory": "Light Crossbow",
-         "damageCategory": "/ Ranged weapons"
-        }
-       ],
-       "absRaceRequired": "None",
-       "minLevel": "30",
-       "requiredTrait": "None",
-       "umd": "No UMD needed",
-       "handedness": "",
-       "attackMod": "DEX",
-       "damageMod": "N/A",
-       "binding": "Bound to Account on Acquire",
-       "binding_url": "https://ddowiki.com/page/Bind",
-       "durability": "75",
-       "material": "Wood",
-       "material_url": "https://ddowiki.com/page/Wood",
-       "hardness": "10",
-       "baseValue": "3pp 5gp",
-       "weight": "4 lbs",
-       "upgradable": "Not upgradeable",
-       "description": "Ask questions first. Shoot later.",
-       "enchantments": [
-        {
-         "enchantment": [
-          {
-           "name": "+14 Enhancement Bonus",
-           "name_url": "https://ddowiki.com/page/Enhancement_bonus",
-           "fullText": "+14 Enhancement Bonus"
-          }
-         ]
-        },
-        {
-         "enchantment": [
-          {
-           "name": "Bleeding 7",
-           "name_url": "https://ddowiki.com/page/Bleeding",
-           "fullText": "Bleeding 7"
-          }
-         ]
-        },
-        {
-         "enchantment": [
-          {
-           "name": "Impactful 7",
-           "name_url": "https://ddowiki.com/page/Impactful",
-           "fullText": "Impactful 7"
-          }
-         ]
-        },
-        {
-         "enchantment": [
-          {
-           "name": "Distant Diversion +23%",
-           "name_url": "https://ddowiki.com/page/Diversion",
-           "fullText": "Distant Diversion +23%"
-          }
-         ]
-        },
-        {
-         "enchantment": [
-          {
-           "name": "Diplomacy +22",
-           "name_url": "https://ddowiki.com/page/Diplomacy",
-           "fullText": "Diplomacy +22"
-          }
-         ]
-        },
-        {
-         "oneOfEnchantment": [
-          {
-          },
-          {
-          },
-          {
-          },
-          {
-          },
-          {
-          },
-          {
-          },
-          {
-          },
-          {
-          },
-          {
-          },
-          {
-          },
-          {
-          },
-          {
-          },
-          {
-          },
-          {
-          },
-          {
-          },
-          {
-          },
-          {
-          },
-          {
-          },
-          {
-          },
-          {
-          },
-          {
-          },
-          {
-          },
-          {
-          },
-          {
-          },
-          {
-          }
-         ],
-         "enchantment": [
-          {
-           "fullText": "Empty Orange Augment Slot"
-          }
-         ]
-        }
-       ],
-       "locationInformation": [
-        {
-         "location": "Party Favors",
-         "location_url": "https://ddowiki.com/page/Item:Party_Favor",
-         "locationExtra": ", Turn in 100"
-        }
-       ]
-      }
-     ]
-    }
-   ]
-  }
- ]
+    ]
 }

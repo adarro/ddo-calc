@@ -18,14 +18,15 @@
 package io.truthencode.ddo.api.model.effect
 
 trait BasicEffectInfo {
+
   /**
    * The main name of the effect.
    *
-   * Naming conventions The name should be concisely non-specific.
-   * i.e. Prefer "ArmorClass" instead of "Deflection" or "Miss-Chance" Deflection is too specific as
-   * there are several stacking and non-stacking types (Natural Armor, Shield) that all contribute
-   * to your specific goal of increasing your armor class. Miss-Chance is to vague as it encompasses
-   * everything from incorporeal, dodge, armor class, arrow-deflection etc.
+   * Naming conventions The name should be concisely non-specific. i.e. Prefer "ArmorClass" instead
+   * of "Deflection" or "Miss-Chance" Deflection is too specific as there are several stacking and
+   * non-stacking types (Natural Armor, Shield) that all contribute to your specific goal of
+   * increasing your armor class. Miss-Chance is to vague as it encompasses everything from
+   * incorporeal, dodge, armor class, arrow-deflection etc.
    */
   def name: String
 

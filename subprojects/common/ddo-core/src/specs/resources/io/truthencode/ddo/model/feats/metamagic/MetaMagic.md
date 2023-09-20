@@ -3,7 +3,7 @@
 ## Metamagics
 
 | [ ][existingFeat] [Feats][result]                                      | Description                                                                                                                                                   | Prerequisites | Icon                                                                                |
-|------------------------------------------------------------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------|---------------|-------------------------------------------------------------------------------------|
+| ---------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------- | ----------------------------------------------------------------------------------- |
 | [Empower Healing Spell](http://ddowiki.com/page/Empower_Healing_Spell) | Positive energy spells gain 75 Spell Power and costs an extra 10 spell points per spell.                                                                      | Metamagic     | ![Icon Feat Empower Healing Spell.png](/images/Icon_Feat_Empower_Healing_Spell.png) |
 | [Empower Spell](http://ddowiki.com/page/Empower_Spell)                 | Increases the Spell Power by 75, but increases the spell point cost of casting the spell by 15.                                                               | Metamagic     | ![Icon Feat Empower Spell.png](/images/Icon_Feat_Empower_Spell.png)                 |
 | [Enlarge Spell](http://ddowiki.com/page/Enlarge_Spell)                 | Doubles the range of a spell, but increases the amount of spell points needed to cast the spell by 10.                                                        | Metamagic     | ![Icon Feat Enlarge Spell.png](/images/Icon_Feat_Enlarge_Spell.png)                 |
@@ -17,13 +17,8 @@
 [Attribution-ShareAlike 2.5](https://creativecommons.org/licenses/by-sa/2.5/) Images and general information available
 from http://ddowiki.com
 
-[race_feat]: http://ddowiki.com/page/Category&#58;Racial_feats
-
-[cls_feat]: http://ddowiki.com/page/Category&#58;Class_feats
-
+[race_feat]: http://ddowiki.com/page/Category:Racial_feats
+[cls_feat]: http://ddowiki.com/page/Category:Class_feats
 [existingFeat]: - "c:verify-rows=#feat:verifyFeats()"
-
 [_matchStrategy_]: - "c:matchStrategy=KeyMatch"
-
 [result]: - "?=#feat"
-

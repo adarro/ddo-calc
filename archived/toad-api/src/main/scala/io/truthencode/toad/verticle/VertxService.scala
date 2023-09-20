@@ -29,6 +29,7 @@ import org.slf4j.{Logger, LoggerFactory}
 import java.net.{InetAddress, UnknownHostException}
 import scala.concurrent.duration
 import scala.language.postfixOps
+
 /**
  * Created by adarr on 7/7/2016.
  */
@@ -49,7 +50,8 @@ object VertxService {
 
     val ipv4: String = InetAddress.getLocalHost.getHostAddress
     val options: VertxOptions =
-      new VertxOptions().setEventBusOptions(new EventBusOptions().setHost(ipv4).setClusterPublicHost(ipv4))
+      new VertxOptions().setEventBusOptions(
+        new EventBusOptions().setHost(ipv4).setClusterPublicHost(ipv4))
     Vertx.clusteredVertx(options)
   }
 
@@ -109,7 +111,8 @@ object VertxService {
    * Initializes the Vertx engine synchronously
    *
    * @note
-   *   internally calls [[io.truthencode.toad.verticle.VertxService#startVertXAsync()]] with a blocking call.
+   *   internally calls [[io.truthencode.toad.verticle.VertxService#startVertXAsync()]] with a
+   *   blocking call.
    * @param timeout
    *   maximum wait time to block before failing. (defaults to [[DefaultDuration]]
    * @return
@@ -122,7 +125,8 @@ object VertxService {
 
   def fooBar(): Unit = {
     val ipv4 = InetAddress.getLocalHost.getHostAddress
-    val options = new VertxOptions().setEventBusOptions(new EventBusOptions().setHost(ipv4).setClusterPublicHost(ipv4))
+    val options = new VertxOptions().setEventBusOptions(
+      new EventBusOptions().setHost(ipv4).setClusterPublicHost(ipv4))
     Vertx.clusteredVertx(
       options,
       (ar: AsyncResult[Vertx]) => {

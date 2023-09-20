@@ -40,7 +40,7 @@ class DetailedEffectTest extends AnyFunSpec with Matchers with ResultMatchers {
   final val invalidBonusType = "SpontaneousErection" // Rogue 'Builder' :)
 
   val aPerfectlyValidDetailEffect: DetailedEffect =
-    DetailedEffect(validId, someDescriptions, validTriggerOn, validTriggerOff,validBonusType)
+    DetailedEffect(validId, someDescriptions, validTriggerOn, validTriggerOff, validBonusType)
 
   describe("A detailed effect") {
 
@@ -52,9 +52,9 @@ class DetailedEffectTest extends AnyFunSpec with Matchers with ResultMatchers {
 
     they("should disallow invalid trigger names") {
       val invalidTriggerOnEffectName =
-        DetailedEffect(validId, someDescriptions, invalidTriggerOn, validTriggerOff,validBonusType)
+        DetailedEffect(validId, someDescriptions, invalidTriggerOn, validTriggerOff, validBonusType)
       val invalidTriggerOffEffectName =
-        DetailedEffect(validId, someDescriptions, invalidTriggerOn, validTriggerOff,validBonusType)
+        DetailedEffect(validId, someDescriptions, invalidTriggerOn, validTriggerOff, validBonusType)
       val result = validate(invalidTriggerOnEffectName)
       val result2 = validate(invalidTriggerOffEffectName)
       result should be(aFailure)

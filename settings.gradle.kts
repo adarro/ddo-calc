@@ -16,13 +16,11 @@
  * limitations under the License.
  */
 
-
 import java.nio.file.Files
 import java.nio.file.Paths
 
 
 rootProject.name = "ddo-calc-parent"
-
 
 pluginManagement {
     //  Scala
@@ -32,17 +30,15 @@ pluginManagement {
     val avroHuggerPluginVersion: String by settings
     val openApiGeneratorPluginVersion: String by settings
 
-
 //    val kordampGradlePluginVersion: String by settings
 //    val semVerPluginVersion: String by settings
     val mooltiverseNyxPluginVersion: String by settings
     val foojayResolverPluginVersionversion: String by settings
 
-
     plugins {
         id("com.github.hierynomus.license") version "0.16.1"
         id("com.zlad.gradle.avrohugger") version avroHuggerPluginVersion
-        id("com.chudsaviet.gradle.avrohugger") version avroHuggerPluginVersion
+        // id("com.chudsaviet.gradle.avrohugger") version avroHuggerPluginVersion
         id("org.openapi.generator") version openApiGeneratorPluginVersion
         id("org.scoverage") version scoveragePluginVersion
         id("com.mooltiverse.oss.nyx") version mooltiverseNyxPluginVersion
@@ -67,12 +63,12 @@ plugins {
 // not specified or create a sensible default
 val projectFolderDelimiter: String by settings
 
-
 @Suppress("CUSTOM_GETTERS_SETTERS")
 val projectFolders: List<String>
     get() = settings.extra["projectFolders"]?.toString()?.split(projectFolderDelimiter) ?: listOf()
 
 logger.info("checking $projectFolders for sub-projects")
+
 /**
  *  reads the first part of a string up to the "."
  *  should be an Extension, but can not inline compile as one in settings.gradle.kts
@@ -97,12 +93,14 @@ projectFolders.forEach { dirName ->
         Integer.MAX_VALUE,
         { _: java.nio.file.Path, attributes: java.nio.file.attribute.BasicFileAttributes ->
             attributes.isDirectory
-        }).use { dir ->
+        },
+    ).use { dir ->
         dir.forEach { dr ->
             val customName = dr.toFile().name
             // ({{f,s -> true}})
-            val files = dr.toFile()
-                .listFiles { _, str -> str.matches(Regex("($customName|build)\\.gradle(\\.kts)?")) }
+            val files =
+                dr.toFile()
+                    .listFiles { _, str -> str.matches(Regex("($customName|build)\\.gradle(\\.kts)?")) }
 
             if (files?.isEmpty() != true) {
                 if (files!!.size != 1) {
@@ -122,8 +120,6 @@ projectFolders.forEach { dirName ->
         }
     }
 }
-
-
 
 if (System.getenv("enableCompositeBuild") == "true") {
     logger.info("Adding included builds")

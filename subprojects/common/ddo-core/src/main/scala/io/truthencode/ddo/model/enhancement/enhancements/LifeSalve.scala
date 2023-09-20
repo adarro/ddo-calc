@@ -24,6 +24,7 @@ trait LifeSalve extends ApothecaryTierTwo with ClassEnhancementImpl {
   override lazy val description: Option[String] = Some(
     """ Training this Enhancement also grants you a similar ability Death Salve. Target player, hireling, or pet takes 100% base healing from Positive spells for the next 3 minutes (or until target dies.) Has no effect on NPC allies or allies that already take 100% base Positive healing. This overrides their innate base healing from Positive spells for the duration. Shares a cooldown with Death Salve and Converter. Note: cannot be used on self."""
   )
+
   /**
    * Some enhancements can be taken multiple times (generally up to three)
    */

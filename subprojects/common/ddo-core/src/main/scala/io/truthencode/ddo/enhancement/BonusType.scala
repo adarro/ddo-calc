@@ -23,12 +23,11 @@ import io.truthencode.ddo.{NonStacking, StackingRule, StacksWithAllButSame, Stac
 import scala.collection.immutable
 
 /**
- * A Bonus type represents the classifier of a given effect for the purposes of stacking.
- * I.e. Plate armor and a shield each provide bonuses to your Armor Class and have a cumulative
- * benefit. Wearing a shield and casting a 'Shield spell' will not. Only the highest of the two will
- * apply to your total armor class. (Overlapping can sometimes still benefit as the shield spell may
- * provide less armor class than equipping a tower shield, but it also protects against magic
- * missiles.
+ * A Bonus type represents the classifier of a given effect for the purposes of stacking. I.e. Plate
+ * armor and a shield each provide bonuses to your Armor Class and have a cumulative benefit.
+ * Wearing a shield and casting a 'Shield spell' will not. Only the highest of the two will apply to
+ * your total armor class. (Overlapping can sometimes still benefit as the shield spell may provide
+ * less armor class than equipping a tower shield, but it also protects against magic missiles.
  */
 sealed trait BonusType extends EnumEntry {
 

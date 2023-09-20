@@ -31,6 +31,7 @@ protected[feats] trait AlchemicalStudiesBase
   extends FeatRequisiteImpl with ClassRequisiteImpl with AlchemicalStudiesPrefix with Passive
   with AlchemistBonusFeat with StackableFeat {
   self: ClassFeat =>
+
   /**
    * Delimits the prefix and text.
    */

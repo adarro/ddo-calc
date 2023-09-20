@@ -18,7 +18,7 @@
 package io.truthencode.ddo
 
 import com.typesafe.scalalogging.LazyLogging
-import io.truthencode.ddo.support.StringUtils.{Extensions, randomAlphanumericString}
+import io.truthencode.ddo.support.StringUtils.{randomAlphanumericString, Extensions}
 import io.truthencode.ddo.support.matching.{WordMatchStrategies, WordMatchStrategy}
 import org.scalactic.Equality
 import org.scalatest.funspec.AnyFunSpec

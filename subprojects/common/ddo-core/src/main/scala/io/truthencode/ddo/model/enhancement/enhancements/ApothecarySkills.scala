@@ -26,6 +26,7 @@ trait ApothecarySkills extends ApothecaryTierOne with ClassEnhancementImpl {
   override lazy val description: Option[String] = Some(
     "+[1/2/3] Haggle, Concentration, and Heal. Rank 3: +1 Will Saves"
   )
+
   /**
    * Some enhancements can be taken multiple times (generally up to three)
    */

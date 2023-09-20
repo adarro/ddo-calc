@@ -20,7 +20,11 @@ package io.truthencode.ddo.model.enhancement.enhancements
 import enumeratum.Enum
 import io.truthencode.ddo.model.enhancement.{ClassBased, ClassBasedEnhancements, Enhancement, Tier}
 import io.truthencode.ddo.support.StringUtils.Extensions
-import io.truthencode.ddo.support.requisite.{PointInTreeRequisite, PointsAvailableRequisite, RequiresActionPoints}
+import io.truthencode.ddo.support.requisite.{
+  PointInTreeRequisite,
+  PointsAvailableRequisite,
+  RequiresActionPoints
+}
 import io.truthencode.ddo.support.tree.{ClassTrees, Ranks}
 
 import scala.collection.immutable

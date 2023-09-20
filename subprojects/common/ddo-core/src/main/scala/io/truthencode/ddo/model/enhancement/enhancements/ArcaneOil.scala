@@ -29,6 +29,7 @@ trait ArcaneOil extends BombardierCore with ClassEnhancementImpl {
     """All equipped weapons are considered Spellcasting Implements.
       |While in Pyrite Reaction, you gain +5 Fire, Cold, Electric, Acid, and Poison Spell Power.""".stripMargin
   )
+
   /**
    * Some enhancements can be taken multiple times (generally up to three)
    */

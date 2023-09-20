@@ -29,6 +29,10 @@ lint:
         - shellcheck@0.9.0
         - shfmt@3.6.0
         - yamllint@1.32.0
+    ignore:
+        - linters: [ALL]
+          paths:
+              - incubating/**
 runtimes:
     enabled:
         - go@1.21.0

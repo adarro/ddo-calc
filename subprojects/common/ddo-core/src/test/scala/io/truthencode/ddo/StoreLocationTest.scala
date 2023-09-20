@@ -17,6 +17,7 @@
  */
 package io.truthencode.ddo
 
+import io.truthencode.ddo.support.slots.WearLocation
 import org.scalatest.funspec.AnyFunSpec
 import org.scalatest.matchers.should.Matchers
 

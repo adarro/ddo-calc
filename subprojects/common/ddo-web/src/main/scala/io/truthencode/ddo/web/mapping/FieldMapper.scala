@@ -164,8 +164,8 @@ object FieldMapper extends LazyLogging {
    *   A DDO Item wrapped in an Option
    * @note
    *   Breaking cases: Divine Vengeance has multiple versions based on level and class that equips
-   *   it. (RealmssofDespair terms.. a morph) http://ddowiki.com/page/Item:Divine_Vengeance Sun
-   *   blade is a slashing short sword, but has 'see note' in the damage type field
+   *   it. (RealmsofDespair terms.. a morph) http://ddowiki.com/page/Item:Divine_Vengeance Sun blade
+   *   is a slashing short sword, but has 'see note' in the damage type field
    *   http://ddowiki.com/page/Item:Sun_Blade
    */
   def wikiToItem[T <: Item](source: Map[String, Any])(implicit

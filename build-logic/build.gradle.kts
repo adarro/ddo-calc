@@ -72,7 +72,8 @@ dependencies {
 //    implementation("com.strumenta.antlr-kotlin:antlr-kotlin-gradle-plugin:70d79b7eb1")
 
     // quarkus related
-    implementation("io.quarkus:gradle-application-plugin:$quarkusPlatformVersion")
+    // quarkus incompatible with avrohugger (old scala 12.1) used by ddo-modeling.  Need to separate build.
+//    implementation("io.quarkus:gradle-application-plugin:$quarkusPlatformVersion")
     implementation("org.kordamp.gradle:jandex-gradle-plugin:$jandexPluginVersion")
 
     // Database

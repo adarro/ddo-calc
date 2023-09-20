@@ -19,54 +19,81 @@
 plugins {
     id("scala-library-profile")
     id("djaxonomy.test-conventions")
-    // id("com.zlad.gradle.avrohugger")
+//     id("com.zlad.gradle.avrohugger")
 //    id("com.github.lkishalmi.gatling") version "3.2.9"
     //  id("io.gatling.gradle") version "3.9.5.5" replaces above
     id("org.openapi.generator")
+//    id("io.quarkus")// version "3.3.3"
 }
-
-dependencies {
-    /*
-    https://github.com/fthomas/refined
-    check out refined library for compile time constraints
-    unsure how  helpful this will be as most data will need runtime validation (aka wix)
-     */
-    // Use Scala $scalaMajorVersion in our library project
-    val scalaLibraryVersion: String by project
-    val scalaMajorVersion: String by project
-
-    implementation(enforcedPlatform(project(":ddo-platform-scala")))
-    implementation(libs.scala2.library) {
-        version {
-            strictly("2.13.10")
-        }
-    }
-    implementation(libs.enumeratum.s213)
-    implementation(libs.typesafe.config)
-    implementation(libs.kxbmap.configs.s213)
-
-    implementation(libs.json4s.native.s213)
-
-    // validation and rules
-    implementation(libs.wix.accord.core.s213)
-    implementation(libs.logback.classic)
-    implementation(libs.typesafe.scala.logging.s213)
-//    testImplementation(group = "org.scalatest", name = "scalatest_$scalaMajorVersion")
-//    testImplementation(group = "org.mockito", name = "mockito-core")
-//
-//    // JUnit 5
-//    testRuntimeOnly(group = "org.junit.platform", name = "junit-platform-engine")
-//    testRuntimeOnly(group = "org.junit.platform", name = "junit-platform-launcher")
-//    testRuntimeOnly(group = "co.helmethair", name = "scalatest-junit-runner")
-}
+// apply {
+//    plugin("io.quarkus")// version "3.3.3"
+// }
 
 // OpenApi code / schema generation
 
 val apiSpec: FileCollection = project.rootProject.layout.files("$rootDir/specs/ddo-fatespinner-oas3-swagger.yaml")
 // Location of Avro schema files
 val schemaDir: FileCollection = layout.files("src/main/resources/schemas/avro")
-// Location of ??
-val generatedScalaSourceDir = layout.buildDirectory.files("src/main/avro")
+// Location of Avro generated Scala files from ddo-avro external build
+val generatedScalaSourceDir = layout.buildDirectory.files("avro-gen")
+// val ff =project.rootProject.layout.files("../../subprojects/common/ddo-model/build/avro-gen")
+val CODE_GEN = "codeGen"
+// External builds
+// Calling as external build due to scala library version incompatibilities
+// between AvroHugger (scala 2.12.1?) and Quarkus 2.13.x / 3)
+tasks.register("generateAvroSchemas", GradleBuild::class) {
+    val output = layout.buildDirectory.dir("avro-gen")
+    outputs.dir(output)
+    val input = rootProject.layout.projectDirectory.file("include/ddo-avro").asFile
+    inputs.dir(input)
+    dir = rootProject.layout.projectDirectory.file("include/ddo-avro").asFile
+
+    tasks = listOf("generateAvroScala")
+}
+
+tasks.register("cleanAvroSchemas", GradleBuild::class) {
+    dir = rootProject.layout.projectDirectory.file("include/ddo-avro").asFile
+
+    tasks = listOf("clean")
+}
+
+configurations {
+    val codeGen by configurations.creating {
+        isCanBeConsumed = false
+        isCanBeResolved = true
+    }
+}
+
+sourceSets {
+    this.configureEach {
+        scala {
+
+            this.srcDir(tasks.named("generateAvroSchemas"))
+        }
+    }
+//    scala {
+//        this.srcDir(tasks.named("generateAvroSchemas"))
+//    }
+//   val codeGen by creating {
+//       scala {
+//           this.srcDir(tasks.named("generateAvroSchemas"))
+//       }
+//   }
+}
+
+// tasks.named("compileCodeGenScala",ScalaCompile::class) {
+//    classpath = configurations.named(CODE_GEN).get()
+// }
+
+// TODO: Build Chore
+// Configure proper task dependency and remove explicit depends on for Avro Generation
+tasks.named("clean") {
+    dependsOn("cleanAvroSchemas")
+}
+
+tasks.named("compileScala") {
+    dependsOn("generateAvroSchemas")
+}
 
 /**
  * Api spec OpenAPI specification generation information
@@ -235,4 +262,43 @@ tasks {
 //    withType<com.hierynomus.gradle.license.tasks.LicenseCheck> {
 //        mustRunAfter(gas)
 //    }
+}
+
+dependencies {
+    /*
+    https://github.com/fthomas/refined
+    check out refined library for compile time constraints
+    unsure how  helpful this will be as most data will need runtime validation (aka wix)
+     */
+    // Use Scala $scalaMajorVersion in our library project
+    val scalaLibraryVersion: String by project
+    val scalaMajorVersion: String by project
+
+    implementation(enforcedPlatform(project(":ddo-platform-scala")))
+    implementation(libs.scala2.library) {
+        version {
+            strictly("2.13.10")
+        }
+    }
+    implementation(libs.enumeratum.s213)
+    implementation(libs.typesafe.config)
+    implementation(libs.kxbmap.configs.s213)
+
+    implementation(libs.json4s.native.s213)
+
+    // validation and rules
+    implementation(libs.wix.accord.core.s213)
+    implementation(libs.logback.classic)
+    implementation(libs.typesafe.scala.logging.s213)
+//    val codeGenImplementation by configurations.getting {
+//        extendsFrom(configurations.named("implementation").get())
+//    }
+
+//    testImplementation(group = "org.scalatest", name = "scalatest_$scalaMajorVersion")
+//    testImplementation(group = "org.mockito", name = "mockito-core")
+//
+//    // JUnit 5
+//    testRuntimeOnly(group = "org.junit.platform", name = "junit-platform-engine")
+//    testRuntimeOnly(group = "org.junit.platform", name = "junit-platform-launcher")
+//    testRuntimeOnly(group = "co.helmethair", name = "scalatest-junit-runner")
 }

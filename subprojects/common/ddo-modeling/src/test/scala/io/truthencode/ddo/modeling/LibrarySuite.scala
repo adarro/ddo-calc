@@ -20,11 +20,17 @@
  */
 package io.truthencode.ddo.modeling
 
-import org.scalatest.funsuite.AnyFunSuite
+import org.scalatest.funspec.AnyFunSpec
 
-class LibrarySuite extends AnyFunSuite {
-  test("someLibraryMethod is always true") {
+class LibrarySuite extends AnyFunSpec {
+  describe("someLibraryMethod is always true") {
     def library: Library = new Library()
     assert(library.someLibraryMethod())
+  }
+
+  describe("Something magical") {
+    it("can fluctuate") {
+      val vc = io.truthencode.ddo.model.protocol.ChangeType
+    }
   }
 }

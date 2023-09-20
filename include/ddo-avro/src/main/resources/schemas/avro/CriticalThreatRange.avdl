@@ -1,0 +1,12 @@
+@namespace("io.truthencode.ddo.model.protocol.parsers")
+protocol CriticalThreatRange {
+    /**  */
+    record CriticalThreatRange {
+        /** Lower bound for critical multiplier */
+        int? min;
+        /** Upper bound for critical multiplier */
+        int? max;
+        /** Number to multiply the damage roll by */
+        int? multiplier;
+    }
+}

@@ -29,6 +29,7 @@ jobs:
       with:
           gradle-version: wrapper
           arguments: reportScoverage aggregateAllTestReports
+    - name: Upload to codecov
       uses: codecov/codecov-action@v2
       with:
         token: ${{ secrets.CODECOV_TOKEN }} # not required for public repos

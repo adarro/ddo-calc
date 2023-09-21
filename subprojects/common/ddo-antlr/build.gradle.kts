@@ -1,11 +1,7 @@
 plugins {
-//    kotlin("jvm") version "1.9.10"
-    id("io.truthencode.poc.kantlr.kotlin-library-conventions")
+    id("djaxonomy.kotlin-library-conventions")
     antlr
-//    id("java-library-conventions")
-//    id("be.vbgn.ci-detect")
     id("code-quality")
-    // id("djaxonomy.test-conventions")
     idea
     id("djaxonomy.kotlin-test-conventions")
 }
@@ -20,8 +16,13 @@ repositories {
     mavenCentral()
 }
 
+description = "Antlr Parsing utilities"
+
 val antlrJavaPath =
-    PackagePath(project.layout.buildDirectory.dir("generated-src/java").get().asFile.path, "io.truthencode.ddo.grammar.antlr")
+    PackagePath(
+        project.layout.buildDirectory.dir("generated-src/java").get().asFile.path,
+        "io.truthencode.ddo.grammar.antlr"
+    )
 
 data class PackagePath(val source: String, val packageName: String) {
     /**

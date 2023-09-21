@@ -111,10 +111,14 @@ fun JvmTestSuite.applyScalaTest() {
 
 project.testing {
     suites {
-        val integrationTest by registering(JvmTestSuite::class)
+        /*
+        TODO: Add functional / integration etc as needed
+        Also need to determine if this is a limited scope (i.e opt in by project)
+        integrationTest by registering(JvmTestSuite::class)
+        functionalTest by registering(JvmTestSuite::class)
+        performanceTest by registering(JvmTestSuite::class)
+         */
 
-        val functionalTest by registering(JvmTestSuite::class)
-        val performanceTest by registering(JvmTestSuite::class)
         val test by getting(JvmTestSuite::class)
         val acceptanceTest = register<JvmTestSuite>("acceptanceTest")
         configureEach {

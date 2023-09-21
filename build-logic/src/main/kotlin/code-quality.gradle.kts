@@ -23,6 +23,7 @@ plugins {
 
 //    id("com.github.hierynomus.license")
     id("com.diffplug.spotless")
+    id("org.sonarqube")
 //    id("com.javiersc.gradle.plugins.dependency.updates")
 }
 
@@ -139,5 +140,13 @@ configure<com.diffplug.gradle.spotless.SpotlessExtension> {
             target("*.scala")
             licenseHeaderFile(project.rootProject.file("gradle/LICENSE_HEADER_SPOTLESS"), "package")
         }
+    }
+}
+
+sonar {
+    properties {
+        property("sonar.projectKey", "truthencode_ddo-calc")
+        property("sonar.organization", "truthencode")
+        property("sonar.host.url", "https://sonarcloud.io")
     }
 }

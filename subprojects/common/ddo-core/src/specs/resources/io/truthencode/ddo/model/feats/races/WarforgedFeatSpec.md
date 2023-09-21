@@ -24,15 +24,13 @@
 [grantedFeats]: - "c:verify-rows=#feat:verifyGrantedFeats()"
 [availableFeats]: - "c:verify-rows=#feat:verifyAvailableFeats()"
 
-<!-- trunk-ignore-begin(markdownlint/MD053) Links are dynamically referenced at runtime -->
+<!-- trunk-ignore-all(markdownlint/MD053) Links are dynamically referenced at runtime -->
 
 [_matchStrategy_]: - "c:matchStrategy=KeyMatch"
 [result]: - "?=#feat"
 [elf_feat]: http://www.ddowiki.com/edit/Elf_(feat)?redlink=1 "Elf (feat) (page does not exist)"
 [elf_race]: http://www.ddowiki.com/page/Elf "Elf"
 [sunelf_race]: http://www.ddowiki.com/page/Sun_Elf_(Morninglord) "Sun Elf (Morninglord)"
-
-<!-- trunk-ignore-end(markdownlint/MD053) -->
 
 ![Attribution-ShareAlike 2.5](/images/somerights20.png)
 [Attribution-ShareAlike 2.5](https://creativecommons.org/licenses/by-sa/2.5/) Images and general information available

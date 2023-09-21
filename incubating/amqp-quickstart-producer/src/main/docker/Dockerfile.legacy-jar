@@ -1,3 +1,5 @@
+# trunk-ignore-all(trivy/DS026)
+# trunk-ignore-all(checkov/CKV_DOCKER_2)
 ####
 # This Dockerfile is used in order to build a container that runs the Quarkus application in JVM mode
 #

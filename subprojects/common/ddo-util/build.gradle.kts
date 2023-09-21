@@ -31,37 +31,10 @@ dependencies {
 
         implementation(enforcedPlatform(project(":ddo-platform-scala")))
         // Platform dependent
-        // https://mvnrepository.com/artifact/org.json4s/json4s-native
-//        implementation(group = "org.json4s", name = "json4s-native_$scalaMajorVersion")
-//        implementation(group = "org.scala-lang", name = "scala-library")
         implementation(libs.scala2.library)
 
         implementation(libs.enumeratum.s213)
-//        implementation(group = "com.typesafe", name = "config")
-//        implementation(group = "com.github.kxbmap", name = "configs_$scalaMajorVersion")
-//        // validation and rules
-//        implementation(group = "com.wix", name = "accord-core_$scalaMajorVersion")
         implementation(libs.logback.classic)
         implementation(libs.typesafe.scala.logging.s213)
-//        testImplementation(group = "org.scalatest", name = "scalatest_$scalaMajorVersion")
-//        testImplementation(group = "org.mockito", name = "mockito-core")
-//
-//        // JUnit 5
-//        testRuntimeOnly(group = "org.junit.platform", name = "junit-platform-engine")
-//        testRuntimeOnly(group = "org.junit.platform", name = "junit-platform-launcher")
-//        testRuntimeOnly(group = "co.helmethair", name = "scalatest-junit-runner")
     }
 }
-
-// tasks {
-//    // Use the built-in JUnit support of Gradle.
-//    "test"(Test::class) {
-//        useJUnitPlatform {
-//            includeEngines = setOf("scalatest")
-//            testLogging {
-//                events("passed", "skipped", "failed")
-//            }
-//        }
-//    }
-//
-// }

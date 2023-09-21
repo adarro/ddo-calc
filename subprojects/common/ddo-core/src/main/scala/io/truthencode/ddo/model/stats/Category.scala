@@ -65,7 +65,7 @@ trait SpecialAttack extends Category
 /**
  * A very general category that applies to general and specific spell casting. These should include
  * casting costs, cool-downs, stopping ability (silence / deafness) Spell power MAY fall under this
- * or possibly split into another category as Critical Multiplier / Potentcy and Universal spell
+ * or possibly split into another category as Critical Multiplier / Potently and Universal spell
  * power like effects
  */
 trait SpellCasting extends Category

@@ -1,0 +1,11 @@
+site_name: Parsing
+
+# Meta tags (placed in header)
+site_description: Core DDO Objects
+
+nav:
+    - Home: index.md
+    - User guide:
+          - Installation: guide/installation.md
+    - About:
+          - Release notes: about/history.md

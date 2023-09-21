@@ -1,0 +1,16 @@
+@namespace("io.truthencode.ddo.model.protocol.parsers")
+protocol DamageParserInfo {
+    /** A most basic encapsulation of damage information. */
+    record DamageInfo {
+        /** Multiplier for the dice */
+        union{null, int} dice_modifier;
+        /** Dice expression in the form of nDm */
+        union{null, string} dice;
+        /** Additional Damage after the dice */
+        union{null, int} extra;
+        /** Includes both Physical and Magical Damage types */
+        DamageTrait damage_type;
+    }
+
+    enum DamageTrait {Acid, Fire, Cold, Electric, Force, Sonic, Poison, Evil, Good, UnTyped, Special, Bludgeon, Pierce, Slash, Magic}
+}

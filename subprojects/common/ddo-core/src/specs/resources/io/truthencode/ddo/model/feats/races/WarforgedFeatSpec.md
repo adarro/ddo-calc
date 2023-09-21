@@ -23,6 +23,9 @@
 [light_fort]: http://www.ddowiki.com/page/Light_Fortification_%28feat%29 "Light Fortification (feat)"
 [grantedFeats]: - "c:verify-rows=#feat:verifyGrantedFeats()"
 [availableFeats]: - "c:verify-rows=#feat:verifyAvailableFeats()"
+
+<!-- trunk-ignore-all(markdownlint/MD053) Links are dynamically referenced at runtime -->
+
 [_matchStrategy_]: - "c:matchStrategy=KeyMatch"
 [result]: - "?=#feat"
 [elf_feat]: http://www.ddowiki.com/edit/Elf_(feat)?redlink=1 "Elf (feat) (page does not exist)"
@@ -32,3 +35,5 @@
 ![Attribution-ShareAlike 2.5](/images/somerights20.png)
 [Attribution-ShareAlike 2.5](https://creativecommons.org/licenses/by-sa/2.5/) Images and general information available
 from http://ddowiki.com
+
+[//,_matchStrategy_]: # "This behaves like a comment"

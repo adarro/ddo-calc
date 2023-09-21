@@ -1,5 +1,5 @@
 name: Run Gradle on PRs
-
+permissions: read-all
 on: 
   push:
     branches: [master]
@@ -35,3 +35,4 @@ jobs:
         token: ${{ secrets.CODECOV_TOKEN }} # not required for public repos
         name: codecov-umbrella # optional 
         verbose: true # optional (default = false)
+

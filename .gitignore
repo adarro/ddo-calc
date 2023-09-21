@@ -11,6 +11,8 @@
 *.hprof
 hs*.log
 
+archived/
+
 docsold/
 
 #Maven exclusions
@@ -211,3 +213,4 @@ local.properties
 .quarkus/
 /subprojects/common/ddo-modeling/src/main/avro/
 /subprojects/common/ddo-core/src/generated/java/io/truthencode/ddo/core/GeneratedVersion.java
+fixle.sh

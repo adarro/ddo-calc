@@ -6,6 +6,7 @@ import org.antlr.v4.runtime.ParserRuleContext;
 import org.antlr.v4.runtime.Token;
 import org.antlr.v4.runtime.tree.*;
 import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -15,6 +16,8 @@ import io.truthencode.ddo.grammar.antlr.EnchantmentsParser;
 
 import java.util.Arrays;
 import java.util.stream.Collectors;
+
+import static org.junit.jupiter.api.Assertions.assertDoesNotThrow;
 
 
 class DdoItemParserTest {
@@ -39,7 +42,7 @@ class DdoItemParserTest {
             String sep = System.lineSeparator();
 
             var msg = Arrays.stream(new String[]{
-                String.format("%sToken: %s%s",sep,txt,sep),
+                String.format("%sToken: %s%s", sep, txt, sep),
                 String.format("%s: %s %s", "dn", dn, sep),
                 String.format("%s: %s %s", "sn", sn, sep),
                 String.format("%s: %s %s", "ln", ln, sep)}).distinct().collect(Collectors.joining());
@@ -126,12 +129,17 @@ class DdoItemParserTest {
 
     @Test
     void canReadPercent() {
-        walkText(SomeData);
+        // TODO: Refactor to inject tree listener
+        assertDoesNotThrow(() -> {
+            walkText(SomeData);
+        });
     }
 
     @Test
     void canReadNumber() {
-        walkText(SomeData);
+        assertDoesNotThrow(() -> {
+            walkText(SomeData);
+        });
     }
 
     void walkText(String data) {

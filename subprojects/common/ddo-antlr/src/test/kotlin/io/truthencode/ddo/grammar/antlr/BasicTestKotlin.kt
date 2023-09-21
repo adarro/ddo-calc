@@ -1,6 +1,7 @@
 package io.truthencode.ddo.grammar.antlr
 
-import io.truthencode.ddo.visibla.javaClass.PojoDefaultJava
+
+import io.truthencode.ddo.visibla.javaclass.PojoDefaultJava
 import io.truthencode.ddo.visibla.kotlinClass.PojoDefaultKotlin
 
 open class BasicTestKotlin {

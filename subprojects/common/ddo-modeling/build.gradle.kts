@@ -245,25 +245,6 @@ if (cleanTask.isPresent) {
     cleanTask.get().dependsOn("cleanGeneratedScala")
 }
 
-tasks {
-    // Use the built-in JUnit support of Gradle.
-    "test"(Test::class) {
-        useJUnitPlatform {
-            includeEngines = setOf("scalatest")
-            testLogging {
-                events("passed", "skipped", "failed")
-            }
-        }
-    }
-//    val sv = named("syncVersionFiles").get()
-//    // BUG: should not need to declare task dependencies when tasks use non-conflicting outputs
-//    val gas = named("generateAvroScala").get()
-//    gas.mustRunAfter(named("syncVersionFiles"))
-//    withType<com.hierynomus.gradle.license.tasks.LicenseCheck> {
-//        mustRunAfter(gas)
-//    }
-}
-
 dependencies {
     /*
     https://github.com/fthomas/refined
@@ -290,15 +271,4 @@ dependencies {
     implementation(libs.wix.accord.core.s213)
     implementation(libs.logback.classic)
     implementation(libs.typesafe.scala.logging.s213)
-//    val codeGenImplementation by configurations.getting {
-//        extendsFrom(configurations.named("implementation").get())
-//    }
-
-//    testImplementation(group = "org.scalatest", name = "scalatest_$scalaMajorVersion")
-//    testImplementation(group = "org.mockito", name = "mockito-core")
-//
-//    // JUnit 5
-//    testRuntimeOnly(group = "org.junit.platform", name = "junit-platform-engine")
-//    testRuntimeOnly(group = "org.junit.platform", name = "junit-platform-launcher")
-//    testRuntimeOnly(group = "co.helmethair", name = "scalatest-junit-runner")
 }

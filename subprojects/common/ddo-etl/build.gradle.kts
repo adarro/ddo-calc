@@ -64,13 +64,4 @@ dependencies {
     implementation(libs.wix.accord.core.s213)
     implementation(libs.logback.classic)
     implementation(libs.typesafe.scala.logging.s213)
-//    testImplementation(group = "org.scalatest", name = "scalatest_$scalaMajorVersion")
-//    testImplementation(group = "org.scalacheck", name = "scalacheck_$scalaMajorVersion", version = "1.14.0")
-//    testImplementation(group = "org.mockito", name = "mockito-core")
-//
-//    // JUnit 5
-//    testRuntimeOnly(group = "org.junit.platform", name = "junit-platform-engine")
-//    testRuntimeOnly(group = "org.junit.platform", name = "junit-platform-launcher")
-//    testRuntimeOnly(group = "co.helmethair", name = "scalatest-junit-runner")
-//    testRuntimeOnly(group = "org.junit.vintage", name = "junit-vintage-engine")
 }

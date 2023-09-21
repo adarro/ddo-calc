@@ -16,9 +16,7 @@
  * limitations under the License.
  */
 plugins {
-
     id("scala-library-profile")
-//    id("ru.vyarus.mkdocs") // version "3.0.0"
     id("djaxonomy.test-conventions")
 }
 
@@ -36,6 +34,4 @@ dependencies {
     implementation(libs.typesafe.scala.logging.s213)
     implementation(libs.logback.classic)
     implementation(libs.enumeratum.s213)
-
-    // implementation(group = "com.typesafe.scala-logging", name = "scala-logging_$scalaMajorVersion")
 }

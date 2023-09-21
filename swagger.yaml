@@ -1,17 +1,17 @@
-swagger: 2.0
+swagger: "2.0"
 info:
     version: 1.0.0
     title: Uber API
     description: Move your app forward with the Uber API
-    termsOfService: http://swagger.io/terms/
+    termsOfService: "http://swagger.io/terms/"
     contact:
         name: Andre White
         email: adarro@gmail.com
-        url: http://truthencode.wordpress.org
+        url: "http://truthencode.wordpress.org"
     license:
         name: Apachev2
-        url: http://www.apache.org/licenses/LICENSE-2.0
-host: localhost:8888
+        url: "http://www.apache.org/licenses/LICENSE-2.0"
+host: "localhost:8888"
 basePath: /api
 schemes:
     - https
@@ -28,7 +28,7 @@ paths:
         get:
             operationId: listWeapons
             summary: Retrieves available weapons
-            description: Service used to retrieve weapons as per [DDOWiki](http://ddowiki.com/page/Category:Weapons)
+            description: "Service used to retrieve weapons as per [DDOWiki](http://ddowiki.com/page/Category:Weapons)"
             parameters:
                 - name: tags
                   in: query
@@ -52,7 +52,7 @@ paths:
                     schema:
                         type: array
                         items:
-                            $ref: #/definitions/Weapon
+                            $ref: "#/definitions/Weapon"
                 default:
                     description: Unexpected error
                     schema:

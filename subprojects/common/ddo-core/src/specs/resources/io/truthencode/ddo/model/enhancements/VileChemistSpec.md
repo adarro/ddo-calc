@@ -88,6 +88,9 @@ from "[https://ddowiki.com/index.php?title=Vile_Chemist_enhancements&oldid=44342
 [progression]: - "?=#result.progression()"
 [enhancement]: - "#enhancementId"
 [setUpEnhancement]: - "#result = loadFromKey(#enhancementId)"
+
+<!-- trunk-ignore-all(markdownlint/MD053) -->
+
 [ranks]: - "?=#result.ranks()"
 [apcost]: - "?=#result.apcost()"
 [description]: - "?=#result.description()"

@@ -37,6 +37,8 @@ val defaultJavaToolChainVersion: String? by project
 val kasechangeVersion: String by project
 
 dependencies {
+
+    implementation("org.sonarsource.scanner.gradle:sonarqube-gradle-plugin:4.3.1.3277")
     // enable gradle catalog for included convention plugins
     implementation(files(libs.javaClass.superclass.protectionDomain.codeSource.location))
     // tool languages

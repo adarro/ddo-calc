@@ -33,7 +33,7 @@ lint:
         - linters: [ALL]
           paths:
               - incubating/**
-              - /**/gradlew
+              - **/gradlew
 runtimes:
     enabled:
         - go@1.21.0

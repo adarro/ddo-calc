@@ -28,7 +28,15 @@ plugins {
 
 tasks.withType(Test::class.java) {
     systemProperties["concordion.output.dir"] = "${reporting.baseDir}/tests"
+    val outputDir = reports.junitXml.outputLocation
+    jvmArgumentProviders.add(CommandLineArgumentProvider {
+        mutableListOf(
+            "-Djunit.platform.reporting.open.xml.enabled=false", // Legacy format for sonar
+            "-Djunit.platform.reporting.output.dir=${outputDir.get().asFile.absolutePath}"
+        )
+    })
 }
+
 
 val libs = the<LibrariesForLibs>()
 
@@ -36,6 +44,10 @@ val extension = project.extensions.create<KotlinTestKitExtension>("KotlinTestKit
 extension.useKotlinTestKit.convention(
     KotlinTestKits.KoTest,
 )
+
+dependencies {
+    testRuntimeOnly(libs.junit.platform.reporting)
+}
 
 fun JvmTestSuite.applyKoTest() {
     val koTestVersion: String = (findProperty("koTestVersion") ?: embeddedKotlinVersion).toString()

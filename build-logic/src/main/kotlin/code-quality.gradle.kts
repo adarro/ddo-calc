@@ -56,7 +56,7 @@ fun walkBack(
     fileName: String,
     recurse: Recursion,
     proj: Project = project.rootProject,
-): java.io.File? {
+): File? {
     val f = proj.file(fileName)
     return if (f.exists()) {
         f
@@ -143,10 +143,3 @@ configure<com.diffplug.gradle.spotless.SpotlessExtension> {
     }
 }
 
-sonar {
-    properties {
-        property("sonar.projectKey", "truthencode_ddo-calc")
-        property("sonar.organization", "truthencode")
-        property("sonar.host.url", "https://sonarcloud.io")
-    }
-}

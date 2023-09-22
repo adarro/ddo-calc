@@ -64,6 +64,7 @@ junit-platform-engine = { module = "org.junit.platform:junit-platform-engine", v
 junit-platform-launcher = { module = "org.junit.platform:junit-platform-launcher", version.ref = "junit-platform" }
 junit-platform-runner = { module = "org.junit.platform:junit-platform-runner", version.ref = "junit-engine" }
 junit-vintage-engine = { module = "org.junit.vintage:junit-vintage-engine", version.ref = "junit-engine" }
+junit-platform-reporting = { module = "org.junit.platform:junit-platform-reporting", version.ref = "junit-platform" }
 kotest-assertions-core-jvm = { module = "io.kotest:kotest-assertions-core-jvm", version.ref = "kotest" }
 kotest-property-jvm = { module = "io.kotest:kotest-property-jvm", version.ref = "kotest" }
 kotest-runner-junit-jvm = { module = "io.kotest:kotest-runner-junit5-jvm", version.ref = "kotest" }
@@ -103,14 +104,14 @@ wix-accord-scalatest-s213 = { module = "com.wix:accord-scalatest_2.13", version.
 
 [bundles]
 concordion = [
-  "concordion",
-  "concordion-collapse-output-extension",
-  "concordion-embed-extension",
+    "concordion",
+    "concordion-collapse-output-extension",
+    "concordion-embed-extension",
 ]
 kotest = [
-  "kotest-assertions-core-jvm",
-  "kotest-property-jvm",
-  "kotest-runner-junit-jvm",
+    "kotest-assertions-core-jvm",
+    "kotest-property-jvm",
+    "kotest-runner-junit-jvm",
 ]
 #scala-logging = ["typesafe-scala-logging-s213", "typesafe-config"]
 scala-wix = ["wix-accord-core-s213", "wix-accord-scalatest-s213"]

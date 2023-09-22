@@ -16,6 +16,7 @@
 * limitations under the License.
 */
 import com.mooltiverse.oss.nyx.state.State
+
 import ru.vyarus.gradle.plugin.python.task.PythonTask
 import java.text.SimpleDateFormat
 import java.util.*
@@ -38,6 +39,7 @@ plugins {
     id("com.github.ben-manes.versions") version "0.41.0"
     id("nl.littlerobots.version-catalog-update") version "0.8.1"
     id("ru.vyarus.mkdocs")
+    id("org.sonarqube")
 
 //    id("ru.vyarus.mkdocs")  version "3.0.0" apply (false)
     //  id ("be.vbgn.ci-detect") version "0.1.0"
@@ -351,4 +353,14 @@ allprojects {
 //    tasks.withType<com.hierynomus.gradle.license.tasks.LicenseCheck> {
 //        mustRunAfter(syncVersionFiles)
 //    }
+}
+
+sonar {
+
+    properties {
+        property("sonar.projectKey", "truthencode_ddo-calc")
+        property("sonar.organization", "truthencode")
+        property("sonar.host.url", "https://sonarcloud.io")
+//        property()
+    }
 }

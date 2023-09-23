@@ -22,6 +22,7 @@ import io.truthencode.djaxonomy.etc.TestBuildSupport
 
 plugins {
     id("djaxonomy.test-conventions")
+    id("djaxonomy.kotlin-coverage-conventions")
 }
 
 val koTestVersion: String by project

@@ -49,7 +49,6 @@ pluginManagement {
         id("ru.vyarus.mkdocs") version "3.0.0"
         id("io.quarkus") version "3.3.3"
         id("org.sonarqube") version "4.3.1.3277"
-
     }
 
     repositories {

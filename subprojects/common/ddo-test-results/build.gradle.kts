@@ -30,13 +30,19 @@ reporting {
         // }
     }
 }
+sonar {
+
+    isSkipProject = true
+}
 
 /**
 Task simply prints out a list of projects to be used in the testReportAggregation
-this list isn't immideately available in the configuration phase, so we have to cut and paste
+this list isn't immediately available in the configuration phase, so we have to cut and paste
 from a manually run listProjects task
  */
 tasks.register("listProjects") {
+    description = "print out report aggregation projects"
+    group = "utility"
     doLast {
         val pl = projectList()
         pl.sort()
@@ -89,6 +95,7 @@ Should be called with mdDocsBuild task
  */
 tasks.register("moduleDependencyReport") {
     description = "Creates a .dot file with all inter-module dependencies"
+    group = "documentation"
     doLast {
         val file = rootProject.layout.projectDirectory.file("docs/developers_guide/project-dependencies.dot").asFile
         file.delete()
@@ -97,7 +104,7 @@ tasks.register("moduleDependencyReport") {
             sb.append("strict digraph {\n")
             sb.append("splines=ortho\n")
             w.write(sb.toString())
-            printDeps(w, rootProject)
+            printDependencies(w, rootProject)
             w.write("}\n")
         }
     }
@@ -114,7 +121,7 @@ tasks.register("moduleDependencyReport") {
 // }
 
 // recursively print dependencies to file and move on to child projects
-fun printDeps(
+fun printDependencies(
     writer: Writer,
     project: Project,
 ) {
@@ -137,6 +144,6 @@ fun printDeps(
     }
     project.childProjects.forEach { (_, childProject) ->
         logger.error("recursive call for $childProject")
-        printDeps(writer, childProject)
+        printDependencies(writer, childProject)
     }
 }

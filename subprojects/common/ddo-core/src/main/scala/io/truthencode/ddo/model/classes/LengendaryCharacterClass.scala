@@ -23,33 +23,34 @@ import io.truthencode.ddo.model.misc.{Availability, FreeToPlayFeature}
 import scala.collection.immutable
 
 /**
- * And epic character has achieved level 20 and can now enter Epic Quests. This also unlocks
- * Destinies.
+ * And Legendary character has achieved level 30 and can now enter Legendary Quests. This also
+ * unlocks Destinies.
  */
-sealed trait EpicCharacterClass extends CharacterClass with EnumEntry {
+sealed trait LegendaryCharacterClass extends CharacterClass with EnumEntry {
   self: Availability =>
 }
 
 /**
- * Represents character's between 20 and 29?
+ * Represents character's 30 to current level cap (32)
  */
-object EpicCharacterClass extends Enum[EpicCharacterClass] {
+object LegendaryCharacterClass extends Enum[LegendaryCharacterClass] {
   private val generateLevels = {
-    (21 to 30).map { x =>
+    (31 to 33).map { x =>
       {
-        val y = x - 20
-        EpicLevel(y)
+        val y = x - 30
+        LegendaryLevel(y)
       }
     }
   }
 
-  override def values: immutable.IndexedSeq[EpicCharacterClass] = generateLevels
+  override def values: immutable.IndexedSeq[LegendaryCharacterClass] = generateLevels
 }
 
 /**
-* Represents an Epic level.
+ * Represents an Legendary level.
  * @param level
+ *   Legendary Level (30+)
  */
-case class EpicLevel(level: Int) extends EpicCharacterClass with FreeToPlayFeature {
+case class LegendaryLevel(level: Int) extends LegendaryCharacterClass with FreeToPlayFeature {
   override def entryName: String = s"Level$level"
 }

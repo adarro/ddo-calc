@@ -23,14 +23,11 @@ import io.truthencode.ddo.enumeration.BitSupport
 import io.truthencode.ddo.support.SearchPrefix
 
 import scala.collection.immutable
-// import io.truthencode.ddo.enumeration._
 
 /**
  * Created by adarr on 8/12/2016.
  */
 sealed trait AlignmentType
-
-// extends BitWise
 
 sealed trait LawAxis extends EnumEntry with AlignmentType with NoDefault[LawAxis] {
 

@@ -16,21 +16,16 @@
 * limitations under the License.
 */
 import com.mooltiverse.oss.nyx.state.State
-
 import ru.vyarus.gradle.plugin.python.task.PythonTask
 import java.text.SimpleDateFormat
 import java.util.*
 
 plugins {
-//    id("code-quality")
-    // id("org.kordamp.gradle.project")
-//    scala apply (false)
     id("org.scoverage") apply (false)
     // may need node support
 //    id("node-conventions")
 
     idea
-//    id("net.thauvin.erik.gradle.semver")
     `maven-publish`
     id("com.dorongold.task-tree") version "2.1.0" // Temp until working solution to userhome version script
     id("com.github.ManifestClasspath") version "0.1.0-RELEASE"
@@ -40,9 +35,6 @@ plugins {
     id("nl.littlerobots.version-catalog-update") version "0.8.1"
     id("ru.vyarus.mkdocs")
     id("org.sonarqube")
-
-//    id("ru.vyarus.mkdocs")  version "3.0.0" apply (false)
-    //  id ("be.vbgn.ci-detect") version "0.1.0"
 }
 
 apply(plugin = "org.scoverage")
@@ -100,6 +92,8 @@ val requirementsIn =
     )
 
 tasks.register("generateRequirementsIn") {
+    description = "generates a requirements.in dependency file for Python / MkDocs"
+    group = "documentation"
     val rIn = layout.projectDirectory.file("requirements.in")
     this.outputs.files(rIn)
     val rTxt = requirementsIn.joinToString("\n") { it.replace(":", "==") }
@@ -115,6 +109,8 @@ python {
 }
 
 tasks.register("dumpSomeDiagnostics") {
+    group = "utility"
+    description = "prints nyx plugin state information"
     dependsOn(project.tasks.named("nyxInfer"))
     doLast {
         if (project.hasProperty("nyxState")) {
@@ -130,6 +126,8 @@ tasks.register("dumpSomeDiagnostics") {
 
 // Currently need to manually verify this matches mkdocs.yml value
 tasks.register("syncDocVersion", PythonTask::class) {
+    group = "documentation"
+    description = "Syncronizes nyx Semver with Readthedocs"
     dependsOn(project.tasks.named("nyxInfer"))
     val nyxState: State = project.findProperty("nyxState") as State
     module = "mike"
@@ -143,6 +141,8 @@ tasks.register("syncDocVersion", PythonTask::class) {
 }
 
 tasks.register("syncRequirements", PythonTask::class) {
+    group = "documentation"
+    description = "synchronizes Python setup tools dependency files with Gradle's"
     dependsOn(tasks.named("nyxInfer"), tasks.named("generateRequirementsIn"))
     module = "piptools"
     command = "compile"
@@ -165,71 +165,9 @@ buildDashboard
 
  */
 
-// val releaseActive: Boolean? = rootProject.findProperty("release") as Boolean?
-
-// config {
-// //    release = if (releaseActive != null) releaseActive!! else false
-//     info {
-//         name = "DDO Calculations"
-//         vendor = "TruthEncode"
-//         description = "DDO Character Analyzer and Planner"
-//         inceptionYear = "2015"
-//         version = VersionInfo().version
-
-//         links {
-//             website = gitHubBaseSite
-//             issueTracker = siteIssueTracker
-//             scm = siteScm
-//         }
-
-//         scm {
-//             url = gitHubBaseSite
-//             developerConnection = "scm:git:git@github.com:$gitHubAccountName/${gitExtension}"
-//             connection = "scm:git:git://github.com/github.com/$gitHubAccountName/$gitExtension"
-//         }
-
-//         organization {
-//             name = "TruthEncode"
-//             url = "https://github.com/truthencode"
-//         }
-
-//         people {
-//             person {
-//                 id = "adarro"
-//                 name = "Andre White"
-//                 roles = listOf("developer", "owner")
-//             }
-//         }
-
-//         artifacts {
-//             minpom {
-//                 enabled = true
-//             }
-//             jar {
-//                 enabled = false
-//             }
-//         }
-//     }
-
-//     licensing {
-//         excludes = setOf(
-//             "**/*.md",
-//             "**/*.sql",
-//             "**/avro/**/*.scala",
-//             "buildSrc\\build\\kotlin-dsl\\plugins-blocks\\extracted\\*.kts",
-//             "**/*.conf",
-//         )
-//         includes = setOf("src/main/java/**/*.java", "src/main/scala/*.scala", "src/main/kotlin/**/*.kt")
-//         licenses {
-//             license {
-//                 id = "Apache-2.0" // org.kordamp.gradle.plugin.base.model.LicenseId.APACHE_2_0
-//                 url = "https://www.apache.org/licenses/LICENSE-2.0.txt"
-//             }
-//         }
-//     }
-// }
-
 tasks.register("showMyVersion") {
+    group = "utility"
+    description = "displays project version"
     val v = project.version
     logger.info("project version: $v")
     logger.info(project.gradle.gradleVersion)
@@ -328,6 +266,8 @@ allprojects {
     }
 
     tasks.register("printConfigurations") {
+        group = "utility"
+        description = "prints existing configurations for a given project.  See alt resolvableConfigurations"
         doLast {
             println("Project Name: $project.name configurations:")
             configurations.forEach {
@@ -335,32 +275,12 @@ allprojects {
             }
         }
     }
-//    val syncVersionFiles by tasks.registering(Copy::class) {
-//        if (rootProject != project) {
-//            logger.warn("We are updating properties file in ${project.name}")
-//            from(foo)
-//            into(layout.projectDirectory)
-//        } else {
-//            logger.warn("in root project, nothing doing")
-//        }
-//    }
-//    tasks.withType<ProcessResources> {
-//        mustRunAfter(syncVersionFiles)
-//    }
-//    tasks.withType<com.diffplug.gradle.spotless.SpotlessTask> {
-//        mustRunAfter(syncVersionFiles)
-//    }
-//    tasks.withType<com.hierynomus.gradle.license.tasks.LicenseCheck> {
-//        mustRunAfter(syncVersionFiles)
-//    }
 }
 
 sonar {
-
     properties {
         property("sonar.projectKey", "truthencode_ddo-calc")
         property("sonar.organization", "truthencode")
         property("sonar.host.url", "https://sonarcloud.io")
-//        property()
     }
 }

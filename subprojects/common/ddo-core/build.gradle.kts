@@ -43,8 +43,8 @@ dependencies {
 
     implementation(libs.logback.classic)
     implementation(libs.typesafe.scala.logging.s213)
+    implementation(libs.jetbrains.annotations)
     testImplementation(project(":ddo-testing-util"))
-    implementation(group = "org.jetbrains", name = "annotations", version = "17.0.0")
 }
 
 testing {

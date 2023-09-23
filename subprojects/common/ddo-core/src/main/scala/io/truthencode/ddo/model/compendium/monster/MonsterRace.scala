@@ -23,7 +23,9 @@ import io.truthencode.ddo.model.compendium.types._
 import scala.collection.immutable
 
 /**
- * Created by adarr on 3/25/2017.
+ * Represents a Monster Race and should essentially match the corresponding Monster Manual entry.
+ * This may at some point be used to add default resists / vulnerabilities to calculations. Examples
+ * include racial bane weapons, favored enemies etc. Created by adarr on 3/25/2017.
  */
 sealed trait MonsterRace extends EnumEntry with MainTypeImpl {
 
@@ -147,21 +149,16 @@ object MonsterRace extends Enum[MonsterRace] {
 
   case object Warforged extends MonsterRace with LivingConstruct
 
-//  case object Bat extends MonsterRace
   case object FiendishScorpion extends MonsterRace with MagicalBeasts
 
   case object FiendishSpider extends MonsterRace with MagicalBeasts
 
-  // case object Hyena extends MonsterRace
-//  case object Lion extends MonsterRace
-  case object Panther extends MonsterRace
+  case object Panther extends Animals
 
-  case object PurpleWorm extends MonsterRace
+  case object PurpleWorm extends MagicalBeasts
 
-  case object RazorCat extends MonsterRace
+  case object RazorCat extends Animals
 
-//  case object Spider extends MonsterRace
-//  case object Wolf extends MonsterRace
   case object Worgs extends MonsterRace
 
   case object WinterWolves extends MonsterRace
@@ -214,10 +211,6 @@ object MonsterRace extends Enum[MonsterRace] {
 
   case object Troglodyte extends MonsterRace
 
-//  case object Beholder extends MonsterRace
-//  case object BlueDragon extends MonsterRace
-//  case object FireElemental extends MonsterRace
-//  case object Human extends MonsterRace
   case object Ghast extends MonsterRace
 
   case object Ghoul extends MonsterRace
@@ -228,7 +221,6 @@ object MonsterRace extends Enum[MonsterRace] {
 
   case object Quell extends MonsterRace
 
-//  case object Rat extends MonsterRace
   case object Shadow extends MonsterRace
 
   case object Skeleton extends MonsterRace

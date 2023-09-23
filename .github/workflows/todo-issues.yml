@@ -1,6 +1,5 @@
 name: Create issues from todos
 
-
 on:
     push:
         branches:

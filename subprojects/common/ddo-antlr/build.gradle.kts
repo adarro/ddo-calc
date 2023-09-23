@@ -21,7 +21,7 @@ description = "Antlr Parsing utilities"
 val antlrJavaPath =
     PackagePath(
         project.layout.buildDirectory.dir("generated-src/java").get().asFile.path,
-        "io.truthencode.ddo.grammar.antlr"
+        "io.truthencode.ddo.grammar.antlr",
     )
 
 data class PackagePath(val source: String, val packageName: String) {

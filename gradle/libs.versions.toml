@@ -57,6 +57,7 @@ chimney-s213 = "io.scalaland:chimney_2.13:0.8.0-M1"
 enumeratum-s213 = "com.beachape:enumeratum_2.13:1.7.3"
 flexmark-all = { module = "com.vladsch.flexmark:flexmark-all", version.ref = "flexmark" }
 jade4j = { module = "de.neuland-bfi:jade4j", version.ref = "jade4j" }
+jetbrains-annotations = "org.jetbrains:annotations:17.0.0"
 json4s-native-s213 = "org.json4s:json4s-native_2.13:4.1.0-M3"
 junit-jupiter = { module = "org.junit.jupiter:junit-jupiter", version.ref = "junit-jupiter" }
 junit-jupiter-engine = { module = "org.junit.jupiter:junit-jupiter-engine", version.ref = "junit-engine" }
@@ -104,14 +105,14 @@ wix-accord-scalatest-s213 = { module = "com.wix:accord-scalatest_2.13", version.
 
 [bundles]
 concordion = [
-    "concordion",
-    "concordion-collapse-output-extension",
-    "concordion-embed-extension",
+  "concordion",
+  "concordion-collapse-output-extension",
+  "concordion-embed-extension",
 ]
 kotest = [
-    "kotest-assertions-core-jvm",
-    "kotest-property-jvm",
-    "kotest-runner-junit-jvm",
+  "kotest-assertions-core-jvm",
+  "kotest-property-jvm",
+  "kotest-runner-junit-jvm",
 ]
 #scala-logging = ["typesafe-scala-logging-s213", "typesafe-config"]
 scala-wix = ["wix-accord-core-s213", "wix-accord-scalatest-s213"]

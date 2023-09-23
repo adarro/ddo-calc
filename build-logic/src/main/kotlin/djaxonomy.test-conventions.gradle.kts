@@ -27,17 +27,43 @@ plugins {
 }
 
 tasks.withType(Test::class.java) {
+
     systemProperties["concordion.output.dir"] = "${reporting.baseDir}/tests"
     val outputDir = reports.junitXml.outputLocation
-    jvmArgumentProviders.add(CommandLineArgumentProvider {
-        mutableListOf(
-            "-Djunit.platform.reporting.open.xml.enabled=false", // Legacy format for sonar
-            "-Djunit.platform.reporting.output.dir=${outputDir.get().asFile.absolutePath}"
-        )
-    })
+
+    val extraProps = mutableListOf("-Djunit.platform.reporting.output.dir=${outputDir.get().asFile.absolutePath}")
+
+    jvmArgumentProviders.add(
+        CommandLineArgumentProvider {
+            extraProps.plus(
+                listOf(
+                    "-Djunit.platform.reporting.open.xml.enabled=false", // Legacy format for sonar
+                ),
+            )
+        },
+    )
 }
 
-
+sonar {
+    properties {
+        if (project.plugins.hasPlugin("scala")) {
+            val rPath =
+                listOf(
+                    "scoverageAcceptanceTest/scoverage.xml",
+                    "scoverage/scoverage.xml",
+                ).joinToString()
+            property("sonar.scala.coverage.reportPaths", rPath)
+        } else {
+            // use Jacoco
+            // sonar.coverage.jacoco.xmlReportPaths
+        }
+        val junitPaths =
+            listOf("test-results/test", "test-results/acceptanceTest").joinToString {
+                project.layout.buildDirectory.dir(it).get().asFile.path
+            }
+        property("sonar.junit.reportPaths", junitPaths)
+    }
+}
 val libs = the<LibrariesForLibs>()
 
 val extension = project.extensions.create<KotlinTestKitExtension>("KotlinTestKits")
@@ -67,7 +93,7 @@ fun JvmTestSuite.applyConcordionAcceptanceTest() {
     dependencies {
         implementation(project())
         implementation(libs.concordion)
-        // flexmark (mostly for concordion / markdown)
+// flexmark (mostly for concordion / markdown)
         implementation(libs.flexmark.all)
     }
 }
@@ -97,7 +123,7 @@ fun JvmTestSuite.applyJupiterEngine() {
 fun JvmTestSuite.applyScalaTest() {
     dependencies {
         runtimeOnly(libs.scalatest.plus.junit)
-        // runtimeOnly("org.junit.vintage:junit-vintage-engine:5.10.0")
+// runtimeOnly("org.junit.vintage:junit-vintage-engine:5.10.0")
         implementation(libs.scalatest.s213)
         implementation(libs.scalatest.plus.mockito.s213)
 
@@ -106,7 +132,7 @@ fun JvmTestSuite.applyScalaTest() {
         implementation(libs.wix.accord.scalatest.s213)
 
         implementation(libs.scalatest.plus.scalacheck)
-        // JUnit
+// JUnit
     }
 
     targets.all {
@@ -123,13 +149,13 @@ fun JvmTestSuite.applyScalaTest() {
 
 project.testing {
     suites {
-        /*
-        TODO: Add functional / integration etc as needed
-        Also need to determine if this is a limited scope (i.e opt in by project)
-        integrationTest by registering(JvmTestSuite::class)
-        functionalTest by registering(JvmTestSuite::class)
-        performanceTest by registering(JvmTestSuite::class)
-         */
+/*
+TODO: Add functional / integration etc as needed
+Also need to determine if this is a limited scope (i.e opt in by project)
+integrationTest by registering(JvmTestSuite::class)
+functionalTest by registering(JvmTestSuite::class)
+performanceTest by registering(JvmTestSuite::class)
+ */
 
         val test by getting(JvmTestSuite::class)
         val acceptanceTest = register<JvmTestSuite>("acceptanceTest")
@@ -156,7 +182,7 @@ project.testing {
                     }
                 }
 
-                // Scala Specific
+// Scala Specific
                 if (project.plugins.hasPlugin("scala")) {
 
                     logger.info("Configuring ${project.name} for Scala ${tt.name} Testing :  ${this.name} ")
@@ -179,8 +205,8 @@ project.testing {
                             targets.all {
                                 testTask.configure {
                                     useJUnitPlatform {
-                                        //  includeEngines = setOf("vintage")
-                                        //    includeEngines("junit-jupiter", "junit-vintage")
+//  includeEngines = setOf("vintage")
+//    includeEngines("junit-jupiter", "junit-vintage")
                                         testLogging {
                                             events("passed", "skipped", "failed")
                                         }
@@ -196,11 +222,11 @@ project.testing {
                     }
                 }
 
-                // Concordian BDD Acceptance
+// Concordian BDD Acceptance
                 if (tt == TestTypes.Acceptance) {
                     logger.info("applying Concordion Acceptance")
 
-                    //  systemProperties["concordion.output.dir"] = "${reporting.baseDir}/spec"
+//  systemProperties["concordion.output.dir"] = "${reporting.baseDir}/spec"
                     this.applyConcordionAcceptanceTest()
                     this.applyVintageEngine()
                     this.applyJupiterEngine()

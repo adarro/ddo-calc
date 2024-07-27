@@ -112,3 +112,5 @@ dependencyResolutionManagement {
         }
     }
 }
+
+rootProject.name = "build-logic"

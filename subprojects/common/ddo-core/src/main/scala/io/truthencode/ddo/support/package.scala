@@ -22,9 +22,10 @@ import com.typesafe.scalalogging.LazyLogging
 import com.wix.accord.Violation
 import io.truthencode.ddo.support.matching.{WordMatchStrategies, WordMatchStrategy}
 
+import java.security.SecureRandom
 import scala.collection.immutable.HashMap
 import scala.language.postfixOps
-import scala.util.Random
+
 import scala.util.control.Exception.catching
 
 package object support extends LazyLogging {
@@ -323,7 +324,7 @@ package object support extends LazyLogging {
        *   source string with randomized upper and lower case characters.
        */
       def randomCase: String = {
-        val r = new Random
+        val r = new SecureRandom()
         s.toCharArray.map { x =>
           if (r.nextInt() > 0) x.toUpper else x.toLower
         }
@@ -398,7 +399,7 @@ package object support extends LazyLogging {
     final val LineSep = sys.props("line.separator")
     private val path = "io.truthencode.ddo.support"
     // Random generator
-    private[this] val random: scala.util.Random = new scala.util.Random
+    private[this] val random: SecureRandom = new SecureRandom()
 
     /**
      * Generate a random alphanumeric string of length n

@@ -54,7 +54,8 @@ sonar {
                 ).joinToString()
             property("sonar.scala.coverage.reportPaths", rPath)
         } else {
-            // use Jacoco
+            logger.warn("SONAR: ${project.name} is not a scala project or does not have the scala plugin applied, no coverage data will be available")
+            // use Jacoco ?
             // sonar.coverage.jacoco.xmlReportPaths
         }
         val junitPaths =

@@ -6,13 +6,9 @@ import org.antlr.v4.runtime.ParserRuleContext;
 import org.antlr.v4.runtime.Token;
 import org.antlr.v4.runtime.tree.*;
 import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import io.truthencode.ddo.grammar.antlr.EnchantmentsParserBaseListener;
-import io.truthencode.ddo.grammar.antlr.EnchantmentsParser;
-
 
 import java.util.Arrays;
 import java.util.stream.Collectors;
@@ -27,10 +23,10 @@ class DdoItemParserTest {
     /**
      * Default Listener just logs major entries / exits
      */
-    class DefaultTestListener extends EnchantmentsParserBaseListener {
-        private final EnchantmentsParser parser;
+    static class DefaultTestListener extends io.truthencode.ddo.grammar.antlr.EnchantmentsParserBaseListener {
+        private final io.truthencode.ddo.grammar.antlr.EnchantmentsParser parser;
 
-        public DefaultTestListener(EnchantmentsParser parser) {
+        public DefaultTestListener(io.truthencode.ddo.grammar.antlr.EnchantmentsParser parser) {
             this.parser = parser;
         }
 
@@ -57,15 +53,15 @@ class DdoItemParserTest {
             LOG.info(msg);
         }
 
-        void showLog(String tag, EnchantmentsParser.IdDeclContext ctx) {
+        void showLog(String tag, io.truthencode.ddo.grammar.antlr.EnchantmentsParser.IdDeclContext ctx) {
             int idx = ctx.getRuleIndex();
-            String ph = String.format(tag + "\tid:%d \tdata:%s", idx, ctx.getText());
+            String ph = String.format("%s\tid:%d \tdata:%s", tag, idx, ctx.getText());
             LOG.info(ph);
 
         }
 
         void showLog(String tag, String ctx) {
-            String ph = String.format(tag + ":\t%s", ctx);
+            String ph = String.format("%s:\t%s", tag,ctx);
             LOG.info(ph);
         }
 
@@ -97,48 +93,49 @@ class DdoItemParserTest {
         }
 
         @Override
-        public void enterParse(EnchantmentsParser.ParseContext ctx) {
+        public void enterParse(io.truthencode.ddo.grammar.antlr.EnchantmentsParser.ParseContext ctx) {
             showLog("enterParse", ctx.getText());
         }
 
         @Override
-        public void exitParse(EnchantmentsParser.ParseContext ctx) {
+        public void exitParse(io.truthencode.ddo.grammar.antlr.EnchantmentsParser.ParseContext ctx) {
             showLog("exitParse", ctx.getText());
         }
 
         @Override
-        public void enterIdDecl(EnchantmentsParser.IdDeclContext ctx) {
+        public void enterIdDecl(io.truthencode.ddo.grammar.antlr.EnchantmentsParser.IdDeclContext ctx) {
             showLog("enterIdDecl", ctx);
         }
 
         @Override
-        public void exitIdDecl(EnchantmentsParser.IdDeclContext ctx) {
+        public void exitIdDecl(io.truthencode.ddo.grammar.antlr.EnchantmentsParser.IdDeclContext ctx) {
             showLog("exitIdDecl", ctx.getText());
         }
 
     }
 
-    final static String SomeData = "Physical Sheltering +19\n" +
-        "Blue Augment Slot: Empty\n" +
-        "Fortification +94%\n" +
-        "+5 Enhancement Bonus\n" +
-        "Competence Healing Amplification +30\n" +
-        "False Life +29\n" +
-        "Flamecleansed Fury";
+    static final String SAMPLE_DATA = """
+        Physical Sheltering +19
+        Blue Augment Slot: Empty
+        Fortification +94%%
+        +5 Enhancement Bonus
+        Competence Healing Amplification +30
+        False Life +29
+        Flamecleansed Fury""";
 
 
     @Test
     void canReadPercent() {
         // TODO: Refactor to inject tree listener
         assertDoesNotThrow(() -> {
-            walkText(SomeData);
+            walkText(SAMPLE_DATA);
         });
     }
 
     @Test
     void canReadNumber() {
         assertDoesNotThrow(() -> {
-            walkText(SomeData);
+            walkText(SAMPLE_DATA);
         });
     }
 
@@ -148,10 +145,10 @@ class DdoItemParserTest {
 
     void walkText(String data, ParseTreeListener listener) {
 
-        EnchantmentsLexer lexer = new EnchantmentsLexer(CharStreams.fromString(data));
+        io.truthencode.ddo.grammar.antlr.EnchantmentsLexer lexer = new io.truthencode.ddo.grammar.antlr.EnchantmentsLexer(CharStreams.fromString(data));
 
         CommonTokenStream tokens = new CommonTokenStream(lexer);
-        EnchantmentsParser parser = new EnchantmentsParser(tokens);
+        io.truthencode.ddo.grammar.antlr.EnchantmentsParser parser = new io.truthencode.ddo.grammar.antlr.EnchantmentsParser(tokens);
         ParseTreeListener l = (listener != null) ? listener : new DefaultTestListener(parser);
         ParseTree parseTree = parser.parse();
         LOG.info(String.format("parseTree has %d children", parseTree.getChildCount()));

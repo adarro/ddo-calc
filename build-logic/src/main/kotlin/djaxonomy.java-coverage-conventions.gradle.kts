@@ -10,13 +10,13 @@ NOTICE: You must still include a kotlin app / library etc. profile as we do not 
  */
 
 jacoco {
-    toolVersion = "0.8.10"
+    toolVersion = "0.8.12"
 //    reportsDirectory.set(layout.buildDirectory.dir("customJacocoReportDir"))
 }
 
 tasks.withType(JacocoReport::class) {
     reports {
-        xml.required.set(false)
+        xml.required.set(true)
         csv.required.set(false)
 //        html.outputLocation.set(layout.buildDirectory.dir("jacocoHtml"))
     }

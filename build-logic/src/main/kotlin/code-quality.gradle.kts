@@ -23,7 +23,7 @@ plugins {
 
 //    id("com.github.hierynomus.license")
     id("com.diffplug.spotless")
-    id("org.sonarqube")
+    id("djaxonomy.quality-sonar")
 //    id("com.javiersc.gradle.plugins.dependency.updates")
 }
 

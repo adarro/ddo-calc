@@ -242,13 +242,6 @@ object GeneralFeat
      * Delimits the prefix and text.
      */
     override protected val prefixSeparator: String = ": "
-//    val wow1: Seq[Seq[(WeaponCategory, Int)]] = for {
-//      weapon <- filterByWeaponClass(weaponClass)
-//      a1 <- icPlus1.filter(_ == weapon)
-//      a2 <- icPlus2.filter(_ == weapon)
-//      a3 <- icPlus3.filter(_ == weapon)
-//    } yield Seq((a1, 1), (a2, 2), (a3, 3))
-    // logger.info(s"found ${wow1.size} weapons for improved critical: ${weaponClass.entryName}")
 
     override def prefix: Option[String] = Some("Improved Critical")
 
@@ -663,8 +656,6 @@ object GeneralFeat
 
   case object Resilience extends GeneralFeat with Resilience
 
-  // Seq(Feat.WeaponFocusBludgeon, Feat.WeaponFocusPiercing, Feat.WeaponFocusSlashing, Feat.WeaponFocusRanged, Feat.WeaponFocusThrown)
-
   // Passive Feats
   // General passive feats
   case object Diehard extends GeneralFeat with Diehard
@@ -940,9 +931,6 @@ object GeneralFeat
   // FavorPatron awarded free feats
   case object CoinLordFinishingSchoolTraining
     extends GeneralFeat with CoinLordFinishingSchoolTraining
-
-  // Exchange feats
-  // case object FeatRespecToken extends Feat with FeatRespecToken
 
   case object DraconicVitality extends GeneralFeat with DraconicVitality
 }

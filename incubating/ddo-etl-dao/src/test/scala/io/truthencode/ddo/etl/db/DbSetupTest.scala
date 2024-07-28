@@ -29,7 +29,7 @@ class DbSetupTest extends AnyFunSpec with Matchers {
       val dbTool = new DataSetupH2
       noException shouldBe thrownBy(dbTool.createTable())
       // verify table exists
-      noException shouldBe thrownBy(dbTool.executeSql("SELECT * FROM Address"));
+      noException shouldBe thrownBy(dbTool.executeSql("SELECT city, state FROM Address"));
 
     }
 
@@ -40,7 +40,7 @@ class DbSetupTest extends AnyFunSpec with Matchers {
 
     it("Should execute multiple statements") {
       val dbTool = new DataSetupH2
-      val sql = List(dbTool.createTableSQL, "SELECT * FROM Address")
+      val sql = List(dbTool.createTableSQL, "SELECT city, state FROM Address")
       Using(H2JDBCUtils.getConnection) { con =>
         noException shouldBe thrownBy(dbTool.executeSql(con, sql: _*))
       }

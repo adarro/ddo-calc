@@ -34,7 +34,7 @@ sealed trait BindingStatus extends EnumEntry with DefaultValue[BindingStatus] {
 object BindingStatus extends Enum[BindingStatus] with DefaultValue[BindingStatus] {
 
   override lazy val default = Some(BindingStatus.Unbound)
-  val values = findValues // IndexedSeq(BindsToAccount, BindsToCharacter, Unbound)
+  val values = findValues
 
   /**
    * Item can be transferred between characters on the same account.

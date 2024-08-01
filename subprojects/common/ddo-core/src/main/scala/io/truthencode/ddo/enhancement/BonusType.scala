@@ -18,7 +18,10 @@
 package io.truthencode.ddo.enhancement
 
 import enumeratum.{Enum, EnumEntry}
-import io.truthencode.ddo.{NonStacking, StackingRule, StacksWithAllButSame, StacksWithAny}
+import io.truthencode.ddo.support.StringUtils.Extensions
+import io.truthencode.ddo.support.naming.{DisplayName, FriendlyDisplay, Prefix}
+import io.truthencode.ddo.support.slots.{Cosmetic, EquipmentSlot, WearLocation}
+import io.truthencode.ddo.{NonStacking, StackingRule, StacksWithAny, StacksWithUnique}
 
 import scala.collection.immutable
 
@@ -29,9 +32,10 @@ import scala.collection.immutable
  * your total armor class. (Overlapping can sometimes still benefit as the shield spell may provide
  * less armor class than equipping a tower shield, but it also protects against magic missiles.
  */
-sealed trait BonusType extends EnumEntry {
+sealed trait BonusType extends EnumEntry with DisplayName with FriendlyDisplay {
 
   self: StackingRule =>
+  override protected def nameSource: String = entryName.splitByCase
 }
 
 /**
@@ -47,7 +51,37 @@ trait Armor extends BonusType {
  */
 // scalastyle:off number.of.methods
 object BonusType extends Enum[BonusType] {
-  override def values: immutable.IndexedSeq[BonusType] = findValues
+  override def values: immutable.IndexedSeq[BonusType] = findValues ++ mythicSlotAny
+
+  val fnStackNone: PartialFunction[BonusType, BonusType with NonStacking] = { case x: NonStacking =>
+    x
+  }
+
+  val fnStackAny: PartialFunction[BonusType, BonusType with StacksWithAny] = {
+    case x: StacksWithAny =>
+      x
+  }
+
+  val fnStackUnique: PartialFunction[BonusType, BonusType with StacksWithUnique] = {
+    case x: StacksWithUnique =>
+      x
+  }
+
+  /**
+   * List of bonus types that stack with all but the same type and value. Highest wins.
+   */
+  lazy val UniqueBonusTypes: Seq[BonusType with StacksWithUnique] = values.collect(fnStackUnique)
+
+  /**
+   * List of bonus types that stack with everything. Generally limited to rare 'Misc' bonus and
+   * Feats.
+   */
+  lazy val AnyBonusTypes: Seq[BonusType with StacksWithAny] = values.collect(fnStackAny)
+
+  /**
+   * List of bonus types that don't stack.
+   */
+  lazy val NonStackingBonusTypes: Seq[BonusType with NonStacking] = values.collect(fnStackNone)
   case object ActionBoost extends BonusType with NonStacking
 
   /**
@@ -216,7 +250,7 @@ object BonusType extends Enum[BonusType] {
    * miscellaneous bonuses to Armor Class stack with each other in DDO, but miscellaneous bonuses
    * coming from the same source don't stack (ie - 2 paladins' aura).
    */
-  case object Miscellaneous extends BonusType with Armor with StacksWithAllButSame
+  case object Miscellaneous extends BonusType with Armor with StacksWithUnique
 
   /**
    * A [[https://ddowiki.com/page/Morale_bonus morale bonus]] represents the effects of greater
@@ -236,9 +270,39 @@ object BonusType extends Enum[BonusType] {
   /**
    * [[https://ddowiki.com/page/Mythic_bonus Mythic bonus]] was introduced in Update 25. Mythic
    * bonuses stack differently than most bonus types: see quote below. The Mythic bonuses from each
-   * slot stack with one another
+   * slot stack with one another Weapons, belts, gloves, goggles, rings, and trinkets grant Mythic
+   * bonus to Melee, Ranged, and Universal Spell Power. Armor, boots, bracers, cloaks, headwear,
+   * necklaces, shields grant Mythic bonus to Physical and Magical Resistance Rating. Orbs, rune
+   * arms, and collars can appear Shield and/or Weapon boost. (Some) ToEE items can appear with two
+   * mythic bonuses, e.g., Weapon and Shield.
+   *
+   * Magnatude Weapons, armor, shields can have +2 or +4 bonus, +4 is rarer. Clothing and jewelry
+   * can have +1 or +3 bonus, +3 is rarer.
+   *
+   * Unlike most bonus types, all sources of Mythic bonus stack.
    */
-  case object Mythic extends BonusType with StacksWithAny
+  case class Mythic(slot: EquipmentSlot) extends BonusType with StacksWithAny with Prefix {
+    override def displaySource: String = slot.displaySource
+
+    /**
+     * Optional Prefix, used to separate sub-items such as Spell Critical Schools and also to
+     * disambiguate certain entities such as Feat: precision.
+     *
+     * @return
+     *   The optional prefix.
+     */
+    override def prefix: Option[String] = Some("Mythic")
+
+//      override protected def nameSource: String = slot.displayText
+  }
+
+  def mythicSlotAny: Seq[Mythic] = {
+    val wls = WearLocation.values
+    val wsl = WearLocation.values
+      .withFilter(_.isInstanceOf[EquipmentSlot])
+      .withFilter(!_.isInstanceOf[Cosmetic])
+    for { wc <- WearLocation.values } yield Mythic(wc.asInstanceOf[EquipmentSlot])
+  }
 
   /**
    * [[https://ddowiki.com/page/Natural_armor_bonus Natural armor]] represents a creature's hide or
@@ -340,5 +404,11 @@ object BonusType extends Enum[BonusType] {
    * Unique is not listed under Bonus types on the wiki
    */
   // case object Unique extends BonusType
+
+  /**
+   * Untyped bonuses stack. Note that a bonus without a keyword isn't necessarily an untyped bonus,
+   * the description might just be lacking.
+   */
+  case object Untyped extends BonusType with StacksWithAny
 
 }

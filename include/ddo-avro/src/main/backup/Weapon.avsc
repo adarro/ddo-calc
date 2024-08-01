@@ -1,0 +1,285 @@
+{
+  "namespace": "model",
+  "type": "record",
+  "doc": "",
+  "name": "Weapon",
+  "fields": [
+    {
+      "name": "name",
+      "type": ["null", "string"],
+      "doc": "Name of the Item"
+    },
+    {
+      "name": "proficiency_class",
+      "type": ["null", {
+        "type": "enum",
+        "name": "Weapon_proficiencyUnderscoreclass",
+        "symbols": [
+          "Simple",
+          "Martial",
+          "Exotic"
+        ]
+      }],
+      "doc": "General Level of Martial training required to wield"
+    },
+    {
+      "name": "image",
+      "type": ["null", "string"],
+      "doc": "Screen shot or image URI"
+    },
+    {
+      "name": "damage",
+      "type": ["null", "io.truthencode.ddo.model.protocol.Damage"],
+      "doc": ""
+    },
+    {
+      "name": "damage_type",
+      "type": ["null", "io.truthencode.ddo.model.protocol.DamageType"],
+      "doc": ""
+    },
+    {
+      "name": "critical_threat_range",
+      "type": ["null", "io.truthencode.ddo.model.protocol.CriticalThreatRange"],
+      "doc": ""
+    },
+    {
+      "name": "weapon_category",
+      "type": ["null", {
+        "type": "enum",
+        "name": "Weapon_weaponUnderscorecategory",
+        "symbols": [
+          "BastardSword",
+          "BattleAxe",
+          "Club",
+          "Dagger",
+          "Dart",
+          "DwarvenWarAxe",
+          "Falchion",
+          "GreatAxe",
+          "GreatClub",
+          "GreatCrossbow",
+          "GreatSword",
+          "HandAxe",
+          "Handwrap",
+          "HeavyCrossbow",
+          "HeavyMace",
+          "HeavyPick",
+          "Kama",
+          "Khopesh",
+          "Kukris",
+          "LightCrossbow",
+          "LightHammer",
+          "LightMace",
+          "LightPick",
+          "Longbow",
+          "Longsword",
+          "Maul",
+          "Morningstar",
+          "Quarterstaff",
+          "Rapier",
+          "RepeatingHeavyCrossbow",
+          "RepeatingLightCrossbow",
+          "Scimitar",
+          "Shortbow",
+          "ShortSword",
+          "Shuriken",
+          "Sickle",
+          "SimpleProjectile",
+          "ThrowingAxe",
+          "ThrowingDagger",
+          "ThrowingHammer",
+          "WarHammer"
+        ]
+      }],
+      "doc": "The type of weapon such as long sword Axe etc"
+    },
+    {
+      "name": "required_race",
+      "type": ["null", {
+        "type": "array",
+        "items": "string"
+      }],
+      "doc": "Race required to use item without a UMD Check"
+    },
+    {
+      "name": "abs_required_race",
+      "type": ["null", {
+        "type": "array",
+        "items": "string"
+      }],
+      "doc": "Race absolutely required (no bypass) to use item"
+    },
+    {
+      "name": "abs_restricted_race",
+      "type": ["null", {
+        "type": "array",
+        "items": "string"
+      }],
+      "doc": "Races specifically not allowed to use"
+    },
+    {
+      "name": "min_level",
+      "type": ["null", "int"],
+      "doc": "Minimum character level required to use item"
+    },
+    {
+      "name": "abs_min_level",
+      "type": ["null", "int"],
+      "doc": "Altered minimum level usually caused as a side-effect of additional enchantments which may increase the requirement"
+    },
+    {
+      "name": "required_trait",
+      "type": ["null", {
+        "type": "array",
+        "items": "string"
+      }],
+      "doc": "Trait such as Lawful needed to use item"
+    },
+    {
+      "name": "umd",
+      "type": ["null", "string"],
+      "doc": "Use Magical Device DC"
+    },
+    {
+      "name": "handedness",
+      "type": ["null", {
+        "type": "array",
+        "items": "string"
+      }],
+      "doc": "Allowed slots such as one handed (main or off hand) / two handed"
+    },
+    {
+      "name": "attack_mod",
+      "type": ["null", {
+        "type": "array",
+        "items": "string"
+      }],
+      "doc": "Attribute(s) that modify the attack roll"
+    },
+    {
+      "name": "damage_mod",
+      "type": ["null", {
+        "type": "array",
+        "items": "string"
+      }],
+      "doc": "Attribute(s) that modify the damage roll"
+    },
+    {
+      "name": "binding",
+      "type": ["null", "string"],
+      "doc": "Character or Account binding, if any"
+    },
+    {
+      "name": "durability",
+      "type": ["null", "int"],
+      "doc": "tensile strength, how hard it is to damage"
+    },
+    {
+      "name": "wear_location",
+      "type": ["null", {
+        "type": "enum",
+        "name": "Weapon_wearUnderscorelocation",
+        "symbols": [
+          "MainHand",
+          "OffHand",
+          "TwoHand"
+        ]
+      }],
+      "doc": "Allowed slots for the item to be equipped"
+    },
+    {
+      "name": "material",
+      "type": ["null", {
+        "type": "enum",
+        "name": "Weapon_material",
+        "symbols": [
+          "Adamantine",
+          "Blueshine",
+          "Bone",
+          "Byeshk",
+          "Cloth",
+          "Cold_Iron",
+          "Crystal",
+          "Darkleaf",
+          "Darkwood",
+          "Densewood",
+          "Dwarven_Iron",
+          "Feyleather",
+          "Flametouched_Iron",
+          "Flesh",
+          "Force",
+          "Gem",
+          "Glass",
+          "Ice",
+          "Leather",
+          "Light",
+          "Magesteel",
+          "Mithral",
+          "Planeforged_Steel",
+          "Rust",
+          "Silver",
+          "Spiritcraft_Leather",
+          "Spiritforged_Iron",
+          "Steel",
+          "Stone",
+          "Wood"
+        ]
+      }],
+      "doc": "material made from"
+    },
+    {
+      "name": "hardness",
+      "type": ["null", "int"],
+      "doc": "physical toughness of the item"
+    },
+    {
+      "name": "base_value",
+      "type": ["null", "string"],
+      "doc": "Monetary value of item"
+    },
+    {
+      "name": "weight",
+      "type": ["null", "int"],
+      "doc": "weight in pounds"
+    },
+    {
+      "name": "location",
+      "type": ["null", "string"],
+      "doc": "Text describing the location of the item"
+    },
+    {
+      "name": "enchantments",
+      "type": ["null", {
+        "type": "array",
+        "items": "string"
+      }],
+      "doc": "Collection of Enchantments on the item."
+    },
+    {
+      "name": "enchantments_choice",
+      "type": ["null", {
+        "type": "array",
+        "items": "string"
+      }],
+      "doc": "Used to support One of the following"
+    },
+    {
+      "name": "upgradeable",
+      "type": ["null", "string"],
+      "doc": "If an item can be upgraded, instructions or the name of the upgraded item may appear here."
+    },
+    {
+      "name": "description_text",
+      "type": ["null", "string"],
+      "doc": "descriptive text of the item"
+    },
+    {
+      "name": "sets",
+      "type": ["null", {
+        "type": "array",
+        "items": "string"
+      }],
+      "doc": "Any sets this item belongs to that give bonuses when all items are equipped."
+    }
+  ]
+}

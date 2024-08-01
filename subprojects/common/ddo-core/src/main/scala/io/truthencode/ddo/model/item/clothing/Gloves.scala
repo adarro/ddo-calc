@@ -17,7 +17,8 @@
  */
 package io.truthencode.ddo.model.item.clothing
 
-import io.truthencode.ddo.{WearLocation, Wearable}
+import io.truthencode.ddo.Wearable
+import io.truthencode.ddo.support.slots.WearLocation
 
 trait Gloves extends Clothing with Wearable {
 

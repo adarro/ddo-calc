@@ -1,9 +1,9 @@
-# Resources:
+# Resources
 
 -   [Apimatic](https://apimatic.io) Spec Toolkit (Swagger, API Blueprint)
--   [Codacy](http://codacy.com) Code quality metrics
--   [Travis-CI](http://travis-ci.com) Continuous Integration
--   [Github](http://github.com) Code Repository / Issue tracking
+-   [Codacy](https://codacy.com) Code quality metrics
+-   [Travis-CI](https://circleci.com) Continuous Integration
+-   [Github](https://github.com) Code Repository / Issue tracking
 
 -   [ ] Generate All Models (Swagger 2.0)
 -   -   [ ] Items

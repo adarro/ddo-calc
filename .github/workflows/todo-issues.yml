@@ -1,5 +1,4 @@
 name: Create issues from todos
-permissions: read-all
 
 on:
     push:

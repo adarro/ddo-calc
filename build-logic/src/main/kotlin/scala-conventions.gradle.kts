@@ -1,3 +1,5 @@
+import org.gradle.accessors.dm.LibrariesForLibs
+
 /*
  * SPDX-License-Identifier: Apache-2.0
  *
@@ -23,29 +25,32 @@ plugins {
     //  java // apply (false)
     id("org.scoverage")
 }
+val libs = the<LibrariesForLibs>()
 
-// dependencies {
+dependencies {
+    implementation(libs.scala2.library)
 //    val scalaLibraryVersion: String by project
 //    val scalaMajorVersion: String by project
 //    val scalaCompilerPlugin by configurations.creating
 //    scalaCompilerPlugin("com.typesafe.genjavadoc:genjavadoc-plugin_$scalaLibraryVersion:0.18")
 //     compileOnly("org.scoverage:scalac-scoverage-plugin_$scalaMajorVersion.7:1.4.10")
 //
-// }
+}
 
-// configure<org.scoverage.ScoverageExtension> {
-//    scoverageVersion.set("2.0.10")
-//    val cfgs = mapOf(
-//        Pair(org.scoverage.CoverageType.Branch, 0.5.toBigDecimal()),
-//        Pair(org.scoverage.CoverageType.Statement, 0.75.toBigDecimal())
-//    ).map { p ->
-//        val cfg = org.scoverage.ScoverageExtension.CheckConfig()
-//        cfg.setProperty("coverageType", p.key)
-//        cfg.setProperty("minimumRate", p.value)
-//        cfg
-//    }
-//    checks.plusAssign(cfgs)
-// }
+configure<org.scoverage.ScoverageExtension> {
+    scoverageVersion.set(libs.versions.scoverage)
+    val cfgs =
+        mapOf(
+            Pair(org.scoverage.CoverageType.Branch, 0.5.toBigDecimal()),
+            Pair(org.scoverage.CoverageType.Statement, 0.75.toBigDecimal()),
+        ).map { p ->
+            val cfg = org.scoverage.ScoverageExtension.CheckConfig()
+            cfg.setProperty("coverageType", p.key)
+            cfg.setProperty("minimumRate", p.value)
+            cfg
+        }
+    checks.plusAssign(cfgs)
+}
 
 //
 //

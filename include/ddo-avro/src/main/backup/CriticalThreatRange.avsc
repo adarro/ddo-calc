@@ -1,0 +1,23 @@
+{
+  "namespace": "model",
+  "type": "record",
+  "doc": "",
+  "name": "CriticalThreatRange",
+  "fields": [
+    {
+      "name": "min",
+      "type": ["null", "int"],
+      "doc": "Lower bound for critical multiplier"
+    },
+    {
+      "name": "max",
+      "type": ["null", "int"],
+      "doc": "Upper bound for critical multiplier"
+    },
+    {
+      "name": "multiplier",
+      "type": ["null", "int"],
+      "doc": "Number to multiply the damage roll by"
+    }
+  ]
+}

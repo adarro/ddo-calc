@@ -23,6 +23,7 @@ plugins {
 
 //    id("com.github.hierynomus.license")
     id("com.diffplug.spotless")
+    id("djaxonomy.quality-sonar")
 //    id("com.javiersc.gradle.plugins.dependency.updates")
 }
 
@@ -55,7 +56,7 @@ fun walkBack(
     fileName: String,
     recurse: Recursion,
     proj: Project = project.rootProject,
-): java.io.File? {
+): File? {
     val f = proj.file(fileName)
     return if (f.exists()) {
         f

@@ -19,10 +19,11 @@ package io.truthencode.ddo.model.item.weapon
 
 import enumeratum.EnumEntry
 import io.truthencode.ddo._
-import io.truthencode.ddo.enumeration.EnumExtensions._
+import io.truthencode.ddo.enumeration.EnumExtensions.EnumCompanionOps
 import io.truthencode.ddo.model.attribute.Attribute
 import io.truthencode.ddo.model.item.WearableItem
 import io.truthencode.ddo.support.dice.DamageDice
+import io.truthencode.ddo.support.slots.WearLocation
 
 import scala.language.implicitConversions
 

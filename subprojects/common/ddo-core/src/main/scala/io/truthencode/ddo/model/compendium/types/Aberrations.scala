@@ -18,8 +18,8 @@
 package io.truthencode.ddo.model.compendium.types
 
 /**
- * Created by adarr on 3/25/2017.
+ * Corresponds to the 'Type' attribute. Created by adarr on 3/25/2017.
  */
 trait Aberrations extends MainType {
-  override val mainTypes = Some(MonsterType.Aberration)
+  override val mainTypes: Option[MonsterType] = Some(MonsterType.Aberration)
 }

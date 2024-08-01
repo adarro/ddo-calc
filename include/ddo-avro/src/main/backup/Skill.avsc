@@ -1,0 +1,56 @@
+{
+  "namespace": "model",
+  "type": "record",
+  "doc": "Specific skills such as haggling which are affected by a related ability score",
+  "name": "Skill",
+  "fields": [
+    {
+      "name": "name",
+      "type": ["null", {
+        "type": "enum",
+        "name": "Skill_name",
+        "symbols": [
+          "Balance",
+          "Bluff",
+          "Concentration",
+          "Diplomacy",
+          "Disable Device",
+          "Haggle",
+          "Heal",
+          "Hide",
+          "Intimidate",
+          "Jump",
+          "Listen",
+          "Move Silently",
+          "Open Lock",
+          "Perform",
+          "Repair",
+          "Search",
+          "Spellcraft",
+          "Spot",
+          "Swim",
+          "Tumble",
+          "Use Magic Device"
+        ]
+      }],
+      "doc": "Name of the skill"
+    },
+    {
+      "name": "skillType",
+      "type": ["null", {
+        "type": "enum",
+        "name": "Skill_skillType",
+        "symbols": [
+          "Passive",
+          "Active"
+        ]
+      }],
+      "doc": "Determines whether a skill is active or passive"
+    },
+    {
+      "name": "RelatedAbility",
+      "type": ["null", "io.truthencode.ddo.models.model.Race"],
+      "doc": ""
+    }
+  ]
+}

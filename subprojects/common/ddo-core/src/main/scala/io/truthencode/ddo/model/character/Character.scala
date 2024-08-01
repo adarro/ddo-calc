@@ -97,7 +97,7 @@ trait Character {
    * @return
    *   the list of skills.
    * @note
-   *   Skills are dependent on Attributes and should be evaluted after.
+   *   Skills are dependent on Attributes and should be evaluated after.
    */
   def skills: List[SimpleStatItem[Skill]]
 
@@ -188,8 +188,6 @@ trait Character {
 
   def offhandDoublestrike: StatItem[OffhandDoublestrike, Pct]
 
-  // def meleeThreatMultiplier: StatItem[MeleeThreatMultiplier,Pct]
-
   def strikeThroughChance: StatItem[StrikeThroughChance, Pct]
 
   //    Ranged Attack
@@ -198,7 +196,7 @@ trait Character {
   def thrownAttackSpeedBonus: StatItem[ThrownAttackSpeedBonus, Pct]
 
   def nonRepeatingCrossbowAttackSpeedBonus: StatItem[NonRepeatingCrossbowAttackSpeedBonus, Pct]
-  // def rangedThreatMultiplier: StatItem[RangedThreatMultiplier,Pct]
+
   // Effective hit points?
 
   // Power

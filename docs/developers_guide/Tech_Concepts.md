@@ -30,6 +30,10 @@ Appears similar with integration with Catz / Scalaz but not scala 3 and last act
 
 Same as above with Catz and 4 years since last active.
 
+### [Fields](https://jap-company.github.io/fields/)
+
+Scala 3 and uses Final Tagless
+
 ## Transformation
 
 ### Chimney (https://github.com/scalalandio/chimney)
@@ -99,3 +103,35 @@ Vert.x Vert.x can expose the API as a RESTful service and react via the event bu
 Rapid prototyping where Domain Objects become the UI.
 [Apache ~~Isis~~ Causeway](https://causeway.apache.org)
 May have potential direct-integration issues as a JPMS Java app, but as a RESTful DTO Front-end it could be extremely useful.
+
+## Messaging
+
+### MQTT
+
+Mosquitto - MQTT Broker - https://mosquitto.org/ Lightweight for inter object messaging and perhaps some chat.
+
+### Bayeux
+
+Cometd - Bayeux - https://www.cometd.org/ - Websockets for real time updates. Link to Restful API. / Database updates.
+
+## Database
+
+MongoDB - MongoDb is a document database that stores data in JSON-like documents.
+Use for persistent storage of data. Possibly for master data and / or user data.
+
+### Xodus
+
+Xodus - Jetbrains Xodus is a transactional embedded database for JVM.
+Use for Session Storage, Caching, and other data storage needs.
+
+### SpiceDB
+
+SpiceDB - https://spicedb.dev/ - A database for managing fine-grained permissions across many services.
+
+## Authorization and Authentication
+
+### Keycloak
+
+Keycloak - https://www.keycloak.org/ - Open Source Identity and Access Management.
+
+Dex - https://dexidp.io/ - OpenID Connect for Kubernetes.

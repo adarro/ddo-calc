@@ -1,7 +1,6 @@
-plugins {    
+plugins {
     id("buildlogic.quarkus-common-conventions")
 }
-
 
 dependencies {
     implementation("io.quarkus:quarkus-arc")
@@ -11,4 +10,3 @@ dependencies {
     testImplementation("io.quarkus:quarkus-junit5")
     testImplementation("io.rest-assured:rest-assured")
 }
-

@@ -139,14 +139,14 @@ allure-bom = { module = "io.qameta.allure:allure-bom", version.ref = "allure" }
 
 [bundles]
 concordion = [
-    "concordion",
-    "concordion-collapse-output-extension",
-    "concordion-embed-extension",
+  "concordion",
+  "concordion-collapse-output-extension",
+  "concordion-embed-extension",
 ]
 kotest = [
-    "kotest-assertions-core-jvm",
-    "kotest-property-jvm",
-    "kotest-runner-junit-jvm",
+  "kotest-assertions-core-jvm",
+  "kotest-property-jvm",
+  "kotest-runner-junit-jvm",
 ]
 #scala-logging = ["typesafe-scala-logging-s213", "typesafe-config"]
 scala-wix = ["wix-accord-core-s213", "wix-accord-scalatest-s213"]

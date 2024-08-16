@@ -100,7 +100,7 @@ afterEvaluate {
         findProperty("kotlinTestSuite")?.toString()
             ?.let(KotlinTestKits::valueOf)
             ?: KotlinTestKits.KoTest
-    logger.warn("${project.name} kotlinTestMode: $testMode (JvmTestSuite)")
+    logger.warn("after evaluate ${project.name} kotlinTestMode: $testMode (JvmTestSuite)")
     testing {
 
         val ts = TestBuildSupport(project)

@@ -10,7 +10,7 @@ junit-jupiter = "5.10.0"
 junit-platform = "1.10.0"
 kotest = "5.7.2"
 # @pin We all move together
-kotlin = "1.9.0"
+kotlin = "2.0.0"
 logback = "1.5.6"
 mockito = "5.5.0"
 monix = "3.4.1"
@@ -27,7 +27,18 @@ scalatestplus = "3.2.17.0"
 scoverage = "2.0.11"
 quarkus-s3 = "0.0.1"
 scala3-version = "3.1.0"
-quarkus = "3.4.0"
+quarkus = "3.13.2"
+quarkus-gradle-plugin = "3.13.2"
+
+kordamp-jandex-gradle-plugin = "2.0.0"
+freefair-lombok-plugin = "8.7.1"
+assertj = "3.22.0"
+
+jakarta-servlet-jakarta-servlet-api = "6.0.0"
+org-cometd-java = "8.0.2"
+org-eclipse-jetty = "12.0.10"
+jetbrains-xodus = "2.0.1"
+allure = "2.25.0"
 
 # Scala Jackson at time of writing doesn't support Scala 3 Enum's natively. It requires another library.
 # That library doesn't support same version of Jackson that Quarkus BOM uses (2.12.5), so this is the best compromise
@@ -37,6 +48,9 @@ jackson = "2.12.3"
 
 [libraries]
 #Gradle properties
+kotlin-gradle-plugin = { module = "org.jetbrains.kotlin:kotlin-gradle-plugin", version.ref = "kotlin" }
+kotlin-allopen-plugin = { module = "org.jetbrains.kotlin:kotlin-allopen", version.ref = "kotlin" }
+
 quarkiverse-scala-s3 = { module = "io.quarkiverse.scala:quarkus-scala3", version.ref = "quarkus-s3" }
 quarkus-bom = { module = "io.quarkus.platform:quarkus-bom", version.ref = "quarkus" }
 quarkus-arc = { module = "io.quarkus:quarkus-arc", version.ref = "quarkus" }
@@ -102,17 +116,37 @@ typesafe-config = "com.typesafe:config:1.4.2"
 typesafe-scala-logging-s213 = "com.typesafe.scala-logging:scala-logging_2.13:3.9.5"
 wix-accord-core-s213 = { module = "com.wix:accord-core_2.13", version.ref = "accord" }
 wix-accord-scalatest-s213 = { module = "com.wix:accord-scalatest_2.13", version.ref = "accord" }
+quarkus-gradle-plugin = { module = "io.quarkus:gradle-application-plugin", version.ref = "quarkus-gradle-plugin" }
+freefair-lombok-plugin = { module = "io.freefair.gradle:lombok-plugin", version.ref = "freefair-lombok-plugin" }
+testing-assertj = { module = "org.assertj:assertj-core", version.ref = "assertj" }
+testing-mockito = { module = "org.mockito:mockito-core", version.ref = "mockito" }
+jakarta-servlet-jakarta-servlet-api = { module = "jakarta.servlet:jakarta.servlet-api", version.ref = "jakarta-servlet-jakarta-servlet-api" }
+org-cometd-java-cometd-java-api-server = { module = "org.cometd.java:cometd-java-api-server", version.ref = "org-cometd-java" }
+org-cometd-java-client = { module = "org.cometd.java:cometd-java-client", version.ref = "org-cometd-java" }
+org-cometd-java-client-http-jetty = { module = "org.cometd.java:cometd-java-client-http-jetty", version.ref = "org-cometd-java" }
+org-cometd-java-client-websocket-jakarta = { module = "org.cometd.java:cometd-java-client-websocket-jakarta", version.ref = "org-cometd-java" }
+org-cometd-java-cometd-java-server-http-jakarta = { module = "org.cometd.java:cometd-java-server-http-jakarta", version.ref = "org-cometd-java" }
+org-cometd-java-cometd-java-server-websocket-jakarta = { module = "org.cometd.java:cometd-java-server-websocket-jakarta", version.ref = "org-cometd-java" }
+org-cometd-javascript-cometd-javascript-common = { module = "org.cometd.javascript:cometd-javascript-common", version.ref = "org-cometd-java" }
+org-eclipse-jetty-ee10-jetty-ee10-servlets = { module = "org.eclipse.jetty.ee10:jetty-ee10-servlets", version.ref = "org-eclipse-jetty" }
+org-eclipse-jetty-jetty-jmx = { module = "org.eclipse.jetty:jetty-jmx", version.ref = "org-eclipse-jetty" }
+org-eclipse-jetty-jetty-slf4j-impl = { module = "org.eclipse.jetty:jetty-slf4j-impl", version.ref = "org-eclipse-jetty" }
+org-eclipse-jetty-jetty-util = { module = "org.eclipse.jetty:jetty-util", version.ref = "org-eclipse-jetty" }
+org-eclipse-jetty-jetty-util-ajax = { module = "org.eclipse.jetty:jetty-util-ajax", version.ref = "org-eclipse-jetty" }
+jetbrains-xodus-xodus-openAPI = { module = "org.jetbrains.xodus:xodus-openAPI", version.ref = "jetbrains-xodus" }
+allure-bom = { module = "io.qameta.allure:allure-bom", version.ref = "allure" }
+
 
 [bundles]
 concordion = [
-  "concordion",
-  "concordion-collapse-output-extension",
-  "concordion-embed-extension",
+    "concordion",
+    "concordion-collapse-output-extension",
+    "concordion-embed-extension",
 ]
 kotest = [
-  "kotest-assertions-core-jvm",
-  "kotest-property-jvm",
-  "kotest-runner-junit-jvm",
+    "kotest-assertions-core-jvm",
+    "kotest-property-jvm",
+    "kotest-runner-junit-jvm",
 ]
 #scala-logging = ["typesafe-scala-logging-s213", "typesafe-config"]
 scala-wix = ["wix-accord-core-s213", "wix-accord-scalatest-s213"]

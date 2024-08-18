@@ -14,7 +14,7 @@ dependencies {
     implementation("io.quarkus:quarkus-rest-jackson")
 //    implementation("io.quarkus:quarkus-resteasy-reactive-jackson")
     //  lightweight alternative to hibernate-reactive-panache
-// Hibernate JPA assistance
+    // Hibernate JPA assistance
     implementation(libs.hypersistence.utils)
     implementation(libs.jetbrains.xodus.xodus.openAPI)
     testImplementation(libs.testing.assertj)

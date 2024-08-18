@@ -39,6 +39,8 @@ org-cometd-java = "8.0.2"
 org-eclipse-jetty = "12.0.10"
 jetbrains-xodus = "2.0.1"
 allure = "2.25.0"
+hypersistence = "3.8.2"
+
 
 # Scala Jackson at time of writing doesn't support Scala 3 Enum's natively. It requires another library.
 # That library doesn't support same version of Jackson that Quarkus BOM uses (2.12.5), so this is the best compromise
@@ -135,7 +137,7 @@ org-eclipse-jetty-jetty-util = { module = "org.eclipse.jetty:jetty-util", versio
 org-eclipse-jetty-jetty-util-ajax = { module = "org.eclipse.jetty:jetty-util-ajax", version.ref = "org-eclipse-jetty" }
 jetbrains-xodus-xodus-openAPI = { module = "org.jetbrains.xodus:xodus-openAPI", version.ref = "jetbrains-xodus" }
 allure-bom = { module = "io.qameta.allure:allure-bom", version.ref = "allure" }
-
+hypersistence-utils = { module = "io.hypersistence:hypersistence-utils-hibernate-63", version.ref = "hypersistence" }
 
 [bundles]
 concordion = [

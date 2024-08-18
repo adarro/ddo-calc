@@ -39,6 +39,10 @@ java {
     }
 }
 
+tasks.withType<JavaCompile> {
+    options.encoding = "UTF-8"
+}
+
 // jacoco {
 //     toolVersion = jacocoToolVersion
 // //    reportsDirectory.set(layout.buildDirectory.dir("customJacocoReportDir"))

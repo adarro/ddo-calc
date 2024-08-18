@@ -1,4 +1,4 @@
-package org.acme.hibernate.orm.panache;
+package io.truthencode.dal.general;
 
 import static jakarta.ws.rs.core.Response.Status.CREATED;
 import static jakarta.ws.rs.core.Response.Status.NOT_FOUND;

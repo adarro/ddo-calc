@@ -1,4 +1,4 @@
-package org.acme.hibernate.orm.panache;
+package io.truthencode.dal.general;
 
 import jakarta.persistence.Cacheable;
 import jakarta.persistence.Column;

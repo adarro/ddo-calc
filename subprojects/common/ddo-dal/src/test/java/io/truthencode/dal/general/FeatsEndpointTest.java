@@ -13,7 +13,6 @@ import static org.hamcrest.CoreMatchers.containsString;
 import static org.hamcrest.Matchers.not;
 import static org.hamcrest.text.IsEmptyString.emptyString;
 import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertTrue;
 
 @QuarkusTest
 public class FeatsEndpointTest {
@@ -68,8 +67,6 @@ public class FeatsEndpointTest {
     public void testFeatsUpdateMultiUsage() {
         //Sneak is an Active Feat.  We will update it.
 
-
-        Matcher<String> stringMatcher = containsString("\"usages\":[\"ACTIVE\",\"PASSIVE\"]");
         var response = given()
             .when()
             .body("{\"id\":4,\"name\":\"Improved Sneak Attack\",\"usages\":[\"ACTIVE\",\"PASSIVE\"]}")

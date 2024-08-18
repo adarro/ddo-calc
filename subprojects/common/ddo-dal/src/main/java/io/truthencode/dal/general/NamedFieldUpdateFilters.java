@@ -1,21 +1,10 @@
 package io.truthencode.dal.general;
 
 import io.quarkus.logging.Log;
-import io.smallrye.common.annotation.Blocking;
 import io.smallrye.mutiny.Uni;
-import io.vertx.core.Vertx;
-import jakarta.inject.Inject;
 import jakarta.ws.rs.HttpMethod;
 import jakarta.ws.rs.container.ContainerRequestContext;
 import org.jboss.resteasy.reactive.server.ServerRequestFilter;
-
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStreamReader;
-import java.nio.charset.StandardCharsets;
-import java.util.concurrent.Callable;
-import java.util.function.Consumer;
-import java.util.stream.Collectors;
 
 import static io.truthencode.dal.general.JSONSupport.UPDATE_KEYS_HEADER;
 

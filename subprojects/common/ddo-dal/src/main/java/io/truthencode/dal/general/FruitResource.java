@@ -56,7 +56,7 @@ public class FruitResource {
         }
 
         return Panache.withTransaction(fruit::persist)
-                    .replaceWith(Response.ok(fruit).status(CREATED)::build);
+            .replaceWith(Response.ok(fruit).status(CREATED)::build);
     }
 
     @PUT
@@ -67,25 +67,25 @@ public class FruitResource {
         }
 
         return Panache
-                .withTransaction(() -> Fruit.<Fruit> findById(id)
-                    .onItem().ifNotNull().invoke(entity -> entity.name = fruit.name)
-                )
-                .onItem().ifNotNull().transform(entity -> Response.ok(entity).build())
-                .onItem().ifNull().continueWith(Response.ok().status(NOT_FOUND)::build);
+            .withTransaction(() -> Fruit.<Fruit>findById(id)
+                .onItem().ifNotNull().invoke(entity -> entity.name = fruit.name)
+            )
+            .onItem().ifNotNull().transform(entity -> Response.ok(entity).build())
+            .onItem().ifNull().continueWith(Response.ok().status(NOT_FOUND)::build);
     }
 
     @DELETE
     @Path("{id}")
     public Uni<Response> delete(Long id) {
         return Panache.withTransaction(() -> Fruit.deleteById(id))
-                .map(deleted -> deleted
-                        ? Response.ok().status(NO_CONTENT).build()
-                        : Response.ok().status(NOT_FOUND).build());
+            .map(deleted -> deleted
+                ? Response.ok().status(NO_CONTENT).build()
+                : Response.ok().status(NOT_FOUND).build());
     }
 
     /**
      * Create a HTTP response from an exception.
-     *
+     * <p>
      * Response Example:
      *
      * <pre>
@@ -132,8 +132,8 @@ public class FruitResource {
             }
 
             return Response.status(code)
-                    .entity(exceptionJson)
-                    .build();
+                .entity(exceptionJson)
+                .build();
         }
 
     }

@@ -5,15 +5,9 @@ import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
-import static io.truthencode.dal.general.JSONSupport.UPDATE_KEYS_HEADER;
-import static org.junit.jupiter.api.Assertions.*;
-import io.restassured.response.Response;
 import static io.restassured.RestAssured.given;
-import static org.assertj.core.api.Assertions.assertThat;
+import static io.truthencode.dal.general.JSONSupport.UPDATE_KEYS_HEADER;
 import static org.hamcrest.CoreMatchers.containsString;
-import static org.hamcrest.text.IsEmptyString.emptyString;
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertTrue;
 @QuarkusTest
 class RequestServerReaderInterceptorTest {
 

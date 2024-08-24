@@ -39,7 +39,8 @@ dependencies {
     unsure how  helpful this will be as most data will need runtime validation (aka wix)
      */
     // Use Scala $scalaMajorVersion in our library project
-    implementation("org.scala-lang:scala-library:2.13.10")
+    implementation("org.scala-lang:scala-library:2.13.14")
+//    implementation("org.scala-lang:scala-library:2.12.19")
 
 //    val scalaLibraryVersion: String by project
 //    val scalaMajorVersion: String by project

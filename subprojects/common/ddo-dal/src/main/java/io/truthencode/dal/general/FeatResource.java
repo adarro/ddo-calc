@@ -79,7 +79,7 @@ public class FeatResource {
     @POST
     public ValidationResult tryMeServiceMethodValidation(Feat feat) {
         try {
-            featService.validateBook(feat);
+            featService.validateFeat(feat);
             return new ValidationResult("Feat is valid! It was validated by service method validation.");
         } catch (ConstraintViolationException e) {
             return new ValidationResult(e.getConstraintViolations());
@@ -118,18 +118,22 @@ public class FeatResource {
                 .onItem().ifNotNull().invoke(entity -> {
                     ObjectMapper mapper = new ObjectMapper();
                     JsonFactory factory = mapper.getFactory();
-                    JsonParser jp = null;
                     try {
                         Log.warn("analyzing body: " + body);
-                        jp = factory.createParser(body);
-                        JsonNode root = mapper.readTree(jp);
+                        JsonNode root = mapper.readTree(factory.createParser(body));
                         ObjectNode rootNode = (ObjectNode) root;
                         var keys = new HashSet<String>();
                         rootNode.fieldNames().forEachRemaining(keys::add);
                         if (keys.isEmpty()) {
                             throw new WebApplicationException("Field keys were not set on request.  Please specify update fields by Header, Query parameters", 422);
                         }
-
+                         /* Need to go field by field to check for change on required.
+                         How do we know if nullable / optional fields are set?
+                         If not supplied in JSON, they are defaulted to null in the Feat object.
+                         If supplied in JSON, but set to null, then it is set, and we want to update.
+                         However, both options are identical at this point in the code as the JSON has been automatically mapped to the Feat object.
+                         So, we then need to generate all missing fields to existing values prior to calling this method.
+                         */
                         Log.warn("Attempting to update Feat with id: " + id + "using requested keys: " + keys);
                         keys.stream()
                             .map(String::toLowerCase)
@@ -161,22 +165,18 @@ public class FeatResource {
                                                 Log.warn("Adding usage -> " + j);
                                                 entity.usages.add(Usage.valueOf(j.asText()));
                                             });
+                                            // Do we warn if the usage is not found?
                                         }
                                         break;
                                     default:
-                                        Log.warn("Field [" + fieldKey + "] is not mapped or does not exist. Value will not be updated.");
+                                        Log.warn("Field [" + fieldKey + "] is not mapped or does not exist. Corresponding value will not be updated.");
                                 }
                             });
+                        // Validate the Feat before allowing a commit.
+                        featService.validateFeat(entity);
                     } catch (IOException e) {
                         throw new RuntimeException(e);
                     }
-                        /* Need to go field by field to check for change on required.
-                         How do we know if nullable / optional fields are set?
-                         If not supplied in JSON, they are defaulted to null in the Feat object.
-                         If supplied in JSON, but set to null, then it is set, and we want to update.
-                         However, both options are identical at this point in the code as the JSON has been automatically mapped to the Feat object.
-                         So, we then need to generate all missing fields to existing values prior to calling this method.
-                         */
                 })
             )
             .onItem().ifNotNull().transform(entity -> Response.ok(entity).status(OK).build())

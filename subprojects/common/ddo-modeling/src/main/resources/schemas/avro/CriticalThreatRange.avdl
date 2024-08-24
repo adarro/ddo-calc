@@ -1,7 +1,10 @@
-@namespace("io.truthencode.ddo.model.protocol.parsers")
-protocol CriticalThreatRange {
-    /**  */
-    record CriticalThreatRange {
+namespace io.truthencode.ddo.model.protocol.parsers;
+
+// Optional: main schema (using it creates a .avsc equivalent file)
+schema CriticalThreatRange;
+
+/**  */
+record CriticalThreatRange {
         /** Lower bound for critical multiplier */
         int? min;
         /** Upper bound for critical multiplier */
@@ -9,4 +12,3 @@ protocol CriticalThreatRange {
         /** Number to multiply the damage roll by */
         int? multiplier;
     }
-}

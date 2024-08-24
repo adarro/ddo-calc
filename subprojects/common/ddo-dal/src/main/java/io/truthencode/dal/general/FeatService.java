@@ -7,7 +7,7 @@ import jakarta.validation.Valid;
 @ApplicationScoped
 public class FeatService {
 
-    public void validateBook(@Valid Feat feat) {
+    public void validateFeat(@Valid Feat feat) {
         // your business logic here
     }
 }

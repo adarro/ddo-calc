@@ -1,7 +1,5 @@
 package io.truthencode.dal.general;
 
-import com.fasterxml.jackson.core.JsonFactory;
-import com.fasterxml.jackson.core.JsonParser;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.node.ObjectNode;
@@ -107,34 +105,26 @@ public class FeatResource {
             .replaceWith(Response.ok(Feat).status(CREATED)::build);
     }
 
+    @KeyExtracting
     @PUT
     @Path("{id}")
     @Consumes(value = {MediaType.TEXT_PLAIN, MediaType.APPLICATION_JSON})
-    public Uni<Response> updateFromRaw(Long id, String body) {
+    public Uni<Response> updateFromRaw(Long id, String body, @HeaderParam(value = UPDATE_KEYS_HEADER) String header) {
 //        Response.ResponseBuilder builder = null;
-
+        Log.warn("@KeyExtracting updateFromRaw: " + body);
+        Log.warn("@KeyExtracting updateFromRaw: header " + header);
         return Panache
             .withTransaction(() -> Feat.<Feat>findById(id)
                 .onItem().ifNotNull().invoke(entity -> {
-                    ObjectMapper mapper = new ObjectMapper();
-                    JsonFactory factory = mapper.getFactory();
                     try {
-                        Log.warn("analyzing body: " + body);
-                        JsonNode root = mapper.readTree(factory.createParser(body));
-                        ObjectNode rootNode = (ObjectNode) root;
-                        var keys = new HashSet<String>();
-                        rootNode.fieldNames().forEachRemaining(keys::add);
+                        var kMap = JSONSupport.extractKeys(body, header);
+                        var keys = kMap.keys();
+                        var rootNode = kMap.node();
+
                         if (keys.isEmpty()) {
-                            throw new WebApplicationException("Field keys were not set on request.  Please specify update fields by Header, Query parameters", 422);
+                            throw new WebApplicationException("Field keys were not set on request and could not determine fields to update. Please specify update fields by Header, Query parameters", 422);
                         }
-                         /* Need to go field by field to check for change on required.
-                         How do we know if nullable / optional fields are set?
-                         If not supplied in JSON, they are defaulted to null in the Feat object.
-                         If supplied in JSON, but set to null, then it is set, and we want to update.
-                         However, both options are identical at this point in the code as the JSON has been automatically mapped to the Feat object.
-                         So, we then need to generate all missing fields to existing values prior to calling this method.
-                         */
-                        Log.warn("Attempting to update Feat with id: " + id + "using requested keys: " + keys);
+                        Log.warn("Attempting to update Feat with id: " + id + " using requested keys: " + keys);
                         keys.stream()
                             .map(String::toLowerCase)
                             .map(String::trim)
@@ -142,40 +132,34 @@ public class FeatResource {
                                 Log.warn("Updating field [" + fieldKey + "]");
                                 switch (fieldKey) {
                                     case "id":
-                                        // Log.warn("Matched field [id]");
-                                        // We don't want to update the id. Should either error or ignore.
                                         Log.warn("ID field can not be changed.");
                                         break;
                                     case "name":
                                         Log.info("Matched field [name]");
                                         Log.warn("Mapping name: " + rootNode.findValues(fieldKey).stream().findFirst().get().asText());
                                         entity.name = rootNode.findValues(fieldKey).stream().findFirst().get().asText();
-
                                         break;
                                     case "description":
                                         Log.info("Matched field [description]");
-                                        entity.description = rootNode.findValues(fieldKey).stream().findFirst().isPresent() ? rootNode.findValues(fieldKey).stream().findFirst().get().asText() : null;
+                                        entity.description = rootNode.findValues(fieldKey).stream().findFirst().map(JsonNode::asText).orElse(null);
                                         break;
                                     case "usages":
                                         Log.info("Matched field [usages]");
                                         if (rootNode.findValues(fieldKey).stream().findFirst().isPresent()) {
-
                                             entity.usages = new HashSet<>();
                                             rootNode.findValue(fieldKey).forEach(j -> {
                                                 Log.warn("Adding usage -> " + j);
                                                 entity.usages.add(Usage.valueOf(j.asText()));
                                             });
-                                            // Do we warn if the usage is not found?
                                         }
                                         break;
                                     default:
                                         Log.warn("Field [" + fieldKey + "] is not mapped or does not exist. Corresponding value will not be updated.");
                                 }
                             });
-                        // Validate the Feat before allowing a commit.
                         featService.validateFeat(entity);
                     } catch (IOException e) {
-                        throw new RuntimeException(e);
+                        throw new RuntimeException("Error processing JSON", e);
                     }
                 })
             )
@@ -206,7 +190,7 @@ public class FeatResource {
             throw new WebApplicationException("Feat name was not set on request.", 422);
         }
 
-        Log.warn("Attempting to update Feat with id: " + id);
+        Log.warn("Attempting to update raw/ Feat with id: " + id);
         return Panache
             .withTransaction(() -> PanacheEntityBase.<Feat>findById(id)
                 .onItem().ifNotNull().invoke(entity -> {

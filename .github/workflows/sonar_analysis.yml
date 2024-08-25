@@ -6,7 +6,7 @@ on:
     pull_request:
         types: [opened, synchronize, reopened]
 env:
-    GRADLE_OPTS: org.gradle.jvmargs=-Xmx1g -XX:MaxMetaspaceSize=512m
+    GRADLE_OPTS: -Xmx1g -XX:MaxMetaspaceSize=512m
 permissions: read-all
 jobs:
     build:

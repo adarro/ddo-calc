@@ -37,7 +37,9 @@ val defaultJavaToolChainVersion: String? by project
 val kasechangeVersion: String by project
 
 dependencies {
-
+    implementation(libs.quarkus.gradle.plugin)
+    implementation(libs.kotlin.gradle.plugin)
+    implementation(libs.kotlin.allopen.plugin)
     implementation("org.sonarsource.scanner.gradle:sonarqube-gradle-plugin:4.3.1.3277")
     // enable gradle catalog for included convention plugins
     implementation(files(libs.javaClass.superclass.protectionDomain.codeSource.location))
@@ -68,8 +70,8 @@ dependencies {
     implementation("io.spring.gradle:dependency-management-plugin:1.0.15.RELEASE")
 
     // kotlin
-    implementation("org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlinVersion")
-    implementation("com.google.devtools.ksp:symbol-processing-gradle-plugin:$kotlinVersion-1.0.13")
+//    implementation("org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlinVersion")
+    implementation("com.google.devtools.ksp:symbol-processing-gradle-plugin:$kotlinVersion-1.0.24")
     // not finding jitpacked resource
 //    implementation("com.strumenta.antlr-kotlin:antlr-kotlin-gradle-plugin:70d79b7eb1")
 

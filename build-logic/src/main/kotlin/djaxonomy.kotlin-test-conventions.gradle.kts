@@ -35,7 +35,8 @@ kte.useKotlinTestKit.convention(KotlinTestKits.KoTest)
 afterEvaluate {
 
     val testMode =
-        findProperty("kotlinTestMode")?.toString()
+        findProperty("kotlinTestMode")
+            ?.toString()
             ?.let(io.truthencode.djaxonomy.etc.TestMode::valueOf)
             ?: io.truthencode.djaxonomy.etc.TestMode.REFLECT
     logger.warn("${project.name} kotlinTestMode: $testMode (dependencies)")
@@ -97,10 +98,11 @@ afterEvaluate {
 
 afterEvaluate {
     val testMode =
-        findProperty("kotlinTestSuite")?.toString()
+        findProperty("kotlinTestSuite")
+            ?.toString()
             ?.let(KotlinTestKits::valueOf)
             ?: KotlinTestKits.KoTest
-    logger.warn("${project.name} kotlinTestMode: $testMode (JvmTestSuite)")
+    logger.warn("after evaluate ${project.name} kotlinTestMode: $testMode (JvmTestSuite)")
     testing {
 
         val ts = TestBuildSupport(project)

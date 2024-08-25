@@ -1,21 +1,25 @@
-@namespace("io.truthencode.ddo.model.protocol.parsers")
-protocol WeaponInfo {
-    import idl "DamageInfo.avdl";
-    import idl "CriticalThreatRange.avdl";
+namespace io.truthencode.ddo.model.protocol.parsers;
 
-    /**  */
-    record Weapon {
+// Optional: main schema (using it creates a .avsc equivalent file)
+schema Weapon;
+
+import idl "DamageInfo.avdl";
+import idl "CriticalThreatRange.avdl";
+import idl "Enum_values.avdl";
+
+/**  */
+record Weapon {
         /** Name of the Item */
         string? name;
         /** General Level of Martial training required to wield */
-        Weapon_proficiencyUnderscoreclass? proficiency_class;
+        io.truthencode.ddo.model.protocol.parsers.enums.Weapon_proficiency? proficiency_class;
         /** Screen shot or image URI */
         string? image;
         DamageTrait? damage;
         DamageInfo? damage_type;
         CriticalThreatRange? critical_threat_range;
         /** The type of weapon such as long sword Axe etc */
-        Weapon_weaponUnderscorecategory? weapon_category;
+        io.truthencode.ddo.model.protocol.parsers.enums.Weapon_category? weapon_category;
         /** Race required to use item without a UMD Check */
         union{null, array<string>} required_race;
         /** Race absolutely required (no bypass) to use item */
@@ -41,9 +45,9 @@ protocol WeaponInfo {
         /** tensile strength, how hard it is to damage */
         int? durability;
         /** Allowed slots for the item to be equipped */
-        Weapon_wearUnderscorelocation? wear_location;
+        io.truthencode.ddo.model.protocol.parsers.enums.Weapon_wear_location? wear_location;
         /** material made from */
-        Weapon_material? material;
+        io.truthencode.ddo.model.protocol.parsers.enums.Item_material? material;
         /** physical toughness of the item */
         int? hardness;
         /** Monetary value of item */
@@ -63,20 +67,3 @@ protocol WeaponInfo {
         /** Any sets this item belongs to that give bonuses when all items are equipped. */
         union{null, array<string>} sets;
     }
-
-    enum Weapon_proficiencyUnderscoreclass {Simple, Martial, Exotic}
-
-    enum Weapon_weaponUnderscorecategory {
-        BastardSword, BattleAxe, Club, Dagger, Dart, DwarvenWarAxe, Falchion, GreatAxe, GreatClub, GreatCrossbow,
-            GreatSword, HandAxe, Handwrap, HeavyCrossbow, HeavyMace, HeavyPick, Kama, Khopesh, Kukris, LightCrossbow,
-            LightHammer, LightMace, LightPick, Longbow, Longsword, Maul, Morningstar, Quarterstaff, Rapier,
-            RepeatingHeavyCrossbow, RepeatingLightCrossbow, Scimitar, Shortbow, ShortSword, Shuriken, Sickle,
-            SimpleProjectile, ThrowingAxe, ThrowingDagger, ThrowingHammer, WarHammer}
-
-    enum Weapon_wearUnderscorelocation {MainHand, OffHand, TwoHand}
-
-    enum Weapon_material {
-        Adamantine, Blueshine, Bone, Byeshk, Cloth, Cold_Iron, Crystal, Darkleaf, Darkwood, Densewood, Dwarven_Iron,
-            Feyleather, Flametouched_Iron, Flesh, Force, Gem, Glass, Ice, Leather, Light, Magesteel, Mithral,
-            Planeforged_Steel, Rust, Silver, Spiritcraft_Leather, Spiritforged_Iron, Steel, Stone, Wood}
-}

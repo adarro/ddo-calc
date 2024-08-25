@@ -1,11 +1,13 @@
-@namespace("io.truthencode.ddo.model.protocol")
-protocol ValueChange {
-    enum ChangeType {INCREASE, DECREASE, NOCHANGE}
+namespace io.truthencode.ddo.model.protocol;
 
-    record ChangeValueInt {
+// Optional: main schema (using it creates a .avsc equivalent file)
+schema ChangeType;
+
+enum ChangeType {INCREASE, DECREASE, NOCHANGE}
+
+record ChangeValueInt {
         string id;
         int currentValue;
         int prevValue;
         ChangeType changeType;
     }
-}

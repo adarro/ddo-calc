@@ -5,6 +5,8 @@ on:
             - master
     pull_request:
         types: [opened, synchronize, reopened]
+env:
+    GRADLE_OPTS: org.gradle.jvmargs=-Xmx1g -XX:MaxMetaspaceSize=512m
 permissions: read-all
 jobs:
     build:
@@ -35,4 +37,4 @@ jobs:
               env:
                   GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }} # Needed to get PR information, if any
                   SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
-              run: ./gradlew build aggregateScoverage sonar --info org.gradle.jvmargs=-Xmx1g -XX:MaxMetaspaceSize=512m
+              run: ./gradlew build aggregateScoverage sonar --info

@@ -35,7 +35,7 @@ class BonusTypeTest
      * (Some) ToEE items can appear with two mythic bonuses, e.g., Weapon and Shield.
      */
     they("Should apply to a specific set of item slots") {
-      // TODO: Mythic Boost validation Dyanmically / programmatically link location to boost.
+      // TODO: Mythic Boost validation Dynamically / programmatically link location to boost.
       // Some ToEE items can have both Weapon and Shield bonuses.
       // bonus constrained between 1 to 3 and 2 to 4 depending on level and item type.
       val nameMap = HashMap(

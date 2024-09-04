@@ -21,7 +21,7 @@ package io.truthencode.ddo.model.stats
  * Used to generally classify a stat or effect such as Saving Throws or Movement. These should
  * generally correspond to the Game Client Menu although some are not visible from the UI NOTE: May
  * not exactly match in game UI for UX purposes. (i.e. Dodge chance / AC / Incorporeal should fall
- * under Avoidance Defense although we are expecting it to appear under main display)
+ * under Avoidance Defense, although we are expecting it to appear under main display)
  */
 sealed trait Category
 

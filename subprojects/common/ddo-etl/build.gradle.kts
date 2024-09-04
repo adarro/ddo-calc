@@ -50,6 +50,7 @@ dependencies {
     implementation(libs.kxbmap.configs.s213)
 
     /* DB, Query etc
+
     // Quill Scala Query QSQL
      https://github.com/getquill/quill */
     implementation(libs.quill.core.s213)
@@ -59,6 +60,9 @@ dependencies {
     implementation(libs.quill.sql.s213)
     implementation(libs.monix.eval.s213)
     implementation(libs.monix.reactive.s213)
+
+    // Jetbrains Xodus embedded database
+//    implementation(libs.xodus.openAPI)
 
     // validation and rules
     implementation(libs.wix.accord.core.s213)

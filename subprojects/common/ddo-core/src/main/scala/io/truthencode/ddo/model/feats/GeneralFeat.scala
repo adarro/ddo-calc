@@ -24,7 +24,7 @@ import io.truthencode.ddo.enhancement.BonusType
 import io.truthencode.ddo.model.classes.HeroicCharacterClass
 import io.truthencode.ddo.model.classes.HeroicCharacterClass.Bard
 import io.truthencode.ddo.model.effect
-import io.truthencode.ddo.model.effect.TriggerEvent
+import io.truthencode.ddo.model.effect.{Feature, SourceInfo, TriggerEvent}
 import io.truthencode.ddo.model.effect.features._
 import io.truthencode.ddo.model.item.weapon.WeaponCategory._
 import io.truthencode.ddo.model.item.weapon._
@@ -249,32 +249,86 @@ object GeneralFeat
 
   }
 
+  // Common features of all Weapon Focus feats
+  private def weaponDamageFeature(
+    source: SourceInfo,
+    weaponClass: WeaponClass,
+    toDamage: Int = 2) = {
+    new FeaturesImpl with ToDamageByWeaponClassFeature with SourceInfo {
+      override val sourceId: String = source.sourceId
+      override val sourceRef: AnyRef = source.sourceRef
+      override protected[this] lazy val triggerOn: Seq[TriggerEvent] = Seq(TriggerEvent.Passive)
+      override protected[this] lazy val triggerOff: Seq[TriggerEvent] = Seq(TriggerEvent.Never)
+
+      override protected lazy val toDamageType: BonusType = BonusType.Feat
+      override protected val toDamageAmount: Seq[(WeaponCategory, Int)] =
+        filterByWeaponClass(weaponClass).map((_, toDamage))
+      override protected[this] val toDmgWcCategories: Seq[effect.EffectCategories.Value] = Seq(
+        effect.EffectCategories.GeneralCombat)
+    }
+  }
+
+  private def weaponHitFeature(source: SourceInfo, weaponClass: WeaponClass, toHit: Int = 1) = {
+    new FeaturesImpl with ToHitByWeaponClassFeature with SourceInfo {
+      override val sourceId: String = source.sourceId
+      override val sourceRef: AnyRef = source.sourceRef
+      override protected[this] lazy val triggerOn: Seq[TriggerEvent] = Seq(TriggerEvent.Passive)
+      override protected[this] lazy val triggerOff: Seq[TriggerEvent] = Seq(TriggerEvent.Never)
+
+      override protected lazy val toHitType: BonusType = BonusType.Feat
+      override protected val toHitAmount: Seq[(WeaponCategory, Int)] =
+        filterByWeaponClass(weaponClass).map((_, toHit))
+      override protected[this] val toHitWcCategories: Seq[effect.EffectCategories.Value] = Seq(
+        effect.EffectCategories.GeneralCombat)
+    }
+
+  }
+
+  private def weaponPowerFeatures(source: SourceInfo, mp: Int = 2, rp: Int = 2) = {
+
+    val mpFeature = new FeaturesImpl with MeleePowerFeature with SourceInfo {
+      override val sourceId: String = source.sourceId
+      override val sourceRef: AnyRef = source.sourceRef
+      override protected[this] lazy val triggerOn: Seq[TriggerEvent] = Seq(TriggerEvent.Passive)
+      override protected[this] lazy val triggerOff: Seq[TriggerEvent] = Seq(TriggerEvent.Never)
+
+      override protected[this] lazy val meleePowerCategories: Seq[effect.EffectCategories.Value] =
+        Seq(effect.EffectCategories.GeneralCombat)
+      override protected lazy val meleePowerBonusType: BonusType = BonusType.Feat
+      override protected val meleePowerBonusAmount: Int = mp
+    }
+
+    val rpFeature = new FeaturesImpl with RangePowerFeature with SourceInfo {
+      override val sourceId: String = source.sourceId
+      override val sourceRef: AnyRef = source.sourceRef
+
+      override protected[this] lazy val triggerOn: Seq[TriggerEvent] = Seq(TriggerEvent.Passive)
+      override protected[this] lazy val triggerOff: Seq[TriggerEvent] = Seq(TriggerEvent.Never)
+
+      override protected lazy val rangePowerBonusType: BonusType = BonusType.Feat
+      override protected val rangePowerBonusAmount: Int = rp
+      override protected[this] val rangePowerCategories: Seq[effect.EffectCategories.Value] = Seq(
+        effect.EffectCategories.GeneralCombat)
+    }
+    List(mpFeature, rpFeature)
+  }
+
   case class WeaponFocus(weaponClass: WeaponClass)
     extends GeneralFeat with WeaponFocusBase with SubFeat with Prefix with FriendlyDisplay
-    with FeaturesImpl with ToHitByWeaponClassFeature with MeleePowerFeature with RangePowerFeature {
+    with Features {
 
-    override protected[this] lazy val triggerOn: Seq[TriggerEvent] = Seq(TriggerEvent.Passive)
-    override protected[this] lazy val triggerOff: Seq[TriggerEvent] = Seq(TriggerEvent.Never)
-    override protected[this] lazy val meleePowerCategories: Seq[effect.EffectCategories.Value] =
-      Seq(effect.EffectCategories.GeneralCombat)
-    private[this] lazy val allCategories =
-      meleePowerCategories ++ toHitWcCategories ++ rangePowerCategories
-    override protected[this] val toHitWcCategories: Seq[effect.EffectCategories.Value] = Seq(
-      effect.EffectCategories.GeneralCombat)
-    override protected[this] val rangePowerCategories: Seq[effect.EffectCategories.Value] = Seq(
-      effect.EffectCategories.GeneralCombat)
+    private val wpFeatures = weaponPowerFeatures(this).flatMap(_.features)
+    private val whFeatures = weaponHitFeature(this, weaponClass).features
+    override def features: Seq[Feature[_]] =
+      super.features ++ wpFeatures ++ whFeatures
+
+//      private[this] lazy val allCategories =
+//      meleePowerCategories ++ toHitWcCategories ++ rangePowerCategories
 
     /**
      * Delimits the prefix and text.
      */
     override protected val prefixSeparator: String = ": "
-    override protected lazy val toHitType: BonusType = BonusType.Feat
-    override protected val toHitAmount: Seq[(WeaponCategory, Int)] =
-      filterByWeaponClass(weaponClass).map((_, 1))
-    override protected lazy val meleePowerBonusType: BonusType = BonusType.Feat
-    override protected val meleePowerBonusAmount: Int = 2
-    override protected lazy val rangePowerBonusType: BonusType = BonusType.Feat
-    override protected val rangePowerBonusAmount: Int = 2
 
     override def prefix: Option[String] = Some("Weapon Focus")
 
@@ -283,24 +337,14 @@ object GeneralFeat
 
   case class GreaterWeaponFocus(weaponClass: WeaponClass)
     extends GeneralFeat with GreaterWeaponFocusBase with RequiresAllOfFeat with SubFeat with Prefix
-    with FighterBonusFeat with FeaturesImpl with ToHitByWeaponClassFeature with MeleePowerFeature
-    with RangePowerFeature {
-    override protected[this] lazy val triggerOn: Seq[TriggerEvent] = Seq(TriggerEvent.Passive)
-    override protected[this] lazy val triggerOff: Seq[TriggerEvent] = Seq(TriggerEvent.Never)
-    override protected[this] lazy val meleePowerCategories: Seq[effect.EffectCategories.Value] =
-      Seq(effect.EffectCategories.GeneralCombat)
+    with FighterBonusFeat with FeaturesImpl {
+
+    private val wpFeatures = weaponPowerFeatures(this).flatMap(_.features)
+    private val whFeatures = weaponHitFeature(this, weaponClass).features
+    override def features: Seq[Feature[_]] =
+      super.features ++ wpFeatures ++ whFeatures
+
     override protected val prefixSeparator: String = ": "
-    override protected[this] val toHitWcCategories: Seq[effect.EffectCategories.Value] = Seq(
-      effect.EffectCategories.GeneralCombat)
-    override protected[this] val rangePowerCategories: Seq[effect.EffectCategories.Value] = Seq(
-      effect.EffectCategories.GeneralCombat)
-    override protected lazy val toHitType: BonusType = BonusType.Feat
-    override protected val toHitAmount: Seq[(WeaponCategory, Int)] =
-      filterByWeaponClass(weaponClass).map((_, 1))
-    override protected lazy val meleePowerBonusType: BonusType = BonusType.Feat
-    override protected val meleePowerBonusAmount: Int = 2
-    override protected lazy val rangePowerBonusType: BonusType = BonusType.Feat
-    override protected val rangePowerBonusAmount: Int = 2
     override def prefix: Option[String] =
       Some("GreaterWeaponFocus".splitByCase)
 
@@ -313,25 +357,14 @@ object GeneralFeat
 
   case class SuperiorWeaponFocus(weaponClass: WeaponClass)
     extends GeneralFeat with SuperiorWeaponFocusBase with RequiresAllOfFeat with SubFeat with Prefix
-    with FriendlyDisplay with FeaturesImpl with ToHitByWeaponClassFeature with MeleePowerFeature
-    with RangePowerFeature {
-    override protected[this] lazy val triggerOn: Seq[TriggerEvent] = Seq(TriggerEvent.Passive)
-    override protected[this] lazy val triggerOff: Seq[TriggerEvent] = Seq(TriggerEvent.Never)
-    override protected[this] lazy val meleePowerCategories: Seq[effect.EffectCategories.Value] =
-      Seq(effect.EffectCategories.GeneralCombat)
-    override protected val prefixSeparator: String = ": "
-    override protected lazy val toHitType: BonusType = BonusType.Feat
-    override protected val toHitAmount: Seq[(WeaponCategory, Int)] =
-      filterByWeaponClass(weaponClass).map((_, 1))
-    override protected lazy val meleePowerBonusType: BonusType = BonusType.Feat
-    override protected val meleePowerBonusAmount: Int = 2
-    override protected lazy val rangePowerBonusType: BonusType = BonusType.Feat
-    override protected val rangePowerBonusAmount: Int = 2
-    override protected[this] val toHitWcCategories: Seq[effect.EffectCategories.Value] = Seq(
-      effect.EffectCategories.GeneralCombat)
-    override protected[this] val rangePowerCategories: Seq[effect.EffectCategories.Value] = Seq(
-      effect.EffectCategories.GeneralCombat)
+    with FriendlyDisplay with FeaturesImpl {
 
+    private val wpFeatures = weaponPowerFeatures(this).flatMap(_.features)
+    private val whFeatures = weaponHitFeature(this, weaponClass).features
+    override def features: Seq[Feature[_]] =
+      super.features ++ wpFeatures ++ whFeatures
+
+    override protected val prefixSeparator: String = ": "
     override def prefix: Option[String] =
       Some("SuperiorWeaponFocus".splitByCase)
 
@@ -344,25 +377,9 @@ object GeneralFeat
 
   case class WeaponSpecialization(weaponClass: WeaponClass)
     extends GeneralFeat with WeaponSpecializationBase with RequiresAllOfFeat with SubFeat
-    with Prefix with FriendlyDisplay with FeaturesImpl with ToDamageByWeaponClassFeature
-    with MeleePowerFeature with RangePowerFeature {
-    override protected[this] lazy val triggerOn: Seq[TriggerEvent] = Seq(TriggerEvent.Passive)
-    override protected[this] lazy val triggerOff: Seq[TriggerEvent] = Seq(TriggerEvent.Never)
-    override protected[this] lazy val meleePowerCategories: Seq[effect.EffectCategories.Value] =
-      Seq(effect.EffectCategories.GeneralCombat)
-    override protected val prefixSeparator: String = ": "
-    override protected[this] val toDmgWcCategories: Seq[effect.EffectCategories.Value] = Seq(
-      effect.EffectCategories.GeneralCombat)
-    override protected[this] val rangePowerCategories: Seq[effect.EffectCategories.Value] = Seq(
-      effect.EffectCategories.GeneralCombat)
-    override protected lazy val toDamageType: BonusType = BonusType.Feat
-    override protected val toDamageAmount: Seq[(WeaponCategory, Int)] =
-      filterByWeaponClass(weaponClass).map((_, 2))
-    override protected lazy val meleePowerBonusType: BonusType = BonusType.Feat
-    override protected val meleePowerBonusAmount: Int = 2
-    override protected lazy val rangePowerBonusType: BonusType = BonusType.Feat
-    override protected val rangePowerBonusAmount: Int = 2
+    with Prefix with FriendlyDisplay with FeaturesImpl {
 
+    override protected val prefixSeparator: String = ": "
     override def prefix: Option[String] =
       Some("Weapon Specialization".splitByCase)
 
@@ -375,25 +392,13 @@ object GeneralFeat
 
   case class GreaterWeaponSpecialization(weaponClass: WeaponClass)
     extends GeneralFeat with GreaterWeaponSpecializationBase with RequiresAllOfFeat with SubFeat
-    with Prefix with FeaturesImpl with ToDamageByWeaponClassFeature with MeleePowerFeature
-    with RangePowerFeature with FriendlyDisplay {
-    override protected[this] lazy val triggerOn: Seq[TriggerEvent] = Seq(TriggerEvent.Passive)
-    override protected[this] lazy val triggerOff: Seq[TriggerEvent] = Seq(TriggerEvent.Never)
-    override protected[this] lazy val meleePowerCategories: Seq[effect.EffectCategories.Value] =
-      Seq(effect.EffectCategories.GeneralCombat)
-    override protected val prefixSeparator: String = ": "
-    override protected[this] val toDmgWcCategories: Seq[effect.EffectCategories.Value] = Seq(
-      effect.EffectCategories.GeneralCombat)
-    override protected[this] val rangePowerCategories: Seq[effect.EffectCategories.Value] = Seq(
-      effect.EffectCategories.GeneralCombat)
-    override protected lazy val toDamageType: BonusType = BonusType.Feat
-    override protected val toDamageAmount: Seq[(WeaponCategory, Int)] =
-      filterByWeaponClass(weaponClass).map((_, 2))
-    override protected lazy val meleePowerBonusType: BonusType = BonusType.Feat
-    override protected val meleePowerBonusAmount: Int = 2
-    override protected lazy val rangePowerBonusType: BonusType = BonusType.Feat
-    override protected val rangePowerBonusAmount: Int = 2
+    with Prefix with FeaturesImpl with FriendlyDisplay {
+    private val wpFeatures = weaponPowerFeatures(this).flatMap(_.features)
+    private val wdFeatures = weaponDamageFeature(this, weaponClass).features
+    override def features: Seq[Feature[_]] =
+      super.features ++ wpFeatures ++ wdFeatures
 
+    override protected val prefixSeparator: String = ": "
     override def prefix: Option[String] =
       Some("GreaterWeaponSpecialization".splitByCase)
 
@@ -491,6 +496,11 @@ object GeneralFeat
 
     override def prefix: Option[String] = Some("Simple Weapon Proficiency")
 
+    override def entryName: String = {
+      val p = prefix.getOrElse("SimpleWeaponProficiency")
+      s"${p}(${nameSource})".replace(" ", "")
+    }
+
     override protected def nameSource: String = weapon.headOption match {
       case Some(x) => x.displayText
       case _ => entryName
@@ -518,6 +528,12 @@ object GeneralFeat
 
     override def prefix: Option[String] = Some("Martial Weapon Proficiency")
 
+    // Need to override entryName because the default logic will include the grant arrays in the name.
+    override def entryName: String = {
+      val p = prefix.getOrElse("MartialWeaponProficiency")
+      s"${p}(${nameSource})".replace(" ", "")
+    }
+
     override protected def nameSource: String = weapon.headOption match {
       case Some(x) => x.displayText
       case _ => entryName
@@ -542,6 +558,12 @@ object GeneralFeat
     override protected val prefixSeparator: String = ": "
 
     override def prefix: Option[String] = Some("Exotic Weapon Proficiency")
+
+    // Need to override entryName because the default logic will include the grant arrays in the name.
+    override def entryName: String = {
+      val p = prefix.getOrElse("ExoticWeaponProficiency")
+      s"${p}(${nameSource})".replace(" ", "")
+    }
 
     override protected def nameSource: String = weapon.headOption match {
       case Some(x) => x.displayText

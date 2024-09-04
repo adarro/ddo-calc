@@ -47,7 +47,7 @@ trait HitChancePercentFeature extends Features {
       override def searchPrefixSource: String = partToModify.searchPrefixSource
 
       override protected[this] lazy val partToModify: BasicStat =
-        BasicStat.ToHitChance
+        BasicStat.ChanceToHit
 
       /**
        * The General Description should be just that. This should not include specific values unless

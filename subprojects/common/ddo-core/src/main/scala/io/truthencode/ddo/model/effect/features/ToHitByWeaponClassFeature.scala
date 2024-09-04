@@ -22,12 +22,11 @@ import io.truthencode.ddo.enhancement.BonusType
 import io.truthencode.ddo.model.effect
 import io.truthencode.ddo.model.effect._
 import io.truthencode.ddo.model.item.weapon.WeaponCategory
-import io.truthencode.ddo.model.stats.BasicStat
+import io.truthencode.ddo.model.stats.{BasicStat, HitChance}
 import io.truthencode.ddo.support.naming.UsingSearchPrefix
 
 /**
- * Increases your Weapons Critical Threat range Different Weapon types have greater or lesser
- * bonuses and it may or may not apply to shields, depending on the feat / enhancement.
+ * Increases your To Hit Chance by a specified amount for a specified weapon class.
  */
 trait ToHitByWeaponClassFeature extends Features {
   self: SourceInfo =>
@@ -39,10 +38,10 @@ trait ToHitByWeaponClassFeature extends Features {
   protected[this] val toHitWcCategories: Seq[effect.EffectCategories.Value]
   private val src = this
   private[this] val toHitChance =
-    new PartModifier[Seq[(WeaponCategory, Int)], BasicStat] with UsingSearchPrefix {
+    new PartModifier[Seq[(WeaponCategory, Int)], BasicStat with HitChance] with UsingSearchPrefix {
 
-      override protected[this] lazy val partToModify: BasicStat =
-        BasicStat.ToHitChance
+      override protected[this] lazy val partToModify: BasicStat with HitChance =
+        BasicStat.ChanceToHit
 
       /**
        * The General Description should be just that. This should not include specific values unless
@@ -81,7 +80,8 @@ trait ToHitByWeaponClassFeature extends Features {
       )
       override val source: SourceInfo = src
       override lazy val value: Seq[(WeaponCategory, Int)] = toHitAmount
-      override lazy val effectText: Option[String] = Some(s"To Hit Amount: $value%")
+      private def genValue = value.map(x => s"${x._1.entryName}:${x._2}%").mkString(", ")
+      override lazy val effectText: Option[String] = Some(s"To Hit Amount: $genValue")
 
       /**
        * Used when qualifying a search with a prefix. Examples include finding "HalfElf" from
@@ -93,9 +93,7 @@ trait ToHitByWeaponClassFeature extends Features {
       override def searchPrefixSource: String = partToModify.searchPrefixSource
     }
 
-  abstract override def features: Seq[Feature[_]] = {
-    assert(toHitChance.value == toHitAmount)
+  abstract override def features: Seq[Feature[_]] =
     super.features :+ toHitChance
-  }
 
 }

@@ -41,6 +41,7 @@ dependencies {
         implementation(group = "ch.qos.logback", name = "logback-classic")
         implementation(group = "com.typesafe.scala-logging", name = "scala-logging_$scalaMajorVersion")
         implementation(group = "org.scalatest", name = "scalatest_$scalaMajorVersion")
+        implementation(libs.scalatest.plus.scalacheck)
         testImplementation(group = "org.mockito", name = "mockito-core")
 
         // JUnit 5

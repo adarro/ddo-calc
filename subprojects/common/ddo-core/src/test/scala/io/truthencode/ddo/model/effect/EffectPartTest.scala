@@ -23,24 +23,54 @@ import io.truthencode.ddo.model.feats.GeneralFeat
 import io.truthencode.ddo.model.stats.{BasicStat, MissChance}
 import org.scalatest.funspec.AnyFunSpec
 import org.scalatest.matchers.should.Matchers
+import org.scalatestplus.scalacheck.ScalaCheckPropertyChecks
 
 import scala.language.postfixOps
 
-class EffectPartTest extends AnyFunSpec with Matchers with LazyLogging {
+class EffectPartTest
+  extends AnyFunSpec with ScalaCheckPropertyChecks with Matchers with LazyLogging {
+
+  val invalidCombos =
+    Table(
+      ("n", "d"),
+      (Integer.MIN_VALUE, Integer.MIN_VALUE),
+      (1, Integer.MIN_VALUE),
+      (Integer.MIN_VALUE, 1),
+      (Integer.MIN_VALUE, 0),
+      (1, 0)
+    )
+
+  val parLabels =
+    Table(
+      ("ep", "expected"),
+      (EffectPart.anySkill, "Skill"),
+      (EffectPart.anyMissChance, "MissChance"),
+      (EffectPart.anyFeat, "Feat")
+    )
   describe("effectPart") {
-    ignore("is") {
+
+    they("Should properly prefix and match entity and effects") {
+      forAll(parLabels) { (eps, expected) =>
+        eps.foreach { ep =>
+          val sp = ep.searchPattern()
+          val en = ep.entryName
+
+          logger.info(s"spat => $sp ${ep.searchPattern(ep.entryName)} en $en")
+          en shouldEqual ep.searchPattern(ep.entryName)
+          en should startWith(expected)
+
+        }
+      }
+    }
+
+
+
+    it("is") {
       EffectPart.values.foreach { ep =>
         logger.info(s"$ep.name ${ep.entryName}   ${ep.searchPattern()}")
       }
     }
 
-    they("have baked-in search patterns") {
-      EffectPart.anyAbilities.foreach { ep =>
-        val sp = ep.searchPattern()
-        val en = ep.entryName
-        logger.info(s"spat => $sp ${ep.searchPattern(ep.entryName)} en $en")
-      }
-    }
 
     they("may override naming") {
       val entry = EffectPart.MissChanceEffect(BasicStat.DodgeChance)
@@ -57,6 +87,7 @@ class EffectPartTest extends AnyFunSpec with Matchers with LazyLogging {
       val eut = GeneralFeat.Dodge
       List(eut).foreach { thingWithFeature =>
         thingWithFeature.features.foreach { f =>
+          f.name shouldNot equal ("Unknown")
           logger.info(printFeature(f))
         }
       }
@@ -75,6 +106,24 @@ class EffectPartTest extends AnyFunSpec with Matchers with LazyLogging {
     they("should identify and recognize skill effects") {
       val alertness = GeneralFeat.Alertness
       List(alertness).foreach { thingWithFeature =>
+        thingWithFeature.features.foreach { f =>
+          logger.info(printFeature(f))
+        }
+      }
+    }
+
+    they("should identify and recognize weapon focus effects") {
+      val eut = GeneralFeat.SuperiorWeaponFocus.subFeats
+      eut.foreach { thingWithFeature =>
+        thingWithFeature.features.foreach { f =>
+          logger.info(printFeature(f))
+        }
+      }
+    }
+
+    they("should identify and recognize weapon specialization effects") {
+      val eut = GeneralFeat.WeaponSpecialization.subFeats
+      eut.foreach { thingWithFeature =>
         thingWithFeature.features.foreach { f =>
           logger.info(printFeature(f))
         }

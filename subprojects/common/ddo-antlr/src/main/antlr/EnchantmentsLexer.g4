@@ -3,7 +3,7 @@ lexer grammar EnchantmentsLexer;
 @header {package io.truthencode.ddo.grammar.antlr; }
 /* Lexer */
 
-import RomanNumeralsLexer;
+//import CommonLexer;
 
 LineBreak
   :  ('\r'? '\n'
@@ -15,6 +15,8 @@ LineBreak
 
 // Known, named enchantments
 ITEM_ENCHANTMENT : FALSE_LIFE | HEALING_AMPLIFICATION | CONCEALMENT | SAVES | UPGRADABLE_FLAG | ELEMENTAL_ABSORBTION | LORE | AUGMENTATION | FORT | AUGMENTSLOT | ENHANCEMENT_BONUS | SHELTERING | DAMAGE_TYPE | MYTHIC_BOOST | CONTINUOUS_SPELL_POWER | SPELL_SCHOOL_FOCUS;
+
+UNKNOWN_ENCHANTMENT : MULTI_WORDS | MULTI_WORD | SIMPLE_WORD;
 // TODO: grammar - Unique Item effects
 // https://ddowiki.com/page/Category:Unique_item_enchantments
 
@@ -24,7 +26,7 @@ ITEM_ENCHANTMENT : FALSE_LIFE | HEALING_AMPLIFICATION | CONCEALMENT | SAVES | UP
 // Epic Elemental Evil Set
 
 
-
+STMTEND : NEWLINE* | NEWLINE+;
 
 // TODO: Upgradable / craftable flags
 UPGRADABLE_FLAG : ATTUNED;
@@ -188,7 +190,8 @@ BONUS_TYPE_COMPETENCE : 'Competence';
 BONUS_TYPE_EXCEPTIONAL : 'Exceptional';
 BONUS_TYPE_INSIGHTFUL : 'Insightful';
 
-//ID : [a-zA-Z]+ ;             // match lower-case identifiers
+// ['A', 'B', 'E', 'F', 'G', 'H', 'J', 'K', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'W', 'Y', 'Z'];
+// CommonLexer.g4
 WS : [ \t\r\n]+ -> channel(HIDDEN) ; // skip spaces, tabs, newlines
 NUMBER_WITH_OPTIONS : NUMERIC ' ' OR ' ' NUMERIC;
 NUMERIC : PCT | NUM;
@@ -202,12 +205,13 @@ fragment UNUM : [0-9]+;            // unsigned numbers
 fragment COLON: ':';
 //INDENT : [ \t]+ {System.out.println("INDENT")>} {this.getCharPositionInLine()==0}? ;
 // catch-all word blobs MUST LIST AFTER OTHER RULES
-UNKNOWN_ID : MULTI_WORDS | SIMPLE_WORD | MULTI_WORD;
-fragment MULTI_WORDS : MULTI_WORD + (' ' + SIMPLE_WORD);
+UNKNOWN_ID : MULTI_WORDS | MULTI_WORD | SIMPLE_WORD;
+fragment MULTI_WORDS : MULTI_WORD + ' ' + MULTI_WORD | MULTI_WORD + (' ' + SIMPLE_WORD);
 fragment MULTI_WORD: SIMPLE_WORD + ' ' + SIMPLE_WORD;
-fragment SIMPLE_WORD: START_CHARS + [a-z]+;
-fragment START_CHARS : LOWERCASE_LETTERS | NON_ROMAN_LETTERS;
+fragment SIMPLE_WORD: START_CHARS + ALPHA_CHARS*;
+fragment START_CHARS : ALPHA_CHARS;
+fragment ALPHA_CHARS : LOWERCASE_LETTERS | NON_ROMAN_LETTERS | ROMAN_LETTERS;
 fragment LOWERCASE_LETTERS : [a-z];
 fragment NON_ROMAN_LETTERS : [ABEFGHJKNOPQRSTUWYZ];
-// ['A', 'B', 'E', 'F', 'G', 'H', 'J', 'K', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'W', 'Y', 'Z'];
-	
+fragment ROMAN_LETTERS : [IVXLCDM];
+fragment NEWLINE   : '\r' '\n' | '\n' | '\r';

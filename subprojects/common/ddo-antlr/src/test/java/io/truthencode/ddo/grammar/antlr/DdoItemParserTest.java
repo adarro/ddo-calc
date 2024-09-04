@@ -93,12 +93,12 @@ class DdoItemParserTest {
         }
 
         @Override
-        public void enterParse(io.truthencode.ddo.grammar.antlr.EnchantmentsParser.ParseContext ctx) {
+        public void enterParseEnchantment(EnchantmentsParser.ParseEnchantmentContext ctx) {
             showLog("enterParse", ctx.getText());
         }
 
         @Override
-        public void exitParse(io.truthencode.ddo.grammar.antlr.EnchantmentsParser.ParseContext ctx) {
+        public void exitParseEnchantment(EnchantmentsParser.ParseEnchantmentContext ctx) {
             showLog("exitParse", ctx.getText());
         }
 
@@ -150,7 +150,7 @@ class DdoItemParserTest {
         CommonTokenStream tokens = new CommonTokenStream(lexer);
         io.truthencode.ddo.grammar.antlr.EnchantmentsParser parser = new io.truthencode.ddo.grammar.antlr.EnchantmentsParser(tokens);
         ParseTreeListener l = (listener != null) ? listener : new DefaultTestListener(parser);
-        ParseTree parseTree = parser.parse();
+        ParseTree parseTree = parser.parseEnchantment();
         LOG.info(String.format("parseTree has %d children", parseTree.getChildCount()));
         ParseTreeWalker walker = new ParseTreeWalker();
         walker.walk(l, parseTree);

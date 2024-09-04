@@ -60,7 +60,7 @@ trait DeflectArrowsFeature extends Features {
       override def searchPrefixSource: String = partToModify.searchPrefixSource
 
       override protected[this] lazy val partToModify: BasicStat =
-        BasicStat.ToHitChance
+        BasicStat.ChanceToHit
 
       private val eb = EffectParameterBuilder()
         .toggleOffValue(triggerOff: _*)

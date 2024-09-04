@@ -2,8 +2,4 @@
 
 Current Inter-project layout
 
-```dot
-{!
-   include "./project-dependencies.dot"
-!}
-```
+@import "project-dependencies.dot"

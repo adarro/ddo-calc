@@ -19,6 +19,11 @@ import com.mooltiverse.oss.nyx.state.State
 import ru.vyarus.gradle.plugin.python.task.PythonTask
 import java.text.SimpleDateFormat
 import java.util.*
+import com.vanniktech.dependency.graph.generator.DependencyGraphGeneratorExtension
+import com.vanniktech.dependency.graph.generator.DependencyGraphGeneratorPlugin
+import guru.nidi.graphviz.attribute.Color
+import guru.nidi.graphviz.attribute.Style
+import ru.vyarus.gradle.plugin.python.PythonExtension
 
 plugins {
     id("org.scoverage") apply (false)
@@ -35,9 +40,10 @@ plugins {
     id("nl.littlerobots.version-catalog-update") version "0.8.1"
     id("ru.vyarus.mkdocs")
     id("org.sonarqube")
+    id("com.vanniktech.dependency.graph.generator") version "0.8.0"
 }
 
-apply(plugin = "org.scoverage")
+//apply(plugin = "org.scoverage")
 // general project information
 val projectName = project.name
 val gitHubAccountName = "truthencode"
@@ -61,9 +67,10 @@ mkdocs {
     with(publish) {
         this.generateVersionsFile = true
     }
+    python.scope = PythonExtension.Scope.VIRTUALENV_OR_USER
 }
 
-/* TODO: Docuemtation Task
+/* TODO: Documentation Task
 Include Acceptance tests and possibly coverage in mkdocs
 
 depend on testAggregateTestReport (needs check) and aggregateScoverage
@@ -105,7 +112,7 @@ python {
     this.pip(
         requirementsIn.plus(devRequirementsIn),
     )
-    installVirtualenv = true
+//    installVirtualenv = true
 }
 
 tasks.register("dumpSomeDiagnostics") {
@@ -282,5 +289,13 @@ sonar {
         property("sonar.projectKey", "truthencode_ddo-calc")
         property("sonar.organization", "truthencode")
         property("sonar.host.url", "https://sonarcloud.io")
+    }
+}
+
+configure<DependencyGraphGeneratorExtension> {
+    generators.create("jetbrainsLibraries") {
+        include = { dependency -> dependency.moduleGroup.startsWith("org.jetbrains") } // Only want Jetbrains.
+        children = { true } // Include transitive dependencies.
+        dependencyNode = { node, dependency -> node.add(Style.FILLED, Color.rgb("#AF1DF5")) } // Give them some color.
     }
 }

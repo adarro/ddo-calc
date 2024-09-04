@@ -16,7 +16,7 @@ package io.truthencode.ddo.web.mapping
 import com.typesafe.scalalogging.LazyLogging
 import enumeratum.{Enum => SmartEnum, EnumEntry}
 import io.truthencode.ddo.DDOObject
-import io.truthencode.ddo.model.item.{Item, Potion}
+import io.truthencode.ddo.model.item.{PermanentItem, Potion}
 import io.truthencode.ddo.model.item.armor.Armor
 import io.truthencode.ddo.model.item.clothing.Clothing
 import io.truthencode.ddo.support.matching.WordMatchStrategy
@@ -70,6 +70,11 @@ object FieldMapper extends LazyLogging {
      */
     case object Jewelery extends ItemType(Left("Item Type"))
 
+      /**
+       * Scroll
+       */
+    case object Scroll extends ItemType(Right(List("No UMD check for","Spell","Caster Level")))
+
   }
 
   // +3 Enhancement Bonus
@@ -89,6 +94,7 @@ object FieldMapper extends LazyLogging {
     FieldMapper.ItemType.values.find { x =>
       words.intersect(x.wordList.toSet).nonEmpty
     }
+
 
   /**
    * Extracts weapon information from the DDOWiki site.
@@ -168,8 +174,8 @@ object FieldMapper extends LazyLogging {
    *   is a slashing short sword, but has 'see note' in the damage type field
    *   http://ddowiki.com/page/Item:Sun_Blade
    */
-  def wikiToItem[T <: Item](source: Map[String, Any])(implicit
-    strategy: WordMatchStrategy): Option[Item] = {
+  def wikiToItem[T <: PermanentItem](source: Map[String, Any])(implicit
+                                                               strategy: WordMatchStrategy): Option[PermanentItem] = {
 
     val keys = source.keySet
     val types = fieldType(keys)

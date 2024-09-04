@@ -14,7 +14,7 @@
 package io.truthencode.ddo.web
 
 import com.typesafe.scalalogging.LazyLogging
-import io.truthencode.ddo.model.item.Item
+import io.truthencode.ddo.model.item.PermanentItem
 
 object Retriever extends LazyLogging {
 
@@ -23,7 +23,7 @@ object Retriever extends LazyLogging {
    * @return
    *   A ddo Item
    */
-  def findFromWeb: Option[Item] = {
+  def findFromWeb: Option[PermanentItem] = {
     None
   }
 }

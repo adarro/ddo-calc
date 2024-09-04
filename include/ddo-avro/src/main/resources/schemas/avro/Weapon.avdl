@@ -75,6 +75,7 @@ protocol WeaponInfo {
 
     enum Weapon_wear_location {MainHand, OffHand, TwoHand}
 
+@javaAnnotation("java.lang.SuppressWarnings(`unused`)")
     enum Item_material {
         Adamantine, Blueshine, Bone, Byeshk, Cloth, Cold_Iron, Crystal, Darkleaf, Darkwood, Densewood, Dwarven_Iron,
             Feyleather, Flametouched_Iron, Flesh, Force, Gem, Glass, Ice, Leather, Light, Magesteel, Mithral,

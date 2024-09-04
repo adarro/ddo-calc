@@ -16,7 +16,8 @@ dependencies {
     //  lightweight alternative to hibernate-reactive-panache
     // Hibernate JPA assistance
     implementation(libs.hypersistence.utils)
-    implementation(libs.jetbrains.xodus.xodus.openAPI)
+//    implementation(libs.jetbrains.xodus.xodus.openAPI)
+    implementation(libs.xodus.openAPI)
     testImplementation(libs.testing.assertj)
     testImplementation("io.rest-assured:rest-assured")
 }

@@ -24,7 +24,7 @@ import scala.language.reflectiveCalls
 
 object SlowTest extends Tag("io.truthencode.ddo.tags.SlowTest")
 
-class QueryItemIT extends AnyFunSpec with Matchers with MockitoSugar with LazyLogging {
+class QueryPermanentItemIT extends AnyFunSpec with Matchers with MockitoSugar with LazyLogging {
   val lblWeapon: String = "Weapon"
   val msgMissing: String = "Missing!!!"
   protected def fixture = new {

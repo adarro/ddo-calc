@@ -39,7 +39,7 @@ trait HitChanceAmountFeature extends Features {
     new PartModifier[Int, BasicStat] with UsingSearchPrefix {
 
       override protected[this] lazy val partToModify: BasicStat =
-        BasicStat.ToHitChance
+        BasicStat.ChanceToHit
 
       private val eb = EffectParameterBuilder()
         .toggleOffValue(triggerOff: _*)

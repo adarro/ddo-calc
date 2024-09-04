@@ -38,7 +38,7 @@ trait Features {
 object Features {
   implicit class FeatureOpt(source: Features) {
     def hasFeature(features: Features): Boolean = {
-      source.features.contains(features)
+      source.features.containsSlice(features.features)
     }
 
     /**

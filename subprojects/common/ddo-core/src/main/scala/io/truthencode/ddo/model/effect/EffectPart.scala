@@ -23,9 +23,14 @@ import io.truthencode.ddo.NoDefault
 import io.truthencode.ddo.enhancement.BonusType
 import io.truthencode.ddo.model.abilities.ActiveAbilities
 import io.truthencode.ddo.model.attribute.{Attribute => Attributes}
-import io.truthencode.ddo.model.feats.{Feat => Feats, GeneralFeat, WeaponProficiencyBase}
+import io.truthencode.ddo.model.feats.{
+  Feat => Feats,
+  GeneralFeat,
+  ParentFeat,
+  WeaponProficiencyBase
+}
 import io.truthencode.ddo.model.skill.{Skill => Skills}
-import io.truthencode.ddo.model.stats.{BasicStat, MissChance}
+import io.truthencode.ddo.model.stats.{BasicStat, HitChance, MissChance}
 
 trait SearchPattern {
   self: EnumEntry =>
@@ -70,6 +75,18 @@ trait AbilityEffectPart extends EffectPart with LazyLogging {
   }
 }
 
+trait HitChanceEffectPart extends EffectPart with LazyLogging {
+
+  val basicStat: BasicStat with HitChance
+
+  override def searchPattern(target: String = Searchable.stripParentheses(entryName)): String = {
+    val sp = "HitChance:"
+
+    val t = Searchable.stripParentheses(entryName.replace("HitChance", ""))
+    s"$sp$t".replace("::", ":")
+  }
+}
+
 trait MissChanceEffectPart extends EffectPart with LazyLogging {
 
   val basicStat: BasicStat with MissChance
@@ -88,12 +105,17 @@ trait AttributeEffect extends EffectPart {
   override def searchPattern(target: String): String = s"Attribute($target)"
 }
 
-trait FeatEffect extends EffectPart {
+trait FeatEffect extends EffectPart with LazyLogging {
 
   val feat: Feats
 
-  override def searchPattern(target: String = entryName): String =
-    s"Feat($target)"
+  override def searchPattern(target: String = entryName): String = {
+
+    val sp = "Feat"
+
+    val t = entryName.replace("Feat:", ":")
+    s"$sp$t".replace("::", ":")
+  }
 }
 
 trait DoubleShotEffect extends EffectPart
@@ -117,18 +139,23 @@ trait CriticalThreatRangeEffect extends EffectPart {
 object EffectPart extends Enum[EffectPart] with NoDefault[EffectPart] with Searchable[EffectPart] {
 
   lazy val values =
-    findValues ++ anySkill ++ anyFeat ++ anyWeaponProficiency ++ anyAbilities ++ anyMissChance
+    findValues ++ anySkill ++ anyFeat ++ anyWeaponProficiency ++ anyAbilities ++ anyMissChance ++ anyHitChance
 
-  def anySkill[effect]: Seq[Skill] = Skills.values.map(Skill)
+  private[effect] def anySkill: Seq[Skill] = Skills.values.map(Skill)
 
   def anyAbilities: Seq[ActiveAbility] = ActiveAbilities.values.map(ActiveAbility)
 
   def anyMissChance: Seq[MissChanceEffect] =
     BasicStat.values.collect { case x: MissChance => x }.map(MissChanceEffect)
 
+  def anyHitChance: Seq[HitChanceEffect] =
+    BasicStat.values.collect { case x: HitChance => x }.map(HitChanceEffect)
+
   private def anyAttribute = Attributes.values.map(Attribute)
 
-  private def anyFeat = Feats.values.map(Feat)
+  private[effect] def anyFeat = Feats.values
+    .filterNot(_.isInstanceOf[ParentFeat])
+    .map(Feat)
 
   private def anyWeaponProficiency =
     GeneralFeat.ExoticWeaponProficiency.subFeats.map(WeaponProficiency)
@@ -153,8 +180,15 @@ object EffectPart extends Enum[EffectPart] with NoDefault[EffectPart] with Searc
     override def entryName: String = s"MissChance:${basicStat.entryName}"
   }
 
+  case class HitChanceEffect(override val basicStat: BasicStat with HitChance)
+    extends HitChanceEffectPart {
+    override def entryName: String = s"HitChance:${basicStat.entryName}"
+  }
+
   // Feats
-  case class Feat(override val feat: Feats) extends FeatEffect
+  case class Feat(override val feat: Feats) extends FeatEffect {
+    override def entryName: String = s"Feat:${feat.entryName}"
+  }
 
   case class WeaponProficiency(override val proficiency: WeaponProficiencyBase)
     extends WeaponProficiencyEffect

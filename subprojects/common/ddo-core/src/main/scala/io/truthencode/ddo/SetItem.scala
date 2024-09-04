@@ -18,7 +18,7 @@
 package io.truthencode.ddo
 
 import io.truthencode.ddo.model.effect.Effect
-import io.truthencode.ddo.model.item.Item
+import io.truthencode.ddo.model.item.PermanentItem
 
 /**
  * An Item set provides bonuses when equipping some or all of the items in the set.
@@ -33,7 +33,7 @@ trait SetItem {
   /**
    * A collection of items that qualify for this set
    */
-  val items: List[Item]
+  val items: List[PermanentItem]
 
   /**
    * This will generally be a single bonus set, such as Anger's Wrath. However some sets, such as

@@ -56,11 +56,19 @@ trait ArmorClass extends BasicStat with MissChance
 
 trait MaxDexterityBonus extends BasicStat with MissChance
 
-trait ToHitChance extends BasicStat with HitChance
+trait ChanceToHit extends BasicStat with HitChance
 
 trait WeaponDamage extends BasicStat with GeneralCombat
 
-trait MeleePower extends BasicStat with MeleeCombat
+trait MeleePower extends BasicStat with MeleeCombat {
+    /**
+     * Override this function for a more specific match such as "ToHitChance"
+     *
+     * @return
+     * A default prefix "BasicStat"
+     */
+    override def searchPrefixSource: String = "Damage"
+}
 
 trait RangedPower extends BasicStat with RangedCombat
 
@@ -351,7 +359,7 @@ object BasicStat extends Enum[BasicStat] with SearchPrefix {
   /**
    * Chance to Hit, generally applies your Melee and Ranged Weapons.
    */
-  case object ToHitChance extends ToHitChance
+  case object ChanceToHit extends ChanceToHit
 
   /**
    * Adds Damage to equipped weapon.

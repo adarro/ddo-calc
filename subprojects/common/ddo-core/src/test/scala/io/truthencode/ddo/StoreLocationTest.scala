@@ -34,8 +34,15 @@ class StoreLocationTest extends AnyFunSpec with Matchers {
 
   describe("Colored Augment Slots") {
     they("should include Red Augment Slots") {
-      val aug = StoreLocation.Augments
+      val aug = StoreLocation.ChromaticAugments
       aug.map(_.generalAugment).contains(AugmentLocation.RedAugmentSlot)
+    }
+  }
+
+  describe("Celestial Augment Slots") {
+    they("should include Solar and Lunar Augment Slots") {
+      val aug = StoreLocation.CelestialAugments
+      aug.map(_.celestialAugment).contains(AugmentLocation.SunAugmentSlot)
     }
   }
 }

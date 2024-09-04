@@ -462,9 +462,7 @@ object GeneralFeat
 
   /**
    * The feat provides proficiency with basic weapons
-   *
-   * @todo
-   *   grants
+
    * @param weapon
    *   The Simple Weapon Category (i.e. Short Sword, Dagger, Light Crossbow)
    * @note
@@ -498,7 +496,7 @@ object GeneralFeat
 
     override def entryName: String = {
       val p = prefix.getOrElse("SimpleWeaponProficiency")
-      s"${p}(${nameSource})".replace(" ", "")
+      s"$p($nameSource)".replace(" ", "")
     }
 
     override protected def nameSource: String = weapon.headOption match {
@@ -531,7 +529,7 @@ object GeneralFeat
     // Need to override entryName because the default logic will include the grant arrays in the name.
     override def entryName: String = {
       val p = prefix.getOrElse("MartialWeaponProficiency")
-      s"${p}(${nameSource})".replace(" ", "")
+      s"$p($nameSource)".replace(" ", "")
     }
 
     override protected def nameSource: String = weapon.headOption match {
@@ -562,7 +560,7 @@ object GeneralFeat
     // Need to override entryName because the default logic will include the grant arrays in the name.
     override def entryName: String = {
       val p = prefix.getOrElse("ExoticWeaponProficiency")
-      s"${p}(${nameSource})".replace(" ", "")
+      s"$p($nameSource)".replace(" ", "")
     }
 
     override protected def nameSource: String = weapon.headOption match {
@@ -611,8 +609,6 @@ object GeneralFeat
    */
   case object Sneak extends GeneralFeat with Sneak
 
-  // Seq(Feat.WeaponFocusBludgeon, Feat.WeaponFocusPiercing, Feat.WeaponFocusSlashing, Feat.WeaponFocusRanged, Feat.WeaponFocusThrown)
-
   /**
    * A sunder attempt is a melee special attack that, when successful, results in a -10% AC penalty
    * and - 25% Fortification to the target for 6 seconds if it fails a DC (10 + Str mod) Fortitude
@@ -625,13 +621,7 @@ object GeneralFeat
    */
   case object Sunder extends GeneralFeat with Sunder
 
-  case object Trip extends GeneralFeat with Trip {
-
-//      override def calculateDC(implicit repo: Repo): Int = {
-//        // FIXME: Implement once Repos are working
-//       42
-//      }
-  }
+  case object Trip extends GeneralFeat with Trip
 
   case object HeroicDurability extends GeneralFeat with HeroicDurability
 
@@ -778,10 +768,6 @@ object GeneralFeat
   }
 
   case object SimpleThrownWeaponExpertise extends GeneralFeat with SimpleThrownWeaponExpertise
-  // Turn Undead related
-  // case object ExtraTurning extends Feat with ExtraTurning
-
-  //  case object ImprovedTurning extends Feat with ImprovedTurning
 
   // Tactical Passive Feats
   case object TacticalTraining extends GeneralFeat with TacticalTraining
@@ -820,11 +806,6 @@ object GeneralFeat
 
   case object SwordsToPlowshares extends GeneralFeat with SwordsToPlowshares
 
-  /**
-   * @todo
-   *   Verify if Stunning Fist is actually listed as a General Feat or if we should make a separate
-   *   Prefix for Martial Feats (Monk)
-   */
   case object StunningFist extends GeneralFeat with StunningFist
 
   /**
@@ -916,10 +897,6 @@ object GeneralFeat
 
   case object SelfSufficient extends GeneralFeat with SelfSufficient
 
-  /**
-   * @todo
-   *   this needs to be a case class for each (allowed) Skill
-   */
   case object SkillFocus extends GeneralFeat with SkillFocusBase with ParentFeat {
     override val subFeats: Seq[GeneralFeat with SubFeat] = skillFocusAny
   }

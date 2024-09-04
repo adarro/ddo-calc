@@ -21,7 +21,7 @@ import enumeratum.{Enum, EnumEntry}
 import io.truthencode.ddo.NoDefault
 
 /**
- * handedness is used to determine a one handed, two handed or off hand equip. DDOwiki lists bows as
+ * handedness is used to determine a one-handed, two-handed or offhand equip. DDOwiki lists bows as
  * ranged
  */
 sealed trait Handedness extends EnumEntry with NoDefault[Handedness]

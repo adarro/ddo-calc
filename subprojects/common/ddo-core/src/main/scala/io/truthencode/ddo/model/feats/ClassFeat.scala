@@ -24,7 +24,7 @@ import io.truthencode.ddo.model.compendium.types.{MainType, MonsterType}
 import io.truthencode.ddo.model.effect.features.{Features, FeaturesImpl}
 import io.truthencode.ddo.model.spells.alchemical.Reaction
 import io.truthencode.ddo.support.naming.FriendlyDisplay
-import io.truthencode.ddo.support.requisite._
+import io.truthencode.ddo.support.requisite.{RequiresAllOfFeat, _}
 
 import scala.collection.immutable
 
@@ -375,5 +375,13 @@ object ClassFeat extends Enum[ClassFeat] with FeatSearchPrefix {
   case object ImprovedConstructEssence extends ClassFeat with ImprovedConstructEssence
 
   case object TurnUndead extends ClassFeat with TurnUndead
+
+    case object ExtraTurning extends ClassFeat with ExtraTurning with  RequiresAllOfFeat {
+        override lazy val allOfFeats: Seq[Feat] = Seq(TurnUndead)
+    }
+
+    case object ImprovedTurning extends ClassFeat with ImprovedTurning with  RequiresAllOfFeat {
+        override lazy val allOfFeats: Seq[Feat] = Seq(TurnUndead)
+    }
 
 }

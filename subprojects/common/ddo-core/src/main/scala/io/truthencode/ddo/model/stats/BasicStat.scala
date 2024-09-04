@@ -236,6 +236,9 @@ trait TotalHitDice extends TurnUndeadCategory
  * this number.
  */
 trait NumberOfTurns extends TurnUndeadCategory
+
+trait TurnUndeadLevel extends TurnUndeadCategory
+
 // General Combat
 protected trait GeneralCombatCategory extends BasicStat with GeneralCombat
 
@@ -312,6 +315,9 @@ trait AutoRecovery extends BasicStat with Recovery
 trait GrantedAbility extends BasicStat with Ability with UsingAbilitySearchPrefix {
   val ability: ActiveAbilities
 }
+
+
+
 // scalastyle:off number.of.methods
 object BasicStat extends Enum[BasicStat] with SearchPrefix {
 
@@ -542,6 +548,8 @@ object BasicStat extends Enum[BasicStat] with SearchPrefix {
   case object TurnUndeadTotalHitDice extends TotalHitDice
 
   case object TurnUndeadNumberOfTurns extends NumberOfTurns
+
+  case object TurnUndeadLevel extends TurnUndeadLevel
 
   case object AutoRecovery extends AutoRecovery
 

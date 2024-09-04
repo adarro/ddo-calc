@@ -87,7 +87,7 @@ trait RangedCombat extends Category
 
 /**
  * Effects that alter the power, range or other undead specific effects. This should also include
- * things that increase the amount of Turns.
+ * things that increase the amount of Turns, Cleric levels etc.
  */
 trait TurnUndead extends Category
 
@@ -118,3 +118,7 @@ trait Proficiency extends Category
  * Affects unconscious range, recovery (Die hard)
  */
 trait Recovery extends Category
+
+// Undead related
+
+

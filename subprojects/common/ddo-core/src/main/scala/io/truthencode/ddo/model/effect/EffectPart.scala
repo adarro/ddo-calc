@@ -49,16 +49,7 @@ trait SkillEffectPart extends EffectPart with LazyLogging {
 
   override def searchPattern(target: String = Searchable.stripParentheses(entryName)): String = {
     val sp = io.truthencode.ddo.model.skill.Skill.searchPrefix
-
     val t = Searchable.stripParentheses(entryName.replace("Skill", ""))
-//    if (target.contains("(") || target.contains("(")) {
-//      val newTarget = Searchable.stripParentheses(target)
-//      logger.info(s"Setting SearchPattern in SkillEffect to $sp target $newTarget")
-//      s"$sp$newTarget"
-//    } else {
-//      logger.info(s"Setting SearchPattern in SkillEffect to $sp target $target")
-//      s"$sp$target"
-//    }
     s"$sp$t".replace("::", ":")
   }
 }
@@ -166,12 +157,12 @@ object EffectPart extends Enum[EffectPart] with NoDefault[EffectPart] with Searc
   // skill key ability, total mod, rank, ability mod, misc mod
   case class Skill(override val skill: Skills) extends SkillEffectPart {
     override def entryName: String =
-      s"${io.truthencode.ddo.model.skill.Skill.searchPrefix}${skill}" // .replace("::",":")
+      s"${io.truthencode.ddo.model.skill.Skill.searchPrefix}$skill"
   }
 
   case class ActiveAbility(override val ability: ActiveAbilities) extends AbilityEffectPart {
     override def entryName: String =
-      s"${ActiveAbilities.searchPrefix}${ability}" // .replace("::",":")
+      s"${ActiveAbilities.searchPrefix}${ability}"
   }
 
   // Miss Chance
@@ -193,8 +184,6 @@ object EffectPart extends Enum[EffectPart] with NoDefault[EffectPart] with Searc
   case class WeaponProficiency(override val proficiency: WeaponProficiencyBase)
     extends WeaponProficiencyEffect
 
-  // case class BaseThing()
-  // private def anyBasicStat = BasicStat.values.map()
   case object Spell extends EffectPart {
     override def searchPattern(target: String): String = s"Spell:$target"
   }
@@ -210,7 +199,11 @@ object EffectPart extends Enum[EffectPart] with NoDefault[EffectPart] with Searc
   case object Spellpoints extends EffectPart {
     override def searchPattern(target: String): String = s"SpellPoints:$target"
   }
-  // case class CriticalThreatRange()
+
+  case object CriticalThreatRange extends EffectPart {
+    override def searchPattern(target: String): String = s"CriticalThreatRange:$target"
+  }
+
   /*
   Main
   Feats

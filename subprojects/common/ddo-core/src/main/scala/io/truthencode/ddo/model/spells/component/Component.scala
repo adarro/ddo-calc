@@ -36,7 +36,7 @@ sealed trait Component {
  *
  * @note
  *   This is mostly included for completeness to allow the user to see this may require inventory
- *   space but has no other real impact on values except on whether or not they wish to use a Eschew
+ *   space but has no other real impact on values except on whether or not they wish to use an Eschew
  *   Material effect.
  */
 trait MaterialComponent extends Component {

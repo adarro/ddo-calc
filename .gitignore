@@ -216,3 +216,4 @@ local.properties
 fixle.sh
 /.env
 /.envrc
+/py/

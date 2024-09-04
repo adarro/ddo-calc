@@ -39,8 +39,7 @@ dependencies {
      https://www.optics.dev/Monocle/
      (Need scala 3 to update optional fields and single element in list)
      */
-    val scalaLibraryVersion: String by project
-    val scalaMajorVersion: String by project
+    
     // https://mvnrepository.com/artifact/org.json4s/json4s-native
     implementation(libs.json4s.native.s213)
 

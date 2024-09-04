@@ -1,4 +1,3 @@
-import org.apache.groovy.nio.extensions.NioExtensions.eachFileMatch
 import java.io.FilenameFilter
 
 plugins {

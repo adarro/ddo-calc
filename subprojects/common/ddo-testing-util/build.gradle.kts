@@ -22,7 +22,7 @@ plugins {
     id("scala-library-profile")
 //    id("acceptance-test-conventions")
 }
-val scalaLibraryVersion: String by project
+
 dependencies {
     dependencies {
         val scalaLibraryVersion: String by project

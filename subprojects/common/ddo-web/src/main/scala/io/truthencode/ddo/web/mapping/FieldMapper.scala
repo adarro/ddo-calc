@@ -20,6 +20,7 @@ import io.truthencode.ddo.model.item.{PermanentItem, Potion}
 import io.truthencode.ddo.model.item.armor.Armor
 import io.truthencode.ddo.model.item.clothing.Clothing
 import io.truthencode.ddo.support.matching.WordMatchStrategy
+import io.truthencode.ddo.model.item.Item
 
 import scala.collection.immutable
 import scala.language.{existentials, postfixOps}
@@ -174,8 +175,8 @@ object FieldMapper extends LazyLogging {
    *   is a slashing short sword, but has 'see note' in the damage type field
    *   http://ddowiki.com/page/Item:Sun_Blade
    */
-  def wikiToItem[T <: PermanentItem](source: Map[String, Any])(implicit
-                                                               strategy: WordMatchStrategy): Option[PermanentItem] = {
+  def wikiToItem[T <: Item](source: Map[String, Any])(implicit
+                                                               strategy: WordMatchStrategy): Option[Item] = {
 
     val keys = source.keySet
     val types = fieldType(keys)

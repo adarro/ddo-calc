@@ -24,13 +24,16 @@ import io.truthencode.ddo.model.effect._
 import io.truthencode.ddo.model.stats.BasicStat
 import io.truthencode.ddo.support.naming.UsingSearchPrefix
 
-trait TurnUndeadNumberOfTurnsFeature extends Features {
+/**
+ *  Affects the 'Cleric level' value used to determine the power of your Turn Undead Attempts.
+ */
+trait TurnUndeadCasterLevelFeature extends Features {
   self: SourceInfo =>
-  val numberOfTurnsBonusType: BonusType
-  val numberOfTurnsBonusAmount: Int
+  val undeadCasterLevelBonusType: BonusType
+  val undeadCasterLevelBonusAmount: Int
   protected[this] val triggerOn: Seq[TriggerEvent]
   protected[this] val triggerOff: Seq[TriggerEvent]
-  protected[this] val turnUndeadNumOfTurnsCategories: Seq[effect.EffectCategories.Value]
+  protected[this] val undeadCasterLevelCategories: Seq[effect.EffectCategories.Value]
   private val src = this
   private[this] val nHD =
     new PartModifier[Int, BasicStat] with UsingSearchPrefix {
@@ -54,28 +57,28 @@ trait TurnUndeadNumberOfTurnsFeature extends Features {
        * Spot, which should suggest not only +Spot items, but +Wisdom or eventually include a feat
        * or enhancement that allows the use of some other value as your spot score.
        */
-      override def categories: Seq[String] = turnUndeadNumOfTurnsCategories.map(_.toString)
+      override def categories: Seq[String] = undeadCasterLevelCategories.map(_.toString)
 
       override val effectDetail: DetailedEffect = DetailedEffect(
-        id = "TurnUndeadNumberOfTurns",
+        id = "TurnUndeadundeadCasterLevel",
         description = "Increases the number of times you can turn undead per rest",
         triggersOn = triggerOn.map(_.entryName),
         triggersOff = triggerOff.map(_.entryName),
-        bonusType = numberOfTurnsBonusType.entryName
+        bonusType = undeadCasterLevelBonusType.entryName
       )
       override protected[this] lazy val partToModify: BasicStat =
-        BasicStat.TurnUndeadMaxHitDice
+        BasicStat.TurnUndeadLevel
 
       private val eb = EffectParameterBuilder()
         .toggleOffValue(triggerOff: _*)
         .toggleOnValue(triggerOn: _*)
-        .addBonusType(numberOfTurnsBonusType)
+        .addBonusType(undeadCasterLevelBonusType)
         .build
 
       override protected[this] def effectParameters: Seq[ParameterModifier[_]] = eb.modifiers
 
       override val source: SourceInfo = src
-      override lazy val value: Int = numberOfTurnsBonusAmount
+      override lazy val value: Int = undeadCasterLevelBonusAmount
 
       /**
        * Used when qualifying a search with a prefix. Examples include finding "HalfElf" from
@@ -88,7 +91,7 @@ trait TurnUndeadNumberOfTurnsFeature extends Features {
     }
 
   abstract override def features: Seq[Feature[_]] = {
-    assert(nHD.value == numberOfTurnsBonusAmount)
+    assert(nHD.value == undeadCasterLevelBonusAmount)
     super.features :+ nHD
   }
 

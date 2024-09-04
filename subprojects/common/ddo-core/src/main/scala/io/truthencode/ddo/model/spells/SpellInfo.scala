@@ -23,7 +23,7 @@ import io.truthencode.ddo.model.spells.component.ComponentList
 import java.time.Duration
 
 /**
- * Encapsulates the cost, duration, range etc of a given spell
+ * Encapsulates the cost, duration, range etc. of a given spell
  */
 trait SpellInfo extends CoolDown with SpellResistance {
   // caster level needs to be applied at source site

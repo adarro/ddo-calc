@@ -67,9 +67,18 @@ trait Filigree extends ItemEmbed {
   val filigreeLocation: FiligreeLocation
 }
 
-trait ColorAugment extends ItemEmbed {
-  self: GeneralAugmentLocation =>
-  val generalAugment: GeneralAugmentLocation
+trait Augment extends ItemEmbed {
+  self: AugmentLocation =>
+}
+
+trait ColorAugment extends Augment {
+  self: ChromaticAugmentLocation =>
+  val generalAugment: ChromaticAugmentLocation
+}
+
+trait CelestialAugment extends Augment {
+  self: CelestialAugmentLocation =>
+  val celestialAugment: CelestialAugmentLocation
 }
 
 /**
@@ -95,8 +104,13 @@ object StoreLocation extends Enum[StoreLocation] with BitSupport {
    */
   lazy val Equipment: immutable.Seq[StoreLocation with ItemEquip] =
     StoreLocation.values.collect(fnEquipment)
-  lazy val Augments: immutable.Seq[StoreLocation with ColorAugment] =
+  lazy val Augments: immutable.Seq[StoreLocation with Augment] =
     StoreLocation.values.collect(fnAugments)
+
+  lazy val ChromaticAugments: immutable.Seq[StoreLocation with ColorAugment] =
+    StoreLocation.values.collect(fnChromaticAugments)
+  lazy val CelestialAugments: immutable.Seq[StoreLocation with CelestialAugment] =
+    StoreLocation.values.collect(fnCelestialAugments)
   lazy val GuildAugments: immutable.Seq[StoreLocation with GuildAugment] =
     StoreLocation.values.collect(fnGuildAugments)
   lazy val Filigrees: immutable.Seq[StoreLocation with Filigree] =
@@ -112,8 +126,15 @@ object StoreLocation extends Enum[StoreLocation] with BitSupport {
     case x: ItemEquip =>
       x
   }
-  val fnAugments: PartialFunction[StoreLocation, StoreLocation with ColorAugment] = {
+  val fnAugments: PartialFunction[StoreLocation, StoreLocation with Augment] = { case x: Augment =>
+    x
+  }
+  val fnChromaticAugments: PartialFunction[StoreLocation, StoreLocation with ColorAugment] = {
     case x: ColorAugment =>
+      x
+  }
+  val fnCelestialAugments: PartialFunction[StoreLocation, StoreLocation with CelestialAugment] = {
+    case x: CelestialAugment =>
       x
   }
   val fnGuildAugments: PartialFunction[StoreLocation, StoreLocation with GuildAugment] = {
@@ -129,7 +150,8 @@ object StoreLocation extends Enum[StoreLocation] with BitSupport {
     for {
       aug <- AugmentLocation.values
     } yield aug match {
-      case x: GeneralAugmentLocation => AugmentLocationSlot(x)
+      case x: ChromaticAugmentLocation => ChromaticAugmentLocationSlot(x)
+      case x: CelestialAugmentLocation => CelestialAugmentLocationSlot(x)
       case x: GuildAugmentLocation => GuildSlotLocation(x)
       case x: FiligreeLocation => FiligreeSlotLocation(x)
     }
@@ -139,8 +161,11 @@ object StoreLocation extends Enum[StoreLocation] with BitSupport {
     for { s <- WearLocation.values } yield EquippedLocation(s)
   }
 
-  case class AugmentLocationSlot(generalAugment: GeneralAugmentLocation)
-    extends ColorAugment with GeneralAugmentLocation
+  case class ChromaticAugmentLocationSlot(generalAugment: ChromaticAugmentLocation)
+    extends ColorAugment with ChromaticAugmentLocation
+
+  case class CelestialAugmentLocationSlot(celestialAugment: CelestialAugmentLocation)
+    extends CelestialAugment with CelestialAugmentLocation
 
   case class GuildSlotLocation(guildAugment: GuildAugmentLocation)
     extends GuildAugment with GuildAugmentLocation

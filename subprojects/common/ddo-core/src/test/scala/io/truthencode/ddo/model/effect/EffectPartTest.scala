@@ -23,6 +23,7 @@ import io.truthencode.ddo.model.feats.GeneralFeat
 import io.truthencode.ddo.model.stats.{BasicStat, MissChance}
 import org.scalatest.funspec.AnyFunSpec
 import org.scalatest.matchers.should.Matchers
+import org.scalatest.prop.TableFor2
 import org.scalatestplus.scalacheck.ScalaCheckPropertyChecks
 
 import scala.language.postfixOps
@@ -30,17 +31,7 @@ import scala.language.postfixOps
 class EffectPartTest
   extends AnyFunSpec with ScalaCheckPropertyChecks with Matchers with LazyLogging {
 
-  val invalidCombos =
-    Table(
-      ("n", "d"),
-      (Integer.MIN_VALUE, Integer.MIN_VALUE),
-      (1, Integer.MIN_VALUE),
-      (Integer.MIN_VALUE, 1),
-      (Integer.MIN_VALUE, 0),
-      (1, 0)
-    )
-
-  val parLabels =
+  val parLabels: TableFor2[Seq[EffectPart with LazyLogging], String] =
     Table(
       ("ep", "expected"),
       (EffectPart.anySkill, "Skill"),

@@ -197,7 +197,7 @@ object StoreLocation extends Enum[StoreLocation] with BitSupport {
   /**
    * Stores Mount certificates
    * @note
-   *   (My be obsolete as of Update 49)
+   *   (Might be obsolete as of Update 49)
    */
   case object MountBag extends Bag
 

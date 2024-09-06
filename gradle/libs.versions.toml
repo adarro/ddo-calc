@@ -29,6 +29,7 @@ quarkus-s3 = "0.0.1"
 scala3-version = "3.1.0"
 quarkus = "3.13.2"
 quarkus-gradle-plugin = "3.13.2"
+quarkus-renarde = "3.0.18"
 
 kordamp-jandex-gradle-plugin = "2.0.0"
 freefair-lombok-plugin = "8.7.1"
@@ -40,7 +41,9 @@ org-eclipse-jetty = "12.0.10"
 jetbrains-xodus = "2.0.1"
 allure = "2.25.0"
 hypersistence = "3.8.2"
-
+bootstrap = "5.3.3"
+bootstrap-icons = "1.10.5"
+jquery="3.7.1"
 
 # Scala Jackson at time of writing doesn't support Scala 3 Enum's natively. It requires another library.
 # That library doesn't support same version of Jackson that Quarkus BOM uses (2.12.5), so this is the best compromise
@@ -56,13 +59,25 @@ kotlin-allopen-plugin = { module = "org.jetbrains.kotlin:kotlin-allopen", versio
 quarkiverse-scala-s3 = { module = "io.quarkiverse.scala:quarkus-scala3", version.ref = "quarkus-s3" }
 quarkus-bom = { module = "io.quarkus.platform:quarkus-bom", version.ref = "quarkus" }
 quarkus-arc = { module = "io.quarkus:quarkus-arc", version.ref = "quarkus" }
+quarkus-webjars = { module = "io.quarkus:quarkus-web-dependency-locator", version.ref = "quarkus" }
 quarkus-resteasy-reactive = { module = "io.quarkus:quarkus-resteasy-reactive", version.ref = "quarkus" }
+quarkus-mailer = { module = "io.quarkus:quarkus-mailer", version.ref = "quarkus" }
+quarkus-renarde = { module = "io.quarkiverse.renarde:quarkus-renarde", version.ref = "quarkus-renarde" }
+quarkus-renarde-backoffice = {module = "io.quarkiverse.renarde:quarkus-renarde-backoffice", version.ref = "quarkus-renarde" }
+quarkus-renarde-tests = {module = "io.quarkiverse.renarde:quarkus-renarde-test", version.ref = "quarkus-renarde" }
+quarkus-renarde-security = {module = "io.quarkiverse.renarde:quarkus-renarde-security", version.ref = "quarkus-renarde" }
+quarkus-flyway = { module = "io.quarkus:quarkus-flyway", version.ref = "quarkus" }
 fasterxml-jackson-module = { module = "com.fasterxml.jackson.module:jackson-module-scala_3", version.ref = "jackson" }
 jackson-module-enum = { module = "com.github.pjfanning:jackson-module-scala3-enum_3", version.ref = "jackson" }
 # quarkus-junit5 = {module="io.quarkus:quarkus-junit5", version.ref="quarkus"} # -- versioned transitively via quarkus bom
 # rest-assured-core = {module"io.rest-assured:rest-assured", version.ref="rest-assured"} # -- versioned transitively via quarkus bom
 scala-compiler-s3 = { module = "org.scala-lang:scala3-compiler_3", version.ref = "scala3-version" }
 scala-library-s3 = { module = "org.scala-lang:scala3-library_3", version.ref = "scala3-version" }
+
+# Bootstrap / Webjars
+webjars-bootstrap = { module = "org.webjars:bootstrap", version.ref = "bootstrap" }
+bootstrap-icons = { module = "org.webjars.npm:bootstrap-icons", version.ref = "bootstrap-icons" }
+webjars-jquery = { module = "org.webjars:jquery", version.ref = "jquery" }
 
 antlr4 = { module = "org.antlr:antlr4", version.ref = "antlr" }
 apache-logging-log4j-log4j-core = "org.apache.logging.log4j:log4j-core:3.0.0-alpha1"

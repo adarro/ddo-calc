@@ -1,0 +1,15 @@
+{#include main.html }
+{#title}Races{/title}
+
+<p>
+    {#each races}
+    {it.name}
+    {/each}
+</p>
+{#if races.size() == 0}
+<div>No Races found. Use <a href="/_renarde/backoffice/Race/index">BackOffice</a> to create some!</div>
+{#else}
+count: {races.size}
+
+{/if}
+{/include}

@@ -1,0 +1,15 @@
+{#include main.html }
+{#title}Wrist Items{/title}
+
+<p>
+    {#each wristItems}
+    {it.name}
+    {/each}
+</p>
+{#if wristItems.size() == 0}
+<div>No Wrist Items found. Use <a href="/_renarde/backoffice/WristItem/index">BackOffice</a> to create some!</div>
+{#else}
+count: {wristItems.size}
+
+{/if}
+{/include}

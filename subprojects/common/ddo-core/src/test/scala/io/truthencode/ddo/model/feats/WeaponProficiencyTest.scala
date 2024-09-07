@@ -25,7 +25,7 @@ import org.scalatest.funspec.AnyFunSpec
 class WeaponProficiencyTest extends AnyFunSpec with LazyLogging {
   lazy val exotics: Seq[GeneralFeat with SubFeat with ExoticWeaponProficiency] =
     GeneralFeat.ExoticWeaponProficiency.subFeats.map {
-      x: GeneralFeat with SubFeat with ExoticWeaponProficiency with DisplayProperties => x
+        (x: GeneralFeat with SubFeat with ExoticWeaponProficiency with DisplayProperties) => x
     }
   describe("Weapon proficiency: Bastard Sword") {
     they("Exist") {

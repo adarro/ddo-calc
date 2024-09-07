@@ -31,7 +31,7 @@ sealed trait EpicCharacterClass extends CharacterClass with EnumEntry {
 }
 
 /**
- * Represents character's between 20 and 29?
+ * Represents character's between 20 and 30
  */
 object EpicCharacterClass extends Enum[EpicCharacterClass] {
   private val generateLevels = {

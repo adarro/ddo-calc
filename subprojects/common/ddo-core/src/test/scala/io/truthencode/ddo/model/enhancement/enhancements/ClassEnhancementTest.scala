@@ -42,11 +42,19 @@ class ClassEnhancementTest extends AnyFunSpec with Matchers with LazyLogging {
       eo shouldNot be(empty)
 
     }
-    it("should include poison and elemental") {
+    it("should support Roman Numerals") {
       val e = ClassEnhancement.SpellCriticalElementalAndPoisonII
       val eDt = e.displayText
       val eId = e.entryName
       val dTest = "Spell Critical: Elemental and Poison II"
+      eDt shouldEqual dTest
+    }
+
+    it("should include poison and elemental") {
+      val e = ClassEnhancement.HiddenBladesII
+      val eDt = e.displayText
+      val eId = e.entryName
+      val dTest = "Hidden Blades II"
       eDt shouldEqual dTest
     }
     it("should now support ampersands") {

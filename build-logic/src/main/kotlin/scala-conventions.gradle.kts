@@ -26,9 +26,25 @@ plugins {
     id("org.scoverage")
 }
 val libs = the<LibrariesForLibs>()
+val builderScalaVersion : String by project
 
 dependencies {
-    implementation(libs.scala2.library)
+    when (builderScalaVersion) {
+        "3" -> {
+
+            implementation(libs.scala3.library)
+
+        }
+        else -> {
+
+                implementation(libs.scala2.library)
+
+        }
+
+
+    }
+
+
 //    val scalaLibraryVersion: String by project
 //    val scalaMajorVersion: String by project
 //    val scalaCompilerPlugin by configurations.creating
@@ -38,7 +54,7 @@ dependencies {
 }
 
 configure<org.scoverage.ScoverageExtension> {
-    scoverageVersion.set(libs.versions.scoverage)
+    scoverageVersion.set(libs.versions.scoverage.plugin)
     val cfgs =
         mapOf(
             Pair(org.scoverage.CoverageType.Branch, 0.5.toBigDecimal()),
@@ -52,6 +68,29 @@ configure<org.scoverage.ScoverageExtension> {
     checks.plusAssign(cfgs)
 }
 
+
+tasks.withType<ScalaCompile>().configureEach {
+    scalaCompileOptions.apply {
+//        val scalaCompilerPlugin by configurations.getting
+        val scalaCoptions = listOf(
+            "-feature", "-deprecation", "-Ywarn-dead-code",
+            "-Xsource:3-cross",
+//            "-rewrite","-new-syntax"
+        )
+
+
+        additionalParameters?.plusAssign(
+            scalaCoptions
+        )
+        if (builderScalaVersion == "3") {
+            additionalParameters?.plusAssign(
+                listOf(
+                    "-rewrite",
+                    "-new-syntax"
+                ))
+        }
+    }
+}
 //
 //
 // tasks.withType<ScalaCompile>().configureEach {

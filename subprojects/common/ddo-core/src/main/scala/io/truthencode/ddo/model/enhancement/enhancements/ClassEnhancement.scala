@@ -89,6 +89,21 @@ object ClassEnhancement extends Enum[ClassEnhancement] with ClassEnhancementSear
   }
 
   // Alchemist
+
+  // Vile Chemist
+  // Core Enhancements
+  case object Poisoner extends Poisoner
+
+  case object PoisonedCoating extends PoisonedCoating
+
+  case object HiddenBladesI extends HiddenBladesI
+
+  case object HiddenBladesII extends HiddenBladesII
+
+  case object HiddenBladesIII extends HiddenBladesIII
+
+  case object VenomsGrip extends VenomsGrip
+
   // Apothecary
   // Core Enhancements
   case object Determination extends Determination

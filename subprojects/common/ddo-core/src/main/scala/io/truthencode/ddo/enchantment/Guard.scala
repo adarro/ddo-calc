@@ -63,13 +63,13 @@ object Guard extends ((Guards, Option[GuardModifier]) => Guard) {
   private def create(guard: Guards, affixes: Option[GuardModifier]): Guard = {
     new Guard(guard, affixes) {
       private def readResolve(): Object =
-        Guard(guard, affixes)
+        Guard(this.guard, this.affixes)
 
       def copy(guard: Guards, affixes: Option[GuardModifier]): Guard =
         Guard(guard, affixes)
 
       val tuple: Guard.Parameters =
-        (guard, affixes)
+        (this.guard, this.affixes)
     }
   }
 

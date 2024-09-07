@@ -42,6 +42,8 @@ val CODE_GEN = "codeGen"
 // Calling as external build due to scala library version incompatibilities
 // between AvroHugger (scala 2.12.1?) and Quarkus 2.13.x / 3)
 tasks.register("generateAvroSchemas", GradleBuild::class) {
+    description = "Generates Avro schemas"
+    group = "Avro"
     val output = layout.buildDirectory.dir("avro-gen")
     outputs.dir(output)
     val input = rootProject.layout.projectDirectory.file("include/ddo-avro").asFile
@@ -52,6 +54,8 @@ tasks.register("generateAvroSchemas", GradleBuild::class) {
 }
 
 tasks.register("cleanAvroSchemas", GradleBuild::class) {
+    description = "Cleans generated Avro schemas"
+    group = "Avro"
     dir = rootProject.layout.projectDirectory.file("include/ddo-avro").asFile
 
     tasks = listOf("clean")
@@ -186,7 +190,9 @@ run {
     @Suppress("IDENTIFIER_LENGTH")
     schemaList.forEach { id ->
         val name = "genAvroSchema$id"
-        tasks.create(name, org.openapitools.generator.gradle.plugin.tasks.GenerateTask::class).apply {
+        tasks.register(name, org.openapitools.generator.gradle.plugin.tasks.GenerateTask::class) {
+            description = "Generates Avro Schema for $id"
+            group = "OpenAPI Tools"
             generatorName.set("avro-schema")
             schemas[id]?.let { s ->
                 inputSpec.set(s.spec)
@@ -257,9 +263,9 @@ dependencies {
 
     implementation(enforcedPlatform(project(":ddo-platform-scala")))
     implementation(libs.scala2.library) {
-        version {
-            strictly("2.13.10")
-        }
+//        version {
+//            strictly("2.13.10")
+//        }
     }
     implementation(libs.enumeratum.s213)
     implementation(libs.typesafe.config)

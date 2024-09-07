@@ -15,21 +15,25 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package io.truthencode.ddo.model.enhancement
+package io.truthencode.ddo.model.enhancement.enhancements
 
+import io.truthencode.ddo.model.enhancement.enhancements.classbased.{ApothecaryCore, VileChemistCore}
 import io.truthencode.ddo.support.points.SpendablePoints
 import io.truthencode.ddo.support.tree.TreeLike
 
-package object enhancements {
+trait Poisoner extends VileChemistCore with ClassEnhancementImpl {
+  // Will Save +1
+  // override val tree: ClassTrees = ClassTrees.Apothecary
+  override lazy val description: Option[String] = Some("+2 to saves vs. Poisons, +2 to saves vs. Diseases.")
 
   /**
-   * Simple Convinience class to expand and manipulate Tree tuples
-   * @param source
-   *   Tuple of Tree and cost values
+   * Some enhancements can be taken multiple times (generally up to three)
    */
-  implicit def expanders(source: (TreeLike, Int)): (TreeLike, SpendablePoints, Int) = {
+  override val ranks: Int = 1
 
-    (source._1, source._1.pointType, source._2)
+  override def apCostPerRank: Int = 1
 
-  }
+  // override def allOfClass: Seq[(HeroicCharacterClass, Int)] = Seq((Alchemist, 1))
+
+  override def progressionInTree: Seq[(TreeLike, SpendablePoints, Int)] = Seq((tree, 0))
 }

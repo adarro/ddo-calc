@@ -57,7 +57,7 @@ dependencies {
 
 //    implementation("org.unbroken-dome.gradle-plugins:gradle-testsets-plugin:4.0.0")
     // scala
-    implementation("org.scoverage:gradle-scoverage:8.0.3")
+    implementation("org.scoverage:gradle-scoverage:8.1")
 
     // documentation / visualization
     // plant uml

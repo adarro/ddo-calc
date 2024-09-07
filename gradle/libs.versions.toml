@@ -3,8 +3,10 @@ accord = "0.7.6"
 antlr = "4.13.1"
 flexmark = "0.64.8"
 getquill = "4.6.1"
+enumeratum = "1.7.4"
 # TODO: jade4j became pug, should check for an update at some point
 jade4j = "1.3.2"
+json4s  = "4.1.0-M3"
 junit-engine = "5.10.0"
 junit-jupiter = "5.10.0"
 junit-platform = "1.10.0"
@@ -15,18 +17,18 @@ logback = "1.5.6"
 mockito = "5.5.0"
 monix = "3.4.1"
 moshi = "1.15.0"
-org-scoverage = "2.0.11"
 # @keep -> scalaMajorVersion
 scala2-suffix = "2.13"
 # @pin -> scalaLibraryVersion
-scala2-version = "2.13.10"
+scala2-version = "2.13.14"
+scala3-version = "3.5.0"
 scalaFmt = "3.1.1"
 scalacheck = "1.18.0"
 scalatest = "3.3.0.0-SNAP3"
 scalatestplus = "3.2.19.0"
 scoverage = "2.0.11"
+scoverage-plugin = "2.2.0"
 quarkus-s3 = "0.0.1"
-scala3-version = "3.1.0"
 quarkus = "3.13.2"
 quarkus-gradle-plugin = "3.13.2"
 quarkus-renarde = "3.0.18"
@@ -44,6 +46,8 @@ hypersistence = "3.8.2"
 bootstrap = "5.3.3"
 bootstrap-icons = "1.10.5"
 jquery="3.7.1"
+scala-scraper="3.1.0"
+chimney="1.4.0"
 
 # Scala Jackson at time of writing doesn't support Scala 3 Enum's natively. It requires another library.
 # That library doesn't support same version of Jackson that Quarkus BOM uses (2.12.5), so this is the best compromise
@@ -84,12 +88,15 @@ apache-logging-log4j-log4j-core = "org.apache.logging.log4j:log4j-core:3.0.0-alp
 concordion = "org.concordion:concordion:4.0.1"
 concordion-collapse-output-extension = "org.concordion:concordion-collapse-output-extension:1.0.0"
 concordion-embed-extension = "org.concordion:concordion-embed-extension:1.2.0"
-chimney-s213 = "io.scalaland:chimney_2.13:0.8.0-M1"
-enumeratum-s213 = "com.beachape:enumeratum_2.13:1.7.3"
+chimney-s213 = {module="io.scalaland:chimney_2.13",version.ref = "chimney"}
+chimney-s3 = {module="io.scalaland:chimney_3",version.ref = "chimney"}
+enumeratum-s213 =  { module ="com.beachape:enumeratum_2.13", version.ref = "enumeratum"}
+enumeratum-s3 = { module ="com.beachape:enumeratum_3", version.ref = "enumeratum"}
 flexmark-all = { module = "com.vladsch.flexmark:flexmark-all", version.ref = "flexmark" }
 jade4j = { module = "de.neuland-bfi:jade4j", version.ref = "jade4j" }
 jetbrains-annotations = "org.jetbrains:annotations:17.0.0"
-json4s-native-s213 = "org.json4s:json4s-native_2.13:4.1.0-M3"
+json4s-native-s213 = { module = "org.json4s:json4s-native_2.13", version.ref = "json4s"}
+json4s-native-s3 = { module = "org.json4s:json4s-native_3", version.ref = "json4s"}
 junit-jupiter = { module = "org.junit.jupiter:junit-jupiter", version.ref = "junit-jupiter" }
 junit-jupiter-engine = { module = "org.junit.jupiter:junit-jupiter-engine", version.ref = "junit-engine" }
 junit-platform-engine = { module = "org.junit.platform:junit-platform-engine", version.ref = "junit-platform" }
@@ -106,6 +113,7 @@ kotlin-stdlib = { module = "org.jetbrains.kotlin:kotlin-stdlib", version.ref = "
 kotlin-stdlib-common = { module = "org.jetbrains.kotlin:kotlin-stdlib-common", version.ref = "kotlin" }
 kotlin-stdlib-jdk7 = { module = "org.jetbrains.kotlin:kotlin-stdlib-jdk7", version.ref = "kotlin" }
 kotlin-stdlib-jdk8 = { module = "org.jetbrains.kotlin:kotlin-stdlib-jdk8", version.ref = "kotlin" }
+# no scala 3 wrapper
 kxbmap-configs-s213 = "com.github.kxbmap:configs_2.13:0.6.1"
 logback-classic = { module = "ch.qos.logback:logback-classic", version.ref = "logback" }
 mockito-core = { module = "org.mockito:mockito-core", version.ref = "mockito" }
@@ -115,22 +123,32 @@ org-jetbrains-annotations = "org.jetbrains:annotations:24.0.1"
 quill-core-s213 = { module = "io.getquill:quill-core_2.13", version.ref = "getquill" }
 quill-monix-s213 = { module = "io.getquill:quill-monix_2.13", version.ref = "getquill" }
 quill-sql-s213 = { module = "io.getquill:quill-sql_2.13", version.ref = "getquill" }
-ruippeixotog-scala-scraper-s213 = "net.ruippeixotog:scala-scraper_2.13:3.1.0"
+ruippeixotog-scala-scraper-s213 = {module ="net.ruippeixotog:scala-scraper_2.13", version.ref = "scala-scraper"}
+ruippeixotog-scala-scraper-s3 = {module ="net.ruippeixotog:scala-scraper_3", version.ref = "scala-scraper"}
 scala2-library = { module = "org.scala-lang:scala-library", version.ref = "scala2-version" }
+scala3-library = { module = "org.scala-lang:scala3-library_3", version.ref = "scala3-version" }
 scalacheck-s213 = { module = "org.scalacheck:scalacheck_2.13", version.ref = "scalacheck" }
+scalacheck-s3 = { module = "org.scalacheck:scalacheck_3", version.ref = "scalacheck" }
+# no scala 3 version
 scalafmt-core-s213 = { module = "com.geirsson:scalafmt-core_2.13", version.ref = "scalaFmt" }
 scalatest-junit-runner = "co.helmethair:scalatest-junit-runner:0.2.0"
 scalatest-plus-mockito-s213 = { module = "org.scalatestplus:mockito-3-4_2.13", version.ref = "scalatest" }
+scalatest-plus-mockito-s3 = { module = "org.scalatestplus:mockito-3-4_3", version.ref = "scalatest" }
 scalatest-plus-junit = { module = "org.scalatestplus:junit-5-10_2.13", version.ref = "scalatestplus" }
-scalatest-plus-scalacheck = { module = "org.scalatestplus:scalacheck-1-18_2.13", version.ref = "scalatestplus" }
+scalatest-plus-scalacheck-s213 = { module = "org.scalatestplus:scalacheck-1-18_2.13", version.ref = "scalatestplus" }
+scalatest-plus-scalacheck-s3 = { module = "org.scalatestplus:scalacheck-1-18_3", version.ref = "scalatestplus" }
 scalatest-s213 = "org.scalatest:scalatest_2.13:3.3.0-SNAP4"
-scoverage-runtime-s213 = { module = "org.scoverage:scalac-scoverage-runtime_2.13", version.ref = "org-scoverage" }
+scalatest-s3 = "org.scalatest:scalatest_3:3.3.0-SNAP4"
+scoverage-runtime-s213 = { module = "org.scoverage:scalac-scoverage-runtime_2.13", version.ref = "scoverage" }
+scoverage-runtime-s3 = { module = "org.scoverage:scalac-scoverage-runtime_3", version.ref = "scoverage" }
 squareup-moshi = { module = "com.squareup.moshi:moshi", version.ref = "moshi" }
 squareup-moshi-adapters = { module = "com.squareup.moshi:moshi-adapters", version.ref = "moshi" }
 squareup-moshi-kotlin = { module = "com.squareup.moshi:moshi-kotlin", version.ref = "moshi" }
 squareup-moshi-kotlin-codegen = { module = "com.squareup.moshi:moshi-kotlin-codegen", version.ref = "moshi" }
 typesafe-config = "com.typesafe:config:1.4.2"
 typesafe-scala-logging-s213 = "com.typesafe.scala-logging:scala-logging_2.13:3.9.5"
+typesafe-scala-logging-s3 = "com.typesafe.scala-logging:scala-logging_3:3.9.5"
+# No Scala 3 version
 wix-accord-core-s213 = { module = "com.wix:accord-core_2.13", version.ref = "accord" }
 wix-accord-scalatest-s213 = { module = "com.wix:accord-scalatest_2.13", version.ref = "accord" }
 quarkus-gradle-plugin = { module = "io.quarkus:gradle-application-plugin", version.ref = "quarkus-gradle-plugin" }

@@ -112,7 +112,7 @@ object GuardModifier extends LazyLogging {
     suffix: Option[String]): GuardModifier = {
     new GuardModifier(prefix, sPrefix, suffix) {
       private def readResolve(): Object =
-        GuardModifier(prefix, sPrefix, suffix)
+        GuardModifier(this.prefix, this.sPrefix, this.suffix)
 
       def copy(
         prefix: Option[String],
@@ -121,7 +121,7 @@ object GuardModifier extends LazyLogging {
         GuardModifier(prefix, sPrefix, suffix)
 
       val tuple: GuardModifier.Parameters =
-        (prefix, sPrefix, suffix)
+        (this.prefix, this.sPrefix, this.suffix)
     }
   }
 

@@ -132,7 +132,7 @@ fun JvmTestSuite.applyScalaTest() {
         implementation(libs.wix.accord.core.s213)
         implementation(libs.wix.accord.scalatest.s213)
 
-        implementation(libs.scalatest.plus.scalacheck)
+        implementation(libs.scalatest.plus.scalacheck.s213)
 // JUnit
     }
 

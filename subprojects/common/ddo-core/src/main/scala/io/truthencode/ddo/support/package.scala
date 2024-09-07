@@ -38,15 +38,17 @@ package object support extends LazyLogging {
   /**
    * The Current Max Level achievable by a player.
    */
-  final val LevelCap = 30
+  final val LevelCap = 34
 
   /**
    * Current valid range of levels considered [[http://ddowiki.com/page/Epic_levels Epic Levels]]
    */
-  final val EpicLevels: Range.Inclusive = 21 to LevelCap
+  final val EpicLevels: Range.Inclusive = 21 to 30
+
+  final val LegendaryLevels: Range.Inclusive = 31 to LevelCap
 
   final val CharacterLevels: _root_.scala.collection.immutable.Range.Inclusive =
-    HeroicLevels.min to EpicLevels.max
+    HeroicLevels.min to LegendaryLevels.max
 
   /**
    * Implicit functions for manipulating collections such as finding the Cartesian Product, Left and
@@ -248,7 +250,7 @@ package object support extends LazyLogging {
        */
       def symbolsToWords: String = {
         val b = new StringBuilder
-        s.toCharArray.foreach { e: Char =>
+        s.toCharArray.foreach { (e: Char) =>
           if (specialSymbols.keys.exists(_.equals(e))) {
             val r = specialSymbols(e)
             b.append(s"$r")

@@ -17,16 +17,18 @@
  */
 package io.truthencode.ddo.model.feats
 
+import io.truthencode.ddo.activation.TriggeredActivationImpl
 import io.truthencode.ddo.model.classes.HeroicCharacterClass
 import io.truthencode.ddo.model.classes.HeroicCharacterClass.Paladin
-import io.truthencode.ddo.support.requisite._
+import io.truthencode.ddo.support.requisite.*
 
 /**
  * [[http://ddowiki.com/page/Aura_of_Good Aura of Good]] This Paladin class feature grants a +1
  * bonus to AC and saving throws to all allies within range.
  */
 protected[feats] trait AuraOfGood
-  extends FeatRequisiteImpl with Passive with GrantsToClass with RequiresAllOfClass {
+  extends FeatRequisiteImpl  with Passive with GrantsToClass
+  with RequiresAllOfClass {
   self: ClassFeat =>
   override def grantToClass: Seq[(HeroicCharacterClass, Int)] =
     List((Paladin, 1))

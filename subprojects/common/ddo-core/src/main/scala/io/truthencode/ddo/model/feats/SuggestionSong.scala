@@ -17,11 +17,11 @@
  */
 package io.truthencode.ddo.model.feats
 
-import io.truthencode.ddo.activation.OnSongPlayedEvent
+import io.truthencode.ddo.activation.{OnSongPlayedEvent, TriggeredActivationImpl}
 import io.truthencode.ddo.model.classes.HeroicCharacterClass
 import io.truthencode.ddo.model.misc.BardSongCoolDown
 import io.truthencode.ddo.model.skill.Skill
-import io.truthencode.ddo.support.requisite._
+import io.truthencode.ddo.support.requisite.*
 
 /**
  * [[https://ddowiki.com/page/Suggestion_(song) Suggestion (song)]] Level: Bard 6 Perform: 9 ranks*
@@ -37,8 +37,9 @@ import io.truthencode.ddo.support.requisite._
  *   may need to change name to 'Suggestion'
  */
 protected[feats] trait SuggestionSong
-  extends SkillRequisiteImpl with RequiresAllOfSkill with ClassRequisiteImpl with RequiresAllOfClass
-  with GrantsToClass with ActiveFeat with OnSongPlayedEvent with BardSongCoolDown {
+  extends SkillRequisiteImpl with TriggeredActivationImpl with RequiresAllOfSkill
+  with ClassRequisiteImpl with RequiresAllOfClass with GrantsToClass with ActiveFeat
+  with OnSongPlayedEvent with BardSongCoolDown {
   override def allOfClass: Seq[(HeroicCharacterClass, Int)] =
     List((HeroicCharacterClass.Bard, 6))
 

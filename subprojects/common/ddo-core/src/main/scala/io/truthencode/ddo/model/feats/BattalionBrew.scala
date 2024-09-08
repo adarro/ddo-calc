@@ -32,8 +32,8 @@ import io.truthencode.ddo.support.requisite.{
  *   [[https://ddowiki.com/page/Battalion_Brew]]
  */
 protected[feats] trait BattalionBrew
-  extends FeatRequisiteImpl with ClassRequisiteImpl with RequiresAllOfClass with AlchemistBonusFeat
-  with Passive {
+  extends FeatRequisiteImpl with BonusSelectableToClassFeatImpl with ClassRequisiteImpl
+  with RequiresAllOfClass with AlchemistBonusFeat with Passive {
   self: ClassFeat =>
   private[this] val cls = (Alchemist, 4)
 

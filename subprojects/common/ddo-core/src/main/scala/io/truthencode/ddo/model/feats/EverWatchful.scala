@@ -17,7 +17,7 @@
  */
 package io.truthencode.ddo.model.feats
 
-import io.truthencode.ddo.activation.AtWillEvent
+import io.truthencode.ddo.activation.{AtWillEvent, TriggeredActivationImpl}
 import io.truthencode.ddo.model.religions.Helm
 import io.truthencode.ddo.support.requisite.{FeatRequisiteImpl, RequiresAllOfFeat}
 
@@ -32,8 +32,9 @@ import java.time.Duration
  * Fortitude saves, and PRR equal to the number of Religious Lore feats you have.
  */
 trait EverWatchful
-  extends FeatRequisiteImpl with ForgottenRealmsReligionNonWarforged with DeityUniqueLevelBase
-  with RequiresAllOfFeat with Helm with HelmFeatBase with ActiveFeat with AtWillEvent {
+  extends FeatRequisiteImpl with TriggeredActivationImpl with ForgottenRealmsReligionNonWarforged
+  with DeityUniqueLevelBase with RequiresAllOfFeat with Helm with HelmFeatBase with ActiveFeat
+  with AtWillEvent {
   self: DeityFeat =>
 
   override def coolDown: Option[Duration] = Some(Duration.ofMinutes(10))

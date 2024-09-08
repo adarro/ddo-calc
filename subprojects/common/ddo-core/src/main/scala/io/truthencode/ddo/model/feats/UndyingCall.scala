@@ -17,7 +17,7 @@
  */
 package io.truthencode.ddo.model.feats
 
-import io.truthencode.ddo.activation.AtWillEvent
+import io.truthencode.ddo.activation.{AtWillEvent, TriggeredActivationImpl}
 import io.truthencode.ddo.model.misc.DefaultCoolDown
 import io.truthencode.ddo.model.religions.UndyingCourt
 import io.truthencode.ddo.support.requisite.{FeatRequisiteImpl, RequiresAllOfFeat}
@@ -32,9 +32,9 @@ import io.truthencode.ddo.support.requisite.{FeatRequisiteImpl, RequiresAllOfFea
  *   Check to see if this is just once per rest.
  */
 trait UndyingCall
-  extends FeatRequisiteImpl with EberronReligionNonWarforged with DeityUniqueLevelBase
-  with RequiresAllOfFeat with UndyingCourt with TheUndyingCourtFeatBase with ActiveFeat
-  with AtWillEvent with DefaultCoolDown {
+  extends FeatRequisiteImpl with TriggeredActivationImpl with EberronReligionNonWarforged
+  with DeityUniqueLevelBase with RequiresAllOfFeat with UndyingCourt with TheUndyingCourtFeatBase
+  with ActiveFeat with AtWillEvent with DefaultCoolDown {
   self: DeityFeat =>
 
   override def allOfFeats: Seq[Feat] = List(DeityFeat.ChildOfTheUndyingCourt)

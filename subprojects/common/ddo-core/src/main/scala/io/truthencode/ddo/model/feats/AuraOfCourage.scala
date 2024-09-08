@@ -17,7 +17,7 @@
  */
 package io.truthencode.ddo.model.feats
 
-import io.truthencode.ddo.activation.{HealthyEvent, TriggeredEventImpl}
+import io.truthencode.ddo.activation.{HealthyEvent, TriggeredActivationImpl, TriggeredEventImpl}
 import io.truthencode.ddo.model.classes.HeroicCharacterClass
 import io.truthencode.ddo.model.classes.HeroicCharacterClass.Paladin
 import io.truthencode.ddo.model.misc.DefaultCoolDown
@@ -30,8 +30,9 @@ import io.truthencode.ddo.support.requisite.*
  * paladin is conscious, but not if she is unconscious or dead.
  */
 protected[feats] trait AuraOfCourage
-  extends FeatRequisiteImpl with TriggeredEventImpl with Passive with ActiveFeat with HealthyEvent with GrantsToClass
-  with RequiresAllOfClass with DefaultCoolDown { self: ClassFeat =>
+  extends FeatRequisiteImpl with TriggeredActivationImpl with TriggeredEventImpl with Passive
+  with ActiveFeat with HealthyEvent with GrantsToClass with RequiresAllOfClass
+  with DefaultCoolDown { self: ClassFeat =>
   override def grantToClass: Seq[(HeroicCharacterClass, Int)] =
     List((Paladin, 3))
 

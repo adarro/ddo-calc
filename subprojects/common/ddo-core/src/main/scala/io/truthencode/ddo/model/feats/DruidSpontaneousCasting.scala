@@ -17,7 +17,7 @@
  */
 package io.truthencode.ddo.model.feats
 
-import io.truthencode.ddo.activation.OnSpellCastEvent
+import io.truthencode.ddo.activation.{OnSpellCastEvent, TriggeredActivationImpl}
 import io.truthencode.ddo.model.classes.HeroicCharacterClass
 import io.truthencode.ddo.model.classes.HeroicCharacterClass.Druid
 import io.truthencode.ddo.model.misc.DefaultCasterCoolDown
@@ -30,8 +30,9 @@ import io.truthencode.ddo.support.requisite.{FeatRequisiteImpl, GrantsToClass, R
  * of that level.
  */
 protected[feats] trait DruidSpontaneousCasting
-  extends FeatRequisiteImpl with ActiveFeat with SpellBookImpl with OnSpellCastEvent
-  with GrantsToClass with RequiresAllOfClass with Prefix with DefaultCasterCoolDown {
+  extends FeatRequisiteImpl with TriggeredActivationImpl with ActiveFeat with SpellBookImpl
+  with OnSpellCastEvent with GrantsToClass with RequiresAllOfClass with Prefix
+  with DefaultCasterCoolDown {
 
   /**
    * Delimits the prefix and text.
@@ -44,6 +45,6 @@ protected[feats] trait DruidSpontaneousCasting
 
   override def prefix: Option[String] = Some("Druid:")
 
-  abstract override def spellIds: Set[String] =
+  override def spellIds: Set[String] =
     super.spellIds ++ Spell.summonNatureAllySpells
 }

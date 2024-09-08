@@ -95,7 +95,9 @@ object ClassFeat extends Enum[ClassFeat] with FeatSearchPrefix {
   case object LiquidLuck extends ClassFeat with LiquidLuck
   case object ToughTincture extends ClassFeat with ToughTincture
   case object ToxicTonic extends ClassFeat with ToxicTonic
-  case object MultitudeOfMissiles extends ClassFeat with MultitudeOfMissiles
+  case object MultitudeOfMissiles extends ClassFeat with MultitudeOfMissiles {
+       override def allOfFeats: Seq[Feat] = super.allOfFeats
+  }
   case object Poisonblood extends ClassFeat with Poisonblood
 
   case object ArcaneLore extends ClassFeat with ArcaneLore
@@ -315,7 +317,7 @@ object ClassFeat extends Enum[ClassFeat] with FeatSearchPrefix {
 
   case object FearImmunity extends ClassFeat with FearImmunity
 
-  // Ranger Class Feats (The rese are currently already implemented under general feats
+  // Ranger Class Feats (The rest are currently already implemented under general feats
   case object HideInPlainSight extends ClassFeat with HideInPlainSight
 
   // Rogue Class Feats

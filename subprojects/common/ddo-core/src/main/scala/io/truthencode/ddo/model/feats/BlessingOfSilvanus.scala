@@ -17,7 +17,7 @@
  */
 package io.truthencode.ddo.model.feats
 
-import io.truthencode.ddo.activation.OnToggleEvent
+import io.truthencode.ddo.activation.{OnToggleEvent, TriggeredActivationImpl}
 import io.truthencode.ddo.model.religions.Silvanus
 import io.truthencode.ddo.support.requisite.{FeatRequisiteImpl, RequiresAllOfFeat}
 
@@ -32,8 +32,9 @@ import java.time.Duration
  * wield gain +2 to their Critical Threat Range.
  */
 trait BlessingOfSilvanus
-  extends FeatRequisiteImpl with ForgottenRealmsReligionNonWarforged with DeityUniqueLevelBase
-  with RequiresAllOfFeat with Silvanus with SilvanusFeatBase with ActiveFeat with OnToggleEvent {
+  extends FeatRequisiteImpl with TriggeredActivationImpl with ForgottenRealmsReligionNonWarforged
+  with DeityUniqueLevelBase with RequiresAllOfFeat with Silvanus with SilvanusFeatBase
+  with ActiveFeat with OnToggleEvent {
   self: DeityFeat =>
 
   override def coolDown: Option[Duration] = Some(Duration.ofSeconds(6))

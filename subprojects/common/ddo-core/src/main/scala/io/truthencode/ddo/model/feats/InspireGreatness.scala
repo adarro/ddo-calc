@@ -17,17 +17,17 @@
  */
 package io.truthencode.ddo.model.feats
 
-import io.truthencode.ddo.activation.OnSongPlayedEvent
+import io.truthencode.ddo.activation.{OnSongPlayedEvent, TriggeredActivationImpl}
 import io.truthencode.ddo.model.classes.HeroicCharacterClass
 import io.truthencode.ddo.model.misc.BardSongCoolDown
 import io.truthencode.ddo.model.skill.Skill
-import io.truthencode.ddo.support.requisite._
+import io.truthencode.ddo.support.requisite.*
 
 /**
  * [[https://ddowiki.com/page/Inspire_Greatness Inspire Greatness]] Level: Bard 9 Perform: 12 ranks*
  * Target: Bard and all nearby allies Base Duration: Song Description: Allies and yourself benefit
  * from +20 Temporary Hit Points, +3 Physical Resistance Rating, an +10 Healing Amplification as
- * long as your are not incapacitated and they are within the Ballad. Notes: This song now included
+ * long as you are not incapacitated, and they are within the Ballad. Notes: This song now included
  * in your Bardic Ballad. *Only the base number of Perform ranks bought with skill points count
  * toward the requirement to be able to play this song. (Skill bonuses do not count.) Created by
  * adarr on 4/5/2017.
@@ -35,8 +35,9 @@ import io.truthencode.ddo.support.requisite._
  *   Add not incapacitated flag
  */
 protected[feats] trait InspireGreatness
-  extends SkillRequisiteImpl with RequiresAllOfSkill with ClassRequisiteImpl with RequiresAllOfClass
-  with GrantsToClass with ActiveFeat with OnSongPlayedEvent with BardSongCoolDown {
+  extends SkillRequisiteImpl with TriggeredActivationImpl with RequiresAllOfSkill
+  with ClassRequisiteImpl with RequiresAllOfClass with GrantsToClass with ActiveFeat
+  with OnSongPlayedEvent with BardSongCoolDown {
   override def allOfClass: Seq[(HeroicCharacterClass, Int)] =
     List((HeroicCharacterClass.Bard, 9))
 

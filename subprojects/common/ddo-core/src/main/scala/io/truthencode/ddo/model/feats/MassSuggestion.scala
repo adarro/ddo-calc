@@ -17,11 +17,11 @@
  */
 package io.truthencode.ddo.model.feats
 
-import io.truthencode.ddo.activation.OnSongPlayedEvent
+import io.truthencode.ddo.activation.{OnSongPlayedEvent, TriggeredActivationImpl}
 import io.truthencode.ddo.model.classes.HeroicCharacterClass
 import io.truthencode.ddo.model.misc.BardSongCoolDown
 import io.truthencode.ddo.model.skill.Skill
-import io.truthencode.ddo.support.requisite._
+import io.truthencode.ddo.support.requisite.*
 
 /**
  * [[https://ddowiki.com/page/Mass_Suggestion_(song) Mass Suggestion (song)]] Level: Bard 18
@@ -32,14 +32,15 @@ import io.truthencode.ddo.support.requisite._
  *   This song does not work on enemies that have been mesmerized by any other bardic song, such as
  *   Music of the Dead, Music of the Makers, or Enthrallment. This song benefits from effects that
  *   increase song duration. Unlike spell version, can charm any number of enemies within range if
- *   they are fascinated. Likewise Negative Level, charm effect expires quickly on Epic Hard and
+ *   they are fascinated. Likewise, Negative Level, charm effect expires quickly on Epic Hard and
  *   higher difficulty (10~15 seconds). *Only the base number of Perform ranks bought with skill
  *   points count toward the requirement to be able to play this song. (Skill bonuses do not count.)
  *   Created by adarr on 4/5/2017.
  */
 protected[feats] trait MassSuggestion
-  extends SkillRequisiteImpl with RequiresAllOfSkill with ClassRequisiteImpl with RequiresAllOfClass
-  with GrantsToClass with ActiveFeat with OnSongPlayedEvent with BardSongCoolDown {
+  extends SkillRequisiteImpl with TriggeredActivationImpl with RequiresAllOfSkill
+  with ClassRequisiteImpl with RequiresAllOfClass with GrantsToClass with ActiveFeat
+  with OnSongPlayedEvent with BardSongCoolDown {
   override def allOfClass: Seq[(HeroicCharacterClass, Int)] =
     List((HeroicCharacterClass.Bard, 18))
 

@@ -29,11 +29,11 @@ import io.truthencode.ddo.support.naming.UsingSearchPrefix
  */
 trait SpellPointAmountFeature extends Features {
   self: SourceInfo =>
-  protected val spellPointBonusType: BonusType
+  protected def spellPointBonusType: BonusType
   protected val spellPointBonusAmount: Int
-  protected[this] val triggerOn: Seq[TriggerEvent]
-  protected[this] val triggerOff: Seq[TriggerEvent]
-  protected[this] val spellPointAmountCategories: Seq[effect.EffectCategories.Value]
+  protected[this] def triggerOn: Seq[TriggerEvent]
+  protected[this] def triggerOff: Seq[TriggerEvent]
+  protected[this] def spellPointAmountCategories: Seq[effect.EffectCategories.Value]
   private val src = this
   private[this] val spellPointAmount =
     new PartModifier[Int, BasicStat] with UsingSearchPrefix {

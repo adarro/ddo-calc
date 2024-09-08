@@ -17,7 +17,7 @@
  */
 package io.truthencode.ddo.model.feats
 
-import io.truthencode.ddo.activation.AtWillEvent
+import io.truthencode.ddo.activation.{AtWillEvent, TriggeredActivationImpl}
 import io.truthencode.ddo.model.religions.BloodOfVol
 import io.truthencode.ddo.support.requisite.{FeatRequisiteImpl, RequiresAllOfFeat}
 
@@ -34,9 +34,9 @@ import java.time.Duration
  * other sources of Vampirism. Created by adarr on 4/7/2017.
  */
 trait TheBloodIsTheLife
-  extends FeatRequisiteImpl with EberronReligionNonWarforged with DeityUniqueLevelBase
-  with RequiresAllOfFeat with BloodOfVol with TheBloodOfVolFeatBase with ActiveFeat
-  with AtWillEvent { self: DeityFeat =>
+  extends FeatRequisiteImpl with TriggeredActivationImpl with EberronReligionNonWarforged
+  with DeityUniqueLevelBase with RequiresAllOfFeat with BloodOfVol with TheBloodOfVolFeatBase
+  with ActiveFeat with AtWillEvent { self: DeityFeat =>
 
   override def displayText: String = "The Blood is The Life"
 

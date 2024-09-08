@@ -17,11 +17,11 @@
  */
 package io.truthencode.ddo.model.feats
 
-import io.truthencode.ddo.activation.AtWillEvent
+import io.truthencode.ddo.activation.{AtWillEvent, TriggeredActivationImpl}
 import io.truthencode.ddo.model.classes.HeroicCharacterClass
 import io.truthencode.ddo.model.classes.HeroicCharacterClass.Paladin
 import io.truthencode.ddo.model.misc.DefaultCoolDown
-import io.truthencode.ddo.support.requisite._
+import io.truthencode.ddo.support.requisite.*
 
 /**
  * [[http://ddowiki.com/page/Lay_on_Hands Lay On Hands]] The Paladin ability Lay on Hands heals a
@@ -37,8 +37,8 @@ import io.truthencode.ddo.support.requisite._
  * requiring any Paladin levels.
  */
 protected[feats] trait LayOnHands
-  extends FeatRequisiteImpl with Passive with ActiveFeat with AtWillEvent with GrantsToClass
-  with FreeFeat with DefaultCoolDown { self: ClassFeat =>
+  extends FeatRequisiteImpl with TriggeredActivationImpl with Passive with ActiveFeat
+  with AtWillEvent with GrantsToClass with FreeFeat with DefaultCoolDown { self: ClassFeat =>
   override def grantToClass: Seq[(HeroicCharacterClass, Int)] =
     List((Paladin, 2))
 

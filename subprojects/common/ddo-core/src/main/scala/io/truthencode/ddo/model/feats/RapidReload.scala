@@ -29,8 +29,8 @@ import io.truthencode.ddo.support.requisite.{FeatRequisiteImpl, GrantsToClass, R
  * Proficiency: Light Crossbows
  */
 protected[feats] trait RapidReload
-  extends FeatRequisiteImpl with Passive with RequiresAllOfFeat with GrantsToClass
-  with FighterBonusFeat {
+  extends FeatRequisiteImpl with BonusSelectableToClassFeatImpl with Passive with RequiresAllOfFeat
+  with GrantsToClass with FighterBonusFeat {
   self: ClassFeat =>
   override def grantToClass: Seq[(HeroicCharacterClass, Int)] = List((Artificer, 1))
 

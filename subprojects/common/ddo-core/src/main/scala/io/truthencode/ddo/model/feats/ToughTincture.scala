@@ -33,8 +33,8 @@ import io.truthencode.ddo.support.requisite.{
  *   [[https://ddowiki.com/page/Tough_Tincture]]
  */
 protected[feats] trait ToughTincture
-  extends FeatRequisiteImpl with ClassRequisiteImpl with RequiresAllOfClass with AlchemistBonusFeat
-  with Passive {
+  extends FeatRequisiteImpl with BonusSelectableToClassFeatImpl with ClassRequisiteImpl
+  with RequiresAllOfClass with AlchemistBonusFeat with Passive {
   self: ClassFeat =>
   private[this] val cls = (Alchemist, 8)
 

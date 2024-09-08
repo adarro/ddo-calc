@@ -17,7 +17,7 @@
  */
 package io.truthencode.ddo.model.feats
 
-import io.truthencode.ddo.activation.AtWillEvent
+import io.truthencode.ddo.activation.{AtWillEvent, TriggeredActivationImpl}
 import io.truthencode.ddo.model.spells.SpellBookImpl
 import io.truthencode.ddo.support.requisite.{FreeFeat, RequiresCharacterLevel}
 
@@ -27,11 +27,11 @@ import io.truthencode.ddo.support.requisite.{FreeFeat, RequiresCharacterLevel}
  * spell points. Active: Deals 30d6 cold damage in a cone, chance to freeze.
  */
 protected[feats] trait BurstOfGlacialWrath
-  extends FreeFeat with SpellFeats with Passive with ActiveFeat with AtWillEvent with SpellBookImpl
-  with RequiresCharacterLevel { self: EpicFeat =>
+  extends FreeFeat with TriggeredActivationImpl with SpellFeats with Passive with ActiveFeat
+  with AtWillEvent with SpellBookImpl with RequiresCharacterLevel { self: EpicFeat =>
   final override val requireCharacterLevel: Int = 24
 
-  abstract override def spellIds: Set[String] =
+  override def spellIds: Set[String] =
     super.spellIds + "BurstOfGlacialWrath"
 
 }

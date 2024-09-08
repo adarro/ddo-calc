@@ -31,9 +31,9 @@ trait HitPointAmountFeature extends Features {
   self: SourceInfo =>
   protected val hitPointBonusType: BonusType
   protected val hitPointBonusAmount: Int
-  protected[this] val triggerOn: Seq[TriggerEvent]
-  protected[this] val triggerOff: Seq[TriggerEvent]
-  protected[this] val hitPointCategories: Seq[effect.EffectCategories.Value]
+  protected[this] def triggerOn: Seq[TriggerEvent]
+  protected[this] def triggerOff: Seq[TriggerEvent]
+  protected[this] def hitPointCategories: Seq[effect.EffectCategories.Value]
   private val src = this
   private[this] val hitPointAmount =
     new PartModifier[Int, BasicStat] with UsingSearchPrefix {

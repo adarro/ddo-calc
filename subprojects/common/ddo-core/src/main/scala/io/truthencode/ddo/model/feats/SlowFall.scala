@@ -17,6 +17,7 @@
  */
 package io.truthencode.ddo.model.feats
 
+import io.truthencode.ddo.activation.TriggeredActivationImpl
 import io.truthencode.ddo.model.classes.HeroicCharacterClass
 import io.truthencode.ddo.model.classes.HeroicCharacterClass.Monk
 import io.truthencode.ddo.model.misc.DefaultCoolDown
@@ -43,8 +44,8 @@ import io.truthencode.ddo.support.requisite.{FeatRequisiteImpl, GrantsToClass, R
  *   turned off.) Created by adarr on 3/17/2017.
  */
 trait SlowFall
-  extends FeatRequisiteImpl with ActiveFeat with Stance with GrantsToClass with RequiresAllOfClass
-  with DefaultCoolDown {
+  extends FeatRequisiteImpl with TriggeredActivationImpl with ActiveFeat with Stance
+  with GrantsToClass with RequiresAllOfClass with DefaultCoolDown {
   override def grantToClass: Seq[(HeroicCharacterClass, Int)] =
     List((Monk, 4))
 

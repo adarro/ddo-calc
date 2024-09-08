@@ -17,11 +17,11 @@
  */
 package io.truthencode.ddo.model.feats
 
-import io.truthencode.ddo.activation.AtWillEvent
+import io.truthencode.ddo.activation.{AtWillEvent, TriggeredActivationImpl}
 import io.truthencode.ddo.model.alignment.{AlignmentType, MoralAxis}
 import io.truthencode.ddo.model.classes.HeroicCharacterClass
 import io.truthencode.ddo.model.classes.HeroicCharacterClass.Warlock
-import io.truthencode.ddo.support.requisite._
+import io.truthencode.ddo.support.requisite.*
 
 import java.time.Duration
 
@@ -31,8 +31,9 @@ import java.time.Duration
  * instead paralyzed and helpless with fear for 6 seconds.
  */
 protected[feats] trait HurlThroughHell
-  extends FeatRequisiteImpl with ActiveFeat with AtWillEvent with RequiresAllOfClass
-  with RequiresAllOfFeat with AlignmentRequisiteImpl with RequiresNoneOfAxis with GrantsToClass {
+  extends FeatRequisiteImpl with TriggeredActivationImpl with ActiveFeat with AtWillEvent
+  with RequiresAllOfClass with RequiresAllOfFeat with AlignmentRequisiteImpl with RequiresNoneOfAxis
+  with GrantsToClass {
   self: ClassFeat =>
 
   override def grantToClass: Seq[(HeroicCharacterClass, Int)] =

@@ -17,7 +17,7 @@
  */
 package io.truthencode.ddo.model.feats
 
-import io.truthencode.ddo.activation.AtWillEvent
+import io.truthencode.ddo.activation.{AtWillEvent, TriggeredActivationImpl}
 import io.truthencode.ddo.model.religions.Aureon
 import io.truthencode.ddo.support.naming.DisplayProperties
 import io.truthencode.ddo.support.requisite.{FeatRequisiteImpl, RequiresAllOfFeat}
@@ -35,9 +35,9 @@ import java.time.Duration
  * affected by Turn Undead.
  */
 trait AureonsInstruction
-  extends FeatRequisiteImpl with EberronReligionNonWarforged with DeityUniqueLevelBase
-  with RequiresAllOfFeat with Aureon with AureonFeatBase with ActiveFeat with AtWillEvent
-  with DisplayProperties { self: DeityFeat =>
+  extends FeatRequisiteImpl with TriggeredActivationImpl with EberronReligionNonWarforged
+  with DeityUniqueLevelBase with RequiresAllOfFeat with Aureon with AureonFeatBase with ActiveFeat
+  with AtWillEvent with DisplayProperties { self: DeityFeat =>
 
   override def coolDown: Option[Duration] = Some(Duration.ofMinutes(10))
 

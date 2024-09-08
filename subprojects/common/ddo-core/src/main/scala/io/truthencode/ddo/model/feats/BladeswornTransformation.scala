@@ -17,10 +17,10 @@
  */
 package io.truthencode.ddo.model.feats
 
-import io.truthencode.ddo.activation.AtWillEvent
+import io.truthencode.ddo.activation.{AtWillEvent, TriggeredActivationImpl}
 import io.truthencode.ddo.model.misc.DefaultCoolDown
 import io.truthencode.ddo.model.religions.LordOfBlades
-import io.truthencode.ddo.support.requisite._
+import io.truthencode.ddo.support.requisite.*
 
 /**
  * Created by adarr on 4/7/2017.
@@ -36,9 +36,9 @@ import io.truthencode.ddo.support.requisite._
  * be healed by healing spells.
  */
 trait BladeswornTransformation
-  extends FeatRequisiteImpl with DeityUniqueLevelBase with RequiresAllOfFeat
-  with EberronReligionWarforged with LordOfBlades with TheLordOfBladesFeatBase with ActiveFeat
-  with AtWillEvent with DefaultCoolDown {
+  extends FeatRequisiteImpl with TriggeredActivationImpl with DeityUniqueLevelBase
+  with RequiresAllOfFeat with EberronReligionWarforged with LordOfBlades
+  with TheLordOfBladesFeatBase with ActiveFeat with AtWillEvent with DefaultCoolDown {
   self: DeityFeat with Requisite with RequisiteType =>
 
   override def allOfFeats: Seq[Feat] = List(DeityFeat.ChildOfTheLordOfBlades)

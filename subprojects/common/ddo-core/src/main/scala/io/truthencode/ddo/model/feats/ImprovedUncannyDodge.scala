@@ -17,7 +17,7 @@
  */
 package io.truthencode.ddo.model.feats
 
-import io.truthencode.ddo.activation.AtWillEvent
+import io.truthencode.ddo.activation.{AtWillEvent, TriggeredActivationImpl}
 import io.truthencode.ddo.model.classes.HeroicCharacterClass
 import io.truthencode.ddo.model.classes.HeroicCharacterClass.{Barbarian, Rogue}
 import io.truthencode.ddo.support.requisite.{FeatRequisiteImpl, FreeFeat, GrantsToClass}
@@ -40,8 +40,8 @@ import java.time.Duration
  *   Need to add Passive Dodge Bonus
  */
 protected[feats] trait ImprovedUncannyDodge
-  extends FeatRequisiteImpl with Passive with ActiveFeat with AtWillEvent with GrantsToClass
-  with FreeFeat {
+  extends FeatRequisiteImpl with TriggeredActivationImpl with Passive with ActiveFeat
+  with AtWillEvent with GrantsToClass with FreeFeat {
   self: ClassFeat =>
   override def grantToClass: Seq[(HeroicCharacterClass, Int)] =
     List((Barbarian, 8), (Rogue, 8))

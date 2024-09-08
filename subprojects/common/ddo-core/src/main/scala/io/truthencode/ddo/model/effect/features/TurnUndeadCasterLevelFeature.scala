@@ -29,11 +29,11 @@ import io.truthencode.ddo.support.naming.UsingSearchPrefix
  */
 trait TurnUndeadCasterLevelFeature extends Features {
   self: SourceInfo =>
-  val undeadCasterLevelBonusType: BonusType
+  def undeadCasterLevelBonusType: BonusType
   val undeadCasterLevelBonusAmount: Int
-  protected[this] val triggerOn: Seq[TriggerEvent]
-  protected[this] val triggerOff: Seq[TriggerEvent]
-  protected[this] val undeadCasterLevelCategories: Seq[effect.EffectCategories.Value]
+  protected[this] def triggerOn: Seq[TriggerEvent]
+  protected[this] def triggerOff: Seq[TriggerEvent]
+  protected[this] def undeadCasterLevelCategories: Seq[effect.EffectCategories.Value]
   private val src = this
   private[this] val nHD =
     new PartModifier[Int, BasicStat] with UsingSearchPrefix {

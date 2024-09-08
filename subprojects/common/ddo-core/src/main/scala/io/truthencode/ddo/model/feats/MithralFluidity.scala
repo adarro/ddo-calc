@@ -29,8 +29,8 @@ import io.truthencode.ddo.support.requisite.{
  * Created by adarr on 2/20/2017.
  */
 trait MithralFluidity
-  extends FeatRequisiteImpl with RaceRequisite with Passive with RequiresAnyOfRace
-  with RequiresAllOfFeat with ArtificerBonusFeat {
+  extends FeatRequisiteImpl with BonusSelectableToClassFeatImpl with RaceRequisite with Passive
+  with RequiresAnyOfRace with RequiresAllOfFeat with ArtificerBonusFeat {
   self: RacialFeat =>
   override def anyOfRace: Seq[(Race, Int)] =
     List((Race.Warforged, 1), (Race.Bladeforged, 1))

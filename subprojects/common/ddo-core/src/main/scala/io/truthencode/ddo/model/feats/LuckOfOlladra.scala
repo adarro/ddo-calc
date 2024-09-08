@@ -17,7 +17,7 @@
  */
 package io.truthencode.ddo.model.feats
 
-import io.truthencode.ddo.activation.AtWillEvent
+import io.truthencode.ddo.activation.{AtWillEvent, TriggeredActivationImpl}
 import io.truthencode.ddo.model.religions.Olladra
 import io.truthencode.ddo.support.requisite.{FeatRequisiteImpl, RequiresAllOfFeat}
 
@@ -35,8 +35,9 @@ import java.time.Duration
  *   [[https://www.ddo.com/forums/showthread.php/498539 Forum Discussion Link]]
  */
 trait LuckOfOlladra
-  extends FeatRequisiteImpl with EberronReligionNonWarforged with DeityUniqueLevelBase
-  with RequiresAllOfFeat with Olladra with OlladraFeatBase with ActiveFeat with AtWillEvent {
+  extends FeatRequisiteImpl with TriggeredActivationImpl with EberronReligionNonWarforged
+  with DeityUniqueLevelBase with RequiresAllOfFeat with Olladra with OlladraFeatBase with ActiveFeat
+  with AtWillEvent {
   self: DeityFeat =>
 
   override def coolDown: Option[Duration] = Some(Duration.ofMinutes(10))

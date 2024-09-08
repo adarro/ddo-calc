@@ -32,8 +32,8 @@ import io.truthencode.ddo.support.requisite.{
  * Created by adarr on 4/5/2017.
  */
 protected[feats] trait ConstructEssence
-  extends FeatRequisiteImpl with RaceRequisiteImpl with RequiresAllOfClass with RequiresNoneOfRace
-  with ArtificerBonusFeat with Passive {
+  extends FeatRequisiteImpl with BonusSelectableToClassFeatImpl with RaceRequisiteImpl
+  with RequiresAllOfClass with RequiresNoneOfRace with ArtificerBonusFeat with Passive {
   self: ClassFeat =>
   override def noneOfRace: Seq[(Race, Int)] = List((Warforged, 1))
 

@@ -30,11 +30,11 @@ import io.truthencode.ddo.support.naming.UsingSearchPrefix
  */
 trait SpellCriticalPercentFeature extends Features {
   self: SourceInfo =>
-  protected val spellCriticalBonusType: BonusType
+  protected def spellCriticalBonusType: BonusType
   protected[this] val schoolCritical: Seq[(SpellPower, Int)]
-  protected[this] val triggerOn: Seq[TriggerEvent]
-  protected[this] val triggerOff: Seq[TriggerEvent]
-  protected[this] val spellCriticalCategories: Seq[effect.EffectCategories.Value]
+  protected[this] def triggerOn: Seq[TriggerEvent]
+  protected[this] def triggerOff: Seq[TriggerEvent]
+  protected[this] def spellCriticalCategories: Seq[effect.EffectCategories.Value]
   private val src = this
 
   abstract override def features: Seq[Feature[_]] = {

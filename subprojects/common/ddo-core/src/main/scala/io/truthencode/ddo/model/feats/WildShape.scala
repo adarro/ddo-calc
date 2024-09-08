@@ -17,7 +17,7 @@
  */
 package io.truthencode.ddo.model.feats
 
-import io.truthencode.ddo.activation.OnShapeShift
+import io.truthencode.ddo.activation.{OnShapeShift, TriggeredActivationImpl}
 import io.truthencode.ddo.model.misc.DefaultCasterCoolDown
 import io.truthencode.ddo.support.naming.{DisplayName, DisplayProperties, WildShapePrefix}
 import io.truthencode.ddo.support.requisite.{FeatRequisiteImpl, GrantsToClass, RequiresAllOfClass}
@@ -34,7 +34,7 @@ import io.truthencode.ddo.support.requisite.{FeatRequisiteImpl, GrantsToClass, R
  * subject to Druidic Oath.
  */
 protected[feats] trait WildShape
-  extends FeatRequisiteImpl with ActiveFeat with OnShapeShift with DefaultCasterCoolDown
-  with WildShapePrefix {
+  extends FeatRequisiteImpl with TriggeredActivationImpl with ActiveFeat with OnShapeShift
+  with DefaultCasterCoolDown with WildShapePrefix {
   self: GrantsToClass with RequiresAllOfClass with DisplayName with DisplayProperties =>
 }

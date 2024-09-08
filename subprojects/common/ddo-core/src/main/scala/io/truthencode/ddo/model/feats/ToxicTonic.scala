@@ -32,8 +32,8 @@ import io.truthencode.ddo.support.requisite.{
  *   [[https://ddowiki.com/page/Toxic_Tonic]]
  */
 protected[feats] trait ToxicTonic
-  extends FeatRequisiteImpl with ClassRequisiteImpl with RequiresAllOfClass with AlchemistBonusFeat
-  with Passive {
+  extends FeatRequisiteImpl with BonusSelectableToClassFeatImpl with ClassRequisiteImpl
+  with RequiresAllOfClass with AlchemistBonusFeat with Passive {
   self: ClassFeat =>
   private[this] val cls = (Alchemist, 12)
 

@@ -17,7 +17,7 @@
  */
 package io.truthencode.ddo.model.feats
 
-import io.truthencode.ddo.activation.{AtWillEvent, TriggeredEventImpl}
+import io.truthencode.ddo.activation.{AtWillEvent, TriggeredActivationImpl, TriggeredEventImpl}
 import io.truthencode.ddo.model.classes.HeroicCharacterClass
 import io.truthencode.ddo.model.classes.HeroicCharacterClass.Monk
 import io.truthencode.ddo.support.requisite.{FeatRequisiteImpl, GrantsToClass, RequiresAllOfClass}
@@ -30,8 +30,8 @@ import java.time.Duration
  * cool-down of three seconds on this feat and can only be used on yourself.
  */
 trait AbundantStep
-  extends FeatRequisiteImpl with ActiveFeat with TriggeredEventImpl with AtWillEvent with GrantsToClass
-  with RequiresAllOfClass {
+  extends FeatRequisiteImpl with TriggeredActivationImpl with ActiveFeat with TriggeredEventImpl
+  with AtWillEvent with GrantsToClass with RequiresAllOfClass {
   override def grantToClass: Seq[(HeroicCharacterClass, Int)] =
     List((Monk, 12))
 

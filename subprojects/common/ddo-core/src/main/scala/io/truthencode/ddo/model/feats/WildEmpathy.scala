@@ -17,7 +17,7 @@
  */
 package io.truthencode.ddo.model.feats
 
-import io.truthencode.ddo.activation.OnSpellLikeAbilityEvent
+import io.truthencode.ddo.activation.{OnSpellLikeAbilityEvent, TriggeredActivationImpl}
 import io.truthencode.ddo.model.classes.HeroicCharacterClass
 import io.truthencode.ddo.model.classes.HeroicCharacterClass.{Druid, Ranger}
 import io.truthencode.ddo.support.requisite.{FeatRequisiteImpl, GrantsToClass, RequiresAnyOfClass}
@@ -32,8 +32,8 @@ import java.time.Duration
  * Target: Enemy animals and magical beasts Duration: 5 Min Save: Will
  */
 protected[feats] trait WildEmpathy
-  extends FeatRequisiteImpl with ActiveFeat with OnSpellLikeAbilityEvent with GrantsToClass
-  with RequiresAnyOfClass {
+  extends FeatRequisiteImpl with TriggeredActivationImpl with ActiveFeat
+  with OnSpellLikeAbilityEvent with GrantsToClass with RequiresAnyOfClass {
   override def anyOfClass: Seq[(HeroicCharacterClass, Int)] =
     List((Druid, 1), (Ranger, 1))
 

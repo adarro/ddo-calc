@@ -24,6 +24,7 @@ import com.vanniktech.dependency.graph.generator.DependencyGraphGeneratorPlugin
 import guru.nidi.graphviz.attribute.Color
 import guru.nidi.graphviz.attribute.Style
 import ru.vyarus.gradle.plugin.python.PythonExtension
+import java.lang.management.ManagementFactory
 
 plugins {
     id("org.scoverage") apply (false)
@@ -41,6 +42,33 @@ plugins {
     id("ru.vyarus.mkdocs")
     id("org.sonarqube")
     id("com.vanniktech.dependency.graph.generator") version "0.8.0"
+}
+
+// diag borrowed from thig guy who is also tracking down mem issue.
+// https://github.com/TWiStErRob/net.twisterrob.gradle/blob/4a0afe2522db725ff217183fa2b73916d3460397/test/src/main/resources/net/twisterrob/gradle/test/runtime.init.gradle.kts
+// Migrate to https://docs.gradle.org/current/userguide/dataflow_actions.html at some point if needed
+// TODO deprecated without replacement https://github.com/gradle/gradle/issues/20151
+// Best effort for now as it won't work with configuration cache.
+gradle.buildFinished { println(memoryDiagnostics()) }
+
+fun memoryDiagnostics(): String {
+    fun format(max: Long?, used:Long): String {
+        fun mb(bytes: Long): String = "${bytes / 1024 / 1024}MB"
+        return if (max == null) {
+            "${mb(used)} (unlimited)"
+        } else {
+            "${mb(used)}/${mb(max)} (${mb(max - used)} free)"
+        }
+    }
+
+    val heap = Runtime.getRuntime()
+    heap.gc() // Best effort to get more accurate numbers.
+    val heapMax = heap.maxMemory().takeIf { it != Long.MAX_VALUE }
+    val heapUsed = heap.totalMemory() - heap.freeMemory()
+    val meta = ManagementFactory.getMemoryPoolMXBeans().single { it.name == "Metaspace" }
+    val metaMax = meta.usage.max.takeIf { it != -1L }
+    val metaUsed = meta.usage.used
+    return "Gradle memory: heap = ${format(heapMax, heapUsed)}, metaspace = ${format(metaMax, metaUsed)}."
 }
 
 //apply(plugin = "org.scoverage")

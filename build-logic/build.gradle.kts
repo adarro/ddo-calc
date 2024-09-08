@@ -40,6 +40,7 @@ dependencies {
     implementation(libs.quarkus.gradle.plugin)
     implementation(libs.kotlin.gradle.plugin)
     implementation(libs.kotlin.allopen.plugin)
+    implementation(libs.scalafix.plugin)
     implementation("org.sonarsource.scanner.gradle:sonarqube-gradle-plugin:4.3.1.3277")
     // enable gradle catalog for included convention plugins
     implementation(files(libs.javaClass.superclass.protectionDomain.codeSource.location))

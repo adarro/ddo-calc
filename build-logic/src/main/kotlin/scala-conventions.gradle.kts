@@ -26,7 +26,7 @@ plugins {
     id("org.scoverage")
 }
 val libs = the<LibrariesForLibs>()
-val builderScalaVersion : String by project
+val builderScalaVersion: String by project
 
 dependencies {
     when (builderScalaVersion) {
@@ -35,9 +35,10 @@ dependencies {
             implementation(libs.scala3.library)
 
         }
+
         else -> {
 
-                implementation(libs.scala2.library)
+            implementation(libs.scala2.library)
 
         }
 
@@ -68,29 +69,53 @@ configure<org.scoverage.ScoverageExtension> {
     checks.plusAssign(cfgs)
 }
 
-
 tasks.withType<ScalaCompile>().configureEach {
     scalaCompileOptions.apply {
-//        val scalaCompilerPlugin by configurations.getting
-        val scalaCoptions = listOf(
-            "-feature", "-deprecation", "-Ywarn-dead-code",
-            "-Xsource:3-cross",
-//            "-rewrite","-new-syntax"
-        )
 
 
-        additionalParameters?.plusAssign(
-            scalaCoptions
-        )
-        if (builderScalaVersion == "3") {
-            additionalParameters?.plusAssign(
-                listOf(
-                    "-rewrite",
-                    "-new-syntax"
-                ))
+        when(builderScalaVersion) {
+            "3" -> {
+                logger.warn("Scala 3 detected")
+                additionalParameters?.plusAssign(
+                    listOf(
+                        "-rewrite",
+//                        "-new-syntax",
+                        "-source:3.4-migration",
+                        "-Xignore-scala2-macros",
+//                        "explain"
+                    ))
+            }
+            "2" -> {
+                logger.warn("Scala 2 detected")
+                additionalParameters?.plusAssign(
+                    listOf(
+                        "-feature", "-deprecation", "-Ywarn-dead-code",
+                        "-Xsource:3-cross",
+                    )
+                )
+            }
+            else -> {
+                logger.error("Scala version $builderScalaVersion not supported")
+            }
         }
     }
 }
+
+//tasks.withType<ScalaCompile>().forEach() { t ->
+//    {
+//        t.apply {
+//            doFirst {
+//                println("ScalaCompile: First $t")
+//            }
+//            doLast {
+//                println("ScalaCompile: Last $t")
+//
+//            }
+//
+//        }
+//    }
+//}
+
 //
 //
 // tasks.withType<ScalaCompile>().configureEach {

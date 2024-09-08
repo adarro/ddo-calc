@@ -258,23 +258,44 @@ dependencies {
     unsure how  helpful this will be as most data will need runtime validation (aka wix)
      */
     // Use Scala $scalaMajorVersion in our library project
-    val scalaLibraryVersion: String by project
-    val scalaMajorVersion: String by project
+    val builderScalaVersion: String by project
+//    implementation(enforcedPlatform(project(":ddo-platform-scala")))
+    when (builderScalaVersion) {
+        "3" -> {
+            implementation(libs.scala3.library)
+            implementation(libs.enumeratum.s3)
 
-    implementation(enforcedPlatform(project(":ddo-platform-scala")))
-    implementation(libs.scala2.library) {
-//        version {
-//            strictly("2.13.10")
-//        }
+
+            implementation(libs.json4s.native.s3)
+
+            implementation(libs.typesafe.scala.logging.s3)
+            // No scala 3 version of this yet
+            implementation(libs.wix.accord.core.s213)
+            implementation(libs.kxbmap.configs.s213)
+
+
+        }
+
+        else -> {
+            implementation(libs.scala2.library)
+            implementation(libs.scala2.library)
+            implementation(libs.enumeratum.s213)
+
+            implementation(libs.kxbmap.configs.s213)
+
+            implementation(libs.json4s.native.s213)
+
+            // validation and rules
+            implementation(libs.wix.accord.core.s213)
+            implementation(libs.typesafe.scala.logging.s213)
+
+        }
     }
-    implementation(libs.enumeratum.s213)
+
+
+
     implementation(libs.typesafe.config)
-    implementation(libs.kxbmap.configs.s213)
 
-    implementation(libs.json4s.native.s213)
-
-    // validation and rules
-    implementation(libs.wix.accord.core.s213)
     implementation(libs.logback.classic)
-    implementation(libs.typesafe.scala.logging.s213)
+
 }

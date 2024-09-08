@@ -27,22 +27,43 @@ description = "Core DDO Objects"
 val concordionVersion: String by project
 
 dependencies {
-    implementation(enforcedPlatform(project(":ddo-platform-scala")))
+//    implementation(enforcedPlatform(project(":ddo-platform-scala")))
     implementation(project(":ddo-util"))
     implementation(project(":ddo-modeling"))
 
     // Platform dependent
     // https://mvnrepository.com/artifact/org.json4s/json4s-native
-    implementation(libs.json4s.native.s213)
-    implementation(libs.scala2.library)
-    implementation(libs.enumeratum.s213)
-    implementation(libs.typesafe.config)
-    implementation(libs.kxbmap.configs.s213)
-    // validation and rules
-    implementation(libs.wix.accord.core.s213)
+    val builderScalaVersion: String by project
+logger.error("showind builderScalaVersion: $builderScalaVersion")
+    when (builderScalaVersion) {
+        "3" -> {
+            implementation(libs.scala3.library)
+            implementation(libs.json4s.native.s3)
 
+            implementation(libs.enumeratum.s3)
+
+            implementation(libs.kxbmap.configs.s213)
+            // validation and rules
+            implementation(libs.wix.accord.core.s213)
+            implementation(libs.typesafe.scala.logging.s3)
+        }
+
+        else -> {
+            implementation(libs.scala2.library)
+            implementation(libs.json4s.native.s213)
+
+            implementation(libs.enumeratum.s213)
+
+            implementation(libs.kxbmap.configs.s213)
+            // validation and rules
+            implementation(libs.wix.accord.core.s213)
+
+
+            implementation(libs.typesafe.scala.logging.s213)
+        }
+    }
     implementation(libs.logback.classic)
-    implementation(libs.typesafe.scala.logging.s213)
+    implementation(libs.typesafe.config)
     implementation(libs.jetbrains.annotations)
     testImplementation(project(":ddo-testing-util"))
 }

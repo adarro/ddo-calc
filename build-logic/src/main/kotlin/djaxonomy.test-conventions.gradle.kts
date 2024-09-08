@@ -99,12 +99,22 @@ fun JvmTestSuite.applyConcordionAcceptanceTest() {
     }
 }
 
-fun JvmTestSuite.applyScalaDepends() {
+fun JvmTestSuite.applyScala2Depends() {
     dependencies {
         implementation(libs.scala2.library)
         implementation(libs.logback.classic)
         implementation(libs.typesafe.scala.logging.s213)
         implementation(libs.enumeratum.s213)
+        implementation(libs.typesafe.config)
+    }
+}
+
+fun JvmTestSuite.applyScala3Depends() {
+    dependencies {
+        implementation(libs.scala3.library)
+        implementation(libs.logback.classic)
+        implementation(libs.typesafe.scala.logging.s3)
+        implementation(libs.enumeratum.s3)
         implementation(libs.typesafe.config)
     }
 }
@@ -122,17 +132,33 @@ fun JvmTestSuite.applyJupiterEngine() {
 }
 
 fun JvmTestSuite.applyScalaTest() {
+
     dependencies {
-        runtimeOnly(libs.scalatest.plus.junit)
+        val builderScalaVersion: String by project
+        if (builderScalaVersion == "3") {
+            runtimeOnly(libs.scalatest.plus.junit.s3)
 // runtimeOnly("org.junit.vintage:junit-vintage-engine:5.10.0")
-        implementation(libs.scalatest.s213)
-        implementation(libs.scalatest.plus.mockito.s213)
+            implementation(libs.scalatest.s3)
+            implementation(libs.scalatest.plus.mockito.s3)
 
-        implementation(libs.mockito.core)
-        implementation(libs.wix.accord.core.s213)
-        implementation(libs.wix.accord.scalatest.s213)
+            implementation(libs.mockito.core)
+            implementation(libs.wix.accord.core.s213)
+            implementation(libs.wix.accord.scalatest.s213)
 
-        implementation(libs.scalatest.plus.scalacheck.s213)
+            implementation(libs.scalatest.plus.scalacheck.s3)
+        } else {
+            runtimeOnly(libs.scalatest.plus.junit.s213)
+// runtimeOnly("org.junit.vintage:junit-vintage-engine:5.10.0")
+            implementation(libs.scalatest.s213)
+            implementation(libs.scalatest.plus.mockito.s213)
+
+            implementation(libs.mockito.core)
+            implementation(libs.wix.accord.core.s213)
+            implementation(libs.wix.accord.scalatest.s213)
+
+            implementation(libs.scalatest.plus.scalacheck.s213)
+        }
+
 // JUnit
     }
 
@@ -185,8 +211,8 @@ performanceTest by registering(JvmTestSuite::class)
 
 // Scala Specific
                 if (project.plugins.hasPlugin("scala")) {
-
-                    logger.info("Configuring ${project.name} for Scala ${tt.name} Testing :  ${this.name} ")
+                    val builderScalaVersion: String by project
+                    logger.info("Configuring ${project.name} for Scala${builderScalaVersion} ${tt.name} Testing :  ${this.name} ")
 
                     when (tt) {
                         TestTypes.Unit -> {
@@ -196,7 +222,13 @@ performanceTest by registering(JvmTestSuite::class)
 
                         TestTypes.Acceptance -> {
                             useJUnitJupiter()
-                            this.applyScalaDepends()
+                            if (builderScalaVersion == "3") {
+                                this.applyScala3Depends()
+                            } else {
+                                this.applyScala2Depends()
+                            }
+
+
                             this.applyJupiterEngine()
                             this.applyVintageEngine()
                             logger.info("adding scala acceptance stuff")

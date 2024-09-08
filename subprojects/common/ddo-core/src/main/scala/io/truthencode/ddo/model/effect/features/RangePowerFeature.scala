@@ -29,10 +29,10 @@ import io.truthencode.ddo.support.naming.UsingSearchPrefix
  */
 trait RangePowerFeature extends Features {
   self: SourceInfo =>
-  protected val rangePowerBonusType: BonusType
+  protected def rangePowerBonusType: BonusType
   protected val rangePowerBonusAmount: Int
-  protected[this] val triggerOn: Seq[TriggerEvent]
-  protected[this] val triggerOff: Seq[TriggerEvent]
+  protected[this] def triggerOn: Seq[TriggerEvent]
+  protected[this] def triggerOff: Seq[TriggerEvent]
   protected[this] val rangePowerCategories: Seq[effect.EffectCategories.Value]
   private val src = this
   private[this] val rangePowerAmount =

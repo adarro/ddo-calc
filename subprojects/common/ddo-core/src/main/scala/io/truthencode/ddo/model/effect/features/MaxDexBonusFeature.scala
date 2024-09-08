@@ -31,9 +31,9 @@ trait MaxDexBonusFeature extends Features {
   self: SourceInfo =>
   val mdbBonusType: BonusType
   val mdbAmount: Int
-  protected[this] val triggerOn: Seq[TriggerEvent]
-  protected[this] val triggerOff: Seq[TriggerEvent]
-  protected[this] val mdbCategories: Seq[effect.EffectCategories.Value]
+  protected[this] def triggerOn: Seq[TriggerEvent]
+  protected[this] def triggerOff: Seq[TriggerEvent]
+  protected[this] def mdbCategories: Seq[effect.EffectCategories.Value]
   private val src = this
   private[this] val maxDexterityBonus =
     new PartModifier[Int, BasicStat] with UsingSearchPrefix {

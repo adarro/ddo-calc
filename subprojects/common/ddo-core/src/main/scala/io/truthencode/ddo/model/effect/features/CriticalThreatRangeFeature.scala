@@ -37,9 +37,9 @@ trait CriticalThreatRangeFeature extends Features {
     cats,
     effectDetail)
   val cats = LazyList(EffectCategories.GeneralCombat.toString)
-  protected val criticalThreatRangeType: BonusType
+  protected def criticalThreatRangeType: BonusType
   protected val criticalThreatRangeAmount: Seq[(WeaponCategory, Int)]
-  protected[this] val effectDetail: DetailedEffect
+  protected[this] def effectDetail: DetailedEffect
   private val src = this
 //  private[this] val criticalThreatRange =
 //    new PartModifier[Seq[(WeaponCategory, Int)], BasicStat]

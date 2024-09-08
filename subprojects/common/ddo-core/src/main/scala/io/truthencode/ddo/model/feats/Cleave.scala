@@ -17,14 +17,10 @@
  */
 package io.truthencode.ddo.model.feats
 
-import io.truthencode.ddo.activation.AtWillEvent
+import io.truthencode.ddo.activation.{AtWillEvent, TriggeredActivationImpl}
 import io.truthencode.ddo.enhancement.BonusType
 import io.truthencode.ddo.model.abilities.ActiveAbilities
-import io.truthencode.ddo.model.effect.features.{
-  FeaturesImpl,
-  GrantAbilityFeature,
-  SpecialAttackFeature
-}
+import io.truthencode.ddo.model.effect.features.{FeaturesImpl, GrantAbilityFeature, SpecialAttackFeature}
 import io.truthencode.ddo.model.misc.CoolDownPool.Cleave
 import io.truthencode.ddo.model.misc.SharedCoolDown
 import io.truthencode.ddo.support.requisite.{FeatRequisiteImpl, RequiresAllOfFeat}
@@ -37,7 +33,7 @@ import java.time.Duration
  * chance to hit more enemies at once than a basic attack.
  */
 protected[feats] trait Cleave
-  extends FeatRequisiteImpl with ActiveFeat with AtWillEvent with RequiresAllOfFeat
+  extends FeatRequisiteImpl with TriggeredActivationImpl with BonusSelectableToClassFeatImpl  with ActiveFeat with AtWillEvent with RequiresAllOfFeat
   with FighterBonusFeat with FeaturesImpl with GrantAbilityFeature with SpecialAttackFeature
   with SharedCoolDown {
   self: GeneralFeat =>

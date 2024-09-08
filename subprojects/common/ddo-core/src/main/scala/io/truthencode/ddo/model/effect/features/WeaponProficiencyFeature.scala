@@ -32,11 +32,11 @@ import io.truthencode.ddo.support.naming.UsingSearchPrefix
 trait WeaponProficiencyFeature extends Features {
   self: SourceInfo =>
 
-  protected val proficiencyType: BonusType
+  protected def proficiencyType: BonusType
   protected val proficiencyAmount: Seq[WeaponCategory]
-  protected[this] val triggerOn: Seq[TriggerEvent]
-  protected[this] val triggerOff: Seq[TriggerEvent]
-  protected[this] val weaponProficiencyCategories: Seq[effect.EffectCategories.Value]
+  protected[this] def triggerOn: Seq[TriggerEvent]
+  protected[this] def triggerOff: Seq[TriggerEvent]
+  protected[this] def weaponProficiencyCategories: Seq[effect.EffectCategories.Value]
   private val src = this
   private[this] val proficiencyChance =
     new PartModifier[Seq[WeaponCategory], BasicStat] with UsingSearchPrefix {

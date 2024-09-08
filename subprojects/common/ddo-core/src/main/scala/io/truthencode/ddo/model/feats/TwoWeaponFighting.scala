@@ -33,8 +33,8 @@ import io.truthencode.ddo.support.requisite._
  * Dexterity 15
  */
 trait TwoWeaponFighting
-  extends FeatRequisiteImpl with Passive with ClassRequisiteImpl with GrantsToClass
-  with AttributeRequisiteImpl with RequiresAllOfAttribute with FighterBonusFeat
+  extends FeatRequisiteImpl with BonusSelectableToClassFeatImpl with Passive with ClassRequisiteImpl
+  with GrantsToClass with AttributeRequisiteImpl with RequiresAllOfAttribute with FighterBonusFeat
   with MartialArtsFeat {
   self: GeneralFeat =>
   override def allOfAttributes: Seq[(Attribute, Int)] =

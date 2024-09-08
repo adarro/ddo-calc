@@ -30,7 +30,7 @@ import io.truthencode.ddo.support.requisite.{
  * Power or Ranged Power. This feat can be taken multiple times, once for each weapon type.
  */
 protected[feats] trait WeaponSpecializationBase
-  extends FeatRequisiteImpl with ClassRequisiteImpl with Passive with RequiresAllOfClass
+  extends FeatRequisiteImpl with ClassRequisiteImpl with BonusSelectableToClassFeatImpl with Passive with RequiresAllOfClass
   with FighterBonusFeat {
   self: GeneralFeat =>
 

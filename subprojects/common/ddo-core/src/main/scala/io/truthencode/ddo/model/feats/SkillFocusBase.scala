@@ -26,6 +26,6 @@ import io.truthencode.ddo.support.requisite.{FeatRequisiteImpl, FreeFeat}
  * Lock, Perform, Repair, Search, Spellcraft, Spot, Swim, Tumble, Use Magic Device. * None
  */
 protected[feats] trait SkillFocusBase
-  extends FeatRequisiteImpl with Passive with FreeFeat with ArtificerBonusFeat {
+  extends FeatRequisiteImpl with BonusSelectableToClassFeatImpl with Passive with FreeFeat with ArtificerBonusFeat {
   self: GeneralFeat =>
 }

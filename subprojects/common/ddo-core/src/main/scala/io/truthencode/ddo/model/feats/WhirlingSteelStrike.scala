@@ -30,8 +30,9 @@ import io.truthencode.ddo.support.requisite.{
 }
 
 trait WhirlingSteelStrike
-  extends FeatRequisiteImpl with ClassRequisiteImpl with Passive with RequiresAllOfClass
-  with FighterBonusFeat with MartialArtsFeat with FeaturesImpl with GrantAbilityFeature {
+  extends FeatRequisiteImpl with ClassRequisiteImpl with BonusSelectableToClassFeatImpl with Passive
+  with RequiresAllOfClass with FighterBonusFeat with MartialArtsFeat with FeaturesImpl
+  with GrantAbilityFeature {
   self: GeneralFeat =>
   override lazy val grantedAbility: ActiveAbilities = ActiveAbilities.WhirlingSteelStrike
   override val grantBonusType: BonusType = BonusType.Feat

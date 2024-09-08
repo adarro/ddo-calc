@@ -20,7 +20,7 @@ package io.truthencode.ddo.model.enhancement.enhancements.classbased
 import io.truthencode.ddo.model.classes.HeroicCharacterClass
 import io.truthencode.ddo.model.enhancement._
 import io.truthencode.ddo.model.enhancement.enhancements.{expanders, ClassEnhancement}
-import io.truthencode.ddo.support.Elvis._
+import io.truthencode.ddo.support.Elvis.booleanToElvis
 import io.truthencode.ddo.support.points.SpendablePoints
 import io.truthencode.ddo.support.points.SpendablePoints.ActionPoints
 import io.truthencode.ddo.support.requisite._
@@ -34,7 +34,7 @@ trait ClassEnhancementBase {
     with PointInTreeRequisite with RequiresPointsAvailable with ActionPointRequisite with Tier =>
   def validClasses: Seq[HeroicCharacterClass]
 
-  def singleClass: Option[HeroicCharacterClass] = isSingleClass ? validClasses.headOption | None
+  def singleClass: Option[HeroicCharacterClass] = if isSingleClass then validClasses.headOption else None
 
   def isSingleClass: Boolean = validClasses.size.equals(1)
 

@@ -45,7 +45,7 @@ trait SkillFeature extends Features {
       .build
     SkillEffect(f._1, f._2, bonusType, src, categories, eb.modifiers, effectDetail)
   }
-  val bonusType: BonusType
+  def bonusType: BonusType
   val skillTriggerOn: Seq[TriggerEvent] = Seq(TriggerEvent.Passive)
   val skillTriggerOff: Seq[TriggerEvent] = Seq(TriggerEvent.Never)
   val affectedSkills: List[(Skill, Int)]

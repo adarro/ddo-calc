@@ -17,16 +17,12 @@
  */
 package io.truthencode.ddo.model.feats
 
+import io.truthencode.ddo.activation.{TriggerImpl, TriggeredActivationImpl}
 import io.truthencode.ddo.enhancement.BonusType
 import io.truthencode.ddo.model.abilities.ActiveAbilities
 import io.truthencode.ddo.model.effect
 import io.truthencode.ddo.model.effect.TriggerEvent
-import io.truthencode.ddo.model.effect.features.{
-  ArmorClassPercentFeature,
-  FeaturesImpl,
-  GrantAbilityFeature,
-  HitChancePercentFeature
-}
+import io.truthencode.ddo.model.effect.features.{ArmorClassPercentFeature, FeaturesImpl, GrantAbilityFeature, HitChancePercentFeature}
 import io.truthencode.ddo.support.requisite.{FeatRequisiteImpl, FreeFeat}
 
 import java.time.Duration
@@ -39,7 +35,7 @@ import java.time.Duration
  *   dispel any rage or recklessness effects currently present on your character.
  */
 protected[feats] trait DefensiveFighting
-  extends FeatRequisiteImpl with ActiveFeat with DefensiveCombatStance with FreeFeat
+  extends FeatRequisiteImpl with TriggeredActivationImpl with ActiveFeat with DefensiveCombatStance with FreeFeat
   with FeaturesImpl with GrantAbilityFeature with ArmorClassPercentFeature
   with HitChancePercentFeature {
   self: GeneralFeat =>

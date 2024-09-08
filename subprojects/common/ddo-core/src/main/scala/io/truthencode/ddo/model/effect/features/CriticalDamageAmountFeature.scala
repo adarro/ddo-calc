@@ -29,10 +29,10 @@ import io.truthencode.ddo.support.naming.UsingSearchPrefix
  */
 trait CriticalDamageAmountFeature extends Features {
   self: SourceInfo =>
-  protected val criticalDamageBonusType: BonusType
+  protected def criticalDamageBonusType: BonusType
   protected val criticalDamageBonusAmount: Int
-  protected[this] val triggerOn: Seq[TriggerEvent]
-  protected[this] val triggerOff: Seq[TriggerEvent]
+  protected[this] def triggerOn: Seq[TriggerEvent]
+  protected[this] def triggerOff: Seq[TriggerEvent]
   private val src = this
   private[this] val criticalDamageAmount =
     new PartModifier[Int, BasicStat] with UsingSearchPrefix {

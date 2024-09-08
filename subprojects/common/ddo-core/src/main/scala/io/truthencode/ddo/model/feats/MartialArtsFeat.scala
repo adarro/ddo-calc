@@ -25,7 +25,7 @@ import io.truthencode.ddo.support.requisite.{Inclusion, Requisite, SelectableToC
  * [[https://ddowiki.com/page/Martial_arts_feats]]
  */
 trait MartialArtsFeat
-  extends SelectableToClass with BonusSelectableFeat with BonusSelectableFeatImpl {
+  extends SelectableToClass with BonusSelectableToClassFeat with BonusSelectableToClassFeatImpl {
   self: Feat with FeatType with Requisite with Inclusion =>
   override val levels: Set[Int] = Set(1, 2, 6)
   private[this] val myCharClass: HeroicCharacterClass = HeroicCharacterClass.Monk

@@ -20,7 +20,7 @@ package io.truthencode.ddo.model.feats
 import io.truthencode.ddo.support.requisite.{FeatRequisiteImpl, GrantsToClass, RequiresBaB}
 
 protected[feats] trait KnightsTraining
-  extends FeatRequisiteImpl
+  extends FeatRequisiteImpl with BonusSelectableToClassFeatImpl
   // with ClassRequisiteImpl
   with Passive with RequiresBaB with FighterBonusFeat with GrantsToClass {
   self: GeneralFeat =>

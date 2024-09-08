@@ -31,10 +31,10 @@ import io.truthencode.ddo.support.naming.UsingSearchPrefix
  */
 trait ToDamageByWeaponClassFeature extends Features {
   self: SourceInfo =>
-  protected val toDamageType: BonusType
+  protected def toDamageType: BonusType
   protected val toDamageAmount: Seq[(WeaponCategory, Int)]
-  protected[this] val triggerOn: Seq[TriggerEvent]
-  protected[this] val triggerOff: Seq[TriggerEvent]
+  protected[this] def triggerOn: Seq[TriggerEvent]
+  protected[this] def triggerOff: Seq[TriggerEvent]
   protected[this] val toDmgWcCategories: Seq[effect.EffectCategories.Value]
   private val src = this
   private[this] val toDamageChance =

@@ -36,9 +36,9 @@ import io.truthencode.ddo.support.requisite.{
  * feats.
  */
 trait Dodge
-  extends FeatRequisiteImpl with Passive with AttributeRequisiteImpl with RequiresAllOfAttribute
-  with FighterBonusFeat with AlchemistBonusFeat with MartialArtsFeat with FeaturesImpl
-  with DodgeChanceFeature {
+  extends FeatRequisiteImpl with BonusSelectableToClassFeatImpl with Passive
+  with AttributeRequisiteImpl with RequiresAllOfAttribute with FighterBonusFeat
+  with AlchemistBonusFeat with MartialArtsFeat with FeaturesImpl with DodgeChanceFeature {
   self: GeneralFeat =>
 
   override protected[this] lazy val triggerOn: Seq[TriggerEvent] = Seq(TriggerEvent.Passive)

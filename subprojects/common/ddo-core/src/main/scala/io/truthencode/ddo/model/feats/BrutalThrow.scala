@@ -32,8 +32,8 @@ import io.truthencode.ddo.support.requisite.{
  * Strength 13 Base Attack Bonus +1
  */
 trait BrutalThrow
-  extends FeatRequisiteImpl with Passive with AttributeRequisiteImpl with RequiresAllOfAttribute
-  with RequiresBaB with FighterBonusFeat {
+  extends FeatRequisiteImpl with BonusSelectableToClassFeatImpl with Passive
+  with AttributeRequisiteImpl with RequiresAllOfAttribute with RequiresBaB with FighterBonusFeat {
   self: GeneralFeat =>
   override def allOfAttributes: Seq[(Attribute, Int)] = List((Attribute.Strength, 13))
 

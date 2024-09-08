@@ -17,7 +17,7 @@
  */
 package io.truthencode.ddo.model.feats
 
-import io.truthencode.ddo.activation.AtWillEvent
+import io.truthencode.ddo.activation.{AtWillEvent, TriggeredActivationImpl}
 import io.truthencode.ddo.enhancement.BonusType
 import io.truthencode.ddo.model.abilities.ActiveAbilities
 import io.truthencode.ddo.model.effect
@@ -37,8 +37,9 @@ import java.time.Duration
  * None
  */
 protected[feats] trait SlicingBlow
-  extends FeatRequisiteImpl with ActiveFeat with AtWillEvent with FreeFeat with FighterBonusFeat
-  with FeaturesImpl with GrantAbilityFeature {
+  extends FeatRequisiteImpl with TriggeredActivationImpl with BonusSelectableToClassFeatImpl
+  with ActiveFeat with AtWillEvent with FreeFeat with FighterBonusFeat with FeaturesImpl
+  with GrantAbilityFeature {
   self: GeneralFeat =>
   override lazy val grantedAbility: ActiveAbilities = ActiveAbilities.SlicingBlow
   // TODO: Add Bleed Effect to slicing blow

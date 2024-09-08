@@ -17,6 +17,7 @@
  */
 package io.truthencode.ddo.model.feats
 
+import io.truthencode.ddo.activation.TriggeredActivationImpl
 import io.truthencode.ddo.enhancement.BonusType
 import io.truthencode.ddo.model.abilities.ActiveAbilities
 import io.truthencode.ddo.model.attribute.Attribute
@@ -40,9 +41,10 @@ import io.truthencode.ddo.support.requisite.{
  *   add Rage Prohibition
  */
 protected[feats] trait Precision
-  extends FeatRequisiteImpl with ActiveFeat with OffensiveCombatStance with AttributeRequisiteImpl
-  with RequiresAllOfAttribute with RequiresBaB with AlchemistBonusFeat with FighterBonusFeat
-  with MartialArtsFeat with DefaultCoolDown with FeaturesImpl with GrantAbilityFeature {
+  extends FeatRequisiteImpl with TriggeredActivationImpl with BonusSelectableToClassFeatImpl
+  with ActiveFeat with OffensiveCombatStance with AttributeRequisiteImpl with RequiresAllOfAttribute
+  with RequiresBaB with AlchemistBonusFeat with FighterBonusFeat with MartialArtsFeat
+  with DefaultCoolDown with FeaturesImpl with GrantAbilityFeature {
   self: GeneralFeat =>
   override lazy val grantedAbility: ActiveAbilities = ActiveAbilities.Precision
 // TODO: Add reduce fort 25% and 5% tohit + rage prohibition

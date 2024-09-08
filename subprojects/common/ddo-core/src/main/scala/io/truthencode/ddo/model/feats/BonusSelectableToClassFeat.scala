@@ -25,8 +25,8 @@ import io.truthencode.ddo.support.requisite.{Inclusion, Requisite, SelectableToC
  * given class at a given level. Specifically it flags Wizard, Fighter, Monk or other classes that
  * gain an extra feat at certain levels.
  */
-trait BonusSelectableFeat {
-  self: Feat =>
+trait BonusSelectableToClassFeat {
+  self: Feat with SelectableToClass =>
 
   val levels: Set[Int]
 
@@ -34,7 +34,7 @@ trait BonusSelectableFeat {
 
 }
 
-trait BonusSelectableFeatImpl extends BonusSelectableFeat with SelectableToClass {
+trait BonusSelectableToClassFeatImpl extends BonusSelectableToClassFeat with SelectableToClass {
   self: Feat with FeatType with Requisite with Inclusion =>
   override def bonusCharacterClass: Seq[HeroicCharacterClass] = Nil
   override def bonusSelectableToClass: Seq[(HeroicCharacterClass, Int)] = Nil

@@ -32,12 +32,12 @@ import scala.util.{Success, Try}
 trait GrantAbilityFeature extends Features {
   self: SourceInfo =>
   val grantBonusType: BonusType
-  val grantedAbility: ActiveAbilities
+  def grantedAbility: ActiveAbilities
   val abilityId: String
   val description: String
-  protected[this] val triggerOn: Seq[TriggerEvent]
-  protected[this] val triggerOff: Seq[TriggerEvent]
-  protected[this] val grantAbilityCategories: Seq[effect.EffectCategories.Value]
+  protected[this] def triggerOn: Seq[TriggerEvent]
+  protected[this] def triggerOff: Seq[TriggerEvent]
+  protected[this] def grantAbilityCategories: Seq[effect.EffectCategories.Value]
   private val src = this
   private[this] val abilityGranted =
     new PartModifier[ActiveAbilities, BasicStat] with UsingAbilitySearchPrefix {

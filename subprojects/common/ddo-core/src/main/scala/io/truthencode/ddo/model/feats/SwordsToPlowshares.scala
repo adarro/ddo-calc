@@ -26,7 +26,8 @@ import io.truthencode.ddo.support.requisite.{FeatRequisiteImpl, RequiresBaB}
  * Strength 13 Base Attack Bonus +1
  */
 trait SwordsToPlowshares
-  extends FeatRequisiteImpl with Passive with RequiresBaB with MartialArtsFeat {
+  extends FeatRequisiteImpl with BonusSelectableToClassFeatImpl with Passive with RequiresBaB
+  with MartialArtsFeat {
   self: GeneralFeat =>
   override def requiresBaB: Int = 1
 }

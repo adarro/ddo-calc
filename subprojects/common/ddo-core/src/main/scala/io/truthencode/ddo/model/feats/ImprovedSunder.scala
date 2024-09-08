@@ -17,6 +17,7 @@
  */
 package io.truthencode.ddo.model.feats
 
+import io.truthencode.ddo.activation.TriggeredActivationImpl
 import io.truthencode.ddo.enhancement.BonusType
 import io.truthencode.ddo.model.abilities.ActiveAbilities
 import io.truthencode.ddo.model.effect
@@ -35,9 +36,9 @@ import io.truthencode.ddo.support.requisite.{FeatRequisiteImpl, RequiresAllOfFea
  * Sunder Power Attack
  */
 protected[feats] trait ImprovedSunder
-  extends FeatRequisiteImpl with ActiveFeat with RequiresAllOfFeat with FighterBonusFeat
-  with Tactical with DefaultCoolDown with MartialArtsFeat with FeaturesImpl
-  with GrantAbilityFeature {
+  extends FeatRequisiteImpl with TriggeredActivationImpl with BonusSelectableToClassFeatImpl
+  with ActiveFeat with RequiresAllOfFeat with FighterBonusFeat with Tactical with DefaultCoolDown
+  with MartialArtsFeat with FeaturesImpl with GrantAbilityFeature {
   self: GeneralFeat =>
   override lazy val grantedAbility: ActiveAbilities = ActiveAbilities.ImprovedSunder
   override protected[this] val triggerOn: Seq[TriggerEvent] = Seq(TriggerEvent.AtWill)

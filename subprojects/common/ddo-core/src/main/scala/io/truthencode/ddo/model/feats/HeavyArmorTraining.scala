@@ -31,8 +31,8 @@ import io.truthencode.ddo.support.requisite.{
  * Level 2: Fighter
  */
 trait HeavyArmorTraining
-  extends FeatRequisiteImpl with ClassRequisiteImpl with Passive with RequiresAllOfClass
-  with FighterBonusFeat {
+  extends FeatRequisiteImpl with BonusSelectableToClassFeatImpl with ClassRequisiteImpl with Passive
+  with RequiresAllOfClass with FighterBonusFeat {
   self: GeneralFeat =>
   override def allOfClass: Seq[(HeroicCharacterClass, Int)] =
     List((HeroicCharacterClass.Fighter, 2))

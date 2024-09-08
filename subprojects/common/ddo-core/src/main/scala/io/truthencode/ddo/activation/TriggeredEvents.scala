@@ -29,6 +29,9 @@ trait AttackEvent extends TriggeredActivation {
     super.activatableTriggers :+ OnAttack
 }
 
+trait TriggeredEventImpl extends TriggeredActivation {
+    override def activatableTriggers: Seq[TriggerEvent] = Nil
+}
 /**
  * Occurs on a specific range of attack rolls
  */

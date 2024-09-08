@@ -26,7 +26,8 @@ import io.truthencode.ddo.support.requisite.{FeatRequisiteImpl, RequiresAllOfFea
  * using a shield. Add +3 Melee Power * Shield Proficiency: General *
  */
 protected[feats] trait ShieldMastery
-  extends FeatRequisiteImpl with Passive with RequiresAllOfFeat with FighterBonusFeat {
+  extends FeatRequisiteImpl with BonusSelectableToClassFeatImpl with Passive with RequiresAllOfFeat
+  with FighterBonusFeat {
   self: GeneralFeat =>
   override def allOfFeats: Seq[GeneralFeat] = List(GeneralFeat.ShieldProficiency)
 }

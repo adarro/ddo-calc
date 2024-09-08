@@ -31,9 +31,9 @@ trait DeflectArrowsFeature extends Features {
   self: SourceInfo =>
   protected val deflectArrowsBonusType: BonusType
   protected val secondsPerArrow: Int
-  protected[this] val triggerOn: Seq[TriggerEvent]
-  protected[this] val triggerOff: Seq[TriggerEvent]
-  protected[this] val deflectCategories: Seq[effect.EffectCategories.Value]
+  protected[this] def triggerOn: Seq[TriggerEvent]
+  protected[this] def triggerOff: Seq[TriggerEvent]
+  protected[this] def deflectCategories: Seq[effect.EffectCategories.Value]
   private val src = this
   private[this] val deflectArrowsChance =
     new PartModifier[Int, BasicStat] with UsingSearchPrefix {

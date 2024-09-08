@@ -33,9 +33,9 @@ trait DodgeChanceFeature extends Features {
   self: SourceInfo =>
   val dodgeBonusType: BonusType
   val dodgeBonusAmount: Int
-  protected[this] val triggerOn: Seq[TriggerEvent]
-  protected[this] val triggerOff: Seq[TriggerEvent]
-  protected[this] val dodgeCategories: Seq[effect.EffectCategories.Value]
+  protected[this] def triggerOn: Seq[TriggerEvent]
+  protected[this] def triggerOff: Seq[TriggerEvent]
+  protected[this] def dodgeCategories: Seq[effect.EffectCategories.Value]
   private val src = this
   private[this] val dodgeChance =
     new PartModifier[Int, BasicStat with MissChance] with UsingSearchPrefix {

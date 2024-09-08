@@ -29,8 +29,9 @@ import io.truthencode.ddo.support.requisite._
  * Two Handed Fighting Strength 17 Base Attack Bonus +6
  */
 trait ImprovedTwoHandedFighting
-  extends FeatRequisiteImpl with Passive with RequiresAllOfFeat with AttributeRequisiteImpl
-  with RequiresAllOfAttribute with RequiresBaB with FighterBonusFeat with MartialArtsFeat {
+  extends FeatRequisiteImpl with BonusSelectableToClassFeatImpl with Passive with RequiresAllOfFeat
+  with AttributeRequisiteImpl with RequiresAllOfAttribute with RequiresBaB with FighterBonusFeat
+  with MartialArtsFeat {
   self: GeneralFeat =>
   override def allOfAttributes: Seq[(Attribute, Int)] = List((Attribute.Strength, 17))
 

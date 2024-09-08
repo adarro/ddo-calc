@@ -32,8 +32,8 @@ import io.truthencode.ddo.support.requisite._
  * Single Weapon Fighting 4 ranks of Balance Base Attack Bonus +6
  */
 protected[feats] trait ImprovedSingleWeaponFighting
-  extends FeatRequisiteImpl with SkillRequisiteImpl with Passive with RequiresAllOfFeat
-  with RequiresAnyOfSkill with RequiresBaB with FighterBonusFeat {
+  extends FeatRequisiteImpl with BonusSelectableToClassFeatImpl with SkillRequisiteImpl with Passive
+  with RequiresAllOfFeat with RequiresAnyOfSkill with RequiresBaB with FighterBonusFeat {
   self: GeneralFeat =>
   override def requiresBaB: Int = 6
 

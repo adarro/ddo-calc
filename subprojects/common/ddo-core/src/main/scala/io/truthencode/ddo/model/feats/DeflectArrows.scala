@@ -35,9 +35,9 @@ import io.truthencode.ddo.support.requisite.{
 import java.time.Duration
 
 trait DeflectArrows
-  extends FeatRequisiteImpl with RequiresAllOfClass with Passive with AttributeRequisiteImpl
-  with RequiresAllOfAttribute with MartialArtsFeat with FeaturesImpl with DeflectArrowsFeature
-  with CoolDown {
+  extends FeatRequisiteImpl with BonusSelectableToClassFeatImpl with RequiresAllOfClass with Passive
+  with AttributeRequisiteImpl with RequiresAllOfAttribute with MartialArtsFeat with FeaturesImpl
+  with DeflectArrowsFeature with CoolDown {
   self: GeneralFeat =>
   override protected[this] lazy val triggerOn: Seq[TriggerEvent] = Seq(TriggerEvent.OnTimer)
   override protected[this] lazy val triggerOff: Seq[TriggerEvent] = Seq(TriggerEvent.OnCoolDown)

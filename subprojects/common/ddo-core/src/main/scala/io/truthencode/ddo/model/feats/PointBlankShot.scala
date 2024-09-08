@@ -29,7 +29,7 @@ import io.truthencode.ddo.support.requisite.{FeatRequisiteImpl, FreeFeat}
  * None
  */
 protected[feats] trait PointBlankShot
-  extends FeatRequisiteImpl with Passive with FreeFeat with FighterBonusFeat with ArtificerBonusFeat
-  with AlchemistBonusFeat {
+  extends FeatRequisiteImpl with BonusSelectableToClassFeatImpl with Passive with FreeFeat
+  with FighterBonusFeat with ArtificerBonusFeat with AlchemistBonusFeat {
   self: GeneralFeat =>
 }

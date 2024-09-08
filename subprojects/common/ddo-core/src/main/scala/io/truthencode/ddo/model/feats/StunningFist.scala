@@ -17,6 +17,7 @@
  */
 package io.truthencode.ddo.model.feats
 
+import io.truthencode.ddo.activation.TriggeredActivationImpl
 import io.truthencode.ddo.model.feats.ClassFeat.FlurryOfBlows
 import io.truthencode.ddo.support.requisite.{FeatRequisiteImpl, RequiresAllOfFeat}
 
@@ -58,8 +59,8 @@ import java.time.Duration
  *   catch Tatical DC bonuses accurately
  */
 protected[feats] trait StunningFist
-  extends FeatRequisiteImpl with ActiveFeat with Tactical with RequiresAllOfFeat
-  with MartialArtsFeat {
+  extends FeatRequisiteImpl with TriggeredActivationImpl with BonusSelectableToClassFeatImpl
+  with ActiveFeat with Tactical with RequiresAllOfFeat with MartialArtsFeat {
   self: GeneralFeat =>
   override def allOfFeats: Seq[Feat] = Seq(FlurryOfBlows)
 

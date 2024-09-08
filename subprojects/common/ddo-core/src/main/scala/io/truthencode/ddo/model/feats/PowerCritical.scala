@@ -32,9 +32,9 @@ import io.truthencode.ddo.support.requisite.{FeatRequisiteImpl, RequiresAnyOfFea
  * Attack Bonus 4
  */
 protected[feats] trait PowerCritical
-  extends FeatRequisiteImpl with Passive with RequiresBaB with RequiresAnyOfFeat
-  with FighterBonusFeat with FeaturesImpl with ConfirmCriticalHitAmountFeature
-  with CriticalDamageAmountFeature {
+  extends FeatRequisiteImpl with BonusSelectableToClassFeatImpl with Passive with RequiresBaB
+  with RequiresAnyOfFeat with FighterBonusFeat with FeaturesImpl
+  with ConfirmCriticalHitAmountFeature with CriticalDamageAmountFeature {
   self: GeneralFeat =>
 
   override protected[this] lazy val triggerOn: Seq[TriggerEvent] = Seq(TriggerEvent.Passive)

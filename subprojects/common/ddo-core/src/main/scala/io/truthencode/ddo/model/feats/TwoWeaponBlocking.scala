@@ -25,7 +25,8 @@ import io.truthencode.ddo.support.requisite.{FeatRequisiteImpl, RequiresAllOfFea
  * handwraps.) * Two Weapon Fighting
  */
 trait TwoWeaponBlocking
-  extends FeatRequisiteImpl with Passive with RequiresAllOfFeat with FighterBonusFeat {
+  extends FeatRequisiteImpl with BonusSelectableToClassFeatImpl with Passive with RequiresAllOfFeat
+  with FighterBonusFeat {
   self: GeneralFeat =>
   override def allOfFeats: Seq[GeneralFeat] = List(GeneralFeat.TwoWeaponFighting)
 }

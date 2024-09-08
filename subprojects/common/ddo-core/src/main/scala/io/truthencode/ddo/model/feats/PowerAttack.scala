@@ -17,6 +17,7 @@
  */
 package io.truthencode.ddo.model.feats
 
+import io.truthencode.ddo.activation.{ActivationTypeImpl, TriggeredEventImpl}
 import io.truthencode.ddo.enhancement.BonusType
 import io.truthencode.ddo.model.abilities.ActiveAbilities
 import io.truthencode.ddo.model.attribute.Attribute
@@ -48,7 +49,8 @@ import java.time.Duration
  *   add Offensive Combat Stance
  */
 protected[feats] trait PowerAttack
-  extends FeatRequisiteImpl with ActiveFeat with Stance with AttributeRequisiteImpl
+  extends FeatRequisiteImpl with BonusSelectableToClassFeatImpl with TriggeredEventImpl
+  with ActivationTypeImpl with ActiveFeat with Stance with AttributeRequisiteImpl
   with RequiresAllOfAttribute with MartialArtsFeat with FighterBonusFeat with FeaturesImpl
   with GrantAbilityFeature {
   self: GeneralFeat =>

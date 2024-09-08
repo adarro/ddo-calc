@@ -34,8 +34,8 @@ import io.truthencode.ddo.support.requisite.{FeatRequisiteImpl, FreeFeat}
  *   Although we should probably type the implicit more specifically here
  */
 protected[feats] trait Toughness
-  extends FeatRequisiteImpl with Passive with FreeFeat with MartialArtsFeat with FeaturesImpl
-  with HitPointPerLevelAmountFeature {
+  extends FeatRequisiteImpl with BonusSelectableToClassFeatImpl with Passive with FreeFeat
+  with MartialArtsFeat with FeaturesImpl with HitPointPerLevelAmountFeature {
   self: GeneralFeat =>
   override protected[this] lazy val triggerOn: Seq[TriggerEvent] = Seq(TriggerEvent.Passive)
   override protected[this] lazy val triggerOff: Seq[TriggerEvent] = Seq(TriggerEvent.Never)

@@ -33,9 +33,9 @@ import io.truthencode.ddo.support.requisite._
  * Dodge, Mobility Dexterity 13 , Base Attack Bonus 4,
  */
 protected[feats] trait SpringAttack
-  extends FeatRequisiteImpl with Passive with RequiresAllOfFeat with AttributeRequisiteImpl
-  with RequiresAllOfAttribute with RequiresBaB with FighterBonusFeat with MartialArtsFeat
-  with FeaturesImpl with GrantAbilityFeature {
+  extends FeatRequisiteImpl with BonusSelectableToClassFeatImpl with Passive with RequiresAllOfFeat
+  with AttributeRequisiteImpl with RequiresAllOfAttribute with RequiresBaB with FighterBonusFeat
+  with MartialArtsFeat with FeaturesImpl with GrantAbilityFeature {
   self: GeneralFeat =>
   override lazy val grantedAbility: ActiveAbilities = ActiveAbilities.SpringAttack
   override val grantBonusType: BonusType = BonusType.Feat

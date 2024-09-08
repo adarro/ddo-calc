@@ -17,6 +17,7 @@
  */
 package io.truthencode.ddo.model.feats
 
+import io.truthencode.ddo.activation.TriggeredActivationImpl
 import io.truthencode.ddo.enhancement.BonusType
 import io.truthencode.ddo.model.abilities.ActiveAbilities
 import io.truthencode.ddo.model.effect
@@ -32,8 +33,9 @@ import java.time.Duration
  * mod) Fortitude save. Some creatures may be immune to the stunning effect.
  */
 protected[feats] trait StunningBlow
-  extends FeatRequisiteImpl with ActiveFeat with FreeFeat with Tactical with FighterBonusFeat
-  with FeaturesImpl with GrantAbilityFeature {
+  extends FeatRequisiteImpl with TriggeredActivationImpl with BonusSelectableToClassFeatImpl
+  with ActiveFeat with FreeFeat with Tactical with FighterBonusFeat with FeaturesImpl
+  with GrantAbilityFeature {
   self: GeneralFeat =>
   override lazy val grantedAbility: ActiveAbilities = ActiveAbilities.StunningBlow
   override val grantBonusType: BonusType = BonusType.Feat

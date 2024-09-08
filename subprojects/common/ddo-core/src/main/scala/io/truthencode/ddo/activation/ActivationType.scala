@@ -78,7 +78,6 @@ object ActivationType extends Enum[ActivationType] with LazyLogging {
   case class Active(triggers: ActiveEvent*)
     extends ActivationTypeImpl with TriggeredActivation with LazyLogging {
 
-    //  override val activatableTriggers(): scala.Seq[_root_.io.truthencode.ddo.model.effect.TriggerEvent] = triggers
     override def activatableTriggers: Seq[TriggerEvent] = triggers
     override def entryName: String = {
       this.triggers.headOption match {
@@ -91,5 +90,7 @@ object ActivationType extends Enum[ActivationType] with LazyLogging {
   /**
    * This effect is always on
    */
-  case object Passive extends PassiveActivation
+  case object Passive extends PassiveActivation {
+    override def activations: Seq[TriggerEvent] = super.activations
+  }
 }

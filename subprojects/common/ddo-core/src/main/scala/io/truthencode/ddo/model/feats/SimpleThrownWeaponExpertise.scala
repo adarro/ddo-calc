@@ -32,8 +32,8 @@ import io.truthencode.ddo.support.requisite.{
  *   [[https://ddowiki.com/page/Simple_Thrown_Weapon_Expertise]]
  */
 protected[feats] trait SimpleThrownWeaponExpertise
-  extends FeatRequisiteImpl with AttributeRequisiteImpl with RequiresAllOfAttribute
-  with AlchemistBonusFeat with Passive {
+  extends FeatRequisiteImpl with BonusSelectableToClassFeatImpl with AttributeRequisiteImpl
+  with RequiresAllOfAttribute with AlchemistBonusFeat with Passive {
   self: GeneralFeat =>
 //  private[this] val cls = (Alchemist, 12)
   override val allOfAttributes = Seq((Attribute.Dexterity, 13))

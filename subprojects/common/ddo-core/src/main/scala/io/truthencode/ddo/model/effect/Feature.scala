@@ -50,10 +50,10 @@ sealed trait Feature[V] extends BasicEffectInfo {
     case Some(value) => Some(value.entryName)
   }
   lazy val effectText: Option[String] = None
-  val part: Try[EffectPart]
-  val value: V
+  def part: Try[EffectPart]
+  def value: V
   val source: SourceInfo
-  val effectDetail: DetailedEffect
+  def effectDetail: DetailedEffect
 
   def parameters: Seq[Try[EffectParameter]]
 
@@ -180,7 +180,7 @@ trait PartModifier[V, E <: EnumEntry] extends Feature[V] with DisplayName {
   override lazy val parameters: Seq[Try[EffectParameter]] = effectParameters.map(_.parameter)
 // FIXME add UsingSearchPrefix to type constraint
   override val withPrefix: String = s"$searchPrefix$nameSource"
-  protected[this] val partToModify: E
+  protected[this] def partToModify: E
 
   protected[this] def effectParameters: Seq[ParameterModifier[_]] = ???
 

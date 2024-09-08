@@ -28,9 +28,9 @@ trait Damage
 
 object Damage {
   def damageTypes: Seq[EnumEntry
-    with Damage with NoDefault[
-      _ >: PhysicalDamageType with MagicDamageType <: EnumEntry with Damage with NoDefault[
-        _ >: PhysicalDamageType with MagicDamageType]]] = {
+    & Damage & NoDefault[
+      ? >: PhysicalDamageType & MagicDamageType <: EnumEntry & Damage & NoDefault[
+        ? >: PhysicalDamageType & MagicDamageType]]] = {
     MagicDamageType.values ++ PhysicalDamageType.values
   }
 }

@@ -31,7 +31,7 @@ import io.truthencode.ddo.support.requisite._
  * Weapon Specialization: Ranged Weapons, Power Attack, Combat Expertise, Zen Archery
  */
 protected[feats] trait BowStrength
-  extends FeatRequisiteImpl
+  extends FeatRequisiteImpl with BonusSelectableToClassFeatImpl
   // with ClassRequisiteImpl
   with Passive with RequiresBaB with RequiresAllOfFeat with RequiresAnyOfFeat with FighterBonusFeat
   with GrantsToClass {

@@ -32,10 +32,10 @@ import scala.util.{Success, Try}
  */
 trait ArmorClassAmountFeature extends Features {
   self: SourceInfo =>
-  protected val armorBonusType: BonusType
+  protected def armorBonusType: BonusType
   protected val armorBonusAmount: Int
-  protected[this] val acTriggerOn: Seq[TriggerEvent]
-  protected[this] val acTriggerOff: Seq[TriggerEvent]
+  protected[this] def acTriggerOn: Seq[TriggerEvent]
+  protected[this] def acTriggerOff: Seq[TriggerEvent]
   private val src = this
   private[this] val armorChance =
     new PartModifier[Int, BasicStat with MissChance] with UsingSearchPrefix {

@@ -29,8 +29,8 @@ import io.truthencode.ddo.support.requisite.{FeatRequisiteImpl, RequiresAnyOfFea
  * Shield Proficiency: General or Tower Shield Proficiency +8 Base Attack Bonus
  */
 protected[feats] trait ShieldDeflection
-  extends FeatRequisiteImpl with Passive with RequiresBaB with RequiresAnyOfFeat
-  with FighterBonusFeat {
+  extends FeatRequisiteImpl with BonusSelectableToClassFeatImpl with Passive with RequiresBaB
+  with RequiresAnyOfFeat with FighterBonusFeat {
   self: GeneralFeat =>
   override def requiresBaB: Int = 8
 

@@ -30,9 +30,9 @@ import io.truthencode.ddo.support.requisite._
  *   Should we move this to a Class Feat due to the Auto grant to Rangers
  */
 protected[feats] trait RapidShot
-  extends FeatRequisiteImpl with ClassRequisiteImpl with Passive with RequiresAllOfFeat
-  with AttributeRequisiteImpl with RequiresAllOfAttribute with GrantsToClass with ArtificerBonusFeat
-  with AlchemistBonusFeat with FighterBonusFeat {
+  extends FeatRequisiteImpl with BonusSelectableToClassFeatImpl with ClassRequisiteImpl with Passive
+  with RequiresAllOfFeat with AttributeRequisiteImpl with RequiresAllOfAttribute with GrantsToClass
+  with ArtificerBonusFeat with AlchemistBonusFeat with FighterBonusFeat {
   self: GeneralFeat =>
   override def grantToClass: Seq[(HeroicCharacterClass, Int)] = List((Ranger, 2))
 

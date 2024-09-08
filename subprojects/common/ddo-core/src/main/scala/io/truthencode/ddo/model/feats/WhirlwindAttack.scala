@@ -17,7 +17,7 @@
  */
 package io.truthencode.ddo.model.feats
 
-import io.truthencode.ddo.activation.AtWillEvent
+import io.truthencode.ddo.activation.{AtWillEvent, TriggeredActivationImpl}
 import io.truthencode.ddo.enhancement.BonusType
 import io.truthencode.ddo.model.abilities.ActiveAbilities
 import io.truthencode.ddo.model.effect
@@ -40,8 +40,9 @@ import java.time.Duration
  *   should be inferred and this list may remove all but explicit dependencies.
  */
 protected[feats] trait WhirlwindAttack
-  extends FeatRequisiteImpl with ActiveFeat with AtWillEvent with RequiresAllOfFeat with RequiresBaB
-  with FighterBonusFeat with FeaturesImpl with GrantAbilityFeature {
+  extends FeatRequisiteImpl with TriggeredActivationImpl with BonusSelectableToClassFeatImpl
+  with ActiveFeat with AtWillEvent with RequiresAllOfFeat with RequiresBaB with FighterBonusFeat
+  with FeaturesImpl with GrantAbilityFeature {
   self: GeneralFeat =>
 
   override lazy val grantedAbility: ActiveAbilities = ActiveAbilities.WhirlwindAttack

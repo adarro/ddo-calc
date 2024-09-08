@@ -34,9 +34,9 @@ import io.truthencode.ddo.support.requisite.{FeatRequisiteImpl, RequiresAllOfFea
  * will also gain a 2% dodge bonus. Dodge
  */
 trait Mobility
-  extends FeatRequisiteImpl with Passive with RequiresAllOfFeat with MartialArtsFeat
-  with FighterBonusFeat with AlchemistBonusFeat with FeaturesImpl with DodgeChanceFeature
-  with MaxDexBonusFeature with ArmorClassAmountFeature {
+  extends FeatRequisiteImpl with BonusSelectableToClassFeatImpl with Passive with RequiresAllOfFeat
+  with MartialArtsFeat with FighterBonusFeat with AlchemistBonusFeat with FeaturesImpl
+  with DodgeChanceFeature with MaxDexBonusFeature with ArmorClassAmountFeature {
   self: GeneralFeat =>
   override protected[this] lazy val dodgeCategories: Seq[effect.EffectCategories.Value] = Seq(
     effect.EffectCategories.MissChance)

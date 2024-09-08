@@ -29,11 +29,11 @@ import io.truthencode.ddo.support.naming.UsingSearchPrefix
  */
 trait HitPointPerLevelAmountFeature extends Features {
   self: SourceInfo =>
-  protected val hitPointBonusType: BonusType
+  protected def hitPointBonusType: BonusType
   protected val hitPointsPerLevel: Int
-  protected[this] val triggerOn: Seq[TriggerEvent]
-  protected[this] val triggerOff: Seq[TriggerEvent]
-  protected[this] val hitPointPerLevelCategories: Seq[effect.EffectCategories.Value]
+  protected[this] def triggerOn: Seq[TriggerEvent]
+  protected[this] def triggerOff: Seq[TriggerEvent]
+  protected[this] def hitPointPerLevelCategories: Seq[effect.EffectCategories.Value]
   private val src = this
   private[this] val hitPointAmount =
     new PartModifier[Int, BasicStat] with DynamicFeature[Int] with UsingSearchPrefix {

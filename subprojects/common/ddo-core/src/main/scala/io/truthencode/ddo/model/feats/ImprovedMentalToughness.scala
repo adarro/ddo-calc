@@ -36,8 +36,8 @@ import io.truthencode.ddo.support.requisite.{
  *   Bard; Level 10: Paladin, Ranger
  */
 protected[feats] trait ImprovedMentalToughness
-  extends FeatRequisiteImpl with ClassRequisiteImpl with Passive with RequiresAllOfFeat
-  with RequiresAnyOfClass with AlchemistBonusFeat { self: GeneralFeat =>
+  extends FeatRequisiteImpl with BonusSelectableToClassFeatImpl with ClassRequisiteImpl with Passive
+  with RequiresAllOfFeat with RequiresAnyOfClass with AlchemistBonusFeat { self: GeneralFeat =>
   override def allOfFeats: Seq[GeneralFeat] = List(GeneralFeat.MentalToughness)
 
   override def anyOfClass: Seq[(HeroicCharacterClass, Int)] =

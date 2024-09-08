@@ -35,8 +35,8 @@ import io.truthencode.ddo.support.requisite.{
  * of Balance
  */
 protected[feats] trait SingleWeaponFighting
-  extends FeatRequisiteImpl with SkillRequisiteImpl with Passive with RequiresAnyOfSkill
-  with FighterBonusFeat with MartialArtsFeat {
+  extends FeatRequisiteImpl with BonusSelectableToClassFeatImpl with SkillRequisiteImpl with Passive
+  with RequiresAnyOfSkill with FighterBonusFeat with MartialArtsFeat {
   self: GeneralFeat =>
   override def oneOfSkill: Seq[(Skill, Int)] = List((Skill.Balance, 2))
 }

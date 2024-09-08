@@ -23,6 +23,8 @@ import io.truthencode.ddo.support.requisite.{FeatRequisiteImpl, FreeFeat}
  * Icon Feat Discipline.png Discipline Passive Provides a +1 on Will saves and +2 to Concentration
  * Skill checks. * None
  */
-trait Discipline extends FeatRequisiteImpl with Passive with FreeFeat with MartialArtsFeat {
+trait Discipline
+  extends FeatRequisiteImpl with BonusSelectableToClassFeatImpl with Passive with FreeFeat
+  with MartialArtsFeat {
   self: GeneralFeat =>
 }

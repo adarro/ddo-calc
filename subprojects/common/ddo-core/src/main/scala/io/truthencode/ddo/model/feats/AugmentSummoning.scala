@@ -25,6 +25,7 @@ import io.truthencode.ddo.support.requisite.{FeatRequisiteImpl, FreeFeat}
  * increased health, and increased fortification. * None
  */
 protected[feats] trait AugmentSummoning
-  extends FeatRequisiteImpl with Passive with FreeFeat with ArtificerBonusFeat {
+  extends FeatRequisiteImpl with BonusSelectableToClassFeatImpl with Passive with FreeFeat
+  with ArtificerBonusFeat {
   self: GeneralFeat =>
 }

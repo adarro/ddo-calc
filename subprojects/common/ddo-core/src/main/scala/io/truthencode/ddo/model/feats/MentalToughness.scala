@@ -34,8 +34,8 @@ import io.truthencode.ddo.support.requisite.{
  *   Wizard; Level 4: Paladin, Ranger
  */
 trait MentalToughness
-  extends FeatRequisiteImpl with ClassRequisiteImpl with Passive with RequiresAnyOfClass
-  with AlchemistBonusFeat {
+  extends FeatRequisiteImpl with BonusSelectableToClassFeatImpl with ClassRequisiteImpl with Passive
+  with RequiresAnyOfClass with AlchemistBonusFeat {
   self: GeneralFeat =>
 
   override def anyOfClass: Seq[(HeroicCharacterClass, Int)] =

@@ -29,11 +29,11 @@ import io.truthencode.ddo.support.naming.UsingSearchPrefix
  */
 trait MeleePowerFeature extends Features {
   self: SourceInfo =>
-  protected val meleePowerBonusType: BonusType
+  protected def meleePowerBonusType: BonusType
   protected val meleePowerBonusAmount: Int
-  protected[this] val triggerOn: Seq[TriggerEvent]
-  protected[this] val triggerOff: Seq[TriggerEvent]
-  protected[this] val meleePowerCategories: Seq[effect.EffectCategories.Value]
+  protected[this] def triggerOn: Seq[TriggerEvent]
+  protected[this] def triggerOff: Seq[TriggerEvent]
+  protected[this] def meleePowerCategories: Seq[effect.EffectCategories.Value]
   private val src = this
   private[this] val meleePowerAmount =
     new PartModifier[Int, BasicStat] with UsingSearchPrefix {

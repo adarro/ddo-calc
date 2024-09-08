@@ -30,9 +30,9 @@ trait HitChancePercentFeature extends Features {
   self: SourceInfo =>
   protected val hitChanceBonusType: BonusType
   protected val hitChanceBonusAmount: Int
-  protected[this] val triggerOn: Seq[TriggerEvent]
-  protected[this] val triggerOff: Seq[TriggerEvent]
-  protected[this] val hitChanceCategories: Seq[EffectCategories.Value]
+  protected[this] def triggerOn: Seq[TriggerEvent]
+  protected[this] def triggerOff: Seq[TriggerEvent]
+  protected[this] def hitChanceCategories: Seq[EffectCategories.Value]
   private val src = this
   private[this] val hitChanceChance =
     new PartModifier[Int, BasicStat] with UsingSearchPrefix {

@@ -29,10 +29,10 @@ import io.truthencode.ddo.support.naming.UsingSearchPrefix
  */
 trait ConfirmCriticalHitAmountFeature extends Features {
   self: SourceInfo =>
-  protected val confirmCriticalHitBonusType: BonusType
+  protected def confirmCriticalHitBonusType: BonusType
   protected val confirmCriticalHitBonusAmount: Int
-  protected[this] val triggerOn: Seq[TriggerEvent]
-  protected[this] val triggerOff: Seq[TriggerEvent]
+  protected[this] def triggerOn: Seq[TriggerEvent]
+  protected[this] def triggerOff: Seq[TriggerEvent]
 
   private val src = this
   private[this] val confirmCriticalHitChance =

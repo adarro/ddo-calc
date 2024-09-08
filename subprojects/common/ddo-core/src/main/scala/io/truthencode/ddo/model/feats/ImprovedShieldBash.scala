@@ -25,7 +25,8 @@ import io.truthencode.ddo.support.requisite.{FeatRequisiteImpl, RequiresAllOfFea
  * secondary Shield Bash while attacking with a melee weapon. * Shield Proficiency: General
  */
 protected[feats] trait ImprovedShieldBash
-  extends FeatRequisiteImpl with Passive with RequiresAllOfFeat with FighterBonusFeat {
+  extends FeatRequisiteImpl with BonusSelectableToClassFeatImpl with Passive with RequiresAllOfFeat
+  with FighterBonusFeat {
   self: GeneralFeat =>
   override def allOfFeats: Seq[GeneralFeat] = List(GeneralFeat.ShieldProficiency)
 }

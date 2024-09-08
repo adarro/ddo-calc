@@ -17,6 +17,7 @@
  */
 package io.truthencode.ddo.model.feats
 
+import io.truthencode.ddo.activation.TriggeredActivationImpl
 import io.truthencode.ddo.enhancement.BonusType
 import io.truthencode.ddo.model.abilities.ActiveAbilities
 import io.truthencode.ddo.model.attribute.Attribute
@@ -42,9 +43,10 @@ import java.time.Duration
  *   Adds 3x spell cooldown timers
  */
 protected[feats] trait Resilience
-  extends FeatRequisiteImpl with ActiveFeat with DefensiveCombatStance with AttributeRequisiteImpl
-  with RequiresAllOfAttribute with RequiresBaB with FighterBonusFeat with MartialArtsFeat
-  with FeaturesImpl with GrantAbilityFeature {
+  extends FeatRequisiteImpl with TriggeredActivationImpl with BonusSelectableToClassFeatImpl
+  with ActiveFeat with DefensiveCombatStance with AttributeRequisiteImpl with RequiresAllOfAttribute
+  with RequiresBaB with FighterBonusFeat with MartialArtsFeat with FeaturesImpl
+  with GrantAbilityFeature {
   self: GeneralFeat =>
   override lazy val grantedAbility: ActiveAbilities = ActiveAbilities.Resilience
   override val grantBonusType: BonusType = BonusType.Feat

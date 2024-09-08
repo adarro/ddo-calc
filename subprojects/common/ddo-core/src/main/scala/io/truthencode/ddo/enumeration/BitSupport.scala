@@ -28,7 +28,7 @@ trait BitSupport {
 
   //  self: Enum[_] =>
   type T <: EnumEntry
-  val bitValues: Map[T, Int]
+  def bitValues: Map[T, Int]
 
   def checkVal[C: ClassTag](cls: C): Boolean = classTag[C].runtimeClass.isInstance(cls)
 }

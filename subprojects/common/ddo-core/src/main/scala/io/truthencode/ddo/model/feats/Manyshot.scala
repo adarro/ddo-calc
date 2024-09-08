@@ -17,7 +17,7 @@
  */
 package io.truthencode.ddo.model.feats
 
-import io.truthencode.ddo.activation.AtWillEvent
+import io.truthencode.ddo.activation.{AtWillEvent, TriggeredActivationImpl}
 import io.truthencode.ddo.enhancement.BonusType
 import io.truthencode.ddo.model.abilities.ActiveAbilities
 import io.truthencode.ddo.model.attribute.Attribute
@@ -33,7 +33,7 @@ import io.truthencode.ddo.model.effect.features.{
 import io.truthencode.ddo.model.misc.{PoolManyShot, SharedCoolDown}
 import io.truthencode.ddo.providers.SimpleValueProvider
 import io.truthencode.ddo.support.charges.{Chargeable, Rechargeable, TimedCharge}
-import io.truthencode.ddo.support.requisite._
+import io.truthencode.ddo.support.requisite.*
 
 import java.time.Duration
 
@@ -57,10 +57,11 @@ import java.time.Duration
  *   add 20 second Active
  */
 protected[feats] trait Manyshot
-  extends FeatRequisiteImpl with ClassRequisiteImpl with ActiveFeat with AtWillEvent
-  with RequiresAllOfFeat with AttributeRequisiteImpl with RequiresAllOfAttribute with RequiresBaB
-  with GrantsToClass with FighterBonusFeat with FeaturesImpl with GrantAbilityFeature
-  with DoubleShotFeature with SharedCoolDown with Chargeable {
+  extends FeatRequisiteImpl with ClassRequisiteImpl with TriggeredActivationImpl
+  with BonusSelectableToClassFeatImpl with ActiveFeat with AtWillEvent with RequiresAllOfFeat
+  with AttributeRequisiteImpl with RequiresAllOfAttribute with RequiresBaB with GrantsToClass
+  with FighterBonusFeat with FeaturesImpl with GrantAbilityFeature with DoubleShotFeature
+  with SharedCoolDown with Chargeable {
   self: GeneralFeat =>
   override lazy val grantedAbility: ActiveAbilities = ActiveAbilities.Manyshot
   override protected[this] val triggerOn: Seq[TriggerEvent] = Seq(TriggerEvent.AtWill)

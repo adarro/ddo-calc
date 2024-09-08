@@ -33,8 +33,9 @@ import io.truthencode.ddo.support.requisite.{
  * Strength 15
  */
 trait TwoHandedFighting
-  extends FeatRequisiteImpl with Passive with AttributeRequisiteImpl with RequiresAllOfAttribute
-  with FighterBonusFeat with MartialArtsFeat with ArtificerBonusFeat {
+  extends FeatRequisiteImpl with BonusSelectableToClassFeatImpl with Passive
+  with AttributeRequisiteImpl with RequiresAllOfAttribute with FighterBonusFeat with MartialArtsFeat
+  with ArtificerBonusFeat {
   self: GeneralFeat =>
   override def allOfAttributes: Seq[(Attribute, Int)] = List((Attribute.Strength, 15))
 }

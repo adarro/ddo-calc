@@ -661,7 +661,7 @@ object GeneralFeat
   case object TenThousandStars extends GeneralFeat with TenThousandStars
 
   case object PowerAttack extends GeneralFeat with PowerAttack
-
+  
   case object ImprovedPreciseShot extends GeneralFeat with ImprovedPreciseShot
 
   case object Precision extends GeneralFeat with Precision

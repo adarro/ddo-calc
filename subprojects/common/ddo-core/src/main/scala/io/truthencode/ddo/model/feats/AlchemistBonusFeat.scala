@@ -20,7 +20,7 @@ package io.truthencode.ddo.model.feats
 import io.truthencode.ddo.model.classes.HeroicCharacterClass
 import io.truthencode.ddo.support.requisite.{Inclusion, Requisite, SelectableToClass}
 
-trait AlchemistBonusFeat extends SelectableToClass with BonusSelectableFeatImpl {
+trait AlchemistBonusFeat extends SelectableToClass with BonusSelectableToClassFeatImpl {
   self: Feat with FeatType with Requisite with Inclusion =>
   override val levels: Set[Int] = Set(1) ++ (4 to 20 by 4).toSet
   private[this] val myCharClass: HeroicCharacterClass = HeroicCharacterClass.Alchemist

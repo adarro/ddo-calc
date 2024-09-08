@@ -34,8 +34,9 @@ import io.truthencode.ddo.support.requisite.{
  * Icon Feat Diehard.png Diehard Passive You automatically stabilize when incapacitated.
  */
 protected[feats] trait Diehard
-  extends FeatRequisiteImpl with ClassRequisiteImpl with Passive with FreeFeat with GrantsToClass
-  with MartialArtsFeat with FeaturesImpl with UnconsciousRecoveryFeature {
+  extends FeatRequisiteImpl with ClassRequisiteImpl with BonusSelectableToClassFeatImpl with Passive
+  with FreeFeat with GrantsToClass with MartialArtsFeat with FeaturesImpl
+  with UnconsciousRecoveryFeature {
   self: GeneralFeat =>
   override protected[this] lazy val triggerOn: Seq[TriggerEvent] = Seq(TriggerEvent.OnUnconscious)
   override protected[this] lazy val triggerOff: Seq[TriggerEvent] = Seq(TriggerEvent.Never)

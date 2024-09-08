@@ -27,10 +27,14 @@ import io.truthencode.ddo.support.requisite._
  * deal grazing hits as if they were a two handed weapon if they are the only weapon wielded by a
  * proficient user. This feat must be taken for separate exotic weapons. * Strength 13 for Bastard
  * Sword and Dwarven Waraxe Base Attack Bonus +1,
+ * @note
+ *   Dwarven Waraxe can be auto-granted as to Dwarves if they posses the full martial weapon grant
+ *   line (i.e. Fighter etc.)
  */
 protected[feats] trait ExoticWeaponProficiencyBase
-  extends FeatRequisiteImpl with RaceRequisite with ClassRequisiteImpl with Prefix with Passive
-  with RequiresBaB with WeaponProficiencyBase with ExoticWeapon with FighterBonusFeat {
+  extends FeatRequisiteImpl with RaceRequisite with ClassRequisiteImpl
+  with BonusSelectableToClassFeatImpl with Prefix with Passive with RequiresBaB
+  with WeaponProficiencyBase with ExoticWeapon with FighterBonusFeat {
   self: GeneralFeat =>
 
   /**

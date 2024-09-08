@@ -39,8 +39,9 @@ import scala.collection.immutable
  * Point Blank Shot
  */
 trait PreciseShot
-  extends FeatRequisiteImpl with ClassRequisiteImpl with Passive with RequiresAllOfFeat
-  with GrantsToClass with FighterBonusFeat with ArtificerBonusFeat with AlchemistBonusFeat {
+  extends FeatRequisiteImpl with BonusSelectableToClassFeatImpl with ClassRequisiteImpl with Passive
+  with RequiresAllOfFeat with GrantsToClass with FighterBonusFeat with ArtificerBonusFeat
+  with AlchemistBonusFeat {
   self: GeneralFeat =>
   override def grantToClass: Seq[(HeroicCharacterClass, Int)] = List((Ranger, 4))
 

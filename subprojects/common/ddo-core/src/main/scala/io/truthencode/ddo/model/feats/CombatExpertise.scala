@@ -17,6 +17,7 @@
  */
 package io.truthencode.ddo.model.feats
 
+import io.truthencode.ddo.activation.TriggeredActivationImpl
 import io.truthencode.ddo.enhancement.BonusType
 import io.truthencode.ddo.model.abilities.ActiveAbilities
 import io.truthencode.ddo.model.attribute.Attribute
@@ -43,9 +44,10 @@ import java.time.Duration
  * dispels and wards against all Rage effects.
  */
 protected[feats] trait CombatExpertise
-  extends FeatRequisiteImpl with ActiveFeat with AttributeRequisiteImpl with RequiresAllOfAttribute
-  with MartialArtsFeat with FighterBonusFeat with ArtificerBonusFeat with DefensiveCombatStance
-  with FeaturesImpl with GrantAbilityFeature with ArmorClassPercentFeature {
+  extends FeatRequisiteImpl with TriggeredActivationImpl with BonusSelectableToClassFeatImpl
+  with ActiveFeat with AttributeRequisiteImpl with RequiresAllOfAttribute with MartialArtsFeat
+  with FighterBonusFeat with ArtificerBonusFeat with DefensiveCombatStance with FeaturesImpl
+  with GrantAbilityFeature with ArmorClassPercentFeature {
   self: GeneralFeat =>
   override lazy val grantedAbility: ActiveAbilities = ActiveAbilities.CombatExpertise
   override protected[this] lazy val triggerOn: Seq[TriggerEvent] = Seq(TriggerEvent.OnStance)

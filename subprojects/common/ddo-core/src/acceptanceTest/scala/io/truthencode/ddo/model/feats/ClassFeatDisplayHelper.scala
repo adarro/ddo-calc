@@ -67,7 +67,7 @@ trait ClassFeatDisplayHelper extends FeatDisplayHelper with LazyLogging {
   }
 
   val filterByClassBonusFeat: PartialFunction[Entry, Entry] = {
-    case x: BonusSelectableFeat with SubFeatInformation
+    case x: BonusSelectableToClassFeat with SubFeatInformation
         if x.bonusCharacterClass.contains(cClass) && !x.isSubFeat =>
       lazy val msg = s"Entry ${x.displayText} matched type and character class $cClass"
       lazy val idInfo = Map(

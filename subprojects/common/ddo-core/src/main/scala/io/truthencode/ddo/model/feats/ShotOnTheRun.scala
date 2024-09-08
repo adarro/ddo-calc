@@ -26,9 +26,9 @@ import io.truthencode.ddo.support.requisite._
  * Dexterity 13, Base Attack Bonus 4+
  */
 protected[feats] trait ShotOnTheRun
-  extends FeatRequisiteImpl with Passive with RequiresAllOfFeat with AttributeRequisiteImpl
-  with RequiresAllOfAttribute with RequiresBaB with FighterBonusFeat with ArtificerBonusFeat
-  with AlchemistBonusFeat {
+  extends FeatRequisiteImpl with BonusSelectableToClassFeatImpl with Passive with RequiresAllOfFeat
+  with AttributeRequisiteImpl with RequiresAllOfAttribute with RequiresBaB with FighterBonusFeat
+  with ArtificerBonusFeat with AlchemistBonusFeat {
   self: GeneralFeat =>
 
   override def allOfAttributes: Seq[(Attribute, Int)] =

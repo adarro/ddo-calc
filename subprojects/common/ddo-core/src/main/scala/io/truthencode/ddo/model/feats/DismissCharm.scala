@@ -17,7 +17,7 @@
  */
 package io.truthencode.ddo.model.feats
 
-import io.truthencode.ddo.activation.AtWillEvent
+import io.truthencode.ddo.activation.{AtWillEvent, TriggerImpl, TriggeredActivationImpl}
 import io.truthencode.ddo.enhancement.BonusType
 import io.truthencode.ddo.model.abilities.ActiveAbilities
 import io.truthencode.ddo.model.classes.HeroicCharacterClass
@@ -25,12 +25,7 @@ import io.truthencode.ddo.model.effect
 import io.truthencode.ddo.model.effect.TriggerEvent
 import io.truthencode.ddo.model.effect.features.{FeaturesImpl, GrantAbilityFeature}
 import io.truthencode.ddo.model.misc.DefaultCoolDown
-import io.truthencode.ddo.support.requisite.{
-  ClassRequisiteImpl,
-  FeatRequisiteImpl,
-  FreeFeat,
-  GrantsToClass
-}
+import io.truthencode.ddo.support.requisite.{ClassRequisiteImpl, FeatRequisiteImpl, FreeFeat, GrantsToClass}
 
 /**
  * [[https://ddowiki.com/page/Dismiss_Charm Dismiss Charm]] Activate this short-ranged ability while
@@ -41,7 +36,7 @@ import io.truthencode.ddo.support.requisite.{
  *   As of Update 26 all classes now receive this feat at level 1
  */
 protected[feats] trait DismissCharm
-  extends FeatRequisiteImpl with ActiveFeat with AtWillEvent with DefaultCoolDown with FreeFeat
+  extends FeatRequisiteImpl with TriggeredActivationImpl with ActiveFeat with AtWillEvent with DefaultCoolDown with FreeFeat
   with ClassRequisiteImpl with GrantsToClass with FeaturesImpl with GrantAbilityFeature {
   self: GeneralFeat =>
 

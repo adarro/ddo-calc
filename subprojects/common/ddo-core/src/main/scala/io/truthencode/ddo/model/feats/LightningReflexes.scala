@@ -23,6 +23,8 @@ import io.truthencode.ddo.support.requisite.{FeatRequisiteImpl, FreeFeat}
  * Icon Feat Lightning Reflexes.png Lightning Reflexes Passive Grants a +2 bonus to Reflex saves. *
  * None
  */
-trait LightningReflexes extends FeatRequisiteImpl with Passive with FreeFeat with MartialArtsFeat {
+trait LightningReflexes
+  extends FeatRequisiteImpl with BonusSelectableToClassFeatImpl with Passive with FreeFeat
+  with MartialArtsFeat {
   self: GeneralFeat =>
 }

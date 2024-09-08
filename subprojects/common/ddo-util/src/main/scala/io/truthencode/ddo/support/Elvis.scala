@@ -21,7 +21,7 @@ import scala.language.implicitConversions
 
 case class Elvis(b: Boolean) {
   def ?[X](t: => X) = new {
-    def |(f: => X) = if (b) t else f
+    def |(f: => X) = if (b) then t else f
   }
 }
 

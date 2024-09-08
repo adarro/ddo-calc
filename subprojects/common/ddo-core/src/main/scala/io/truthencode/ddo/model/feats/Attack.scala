@@ -17,6 +17,7 @@
  */
 package io.truthencode.ddo.model.feats
 
+import io.truthencode.ddo.activation.{ActivationTypeImpl, TriggerImpl, TriggeredActivationImpl}
 import io.truthencode.ddo.enhancement.BonusType
 import io.truthencode.ddo.model.abilities.ActiveAbilities
 import io.truthencode.ddo.model.effect
@@ -35,7 +36,7 @@ import java.time.Duration
  *   issue.
  */
 protected[feats] trait Attack
-  extends FeatRequisiteImpl with ActiveFeat with FreeFeat with Stance with FeaturesImpl
+  extends FeatRequisiteImpl with TriggeredActivationImpl with ActiveFeat with FreeFeat with Stance with FeaturesImpl
   with GrantAbilityFeature {
   self: GeneralFeat =>
   override lazy val grantedAbility: ActiveAbilities = ActiveAbilities.Attack

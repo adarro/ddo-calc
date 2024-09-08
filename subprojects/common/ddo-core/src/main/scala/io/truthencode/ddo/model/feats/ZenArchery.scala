@@ -32,8 +32,9 @@ import io.truthencode.ddo.support.requisite.{
  * Attack Bonus +1 *
  */
 trait ZenArchery
-  extends FeatRequisiteImpl with Passive with AttributeRequisiteImpl with RequiresAllOfAttribute
-  with RequiresBaB with FighterBonusFeat with MartialArtsFeat {
+  extends FeatRequisiteImpl with BonusSelectableToClassFeatImpl with Passive
+  with AttributeRequisiteImpl with RequiresAllOfAttribute with RequiresBaB with FighterBonusFeat
+  with MartialArtsFeat {
   self: GeneralFeat =>
   override def allOfAttributes: Seq[(Attribute, Int)] = List((Attribute.Wisdom, 13))
 

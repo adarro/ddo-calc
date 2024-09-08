@@ -26,10 +26,10 @@ import io.truthencode.ddo.support.naming.UsingSearchPrefix
 
 trait TurnUndeadNumberOfTurnsFeature extends Features {
   self: SourceInfo =>
-  val numberOfTurnsBonusType: BonusType
+  def numberOfTurnsBonusType: BonusType
   val numberOfTurnsBonusAmount: Int
-  protected[this] val triggerOn: Seq[TriggerEvent]
-  protected[this] val triggerOff: Seq[TriggerEvent]
+  protected[this] def triggerOn: Seq[TriggerEvent]
+  protected[this] def triggerOff: Seq[TriggerEvent]
   protected[this] val turnUndeadNumOfTurnsCategories: Seq[effect.EffectCategories.Value]
   private val src = this
   private[this] val nHD =

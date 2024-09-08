@@ -17,6 +17,7 @@
  */
 package io.truthencode.ddo.model.feats
 
+import io.truthencode.ddo.activation.TriggeredActivationImpl
 import io.truthencode.ddo.enhancement.BonusType
 import io.truthencode.ddo.model.abilities.ActiveAbilities
 import io.truthencode.ddo.model.attribute.{DexterityLinked, LinkedAttributeImpl, StrengthLinked}
@@ -35,7 +36,7 @@ import java.time.Duration
  * Strength modifier + related Enhancements + Vertigo).
  */
 protected[feats] trait Trip
-  extends FeatRequisiteImpl with ActiveFeat
+  extends FeatRequisiteImpl with TriggeredActivationImpl with ActiveFeat
   //   with DifficultyCheck
   with LinkedAttributeImpl with DexterityLinked with StrengthLinked with Tactical with FreeFeat
   with FeaturesImpl with GrantAbilityFeature {

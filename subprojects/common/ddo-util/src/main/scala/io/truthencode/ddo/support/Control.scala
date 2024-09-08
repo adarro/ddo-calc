@@ -17,6 +17,7 @@
  */
 package io.truthencode.ddo.support
 
+import scala.reflect.Selectable.reflectiveSelectable
 /**
  * Created by adarr on 8/15/2016.
  */

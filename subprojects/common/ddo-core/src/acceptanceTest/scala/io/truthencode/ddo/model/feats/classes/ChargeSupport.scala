@@ -60,7 +60,7 @@ trait ChargeSupport {
       case _ => None
     }
     val resultTimeValue =
-      if (d.isDefined) { Some(d.get.toSeconds) }
+      if d.isDefined then { Some(d.get.toSeconds) }
       else { None }
     ChargeInfo(resultMaxCharges, q.toJavaPrimitive, d.toJava)
   }

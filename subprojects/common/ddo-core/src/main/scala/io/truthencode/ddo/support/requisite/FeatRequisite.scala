@@ -36,7 +36,7 @@ sealed trait FeatRequisite {
 }
 
 trait FeatRequisiteImpl extends MustContainImpl[Requirement] with FeatRequisite {
-  self: Requisite with RequisiteType =>
+  self: Requisite & RequisiteType =>
   def anyOfFeats: Seq[Feat] = IndexedSeq.apply()
 
   def allOfFeats: Seq[Feat] = IndexedSeq.apply()
@@ -46,10 +46,10 @@ trait FeatRequisiteImpl extends MustContainImpl[Requirement] with FeatRequisite 
 
 object FeatRequisite {
   def stringToClass(classId: String*): Seq[Feat] = {
-    for {
+    for
       cls <- classId
       cOpt <- Feat.withNameInsensitiveOption(cls)
-    } yield cOpt
+    yield cOpt
   }
 }
 

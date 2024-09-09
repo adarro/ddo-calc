@@ -36,7 +36,7 @@ protected[feats] trait ToughTincture
   extends FeatRequisiteImpl with BonusSelectableToClassFeatImpl with ClassRequisiteImpl
   with RequiresAllOfClass with AlchemistBonusFeat with Passive {
   self: ClassFeat =>
-  private[this] val cls = (Alchemist, 8)
+  private val cls = (Alchemist, 8)
 
   abstract override def allOfClass: Seq[(HeroicCharacterClass, Int)] = super.allOfClass :+ cls
 }

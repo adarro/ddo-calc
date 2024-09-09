@@ -29,7 +29,7 @@ import scala.collection.immutable.IndexedSeq
  * Represents the Deities followed by player characters.
  */
 sealed trait Religion extends EnumEntry with DisplayName with FriendlyDisplay {
-  self: HomeWorld with FavoredWeapon =>
+  self: HomeWorld & FavoredWeapon =>
   def hasFavoredWeapon(fw: WeaponCategory): Boolean = fw == favoredWeapon
   override protected def nameSource: String =
     entryName.splitByCase.toPascalCase

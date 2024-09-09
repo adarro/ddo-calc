@@ -34,23 +34,23 @@ trait ArmorClassAmountFeature extends Features {
   self: SourceInfo =>
   protected def armorBonusType: BonusType
   protected val armorBonusAmount: Int
-  protected[this] def acTriggerOn: Seq[TriggerEvent]
-  protected[this] def acTriggerOff: Seq[TriggerEvent]
+  protected def acTriggerOn: Seq[TriggerEvent]
+  protected def acTriggerOff: Seq[TriggerEvent]
   private val src = this
-  private[this] val armorChance =
-    new PartModifier[Int, BasicStat with MissChance] with UsingSearchPrefix {
+  private val armorChance =
+    new PartModifier[Int, BasicStat & MissChance] with UsingSearchPrefix {
 
       override lazy val part: Try[EffectPart] = Success(EffectPart.MissChanceEffect(partToModify))
-      override protected[this] lazy val partToModify: BasicStat with MissChance =
+      override protected lazy val partToModify: BasicStat & MissChance =
         BasicStat.ArmorClass
 
       private val eb = EffectParameterBuilder()
-        .toggleOffValue(acTriggerOff: _*)
-        .toggleOnValue(acTriggerOn: _*)
+        .toggleOffValue(acTriggerOff*)
+        .toggleOnValue(acTriggerOn*)
         .addBonusType(armorBonusType)
         .build
 
-      override protected[this] def effectParameters: Seq[ParameterModifier[_]] = eb.modifiers
+      override protected def effectParameters: Seq[ParameterModifier[?]] = eb.modifiers
 
       /**
        * The main name of the effect.
@@ -105,7 +105,7 @@ trait ArmorClassAmountFeature extends Features {
       override def searchPrefixSource: String = partToModify.searchPrefixSource
     }
 
-  abstract override def features: Seq[Feature[_]] = {
+  abstract override def features: Seq[Feature[?]] = {
     assert(armorChance.value == armorBonusAmount)
     super.features :+ armorChance
   }

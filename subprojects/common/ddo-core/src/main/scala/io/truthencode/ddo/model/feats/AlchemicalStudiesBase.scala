@@ -40,7 +40,7 @@ protected[feats] trait AlchemicalStudiesBase
   abstract override def anyOfClass: Seq[(HeroicCharacterClass, Int)] =
     super.anyOfClass ++ cls
 
-  private[this] def cls = List(4, 16).map(l => (HeroicCharacterClass.Alchemist, l))
+  private def cls = List(4, 16).map(l => (HeroicCharacterClass.Alchemist, l))
   // override def prefix: Option[String] = Some("Exotic Weapon Proficiency")
 
 }

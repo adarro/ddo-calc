@@ -65,7 +65,7 @@ object TriggerEvent extends IndexedEnum[TriggerEvent] {
   /**
    * Occurs when you are damaged (hit)
    */
-  case object OnDamage extends ActiveEvent
+  case object OnDamage extends ActiveEvent, TriggerEvent
 
   /**
    * Occurs when you are hit by a spell
@@ -75,7 +75,7 @@ object TriggerEvent extends IndexedEnum[TriggerEvent] {
   /**
    * Occurs when you cast a spell
    */
-  case object OnSpellCast extends ActiveEvent
+  case object OnSpellCast extends ActiveEvent, TriggerEvent
 
   /**
    * Occurs when you activate a SLA (Spell like ability)
@@ -161,12 +161,12 @@ object TriggerEvent extends IndexedEnum[TriggerEvent] {
   /**
    * Occurs when equipping an item
    */
-  case object OnEquip extends ActiveEvent
+  case object OnEquip extends ActiveEvent, TriggerEvent
 
   /**
    * Occurs when un-equipping an item
    */
-  case object OnUnEquip extends ActiveEvent
+  case object OnUnEquip extends ActiveEvent, TriggerEvent
 
   /**
    * Occurs when you are centered.

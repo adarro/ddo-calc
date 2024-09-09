@@ -29,7 +29,7 @@ import io.truthencode.ddo.support.requisite.ActionPointRequisite
  *   / key integrity.
  */
 trait MetaMagicSelector extends MetaMagicEnhancement with EfficientMetamagicPrefix {
-  self: ClassEnhancement with Tier with ActionPointRequisite =>
+  self: ClassEnhancement & Tier & ActionPointRequisite =>
 
   /**
    * Some enhancements can be taken multiple times (generally up to three)

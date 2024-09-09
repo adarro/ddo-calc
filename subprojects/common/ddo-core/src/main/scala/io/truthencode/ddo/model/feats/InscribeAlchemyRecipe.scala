@@ -33,7 +33,7 @@ import io.truthencode.ddo.support.requisite.{ClassRequisiteImpl, FeatRequisiteIm
 protected[feats] trait InscribeAlchemyRecipe
   extends FeatRequisiteImpl with ClassRequisiteImpl with TriggerImpl with GrantsToClass with RequiresAllOfClass
   with ActivationTypeImpl with ActiveFeat with AtWillEvent with DefaultCoolDown {
-  private[this] val cls = (Alchemist, 1)
+  private val cls = (Alchemist, 1)
   abstract override def grantToClass: Seq[(HeroicCharacterClass, Int)] = super.grantToClass :+ cls
 
   abstract override def allOfClass: Seq[(HeroicCharacterClass, Int)] = super.allOfClass :+ cls

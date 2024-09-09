@@ -269,8 +269,9 @@ dependencies {
             implementation(libs.json4s.native.s3)
 
             implementation(libs.typesafe.scala.logging.s3)
-            // No scala 3 version of this yet
-            implementation(libs.wix.accord.core.s213)
+            // replacing wix accord validation with zio-prelude validation
+//            implementation(libs.wix.accord.core.s213)
+            implementation(libs.dev.zio.prelude.s3)
             implementation(libs.kxbmap.configs.s213)
 
 
@@ -286,7 +287,9 @@ dependencies {
             implementation(libs.json4s.native.s213)
 
             // validation and rules
-            implementation(libs.wix.accord.core.s213)
+            // replacing wix accord validation with zio-prelude validation
+//            implementation(libs.wix.accord.core.s213)
+            implementation(libs.dev.zio.prelude.s213)
             implementation(libs.typesafe.scala.logging.s213)
 
         }

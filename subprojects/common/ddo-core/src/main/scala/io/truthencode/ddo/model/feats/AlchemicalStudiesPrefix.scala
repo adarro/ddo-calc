@@ -23,7 +23,7 @@ import io.truthencode.ddo.support.naming.{DisplayName, DisplayProperties, Prefix
  * Created by adarr on 3/5/2017.
  */
 trait AlchemicalStudiesPrefix extends Prefix {
-  self: DisplayName with DisplayProperties =>
+  self: DisplayName & DisplayProperties =>
 
   /**
    * Delimits the prefix and text.

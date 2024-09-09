@@ -41,7 +41,7 @@ trait ActivationTypeImpl extends ActivationType {
 /**
  * Underlying Trait for all Active triggers
  */
-trait TriggeredActivation extends ActivationTypeImpl with TriggerImpl with ActiveEvent {
+trait TriggeredActivation extends ActivationTypeImpl, TriggerImpl, ActiveEvent {
   self: EnumEntry =>
   abstract override def activations: Seq[TriggerEvent] = super.activations ++ activatableTriggers
 }
@@ -49,12 +49,12 @@ trait TriggeredActivation extends ActivationTypeImpl with TriggerImpl with Activ
 /**
  * Denotes the effect is passive and always on.
  */
-trait PassiveActivation extends ActivationTypeImpl with PassiveEvent {
+trait PassiveActivation extends ActivationTypeImpl, PassiveEvent {
   abstract override def activations: Seq[TriggerEvent] =
     super.activations :+ io.truthencode.ddo.model.effect.TriggerEvent.Passive
 }
 
-object ActivationType extends Enum[ActivationType] with LazyLogging {
+object ActivationType extends Enum[ActivationType], LazyLogging {
 
   lazy val dynamics: Seq[Active] = {
     TriggerEvent.values.filter(p => filterActive(p)).map { x =>
@@ -76,7 +76,7 @@ object ActivationType extends Enum[ActivationType] with LazyLogging {
    * This effect is triggered by some means such as a toggle, threshold or status.
    */
   case class Active(triggers: ActiveEvent*)
-    extends ActivationTypeImpl with TriggeredActivation with LazyLogging {
+    extends ActivationType, ActivationTypeImpl, TriggeredActivation, LazyLogging {
 
     override def activatableTriggers: Seq[TriggerEvent] = triggers
     override def entryName: String = {
@@ -90,7 +90,7 @@ object ActivationType extends Enum[ActivationType] with LazyLogging {
   /**
    * This effect is always on
    */
-  case object Passive extends PassiveActivation {
+  case object Passive extends PassiveActivation, ActivationType {
     override def activations: Seq[TriggerEvent] = super.activations
   }
 }

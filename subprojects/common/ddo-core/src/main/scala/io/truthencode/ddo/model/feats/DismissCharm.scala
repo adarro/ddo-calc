@@ -42,9 +42,9 @@ protected[feats] trait DismissCharm
 
   override lazy val grantedAbility: ActiveAbilities = ActiveAbilities.DismissCharm
   override val grantBonusType: BonusType = BonusType.Feat
-  override protected[this] val triggerOn: Seq[TriggerEvent] = Seq(TriggerEvent.OnToggle)
-  override protected[this] val triggerOff: Seq[TriggerEvent] = Seq(TriggerEvent.OnToggle)
-  override protected[this] val grantAbilityCategories: Seq[effect.EffectCategories.Value] = Seq(
+  override protected val triggerOn: Seq[TriggerEvent] = Seq(TriggerEvent.OnToggle)
+  override protected val triggerOff: Seq[TriggerEvent] = Seq(TriggerEvent.OnToggle)
+  override protected val grantAbilityCategories: Seq[effect.EffectCategories.Value] = Seq(
     effect.EffectCategories.Ability)
   override val abilityId: String = "DismissCharm"
   override val description: String = "Creates ability to dismiss some charmed mobs."

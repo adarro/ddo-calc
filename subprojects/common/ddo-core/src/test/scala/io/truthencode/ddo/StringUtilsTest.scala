@@ -55,7 +55,7 @@ class StringUtilsTest extends AnyFunSpec with PropertyChecks with Matchers with 
 
   private val validRomanToNumbers =
     Table(
-      ("given", "expected"),
+      ("givenVal", "expected"),
       ("Some Magical Ability IX", "Some Magical Ability 9"),
       ("Cool IV stuff", "Cool 4 stuff"),
       ("Mixed II 3", "Mixed 2 3"),
@@ -63,7 +63,7 @@ class StringUtilsTest extends AnyFunSpec with PropertyChecks with Matchers with 
     )
 
   private val validNumbersToRoman = Table(
-    ("given", "expected"),
+    ("givenVal", "expected"),
     ("Some Magical Ability 9", "Some Magical Ability IX"),
     ("Cool 4 stuff", "Cool IV stuff"),
     ("Mixed 2 3", "Mixed II III"),
@@ -117,36 +117,36 @@ class StringUtilsTest extends AnyFunSpec with PropertyChecks with Matchers with 
   describe("symbolsToWords") {
     it("should replace symbols in names") {
       val expected = wap
-      val _given = "Words&Phrases"
-      _given.symbolsToWords shouldEqual expected
+      val _givenVal = "Words&Phrases"
+      _givenVal.symbolsToWords shouldEqual expected
     }
     it("should not alter when there are no symbols") {
       val original = wap
       val expected = original
-      val _given = "WordsAndPhrases".symbolsToWords
-      _given.symbolsToWords shouldEqual expected
+      val _givenVal = "WordsAndPhrases".symbolsToWords
+      _givenVal.symbolsToWords shouldEqual expected
 
     }
     it("should gracefully coexist with splitByCase") {
       val original = "Words&Phrases"
       val expected = "Words & Phrases"
-      val _given = original.splitByCase
-      _given.shouldEqual(expected)
+      val _givenVal = original.splitByCase
+      _givenVal.shouldEqual(expected)
 
     }
   }
 
   describe("Roman Numerals") {
     they("Can be translated to numbers") {
-      forAll(validRomanToNumbers) { (given, expected) =>
-        val translations = given.replaceRomanNumerals
+      forAll(validRomanToNumbers) { (givenVal, expected) =>
+        val translations = givenVal.replaceRomanNumerals
         translations shouldEqual expected
       }
     }
 
     they("Can be translated from numbers") {
-      forAll(validNumbersToRoman) { (given, expected) =>
-        val translations = given.replaceNumbersWithRomanNumerals
+      forAll(validNumbersToRoman) { (givenVal, expected) =>
+        val translations = givenVal.replaceNumbersWithRomanNumerals
         translations shouldEqual expected
       }
     }

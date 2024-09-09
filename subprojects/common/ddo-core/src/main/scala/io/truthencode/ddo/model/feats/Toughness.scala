@@ -37,9 +37,9 @@ protected[feats] trait Toughness
   extends FeatRequisiteImpl with BonusSelectableToClassFeatImpl with Passive with FreeFeat
   with MartialArtsFeat with FeaturesImpl with HitPointPerLevelAmountFeature {
   self: GeneralFeat =>
-  override protected[this] lazy val triggerOn: Seq[TriggerEvent] = Seq(TriggerEvent.Passive)
-  override protected[this] lazy val triggerOff: Seq[TriggerEvent] = Seq(TriggerEvent.Never)
-  override protected[this] lazy val hitPointPerLevelCategories: Seq[effect.EffectCategories.Value] =
+  override protected lazy val triggerOn: Seq[TriggerEvent] = Seq(TriggerEvent.Passive)
+  override protected lazy val triggerOff: Seq[TriggerEvent] = Seq(TriggerEvent.Never)
+  override protected lazy val hitPointPerLevelCategories: Seq[effect.EffectCategories.Value] =
     Seq(effect.EffectCategories.Health)
   override protected val hitPointBonusType: BonusType = BonusType.Feat
   override protected val hitPointsPerLevel: Int = 0

@@ -59,10 +59,10 @@ object EffectParameter extends SmartEnum[EffectParameter] with Searchable[Effect
   val values: IndexedSeq[EffectParameter] = findValues ++ bonusTypes ++ triggerEvents
 
   def triggerEvents: immutable.IndexedSeq[Trigger] =
-    for { t <- TriggerEvent.values } yield Trigger(t)
+    for  t <- TriggerEvent.values  yield Trigger(t)
 
   def bonusTypes: immutable.IndexedSeq[BonusType] =
-    for { b <- Bonus.values } yield BonusType(b)
+    for  b <- Bonus.values  yield BonusType(b)
 
   case class Trigger(triggerEvent: TriggerEvent) extends EffectParameter
 

@@ -25,6 +25,6 @@ import io.truthencode.ddo.support.requisite.{ClassRequisite, FeatRequisite}
  */
 trait DamageReductionLevelBase
   extends ReligionFeatBase with Passive with DamageReductionLevel with DamageReductionPrefix {
-  self: ClassRequisite with FeatRequisite with DisplayName with FriendlyDisplay =>
+  self: ClassRequisite & FeatRequisite & DisplayName & FriendlyDisplay =>
 
 }

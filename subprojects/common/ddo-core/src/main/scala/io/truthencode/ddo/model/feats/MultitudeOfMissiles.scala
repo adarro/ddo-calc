@@ -41,7 +41,7 @@ protected[feats] trait MultitudeOfMissiles
   with RequiresAllOfFeat with RequiresBaB with ActiveFeat with AtWillEvent with SharedCoolDown {
   override val coolDownPoolId: String = CoolDownPool.ManyShot.coolDownPoolId
   
-  private[this] val cls = (Alchemist, 6)
+  private val cls = (Alchemist, 6)
 
   override def coolDown: Option[Duration] = Some(Duration.ofSeconds(60))
 

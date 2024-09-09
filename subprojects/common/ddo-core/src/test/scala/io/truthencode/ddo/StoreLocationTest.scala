@@ -17,11 +17,23 @@
  */
 package io.truthencode.ddo
 
+import com.typesafe.scalalogging.LazyLogging
 import io.truthencode.ddo.support.slots.WearLocation
 import org.scalatest.funspec.AnyFunSpec
 import org.scalatest.matchers.should.Matchers
 
-class StoreLocationTest extends AnyFunSpec with Matchers {
+class StoreLocationTest extends AnyFunSpec with Matchers with LazyLogging {
+  describe("Basic Store Locations") {
+    they("Should be inside an enum") {
+      StoreLocation.values should not be empty
+    }
+    it("should have one for Equipment") {
+      StoreLocation.values.foreach { v =>
+        logger.info(s"entryName: ${v.entryName}")
+      }
+//      StoreLocation.Equipment should not be empty
+    }
+  }
   describe("Wearable Items") {
     they("should have a designated Equipment Slot as a location") {
       val eq = StoreLocation.Equipment
@@ -36,6 +48,7 @@ class StoreLocationTest extends AnyFunSpec with Matchers {
     they("should include Red Augment Slots") {
       val aug = StoreLocation.ChromaticAugments
       aug.map(_.generalAugment).contains(AugmentLocation.RedAugmentSlot)
+      StoreLocation.values.contains(AugmentLocation.RedAugmentSlot)
     }
   }
 

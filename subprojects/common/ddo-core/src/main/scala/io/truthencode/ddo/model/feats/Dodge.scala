@@ -41,9 +41,9 @@ trait Dodge
   with AlchemistBonusFeat with MartialArtsFeat with FeaturesImpl with DodgeChanceFeature {
   self: GeneralFeat =>
 
-  override protected[this] lazy val triggerOn: Seq[TriggerEvent] = Seq(TriggerEvent.Passive)
-  override protected[this] lazy val triggerOff: Seq[TriggerEvent] = Seq(TriggerEvent.Never)
-  override protected[this] lazy val dodgeCategories: Seq[effect.EffectCategories.Value] =
+  override protected lazy val triggerOn: Seq[TriggerEvent] = Seq(TriggerEvent.Passive)
+  override protected lazy val triggerOff: Seq[TriggerEvent] = Seq(TriggerEvent.Never)
+  override protected lazy val dodgeCategories: Seq[effect.EffectCategories.Value] =
     Seq(effect.EffectCategories.Ability, effect.EffectCategories.MissChance)
   override val dodgeBonusType: BonusType = BonusType.Feat
   override val dodgeBonusAmount: Int = 3

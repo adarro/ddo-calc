@@ -22,7 +22,7 @@ import io.truthencode.ddo.support.TraverseOps.MapOps
 trait JoinAbleMap[X, Y, C <: Map[X, Y]] extends JoinAbleBase[(X, Y), C] {
   implicit val joinOnKeys: Boolean // = false
   private val someBool = implicitly[Boolean] // : Boolean = false
-  val source: Map[X, Y] // = Map[X, Y]()
+  def source: Map[X, Y] // = Map[X, Y]()
   private val list = source.take(sampleSize)
   val listA: Map[X, Y] = list.take(portion)
   val listB: Map[X, Y] = list.takeRight(portion)

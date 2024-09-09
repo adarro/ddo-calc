@@ -23,9 +23,9 @@ import io.truthencode.ddo.support.naming.DisplayProperties
 import org.scalatest.funspec.AnyFunSpec
 
 class WeaponProficiencyTest extends AnyFunSpec with LazyLogging {
-  lazy val exotics: Seq[GeneralFeat with SubFeat with ExoticWeaponProficiency] =
+  lazy val exotics: Seq[GeneralFeat & SubFeat & ExoticWeaponProficiency] =
     GeneralFeat.ExoticWeaponProficiency.subFeats.map {
-        (x: GeneralFeat with SubFeat with ExoticWeaponProficiency with DisplayProperties) => x
+        (x: GeneralFeat & SubFeat & ExoticWeaponProficiency & DisplayProperties) => x
     }
   describe("Weapon proficiency: Bastard Sword") {
     they("Exist") {

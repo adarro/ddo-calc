@@ -39,7 +39,7 @@ trait BladeswornTransformation
   extends FeatRequisiteImpl with TriggeredActivationImpl with DeityUniqueLevelBase
   with RequiresAllOfFeat with EberronReligionWarforged with LordOfBlades
   with TheLordOfBladesFeatBase with ActiveFeat with AtWillEvent with DefaultCoolDown {
-  self: DeityFeat with Requisite with RequisiteType =>
+  self: DeityFeat & Requisite & RequisiteType =>
 
   override def allOfFeats: Seq[Feat] = List(DeityFeat.ChildOfTheLordOfBlades)
 

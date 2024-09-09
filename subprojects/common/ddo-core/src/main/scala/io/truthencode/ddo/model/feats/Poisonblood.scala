@@ -35,7 +35,7 @@ import io.truthencode.ddo.support.requisite.{
 protected[feats] trait Poisonblood
   extends FeatRequisiteImpl with ClassRequisiteImpl with GrantsToClass with RequiresAllOfClass
   with Passive {
-  private[this] val cls = (Alchemist, 7)
+  private val cls = (Alchemist, 7)
 
   abstract override def grantToClass: Seq[(HeroicCharacterClass, Int)] = super.grantToClass :+ cls
 

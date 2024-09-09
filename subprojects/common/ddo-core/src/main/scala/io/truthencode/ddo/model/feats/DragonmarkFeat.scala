@@ -36,7 +36,7 @@ import scala.collection.immutable
 sealed trait DragonmarkFeat
   extends Feat with TriggeredActivationImpl with FriendlyDisplay with SubFeatInformation with FeatMatcher with FeatRequisiteImpl
   with FeaturesImpl {
-  self: FeatType with Requisite with RequisiteType with Inclusion with Features with TriggerEvent =>
+  self: FeatType & Requisite & RequisiteType & Inclusion & Features & TriggerEvent =>
 
 
   val matchFeat: PartialFunction[Feat, DragonmarkFeat] = { case x: DragonmarkFeat =>

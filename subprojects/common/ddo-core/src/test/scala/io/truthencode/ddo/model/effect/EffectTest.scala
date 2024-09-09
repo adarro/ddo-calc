@@ -25,7 +25,7 @@ class EffectTest extends AnyFunSpec with Matchers {
   describe("A general effect") {
     it("should be able to be instantiated") {
       val e = new Effect with Features {
-        override def features: List[Feature[_]] = List()
+        override def features: List[Feature[?]] = List()
       }
     }
   }

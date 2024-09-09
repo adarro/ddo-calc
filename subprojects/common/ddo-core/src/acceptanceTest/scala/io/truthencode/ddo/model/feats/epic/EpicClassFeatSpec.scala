@@ -35,10 +35,10 @@ import scala.jdk.CollectionConverters.SeqHasAsJava
 
 @RunWith(classOf[ConcordionRunner])
 class EpicClassFeatSpec extends LazyLogging {
-  type Entry = EnumEntry with DisplayProperties
-  type E = Enum[_ <: Entry]
+  type Entry = EnumEntry & DisplayProperties
+  type E = Enum[? <: Entry]
   type CharClass = Option[HeroicCharacterClass]
-  type EpicClassHelper = ClassFeatDisplayHelper with EpicFeatFeatDisplayHelper
+  type EpicClassHelper = ClassFeatDisplayHelper & EpicFeatFeatDisplayHelper
 
   val helperMap: scala.collection.mutable.HashMap[CharClass, EpicClassHelper] =
     scala.collection.mutable.HashMap.empty

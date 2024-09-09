@@ -39,8 +39,8 @@ trait AttributeModifierInit extends AttributeModifier {
 trait DefaultAttributeModifier extends AttributeModifier
 
 trait StrengthModifier extends AttributeModifier {
-  protected[this] val attributeStrength: Attribute = Strength
-  private[this] val totalModifier: M = (attributeStrength, intModifierStrength)
+  protected val attributeStrength: Attribute = Strength
+  private val totalModifier: M = (attributeStrength, intModifierStrength)
 
   abstract override def modifiedAttributes: Set[M] = super.modifiedAttributes + totalModifier
 
@@ -48,8 +48,8 @@ trait StrengthModifier extends AttributeModifier {
 }
 
 trait DexterityModifier extends AttributeModifier {
-  protected[this] val attributeDexterity: Attribute = Dexterity
-  private[this] val totalModifier: M = (attributeDexterity, intModifierDexterity)
+  protected val attributeDexterity: Attribute = Dexterity
+  private val totalModifier: M = (attributeDexterity, intModifierDexterity)
 
   abstract override def modifiedAttributes: Set[M] = super.modifiedAttributes + totalModifier
 
@@ -57,8 +57,8 @@ trait DexterityModifier extends AttributeModifier {
 }
 
 trait ConstitutionModifier extends AttributeModifier {
-  protected[this] val attributeConstitution: Attribute = Constitution
-  private[this] val totalModifier: M = (attributeConstitution, intModifierConstitution)
+  protected val attributeConstitution: Attribute = Constitution
+  private val totalModifier: M = (attributeConstitution, intModifierConstitution)
 
   abstract override def modifiedAttributes: Set[M] = super.modifiedAttributes + totalModifier
 
@@ -66,8 +66,8 @@ trait ConstitutionModifier extends AttributeModifier {
 }
 
 trait IntelligenceModifier extends AttributeModifier {
-  protected[this] val attributeIntelligence: Attribute = Intelligence
-  private[this] val totalModifier: M = (attributeIntelligence, intModifierIntelligence)
+  protected val attributeIntelligence: Attribute = Intelligence
+  private val totalModifier: M = (attributeIntelligence, intModifierIntelligence)
 
   abstract override def modifiedAttributes: Set[M] = super.modifiedAttributes + totalModifier
 
@@ -75,8 +75,8 @@ trait IntelligenceModifier extends AttributeModifier {
 }
 
 trait WisdomModifier extends AttributeModifier {
-  protected[this] val attributeWisdom: Attribute = Wisdom
-  private[this] val totalModifier: M = (attributeWisdom, intModifierWisdom)
+  protected val attributeWisdom: Attribute = Wisdom
+  private val totalModifier: M = (attributeWisdom, intModifierWisdom)
 
   abstract override def modifiedAttributes: Set[M] = super.modifiedAttributes + totalModifier
 
@@ -84,8 +84,8 @@ trait WisdomModifier extends AttributeModifier {
 }
 
 trait CharismaModifier extends AttributeModifier {
-  protected[this] val attributeCharisma: Attribute = Charisma
-  private[this] val totalModifier: M = (attributeCharisma, intModifierCharisma)
+  protected val attributeCharisma: Attribute = Charisma
+  private val totalModifier: M = (attributeCharisma, intModifierCharisma)
 
   abstract override def modifiedAttributes: Set[M] = super.modifiedAttributes + totalModifier
 

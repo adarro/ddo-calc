@@ -25,7 +25,7 @@ import scala.util.Try
  * Created by adarr on 1/25/2017.
  */
 trait ConcordionEnumBuilderSupport {
-  implicit protected[this] val myStringOrdering: Ordering[String] =
+  implicit protected val myStringOrdering: Ordering[String] =
     Ordering.fromLessThan[String](_ > _)
 
   def actual: Seq[String]
@@ -55,18 +55,18 @@ trait ConcordionEnumBuilderSupport {
 
   protected def strToBool(s: String): Boolean = Try(s.toBoolean).getOrElse(false)
 
-  protected[this] def resultCount(searchString: String, ignoreCase: Boolean): Int = {
+  protected def resultCount(searchString: String, ignoreCase: Boolean): Int = {
     withNames(searchString, ignoreCase = ignoreCase).size
   }
 
   def withNames(searchString: String, ignoreCase: Boolean): Seq[String] = {
     val ss = searchString.split(',').toSet.toSeq
-    if (ignoreCase) {
-      for {
+    if ignoreCase then {
+      for
         a <- actual
         s <- ss
         if a.equalsIgnoreCase(s.trim)
-      } yield s
+      yield s
     } else {
       ss.intersect(actual)
     }

@@ -34,7 +34,7 @@ trait Wearable {
     WearLocation.withName("blah").foo
     WearLocation.fromMask(allowedWearLocationFlags) match {
       case Some(x: Seq[EnumEntry]) => x
-      case _ => List[WearLocation with Product with Serializable]()
+      case _ => List[WearLocation & Product & Serializable]()
     }
   }
 

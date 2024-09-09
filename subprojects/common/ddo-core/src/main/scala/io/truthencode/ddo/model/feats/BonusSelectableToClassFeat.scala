@@ -26,7 +26,7 @@ import io.truthencode.ddo.support.requisite.{Inclusion, Requisite, SelectableToC
  * gain an extra feat at certain levels.
  */
 trait BonusSelectableToClassFeat {
-  self: Feat with SelectableToClass =>
+  self: Feat & SelectableToClass =>
 
   val levels: Set[Int]
 
@@ -35,7 +35,7 @@ trait BonusSelectableToClassFeat {
 }
 
 trait BonusSelectableToClassFeatImpl extends BonusSelectableToClassFeat with SelectableToClass {
-  self: Feat with FeatType with Requisite with Inclusion =>
+  self: Feat & FeatType & Requisite & Inclusion =>
   override def bonusCharacterClass: Seq[HeroicCharacterClass] = Nil
   override def bonusSelectableToClass: Seq[(HeroicCharacterClass, Int)] = Nil
 }

@@ -74,7 +74,7 @@ sealed trait PointsAvailableRequisite extends PointRequisite {
  *   we should be able to create just one of these instead of a Race / Class / Feat etc specific one
  */
 trait PointsInTreeRequisiteImpl extends MustContainImpl[Requirement] with PointInTreeRequisite {
-  self: Requisite with RequisiteType =>
+  self: Requisite & RequisiteType =>
   override def progressionInTree: Seq[(TreeLike, SpendablePoints, Int)] = Nil
 }
 
@@ -88,7 +88,7 @@ trait RequiresPointsInTree
 
 trait PointsAvailableRequisiteImpl
   extends MustContainImpl[Requirement] with PointsAvailableRequisite {
-  self: Requisite with RequisiteType =>
+  self: Requisite & RequisiteType =>
   override def pointsAvailable: Seq[(SpendablePoints, Int)] = Nil
 }
 

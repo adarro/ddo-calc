@@ -33,7 +33,7 @@ import io.truthencode.ddo.support.requisite.{
 protected[feats] trait GreaterWeaponFocusBase
   extends FeatRequisiteImpl with ClassRequisiteImpl with BonusSelectableToClassFeatImpl with Passive with RequiresAllOfClass
   with FighterBonusFeat {
-  self: GeneralFeat with RequiresAllOfFeat =>
+  self: GeneralFeat & RequiresAllOfFeat =>
 
   override def allOfClass: Seq[(HeroicCharacterClass, Int)] =
     List((HeroicCharacterClass.Fighter, 8))

@@ -53,16 +53,16 @@ trait Armor extends BonusType {
 object BonusType extends Enum[BonusType] {
   override def values: immutable.IndexedSeq[BonusType] = findValues ++ mythicSlotAny
 
-  val fnStackNone: PartialFunction[BonusType, BonusType with NonStacking] = { case x: NonStacking =>
+  val fnStackNone: PartialFunction[BonusType, BonusType & NonStacking] = { case x: NonStacking =>
     x
   }
 
-  val fnStackAny: PartialFunction[BonusType, BonusType with StacksWithAny] = {
+  val fnStackAny: PartialFunction[BonusType, BonusType & StacksWithAny] = {
     case x: StacksWithAny =>
       x
   }
 
-  val fnStackUnique: PartialFunction[BonusType, BonusType with StacksWithUnique] = {
+  val fnStackUnique: PartialFunction[BonusType, BonusType & StacksWithUnique] = {
     case x: StacksWithUnique =>
       x
   }
@@ -70,18 +70,18 @@ object BonusType extends Enum[BonusType] {
   /**
    * List of bonus types that stack with all but the same type and value. Highest wins.
    */
-  lazy val UniqueBonusTypes: Seq[BonusType with StacksWithUnique] = values.collect(fnStackUnique)
+  lazy val UniqueBonusTypes: Seq[BonusType & StacksWithUnique] = values.collect(fnStackUnique)
 
   /**
    * List of bonus types that stack with everything. Generally limited to rare 'Misc' bonus and
    * Feats.
    */
-  lazy val AnyBonusTypes: Seq[BonusType with StacksWithAny] = values.collect(fnStackAny)
+  lazy val AnyBonusTypes: Seq[BonusType & StacksWithAny] = values.collect(fnStackAny)
 
   /**
    * List of bonus types that don't stack.
    */
-  lazy val NonStackingBonusTypes: Seq[BonusType with NonStacking] = values.collect(fnStackNone)
+  lazy val NonStackingBonusTypes: Seq[BonusType & NonStacking] = values.collect(fnStackNone)
   case object ActionBoost extends BonusType with NonStacking
 
   /**
@@ -301,7 +301,7 @@ object BonusType extends Enum[BonusType] {
     val wsl = WearLocation.values
       .withFilter(_.isInstanceOf[EquipmentSlot])
       .withFilter(!_.isInstanceOf[Cosmetic])
-    for { wc <- WearLocation.values } yield Mythic(wc.asInstanceOf[EquipmentSlot])
+    for  wc <- WearLocation.values  yield Mythic(wc.asInstanceOf[EquipmentSlot])
   }
 
   /**

@@ -34,7 +34,7 @@ trait RaceRequisite {
 }
 
 trait RaceRequisiteImpl extends MustContainImpl[Requirement] with RaceRequisite {
-  self: Requisite with RequisiteType =>
+  self: Requisite & RequisiteType =>
   override def anyOfRace: Seq[(Race, Int)] = Nil
 
   override def allOfRace: Seq[(Race, Int)] = Nil

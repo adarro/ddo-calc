@@ -41,18 +41,19 @@ import org.scalatestplus.mockito.MockitoSugar
 
 import scala.collection.immutable
 import scala.util.{Success, Try}
+import scala.reflect.Selectable.reflectiveSelectable
 
 class FeatureTest extends AnyFunSpec with Matchers with MockitoSugar with LazyLogging {
 
   val featEffects: Unit = {
-    val fList = for {
+    val fList = for
       feat <- Feat.values
       features <- feat.namedFeatures
       feature <- features._2
-    } yield (feat, feature)
+    yield (feat, feature)
   }
 
-  def fixture = new {
+  def fixture: Object {val sourceInfo: SourceInfo} = new {
     val sourceInfo: SourceInfo = SourceInfo("TestContext", this)
   }
 
@@ -70,7 +71,7 @@ class FeatureTest extends AnyFunSpec with Matchers with MockitoSugar with LazyLo
       val param = EffectParameter.BonusType(BonusType.Feat)
       val part = EffectPart.MissChanceEffect(BasicStat.DodgeChance)
       val mockDetailedEffect = mock[DetailedEffect]
-      val partMod = new PartModifier[Int, BasicStat with MissChance] with UsingSearchPrefix {
+      val partMod = new PartModifier[Int, BasicStat & MissChance] with UsingSearchPrefix {
 
         /**
          * Used when qualifying a search with a prefix. Examples include finding "HalfElf" from
@@ -104,7 +105,7 @@ class FeatureTest extends AnyFunSpec with Matchers with MockitoSugar with LazyLo
         override def categories: Seq[String] =
           Seq(EffectCategories.General, EffectCategories.MissChance).map(_.toString)
 
-        override protected[this] lazy val partToModify: BasicStat with MissChance =
+        override protected lazy val partToModify: BasicStat & MissChance =
           BasicStat.DodgeChance
         private val eb = EffectParameterBuilder()
           .toggleOffValue(TriggerEvent.OnDeath)
@@ -112,7 +113,7 @@ class FeatureTest extends AnyFunSpec with Matchers with MockitoSugar with LazyLo
           .addBonusType(BonusType.Feat)
           .build
 
-        override protected[this] def effectParameters: Seq[ParameterModifier[_]] = eb.modifiers
+        override protected def effectParameters: Seq[ParameterModifier[?]] = eb.modifiers
         override val effectDetail: DetailedEffect = mockDetailedEffect
         override val value: Int = 3
         override val source: SourceInfo = SourceInfo("ExampleDodge", this)
@@ -175,7 +176,7 @@ class FeatureTest extends AnyFunSpec with Matchers with MockitoSugar with LazyLo
       val mDetail = mock[DetailedEffect]
       val f = fixture
       val pm = new PartModifier[Int, GeneralFeat] with UsingSearchPrefix {
-        override protected[this] lazy val partToModify: GeneralFeat =
+        override protected lazy val partToModify: GeneralFeat =
           GeneralFeat.Trip
 
         /**
@@ -214,7 +215,7 @@ class FeatureTest extends AnyFunSpec with Matchers with MockitoSugar with LazyLo
           .addBonusType(BonusType.ActionBoost)
           .build
 
-        override protected[this] def effectParameters: Seq[ParameterModifier[_]] = eb.modifiers
+        override protected def effectParameters: Seq[ParameterModifier[?]] = eb.modifiers
         override val value: Int = 3
         override val source: SourceInfo = f.sourceInfo
         override val effectDetail: DetailedEffect = mDetail

@@ -74,7 +74,7 @@ object ThrowAway {
     )
   )
   // val a = new AttributeStat[Attribute.Strength] {}
-  val f: PartModifier[V, T] with UsingSearchPrefix = new PartModifier[V, T] with UsingSearchPrefix {
+  val f: PartModifier[V, T] & UsingSearchPrefix = new PartModifier[V, T] with UsingSearchPrefix {
 
     /**
      * The General Description should be just that. This should not include specific values unless
@@ -119,7 +119,7 @@ object ThrowAway {
       override val sourceId: String = "Example"
       override val sourceRef: AnyRef = this
     }
-    override protected[this] val partToModify: T = ???
+    override protected val partToModify: T = ???
   }
   val str: PlayerAttribute = PlayerAttribute(Attribute.Strength, 6)
   val l = List((EffectParameter.BonusType, 3))
@@ -128,14 +128,14 @@ object ThrowAway {
   def doStr(): Unit = {
     val mm: Map[Try[EffectPart], List[PartModifier[V, T]]] =
       str.modifiers.filter(f => f.part.isSuccess).groupBy(_.part)
-    for {
+    for
       g <- mm
-    } yield g
-    for {
+    yield g
+    for
       part <- str.modifiers.filter(f => f.part.isSuccess).groupBy(_.part)
       mod <- part._2
 
-    } yield m
+    yield m
 //    val ps = for {
 //      group <- str.modifiers.groupBy(_.part)
 //      feature <- group._2

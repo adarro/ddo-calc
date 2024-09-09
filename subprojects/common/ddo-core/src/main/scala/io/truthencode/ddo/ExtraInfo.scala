@@ -48,7 +48,7 @@ object ExtraInfo {
    */
   def apply(i: Int): ExtraInfo = {
     val sym =
-      if (i < 0) {
+      if i < 0 then {
         "-"
       } else {
         "+"

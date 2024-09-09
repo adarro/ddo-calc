@@ -30,7 +30,7 @@ package io.truthencode.ddo.support.naming
  *   suffixed i.e. RomanNumerals
  */
 trait EfficientMetamagicPrefix extends Prefix {
-  self: DisplayName with DisplayProperties =>
+  self: DisplayName & DisplayProperties =>
   override protected val prefixSeparator: String = " "
 
   override def prefix: Option[String] = Some("Efficient")

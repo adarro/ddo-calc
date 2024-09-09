@@ -21,7 +21,7 @@ import io.truthencode.ddo.model.enhancement.enhancements.classbased.BombardierTi
 import io.truthencode.ddo.support.naming.{DisplayName, DisplayProperties, SLAPrefix}
 
 trait SLARapidCondensation extends BombardierTierTwo with ClassEnhancementImpl with SLAPrefix {
-  self: DisplayName with DisplayProperties =>
+  self: DisplayName & DisplayProperties =>
 
   /**
    * Some enhancements can be taken multiple times (generally up to three)

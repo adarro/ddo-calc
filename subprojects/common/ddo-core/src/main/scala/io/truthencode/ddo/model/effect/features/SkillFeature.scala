@@ -39,8 +39,8 @@ trait SkillFeature extends Features {
       bonusType = bonusType.entryName
     )
     val eb = EffectParameterBuilder()
-      .toggleOffValue(skillTriggerOff: _*)
-      .toggleOnValue(skillTriggerOn: _*)
+      .toggleOffValue(skillTriggerOff*)
+      .toggleOnValue(skillTriggerOn*)
       .addBonusType(bonusType)
       .build
     SkillEffect(f._1, f._2, bonusType, src, categories, eb.modifiers, effectDetail)
@@ -51,6 +51,6 @@ trait SkillFeature extends Features {
   val affectedSkills: List[(Skill, Int)]
   private val src = this
 
-  abstract override def features: Seq[Feature[_]] =
+  abstract override def features: Seq[Feature[?]] =
     super.features ++ skillChance
 }

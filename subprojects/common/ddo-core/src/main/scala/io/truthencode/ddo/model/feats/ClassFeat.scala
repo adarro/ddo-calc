@@ -34,7 +34,7 @@ import scala.collection.immutable
 sealed trait ClassFeat
   extends Feat with FriendlyDisplay with SubFeatInformation with ClassRequisiteImpl with FeatMatcher
   with FeaturesImpl {
-  self: FeatType with Requisite with Inclusion with RequisiteType with Features =>
+  self: FeatType & Requisite & Inclusion & RequisiteType & Features =>
 
   val matchFeat: PartialFunction[Feat, ClassFeat] = { case x: ClassFeat =>
     x
@@ -55,11 +55,11 @@ object ClassFeat extends Enum[ClassFeat] with FeatSearchPrefix {
 
   def alchemicalStudies: immutable.Seq[AlchemicalStudies] = {
     // for comprehension vs map since we'll likely add Reaction info the Feat Trait
-    for { r <- Reaction.values } yield AlchemicalStudies(r)
+    for  r <- Reaction.values  yield AlchemicalStudies(r)
   }
 
   protected def favoredEnemies: immutable.IndexedSeq[FavoredEnemyType] = {
-    for { m <- MonsterType.values } yield FavoredEnemyType(Some(m))
+    for  m <- MonsterType.values  yield FavoredEnemyType(Some(m))
   }
 
   case class FavoredEnemyType(mainTypes: Option[MonsterType])
@@ -96,7 +96,7 @@ object ClassFeat extends Enum[ClassFeat] with FeatSearchPrefix {
   case object ToughTincture extends ClassFeat with ToughTincture
   case object ToxicTonic extends ClassFeat with ToxicTonic
   case object MultitudeOfMissiles extends ClassFeat with MultitudeOfMissiles {
-       override def allOfFeats: Seq[Feat] = super.allOfFeats
+    override def allOfFeats: Seq[Feat] = super.allOfFeats
   }
   case object Poisonblood extends ClassFeat with Poisonblood
 
@@ -378,12 +378,12 @@ object ClassFeat extends Enum[ClassFeat] with FeatSearchPrefix {
 
   case object TurnUndead extends ClassFeat with TurnUndead
 
-    case object ExtraTurning extends ClassFeat with ExtraTurning with  RequiresAllOfFeat {
-        override lazy val allOfFeats: Seq[Feat] = Seq(TurnUndead)
-    }
+  case object ExtraTurning extends ClassFeat with ExtraTurning with RequiresAllOfFeat {
+    override lazy val allOfFeats: Seq[Feat] = Seq(TurnUndead)
+  }
 
-    case object ImprovedTurning extends ClassFeat with ImprovedTurning with  RequiresAllOfFeat {
-        override lazy val allOfFeats: Seq[Feat] = Seq(TurnUndead)
-    }
+  case object ImprovedTurning extends ClassFeat with ImprovedTurning with RequiresAllOfFeat {
+    override lazy val allOfFeats: Seq[Feat] = Seq(TurnUndead)
+  }
 
 }

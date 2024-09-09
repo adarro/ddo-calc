@@ -10,7 +10,7 @@ import io.truthencode.ddo.support.requisite.{Inclusion, Requisite}
  * Meta / special feats such as Feat Respec Tokens which generally have meta-mechanic functions.
  */
 sealed trait SpecialFeat  extends Feat with FriendlyDisplay with SubFeatInformation with FeaturesImpl {
-    self: FeatType with Requisite with Inclusion with Features =>
+    self: FeatType & Requisite & Inclusion & Features =>
 
 }
 

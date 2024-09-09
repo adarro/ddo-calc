@@ -21,8 +21,8 @@ import enumeratum.{Enum, EnumEntry}
 import io.truthencode.ddo.support.naming.DisplayProperties
 
 trait DisplayHelper {
-  type Entry = EnumEntry with DisplayProperties
-  type E = Enum[_ <: Entry]
+  type Entry = EnumEntry & DisplayProperties
+  type E = Enum[? <: Entry]
 
   val displayEnum: E
 }

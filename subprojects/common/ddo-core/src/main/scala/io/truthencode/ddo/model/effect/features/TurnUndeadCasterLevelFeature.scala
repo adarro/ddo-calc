@@ -31,11 +31,11 @@ trait TurnUndeadCasterLevelFeature extends Features {
   self: SourceInfo =>
   def undeadCasterLevelBonusType: BonusType
   val undeadCasterLevelBonusAmount: Int
-  protected[this] def triggerOn: Seq[TriggerEvent]
-  protected[this] def triggerOff: Seq[TriggerEvent]
-  protected[this] def undeadCasterLevelCategories: Seq[effect.EffectCategories.Value]
+  protected def triggerOn: Seq[TriggerEvent]
+  protected def triggerOff: Seq[TriggerEvent]
+  protected def undeadCasterLevelCategories: Seq[effect.EffectCategories.Value]
   private val src = this
-  private[this] val nHD =
+  private val nHD =
     new PartModifier[Int, BasicStat] with UsingSearchPrefix {
 
       /**
@@ -66,16 +66,16 @@ trait TurnUndeadCasterLevelFeature extends Features {
         triggersOff = triggerOff.map(_.entryName),
         bonusType = undeadCasterLevelBonusType.entryName
       )
-      override protected[this] lazy val partToModify: BasicStat =
+      override protected lazy val partToModify: BasicStat =
         BasicStat.TurnUndeadLevel
 
       private val eb = EffectParameterBuilder()
-        .toggleOffValue(triggerOff: _*)
-        .toggleOnValue(triggerOn: _*)
+        .toggleOffValue(triggerOff*)
+        .toggleOnValue(triggerOn*)
         .addBonusType(undeadCasterLevelBonusType)
         .build
 
-      override protected[this] def effectParameters: Seq[ParameterModifier[_]] = eb.modifiers
+      override protected def effectParameters: Seq[ParameterModifier[?]] = eb.modifiers
 
       override val source: SourceInfo = src
       override lazy val value: Int = undeadCasterLevelBonusAmount
@@ -90,7 +90,7 @@ trait TurnUndeadCasterLevelFeature extends Features {
       override def searchPrefixSource: String = partToModify.searchPrefixSource
     }
 
-  abstract override def features: Seq[Feature[_]] = {
+  abstract override def features: Seq[Feature[?]] = {
     assert(nHD.value == undeadCasterLevelBonusAmount)
     super.features :+ nHD
   }

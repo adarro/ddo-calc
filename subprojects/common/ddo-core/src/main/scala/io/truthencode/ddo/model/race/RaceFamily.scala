@@ -29,7 +29,7 @@ sealed trait RaceFamily extends EnumEntry {
   def includedRaces: Set[Race]
 }
 
-trait RaceFamilyImpl extends RaceFamily {
+sealed trait RaceFamilyImpl extends RaceFamily {
   override def includedRaces: Set[Race] = new HashSet[Race]()
 }
 

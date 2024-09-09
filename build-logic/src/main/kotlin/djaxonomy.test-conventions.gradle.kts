@@ -142,9 +142,6 @@ fun JvmTestSuite.applyScalaTest() {
             implementation(libs.scalatest.plus.mockito.s3)
 
             implementation(libs.mockito.core)
-            implementation(libs.wix.accord.core.s213)
-            implementation(libs.wix.accord.scalatest.s213)
-
             implementation(libs.scalatest.plus.scalacheck.s3)
         } else {
             runtimeOnly(libs.scalatest.plus.junit.s213)
@@ -153,9 +150,6 @@ fun JvmTestSuite.applyScalaTest() {
             implementation(libs.scalatest.plus.mockito.s213)
 
             implementation(libs.mockito.core)
-            implementation(libs.wix.accord.core.s213)
-            implementation(libs.wix.accord.scalatest.s213)
-
             implementation(libs.scalatest.plus.scalacheck.s213)
         }
 

@@ -44,7 +44,7 @@ protected[feats] trait ReligiousLore
     (1 to 20 by 2).toList.map((HeroicCharacterClass.Bard, _))
 
   private def allLevelsClasses =
-    for {
+    for
       c <- List(
         HeroicCharacterClass.Cleric,
         HeroicCharacterClass.FavoredSoul,
@@ -52,5 +52,5 @@ protected[feats] trait ReligiousLore
         HeroicCharacterClass.FavoredSoul
       )
       l <- 1 to 20
-    } yield (c, l)
+    yield (c, l)
 }

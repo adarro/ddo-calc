@@ -23,7 +23,7 @@ import io.truthencode.ddo.support.naming.{DisplayName, FriendlyDisplay, Prefix}
  * Created by adarr on 3/5/2017.
  */
 trait DamageReductionPrefix extends Prefix {
-  self: DisplayName with FriendlyDisplay =>
+  self: DisplayName & FriendlyDisplay =>
 
   /**
    * Delimits the prefix and text.

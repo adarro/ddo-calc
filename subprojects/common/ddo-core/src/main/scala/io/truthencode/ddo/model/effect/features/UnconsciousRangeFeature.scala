@@ -31,11 +31,11 @@ trait UnconsciousRangeFeature extends Features {
   self: SourceInfo =>
   val autoRecoveryBonus: BonusType
   val unconsciousRange: Int
-  protected[this] val triggerOn: Seq[TriggerEvent]
-  protected[this] val triggerOff: Seq[TriggerEvent]
-  protected[this] val unconsciousRangeCategories: Seq[effect.EffectCategories.Value]
+  protected val triggerOn: Seq[TriggerEvent]
+  protected val triggerOff: Seq[TriggerEvent]
+  protected val unconsciousRangeCategories: Seq[effect.EffectCategories.Value]
   private val src = this
-  private[this] val autoRecovery =
+  private val autoRecovery =
     new PartModifier[Int, BasicStat] with UsingSearchPrefix {
 
       /**
@@ -68,16 +68,16 @@ trait UnconsciousRangeFeature extends Features {
        */
       override def searchPrefixSource: String = partToModify.searchPrefixSource
 
-      override protected[this] lazy val partToModify: BasicStat =
+      override protected lazy val partToModify: BasicStat =
         BasicStat.AutoRecovery
 
       private val eb = EffectParameterBuilder()
-        .toggleOffValue(triggerOff: _*)
-        .toggleOnValue(triggerOn: _*)
+        .toggleOffValue(triggerOff*)
+        .toggleOnValue(triggerOn*)
         .addBonusType(autoRecoveryBonus)
         .build
 
-      override protected[this] def effectParameters: Seq[ParameterModifier[_]] = eb.modifiers
+      override protected def effectParameters: Seq[ParameterModifier[?]] = eb.modifiers
       override val effectDetail: DetailedEffect = DetailedEffect(
         id = "UnconsciousRange",
         description = "Increases the amount below 0 hitpoints you can fall before dying",
@@ -90,7 +90,7 @@ trait UnconsciousRangeFeature extends Features {
       override lazy val effectText: Option[String] = Some(s"Unconscious Range: $unconsciousRange")
     }
 
-  abstract override def features: Seq[Feature[_]] = {
+  abstract override def features: Seq[Feature[?]] = {
     assert(autoRecovery.value == unconsciousRange)
     super.features :+ autoRecovery
   }

@@ -33,7 +33,7 @@ trait Dice {
   def roll: Int = {
     val rnd = scala.util.Random
     val rng = Range.inclusive(1, number)
-    (for { r <- rng } yield rnd.nextInt(sides) + 1).sum
+    (for  r <- rng  yield rnd.nextInt(sides) + 1).sum
   }
 }
 

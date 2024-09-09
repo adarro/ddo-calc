@@ -40,9 +40,9 @@ protected[feats] trait Attack
   with GrantAbilityFeature {
   self: GeneralFeat =>
   override lazy val grantedAbility: ActiveAbilities = ActiveAbilities.Attack
-  override protected[this] lazy val triggerOn: Seq[TriggerEvent] = Seq(TriggerEvent.OnToggle)
-  override protected[this] lazy val triggerOff: Seq[TriggerEvent] = Seq(TriggerEvent.OnToggle)
-  override protected[this] lazy val grantAbilityCategories: Seq[effect.EffectCategories.Value] =
+  override protected lazy val triggerOn: Seq[TriggerEvent] = Seq(TriggerEvent.OnToggle)
+  override protected lazy val triggerOff: Seq[TriggerEvent] = Seq(TriggerEvent.OnToggle)
+  override protected lazy val grantAbilityCategories: Seq[effect.EffectCategories.Value] =
     Seq(effect.EffectCategories.Stance)
   override val grantBonusType: BonusType = BonusType.Feat
   override val abilityId: String = "Attack"

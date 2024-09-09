@@ -102,18 +102,18 @@ object StoreLocation extends Enum[StoreLocation] with BitSupport {
    * Object can be slotted onto character, such as a sword or helmet. Items with this value should
    * further be constrained with corresponding WearLocation.
    */
-  lazy val Equipment: immutable.Seq[StoreLocation with ItemEquip] =
+  lazy val Equipment: immutable.Seq[StoreLocation & ItemEquip] =
     StoreLocation.values.collect(fnEquipment)
-  lazy val Augments: immutable.Seq[StoreLocation with Augment] =
+  lazy val Augments: immutable.Seq[StoreLocation & Augment] =
     StoreLocation.values.collect(fnAugments)
 
-  lazy val ChromaticAugments: immutable.Seq[StoreLocation with ColorAugment] =
+  lazy val ChromaticAugments: immutable.Seq[StoreLocation & ColorAugment] =
     StoreLocation.values.collect(fnChromaticAugments)
-  lazy val CelestialAugments: immutable.Seq[StoreLocation with CelestialAugment] =
+  lazy val CelestialAugments: immutable.Seq[StoreLocation & CelestialAugment] =
     StoreLocation.values.collect(fnCelestialAugments)
-  lazy val GuildAugments: immutable.Seq[StoreLocation with GuildAugment] =
+  lazy val GuildAugments: immutable.Seq[StoreLocation & GuildAugment] =
     StoreLocation.values.collect(fnGuildAugments)
-  lazy val Filigrees: immutable.Seq[StoreLocation with Filigree] =
+  lazy val Filigrees: immutable.Seq[StoreLocation & Filigree] =
     StoreLocation.values.collect(fnFiligrees)
   override lazy val bitValues: Map[StoreLocation, Int] = valuesToIndex.map { x =>
     val wl = x._1
@@ -122,34 +122,34 @@ object StoreLocation extends Enum[StoreLocation] with BitSupport {
   }
   val values: immutable.IndexedSeq[StoreLocation] =
     findValues ++ generateEquipmentSlot ++ generateAugmentValues
-  val fnEquipment: PartialFunction[StoreLocation, StoreLocation with ItemEquip] = {
+  val fnEquipment: PartialFunction[StoreLocation, StoreLocation & ItemEquip] = {
     case x: ItemEquip =>
       x
   }
-  val fnAugments: PartialFunction[StoreLocation, StoreLocation with Augment] = { case x: Augment =>
+  val fnAugments: PartialFunction[StoreLocation, StoreLocation & Augment] = { case x: Augment =>
     x
   }
-  val fnChromaticAugments: PartialFunction[StoreLocation, StoreLocation with ColorAugment] = {
+  val fnChromaticAugments: PartialFunction[StoreLocation, StoreLocation & ColorAugment] = {
     case x: ColorAugment =>
       x
   }
-  val fnCelestialAugments: PartialFunction[StoreLocation, StoreLocation with CelestialAugment] = {
+  val fnCelestialAugments: PartialFunction[StoreLocation, StoreLocation & CelestialAugment] = {
     case x: CelestialAugment =>
       x
   }
-  val fnGuildAugments: PartialFunction[StoreLocation, StoreLocation with GuildAugment] = {
+  val fnGuildAugments: PartialFunction[StoreLocation, StoreLocation & GuildAugment] = {
     case x: GuildAugment =>
       x
   }
-  val fnFiligrees: PartialFunction[StoreLocation, StoreLocation with Filigree] = {
+  val fnFiligrees: PartialFunction[StoreLocation, StoreLocation & Filigree] = {
     case x: Filigree =>
       x
   }
 
-  protected def generateAugmentValues: immutable.Seq[ItemEmbed with AugmentLocation] = {
-    for {
+  protected def generateAugmentValues: immutable.Seq[ItemEmbed & AugmentLocation] = {
+    for
       aug <- AugmentLocation.values
-    } yield aug match {
+    yield aug match {
       case x: ChromaticAugmentLocation => ChromaticAugmentLocationSlot(x)
       case x: CelestialAugmentLocation => CelestialAugmentLocationSlot(x)
       case x: GuildAugmentLocation => GuildSlotLocation(x)
@@ -158,7 +158,7 @@ object StoreLocation extends Enum[StoreLocation] with BitSupport {
   }
 
   protected def generateEquipmentSlot: immutable.Seq[EquippedLocation] = {
-    for { s <- WearLocation.values } yield EquippedLocation(s)
+    for  s <- WearLocation.values  yield EquippedLocation(s)
   }
 
   case class ChromaticAugmentLocationSlot(generalAugment: ChromaticAugmentLocation)
@@ -177,35 +177,35 @@ object StoreLocation extends Enum[StoreLocation] with BitSupport {
     override def displaySource: String = wearLocation.displaySource
   }
 
-  case object Equipped extends Inventory
+  case object Equipped extends Inventory,StoreLocation
 
   /**
    * Holds crafting ingredients and items such as heart seeds.
    */
-  case object IngredientBag extends Bag
+  case object IngredientBag extends Bag,StoreLocation
 
   /**
    * Stores collectables and turn-ins that can be traded for equipment / potions etc
    */
-  case object CollectableBag extends Bag
+  case object CollectableBag extends Bag,StoreLocation
 
   /**
    * Stores soul gems which are mainly used for crafting bane items
    */
-  case object SoulGemBag extends Bag
+  case object SoulGemBag extends Bag,StoreLocation
 
   /**
    * Stores Mount certificates
    * @note
    *   (Might be obsolete as of Update 49)
    */
-  case object MountBag extends Bag
+  case object MountBag extends Bag,StoreLocation
 
   /**
    * Stores Item augments and filigrees when can be slotted into equipment augment slots and
    * sentient items.
    */
-  case object AugmentBag extends Bag
+  case object AugmentBag extends Bag,StoreLocation
 
   case object Quiver extends StoreLocation
 
@@ -213,5 +213,5 @@ object StoreLocation extends Enum[StoreLocation] with BitSupport {
    * Item can be stored in Active Inventory. This should be true by default for most object unless
    * they are some invisible quest item or effect.
    */
-  case object ActiveInventory extends Inventory
+  case object ActiveInventory extends Inventory,StoreLocation
 }

@@ -78,10 +78,12 @@ tasks.withType<ScalaCompile>().configureEach {
                 logger.warn("Scala 3 detected")
                 additionalParameters?.plusAssign(
                     listOf(
+                        "-Yretain-trees", // Needed for Enumeratum
                         "-rewrite",
 //                        "-new-syntax",
                         "-source:3.4-migration",
                         "-Xignore-scala2-macros",
+                        "-new-syntax",
 //                        "explain"
                     ))
             }

@@ -45,7 +45,7 @@ package object web {
    */
   def toWikiUrlString(s: String, escapeApostrophe: Boolean = false): String = {
     val x = s.replace(Space, UnderScore).trim()
-    if (escapeApostrophe) URLEncoder.encode(x, "UTF-8") else x
+    if escapeApostrophe then URLEncoder.encode(x, "UTF-8") else x
   }
 
   // Whenever you write a library, allow people to supply a Config but

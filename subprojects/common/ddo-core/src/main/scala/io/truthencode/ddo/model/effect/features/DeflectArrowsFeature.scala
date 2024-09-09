@@ -31,11 +31,11 @@ trait DeflectArrowsFeature extends Features {
   self: SourceInfo =>
   protected val deflectArrowsBonusType: BonusType
   protected val secondsPerArrow: Int
-  protected[this] def triggerOn: Seq[TriggerEvent]
-  protected[this] def triggerOff: Seq[TriggerEvent]
-  protected[this] def deflectCategories: Seq[effect.EffectCategories.Value]
+  protected def triggerOn: Seq[TriggerEvent]
+  protected def triggerOff: Seq[TriggerEvent]
+  protected def deflectCategories: Seq[effect.EffectCategories.Value]
   private val src = this
-  private[this] val deflectArrowsChance =
+  private val deflectArrowsChance =
     new PartModifier[Int, BasicStat] with UsingSearchPrefix {
 
       /**
@@ -59,16 +59,16 @@ trait DeflectArrowsFeature extends Features {
        */
       override def searchPrefixSource: String = partToModify.searchPrefixSource
 
-      override protected[this] lazy val partToModify: BasicStat =
+      override protected lazy val partToModify: BasicStat =
         BasicStat.ChanceToHit
 
       private val eb = EffectParameterBuilder()
-        .toggleOffValue(triggerOff: _*)
-        .toggleOnValue(triggerOn: _*)
+        .toggleOffValue(triggerOff*)
+        .toggleOnValue(triggerOn*)
         .addBonusType(deflectArrowsBonusType)
         .build
 
-      override protected[this] def effectParameters: Seq[ParameterModifier[_]] = eb.modifiers
+      override protected def effectParameters: Seq[ParameterModifier[?]] = eb.modifiers
 
       /**
        * The General Description should be just that. This should not include specific values unless
@@ -90,7 +90,7 @@ trait DeflectArrowsFeature extends Features {
       override lazy val effectText: Option[String] = Some(s"Deflect Arrows: 1 every $value seconds")
     }
 
-  abstract override def features: Seq[Feature[_]] = {
+  abstract override def features: Seq[Feature[?]] = {
     assert(deflectArrowsChance.value == secondsPerArrow)
     super.features :+ deflectArrowsChance
   }

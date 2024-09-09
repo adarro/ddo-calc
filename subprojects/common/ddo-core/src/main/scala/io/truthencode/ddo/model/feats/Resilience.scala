@@ -51,9 +51,9 @@ protected[feats] trait Resilience
   override lazy val grantedAbility: ActiveAbilities = ActiveAbilities.Resilience
   override val grantBonusType: BonusType = BonusType.Feat
 // TODO: Add 3x spell cool down, +4 saving throw
-  override protected[this] val triggerOn: Seq[TriggerEvent] = Seq(TriggerEvent.OnStance)
-  override protected[this] val triggerOff: Seq[TriggerEvent] = Seq(TriggerEvent.OnToggle)
-  override protected[this] val grantAbilityCategories: Seq[effect.EffectCategories.Value] = Seq(
+  override protected val triggerOn: Seq[TriggerEvent] = Seq(TriggerEvent.OnStance)
+  override protected val triggerOff: Seq[TriggerEvent] = Seq(TriggerEvent.OnToggle)
+  override protected val grantAbilityCategories: Seq[effect.EffectCategories.Value] = Seq(
     effect.EffectCategories.Stance)
   override val abilityId: String = "Resilience"
   override val description: String = "Defensive Combat Stance You gain a +4 to all saving throws."

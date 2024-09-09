@@ -31,12 +31,12 @@ abstract class JEnhancementDisplayHelper extends ClassEnhancementDisplayHelper w
    * Java Work-around to set
    */
   @BeanProperty
-  var treeId: String = _
+  var treeId: String = scala.compiletime.uninitialized
   @BeanProperty
-  var currentTier: String = _
+  var currentTier: String = scala.compiletime.uninitialized
 
   @BeanProperty
-  var currentEnhancement: String = _
+  var currentEnhancement: String = scala.compiletime.uninitialized
 
   // [enhancement] | [Description][description] | [AP_Cost][apcost] | [Ranks][ranks] | [Progression][progression]| [Requirements][requirements]|
   def tier: Tier =

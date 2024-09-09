@@ -35,7 +35,7 @@ sealed trait AttributeRequisite {
 }
 
 trait AttributeRequisiteImpl extends MustContainImpl[Requirement] with AttributeRequisite {
-  self: Requisite with RequisiteType =>
+  self: Requisite & RequisiteType =>
   def anyOfAttributes: Seq[(Attribute, Int)] = Nil
   override def gkAllAttributes: String = defaultGroupKey
   override def gkAnyAttributes: String = defaultGroupKey

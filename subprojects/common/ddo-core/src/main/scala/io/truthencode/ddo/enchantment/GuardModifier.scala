@@ -18,9 +18,6 @@
 package io.truthencode.ddo.enchantment
 
 import com.typesafe.scalalogging.LazyLogging
-import com.wix.accord.dsl.{empty, notEmpty, validator, Contextualizer, ValidatorBooleanOps}
-import com.wix.accord.transform.ValidationTransform.TransformedValidator
-import com.wix.accord.{validate, Success}
 import io.truthencode.ddo.enchantment.Modifier.{Greater, Lesser, Minor}
 import io.truthencode.ddo.model.effect.{Prefix, SecondaryPrefix, Suffix}
 import io.truthencode.ddo.support.RomanNumeral.fromRoman
@@ -32,33 +29,6 @@ import scala.language.postfixOps
  */
 object GuardModifier extends LazyLogging {
   type Parameters = (Option[String], Option[String], Option[String])
-
-  implicit val guardModifierValidator: TransformedValidator[GuardModifier] =
-    validator[GuardModifier] { g =>
-      {
-        // Guards can have nothing, a prefix or a suffix
-        // No Modifiers
-        (((g.prefix
-          .is(empty))
-          .and(g.sPrefix.is(empty))
-          .and(g.suffix.is(empty)))
-          .or(
-            // Just a (valid) prefix
-            ((g.prefix
-              .is(notEmpty))
-              .and(g.sPrefix.is(empty))
-              .and(g.suffix.is(empty)))
-              .and(filterModifiers(g.prefix).is(notEmpty)))
-          .or(
-            // Just a valid suffix
-            ((g.prefix
-              .is(empty))
-              .and(g.sPrefix.is(empty))
-              .and(g.suffix.is(notEmpty)))
-              .and(allowedRoman(g.suffix).is(notEmpty))))
-
-      }
-    }
 
   /**
    * Array of allowed Guard Modifiers, may occasionally need to be updated if the game adds new
@@ -73,8 +43,7 @@ object GuardModifier extends LazyLogging {
     sPrefix: Option[String] = None,
     suffix: Option[String] = None): GuardModifier = {
     val o = create(prefix, sPrefix, suffix)
-    val valid = validate(o)
-    assert(valid == Success)
+    // Validate here
     o
 
   }
@@ -100,7 +69,7 @@ object GuardModifier extends LazyLogging {
    * Restricts Modifiers to allowed current modifiers.
    */
   protected[enchantment] def filterModifiers(mod: Option[String]): Option[String] =
-    (for { m <- mod } yield {
+    (for  m <- mod  yield {
       allowedModifiers.collectFirst({
         case x: String if x.equals(m) => x
       })

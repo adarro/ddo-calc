@@ -49,7 +49,7 @@ object Warehouse extends LazyLogging {
   protected[web] def byExploding(e: Element): List[String] = {
     e >?> elements(HtmlTag.ListItem) match {
       case Some(_) =>
-        for { ele <- e >> elementList(HtmlTag.ListItem) } yield ele.text
+        for  ele <- e >> elementList(HtmlTag.ListItem)  yield ele.text
       case _ => Nil
     }
   }
@@ -121,12 +121,12 @@ object Warehouse extends LazyLogging {
     fragment >?> element(branchTag) match {
       case Some(ele) =>
         val leaves = makeLeaves(ele, branchTag, leafTag)
-        val b: Iterable[Leaf] = for {
+        val b: Iterable[Leaf] = for
           c: Element <- ele.children
           r: Element <- c >> elementList(s":root > $branchTag ")
           firstLevel <- r >> Filter.FirstLevelLeaf
-        } yield Leaf(firstLevel)
-        val branchedLeaves = if (b.nonEmpty) Some(b) else None
+        yield Leaf(firstLevel)
+        val branchedLeaves = if b.nonEmpty then Some(b) else None
         Branch(
           branchedLeaves match {
             case Some(_) => Some(List(Branch(leaves = branchedLeaves)))

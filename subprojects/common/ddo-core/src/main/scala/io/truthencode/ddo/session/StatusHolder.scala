@@ -24,8 +24,8 @@ import io.truthencode.ddo.support.requisite.{Inclusion, Requisite}
 import scala.collection.mutable
 
 abstract class StatusHolder[
-  T <: EnumEntry with DisplayName with DisplayProperties with Requisite with Inclusion] {
-  type E = Enum[_ <: T]
+  T <: EnumEntry & DisplayName & DisplayProperties & Requisite & Inclusion] {
+  type E = Enum[? <: T]
   type MappedValue = mutable.Map[String, T]
   protected lazy val source: Map[String, T] = statusEnum.values.map { v =>
     v.displayText -> v

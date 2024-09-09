@@ -35,7 +35,7 @@ protected[feats] trait LiquidLuck
   extends FeatRequisiteImpl with BonusSelectableToClassFeatImpl with ClassRequisiteImpl
   with RequiresAllOfClass with AlchemistBonusFeat with Passive {
   self: ClassFeat =>
-  private[this] val cls = (Alchemist, 12)
+  private val cls = (Alchemist, 12)
 
   abstract override def allOfClass: Seq[(HeroicCharacterClass, Int)] = super.allOfClass :+ cls
 }

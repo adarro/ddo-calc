@@ -11,7 +11,7 @@ import io.truthencode.ddo.support.requisite.{FeatRequisiteImpl, RequiresAllOfFea
 trait ExtraTurning
   extends  FeatRequisiteImpl with Passive
   with Features {
-  self: ClassFeat with RequiresAllOfFeat  =>
+  self: ClassFeat & RequiresAllOfFeat  =>
   // prerequisite: Cleric, Paladin, Bane Of Undead[20]
 
   val si = this
@@ -22,11 +22,11 @@ trait ExtraTurning
 
     override lazy val numberOfTurnsBonusType: BonusType = Feat
     override val numberOfTurnsBonusAmount: Int = 4
-    override protected[this] lazy val triggerOn: Seq[TriggerEvent] = Seq(Passive)
-    override protected[this] lazy val triggerOff: Seq[TriggerEvent] = Seq(Never)
-    override protected[this] val turnUndeadNumOfTurnsCategories
+    override protected lazy val triggerOn: Seq[TriggerEvent] = Seq(Passive)
+    override protected lazy val triggerOff: Seq[TriggerEvent] = Seq(Never)
+    override protected val turnUndeadNumOfTurnsCategories
       : Seq[effect.EffectCategories.Value] = Seq(EffectCategories.TurnUndead)
   }
-  override lazy val features: Seq[Feature[_]] = undeadTurnsFeature.features
+  override lazy val features: Seq[Feature[?]] = undeadTurnsFeature.features
 
 }

@@ -49,11 +49,11 @@ class GeneralFeatTest extends AnyFunSpec with Matchers with LazyLogging {
     }
     they("should function even with a default (empty) feature set") {
 
-      val f: Seq[(GeneralFeat, Feature[_])] = for {
+      val f: Seq[(GeneralFeat, Feature[?])] = for
         feat <- GeneralFeat.values
         features <- feat.features
 
-      } yield feat -> features
+      yield feat -> features
 
       f.foreach { ff =>
         logger.info(printFeature(ff._2))

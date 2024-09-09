@@ -40,9 +40,9 @@ protected[feats] trait SpringAttack
   override lazy val grantedAbility: ActiveAbilities = ActiveAbilities.SpringAttack
   override val grantBonusType: BonusType = BonusType.Feat
   // scalastyle:on
-  override protected[this] val triggerOn: Seq[TriggerEvent] = Seq(TriggerEvent.SpecialAttack)
-  override protected[this] val triggerOff: Seq[TriggerEvent] = Seq(TriggerEvent.WhileOn)
-  override protected[this] val grantAbilityCategories: Seq[effect.EffectCategories.Value] = Seq(
+  override protected val triggerOn: Seq[TriggerEvent] = Seq(TriggerEvent.SpecialAttack)
+  override protected val triggerOff: Seq[TriggerEvent] = Seq(TriggerEvent.WhileOn)
+  override protected val grantAbilityCategories: Seq[effect.EffectCategories.Value] = Seq(
     effect.EffectCategories.SpecialAttack)
   override val abilityId: String = "SpringAttack"
   override val description: String =

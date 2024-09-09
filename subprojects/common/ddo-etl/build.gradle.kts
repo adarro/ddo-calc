@@ -39,32 +39,67 @@ dependencies {
      https://www.optics.dev/Monocle/
      (Need scala 3 to update optional fields and single element in list)
      */
-    
+
     // https://mvnrepository.com/artifact/org.json4s/json4s-native
-    implementation(libs.json4s.native.s213)
+    val builderScalaVersion: String by project
+    when (builderScalaVersion) {
+        "3" -> {
+            implementation(libs.scala3.library)
+            implementation(libs.json4s.native.s3)
+            implementation(libs.enumeratum.s3)
 
-    implementation(libs.scala2.library)
-    implementation(libs.enumeratum.s213)
-    implementation(libs.typesafe.config)
-    implementation(libs.kxbmap.configs.s213)
 
-    /* DB, Query etc
+
+            /* DB, Query etc
 
     // Quill Scala Query QSQL
      https://github.com/getquill/quill */
-    implementation(libs.quill.core.s213)
-    /* Quill - Monix Integration
-    Monix Task / Eval https://monix.io/docs/current/intro/hello-world.html */
-    implementation(libs.quill.monix.s213)
-    implementation(libs.quill.sql.s213)
-    implementation(libs.monix.eval.s213)
-    implementation(libs.monix.reactive.s213)
 
-    // Jetbrains Xodus embedded database
+            /* Quill - Monix Integration
+    Monix Task / Eval https://monix.io/docs/current/intro/hello-world.html */
+//            implementation(libs.quill.monix.s213)
+            implementation(libs.quill.sql.s3)
+//            implementation(libs.monix.eval.s213)
+//            implementation(libs.monix.reactive.s213)
+
+            // Jetbrains Xodus embedded database
 //    implementation(libs.xodus.openAPI)
 
-    // validation and rules
-    implementation(libs.wix.accord.core.s213)
+            // validation and rules
+            implementation(libs.dev.zio.prelude.s3)
+
+            implementation(libs.typesafe.scala.logging.s3)
+        }
+
+        else -> {
+            implementation(libs.json4s.native.s213)
+
+            implementation(libs.scala2.library)
+            implementation(libs.enumeratum.s213)
+
+            implementation(libs.kxbmap.configs.s213)
+
+            /* DB, Query etc
+
+    // Quill Scala Query QSQL
+     https://github.com/getquill/quill */
+
+            /* Quill - Monix Integration
+    Monix Task / Eval https://monix.io/docs/current/intro/hello-world.html */
+//            implementation(libs.quill.monix.s213)
+            implementation(libs.quill.sql.s213)
+//            implementation(libs.monix.eval.s213)
+//            implementation(libs.monix.reactive.s213)
+
+            // Jetbrains Xodus embedded database
+//    implementation(libs.xodus.openAPI)
+
+            // validation and rules
+
+            implementation(libs.dev.zio.prelude.s213)
+            implementation(libs.typesafe.scala.logging.s213)
+        }
+    }
+    implementation(libs.typesafe.config)
     implementation(libs.logback.classic)
-    implementation(libs.typesafe.scala.logging.s213)
 }

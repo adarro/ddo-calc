@@ -33,7 +33,7 @@ class FavorFeatSpec extends FeatDisplayHelper with LazyLogging {
 
   override val displayEnum: E = Feat
   // RequiresAllOfPatron
-  private val filterFavor: PartialFunction[Entry, Entry with RequiresAllOfPatron] = {
+  private val filterFavor: PartialFunction[Entry, Entry & RequiresAllOfPatron] = {
     case x: RequiresAllOfPatron =>
       x
   }

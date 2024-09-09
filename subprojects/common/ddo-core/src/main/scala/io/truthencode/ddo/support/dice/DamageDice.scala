@@ -170,7 +170,7 @@ abstract case class DamageInfo private[DamageInfo] (
       case 0 | 1 => diceExp
       case _ => s"$doubleToIntFunction[$diceExp]"
     }
-    val dt = if (damageType.isEmpty) {
+    val dt = if damageType.isEmpty then {
       ""
     } else {
       s" ${damageType.mkString(",")}"

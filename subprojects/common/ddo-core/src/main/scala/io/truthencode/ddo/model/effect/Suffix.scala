@@ -21,7 +21,7 @@ import io.truthencode.ddo.model.effect.features.Features
 
 trait Suffix extends Effect with Features with Affix {
   // @fixme Remove this and add meaningful implementation
-  override def features: List[Feature[_]] = List.empty
+  override def features: List[Feature[?]] = List.empty
 }
 
 trait HasSuffix extends Suffix {

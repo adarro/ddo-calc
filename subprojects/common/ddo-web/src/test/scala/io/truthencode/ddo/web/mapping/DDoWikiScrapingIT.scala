@@ -33,7 +33,7 @@ class DDoWikiScrapingIT extends AnyFunSpec with Matchers with MockitoSugar with 
   lazy val multiLevelPath = ""
   val browser = JsoupBrowser()
 
-  private def fixture = new {
+  private def fixture: Object {val nestedListDoc: Document; val simpleListDoc: Document} = new {
 
     // Drow X of the Weapon Master
     val nestedListDoc: Document = loadLocalTestHtml(nestedPath)
@@ -48,7 +48,7 @@ class DDoWikiScrapingIT extends AnyFunSpec with Matchers with MockitoSugar with 
     val url = Thread.currentThread().getContextClassLoader.getResource(fileName)
     logger.info(s"Local file: ${url.getPath}")
     val in = new File(url.getPath)
-    if (!in.exists()) logger.warn("can not load file!!")
+    if !in.exists() then logger.warn("can not load file!!")
     browser.parseFile(in, charsetName)
 
   }

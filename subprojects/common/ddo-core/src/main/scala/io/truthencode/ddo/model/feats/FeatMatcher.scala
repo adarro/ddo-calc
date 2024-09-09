@@ -22,6 +22,6 @@ package io.truthencode.ddo.model.feats
  */
 trait FeatMatcher {
 
-  val matchFeat: PartialFunction[Feat, _ <: Feat]
-  val matchFeatById: PartialFunction[String, _ <: Feat]
+  val matchFeat: PartialFunction[Feat, ? <: Feat]
+  val matchFeatById: PartialFunction[String, ? <: Feat]
 }

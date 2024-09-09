@@ -254,11 +254,11 @@ object WikiParser extends LazyLogging {
    *   List of Attribute or empty list if none found.
    */
   def attackModifier(source: Map[String, Any]): List[Attribute] = {
-    for {
+    for
       e <- List(simpleExtractor(source.get(Field.AttackMod))).flatten
       x <- e.split(Comma)
       y <- Attribute.values.find(a => a.toString == x)
-    } yield y
+    yield y
   }
 
   /**
@@ -270,11 +270,11 @@ object WikiParser extends LazyLogging {
    *   List of Attribute or empty list if none found.
    */
   def damageModifier(source: Map[String, Any]): List[Attribute] = {
-    for {
+    for
       e <- List(simpleExtractor(source.get(Field.DamageMod))).flatten
       x <- e.split(Comma)
       y <- Attribute.values.find(a => a.toString == x)
-    } yield y
+    yield y
   }
 
   /**
@@ -484,7 +484,7 @@ object WikiParser extends LazyLogging {
     val leaves = enchantmentExtractor(eSource).map { x =>
       x.text
     }
-    if (leaves.isEmpty) None
+    if leaves.isEmpty then None
     else Some(leaves)
   }
 

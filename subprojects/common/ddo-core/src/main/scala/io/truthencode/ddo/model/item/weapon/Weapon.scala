@@ -138,7 +138,7 @@ trait TwoHandedWeapon extends HandedWeapon {
   lazy val allowedWearLocations: Seq[EnumEntry] = {
     WearLocation.fromMask(WearLocation.MainHand.bitValue) match {
       case Some(x) => x
-      case _ => List[WearLocation with Product with Serializable]()
+      case _ => List[WearLocation & Product & Serializable]()
     }
   }
 }

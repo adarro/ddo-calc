@@ -40,14 +40,14 @@ protected[feats] trait DefensiveFighting
   with HitChancePercentFeature {
   self: GeneralFeat =>
   override lazy val grantedAbility: ActiveAbilities = ActiveAbilities.DefensiveFighting
-  override protected[this] lazy val grantAbilityCategories: Seq[effect.EffectCategories.Value] =
+  override protected lazy val grantAbilityCategories: Seq[effect.EffectCategories.Value] =
     Seq(
       effect.EffectCategories.Stance,
       effect.EffectCategories.MissChance,
       effect.EffectCategories.HitChance)
-  override protected[this] lazy val triggerOn: Seq[TriggerEvent] = Seq(TriggerEvent.OnStance)
-  override protected[this] lazy val triggerOff: Seq[TriggerEvent] = Seq(TriggerEvent.OnToggle)
-  override protected[this] lazy val hitChanceCategories: Seq[effect.EffectCategories.Value] = Seq(
+  override protected lazy val triggerOn: Seq[TriggerEvent] = Seq(TriggerEvent.OnStance)
+  override protected lazy val triggerOff: Seq[TriggerEvent] = Seq(TriggerEvent.OnToggle)
+  override protected lazy val hitChanceCategories: Seq[effect.EffectCategories.Value] = Seq(
     effect.EffectCategories.MissChance)
   override val grantBonusType: BonusType = BonusType.Feat
   override val abilityId: String = "DefensiveFighting"

@@ -35,7 +35,7 @@ protected[feats] trait BattalionBrew
   extends FeatRequisiteImpl with BonusSelectableToClassFeatImpl with ClassRequisiteImpl
   with RequiresAllOfClass with AlchemistBonusFeat with Passive {
   self: ClassFeat =>
-  private[this] val cls = (Alchemist, 4)
+  private val cls = (Alchemist, 4)
 
   abstract override def allOfClass: Seq[(HeroicCharacterClass, Int)] = super.allOfClass :+ cls
 }

@@ -33,14 +33,14 @@ trait ToHitByWeaponClassFeature extends Features {
 
   protected def toHitType: BonusType
   protected val toHitAmount: Seq[(WeaponCategory, Int)]
-  protected[this] def triggerOn: Seq[TriggerEvent]
-  protected[this] def triggerOff: Seq[TriggerEvent]
-  protected[this] val toHitWcCategories: Seq[effect.EffectCategories.Value]
+  protected def triggerOn: Seq[TriggerEvent]
+  protected def triggerOff: Seq[TriggerEvent]
+  protected val toHitWcCategories: Seq[effect.EffectCategories.Value]
   private val src = this
-  private[this] val toHitChance =
-    new PartModifier[Seq[(WeaponCategory, Int)], BasicStat with HitChance] with UsingSearchPrefix {
+  private val toHitChance =
+    new PartModifier[Seq[(WeaponCategory, Int)], BasicStat & HitChance] with UsingSearchPrefix {
 
-      override protected[this] lazy val partToModify: BasicStat with HitChance =
+      override protected lazy val partToModify: BasicStat & HitChance =
         BasicStat.ChanceToHit
 
       /**
@@ -65,12 +65,12 @@ trait ToHitByWeaponClassFeature extends Features {
       override def categories: Seq[String] = toHitWcCategories.map(_.toString)
 
       private val eb = EffectParameterBuilder()
-        .toggleOffValue(triggerOff: _*)
-        .toggleOnValue(triggerOn: _*)
+        .toggleOffValue(triggerOff*)
+        .toggleOnValue(triggerOn*)
         .addBonusType(toHitType)
         .build
 
-      override protected[this] def effectParameters: Seq[ParameterModifier[_]] = eb.modifiers
+      override protected def effectParameters: Seq[ParameterModifier[?]] = eb.modifiers
       override val effectDetail: DetailedEffect = DetailedEffect(
         id = "ToHitChance",
         description = "Increases To Hit chance for a given weapon type",
@@ -93,7 +93,7 @@ trait ToHitByWeaponClassFeature extends Features {
       override def searchPrefixSource: String = partToModify.searchPrefixSource
     }
 
-  abstract override def features: Seq[Feature[_]] =
+  abstract override def features: Seq[Feature[?]] =
     super.features :+ toHitChance
 
 }

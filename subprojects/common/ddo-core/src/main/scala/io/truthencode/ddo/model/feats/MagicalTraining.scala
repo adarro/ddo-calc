@@ -50,17 +50,17 @@ protected[feats] trait MagicalTraining
   extends FeatRequisiteImpl with Passive with FreeFeat with ClassRequisiteImpl with GrantsToClass
   with FeaturesImpl with SpellPointAmountFeature with SpellCriticalPercentFeature {
   self: GeneralFeat =>
-  override protected[this] lazy val triggerOn: Seq[TriggerEvent] = Seq(TriggerEvent.Passive)
-  override protected[this] lazy val triggerOff: Seq[TriggerEvent] = Seq(TriggerEvent.Never)
-  override protected[this] lazy val spellCriticalCategories: Seq[effect.EffectCategories.Value] =
+  override protected lazy val triggerOn: Seq[TriggerEvent] = Seq(TriggerEvent.Passive)
+  override protected lazy val triggerOff: Seq[TriggerEvent] = Seq(TriggerEvent.Never)
+  override protected lazy val spellCriticalCategories: Seq[effect.EffectCategories.Value] =
     Seq(effect.EffectCategories.SpellCasting)
   // TODO: Need to add Echoes of Power effect (Magical Training etc.) [Low Priority]
   override protected val spellPointBonusType: BonusType = BonusType.Feat
   override protected val spellPointBonusAmount: Int = 80
-  override protected[this] val spellPointAmountCategories: Seq[effect.EffectCategories.Value] = Seq(
+  override protected val spellPointAmountCategories: Seq[effect.EffectCategories.Value] = Seq(
     effect.EffectCategories.SpellCasting)
   override protected val spellCriticalBonusType: BonusType = BonusType.Feat
-  override protected[this] val schoolCritical: Seq[(SpellPower, Int)] =
+  override protected val schoolCritical: Seq[(SpellPower, Int)] =
     SpellPower.values.map((_, 5)).to(LazyList)
   val g: Seq[(SpellPower, Int)] = SpellPower.values.map((_, 5))
 

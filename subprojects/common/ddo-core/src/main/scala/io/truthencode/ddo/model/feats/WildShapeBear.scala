@@ -29,7 +29,7 @@ import io.truthencode.ddo.support.requisite.{GrantsToClass, RequiresAllOfClass}
  */
 trait WildShapeBear
   extends WildShape with GrantsToClass with RequiresAllOfClass with DefaultCasterCoolDown {
-  self: DisplayName with DisplayProperties =>
+  self: DisplayName & DisplayProperties =>
   override def grantToClass: Seq[(HeroicCharacterClass, Int)] =
     List((Druid, 2), (Druid, 5))
 

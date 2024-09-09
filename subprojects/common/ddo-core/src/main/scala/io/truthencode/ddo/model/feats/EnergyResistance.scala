@@ -24,7 +24,7 @@ import io.truthencode.ddo.support.requisite.{FeatRequisiteImpl, FreeFeat}
  * Created by adarr on 3/5/2017.
  */
 trait EnergyResistance extends Prefix with FeatRequisiteImpl with FreeFeat with Passive {
-  self: FeatRequisiteImpl with DisplayName with FriendlyDisplay =>
+  self: FeatRequisiteImpl & DisplayName & FriendlyDisplay =>
 
   /**
    * Delimits the prefix and text.

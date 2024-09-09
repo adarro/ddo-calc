@@ -61,7 +61,7 @@ class DamageDiceTest
     @scala.annotation.tailrec
     def rng: Int = {
       val x = new java.security.SecureRandom().nextInt(PhysicalDamageType.values.size)
-      if (x.!=(0)) {
+      if x.!=(0) then {
         x
       } else {
         rng
@@ -72,9 +72,9 @@ class DamageDiceTest
       shuffle(PhysicalDamageType.values.map(_.entryName)).take(rng).toSet
 
     val tpl: immutable.Seq[String] =
-      for { _ <- 0.to(maxFlags) } yield pl
+      for  _ <- 0.to(maxFlags)  yield pl
         .mkString(",")
-    for { x <- diceSet.cross(tpl) } yield s"${x._1} ${x._2}"
+    for  x <- diceSet.cross(tpl)  yield s"${x._1} ${x._2}"
   }
   describe("DnD Dice") {
     they("should support W[nDn + n] flags syntax") {

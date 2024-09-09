@@ -54,20 +54,20 @@ object Flexmark {
     }
   }
 
-  implicit class FlexOpts(source: Seq[(DataKey[_], Any)]) {
+  implicit class FlexOpts(source: Seq[(DataKey[?], Any)]) {
 
     /**
      * Extension Wrapper because scala is not inferring downcast due to Invariant T
      * @return
      *   Downcast T <: Extension
      */
-    def toJavaList: java.util.List[(DataKey[_], Any)] = {
+    def toJavaList: java.util.List[(DataKey[?], Any)] = {
       source.asJava
     }
   }
 
-  implicit class TupOpts(source: Seq[(_, _)]) {
-    def toJavaList: java.util.List[(_, _)] = {
+  implicit class TupOpts(source: Seq[(?, ?)]) {
+    def toJavaList: java.util.List[(?, ?)] = {
       source.asJava
     }
   }

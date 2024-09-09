@@ -22,7 +22,7 @@ import io.truthencode.ddo.support.naming.{DisplayName, FriendlyDisplay, Prefix}
 /**
  * Created by adarr on 2/18/2017.
  */
-trait HalfElfPrefix extends Prefix { self: DisplayName with FriendlyDisplay =>
+trait HalfElfPrefix extends Prefix { self: DisplayName & FriendlyDisplay =>
 
   /**
    * Delimits the prefix and text.

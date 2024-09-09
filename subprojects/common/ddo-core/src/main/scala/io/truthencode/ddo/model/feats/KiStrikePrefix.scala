@@ -23,7 +23,7 @@ import io.truthencode.ddo.support.naming.{DisplayName, DisplayProperties, Prefix
  * Created by adarr on 3/5/2017.
  */
 trait KiStrikePrefix extends Prefix {
-  self: DisplayName with DisplayProperties =>
+  self: DisplayName & DisplayProperties =>
   override def prefix: Option[String] = Some("Ki Strike")
   override def displayText: String = withPrefix.getOrElse("") + nameSource
   override protected val prefixSeparator: String = ": "

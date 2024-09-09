@@ -44,10 +44,10 @@ trait SpellBook {
    * @return
    */
   def loadFromIds: Seq[Option[Spell]] = {
-    for {
+    for
       s <- spellIds.toSeq
       fn <- findAvailableSpells
-    } yield (fn(s))
+    yield (fn(s))
   }
 
 }
@@ -57,7 +57,7 @@ trait SpellBookImpl extends SpellBook {
 
   override def findAvailableSpells: Seq[String => Option[Spell]] = {
     val seq = spellIds.toSeq
-    val fn = Spell.ls(fn = Spell.withNameOption, seq: _*)
+    val fn = Spell.ls(fn = Spell.withNameOption, seq*)
     IndexedSeq() ++ fn
   }
 

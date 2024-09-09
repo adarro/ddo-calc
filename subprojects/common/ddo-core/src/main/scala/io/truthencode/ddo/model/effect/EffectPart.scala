@@ -68,7 +68,7 @@ trait AbilityEffectPart extends EffectPart with LazyLogging {
 
 trait HitChanceEffectPart extends EffectPart with LazyLogging {
 
-  val basicStat: BasicStat with HitChance
+  val basicStat: BasicStat & HitChance
 
   override def searchPattern(target: String = Searchable.stripParentheses(entryName)): String = {
     val sp = "HitChance:"
@@ -80,7 +80,7 @@ trait HitChanceEffectPart extends EffectPart with LazyLogging {
 
 trait MissChanceEffectPart extends EffectPart with LazyLogging {
 
-  val basicStat: BasicStat with MissChance
+  val basicStat: BasicStat & MissChance
 
   override def searchPattern(target: String = Searchable.stripParentheses(entryName)): String = {
     val sp = "MissChance:"
@@ -166,12 +166,12 @@ object EffectPart extends Enum[EffectPart] with NoDefault[EffectPart] with Searc
   }
 
   // Miss Chance
-  case class MissChanceEffect(override val basicStat: BasicStat with MissChance)
+  case class MissChanceEffect(override val basicStat: BasicStat & MissChance)
     extends MissChanceEffectPart {
     override def entryName: String = s"MissChance:${basicStat.entryName}"
   }
 
-  case class HitChanceEffect(override val basicStat: BasicStat with HitChance)
+  case class HitChanceEffect(override val basicStat: BasicStat & HitChance)
     extends HitChanceEffectPart {
     override def entryName: String = s"HitChance:${basicStat.entryName}"
   }

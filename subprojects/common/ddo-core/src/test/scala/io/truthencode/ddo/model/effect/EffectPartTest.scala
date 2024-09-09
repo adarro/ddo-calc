@@ -31,7 +31,7 @@ import scala.language.postfixOps
 class EffectPartTest
   extends AnyFunSpec with ScalaCheckPropertyChecks with Matchers with LazyLogging {
 
-  val parLabels: TableFor2[Seq[EffectPart with LazyLogging], String] =
+  val parLabels: TableFor2[Seq[EffectPart & LazyLogging], String] =
     Table(
       ("ep", "expected"),
       (EffectPart.anySkill, "Skill"),
@@ -65,7 +65,7 @@ class EffectPartTest
 
     they("may override naming") {
       val entry = EffectPart.MissChanceEffect(BasicStat.DodgeChance)
-      val partToModify: BasicStat with MissChance =
+      val partToModify: BasicStat & MissChance =
         BasicStat.DodgeChance
       val entry2 = EffectPart.MissChanceEffect(partToModify)
       entry shouldEqual entry2

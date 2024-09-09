@@ -17,20 +17,22 @@
  */
 package io.truthencode.ddo.model.effect
 
-import com.wix.accord._
-import com.wix.accord.scalatest.ResultMatchers
 import io.truthencode.ddo.api.model.effect.DetailedEffect
-import io.truthencode.ddo.model.effect.Validation._
+import io.truthencode.ddo.enhancement.BonusType
+import io.truthencode.ddo.model.effect.EffectValidation.*
 import org.scalatest.funspec.AnyFunSpec
 import org.scalatest.matchers.should.Matchers
+import com.typesafe.scalalogging.LazyLogging
+import zio.prelude.Validation
 
 import scala.language.postfixOps
 
-class DetailedEffectTest extends AnyFunSpec with Matchers with ResultMatchers {
+class DetailedEffectTest extends AnyFunSpec with Matchers with LazyLogging {
   final val invalidTriggerOn = Seq("Every third Thursday when the moon is full")
   final val invalidTriggerOff = Seq("Prior Relationships")
   final val validTriggerOn = Seq("OnDamage")
   final val validTriggerOff = Seq("OnSpellCast")
+  final val someValidTriggerOn = invalidTriggerOn ++ validTriggerOn
   final val validId = "criticalThreatRange"
   final val someDescriptions = "Sample Effect Description"
   final val validCategories = List("MissChance", "Health")
@@ -42,23 +44,56 @@ class DetailedEffectTest extends AnyFunSpec with Matchers with ResultMatchers {
   val aPerfectlyValidDetailEffect: DetailedEffect =
     DetailedEffect(validId, someDescriptions, validTriggerOn, validTriggerOff, validBonusType)
 
+  def duplicator(
+    id: String,
+    description: String,
+    triggersOn: Seq[String],
+    triggersOff: Seq[String],
+    bonusType: String): (DetailedEffect, Validation[String, DetailedEffect]) = {
+    (
+      DetailedEffect(id, description, triggersOn, triggersOff, bonusType),
+      validateDetailedEffect(id, description, triggersOn, triggersOff, bonusType))
+  }
+
   describe("A detailed effect") {
 
-    it("should allow fully validated effects") {
-      assume(validTriggerOn.nonEmpty)
-      val result = validate(aPerfectlyValidDetailEffect)
-      result should be(aSuccess)
+    they("should allow fully validated effects") {
+
+      val criticalThreatRangeType = BonusType.Feat.entryName
+
+      val (effectDetail, result) = duplicator(
+        validId,
+        someDescriptions,
+        validTriggerOn,
+        validTriggerOff,
+        criticalThreatRangeType)
+
+      val r = result.fold(xml => xml.toString, xml => xml.toString)
+      logger.info(s"Result: $r")
+      result.isSuccess shouldBe true
+
+      result.toOption shouldBe Some(effectDetail)
+
     }
 
-    they("should disallow invalid trigger names") {
-      val invalidTriggerOnEffectName =
-        DetailedEffect(validId, someDescriptions, invalidTriggerOn, validTriggerOff, validBonusType)
-      val invalidTriggerOffEffectName =
-        DetailedEffect(validId, someDescriptions, invalidTriggerOn, validTriggerOff, validBonusType)
-      val result = validate(invalidTriggerOnEffectName)
-      val result2 = validate(invalidTriggerOffEffectName)
-      result should be(aFailure)
-      result2 should be(aFailure)
+    they("should fail invalid trigger names") {
+      val (invalidTriggerOnEffectName, validatorTOn) =
+        duplicator(validId, someDescriptions, invalidTriggerOn, validTriggerOff, validBonusType)
+
+      validatorTOn.isSuccess shouldBe false
+
+      val (invalidTriggerOffEffectName, validatorTOff) =
+        duplicator(validId, someDescriptions, invalidTriggerOn, validTriggerOff, validBonusType)
+
+      validatorTOff.isSuccess shouldBe false
+
+    }
+
+    they("should filter out unknown triggers") {
+      val (someValidTrig, result)  = duplicator(validId, someDescriptions, someValidTriggerOn, validTriggerOff, validBonusType)
+      result.isSuccess shouldBe true
+      // objects will be different because invalid triggers are filtered out
+//      result.toOption shouldBe Some(someValidTrig)
     }
   }
 

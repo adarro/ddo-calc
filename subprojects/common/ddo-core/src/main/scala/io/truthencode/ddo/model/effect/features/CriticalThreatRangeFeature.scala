@@ -39,7 +39,7 @@ trait CriticalThreatRangeFeature extends Features {
   val cats = LazyList(EffectCategories.GeneralCombat.toString)
   protected def criticalThreatRangeType: BonusType
   protected val criticalThreatRangeAmount: Seq[(WeaponCategory, Int)]
-  protected[this] def effectDetail: DetailedEffect
+  protected def effectDetail: DetailedEffect
   private val src = this
 //  private[this] val criticalThreatRange =
 //    new PartModifier[Seq[(WeaponCategory, Int)], BasicStat]
@@ -56,7 +56,7 @@ trait CriticalThreatRangeFeature extends Features {
 //      override lazy val effectText: Option[String] = Some(s"Increased Critical Threat Amount: $value%")
 //    }
 
-  abstract override def features: Seq[Feature[_]] = {
+  abstract override def features: Seq[Feature[?]] = {
     assert(ctr.value == criticalThreatRangeAmount)
     super.features :+ ctr
   }

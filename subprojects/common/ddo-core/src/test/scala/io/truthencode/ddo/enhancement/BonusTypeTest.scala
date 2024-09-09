@@ -26,7 +26,7 @@ class BonusTypeTest
     "Shield",
     "Trinket",
     "Wrist").map { s => s"Mythic $s Boost" }
-  val expectedMythicBoosts: TableFor1[String] = Table("Boost_Type", boosts: _*)
+  val expectedMythicBoosts: TableFor1[String] = Table("Boost_Type", boosts*)
   describe("Mythic Boosts") {
     /*
      * Weapons, belts, gloves, goggles, rings, and trinkets grant Mythic bonus to Melee, Ranged, and Universal Spell Power.

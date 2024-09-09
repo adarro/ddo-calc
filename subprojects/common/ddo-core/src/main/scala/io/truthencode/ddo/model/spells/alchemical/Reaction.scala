@@ -41,7 +41,7 @@ trait Orchidium extends Reaction
 
 object Reaction extends Enum[Reaction] {
   override def values: immutable.IndexedSeq[Reaction] = findValues
-  case object Pyrite extends Pyrite
-  case object Verudite extends Verudite
-  case object Orchidium extends Orchidium
+  case object Pyrite extends Pyrite, Reaction
+  case object Verudite extends Verudite, Reaction
+  case object Orchidium extends Orchidium, Reaction
 }

@@ -39,13 +39,14 @@ import org.scalatest.funspec.AnyFunSpec
 import org.scalatest.matchers.should.Matchers
 import org.scalatest.tags.Slow
 import org.scalatestplus.mockito.MockitoSugar
+import scala.reflect.Selectable.reflectiveSelectable
 
 import scala.language.reflectiveCalls
 
 @Slow
 class WeaponTest extends AnyFunSpec with Matchers with MockitoSugar {
-  private def fixture = new {
-    val longBow = new Weapon {
+  private def fixture: Object {val longBow: Weapon} = new {
+    val longBow: Weapon = new Weapon {
       val Coinage = 1000
       val NWeight = 4
 

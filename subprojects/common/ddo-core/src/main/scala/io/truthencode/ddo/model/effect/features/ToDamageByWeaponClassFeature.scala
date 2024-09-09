@@ -33,14 +33,14 @@ trait ToDamageByWeaponClassFeature extends Features {
   self: SourceInfo =>
   protected def toDamageType: BonusType
   protected val toDamageAmount: Seq[(WeaponCategory, Int)]
-  protected[this] def triggerOn: Seq[TriggerEvent]
-  protected[this] def triggerOff: Seq[TriggerEvent]
-  protected[this] val toDmgWcCategories: Seq[effect.EffectCategories.Value]
+  protected def triggerOn: Seq[TriggerEvent]
+  protected def triggerOff: Seq[TriggerEvent]
+  protected val toDmgWcCategories: Seq[effect.EffectCategories.Value]
   private val src = this
-  private[this] val toDamageChance =
+  private val toDamageChance =
     new PartModifier[Seq[(WeaponCategory, Int)], BasicStat] with UsingSearchPrefix {
 
-      override protected[this] lazy val partToModify: BasicStat =
+      override protected lazy val partToModify: BasicStat =
         BasicStat.ToDamage
 
       /**
@@ -65,12 +65,12 @@ trait ToDamageByWeaponClassFeature extends Features {
       override def categories: Seq[String] = toDmgWcCategories.map(_.toString)
 
       private val eb = EffectParameterBuilder()
-        .toggleOffValue(triggerOff: _*)
-        .toggleOnValue(triggerOn: _*)
+        .toggleOffValue(triggerOff*)
+        .toggleOnValue(triggerOn*)
         .addBonusType(toDamageType)
         .build
 
-      override protected[this] def effectParameters: Seq[ParameterModifier[_]] = eb.modifiers
+      override protected def effectParameters: Seq[ParameterModifier[?]] = eb.modifiers
       override val effectDetail: DetailedEffect = DetailedEffect(
         id = "WeaponDamage",
         description = "Increases damage for a given weapon type",
@@ -92,7 +92,7 @@ trait ToDamageByWeaponClassFeature extends Features {
       override def searchPrefixSource: String = partToModify.searchPrefixSource
     }
 
-  abstract override def features: Seq[Feature[_]] = {
+  abstract override def features: Seq[Feature[?]] = {
     assert(toDamageChance.value == toDamageAmount)
     super.features :+ toDamageChance
   }

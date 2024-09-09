@@ -50,9 +50,9 @@ protected[feats] trait CombatExpertise
   with GrantAbilityFeature with ArmorClassPercentFeature {
   self: GeneralFeat =>
   override lazy val grantedAbility: ActiveAbilities = ActiveAbilities.CombatExpertise
-  override protected[this] lazy val triggerOn: Seq[TriggerEvent] = Seq(TriggerEvent.OnStance)
-  override protected[this] lazy val triggerOff: Seq[TriggerEvent] = Seq(TriggerEvent.OnSpellCast)
-  override protected[this] lazy val grantAbilityCategories: Seq[effect.EffectCategories.Value] =
+  override protected lazy val triggerOn: Seq[TriggerEvent] = Seq(TriggerEvent.OnStance)
+  override protected lazy val triggerOff: Seq[TriggerEvent] = Seq(TriggerEvent.OnSpellCast)
+  override protected lazy val grantAbilityCategories: Seq[effect.EffectCategories.Value] =
     Seq(effect.EffectCategories.Stance)
   override val allOfAttributes = List((Attribute.Intelligence, 13))
   override val grantBonusType: BonusType = BonusType.Feat

@@ -30,17 +30,17 @@ import scala.jdk.CollectionConverters._
 class IndividualFeatFixture extends DisplayHelper with ChargeSupport with LazyLogging {
   override val displayEnum: E = Feat
   @BeanProperty
-  var feat: String = _
+  var feat: String = scala.compiletime.uninitialized
 
   def setFeatId(id: String): Unit = {
     feat = id
   }
-  type F = E with FeatType with Requisite with Inclusion
+  type F = E & FeatType & Requisite & Inclusion
   def valueWithRequirements: Seq[ValueWithRequirements] =
     displayEnum.withNameInsensitiveOption(feat) match {
       case Some(f) =>
         f match {
-          case x: RequisiteExpression with RequisiteType with Inclusion =>
+          case x: (RequisiteExpression & RequisiteType & Inclusion) =>
             x.prerequisites.map { pr =>
               ValueWithRequirements(x, pr.reqType, pr.incl, pr.groupKey, pr.req)
             }
@@ -48,7 +48,7 @@ class IndividualFeatFixture extends DisplayHelper with ChargeSupport with LazyLo
       case None => Nil
     }
 
-  lazy val sortish: SemiOrderedRequirements = SemiOrderedRequirements(valueWithRequirements: _*)
+  lazy val sortish: SemiOrderedRequirements = SemiOrderedRequirements(valueWithRequirements*)
   def verifyPrerequisites(): util.Collection[String] = {
     sortish.displayPrerequisites.asJavaCollection
   }

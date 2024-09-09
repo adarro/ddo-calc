@@ -39,7 +39,7 @@ trait GfmStrikethroughSubscript extends Flexmark {
    * @param dataSet
    * @return
    */
-  private[this] def taskOptions()(implicit dataSet: MutableDataSet): () => MutableDataSet = { () =>
+  private def taskOptions()(implicit dataSet: MutableDataSet): () => MutableDataSet = { () =>
     dataSet
     //   .set(StrikethroughSubscriptExtension.STRIKETHROUGH_STYLE_HTML_CLOSE,"someCssClassLikely")
 

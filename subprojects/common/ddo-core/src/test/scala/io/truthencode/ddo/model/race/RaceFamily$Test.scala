@@ -30,10 +30,10 @@ class RaceFamily$Test extends AnyFunSpec with Matchers {
     it("should provide at least one family for each race") {
 
       Race.values.foreach { race =>
-        val families = for {
+        val families = for
           family <- RaceFamily.values
           if family.includedRaces contains race
-        } yield family
+        yield family
         families should not be empty
       }
     }

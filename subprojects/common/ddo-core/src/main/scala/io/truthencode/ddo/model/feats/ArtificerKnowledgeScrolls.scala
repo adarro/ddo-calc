@@ -43,10 +43,10 @@ protected[feats] trait ArtificerKnowledgeScrolls
   self: ClassFeat =>
   private lazy val levels = List(1, 4, 7, 10, 13)
 // This could be written in a simple map, but I am unsure ATM if Alchemist get it to.  And it's easier to simply add / remove them.
-  private lazy val classLevels = for {
+  private lazy val classLevels = for
     c <- List(Artificer) // Possibly Alchemist?
     l <- levels
-  } yield (c, l)
+  yield (c, l)
   // Affects Alchemists and Artificers
   override def anyOfClass: Seq[(HeroicCharacterClass, Int)] = classLevels
 

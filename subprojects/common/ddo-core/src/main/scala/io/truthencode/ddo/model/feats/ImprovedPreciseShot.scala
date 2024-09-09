@@ -60,9 +60,9 @@ protected[feats] trait ImprovedPreciseShot
   override lazy val grantedAbility: ActiveAbilities = ActiveAbilities.ImprovedPreciseShot
 // TODO: add toggle / exclusive with Archer's Focus stance
   // Keep an array of exclusive stances in a Map somewhere?
-  override protected[this] val triggerOn: Seq[TriggerEvent] = Seq(TriggerEvent.OnStance)
-  override protected[this] val triggerOff: Seq[TriggerEvent] = Seq(TriggerEvent.OnToggle)
-  override protected[this] val grantAbilityCategories: Seq[effect.EffectCategories.Value] =
+  override protected val triggerOn: Seq[TriggerEvent] = Seq(TriggerEvent.OnStance)
+  override protected val triggerOff: Seq[TriggerEvent] = Seq(TriggerEvent.OnToggle)
+  override protected val grantAbilityCategories: Seq[effect.EffectCategories.Value] =
     Seq(effect.EffectCategories.Stance, effect.EffectCategories.RangedCombat)
   override val abilityId: String = "ImprovedPreciseShot"
   override val description: String =

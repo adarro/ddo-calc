@@ -42,7 +42,7 @@ trait Emoji extends Flexmark {
    * @return
    *   Mutated dataset with specified default options
    */
-  private[this] def taskOptions()(implicit dataSet: MutableDataSet): () => MutableDataSet = { () =>
+  private def taskOptions()(implicit dataSet: MutableDataSet): () => MutableDataSet = { () =>
     dataSet
       .set(EmojiExtension.ATTR_IMAGE_SIZE, "24")
       .set(EmojiExtension.USE_IMAGE_TYPE, EmojiImageType.UNICODE_FALLBACK_TO_IMAGE)

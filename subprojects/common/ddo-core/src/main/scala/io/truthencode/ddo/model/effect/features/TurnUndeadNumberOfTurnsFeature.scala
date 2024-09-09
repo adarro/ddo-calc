@@ -28,11 +28,11 @@ trait TurnUndeadNumberOfTurnsFeature extends Features {
   self: SourceInfo =>
   def numberOfTurnsBonusType: BonusType
   val numberOfTurnsBonusAmount: Int
-  protected[this] def triggerOn: Seq[TriggerEvent]
-  protected[this] def triggerOff: Seq[TriggerEvent]
-  protected[this] val turnUndeadNumOfTurnsCategories: Seq[effect.EffectCategories.Value]
+  protected def triggerOn: Seq[TriggerEvent]
+  protected def triggerOff: Seq[TriggerEvent]
+  protected val turnUndeadNumOfTurnsCategories: Seq[effect.EffectCategories.Value]
   private val src = this
-  private[this] val nHD =
+  private val nHD =
     new PartModifier[Int, BasicStat] with UsingSearchPrefix {
 
       /**
@@ -63,16 +63,16 @@ trait TurnUndeadNumberOfTurnsFeature extends Features {
         triggersOff = triggerOff.map(_.entryName),
         bonusType = numberOfTurnsBonusType.entryName
       )
-      override protected[this] lazy val partToModify: BasicStat =
+      override protected lazy val partToModify: BasicStat =
         BasicStat.TurnUndeadMaxHitDice
 
       private val eb = EffectParameterBuilder()
-        .toggleOffValue(triggerOff: _*)
-        .toggleOnValue(triggerOn: _*)
+        .toggleOffValue(triggerOff*)
+        .toggleOnValue(triggerOn*)
         .addBonusType(numberOfTurnsBonusType)
         .build
 
-      override protected[this] def effectParameters: Seq[ParameterModifier[_]] = eb.modifiers
+      override protected def effectParameters: Seq[ParameterModifier[?]] = eb.modifiers
 
       override val source: SourceInfo = src
       override lazy val value: Int = numberOfTurnsBonusAmount
@@ -87,7 +87,7 @@ trait TurnUndeadNumberOfTurnsFeature extends Features {
       override def searchPrefixSource: String = partToModify.searchPrefixSource
     }
 
-  abstract override def features: Seq[Feature[_]] = {
+  abstract override def features: Seq[Feature[?]] = {
     assert(nHD.value == numberOfTurnsBonusAmount)
     super.features :+ nHD
   }

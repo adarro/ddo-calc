@@ -30,7 +30,7 @@ package object features {
     bonusType: BonusType,
     override val source: SourceInfo,
     override val categories: Seq[String],
-    override val effectParameters: Seq[ParameterModifier[_]],
+    override val effectParameters: Seq[ParameterModifier[?]],
     effectDetail: DetailedEffect)
     extends PartModifier[Int, Skill] with UsingSkillSearchPrefix {
 
@@ -48,7 +48,7 @@ package object features {
       s"provides a ${value.numberToSignedText} ${bonusType.entryName} bonus to ${partToModify.entryName}"
     )
     //    override lazy val name: Option[String] = Some(skill.withPrefix)
-    override protected[this] lazy val partToModify: Skill =
+    override protected lazy val partToModify: Skill =
       skill
 
     /**

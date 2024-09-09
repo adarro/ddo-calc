@@ -34,7 +34,7 @@ dependencies {
     // Platform dependent
     // https://mvnrepository.com/artifact/org.json4s/json4s-native
     val builderScalaVersion: String by project
-logger.error("showind builderScalaVersion: $builderScalaVersion")
+logger.info("showing builderScalaVersion: $builderScalaVersion")
     when (builderScalaVersion) {
         "3" -> {
             implementation(libs.scala3.library)
@@ -44,7 +44,9 @@ logger.error("showind builderScalaVersion: $builderScalaVersion")
 
             implementation(libs.kxbmap.configs.s213)
             // validation and rules
-            implementation(libs.wix.accord.core.s213)
+            // replacing wix accord validation with zio-prelude validation
+
+            implementation(libs.dev.zio.prelude.s3)
             implementation(libs.typesafe.scala.logging.s3)
         }
 
@@ -56,7 +58,8 @@ logger.error("showind builderScalaVersion: $builderScalaVersion")
 
             implementation(libs.kxbmap.configs.s213)
             // validation and rules
-            implementation(libs.wix.accord.core.s213)
+
+            implementation(libs.dev.zio.prelude.s213)
 
 
             implementation(libs.typesafe.scala.logging.s213)

@@ -24,6 +24,6 @@ package io.truthencode.ddo.model.feats
  */
 trait ParentFeat {
   self: Feat =>
-  val subFeats: Seq[Feat with SubFeat]
+  val subFeats: Seq[Feat & SubFeat]
 
 }

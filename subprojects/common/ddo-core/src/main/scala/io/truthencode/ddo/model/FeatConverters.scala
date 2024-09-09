@@ -30,13 +30,13 @@ import io.truthencode.ddo.model.item.weapon.{
  */
 object FeatConverters {
 
-  val featByWeaponProficiency: PartialFunction[WeaponCategory, GeneralFeat with SubFeat] = {
+  val featByWeaponProficiency: PartialFunction[WeaponCategory, GeneralFeat & SubFeat] = {
     case x: SimpleWeapon
         if GeneralFeat.SimpleWeaponProficiency.subFeats.exists(p =>
           p.displayText.contains(x.displayText)) =>
       GeneralFeat.SimpleWeaponProficiency.subFeats.find(p =>
         p.displayText.contains(x.displayText)) match {
-        case Some(f: GeneralFeat with SubFeat) => f
+        case Some(f: (GeneralFeat & SubFeat)) => f
       }
 
     case x: MartialWeapon
@@ -44,7 +44,7 @@ object FeatConverters {
           p.displayText.contains(x.displayText)) =>
       GeneralFeat.MartialWeaponProficiency.subFeats.find(p =>
         p.displayText.contains(x.displayText)) match {
-        case Some(f: GeneralFeat with SubFeat) => f
+        case Some(f: (GeneralFeat & SubFeat)) => f
       }
 
     case x: ExoticWeapon
@@ -52,7 +52,7 @@ object FeatConverters {
           p.displayText.contains(x.displayText)) =>
       GeneralFeat.ExoticWeaponProficiency.subFeats.find(p =>
         p.displayText.contains(x.displayText)) match {
-        case Some(f: GeneralFeat with SubFeat) => f
+        case Some(f: (GeneralFeat & SubFeat)) => f
       }
 
   }

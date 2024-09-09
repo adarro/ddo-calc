@@ -60,7 +60,7 @@ class EffectParameterBuilderTest extends AnyFunSpec with Matchers with LazyLoggi
           .build
 
       val list =
-        for { m <- builder.modifiers } yield (
+        for  m <- builder.modifiers  yield (
           m.parameter.success.value.entryName,
           m.parameter.success.value)
 

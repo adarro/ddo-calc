@@ -23,10 +23,10 @@ import io.truthencode.ddo.model.effect.Feature
 import io.truthencode.ddo.support.naming.DisplayProperties
 
 trait Features {
-  def features: Seq[Feature[_]]
+  def features: Seq[Feature[?]]
 
-  def namedFeatures: Map[String, Seq[Feature[_]]] = features.groupBy(_.name)
-  def namedOptionFeatures: Map[String, Seq[Feature[_]]] =
+  def namedFeatures: Map[String, Seq[Feature[?]]] = features.groupBy(_.name)
+  def namedOptionFeatures: Map[String, Seq[Feature[?]]] =
     features.groupBy(_.nameOption).collect { case (Some(x), list) =>
       (x, list)
     }
@@ -54,16 +54,16 @@ object Features {
     }
   }
 
-  type Entry = EnumEntry with Features with DisplayProperties
-  type E = Enum[_ <: Entry]
+  type Entry = EnumEntry & Features & DisplayProperties
+  type E = Enum[? <: Entry]
   implicit class FeatureExtractor(source: E) {
-    def featureMap: Map[Entry, Feature[_]] = featureSet.toMap
+    def featureMap: Map[Entry, Feature[?]] = featureSet.toMap
 
-    def featureSet: IndexedSeq[(Entry, Feature[_])] = for {
+    def featureSet: IndexedSeq[(Entry, Feature[?])] = for
       container <- source.values
       features <- container.namedFeatures
       feature <- features._2
-    } yield (container, feature)
+    yield (container, feature)
   }
 }
 
@@ -71,5 +71,5 @@ object Features {
  * Default convenience implementation which initializes the features list to Nil
  */
 trait FeaturesImpl extends Features {
-  override def features: Seq[Feature[_]] = Nil
+  override def features: Seq[Feature[?]] = Nil
 }

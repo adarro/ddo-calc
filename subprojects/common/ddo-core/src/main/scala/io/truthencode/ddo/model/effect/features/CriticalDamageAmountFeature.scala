@@ -31,21 +31,21 @@ trait CriticalDamageAmountFeature extends Features {
   self: SourceInfo =>
   protected def criticalDamageBonusType: BonusType
   protected val criticalDamageBonusAmount: Int
-  protected[this] def triggerOn: Seq[TriggerEvent]
-  protected[this] def triggerOff: Seq[TriggerEvent]
+  protected def triggerOn: Seq[TriggerEvent]
+  protected def triggerOff: Seq[TriggerEvent]
   private val src = this
-  private[this] val criticalDamageAmount =
+  private val criticalDamageAmount =
     new PartModifier[Int, BasicStat] with UsingSearchPrefix {
 
-      override protected[this] lazy val partToModify: BasicStat =
+      override protected lazy val partToModify: BasicStat =
         BasicStat.ChanceToHit
       private val eb = EffectParameterBuilder()
-        .toggleOffValue(triggerOff: _*)
-        .toggleOnValue(triggerOn: _*)
+        .toggleOffValue(triggerOff*)
+        .toggleOnValue(triggerOn*)
         .addBonusType(criticalDamageBonusType)
         .build
 
-      override protected[this] def effectParameters: Seq[ParameterModifier[_]] = eb.modifiers
+      override protected def effectParameters: Seq[ParameterModifier[?]] = eb.modifiers
 
       /**
        * The General Description should be just that. This should not include specific values unless
@@ -89,7 +89,7 @@ trait CriticalDamageAmountFeature extends Features {
       override def searchPrefixSource: String = partToModify.searchPrefixSource
     }
 
-  abstract override def features: Seq[Feature[_]] = {
+  abstract override def features: Seq[Feature[?]] = {
     assert(criticalDamageAmount.value == criticalDamageBonusAmount)
     super.features :+ criticalDamageAmount
   }

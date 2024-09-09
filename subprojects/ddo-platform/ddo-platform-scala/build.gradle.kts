@@ -56,14 +56,10 @@ dependencies {
         api(libs.scalafmt.core.s213)
         // Test Dependencies
 
-// Monix https://monix.io
-        api(libs.monix.eval.s213)
-        api(libs.monix.reactive.s213)
 
 // Quill https://getquill.io
-        api(libs.quill.core.s213)
         api(libs.quill.sql.s213)
-        api(libs.quill.monix.s213)
+
 
         // These dependencies, in implementation, should extend some api denoting test implementation, so perhaps create an apiTest / apiAcceptanceTest config?
 
@@ -72,8 +68,7 @@ dependencies {
         api("org.scalacheck:scalacheck_$scalaMajorVersion:$scalaCheckVersion")
         api(libs.scalatest.plus.mockito.s213)
         api(libs.mockito.core)
-        api(libs.wix.accord.core.s213)
-        api(libs.wix.accord.scalatest.s213)
+
 
         // A library providing a DSL for loading and extracting content from HTML pages.
         api(libs.ruippeixotog.scala.scraper.s213)

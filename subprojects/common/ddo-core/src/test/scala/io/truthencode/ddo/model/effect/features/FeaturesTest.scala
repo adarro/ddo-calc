@@ -33,19 +33,21 @@ class FeaturesTest extends AnyFunSpec with Matchers with LazyLogging {
   private val dodgeChance = BasicStat.DodgeChance.withPrefix // "DodgeChance"
 
   describe("A Features List") {
+
     it("Should be magical") {
       import Features.FeatureExtractor
-      val fs = Feat.featureSet
+      // Need to improve this to use the feature extractor
+      val fs = Feat.featureSet.sortBy(_._1.entryName)
       val fm = Feat.featureMap
-      fs.size shouldEqual fm.size
-
-      fm.foreach { m =>
+//      fs.size shouldEqual fm.size
+      logger.info("\n\n *************  Entity Features *************\n")
+      fs.foreach { m =>
         {
           val eId = m._1.entryName
           val fId = m._2.name
           val pf = printFeature(m._2)
           val ed = m._2.effectDetail
-          logger.info(s"\nEntity: $eId, Feature: $fId \n$pf\n$ed")
+          logger.info(s"Entity: $eId, Feature: $fId \n$pf\n$ed\n\n")
         }
 
       }

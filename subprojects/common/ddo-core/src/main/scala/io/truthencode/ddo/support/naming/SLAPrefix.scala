@@ -24,7 +24,7 @@ package io.truthencode.ddo.support.naming
  *   Alchemist Enhancement Rapid Condensation appears as SLA: Rapid Condensation
  */
 trait SLAPrefix extends Prefix {
-  self: DisplayName with DisplayProperties =>
+  self: DisplayName & DisplayProperties =>
   override def prefix: Option[String] = Some("Spell-Like Ability")
   override protected val prefixSeparator: String = ": "
 

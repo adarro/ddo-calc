@@ -31,7 +31,7 @@ import io.truthencode.ddo.support.requisite.{
  */
 trait DeityUniqueLevelBase
   extends ReligionFeatBase with RaceRequisiteImpl with RequiresAllOfClass with UniqueLevel {
-  self: FavoredWeapon with RequiresAllOfFeat =>
+  self: FavoredWeapon & RequiresAllOfFeat =>
   List(Cleric, Paladin, FavoredSoul).map((_, 6))
 
 }

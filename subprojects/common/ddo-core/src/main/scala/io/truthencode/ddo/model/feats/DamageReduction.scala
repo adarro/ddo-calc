@@ -27,6 +27,6 @@ import io.truthencode.ddo.support.requisite.{FeatRequisiteImpl, FreeFeat, Grants
  */
 protected[feats] trait DamageReduction
   extends FeatRequisiteImpl with Passive with GrantsToClass with FreeFeat {
-  self: ClassFeat with DamageReductionPrefix =>
+  self: ClassFeat & DamageReductionPrefix =>
   override def grantToClass: Seq[(HeroicCharacterClass, Int)] = List((Barbarian, 2))
 }

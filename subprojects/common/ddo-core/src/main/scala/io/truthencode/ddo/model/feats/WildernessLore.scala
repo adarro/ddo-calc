@@ -43,12 +43,12 @@ protected[feats] trait WildernessLore
     (1 to 20 by 2).toList.map((HeroicCharacterClass.Bard, _))
 
   private def allLevelsClasses =
-    for {
+    for
       c <- List(
         HeroicCharacterClass.Barbarian,
         HeroicCharacterClass.Druid,
         HeroicCharacterClass.Ranger
       )
       l <- 1 to 20
-    } yield (c, l)
+    yield (c, l)
 }

@@ -24,7 +24,7 @@ import io.truthencode.ddo.support.tree.Ranks
  * [[io.truthencode.ddo.support.requisite.ActionPointRequisite#apCostPerRank]] method
  */
 sealed trait ActionPointRequisite {
-  self: Requisite with Ranks =>
+  self: Requisite & Ranks =>
 
   /**
    * Some enhancements have multiple ranks. This is the cost for each rank. Older versions had
@@ -35,12 +35,12 @@ sealed trait ActionPointRequisite {
 }
 
 trait RequiresActionPointsImpl extends MustContainImpl[Requirement] with ActionPointRequisite {
-  self: Requisite with RequisiteType with Ranks =>
+  self: Requisite & RequisiteType & Ranks =>
 }
 
 trait RequiresActionPoints
   extends ActionPointRequisite with RequiresAllOf[Requirement] with Requisite {
-  self: Requisite with Ranks =>
+  self: Requisite & Ranks =>
 
 // FIXME: Add actionpoint to req collector
   abstract override def allOf: Seq[Requirement] = super.allOf

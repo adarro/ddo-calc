@@ -32,8 +32,8 @@ class WeaponCategoryTest extends AnyFunSpec with Matchers {
   }
 
   def typedToWeaponClass: PartialFunction[
-    DefaultDeliveryMethod with Damage,
-    (DefaultDeliveryMethod with Damage, WeaponClass)] = {
+    DefaultDeliveryMethod & Damage,
+    (DefaultDeliveryMethod & Damage, WeaponClass)] = {
     case x: RangeDamage => (x, WeaponClass.Ranged)
     case x: ThrownDamage => (x, WeaponClass.Thrown)
     case x: Bludgeoning => (x, WeaponClass.Bludgeon)

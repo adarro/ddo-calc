@@ -59,9 +59,9 @@ protected[feats] trait PowerAttack
     (Attribute.Strength, 13)
   )
 // TODO: Add to hit penalty, Damage Bonus for PowerAttack
-  override protected[this] val triggerOn: Seq[TriggerEvent] = Seq(TriggerEvent.OnStance)
-  override protected[this] val triggerOff: Seq[TriggerEvent] = Seq(TriggerEvent.OnToggle)
-  override protected[this] val grantAbilityCategories: Seq[effect.EffectCategories.Value] =
+  override protected val triggerOn: Seq[TriggerEvent] = Seq(TriggerEvent.OnStance)
+  override protected val triggerOff: Seq[TriggerEvent] = Seq(TriggerEvent.OnToggle)
+  override protected val grantAbilityCategories: Seq[effect.EffectCategories.Value] =
     Seq(
       effect.EffectCategories.Ability,
       effect.EffectCategories.Stance,

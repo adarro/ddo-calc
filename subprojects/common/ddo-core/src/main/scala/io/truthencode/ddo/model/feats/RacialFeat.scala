@@ -33,7 +33,7 @@ import scala.collection.immutable.IndexedSeq
 sealed trait RacialFeat
   extends Feat with RaceRequisiteImpl with FriendlyDisplay with FeatMatcher with LazyLogging
   with FeaturesImpl {
-  self: FeatType with Requisite with Inclusion with RequisiteType with Features =>
+  self: FeatType & Requisite & Inclusion & RequisiteType & Features =>
   val matchFeat: PartialFunction[Feat, RacialFeat] = { case x: RacialFeat =>
     x
   }

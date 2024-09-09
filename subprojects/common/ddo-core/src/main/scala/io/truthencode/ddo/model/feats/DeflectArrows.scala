@@ -39,9 +39,9 @@ trait DeflectArrows
   with AttributeRequisiteImpl with RequiresAllOfAttribute with MartialArtsFeat with FeaturesImpl
   with DeflectArrowsFeature with CoolDown {
   self: GeneralFeat =>
-  override protected[this] lazy val triggerOn: Seq[TriggerEvent] = Seq(TriggerEvent.OnTimer)
-  override protected[this] lazy val triggerOff: Seq[TriggerEvent] = Seq(TriggerEvent.OnCoolDown)
-  override protected[this] lazy val deflectCategories: Seq[effect.EffectCategories.Value] =
+  override protected lazy val triggerOn: Seq[TriggerEvent] = Seq(TriggerEvent.OnTimer)
+  override protected lazy val triggerOff: Seq[TriggerEvent] = Seq(TriggerEvent.OnCoolDown)
+  override protected lazy val deflectCategories: Seq[effect.EffectCategories.Value] =
     Seq(effect.EffectCategories.MissChance, effect.EffectCategories.Ability)
   override protected val deflectArrowsBonusType: BonusType = BonusType.Feat
   override protected val secondsPerArrow: Int = 6

@@ -31,10 +31,10 @@ case class SemiOrderedRequirements(valueWithRequirements: ValueWithRequirements*
   }
 
   def displayPrerequisites: Seq[String] = {
-    for {
+    for
       p <- prerequisites
       r: Requirement <- p.req.sortWith((x, y) => sortWithChaos(x, y))
-    } yield r.displayText
+    yield r.displayText
   }
 
   /**
@@ -47,10 +47,10 @@ case class SemiOrderedRequirements(valueWithRequirements: ValueWithRequirements*
   }
 
   def displayBonusSelections: Seq[String] = {
-    for {
+    for
       p <- bonusSelectable.sorted
       r <- p.req.sortWith((x, y) => sortWithChaos(x, y))
-    } yield r.displayText
+    yield r.displayText
   }
 
   /**
@@ -63,10 +63,10 @@ case class SemiOrderedRequirements(valueWithRequirements: ValueWithRequirements*
   }
 
   def displayGranted: Seq[String] = {
-    for {
+    for
       p <- grantedBy.sorted
       r <- p.req.sortWith((x, y) => sortWithChaos(x, y))
-    } yield r.displayText
+    yield r.displayText
   }
 
 }

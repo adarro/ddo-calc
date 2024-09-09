@@ -27,7 +27,7 @@ trait TacticalFeatFeatDisplayHelper extends FeatDisplayHelper with LazyLogging {
 }
 
 abstract class TacticalFeatFeatDisplayHelperJava extends TacticalFeatFeatDisplayHelper {
-  type S = Feat with Tactical
+  type S = Feat & Tactical
 
   val filterByTactical: PartialFunction[Entry, Entry] = { case x: Tactical =>
     x

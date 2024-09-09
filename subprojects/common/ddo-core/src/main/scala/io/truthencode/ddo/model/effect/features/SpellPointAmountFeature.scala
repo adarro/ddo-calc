@@ -31,11 +31,11 @@ trait SpellPointAmountFeature extends Features {
   self: SourceInfo =>
   protected def spellPointBonusType: BonusType
   protected val spellPointBonusAmount: Int
-  protected[this] def triggerOn: Seq[TriggerEvent]
-  protected[this] def triggerOff: Seq[TriggerEvent]
-  protected[this] def spellPointAmountCategories: Seq[effect.EffectCategories.Value]
+  protected def triggerOn: Seq[TriggerEvent]
+  protected def triggerOff: Seq[TriggerEvent]
+  protected def spellPointAmountCategories: Seq[effect.EffectCategories.Value]
   private val src = this
-  private[this] val spellPointAmount =
+  private val spellPointAmount =
     new PartModifier[Int, BasicStat] with UsingSearchPrefix {
 
       /**
@@ -58,15 +58,15 @@ trait SpellPointAmountFeature extends Features {
        */
       override def categories: Seq[String] = spellPointAmountCategories.map(_.toString)
 
-      override protected[this] lazy val partToModify: BasicStat =
+      override protected lazy val partToModify: BasicStat =
         BasicStat.SpellPoints
       private val eb = EffectParameterBuilder()
-        .toggleOffValue(triggerOff: _*)
-        .toggleOnValue(triggerOn: _*)
+        .toggleOffValue(triggerOff*)
+        .toggleOnValue(triggerOn*)
         .addBonusType(spellPointBonusType)
         .build
 
-      override protected[this] def effectParameters: Seq[ParameterModifier[_]] = eb.modifiers
+      override protected def effectParameters: Seq[ParameterModifier[?]] = eb.modifiers
 
       override lazy val effectDetail: DetailedEffect = DetailedEffect(
         id = "SpellPoints",
@@ -89,7 +89,7 @@ trait SpellPointAmountFeature extends Features {
       override def searchPrefixSource: String = partToModify.searchPrefixSource
     }
 
-  abstract override def features: Seq[Feature[_]] = {
+  abstract override def features: Seq[Feature[?]] = {
     assert(spellPointAmount.value == spellPointBonusAmount)
     super.features :+ spellPointAmount
   }

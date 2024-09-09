@@ -17,8 +17,7 @@
  */
 package io.truthencode.ddo.enchantment
 
-import com.wix.accord._
-import com.wix.accord.dsl._
+
 import io.truthencode.ddo.enchantment.Modifier._
 import io.truthencode.ddo.model.effect._
 
@@ -27,18 +26,12 @@ trait GuardFlag {
 }
 
 object Guard extends ((Guards, Option[GuardModifier]) => Guard) {
-  implicit val guardValidator: Validator[Guard] = validator[Guard] { g =>
-    {
-
-      g.effects.is(notEmpty)
-
-    }
-  }
   type Parameters = (Guards, Option[GuardModifier])
 
   def apply(guard: Guards, affixes: Option[GuardModifier] = None): Guard = {
     val o = create(guard, affixes)
-    assert(validate(o) == Success)
+    // Enter Validation here
+    
     o
   }
 

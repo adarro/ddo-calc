@@ -34,8 +34,8 @@ protected[feats] trait ArcaneLore
     grantedClasses
 
   private def grantedClasses =
-    for {
+    for
       gc <- List(Alchemist, Artificer, Bard, Sorcerer, Wizard)
       l <- 1 to 20
-    } yield (gc, l)
+    yield (gc, l)
 }

@@ -47,7 +47,7 @@ class SkillSpec {
     val header = s"<table><tr><th>$heading</th></tr>"
     val footer = "</table>"
     val table = s"$header$data$footer"
-    if (collapse) {
+    if collapse then {
       s"""<div class=\"collapsible\">$table</div>"""
     } else {
       table
@@ -56,10 +56,10 @@ class SkillSpec {
   }
 
   def withNameAsList(skillId: String): util.List[Skill] = {
-    for {
+    for
       v <- skillEnum.values
       if v.toString == skillId
-    } yield v
+    yield v
   }.asJava
 
 }

@@ -27,7 +27,7 @@ import io.truthencode.ddo.support.requisite.{GrantsToClass, RequiresAllOfClass}
  * Created by adarr on 3/17/2017.
  */
 trait WildShapeWolf extends WildShape with GrantsToClass with RequiresAllOfClass {
-  self: DisplayName with DisplayProperties =>
+  self: DisplayName & DisplayProperties =>
 
   override def grantToClass: Seq[(HeroicCharacterClass, Int)] =
     List((Druid, 2), (Druid, 5))

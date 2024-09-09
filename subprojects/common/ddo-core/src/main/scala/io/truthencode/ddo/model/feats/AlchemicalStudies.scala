@@ -35,7 +35,7 @@ import io.truthencode.ddo.support.requisite.{
 protected[feats] trait AlchemicalStudies
   extends FeatRequisiteImpl with ClassRequisiteImpl with GrantsToClass with RequiresAllOfClass
   with Passive {
-  private[this] val cls = (Alchemist, 4)
+  private val cls = (Alchemist, 4)
 
   abstract override def grantToClass: Seq[(HeroicCharacterClass, Int)] = super.grantToClass :+ cls
 

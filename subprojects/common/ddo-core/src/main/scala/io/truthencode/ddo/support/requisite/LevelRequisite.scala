@@ -38,7 +38,7 @@ trait LevelRequisite { self: Requisite =>
 }
 
 trait LevelRequisiteImpl extends MustContainImpl[Requirement] with LevelRequisite {
-  self: Requisite with RequisiteType =>
+  self: Requisite & RequisiteType =>
   override val requireCharacterLevel: Int = 0
 
   def anyOfCharacterLevel: Seq[Int] = Nil

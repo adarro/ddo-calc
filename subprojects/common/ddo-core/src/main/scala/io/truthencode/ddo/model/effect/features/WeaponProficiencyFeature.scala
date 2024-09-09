@@ -34,11 +34,11 @@ trait WeaponProficiencyFeature extends Features {
 
   protected def proficiencyType: BonusType
   protected val proficiencyAmount: Seq[WeaponCategory]
-  protected[this] def triggerOn: Seq[TriggerEvent]
-  protected[this] def triggerOff: Seq[TriggerEvent]
-  protected[this] def weaponProficiencyCategories: Seq[effect.EffectCategories.Value]
+  protected def triggerOn: Seq[TriggerEvent]
+  protected def triggerOff: Seq[TriggerEvent]
+  protected def weaponProficiencyCategories: Seq[effect.EffectCategories.Value]
   private val src = this
-  private[this] val proficiencyChance =
+  private val proficiencyChance =
     new PartModifier[Seq[WeaponCategory], BasicStat] with UsingSearchPrefix {
 
       /**
@@ -70,16 +70,16 @@ trait WeaponProficiencyFeature extends Features {
        */
       override def searchPrefixSource: String = partToModify.searchPrefixSource
 
-      override protected[this] lazy val partToModify: BasicStat =
+      override protected lazy val partToModify: BasicStat =
         BasicStat.WeaponProficiency
 
       private val eb = EffectParameterBuilder()
-        .toggleOffValue(triggerOff: _*)
-        .toggleOnValue(triggerOn: _*)
+        .toggleOffValue(triggerOff*)
+        .toggleOnValue(triggerOn*)
         .addBonusType(proficiencyType)
         .build
 
-      override protected[this] def effectParameters: Seq[ParameterModifier[_]] = eb.modifiers
+      override protected def effectParameters: Seq[ParameterModifier[?]] = eb.modifiers
       override val effectDetail: DetailedEffect = DetailedEffect(
         id = "WeaponProficiency",
         description = "Reduce To Hit penalty when using specific weapons",
@@ -92,7 +92,7 @@ trait WeaponProficiencyFeature extends Features {
       override lazy val effectText: Option[String] = Some(s"Weapon Proficiency: $value%")
     }
 
-  abstract override def features: Seq[Feature[_]] = {
+  abstract override def features: Seq[Feature[?]] = {
     assert(proficiencyChance.value == proficiencyAmount)
     super.features :+ proficiencyChance
   }

@@ -31,11 +31,11 @@ trait MaxDexBonusFeature extends Features {
   self: SourceInfo =>
   val mdbBonusType: BonusType
   val mdbAmount: Int
-  protected[this] def triggerOn: Seq[TriggerEvent]
-  protected[this] def triggerOff: Seq[TriggerEvent]
-  protected[this] def mdbCategories: Seq[effect.EffectCategories.Value]
+  protected def triggerOn: Seq[TriggerEvent]
+  protected def triggerOff: Seq[TriggerEvent]
+  protected def mdbCategories: Seq[effect.EffectCategories.Value]
   private val src = this
-  private[this] val maxDexterityBonus =
+  private val maxDexterityBonus =
     new PartModifier[Int, BasicStat] with UsingSearchPrefix {
 
       /**
@@ -47,16 +47,16 @@ trait MaxDexBonusFeature extends Features {
        */
       override def searchPrefixSource: String = partToModify.searchPrefixSource
 
-      override protected[this] lazy val partToModify: BasicStat =
+      override protected lazy val partToModify: BasicStat =
         BasicStat.MaxDexterityBonus
 
       private val eb = EffectParameterBuilder()
-        .toggleOffValue(triggerOff: _*)
-        .toggleOnValue(triggerOn: _*)
+        .toggleOffValue(triggerOff*)
+        .toggleOnValue(triggerOn*)
         .addBonusType(mdbBonusType)
         .build
 
-      override protected[this] def effectParameters: Seq[ParameterModifier[_]] = eb.modifiers
+      override protected def effectParameters: Seq[ParameterModifier[?]] = eb.modifiers
 
       /**
        * The General Description should be just that. This should not include specific values unless
@@ -90,7 +90,7 @@ trait MaxDexBonusFeature extends Features {
       override lazy val effectText: Option[String] = Some(s"Max Dexterity Bonus by $value")
     }
 
-  abstract override def features: Seq[Feature[_]] = {
+  abstract override def features: Seq[Feature[?]] = {
     assert(maxDexterityBonus.value == mdbAmount)
     super.features :+ maxDexterityBonus
   }

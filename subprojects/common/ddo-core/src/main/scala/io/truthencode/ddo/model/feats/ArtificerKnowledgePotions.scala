@@ -29,10 +29,10 @@ protected[feats] trait ArtificerKnowledgePotions
   with RequiresAllOfClass {
   self: ClassFeat =>
   private lazy val levels = List(2, 5, 8, 11, 14)
-  private lazy val values = for {
+  private lazy val values = for
     l <- levels
     c <- List(Artificer, Alchemist)
-  } yield (c, l)
+  yield (c, l)
   override def anyOfClass: Seq[(HeroicCharacterClass, Int)] = values
 
   override def grantToClass: Seq[(HeroicCharacterClass, Int)] = values

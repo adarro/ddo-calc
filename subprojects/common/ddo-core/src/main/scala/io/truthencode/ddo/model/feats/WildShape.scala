@@ -36,5 +36,5 @@ import io.truthencode.ddo.support.requisite.{FeatRequisiteImpl, GrantsToClass, R
 protected[feats] trait WildShape
   extends FeatRequisiteImpl with TriggeredActivationImpl with ActiveFeat with OnShapeShift
   with DefaultCasterCoolDown with WildShapePrefix {
-  self: GrantsToClass with RequiresAllOfClass with DisplayName with DisplayProperties =>
+  self: GrantsToClass & RequiresAllOfClass & DisplayName & DisplayProperties =>
 }

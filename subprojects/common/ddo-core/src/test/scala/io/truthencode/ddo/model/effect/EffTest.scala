@@ -33,7 +33,7 @@ class EffTest extends AnyFunSpec with Matchers {
       //  typical random loot such as Warrior's boots of X
       val featList = Feats.values.collect(Feats.fnTacticalFeats)
       val randomLootWarriorPrefix =
-        for { s <- featList } yield Eff(
+        for  s <- featList  yield Eff(
           TriggerEvent.Passive,
           bonusType = BonusType.Enhancement,
           magnitude = new Magnitude {

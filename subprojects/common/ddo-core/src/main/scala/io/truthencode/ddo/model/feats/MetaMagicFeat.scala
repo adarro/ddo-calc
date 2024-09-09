@@ -33,7 +33,7 @@ import scala.collection.immutable.IndexedSeq
 sealed trait MetaMagicFeat
   extends Feat with BonusSelectableToClassFeatImpl with TriggeredActivationImpl
   with ClassRequisiteImpl with FriendlyDisplay with FeatMatcher with FeaturesImpl {
-  self: FeatType with Requisite with Inclusion with RequisiteType with TriggerEvent =>
+  self: FeatType & Requisite & Inclusion & RequisiteType & TriggerEvent =>
 
   val matchFeat: PartialFunction[Feat, MetaMagicFeat] = { case x: MetaMagicFeat =>
     x

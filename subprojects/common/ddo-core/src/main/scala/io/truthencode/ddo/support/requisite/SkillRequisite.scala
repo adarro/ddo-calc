@@ -29,7 +29,7 @@ sealed trait SkillRequisite { self: Requisite =>
 }
 
 trait SkillRequisiteImpl extends MustContainImpl[Requirement] with SkillRequisite {
-  self: Requisite with RequisiteType =>
+  self: Requisite & RequisiteType =>
   override def oneOfSkill: Seq[(Skill, Int)] = IndexedSeq.apply()
   override def allOfSkill: Seq[(Skill, Int)] = IndexedSeq.apply()
 

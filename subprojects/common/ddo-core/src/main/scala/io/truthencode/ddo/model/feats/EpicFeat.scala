@@ -33,7 +33,7 @@ import scala.collection.immutable
 sealed trait EpicFeat
   extends Feat with FriendlyDisplay with SubFeatInformation with LevelRequisiteImpl
   with RequiresCharacterLevel with FeaturesImpl {
-  self: FeatType with Requisite with Inclusion with EpicFeatCategory with Features =>
+  self: FeatType & Requisite & Inclusion & EpicFeatCategory & Features =>
 
   /**
    * Default Minimum Level for all Epic Feats. Override this with a higher level as needed.
@@ -55,7 +55,7 @@ object EpicFeat extends Enum[EpicFeat] with FeatSearchPrefix with FeatMatcher {
   }
 
   def epicSpellFocusAny: immutable.IndexedSeq[EpicSpellFocus] =
-    for { x <- School.values } yield EpicSpellFocus(x)
+    for  x <- School.values  yield EpicSpellFocus(x)
 
   override def values: immutable.IndexedSeq[EpicFeat] = findValues
 
@@ -130,7 +130,7 @@ object EpicFeat extends Enum[EpicFeat] with FeatSearchPrefix with FeatMatcher {
   case object EpicMentalToughness extends FeatRequisiteImpl with EpicFeat with EpicMentalToughness
 
   case object EpicSpellFocus extends EpicSpellFocusBase with EpicFeat with ParentFeat {
-    override val subFeats: Seq[EpicFeat with SubFeat] =
+    override val subFeats: Seq[EpicFeat & SubFeat] =
       epicSpellFocusAny
   }
 

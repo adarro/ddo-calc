@@ -31,7 +31,7 @@ import io.truthencode.ddo.support.tree.TreeLike
  */
 trait ClassEnhancementBase {
   self: ClassEnhancement
-    with PointInTreeRequisite with RequiresPointsAvailable with ActionPointRequisite with Tier =>
+    & PointInTreeRequisite & RequiresPointsAvailable & ActionPointRequisite & Tier =>
   def validClasses: Seq[HeroicCharacterClass]
 
   def singleClass: Option[HeroicCharacterClass] = if isSingleClass then validClasses.headOption else None
@@ -59,27 +59,27 @@ trait Tier1EnhancementBase
 trait Tier2EnhancementBase
   extends ClassEnhancementBase with PointsInTreeRequisiteImpl with RequiresPointsInTree
   with RequiresPointsAvailable with RequiresActionPoints with Tier2 {
-  self: ClassEnhancement with RequiresPointsAvailable =>
+  self: ClassEnhancement & RequiresPointsAvailable =>
   override def progressionInTree: Seq[(TreeLike, SpendablePoints, Int)] = Seq((tree, 5))
 }
 
 trait Tier3EnhancementBase
   extends ClassEnhancementBase with PointsInTreeRequisiteImpl with RequiresPointsInTree
   with RequiresPointsAvailable with RequiresActionPoints with Tier3 {
-  self: ClassEnhancement with RequiresPointsAvailable =>
+  self: ClassEnhancement & RequiresPointsAvailable =>
   override def progressionInTree: Seq[(TreeLike, SpendablePoints, Int)] = Seq((tree, 10))
 }
 
 trait Tier4EnhancementBase
   extends ClassEnhancementBase with PointsInTreeRequisiteImpl with RequiresPointsInTree
   with RequiresPointsAvailable with RequiresActionPoints with Tier4 {
-  self: ClassEnhancement with RequiresPointsAvailable =>
+  self: ClassEnhancement & RequiresPointsAvailable =>
   override def progressionInTree: Seq[(TreeLike, SpendablePoints, Int)] = Seq((tree, 20))
 }
 
 trait Tier5EnhancementBase
   extends ClassEnhancementBase with PointsInTreeRequisiteImpl with RequiresPointsInTree
   with RequiresPointsAvailable with RequiresActionPoints with Tier5 {
-  self: ClassEnhancement with RequiresPointsAvailable =>
+  self: ClassEnhancement & RequiresPointsAvailable =>
   override def progressionInTree: Seq[(TreeLike, SpendablePoints, Int)] = Seq((tree, 30))
 }

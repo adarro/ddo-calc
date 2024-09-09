@@ -23,7 +23,7 @@ import io.truthencode.ddo.support.naming.{DisplayName, FriendlyDisplay, Prefix}
  * Base Trait for Half-Elf Racial Feat family (Half-Elf Dilettante: X)
  */
 trait HalfElfDilettantePreFix extends Prefix {
-  self: DisplayName with FriendlyDisplay =>
+  self: DisplayName & FriendlyDisplay =>
 
   /**
    * Delimits the prefix and text.

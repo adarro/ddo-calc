@@ -36,7 +36,7 @@ sealed trait ClassEnhancementRequisite {
 
 trait ClassEnhancementRequisiteImpl
   extends MustContainImpl[Requirement] with ClassEnhancementRequisite {
-  self: Requisite with RequisiteType =>
+  self: Requisite & RequisiteType =>
   def anyOfClassEnhancements: Seq[ClassEnhancement] = IndexedSeq.apply()
 
   def allOfClassEnhancements: Seq[ClassEnhancement] = IndexedSeq.apply()
@@ -47,10 +47,10 @@ trait ClassEnhancementRequisiteImpl
 object ClassEnhancementRequisite {
 
   def stringToClass(classId: String*): Seq[ClassEnhancement] = {
-    for {
+    for
       cls <- classId
       cOpt <- ClassEnhancement.withNameInsensitiveOption(cls)
-    } yield cOpt
+    yield cOpt
   }
 }
 

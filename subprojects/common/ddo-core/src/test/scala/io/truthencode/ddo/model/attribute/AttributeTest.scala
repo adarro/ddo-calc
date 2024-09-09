@@ -19,13 +19,13 @@ class AttributeTest
       ("CHA", "Charisma")
     )
 
-  describe("Should support both abbreviations and full words") {
-
-    forAll(nameMap) { (abbr: String, name: String) =>
-      val atr = Attribute.withName(name)
-      atr.abbr shouldEqual abbr
-      atr.toFullWord shouldEqual (name)
+  describe("An Attribute ") {
+    it("Should support both abbreviations and full words") {
+      forAll(nameMap) { (abbr: String, name: String) =>
+        val atr = Attribute.withName(name)
+        atr.abbr shouldEqual abbr
+        atr.toFullWord shouldEqual (name)
+      }
     }
-
   }
 }

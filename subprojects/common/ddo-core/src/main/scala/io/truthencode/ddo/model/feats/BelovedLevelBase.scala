@@ -26,7 +26,7 @@ import io.truthencode.ddo.support.requisite.{RequiresAllOfClass, RequiresAllOfFe
  */
 trait BelovedLevelBase
   extends ReligionFeatBase with Passive with RequiresAllOfClass with BelovedOfLevel {
-  self: FavoredWeapon with RequiresAllOfFeat =>
+  self: FavoredWeapon & RequiresAllOfFeat =>
   List(Cleric, Paladin, FavoredSoul).map((_, 12))
 
 }

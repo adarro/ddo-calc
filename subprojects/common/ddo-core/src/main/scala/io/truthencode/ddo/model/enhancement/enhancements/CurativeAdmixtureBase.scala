@@ -20,6 +20,6 @@ package io.truthencode.ddo.model.enhancement.enhancements
 import io.truthencode.ddo.support.naming.{Description, DisplayName, Prefix}
 
 trait CurativeAdmixtureBase extends Prefix {
-  self: Description with DisplayName =>
+  self: Description & DisplayName =>
   override def prefix: Option[String] = Some("Curative Admixture")
 }

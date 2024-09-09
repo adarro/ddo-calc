@@ -29,7 +29,7 @@ import io.truthencode.ddo.support.requisite.{
 }
 
 trait ClassEnhancementInfo {
-  type ENH = ClassEnhancement with Tier with ActionPointRequisite with PointInTreeRequisite
+  type ENH = ClassEnhancement & Tier & ActionPointRequisite & PointInTreeRequisite
   val values: Seq[ENH] = ClassEnhancement.values.collect { case x: ENH => x }
   val name: String
   val actionPointCost: Int
@@ -49,8 +49,8 @@ object ClassEnhancementInfo extends LazyLogging {
 // scalastyle:off
   def apply(
     classEnhancement: ClassEnhancement
-      with Tier with ClassBasedEnhancements with PointInTreeRequisite with PointsAvailableRequisite
-      with RequiresActionPoints
+      & Tier & ClassBasedEnhancements & PointInTreeRequisite & PointsAvailableRequisite
+      & RequiresActionPoints
   ) = {
     val e = classEnhancement
     def id: String = e.entryName
@@ -74,7 +74,7 @@ object ClassEnhancementInfo extends LazyLogging {
     logger.info(s"Searching $key using: $srch")
     val eOpt = ClassEnhancement.withNameInsensitiveOption(srch) match {
       case Some(
-            x: ClassEnhancement with Tier with ClassBasedEnhancements with PointInTreeRequisite with PointsAvailableRequisite with RequiresActionPoints
+            x: (ClassEnhancement & Tier & ClassBasedEnhancements & PointInTreeRequisite & PointsAvailableRequisite & RequiresActionPoints)
           ) =>
         logger.info(s"Found ${x.displayText} => ${x.entryName}")
         Some(x)
@@ -101,7 +101,7 @@ object ClassEnhancementInfo extends LazyLogging {
         }
         None
     }
-    if (eOpt.nonEmpty) {
+    if eOpt.nonEmpty then {
       val e = eOpt.get
       logger.info(s"located ${e.displayText}")
 

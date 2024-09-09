@@ -23,14 +23,14 @@ import enumeratum.{Enum, EnumEntry}
 import scala.util.{Failure, Success, Try}
 
 // scalastyle:off
-trait Searchable[T <: EnumEntry with SearchPattern] extends Enum[T] with LazyLogging {
+trait Searchable[T <: EnumEntry & SearchPattern] extends Enum[T] with LazyLogging {
 
   def findByPattern(name: String): Option[T] = {
     values.filter(p => p.searchPattern() == p.searchPattern(name)).lastOption
   }
 
   def tryFindByPattern(name: String, usePattern: Option[String] = None): Try[T] = {
-    if (usePattern.isEmpty)
+    if usePattern.isEmpty then
       logger.warn(s"Using default pattern matching for $name")
     val cls = getClass.getSimpleName
     val sp = usePattern.getOrElse("")
@@ -41,7 +41,7 @@ trait Searchable[T <: EnumEntry with SearchPattern] extends Enum[T] with LazyLog
     val msg = s"\nSearchable:-> $cls for $name ${usePattern.getOrElse(sp)} target  $targetPattern"
     logger.info(msg)
     val rslt = values.filter { v =>
-      logger.debug(s"sp => tp ${v.searchPattern()} => $targetPattern")
+   // DEBUG   logger.debug(s"sp => tp ${v.searchPattern()} => $targetPattern")
       v.searchPattern() == targetPattern
     }
 //    val rslt = values.flatMap { v =>
@@ -65,7 +65,7 @@ trait Searchable[T <: EnumEntry with SearchPattern] extends Enum[T] with LazyLog
 //          None
 //      }
 //    }
-    if (rslt.nonEmpty)
+    if rslt.nonEmpty then
       Success(rslt.head)
     else
       Failure(new NoSuchElementException(s"Could not find element with name $name"))

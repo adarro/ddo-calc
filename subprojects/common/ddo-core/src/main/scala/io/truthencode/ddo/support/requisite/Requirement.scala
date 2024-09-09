@@ -364,7 +364,7 @@ object Requirement extends Enum[Requirement] {
     override def alphaSortKey: String = id
 
     override def displayText: String = {
-      val pf = if (trained) s"(Trained) " else ""
+      val pf = if trained then s"(Trained) " else ""
       s"${pf}Ranks in $id: $amount"
     }
 

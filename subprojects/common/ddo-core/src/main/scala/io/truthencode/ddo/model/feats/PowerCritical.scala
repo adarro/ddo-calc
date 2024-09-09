@@ -37,8 +37,8 @@ protected[feats] trait PowerCritical
   with ConfirmCriticalHitAmountFeature with CriticalDamageAmountFeature {
   self: GeneralFeat =>
 
-  override protected[this] lazy val triggerOn: Seq[TriggerEvent] = Seq(TriggerEvent.Passive)
-  override protected[this] lazy val triggerOff: Seq[TriggerEvent] = Seq(TriggerEvent.Never)
+  override protected lazy val triggerOn: Seq[TriggerEvent] = Seq(TriggerEvent.Passive)
+  override protected lazy val triggerOff: Seq[TriggerEvent] = Seq(TriggerEvent.Never)
   override protected val confirmCriticalHitBonusType: BonusType = BonusType.Feat
   override protected val confirmCriticalHitBonusAmount: Int = 2
   override protected val criticalDamageBonusType: BonusType = BonusType.Feat

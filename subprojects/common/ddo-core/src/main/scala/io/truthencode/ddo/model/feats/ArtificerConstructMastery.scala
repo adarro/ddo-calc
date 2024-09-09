@@ -34,7 +34,7 @@ import io.truthencode.ddo.support.requisite.{FeatRequisiteImpl, GrantsToClass, R
 protected[feats] trait ArtificerConstructMastery
   extends FeatRequisiteImpl with TriggeredActivationImpl with ActiveFeat with GrantsToClass
   with RequiresAllOfClass with SpellBookImpl with AtWillEvent with DefaultCasterCoolDown {
-  val fnArtificerInflictRepair: PartialFunction[Spell, Spell with SingleTarget] = {
+  val fnArtificerInflictRepair: PartialFunction[Spell, Spell & SingleTarget] = {
     case x: SingleTarget =>
       x
   }

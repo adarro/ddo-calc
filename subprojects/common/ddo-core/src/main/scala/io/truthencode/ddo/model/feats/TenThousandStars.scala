@@ -51,9 +51,9 @@ protected[feats] trait TenThousandStars
 
   override lazy val grantedAbility: ActiveAbilities = ActiveAbilities.TenThousandStars
   override val coolDownPoolId: String = ManyShot.coolDownPoolId
-  override protected[this] val triggerOn: Seq[TriggerEvent] = Seq(TriggerEvent.AtWill)
-  override protected[this] val triggerOff: Seq[TriggerEvent] = Seq(TriggerEvent.OnCoolDown)
-  override protected[this] val grantAbilityCategories: Seq[effect.EffectCategories.Value] =
+  override protected val triggerOn: Seq[TriggerEvent] = Seq(TriggerEvent.AtWill)
+  override protected val triggerOff: Seq[TriggerEvent] = Seq(TriggerEvent.OnCoolDown)
+  override protected val grantAbilityCategories: Seq[effect.EffectCategories.Value] =
     Seq(effect.EffectCategories.Ability, effect.EffectCategories.RangedCombat)
   override val grantBonusType: BonusType = BonusType.Feat
   override val abilityId: String = "TenThousandStars"

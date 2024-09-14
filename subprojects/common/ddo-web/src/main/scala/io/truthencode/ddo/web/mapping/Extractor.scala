@@ -115,9 +115,9 @@ object Extractor extends LazyLogging {
    *   sequence of possibly nested Leafs containing any enchantments
    */
   def enchantmentExtractor(source: Map[String, Element]): Seq[io.truthencode.ddo.web.Leaf] = {
-    val maybeTree = for
-      e <- source.get(Field.Enchantments)
-    yield io.truthencode.ddo.web.Warehouse.readHtmlList(e)
+    val maybeTree =
+      for e <- source.get(Field.Enchantments)
+      yield io.truthencode.ddo.web.Warehouse.readHtmlList(e)
 
     maybeTree match {
       case Some(tree) =>

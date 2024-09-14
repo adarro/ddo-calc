@@ -128,13 +128,11 @@ object ThrowAway {
   def doStr(): Unit = {
     val mm: Map[Try[EffectPart], List[PartModifier[V, T]]] =
       str.modifiers.filter(f => f.part.isSuccess).groupBy(_.part)
-    for
-      g <- mm
+    for g <- mm
     yield g
     for
       part <- str.modifiers.filter(f => f.part.isSuccess).groupBy(_.part)
       mod <- part._2
-
     yield m
 //    val ps = for {
 //      group <- str.modifiers.groupBy(_.part)

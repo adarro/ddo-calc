@@ -77,8 +77,7 @@ class EffectParameterBuilder[T <: EffectParameterBuilder.EffectParams] protected
         }
       }
     }
-    val pp: EffectParameterBuilder[T & ToggleOffParam] = EffectParameterBuilder(
-      ingredients ++ npm)
+    val pp: EffectParameterBuilder[T & ToggleOffParam] = EffectParameterBuilder(ingredients ++ npm)
     EffectParameterBuilder(ingredients ++ npm)
   }
 

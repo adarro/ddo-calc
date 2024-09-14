@@ -61,13 +61,14 @@ trait ChanceToHit extends BasicStat with HitChance
 trait WeaponDamage extends BasicStat with GeneralCombat
 
 trait MeleePower extends BasicStat with MeleeCombat {
-    /**
-     * Override this function for a more specific match such as "ToHitChance"
-     *
-     * @return
-     * A default prefix "BasicStat"
-     */
-    override def searchPrefixSource: String = "Damage"
+
+  /**
+   * Override this function for a more specific match such as "ToHitChance"
+   *
+   * @return
+   *   A default prefix "BasicStat"
+   */
+  override def searchPrefixSource: String = "Damage"
 }
 
 trait RangedPower extends BasicStat with RangedCombat
@@ -315,8 +316,6 @@ trait AutoRecovery extends BasicStat with Recovery
 trait GrantedAbility extends BasicStat with Ability with UsingAbilitySearchPrefix {
   val ability: ActiveAbilities
 }
-
-
 
 // scalastyle:off number.of.methods
 object BasicStat extends Enum[BasicStat] with SearchPrefix {

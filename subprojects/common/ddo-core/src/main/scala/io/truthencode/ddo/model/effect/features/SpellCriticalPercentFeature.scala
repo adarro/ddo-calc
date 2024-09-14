@@ -42,8 +42,7 @@ trait SpellCriticalPercentFeature extends Features {
   }
 
   private def spellCriticalPercentChance: Seq[Feature[?]] = {
-    for
-      (s, a) <- schoolCritical
+    for (s, a) <- schoolCritical
     yield {
       new PartModifier[Int, BasicStat] with UsingSearchPrefix {
 

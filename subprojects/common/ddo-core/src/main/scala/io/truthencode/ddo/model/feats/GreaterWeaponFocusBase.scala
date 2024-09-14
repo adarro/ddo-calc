@@ -31,8 +31,8 @@ import io.truthencode.ddo.support.requisite.{
  * Power. This feat stacks with Weapon Focus.
  */
 protected[feats] trait GreaterWeaponFocusBase
-  extends FeatRequisiteImpl with ClassRequisiteImpl with BonusSelectableToClassFeatImpl with Passive with RequiresAllOfClass
-  with FighterBonusFeat {
+  extends FeatRequisiteImpl with ClassRequisiteImpl with BonusSelectableToClassFeatImpl with Passive
+  with RequiresAllOfClass with FighterBonusFeat {
   self: GeneralFeat & RequiresAllOfFeat =>
 
   override def allOfClass: Seq[(HeroicCharacterClass, Int)] =

@@ -238,9 +238,11 @@ object ClassBasedEnhancements extends Enum[ClassBasedEnhancements] {
   override lazy val values: immutable.IndexedSeq[ClassBasedEnhancements] =
     findValues
 
-  case object FighterOrPaladinEnhancement extends FighterOrPaladinEnhancement, ClassBasedEnhancements
+  case object FighterOrPaladinEnhancement
+    extends FighterOrPaladinEnhancement, ClassBasedEnhancements
 
-  case object SorcererOrWizardEnhancement extends SorcererOrWizardEnhancement, ClassBasedEnhancements
+  case object SorcererOrWizardEnhancement
+    extends SorcererOrWizardEnhancement, ClassBasedEnhancements
 
   case object AlchemistEnhancement extends AlchemistEnhancement, ClassBasedEnhancements
 

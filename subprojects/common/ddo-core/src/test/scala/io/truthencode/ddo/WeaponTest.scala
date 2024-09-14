@@ -32,7 +32,13 @@ package io.truthencode.ddo
 
 import io.truthencode.ddo.MonetaryValue.Coins
 import io.truthencode.ddo.model.attribute.Attribute
-import io.truthencode.ddo.model.item.weapon.{DeliveryType, Handedness, ProficiencyClass, Weapon, WeaponCategory}
+import io.truthencode.ddo.model.item.weapon.{
+  DeliveryType,
+  Handedness,
+  ProficiencyClass,
+  Weapon,
+  WeaponCategory
+}
 import io.truthencode.ddo.model.misc.Material
 import io.truthencode.ddo.support.dice.DamageDice
 import org.scalatest.funspec.AnyFunSpec
@@ -45,7 +51,7 @@ import scala.language.reflectiveCalls
 
 @Slow
 class WeaponTest extends AnyFunSpec with Matchers with MockitoSugar {
-  private def fixture: Object {val longBow: Weapon} = new {
+  private def fixture: Object { val longBow: Weapon } = new {
     val longBow: Weapon = new Weapon {
       val Coinage = 1000
       val NWeight = 4
@@ -56,7 +62,8 @@ class WeaponTest extends AnyFunSpec with Matchers with MockitoSugar {
       val weaponCategory: Option[WeaponCategory] = Some(WeaponCategory.Dagger)
       val baseValue: Option[Coins] = Some(Coins(Coinage))
       val handedness: List[Handedness] = mock[List[Handedness]]
-      val weaponType: Option[DeliveryType] = Some(mock[io.truthencode.ddo.model.item.weapon.DeliveryType])
+      val weaponType: Option[DeliveryType] = Some(
+        mock[io.truthencode.ddo.model.item.weapon.DeliveryType])
       val weight: Option[Int] = Some(NWeight)
       val binding: Option[BindingFlags] = Some(BindingFlags.Unbound)
       val attackModifier: List[Attribute] = mock[List[Attribute]]

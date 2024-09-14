@@ -55,11 +55,11 @@ object ClassFeat extends Enum[ClassFeat] with FeatSearchPrefix {
 
   def alchemicalStudies: immutable.Seq[AlchemicalStudies] = {
     // for comprehension vs map since we'll likely add Reaction info the Feat Trait
-    for  r <- Reaction.values  yield AlchemicalStudies(r)
+    for r <- Reaction.values yield AlchemicalStudies(r)
   }
 
   protected def favoredEnemies: immutable.IndexedSeq[FavoredEnemyType] = {
-    for  m <- MonsterType.values  yield FavoredEnemyType(Some(m))
+    for m <- MonsterType.values yield FavoredEnemyType(Some(m))
   }
 
   case class FavoredEnemyType(mainTypes: Option[MonsterType])

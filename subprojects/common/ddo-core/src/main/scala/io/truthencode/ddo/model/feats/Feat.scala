@@ -87,10 +87,9 @@ object Feat extends Enum[Feat] with FeatSearchPrefix with LazyLogging {
   }
 
   def fnOptionsToRaceSequence(req: RaceRequisite, options: RequirementOption*): Seq[(Race, Int)] = {
-    val seqOfSeq = for
-      opt <- options
-
-    yield fnOptionToRequisite(req = req, opt = opt)
+    val seqOfSeq =
+      for opt <- options
+      yield fnOptionToRequisite(req = req, opt = opt)
     seqOfSeq.flatten
   }
 

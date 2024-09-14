@@ -27,13 +27,14 @@ object SlowTest extends Tag("io.truthencode.ddo.tags.SlowTest")
 class QueryPermanentItemIT extends AnyFunSpec with Matchers with MockitoSugar with LazyLogging {
   val lblWeapon: String = "Weapon"
   val msgMissing: String = "Missing!!!"
-  protected def fixture: Object {val typeList: Map[String, String]; val defaultItemId: String} = new {
-    val typeList = {
-      val idWeapon = "Drow Scimitar of the Weapon Master"
-      Map(lblWeapon -> idWeapon)
+  protected def fixture: Object { val typeList: Map[String, String]; val defaultItemId: String } =
+    new {
+      val typeList = {
+        val idWeapon = "Drow Scimitar of the Weapon Master"
+        Map(lblWeapon -> idWeapon)
+      }
+      val defaultItemId = "Epic Elyd Edge"
     }
-    val defaultItemId = "Epic Elyd Edge"
-  }
 
   describe("A named weapon") {
 

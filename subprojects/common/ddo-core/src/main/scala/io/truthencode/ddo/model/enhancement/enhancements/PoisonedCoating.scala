@@ -19,30 +19,34 @@ package io.truthencode.ddo.model.enhancement.enhancements
 
 import io.truthencode.ddo.model.classes.HeroicCharacterClass
 import io.truthencode.ddo.model.classes.HeroicCharacterClass.Alchemist
-import io.truthencode.ddo.model.enhancement.enhancements.classbased.{VileChemistCore, VileChemistTierOne}
+import io.truthencode.ddo.model.enhancement.enhancements.classbased.{
+  VileChemistCore,
+  VileChemistTierOne
+}
 import io.truthencode.ddo.support.points.SpendablePoints
 import io.truthencode.ddo.support.requisite.RequiresAllOfClass
 import io.truthencode.ddo.support.tree.TreeLike
 
-trait PoisonedCoating extends VileChemistTierOne with ClassEnhancementImpl  {
+trait PoisonedCoating extends VileChemistTierOne with ClassEnhancementImpl {
   // Will Save +1
   // override val tree: ClassTrees = ClassTrees.Apothecary
-  override lazy val description: Option[String] = Some("""Poisoned Coating: Imbue Toggle: While active, simple weapons deal an additional 1d6 Poison damage on hit. This damage scales with Spell Power.
-                                                         |You also gain +1 bonus Imbue Dice every 3 Alchemist levels (at 6, 9, 12, 15 and 18).
-                                                         |
-                                                         |Passive: While your Reaction is Orchidium, you gain +5 Poison Spell Power, 2% Dodge, and 2% Dodge Cap.
-                                                         |
-                                                         |Note: Mutually exclusive with all other Imbues.
-                                                         |Note: It doesn't state it clearly, but this does include an additional die at Lv. 3.""".stripMargin)
+  override lazy val description: Option[String] = Some(
+    """Poisoned Coating: Imbue Toggle: While active, simple weapons deal an additional 1d6 Poison damage on hit. This damage scales with Spell Power.
+      |You also gain +1 bonus Imbue Dice every 3 Alchemist levels (at 6, 9, 12, 15 and 18).
+      |
+      |Passive: While your Reaction is Orchidium, you gain +5 Poison Spell Power, 2% Dodge, and 2% Dodge Cap.
+      |
+      |Note: Mutually exclusive with all other Imbues.
+      |Note: It doesn't state it clearly, but this does include an additional die at Lv. 3.""".stripMargin)
 
   /**
    * Some enhancements can be taken multiple times (generally up to three)
    */
   override val ranks: Int = 1
 
-    override def allOfClass: Seq[(HeroicCharacterClass, Int)] = Seq((Alchemist,3))
+  override def allOfClass: Seq[(HeroicCharacterClass, Int)] = Seq((Alchemist, 3))
 
-    override def apCostPerRank: Int = 1
+  override def apCostPerRank: Int = 1
 
   // override def allOfClass: Seq[(HeroicCharacterClass, Int)] = Seq((Alchemist, 1))
 

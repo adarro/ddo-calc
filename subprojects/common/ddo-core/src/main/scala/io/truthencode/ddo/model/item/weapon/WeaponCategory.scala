@@ -155,36 +155,30 @@ object WeaponCategory extends Enum[WeaponCategory] {
   }
 
   def exoticWeapons: Seq[WeaponCategory & ExoticWeapon] = {
-    for
-      w <- WeaponCategory.values.filter { x =>
+    for w <- WeaponCategory.values.filter { x =>
         x match {
           case _: ExoticWeapon => true
           case _ => false
         }
-      }
-    yield w.asInstanceOf[WeaponCategory & ExoticWeapon]
+      } yield w.asInstanceOf[WeaponCategory & ExoticWeapon]
   }
 
   def martialWeapons: Seq[WeaponCategory & MartialWeapon] = {
-    for
-      w <- WeaponCategory.values.filter { x =>
+    for w <- WeaponCategory.values.filter { x =>
         x match {
           case _: MartialWeapon => true
           case _ => false
         }
-      }
-    yield w.asInstanceOf[WeaponCategory & MartialWeapon]
+      } yield w.asInstanceOf[WeaponCategory & MartialWeapon]
   }
 
   def simpleWeapons: Seq[WeaponCategory & SimpleWeapon] = {
-    for
-      w <- WeaponCategory.values.filter { x =>
+    for w <- WeaponCategory.values.filter { x =>
         x match {
           case _: SimpleWeapon => true
           case _ => false
         }
-      }
-    yield w.asInstanceOf[WeaponCategory & SimpleWeapon]
+      } yield w.asInstanceOf[WeaponCategory & SimpleWeapon]
   }
 
   case object BastardSword extends WeaponCategory with ExoticWeapon with MeleeDamage with Slashing

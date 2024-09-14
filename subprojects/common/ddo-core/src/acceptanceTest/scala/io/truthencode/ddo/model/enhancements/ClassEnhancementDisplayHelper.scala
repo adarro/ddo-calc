@@ -32,8 +32,8 @@ trait ClassEnhancementDisplayHelper extends EnhancementDisplayHelper with LazyLo
   lazy val mappedValues: Map[String, ClassEnhancementInfo] = {
 
     val ee = ClassEnhancement.values.collect {
-      case x: (ClassEnhancement & Tier & ClassBasedEnhancements & PointInTreeRequisite & PointsAvailableRequisite & RequiresActionPoints)
-          if x.tree == tree =>
+      case x: (ClassEnhancement & Tier & ClassBasedEnhancements & PointInTreeRequisite &
+            PointsAvailableRequisite & RequiresActionPoints) if x.tree == tree =>
         x
     }
     logger.info(s"Display Helper loaded ${ee.size} values for ${tree.displayText}")

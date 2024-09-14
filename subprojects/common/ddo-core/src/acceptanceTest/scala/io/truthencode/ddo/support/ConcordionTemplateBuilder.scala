@@ -101,7 +101,7 @@ class ConcordionTemplateBuilder extends LazyLogging {
     val ciValues = source.values.map { x => x.toString.randomCase }.asJava
 
     val sLen = 10
-    val invalid = (for  x <- 0 to 3  yield randomAlphaString(sLen).randomCase).asJava
+    val invalid = (for x <- 0 to 3 yield randomAlphaString(sLen).randomCase).asJava
     val singleValue =
       source.values.headOption.map { h => h.toString }
         .getOrElse("Please specify at least one value for this enum")

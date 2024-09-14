@@ -42,9 +42,8 @@ abstract protected class BaseSpellBuilder[T <: Spell] protected (
   elements: Set[SpellElement]
 ) {
 
-  type CompleteSpell = EmptySpell
-    & WithName & WithSpellInfo & WithSpellEffects & WithCasterClass & WithTarget
-    & WithSpellSavingThrow & WithSpellPoints & WithComponents & WithLevelCap
+  type CompleteSpell = EmptySpell & WithName & WithSpellInfo & WithSpellEffects & WithCasterClass &
+    WithTarget & WithSpellSavingThrow & WithSpellPoints & WithComponents & WithLevelCap
   //  with CoolDown
 
   def addName(name: String): BaseSpellBuilder[T & WithName]

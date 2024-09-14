@@ -53,7 +53,7 @@ class FeatureTest extends AnyFunSpec with Matchers with MockitoSugar with LazyLo
     yield (feat, feature)
   }
 
-  def fixture: Object {val sourceInfo: SourceInfo} = new {
+  def fixture: Object { val sourceInfo: SourceInfo } = new {
     val sourceInfo: SourceInfo = SourceInfo("TestContext", this)
   }
 

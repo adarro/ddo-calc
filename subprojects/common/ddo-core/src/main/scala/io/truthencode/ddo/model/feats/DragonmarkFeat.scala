@@ -34,10 +34,9 @@ import scala.collection.immutable
  * Created by adarr on 3/26/2017.
  */
 sealed trait DragonmarkFeat
-  extends Feat with TriggeredActivationImpl with FriendlyDisplay with SubFeatInformation with FeatMatcher with FeatRequisiteImpl
-  with FeaturesImpl {
+  extends Feat with TriggeredActivationImpl with FriendlyDisplay with SubFeatInformation
+  with FeatMatcher with FeatRequisiteImpl with FeaturesImpl {
   self: FeatType & Requisite & RequisiteType & Inclusion & Features & TriggerEvent =>
-
 
   val matchFeat: PartialFunction[Feat, DragonmarkFeat] = { case x: DragonmarkFeat =>
     x
@@ -108,8 +107,8 @@ object DragonmarkFeat extends Enum[DragonmarkFeat] with FeatSearchPrefix {
    * clouds.
    */
   case object LeastDragonmarkOfStorm
-    extends DragonmarkFeat with TriggeredActivationImpl with RaceRequisiteImpl with RequiresAllOfRace with ActiveFeat
-    with OnSpellLikeAbilityEvent with Passive {
+    extends DragonmarkFeat with TriggeredActivationImpl with RaceRequisiteImpl
+    with RequiresAllOfRace with ActiveFeat with OnSpellLikeAbilityEvent with Passive {
     override def allOfRace: Seq[(Race, Int)] = List((HalfElf, 1))
 
     override def coolDown: Option[Duration] = Some(UnknownDuration)

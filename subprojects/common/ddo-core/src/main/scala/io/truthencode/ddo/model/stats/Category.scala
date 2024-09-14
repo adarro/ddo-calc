@@ -120,5 +120,3 @@ trait Proficiency extends Category
 trait Recovery extends Category
 
 // Undead related
-
-

@@ -49,7 +49,7 @@ object Warehouse extends LazyLogging {
   protected[web] def byExploding(e: Element): List[String] = {
     e >?> elements(HtmlTag.ListItem) match {
       case Some(_) =>
-        for  ele <- e >> elementList(HtmlTag.ListItem)  yield ele.text
+        for ele <- e >> elementList(HtmlTag.ListItem) yield ele.text
       case _ => Nil
     }
   }

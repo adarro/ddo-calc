@@ -56,7 +56,7 @@ package object support extends LazyLogging {
 
     // succinctly pooled originally from SO [[http://stackoverflow.com/a/14740340/400729]]
     implicit class Crossable[X](xs: Iterable[X]) {
-      def cross[Y](ys: Iterable[Y]): Iterable[(X, Y)] = for  x <- xs; y <- ys  yield (x, y)
+      def cross[Y](ys: Iterable[Y]): Iterable[(X, Y)] = for x <- xs; y <- ys yield (x, y)
     }
 
     implicit class Joinable[X](xs: Seq[X]) {
@@ -210,11 +210,9 @@ package object support extends LazyLogging {
       def lowerCaseNoise: String = {
         val noise = config.getStringList("io.truthencode.ddo.support.noiseWords")
         val words = s.splitByCase
-        (for
-          w <- words.split(Space).map { x =>
+        (for w <- words.split(Space).map { x =>
             if noise.contains(x) then x.toLowerCase else x
-          }
-        yield w + Space).mkString.trim
+          } yield w + Space).mkString.trim
       }
 
       /**

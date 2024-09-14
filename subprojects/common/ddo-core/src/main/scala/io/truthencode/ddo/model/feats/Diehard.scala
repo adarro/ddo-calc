@@ -40,8 +40,7 @@ protected[feats] trait Diehard
   self: GeneralFeat =>
   override protected lazy val triggerOn: Seq[TriggerEvent] = Seq(TriggerEvent.OnUnconscious)
   override protected lazy val triggerOff: Seq[TriggerEvent] = Seq(TriggerEvent.Never)
-  override protected lazy val unconsciousRecoveryCategories
-    : Seq[effect.EffectCategories.Value] =
+  override protected lazy val unconsciousRecoveryCategories: Seq[effect.EffectCategories.Value] =
     Seq(effect.EffectCategories.Ability, effect.EffectCategories.Recovery)
   override val autoRecoveryBonus: BonusType = BonusType.Feat
   override val isAutoRecovery: Boolean = true

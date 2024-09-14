@@ -74,7 +74,7 @@ class EffectPartTest
       val eut = GeneralFeat.Dodge
       List(eut).foreach { thingWithFeature =>
         thingWithFeature.features.foreach { f =>
-          f.name shouldNot equal ("Unknown")
+          f.name shouldNot equal("Unknown")
           logger.info(printFeature(f))
         }
       }

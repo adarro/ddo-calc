@@ -27,10 +27,9 @@ import io.truthencode.ddo.model.meta.{MagicDamageType, PhysicalDamageType}
 trait Damage
 
 object Damage {
-  def damageTypes: Seq[EnumEntry
-    & Damage & NoDefault[
-      ? >: PhysicalDamageType & MagicDamageType <: EnumEntry & Damage & NoDefault[
-        ? >: PhysicalDamageType & MagicDamageType]]] = {
+  def damageTypes: Seq[EnumEntry & Damage &
+    NoDefault[? >: PhysicalDamageType & MagicDamageType <: EnumEntry & Damage &
+      NoDefault[? >: PhysicalDamageType & MagicDamageType]]] = {
     MagicDamageType.values ++ PhysicalDamageType.values
   }
 }

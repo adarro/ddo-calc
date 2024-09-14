@@ -54,7 +54,7 @@ class FeaturesTest extends AnyFunSpec with Matchers with LazyLogging {
       //      val fm = Feat.featureMap
       //      fs.size shouldEqual fm.size
       logger.info("\n\n *************  Entity (Filtered) Features *************\n")
-      fs.filter(_._1.entryName == GeneralFeat.Alertness.entryName ).foreach { m =>
+      fs.filter(_._1.entryName == GeneralFeat.Alertness.entryName).foreach { m =>
         {
           val eId = m._1.entryName
           val fId = m._2.name

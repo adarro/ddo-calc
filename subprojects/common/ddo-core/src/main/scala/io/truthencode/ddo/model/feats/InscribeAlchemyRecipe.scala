@@ -21,7 +21,12 @@ import io.truthencode.ddo.activation.{ActivationTypeImpl, AtWillEvent, TriggerIm
 import io.truthencode.ddo.model.classes.HeroicCharacterClass
 import io.truthencode.ddo.model.classes.HeroicCharacterClass.Alchemist
 import io.truthencode.ddo.model.misc.DefaultCoolDown
-import io.truthencode.ddo.support.requisite.{ClassRequisiteImpl, FeatRequisiteImpl, GrantsToClass, RequiresAllOfClass}
+import io.truthencode.ddo.support.requisite.{
+  ClassRequisiteImpl,
+  FeatRequisiteImpl,
+  GrantsToClass,
+  RequiresAllOfClass
+}
 
 /**
  * You are able to copy alchemical formulae from Recipes into your spellbook. This action will
@@ -31,8 +36,9 @@ import io.truthencode.ddo.support.requisite.{ClassRequisiteImpl, FeatRequisiteIm
  *   [[https://ddowiki.com/page/Inscribe_Alchemy_Recipe]]
  */
 protected[feats] trait InscribeAlchemyRecipe
-  extends FeatRequisiteImpl with ClassRequisiteImpl with TriggerImpl with GrantsToClass with RequiresAllOfClass
-  with ActivationTypeImpl with ActiveFeat with AtWillEvent with DefaultCoolDown {
+  extends FeatRequisiteImpl with ClassRequisiteImpl with TriggerImpl with GrantsToClass
+  with RequiresAllOfClass with ActivationTypeImpl with ActiveFeat with AtWillEvent
+  with DefaultCoolDown {
   private val cls = (Alchemist, 1)
   abstract override def grantToClass: Seq[(HeroicCharacterClass, Int)] = super.grantToClass :+ cls
 

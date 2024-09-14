@@ -28,7 +28,8 @@ import io.truthencode.ddo.support.requisite.{FeatRequisiteImpl, RequiresBaB}
  * Base Attack Bonus +1
  */
 trait WeaponFocusBase
-  extends FeatRequisiteImpl with BonusSelectableToClassFeatImpl with Passive with RequiresBaB with FighterBonusFeat {
+  extends FeatRequisiteImpl with BonusSelectableToClassFeatImpl with Passive with RequiresBaB
+  with FighterBonusFeat {
 
   self: GeneralFeat =>
 

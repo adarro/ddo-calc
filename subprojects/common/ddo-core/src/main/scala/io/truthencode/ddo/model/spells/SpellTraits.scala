@@ -214,7 +214,7 @@ object Spell extends Enum[Spell] {
     fn: String => Option[Spell],
     names: String*
   ): Seq[String => Option[Spell]] = {
-    for  n <- names  yield (id: String) => {
+    for n <- names yield (id: String) => {
       fn(n)
     }
 

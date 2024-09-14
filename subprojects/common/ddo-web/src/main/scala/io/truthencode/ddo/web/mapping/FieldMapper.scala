@@ -71,10 +71,10 @@ object FieldMapper extends LazyLogging {
      */
     case object Jewelery extends ItemType(Left("Item Type"))
 
-      /**
-       * Scroll
-       */
-    case object Scroll extends ItemType(Right(List("No UMD check for","Spell","Caster Level")))
+    /**
+     * Scroll
+     */
+    case object Scroll extends ItemType(Right(List("No UMD check for", "Spell", "Caster Level")))
 
   }
 
@@ -95,7 +95,6 @@ object FieldMapper extends LazyLogging {
     FieldMapper.ItemType.values.find { x =>
       words.intersect(x.wordList.toSet).nonEmpty
     }
-
 
   /**
    * Extracts weapon information from the DDOWiki site.
@@ -176,7 +175,7 @@ object FieldMapper extends LazyLogging {
    *   http://ddowiki.com/page/Item:Sun_Blade
    */
   def wikiToItem[T <: Item](source: Map[String, Any])(implicit
-                                                               strategy: WordMatchStrategy): Option[Item] = {
+    strategy: WordMatchStrategy): Option[Item] = {
 
     val keys = source.keySet
     val types = fieldType(keys)

@@ -30,8 +30,7 @@ trait Searchable[T <: EnumEntry & SearchPattern] extends Enum[T] with LazyLoggin
   }
 
   def tryFindByPattern(name: String, usePattern: Option[String] = None): Try[T] = {
-    if usePattern.isEmpty then
-      logger.warn(s"Using default pattern matching for $name")
+    if usePattern.isEmpty then logger.warn(s"Using default pattern matching for $name")
     val cls = getClass.getSimpleName
     val sp = usePattern.getOrElse("")
     val targetPattern = usePattern match {
@@ -43,9 +42,8 @@ trait Searchable[T <: EnumEntry & SearchPattern] extends Enum[T] with LazyLoggin
 //        logger.debug(msg)
 //    }
 
-
     val rslt = values.filter { v =>
-   // DEBUG   logger.debug(s"sp => tp ${v.searchPattern()} => $targetPattern")
+      // DEBUG   logger.debug(s"sp => tp ${v.searchPattern()} => $targetPattern")
       v.searchPattern() == targetPattern
     }
 //    val rslt = values.flatMap { v =>
@@ -69,10 +67,8 @@ trait Searchable[T <: EnumEntry & SearchPattern] extends Enum[T] with LazyLoggin
 //          None
 //      }
 //    }
-    if rslt.nonEmpty then
-      Success(rslt.head)
-    else
-      Failure(new NoSuchElementException(s"Could not find element with name $name"))
+    if rslt.nonEmpty then Success(rslt.head)
+    else Failure(new NoSuchElementException(s"Could not find element with name $name"))
 
 //        .flatten match {
 //      case Some(x) =>

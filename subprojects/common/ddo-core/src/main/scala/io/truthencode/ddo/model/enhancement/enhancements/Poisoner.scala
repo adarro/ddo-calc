@@ -17,14 +17,18 @@
  */
 package io.truthencode.ddo.model.enhancement.enhancements
 
-import io.truthencode.ddo.model.enhancement.enhancements.classbased.{ApothecaryCore, VileChemistCore}
+import io.truthencode.ddo.model.enhancement.enhancements.classbased.{
+  ApothecaryCore,
+  VileChemistCore
+}
 import io.truthencode.ddo.support.points.SpendablePoints
 import io.truthencode.ddo.support.tree.TreeLike
 
 trait Poisoner extends VileChemistCore with ClassEnhancementImpl {
   // Will Save +1
   // override val tree: ClassTrees = ClassTrees.Apothecary
-  override lazy val description: Option[String] = Some("+2 to saves vs. Poisons, +2 to saves vs. Diseases.")
+  override lazy val description: Option[String] = Some(
+    "+2 to saves vs. Poisons, +2 to saves vs. Diseases.")
 
   /**
    * Some enhancements can be taken multiple times (generally up to three)

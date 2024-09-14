@@ -36,8 +36,8 @@ import java.time.Duration
  *   issue.
  */
 protected[feats] trait Attack
-  extends FeatRequisiteImpl with TriggeredActivationImpl with ActiveFeat with FreeFeat with Stance with FeaturesImpl
-  with GrantAbilityFeature {
+  extends FeatRequisiteImpl with TriggeredActivationImpl with ActiveFeat with FreeFeat with Stance
+  with FeaturesImpl with GrantAbilityFeature {
   self: GeneralFeat =>
   override lazy val grantedAbility: ActiveAbilities = ActiveAbilities.Attack
   override protected lazy val triggerOn: Seq[TriggerEvent] = Seq(TriggerEvent.OnToggle)

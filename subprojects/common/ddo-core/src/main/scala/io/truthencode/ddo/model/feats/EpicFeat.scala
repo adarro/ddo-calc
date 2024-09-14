@@ -55,7 +55,7 @@ object EpicFeat extends Enum[EpicFeat] with FeatSearchPrefix with FeatMatcher {
   }
 
   def epicSpellFocusAny: immutable.IndexedSeq[EpicSpellFocus] =
-    for  x <- School.values  yield EpicSpellFocus(x)
+    for x <- School.values yield EpicSpellFocus(x)
 
   override def values: immutable.IndexedSeq[EpicFeat] = findValues
 

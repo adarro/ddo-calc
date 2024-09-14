@@ -17,7 +17,6 @@
  */
 package io.truthencode.ddo.enchantment
 
-
 import io.truthencode.ddo.enchantment.Modifier._
 import io.truthencode.ddo.model.effect._
 
@@ -31,7 +30,7 @@ object Guard extends ((Guards, Option[GuardModifier]) => Guard) {
   def apply(guard: Guards, affixes: Option[GuardModifier] = None): Guard = {
     val o = create(guard, affixes)
     // Enter Validation here
-    
+
     o
   }
 

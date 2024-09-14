@@ -33,7 +33,7 @@ class DDoWikiScrapingIT extends AnyFunSpec with Matchers with MockitoSugar with 
   lazy val multiLevelPath = ""
   val browser = JsoupBrowser()
 
-  private def fixture: Object {val nestedListDoc: Document; val simpleListDoc: Document} = new {
+  private def fixture: Object { val nestedListDoc: Document; val simpleListDoc: Document } = new {
 
     // Drow X of the Weapon Master
     val nestedListDoc: Document = loadLocalTestHtml(nestedPath)

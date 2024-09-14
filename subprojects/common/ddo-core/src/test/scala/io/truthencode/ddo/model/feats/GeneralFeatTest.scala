@@ -52,7 +52,6 @@ class GeneralFeatTest extends AnyFunSpec with Matchers with LazyLogging {
       val f: Seq[(GeneralFeat, Feature[?])] = for
         feat <- GeneralFeat.values
         features <- feat.features
-
       yield feat -> features
 
       f.foreach { ff =>

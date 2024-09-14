@@ -29,8 +29,8 @@ import io.truthencode.ddo.support.requisite.{FeatRequisiteImpl, GrantsToClass, R
  * inscribe artificer spells from scrolls into your spellbook. This action will destroy the scroll.
  */
 trait InscribeArtificerScroll
-  extends FeatRequisiteImpl with TriggeredActivationImpl with ActiveFeat with AtWillEvent with RequiresAllOfClass
-  with GrantsToClass with DefaultCasterCoolDown {
+  extends FeatRequisiteImpl with TriggeredActivationImpl with ActiveFeat with AtWillEvent
+  with RequiresAllOfClass with GrantsToClass with DefaultCasterCoolDown {
   override def allOfClass: Seq[(HeroicCharacterClass, Int)] =
     List((Artificer, 1))
   override def grantToClass: Seq[(HeroicCharacterClass, Int)] =

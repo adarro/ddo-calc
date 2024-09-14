@@ -38,7 +38,8 @@ trait Emoji extends Flexmark {
 
   /**
    * see [[https://github.com/vsch/flexmark-java/wiki/Extensions#emoji]]
-   * @param dataSet used to configure the extension
+   * @param dataSet
+   *   used to configure the extension
    * @return
    *   Mutated dataset with specified default options
    */

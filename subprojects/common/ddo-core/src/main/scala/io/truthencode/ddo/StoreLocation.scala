@@ -141,14 +141,12 @@ object StoreLocation extends Enum[StoreLocation] with BitSupport {
     case x: GuildAugment =>
       x
   }
-  val fnFiligrees: PartialFunction[StoreLocation, StoreLocation & Filigree] = {
-    case x: Filigree =>
-      x
+  val fnFiligrees: PartialFunction[StoreLocation, StoreLocation & Filigree] = { case x: Filigree =>
+    x
   }
 
   protected def generateAugmentValues: immutable.Seq[ItemEmbed & AugmentLocation] = {
-    for
-      aug <- AugmentLocation.values
+    for aug <- AugmentLocation.values
     yield aug match {
       case x: ChromaticAugmentLocation => ChromaticAugmentLocationSlot(x)
       case x: CelestialAugmentLocation => CelestialAugmentLocationSlot(x)
@@ -158,7 +156,7 @@ object StoreLocation extends Enum[StoreLocation] with BitSupport {
   }
 
   protected def generateEquipmentSlot: immutable.Seq[EquippedLocation] = {
-    for  s <- WearLocation.values  yield EquippedLocation(s)
+    for s <- WearLocation.values yield EquippedLocation(s)
   }
 
   case class ChromaticAugmentLocationSlot(generalAugment: ChromaticAugmentLocation)
@@ -177,35 +175,35 @@ object StoreLocation extends Enum[StoreLocation] with BitSupport {
     override def displaySource: String = wearLocation.displaySource
   }
 
-  case object Equipped extends Inventory,StoreLocation
+  case object Equipped extends Inventory, StoreLocation
 
   /**
    * Holds crafting ingredients and items such as heart seeds.
    */
-  case object IngredientBag extends Bag,StoreLocation
+  case object IngredientBag extends Bag, StoreLocation
 
   /**
    * Stores collectables and turn-ins that can be traded for equipment / potions etc
    */
-  case object CollectableBag extends Bag,StoreLocation
+  case object CollectableBag extends Bag, StoreLocation
 
   /**
    * Stores soul gems which are mainly used for crafting bane items
    */
-  case object SoulGemBag extends Bag,StoreLocation
+  case object SoulGemBag extends Bag, StoreLocation
 
   /**
    * Stores Mount certificates
    * @note
    *   (Might be obsolete as of Update 49)
    */
-  case object MountBag extends Bag,StoreLocation
+  case object MountBag extends Bag, StoreLocation
 
   /**
    * Stores Item augments and filigrees when can be slotted into equipment augment slots and
    * sentient items.
    */
-  case object AugmentBag extends Bag,StoreLocation
+  case object AugmentBag extends Bag, StoreLocation
 
   case object Quiver extends StoreLocation
 
@@ -213,5 +211,5 @@ object StoreLocation extends Enum[StoreLocation] with BitSupport {
    * Item can be stored in Active Inventory. This should be true by default for most object unless
    * they are some invisible quest item or effect.
    */
-  case object ActiveInventory extends Inventory,StoreLocation
+  case object ActiveInventory extends Inventory, StoreLocation
 }

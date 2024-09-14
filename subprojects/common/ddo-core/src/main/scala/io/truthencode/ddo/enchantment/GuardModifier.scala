@@ -23,7 +23,6 @@ import io.truthencode.ddo.model.effect.{Prefix, SecondaryPrefix, Suffix}
 import io.truthencode.ddo.support.RomanNumeral.fromRoman
 import zio.prelude.Validation
 
-
 import scala.language.postfixOps
 
 /**
@@ -59,7 +58,7 @@ object GuardModifier extends LazyLogging {
       } else {
         zio.prelude.Validation.succeed(prefix)
       }
-    
+
 //      implicit val guardModifierValidator: TransformedValidator[GuardModifier] =
 //          validator[GuardModifier] { g => {
 //              // Guards can have nothing, a prefix or a suffix
@@ -84,7 +83,7 @@ object GuardModifier extends LazyLogging {
 //                          .and(allowedRoman(g.suffix).is(notEmpty))))
 //
 //          }
-          }
+    }
   }
 
   def apply(parameters: Parameters): GuardModifier =
@@ -108,7 +107,7 @@ object GuardModifier extends LazyLogging {
    * Restricts Modifiers to allowed current modifiers.
    */
   protected[enchantment] def filterModifiers(mod: Option[String]): Option[String] =
-    (for  m <- mod  yield {
+    (for m <- mod yield {
       allowedModifiers.collectFirst({
         case x: String if x.equals(m) => x
       })

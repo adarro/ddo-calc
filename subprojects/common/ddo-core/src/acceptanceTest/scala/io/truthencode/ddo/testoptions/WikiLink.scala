@@ -38,14 +38,15 @@ trait WikiLink extends Flexmark {
 
   /**
    * see [[https://github.com/vsch/flexmark-java/wiki/Extensions#emoji]]
-   * @param dataSet used to configure the extension
-   * @return the configured dataSet
-   *   Mutated dataset with specified default options
+   * @param dataSet
+   *   used to configure the extension
+   * @return
+   *   the configured dataSet Mutated dataset with specified default options
    */
-  private def wikiLinkTaskOptions()(implicit
-    dataSet: MutableDataSet): () => MutableDataSet = { () =>
-    dataSet
-      .set(WikiLinkExtension.IMAGE_LINKS, Boolean.box(true))
+  private def wikiLinkTaskOptions()(implicit dataSet: MutableDataSet): () => MutableDataSet = {
+    () =>
+      dataSet
+        .set(WikiLinkExtension.IMAGE_LINKS, Boolean.box(true))
 
   }
 

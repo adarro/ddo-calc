@@ -30,7 +30,7 @@ trait ArtificerBonusFeat extends SelectableToClass with BonusSelectableToClassFe
 
   abstract override def bonusSelectableToClass: Seq[(HeroicCharacterClass, Int)] = {
 
-    val cc: Set[(HeroicCharacterClass, Int)] = for  l <- levels  yield (myCharClass, l)
+    val cc: Set[(HeroicCharacterClass, Int)] = for l <- levels yield (myCharClass, l)
     super.bonusSelectableToClass ++ cc.toSeq
 
   }

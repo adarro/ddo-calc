@@ -47,7 +47,7 @@ object EpicCharacterClass extends Enum[EpicCharacterClass] {
 }
 
 /**
-* Represents an Epic level.
+ * Represents an Epic level.
  * @param level
  */
 case class EpicLevel(level: Int) extends EpicCharacterClass with FreeToPlayFeature {

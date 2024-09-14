@@ -108,14 +108,14 @@ object AugmentLocation extends Enum[AugmentLocation] with BitSupport {
    */
   case object ColorlessAugmentSlot extends ChromaticAugmentLocation
 
-    /**
-     * Can be slotted with a Lunar Augment
-     */
+  /**
+   * Can be slotted with a Lunar Augment
+   */
   case object MoonAugmentSlot extends CelestialAugmentLocation
 
-    /**
-     * Can be slotted with a Solar Augment
-     */
+  /**
+   * Can be slotted with a Solar Augment
+   */
   case object SunAugmentSlot extends CelestialAugmentLocation
 
   /**

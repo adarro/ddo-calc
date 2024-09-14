@@ -38,7 +38,7 @@ class BindingTest extends AnyFunSpec with Matchers with MockitoSugar with LazyLo
     "Bound To Account"
   )
   final val numCharacters = 10
-  final val randWords = for  _ <- 1 to 5  yield randomAlphanumericString(numCharacters)
+  final val randWords = for _ <- 1 to 5 yield randomAlphanumericString(numCharacters)
   final val bindMap = possibleText.map { words =>
     (
       words,

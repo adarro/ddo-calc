@@ -33,8 +33,7 @@ import io.truthencode.ddo.support.requisite.{
  * @todo
  *   Weapon Focus Weapon Specialization in same Weapon Type
  */
-protected[feats] trait GreaterWeaponSpecializationBase
-  extends WeaponSpecializationBase {
+protected[feats] trait GreaterWeaponSpecializationBase extends WeaponSpecializationBase {
   self: GeneralFeat & RequiresAllOfFeat =>
 
   override def allOfClass: Seq[(HeroicCharacterClass, Int)] =

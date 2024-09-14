@@ -84,7 +84,7 @@ object GeneralFeat
    * @return
    */
   def improvedCriticalAny: Seq[ImprovedCritical] = {
-    for  wc <- WeaponClass.values  yield ImprovedCritical(wc)
+    for wc <- WeaponClass.values yield ImprovedCritical(wc)
   }
 
   /**
@@ -93,30 +93,30 @@ object GeneralFeat
    * @return
    */
   def weaponFocusAny: Seq[WeaponFocus] = {
-    for  wc <- WeaponClass.values  yield WeaponFocus(wc)
+    for wc <- WeaponClass.values yield WeaponFocus(wc)
   }
 
   def greaterWeaponFocusAny: Seq[GreaterWeaponFocus] = {
-    for  wc <- WeaponClass.values  yield GreaterWeaponFocus(wc)
+    for wc <- WeaponClass.values yield GreaterWeaponFocus(wc)
   }
 
   def superiorWeaponFocusAny: Seq[SuperiorWeaponFocus] = {
-    for  wc <- WeaponClass.values  yield SuperiorWeaponFocus(wc)
+    for wc <- WeaponClass.values yield SuperiorWeaponFocus(wc)
   }
 
   def weaponSpecializationAny: Seq[WeaponSpecialization] = {
-    for  wc <- WeaponClass.values  yield WeaponSpecialization(wc)
+    for wc <- WeaponClass.values yield WeaponSpecialization(wc)
   }
 
   def greaterWeaponSpecializationAny: Seq[GreaterWeaponSpecialization] = {
-    for  wc <- WeaponClass.values  yield GreaterWeaponSpecialization(wc)
+    for wc <- WeaponClass.values yield GreaterWeaponSpecialization(wc)
   }
 
   def spellFocusAny: Seq[SpellFocus] =
-    for  x <- School.values  yield SpellFocus(x)
+    for x <- School.values yield SpellFocus(x)
 
   def greaterSpellFocusAny: Seq[GreaterSpellFocus] =
-    for  x <- School.values  yield GreaterSpellFocus(x)
+    for x <- School.values yield GreaterSpellFocus(x)
 
   def simpleWeaponProficiencies: Seq[SimpleWeaponProficiency] =
     for
@@ -213,8 +213,7 @@ object GeneralFeat
   }
 
   def skillFocusAny: Seq[SkillFocus] =
-    for
-      x <- Skill.values
+    for x <- Skill.values
     yield SkillFocus(x)
 
   case class ImprovedCritical(weaponClass: WeaponClass)
@@ -462,7 +461,7 @@ object GeneralFeat
 
   /**
    * The feat provides proficiency with basic weapons
-
+   *
    * @param weapon
    *   The Simple Weapon Category (i.e. Short Sword, Dagger, Light Crossbow)
    * @note
@@ -482,8 +481,8 @@ object GeneralFeat
     with WeaponProficiencyFeature {
     override protected lazy val triggerOn: Seq[TriggerEvent] = Seq(TriggerEvent.Passive)
     override protected lazy val triggerOff: Seq[TriggerEvent] = Seq(TriggerEvent.Never)
-    override protected lazy val weaponProficiencyCategories
-      : Seq[effect.EffectCategories.Value] = Seq(effect.EffectCategories.GeneralCombat)
+    override protected lazy val weaponProficiencyCategories: Seq[effect.EffectCategories.Value] =
+      Seq(effect.EffectCategories.GeneralCombat)
     override protected lazy val proficiencyType: BonusType = BonusType.Feat
     override protected val proficiencyAmount: Seq[WeaponCategory] = weapon
 
@@ -513,8 +512,8 @@ object GeneralFeat
     with SubFeat with FeaturesImpl with WeaponProficiencyFeature {
     override protected lazy val triggerOn: Seq[TriggerEvent] = Seq(TriggerEvent.Passive)
     override protected lazy val triggerOff: Seq[TriggerEvent] = Seq(TriggerEvent.Never)
-    override protected lazy val weaponProficiencyCategories
-      : Seq[effect.EffectCategories.Value] = Seq(effect.EffectCategories.GeneralCombat)
+    override protected lazy val weaponProficiencyCategories: Seq[effect.EffectCategories.Value] =
+      Seq(effect.EffectCategories.GeneralCombat)
 
     override protected lazy val proficiencyType: BonusType = BonusType.Feat
     override protected val proficiencyAmount: Seq[WeaponCategory] = weapon
@@ -545,8 +544,8 @@ object GeneralFeat
     with SubFeat with FeaturesImpl with WeaponProficiencyFeature {
     override protected lazy val triggerOn: Seq[TriggerEvent] = Seq(TriggerEvent.Passive)
     override protected lazy val triggerOff: Seq[TriggerEvent] = Seq(TriggerEvent.Never)
-    override protected lazy val weaponProficiencyCategories
-      : Seq[effect.EffectCategories.Value] = Seq(effect.EffectCategories.GeneralCombat)
+    override protected lazy val weaponProficiencyCategories: Seq[effect.EffectCategories.Value] =
+      Seq(effect.EffectCategories.GeneralCombat)
     override protected lazy val proficiencyType: BonusType = BonusType.Feat
     override protected val proficiencyAmount: Seq[WeaponCategory] = weapon
 
@@ -661,7 +660,7 @@ object GeneralFeat
   case object TenThousandStars extends GeneralFeat with TenThousandStars
 
   case object PowerAttack extends GeneralFeat with PowerAttack
-  
+
   case object ImprovedPreciseShot extends GeneralFeat with ImprovedPreciseShot
 
   case object Precision extends GeneralFeat with Precision

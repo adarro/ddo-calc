@@ -71,7 +71,6 @@ object EnumSupport {
       c <- Try(Class.forName(mangle))
       c2 <- Try(c.getField("MODULE$"))
       c3 <- Try(c2.get(c2))
-
     yield c3
     y match {
       case Success(x) =>

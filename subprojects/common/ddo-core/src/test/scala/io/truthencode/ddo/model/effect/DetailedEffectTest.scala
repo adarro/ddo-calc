@@ -90,7 +90,8 @@ class DetailedEffectTest extends AnyFunSpec with Matchers with LazyLogging {
     }
 
     they("should filter out unknown triggers") {
-      val (someValidTrig, result)  = duplicator(validId, someDescriptions, someValidTriggerOn, validTriggerOff, validBonusType)
+      val (someValidTrig, result) =
+        duplicator(validId, someDescriptions, someValidTriggerOn, validTriggerOff, validBonusType)
       result.isSuccess shouldBe true
       // objects will be different because invalid triggers are filtered out
 //      result.toOption shouldBe Some(someValidTrig)

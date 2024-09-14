@@ -27,8 +27,7 @@ import io.truthencode.ddo.support.requisite.*
  * bonus to AC and saving throws to all allies within range.
  */
 protected[feats] trait AuraOfGood
-  extends FeatRequisiteImpl  with Passive with GrantsToClass
-  with RequiresAllOfClass {
+  extends FeatRequisiteImpl with Passive with GrantsToClass with RequiresAllOfClass {
   self: ClassFeat =>
   override def grantToClass: Seq[(HeroicCharacterClass, Int)] =
     List((Paladin, 1))

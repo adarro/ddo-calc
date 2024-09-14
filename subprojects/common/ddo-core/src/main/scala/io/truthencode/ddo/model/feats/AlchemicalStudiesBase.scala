@@ -28,8 +28,8 @@ import io.truthencode.ddo.support.requisite._
  * Sword and Dwarven Waraxe Base Attack Bonus +1,
  */
 protected[feats] trait AlchemicalStudiesBase
-  extends FeatRequisiteImpl with ClassRequisiteImpl with BonusSelectableToClassFeatImpl with AlchemicalStudiesPrefix with Passive
-  with AlchemistBonusFeat with StackableFeat {
+  extends FeatRequisiteImpl with ClassRequisiteImpl with BonusSelectableToClassFeatImpl
+  with AlchemicalStudiesPrefix with Passive with AlchemistBonusFeat with StackableFeat {
   self: ClassFeat =>
 
   /**

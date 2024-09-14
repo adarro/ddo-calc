@@ -16,6 +16,7 @@
  * limitations under the License.
  */
 package io.truthencode.ddo.api.model.effect
+
 /**
  * Represents a specific effect This includes all details such as what it modifies and when it takes
  * effect.
@@ -43,4 +44,3 @@ case class DetailedEffect(
   triggersOff: Seq[String],
   bonusType: String)
   extends DetailedEffectInfo
-

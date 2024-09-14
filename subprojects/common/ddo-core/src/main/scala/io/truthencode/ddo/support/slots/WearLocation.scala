@@ -112,9 +112,9 @@ object WearLocation extends Enum[WearLocation] with BitSupport {
    */
   case object Trinket extends EquipmentSlot, WearLocation
 
-  case object HeadDecoration extends EquipmentSlot , Cosmetic, WearLocation
+  case object HeadDecoration extends EquipmentSlot, Cosmetic, WearLocation
 
-  case object BodyDecoration extends EquipmentSlot , Cosmetic, WearLocation
+  case object BodyDecoration extends EquipmentSlot, Cosmetic, WearLocation
 
   case object Ammo extends EquipmentSlot, WearLocation
 

@@ -28,8 +28,8 @@ import java.time.Duration
  * Created by adarr on 3/17/2017. [[https://ddowiki.com/page/Empty_Body Empty Body]] You are able to
  * focus your ki and walk the edge of the Plane of Shadow, mimicking the effects of a Shadow Walk
  * spell. While this effect is active, you move much faster than normal and your outline appears
- * faint, and you are harder to hit. Attacking another creature or otherwise interacting with objects
- * shunts you back to the Material Plane.
+ * faint, and you are harder to hit. Attacking another creature or otherwise interacting with
+ * objects shunts you back to the Material Plane.
  */
 trait EmptyBody
   extends FeatRequisiteImpl with TriggeredActivationImpl with ActiveFeat

@@ -25,7 +25,7 @@ import io.truthencode.ddo.model.stats.BasicStat
 import io.truthencode.ddo.support.naming.UsingSearchPrefix
 
 /**
- *  Affects the 'Cleric level' value used to determine the power of your Turn Undead Attempts.
+ * Affects the 'Cleric level' value used to determine the power of your Turn Undead Attempts.
  */
 trait TurnUndeadCasterLevelFeature extends Features {
   self: SourceInfo =>

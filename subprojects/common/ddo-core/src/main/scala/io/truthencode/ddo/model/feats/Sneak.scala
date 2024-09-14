@@ -36,8 +36,8 @@ import io.truthencode.ddo.support.requisite.{FeatRequisiteImpl, FreeFeat}
  * see [[https://github.com/truthencode/ddo-calc/discussions/9]]
  */
 protected[feats] trait Sneak
-  extends FeatRequisiteImpl with TriggeredActivationImpl with ActiveFeat with Stance with DefaultCoolDown with FreeFeat
-  with FeaturesImpl with GrantAbilityFeature {
+  extends FeatRequisiteImpl with TriggeredActivationImpl with ActiveFeat with Stance
+  with DefaultCoolDown with FreeFeat with FeaturesImpl with GrantAbilityFeature {
   self: GeneralFeat =>
   override lazy val grantedAbility: ActiveAbilities = ActiveAbilities.Sneak
   override protected val triggerOn: Seq[TriggerEvent] = Seq(TriggerEvent.OnToggle)

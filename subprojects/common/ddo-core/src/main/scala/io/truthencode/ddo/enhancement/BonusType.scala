@@ -57,9 +57,8 @@ object BonusType extends Enum[BonusType] {
     x
   }
 
-  val fnStackAny: PartialFunction[BonusType, BonusType & StacksWithAny] = {
-    case x: StacksWithAny =>
-      x
+  val fnStackAny: PartialFunction[BonusType, BonusType & StacksWithAny] = { case x: StacksWithAny =>
+    x
   }
 
   val fnStackUnique: PartialFunction[BonusType, BonusType & StacksWithUnique] = {
@@ -301,7 +300,7 @@ object BonusType extends Enum[BonusType] {
     val wsl = WearLocation.values
       .withFilter(_.isInstanceOf[EquipmentSlot])
       .withFilter(!_.isInstanceOf[Cosmetic])
-    for  wc <- WearLocation.values  yield Mythic(wc.asInstanceOf[EquipmentSlot])
+    for wc <- WearLocation.values yield Mythic(wc.asInstanceOf[EquipmentSlot])
   }
 
   /**

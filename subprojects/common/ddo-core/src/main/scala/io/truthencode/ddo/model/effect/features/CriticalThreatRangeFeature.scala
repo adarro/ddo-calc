@@ -25,7 +25,7 @@ import io.truthencode.ddo.model.stats.BasicStat
 
 /**
  * Increases your Weapons Critical Threat range Different Weapon types have greater or lesser
- * bonuses and it may or may not apply to shields, depending on the feat / enhancement.
+ * bonuses, and it may or may not apply to shields, depending on the feat / enhancement.
  */
 trait CriticalThreatRangeFeature extends Features {
   self: SourceInfo =>
@@ -41,20 +41,6 @@ trait CriticalThreatRangeFeature extends Features {
   protected val criticalThreatRangeAmount: Seq[(WeaponCategory, Int)]
   protected def effectDetail: DetailedEffect
   private val src = this
-//  private[this] val criticalThreatRange =
-//    new PartModifier[Seq[(WeaponCategory, Int)], BasicStat]
-//      with ParameterModifier[Seq[(WeaponCategory, Int)], BonusType] {
-//
-//      lazy override protected[this] val partToModify: BasicStat =
-//        BasicStat.CriticalThreatRange
-//
-//      lazy override protected[this] val parameterToModify: BonusType =
-//        criticalThreatRangeType
-//
-//      override val source: SourceInfo = src
-//      override lazy val value: Seq[(WeaponCategory, Int)] = criticalThreatRangeAmount
-//      override lazy val effectText: Option[String] = Some(s"Increased Critical Threat Amount: $value%")
-//    }
 
   abstract override def features: Seq[Feature[?]] = {
     assert(ctr.value == criticalThreatRangeAmount)

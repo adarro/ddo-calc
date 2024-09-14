@@ -26,7 +26,7 @@ package io.truthencode.ddo
  */
 case class ExtraInfo(symbol: String, value: Int) {
   require(symbol.contentEquals("+") || symbol.contentEquals("-"))
-  val toInt = symbol match {
+  val toInt: Int = symbol match {
     case "+" => Math.abs(value)
     case "-" => -1 * value
   }

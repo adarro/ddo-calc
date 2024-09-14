@@ -36,8 +36,8 @@ trait GfmStrikethroughSubscript extends Flexmark {
 
   /**
    * see [[https://github.com/vsch/flexmark-java/wiki/Extensions#gfm-strikethroughsubscript]]
-   * @param dataSet
-   * @return
+   * @param dataSet used to configure the extension
+   * @return configured dataSet
    */
   private def taskOptions()(implicit dataSet: MutableDataSet): () => MutableDataSet = { () =>
     dataSet

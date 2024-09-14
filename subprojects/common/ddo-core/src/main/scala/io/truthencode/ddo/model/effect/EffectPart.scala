@@ -129,27 +129,27 @@ trait CriticalThreatRangeEffect extends EffectPart {
  */
 object EffectPart extends Enum[EffectPart] with NoDefault[EffectPart] with Searchable[EffectPart] {
 
-  lazy val values =
+  lazy val values: IndexedSeq[EffectPart] =
     findValues ++ anySkill ++ anyFeat ++ anyWeaponProficiency ++ anyAbilities ++ anyMissChance ++ anyHitChance
 
-  private[effect] def anySkill: Seq[Skill] = Skills.values.map(Skill)
+  private[effect] def anySkill: Seq[Skill] = Skills.values.map(Skill(_))
 
-  def anyAbilities: Seq[ActiveAbility] = ActiveAbilities.values.map(ActiveAbility)
+  def anyAbilities: Seq[ActiveAbility] = ActiveAbilities.values.map(ActiveAbility(_))
 
   def anyMissChance: Seq[MissChanceEffect] =
-    BasicStat.values.collect { case x: MissChance => x }.map(MissChanceEffect)
+    BasicStat.values.collect { case x: MissChance => x }.map(MissChanceEffect(_))
 
   def anyHitChance: Seq[HitChanceEffect] =
-    BasicStat.values.collect { case x: HitChance => x }.map(HitChanceEffect)
+    BasicStat.values.collect { case x: HitChance => x }.map(HitChanceEffect(_))
 
-  private def anyAttribute = Attributes.values.map(Attribute)
+  private def anyAttribute = Attributes.values.map(Attribute(_))
 
   private[effect] def anyFeat = Feats.values
     .filterNot(_.isInstanceOf[ParentFeat])
-    .map(Feat)
+    .map(Feat(_))
 
   private def anyWeaponProficiency =
-    GeneralFeat.ExoticWeaponProficiency.subFeats.map(WeaponProficiency)
+    GeneralFeat.ExoticWeaponProficiency.subFeats.map(WeaponProficiency(_))
 
   // Attribute value affected by Base, Feat, Item, Tomes
   case class Attribute(override val attribute: Attributes) extends AttributeEffect
@@ -162,7 +162,7 @@ object EffectPart extends Enum[EffectPart] with NoDefault[EffectPart] with Searc
 
   case class ActiveAbility(override val ability: ActiveAbilities) extends AbilityEffectPart {
     override def entryName: String =
-      s"${ActiveAbilities.searchPrefix}${ability}"
+      s"${ActiveAbilities.searchPrefix}$ability"
   }
 
   // Miss Chance

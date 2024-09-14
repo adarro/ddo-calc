@@ -96,8 +96,8 @@ class WeaponCategoryTest extends AnyFunSpec with Matchers {
       val expectedPlus2 = List(BastardSword, Greatsword, Khopesh, Longsword)
       val expectedPlus3 = List(Falchion, Kukris, Scimitar)
       // "All others requires a bit more of a manual dig to verify long-hand"
-      plus2.intersect(filtered) shouldEqual (expectedPlus2)
-      plus3.intersect(filtered) shouldEqual (expectedPlus3)
+      plus2.intersect(filtered) shouldEqual expectedPlus2
+      plus3.intersect(filtered) shouldEqual expectedPlus3
 
     }
   }

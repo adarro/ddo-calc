@@ -48,10 +48,9 @@ object ClassEnhancementInfo extends LazyLogging {
 
 // scalastyle:off
   def apply(
-    classEnhancement: ClassEnhancement
-      & Tier & ClassBasedEnhancements & PointInTreeRequisite & PointsAvailableRequisite
-      & RequiresActionPoints
-  ) = {
+    classEnhancement: ClassEnhancement & Tier & ClassBasedEnhancements & PointInTreeRequisite &
+      PointsAvailableRequisite & RequiresActionPoints
+  ): CEnhancementDumb = {
     val e = classEnhancement
     def id: String = e.entryName
     val actionPointCost: Int = e.apCostPerRank
@@ -74,7 +73,8 @@ object ClassEnhancementInfo extends LazyLogging {
     logger.info(s"Searching $key using: $srch")
     val eOpt = ClassEnhancement.withNameInsensitiveOption(srch) match {
       case Some(
-            x: (ClassEnhancement & Tier & ClassBasedEnhancements & PointInTreeRequisite & PointsAvailableRequisite & RequiresActionPoints)
+            x: (ClassEnhancement & Tier & ClassBasedEnhancements & PointInTreeRequisite &
+              PointsAvailableRequisite & RequiresActionPoints)
           ) =>
         logger.info(s"Found ${x.displayText} => ${x.entryName}")
         Some(x)
@@ -131,6 +131,23 @@ object ClassEnhancementInfo extends LazyLogging {
   // scalastyle:off number.of.methods
 }
 
+/**
+ * Internal enhancement wrapper for ClassEnhancementInfo
+ * @param name
+ *   The name of the enhancement
+ * @param id
+ *   The id of the enhancement
+ * @param actionPointCost
+ *   The action point cost for the enhancement
+ * @param ranks
+ *   The number of ranks the enhancement has
+ * @param progression
+ *   point progression in the tree
+ * @param requirements
+ *   Requirements if any for the enhancement
+ * @param description
+ *   The description of the enhancement
+ */
 case class CEnhancementDumb(
   name: String,
   id: String = "",
@@ -145,9 +162,9 @@ case class CEnhancement(
   name: String
 )(implicit identifier: String = name.toPascalCase.filterAlphaNumeric)
   extends ClassEnhancementInfo with LazyLogging {
-
+  private val enh: ENH = _enh.get
   override val actionPointCost: Int = enh.apCostPerRank
-  //  require(_enh.nonEmpty,s"No value found matching Id $id")
+
   override val ranks: Int = enh.ranks
   override val progression: Int = enh.progressionInTree.find { p =>
     p._1 == enh.tree
@@ -157,12 +174,11 @@ case class CEnhancement(
   } // .flatMap{x => x._3} //.flatMap {p => p._3}
   override val requirements: Option[List[String]] = None
   override val description: String = enh.rawDescription
-  private val enh: ENH = _enh.get
 
   private def _enh = {
     logger.info(s"locating values with entryname eq $id")
     val v = values.find(p => p.entryName.equals(identifier))
-    logger.info(s"result ${v}")
+    logger.info(s"result $v")
     v
   }
 

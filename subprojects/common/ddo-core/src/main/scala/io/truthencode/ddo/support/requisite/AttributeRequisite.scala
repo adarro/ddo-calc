@@ -26,9 +26,9 @@ import io.truthencode.ddo.support.requisite.RequirementImplicits.AttributeImplic
  */
 sealed trait AttributeRequisite {
   self: Requisite =>
+  //  we currently don't have a gkNoneAttributes
   def gkAllAttributes: String
   def gkAnyAttributes: String
-//  def gkNoneAttributes: String
   def allOfAttributes: Seq[(Attribute, Int)]
   def anyOfAttributes: Seq[(Attribute, Int)]
   def noneOfAttributes: Seq[(Attribute, Int)]

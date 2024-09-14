@@ -43,7 +43,7 @@ protected[feats] trait Hamstring
   override protected lazy val grantAbilityCategories: Seq[effect.EffectCategories.Value] =
     Seq(effect.EffectCategories.Ability, effect.EffectCategories.SpecialAttack)
   override val grantBonusType: BonusType = BonusType.Feat
-  override val allOfFeats = List(ClassFeat.SneakAttack)
+  override val allOfFeats: Seq[Feat] = List(ClassFeat.SneakAttack)
   override protected val triggerOn: Seq[TriggerEvent] = Seq(TriggerEvent.SpecialAttack)
   override protected val triggerOff: Seq[TriggerEvent] = Seq(TriggerEvent.OnCoolDown)
   override val abilityId: String = "Hamstring"

@@ -24,7 +24,7 @@ class AttributeTest
       forAll(nameMap) { (abbr: String, name: String) =>
         val atr = Attribute.withName(name)
         atr.abbr shouldEqual abbr
-        atr.toFullWord shouldEqual (name)
+        atr.toFullWord shouldEqual name
       }
     }
   }

@@ -211,7 +211,7 @@ object Spell extends Enum[Spell] {
   }
 
   def ls(
-    fn: (String => Option[Spell]),
+    fn: String => Option[Spell],
     names: String*
   ): Seq[String => Option[Spell]] = {
     for  n <- names  yield (id: String) => {

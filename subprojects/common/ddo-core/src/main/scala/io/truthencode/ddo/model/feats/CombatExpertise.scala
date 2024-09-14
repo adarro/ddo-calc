@@ -54,7 +54,7 @@ protected[feats] trait CombatExpertise
   override protected lazy val triggerOff: Seq[TriggerEvent] = Seq(TriggerEvent.OnSpellCast)
   override protected lazy val grantAbilityCategories: Seq[effect.EffectCategories.Value] =
     Seq(effect.EffectCategories.Stance)
-  override val allOfAttributes = List((Attribute.Intelligence, 13))
+  override val allOfAttributes: Seq[(Attribute, Int)] = List((Attribute.Intelligence, 13))
   override val grantBonusType: BonusType = BonusType.Feat
   override protected val armorBonusType: BonusType = BonusType.Feat
   override protected val armorBonusAmount: Int = 10

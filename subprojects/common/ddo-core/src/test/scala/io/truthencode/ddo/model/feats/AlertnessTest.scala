@@ -42,5 +42,36 @@ class AlertnessTest extends AnyFunSpec with Matchers with LazyLogging {
 //      val l =al.namedFeatures(listen).head
 //      l.value shouldBe 2
     }
+
+    it("should be available as a feature set or directly from the feat") {
+
+      val fsAlert = Feat.featureSet.filter(_._1 == GeneralFeat.Alertness)
+      logger.info(s"Alertness: ${fsAlert.size}")
+    }
+  }
+  describe("A feature set") {
+    it("should be available via named features") {
+      /*
+             we want to mirror and evaluate
+               container <- source.values
+               features <- container.namedFeatures
+               feature <- features._2
+       */
+      val container = Feat.values.filter(_ == GeneralFeat.Alertness)
+      val featuresFM = container.flatMap(_.namedFeatures)
+      featuresFM.size shouldBe 2
+      featuresFM.foreach { m => logger.info(s"feature set ${m._1} => ${m._2}") }
+      val features = container.map(_.namedFeatures)
+      features.size shouldBe 1
+      val feature = features.head
+      feature.size shouldBe 2
+
+      logger.info(s"Alertness: ${features.size}")
+    }
+    it("does stuff") {
+      val r = Feat.values.map { container =>
+        container.features.map(f => f.name -> f.value)
+      }
+    }
   }
 }

@@ -72,7 +72,6 @@ configure<org.scoverage.ScoverageExtension> {
 tasks.withType<ScalaCompile>().configureEach {
     scalaCompileOptions.apply {
 
-
         when(builderScalaVersion) {
             "3" -> {
                 logger.warn("Scala 3 detected")

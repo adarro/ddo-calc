@@ -63,8 +63,6 @@ object ValueWithRequirements extends LazyLogging {
   // ordering to apply to subclasses of `X`.
   implicit def orderingByName[A <: ValueWithRequirements]: Ordering[A] =
     Ordering.by(e => (e.groupKey, e.requisiteType))
-//  implicit def orderingByCharacterLevel[A <: ReqCharacterLevel]: Ordering[A] =
-//    Ordering.by(e => (e.displayText, e.characterLevel))
 
   // scalastyle:off cyclomatic.complexity method.length
   def sortWithChaos(v1: RSort, v2: RSort): Boolean = {
@@ -89,7 +87,7 @@ object ValueWithRequirements extends LazyLogging {
     val anrAgreement = anAgreement && an1 == SortType.NumericAlpha
     // both simple alpha sorts
     val aAgreement = an1 == an2 && an1 == SortType.Alpha
-    // conflict in number of fields, so must use alpha sort and give preference to number fields (dummy number in non-numbered object.
+    // conflict in number of fields, so must use alpha sort and give preference to number fields (dummy number in non-numbered object).
     val mixed1 = !anAgreement && !anrAgreement && !aAgreement && an1 != SortType.Alpha
 
     if anrAgreement then {

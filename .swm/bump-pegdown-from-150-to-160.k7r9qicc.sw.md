@@ -21,20 +21,6 @@ The `pegdown` library is a crucial part of our application as it handles the con
 
 # How was the version upgrade implemented?
 
-<SwmSnippet path="/pom.xml" line="979">
-
----
-
-The version upgrade was implemented by modifying the  file, which is the Project Object Model file for our Maven project. This file contains information about the project and configuration details used by Maven to build the project. In the  file, we updated the version of the `pegdown` library from 1.5.0 to 1.6.0. This tells Maven to use version 1.6.0 of the `pegdown` library when building our project.
-
-```xml
-                            <version>1.6.0</version>
-```
-
----
-
-</SwmSnippet>
-
 By making this change, we ensure that our application is using the latest, most secure, and efficient version of the `pegdown` library. This will help to improve the overall performance and security of our application.
 
 <SwmMeta version="3.0.0" repo-id="Z2l0aHViJTNBJTNBZGRvLWNhbGMlM0ElM0F0cnV0aGVuY29kZQ=="><sup>Powered by [Swimm](https://app.swimm.io/)</sup></SwmMeta>

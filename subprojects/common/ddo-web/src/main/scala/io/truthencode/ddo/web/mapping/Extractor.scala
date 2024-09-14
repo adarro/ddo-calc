@@ -64,7 +64,7 @@ object Extractor extends LazyLogging {
         logger.info(s"critical profile: $infoText")
         Some(critProfile(Option(min).getOrElse(max).toInt, max toInt, multiplier toInt))
       case _ =>
-        logger.error(s"argument could not be parsed: $infoText");
+        logger.error(s"argument could not be parsed: $infoText")
         throw new IllegalArgumentException
     }
   }

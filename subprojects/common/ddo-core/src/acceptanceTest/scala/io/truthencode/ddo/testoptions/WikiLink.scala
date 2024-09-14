@@ -38,8 +38,8 @@ trait WikiLink extends Flexmark {
 
   /**
    * see [[https://github.com/vsch/flexmark-java/wiki/Extensions#emoji]]
-   * @param dataSet
-   * @return
+   * @param dataSet used to configure the extension
+   * @return the configured dataSet
    *   Mutated dataset with specified default options
    */
   private def wikiLinkTaskOptions()(implicit

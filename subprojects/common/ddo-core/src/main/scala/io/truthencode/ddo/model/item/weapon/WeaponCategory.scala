@@ -116,7 +116,7 @@ object WeaponCategory extends Enum[WeaponCategory] {
         val a1 = icPlus1.filter(_ == weapon).flatMap(optPlus(_, 1))
         val a2 = icPlus2.filter(_ == weapon).flatMap(optPlus(_, 2))
         val a3 = icPlus3.filter(_ == weapon).flatMap(optPlus(_, 3))
-        val squish = (a1 ++ a2 ++ a3)
+        val squish = a1 ++ a2 ++ a3
         val squished = squish.head
         squished
       }

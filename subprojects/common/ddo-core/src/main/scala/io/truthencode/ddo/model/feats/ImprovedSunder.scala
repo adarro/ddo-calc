@@ -48,6 +48,6 @@ protected[feats] trait ImprovedSunder
   override val abilityId: String = "Sunder"
   override val description: String =
     "This melee special attack, when successful, results in a -5 AC penalty to the target for 24 seconds"
-  override val allOfFeats = List(GeneralFeat.Sunder, GeneralFeat.PowerAttack)
+  override val allOfFeats: Seq[Feat] = List(GeneralFeat.Sunder, GeneralFeat.PowerAttack)
   override val grantBonusType: BonusType = BonusType.Feat
 }

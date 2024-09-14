@@ -26,8 +26,6 @@ plugins {
 
 dependencies {
     dependencies {
-        val scalaLibraryVersion: String by project
-        val scalaMajorVersion: String by project
         val builderScalaVersion: String by project
 
         implementation(enforcedPlatform(project(":ddo-platform-scala")))

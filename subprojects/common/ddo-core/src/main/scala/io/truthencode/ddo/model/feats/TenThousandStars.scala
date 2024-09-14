@@ -33,10 +33,10 @@ import java.time.Duration
 
 /**
  * Icon Feat Ten Thousand Stars.png
- * [[https://ddowiki.com/page/Ten_Thousand_Stars Ten Thousand Stars]] Active - Ability For the next
+ * [Ten Thousand Stars Active - Ability For the next](https://ddowiki.com/page/Ten_Thousand_Stars)
  * 30 seconds, add your Wisdom ability score to your Ranged Power and add your monk level * 5 to
  * your Doubleshot. This ability puts Manyshot on a 30-second cooldown. Cooldown: one minute.
- * @fixme
+ * @note
  *   Currently have only one cooldown pool, but this has a 1-minute cooldown and adds Manyshot
  *   cooldown event.
  *

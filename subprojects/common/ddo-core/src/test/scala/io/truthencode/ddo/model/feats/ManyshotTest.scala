@@ -28,7 +28,7 @@ class ManyshotTest extends AnyFunSpec with Matchers with LazyLogging {
     it("has features") {
       import Features.FeatureExtractor
 
-      val fm = Feat.featureMap
+      val fm = Feat.featureSet
       val ms = fm.filter(_._1.equals(GeneralFeat.Manyshot))
       val msf = GeneralFeat.Manyshot
 

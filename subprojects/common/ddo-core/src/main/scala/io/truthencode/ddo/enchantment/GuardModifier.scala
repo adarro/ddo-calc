@@ -21,6 +21,8 @@ import com.typesafe.scalalogging.LazyLogging
 import io.truthencode.ddo.enchantment.Modifier.{Greater, Lesser, Minor}
 import io.truthencode.ddo.model.effect.{Prefix, SecondaryPrefix, Suffix}
 import io.truthencode.ddo.support.RomanNumeral.fromRoman
+import zio.prelude.Validation
+
 
 import scala.language.postfixOps
 
@@ -46,6 +48,43 @@ object GuardModifier extends LazyLogging {
     // Validate here
     o
 
+  }
+
+  object Validation {
+
+    def validatePrefix(prefix: Option[String]): Validation[String, Option[String]] = {
+      if prefix.isDefined && !allowedModifiers.contains(prefix.get) then {
+//        val noPrefix = ()
+        zio.prelude.Validation.fail("Prefix is not a valid modifier")
+      } else {
+        zio.prelude.Validation.succeed(prefix)
+      }
+    
+//      implicit val guardModifierValidator: TransformedValidator[GuardModifier] =
+//          validator[GuardModifier] { g => {
+//              // Guards can have nothing, a prefix or a suffix
+//              // No Modifiers
+//              (((g.prefix
+//                  .is(empty))
+//                  .and(g.sPrefix.is(empty))
+//                  .and(g.suffix.is(empty)))
+//                  .or(
+//                      // Just a (valid) prefix
+//                      ((g.prefix
+//                          .is(notEmpty))
+//                          .and(g.sPrefix.is(empty))
+//                          .and(g.suffix.is(empty)))
+//                          .and(filterModifiers(g.prefix).is(notEmpty)))
+//                  .or(
+//                      // Just a valid suffix
+//                      ((g.prefix
+//                          .is(empty))
+//                          .and(g.sPrefix.is(empty))
+//                          .and(g.suffix.is(notEmpty)))
+//                          .and(allowedRoman(g.suffix).is(notEmpty))))
+//
+//          }
+          }
   }
 
   def apply(parameters: Parameters): GuardModifier =

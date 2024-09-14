@@ -22,9 +22,6 @@ plugins {
 repositories {
     // Use Maven Central for resolving dependencies.
     mavenCentral()
-//    maven {
-//        url = uri("https://repo.vyne.co/release")
-//    }
     maven {
         url = uri("https://repo.orbitalhq.com/release")
     }

@@ -54,14 +54,11 @@ class EffectPartTest
       }
     }
 
-
-
     it("is") {
       EffectPart.values.foreach { ep =>
         logger.info(s"$ep.name ${ep.entryName}   ${ep.searchPattern()}")
       }
     }
-
 
     they("may override naming") {
       val entry = EffectPart.MissChanceEffect(BasicStat.DodgeChance)
@@ -74,7 +71,6 @@ class EffectPartTest
     }
 
     they("should identify and recognize MissChance effects") {
-
       val eut = GeneralFeat.Dodge
       List(eut).foreach { thingWithFeature =>
         thingWithFeature.features.foreach { f =>

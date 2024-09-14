@@ -56,6 +56,7 @@ object Guards extends Enum[Guards] with NoDefault[Guards] {
   case object RadianceGuard extends Guards
   case object SolarGuard extends Guards
   case object SonicGuard extends Guards
+  case object StickyGooGaurd extends Guards
   case object StonePrisonGuard extends Guards
   case object SunderingOozeGuard extends Guards
   case object TelekinesisGuard extends Guards

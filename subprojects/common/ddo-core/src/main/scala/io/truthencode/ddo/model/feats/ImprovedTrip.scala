@@ -47,7 +47,7 @@ protected[feats] trait ImprovedTrip
   override val description: String =
     "This feat has a chance to trip the target rendering it prone for a short time."
 
-  override val allOfFeats = List(GeneralFeat.CombatExpertise)
+  override val allOfFeats: Seq[Feat] = List(GeneralFeat.CombatExpertise)
   override val grantBonusType: BonusType = BonusType.Feat
 
   override def coolDown: Option[Duration] = Some(Duration.ofSeconds(10))

@@ -1,20 +1,20 @@
 version: 0.1
 cli:
-    version: 1.22.3
+    version: 1.22.5
 
 plugins:
     sources:
         - id: trunk
-          ref: v1.6.1
+          ref: v1.6.2
           uri: https://github.com/trunk-io/plugins
 lint:
     enabled:
         - hadolint@2.12.0
         - terrascan@1.19.1
-        - checkov@3.2.225
-        - osv-scanner@1.8.3
-        - trivy@0.54.1
-        - trufflehog@3.81.8
+        - checkov@3.2.253
+        - osv-scanner@1.8.5
+        - trivy@0.55.1
+        - trufflehog@3.82.1
         - taplo@0.9.3
         - actionlint@1.7.1
         - dotenv-linter@3.3.0
@@ -24,7 +24,7 @@ lint:
         - markdownlint@0.41.0
         - oxipng@9.1.2
         - prettier@3.3.3
-        - renovate@38.33.0
+        - renovate@38.77.3
         - scalafmt@3.8.3
         - shellcheck@0.10.0
         - shfmt@3.6.0

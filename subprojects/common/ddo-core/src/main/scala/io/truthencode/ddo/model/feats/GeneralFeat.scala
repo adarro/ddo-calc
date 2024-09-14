@@ -52,7 +52,7 @@ sealed trait GeneralFeat
 object GeneralFeat
   extends Enum[GeneralFeat] with FeatSearchPrefix with FeatMatcher with LazyLogging {
 
-  override lazy val values =
+  override lazy val values: IndexedSeq[GeneralFeat] =
     findValues ++
       simpleWeaponProficiencies ++
       martialWeaponProficiencies ++

@@ -62,7 +62,7 @@ class IndividualFeatFixture extends DisplayHelper with ChargeSupport with LazyLo
   }
 
   case class FeatResult(id: String) {
-    val f = Feat.withName(id)
+    val f: Feat = Feat.withName(id)
     val active: String = f match {
       case x: ActiveFeat => "Active"
       case _ => "Passive"

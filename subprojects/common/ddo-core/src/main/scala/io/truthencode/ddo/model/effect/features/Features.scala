@@ -57,12 +57,16 @@ object Features {
   type Entry = EnumEntry & Features & DisplayProperties
   type E = Enum[? <: Entry]
   implicit class FeatureExtractor(source: E) {
-    def featureMap: Map[Entry, Feature[?]] = featureSet.toMap
+    def featureMap: Seq[(String, Feature[?])] = {
+        for
+            container <- source.values
+            feature <- container.features
+        yield (feature.name, feature)
+    }
 
     def featureSet: IndexedSeq[(Entry, Feature[?])] = for
       container <- source.values
-      features <- container.namedFeatures
-      feature <- features._2
+      feature <- container.features
     yield (container, feature)
   }
 }

@@ -1,15 +1,16 @@
 # Data Ingestion
 
 ## Bulk Load
+
 json files from ParseHub
 
-* Initial bulk loads
+-   Initial bulk loads
     occur for initial load and a scan of update items on release of expansions / updates.
     a. Download results to common folder and use Camel Route filter to move to appropriate folder
     b. Download results directly to appropriate folder for processing.
     c. post (via Camel Route) to appropriate web service for processing.
-* Categories
-    * Items
+-   Categories
+    -   Items
         1. Weapons
         1. Armor
         1. Shields
@@ -23,12 +24,12 @@ json files from ParseHub
             1. Chromatic
             1. Lunar / Solar
         1. Filigrees
-    * Other Entities
+    -   Other Entities
         1. Affixes
             1. Prefixes
             1. Suffixes
         1. Spells
-    * Effects
+    -   Effects
         1. Additional Effects
             1. Mythic Boots
             1. Reaper Bonus

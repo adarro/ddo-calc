@@ -47,5 +47,4 @@ dependencies {
 
     implementation(libs.logback.classic)
     implementation(libs.typesafe.config)
-
 }

@@ -48,8 +48,6 @@ dependencies {
             implementation(libs.json4s.native.s3)
             implementation(libs.enumeratum.s3)
 
-
-
             /* DB, Query etc
 
     // Quill Scala Query QSQL

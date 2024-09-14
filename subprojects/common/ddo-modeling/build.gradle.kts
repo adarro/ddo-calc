@@ -46,9 +46,15 @@ tasks.register("generateAvroSchemas", GradleBuild::class) {
     group = "Avro"
     val output = layout.buildDirectory.dir("avro-gen")
     outputs.dir(output)
-    val input = rootProject.layout.projectDirectory.file("include/ddo-avro").asFile
+    val input =
+        rootProject.layout.projectDirectory
+            .file("include/ddo-avro")
+            .asFile
     inputs.dir(input)
-    dir = rootProject.layout.projectDirectory.file("include/ddo-avro").asFile
+    dir =
+        rootProject.layout.projectDirectory
+            .file("include/ddo-avro")
+            .asFile
 
     tasks = listOf("generateAvroScala")
 }
@@ -56,7 +62,10 @@ tasks.register("generateAvroSchemas", GradleBuild::class) {
 tasks.register("cleanAvroSchemas", GradleBuild::class) {
     description = "Cleans generated Avro schemas"
     group = "Avro"
-    dir = rootProject.layout.projectDirectory.file("include/ddo-avro").asFile
+    dir =
+        rootProject.layout.projectDirectory
+            .file("include/ddo-avro")
+            .asFile
 
     tasks = listOf("clean")
 }
@@ -214,7 +223,12 @@ task("genModel", org.openapitools.generator.gradle.plugin.tasks.GenerateTask::cl
     verbose.set(true)
     generatorName.set("scala-lagom-server")
     inputSpec.set(apiSpec.asPath)
-    outputDir.set(layout.buildDirectory.dir("generated/lagom").get().asFile.path)
+    outputDir.set(
+        layout.buildDirectory
+            .dir("generated/lagom")
+            .get()
+            .asFile.path,
+    )
 
     apiPackage.set("io.truthencode.ddo.api")
     invokerPackage.set("io.truthencode.ddo.invoker")
@@ -226,7 +240,12 @@ task("genGatling", org.openapitools.generator.gradle.plugin.tasks.GenerateTask::
     val id = "scala-gatling"
     generatorName.set(id)
     inputSpec.set(apiSpec.asPath)
-    outputDir.set(layout.buildDirectory.dir("generated/$id").get().asFile.path)
+    outputDir.set(
+        layout.buildDirectory
+            .dir("generated/$id")
+            .get()
+            .asFile.path,
+    )
 
     apiPackage.set("io.truthencode.ddo.api")
     invokerPackage.set("io.truthencode.ddo.invoker")
@@ -265,7 +284,6 @@ dependencies {
             implementation(libs.scala3.library)
             implementation(libs.enumeratum.s3)
 
-
             implementation(libs.json4s.native.s3)
 
             implementation(libs.typesafe.scala.logging.s3)
@@ -273,8 +291,6 @@ dependencies {
 //            implementation(libs.wix.accord.core.s213)
             implementation(libs.dev.zio.prelude.s3)
             implementation(libs.kxbmap.configs.s213)
-
-
         }
 
         else -> {
@@ -291,14 +307,10 @@ dependencies {
 //            implementation(libs.wix.accord.core.s213)
             implementation(libs.dev.zio.prelude.s213)
             implementation(libs.typesafe.scala.logging.s213)
-
         }
     }
-
-
 
     implementation(libs.typesafe.config)
 
     implementation(libs.logback.classic)
-
 }

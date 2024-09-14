@@ -45,19 +45,16 @@ dependencies {
                 implementation(libs.typesafe.scala.logging.s213)
                 implementation(libs.scalatest.plus.scalacheck.s213)
             }
-
         }
 
         implementation(libs.typesafe.config)
         // No scala 3 specific version ATM
         implementation(libs.kxbmap.configs.s213)
 
-
         // database
 
         // validation and rules
         implementation(libs.logback.classic)
-
 
 //        implementation(group = "org.scalatest", name = "scalatest_$scalaMajorVersion")
 
@@ -69,7 +66,7 @@ dependencies {
 //        testRuntimeOnly(group = "co.helmethair", name = "scalatest-junit-runner")
     }
 }
-//tasks {
+// tasks {
 //    // Use the built-in JUnit support of Gradle.
 //    "test"(Test::class) {
 //        useJUnitPlatform {
@@ -79,4 +76,4 @@ dependencies {
 //            }
 //        }
 //    }
-//}
+// }

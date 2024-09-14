@@ -1,3 +1,3 @@
 plugins {
-    id ("org.sonarqube")
+    id("org.sonarqube")
 }

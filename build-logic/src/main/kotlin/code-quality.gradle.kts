@@ -48,9 +48,8 @@ plugins {
 
 enum class ScriptLanguage { GradleBuild, KotlinScriptBuild }
 
-fun buildLang(): ScriptLanguage {
-    return if (project.buildFile.name.endsWith("kts")) ScriptLanguage.KotlinScriptBuild else ScriptLanguage.GradleBuild
-}
+fun buildLang(): ScriptLanguage =
+    if (project.buildFile.name.endsWith("kts")) ScriptLanguage.KotlinScriptBuild else ScriptLanguage.GradleBuild
 
 fun walkBack(
     fileName: String,

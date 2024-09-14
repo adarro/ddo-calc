@@ -34,7 +34,7 @@ dependencies {
     // Platform dependent
     // https://mvnrepository.com/artifact/org.json4s/json4s-native
     val builderScalaVersion: String by project
-logger.info("showing builderScalaVersion: $builderScalaVersion")
+    logger.info("showing builderScalaVersion: $builderScalaVersion")
     when (builderScalaVersion) {
         "3" -> {
             implementation(libs.scala3.library)
@@ -60,7 +60,6 @@ logger.info("showing builderScalaVersion: $builderScalaVersion")
             // validation and rules
 
             implementation(libs.dev.zio.prelude.s213)
-
 
             implementation(libs.typesafe.scala.logging.s213)
         }

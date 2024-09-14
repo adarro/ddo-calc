@@ -190,17 +190,16 @@ scalafix-plugin = { module = "io.github.cosmicsilence:gradle-scalafix", version.
 spotless-plugin = { module = "com.diffplug.spotless:spotless-plugin-gradle", version.ref = "spotless-plugin" }
 
 
-
 [bundles]
 concordion = [
-    "concordion",
-    "concordion-collapse-output-extension",
-    "concordion-embed-extension",
+  "concordion",
+  "concordion-collapse-output-extension",
+  "concordion-embed-extension",
 ]
 kotest = [
-    "kotest-assertions-core-jvm",
-    "kotest-property-jvm",
-    "kotest-runner-junit-jvm",
+  "kotest-assertions-core-jvm",
+  "kotest-property-jvm",
+  "kotest-runner-junit-jvm",
 ]
 #scala-logging = ["typesafe-scala-logging-s213", "typesafe-config"]
 

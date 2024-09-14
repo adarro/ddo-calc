@@ -24,7 +24,9 @@ interface KotlinTestKitExtension {
     val useKotlinTestKit: Property<KotlinTestKits>
 }
 
-class KotlinTestKitClassExtension(val useKotlinTestKit: Property<KotlinTestKits>)
+class KotlinTestKitClassExtension(
+    val useKotlinTestKit: Property<KotlinTestKits>,
+)
 
 interface KotlinAnnotationProcessingExtension {
     val kotlinTestMode: Property<TestMode>
@@ -65,8 +67,8 @@ enum class TestTypes {
     }
 
     companion object {
-        fun fromTestSuiteType(id: String): TestTypes {
-            return when (id) {
+        fun fromTestSuiteType(id: String): TestTypes =
+            when (id) {
                 TestSuiteType.UNIT_TEST -> Unit
                 TestSuiteType.INTEGRATION_TEST -> Integration
                 TestSuiteType.FUNCTIONAL_TEST -> Functional
@@ -74,15 +76,14 @@ enum class TestTypes {
                 "acceptance-test" -> Acceptance // Static Duck-typing ATM
                 else -> Custom
             }
-        }
 
-        fun fromNamingConvention(key: String): TestTypes {
-            return TestTypes.values().find { it.defaultName == key } ?: Custom
-        }
+        fun fromNamingConvention(key: String): TestTypes = TestTypes.values().find { it.defaultName == key } ?: Custom
     }
 }
 
-class TestBuildSupport(proj: Project) {
+class TestBuildSupport(
+    proj: Project,
+) {
     private val koTestVersion: String by proj
     val applyMockito = { suite: JvmTestSuite ->
         suite.useJUnitJupiter()

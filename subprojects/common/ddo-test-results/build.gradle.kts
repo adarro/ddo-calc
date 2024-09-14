@@ -75,7 +75,9 @@ fun findProjects(
     project: Project,
 ) {
     if (!project.name
-            .contains("test") && project.name.startsWith("ddo") && project != project.rootProject
+            .contains("test") &&
+        project.name.startsWith("ddo") &&
+        project != project.rootProject
     ) {
         writer.add(":${project.name}")
         logger.info("found ${project.childProjects.size} child projects in ${project.name}")
@@ -97,7 +99,10 @@ tasks.register("moduleDependencyReport") {
     description = "Creates a .dot file with all inter-module dependencies"
     group = "documentation"
     doLast {
-        val file = rootProject.layout.projectDirectory.file("docs/developers_guide/project-dependencies.dot").asFile
+        val file =
+            rootProject.layout.projectDirectory
+                .file("docs/developers_guide/project-dependencies.dot")
+                .asFile
         file.delete()
         file.bufferedWriter().use { w ->
             val sb = StringBuffer()
@@ -128,18 +133,17 @@ fun printDependencies(
     if (!project.name
             .contains("test")
     ) {
-        project.configurations.map {
-            it.allDependencies.map { d -> d }
-        }
-            .flatten()
+        project.configurations
+            .map {
+                it.allDependencies.map { d -> d }
+            }.flatten()
             .toSet()
             .filterIsInstance(ProjectDependency::class.java)
             .filterNot { it.name.contains("test") || it.name == project.name }
             .map {
                 logger.error("Mapping project: $project -> ${it.name}")
                 "\"${project.name}\" -> \"${it.name}\"\n"
-            }
-            .forEach(writer::write)
+            }.forEach(writer::write)
         logger.info("found ${project.childProjects.size} child projects in ${project.name}")
     }
     project.childProjects.forEach { (_, childProject) ->

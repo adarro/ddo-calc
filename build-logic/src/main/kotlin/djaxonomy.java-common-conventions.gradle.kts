@@ -27,7 +27,6 @@ val javaToolchainVersion =
         defaultJavaToolChainVersion.toInt()
     }
 
-
 java {
     toolchain {
         languageVersion.set(JavaLanguageVersion.of(javaToolchainVersion.get()))

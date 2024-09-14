@@ -5,7 +5,6 @@ plugins {
 
 description = "Athenaeum Codex"
 
-
 dependencies {
     // Front-end
     implementation(libs.webjars.bootstrap)
@@ -14,7 +13,6 @@ dependencies {
     implementation(libs.webjars.jquery)
 
     implementation(libs.quarkus.webjars)
-
 
     implementation(libs.quarkus.renarde)
     implementation(libs.quarkus.renarde.backoffice)

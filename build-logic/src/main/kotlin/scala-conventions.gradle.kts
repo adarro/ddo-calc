@@ -33,18 +33,13 @@ dependencies {
         "3" -> {
 
             implementation(libs.scala3.library)
-
         }
 
         else -> {
 
             implementation(libs.scala2.library)
-
         }
-
-
     }
-
 
 //    val scalaLibraryVersion: String by project
 //    val scalaMajorVersion: String by project
@@ -72,7 +67,7 @@ configure<org.scoverage.ScoverageExtension> {
 tasks.withType<ScalaCompile>().configureEach {
     scalaCompileOptions.apply {
 
-        when(builderScalaVersion) {
+        when (builderScalaVersion) {
             "3" -> {
                 logger.warn("Scala 3 detected")
                 additionalParameters?.plusAssign(
@@ -84,15 +79,18 @@ tasks.withType<ScalaCompile>().configureEach {
                         "-Xignore-scala2-macros",
                         "-new-syntax",
 //                        "explain"
-                    ))
+                    ),
+                )
             }
             "2" -> {
                 logger.warn("Scala 2 detected")
                 additionalParameters?.plusAssign(
                     listOf(
-                        "-feature", "-deprecation", "-Ywarn-dead-code",
+                        "-feature",
+                        "-deprecation",
+                        "-Ywarn-dead-code",
                         "-Xsource:3-cross",
-                    )
+                    ),
                 )
             }
             else -> {
@@ -102,7 +100,7 @@ tasks.withType<ScalaCompile>().configureEach {
     }
 }
 
-//tasks.withType<ScalaCompile>().forEach() { t ->
+// tasks.withType<ScalaCompile>().forEach() { t ->
 //    {
 //        t.apply {
 //            doFirst {
@@ -115,7 +113,7 @@ tasks.withType<ScalaCompile>().configureEach {
 //
 //        }
 //    }
-//}
+// }
 
 //
 //

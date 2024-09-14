@@ -22,11 +22,17 @@ description = "Antlr Parsing utilities"
 
 val antlrJavaPath =
     PackagePath(
-        project.layout.buildDirectory.dir("generated-src/java").get().asFile.path,
+        project.layout.buildDirectory
+            .dir("generated-src/java")
+            .get()
+            .asFile.path,
         "io.truthencode.ddo.grammar.antlr",
     )
 
-data class PackagePath(val source: String, val packageName: String) {
+data class PackagePath(
+    val source: String,
+    val packageName: String,
+) {
     /**
      * Property stores the base output folder.
      * This should generally be similar to 'src/generated/java'
@@ -38,7 +44,10 @@ data class PackagePath(val source: String, val packageName: String) {
         return packageId.replace(".", ps)
     }
 
-    fun packageToPath(packageId: String = packageName, outputFolderBase: File = baseOutputFolder): File {
+    fun packageToPath(
+        packageId: String = packageName,
+        outputFolderBase: File = baseOutputFolder,
+    ): File {
         val np = namespaceToPath(packageId)
         logger.warn("baseOutputFolder: $outputFolderBase")
         return File(outputFolderBase, np)
@@ -60,18 +69,20 @@ tasks {
 //        project.mkdir(outPath)
         logger.warn("setting -lib to : $outPath")
         maxHeapSize = "64m"
-        arguments = arguments + listOf(
-            "-visitor",
-            "-long-messages"
-        )
+        arguments = arguments +
+            listOf(
+                "-visitor",
+                "-long-messages",
+            )
 
 //        this.includes.clear()
 //        this.includes.addAll(listOf("**/*Lexer.g4"))
         doLast {
             logger.warn("Moving files to right location ..")
-            val filter = FilenameFilter() { _, name ->
-                name.endsWith(".java")
-            }
+            val filter =
+                FilenameFilter { _, name ->
+                    name.endsWith(".java")
+                }
             val companionExtensions = listOf("tokens", "interp")
             val move = mutableMapOf<File, File>()
             outputDirectory.listFiles(filter)?.forEach {
@@ -113,7 +124,6 @@ tasks {
         }
     }
 
-
     named("compileKotlin") {
         dependsOn(generateGrammarSource)
     }
@@ -136,22 +146,25 @@ tasks {
     fun moveAntlrGeneratedFilesToTheirPackages(
         grammarFiles: FileTree,
         generatedFolder: String,
-        destFolder: String
+        destFolder: String,
     ) {
         grammarFiles.forEach { file ->
-            val grammarName = if (file.name.lastIndexOf('.') >= 0) file.name.substring(
-                0,
-                file.name.lastIndexOf('.')
-            ) else file.name
+            val grammarName =
+                if (file.name.lastIndexOf('.') >= 0) {
+                    file.name.substring(
+                        0,
+                        file.name.lastIndexOf('.'),
+                    )
+                } else {
+                    file.name
+                }
             val grammarPackage = extractPackageNameFromGrammarFile(file)
             copy {
                 from(generatedFolder)
-                include("${grammarName}*.*")
+                include("$grammarName*.*")
                 into("$destFolder/${grammarPackage.replace(".", "/")}")
             }
         }
         project.delete(fileTree(generatedFolder).include("*.*"))
     }
-
-
 }

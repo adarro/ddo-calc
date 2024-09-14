@@ -16,15 +16,14 @@
 * limitations under the License.
 */
 import com.mooltiverse.oss.nyx.state.State
-import ru.vyarus.gradle.plugin.python.task.PythonTask
-import java.text.SimpleDateFormat
-import java.util.*
 import com.vanniktech.dependency.graph.generator.DependencyGraphGeneratorExtension
-import com.vanniktech.dependency.graph.generator.DependencyGraphGeneratorPlugin
 import guru.nidi.graphviz.attribute.Color
 import guru.nidi.graphviz.attribute.Style
 import ru.vyarus.gradle.plugin.python.PythonExtension
+import ru.vyarus.gradle.plugin.python.task.PythonTask
 import java.lang.management.ManagementFactory
+import java.text.SimpleDateFormat
+import java.util.*
 
 plugins {
     id("org.scoverage") apply (false)
@@ -52,7 +51,10 @@ plugins {
 gradle.buildFinished { println(memoryDiagnostics()) }
 
 fun memoryDiagnostics(): String {
-    fun format(max: Long?, used:Long): String {
+    fun format(
+        max: Long?,
+        used: Long,
+    ): String {
         fun mb(bytes: Long): String = "${bytes / 1024 / 1024}MB"
         return if (max == null) {
             "${mb(used)} (unlimited)"
@@ -71,7 +73,7 @@ fun memoryDiagnostics(): String {
     return "Gradle memory: heap = ${format(heapMax, heapUsed)}, metaspace = ${format(metaMax, metaUsed)}."
 }
 
-//apply(plugin = "org.scoverage")
+// apply(plugin = "org.scoverage")
 // general project information
 val projectName = project.name
 val gitHubAccountName = "truthencode"
@@ -83,9 +85,7 @@ val siteScm = "$gitHubBaseSite/$gitExtension"
 // Used for versioned documentation
 val mkDocsLatestAlias: String? by project
 
-fun mkDocAlias(): String {
-    return mkDocsLatestAlias ?: "Latest"
-}
+fun mkDocAlias(): String = mkDocsLatestAlias ?: "Latest"
 group = "io.truthencode"
 
 // MkDocs config
@@ -228,9 +228,7 @@ class VersionInfo {
     private fun optionalProperty(
         key: String,
         defaultValue: String? = null,
-    ): String? {
-        return readOptionalProperty(props, key, defaultValue)
-    }
+    ): String? = readOptionalProperty(props, key, defaultValue)
 
     val props = versionProperties()
     val major = optionalProperty("version.major", "0")?.toInt()

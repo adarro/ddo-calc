@@ -11,8 +11,8 @@ class ExtraInfoTest
   extends AnyFunSpec with Matchers with LazyLogging with ScalaCheckPropertyChecks {
   final val Positive = "+"
   final val Negative = "-"
-  describe("Extra Info should support numbers") {
-    describe("Positive Numbers") {
+  describe("Extra Info should support ") {
+    it("Signed / Unsigned Positive Numbers") {
       forAll { (n: Int) =>
         whenever(n > -1) {
           val ei = ExtraInfo(n)
@@ -20,7 +20,7 @@ class ExtraInfoTest
         }
       }
     }
-    describe("Negative Numbers") {
+    it("Signed Negative Numbers") {
       forAll { (n: Int) =>
         whenever(n < -1) {
           val ei = ExtraInfo(n)

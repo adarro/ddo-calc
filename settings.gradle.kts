@@ -118,37 +118,39 @@ projectFolders.forEach { dirName ->
         Files.createDirectory(directory)
     }
 
-    Files.find(
-        directory,
-        Integer.MAX_VALUE,
-        { _: java.nio.file.Path, attributes: java.nio.file.attribute.BasicFileAttributes ->
-            attributes.isDirectory
-        },
-    ).use { dir ->
-        dir.forEach { dr ->
-            val customName = dr.toFile().name
-            // ({{f,s -> true}})
-            val files =
-                dr.toFile()
-                    .listFiles { _, str -> str.matches(Regex("($customName|build)\\.gradle(\\.kts)?")) }
+    Files
+        .find(
+            directory,
+            Integer.MAX_VALUE,
+            { _: java.nio.file.Path, attributes: java.nio.file.attribute.BasicFileAttributes ->
+                attributes.isDirectory
+            },
+        ).use { dir ->
+            dir.forEach { dr ->
+                val customName = dr.toFile().name
+                // ({{f,s -> true}})
+                val files =
+                    dr
+                        .toFile()
+                        .listFiles { _, str -> str.matches(Regex("($customName|build)\\.gradle(\\.kts)?")) }
 
-            if (files?.isEmpty() != true) {
-                if (files!!.size != 1) {
-                    logger.warn("Multiple build files located in project directory $dr")
+                if (files?.isEmpty() != true) {
+                    if (files!!.size != 1) {
+                        logger.warn("Multiple build files located in project directory $dr")
+                    }
+                    val projectDir = rootDir.toPath().relativize(dr)
+                    val first = files.first()
+                    val buildFileName = first.name
+                    // build file name may be arbitrary but usually follows either build or the directory name.
+                    // since we're mostly controlling the build we'll assume the containing folders' name.
+                    val projectName = first.parentFile.name
+                    logger.info("Including Project:$projectName \tprojectDir: $projectDir \tBuildFile: $buildFileName")
+                    include(projectName)
+                    project(":$projectName").projectDir = projectDir.toFile()
+                    project(":$projectName").buildFileName = buildFileName
                 }
-                val projectDir = rootDir.toPath().relativize(dr)
-                val first = files.first()
-                val buildFileName = first.name
-                // build file name may be arbitrary but usually follows either build or the directory name.
-                // since we're mostly controlling the build we'll assume the containing folders' name.
-                val projectName = first.parentFile.name
-                logger.info("Including Project:$projectName \tprojectDir: $projectDir \tBuildFile: $buildFileName")
-                include(projectName)
-                project(":$projectName").projectDir = projectDir.toFile()
-                project(":$projectName").buildFileName = buildFileName
             }
         }
-    }
 }
 
 if (System.getenv("enableCompositeBuild") == "true") {

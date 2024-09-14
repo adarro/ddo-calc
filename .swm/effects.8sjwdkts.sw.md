@@ -1,6 +1,7 @@
 ---
 title: Effects
 ---
+
 ```mermaid
 gantt
 title A Gantt Diagram

@@ -1,3 +1,5 @@
+@file:Suppress("UnstableApiUsage")
+
 import io.truthencode.djaxonomy.etc.KotlinTestKitExtension
 import io.truthencode.djaxonomy.etc.KotlinTestKits
 import io.truthencode.djaxonomy.etc.TestTypes

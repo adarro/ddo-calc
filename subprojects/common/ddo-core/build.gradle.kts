@@ -34,7 +34,7 @@ dependencies {
     implementation(project(":ddo-modeling"))
     compileOnly(libs.jakarta.inject)
     // https://mvnrepository.com/artifact/org.eclipse.microprofile.config/microprofile-config-api
-    implementation("org.eclipse.microprofile.config:microprofile-config-api:3.1")
+    implementation(libs.eclipse.microprofile.config)
 
 
     // Platform dependent
@@ -80,10 +80,12 @@ dependencies {
 
 testing {
     suites {
-        withType(JvmTestSuite::class).matching { it.name in listOf("acceptanceTest") }.configureEach {
-            dependencies {
-                implementation(project(":ddo-modeling"))
+        @Suppress("UnstableApiUsage")
+        withType(JvmTestSuite::class).matching { it.name in listOf("acceptanceTest") }
+            .configureEach {
+                dependencies {
+                    implementation(project(":ddo-modeling"))
+                }
             }
-        }
     }
 }

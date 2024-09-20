@@ -53,6 +53,7 @@ zio-prelude = "1.0.0-RC31"
 zio-dev = "2.1.9"
 jakarta-annotations = "3.0.0"
 jakarta-inject = "2.0.1"
+eclipse-microprofile = "3.1"
 
 # Scala Jackson at time of writing doesn't support Scala 3 Enum's natively. It requires another library.
 # That library doesn't support same version of Jackson that Quarkus BOM uses (2.12.5), so this is the best compromise
@@ -171,7 +172,7 @@ typesafe-scala-logging-s213 = { module = "com.typesafe.scala-logging:scala-loggi
 typesafe-scala-logging-s3 = { module = "com.typesafe.scala-logging:scala-logging_3", version.ref = "scala-logging" }
 jakarta-annotations = { module = "jakarta.annotation:jakarta.annotation-api", version.ref = "jakarta-annotations"}
 jakarta-inject = { module = "jakarta.inject:jakarta.inject-api", version.ref = "jakarta-inject"}
-
+eclipse-microprofile-config = { module ="org.eclipse.microprofile.config:microprofile-config-api", version.ref = "eclipse-microprofile"}
 
 quarkus-gradle-plugin = { module = "io.quarkus:gradle-application-plugin", version.ref = "quarkus-gradle-plugin" }
 freefair-lombok-plugin = { module = "io.freefair.gradle:lombok-plugin", version.ref = "freefair-lombok-plugin" }

@@ -81,7 +81,8 @@ object Feature {
         source.generalDescription,
         source.categories,
         ed.bonusType,
-        iValOpt
+        iValOpt,
+        ed.scaling
       )
     }
   }
@@ -89,7 +90,7 @@ object Feature {
   def printFeature(f: Feature[?]): String = {
     val categoryInfo = f.categories.mkString(",")
     s"\nFeature:\nName:\t${f.name} \nCategories:$categoryInfo\nvalue:\t${f.value}\nsource:\t${f.source}\nid:\t\t${f.source.sourceId}\ntext:\t${f.effectText
-        .getOrElse("")}\nTriggers On:${f.effectDetail.triggersOn.mkString}\nTriggers Off:${f.effectDetail.triggersOff.mkString}"
+        .getOrElse("")}\nTriggers On:${f.effectDetail.triggersOn.mkString}\nTriggers Off:${f.effectDetail.triggersOff.mkString}\nscaling:\t${f.effectDetail.scaling.getOrElse(List.empty)}"
   }
   // scalastyle:off
   case class CriticalThreatRangeEffect(

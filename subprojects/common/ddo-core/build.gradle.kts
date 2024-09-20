@@ -18,8 +18,10 @@
 
 // ddo-core
 plugins {
+    id("buildlogic.quarkus-component-conventions")
     id("scala-library-profile")
     id("djaxonomy.test-conventions")
+
 }
 
 description = "Core DDO Objects"
@@ -30,6 +32,10 @@ dependencies {
 //    implementation(enforcedPlatform(project(":ddo-platform-scala")))
     implementation(project(":ddo-util"))
     implementation(project(":ddo-modeling"))
+    compileOnly(libs.jakarta.inject)
+    // https://mvnrepository.com/artifact/org.eclipse.microprofile.config/microprofile-config-api
+    implementation("org.eclipse.microprofile.config:microprofile-config-api:3.1")
+
 
     // Platform dependent
     // https://mvnrepository.com/artifact/org.json4s/json4s-native
@@ -48,6 +54,7 @@ dependencies {
 
             implementation(libs.dev.zio.prelude.s3)
             implementation(libs.typesafe.scala.logging.s3)
+            testImplementation(libs.dev.zio.test.junit.s3 )
         }
 
         else -> {
@@ -69,6 +76,7 @@ dependencies {
     implementation(libs.jetbrains.annotations)
     testImplementation(project(":ddo-testing-util"))
 }
+
 
 testing {
     suites {

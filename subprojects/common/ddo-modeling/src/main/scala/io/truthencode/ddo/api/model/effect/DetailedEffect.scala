@@ -17,9 +17,12 @@
  */
 package io.truthencode.ddo.api.model.effect
 
+import scala.annotation.targetName
+
 /**
  * Represents a specific effect This includes all details such as what it modifies and when it takes
  * effect.
+ *
  * @param id
  *   This will need to uniquely identify the effect
  * @param description
@@ -42,5 +45,23 @@ case class DetailedEffect(
   description: String,
   triggersOn: Seq[String],
   triggersOff: Seq[String],
-  bonusType: String)
+  bonusType: String,
+  override val scaling: Option[Map[String, Int]] = None)
   extends DetailedEffectInfo
+
+object DetailedEffect {
+  @targetName("applyWithScalingInfo")
+
+  def apply(
+    id: String,
+    description: String,
+    triggersOn: Seq[String],
+    triggersOff: Seq[String],
+    bonusType: String,
+    si: Option[Seq[ScalingInfo]]): DetailedEffect = {
+    val scaling = si match
+      case Some(value) => Some(value.map(s => s.source -> s.value).toMap)
+      case None => None
+    DetailedEffect(id, description, triggersOn, triggersOff, bonusType, scaling)
+  }
+}

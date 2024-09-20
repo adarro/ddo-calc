@@ -9,5 +9,6 @@ case class FullEffect(
   override val generalDescription: String,
   override val categories: Seq[String],
   override val bonusType: String,
-  override val intValue: Option[Int] = None
+  override val intValue: Option[Int] = None,
+  override val scaling: Option[Map[String, Int]] = None
 ) extends FullEffectInfo

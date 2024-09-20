@@ -28,68 +28,14 @@ import zio.prelude.Validation
 package object effect {
   // scalastyle:off
   object EffectValidation extends LazyLogging {
-    lazy val triggerNames: Seq[String] = TriggerEvent.values.map(_.entryName)
-    lazy val bonusTypeNames = BonusType.values.map(_.entryName)
-    lazy val categories: Seq[String] = EffectCategories.values.map(_.toString).toSeq
-    logger.info(s"triggerNames size ${triggerNames.size}")
-    def validateName(name: String): Validation[String, String] =
-      if name.isEmpty then {
-        Validation.fail("Name was empty")
-      } else {
-        Validation.succeed(name)
-      }
+    
+    
 
-    def validateDescription(description: String): Validation[String, String] =
-      if description.isEmpty then {
-        Validation.fail("Name was empty")
-      } else {
-        Validation.succeed(description)
-      }
+  
+    
 
-    def validateTriggers(triggers: Seq[String]): Validation[String, Seq[String]] =
-      if triggers.isEmpty then {
-        Validation.fail("At least one valid trigger must be specified")
-      } else {
-        import io.truthencode.ddo.support.TraverseOps._
-        val tIn = triggers.mkString(", ")
-        logger.debug(s"Evaluating Triggers $tIn")
-        val tCommon = triggers.intersect(triggerNames)
-        logger.info(s"intersection found ${tCommon.size} Triggers $tCommon ")
-        if tCommon.nonEmpty then {
-          // Succeed but warn if there are unknown triggers (which we will filter out)
-          val unknowns = triggers.nSelect(triggerNames)
-          if unknowns.nonEmpty then {
-            val badIds = unknowns.mkString(", ")
-            logger.warn(s"Filtering out unknown triggers: $badIds")
-          }
-          Validation.succeed(tCommon)
-        } else { // Not a single valid trigger passed in
-          val nSel = triggers.nSelect(triggerNames).mkString(", ")
-          Validation.fail(s"Invalid Trigger id's $nSel")
-        }
-      }
-
-    def validateBonusType(bonusType: String): Validation[String, String] =
-      if bonusType.isEmpty then {
-        Validation.fail("Bonus Type was empty")
-      } else if bonusTypeNames.contains(bonusType) then {
-        Validation.succeed(bonusType)
-      } else {
-        Validation.fail("Unknown or Invalid Bonus Type")
-      }
-
-    def validateDetailedEffect(
-      id: String,
-      description: String,
-      triggersOn: Seq[String],
-      triggersOff: Seq[String],
-      bonusType: String): Validation[String, DetailedEffect] =
-      Validation.validateWith(
-        validateName(id),
-        validateDescription(description),
-        validateTriggers(triggersOn),
-        validateTriggers(triggersOff),
-        validateBonusType(bonusType))(DetailedEffect)
+    
+    
   }
 
   object EffectCategories extends Enumeration {

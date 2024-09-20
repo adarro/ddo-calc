@@ -46,4 +46,9 @@ trait DetailedEffectInfo {
    * The type of bonus determines stacking rules.
    */
   val bonusType: String
+
+  /**
+   * Associated scaling values
+   */
+  val scaling: Option[Map[String, Int]]
 }

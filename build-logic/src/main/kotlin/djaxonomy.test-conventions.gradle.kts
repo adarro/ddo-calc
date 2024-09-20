@@ -27,7 +27,15 @@ plugins {
 }
 
 tasks.withType(Test::class.java) {
-
+    val t = this
+    logger.info("Were in test config for ${project.name}")
+    // Jandex dependencies needed here where plugin is applied
+    project.plugins.withId("org.kordamp.gradle.jandex") {
+        val jandexProjectTask = ":${project.name}:jandex"
+        logger.info("binding project ${project.name} task to $jandexProjectTask")
+        logger.error("binding project ${project.name} task to $jandexProjectTask")
+        t.dependsOn(jandexProjectTask)
+    }
     systemProperties["concordion.output.dir"] = "${reporting.baseDir}/tests"
     val outputDir = reports.junitXml.outputLocation
 

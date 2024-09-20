@@ -16,7 +16,6 @@ public class RaceFamily extends PanacheEntity {
 
 
     public static RaceFamily getByName(String name) {
-        var rVal = find("#RaceFamily.getByName", name).firstResult();
-        return null;
+        return find("#RaceFamily.getByName", name).firstResult();
     }
 }

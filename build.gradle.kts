@@ -43,7 +43,7 @@ plugins {
     id("com.vanniktech.dependency.graph.generator") version "0.8.0"
 }
 
-// diag borrowed from thig guy who is also tracking down mem issue.
+// diag borrowed from thing guy who is also tracking down mem issue.
 // https://github.com/TWiStErRob/net.twisterrob.gradle/blob/4a0afe2522db725ff217183fa2b73916d3460397/test/src/main/resources/net/twisterrob/gradle/test/runtime.init.gradle.kts
 // Migrate to https://docs.gradle.org/current/userguide/dataflow_actions.html at some point if needed
 // TODO deprecated without replacement https://github.com/gradle/gradle/issues/20151

@@ -17,12 +17,12 @@
  */
 package io.truthencode.ddo.model.effect
 
-import io.truthencode.ddo.api.model.effect.DetailedEffect
-import io.truthencode.ddo.enhancement.BonusType
+import com.typesafe.scalalogging.LazyLogging
+import io.truthencode.ddo.api.model.effect.{DetailedEffect, ScalingEffect, ScalingInfo}
 import io.truthencode.ddo.model.effect.EffectValidation.*
+import io.truthencode.ddo.support.validation.{invalidationOptions, validateDetailedEffect}
 import org.scalatest.funspec.AnyFunSpec
 import org.scalatest.matchers.should.Matchers
-import com.typesafe.scalalogging.LazyLogging
 import zio.prelude.Validation
 
 import scala.language.postfixOps
@@ -40,61 +40,105 @@ class DetailedEffectTest extends AnyFunSpec with Matchers with LazyLogging {
   final val noValidCategories = List("MissSpell", "Laziness")
   final val validBonusType = "Dodge"
   final val invalidBonusType = "SpontaneousErection" // Rogue 'Builder' :)
+  final val emptyScalingMap: Option[Map[String, Int]] = None
+  final val emptyScalingInfo: Option[Seq[ScalingInfo]] = None
+  final val validSimpleScalingMap = Some(Map("SpellPower" -> 100))
 
   val aPerfectlyValidDetailEffect: DetailedEffect =
     DetailedEffect(validId, someDescriptions, validTriggerOn, validTriggerOff, validBonusType)
+  given filterStrategy: invalidationOptions = invalidationOptions.FilterValid
 
   def duplicator(
     id: String,
     description: String,
     triggersOn: Seq[String],
     triggersOff: Seq[String],
-    bonusType: String): (DetailedEffect, Validation[String, DetailedEffect]) = {
+    bonusType: String,
+    scaling: Option[Map[String, Int]]): (DetailedEffect, Validation[String, DetailedEffect]) = {
+    val mapToInfo: Option[Seq[ScalingInfo]] = scaling match
+      case Some(value) =>
+        Some(value.map { si =>
+          ScalingEffect(si._2, si._1)
+        }.toSeq)
+      case None => None
+
     (
       DetailedEffect(id, description, triggersOn, triggersOff, bonusType),
-      validateDetailedEffect(id, description, triggersOn, triggersOff, bonusType))
+      validateDetailedEffect(id, description, triggersOn, triggersOff, bonusType, mapToInfo))
   }
 
   describe("A detailed effect") {
 
     they("should allow fully validated effects") {
-
-      val criticalThreatRangeType = BonusType.Feat.entryName
-
       val (effectDetail, result) = duplicator(
         validId,
         someDescriptions,
         validTriggerOn,
         validTriggerOff,
-        criticalThreatRangeType)
-
-      val r = result.fold(xml => xml.toString, xml => xml.toString)
-      logger.info(s"Result: $r")
+        validBonusType,
+        validSimpleScalingMap)
+      logger.info("evaluating result")
+      //      val r = result.fold(xml => xml.toString, xml => xml.toString)
+      //      logger.info(s"Result: $r")
       result.isSuccess shouldBe true
 
-      result.toOption shouldBe Some(effectDetail)
+    }
+  }
+
+  describe("A different section") {
+    they("should fail invalid triggerOff names") {
+      val (invalidTriggerOnEffectName, validatorTOn) =
+        duplicator(
+          validId,
+          someDescriptions,
+          invalidTriggerOn,
+          validTriggerOff,
+          validBonusType,
+          validSimpleScalingMap)
+
+      validatorTOn.isFailure shouldBe true
+    }
+
+    they("should fail on invalid triggerOff") {
+      val (invalidTriggerOffEffectName, validatorTOff) =
+        duplicator(
+          validId,
+          someDescriptions,
+          validTriggerOn,
+          invalidTriggerOff,
+          validBonusType,
+          validSimpleScalingMap)
+
+      validatorTOff.isFailure shouldBe true
 
     }
 
-    they("should fail invalid trigger names") {
-      val (invalidTriggerOnEffectName, validatorTOn) =
-        duplicator(validId, someDescriptions, invalidTriggerOn, validTriggerOff, validBonusType)
-
-      validatorTOn.isSuccess shouldBe false
-
+    they("should fail on invalid bonus type") {
       val (invalidTriggerOffEffectName, validatorTOff) =
-        duplicator(validId, someDescriptions, invalidTriggerOn, validTriggerOff, validBonusType)
-
-      validatorTOff.isSuccess shouldBe false
+        duplicator(
+          validId,
+          someDescriptions,
+          validTriggerOn,
+          validTriggerOff,
+          invalidBonusType,
+          validSimpleScalingMap)
+      val vErr: String = validatorTOff.fold(x => x.toString, y => "woohoo")
+      logger.error(s"bonus type should have failed with $vErr")
+      validatorTOff.isFailure shouldBe true
 
     }
 
     they("should filter out unknown triggers") {
+      logger.info(s"someValidTriggerOn $someValidTriggerOn")
       val (someValidTrig, result) =
-        duplicator(validId, someDescriptions, someValidTriggerOn, validTriggerOff, validBonusType)
+        duplicator(
+          validId,
+          someDescriptions,
+          someValidTriggerOn,
+          validTriggerOff,
+          validBonusType,
+          validSimpleScalingMap)
       result.isSuccess shouldBe true
-      // objects will be different because invalid triggers are filtered out
-//      result.toOption shouldBe Some(someValidTrig)
     }
   }
 

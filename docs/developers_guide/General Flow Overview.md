@@ -1,4 +1,4 @@
-Imported general flow
+# Imported general flow
 
 @import "GeneralFlow.puml"
 

@@ -21,6 +21,7 @@ These entities can be persisted in one or more databases.
 
 My first choice for object validation (Scala).  
 It has since been retired.
+Migrating to [ZIO Validation](https://zio.dev/zio-prelude/functional-data-types/validation/)
 
 ### [Octopus](https://github.com/krzemin/octopus)
 
@@ -98,6 +99,11 @@ operations etc without affecting the flow of the builder.
 
 Vert.x Vert.x can expose the API as a RESTful service and react via the event bus with Camel.
 
+#### REST Quarkus
+
+Quarkus Renarde - useful for basic front-end data view with full HTML5 +bootstrap htmx and Qute templates.
+Works well with Hibernate ORM, but not compatible with reactive, so entities can not be shared between the two.
+
 ## Apache Isis
 
 Rapid prototyping where Domain Objects become the UI.
@@ -118,6 +124,8 @@ Cometd - Bayeux - https://www.cometd.org/ - Websockets for real time updates. Li
 
 MongoDB - MongoDb is a document database that stores data in JSON-like documents.
 Use for persistent storage of data. Possibly for master data and / or user data.
+
+Hibernate / Quarkus Config https://quarkus.io/guides/datasource
 
 ### Xodus
 

@@ -320,7 +320,8 @@ trait GrantedAbility extends BasicStat with Ability with UsingAbilitySearchPrefi
 // scalastyle:off number.of.methods
 object BasicStat extends Enum[BasicStat] with SearchPrefix {
 
-  lazy val allGrantedAbilities: Seq[GrantedAbilities] = ActiveAbilities.values.map(GrantedAbilities.apply)
+  lazy val allGrantedAbilities: Seq[GrantedAbilities] =
+    ActiveAbilities.values.map(GrantedAbilities.apply)
 
   /**
    * Used when qualifying a search with a prefix. Examples include finding "HalfElf" from qualified

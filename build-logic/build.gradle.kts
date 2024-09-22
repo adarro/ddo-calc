@@ -49,7 +49,7 @@ dependencies {
     implementation("com.github.node-gradle:gradle-node-plugin:7.0.0")
 // code quality
     implementation(libs.spotless.plugin)
-
+    implementation("com.github.ben-manes:gradle-versions-plugin:0.51.0")
     implementation("com.javiersc.gradle-plugins:dependency-updates:0.1.0-rc.40")
     // doc generation (requires python)
 //    implementation("com.palantir.baseline:gradle-baseline-java:$palantirPluginVersion")
@@ -60,6 +60,9 @@ dependencies {
 //    implementation("org.unbroken-dome.gradle-plugins:gradle-testsets-plugin:4.0.0")
     // scala
     implementation("org.scoverage:gradle-scoverage:8.1")
+    // bloop
+    implementation("ch.epfl.scala:gradle-bloop_2.13:1.6.2")
+    // ch.epfl.scala:gradle-bloop_2.12:1.4.3
 
     // documentation / visualization
     // plant uml
@@ -109,7 +112,11 @@ dependencies {
 
 kotlin {
     jvmToolchain {
-        (this as JavaToolchainSpec).languageVersion.set(JavaLanguageVersion.of(defaultJavaToolChainVersion ?: "17")) // "8"
+        (this as JavaToolchainSpec).languageVersion.set(
+            JavaLanguageVersion.of(
+                defaultJavaToolChainVersion ?: "17"
+            )
+        ) // "8"
         // GraalvmToolchain support doesn't work for CI systems. Circle CI requires custom image since deprecating cicrleci/graal in favor of cimg/openjdk
         // (this as JavaToolchainSpec).vendor.set(JvmVendorSpec.GRAAL_VM)
     }

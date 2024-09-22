@@ -146,7 +146,13 @@ The subfeats listed below are included in the table above, but listed here for r
 [featLevel19]: - "c:verify-rows=#feat:grantedFeatsByLevel(19)"
 [featLevel20]: - "c:verify-rows=#feat:grantedFeatsByLevel(20)"
 [fighterBonusFeats]: - "c:verify-rows=#feat:bonusFeats()"
+
+<!-- markdownlint-disable MD053 -->
+
 [_matchStrategy_]: - "c:matchStrategy=KeyMatch"
+
+<!-- markdownlint-enable MD053 -->
+
 [result]: - "?=#feat"
 [light_armor]: http://ddowiki.com/page/Light_Armor_Proficiency "Light Armor Proficiency"
 [medium_armor]: http://ddowiki.com/page/Medium_Armor_Proficiency "Medium Armor Proficiency"

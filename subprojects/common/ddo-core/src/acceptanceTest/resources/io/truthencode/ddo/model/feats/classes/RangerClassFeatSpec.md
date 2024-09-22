@@ -81,10 +81,10 @@ spell level) to prepare and cast spells.
 
 ### Level 7
 
-| [ ][featLevel7] [Feats][result]                                        | Type    | Description                                                                                                                                                                                                                            |
-| ---------------------------------------------------------------------- | ------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| [Improved Wild Empathy](http://ddowiki.com/page/Improved_wild_empathy) | Active  | Allows the ranger to charm an animal (similar to the Charm monster spell)[official] for 5 mins.[official] It can be used 3 times / rest period with a 60 second cool down.[official] Note: Improved wild empathy can not be dispelled. |
-| [Wilderness Lore][wilderness_lore]                                     | Passive | Represents your knowledge of the wilderness. This feat is received once for every favored soul level.                                                                                                                                  |
+| [ ][featLevel7] [Feats][result]                                        | Type    | Description                                                                                                                                                                                                                                        |
+| ---------------------------------------------------------------------- | ------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| [Improved Wild Empathy](http://ddowiki.com/page/Improved_wild_empathy) | Active  | Allows the ranger to charm an animal (similar to the [Charm monster spell](https://ddowiki.com/page/Charm_monster)) for 5 mins. It can be used 3 times / rest period with a 60 second cool down. Note: Improved wild empathy can not be dispelled. |
+| [Wilderness Lore][wilderness_lore]                                     | Passive | Represents your knowledge of the wilderness. This feat is received once for every favored soul level.                                                                                                                                              |
 
 ### Level 8
 
@@ -196,6 +196,7 @@ spell level) to prepare and cast spells.
 [featLevel18]: - "c:verify-rows=#feat:grantedFeatsByLevel(18)"
 [featLevel19]: - "c:verify-rows=#feat:grantedFeatsByLevel(19)"
 [featLevel20]: - "c:verify-rows=#feat:grantedFeatsByLevel(20)"
+[//]: # "This behaves like a comment"
 [_matchStrategy_]: - "c:matchStrategy=KeyMatch"
 [result]: - "?=#feat"
 [favored_enemy]: http://ddowiki.com/page/Favored_Enemy "Favored Enemy"

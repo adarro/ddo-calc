@@ -8,3 +8,6 @@ line_length: false
 spaces: false
 url: false
 whitespace: false
+MD053:
+    ignored_definitions:
+        - _matchStrategy_

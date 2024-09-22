@@ -41,7 +41,8 @@ tasks.withType(Test::class.java) {
     systemProperties["concordion.output.dir"] = "${reporting.baseDir}/tests"
     val outputDir = reports.junitXml.outputLocation
 
-    val extraProps = mutableListOf("-Djunit.platform.reporting.output.dir=${outputDir.get().asFile.absolutePath}")
+    val extraProps =
+        mutableListOf("-Djunit.platform.reporting.output.dir=${outputDir.get().asFile.absolutePath}")
 
     jvmArgumentProviders.add(
         CommandLineArgumentProvider {
@@ -88,6 +89,18 @@ extension.useKotlinTestKit.convention(
 )
 
 dependencies {
+//     implementation("ognl:ognl:3.4.3")
+//     // Extension methods for Java
+//     implementation(libs.systems.manifold.preprocessor) {
+//         version {
+//             because("Concordion indirectly uses old version which interfers with IDE")
+// //            strictly("[2023.1.0,[2024.1.34")
+//             prefer("2024.1.33")
+// //            require("2024.1.33")
+// //            reject("2023.1.10")
+//         }
+//     }
+
     testRuntimeOnly(libs.junit.platform.reporting)
 }
 
@@ -245,8 +258,6 @@ performanceTest by registering(JvmTestSuite::class)
                             targets.all {
                                 testTask.configure {
                                     useJUnitPlatform {
-//  includeEngines = setOf("vintage")
-//    includeEngines("junit-jupiter", "junit-vintage")
                                         testLogging {
                                             events("passed", "skipped", "failed")
                                         }

@@ -72,6 +72,10 @@ tasks.withType<ScalaCompile>().configureEach {
                 logger.warn("Scala 3 detected")
                 additionalParameters?.plusAssign(
                     listOf(
+                        "-feature",
+                        "-explain",
+                        "-Wsafe-init", // Added per Quarkus - Scala3 extension notes along with semanticdb
+                        "-Xsemanticdb",
                         "-Yretain-trees", // Needed for Enumeratum
                         "-rewrite",
 //                        "-new-syntax",
@@ -82,6 +86,7 @@ tasks.withType<ScalaCompile>().configureEach {
                     ),
                 )
             }
+
             "2" -> {
                 logger.warn("Scala 2 detected")
                 additionalParameters?.plusAssign(
@@ -93,6 +98,7 @@ tasks.withType<ScalaCompile>().configureEach {
                     ),
                 )
             }
+
             else -> {
                 logger.error("Scala version $builderScalaVersion not supported")
             }

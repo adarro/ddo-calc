@@ -34,6 +34,7 @@ pluginManagement {
 //    val semVerPluginVersion: String by settings
     val mooltiverseNyxPluginVersion: String by settings
     val foojayResolverPluginVersionversion: String by settings
+    val refreshVersionsPluginVersion: String by settings
 
     plugins {
         id("com.github.hierynomus.license") version "0.16.1"
@@ -43,7 +44,7 @@ pluginManagement {
         id("org.scoverage") version scoveragePluginVersion
         id("com.mooltiverse.oss.nyx") version mooltiverseNyxPluginVersion
         id("org.gradle.toolchains.foojay-resolver-convention") version foojayResolverPluginVersionversion
-
+        id("de.fayard.refreshVersions") version  refreshVersionsPluginVersion
 //        id("org.kordamp.gradle.project") version kordampGradlePluginVersion
 //        id("net.thauvin.erik.gradle.semver") version semVerPluginVersion
         id("ru.vyarus.mkdocs") version "3.0.0"
@@ -60,6 +61,7 @@ pluginManagement {
 plugins {
     id("com.mooltiverse.oss.nyx")
     id("org.gradle.toolchains.foojay-resolver-convention")
+    id("de.fayard.refreshVersions")
 }
 
 enableFeaturePreviewQuietly("TYPESAFE_PROJECT_ACCESSORS", "Type-safe project accessors")

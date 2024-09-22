@@ -30,6 +30,7 @@ pluginManagement {
     val foojayResolverPluginVersionversion: String by settings
     val palantirPluginVersion: String by settings
     val quarkusPlatformVersion: String by settings
+    val refreshVersionsPluginVersion: String by settings
 
     plugins {
 //        id("org.kordamp.gradle.project") version kordampGradlePluginVersion
@@ -42,6 +43,7 @@ pluginManagement {
         id("org.inferred.processors") version "3.7.0"
         id("org.scoverage") version "8.0.3"
         id("io.quarkus") version quarkusPlatformVersion
+        id("de.fayard.refreshVersions") version  refreshVersionsPluginVersion
 //        id("ru.vyarus.mkdocs") version "3.0.0"
     }
 }
@@ -49,6 +51,7 @@ pluginManagement {
 plugins {
 //    id("com.mooltiverse.oss.nyx")
     id("org.gradle.toolchains.foojay-resolver-convention")
+    id("de.fayard.refreshVersions")
 }
 
 /* Hackathon to use catalogs in convention plugin

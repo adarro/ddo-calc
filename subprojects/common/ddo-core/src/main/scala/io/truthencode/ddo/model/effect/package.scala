@@ -27,16 +27,7 @@ import zio.prelude.Validation
  */
 package object effect {
   // scalastyle:off
-  object EffectValidation extends LazyLogging {
-    
-    
-
-  
-    
-
-    
-    
-  }
+  object EffectValidation extends LazyLogging {}
 
   object EffectCategories extends Enumeration {
     type EffectCategory = Value

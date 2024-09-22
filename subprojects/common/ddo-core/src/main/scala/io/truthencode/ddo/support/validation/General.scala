@@ -6,7 +6,6 @@ import io.truthencode.ddo.model.spells.SpellPower
 import io.truthencode.ddo.model.stats.BasicStat
 import zio.prelude.Validation
 
-
 def validateName(name: String): Validation[String, String] =
   if name.isEmpty then {
     Validation.fail("Name was empty")

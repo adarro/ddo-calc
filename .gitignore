@@ -41,6 +41,8 @@ buildNumber.properties
 .Rproj.user/
 
 **/.antlr/
+*.interp
+*.tokens
 
 # produced vignettes
 vignettes/*.html
@@ -65,6 +67,7 @@ project/plugins/project/
 
 # Scala-IDE specific
 .scala_dependencies
+**/*.scala.semanticdb
 .worksheet
 /org/
 infinitest.filters

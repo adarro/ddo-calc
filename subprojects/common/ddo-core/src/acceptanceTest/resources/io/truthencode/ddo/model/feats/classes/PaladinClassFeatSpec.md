@@ -1,5 +1,7 @@
 # Paladin Class Feats
 
+[Paladin](https://ddowiki.com/page/Paladin) | [Sacred Fist](https://ddowiki.com/page/Sacred_Fist)
+
 ## [Level 1](- "level1_class_feats")
 
 | [ ][featLevel1] [Feats][result]                                                                   | Type    | Description                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                             |
@@ -221,21 +223,19 @@ per rest. Smite evil also recharges at a rate of 1 every 90 seconds.
 [featLevel18]: - "c:verify-rows=#feat:grantedFeatsByLevel(18)"
 [featLevel19]: - "c:verify-rows=#feat:grantedFeatsByLevel(19)"
 [featLevel20]: - "c:verify-rows=#feat:grantedFeatsByLevel(20)"
+
+<!-- markdownlint-disable MD053 -->
+
 [_matchStrategy_]: - "c:matchStrategy=KeyMatch"
+
+<!-- markdownlint-enable MD053 -->
+
 [result]: - "?=#feat"
 [light_armor]: http://ddowiki.com/page/Light_Armor_Proficiency "Light Armor Proficiency"
 [medium_armor]: http://ddowiki.com/page/Medium_Armor_Proficiency "Medium Armor Proficiency"
 [heavy_armor]: http://ddowiki.com/page/Heavy_Armor_Proficiency "Heavy Armor Proficiency"
 [shield_feat]: http://ddowiki.com/page/Shield_Proficiency_(General) "Shield Proficiency"
-[energy_resistance_acid]: http://ddowiki.com/page/Energy_Resistance:_Acid "Energy Resistance: Acid"
-[energy_resistance_cold]: http://ddowiki.com/page/Energy_Resistance:_Cold "Energy Resistance: Cold"
-[energy_resistance_electricity]: http://ddowiki.com/page/Energy_Resistance:_Electricity "Energy Resistance: Electricity"
-[energy_resistance_fire]: http://ddowiki.com/page/Energy_Resistance:_Fire "Energy Resistance: Fire"
-[energy_resistance_sonic]: http://ddowiki.com/page/Energy_Resistance:_Sonic "Energy Resistance: Sonic"
 [religious_lore]: http://ddowiki.com/page/Religious_Lore "Religious Lore"
-[elf_feat]: http://www.ddowiki.com/edit/Elf_(feat)?redlink=1 "Elf (feat) (page does not exist)"
-[elf_race]: http://www.ddowiki.com/page/Elf "Elf"
-[sunelf_race]: http://www.ddowiki.com/page/Sun_Elf_(Morninglord) "Sun Elf (Morninglord)"
 [martial_weapon]: http://ddowiki.com/page/Category:Martial_weapons "Martial Weapons"
 
 ![Attribution-ShareAlike 2.5](/images/somerights20.png)

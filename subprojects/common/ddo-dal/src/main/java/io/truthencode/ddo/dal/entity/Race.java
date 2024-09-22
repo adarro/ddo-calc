@@ -1,6 +1,7 @@
-package io.truthencode.ddo.codex.model;
+package io.truthencode.ddo.dal.entity;
 
 import io.quarkus.hibernate.orm.panache.PanacheEntity;
+//import io.quarkus.hibernate.reactive.panache.PanacheEntity;
 import jakarta.persistence.Entity;
 import jakarta.persistence.ManyToOne;
 import jakarta.validation.constraints.NotNull;

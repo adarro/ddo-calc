@@ -21,7 +21,7 @@ moshi = "1.15.0"
 scala2-suffix = "2.13"
 # @pin -> scalaLibraryVersion
 scala2-version = "2.13.14"
-scala3-version = "3.5.0"
+scala3-version = "3.5.1"
 scalaFmt = "3.1.1"
 scalacheck = "1.18.0"
 scalatest = "3.3.0.0-SNAP3"
@@ -29,11 +29,12 @@ scala-logging = "3.9.5"
 scalatestplus = "3.2.19.0"
 scoverage = "2.0.11"
 
-quarkus-s3 = "0.0.1"
-quarkus = "3.13.2"
+quarkus-s3 = "1.0.0"
+quarkus = "3.14.4"
 
 quarkus-renarde = "3.0.18"
 
+manifold = "2024.1.32"
 kordamp-jandex-gradle-plugin = "2.0.0"
 freefair-lombok-plugin = "8.7.1"
 assertj = "3.22.0"
@@ -67,7 +68,7 @@ jackson = "2.12.3"
 # as a convention, we're suffixing the name of the plugin with "-plugin"
 scalafix-plugin = "0.2.2"
 scoverage-plugin = "2.2.0"
-quarkus-gradle-plugin = "3.13.2"
+quarkus-gradle-plugin = "3.14.4"
 spotless-plugin = "6.25.0"
 
 [libraries]
@@ -86,12 +87,21 @@ quarkus-renarde-backoffice = { module = "io.quarkiverse.renarde:quarkus-renarde-
 quarkus-renarde-tests = { module = "io.quarkiverse.renarde:quarkus-renarde-test", version.ref = "quarkus-renarde" }
 quarkus-renarde-security = { module = "io.quarkiverse.renarde:quarkus-renarde-security", version.ref = "quarkus-renarde" }
 quarkus-flyway = { module = "io.quarkus:quarkus-flyway", version.ref = "quarkus" }
+quarkus-hibernate-orm-panache-kotlin = { module = "io.quarkus:quarkus-hibernate-orm-panache-kotlin", version.ref = "quarkus" }
+quarkus-hibernate-orm-panache = { module = "io.quarkus:quarkus-hibernate-orm-panache", version.ref = "quarkus" }
+
 fasterxml-jackson-module = { module = "com.fasterxml.jackson.module:jackson-module-scala_3", version.ref = "jackson" }
 jackson-module-enum = { module = "com.github.pjfanning:jackson-module-scala3-enum_3", version.ref = "jackson" }
 # quarkus-junit5 = {module="io.quarkus:quarkus-junit5", version.ref="quarkus"} # -- versioned transitively via quarkus bom
 # rest-assured-core = {module"io.rest-assured:rest-assured", version.ref="rest-assured"} # -- versioned transitively via quarkus bom
 scala-compiler-s3 = { module = "org.scala-lang:scala3-compiler_3", version.ref = "scala3-version" }
 scala-library-s3 = { module = "org.scala-lang:scala3-library_3", version.ref = "scala3-version" }
+
+# compiler / annotation processing
+systems-manifold-preprocessor = { module = "systems.manifold:manifold-preprocessor", version.ref = "manifold" }
+systems-manifold = { module = "systems.manifold:manifold", version.ref = "manifold" }
+systems-manifold-ext-rt = { module = "systems.manifold:manifold-ext-rt", version.ref = "manifold" }
+systems-manifold-ext = { module = "systems.manifold:manifold-ext", version.ref = "manifold" }
 
 # Bootstrap / Webjars
 webjars-bootstrap = { module = "org.webjars:bootstrap", version.ref = "bootstrap" }
@@ -170,9 +180,9 @@ squareup-moshi-kotlin-codegen = { module = "com.squareup.moshi:moshi-kotlin-code
 typesafe-config = "com.typesafe:config:1.4.2"
 typesafe-scala-logging-s213 = { module = "com.typesafe.scala-logging:scala-logging_2.13", version.ref = "scala-logging" }
 typesafe-scala-logging-s3 = { module = "com.typesafe.scala-logging:scala-logging_3", version.ref = "scala-logging" }
-jakarta-annotations = { module = "jakarta.annotation:jakarta.annotation-api", version.ref = "jakarta-annotations"}
-jakarta-inject = { module = "jakarta.inject:jakarta.inject-api", version.ref = "jakarta-inject"}
-eclipse-microprofile-config = { module ="org.eclipse.microprofile.config:microprofile-config-api", version.ref = "eclipse-microprofile"}
+jakarta-annotations = { module = "jakarta.annotation:jakarta.annotation-api", version.ref = "jakarta-annotations" }
+jakarta-inject = { module = "jakarta.inject:jakarta.inject-api", version.ref = "jakarta-inject" }
+eclipse-microprofile-config = { module = "org.eclipse.microprofile.config:microprofile-config-api", version.ref = "eclipse-microprofile" }
 
 quarkus-gradle-plugin = { module = "io.quarkus:gradle-application-plugin", version.ref = "quarkus-gradle-plugin" }
 freefair-lombok-plugin = { module = "io.freefair.gradle:lombok-plugin", version.ref = "freefair-lombok-plugin" }

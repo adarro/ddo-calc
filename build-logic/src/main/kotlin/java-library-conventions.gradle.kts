@@ -42,8 +42,5 @@ tasks {
         options.generatedSourceOutputDirectory.set(file("$projectDir/src/generated/java"))
         options.compilerArgs.plusAssign("-Asemver.project.dir=$projectDir")
         modularity.inferModulePath.set(false)
-        // sourceCompatibility = JavaVersion.VERSION_11.toString()
-        //  targetCompatibility = JavaVersion.VERSION_11.toString()
-        //   dependsOn("syncVersionFiles")
     }
 }

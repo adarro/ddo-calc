@@ -24,7 +24,7 @@
 plugins {
     id("scala-library-profile")
     `maven-publish`
-    id("be.vbgn.ci-detect") version "0.5.0"
+    id("be.vbgn.ci-detect")
 }
 
 repositories {
@@ -65,10 +65,10 @@ dependencies {
     implementation(group = "io.monix", name = "monix-eval_$scalaMajorVersion", version = monixVersion)
     implementation(group = "io.monix", name = "monix-execution_$scalaMajorVersion", version = monixVersion)
     implementation(group = "io.monix", name = "monix-reactive_$scalaMajorVersion", version = monixVersion)
-    implementation("com.hazelcast:hazelcast:$hazelcastVersion")
-    implementation("org.scala-lang:scala-library:$scalaLibraryVersion")
-    implementation("org.scala-lang:scala-reflect:$scalaLibraryVersion")
-    implementation("org.scala-lang:scala-compiler:$scalaLibraryVersion")
+    implementation("com.hazelcast:hazelcast:_")
+    implementation(libs.scala2.library)
+    implementation("org.scala-lang:scala-reflect:_")
+    implementation("org.scala-lang:scala-compiler:_")
     implementation("com.typesafe.akka:akka-actor_$scalaMajorVersion:2.6.16")
     implementation("org.scalatra.scalate:scalate-core_$scalaMajorVersion:$scalateVersion")
     implementation("io.lemonlabs:scala-uri_$scalaMajorVersion:$lemonlabsVersion")
@@ -77,16 +77,16 @@ dependencies {
     // Logging
     implementation("com.tersesystems.blindsight:blindsight-logstash_$scalaMajorVersion:1.5.2")
     // https://mvnrepository.com/artifact/com.tersesystems.logback/logback-structured-config
-    implementation("com.tersesystems.logback:logback-structured-config:1.0.1")
-    compileOnly("org.slf4j:jul-to-slf4j:$slf4jVersion")
+    implementation("com.tersesystems.logback:logback-structured-config:_")
+    compileOnly("org.slf4j:jul-to-slf4j:_")
     // implementation(group = "ch.qos.logback", name = "logback-classic")
     // implementation(group = "com.typesafe.scala-logging", name = "scala-logging_$scalaMajorVersion")
-    implementation("com.typesafe:config:1.3.0")
+    implementation(libs.config)
     implementation("com.github.kxbmap:configs_$scalaMajorVersion:$configsVersion")
-    implementation("io.vertx:vertx-core:$vertxVersion")
-    implementation("io.vertx:vertx-web:$vertxVersion")
-    implementation("io.vertx:vertx-mongo-client:$vertxVersion")
-    implementation("io.vertx:vertx-ignite:$vertxVersion")
+    implementation("io.vertx:vertx-core:_")
+    implementation("io.vertx:vertx-web:_")
+    implementation("io.vertx:vertx-mongo-client:_")
+    implementation("io.vertx:vertx-ignite:_")
 
     implementation(
         group = "io.github.davidgregory084",
@@ -94,43 +94,43 @@ dependencies {
         version = verticesVersion,
     )
 
-    implementation("io.vertx:vertx-codegen:$vertxVersion")
-    implementation("io.vertx:vertx-auth-shiro:$vertxVersion")
-    implementation("org.apache.shiro:shiro-core:1.8.0")
-    implementation("org.apache.camel:camel-core:$camelVersion")
-    implementation("org.apache.camel:camel-vertx:$camelVersion")
-    implementation("org.apache.camel:camel-vertx:$camelVersion")
-    implementation("org.apache.camel:camel-pulsar:$camelVersion")
-    implementation("org.apache.camel:camel-main:$camelVersion")
-    testImplementation("org.apache.camel:camel-test-junit5:$camelVersion")
-    testImplementation("org.apache.camel:camel-testcontainers-junit5:$camelVersion")
+    implementation("io.vertx:vertx-codegen:_")
+    implementation("io.vertx:vertx-auth-shiro:_")
+    implementation("org.apache.shiro:shiro-core:_")
+    implementation(libs.camel.core)
+    implementation("org.apache.camel:camel-vertx:_")
+    implementation("org.apache.camel:camel-vertx:_")
+    implementation(libs.camel.pulsar)
+    implementation(libs.camel.main)
+    testImplementation("org.apache.camel:camel-test-junit5:_")
+    testImplementation(libs.camel.testcontainers.junit5)
 
-    testImplementation("org.testcontainers:mongodb:1.16.2")
-    testImplementation("org.testcontainers:junit-jupiter:1.16.2")
+    testImplementation(libs.mongodb)
+    testImplementation(libs.org.testcontainers.junit.jupiter)
 
     /* swapping to Zookeeper over hazelcast due to Java 9+ issues + Pulsar is using Zookeeper
     So we can attempt to save a bit of overhead
      */
-//    implementation("org.apache.camel:camel-hazelcast:$camelVersion") {
+//    implementation("org.apache.camel:camel-hazelcast:_") {
 //        exclude(group="com.hazelcast", module = "hazelcast")
 //    }
     implementation(group = "io.monix", name = "monix-eval_$scalaMajorVersion", version = monixVersion)
 
-    implementation("org.javassist:javassist:3.20.0-GA")
+    implementation("org.javassist:javassist:_")
     // testImplementation("org.scalatra.scalate:scalate-test_$scalaMajorVersion:$scalateVersion")
-    testImplementation("org.apache.httpcomponents:httpclient:4.5.13")
-    testImplementation("org.evosuite:evosuite-standalone-runtime:1.0.5")
+    testImplementation("org.apache.httpcomponents:httpclient:_")
+    testImplementation("org.evosuite:evosuite-standalone-runtime:_")
     testImplementation("org.scalatest:scalatest_$scalaMajorVersion:$scalaTestVersion")
 
     // Uri mangling (formerly netaporter)
     // https://mvnrepository.com/artifact/io.lemonlabs/scala-uri
-    implementation("io.lemonlabs:scala-uri_2.13:4.0.0-M3")
+    implementation("io.lemonlabs:scala-uri_2.13:_")
 
-    // testImplementation("io.vertx:vertx-core:$vertxVersion")
+    // testImplementation("io.vertx:vertx-core:_")
 
     // JUnit 5
-    testImplementation(platform("org.junit:junit-bom:$junitPlatformVersion"))
-    testImplementation("org.junit.jupiter:junit-jupiter")
+    testImplementation(platform(Testing.junit.bom))
+    testImplementation(Testing.junit.jupiter)
 
     // testRuntimeOnly(group = "org.junit.platform", name = "junit-platform-engine", version = junitLauncherVersion)
     // testRuntimeOnly(group = "org.junit.platform", name = "junit-platform-launcher", version = junitLauncherVersion)
@@ -139,17 +139,17 @@ dependencies {
     // Legacy tests
     testRuntimeOnly(group = "org.junit.vintage", name = "junit-vintage-engine", version = junitPlatformVersion)
     // Jupyter Extensions
-    // testImplementation("org.junit.jupiter:junit-jupiter:$junitPlatformVersion")
-    // testImplementation("org.junit.jupiter:junit-jupiter-params:$junitPlatformVersion")
-    testImplementation("org.junit.jupiter:junit-jupiter-api")
-    // testRuntimeOnly("org.junit.platform:junit-platform-runner:$junitLauncherVersion")
+    // testImplementation(Testing.junit.jupiter)
+    // testImplementation(Testing.junit.jupiter.params)
+    testImplementation(Testing.junit.jupiter.api)
+    // testRuntimeOnly(libs.junit.platform.runner)
 
     // Vertx Junit integration
-    testImplementation("io.vertx:vertx-junit5:$vertxVersion")
-    testImplementation("io.vertx:vertx-web-client:$vertxVersion")
+    testImplementation("io.vertx:vertx-junit5:_")
+    testImplementation("io.vertx:vertx-web-client:_")
 
     // Embed web server for testing// https://mvnrepository.com/artifact/org.eclipse.jetty/jetty-server
-    testImplementation("org.eclipse.jetty:jetty-server:11.0.7")
+    testImplementation("org.eclipse.jetty:jetty-server:_")
 }
 
 group = "io.truthencode"

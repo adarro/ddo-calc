@@ -48,7 +48,7 @@ pluginManagement {
 //        id("org.kordamp.gradle.project") version kordampGradlePluginVersion
 //        id("net.thauvin.erik.gradle.semver") version semVerPluginVersion
         id("ru.vyarus.mkdocs") version "3.0.0"
-        id("io.quarkus") version "3.3.3"
+        id("io.quarkus") version "3.15.0"
         id("org.sonarqube") version "4.3.1.3277"
     }
 

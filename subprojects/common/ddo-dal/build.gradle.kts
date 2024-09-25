@@ -9,22 +9,22 @@ plugins {
 description = "ReSTFull Data Access Entities"
 
 dependencies {
-    implementation("io.quarkus:quarkus-smallrye-openapi")
-    //    implementation("io.quarkus:quarkus-jdbc-postgresql")
-    implementation("io.quarkus:quarkus-hibernate-reactive-rest-data-panache")
-    implementation("io.quarkus:quarkus-reactive-pg-client")
-//    implementation("io.quarkus:quarkus-rest") included by quarkus-rest-jackson
-    implementation("io.quarkus:quarkus-rest-jackson")
+    implementation(libs.quarkus.smallrye.openapi)
+    implementation(libs.quarkus.jdbc.postgresql)
+    implementation(libs.quarkus.hibernate.reactive.rest.data.panache)
+    implementation(libs.quarkus.reactive.pg.client)
+//    implementation(libs.quarkus.rest) included by quarkus-rest-jackson
+    implementation(libs.quarkus.rest.jackson)
     implementation(libs.quarkus.hibernate.orm.panache)
     implementation(libs.quarkus.hibernate.orm.panache.kotlin)
-//    implementation("io.quarkus:quarkus-resteasy-reactive-jackson")
+//    implementation(libs.quarkus.resteasy.reactive.jackson)
     //  lightweight alternative to hibernate-reactive-panache
     // Hibernate JPA assistance
     implementation(libs.hypersistence.utils)
 //    implementation(libs.jetbrains.xodus.xodus.openAPI)
     implementation(libs.xodus.openAPI)
     testImplementation(libs.testing.assertj)
-    testImplementation("io.rest-assured:rest-assured")
+    testImplementation(libs.rest.assured)
 }
 
 tasks.withType(Jar::class) {

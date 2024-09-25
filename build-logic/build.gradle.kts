@@ -41,73 +41,73 @@ dependencies {
     implementation(libs.kotlin.gradle.plugin)
     implementation(libs.kotlin.allopen.plugin)
     implementation(libs.scalafix.plugin)
-    implementation("org.sonarsource.scanner.gradle:sonarqube-gradle-plugin:4.3.1.3277")
+    implementation("org.sonarsource.scanner.gradle:sonarqube-gradle-plugin:_")
     // enable gradle catalog for included convention plugins
     implementation(files(libs.javaClass.superclass.protectionDomain.codeSource.location))
     // tool languages
     // node
-    implementation("com.github.node-gradle:gradle-node-plugin:7.0.0")
+    implementation("com.github.node-gradle:gradle-node-plugin:_")
 // code quality
     implementation(libs.spotless.plugin)
-    implementation("com.github.ben-manes:gradle-versions-plugin:0.51.0")
-    implementation("com.javiersc.gradle-plugins:dependency-updates:0.1.0-rc.40")
+    implementation("com.github.ben-manes:gradle-versions-plugin:_")
+    implementation("com.javiersc.gradle-plugins:dependency-updates:_")
     // doc generation (requires python)
-//    implementation("com.palantir.baseline:gradle-baseline-java:$palantirPluginVersion")
+//    implementation("com.palantir.baseline:gradle-baseline-java:_")
 
     // CI build support
-    implementation("be.vbgn.gradle:ci-detect-plugin:0.5.0")
+    implementation("be.vbgn.gradle:ci-detect-plugin:_")
 
-//    implementation("org.unbroken-dome.gradle-plugins:gradle-testsets-plugin:4.0.0")
+//    implementation("org.unbroken-dome.gradle-plugins:gradle-testsets-plugin:_")
     // scala
-    implementation("org.scoverage:gradle-scoverage:8.1")
+    implementation("org.scoverage:gradle-scoverage:_")
     // bloop
-    implementation("ch.epfl.scala:gradle-bloop_2.13:1.6.2")
+    implementation("ch.epfl.scala:gradle-bloop_2.13:_")
     // ch.epfl.scala:gradle-bloop_2.12:1.4.3
 
     // documentation / visualization
     // plant uml
-    implementation("io.freefair.gradle:plantuml-plugin:8.2.2")
-    implementation("gradle.plugin.org.dripto.gradle.plugin.plantuml:plugin:0.0.3")
-    implementation("com.cosminpolifronie.gradle:gradle-plantuml-plugin:1.6.0")
+    implementation("io.freefair.gradle:plantuml-plugin:_")
+    implementation("gradle.plugin.org.dripto.gradle.plugin.plantuml:plugin:_")
+    implementation("com.cosminpolifronie.gradle:gradle-plantuml-plugin:_")
 
-    implementation("io.swagger.core.v3:swagger-gradle-plugin:2.1.11")
-    implementation("gradle.plugin.ms.ralph.gradle:gradle-dependency-plantuml-exporter-plugin:1.0.0")
-    implementation("io.spring.gradle:dependency-management-plugin:1.0.15.RELEASE")
+    implementation("io.swagger.core.v3:swagger-gradle-plugin:_")
+    implementation("gradle.plugin.ms.ralph.gradle:gradle-dependency-plantuml-exporter-plugin:_")
+    implementation("io.spring.gradle:dependency-management-plugin:_")
 
     // kotlin
-//    implementation("org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlinVersion")
-    implementation("com.google.devtools.ksp:symbol-processing-gradle-plugin:$kotlinVersion-1.0.24")
+//    implementation(Kotlin.gradlePlugin)
+    implementation("com.google.devtools.ksp:symbol-processing-gradle-plugin:_")
     // not finding jitpacked resource
-//    implementation("com.strumenta.antlr-kotlin:antlr-kotlin-gradle-plugin:70d79b7eb1")
+//    implementation("com.strumenta.antlr-kotlin:antlr-kotlin-gradle-plugin:_")
 
     // quarkus related
     // quarkus incompatible with avrohugger (old scala 12.1) used by ddo-modeling.  Need to separate build.
-//    implementation("io.quarkus:gradle-application-plugin:$quarkusPlatformVersion")
-    implementation("org.kordamp.gradle:jandex-gradle-plugin:$jandexPluginVersion")
+//    implementation(libs.quarkus.gradle.plugin)
+    implementation("org.kordamp.gradle:jandex-gradle-plugin:_")
 
     // Database
-    implementation("app.cash.sqldelight:gradle-plugin:2.0.0-alpha05")
+    implementation(CashApp.sqlDelight.gradlePlugin)
 
     // String utils
     // camel / snake etc
     // universal dependency for Gradle 5.3 and above
     // in case of multiplatform project, just specify the dependency for commonMain/commonTest source set
-    implementation("net.pearx.kasechange:kasechange:$kasechangeVersion")
+    implementation("net.pearx.kasechange:kasechange:_")
     // to here
-    //    implementation("com.diffplug.spotless-changelog:spotless-changelog-plugin-gradle:2.4.0")
-//    implementation("org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlinPluginVersion")
-    // implementation("com.palantir.baseline:com.palantir.gradle-baseline-config:$palantirPluginVersion")
+    //    implementation("com.diffplug.spotless-changelog:spotless-changelog-plugin-gradle:_")
+//    implementation(Kotlin.gradlePlugin)
+    // implementation("com.palantir.baseline:com.palantir.gradle-baseline-config:_")
     // classpath for  id("com.palantir.baseline")
     //  id("app.cash.sqldelight") version "2.0.0-alpha05"
-//    implementation("com.palantir.baseline:com.palantir.baseline-reproducibility:$palantirPluginVersion")
-//    implementation("com.palantir.baseline:com.palantir.baseline-config:$palantirPluginVersion")
-//    implementation("com.palantir.baseline:com.palantir.baseline-exact-dependencies:$palantirPluginVersion")
-//    implementation("com.palantir.baseline:gradle-baseline-java:$palantirPluginVersion")
-//    implementation("org.jetbrains.kotlin:kotlin-gradle-plugin")
+//    implementation("com.palantir.baseline:com.palantir.baseline-reproducibility:_")
+//    implementation("com.palantir.baseline:com.palantir.baseline-config:_")
+//    implementation("com.palantir.baseline:com.palantir.baseline-exact-dependencies:_")
+//    implementation("com.palantir.baseline:gradle-baseline-java:_")
+//    implementation(Kotlin.gradlePlugin)
     // im
 //
-// implementation("app.cash.sqldelight:runtime-jvm:2.0.0-alpha05")
-//    implementation("ru.vyarus:gradle-mkdocs-plugin:3.0.0")
+// implementation("app.cash.sqldelight:runtime-jvm:_")
+//    implementation("ru.vyarus:gradle-mkdocs-plugin:_")
 }
 
 kotlin {

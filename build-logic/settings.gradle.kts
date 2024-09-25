@@ -54,6 +54,13 @@ plugins {
     id("de.fayard.refreshVersions")
 }
 
+//refreshVersions {
+//
+//    this.featureFlags{enable(FeatureFlag.VERSIONS_CATALOG)
+//
+//    }
+//}
+
 /* Hackathon to use catalogs in convention plugin
 Tracked in [github.com/gradle/gradle/issues/17863]
 SO [stackoverflow.com/questions/69080927/gradle-7-2-gradle-kotlin-dsl-how-to-use-catalogs-in-convention-plugin]

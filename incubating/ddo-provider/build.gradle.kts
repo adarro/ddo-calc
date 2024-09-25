@@ -15,13 +15,13 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import com.zlad.gradle.avrohugger.AvrohuggerExtension
+//import com.zlad.gradle.avrohugger.AvrohuggerExtension
 
 plugins {
     application
-    id("scala-application-profile")
-    id("com.zlad.gradle.avrohugger")
-    id("com.github.lkishalmi.gatling") version "3.2.9"
+    id("scala-library-profile")
+//    id("com.zlad.gradle.avrohugger") // compiled against 2.12 => incompatible with scala 2.13
+    id("io.gatling.gradle") version "3.12.0.1"
     id("org.openapi.generator")
 //    id("integration-test-conventions")
 }
@@ -41,7 +41,7 @@ dependencies {
     implementation(project(":ddo-modeling"))
     testImplementation(project(":ddo-testing-util"))
 
-    implementation(dependencyNotation = "org.scala-lang:scala-library:$scalaLibraryVersion")
+    implementation(dependencyNotation = libs.scala2.library)
     implementation(group = "com.beachape", name = "enumeratum_$scalaMajorVersion")
     implementation(group = "com.typesafe", name = "config")
     implementation(group = "com.github.kxbmap", name = "configs_$scalaMajorVersion")
@@ -53,7 +53,7 @@ dependencies {
     implementation("org.wvlet.airframe:airframe-http-finagle_$scalaMajorVersion:$airframeVersion")
 
     // Atomic support
-    implementation("org.scala-stm:scala-stm_2.13:0.11.1")
+    implementation(libs.scala.stm.s213)
 
     // Monix
     // Monix-bio is new and isn't version aligned with others
@@ -82,11 +82,11 @@ dependencies {
         version = pulsar4sVersion,
     )
 
-    testImplementation("org.testcontainers:pulsar:1.16.2")
-    testImplementation("org.apache.camel:camel-testcontainers-junit5:$camelVersion")
+    testImplementation(libs.pulsar)
+    testImplementation(libs.camel.testcontainers.junit5)
 
-    testImplementation("org.testcontainers:mongodb:1.16.2")
-    testImplementation("org.testcontainers:junit-jupiter:1.16.2")
+    testImplementation(libs.mongodb)
+    testImplementation(libs.org.testcontainers.junit.jupiter)
 
     // validation and rules
     implementation(group = "com.wix", name = "accord-core_$scalaMajorVersion")
@@ -97,15 +97,15 @@ dependencies {
     testImplementation("org.mockito:mockito-scala-scalatest_$scalaMajorVersion:1.16.49")
 
 // go camel
-    implementation("org.apache.camel:camel-core:$camelVersion")
-    implementation("org.apache.camel:camel-pulsar:$camelVersion")
-    implementation(dependencyNotation = "org.apache.camel:camel-componentdsl:$camelVersion")
-    implementation("org.apache.camel:camel-main:$camelVersion")
+    implementation(libs.camel.core)
+    implementation(libs.camel.pulsar)
+    implementation(dependencyNotation = libs.camel.componentdsl)
+    implementation(libs.camel.main)
 
     // JUnit 5
     testRuntimeOnly(group = "org.junit.platform", name = "junit-platform-engine")
     testRuntimeOnly(group = "org.junit.platform", name = "junit-platform-launcher")
-    testImplementation("org.junit.jupiter:junit-jupiter")
+    testImplementation(Testing.junit.jupiter)
     testRuntimeOnly(group = "org.junit.jupiter", name = "junit-jupiter-engine")
     testRuntimeOnly(group = "co.helmethair", name = "scalatest-junit-runner")
 
@@ -201,16 +201,16 @@ openApiValidate {
     inputSpec.set(apiSpec.asPath)
 }
 
-avrohugger {
-    this.sourceDirectories {
-        this.from(schemaDir)
-    }
-    this.destinationDirectory.set(generatedScalaSourceDir.singleFile)
-    typeMapping {
-        protocolType = AvrohuggerExtension.ScalaADT
-        enumType = AvrohuggerExtension.ScalaCaseObjectEnum
-    }
-}
+//avrohugger {
+//    this.sourceDirectories {
+//        this.from(schemaDir)
+//    }
+//    this.destinationDirectory.set(generatedScalaSourceDir.singleFile)
+//    typeMapping {
+//        protocolType = AvrohuggerExtension.ScalaADT
+//        enumType = AvrohuggerExtension.ScalaCaseObjectEnum
+//    }
+//}
 val schemaList = listOf("parseHub")
 
 // Create Tasks to generate Avro Schemas for our OpenAPI specs

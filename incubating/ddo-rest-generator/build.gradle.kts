@@ -25,8 +25,8 @@
 
 plugins {
     id("scala-library-profile")
-    id("acceptance-test-conventions")
-    id("openapi-conventions")
+    id("djaxonomy.test-conventions")
+//    id("openapi-conventions")
 }
 
 description = "REST services DDO objects"
@@ -42,7 +42,7 @@ dependencies {
 
     implementation(platform(project(":ddo-platform-scala")))
     implementation(project(":ddo-modeling"))
-    implementation("org.scala-lang:scala-library:$scalaLibraryVersion")
+    implementation(libs.scala2.library)
     implementation(group = "com.beachape", name = "enumeratum_$scalaMajorVersion")
     implementation(group = "com.typesafe", name = "config")
     implementation(group = "com.github.kxbmap", name = "configs_$scalaMajorVersion")
@@ -50,10 +50,10 @@ dependencies {
     // Quill
     // Unsure if I really need this but occasionally get a noclass def for ZIO/Fail
     // https://mvnrepository.com/artifact/dev.zio/zio
-    implementation("dev.zio:zio_2.13:1.0.12")
-    compileOnly("org.apache.commons:commons-lang3:3.7")
-    compileOnly("javax.ws.rs:javax.ws.rs-api:2.1")
-    compileOnly("javax.servlet:javax.servlet-api:3.1.0")
+    implementation(libs.zio.2.13)
+    compileOnly(libs.commons.lang3)
+    compileOnly(libs.javax.ws.rs.api)
+    compileOnly(libs.javax.servlet.api)
 
     // validation and rules
     implementation(group = "ch.qos.logback", name = "logback-classic")

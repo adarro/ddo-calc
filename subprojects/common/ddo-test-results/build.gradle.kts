@@ -30,10 +30,10 @@ reporting {
         // }
     }
 }
-sonar {
-
-    isSkipProject = true
-}
+//sonar {
+//
+//    isSkipProject = true
+//}
 
 /**
 Task simply prints out a list of projects to be used in the testReportAggregation

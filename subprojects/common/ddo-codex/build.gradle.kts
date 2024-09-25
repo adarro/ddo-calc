@@ -18,25 +18,18 @@ dependencies {
     implementation(libs.quarkus.renarde)
     implementation(libs.quarkus.renarde.backoffice)
     implementation(libs.quarkus.renarde.security)
-//    implementation("io.quarkus:quarkus-hibernate-reactive-rest-data-panache")
-//    implementation("io.quarkus:quarkus-reactive-pg-client")
+//    implementation(libs.quarkus.hibernate.reactive.rest.data.panache)
+//    implementation(libs.quarkus.reactive.pg.client)
     implementation(libs.quarkus.mailer)
 
     // Database
-    implementation("io.quarkus:quarkus-hibernate-orm-panache")
-    implementation("io.quarkus:quarkus-jdbc-postgresql")
+    implementation(libs.quarkus.hibernate.orm.panache)
+    implementation(libs.quarkus.jdbc.postgresql)
     implementation(libs.quarkus.flyway)
-
-//    // Extension methods for Java
-
-    implementation(libs.systems.manifold.ext.rt)
-    annotationProcessor(libs.systems.manifold.ext)
-    testAnnotationProcessor(libs.systems.manifold.ext)
-
     testImplementation(libs.quarkus.renarde.tests)
     // reactive client
-//    implementation("io.quarkus:quarkus-hibernate-reactive-rest-data-panache")
-//    implementation("io.quarkus:quarkus-reactive-pg-client")
+//    implementation(libs.quarkus.hibernate.reactive.rest.data.panache)
+//    implementation(libs.quarkus.reactive.pg.client)
 }
 
 fun isModuleAware(): Boolean {
@@ -55,18 +48,6 @@ fun isModuleAware(): Boolean {
 tasks.withType<JavaCompile> {
     val args = listOf("-parameters")
 
-    if (isModuleAware()) {
-        options.compilerArgs.addAll(
-            args.plus(
-                listOf(
-                    "-Xplugin:Manifold",
-                    "--module-path",
-                    this.classpath.asPath,
-                ),
-            ),
-        )
-    } else {
-        options.compilerArgs.addAll(args.plus("-Xplugin:Manifold"))
-    }
+    options.compilerArgs.addAll(args)
     options.encoding = "UTF-8"
 }

@@ -20,10 +20,10 @@ plugins {
     id("scala-library-profile")
     id("djaxonomy.test-conventions")
 //     id("com.zlad.gradle.avrohugger")
-//    id("com.github.lkishalmi.gatling") version "3.2.9"
+//    id("com.github.lkishalmi.gatling")
     //  id("io.gatling.gradle") version "3.9.5.5" replaces above
     id("org.openapi.generator")
-//    id("io.quarkus")// version "3.3.3"
+//    id("io.quarkus")//
 }
 // apply {
 //    plugin("io.quarkus")// version "3.3.3"

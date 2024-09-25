@@ -22,7 +22,7 @@ plugins {
 //    id("scala-library-profile")
 //    id("djaxonomy.test-conventions")
     id("com.zlad.gradle.avrohugger")
-//    id("com.github.lkishalmi.gatling") version "3.2.9"
+//    id("com.github.lkishalmi.gatling")
     //  id("io.gatling.gradle") version "3.9.5.5" replaces above
 //    id("org.openapi.generator")
 }
@@ -30,6 +30,10 @@ plugins {
 repositories {
 
     mavenCentral()
+    maven {
+        name = "OrbitalHQ"
+        url = uri("https://repo.orbitalhq.com/release")
+    }
 }
 
 dependencies {
@@ -39,8 +43,18 @@ dependencies {
     unsure how  helpful this will be as most data will need runtime validation (aka wix)
      */
     // Use Scala $scalaMajorVersion in our library project
-    implementation("org.scala-lang:scala-library:2.13.14")
-//    implementation("org.scala-lang:scala-library:2.12.19")
+    implementation(libs.scala2.library)
+    implementation("org.taxilang:avro-to-taxi:1.56.0")
+    // https://mvnrepository.com/artifact/org.apache.avro/avro-tools
+    implementation("org.apache.avro:avro-tools:1.12.0")
+    testCompileOnly("org.projectlombok:lombok:1.18.34")
+    testAnnotationProcessor("org.projectlombok:lombok:1.18.34")
+    testImplementation("org.junit.jupiter:junit-jupiter:5.7.1")
+    testRuntimeOnly("org.junit.platform:junit-platform-launcher")
+    testImplementation("com.google.guava:guava:33.3.0-jre")
+
+    testImplementation("org.hamcrest:hamcrest-all:1.3")
+//    implementation(libs.scala2.library)
 
 //    val scalaLibraryVersion: String by project
 //    val scalaMajorVersion: String by project
@@ -70,6 +84,17 @@ dependencies {
 //    testRuntimeOnly(group = "co.helmethair", name = "scalatest-junit-runner")
 }
 
+
+
+tasks.named<Test>("test") {
+    useJUnitPlatform()
+
+    maxHeapSize = "1G"
+
+    testLogging {
+        events("passed")
+    }
+}
 // OpenApi code / schema generation
 
 val apiSpec: FileCollection = project.rootProject.layout.files("$rootDir/specs/ddo-fatespinner-oas3-swagger.yaml")

@@ -19,9 +19,7 @@
 description = "Shared Testing and convenience Utilities (Intended for Test Scope)"
 
 plugins {
-    id("scala-library-profile")
-//    id("djaxonomy.test-conventions")
-//    id("acceptance-test-conventions")
+    id("buildlogic.scala-library-profile")
 }
 
 dependencies {

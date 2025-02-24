@@ -40,13 +40,18 @@ dependencies {
     /*
     https://github.com/fthomas/refined
     check out refined library for compile time constraints
-    unsure how  helpful this will be as most data will need runtime validation (aka wix)
+    unsure how  helpful this will be as most data will need runtime validation (aka wix / zio.validation)
      */
     // Use Scala $scalaMajorVersion in our library project
     implementation(libs.scala2.library)
-    implementation("org.taxilang:avro-to-taxi:1.56.0")
+    // implementation(libs.taxi.lang)
+    implementation(libs.taxi.jpa)
+    implementation(libs.taxi.avrototaxi)
+    // implementation("org.taxilang:avro-to-taxi:1.56.0")
     // https://mvnrepository.com/artifact/org.apache.avro/avro-tools
-    implementation("org.apache.avro:avro-tools:1.12.0")
+    implementation(libs.avro.tools)
+    // https://savro.dataedu.ca/
+    implementation(libs.savro.s213)
     testCompileOnly("org.projectlombok:lombok:1.18.34")
     testAnnotationProcessor("org.projectlombok:lombok:1.18.34")
     testImplementation("org.junit.jupiter:junit-jupiter:5.7.1")
@@ -83,8 +88,6 @@ dependencies {
 //    testRuntimeOnly(group = "org.junit.platform", name = "junit-platform-launcher")
 //    testRuntimeOnly(group = "co.helmethair", name = "scalatest-junit-runner")
 }
-
-
 
 tasks.named<Test>("test") {
     useJUnitPlatform()

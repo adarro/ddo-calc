@@ -18,7 +18,7 @@
 package io.truthencode.ddo.support.dice
 
 /**
- * Represents a Dice with Sides and Number of Dice to roll
+ * Represents a Die with Sides and Number of Dice to roll
  *
  * @example
  *   2d6 would be 2 6 sided dice or 2 - 12
@@ -48,6 +48,6 @@ object Dice {
   }
 
   def parse(s: String): Unit = {
-    val regx = """\[\d+d\d+\]""".r
+    val regx = """\[\d+d\d+]""".r
   }
 }

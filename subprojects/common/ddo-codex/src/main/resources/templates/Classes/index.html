@@ -1,0 +1,31 @@
+{#include main.html }
+{#title}Classes{/title}
+<p>A Character class represents a sort of job or role</p>
+
+{#if classes.size() == 0}
+<div>No Classes found. Use <a href="/_renarde/backoffice/CharacterClass/index">BackOffice</a> to create some!</div>
+{#else}
+<table class=".table">
+    <thead>
+    <tr>
+        <td>Name</td>
+        <td>Description</td>
+    </tr>
+    </thead>
+    <tbody>
+    {#each classes}
+    <tr>
+        <td><a href="{uri:Classes.view(it.id)}">{it.name}</a></td>
+        <td>{it.description}</td>
+
+    </tr>
+
+    {/each}
+    </tbody>
+</table>
+
+
+count: {classes.size}
+{/if}
+
+{/include}

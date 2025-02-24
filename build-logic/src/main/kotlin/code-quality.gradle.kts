@@ -1,5 +1,5 @@
-import io.truthencode.djaxonomy.etc.RecurseValue
-import io.truthencode.djaxonomy.etc.Recursion
+import io.truthencode.buildlogic.RecurseValue
+import io.truthencode.buildlogic.Recursion
 
 /*
  * SPDX-License-Identifier: Apache-2.0
@@ -23,7 +23,7 @@ plugins {
 
 //    id("com.github.hierynomus.license")
     id("com.diffplug.spotless")
-    id("djaxonomy.quality-sonar")
+    id("buildlogic.quality-sonar")
 //    id("com.javiersc.gradle.plugins.dependency.updates")
 }
 

@@ -1,11 +1,12 @@
 import java.io.FilenameFilter
+import java.nio.file.FileSystems
 
 plugins {
-    id("djaxonomy.kotlin-library-conventions")
+    id("buildlogic.kotlin-library-conventions")
     antlr
     id("code-quality")
     idea
-    id("djaxonomy.kotlin-test-conventions")
+    id("buildlogic.kotlin-test-conventions")
 }
 
 dependencies {
@@ -40,7 +41,7 @@ data class PackagePath(
     val baseOutputFolder: File = File(source)
 
     private fun namespaceToPath(packageId: String = packageName): String {
-        val ps = System.getProperty("file.separator")
+        val ps = FileSystems.getDefault().separator
         return packageId.replace(".", ps)
     }
 

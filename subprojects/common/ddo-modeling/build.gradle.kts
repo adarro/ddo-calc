@@ -17,8 +17,8 @@
  */
 
 plugins {
-    id("scala-library-profile")
-    id("djaxonomy.test-conventions")
+    id("buildlogic.scala-library-profile")
+    id("buildlogic.test-conventions")
 //     id("com.zlad.gradle.avrohugger")
 //    id("com.github.lkishalmi.gatling")
     //  id("io.gatling.gradle") version "3.9.5.5" replaces above
@@ -70,6 +70,7 @@ tasks.register("cleanAvroSchemas", GradleBuild::class) {
     tasks = listOf("clean")
 }
 
+@Suppress("UnstableApiUsage")
 configurations {
     val codeGen by configurations.creating {
         isCanBeConsumed = false

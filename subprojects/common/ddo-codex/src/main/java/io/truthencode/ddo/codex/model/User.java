@@ -2,10 +2,8 @@ package io.truthencode.ddo.codex.model;
 
 
 
-import java.util.Arrays;
 import java.util.HashSet;
 import java.util.Set;
-import java.util.stream.Collectors;
 
 import io.truthencode.ddo.codex.model.security.SecurityRoles;
 import jakarta.persistence.Column;
@@ -30,6 +28,9 @@ public class User extends PanacheEntity implements RenardeUser {
     public String lastName;
     public boolean isAdmin;
 
+    public String tenantId;
+    public String authId;
+
     @Column(unique = true)
     public String confirmationCode;
 
@@ -52,8 +53,13 @@ public class User extends PanacheEntity implements RenardeUser {
         return find("LOWER(userName) = ?1", username.toLowerCase()).firstResult();
     }
 
-    public static User findForContirmation(String confirmationCode) {
+    public static User findForConfirmation(String confirmationCode) {
         return find("confirmationCode = ?1 AND status = ?2", confirmationCode, UserStatus.CONFIRMATION_REQUIRED).firstResult();
+    }
+
+
+    public static User findByAuthId(String tenantId, String authId) {
+        return find("tenantId = ?1 AND authId = ?2", tenantId, authId).firstResult();
     }
 
     private String _user;

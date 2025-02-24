@@ -1,0 +1,118 @@
+{#include main.html }
+{#title}Categories{/title}
+{#if auth:DEV_USER}
+<h3>Goals</h3>
+<div style="background-color: #a85ead; color: #ffffff;">
+    <p>
+We want to emulate https://github.com/ia3andy/renotes/blob/main/src/main/java/rest/Notes.java
+    </p>
+    The search would be a bonus, but not required.
+    Initially we should supply a list of categories and allow the user to select one or more with an 'Add' button.
+    The list of linked should have a 'Remove' button.
+</div>
+{/if}
+{#form uri:Categories.create()}
+
+<fieldset>
+    <legend>Create a new Category and associate with one or more categories</legend>
+    {#formElement name="name" label="Category Name"}
+    {#input name="name"/}
+    {/formElement}
+    {#formElement name="description" label="Description"}
+    {#input name="description"/}
+    {/formElement}
+    {#formElement name="parentId" label="Parent Category"}
+    <select name="parentId">
+        <option>Select a Parent</option>
+        {#each categories}
+        <option value="{it.id}">{it.name}</option>
+        {/each}
+    </select>
+
+    {/formElement}
+    <button type="submit" class="btn btn-primary">Add Category</button>
+</fieldset>
+
+{/form}
+<hr/>
+
+<h3>
+    Search Contacts
+    <span class="htmx-indicator">
+    <img src="/img/spinner-cir.svg"/> Searching...
+   </span>
+</h3>
+<div id="toolbar">
+    <input type="submit" name="save" value="Save" form="saveForm" />
+    <input type="submit" name="delete" value="Delete" form="deleteForm" />
+    <a href="{uri:Categories.index()}">Cancel</a>
+</div>
+<label>Child Services</label>
+<input class="form-control" type="search"
+       name="search" placeholder="Begin Typing To Search Categories..."
+       hx-post="{uri:Categories.search}"
+       hx-trigger="input changed delay:500ms, search"
+       hx-target="#search-results"
+       hx-indicator=".htmx-indicator"
+
+       />
+
+<span>child search</span>
+{#fragment id=childSearch}
+<span>frag child search</span>
+     <table class="table">
+         <thead>
+         <tr>
+             <th>First Name</th>
+             <th>Last Name</th>
+             <th>Email</th>
+         </tr>
+         </thead>
+         <tbody id="search-results">
+         </tbody>
+     </table>
+
+{/fragment}
+<form id="saveForm" action="{uri:Categories.edit()}/post/dispatch/save" method="post">
+    <input type="text" name="foo" /> <!-- several of those here -->
+</form>
+<form id="deleteForm" action="{uri:Categories.delete()}" method="post">
+    <input type="hidden" value="some_id" />
+</form>
+
+<hr class="bg-danger border-2 border-top border-danger" />
+{#if categories.size() == 0}
+<div>No Categories found. Use <a href="/_renarde/backoffice/Category/index">BackOffice</a> or the above form to create some!</div>
+{#else}
+count: {categories.size}
+
+<table class="table">
+    <thead>
+    <tr>
+        <td>Name</td>
+        <td>Description</td>
+        <td>Parent</td>
+        <td>Child</td>
+    </tr>
+    </thead>
+    <tbody>
+    {#each categories}
+    <tr>
+        <td>{it.name}</td>
+        <td>{it.description}</td>
+        <td>{#if !it.isRoot()}{it.parent.name}{/if}</td>
+        <td>
+            {#if it.children.size() > 0}
+            <table>{#each it.children}
+                <tr>
+                    <td>{it.name}</td>
+                </tr>
+                {/each}</table>
+            {/if}
+        </td>
+    </tr>
+    {/each}
+    </tbody>
+</table>
+{/if}
+{/include}

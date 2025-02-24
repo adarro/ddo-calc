@@ -1,3 +1,4 @@
+{@java.lang.String DEV_USER}
 {#include main.html }
 {#title}Login{/title}
 
@@ -5,8 +6,11 @@
 <div class="container">
     <nav>
         <div class="nav nav-tabs" id="nav-tab" role="tablist">
+            <button class="nav-link" id="nav-oidc-tab" data-bs-toggle="tab" data-bs-target="#nav-oidc"
+                    type="button" role="tab" aria-controls="nav-oidc" aria-selected="false">Login
+            </button>
             <button class="nav-link active" id="nav-home-tab" data-bs-toggle="tab" data-bs-target="#nav-home"
-                    type="button" role="tab" aria-controls="nav-home" aria-selected="true">Login
+                    type="button" role="tab" aria-controls="nav-home" aria-selected="true">Login (Manual)
             </button>
             <button class="nav-link" id="nav-profile-tab" data-bs-toggle="tab" data-bs-target="#nav-profile"
                     type="button" role="tab" aria-controls="nav-profile" aria-selected="false">Register
@@ -17,6 +21,7 @@
         </div>
     </nav>
     <div class="tab-content" id="nav-tabContent">
+
         <div class="tab-pane fade show active" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab">
             {#form uri:Login.manualLogin()}
             <fieldset>
@@ -41,6 +46,24 @@
             </fieldset>
             {/form}</div>
         <div class="tab-pane fade" id="nav-contact" role="tabpanel" aria-labelledby="nav-contact-tab">...</div>
+        <div class="tab-pane fade" id="nav-oidc" role="tabpanel" aria-labelledby="nav-oidc-tab">
+            <h3>Login with:</h3>
+            <ul class="nav login nav-pills flex-column mb-auto justify-content-start text-start">
+                {#if auth:DEV_USER}{#oidcItem name="github" title="GitHub"/}{/if}
+                {#if auth:OIDC_GOOGLE}{#oidcItem name="google" title="Google"/}{/if}
+                {#if auth:DEV_USER}
+                <li class="nav-item">
+                    {#form uri:Login.loginDev method='GET'}
+                    <button class="nav-link">
+                        <i class="bi bi-person-gear"></i>
+                        Dev User
+                    </button>
+                    {/form}
+                </li>
+                {/if}
+            </ul>
+        </div>
+
     </div>
 
 </div>

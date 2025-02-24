@@ -44,7 +44,7 @@ pluginManagement {
         id("org.scoverage") version scoveragePluginVersion
         id("com.mooltiverse.oss.nyx") version mooltiverseNyxPluginVersion
         id("org.gradle.toolchains.foojay-resolver-convention") version foojayResolverPluginVersionversion
-        id("de.fayard.refreshVersions") version  refreshVersionsPluginVersion
+        id("de.fayard.refreshVersions") version refreshVersionsPluginVersion
 //        id("org.kordamp.gradle.project") version kordampGradlePluginVersion
 //        id("net.thauvin.erik.gradle.semver") version semVerPluginVersion
         id("ru.vyarus.mkdocs") version "3.0.0"

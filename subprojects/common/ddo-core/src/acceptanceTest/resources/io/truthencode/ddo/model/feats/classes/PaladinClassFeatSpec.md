@@ -200,8 +200,8 @@ per rest. Smite evil also recharges at a rate of 1 every 90 seconds.
 
 ## Errata
 
--   Need to add Simple and Martial weapons
--   Deity based feats are covered under separate spec
+- Need to add Simple and Martial weapons
+- Deity based feats are covered under separate spec
 
 [featLevel1]: - "c:verify-rows=#feat:grantedFeatsByLevel(1)"
 [featLevel2]: - "c:verify-rows=#feat:grantedFeatsByLevel(2)"

@@ -7,4 +7,6 @@ import jakarta.enterprise.context.ApplicationScoped
 @ApplicationScoped
 class CategoryRepository : PanacheRepository<Category> {
     fun findByName(name: String) = find("name", name).firstResult()
+
+    fun all() = listAll()
 }

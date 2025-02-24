@@ -41,9 +41,9 @@ pluginManagement {
         id("com.palantir.baseline") version palantirPluginVersion
         id("com.palantir.baseline-config") version palantirPluginVersion
         id("org.inferred.processors") version "3.7.0"
-        id("org.scoverage") version "8.0.3"
+        id("org.scoverage") version "8.1"
         id("io.quarkus") version quarkusPlatformVersion
-        id("de.fayard.refreshVersions") version  refreshVersionsPluginVersion
+        id("de.fayard.refreshVersions") version refreshVersionsPluginVersion
 //        id("ru.vyarus.mkdocs") version "3.0.0"
     }
 }
@@ -54,12 +54,12 @@ plugins {
     id("de.fayard.refreshVersions")
 }
 
-//refreshVersions {
+// refreshVersions {
 //
 //    this.featureFlags{enable(FeatureFlag.VERSIONS_CATALOG)
 //
 //    }
-//}
+// }
 
 /* Hackathon to use catalogs in convention plugin
 Tracked in [github.com/gradle/gradle/issues/17863]

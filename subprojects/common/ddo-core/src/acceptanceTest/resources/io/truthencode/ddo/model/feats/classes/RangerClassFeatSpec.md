@@ -173,8 +173,8 @@ spell level) to prepare and cast spells.
 
 ## Errata
 
--   Need to add Simple weapons
--   Deity based feats are covered under separate spec
+- Need to add Simple weapons
+- Deity based feats are covered under separate spec
 
 [featLevel1]: - "c:verify-rows=#feat:grantedFeatsByLevel(1)"
 [featLevel2]: - "c:verify-rows=#feat:grantedFeatsByLevel(2)"

@@ -67,14 +67,15 @@ scalatestplus = "3.2.19.0"
 scoverage = "2.0.11"
 
 quarkus-s3 = "1.0.0"
-quarkus = "3.14.4"
+quarkus = "3.18.4"
 
-quarkus-renarde = "3.0.18"
+quarkus-renarde = "3.0.20"
 
 manifold = "2024.1.32"
 kordamp-jandex-gradle-plugin = "2.0.0"
 freefair-lombok-plugin = "8.7.1"
 assertj = "3.22.0"
+taxi-lang = "1.58.0"
 
 jakarta-servlet-jakarta-servlet-api = "6.0.0"
 org-cometd-java = "8.0.2"
@@ -85,47 +86,64 @@ hypersistence = "3.8.2"
 bootstrap = "5.3.3"
 bootstrap-icons = "1.10.5"
 jquery = "3.7.1"
+htmx = "2.0.3"
+sortablejs = "1.15.6"
 scala-scraper = "3.1.0"
 chimney = "1.4.0"
 zio-prelude = "1.0.0-RC31"
 zio-dev = "2.1.9"
 jakarta-annotations = "3.0.0"
 jakarta-inject = "2.0.1"
+jakarta-validation = "3.1.0"
 eclipse-microprofile = "3.1"
 
+jayway-jsonpath = "2.9.0"
 jackson = "2.12.3"
 sttp = "3.9.8"
 
 scalafix-plugin = "0.2.2"
-scoverage-plugin = "2.2.0"
-quarkus-gradle-plugin = "3.14.4"
+scoverage-plugin = "2.2.1"
+quarkus-gradle-plugin = "3.18.4"
 spotless-plugin = "6.25.0"
 
 assertj-core = "3.22.0"
+hibernate-validator = "8.0.1.Final"
+me-atrox-haikunator-haikunator = "2.0.1"
+avro = "1.12.0"
+savro = "0.11.0"
+hadoop = "3.4.1"
 
 [libraries]
-
+apache-hadoop-common = { module = "org.apache.hadoop:hadoop-common", version.ref = "hadoop" }
+avro-tools = { module = "org.apache.avro:avro-tools", version.ref = "avro" }
+savro-s213 = { module = "ca.dataedu:savro_2.13", version.ref = "savro" }
 kotlin-gradle-plugin = { module = "org.jetbrains.kotlin:kotlin-gradle-plugin", version.ref = "kotlin" }
 kotlin-allopen-plugin = { module = "org.jetbrains.kotlin:kotlin-allopen", version.ref = "kotlin" }
-
+hibernate-validator = { module = "org.hibernate.validator:hibernate-validator", version.ref = "hibernate-validator" }
 quarkiverse-scala-s3 = { module = "io.quarkiverse.scala:quarkus-scala3", version.ref = "quarkus-s3" }
-quarkus-bom = "io.quarkus.platform:quarkus-bom:3.14.4"
+quarkus-bom = { module = "io.quarkus.platform:quarkus-bom", version.ref = "quarkus" }
 quarkus-arc = { module = "io.quarkus:quarkus-arc" }
 quarkus-webjars = { module = "io.quarkus:quarkus-web-dependency-locator", version.ref = "quarkus" }
+quarkus-openapi = { module = "io.quarkus:quarkus-smallrye-openapi" }
 quarkus-resteasy-reactive = { module = "io.quarkus:quarkus-resteasy-reactive", version.ref = "quarkus" }
-quarkus-mailer = "io.quarkus:quarkus-mailer:3.14.4"
-quarkus-renarde = "io.quarkiverse.renarde:quarkus-renarde:3.0.18"
-quarkus-renarde-backoffice = "io.quarkiverse.renarde:quarkus-renarde-backoffice:3.0.18"
+quarkus-qute-web = { module = "io.quarkiverse.qute.web:quarkus-qute-web" }
+quarkus-mailer = { module = "io.quarkus:quarkus-mailer" }
+quarkus-renarde = { module = "io.quarkiverse.renarde:quarkus-renarde", version.ref = "quarkus-renarde" }
+quarkus-renarde-backoffice = { module = "io.quarkiverse.renarde:quarkus-renarde-backoffice", version.ref = "quarkus-renarde" }
 quarkus-renarde-tests = { module = "io.quarkiverse.renarde:quarkus-renarde-test", version.ref = "quarkus-renarde" }
-quarkus-renarde-security = "io.quarkiverse.renarde:quarkus-renarde-security:3.0.18"
-quarkus-flyway = "io.quarkus:quarkus-flyway:3.14.4"
-quarkus-hibernate-orm-panache-kotlin = "io.quarkus:quarkus-hibernate-orm-panache-kotlin:3.14.4"
+quarkus-renarde-security = { module = "io.quarkiverse.renarde:quarkus-renarde-security", version.ref = "quarkus-renarde" }
+io-quarkiverse-renarde-quarkus-renarde-oidc = { module = "io.quarkiverse.renarde:quarkus-renarde-oidc", version.ref = "quarkus-renarde" }
+quarkus-flyway = { module = "io.quarkus:quarkus-flyway" }
+quarkus-renarde-pdf = { module = "io.quarkiverse.renarde:quarkus-renarde-pdf", version.ref = "quarkus-renarde" }
+quarkus-hibernate-orm-panache-kotlin = { module = "io.quarkus:quarkus-hibernate-orm-panache-kotlin" }
 quarkus-hibernate-orm-panache = { module = "io.quarkus:quarkus-hibernate-orm-panache" }
+
+me-atrox-haikunator-haikunator = { module = "me.atrox.haikunator:Haikunator", version.ref = "me-atrox-haikunator-haikunator" }
 
 fasterxml-jackson-module-s3 = { module = "com.fasterxml.jackson.module:jackson-module-scala_3", version.ref = "jackson" }
 
 fasterxml-jackson-module-s213 = { module = "com.fasterxml.jackson.module:jackson-module-scala_2.13", version.ref = "jackson" }
-softwaremill-sttp-s3 = { module="com.softwaremill.sttp.client3:core_3", version.ref = "sttp"}
+softwaremill-sttp-s3 = { module = "com.softwaremill.sttp.client3:core_3", version.ref = "sttp" }
 
 jackson-module-enum = { module = "com.github.pjfanning:jackson-module-scala3-enum_3", version.ref = "jackson" }
 
@@ -140,7 +158,13 @@ systems-manifold-ext = { module = "systems.manifold:manifold-ext", version.ref =
 webjars-bootstrap = { module = "org.webjars:bootstrap", version.ref = "bootstrap" }
 bootstrap-icons = "org.webjars.npm:bootstrap-icons:1.10.5"
 webjars-jquery = { module = "org.webjars:jquery", version.ref = "jquery" }
+webjars-htmx = { module = "org.webjars.npm:htmx.org", version.ref = "htmx" }
+webjars-sortablejs = { module = "org.webjars.npm:sortablejs", version.ref = "sortablejs" }
+taxi-lang = { module = "org.taxilang:taxi", version.ref = "taxi-lang" }
+taxi-jpa = { module = "org.taxilang:taxi-jpa", version.ref = "taxi-lang" }
+taxi-avrototaxi = { module = "org.taxilang:avro-to-taxi", version.ref = "taxi-lang" }
 
+jayway-jsonpath = { module = "com.jayway.jsonpath:json-path", version.ref = "jayway-jsonpath" }
 antlr4 = "org.antlr:antlr4:4.13.1"
 apache-logging-log4j-log4j-core = "org.apache.logging.log4j:log4j-core:3.0.0-alpha1"
 concordion = "org.concordion:concordion:4.0.1"
@@ -192,6 +216,8 @@ dev-zio-prelude-s213 = { module = "dev.zio:zio-prelude_2.13", version.ref = "zio
 dev-zio-prelude-s3 = { module = "dev.zio:zio-prelude_3", version.ref = "zio-prelude" }
 dev-zio-test-junit-s3 = { module = "dev.zio:zio-test-junit_3", version.ref = "zio-dev" }
 dev-zio-test-junit-s213 = { module = "dev.zio:zio-test-junit_2.13", version.ref = "zio-dev" }
+dev-zio-s3 = { module = "dev.zio:zio_3", version.ref = "zio-dev" }
+dev-zio-s213 = { module = "dev.zio:zio_2.13", version.ref = "zio-dev" }
 
 scalafmt-core-s213 = { module = "com.geirsson:scalafmt-core_2.13", version.ref = "scalaFmt" }
 scalatest-junit-runner = { module = "co.helmethair:scalatest-junit-runner" }
@@ -214,6 +240,7 @@ typesafe-scala-logging-s213 = { module = "com.typesafe.scala-logging:scala-loggi
 typesafe-scala-logging-s3 = { module = "com.typesafe.scala-logging:scala-logging_3", version.ref = "scala-logging" }
 jakarta-annotations = { module = "jakarta.annotation:jakarta.annotation-api", version.ref = "jakarta-annotations" }
 jakarta-inject = { module = "jakarta.inject:jakarta.inject-api", version.ref = "jakarta-inject" }
+jakarta-validation = { module = "jakarta.validation:jakarta.validation-api", version.ref = "jakarta-validation" }
 eclipse-microprofile-config = { module = "org.eclipse.microprofile.config:microprofile-config-api", version.ref = "eclipse-microprofile" }
 
 quarkus-gradle-plugin = { module = "io.quarkus:gradle-application-plugin", version.ref = "quarkus-gradle-plugin" }
@@ -436,7 +463,6 @@ assertj-core = { group = "org.assertj", name = "assertj-core", version.ref = "as
 scala-library = "org.scala-lang:scala-library:2.13.14"
 
 
-
 quill-core-s213 = "io.getquill:quill-core_2.13:3.11.0"
 
 
@@ -541,5 +567,3 @@ quarkus-hibernate-orm-deployment = "io.quarkus:quarkus-hibernate-orm-deployment:
 quarkus-smallrye-metrics-deployment = "io.quarkus:quarkus-smallrye-metrics-deployment:3.14.4"
 
 quarkus-jacoco-deployment = "io.quarkus:quarkus-jacoco-deployment:3.14.4"
-
-

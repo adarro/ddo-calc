@@ -21,28 +21,8 @@ plugins {
 
 description = "Project BOM.  Contains common dependencies for scala projects."
 
-val scalaLibraryVersion: String by project
 val scalaMajorVersion: String by project
-val scalaTestVersion: String by project
-val scalaTestPlusMockitoVersion: String by project
 val scalaCheckVersion: String by project
-val scalaLoggingVersion: String by project
-val mockitoVersion: String by project
-val accordVersion: String by project
-val scalaScraperVersion: String by project
-val enumeratumVersion: String by project
-val typeSafeConfigVersion: String by project
-val configsVersion: String by project
-val logbackVersion: String by project
-val jetBrainsAnnotationVersion: String by project
-val junitPlatformVersion: String by project
-val junitLauncherVersion: String by project
-val concordionVersion: String by project
-val concordionExtEmbedVersion: String by project
-val concordionExtCollapseOutputVersion: String by project
-val scalaFmtVersion: String by project
-val junitScalaTestVersion: String by project
-val json4sNativeVersion: String by project
 
 dependencies {
 
@@ -59,7 +39,8 @@ dependencies {
 // Quill https://getquill.io
         api(libs.quill.sql.s213)
 
-        // These dependencies, in implementation, should extend some api denoting test implementation, so perhaps create an apiTest / apiAcceptanceTest config?
+        // These dependencies, in implementation, should extend some api denoting test implementation,
+        // so perhaps create an apiTest / apiAcceptanceTest config?
 
         // Unit Testing
         api(libs.scalatest.s213)

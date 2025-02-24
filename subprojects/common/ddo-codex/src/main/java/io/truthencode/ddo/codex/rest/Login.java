@@ -2,30 +2,40 @@ package io.truthencode.ddo.codex.rest;
 
 
 import io.quarkiverse.renarde.router.Router;
-import io.quarkiverse.renarde.security.ControllerWithUser;
 import io.quarkiverse.renarde.util.StringUtils;
 import io.quarkus.elytron.security.common.BcryptUtil;
 import io.quarkus.qute.CheckedTemplate;
 import io.quarkus.qute.TemplateInstance;
+import io.quarkus.runtime.LaunchMode;
 import io.quarkus.security.Authenticated;
 import io.truthencode.ddo.codex.model.User;
 import io.truthencode.ddo.codex.model.UserStatus;
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;
+import jakarta.ws.rs.GET;
 import jakarta.ws.rs.POST;
+import jakarta.ws.rs.WebApplicationException;
 import jakarta.ws.rs.core.NewCookie;
 import jakarta.ws.rs.core.Response;
 import jakarta.ws.rs.core.Response.ResponseBuilder;
 import org.hibernate.validator.constraints.Length;
 import org.jboss.resteasy.reactive.RestForm;
 import org.jboss.resteasy.reactive.RestQuery;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
+import java.net.URI;
+import java.net.URISyntaxException;
 import java.util.UUID;
 
 
-public class Login extends ControllerWithUser<User> {
+public class Login extends HxSecureController<User> {
 
-    @CheckedTemplate
+    private static final Logger log = LoggerFactory.getLogger(Login.class);
+
+
+
+    @CheckedTemplate(requireTypeSafeExpressions = false)
     static class Templates {
         public static native TemplateInstance login();
 
@@ -65,7 +75,7 @@ public class Login extends ControllerWithUser<User> {
         User user = User.findRegisteredByUserName(userName);
         if (user == null
             || !BcryptUtil.matches(password, user.password)) {
-            validation.addError("userName", "Invalid username/pasword");
+            validation.addError("userName", "Invalid username/password");
             prepareForErrorRedirect();
             login();
         }
@@ -92,6 +102,31 @@ public class Login extends ControllerWithUser<User> {
         // send the confirmation code again
         io.truthencode.ddo.codex.email.Emails.confirm(newUser);
         return Templates.register(email);
+    }
+
+    @GET
+    public Response loginDev(@RestQuery String returnUrl) {
+        log.info("attempting dev login loginDev {}", returnUrl);
+        if (!LaunchMode.current().isDevOrTest()) {
+            throw new WebApplicationException(Response.status(Response.Status.FORBIDDEN).build());
+        }
+        log.info("Attempting to login as dev");
+        User user = User.findByAuthId("manual", "dev");
+        notFoundIfNull(user);
+
+        return Response.seeOther(getRedirectURI(returnUrl)).cookie(security.makeUserCookie(user)).build();
+    }
+
+    private URI getRedirectURI(String returnUrl) {
+        if (returnUrl != null) {
+            try {
+                return new URI(returnUrl);
+
+            } catch (URISyntaxException e) {
+                log.debug("invalid uri {}", e.getMessage());
+            }
+        }
+        return Router.getURI(Application::index);
     }
 
 
@@ -124,7 +159,7 @@ public class Login extends ControllerWithUser<User> {
             flash("messageType", "error");
             redirect(Application.class).index();
         }
-        User user = User.findForContirmation(confirmationCode);
+        User user = User.findForConfirmation(confirmationCode);
         if (user == null) {
             flash("message", "Invalid confirmation code");
             flash("messageType", "error");
@@ -167,4 +202,6 @@ public class Login extends ControllerWithUser<User> {
         responseBuilder.cookie(cookie);
         return responseBuilder.build();
     }
+
+
 }

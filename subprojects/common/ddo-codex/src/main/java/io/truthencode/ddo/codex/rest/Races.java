@@ -3,29 +3,22 @@ package io.truthencode.ddo.codex.rest;
 import io.quarkiverse.renarde.Controller;
 import io.quarkus.qute.CheckedTemplate;
 import io.quarkus.qute.TemplateInstance;
-import io.truthencode.ddo.dal.entity.Race;
-import io.truthencode.ddo.dal.entity.RaceFamily;
-import io.truthencode.ddo.dal.repository.RaceRepository;
-import jakarta.inject.Inject;
+import io.truthencode.ddo.codex.model.xref.Race;
+import io.truthencode.ddo.codex.model.xref.RaceFamily;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.ws.rs.POST;
-
 import org.jboss.resteasy.reactive.RestForm;
 import org.jboss.resteasy.reactive.RestPath;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import java.time.Duration;
 import java.util.List;
 
 public class Races extends Controller {
     private static final Logger log = LoggerFactory.getLogger(Races.class);
 
-    @Inject
-    RaceRepository raceRepo;
 
     @CheckedTemplate
-
     static class Templates {
         public static native TemplateInstance index(List<Race> races);
     }
@@ -65,7 +58,7 @@ public class Races extends Controller {
         }
 
         // find the Race
-        Race race = null;// Race.findById(id);
+        Race race = Race.findById(id);
         notFoundIfNull(race);
 
         // create a new Race

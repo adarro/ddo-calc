@@ -19,8 +19,8 @@
 // ddo-core
 plugins {
     id("buildlogic.quarkus-component-conventions")
-    id("scala-library-profile")
-    id("djaxonomy.test-conventions")
+    id("buildlogic.scala-library-profile")
+    id("buildlogic.test-conventions")
 }
 
 description = "Core DDO Objects"

@@ -94,8 +94,7 @@ object Extractor extends LazyLogging {
    */
   def extractDamageInfo(infoText: String): Option[DamageInfo] = {
     val damageInfo =
-      """(?<wDamage>\d(?:\.\d+)?)?\s*(?<dice>\[\d+d\d+\])(?<damageType>\s\+\s\d+)?\s(.*)""".r
-    // val damageInfo = """(?<wDamage>\d+.\d+)?(?<dice>\[\d+d\d+\])(?<damageType>\s\+\s\d+)?\s(.*)""".r
+        """(?<wDamage>\d(?:\.\d+)?)?\s*(?<dice>\[\d+d\d+])(?<damageType>\s\+\s\d+)?\s(.*)""".r
     infoText match {
       case damageInfo(wDamage, dice, extra, damageType) =>
         logger.trace(s"$infoText matched")

@@ -1,7 +1,7 @@
 import org.gradle.jvm.tasks.Jar
 
 plugins {
-    id("djaxonomy.kotlin-library-conventions")
+    id("buildlogic.kotlin-library-conventions")
     id("buildlogic.quarkus-common-conventions")
     id("buildlogic.quarkus-kotlin-conventions")
 }
@@ -13,7 +13,7 @@ dependencies {
     implementation(libs.quarkus.jdbc.postgresql)
     implementation(libs.quarkus.hibernate.reactive.rest.data.panache)
     implementation(libs.quarkus.reactive.pg.client)
-//    implementation(libs.quarkus.rest) included by quarkus-rest-jackson
+    implementation(libs.quarkus.rest) // included by quarkus-rest-jackson
     implementation(libs.quarkus.rest.jackson)
     implementation(libs.quarkus.hibernate.orm.panache)
     implementation(libs.quarkus.hibernate.orm.panache.kotlin)

@@ -50,7 +50,7 @@ public class JSONSupport {
      * @param jsonData JSON data for updates
      * @param keyLists possible lists of keys to extract.  I.e. an array containing some Header, query-string parameters, etc.
      * @return a KeyedJsonNode containing the keys and a JSON node containing the JSoN data.
-     * @throws IOException
+     * @throws IOException if the JSON data is invalid
      */
     static KeyedJsonNode extractKeys(String jsonData, String... keyLists) throws IOException {
 

@@ -19,11 +19,9 @@
 description = "Common misc String and convenience Utilities"
 
 plugins {
-    id("scala-library-profile")
-//    id("acceptance-test-conventions")
-//    scala
+    id("buildlogic.scala-library-profile")
 }
-val scalaLibraryVersion: String by project
+
 dependencies {
     dependencies {
         val builderScalaVersion: String by project

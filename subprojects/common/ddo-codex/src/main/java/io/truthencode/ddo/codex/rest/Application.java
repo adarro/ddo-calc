@@ -1,10 +1,9 @@
 package io.truthencode.ddo.codex.rest;
 
-import jakarta.ws.rs.Path;
-
+import io.quarkiverse.renarde.Controller;
 import io.quarkus.qute.CheckedTemplate;
 import io.quarkus.qute.TemplateInstance;
-import io.quarkiverse.renarde.Controller;
+import jakarta.ws.rs.Path;
 
 public class Application extends Controller {
 

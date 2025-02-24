@@ -289,7 +289,7 @@ public class FeatResource {
                 code = ((WebApplicationException) exception).getResponse().getStatus();
             }
 
-            // This is a Mutiny exception and it happens, for example, when we try to insert a new
+            // This is a Mutiny exception, and it happens, for example, when we try to insert a new
             // Feat but the name is already in the database
             if (throwable instanceof CompositeException) {
                 throwable = ((CompositeException) throwable).getCause();

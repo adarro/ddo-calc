@@ -42,10 +42,15 @@ Defines Quarkus version information (Bom)
 
 Adds Jandex plugin to provide index of classes / objects / beans Main Quarkus app needs to register.
  */
-tasks.withType(JavaCompile::class.java) {
-    // Add index to test compile dependency explicitly
-    if (name.contains("Test")) {
-        val tsk = tasks.withType(JandexTask::class.java)
-        dependsOn(tsk)
+tasks {
+    withType(JavaCompile::class.java) {
+        // Add index to test compile dependency explicitly
+        if (name.contains("Test")) {
+            val tsk = tasks.withType(JandexTask::class.java)
+            dependsOn(tsk)
+        }
+        withType<ScalaDoc> {
+            dependsOn(tasks.named("jandex"))
+        }
     }
 }

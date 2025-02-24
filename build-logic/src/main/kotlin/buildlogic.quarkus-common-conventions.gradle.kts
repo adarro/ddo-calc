@@ -1,6 +1,6 @@
 plugins {
     id("io.quarkus")
-    id("djaxonomy.common-conventions")
+    id("buildlogic.common-conventions")
 }
 
 val quarkusPlatformGroupId: String by project
@@ -12,7 +12,10 @@ dependencies {
     implementation("io.quarkus:quarkus-arc")
     implementation("io.quarkus:quarkus-smallrye-health")
     implementation("io.quarkus:quarkus-hibernate-validator") {
-        because("Hibernate Validator is an implementation of the Jakarta Bean Validation specification. Not specific to JPA.")
+        because(
+            "Hibernate Validator is an implementation of the Jakarta Bean Validation specification." +
+                " Not specific to JPA.",
+        )
     }
 //    implementation("io.quarkus:quarkus-rest")
     testImplementation("io.quarkus:quarkus-junit5")

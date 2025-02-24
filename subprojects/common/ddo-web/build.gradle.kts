@@ -16,8 +16,8 @@
  * limitations under the License.
  */
 plugins {
-    id("scala-library-profile")
-    id("djaxonomy.test-conventions")
+    id("buildlogic.scala-library-profile")
+    id("buildlogic.test-conventions")
 }
 
 description = "DDO Web ETL for wiki data"

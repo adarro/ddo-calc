@@ -14,11 +14,11 @@ This document will walk you through the implementation of the version upgrade fe
 
 The `pegdown` library is a crucial part of our application as it handles the conversion of Markdown to HTML. Keeping this library up-to-date is important for several reasons:
 
--   **Security**: Newer versions often include patches for security vulnerabilities that have been discovered since the last release.
+- **Security**: Newer versions often include patches for security vulnerabilities that have been discovered since the last release.
 
--   **Performance**: Updates often come with performance improvements, making our application faster and more efficient.
+- **Performance**: Updates often come with performance improvements, making our application faster and more efficient.
 
--   **New Features**: Upgrading to the latest version allows us to take advantage of any new features or improvements that have been added. In this case, we decided to upgrade from version 1.5.0 to 1.6.0 to benefit from the improvements and fixes introduced in this new version.
+- **New Features**: Upgrading to the latest version allows us to take advantage of any new features or improvements that have been added. In this case, we decided to upgrade from version 1.5.0 to 1.6.0 to benefit from the improvements and fixes introduced in this new version.
 
 # How was the version upgrade implemented?
 

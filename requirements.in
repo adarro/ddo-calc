@@ -1,4 +1,4 @@
-mkdocs==1.5.2==_
+mkdocs==1.6.1==_
 mkdocs-material==9.2.8==_
 mkdocs-monorepo-plugin==1.0.5==_
 mkdocs-markdownextradata-plugin==0.2.5==_

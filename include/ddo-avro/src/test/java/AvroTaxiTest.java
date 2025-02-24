@@ -21,9 +21,15 @@ public class AvroTaxiTest {
     }
 
 
+    /**
+     * Test Avro Avdl to Avsc conversion
+     * @param tempDir temporary directory for generated files
+     * @throws Exception if conversion fails
+     */
     @Test
     @DisplayName("Can convert Avro Avdl to avsc files")
-    void ConvertAvdl(@TempDir Path tempDir) throws Exception {
+    @java.lang.SuppressWarnings("java:S106")
+    void convertAvdl(@TempDir Path tempDir) throws Exception {
         var path = loadResource("DamageInfo.avdl");
         var avroFile = path.toFile();
         assertTrue(avroFile.exists());

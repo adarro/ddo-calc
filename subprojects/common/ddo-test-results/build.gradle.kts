@@ -20,6 +20,7 @@ dependencies {
 }
 
 reporting {
+    @Suppress("UnstableApiUsage")
     reports {
         val testAggregateTestReport by creating(AggregateTestReport::class) {
 //            testType.set(TestSuiteType.UNIT_TEST)
@@ -30,10 +31,10 @@ reporting {
         // }
     }
 }
-//sonar {
+// sonar {
 //
 //    isSkipProject = true
-//}
+// }
 
 /**
 Task simply prints out a list of projects to be used in the testReportAggregation

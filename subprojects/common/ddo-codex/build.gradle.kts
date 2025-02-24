@@ -1,29 +1,40 @@
 plugins {
     id("buildlogic.quarkus-common-conventions")
-    id("djaxonomy.common-conventions")
+    id("buildlogic.java-common-conventions")
 }
 
 description = "Athenaeum Codex"
 
 dependencies {
-    implementation(project(":ddo-dal"))
+    implementation(project(":ddo-dal-jorm"))
     // Front-end
     implementation(libs.webjars.bootstrap)
     implementation(libs.bootstrap.icons)
     // https://mvnrepository.com/artifact/org.webjars/jquery
     implementation(libs.webjars.jquery)
-
+    implementation(libs.webjars.htmx)
+    implementation(libs.webjars.sortablejs)
     implementation(libs.quarkus.webjars)
+
+    implementation(libs.me.atrox.haikunator.haikunator)
 
     implementation(libs.quarkus.renarde)
     implementation(libs.quarkus.renarde.backoffice)
     implementation(libs.quarkus.renarde.security)
+    implementation(libs.io.quarkiverse.renarde.quarkus.renarde.oidc)
+    implementation(libs.quarkus.renarde.pdf)
+    implementation(libs.quarkus.qute.web)
 //    implementation(libs.quarkus.hibernate.reactive.rest.data.panache)
 //    implementation(libs.quarkus.reactive.pg.client)
     implementation(libs.quarkus.mailer)
+    implementation(libs.quarkus.openapi)
+//    implementation(libs.jakarta.validation)
+//    implementation(libs.hibernate.validator)
+    implementation(libs.quarkus.hibernate.validator)
 
     // Database
     implementation(libs.quarkus.hibernate.orm.panache)
+//    implementation(libs.quarkus.hibernate.orm.panache.kotlin)
     implementation(libs.quarkus.jdbc.postgresql)
     implementation(libs.quarkus.flyway)
     testImplementation(libs.quarkus.renarde.tests)

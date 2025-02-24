@@ -16,9 +16,11 @@
  * limitations under the License.
  */
 plugins {
-    id("scala-conventions")
+//    id("scala-conventions")
+    id("buildlogic.scala-library-profile")
+    id("buildlogic.java-library-conventions")
 //    id("acceptance-test-conventions")
-    id("djaxonomy.test-conventions")
+    id("buildlogic.test-conventions")
 }
 
 description = "Common ETL module for storing / loading data from web / user etc"
@@ -34,6 +36,7 @@ dependencies {
     might use  https://github.com/nrinaudo
      for etl regex support
      xpath and csv also
+     scala 2x only
 
      Also, monocle for idiomatic updating of immutable objects (i.e. case classes)
      https://www.optics.dev/Monocle/
@@ -65,6 +68,7 @@ dependencies {
 
             // validation and rules
             implementation(libs.dev.zio.prelude.s3)
+            implementation(libs.dev.zio.s3)
 
             implementation(libs.typesafe.scala.logging.s3)
         }
@@ -89,14 +93,22 @@ dependencies {
 //            implementation(libs.monix.eval.s213)
 //            implementation(libs.monix.reactive.s213)
 
-            // Jetbrains Xodus embedded database
-//    implementation(libs.xodus.openAPI)
-
             // validation and rules
 
             implementation(libs.dev.zio.prelude.s213)
             implementation(libs.typesafe.scala.logging.s213)
         }
+    }
+    implementation(libs.avro.tools)
+    implementation(libs.apache.hadoop.common)
+    implementation(libs.jayway.jsonpath)
+    // Jetbrains Xodus embedded database
+    implementation("org.jetbrains.xodus:xodus-entity-store:2.0.1")
+    implementation("org.jetbrains.xodus:xodus-crypto:2.0.1")
+    implementation("org.jetbrains.xodus:xodus-vfs:2.0.1")
+    implementation("org.jetbrains.xodus:xodus-environment:2.0.1")
+    implementation(libs.xodus.openAPI) {
+        because("Used for tracking entity update status")
     }
     implementation(libs.typesafe.config)
     implementation(libs.logback.classic)

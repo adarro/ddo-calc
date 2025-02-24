@@ -67,7 +67,7 @@ sealed trait DamageDice {
  */
 object DamageInfo {
   val ddoDiceRegEx: Regex =
-    """(\d+\.?\d*)*?((?:\[(\d+)d(\d+)\])|(?:(\d+)d(\d+)))\s*(?:([+\-])\s*(\d+))*""".r
+    """(\d+\.?\d*)*?((?:\[(\d+)d(\d+)])|(?:(\d+)d(\d+)))\s*(?:([+\-])\s*(\d+))*""".r
 
   def apply(diceExp: String): DamageInfo = {
 

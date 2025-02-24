@@ -61,17 +61,17 @@ Fields
 
 Incremental Update / Population:
 
--   Individual Page scraping via ddo-web may be invoked to verify and update.
--   Scrape of new items from release notes to only add new items.
+- Individual Page scraping via ddo-web may be invoked to verify and update.
+- Scrape of new items from release notes to only add new items.
 
 ### Item Entity States
 
 Persisting Entities
 
--   Item
-    -   Base Item - May have multiple variants based on enchantments such as 'One of 4 enchantments' or Mythic boost values. These values must be specified when creating an instance.
-    -   Multi-level Item
-        Item has variants generally based on difficulty levels.
-    -   Instance Item - An instance of an Item. This item would be a specific level with any and all options specified such as enchantment choices, augment slots, etc.
+- Item
+    - Base Item - May have multiple variants based on enchantments such as 'One of 4 enchantments' or Mythic boost values. These values must be specified when creating an instance.
+    - Multi-level Item
+      Item has variants generally based on difficulty levels.
+    - Instance Item - An instance of an Item. This item would be a specific level with any and all options specified such as enchantment choices, augment slots, etc.
 
 We may need a meta-data flag to indicate if an item is a base item and / or if it has variants.

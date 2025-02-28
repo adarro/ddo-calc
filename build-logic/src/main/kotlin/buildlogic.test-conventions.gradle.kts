@@ -22,6 +22,7 @@ import io.truthencode.buildlogic.TestTypes
  * limitations under the License.
  */
 import org.gradle.accessors.dm.LibrariesForLibs
+import java.util.EnumSet
 
 plugins {
     id("buildlogic.java-common-conventions")
@@ -35,7 +36,6 @@ tasks.withType(Test::class.java) {
     project.plugins.withId("org.kordamp.gradle.jandex") {
         val jandexProjectTask = ":${project.name}:jandex"
         logger.info("binding project ${project.name} task to $jandexProjectTask")
-        logger.error("binding project ${project.name} task to $jandexProjectTask")
         t.dependsOn(jandexProjectTask)
     }
     systemProperties["concordion.output.dir"] = "${reporting.baseDirectory}/tests"
@@ -103,6 +103,63 @@ dependencies {
     testRuntimeOnly(libs.junit.platform.reporting)
 }
 
+enum class ProjectLanguage {
+    Kotlin, Java, Scala;
+}
+
+enum class LanguageComposition {
+    KotlinOnly, JavaOnly, ScalaOnly, Mixed
+}
+
+enum class TestEngine(val id: String) {
+    JUnit("junit"),
+    JUnit5("junit-jupiter"),
+    JUnit4("junit"),
+    Spock("spock"),
+    KoTest("kotest"),
+    ScalaTest("scalatest"),
+    ScalaCheck("scalacheck"),
+}
+
+typealias ProjectLanguages = java.util.EnumSet<ProjectLanguage>
+
+//infix fun ProjectLanguages.or(other: ProjectLanguages): ProjectLanguages = this.stream().map {
+//    it.ordinal
+
+fun current(): EnumSet<ProjectLanguage>? {
+    val pl = ProjectLanguages.noneOf(ProjectLanguage::class.java)
+    if (project.plugins.hasPlugin("scala")) {
+        pl.add(ProjectLanguage.Scala)
+    }
+    if (project.plugins.hasPlugin("kotlin")) {
+        pl.add(ProjectLanguage.Kotlin)
+    }
+    if (project.plugins.hasPlugin("java-library") or project.plugins.hasPlugin("java")) {
+        pl.add(ProjectLanguage.Java)
+    }
+    return pl
+}
+
+
+fun projectComposition(): LanguageComposition? {
+    return current()?.size?.let {
+        return if (it > 1) {
+            LanguageComposition.Mixed
+        } else {
+            LanguageComposition.values().find { it.ordinal == current()?.first()?.ordinal }
+        }
+    }
+}
+
+fun ProjectLanguages.projectBits(): Int? {
+    return current()?.stream()?.map { it.ordinal }?.reduce(0) { a, b -> a or b }
+}
+
+fun ProjectLanguages.bits(): Int? {
+    return this.stream().map { it.ordinal }?.reduce(0) { a, b -> a or b }
+}
+
+
 fun JvmTestSuite.applyKoTest() {
     val koTestVersion: String = (findProperty("koTestVersion") ?: embeddedKotlinVersion).toString()
 
@@ -161,17 +218,16 @@ fun JvmTestSuite.applyJupiterEngine() {
 fun JvmTestSuite.applyScalaTest() {
     dependencies {
         val builderScalaVersion: String by project
+        // scalatestplus-junit5 is listed as runtimeOnly, but requires implementation for JUnitSuiteLike and JUnitSuite
         if (builderScalaVersion == "3") {
-            runtimeOnly(libs.scalatest.plus.junit.s3)
-// runtimeOnly("org.junit.vintage:junit-vintage-engine:5.10.0")
+            implementation(libs.scalatest.plus.junit.s3)
             implementation(libs.scalatest.s3)
             implementation(libs.scalatest.plus.mockito.s3)
 
             implementation(libs.mockito.core)
             implementation(libs.scalatest.plus.scalacheck.s3)
         } else {
-            runtimeOnly(libs.scalatest.plus.junit.s213)
-// runtimeOnly("org.junit.vintage:junit-vintage-engine:5.10.0")
+            implementation(libs.scalatest.plus.junit.s213)
             implementation(libs.scalatest.s213)
             implementation(libs.scalatest.plus.mockito.s213)
 
@@ -182,16 +238,16 @@ fun JvmTestSuite.applyScalaTest() {
 // JUnit
     }
 
-    targets.all {
-        testTask.configure {
-            useJUnitPlatform {
-                includeEngines = setOf("scalatest", "vintage", "jupiter")
-                testLogging {
-                    events("passed", "skipped", "failed")
-                }
-            }
-        }
-    }
+//    targets.all {
+//        testTask.configure {
+//            useJUnitPlatform {
+//                includeEngines = setOf("scalatest", "vintage", "jupiter")
+//                testLogging {
+//                    events("passed", "skipped", "failed")
+//                }
+//            }
+//        }
+//    }
 }
 
 project.testing {
@@ -203,7 +259,6 @@ integrationTest by registering(JvmTestSuite::class)
 functionalTest by registering(JvmTestSuite::class)
 performanceTest by registering(JvmTestSuite::class)
  */
-
         val test by getting(JvmTestSuite::class)
         val acceptanceTest = register<JvmTestSuite>("acceptanceTest")
         configureEach {
@@ -241,8 +296,38 @@ performanceTest by registering(JvmTestSuite::class)
                             logger.info(("Configuring standard Unit Test for scala"))
                             useJUnitJupiter()
                             this.applyJupiterEngine()
-                            this.applyVintageEngine()
+                            //   this.applyVintageEngine()
                             this.applyScalaTest()
+
+
+                            targets {
+                                logger.warn("Configuring Scala Unit Test for ${project.name}")
+                                this.forEach { tg ->
+                                    mapOf(tg.name to tg.testTask).forEach { (name, task) ->
+                                        logger.warn(
+                                            "${name} : ${task.name}"
+                                        )
+                                    }
+                                }
+                                all {
+                                    testTask.configure {
+                                        this.filter {
+                                            setIncludePatterns("*Test", "*Suite")
+                                            setExcludePatterns("*IT", "*Spec")
+                                        }
+                                        useJUnitPlatform {
+                                            includeEngines = setOf(
+                                                TestEngine.JUnit5.id,
+                                                TestEngine.ScalaTest.id
+                                            )
+
+                                            testLogging {
+                                                events("passed", "skipped", "failed")
+                                            }
+                                        }
+                                    }
+                                }
+                            }
                         }
 
                         TestTypes.Acceptance -> {
@@ -278,7 +363,7 @@ performanceTest by registering(JvmTestSuite::class)
                         }
                     }
                 }
-                if (project.plugins.hasPlugin("java-library")) {
+                if (project.plugins.hasPlugin("java-library") and (projectComposition() != LanguageComposition.Mixed)) {
                     logger.info("java-library applied to ${project.name}, applying JUnit Jupiter")
                     useJUnitJupiter()
                 }

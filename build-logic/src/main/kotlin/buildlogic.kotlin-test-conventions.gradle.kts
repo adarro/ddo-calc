@@ -1,6 +1,7 @@
 import io.truthencode.buildlogic.KotlinTestKitExtension
 import io.truthencode.buildlogic.KotlinTestKits
 import io.truthencode.buildlogic.TestBuildSupport
+import org.gradle.accessors.dm.LibrariesForLibs
 
 /*
  * SPDX-License-Identifier: Apache-2.0
@@ -25,7 +26,7 @@ plugins {
     id("buildlogic.kotlin-coverage-conventions")
 }
 
-val moshiVersion: String by project
+val libs = the<LibrariesForLibs>()
 
 val kte = project.extensions.create<KotlinTestKitExtension>("KotlinTestKitExtension")
 kte.useKotlinTestKit.convention(KotlinTestKits.KoTest)
@@ -42,13 +43,13 @@ afterEvaluate {
             // Do nothing!
             logger.info("${project.name} using default reflect instead of any annotation processing")
             dependencies {
-                testImplementation("com.squareup.moshi:moshi-kotlin:$moshiVersion")
+                testImplementation(libs.squareup.moshi.kotlin)
             }
         }
         io.truthencode.buildlogic.TestMode.KAPT -> {
             apply(plugin = "org.jetbrains.kotlin.kapt")
             dependencies {
-                "kaptTest"("com.squareup.moshi:moshi-kotlin-codegen:$moshiVersion")
+                "kaptTest"(libs.squareup.moshi.kotlin.codegen)
             }
             logger.info("${project.name} using kapt")
         }
@@ -56,8 +57,8 @@ afterEvaluate {
             logger.info("${project.name} using ksp")
             apply(plugin = "com.google.devtools.ksp")
             dependencies {
-                "ksp"("com.squareup.moshi:moshi-kotlin-codegen:$moshiVersion")
-                "kspTest"("com.squareup.moshi:moshi-kotlin-codegen:$moshiVersion")
+                "ksp"(libs.squareup.moshi.kotlin.codegen)
+                "kspTest"(libs.squareup.moshi.kotlin.codegen)
             }
         }
     }

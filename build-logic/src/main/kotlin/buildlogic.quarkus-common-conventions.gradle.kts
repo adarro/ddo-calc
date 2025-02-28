@@ -1,3 +1,11 @@
+/**
+ * This file is part of the common build-logic project.
+ * Adds quarkus specific core plugins and configurations
+ * Includes basic CDI, Health Checks, Validation (Jakarta ala Hibernate) and basic testing.
+ *
+ * Advanced features (e.g. OpenAPI, RESTEasy Reactive, etc.) should be added to the project-specific build logic
+ *
+ */
 plugins {
     id("io.quarkus")
     id("buildlogic.common-conventions")
@@ -18,7 +26,9 @@ dependencies {
         )
     }
 //    implementation("io.quarkus:quarkus-rest")
+    // basic Quarkus Unit, Component and Integration test support included.
     testImplementation("io.quarkus:quarkus-junit5")
+    testImplementation("io.quarkus:quarkus-junit5-component")
 //    testImplementation("io.rest-assured:rest-assured")
 }
 

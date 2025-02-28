@@ -16,22 +16,11 @@
  * limitations under the License.
  */
 plugins {
-    id("djaxonomy.java-common-conventions")
+    id("buildlogic.java-common-conventions")
     `java-library`
 }
 
-val javaLanguageVersion: String? by project
-val DEFAULT_JAVA_LANGUAGE_VERSION = 11
-
-fun jslValOrDefault(jVal: String?): Int = jVal?.toIntOrNull() ?: DEFAULT_JAVA_LANGUAGE_VERSION
-
-// See https://gist.github.com/adarro/0411f34ae1f048726b28e9f33e5c0a97 for JPMS revisit
-//
-// java {
-//    toolchain {
-//        languageVersion.set(JavaLanguageVersion.of(jslValOrDefault(javaLanguageVersion)))
-//    }
-// }
+// Toolchain moved to djaxonomy.common-conventions
 
 tasks {
     named("jar", Jar::class) {

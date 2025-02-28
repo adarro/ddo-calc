@@ -21,9 +21,6 @@ plugins {
 
 description = "Project BOM.  Contains common dependencies for scala projects."
 
-val scalaMajorVersion: String by project
-val scalaCheckVersion: String by project
-
 dependencies {
 
     constraints {
@@ -44,7 +41,7 @@ dependencies {
 
         // Unit Testing
         api(libs.scalatest.s213)
-        api("org.scalacheck:scalacheck_$scalaMajorVersion:$scalaCheckVersion")
+        api(libs.scalacheck.s213)
         api(libs.scalatest.plus.mockito.s213)
         api(libs.mockito.core)
 

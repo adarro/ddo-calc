@@ -1,3 +1,5 @@
+import io.truthencode.buildlogic.getBuildEnvironment
+import io.truthencode.buildlogic.BuildEnvironment
 /*
  * SPDX-License-Identifier: Apache-2.0
  *
@@ -19,6 +21,7 @@ plugins {
 //    id("scala-conventions")
     id("buildlogic.scala-library-profile")
     id("buildlogic.java-library-conventions")
+    id("buildlogic.quarkus-scala-conventions")
 //    id("acceptance-test-conventions")
     id("buildlogic.test-conventions")
 }
@@ -32,6 +35,21 @@ dependencies {
         because("ddo-web is used for web scraping")
     }
     implementation(project(":ddo-core"))
+    implementation(libs.io.jstach.jstachio) {
+        because("template engine for sql import etc")
+    }
+    implementation(libs.quarkus.freemarker)
+    implementation(libs.smallrye.mutiny.vertx.client)
+    implementation(libs.quarkus.openapi)
+    implementation(libs.quarkus.rest)
+    // Additional features for production build
+    if (getBuildEnvironment() == BuildEnvironment.PROD) {
+        implementation(libs.quarkus.smallrye.metrics)
+    }
+
+    // uncomment closer to production
+    implementation("io.quarkus:quarkus-smallrye-context-propagation")
+    implementation("io.quarkus:quarkus-mutiny")
     /*
     might use  https://github.com/nrinaudo
      for etl regex support
@@ -50,6 +68,7 @@ dependencies {
             implementation(libs.scala3.library)
             implementation(libs.json4s.native.s3)
             implementation(libs.enumeratum.s3)
+
 
             /* DB, Query etc
 
@@ -71,6 +90,7 @@ dependencies {
             implementation(libs.dev.zio.s3)
 
             implementation(libs.typesafe.scala.logging.s3)
+//            testImplementation(libs.scalatest.plus.junit.s3)
         }
 
         else -> {
@@ -80,6 +100,7 @@ dependencies {
             implementation(libs.enumeratum.s213)
 
             implementation(libs.kxbmap.configs.s213)
+//            testRuntimeOnly(libs.scalatest.plus.junit.s213)
 
             /* DB, Query etc
 
@@ -112,4 +133,36 @@ dependencies {
     }
     implementation(libs.typesafe.config)
     implementation(libs.logback.classic)
+    // Tags for tests
+    testImplementation(project(":ddo-testing-util"))
 }
+
+tasks.withType<Test>() {
+    useJUnitPlatform {
+        includeTags("io.quarkus.test.junit.QuarkusTest","Unit")
+    }
+}
+//testing {
+//    suites {
+//        withType(JvmTestSuite::class) {
+//            this.useJUnitPlatform
+//            // useJUnitPlatform
+//            this.useJUnitJupiter() {
+//
+//            }
+//        }
+//    }
+//}
+//testing {
+//    suites {
+//        @Suppress("UnstableApiUsage")
+//        withType(JvmTestSuite::class)
+//            .matching { it.name in listOf("acceptanceTest") }
+//            .configureEach {
+//                dependencies {
+//                    implementation(project(":ddo-modeling"))
+//                }
+//            }
+//    }
+//}
+

@@ -1,6 +1,10 @@
 # Mobile Tools for Java (J2ME)
 .mtj.tmp/
 
+
+# local python env
+pytools/
+
 # Package Files #
 *.jar
 *.war

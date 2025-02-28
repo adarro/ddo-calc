@@ -15,6 +15,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
+import org.gradle.accessors.dm.LibrariesForLibs
 import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
 
 
@@ -23,6 +24,8 @@ plugins {
     kotlin("jvm")
     id("buildlogic.java-common-conventions")
 }
+
+val libs = the<LibrariesForLibs>()
 
 tasks.withType<KotlinCompile>().configureEach {
     compilerOptions {
@@ -34,21 +37,19 @@ tasks.withType<KotlinCompile>().configureEach {
 }
 
 val defaultJavaToolChainVersion: String by project
-val hopliteVersion: String by project
+
 
 dependencies {
     constraints {
         // Define dependency versions as constraints
         // implementation("org.apache.commons:commons-text:1.9")
-        implementation("io.github.oshai:kotlin-logging-jvm:4.0.2")
+        implementation(libs.github.oshai.kotlin.logging)
     }
 
     // Align versions of all Kotlin components
     implementation(platform("org.jetbrains.kotlin:kotlin-bom"))
     // configuration objects https://github.com/sksamuel/hoplite
-    implementation("com.sksamuel.hoplite:hoplite-core:$hopliteVersion")
-    implementation("com.sksamuel.hoplite:hoplite-hocon:$hopliteVersion")
-    implementation("com.sksamuel.hoplite:hoplite-yaml:$hopliteVersion")
+    implementation(libs.bundles.hoplite)
 }
 
 kotlin {

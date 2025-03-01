@@ -120,17 +120,15 @@ dependencies {
             implementation(libs.typesafe.scala.logging.s213)
         }
     }
-    implementation(libs.avro.tools)
+    implementation(libs.avro.tools) {
+        // CVE-2023-36478 https://www.mend.io/vulnerability-database/CVE-2023-36478?utm_source=JetBrains
+        this.exclude(module = "eclipse.jetty:jetty-http")
+    }
+    // 12.0.12
     implementation(libs.apache.hadoop.common)
     implementation(libs.jayway.jsonpath)
     // Jetbrains Xodus embedded database
-    implementation("org.jetbrains.xodus:xodus-entity-store:2.0.1")
-    implementation("org.jetbrains.xodus:xodus-crypto:2.0.1")
-    implementation("org.jetbrains.xodus:xodus-vfs:2.0.1")
-    implementation("org.jetbrains.xodus:xodus-environment:2.0.1")
-    implementation(libs.xodus.openAPI) {
-        because("Used for tracking entity update status")
-    }
+    implementation(libs.bundles.xodus)
     implementation(libs.typesafe.config)
     implementation(libs.logback.classic)
     // Tags for tests

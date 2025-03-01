@@ -121,7 +121,7 @@ enum class TestEngine(val id: String) {
     ScalaCheck("scalacheck"),
 }
 
-typealias ProjectLanguages = java.util.EnumSet<ProjectLanguage>
+typealias ProjectLanguages = EnumSet<ProjectLanguage>
 
 //infix fun ProjectLanguages.or(other: ProjectLanguages): ProjectLanguages = this.stream().map {
 //    it.ordinal
@@ -215,6 +215,15 @@ fun JvmTestSuite.applyJupiterEngine() {
     }
 }
 
+fun JvmTestSuite.applyJavaAssertions() {
+    dependencies {
+        // truth pulls in Android guava unless we explicitly exclude it
+        implementation(libs.guava.jre)
+        implementation(libs.google.truth)
+
+    }
+}
+
 fun JvmTestSuite.applyScalaTest() {
     dependencies {
         val builderScalaVersion: String by project
@@ -305,7 +314,7 @@ performanceTest by registering(JvmTestSuite::class)
                                 this.forEach { tg ->
                                     mapOf(tg.name to tg.testTask).forEach { (name, task) ->
                                         logger.warn(
-                                            "${name} : ${task.name}"
+                                            "$name : ${task.name}"
                                         )
                                     }
                                 }
@@ -362,10 +371,12 @@ performanceTest by registering(JvmTestSuite::class)
                             useJUnitJupiter()
                         }
                     }
+                    this.applyJavaAssertions()
                 }
                 if (project.plugins.hasPlugin("java-library") and (projectComposition() != LanguageComposition.Mixed)) {
                     logger.info("java-library applied to ${project.name}, applying JUnit Jupiter")
                     useJUnitJupiter()
+                    this.applyJavaAssertions()
                 }
 
 // Concordian BDD Acceptance

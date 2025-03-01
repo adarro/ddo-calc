@@ -19,7 +19,10 @@
 description = "Shared Testing and convenience Utilities (Intended for Test Scope)"
 
 plugins {
+    id("net.ltgt.errorprone") version "4.1.0"
     id("buildlogic.scala-library-profile")
+
+
 }
 
 dependencies {

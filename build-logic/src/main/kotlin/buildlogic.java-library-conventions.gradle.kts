@@ -1,3 +1,5 @@
+import org.gradle.accessors.dm.LibrariesForLibs
+
 /*
  * SPDX-License-Identifier: Apache-2.0
  *
@@ -15,18 +17,30 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
+
 plugins {
     id("buildlogic.java-common-conventions")
     `java-library`
-}
+    id("net.ltgt.nullaway")
+    id("net.ltgt.errorprone")
 
+//    alias(libs.plugins.errorprone)
+}
+val libs = the<LibrariesForLibs>()
 // Toolchain moved to djaxonomy.common-conventions
+
+
+dependencies {
+    // library should use api vs implementation in java library
+    api(libs.jspecify)
+}
 
 tasks {
     named("jar", Jar::class) {
         // AffixSlot is being duplicated but unsure why
         duplicatesStrategy = DuplicatesStrategy.WARN
     }
+
     withType<JavaCompile>().configureEach {
         options.generatedSourceOutputDirectory.set(file("$projectDir/src/generated/java"))
         options.compilerArgs.plusAssign("-Asemver.project.dir=$projectDir")

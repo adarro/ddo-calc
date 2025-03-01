@@ -215,7 +215,7 @@ rslt.txt
 # auto generated files
 **/version.properties
 incubating/ddo-antlr/src/generated/java/*
-local.properties
+
 
 .quarkus/
 /subprojects/common/ddo-modeling/src/main/avro/

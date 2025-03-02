@@ -53,8 +53,7 @@ pluginManagement {
 //        id("io.quarkus") version quarkusPlatformVersion
 //        id("org.sonarqube") version "4.3.1.3277"
 
-
-    //        // to be removed
+        //        // to be removed
 //        id("org.kordamp.gradle.project") version kordampGradlePluginVersion
 //        id("net.thauvin.erik.gradle.semver") version semVerPluginVersion
     }

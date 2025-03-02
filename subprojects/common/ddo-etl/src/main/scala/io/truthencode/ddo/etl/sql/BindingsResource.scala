@@ -1,7 +1,7 @@
 /*
 SPDX-License-Identifier: Apache-2.0
 
-Copyright 2015-2021 ${author}.
+Copyright 2025 ${author}.
 
 Licensed under the Apache License, Version 2.0 (the "License");
 you may not use this file except in compliance with the License.
@@ -17,15 +17,13 @@ limitations under the License.
 */
 
 
-package io.truthencode.ddo.etl
+package io.truthencode.ddo.etl.sql
 
-import org.scalatest.funsuite.AnyFunSuite
-import org.scalatestplus.junit5.JUnitSuiteLike
+import freemarker.template.Template
+import io.quarkiverse.freemarker.TemplatePath
+import jakarta.inject.Inject
 
-// @RunWith(classOf[JUnitRunner])
-class LibrarySuite extends AnyFunSuite {
-  test("someLibraryMethod is always true") {
-    def library: Library = new Library()
-    assert(!library.someLibraryMethod())
-  }
+class BindingsResource {
+  @Inject
+  @TemplatePath("BindingSql.ftl") var sql: Template = null
 }

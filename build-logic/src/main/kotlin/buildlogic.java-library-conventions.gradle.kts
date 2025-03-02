@@ -29,7 +29,6 @@ plugins {
 val libs = the<LibrariesForLibs>()
 // Toolchain moved to djaxonomy.common-conventions
 
-
 dependencies {
     // library should use api vs implementation in java library
     api(libs.jspecify)

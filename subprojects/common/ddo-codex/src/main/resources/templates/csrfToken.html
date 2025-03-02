@@ -1,8 +1,0 @@
-{#include main.html }
-{#title}Cross Site token{/title}
-<form action="/service/csrfTokenForm" method="post">
-    <input type="hidden" name="{inject:csrf.parameterName}" value="{inject:csrf.token}" />
-
-    <p>Your Name: <input type="text" name="name" /></p>
-    <p><input type="submit" name="submit"/></p>
-</form>

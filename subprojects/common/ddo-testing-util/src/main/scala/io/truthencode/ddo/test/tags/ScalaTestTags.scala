@@ -35,12 +35,12 @@ object IntegrationTest extends Tag("io.truthencode.tags.Integration")
 object UnitTest extends Tag("io.truthencode.tags.Unit")
 
 /**
- * Tests Clustering (May be slow or require network connectivity etc)
+ * Tests Clustering (Test may be slow or require network connectivity etc.)
  */
 object ClusteringTest extends Tag("io.truthencode.tags.Clustering")
 
 /**
- * Indicates a slow running or time consuming test
+ * Indicates a slow running or time-consuming test
  */
 object Slow extends Tag("io.truthencode.tags.Slow")
 

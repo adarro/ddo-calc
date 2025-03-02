@@ -7,7 +7,7 @@ import jakarta.inject.Singleton
 
 @Singleton
 class Scala3ObjectMapperCustomizer extends ObjectMapperCustomizer:
-    def customize(mapper: ObjectMapper) =
-        // General Scala support
-        // https://github.com/FasterXML/jackson-module-scala
-        mapper.registerModule(DefaultScalaModule)
+  def customize(mapper: ObjectMapper) =
+    // General Scala support
+    // https://github.com/FasterXML/jackson-module-scala
+    mapper.registerModule(DefaultScalaModule)

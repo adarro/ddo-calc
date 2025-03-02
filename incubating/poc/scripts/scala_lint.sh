@@ -11,7 +11,7 @@ echo "=== Compiling project ==="
 
 # Run scalafix
 echo "=== Running scalafix ==="
-scalafix . --auto-classpath --scalac-options -Yrangepos --scala-version "$SCALA_VERSION"
+scalafix . --auto-classpath --scalac-options -Yrangepos --scala-version "${SCALA_VERSION}"
 
 # Run scalafmt
 echo "=== Running scalafmt ==="

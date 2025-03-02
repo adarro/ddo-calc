@@ -131,13 +131,13 @@ configure<com.diffplug.gradle.spotless.SpotlessExtension> {
 //    }
 
     project.plugins.withId("scala") {
-        logger.debug("SPOTLESS: configuring scala formatting to ${project.name}")
+        logger.error("SPOTLESS: configuring scala formatting to ${project.name}")
         scala {
             val scalaFmtVersion: String by project
             // version and configFile are both optional
             scalafmt(scalaFmtVersion).configFile(rootProject.file(".scalafmt.conf"))
-            target("*.scala")
-            licenseHeaderFile(project.rootProject.file("gradle/LICENSE_HEADER_SPOTLESS"), "package")
+            target("**/src/**/*.scala")
+            licenseHeaderFile(project.rootProject.file("gradle/LICENSE_HEADER_JAVA"), "package ")
         }
     }
 }

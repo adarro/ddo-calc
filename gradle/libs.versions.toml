@@ -123,7 +123,7 @@ sttp = "3.9.8"
 scalafix-plugin = "0.2.2"
 scoverage-plugin = "2.3.0"
 quarkus-gradle-plugin = "3.19.1"
-spotless-plugin = "6.25.0"
+spotless-plugin = "7.0.2"
 
 assertj-core = "3.22.0"
 hibernate-validator = "8.0.1.Final"

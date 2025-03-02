@@ -104,14 +104,21 @@ dependencies {
 }
 
 enum class ProjectLanguage {
-    Kotlin, Java, Scala;
+    Kotlin,
+    Java,
+    Scala,
 }
 
 enum class LanguageComposition {
-    KotlinOnly, JavaOnly, ScalaOnly, Mixed
+    KotlinOnly,
+    JavaOnly,
+    ScalaOnly,
+    Mixed,
 }
 
-enum class TestEngine(val id: String) {
+enum class TestEngine(
+    val id: String,
+) {
     JUnit("junit"),
     JUnit5("junit-jupiter"),
     JUnit4("junit"),
@@ -123,7 +130,7 @@ enum class TestEngine(val id: String) {
 
 typealias ProjectLanguages = EnumSet<ProjectLanguage>
 
-//infix fun ProjectLanguages.or(other: ProjectLanguages): ProjectLanguages = this.stream().map {
+// infix fun ProjectLanguages.or(other: ProjectLanguages): ProjectLanguages = this.stream().map {
 //    it.ordinal
 
 fun current(): EnumSet<ProjectLanguage>? {
@@ -140,7 +147,6 @@ fun current(): EnumSet<ProjectLanguage>? {
     return pl
 }
 
-
 fun projectComposition(): LanguageComposition? {
     return current()?.size?.let {
         return if (it > 1) {
@@ -151,14 +157,9 @@ fun projectComposition(): LanguageComposition? {
     }
 }
 
-fun ProjectLanguages.projectBits(): Int? {
-    return current()?.stream()?.map { it.ordinal }?.reduce(0) { a, b -> a or b }
-}
+fun ProjectLanguages.projectBits(): Int? = current()?.stream()?.map { it.ordinal }?.reduce(0) { a, b -> a or b }
 
-fun ProjectLanguages.bits(): Int? {
-    return this.stream().map { it.ordinal }?.reduce(0) { a, b -> a or b }
-}
-
+fun ProjectLanguages.bits(): Int? = this.stream().map { it.ordinal }?.reduce(0) { a, b -> a or b }
 
 fun JvmTestSuite.applyKoTest() {
     val koTestVersion: String = (findProperty("koTestVersion") ?: embeddedKotlinVersion).toString()
@@ -220,7 +221,6 @@ fun JvmTestSuite.applyJavaAssertions() {
         // truth pulls in Android guava unless we explicitly exclude it
         implementation(libs.guava.jre)
         implementation(libs.google.truth)
-
     }
 }
 
@@ -308,13 +308,12 @@ performanceTest by registering(JvmTestSuite::class)
                             //   this.applyVintageEngine()
                             this.applyScalaTest()
 
-
                             targets {
                                 logger.warn("Configuring Scala Unit Test for ${project.name}")
                                 this.forEach { tg ->
                                     mapOf(tg.name to tg.testTask).forEach { (name, task) ->
                                         logger.warn(
-                                            "$name : ${task.name}"
+                                            "$name : ${task.name}",
                                         )
                                     }
                                 }
@@ -325,10 +324,11 @@ performanceTest by registering(JvmTestSuite::class)
                                             setExcludePatterns("*IT", "*Spec")
                                         }
                                         useJUnitPlatform {
-                                            includeEngines = setOf(
-                                                TestEngine.JUnit5.id,
-                                                TestEngine.ScalaTest.id
-                                            )
+                                            includeEngines =
+                                                setOf(
+                                                    TestEngine.JUnit5.id,
+                                                    TestEngine.ScalaTest.id,
+                                                )
 
                                             testLogging {
                                                 events("passed", "skipped", "failed")

@@ -87,7 +87,7 @@ class DamageDiceTest
       val dExp = "3[2d10] - 4 Slash"
       val dice = DamageInfo(dExp)
       dice.damageType should contain(PhysicalDamageType.Slash)
-      dice.extra.toInt shouldEqual (-4)
+      dice.extra.toInt shouldEqual -4
       dice.extra.symbol shouldEqual "-"
       dice.weaponModifier shouldEqual 3
       dice.dice.number shouldEqual 2

@@ -20,10 +20,10 @@ To start developing in Quarkus/Scala 3, I recommend the following tools:
 - [Quarkus CLI](https://quarkus.io/get-started/)
 - [VSCode](https://code.visualstudio.com/) as IDE
 - The following VSCode Extensions
-  - [Metals](https://marketplace.visualstudio.com/items?itemName=scalameta.metals) by ScalaMeta
-  - [Scala Syntax](https://marketplace.visualstudio.com/items?itemName=scala-lang.scala)
-  - [Scaladex search](https://marketplace.visualstudio.com/items?itemName=baccata.scaladex-search)
-  - [Quarkus Tools](https://marketplace.visualstudio.com/items?itemName=redhat.vscode-quarkus)
+    - [Metals](https://marketplace.visualstudio.com/items?itemName=scalameta.metals) by ScalaMeta
+    - [Scala Syntax](https://marketplace.visualstudio.com/items?itemName=scala-lang.scala)
+    - [Scaladex search](https://marketplace.visualstudio.com/items?itemName=baccata.scaladex-search)
+    - [Quarkus Tools](https://marketplace.visualstudio.com/items?itemName=redhat.vscode-quarkus)
 
 This repository demonstrates multiple Quarkus concepts and provides tooling, such as:
 
@@ -45,11 +45,11 @@ This repository demonstrates multiple Quarkus concepts and provides tooling, suc
 
 - [Running the application in dev mode](#running-the-application-in-dev-mode)
 - [Application Examples](#application-examples)
-  - [Simple greet app](#simple-greet-app)
-  - [Kafka Producer -\> Processor -\> Consumer](#kafka-producer---processor---consumer)
-  - [Database Persistence](#database-persistence)
-  - [Using Scala Futures and Zio](#using-scala-futures-and-zio)
-  - [Using the full stack as a "production" application](#using-the-full-stack-as-a-production-application)
+    - [Simple greet app](#simple-greet-app)
+    - [Kafka Producer -\> Processor -\> Consumer](#kafka-producer---processor---consumer)
+    - [Database Persistence](#database-persistence)
+    - [Using Scala Futures and Zio](#using-scala-futures-and-zio)
+    - [Using the full stack as a "production" application](#using-the-full-stack-as-a-production-application)
 - [Running Tests](#running-tests)
 - [Packaging and running the application](#packaging-and-running-the-application)
 - [Creating a native executable and container](#creating-a-native-executable-and-container)
@@ -57,7 +57,6 @@ This repository demonstrates multiple Quarkus concepts and provides tooling, suc
 - [Command Matrix](#command-matrix)
 - [Build Tool Usage](#build-tool-usage)
 - [Customizing provided code](#customizing-provided-code)
-
 
 ## Running the application in dev mode
 
@@ -70,7 +69,7 @@ Run your application in dev mode that enables live coding using:
 quarkus dev
 ```
 
-> **_NOTE:_**  Quarkus now ships with a Dev UI, which is available in dev mode only at <http://localhost:8080/q/dev/>.
+> **_NOTE:_** Quarkus now ships with a Dev UI, which is available in dev mode only at <http://localhost:8080/q/dev/>.
 > On dev mode and production mode, the Swagger UI can be opened at <http://localhost:8080/swagger-ui>.
 
 This sample project contains multiple small "applications" that uses different libraries to show it's usage.
@@ -246,5 +245,5 @@ To reuse this code as a template for your own applications, remember to change t
 - The codebase is very independent from each other so one could remove Kafka, Database, Greet without breaking the other functionality
 - For databases, if using Hibernate, you can remove Scala 3 Magnum dependencies, if using Magnum, can remove Hibernate. All dependencies are commented in `pom.xml` or `build.gradle`
 - If Sonarcloud is not needed, change:
-  - Remove the GitHub action (./github/workflows/CI.yaml) cache task and update the test task removing additional sonar mvn tasks
-  - Remove `sonar` properties from pom.xml
+    - Remove the GitHub action (./github/workflows/CI.yaml) cache task and update the test task removing additional sonar mvn tasks
+    - Remove `sonar` properties from pom.xml

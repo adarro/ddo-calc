@@ -1,5 +1,5 @@
-import io.truthencode.buildlogic.getBuildEnvironment
 import io.truthencode.buildlogic.BuildEnvironment
+import io.truthencode.buildlogic.getBuildEnvironment
 /*
  * SPDX-License-Identifier: Apache-2.0
  *
@@ -69,7 +69,6 @@ dependencies {
             implementation(libs.json4s.native.s3)
             implementation(libs.enumeratum.s3)
 
-
             /* DB, Query etc
 
     // Quill Scala Query QSQL
@@ -135,12 +134,12 @@ dependencies {
     testImplementation(project(":ddo-testing-util"))
 }
 
-tasks.withType<Test>() {
+tasks.withType<Test> {
     useJUnitPlatform {
-        includeTags("io.quarkus.test.junit.QuarkusTest","Unit")
+        includeTags("io.quarkus.test.junit.QuarkusTest", "Unit")
     }
 }
-//testing {
+// testing {
 //    suites {
 //        withType(JvmTestSuite::class) {
 //            this.useJUnitPlatform
@@ -150,8 +149,8 @@ tasks.withType<Test>() {
 //            }
 //        }
 //    }
-//}
-//testing {
+// }
+// testing {
 //    suites {
 //        @Suppress("UnstableApiUsage")
 //        withType(JvmTestSuite::class)
@@ -162,5 +161,4 @@ tasks.withType<Test>() {
 //                }
 //            }
 //    }
-//}
-
+// }

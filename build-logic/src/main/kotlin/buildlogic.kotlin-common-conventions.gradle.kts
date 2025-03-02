@@ -38,7 +38,6 @@ tasks.withType<KotlinCompile>().configureEach {
 
 val defaultJavaToolChainVersion: String by project
 
-
 dependencies {
     constraints {
         // Define dependency versions as constraints

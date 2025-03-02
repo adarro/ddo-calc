@@ -86,6 +86,7 @@ enum class TestTypes {
 class TestBuildSupport(
     proj: Project,
 ) {
+    // remove this once we Move these functions into kts file and can use version catalog
     private val koTestVersion: String by proj
     val applyMockito = { suite: JvmTestSuite ->
         suite.useJUnitJupiter()
@@ -101,5 +102,21 @@ class TestBuildSupport(
             implementation("io.kotest:kotest-assertions-core:$koTestVersion")
             implementation("io.kotest:kotest-property:$koTestVersion")
         }
+    }
+}
+
+enum class BuildEnvironment {
+    DEV,
+    TEST,
+    PROD,
+}
+
+fun getBuildEnvironment(): BuildEnvironment {
+    val env = System.getenv("BUILD_ENVIRONMENT")
+    return when (env) {
+        "DEV" -> BuildEnvironment.DEV
+        "TEST" -> BuildEnvironment.TEST
+        "PROD" -> BuildEnvironment.PROD
+        else -> BuildEnvironment.DEV
     }
 }

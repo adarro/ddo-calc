@@ -41,6 +41,9 @@ dependencies {
     implementation(libs.kotlin.gradle.plugin)
     implementation(libs.kotlin.allopen.plugin)
     implementation(libs.scalafix.plugin)
+    implementation(libs.nullaway.plugin)
+    implementation(libs.errorprone.plugin)
+
     implementation("org.sonarsource.scanner.gradle:sonarqube-gradle-plugin:_")
     // enable gradle catalog for included convention plugins
     implementation(files(libs.javaClass.superclass.protectionDomain.codeSource.location))

@@ -14,7 +14,7 @@ import jakarta.persistence.Table
 @Entity
 @Table(name = "trigger_table")
 @EntityListeners(AuditListener::class)
-class Triggers : Auditable {
+open class Triggers : Auditable {
     @Id
     @GeneratedValue
     var id: Long? = null

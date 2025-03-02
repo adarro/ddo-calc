@@ -96,13 +96,13 @@ public class FeatResource {
     }
 
     @POST
-    public Uni<Response> create(Feat Feat) {
-        if (Feat == null || Feat.id != null) {
+    public Uni<Response> create(Feat feat) {
+        if (feat == null || feat.id != null) {
             throw new WebApplicationException("Id was invalidly set on request.", 422);
         }
 
-        return Panache.withTransaction(Feat::persist)
-            .replaceWith(Response.ok(Feat).status(CREATED)::build);
+        return Panache.withTransaction(feat::persist)
+            .replaceWith(Response.ok(feat).status(CREATED)::build);
     }
 
     @KeyExtracting

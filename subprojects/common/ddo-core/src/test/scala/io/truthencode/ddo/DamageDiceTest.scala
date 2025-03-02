@@ -19,11 +19,11 @@ package io.truthencode.ddo
 
 import com.typesafe.scalalogging.LazyLogging
 import io.truthencode.ddo.model.meta.PhysicalDamageType
-import io.truthencode.ddo.support.TraverseOps._
+import io.truthencode.ddo.support.TraverseOps.*
 import io.truthencode.ddo.support.dice.DamageInfo
 import org.scalatest.funspec.AnyFunSpec
 import org.scalatest.matchers.should.Matchers
-import org.scalatest.prop.{PropertyChecks, TableFor1}
+import org.scalatest.prop.{TableDrivenPropertyChecks, TableFor1}
 import org.scalatestplus.mockito.MockitoSugar
 
 import scala.collection.immutable
@@ -31,7 +31,7 @@ import scala.util.Random
 import scala.util.Random.shuffle
 
 class DamageDiceTest
-  extends AnyFunSpec with PropertyChecks with Matchers with MockitoSugar with LazyLogging {
+  extends AnyFunSpec with TableDrivenPropertyChecks with Matchers with MockitoSugar with LazyLogging {
 
   final val maxFlags = 4
   val diceSet: Vector[String] =

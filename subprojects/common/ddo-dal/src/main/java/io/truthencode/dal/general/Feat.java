@@ -5,6 +5,7 @@ import jakarta.persistence.Cacheable;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.Size;
 
 import java.util.Set;
 
@@ -17,6 +18,7 @@ public class Feat extends PanacheEntity {
 
     public String description;
 
+    @Size(min=1,max=2,message="Must have at least one usage and at most two usages")
     public Set<Usage> usages;
 
     public Feat() {

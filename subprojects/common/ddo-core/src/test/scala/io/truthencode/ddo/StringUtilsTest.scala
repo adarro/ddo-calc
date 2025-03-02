@@ -33,14 +33,15 @@ package io.truthencode.ddo
 import com.typesafe.scalalogging.LazyLogging
 import io.truthencode.ddo.support.StringUtils.{Extensions, StringImprovements}
 import io.truthencode.ddo.support.matching.{WordMatchStrategies, WordMatchStrategy}
-import org.scalatest.OptionValues._
+import org.scalatest.OptionValues.*
 import org.scalatest.funspec.AnyFunSpec
 import org.scalatest.matchers.should.Matchers
-import org.scalatest.prop.PropertyChecks
+import org.scalatest.prop.TableDrivenPropertyChecks
 
 import scala.collection.immutable.HashSet
 
-class StringUtilsTest extends AnyFunSpec with PropertyChecks with Matchers with LazyLogging {
+class StringUtilsTest
+  extends AnyFunSpec with TableDrivenPropertyChecks with Matchers with LazyLogging {
   final private val meaningOfLife = 42
   final private val ibm = List("I Believe Mom", "i borrow money", "IBetterMail")
   final private val nullString: String = null

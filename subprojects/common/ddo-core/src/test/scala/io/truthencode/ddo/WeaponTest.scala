@@ -32,15 +32,10 @@ package io.truthencode.ddo
 
 import io.truthencode.ddo.MonetaryValue.Coins
 import io.truthencode.ddo.model.attribute.Attribute
-import io.truthencode.ddo.model.item.weapon.{
-  DeliveryType,
-  Handedness,
-  ProficiencyClass,
-  Weapon,
-  WeaponCategory
-}
+import io.truthencode.ddo.model.item.weapon.{DeliveryType, Handedness, ProficiencyClass, Weapon, WeaponCategory}
 import io.truthencode.ddo.model.misc.Material
 import io.truthencode.ddo.support.dice.DamageDice
+import io.truthencode.ddo.test.tags.UnitTest
 import org.scalatest.funspec.AnyFunSpec
 import org.scalatest.matchers.should.Matchers
 import org.scalatest.tags.Slow
@@ -84,7 +79,7 @@ class WeaponTest extends AnyFunSpec with Matchers with MockitoSugar {
   }
 
   describe("a basic weapon") {
-    it("should have a weapon type") {
+    it("should have a weapon type", UnitTest) {
       //  import scala.language.reflectiveCalls // scalastyle:off import.grouping
       val f = fixture
       f.longBow.weaponCategory should be(Some(WeaponCategory.Dagger))

@@ -1,7 +1,10 @@
 /*
  * SPDX-License-Identifier: Apache-2.0
  *
- * Copyright 2015-2021 Andre White.
+ * Copyright 2015-2025
+ *
+ * Author: Andre White.
+ * FILE: DamageDiceTest.scala
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -31,7 +34,8 @@ import scala.util.Random
 import scala.util.Random.shuffle
 
 class DamageDiceTest
-  extends AnyFunSpec with TableDrivenPropertyChecks with Matchers with MockitoSugar with LazyLogging {
+  extends AnyFunSpec with TableDrivenPropertyChecks with Matchers with MockitoSugar
+  with LazyLogging {
 
   final val maxFlags = 4
   val diceSet: Vector[String] =

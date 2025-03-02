@@ -1,5 +1,3 @@
-import gradle.kotlin.dsl.accessors._fef3d86dac4f68a9dcfb4a9e845afa4b.errorprone
-import gradle.kotlin.dsl.accessors._fef3d86dac4f68a9dcfb4a9e845afa4b.nullaway
 import net.ltgt.gradle.errorprone.errorprone
 import net.ltgt.gradle.nullaway.nullaway
 import org.gradle.accessors.dm.LibrariesForLibs

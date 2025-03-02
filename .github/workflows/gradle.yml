@@ -16,10 +16,10 @@ jobs:
             - uses: actions/checkout@v3
             - uses: actions/setup-java@v3
               with:
-                distribution: temurin
-                java-version: 21
+                  distribution: temurin
+                  java-version: 21
             - name: Run test and Coverage
               uses: gradle/gradle-build-action@v2
               with:
                   gradle-version: wrapper
-                  arguments:  reportAcceptanceTestScoverage reportScoverage reportTestScoverage aggregateScoverage testAggregateTestReport
+                  arguments: reportAcceptanceTestScoverage reportScoverage reportTestScoverage aggregateScoverage testAggregateTestReport

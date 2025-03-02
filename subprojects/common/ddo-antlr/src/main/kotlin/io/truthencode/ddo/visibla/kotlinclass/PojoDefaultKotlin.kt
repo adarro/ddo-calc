@@ -1,7 +1,10 @@
 /*
  * SPDX-License-Identifier: Apache-2.0
  *
- * Copyright 2015-2021 Andre White.
+ * Copyright 2015-2025
+ *
+ * Author: Andre White.
+ * FILE: PojoDefaultKotlin.kt
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -15,23 +18,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package io.truthencode.ddo.model.race
+package io.truthencode.ddo.visibla.kotlinclass
 
-import org.scalatest.funspec.AnyFunSpec
-import org.scalatest.matchers.should.Matchers
-
-/**
- * Created by adarr on 3/17/2017.
- */
-class Race$Test extends AnyFunSpec with Matchers {
-
-  describe("Race$Test") {
-
-    it("should determine Family") {
-      val elf = Race.HalfElf
-      val family = List(RaceFamily.Elven, RaceFamily.Human)
-      elf.families should contain atLeastOneElementOf family
-    }
-
-  }
-}
+/** Temporary Placeholder to verify classpath compile conditions. */
+class PojoDefaultKotlin

@@ -65,6 +65,7 @@ fun walkBack(
             RecurseValue.FINITE -> {
                 walkBack("../$fileName", recurse - 1, proj.rootProject)
             }
+
             RecurseValue.INFINITE -> {
                 walkBack("../$fileName", recurse, proj.rootProject)
             }
@@ -75,68 +76,56 @@ fun walkBack(
 val headerFile: File? = rootProject.file("gradle/LICENSE_HEADER_SPOTLESS")
 
 configure<com.diffplug.gradle.spotless.SpotlessExtension> {
-//   ratchetFrom("origin/master")
+    ratchetFrom("origin/master")
     if (buildLang() == ScriptLanguage.KotlinScriptBuild) {
         logger.debug("SPOTLESS: configuring kotlin script formatting to ${project.name}")
         kotlinGradle {
 //            ktlint("0.50.0")
             diktat("1.2.5").configFile(rootProject.file("diktat-analysis.yml"))
-            target("*.build.kts")
+            target("build-logic/src/main/kotlin/*.build.kts")
         }
     }
 
     project.plugins.withId("org.jetbrains.kotlin.jvm") {
-        logger.debug("SPOTLESS: configuring Kotlin formatting to ${project.name}")
+        logger.info("SPOTLESS: configuring Kotlin formatting to ${project.name} (ktlint)")
         kotlin {
-//                licenseHeader("/* (C) \$YEAR */")
-//            if (!headerFile?.exists()!!) {
-//                logger.error("NO LICENSE FILE FOUND!!!!!!!!!!!!!!")
-//            } else {
-//                logger.error("LICENSE FILE EXISTS!!!!!")
-//                licenseHeaderFile(headerFile)
-//            }
-            // ktfmt("0.44") // ('0.30').dropboxStyle()
-//            ktlint("0.50.0")
-            // version and configFile are both optional
-            logger.info("kotlin format: ${project.name}")
+            /* detekt or diktat would be nice to use for analysis,
+             but only ktlint is supported in both spotless and trunk. */
 
             target(
                 listOf(
-                    "*.kt",
+                    "**/src/**/*.kt",
                 ),
             )
-            val dta = "diktat-analysis.yml"
-            walkBack(dta, Recursion.RecurseSome(1)).let { f ->
-                diktat("1.2.5").configFile(f)
-            }
 
-//            diktat("1.0.1").configFile(rootProject.file("diktat-analysis.yml"))
-            licenseHeaderFile(rootProject.file("gradle/LICENSE_HEADER_SPOTLESS"))
-
+            ktlint()
+            licenseHeaderFile(rootProject.file("gradle/LICENSE_HEADER_JAVA"), "package ")
             toggleOffOn()
         }
     }
 
-//    if (project.plugins.hasPlugin("scala")) {
-//        logger.info("SPOTLESS: configuring scala formatting to ${project.name}")
-//        scala {
-//            //  licenseHeaderFile( rootProject.file("gradle/LICENSE_HEADER"))
-//            target("**/*.scala") // don't format worksheets
-//            val scalaFmtVersion: String by project
-//            // version and configFile are both optional
-//            scalafmt(scalaFmtVersion).configFile(rootProject.file(".scalafmt.conf"))
-//            target("*.scala")
-//        }
-//        licenseHeaderFile(rootProject.file("gradle/LICENSE_HEADER_SPOTLESS"))
-//    }
-
     project.plugins.withId("scala") {
-        logger.error("SPOTLESS: configuring scala formatting to ${project.name}")
+        logger.info("SPOTLESS: configuring scala formatting to ${project.name} (scalafmt)")
         scala {
             val scalaFmtVersion: String by project
             // version and configFile are both optional
             scalafmt(scalaFmtVersion).configFile(rootProject.file(".scalafmt.conf"))
             target("**/src/**/*.scala")
+            licenseHeaderFile(project.rootProject.file("gradle/LICENSE_HEADER_JAVA"), "package ")
+        }
+    }
+
+    project.plugins.withId("java") {
+        logger.info("SPOTLESS: configuring java formatting to ${project.name} (googleJavaFormat)")
+        java {
+            googleJavaFormat("1.25.2")
+                .aosp()
+                .reflowLongStrings()
+                .formatJavadoc(true)
+                .reorderImports(true)
+                .groupArtifact("com.google.googlejavaformat:google-java-format")
+
+            target("**/src/**/java/*.java")
             licenseHeaderFile(project.rootProject.file("gradle/LICENSE_HEADER_JAVA"), "package ")
         }
     }

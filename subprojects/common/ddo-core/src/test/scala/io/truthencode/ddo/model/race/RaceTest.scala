@@ -4,7 +4,7 @@
  * Copyright 2015-2025
  *
  * Author: Andre White.
- * FILE: DamageReductionLevelBase.scala
+ * FILE: RaceTest.scala
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -18,16 +18,23 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package io.truthencode.ddo.model.feats
+package io.truthencode.ddo.model.race
 
-import io.truthencode.ddo.support.naming.{DisplayName, FriendlyDisplay}
-import io.truthencode.ddo.support.requisite.{ClassRequisite, FeatRequisite}
+import org.scalatest.funspec.AnyFunSpec
+import org.scalatest.matchers.should.Matchers
 
 /**
- * Created by adarr on 4/10/2017.
+ * Created by adarr on 3/17/2017.
  */
-trait DamageReductionLevelBase
-  extends ReligionFeatBase with Passive with DamageReductionLevel with DamageReductionPrefix {
-  self: ClassRequisite & FeatRequisite & DisplayName & FriendlyDisplay =>
+class RaceTest extends AnyFunSpec with Matchers {
 
+  describe("Race$Test") {
+
+    it("should determine Family") {
+      val elf = Race.HalfElf
+      val family = List(RaceFamily.Elven, RaceFamily.Human)
+      elf.families should contain atLeastOneElementOf family
+    }
+
+  }
 }

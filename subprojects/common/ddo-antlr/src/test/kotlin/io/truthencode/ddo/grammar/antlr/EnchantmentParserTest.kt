@@ -1,3 +1,23 @@
+/*
+ * SPDX-License-Identifier: Apache-2.0
+ *
+ * Copyright 2015-2025
+ *
+ * Author: Andre White.
+ * FILE: EnchantmentParserTest.kt
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *     https://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
 package io.truthencode.ddo.grammar.antlr
 
 import io.kotest.core.spec.style.DescribeSpec
@@ -5,9 +25,19 @@ import io.kotest.matchers.equals.shouldBeEqual
 import org.antlr.v4.runtime.CharStreams
 import org.antlr.v4.runtime.CommonTokenStream
 import org.antlr.v4.runtime.tree.ParseTreeWalker
+import org.slf4j.LoggerFactory
 
+@Suppress("TOO_MANY_LINES_IN_LAMBDA", "PARAMETER_NAME_IN_OUTER_LAMBDA")
 class EnchantmentParserTest :
     DescribeSpec({
+        val logger = LoggerFactory.getLogger(this::class.java.canonicalName)
+
+        class EnchantmentListener : EnchantmentsParserBaseListener() {
+            override fun enterSlug(ctx: EnchantmentsParser.SlugContext?) {
+                super.enterSlug(ctx)
+                logger.info("Slug: ${ctx?.text}")
+            }
+        }
 
         val data =
             """
@@ -23,21 +53,14 @@ class EnchantmentParserTest :
             Unknown -4
             """.trimIndent()
 
-        class EnchantmentListener : EnchantmentsParserBaseListener() {
-            override fun enterSlug(ctx: EnchantmentsParser.SlugContext?) {
-                super.enterSlug(ctx)
-                println("Slug: ${ctx?.text}")
-            }
-        }
-
         describe("Enchantment Parser") {
             it("Instantiates") {
                 val lexer = EnchantmentsLexer(CharStreams.fromString(data))
                 val tokens = CommonTokenStream(lexer)
-                val p = EnchantmentsParser(tokens)
+                val ep = EnchantmentsParser(tokens)
                 val walker = ParseTreeWalker()
 
-                walker.walk(EnchantmentListener(), p.parseEnchantment())
+                walker.walk(EnchantmentListener(), ep.parseEnchantment())
             }
             describe("with a strike") {
                 it("adds ten") {
@@ -49,9 +72,7 @@ class EnchantmentParserTest :
             }
 
             describe("for the opposite team") {
-                it("Should negate one score") {
-                    true shouldBeEqual !false
-                }
+                it("Should negate one score") { true shouldBeEqual !false }
             }
         }
     })

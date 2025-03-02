@@ -1,3 +1,23 @@
+/*
+ * SPDX-License-Identifier: Apache-2.0
+ *
+ * Copyright 2015-2025
+ *
+ * Author: Andre White.
+ * FILE: Extractor.scala
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *     https://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
 package io.truthencode.ddo.web.mapping
 
 import net.ruippeixotog.scalascraper.dsl.DSL.Extract._
@@ -62,7 +82,7 @@ object Extractor extends LazyLogging {
     infoText match {
       case regCritical(min, max, multiplier) =>
         logger.info(s"critical profile: $infoText")
-        Some(critProfile(Option(min).getOrElse(max).toInt, max toInt, multiplier toInt))
+        Some(critProfile(Option(min).getOrElse(max).toInt, max.toInt, multiplier.toInt))
       case _ =>
         logger.error(s"argument could not be parsed: $infoText")
         throw new IllegalArgumentException
@@ -94,7 +114,7 @@ object Extractor extends LazyLogging {
    */
   def extractDamageInfo(infoText: String): Option[DamageInfo] = {
     val damageInfo =
-        """(?<wDamage>\d(?:\.\d+)?)?\s*(?<dice>\[\d+d\d+])(?<damageType>\s\+\s\d+)?\s(.*)""".r
+      """(?<wDamage>\d(?:\.\d+)?)?\s*(?<dice>\[\d+d\d+])(?<damageType>\s\+\s\d+)?\s(.*)""".r
     infoText match {
       case damageInfo(wDamage, dice, extra, damageType) =>
         logger.trace(s"$infoText matched")

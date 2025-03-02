@@ -1,7 +1,10 @@
 /*
  * SPDX-License-Identifier: Apache-2.0
  *
- * Copyright 2015-2021 Andre White.
+ * Copyright 2015-2025
+ *
+ * Author: Andre White.
+ * FILE: BonusType.scala
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -133,7 +136,7 @@ object BonusType extends Enum[BonusType] {
 
   /**
    * [[https://ddowiki.com/page/Determination_bonus Determination bonus]] was introduced in Update
-   * 26. Multiple determination bonuses don't stack, only the highest applies.
+   *   26. Multiple determination bonuses don't stack, only the highest applies.
    */
   case object Determination extends BonusType with NonStacking
 

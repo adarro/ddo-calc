@@ -80,7 +80,9 @@ tasks.withType<ScalaCompile>().configureEach {
                         "-Wsafe-init", // Added per Quarkus - Scala3 extension notes along with semanticdb
                         "-Xsemanticdb",
                         "-semanticdb-target",
-                        project.layout.buildDirectory.get().toString(),
+                        project.layout.buildDirectory
+                            .get()
+                            .toString(),
                         "-Yretain-trees", // Needed for Enumeratum
                         "-rewrite",
 //                        "-new-syntax",

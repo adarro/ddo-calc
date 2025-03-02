@@ -1,7 +1,10 @@
 /*
  * SPDX-License-Identifier: Apache-2.0
  *
- * Copyright 2015-2021 Andre White.
+ * Copyright 2015-2025
+ *
+ * Author: Andre White.
+ * FILE: package.scala
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -91,8 +94,8 @@ package object support extends LazyLogging {
        * @return
        *   Subset of source consisting of unique LHS + common LHS
        */
-      def leftJoin[Y >: K, Z >: V](ys: Map[Y, Z])(implicit
-        joinOnKeys: Boolean = true): Map[K, V] = {
+      def leftJoin[Y >: K, Z >: V](
+        ys: Map[Y, Z])(implicit joinOnKeys: Boolean = true): Map[K, V] = {
         if joinOnKeys then {
           val lk = xs.keys.toSeq.leftJoin(ys.keys.toSeq)
           xs.filter { k =>
@@ -116,8 +119,8 @@ package object support extends LazyLogging {
        * @return
        *   Subset of source consisting of unique RHS + common RHS
        */
-      def rightJoin[Y >: K, Z >: V](ys: Map[Y, Z])(implicit
-        joinOnKeys: Boolean = true): Map[Y, Z] = {
+      def rightJoin[Y >: K, Z >: V](
+        ys: Map[Y, Z])(implicit joinOnKeys: Boolean = true): Map[Y, Z] = {
         if joinOnKeys then {
           val lk = ys.keys.toSeq.leftJoin(xs.keys.toSeq)
           ys.filter { k =>
@@ -272,7 +275,7 @@ package object support extends LazyLogging {
             w <- s.split(Space)
             c = w.charAt(0).toString.toLowerCase
           yield w.toLowerCase.replaceFirst(c, c.toUpperCase)
-        } mkString
+        }.mkString
       }
 
       /**

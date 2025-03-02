@@ -1,7 +1,10 @@
 /*
  * SPDX-License-Identifier: Apache-2.0
  *
- * Copyright 2015-2021 Andre White.
+ * Copyright 2015-2025
+ *
+ * Author: Andre White.
+ * FILE: RaceFamilyTest.scala
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -23,7 +26,7 @@ import org.scalatest.matchers.should.Matchers
 /**
  * Created by adarr on 3/17/2017.
  */
-class RaceFamily$Test extends AnyFunSpec with Matchers {
+class RaceFamilyTest extends AnyFunSpec with Matchers {
 
   describe("RaceFamily$Test") {
 

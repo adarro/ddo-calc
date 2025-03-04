@@ -1,5 +1,7 @@
+import com.diffplug.gradle.spotless.SpotlessTask
 import io.truthencode.buildlogic.RecurseValue
 import io.truthencode.buildlogic.Recursion
+import org.gradle.kotlin.dsl.withType
 
 /*
  * SPDX-License-Identifier: Apache-2.0
@@ -23,7 +25,6 @@ plugins {
 
 //    id("com.github.hierynomus.license")
     id("com.diffplug.spotless")
-
 
 //    id("com.javiersc.gradle.plugins.dependency.updates")
 }
@@ -129,5 +130,14 @@ configure<com.diffplug.gradle.spotless.SpotlessExtension> {
             target("**/src/**/java/*.java")
             licenseHeaderFile(project.rootProject.file("gradle/LICENSE_HEADER_JAVA"), "package ")
         }
+    }
+}
+
+tasks.withType<SpotlessTask> {
+    // unsure why this is necessary
+    // possibly due to a non-standard project layout or additional source sets?
+    if (project.plugins.hasPlugin("java")) {
+        logger.error("explicitly adding java compile task dependency to spotless task ${this.name}")
+        tasks.first { it == this }.mustRunAfter(tasks.withType<JavaCompile>())
     }
 }

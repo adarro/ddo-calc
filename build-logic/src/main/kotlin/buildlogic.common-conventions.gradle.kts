@@ -19,9 +19,8 @@ import com.github.benmanes.gradle.versions.updates.DependencyUpdatesTask
 import nl.littlerobots.vcu.plugin.versionCatalogUpdate
 
 plugins {
-//    id("code-quality")
+    id("code-quality")
     id("com.github.ben-manes.versions")
-
 }
 
 repositories {

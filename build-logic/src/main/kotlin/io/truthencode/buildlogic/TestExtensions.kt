@@ -31,7 +31,6 @@ interface KotlinAnnotationProcessingExtension {
     val kotlinTestMode: Property<TestMode>
 }
 
-
 /**
  * TestTypes is a general enum for test type names.
  * It initially expanded the incubating TestSuiteType enum but was removed in Gradle 13.0+

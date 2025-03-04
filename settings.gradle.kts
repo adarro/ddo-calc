@@ -171,7 +171,8 @@ if (System.getenv("enableCompositeBuild") == "true") {
 }
 
 @Suppress("UnstableApiUsage")
-refreshVersions { // https://github.com/jmfayard/refreshVersions
+refreshVersions {
+    // https://github.com/jmfayard/refreshVersions
     rejectVersionIf {
         candidate.stabilityLevel.isLessStableThan(StabilityLevel.Stable)
     }

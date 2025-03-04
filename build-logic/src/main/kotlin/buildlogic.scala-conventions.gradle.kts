@@ -30,18 +30,20 @@ val builderScalaVersion: String by project
 
 scala {
 
-    scalaVersion = when (builderScalaVersion) {
-        "3" -> {
-            libs.versions.scala3.version.get()
-        }
+    scalaVersion =
+        when (builderScalaVersion) {
+            "3" -> {
+                libs.versions.scala3.version
+                    .get()
+            }
 
-        else -> {
-            libs.versions.scala2.version.get()
+            else -> {
+                libs.versions.scala2.version
+                    .get()
+            }
         }
-    }
-
 }
-//dependencies {
+// dependencies {
 //    when (builderScalaVersion) {
 //        "3" -> {
 //
@@ -54,13 +56,13 @@ scala {
 //        }
 //    }
 //
-////    val scalaLibraryVersion: String by project
-////    val scalaMajorVersion: String by project
-////    val scalaCompilerPlugin by configurations.creating
-////    scalaCompilerPlugin("com.typesafe.genjavadoc:genjavadoc-plugin_$scalaLibraryVersion:0.18")
-////     compileOnly("org.scoverage:scalac-scoverage-plugin_$scalaMajorVersion.7:1.4.10")
-////
-//}
+// //    val scalaLibraryVersion: String by project
+// //    val scalaMajorVersion: String by project
+// //    val scalaCompilerPlugin by configurations.creating
+// //    scalaCompilerPlugin("com.typesafe.genjavadoc:genjavadoc-plugin_$scalaLibraryVersion:0.18")
+// //     compileOnly("org.scoverage:scalac-scoverage-plugin_$scalaMajorVersion.7:1.4.10")
+// //
+// }
 
 configure<org.scoverage.ScoverageExtension> {
 

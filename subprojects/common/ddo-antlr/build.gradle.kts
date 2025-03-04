@@ -4,7 +4,6 @@ import java.nio.file.FileSystems
 plugins {
     id("buildlogic.kotlin-library-conventions")
     antlr
-    id("code-quality")
     idea
     id("buildlogic.kotlin-test-conventions")
 }

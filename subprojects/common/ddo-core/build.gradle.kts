@@ -1,3 +1,6 @@
+import com.diffplug.gradle.spotless.SpotlessTask
+
+
 /*
  * SPDX-License-Identifier: Apache-2.0
  *
@@ -87,4 +90,15 @@ testing {
                 }
             }
     }
+}
+
+tasks.withType<SpotlessTask> {
+    tasks.first { it == this }.mustRunAfter(tasks.withType<JavaCompile>())
+
+//    logger.error("SpotlessApply tasks: $tasks")
+//    { it.name.contains("Java") }.forEach {
+//        logger.error("SpotlessApply tasks: $it")
+//        it.mustRunAfter(tasks.withType<JavaCompile>())
+//    }
+// mustRunAfter(tasks.withType<JavaCompile>())
 }

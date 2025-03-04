@@ -47,18 +47,18 @@ dependencies {
     // implementation(libs.taxi.lang)
     implementation(libs.taxi.jpa)
     implementation(libs.taxi.avrototaxi)
-    // implementation("org.taxilang:avro-to-taxi:1.56.0")
+    // implementation(libs.taxi.avrototaxi)
     // https://mvnrepository.com/artifact/org.apache.avro/avro-tools
     implementation(libs.avro.tools)
     // https://savro.dataedu.ca/
     implementation(libs.savro.s213)
-    testCompileOnly("org.projectlombok:lombok:1.18.34")
-    testAnnotationProcessor("org.projectlombok:lombok:1.18.34")
-    testImplementation("org.junit.jupiter:junit-jupiter:5.7.1")
-    testRuntimeOnly("org.junit.platform:junit-platform-launcher")
-    testImplementation("com.google.guava:guava:33.3.0-jre")
+    testCompileOnly("org.projectlombok:lombok:_")
+    testAnnotationProcessor("org.projectlombok:lombok:_")
+    testImplementation(libs.junit.jupiter)
+    testRuntimeOnly(libs.junit.platform.launcher)
+    testImplementation(libs.guava.jre)
 
-    testImplementation("org.hamcrest:hamcrest-all:1.3")
+    testImplementation("org.hamcrest:hamcrest-all:_")
 //    implementation(libs.scala2.library)
 
 //    val scalaLibraryVersion: String by project

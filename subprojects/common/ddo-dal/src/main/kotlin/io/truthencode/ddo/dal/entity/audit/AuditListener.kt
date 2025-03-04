@@ -42,8 +42,8 @@ class AuditListener {
                 auditable.setAudit(audit)
             }
 
-        audit.createdOn = LocalDateTime.now()
-        audit.createdBy = LoggedUser.get()
+        audit?.createdOn = LocalDateTime.now()
+        audit?.createdBy = LoggedUser.get()
     }
 
     /**

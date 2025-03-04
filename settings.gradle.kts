@@ -16,6 +16,8 @@
  * limitations under the License.
  */
 
+import de.fayard.refreshVersions.core.FeatureFlag
+import de.fayard.refreshVersions.core.StabilityLevel
 import java.nio.file.Files
 import java.nio.file.Paths
 
@@ -165,6 +167,16 @@ if (System.getenv("enableCompositeBuild") == "true") {
     logger.info("Adding included builds")
     file("examples").listFiles()?.filter { ft -> ft.isDirectory }?.forEach { moduleBuild: File ->
         includeBuild(moduleBuild)
+    }
+}
+
+@Suppress("UnstableApiUsage")
+refreshVersions { // https://github.com/jmfayard/refreshVersions
+    rejectVersionIf {
+        candidate.stabilityLevel.isLessStableThan(StabilityLevel.Stable)
+    }
+    featureFlags {
+        this.enable(FeatureFlag.VERSIONS_CATALOG)
     }
 }
 

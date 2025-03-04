@@ -19,6 +19,13 @@ import org.gradle.accessors.dm.LibrariesForLibs
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
+/**
+ * Common java conventions
+ * @author Andre White
+ * @since 0.0.1
+ * Includes general configurations for jvm projects that use the java plugin.
+ * This includes kotlin / scala plugins which automatically apply the java plugin
+ */
 val libs = the<LibrariesForLibs>()
 plugins {
     java
@@ -56,15 +63,12 @@ java {
 tasks.withType<JavaCompile>().configureEach {
     options.encoding = "UTF-8"
     options.errorprone {
-//        check("NullAway", CheckSeverity.ERROR)
         val regExcludeScala = Regex("""(.*\.scala|.*/generated*/.*)""")
-        logger.error("regExcludeScala: $regExcludeScala")
         excludedPaths = regExcludeScala.pattern
         disableWarningsInGeneratedCode = true
 
         nullaway {
             suggestSuppressions = true
-//        autoFixSuppressionComment = "Suggested by (ErrorProne) NullAway"
             onlyNullMarked = true
             isAssertsEnabled = true
             isJSpecifyMode = true

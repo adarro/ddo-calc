@@ -52,17 +52,21 @@ dependencies {
     implementation("com.github.node-gradle:gradle-node-plugin:_")
 // code quality
     implementation(libs.spotless.plugin)
-    implementation("com.github.ben-manes:gradle-versions-plugin:_")
+    implementation(libs.version.plugin)
+    implementation(libs.version.catalog.plugin)
+//    implementation(libs.refreshVersions.plugin)
     implementation("com.javiersc.gradle-plugins:dependency-updates:_")
     // doc generation (requires python)
 //    implementation("com.palantir.baseline:gradle-baseline-java:_")
 
     // CI build support
+    // TODO: Remove ci plugin and use manual script
     implementation("be.vbgn.gradle:ci-detect-plugin:_")
 
 //    implementation("org.unbroken-dome.gradle-plugins:gradle-testsets-plugin:_")
     // scala
-    implementation("org.scoverage:gradle-scoverage:_")
+    implementation(libs.scalac.scoverage.plugin)
+//    implementation(libs.scoverage.)
     // bloop
     implementation("ch.epfl.scala:gradle-bloop_2.13:_")
     // ch.epfl.scala:gradle-bloop_2.12:1.4.3

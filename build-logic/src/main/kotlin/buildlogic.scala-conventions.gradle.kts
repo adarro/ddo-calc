@@ -51,7 +51,7 @@ dependencies {
 
 configure<org.scoverage.ScoverageExtension> {
 
-    scoverageVersion.set(libs.versions.scoverage.plugin)
+    scoverageVersion.set(libs.versions.scoverage.engine)
     val scsVersion = " 3.5.1"
     logger.warn("${project.name} (scoverage) $builderScalaVersion")
     val cfgs =

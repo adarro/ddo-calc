@@ -27,6 +27,7 @@ import java.util.EnumSet
 plugins {
     id("buildlogic.java-common-conventions")
     `jvm-test-suite`
+    id("buildlogic.quality-sonar")
 }
 
 tasks.withType(Test::class.java) {

@@ -48,8 +48,8 @@ dependencies {
     }
 
     // uncomment closer to production
-    implementation("io.quarkus:quarkus-smallrye-context-propagation")
-    implementation("io.quarkus:quarkus-mutiny")
+    implementation(libs.quarkus.smallrye.context.propagation)
+    implementation(libs.quarkus.mutiny)
     /*
     might use  https://github.com/nrinaudo
      for etl regex support
@@ -121,7 +121,7 @@ dependencies {
     }
     implementation(libs.avro.tools) {
         // CVE-2023-36478 https://www.mend.io/vulnerability-database/CVE-2023-36478?utm_source=JetBrains
-        this.exclude(module = "eclipse.jetty:jetty-http")
+        this.exclude(module = "eclipse.jetty:jetty-http:_")
     }
     // 12.0.12
     implementation(libs.apache.hadoop.common)

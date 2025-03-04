@@ -4,6 +4,7 @@ plugins {
     id("buildlogic.kotlin-library-conventions")
     id("buildlogic.quarkus-common-conventions")
     id("buildlogic.quarkus-kotlin-conventions")
+    id("code-quality")
 }
 
 description = "ReSTFull Data Access Entities"

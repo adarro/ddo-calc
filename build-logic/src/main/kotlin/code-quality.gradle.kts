@@ -23,7 +23,8 @@ plugins {
 
 //    id("com.github.hierynomus.license")
     id("com.diffplug.spotless")
-    id("buildlogic.quality-sonar")
+
+
 //    id("com.javiersc.gradle.plugins.dependency.updates")
 }
 

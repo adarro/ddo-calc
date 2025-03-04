@@ -36,12 +36,14 @@ import jakarta.persistence.Id
  */
 @Entity
 @EntityListeners(AuditListener::class)
-class Category : Auditable {
+open class Category : Auditable {
     /** The unique identifier for the category. */
     @Id @GeneratedValue
     var id: Long? = null
 
-    @Embedded private var audit: Audit? = null
+    @Embedded
+    private var audit: Audit? =
+        null
 
     /** The name of the category. */
     @Column(unique = true)

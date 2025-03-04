@@ -23,6 +23,8 @@ plugins {
 //    id("com.github.lkishalmi.gatling")
     //  id("io.gatling.gradle") version "3.9.5.5" replaces above
     id("org.openapi.generator")
+//    id("code-quality")
+
 //    id("io.quarkus")//
 }
 // apply {

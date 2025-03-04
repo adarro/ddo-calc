@@ -1,7 +1,10 @@
 /*
  * SPDX-License-Identifier: Apache-2.0
  *
- * Copyright 2015-2021 Andre White.
+ * Copyright 2015-2025
+ *
+ * Author: Andre White.
+ * FILE: ShieldDeflection.scala
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -29,8 +32,8 @@ import io.truthencode.ddo.support.requisite.{FeatRequisiteImpl, RequiresAnyOfFea
  * Shield Proficiency: General or Tower Shield Proficiency +8 Base Attack Bonus
  */
 protected[feats] trait ShieldDeflection
-  extends FeatRequisiteImpl with Passive with RequiresBaB with RequiresAnyOfFeat
-  with FighterBonusFeat {
+  extends FeatRequisiteImpl with BonusSelectableToClassFeatImpl with Passive with RequiresBaB
+  with RequiresAnyOfFeat with FighterBonusFeat {
   self: GeneralFeat =>
   override def requiresBaB: Int = 8
 

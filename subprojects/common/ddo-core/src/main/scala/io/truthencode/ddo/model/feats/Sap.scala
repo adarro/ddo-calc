@@ -1,7 +1,10 @@
 /*
  * SPDX-License-Identifier: Apache-2.0
  *
- * Copyright 2015-2021 Andre White.
+ * Copyright 2015-2025
+ *
+ * Author: Andre White.
+ * FILE: Sap.scala
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -17,6 +20,7 @@
  */
 package io.truthencode.ddo.model.feats
 
+import io.truthencode.ddo.activation.TriggeredActivationImpl
 import io.truthencode.ddo.enhancement.BonusType
 import io.truthencode.ddo.model.abilities.ActiveAbilities
 import io.truthencode.ddo.model.effect
@@ -36,15 +40,16 @@ import java.time.Duration
  *   need to) from tactical bonuses per se
  */
 protected trait Sap
-  extends FeatRequisiteImpl with ActiveFeat
+  extends FeatRequisiteImpl with TriggeredActivationImpl with BonusSelectableToClassFeatImpl
+  with ActiveFeat
 //    with AtWillEvent
   with Tactical with FreeFeat with FighterBonusFeat with FeaturesImpl with GrantAbilityFeature {
   self: GeneralFeat =>
   override lazy val grantedAbility: ActiveAbilities = ActiveAbilities.Sap
   override val grantBonusType: BonusType = BonusType.Feat
-  override protected[this] val triggerOn: Seq[TriggerEvent] = Seq(TriggerEvent.SpecialAttack)
-  override protected[this] val triggerOff: Seq[TriggerEvent] = Seq(TriggerEvent.OnCoolDown)
-  override protected[this] val grantAbilityCategories: Seq[effect.EffectCategories.Value] =
+  override protected val triggerOn: Seq[TriggerEvent] = Seq(TriggerEvent.SpecialAttack)
+  override protected val triggerOff: Seq[TriggerEvent] = Seq(TriggerEvent.OnCoolDown)
+  override protected val grantAbilityCategories: Seq[effect.EffectCategories.Value] =
     Seq(effect.EffectCategories.Ability, effect.EffectCategories.SpecialAttack)
   override val abilityId: String = "Sap"
   override val description: String =

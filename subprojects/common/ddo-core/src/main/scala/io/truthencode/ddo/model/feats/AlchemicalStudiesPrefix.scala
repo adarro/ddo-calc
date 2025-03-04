@@ -1,7 +1,10 @@
 /*
  * SPDX-License-Identifier: Apache-2.0
  *
- * Copyright 2015-2021 Andre White.
+ * Copyright 2015-2025
+ *
+ * Author: Andre White.
+ * FILE: AlchemicalStudiesPrefix.scala
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -23,7 +26,7 @@ import io.truthencode.ddo.support.naming.{DisplayName, DisplayProperties, Prefix
  * Created by adarr on 3/5/2017.
  */
 trait AlchemicalStudiesPrefix extends Prefix {
-  self: DisplayName with DisplayProperties =>
+  self: DisplayName & DisplayProperties =>
 
   /**
    * Delimits the prefix and text.

@@ -1,7 +1,10 @@
 /*
  * SPDX-License-Identifier: Apache-2.0
  *
- * Copyright 2015-2021 Andre White.
+ * Copyright 2015-2025
+ *
+ * Author: Andre White.
+ * FILE: Reaction.scala
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -41,7 +44,7 @@ trait Orchidium extends Reaction
 
 object Reaction extends Enum[Reaction] {
   override def values: immutable.IndexedSeq[Reaction] = findValues
-  case object Pyrite extends Pyrite
-  case object Verudite extends Verudite
-  case object Orchidium extends Orchidium
+  case object Pyrite extends Pyrite, Reaction
+  case object Verudite extends Verudite, Reaction
+  case object Orchidium extends Orchidium, Reaction
 }

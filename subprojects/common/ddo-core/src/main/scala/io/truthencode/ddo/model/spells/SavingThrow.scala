@@ -1,7 +1,10 @@
 /*
  * SPDX-License-Identifier: Apache-2.0
  *
- * Copyright 2015-2021 Andre White.
+ * Copyright 2015-2025
+ *
+ * Author: Andre White.
+ * FILE: SavingThrow.scala
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -51,7 +54,7 @@ trait WillSave extends SpellSaveImpl {
 }
 
 object Sample {
-  val rs: ReflexSave with SavingThrowResults = new ReflexSave with SavingThrowResults {
+  val rs: ReflexSave & SavingThrowResults = new ReflexSave with SavingThrowResults {
     override def savingThrowResult: SavingThrowResult = SavingThrowResult.None
   }
 

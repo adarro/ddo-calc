@@ -1,7 +1,10 @@
 /*
  * SPDX-License-Identifier: Apache-2.0
  *
- * Copyright 2015-2021 Andre White.
+ * Copyright 2015-2025
+ *
+ * Author: Andre White.
+ * FILE: WildShapeFireElemental.scala
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -26,7 +29,7 @@ import io.truthencode.ddo.support.requisite.{GrantsToClass, RequiresAllOfClass}
  * Created by adarr on 3/17/2017.
  */
 trait WildShapeFireElemental extends WildShape with GrantsToClass with RequiresAllOfClass {
-  self: DisplayName with DisplayProperties =>
+  self: DisplayName & DisplayProperties =>
 
   override def grantToClass: Seq[(HeroicCharacterClass, Int)] =
     List((Druid, 13), (Druid, 17))

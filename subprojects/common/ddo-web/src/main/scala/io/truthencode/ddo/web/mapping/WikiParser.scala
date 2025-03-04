@@ -1,15 +1,22 @@
-/**
- * Copyright (C) 2015 Andre White (adarro@gmail.com)
+/*
+ * SPDX-License-Identifier: Apache-2.0
  *
- * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except
- * in compliance with the License. You may obtain a copy of the License at
+ * Copyright 2015-2025
  *
- * http://www.apache.org/licenses/LICENSE-2.0
+ * Author: Andre White.
+ * FILE: WikiParser.scala
  *
- * Unless required by applicable law or agreed to in writing, software distributed under the License
- * is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express
- * or implied. See the License for the specific language governing permissions and limitations under
- * the License.
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *     https://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
  */
 package io.truthencode.ddo.web.mapping
 
@@ -254,11 +261,11 @@ object WikiParser extends LazyLogging {
    *   List of Attribute or empty list if none found.
    */
   def attackModifier(source: Map[String, Any]): List[Attribute] = {
-    for {
+    for
       e <- List(simpleExtractor(source.get(Field.AttackMod))).flatten
       x <- e.split(Comma)
       y <- Attribute.values.find(a => a.toString == x)
-    } yield y
+    yield y
   }
 
   /**
@@ -270,11 +277,11 @@ object WikiParser extends LazyLogging {
    *   List of Attribute or empty list if none found.
    */
   def damageModifier(source: Map[String, Any]): List[Attribute] = {
-    for {
+    for
       e <- List(simpleExtractor(source.get(Field.DamageMod))).flatten
       x <- e.split(Comma)
       y <- Attribute.values.find(a => a.toString == x)
-    } yield y
+    yield y
   }
 
   /**
@@ -484,7 +491,7 @@ object WikiParser extends LazyLogging {
     val leaves = enchantmentExtractor(eSource).map { x =>
       x.text
     }
-    if (leaves.isEmpty) None
+    if leaves.isEmpty then None
     else Some(leaves)
   }
 

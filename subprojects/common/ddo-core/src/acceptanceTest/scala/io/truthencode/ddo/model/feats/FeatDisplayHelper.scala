@@ -1,7 +1,10 @@
 /*
  * SPDX-License-Identifier: Apache-2.0
  *
- * Copyright 2015-2021 Andre White.
+ * Copyright 2015-2025
+ *
+ * Author: Andre White.
+ * FILE: FeatDisplayHelper.scala
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -32,7 +35,7 @@ trait FeatDisplayHelper extends DisplayHelper {
    * Removes Sub-Feats such as Weapon Proficiencies
    */
   val filterByMainFeat: PartialFunction[Entry, Entry] = {
-    case x: Feat with SubFeatInformation if !x.isSubFeat => x
+    case x: (Feat & SubFeatInformation) if !x.isSubFeat => x
   }
 
   def prettyPrint(): String = {
@@ -47,7 +50,7 @@ trait FeatDisplayHelper extends DisplayHelper {
     val header = s"<table><tr><th>$heading</th></tr>"
     val footer = "</table>"
     val table = s"$header$data$footer"
-    if (collapse) {
+    if collapse then {
       s"""<div class=\"collapsible\">$table</div>"""
     } else {
       table
@@ -61,10 +64,10 @@ trait FeatDisplayHelper extends DisplayHelper {
   def withNameAsJavaList(id: String): util.List[String] = withNameAsList(id).asJava
 
   def withNameAsList(skillId: String*): Seq[String] = {
-    for {
+    for
       id <- skillId
       skill <- withName(id)
-    } yield skill.displayText
+    yield skill.displayText
   }
 
   protected def withName(skillId: String): Option[Entry] =

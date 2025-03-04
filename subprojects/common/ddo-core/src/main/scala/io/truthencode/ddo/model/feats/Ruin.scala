@@ -1,7 +1,10 @@
 /*
  * SPDX-License-Identifier: Apache-2.0
  *
- * Copyright 2015-2021 Andre White.
+ * Copyright 2015-2025
+ *
+ * Author: Andre White.
+ * FILE: Ruin.scala
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -17,7 +20,7 @@
  */
 package io.truthencode.ddo.model.feats
 
-import io.truthencode.ddo.activation.OnSpellCastEvent
+import io.truthencode.ddo.activation.{OnSpellCastEvent, TriggeredActivationImpl}
 import io.truthencode.ddo.support.requisite.{FreeFeat, RequiresCharacterLevel}
 
 /**
@@ -29,11 +32,12 @@ import io.truthencode.ddo.support.requisite.{FreeFeat, RequiresCharacterLevel}
  * @note
  *   Force Spell Power applies to this spell. Using metamagic feats increases the cost.
  * @todo
- *   ERRATA: This is a Feat, but metamagic cost etc affect it, so we likely treat it as a spell
+ *   ERRATA: This is a Feat, but metamagic cost etc. affect it, so we likely treat it as a spell
  *   instead of SLA? Created by adarr on 4/3/2017.
  */
 protected[feats] trait Ruin
-  extends FreeFeat with SpellFeats with OnSpellCastEvent with RequiresCharacterLevel {
+  extends FreeFeat with TriggeredActivationImpl with SpellFeats with OnSpellCastEvent
+  with RequiresCharacterLevel {
   self: EpicFeat =>
 
   final override val requireCharacterLevel: Int = 27

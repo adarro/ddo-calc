@@ -1,7 +1,10 @@
 /*
  * SPDX-License-Identifier: Apache-2.0
  *
- * Copyright 2015-2021 Andre White.
+ * Copyright 2015-2025
+ *
+ * Author: Andre White.
+ * FILE: UnconsciousRecoveryFeature.scala
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -31,11 +34,11 @@ trait UnconsciousRecoveryFeature extends Features {
   self: SourceInfo =>
   val autoRecoveryBonus: BonusType
   val isAutoRecovery: Boolean
-  protected[this] val triggerOn: Seq[TriggerEvent]
-  protected[this] val triggerOff: Seq[TriggerEvent]
-  protected[this] val unconsciousRecoveryCategories: Seq[effect.EffectCategories.Value]
+  protected def triggerOn: Seq[TriggerEvent]
+  protected def triggerOff: Seq[TriggerEvent]
+  protected def unconsciousRecoveryCategories: Seq[effect.EffectCategories.Value]
   private val src = this
-  private[this] val autoRecovery =
+  private val autoRecovery =
     new PartModifier[Boolean, BasicStat] with UsingSearchPrefix {
 
       /**
@@ -67,16 +70,16 @@ trait UnconsciousRecoveryFeature extends Features {
        */
       override def searchPrefixSource: String = partToModify.searchPrefixSource
 
-      override protected[this] lazy val partToModify: BasicStat =
+      override protected lazy val partToModify: BasicStat =
         BasicStat.AutoRecovery
 
       private val eb = EffectParameterBuilder()
-        .toggleOffValue(triggerOff: _*)
-        .toggleOnValue(triggerOn: _*)
+        .toggleOffValue(triggerOff*)
+        .toggleOnValue(triggerOn*)
         .addBonusType(autoRecoveryBonus)
         .build
 
-      override protected[this] def effectParameters: Seq[ParameterModifier[_]] = eb.modifiers
+      override protected def effectParameters: Seq[ParameterModifier[?]] = eb.modifiers
 
       override lazy val effectDetail: DetailedEffect = DetailedEffect(
         id = "AutoRecovery",
@@ -90,7 +93,7 @@ trait UnconsciousRecoveryFeature extends Features {
       override lazy val effectText: Option[String] = Some(s"Autorecovery: $isAutoRecovery")
     }
 
-  abstract override def features: Seq[Feature[_]] = {
+  abstract override def features: Seq[Feature[?]] = {
     assert(autoRecovery.value == isAutoRecovery)
     super.features :+ autoRecovery
   }

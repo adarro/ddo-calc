@@ -1,7 +1,10 @@
 /*
  * SPDX-License-Identifier: Apache-2.0
  *
- * Copyright 2015-2021 Andre White.
+ * Copyright 2015-2025
+ *
+ * Author: Andre White.
+ * FILE: StringUtilsTest.scala
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -15,32 +18,20 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-/**
- * Copyright (C) 2015 Andre White (adarro@gmail.com)
- *
- * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except
- * in compliance with the License. You may obtain a copy of the License at
- *
- * http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software distributed under the License
- * is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express
- * or implied. See the License for the specific language governing permissions and limitations under
- * the License.
- */
 package io.truthencode.ddo
 
 import com.typesafe.scalalogging.LazyLogging
 import io.truthencode.ddo.support.StringUtils.{Extensions, StringImprovements}
 import io.truthencode.ddo.support.matching.{WordMatchStrategies, WordMatchStrategy}
-import org.scalatest.OptionValues._
+import org.scalatest.OptionValues.*
 import org.scalatest.funspec.AnyFunSpec
 import org.scalatest.matchers.should.Matchers
-import org.scalatest.prop.PropertyChecks
+import org.scalatest.prop.TableDrivenPropertyChecks
 
 import scala.collection.immutable.HashSet
 
-class StringUtilsTest extends AnyFunSpec with PropertyChecks with Matchers with LazyLogging {
+class StringUtilsTest
+  extends AnyFunSpec with TableDrivenPropertyChecks with Matchers with LazyLogging {
   final private val meaningOfLife = 42
   final private val ibm = List("I Believe Mom", "i borrow money", "IBetterMail")
   final private val nullString: String = null
@@ -55,7 +46,7 @@ class StringUtilsTest extends AnyFunSpec with PropertyChecks with Matchers with 
 
   private val validRomanToNumbers =
     Table(
-      ("given", "expected"),
+      ("givenVal", "expected"),
       ("Some Magical Ability IX", "Some Magical Ability 9"),
       ("Cool IV stuff", "Cool 4 stuff"),
       ("Mixed II 3", "Mixed 2 3"),
@@ -63,7 +54,7 @@ class StringUtilsTest extends AnyFunSpec with PropertyChecks with Matchers with 
     )
 
   private val validNumbersToRoman = Table(
-    ("given", "expected"),
+    ("givenVal", "expected"),
     ("Some Magical Ability 9", "Some Magical Ability IX"),
     ("Cool 4 stuff", "Cool IV stuff"),
     ("Mixed 2 3", "Mixed II III"),
@@ -117,36 +108,36 @@ class StringUtilsTest extends AnyFunSpec with PropertyChecks with Matchers with 
   describe("symbolsToWords") {
     it("should replace symbols in names") {
       val expected = wap
-      val _given = "Words&Phrases"
-      _given.symbolsToWords shouldEqual expected
+      val _givenVal = "Words&Phrases"
+      _givenVal.symbolsToWords shouldEqual expected
     }
     it("should not alter when there are no symbols") {
       val original = wap
       val expected = original
-      val _given = "WordsAndPhrases".symbolsToWords
-      _given.symbolsToWords shouldEqual expected
+      val _givenVal = "WordsAndPhrases".symbolsToWords
+      _givenVal.symbolsToWords shouldEqual expected
 
     }
     it("should gracefully coexist with splitByCase") {
       val original = "Words&Phrases"
       val expected = "Words & Phrases"
-      val _given = original.splitByCase
-      _given.shouldEqual(expected)
+      val _givenVal = original.splitByCase
+      _givenVal.shouldEqual(expected)
 
     }
   }
 
   describe("Roman Numerals") {
     they("Can be translated to numbers") {
-      forAll(validRomanToNumbers) { (given, expected) =>
-        val translations = given.replaceRomanNumerals
+      forAll(validRomanToNumbers) { (givenVal, expected) =>
+        val translations = givenVal.replaceRomanNumerals
         translations shouldEqual expected
       }
     }
 
     they("Can be translated from numbers") {
-      forAll(validNumbersToRoman) { (given, expected) =>
-        val translations = given.replaceNumbersWithRomanNumerals
+      forAll(validNumbersToRoman) { (givenVal, expected) =>
+        val translations = givenVal.replaceNumbersWithRomanNumerals
         translations shouldEqual expected
       }
     }

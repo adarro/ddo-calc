@@ -1,7 +1,10 @@
 /*
  * SPDX-License-Identifier: Apache-2.0
  *
- * Copyright 2015-2021 Andre White.
+ * Copyright 2015-2025
+ *
+ * Author: Andre White.
+ * FILE: Handedness.scala
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -21,7 +24,7 @@ import enumeratum.{Enum, EnumEntry}
 import io.truthencode.ddo.NoDefault
 
 /**
- * handedness is used to determine a one handed, two handed or off hand equip. DDOwiki lists bows as
+ * handedness is used to determine a one-handed, two-handed or offhand equip. DDOwiki lists bows as
  * ranged
  */
 sealed trait Handedness extends EnumEntry with NoDefault[Handedness]

@@ -1,7 +1,10 @@
 /*
  * SPDX-License-Identifier: Apache-2.0
  *
- * Copyright 2015-2021 Andre White.
+ * Copyright 2015-2025
+ *
+ * Author: Andre White.
+ * FILE: Category.scala
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -21,7 +24,7 @@ package io.truthencode.ddo.model.stats
  * Used to generally classify a stat or effect such as Saving Throws or Movement. These should
  * generally correspond to the Game Client Menu although some are not visible from the UI NOTE: May
  * not exactly match in game UI for UX purposes. (i.e. Dodge chance / AC / Incorporeal should fall
- * under Avoidance Defense although we are expecting it to appear under main display)
+ * under Avoidance Defense, although we are expecting it to appear under main display)
  */
 sealed trait Category
 
@@ -87,7 +90,7 @@ trait RangedCombat extends Category
 
 /**
  * Effects that alter the power, range or other undead specific effects. This should also include
- * things that increase the amount of Turns.
+ * things that increase the amount of Turns, Cleric levels etc.
  */
 trait TurnUndead extends Category
 
@@ -118,3 +121,5 @@ trait Proficiency extends Category
  * Affects unconscious range, recovery (Die hard)
  */
 trait Recovery extends Category
+
+// Undead related

@@ -1,7 +1,10 @@
 /*
  * SPDX-License-Identifier: Apache-2.0
  *
- * Copyright 2015-2021 Andre White.
+ * Copyright 2015-2025
+ *
+ * Author: Andre White.
+ * FILE: DarkDelirium.scala
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -17,7 +20,7 @@
  */
 package io.truthencode.ddo.model.feats
 
-import io.truthencode.ddo.activation.AtWillEvent
+import io.truthencode.ddo.activation.{AtWillEvent, TriggeredActivationImpl}
 import io.truthencode.ddo.model.classes.HeroicCharacterClass
 import io.truthencode.ddo.model.classes.HeroicCharacterClass.Warlock
 import io.truthencode.ddo.model.misc.CoolDown
@@ -38,8 +41,9 @@ import java.time.Duration
  *   Should this be flagged as an SLA?
  */
 protected[feats] trait DarkDelirium
-  extends FeatRequisiteImpl with ActiveFeat with AtWillEvent with CoolDown with RequiresAllOfClass
-  with RequiresAllOfFeat with GrantsToClass { self: ClassFeat =>
+  extends FeatRequisiteImpl with TriggeredActivationImpl with ActiveFeat with AtWillEvent
+  with CoolDown with RequiresAllOfClass with RequiresAllOfFeat with GrantsToClass {
+  self: ClassFeat =>
 
   override def coolDown: Option[Duration] = Some(Duration.ofSeconds(20))
 

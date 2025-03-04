@@ -1,7 +1,10 @@
 /*
  * SPDX-License-Identifier: Apache-2.0
  *
- * Copyright 2015-2021 Andre White.
+ * Copyright 2015-2025
+ *
+ * Author: Andre White.
+ * FILE: VorpalStrikes.scala
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -17,9 +20,10 @@
  */
 package io.truthencode.ddo.model.feats
 
+import io.truthencode.ddo.activation.TriggeredActivationImpl
 import io.truthencode.ddo.model.classes.HeroicCharacterClass
 import io.truthencode.ddo.model.classes.HeroicCharacterClass.Monk
-import io.truthencode.ddo.support.requisite._
+import io.truthencode.ddo.support.requisite.*
 
 import scala.collection.immutable
 
@@ -32,14 +36,14 @@ import scala.collection.immutable
  * Monk in your character to qualify for this feat. Vorpal Strikes is a Monk stance, similar to Slow
  * Fall. The feat is switched off on character login. The stance co-exists with general stances such
  * as Power Attack and Monk stances such as Mountain Stance. This ability does not make unarmed
- * strikes considered slashing weapons in regards to Ninja Spy (No poison, no dex-to-damage or hit),
+ * strikes considered slashing weapons in regard to Ninja Spy (No poison, no dex-to-damage or hit),
  * it simply adds an additional damage type.
  * @todo
  *   need to verify epic level selection functionality is handled Created by adarr on 4/6/2017.
  */
 trait VorpalStrikes
-  extends FeatRequisiteImpl with ClassRequisiteImpl with RequiresAllOfClass with ActiveFeat
-  with Stance with ClassRestricted {
+  extends FeatRequisiteImpl with TriggeredActivationImpl with ClassRequisiteImpl
+  with RequiresAllOfClass with ActiveFeat with Stance with ClassRestricted {
   override def allOfClass: immutable.Seq[(HeroicCharacterClass, Int)] =
     List((Monk, 12))
 

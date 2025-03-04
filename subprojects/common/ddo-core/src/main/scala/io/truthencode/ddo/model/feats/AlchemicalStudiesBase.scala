@@ -1,7 +1,10 @@
 /*
  * SPDX-License-Identifier: Apache-2.0
  *
- * Copyright 2015-2021 Andre White.
+ * Copyright 2015-2025
+ *
+ * Author: Andre White.
+ * FILE: AlchemicalStudiesBase.scala
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -28,8 +31,8 @@ import io.truthencode.ddo.support.requisite._
  * Sword and Dwarven Waraxe Base Attack Bonus +1,
  */
 protected[feats] trait AlchemicalStudiesBase
-  extends FeatRequisiteImpl with ClassRequisiteImpl with AlchemicalStudiesPrefix with Passive
-  with AlchemistBonusFeat with StackableFeat {
+  extends FeatRequisiteImpl with ClassRequisiteImpl with BonusSelectableToClassFeatImpl
+  with AlchemicalStudiesPrefix with Passive with AlchemistBonusFeat with StackableFeat {
   self: ClassFeat =>
 
   /**
@@ -40,7 +43,7 @@ protected[feats] trait AlchemicalStudiesBase
   abstract override def anyOfClass: Seq[(HeroicCharacterClass, Int)] =
     super.anyOfClass ++ cls
 
-  private[this] def cls = List(4, 16).map(l => (HeroicCharacterClass.Alchemist, l))
+  private def cls = List(4, 16).map(l => (HeroicCharacterClass.Alchemist, l))
   // override def prefix: Option[String] = Some("Exotic Weapon Proficiency")
 
 }

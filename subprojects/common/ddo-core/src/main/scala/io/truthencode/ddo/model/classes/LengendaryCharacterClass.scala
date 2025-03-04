@@ -1,7 +1,10 @@
 /*
  * SPDX-License-Identifier: Apache-2.0
  *
- * Copyright 2015-2021 Andre White.
+ * Copyright 2015-2025
+ *
+ * Author: Andre White.
+ * FILE: LengendaryCharacterClass.scala
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -19,6 +22,7 @@ package io.truthencode.ddo.model.classes
 
 import enumeratum.{Enum, EnumEntry}
 import io.truthencode.ddo.model.misc.{Availability, FreeToPlayFeature}
+import io.truthencode.ddo.support.LevelCap
 
 import scala.collection.immutable
 
@@ -35,7 +39,7 @@ sealed trait LegendaryCharacterClass extends CharacterClass with EnumEntry {
  */
 object LegendaryCharacterClass extends Enum[LegendaryCharacterClass] {
   private val generateLevels = {
-    (31 to 33).map { x =>
+    (31 to LevelCap).map { x =>
       {
         val y = x - 30
         LegendaryLevel(y)
@@ -47,7 +51,7 @@ object LegendaryCharacterClass extends Enum[LegendaryCharacterClass] {
 }
 
 /**
- * Represents an Legendary level.
+ * Represents a Legendary level.
  * @param level
  *   Legendary Level (30+)
  */

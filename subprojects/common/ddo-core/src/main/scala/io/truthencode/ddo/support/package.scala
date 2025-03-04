@@ -1,7 +1,10 @@
 /*
  * SPDX-License-Identifier: Apache-2.0
  *
- * Copyright 2015-2021 Andre White.
+ * Copyright 2015-2025
+ *
+ * Author: Andre White.
+ * FILE: package.scala
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -19,13 +22,11 @@ package io.truthencode.ddo
 
 import com.typesafe.config.ConfigFactory
 import com.typesafe.scalalogging.LazyLogging
-import com.wix.accord.Violation
 import io.truthencode.ddo.support.matching.{WordMatchStrategies, WordMatchStrategy}
 
 import java.security.SecureRandom
 import scala.collection.immutable.HashMap
 import scala.language.postfixOps
-
 import scala.util.control.Exception.catching
 
 package object support extends LazyLogging {
@@ -38,15 +39,17 @@ package object support extends LazyLogging {
   /**
    * The Current Max Level achievable by a player.
    */
-  final val LevelCap = 30
+  final val LevelCap = 34
 
   /**
    * Current valid range of levels considered [[http://ddowiki.com/page/Epic_levels Epic Levels]]
    */
-  final val EpicLevels: Range.Inclusive = 21 to LevelCap
+  final val EpicLevels: Range.Inclusive = 21 to 30
+
+  final val LegendaryLevels: Range.Inclusive = 31 to LevelCap
 
   final val CharacterLevels: _root_.scala.collection.immutable.Range.Inclusive =
-    HeroicLevels.min to EpicLevels.max
+    HeroicLevels.min to LegendaryLevels.max
 
   /**
    * Implicit functions for manipulating collections such as finding the Cartesian Product, Left and
@@ -56,7 +59,7 @@ package object support extends LazyLogging {
 
     // succinctly pooled originally from SO [[http://stackoverflow.com/a/14740340/400729]]
     implicit class Crossable[X](xs: Iterable[X]) {
-      def cross[Y](ys: Iterable[Y]): Iterable[(X, Y)] = for { x <- xs; y <- ys } yield (x, y)
+      def cross[Y](ys: Iterable[Y]): Iterable[(X, Y)] = for x <- xs; y <- ys yield (x, y)
     }
 
     implicit class Joinable[X](xs: Seq[X]) {
@@ -91,9 +94,9 @@ package object support extends LazyLogging {
        * @return
        *   Subset of source consisting of unique LHS + common LHS
        */
-      def leftJoin[Y >: K, Z >: V](ys: Map[Y, Z])(implicit
-        joinOnKeys: Boolean = true): Map[K, V] = {
-        if (joinOnKeys) {
+      def leftJoin[Y >: K, Z >: V](
+        ys: Map[Y, Z])(implicit joinOnKeys: Boolean = true): Map[K, V] = {
+        if joinOnKeys then {
           val lk = xs.keys.toSeq.leftJoin(ys.keys.toSeq)
           xs.filter { k =>
             lk.contains(k._1)
@@ -116,9 +119,9 @@ package object support extends LazyLogging {
        * @return
        *   Subset of source consisting of unique RHS + common RHS
        */
-      def rightJoin[Y >: K, Z >: V](ys: Map[Y, Z])(implicit
-        joinOnKeys: Boolean = true): Map[Y, Z] = {
-        if (joinOnKeys) {
+      def rightJoin[Y >: K, Z >: V](
+        ys: Map[Y, Z])(implicit joinOnKeys: Boolean = true): Map[Y, Z] = {
+        if joinOnKeys then {
           val lk = ys.keys.toSeq.leftJoin(xs.keys.toSeq)
           ys.filter { k =>
             lk.contains(k._1)
@@ -140,7 +143,7 @@ package object support extends LazyLogging {
 
     implicit lazy val config: com.typesafe.config.Config = {
       val cfg = ConfigFactory.load
-      if (!cfg.hasPath(path)) {
+      if !cfg.hasPath(path) then {
         logger.warn(
           "Failed to load a valid configuration file, using hard-coded defaults... Please verify your configuration"
         )
@@ -185,7 +188,7 @@ package object support extends LazyLogging {
        *   returns the number as a string prefixed with either + or -
        */
       def numberToSignedText: String = {
-        if (source >= 0) {
+        if source >= 0 then {
           s"+$source"
         } else {
           s"-$source"
@@ -210,11 +213,9 @@ package object support extends LazyLogging {
       def lowerCaseNoise: String = {
         val noise = config.getStringList("io.truthencode.ddo.support.noiseWords")
         val words = s.splitByCase
-        (for {
-          w <- words.split(Space).map { x =>
-            if (noise.contains(x)) x.toLowerCase else x
-          }
-        } yield w + Space).mkString.trim
+        (for w <- words.split(Space).map { x =>
+            if noise.contains(x) then x.toLowerCase else x
+          } yield w + Space).mkString.trim
       }
 
       /**
@@ -248,8 +249,8 @@ package object support extends LazyLogging {
        */
       def symbolsToWords: String = {
         val b = new StringBuilder
-        s.toCharArray.foreach { e: Char =>
-          if (specialSymbols.keys.exists(_.equals(e))) {
+        s.toCharArray.foreach { (e: Char) =>
+          if specialSymbols.keys.exists(_.equals(e)) then {
             val r = specialSymbols(e)
             b.append(s"$r")
           } else {
@@ -270,11 +271,11 @@ package object support extends LazyLogging {
        */
       def toPascalCase: String = {
         {
-          for {
+          for
             w <- s.split(Space)
             c = w.charAt(0).toString.toLowerCase
-          } yield w.toLowerCase.replaceFirst(c, c.toUpperCase)
-        } mkString
+          yield w.toLowerCase.replaceFirst(c, c.toUpperCase)
+        }.mkString
       }
 
       /**
@@ -326,7 +327,7 @@ package object support extends LazyLogging {
       def randomCase: String = {
         val r = new SecureRandom()
         s.toCharArray.map { x =>
-          if (r.nextInt() > 0) x.toUpper else x.toLower
+          if r.nextInt() > 0 then x.toUpper else x.toLower
         }
           .foldLeft("")((r, c) => r + c)
       }
@@ -399,7 +400,7 @@ package object support extends LazyLogging {
     final val LineSep = sys.props("line.separator")
     private val path = "io.truthencode.ddo.support"
     // Random generator
-    private[this] val random: SecureRandom = new SecureRandom()
+    private val random: SecureRandom = new SecureRandom()
 
     /**
      * Generate a random alphanumeric string of length n
@@ -436,35 +437,4 @@ package object support extends LazyLogging {
       }
     }
   }
-
-  /**
-   * Validation utilities and convenience routines
-   */
-  object Validation {
-
-    // scalastyle:off import.group
-    /**
-     * Extracts violation description and message text
-     *
-     * @param v
-     *   Violations
-     * @return
-     *   Printable list of violations.
-     */
-    @deprecated("No longer supported by Wix Validation", "Wix Validation")
-    def violationToString(v: Set[Violation]): String = {
-      //      val buf = new StringBuilder
-      //      v.foreach { x =>
-      //        x.description match {
-      //          case Some(d) => buf.append(s"$d -> ${x.constraint}")
-      //          case _ => buf.append(x.constraint)
-      //        }
-      //        buf.append(LineSep)
-      //      }
-      //      buf.toString()
-      //    }
-      "This function is no longer supported, please see Wix Documentation"
-    }
-  }
-
 }

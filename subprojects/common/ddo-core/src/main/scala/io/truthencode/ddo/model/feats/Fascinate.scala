@@ -1,7 +1,10 @@
 /*
  * SPDX-License-Identifier: Apache-2.0
  *
- * Copyright 2015-2021 Andre White.
+ * Copyright 2015-2025
+ *
+ * Author: Andre White.
+ * FILE: Fascinate.scala
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -17,11 +20,11 @@
  */
 package io.truthencode.ddo.model.feats
 
-import io.truthencode.ddo.activation.OnSongPlayedEvent
+import io.truthencode.ddo.activation.{OnSongPlayedEvent, TriggeredActivationImpl}
 import io.truthencode.ddo.model.classes.HeroicCharacterClass
 import io.truthencode.ddo.model.misc.BardSongCoolDown
 import io.truthencode.ddo.model.skill.Skill
-import io.truthencode.ddo.support.requisite._
+import io.truthencode.ddo.support.requisite.*
 
 /**
  * Created by adarr on 4/5/2017. [[https://ddowiki.com/page/Fascinate Fascinate]] Song Description:
@@ -41,8 +44,9 @@ import io.truthencode.ddo.support.requisite._
  *   requirement to be able to play this song. (Skill bonuses do not count.)
  */
 protected[feats] trait Fascinate
-  extends SkillRequisiteImpl with RequiresAllOfSkill with ClassRequisiteImpl with RequiresAllOfClass
-  with GrantsToClass with ActiveFeat with OnSongPlayedEvent with BardSongCoolDown {
+  extends SkillRequisiteImpl with TriggeredActivationImpl with RequiresAllOfSkill
+  with ClassRequisiteImpl with RequiresAllOfClass with GrantsToClass with ActiveFeat
+  with OnSongPlayedEvent with BardSongCoolDown {
   override def allOfClass: Seq[(HeroicCharacterClass, Int)] =
     List((HeroicCharacterClass.Bard, 1))
 

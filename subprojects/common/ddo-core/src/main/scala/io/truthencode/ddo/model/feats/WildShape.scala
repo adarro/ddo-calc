@@ -1,7 +1,10 @@
 /*
  * SPDX-License-Identifier: Apache-2.0
  *
- * Copyright 2015-2021 Andre White.
+ * Copyright 2015-2025
+ *
+ * Author: Andre White.
+ * FILE: WildShape.scala
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -17,7 +20,7 @@
  */
 package io.truthencode.ddo.model.feats
 
-import io.truthencode.ddo.activation.OnShapeShift
+import io.truthencode.ddo.activation.{OnShapeShift, TriggeredActivationImpl}
 import io.truthencode.ddo.model.misc.DefaultCasterCoolDown
 import io.truthencode.ddo.support.naming.{DisplayName, DisplayProperties, WildShapePrefix}
 import io.truthencode.ddo.support.requisite.{FeatRequisiteImpl, GrantsToClass, RequiresAllOfClass}
@@ -34,7 +37,7 @@ import io.truthencode.ddo.support.requisite.{FeatRequisiteImpl, GrantsToClass, R
  * subject to Druidic Oath.
  */
 protected[feats] trait WildShape
-  extends FeatRequisiteImpl with ActiveFeat with OnShapeShift with DefaultCasterCoolDown
-  with WildShapePrefix {
-  self: GrantsToClass with RequiresAllOfClass with DisplayName with DisplayProperties =>
+  extends FeatRequisiteImpl with TriggeredActivationImpl with ActiveFeat with OnShapeShift
+  with DefaultCasterCoolDown with WildShapePrefix {
+  self: GrantsToClass & RequiresAllOfClass & DisplayName & DisplayProperties =>
 }

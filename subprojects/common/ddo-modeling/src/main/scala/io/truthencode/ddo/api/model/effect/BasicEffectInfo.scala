@@ -1,7 +1,10 @@
 /*
  * SPDX-License-Identifier: Apache-2.0
  *
- * Copyright 2015-2021 Andre White.
+ * Copyright 2015-2025
+ *
+ * Author: Andre White.
+ * FILE: BasicEffectInfo.scala
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -25,7 +28,7 @@ trait BasicEffectInfo {
    * Naming conventions The name should be concisely non-specific. i.e. Prefer "ArmorClass" instead
    * of "Deflection" or "Miss-Chance" Deflection is too specific as there are several stacking and
    * non-stacking types (Natural Armor, Shield) that all contribute to your specific goal of
-   * increasing your armor class. Miss-Chance is to vague as it encompasses everything from
+   * increasing your armor class. Miss-Chance is too vague as it encompasses everything from
    * incorporeal, dodge, armor class, arrow-deflection etc.
    */
   def name: String

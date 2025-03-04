@@ -1,7 +1,10 @@
 /*
  * SPDX-License-Identifier: Apache-2.0
  *
- * Copyright 2015-2021 Andre White.
+ * Copyright 2015-2025
+ *
+ * Author: Andre White.
+ * FILE: Dodge.scala
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -36,14 +39,14 @@ import io.truthencode.ddo.support.requisite.{
  * feats.
  */
 trait Dodge
-  extends FeatRequisiteImpl with Passive with AttributeRequisiteImpl with RequiresAllOfAttribute
-  with FighterBonusFeat with AlchemistBonusFeat with MartialArtsFeat with FeaturesImpl
-  with DodgeChanceFeature {
+  extends FeatRequisiteImpl with BonusSelectableToClassFeatImpl with Passive
+  with AttributeRequisiteImpl with RequiresAllOfAttribute with FighterBonusFeat
+  with AlchemistBonusFeat with MartialArtsFeat with FeaturesImpl with DodgeChanceFeature {
   self: GeneralFeat =>
 
-  override protected[this] lazy val triggerOn: Seq[TriggerEvent] = Seq(TriggerEvent.Passive)
-  override protected[this] lazy val triggerOff: Seq[TriggerEvent] = Seq(TriggerEvent.Never)
-  override protected[this] lazy val dodgeCategories: Seq[effect.EffectCategories.Value] =
+  override protected lazy val triggerOn: Seq[TriggerEvent] = Seq(TriggerEvent.Passive)
+  override protected lazy val triggerOff: Seq[TriggerEvent] = Seq(TriggerEvent.Never)
+  override protected lazy val dodgeCategories: Seq[effect.EffectCategories.Value] =
     Seq(effect.EffectCategories.Ability, effect.EffectCategories.MissChance)
   override val dodgeBonusType: BonusType = BonusType.Feat
   override val dodgeBonusAmount: Int = 3

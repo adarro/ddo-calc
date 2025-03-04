@@ -1,7 +1,10 @@
 /*
  * SPDX-License-Identifier: Apache-2.0
  *
- * Copyright 2015-2021 Andre White.
+ * Copyright 2015-2025
+ *
+ * Author: Andre White.
+ * FILE: StoreLocationTest.scala
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -17,11 +20,23 @@
  */
 package io.truthencode.ddo
 
+import com.typesafe.scalalogging.LazyLogging
 import io.truthencode.ddo.support.slots.WearLocation
 import org.scalatest.funspec.AnyFunSpec
 import org.scalatest.matchers.should.Matchers
 
-class StoreLocationTest extends AnyFunSpec with Matchers {
+class StoreLocationTest extends AnyFunSpec with Matchers with LazyLogging {
+  describe("Basic Store Locations") {
+    they("Should be inside an enum") {
+      StoreLocation.values should not be empty
+    }
+    it("should have one for Equipment") {
+      StoreLocation.values.foreach { v =>
+        logger.info(s"entryName: ${v.entryName}")
+      }
+//      StoreLocation.Equipment should not be empty
+    }
+  }
   describe("Wearable Items") {
     they("should have a designated Equipment Slot as a location") {
       val eq = StoreLocation.Equipment
@@ -34,8 +49,16 @@ class StoreLocationTest extends AnyFunSpec with Matchers {
 
   describe("Colored Augment Slots") {
     they("should include Red Augment Slots") {
-      val aug = StoreLocation.Augments
+      val aug = StoreLocation.ChromaticAugments
       aug.map(_.generalAugment).contains(AugmentLocation.RedAugmentSlot)
+      StoreLocation.values.contains(AugmentLocation.RedAugmentSlot)
+    }
+  }
+
+  describe("Celestial Augment Slots") {
+    they("should include Solar and Lunar Augment Slots") {
+      val aug = StoreLocation.CelestialAugments
+      aug.map(_.celestialAugment).contains(AugmentLocation.SunAugmentSlot)
     }
   }
 }

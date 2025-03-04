@@ -1,7 +1,10 @@
 /*
  * SPDX-License-Identifier: Apache-2.0
  *
- * Copyright 2015-2021 Andre White.
+ * Copyright 2015-2025
+ *
+ * Author: Andre White.
+ * FILE: DetailedEffectInfo.scala
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -46,4 +49,9 @@ trait DetailedEffectInfo {
    * The type of bonus determines stacking rules.
    */
   val bonusType: String
+
+  /**
+   * Associated scaling values
+   */
+  val scaling: Option[Map[String, Int]]
 }

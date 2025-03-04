@@ -1,7 +1,10 @@
 /*
  * SPDX-License-Identifier: Apache-2.0
  *
- * Copyright 2015-2021 Andre White.
+ * Copyright 2015-2025
+ *
+ * Author: Andre White.
+ * FILE: Race.scala
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -30,7 +33,7 @@ import scala.collection.immutable.IndexedSeq
  * Represents a DDO Race [http://ddowiki.com/page/Races]
  */
 sealed trait Race extends EnumEntry with AttributeModifierInit {
-  self: Availability with HomeWorld with AttributeModifier =>
+  self: Availability & HomeWorld & AttributeModifier =>
 }
 
 trait EberronRace extends HomeWorld { self: Race =>
@@ -147,10 +150,10 @@ trait Warforged
 object Race extends Enum[Race] with SearchPrefix {
   implicit class FamilyOps(r: Race) {
     def families: Seq[RaceFamily] = {
-      for {
+      for
         family <- RaceFamily.values
         if family.includedRaces contains r
-      } yield family
+      yield family
     }
   }
 
@@ -166,34 +169,34 @@ object Race extends Enum[Race] with SearchPrefix {
 
   override def searchPrefixSource: String = "Race"
 
-  case object Bladeforged extends Bladeforged
+  case object Bladeforged extends Bladeforged, Race
 
   // Svirfneblin
-  case object DeepGnome extends DeepGnome
+  case object DeepGnome extends DeepGnome, Race
 
-  case object DragonBorn extends DragonBorn
+  case object DragonBorn extends DragonBorn, Race
 
-  case object DrowElf extends DrowElf
+  case object DrowElf extends DrowElf, Race
 
-  case object Dwarf extends Dwarf
+  case object Dwarf extends Dwarf, Race
 
-  case object Elf extends Elf
+  case object Elf extends Elf, Race
 
-  case object Gnome extends Gnome
+  case object Gnome extends Gnome, Race
 
-  case object Halfling extends Halfling
+  case object Halfling extends Halfling, Race
 
-  case object HalfElf extends HalfElf
+  case object HalfElf extends HalfElf, Race
 
-  case object HalfOrc extends HalfOrc
+  case object HalfOrc extends HalfOrc, Race
 
-  case object Human extends Human
+  case object Human extends Human, Race
 
-  case object Morninglord extends Morninglord
+  case object Morninglord extends Morninglord, Race
 
-  case object PurpleDragonKnight extends PurpleDragonKnight
+  case object PurpleDragonKnight extends PurpleDragonKnight, Race
 
-  case object Shadarkai extends Shadarkai
+  case object Shadarkai extends Shadarkai, Race
 
-  case object Warforged extends Warforged
+  case object Warforged extends Warforged, Race
 }

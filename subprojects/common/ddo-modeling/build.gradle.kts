@@ -1,3 +1,5 @@
+import org.openapitools.generator.gradle.plugin.tasks.GenerateTask
+
 /*
  * SPDX-License-Identifier: Apache-2.0
  *
@@ -17,13 +19,15 @@
  */
 
 plugins {
-    id("scala-library-profile")
-    id("djaxonomy.test-conventions")
+    id("buildlogic.scala-library-profile")
+    id("buildlogic.test-conventions")
 //     id("com.zlad.gradle.avrohugger")
-//    id("com.github.lkishalmi.gatling") version "3.2.9"
+//    id("com.github.lkishalmi.gatling")
     //  id("io.gatling.gradle") version "3.9.5.5" replaces above
     id("org.openapi.generator")
-//    id("io.quarkus")// version "3.3.3"
+//    id("code-quality")
+
+//    id("io.quarkus")//
 }
 // apply {
 //    plugin("io.quarkus")// version "3.3.3"
@@ -42,21 +46,35 @@ val CODE_GEN = "codeGen"
 // Calling as external build due to scala library version incompatibilities
 // between AvroHugger (scala 2.12.1?) and Quarkus 2.13.x / 3)
 tasks.register("generateAvroSchemas", GradleBuild::class) {
+    description = "Generates Avro schemas"
+    group = "Avro"
     val output = layout.buildDirectory.dir("avro-gen")
     outputs.dir(output)
-    val input = rootProject.layout.projectDirectory.file("include/ddo-avro").asFile
+    val input =
+        rootProject.layout.projectDirectory
+            .file("include/ddo-avro")
+            .asFile
     inputs.dir(input)
-    dir = rootProject.layout.projectDirectory.file("include/ddo-avro").asFile
+    dir =
+        rootProject.layout.projectDirectory
+            .file("include/ddo-avro")
+            .asFile
 
     tasks = listOf("generateAvroScala")
 }
 
 tasks.register("cleanAvroSchemas", GradleBuild::class) {
-    dir = rootProject.layout.projectDirectory.file("include/ddo-avro").asFile
+    description = "Cleans generated Avro schemas"
+    group = "Avro"
+    dir =
+        rootProject.layout.projectDirectory
+            .file("include/ddo-avro")
+            .asFile
 
     tasks = listOf("clean")
 }
 
+@Suppress("UnstableApiUsage")
 configurations {
     val codeGen by configurations.creating {
         isCanBeConsumed = false
@@ -177,16 +195,18 @@ val schemaList = listOf("parseHub")
 // Create Tasks to generate Avro Schemas for our OpenAPI specs
 
 val genAvroSchemaTask =
-    task("genAvroSchema") {
+    tasks.register("genAvroSchema", fun Task.() {
         this.group = "OpenAPI Tools"
         dependsOn("openApiValidate")
-    }
+    })
 
 run {
     @Suppress("IDENTIFIER_LENGTH")
     schemaList.forEach { id ->
         val name = "genAvroSchema$id"
-        tasks.create(name, org.openapitools.generator.gradle.plugin.tasks.GenerateTask::class).apply {
+        tasks.register(name, org.openapitools.generator.gradle.plugin.tasks.GenerateTask::class) {
+            description = "Generates Avro Schema for $id"
+            group = "OpenAPI Tools"
             generatorName.set("avro-schema")
             schemas[id]?.let { s ->
                 inputSpec.set(s.spec)
@@ -199,33 +219,43 @@ run {
             }
             this.group = "OpenAPI Tools"
             dependsOn("openApiValidate")
-            genAvroSchemaTask.dependsOn(this)
+            genAvroSchemaTask.get().dependsOn(this)
         }
     }
 }
 
-task("genModel", org.openapitools.generator.gradle.plugin.tasks.GenerateTask::class) {
+tasks.register("genModel", GenerateTask::class, fun GenerateTask.() {
     verbose.set(true)
     generatorName.set("scala-lagom-server")
     inputSpec.set(apiSpec.asPath)
-    outputDir.set(layout.buildDirectory.dir("generated/lagom").get().asFile.path)
+    outputDir.set(
+        layout.buildDirectory
+            .dir("generated/lagom")
+            .get()
+            .asFile.path,
+    )
 
     apiPackage.set("io.truthencode.ddo.api")
     invokerPackage.set("io.truthencode.ddo.invoker")
     modelPackage.set("io.truthencode.ddo.models.model")
-}
+})
 
-task("genGatling", org.openapitools.generator.gradle.plugin.tasks.GenerateTask::class) {
+tasks.register("genGatling", GenerateTask::class, fun GenerateTask.() {
     verbose.set(true)
     val id = "scala-gatling"
     generatorName.set(id)
     inputSpec.set(apiSpec.asPath)
-    outputDir.set(layout.buildDirectory.dir("generated/$id").get().asFile.path)
+    outputDir.set(
+        layout.buildDirectory
+            .dir("generated/$id")
+            .get()
+            .asFile.path,
+    )
 
     apiPackage.set("io.truthencode.ddo.api")
     invokerPackage.set("io.truthencode.ddo.invoker")
     modelPackage.set("io.truthencode.ddo.models.model")
-}
+})
 
 tasks.register<Delete>("cleanAvroSchema") {
     description = "Clears generated Schemas Directory"
@@ -252,23 +282,40 @@ dependencies {
     unsure how  helpful this will be as most data will need runtime validation (aka wix)
      */
     // Use Scala $scalaMajorVersion in our library project
-    val scalaLibraryVersion: String by project
-    val scalaMajorVersion: String by project
+    val builderScalaVersion: String by project
+//    implementation(enforcedPlatform(project(":ddo-platform-scala")))
+    when (builderScalaVersion) {
+        "3" -> {
+            implementation(libs.scala3.library)
+            implementation(libs.enumeratum.s3)
 
-    implementation(enforcedPlatform(project(":ddo-platform-scala")))
-    implementation(libs.scala2.library) {
-        version {
-            strictly("2.13.10")
+            implementation(libs.json4s.native.s3)
+
+            implementation(libs.typesafe.scala.logging.s3)
+            // replacing wix accord validation with zio-prelude validation
+//            implementation(libs.wix.accord.core.s213)
+            implementation(libs.dev.zio.prelude.s3)
+            implementation(libs.kxbmap.configs.s213)
+        }
+
+        else -> {
+            implementation(libs.scala2.library)
+            implementation(libs.scala2.library)
+            implementation(libs.enumeratum.s213)
+
+            implementation(libs.kxbmap.configs.s213)
+
+            implementation(libs.json4s.native.s213)
+
+            // validation and rules
+            // replacing wix accord validation with zio-prelude validation
+//            implementation(libs.wix.accord.core.s213)
+            implementation(libs.dev.zio.prelude.s213)
+            implementation(libs.typesafe.scala.logging.s213)
         }
     }
-    implementation(libs.enumeratum.s213)
+
     implementation(libs.typesafe.config)
-    implementation(libs.kxbmap.configs.s213)
 
-    implementation(libs.json4s.native.s213)
-
-    // validation and rules
-    implementation(libs.wix.accord.core.s213)
     implementation(libs.logback.classic)
-    implementation(libs.typesafe.scala.logging.s213)
 }

@@ -1,7 +1,10 @@
 /*
  * SPDX-License-Identifier: Apache-2.0
  *
- * Copyright 2015-2021 Andre White.
+ * Copyright 2015-2025
+ *
+ * Author: Andre White.
+ * FILE: RomanNumeral.scala
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -84,7 +87,7 @@ object RomanNumeral {
     s.toUpperCase
       .map(numerals)
       .foldLeft((0, 0)) { case ((sum, last), curr) =>
-        (sum + curr + (if (last < curr) -2 * last else 0), curr)
+        (sum + curr + (if last < curr then -2 * last else 0), curr)
       }
       ._1
   }

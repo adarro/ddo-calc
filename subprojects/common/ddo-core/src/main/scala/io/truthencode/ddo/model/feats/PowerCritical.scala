@@ -1,7 +1,10 @@
 /*
  * SPDX-License-Identifier: Apache-2.0
  *
- * Copyright 2015-2021 Andre White.
+ * Copyright 2015-2025
+ *
+ * Author: Andre White.
+ * FILE: PowerCritical.scala
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -32,13 +35,13 @@ import io.truthencode.ddo.support.requisite.{FeatRequisiteImpl, RequiresAnyOfFea
  * Attack Bonus 4
  */
 protected[feats] trait PowerCritical
-  extends FeatRequisiteImpl with Passive with RequiresBaB with RequiresAnyOfFeat
-  with FighterBonusFeat with FeaturesImpl with ConfirmCriticalHitAmountFeature
-  with CriticalDamageAmountFeature {
+  extends FeatRequisiteImpl with BonusSelectableToClassFeatImpl with Passive with RequiresBaB
+  with RequiresAnyOfFeat with FighterBonusFeat with FeaturesImpl
+  with ConfirmCriticalHitAmountFeature with CriticalDamageAmountFeature {
   self: GeneralFeat =>
 
-  override protected[this] lazy val triggerOn: Seq[TriggerEvent] = Seq(TriggerEvent.Passive)
-  override protected[this] lazy val triggerOff: Seq[TriggerEvent] = Seq(TriggerEvent.Never)
+  override protected lazy val triggerOn: Seq[TriggerEvent] = Seq(TriggerEvent.Passive)
+  override protected lazy val triggerOff: Seq[TriggerEvent] = Seq(TriggerEvent.Never)
   override protected val confirmCriticalHitBonusType: BonusType = BonusType.Feat
   override protected val confirmCriticalHitBonusAmount: Int = 2
   override protected val criticalDamageBonusType: BonusType = BonusType.Feat

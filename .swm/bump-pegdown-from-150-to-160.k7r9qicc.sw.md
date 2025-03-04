@@ -1,6 +1,7 @@
 ---
 title: Bump pegdown from 1.5.0 to 1.6.0
 ---
+
 # Introduction
 
 This document will walk you through the implementation of the version upgrade feature for the `pegdown` library in our project. The `pegdown` library is a pure-Java Markdown processor that we use for parsing and converting Markdown into HTML in our application. We will cover:
@@ -20,20 +21,6 @@ The `pegdown` library is a crucial part of our application as it handles the con
 - **New Features**: Upgrading to the latest version allows us to take advantage of any new features or improvements that have been added. In this case, we decided to upgrade from version 1.5.0 to 1.6.0 to benefit from the improvements and fixes introduced in this new version.
 
 # How was the version upgrade implemented?
-
-<SwmSnippet path="/pom.xml" line="979">
-
----
-
-The version upgrade was implemented by modifying the  file, which is the Project Object Model file for our Maven project. This file contains information about the project and configuration details used by Maven to build the project. In the  file, we updated the version of the `pegdown` library from 1.5.0 to 1.6.0. This tells Maven to use version 1.6.0 of the `pegdown` library when building our project.
-
-```xml
-                            <version>1.6.0</version>
-```
-
----
-
-</SwmSnippet>
 
 By making this change, we ensure that our application is using the latest, most secure, and efficient version of the `pegdown` library. This will help to improve the overall performance and security of our application.
 

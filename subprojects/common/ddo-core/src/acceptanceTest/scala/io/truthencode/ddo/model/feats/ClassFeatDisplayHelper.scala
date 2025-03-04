@@ -1,7 +1,10 @@
 /*
  * SPDX-License-Identifier: Apache-2.0
  *
- * Copyright 2015-2021 Andre White.
+ * Copyright 2015-2025
+ *
+ * Author: Andre White.
+ * FILE: ClassFeatDisplayHelper.scala
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -32,10 +35,10 @@ trait ClassFeatDisplayHelper extends FeatDisplayHelper with LazyLogging {
   type FNLevel = Entry => Seq[(HeroicCharacterClass, Int)]
   type FNClass = Entry => Seq[HeroicCharacterClass]
   lazy val classFeatByLevelMap: Seq[(String, Seq[Int])] = {
-    val levels = for {
-      f <- displayEnum.values
+    val levels = for
+      f <- displayEnum.values.filterNot(x => x.isInstanceOf[ParentFeat])
       e <- allTypesByLevelFilter(f)
-    } yield f.displayText -> e
+    yield f.displayText -> e
     levels
       .groupBy(_._1)
       .map { x =>
@@ -67,7 +70,7 @@ trait ClassFeatDisplayHelper extends FeatDisplayHelper with LazyLogging {
   }
 
   val filterByClassBonusFeat: PartialFunction[Entry, Entry] = {
-    case x: BonusSelectableFeat with SubFeatInformation
+    case x: (BonusSelectableToClassFeat & SubFeatInformation)
         if x.bonusCharacterClass.contains(cClass) && !x.isSubFeat =>
       lazy val msg = s"Entry ${x.displayText} matched type and character class $cClass"
       lazy val idInfo = Map(
@@ -76,14 +79,14 @@ trait ClassFeatDisplayHelper extends FeatDisplayHelper with LazyLogging {
         "displayText" -> x.displayText
       )
       logger.debug(msg)
-      if (x.displayText.contains("Construct")) {
+      if x.displayText.contains("Construct") then {
         logger.debug(s"Id Info $idInfo")
       }
       x
   }
 
   val filterByClassBonusFeatByLevel: PartialFunction[(Entry, Int), (Entry, Int)] = {
-    case (x: SelectableToClass with SubFeatInformation, y)
+    case (x: (SelectableToClass & SubFeatInformation), y)
         if x.bonusSelectableToClass.exists(isDefinedForClass(_, Some(y))) && !x.isSubFeat =>
       (x, y)
   }
@@ -119,7 +122,6 @@ trait ClassFeatDisplayHelper extends FeatDisplayHelper with LazyLogging {
   def grantedFeatsByLevel(level: Int): util.List[String] = {
     val values = displayEnum.values.map((_, level)).collect(filterByGrantedToByLevel)
     values
-      //   .filterNot(_._1.isSubFeat)
       .filter(_._2 == level)
       .map(_._1.displayText)
       .sorted
@@ -155,8 +157,8 @@ trait ClassFeatDisplayHelper extends FeatDisplayHelper with LazyLogging {
       .sortWith(_ < _)
       .asJava
 
-  case class Param(e: Entry with ClassRequisite, l: Int)
+  case class Param(e: Entry & ClassRequisite, l: Int)
 
-  case class Param2(e: Entry with MartialArtsFeat, l: Int)
+  case class Param2(e: Entry & MartialArtsFeat, l: Int)
 
 }

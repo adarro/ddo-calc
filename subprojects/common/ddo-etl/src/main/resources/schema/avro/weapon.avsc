@@ -1,0 +1,240 @@
+{
+    "name": "Weapon",
+    "namespace": "com.group.Weapon",
+    "doc": "Here you can give more details about the use of this schema",
+    "type": "record",
+    "fields": [
+        {
+            "name": "item",
+            "type": "array",
+            "items": {
+                "name": "item",
+                "type": "record",
+                "fields": [
+                    {
+                        "name": "weapon",
+                        "type": "array",
+                        "items": {
+                            "name": "weapon",
+                            "type": "record",
+                            "fields": [
+                                {
+                                    "name": "name",
+                                    "type": "string"
+                                },
+                                {
+                                    "name": "damangeAndType",
+                                    "type": "string"
+                                },
+                                {
+                                    "name": "minLevel",
+                                    "type": "string"
+                                },
+                                {
+                                    "name": "binding",
+                                    "type": "string"
+                                },
+                                {
+                                    "name": "quest",
+                                    "type": "string"
+                                },
+                                {
+                                    "name": "criticalProfile",
+                                    "type": "string"
+                                },
+                                {
+                                    "name": "enchantments",
+                                    "type": "string"
+                                },
+                                {
+                                    "name": "enchantments_url",
+                                    "type": "string"
+                                },
+                                {
+                                    "name": "errata",
+                                    "type": "string"
+                                },
+                                {
+                                    "name": "weaponDetail",
+                                    "type": "array",
+                                    "items": {
+                                        "name": "weaponDetail",
+                                        "type": "record",
+                                        "fields": [
+                                            {
+                                                "name": "proficiency",
+                                                "type": "string"
+                                            },
+                                            {
+                                                "name": "name",
+                                                "type": "string"
+                                            },
+                                            {
+                                                "name": "damangeAndType",
+                                                "type": "string"
+                                            },
+                                            {
+                                                "name": "criticalThreatRange",
+                                                "type": "string"
+                                            },
+                                            {
+                                                "name": "weaponType",
+                                                "type": "array",
+                                                "items": {
+                                                    "name": "weaponType",
+                                                    "type": "record",
+                                                    "fields": [
+                                                        {
+                                                            "name": "weaponCategory",
+                                                            "type": "string"
+                                                        },
+                                                        {
+                                                            "name": "damageCategory",
+                                                            "type": "string"
+                                                        }
+                                                    ]
+                                                }
+                                            },
+                                            {
+                                                "name": "absRaceRequired",
+                                                "type": "string"
+                                            },
+                                            {
+                                                "name": "minLevel",
+                                                "type": "string"
+                                            },
+                                            {
+                                                "name": "requiredTrait",
+                                                "type": "string"
+                                            },
+                                            {
+                                                "name": "umd",
+                                                "type": "string"
+                                            },
+                                            {
+                                                "name": "handedness",
+                                                "type": "string"
+                                            },
+                                            {
+                                                "name": "attackMod",
+                                                "type": "string"
+                                            },
+                                            {
+                                                "name": "damageMod",
+                                                "type": "string"
+                                            },
+                                            {
+                                                "name": "binding",
+                                                "type": "string"
+                                            },
+                                            {
+                                                "name": "binding_url",
+                                                "type": "string"
+                                            },
+                                            {
+                                                "name": "durability",
+                                                "type": "string"
+                                            },
+                                            {
+                                                "name": "material",
+                                                "type": "string"
+                                            },
+                                            {
+                                                "name": "material_url",
+                                                "type": "string"
+                                            },
+                                            {
+                                                "name": "hardness",
+                                                "type": "string"
+                                            },
+                                            {
+                                                "name": "baseValue",
+                                                "type": "string"
+                                            },
+                                            {
+                                                "name": "weight",
+                                                "type": "string"
+                                            },
+                                            {
+                                                "name": "upgradable",
+                                                "type": "string"
+                                            },
+                                            {
+                                                "name": "description",
+                                                "type": "string"
+                                            },
+                                            {
+                                                "name": "enchantments",
+                                                "type": "array",
+                                                "items": {
+                                                    "name": "enchantments",
+                                                    "type": "record",
+                                                    "fields": [
+                                                        {
+                                                            "name": "enchantment",
+                                                            "type": "array",
+                                                            "items": {
+                                                                "name": "enchantment",
+                                                                "type": "record",
+                                                                "fields": [
+                                                                    {
+                                                                        "name": "name",
+                                                                        "type": "string"
+                                                                    },
+                                                                    {
+                                                                        "name": "name_url",
+                                                                        "type": "string"
+                                                                    },
+                                                                    {
+                                                                        "name": "fullText",
+                                                                        "type": "string"
+                                                                    }
+                                                                ]
+                                                            }
+                                                        },
+                                                        {
+                                                            "name": "oneOfEnchantment",
+                                                            "type": "array",
+                                                            "items": {
+                                                                "name": "oneOfEnchantment",
+                                                                "type": "record",
+                                                                "fields": []
+                                                            }
+                                                        }
+                                                    ]
+                                                }
+                                            },
+                                            {
+                                                "name": "locationInformation",
+                                                "type": "array",
+                                                "items": {
+                                                    "name": "locationInformation",
+                                                    "type": "record",
+                                                    "fields": [
+                                                        {
+                                                            "name": "location",
+                                                            "type": "string"
+                                                        },
+                                                        {
+                                                            "name": "location_url",
+                                                            "type": "string"
+                                                        },
+                                                        {
+                                                            "name": "locationExtra",
+                                                            "type": "string"
+                                                        }
+                                                    ]
+                                                }
+                                            }
+                                        ]
+                                    }
+                                }
+                            ]
+                        }
+                    }
+                ]
+            }
+        }
+    ]
+}
+

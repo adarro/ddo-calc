@@ -1,7 +1,10 @@
 /*
  * SPDX-License-Identifier: Apache-2.0
  *
- * Copyright 2015-2021 Andre White.
+ * Copyright 2015-2025
+ *
+ * Author: Andre White.
+ * FILE: Sneak.scala
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -17,6 +20,7 @@
  */
 package io.truthencode.ddo.model.feats
 
+import io.truthencode.ddo.activation.TriggeredActivationImpl
 import io.truthencode.ddo.enhancement.BonusType
 import io.truthencode.ddo.model.abilities.ActiveAbilities
 import io.truthencode.ddo.model.effect
@@ -35,13 +39,13 @@ import io.truthencode.ddo.support.requisite.{FeatRequisiteImpl, FreeFeat}
  * see [[https://github.com/truthencode/ddo-calc/discussions/9]]
  */
 protected[feats] trait Sneak
-  extends FeatRequisiteImpl with ActiveFeat with Stance with DefaultCoolDown with FreeFeat
-  with FeaturesImpl with GrantAbilityFeature {
+  extends FeatRequisiteImpl with TriggeredActivationImpl with ActiveFeat with Stance
+  with DefaultCoolDown with FreeFeat with FeaturesImpl with GrantAbilityFeature {
   self: GeneralFeat =>
   override lazy val grantedAbility: ActiveAbilities = ActiveAbilities.Sneak
-  override protected[this] val triggerOn: Seq[TriggerEvent] = Seq(TriggerEvent.OnToggle)
-  override protected[this] val triggerOff: Seq[TriggerEvent] = Seq(TriggerEvent.OnToggle)
-  override protected[this] val grantAbilityCategories: Seq[effect.EffectCategories.Value] = Seq(
+  override protected val triggerOn: Seq[TriggerEvent] = Seq(TriggerEvent.OnToggle)
+  override protected val triggerOff: Seq[TriggerEvent] = Seq(TriggerEvent.OnToggle)
+  override protected val grantAbilityCategories: Seq[effect.EffectCategories.Value] = Seq(
     effect.EffectCategories.Stance)
   override val abilityId: String = "Sneak"
   override val description: String =

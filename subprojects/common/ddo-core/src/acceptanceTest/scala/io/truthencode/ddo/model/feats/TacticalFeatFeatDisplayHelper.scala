@@ -1,7 +1,10 @@
 /*
  * SPDX-License-Identifier: Apache-2.0
  *
- * Copyright 2015-2021 Andre White.
+ * Copyright 2015-2025
+ *
+ * Author: Andre White.
+ * FILE: TacticalFeatFeatDisplayHelper.scala
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -27,7 +30,7 @@ trait TacticalFeatFeatDisplayHelper extends FeatDisplayHelper with LazyLogging {
 }
 
 abstract class TacticalFeatFeatDisplayHelperJava extends TacticalFeatFeatDisplayHelper {
-  type S = Feat with Tactical
+  type S = Feat & Tactical
 
   val filterByTactical: PartialFunction[Entry, Entry] = { case x: Tactical =>
     x

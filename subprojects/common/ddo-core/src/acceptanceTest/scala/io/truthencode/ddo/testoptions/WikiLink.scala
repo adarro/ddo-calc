@@ -1,7 +1,10 @@
 /*
  * SPDX-License-Identifier: Apache-2.0
  *
- * Copyright 2015-2021 Andre White.
+ * Copyright 2015-2025
+ *
+ * Author: Andre White.
+ * FILE: WikiLink.scala
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -39,13 +42,14 @@ trait WikiLink extends Flexmark {
   /**
    * see [[https://github.com/vsch/flexmark-java/wiki/Extensions#emoji]]
    * @param dataSet
+   *   used to configure the extension
    * @return
-   *   Mutated dataset with specified default options
+   *   the configured dataSet Mutated dataset with specified default options
    */
-  private[this] def wikiLinkTaskOptions()(implicit
-    dataSet: MutableDataSet): () => MutableDataSet = { () =>
-    dataSet
-      .set(WikiLinkExtension.IMAGE_LINKS, Boolean.box(true))
+  private def wikiLinkTaskOptions()(implicit dataSet: MutableDataSet): () => MutableDataSet = {
+    () =>
+      dataSet
+        .set(WikiLinkExtension.IMAGE_LINKS, Boolean.box(true))
 
   }
 

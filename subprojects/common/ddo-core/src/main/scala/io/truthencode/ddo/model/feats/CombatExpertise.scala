@@ -1,7 +1,10 @@
 /*
  * SPDX-License-Identifier: Apache-2.0
  *
- * Copyright 2015-2021 Andre White.
+ * Copyright 2015-2025
+ *
+ * Author: Andre White.
+ * FILE: CombatExpertise.scala
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -17,6 +20,7 @@
  */
 package io.truthencode.ddo.model.feats
 
+import io.truthencode.ddo.activation.TriggeredActivationImpl
 import io.truthencode.ddo.enhancement.BonusType
 import io.truthencode.ddo.model.abilities.ActiveAbilities
 import io.truthencode.ddo.model.attribute.Attribute
@@ -43,16 +47,17 @@ import java.time.Duration
  * dispels and wards against all Rage effects.
  */
 protected[feats] trait CombatExpertise
-  extends FeatRequisiteImpl with ActiveFeat with AttributeRequisiteImpl with RequiresAllOfAttribute
-  with MartialArtsFeat with FighterBonusFeat with ArtificerBonusFeat with DefensiveCombatStance
-  with FeaturesImpl with GrantAbilityFeature with ArmorClassPercentFeature {
+  extends FeatRequisiteImpl with TriggeredActivationImpl with BonusSelectableToClassFeatImpl
+  with ActiveFeat with AttributeRequisiteImpl with RequiresAllOfAttribute with MartialArtsFeat
+  with FighterBonusFeat with ArtificerBonusFeat with DefensiveCombatStance with FeaturesImpl
+  with GrantAbilityFeature with ArmorClassPercentFeature {
   self: GeneralFeat =>
   override lazy val grantedAbility: ActiveAbilities = ActiveAbilities.CombatExpertise
-  override protected[this] lazy val triggerOn: Seq[TriggerEvent] = Seq(TriggerEvent.OnStance)
-  override protected[this] lazy val triggerOff: Seq[TriggerEvent] = Seq(TriggerEvent.OnSpellCast)
-  override protected[this] lazy val grantAbilityCategories: Seq[effect.EffectCategories.Value] =
+  override protected lazy val triggerOn: Seq[TriggerEvent] = Seq(TriggerEvent.OnStance)
+  override protected lazy val triggerOff: Seq[TriggerEvent] = Seq(TriggerEvent.OnSpellCast)
+  override protected lazy val grantAbilityCategories: Seq[effect.EffectCategories.Value] =
     Seq(effect.EffectCategories.Stance)
-  override val allOfAttributes = List((Attribute.Intelligence, 13))
+  override val allOfAttributes: Seq[(Attribute, Int)] = List((Attribute.Intelligence, 13))
   override val grantBonusType: BonusType = BonusType.Feat
   override protected val armorBonusType: BonusType = BonusType.Feat
   override protected val armorBonusAmount: Int = 10

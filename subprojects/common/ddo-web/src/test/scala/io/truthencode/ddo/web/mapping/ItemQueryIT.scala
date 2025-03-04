@@ -1,15 +1,22 @@
-/**
- * Copyright (C) 2015 Andre White (adarro@gmail.com)
+/*
+ * SPDX-License-Identifier: Apache-2.0
  *
- * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except
- * in compliance with the License. You may obtain a copy of the License at
+ * Copyright 2015-2025
  *
- * http://www.apache.org/licenses/LICENSE-2.0
+ * Author: Andre White.
+ * FILE: ItemQueryIT.scala
  *
- * Unless required by applicable law or agreed to in writing, software distributed under the License
- * is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express
- * or implied. See the License for the specific language governing permissions and limitations under
- * the License.
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *     https://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
  */
 package io.truthencode.ddo.web.mapping
 
@@ -24,16 +31,17 @@ import scala.language.reflectiveCalls
 
 object SlowTest extends Tag("io.truthencode.ddo.tags.SlowTest")
 
-class QueryItemIT extends AnyFunSpec with Matchers with MockitoSugar with LazyLogging {
+class QueryPermanentItemIT extends AnyFunSpec with Matchers with MockitoSugar with LazyLogging {
   val lblWeapon: String = "Weapon"
   val msgMissing: String = "Missing!!!"
-  protected def fixture = new {
-    val typeList = {
-      val idWeapon = "Drow Scimitar of the Weapon Master"
-      Map(lblWeapon -> idWeapon)
+  protected def fixture: Object { val typeList: Map[String, String]; val defaultItemId: String } =
+    new {
+      val typeList = {
+        val idWeapon = "Drow Scimitar of the Weapon Master"
+        Map(lblWeapon -> idWeapon)
+      }
+      val defaultItemId = "Epic Elyd Edge"
     }
-    val defaultItemId = "Epic Elyd Edge"
-  }
 
   describe("A named weapon") {
 

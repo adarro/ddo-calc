@@ -1,7 +1,10 @@
 /*
  * SPDX-License-Identifier: Apache-2.0
  *
- * Copyright 2015-2021 Andre White.
+ * Copyright 2015-2025
+ *
+ * Author: Andre White.
+ * FILE: package.scala
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -30,7 +33,7 @@ package object features {
     bonusType: BonusType,
     override val source: SourceInfo,
     override val categories: Seq[String],
-    override val effectParameters: Seq[ParameterModifier[_]],
+    override val effectParameters: Seq[ParameterModifier[?]],
     effectDetail: DetailedEffect)
     extends PartModifier[Int, Skill] with UsingSkillSearchPrefix {
 
@@ -48,7 +51,7 @@ package object features {
       s"provides a ${value.numberToSignedText} ${bonusType.entryName} bonus to ${partToModify.entryName}"
     )
     //    override lazy val name: Option[String] = Some(skill.withPrefix)
-    override protected[this] lazy val partToModify: Skill =
+    override protected lazy val partToModify: Skill =
       skill
 
     /**

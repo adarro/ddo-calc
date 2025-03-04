@@ -1,7 +1,10 @@
 /*
  * SPDX-License-Identifier: Apache-2.0
  *
- * Copyright 2015-2021 Andre White.
+ * Copyright 2015-2025
+ *
+ * Author: Andre White.
+ * FILE: DefensiveFighting.scala
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -17,6 +20,7 @@
  */
 package io.truthencode.ddo.model.feats
 
+import io.truthencode.ddo.activation.{TriggerImpl, TriggeredActivationImpl}
 import io.truthencode.ddo.enhancement.BonusType
 import io.truthencode.ddo.model.abilities.ActiveAbilities
 import io.truthencode.ddo.model.effect
@@ -39,19 +43,19 @@ import java.time.Duration
  *   dispel any rage or recklessness effects currently present on your character.
  */
 protected[feats] trait DefensiveFighting
-  extends FeatRequisiteImpl with ActiveFeat with DefensiveCombatStance with FreeFeat
-  with FeaturesImpl with GrantAbilityFeature with ArmorClassPercentFeature
+  extends FeatRequisiteImpl with TriggeredActivationImpl with ActiveFeat with DefensiveCombatStance
+  with FreeFeat with FeaturesImpl with GrantAbilityFeature with ArmorClassPercentFeature
   with HitChancePercentFeature {
   self: GeneralFeat =>
   override lazy val grantedAbility: ActiveAbilities = ActiveAbilities.DefensiveFighting
-  override protected[this] lazy val grantAbilityCategories: Seq[effect.EffectCategories.Value] =
+  override protected lazy val grantAbilityCategories: Seq[effect.EffectCategories.Value] =
     Seq(
       effect.EffectCategories.Stance,
       effect.EffectCategories.MissChance,
       effect.EffectCategories.HitChance)
-  override protected[this] lazy val triggerOn: Seq[TriggerEvent] = Seq(TriggerEvent.OnStance)
-  override protected[this] lazy val triggerOff: Seq[TriggerEvent] = Seq(TriggerEvent.OnToggle)
-  override protected[this] lazy val hitChanceCategories: Seq[effect.EffectCategories.Value] = Seq(
+  override protected lazy val triggerOn: Seq[TriggerEvent] = Seq(TriggerEvent.OnStance)
+  override protected lazy val triggerOff: Seq[TriggerEvent] = Seq(TriggerEvent.OnToggle)
+  override protected lazy val hitChanceCategories: Seq[effect.EffectCategories.Value] = Seq(
     effect.EffectCategories.MissChance)
   override val grantBonusType: BonusType = BonusType.Feat
   override val abilityId: String = "DefensiveFighting"

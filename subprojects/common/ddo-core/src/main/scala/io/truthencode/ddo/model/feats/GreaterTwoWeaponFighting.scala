@@ -1,7 +1,10 @@
 /*
  * SPDX-License-Identifier: Apache-2.0
  *
- * Copyright 2015-2021 Andre White.
+ * Copyright 2015-2025
+ *
+ * Author: Andre White.
+ * FILE: GreaterTwoWeaponFighting.scala
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -20,7 +23,7 @@ package io.truthencode.ddo.model.feats
 import io.truthencode.ddo.model.attribute.Attribute
 import io.truthencode.ddo.model.classes.HeroicCharacterClass
 import io.truthencode.ddo.model.classes.HeroicCharacterClass.Ranger
-import io.truthencode.ddo.support.requisite._
+import io.truthencode.ddo.support.requisite.*
 
 /**
  * Icon Feat Greater Two Weapon Fighting.png Greater Two Weapon Fighting Passive Increases the
@@ -29,9 +32,9 @@ import io.truthencode.ddo.support.requisite._
  * Improved Two Weapon Fighting Dexterity 17, Base Attack Bonus +11 *
  */
 trait GreaterTwoWeaponFighting
-  extends FeatRequisiteImpl with ClassRequisiteImpl with Passive with RequiresAllOfFeat
-  with AttributeRequisiteImpl with RequiresAllOfAttribute with RequiresBaB with GrantsToClass
-  with FighterBonusFeat {
+  extends FeatRequisiteImpl with BonusSelectableToClassFeatImpl with ClassRequisiteImpl with Passive
+  with RequiresAllOfFeat with AttributeRequisiteImpl with RequiresAllOfAttribute with RequiresBaB
+  with GrantsToClass with FighterBonusFeat {
   self: GeneralFeat =>
   override def requiresBaB: Int = 11
 

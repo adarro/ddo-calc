@@ -1,7 +1,10 @@
 /*
  * SPDX-License-Identifier: Apache-2.0
  *
- * Copyright 2015-2021 Andre White.
+ * Copyright 2015-2025
+ *
+ * Author: Andre White.
+ * FILE: FeaturesTest.scala
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -32,20 +35,61 @@ import scala.language.postfixOps
 class FeaturesTest extends AnyFunSpec with Matchers with LazyLogging {
   private val dodgeChance = BasicStat.DodgeChance.withPrefix // "DodgeChance"
 
-  describe("A Features List") {
-    it("Should be magical") {
+  describe("A Feature Set") {
+    it("Should be kewl") {
       import Features.FeatureExtractor
-      val fs = Feat.featureSet
-      val fm = Feat.featureMap
-      fs.size shouldEqual fm.size
+      val source = Feat
+      val ffs =
+        for
+          container <- source.values
+          feature <- container.features
+        yield (container, feature)
 
-      fm.foreach { m =>
+      val fAlertness = ffs.filter(_._1 == GeneralFeat.Alertness)
+      fAlertness.size shouldEqual 2
+      // Need to improve this to use the feature extractor
+
+    }
+    it("Should be magically awesome") {
+      import Features.FeatureExtractor
+      // Need to improve this to use the feature extractor
+      val fs = Feat.featureSet.sortBy(_._1.entryName)
+      //      val fm = Feat.featureMap
+      //      fs.size shouldEqual fm.size
+      logger.info("\n\n *************  Entity (Filtered) Features *************\n")
+      fs.filter(_._1.entryName == GeneralFeat.Alertness.entryName).foreach { m =>
         {
           val eId = m._1.entryName
           val fId = m._2.name
           val pf = printFeature(m._2)
           val ed = m._2.effectDetail
-          logger.info(s"\nEntity: $eId, Feature: $fId \n$pf\n$ed")
+          logger.info(s"Entity: $eId, Feature: $fId \n$pf\n$ed\n\n")
+        }
+
+      }
+      //      val irslt = for {
+      //        (k, v) <- fm
+      //      } yield (k, v.name -> (v, v.effectDetail))
+
+    }
+  }
+
+  describe("A Features List") {
+
+    it("Should be magical") {
+      import Features.FeatureExtractor
+      // Need to improve this to use the feature extractor
+      val fs = Feat.featureSet.sortBy(_._1.entryName)
+//      val fm = Feat.featureMap
+//      fs.size shouldEqual fm.size
+      logger.info("\n\n *************  Entity Features *************\n")
+      fs.foreach { m =>
+        {
+          val eId = m._1.entryName
+          val fId = m._2.name
+          val pf = printFeature(m._2)
+          val ed = m._2.effectDetail
+          logger.info(s"Entity: $eId, Feature: $fId \n$pf\n$ed\n\n")
         }
 
       }

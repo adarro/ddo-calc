@@ -1,7 +1,10 @@
 /*
  * SPDX-License-Identifier: Apache-2.0
  *
- * Copyright 2015-2021 Andre White.
+ * Copyright 2015-2025
+ *
+ * Author: Andre White.
+ * FILE: TurnUndead.scala
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -17,15 +20,15 @@
  */
 package io.truthencode.ddo.model.feats
 
-import io.truthencode.ddo.activation.AtWillEvent
+import io.truthencode.ddo.activation.{AtWillEvent, TriggeredActivationImpl}
 import io.truthencode.ddo.model.classes.HeroicCharacterClass
 import io.truthencode.ddo.support.requisite.{FeatRequisiteImpl, GrantsToClass, RequiresAnyOfClass}
 
 import java.time.Duration
 
 protected[feats] trait TurnUndead
-  extends FeatRequisiteImpl with ActiveFeat with AtWillEvent with GrantsToClass
-  with RequiresAnyOfClass {
+  extends FeatRequisiteImpl with TriggeredActivationImpl with ActiveFeat with AtWillEvent
+  with GrantsToClass with RequiresAnyOfClass {
   self: Feat =>
   /* DDOWiki lists Bane of Undead as a prerequisite.  I am doing the other way around
        I.e. Bane of undead Grants the Feat:Turn Undead as the description suggests.

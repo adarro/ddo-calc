@@ -1,6 +1,10 @@
 # Mobile Tools for Java (J2ME)
 .mtj.tmp/
 
+
+# local python env
+pytools/
+
 # Package Files #
 *.jar
 *.war
@@ -41,6 +45,8 @@ buildNumber.properties
 .Rproj.user/
 
 **/.antlr/
+*.interp
+*.tokens
 
 # produced vignettes
 vignettes/*.html
@@ -65,6 +71,7 @@ project/plugins/project/
 
 # Scala-IDE specific
 .scala_dependencies
+**/*.scala.semanticdb
 .worksheet
 /org/
 infinitest.filters
@@ -208,9 +215,12 @@ rslt.txt
 # auto generated files
 **/version.properties
 incubating/ddo-antlr/src/generated/java/*
-local.properties
+
 
 .quarkus/
 /subprojects/common/ddo-modeling/src/main/avro/
 /subprojects/common/ddo-core/src/generated/java/io/truthencode/ddo/core/GeneratedVersion.java
 fixle.sh
+/.env
+/.envrc
+/py/

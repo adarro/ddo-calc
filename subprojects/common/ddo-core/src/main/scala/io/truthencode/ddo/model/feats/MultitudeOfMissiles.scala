@@ -1,7 +1,10 @@
 /*
  * SPDX-License-Identifier: Apache-2.0
  *
- * Copyright 2015-2021 Andre White.
+ * Copyright 2015-2025
+ *
+ * Author: Andre White.
+ * FILE: MultitudeOfMissiles.scala
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -17,12 +20,12 @@
  */
 package io.truthencode.ddo.model.feats
 
-import io.truthencode.ddo.activation.AtWillEvent
+import io.truthencode.ddo.activation.{AtWillEvent, TriggeredActivationImpl}
 import io.truthencode.ddo.model.classes.HeroicCharacterClass
 import io.truthencode.ddo.model.classes.HeroicCharacterClass.Alchemist
 import io.truthencode.ddo.model.feats.GeneralFeat.PointBlankShot
 import io.truthencode.ddo.model.misc.{CoolDownPool, SharedCoolDown}
-import io.truthencode.ddo.support.requisite._
+import io.truthencode.ddo.support.requisite.*
 
 import java.time.Duration
 
@@ -37,10 +40,11 @@ import java.time.Duration
  *   [[https://ddowiki.com/page/Multitude_of_Missiles]]
  */
 protected[feats] trait MultitudeOfMissiles
-  extends FeatRequisiteImpl with ClassRequisiteImpl with GrantsToClass with RequiresAllOfFeat
-  with RequiresBaB with ActiveFeat with AtWillEvent with SharedCoolDown {
+  extends FeatRequisiteImpl with TriggeredActivationImpl with ClassRequisiteImpl with GrantsToClass
+  with RequiresAllOfFeat with RequiresBaB with ActiveFeat with AtWillEvent with SharedCoolDown {
   override val coolDownPoolId: String = CoolDownPool.ManyShot.coolDownPoolId
-  private[this] val cls = (Alchemist, 6)
+
+  private val cls = (Alchemist, 6)
 
   override def coolDown: Option[Duration] = Some(Duration.ofSeconds(60))
 

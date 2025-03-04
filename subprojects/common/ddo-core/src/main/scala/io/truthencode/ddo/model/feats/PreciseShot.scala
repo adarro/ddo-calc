@@ -1,7 +1,10 @@
 /*
  * SPDX-License-Identifier: Apache-2.0
  *
- * Copyright 2015-2021 Andre White.
+ * Copyright 2015-2025
+ *
+ * Author: Andre White.
+ * FILE: PreciseShot.scala
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -39,8 +42,9 @@ import scala.collection.immutable
  * Point Blank Shot
  */
 trait PreciseShot
-  extends FeatRequisiteImpl with ClassRequisiteImpl with Passive with RequiresAllOfFeat
-  with GrantsToClass with FighterBonusFeat with ArtificerBonusFeat with AlchemistBonusFeat {
+  extends FeatRequisiteImpl with BonusSelectableToClassFeatImpl with ClassRequisiteImpl with Passive
+  with RequiresAllOfFeat with GrantsToClass with FighterBonusFeat with ArtificerBonusFeat
+  with AlchemistBonusFeat {
   self: GeneralFeat =>
   override def grantToClass: Seq[(HeroicCharacterClass, Int)] = List((Ranger, 4))
 

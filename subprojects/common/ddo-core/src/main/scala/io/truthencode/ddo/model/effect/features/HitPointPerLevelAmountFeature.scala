@@ -1,7 +1,10 @@
 /*
  * SPDX-License-Identifier: Apache-2.0
  *
- * Copyright 2015-2021 Andre White.
+ * Copyright 2015-2025
+ *
+ * Author: Andre White.
+ * FILE: HitPointPerLevelAmountFeature.scala
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -29,25 +32,25 @@ import io.truthencode.ddo.support.naming.UsingSearchPrefix
  */
 trait HitPointPerLevelAmountFeature extends Features {
   self: SourceInfo =>
-  protected val hitPointBonusType: BonusType
+  protected def hitPointBonusType: BonusType
   protected val hitPointsPerLevel: Int
-  protected[this] val triggerOn: Seq[TriggerEvent]
-  protected[this] val triggerOff: Seq[TriggerEvent]
-  protected[this] val hitPointPerLevelCategories: Seq[effect.EffectCategories.Value]
+  protected def triggerOn: Seq[TriggerEvent]
+  protected def triggerOff: Seq[TriggerEvent]
+  protected def hitPointPerLevelCategories: Seq[effect.EffectCategories.Value]
   private val src = this
-  private[this] val hitPointAmount =
+  private val hitPointAmount =
     new PartModifier[Int, BasicStat] with DynamicFeature[Int] with UsingSearchPrefix {
 
-      override protected[this] lazy val partToModify: BasicStat =
+      override protected lazy val partToModify: BasicStat =
         BasicStat.HitPoints
 
       private val eb = EffectParameterBuilder()
-        .toggleOffValue(triggerOff: _*)
-        .toggleOnValue(triggerOn: _*)
+        .toggleOffValue(triggerOff*)
+        .toggleOnValue(triggerOn*)
         .addBonusType(hitPointBonusType)
         .build
 
-      override protected[this] def effectParameters: Seq[ParameterModifier[_]] = eb.modifiers
+      override protected def effectParameters: Seq[ParameterModifier[?]] = eb.modifiers
 
       /**
        * The General Description should be just that. This should not include specific values unless
@@ -95,7 +98,7 @@ trait HitPointPerLevelAmountFeature extends Features {
 
   def calculate: Int => Int
 
-  abstract override def features: Seq[Feature[_]] = {
+  abstract override def features: Seq[Feature[?]] = {
     assert(hitPointAmount.value == hitPointsPerLevel)
     super.features :+ hitPointAmount
   }

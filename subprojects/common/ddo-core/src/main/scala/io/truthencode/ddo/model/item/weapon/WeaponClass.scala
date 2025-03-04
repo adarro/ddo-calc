@@ -1,7 +1,10 @@
 /*
  * SPDX-License-Identifier: Apache-2.0
  *
- * Copyright 2015-2021 Andre White.
+ * Copyright 2015-2025
+ *
+ * Author: Andre White.
+ * FILE: WeaponClass.scala
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -28,7 +31,7 @@ import scala.collection.immutable.IndexedSeq
  * should correspond directly to such Feats.
  */
 sealed trait WeaponClass extends EnumEntry with DisplayName {
-  self: DefaultDeliveryMethod with PhysicalDamage =>
+  self: DefaultDeliveryMethod & PhysicalDamage =>
 
   /**
    * Sets or maps the source text for the DisplayName.
@@ -43,15 +46,15 @@ object WeaponClass extends Enum[WeaponClass] {
 
   override def values: IndexedSeq[WeaponClass] = findValues
 
-  case object Bludgeon extends WeaponClassBludgeoning
+  case object Bludgeon extends WeaponClassBludgeoning, WeaponClass
 
-  case object Piercing extends WeaponClassPiercing
+  case object Piercing extends WeaponClassPiercing, WeaponClass
 
-  case object Slashing extends WeaponClassSlashing
+  case object Slashing extends WeaponClassSlashing, WeaponClass
 
-  case object Ranged extends WeaponClassRanged
+  case object Ranged extends WeaponClassRanged, WeaponClass
 
-  case object Thrown extends WeaponClassThrown
+  case object Thrown extends WeaponClassThrown, WeaponClass
 }
 
 sealed trait WeaponClassBludgeoning

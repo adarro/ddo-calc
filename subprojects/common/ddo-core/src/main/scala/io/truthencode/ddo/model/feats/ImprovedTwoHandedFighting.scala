@@ -1,7 +1,10 @@
 /*
  * SPDX-License-Identifier: Apache-2.0
  *
- * Copyright 2015-2021 Andre White.
+ * Copyright 2015-2025
+ *
+ * Author: Andre White.
+ * FILE: ImprovedTwoHandedFighting.scala
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -29,8 +32,9 @@ import io.truthencode.ddo.support.requisite._
  * Two Handed Fighting Strength 17 Base Attack Bonus +6
  */
 trait ImprovedTwoHandedFighting
-  extends FeatRequisiteImpl with Passive with RequiresAllOfFeat with AttributeRequisiteImpl
-  with RequiresAllOfAttribute with RequiresBaB with FighterBonusFeat with MartialArtsFeat {
+  extends FeatRequisiteImpl with BonusSelectableToClassFeatImpl with Passive with RequiresAllOfFeat
+  with AttributeRequisiteImpl with RequiresAllOfAttribute with RequiresBaB with FighterBonusFeat
+  with MartialArtsFeat {
   self: GeneralFeat =>
   override def allOfAttributes: Seq[(Attribute, Int)] = List((Attribute.Strength, 17))
 

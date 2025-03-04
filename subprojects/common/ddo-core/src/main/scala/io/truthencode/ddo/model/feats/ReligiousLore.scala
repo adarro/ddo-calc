@@ -1,7 +1,10 @@
 /*
  * SPDX-License-Identifier: Apache-2.0
  *
- * Copyright 2015-2021 Andre White.
+ * Copyright 2015-2025
+ *
+ * Author: Andre White.
+ * FILE: ReligiousLore.scala
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -44,7 +47,7 @@ protected[feats] trait ReligiousLore
     (1 to 20 by 2).toList.map((HeroicCharacterClass.Bard, _))
 
   private def allLevelsClasses =
-    for {
+    for
       c <- List(
         HeroicCharacterClass.Cleric,
         HeroicCharacterClass.FavoredSoul,
@@ -52,5 +55,5 @@ protected[feats] trait ReligiousLore
         HeroicCharacterClass.FavoredSoul
       )
       l <- 1 to 20
-    } yield (c, l)
+    yield (c, l)
 }

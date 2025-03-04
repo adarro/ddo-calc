@@ -1,7 +1,10 @@
 /*
  * SPDX-License-Identifier: Apache-2.0
  *
- * Copyright 2015-2021 Andre White.
+ * Copyright 2015-2025
+ *
+ * Author: Andre White.
+ * FILE: ExtraInfo.scala
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -26,7 +29,7 @@ package io.truthencode.ddo
  */
 case class ExtraInfo(symbol: String, value: Int) {
   require(symbol.contentEquals("+") || symbol.contentEquals("-"))
-  val toInt = symbol match {
+  val toInt: Int = symbol match {
     case "+" => Math.abs(value)
     case "-" => -1 * value
   }
@@ -48,7 +51,7 @@ object ExtraInfo {
    */
   def apply(i: Int): ExtraInfo = {
     val sym =
-      if (i < 0) {
+      if i < 0 then {
         "-"
       } else {
         "+"

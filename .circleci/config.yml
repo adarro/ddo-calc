@@ -13,7 +13,7 @@ jobs:
         # See: https://circleci.com/docs/2.0/configuration-reference/#docker-machine-macos-windows-executor
         docker:
             # specify the version you desire here
-            - image: cimg/openjdk:17.0
+            - image: cimg/openjdk:21.0
               auth:
                   username: $docker_user
                   password: $docker_token
@@ -33,7 +33,7 @@ jobs:
         # Add steps to the job
         # See: https://circleci.com/docs/2.0/configuration-reference/#steps
         steps:
-            - checkout
+            - run: git clone --depth 20 "$CIRCLE_REPOSITORY_URL" --branch "$CIRCLE_BRANCH"
             - run: ./gradlew assemble
             - run: if [ -e ./gradlew ]; then ./gradlew reportScoverage aggregateScoverage --continue;else gradle reportScoverage aggregateScoverage --continue;fi
             - codecov/upload

@@ -1,7 +1,10 @@
 /*
  * SPDX-License-Identifier: Apache-2.0
  *
- * Copyright 2015-2021 Andre White.
+ * Copyright 2015-2025
+ *
+ * Author: Andre White.
+ * FILE: ArtificerBonusFeat.scala
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -20,17 +23,17 @@ package io.truthencode.ddo.model.feats
 import io.truthencode.ddo.model.classes.HeroicCharacterClass
 import io.truthencode.ddo.support.requisite.{Inclusion, Requisite, SelectableToClass}
 
-trait ArtificerBonusFeat extends SelectableToClass with BonusSelectableFeatImpl {
-  self: Feat with FeatType with Requisite with Inclusion =>
+trait ArtificerBonusFeat extends SelectableToClass with BonusSelectableToClassFeatImpl {
+  self: Feat & FeatType & Requisite & Inclusion =>
   override val levels: Set[Int] = Set(1) ++ (4 to 20 by 4).toSet
-  private[this] val myCharClass: HeroicCharacterClass = HeroicCharacterClass.Artificer
+  private val myCharClass: HeroicCharacterClass = HeroicCharacterClass.Artificer
 
   abstract override def bonusCharacterClass: Seq[HeroicCharacterClass] =
     super.bonusCharacterClass :+ myCharClass
 
   abstract override def bonusSelectableToClass: Seq[(HeroicCharacterClass, Int)] = {
 
-    val cc: Set[(HeroicCharacterClass, Int)] = for { l <- levels } yield (myCharClass, l)
+    val cc: Set[(HeroicCharacterClass, Int)] = for l <- levels yield (myCharClass, l)
     super.bonusSelectableToClass ++ cc.toSeq
 
   }

@@ -16,6 +16,8 @@
  * limitations under the License.
  */
 
+import de.fayard.refreshVersions.core.FeatureFlag
+import de.fayard.refreshVersions.core.StabilityLevel
 import java.nio.file.Files
 import java.nio.file.Paths
 
@@ -23,32 +25,14 @@ import java.nio.file.Paths
 rootProject.name = "ddo-calc-parent"
 
 pluginManagement {
-    //  Scala
-    // Coverage
-    val scoveragePluginVersion: String by settings
-    // Avro
-    val avroHuggerPluginVersion: String by settings
-    val openApiGeneratorPluginVersion: String by settings
-
-//    val kordampGradlePluginVersion: String by settings
-//    val semVerPluginVersion: String by settings
     val mooltiverseNyxPluginVersion: String by settings
     val foojayResolverPluginVersionversion: String by settings
+    val refreshVersionsPluginVersion: String by settings
 
     plugins {
-        id("com.github.hierynomus.license") version "0.16.1"
-        id("com.zlad.gradle.avrohugger") version avroHuggerPluginVersion
-        // id("com.chudsaviet.gradle.avrohugger") version avroHuggerPluginVersion
-        id("org.openapi.generator") version openApiGeneratorPluginVersion
-        id("org.scoverage") version scoveragePluginVersion
         id("com.mooltiverse.oss.nyx") version mooltiverseNyxPluginVersion
         id("org.gradle.toolchains.foojay-resolver-convention") version foojayResolverPluginVersionversion
-
-//        id("org.kordamp.gradle.project") version kordampGradlePluginVersion
-//        id("net.thauvin.erik.gradle.semver") version semVerPluginVersion
-        id("ru.vyarus.mkdocs") version "3.0.0"
-        id("io.quarkus") version "3.3.3"
-        id("org.sonarqube") version "4.3.1.3277"
+        id("de.fayard.refreshVersions") version refreshVersionsPluginVersion
     }
 
     repositories {
@@ -60,6 +44,7 @@ pluginManagement {
 plugins {
     id("com.mooltiverse.oss.nyx")
     id("org.gradle.toolchains.foojay-resolver-convention")
+    id("de.fayard.refreshVersions")
 }
 
 enableFeaturePreviewQuietly("TYPESAFE_PROJECT_ACCESSORS", "Type-safe project accessors")
@@ -118,43 +103,56 @@ projectFolders.forEach { dirName ->
         Files.createDirectory(directory)
     }
 
-    Files.find(
-        directory,
-        Integer.MAX_VALUE,
-        { _: java.nio.file.Path, attributes: java.nio.file.attribute.BasicFileAttributes ->
-            attributes.isDirectory
-        },
-    ).use { dir ->
-        dir.forEach { dr ->
-            val customName = dr.toFile().name
-            // ({{f,s -> true}})
-            val files =
-                dr.toFile()
-                    .listFiles { _, str -> str.matches(Regex("($customName|build)\\.gradle(\\.kts)?")) }
+    Files
+        .find(
+            directory,
+            Integer.MAX_VALUE,
+            { _: java.nio.file.Path, attributes: java.nio.file.attribute.BasicFileAttributes ->
+                attributes.isDirectory
+            },
+        ).use { dir ->
+            dir.forEach { dr ->
+                val customName = dr.toFile().name
+                // ({{f,s -> true}})
+                val files =
+                    dr
+                        .toFile()
+                        .listFiles { _, str -> str.matches(Regex("($customName|build)\\.gradle(\\.kts)?")) }
 
-            if (files?.isEmpty() != true) {
-                if (files!!.size != 1) {
-                    logger.warn("Multiple build files located in project directory $dr")
+                if (files?.isEmpty() != true) {
+                    if (files!!.size != 1) {
+                        logger.warn("Multiple build files located in project directory $dr")
+                    }
+                    val projectDir = rootDir.toPath().relativize(dr)
+                    val first = files.first()
+                    val buildFileName = first.name
+                    // build file name may be arbitrary but usually follows either build or the directory name.
+                    // since we're mostly controlling the build we'll assume the containing folders' name.
+                    val projectName = first.parentFile.name
+                    logger.info("Including Project:$projectName \tprojectDir: $projectDir \tBuildFile: $buildFileName")
+                    include(projectName)
+                    project(":$projectName").projectDir = projectDir.toFile()
+                    project(":$projectName").buildFileName = buildFileName
                 }
-                val projectDir = rootDir.toPath().relativize(dr)
-                val first = files.first()
-                val buildFileName = first.name
-                // build file name may be arbitrary but usually follows either build or the directory name.
-                // since we're mostly controlling the build we'll assume the containing folders' name.
-                val projectName = first.parentFile.name
-                logger.info("Including Project:$projectName \tprojectDir: $projectDir \tBuildFile: $buildFileName")
-                include(projectName)
-                project(":$projectName").projectDir = projectDir.toFile()
-                project(":$projectName").buildFileName = buildFileName
             }
         }
-    }
 }
 
 if (System.getenv("enableCompositeBuild") == "true") {
     logger.info("Adding included builds")
     file("examples").listFiles()?.filter { ft -> ft.isDirectory }?.forEach { moduleBuild: File ->
         includeBuild(moduleBuild)
+    }
+}
+
+@Suppress("UnstableApiUsage")
+refreshVersions {
+    // https://github.com/jmfayard/refreshVersions
+    rejectVersionIf {
+        candidate.stabilityLevel.isLessStableThan(StabilityLevel.Stable)
+    }
+    featureFlags {
+        this.enable(FeatureFlag.VERSIONS_CATALOG)
     }
 }
 

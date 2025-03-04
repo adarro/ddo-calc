@@ -1,7 +1,10 @@
 /*
  * SPDX-License-Identifier: Apache-2.0
  *
- * Copyright 2015-2021 Andre White.
+ * Copyright 2015-2025
+ *
+ * Author: Andre White.
+ * FILE: MistyEscape.scala
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -17,7 +20,7 @@
  */
 package io.truthencode.ddo.model.feats
 
-import io.truthencode.ddo.activation.OnSpellLikeAbilityEvent
+import io.truthencode.ddo.activation.{OnSpellLikeAbilityEvent, TriggeredActivationImpl}
 import io.truthencode.ddo.model.classes.HeroicCharacterClass
 import io.truthencode.ddo.model.classes.HeroicCharacterClass.Warlock
 import io.truthencode.ddo.support.requisite.{
@@ -35,8 +38,9 @@ import java.time.Duration
  * seconds.
  */
 protected[feats] trait MistyEscape
-  extends FeatRequisiteImpl with ActiveFeat with OnSpellLikeAbilityEvent with RequiresAllOfClass
-  with RequiresAllOfFeat with GrantsToClass { self: ClassFeat =>
+  extends FeatRequisiteImpl with TriggeredActivationImpl with ActiveFeat
+  with OnSpellLikeAbilityEvent with RequiresAllOfClass with RequiresAllOfFeat with GrantsToClass {
+  self: ClassFeat =>
 
   override def grantToClass: Seq[(HeroicCharacterClass, Int)] =
     Seq((Warlock, 15))

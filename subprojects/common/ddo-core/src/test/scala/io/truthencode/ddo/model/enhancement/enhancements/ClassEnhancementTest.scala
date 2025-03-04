@@ -1,7 +1,10 @@
 /*
  * SPDX-License-Identifier: Apache-2.0
  *
- * Copyright 2015-2021 Andre White.
+ * Copyright 2015-2025
+ *
+ * Author: Andre White.
+ * FILE: ClassEnhancementTest.scala
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -42,11 +45,19 @@ class ClassEnhancementTest extends AnyFunSpec with Matchers with LazyLogging {
       eo shouldNot be(empty)
 
     }
-    it("should include poison and elemental") {
+    it("should support Roman Numerals") {
       val e = ClassEnhancement.SpellCriticalElementalAndPoisonII
       val eDt = e.displayText
       val eId = e.entryName
       val dTest = "Spell Critical: Elemental and Poison II"
+      eDt shouldEqual dTest
+    }
+
+    it("should include poison and elemental") {
+      val e = ClassEnhancement.HiddenBladesII
+      val eDt = e.displayText
+      val eId = e.entryName
+      val dTest = "Hidden Blades II"
       eDt shouldEqual dTest
     }
     it("should now support ampersands") {

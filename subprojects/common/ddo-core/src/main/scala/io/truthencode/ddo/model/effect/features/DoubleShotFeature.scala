@@ -1,7 +1,10 @@
 /*
  * SPDX-License-Identifier: Apache-2.0
  *
- * Copyright 2015-2021 Andre White.
+ * Copyright 2015-2025
+ *
+ * Author: Andre White.
+ * FILE: DoubleShotFeature.scala
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -30,12 +33,12 @@ trait DoubleShotFeature extends Features {
   self: SourceInfo =>
   protected val doubleShotBonusType: BonusType
   protected val doubleShotValue: Int
-  protected[this] val doubleShotTriggerOn: Seq[TriggerEvent]
-  protected[this] val doubleShotTriggerOff: Seq[TriggerEvent]
-  protected[this] val doubleShotCategories: Seq[effect.EffectCategories.Value]
+  protected val doubleShotTriggerOn: Seq[TriggerEvent]
+  protected val doubleShotTriggerOff: Seq[TriggerEvent]
+  protected val doubleShotCategories: Seq[effect.EffectCategories.Value]
   private val src = this
   def doubleShotEffectText: Option[String] = None
-  private[this] val doubleShotEffect =
+  private val doubleShotEffect =
     new PartModifier[Int, BasicStat] with DynamicFeature[Int] with UsingSearchPrefix {
 
       /**
@@ -64,16 +67,16 @@ trait DoubleShotFeature extends Features {
        */
       override def searchPrefixSource: String = partToModify.searchPrefixSource
 
-      override protected[this] lazy val partToModify: BasicStat =
+      override protected lazy val partToModify: BasicStat =
         BasicStat.DoubleShot
 
       private lazy val eb = EffectParameterBuilder()
-        .toggleOffValue(doubleShotTriggerOff: _*)
-        .toggleOnValue(doubleShotTriggerOn: _*)
+        .toggleOffValue(doubleShotTriggerOff*)
+        .toggleOnValue(doubleShotTriggerOn*)
         .addBonusType(doubleShotBonusType)
         .build
 
-      override protected[this] def effectParameters: Seq[ParameterModifier[_]] = eb.modifiers
+      override protected def effectParameters: Seq[ParameterModifier[?]] = eb.modifiers
 
       /**
        * The General Description should be just that. This should not include specific values unless
@@ -103,7 +106,7 @@ trait DoubleShotFeature extends Features {
       override def computedValue: Int => Int = calculate
     }
   def calculate: Int => Int
-  abstract override def features: Seq[Feature[_]] = {
+  abstract override def features: Seq[Feature[?]] = {
     assert(doubleShotEffect.value == doubleShotValue)
     super.features :+ doubleShotEffect
   }

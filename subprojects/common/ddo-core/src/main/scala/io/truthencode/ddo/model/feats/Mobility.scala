@@ -1,7 +1,10 @@
 /*
  * SPDX-License-Identifier: Apache-2.0
  *
- * Copyright 2015-2021 Andre White.
+ * Copyright 2015-2025
+ *
+ * Author: Andre White.
+ * FILE: Mobility.scala
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -34,21 +37,21 @@ import io.truthencode.ddo.support.requisite.{FeatRequisiteImpl, RequiresAllOfFea
  * will also gain a 2% dodge bonus. Dodge
  */
 trait Mobility
-  extends FeatRequisiteImpl with Passive with RequiresAllOfFeat with MartialArtsFeat
-  with FighterBonusFeat with AlchemistBonusFeat with FeaturesImpl with DodgeChanceFeature
-  with MaxDexBonusFeature with ArmorClassAmountFeature {
+  extends FeatRequisiteImpl with BonusSelectableToClassFeatImpl with Passive with RequiresAllOfFeat
+  with MartialArtsFeat with FighterBonusFeat with AlchemistBonusFeat with FeaturesImpl
+  with DodgeChanceFeature with MaxDexBonusFeature with ArmorClassAmountFeature {
   self: GeneralFeat =>
-  override protected[this] lazy val dodgeCategories: Seq[effect.EffectCategories.Value] = Seq(
+  override protected lazy val dodgeCategories: Seq[effect.EffectCategories.Value] = Seq(
     effect.EffectCategories.MissChance)
-  override protected[this] lazy val triggerOn: Seq[TriggerEvent] = Seq(TriggerEvent.Passive)
-  override protected[this] lazy val triggerOff: Seq[TriggerEvent] = Seq(TriggerEvent.Never)
-  override protected[this] lazy val acTriggerOn: Seq[TriggerEvent] = Seq(TriggerEvent.OnTumble)
-  override protected[this] lazy val acTriggerOff: Seq[TriggerEvent] = Seq(TriggerEvent.WhileOn)
+  override protected lazy val triggerOn: Seq[TriggerEvent] = Seq(TriggerEvent.Passive)
+  override protected lazy val triggerOff: Seq[TriggerEvent] = Seq(TriggerEvent.Never)
+  override protected lazy val acTriggerOn: Seq[TriggerEvent] = Seq(TriggerEvent.OnTumble)
+  override protected lazy val acTriggerOff: Seq[TriggerEvent] = Seq(TriggerEvent.WhileOn)
   override protected lazy val armorBonusType: BonusType = BonusType.Feat
   override protected val armorBonusAmount: Int = 4
   override val mdbBonusType: BonusType = BonusType.Feat
   override val mdbAmount: Int = 2
-  override protected[this] val mdbCategories: Seq[effect.EffectCategories.Value] = Seq(
+  override protected val mdbCategories: Seq[effect.EffectCategories.Value] = Seq(
     effect.EffectCategories.MissChance)
   override val dodgeBonusType: BonusType = BonusType.Feat
   override val dodgeBonusAmount: Int = 2

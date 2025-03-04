@@ -1,7 +1,10 @@
 /*
  * SPDX-License-Identifier: Apache-2.0
  *
- * Copyright 2015-2021 Andre White.
+ * Copyright 2015-2025
+ *
+ * Author: Andre White.
+ * FILE: Features.scala
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -23,10 +26,10 @@ import io.truthencode.ddo.model.effect.Feature
 import io.truthencode.ddo.support.naming.DisplayProperties
 
 trait Features {
-  def features: Seq[Feature[_]]
+  def features: Seq[Feature[?]]
 
-  def namedFeatures: Map[String, Seq[Feature[_]]] = features.groupBy(_.name)
-  def namedOptionFeatures: Map[String, Seq[Feature[_]]] =
+  def namedFeatures: Map[String, Seq[Feature[?]]] = features.groupBy(_.name)
+  def namedOptionFeatures: Map[String, Seq[Feature[?]]] =
     features.groupBy(_.nameOption).collect { case (Some(x), list) =>
       (x, list)
     }
@@ -38,7 +41,7 @@ trait Features {
 object Features {
   implicit class FeatureOpt(source: Features) {
     def hasFeature(features: Features): Boolean = {
-      source.features.contains(features)
+      source.features.containsSlice(features.features)
     }
 
     /**
@@ -54,16 +57,20 @@ object Features {
     }
   }
 
-  type Entry = EnumEntry with Features with DisplayProperties
-  type E = Enum[_ <: Entry]
+  type Entry = EnumEntry & Features & DisplayProperties
+  type E = Enum[? <: Entry]
   implicit class FeatureExtractor(source: E) {
-    def featureMap: Map[Entry, Feature[_]] = featureSet.toMap
+    def featureMap: Seq[(String, Feature[?])] = {
+      for
+        container <- source.values
+        feature <- container.features
+      yield (feature.name, feature)
+    }
 
-    def featureSet: IndexedSeq[(Entry, Feature[_])] = for {
+    def featureSet: IndexedSeq[(Entry, Feature[?])] = for
       container <- source.values
-      features <- container.namedFeatures
-      feature <- features._2
-    } yield (container, feature)
+      feature <- container.features
+    yield (container, feature)
   }
 }
 
@@ -71,5 +78,5 @@ object Features {
  * Default convenience implementation which initializes the features list to Nil
  */
 trait FeaturesImpl extends Features {
-  override def features: Seq[Feature[_]] = Nil
+  override def features: Seq[Feature[?]] = Nil
 }

@@ -1,7 +1,10 @@
 /*
  * SPDX-License-Identifier: Apache-2.0
  *
- * Copyright 2015-2021 Andre White.
+ * Copyright 2015-2025
+ *
+ * Author: Andre White.
+ * FILE: AlchemistClassEnhancementBase.scala
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -36,126 +39,126 @@ trait AlchemistClassEnhancementBase {
 }
 
 trait AlchemistCoreEnhancementBase extends AlchemistClassEnhancementBase with CoreEnhancementBase {
-  self: ClassEnhancement with AlchemistEnhancement with RequiresPointsAvailable =>
+  self: ClassEnhancement & AlchemistEnhancement & RequiresPointsAvailable =>
 }
 
 trait AlchemistTierOneEnhancementBase
   extends AlchemistClassEnhancementBase with Tier1EnhancementBase {
-  self: ClassEnhancement with AlchemistEnhancement with RequiresPointsAvailable =>
+  self: ClassEnhancement & AlchemistEnhancement & RequiresPointsAvailable =>
   // Alchemist 1 implied via base Alchemist enhancement.
 }
 
 trait AlchemistTierTwoEnhancementBase
   extends AlchemistClassEnhancementBase with Tier2EnhancementBase {
-  self: ClassEnhancement with AlchemistEnhancement with RequiresPointsAvailable =>
+  self: ClassEnhancement & AlchemistEnhancement & RequiresPointsAvailable =>
   override def allOfClass: Seq[(HeroicCharacterClass, Int)] = Seq((Alchemist, 2))
 }
 
 trait AlchemistTierThreeEnhancementBase
   extends AlchemistClassEnhancementBase with Tier3EnhancementBase {
-  self: ClassEnhancement with AlchemistEnhancement with RequiresPointsAvailable =>
+  self: ClassEnhancement & AlchemistEnhancement & RequiresPointsAvailable =>
   override def allOfClass: Seq[(HeroicCharacterClass, Int)] = Seq((Alchemist, 3))
 }
 
 trait AlchemistTierFourEnhancementBase
   extends AlchemistClassEnhancementBase with Tier4EnhancementBase {
-  self: ClassEnhancement with AlchemistEnhancement with RequiresPointsAvailable =>
+  self: ClassEnhancement & AlchemistEnhancement & RequiresPointsAvailable =>
   override def allOfClass: Seq[(HeroicCharacterClass, Int)] = Seq((Alchemist, 4))
 }
 
 trait AlchemistTierFiveEnhancementBase
   extends AlchemistClassEnhancementBase with Tier5EnhancementBase {
-  self: ClassEnhancement with AlchemistEnhancement with RequiresPointsAvailable =>
+  self: ClassEnhancement & AlchemistEnhancement & RequiresPointsAvailable =>
   override def allOfClass: Seq[(HeroicCharacterClass, Int)] = Seq((Alchemist, 5))
 }
 
 trait ApothecaryCore extends AlchemistCoreEnhancementBase with Apothecary {
-  self: ClassEnhancement with RequiresPointsAvailable =>
+  self: ClassEnhancement & RequiresPointsAvailable =>
   override val tree: ClassTrees = ClassTrees.Apothecary
 }
 
 trait ApothecaryTierOne extends AlchemistTierOneEnhancementBase with Apothecary {
-  self: ClassEnhancement with RequiresPointsAvailable =>
+  self: ClassEnhancement & RequiresPointsAvailable =>
   override val tree: ClassTrees = ClassTrees.Apothecary
 }
 
 trait ApothecaryTierTwo extends AlchemistTierTwoEnhancementBase with Apothecary {
-  self: ClassEnhancement with RequiresPointsAvailable =>
+  self: ClassEnhancement & RequiresPointsAvailable =>
   override val tree: ClassTrees = ClassTrees.Apothecary
 
 }
 
 trait ApothecaryTierThree extends AlchemistTierThreeEnhancementBase with Apothecary {
-  self: ClassEnhancement with RequiresPointsAvailable =>
+  self: ClassEnhancement & RequiresPointsAvailable =>
   override val tree: ClassTrees = ClassTrees.Apothecary
 }
 
 trait ApothecaryTierFour extends AlchemistTierFourEnhancementBase with Apothecary {
-  self: ClassEnhancement with RequiresPointsAvailable =>
+  self: ClassEnhancement & RequiresPointsAvailable =>
   override val tree: ClassTrees = ClassTrees.Apothecary
 }
 
 trait ApothecaryTierFive extends AlchemistTierFiveEnhancementBase with Apothecary {
-  self: ClassEnhancement with RequiresPointsAvailable =>
+  self: ClassEnhancement & RequiresPointsAvailable =>
   override val tree: ClassTrees = ClassTrees.Apothecary
 }
 
 trait BombardierCore extends AlchemistCoreEnhancementBase with Bombardier {
-  self: ClassEnhancement with RequiresPointsAvailable =>
+  self: ClassEnhancement & RequiresPointsAvailable =>
   override val tree: ClassTrees = ClassTrees.Bombardier
 }
 
 trait BombardierTierOne extends AlchemistTierOneEnhancementBase with Bombardier {
-  self: ClassEnhancement with RequiresPointsAvailable =>
+  self: ClassEnhancement & RequiresPointsAvailable =>
   override val tree: ClassTrees = ClassTrees.Bombardier
 }
 
 trait BombardierTierTwo extends AlchemistTierTwoEnhancementBase with Bombardier {
-  self: ClassEnhancement with RequiresPointsAvailable =>
+  self: ClassEnhancement & RequiresPointsAvailable =>
   override val tree: ClassTrees = ClassTrees.Bombardier
 }
 
 trait BombardierTierThree extends AlchemistTierThreeEnhancementBase with Bombardier {
-  self: ClassEnhancement with RequiresPointsAvailable =>
+  self: ClassEnhancement & RequiresPointsAvailable =>
   override val tree: ClassTrees = ClassTrees.Bombardier
 }
 
 trait BombardierTierFour extends AlchemistTierFourEnhancementBase with Bombardier {
-  self: ClassEnhancement with RequiresPointsAvailable =>
+  self: ClassEnhancement & RequiresPointsAvailable =>
   override val tree: ClassTrees = ClassTrees.Bombardier
 }
 
 trait BombardierTierFive extends AlchemistTierFiveEnhancementBase with Bombardier {
-  self: ClassEnhancement with RequiresPointsAvailable =>
+  self: ClassEnhancement & RequiresPointsAvailable =>
   override val tree: ClassTrees = ClassTrees.Bombardier
 }
 
 trait VileChemistCore extends AlchemistCoreEnhancementBase with VileChemist {
-  self: ClassEnhancement with RequiresPointsAvailable =>
+  self: ClassEnhancement & RequiresPointsAvailable =>
   override val tree: ClassTrees = ClassTrees.VileChemist
 }
 
 trait VileChemistTierOne extends AlchemistTierOneEnhancementBase with VileChemist {
-  self: ClassEnhancement with RequiresPointsAvailable =>
+  self: ClassEnhancement & RequiresPointsAvailable =>
   override val tree: ClassTrees = ClassTrees.VileChemist
 }
 
 trait VileChemistTierTwo extends AlchemistTierTwoEnhancementBase with VileChemist {
-  self: ClassEnhancement with RequiresPointsAvailable =>
+  self: ClassEnhancement & RequiresPointsAvailable =>
   override val tree: ClassTrees = ClassTrees.VileChemist
 }
 
 trait VileChemistTierThree extends AlchemistTierThreeEnhancementBase with VileChemist {
-  self: ClassEnhancement with RequiresPointsAvailable =>
+  self: ClassEnhancement & RequiresPointsAvailable =>
   override val tree: ClassTrees = ClassTrees.VileChemist
 }
 
 trait VileChemistTierFour extends AlchemistTierFourEnhancementBase with VileChemist {
-  self: ClassEnhancement with RequiresPointsAvailable =>
+  self: ClassEnhancement & RequiresPointsAvailable =>
   override val tree: ClassTrees = ClassTrees.VileChemist
 }
 
 trait VileChemistTierFive extends AlchemistTierFiveEnhancementBase with VileChemist {
-  self: ClassEnhancement with RequiresPointsAvailable =>
+  self: ClassEnhancement & RequiresPointsAvailable =>
   override val tree: ClassTrees = ClassTrees.VileChemist
 }

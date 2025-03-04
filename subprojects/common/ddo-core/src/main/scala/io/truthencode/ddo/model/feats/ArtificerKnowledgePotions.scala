@@ -1,7 +1,10 @@
 /*
  * SPDX-License-Identifier: Apache-2.0
  *
- * Copyright 2015-2021 Andre White.
+ * Copyright 2015-2025
+ *
+ * Author: Andre White.
+ * FILE: ArtificerKnowledgePotions.scala
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -29,10 +32,10 @@ protected[feats] trait ArtificerKnowledgePotions
   with RequiresAllOfClass {
   self: ClassFeat =>
   private lazy val levels = List(2, 5, 8, 11, 14)
-  private lazy val values = for {
+  private lazy val values = for
     l <- levels
     c <- List(Artificer, Alchemist)
-  } yield (c, l)
+  yield (c, l)
   override def anyOfClass: Seq[(HeroicCharacterClass, Int)] = values
 
   override def grantToClass: Seq[(HeroicCharacterClass, Int)] = values

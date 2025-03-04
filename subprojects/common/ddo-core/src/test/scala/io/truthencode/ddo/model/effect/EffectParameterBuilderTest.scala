@@ -1,7 +1,10 @@
 /*
  * SPDX-License-Identifier: Apache-2.0
  *
- * Copyright 2015-2021 Andre White.
+ * Copyright 2015-2025
+ *
+ * Author: Andre White.
+ * FILE: EffectParameterBuilderTest.scala
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -60,9 +63,8 @@ class EffectParameterBuilderTest extends AnyFunSpec with Matchers with LazyLoggi
           .build
 
       val list =
-        for { m <- builder.modifiers } yield (
-          m.parameter.success.value.entryName,
-          m.parameter.success.value)
+        for m <- builder.modifiers
+        yield (m.parameter.success.value.entryName, m.parameter.success.value)
 
       list.foreach { v =>
         logger.info(v._1)

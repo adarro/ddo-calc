@@ -11,6 +11,7 @@
 | [Dismiss Charm](http://ddowiki.com/page/Dismiss_Charm)        | Active  | Activate this short-ranged ability while targeting a charmed, commanded, controlled, or dominated enemy that is under your control to dispel the controlling effect.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    | Fighter Level 1 |
 | [Heavy Armor Proficiency][heavy_armor]                        | Passive | Benefit: You are proficient with heavy armor, and do not suffer the armor check penalty to attack rolls when wearing light armor. You also gain 2 + 1/2 of your base attack bonus in physical resistance when wearing light armor. Note that a piece of armor with an ACP of 0 can be worn without penalty by all characters whether they're proficient with it or not. You will however still be reminded in the upper right corner of the screen that you are not proficient with what you are wearing. Note: The armor check penalty to skills (if any) and arcane spell failure (if any) of the armor you equip will still apply.                                                                                                                                                                                                   | Fighter Level 1 |
 | [Light Armor Proficiency][light_armor]                        | Passive | Benefit: You are proficient with light armor, and do not suffer the armor check penalty to attack rolls when wearing light armor. You also gain 2 + 1/2 of your base attack bonus in physical resistance when wearing light armor. Note that a piece of armor with an ACP of 0 can be worn without penalty by all characters whether they're proficient with it or not. You will however still be reminded in the upper right corner of the screen that you are not proficient with what you are wearing. Note: The armor check penalty to skills (if any) and arcane spell failure (if any) of the armor you equip will still apply.                                                                                                                                                                                                   | Fighter Level 1 |
+| [Martial Weapon Proficiency][martial_weapon]                  | Passive | You are proficient with one or more Martial weapons.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    | Fighter Level 1 |
 | [Martial Weapon Proficiency: Light Hammer][martial_weapon]    | Passive | You are proficient with Light Hammers and do not suffer a -4 attack penalty for using this weapon                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                       | Fighter Level 1 |
 | [Martial Weapon Proficiency: Longbow][martial_weapon]         | Passive | You are proficient with Longbows and do not suffer a -4 attack penalty for using this weapon                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            | Fighter Level 1 |
 | [Martial Weapon Proficiency: Longsword][martial_weapon]       | Passive | You are proficient with Longswords and do not suffer a -4 attack penalty for using this weapon                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                          | Fighter Level 1 |
@@ -145,7 +146,13 @@ The subfeats listed below are included in the table above, but listed here for r
 [featLevel19]: - "c:verify-rows=#feat:grantedFeatsByLevel(19)"
 [featLevel20]: - "c:verify-rows=#feat:grantedFeatsByLevel(20)"
 [fighterBonusFeats]: - "c:verify-rows=#feat:bonusFeats()"
+
+<!-- markdownlint-disable MD053 -->
+
 [_matchStrategy_]: - "c:matchStrategy=KeyMatch"
+
+<!-- markdownlint-enable MD053 -->
+
 [result]: - "?=#feat"
 [light_armor]: http://ddowiki.com/page/Light_Armor_Proficiency "Light Armor Proficiency"
 [medium_armor]: http://ddowiki.com/page/Medium_Armor_Proficiency "Medium Armor Proficiency"
@@ -164,61 +171,61 @@ individual sub feat for full details.
 
 Sub-feat selection:
 
--   [Proficiency: Bastard Sword](https://ddowiki.com/page/Proficiency:_Bastard_Sword "Proficiency: Bastard Sword")
--   [Proficiency: Dwarven Waraxe](https://ddowiki.com/page/Proficiency:_Dwarven_Waraxe "Proficiency: Dwarven Waraxe") (
-    Free for [Dwarves](https://ddowiki.com/page/Dwarves "Dwarves") that are proficient with **
-    all** [Martial weapons](https://ddowiki.com/page/Martial_weapons "Martial weapons"))
--   [Proficiency: Great Crossbow](https://ddowiki.com/page/Proficiency:_Great_Crossbow "Proficiency: Great Crossbow") (
-    Free for [Artificers](https://ddowiki.com/page/Artificer "Artificer")
-    and [Rogue Mechanic: Arbalester](https://ddowiki.com/page/Mechanic_enhancements "Mechanic enhancements"))
--   [Proficiency: Handwraps](https://ddowiki.com/page/Proficiency:_Handwraps "Proficiency: Handwraps") (free
-    for [Monks](https://ddowiki.com/page/Monk "Monk"))
--   [Proficiency: Kama](https://ddowiki.com/page/Proficiency:_Kama "Proficiency: Kama") (free
-    for [Monks](https://ddowiki.com/page/Monk "Monk"))
--   [Proficiency: Khopesh](https://ddowiki.com/page/Proficiency:_Khopesh "Proficiency: Khopesh")
--   [Proficiency: Repeating Heavy Crossbow](https://ddowiki.com/page/Proficiency:_Repeating_Heavy_Crossbow "Proficiency: Repeating Heavy Crossbow") (
-    free for [Artificers](https://ddowiki.com/page/Artificer "Artificer")
-    and [Rogue Mechanic: Improved Detection](https://ddowiki.com/page/Mechanic_enhancements "Mechanic enhancements"))
--   [Proficiency: Repeating Light Crossbow](https://ddowiki.com/page/Proficiency:_Repeating_Light_Crossbow "Proficiency: Repeating Light Crossbow") (
-    free for [Artificers](https://ddowiki.com/page/Artificer "Artificer")
-    and [Rogue Mechanic: Targeting Sights](https://ddowiki.com/page/Mechanic_enhancements "Mechanic enhancements"))
--   [Proficiency: Shuriken](https://ddowiki.com/page/Proficiency:_Shuriken "Proficiency: Shuriken") (free
-    for [Monks](https://ddowiki.com/page/Monk "Monk") and [Drow](https://ddowiki.com/page/Drow "Drow"))
-    _1_ Footnote content here. [↩](#a1)
+- [Proficiency: Bastard Sword](https://ddowiki.com/page/Proficiency:_Bastard_Sword "Proficiency: Bastard Sword")
+- [Proficiency: Dwarven Waraxe](https://ddowiki.com/page/Proficiency:_Dwarven_Waraxe "Proficiency: Dwarven Waraxe") (
+  Free for [Dwarves](https://ddowiki.com/page/Dwarves "Dwarves") that are proficient with **
+  all** [Martial weapons](https://ddowiki.com/page/Martial_weapons "Martial weapons"))
+- [Proficiency: Great Crossbow](https://ddowiki.com/page/Proficiency:_Great_Crossbow "Proficiency: Great Crossbow") (
+  Free for [Artificers](https://ddowiki.com/page/Artificer "Artificer")
+  and [Rogue Mechanic: Arbalester](https://ddowiki.com/page/Mechanic_enhancements "Mechanic enhancements"))
+- [Proficiency: Handwraps](https://ddowiki.com/page/Proficiency:_Handwraps "Proficiency: Handwraps") (free
+  for [Monks](https://ddowiki.com/page/Monk "Monk"))
+- [Proficiency: Kama](https://ddowiki.com/page/Proficiency:_Kama "Proficiency: Kama") (free
+  for [Monks](https://ddowiki.com/page/Monk "Monk"))
+- [Proficiency: Khopesh](https://ddowiki.com/page/Proficiency:_Khopesh "Proficiency: Khopesh")
+- [Proficiency: Repeating Heavy Crossbow](https://ddowiki.com/page/Proficiency:_Repeating_Heavy_Crossbow "Proficiency: Repeating Heavy Crossbow") (
+  free for [Artificers](https://ddowiki.com/page/Artificer "Artificer")
+  and [Rogue Mechanic: Improved Detection](https://ddowiki.com/page/Mechanic_enhancements "Mechanic enhancements"))
+- [Proficiency: Repeating Light Crossbow](https://ddowiki.com/page/Proficiency:_Repeating_Light_Crossbow "Proficiency: Repeating Light Crossbow") (
+  free for [Artificers](https://ddowiki.com/page/Artificer "Artificer")
+  and [Rogue Mechanic: Targeting Sights](https://ddowiki.com/page/Mechanic_enhancements "Mechanic enhancements"))
+- [Proficiency: Shuriken](https://ddowiki.com/page/Proficiency:_Shuriken "Proficiency: Shuriken") (free
+  for [Monks](https://ddowiki.com/page/Monk "Monk") and [Drow](https://ddowiki.com/page/Drow "Drow"))
+  _1_ Footnote content here. [↩](#a1)
 
 Improved Critical:
 
--   +3 for falchion, great crossbow, kukri, rapier, and scimitar.
--   +2 for bastard sword, dagger, greatsword, heavy crossbow, khopesh, light crossbow, long sword, repeating heavy
-    crossbow, repeating light crossbow, short sword, and throwing dagger.
--   +1 to all other weapons.
+- +3 for falchion, great crossbow, kukri, rapier, and scimitar.
+- +2 for bastard sword, dagger, greatsword, heavy crossbow, khopesh, light crossbow, long sword, repeating heavy
+  crossbow, repeating light crossbow, short sword, and throwing dagger.
+- +1 to all other weapons.
 
 Improved Critical does not [stack](/page/Stack "Stack") with the [Keen](/page/Keen "Keen")
 or [Impact](/page/Impact "Impact") weapon enchantments.
 
--   Multiple versions of this feat exist, one for
-    each [weapon type](/page/Weapon_type "Weapon type") ([Bludgeoning](/page/Category:Bludgeoning_weapons "Category:Bludgeoning weapons")
-    , [Piercing](/page/Category:Piercing_weapons "Category:Piercing weapons")
-    , [Ranged](/page/Category:Ranged_weapons "Category:Ranged weapons")
-    , [Slashing](/page/Category:Slashing_weapons "Category:Slashing weapons")
-    or [Thrown](/page/Category:Thrown_weapons "Category:Thrown weapons")). This feat can be taken multiple times, though
-    each time must be for a different type.
+- Multiple versions of this feat exist, one for
+  each [weapon type](/page/Weapon_type "Weapon type") ([Bludgeoning](/page/Category:Bludgeoning_weapons "Category:Bludgeoning weapons")
+  , [Piercing](/page/Category:Piercing_weapons "Category:Piercing weapons")
+  , [Ranged](/page/Category:Ranged_weapons "Category:Ranged weapons")
+  , [Slashing](/page/Category:Slashing_weapons "Category:Slashing weapons")
+  or [Thrown](/page/Category:Thrown_weapons "Category:Thrown weapons")). This feat can be taken multiple times, though
+  each time must be for a different type.
 
--   Shields do not benefit from Improved Critical.
+- Shields do not benefit from Improved Critical.
 
--   An [Artificer](/page/Artificer "Artificer") may select this feat as one of
-    his [artificer bonus feats](/page/Category:Artificer_bonus_feats "Category:Artificer bonus feats").
--   A [Fighter](/page/Fighter "Fighter") may select this feat as one of
-    his [fighter bonus feats](/page/Category:Fighter_bonus_feats "Category:Fighter bonus feats").
+- An [Artificer](/page/Artificer "Artificer") may select this feat as one of
+  his [artificer bonus feats](/page/Category:Artificer_bonus_feats "Category:Artificer bonus feats").
+- A [Fighter](/page/Fighter "Fighter") may select this feat as one of
+  his [fighter bonus feats](/page/Category:Fighter_bonus_feats "Category:Fighter bonus feats").
 
 For artificers taking it as a bonus feat, it is restricted to bludgeoning, ranged, and slashing.
 
 Knight's Training
 
--   [Long Sword](/page/Long_Sword "Long Sword") critical multiplier is increased by 1.
--   [Battle Axe](/page/Battle_Axe "Battle Axe")'s critical threat range is increased by 1\. The bonus is doubled
-    by [Improved Critical](/page/Improved_Critical "Improved Critical"): Slashing (crit profile 17-20/x3, same as long
-    sword).
--   [Heavy Maces](/page/Heavy_Mace "Heavy Mace"), [Morningstars](/page/Morningstar "Morningstar")
-    & [War Hammers](/page/War_Hammer "War Hammer") critical threat range is increased by 1. The bonus is unaffected by
-    Improved Critical: Bludgeoning (final crit profile 18-20/x3).
+- [Long Sword](/page/Long_Sword "Long Sword") critical multiplier is increased by 1.
+- [Battle Axe](/page/Battle_Axe "Battle Axe")'s critical threat range is increased by 1\. The bonus is doubled
+  by [Improved Critical](/page/Improved_Critical "Improved Critical"): Slashing (crit profile 17-20/x3, same as long
+  sword).
+- [Heavy Maces](/page/Heavy_Mace "Heavy Mace"), [Morningstars](/page/Morningstar "Morningstar")
+  & [War Hammers](/page/War_Hammer "War Hammer") critical threat range is increased by 1. The bonus is unaffected by
+  Improved Critical: Bludgeoning (final crit profile 18-20/x3).

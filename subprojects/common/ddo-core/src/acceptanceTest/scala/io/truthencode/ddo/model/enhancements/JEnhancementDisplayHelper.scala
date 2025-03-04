@@ -1,7 +1,10 @@
 /*
  * SPDX-License-Identifier: Apache-2.0
  *
- * Copyright 2015-2021 Andre White.
+ * Copyright 2015-2025
+ *
+ * Author: Andre White.
+ * FILE: JEnhancementDisplayHelper.scala
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -31,12 +34,12 @@ abstract class JEnhancementDisplayHelper extends ClassEnhancementDisplayHelper w
    * Java Work-around to set
    */
   @BeanProperty
-  var treeId: String = _
+  var treeId: String = scala.compiletime.uninitialized
   @BeanProperty
-  var currentTier: String = _
+  var currentTier: String = scala.compiletime.uninitialized
 
   @BeanProperty
-  var currentEnhancement: String = _
+  var currentEnhancement: String = scala.compiletime.uninitialized
 
   // [enhancement] | [Description][description] | [AP_Cost][apcost] | [Ranks][ranks] | [Progression][progression]| [Requirements][requirements]|
   def tier: Tier =

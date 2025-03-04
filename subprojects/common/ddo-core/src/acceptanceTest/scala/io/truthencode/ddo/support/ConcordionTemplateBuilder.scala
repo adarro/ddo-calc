@@ -1,7 +1,10 @@
 /*
  * SPDX-License-Identifier: Apache-2.0
  *
- * Copyright 2015-2021 Andre White.
+ * Copyright 2015-2025
+ *
+ * Author: Andre White.
+ * FILE: ConcordionTemplateBuilder.scala
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -46,10 +49,11 @@ class ConcordionTemplateBuilder extends LazyLogging {
 
     try {
       // WOW!!! Unsafe
-      val cls = Class.forName(fqn).newInstance
+      val parameterType: Class[?] = null
+      val cls = Class.forName(fqn).getDeclaredConstructor(parameterType).newInstance()
       val template = config.getTemplate(cpPath)
-      nameToClass(cls) match {
-        case Some(x) =>
+      nameToClass[Any](cls) match {
+        case Some(x: Enum[_ <: EnumEntry]) =>
           val model = modelBuilder(x)
 
           val output = Jade4J.render(template, model)
@@ -69,12 +73,12 @@ class ConcordionTemplateBuilder extends LazyLogging {
     }
   }
 
-  def nameToClass[T: ClassTag](cls: T): Option[Enum[_ <: EnumEntry]] = {
+  def nameToClass[T: ClassTag](cls: T): Option[Enum[? <: EnumEntry]] = {
     val cName = cls.getClass.getName
     cls match {
       case x: Companionable =>
         logger.info(s"Casting $cName from Companionable")
-        Some(x.companion.asInstanceOf[Enum[_ <: EnumEntry]])
+        Some(x.companion.asInstanceOf[Enum[? <: EnumEntry]])
       case x: Enum[_] =>
         logger.info(s"Returning Enum from base")
         Some(x)
@@ -92,7 +96,7 @@ class ConcordionTemplateBuilder extends LazyLogging {
     entry.comp
   }*/
 
-  def modelBuilder(source: Enum[_]): java.util.HashMap[String, Object] = {
+  def modelBuilder(source: Enum[?]): java.util.HashMap[String, Object] = {
     val model = new java.util.HashMap[String, Object]()
 
     val name = source.getClass.getSimpleName.filterAlphaNumeric.splitByCase
@@ -100,7 +104,7 @@ class ConcordionTemplateBuilder extends LazyLogging {
     val ciValues = source.values.map { x => x.toString.randomCase }.asJava
 
     val sLen = 10
-    val invalid = (for { x <- 0 to 3 } yield randomAlphaString(sLen).randomCase).asJava
+    val invalid = (for x <- 0 to 3 yield randomAlphaString(sLen).randomCase).asJava
     val singleValue =
       source.values.headOption.map { h => h.toString }
         .getOrElse("Please specify at least one value for this enum")

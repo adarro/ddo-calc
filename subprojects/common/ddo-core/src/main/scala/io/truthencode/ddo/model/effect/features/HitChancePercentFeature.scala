@@ -1,7 +1,10 @@
 /*
  * SPDX-License-Identifier: Apache-2.0
  *
- * Copyright 2015-2021 Andre White.
+ * Copyright 2015-2025
+ *
+ * Author: Andre White.
+ * FILE: HitChancePercentFeature.scala
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -30,11 +33,11 @@ trait HitChancePercentFeature extends Features {
   self: SourceInfo =>
   protected val hitChanceBonusType: BonusType
   protected val hitChanceBonusAmount: Int
-  protected[this] val triggerOn: Seq[TriggerEvent]
-  protected[this] val triggerOff: Seq[TriggerEvent]
-  protected[this] val hitChanceCategories: Seq[EffectCategories.Value]
+  protected def triggerOn: Seq[TriggerEvent]
+  protected def triggerOff: Seq[TriggerEvent]
+  protected def hitChanceCategories: Seq[EffectCategories.Value]
   private val src = this
-  private[this] val hitChanceChance =
+  private val hitChanceChance =
     new PartModifier[Int, BasicStat] with UsingSearchPrefix {
 
       /**
@@ -46,8 +49,8 @@ trait HitChancePercentFeature extends Features {
        */
       override def searchPrefixSource: String = partToModify.searchPrefixSource
 
-      override protected[this] lazy val partToModify: BasicStat =
-        BasicStat.ToHitChance
+      override protected lazy val partToModify: BasicStat =
+        BasicStat.ChanceToHit
 
       /**
        * The General Description should be just that. This should not include specific values unless
@@ -71,12 +74,12 @@ trait HitChancePercentFeature extends Features {
       override def categories: Seq[String] = hitChanceCategories.map(_.toString)
 
       private val eb = EffectParameterBuilder()
-        .toggleOffValue(triggerOff: _*)
-        .toggleOnValue(triggerOn: _*)
+        .toggleOffValue(triggerOff*)
+        .toggleOnValue(triggerOn*)
         .addBonusType(hitChanceBonusType)
         .build
 
-      override protected[this] def effectParameters: Seq[ParameterModifier[_]] = eb.modifiers
+      override protected def effectParameters: Seq[ParameterModifier[?]] = eb.modifiers
 
       override lazy val effectDetail: DetailedEffect = DetailedEffect(
         id = "ArmorClass",
@@ -90,7 +93,7 @@ trait HitChancePercentFeature extends Features {
       override lazy val effectText: Option[String] = Some(s"hitChance Class by $value%")
     }
 
-  abstract override def features: Seq[Feature[_]] = {
+  abstract override def features: Seq[Feature[?]] = {
     assert(hitChanceChance.value == hitChanceBonusAmount)
     super.features :+ hitChanceChance
   }

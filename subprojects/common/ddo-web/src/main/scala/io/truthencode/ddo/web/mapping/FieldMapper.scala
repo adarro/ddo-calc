@@ -1,25 +1,33 @@
-/**
- * Copyright (C) 2015 Andre White (adarro@gmail.com)
+/*
+ * SPDX-License-Identifier: Apache-2.0
  *
- * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except
- * in compliance with the License. You may obtain a copy of the License at
+ * Copyright 2015-2025
  *
- * http://www.apache.org/licenses/LICENSE-2.0
+ * Author: Andre White.
+ * FILE: FieldMapper.scala
  *
- * Unless required by applicable law or agreed to in writing, software distributed under the License
- * is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express
- * or implied. See the License for the specific language governing permissions and limitations under
- * the License.
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *     https://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
  */
 package io.truthencode.ddo.web.mapping
 
 import com.typesafe.scalalogging.LazyLogging
 import enumeratum.{Enum => SmartEnum, EnumEntry}
 import io.truthencode.ddo.DDOObject
-import io.truthencode.ddo.model.item.{Item, Potion}
+import io.truthencode.ddo.model.item.{PermanentItem, Potion}
 import io.truthencode.ddo.model.item.armor.Armor
 import io.truthencode.ddo.model.item.clothing.Clothing
 import io.truthencode.ddo.support.matching.WordMatchStrategy
+import io.truthencode.ddo.model.item.Item
 
 import scala.collection.immutable
 import scala.language.{existentials, postfixOps}
@@ -69,6 +77,11 @@ object FieldMapper extends LazyLogging {
      * Rings etc.
      */
     case object Jewelery extends ItemType(Left("Item Type"))
+
+    /**
+     * Scroll
+     */
+    case object Scroll extends ItemType(Right(List("No UMD check for", "Spell", "Caster Level")))
 
   }
 

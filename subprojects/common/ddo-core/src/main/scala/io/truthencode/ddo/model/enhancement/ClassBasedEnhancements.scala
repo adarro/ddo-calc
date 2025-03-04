@@ -1,7 +1,10 @@
 /*
  * SPDX-License-Identifier: Apache-2.0
  *
- * Copyright 2015-2021 Andre White.
+ * Copyright 2015-2025
+ *
+ * Author: Andre White.
+ * FILE: ClassBasedEnhancements.scala
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -238,35 +241,37 @@ object ClassBasedEnhancements extends Enum[ClassBasedEnhancements] {
   override lazy val values: immutable.IndexedSeq[ClassBasedEnhancements] =
     findValues
 
-  case object FighterOrPaladinEnhancement extends FighterOrPaladinEnhancement
+  case object FighterOrPaladinEnhancement
+    extends FighterOrPaladinEnhancement, ClassBasedEnhancements
 
-  case object SorcererOrWizardEnhancement extends SorcererOrWizardEnhancement
+  case object SorcererOrWizardEnhancement
+    extends SorcererOrWizardEnhancement, ClassBasedEnhancements
 
-  case object AlchemistEnhancement extends AlchemistEnhancement
+  case object AlchemistEnhancement extends AlchemistEnhancement, ClassBasedEnhancements
 
-  case object ArtificerEnhancement extends ArtificerEnhancement
+  case object ArtificerEnhancement extends ArtificerEnhancement, ClassBasedEnhancements
 
-  case object BardEnhancementEnhancement extends BardEnhancement
+  case object BardEnhancementEnhancement extends BardEnhancement, ClassBasedEnhancements
 
-  case object ClericEnhancementEnhancement extends ClericEnhancement
+  case object ClericEnhancementEnhancement extends ClericEnhancement, ClassBasedEnhancements
 
-  case object DruidEnhancement extends DruidEnhancement
+  case object DruidEnhancement extends DruidEnhancement, ClassBasedEnhancements
 
-  case object FavoredSoulEnhancement extends FavoredSoulEnhancement
+  case object FavoredSoulEnhancement extends FavoredSoulEnhancement, ClassBasedEnhancements
 
-  case object FighterEnhancement extends FighterEnhancement
+  case object FighterEnhancement extends FighterEnhancement, ClassBasedEnhancements
 
-  case object MonkEnhancement extends MonkEnhancement
+  case object MonkEnhancement extends MonkEnhancement, ClassBasedEnhancements
 
-  case object PaladinEnhancement extends PaladinEnhancement
+  case object PaladinEnhancement extends PaladinEnhancement, ClassBasedEnhancements
 
-  case object RogueEnhancement extends RogueEnhancement
+  case object RogueEnhancement extends RogueEnhancement, ClassBasedEnhancements
 
-  case object RangerEnhancement extends RangerEnhancement
+  case object RangerEnhancement extends RangerEnhancement, ClassBasedEnhancements
 
-  case object SorcererEnhancement extends SorcererEnhancement
+  case object SorcererEnhancement extends SorcererEnhancement, ClassBasedEnhancements
 
-  case object WarlockEnhancement extends WarlockEnhancement
+  case object WarlockEnhancement extends WarlockEnhancement, ClassBasedEnhancements
 
-  case object WizardEnhancement extends WizardEnhancement
+  case object WizardEnhancement extends WizardEnhancement, ClassBasedEnhancements
 }

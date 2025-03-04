@@ -1,7 +1,10 @@
 /*
  * SPDX-License-Identifier: Apache-2.0
  *
- * Copyright 2015-2021 Andre White.
+ * Copyright 2015-2025
+ *
+ * Author: Andre White.
+ * FILE: AbundantStep.scala
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -17,7 +20,7 @@
  */
 package io.truthencode.ddo.model.feats
 
-import io.truthencode.ddo.activation.AtWillEvent
+import io.truthencode.ddo.activation.{AtWillEvent, TriggeredActivationImpl, TriggeredEventImpl}
 import io.truthencode.ddo.model.classes.HeroicCharacterClass
 import io.truthencode.ddo.model.classes.HeroicCharacterClass.Monk
 import io.truthencode.ddo.support.requisite.{FeatRequisiteImpl, GrantsToClass, RequiresAllOfClass}
@@ -30,8 +33,8 @@ import java.time.Duration
  * cool-down of three seconds on this feat and can only be used on yourself.
  */
 trait AbundantStep
-  extends FeatRequisiteImpl with ActiveFeat with AtWillEvent with GrantsToClass
-  with RequiresAllOfClass {
+  extends FeatRequisiteImpl with TriggeredActivationImpl with ActiveFeat with TriggeredEventImpl
+  with AtWillEvent with GrantsToClass with RequiresAllOfClass {
   override def grantToClass: Seq[(HeroicCharacterClass, Int)] =
     List((Monk, 12))
 

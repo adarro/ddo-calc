@@ -1,7 +1,10 @@
 /*
  * SPDX-License-Identifier: Apache-2.0
  *
- * Copyright 2015-2021 Andre White.
+ * Copyright 2015-2025
+ *
+ * Author: Andre White.
+ * FILE: DragonmarkFeat.scala
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -18,13 +21,14 @@
 package io.truthencode.ddo.model.feats
 
 import enumeratum.Enum
-import io.truthencode.ddo.activation.OnSpellLikeAbilityEvent
+import io.truthencode.ddo.activation.{OnSpellLikeAbilityEvent, TriggeredActivationImpl}
 import io.truthencode.ddo.model.UnknownDuration
+import io.truthencode.ddo.model.effect.TriggerEvent
 import io.truthencode.ddo.model.effect.features.{Features, FeaturesImpl}
 import io.truthencode.ddo.model.race.Race
 import io.truthencode.ddo.model.race.Race.{Dwarf, Elf, Gnome, HalfElf, HalfOrc, Halfling, Human}
 import io.truthencode.ddo.support.naming.FriendlyDisplay
-import io.truthencode.ddo.support.requisite._
+import io.truthencode.ddo.support.requisite.*
 
 import java.time.Duration
 import scala.collection.immutable
@@ -33,9 +37,10 @@ import scala.collection.immutable
  * Created by adarr on 3/26/2017.
  */
 sealed trait DragonmarkFeat
-  extends Feat with FriendlyDisplay with SubFeatInformation with FeatMatcher with FeatRequisiteImpl
-  with FeaturesImpl {
-  self: FeatType with Requisite with RequisiteType with Inclusion with Features =>
+  extends Feat with TriggeredActivationImpl with FriendlyDisplay with SubFeatInformation
+  with FeatMatcher with FeatRequisiteImpl with FeaturesImpl {
+  self: FeatType & Requisite & RequisiteType & Inclusion & Features & TriggerEvent =>
+
   val matchFeat: PartialFunction[Feat, DragonmarkFeat] = { case x: DragonmarkFeat =>
     x
   }
@@ -105,8 +110,8 @@ object DragonmarkFeat extends Enum[DragonmarkFeat] with FeatSearchPrefix {
    * clouds.
    */
   case object LeastDragonmarkOfStorm
-    extends DragonmarkFeat with RaceRequisiteImpl with RequiresAllOfRace with ActiveFeat
-    with OnSpellLikeAbilityEvent with Passive {
+    extends DragonmarkFeat with TriggeredActivationImpl with RaceRequisiteImpl
+    with RequiresAllOfRace with ActiveFeat with OnSpellLikeAbilityEvent with Passive {
     override def allOfRace: Seq[(Race, Int)] = List((HalfElf, 1))
 
     override def coolDown: Option[Duration] = Some(UnknownDuration)

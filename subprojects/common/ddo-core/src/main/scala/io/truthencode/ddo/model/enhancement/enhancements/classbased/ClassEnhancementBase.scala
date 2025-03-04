@@ -1,7 +1,10 @@
 /*
  * SPDX-License-Identifier: Apache-2.0
  *
- * Copyright 2015-2021 Andre White.
+ * Copyright 2015-2025
+ *
+ * Author: Andre White.
+ * FILE: ClassEnhancementBase.scala
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -20,7 +23,7 @@ package io.truthencode.ddo.model.enhancement.enhancements.classbased
 import io.truthencode.ddo.model.classes.HeroicCharacterClass
 import io.truthencode.ddo.model.enhancement._
 import io.truthencode.ddo.model.enhancement.enhancements.{expanders, ClassEnhancement}
-import io.truthencode.ddo.support.Elvis._
+import io.truthencode.ddo.support.Elvis.booleanToElvis
 import io.truthencode.ddo.support.points.SpendablePoints
 import io.truthencode.ddo.support.points.SpendablePoints.ActionPoints
 import io.truthencode.ddo.support.requisite._
@@ -30,11 +33,12 @@ import io.truthencode.ddo.support.tree.TreeLike
  * Convenience trait used to group class / race enhancement tier common information
  */
 trait ClassEnhancementBase {
-  self: ClassEnhancement
-    with PointInTreeRequisite with RequiresPointsAvailable with ActionPointRequisite with Tier =>
+  self: ClassEnhancement & PointInTreeRequisite & RequiresPointsAvailable & ActionPointRequisite &
+    Tier =>
   def validClasses: Seq[HeroicCharacterClass]
 
-  def singleClass: Option[HeroicCharacterClass] = isSingleClass ? validClasses.headOption | None
+  def singleClass: Option[HeroicCharacterClass] =
+    if isSingleClass then validClasses.headOption else None
 
   def isSingleClass: Boolean = validClasses.size.equals(1)
 
@@ -59,27 +63,27 @@ trait Tier1EnhancementBase
 trait Tier2EnhancementBase
   extends ClassEnhancementBase with PointsInTreeRequisiteImpl with RequiresPointsInTree
   with RequiresPointsAvailable with RequiresActionPoints with Tier2 {
-  self: ClassEnhancement with RequiresPointsAvailable =>
+  self: ClassEnhancement & RequiresPointsAvailable =>
   override def progressionInTree: Seq[(TreeLike, SpendablePoints, Int)] = Seq((tree, 5))
 }
 
 trait Tier3EnhancementBase
   extends ClassEnhancementBase with PointsInTreeRequisiteImpl with RequiresPointsInTree
   with RequiresPointsAvailable with RequiresActionPoints with Tier3 {
-  self: ClassEnhancement with RequiresPointsAvailable =>
+  self: ClassEnhancement & RequiresPointsAvailable =>
   override def progressionInTree: Seq[(TreeLike, SpendablePoints, Int)] = Seq((tree, 10))
 }
 
 trait Tier4EnhancementBase
   extends ClassEnhancementBase with PointsInTreeRequisiteImpl with RequiresPointsInTree
   with RequiresPointsAvailable with RequiresActionPoints with Tier4 {
-  self: ClassEnhancement with RequiresPointsAvailable =>
+  self: ClassEnhancement & RequiresPointsAvailable =>
   override def progressionInTree: Seq[(TreeLike, SpendablePoints, Int)] = Seq((tree, 20))
 }
 
 trait Tier5EnhancementBase
   extends ClassEnhancementBase with PointsInTreeRequisiteImpl with RequiresPointsInTree
   with RequiresPointsAvailable with RequiresActionPoints with Tier5 {
-  self: ClassEnhancement with RequiresPointsAvailable =>
+  self: ClassEnhancement & RequiresPointsAvailable =>
   override def progressionInTree: Seq[(TreeLike, SpendablePoints, Int)] = Seq((tree, 30))
 }

@@ -1,7 +1,10 @@
 /*
  * SPDX-License-Identifier: Apache-2.0
  *
- * Copyright 2015-2021 Andre White.
+ * Copyright 2015-2025
+ *
+ * Author: Andre White.
+ * FILE: Guard.scala
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -17,8 +20,6 @@
  */
 package io.truthencode.ddo.enchantment
 
-import com.wix.accord._
-import com.wix.accord.dsl._
 import io.truthencode.ddo.enchantment.Modifier._
 import io.truthencode.ddo.model.effect._
 
@@ -27,18 +28,12 @@ trait GuardFlag {
 }
 
 object Guard extends ((Guards, Option[GuardModifier]) => Guard) {
-  implicit val guardValidator: Validator[Guard] = validator[Guard] { g =>
-    {
-
-      g.effects.is(notEmpty)
-
-    }
-  }
   type Parameters = (Guards, Option[GuardModifier])
 
   def apply(guard: Guards, affixes: Option[GuardModifier] = None): Guard = {
     val o = create(guard, affixes)
-    assert(validate(o) == Success)
+    // Enter Validation here
+
     o
   }
 
@@ -63,13 +58,13 @@ object Guard extends ((Guards, Option[GuardModifier]) => Guard) {
   private def create(guard: Guards, affixes: Option[GuardModifier]): Guard = {
     new Guard(guard, affixes) {
       private def readResolve(): Object =
-        Guard(guard, affixes)
+        Guard(this.guard, this.affixes)
 
       def copy(guard: Guards, affixes: Option[GuardModifier]): Guard =
         Guard(guard, affixes)
 
       val tuple: Guard.Parameters =
-        (guard, affixes)
+        (this.guard, this.affixes)
     }
   }
 

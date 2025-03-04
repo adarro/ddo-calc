@@ -1,7 +1,10 @@
 /*
  * SPDX-License-Identifier: Apache-2.0
  *
- * Copyright 2015-2021 Andre White.
+ * Copyright 2015-2025
+ *
+ * Author: Andre White.
+ * FILE: FeatTest.scala
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -67,7 +70,7 @@ class FeatTest extends AnyFunSpec with Matchers with LazyLogging {
         QuiveringPalm
       ) // .map(_.entryName).sorted
       val tacticalFeats = { Feat.values.collect(Feat.fnTacticalFeats) } // .map(_.entryName).sorted
-      tactical should contain only (tacticalFeats: _*)
+      tactical should contain theSameElementsAs tacticalFeats
 
     }
   }

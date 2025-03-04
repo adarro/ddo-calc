@@ -1,7 +1,10 @@
 /*
  * SPDX-License-Identifier: Apache-2.0
  *
- * Copyright 2015-2021 Andre White.
+ * Copyright 2015-2025
+ *
+ * Author: Andre White.
+ * FILE: DeityFeat.scala
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -30,7 +33,7 @@ import scala.collection.immutable
 sealed trait DeityFeat
   extends Feat with FriendlyDisplay with SubFeatInformation with ClassRequisiteImpl with FeatMatcher
   with ReligionFeatBaseImpl with FeaturesImpl {
-  self: FeatType with Requisite with Inclusion with RequisiteType with Features =>
+  self: FeatType & Requisite & Inclusion & RequisiteType & Features =>
 
   val matchFeat: PartialFunction[Feat, DeityFeat] = { case x: DeityFeat =>
     x
@@ -49,10 +52,10 @@ sealed trait DeityFeat
 object DeityFeat extends Enum[DeityFeat] with FeatSearchPrefix with FeatMatcher {
 
   override lazy val values: immutable.IndexedSeq[DeityFeat] = findValues
-  override val matchFeat: PartialFunction[Feat, _ <: Feat] = { case x: DeityFeat =>
+  override val matchFeat: PartialFunction[Feat, ? <: Feat] = { case x: DeityFeat =>
     x
   }
-  override val matchFeatById: PartialFunction[String, _ <: Feat] = {
+  override val matchFeatById: PartialFunction[String, ? <: Feat] = {
     case x: String if EpicFeat.namesToValuesMap.contains(x) =>
       DeityFeat.withNameOption(x) match {
         case Some(y) => y

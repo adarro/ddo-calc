@@ -1,7 +1,10 @@
 /*
  * SPDX-License-Identifier: Apache-2.0
  *
- * Copyright 2015-2021 Andre White.
+ * Copyright 2015-2025
+ *
+ * Author: Andre White.
+ * FILE: BasicStat.scala
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -56,11 +59,20 @@ trait ArmorClass extends BasicStat with MissChance
 
 trait MaxDexterityBonus extends BasicStat with MissChance
 
-trait ToHitChance extends BasicStat with HitChance
+trait ChanceToHit extends BasicStat with HitChance
 
 trait WeaponDamage extends BasicStat with GeneralCombat
 
-trait MeleePower extends BasicStat with MeleeCombat
+trait MeleePower extends BasicStat with MeleeCombat {
+
+  /**
+   * Override this function for a more specific match such as "ToHitChance"
+   *
+   * @return
+   *   A default prefix "BasicStat"
+   */
+  override def searchPrefixSource: String = "Damage"
+}
 
 trait RangedPower extends BasicStat with RangedCombat
 
@@ -228,6 +240,9 @@ trait TotalHitDice extends TurnUndeadCategory
  * this number.
  */
 trait NumberOfTurns extends TurnUndeadCategory
+
+trait TurnUndeadLevel extends TurnUndeadCategory
+
 // General Combat
 protected trait GeneralCombatCategory extends BasicStat with GeneralCombat
 
@@ -304,10 +319,12 @@ trait AutoRecovery extends BasicStat with Recovery
 trait GrantedAbility extends BasicStat with Ability with UsingAbilitySearchPrefix {
   val ability: ActiveAbilities
 }
+
 // scalastyle:off number.of.methods
 object BasicStat extends Enum[BasicStat] with SearchPrefix {
 
-  lazy val allGrantedAbilities: Seq[GrantedAbilities] = ActiveAbilities.values.map(GrantedAbilities)
+  lazy val allGrantedAbilities: Seq[GrantedAbilities] =
+    ActiveAbilities.values.map(GrantedAbilities.apply)
 
   /**
    * Used when qualifying a search with a prefix. Examples include finding "HalfElf" from qualified
@@ -351,7 +368,7 @@ object BasicStat extends Enum[BasicStat] with SearchPrefix {
   /**
    * Chance to Hit, generally applies your Melee and Ranged Weapons.
    */
-  case object ToHitChance extends ToHitChance
+  case object ChanceToHit extends ChanceToHit
 
   /**
    * Adds Damage to equipped weapon.
@@ -534,6 +551,8 @@ object BasicStat extends Enum[BasicStat] with SearchPrefix {
   case object TurnUndeadTotalHitDice extends TotalHitDice
 
   case object TurnUndeadNumberOfTurns extends NumberOfTurns
+
+  case object TurnUndeadLevel extends TurnUndeadLevel
 
   case object AutoRecovery extends AutoRecovery
 

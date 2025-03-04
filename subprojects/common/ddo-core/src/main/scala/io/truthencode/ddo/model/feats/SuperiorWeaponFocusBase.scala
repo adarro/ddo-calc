@@ -1,7 +1,10 @@
 /*
  * SPDX-License-Identifier: Apache-2.0
  *
- * Copyright 2015-2021 Andre White.
+ * Copyright 2015-2025
+ *
+ * Author: Andre White.
+ * FILE: SuperiorWeaponFocusBase.scala
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -35,9 +38,9 @@ import io.truthencode.ddo.support.requisite.{
  *   in the same Specific Weapon Type
  */
 protected[feats] trait SuperiorWeaponFocusBase
-  extends FeatRequisiteImpl with ClassRequisiteImpl with Passive with RequiresAllOfClass
-  with FighterBonusFeat {
-  self: GeneralFeat with RequiresAllOfFeat =>
+  extends FeatRequisiteImpl with ClassRequisiteImpl with BonusSelectableToClassFeatImpl with Passive
+  with RequiresAllOfClass with FighterBonusFeat {
+  self: GeneralFeat & RequiresAllOfFeat =>
 
   override def anyOfClass: Seq[(HeroicCharacterClass, Int)] =
     List((HeroicCharacterClass.Fighter, 16))

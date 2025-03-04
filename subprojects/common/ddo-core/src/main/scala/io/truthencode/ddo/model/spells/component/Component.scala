@@ -1,7 +1,10 @@
 /*
  * SPDX-License-Identifier: Apache-2.0
  *
- * Copyright 2015-2021 Andre White.
+ * Copyright 2015-2025
+ *
+ * Author: Andre White.
+ * FILE: Component.scala
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -36,8 +39,8 @@ sealed trait Component {
  *
  * @note
  *   This is mostly included for completeness to allow the user to see this may require inventory
- *   space but has no other real impact on values except on whether or not they wish to use a Eschew
- *   Material effect.
+ *   space but has no other real impact on values except on whether or not they wish to use an
+ *   Eschew Material effect.
  */
 trait MaterialComponent extends Component {
   override val componentType: ComponentType = ComponentType.MaterialComponent

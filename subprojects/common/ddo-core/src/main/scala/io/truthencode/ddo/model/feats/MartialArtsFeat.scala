@@ -1,7 +1,10 @@
 /*
  * SPDX-License-Identifier: Apache-2.0
  *
- * Copyright 2015-2021 Andre White.
+ * Copyright 2015-2025
+ *
+ * Author: Andre White.
+ * FILE: MartialArtsFeat.scala
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -25,17 +28,17 @@ import io.truthencode.ddo.support.requisite.{Inclusion, Requisite, SelectableToC
  * [[https://ddowiki.com/page/Martial_arts_feats]]
  */
 trait MartialArtsFeat
-  extends SelectableToClass with BonusSelectableFeat with BonusSelectableFeatImpl {
-  self: Feat with FeatType with Requisite with Inclusion =>
+  extends SelectableToClass with BonusSelectableToClassFeat with BonusSelectableToClassFeatImpl {
+  self: Feat & FeatType & Requisite & Inclusion =>
   override val levels: Set[Int] = Set(1, 2, 6)
-  private[this] val myCharClass: HeroicCharacterClass = HeroicCharacterClass.Monk
+  private val myCharClass: HeroicCharacterClass = HeroicCharacterClass.Monk
 
   abstract override def bonusCharacterClass: Seq[HeroicCharacterClass] =
     super.bonusCharacterClass :+ myCharClass
 
   abstract override def bonusSelectableToClass: Seq[(HeroicCharacterClass, Int)] = {
 
-    val cc: Set[(HeroicCharacterClass, Int)] = for { l <- levels } yield (myCharClass, l)
+    val cc: Set[(HeroicCharacterClass, Int)] = for l <- levels yield (myCharClass, l)
     super.bonusSelectableToClass ++ cc.toSeq
 
   }

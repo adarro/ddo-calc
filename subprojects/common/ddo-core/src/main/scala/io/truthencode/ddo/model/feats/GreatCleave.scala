@@ -1,7 +1,10 @@
 /*
  * SPDX-License-Identifier: Apache-2.0
  *
- * Copyright 2015-2021 Andre White.
+ * Copyright 2015-2025
+ *
+ * Author: Andre White.
+ * FILE: GreatCleave.scala
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -17,7 +20,7 @@
  */
 package io.truthencode.ddo.model.feats
 
-import io.truthencode.ddo.activation.AtWillEvent
+import io.truthencode.ddo.activation.{AtWillEvent, TriggeredActivationImpl}
 import io.truthencode.ddo.enhancement.BonusType
 import io.truthencode.ddo.model.abilities.ActiveAbilities
 import io.truthencode.ddo.model.effect.features.{
@@ -27,7 +30,7 @@ import io.truthencode.ddo.model.effect.features.{
 }
 import io.truthencode.ddo.model.misc.CoolDownPool.GreatCleave
 import io.truthencode.ddo.model.misc.SharedCoolDown
-import io.truthencode.ddo.support.requisite._
+import io.truthencode.ddo.support.requisite.*
 
 import java.time.Duration
 
@@ -43,9 +46,9 @@ import java.time.Duration
  *   which does not benefit Cleave or Great Cleave.
  */
 trait GreatCleave
-  extends FeatRequisiteImpl with ActiveFeat with AtWillEvent with SharedCoolDown
-  with RequiresAllOfFeat with RequiresBaB with FighterBonusFeat with FeaturesImpl
-  with SpecialAttackFeature with GrantAbilityFeature {
+  extends FeatRequisiteImpl with TriggeredActivationImpl with BonusSelectableToClassFeatImpl
+  with ActiveFeat with AtWillEvent with SharedCoolDown with RequiresAllOfFeat with RequiresBaB
+  with FighterBonusFeat with FeaturesImpl with SpecialAttackFeature with GrantAbilityFeature {
   self: GeneralFeat =>
 
   override lazy val grantedAbility: ActiveAbilities = ActiveAbilities.GreatCleave

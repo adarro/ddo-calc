@@ -1,7 +1,10 @@
 /*
  * SPDX-License-Identifier: Apache-2.0
  *
- * Copyright 2015-2021 Andre White.
+ * Copyright 2015-2025
+ *
+ * Author: Andre White.
+ * FILE: ClassFeat.scala
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -24,7 +27,7 @@ import io.truthencode.ddo.model.compendium.types.{MainType, MonsterType}
 import io.truthencode.ddo.model.effect.features.{Features, FeaturesImpl}
 import io.truthencode.ddo.model.spells.alchemical.Reaction
 import io.truthencode.ddo.support.naming.FriendlyDisplay
-import io.truthencode.ddo.support.requisite._
+import io.truthencode.ddo.support.requisite.{RequiresAllOfFeat, _}
 
 import scala.collection.immutable
 
@@ -34,7 +37,7 @@ import scala.collection.immutable
 sealed trait ClassFeat
   extends Feat with FriendlyDisplay with SubFeatInformation with ClassRequisiteImpl with FeatMatcher
   with FeaturesImpl {
-  self: FeatType with Requisite with Inclusion with RequisiteType with Features =>
+  self: FeatType & Requisite & Inclusion & RequisiteType & Features =>
 
   val matchFeat: PartialFunction[Feat, ClassFeat] = { case x: ClassFeat =>
     x
@@ -55,11 +58,11 @@ object ClassFeat extends Enum[ClassFeat] with FeatSearchPrefix {
 
   def alchemicalStudies: immutable.Seq[AlchemicalStudies] = {
     // for comprehension vs map since we'll likely add Reaction info the Feat Trait
-    for { r <- Reaction.values } yield AlchemicalStudies(r)
+    for r <- Reaction.values yield AlchemicalStudies(r)
   }
 
   protected def favoredEnemies: immutable.IndexedSeq[FavoredEnemyType] = {
-    for { m <- MonsterType.values } yield FavoredEnemyType(Some(m))
+    for m <- MonsterType.values yield FavoredEnemyType(Some(m))
   }
 
   case class FavoredEnemyType(mainTypes: Option[MonsterType])
@@ -95,7 +98,9 @@ object ClassFeat extends Enum[ClassFeat] with FeatSearchPrefix {
   case object LiquidLuck extends ClassFeat with LiquidLuck
   case object ToughTincture extends ClassFeat with ToughTincture
   case object ToxicTonic extends ClassFeat with ToxicTonic
-  case object MultitudeOfMissiles extends ClassFeat with MultitudeOfMissiles
+  case object MultitudeOfMissiles extends ClassFeat with MultitudeOfMissiles {
+    override def allOfFeats: Seq[Feat] = super.allOfFeats
+  }
   case object Poisonblood extends ClassFeat with Poisonblood
 
   case object ArcaneLore extends ClassFeat with ArcaneLore
@@ -315,7 +320,7 @@ object ClassFeat extends Enum[ClassFeat] with FeatSearchPrefix {
 
   case object FearImmunity extends ClassFeat with FearImmunity
 
-  // Ranger Class Feats (The rese are currently already implemented under general feats
+  // Ranger Class Feats (The rest are currently already implemented under general feats
   case object HideInPlainSight extends ClassFeat with HideInPlainSight
 
   // Rogue Class Feats
@@ -375,5 +380,13 @@ object ClassFeat extends Enum[ClassFeat] with FeatSearchPrefix {
   case object ImprovedConstructEssence extends ClassFeat with ImprovedConstructEssence
 
   case object TurnUndead extends ClassFeat with TurnUndead
+
+  case object ExtraTurning extends ClassFeat with ExtraTurning with RequiresAllOfFeat {
+    override lazy val allOfFeats: Seq[Feat] = Seq(TurnUndead)
+  }
+
+  case object ImprovedTurning extends ClassFeat with ImprovedTurning with RequiresAllOfFeat {
+    override lazy val allOfFeats: Seq[Feat] = Seq(TurnUndead)
+  }
 
 }

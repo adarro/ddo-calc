@@ -1,7 +1,10 @@
 /*
  * SPDX-License-Identifier: Apache-2.0
  *
- * Copyright 2015-2021 Andre White.
+ * Copyright 2015-2025
+ *
+ * Author: Andre White.
+ * FILE: PointRequisite.scala
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -74,7 +77,7 @@ sealed trait PointsAvailableRequisite extends PointRequisite {
  *   we should be able to create just one of these instead of a Race / Class / Feat etc specific one
  */
 trait PointsInTreeRequisiteImpl extends MustContainImpl[Requirement] with PointInTreeRequisite {
-  self: Requisite with RequisiteType =>
+  self: Requisite & RequisiteType =>
   override def progressionInTree: Seq[(TreeLike, SpendablePoints, Int)] = Nil
 }
 
@@ -88,7 +91,7 @@ trait RequiresPointsInTree
 
 trait PointsAvailableRequisiteImpl
   extends MustContainImpl[Requirement] with PointsAvailableRequisite {
-  self: Requisite with RequisiteType =>
+  self: Requisite & RequisiteType =>
   override def pointsAvailable: Seq[(SpendablePoints, Int)] = Nil
 }
 

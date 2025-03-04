@@ -1,7 +1,10 @@
 /*
  * SPDX-License-Identifier: Apache-2.0
  *
- * Copyright 2015-2021 Andre White.
+ * Copyright 2015-2025
+ *
+ * Author: Andre White.
+ * FILE: SpellCriticalPercentFeature.scala
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -30,24 +33,23 @@ import io.truthencode.ddo.support.naming.UsingSearchPrefix
  */
 trait SpellCriticalPercentFeature extends Features {
   self: SourceInfo =>
-  protected val spellCriticalBonusType: BonusType
-  protected[this] val schoolCritical: Seq[(SpellPower, Int)]
-  protected[this] val triggerOn: Seq[TriggerEvent]
-  protected[this] val triggerOff: Seq[TriggerEvent]
-  protected[this] val spellCriticalCategories: Seq[effect.EffectCategories.Value]
+  protected def spellCriticalBonusType: BonusType
+  protected val schoolCritical: Seq[(SpellPower, Int)]
+  protected def triggerOn: Seq[TriggerEvent]
+  protected def triggerOff: Seq[TriggerEvent]
+  protected def spellCriticalCategories: Seq[effect.EffectCategories.Value]
   private val src = this
 
-  abstract override def features: Seq[Feature[_]] = {
+  abstract override def features: Seq[Feature[?]] = {
     super.features ++ spellCriticalPercentChance
   }
 
-  private[this] def spellCriticalPercentChance: Seq[Feature[_]] = {
-    for {
-      (s, a) <- schoolCritical
-    } yield {
+  private def spellCriticalPercentChance: Seq[Feature[?]] = {
+    for (s, a) <- schoolCritical
+    yield {
       new PartModifier[Int, BasicStat] with UsingSearchPrefix {
 
-        override protected[this] lazy val partToModify: BasicStat =
+        override protected lazy val partToModify: BasicStat =
           BasicStat.SpellCriticalChanceSchool(s)
 
         /**
@@ -72,12 +74,12 @@ trait SpellCriticalPercentFeature extends Features {
         override def categories: Seq[String] = spellCriticalCategories.map(_.toString)
 
         private val eb = EffectParameterBuilder()
-          .toggleOffValue(triggerOff: _*)
-          .toggleOnValue(triggerOn: _*)
+          .toggleOffValue(triggerOff*)
+          .toggleOnValue(triggerOn*)
           .addBonusType(spellCriticalBonusType)
           .build
 
-        override protected[this] def effectParameters: Seq[ParameterModifier[_]] = eb.modifiers
+        override protected def effectParameters: Seq[ParameterModifier[?]] = eb.modifiers
         override val effectDetail: DetailedEffect = DetailedEffect(
           id = "SpellPoints",
           description = "Increases your critical spell chance",

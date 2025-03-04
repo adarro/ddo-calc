@@ -1,7 +1,10 @@
 /*
  * SPDX-License-Identifier: Apache-2.0
  *
- * Copyright 2015-2021 Andre White.
+ * Copyright 2015-2025
+ *
+ * Author: Andre White.
+ * FILE: Flexmark.scala
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -54,20 +57,20 @@ object Flexmark {
     }
   }
 
-  implicit class FlexOpts(source: Seq[(DataKey[_], Any)]) {
+  implicit class FlexOpts(source: Seq[(DataKey[?], Any)]) {
 
     /**
      * Extension Wrapper because scala is not inferring downcast due to Invariant T
      * @return
      *   Downcast T <: Extension
      */
-    def toJavaList: java.util.List[(DataKey[_], Any)] = {
+    def toJavaList: java.util.List[(DataKey[?], Any)] = {
       source.asJava
     }
   }
 
-  implicit class TupOpts(source: Seq[(_, _)]) {
-    def toJavaList: java.util.List[(_, _)] = {
+  implicit class TupOpts(source: Seq[(?, ?)]) {
+    def toJavaList: java.util.List[(?, ?)] = {
       source.asJava
     }
   }

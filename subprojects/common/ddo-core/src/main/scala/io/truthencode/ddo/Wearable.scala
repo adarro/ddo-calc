@@ -1,7 +1,10 @@
 /*
  * SPDX-License-Identifier: Apache-2.0
  *
- * Copyright 2015-2021 Andre White.
+ * Copyright 2015-2025
+ *
+ * Author: Andre White.
+ * FILE: Wearable.scala
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -34,7 +37,7 @@ trait Wearable {
     WearLocation.withName("blah").foo
     WearLocation.fromMask(allowedWearLocationFlags) match {
       case Some(x: Seq[EnumEntry]) => x
-      case _ => List[WearLocation with Product with Serializable]()
+      case _ => List[WearLocation & Product & Serializable]()
     }
   }
 

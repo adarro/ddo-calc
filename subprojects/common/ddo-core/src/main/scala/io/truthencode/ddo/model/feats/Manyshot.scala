@@ -1,7 +1,10 @@
 /*
  * SPDX-License-Identifier: Apache-2.0
  *
- * Copyright 2015-2021 Andre White.
+ * Copyright 2015-2025
+ *
+ * Author: Andre White.
+ * FILE: Manyshot.scala
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -17,7 +20,7 @@
  */
 package io.truthencode.ddo.model.feats
 
-import io.truthencode.ddo.activation.AtWillEvent
+import io.truthencode.ddo.activation.{AtWillEvent, TriggeredActivationImpl}
 import io.truthencode.ddo.enhancement.BonusType
 import io.truthencode.ddo.model.abilities.ActiveAbilities
 import io.truthencode.ddo.model.attribute.Attribute
@@ -33,7 +36,7 @@ import io.truthencode.ddo.model.effect.features.{
 import io.truthencode.ddo.model.misc.{PoolManyShot, SharedCoolDown}
 import io.truthencode.ddo.providers.SimpleValueProvider
 import io.truthencode.ddo.support.charges.{Chargeable, Rechargeable, TimedCharge}
-import io.truthencode.ddo.support.requisite._
+import io.truthencode.ddo.support.requisite.*
 
 import java.time.Duration
 
@@ -57,14 +60,15 @@ import java.time.Duration
  *   add 20 second Active
  */
 protected[feats] trait Manyshot
-  extends FeatRequisiteImpl with ClassRequisiteImpl with ActiveFeat with AtWillEvent
-  with RequiresAllOfFeat with AttributeRequisiteImpl with RequiresAllOfAttribute with RequiresBaB
-  with GrantsToClass with FighterBonusFeat with FeaturesImpl with GrantAbilityFeature
-  with DoubleShotFeature with SharedCoolDown with Chargeable {
+  extends FeatRequisiteImpl with ClassRequisiteImpl with TriggeredActivationImpl
+  with BonusSelectableToClassFeatImpl with ActiveFeat with AtWillEvent with RequiresAllOfFeat
+  with AttributeRequisiteImpl with RequiresAllOfAttribute with RequiresBaB with GrantsToClass
+  with FighterBonusFeat with FeaturesImpl with GrantAbilityFeature with DoubleShotFeature
+  with SharedCoolDown with Chargeable {
   self: GeneralFeat =>
   override lazy val grantedAbility: ActiveAbilities = ActiveAbilities.Manyshot
-  override protected[this] val triggerOn: Seq[TriggerEvent] = Seq(TriggerEvent.AtWill)
-  override protected[this] val triggerOff: Seq[TriggerEvent] = Seq(TriggerEvent.OnCoolDown)
+  override protected val triggerOn: Seq[TriggerEvent] = Seq(TriggerEvent.AtWill)
+  override protected val triggerOff: Seq[TriggerEvent] = Seq(TriggerEvent.OnCoolDown)
 
   override def doubleShotEffectText: Option[String] = Some(
     "You gain Doubleshot equal to 1.5x your Base Attack Bonus with Longbows and Shortbows.")
@@ -75,10 +79,10 @@ protected[feats] trait Manyshot
    */
   override val coolDownPoolId: String = PoolManyShot
   override val grantBonusType: BonusType = BonusType.Feat
-  override protected[this] val doubleShotTriggerOn: Seq[TriggerEvent] = Seq(TriggerEvent.Passive)
-  override protected[this] val doubleShotTriggerOff: Seq[TriggerEvent] = Seq(TriggerEvent.Never)
+  override protected val doubleShotTriggerOn: Seq[TriggerEvent] = Seq(TriggerEvent.Passive)
+  override protected val doubleShotTriggerOff: Seq[TriggerEvent] = Seq(TriggerEvent.Never)
 
-  override protected[this] val grantAbilityCategories: Seq[effect.EffectCategories.Value] =
+  override protected val grantAbilityCategories: Seq[effect.EffectCategories.Value] =
     Seq(effect.EffectCategories.Ability, effect.EffectCategories.RangedCombat)
   override val abilityId: String = "ManyShot"
   override val description: String =
@@ -111,7 +115,7 @@ protected[feats] trait Manyshot
 
   override protected val doubleShotBonusType: BonusType = BonusType.Feat
   override protected val doubleShotValue: Int = 0
-  override protected[this] val doubleShotCategories: Seq[effect.EffectCategories.Value] = Seq(
+  override protected val doubleShotCategories: Seq[effect.EffectCategories.Value] = Seq(
     effect.EffectCategories.RangedCombat)
   override def calculate: Int => Int = doMath
 

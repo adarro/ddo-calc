@@ -1,7 +1,10 @@
 /*
  * SPDX-License-Identifier: Apache-2.0
  *
- * Copyright 2015-2021 Andre White.
+ * Copyright 2015-2025
+ *
+ * Author: Andre White.
+ * FILE: Precision.scala
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -17,6 +20,7 @@
  */
 package io.truthencode.ddo.model.feats
 
+import io.truthencode.ddo.activation.TriggeredActivationImpl
 import io.truthencode.ddo.enhancement.BonusType
 import io.truthencode.ddo.model.abilities.ActiveAbilities
 import io.truthencode.ddo.model.attribute.Attribute
@@ -40,16 +44,17 @@ import io.truthencode.ddo.support.requisite.{
  *   add Rage Prohibition
  */
 protected[feats] trait Precision
-  extends FeatRequisiteImpl with ActiveFeat with OffensiveCombatStance with AttributeRequisiteImpl
-  with RequiresAllOfAttribute with RequiresBaB with AlchemistBonusFeat with FighterBonusFeat
-  with MartialArtsFeat with DefaultCoolDown with FeaturesImpl with GrantAbilityFeature {
+  extends FeatRequisiteImpl with TriggeredActivationImpl with BonusSelectableToClassFeatImpl
+  with ActiveFeat with OffensiveCombatStance with AttributeRequisiteImpl with RequiresAllOfAttribute
+  with RequiresBaB with AlchemistBonusFeat with FighterBonusFeat with MartialArtsFeat
+  with DefaultCoolDown with FeaturesImpl with GrantAbilityFeature {
   self: GeneralFeat =>
   override lazy val grantedAbility: ActiveAbilities = ActiveAbilities.Precision
 // TODO: Add reduce fort 25% and 5% tohit + rage prohibition
   override val grantBonusType: BonusType = BonusType.Feat
-  override protected[this] val triggerOn: Seq[TriggerEvent] = Seq(TriggerEvent.OnStance)
-  override protected[this] val triggerOff: Seq[TriggerEvent] = Seq(TriggerEvent.OnToggle)
-  override protected[this] val grantAbilityCategories: Seq[effect.EffectCategories.Value] = Seq(
+  override protected val triggerOn: Seq[TriggerEvent] = Seq(TriggerEvent.OnStance)
+  override protected val triggerOff: Seq[TriggerEvent] = Seq(TriggerEvent.OnToggle)
+  override protected val grantAbilityCategories: Seq[effect.EffectCategories.Value] = Seq(
     effect.EffectCategories.Stance)
   override val abilityId: String = "Precision"
   override val description: String =

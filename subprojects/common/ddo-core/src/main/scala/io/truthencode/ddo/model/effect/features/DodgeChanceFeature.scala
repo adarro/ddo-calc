@@ -1,7 +1,10 @@
 /*
  * SPDX-License-Identifier: Apache-2.0
  *
- * Copyright 2015-2021 Andre White.
+ * Copyright 2015-2025
+ *
+ * Author: Andre White.
+ * FILE: DodgeChanceFeature.scala
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -33,24 +36,24 @@ trait DodgeChanceFeature extends Features {
   self: SourceInfo =>
   val dodgeBonusType: BonusType
   val dodgeBonusAmount: Int
-  protected[this] val triggerOn: Seq[TriggerEvent]
-  protected[this] val triggerOff: Seq[TriggerEvent]
-  protected[this] val dodgeCategories: Seq[effect.EffectCategories.Value]
+  protected def triggerOn: Seq[TriggerEvent]
+  protected def triggerOff: Seq[TriggerEvent]
+  protected def dodgeCategories: Seq[effect.EffectCategories.Value]
   private val src = this
-  private[this] val dodgeChance =
-    new PartModifier[Int, BasicStat with MissChance] with UsingSearchPrefix {
+  private val dodgeChance =
+    new PartModifier[Int, BasicStat & MissChance] with UsingSearchPrefix {
 
-      override protected[this] lazy val partToModify: BasicStat with MissChance =
+      override protected lazy val partToModify: BasicStat & MissChance =
         BasicStat.DodgeChance
       override lazy val part: Try[EffectPart] = Success(EffectPart.MissChanceEffect(partToModify))
 
       private lazy val eb = EffectParameterBuilder()
-        .toggleOffValue(triggerOff: _*)
-        .toggleOnValue(triggerOn: _*)
+        .toggleOffValue(triggerOff*)
+        .toggleOnValue(triggerOn*)
         .addBonusType(dodgeBonusType)
         .build
 
-      override protected[this] def effectParameters: Seq[ParameterModifier[_]] = eb.modifiers
+      override protected def effectParameters: Seq[ParameterModifier[?]] = eb.modifiers
 
       /**
        * The General Description should be just that. This should not include specific values unless
@@ -95,7 +98,7 @@ trait DodgeChanceFeature extends Features {
       override def searchPrefixSource: String = partToModify.searchPrefixSource
     }
 
-  abstract override def features: Seq[Feature[_]] = {
+  abstract override def features: Seq[Feature[?]] = {
     assert(dodgeChance.value == dodgeBonusAmount)
     super.features :+ dodgeChance
   }

@@ -1,7 +1,10 @@
 /*
  * SPDX-License-Identifier: Apache-2.0
  *
- * Copyright 2015-2021 Andre White.
+ * Copyright 2015-2025
+ *
+ * Author: Andre White.
+ * FILE: HitPointPercentFeature.scala
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -31,11 +34,11 @@ trait HitPointPercentFeature extends Features {
   self: SourceInfo =>
   protected val hitPointBonusType: BonusType
   protected val hitPointBonusPercent: Int
-  protected[this] val triggerOn: Seq[TriggerEvent]
-  protected[this] val triggerOff: Seq[TriggerEvent]
-  protected[this] val hitPointPctCategories: Seq[effect.EffectCategories.Value]
+  protected val triggerOn: Seq[TriggerEvent]
+  protected val triggerOff: Seq[TriggerEvent]
+  protected val hitPointPctCategories: Seq[effect.EffectCategories.Value]
   private val src = this
-  private[this] val hitPointPercent =
+  private val hitPointPercent =
     new PartModifier[Int, BasicStat] with UsingSearchPrefix {
 
       /**
@@ -48,14 +51,14 @@ trait HitPointPercentFeature extends Features {
       override def searchPrefixSource: String = partToModify.searchPrefixSource
 
       private val eb = EffectParameterBuilder()
-        .toggleOffValue(triggerOff: _*)
-        .toggleOnValue(triggerOn: _*)
+        .toggleOffValue(triggerOff*)
+        .toggleOnValue(triggerOn*)
         .addBonusType(hitPointBonusType)
         .build
 
-      override protected[this] def effectParameters: Seq[ParameterModifier[_]] = eb.modifiers
+      override protected def effectParameters: Seq[ParameterModifier[?]] = eb.modifiers
 
-      override protected[this] lazy val partToModify: BasicStat =
+      override protected lazy val partToModify: BasicStat =
         BasicStat.HitPoints
 
       /**
@@ -91,7 +94,7 @@ trait HitPointPercentFeature extends Features {
       override lazy val effectText: Option[String] = Some(s"Hit Points by $value%")
     }
 
-  abstract override def features: Seq[Feature[_]] = {
+  abstract override def features: Seq[Feature[?]] = {
     assert(hitPointPercent.value == hitPointBonusPercent)
     super.features :+ hitPointPercent
   }

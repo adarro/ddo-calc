@@ -22,7 +22,7 @@ plugins {
 //    id("scala-library-profile")
 //    id("djaxonomy.test-conventions")
     id("com.zlad.gradle.avrohugger")
-//    id("com.github.lkishalmi.gatling") version "3.2.9"
+//    id("com.github.lkishalmi.gatling")
     //  id("io.gatling.gradle") version "3.9.5.5" replaces above
 //    id("org.openapi.generator")
 }
@@ -30,16 +30,36 @@ plugins {
 repositories {
 
     mavenCentral()
+    maven {
+        name = "OrbitalHQ"
+        url = uri("https://repo.orbitalhq.com/release")
+    }
 }
 
 dependencies {
     /*
     https://github.com/fthomas/refined
     check out refined library for compile time constraints
-    unsure how  helpful this will be as most data will need runtime validation (aka wix)
+    unsure how  helpful this will be as most data will need runtime validation (aka wix / zio.validation)
      */
     // Use Scala $scalaMajorVersion in our library project
-    implementation("org.scala-lang:scala-library:2.13.10")
+    implementation(libs.scala2.library)
+    // implementation(libs.taxi.lang)
+    implementation(libs.taxi.jpa)
+    implementation(libs.taxi.avrototaxi)
+    // implementation(libs.taxi.avrototaxi)
+    // https://mvnrepository.com/artifact/org.apache.avro/avro-tools
+    implementation(libs.avro.tools)
+    // https://savro.dataedu.ca/
+    implementation(libs.savro.s213)
+    testCompileOnly("org.projectlombok:lombok:_")
+    testAnnotationProcessor("org.projectlombok:lombok:_")
+    testImplementation(libs.junit.jupiter)
+    testRuntimeOnly(libs.junit.platform.launcher)
+    testImplementation(libs.guava.jre)
+
+    testImplementation("org.hamcrest:hamcrest-all:_")
+//    implementation(libs.scala2.library)
 
 //    val scalaLibraryVersion: String by project
 //    val scalaMajorVersion: String by project
@@ -69,6 +89,15 @@ dependencies {
 //    testRuntimeOnly(group = "co.helmethair", name = "scalatest-junit-runner")
 }
 
+tasks.named<Test>("test") {
+    useJUnitPlatform()
+
+    maxHeapSize = "1G"
+
+    testLogging {
+        events("passed")
+    }
+}
 // OpenApi code / schema generation
 
 val apiSpec: FileCollection = project.rootProject.layout.files("$rootDir/specs/ddo-fatespinner-oas3-swagger.yaml")

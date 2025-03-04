@@ -1,7 +1,10 @@
 /*
  * SPDX-License-Identifier: Apache-2.0
  *
- * Copyright 2015-2021 Andre White.
+ * Copyright 2015-2025
+ *
+ * Author: Andre White.
+ * FILE: Suffix.scala
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -21,7 +24,7 @@ import io.truthencode.ddo.model.effect.features.Features
 
 trait Suffix extends Effect with Features with Affix {
   // @fixme Remove this and add meaningful implementation
-  override def features: List[Feature[_]] = List.empty
+  override def features: List[Feature[?]] = List.empty
 }
 
 trait HasSuffix extends Suffix {

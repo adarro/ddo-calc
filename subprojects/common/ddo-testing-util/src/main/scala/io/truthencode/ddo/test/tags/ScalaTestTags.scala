@@ -1,7 +1,10 @@
 /*
  * SPDX-License-Identifier: Apache-2.0
  *
- * Copyright 2015-2021 Andre White.
+ * Copyright 2015-2025
+ *
+ * Author: Andre White.
+ * FILE: ScalaTestTags.scala
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -35,12 +38,12 @@ object IntegrationTest extends Tag("io.truthencode.tags.Integration")
 object UnitTest extends Tag("io.truthencode.tags.Unit")
 
 /**
- * Tests Clustering (May be slow or require network connectivity etc)
+ * Tests Clustering (Test may be slow or require network connectivity etc.)
  */
 object ClusteringTest extends Tag("io.truthencode.tags.Clustering")
 
 /**
- * Indicates a slow running or time consuming test
+ * Indicates a slow running or time-consuming test
  */
 object Slow extends Tag("io.truthencode.tags.Slow")
 

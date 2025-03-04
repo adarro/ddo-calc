@@ -1,7 +1,10 @@
 /*
  * SPDX-License-Identifier: Apache-2.0
  *
- * Copyright 2015-2021 Andre White.
+ * Copyright 2015-2025
+ *
+ * Author: Andre White.
+ * FILE: EpicClassFeatSpec.scala
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -35,10 +38,10 @@ import scala.jdk.CollectionConverters.SeqHasAsJava
 
 @RunWith(classOf[ConcordionRunner])
 class EpicClassFeatSpec extends LazyLogging {
-  type Entry = EnumEntry with DisplayProperties
-  type E = Enum[_ <: Entry]
+  type Entry = EnumEntry & DisplayProperties
+  type E = Enum[? <: Entry]
   type CharClass = Option[HeroicCharacterClass]
-  type EpicClassHelper = ClassFeatDisplayHelper with EpicFeatFeatDisplayHelper
+  type EpicClassHelper = ClassFeatDisplayHelper & EpicFeatFeatDisplayHelper
 
   val helperMap: scala.collection.mutable.HashMap[CharClass, EpicClassHelper] =
     scala.collection.mutable.HashMap.empty

@@ -1,7 +1,10 @@
 /*
  * SPDX-License-Identifier: Apache-2.0
  *
- * Copyright 2015-2021 Andre White.
+ * Copyright 2015-2025
+ *
+ * Author: Andre White.
+ * FILE: DamageDice.scala
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -67,7 +70,7 @@ sealed trait DamageDice {
  */
 object DamageInfo {
   val ddoDiceRegEx: Regex =
-    """(\d+\.?\d*)*?((?:\[(\d+)d(\d+)\])|(?:(\d+)d(\d+)))\s*(?:([+\-])\s*(\d+))*""".r
+    """(\d+\.?\d*)*?((?:\[(\d+)d(\d+)])|(?:(\d+)d(\d+)))\s*(?:([+\-])\s*(\d+))*""".r
 
   def apply(diceExp: String): DamageInfo = {
 
@@ -170,7 +173,7 @@ abstract case class DamageInfo private[DamageInfo] (
       case 0 | 1 => diceExp
       case _ => s"$doubleToIntFunction[$diceExp]"
     }
-    val dt = if (damageType.isEmpty) {
+    val dt = if damageType.isEmpty then {
       ""
     } else {
       s" ${damageType.mkString(",")}"

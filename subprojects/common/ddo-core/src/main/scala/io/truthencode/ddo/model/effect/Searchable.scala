@@ -1,7 +1,10 @@
 /*
  * SPDX-License-Identifier: Apache-2.0
  *
- * Copyright 2015-2021 Andre White.
+ * Copyright 2015-2025
+ *
+ * Author: Andre White.
+ * FILE: Searchable.scala
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -23,25 +26,27 @@ import enumeratum.{Enum, EnumEntry}
 import scala.util.{Failure, Success, Try}
 
 // scalastyle:off
-trait Searchable[T <: EnumEntry with SearchPattern] extends Enum[T] with LazyLogging {
+trait Searchable[T <: EnumEntry & SearchPattern] extends Enum[T] with LazyLogging {
 
   def findByPattern(name: String): Option[T] = {
     values.filter(p => p.searchPattern() == p.searchPattern(name)).lastOption
   }
 
   def tryFindByPattern(name: String, usePattern: Option[String] = None): Try[T] = {
-    if (usePattern.isEmpty)
-      logger.warn(s"Using default pattern matching for $name")
+    if usePattern.isEmpty then logger.warn(s"Using default pattern matching for $name")
     val cls = getClass.getSimpleName
     val sp = usePattern.getOrElse("")
     val targetPattern = usePattern match {
       case Some(x) => x
       case None => name
     }
-    val msg = s"\nSearchable:-> $cls for $name ${usePattern.getOrElse(sp)} target  $targetPattern"
-    logger.info(msg)
+//    logger.whenDebugEnabled{
+//        val msg = s"\nSearchable:-> $cls for $name ${usePattern.getOrElse(sp)} target  $targetPattern"
+//        logger.debug(msg)
+//    }
+
     val rslt = values.filter { v =>
-      // logger.debug(s"sp => tp ${v.searchPattern()} => $targetPattern")
+      // DEBUG   logger.debug(s"sp => tp ${v.searchPattern()} => $targetPattern")
       v.searchPattern() == targetPattern
     }
 //    val rslt = values.flatMap { v =>
@@ -65,10 +70,8 @@ trait Searchable[T <: EnumEntry with SearchPattern] extends Enum[T] with LazyLog
 //          None
 //      }
 //    }
-    if (rslt.nonEmpty)
-      Success(rslt.head)
-    else
-      Failure(new NoSuchElementException(s"Could not find element with name $name"))
+    if rslt.nonEmpty then Success(rslt.head)
+    else Failure(new NoSuchElementException(s"Could not find element with name $name"))
 
 //        .flatten match {
 //      case Some(x) =>

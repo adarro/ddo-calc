@@ -19,22 +19,29 @@
 description = "Common misc String and convenience Utilities"
 
 plugins {
-    id("scala-library-profile")
-//    id("acceptance-test-conventions")
-    scala
+    id("buildlogic.scala-library-profile")
 }
-val scalaLibraryVersion: String by project
+
 dependencies {
     dependencies {
-        val scalaLibraryVersion: String by project
-        val scalaMajorVersion: String by project
+        val builderScalaVersion: String by project
 
         implementation(enforcedPlatform(project(":ddo-platform-scala")))
         // Platform dependent
-        implementation(libs.scala2.library)
+        when (builderScalaVersion) {
+            "3" -> {
+                implementation(libs.scala3.library)
+                implementation(libs.enumeratum.s3)
+                implementation(libs.typesafe.scala.logging.s3)
+            }
 
-        implementation(libs.enumeratum.s213)
+            else -> {
+                implementation(libs.scala2.library)
+                implementation(libs.enumeratum.s213)
+                implementation(libs.typesafe.scala.logging.s213)
+            }
+        }
+
         implementation(libs.logback.classic)
-        implementation(libs.typesafe.scala.logging.s213)
     }
 }

@@ -1,7 +1,10 @@
 /*
  * SPDX-License-Identifier: Apache-2.0
  *
- * Copyright 2015-2021 Andre White.
+ * Copyright 2015-2025
+ *
+ * Author: Andre White.
+ * FILE: RacialFeat.scala
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -33,7 +36,7 @@ import scala.collection.immutable.IndexedSeq
 sealed trait RacialFeat
   extends Feat with RaceRequisiteImpl with FriendlyDisplay with FeatMatcher with LazyLogging
   with FeaturesImpl {
-  self: FeatType with Requisite with Inclusion with RequisiteType with Features =>
+  self: FeatType & Requisite & Inclusion & RequisiteType & Features =>
   val matchFeat: PartialFunction[Feat, RacialFeat] = { case x: RacialFeat =>
     x
   }

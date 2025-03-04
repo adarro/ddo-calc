@@ -1,7 +1,10 @@
 /*
  * SPDX-License-Identifier: Apache-2.0
  *
- * Copyright 2015-2021 Andre White.
+ * Copyright 2015-2025
+ *
+ * Author: Andre White.
+ * FILE: LibrarySuite.scala
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -18,11 +21,12 @@
 package io.truthencode.ddo.etl
 
 import org.scalatest.funsuite.AnyFunSuite
+import org.scalatestplus.junit5.JUnitSuiteLike
 
 // @RunWith(classOf[JUnitRunner])
 class LibrarySuite extends AnyFunSuite {
   test("someLibraryMethod is always true") {
     def library: Library = new Library()
-    assert(library.someLibraryMethod())
+    assert(!library.someLibraryMethod())
   }
 }

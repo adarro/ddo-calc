@@ -1,7 +1,10 @@
 /*
  * SPDX-License-Identifier: Apache-2.0
  *
- * Copyright 2015-2021 Andre White.
+ * Copyright 2015-2025
+ *
+ * Author: Andre White.
+ * FILE: Attack.scala
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -17,6 +20,7 @@
  */
 package io.truthencode.ddo.model.feats
 
+import io.truthencode.ddo.activation.{ActivationTypeImpl, TriggerImpl, TriggeredActivationImpl}
 import io.truthencode.ddo.enhancement.BonusType
 import io.truthencode.ddo.model.abilities.ActiveAbilities
 import io.truthencode.ddo.model.effect
@@ -35,13 +39,13 @@ import java.time.Duration
  *   issue.
  */
 protected[feats] trait Attack
-  extends FeatRequisiteImpl with ActiveFeat with FreeFeat with Stance with FeaturesImpl
-  with GrantAbilityFeature {
+  extends FeatRequisiteImpl with TriggeredActivationImpl with ActiveFeat with FreeFeat with Stance
+  with FeaturesImpl with GrantAbilityFeature {
   self: GeneralFeat =>
   override lazy val grantedAbility: ActiveAbilities = ActiveAbilities.Attack
-  override protected[this] lazy val triggerOn: Seq[TriggerEvent] = Seq(TriggerEvent.OnToggle)
-  override protected[this] lazy val triggerOff: Seq[TriggerEvent] = Seq(TriggerEvent.OnToggle)
-  override protected[this] lazy val grantAbilityCategories: Seq[effect.EffectCategories.Value] =
+  override protected lazy val triggerOn: Seq[TriggerEvent] = Seq(TriggerEvent.OnToggle)
+  override protected lazy val triggerOff: Seq[TriggerEvent] = Seq(TriggerEvent.OnToggle)
+  override protected lazy val grantAbilityCategories: Seq[effect.EffectCategories.Value] =
     Seq(effect.EffectCategories.Stance)
   override val grantBonusType: BonusType = BonusType.Feat
   override val abilityId: String = "Attack"

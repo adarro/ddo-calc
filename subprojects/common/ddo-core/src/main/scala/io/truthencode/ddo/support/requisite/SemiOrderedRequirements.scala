@@ -1,7 +1,10 @@
 /*
  * SPDX-License-Identifier: Apache-2.0
  *
- * Copyright 2015-2021 Andre White.
+ * Copyright 2015-2025
+ *
+ * Author: Andre White.
+ * FILE: SemiOrderedRequirements.scala
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -31,10 +34,10 @@ case class SemiOrderedRequirements(valueWithRequirements: ValueWithRequirements*
   }
 
   def displayPrerequisites: Seq[String] = {
-    for {
+    for
       p <- prerequisites
       r: Requirement <- p.req.sortWith((x, y) => sortWithChaos(x, y))
-    } yield r.displayText
+    yield r.displayText
   }
 
   /**
@@ -47,10 +50,10 @@ case class SemiOrderedRequirements(valueWithRequirements: ValueWithRequirements*
   }
 
   def displayBonusSelections: Seq[String] = {
-    for {
+    for
       p <- bonusSelectable.sorted
       r <- p.req.sortWith((x, y) => sortWithChaos(x, y))
-    } yield r.displayText
+    yield r.displayText
   }
 
   /**
@@ -63,10 +66,10 @@ case class SemiOrderedRequirements(valueWithRequirements: ValueWithRequirements*
   }
 
   def displayGranted: Seq[String] = {
-    for {
+    for
       p <- grantedBy.sorted
       r <- p.req.sortWith((x, y) => sortWithChaos(x, y))
-    } yield r.displayText
+    yield r.displayText
   }
 
 }

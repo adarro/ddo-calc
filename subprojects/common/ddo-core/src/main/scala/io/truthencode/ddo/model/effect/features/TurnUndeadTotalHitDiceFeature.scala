@@ -1,7 +1,10 @@
 /*
  * SPDX-License-Identifier: Apache-2.0
  *
- * Copyright 2015-2021 Andre White.
+ * Copyright 2015-2025
+ *
+ * Author: Andre White.
+ * FILE: TurnUndeadTotalHitDiceFeature.scala
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -28,11 +31,11 @@ trait TurnUndeadTotalHitDiceFeature extends Features {
   self: SourceInfo =>
   val totalHitDiceBonusType: BonusType
   val totalHitDiceValue: Int
-  protected[this] val triggerOn: Seq[TriggerEvent]
-  protected[this] val triggerOff: Seq[TriggerEvent]
-  protected[this] val turnUndeadTotalHDCategories: Seq[effect.EffectCategories.Value]
+  protected val triggerOn: Seq[TriggerEvent]
+  protected val triggerOff: Seq[TriggerEvent]
+  protected val turnUndeadTotalHDCategories: Seq[effect.EffectCategories.Value]
   private val src = this
-  private[this] val tHD =
+  private val tHD =
     new PartModifier[Int, BasicStat] with UsingSearchPrefix {
 
       /**
@@ -65,16 +68,16 @@ trait TurnUndeadTotalHitDiceFeature extends Features {
        */
       override def searchPrefixSource: String = partToModify.searchPrefixSource
 
-      override protected[this] lazy val partToModify: BasicStat =
+      override protected lazy val partToModify: BasicStat =
         BasicStat.TurnUndeadTotalHitDice
 
       private val eb = EffectParameterBuilder()
-        .toggleOffValue(triggerOff: _*)
-        .toggleOnValue(triggerOn: _*)
+        .toggleOffValue(triggerOff*)
+        .toggleOnValue(triggerOn*)
         .addBonusType(totalHitDiceBonusType)
         .build
 
-      override protected[this] def effectParameters: Seq[ParameterModifier[_]] = eb.modifiers
+      override protected def effectParameters: Seq[ParameterModifier[?]] = eb.modifiers
       override val effectDetail: DetailedEffect = DetailedEffect(
         id = "TurnUndeadTotalHitDice",
         description = "Increases the Total hit dice of undead you can turn",
@@ -87,7 +90,7 @@ trait TurnUndeadTotalHitDiceFeature extends Features {
 
     }
 
-  abstract override def features: Seq[Feature[_]] = {
+  abstract override def features: Seq[Feature[?]] = {
     assert(tHD.value == totalHitDiceValue)
     super.features :+ tHD
   }

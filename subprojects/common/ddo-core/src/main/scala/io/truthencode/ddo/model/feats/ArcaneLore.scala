@@ -1,7 +1,10 @@
 /*
  * SPDX-License-Identifier: Apache-2.0
  *
- * Copyright 2015-2021 Andre White.
+ * Copyright 2015-2025
+ *
+ * Author: Andre White.
+ * FILE: ArcaneLore.scala
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -34,8 +37,8 @@ protected[feats] trait ArcaneLore
     grantedClasses
 
   private def grantedClasses =
-    for {
+    for
       gc <- List(Alchemist, Artificer, Bard, Sorcerer, Wizard)
       l <- 1 to 20
-    } yield (gc, l)
+    yield (gc, l)
 }

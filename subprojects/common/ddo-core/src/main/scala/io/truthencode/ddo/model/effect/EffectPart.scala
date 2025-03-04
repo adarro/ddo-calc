@@ -1,7 +1,10 @@
 /*
  * SPDX-License-Identifier: Apache-2.0
  *
- * Copyright 2015-2021 Andre White.
+ * Copyright 2015-2025
+ *
+ * Author: Andre White.
+ * FILE: EffectPart.scala
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -23,9 +26,14 @@ import io.truthencode.ddo.NoDefault
 import io.truthencode.ddo.enhancement.BonusType
 import io.truthencode.ddo.model.abilities.ActiveAbilities
 import io.truthencode.ddo.model.attribute.{Attribute => Attributes}
-import io.truthencode.ddo.model.feats.{Feat => Feats, GeneralFeat, WeaponProficiencyBase}
+import io.truthencode.ddo.model.feats.{
+  Feat => Feats,
+  GeneralFeat,
+  ParentFeat,
+  WeaponProficiencyBase
+}
 import io.truthencode.ddo.model.skill.{Skill => Skills}
-import io.truthencode.ddo.model.stats.{BasicStat, MissChance}
+import io.truthencode.ddo.model.stats.{BasicStat, HitChance, MissChance}
 
 trait SearchPattern {
   self: EnumEntry =>
@@ -44,16 +52,7 @@ trait SkillEffectPart extends EffectPart with LazyLogging {
 
   override def searchPattern(target: String = Searchable.stripParentheses(entryName)): String = {
     val sp = io.truthencode.ddo.model.skill.Skill.searchPrefix
-
     val t = Searchable.stripParentheses(entryName.replace("Skill", ""))
-//    if (target.contains("(") || target.contains("(")) {
-//      val newTarget = Searchable.stripParentheses(target)
-//      logger.info(s"Setting SearchPattern in SkillEffect to $sp target $newTarget")
-//      s"$sp$newTarget"
-//    } else {
-//      logger.info(s"Setting SearchPattern in SkillEffect to $sp target $target")
-//      s"$sp$target"
-//    }
     s"$sp$t".replace("::", ":")
   }
 }
@@ -70,9 +69,21 @@ trait AbilityEffectPart extends EffectPart with LazyLogging {
   }
 }
 
+trait HitChanceEffectPart extends EffectPart with LazyLogging {
+
+  val basicStat: BasicStat & HitChance
+
+  override def searchPattern(target: String = Searchable.stripParentheses(entryName)): String = {
+    val sp = "HitChance:"
+
+    val t = Searchable.stripParentheses(entryName.replace("HitChance", ""))
+    s"$sp$t".replace("::", ":")
+  }
+}
+
 trait MissChanceEffectPart extends EffectPart with LazyLogging {
 
-  val basicStat: BasicStat with MissChance
+  val basicStat: BasicStat & MissChance
 
   override def searchPattern(target: String = Searchable.stripParentheses(entryName)): String = {
     val sp = "MissChance:"
@@ -88,12 +99,17 @@ trait AttributeEffect extends EffectPart {
   override def searchPattern(target: String): String = s"Attribute($target)"
 }
 
-trait FeatEffect extends EffectPart {
+trait FeatEffect extends EffectPart with LazyLogging {
 
   val feat: Feats
 
-  override def searchPattern(target: String = entryName): String =
-    s"Feat($target)"
+  override def searchPattern(target: String = entryName): String = {
+
+    val sp = "Feat"
+
+    val t = entryName.replace("Feat:", ":")
+    s"$sp$t".replace("::", ":")
+  }
 }
 
 trait DoubleShotEffect extends EffectPart
@@ -116,22 +132,27 @@ trait CriticalThreatRangeEffect extends EffectPart {
  */
 object EffectPart extends Enum[EffectPart] with NoDefault[EffectPart] with Searchable[EffectPart] {
 
-  lazy val values =
-    findValues ++ anySkill ++ anyFeat ++ anyWeaponProficiency ++ anyAbilities ++ anyMissChance
+  lazy val values: IndexedSeq[EffectPart] =
+    findValues ++ anySkill ++ anyFeat ++ anyWeaponProficiency ++ anyAbilities ++ anyMissChance ++ anyHitChance
 
-  def anySkill[effect]: Seq[Skill] = Skills.values.map(Skill)
+  private[effect] def anySkill: Seq[Skill] = Skills.values.map(Skill(_))
 
-  def anyAbilities: Seq[ActiveAbility] = ActiveAbilities.values.map(ActiveAbility)
+  def anyAbilities: Seq[ActiveAbility] = ActiveAbilities.values.map(ActiveAbility(_))
 
   def anyMissChance: Seq[MissChanceEffect] =
-    BasicStat.values.collect { case x: MissChance => x }.map(MissChanceEffect)
+    BasicStat.values.collect { case x: MissChance => x }.map(MissChanceEffect(_))
 
-  private def anyAttribute = Attributes.values.map(Attribute)
+  def anyHitChance: Seq[HitChanceEffect] =
+    BasicStat.values.collect { case x: HitChance => x }.map(HitChanceEffect(_))
 
-  private def anyFeat = Feats.values.map(Feat)
+  private def anyAttribute = Attributes.values.map(Attribute(_))
+
+  private[effect] def anyFeat = Feats.values
+    .filterNot(_.isInstanceOf[ParentFeat])
+    .map(Feat(_))
 
   private def anyWeaponProficiency =
-    GeneralFeat.ExoticWeaponProficiency.subFeats.map(WeaponProficiency)
+    GeneralFeat.ExoticWeaponProficiency.subFeats.map(WeaponProficiency(_))
 
   // Attribute value affected by Base, Feat, Item, Tomes
   case class Attribute(override val attribute: Attributes) extends AttributeEffect
@@ -139,28 +160,33 @@ object EffectPart extends Enum[EffectPart] with NoDefault[EffectPart] with Searc
   // skill key ability, total mod, rank, ability mod, misc mod
   case class Skill(override val skill: Skills) extends SkillEffectPart {
     override def entryName: String =
-      s"${io.truthencode.ddo.model.skill.Skill.searchPrefix}${skill}" // .replace("::",":")
+      s"${io.truthencode.ddo.model.skill.Skill.searchPrefix}$skill"
   }
 
   case class ActiveAbility(override val ability: ActiveAbilities) extends AbilityEffectPart {
     override def entryName: String =
-      s"${ActiveAbilities.searchPrefix}${ability}" // .replace("::",":")
+      s"${ActiveAbilities.searchPrefix}$ability"
   }
 
   // Miss Chance
-  case class MissChanceEffect(override val basicStat: BasicStat with MissChance)
+  case class MissChanceEffect(override val basicStat: BasicStat & MissChance)
     extends MissChanceEffectPart {
     override def entryName: String = s"MissChance:${basicStat.entryName}"
   }
 
+  case class HitChanceEffect(override val basicStat: BasicStat & HitChance)
+    extends HitChanceEffectPart {
+    override def entryName: String = s"HitChance:${basicStat.entryName}"
+  }
+
   // Feats
-  case class Feat(override val feat: Feats) extends FeatEffect
+  case class Feat(override val feat: Feats) extends FeatEffect {
+    override def entryName: String = s"Feat:${feat.entryName}"
+  }
 
   case class WeaponProficiency(override val proficiency: WeaponProficiencyBase)
     extends WeaponProficiencyEffect
 
-  // case class BaseThing()
-  // private def anyBasicStat = BasicStat.values.map()
   case object Spell extends EffectPart {
     override def searchPattern(target: String): String = s"Spell:$target"
   }
@@ -176,7 +202,11 @@ object EffectPart extends Enum[EffectPart] with NoDefault[EffectPart] with Searc
   case object Spellpoints extends EffectPart {
     override def searchPattern(target: String): String = s"SpellPoints:$target"
   }
-  // case class CriticalThreatRange()
+
+  case object CriticalThreatRange extends EffectPart {
+    override def searchPattern(target: String): String = s"CriticalThreatRange:$target"
+  }
+
   /*
   Main
   Feats

@@ -1,7 +1,10 @@
 /*
  * SPDX-License-Identifier: Apache-2.0
  *
- * Copyright 2015-2021 Andre White.
+ * Copyright 2015-2025
+ *
+ * Author: Andre White.
+ * FILE: ManyshotTest.scala
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -28,7 +31,7 @@ class ManyshotTest extends AnyFunSpec with Matchers with LazyLogging {
     it("has features") {
       import Features.FeatureExtractor
 
-      val fm = Feat.featureMap
+      val fm = Feat.featureSet
       val ms = fm.filter(_._1.equals(GeneralFeat.Manyshot))
       val msf = GeneralFeat.Manyshot
 

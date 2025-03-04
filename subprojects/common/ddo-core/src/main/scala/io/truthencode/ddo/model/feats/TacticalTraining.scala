@@ -1,7 +1,10 @@
 /*
  * SPDX-License-Identifier: Apache-2.0
  *
- * Copyright 2015-2021 Andre White.
+ * Copyright 2015-2025
+ *
+ * Author: Andre White.
+ * FILE: TacticalTraining.scala
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -28,8 +31,8 @@ import io.truthencode.ddo.support.requisite.{
  * Icon Tactical Training.png Tactical Training Passive +2 bonus to Tactics DC's. Level 4: Fighter
  */
 trait TacticalTraining
-  extends FeatRequisiteImpl with ClassRequisiteImpl with Passive with RequiresAllOfClass
-  with FighterBonusFeat {
+  extends FeatRequisiteImpl with BonusSelectableToClassFeatImpl with ClassRequisiteImpl with Passive
+  with RequiresAllOfClass with FighterBonusFeat {
   self: GeneralFeat =>
   override def allOfClass: Seq[(HeroicCharacterClass, Int)] =
     List((HeroicCharacterClass.Fighter, 4))

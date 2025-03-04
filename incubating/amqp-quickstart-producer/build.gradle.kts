@@ -14,10 +14,10 @@ val quarkusPlatformVersion: String by project
 
 dependencies {
     implementation(enforcedPlatform("$quarkusPlatformGroupId:$quarkusPlatformArtifactId:$quarkusPlatformVersion"))
-    implementation("io.quarkus:quarkus-smallrye-reactive-messaging-amqp")
-    implementation("io.quarkus:quarkus-resteasy-reactive-jackson")
-    implementation("io.quarkus:quarkus-arc")
-    testImplementation("io.quarkus:quarkus-junit5")
+    implementation(libs.quarkus.smallrye.reactive.messaging.amqp)
+    implementation(libs.quarkus.resteasy.reactive.jackson)
+    implementation(libs.quarkus.arc)
+    testImplementation(libs.quarkus.junit5)
 }
 
 group = "org.acme"

@@ -1,7 +1,10 @@
 /*
  * SPDX-License-Identifier: Apache-2.0
  *
- * Copyright 2015-2021 Andre White.
+ * Copyright 2015-2025
+ *
+ * Author: Andre White.
+ * FILE: SpellPointPercentFeature.scala
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -31,11 +34,11 @@ trait SpellPointPercentFeature extends Features {
   self: SourceInfo =>
   protected val spellPointBonusType: BonusType
   protected val spellPointBonusPercent: Int
-  protected[this] val triggerOn: Seq[TriggerEvent]
-  protected[this] val triggerOff: Seq[TriggerEvent]
-  protected[this] val spellPointPctCategories: Seq[effect.EffectCategories.Value]
+  protected val triggerOn: Seq[TriggerEvent]
+  protected val triggerOff: Seq[TriggerEvent]
+  protected val spellPointPctCategories: Seq[effect.EffectCategories.Value]
   private val src = this
-  private[this] val spellPointPercent =
+  private val spellPointPercent =
     new PartModifier[Int, BasicStat] with UsingSearchPrefix {
 
       /**
@@ -47,16 +50,16 @@ trait SpellPointPercentFeature extends Features {
        */
       override def searchPrefixSource: String = partToModify.searchPrefixSource
 
-      override protected[this] lazy val partToModify: BasicStat =
+      override protected lazy val partToModify: BasicStat =
         BasicStat.SpellPoints
 
       private val eb = EffectParameterBuilder()
-        .toggleOffValue(triggerOff: _*)
-        .toggleOnValue(triggerOn: _*)
+        .toggleOffValue(triggerOff*)
+        .toggleOnValue(triggerOn*)
         .addBonusType(spellPointBonusType)
         .build
 
-      override protected[this] def effectParameters: Seq[ParameterModifier[_]] = eb.modifiers
+      override protected def effectParameters: Seq[ParameterModifier[?]] = eb.modifiers
 
       /**
        * The General Description should be just that. This should not include specific values unless
@@ -91,7 +94,7 @@ trait SpellPointPercentFeature extends Features {
       override lazy val effectText: Option[String] = Some(s"SpellPoints by $value")
     }
 
-  abstract override def features: Seq[Feature[_]] = {
+  abstract override def features: Seq[Feature[?]] = {
     assert(spellPointPercent.value == spellPointBonusPercent)
     super.features :+ spellPointPercent
   }

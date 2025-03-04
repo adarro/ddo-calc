@@ -1,7 +1,10 @@
 /*
  * SPDX-License-Identifier: Apache-2.0
  *
- * Copyright 2015-2021 Andre White.
+ * Copyright 2015-2025
+ *
+ * Author: Andre White.
+ * FILE: SetItem.scala
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -18,7 +21,7 @@
 package io.truthencode.ddo
 
 import io.truthencode.ddo.model.effect.Effect
-import io.truthencode.ddo.model.item.Item
+import io.truthencode.ddo.model.item.PermanentItem
 
 /**
  * An Item set provides bonuses when equipping some or all of the items in the set.
@@ -33,7 +36,7 @@ trait SetItem {
   /**
    * A collection of items that qualify for this set
    */
-  val items: List[Item]
+  val items: List[PermanentItem]
 
   /**
    * This will generally be a single bonus set, such as Anger's Wrath. However some sets, such as

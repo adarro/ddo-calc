@@ -1,7 +1,10 @@
 /*
  * SPDX-License-Identifier: Apache-2.0
  *
- * Copyright 2015-2021 Andre White.
+ * Copyright 2015-2025
+ *
+ * Author: Andre White.
+ * FILE: AbilitySelector.scala
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -28,7 +31,7 @@ import io.truthencode.ddo.support.requisite.ActionPointRequisite
  *   / key integrity.
  */
 trait AbilitySelector extends AbilityScoreEnhancement with RomanNumeralAffix {
-  self: ClassEnhancement with Tier with ActionPointRequisite =>
+  self: ClassEnhancement & Tier & ActionPointRequisite =>
 
   /**
    * Some enhancements can be taken multiple times (generally up to three)

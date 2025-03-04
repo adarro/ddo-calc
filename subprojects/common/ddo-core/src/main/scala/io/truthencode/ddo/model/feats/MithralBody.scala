@@ -1,7 +1,10 @@
 /*
  * SPDX-License-Identifier: Apache-2.0
  *
- * Copyright 2015-2021 Andre White.
+ * Copyright 2015-2025
+ *
+ * Author: Andre White.
+ * FILE: MithralBody.scala
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -24,8 +27,8 @@ import io.truthencode.ddo.support.requisite.{FeatRequisiteImpl, RaceRequisite, R
  * Created by adarr on 2/20/2017.
  */
 trait MithralBody
-  extends FeatRequisiteImpl with RaceRequisite with Passive with RequiresAnyOfRace
-  with ArtificerBonusFeat {
+  extends FeatRequisiteImpl with BonusSelectableToClassFeatImpl with RaceRequisite with Passive
+  with RequiresAnyOfRace with ArtificerBonusFeat {
   self: RacialFeat =>
   override def anyOfRace: Seq[(Race, Int)] =
     List((Race.Warforged, 1), (Race.Bladeforged, 1))

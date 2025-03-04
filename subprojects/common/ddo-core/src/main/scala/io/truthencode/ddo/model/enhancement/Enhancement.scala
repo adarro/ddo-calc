@@ -1,7 +1,10 @@
 /*
  * SPDX-License-Identifier: Apache-2.0
  *
- * Copyright 2015-2021 Andre White.
+ * Copyright 2015-2025
+ *
+ * Author: Andre White.
+ * FILE: Enhancement.scala
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -28,7 +31,7 @@ import scala.collection.immutable
  * Enhancements are acquired via the Skill Tree by spending action points.
  */
 protected[ddo] trait Enhancement extends EnumEntry with Description with DisplayName {
-  self: TreeType with Tier =>
+  self: TreeType & Tier =>
 
   override protected def nameSource: String =
     entryName.splitByCase.toPascalCase
@@ -46,7 +49,7 @@ trait UniversalEnhancement extends Enhancement with Universal {
  * Available to a particular race.
  */
 trait RacialEnhancement extends Enhancement with Racial {
-  self: Tier with RaceRequisite =>
+  self: Tier & RaceRequisite =>
 }
 
 object Enhancement extends Enum[Enhancement] {

@@ -1,7 +1,10 @@
 /*
  * SPDX-License-Identifier: Apache-2.0
  *
- * Copyright 2015-2021 Andre White.
+ * Copyright 2015-2025
+ *
+ * Author: Andre White.
+ * FILE: Weapon.scala
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -21,7 +24,7 @@ import enumeratum.EnumEntry
 import io.truthencode.ddo._
 import io.truthencode.ddo.enumeration.EnumExtensions.EnumCompanionOps
 import io.truthencode.ddo.model.attribute.Attribute
-import io.truthencode.ddo.model.item.WearableItem
+import io.truthencode.ddo.model.item.{PermanentItem, WearableItem}
 import io.truthencode.ddo.support.dice.DamageDice
 import io.truthencode.ddo.support.slots.WearLocation
 
@@ -43,7 +46,7 @@ import scala.language.implicitConversions
  *   wicked sickle is crafted from magical ice that will never melt. Any flesh it touches will
  *   instantly freeze to the blade, to be painfully ripped away when the weapon is withdrawn.
  */
-trait Weapon extends WearableItem with HandedWeapon {
+trait Weapon extends PermanentItem with WearableItem with HandedWeapon {
 
   /**
    * Proficiency Class Equipping a item without having the corresponding proficiency may incur
@@ -75,7 +78,7 @@ trait Weapon extends WearableItem with HandedWeapon {
 
   /**
    * Handedness Represents how a weapon can be used / equipped. i.e. Daggers (MustContainAtLeastOne
-   * Handed, Longbow two handed)
+   * Handed, Longbow two-handed)
    *
    * @note
    *   DDO Wiki seems a bit inconsistent.
@@ -84,14 +87,12 @@ trait Weapon extends WearableItem with HandedWeapon {
    *   this blank. For our purposes, the handedness will likely be 'twohanded', and matching against
    *   the [[io.truthencode.ddo.model.item.weapon.DeliveryType]] for Ranged should be enough to
    *   allow the UI to display either or none and understand that using a bow prevents equipping
-   *   something else in the off hand.
-   * @todo
-   *   Likely need to test this for logic / integration
+   *   something else in the offhand.
    */
   val handedness: List[Handedness]
 
   /**
-   * Default Modifiers Dertermines the ability stat used for attack or damage bonuses. Typically
+   * Default Modifiers Determines the ability stat used for attack or damage bonuses. Typically,
    * this will be STR for melee / bows to Hit and / or damage. Weapon finesse and similar may change
    * this to another stat such as DEX or INT for Insightful Weapons.
    */
@@ -116,19 +117,14 @@ trait Weapon extends WearableItem with HandedWeapon {
    */
 
   /**
-   * restricts the slot to main hand or off hand. Override this to restrict further for two handed
-   * or other special cases
+   * restricts the slot to main hand or offhand. Override this to restrict further for two-handed or
+   * other special cases
    */
   def allowedWearLocationFlags: Int = WearLocation.MainHand.bitValue | WearLocation.OffHand.bitValue
 }
 
 /**
  * Basic trait for allowing an item to be wielded using one or more hand slots.
- *
- * @todo
- *   +allowedWearLocations needs to block off-hand for two-handed melee / bows etc
- * @todo
- *   Bows / x-bows equip to main hand, need a plug or otherwise to 'occupy' the off-hand slot
  */
 trait HandedWeapon extends Wearable
 
@@ -145,7 +141,7 @@ trait TwoHandedWeapon extends HandedWeapon {
   lazy val allowedWearLocations: Seq[EnumEntry] = {
     WearLocation.fromMask(WearLocation.MainHand.bitValue) match {
       case Some(x) => x
-      case _ => List[WearLocation with Product with Serializable]()
+      case _ => List[WearLocation & Product & Serializable]()
     }
   }
 }

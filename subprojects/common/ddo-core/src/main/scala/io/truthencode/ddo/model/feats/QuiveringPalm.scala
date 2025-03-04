@@ -1,7 +1,10 @@
 /*
  * SPDX-License-Identifier: Apache-2.0
  *
- * Copyright 2015-2021 Andre White.
+ * Copyright 2015-2025
+ *
+ * Author: Andre White.
+ * FILE: QuiveringPalm.scala
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -17,6 +20,7 @@
  */
 package io.truthencode.ddo.model.feats
 
+import io.truthencode.ddo.activation.TriggeredActivationImpl
 import io.truthencode.ddo.model.classes.HeroicCharacterClass
 import io.truthencode.ddo.model.classes.HeroicCharacterClass.Monk
 import io.truthencode.ddo.support.requisite.{FeatRequisiteImpl, GrantsToClass, RequiresAllOfClass}
@@ -46,8 +50,8 @@ import java.time.Duration
  *   accurate programmatically
  */
 trait QuiveringPalm
-  extends FeatRequisiteImpl with ActiveFeat with Tactical with GrantsToClass
-  with RequiresAllOfClass {
+  extends FeatRequisiteImpl with TriggeredActivationImpl with ActiveFeat with Tactical
+  with GrantsToClass with RequiresAllOfClass {
   override def grantToClass: Seq[(HeroicCharacterClass, Int)] =
     List((Monk, 15))
 

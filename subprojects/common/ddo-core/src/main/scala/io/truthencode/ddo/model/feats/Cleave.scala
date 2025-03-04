@@ -1,7 +1,10 @@
 /*
  * SPDX-License-Identifier: Apache-2.0
  *
- * Copyright 2015-2021 Andre White.
+ * Copyright 2015-2025
+ *
+ * Author: Andre White.
+ * FILE: Cleave.scala
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -17,7 +20,7 @@
  */
 package io.truthencode.ddo.model.feats
 
-import io.truthencode.ddo.activation.AtWillEvent
+import io.truthencode.ddo.activation.{AtWillEvent, TriggeredActivationImpl}
 import io.truthencode.ddo.enhancement.BonusType
 import io.truthencode.ddo.model.abilities.ActiveAbilities
 import io.truthencode.ddo.model.effect.features.{
@@ -37,9 +40,9 @@ import java.time.Duration
  * chance to hit more enemies at once than a basic attack.
  */
 protected[feats] trait Cleave
-  extends FeatRequisiteImpl with ActiveFeat with AtWillEvent with RequiresAllOfFeat
-  with FighterBonusFeat with FeaturesImpl with GrantAbilityFeature with SpecialAttackFeature
-  with SharedCoolDown {
+  extends FeatRequisiteImpl with TriggeredActivationImpl with BonusSelectableToClassFeatImpl
+  with ActiveFeat with AtWillEvent with RequiresAllOfFeat with FighterBonusFeat with FeaturesImpl
+  with GrantAbilityFeature with SpecialAttackFeature with SharedCoolDown {
   self: GeneralFeat =>
   override lazy val anyOfFeats: Seq[GeneralFeat] = IndexedSeq.apply()
   override lazy val noneOfFeats: Seq[GeneralFeat] = IndexedSeq.apply()

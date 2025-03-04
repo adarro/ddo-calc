@@ -1,7 +1,10 @@
 /*
  * SPDX-License-Identifier: Apache-2.0
  *
- * Copyright 2015-2021 Andre White.
+ * Copyright 2015-2025
+ *
+ * Author: Andre White.
+ * FILE: ActiveAbilities.scala
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -18,6 +21,7 @@
 package io.truthencode.ddo.model.abilities
 
 import enumeratum.{Enum, EnumEntry}
+import io.truthencode.ddo.activation.OnToggleEvent
 import io.truthencode.ddo.model.feats.DefensiveCombatStance
 import io.truthencode.ddo.support.SearchPrefix
 import io.truthencode.ddo.support.StringUtils.Extensions
@@ -101,7 +105,14 @@ object ActiveAbilities extends Enum[ActiveAbilities] with SearchPrefix {
 
   case object SpringAttack extends ActiveAbilities
 
-  case object DefensiveFighting extends ActiveAbilities with DefensiveCombatStance
+  case object DefensiveFighting
+    extends ActiveAbilities with DefensiveCombatStance with OnToggleEvent {
+    // Members declared in io. truthencode. ddo. activation. ActivationType
+    override def activations: Seq[io.truthencode.ddo.model.effect.TriggerEvent] = super.activations
+    // Members declared in io. truthencode. ddo. activation. Trigger
+    override def activatableTriggers: Seq[io.truthencode.ddo.model.effect.TriggerEvent] =
+      super.activatableTriggers
+  }
 
   /**
    * Allows one to dismiss some charmed creatures.

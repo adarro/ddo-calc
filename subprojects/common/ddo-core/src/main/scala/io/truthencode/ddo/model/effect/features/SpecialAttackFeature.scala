@@ -1,7 +1,10 @@
 /*
  * SPDX-License-Identifier: Apache-2.0
  *
- * Copyright 2015-2021 Andre White.
+ * Copyright 2015-2025
+ *
+ * Author: Andre White.
+ * FILE: SpecialAttackFeature.scala
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -25,8 +28,8 @@ import io.truthencode.ddo.model.effect.TriggerEvent
  */
 trait SpecialAttackFeature {
   self: GrantAbilityFeature =>
-  override protected[this] lazy val triggerOn: Seq[TriggerEvent] = Seq(TriggerEvent.SpecialAttack)
-  override protected[this] lazy val triggerOff: Seq[TriggerEvent] = Seq(TriggerEvent.OnCoolDown)
-  override protected[this] lazy val grantAbilityCategories: Seq[effect.EffectCategories.Value] =
+  override protected lazy val triggerOn: Seq[TriggerEvent] = Seq(TriggerEvent.SpecialAttack)
+  override protected lazy val triggerOff: Seq[TriggerEvent] = Seq(TriggerEvent.OnCoolDown)
+  override protected lazy val grantAbilityCategories: Seq[effect.EffectCategories.Value] =
     Seq(effect.EffectCategories.Ability, effect.EffectCategories.SpecialAttack)
 }

@@ -1,7 +1,10 @@
 /*
  * SPDX-License-Identifier: Apache-2.0
  *
- * Copyright 2015-2021 Andre White.
+ * Copyright 2015-2025
+ *
+ * Author: Andre White.
+ * FILE: BindingTest.scala
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -38,14 +41,14 @@ class BindingTest extends AnyFunSpec with Matchers with MockitoSugar with LazyLo
     "Bound To Account"
   )
   final val numCharacters = 10
-  final val randWords = for { _ <- 1 to 5 } yield randomAlphanumericString(numCharacters)
+  final val randWords = for _ <- 1 to 5 yield randomAlphanumericString(numCharacters)
   final val bindMap = possibleText.map { words =>
     (
       words,
-      if (words.equalsIgnoreCase(Unbound)) Unbound else words.wordsToAcronym.getOrElse(Unbound))
+      if words.equalsIgnoreCase(Unbound) then Unbound else words.wordsToAcronym.getOrElse(Unbound))
   }.toMap.map { case (k, v) => v -> k }
   final val abbr = possibleText.map { words =>
-    if (words.equalsIgnoreCase(Unbound)) Unbound else words.wordsToAcronym.getOrElse(Unbound)
+    if words.equalsIgnoreCase(Unbound) then Unbound else words.wordsToAcronym.getOrElse(Unbound)
   }
   final val checks: List[String] = List(
     "BindsToAccount",
@@ -54,7 +57,8 @@ class BindingTest extends AnyFunSpec with Matchers with MockitoSugar with LazyLo
     "BindsToCharacterOnEquip",
     "BindsToAccountOnEquip",
     "BindsToCharacterOnAcquire",
-    "BindsToCharacterOnEquip")
+    "BindsToCharacterOnEquip"
+  )
   describe("Binding Status") {
     they("should include unbound, account and character") {
       BindingStatus.values.foreach { x => checks.contains(x.entryName) }

@@ -1,7 +1,10 @@
 /*
  * SPDX-License-Identifier: Apache-2.0
  *
- * Copyright 2015-2021 Andre White.
+ * Copyright 2015-2025
+ *
+ * Author: Andre White.
+ * FILE: FeatRequisite.scala
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -36,7 +39,7 @@ sealed trait FeatRequisite {
 }
 
 trait FeatRequisiteImpl extends MustContainImpl[Requirement] with FeatRequisite {
-  self: Requisite with RequisiteType =>
+  self: Requisite & RequisiteType =>
   def anyOfFeats: Seq[Feat] = IndexedSeq.apply()
 
   def allOfFeats: Seq[Feat] = IndexedSeq.apply()
@@ -46,10 +49,10 @@ trait FeatRequisiteImpl extends MustContainImpl[Requirement] with FeatRequisite 
 
 object FeatRequisite {
   def stringToClass(classId: String*): Seq[Feat] = {
-    for {
+    for
       cls <- classId
       cOpt <- Feat.withNameInsensitiveOption(cls)
-    } yield cOpt
+    yield cOpt
   }
 }
 

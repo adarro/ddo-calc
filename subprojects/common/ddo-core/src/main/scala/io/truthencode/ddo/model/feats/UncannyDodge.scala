@@ -1,7 +1,10 @@
 /*
  * SPDX-License-Identifier: Apache-2.0
  *
- * Copyright 2015-2021 Andre White.
+ * Copyright 2015-2025
+ *
+ * Author: Andre White.
+ * FILE: UncannyDodge.scala
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -17,11 +20,11 @@
  */
 package io.truthencode.ddo.model.feats
 
-import io.truthencode.ddo.activation.AtWillEvent
+import io.truthencode.ddo.activation.{AtWillEvent, TriggeredActivationImpl}
 import io.truthencode.ddo.model.classes.HeroicCharacterClass
 import io.truthencode.ddo.model.classes.HeroicCharacterClass.{Barbarian, Rogue}
 import io.truthencode.ddo.support.TraverseOps.Crossable
-import io.truthencode.ddo.support.requisite._
+import io.truthencode.ddo.support.requisite.*
 
 import java.time.Duration
 
@@ -36,8 +39,8 @@ import java.time.Duration
  *   Swashbuckler Enhancements
  */
 protected[feats] trait UncannyDodge
-  extends FeatRequisiteImpl with Passive with ActiveFeat with AtWillEvent with GrantsToClass
-  with RequiresAnyOfClass {
+  extends FeatRequisiteImpl with TriggeredActivationImpl with Passive with ActiveFeat
+  with AtWillEvent with GrantsToClass with RequiresAnyOfClass {
   self: ClassFeat =>
   private lazy val grantedClasses = classMatrix.map((_, 4))
 

@@ -1,7 +1,10 @@
 /*
  * SPDX-License-Identifier: Apache-2.0
  *
- * Copyright 2015-2021 Andre White.
+ * Copyright 2015-2025
+ *
+ * Author: Andre White.
+ * FILE: AttributeRequisite.scala
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -26,16 +29,16 @@ import io.truthencode.ddo.support.requisite.RequirementImplicits.AttributeImplic
  */
 sealed trait AttributeRequisite {
   self: Requisite =>
+  //  we currently don't have a gkNoneAttributes
   def gkAllAttributes: String
   def gkAnyAttributes: String
-//  def gkNoneAttributes: String
   def allOfAttributes: Seq[(Attribute, Int)]
   def anyOfAttributes: Seq[(Attribute, Int)]
   def noneOfAttributes: Seq[(Attribute, Int)]
 }
 
 trait AttributeRequisiteImpl extends MustContainImpl[Requirement] with AttributeRequisite {
-  self: Requisite with RequisiteType =>
+  self: Requisite & RequisiteType =>
   def anyOfAttributes: Seq[(Attribute, Int)] = Nil
   override def gkAllAttributes: String = defaultGroupKey
   override def gkAnyAttributes: String = defaultGroupKey

@@ -1,7 +1,10 @@
 /*
  * SPDX-License-Identifier: Apache-2.0
  *
- * Copyright 2015-2021 Andre White.
+ * Copyright 2015-2025
+ *
+ * Author: Andre White.
+ * FILE: Feature.scala
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -50,10 +53,10 @@ sealed trait Feature[V] extends BasicEffectInfo {
     case Some(value) => Some(value.entryName)
   }
   lazy val effectText: Option[String] = None
-  val part: Try[EffectPart]
-  val value: V
+  def part: Try[EffectPart]
+  def value: V
   val source: SourceInfo
-  val effectDetail: DetailedEffect
+  def effectDetail: DetailedEffect
 
   def parameters: Seq[Try[EffectParameter]]
 
@@ -65,7 +68,7 @@ trait DynamicFeature[V] extends Feature[V] {
 
 object Feature {
 
-  implicit class EffectOps(source: Feature[_]) {
+  implicit class EffectOps(source: Feature[?]) {
     def asFullEffect: FullEffect = {
       val ed = source.effectDetail
       val iValOpt = source.value match {
@@ -81,15 +84,16 @@ object Feature {
         source.generalDescription,
         source.categories,
         ed.bonusType,
-        iValOpt
+        iValOpt,
+        ed.scaling
       )
     }
   }
 
-  def printFeature(f: Feature[_]): String = {
+  def printFeature(f: Feature[?]): String = {
     val categoryInfo = f.categories.mkString(",")
     s"\nFeature:\nName:\t${f.name} \nCategories:$categoryInfo\nvalue:\t${f.value}\nsource:\t${f.source}\nid:\t\t${f.source.sourceId}\ntext:\t${f.effectText
-        .getOrElse("")}\nTriggers On:${f.effectDetail.triggersOn.mkString}\nTriggers Off:${f.effectDetail.triggersOff.mkString}"
+        .getOrElse("")}\nTriggers On:${f.effectDetail.triggersOn.mkString}\nTriggers Off:${f.effectDetail.triggersOff.mkString}\nscaling:\t${f.effectDetail.scaling.getOrElse(List.empty)}"
   }
   // scalastyle:off
   case class CriticalThreatRangeEffect(
@@ -105,7 +109,7 @@ object Feature {
     override lazy val name: String = "Critical Threat Range"
     override lazy val effectText: Option[String] = Some(
       s"Increased Critical Threat Amount: $value%")
-    override protected[this] lazy val partToModify: BasicStat = {
+    override protected lazy val partToModify: BasicStat = {
       basicStat
 
     }
@@ -119,8 +123,8 @@ object Feature {
      */
     override val generalDescription: String = "Increases your chance to make a critical hit"
     private lazy val p = EffectParameterBuilder()
-      .toggleOffValue(tO: _*)
-      .toggleOnValue(tN: _*)
+      .toggleOffValue(tO*)
+      .toggleOnValue(tN*)
       .addBonusType(bonusType)
       .build
     private val tO = effectDetail.triggersOff.map(TriggerEvent.withName)
@@ -148,7 +152,7 @@ object Feature {
     extends PartModifier[Int, Attribute] with UsingAttributeSearchPrefix {
     override lazy val name: String = withPrefix
 //    override protected[this] val parameterToModify: BonusType = bonusType
-    override protected[this] val partToModify: Attribute = attribute
+    override protected val partToModify: Attribute = attribute
 
     /**
      * The General Description should be just that. This should not include specific values unless
@@ -180,9 +184,9 @@ trait PartModifier[V, E <: EnumEntry] extends Feature[V] with DisplayName {
   override lazy val parameters: Seq[Try[EffectParameter]] = effectParameters.map(_.parameter)
 // FIXME add UsingSearchPrefix to type constraint
   override val withPrefix: String = s"$searchPrefix$nameSource"
-  protected[this] val partToModify: E
+  protected def partToModify: E
 
-  protected[this] def effectParameters: Seq[ParameterModifier[_]] = ???
+  protected def effectParameters: Seq[ParameterModifier[?]] = ???
 
   /**
    * Sets or maps the source text for the DisplayName. // TODO: use the Try[part] instead of the
@@ -208,7 +212,7 @@ trait ParameterModifier[E <: EnumEntry] {
 
   lazy val parameter: Try[EffectParameter] =
     EffectParameter.tryFindByPattern(parameterToModify.entryName, None)
-  protected[this] val parameterToModify: E
+  protected val parameterToModify: E
 }
 
 case class EffectFeature[T](

@@ -16,8 +16,8 @@
  * limitations under the License.
  */
 plugins {
-    id("scala-library-profile")
-    id("djaxonomy.test-conventions")
+    id("buildlogic.scala-library-profile")
+    id("buildlogic.test-conventions")
 }
 
 description = "DDO Web ETL for wiki data"
@@ -28,10 +28,23 @@ dependencies {
     implementation(project(":ddo-util")) {
         because("Implicits with string matching etc")
     }
-    implementation(libs.scala2.library)
-    implementation(libs.ruippeixotog.scala.scraper.s213)
-    implementation(libs.typesafe.config)
-    implementation(libs.typesafe.scala.logging.s213)
+    val builderScalaVersion: String by project
+    logger.info("showing builderScalaVersion: $builderScalaVersion")
+    when (builderScalaVersion) {
+        "3" -> {
+            implementation(libs.scala3.library)
+            implementation(libs.ruippeixotog.scala.scraper.s3)
+            implementation(libs.enumeratum.s3)
+            implementation(libs.typesafe.scala.logging.s3)
+        }
+        else -> {
+            implementation(libs.scala2.library)
+            implementation(libs.ruippeixotog.scala.scraper.s213)
+            implementation(libs.enumeratum.s213)
+            implementation(libs.typesafe.scala.logging.s213)
+        }
+    }
+
     implementation(libs.logback.classic)
-    implementation(libs.enumeratum.s213)
+    implementation(libs.typesafe.config)
 }

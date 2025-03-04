@@ -1,7 +1,10 @@
 /*
  * SPDX-License-Identifier: Apache-2.0
  *
- * Copyright 2015-2021 Andre White.
+ * Copyright 2015-2025
+ *
+ * Author: Andre White.
+ * FILE: ClassEnhancement.scala
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -33,18 +36,16 @@ import scala.collection.immutable
  * Class based enhancement which requires at least one level in a particular class.
  */
 sealed trait ClassEnhancement extends Enhancement with ClassBased with Ranks {
-  self: Tier
-    with ClassBasedEnhancements with PointInTreeRequisite with PointsAvailableRequisite
-    with RequiresActionPoints =>
+  self: Tier & ClassBasedEnhancements & PointInTreeRequisite & PointsAvailableRequisite &
+    RequiresActionPoints =>
   val tree: ClassTrees
 
   override def displayText: String = displaySource.lowerCaseNoise
 }
 
 protected trait ClassEnhancementImpl extends ClassEnhancement {
-  self: Tier
-    with ClassBasedEnhancements with PointInTreeRequisite with PointsAvailableRequisite
-    with RequiresActionPoints =>
+  self: Tier & ClassBasedEnhancements & PointInTreeRequisite & PointsAvailableRequisite &
+    RequiresActionPoints =>
 }
 
 // scalastyle:off number.of.methods
@@ -74,7 +75,7 @@ object ClassEnhancement extends Enum[ClassEnhancement] with ClassEnhancementSear
   }
 
   case class ElementalObliterationSelector(id: String, element: String)
-    extends ObliterationMultiSelector {
+    extends ClassEnhancement, ObliterationMultiSelector {
     override def entryName: String = nameSource
 
     override protected def nameSource: String = s"${id}Obliteration"
@@ -82,157 +83,178 @@ object ClassEnhancement extends Enum[ClassEnhancement] with ClassEnhancementSear
 
   // Weakening Mixture multi select for element
   case class WeakeningMixtureSelector(id: String, element: String)
-    extends WeakeningMixtureMultiSelector {
+    extends ClassEnhancement, WeakeningMixtureMultiSelector {
     override def entryName: String = withPrefix.getOrElse("").concat(id)
 
     override protected def nameSource: String = id
   }
 
   // Alchemist
+
+  // Vile Chemist
+  // Core Enhancements
+  case object Poisoner extends ClassEnhancement, Poisoner
+
+  case object PoisonedCoating extends ClassEnhancement, PoisonedCoating
+
+  case object HiddenBladesI extends ClassEnhancement, HiddenBladesI
+
+  case object HiddenBladesII extends ClassEnhancement, HiddenBladesII
+
+  case object HiddenBladesIII extends ClassEnhancement, HiddenBladesIII
+
+  case object VenomsGrip extends ClassEnhancement, VenomsGrip
+
   // Apothecary
   // Core Enhancements
-  case object Determination extends Determination
+  case object Determination extends ClassEnhancement, Determination
 
-  case object AlchemicalShield extends AlchemicalShield
+  case object AlchemicalShield extends ClassEnhancement, AlchemicalShield
 
-  case object CurativeAdmixtureCureSeriousWounds extends CurativeAdmixtureCureSeriousWounds
+  case object CurativeAdmixtureCureSeriousWounds
+    extends ClassEnhancement, CurativeAdmixtureCureSeriousWounds
 
-  case object SpillTheBadStuff extends SpillTheBadStuff
+  case object SpillTheBadStuff extends ClassEnhancement, SpillTheBadStuff
 
-  case object CurativeAdmixtureHeal extends CurativeAdmixtureHeal
+  case object CurativeAdmixtureHeal extends ClassEnhancement, CurativeAdmixtureHeal
 
-  case object GeniusNeverDies extends GeniusNeverDies
+  case object GeniusNeverDies extends ClassEnhancement, GeniusNeverDies
 
   // Tier1
-  case object CurativeAdmixtureCureLightWounds extends CurativeAdmixtureCureLightWounds
+  case object CurativeAdmixtureCureLightWounds
+    extends ClassEnhancement, CurativeAdmixtureCureLightWounds
 
-  case object ApothecarySkills extends ApothecarySkills
+  case object ApothecarySkills extends ClassEnhancement, ApothecarySkills
 
   case object SpellCriticalChancePositiveAndNegativeI
-    extends SpellCriticalChancePositiveAndNegativeI
+    extends ClassEnhancement, SpellCriticalChancePositiveAndNegativeI
 
-  case object EnergyOfTheScholar extends EnergyOfTheScholar
+  case object EnergyOfTheScholar extends ClassEnhancement, EnergyOfTheScholar
 
-  case object SoothingPoultices extends SoothingPoultices
+  case object SoothingPoultices extends ClassEnhancement, SoothingPoultices
 
   // Tier2
-  case object HaleAndHearty extends HaleAndHearty
+  case object HaleAndHearty extends ClassEnhancement, HaleAndHearty
 
   case object SpellCriticalChancePositiveAndNegativeII
-    extends SpellCriticalChancePositiveAndNegativeII
+    extends ClassEnhancement, SpellCriticalChancePositiveAndNegativeII
 
-  case object StoneOfTheScholar extends StoneOfTheScholar
+  case object StoneOfTheScholar extends ClassEnhancement, StoneOfTheScholar
 
-  case object LifeSalve extends LifeSalve
+  case object LifeSalve extends ClassEnhancement, LifeSalve
 
   // Tier3
-  case object PanaceaPoultice extends PanaceaPoultice
+  case object PanaceaPoultice extends ClassEnhancement, PanaceaPoultice
 
-  case object SafetyGoggles extends SafetyGoggles
+  case object SafetyGoggles extends ClassEnhancement, SafetyGoggles
 
   case object SpellCriticalChancePositiveAndNegativeIII
-    extends SpellCriticalChancePositiveAndNegativeIII
+    extends ClassEnhancement, SpellCriticalChancePositiveAndNegativeIII
 
-  case object WillfulAmbition extends WillfulAmbition
+  case object WillfulAmbition extends ClassEnhancement, WillfulAmbition
 
-  case object ApothecaryAbilityI extends ApothecaryAbilityI
+  case object ApothecaryAbilityI extends ClassEnhancement, ApothecaryAbilityI
 
   // Tier4
-  case object InsulatedBoots extends InsulatedBoots
+  case object InsulatedBoots extends ClassEnhancement, InsulatedBoots
 
   case object SpellCriticalChancePositiveAndNegativeIV
-    extends SpellCriticalChancePositiveAndNegativeIV
+    extends ClassEnhancement, SpellCriticalChancePositiveAndNegativeIV
 
-  case object RunForYourLife extends RunForYourLife
+  case object RunForYourLife extends ClassEnhancement, RunForYourLife
 
-  case object AbilityII extends ApothecaryAbilityII
+  case object AbilityII extends ClassEnhancement, ApothecaryAbilityII
 
   // Tier5
   case object CurativeAdmixtureCureOrInflictCriticalWounds
-    extends CurativeAdmixtureCureOrInflictCriticalWounds
+    extends ClassEnhancement, CurativeAdmixtureCureOrInflictCriticalWounds
 
-  case object GlovesOfTheMasterApothecary extends GlovesOfTheMasterApothecary
+  case object GlovesOfTheMasterApothecary extends ClassEnhancement, GlovesOfTheMasterApothecary
 
-  case object MasterApothecary extends MasterApothecary
+  case object MasterApothecary extends ClassEnhancement, MasterApothecary
 
-  case object Dissolve extends Dissolve
+  case object Dissolve extends ClassEnhancement, Dissolve
 
-  case object DeadlyNeurotoxinNightshade extends DeadlyNeurotoxinNightshade
+  case object DeadlyNeurotoxinNightshade extends ClassEnhancement, DeadlyNeurotoxinNightshade
 
   // Bombardier
   // Core
-  case object AlchemicalResistance extends AlchemicalResistance
+  case object AlchemicalResistance extends ClassEnhancement, AlchemicalResistance
 
-  case object ArcaneOil extends ArcaneOil
+  case object ArcaneOil extends ClassEnhancement, ArcaneOil
 
-  case object LiquidPowerI extends LiquidPowerI
+  case object LiquidPowerI extends ClassEnhancement, LiquidPowerI
 
-  case object LiquidPowerII extends LiquidPowerII
+  case object LiquidPowerII extends ClassEnhancement, LiquidPowerII
 
-  case object LiquidPowerIII extends LiquidPowerIII
+  case object LiquidPowerIII extends ClassEnhancement, LiquidPowerIII
 
-  case object Multivial extends Multivial
+  case object Multivial extends ClassEnhancement, Multivial
 
   // Tier1
-  case object SpellvialSelection extends SpellvialSelection
+  case object SpellvialSelection extends ClassEnhancement, SpellvialSelection
 
-  case object ArcaneKnowledge extends ArcaneKnowledge
+  case object ArcaneKnowledge extends ClassEnhancement, ArcaneKnowledge
 
-  case object MagicalSubtlety extends MagicalSubtlety
+  case object MagicalSubtlety extends ClassEnhancement, MagicalSubtlety
 
-  case object SpellCriticalElementalAndPoisonI extends SpellCriticalElementalAndPoisonI
+  case object SpellCriticalElementalAndPoisonI
+    extends ClassEnhancement, SpellCriticalElementalAndPoisonI
 
-  case object WandAndScrollMastery extends WandAndScrollMastery
+  case object WandAndScrollMastery extends ClassEnhancement, WandAndScrollMastery
 
   // Tier2
-  case object RapidCondensation extends SLARapidCondensation
+  case object RapidCondensation extends ClassEnhancement, SLARapidCondensation
 
-  case object EfficientMetamagicsI extends EfficientMetamagicsI
+  case object EfficientMetamagicsI extends ClassEnhancement, EfficientMetamagicsI
 
-  case object StoneOfTheSavant extends StoneOfTheSavant
+  case object StoneOfTheSavant extends ClassEnhancement, StoneOfTheSavant
 
-  case object SpellCriticalElementalAndPoisonII extends SpellCriticalElementalAndPoisonII
+  case object SpellCriticalElementalAndPoisonII
+    extends ClassEnhancement, SpellCriticalElementalAndPoisonII
 
-  case object ElementalDefenses extends ElementalDefenses
+  case object ElementalDefenses extends ClassEnhancement, ElementalDefenses
 
   // Tier3
-  case object EfficientMetamagicsII extends EfficientMetamagicsII
+  case object EfficientMetamagicsII extends ClassEnhancement, EfficientMetamagicsII
 
-  case object SwiftAmbition extends SwiftAmbition
+  case object SwiftAmbition extends ClassEnhancement, SwiftAmbition
 
-  case object SpellCriticalElementalAndPoisonIII extends SpellCriticalElementalAndPoisonIII
+  case object SpellCriticalElementalAndPoisonIII
+    extends ClassEnhancement, SpellCriticalElementalAndPoisonIII
 
-  case object AbilityIBombardier extends AbilityIBombardier
+  case object AbilityIBombardier extends ClassEnhancement, AbilityIBombardier
 
   // Tier4
-  case object SmokeBomb extends SLASmokeBomb
+  case object SmokeBomb extends ClassEnhancement, SLASmokeBomb
 
   // Tier5
 
-  case object EfficientHeighten extends EfficientHeighten
+  case object EfficientHeighten extends ClassEnhancement, EfficientHeighten
 
-  case object BurningAmbition extends BurningAmbition
+  case object BurningAmbition extends ClassEnhancement, BurningAmbition
   // Parent needs SLA for each element and a means to express it
 
-  case object SpellCriticalElementalAndPoisonIV extends SpellCriticalElementalAndPoisonIV
+  case object SpellCriticalElementalAndPoisonIV
+    extends ClassEnhancement, SpellCriticalElementalAndPoisonIV
 
-  case object BomAbilityII extends BomAbilityII
+  case object BomAbilityII extends ClassEnhancement, BomAbilityII
 
-  case object ElementalObliteration extends ElementalObliteration {
+  case object ElementalObliteration extends ClassEnhancement, ElementalObliteration {
 
-    override val subEnhancements: Seq[ClassEnhancement with SubEnhancement] =
+    override val subEnhancements: Seq[ClassEnhancement & SubEnhancement] =
       generateObliterationMultiSelector
   }
 
-  case object Augmentation extends Augmentation
+  case object Augmentation extends ClassEnhancement, Augmentation
 
-  case object InfernoOfCreation extends InfernoOfCreation
+  case object InfernoOfCreation extends ClassEnhancement, InfernoOfCreation
 
-  case object ConjurationFocus extends ConjurationFocus
+  case object ConjurationFocus extends ClassEnhancement, ConjurationFocus
 
-  case object WeakeningMixture extends WeakeningMixture {
+  case object WeakeningMixture extends ClassEnhancement, WeakeningMixture {
 
-    override val subEnhancements: Seq[ClassEnhancement with SubEnhancement] =
+    override val subEnhancements: Seq[ClassEnhancement & SubEnhancement] =
       generateWeakeningMixtureMultiSelector
   }
 }

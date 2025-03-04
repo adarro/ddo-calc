@@ -1,7 +1,10 @@
 /*
  * SPDX-License-Identifier: Apache-2.0
  *
- * Copyright 2015-2021 Andre White.
+ * Copyright 2015-2025
+ *
+ * Author: Andre White.
+ * FILE: WeaponCategory.scala
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -14,19 +17,6 @@
  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
  * See the License for the specific language governing permissions and
  * limitations under the License.
- */
-/**
- * Copyright (C) 2015 Andre White (adarro@gmail.com)
- *
- * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except
- * in compliance with the License. You may obtain a copy of the License at
- *
- * http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software distributed under the License
- * is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express
- * or implied. See the License for the specific language governing permissions and limitations under
- * the License.
  */
 package io.truthencode.ddo.model.item.weapon
 
@@ -94,7 +84,8 @@ object WeaponCategory extends Enum[WeaponCategory] {
     RepeatingHeavyCrossbow,
     RepeatingLightCrossbow,
     Shortsword,
-    ThrowingDagger)
+    ThrowingDagger
+  )
 
   /**
    * These weapons get +1 to threat range with IC (Everything Not in the plus 2 / 3 lists.)
@@ -116,7 +107,7 @@ object WeaponCategory extends Enum[WeaponCategory] {
         val a1 = icPlus1.filter(_ == weapon).flatMap(optPlus(_, 1))
         val a2 = icPlus2.filter(_ == weapon).flatMap(optPlus(_, 2))
         val a3 = icPlus3.filter(_ == weapon).flatMap(optPlus(_, 3))
-        val squish = (a1 ++ a2 ++ a3)
+        val squish = a1 ++ a2 ++ a3
         val squished = squish.head
         squished
       }
@@ -154,37 +145,31 @@ object WeaponCategory extends Enum[WeaponCategory] {
     case x: Slashing => (x, WeaponClass.Slashing)
   }
 
-  def exoticWeapons: Seq[WeaponCategory with ExoticWeapon] = {
-    for {
-      w <- WeaponCategory.values.filter { x =>
+  def exoticWeapons: Seq[WeaponCategory & ExoticWeapon] = {
+    for w <- WeaponCategory.values.filter { x =>
         x match {
           case _: ExoticWeapon => true
           case _ => false
         }
-      }
-    } yield w.asInstanceOf[WeaponCategory with ExoticWeapon]
+      } yield w.asInstanceOf[WeaponCategory & ExoticWeapon]
   }
 
-  def martialWeapons: Seq[WeaponCategory with MartialWeapon] = {
-    for {
-      w <- WeaponCategory.values.filter { x =>
+  def martialWeapons: Seq[WeaponCategory & MartialWeapon] = {
+    for w <- WeaponCategory.values.filter { x =>
         x match {
           case _: MartialWeapon => true
           case _ => false
         }
-      }
-    } yield w.asInstanceOf[WeaponCategory with MartialWeapon]
+      } yield w.asInstanceOf[WeaponCategory & MartialWeapon]
   }
 
-  def simpleWeapons: Seq[WeaponCategory with SimpleWeapon] = {
-    for {
-      w <- WeaponCategory.values.filter { x =>
+  def simpleWeapons: Seq[WeaponCategory & SimpleWeapon] = {
+    for w <- WeaponCategory.values.filter { x =>
         x match {
           case _: SimpleWeapon => true
           case _ => false
         }
-      }
-    } yield w.asInstanceOf[WeaponCategory with SimpleWeapon]
+      } yield w.asInstanceOf[WeaponCategory & SimpleWeapon]
   }
 
   case object BastardSword extends WeaponCategory with ExoticWeapon with MeleeDamage with Slashing

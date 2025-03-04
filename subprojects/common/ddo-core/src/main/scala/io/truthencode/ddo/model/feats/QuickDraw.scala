@@ -1,7 +1,10 @@
 /*
  * SPDX-License-Identifier: Apache-2.0
  *
- * Copyright 2015-2021 Andre White.
+ * Copyright 2015-2025
+ *
+ * Author: Andre White.
+ * FILE: QuickDraw.scala
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -27,8 +30,8 @@ import io.truthencode.ddo.support.requisite.{FeatRequisiteImpl, RequiresBaB}
  * Base Attack Bonus +1
  */
 trait QuickDraw
-  extends FeatRequisiteImpl with Passive with RequiresBaB with FighterBonusFeat
-  with AlchemistBonusFeat {
+  extends FeatRequisiteImpl with BonusSelectableToClassFeatImpl with Passive with RequiresBaB
+  with FighterBonusFeat with AlchemistBonusFeat {
   self: GeneralFeat =>
   override def requiresBaB: Int = 1
 }

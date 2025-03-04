@@ -1,3 +1,23 @@
+/*
+ * SPDX-License-Identifier: Apache-2.0
+ *
+ * Copyright 2015-2025
+ *
+ * Author: Andre White.
+ * FILE: BonusTypeTest.scala
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *     https://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
 package io.truthencode.ddo.enhancement
 
 import com.typesafe.scalalogging.LazyLogging
@@ -26,7 +46,7 @@ class BonusTypeTest
     "Shield",
     "Trinket",
     "Wrist").map { s => s"Mythic $s Boost" }
-  val expectedMythicBoosts: TableFor1[String] = Table("Boost_Type", boosts: _*)
+  val expectedMythicBoosts: TableFor1[String] = Table("Boost_Type", boosts*)
   describe("Mythic Boosts") {
     /*
      * Weapons, belts, gloves, goggles, rings, and trinkets grant Mythic bonus to Melee, Ranged, and Universal Spell Power.
@@ -35,7 +55,7 @@ class BonusTypeTest
      * (Some) ToEE items can appear with two mythic bonuses, e.g., Weapon and Shield.
      */
     they("Should apply to a specific set of item slots") {
-      // TODO: Mythic Boost validation Dyanmically / programmatically link location to boost.
+      // TODO: Mythic Boost validation Dynamically / programmatically link location to boost.
       // Some ToEE items can have both Weapon and Shield bonuses.
       // bonus constrained between 1 to 3 and 2 to 4 depending on level and item type.
       val nameMap = HashMap(

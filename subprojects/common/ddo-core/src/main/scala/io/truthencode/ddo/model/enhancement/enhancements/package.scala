@@ -1,7 +1,10 @@
 /*
  * SPDX-License-Identifier: Apache-2.0
  *
- * Copyright 2015-2021 Andre White.
+ * Copyright 2015-2025
+ *
+ * Author: Andre White.
+ * FILE: package.scala
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -17,6 +20,7 @@
  */
 package io.truthencode.ddo.model.enhancement
 
+import io.truthencode.ddo.support.points.SpendablePoints
 import io.truthencode.ddo.support.tree.TreeLike
 
 package object enhancements {
@@ -26,7 +30,7 @@ package object enhancements {
    * @param source
    *   Tuple of Tree and cost values
    */
-  implicit def expanders(source: (TreeLike, Int)) = {
+  implicit def expanders(source: (TreeLike, Int)): (TreeLike, SpendablePoints, Int) = {
 
     (source._1, source._1.pointType, source._2)
 

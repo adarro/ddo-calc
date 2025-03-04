@@ -1,7 +1,10 @@
 /*
  * SPDX-License-Identifier: Apache-2.0
  *
- * Copyright 2015-2021 Andre White.
+ * Copyright 2015-2025
+ *
+ * Author: Andre White.
+ * FILE: EnhancementRequisite.scala
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -36,7 +39,7 @@ sealed trait ClassEnhancementRequisite {
 
 trait ClassEnhancementRequisiteImpl
   extends MustContainImpl[Requirement] with ClassEnhancementRequisite {
-  self: Requisite with RequisiteType =>
+  self: Requisite & RequisiteType =>
   def anyOfClassEnhancements: Seq[ClassEnhancement] = IndexedSeq.apply()
 
   def allOfClassEnhancements: Seq[ClassEnhancement] = IndexedSeq.apply()
@@ -47,10 +50,10 @@ trait ClassEnhancementRequisiteImpl
 object ClassEnhancementRequisite {
 
   def stringToClass(classId: String*): Seq[ClassEnhancement] = {
-    for {
+    for
       cls <- classId
       cOpt <- ClassEnhancement.withNameInsensitiveOption(cls)
-    } yield cOpt
+    yield cOpt
   }
 }
 

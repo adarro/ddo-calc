@@ -1,7 +1,10 @@
 /*
  * SPDX-License-Identifier: Apache-2.0
  *
- * Copyright 2015-2021 Andre White.
+ * Copyright 2015-2025
+ *
+ * Author: Andre White.
+ * FILE: GreaterRuin.scala
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -17,7 +20,7 @@
  */
 package io.truthencode.ddo.model.feats
 
-import io.truthencode.ddo.activation.OnSpellCastEvent
+import io.truthencode.ddo.activation.{OnSpellCastEvent, TriggeredActivationImpl}
 import io.truthencode.ddo.model.spells.SpellBookImpl
 import io.truthencode.ddo.support.requisite.{FreeFeat, RequiresAllOfFeat, RequiresCharacterLevel}
 
@@ -37,13 +40,14 @@ import java.time.Duration
  *   from Ruin.
  */
 protected[feats] trait GreaterRuin
-  extends FreeFeat with SpellFeats with SpellBookImpl with OnSpellCastEvent with Passive
-  with RequiresCharacterLevel with RequiresAllOfFeat { self: EpicFeat =>
+  extends FreeFeat with TriggeredActivationImpl with SpellFeats with SpellBookImpl
+  with OnSpellCastEvent with Passive with RequiresCharacterLevel with RequiresAllOfFeat {
+  self: EpicFeat =>
 
   final override val requireCharacterLevel: Int = 30
 
   override def coolDown: Option[Duration] = Some(Duration.ofSeconds(15))
 
-  abstract override def spellIds: Set[String] = super.spellIds + entryName
+  override def spellIds: Set[String] = super.spellIds + entryName
   override def allOfFeats: Seq[Feat] = List(EpicFeat.Ruin)
 }

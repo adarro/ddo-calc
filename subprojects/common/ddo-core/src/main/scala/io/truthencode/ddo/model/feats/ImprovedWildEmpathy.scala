@@ -1,7 +1,10 @@
 /*
  * SPDX-License-Identifier: Apache-2.0
  *
- * Copyright 2015-2021 Andre White.
+ * Copyright 2015-2025
+ *
+ * Author: Andre White.
+ * FILE: ImprovedWildEmpathy.scala
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -17,7 +20,7 @@
  */
 package io.truthencode.ddo.model.feats
 
-import io.truthencode.ddo.activation.AtWillEvent
+import io.truthencode.ddo.activation.{AtWillEvent, TriggeredActivationImpl}
 import io.truthencode.ddo.model.classes.HeroicCharacterClass
 import io.truthencode.ddo.model.classes.HeroicCharacterClass.{Druid, Ranger}
 import io.truthencode.ddo.support.requisite.{FeatRequisiteImpl, GrantsToClass, RequiresAnyOfClass}
@@ -27,15 +30,15 @@ import java.time.Duration
 /**
  * [[https://ddowiki.com/page/Improved_Wild_Empathy Improved Wild Empathy]] This feat allows a
  * ranger to charm an animal (similar to the Charm monster spell) for 5 minutes. It can be used 3
- * times / rest period with a 60 second cool down.
+ * times / rest period with a 60-second cool down.
  *
  * Target: Animal, Magical Beast Save: Will
  * @todo
  *   add Difficulty Checks
  */
 protected[feats] trait ImprovedWildEmpathy
-  extends FeatRequisiteImpl with ActiveFeat with AtWillEvent with GrantsToClass
-  with RequiresAnyOfClass {
+  extends FeatRequisiteImpl with TriggeredActivationImpl with ActiveFeat with AtWillEvent
+  with GrantsToClass with RequiresAnyOfClass {
   override def anyOfClass: Seq[(HeroicCharacterClass, Int)] =
     List((Druid, 7), (Ranger, 7))
 

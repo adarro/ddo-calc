@@ -1,7 +1,10 @@
 /*
  * SPDX-License-Identifier: Apache-2.0
  *
- * Copyright 2015-2021 Andre White.
+ * Copyright 2015-2025
+ *
+ * Author: Andre White.
+ * FILE: BowStrength.scala
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -31,7 +34,7 @@ import io.truthencode.ddo.support.requisite._
  * Weapon Specialization: Ranged Weapons, Power Attack, Combat Expertise, Zen Archery
  */
 protected[feats] trait BowStrength
-  extends FeatRequisiteImpl
+  extends FeatRequisiteImpl with BonusSelectableToClassFeatImpl
   // with ClassRequisiteImpl
   with Passive with RequiresBaB with RequiresAllOfFeat with RequiresAnyOfFeat with FighterBonusFeat
   with GrantsToClass {

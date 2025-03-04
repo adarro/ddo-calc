@@ -1,7 +1,10 @@
 /*
  * SPDX-License-Identifier: Apache-2.0
  *
- * Copyright 2015-2021 Andre White.
+ * Copyright 2015-2025
+ *
+ * Author: Andre White.
+ * FILE: Dice.scala
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -18,7 +21,7 @@
 package io.truthencode.ddo.support.dice
 
 /**
- * Represents a Dice with Sides and Number of Dice to roll
+ * Represents a Die with Sides and Number of Dice to roll
  *
  * @example
  *   2d6 would be 2 6 sided dice or 2 - 12
@@ -33,7 +36,7 @@ trait Dice {
   def roll: Int = {
     val rnd = scala.util.Random
     val rng = Range.inclusive(1, number)
-    (for { r <- rng } yield rnd.nextInt(sides) + 1).sum
+    (for r <- rng yield rnd.nextInt(sides) + 1).sum
   }
 }
 
@@ -48,6 +51,6 @@ object Dice {
   }
 
   def parse(s: String): Unit = {
-    val regx = """\[\d+d\d+\]""".r
+    val regx = """\[\d+d\d+]""".r
   }
 }

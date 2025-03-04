@@ -1,7 +1,10 @@
 /*
  * SPDX-License-Identifier: Apache-2.0
  *
- * Copyright 2015-2021 Andre White.
+ * Copyright 2015-2025
+ *
+ * Author: Andre White.
+ * FILE: EffectParameters.scala
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -59,10 +62,10 @@ object EffectParameter extends SmartEnum[EffectParameter] with Searchable[Effect
   val values: IndexedSeq[EffectParameter] = findValues ++ bonusTypes ++ triggerEvents
 
   def triggerEvents: immutable.IndexedSeq[Trigger] =
-    for { t <- TriggerEvent.values } yield Trigger(t)
+    for t <- TriggerEvent.values yield Trigger(t)
 
   def bonusTypes: immutable.IndexedSeq[BonusType] =
-    for { b <- Bonus.values } yield BonusType(b)
+    for b <- Bonus.values yield BonusType(b)
 
   case class Trigger(triggerEvent: TriggerEvent) extends EffectParameter
 

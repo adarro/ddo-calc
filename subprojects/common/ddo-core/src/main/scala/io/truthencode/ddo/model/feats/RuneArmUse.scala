@@ -1,7 +1,10 @@
 /*
  * SPDX-License-Identifier: Apache-2.0
  *
- * Copyright 2015-2021 Andre White.
+ * Copyright 2015-2025
+ *
+ * Author: Andre White.
+ * FILE: RuneArmUse.scala
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -17,7 +20,7 @@
  */
 package io.truthencode.ddo.model.feats
 
-import io.truthencode.ddo.activation.OnToggleEvent
+import io.truthencode.ddo.activation.{OnToggleEvent, TriggeredActivationImpl}
 import io.truthencode.ddo.model.classes.HeroicCharacterClass
 import io.truthencode.ddo.model.classes.HeroicCharacterClass.Artificer
 import io.truthencode.ddo.model.misc.DefaultCoolDown
@@ -31,8 +34,8 @@ import io.truthencode.ddo.support.requisite.{FeatRequisiteImpl, GrantsToClass, R
  * while charging the Rune Arm. Created by adarr on 2/16/2017.
  */
 protected[feats] trait RuneArmUse
-  extends FeatRequisiteImpl with ActiveFeat with OnToggleEvent with Passive with GrantsToClass
-  with RequiresAllOfClass with DefaultCoolDown {
+  extends FeatRequisiteImpl with TriggeredActivationImpl with ActiveFeat with OnToggleEvent
+  with Passive with GrantsToClass with RequiresAllOfClass with DefaultCoolDown {
   override def allOfClass: Seq[(HeroicCharacterClass, Int)] =
     List((Artificer, 2))
 

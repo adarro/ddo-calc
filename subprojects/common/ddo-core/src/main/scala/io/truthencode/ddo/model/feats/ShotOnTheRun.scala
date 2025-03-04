@@ -1,7 +1,10 @@
 /*
  * SPDX-License-Identifier: Apache-2.0
  *
- * Copyright 2015-2021 Andre White.
+ * Copyright 2015-2025
+ *
+ * Author: Andre White.
+ * FILE: ShotOnTheRun.scala
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -26,9 +29,9 @@ import io.truthencode.ddo.support.requisite._
  * Dexterity 13, Base Attack Bonus 4+
  */
 protected[feats] trait ShotOnTheRun
-  extends FeatRequisiteImpl with Passive with RequiresAllOfFeat with AttributeRequisiteImpl
-  with RequiresAllOfAttribute with RequiresBaB with FighterBonusFeat with ArtificerBonusFeat
-  with AlchemistBonusFeat {
+  extends FeatRequisiteImpl with BonusSelectableToClassFeatImpl with Passive with RequiresAllOfFeat
+  with AttributeRequisiteImpl with RequiresAllOfAttribute with RequiresBaB with FighterBonusFeat
+  with ArtificerBonusFeat with AlchemistBonusFeat {
   self: GeneralFeat =>
 
   override def allOfAttributes: Seq[(Attribute, Int)] =

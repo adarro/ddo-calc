@@ -1,7 +1,10 @@
 /*
  * SPDX-License-Identifier: Apache-2.0
  *
- * Copyright 2015-2021 Andre White.
+ * Copyright 2015-2025
+ *
+ * Author: Andre White.
+ * FILE: EpicCharacterClass.scala
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -31,7 +34,7 @@ sealed trait EpicCharacterClass extends CharacterClass with EnumEntry {
 }
 
 /**
- * Represents character's between 20 and 29?
+ * Represents character's between 20 and 30
  */
 object EpicCharacterClass extends Enum[EpicCharacterClass] {
   private val generateLevels = {
@@ -47,7 +50,7 @@ object EpicCharacterClass extends Enum[EpicCharacterClass] {
 }
 
 /**
-* Represents an Epic level.
+ * Represents an Epic level.
  * @param level
  */
 case class EpicLevel(level: Int) extends EpicCharacterClass with FreeToPlayFeature {

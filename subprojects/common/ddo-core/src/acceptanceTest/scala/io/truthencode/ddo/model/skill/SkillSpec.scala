@@ -1,7 +1,10 @@
 /*
  * SPDX-License-Identifier: Apache-2.0
  *
- * Copyright 2015-2021 Andre White.
+ * Copyright 2015-2025
+ *
+ * Author: Andre White.
+ * FILE: SkillSpec.scala
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -47,7 +50,7 @@ class SkillSpec {
     val header = s"<table><tr><th>$heading</th></tr>"
     val footer = "</table>"
     val table = s"$header$data$footer"
-    if (collapse) {
+    if collapse then {
       s"""<div class=\"collapsible\">$table</div>"""
     } else {
       table
@@ -56,10 +59,10 @@ class SkillSpec {
   }
 
   def withNameAsList(skillId: String): util.List[Skill] = {
-    for {
+    for
       v <- skillEnum.values
       if v.toString == skillId
-    } yield v
+    yield v
   }.asJava
 
 }

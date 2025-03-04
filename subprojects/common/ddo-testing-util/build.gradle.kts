@@ -19,44 +19,60 @@
 description = "Shared Testing and convenience Utilities (Intended for Test Scope)"
 
 plugins {
-    id("scala-library-profile")
-//    id("acceptance-test-conventions")
+
+    id("buildlogic.scala-library-profile")
 }
-val scalaLibraryVersion: String by project
+
 dependencies {
     dependencies {
-        val scalaLibraryVersion: String by project
-        val scalaMajorVersion: String by project
+        val builderScalaVersion: String by project
 
         implementation(enforcedPlatform(project(":ddo-platform-scala")))
-        implementation("org.scala-lang:scala-library:$scalaLibraryVersion")
-        implementation(group = "com.beachape", name = "enumeratum_$scalaMajorVersion")
-        implementation(group = "com.typesafe", name = "config")
-        implementation(group = "com.github.kxbmap", name = "configs_$scalaMajorVersion")
+
+        logger.error("showing builderScalaVersion: $builderScalaVersion")
+        when (builderScalaVersion) {
+            "3" -> {
+                implementation(libs.scala3.library)
+                implementation(libs.enumeratum.s3)
+                implementation(libs.typesafe.scala.logging.s3)
+                implementation(libs.scalatest.plus.scalacheck.s3)
+            }
+
+            else -> {
+                implementation(libs.scala2.library)
+                implementation(libs.enumeratum.s213)
+                implementation(libs.typesafe.scala.logging.s213)
+                implementation(libs.scalatest.plus.scalacheck.s213)
+            }
+        }
+
+        implementation(libs.typesafe.config)
+        // No scala 3 specific version ATM
+        implementation(libs.kxbmap.configs.s213)
 
         // database
 
         // validation and rules
-        implementation(group = "com.wix", name = "accord-core_$scalaMajorVersion")
-        implementation(group = "ch.qos.logback", name = "logback-classic")
-        implementation(group = "com.typesafe.scala-logging", name = "scala-logging_$scalaMajorVersion")
-        implementation(group = "org.scalatest", name = "scalatest_$scalaMajorVersion")
-        testImplementation(group = "org.mockito", name = "mockito-core")
+        implementation(libs.logback.classic)
 
-        // JUnit 5
-        testRuntimeOnly(group = "org.junit.platform", name = "junit-platform-engine")
-        testRuntimeOnly(group = "org.junit.platform", name = "junit-platform-launcher")
-        testRuntimeOnly(group = "co.helmethair", name = "scalatest-junit-runner")
+//        implementation(group = "org.scalatest", name = "scalatest_$scalaMajorVersion")
+
+//        testImplementation(group = "org.mockito", name = "mockito-core")
+//
+//        // JUnit 5
+//        testRuntimeOnly(group = "org.junit.platform", name = "junit-platform-engine")
+//        testRuntimeOnly(group = "org.junit.platform", name = "junit-platform-launcher")
+//        testRuntimeOnly(group = "co.helmethair", name = "scalatest-junit-runner")
     }
 }
-tasks {
-    // Use the built-in JUnit support of Gradle.
-    "test"(Test::class) {
-        useJUnitPlatform {
-            includeEngines = setOf("scalatest")
-            testLogging {
-                events("passed", "skipped", "failed")
-            }
-        }
-    }
-}
+// tasks {
+//    // Use the built-in JUnit support of Gradle.
+//    "test"(Test::class) {
+//        useJUnitPlatform {
+//            includeEngines = setOf("scalatest")
+//            testLogging {
+//                events("passed", "skipped", "failed")
+//            }
+//        }
+//    }
+// }

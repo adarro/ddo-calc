@@ -1,7 +1,10 @@
 /*
  * SPDX-License-Identifier: Apache-2.0
  *
- * Copyright 2015-2021 Andre White.
+ * Copyright 2015-2025
+ *
+ * Author: Andre White.
+ * FILE: TwoHandedFighting.scala
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -33,8 +36,9 @@ import io.truthencode.ddo.support.requisite.{
  * Strength 15
  */
 trait TwoHandedFighting
-  extends FeatRequisiteImpl with Passive with AttributeRequisiteImpl with RequiresAllOfAttribute
-  with FighterBonusFeat with MartialArtsFeat with ArtificerBonusFeat {
+  extends FeatRequisiteImpl with BonusSelectableToClassFeatImpl with Passive
+  with AttributeRequisiteImpl with RequiresAllOfAttribute with FighterBonusFeat with MartialArtsFeat
+  with ArtificerBonusFeat {
   self: GeneralFeat =>
   override def allOfAttributes: Seq[(Attribute, Int)] = List((Attribute.Strength, 15))
 }

@@ -1,7 +1,10 @@
 /*
  * SPDX-License-Identifier: Apache-2.0
  *
- * Copyright 2015-2021 Andre White.
+ * Copyright 2015-2025
+ *
+ * Author: Andre White.
+ * FILE: ArtificerKnowledgeScrolls.scala
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -43,10 +46,10 @@ protected[feats] trait ArtificerKnowledgeScrolls
   self: ClassFeat =>
   private lazy val levels = List(1, 4, 7, 10, 13)
 // This could be written in a simple map, but I am unsure ATM if Alchemist get it to.  And it's easier to simply add / remove them.
-  private lazy val classLevels = for {
+  private lazy val classLevels = for
     c <- List(Artificer) // Possibly Alchemist?
     l <- levels
-  } yield (c, l)
+  yield (c, l)
   // Affects Alchemists and Artificers
   override def anyOfClass: Seq[(HeroicCharacterClass, Int)] = classLevels
 

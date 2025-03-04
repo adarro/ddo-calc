@@ -12,7 +12,7 @@ Effects are coming from several sources, and we need to get them into a common d
 6. Set Bonuses from the above
 7. Temporary effects (Spells / Potions etc.)
 
-```plantuml
+```puml
 @startmindmap
 <style>
 mindmapDiagram {

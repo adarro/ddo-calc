@@ -1,7 +1,10 @@
 /*
  * SPDX-License-Identifier: Apache-2.0
  *
- * Copyright 2015-2021 Andre White.
+ * Copyright 2015-2025
+ *
+ * Author: Andre White.
+ * FILE: SpellLike.scala
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -29,8 +32,8 @@ object SpellBuilder {
   def apply(): SpellBuilder[EmptySpell] =
     apply[EmptySpell](Set()) // new SpellBuilder(elements)
 
-  def apply(name: String): SpellBuilder[EmptySpell with WithName] =
-    apply[EmptySpell with WithName](Set(UseSpellName(name))) // new SpellBuilder(elements)
+  def apply(name: String): SpellBuilder[EmptySpell & WithName] =
+    apply[EmptySpell & WithName](Set(UseSpellName(name))) // new SpellBuilder(elements)
 
   def apply[T <: Spell](ingredients: Set[SpellElement]): SpellBuilder[T] =
     new SpellBuilder[T](ingredients)
@@ -42,39 +45,38 @@ abstract protected class BaseSpellBuilder[T <: Spell] protected (
   elements: Set[SpellElement]
 ) {
 
-  type CompleteSpell = EmptySpell
-    with WithName with WithSpellInfo with WithSpellEffects with WithCasterClass with WithTarget
-    with WithSpellSavingThrow with WithSpellPoints with WithComponents with WithLevelCap
+  type CompleteSpell = EmptySpell & WithName & WithSpellInfo & WithSpellEffects & WithCasterClass &
+    WithTarget & WithSpellSavingThrow & WithSpellPoints & WithComponents & WithLevelCap
   //  with CoolDown
 
-  def addName(name: String): BaseSpellBuilder[T with WithName]
+  def addName(name: String): BaseSpellBuilder[T & WithName]
 
-  def addSpellInfo(si: SpellInfo): BaseSpellBuilder[T with WithSpellInfo]
+  def addSpellInfo(si: SpellInfo): BaseSpellBuilder[T & WithSpellInfo]
 
   // SpellInfo
   //  def addCoolDown(cd: Option[Duration]): BaseSpellBuilder[T with CoolDown]
 
   def addCasterClass(
     cl: Seq[CasterWithLevel]
-  ): BaseSpellBuilder[T with WithCasterClass]
+  ): BaseSpellBuilder[T & WithCasterClass]
 
   def addSpellTarget(
     target: List[SpellTarget]
-  ): BaseSpellBuilder[T with WithTarget]
+  ): BaseSpellBuilder[T & WithTarget]
 
   def addSavingThrow(
     saves: List[SavingThrow]
-  ): BaseSpellBuilder[T with WithSpellSavingThrow]
+  ): BaseSpellBuilder[T & WithSpellSavingThrow]
 
-  def addSpellPoints(sp: Int): BaseSpellBuilder[T with WithSpellPoints]
+  def addSpellPoints(sp: Int): BaseSpellBuilder[T & WithSpellPoints]
 
   def addComponents(
     component: List[ComponentList]
-  ): BaseSpellBuilder[T with WithComponents]
+  ): BaseSpellBuilder[T & WithComponents]
 
-  def addLevelCap(cl: CasterLevelCap): BaseSpellBuilder[T with WithLevelCap]
+  def addLevelCap(cl: CasterLevelCap): BaseSpellBuilder[T & WithLevelCap]
 
-  def addEffect(eff: EffectList): BaseSpellBuilder[T with WithSpellEffects]
+  def addEffect(eff: EffectList): BaseSpellBuilder[T & WithSpellEffects]
 
   /**
    * Adds Spell Resistance Information
@@ -111,58 +113,58 @@ class SpellBuilder[T <: Spell](elements: Set[SpellElement] = Set.empty)
 
   override def addCasterClass(
     cl: Seq[CasterWithLevel]
-  ): BaseSpellBuilder[T with WithCasterClass] = {
-    SpellBuilder[T with WithCasterClass](elements + UseCasterClass {
+  ): BaseSpellBuilder[T & WithCasterClass] = {
+    SpellBuilder[T & WithCasterClass](elements + UseCasterClass {
       cl.toSet
     })
   }
 
   override def addSpellTarget(
     targets: List[SpellTarget]
-  ): BaseSpellBuilder[T with WithTarget] =
-    SpellBuilder[T with WithTarget](elements + UseSpellTarget {
+  ): BaseSpellBuilder[T & WithTarget] =
+    SpellBuilder[T & WithTarget](elements + UseSpellTarget {
       targets
     })
 
   override def addSavingThrow(
     saves: List[SavingThrow]
-  ): BaseSpellBuilder[T with WithSpellSavingThrow] =
-    SpellBuilder[T with WithSpellSavingThrow](elements + UseSpellSavingThrow {
+  ): BaseSpellBuilder[T & WithSpellSavingThrow] =
+    SpellBuilder[T & WithSpellSavingThrow](elements + UseSpellSavingThrow {
       saves
     })
 
   override def addSpellPoints(
     sp: Int
-  ): BaseSpellBuilder[T with WithSpellPoints] =
-    SpellBuilder[T with WithSpellPoints](elements + UseSpellPoints {
+  ): BaseSpellBuilder[T & WithSpellPoints] =
+    SpellBuilder[T & WithSpellPoints](elements + UseSpellPoints {
       sp
     })
 
   override def addComponents(
     component: List[ComponentList]
-  ): BaseSpellBuilder[T with WithComponents] =
-    SpellBuilder[T with WithComponents](elements + UseComponents {
+  ): BaseSpellBuilder[T & WithComponents] =
+    SpellBuilder[T & WithComponents](elements + UseComponents {
       component
     })
 
   override def addLevelCap(
     cl: CasterLevelCap
-  ): BaseSpellBuilder[T with WithLevelCap] =
-    SpellBuilder[T with WithLevelCap](elements + UseLevelCap {
+  ): BaseSpellBuilder[T & WithLevelCap] =
+    SpellBuilder[T & WithLevelCap](elements + UseLevelCap {
       cl.baseLevelCap
     })
 
   override def addEffect(
     eff: EffectList
-  ): BaseSpellBuilder[T with WithSpellEffects] =
-    SpellBuilder[T with WithSpellEffects](elements + UseSpellEffects {
+  ): BaseSpellBuilder[T & WithSpellEffects] =
+    SpellBuilder[T & WithSpellEffects](elements + UseSpellEffects {
       eff.effects
     })
 
   override def addSpellInfo(
     si: SpellInfo
-  ): BaseSpellBuilder[T with WithSpellInfo] =
-    SpellBuilder[T with WithSpellInfo](
+  ): BaseSpellBuilder[T & WithSpellInfo] =
+    SpellBuilder[T & WithSpellInfo](
       elements + UseSpellInfo(
         coolDown = si.coolDown,
         savingThrow = si.savingThrow,
@@ -174,8 +176,8 @@ class SpellBuilder[T <: Spell](elements: Set[SpellElement] = Set.empty)
       )
     )
 
-  override def addName(name: String): BaseSpellBuilder[T with WithName] =
-    SpellBuilder[T with WithName](elements + UseSpellName(name))
+  override def addName(name: String): BaseSpellBuilder[T & WithName] =
+    SpellBuilder[T & WithName](elements + UseSpellName(name))
 
   /*
   private[this] def buildFromElements(elements: Seq[SpellElement], name: String) = {
@@ -224,7 +226,7 @@ class SpellBuilder[T <: Spell](elements: Set[SpellElement] = Set.empty)
       elements.extract[WithSpellInfo].toSet
     val wsr: immutable.Set[WithSpellResistance] =
       elements.extract[WithSpellResistance].toSet
-    if (info.nonEmpty) {
+    if info.nonEmpty then {
       SpellBuilder[T](elements + UseSpellResistance {
         sr.sr
       })

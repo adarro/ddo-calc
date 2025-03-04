@@ -1,7 +1,10 @@
 /*
  * SPDX-License-Identifier: Apache-2.0
  *
- * Copyright 2015-2021 Andre White.
+ * Copyright 2015-2025
+ *
+ * Author: Andre White.
+ * FILE: TenThousandStars.scala
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -17,7 +20,7 @@
  */
 package io.truthencode.ddo.model.feats
 
-import io.truthencode.ddo.activation.AtWillEvent
+import io.truthencode.ddo.activation.{AtWillEvent, TriggeredActivationImpl}
 import io.truthencode.ddo.enhancement.BonusType
 import io.truthencode.ddo.model.abilities.ActiveAbilities
 import io.truthencode.ddo.model.attribute.Attribute
@@ -27,32 +30,33 @@ import io.truthencode.ddo.model.effect.TriggerEvent
 import io.truthencode.ddo.model.effect.features.{FeaturesImpl, GrantAbilityFeature}
 import io.truthencode.ddo.model.misc.CoolDownPool.ManyShot
 import io.truthencode.ddo.model.misc.SharedCoolDown
-import io.truthencode.ddo.support.requisite._
+import io.truthencode.ddo.support.requisite.*
 
 import java.time.Duration
 
 /**
- * Icon Feat Ten Thousand Stars.png
- * [[https://ddowiki.com/page/Ten_Thousand_Stars Ten Thousand Stars]] Active - Ability For the next
- * 30 seconds, add your Wisdom ability score to your Ranged Power and add your monk level * 5 to
- * your Doubleshot. This ability puts Manyshot on a 30 second cooldown. Cooldown: one minute.
- * @fixme
- *   Currently have only one cooldown pool, but this has a 1 minute cooldown and adds Manyshot
+ * Icon Feat Ten Thousand Stars.png [Ten Thousand Stars Active - Ability For the
+ * next](https://ddowiki.com/page/Ten_Thousand_Stars) 30 seconds, add your Wisdom ability score to
+ * your Ranged Power and add your monk level * 5 to your Doubleshot. This ability puts Manyshot on a
+ * 30-second cooldown. Cooldown: one minute.
+ * @note
+ *   Currently have only one cooldown pool, but this has a 1-minute cooldown and adds Manyshot
  *   cooldown event.
  *
  * Level 6: Monk Dexterity 13
  */
 protected[feats] trait TenThousandStars
-  extends FeatRequisiteImpl with ClassRequisiteImpl with ActiveFeat with AtWillEvent
-  with SharedCoolDown with AttributeRequisiteImpl with RequiresAllOfAttribute
-  with RequiresAllOfClass with MartialArtsFeat with FeaturesImpl with GrantAbilityFeature {
+  extends FeatRequisiteImpl with ClassRequisiteImpl with TriggeredActivationImpl
+  with BonusSelectableToClassFeatImpl with ActiveFeat with AtWillEvent with SharedCoolDown
+  with AttributeRequisiteImpl with RequiresAllOfAttribute with RequiresAllOfClass
+  with MartialArtsFeat with FeaturesImpl with GrantAbilityFeature {
   self: GeneralFeat =>
 
   override lazy val grantedAbility: ActiveAbilities = ActiveAbilities.TenThousandStars
   override val coolDownPoolId: String = ManyShot.coolDownPoolId
-  override protected[this] val triggerOn: Seq[TriggerEvent] = Seq(TriggerEvent.AtWill)
-  override protected[this] val triggerOff: Seq[TriggerEvent] = Seq(TriggerEvent.OnCoolDown)
-  override protected[this] val grantAbilityCategories: Seq[effect.EffectCategories.Value] =
+  override protected val triggerOn: Seq[TriggerEvent] = Seq(TriggerEvent.AtWill)
+  override protected val triggerOff: Seq[TriggerEvent] = Seq(TriggerEvent.OnCoolDown)
+  override protected val grantAbilityCategories: Seq[effect.EffectCategories.Value] =
     Seq(effect.EffectCategories.Ability, effect.EffectCategories.RangedCombat)
   override val grantBonusType: BonusType = BonusType.Feat
   override val abilityId: String = "TenThousandStars"

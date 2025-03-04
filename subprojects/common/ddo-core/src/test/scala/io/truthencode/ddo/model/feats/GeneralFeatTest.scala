@@ -1,7 +1,10 @@
 /*
  * SPDX-License-Identifier: Apache-2.0
  *
- * Copyright 2015-2021 Andre White.
+ * Copyright 2015-2025
+ *
+ * Author: Andre White.
+ * FILE: GeneralFeatTest.scala
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -49,11 +52,10 @@ class GeneralFeatTest extends AnyFunSpec with Matchers with LazyLogging {
     }
     they("should function even with a default (empty) feature set") {
 
-      val f: Seq[(GeneralFeat, Feature[_])] = for {
+      val f: Seq[(GeneralFeat, Feature[?])] = for
         feat <- GeneralFeat.values
         features <- feat.features
-
-      } yield feat -> features
+      yield feat -> features
 
       f.foreach { ff =>
         logger.info(printFeature(ff._2))

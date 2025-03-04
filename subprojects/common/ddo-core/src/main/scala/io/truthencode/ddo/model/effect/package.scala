@@ -1,7 +1,10 @@
 /*
  * SPDX-License-Identifier: Apache-2.0
  *
- * Copyright 2015-2021 Andre White.
+ * Copyright 2015-2025
+ *
+ * Author: Andre White.
+ * FILE: package.scala
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -17,33 +20,17 @@
  */
 package io.truthencode.ddo.model
 
-import com.wix.accord.dsl._
-import com.wix.accord.{NullSafeValidator, Validator}
-import com.wix.accord.ViolationBuilder._
-import com.wix.accord.transform.ValidationTransform
+import com.typesafe.scalalogging.LazyLogging
 import io.truthencode.ddo.api.model.effect.DetailedEffect
+import io.truthencode.ddo.enhancement.BonusType
+import zio.prelude.Validation
 
 /**
  * Common constants and functions for generating, reading, and evaluating effects.
  */
 package object effect {
   // scalastyle:off
-  object Validation {
-    lazy val triggerNames: Seq[String] = TriggerEvent.values.map(_.entryName)
-    lazy val categories: Seq[String] = EffectCategories.values.map(_.toString).toSeq
-
-    def fullOf[T <: AnyRef](options: Seq[T]): Validator[T] =
-      new NullSafeValidator[T](
-        test = options.contains,
-        failure = _ -> s"is not one of (${options.mkString(",")})"
-      )
-    implicit val detailedEffectValidator: ValidationTransform.TransformedValidator[DetailedEffect] =
-      validator[DetailedEffect] { d =>
-        // triggers
-        d.triggersOn.each.is(fullOf(triggerNames))
-        d.triggersOff.each.is(fullOf(triggerNames))
-      }
-  }
+  object EffectValidation extends LazyLogging {}
 
   object EffectCategories extends Enumeration {
     type EffectCategory = Value
@@ -129,6 +116,7 @@ package object effect {
      * Skills such as Perform or Hide.
      */
     Skill,
+
     /**
      * Generally your Hit Points
      */

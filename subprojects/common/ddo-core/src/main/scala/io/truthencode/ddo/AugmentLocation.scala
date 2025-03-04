@@ -1,7 +1,10 @@
 /*
  * SPDX-License-Identifier: Apache-2.0
  *
- * Copyright 2015-2021 Andre White.
+ * Copyright 2015-2025
+ *
+ * Author: Andre White.
+ * FILE: AugmentLocation.scala
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -37,7 +40,12 @@ sealed trait AugmentLocation extends EnumEntry with BitWise {
 /**
  * Augments such as Diamonds, Topaz etc
  */
-trait GeneralAugmentLocation extends AugmentLocation
+trait ChromaticAugmentLocation extends AugmentLocation
+
+/**
+ * Lunar / Solar Augments introduced in update 69
+ */
+trait CelestialAugmentLocation extends AugmentLocation
 
 /**
  * Legacy Guild augment slots.
@@ -67,41 +75,51 @@ object AugmentLocation extends Enum[AugmentLocation] with BitSupport {
    * Typically Rubies which add additional damage types, spell power and / or bypass damage
    * reduction
    */
-  case object RedAugmentSlot extends GeneralAugmentLocation
+  case object RedAugmentSlot extends ChromaticAugmentLocation
 
   /**
    * Supports Red, Blue and augments that some named augments which specify a purple slot
    */
-  case object PurpleAugmentSlot extends GeneralAugmentLocation
+  case object PurpleAugmentSlot extends ChromaticAugmentLocation
 
   /**
    * Supports Sapphires
    */
-  case object BlueAugmentSlot extends GeneralAugmentLocation
+  case object BlueAugmentSlot extends ChromaticAugmentLocation
 
   /**
    * Supports Yellow and Blue augments and some named augments which specify a green slot.
    */
-  case object GreenAugmentSlot extends GeneralAugmentLocation
+  case object GreenAugmentSlot extends ChromaticAugmentLocation
 
   // Guild Augments
 
   /**
    * Supports Yellow Augments and Diamonds
    */
-  case object YellowAugmentSlot extends GeneralAugmentLocation
+  case object YellowAugmentSlot extends ChromaticAugmentLocation
 
   /**
    * Supports Yellow and Red augments and some named augments which specify an orange slot
    */
-  case object OrangeAugmentSlot extends GeneralAugmentLocation
+  case object OrangeAugmentSlot extends ChromaticAugmentLocation
 
   /**
    * Supports Diamonds and any named augments which specify a colorless slot.
    * @note
    *   all augment slots support colorless augments.
    */
-  case object ColorlessAugmentSlot extends GeneralAugmentLocation
+  case object ColorlessAugmentSlot extends ChromaticAugmentLocation
+
+  /**
+   * Can be slotted with a Lunar Augment
+   */
+  case object MoonAugmentSlot extends CelestialAugmentLocation
+
+  /**
+   * Can be slotted with a Solar Augment
+   */
+  case object SunAugmentSlot extends CelestialAugmentLocation
 
   /**
    * Supports Tiny Augments and can only be equipped by a character in a guild of a certain size.

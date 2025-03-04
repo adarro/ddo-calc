@@ -1,0 +1,12 @@
+pluginManagement {
+    repositories {
+        mavenCentral()
+        gradlePluginPortal()
+        mavenLocal()
+    }
+    plugins {
+        id "io.quarkus" version "3.15.0"
+    }
+}
+
+rootProject.name = 'scala3-quarkus-quickstart'

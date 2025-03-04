@@ -1,7 +1,10 @@
 /*
  * SPDX-License-Identifier: Apache-2.0
  *
- * Copyright 2015-2021 Andre White.
+ * Copyright 2015-2025
+ *
+ * Author: Andre White.
+ * FILE: HeavyArmorMaster.scala
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -31,8 +34,8 @@ import io.truthencode.ddo.support.requisite.{
  * Level 10: Fighter
  */
 trait HeavyArmorMaster
-  extends FeatRequisiteImpl with ClassRequisiteImpl with Passive with RequiresAllOfClass
-  with FighterBonusFeat {
+  extends FeatRequisiteImpl with BonusSelectableToClassFeatImpl with ClassRequisiteImpl with Passive
+  with RequiresAllOfClass with FighterBonusFeat {
   self: GeneralFeat =>
   override def allOfClass: Seq[(HeroicCharacterClass, Int)] =
     List((HeroicCharacterClass.Fighter, 10))

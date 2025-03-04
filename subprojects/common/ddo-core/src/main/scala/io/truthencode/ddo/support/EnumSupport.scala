@@ -1,7 +1,10 @@
 /*
  * SPDX-License-Identifier: Apache-2.0
  *
- * Copyright 2015-2021 Andre White.
+ * Copyright 2015-2025
+ *
+ * Author: Andre White.
+ * FILE: EnumSupport.scala
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -23,7 +26,7 @@ import scala.util.{Failure, Success, Try}
 
 object EnumSupport {
 
-  implicit class EnumOpts[U <: enumeratum.Enum[_ <: EnumEntry]](source: U) {
+  implicit class EnumOpts[U <: enumeratum.Enum[? <: EnumEntry]](source: U) {
     def tryCast(s: String): Try[EnumEntry] = {
       val g: Any = source.withName(s)
       source.withNameOption(s) match {
@@ -65,14 +68,13 @@ object EnumSupport {
    */
   def tryEnumFromString(fqn: String): Option[Enum[EnumEntry]] = {
     // Testing naming pattern for companion object
-    val mangle = if (fqn.endsWith("$")) { fqn }
+    val mangle = if fqn.endsWith("$") then { fqn }
     else { "%s$".format(fqn) }
-    val y: Try[AnyRef] = for {
+    val y: Try[AnyRef] = for
       c <- Try(Class.forName(mangle))
       c2 <- Try(c.getField("MODULE$"))
       c3 <- Try(c2.get(c2))
-
-    } yield c3
+    yield c3
     y match {
       case Success(x) =>
         Some(x).collect(anyToEnum)

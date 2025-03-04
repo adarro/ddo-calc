@@ -1,7 +1,10 @@
 /*
  * SPDX-License-Identifier: Apache-2.0
  *
- * Copyright 2015-2021 Andre White.
+ * Copyright 2015-2025
+ *
+ * Author: Andre White.
+ * FILE: WeaponProficiencyTest.scala
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -23,9 +26,9 @@ import io.truthencode.ddo.support.naming.DisplayProperties
 import org.scalatest.funspec.AnyFunSpec
 
 class WeaponProficiencyTest extends AnyFunSpec with LazyLogging {
-  lazy val exotics: Seq[GeneralFeat with SubFeat with ExoticWeaponProficiency] =
+  lazy val exotics: Seq[GeneralFeat & SubFeat & ExoticWeaponProficiency] =
     GeneralFeat.ExoticWeaponProficiency.subFeats.map {
-      x: GeneralFeat with SubFeat with ExoticWeaponProficiency with DisplayProperties => x
+      (x: GeneralFeat & SubFeat & ExoticWeaponProficiency & DisplayProperties) => x
     }
   describe("Weapon proficiency: Bastard Sword") {
     they("Exist") {

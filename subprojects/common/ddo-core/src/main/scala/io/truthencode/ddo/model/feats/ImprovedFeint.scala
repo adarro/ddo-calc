@@ -1,7 +1,10 @@
 /*
  * SPDX-License-Identifier: Apache-2.0
  *
- * Copyright 2015-2021 Andre White.
+ * Copyright 2015-2025
+ *
+ * Author: Andre White.
+ * FILE: ImprovedFeint.scala
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -17,7 +20,7 @@
  */
 package io.truthencode.ddo.model.feats
 
-import io.truthencode.ddo.activation.AtWillEvent
+import io.truthencode.ddo.activation.{AtWillEvent, TriggeredActivationImpl}
 import io.truthencode.ddo.enhancement.BonusType
 import io.truthencode.ddo.model.abilities.ActiveAbilities
 import io.truthencode.ddo.model.effect
@@ -42,14 +45,15 @@ import java.time.Duration
  *   Implement MustContainAtLeastOneOf(Sneak Attack or Half-Elf Dilettante: Rogue)
  */
 protected[feats] trait ImprovedFeint
-  extends FeatRequisiteImpl with ActiveFeat with AtWillEvent with RequiresAnyOfFeat
-  with RequiresAllOfFeat with FighterBonusFeat with FeaturesImpl with GrantAbilityFeature {
+  extends FeatRequisiteImpl with TriggeredActivationImpl with BonusSelectableToClassFeatImpl
+  with ActiveFeat with AtWillEvent with RequiresAnyOfFeat with RequiresAllOfFeat
+  with FighterBonusFeat with FeaturesImpl with GrantAbilityFeature {
   self: GeneralFeat =>
   override lazy val grantedAbility: ActiveAbilities = ActiveAbilities.ImprovedFeint
   override val grantBonusType: BonusType = BonusType.Feat
-  override protected[this] val triggerOn: Seq[TriggerEvent] = Seq(TriggerEvent.AtWill)
-  override protected[this] val triggerOff: Seq[TriggerEvent] = Seq(TriggerEvent.OnCoolDown)
-  override protected[this] val grantAbilityCategories: Seq[effect.EffectCategories.Value] =
+  override protected val triggerOn: Seq[TriggerEvent] = Seq(TriggerEvent.AtWill)
+  override protected val triggerOff: Seq[TriggerEvent] = Seq(TriggerEvent.OnCoolDown)
+  override protected val grantAbilityCategories: Seq[effect.EffectCategories.Value] =
     Seq(effect.EffectCategories.Ability, effect.EffectCategories.SpecialAttack)
   override val abilityId: String = "ImprovedFeint"
   override val description: String =

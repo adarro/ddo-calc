@@ -1,7 +1,10 @@
 /*
  * SPDX-License-Identifier: Apache-2.0
  *
- * Copyright 2015-2021 Andre White.
+ * Copyright 2015-2025
+ *
+ * Author: Andre White.
+ * FILE: EffectTest.scala
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -25,7 +28,7 @@ class EffectTest extends AnyFunSpec with Matchers {
   describe("A general effect") {
     it("should be able to be instantiated") {
       val e = new Effect with Features {
-        override def features: List[Feature[_]] = List()
+        override def features: List[Feature[?]] = List()
       }
     }
   }

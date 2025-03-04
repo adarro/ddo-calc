@@ -1,7 +1,10 @@
 /*
  * SPDX-License-Identifier: Apache-2.0
  *
- * Copyright 2015-2021 Andre White.
+ * Copyright 2015-2025
+ *
+ * Author: Andre White.
+ * FILE: ArtificerConstructMastery.scala
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -17,7 +20,7 @@
  */
 package io.truthencode.ddo.model.feats
 
-import io.truthencode.ddo.activation.AtWillEvent
+import io.truthencode.ddo.activation.{AtWillEvent, TriggeredActivationImpl}
 import io.truthencode.ddo.model.classes.HeroicCharacterClass
 import io.truthencode.ddo.model.misc.DefaultCasterCoolDown
 import io.truthencode.ddo.model.spells.{SingleTarget, Spell, SpellBookImpl}
@@ -32,9 +35,9 @@ import io.truthencode.ddo.support.requisite.{FeatRequisiteImpl, GrantsToClass, R
  *   Currently set as an Active Feat: AtWillEvent
  */
 protected[feats] trait ArtificerConstructMastery
-  extends FeatRequisiteImpl with ActiveFeat with GrantsToClass with RequiresAllOfClass
-  with SpellBookImpl with AtWillEvent with DefaultCasterCoolDown {
-  val fnArtificerInflictRepair: PartialFunction[Spell, Spell with SingleTarget] = {
+  extends FeatRequisiteImpl with TriggeredActivationImpl with ActiveFeat with GrantsToClass
+  with RequiresAllOfClass with SpellBookImpl with AtWillEvent with DefaultCasterCoolDown {
+  val fnArtificerInflictRepair: PartialFunction[Spell, Spell & SingleTarget] = {
     case x: SingleTarget =>
       x
   }
@@ -49,7 +52,7 @@ protected[feats] trait ArtificerConstructMastery
   //      List("InflictDamage","RepairLightDamage").map{Spell.withNameOption}
   //
   //  }
-  abstract override def spellIds: Set[String] =
+  override def spellIds: Set[String] =
     super.spellIds ++ Spell.inflictSpells
 // Need to retrieve filtered list of spells based on Artificer, Single Target with Repair / Inflict Damage
 

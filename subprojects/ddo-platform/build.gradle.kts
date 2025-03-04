@@ -31,9 +31,9 @@ javaPlatform {
 dependencies {
     constraints {
         api(libs.logback.classic)
-        api(libs.org.jetbrains.annotations)
+        api(libs.jetbrains.annotations)
         // JUnit
-        api(libs.junit.jupiter)
+        api(libs.junit.junit5.bom)
     }
 
     // api(platform(":ddo-platform-scala"))

@@ -1,7 +1,10 @@
 /*
  * SPDX-License-Identifier: Apache-2.0
  *
- * Copyright 2015-2021 Andre White.
+ * Copyright 2015-2025
+ *
+ * Author: Andre White.
+ * FILE: SLASmokeBomb.scala
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -17,10 +20,13 @@
  */
 package io.truthencode.ddo.model.enhancement.enhancements
 
+import io.truthencode.ddo.model.classes.HeroicCharacterClass
 import io.truthencode.ddo.model.enhancement.enhancements.classbased.BombardierTierFour
 import io.truthencode.ddo.support.naming.SLAPrefix
+import io.truthencode.ddo.support.requisite.RequiresAllOfClass
 
-trait SLASmokeBomb extends BombardierTierFour with ClassEnhancementImpl with SLAPrefix {
+trait SLASmokeBomb
+  extends BombardierTierFour with ClassEnhancementImpl with RequiresAllOfClass with SLAPrefix {
 
   /**
    * Some enhancements can be taken multiple times (generally up to three)
@@ -38,4 +44,7 @@ trait SLASmokeBomb extends BombardierTierFour with ClassEnhancementImpl with SLA
    * @return
    */
   override def apCostPerRank: Int = 1
+
+  override def allOfClass: Seq[(HeroicCharacterClass, Int)] = Seq(
+    (HeroicCharacterClass.Alchemist, 4))
 }

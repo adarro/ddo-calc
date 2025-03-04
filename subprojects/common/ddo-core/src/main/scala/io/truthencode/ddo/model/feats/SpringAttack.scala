@@ -1,7 +1,10 @@
 /*
  * SPDX-License-Identifier: Apache-2.0
  *
- * Copyright 2015-2021 Andre White.
+ * Copyright 2015-2025
+ *
+ * Author: Andre White.
+ * FILE: SpringAttack.scala
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -33,16 +36,16 @@ import io.truthencode.ddo.support.requisite._
  * Dodge, Mobility Dexterity 13 , Base Attack Bonus 4,
  */
 protected[feats] trait SpringAttack
-  extends FeatRequisiteImpl with Passive with RequiresAllOfFeat with AttributeRequisiteImpl
-  with RequiresAllOfAttribute with RequiresBaB with FighterBonusFeat with MartialArtsFeat
-  with FeaturesImpl with GrantAbilityFeature {
+  extends FeatRequisiteImpl with BonusSelectableToClassFeatImpl with Passive with RequiresAllOfFeat
+  with AttributeRequisiteImpl with RequiresAllOfAttribute with RequiresBaB with FighterBonusFeat
+  with MartialArtsFeat with FeaturesImpl with GrantAbilityFeature {
   self: GeneralFeat =>
   override lazy val grantedAbility: ActiveAbilities = ActiveAbilities.SpringAttack
   override val grantBonusType: BonusType = BonusType.Feat
   // scalastyle:on
-  override protected[this] val triggerOn: Seq[TriggerEvent] = Seq(TriggerEvent.SpecialAttack)
-  override protected[this] val triggerOff: Seq[TriggerEvent] = Seq(TriggerEvent.WhileOn)
-  override protected[this] val grantAbilityCategories: Seq[effect.EffectCategories.Value] = Seq(
+  override protected val triggerOn: Seq[TriggerEvent] = Seq(TriggerEvent.SpecialAttack)
+  override protected val triggerOff: Seq[TriggerEvent] = Seq(TriggerEvent.WhileOn)
+  override protected val grantAbilityCategories: Seq[effect.EffectCategories.Value] = Seq(
     effect.EffectCategories.SpecialAttack)
   override val abilityId: String = "SpringAttack"
   override val description: String =

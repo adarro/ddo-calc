@@ -1,7 +1,10 @@
 /*
  * SPDX-License-Identifier: Apache-2.0
  *
- * Copyright 2015-2021 Andre White.
+ * Copyright 2015-2025
+ *
+ * Author: Andre White.
+ * FILE: ShurikenExpertise.scala
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -34,8 +37,9 @@ import io.truthencode.ddo.support.requisite._
  *   Apply multi-conditional logic dor Shuriken Expertise
  */
 protected[feats] trait ShurikenExpertise
-  extends FeatRequisiteImpl with RaceRequisiteImpl with Passive with AttributeRequisiteImpl
-  with RequiresAllOfAttribute with RequiresAnyOfFeat with MartialArtsFeat {
+  extends FeatRequisiteImpl with BonusSelectableToClassFeatImpl with RaceRequisiteImpl with Passive
+  with AttributeRequisiteImpl with RequiresAllOfAttribute with RequiresAnyOfFeat
+  with MartialArtsFeat {
   self: GeneralFeat =>
   override def allOfAttributes: Seq[(Attribute, Int)] =
     List((Attribute.Dexterity, 13))

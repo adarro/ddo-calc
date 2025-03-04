@@ -1,7 +1,10 @@
 /*
  * SPDX-License-Identifier: Apache-2.0
  *
- * Copyright 2015-2021 Andre White.
+ * Copyright 2015-2025
+ *
+ * Author: Andre White.
+ * FILE: Emoji.scala
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -39,10 +42,11 @@ trait Emoji extends Flexmark {
   /**
    * see [[https://github.com/vsch/flexmark-java/wiki/Extensions#emoji]]
    * @param dataSet
+   *   used to configure the extension
    * @return
    *   Mutated dataset with specified default options
    */
-  private[this] def taskOptions()(implicit dataSet: MutableDataSet): () => MutableDataSet = { () =>
+  private def taskOptions()(implicit dataSet: MutableDataSet): () => MutableDataSet = { () =>
     dataSet
       .set(EmojiExtension.ATTR_IMAGE_SIZE, "24")
       .set(EmojiExtension.USE_IMAGE_TYPE, EmojiImageType.UNICODE_FALLBACK_TO_IMAGE)

@@ -1,7 +1,10 @@
 /*
  * SPDX-License-Identifier: Apache-2.0
  *
- * Copyright 2015-2021 Andre White.
+ * Copyright 2015-2025
+ *
+ * Author: Andre White.
+ * FILE: ImprovedPreciseShot.scala
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -17,6 +20,7 @@
  */
 package io.truthencode.ddo.model.feats
 
+import io.truthencode.ddo.activation.TriggeredActivationImpl
 import io.truthencode.ddo.enhancement.BonusType
 import io.truthencode.ddo.model.abilities.ActiveAbilities
 import io.truthencode.ddo.model.attribute.Attribute
@@ -26,7 +30,7 @@ import io.truthencode.ddo.model.effect
 import io.truthencode.ddo.model.effect.TriggerEvent
 import io.truthencode.ddo.model.effect.features.{FeaturesImpl, GrantAbilityFeature}
 import io.truthencode.ddo.model.misc.DefaultCoolDown
-import io.truthencode.ddo.support.requisite._
+import io.truthencode.ddo.support.requisite.*
 
 /**
  * Icon Feat Improved Precise Shot.png
@@ -50,17 +54,18 @@ import io.truthencode.ddo.support.requisite._
  * races, particularly Halflings.
  */
 protected[feats] trait ImprovedPreciseShot
-  extends FeatRequisiteImpl with ActiveFeat with RequiresAllOfFeat with AttributeRequisiteImpl
-  with RequiresAllOfAttribute with RequiresBaB with ClassRequisiteImpl with GrantsToClass
-  with FighterBonusFeat with ArtificerBonusFeat with OffensiveRangedStance with DefaultCoolDown
-  with FeaturesImpl with GrantAbilityFeature {
+  extends FeatRequisiteImpl with TriggeredActivationImpl with BonusSelectableToClassFeatImpl
+  with ActiveFeat with RequiresAllOfFeat with AttributeRequisiteImpl with RequiresAllOfAttribute
+  with RequiresBaB with ClassRequisiteImpl with GrantsToClass with FighterBonusFeat
+  with ArtificerBonusFeat with OffensiveRangedStance with DefaultCoolDown with FeaturesImpl
+  with GrantAbilityFeature {
   self: GeneralFeat =>
   override lazy val grantedAbility: ActiveAbilities = ActiveAbilities.ImprovedPreciseShot
 // TODO: add toggle / exclusive with Archer's Focus stance
   // Keep an array of exclusive stances in a Map somewhere?
-  override protected[this] val triggerOn: Seq[TriggerEvent] = Seq(TriggerEvent.OnStance)
-  override protected[this] val triggerOff: Seq[TriggerEvent] = Seq(TriggerEvent.OnToggle)
-  override protected[this] val grantAbilityCategories: Seq[effect.EffectCategories.Value] =
+  override protected val triggerOn: Seq[TriggerEvent] = Seq(TriggerEvent.OnStance)
+  override protected val triggerOff: Seq[TriggerEvent] = Seq(TriggerEvent.OnToggle)
+  override protected val grantAbilityCategories: Seq[effect.EffectCategories.Value] =
     Seq(effect.EffectCategories.Stance, effect.EffectCategories.RangedCombat)
   override val abilityId: String = "ImprovedPreciseShot"
   override val description: String =

@@ -1,7 +1,10 @@
 /*
  * SPDX-License-Identifier: Apache-2.0
  *
- * Copyright 2015-2021 Andre White.
+ * Copyright 2015-2025
+ *
+ * Author: Andre White.
+ * FILE: Hamstring.scala
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -17,7 +20,7 @@
  */
 package io.truthencode.ddo.model.feats
 
-import io.truthencode.ddo.activation.AtWillEvent
+import io.truthencode.ddo.activation.{AtWillEvent, TriggeredActivationImpl}
 import io.truthencode.ddo.enhancement.BonusType
 import io.truthencode.ddo.model.abilities.ActiveAbilities
 import io.truthencode.ddo.model.effect
@@ -35,16 +38,17 @@ import java.time.Duration
  * Sneak Attack
  */
 protected[feats] trait Hamstring
-  extends FeatRequisiteImpl with ActiveFeat with AtWillEvent with RequiresAllOfFeat
-  with FighterBonusFeat with FeaturesImpl with GrantAbilityFeature {
+  extends FeatRequisiteImpl with TriggeredActivationImpl with BonusSelectableToClassFeatImpl
+  with ActiveFeat with AtWillEvent with RequiresAllOfFeat with FighterBonusFeat with FeaturesImpl
+  with GrantAbilityFeature {
   self: GeneralFeat =>
   override lazy val grantedAbility: ActiveAbilities = ActiveAbilities.Hamstring
-  override protected[this] lazy val grantAbilityCategories: Seq[effect.EffectCategories.Value] =
+  override protected lazy val grantAbilityCategories: Seq[effect.EffectCategories.Value] =
     Seq(effect.EffectCategories.Ability, effect.EffectCategories.SpecialAttack)
   override val grantBonusType: BonusType = BonusType.Feat
-  override val allOfFeats = List(ClassFeat.SneakAttack)
-  override protected[this] val triggerOn: Seq[TriggerEvent] = Seq(TriggerEvent.SpecialAttack)
-  override protected[this] val triggerOff: Seq[TriggerEvent] = Seq(TriggerEvent.OnCoolDown)
+  override val allOfFeats: Seq[Feat] = List(ClassFeat.SneakAttack)
+  override protected val triggerOn: Seq[TriggerEvent] = Seq(TriggerEvent.SpecialAttack)
+  override protected val triggerOff: Seq[TriggerEvent] = Seq(TriggerEvent.OnCoolDown)
   override val abilityId: String = "Hamstring"
   override val description: String =
     "Special Attack This melee special attack, when successful, reduces the target's movement rate by half for 12 seconds."

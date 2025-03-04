@@ -1,7 +1,10 @@
 /*
  * SPDX-License-Identifier: Apache-2.0
  *
- * Copyright 2015-2021 Andre White.
+ * Copyright 2015-2025
+ *
+ * Author: Andre White.
+ * FILE: ClassEnhancementDisplayHelper.scala
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -28,12 +31,12 @@ import io.truthencode.ddo.support.requisite.{
 }
 
 trait ClassEnhancementDisplayHelper extends EnhancementDisplayHelper with LazyLogging {
-  type ENH = ClassEnhancement with Tier with ActionPointRequisite with PointInTreeRequisite
+  type ENH = ClassEnhancement & Tier & ActionPointRequisite & PointInTreeRequisite
   lazy val mappedValues: Map[String, ClassEnhancementInfo] = {
 
     val ee = ClassEnhancement.values.collect {
-      case x: ClassEnhancement with Tier with ClassBasedEnhancements with PointInTreeRequisite with PointsAvailableRequisite with RequiresActionPoints
-          if x.tree == tree =>
+      case x: (ClassEnhancement & Tier & ClassBasedEnhancements & PointInTreeRequisite &
+            PointsAvailableRequisite & RequiresActionPoints) if x.tree == tree =>
         x
     }
     logger.info(s"Display Helper loaded ${ee.size} values for ${tree.displayText}")

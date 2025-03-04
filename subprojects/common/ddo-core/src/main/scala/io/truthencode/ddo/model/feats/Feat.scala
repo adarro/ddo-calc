@@ -1,7 +1,10 @@
 /*
  * SPDX-License-Identifier: Apache-2.0
  *
- * Copyright 2015-2021 Andre White.
+ * Copyright 2015-2025
+ *
+ * Author: Andre White.
+ * FILE: Feat.scala
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -34,7 +37,7 @@ import scala.collection.immutable.IndexedSeq
 trait Feat
   extends EnumEntry with DisplayName with FriendlyDisplay with SubFeatInformation with SourceInfo
   with Features {
-  self: FeatType with Requisite with Inclusion =>
+  self: FeatType & Requisite & Inclusion =>
 
   override val sourceId: String = s"Feat:$entryName"
   override val sourceRef: AnyRef = this
@@ -44,7 +47,7 @@ trait Feat
 }
 
 object Feat extends Enum[Feat] with FeatSearchPrefix with LazyLogging {
-  lazy val racialFeats: IndexedSeq[Feat with RaceRequisite] = {
+  lazy val racialFeats: IndexedSeq[Feat & RaceRequisite] = {
     Feat.values.collect(fnRacialFeats)
   }
 
@@ -58,39 +61,38 @@ object Feat extends Enum[Feat] with FeatSearchPrefix with LazyLogging {
    *   Not sure if we really need this method in production. May only be useful for detecting /
    *   Acceptance testing subsets
    */
-  val fnPureRacialFeat: PartialFunction[RaceRequisite, Feat with RaceRequisite] = {
+  val fnPureRacialFeat: PartialFunction[RaceRequisite, Feat & RaceRequisite] = {
     case x: RacialFeat => x
     case x: GeneralFeat => x
   }
 
-  val fnRacialFeats: PartialFunction[Feat, Feat with RaceRequisite] = { case x: RaceRequisite =>
+  val fnRacialFeats: PartialFunction[Feat, Feat & RaceRequisite] = { case x: RaceRequisite =>
     x
   }
 
-  val fnTacticalFeats: PartialFunction[Feat, Feat with Tactical] = { case x: Tactical =>
+  val fnTacticalFeats: PartialFunction[Feat, Feat & Tactical] = { case x: Tactical =>
     x
   }
 
   def featsFromRace(race: Race, opt: RequirementOption*): Seq[Feat] = {
 
     racialFeats.filter { f =>
-      containsInTuple(race, fnOptionsToRaceSequence(f, opt: _*))
+      containsInTuple(race, fnOptionsToRaceSequence(f, opt*))
     }.filterNot {
       case _: DeityFeat => true
       case _ => false
     }
   }
 
-  def containsInTuple[T](target: T, search: Seq[(T, _)]*): Boolean = {
-    val s: Seq[(T, _)] = search.flatMap(_.zipWithIndex).map(_._1)
+  def containsInTuple[T](target: T, search: Seq[(T, ?)]*): Boolean = {
+    val s: Seq[(T, ?)] = search.flatMap(_.zipWithIndex).map(_._1)
     s.exists(_._1 == target)
   }
 
   def fnOptionsToRaceSequence(req: RaceRequisite, options: RequirementOption*): Seq[(Race, Int)] = {
-    val seqOfSeq = for {
-      opt <- options
-
-    } yield fnOptionToRequisite(req = req, opt = opt)
+    val seqOfSeq =
+      for opt <- options
+      yield fnOptionToRequisite(req = req, opt = opt)
     seqOfSeq.flatten
   }
 

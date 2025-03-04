@@ -1,7 +1,10 @@
 /*
  * SPDX-License-Identifier: Apache-2.0
  *
- * Copyright 2015-2021 Andre White.
+ * Copyright 2015-2025
+ *
+ * Author: Andre White.
+ * FILE: GrantAbilityFeature.scala
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -32,28 +35,28 @@ import scala.util.{Success, Try}
 trait GrantAbilityFeature extends Features {
   self: SourceInfo =>
   val grantBonusType: BonusType
-  val grantedAbility: ActiveAbilities
+  def grantedAbility: ActiveAbilities
   val abilityId: String
   val description: String
-  protected[this] val triggerOn: Seq[TriggerEvent]
-  protected[this] val triggerOff: Seq[TriggerEvent]
-  protected[this] val grantAbilityCategories: Seq[effect.EffectCategories.Value]
+  protected def triggerOn: Seq[TriggerEvent]
+  protected def triggerOff: Seq[TriggerEvent]
+  protected def grantAbilityCategories: Seq[effect.EffectCategories.Value]
   private val src = this
-  private[this] val abilityGranted =
+  private val abilityGranted =
     new PartModifier[ActiveAbilities, BasicStat] with UsingAbilitySearchPrefix {
 
-      override protected[this] lazy val partToModify: BasicStat =
+      override protected lazy val partToModify: BasicStat =
         BasicStat.GrantedAbilities(grantedAbility)
 
       private lazy val eb = EffectParameterBuilder()
-        .toggleOffValue(triggerOff: _*)
-        .toggleOnValue(triggerOn: _*)
+        .toggleOffValue(triggerOff*)
+        .toggleOnValue(triggerOn*)
         .addBonusType(grantBonusType)
         .build
 
       override lazy val part: Try[EffectPart] = Success(EffectPart.ActiveAbility(grantedAbility))
 
-      override protected[this] def effectParameters: Seq[ParameterModifier[_]] = eb.modifiers
+      override protected def effectParameters: Seq[ParameterModifier[?]] = eb.modifiers
 
       /**
        * The General Description should be just that. This should not include specific values unless
@@ -97,7 +100,7 @@ trait GrantAbilityFeature extends Features {
       override def searchPrefixSource: String = partToModify.searchPrefixSource
     }
 
-  abstract override def features: Seq[Feature[_]] = {
+  abstract override def features: Seq[Feature[?]] = {
     assert(abilityGranted.value == grantedAbility)
     super.features :+ abilityGranted
   }

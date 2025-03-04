@@ -1,7 +1,10 @@
 /*
  * SPDX-License-Identifier: Apache-2.0
  *
- * Copyright 2015-2021 Andre White.
+ * Copyright 2015-2025
+ *
+ * Author: Andre White.
+ * FILE: SkillFeature.scala
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -39,18 +42,18 @@ trait SkillFeature extends Features {
       bonusType = bonusType.entryName
     )
     val eb = EffectParameterBuilder()
-      .toggleOffValue(skillTriggerOff: _*)
-      .toggleOnValue(skillTriggerOn: _*)
+      .toggleOffValue(skillTriggerOff*)
+      .toggleOnValue(skillTriggerOn*)
       .addBonusType(bonusType)
       .build
     SkillEffect(f._1, f._2, bonusType, src, categories, eb.modifiers, effectDetail)
   }
-  val bonusType: BonusType
+  def bonusType: BonusType
   val skillTriggerOn: Seq[TriggerEvent] = Seq(TriggerEvent.Passive)
   val skillTriggerOff: Seq[TriggerEvent] = Seq(TriggerEvent.Never)
   val affectedSkills: List[(Skill, Int)]
   private val src = this
 
-  abstract override def features: Seq[Feature[_]] =
+  abstract override def features: Seq[Feature[?]] =
     super.features ++ skillChance
 }

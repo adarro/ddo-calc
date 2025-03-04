@@ -1,7 +1,10 @@
 /*
  * SPDX-License-Identifier: Apache-2.0
  *
- * Copyright 2015-2021 Andre White.
+ * Copyright 2015-2025
+ *
+ * Author: Andre White.
+ * FILE: SpellFocusFeature.scala
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -30,17 +33,17 @@ import io.truthencode.ddo.support.naming.UsingSearchPrefix
  */
 trait SpellFocusFeature extends Features {
   self: SourceInfo =>
-  protected val spellFocusBonusType: BonusType
+  protected def spellFocusBonusType: BonusType
   protected val spellFocusDifficultyCheck: Int
   protected val spellSchool: School
-  protected[this] val triggerOn: Seq[TriggerEvent]
-  protected[this] val triggerOff: Seq[TriggerEvent]
-  protected[this] val spellFocusCategories: Seq[effect.EffectCategories.Value]
+  protected def triggerOn: Seq[TriggerEvent]
+  protected def triggerOff: Seq[TriggerEvent]
+  protected def spellFocusCategories: Seq[effect.EffectCategories.Value]
   private val src = this
-  private[this] val spellFocusAmount =
+  private val spellFocusAmount =
     new PartModifier[Int, BasicStat] with UsingSearchPrefix {
 
-      override protected[this] lazy val partToModify: BasicStat =
+      override protected lazy val partToModify: BasicStat =
         BasicStat.SpellFocus(spellSchool)
 
       /**
@@ -65,12 +68,12 @@ trait SpellFocusFeature extends Features {
       override def categories: Seq[String] = spellFocusCategories.map(_.toString)
 
       private val eb = EffectParameterBuilder()
-        .toggleOffValue(triggerOff: _*)
-        .toggleOnValue(triggerOn: _*)
+        .toggleOffValue(triggerOff*)
+        .toggleOnValue(triggerOn*)
         .addBonusType(spellFocusBonusType)
         .build
 
-      override protected[this] def effectParameters: Seq[ParameterModifier[_]] = eb.modifiers
+      override protected def effectParameters: Seq[ParameterModifier[?]] = eb.modifiers
       override val effectDetail: DetailedEffect = DetailedEffect(
         id = "SpellPoints",
         description = "Increases your total spell points",
@@ -92,7 +95,7 @@ trait SpellFocusFeature extends Features {
       override def searchPrefixSource: String = partToModify.searchPrefixSource
     }
 
-  abstract override def features: Seq[Feature[_]] = {
+  abstract override def features: Seq[Feature[?]] = {
     assert(spellFocusAmount.value == spellFocusDifficultyCheck)
     super.features :+ spellFocusAmount
   }

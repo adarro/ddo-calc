@@ -1,7 +1,10 @@
 /*
  * SPDX-License-Identifier: Apache-2.0
  *
- * Copyright 2015-2021 Andre White.
+ * Copyright 2015-2025
+ *
+ * Author: Andre White.
+ * FILE: ImprovedCriticalBase.scala
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -20,20 +23,27 @@ package io.truthencode.ddo.model.feats
 import io.truthencode.ddo.support.requisite.{FeatRequisiteImpl, RequiresBaB}
 
 /**
- * Weapon Focus Passive Feats
+ * Usage: Passive Prerequisite: Base attack bonus of 8 or higher Description This feat adds 1, 2, or
+ * 3 to critical threat range based on the weapon type's unmodified threat range.
  *
- * Icon Feat Weapon Focus.png Weapon Focus Passive Provides a +1 bonus to attack rolls with the
- * chosen weapon type Bludgeoning (includes animal form), Piercing, Ranged, Slashing or Thrown and
- * +2 stacking Melee Power or Ranged Power.) It can be taken multiple times, once for each of the
- * different types.
+ * +3 for falchion, great crossbow, kukri, rapier, and scimitar. +2 for bastard sword, dagger,
+ * greatsword, heavy crossbow, khopesh, light crossbow, long sword, repeating heavy crossbow,
+ * repeating light crossbow, short sword, and throwing dagger. +1 to all other weapons. Improved
+ * Critical does not stack with the Keen or Impact weapon enchantments.
  *
- * Base Attack Bonus +1
+ * Multiple versions of this feat exist, one for each weapon type (Bludgeoning, Piercing, Ranged,
+ * Slashing or Thrown). This feat can be taken multiple times, though each time must be for a
+ * different type. Shields do not benefit from Improved Critical. Notes Artificers may select this
+ * feat as one of their artificer bonus feats. Fighters may select this feat as one of their fighter
+ * bonus feats. For artificers taking it as a bonus feat, it is restricted to bludgeoning, ranged,
+ * and slashing.
+ *
  * @note
  *   Not Implemented?: Artificers are restricted to Bludgeon / ranged / slash.
  */
 trait ImprovedCriticalBase
-  extends FeatRequisiteImpl with Passive with RequiresBaB with FighterBonusFeat
-  with ArtificerBonusFeat {
+  extends FeatRequisiteImpl with BonusSelectableToClassFeatImpl with Passive with RequiresBaB
+  with FighterBonusFeat with ArtificerBonusFeat {
 
   self: GeneralFeat =>
 

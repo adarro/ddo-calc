@@ -1,7 +1,10 @@
 /*
  * SPDX-License-Identifier: Apache-2.0
  *
- * Copyright 2015-2021 Andre White.
+ * Copyright 2015-2025
+ *
+ * Author: Andre White.
+ * FILE: EnumExtensions.scala
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -28,10 +31,10 @@ import scala.collection.immutable
 object EnumExtensions {
 
   // private def findEnum[E <: EnumEntry: Enum[E]](v: E) = implicitly[Enum[E]]
-  private def findEnum[E <: EnumEntry: Enum, A <: Enum[_ <: EnumEntry]](v: E) = implicitly[Enum[E]]
+  private def findEnum[E <: EnumEntry: Enum, A <: Enum[? <: EnumEntry]](v: E) = implicitly[Enum[E]]
 
 //  final implicit class EnumCompanionOps[E <: EnumEntry:Enum[E],A <: Enum[E]](
-  implicit final class EnumCompanionOps[A <: Enum[_ <: EnumEntry]](
+  implicit final class EnumCompanionOps[A <: Enum[? <: EnumEntry]](
     val comp: A
   ) {
     def exists(id: String): Boolean = {
@@ -51,25 +54,25 @@ object EnumExtensions {
     def withNames(
       names: List[String],
       ignoreCase: Boolean = false
-    ): Option[immutable.IndexedSeq[_ <: EnumEntry]] = {
+    ): Option[immutable.IndexedSeq[? <: EnumEntry]] = {
       val sanitized: List[String] = names.map { x =>
         x.filterAlphaNumeric
       }
-      for {
+      for
         sc <- Some(comp.values.filter { x =>
           (ignoreCase && sanitized
             .exists(n => n.equalsIgnoreCase(x.toString))) || sanitized.contains(
             x.toString
           )
         }) if sc.nonEmpty
-      } yield sc
+      yield sc
     }
 
     def withName(
       name: String,
       ignoreCase: Boolean = false
-    ): Option[_ <: EnumEntry] = {
-      if (ignoreCase) {
+    ): Option[? <: EnumEntry] = {
+      if ignoreCase then {
         comp.withNameInsensitiveOption(name)
       } else {
         comp.withNameOption(name)
@@ -88,11 +91,11 @@ object EnumExtensions {
       //  comp.bitValues.filter {x => (x._2 & flag != 0)}
       //  val zz :E = comp.values.head
       //  val it = comp.bitValues.
-      for {
+      for
         sc <- Some(bitValues.filter { x =>
           (x._2.toInt & flag) != 0
         }.keys) if sc.nonEmpty
-      } yield sc.toSeq
+      yield sc.toSeq
     }
 
     def bitValues: Map[EnumEntry, Double] = comp.valuesToIndex.map { x =>

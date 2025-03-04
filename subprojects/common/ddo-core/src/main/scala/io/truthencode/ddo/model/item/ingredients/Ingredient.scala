@@ -1,7 +1,10 @@
 /*
  * SPDX-License-Identifier: Apache-2.0
  *
- * Copyright 2015-2021 Andre White.
+ * Copyright 2015-2025
+ *
+ * Author: Andre White.
+ * FILE: Ingredient.scala
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -17,9 +20,9 @@
  */
 package io.truthencode.ddo.model.item.ingredients
 
-import io.truthencode.ddo.model.item.Item
+import io.truthencode.ddo.model.item.PermanentItem
 
 /**
  * Ingredients are primarily used in crafting to create shards and apply them to items.
  */
-trait Ingredient extends Item
+trait Ingredient extends PermanentItem

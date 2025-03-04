@@ -1,7 +1,10 @@
 /*
  * SPDX-License-Identifier: Apache-2.0
  *
- * Copyright 2015-2021 Andre White.
+ * Copyright 2015-2025
+ *
+ * Author: Andre White.
+ * FILE: VulkoorsAvatar.scala
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -17,7 +20,7 @@
  */
 package io.truthencode.ddo.model.feats
 
-import io.truthencode.ddo.activation.OnSummon
+import io.truthencode.ddo.activation.{OnSummon, TriggeredActivationImpl}
 import io.truthencode.ddo.model.religions.Vulkoor
 import io.truthencode.ddo.support.requisite.{FeatRequisiteImpl, RequiresAllOfFeat}
 
@@ -37,8 +40,9 @@ import java.time.Duration
  *   blow on ghostly creatures. Created by adarr on 4/7/2017.
  */
 trait VulkoorsAvatar
-  extends FeatRequisiteImpl with EberronReligionNonWarforged with DeityUniqueLevelBase
-  with RequiresAllOfFeat with Vulkoor with TheVulkoorFeatBase with ActiveFeat with OnSummon {
+  extends FeatRequisiteImpl with TriggeredActivationImpl with EberronReligionNonWarforged
+  with DeityUniqueLevelBase with RequiresAllOfFeat with Vulkoor with TheVulkoorFeatBase
+  with ActiveFeat with OnSummon {
   self: DeityFeat =>
 
   override def coolDown: Option[Duration] = Some(Duration.ofMinutes(10))

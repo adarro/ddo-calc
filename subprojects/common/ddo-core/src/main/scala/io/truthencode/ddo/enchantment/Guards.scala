@@ -1,7 +1,10 @@
 /*
  * SPDX-License-Identifier: Apache-2.0
  *
- * Copyright 2015-2021 Andre White.
+ * Copyright 2015-2025
+ *
+ * Author: Andre White.
+ * FILE: Guards.scala
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -56,6 +59,7 @@ object Guards extends Enum[Guards] with NoDefault[Guards] {
   case object RadianceGuard extends Guards
   case object SolarGuard extends Guards
   case object SonicGuard extends Guards
+  case object StickyGooGaurd extends Guards
   case object StonePrisonGuard extends Guards
   case object SunderingOozeGuard extends Guards
   case object TelekinesisGuard extends Guards

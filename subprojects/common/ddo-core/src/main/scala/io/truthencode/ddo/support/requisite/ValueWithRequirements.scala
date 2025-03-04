@@ -1,7 +1,10 @@
 /*
  * SPDX-License-Identifier: Apache-2.0
  *
- * Copyright 2015-2021 Andre White.
+ * Copyright 2015-2025
+ *
+ * Author: Andre White.
+ * FILE: ValueWithRequirements.scala
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -21,7 +24,7 @@ import com.typesafe.scalalogging.LazyLogging
 import enumeratum.EnumEntry
 
 case class ValueWithRequirements(
-  f: EnumEntry with RequisiteExpression,
+  f: EnumEntry & RequisiteExpression,
   reqType: RequisiteType,
   incl: Inclusion,
   groupKey: String,
@@ -55,16 +58,14 @@ object ValueWithRequirements extends LazyLogging {
     NumericAlpha = Value
   }
 
-  type RSort = Requirement with DefaultRequirementSort
-  type ANSort = Requirement with NumberRequirementSort
+  type RSort = Requirement & DefaultRequirementSort
+  type ANSort = Requirement & NumberRequirementSort
   // Credit: SO https://stackoverflow.com/questions/19345030/easy-idiomatic-way-to-define-ordering-for-a-simple-case-class
   // Note that because `Ordering[A]` is not contravariant, the declaration
   // must be type-parametrized in the event that you want the implicit
   // ordering to apply to subclasses of `X`.
   implicit def orderingByName[A <: ValueWithRequirements]: Ordering[A] =
     Ordering.by(e => (e.groupKey, e.requisiteType))
-//  implicit def orderingByCharacterLevel[A <: ReqCharacterLevel]: Ordering[A] =
-//    Ordering.by(e => (e.displayText, e.characterLevel))
 
   // scalastyle:off cyclomatic.complexity method.length
   def sortWithChaos(v1: RSort, v2: RSort): Boolean = {
@@ -89,28 +90,28 @@ object ValueWithRequirements extends LazyLogging {
     val anrAgreement = anAgreement && an1 == SortType.NumericAlpha
     // both simple alpha sorts
     val aAgreement = an1 == an2 && an1 == SortType.Alpha
-    // conflict in number of fields, so must use alpha sort and give preference to number fields (dummy number in non-numbered object.
+    // conflict in number of fields, so must use alpha sort and give preference to number fields (dummy number in non-numbered object).
     val mixed1 = !anAgreement && !anrAgreement && !aAgreement && an1 != SortType.Alpha
 
-    if (anrAgreement) {
-      if (anO1._1
+    if anrAgreement then {
+      if anO1._1
           .asInstanceOf[ANSort]
-          .numericalSortKey != anO2._1.asInstanceOf[ANSort].numericalSortKey) {
+          .numericalSortKey != anO2._1.asInstanceOf[ANSort].numericalSortKey then {
         anO1._1.asInstanceOf[ANSort].numericalSortKey < anO2._1
           .asInstanceOf[ANSort]
           .numericalSortKey
       } else { anO1._1.alphaSortKey > anO2._1.alphaSortKey }
-    } else if (anAgreement) {
-      if (anO1._1
+    } else if anAgreement then {
+      if anO1._1
           .asInstanceOf[ANSort]
-          .numericalSortKey != anO2._1.asInstanceOf[ANSort].numericalSortKey) {
+          .numericalSortKey != anO2._1.asInstanceOf[ANSort].numericalSortKey then {
         anO1._1.asInstanceOf[ANSort].numericalSortKey < anO2._1
           .asInstanceOf[ANSort]
           .numericalSortKey
       } else { anO1._1.alphaSortKey < anO2._1.alphaSortKey }
-    } else if (aAgreement) {
+    } else if aAgreement then {
       anO1._1.alphaSortKey < anO2._1.alphaSortKey
-    } else if (mixed1) {
+    } else if mixed1 then {
       (anO1._1.alphaSortKey > anO2._1.alphaSortKey || anO1._1.alphaSortKey == anO2._1.alphaSortKey && anO1._1
         .asInstanceOf[ANSort]
         .numericalSortKey < Int.MaxValue)

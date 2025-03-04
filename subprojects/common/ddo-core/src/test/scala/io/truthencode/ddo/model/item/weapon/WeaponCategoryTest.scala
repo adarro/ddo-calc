@@ -1,7 +1,10 @@
 /*
  * SPDX-License-Identifier: Apache-2.0
  *
- * Copyright 2015-2021 Andre White.
+ * Copyright 2015-2025
+ *
+ * Author: Andre White.
+ * FILE: WeaponCategoryTest.scala
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -32,8 +35,8 @@ class WeaponCategoryTest extends AnyFunSpec with Matchers {
   }
 
   def typedToWeaponClass: PartialFunction[
-    DefaultDeliveryMethod with Damage,
-    (DefaultDeliveryMethod with Damage, WeaponClass)] = {
+    DefaultDeliveryMethod & Damage,
+    (DefaultDeliveryMethod & Damage, WeaponClass)] = {
     case x: RangeDamage => (x, WeaponClass.Ranged)
     case x: ThrownDamage => (x, WeaponClass.Thrown)
     case x: Bludgeoning => (x, WeaponClass.Bludgeon)
@@ -88,7 +91,8 @@ class WeaponCategoryTest extends AnyFunSpec with Matchers {
         RepeatingHeavyCrossbow,
         RepeatingLightCrossbow,
         Shortsword,
-        ThrowingDagger)
+        ThrowingDagger
+      )
       val plus1 = WeaponCategory.values.filterNot(plus3.concat(plus2).contains)
       val plus1N = WeaponCategory.values.nSelect(plus3.concat(plus2))
       plus1 shouldEqual plus1N
@@ -96,8 +100,8 @@ class WeaponCategoryTest extends AnyFunSpec with Matchers {
       val expectedPlus2 = List(BastardSword, Greatsword, Khopesh, Longsword)
       val expectedPlus3 = List(Falchion, Kukris, Scimitar)
       // "All others requires a bit more of a manual dig to verify long-hand"
-      plus2.intersect(filtered) shouldEqual (expectedPlus2)
-      plus3.intersect(filtered) shouldEqual (expectedPlus3)
+      plus2.intersect(filtered) shouldEqual expectedPlus2
+      plus3.intersect(filtered) shouldEqual expectedPlus3
 
     }
   }

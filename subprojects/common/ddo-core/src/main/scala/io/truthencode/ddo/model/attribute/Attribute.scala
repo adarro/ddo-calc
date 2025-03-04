@@ -1,7 +1,10 @@
 /*
  * SPDX-License-Identifier: Apache-2.0
  *
- * Copyright 2015-2021 Andre White.
+ * Copyright 2015-2025
+ *
+ * Author: Andre White.
+ * FILE: Attribute.scala
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -39,17 +42,17 @@ object Attribute extends Enum[Attribute] with SearchPrefix {
    */
   override def searchPrefixSource: String = "Attribute"
 
-  case object Strength extends Strength
+  case object Strength extends Strength, Attribute
 
-  case object Dexterity extends Dexterity
+  case object Dexterity extends Dexterity, Attribute
 
-  case object Intelligence extends Intelligence
+  case object Intelligence extends Intelligence, Attribute
 
-  case object Wisdom extends Wisdom
+  case object Wisdom extends Wisdom, Attribute
 
-  case object Constitution extends Constitution
+  case object Constitution extends Constitution, Attribute
 
-  case object Charisma extends Charisma
+  case object Charisma extends Charisma, Attribute
 }
 
 protected trait Strength extends Attribute {

@@ -1,7 +1,10 @@
 /*
  * SPDX-License-Identifier: Apache-2.0
  *
- * Copyright 2015-2021 Andre White.
+ * Copyright 2015-2025
+ *
+ * Author: Andre White.
+ * FILE: ClassRequisite.scala
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -45,7 +48,7 @@ trait ClassRequisite {
  * override and augment selected values.
  */
 trait ClassRequisiteImpl extends MustContainImpl[Requirement] with ClassRequisite {
-  self: Requisite with RequisiteType =>
+  self: Requisite & RequisiteType =>
   def gkRequiredClasses: String = defaultGroupKey
   def gkGrantClasses: String = defaultGroupKey
   def gkBonusSelectableClasses: String = defaultGroupKey

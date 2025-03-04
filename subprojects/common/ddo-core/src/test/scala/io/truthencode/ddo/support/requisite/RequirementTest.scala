@@ -1,7 +1,10 @@
 /*
  * SPDX-License-Identifier: Apache-2.0
  *
- * Copyright 2015-2021 Andre White.
+ * Copyright 2015-2025
+ *
+ * Author: Andre White.
+ * FILE: RequirementTest.scala
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -28,12 +31,12 @@ class RequirementTest extends AnyFunSpec with Matchers with LazyLogging {
     they("Should be readable") {
       //  val enumList = Seq(GeneralFeat.Alertness, GeneralFeat.Manyshot, GeneralFeat.Dodge)
       val enumList = Seq(GeneralFeat.Manyshot)
-      val values = for {
-        f <- enumList.collect { case x: RequisiteExpression with RequisiteType with Inclusion => x }
+      val values = for
+        f <- enumList.collect { case x: (RequisiteExpression & RequisiteType & Inclusion) => x }
         pr <- f.prerequisites
         if f.prerequisites.nonEmpty
-      } yield ValueWithRequirements(f, pr.reqType, pr.incl, pr.groupKey, pr.req)
-      val sor = SemiOrderedRequirements(values: _*)
+      yield ValueWithRequirements(f, pr.reqType, pr.incl, pr.groupKey, pr.req)
+      val sor = SemiOrderedRequirements(values*)
       sor.displayPrerequisites.foreach { dp =>
         logger.info(dp)
       }

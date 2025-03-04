@@ -1,7 +1,10 @@
 /*
  * SPDX-License-Identifier: Apache-2.0
  *
- * Copyright 2015-2021 Andre White.
+ * Copyright 2015-2025
+ *
+ * Author: Andre White.
+ * FILE: HitPointAmountFeature.scala
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -31,11 +34,11 @@ trait HitPointAmountFeature extends Features {
   self: SourceInfo =>
   protected val hitPointBonusType: BonusType
   protected val hitPointBonusAmount: Int
-  protected[this] val triggerOn: Seq[TriggerEvent]
-  protected[this] val triggerOff: Seq[TriggerEvent]
-  protected[this] val hitPointCategories: Seq[effect.EffectCategories.Value]
+  protected def triggerOn: Seq[TriggerEvent]
+  protected def triggerOff: Seq[TriggerEvent]
+  protected def hitPointCategories: Seq[effect.EffectCategories.Value]
   private val src = this
-  private[this] val hitPointAmount =
+  private val hitPointAmount =
     new PartModifier[Int, BasicStat] with UsingSearchPrefix {
 
       /**
@@ -47,12 +50,12 @@ trait HitPointAmountFeature extends Features {
        */
       override def searchPrefixSource: String = partToModify.searchPrefixSource
       private val eb = EffectParameterBuilder()
-        .toggleOffValue(triggerOff: _*)
-        .toggleOnValue(triggerOn: _*)
+        .toggleOffValue(triggerOff*)
+        .toggleOnValue(triggerOn*)
         .addBonusType(hitPointBonusType)
         .build
 
-      override protected[this] def effectParameters: Seq[ParameterModifier[_]] = eb.modifiers
+      override protected def effectParameters: Seq[ParameterModifier[?]] = eb.modifiers
 
       /**
        * The General Description should be just that. This should not include specific values unless
@@ -75,7 +78,7 @@ trait HitPointAmountFeature extends Features {
        */
       override def categories: Seq[String] = hitPointCategories.map(_.toString)
 
-      override protected[this] lazy val partToModify: BasicStat =
+      override protected lazy val partToModify: BasicStat =
         BasicStat.HitPoints
 
       override lazy val effectDetail: DetailedEffect = DetailedEffect(
@@ -90,7 +93,7 @@ trait HitPointAmountFeature extends Features {
       override lazy val effectText: Option[String] = Some(s"Hit Points by $value")
     }
 
-  abstract override def features: Seq[Feature[_]] = {
+  abstract override def features: Seq[Feature[?]] = {
     assert(hitPointAmount.value == hitPointBonusAmount)
     super.features :+ hitPointAmount
   }

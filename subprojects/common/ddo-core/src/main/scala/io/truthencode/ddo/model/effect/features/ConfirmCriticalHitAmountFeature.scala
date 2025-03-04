@@ -1,7 +1,10 @@
 /*
  * SPDX-License-Identifier: Apache-2.0
  *
- * Copyright 2015-2021 Andre White.
+ * Copyright 2015-2025
+ *
+ * Author: Andre White.
+ * FILE: ConfirmCriticalHitAmountFeature.scala
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -29,13 +32,13 @@ import io.truthencode.ddo.support.naming.UsingSearchPrefix
  */
 trait ConfirmCriticalHitAmountFeature extends Features {
   self: SourceInfo =>
-  protected val confirmCriticalHitBonusType: BonusType
+  protected def confirmCriticalHitBonusType: BonusType
   protected val confirmCriticalHitBonusAmount: Int
-  protected[this] val triggerOn: Seq[TriggerEvent]
-  protected[this] val triggerOff: Seq[TriggerEvent]
+  protected def triggerOn: Seq[TriggerEvent]
+  protected def triggerOff: Seq[TriggerEvent]
 
   private val src = this
-  private[this] val confirmCriticalHitChance =
+  private val confirmCriticalHitChance =
     new PartModifier[Int, BasicStat] with UsingSearchPrefix {
 
       /**
@@ -51,16 +54,16 @@ trait ConfirmCriticalHitAmountFeature extends Features {
       override def categories: Seq[String] =
         Seq(effect.EffectCategories.GeneralCombat).map(_.toString)
 
-      override protected[this] lazy val partToModify: BasicStat =
+      override protected lazy val partToModify: BasicStat =
         BasicStat.CriticalHitConfirmation
 
       private val eb = EffectParameterBuilder()
-        .toggleOffValue(triggerOff: _*)
-        .toggleOnValue(triggerOn: _*)
+        .toggleOffValue(triggerOff*)
+        .toggleOnValue(triggerOn*)
         .addBonusType(confirmCriticalHitBonusType)
         .build
 
-      override protected[this] def effectParameters: Seq[ParameterModifier[_]] = eb.modifiers
+      override protected def effectParameters: Seq[ParameterModifier[?]] = eb.modifiers
 
       /**
        * The General Description should be just that. This should not include specific values unless
@@ -90,7 +93,7 @@ trait ConfirmCriticalHitAmountFeature extends Features {
       override def searchPrefixSource: String = partToModify.searchPrefixSource
     }
 
-  abstract override def features: Seq[Feature[_]] = {
+  abstract override def features: Seq[Feature[?]] = {
     assert(confirmCriticalHitChance.value == confirmCriticalHitBonusAmount)
     super.features :+ confirmCriticalHitChance
   }

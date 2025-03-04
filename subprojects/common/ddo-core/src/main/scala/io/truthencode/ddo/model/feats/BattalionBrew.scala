@@ -1,7 +1,10 @@
 /*
  * SPDX-License-Identifier: Apache-2.0
  *
- * Copyright 2015-2021 Andre White.
+ * Copyright 2015-2025
+ *
+ * Author: Andre White.
+ * FILE: BattalionBrew.scala
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -32,10 +35,10 @@ import io.truthencode.ddo.support.requisite.{
  *   [[https://ddowiki.com/page/Battalion_Brew]]
  */
 protected[feats] trait BattalionBrew
-  extends FeatRequisiteImpl with ClassRequisiteImpl with RequiresAllOfClass with AlchemistBonusFeat
-  with Passive {
+  extends FeatRequisiteImpl with BonusSelectableToClassFeatImpl with ClassRequisiteImpl
+  with RequiresAllOfClass with AlchemistBonusFeat with Passive {
   self: ClassFeat =>
-  private[this] val cls = (Alchemist, 4)
+  private val cls = (Alchemist, 4)
 
   abstract override def allOfClass: Seq[(HeroicCharacterClass, Int)] = super.allOfClass :+ cls
 }

@@ -1,7 +1,10 @@
 /*
  * SPDX-License-Identifier: Apache-2.0
  *
- * Copyright 2015-2021 Andre White.
+ * Copyright 2015-2025
+ *
+ * Author: Andre White.
+ * FILE: SpellTraits.scala
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -202,19 +205,19 @@ object Spell extends Enum[Spell] {
     val pre = List("Inflict", "Repair")
     val mid = List("Light", "Moderate", "Serious", "Critical")
     val suf = List("Damage")
-    val spells = for {
+    val spells = for
       p <- pre
       m <- mid
       s <- suf
-    } yield s"$p$m$s"
+    yield s"$p$m$s"
     spells ++ List("Reconstruct", "Deconstruct")
   }
 
   def ls(
-    fn: (String => Option[Spell]),
+    fn: String => Option[Spell],
     names: String*
   ): Seq[String => Option[Spell]] = {
-    for { n <- names } yield (id: String) => {
+    for n <- names yield (id: String) => {
       fn(n)
     }
 
@@ -230,14 +233,14 @@ final protected[spells] case class SpellDescriptor(
   elements: Iterable[SpellElement]
 ) extends Spell {
   override val name: String = {
-    val nameOpt: Iterable[String] = for {
+    val nameOpt: Iterable[String] = for
       e <- elements
       p = e match {
         case x: WithName => Some(x)
         case _ => None
       }
       if p.nonEmpty
-    } yield p.head.name
+    yield p.head.name
     nameOpt.headOption.getOrElse("Unnamed Spell")
   }
 }

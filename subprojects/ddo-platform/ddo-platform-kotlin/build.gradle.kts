@@ -22,7 +22,7 @@ plugins {
     `java-platform`
 }
 
-description = "Project BOM.  Contains common dependencies for scala projects."
+description = "Project BOM.  Contains common dependencies for Kotlin projects."
 
 dependencies {
     constraints {

@@ -2,12 +2,11 @@ root = true
 
 [*]
 charset = utf-8
-end_of_line = crlf
 insert_final_newline = false
 indent_style = space
 indent_size = 4
 
-[{*.avro, *.json, *.avsc}]
+[{*.avro,*.json,*.avsc}]
 indent_style = space
 indent_size = 2
 
@@ -15,15 +14,17 @@ indent_size = 2
 indent_style = space
 indent_size = 2
 
-[{*.kt, *.kts}]
+[{*.kt,*.kts}]
 indent_size = 4
+insert_final_newline = true
 
 
-[{*.scala, *.sc}]
+[{*.scala,*.sc,*.java}]
 indent_style = space
 indent_size = 4
+insert_final_newline = true
 
-[{.scalafix.config, *.conf}]
+[{.scalafix.config,*.conf}]
 indent_style = space
 indent_size = 2
 

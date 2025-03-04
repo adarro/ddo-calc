@@ -1,3 +1,5 @@
+import org.openapitools.generator.gradle.plugin.tasks.GenerateTask
+
 /*
  * SPDX-License-Identifier: Apache-2.0
  *
@@ -193,10 +195,10 @@ val schemaList = listOf("parseHub")
 // Create Tasks to generate Avro Schemas for our OpenAPI specs
 
 val genAvroSchemaTask =
-    task("genAvroSchema") {
+    tasks.register("genAvroSchema", fun Task.() {
         this.group = "OpenAPI Tools"
         dependsOn("openApiValidate")
-    }
+    })
 
 run {
     @Suppress("IDENTIFIER_LENGTH")
@@ -217,12 +219,12 @@ run {
             }
             this.group = "OpenAPI Tools"
             dependsOn("openApiValidate")
-            genAvroSchemaTask.dependsOn(this)
+            genAvroSchemaTask.get().dependsOn(this)
         }
     }
 }
 
-task("genModel", org.openapitools.generator.gradle.plugin.tasks.GenerateTask::class) {
+tasks.register("genModel", GenerateTask::class, fun GenerateTask.() {
     verbose.set(true)
     generatorName.set("scala-lagom-server")
     inputSpec.set(apiSpec.asPath)
@@ -236,9 +238,9 @@ task("genModel", org.openapitools.generator.gradle.plugin.tasks.GenerateTask::cl
     apiPackage.set("io.truthencode.ddo.api")
     invokerPackage.set("io.truthencode.ddo.invoker")
     modelPackage.set("io.truthencode.ddo.models.model")
-}
+})
 
-task("genGatling", org.openapitools.generator.gradle.plugin.tasks.GenerateTask::class) {
+tasks.register("genGatling", GenerateTask::class, fun GenerateTask.() {
     verbose.set(true)
     val id = "scala-gatling"
     generatorName.set(id)
@@ -253,7 +255,7 @@ task("genGatling", org.openapitools.generator.gradle.plugin.tasks.GenerateTask::
     apiPackage.set("io.truthencode.ddo.api")
     invokerPackage.set("io.truthencode.ddo.invoker")
     modelPackage.set("io.truthencode.ddo.models.model")
-}
+})
 
 tasks.register<Delete>("cleanAvroSchema") {
     description = "Clears generated Schemas Directory"

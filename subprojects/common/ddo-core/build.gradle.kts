@@ -24,12 +24,9 @@ plugins {
     id("buildlogic.quarkus-component-conventions")
     id("buildlogic.scala-library-profile")
     id("buildlogic.test-conventions")
-//    id("code-quality")
 }
 
 description = "Core DDO Objects"
-
-val concordionVersion: String by project
 
 dependencies {
 //    implementation(enforcedPlatform(project(":ddo-platform-scala")))
@@ -92,13 +89,7 @@ testing {
     }
 }
 
-tasks.withType<SpotlessTask> {
-    tasks.first { it == this }.mustRunAfter(tasks.withType<JavaCompile>())
-
-//    logger.error("SpotlessApply tasks: $tasks")
-//    { it.name.contains("Java") }.forEach {
-//        logger.error("SpotlessApply tasks: $it")
-//        it.mustRunAfter(tasks.withType<JavaCompile>())
-//    }
-// mustRunAfter(tasks.withType<JavaCompile>())
-}
+//tasks.withType<SpotlessTask> {
+//    tasks.first { it == this }.mustRunAfter(tasks.withType<JavaCompile>())
+//
+//}

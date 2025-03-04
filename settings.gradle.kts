@@ -25,15 +25,6 @@ import java.nio.file.Paths
 rootProject.name = "ddo-calc-parent"
 
 pluginManagement {
-    //  Scala
-    // Coverage
-    val scoveragePluginVersion: String by settings
-    // Avro
-    val avroHuggerPluginVersion: String by settings
-    val openApiGeneratorPluginVersion: String by settings
-    val quarkusPlatformVersion: String by settings
-//    val kordampGradlePluginVersion: String by settings
-//    val semVerPluginVersion: String by settings
     val mooltiverseNyxPluginVersion: String by settings
     val foojayResolverPluginVersionversion: String by settings
     val refreshVersionsPluginVersion: String by settings
@@ -42,22 +33,6 @@ pluginManagement {
         id("com.mooltiverse.oss.nyx") version mooltiverseNyxPluginVersion
         id("org.gradle.toolchains.foojay-resolver-convention") version foojayResolverPluginVersionversion
         id("de.fayard.refreshVersions") version refreshVersionsPluginVersion
-//
-//
-//        id("com.github.hierynomus.license") version "0.16.1"
-//        id("com.zlad.gradle.avrohugger") version avroHuggerPluginVersion
-//
-//        id("org.openapi.generator") version openApiGeneratorPluginVersion
-//        id("org.scoverage") version scoveragePluginVersion
-//
-
-//        id("ru.vyarus.mkdocs") version "3.0.0"
-//        id("io.quarkus") version quarkusPlatformVersion
-//        id("org.sonarqube") version "4.3.1.3277"
-
-        //        // to be removed
-//        id("org.kordamp.gradle.project") version kordampGradlePluginVersion
-//        id("net.thauvin.erik.gradle.semver") version semVerPluginVersion
     }
 
     repositories {

@@ -67,7 +67,6 @@ scala {
 configure<org.scoverage.ScoverageExtension> {
 
     scoverageVersion.set(libs.versions.scoverage.engine)
-    val scsVersion = " 3.5.1"
     logger.warn("${project.name} (scoverage) $builderScalaVersion")
     val cfgs =
         mapOf(
@@ -127,75 +126,3 @@ tasks.withType<ScalaCompile>().configureEach {
         }
     }
 }
-
-// tasks.withType<ScalaCompile>().forEach() { t ->
-//    {
-//        t.apply {
-//            doFirst {
-//                println("ScalaCompile: First $t")
-//            }
-//            doLast {
-//                println("ScalaCompile: Last $t")
-//
-//            }
-//
-//        }
-//    }
-// }
-
-//
-//
-// tasks.withType<ScalaCompile>().configureEach {
-//
-//    doLast {
-//
-//        val co = makeOptions(project, "last")
-//        val msg = co.joinToString { it }
-//        logger.info("derived compiler options\n $msg")
-//    }
-//
-//    tryFindScalaVersionDependencies(project, "inConfigure")
-//    this.project // scala-library
-//    scalaCompileOptions.apply {
-// //        val scalaCompilerPlugin by configurations.getting
-//        val scalaCoptions = listOf(
-//            "-feature", "-deprecation", "-Ywarn-dead-code",
-//            "-Xsource:3"
-//        )
-//
-//        additionalParameters?.plusAssign(
-//            scalaCoptions
-//        )
-//        val rewriteOption = project.findProperty("s3rewrite")?.toString() ?: ""
-//        val mo = migrationOptions(rewriteOption)
-//
-//        logger.warn(" Migration options ${mo.opt}")
-//        logger.debug("executing scala compile with options\n $scalaCoptions")
-//        // Need to add -Ypartial-unification for Tapir
-//    }
-// }
-
-// tasks {
-//    withType(Test::class.java) {
-//        systemProperties["concordion.output.dir"] = "${reporting.baseDir}/spec"
-//    }
-//    logger.info("concordion output directory: *************************************")
-//    // Use the built-in JUnit support of Gradle.
-//    "test"(Test::class) {
-//        useJUnitPlatform {
-//            includeEngines = setOf("scalatest", "vintage")
-//            if (ci.isCi)
-//                excludeTags = setOf(
-//                    "Integration",
-//                    "io.truthencode.tags.Integration",
-//                    "FunctionOnly",
-//                    "io.truthencode.tags.FunctionOnly"
-//                )
-//            testLogging {
-//                events("passed", "skipped", "failed")
-//            }
-//        }
-//
-//        outputs.upToDateWhen { false }
-//    }
-// }

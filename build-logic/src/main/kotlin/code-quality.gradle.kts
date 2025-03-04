@@ -22,31 +22,8 @@ import org.gradle.kotlin.dsl.withType
  */
 
 plugins {
-
-//    id("com.github.hierynomus.license")
     id("com.diffplug.spotless")
-
-//    id("com.javiersc.gradle.plugins.dependency.updates")
 }
-
-/* Licensing
- go-to license formatter seems to be stale
- https://github.com/KyoriPowered/indra/wiki/indra-licenser-spotless adds improvement wrapper on spotless (i.e. template replacement)
- but currently only supports kotlin, java (no explicit scala)
-*/
-// indraSpotlessLicenser {
-//    licenseHeaderFile(rootProject.file("license_header.txt")) // default value
-//    headerFormat { doubleSlash() } // default: slashStar()
-//    languageFormatOverride("kotlin") { prefix("/// ") } // default: unset, optional
-//    property("name", project.name) // replace $name in the header file with the provided value
-//    newLine(false) // default value, adds a blank line between the license header and delimiter
-//    extraConfig {
-//        // configre options provided by Spotless itself
-//    }
-// }
-// license {
-//    header = rootProject.file("gradle/LICENSE_HEADER")
-// }
 
 enum class ScriptLanguage { GradleBuild, KotlinScriptBuild }
 
@@ -75,8 +52,6 @@ fun walkBack(
     }
 }
 
-val headerFile: File? = rootProject.file("gradle/LICENSE_HEADER_SPOTLESS")
-
 configure<com.diffplug.gradle.spotless.SpotlessExtension> {
     ratchetFrom("origin/master")
     if (buildLang() == ScriptLanguage.KotlinScriptBuild) {
@@ -84,7 +59,7 @@ configure<com.diffplug.gradle.spotless.SpotlessExtension> {
         kotlinGradle {
 //            ktlint("0.50.0")
             diktat("1.2.5").configFile(rootProject.file("diktat-analysis.yml"))
-            target("build-logic/src/main/kotlin/*.build.kts")
+            target("**/src/main/kotlin/*.build.kts")
         }
     }
 
@@ -137,7 +112,7 @@ tasks.withType<SpotlessTask> {
     // unsure why this is necessary
     // possibly due to a non-standard project layout or additional source sets?
     if (project.plugins.hasPlugin("java")) {
-        logger.error("explicitly adding java compile task dependency to spotless task ${this.name}")
+        logger.info("explicitly adding java compile task dependency to spotless task ${this.name}")
         tasks.first { it == this }.mustRunAfter(tasks.withType<JavaCompile>())
     }
 }

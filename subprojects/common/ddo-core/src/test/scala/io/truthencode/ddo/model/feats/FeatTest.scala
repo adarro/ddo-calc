@@ -67,7 +67,7 @@ class FeatTest extends AnyFunSpec with Matchers with LazyLogging {
         QuiveringPalm
       ) // .map(_.entryName).sorted
       val tacticalFeats = { Feat.values.collect(Feat.fnTacticalFeats) } // .map(_.entryName).sorted
-      tactical should contain only (tacticalFeats: _*)
+      tactical should contain theSameElementsAs tacticalFeats
 
     }
   }

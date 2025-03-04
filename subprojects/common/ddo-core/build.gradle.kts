@@ -21,6 +21,7 @@ plugins {
     id("buildlogic.quarkus-component-conventions")
     id("buildlogic.scala-library-profile")
     id("buildlogic.test-conventions")
+//    id("code-quality")
 }
 
 description = "Core DDO Objects"

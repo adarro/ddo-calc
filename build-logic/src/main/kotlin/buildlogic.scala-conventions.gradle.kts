@@ -28,26 +28,39 @@ plugins {
 val libs = the<LibrariesForLibs>()
 val builderScalaVersion: String by project
 
-dependencies {
-    when (builderScalaVersion) {
-        "3" -> {
+scala {
 
-            implementation(libs.scala3.library)
+    scalaVersion = when (builderScalaVersion) {
+        "3" -> {
+            libs.versions.scala3.version.get()
         }
 
         else -> {
-
-            implementation(libs.scala2.library)
+            libs.versions.scala2.version.get()
         }
     }
 
-//    val scalaLibraryVersion: String by project
-//    val scalaMajorVersion: String by project
-//    val scalaCompilerPlugin by configurations.creating
-//    scalaCompilerPlugin("com.typesafe.genjavadoc:genjavadoc-plugin_$scalaLibraryVersion:0.18")
-//     compileOnly("org.scoverage:scalac-scoverage-plugin_$scalaMajorVersion.7:1.4.10")
-//
 }
+//dependencies {
+//    when (builderScalaVersion) {
+//        "3" -> {
+//
+//            implementation(libs.scala3.library)
+//        }
+//
+//        else -> {
+//
+//            implementation(libs.scala2.library)
+//        }
+//    }
+//
+////    val scalaLibraryVersion: String by project
+////    val scalaMajorVersion: String by project
+////    val scalaCompilerPlugin by configurations.creating
+////    scalaCompilerPlugin("com.typesafe.genjavadoc:genjavadoc-plugin_$scalaLibraryVersion:0.18")
+////     compileOnly("org.scoverage:scalac-scoverage-plugin_$scalaMajorVersion.7:1.4.10")
+////
+//}
 
 configure<org.scoverage.ScoverageExtension> {
 

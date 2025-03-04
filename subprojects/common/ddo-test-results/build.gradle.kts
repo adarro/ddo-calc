@@ -24,7 +24,7 @@ reporting {
     reports {
         val testAggregateTestReport by creating(AggregateTestReport::class) {
 //            testType.set(TestSuiteType.UNIT_TEST)
-            testType.set("acceptance-test")
+            testSuiteName.set("acceptance-test")
         }
         // val testAggregateAcceptanceTestReport by creating(AggregateTestReport::class) {
         //     testType.set("acceptance-test")

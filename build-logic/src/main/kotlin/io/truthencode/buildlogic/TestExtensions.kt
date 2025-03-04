@@ -2,7 +2,6 @@ package io.truthencode.buildlogic
 
 import net.pearx.kasechange.toCamelCase
 import org.gradle.api.Project
-import org.gradle.api.attributes.TestSuiteType
 import org.gradle.api.plugins.jvm.JvmTestSuite
 import org.gradle.api.provider.Property
 import org.gradle.kotlin.dsl.invoke
@@ -32,12 +31,16 @@ interface KotlinAnnotationProcessingExtension {
     val kotlinTestMode: Property<TestMode>
 }
 
-@Suppress("UnstableApiUsage")
+
+/**
+ * TestTypes is a general enum for test type names.
+ * It initially expanded the incubating TestSuiteType enum but was removed in Gradle 13.0+
+ */
 enum class TestTypes {
-    Unit(TestSuiteType.UNIT_TEST),
-    Integration(TestSuiteType.INTEGRATION_TEST),
-    Functional(TestSuiteType.FUNCTIONAL_TEST),
-    Performance(TestSuiteType.PERFORMANCE_TEST),
+    Unit("unit-test"),
+    Integration("integration-test"),
+    Functional("functional-test"),
+    Performance("performance-test"),
     Acceptance("acceptance-test"),
     Custom("custom-test"),
     ;
@@ -45,39 +48,17 @@ enum class TestTypes {
     var id: String? = null
     var defaultName: String? = null
     var testSuiteType: String? = null
-    val knownSuiteNames =
-        listOf(
-            TestSuiteType.UNIT_TEST,
-            TestSuiteType.FUNCTIONAL_TEST,
-            TestSuiteType.INTEGRATION_TEST,
-            TestSuiteType.PERFORMANCE_TEST,
-        )
-
-    constructor()
 
     constructor(id: String) {
         this.id = id
         this.defaultName =
             when (id) {
-                TestSuiteType.UNIT_TEST -> "test"
+                "unit-test" -> "test"
                 else -> id.toCamelCase()
             }
-        if (knownSuiteNames.contains(id)) {
-            this.testSuiteType = id
-        }
     }
 
     companion object {
-        fun fromTestSuiteType(id: String): TestTypes =
-            when (id) {
-                TestSuiteType.UNIT_TEST -> Unit
-                TestSuiteType.INTEGRATION_TEST -> Integration
-                TestSuiteType.FUNCTIONAL_TEST -> Functional
-                TestSuiteType.PERFORMANCE_TEST -> Performance
-                "acceptance-test" -> Acceptance // Static Duck-typing ATM
-                else -> Custom
-            }
-
         fun fromNamingConvention(key: String): TestTypes = TestTypes.values().find { it.defaultName == key } ?: Custom
     }
 }

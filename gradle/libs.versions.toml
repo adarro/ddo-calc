@@ -60,29 +60,24 @@ enumeratum = "1.7.5"
 
 jade4j = "1.3.2"
 json4s = "4.1.0-M3"
-junit5 = "5.11.3"
+junit5 = "5.12.0"
 ##  ⬆ = "5.11.4"
 ##  ⬆ = "5.12.0"
 
 junit-platform = "1.10.0"
 kotest = "5.9.1"
 jspecify = "1.0.0"
-
+jetbrains-annotations = "26.0.2"
 kotlin = "2.1.10"
-logback = "1.5.6"
+
 mockito = "5.16.0"
 monix = "3.4.1"
 moshi = "1.15.2"
-
+logback = "1.5.17"
 scala2-suffix = "2.13"
 
 scala2-version = "2.13.14"
-scala3-version = "3.5.1"
-##          ⬆ = "3.5.2"
-##          ⬆ = "3.6.0"
-##          ⬆ = "3.6.1"
-##          ⬆ = "3.6.2"
-##          ⬆ = "3.6.3"
+scala3-version = "3.6.3"
 scalaFmt = "3.1.1"
 scalacheck = "1.18.0"
 #scalatest = "3.3.0.0-SNAP4"
@@ -126,7 +121,7 @@ jakarta-inject = "2.0.1"
 ##          ⬆ = "2.0.1.MR"
 jakarta-validation = "3.1.0"
 eclipse-microprofile = "3.1"
-
+configs = "0.6.1"
 jayway-jsonpath = "2.9.0"
 jackson = "2.12.3"
 sttp = "3.9.8"
@@ -252,31 +247,16 @@ enumeratum-s3 = { module = "com.beachape:enumeratum_3", version.ref = "enumeratu
 flexmark-all = "com.vladsch.flexmark:flexmark-all:0.64.8"
 io-jstach-jstachio = { module = "io.jstach:jstachio", version.ref = "jstachio" }
 jade4j = "de.neuland-bfi:jade4j:1.3.2"
-jetbrains-annotations = "org.jetbrains:annotations:17.0.0"
-##                                             ⬆ :18.0.0"
-##                                             ⬆ :19.0.0"
-##                                             ⬆ :20.0.0"
-##                                             ⬆ :20.1.0"
-##                                             ⬆ :21.0.0"
-##                                             ⬆ :21.0.1"
-##                                             ⬆ :22.0.0"
-##                                             ⬆ :23.0.0"
-##                                             ⬆ :23.1.0"
-##                                             ⬆ :24.0.0"
-##                                             ⬆ :24.0.1"
-##                                             ⬆ :24.1.0"
-##                                             ⬆ :25.0.0"
-##                                             ⬆ :26.0.0"
-##                                             ⬆ :26.0.1"
-##                                             ⬆ :26.0.2"
+
 json4s-native-s213 = { module = "org.json4s:json4s-native_2.13", version.ref = "json4s" }
 json4s-native-s3 = { module = "org.json4s:json4s-native_3", version.ref = "json4s" }
-junit-jupiter = { module = "org.junit.jupiter:junit-jupiter", version.ref = "junit5" }
-junit-jupiter-engine = { group = "org.junit.jupiter", name = "junit-jupiter-engine", version.ref = "junit5" }
+junit-junit5-bom = {module= "org.junit:junit-bom", version.ref = "junit5"}
+junit-jupiter = { module = "org.junit.jupiter:junit-jupiter" }
+junit-jupiter-engine = { group = "org.junit.jupiter", name = "junit-jupiter-engine"}
 junit-platform-engine = { module = "org.junit.platform:junit-platform-engine" }
 junit-platform-launcher = { module = "org.junit.platform:junit-platform-launcher" }
-junit-platform-runner = { module = "org.junit.platform:junit-platform-runner", version.ref = "junit5" }
-junit-vintage-engine = { module = "org.junit.vintage:junit-vintage-engine", version.ref = "junit5" }
+junit-platform-runner = { module = "org.junit.platform:junit-platform-runner"}
+junit-vintage-engine = { module = "org.junit.vintage:junit-vintage-engine" }
 junit-platform-reporting = "org.junit.platform:junit-platform-reporting:1.10.0"
 ##                                                                  ⬆ :1.10.1"
 ##                                                                  ⬆ :1.10.2"
@@ -310,28 +290,13 @@ sksamuel-hoplite-core = { module = "com.sksamuel.hoplite:hoplite-core", version.
 sksamuel-hoplite-hocon = { module = "com.sksamuel.hoplite:hoplite-hocon", version.ref = "hoplite" }
 sksamuel-hoplite-yaml = { module = "com.sksamuel.hoplite:hoplite-yaml", version.ref = "hoplite" }
 github-oshai-kotlin-logging = { module = "io.github.oshai:kotlin-logging-jvm", version.ref = "oshai-logging" }
-kxbmap-configs-s213 = "com.github.kxbmap:configs_2.13:0.6.1"
-logback-classic = "ch.qos.logback:logback-classic:1.5.6"
-##                                            ⬆ :1.5.7"
-##                                            ⬆ :1.5.8"
-##                                            ⬆ :1.5.9"
-##                                            ⬆ :1.5.10"
-##                                            ⬆ :1.5.11"
-##                                            ⬆ :1.5.12"
-##                                            ⬆ :1.5.13"
-##                                            ⬆ :1.5.14"
-##                                            ⬆ :1.5.15"
-##                                            ⬆ :1.5.16"
-##                                            ⬆ :1.5.17"
+kxbmap-configs-s213 = {module="com.github.kxbmap:configs_2.13",version.ref = "configs"}
+logback-classic = {module = "ch.qos.logback:logback-classic",version.ref="logback"}
 mockito-core = { group = "org.mockito", name = "mockito-core", version.ref = "mockito" }
 monix-eval-s213 = { module = "io.monix:monix-eval_2.13", version.ref = "monix" }
 monix-reactive-s213 = { module = "io.monix:monix-reactive_2.13", version.ref = "monix" }
-org-jetbrains-annotations = "org.jetbrains:annotations:24.0.1"
-##                                                 ⬆ :24.1.0"
-##                                                 ⬆ :25.0.0"
-##                                                 ⬆ :26.0.0"
-##                                                 ⬆ :26.0.1"
-##                                                 ⬆ :26.0.2"
+jetbrains-annotations = {module = "org.jetbrains:annotations", version.ref = "jetbrains-annotations"}
+
 
 quill-monix-s213 = { module = "io.getquill:quill-monix_2.13", version.ref = "getquill" }
 quill-sql-s213 = { module = "io.getquill:quill-sql_2.13", version.ref = "getquill" }
@@ -448,7 +413,7 @@ jakarta-inject-api = "jakarta.inject:jakarta.inject-api:2.0.1"
 
 microprofile-config-api = "org.eclipse.microprofile.config:microprofile-config-api:3.1"
 
-configs-s213 = "com.github.kxbmap:configs_2.13:0.6.1"
+
 
 zio-prelude-s3 = "dev.zio:zio-prelude_3:1.0.0-RC31"
 

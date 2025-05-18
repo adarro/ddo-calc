@@ -6,11 +6,13 @@
  * Advanced features (e.g. OpenAPI, RESTEasy Reactive, etc.) should be added to the project-specific build logic
  *
  */
+import org.gradle.accessors.dm.LibrariesForLibs
+
 plugins {
     id("io.quarkus")
     id("buildlogic.common-conventions")
 }
-
+val libs = the<LibrariesForLibs>()
 val quarkusPlatformGroupId: String by project
 val quarkusPlatformArtifactId: String by project
 val quarkusPlatformVersion: String by project
@@ -29,6 +31,7 @@ dependencies {
     // basic Quarkus Unit, Component and Integration test support included.
     testImplementation("io.quarkus:quarkus-junit5")
     testImplementation("io.quarkus:quarkus-junit5-component")
+    testImplementation(libs.quarkus.cucumber)
 //    testImplementation("io.rest-assured:rest-assured")
 }
 

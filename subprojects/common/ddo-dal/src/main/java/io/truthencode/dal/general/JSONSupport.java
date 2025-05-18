@@ -6,13 +6,27 @@ import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.node.ObjectNode;
 import io.quarkus.logging.Log;
+import lombok.experimental.UtilityClass;
 
 import java.io.IOException;
 import java.util.*;
 
+/**
+ * Utility class for JSON-related operations.
+ */
+@UtilityClass
 public class JSONSupport {
+    /**
+     * HTTP-HEADER for specifying update keys.
+     */
     static final String UPDATE_KEYS_HEADER = "X-UPDATE-FIELDS";
 
+    /**
+     * Keys to update.
+     * Reads the keys and attempts to extract sanitized values from the header.
+     * @param updateKeys the keys to update.
+     * @return the keys to update.
+     */
     static Set<String> getKeys(String... updateKeys) {
         Set<String> keys = new HashSet<>();
 
@@ -29,6 +43,12 @@ public class JSONSupport {
         return keys;
     }
 
+    /**
+     * Extracts explicitly named key values from keylists or extracts JSON fields from the request body and adds the keys
+     * @param jsonData the json data to extract keys from
+     * @return the keys to update.
+     * @throws IOException if the JSON data cannot be parsed
+     */
     static Set<String> extractKeys(String jsonData) throws IOException {
         Set<String> keys = new HashSet<>();
         ObjectMapper mapper = new ObjectMapper();

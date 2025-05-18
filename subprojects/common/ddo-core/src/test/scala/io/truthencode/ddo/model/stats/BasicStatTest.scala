@@ -18,6 +18,7 @@
 package io.truthencode.ddo.model.stats
 
 import com.typesafe.scalalogging.LazyLogging
+import io.truthencode.ddo.model.stats.BasicStat.{extractCategory, values}
 import org.scalatest.funspec.AnyFunSpec
 import org.scalatest.matchers.should.Matchers
 
@@ -26,21 +27,37 @@ import scala.language.postfixOps
 class BasicStatTest extends AnyFunSpec with Matchers with LazyLogging {
   describe("Basic Stats") {
     they("should be enumerated") {
-      noException shouldBe thrownBy { BasicStat.values }
+      noException shouldBe thrownBy {
+        BasicStat.values
+      }
+      val vals = BasicStat.values
+      vals should not be empty
+      logger.error(s"Basic Stat size is ${vals.size}")
     }
+
     they("should include Granted Abilities") {
       val abilities = BasicStat.allGrantedAbilities
       abilities.foreach { a =>
         val ao = Option(a.entryName)
         ao shouldBe defined
         logger.info(s"ao $ao")
-
       }
     }
+
     they("should have named features") {
       val stats = BasicStat.values
       val missStats = stats.collect { case x: MissChance => x }
+      missStats should not be empty
       missStats.foreach(ms => logger.info(ms.entryName))
+    }
+
+    they("should be bound by categories") {
+      val cat = values.collect(extractCategory).groupBy(_.categoryId).map{
+        c => c._2.head
+      }.toList.sortBy(_.categoryId)
+      logger.info(s"Categories: ${cat.size}")
+      cat.foreach(c => logger.info(s"${c.categoryId} ${c.catName}"))
+
     }
   }
 }

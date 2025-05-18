@@ -22,8 +22,7 @@ plugins {
 //    id("code-quality")
     id("be.vbgn.ci-detect")
     scala
-    //  java // apply (false)
-    id("org.scoverage")
+    id("buildlogic.scala-coverage-conventions")
 }
 val libs = the<LibrariesForLibs>()
 val builderScalaVersion: String by project
@@ -42,43 +41,6 @@ scala {
                     .get()
             }
         }
-}
-// dependencies {
-//    when (builderScalaVersion) {
-//        "3" -> {
-//
-//            implementation(libs.scala3.library)
-//        }
-//
-//        else -> {
-//
-//            implementation(libs.scala2.library)
-//        }
-//    }
-//
-// //    val scalaLibraryVersion: String by project
-// //    val scalaMajorVersion: String by project
-// //    val scalaCompilerPlugin by configurations.creating
-// //    scalaCompilerPlugin("com.typesafe.genjavadoc:genjavadoc-plugin_$scalaLibraryVersion:0.18")
-// //     compileOnly("org.scoverage:scalac-scoverage-plugin_$scalaMajorVersion.7:1.4.10")
-// //
-// }
-
-configure<org.scoverage.ScoverageExtension> {
-
-    scoverageVersion.set(libs.versions.scoverage.engine)
-    logger.warn("${project.name} (scoverage) $builderScalaVersion")
-    val cfgs =
-        mapOf(
-            Pair(org.scoverage.CoverageType.Branch, 0.5.toBigDecimal()),
-            Pair(org.scoverage.CoverageType.Statement, 0.75.toBigDecimal()),
-        ).map { p ->
-            val cfg = org.scoverage.ScoverageExtension.CheckConfig()
-            cfg.setProperty("coverageType", p.key)
-            cfg.setProperty("minimumRate", p.value)
-            cfg
-        }
-    checks.plusAssign(cfgs)
 }
 
 tasks.withType<ScalaCompile>().configureEach {

@@ -22,7 +22,8 @@ package io.truthencode.ddo.model.feats
 
 import com.typesafe.scalalogging.LazyLogging
 import io.truthencode.ddo.model.feats.ClassFeat.QuiveringPalm
-import io.truthencode.ddo.model.feats.GeneralFeat._
+import io.truthencode.ddo.model.feats.GeneralFeat.*
+import io.truthencode.ddo.model.item.weapon.WeaponClass
 import org.scalatest.funspec.AnyFunSpec
 import org.scalatest.matchers.should.Matchers
 
@@ -43,7 +44,14 @@ class FeatTest extends AnyFunSpec with Matchers with LazyLogging {
   describe("Feats") {
 
     it("should contain all types of feats") {
+      //validates we have no lazy loading / init issues
       noException shouldBe thrownBy(Feat.values)
+    }
+
+    it("should hold distinct values") {
+      val expected = Feat.values.size
+      val actual = Feat.values.toSet.size
+      actual shouldBe expected
     }
 
     it("should automatically create proper display text / name") {

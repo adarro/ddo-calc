@@ -27,6 +27,7 @@ import java.util.EnumSet
 plugins {
     id("buildlogic.java-common-conventions")
     `jvm-test-suite`
+    id("test-report-aggregation")
     id("buildlogic.quality-sonar")
 }
 
@@ -211,6 +212,12 @@ fun JvmTestSuite.applyVintageEngine() {
     }
 }
 
+fun JvmTestSuite.applyJUnitPioneer() {
+    dependencies {
+        implementation(libs.junit.pioneer)
+    }
+}
+
 fun JvmTestSuite.applyJupiterEngine() {
     dependencies {
         runtimeOnly(libs.junit.jupiter.engine)
@@ -306,6 +313,7 @@ performanceTest by registering(JvmTestSuite::class)
                             logger.info(("Configuring standard Unit Test for scala"))
                             useJUnitJupiter()
                             this.applyJupiterEngine()
+                            this.applyJUnitPioneer()
                             //   this.applyVintageEngine()
                             this.applyScalaTest()
 
@@ -352,6 +360,7 @@ performanceTest by registering(JvmTestSuite::class)
 
                             this.applyJupiterEngine()
                             this.applyVintageEngine()
+                            this.applyJUnitPioneer()
                             logger.info("adding scala acceptance stuff")
                             dependencies {
                                 implementation(libs.jade4j)
@@ -378,6 +387,7 @@ performanceTest by registering(JvmTestSuite::class)
                     logger.info("java-library applied to ${project.name}, applying JUnit Jupiter")
                     useJUnitJupiter()
                     this.applyJavaAssertions()
+                    this.applyJUnitPioneer()
                 }
 
 // Concordian BDD Acceptance
@@ -393,3 +403,35 @@ performanceTest by registering(JvmTestSuite::class)
         }
     }
 }
+
+tasks.register<TestReport>("allAggregateTestReport") {
+    group = "verification"
+    destinationDirectory.convention(java.testReportDir.map { it.dir("all/aggregated-results") })
+    testResults.from(testSuite("test"))
+    testResults.from(testSuite("functionalTest"))
+    testResults.from(testSuite("integrationTest"))
+    testResults.from(testSuite("acceptanceTest"))
+}
+
+fun testSuite(name: String): Provider<FileCollection> =
+    configurations.aggregateTestReportResults.map { configuration ->
+        @Suppress("UnstableApiUsage")
+        configuration.incoming.artifactView {
+            withVariantReselection()
+            componentFilter { id -> id is ProjectComponentIdentifier }
+            attributes {
+                attribute(
+                    Category.CATEGORY_ATTRIBUTE,
+                    objects.named(Category::class, Category.VERIFICATION)
+                )
+                attributes.attribute(
+                    TestSuiteName.TEST_SUITE_NAME_ATTRIBUTE,
+                    objects.named(TestSuiteName::class, name)
+                )
+                attribute(
+                    VerificationType.VERIFICATION_TYPE_ATTRIBUTE,
+                    objects.named(VerificationType::class, VerificationType.TEST_RESULTS)
+                )
+            }
+        }.files
+    }

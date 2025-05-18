@@ -1,0 +1,94 @@
+package io.truthencode.ddo.etl.dbstatus
+
+import jetbrains.exodus.entitystore.{PersistentEntityStore, PersistentEntityStoreImpl, PersistentEntityStores, StoreTransaction}
+import jetbrains.exodus.env.Transaction
+import zio.*
+
+import java.io.{BufferedReader, FileReader}
+
+
+
+trait XodusEnvService {
+  
+  
+    def send(email: String, content: String): UIO[Unit]
+}
+
+object XodusEnvService {
+    val layer: ZLayer[Any, Nothing, XodusEnvService] =
+        ZLayer.succeed(
+            new XodusEnvService {
+                override def send(email: String, content: String): UIO[Unit] = ???
+            }
+        )
+}
+
+trait Database {
+    def close: UIO[Unit]
+}
+
+object Database {
+    def connect: ZIO[Any, Throwable, Database] = ???
+}
+
+val database: ZLayer[Any, Throwable, Database] =
+    ZLayer.scoped {
+        ZIO.acquireRelease {
+            Database.connect.debug("connecting to the database")
+        } { database =>
+            database.close
+        }
+    }
+
+val scopedDatabase: ZIO[Scope, Throwable, ZEnvironment[Database]] =
+    database.build
+    
+    
+    
+def lines(file: String): Task[Long] = {
+    def countLines(reader: BufferedReader): Task[Long] = ZIO.attempt(reader.lines().count())
+
+    def releaseReader(reader: BufferedReader): UIO[Unit] = ZIO.succeed(reader.close())
+
+    def acquireReader(file: String): Task[BufferedReader] = ZIO.attempt(new BufferedReader(new FileReader(file), 2048))
+
+    ZIO.acquireReleaseWith(acquireReader(file))(releaseReader)(countLines)
+}
+
+def toTransaction() = {
+  def acquireTransaction(store: PersistentEntityStore) = ZIO.attempt(store.beginTransaction())
+  def releaseTransaction(transaction: StoreTransaction) = ZIO.attempt(transaction.abort())
+}
+
+def xdbStore(dpPath : String) = {
+  def acquireDbStore(dpPath: String) : Task[PersistentEntityStoreImpl] =  ZIO.attempt(PersistentEntityStores.newInstance(dpPath))
+  def releaseDbStore(store: PersistentEntityStore) = ZIO.attemptBlockingIO(store.close())
+//  def startTransaction(store: PersistentEntityStore) = ZIO.attempt(store.executeInTransaction())
+}
+
+// type alias
+type UserDbEnv = Has[UserDb.Service]
+
+trait XodusManager {
+  def newTransaction(): PersistentEntityStoreImpl
+}
+
+object UserDb {
+    // service definition
+    trait Service {
+        def insert(user: User): Task[Unit]
+    }
+
+    // layer - service implementation
+    val live: ZLayer[Any, Nothing, UserDbEnv] = ZLayer.succeed {
+        new Service {
+            override def insert(user: User): Task[Unit] = Task {
+                // can replace this with an actual DB SQL string
+                println(s"[Database] insert into public.user values ('${user.name}')")
+            }
+        }
+    }
+
+    // accessor
+    def insert(u: User): ZIO[UserDbEnv, Throwable, Unit] = ZIO.accessM(_.get.insert(u))
+}

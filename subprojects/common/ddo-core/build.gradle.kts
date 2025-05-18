@@ -1,6 +1,3 @@
-import com.diffplug.gradle.spotless.SpotlessTask
-
-
 /*
  * SPDX-License-Identifier: Apache-2.0
  *

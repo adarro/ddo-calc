@@ -135,6 +135,7 @@ fun printDependencies(
             .contains("test")
     ) {
         project.configurations
+            .asSequence()
             .map {
                 it.allDependencies.map { d -> d }
             }.flatten()

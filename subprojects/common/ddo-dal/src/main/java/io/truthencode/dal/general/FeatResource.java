@@ -9,6 +9,8 @@ import io.quarkus.logging.Log;
 import io.quarkus.panache.common.Sort;
 import io.smallrye.mutiny.CompositeException;
 import io.smallrye.mutiny.Uni;
+import io.truthencode.ddo.dal.entity.Feat;
+import io.truthencode.ddo.dal.repositories.FeatRepository;
 import io.vertx.core.http.HttpServerRequest;
 import jakarta.enterprise.context.ApplicationScoped;
 import jakarta.inject.Inject;
@@ -26,6 +28,7 @@ import jakarta.ws.rs.ext.Provider;
 import org.jboss.logging.Logger;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
@@ -33,11 +36,38 @@ import java.util.Set;
 import static io.truthencode.dal.general.JSONSupport.UPDATE_KEYS_HEADER;
 import static jakarta.ws.rs.core.Response.Status.*;
 
+/**
+ * REST Resource for managing Feat entities, providing CRUD operations and validation methods.
+ * <p>
+ * This class serves as a RESTful endpoint for Feat-related operations, supporting:
+ * - Retrieving all Feats
+ * - Retrieving a single Feat by ID
+ * - Creating new Feats
+ * - Updating existing Feats
+ * - Deleting Feats
+ * - Multiple validation approaches for Feat objects
+ * <p>
+ * Supports various validation strategies including manual, end-point method,
+ * and service method validations. Utilizes Quarkus reactive programming
+ * with Hibernate and Panache for data persistence.
+ *
+ * @see FeatRepository
+ * @see FeatService
+ */
 @Path("Feats")
 @ApplicationScoped
 @Produces("application/json")
 @Consumes("application/json")
 public class FeatResource {
+    /**
+     * Default constructor for FeatResource.
+     * <p>
+     * Provides a no-argument constructor for creating instances of FeatResource
+     * without any specific initialization requirements.
+     */
+    public FeatResource() {
+        // Default constructor
+    }
 
     @Context
     HttpServerRequest request;
@@ -45,12 +75,25 @@ public class FeatResource {
     @Context
     UriInfo uriInfo;
 
+    @Inject
+    FeatRepository repository;
+
     private static final Logger LOGGER = Logger.getLogger(FeatResource.class.getName());
 
     // Validation
     @Inject
     Validator validator;
 
+    /**
+     * Validates a Feat using manual validation through the validator.
+     * <p>
+     * This method manually validates a Feat object using the injected Validator.
+     * If no constraint violations are found, it returns a positive validation result.
+     * If constraint violations exist, it returns a validation result containing the specific violations.
+     *
+     * @param feat The Feat object to be manually validated
+     * @return A ValidationResult indicating whether the Feat is valid or detailing any constraint violations
+     */
     @Path("/manual-validation")
     @POST
     public ValidationResult tryMeManualValidation(Feat feat) {
@@ -62,6 +105,16 @@ public class FeatResource {
         }
     }
 
+    /**
+     * Validates a Feat using end-point method validation.
+     * <p>
+     * This method leverages the @Valid annotation to perform automatic validation
+     * of the Feat object at the endpoint level. If the Feat passes validation,
+     * it returns a positive validation result indicating successful validation.
+     *
+     * @param feat The Feat object to be validated using end-point method validation
+     * @return A ValidationResult confirming the Feat's validity
+     */
     @Path("/end-point-method-validation")
     @POST
     @Produces(MediaType.APPLICATION_JSON)
@@ -73,6 +126,17 @@ public class FeatResource {
     @Inject
     FeatService featService;
 
+    /**
+     * Validates a Feat using the service method validation approach.
+     * <p>
+     * This method attempts to validate a Feat through the featService's validateFeat method.
+     * If validation is successful, it returns a positive validation result.
+     * If a ConstraintViolationException is thrown during validation, it returns a validation result
+     * containing the specific constraint violations.
+     *
+     * @param feat The Feat object to be validated
+     * @return A ValidationResult indicating whether the Feat is valid or detailing any constraint violations
+     */
     @Path("/service-method-validation")
     @POST
     public ValidationResult tryMeServiceMethodValidation(Feat feat) {
@@ -84,27 +148,62 @@ public class FeatResource {
         }
     }
 
+    /**
+     * Retrieves all Feats from the database.
+     *
+     * @return A Uni representing the asynchronous retrieval of all Feats
+     */
     @GET
     public Uni<List<Feat>> get() {
-        return Feat.listAll(Sort.by("name"));
+        return repository.listAll(Sort.by("name"));
     }
 
+    /**
+     * Retrieves a single Feat entity by its unique identifier.
+     *
+     * @param id The unique identifier of the Feat to be retrieved
+     * @return A Uni representing the asynchronous retrieval of the Feat entity
+     */
     @GET
     @Path("{id}")
     public Uni<Feat> getSingle(Long id) {
-        return Feat.findById(id);
+        return repository.findById(id);
     }
 
+    /**
+     * Creates a new Feat entity in the database.
+     * <p>
+     * This method validates that the incoming Feat does not already have an ID set,
+     * and then persists the new Feat entity within a transaction. Upon successful
+     * creation, it returns a response with the created Feat and a CREATED status.
+     *
+     * @param feat The Feat entity to be created
+     * @return A Uni representing the asynchronous creation of the Feat with a response
+     * @throws WebApplicationException if the Feat already has an ID set
+     */
     @POST
     public Uni<Response> create(Feat feat) {
-        if (feat == null || feat.id != null) {
+        if (feat == null || feat.getId() != null) {
             throw new WebApplicationException("Id was invalidly set on request.", 422);
         }
 
-        return Panache.withTransaction(feat::persist)
+        return Panache.withTransaction(() -> repository.persist(feat))
             .replaceWith(Response.ok(feat).status(CREATED)::build);
     }
 
+    /**
+     * Updates a Feat entity by processing a JSON payload with specified update keys.
+     * <p>
+     * This method allows partial updates to a Feat by extracting specific fields from the request body
+     * and header. It supports updating fields like name, description, and usages while performing
+     * validation through the featService.
+     *
+     * @param id     The identifier of the Feat to be updated
+     * @param body   The JSON payload containing the update data
+     * @param header A header specifying which fields should be updated
+     * @return A Uni representing the HTTP response with the updated Feat or appropriate status
+     * @throws WebApplicationException if no update keys are found or JSON processing fails
+     */
     @KeyExtracting
     @PUT
     @Path("{id}")
@@ -114,7 +213,7 @@ public class FeatResource {
         Log.warn("@KeyExtracting updateFromRaw: " + body);
         Log.warn("@KeyExtracting updateFromRaw: header " + header);
         return Panache
-            .withTransaction(() -> Feat.<Feat>findById(id)
+            .withTransaction(() -> repository.findById(id)
                 .onItem().ifNotNull().invoke(entity -> {
                     try {
                         var kMap = JSONSupport.extractKeys(body, header);
@@ -124,7 +223,7 @@ public class FeatResource {
                         if (keys.isEmpty()) {
                             throw new WebApplicationException("Field keys were not set on request and could not determine fields to update. Please specify update fields by Header, Query parameters", 422);
                         }
-                        Log.warn("Attempting to update Feat with id: " + id + " using requested keys: " + keys);
+                        Log.warnf("Attempting to update Feat with id: {} using requested keys: ()", id, keys);
                         keys.stream()
                             .map(String::toLowerCase)
                             .map(String::trim)
@@ -137,11 +236,11 @@ public class FeatResource {
                                     case "name":
                                         Log.info("Matched field [name]");
                                         Log.warn("Mapping name: " + rootNode.findValues(fieldKey).stream().findFirst().get().asText());
-                                        entity.name = rootNode.findValues(fieldKey).stream().findFirst().get().asText();
+                                        entity.setName(rootNode.findValues(fieldKey).stream().findFirst().get().asText());
                                         break;
                                     case "description":
                                         Log.info("Matched field [description]");
-                                        entity.description = rootNode.findValues(fieldKey).stream().findFirst().map(JsonNode::asText).orElse(null);
+                                        entity.setDescription(rootNode.findValues(fieldKey).stream().findFirst().map(JsonNode::asText).orElse(null));
                                         break;
                                     case "usages":
                                         Log.info("Matched field [usages]");
@@ -176,6 +275,8 @@ public class FeatResource {
      *
      * @param id   The id of the Feat to update.
      * @param feat The Feat to update.
+     * @param fieldKeys The header field keys to update.
+     * @param queryKeys The keys from the query string to update.
      * @return A Response with the updated Feat.
      */
     @PUT
@@ -184,15 +285,14 @@ public class FeatResource {
         Long id,
         Feat feat,
         @HeaderParam(value = UPDATE_KEYS_HEADER) String fieldKeys,
-//        @FormParam(value = UPDATE_KEYS_HEADER) String formKeys,
         @QueryParam(value = JSONSupport.UPDATE_KEYS_HEADER) String queryKeys) {
-        if (feat == null || feat.name == null) {
+        if (feat == null || feat.getName() == null) {
             throw new WebApplicationException("Feat name was not set on request.", 422);
         }
 
         Log.warn("Attempting to update raw/ Feat with id: " + id);
         return Panache
-            .withTransaction(() -> PanacheEntityBase.<Feat>findById(id)
+            .withTransaction(() -> repository.findById(id)
                 .onItem().ifNotNull().invoke(entity -> {
                     var r = request.getHeader(UPDATE_KEYS_HEADER);
                     // String r = "description,name";
@@ -216,11 +316,11 @@ public class FeatResource {
                                     break;
                                 case "name":
                                     Log.info("Matched field [name]");
-                                    entity.name = feat.name;
+                                    entity.setName(feat.getName());
                                     break;
                                 case "description":
                                     Log.info("Matched field [description]");
-                                    entity.description = feat.description;
+                                    entity.setDescription(feat.getDescription());
                                     break;
                                 case "usages":
                                     Log.info("Matched field [usages]");
@@ -246,10 +346,17 @@ public class FeatResource {
             .onItem().ifNull().continueWith(Response.ok().status(NOT_FOUND)::build);
     }
 
+    /**
+     * Deletes a Feat entity by its unique identifier.
+     *
+     * @param id The unique identifier of the Feat to be deleted
+     * @return A Uni representing the asynchronous deletion operation, which returns a Response
+     *         indicating the result of the deletion (NO_CONTENT if successful, NOT_FOUND if the entity does not exist)
+     */
     @DELETE
     @Path("{id}")
     public Uni<Response> delete(Long id) {
-        return Panache.withTransaction(() -> Feat.deleteById(id))
+        return Panache.withTransaction(() -> repository.deleteById(id))
             .map(deleted -> deleted
                 ? Response.ok().status(NO_CONTENT).build()
                 : Response.ok().status(NOT_FOUND).build());
@@ -278,6 +385,18 @@ public class FeatResource {
         @Inject
         ObjectMapper objectMapper;
 
+        /**
+         * Converts an exception to an HTTP response with appropriate error details.
+         * <p>
+         * This method handles different types of exceptions, extracting status codes and error messages
+         * to create a standardized JSON error response. It supports:
+         * - WebApplicationExceptions with specific HTTP status codes
+         * - CompositeExceptions by extracting the underlying cause
+         * - Logging the full exception details
+         *
+         * @param exception The exception to be converted into a response
+         * @return A JAX-RS Response containing error details in JSON format
+         */
         @Override
         public Response toResponse(Exception exception) {
             LOGGER.error("Failed to handle request", exception);
@@ -291,8 +410,8 @@ public class FeatResource {
 
             // This is a Mutiny exception, and it happens, for example, when we try to insert a new
             // Feat but the name is already in the database
-            if (throwable instanceof CompositeException) {
-                throwable = ((CompositeException) throwable).getCause();
+            if (throwable instanceof CompositeException exception1) {
+                throwable = exception1.getCause();
             }
 
             ObjectNode exceptionJson = objectMapper.createObjectNode();

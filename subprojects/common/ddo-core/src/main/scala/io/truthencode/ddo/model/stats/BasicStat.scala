@@ -29,7 +29,9 @@ import io.truthencode.ddo.support.SearchPrefix
 import io.truthencode.ddo.support.StringUtils.Extensions
 import io.truthencode.ddo.support.naming.{DisplayName, FriendlyDisplay, UsingSearchPrefix}
 
+import java.util
 import scala.collection.immutable
+import scala.jdk.CollectionConverters.*
 
 sealed trait BasicStat
   extends EnumEntry with DisplayName with FriendlyDisplay with UsingSearchPrefix {
@@ -337,19 +339,46 @@ object BasicStat extends Enum[BasicStat] with SearchPrefix {
 
   override def values: immutable.IndexedSeq[BasicStat] = findValues ++ allGrantedAbilities
 
-  case class GrantedAbilities(override val ability: ActiveAbilities) extends GrantedAbility {
+  def asJava: util.List[BasicStat] = values.asJava
+
+  val extractCategory: PartialFunction[BasicStat, Category] = { case x: Category =>
+    x
+  }
+
+  /**
+   * Extracts all categories used by this Enumeration.
+   * @return
+   *   A collection of categories
+   */
+  def categories: List[Category] = values
+    .collect(extractCategory)
+    .groupBy(_.categoryId)
+    .map { c =>
+      c._2.head
+    }
+    .toList
+
+  /**
+   * Java-friendly version of categories
+   * @return
+   */
+  def categoriesJava: util.List[Category] = categories.asJava
+
+  case class GrantedAbilities(override val ability: ActiveAbilities)
+    extends GrantedAbility, BasicStat {
     override lazy val entryName: String = s"${ability.entryName}"
   }
 
-  case class SpellCriticalChanceSchool(spellPower: SpellPower) extends SpellCriticalChance
+  case class SpellCriticalChanceSchool(spellPower: SpellPower)
+    extends SpellCriticalChance, BasicStat
 
-  case class SpellFocus(school: School) extends SpellDifficultyCheck
+  case class SpellFocus(school: School) extends SpellDifficultyCheck, BasicStat
 
   /**
    * The dodge mechanic works as a miss chance - a simple percentile chance to completely avoid
    * physical attacks.
    */
-  case object DodgeChance extends DodgeChance {
+  case object DodgeChance extends DodgeChance, BasicStat {
     override def entryName: String = "Dodge"
   }
 
@@ -357,204 +386,205 @@ object BasicStat extends Enum[BasicStat] with SearchPrefix {
    * Armor Class, also called AC, represents your chance to be missed by melee attacks - the higher
    * your AC, the less you get hit. This chance is also influenced by the attackers attack bonus.
    */
-  case object ArmorClass extends ArmorClass
+  case object ArmorClass extends ArmorClass, BasicStat
 
   /**
    * MDB - caps your dexterity bonus when wearing certain armor.
    * [[https://ddowiki.com/page/Maximum_dexterity_bonus]]
    */
-  case object MaxDexterityBonus extends MaxDexterityBonus
+  case object MaxDexterityBonus extends MaxDexterityBonus, BasicStat
 
   /**
    * Chance to Hit, generally applies your Melee and Ranged Weapons.
    */
-  case object ChanceToHit extends ChanceToHit
+  case object ChanceToHit extends ChanceToHit, BasicStat
 
   /**
    * Adds Damage to equipped weapon.
    */
-  case object ToDamage extends WeaponDamage
+  case object ToDamage extends WeaponDamage, BasicStat
 
-  case object MeleePower extends MeleePower
+  case object MeleePower extends MeleePower, BasicStat
 
-  case object RangedPower extends RangedPower
+  case object RangedPower extends RangedPower, BasicStat
 
-  case object WeaponProficiency extends WeaponProficiency
+  case object WeaponProficiency extends WeaponProficiency, BasicStat
 
   /**
    * Your Hit points
    */
-  case object HitPoints extends HitPoints
+  case object HitPoints extends HitPoints, BasicStat
 
-  case object SpellPoints extends SpellPoints
+  case object SpellPoints extends SpellPoints, BasicStat
 
-  case object BaseAttackBonus extends BaseAttackBonus
+  case object BaseAttackBonus extends BaseAttackBonus, BasicStat
 
-  case object MovementSpeedModifier extends MovementSpeedModifier
+  case object MovementSpeedModifier extends MovementSpeedModifier, BasicStat
 
-  case object UnconsciousRange extends UnconsciousRange
+  case object UnconsciousRange extends UnconsciousRange, BasicStat
 
-  case object SavesVsSpells extends SavesVsSpells
+  case object SavesVsSpells extends SavesVsSpells, BasicStat
 
-  case object SavesVsTraps extends SavesVsTraps
+  case object SavesVsTraps extends SavesVsTraps, BasicStat
 
-  case object SavesVsFear extends SavesVsFear
+  case object SavesVsFear extends SavesVsFear, BasicStat
 
-  case object SavesVsEnchantment extends SavesVsEnchantment
+  case object SavesVsEnchantment extends SavesVsEnchantment, BasicStat
 
-  case object SavesVsCurses extends SavesVsCurses
+  case object SavesVsCurses extends SavesVsCurses, BasicStat
 
-  case object SavesVsIllusions extends SavesVsIllusions
+  case object SavesVsIllusions extends SavesVsIllusions, BasicStat
 
-  case object SavesVsSleep extends SavesVsSleep
+  case object SavesVsSleep extends SavesVsSleep, BasicStat
 
-  case object SavesVsDiseases extends SavesVsDiseases
+  case object SavesVsDiseases extends SavesVsDiseases, BasicStat
 
-  case object SavesVsExhaustion extends SavesVsExhaustion
+  case object SavesVsExhaustion extends SavesVsExhaustion, BasicStat
 
-  case object SavesVsNausea extends SavesVsNausea
+  case object SavesVsNausea extends SavesVsNausea, BasicStat
 
-  case object SavesVsParalysis extends SavesVsParalysis
+  case object SavesVsParalysis extends SavesVsParalysis, BasicStat
 
-  case object SavesVsPoison extends SavesVsPoison
+  case object SavesVsPoison extends SavesVsPoison, BasicStat
 
-  case object AcidResistance extends AcidResistance
+  case object AcidResistance extends AcidResistance, BasicStat
 
-  case object ColdResistance extends ColdResistance
+  case object ColdResistance extends ColdResistance, BasicStat
 
-  case object ElectricResistance extends ElectricResistance
+  case object ElectricResistance extends ElectricResistance, BasicStat
 
-  case object FireResistance extends FireResistance
+  case object FireResistance extends FireResistance, BasicStat
 
-  case object LightResistance extends LightResistance
+  case object LightResistance extends LightResistance, BasicStat
 
-  case object NegativeResistance extends NegativeResistance
+  case object NegativeResistance extends NegativeResistance, BasicStat
 
-  case object PoisonResistance extends PoisonResistance
+  case object PoisonResistance extends PoisonResistance, BasicStat
 
-  case object SonicResistance extends SonicResistance
+  case object SonicResistance extends SonicResistance, BasicStat
 
-  case object AcidAbsorption extends AcidAbsorption
+  case object AcidAbsorption extends AcidAbsorption, BasicStat
 
-  case object ChaosAbsorption extends ChaosAbsorption
+  case object ChaosAbsorption extends ChaosAbsorption, BasicStat
 
-  case object ColdAbsorption extends ColdAbsorption
+  case object ColdAbsorption extends ColdAbsorption, BasicStat
 
-  case object ElectricAbsorption extends ElectricAbsorption
+  case object ElectricAbsorption extends ElectricAbsorption, BasicStat
 
-  case object EvilAbsorption extends EvilAbsorption
+  case object EvilAbsorption extends EvilAbsorption, BasicStat
 
-  case object FireAbsorption extends FireAbsorption
+  case object FireAbsorption extends FireAbsorption, BasicStat
 
-  case object ForceAbsorption extends ForceAbsorption
+  case object ForceAbsorption extends ForceAbsorption, BasicStat
 
-  case object GoodAbsorption extends GoodAbsorption
+  case object GoodAbsorption extends GoodAbsorption, BasicStat
 
-  case object LawfulAbsorption extends LawfulAbsorption
+  case object LawfulAbsorption extends LawfulAbsorption, BasicStat
 
-  case object LightAbsorption extends LightAbsorption
+  case object LightAbsorption extends LightAbsorption, BasicStat
 
-  case object NegativeAbsorption extends NegativeAbsorption
+  case object NegativeAbsorption extends NegativeAbsorption, BasicStat
 
-  case object PoisonAbsorption extends PoisonAbsorption
+  case object PoisonAbsorption extends PoisonAbsorption, BasicStat
 
-  case object SonicAbsorption extends SonicAbsorption
+  case object SonicAbsorption extends SonicAbsorption, BasicStat
 
-  case object SpellCostReduction extends SpellCostReduction
+  case object SpellCostReduction extends SpellCostReduction, BasicStat
 
-  case object SpellThreatMultiplier extends SpellThreatMultiplier
+  case object SpellThreatMultiplier extends SpellThreatMultiplier, BasicStat
 
-  case object SpellPenetrationBonuses extends SpellPenetrationBonuses
+  case object SpellPenetrationBonuses extends SpellPenetrationBonuses, BasicStat
 
-  case object EmpowerHealingCostReduction extends EmpowerHealingCostReduction
+  case object EmpowerHealingCostReduction extends EmpowerHealingCostReduction, BasicStat
 
-  case object EmpowerCostReduction extends EmpowerCostReduction
+  case object EmpowerCostReduction extends EmpowerCostReduction, BasicStat
 
-  case object EnlargeCostReduction extends EnlargeCostReduction
+  case object EnlargeCostReduction extends EnlargeCostReduction, BasicStat
 
-  case object EschewMaterialsCostReduction extends EschewMaterialsCostReduction
+  case object EschewMaterialsCostReduction extends EschewMaterialsCostReduction, BasicStat
 
-  case object ExtendCostReduction extends ExtendCostReduction
+  case object ExtendCostReduction extends ExtendCostReduction, BasicStat
 
-  case object HeightenCostReduction extends HeightenCostReduction
+  case object HeightenCostReduction extends HeightenCostReduction, BasicStat
 
-  case object MaximizeCostReduction extends MaximizeCostReduction
+  case object MaximizeCostReduction extends MaximizeCostReduction, BasicStat
 
-  case object QuickenCostReduction extends QuickenCostReduction
+  case object QuickenCostReduction extends QuickenCostReduction, BasicStat
 
-  case object EmboldenCostReduction extends EmboldenCostReduction
+  case object EmboldenCostReduction extends EmboldenCostReduction, BasicStat
 
-  case object IntensifyCostReduction extends IntensifyCostReduction
+  case object IntensifyCostReduction extends IntensifyCostReduction, BasicStat
 
-  case object AccelerateCostReduction extends AccelerateCostReduction
+  case object AccelerateCostReduction extends AccelerateCostReduction, BasicStat
 
-  case object FortificationBypass extends FortificationBypass
+  case object FortificationBypass extends FortificationBypass, BasicStat
 
-  case object DodgeBypass extends DodgeBypass
+  case object DodgeBypass extends DodgeBypass, BasicStat
 
-  case object HelplessDamage extends HelplessDamage
+  case object HelplessDamage extends HelplessDamage, BasicStat
 
-  case object CriticalHitConfirmation extends CriticalHitConfirmation
+  case object CriticalHitConfirmation extends CriticalHitConfirmation, BasicStat
 
-  case object CriticalHitDamage extends CriticalHitDamage
+  case object CriticalHitDamage extends CriticalHitDamage, BasicStat
 
-  case object CriticalThreatRange extends CriticalThreatRange
+  case object CriticalThreatRange extends CriticalThreatRange, BasicStat
 
-  case object SneakAttackHitBonus extends SneakAttackHitBonus
+  case object SneakAttackHitBonus extends SneakAttackHitBonus, BasicStat
 
-  case object SneakAttackDamageBonus extends SneakAttackDamageBonus
+  case object SneakAttackDamageBonus extends SneakAttackDamageBonus, BasicStat
 
-  case object SneakAttackDice extends SneakAttackDice
+  case object SneakAttackDice extends SneakAttackDice, BasicStat
 
-  case object OneHandedAttackSpeedBonus extends OneHandedAttackSpeedBonus
+  case object OneHandedAttackSpeedBonus extends OneHandedAttackSpeedBonus, BasicStat
 
-  case object TwoWeaponAttackSpeedBonus extends TwoWeaponAttackSpeedBonus
+  case object TwoWeaponAttackSpeedBonus extends TwoWeaponAttackSpeedBonus, BasicStat
 
-  case object TwoHandedAttackSpeedBonus extends TwoHandedAttackSpeedBonus
+  case object TwoHandedAttackSpeedBonus extends TwoHandedAttackSpeedBonus, BasicStat
 
-  case object QuarterstaffAttackSpeedBonus extends QuarterstaffAttackSpeedBonus
+  case object QuarterstaffAttackSpeedBonus extends QuarterstaffAttackSpeedBonus, BasicStat
 
-  case object ShieldBashChance extends ShieldBashChance
+  case object ShieldBashChance extends ShieldBashChance, BasicStat
 
-  case object SecondaryShieldBashChance extends SecondaryShieldBashChance
+  case object SecondaryShieldBashChance extends SecondaryShieldBashChance, BasicStat
 
-  case object OffhandHitChance extends OffhandHitChance
+  case object OffhandHitChance extends OffhandHitChance, BasicStat
 
   /**
    * As of [[https://ddowiki.com/page/Update_49_Release_Notes#What.27s_Changing: Update 49]], this
    * is no longer a configurable stat and is by default 50% of your Mainhand doublestrike *
    */
-  case object OffhandDoublestrike extends OffhandDoublestrike
+  case object OffhandDoublestrike extends OffhandDoublestrike, BasicStat
 
-  case object GlancingblowDamage extends GlancingblowDamage
+  case object GlancingblowDamage extends GlancingblowDamage, BasicStat
 
-  case object GlancingBlowProcChance extends GlancingBlowProcChance
+  case object GlancingBlowProcChance extends GlancingBlowProcChance, BasicStat
 
-  case object StrikeThroughChance extends StrikeThroughChance
+  case object StrikeThroughChance extends StrikeThroughChance, BasicStat
 
-  case object MeleeThreatMultiplier extends MeleeThreatMultiplier
+  case object MeleeThreatMultiplier extends MeleeThreatMultiplier, BasicStat
 
-  case object ThrownAttackSpeedBonus extends ThrownAttackSpeedBonus
+  case object ThrownAttackSpeedBonus extends ThrownAttackSpeedBonus, BasicStat
 
-  case object NonRepeatingCrossbowAttackSpeedBonus extends NonRepeatingCrossbowAttackSpeedBonus
+  case object NonRepeatingCrossbowAttackSpeedBonus
+    extends NonRepeatingCrossbowAttackSpeedBonus, BasicStat
 
-  case object RepeatingCrossbowAttackSpeedBonus extends RepeatingCrossbowAttackSpeedBonus
+  case object RepeatingCrossbowAttackSpeedBonus extends RepeatingCrossbowAttackSpeedBonus, BasicStat
 
-  case object BowAttackSpeedBonus extends BowAttackSpeedBonus
+  case object BowAttackSpeedBonus extends BowAttackSpeedBonus, BasicStat
 
-  case object RangedThreatMultiplier extends RangedThreatMultiplier
+  case object RangedThreatMultiplier extends RangedThreatMultiplier, BasicStat
 
-  case object PointBlankShotRange extends PointBlankShotRange
+  case object PointBlankShotRange extends PointBlankShotRange, BasicStat
 
-  case object TurnUndeadMaxHitDice extends MaxHitDice
+  case object TurnUndeadMaxHitDice extends MaxHitDice, BasicStat
 
-  case object TurnUndeadTotalHitDice extends TotalHitDice
+  case object TurnUndeadTotalHitDice extends TotalHitDice, BasicStat
 
-  case object TurnUndeadNumberOfTurns extends NumberOfTurns
+  case object TurnUndeadNumberOfTurns extends NumberOfTurns, BasicStat
 
-  case object TurnUndeadLevel extends TurnUndeadLevel
+  case object TurnUndeadLevel extends TurnUndeadLevel, BasicStat
 
-  case object AutoRecovery extends AutoRecovery
+  case object AutoRecovery extends AutoRecovery, BasicStat
 
-  case object DoubleShot extends DoubleShot
+  case object DoubleShot extends DoubleShot, BasicStat
 }

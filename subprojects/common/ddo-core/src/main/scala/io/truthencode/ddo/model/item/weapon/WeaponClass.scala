@@ -46,15 +46,15 @@ object WeaponClass extends Enum[WeaponClass] {
 
   override def values: IndexedSeq[WeaponClass] = findValues
 
-  case object Bludgeon extends WeaponClassBludgeoning, WeaponClass
+  case object Bludgeon extends WeaponClassBludgeoning
 
-  case object Piercing extends WeaponClassPiercing, WeaponClass
+  case object Piercing extends WeaponClassPiercing
 
-  case object Slashing extends WeaponClassSlashing, WeaponClass
+  case object Slashing extends WeaponClassSlashing
 
-  case object Ranged extends WeaponClassRanged, WeaponClass
+  case object Ranged extends WeaponClassRanged
 
-  case object Thrown extends WeaponClassThrown, WeaponClass
+  case object Thrown extends WeaponClassThrown
 }
 
 sealed trait WeaponClassBludgeoning

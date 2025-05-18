@@ -30,6 +30,8 @@ import io.truthencode.ddo.support.naming.{DisplayName, FriendlyDisplay}
 import io.truthencode.ddo.support.requisite._
 
 import scala.collection.immutable.IndexedSeq
+import scala.jdk.CollectionConverters.*
+import java.util
 
 /**
  * Created by adarr on 2/14/2017.
@@ -114,6 +116,9 @@ object Feat extends Enum[Feat] with FeatSearchPrefix with LazyLogging {
     }
   }
 
-  override def values: IndexedSeq[Feat] =
+  override def values: IndexedSeq[Feat] = {
     GeneralFeat.values ++ ClassFeat.values ++ RacialFeat.values ++ MetaMagicFeat.values ++ DeityFeat.values ++ EpicFeat.values ++ SpecialFeat.values
+  }
+
+  def asJava = values.asJava  
 }

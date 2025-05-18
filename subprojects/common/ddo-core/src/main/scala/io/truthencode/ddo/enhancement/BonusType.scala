@@ -26,7 +26,9 @@ import io.truthencode.ddo.support.naming.{DisplayName, FriendlyDisplay, Prefix}
 import io.truthencode.ddo.support.slots.{Cosmetic, EquipmentSlot, WearLocation}
 import io.truthencode.ddo.{NonStacking, StackingRule, StacksWithAny, StacksWithUnique}
 
+import java.util
 import scala.collection.immutable
+import scala.jdk.CollectionConverters.*
 
 /**
  * A Bonus type represents the classifier of a given effect for the purposes of stacking. I.e. Plate
@@ -55,6 +57,13 @@ trait Armor extends BonusType {
 // scalastyle:off number.of.methods
 object BonusType extends Enum[BonusType] {
   override def values: immutable.IndexedSeq[BonusType] = findValues ++ mythicSlotAny
+
+  /**
+   * Java friendly version of the values.
+   * @return
+   *   the values as a java collection
+   */
+  def asJava: util.List[BonusType] = values.asJava
 
   val fnStackNone: PartialFunction[BonusType, BonusType & NonStacking] = { case x: NonStacking =>
     x

@@ -50,6 +50,19 @@ dependencies {
     // uncomment closer to production
     implementation(libs.quarkus.smallrye.context.propagation)
     implementation(libs.quarkus.mutiny)
+    implementation("io.vertx:vertx-lang-scala_3:4.5.11")
+    implementation(libs.avro.tools) {
+        // CVE-2023-36478 https://www.mend.io/vulnerability-database/CVE-2023-36478?utm_source=JetBrains
+        this.exclude(module = "eclipse.jetty:jetty-http:_")
+    }
+    // 12.0.12
+    implementation(libs.apache.hadoop.common)
+    implementation(libs.jayway.jsonpath)
+    // Jetbrains Xodus embedded database
+    implementation(libs.bundles.xodus)
+    implementation(libs.typesafe.config)
+    implementation(libs.logback.classic)
+    testImplementation("io.vertx:vertx-lang-scala-test_3:4.5.11")
     /*
     might use  https://github.com/nrinaudo
      for etl regex support
@@ -119,19 +132,10 @@ dependencies {
             implementation(libs.typesafe.scala.logging.s213)
         }
     }
-    implementation(libs.avro.tools) {
-        // CVE-2023-36478 https://www.mend.io/vulnerability-database/CVE-2023-36478?utm_source=JetBrains
-        this.exclude(module = "eclipse.jetty:jetty-http:_")
-    }
-    // 12.0.12
-    implementation(libs.apache.hadoop.common)
-    implementation(libs.jayway.jsonpath)
-    // Jetbrains Xodus embedded database
-    implementation(libs.bundles.xodus)
-    implementation(libs.typesafe.config)
-    implementation(libs.logback.classic)
+
     // Tags for tests
     testImplementation(project(":ddo-testing-util"))
+    annotationProcessor(libs.io.jstach.jstachio.processor)
 }
 
 tasks.withType<Test> {

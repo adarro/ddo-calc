@@ -23,6 +23,8 @@ package io.truthencode.ddo.model.effect
 import enumeratum.EnumEntry
 import io.truthencode.ddo.support.IndexedEnum
 
+import java.util
+import scala.jdk.CollectionConverters.*
 import scala.collection.immutable
 
 /**
@@ -47,23 +49,25 @@ trait ActiveEvent extends TriggerEvent
 object TriggerEvent extends IndexedEnum[TriggerEvent] {
   @volatile
   override lazy val values: immutable.IndexedSeq[TriggerEvent] = findValues
-  case object Passive extends PassiveEvent
+
+  def asJava: util.List[TriggerEvent] = values.asJava
+  case object Passive extends PassiveEvent, TriggerEvent
 
   /**
    * Used to denote that this never happens. Not useful for triggering ON events, but should be used
    * with Passive, always on effects.
    */
-  case object Never extends PassiveEvent
+  case object Never extends PassiveEvent, TriggerEvent
 
   /**
    * Occurs on every attack
    */
-  case object OnAttack extends ActiveEvent
+  case object OnAttack extends ActiveEvent, TriggerEvent
 
   /**
    * Occurs on a specific range of attack rolls
    */
-  case object OnAttackRoll extends ActiveEvent
+  case object OnAttackRoll extends ActiveEvent, TriggerEvent
 
   /**
    * Occurs when you are damaged (hit)
@@ -73,7 +77,7 @@ object TriggerEvent extends IndexedEnum[TriggerEvent] {
   /**
    * Occurs when you are hit by a spell
    */
-  case object OnSpellHit extends ActiveEvent
+  case object OnSpellHit extends ActiveEvent, TriggerEvent
 
   /**
    * Occurs when you cast a spell
@@ -83,83 +87,83 @@ object TriggerEvent extends IndexedEnum[TriggerEvent] {
   /**
    * Occurs when you activate a SLA (Spell like ability)
    */
-  case object OnSpellLikeAbility extends ActiveEvent
+  case object OnSpellLikeAbility extends ActiveEvent, TriggerEvent
 
   /**
    * Occurs when you play a song (Bard or Epic Destiny)
    */
-  case object OnSong extends ActiveEvent
+  case object OnSong extends ActiveEvent, TriggerEvent
 
   /**
    * Occurs when you are killed
    */
-  case object OnDeath extends ActiveEvent
+  case object OnDeath extends ActiveEvent, TriggerEvent
 
   /**
    * Occurs when you are incapacited
    *
    * Hit points fall below 0
    */
-  case object OnIncapacitated extends ActiveEvent
+  case object OnIncapacitated extends ActiveEvent, TriggerEvent
 
   /**
    * Occurs upon waking from rest / shrine
    */
-  case object OnRest extends ActiveEvent
+  case object OnRest extends ActiveEvent, TriggerEvent
 
   /**
    * For lack of a better word, this is a rough translation of "Not Incapacitated" for effects that
    * work unless you're helpless / incapacitated such as Aura of Courage, the opposite of
    * [[OnUnconscious]] trigger
    */
-  case object OnHealthy extends ActiveEvent
+  case object OnHealthy extends ActiveEvent, TriggerEvent
 
   /**
    * Triggers when a certain percentage of health falls below the threshold
    */
-  case object OnHealthLevelBelow extends ActiveEvent
+  case object OnHealthLevelBelow extends ActiveEvent, TriggerEvent
 
   /**
    * Triggers on a ceratin percentage of health raises above the threshold
    */
-  case object OnHealthLevelAbove extends ActiveEvent
+  case object OnHealthLevelAbove extends ActiveEvent, TriggerEvent
 
   /**
    * Can be toggled on / off as desired
    */
-  case object OnToggle extends ActiveEvent
+  case object OnToggle extends ActiveEvent, TriggerEvent
 
   /**
    * Activated At Will / Button press such as Kick / Sunder and may have a cool-down
    */
-  case object AtWill extends ActiveEvent
+  case object AtWill extends ActiveEvent, TriggerEvent
 
   /**
    * Activates or deactivates on a cooldown
    */
-  case object OnCoolDown extends ActiveEvent
+  case object OnCoolDown extends ActiveEvent, TriggerEvent
 
   /**
    * Activated while in a Tavern, generally only applies to Healing / Recovery such as the Goodberry
    * spell or Broccoli
    */
-  case object InTavern extends ActiveEvent
+  case object InTavern extends ActiveEvent, TriggerEvent
 
   /**
    * [[https://ddowiki.com/page/Melee_special_attack Special Melee and Tactical attacks]] such as
    * Trip, Sunder, Stunning / Slicing blow
    */
-  case object SpecialAttack extends ActiveEvent
+  case object SpecialAttack extends ActiveEvent, TriggerEvent
 
   /**
    * Occurs to summon (pet / monster etc)
    */
-  case object Summon extends ActiveEvent
+  case object Summon extends ActiveEvent, TriggerEvent
 
   /**
    * Occurs when changing form such as Druid Wild Shape
    */
-  case object ShapeChange extends ActiveEvent
+  case object ShapeChange extends ActiveEvent, TriggerEvent
 
   /**
    * Occurs when equipping an item
@@ -174,32 +178,32 @@ object TriggerEvent extends IndexedEnum[TriggerEvent] {
   /**
    * Occurs when you are centered.
    */
-  object OnCentered extends ActiveEvent
+  case object OnCentered extends ActiveEvent, TriggerEvent
 
   /**
    * Occurs when you are no longer / not centered.
    */
-  object OnOffCentered extends ActiveEvent
+  case object OnOffCentered extends ActiveEvent, TriggerEvent
 
   /**
    * Activated Stance Events (Implies Toggle off / on)
    */
-  object OnStance extends ActiveEvent
+  case object OnStance extends ActiveEvent, TriggerEvent
 
   /**
    * Triggers when rendered unconscious
    */
-  object OnUnconscious extends ActiveEvent
+  case object OnUnconscious extends ActiveEvent, TriggerEvent
 
   /**
    * Activates / Cycles based on some timer. i.e. Deflect Arrows
    */
-  object OnTimer extends ActiveEvent
+  case object OnTimer extends ActiveEvent, TriggerEvent
 
   /**
    * Takes effect when you Tumble
    */
-  object OnTumble extends ActiveEvent
+  case object OnTumble extends ActiveEvent, TriggerEvent
 
   /**
    * Special End event. Denotes the effect ends at the end of whatever the TriggerOn event was. i.e.
@@ -207,6 +211,12 @@ object TriggerEvent extends IndexedEnum[TriggerEvent] {
    * @note
    *   need a better name for this
    */
-  object WhileOn extends ActiveEvent
+  case object WhileOn extends ActiveEvent, TriggerEvent
+
+  /**
+   * Activates when you level up This will be a special case such as applying increased Ability
+   * points
+   */
+  case object OnLevelUp extends TriggerEvent
 }
 // scalastyle:on

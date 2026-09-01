@@ -1,32 +1,31 @@
 name: "Run TODO to Issue"
 on:
-  push:
-    branches:
-      - master
+    push:
+        branches:
+            - master
 jobs:
-  build:
-    runs-on: "ubuntu-latest"
-    permissions:
-      contents: write
-      issues: write
-      pull-requests: write
-    steps:
-      - uses: "actions/checkout@v6"
-      - name: "TODO to Issue"
-        uses: "alstr/todo-to-issue-action@v5"
-        with:
-          INSERT_ISSUE_URLS: "true"
-      - name: Set Git user
-        run: |
-          git config --global user.name "github-actions[bot]"
-          git config --global user.email "github-actions[bot]@users.noreply.github.com"
-      - name: Commit and Push Changes
-        run: |
-          git add -A
-          if [[ `git status --porcelain` ]]; then
-            git commit -m "Automatically added GitHub issue links to TODOs"
-            git push origin master
-          else
-            echo "No changes to commit"
-          fi
-
+    build:
+        runs-on: "ubuntu-latest"
+        permissions:
+            contents: write
+            issues: write
+            pull-requests: write
+        steps:
+            - uses: "actions/checkout@d23441a48e516b6c34aea4fa41551a30e30af803" # v6.1.0
+            - name: "TODO to Issue"
+              uses: "alstr/todo-to-issue-action@37bb7b56e58569ef273b60678048030a7f0c261a" # v5.1.15
+              with:
+                  INSERT_ISSUE_URLS: "true"
+            - name: Set Git user
+              run: |
+                  git config --global user.name "github-actions[bot]"
+                  git config --global user.email "github-actions[bot]@users.noreply.github.com"
+            - name: Commit and Push Changes
+              run: |
+                  git add -A
+                  if [[ `git status --porcelain` ]]; then
+                    git commit -m "Automatically added GitHub issue links to TODOs"
+                    git push origin master
+                  else
+                    echo "No changes to commit"
+                  fi

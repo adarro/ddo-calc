@@ -23,8 +23,8 @@ Searching for [Balance](- "#searchString") will return:
 
 Skills can be searched with many case options.
 
--   Case sensitive (default)
--   Case insensitive
--   Uppercase
--   Lowercase
--   Snake / Camel case
+- Case sensitive (default)
+- Case insensitive
+- Uppercase
+- Lowercase
+- Snake / Camel case

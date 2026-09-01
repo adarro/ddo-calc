@@ -178,39 +178,39 @@ Bonus Feat: An artificer can select a feat from the Artificer Bonus Feat list.
 
 | Active Toggled Metamagic | | \* **Prerequisite:** Must be able to cast [spells](https://ddowiki.com/page/Spell "Spell") |
 
--   [Proficiency: Bastard Sword](https://ddowiki.com/page/Proficiency:_Bastard_Sword "Proficiency: Bastard Sword")
--   [Proficiency: Dwarven Waraxe](https://ddowiki.com/page/Proficiency:_Dwarven_Waraxe "Proficiency: Dwarven Waraxe")
+- [Proficiency: Bastard Sword](https://ddowiki.com/page/Proficiency:_Bastard_Sword "Proficiency: Bastard Sword")
+- [Proficiency: Dwarven Waraxe](https://ddowiki.com/page/Proficiency:_Dwarven_Waraxe "Proficiency: Dwarven Waraxe")
 
--   [Weapon Focus: Ranged](https://ddowiki.com/page/Weapon_Focus:_Ranged "Weapon Focus: Ranged")
--   [Weapon Focus: Slashing](https://ddowiki.com/page/Weapon_Focus:_Slashing "Weapon Focus: Slashing")
+- [Weapon Focus: Ranged](https://ddowiki.com/page/Weapon_Focus:_Ranged "Weapon Focus: Ranged")
+- [Weapon Focus: Slashing](https://ddowiki.com/page/Weapon_Focus:_Slashing "Weapon Focus: Slashing")
 
 |[Proficiency: Bastard Sword](https://ddowiki.com/page/Proficiency:_Bastard_Sword "Proficiency: Bastard Sword")| Passive |This [feat](https://ddowiki.com/page/Feat "Feat") negates the -4 penalty to [attack rolls](https://ddowiki.com/page/Attack_roll "Attack roll") from using an [Bastard Sword](https://ddowiki.com/page/Bastard_Sword "Bastard Sword") untrained. In addition it allows [Bastard Swords](https://ddowiki.com/page/Bastard_Sword "Bastard Sword") to deal [glancing blows](https://ddowiki.com/page/Glancing_blows "Glancing blows") as if they were a two handed weapon - if they are the only weapon wielded by a proficient user. EG: Sword and shield or single weapon attack styles only, will not work if you are dual-wielding. | _ **Prerequisite:** [Base Attack Bonus](https://ddowiki.com/page/Base_Attack_Bonus "Base Attack Bonus") of +1 or higher, [Strength](https://ddowiki.com/page/Strength "Strength") 13+|
 |[Proficiency: Dwarven Waraxe](https://ddowiki.com/page/Proficiency:_Dwarven_Waraxe "Proficiency: Dwarven Waraxe")|Passive |This [feat](https://ddowiki.com/page/Feat "Feat") negates the -4 penalty to [attack rolls](https://ddowiki.com/page/Attack_roll "Attack roll") from using an [Dwarven Waraxe](https://ddowiki.com/page/Dwarven_Waraxe "Dwarven Waraxe") untrained. In addition it allows [Dwarven Waraxes](https://ddowiki.com/page/Dwarven_Waraxe "Dwarven Waraxe") to deal [glancing blows](https://ddowiki.com/page/Glancing_blows "Glancing blows") as if they were a two handed weapon - if they are the only weapon wielded by a proficient user. EG: Sword and shield or single weapon attack styles only, will not work if you are dual-wielding.| _ **Prerequisite:** [Base Attack Bonus](https://ddowiki.com/page/Base_Attack_Bonus "Base Attack Bonus") of +1 or higher, [Strength](https://ddowiki.com/page/Strength "Strength") 13+|
 |[Weapon Focus: Ranged](https://ddowiki.com/page/Weapon_Focus:_Ranged "Weapon Focus: Ranged")|Passive | This feat grants a +1 bonus on to-hit rolls with any of the listed weapons. It also grants +2 [Ranged Power](https://ddowiki.com/page/Ranged_Power "Ranged Power").| _ **Prerequisite:** Base attack bonus of +1 or higher|
 |[Weapon Focus: Slashing](https://ddowiki.com/page/Weapon_Focus:_Slashing "Weapon Focus: Slashing")|Passive | This feat grants a +1 bonus on to-hit rolls with any of the listed weapons. It also grants +2 [Melee Power](https://ddowiki.com/page/Melee_Power "Melee Power").| _ **Prerequisite:** Base attack bonus of +1 or higher|
 
--   [Adamantine Body](https://ddowiki.com/page/Adamantine_Body "Adamantine Body")
--   [Augment Summoning](https://ddowiki.com/page/Augment_Summoning "Augment Summoning")
--   [Construct Essence](https://ddowiki.com/page/Construct_Essence "Construct Essence")
--   [Dragonmark of Making](https://ddowiki.com/page/Dragonmark#Human "Dragonmark") - _Human only_
--   [Exotic Weapon Proficiency](https://ddowiki.com/page/Exotic_Weapon_Proficiency "Exotic Weapon Proficiency") - Bastard Sword _or_ Dwarven Waraxe
--   [Improved Critical: Bludgeoning](https://ddowiki.com/page/Improved_Critical "Improved Critical")
--   [Improved Critical: Ranged](https://ddowiki.com/page/Improved_Critical "Improved Critical")
--   [Improved Critical: Slashing](https://ddowiki.com/page/Improved_Critical "Improved Critical")
--   [Improved Fortification](https://ddowiki.com/page/Improved_Fortification "Improved Fortification")
--   [Improved Precise Shot](https://ddowiki.com/page/Improved_Precise_Shot "Improved Precise Shot")
--   [Metamagic Feat](https://ddowiki.com/page/Feats/Metamagic "Feats/Metamagic") (any)
--   [Mithral Body](https://ddowiki.com/page/Mithral_Body "Mithral Body")
--   [Mithral Fluidity](https://ddowiki.com/page/Mithral_Fluidity "Mithral Fluidity")
--   [Point Blank Shot](https://ddowiki.com/page/Point_Blank_Shot "Point Blank Shot")
--   [Precise Shot](https://ddowiki.com/page/Precise_Shot "Precise Shot")
--   [Rapid Shot](https://ddowiki.com/page/Rapid_Shot "Rapid Shot")
--   [Shot on the Run](https://ddowiki.com/page/Shot_on_the_Run "Shot on the Run")
--   [Single Weapon Fighting](https://ddowiki.com/page/Single_Weapon_Fighting "Single Weapon Fighting")
--   [Skill Focus](https://ddowiki.com/page/Skill_Focus "Skill Focus") (any)
--   [Two Handed Fighting](https://ddowiki.com/page/Two_Handed_Fighting "Two Handed Fighting")
--   [Weapon Focus: Ranged](https://ddowiki.com/page/Weapon_Focus "Weapon Focus")
--   [Weapon Focus: Slashing](https://ddowiki.com/page/Weapon_Focus "Weapon Focus")
+- [Adamantine Body](https://ddowiki.com/page/Adamantine_Body "Adamantine Body")
+- [Augment Summoning](https://ddowiki.com/page/Augment_Summoning "Augment Summoning")
+- [Construct Essence](https://ddowiki.com/page/Construct_Essence "Construct Essence")
+- [Dragonmark of Making](https://ddowiki.com/page/Dragonmark#Human "Dragonmark") - _Human only_
+- [Exotic Weapon Proficiency](https://ddowiki.com/page/Exotic_Weapon_Proficiency "Exotic Weapon Proficiency") - Bastard Sword _or_ Dwarven Waraxe
+- [Improved Critical: Bludgeoning](https://ddowiki.com/page/Improved_Critical "Improved Critical")
+- [Improved Critical: Ranged](https://ddowiki.com/page/Improved_Critical "Improved Critical")
+- [Improved Critical: Slashing](https://ddowiki.com/page/Improved_Critical "Improved Critical")
+- [Improved Fortification](https://ddowiki.com/page/Improved_Fortification "Improved Fortification")
+- [Improved Precise Shot](https://ddowiki.com/page/Improved_Precise_Shot "Improved Precise Shot")
+- [Metamagic Feat](https://ddowiki.com/page/Feats/Metamagic "Feats/Metamagic") (any)
+- [Mithral Body](https://ddowiki.com/page/Mithral_Body "Mithral Body")
+- [Mithral Fluidity](https://ddowiki.com/page/Mithral_Fluidity "Mithral Fluidity")
+- [Point Blank Shot](https://ddowiki.com/page/Point_Blank_Shot "Point Blank Shot")
+- [Precise Shot](https://ddowiki.com/page/Precise_Shot "Precise Shot")
+- [Rapid Shot](https://ddowiki.com/page/Rapid_Shot "Rapid Shot")
+- [Shot on the Run](https://ddowiki.com/page/Shot_on_the_Run "Shot on the Run")
+- [Single Weapon Fighting](https://ddowiki.com/page/Single_Weapon_Fighting "Single Weapon Fighting")
+- [Skill Focus](https://ddowiki.com/page/Skill_Focus "Skill Focus") (any)
+- [Two Handed Fighting](https://ddowiki.com/page/Two_Handed_Fighting "Two Handed Fighting")
+- [Weapon Focus: Ranged](https://ddowiki.com/page/Weapon_Focus "Weapon Focus")
+- [Weapon Focus: Slashing](https://ddowiki.com/page/Weapon_Focus "Weapon Focus")
 
 [arcane_lore]: http://ddowiki.com/page/Arcane_Lore_(feat) "Arcane Lore (Feat)"
 [artificer_knowledge]: http://ddowiki.com/page/Artificer_Knowledge "Artificer Knowlege"

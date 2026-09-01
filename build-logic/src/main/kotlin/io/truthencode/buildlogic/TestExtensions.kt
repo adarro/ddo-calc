@@ -1,11 +1,11 @@
 package io.truthencode.buildlogic
 
 import net.pearx.kasechange.toCamelCase
+import org.gradle.accessors.dm.LibrariesForLibs
 import org.gradle.api.Project
 import org.gradle.api.plugins.jvm.JvmTestSuite
 import org.gradle.api.provider.Property
 import org.gradle.kotlin.dsl.invoke
-import org.gradle.accessors.dm.LibrariesForLibs
 import org.gradle.kotlin.dsl.the
 
 enum class KotlinTestKits {
@@ -78,16 +78,17 @@ class TestBuildSupport(
             implementation("org.mockito:mockito-junit-jupiter:4.6.1")
         }
     }
+
 // Kotlin Test Support needs a refresh
     // Plain vs Multi-platform, Quarkus Detection. (JUnit assumed as this is my opinionated build)
     val applyKoTest = { suite: JvmTestSuite ->
         suite.useJUnitJupiter()
         suite.dependencies {
 
-           // implementation(libs.bundles.kotest) // no likey for some reason
-            implementation(libs.kotest.assertions.core.jvm )
+            // implementation(libs.bundles.kotest) // no likey for some reason
+            implementation(libs.kotest.assertions.core.jvm)
             implementation(libs.kotest.runner.junit.jvm)
-            implementation(libs.kotest.property.jvm )
+            implementation(libs.kotest.property.jvm)
         }
     }
 }

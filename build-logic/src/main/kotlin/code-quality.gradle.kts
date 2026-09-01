@@ -40,7 +40,11 @@ fun walkBack(
         f
     } else {
         when (recurse.recurseValue) {
-            RecurseValue.NONE -> null // throw IOException("can not locate file $fileName")
+            RecurseValue.NONE -> {
+                null
+            }
+
+            // throw IOException("cannot locate file $fileName")
             RecurseValue.FINITE -> {
                 walkBack("../$fileName", recurse - 1, proj.rootProject)
             }
@@ -83,7 +87,7 @@ configure<com.diffplug.gradle.spotless.SpotlessExtension> {
 
     project.plugins.withId("scala") {
         logger.info("SPOTLESS: configuring scala formatting to ${project.name} (scalafmt)")
-        scala {            
+        scala {
             // TODO: Migrate any version references to use the Version Catalog instead of gradle properties for consistency and single source of truth
             val scalaFmtVersion = providers.gradleProperty("scalaFmtVersion").getOrElse("3.9.1")
             // version and configFile are both optional

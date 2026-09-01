@@ -15,6 +15,37 @@ Initial Data population / object builder
 
 These entities can be persisted in one or more databases.
 
+## Entities, DTOs
+
+Entities are the core domain objects that represent the business logic of the application. They are typically used to
+model the data that is persisted in the database. DTOs (Data Transfer Objects) are used to transfer data between the
+application and the database. They are typically used to transfer data between the application and the database.
+
+### Avro
+
+Avro is a data serialization and RPC framework.
+Mainly used for data transfer between services.
+Avro files can generate Java and Kotlin classes.
+Can be annotated with Java Annotations, which can include Taxi annotations.
+
+### Taxi
+
+[Taxi](https://taxilang.org) is a semantic language.
+It defines types and models.
+Taxi files can generate Kotlin classes.
+
+### KUML
+
+[KUML](https://kuml.dev) is a Kotlin DSL to generate UML, BPMN and other diagrams.
+It can RTE (Round Trip Engineering) and generate code from UML.
+UML -> BPMN
+State Machines
+Model to code
+
+- Kotlin Data Classes
+- Java Records
+- C#
+
 ## Validation
 
 ### [Wix-Accord](https://github.com/wix-incubator/accord)

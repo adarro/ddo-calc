@@ -173,11 +173,11 @@ Special Ability: Gain a second special ability based on your pact (see below).
 
 ## Errata
 
--   Need to add Simple weapons
--   [Edritch Blast Damage][eldritch_blast_damage] is listed on Wiki as Eldritch Blast, In game it is listed as Eldritch
-    Blast _Damage_
--   Pact-Save Bonus is listed under class feats on Wiki but does not show up under Feats so the we are likely going to
-    apply the bonuses at the CharacterClass Level.
+- Need to add Simple weapons
+- [Edritch Blast Damage][eldritch_blast_damage] is listed on Wiki as Eldritch Blast, In game it is listed as Eldritch
+  Blast _Damage_
+- Pact-Save Bonus is listed under class feats on Wiki but does not show up under Feats so the we are likely going to
+  apply the bonuses at the CharacterClass Level.
 
 [featLevel1]: - "c:verify-rows=#feat:grantedFeatsByLevel(1)"
 [featLevel2]: - "c:verify-rows=#feat:grantedFeatsByLevel(2)"

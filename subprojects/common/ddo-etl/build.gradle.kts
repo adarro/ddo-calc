@@ -1,5 +1,6 @@
 import io.truthencode.buildlogic.BuildEnvironment
 import io.truthencode.buildlogic.getBuildEnvironment
+
 /*
  * SPDX-License-Identifier: Apache-2.0
  *
@@ -19,7 +20,7 @@ import io.truthencode.buildlogic.getBuildEnvironment
  */
 plugins {
 //    id("scala-conventions")
-    id("buildlogic.scala-library-profile")
+//    id("buildlogic.scala-library-profile")
     id("buildlogic.java-library-conventions")
     id("buildlogic.quarkus-scala-conventions")
 //    id("acceptance-test-conventions")
@@ -29,7 +30,7 @@ plugins {
 description = "Common ETL module for storing / loading data from web / user etc"
 
 dependencies {
-    implementation(enforcedPlatform(project(":ddo-platform-scala")))
+    implementation(platform(project(":ddo-platform-scala")))
     implementation(project(":ddo-antlr"))
     implementation(project(":ddo-web")) {
         because("ddo-web is used for web scraping")
@@ -37,6 +38,15 @@ dependencies {
     implementation(project(":ddo-core"))
     implementation(libs.io.jstach.jstachio) {
         because("template engine for sql import etc")
+    }
+    implementation(libs.jline.core) {
+        because("attempting to force quarkus no not load jdk8 variant")
+//        this.capabilities {
+//            this.requireCapability("java-api")
+//        }
+    }
+    implementation(libs.jline.jansi) {
+        because("attempting to force quarkus no not load jdk8 variant")
     }
     implementation(libs.quarkus.freemarker)
     implementation(libs.smallrye.mutiny.vertx.client)
@@ -51,7 +61,7 @@ dependencies {
     implementation(libs.quarkus.smallrye.context.propagation)
     implementation(libs.quarkus.mutiny)
     /*
-    might use  https://github.com/nrinaudo
+    might use https://github.com/nrinaudo
      for etl regex support
      xpath and csv also
      scala 2x only
@@ -62,9 +72,23 @@ dependencies {
      */
 
     // https://mvnrepository.com/artifact/org.json4s/json4s-native
-    val builderScalaVersion = providers.gradleProperty("builderScalaVersion").getOrElse("3")
-    when (builderScalaVersion) {
+//    val builderScalaVersion = providers.gradleProperty("builderScalaVersion").getOrElse(FALLBACK_SCALA_VERSION)
+
+//    val myExtension = project.extensions.getByType<ScalaBuildExtension>()
+    val sver = "3"
+    when (sver) {
         "3" -> {
+            // This overrides a specific version inside that BOM
+            val s3Version =
+                libs.versions.scala3.version
+                    .get()
+            // constraints {
+            //     implementation("org.scala-lang:scala-library") {
+            //         version {
+            //             strictly(s3Version)
+            //         }
+            //     }
+            // }
             implementation(libs.scala3.library)
             implementation(libs.json4s.native.s3)
             implementation(libs.enumeratum.s3)
@@ -127,7 +151,12 @@ dependencies {
     implementation(libs.apache.hadoop.common)
     implementation(libs.jayway.jsonpath)
     // Jetbrains Xodus embedded database
-    implementation(libs.bundles.xodus)
+    // implementation(libs.bundles.xodus)
+    // "xodus-crypto",
+    // "xodus-entity-store",
+    // "xodus-environment",
+    // "xodus-openAPI",
+    // "xodus-vfs"
     implementation(libs.typesafe.config)
     implementation(libs.logback.classic)
     // Tags for tests
@@ -139,6 +168,35 @@ tasks.withType<Test> {
         includeTags("io.quarkus.test.junit.QuarkusTest", "Unit")
     }
 }
+
+// Configuration to handle JLine dependency substitution
+// Quarkus is looking for a ghost jdk8 classified version of JLine
+
+// known configurations that are looking for jline-jdk8 variants which don't exist in Jline 4+
+// val jLineNaughtyList = listOf("quarkusProdRuntimeClasspathConfiguration", "quarkusConditionalDevRuntimeClasspath")
+//
+// configurations.named("quarkusProdRuntimeClasspathConfiguration") {
+//    attributes {
+//        attribute(Usage.USAGE_ATTRIBUTE, objects.named(Usage::class.java, Usage.JAVA_RUNTIME))
+//    }
+// }
+//
+// configurations.named("quarkusConditionalDevRuntimeClasspath") {
+//    attributes {
+//        attribute(Usage.USAGE_ATTRIBUTE, objects.named(Usage::class.java, Usage.JAVA_RUNTIME))
+//    }
+// }
+//
+// // force all jline-jdk8 variants to be plain java runtime
+// configurations.all {
+//    if (name in jLineNaughtyList) {
+//        logger.warn("Forcing $name to be a plain java runtime")
+//        attributes {
+//            attribute(Usage.USAGE_ATTRIBUTE, objects.named(Usage::class.java, Usage.JAVA_RUNTIME))
+//        }
+//    }
+// }
+
 // testing {
 //    suites {
 //        withType(JvmTestSuite::class) {

@@ -30,17 +30,17 @@ repositories {
     }
 }
 
-//val kotlinVersion = project.property("kotlinVersion") as String
-//val jandexPluginVersion = project.property("jandexPluginVersion") as String
+// val kotlinVersion = project.property("kotlinVersion") as String
+// val jandexPluginVersion = project.property("jandexPluginVersion") as String
 val defaultJavaToolChainVersion = project.findProperty("defaultJavaToolChainVersion") as String?
-//val kasechangeVersion = project.property("kasechangeVersion") as String
+// val kasechangeVersion = project.property("kasechangeVersion") as String
 
 dependencies {
     // enables gradle catalog for included convention plugins
     // DO NOT REMOVE
     implementation(files(libs.javaClass.superclass.protectionDomain.codeSource.location))
 
-    implementation(libs.quarkus.gradle.plugin)
+    implementation(plugin(libs.plugins.quarkus))
     implementation(libs.kotlin.gradle.plugin)
     implementation(libs.kotlin.allopen.plugin)
     implementation(libs.scalafix.plugin)

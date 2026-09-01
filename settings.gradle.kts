@@ -86,9 +86,9 @@ logger.info("checking $projectFolders for sub-projects")
 
 /**
  *  reads the first part of a string up to the "."
- *  should be an Extension, but can not inline compile as one in settings.gradle.kts
+ *  should be an Extension, but cannot inline compile as one in settings.gradle.kts
  *
- *  so we're doing a quick one off verses polluting a buildSrc, um... further
+ *  so we're doing a quick one-off verses polluting a buildSrc, um... further
  *
  *  @param str the string to parse
  *  @return the first part of the string

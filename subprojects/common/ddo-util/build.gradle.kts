@@ -20,6 +20,7 @@ description = "Common misc String and convenience Utilities"
 
 plugins {
     id("buildlogic.scala-library-profile")
+    id("buildlogic.java-library-conventions")
 }
 
 dependencies {

@@ -74,10 +74,10 @@ tasks.register("cleanAvroSchemas", GradleBuild::class) {
 
 configurations {
 //    val codeGen =
-        configurations.create("codeGen") {
-            isCanBeConsumed = false
-            isCanBeResolved = true
-        }
+    configurations.create("codeGen") {
+        isCanBeConsumed = false
+        isCanBeResolved = true
+    }
 }
 
 sourceSets {
@@ -194,7 +194,6 @@ dependencies {
             // replacing wix accord validation with zio-prelude validation
 //            implementation(libs.wix.accord.core.s213)
             implementation(libs.dev.zio.prelude.s3)
-
         }
 
         else -> {

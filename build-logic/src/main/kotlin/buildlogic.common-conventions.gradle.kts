@@ -62,6 +62,48 @@ tasks.withType<DependencyUpdatesTask> {
         isNonStable(candidate.version)
     }
 }
+
+tasks.register("listDependencyCapabilities") {
+    group = "help"
+    description = "Lists all resolved dependencies and their associated capabilities."
+
+    // Ensure we run after configurations are ready
+    doLast {
+        // Target a specific configuration (e.g., runtimeClasspath or compileClasspath)
+        val cfg = configurations.named { n -> n.equals("runtimeClasspath") }.firstOrNull() // .get()
+
+        // Retrieve the root of the resolved dependency graph
+        val rootComponent: ResolvedComponentResult? = cfg?.incoming?.resolutionResult?.root
+
+        println("\n=== Resolved Dependencies & Their Capabilities ===")
+
+        // Loop through all resolved components in the graph
+        rootComponent?.dependencies?.forEach { dependencyResult ->
+            if (dependencyResult is org.gradle.api.artifacts.result.ResolvedDependencyResult) {
+                val selected = dependencyResult.selected
+                val id = selected.id
+
+                println("\nDependency: $id")
+
+                // Inspect all variants resolved for this component
+                selected.variants.forEach { variant ->
+                    println("  Variant: ${variant.displayName}")
+
+                    val capabilities = variant.capabilities
+                    if (capabilities.isEmpty()) {
+                        // Every dependency has an implicit default capability matching its GAV coordinates
+                        println("    Capabilities: [Implicit default capability]")
+                    } else {
+                        println("    Capabilities:")
+                        capabilities.forEach { capability: Capability ->
+                            println("      - ${capability.group}:${capability.name}:${capability.version}")
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
 //
 // if (project == project.rootProject) {
 //    apply(plugin = "nl.littlerobots.version-catalog-update")

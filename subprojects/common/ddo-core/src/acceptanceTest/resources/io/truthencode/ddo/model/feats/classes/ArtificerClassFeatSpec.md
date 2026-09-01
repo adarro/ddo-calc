@@ -4,18 +4,18 @@
 
 ## Level 1
 
-| [ ][featLevel1] [Feats][result]                                                    | Description                                                                                                                                                                                                                                                                  |
+| [ ][featLevel1] [Feats][result] | Description |
 | ---------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| [Arcane Lore][arcane_lore]                                                         | Represents your knowledge of the Arcane. This feat is received once for every artificer level.                                                                                                                                                                               |
-| [Artificer Construct Mastery](http://ddowiki.com/page/Artificer_Construct_Mastery) | (passive): Allows an Artificer to spontaneously cast any single-target Repair Damage or Inflict Damage spell they have inscribed in their spellbook. These spells will appear in bonus spell slots once inscribed.                                                           |
-| [Artificer Knowledge - Scrolls][artificer_knowlege]                                | (passive): Grants a +2 to UMD checks related to scroll use, and all scrolls used by the Artificer have their caster levels increased by 1. This caster level bonus increases by 1 at Artificer levels 4, 7, 10, and 13, and is capped by the Artificer's Intelligence Bonus. |
-| [Dismiss Charm](http://ddowiki.com/page/Dismiss_Charm)                             | Active                                                                                                                                                                                                                                                                       | Activate this short-ranged ability while targeting a charmed, commanded, controlled, or dominated enemy that is under your control to dispel the controlling effect.                                                                                                                                                      |
-| [Inscribe Artificer Scroll](http://ddowiki.com/page/Inscribe_Artificer_Scroll)     | (active): Allows an Artificer to inscribe artificer spells from scrolls into their spellbook. This action will destroy the scroll.                                                                                                                                           |
-| [Magical Training](http://ddowiki.com/page/Magical_Training)                       | Passive                                                                                                                                                                                                                                                                      | Magical training increases maximum spell points by 80. It also applies Echoes of Power if the caster drops below 12 spell points. Characters with this feat are considered proficient with orbs. As of Update 17, this feat is now a trainable feat. As of Update 19, this feat also grants +5% chance to Spell Critical. |
-| [Rapid Reload](http://ddowiki.com/page/Rapid_Reload)                               | (passive): Allows crossbows, including repeating crossbows, to be reloaded faster.                                                                                                                                                                                           |
-| [Reanimate Construct](http://ddowiki.com/page/Reanimate_Construct)                 | (active): Allows an Artificer to revive their Iron Defender minion once per rest.                                                                                                                                                                                            |
-| [Trapfinding](http://ddowiki.com/page/Trapfinding)                                 | (passive): Allows the use of the Search skill to locate traps when the task has a Difficulty Class (DC) higher than 20.                                                                                                                                                      |
-| [Unleash Iron Defender](http://ddowiki.com/page/Unleash_Iron_Defender)             | (active): Allows an Artificer to summon an Iron Defender homunculus.                                                                                                                                                                                                         |
+| [Arcane Lore][arcane_lore] | Represents your knowledge of the Arcane. This feat is received once for every artificer level. |
+| [Artificer Construct Mastery](http://ddowiki.com/page/Artificer_Construct_Mastery) | (passive): Allows an Artificer to spontaneously cast any single-target Repair Damage or Inflict Damage spell they have inscribed in their spellbook. These spells will appear in bonus spell slots once inscribed. |
+| [Artificer Knowledge - Scrolls][artificer_knowlege] | (passive): Grants a +2 to UMD checks related to scroll use, and all scrolls used by the Artificer have their caster levels increased by 1. This caster level bonus increases by 1 at Artificer levels 4, 7, 10, and 13, and is capped by the Artificer's Intelligence Bonus. |
+| [Dismiss Charm](http://ddowiki.com/page/Dismiss_Charm) | Active | Activate this short-ranged ability while targeting a charmed, commanded, controlled, or dominated enemy that is under your control to dispel the controlling effect. |
+| [Inscribe Artificer Scroll](http://ddowiki.com/page/Inscribe_Artificer_Scroll) | (active): Allows an Artificer to inscribe artificer spells from scrolls into their spellbook. This action will destroy the scroll. |
+| [Magical Training](http://ddowiki.com/page/Magical_Training) | Passive | Magical training increases maximum spell points by 80. It also applies Echoes of Power if the caster drops below 12 spell points. Characters with this feat are considered proficient with orbs. As of Update 17, this feat is now a trainable feat. As of Update 19, this feat also grants +5% chance to Spell Critical. |
+| [Rapid Reload](http://ddowiki.com/page/Rapid_Reload) | (passive): Allows crossbows, including repeating crossbows, to be reloaded faster. |
+| [Reanimate Construct](http://ddowiki.com/page/Reanimate_Construct) | (active): Allows an Artificer to revive their Iron Defender minion once per rest. |
+| [Trapfinding](http://ddowiki.com/page/Trapfinding) | (passive): Allows the use of the Search skill to locate traps when the task has a Difficulty Class (DC) higher than 20. |
+| [Unleash Iron Defender](http://ddowiki.com/page/Unleash_Iron_Defender) | (active): Allows an Artificer to summon an Iron Defender homunculus. |
 
 ### Level 2
 
@@ -211,39 +211,39 @@ Bonus Feat: An artificer can select a feat from the Artificer Bonus Feat list.
 
 | Active Toggled Metamagic | | \* **Prerequisite:** Must be able to cast [spells](/page/Spell "Spell") |
 
--   [Proficiency: Bastard Sword](/page/Proficiency:_Bastard_Sword "Proficiency: Bastard Sword")
--   [Proficiency: Dwarven Waraxe](/page/Proficiency:_Dwarven_Waraxe "Proficiency: Dwarven Waraxe")
+- [Proficiency: Bastard Sword](/page/Proficiency:_Bastard_Sword "Proficiency: Bastard Sword")
+- [Proficiency: Dwarven Waraxe](/page/Proficiency:_Dwarven_Waraxe "Proficiency: Dwarven Waraxe")
 
--   [Weapon Focus: Ranged](/page/Weapon_Focus:_Ranged "Weapon Focus: Ranged")
--   [Weapon Focus: Slashing](/page/Weapon_Focus:_Slashing "Weapon Focus: Slashing")
+- [Weapon Focus: Ranged](/page/Weapon_Focus:_Ranged "Weapon Focus: Ranged")
+- [Weapon Focus: Slashing](/page/Weapon_Focus:_Slashing "Weapon Focus: Slashing")
 
 |[Proficiency: Bastard Sword](https://ddowiki.com/page/Proficiency:_Bastard_Sword "Proficiency: Bastard Sword")| Passive |This [feat](/page/Feat "Feat") negates the -4 penalty to [attack rolls](/page/Attack_roll "Attack roll") from using an [Bastard Sword](/page/Bastard_Sword "Bastard Sword") untrained. In addition it allows [Bastard Swords](/page/Bastard_Sword "Bastard Sword") to deal [glancing blows](/page/Glancing_blows "Glancing blows") as if they were a two handed weapon - if they are the only weapon wielded by a proficient user. EG: Sword and shield or single weapon attack styles only, will not work if you are dual-wielding. | _ **Prerequisite:** [Base Attack Bonus](/page/Base_Attack_Bonus "Base Attack Bonus") of +1 or higher, [Strength](/page/Strength "Strength") 13+|
 |[Proficiency: Dwarven Waraxe](https://ddowiki.com/page/Proficiency:_Dwarven_Waraxe "Proficiency: Dwarven Waraxe")|Passive |This [feat](/page/Feat "Feat") negates the -4 penalty to [attack rolls](/page/Attack_roll "Attack roll") from using an [Dwarven Waraxe](/page/Dwarven_Waraxe "Dwarven Waraxe") untrained. In addition it allows [Dwarven Waraxes](/page/Dwarven_Waraxe "Dwarven Waraxe") to deal [glancing blows](/page/Glancing_blows "Glancing blows") as if they were a two handed weapon - if they are the only weapon wielded by a proficient user. EG: Sword and shield or single weapon attack styles only, will not work if you are dual-wielding.| _ **Prerequisite:** [Base Attack Bonus](/page/Base_Attack_Bonus "Base Attack Bonus") of +1 or higher, [Strength](/page/Strength "Strength") 13+|
 |[Weapon Focus: Ranged](https://ddowiki.com/page/Weapon_Focus:_Ranged "Weapon Focus: Ranged")|Passive | This feat grants a +1 bonus on to-hit rolls with any of the listed weapons. It also grants +2 [Ranged Power](/page/Ranged_Power "Ranged Power").| _ **Prerequisite:** Base attack bonus of +1 or higher|
 |[Weapon Focus: Slashing](https://ddowiki.com/page/Weapon_Focus:_Slashing "Weapon Focus: Slashing")|Passive | This feat grants a +1 bonus on to-hit rolls with any of the listed weapons. It also grants +2 [Melee Power](/page/Melee_Power "Melee Power").| _ **Prerequisite:** Base attack bonus of +1 or higher|
 
--   [Adamantine Body](/page/Adamantine_Body "Adamantine Body")
--   [Augment Summoning](/page/Augment_Summoning "Augment Summoning")
--   [Construct Essence](/page/Construct_Essence "Construct Essence")
--   [Dragonmark of Making](/page/Dragonmark#Human "Dragonmark") - _Human only_
--   [Exotic Weapon Proficiency](/page/Exotic_Weapon_Proficiency "Exotic Weapon Proficiency") - Bastard Sword _or_ Dwarven Waraxe
--   [Improved Critical: Bludgeoning](/page/Improved_Critical "Improved Critical")
--   [Improved Critical: Ranged](/page/Improved_Critical "Improved Critical")
--   [Improved Critical: Slashing](/page/Improved_Critical "Improved Critical")
--   [Improved Fortification](/page/Improved_Fortification "Improved Fortification")
--   [Improved Precise Shot](/page/Improved_Precise_Shot "Improved Precise Shot")
--   [Metamagic Feat](/page/Feats/Metamagic "Feats/Metamagic") (any)
--   [Mithral Body](/page/Mithral_Body "Mithral Body")
--   [Mithral Fluidity](/page/Mithral_Fluidity "Mithral Fluidity")
--   [Point Blank Shot](/page/Point_Blank_Shot "Point Blank Shot")
--   [Precise Shot](/page/Precise_Shot "Precise Shot")
--   [Rapid Shot](/page/Rapid_Shot "Rapid Shot")
--   [Shot on the Run](/page/Shot_on_the_Run "Shot on the Run")
--   [Single Weapon Fighting](/page/Single_Weapon_Fighting "Single Weapon Fighting")
--   [Skill Focus](/page/Skill_Focus "Skill Focus") (any)
--   [Two Handed Fighting](/page/Two_Handed_Fighting "Two Handed Fighting")
--   [Weapon Focus: Ranged](/page/Weapon_Focus "Weapon Focus")
--   [Weapon Focus: Slashing](/page/Weapon_Focus "Weapon Focus")
+- [Adamantine Body](/page/Adamantine_Body "Adamantine Body")
+- [Augment Summoning](/page/Augment_Summoning "Augment Summoning")
+- [Construct Essence](/page/Construct_Essence "Construct Essence")
+- [Dragonmark of Making](/page/Dragonmark#Human "Dragonmark") - _Human only_
+- [Exotic Weapon Proficiency](/page/Exotic_Weapon_Proficiency "Exotic Weapon Proficiency") - Bastard Sword _or_ Dwarven Waraxe
+- [Improved Critical: Bludgeoning](/page/Improved_Critical "Improved Critical")
+- [Improved Critical: Ranged](/page/Improved_Critical "Improved Critical")
+- [Improved Critical: Slashing](/page/Improved_Critical "Improved Critical")
+- [Improved Fortification](/page/Improved_Fortification "Improved Fortification")
+- [Improved Precise Shot](/page/Improved_Precise_Shot "Improved Precise Shot")
+- [Metamagic Feat](/page/Feats/Metamagic "Feats/Metamagic") (any)
+- [Mithral Body](/page/Mithral_Body "Mithral Body")
+- [Mithral Fluidity](/page/Mithral_Fluidity "Mithral Fluidity")
+- [Point Blank Shot](/page/Point_Blank_Shot "Point Blank Shot")
+- [Precise Shot](/page/Precise_Shot "Precise Shot")
+- [Rapid Shot](/page/Rapid_Shot "Rapid Shot")
+- [Shot on the Run](/page/Shot_on_the_Run "Shot on the Run")
+- [Single Weapon Fighting](/page/Single_Weapon_Fighting "Single Weapon Fighting")
+- [Skill Focus](/page/Skill_Focus "Skill Focus") (any)
+- [Two Handed Fighting](/page/Two_Handed_Fighting "Two Handed Fighting")
+- [Weapon Focus: Ranged](/page/Weapon_Focus "Weapon Focus")
+- [Weapon Focus: Slashing](/page/Weapon_Focus "Weapon Focus")
 
 [arcane_lore]: http://ddowiki.com/page/Arcane_Lore_(feat) "Arcane Lore (Feat)"
 [artificer_knowlege]: http://ddowiki.com/page/Artificer_Knowledge "Artificer Knowlege"

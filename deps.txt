@@ -1,0 +1,785 @@
+Project version: 0.1.0
+> Task :build-logic:checkKotlinGradlePluginConfigurationErrors SKIPPED
+> Task :build-logic:generateExternalPluginSpecBuilders UP-TO-DATE
+> Task :build-logic:extractPrecompiledScriptPluginPlugins UP-TO-DATE
+> Task :build-logic:compilePluginsBlocks UP-TO-DATE
+> Task :build-logic:generatePrecompiledScriptPluginAccessors UP-TO-DATE
+> Task :build-logic:generateScriptPluginAdapters UP-TO-DATE
+> Task :build-logic:compileKotlin UP-TO-DATE
+> Task :build-logic:compileJava NO-SOURCE
+> Task :build-logic:pluginDescriptors UP-TO-DATE
+> Task :build-logic:processResources UP-TO-DATE
+> Task :build-logic:classes UP-TO-DATE
+> Task :build-logic:jar UP-TO-DATE
+
+> Configure project :ddo-antlr
+configuring KoTest for Unit testing
+configuring KoTest for Unit testing
+ddo-antlr kotlinTestMode: REFLECT (dependencies)
+after evaluate ddo-antlr kotlinTestMode: KoTest (JvmTestSuite)
+configuring KoTest for Unit testing (from kts)
+
+> Configure project :ddo-util
+ddo-util (scoverage) 3
+Scala 3 detected
+Scala 3 detected
+Scala 3 detected
+
+> Configure project :ddo-modeling
+ddo-modeling (scoverage) 3
+Scala 3 detected
+Scala 3 detected
+Scala 3 detected
+Configuring Scala Unit Test for ddo-modeling
+test : test
+
+> Configure project :ddo-core
+ddo-core (scoverage) 3
+Scala 3 detected
+Scala 3 detected
+Scala 3 detected
+Configuring Scala Unit Test for ddo-core
+test : test
+
+> Configure project :ddo-web
+ddo-web (scoverage) 3
+Scala 3 detected
+Scala 3 detected
+Scala 3 detected
+Configuring Scala Unit Test for ddo-web
+test : test
+
+> Configure project :ddo-etl
+ddo-etl (scoverage) 3
+Scala 3 detected
+Scala 3 detected
+Scala 3 detected
+Configuring Scala Unit Test for ddo-etl
+test : test
+
+> Configure project :ddo-testing-util
+ddo-testing-util (scoverage) 3
+Scala 3 detected
+Scala 3 detected
+Scala 3 detected
+
+> Task :ddo-antlr:dependencyUpdates
+
+------------------------------------------------------------
+:ddo-antlr Project Dependency Updates (report to plain text file)
+------------------------------------------------------------
+
+The following dependencies are using the latest milestone version:
+ - com.google.errorprone:javac:9+181-r4173-1
+ - com.sksamuel.hoplite:hoplite-core:2.9.0
+ - com.sksamuel.hoplite:hoplite-hocon:2.9.0
+ - com.sksamuel.hoplite:hoplite-yaml:2.9.0
+ - com.squareup.moshi:moshi-kotlin:1.15.2
+ - com.vladsch.flexmark:flexmark-all:0.64.8
+ - org.concordion:concordion:4.0.1
+ - org.jacoco:org.jacoco.agent:0.8.12
+ - org.jacoco:org.jacoco.ant:0.8.12
+ - org.jetbrains.kotlin:kotlin-build-tools-impl:2.1.10
+ - org.jetbrains.kotlin:kotlin-compiler-embeddable:2.1.10
+ - org.jetbrains.kotlin:kotlin-klib-commonizer-embeddable:2.1.10
+
+The following dependencies have later milestone versions:
+ - ch.qos.logback:logback-classic [1.5.17 -> 1.6.3]
+     http://logback.qos.ch
+ - com.google.errorprone:error_prone_core [2.36.0 -> 2.50.0]
+     https://errorprone.info
+ - com.uber.nullaway:nullaway [0.12.4 -> 0.13.8]
+     https://github.com/uber/NullAway/
+ - io.kotest:kotest-assertions-core [5.9.1 -> 6.2.4]
+     https://github.com/kotest/kotest
+ - io.kotest:kotest-property [5.9.1 -> 6.2.4]
+     https://github.com/kotest/kotest
+ - io.kotest:kotest-runner-junit5 [5.5.5 -> 6.2.4]
+     https://github.com/kotest/kotest
+ - io.kotest:kotest-runner-junit5-jvm [5.9.1 -> 6.2.4]
+     https://github.com/kotest/kotest
+ - org.antlr:antlr4 [4.13.1 -> 4.13.2]
+     http://www.antlr.org
+ - org.jetbrains.kotlin:kotlin-bom [2.1.10 -> 2.4.10]
+     https://kotlinlang.org/
+ - org.jetbrains.kotlin:kotlin-scripting-compiler-embeddable [2.1.10 -> 2.4.10]
+     https://kotlinlang.org/
+ - org.jetbrains.kotlin:kotlin-stdlib [2.1.10 -> 2.4.10]
+     https://kotlinlang.org/
+ - org.jspecify:jspecify [1.0.0 -> 1.0.1]
+     https://jspecify.dev/
+ - org.junit.jupiter:junit-jupiter-engine [5.9.3 -> 6.1.3]
+     https://junit.org/
+ - org.junit.vintage:junit-vintage-engine [5.9.3 -> 6.1.3]
+     https://junit.org/
+
+Gradle current updates:
+ - Gradle: [8.13 -> 9.7.0]
+
+Generated report file build/dependencyUpdates/report.txt
+
+> Task :ddo-core:dependencyUpdates
+
+------------------------------------------------------------
+:ddo-core Project Dependency Updates (report to plain text file)
+------------------------------------------------------------
+
+The following dependencies are using the latest milestone version:
+ - com.google.errorprone:javac:9+181-r4173-1
+ - jakarta.inject:jakarta.inject-api:2.0.1
+ - org.scala-sbt:zinc_2.13:1.10.4
+ - org.scoverage:scalac-scoverage-plugin_2.13.15:2.3.0
+
+The following dependencies have later milestone versions:
+ - com.google.errorprone:error_prone_core [2.36.0 -> 2.50.0]
+     https://errorprone.info
+ - com.uber.nullaway:nullaway [0.12.4 -> 0.13.8]
+     https://github.com/uber/NullAway/
+ - io.smallrye:jandex [3.1.7 -> 3.6.0]
+     https://smallrye.io
+ - org.junit.jupiter:junit-jupiter-engine [5.11.3 -> 6.1.3]
+     https://junit.org/
+ - org.junit.jupiter:junit-jupiter-engine [5.9.3 -> 6.1.3]
+     https://junit.org/
+ - org.junit.platform:junit-platform-reporting [1.11.3 -> 6.1.3]
+     https://junit.org/
+ - org.junit.vintage:junit-vintage-engine [5.9.3 -> 6.1.3]
+     https://junit.org/
+ - org.scala-lang:scala3-compiler_3 [3.6.3 -> 3.8.4]
+     https://scala-lang.org/
+ - org.scala-lang:scala3-interfaces [3.6.3 -> 3.8.4]
+     https://scala-lang.org/
+ - org.scala-lang:scala3-sbt-bridge [3.6.3 -> 3.8.4]
+     https://scala-lang.org/
+ - org.scala-lang:scaladoc_3 [3.6.3 -> 3.8.4]
+     https://scala-lang.org/
+ - org.scoverage:scalac-scoverage-domain_3 [2.3.0 -> 2.5.2]
+     http://scoverage.org/
+ - org.scoverage:scalac-scoverage-reporter_3 [2.3.0 -> 2.5.2]
+     http://scoverage.org/
+ - org.scoverage:scalac-scoverage-runtime_2.13 [2.3.0 -> 2.5.2]
+     http://scoverage.org/
+ - org.scoverage:scalac-scoverage-serializer_3 [2.3.0 -> 2.5.2]
+     http://scoverage.org/
+
+Failed to determine the latest version for the following dependencies (use --info for details):
+ - ch.qos.logback:logback-classic
+     1.6.3
+ - com.beachape:enumeratum_3
+     1.9.8
+ - com.github.kxbmap:configs_2.13
+     0.6.1
+ - com.google.guava:guava
+     23.0
+ - com.google.truth:truth
+     1.4.5
+ - com.typesafe:config
+     1.4.9
+ - com.typesafe.scala-logging:scala-logging_3
+     3.9.6
+ - com.vladsch.flexmark:flexmark-all
+     0.64.8
+ - de.neuland-bfi:jade4j
+     1.3.2
+ - dev.zio:zio-prelude_3
+ - dev.zio:zio-test-junit_3
+     2.1.26
+ - org.concordion:concordion
+     4.0.1
+ - org.eclipse.microprofile.config:microprofile-config-api
+     3.1.1
+ - org.jetbrains:annotations
+     26.1.0
+ - org.json4s:json4s-native_3
+     4.0.7
+ - org.jspecify:jspecify
+     1.0.1
+ - org.mockito:mockito-core
+     5.23.0
+ - org.scala-lang:scala3-library_3
+     3.8.4
+ - org.scalatest:scalatest_3
+     3.2.20
+ - org.scalatestplus:junit-5-11_3
+     3.2.19.0
+ - org.scalatestplus:mockito-5-12_3
+     3.2.19.0
+ - org.scalatestplus:scalacheck-1-18_3
+     3.2.19.0
+
+Gradle current updates:
+ - Gradle: [8.13 -> 9.7.0]
+
+Generated report file build/dependencyUpdates/report.txt
+
+> Task :ddo-dal:dependencyUpdates
+
+------------------------------------------------------------
+:ddo-dal Project Dependency Updates (report to plain text file)
+------------------------------------------------------------
+
+The following dependencies are using the latest milestone version:
+ - com.google.errorprone:javac:9+181-r4173-1
+ - com.sksamuel.hoplite:hoplite-core:2.9.0
+ - com.sksamuel.hoplite:hoplite-hocon:2.9.0
+ - com.sksamuel.hoplite:hoplite-yaml:2.9.0
+ - org.jetbrains.kotlin:kotlin-build-tools-impl:2.1.10
+ - org.jetbrains.kotlin:kotlin-compiler-embeddable:2.1.10
+ - org.jetbrains.kotlin:kotlin-klib-commonizer-embeddable:2.1.10
+ - org.jetbrains.xodus:xodus-openAPI:2.0.1
+
+The following dependencies have later milestone versions:
+ - com.google.errorprone:error_prone_core [2.36.0 -> 2.50.0]
+     https://errorprone.info
+ - com.uber.nullaway:nullaway [0.12.4 -> 0.13.8]
+     https://github.com/uber/NullAway/
+ - io.hypersistence:hypersistence-utils-hibernate-63 [3.9.2 -> 3.15.4]
+     https://github.com/vladmihalcea/hypersistence-utils
+ - io.quarkus:quarkus-agroal-deployment [3.18.4 -> 3.38.2]
+     https://github.com/quarkusio/quarkus
+ - io.quarkus:quarkus-arc [3.18.4 -> 3.38.2]
+     https://github.com/quarkusio/quarkus
+ - io.quarkus:quarkus-arc-deployment [3.18.4 -> 3.38.2]
+     https://github.com/quarkusio/quarkus
+ - io.quarkus:quarkus-core-deployment [3.18.4 -> 3.38.2]
+     https://github.com/quarkusio/quarkus
+ - io.quarkus:quarkus-datasource-deployment [3.18.4 -> 3.38.2]
+     https://github.com/quarkusio/quarkus
+ - io.quarkus:quarkus-hibernate-orm-panache [3.18.4 -> 3.38.2]
+     https://github.com/quarkusio/quarkus
+ - io.quarkus:quarkus-hibernate-orm-panache-deployment [3.18.4 -> 3.38.2]
+     https://github.com/quarkusio/quarkus
+ - io.quarkus:quarkus-hibernate-orm-panache-kotlin [3.18.4 -> 3.38.2]
+     https://github.com/quarkusio/quarkus
+ - io.quarkus:quarkus-hibernate-orm-panache-kotlin-deployment [3.18.4 -> 3.38.2]
+     https://github.com/quarkusio/quarkus
+ - io.quarkus:quarkus-hibernate-reactive-rest-data-panache [3.18.4 -> 3.38.2]
+     https://github.com/quarkusio/quarkus
+ - io.quarkus:quarkus-hibernate-reactive-rest-data-panache-deployment [3.18.4 -> 3.38.2]
+     https://github.com/quarkusio/quarkus
+ - io.quarkus:quarkus-hibernate-validator [3.18.4 -> 3.38.2]
+     Hibernate Validator is an implementation of the Jakarta Bean Validation specification. Not specific to JPA.
+     https://github.com/quarkusio/quarkus
+ - io.quarkus:quarkus-hibernate-validator-deployment [3.18.4 -> 3.38.2]
+     https://github.com/quarkusio/quarkus
+ - io.quarkus:quarkus-jdbc-postgresql [3.18.4 -> 3.38.2]
+     https://github.com/quarkusio/quarkus
+ - io.quarkus:quarkus-jdbc-postgresql-deployment [3.18.4 -> 3.38.2]
+     https://github.com/quarkusio/quarkus
+ - io.quarkus:quarkus-jsonp-deployment [3.18.4 -> 3.38.2]
+     https://github.com/quarkusio/quarkus
+ - io.quarkus:quarkus-junit5 [3.18.4 -> 3.38.2]
+     https://github.com/quarkusio/quarkus
+ - io.quarkus:quarkus-junit5-component [3.18.4 -> 3.38.2]
+     https://github.com/quarkusio/quarkus
+ - io.quarkus:quarkus-kotlin [3.18.4 -> 3.38.2]
+     https://github.com/quarkusio/quarkus
+ - io.quarkus:quarkus-kotlin-deployment [3.18.4 -> 3.38.2]
+     https://github.com/quarkusio/quarkus
+ - io.quarkus:quarkus-mutiny-deployment [3.18.4 -> 3.38.2]
+     https://github.com/quarkusio/quarkus
+ - io.quarkus:quarkus-narayana-jta-deployment [3.18.4 -> 3.38.2]
+     https://github.com/quarkusio/quarkus
+ - io.quarkus:quarkus-netty-deployment [3.18.4 -> 3.38.2]
+     https://github.com/quarkusio/quarkus
+ - io.quarkus:quarkus-reactive-pg-client [3.18.4 -> 3.38.2]
+     https://github.com/quarkusio/quarkus
+ - io.quarkus:quarkus-reactive-pg-client-deployment [3.18.4 -> 3.38.2]
+     https://github.com/quarkusio/quarkus
+ - io.quarkus:quarkus-rest [3.18.4 -> 3.38.2]
+     https://github.com/quarkusio/quarkus
+ - io.quarkus:quarkus-rest-common-deployment [3.18.4 -> 3.38.2]
+     https://github.com/quarkusio/quarkus
+ - io.quarkus:quarkus-rest-deployment [3.18.4 -> 3.38.2]
+     https://github.com/quarkusio/quarkus
+ - io.quarkus:quarkus-rest-jackson [3.18.4 -> 3.38.2]
+     https://github.com/quarkusio/quarkus
+ - io.quarkus:quarkus-rest-jackson-deployment [3.18.4 -> 3.38.2]
+     https://github.com/quarkusio/quarkus
+ - io.quarkus:quarkus-rest-kotlin-deployment [3.18.4 -> 3.38.2]
+     https://github.com/quarkusio/quarkus
+ - io.quarkus:quarkus-rest-links-deployment [3.18.4 -> 3.38.2]
+     https://github.com/quarkusio/quarkus
+ - io.quarkus:quarkus-smallrye-context-propagation-deployment [3.18.4 -> 3.38.2]
+     https://github.com/quarkusio/quarkus
+ - io.quarkus:quarkus-smallrye-health [3.18.4 -> 3.38.2]
+     https://github.com/quarkusio/quarkus
+ - io.quarkus:quarkus-smallrye-health-deployment [3.18.4 -> 3.38.2]
+     https://github.com/quarkusio/quarkus
+ - io.quarkus:quarkus-smallrye-openapi [3.18.4 -> 3.38.2]
+     https://github.com/quarkusio/quarkus
+ - io.quarkus:quarkus-smallrye-openapi-deployment [3.18.4 -> 3.38.2]
+     https://github.com/quarkusio/quarkus
+ - io.quarkus:quarkus-tls-registry-deployment [3.18.4 -> 3.38.2]
+     https://github.com/quarkusio/quarkus
+ - io.quarkus:quarkus-vertx-deployment [3.18.4 -> 3.38.2]
+     https://github.com/quarkusio/quarkus
+ - io.quarkus:quarkus-vertx-http-deployment [3.18.4 -> 3.38.2]
+     https://github.com/quarkusio/quarkus
+ - io.quarkus:quarkus-vertx-kotlin-deployment [3.18.4 -> 3.38.2]
+     https://github.com/quarkusio/quarkus
+ - io.quarkus:quarkus-virtual-threads-deployment [3.18.4 -> 3.38.2]
+     https://github.com/quarkusio/quarkus
+ - io.quarkus.platform:quarkus-bom [3.18.4 -> 3.38.2]
+     https://github.com/quarkusio/quarkus-platform
+ - io.rest-assured:rest-assured [5.5.0 -> 6.0.1]
+     https://rest-assured.io/
+ - org.assertj:assertj-core [3.27.3 -> 3.27.7]
+     https://assertj.github.io/doc/#assertj-core
+ - org.jetbrains.kotlin:kotlin-bom [2.1.10 -> 2.4.10]
+     https://kotlinlang.org/
+ - org.jetbrains.kotlin:kotlin-scripting-compiler-embeddable [2.1.10 -> 2.4.10]
+     https://kotlinlang.org/
+ - org.jetbrains.kotlin:kotlin-stdlib [2.0.21 -> 2.4.10]
+     https://kotlinlang.org/
+ - org.jetbrains.kotlin:kotlin-stdlib [2.1.10 -> 2.4.10]
+     https://kotlinlang.org/
+ - org.jspecify:jspecify [1.0.0 -> 1.0.1]
+     https://jspecify.dev/
+
+Gradle current updates:
+ - Gradle: [8.13 -> 9.7.0]
+
+Generated report file build/dependencyUpdates/report.txt
+
+> Task :ddo-etl:dependencyUpdates
+
+------------------------------------------------------------
+:ddo-etl Project Dependency Updates (report to plain text file)
+------------------------------------------------------------
+
+The following dependencies are using the latest milestone version:
+ - com.google.errorprone:javac:9+181-r4173-1
+ - io.quarkiverse.scala:quarkus-scala3-deployment:1.0.0
+ - org.scala-sbt:zinc_2.13:1.10.4
+
+The following dependencies have later milestone versions:
+ - com.google.errorprone:error_prone_core [2.36.0 -> 2.50.0]
+     https://errorprone.info
+ - com.uber.nullaway:nullaway [0.12.4 -> 0.13.8]
+     https://github.com/uber/NullAway/
+ - io.quarkiverse.freemarker:quarkus-freemarker-deployment [1.2.0 -> 1.3.0]
+     https://quarkiverse.io
+ - io.quarkus:quarkus-arc [3.18.4 -> 3.38.2]
+     https://github.com/quarkusio/quarkus
+ - io.quarkus:quarkus-arc-deployment [3.18.4 -> 3.38.2]
+     https://github.com/quarkusio/quarkus
+ - io.quarkus:quarkus-core-deployment [3.18.4 -> 3.38.2]
+     https://github.com/quarkusio/quarkus
+ - io.quarkus:quarkus-hibernate-validator [3.18.4 -> 3.38.2]
+     Hibernate Validator is an implementation of the Jakarta Bean Validation specification. Not specific to JPA.
+     https://github.com/quarkusio/quarkus
+ - io.quarkus:quarkus-hibernate-validator-deployment [3.18.4 -> 3.38.2]
+     https://github.com/quarkusio/quarkus
+ - io.quarkus:quarkus-junit5 [3.18.4 -> 3.38.2]
+     https://github.com/quarkusio/quarkus
+ - io.quarkus:quarkus-junit5-component [3.18.4 -> 3.38.2]
+     https://github.com/quarkusio/quarkus
+ - io.quarkus:quarkus-mutiny [3.18.4 -> 3.38.2]
+     https://github.com/quarkusio/quarkus
+ - io.quarkus:quarkus-mutiny-deployment [3.18.4 -> 3.38.2]
+     https://github.com/quarkusio/quarkus
+ - io.quarkus:quarkus-rest [3.18.4 -> 3.38.2]
+     https://github.com/quarkusio/quarkus
+ - io.quarkus:quarkus-rest-deployment [3.18.4 -> 3.38.2]
+     https://github.com/quarkusio/quarkus
+ - io.quarkus:quarkus-smallrye-context-propagation [3.18.4 -> 3.38.2]
+     https://github.com/quarkusio/quarkus
+ - io.quarkus:quarkus-smallrye-context-propagation-deployment [3.18.4 -> 3.38.2]
+     https://github.com/quarkusio/quarkus
+ - io.quarkus:quarkus-smallrye-health [3.18.4 -> 3.38.2]
+     https://github.com/quarkusio/quarkus
+ - io.quarkus:quarkus-smallrye-health-deployment [3.18.4 -> 3.38.2]
+     https://github.com/quarkusio/quarkus
+ - io.quarkus:quarkus-smallrye-openapi [3.18.4 -> 3.38.2]
+     https://github.com/quarkusio/quarkus
+ - io.quarkus:quarkus-smallrye-openapi-deployment [3.18.4 -> 3.38.2]
+     https://github.com/quarkusio/quarkus
+ - org.junit.jupiter:junit-jupiter [5.10.5 -> 6.1.3]
+     https://junit.org/
+ - org.junit.jupiter:junit-jupiter-engine [5.10.5 -> 6.1.3]
+     https://junit.org/
+ - org.junit.jupiter:junit-jupiter-engine [5.9.3 -> 6.1.3]
+     https://junit.org/
+ - org.junit.platform:junit-platform-launcher [1.10.5 -> 6.1.3]
+     https://junit.org/
+ - org.junit.platform:junit-platform-reporting [1.10.5 -> 6.1.3]
+     https://junit.org/
+ - org.junit.vintage:junit-vintage-engine [5.9.3 -> 6.1.3]
+     https://junit.org/
+ - org.scala-lang:scala3-compiler_3 [3.6.3 -> 3.8.4]
+     https://scala-lang.org/
+ - org.scala-lang:scala3-interfaces [3.6.3 -> 3.8.4]
+     https://scala-lang.org/
+ - org.scala-lang:scala3-sbt-bridge [3.6.3 -> 3.8.4]
+     https://scala-lang.org/
+ - org.scala-lang:scaladoc_3 [3.6.3 -> 3.8.4]
+     https://scala-lang.org/
+ - org.scoverage:scalac-scoverage-domain_3 [2.3.0 -> 2.5.2]
+     http://scoverage.org/
+ - org.scoverage:scalac-scoverage-plugin_2.13.16 [2.3.0 -> 2.5.2]
+     http://scoverage.org/
+ - org.scoverage:scalac-scoverage-reporter_3 [2.3.0 -> 2.5.2]
+     http://scoverage.org/
+ - org.scoverage:scalac-scoverage-runtime_2.13 [2.3.0 -> 2.5.2]
+     http://scoverage.org/
+ - org.scoverage:scalac-scoverage-serializer_3 [2.3.0 -> 2.5.2]
+     http://scoverage.org/
+
+Failed to determine the latest version for the following dependencies (use --info for details):
+ - ch.qos.logback:logback-classic
+     1.6.3
+ - com.beachape:enumeratum_3
+     1.9.8
+ - com.google.guava:guava
+     23.0
+ - com.google.truth:truth
+     1.4.5
+ - com.jayway.jsonpath:json-path
+     3.0.0
+ - com.typesafe:config
+     1.4.9
+ - com.typesafe.scala-logging:scala-logging_3
+     3.9.6
+ - com.vladsch.flexmark:flexmark-all
+     0.64.8
+ - de.neuland-bfi:jade4j
+     1.3.2
+ - dev.zio:zio-prelude_3
+ - dev.zio:zio_3
+     2.1.26
+ - io.getquill:quill-sql_3
+     4.8.6
+ - io.jstach:jstachio
+     template engine for sql import etc
+     1.3.7
+ - io.quarkiverse.freemarker:quarkus-freemarker
+     1.3.0
+ - io.quarkiverse.scala:quarkus-scala3
+     1.0.0
+ - io.quarkus.platform:quarkus-bom
+     3.38.2
+ - io.smallrye.reactive:smallrye-mutiny-vertx-web-client
+     4.0.1
+ - org.apache.avro:avro-tools
+     1.12.1
+ - org.apache.hadoop:hadoop-common
+     3.5.0
+ - org.concordion:concordion
+     4.0.1
+ - org.jetbrains.xodus:xodus-crypto
+     2.0.1
+ - org.jetbrains.xodus:xodus-entity-store
+     2.0.1
+ - org.jetbrains.xodus:xodus-environment
+     2.0.1
+ - org.jetbrains.xodus:xodus-openAPI
+     2.0.1
+ - org.jetbrains.xodus:xodus-vfs
+     2.0.1
+ - org.json4s:json4s-native_3
+     4.0.7
+ - org.jspecify:jspecify
+     1.0.1
+ - org.mockito:mockito-core
+     5.23.0
+ - org.scala-lang:scala3-library_3
+     3.8.4
+ - org.scalatest:scalatest_3
+     3.2.20
+ - org.scalatestplus:junit-5-11_3
+     3.2.19.0
+ - org.scalatestplus:mockito-5-12_3
+     3.2.19.0
+ - org.scalatestplus:scalacheck-1-18_3
+     3.2.19.0
+
+Gradle current updates:
+ - Gradle: [8.13 -> 9.7.0]
+
+Generated report file build/dependencyUpdates/report.txt
+
+> Task :ddo-modeling:dependencyUpdates
+
+------------------------------------------------------------
+:ddo-modeling Project Dependency Updates (report to plain text file)
+------------------------------------------------------------
+
+The following dependencies are using the latest milestone version:
+ - com.google.errorprone:javac:9+181-r4173-1
+ - org.scala-sbt:zinc_2.13:1.10.4
+ - org.scoverage:scalac-scoverage-plugin_2.13.15:2.3.0
+
+The following dependencies have later milestone versions:
+ - com.google.errorprone:error_prone_core [2.36.0 -> 2.50.0]
+     https://errorprone.info
+ - com.uber.nullaway:nullaway [0.12.4 -> 0.13.8]
+     https://github.com/uber/NullAway/
+ - org.junit.jupiter:junit-jupiter-engine [5.11.3 -> 6.1.3]
+     https://junit.org/
+ - org.junit.jupiter:junit-jupiter-engine [5.9.3 -> 6.1.3]
+     https://junit.org/
+ - org.junit.platform:junit-platform-reporting [1.11.3 -> 6.1.3]
+     https://junit.org/
+ - org.junit.vintage:junit-vintage-engine [5.9.3 -> 6.1.3]
+     https://junit.org/
+ - org.openapi.generator:org.openapi.generator.gradle.plugin [4.2.2 -> 7.24.0]
+ - org.scala-lang:scala3-compiler_3 [3.6.3 -> 3.8.4]
+     https://scala-lang.org/
+ - org.scala-lang:scala3-interfaces [3.6.3 -> 3.8.4]
+     https://scala-lang.org/
+ - org.scala-lang:scala3-sbt-bridge [3.6.3 -> 3.8.4]
+     https://scala-lang.org/
+ - org.scala-lang:scaladoc_3 [3.6.3 -> 3.8.4]
+     https://scala-lang.org/
+ - org.scoverage:scalac-scoverage-domain_3 [2.3.0 -> 2.5.2]
+     http://scoverage.org/
+ - org.scoverage:scalac-scoverage-reporter_3 [2.3.0 -> 2.5.2]
+     http://scoverage.org/
+ - org.scoverage:scalac-scoverage-runtime_2.13 [2.3.0 -> 2.5.2]
+     http://scoverage.org/
+ - org.scoverage:scalac-scoverage-serializer_3 [2.3.0 -> 2.5.2]
+     http://scoverage.org/
+
+Failed to determine the latest version for the following dependencies (use --info for details):
+ - ch.qos.logback:logback-classic
+     1.6.3
+ - com.beachape:enumeratum_3
+     1.9.8
+ - com.github.kxbmap:configs_2.13
+     0.6.1
+ - com.google.guava:guava
+     23.0
+ - com.google.truth:truth
+     1.4.5
+ - com.typesafe:config
+     1.4.9
+ - com.typesafe.scala-logging:scala-logging_3
+     3.9.6
+ - com.vladsch.flexmark:flexmark-all
+     0.64.8
+ - de.neuland-bfi:jade4j
+     1.3.2
+ - dev.zio:zio-prelude_3
+ - org.concordion:concordion
+     4.0.1
+ - org.json4s:json4s-native_3
+     4.0.7
+ - org.jspecify:jspecify
+     1.0.1
+ - org.mockito:mockito-core
+     5.23.0
+ - org.scala-lang:scala3-library_3
+     3.8.4
+ - org.scalatest:scalatest_3
+     3.2.20
+ - org.scalatestplus:junit-5-11_3
+     3.2.19.0
+ - org.scalatestplus:mockito-5-12_3
+     3.2.19.0
+ - org.scalatestplus:scalacheck-1-18_3
+     3.2.19.0
+
+Gradle current updates:
+ - Gradle: [8.13 -> 9.7.0]
+
+Generated report file build/dependencyUpdates/report.txt
+
+> Task :ddo-testing-util:dependencyUpdates
+
+------------------------------------------------------------
+:ddo-testing-util Project Dependency Updates (report to plain text file)
+------------------------------------------------------------
+
+The following dependencies are using the latest milestone version:
+ - com.google.errorprone:javac:9+181-r4173-1
+ - org.scala-sbt:zinc_2.13:1.10.4
+ - org.scoverage:scalac-scoverage-plugin_2.13.14:2.3.0
+
+The following dependencies have later milestone versions:
+ - com.google.errorprone:error_prone_core [2.36.0 -> 2.50.0]
+     https://errorprone.info
+ - com.uber.nullaway:nullaway [0.12.4 -> 0.13.8]
+     https://github.com/uber/NullAway/
+ - org.scala-lang:scala3-compiler_3 [3.6.3 -> 3.8.4]
+     https://scala-lang.org/
+ - org.scala-lang:scala3-interfaces [3.6.3 -> 3.8.4]
+     https://scala-lang.org/
+ - org.scala-lang:scala3-sbt-bridge [3.6.3 -> 3.8.4]
+     https://scala-lang.org/
+ - org.scala-lang:scaladoc_3 [3.6.3 -> 3.8.4]
+     https://scala-lang.org/
+ - org.scoverage:scalac-scoverage-domain_3 [2.3.0 -> 2.5.2]
+     http://scoverage.org/
+ - org.scoverage:scalac-scoverage-reporter_3 [2.3.0 -> 2.5.2]
+     http://scoverage.org/
+ - org.scoverage:scalac-scoverage-runtime_2.13 [2.3.0 -> 2.5.2]
+     http://scoverage.org/
+ - org.scoverage:scalac-scoverage-serializer_3 [2.3.0 -> 2.5.2]
+     http://scoverage.org/
+
+Failed to determine the latest version for the following dependencies (use --info for details):
+ - ch.qos.logback:logback-classic
+     1.6.3
+ - com.beachape:enumeratum_3
+     1.9.8
+ - com.github.kxbmap:configs_2.13
+     0.6.1
+ - com.typesafe:config
+     1.4.9
+ - com.typesafe.scala-logging:scala-logging_3
+     3.9.6
+ - org.jspecify:jspecify
+     1.0.1
+ - org.scala-lang:scala3-library_3
+     3.8.4
+ - org.scalatestplus:scalacheck-1-18_3
+     3.2.19.0
+
+Gradle current updates:
+ - Gradle: [8.13 -> 9.7.0]
+
+Generated report file build/dependencyUpdates/report.txt
+
+> Task :ddo-util:dependencyUpdates
+
+------------------------------------------------------------
+:ddo-util Project Dependency Updates (report to plain text file)
+------------------------------------------------------------
+
+The following dependencies are using the latest milestone version:
+ - com.google.errorprone:javac:9+181-r4173-1
+ - org.scala-sbt:zinc_2.13:1.10.4
+ - org.scoverage:scalac-scoverage-plugin_2.13.14:2.3.0
+
+The following dependencies have later milestone versions:
+ - com.google.errorprone:error_prone_core [2.36.0 -> 2.50.0]
+     https://errorprone.info
+ - com.uber.nullaway:nullaway [0.12.4 -> 0.13.8]
+     https://github.com/uber/NullAway/
+ - org.scala-lang:scala3-compiler_3 [3.6.3 -> 3.8.4]
+     https://scala-lang.org/
+ - org.scala-lang:scala3-interfaces [3.6.3 -> 3.8.4]
+     https://scala-lang.org/
+ - org.scala-lang:scala3-sbt-bridge [3.6.3 -> 3.8.4]
+     https://scala-lang.org/
+ - org.scala-lang:scaladoc_3 [3.6.3 -> 3.8.4]
+     https://scala-lang.org/
+ - org.scoverage:scalac-scoverage-domain_3 [2.3.0 -> 2.5.2]
+     http://scoverage.org/
+ - org.scoverage:scalac-scoverage-reporter_3 [2.3.0 -> 2.5.2]
+     http://scoverage.org/
+ - org.scoverage:scalac-scoverage-runtime_2.13 [2.3.0 -> 2.5.2]
+     http://scoverage.org/
+ - org.scoverage:scalac-scoverage-serializer_3 [2.3.0 -> 2.5.2]
+     http://scoverage.org/
+
+Failed to determine the latest version for the following dependencies (use --info for details):
+ - ch.qos.logback:logback-classic
+     1.6.3
+ - com.beachape:enumeratum_3
+     1.9.8
+ - com.typesafe.scala-logging:scala-logging_3
+     3.9.6
+ - org.jspecify:jspecify
+     1.0.1
+ - org.scala-lang:scala3-library_3
+     3.8.4
+
+Gradle current updates:
+ - Gradle: [8.13 -> 9.7.0]
+
+Generated report file build/dependencyUpdates/report.txt
+
+> Task :ddo-web:dependencyUpdates
+
+------------------------------------------------------------
+:ddo-web Project Dependency Updates (report to plain text file)
+------------------------------------------------------------
+
+The following dependencies are using the latest milestone version:
+ - com.google.errorprone:javac:9+181-r4173-1
+ - org.scala-sbt:zinc_2.13:1.10.4
+ - org.scoverage:scalac-scoverage-plugin_2.13.15:2.3.0
+
+The following dependencies have later milestone versions:
+ - com.google.errorprone:error_prone_core [2.36.0 -> 2.50.0]
+     https://errorprone.info
+ - com.uber.nullaway:nullaway [0.12.4 -> 0.13.8]
+     https://github.com/uber/NullAway/
+ - org.junit.jupiter:junit-jupiter-engine [5.12.0 -> 6.1.3]
+     https://junit.org/
+ - org.junit.jupiter:junit-jupiter-engine [5.9.3 -> 6.1.3]
+     https://junit.org/
+ - org.junit.platform:junit-platform-reporting [1.12.0 -> 6.1.3]
+     https://junit.org/
+ - org.junit.vintage:junit-vintage-engine [5.9.3 -> 6.1.3]
+     https://junit.org/
+ - org.scala-lang:scala3-compiler_3 [3.6.3 -> 3.8.4]
+     https://scala-lang.org/
+ - org.scala-lang:scala3-interfaces [3.6.3 -> 3.8.4]
+     https://scala-lang.org/
+ - org.scala-lang:scala3-sbt-bridge [3.6.3 -> 3.8.4]
+     https://scala-lang.org/
+ - org.scala-lang:scaladoc_3 [3.6.3 -> 3.8.4]
+     https://scala-lang.org/
+ - org.scoverage:scalac-scoverage-domain_3 [2.3.0 -> 2.5.2]
+     http://scoverage.org/
+ - org.scoverage:scalac-scoverage-reporter_3 [2.3.0 -> 2.5.2]
+     http://scoverage.org/
+ - org.scoverage:scalac-scoverage-runtime_2.13 [2.3.0 -> 2.5.2]
+     http://scoverage.org/
+ - org.scoverage:scalac-scoverage-serializer_3 [2.3.0 -> 2.5.2]
+     http://scoverage.org/
+
+Failed to determine the latest version for the following dependencies (use --info for details):
+ - ch.qos.logback:logback-classic
+     1.6.3
+ - com.beachape:enumeratum_3
+     1.9.8
+ - com.google.guava:guava
+     23.0
+ - com.google.truth:truth
+     1.4.5
+ - com.typesafe:config
+     1.4.9
+ - com.typesafe.scala-logging:scala-logging_3
+     3.9.6
+ - com.vladsch.flexmark:flexmark-all
+     0.64.8
+ - de.neuland-bfi:jade4j
+     1.3.2
+ - net.ruippeixotog:scala-scraper_3
+     3.2.0
+ - org.concordion:concordion
+     4.0.1
+ - org.jspecify:jspecify
+     1.0.1
+ - org.mockito:mockito-core
+     5.23.0
+ - org.scala-lang:scala3-library_3
+     3.8.4
+ - org.scalatest:scalatest_3
+     3.2.20
+ - org.scalatestplus:junit-5-11_3
+     3.2.19.0
+ - org.scalatestplus:mockito-5-12_3
+     3.2.19.0
+ - org.scalatestplus:scalacheck-1-18_3
+     3.2.19.0
+
+Gradle current updates:
+ - Gradle: [8.13 -> 9.7.0]
+
+Generated report file build/dependencyUpdates/report.txt
+
+[Incubating] Problems report is available at: file:///home/geek/quarks/ddo-calc/build/reports/problems/problems-report.html
+
+Deprecated Gradle features were used in this build, making it incompatible with Gradle 9.0.
+
+You can use '--warning-mode all' to show the individual deprecation warnings and determine if they come from your own scripts or plugins.
+
+For more on this, please refer to https://docs.gradle.org/8.13/userguide/command_line_interface.html#sec:command_line_warnings in the Gradle documentation.
+
+BUILD SUCCESSFUL in 9s
+17 actionable tasks: 8 executed, 9 up-to-date

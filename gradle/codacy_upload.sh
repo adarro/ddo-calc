@@ -11,7 +11,7 @@ set -o errexit
 set -o pipefail
 
 find . -iname "cobertura.xml" -print0 |
-    xargs bash <(curl -Ls https://coverage.codacy.com/get.sh) report \
-        --partial -l Scala -r
+	xargs bash <(curl -Ls https://coverage.codacy.com/get.sh) report \
+		--partial -l Scala -r
 
 bash <(curl -Ls https://coverage.codacy.com/get.sh) final

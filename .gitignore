@@ -224,3 +224,5 @@ fixle.sh
 /.env
 /.envrc
 /py/
+purgecache.sh
+webdept.txt

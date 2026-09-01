@@ -184,9 +184,9 @@ lethal weapons.
 
 ## Martial Arts Feats:
 
--   **Martial arts feats**
-    At level 1, 2, and 6 a [monk](/page/Monk "Monk") gets to select a bonus **martial arts feat**. All prerequisites of
-    the selected feat must be met.
+- **Martial arts feats**
+  At level 1, 2, and 6 a [monk](/page/Monk "Monk") gets to select a bonus **martial arts feat**. All prerequisites of
+  the selected feat must be met.
 
 | [ ][martialArtsFeats] [Feats][result]                                                                                                                                             | Type                  | Description                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                           | Prerequisite                                                                                                                                                                                                                                                                                                                                                                               |
 | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | --------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
@@ -220,9 +220,9 @@ lethal weapons.
 
 ## Errata
 
--   Armor Class Bonus is listed on DDO Wiki several times, but it is only listed here once, as the feat is not stackable
-    unlike Toughness or Religious Lore. However, the bonus it provides increases at certain monk level breaks (2,5,10,15
-    etc)
+- Armor Class Bonus is listed on DDO Wiki several times, but it is only listed here once, as the feat is not stackable
+  unlike Toughness or Religious Lore. However, the bonus it provides increases at certain monk level breaks (2,5,10,15
+  etc)
 
 [ki_strike_magic]: http://ddowiki.com/page/Ki_Strike:_Magic "Ki Strike: Magic"
 [ki_strike_lawful]: http://ddowiki.com/page/Ki_Strike:_Lawful "Ki Strike: Lawful"

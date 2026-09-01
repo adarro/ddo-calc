@@ -22,10 +22,11 @@ dependencies {
 reporting {
     @Suppress("UnstableApiUsage")
     reports {
-        val testAggregateTestReport = create<AggregateTestReport>("aggregateTestReporting") {
+        val testAggregateTestReport =
+            create<AggregateTestReport>("aggregateTestReporting") {
 //            testType.set(TestSuiteType.UNIT_TEST)
-            testSuiteName.set("acceptance-test")
-        }
+                testSuiteName.set("acceptance-test")
+            }
         // val testAggregateAcceptanceTestReport by creating(AggregateTestReport::class) {
         //     testType.set("acceptance-test")
         // }

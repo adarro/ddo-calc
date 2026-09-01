@@ -4,8 +4,8 @@ site_name: Core
 site_description: Core DDO Objects
 
 nav:
-  - Home: index.md
-  - User guide:
-      - Installation: guide/installation.md
-  - About:
-      - Release notes: about/history.md
+    - Home: index.md
+    - User guide:
+          - Installation: guide/installation.md
+    - About:
+          - Release notes: about/history.md

@@ -77,23 +77,24 @@ afterEvaluate {
     testing {
         val ts = TestBuildSupport(project)
         suites {
-            val test = when (testMode) {
-                KotlinTestKits.KoTest -> {
-                    logger.warn("configuring ${project.name} KoTest for Unit testing (from kts)")
-                    named<JvmTestSuite>("test", ts.applyKoTest)
-                }
+            val test =
+                when (testMode) {
+                    KotlinTestKits.KoTest -> {
+                        logger.warn("configuring ${project.name} KoTest for Unit testing (from kts)")
+                        named<JvmTestSuite>("test", ts.applyKoTest)
+                    }
 
-                KotlinTestKits.KotlinTest -> {
-                    logger.warn("configuring ${project.name} KotlinTest for Unit testing (from kts)")
-                    named<JvmTestSuite>("test") {
-                        useKotlinTest()
+                    KotlinTestKits.KotlinTest -> {
+                        logger.warn("configuring ${project.name} KotlinTest for Unit testing (from kts)")
+                        named<JvmTestSuite>("test") {
+                            useKotlinTest()
+                        }
+                    }
+
+                    else -> {
+                        named<JvmTestSuite>("test")
                     }
                 }
-
-                else -> {
-                    named<JvmTestSuite>("test")
-                }
-            }
         }
     }
 }

@@ -13,31 +13,31 @@ There are two simple but lofty goals to this project.
 
 When combined, you should be able to truly see what a given toon does.
 
--   Actual projected damage
-    i.e. viewing your average damage on your equipped [Drow Rapier of the Weapon Master](https://ddowiki.com/page/Item:Drow_Rapier_of_the_Weapon_Master)
-    not only understands the less-than-horrible 3[1d6] + 6 Pierce, Magic but
-    also your Swashbuckling bonuses and that it's your deities favored weapon
-    and calculates a _true_ human-readable min / max / average damage and
-    probable crit percentage while raged against that Marut that keeps
-    making you feel squishy.
--   Make better or at least more informed choices. Spend AP on another
-    percent dodge, 3 AC, 1 PRR or affect blur?
--   Do I run for that named item or swap around and throw a random loot
-    gen or craft something from Cannith to fill a slot?
--   Reverse build selection: Most people have a Legendary in mind, then
-    start from level 1 trying to muddle through seeing what they end up with.
-    Start by Adding how you want to end up.
-    i.e. At level 30, I want a Power-striking, Bastard sword swinging, self-repairing automaton. So I start by selecting
-    [Scion of Mechanus](https://ddowiki.com/page/Scion_of_Mechanus),
-    [Power Attack](https://ddowiki.com/page/Power_Attack) and
-    [Proficiency: Bastard Sword](https://ddowiki.com/page/Proficiency:_Bastard_Sword)
-    and reverse-walk the pre-requisites to find a way to get there. Perhaps
-    your level one toon is now a Half-orc because you didn't realise any race
-    could self-repair with [Construct Essence](https://ddowiki.com/page/Construct_Essence)
-    and then selected Artificer to get Bastard Sword as a Bonus Feat. Or you
-    decided to go Purple Dragon Knight and go Charisma-based and just UMD
-    [Tenser's Transformation](https://ddowiki.com/page/Tenser%27s_Transformation).
-    Who knows? Tucows can rise again!
+- Actual projected damage
+  i.e. viewing your average damage on your equipped [Drow Rapier of the Weapon Master](https://ddowiki.com/page/Item:Drow_Rapier_of_the_Weapon_Master)
+  not only understands the less-than-horrible 3[1d6] + 6 Pierce, Magic but
+  also your Swashbuckling bonuses and that it's your deities favored weapon
+  and calculates a _true_ human-readable min / max / average damage and
+  probable crit percentage while raged against that Marut that keeps
+  making you feel squishy.
+- Make better or at least more informed choices. Spend AP on another
+  percent dodge, 3 AC, 1 PRR or affect blur?
+- Do I run for that named item or swap around and throw a random loot
+  gen or craft something from Cannith to fill a slot?
+- Reverse build selection: Most people have a Legendary in mind, then
+  start from level 1 trying to muddle through seeing what they end up with.
+  Start by Adding how you want to end up.
+  i.e. At level 30, I want a Power-striking, Bastard sword swinging, self-repairing automaton. So I start by selecting
+  [Scion of Mechanus](https://ddowiki.com/page/Scion_of_Mechanus),
+  [Power Attack](https://ddowiki.com/page/Power_Attack) and
+  [Proficiency: Bastard Sword](https://ddowiki.com/page/Proficiency:_Bastard_Sword)
+  and reverse-walk the pre-requisites to find a way to get there. Perhaps
+  your level one toon is now a Half-orc because you didn't realise any race
+  could self-repair with [Construct Essence](https://ddowiki.com/page/Construct_Essence)
+  and then selected Artificer to get Bastard Sword as a Bonus Feat. Or you
+  decided to go Purple Dragon Knight and go Charisma-based and just UMD
+  [Tenser's Transformation](https://ddowiki.com/page/Tenser%27s_Transformation).
+  Who knows? Tucows can rise again!
 
 ## Stages
 
@@ -89,7 +89,7 @@ To keep a more consistent look and feel, a more universal client will be pursued
 
 #### Targets
 
--   Mobile / Tablet
-    An Android client for mobile and or tablet.
--   Desktop
-    Offers all functionality possible. Including concepts such as user input to help add information to the collective DDO datasphere.
+- Mobile / Tablet
+  An Android client for mobile and or tablet.
+- Desktop
+  Offers all functionality possible. Including concepts such as user input to help add information to the collective DDO datasphere.

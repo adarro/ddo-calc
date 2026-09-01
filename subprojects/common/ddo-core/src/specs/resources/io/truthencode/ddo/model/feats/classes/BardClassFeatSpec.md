@@ -31,9 +31,9 @@
 
 ### Level 2
 
-| [ ][featLevel2] [Feats][result] | Type    | Description                                                                                                                                                                                                                                                                                                                                                                        | Prerequisites |
+| [ ][featLevel2] [Feats][result] | Type | Description | Prerequisites |
 | ------------------------------- | ------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------- | --- |
-| [Arcane Lore][arcane_lore]      | Passive | This feat grants represents your knowledge of the Arcane. Characters with this feat are granted special quest-specific dialog options/object interactions that classes without this feat otherwise could not perform. It may also allow certain skill checks to learn insight into specific situations. Artificer, Bard, Sorcerer, Wizard received this feat once for every level. | Bard Level 1  |     |
+| [Arcane Lore][arcane_lore] | Passive | This feat grants represents your knowledge of the Arcane. Characters with this feat are granted special quest-specific dialog options/object interactions that classes without this feat otherwise could not perform. It may also allow certain skill checks to learn insight into specific situations. Artificer, Bard, Sorcerer, Wizard received this feat once for every level. | Bard Level 1 | |
 
 ### Level 3
 

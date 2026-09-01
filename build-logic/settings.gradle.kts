@@ -29,7 +29,7 @@ pluginManagement {
 
     val foojayResolverPluginVersionversion = providers.gradleProperty("foojayResolverPluginVersionversion")
     val palantirPluginVersion = providers.gradleProperty("palantirPluginVersion")
-    val quarkusPlatformVersion = providers.gradleProperty("quarkusPlatformVersion")
+    // val quarkusPlatformVersion = providers.gradleProperty("quarkusPlatformVersion")
 
     plugins {
 //        id("org.kordamp.gradle.project") version kordampGradlePluginVersion
@@ -41,7 +41,7 @@ pluginManagement {
         id("com.palantir.baseline-config") version palantirPluginVersion
         id("org.inferred.processors") version "3.7.0"
         id("org.scoverage") version "8.1"
-        id("io.quarkus") version quarkusPlatformVersion
+        // id("io.quarkus") version quarkusPlatformVersion
 
 //        id("ru.vyarus.mkdocs") version "3.0.0"
     }

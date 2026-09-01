@@ -21,6 +21,7 @@ description = "Shared Testing and convenience Utilities (Intended for Test Scope
 plugins {
 
     id("buildlogic.scala-library-profile")
+    id("buildlogic.java-library-conventions")
 }
 
 dependencies {
@@ -29,7 +30,7 @@ dependencies {
 
         implementation(enforcedPlatform(project(":ddo-platform-scala")))
 
-        logger.error("showing builderScalaVersion: $builderScalaVersion")
+        logger.debug("${project.name}: showing builderScalaVersion: $builderScalaVersion")
         when (builderScalaVersion) {
             "3" -> {
                 implementation(libs.scala3.library)

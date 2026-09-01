@@ -17,5 +17,4 @@
  */
 plugins {
     id("buildlogic.scala-conventions")
-    id("buildlogic.java-library-conventions")
 }

@@ -53,9 +53,9 @@ dependencies {
 }
 
 // is set by included java-convention and should be picked up by kotlin
-//kotlin {
+// kotlin {
 //    jvmToolchain {
-////        check(this is JavaToolchainSpec)
+// //        check(this is JavaToolchainSpec)
 //        languageVersion.set(JavaLanguageVersion.of(defaultJavaToolChainVersion))
 //    }
-//}
+// }

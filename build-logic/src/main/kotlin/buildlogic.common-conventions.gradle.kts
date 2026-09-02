@@ -55,6 +55,7 @@ fun isNonStable(version: String): Boolean {
     return isStable.not()
 }
 
+// TODO: Potentially deprecate
 // https://github.com/ben-manes/gradle-versions-plugin
 tasks.withType<DependencyUpdatesTask> {
     this.gradleReleaseChannel = "current"
@@ -66,11 +67,12 @@ tasks.withType<DependencyUpdatesTask> {
 tasks.register("listDependencyCapabilities") {
     group = "help"
     description = "Lists all resolved dependencies and their associated capabilities."
-
+    // TODO: Consider making the configuration name configurable or allowing it to be specified via a project property
     // Ensure we run after configurations are ready
     doLast {
         // Target a specific configuration (e.g., runtimeClasspath or compileClasspath)
-        val cfg = configurations.named { n -> n.equals("runtimeClasspath") }.firstOrNull() // .get()
+        val configName = providers.gradleProperty("dependency.capabilities.config").getOrElse("runtimeClasspath")
+        val cfg = configurations.named { n -> n.equals(configName) }.firstOrNull() // .get()
 
         // Retrieve the root of the resolved dependency graph
         val rootComponent: ResolvedComponentResult? = cfg?.incoming?.resolutionResult?.root

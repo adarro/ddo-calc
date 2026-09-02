@@ -1,7 +1,9 @@
 import java.io.Writer
 
 plugins {
-    base
+    `base`
+    id("buildlogic.common-conventions")
+//    `jvm-test-suite`
     id("test-report-aggregation")
 }
 
@@ -12,12 +14,36 @@ dependencies {
     testReportAggregation(project(":ddo-core"))
     testReportAggregation(project(":ddo-etl"))
     testReportAggregation(project(":ddo-modeling"))
-    testReportAggregation(project(":ddo-platform"))
-    testReportAggregation(project(":ddo-platform-kotlin"))
-    testReportAggregation(project(":ddo-platform-scala"))
+//    testReportAggregation(project(":ddo-platform"))
+//    testReportAggregation(project(":ddo-platform-kotlin"))
+//    testReportAggregation(project(":ddo-platform-scala"))
     testReportAggregation(project(":ddo-util"))
     // acceptanceTestReportAggregation(project(":ddo-core"))
 }
+
+// reporting {
+//    reports {
+//        // Explicitly lookup and configure the existing report task by name
+// //        named<AggregateTestReport>("testAggregateTestReport") {
+// //            testSuiteName.set("test")
+// //        }
+// //        val test by creating(TestReport::class) {}
+// //        val acceptanceTest by getting(TestReport::class) {}
+// //        val testAggregateTestReport by learning<AggregateTestReport> {
+// //            testSuiteName.set("test")
+// //        }
+// //       val myTest = create<AggregateTestReport>("aggregateTestReporting") {
+// ////            testType.set(TestSuiteType.UNIT_TEST)
+// //            testSuiteName.set("atest")
+// //
+// //        }
+// //        withType<AggregateTestReport>().configureEach {
+// //            val n = this.name
+// //            logger.warn("configuring $n test aggregation")
+// //            testSuiteName.set(n)
+// //        }
+//    }
+// }
 
 reporting {
     @Suppress("UnstableApiUsage")
@@ -25,11 +51,14 @@ reporting {
         val testAggregateTestReport =
             create<AggregateTestReport>("aggregateTestReporting") {
 //            testType.set(TestSuiteType.UNIT_TEST)
-                testSuiteName.set("acceptance-test")
+                testSuiteName.set("test")
             }
-        // val testAggregateAcceptanceTestReport by creating(AggregateTestReport::class) {
-        //     testType.set("acceptance-test")
-        // }
+        create<AggregateTestReport>("aggregateAcceptanceTestReporting") {
+            testSuiteName.set("acceptanceTest")
+        }
+        create<AggregateTestReport>("aggregateScoverageTestReporting") {
+            testSuiteName.set("scoverageTest")
+        }
     }
 }
 // sonar {
@@ -90,11 +119,11 @@ fun findProjects(
 /**
 Should be called with mdDocsBuild task
 
- Transliterated Groovy -> Kotlin from
- https://gist.githubusercontent.com/nikialeksey/7cefae6b3104ce9a2c765197343bc436/raw/fb61c7d35480f9ae16650aefbb31c9c11420bec4/dependency-report.gradle
- Inspired by https://gist.github.com/tzachz/419478fc8b009e953f5e5dc39f3f3a2a
- Task creates a .dot file with all inter-module dependencies
- Supports any depth of nested modules
+Transliterated Groovy -> Kotlin from
+https://gist.githubusercontent.com/nikialeksey/7cefae6b3104ce9a2c765197343bc436/raw/fb61c7d35480f9ae16650aefbb31c9c11420bec4/dependency-report.gradle
+Inspired by https://gist.github.com/tzachz/419478fc8b009e953f5e5dc39f3f3a2a
+Task creates a .dot file with all inter-module dependencies
+Supports any depth of nested modules
 
  */
 tasks.register("moduleDependencyReport") {

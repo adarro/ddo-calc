@@ -224,5 +224,7 @@ fixle.sh
 /.env
 /.envrc
 /py/
-purgecache.sh
-webdept.txt
+
+subprojects/common/ddo-etl/data/
+# prefixed exclusions
+maw_*

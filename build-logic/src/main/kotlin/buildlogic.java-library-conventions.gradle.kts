@@ -39,10 +39,12 @@ tasks {
         // AffixSlot is being duplicated but unsure why
         duplicatesStrategy = DuplicatesStrategy.WARN
     }
+}
 
-    withType<JavaCompile>().configureEach {
+afterEvaluate {
+    tasks.withType<JavaCompile>().configureEach {
         options.generatedSourceOutputDirectory.set(file("$projectDir/src/generated/java"))
         options.compilerArgs.plusAssign("-Asemver.project.dir=$projectDir")
         modularity.inferModulePath.set(false)
     }
-}
+} // afterEvaluate

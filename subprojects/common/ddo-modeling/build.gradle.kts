@@ -23,6 +23,7 @@ plugins {
 //    id("com.github.lkishalmi.gatling")
     //  id("io.gatling.gradle") version "3.9.5.5" replaces above
     alias(libs.plugins.openapi.generator)
+    alias(libs.plugins.avrohugger)
 //    id("code-quality")
 
 //    id("io.quarkus")//
@@ -40,37 +41,50 @@ val schemaDir: FileCollection = layout.files("src/main/resources/schemas/avro")
 val generatedScalaSourceDir = layout.buildDirectory.files("avro-gen")
 // val ff =project.rootProject.layout.files("../../subprojects/common/ddo-model/build/avro-gen")
 val CODE_GEN = "codeGen"
+
+avrohugger {
+//    this.sourceDirectories {
+//        this.from(schemaDir)
+//    }
+    // TODO: Copy generated files to 'properly included build directory'.
+    // Likely ddo-modeling build directory
+//    this.destinationDirectory.set(generatedScalaSourceDir.singleFile)
+    typeMapping {
+        protocolType = com.zlad.gradle.avrohugger.AvrohuggerExtension.ScalaADT
+        enumType = com.zlad.gradle.avrohugger.AvrohuggerExtension.ScalaCaseObjectEnum
+    }
+}
 // External builds
 // Calling as external build due to scala library version incompatibilities
 // between AvroHugger (scala 2.12.1?) and Quarkus 2.13.x / 3)
-tasks.register("generateAvroSchemas", GradleBuild::class) {
-    description = "Generates Avro schemas"
-    group = "Avro"
-    val output = layout.buildDirectory.dir("avro-gen")
-    outputs.dir(output)
-    val input =
-        rootProject.layout.projectDirectory
-            .file("include/ddo-avro")
-            .asFile
-    inputs.dir(input)
-    dir =
-        rootProject.layout.projectDirectory
-            .file("include/ddo-avro")
-            .asFile
+// tasks.register("generateAvroSchemas", GradleBuild::class) {
+//    description = "Generates Avro schemas"
+//    group = "Avro"
+//    val output = layout.buildDirectory.dir("avro-gen")
+//    outputs.dir(output)
+//    val input =
+//        rootProject.layout.projectDirectory
+//            .file("include/ddo-avro")
+//            .asFile
+//    inputs.dir(input)
+//    dir =
+//        rootProject.layout.projectDirectory
+//            .file("include/ddo-avro")
+//            .asFile
+//
+//    tasks = listOf("generateAvroScala")
+// }
 
-    tasks = listOf("generateAvroScala")
-}
-
-tasks.register("cleanAvroSchemas", GradleBuild::class) {
-    description = "Cleans generated Avro schemas"
-    group = "Avro"
-    dir =
-        rootProject.layout.projectDirectory
-            .file("include/ddo-avro")
-            .asFile
-
-    tasks = listOf("clean")
-}
+// tasks.register("cleanAvroSchemas", GradleBuild::class) {
+//    description = "Cleans generated Avro schemas"
+//    group = "Avro"
+//    dir =
+//        rootProject.layout.projectDirectory
+//            .file("include/ddo-avro")
+//            .asFile
+//
+//    tasks = listOf("clean")
+// }
 
 configurations {
 //    val codeGen =
@@ -80,13 +94,16 @@ configurations {
     }
 }
 
+// TODO: see if generated source is auto-detected
 sourceSets {
     this.configureEach {
         scala {
 
-            this.srcDir(tasks.named("generateAvroSchemas"))
+            this.srcDir(tasks.named("generateAvroScala"))
         }
     }
+}
+
 //    scala {
 //        this.srcDir(tasks.named("generateAvroSchemas"))
 //    }
@@ -95,21 +112,22 @@ sourceSets {
 //           this.srcDir(tasks.named("generateAvroSchemas"))
 //       }
 //   }
-}
+// }
 
 // tasks.named("compileCodeGenScala",ScalaCompile::class) {
 //    classpath = configurations.named(CODE_GEN).get()
 // }
 
-// TODO: Build Chore
-// Configure proper task dependency and remove explicit depends on for Avro Generation
-tasks.named("clean") {
-    dependsOn("cleanAvroSchemas")
-}
-
-tasks.named("compileScala") {
-    dependsOn("generateAvroSchemas")
-}
+//
+// // TODO: Build Chore
+// // Configure proper task dependency and remove explicit depends on for Avro Generation
+// tasks.named("clean") {
+//    dependsOn("cleanAvroSchemas")
+// }
+//
+// tasks.named("compileScala") {
+//    dependsOn("generateAvroSchemas")
+// }
 
 /**
  * Api spec OpenAPI specification generation information
@@ -129,7 +147,7 @@ data class ApiSpec(
  * Package spec holds the basic header information for the API
  *
  * @property basePackage base java package i.e. com.acme
- * @property apiPackage package name for generated source.  This will be appended to basePackage.
+ * @property apiPackage package name for a generated source.  This will be appended to basePackage.
  * @property invokerPackage package name for invoker classes
  * @property modelPackage package name for entity models
  * @constructor Creates a new API specification
@@ -173,17 +191,20 @@ val defaultApiSpec = ApiSpec(apiSpec.asPath, schemaDir.asPath, generatedScalaSou
 val schemas =
     mapOf("ddoModel" to defaultApiSpec, "parseHub" to defaultApiSpec.copy(spec = "$rootDir/specs/parsehub.yaml"))
 val specs = mapOf("parseHub" to PackageSpec(basePackage = "io.truthencode.ddo.etl.parsehub"))
+val sVersion = "3"
+scalaBuildInfo {
+    scalaVersion = sVersion
+}
 
 dependencies {
     /*
     https://github.com/fthomas/refined
     check out refined library for compile time constraints
-    unsure how  helpful this will be as most data will need runtime validation (aka wix)
+    unsure how helpful this will be as most data will need runtime validation (aka wix)
      */
     // Use Scala $scalaMajorVersion in our library project
-    val builderScalaVersion = providers.gradleProperty("builderScalaVersion").get()
-//    implementation(enforcedPlatform(project(":ddo-platform-scala")))
-    when (builderScalaVersion) {
+//    implementation(platform(project(":ddo-platform-scala")))
+    when (sVersion) {
         "3" -> {
             implementation(libs.scala3.library)
             implementation(libs.enumeratum.s3)

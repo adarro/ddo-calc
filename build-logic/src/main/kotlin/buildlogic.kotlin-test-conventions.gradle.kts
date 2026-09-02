@@ -37,7 +37,7 @@ afterEvaluate {
             ?.toString()
             ?.let(io.truthencode.buildlogic.TestMode::valueOf)
             ?: io.truthencode.buildlogic.TestMode.REFLECT
-    logger.warn("${project.name} kotlinTestMode: $testMode (dependencies)")
+    logger.debug("${project.name} kotlinTestMode: $testMode (dependencies)")
     when (testMode) {
         io.truthencode.buildlogic.TestMode.REFLECT -> {
             // Do nothing!
@@ -52,11 +52,11 @@ afterEvaluate {
             dependencies {
                 "kaptTest"(libs.squareup.moshi.kotlin.codegen)
             }
-            logger.info("${project.name} using kapt")
+            logger.debug("${project.name} using kapt")
         }
 
         io.truthencode.buildlogic.TestMode.KSP -> {
-            logger.info("${project.name} using ksp")
+            logger.debug("${project.name} using ksp")
             apply(plugin = "com.google.devtools.ksp")
             dependencies {
                 "ksp"(libs.squareup.moshi.kotlin.codegen)

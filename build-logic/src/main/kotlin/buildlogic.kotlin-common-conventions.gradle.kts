@@ -27,14 +27,16 @@ plugins {
 
 val libs = the<LibrariesForLibs>()
 
-tasks.withType<KotlinCompile>().configureEach {
-    compilerOptions {
+afterEvaluate {
+    tasks.withType<KotlinCompile>().configureEach {
+        compilerOptions {
 
-        freeCompilerArgs.add(
-            "-opt-in=kotlin.ExperimentalStdlibApi",
-        )
+            freeCompilerArgs.add(
+                "-opt-in=kotlin.ExperimentalStdlibApi",
+            )
+        }
     }
-}
+} // afterEvaluate
 
 // TODO: consolidate
 val defaultJavaToolChainVersion = providers.gradleProperty("defaultJavaToolChainVersion").getOrElse("21")
@@ -51,11 +53,3 @@ dependencies {
     // configuration objects https://github.com/sksamuel/hoplite
     implementation(libs.bundles.hoplite)
 }
-
-// is set by included java-convention and should be picked up by kotlin
-// kotlin {
-//    jvmToolchain {
-// //        check(this is JavaToolchainSpec)
-//        languageVersion.set(JavaLanguageVersion.of(defaultJavaToolChainVersion))
-//    }
-// }

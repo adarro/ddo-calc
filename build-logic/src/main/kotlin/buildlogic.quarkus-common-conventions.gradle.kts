@@ -34,11 +34,15 @@ dependencies {
     testImplementation("io.quarkus:quarkus-junit5")
     testImplementation("io.quarkus:quarkus-junit5-component")
 //    testImplementation("io.rest-assured:rest-assured")
+// FIXME: if we auto include this it should be pushed into the test-conventions but it is needed here if we want to flag Quarkus tests
+//    testImplementation(project(":ddo-testing-util"))
 }
 
 tasks {
     withType<Test> {
         systemProperty("java.util.logging.manager", "org.jboss.logmanager.LogManager")
+        // See FIXME comment above for context on test tagging
+        // includeTags("io.quarkus.test.junit.QuarkusTest", "Unit")
     }
 }
 

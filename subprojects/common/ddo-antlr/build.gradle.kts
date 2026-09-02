@@ -9,14 +9,14 @@ plugins {
 }
 
 dependencies {
-    implementation(enforcedPlatform(project(":ddo-platform")))
+    implementation(platform(project(":ddo-platform")))
     antlr(libs.antlr4) // use ANTLR version 4
     implementation(libs.logback.classic)
 }
-// TODO: remove repositories block from subprojects build.gradle.kts
-repositories {
-    mavenCentral()
-}
+// // TODO: remove repositories block from subprojects build.hide
+// repositories {
+//     mavenCentral()
+// }
 
 description = "Antlr Parsing utilities"
 
@@ -58,6 +58,7 @@ data class PackagePath(
 }
 
 tasks {
+    // TODO: Make this task cacheable by configuring inputs and outputs appropriately
     generateGrammarSource {
         logger.warn("outputDirectory: ${outputDirectory.path}")
         val outPath = antlrJavaPath.packageToPath(outputFolderBase = outputDirectory).path

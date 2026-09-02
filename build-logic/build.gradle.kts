@@ -39,7 +39,7 @@ dependencies {
     // enables gradle catalog for included convention plugins
     // DO NOT REMOVE
     implementation(files(libs.javaClass.superclass.protectionDomain.codeSource.location))
-
+    implementation(plugin(libs.plugins.avrohugger))
     implementation(plugin(libs.plugins.quarkus))
     implementation(libs.kotlin.gradle.plugin)
     implementation(libs.kotlin.allopen.plugin)
@@ -66,7 +66,7 @@ dependencies {
 
 //    implementation("org.unbroken-dome.gradle-plugins:gradle-testsets-plugin:_")
     // scala
-    implementation(libs.scalac.scoverage.plugin)
+    implementation(plugin(libs.plugins.scoverage))
 //    implementation(libs.scoverage.)
     // bloop
     implementation(libs.gradle.bloop)

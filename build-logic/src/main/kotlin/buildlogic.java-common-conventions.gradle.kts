@@ -37,10 +37,6 @@ plugins {
 }
 
 dependencies {
-//    registerTransform(JLineClassifierFixAction::class.java) {
-//        from.attribute(Attribute.of("artifactType", String::class.java), "jar")
-//        to.attribute(Attribute.of("artifactType", String::class.java), "jar")
-//    }
     errorprone(libs.nullaway.errorprone)
     errorprone(libs.errorprone.processor)
 // add implementation dependency on jspecify for non-java-library projects
@@ -69,76 +65,74 @@ java {
     }
 }
 
-tasks
-    .withType<JavaCompile>()
-    .matching {
-        !it.name.contains("NativeTest") && !it.name.contains("AcceptanceTest") && !it.name.contains("Quarkus") &&
-            !it.name.contains(
-                "Integration",
-            )
-    }.configureEach {
+afterEvaluate {
 
-        // BUG: The value for task '::compileXJava' property 'javaCompiler' is final and cannot be changed any further.
-        // Affects: Quarkus compiler and any Tests other than the base one
-        // Unsure if we just need to flip declaration / import order or something else
-        // perhaps after evaluate?
-        logger.debug("Configuring Compiler task named $name")
-        logger.info("Checking for quarkus profile presence")
-        val qProfile = providers.gradleProperty("quarkus.profile")
-        logger.info("quarkus profile presence: ${qProfile.isPresent}")
-        if (qProfile.isPresent) {
-            logger.info("current profile: ${qProfile.get()}")
-            // add xLint, deprecaction, unchecked, and nullaway args to dev / test profiles and lean optimizations for production
+    tasks
+        .withType<JavaCompile>()
+        .configureEach {
+
+            logger.debug("$name: Configuring Compiler (Java Common)")
+            logger.debug("Checking for quarkus profile presence")
+            val qProfile = providers.gradleProperty("quarkus.profile")
+            logger.debug("quarkus profile presence: ${qProfile.isPresent}")
+            if (qProfile.isPresent) {
+                logger.debug("current profile: ${qProfile.get()}")
+                // add xLint, deprecaction, unchecked, and nullaway args to dev / test profiles and lean optimizations for production
 //        options.compilerArgs.add("-Aquarkus.profile=${qProfile.get()}")
-        }
-        options.encoding = "UTF-8"
-        options.release =
-            libs.versions.java.version
-                .get()
-                .toInt()
-        options.encoding = "UTF-8"
-        options.errorprone {
-            val regExcludeScala = Regex("""(.*\.scala|.*/generated*/.*)""")
-            excludedPaths = regExcludeScala.pattern
-            disableWarningsInGeneratedCode = true
-
-            nullaway {
-                suggestSuppressions = true
-                onlyNullMarked = true
-                isAssertsEnabled = true
-                isJSpecifyMode = true
             }
-        }
+            options.encoding = "UTF-8"
+            options.release =
+                libs.versions.java.version
+                    .get()
+                    .toInt()
+            options.encoding = "UTF-8"
+            options.errorprone {
+                val regExcludeScala = Regex("""(.*\.scala|.*/generated*/.*)""")
+                excludedPaths = regExcludeScala.pattern
+                disableWarningsInGeneratedCode = true
 
-        // Add Type Annotations to Symbol for JDK 21+ to support NullAway and other tools that rely on type annotations.
+                nullaway {
+                    suggestSuppressions = true
+                    onlyNullMarked = true
+                    isAssertsEnabled = true
+                    isJSpecifyMode = true
+                }
+            }
 
-        // We use a lazy provider to safely inspect the toolchain metadata before execution
-        val metadata = javaCompiler.map { it.metadata }.get()
+            // Add Type Annotations to Symbol for JDK 21+ to support NullAway and other tools that rely on type annotations.
 
-        val vendorName = metadata.vendor.lowercase()
-        val version = metadata.languageVersion.asInt()
-        logger.debug("checking vend $vendorName jdk $version")
+            // We use a lazy provider to safely inspect the toolchain metadata before execution
+            val metadata = javaCompiler.map { it.metadata }.get()
+
+            val vendorName = metadata.vendor.lowercase()
+            val version = metadata.languageVersion.asInt()
+            logger.debug("checking vend $vendorName jdk $version")
 //    // 1. Check version: Must be less than JDK 22
 //    // 2. Check vendor: Exclude Oracle, ensure it is an OpenJDK-based build
-        val isTargetVersion = version < 22
-        val isNotOracle = !vendorName.contains("oracle")
-        // TODO: refactor to a list of vendors
-        val isOpenJdk =
-            vendorName.contains("openjdk") ||
-                vendorName.contains("adoptium") ||
-                vendorName.contains("temurin") ||
-                vendorName.contains("zulu") ||
-                vendorName.contains("azul") ||
-                vendorName.contains("corretto")
+            val isTargetVersion = version < 22
+            val isNotOracle = !vendorName.contains("oracle")
+            // TODO: refactor to a list of vendors
+            val isOpenJdk =
+                vendorName.contains("openjdk") ||
+                    vendorName.contains("adoptium") ||
+                    vendorName.contains("temurin") ||
+                    vendorName.contains("zulu") ||
+                    vendorName.contains("azul") ||
+                    vendorName.contains("corretto") ||
+                    vendorName.contains("graalvm") && vendorName.contains("community")
 
-        if (isTargetVersion && isNotOracle && isOpenJdk) {
-            logger.debug("adding type annotation arg")
-            options.compilerArgs.addAll(listOf("-XDaddTypeAnnotationsToSymbol=true"))
-        } else {
-            logger.debug("Not adding type annotation option due to version or non-openjdk vendor: $vendorName $version")
+            if (isTargetVersion && isNotOracle && isOpenJdk) {
+                logger.debug("adding type annotation -XDaddTypeAnnotationsToSymbol for $vendorName $version")
+                options.compilerArgs.addAll(listOf("-XDaddTypeAnnotationsToSymbol=true"))
+            } else if (isTargetVersion) {
+                logger.warn("Not adding type annotation option due to non-openjdk vendor: $vendorName $version")
+            } else {
+                logger.debug("Not adding type annotation option due to target version greater than 21: $vendorName $version")
+            }
+            // FIXME: do not include for release
+            options.compilerArgs.addAll(listOf("-Xlint:unchecked", "-Xlint:deprecation"))
         }
-        options.compilerArgs.addAll(listOf("-Xlint:unchecked", "-Xlint:deprecation"))
-    }
+} // afterEvaluate
 
 tasks.withType<Javadoc> {
     options.encoding = "UTF-8"

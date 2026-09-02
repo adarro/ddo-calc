@@ -1,5 +1,16 @@
 # List of technologies used or considered for use
 
+[TOC]
+
+## Tooling
+
+Gradle, Bloop [Elide](https://github.com/elide-dev/gradle)
+
+### Native
+
+GraalVM
+,[Graal Native Gradle Plugin](https://graalvm.github.io/native-build-tools/latest/gradle-plugin.html)
+
 Build quality / development tools These are generally implemented via gradle plugins or triggered of CI/CD builds to
 improve code quality / security and or mind map or visualize concepts.
 

@@ -22,11 +22,12 @@ package io.truthencode.ddo.model.enhancement
 
 import io.truthencode.ddo.support.points.SpendablePoints
 import io.truthencode.ddo.support.tree.TreeLike
+import scala.language.implicitConversions
 
 package object enhancements {
 
   /**
-   * Simple Convinience class to expand and manipulate Tree tuples
+   * Simple Convenience class to expand and manipulate Tree tuples
    * @param source
    *   Tuple of Tree and cost values
    */

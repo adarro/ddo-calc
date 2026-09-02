@@ -4,7 +4,7 @@
  * Copyright 2015-2025
  *
  * Author: Andre White.
- * FILE: LibrarySuite.scala
+ * FILE: SizSeven.scala
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -18,15 +18,11 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package io.truthencode.ddo.etl
+package io.truthencode.ddo.etl.internal
 
-import org.scalatest.funsuite.AnyFunSuite
-import org.scalatestplus.junit5.JUnitSuiteLike
-
-// @RunWith(classOf[JUnitRunner])
-class LibrarySuite extends AnyFunSuite {
-  test("someLibraryMethod is always true") {
-    def library: Library = new Library()
-    assert(!library.someLibraryMethod())
-  }
+/**
+ * Nonsense class for testing
+ */
+class SizSeven {
+  def someLibraryMethod(): Boolean = true
 }

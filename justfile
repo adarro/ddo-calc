@@ -45,3 +45,6 @@ testJdk17Gradle8:
   gradle --version -PdefaultJavaToolChainVersion=17
   ./gradlew :ddo-etl:tasks -PdefaultJavaToolChainVersion=17 --stacktrace
 
+# Real Time Local Dev with coordinated ports (Experimental)
+dockerDev:
+  echo "This will one day launch services in dev mode"

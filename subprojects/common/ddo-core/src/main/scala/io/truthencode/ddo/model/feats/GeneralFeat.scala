@@ -170,10 +170,11 @@ object GeneralFeat
     val unfiltered: Set[(WeaponCategory & MartialWeapon, List[(HeroicCharacterClass, Int)])] =
       for
         k <- weaponGrants.keySet
-        x = for
-          a <- weaponGrants.find(p => p._1 == k)
-          b <- bardWeapons.find(p => p._1 == k)
-        yield a._2 ++ b._2
+        x =
+          for
+            a <- weaponGrants.find(p => p._1 == k)
+            b <- bardWeapons.find(p => p._1 == k)
+          yield a._2 ++ b._2
         g <- weaponGrants.find(p => p._1.eq(k)).map(_._2)
       yield k -> x.getOrElse(g)
 

@@ -1,11 +1,12 @@
 package io.truthencode.buildlogic
 
 import net.pearx.kasechange.toCamelCase
+import org.gradle.accessors.dm.LibrariesForLibs
 import org.gradle.api.Project
 import org.gradle.api.plugins.jvm.JvmTestSuite
 import org.gradle.api.provider.Property
 import org.gradle.kotlin.dsl.invoke
-import org.gradle.kotlin.dsl.provideDelegate
+import org.gradle.kotlin.dsl.the
 
 enum class KotlinTestKits {
     KoTest,
@@ -33,7 +34,7 @@ interface KotlinAnnotationProcessingExtension {
 
 /**
  * TestTypes is a general enum for test type names.
- * It initially expanded the incubating TestSuiteType enum but was removed in Gradle 13.0+
+ * It initially expanded the incubating TestSuiteType enum but was removed in Gradle ~7.13.0+
  */
 enum class TestTypes {
     Unit("unit-test"),
@@ -66,21 +67,28 @@ enum class TestTypes {
 class TestBuildSupport(
     proj: Project,
 ) {
-    // remove this once we Move these functions into kts file and can use version catalog
-    private val koTestVersion: String by proj
+    // Get a handle for the Version Catalogs
+    val libs = proj.the<LibrariesForLibs>()
+
     val applyMockito = { suite: JvmTestSuite ->
         suite.useJUnitJupiter()
         suite.dependencies {
+            // TODO: convert to catalog ref and need to add Quarkus vs JUnit vs vanilla Mockito checks?
+            // libs.quarkus-mockito
             implementation("org.mockito:mockito-junit-jupiter:4.6.1")
         }
     }
 
+// Kotlin Test Support needs a refresh
+    // Plain vs Multi-platform, Quarkus Detection. (JUnit assumed as this is my opinionated build)
     val applyKoTest = { suite: JvmTestSuite ->
         suite.useJUnitJupiter()
         suite.dependencies {
-            implementation("io.kotest:kotest-runner-junit5:$koTestVersion")
-            implementation("io.kotest:kotest-assertions-core:$koTestVersion")
-            implementation("io.kotest:kotest-property:$koTestVersion")
+
+            // implementation(libs.bundles.kotest) // no likey for some reason
+            implementation(libs.kotest.assertions.core.jvm)
+            implementation(libs.kotest.runner.junit.jvm)
+            implementation(libs.kotest.property.jvm)
         }
     }
 }

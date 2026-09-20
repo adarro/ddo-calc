@@ -1,3 +1,5 @@
+import org.gradle.accessors.dm.LibrariesForLibs
+
 /**
  * This file is part of the common build-logic project.
  * Adds quarkus specific core plugins and configurations
@@ -11,12 +13,13 @@ plugins {
     id("buildlogic.common-conventions")
 }
 
-val quarkusPlatformGroupId: String by project
-val quarkusPlatformArtifactId: String by project
-val quarkusPlatformVersion: String by project
+val libs = the<LibrariesForLibs>()
 
 dependencies {
-    implementation(enforcedPlatform("$quarkusPlatformGroupId:$quarkusPlatformArtifactId:$quarkusPlatformVersion"))
+
+    // TODO: add an extension property to allow toggling enforced verses standard platform dependency
+    //   relegated to platform from enforcedPlatform
+    implementation(platform(libs.quarkus.platform.bom))
     implementation("io.quarkus:quarkus-arc")
     implementation("io.quarkus:quarkus-smallrye-health")
     implementation("io.quarkus:quarkus-hibernate-validator") {
@@ -25,13 +28,40 @@ dependencies {
                 " Not specific to JPA.",
         )
     }
-//    implementation("io.quarkus:quarkus-rest")
+
     // basic Quarkus Unit, Component and Integration test support included.
+    // TODO: move test dependencies to test-conventions
     testImplementation("io.quarkus:quarkus-junit5")
     testImplementation("io.quarkus:quarkus-junit5-component")
 //    testImplementation("io.rest-assured:rest-assured")
+// FIXME: if we auto include this it should be pushed into the test-conventions but it is needed here if we want to flag Quarkus tests
+//    testImplementation(project(":ddo-testing-util"))
 }
 
-tasks.withType<Test> {
-    systemProperty("java.util.logging.manager", "org.jboss.logmanager.LogManager")
+tasks {
+    withType<Test> {
+        systemProperty("java.util.logging.manager", "org.jboss.logmanager.LogManager")
+        // See FIXME comment above for context on test tagging
+        // includeTags("io.quarkus.test.junit.QuarkusTest", "Unit")
+    }
 }
+
+// configurations.all {
+//    if (name.contains("quarkus")) {
+//        val cfgName = name
+//        resolutionStrategy.dependencySubstitution {
+//            // Intercept any attempt to locate a jdk8 classified version of JLine
+//            // substitute(module("org.jline:jline:4.2.1"))
+//            //     .using(module("org.jline:jline:4.2.1"))
+//            //     .withoutClassifier()
+//            // catch any JLine dependencies that might be requested with a jdk8 classifier
+//            all {
+//                val requested = this.requested
+//                if (requested is ModuleComponentSelector && requested.group == "org.jline") {
+//                    logger.warn("$cfgName Substituting JLine dependency: ${requested.group}:${requested.module}:${requested.version}")
+//                    this.useTarget("${requested.group}:${requested.module}:${requested.version}")
+//                }
+//            }
+//        }
+//    }
+// }

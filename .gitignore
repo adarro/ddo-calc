@@ -224,3 +224,7 @@ fixle.sh
 /.env
 /.envrc
 /py/
+
+subprojects/common/ddo-etl/data/
+# prefixed exclusions
+maw_*

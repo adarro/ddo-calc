@@ -37,7 +37,7 @@ afterEvaluate {
             ?.toString()
             ?.let(io.truthencode.buildlogic.TestMode::valueOf)
             ?: io.truthencode.buildlogic.TestMode.REFLECT
-    logger.warn("${project.name} kotlinTestMode: $testMode (dependencies)")
+    logger.debug("${project.name} kotlinTestMode: $testMode (dependencies)")
     when (testMode) {
         io.truthencode.buildlogic.TestMode.REFLECT -> {
             // Do nothing!
@@ -46,15 +46,17 @@ afterEvaluate {
                 testImplementation(libs.squareup.moshi.kotlin)
             }
         }
+
         io.truthencode.buildlogic.TestMode.KAPT -> {
             apply(plugin = "org.jetbrains.kotlin.kapt")
             dependencies {
                 "kaptTest"(libs.squareup.moshi.kotlin.codegen)
             }
-            logger.info("${project.name} using kapt")
+            logger.debug("${project.name} using kapt")
         }
+
         io.truthencode.buildlogic.TestMode.KSP -> {
-            logger.info("${project.name} using ksp")
+            logger.debug("${project.name} using ksp")
             apply(plugin = "com.google.devtools.ksp")
             dependencies {
                 "ksp"(libs.squareup.moshi.kotlin.codegen)
@@ -73,51 +75,76 @@ afterEvaluate {
     logger.warn("after evaluate ${project.name} kotlinTestMode: $testMode (JvmTestSuite)")
     @Suppress("UnstableApiUsage") // Remove after JvmTestSuite is no longer 'incubating'
     testing {
-
         val ts = TestBuildSupport(project)
-
         suites {
-
             val test =
                 when (testMode) {
                     KotlinTestKits.KoTest -> {
-                        logger.warn("configuring KoTest for Unit testing (from kts)")
-                        val test: JvmTestSuite by getting(JvmTestSuite::class, ts.applyKoTest)
-                        test
+                        logger.warn("configuring ${project.name} KoTest for Unit testing (from kts)")
+                        named<JvmTestSuite>("test", ts.applyKoTest)
                     }
 
                     KotlinTestKits.KotlinTest -> {
-                        logger.warn("configuring KotlinTest for Unit testing (from kts)")
-                        val test by getting(JvmTestSuite::class) {
+                        logger.warn("configuring ${project.name} KotlinTest for Unit testing (from kts)")
+                        named<JvmTestSuite>("test") {
                             useKotlinTest()
                         }
-                        test
                     }
 
                     else -> {
-                        val test by getting(JvmTestSuite::class)
-                        test
+                        named<JvmTestSuite>("test")
                     }
                 }
-
-            //        val functionalTest by registering(JvmTestSuite::class) {
-            //            dependencies {
-            //                implementation(project())
-            //            }
-            //        }
-            //        register<JvmTestSuite>("integrationTest") {
-            //            dependencies {
-            //                implementation(project())
-            //            }
-            //
-            //            targets {
-            //                all {
-            //                    testTask.configure {
-            //                        shouldRunAfter(t)
-            //                    }
-            //                }
-            //            }
-            //        }
         }
     }
 }
+//    testing {
+//
+//        val ts = TestBuildSupport(project)
+//
+//        suites {
+//
+//            val test =
+//                when (testMode) {
+//                    KotlinTestKits.KoTest -> {
+//                        logger.warn("configuring KoTest for Unit testing (from kts)")
+//
+//                        val test = named<JvmTestSuite>("test",ts.applyKoTest) // by getting(JvmTestSuite::class, ts.applyKoTest)
+//                        test
+//                    }
+//
+//                    KotlinTestKits.KotlinTest -> {
+//                        logger.warn("configuring KotlinTest for Unit testing (from kts)")
+//                        val test = named<JvmTestSuite>("test") //  getting(JvmTestSuite::class) {
+//                            useKotlinTest()
+//                        }
+//                        test
+//                    }
+//
+//                    else -> {
+//                        val test = getByName<JvmTestSuite>("test") //  by getting(JvmTestSuite::class)
+//                        test
+//                    }
+//                }
+//
+//            //        val functionalTest by registering(JvmTestSuite::class) {
+//            //            dependencies {
+//            //                implementation(project())
+//            //            }
+//            //        }
+//            //        register<JvmTestSuite>("integrationTest") {
+//            //            dependencies {
+//            //                implementation(project())
+//            //            }
+//            //
+//            //            targets {
+//            //                all {
+//            //                    testTask.configure {
+//            //                        shouldRunAfter(t)
+//            //                    }
+//            //                }
+//            //            }
+//            //        }
+//        }
+//    }
+// }

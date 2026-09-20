@@ -42,25 +42,24 @@ dependencies {
     testImplementation(project(":ddo-testing-util"))
 
     implementation(dependencyNotation = libs.scala2.library)
-    implementation(group = "com.beachape", name = "enumeratum_$scalaMajorVersion")
-    implementation(group = "com.typesafe", name = "config")
-    implementation(group = "com.github.kxbmap", name = "configs_$scalaMajorVersion")
+    implementation(libs.enumeratum.s213)
+    implementation(libs.typesafe.config)
+    implementation(libs.kxbmap.configs.s213)
 
-    implementation(group = "org.json4s", name = "json4s-native_$scalaMajorVersion")
+    implementation(libs.json4s.native.s213)
     // DI
-    implementation("org.wvlet.airframe:airframe_$scalaMajorVersion:$airframeVersion")
-    implementation("org.wvlet.airframe:airframe-config_$scalaMajorVersion:$airframeVersion")
-    implementation("org.wvlet.airframe:airframe-http-finagle_$scalaMajorVersion:$airframeVersion")
+    implementation(libs.airframe.s213)
+    implementation(libs.airframe.config.s213)
+    implementation(libs.airframe.http.finagle.s213)
 
     // Atomic support
     implementation(libs.scala.stm.s213)
 
     // Monix
     // Monix-bio is new and isn't version aligned with others
-    val monixBioVersion = "1.2.0"
-    implementation(group = "io.monix", name = "monix-eval_$scalaMajorVersion", version = monixVersion)
-    implementation(group = "io.monix", name = "monix-execution_$scalaMajorVersion", version = monixVersion)
-    implementation(group = "io.monix", name = "monix-bio_$scalaMajorVersion", version = monixBioVersion)
+    implementation(libs.monix.eval.s213)
+    implementation(libs.monix.execution.s213)
+    implementation(libs.monix.bio.s213)
 
     // MQ++ (Pulsar)
     implementation(group = "org.apache.pulsar", name = "pulsar-client-all", version = pulsarVersion)

@@ -38,12 +38,12 @@ import org.eclipse.microprofile.context.{ManagedExecutor, ThreadContext}
 class EtlWebClient extends LazyLogging {
   @Inject var vertx: Vertx = null // Inject the managed io.vertx.mutiny.core.Vertx instance
 
-  // Custom configured ManagedExecutor with name  // Custom configured ManagedExecutor with name
+  // Custom configured ManagedExecutor with name
   @Inject
   @ManagedExecutorConfig(maxAsync = 2, maxQueued = 3, cleared = Array(ThreadContext.ALL_REMAINING))
   var sharedConfiguredExecutor: ManagedExecutor = null
 
-  // Custom ThreadContext with a name    // Custom ThreadContext with a name
+  // Custom ThreadContext with a name
   @Inject
   @ThreadContextConfig(unchanged = Array(ThreadContext.ALL_REMAINING))
   var sharedConfiguredThreadContext: SmallRyeThreadContext = null

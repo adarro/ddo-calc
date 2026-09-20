@@ -1,3 +1,4 @@
+import io.truthencode.buildlogic.FALLBACK_SCALA_VERSION
 import org.gradle.accessors.dm.LibrariesForLibs
 
 /*
@@ -26,48 +27,46 @@ plugins {
     id("org.scoverage")
 }
 val libs = the<LibrariesForLibs>()
-val builderScalaVersion: String by project
 
-scala {
+interface ScalaBuildExtension {
+    val scalaVersion: Property<String>
+}
 
-    scalaVersion =
-        when (builderScalaVersion) {
-            "3" -> {
-                libs.versions.scala3.version
-                    .get()
+val scalaBuildExtension = extensions.create<ScalaBuildExtension>("scalaBuildInfo")
+
+scalaBuildExtension.scalaVersion.convention(
+    providers
+        .gradleProperty("builderScalaVersion")
+        .map { bv ->
+            when (bv) {
+                "3" -> "3"
+                "2" -> "2"
+                else -> FALLBACK_SCALA_VERSION
             }
+        }.orElse(FALLBACK_SCALA_VERSION),
+)
+val scalaBaseVersion =
+    scalaBuildExtension.scalaVersion
+        .flatMap { sv ->
+            when (sv) {
+                "3" -> {
+                    libs.versions.scala3.version
+                }
 
-            else -> {
-                libs.versions.scala2.version
-                    .get()
+                else -> {
+                    libs.versions.scala2.version
+                }
             }
         }
+
+scala {
+    scalaVersion = scalaBaseVersion
 }
-// dependencies {
-//    when (builderScalaVersion) {
-//        "3" -> {
-//
-//            implementation(libs.scala3.library)
-//        }
-//
-//        else -> {
-//
-//            implementation(libs.scala2.library)
-//        }
-//    }
-//
-// //    val scalaLibraryVersion: String by project
-// //    val scalaMajorVersion: String by project
-// //    val scalaCompilerPlugin by configurations.creating
-// //    scalaCompilerPlugin("com.typesafe.genjavadoc:genjavadoc-plugin_$scalaLibraryVersion:0.18")
-// //     compileOnly("org.scoverage:scalac-scoverage-plugin_$scalaMajorVersion.7:1.4.10")
-// //
-// }
 
 configure<org.scoverage.ScoverageExtension> {
 
-    scoverageVersion.set(libs.versions.scoverage.engine)
-    logger.warn("${project.name} (scoverage) $builderScalaVersion")
+//    logger.debug("${project.name} (scoverage) $builderScalaVersion")
+//    scoverageVersion.set(libs.versions.scoverage.engine)
     val cfgs =
         mapOf(
             Pair(org.scoverage.CoverageType.Branch, 0.5.toBigDecimal()),
@@ -81,48 +80,72 @@ configure<org.scoverage.ScoverageExtension> {
     checks.plusAssign(cfgs)
 }
 
-tasks.withType<ScalaCompile>().configureEach {
-    scalaCompileOptions.apply {
+afterEvaluate {
 
-        when (builderScalaVersion) {
+    tasks.withType<ScalaCompile>().configureEach {
+        // test if refactoring to not use the Scala.apply affects anything
+        val cName = this.name
+        var opts: List<String> = emptyList()
+
+        val tp =
+            layout.buildDirectory
+                .dir("semanticdb")
+                .get()
+                .asFile.path
+        logger.debug("Setting target semanticdb root to $tp for configuration $cName")
+
+        val s2Sdb =
+            listOf(
+                "-Xplugin-require:semanticdb",
+                "-P:semanticdb:targetroot:$tp",
+            )
+        val s3Sdb =
+            listOf(
+                "-Xsemanticdb",
+                "-semanticdb-target:$tp",
+            )
+
+        val s3Rewrites =
+            listOf(
+                "-rewrite",
+                "-source:3.4-migration",
+                "-Xignore-scala2-macros",
+                "-new-syntax",
+            )
+
+        val configuredScalaVersion = scalaBuildExtension.scalaVersion.get()
+        logger.debug("${project.name}:$cName Scala Version: $configuredScalaVersion")
+
+        when (configuredScalaVersion) {
             "3" -> {
-                logger.warn("Scala 3 detected")
-                additionalParameters?.plusAssign(
-                    listOf(
-                        "-feature",
-                        "-explain",
-                        "-Wsafe-init", // Added per Quarkus - Scala3 extension notes along with semanticdb
-                        "-Xsemanticdb",
-                        "-semanticdb-target",
-                        project.layout.buildDirectory
-                            .get()
-                            .toString(),
-                        "-Yretain-trees", // Needed for Enumeratum
-                        "-rewrite",
-//                        "-new-syntax",
-                        "-source:3.4-migration",
-                        "-Xignore-scala2-macros",
-                        "-new-syntax",
-//                        "explain"
-                    ),
+                opts = listOf(
+                    "-feature",
+                    "-explain",
+                    "-Wsafe-init",
+                    "-Yretain-trees",
+                )  + s3Rewrites // + s3Sdb
+                scalaCompileOptions.additionalParameters?.plusAssign(
+                    opts,
                 )
             }
 
             "2" -> {
-                logger.warn("Scala 2 detected")
-                additionalParameters?.plusAssign(
-                    listOf(
-                        "-feature",
-                        "-deprecation",
-                        "-Ywarn-dead-code",
-                        "-Xsource:3-cross",
-                    ),
+                opts = listOf(
+                    "-feature",
+                    "-deprecation",
+                    "-Ywarn-dead-code",
+                    "-Xsource:3-cross",
+                ) //+ s2Sdb
+                scalaCompileOptions.additionalParameters?.plusAssign(
+                    opts,
                 )
             }
 
             else -> {
-                logger.error("Scala version $builderScalaVersion not supported")
+                logger.error("Scala version $configuredScalaVersion not supported")
             }
         }
+
+        logger.warn("$cName ScalaCompile Options: $opts")
     }
-}
+} // afterEvaluate

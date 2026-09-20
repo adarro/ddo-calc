@@ -1,5 +1,16 @@
 # List of technologies used or considered for use
 
+[TOC]
+
+## Tooling
+
+Gradle, Bloop [Elide](https://github.com/elide-dev/gradle)
+
+### Native
+
+GraalVM
+,[Graal Native Gradle Plugin](https://graalvm.github.io/native-build-tools/latest/gradle-plugin.html)
+
 Build quality / development tools These are generally implemented via gradle plugins or triggered of CI/CD builds to
 improve code quality / security and or mind map or visualize concepts.
 
@@ -14,6 +25,37 @@ Initial Data population / object builder
    using Avro, manipulating and reading data becomes typesafe using Avro to Java / Scala libraries.
 
 These entities can be persisted in one or more databases.
+
+## Entities, DTOs
+
+Entities are the core domain objects that represent the business logic of the application. They are typically used to
+model the data that is persisted in the database. DTOs (Data Transfer Objects) are used to transfer data between the
+application and the database. They are typically used to transfer data between the application and the database.
+
+### Avro
+
+Avro is a data serialization and RPC framework.
+Mainly used for data transfer between services.
+Avro files can generate Java and Kotlin classes.
+Can be annotated with Java Annotations, which can include Taxi annotations.
+
+### Taxi
+
+[Taxi](https://taxilang.org) is a semantic language.
+It defines types and models.
+Taxi files can generate Kotlin classes.
+
+### KUML
+
+[KUML](https://kuml.dev) is a Kotlin DSL to generate UML, BPMN and other diagrams.
+It can RTE (Round Trip Engineering) and generate code from UML.
+UML -> BPMN
+State Machines
+Model to code
+
+- Kotlin Data Classes
+- Java Records
+- C#
 
 ## Validation
 

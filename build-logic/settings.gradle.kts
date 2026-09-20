@@ -27,10 +27,9 @@ pluginManagement {
         maven("https://jitpack.io")
     }
 
-    val foojayResolverPluginVersionversion: String by settings
-    val palantirPluginVersion: String by settings
-    val quarkusPlatformVersion: String by settings
-    val refreshVersionsPluginVersion: String by settings
+    val foojayResolverPluginVersionversion = providers.gradleProperty("foojayResolverPluginVersionversion")
+    val palantirPluginVersion = providers.gradleProperty("palantirPluginVersion")
+    // val quarkusPlatformVersion = providers.gradleProperty("quarkusPlatformVersion")
 
     plugins {
 //        id("org.kordamp.gradle.project") version kordampGradlePluginVersion
@@ -38,12 +37,12 @@ pluginManagement {
 //        id("org.kordamp.gradle.minpom") version kordampGradlePluginVersion
 //        id("com.mooltiverse.oss.nyx") version mooltiverseNyxPluginVersion
         id("org.gradle.toolchains.foojay-resolver-convention") version foojayResolverPluginVersionversion
-        id("com.palantir.baseline") version palantirPluginVersion
-        id("com.palantir.baseline-config") version palantirPluginVersion
-        id("org.inferred.processors") version "3.7.0"
-        id("org.scoverage") version "8.1"
-        id("io.quarkus") version quarkusPlatformVersion
-        id("de.fayard.refreshVersions") version refreshVersionsPluginVersion
+        // id("com.palantir.baseline") version palantirPluginVersion
+        // id("com.palantir.baseline-config") version palantirPluginVersion
+        // id("org.inferred.processors") version "3.7.0"
+
+        // id("io.quarkus") version quarkusPlatformVersion
+
 //        id("ru.vyarus.mkdocs") version "3.0.0"
     }
 }
@@ -51,7 +50,6 @@ pluginManagement {
 plugins {
 //    id("com.mooltiverse.oss.nyx")
     id("org.gradle.toolchains.foojay-resolver-convention")
-    id("de.fayard.refreshVersions")
 }
 
 // refreshVersions {
@@ -68,7 +66,7 @@ Add custom code in included-builds build.gradle(.kts)
 Add custom code in convention plugins settings.gradle(.kts)
 
 ``` kotlin
-./build-src/build.gradle.kts
+// ./build-src/build.gradle.kts
 plugins {
     `kotlin-dsl`
 }
@@ -98,7 +96,7 @@ import org.gradle.accessors.dm.LibrariesForLibs
 val libs = the<LibrariesForLibs>()
 println("from pre compiled script plugin: ${libs.versions.bb.get()}")
 
-// ./build.gradle.kts
+// ./build.hide
 plugins {
     id("foo")
 }

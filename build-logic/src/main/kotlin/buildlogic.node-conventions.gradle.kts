@@ -16,6 +16,7 @@ plugins {
 }
 
 node {
+    // TODO: migrate Node version to Version Catalog
     version.set("18.17.1")
     npmVersion.set("")
     yarnVersion.set("")

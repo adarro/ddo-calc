@@ -34,7 +34,7 @@ class XodusJavaTest {
                     user.setProperty("salt", salt);
                     user.setProperty("password", MessageDigestUtil.sha256(salt + password));
                     // if txn has already been aborted in user code
-                    if (txn != store.getCurrentTransaction()) {
+                    if (!txn.equals(store.getCurrentTransaction())) {
                         txn = null;
                         break;
                     }

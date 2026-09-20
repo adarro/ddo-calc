@@ -20,15 +20,18 @@ description = "Common misc String and convenience Utilities"
 
 plugins {
     id("buildlogic.scala-library-profile")
+    id("buildlogic.java-library-conventions")
 }
-
+val sVersion = "3"
+scalaBuildInfo {
+    scalaVersion = sVersion
+}
 dependencies {
     dependencies {
-        val builderScalaVersion: String by project
 
-        implementation(enforcedPlatform(project(":ddo-platform-scala")))
+        implementation(platform(project(":ddo-platform-scala")))
         // Platform dependent
-        when (builderScalaVersion) {
+        when (sVersion) {
             "3" -> {
                 implementation(libs.scala3.library)
                 implementation(libs.enumeratum.s3)

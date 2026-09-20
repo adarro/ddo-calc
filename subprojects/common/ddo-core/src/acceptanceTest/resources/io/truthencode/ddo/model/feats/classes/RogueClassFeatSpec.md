@@ -159,9 +159,9 @@ Slippery Mind.
 
 ## Errata
 
--   Need to add Simple weapons
--   Need to add Martial weapons (Rapier, Shortbow, Shortsword)
--   Deity based feats are covered under separate spec
+- Need to add Simple weapons
+- Need to add Martial weapons (Rapier, Shortbow, Shortsword)
+- Deity based feats are covered under separate spec
 
 [featLevel1]: - "c:verify-rows=#feat:grantedFeatsByLevel(1)"
 [featLevel2]: - "c:verify-rows=#feat:grantedFeatsByLevel(2)"

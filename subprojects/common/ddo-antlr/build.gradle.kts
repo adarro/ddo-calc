@@ -9,14 +9,14 @@ plugins {
 }
 
 dependencies {
-    implementation(enforcedPlatform(project(":ddo-platform")))
+    implementation(platform(project(":ddo-platform")))
     antlr(libs.antlr4) // use ANTLR version 4
     implementation(libs.logback.classic)
 }
-
-repositories {
-    mavenCentral()
-}
+// // TODO: remove repositories block from subprojects build.hide
+// repositories {
+//     mavenCentral()
+// }
 
 description = "Antlr Parsing utilities"
 
@@ -58,15 +58,13 @@ data class PackagePath(
 }
 
 tasks {
-
     generateGrammarSource {
         logger.warn("outputDirectory: ${outputDirectory.path}")
         val outPath = antlrJavaPath.packageToPath(outputFolderBase = outputDirectory).path
         doFirst {
             logger.warn("making outputDirectory: ${outputDirectory.path}")
-            project.mkdir(outPath)
+            File(outPath).mkdirs()
         }
-//        project.mkdir(outPath)
         logger.warn("setting -lib to : $outPath")
         maxHeapSize = "64m"
         arguments = arguments +

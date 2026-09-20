@@ -17,10 +17,10 @@
 
 The following feats are not yet implemented
 
--   Turn Undead (active and passive): This feat allows the character to halt, or at higher levels destroy, undead
-    creatures. The character can do this (3 + their charisma modifier) times per day. While turning undead is an active
-    skill, this feat is passive as it adds to the total amount of turns per day. While enhancements from both Cleric and
-    Paladin stack, as far as number and power of turns, the base number of turns do not stack with each other.
+- Turn Undead (active and passive): This feat allows the character to halt, or at higher levels destroy, undead
+  creatures. The character can do this (3 + their charisma modifier) times per day. While turning undead is an active
+  skill, this feat is passive as it adds to the total amount of turns per day. While enhancements from both Cleric and
+  Paladin stack, as far as number and power of turns, the base number of turns do not stack with each other.
 
 [light_armor]: http://ddowiki.com/page/Light_Armor_Proficiency "Light Armor Proficiency"
 [medium_armor]: http://ddowiki.com/page/Medium_Armor_Proficiency "Medium Armor Proficiency"

@@ -13,6 +13,7 @@ public class PortUtil {
      * @return a free port number on localhost
      * @throws IllegalStateException if unable to find a free port
      */
+    @SuppressWarnings("EmptyCatch")
     public static synchronized int findFreePort() {
         try (ServerSocket socket = new ServerSocket(0)) {
             socket.setReuseAddress(true);
@@ -24,6 +25,7 @@ public class PortUtil {
             }
             return port;
         } catch (IOException ignored) {
+            // TODO:  Continue to swallow exception or revert to -1 return code?
         }
         throw new IllegalStateException("Could not find a free TCP/IP port");
     }

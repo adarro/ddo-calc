@@ -70,14 +70,14 @@
 
 ### Level 10
 
-| [ ][featLevel10] [Feats][result]                                | Type    | Description                                                                                          |
+| [ ][featLevel10] [Feats][result] | Type | Description |
 | --------------------------------------------------------------- | ------- | ---------------------------------------------------------------------------------------------------- | ------------------------------------ |
-| [Energy Resistance: Acid][energy_resistance_acid]               | Passive | GrantsAcid Resistance + 10                                                                           | Available if not selected at level 5 |
-| [Energy Resistance: Cold][energy_resistance_cold]               | Passive | GrantsCold Resistance + 10                                                                           | Available if not selected at level 5 |
-| [Energy Resistance: Electricity][energy_resistance_electricity] | Passive | GrantsElectricity Resistance + 10                                                                    | Available if not selected at level 5 |
-| [Energy Resistance: Fire][energy_resistance_fire]               | Passive | Grants Fire Resistance + 10                                                                          | Available if not selected at level 5 |
-| [Energy Resistance: Sonic][energy_resistance_sonic]             | Passive | Grants Sonic Resistance + 10                                                                         | Available if not selected at level 5 |
-| [Religious Lore][religious_lore]                                | Passive | Represents your knowledge of the religious. This feat is received once for every favored soul level. |
+| [Energy Resistance: Acid][energy_resistance_acid] | Passive | GrantsAcid Resistance + 10 | Available if not selected at level 5 |
+| [Energy Resistance: Cold][energy_resistance_cold] | Passive | GrantsCold Resistance + 10 | Available if not selected at level 5 |
+| [Energy Resistance: Electricity][energy_resistance_electricity] | Passive | GrantsElectricity Resistance + 10 | Available if not selected at level 5 |
+| [Energy Resistance: Fire][energy_resistance_fire] | Passive | Grants Fire Resistance + 10 | Available if not selected at level 5 |
+| [Energy Resistance: Sonic][energy_resistance_sonic] | Passive | Grants Sonic Resistance + 10 | Available if not selected at level 5 |
+| [Religious Lore][religious_lore] | Passive | Represents your knowledge of the religious. This feat is received once for every favored soul level. |
 
 ### Level 11
 
@@ -148,8 +148,8 @@ Bonus Feat: An artificer can select a feat from the Artificer Bonus Feat list.
 
 ## Errata
 
--   Need to add Simple weapons
--   Deity based feats are covered under separate spec
+- Need to add Simple weapons
+- Deity based feats are covered under separate spec
 
 [featLevel1]: - "c:verify-rows=#feat:grantedFeatsByLevel(1)"
 [featLevel2]: - "c:verify-rows=#feat:grantedFeatsByLevel(2)"

@@ -26,7 +26,9 @@ dependencies {
     constraints {
         // Must use single string notation, group / name / version will give an error and apply as a dependency
         // api(group = "org.scala-lang", name = "scala-library", version = scalaLibraryVersion)
-        api(libs.scala2.library)
+//        api(libs.scala2.library)
+        // insinuate Scala 3
+        api(libs.scala3.library)
         api(libs.logback.classic)
         api(libs.typesafe.scala.logging.s213)
 

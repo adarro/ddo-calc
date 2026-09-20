@@ -38,14 +38,14 @@ dependencies {
     val monixVersion: String by project
 
     // https://mvnrepository.com/artifact/org.json4s/json4s-native
-    implementation(group = "org.json4s", name = "json4s-native_$scalaMajorVersion", version = "3.6.7")
+    implementation(libs.json4s.native.s213)
 
     implementation(platform(project(":ddo-platform-scala")))
     implementation(project(":ddo-modeling"))
     implementation(libs.scala2.library)
-    implementation(group = "com.beachape", name = "enumeratum_$scalaMajorVersion")
-    implementation(group = "com.typesafe", name = "config")
-    implementation(group = "com.github.kxbmap", name = "configs_$scalaMajorVersion")
+    implementation(libs.enumeratum.s213)
+    implementation(libs.typesafe.config)
+    implementation(libs.kxbmap.configs.s213)
 
     // Quill
     // Unsure if I really need this but occasionally get a noclass def for ZIO/Fail

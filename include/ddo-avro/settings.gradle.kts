@@ -4,15 +4,15 @@ rootProject.name = "ddo-avro-generator"
 pluginManagement {
     //  Scala
     // Coverage
-//    val scoveragePluginVersion: String by settings
+//    val scoveragePluginVersion= project.property("") as String
     // Avro
-    val avroHuggerPluginVersion: String by settings
-//    val openApiGeneratorPluginVersion: String by settings
+    val avroHuggerPluginVersion = providers.gradleProperty("avroHuggerPluginVersion")
+//    val openApiGeneratorPluginVersion= project.property("") as String
 
-//    val kordampGradlePluginVersion: String by settings
-//    val semVerPluginVersion: String by settings
-    val mooltiverseNyxPluginVersion: String by settings
-    val foojayResolverPluginVersionversion: String by settings
+//    val kordampGradlePluginVersion= project.property("") as String
+//    val semVerPluginVersion= project.property("") as String
+    val mooltiverseNyxPluginVersion = providers.gradleProperty("mooltiverseNyxPluginVersion")
+    val foojayResolverPluginVersionversion = providers.gradleProperty("foojayResolverPluginVersionversion")
 
     plugins {
 //        id("com.github.hierynomus.license") version "0.16.1"

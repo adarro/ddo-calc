@@ -10,6 +10,7 @@ NOTICE: You must still include a kotlin app / library etc. profile as we do not 
  */
 
 jacoco {
+    // TODO migrate hardcode to Version Catalog
     toolVersion = "0.8.12"
 //    reportsDirectory.set(layout.buildDirectory.dir("customJacocoReportDir"))
 }

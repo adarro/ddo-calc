@@ -30,76 +30,78 @@ repositories {
     }
 }
 
-val kotlinVersion: String by project
-val quarkusPlatformVersion: String by project
-val jandexPluginVersion: String by project
-val defaultJavaToolChainVersion: String? by project
-val kasechangeVersion: String by project
+// val kotlinVersion = project.property("kotlinVersion") as String
+// val jandexPluginVersion = project.property("jandexPluginVersion") as String
+val defaultJavaToolChainVersion = project.findProperty("defaultJavaToolChainVersion") as String?
+// val kasechangeVersion = project.property("kasechangeVersion") as String
 
 dependencies {
-    implementation(libs.quarkus.gradle.plugin)
+    // enables gradle catalog for included convention plugins
+    // DO NOT REMOVE
+    implementation(files(libs.javaClass.superclass.protectionDomain.codeSource.location))
+    implementation(plugin(libs.plugins.avrohugger))
+    implementation(plugin(libs.plugins.quarkus))
     implementation(libs.kotlin.gradle.plugin)
     implementation(libs.kotlin.allopen.plugin)
     implementation(libs.scalafix.plugin)
     implementation(libs.nullaway.plugin)
     implementation(libs.errorprone.plugin)
 
-    implementation("org.sonarsource.scanner.gradle:sonarqube-gradle-plugin:_")
-    // enable gradle catalog for included convention plugins
-    implementation(files(libs.javaClass.superclass.protectionDomain.codeSource.location))
+    implementation(libs.sonarqube.gradle.plugin)
     // tool languages
     // node
-    implementation("com.github.node-gradle:gradle-node-plugin:_")
+    implementation(libs.gradle.node.plugin)
 // code quality
     implementation(libs.spotless.plugin)
     implementation(libs.version.plugin)
     implementation(libs.version.catalog.plugin)
 //    implementation(libs.refreshVersions.plugin)
-    implementation("com.javiersc.gradle-plugins:dependency-updates:_")
+    implementation(libs.dependency.updates)
     // doc generation (requires python)
 //    implementation("com.palantir.baseline:gradle-baseline-java:_")
 
     // CI build support
     // TODO: Remove ci plugin and use manual script
-    implementation("be.vbgn.gradle:ci-detect-plugin:_")
+    implementation(libs.ci.detect.plugin)
 
 //    implementation("org.unbroken-dome.gradle-plugins:gradle-testsets-plugin:_")
     // scala
-    implementation(libs.scalac.scoverage.plugin)
+    implementation(plugin(libs.plugins.scoverage))
 //    implementation(libs.scoverage.)
     // bloop
-    implementation("ch.epfl.scala:gradle-bloop_2.13:_")
-    // ch.epfl.scala:gradle-bloop_2.12:1.4.3
+    implementation(libs.gradle.bloop)
+    // ch.epfl.scala:gradle-bloop_2.13:1.4.3
 
     // documentation / visualization
     // plant uml
-    implementation("io.freefair.gradle:plantuml-plugin:_")
-    implementation("gradle.plugin.org.dripto.gradle.plugin.plantuml:plugin:_")
-    implementation("com.cosminpolifronie.gradle:gradle-plantuml-plugin:_")
+    implementation(libs.plantuml.plugin)
+    implementation(libs.plantuml.plugin.dripto)
+    implementation(libs.gradle.plantuml.plugin)
 
-    implementation("io.swagger.core.v3:swagger-gradle-plugin:_")
-    implementation("gradle.plugin.ms.ralph.gradle:gradle-dependency-plantuml-exporter-plugin:_")
-    implementation("io.spring.gradle:dependency-management-plugin:_")
+    implementation(libs.swagger.gradle.plugin)
+    implementation(libs.gradle.dependency.plantuml.exporter.plugin)
+    implementation(libs.dependency.management.plugin)
 
     // kotlin
 //    implementation(Kotlin.gradlePlugin)
-    implementation("com.google.devtools.ksp:symbol-processing-gradle-plugin:_")
+    implementation(libs.symbol.processing.gradle.plugin)
     // not finding jitpacked resource
 //    implementation("com.strumenta.antlr-kotlin:antlr-kotlin-gradle-plugin:_")
 
     // quarkus related
-    // quarkus incompatible with avrohugger (old scala 12.1) used by ddo-modeling.  Need to separate build.
-//    implementation(libs.quarkus.gradle.plugin)
-    implementation("org.kordamp.gradle:jandex-gradle-plugin:_")
+    // quarkus incompatible with avrohugger (old scala 12.1) used by ddo-modeling.  Need a separate build.
+    // TODO: check new avrohugger for quarkus compatibility
+
+    implementation(libs.jandex.gradle.plugin)
 
     // Database
-    implementation(CashApp.sqlDelight.gradlePlugin)
+    implementation(libs.app.cash.sqldelight.plugin)
 
     // String utils
     // camel / snake etc
     // universal dependency for Gradle 5.3 and above
     // in case of multiplatform project, just specify the dependency for commonMain/commonTest source set
-    implementation("net.pearx.kasechange:kasechange:_")
+    implementation(libs.kasechange)
     // to here
     //    implementation("com.diffplug.spotless-changelog:spotless-changelog-plugin-gradle:_")
 //    implementation(Kotlin.gradlePlugin)
@@ -128,3 +130,8 @@ kotlin {
         // (this as JavaToolchainSpec).vendor.set(JvmVendorSpec.GRAAL_VM)
     }
 }
+
+// Helper function that transforms a Gradle Plugin alias from a
+// Version Catalog into a valid dependency notation for buildSrc
+fun DependencyHandlerScope.plugin(plugin: Provider<PluginDependency>) =
+    plugin.map { "${it.pluginId}:${it.pluginId}.gradle.plugin:${it.version}" }

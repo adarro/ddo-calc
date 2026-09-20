@@ -20,11 +20,11 @@ Searching for [Attack](- "#searchString") will return:
 
 Feats can be searched with many case options.
 
--   sensitive (default)
--   insensitive
--   Uppercase
--   Lowercase
--   Snake / Camel case
+- sensitive (default)
+- insensitive
+- Uppercase
+- Lowercase
+- Snake / Camel case
 
 ## [Verify Known Feats](- "enumerate")
 

@@ -28,8 +28,8 @@ dependencies {
     implementation(project(":ddo-util")) {
         because("Implicits with string matching etc")
     }
-    val builderScalaVersion: String by project
-    logger.info("showing builderScalaVersion: $builderScalaVersion")
+    val builderScalaVersion = providers.gradleProperty("builderScalaVersion").getOrElse("3")
+    logger.debug("${project.name}: showing builderScalaVersion: $builderScalaVersion")
     when (builderScalaVersion) {
         "3" -> {
             implementation(libs.scala3.library)
@@ -37,6 +37,7 @@ dependencies {
             implementation(libs.enumeratum.s3)
             implementation(libs.typesafe.scala.logging.s3)
         }
+
         else -> {
             implementation(libs.scala2.library)
             implementation(libs.ruippeixotog.scala.scraper.s213)

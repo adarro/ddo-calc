@@ -128,7 +128,7 @@
 
 ## Errata
 
--   Need to add Simple weapons
+- Need to add Simple weapons
 
 [featLevel1]: - "c:verify-rows=#feat:grantedFeatsByLevel(1)"
 [featLevel2]: - "c:verify-rows=#feat:grantedFeatsByLevel(2)"

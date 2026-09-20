@@ -3,7 +3,6 @@
 import io.truthencode.buildlogic.KotlinTestKitExtension
 import io.truthencode.buildlogic.KotlinTestKits
 import io.truthencode.buildlogic.TestTypes
-
 /*
  * SPDX-License-Identifier: Apache-2.0
  *
@@ -30,6 +29,7 @@ plugins {
     id("buildlogic.quality-sonar")
 }
 
+// FIXME: quarkus failing on this block?
 tasks.withType(Test::class.java) {
     val t = this
     logger.info("Were in test config for ${project.name}")
@@ -81,8 +81,14 @@ sonar {
         property("sonar.junit.reportPaths", junitPaths)
     }
 }
+
 val libs = the<LibrariesForLibs>()
 
+/**
+ * Extension for configuring Kotlin Test Kit in the project.
+ * This extension allows specifying the preferred Kotlin test framework to use.
+ * The default test framework is KoTest.
+ */
 val extension = project.extensions.create<KotlinTestKitExtension>("KotlinTestKits")
 extension.useKotlinTestKit.convention(
     KotlinTestKits.KoTest,
@@ -93,7 +99,7 @@ dependencies {
 //     // Extension methods for Java
 //     implementation(libs.systems.manifold.preprocessor) {
 //         version {
-//             because("Concordion indirectly uses old version which interfers with IDE")
+//             because("Concordion indirectly uses old version which interferes with IDE")
 // //            strictly("[2023.1.0,[2024.1.34")
 //             prefer("2024.1.33")
 // //            require("2024.1.33")
@@ -104,12 +110,20 @@ dependencies {
     testRuntimeOnly(libs.junit.platform.reporting)
 }
 
+/**
+ * Enumeration of project languages supported by the build logic.
+ * Each enum constant represents a specific programming language.
+ */
 enum class ProjectLanguage {
     Kotlin,
     Java,
     Scala,
 }
 
+/**
+ * Enumeration of language compositions supported by the build logic.
+ * Each enum constant represents a specific combination of programming languages in the project.
+ */
 enum class LanguageComposition {
     KotlinOnly,
     JavaOnly,
@@ -117,10 +131,20 @@ enum class LanguageComposition {
     Mixed,
 }
 
+// TODO: Move to Class object under io.truthencode.buildLogic
+
+/**
+ * Enumeration of supported test engines for the project.
+ * Each enum constant represents a specific test framework and its corresponding ID.
+ */
 enum class TestEngine(
     val id: String,
 ) {
     JUnit("junit"),
+
+    /**
+     * JUnit6 convention seems to be 'shoehorn' it under JUnit5
+     */
     JUnit5("junit-jupiter"),
     JUnit4("junit"),
     Spock("spock"),
@@ -139,6 +163,7 @@ fun current(): EnumSet<ProjectLanguage>? {
     if (project.plugins.hasPlugin("scala")) {
         pl.add(ProjectLanguage.Scala)
     }
+    // TODO: supplort check for Kotlin Multi Platform
     if (project.plugins.hasPlugin("kotlin")) {
         pl.add(ProjectLanguage.Kotlin)
     }
@@ -148,6 +173,9 @@ fun current(): EnumSet<ProjectLanguage>? {
     return pl
 }
 
+/**
+ * Flags if we are using a 'pure' jvm project or mixed (Java + Scala / Kotlin)
+ */
 fun projectComposition(): LanguageComposition? {
     return current()?.size?.let {
         return if (it > 1) {
@@ -158,17 +186,27 @@ fun projectComposition(): LanguageComposition? {
     }
 }
 
+/**
+ * Returns a bitmask representation of the project languages.
+ * Each language is represented by its ordinal value, and the bits are combined using bitwise OR.
+ */
 fun ProjectLanguages.projectBits(): Int? = current()?.stream()?.map { it.ordinal }?.reduce(0) { a, b -> a or b }
 
+/**
+ * Returns a bitmask representation of the project languages.
+ * Each language is represented by its ordinal value, and the bits are combined using bitwise OR.
+ */
 fun ProjectLanguages.bits(): Int? = this.stream().map { it.ordinal }?.reduce(0) { a, b -> a or b }
 
+/**
+ * Applies KoTest dependencies to the JVM test suite.
+ * @param suite the JVM test suite to configure with KoTest dependencies
+ */
 fun JvmTestSuite.applyKoTest() {
-    val koTestVersion: String = (findProperty("koTestVersion") ?: embeddedKotlinVersion).toString()
-
     dependencies {
         implementation(libs.kotest.runner.junit.jvm)
-        implementation("io.kotest:kotest-assertions-core:$koTestVersion")
-        implementation("io.kotest:kotest-property:$koTestVersion")
+        implementation(libs.kotest.assertions.core)
+        implementation(libs.kotest.property)
     }
 }
 
@@ -180,7 +218,7 @@ fun JvmTestSuite.applyConcordionAcceptanceTest() {
     dependencies {
         implementation(project())
         implementation(libs.concordion)
-// flexmark (mostly for concordion / markdown)
+        // flexmark (mostly for Concordion / Markdown)
         implementation(libs.flexmark.all)
     }
 }
@@ -227,7 +265,8 @@ fun JvmTestSuite.applyJavaAssertions() {
 
 fun JvmTestSuite.applyScalaTest() {
     dependencies {
-        val builderScalaVersion: String by project
+        // FIXME: need to change this provider to match the ScalaBuildExtension behavior
+        val builderScalaVersion = providers.gradleProperty("builderScalaVersion").getOrElse("3")
         // scalatestplus-junit5 is listed as runtimeOnly, but requires implementation for JUnitSuiteLike and JUnitSuite
         if (builderScalaVersion == "3") {
             implementation(libs.scalatest.plus.junit.s3)
@@ -260,57 +299,36 @@ fun JvmTestSuite.applyScalaTest() {
 //    }
 }
 
-project.testing {
+testing {
     suites {
-/*
-TODO: Add functional / integration etc as needed
-Also need to determine if this is a limited scope (i.e opt in by project)
-integrationTest by registering(JvmTestSuite::class)
-functionalTest by registering(JvmTestSuite::class)
-performanceTest by registering(JvmTestSuite::class)
- */
-        val test by getting(JvmTestSuite::class)
+ /*
+ TODO: Add functional / integration etc as needed
+ Also need to determine if this is a limited scope (i.e opt in by project)
+ integrationTest by registering(JvmTestSuite::class)
+ functionalTest by registering(JvmTestSuite::class)
+ performanceTest by registering(JvmTestSuite::class)
+  */
+        val test = named<JvmTestSuite>("test")
         val acceptanceTest = register<JvmTestSuite>("acceptanceTest")
         configureEach {
             if (this is JvmTestSuite) {
                 val tt: TestTypes = TestTypes.fromNamingConvention(name)
 
-// Kotlin specific
-                if (project.plugins.hasPlugin("org.jetbrains.kotlin.jvm")) {
-                    logger.info("Configuring Kotlin Testing for ${project.name}")
-                    when (extension.useKotlinTestKit.get()) {
-                        KotlinTestKits.KoTest -> {
-                            logger.warn("configuring KoTest for Unit testing")
-                            this.applyKoTest()
-                        }
-
-                        KotlinTestKits.KotlinTest -> {
-                            logger.warn("configuring KotlinTest for Unit testing")
-
-                            this.applyKotlinTest()
-                        }
-
-                        else -> {
-                            logger.warn("No specific Kotlin Test for Unit testing specified")
-                        }
-                    }
-                }
-
-// Scala Specific
+                // Scala Specific
                 if (project.plugins.hasPlugin("scala")) {
-                    val builderScalaVersion: String by project
-                    logger.info("Configuring ${project.name} for Scala$builderScalaVersion ${tt.name} Testing :  ${this.name} ")
+                    val builderScalaVersion = providers.gradleProperty("builderScalaVersion").getOrElse("3")
+                    logger.debug("Configuring ${project.name} for Scala$builderScalaVersion ${tt.name} Testing :  ${this.name} ")
 
                     when (tt) {
                         TestTypes.Unit -> {
-                            logger.info(("Configuring standard Unit Test for scala"))
+                            logger.debug(("Configuring standard Unit Test for scala"))
                             useJUnitJupiter()
                             this.applyJupiterEngine()
                             //   this.applyVintageEngine()
                             this.applyScalaTest()
 
                             targets {
-                                logger.warn("Configuring Scala Unit Test for ${project.name}")
+                                logger.debug("Configuring Scala Unit Test for ${project.name}")
                                 this.forEach { tg ->
                                     mapOf(tg.name to tg.testTask).forEach { (name, task) ->
                                         logger.warn(
@@ -342,8 +360,8 @@ performanceTest by registering(JvmTestSuite::class)
 
                         TestTypes.Acceptance -> {
                             useJUnitJupiter()
-                            // using scala helper methods in test configuration so we need to make sure
-                            // scala is on the test classpath even if it's a kotlin / java etc project
+                            // using scala helper methods in test configuration, so we need to make sure
+                            // scala is on the test classpath even if it's a kotlin / java etc. project
                             if (builderScalaVersion == "3") {
                                 this.applyScala3Depends()
                             } else {
@@ -352,7 +370,7 @@ performanceTest by registering(JvmTestSuite::class)
 
                             this.applyJupiterEngine()
                             this.applyVintageEngine()
-                            logger.info("adding scala acceptance stuff")
+                            logger.debug("adding scala acceptance stuff")
                             dependencies {
                                 implementation(libs.jade4j)
                             }
@@ -373,18 +391,41 @@ performanceTest by registering(JvmTestSuite::class)
                         }
                     }
                     this.applyJavaAssertions()
-                }
+                } // scala test configuration
+
                 if (project.plugins.hasPlugin("java-library") and (projectComposition() != LanguageComposition.Mixed)) {
-                    logger.info("java-library applied to ${project.name}, applying JUnit Jupiter")
+                    logger.debug("java-library applied to ${project.name}, applying JUnit Jupiter")
                     useJUnitJupiter()
                     this.applyJavaAssertions()
                 }
 
-// Concordian BDD Acceptance
-                if (tt == TestTypes.Acceptance) {
-                    logger.info("applying Concordion Acceptance")
+                // Kotlin configured in its specific convention file and seems functional, need to check before uncommenting below
+                // Kotlin specific
+//                 if (project.plugins.hasPlugin("org.jetbrains.kotlin.jvm")) {
+//                     logger.info("Configuring Kotlin Testing for ${project.name}")
+//                     when (extension.useKotlinTestKit.get()) {
+//                         KotlinTestKits.KoTest -> {
+//                             logger.warn("configuring KoTest for Unit testing")
+//                             this.applyKoTest()
+//                         }
+//
+//                         KotlinTestKits.KotlinTest -> {
+//                             logger.warn("configuring KotlinTest for Unit testing")
+//
+//                             this.applyKotlinTest()
+//                         }
+//
+//                         else -> {
+//                             logger.warn("No specific Kotlin Test for Unit testing specified")
+//                         }
+//                     }
+//                 }
 
-//  systemProperties["concordion.output.dir"] = "${reporting.baseDir}/spec"
+                // Concordian BDD Acceptance
+                if (tt == TestTypes.Acceptance) {
+                    logger.debug("applying Concordion Acceptance")
+
+                    //  systemProperties["concordion.output.dir"] = "${reporting.baseDir}/spec"
                     this.applyConcordionAcceptanceTest()
                     this.applyVintageEngine()
                     this.applyJupiterEngine()

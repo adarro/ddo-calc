@@ -28,23 +28,23 @@ pluginManager.withPlugin("scala-profiles") {
     val scalaMajorVersion: String by project
     dependencies {
         implementation(platform(project(":ddo-platform-scala")))
-        implementation("org.scala-lang:scala-library:$scalaLibraryVersion")
-        implementation(group = "com.beachape", name = "enumeratum_$scalaMajorVersion")
-        implementation(group = "com.typesafe", name = "config")
-        implementation(group = "com.github.kxbmap", name = "configs_$scalaMajorVersion")
+        implementation(libs.scala2.library)
+        implementation(libs.enumeratum.s213)
+        implementation(libs.typesafe.config)
+        implementation(libs.kxbmap.configs.s213)
         // validation and rules
-        implementation(group = "com.wix", name = "accord-core_$scalaMajorVersion")
-        implementation(group = "ch.qos.logback", name = "logback-classic")
-        implementation(group = "com.typesafe.scala-logging", name = "scala-logging_$scalaMajorVersion")
-        testImplementation(group = "org.scalatest", name = "scalatest_$scalaMajorVersion")
+        implementation(libs.accord.core.s213)
+        implementation(libs.logback.classic)
+        implementation(libs.typesafe.scala.logging.s213)
+        testImplementation(libs.scalatest.s213)
         // Needed for scalatest html reports (formerly depended on pegdown)
-        testRuntimeOnly("com.vladsch.flexmark:flexmark-all:0.35.10")
-        testImplementation(group = "org.mockito", name = "mockito-all")
-        testImplementation(group = "org.scalacheck", name = "scalacheck_$scalaMajorVersion") // , version = "1.15.4")
+        testRuntimeOnly(libs.flexmark.all)
+        testImplementation(libs.mockito.core)
+        testImplementation(libs.scalacheck.s213)
         // JUnit 5
-        testRuntimeOnly(group = "org.junit.platform", name = "junit-platform-engine")
-        testRuntimeOnly(group = "org.junit.platform", name = "junit-platform-launcher")
-        testRuntimeOnly(group = "co.helmethair", name = "scalatest-junit-runner")
+        testRuntimeOnly(libs.junit.platform.engine)
+        testRuntimeOnly(libs.junit.platform.launcher)
+        testRuntimeOnly(libs.scalatest.junit.runner)
         //  api(platform(":ddo-platform-scala"))
     }
 }

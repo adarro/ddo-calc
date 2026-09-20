@@ -21,16 +21,22 @@ description = "Shared Testing and convenience Utilities (Intended for Test Scope
 plugins {
 
     id("buildlogic.scala-library-profile")
+    id("buildlogic.java-library-conventions")
+}
+
+val sVersion = "3"
+scalaBuildInfo {
+    scalaVersion = sVersion
 }
 
 dependencies {
     dependencies {
-        val builderScalaVersion: String by project
+        val builderScalaVersion = providers.gradleProperty("builderScalaVersion").getOrElse("3")
 
-        implementation(enforcedPlatform(project(":ddo-platform-scala")))
+        implementation(platform(project(":ddo-platform-scala")))
 
-        logger.error("showing builderScalaVersion: $builderScalaVersion")
-        when (builderScalaVersion) {
+        logger.debug("${project.name}: showing sVersion: $sVersion")
+        when (sVersion) {
             "3" -> {
                 implementation(libs.scala3.library)
                 implementation(libs.enumeratum.s3)

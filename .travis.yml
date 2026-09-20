@@ -1,43 +1,43 @@
 language: scala
 scala:
-- 2.12.3
+    - 2.12.3
 jdk:
-- openjdk8
-- oraclejdk9
+    - openjdk8
+    - oraclejdk9
 install: true
 after_success:
-- "./gradlew versionEyeUpdate"
-- "./gradlew aggregateReports"
-- "./gradlew sendCoverageToCodacy --continue"
-- bash <(curl -s https://codecov.io/bash)
+    - "./gradlew versionEyeUpdate"
+    - "./gradlew aggregateReports"
+    - "./gradlew sendCoverageToCodacy --continue"
+    - bash <(curl -s https://codecov.io/bash)
 #- java -jar ~/codacy-coverage-reporter-assembly.jar report -l Java -r build/reports/scoverage/cobertura.xml
 before_cache:
-- rm -f  $HOME/.gradle/caches/modules-2/modules-2.lock
-- rm -fr $HOME/.gradle/caches/*/plugin-resolution/
+    - rm -f  $HOME/.gradle/caches/modules-2/modules-2.lock
+    - rm -fr $HOME/.gradle/caches/*/plugin-resolution/
 cache:
-  directories:
-  - "$HOME/.gradle/caches/"
-  - "$HOME/.gradle/wrapper/"
+    directories:
+        - "$HOME/.gradle/caches/"
+        - "$HOME/.gradle/wrapper/"
 before_script:
-- curl -L https://codeclimate.com/downloads/test-reporter/test-reporter-latest-linux-amd64
-  > ./cc-test-reporter
-- chmod +x ./cc-test-reporter
-- "./cc-test-reporter before-build"
+    - curl -L https://codeclimate.com/downloads/test-reporter/test-reporter-latest-linux-amd64
+      > ./cc-test-reporter
+    - chmod +x ./cc-test-reporter
+    - "./cc-test-reporter before-build"
 # before_install:
 #  - sudo apt-get install jq
 #  - |-
 #    curl $(curl https://api.github.com/repos/codacy/codacy-coverage-reporter/releases/latest | jq -r '.assets | map({content_type, browser_download_url} | select(.content_type | contains(\"application/x-java-archive\"))) | .[0].browser_download_url') -o codacy-coverage-reporter-assembly.jar
 after_script:
-- "./cc-test-reporter after-build --exit-code $TRAVIS_TEST_RESULT"
-- if [[ "$TRAVIS_TEST_RESULT" == 0 ]]; then ./cc-test-reporter upload-coverage; fi
+    - "./cc-test-reporter after-build --exit-code $TRAVIS_TEST_RESULT"
+    - if [[ "$TRAVIS_TEST_RESULT" == 0 ]]; then ./cc-test-reporter upload-coverage; fi
 env:
-  global:
-  - CC_TEST_REPORTER_ID=665646cbcbd55d57b5c78261227b9775f00a9e4716d1c28b6fa2cfbda7369ba2
-  - secure: Q67X55o687paDVhL83K/TbkpVjPQVaLnalcQe5sFLd7naxTuyhgAUiuRKNsTgwYwTJ4QYCAZPwugeilkLpIM8rCDp+CMLfFFFf/zm1joy9Ub4BIwhbGfPyJfcz3S9gmZTlUiEfJgjLDjgWOcrIXONVu/c67kTxziFImHBiNzdZAONzegwV33f2t8/tQJ+p9vdvwpFb9B78RtUEkwqPJopc6lliHpUBGOqqRhYjwghQD6mXGPRLEIbVvtPDJ9k1dy9vn7UkVbegtyhpG1aJ1GBswIhztdK4qOBRqLhzae/RlXRCWUVNKtR/SpgHL4wQogI3FD2XfUNMJE6/gmLM31ScXMQmXuIG3krUnyVmwGZLE6FiIl5vjXn7ZZ3jNJh6q4w6gWFBuFTA4q6jtHhhWykBAM/K/1ynk1atDgHnr8g+JiLi16kfLsjK2Xv37ngqypOQdVeMz2hBje55cFDlVCkvpA6tjYUNFmUtQ0Ewz4p6rAzpvcWd5m22nasWlrxHmqKkb1rktJIlCIKvVZQd4ngIpJnkN8hXDJjosSsGCauleUhwQxm7CH1mgAwojSMQpCBGQQFURaHeMqw1tJiPzDPv2lXIHDzdFV16q/ufoaY/Ioo5aTp0m0fxkS0cCxn8N5cbeZ9nj9BUMXuKLBYTePggvLTG9UVwTgGOYliO3ZXJU=
-  - secure: iiHrXRdX2gPm5GMf2aMmbA6Lel83dVtdHJT9ele4BKfkwQHGIhZ73E4sNsEdj87i4o6YEyOkhJGnD/d2Fve8AYL8wkerxLxh+mqnjZI9qr4X8ZX2nDVcCrC9BE0rnxkEKCBJpuJ1qGsiRO+0bpSHi6G+PHGRh53MhKKrAt5mSncR3dISRgkLtvu9x9T1+gLq+JyfiSMg9c5BsvslBh6ECc26NDi5ySJstd5CkUtbG42pqaR8d1+nuNZQ/zDiLBSsPgbqclHMf3/ZX4LhmHKsnppmNAYfQ+KcWB/on+V3v9J412d9G/KRJ4NQucWhJh1OTeTnaQPk5FazlfgMxvDkRGZBT3LlKZnxN460Ffsi/PF61Zi2fUoYFwAJrujQ6LND8ad43R7t/zUTYxatNTDfL4qP71oiIag2tVXntTfewmDkHpcwe0LvXZKUI/AZuHykxmCzKLdNpfHYgZ8ESLgURBAqhueUqdxq9dkyu9tshc0JRhoZ5PyiP4OlPJ6NPNjbouZWvxZpHRcndJOY88uKd1iIaWzhUPS2K/7+1W1bm8CZvmDc9A0bLWHe/7eH10wMYRjPqCDdvFcJgecnEV+CyT9/8z+uwCX3ZyjqN9jzs1RkoSsJQwi9Bzd+aRaLMt6OX6susBXIbfSS/XEjEJC3NSgnRmZhH4zXqhkEC3Qhesc=
-  - secure: ZLVWUNEE1VW0ljWJP7sqR/XxJEkPJC1Qw5C0AlRgTuFRNmALT/e7MAHCF7L4ekJqXkMyjq1FAiG+FBJ5JfVeegjIcg48pZXDjrvRuup2XCkfA2Z2b/iyAeilHv6hGWAf//VzMjbqF7A4HkQ77T/ABOtKiXIAOX1o6QSbHJSThLheBeh2DqHddZsvB4tF/AJMaA5mR6VxSI5l4YhnmRTYosfTCK0OT/Y2IML6Q/Kb567CmLP+xY9bmi8NMvMGMB4cjzAg9hz7uPY7VWTgVe0xWffns3d+gw43IprqJszlgwVyxRO+o9OT/VSDZmkgTz5GtekFzaQEMjqk4L1adV7lGyAgU/NOlgpgpECE9RRd8licvXIZ/0Ig52UiWHF8HUchDsUHbVUt0kIE0Fu0keg3LP1/iAe+hqwREiHqL2ZXARIQ2nE1quG60jHxg0Xixvg7vTdeusI9Lv8EIRKi2G3RoCxT8cC2mLokTPg+jjhntxKJaaXszLNqGkyTVZX704FrzpH26eZ2cOHf+re5BFCw/E2k7pCeuAON2k0HXDa6M2zE46b6EoPobRqYnZUFKNve2sLDAcpcmPFafm+hl51VXSkDc6YE04CCAQfqIWzxswl+nQDsn2v94iFJChxl8Y4eGfZy7LRge6UPUxB72OluweB0pySau667gCajjKq+9Bc=
+    global:
+        - CC_TEST_REPORTER_ID=665646cbcbd55d57b5c78261227b9775f00a9e4716d1c28b6fa2cfbda7369ba2
+        - secure: Q67X55o687paDVhL83K/TbkpVjPQVaLnalcQe5sFLd7naxTuyhgAUiuRKNsTgwYwTJ4QYCAZPwugeilkLpIM8rCDp+CMLfFFFf/zm1joy9Ub4BIwhbGfPyJfcz3S9gmZTlUiEfJgjLDjgWOcrIXONVu/c67kTxziFImHBiNzdZAONzegwV33f2t8/tQJ+p9vdvwpFb9B78RtUEkwqPJopc6lliHpUBGOqqRhYjwghQD6mXGPRLEIbVvtPDJ9k1dy9vn7UkVbegtyhpG1aJ1GBswIhztdK4qOBRqLhzae/RlXRCWUVNKtR/SpgHL4wQogI3FD2XfUNMJE6/gmLM31ScXMQmXuIG3krUnyVmwGZLE6FiIl5vjXn7ZZ3jNJh6q4w6gWFBuFTA4q6jtHhhWykBAM/K/1ynk1atDgHnr8g+JiLi16kfLsjK2Xv37ngqypOQdVeMz2hBje55cFDlVCkvpA6tjYUNFmUtQ0Ewz4p6rAzpvcWd5m22nasWlrxHmqKkb1rktJIlCIKvVZQd4ngIpJnkN8hXDJjosSsGCauleUhwQxm7CH1mgAwojSMQpCBGQQFURaHeMqw1tJiPzDPv2lXIHDzdFV16q/ufoaY/Ioo5aTp0m0fxkS0cCxn8N5cbeZ9nj9BUMXuKLBYTePggvLTG9UVwTgGOYliO3ZXJU=
+        - secure: iiHrXRdX2gPm5GMf2aMmbA6Lel83dVtdHJT9ele4BKfkwQHGIhZ73E4sNsEdj87i4o6YEyOkhJGnD/d2Fve8AYL8wkerxLxh+mqnjZI9qr4X8ZX2nDVcCrC9BE0rnxkEKCBJpuJ1qGsiRO+0bpSHi6G+PHGRh53MhKKrAt5mSncR3dISRgkLtvu9x9T1+gLq+JyfiSMg9c5BsvslBh6ECc26NDi5ySJstd5CkUtbG42pqaR8d1+nuNZQ/zDiLBSsPgbqclHMf3/ZX4LhmHKsnppmNAYfQ+KcWB/on+V3v9J412d9G/KRJ4NQucWhJh1OTeTnaQPk5FazlfgMxvDkRGZBT3LlKZnxN460Ffsi/PF61Zi2fUoYFwAJrujQ6LND8ad43R7t/zUTYxatNTDfL4qP71oiIag2tVXntTfewmDkHpcwe0LvXZKUI/AZuHykxmCzKLdNpfHYgZ8ESLgURBAqhueUqdxq9dkyu9tshc0JRhoZ5PyiP4OlPJ6NPNjbouZWvxZpHRcndJOY88uKd1iIaWzhUPS2K/7+1W1bm8CZvmDc9A0bLWHe/7eH10wMYRjPqCDdvFcJgecnEV+CyT9/8z+uwCX3ZyjqN9jzs1RkoSsJQwi9Bzd+aRaLMt6OX6susBXIbfSS/XEjEJC3NSgnRmZhH4zXqhkEC3Qhesc=
+        - secure: ZLVWUNEE1VW0ljWJP7sqR/XxJEkPJC1Qw5C0AlRgTuFRNmALT/e7MAHCF7L4ekJqXkMyjq1FAiG+FBJ5JfVeegjIcg48pZXDjrvRuup2XCkfA2Z2b/iyAeilHv6hGWAf//VzMjbqF7A4HkQ77T/ABOtKiXIAOX1o6QSbHJSThLheBeh2DqHddZsvB4tF/AJMaA5mR6VxSI5l4YhnmRTYosfTCK0OT/Y2IML6Q/Kb567CmLP+xY9bmi8NMvMGMB4cjzAg9hz7uPY7VWTgVe0xWffns3d+gw43IprqJszlgwVyxRO+o9OT/VSDZmkgTz5GtekFzaQEMjqk4L1adV7lGyAgU/NOlgpgpECE9RRd8licvXIZ/0Ig52UiWHF8HUchDsUHbVUt0kIE0Fu0keg3LP1/iAe+hqwREiHqL2ZXARIQ2nE1quG60jHxg0Xixvg7vTdeusI9Lv8EIRKi2G3RoCxT8cC2mLokTPg+jjhntxKJaaXszLNqGkyTVZX704FrzpH26eZ2cOHf+re5BFCw/E2k7pCeuAON2k0HXDa6M2zE46b6EoPobRqYnZUFKNve2sLDAcpcmPFafm+hl51VXSkDc6YE04CCAQfqIWzxswl+nQDsn2v94iFJChxl8Y4eGfZy7LRge6UPUxB72OluweB0pySau667gCajjKq+9Bc=
 deploy:
-  provider: bintray
-  user: adarro
-  key:
-    secure: DIH7QKRleQPAnZBFQ5VPggYXkzhE8oiR+7p8dzuH5jhwGyqLJ0rYc26bJ9cFK6h32q/lyz2Sy/Q+/YQFIDeLLAgzEoLdLH6Ws50U7HKqEg+atJDZDKy2rNUzAcdCyFfRug3Yj9nte3pZhgsldiZHppnKXK5Uvo0ZjpAhri/M+T11OL8VRx0ciK6Qw4sAyXEXTWsf7HIncZd4QXaoMuhnqvmzSH4NWrCMvy7un8j+F8JU2jWO6CAW7V120i239wOMEt5YxgxrIAJWi9t+KCa056DORlyEvoY7HNcaWBmoEZZmkD3j/kKlBFia1/FjbLtxZAU/24RwR27L2sM2W5TQnWJ8Jd0G+I46jamRKvRnhIZ7dcBataRWy7XTIseN3SRCPUq/TlarXROgOaOO194XcpewDtjQZP+Fyv6P7cdLgPcgdHdnB9YJ78tQgO9T8ZWIVuvJUyfY36k04N3dcPnw8ULvRybXKVuRI6yoVlSdp3ExbL7mBUG1yPs1fny04BN/zsGxAtoRoRpM1uwbQd50JkcXLirAERqUNGbhlyZA86XPflQ2GO4nMu4gAu935Ej/Tjs9atDHteLkXvssAsLBxdo8xTgJGDaDS1uIILdPaPplrErl1OIDL7bYDl14QSdxt+MJJQYYCsFhDGWbdzq8BApyBcZRTOYZTlYrXdGYV3A=
+    provider: bintray
+    user: adarro
+    key:
+        secure: DIH7QKRleQPAnZBFQ5VPggYXkzhE8oiR+7p8dzuH5jhwGyqLJ0rYc26bJ9cFK6h32q/lyz2Sy/Q+/YQFIDeLLAgzEoLdLH6Ws50U7HKqEg+atJDZDKy2rNUzAcdCyFfRug3Yj9nte3pZhgsldiZHppnKXK5Uvo0ZjpAhri/M+T11OL8VRx0ciK6Qw4sAyXEXTWsf7HIncZd4QXaoMuhnqvmzSH4NWrCMvy7un8j+F8JU2jWO6CAW7V120i239wOMEt5YxgxrIAJWi9t+KCa056DORlyEvoY7HNcaWBmoEZZmkD3j/kKlBFia1/FjbLtxZAU/24RwR27L2sM2W5TQnWJ8Jd0G+I46jamRKvRnhIZ7dcBataRWy7XTIseN3SRCPUq/TlarXROgOaOO194XcpewDtjQZP+Fyv6P7cdLgPcgdHdnB9YJ78tQgO9T8ZWIVuvJUyfY36k04N3dcPnw8ULvRybXKVuRI6yoVlSdp3ExbL7mBUG1yPs1fny04BN/zsGxAtoRoRpM1uwbQd50JkcXLirAERqUNGbhlyZA86XPflQ2GO4nMu4gAu935Ej/Tjs9atDHteLkXvssAsLBxdo8xTgJGDaDS1uIILdPaPplrErl1OIDL7bYDl14QSdxt+MJJQYYCsFhDGWbdzq8BApyBcZRTOYZTlYrXdGYV3A=

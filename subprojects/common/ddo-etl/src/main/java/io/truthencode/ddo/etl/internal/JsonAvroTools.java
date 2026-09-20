@@ -15,6 +15,7 @@ import org.apache.avro.specific.SpecificDatumWriter;
 
 import java.io.*;
 import java.math.BigInteger;
+import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.util.Base64;
@@ -33,17 +34,17 @@ public class JsonAvroTools {
             dataOutFilePath = dataOutFilePath.concat(File.separator).concat(UUID.randomUUID().toString()).concat(".json");
             DataOutputStream dataOutputStream = new DataOutputStream(new FileOutputStream(dataOutFilePath));
             // unfinished
-            dataOutputStream.write("{\"".concat(rootName).concat("\":{\"").concat(AVRO_ARRAY).concat("\":[").getBytes());
+            dataOutputStream.write("{\"".concat(rootName).concat("\":{\"").concat(AVRO_ARRAY).concat("\":[").getBytes(StandardCharsets.UTF_8));
             dataFileStream.forEachRemaining(gr -> {
                 try {
-                    dataOutputStream.write(String.valueOf(dataFileStream.next()).getBytes());
-                    dataOutputStream.write(!dataFileStream.hasNext() ? "]".getBytes() : ",".getBytes());
+                    dataOutputStream.write(String.valueOf(dataFileStream.next()).getBytes(StandardCharsets.UTF_8));
+                    dataOutputStream.write(!dataFileStream.hasNext() ? "]".getBytes(StandardCharsets.UTF_8) : ",".getBytes(StandardCharsets.UTF_8));
                 } catch (IOException e) {
                     throw new RuntimeException(e);
                 }
             });
             dataOutputStream.writeBytes("}}");
-            readOutput.setOutput(Base64.getEncoder().encodeToString(dataOutFilePath.getBytes()));
+            readOutput.setOutput(Base64.getEncoder().encodeToString(dataOutFilePath.getBytes(StandardCharsets.UTF_8)));
             readOutput.setValid(Boolean.TRUE);
         } catch (Exception e) {
             readOutput.setErrorObject(generateError(e));
@@ -60,7 +61,7 @@ public class JsonAvroTools {
             Schema schema = new Schema.Parser().parse(avroSchema);
             DatumWriter<GenericRecord> datumWriter = new SpecificDatumWriter<>(schema);
             DataFileWriter<GenericRecord> dataFileWriter = new DataFileWriter<>(datumWriter);
-            dataFileWriter.create(schema, new DataOutputStream(new FileOutputStream(new File(dataOutFilePath))));
+            dataFileWriter.create(schema, new DataOutputStream(new FileOutputStream(dataOutFilePath)));
             if (jsonDataMap != null && jsonDataMap.get(AVRO_ARRAY) != null && jsonDataMap.get(AVRO_ARRAY) instanceof List<?>) {
                 List<Map<String, Object>> list = (List<Map<String, Object>>) jsonDataMap.get(AVRO_ARRAY);
                 for (Map<String, Object> data : list) {
@@ -77,7 +78,7 @@ public class JsonAvroTools {
             }
             dataFileWriter.flush();
             writeOutput.setValid(Boolean.TRUE);
-            writeOutput.setOutput(Base64.getEncoder().encodeToString(dataOutFilePath.getBytes()));
+            writeOutput.setOutput(Base64.getEncoder().encodeToString(dataOutFilePath.getBytes(StandardCharsets.UTF_8)));
         } catch (Exception e) {
             writeOutput.setErrorObject(generateError(e));
             writeOutput.setValid(Boolean.FALSE);

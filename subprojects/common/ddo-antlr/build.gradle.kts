@@ -58,15 +58,13 @@ data class PackagePath(
 }
 
 tasks {
-    // TODO: Make this task cacheable by configuring inputs and outputs appropriately
     generateGrammarSource {
         logger.warn("outputDirectory: ${outputDirectory.path}")
         val outPath = antlrJavaPath.packageToPath(outputFolderBase = outputDirectory).path
         doFirst {
             logger.warn("making outputDirectory: ${outputDirectory.path}")
-            project.mkdir(outPath)
+            File(outPath).mkdirs()
         }
-//        project.mkdir(outPath)
         logger.warn("setting -lib to : $outPath")
         maxHeapSize = "64m"
         arguments = arguments +

@@ -34,9 +34,9 @@ import io.truthencode.ddo.support.requisite.{
  * Also increases your spell critical chance by 1%. Stacks with Mental Toughness.
  *
  * @todo
- *   Need to add ability to cast X Level spells as requisite Mental Toughness, Ability to cast 3rd
- *   level spells Level 5: Cleric, Druid, Wizard Level 6: Favored Soul, Sorcerer Level 7: Artificer,
- *   Bard; Level 10: Paladin, Ranger
+ *   Need to add the ability to cast X Level spells as requisite Mental Toughness, Ability to cast
+ *   3rd level spells Level 5: Cleric, Druid, Wizard Level 6: Favored Soul, Sorcerer Level 7:
+ *   Artificer, Bard; Level 10: Paladin, Ranger
  */
 protected[feats] trait ImprovedMentalToughness
   extends FeatRequisiteImpl with BonusSelectableToClassFeatImpl with ClassRequisiteImpl with Passive

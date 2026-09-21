@@ -29,18 +29,20 @@ plugins {
     id("buildlogic.quality-sonar")
 }
 
-// FIXME: quarkus failing on this block?
 tasks.withType(Test::class.java) {
     val t = this
-    logger.info("Were in test config for ${project.name}")
+    logger.warn("Were in test config for ${project.name}")
     // Jandex dependencies needed here where plugin is applied
     project.plugins.withId("org.kordamp.gradle.jandex") {
         val jandexProjectTask = ":${project.name}:jandex"
-        logger.info("binding project ${project.name} task to $jandexProjectTask")
+        logger.warn("binding project ${project.name} task to $jandexProjectTask")
         t.dependsOn(jandexProjectTask)
     }
-    systemProperties["concordion.output.dir"] = "${reporting.baseDirectory}/tests"
+//    val outDir = "${reporting.baseDirectory.get()}/tests"
+    systemProperties["concordion.output.dir"] = reports.junitXml.outputLocation.get()
     val outputDir = reports.junitXml.outputLocation
+
+//    logger.warn("Setting concordion.output.dir \tto:\t $outDir\nSetting junit.platform.reporting.output.dir \tto: \t${outputDir.get()}")
 
     val extraProps = mutableListOf("-Djunit.platform.reporting.output.dir=${outputDir.get().asFile.absolutePath}")
 
@@ -155,15 +157,12 @@ enum class TestEngine(
 
 typealias ProjectLanguages = EnumSet<ProjectLanguage>
 
-// infix fun ProjectLanguages.or(other: ProjectLanguages): ProjectLanguages = this.stream().map {
-//    it.ordinal
-
 fun current(): EnumSet<ProjectLanguage>? {
     val pl = ProjectLanguages.noneOf(ProjectLanguage::class.java)
     if (project.plugins.hasPlugin("scala")) {
         pl.add(ProjectLanguage.Scala)
     }
-    // TODO: supplort check for Kotlin Multi Platform
+    // TODO: support check for Kotlin Multi Platform
     if (project.plugins.hasPlugin("kotlin")) {
         pl.add(ProjectLanguage.Kotlin)
     }
@@ -177,11 +176,11 @@ fun current(): EnumSet<ProjectLanguage>? {
  * Flags if we are using a 'pure' jvm project or mixed (Java + Scala / Kotlin)
  */
 fun projectComposition(): LanguageComposition? {
-    return current()?.size?.let {
-        return if (it > 1) {
+    return current()?.size?.let { entry ->
+        return if (entry > 1) {
             LanguageComposition.Mixed
         } else {
-            LanguageComposition.values().find { it.ordinal == current()?.first()?.ordinal }
+            LanguageComposition.entries.find { it.ordinal == current()?.first()?.ordinal }
         }
     }
 }

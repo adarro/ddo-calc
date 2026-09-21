@@ -40,20 +40,18 @@ jobs:
                           "https://github.com/${CIRCLE_PROJECT_USERNAME}/${CIRCLE_PROJECT_REPONAME}.git" .
                       git checkout "$CIRCLE_SHA1"
                       git fetch origin +refs/heads/master:refs/remotes/origin/master
-            - run: ./gradlew assemble
-            - run: if [ -e ./gradlew ]; then ./gradlew reportScoverage aggregateScoverage --continue;else gradle reportScoverage aggregateScoverage --continue;fi
-            - codecov/upload
-            # Download and cache dependencies
             - restore_cache:
                   keys:
                       - v1-dependencies-{{ checksum "build.gradle.kts" }}
                       # fallback to using the latest cache if no exact match is found
                       - v1-dependencies-
-
+            - run: ./gradlew assemble
+            - run: if [ -e ./gradlew ]; then ./gradlew reportScoverage aggregateScoverage --continue;else gradle reportScoverage aggregateScoverage --continue;fi
             - save_cache:
                   paths:
                       - ~/.gradle
-                  key: v1-dependencies--{{ checksum "build.gradle.kts" }}
+                  key: v1-dependencies-{{ checksum "build.gradle.kts" }}
+            - codecov/upload
 workflows:
     example-workflow:
         jobs:

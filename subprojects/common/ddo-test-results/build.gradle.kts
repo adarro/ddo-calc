@@ -1,7 +1,7 @@
 import java.io.Writer
 
 plugins {
-    `base`
+    base
     id("buildlogic.common-conventions")
 //    `jvm-test-suite`
     id("test-report-aggregation")

@@ -113,14 +113,20 @@ afterEvaluate {
                 "-new-syntax",
             )
 
+        val s2LocalDebug = listOf( "-feature",
+            "-deprecation",
+            "-Ywarn-dead-code",)
+
+        val s3LocalDebug = listOf("-feature",
+            "-explain",
+        )
+
         val configuredScalaVersion = scalaBuildExtension.scalaVersion.get()
         logger.debug("${project.name}:$cName Scala Version: $configuredScalaVersion")
 
         when (configuredScalaVersion) {
             "3" -> {
                 opts = listOf(
-                    "-feature",
-                    "-explain",
                     "-Wsafe-init",
                     "-Yretain-trees",
                 ) + s3Rewrites // + s3Sdb
@@ -132,9 +138,6 @@ afterEvaluate {
             "2" -> {
                 opts =
                     listOf(
-                        "-feature",
-                        "-deprecation",
-                        "-Ywarn-dead-code",
                         "-Xsource:3-cross",
                     ) // + s2Sdb
                 scalaCompileOptions.additionalParameters?.plusAssign(

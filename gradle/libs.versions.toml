@@ -331,18 +331,19 @@ quarkus-hibernate-orm = { module = "io.quarkus:quarkus-hibernate-orm" }
 quarkus-hibernate-orm-panache = { module = "io.quarkus:quarkus-hibernate-orm-panache" }
 quarkus-hibernate-orm-panache-kotlin = { module = "io.quarkus:quarkus-hibernate-orm-panache-kotlin" }
 quarkus-hibernate-reactive-rest-data-panache = { module = "io.quarkus:quarkus-hibernate-reactive-rest-data-panache" }
-quarkus-hibernate-validator = { module = "io.quarkus:quarkus-hibernate-validator" }
+quarkus-hibernate-validator = { module = "io.quarkus:quarkus-hibernate-validator", version.ref = "quarkus" }
 quarkus-jackson = { module = "io.quarkus:quarkus-jackson" }
 quarkus-jacoco = { module = "io.quarkus:quarkus-jacoco" }
 quarkus-jdbc-postgresql = { module = "io.quarkus:quarkus-jdbc-postgresql" }
 quarkus-junit5 = { module = "io.quarkus:quarkus-junit5" }
+quarkus-junit5-component = { module = "io.quarkus:quarkus-junit5-component" }
 quarkus-kotlin = { module = "io.quarkus:quarkus-kotlin" }
 quarkus-mailer = { module = "io.quarkus:quarkus-mailer" }
 quarkus-messaging-kafka = { module = "io.quarkus:quarkus-messaging-kafka" }
 quarkus-mockito = { module = "io.quarkus:quarkus-junit5-mockito", version.ref = "quarkus" }
 quarkus-mutiny = { module = "io.quarkus:quarkus-mutiny" }
 quarkus-narayana-jta = { module = "io.quarkus:quarkus-narayana-jta" }
-quarkus-openapi = { module = "io.quarkus:quarkus-smallrye-openapi" }
+quarkus-openapi = { module = "io.quarkus:quarkus-smallrye-openapi", version.ref = "quarkus"  }
 quarkus-qute-web = { module = "io.quarkiverse.qute.web:quarkus-qute-web" }
 quarkus-reactive-pg-client = { module = "io.quarkus:quarkus-reactive-pg-client" }
 quarkus-reactive-routes = { module = "io.quarkus:quarkus-reactive-routes" }
@@ -351,15 +352,15 @@ quarkus-renarde-backoffice = { module = "io.quarkiverse.renarde:quarkus-renarde-
 quarkus-renarde-pdf = { module = "io.quarkiverse.renarde:quarkus-renarde-pdf", version.ref = "quarkus-renarde" }
 quarkus-renarde-security = { module = "io.quarkiverse.renarde:quarkus-renarde-security", version.ref = "quarkus-renarde" }
 quarkus-renarde-tests = { module = "io.quarkiverse.renarde:quarkus-renarde-test", version.ref = "quarkus-renarde" }
-quarkus-rest = { module = "io.quarkus:quarkus-rest" }
+quarkus-rest = { module = "io.quarkus:quarkus-rest", version.ref = "quarkus"  }
 quarkus-rest-jackson = { module = "io.quarkus:quarkus-rest-jackson" }
 quarkus-rest-qute = { module = "io.quarkus:quarkus-rest-qute" }
 quarkus-resteasy-reactive = { module = "io.quarkus:quarkus-resteasy-reactive", version.ref = "quarkus" }
 quarkus-scala-s3 = { module = "io.quarkiverse.scala:quarkus-scala3", version.ref = "quarkus-s3" }
-quarkus-smallrye-context-propagation = { module = "io.quarkus:quarkus-smallrye-context-propagation" }
-quarkus-smallrye-health = { module = "io.quarkus:quarkus-smallrye-health" }
+quarkus-smallrye-context-propagation = { module = "io.quarkus:quarkus-smallrye-context-propagation", version.ref = "quarkus" }
+quarkus-smallrye-health = { module = "io.quarkus:quarkus-smallrye-health", version.ref = "quarkus" }
 quarkus-smallrye-metrics = { module = "io.quarkus:quarkus-smallrye-metrics" }
-quarkus-smallrye-openapi = { module = "io.quarkus:quarkus-smallrye-openapi" }
+quarkus-smallrye-openapi = { module = "io.quarkus:quarkus-smallrye-openapi", version.ref = "quarkus"  }
 quarkus-webjars = { module = "io.quarkus:quarkus-web-dependency-locator", version.ref = "quarkus" }
 # Not sure if we need this?
 # scala-library = { module = "org.scala-lang:scala-library", version.ref = "scala2-version" }

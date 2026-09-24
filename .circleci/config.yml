@@ -48,7 +48,7 @@ jobs:
                       # fallback to using the latest cache if no exact match is found
                       - v1-dependencies-
             - run: ./gradlew assemble
-            - run: if [ -e ./gradlew ]; then ./gradlew reportScoverage aggregateScoverage --no-configuration-cache --continue;else gradle reportScoverage aggregateScoverage --no-configuration-cache --continue;fi
+            - run: if [ -e ./gradlew ]; then ./gradlew check reportScoverage aggregateScoverage --no-configuration-cache --continue;else gradle check reportScoverage aggregateScoverage --no-configuration-cache --continue;fi
             - save_cache:
                   paths:
                       - ~/.gradle

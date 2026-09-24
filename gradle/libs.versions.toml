@@ -1,4 +1,3 @@
-
 [versions]
 airframe = "23.9.0"
 allure = "2.25.0"
@@ -11,7 +10,7 @@ bootstrap = "5.3.3"
 bootstrap-icons = "1.10.5"
 camel = "4.20.2"
 # compiled in Kotlin thus bound to kotlin version
-cashapp-sqldelight = "2.0.1"
+cashapp-sqldelight = "2.4.0"
 chimney = "1.4.0"
 ci-detect-plugin = "0.5.0"
 commons-lang3 = "3.13.0"
@@ -23,7 +22,7 @@ enumeratum = "1.7.5"
 errorprone-plugin = "5.1.1"
 errorprone-processor = "2.50.0"
 flexmark = "0.64.8"
-freefair-lombok-plugin = "8.7.1"
+freefair-lombok-plugin = "9.7.0"
 gatling-highcharts = "3.15.1"
 getquill = "4.8.6"
 google-java-format = "1.36.1"
@@ -64,7 +63,7 @@ junit5 = "6.1.3"
 kasechange = "1.4.1"
 kordamp-jandex-gradle-plugin = "2.0.0"
 kotest = "6.2.4"
-kotlin = "2.4.10"
+kotlin = "2.4.20"
 logback = "1.6.3"
 lombok = "1.18.48"
 magnum-s3 = "1.2.1"
@@ -75,14 +74,14 @@ mockito = "5.16.0"
 monix = "3.4.1"
 moshi = "1.15.2"
 mutiny-vertx = "3.18.1"
+nullaway-checker = "0.14.1"
 # nullaway = "0.13.8"
 nullaway-gradle = "3.2.0"
-nullaway-checker = "0.14.1"
 org-cometd-java = "8.0.2"
 org-eclipse-jetty = "12.0.10"
 oshai-logging = "4.0.2"
 plantuml-generator-plugin = "0.0.3"
-plantuml-plugin = "9.5.0"
+plantuml-plugin = "9.7.0"
 pulsar-client = "4.2.4"
 pulsar4s = "2.12.0.1"
 quarkus = "3.39.5"
@@ -101,7 +100,7 @@ scala2-version = "2.13.18"
 scala3-version = "3.8.4"
 scalaFmt = "3.11.5"
 scalacheck = "1.19.0"
-scalafix-plugin = "0.2.2"
+scalafix-plugin = "0.3.0"
 scalatest = "3.2.20"
 scalatestplus = "3.2.20"
 scalatestplus-extension = "3.2.20.0"
@@ -113,9 +112,9 @@ sortablejs = "1.15.6"
 spotless-plugin = "7.0.2"
 spring-dependency-management-plugin = "1.1.7"
 sttp = "3.9.8"
-swagger-plugin = "2.2.53"
+swagger-plugin = "2.2.55"
 # TODO: Remove Legacy Kotlin symbol processing plugin
-symbol-processing-gradle-plugin = "1.5.30-1.0.0"
+symbol-processing-gradle-plugin = "2.3.12"
 taxi-lang = "1.71.0"
 testcontainers = "1.19.0"
 testcontainers-mongo = "1.19.0"
@@ -129,7 +128,6 @@ vertx = "4.6.8"
 wix-accord = "0.7.6"
 zio-dev = "2.1.26"
 zio-prelude = "1.0.0-RC48"
-
 
 # @SuppressWarnings("unused")
 [bundles]
@@ -159,46 +157,43 @@ xodus = [
 #scala-logging = ["typesafe-scala-logging-s213", "typesafe-config"]
 [plugins]
 avrohugger = { id = "com.zlad.gradle.avrohugger", version.ref = "avrohugger" }
-com-adarshr-test-logger = { id="com.adarshr.test-logger", version = "4.0.0" }
-com-dorongold-task-tree = { id="com.dorongold.task-tree", version = "4.0.2" }
-com-github-ManifestClasspath = { id="com.github.ManifestClasspath", version = "0.1.0-RELEASE" }
-com-github-ben-manes-versions = { id="com.github.ben-manes.versions", version = "0.64.0" }
-com-vanniktech-dependency-graph-generator = { id="com.vanniktech.dependency.graph.generator", version = "0.8.0" }
-com-zlad-gradle-avrohugger = { id="com.zlad.gradle.avrohugger", version = "2.0.0" }
-errorprone = {id="net.ltgt.errorprone", version.ref = "errorprone-plugin"}
-io-gatling-gradle = { id="io.gatling.gradle", version = "3.15.1.3" }
-nl-littlerobots-version-catalog-update = { id="nl.littlerobots.version-catalog-update", version = "1.1.1" }
-nullaway = {id ="net.ltgt.nullaway", version.ref = "nullaway-gradle"}
-openapi-generator = { id="org.openapi.generator", version = "7.25.0" }
-org-openapi-generator = { id="org.openapi.generator", version = "7.24.0" }
-org-sonarqube = { id="org.sonarqube", version = "7.5.0.8588" }
-quarkus = { id = "io.quarkus", version.ref = "quarkus" }
-ru-vyarus-mkdocs = { id="ru.vyarus.mkdocs", version = "4.0.1" }
-scoverage = { id = "org.scoverage", version.ref = "scoverage-plugin" }
-freefair-lombok-plugin = { id = "io.freefair.lombok", version.ref = "freefair-lombok-plugin" }
-gradle-node = { id = "com.github.node-gradle.node", version.ref = "gradle-node-plugin" }
 cashapp-sqldelight = { id = "app.cash.sqldelight", version.ref = "cashapp-sqldelight" }
 ci-detect = { id = "be.vbgn.ci-detect", version.ref = "ci-detect-plugin" }
-# gradle-dependency-plantuml-exporter-plugin = { id = "gradle.plugin.ms.ralph.gradle:gradle-dependency-plantuml-exporter-plugin", version.ref = "gradle-dependency-plantuml-exporter-plugin" }
-gradle-plantuml = { id = "com.cosminpolifronie.gradle:gradle-plantuml-plugin", version.ref = "gradle-plantuml-plugin" }
-jandex-gradle = { id = "org.kordamp.gradle.jandex", version.ref = "jandex-gradle-plugin" }
+com-adarshr-test-logger = "com.adarshr.test-logger:4.0.0"
+com-dorongold-task-tree = "com.dorongold.task-tree:4.0.2"
+com-github-ManifestClasspath = "com.github.ManifestClasspath:0.1.0-RELEASE"
+com-github-ben-manes-versions = "com.github.ben-manes.versions:0.64.0"
+com-vanniktech-dependency-graph-generator = "com.vanniktech.dependency.graph.generator:0.8.0"
+com-zlad-gradle-avrohugger = "com.zlad.gradle.avrohugger:2.0.0"
+dependency-updates = { id = "com.javiersc.gradle.plugins.dependency.updates", version.ref = "dependency-updates" }
+errorprone = { id = "net.ltgt.errorprone", version.ref = "errorprone-plugin" }
+freefair-lombok-plugin = { id = "io.freefair.lombok", version.ref = "freefair-lombok-plugin" }
 freefair-plantuml = { id = "io.freefair.plantuml", version.ref = "plantuml-plugin" }
+gradle-node = { id = "com.github.node-gradle.node", version.ref = "gradle-node-plugin" }
+# gradle-dependency-plantuml-exporter-plugin = { id = "gradle.plugin.ms.ralph.gradle:gradle-dependency-plantuml-exporter-plugin", version.ref = "gradle-dependency-plantuml-exporter-plugin" }
+gradle-plantuml = { id = "com.cosminpolifronie.gradle.plantuml", version.ref = "gradle-plantuml-plugin" }
+io-gatling-gradle = "io.gatling.gradle:3.15.1.3"
+jandex-gradle = { id = "org.kordamp.gradle.jandex", version.ref = "jandex-gradle-plugin" }
+kotlin-allopen = { id = "org.jetbrains.kotlin.plugin.allopen", version.ref = "kotlin" }
+nl-littlerobots-version-catalog-update = "nl.littlerobots.version-catalog-update:1.1.1"
+nullaway = { id = "net.ltgt.nullaway", version.ref = "nullaway-gradle" }
+openapi-generator = "org.openapi.generator:7.25.0"
+org-openapi-generator = "org.openapi.generator:7.24.0"
+org-sonarqube = "org.sonarqube:7.5.0.8588"
 plantuml-dripto = { id = "org.dripto.gradle.plugin.plantuml.plantuml-generator", version.ref = "plantuml-generator-plugin" }
+quarkus = "io.quarkus:3.39.5"
+ru-vyarus-mkdocs = "ru.vyarus.mkdocs:4.0.1"
 scalafix = { id = "io.github.cosmicsilence.scalafix", version.ref = "scalafix-plugin" }
+scoverage = { id = "org.scoverage", version.ref = "scoverage-plugin" }
 sonarqube = { id = "org.sonarqube", version.ref = "sonarqube-plugin" }
 spotless = { id = "com.diffplug.spotless", version.ref = "spotless-plugin" }
+spring-dependency-management = { id = "io.spring.dependency-management", version.ref = "spring-dependency-management-plugin" }
 swagger = { id = "io.swagger.core.v3.swagger-gradle-plugin", version.ref = "swagger-plugin" }
 symbol-processing = { id = "com.google.devtools.ksp", version.ref = "symbol-processing-gradle-plugin" }
 versions-catalog = { id = "nl.littlerobots.version-catalog-update", version.ref = "version-catalog-plugin" }
 versions-manes = { id = "com.github.ben-manes.versions", version.ref = "version-plugin" }
-dependency-updates = { id = "com.javiersc.gradle.plugins.dependency.updates", version.ref = "dependency-updates" }
-spring-dependency-management = { id = "io.spring.dependency-management", version.ref = "spring-dependency-management-plugin" }
-kotlin-allopen = { id = "org.jetbrains.kotlin.plugin.allopen", version.ref = "kotlin" }
+
 # kotlin-gradle-plugin = { module = "org.jetbrains.kotlin:kotlin-gradle-plugin", version.ref = "kotlin" }
-
-
-
-
 [libraries]
 accord-core-s213 = { module = "com.wix:accord-core_2.13", version.ref = "wix-accord" }
 airframe-config-s213 = { module = "org.wvlet.airframe:airframe-config_2.13", version.ref = "airframe" }
@@ -220,7 +215,6 @@ camel-pulsar = { module = "org.apache.camel:camel-pulsar", version.ref = "camel"
 camel-testcontainers-junit5 = { module = "org.apache.camel:camel-testcontainers-junit5", version.ref = "camel" }
 chimney-s213 = { module = "io.scalaland:chimney_2.13", version.ref = "chimney" }
 chimney-s3 = { module = "io.scalaland:chimney_3", version.ref = "chimney" }
-
 commons-lang3 = { module = "org.apache.commons:commons-lang3", version.ref = "commons-lang3" }
 concordion = "org.concordion:concordion:4.0.1"
 concordion-collapse-output-extension = "org.concordion:concordion-collapse-output-extension:1.0.0"
@@ -244,9 +238,6 @@ gatling-charts-highcharts = { module = "io.gatling.highcharts:gatling-charts-hig
 github-oshai-kotlin-logging = { module = "io.github.oshai:kotlin-logging-jvm", version.ref = "oshai-logging" }
 google-truth = { module = "com.google.truth:truth", version.ref = "truth" }
 gradle-bloop = { module = "ch.epfl.scala:gradle-bloop_2.13", version.ref = "gradle-bloop" }
-
-
-
 # Guava Needed to force truth to NOT pollute with andriod version
 guava-jre = { module = "com.google.guava:guava", version.ref = "guava-truth" }
 h2 = { module = "com.h2database:h2", version.ref = "h2" }
@@ -269,7 +260,6 @@ jakarta-inject-api = { module = "jakarta.inject:jakarta.inject-api", version.ref
 jakarta-servlet-jakarta-servlet-api = { module = "jakarta.servlet:jakarta.servlet-api", version.ref = "jakarta-servlet-jakarta-servlet-api" }
 jakarta-validation = { module = "jakarta.validation:jakarta.validation-api", version.ref = "jakarta-validation" }
 jandex = { module = "io.smallrye:jandex", version.ref = "smallrye-jandex" }
-
 javax-servlet-api = { module = "jakarta.servlet:jakarta.servlet-api", version.ref = "javax-servlet-api" }
 javax-ws-rs-api = { module = "jakarta.ws.rs:jakarta.ws.rs-api", version.ref = "javax-ws-rs-api" }
 jayway-jsonpath = { module = "com.jayway.jsonpath:json-path", version.ref = "jayway-jsonpath" }
@@ -317,7 +307,7 @@ monix-eval-s213 = { module = "io.monix:monix-eval_2.13", version.ref = "monix" }
 monix-execution-s213 = { module = "io.monix:monix-execution_2.13", version.ref = "monix" }
 monix-reactive-s213 = { module = "io.monix:monix-reactive_2.13", version.ref = "monix" }
 moshi-kotlin = { module = "com.squareup.moshi:moshi-kotlin", version.ref = "moshi" }
-nullaway = { module = "com.uber.nullaway:nullaway", version.ref = "nullaway-checker"}
+nullaway = { module = "com.uber.nullaway:nullaway", version.ref = "nullaway-checker" }
 org-cometd-java-client = { module = "org.cometd.java:cometd-java-client", version.ref = "org-cometd-java" }
 org-cometd-java-client-http-jetty = { module = "org.cometd.java:cometd-java-client-http-jetty", version.ref = "org-cometd-java" }
 org-cometd-java-client-websocket-jakarta = { module = "org.cometd.java:cometd-java-client-websocket-jakarta", version.ref = "org-cometd-java" }
@@ -339,7 +329,6 @@ pulsar4s-monix-s213 = { module = "com.clever-cloud.pulsar4s:pulsar4s-monix_2.13"
 quarkus-arc = { module = "io.quarkus:quarkus-arc" }
 quarkus-flyway = { module = "io.quarkus:quarkus-flyway" }
 quarkus-freemarker = { module = "io.quarkiverse.freemarker:quarkus-freemarker", version.ref = "quarkus-freemarker" }
-
 quarkus-hibernate-orm = { module = "io.quarkus:quarkus-hibernate-orm" }
 quarkus-hibernate-orm-panache = { module = "io.quarkus:quarkus-hibernate-orm-panache" }
 quarkus-hibernate-orm-panache-kotlin = { module = "io.quarkus:quarkus-hibernate-orm-panache-kotlin" }

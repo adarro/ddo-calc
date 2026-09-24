@@ -44,15 +44,20 @@ jobs:
                       git fetch origin +refs/heads/master:refs/remotes/origin/master
             - restore_cache:
                   keys:
+                      - v1-dependencies-{{ .Branch }}-{{ checksum "gradle/libs.versions.toml" }}
                       - v1-dependencies-{{ checksum "gradle/libs.versions.toml" }}
                       # fallback to using the latest cache if no exact match is found
                       - v1-dependencies-
-            - run: ./gradlew assemble
-            - run: if [ -e ./gradlew ]; then ./gradlew check reportScoverage aggregateScoverageTestReporting aggregateAcceptanceTestReporting aggregateTestReporting --no-configuration-cache --continue;else gradle check reportScoverage aggregateScoverageTestReporting aggregateAcceptanceTestReporting aggregateTestReporting --no-configuration-cache --continue;fi
+            - with_tool_cache:
+                  tool: gradle
+                  steps:
+                      - run: ./gradlew assemble
+                      - run: if [ -e ./gradlew ]; then ./gradlew check reportScoverage aggregateScoverageTestReporting aggregateAcceptanceTestReporting aggregateTestReporting --no-configuration-cache --continue;else gradle check reportScoverage aggregateScoverageTestReporting aggregateAcceptanceTestReporting aggregateTestReporting --no-configuration-cache --continue;fi
             - save_cache:
                   paths:
-                      - ~/.gradle
-                  key: v1-dependencies-{{ checksum "gradle/libs.versions.toml" }}
+                      - ~/.gradle/caches
+                      - ~/.gradle/wrapper
+                  key: v1-dependencies-{{ .Branch }}-{{ checksum "gradle/libs.versions.toml" }}
             # 2. Upload the aggregated XML files to the CircleCI "Tests" tab
             # You can pass the parent directory to upload both suites at once
             - store_test_results:

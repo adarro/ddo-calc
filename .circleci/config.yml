@@ -44,7 +44,7 @@ jobs:
                       git fetch origin +refs/heads/master:refs/remotes/origin/master
             - restore_cache:
                   keys:
-                      - v1-dependencies-{{ checksum "build.gradle.kts" }}
+                      - v1-dependencies-{{ checksum "gradle/libs.versions.toml" }}
                       # fallback to using the latest cache if no exact match is found
                       - v1-dependencies-
             - run: ./gradlew assemble
@@ -52,7 +52,7 @@ jobs:
             - save_cache:
                   paths:
                       - ~/.gradle
-                  key: v1-dependencies-{{ checksum "build.gradle.kts" }}
+                  key: v1-dependencies-{{ checksum "gradle/libs.versions.toml" }}
             - codecov/upload
 workflows:
     example-workflow:

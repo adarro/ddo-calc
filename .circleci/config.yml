@@ -59,9 +59,16 @@ jobs:
                       - ~/.gradle/wrapper
                   key: v1-dependencies-{{ .Branch }}-{{ checksum "gradle/libs.versions.toml" }}
             # 2. Upload the aggregated XML files to the CircleCI "Tests" tab
-            # You can pass the parent directory to upload both suites at once
+            # Collect only JUnit TEST-*.xml files to avoid pom.xml/site.xml parse errors
+            - run:
+                  name: Collect test results
+                  when: always
+                  command: |
+                      mkdir -p /tmp/test-results
+                      find subprojects -name "TEST-*.xml" -path "*/build/test-results/*" \
+                          -exec cp --parents {} /tmp/test-results/ \;
             - store_test_results:
-                  path: subprojects/common
+                  path: /tmp/test-results
             - store_artifacts:
                   path: subprojects/common/ddo-test-results/build/reports/tests/test/aggregated-results
                   destination: unit-test-html-report

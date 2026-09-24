@@ -38,7 +38,10 @@ tasks.withType(Test::class.java) {
         logger.warn("binding project ${project.name} task to $jandexProjectTask")
         t.dependsOn(jandexProjectTask)
     }
-    val outDir = reports.junitXml.outputLocation.get().toString()
+    val outDir =
+        reports.junitXml.outputLocation
+            .get()
+            .toString()
     if (t.name.contains("acceptance")) {
         failOnNoDiscoveredTests = false
     }

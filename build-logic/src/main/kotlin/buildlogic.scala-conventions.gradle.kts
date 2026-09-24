@@ -113,13 +113,18 @@ afterEvaluate {
                 "-new-syntax",
             )
 
-        val s2LocalDebug = listOf( "-feature",
-            "-deprecation",
-            "-Ywarn-dead-code",)
+        val s2LocalDebug =
+            listOf(
+                "-feature",
+                "-deprecation",
+                "-Ywarn-dead-code",
+            )
 
-        val s3LocalDebug = listOf("-feature",
-            "-explain",
-        )
+        val s3LocalDebug =
+            listOf(
+                "-feature",
+                "-explain",
+            )
 
         val configuredScalaVersion = scalaBuildExtension.scalaVersion.get()
         logger.debug("${project.name}:$cName Scala Version: $configuredScalaVersion")

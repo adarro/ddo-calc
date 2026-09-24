@@ -53,6 +53,16 @@ jobs:
                   paths:
                       - ~/.gradle
                   key: v1-dependencies-{{ checksum "gradle/libs.versions.toml" }}
+            # 2. Upload the aggregated XML files to the CircleCI "Tests" tab
+            # You can pass the parent directory to upload both suites at once
+            - store_test_results:
+                  path: subprojects/common/ddo-test-results/build/reports/test-results
+            - store_artifacts:
+                  path: subprojects/common/ddo-test-results/build/reports/tests/test/aggregated-results
+                  destination: unit-test-html-report
+            - store_artifacts:
+                  path: subprojects/common/ddo-test-results/build/reports/tests/acceptanceTest/aggregated-results
+                  destination: acceptance-test-html-report
             - codecov/upload
 workflows:
     example-workflow:

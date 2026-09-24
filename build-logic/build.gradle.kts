@@ -76,9 +76,8 @@ dependencies {
     // plant uml
     implementation(plugin(libs.plugins.freefair.plantuml))
     implementation(plugin(libs.plugins.plantuml.dripto))
-    
 
-    implementation(plugin(libs.plugins.swagger))    
+    implementation(plugin(libs.plugins.swagger))
     implementation(plugin(libs.plugins.spring.dependency.management))
 
     // kotlin

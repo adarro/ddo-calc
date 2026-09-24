@@ -28,7 +28,7 @@ plugins {
 val libs = the<LibrariesForLibs>()
 
 afterEvaluate {
-    tasks.withType< KotlinJvmCompile>().configureEach {
+    tasks.withType<KotlinJvmCompile>().configureEach {
         compilerOptions {
 
             freeCompilerArgs.add(

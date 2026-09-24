@@ -132,26 +132,26 @@ zio-prelude = "1.0.0-RC48"
 # @SuppressWarnings("unused")
 [bundles]
 concordion = [
-    "concordion",
-    "concordion-collapse-output-extension",
-    "concordion-embed-extension",
+  "concordion",
+  "concordion-collapse-output-extension",
+  "concordion-embed-extension",
 ]
 hoplite = [
-    "sksamuel-hoplite-core",
-    "sksamuel-hoplite-hocon",
-    "sksamuel-hoplite-yaml",
+  "sksamuel-hoplite-core",
+  "sksamuel-hoplite-hocon",
+  "sksamuel-hoplite-yaml",
 ]
 kotest = [
-    "kotest-assertions-core-jvm",
-    "kotest-property-jvm",
-    "kotest-runner-junit-jvm",
+  "kotest-assertions-core-jvm",
+  "kotest-property-jvm",
+  "kotest-runner-junit-jvm",
 ]
 xodus = [
-    "xodus-crypto",
-    "xodus-entity-store",
-    "xodus-environment",
-    "xodus-openAPI",
-    "xodus-vfs",
+  "xodus-crypto",
+  "xodus-entity-store",
+  "xodus-environment",
+  "xodus-openAPI",
+  "xodus-vfs",
 ]
 
 #scala-logging = ["typesafe-scala-logging-s213", "typesafe-config"]

@@ -1,6 +1,7 @@
 import com.diffplug.gradle.spotless.SpotlessTask
 import io.truthencode.buildlogic.RecurseValue
 import io.truthencode.buildlogic.Recursion
+import org.gradle.accessors.dm.LibrariesForLibs
 import org.gradle.kotlin.dsl.withType
 
 /*
@@ -24,6 +25,8 @@ import org.gradle.kotlin.dsl.withType
 plugins {
     id("com.diffplug.spotless")
 }
+
+val libs = the<LibrariesForLibs>()
 
 enum class ScriptLanguage { GradleBuild, KotlinScriptBuild }
 
@@ -61,8 +64,8 @@ configure<com.diffplug.gradle.spotless.SpotlessExtension> {
     if (buildLang() == ScriptLanguage.KotlinScriptBuild) {
         logger.debug("SPOTLESS: configuring kotlin script formatting to ${project.name}")
         kotlinGradle {
-//            ktlint("0.50.0")
-            diktat("1.2.5").configFile(rootProject.file("diktat-analysis.yml"))
+            val diktatVersion = libs.versions.diktat
+            diktat(diktatVersion.get()).configFile(rootProject.file("diktat-analysis.yml"))
             licenseHeaderFile(rootProject.file("gradle/LICENSE_HEADER_JAVA"), "package ")
             target("**/src/main/kotlin/*.build.kts")
         }
@@ -94,9 +97,11 @@ configure<com.diffplug.gradle.spotless.SpotlessExtension> {
             // TODO: Multiple ScalaFmt Version Declarations
             //   Possibly just grep the version specified in the file? Else we should inject it to match our version catalog
             //   Either direction is possible, just should really have one truth.
-            val scalaFmtVersion = providers.gradleProperty("scalaFmtVersion").getOrElse("3.9.1")
+            // as it's required to have the version in the document, we should be able to remove this altogether
+//            val scalaFmtVersion = libs.versions.scalaFmt
+//            val scalaFmtVersion = providers.gradleProperty("scalaFmtVersion").getOrElse("3.9.1")
             // version and configFile are both optional
-            scalafmt(scalaFmtVersion).configFile(rootProject.file(".scalafmt.conf"))
+//            scalafmt(scalaFmtVersion.get()).configFile(rootProject.file(".scalafmt.conf"))
             target("**/src/**/*.scala")
             // Exclude Scala files that contain dollar signs in their names (Generally used for Java Interop and Scala compiler-generated files)
             targetExclude("**/src/**/*\$*.scala")
@@ -108,7 +113,8 @@ configure<com.diffplug.gradle.spotless.SpotlessExtension> {
         logger.info("SPOTLESS: configuring java formatting to ${project.name} (googleJavaFormat)")
         java {
             // TODO: Migrate any version references to use the Version Catalog instead of gradle properties for consistency and single source of truth
-            googleJavaFormat("1.25.2")
+            val googleJavaFormatVersion = libs.versions.google.java.format
+            googleJavaFormat(googleJavaFormatVersion.get())
                 .aosp()
                 .reflowLongStrings()
                 .formatJavadoc(true)

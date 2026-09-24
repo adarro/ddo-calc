@@ -123,19 +123,20 @@ afterEvaluate {
                     "-explain",
                     "-Wsafe-init",
                     "-Yretain-trees",
-                )  + s3Rewrites // + s3Sdb
+                ) + s3Rewrites // + s3Sdb
                 scalaCompileOptions.additionalParameters?.plusAssign(
                     opts,
                 )
             }
 
             "2" -> {
-                opts = listOf(
-                    "-feature",
-                    "-deprecation",
-                    "-Ywarn-dead-code",
-                    "-Xsource:3-cross",
-                ) //+ s2Sdb
+                opts =
+                    listOf(
+                        "-feature",
+                        "-deprecation",
+                        "-Ywarn-dead-code",
+                        "-Xsource:3-cross",
+                    ) // + s2Sdb
                 scalaCompileOptions.additionalParameters?.plusAssign(
                     opts,
                 )

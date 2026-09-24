@@ -1,0 +1,2 @@
+# Filter Concordian Specs to avoid DOCTYPE case issue (https://github.com/truthencode/ddo-calc/issues/88#issue-1890513983)
+**/resources/**/*Spec.html

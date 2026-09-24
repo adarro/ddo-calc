@@ -28,9 +28,4 @@ class LibrarySuite extends AnyFunSpec {
     assert(library.someLibraryMethod())
   }
 
-  describe("Something magical") {
-    it("can fluctuate") {
-      val vc = io.truthencode.ddo.model.protocol.ChangeType
-    }
-  }
 }

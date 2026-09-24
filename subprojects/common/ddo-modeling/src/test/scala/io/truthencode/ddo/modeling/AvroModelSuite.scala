@@ -4,7 +4,7 @@
  * Copyright 2015-2021
  *
  * Author: Andre White.
- * FILE: LibrarySuite.scala
+ * FILE: AvroModelSuite.scala
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -22,15 +22,11 @@ package io.truthencode.ddo.modeling
 
 import org.scalatest.funspec.AnyFunSpec
 
-class LibrarySuite extends AnyFunSpec {
-  describe("someLibraryMethod is always true") {
-    def library: Library = new Library()
-    assert(library.someLibraryMethod())
-  }
+class AvroModelSuite extends AnyFunSpec {
 
-  describe("Something magical") {
-    it("can fluctuate") {
-      val vc = io.truthencode.ddo.model.protocol.ChangeType
+  describe("Avro definitions") {
+    they("are available in Scala Code") {
+      assertCompiles("""val vc = io.truthencode.ddo.model.protocol.ChangeType.INCREASE""")
     }
   }
 }

@@ -205,7 +205,6 @@ fun ProjectLanguages.bits(): Int? = this.stream().map { it.ordinal }?.reduce(0) 
 
 /**
  * Applies KoTest dependencies to the JVM test suite.
- * @param suite the JVM test suite to configure with KoTest dependencies
  */
 fun JvmTestSuite.applyKoTest() {
     dependencies {
@@ -337,7 +336,7 @@ testing {
                                 this.forEach { tg ->
                                     mapOf(tg.name to tg.testTask).forEach { (name, task) ->
                                         logger.warn(
-                                            "$name : ${task.name}",
+                                            "${project.name} - $name : ${task.name}",
                                         )
                                     }
                                 }
@@ -435,7 +434,18 @@ testing {
                     this.applyVintageEngine()
                     this.applyJupiterEngine()
                 }
+            } else {
+                logger.warn("${this.name} is not a JvmTestSuite, skipping config")
             }
+        }
+    }
+}
+
+// ensure JUnit XML
+plugins.withType<JavaPlugin> {
+    tasks.withType<Test>().configureEach {
+        reports {
+            junitXml.required.set(true)
         }
     }
 }

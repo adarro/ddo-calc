@@ -41,7 +41,7 @@ jobs:
                       git checkout "$CIRCLE_SHA1"
                       git fetch origin +refs/heads/master:refs/remotes/origin/master
             - run: ./gradlew assemble
-            - run: if [ -e ./gradlew ]; then ./gradlew reportScoverage aggregateScoverage --continue;else gradle reportScoverage aggregateScoverage --continue;fi
+            - run: if [ -e ./gradlew ]; then ./gradlew reportScoverage aggregateScoverage --no-configuration-cache --continue;else gradle reportScoverage aggregateScoverage --no-configuration-cache --continue;fi
             - codecov/upload
             # Download and cache dependencies
             - restore_cache:

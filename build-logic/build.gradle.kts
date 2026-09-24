@@ -41,50 +41,49 @@ dependencies {
     implementation(files(libs.javaClass.superclass.protectionDomain.codeSource.location))
     implementation(plugin(libs.plugins.avrohugger))
     implementation(plugin(libs.plugins.quarkus))
-    implementation(libs.kotlin.gradle.plugin)
-    implementation(libs.kotlin.allopen.plugin)
-    implementation(libs.scalafix.plugin)
-    implementation(libs.nullaway.plugin)
-    implementation(libs.errorprone.plugin)
+    // implementation(plugin(libs.plugins.kotlin.gradle))
+    implementation(plugin(libs.plugins.kotlin.allopen))
+    implementation(plugin(libs.plugins.scalafix))
+    implementation(plugin(libs.plugins.nullaway))
+    implementation(plugin(libs.plugins.errorprone))
 
-    implementation(libs.sonarqube.gradle.plugin)
+    implementation(plugin(libs.plugins.sonarqube))
     // tool languages
     // node
-    implementation(libs.gradle.node.plugin)
+    implementation(plugin(libs.plugins.gradle.node))
 // code quality
-    implementation(libs.spotless.plugin)
-    implementation(libs.version.plugin)
-    implementation(libs.version.catalog.plugin)
+    implementation(plugin(libs.plugins.spotless))
+    implementation(plugin(libs.plugins.versions.manes))
+    implementation(plugin(libs.plugins.versions.catalog))
 //    implementation(libs.refreshVersions.plugin)
-    implementation(libs.dependency.updates)
+    implementation(plugin(libs.plugins.dependency.updates))
     // doc generation (requires python)
 //    implementation("com.palantir.baseline:gradle-baseline-java:_")
 
     // CI build support
     // TODO: Remove ci plugin and use manual script
-    implementation(libs.ci.detect.plugin)
+    implementation(plugin(libs.plugins.ci.detect))
 
 //    implementation("org.unbroken-dome.gradle-plugins:gradle-testsets-plugin:_")
     // scala
     implementation(plugin(libs.plugins.scoverage))
-//    implementation(libs.scoverage.)
+//    implementation(libs.plugins.scoverage)
     // bloop
     implementation(libs.gradle.bloop)
     // ch.epfl.scala:gradle-bloop_2.13:1.4.3
 
     // documentation / visualization
     // plant uml
-    implementation(libs.plantuml.plugin)
-    implementation(libs.plantuml.plugin.dripto)
-    implementation(libs.gradle.plantuml.plugin)
+    implementation(plugin(libs.plugins.freefair.plantuml))
+    implementation(plugin(libs.plugins.plantuml.dripto))
+    
 
-    implementation(libs.swagger.gradle.plugin)
-    implementation(libs.gradle.dependency.plantuml.exporter.plugin)
-    implementation(libs.dependency.management.plugin)
+    implementation(plugin(libs.plugins.swagger))    
+    implementation(plugin(libs.plugins.spring.dependency.management))
 
     // kotlin
 //    implementation(Kotlin.gradlePlugin)
-    implementation(libs.symbol.processing.gradle.plugin)
+    implementation(plugin(libs.plugins.symbol.processing))
     // not finding jitpacked resource
 //    implementation("com.strumenta.antlr-kotlin:antlr-kotlin-gradle-plugin:_")
 
@@ -92,10 +91,10 @@ dependencies {
     // quarkus incompatible with avrohugger (old scala 12.1) used by ddo-modeling.  Need a separate build.
     // TODO: check new avrohugger for quarkus compatibility
 
-    implementation(libs.jandex.gradle.plugin)
+    implementation(plugin(libs.plugins.jandex.gradle))
 
     // Database
-    implementation(libs.app.cash.sqldelight.plugin)
+    implementation(plugin(libs.plugins.cashapp.sqldelight))
 
     // String utils
     // camel / snake etc

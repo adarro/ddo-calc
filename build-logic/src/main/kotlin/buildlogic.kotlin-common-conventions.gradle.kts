@@ -16,7 +16,7 @@
  * limitations under the License.
  */
 import org.gradle.accessors.dm.LibrariesForLibs
-import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
+import org.jetbrains.kotlin.gradle.tasks.KotlinJvmCompile
 
 
 plugins {
@@ -28,7 +28,7 @@ plugins {
 val libs = the<LibrariesForLibs>()
 
 afterEvaluate {
-    tasks.withType<KotlinCompile>().configureEach {
+    tasks.withType< KotlinJvmCompile>().configureEach {
         compilerOptions {
 
             freeCompilerArgs.add(

@@ -56,7 +56,7 @@ jobs:
             # 2. Upload the aggregated XML files to the CircleCI "Tests" tab
             # You can pass the parent directory to upload both suites at once
             - store_test_results:
-                  path: subprojects/*/build/test-results
+                  path: subprojects/common/*/build/test-results
             - store_artifacts:
                   path: subprojects/common/ddo-test-results/build/reports/tests/test/aggregated-results
                   destination: unit-test-html-report

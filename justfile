@@ -45,6 +45,22 @@ testJdk17Gradle8:
   gradle --version -PdefaultJavaToolChainVersion=17
   ./gradlew :ddo-etl:tasks -PdefaultJavaToolChainVersion=17 --stacktrace
 
+# Clean Local Project and Gradle Cache
+purgeLocal:
+  #!/usr/bin/env bash
+  set -euo pipefail
+  ./gradlew clean
+  rm -rf .gradle/
+
+# Purge Gradle Cache (Global and local)
+nukeCache:
+  #!/usr/bin/env bash
+  set -euo pipefail
+  ./gradlew --stop
+  rm -rf ~/.gradle/caches/
+  rm -rf .gradle/
+
+
 # Real Time Local Dev with coordinated ports (Experimental)
 dockerDev:
   echo "This will one day launch services in dev mode"

@@ -20,9 +20,9 @@ dependencies {
     // TODO: add an extension property to allow toggling enforced verses standard platform dependency
     //   relegated to platform from enforcedPlatform
     implementation(platform(libs.quarkus.platform.bom))
-    implementation("io.quarkus:quarkus-arc")
-    implementation("io.quarkus:quarkus-smallrye-health")
-    implementation("io.quarkus:quarkus-hibernate-validator") {
+    implementation(libs.quarkus.arc)
+    implementation(libs.quarkus.smallrye.health)
+    implementation(libs.quarkus.hibernate.validator) {
         because(
             "Hibernate Validator is an implementation of the Jakarta Bean Validation specification." +
                 " Not specific to JPA.",
@@ -31,8 +31,8 @@ dependencies {
 
     // basic Quarkus Unit, Component and Integration test support included.
     // TODO: move test dependencies to test-conventions
-    testImplementation("io.quarkus:quarkus-junit5")
-    testImplementation("io.quarkus:quarkus-junit5-component")
+    testImplementation(libs.quarkus.junit5)
+    testImplementation(libs.quarkus.junit5.component)
 //    testImplementation("io.rest-assured:rest-assured")
 // FIXME: if we auto include this it should be pushed into the test-conventions but it is needed here if we want to flag Quarkus tests
 //    testImplementation(project(":ddo-testing-util"))

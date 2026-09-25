@@ -37,7 +37,7 @@ plugins {
 }
 
 dependencies {
-    errorprone(libs.nullaway.errorprone)
+    errorprone(libs.nullaway)
     errorprone(libs.errorprone.processor)
 // add implementation dependency on jspecify for non-java-library projects
 // java-library will have an API dependency
@@ -87,15 +87,15 @@ afterEvaluate {
                     .toInt()
             options.encoding = "UTF-8"
             options.errorprone {
-                val regExcludeScala = Regex("""(.*\.scala|.*/generated*/.*)""")
+                val regExcludeScala = Regex("""(.*\.scala|.*/generated/.*|.*/generated-src/.*)""")
                 excludedPaths = regExcludeScala.pattern
                 disableWarningsInGeneratedCode = true
 
                 nullaway {
                     suggestSuppressions = true
                     onlyNullMarked = true
-                    isAssertsEnabled = true
-                    isJSpecifyMode = true
+                    assertsEnabled = true
+                    jspecifyMode = true
                 }
             }
 

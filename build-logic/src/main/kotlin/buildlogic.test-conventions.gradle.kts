@@ -38,8 +38,14 @@ tasks.withType(Test::class.java) {
         logger.warn("binding project ${project.name} task to $jandexProjectTask")
         t.dependsOn(jandexProjectTask)
     }
-//    val outDir = "${reporting.baseDirectory.get()}/tests"
-    systemProperties["concordion.output.dir"] = reports.junitXml.outputLocation.get()
+    val outDir =
+        reports.junitXml.outputLocation
+            .get()
+            .toString()
+    if (t.name.contains("acceptance")) {
+        failOnNoDiscoveredTests = false
+    }
+    systemProperties["concordion.output.dir"] = outDir
     val outputDir = reports.junitXml.outputLocation
 
 //    logger.warn("Setting concordion.output.dir \tto:\t $outDir\nSetting junit.platform.reporting.output.dir \tto: \t${outputDir.get()}")
@@ -199,7 +205,6 @@ fun ProjectLanguages.bits(): Int? = this.stream().map { it.ordinal }?.reduce(0) 
 
 /**
  * Applies KoTest dependencies to the JVM test suite.
- * @param suite the JVM test suite to configure with KoTest dependencies
  */
 fun JvmTestSuite.applyKoTest() {
     dependencies {
@@ -300,13 +305,13 @@ fun JvmTestSuite.applyScalaTest() {
 
 testing {
     suites {
- /*
- TODO: Add functional / integration etc as needed
- Also need to determine if this is a limited scope (i.e opt in by project)
- integrationTest by registering(JvmTestSuite::class)
- functionalTest by registering(JvmTestSuite::class)
- performanceTest by registering(JvmTestSuite::class)
-  */
+        /*
+        TODO: Add functional / integration etc as needed
+        Also need to determine if this is a limited scope (i.e opt in by project)
+        integrationTest by registering(JvmTestSuite::class)
+        functionalTest by registering(JvmTestSuite::class)
+        performanceTest by registering(JvmTestSuite::class)
+         */
         val test = named<JvmTestSuite>("test")
         val acceptanceTest = register<JvmTestSuite>("acceptanceTest")
         configureEach {
@@ -331,7 +336,7 @@ testing {
                                 this.forEach { tg ->
                                     mapOf(tg.name to tg.testTask).forEach { (name, task) ->
                                         logger.warn(
-                                            "$name : ${task.name}",
+                                            "${project.name} - $name : ${task.name}",
                                         )
                                     }
                                 }
@@ -429,7 +434,18 @@ testing {
                     this.applyVintageEngine()
                     this.applyJupiterEngine()
                 }
+            } else {
+                logger.warn("${this.name} is not a JvmTestSuite, skipping config")
             }
+        }
+    }
+}
+
+// ensure JUnit XML
+plugins.withType<JavaPlugin> {
+    tasks.withType<Test>().configureEach {
+        reports {
+            junitXml.required.set(true)
         }
     }
 }

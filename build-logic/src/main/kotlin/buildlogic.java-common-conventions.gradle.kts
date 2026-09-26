@@ -31,6 +31,7 @@ import org.gradle.accessors.dm.LibrariesForLibs
 val libs = the<LibrariesForLibs>()
 plugins {
     java
+//    id("buildlogic.java-coverage-conventions")
     id("buildlogic.common-conventions")
     id("net.ltgt.nullaway")
     id("net.ltgt.errorprone")

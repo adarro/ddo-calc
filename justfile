@@ -60,6 +60,10 @@ nukeCache:
   rm -rf ~/.gradle/caches/
   rm -rf .gradle/
 
+# Remove semanticdb files
+unsementic:
+  find . -type f -name "*.semanticdb" -delete
+
 
 # Real Time Local Dev with coordinated ports (Experimental)
 dockerDev:

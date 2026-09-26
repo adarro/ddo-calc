@@ -109,7 +109,7 @@ afterEvaluate {
             listOf(
                 "-rewrite",
                 "-source",
-                "3.4-migration",                
+                "3.4-migration",
                 "-Xignore-scala2-macros",
                 "-new-syntax",
             )

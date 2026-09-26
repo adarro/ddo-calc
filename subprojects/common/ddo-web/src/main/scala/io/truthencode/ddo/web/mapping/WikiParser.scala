@@ -25,7 +25,7 @@ import com.typesafe.scalalogging.LazyLogging
 import net.ruippeixotog.scalascraper.dsl.DSL._
 import net.ruippeixotog.scalascraper.dsl.DSL.Extract._
 import net.ruippeixotog.scalascraper.model.Element
-import io.truthencode.ddo._
+import io.truthencode.ddo.core._
 import io.truthencode.ddo.core.enumeration.EnumExtensions.EnumCompanionOps
 import io.truthencode.ddo.core.model.attribute.Attribute
 import io.truthencode.ddo.core.model.item.weapon._

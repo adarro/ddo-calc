@@ -25,7 +25,10 @@ import io.truthencode.ddo.core.StringUtils.Extensions
 import io.truthencode.ddo.core.model.classes.HeroicCharacterClass
 import io.truthencode.ddo.core.model.classes.HeroicCharacterClass.Ranger
 import io.truthencode.ddo.core.model.feats.GeneralFeat
-import io.truthencode.ddo.core.support.requisite.RequirementImplicits.{ClassImplicits, FeatImplicits}
+import io.truthencode.ddo.core.support.requisite.RequirementImplicits.{
+  ClassImplicits,
+  FeatImplicits
+}
 import org.scalatest.funspec.AnyFunSpec
 import org.scalatest.matchers.should.Matchers
 

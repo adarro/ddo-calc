@@ -23,7 +23,13 @@ package io.truthencode.ddo.model.meta
 import enumeratum.{Enum, EnumEntry}
 import io.truthencode.ddo.modeling.NoDefault
 import io.truthencode.ddo.model.effect.*
-import io.truthencode.ddo.model.effect.{Damage, DamageType, MagicalDamage, TypedPhysicalDamage, UntypedPhysicalDamage}
+import io.truthencode.ddo.model.effect.{
+  Damage,
+  DamageType,
+  MagicalDamage,
+  TypedPhysicalDamage,
+  UntypedPhysicalDamage
+}
 
 /**
  * Basic damage for (generally) physical damage such as mêlée weapons or projectiles (arrows /

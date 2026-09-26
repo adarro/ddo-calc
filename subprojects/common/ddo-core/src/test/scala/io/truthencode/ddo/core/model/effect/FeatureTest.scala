@@ -26,7 +26,12 @@ import io.truthencode.ddo.core.enhancement.BonusType
 import io.truthencode.ddo.core.model.effect.Feature.printFeature
 import io.truthencode.ddo.core.model.effect.features.SkillEffect
 import io.truthencode.ddo.core.model.feats.{Feat, GeneralFeat}
-import io.truthencode.ddo.core.model.item.weapon.WeaponCategory.{filterByWeaponClass, icPlus1, icPlus2, icPlus3}
+import io.truthencode.ddo.core.model.item.weapon.WeaponCategory.{
+  filterByWeaponClass,
+  icPlus1,
+  icPlus2,
+  icPlus3
+}
 import io.truthencode.ddo.core.model.item.weapon.WeaponClass
 import io.truthencode.ddo.core.support.naming.UsingSearchPrefix
 import io.truthencode.ddo.model.skill.Skill.{Listen, Spot}

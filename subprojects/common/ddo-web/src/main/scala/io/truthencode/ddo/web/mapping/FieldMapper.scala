@@ -22,7 +22,7 @@ package io.truthencode.ddo.web.mapping
 
 import com.typesafe.scalalogging.LazyLogging
 import enumeratum.{Enum => SmartEnum, EnumEntry}
-import io.truthencode.ddo.DDOObject
+import io.truthencode.ddo.core.DDOObject
 import io.truthencode.ddo.core.model.item.{PermanentItem, Potion}
 import io.truthencode.ddo.core.model.item.armor.Armor
 import io.truthencode.ddo.core.model.item.clothing.Clothing

@@ -95,14 +95,14 @@ configurations {
 }
 
 // TODO: see if generated source is auto-detected
-//sourceSets {
+// sourceSets {
 //    this.configureEach {
 //        scala {
 //
 //            this.srcDir(tasks.named("generateAvroScala"))
 //        }
 //    }
-//}
+// }
 
 tasks.withType<Jar> {
     // Stale BasicEffectInfo.class seems to be polluting incremental runs

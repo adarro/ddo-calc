@@ -22,7 +22,10 @@ package io.truthencode.ddo.core.support.validation
 
 import com.typesafe.scalalogging.LazyLogging
 import io.truthencode.ddo.api.model.effect.{ScalingEffect, ScalingInfo}
-import io.truthencode.ddo.core.support.validation.ScalingValidation.{validateScalingPower, validateScalingType}
+import io.truthencode.ddo.core.support.validation.ScalingValidation.{
+  validateScalingPower,
+  validateScalingType
+}
 import org.scalatest.funspec.AnyFunSpec
 import org.scalatest.matchers.should.Matchers
 import org.scalatest.prop.TableDrivenPropertyChecks

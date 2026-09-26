@@ -17,6 +17,7 @@
  */
 package io.truthencode.ddo.model.feats;
 
+import io.truthencode.ddo.core.model.feats.GeneralFeatRelatedFixture;
 import org.concordion.api.FullOGNL;
 import org.concordion.api.option.ConcordionOptions;
 import org.concordion.api.option.MarkdownExtensions;

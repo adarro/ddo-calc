@@ -17,6 +17,7 @@
  */
 package io.truthencode.ddo.model.feats;
 
+import io.truthencode.ddo.core.model.feats.TacticalFeatFeatDisplayHelperJava;
 import org.concordion.integration.junit4.ConcordionRunner;
 import org.junit.runner.RunWith;
 

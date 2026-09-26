@@ -23,7 +23,7 @@ import org.junit.runner.RunWith;
 
 @FullOGNL
 @RunWith(ConcordionRunner.class)
-public class MonkClassFeatSpec extends MonkJavaHelperFeat {
+public class MonkClassFeatSpec extends io.truthencode.ddo.core.model.feats.classes.MonkJavaHelperFeat {
     // This wrapper class is no longer needed.
 //    MonkJavaHelper helper = new MonkJavaHelper() {
 //        @Override

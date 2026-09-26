@@ -21,7 +21,7 @@
 package io.truthencode.ddo.enhancement
 
 import com.typesafe.scalalogging.LazyLogging
-import io.truthencode.ddo.support.slots.WearLocation
+import io.truthencode.ddo.core.support.slots.WearLocation
 import org.scalatest.funspec.AnyFunSpec
 import org.scalatest.matchers.should.Matchers
 import org.scalatest.prop.TableFor1

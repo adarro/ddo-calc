@@ -20,7 +20,7 @@
  */
 package io.truthencode.ddo.web.mapping
 
-import io.truthencode.ddo.model.item.weapon.WeaponCategory
+import io.truthencode.ddo.core.model.item.weapon.WeaponCategory
 import io.truthencode.ddo.model.meta.PhysicalDamageType
 
 /**

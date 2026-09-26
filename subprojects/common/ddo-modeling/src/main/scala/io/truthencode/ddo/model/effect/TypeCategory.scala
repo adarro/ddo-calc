@@ -57,7 +57,7 @@ trait Other extends TypeCategory
  *
  * @note
  *   this only indicates there is some type of elemental damage / resist use
- *   [[io.truthencode.ddo.model.effect.ElementalResistance]] which extends this to indicate resist
- *   for all elemental types.
+ *   [[io.truthencode.ddo.core.model.effect.ElementalResistance]] which extends this to indicate
+ *   resist for all elemental types.
  */
 trait Elemental extends TypeCategory

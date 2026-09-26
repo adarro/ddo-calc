@@ -18,9 +18,13 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package io.truthencode.ddo.model.feats.epic
+package io.truthencode.ddo.core.model.feats.epic
 
-import io.truthencode.ddo.model.feats.{EpicFeat, EpicFeatFeatDisplayHelper, RangedCombatPassive}
+import io.truthencode.ddo.core.model.feats.{
+  EpicFeat,
+  EpicFeatFeatDisplayHelper,
+  RangedCombatPassive
+}
 import org.concordion.integration.junit4.ConcordionRunner
 import org.junit.runner.RunWith
 

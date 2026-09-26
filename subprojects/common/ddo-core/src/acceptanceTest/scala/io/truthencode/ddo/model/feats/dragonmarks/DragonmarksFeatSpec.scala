@@ -18,9 +18,9 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package io.truthencode.ddo.model.feats.dragonmarks
+package io.truthencode.ddo.core.model.feats.dragonmarks
 
-import io.truthencode.ddo.model.feats.DragonmarkFeatDisplayHelper
+import io.truthencode.ddo.core.model.feats.DragonmarkFeatDisplayHelper
 import org.concordion.integration.junit4.ConcordionRunner
 import org.junit.runner.RunWith
 

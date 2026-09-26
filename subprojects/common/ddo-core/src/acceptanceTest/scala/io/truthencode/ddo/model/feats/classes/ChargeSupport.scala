@@ -18,11 +18,11 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package io.truthencode.ddo.model.feats.classes
+package io.truthencode.ddo.core.model.feats.classes
 
 import io.truthencode.ddo.model.DisplayHelper
-import io.truthencode.ddo.support.charges.Interval.OnTimer
-import io.truthencode.ddo.support.charges.{Chargeable, Rechargeable}
+import io.truthencode.ddo.core.support.charges.Interval.OnTimer
+import io.truthencode.ddo.core.support.charges.{Chargeable, Rechargeable}
 
 import java.time.Duration
 import java.util.Optional

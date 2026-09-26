@@ -5,7 +5,10 @@ plugins {
     id("buildlogic.common-conventions")
 //    `jvm-test-suite`
     id("test-report-aggregation")
+    id("jacoco-report-aggregation")
 }
+// displayName =  "Test Results"
+description = "Utility class for aggregating Reports"
 
 dependencies {
     // projectList().map { it -> testReportAggregation(project("$it")) }
@@ -14,10 +17,12 @@ dependencies {
     testReportAggregation(project(":ddo-core"))
     testReportAggregation(project(":ddo-etl"))
     testReportAggregation(project(":ddo-modeling"))
-//    testReportAggregation(project(":ddo-platform"))
-//    testReportAggregation(project(":ddo-platform-kotlin"))
-//    testReportAggregation(project(":ddo-platform-scala"))
     testReportAggregation(project(":ddo-util"))
+    jacocoAggregation(project(":ddo-antlr"))
+    jacocoAggregation(project(":ddo-core"))
+    jacocoAggregation(project(":ddo-etl"))
+    jacocoAggregation(project(":ddo-modeling"))
+    jacocoAggregation(project(":ddo-util"))
     // acceptanceTestReportAggregation(project(":ddo-core"))
 }
 
@@ -48,16 +53,20 @@ dependencies {
 reporting {
     @Suppress("UnstableApiUsage")
     reports {
-        val testAggregateTestReport =
-            create<AggregateTestReport>("aggregateTestReporting") {
-//            testType.set(TestSuiteType.UNIT_TEST)
-                testSuiteName.set("test")
-            }
+        create<AggregateTestReport>("aggregateTestReporting") {
+            testSuiteName.set("test")
+        }
         create<AggregateTestReport>("aggregateAcceptanceTestReporting") {
             testSuiteName.set("acceptanceTest")
         }
         create<AggregateTestReport>("aggregateScoverageTestReporting") {
             testSuiteName.set("scoverageTest")
+        }
+        create<JacocoCoverageReport>("testCodeCoverageReport") {
+            testSuiteName.set("test")
+        }
+        create<JacocoCoverageReport>("acceptanceTestCodeCoverageReport") {
+            testSuiteName.set("acceptanceTest")
         }
     }
 }
@@ -72,6 +81,7 @@ this list isn't immediately available in the configuration phase, so we have to 
 from a manually run listProjects task
  */
 tasks.register("listProjects") {
+    notCompatibleWithConfigurationCache("A one-off utility task most useful when changing the build which negates the task")
     description = "print out report aggregation projects"
     group = "utility"
     doLast {
@@ -108,7 +118,8 @@ fun findProjects(
     if (!project.name
             .contains("test") &&
         project.name.startsWith("ddo") &&
-        project != project.rootProject
+        project != project.rootProject &&
+        project.plugins.hasPlugin("java") // plugins should be applied at this point
     ) {
         writer.add(":${project.name}")
         logger.info("found ${project.childProjects.size} child projects in ${project.name}")

@@ -60,7 +60,17 @@ nukeCache:
   rm -rf ~/.gradle/caches/
   rm -rf .gradle/
 
+# Remove semanticdb files
+unsemantic:
+  find . -type f -name "*.semanticdb" -delete
+
 
 # Real Time Local Dev with coordinated ports (Experimental)
 dockerDev:
   echo "This will one day launch services in dev mode"
+
+# Format and lint via Trunk.io then Spotless
+lint:
+  #!/usr/bin/env bash
+  trunk fmt
+  ./gradlew spotlessApply

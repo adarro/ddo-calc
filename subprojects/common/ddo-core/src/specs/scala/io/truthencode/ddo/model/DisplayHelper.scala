@@ -21,7 +21,7 @@
 package io.truthencode.ddo.model
 
 import enumeratum.{Enum, EnumEntry}
-import io.truthencode.ddo.support.naming.DisplayProperties
+import io.truthencode.ddo.core.support.naming.DisplayProperties
 
 trait DisplayHelper {
   type Entry = EnumEntry with DisplayProperties

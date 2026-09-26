@@ -18,9 +18,9 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package io.truthencode.ddo.model.feats.epic
+package io.truthencode.ddo.core.model.feats.epic
 
-import io.truthencode.ddo.model.feats.{Feat, FeatDisplayHelper}
+import io.truthencode.ddo.core.model.feats.{Feat, FeatDisplayHelper}
 import io.truthencode.ddo.testoptions.DefaultFlexmark
 import org.concordion.api.FullOGNL
 import org.concordion.integration.junit4.ConcordionRunner

@@ -21,7 +21,7 @@
 package io.truthencode.ddo.web
 
 import com.typesafe.scalalogging.LazyLogging
-import io.truthencode.ddo.model.item.PermanentItem
+import io.truthencode.ddo.core.model.item.PermanentItem
 
 object Retriever extends LazyLogging {
 

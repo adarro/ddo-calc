@@ -18,9 +18,9 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package io.truthencode.ddo.model.feats.classes
+package io.truthencode.ddo.core.model.feats.classes
 
-import io.truthencode.ddo.model.feats.{ClassFeat, FeatDisplayHelper}
+import io.truthencode.ddo.core.model.feats.{ClassFeat, FeatDisplayHelper}
 import io.truthencode.ddo.testoptions.DefaultFlexmark
 import org.concordion.integration.junit4.ConcordionRunner
 import org.junit.runner.RunWith

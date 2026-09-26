@@ -18,10 +18,10 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package io.truthencode.ddo
+package io.truthencode.ddo.core
 
 import com.typesafe.scalalogging.LazyLogging
-import io.truthencode.ddo.support.slots.WearLocation
+import io.truthencode.ddo.core.support.slots.WearLocation
 import org.scalatest.funspec.AnyFunSpec
 import org.scalatest.matchers.should.Matchers
 

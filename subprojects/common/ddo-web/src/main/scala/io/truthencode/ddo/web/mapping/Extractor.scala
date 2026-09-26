@@ -23,8 +23,8 @@ package io.truthencode.ddo.web.mapping
 import net.ruippeixotog.scalascraper.dsl.DSL.Extract._
 import net.ruippeixotog.scalascraper.dsl.DSL._
 import net.ruippeixotog.scalascraper.model.Element
-import io.truthencode.ddo.support.StringUtils.{Comma, EmptyString, Space}
-import io.truthencode.ddo.support.dice.DamageInfo
+import io.truthencode.ddo.core.StringUtils.{Comma, EmptyString, Space}
+import io.truthencode.ddo.core.support.dice.DamageInfo
 
 import scala.language.postfixOps
 // import org.jsoup.nodes.Element

@@ -449,3 +449,18 @@ plugins.withType<JavaPlugin> {
         }
     }
 }
+
+// Ensure JaCoCo captures data for both suites
+tasks.withType<JacocoReport> {
+    dependsOn(testing.suites)
+    classDirectories.setFrom(
+        files(
+            classDirectories.files.map {
+                fileTree(it) {
+                    include("io/truthencode/**") // Adjust to your package structure
+                    exclude("**/META-INF/**")
+                }
+            },
+        ),
+    )
+}

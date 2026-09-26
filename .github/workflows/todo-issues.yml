@@ -1,19 +1,19 @@
-name: "Run TODO to Issue"
+name: Run TODO to Issue
 on:
     push:
         branches:
             - master
 jobs:
     build:
-        runs-on: "ubuntu-latest"
+        runs-on: ubuntu-latest
         permissions:
-            contents: write
+            contents: read
             issues: write
             pull-requests: write
         steps:
-            - uses: "actions/checkout@d23441a48e516b6c34aea4fa41551a30e30af803" # v6.1.0
-            - name: "TODO to Issue"
-              uses: "alstr/todo-to-issue-action@37bb7b56e58569ef273b60678048030a7f0c261a" # v5.1.15
+            - uses: actions/checkout@d23441a48e516b6c34aea4fa41551a30e30af803 # v6.1.0
+            - name: TODO to Issue
+              uses: alstr/todo-to-issue-action@37bb7b56e58569ef273b60678048030a7f0c261a # v5.1.15
               with:
                   INSERT_ISSUE_URLS: "true"
             - name: Set Git user

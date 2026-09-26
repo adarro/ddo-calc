@@ -18,11 +18,11 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package io.truthencode.ddo.model.feats.races
+package io.truthencode.ddo.core.model.feats.races
 
-import io.truthencode.ddo.model.feats.{Feat, FeatDisplayHelper, RaceSupport}
+import io.truthencode.ddo.core.model.feats.{Feat, FeatDisplayHelper, RaceSupport}
 import io.truthencode.ddo.model.race.Race
-import io.truthencode.ddo.support.requisite.RequirementOption
+import io.truthencode.ddo.core.support.requisite.RequirementOption
 import org.concordion.integration.junit4.ConcordionRunner
 import org.junit.runner.RunWith
 

@@ -18,7 +18,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package io.truthencode.ddo.model.spells
+package io.truthencode.ddo.core.model.spells
 
 import io.truthencode.ddo.model.meta.Linked
 import io.truthencode.ddo.model.skill.Skill

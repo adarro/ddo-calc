@@ -18,21 +18,21 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package io.truthencode.ddo.support.requisite
+package io.truthencode.ddo.core.support.requisite
 
 import enumeratum.{Enum, EnumEntry}
-import io.truthencode.ddo.Abbreviation
-import io.truthencode.ddo.model.alignment.{AlignmentType, Alignments, LawAxis, MoralAxis}
-import io.truthencode.ddo.model.attribute.Attribute
-import io.truthencode.ddo.model.classes.HeroicCharacterClass
-import io.truthencode.ddo.model.favor.FavorPatron
-import io.truthencode.ddo.model.feats.Feat
+import io.truthencode.ddo.core.Abbreviation
+import io.truthencode.ddo.core.model.alignment.{AlignmentType, Alignments, LawAxis, MoralAxis}
+import io.truthencode.ddo.core.model.attribute.Attribute
+import io.truthencode.ddo.core.model.classes.HeroicCharacterClass
+import io.truthencode.ddo.core.model.favor.FavorPatron
+import io.truthencode.ddo.core.model.feats.Feat
 import io.truthencode.ddo.model.race.Race
 import io.truthencode.ddo.model.skill.Skill
-import io.truthencode.ddo.support.StringUtils.Extensions
-import io.truthencode.ddo.support.naming.{DisplayName, Prefix}
-import io.truthencode.ddo.support.points.{Progression, SpendablePoints}
-import io.truthencode.ddo.support.tree.TreeLike
+import io.truthencode.ddo.core.StringUtils.Extensions
+import io.truthencode.ddo.core.support.naming.{DisplayName, Prefix}
+import io.truthencode.ddo.core.support.points.{Progression, SpendablePoints}
+import io.truthencode.ddo.core.support.tree.TreeLike
 
 import scala.collection.immutable.IndexedSeq
 
@@ -292,9 +292,9 @@ object Requirement extends Enum[Requirement] {
 
   /**
    * Represents a particular alignment, i.e. A Pure Good weapon requires
-   * [[io.truthencode.ddo.model.alignment.MoralAxis.Good]] (Either the law or moral axis) Some
+   * [[io.truthencode.ddo.core.model.alignment.MoralAxis.Good]] (Either the law or moral axis) Some
    * items, such as Generated armors such as Armors of Stability give bonus if the character is
-   * [[io.truthencode.ddo.model.alignment.Alignments.TrueNeutral]].
+   * [[io.truthencode.ddo.core.model.alignment.Alignments.TrueNeutral]].
    *
    * @param id
    *   either a fully qualified Alignment (i.e. ChaoticGood) or one of the axis, i.e. Lawful or Evil

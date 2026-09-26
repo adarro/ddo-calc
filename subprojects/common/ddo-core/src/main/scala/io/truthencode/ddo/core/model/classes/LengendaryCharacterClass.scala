@@ -18,11 +18,11 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package io.truthencode.ddo.model.classes
+package io.truthencode.ddo.core.model.classes
 
 import enumeratum.{Enum, EnumEntry}
-import io.truthencode.ddo.model.misc.{Availability, FreeToPlayFeature}
-import io.truthencode.ddo.support.LevelCap
+import io.truthencode.ddo.core.model.misc.{Availability, FreeToPlayFeature}
+import io.truthencode.ddo.core.LevelCap
 
 import scala.collection.immutable
 

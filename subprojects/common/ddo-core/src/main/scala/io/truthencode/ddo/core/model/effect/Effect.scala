@@ -18,9 +18,9 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package io.truthencode.ddo.model.effect
+package io.truthencode.ddo.core.model.effect
 
-import io.truthencode.ddo.model.effect.features.Features
+import io.truthencode.ddo.core.model.effect.features.Features
 
 /**
  * Base trait representing some effect.
@@ -42,7 +42,7 @@ trait EffectList {
 /**
  * Adds or reduces a given effect
  *
- * i.e. Adds 3 to STR or 2 to charisma skills etc.
+ * I.e., Adds 3 to STR or 2 to charisma skills etc.
  */
 trait AugmentEffect[T] extends Effect {
   self: Features =>

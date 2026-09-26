@@ -1,7 +1,7 @@
 /*
  * SPDX-License-Identifier: Apache-2.0
  *
- * Copyright 2015-2025
+ * Copyright 2015-2026
  *
  * Author: Andre White.
  * FILE: BonusType.scala
@@ -18,22 +18,23 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package io.truthencode.ddo.enhancement
+package io.truthencode.ddo.core.enhancement
 
 import enumeratum.{Enum, EnumEntry}
-import io.truthencode.ddo.support.StringUtils.Extensions
-import io.truthencode.ddo.support.naming.{DisplayName, FriendlyDisplay, Prefix}
-import io.truthencode.ddo.support.slots.{Cosmetic, EquipmentSlot, WearLocation}
-import io.truthencode.ddo.{NonStacking, StackingRule, StacksWithAny, StacksWithUnique}
+import io.truthencode.ddo.core.{NonStacking, StackingRule, StacksWithAny, StacksWithUnique}
+import io.truthencode.ddo.core.StringUtils.Extensions
+import io.truthencode.ddo.core.support.naming.{DisplayName, FriendlyDisplay, Prefix}
+import io.truthencode.ddo.core.support.slots.{Cosmetic, EquipmentSlot, WearLocation}
 
 import scala.collection.immutable
 
 /**
- * A Bonus type represents the classifier of a given effect for the purposes of stacking. I.e. Plate
- * armor and a shield each provide bonuses to your Armor Class and have a cumulative benefit.
- * Wearing a shield and casting a 'Shield spell' will not. Only the highest of the two will apply to
- * your total armor class. (Overlapping can sometimes still benefit as the shield spell may provide
- * less armor class than equipping a tower shield, but it also protects against magic missiles.
+ * A Bonus type represents the classifier of a given effect explicitly for the purposes of stacking.
+ * I.e., Plate armor and a shield each provide bonuses to your Armor Class and have a cumulative
+ * benefit. Wearing a shield and casting a 'Shield spell' will not. Only the highest of the two will
+ * apply to your total armor class. (Overlapping can sometimes still benefit as the shield spell may
+ * provide less armor class than equipping a tower shield, but it also protects against magic
+ * missiles.)
  */
 sealed trait BonusType extends EnumEntry with DisplayName with FriendlyDisplay {
 
@@ -50,7 +51,7 @@ trait Armor extends BonusType {
 
 /**
  * Encapsulates the [[https://ddowiki.com/page/Category:Bonus_types]] Several Bonus types are not
- * listed / tagged by the above link. Examples include Armor related ones such as Deflection Bonus
+ * listed / tagged by the above link. Examples include Armor-related ones such as Deflection Bonus
  */
 // scalastyle:off number.of.methods
 object BonusType extends Enum[BonusType] {
@@ -143,7 +144,7 @@ object BonusType extends Enum[BonusType] {
   /**
    * The [[https://ddowiki.com/page/Dexterity_bonus dexterity bonus]] is a bonus to AC equal to your
    * dexterity modifier. It may be capped by the armor or tower shield your character is wearing, as
-   * well by encumbrance (since these impose a maximum dexterity bonus).
+   * well as by encumbrance (since these impose a maximum dexterity bonus).
    */
   case object Dexterity extends BonusType with Armor with NonStacking
 
@@ -182,7 +183,7 @@ object BonusType extends Enum[BonusType] {
   case object Equipment extends BonusType with NonStacking
 
   /**
-   * Exceptional bonuses are rare bonuses generally only found on high level loot.
+   * Exceptional bonuses are rare bonuses generally only found on high-level loot.
    * [[https://ddowiki.com/page/Exceptional_bonus Exceptional bonuses]] stack with all other
    * bonuses, but not with other exceptional bonuses.
    */
@@ -190,7 +191,7 @@ object BonusType extends Enum[BonusType] {
 
   /**
    * A feat bonus is granted by [[https://ddowiki.com/page/Feat_bonus feats]]. Feats can grant
-   * bonuses of many kind, from hit points (Toughness) to skills (Skill focus) to armor class
+   * bonuses of many kinds, from hit points (Toughness) to skills (Skill focus) to armor class
    * (Dodge).
    *
    * Feat bonuses do stack.
@@ -250,7 +251,7 @@ object BonusType extends Enum[BonusType] {
   /**
    * [[https://ddowiki.com/page/Miscellaneous_bonus Miscellaneous Armor bonuses]] The following
    * miscellaneous bonuses to Armor Class stack with each other in DDO, but miscellaneous bonuses
-   * coming from the same source don't stack (ie - 2 paladins' aura).
+   * coming from the same source don't stack (i.e. - 2 paladins' aura).
    */
   case object Miscellaneous extends BonusType with Armor with StacksWithUnique
 
@@ -271,14 +272,14 @@ object BonusType extends Enum[BonusType] {
 
   /**
    * [[https://ddowiki.com/page/Mythic_bonus Mythic bonus]] was introduced in Update 25. Mythic
-   * bonuses stack differently than most bonus types: see quote below. The Mythic bonuses from each
-   * slot stack with one another Weapons, belts, gloves, goggles, rings, and trinkets grant Mythic
-   * bonus to Melee, Ranged, and Universal Spell Power. Armor, boots, bracers, cloaks, headwear,
-   * necklaces, shields grant Mythic bonus to Physical and Magical Resistance Rating. Orbs, rune
-   * arms, and collars can appear Shield and/or Weapon boost. (Some) ToEE items can appear with two
-   * mythic bonuses, e.g., Weapon and Shield.
+   * bonuses stack differently than most bonus types: see the quote below. The Mythic bonuses from
+   * each slot stack with one another Weapons, belts, gloves, goggles, rings, and trinkets grant
+   * Mythic bonus to Mêlée, Ranged, and Universal Spell Power. Armor, boots, bracers, cloaks,
+   * headwear, necklaces, shields grant Mythic bonus to Physical and Magical Resistance Rating.
+   * Orbs, rune arms, and collars can appear Shield and/or Weapon boost. (Some) ToEE items can
+   * appear with two mythic bonuses, e.g., Weapon and Shield.
    *
-   * Magnatude Weapons, armor, shields can have +2 or +4 bonus, +4 is rarer. Clothing and jewelry
+   * Magnitude Weapons, armor, shields can have +2 or +4 bonus, +4 is rarer. Clothing and jewelry
    * can have +1 or +3 bonus, +3 is rarer.
    *
    * Unlike most bonus types, all sources of Mythic bonus stack.
@@ -314,7 +315,7 @@ object BonusType extends Enum[BonusType] {
    *   Figure out how / what natural armor bonuses stack
    * @note
    *   This should apply to 'plain natural armor' text that states 'Natural Armor' may not actually
-   *   be that. i.e. Rough Hide
+   *   be that. i.e., Rough Hide
    */
   case object NaturalArmor extends BonusType with Armor with NonStacking
 
@@ -342,7 +343,7 @@ object BonusType extends Enum[BonusType] {
   /**
    * A [[https://ddowiki.com/page/Quality_bonus quality bonus]] makes a character better at an
    * action through sheer good workmanship of the item in question. Like most bonus types, multiple
-   * quality bonuses do not stack, only the greatest bonus applies.
+   * quality bonuses do not stack; only the greatest bonus applies.
    */
   case object Quality extends BonusType with NonStacking
 
@@ -375,7 +376,7 @@ object BonusType extends Enum[BonusType] {
    * A shield bonus is a specific class of bonus to Armor Class normally provided by shields.
    * Multiple shield bonuses do not stack.
    * @note
-   *   Two Weapon Defense is not treated as shield bonus in DDO.
+   *   Two Weapon Defense is not treated as a shield bonus in DDO.
    */
   case object Shield extends BonusType with Armor with NonStacking
 
@@ -383,7 +384,7 @@ object BonusType extends Enum[BonusType] {
    * [[https://ddowiki.com/page/Size_bonus Size bonus]]
    *
    * @note
-   *   Defaulting to [[NonStacking]] as wiki does not explicity state
+   *   Defaulting to [[NonStacking]] as wiki does not explicitly state
    */
   case object Size extends BonusType with NonStacking
 
@@ -408,7 +409,7 @@ object BonusType extends Enum[BonusType] {
   // case object Unique extends BonusType
 
   /**
-   * Untyped bonuses stack. Note that a bonus without a keyword isn't necessarily an untyped bonus,
+   * Untyped bonuses stack. Note that a bonus without a keyword isn't necessarily an untyped bonus;
    * the description might just be lacking.
    */
   case object Untyped extends BonusType with StacksWithAny

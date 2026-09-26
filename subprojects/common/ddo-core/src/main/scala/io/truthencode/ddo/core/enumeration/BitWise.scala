@@ -18,7 +18,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package io.truthencode.ddo.enumeration
+package io.truthencode.ddo.core.enumeration
 
 /**
  * Created by adarr on 1/22/2017.
@@ -31,7 +31,7 @@ trait BitWise {
    * @param i
    *   number to change
    * @return
-   *   bit representation
+   *   a bit representation
    */
   def toBitMask(i: Int): Int = scala.math.pow(2, i).toInt
 }

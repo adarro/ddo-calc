@@ -18,10 +18,10 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package io.truthencode.ddo.model.spells
+package io.truthencode.ddo.core.model.spells
 
 import io.truthencode.ddo.model.save.Save
-import io.truthencode.ddo.support.naming.FriendlyDisplay
+import io.truthencode.ddo.core.support.naming.FriendlyDisplay
 
 /**
  * Base trait for determining saves against spell. Saving Throw Difficulty Class

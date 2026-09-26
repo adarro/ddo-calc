@@ -18,12 +18,12 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package io.truthencode.ddo.model.feats
+package io.truthencode.ddo.core.model.feats
 
-import io.truthencode.ddo.model.classes.HeroicCharacterClass
-import io.truthencode.ddo.model.classes.HeroicCharacterClass.{Barbarian, Rogue}
-import io.truthencode.ddo.support.TraverseOps.Crossable
-import io.truthencode.ddo.support.requisite.{FeatRequisiteImpl, FreeFeat, GrantsToClass}
+import io.truthencode.ddo.core.model.classes.HeroicCharacterClass
+import io.truthencode.ddo.core.model.classes.HeroicCharacterClass.{Barbarian, Rogue}
+import io.truthencode.ddo.core.TraverseOps.Crossable
+import io.truthencode.ddo.core.support.requisite.{FeatRequisiteImpl, FreeFeat, GrantsToClass}
 
 /**
  * [[http://ddowiki.com/page/Trap_Sense Trap Sense]] This class feat of Barbarians and Rogues grants

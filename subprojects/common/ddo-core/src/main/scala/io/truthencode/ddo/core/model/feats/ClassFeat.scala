@@ -18,16 +18,16 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package io.truthencode.ddo.model.feats
+package io.truthencode.ddo.core.model.feats
 
 import enumeratum.Enum
-import io.truthencode.ddo.model.classes.HeroicCharacterClass
-import io.truthencode.ddo.model.classes.HeroicCharacterClass.Ranger
-import io.truthencode.ddo.model.compendium.types.{MainType, MonsterType}
-import io.truthencode.ddo.model.effect.features.{Features, FeaturesImpl}
-import io.truthencode.ddo.model.spells.alchemical.Reaction
-import io.truthencode.ddo.support.naming.FriendlyDisplay
-import io.truthencode.ddo.support.requisite.{RequiresAllOfFeat, _}
+import io.truthencode.ddo.core.model.classes.HeroicCharacterClass
+import io.truthencode.ddo.core.model.classes.HeroicCharacterClass.Ranger
+import io.truthencode.ddo.core.model.compendium.types.{MainType, MonsterType}
+import io.truthencode.ddo.core.model.effect.features.{Features, FeaturesImpl}
+import io.truthencode.ddo.core.model.spells.alchemical.Reaction
+import io.truthencode.ddo.core.support.naming.FriendlyDisplay
+import io.truthencode.ddo.core.support.requisite.{RequiresAllOfFeat, _}
 
 import scala.collection.immutable
 

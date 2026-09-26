@@ -18,11 +18,11 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package io.truthencode.ddo.model.effect
+package io.truthencode.ddo.core.model.effect
 
 import enumeratum.EnumEntry
-import io.truthencode.ddo.enhancement.BonusType
-import io.truthencode.ddo.support.numbers.Numbers
+import io.truthencode.ddo.core.enhancement.BonusType
+import io.truthencode.ddo.core.support.numbers.Numbers
 
 import scala.util.{Success, Try}
 
@@ -30,7 +30,7 @@ case class EffectParameterList(modifiers: Seq[ParameterModifier[?]])
 
 class EffectParameterBuilder[T <: EffectParameterBuilder.EffectParams] protected (
   ingredients: Seq[ParameterModifier[?]]) {
-  import EffectParameterBuilder.EffectParams._
+  import EffectParameterBuilder.EffectParams.*
 
   /**
    * Determines when the given effect is triggered on. Required
@@ -98,7 +98,7 @@ class EffectParameterBuilder[T <: EffectParameterBuilder.EffectParams] protected
   }
 
   /**
-   * Denotes this is a DC check, effect or condition
+   * Denotes this is a DC check, effect, or condition
    * @return
    *   applied DC to the builder
    */

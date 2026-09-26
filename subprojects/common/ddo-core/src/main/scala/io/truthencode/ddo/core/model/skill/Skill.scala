@@ -28,9 +28,9 @@ import io.truthencode.ddo.activation.{
   PassiveActivation,
   TriggeredActivationImpl
 }
-import io.truthencode.ddo.model.attribute.*
-import io.truthencode.ddo.support.SearchPrefix
-import io.truthencode.ddo.support.naming.{DisplayName, FriendlyDisplay}
+import io.truthencode.ddo.core.model.attribute.*
+import io.truthencode.ddo.core.support.SearchPrefix
+import io.truthencode.ddo.core.support.naming.{DisplayName, FriendlyDisplay}
 
 import scala.collection.immutable.IndexedSeq
 

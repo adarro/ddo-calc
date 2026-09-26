@@ -18,9 +18,9 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package io.truthencode.ddo.model.feats
+package io.truthencode.ddo.core.model.feats
 
-import io.truthencode.ddo.support.requisite.{FeatRequisiteImpl, RequiresAllOfFeat}
+import io.truthencode.ddo.core.support.requisite.{FeatRequisiteImpl, RequiresAllOfFeat}
 
 /**
  * This feat negates the extra penalties from using a tower shield while untrained. The -2 attack

@@ -18,20 +18,23 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package io.truthencode.ddo.support.validation
+package io.truthencode.ddo.core.support.validation
 
 import io.truthencode.ddo.api.model.effect.{ScalingEffect, ScalingInfo}
-import io.truthencode.ddo.support.TraverseOps.*
+import io.truthencode.ddo.core.TraverseOps.*
 import jakarta.inject.Singleton
 import org.eclipse.microprofile.config.inject.ConfigProperty
 import zio.prelude.{Validation, ZValidation}
+
+import scala.compiletime.uninitialized
 
 // Validates scaling values
 
 @Singleton
 object ScalingValidation {
+  // TODO: Test uninitialized var with Quarkus Injection (ConfigProperty)
   @ConfigProperty(name = "core.filtering.global", defaultValue = "FilterValid")
-  var globalFilterDefault: String = null
+  var globalFilterDefault: String = uninitialized
 
   private def filterStrategy = {
     invalidationOptions.values

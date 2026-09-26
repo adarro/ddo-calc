@@ -18,12 +18,12 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package io.truthencode.ddo.enchantment
+package io.truthencode.ddo.core.enchantment
 
 import com.typesafe.scalalogging.LazyLogging
-import io.truthencode.ddo.enchantment.Modifier.{Greater, Lesser, Minor}
-import io.truthencode.ddo.model.effect.{Prefix, SecondaryPrefix, Suffix}
-import io.truthencode.ddo.support.RomanNumeral.fromRoman
+import io.truthencode.ddo.core.enchantment.Modifier.{Greater, Lesser, Minor}
+import io.truthencode.ddo.core.model.effect.{Prefix, SecondaryPrefix, Suffix}
+import io.truthencode.ddo.core.support.RomanNumeral.fromRoman
 import zio.prelude.Validation
 
 import scala.language.postfixOps
@@ -35,8 +35,7 @@ object GuardModifier extends LazyLogging {
   type Parameters = (Option[String], Option[String], Option[String])
 
   /**
-   * Array of allowed Guard Modifiers, may occasionally need to be updated if the game adds new
-   * ones.
+   * Array of allowed Guard Modifiers may occasionally need to be updated if the game adds new ones.
    */
   lazy val allowedModifiers: List[String] = List(Minor, Lesser, Greater).map { x =>
     x.entryName

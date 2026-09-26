@@ -18,12 +18,12 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package io.truthencode.ddo.support.time
+package io.truthencode.ddo.core.support.time
 
 import java.time.Duration
 
 /**
- * Base trait to store and calculate Durations in DDO such as Casting Delay, CoolDowns etc.
+ * Base trait to store and calculate Durations in DDO such as Casting Delay, CoolDowns, etc.
  */
 trait DurationExp {
   def toDuration: Option[Duration]
@@ -38,7 +38,7 @@ trait SimpleDuration extends DurationExp {
 }
 
 /**
- * Represents a level based modifier that may increase / decrease duration. Used to represent 3
+ * Represents a level-based modifier that may increase / decrease duration. Used to represent 3
  * seconds per level represent multiplier for each time a certain feat is acquired such as - 1
  * second per religious feat stepped progressive such as reduced at levels 1,4,8 16 and 20
  */
@@ -50,7 +50,7 @@ trait PerLevelDuration extends DurationExp {
   val perLevelBase: Duration = Duration.ZERO
 
   /**
-   * Indicates the amount to step by, i.e. 1 to 10 by step
+   * Indicates the amount to step by, i.e., 1 to 10 by step
    */
   val step: Double = 1
   val modifier: Double

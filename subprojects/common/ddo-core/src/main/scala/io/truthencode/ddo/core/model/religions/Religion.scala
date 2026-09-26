@@ -21,10 +21,10 @@
 package io.truthencode.ddo.model.religions
 
 import enumeratum.{Enum, EnumEntry}
-import io.truthencode.ddo.model.item.weapon.{FavoredWeapon, WeaponCategory}
+import io.truthencode.ddo.core.model.item.weapon.{FavoredWeapon, WeaponCategory}
 import io.truthencode.ddo.model.worlds.{Eberron, ForgottenRealms, HomeWorld}
-import io.truthencode.ddo.support.StringUtils.Extensions
-import io.truthencode.ddo.support.naming.{DisplayName, FriendlyDisplay}
+import io.truthencode.ddo.core.StringUtils.Extensions
+import io.truthencode.ddo.core.support.naming.{DisplayName, FriendlyDisplay}
 
 import scala.collection.immutable.IndexedSeq
 

@@ -18,16 +18,16 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package io.truthencode.ddo.model.feats
+package io.truthencode.ddo.core.model.feats
 
 import com.typesafe.scalalogging.LazyLogging
 import enumeratum.{Enum, EnumEntry}
-import io.truthencode.ddo.model.effect.SourceInfo
-import io.truthencode.ddo.model.effect.features.Features
+import io.truthencode.ddo.core.model.effect.SourceInfo
+import io.truthencode.ddo.core.model.effect.features.Features
 import io.truthencode.ddo.model.race.Race
-import io.truthencode.ddo.support.StringUtils.Extensions
-import io.truthencode.ddo.support.naming.{DisplayName, FriendlyDisplay}
-import io.truthencode.ddo.support.requisite._
+import io.truthencode.ddo.core.StringUtils.Extensions
+import io.truthencode.ddo.core.support.naming.{DisplayName, FriendlyDisplay}
+import io.truthencode.ddo.core.support.requisite._
 
 import scala.collection.immutable.IndexedSeq
 

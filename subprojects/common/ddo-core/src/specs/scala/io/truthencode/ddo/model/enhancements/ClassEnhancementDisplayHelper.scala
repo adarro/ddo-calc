@@ -21,9 +21,9 @@
 package io.truthencode.ddo.model.enhancements
 
 import com.typesafe.scalalogging.LazyLogging
-import io.truthencode.ddo.model.enhancement.enhancements.ClassEnhancement
-import io.truthencode.ddo.model.enhancement.{ClassBasedEnhancements, Tier}
-import io.truthencode.ddo.support.requisite.{
+import io.truthencode.ddo.core.model.enhancement.enhancements.ClassEnhancement
+import io.truthencode.ddo.core.model.enhancement.{ClassBasedEnhancements, Tier}
+import io.truthencode.ddo.core.support.requisite.{
   ActionPointRequisite,
   PointInTreeRequisite,
   PointsAvailableRequisite,

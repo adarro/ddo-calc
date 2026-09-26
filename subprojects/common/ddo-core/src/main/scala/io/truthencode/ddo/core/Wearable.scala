@@ -20,8 +20,8 @@
  */
 package io.truthencode.ddo.core
 import enumeratum.EnumEntry
-import io.truthencode.ddo.enumeration.EnumExtensions.{E2, EnumCompanionOps}
-import io.truthencode.ddo.support.slots.WearLocation
+import io.truthencode.ddo.core.enumeration.EnumExtensions.{E2, EnumCompanionOps}
+import io.truthencode.ddo.core.support.slots.WearLocation
 
 /**
  * Indicates the given object can be equipped / wielded etc.

@@ -21,6 +21,7 @@
 package io.truthencode.ddo.model.effect
 
 import enumeratum.EnumEntry
+import io.truthencode.ddo.model.effect.Physical
 import io.truthencode.ddo.modeling.NoDefault
 import io.truthencode.ddo.model.meta.{MagicDamageType, PhysicalDamageType}
 

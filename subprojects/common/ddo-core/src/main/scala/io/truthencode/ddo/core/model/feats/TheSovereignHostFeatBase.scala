@@ -18,7 +18,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package io.truthencode.ddo.model.feats
+package io.truthencode.ddo.core.model.feats
 
 import io.truthencode.ddo.model.religions.{Religion, SovereignHost}
 

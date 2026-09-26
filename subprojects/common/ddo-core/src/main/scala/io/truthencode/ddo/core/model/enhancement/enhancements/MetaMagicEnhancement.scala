@@ -18,12 +18,12 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package io.truthencode.ddo.model.enhancement.enhancements
+package io.truthencode.ddo.core.model.enhancement.enhancements
 
-import io.truthencode.ddo.model.feats.MetaMagicFeat
+import io.truthencode.ddo.core.model.feats.MetaMagicFeat
 
 /**
- * Base trait which can be used to denote an enhancement which reduces the cost of a metamagic
+ * Base trait that can be used to denote an enhancement which reduces the cost of a metamagic
  */
 trait MetaMagicEnhancement {
   self: ClassEnhancement =>

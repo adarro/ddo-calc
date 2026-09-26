@@ -18,11 +18,11 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package io.truthencode.ddo.model.feats.favor
+package io.truthencode.ddo.core.model.feats.favor
 
 import com.typesafe.scalalogging.LazyLogging
-import io.truthencode.ddo.model.feats.{Feat, FeatDisplayHelper}
-import io.truthencode.ddo.support.requisite.RequiresAllOfPatron
+import io.truthencode.ddo.core.model.feats.{Feat, FeatDisplayHelper}
+import io.truthencode.ddo.core.support.requisite.RequiresAllOfPatron
 import org.concordion.api.FullOGNL
 import org.concordion.integration.junit4.ConcordionRunner
 import org.junit.runner.RunWith

@@ -20,8 +20,8 @@
  */
 package io.truthencode.ddo.model
 
-import io.truthencode.ddo.model.feats.{GeneralFeat, SubFeat}
-import io.truthencode.ddo.model.item.weapon.{
+import io.truthencode.ddo.core.model.feats.{GeneralFeat, SubFeat}
+import io.truthencode.ddo.core.model.item.weapon.{
   ExoticWeapon,
   MartialWeapon,
   SimpleWeapon,

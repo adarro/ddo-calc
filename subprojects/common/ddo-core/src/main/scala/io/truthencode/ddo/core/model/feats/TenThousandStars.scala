@@ -18,19 +18,19 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package io.truthencode.ddo.model.feats
+package io.truthencode.ddo.core.model.feats
 
 import io.truthencode.ddo.activation.{AtWillEvent, TriggeredActivationImpl}
-import io.truthencode.ddo.enhancement.BonusType
-import io.truthencode.ddo.model.abilities.ActiveAbilities
-import io.truthencode.ddo.model.attribute.Attribute
-import io.truthencode.ddo.model.classes.HeroicCharacterClass
-import io.truthencode.ddo.model.effect
-import io.truthencode.ddo.model.effect.TriggerEvent
-import io.truthencode.ddo.model.effect.features.{FeaturesImpl, GrantAbilityFeature}
-import io.truthencode.ddo.model.misc.CoolDownPool.ManyShot
-import io.truthencode.ddo.model.misc.SharedCoolDown
-import io.truthencode.ddo.support.requisite.*
+import io.truthencode.ddo.core.enhancement.BonusType
+import io.truthencode.ddo.core.model.abilities.ActiveAbilities
+import io.truthencode.ddo.core.model.attribute.Attribute
+import io.truthencode.ddo.core.model.classes.HeroicCharacterClass
+import io.truthencode.ddo.core.model.effect
+import io.truthencode.ddo.core.model.effect.TriggerEvent
+import io.truthencode.ddo.core.model.effect.features.{FeaturesImpl, GrantAbilityFeature}
+import io.truthencode.ddo.core.model.misc.CoolDownPool.ManyShot
+import io.truthencode.ddo.core.model.misc.SharedCoolDown
+import io.truthencode.ddo.core.support.requisite.*
 
 import java.time.Duration
 

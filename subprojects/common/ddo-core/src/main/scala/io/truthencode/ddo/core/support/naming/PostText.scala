@@ -18,7 +18,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package io.truthencode.ddo.support.naming
+package io.truthencode.ddo.core.support.naming
 
 /**
  * Adds optional descriptive text. Used mainly to discriminate objects such as 'Shield Proficiency
@@ -27,7 +27,7 @@ package io.truthencode.ddo.support.naming
 trait PostText extends DisplayProperties {
 
   /**
-   * Surrounds the text with the given characters. By default, this is parenthesis. The default
+   * Surrounds the text with the given characters. By default, this is a parenthesis. The default
    * behavior should mimic case classes.
    */
   protected val postTextEnclosure: (String, String) = (" (", ")")

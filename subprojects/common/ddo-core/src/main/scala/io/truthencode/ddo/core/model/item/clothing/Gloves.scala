@@ -18,10 +18,10 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package io.truthencode.ddo.model.item.clothing
+package io.truthencode.ddo.core.model.item.clothing
 
-import io.truthencode.ddo.Wearable
-import io.truthencode.ddo.support.slots.WearLocation
+import io.truthencode.ddo.core.Wearable
+import io.truthencode.ddo.core.support.slots.WearLocation
 
 trait Gloves extends Clothing with Wearable {
 

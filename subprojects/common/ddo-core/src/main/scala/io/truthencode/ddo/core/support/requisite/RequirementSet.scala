@@ -18,14 +18,14 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package io.truthencode.ddo.support.requisite
+package io.truthencode.ddo.core.support.requisite
 
 /**
  * Encapsulates A requirement with relevant context for evaluating against a provided set of
  * requirements.
  *
  * @param reqType
- *   Whether this provides, requires or prevents
+ *   Whether this provides, requires, or prevents
  * @param incl
  *   logic type to apply (AnyOf / AllOf / NoneOf) scenarios
  * @param req

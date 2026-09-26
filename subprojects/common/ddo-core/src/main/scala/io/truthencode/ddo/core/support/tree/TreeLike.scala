@@ -18,13 +18,13 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package io.truthencode.ddo.support.tree
+package io.truthencode.ddo.core.support.tree
 
 import enumeratum.{Enum, EnumEntry}
-import io.truthencode.ddo.support.SearchPrefix
-import io.truthencode.ddo.support.StringUtils.Extensions
-import io.truthencode.ddo.support.naming.{DisplayName, FriendlyDisplay}
-import io.truthencode.ddo.support.points.SpendablePoints
+import io.truthencode.ddo.core.support.SearchPrefix
+import io.truthencode.ddo.core.StringUtils.Extensions
+import io.truthencode.ddo.core.support.naming.{DisplayName, FriendlyDisplay}
+import io.truthencode.ddo.core.support.points.SpendablePoints
 
 import scala.collection.immutable
 sealed trait TreeLike extends EnumEntry with DisplayName with FriendlyDisplay with SearchPrefix {
@@ -40,8 +40,8 @@ object TreeLike extends Enum[TreeLike] {
 }
 
 /**
- * Represents Enhancement Trees such as Universal and Class Enhancement trees (Pale Master, Falconry
- * etc)
+ * Represents Enhancement Trees such as Universal and Class Enhancement trees (Pale Master,
+ * Falconry, etc.)
  */
 trait EnhancementTree extends TreeLike {
   override val pointType: SpendablePoints = SpendablePoints.ActionPoints
@@ -62,7 +62,7 @@ trait ReaperTree extends TreeLike {
 }
 
 /**
- * One of the Epic Destiny Spheres (Primal, Arcane etc)
+ * One of the Epic Destiny Spheres (Primal, Arcane, etc.)
  */
 trait DestinySphere extends TreeLike {
   override val pointType: SpendablePoints = SpendablePoints.FatePoints

@@ -18,11 +18,11 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package io.truthencode.ddo.model.spells
+package io.truthencode.ddo.core.model.spells
 
-import io.truthencode.ddo.model.effect.EffectList
-import io.truthencode.ddo.model.spells.SpellElement._
-import io.truthencode.ddo.model.spells.component.ComponentList
+import io.truthencode.ddo.core.model.effect.EffectList
+import io.truthencode.ddo.core.model.spells.SpellElement._
+import io.truthencode.ddo.core.model.spells.component.ComponentList
 
 import scala.collection.immutable
 

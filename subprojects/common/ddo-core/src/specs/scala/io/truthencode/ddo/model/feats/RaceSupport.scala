@@ -18,11 +18,11 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package io.truthencode.ddo.model.feats
+package io.truthencode.ddo.core.model.feats
 
 import com.typesafe.scalalogging.LazyLogging
 import io.truthencode.ddo.model.race.Race
-import io.truthencode.ddo.support.requisite.RequirementOption
+import io.truthencode.ddo.core.support.requisite.RequirementOption
 
 import java.util
 import scala.jdk.CollectionConverters.SeqHasAsJava

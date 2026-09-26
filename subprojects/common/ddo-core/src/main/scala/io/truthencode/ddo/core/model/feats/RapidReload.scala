@@ -18,13 +18,17 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package io.truthencode.ddo.model.feats
+package io.truthencode.ddo.core.model.feats
 
 import io.truthencode.ddo.model.FeatConverters.featByWeaponProficiency
-import io.truthencode.ddo.model.classes.HeroicCharacterClass
-import io.truthencode.ddo.model.classes.HeroicCharacterClass.Artificer
-import io.truthencode.ddo.model.item.weapon.WeaponCategory
-import io.truthencode.ddo.support.requisite.{FeatRequisiteImpl, GrantsToClass, RequiresAllOfFeat}
+import io.truthencode.ddo.core.model.classes.HeroicCharacterClass
+import io.truthencode.ddo.core.model.classes.HeroicCharacterClass.Artificer
+import io.truthencode.ddo.core.model.item.weapon.WeaponCategory
+import io.truthencode.ddo.core.support.requisite.{
+  FeatRequisiteImpl,
+  GrantsToClass,
+  RequiresAllOfFeat
+}
 
 /**
  * Icon Feat Rapid Reload.png Rapid Reload Passive Allows Crossbows to be reloaded about 20% faster.

@@ -18,19 +18,19 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package io.truthencode.ddo.model.character
+package io.truthencode.ddo.core.model.character
 
-import io.truthencode.ddo.model.alignment.Alignments
-import io.truthencode.ddo.model.classes.{EpicCharacterClass, HeroicCharacterClass}
-import io.truthencode.ddo.model.destiny.EpicDestiny
-import io.truthencode.ddo.model.enhancement.Enhancement
-import io.truthencode.ddo.model.feats.Feat
-import io.truthencode.ddo.model.item.WearableItem
+import io.truthencode.ddo.core.model.alignment.Alignments
+import io.truthencode.ddo.core.model.classes.{EpicCharacterClass, HeroicCharacterClass}
+import io.truthencode.ddo.core.model.destiny.EpicDestiny
+import io.truthencode.ddo.core.model.enhancement.Enhancement
+import io.truthencode.ddo.core.model.feats.Feat
+import io.truthencode.ddo.core.model.item.WearableItem
 import io.truthencode.ddo.model.race.Race
 import io.truthencode.ddo.model.skill.Skill
 import io.truthencode.ddo.model.stats._
-import io.truthencode.ddo.support.dice.Dice
-import io.truthencode.ddo.support.points.{HitPoints, Ki, SpellPoints}
+import io.truthencode.ddo.core.support.dice.Dice
+import io.truthencode.ddo.core.support.points.{HitPoints, Ki, SpellPoints}
 
 // scalastyle:off number.of.methods
 trait Character {
@@ -48,7 +48,7 @@ trait Character {
 
   /**
    * Character Race This should be somewhat stable, however, spells / feats may alter or replace it
-   * such as Druid shape shifting, Shrouds, Construct Mastery etc.
+   * such as Druid shape-shifting, Shrouds, Construct Mastery, etc.
    * @note
    *   May need to additionally store an array of applied types such as counting as Undead in
    *   Addition to type.
@@ -72,7 +72,7 @@ trait Character {
   /**
    * Holds currently applied enhancements from the skill tree.
    * @note
-   *   may need to create a custom type as certain enhancements are multi-tier, i.e. can spend
+   *   may need to create a custom type as certain enhancements are multi-tier, i.e., can spend
    *   points for up to three levels
    */
   val enhancements: List[SimpleStatItem[Enhancement]]
@@ -80,7 +80,7 @@ trait Character {
   /**
    * Holds current Epic destiny acquisitions
    * @note
-   *   will likely need to create custom type
+   *   will likely need to create a custom type
    */
   val epicDestinies: List[SimpleStatItem[EpicDestiny]]
   /* Equipment Slots */
@@ -105,7 +105,7 @@ trait Character {
   def skills: List[SimpleStatItem[Skill]]
 
   /**
-   * Current Character Level is derived from the amount of heroic, epic and possibly past lives
+   * Current Character Level is derived from the number of heroic, epic, and possibly past lives
    * @note
    *   TBD: translating past lives into levels. May simply be a display thing.
    */
@@ -126,7 +126,7 @@ trait Character {
   def epicLevels: List[(Int, EpicCharacterClass)]
 
   /**
-   * Holds Past lives from all TR forms (Heroic, Racial, Iconic and Epic) and is used for granting
+   * Holds Past lives from all TR forms (Heroic, Racial, Iconic, and Epic) and is used for granting
    * past life feats and / or displaying total character levels.
    * @return
    *   List of acquired past life feats
@@ -134,7 +134,7 @@ trait Character {
   def pastLives: List[StatItem[PastLife, Int]]
 
   /**
-   * Current hitpoints based on a calculation of Constitution, Feats, Level etc
+   * Current hitpoints based on a calculation of Constitution, Feats, Level, etc.
    * @return
    */
   def hitPoints: StatItem[HitPoints, Int]
@@ -204,9 +204,9 @@ trait Character {
 
   // Power
   /*
-     Spell Power Universal + Force / Cold etc
-     Spell Critical Chance Universal + Force / Cold etc
-     Spell Critical Multiplier Universal + Force / Cold etc
+     Spell Power Universal + Force / Cold etc.
+     Spell Critical Chance Universal + Force / Cold etc.
+     Spell Critical Multiplier Universal + Force / Cold etc.
    */
   /*
     Attack Bonus
@@ -224,15 +224,15 @@ trait Character {
      Melee
      Ranged
 
-     // vs enemy damage / saves i.e. Favored enemy, Dwarf Giant emnity
+     // vs. enemy damage / saves i.e., Favored enemy, Dwarf Giant enmity
    */
-  // School / Sphere Evocation / Divine etc
+  // School / Sphere Evocation / Divine etc.
   // Spell Penetration?
 
   // Defense Protection / Avoidance / Resistance / Absorption
   // Spell Resistance
   /*
-     Saves vs
+     Saves vs.
      Spell
      Fear
      Enchantment
@@ -255,13 +255,13 @@ trait Character {
      Absorption
      Acid, Chaos, Cold, Electric, Evil, Fire, Force, Good, Lawful, Light, Negative, Poison, Sonic
 
-     Elemental / Magic etc, Traps, Curse poison
+     Elemental / Magic etc., Traps, Curse poison
    */
   // Saves: Fort / Reflex / Will
-  // Damage Reduction  DR,
+  // Damage Reduction DR,
   // Resistance (MRR / PRR)
 
-  // Avoidance Concealment, Dodge, Ethereal / Ghostly etc
+  // Avoidance Concealment, Dodge, Ethereal / Ghostly, etc.
 
   /*
      Armor class / active blocking

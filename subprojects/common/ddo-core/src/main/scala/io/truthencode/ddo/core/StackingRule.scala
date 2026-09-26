@@ -38,6 +38,6 @@ trait StacksWithAny extends StackingRule
 trait NonStacking extends StackingRule
 
 /**
- * Miscellaneous bonuses coming from the same source don't stack (ie - 2 paladins' aura).
+ * Miscellaneous bonuses coming from the same source don't stack (i.e. - 2 paladins' aura).
  */
 trait StacksWithUnique extends StackingRule

@@ -18,10 +18,10 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package io.truthencode.ddo.model.item
+package io.truthencode.ddo.core.model.item
 
-import io.truthencode.ddo.MetaData
-import io.truthencode.ddo.MonetaryValue.Coins
+import io.truthencode.ddo.core.MonetaryValue.Coins
+import io.truthencode.ddo.core.MetaData
 
 trait Item extends MetaData {
 

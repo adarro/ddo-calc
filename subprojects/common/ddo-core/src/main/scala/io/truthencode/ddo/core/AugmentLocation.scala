@@ -21,7 +21,7 @@
 package io.truthencode.ddo.core
 
 import enumeratum.{Enum, EnumEntry}
-import io.truthencode.ddo.enumeration.{BitSupport, BitWise}
+import io.truthencode.ddo.core.enumeration.{BitSupport, BitWise}
 
 import scala.collection.immutable
 

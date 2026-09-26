@@ -18,11 +18,11 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package io.truthencode.ddo.support.slots.item
+package io.truthencode.ddo.core.support.slots.item
 
 /**
  * Base trait representing slots that can be filled with effects. These include craftable, named,
- * augments (guild based and augment), mythic boosts etc.
+ * augments (guild-based and augment), mythic boosts, etc.
  *
  * Created by adarr on 5/5/2017.
  */

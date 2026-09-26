@@ -18,11 +18,15 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package io.truthencode.ddo.model.feats
+package io.truthencode.ddo.core.model.feats
 
-import io.truthencode.ddo.model.classes.HeroicCharacterClass
-import io.truthencode.ddo.model.classes.HeroicCharacterClass.Druid
-import io.truthencode.ddo.support.requisite.{FeatRequisiteImpl, GrantsToClass, RequiresAllOfClass}
+import io.truthencode.ddo.core.model.classes.HeroicCharacterClass
+import io.truthencode.ddo.core.model.classes.HeroicCharacterClass.Druid
+import io.truthencode.ddo.core.support.requisite.{
+  FeatRequisiteImpl,
+  GrantsToClass,
+  RequiresAllOfClass
+}
 
 /**
  * [[https://ddowiki.com/page/Druidic_Oath Druidic Oath]] All druids take an oath that prohibits

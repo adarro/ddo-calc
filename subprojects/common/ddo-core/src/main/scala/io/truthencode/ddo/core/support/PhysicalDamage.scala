@@ -18,15 +18,15 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package io.truthencode.ddo.support
+package io.truthencode.ddo.core.support
 
 import io.truthencode.ddo.model.effect.Damage
 import io.truthencode.ddo.model.meta.PhysicalDamageType
 import io.truthencode.ddo.model.meta.PhysicalDamageType.{Bludgeon, Pierce, Slash}
-import io.truthencode.ddo.{DefaultValue, NoDefault}
+import io.truthencode.ddo.modeling.{DefaultValue, NoDefault}
 
 /**
- * Created by adarr on 2/3/2017.
+ * Created by adarro on 2/3/2017.
  */
 sealed trait PhysicalDamage extends Damage with DefaultValue[PhysicalDamageType]
 
@@ -48,6 +48,6 @@ trait Piercing extends PhysicalDamage {
 
 /**
  * Damage type has no specified default. This is the case of Ranged / Thrown as the damage type
- * depends on the projectile. (I.e. thrown dagger = pierce while thrown hammer = bludgeon)
+ * depends on the projectile. (I.e., thrown dagger = pierce while thrown hammer = bludgeon)
  */
 trait Deferred extends PhysicalDamage with NoDefault[PhysicalDamageType]

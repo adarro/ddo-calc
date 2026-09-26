@@ -18,18 +18,22 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package io.truthencode.ddo.model.feats
+package io.truthencode.ddo.core.model.feats
 
-import io.truthencode.ddo.model.classes.HeroicCharacterClass
-import io.truthencode.ddo.model.classes.HeroicCharacterClass.Monk
-import io.truthencode.ddo.support.naming.PostText
-import io.truthencode.ddo.support.requisite.{FeatRequisiteImpl, GrantsToClass, RequiresAllOfClass}
+import io.truthencode.ddo.core.model.classes.HeroicCharacterClass
+import io.truthencode.ddo.core.model.classes.HeroicCharacterClass.Monk
+import io.truthencode.ddo.core.support.naming.PostText
+import io.truthencode.ddo.core.support.requisite.{
+  FeatRequisiteImpl,
+  GrantsToClass,
+  RequiresAllOfClass
+}
 
 /**
  * [[http://ddowiki.com/page/Fast_Movement_(monk_class_feat)]] A Monk gains a cumulative 5% bonus to
  * run speed while centered for every three Monk levels. This bonus stacks with other run speed
- * bonuses. If the monk would become uncentered (by equipping armor, or wielding non-monk weapons,
- * etc) then the bonuses are temporarily lost.
+ * bonuses. If the monk becomes uncentered (by equipping armor, or wielding non-monk weapons, etc)
+ * then the bonuses are temporarily lost.
  */
 protected[feats] trait FastMovementMonk
   extends FeatRequisiteImpl with Passive with GrantsToClass with PostText with RequiresAllOfClass {

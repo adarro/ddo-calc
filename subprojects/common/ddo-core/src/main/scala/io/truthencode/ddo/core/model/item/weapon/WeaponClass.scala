@@ -18,11 +18,11 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package io.truthencode.ddo.model.item.weapon
+package io.truthencode.ddo.core.model.item.weapon
 
 import enumeratum.{Enum, EnumEntry}
-import io.truthencode.ddo.support.naming.DisplayName
-import io.truthencode.ddo.support.{Deferred, PhysicalDamage}
+import io.truthencode.ddo.core.support.naming.DisplayName
+import io.truthencode.ddo.core.support.{Deferred, PhysicalDamage}
 
 import scala.collection.immutable.IndexedSeq
 
@@ -58,13 +58,13 @@ object WeaponClass extends Enum[WeaponClass] {
 }
 
 sealed trait WeaponClassBludgeoning
-  extends WeaponClass with MeleeDamage with io.truthencode.ddo.support.Bludgeoning
+  extends WeaponClass with MeleeDamage with io.truthencode.ddo.core.support.Bludgeoning
 
 sealed trait WeaponClassPiercing
-  extends WeaponClass with MeleeDamage with io.truthencode.ddo.support.Piercing
+  extends WeaponClass with MeleeDamage with io.truthencode.ddo.core.support.Piercing
 
 sealed trait WeaponClassSlashing
-  extends WeaponClass with MeleeDamage with io.truthencode.ddo.support.Slashing
+  extends WeaponClass with MeleeDamage with io.truthencode.ddo.core.support.Slashing
 
 sealed trait WeaponClassRanged extends WeaponClass with RangeDamage with Deferred
 

@@ -18,14 +18,14 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package io.truthencode.ddo.model.effect.features
+package io.truthencode.ddo.core.model.effect.features
 
 import io.truthencode.ddo.api.model.effect.DetailedEffect
-import io.truthencode.ddo.enhancement.BonusType
-import io.truthencode.ddo.model.effect
-import io.truthencode.ddo.model.effect._
+import io.truthencode.ddo.core.enhancement.BonusType
+import io.truthencode.ddo.core.model.effect
+import io.truthencode.ddo.core.model.effect._
 import io.truthencode.ddo.model.stats.BasicStat
-import io.truthencode.ddo.support.naming.UsingSearchPrefix
+import io.truthencode.ddo.core.support.naming.UsingSearchPrefix
 
 trait TurnUndeadTotalHitDiceFeature extends Features {
   self: SourceInfo =>

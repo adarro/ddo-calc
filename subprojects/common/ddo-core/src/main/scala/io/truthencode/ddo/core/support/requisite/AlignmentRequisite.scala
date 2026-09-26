@@ -18,10 +18,10 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package io.truthencode.ddo.support.requisite
+package io.truthencode.ddo.core.support.requisite
 
-import io.truthencode.ddo.model.alignment.{AlignmentType, Alignments}
-import io.truthencode.ddo.support.requisite.RequirementImplicits.{
+import io.truthencode.ddo.core.model.alignment.{AlignmentType, Alignments}
+import io.truthencode.ddo.core.support.requisite.RequirementImplicits.{
   alignmentTypeToReq,
   alignmentsToReq
 }

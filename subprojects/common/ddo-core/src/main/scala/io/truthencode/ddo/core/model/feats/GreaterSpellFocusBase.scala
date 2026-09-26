@@ -18,9 +18,9 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package io.truthencode.ddo.model.feats
+package io.truthencode.ddo.core.model.feats
 
-import io.truthencode.ddo.support.requisite.{
+import io.truthencode.ddo.core.support.requisite.{
   ClassRequisiteImpl,
   FeatRequisiteImpl,
   RequiresAllOfFeat,
@@ -28,9 +28,10 @@ import io.truthencode.ddo.support.requisite.{
 }
 
 /**
- * Icon Feat Greater Spell Focus.png Greater Spell Focus - Passive This feat makes it harder for
- * enemies to resist the caster's spells of a particular school by adding +1 to the difficulty class
- * of the spell. This stacks with Spell Focus.
+ * Icon Feat Greater Spell Focus.png Greater Spell Focus - Passive
+ *
+ * This feat makes it harder for enemies to resist the caster's spells of a particular school by
+ * adding +1 to the difficulty class of the spell. This stacks with Spell Focus.
  *
  * Spell Focus for the same school Level 1: Artificer, Bard, Cleric, Druid, Favored Soul Level 1:
  * Sorcerer, Wizard; Level 4: Paladin, Ranger

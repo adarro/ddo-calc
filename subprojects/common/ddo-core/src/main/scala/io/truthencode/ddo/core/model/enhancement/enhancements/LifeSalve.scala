@@ -18,9 +18,9 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package io.truthencode.ddo.model.enhancement.enhancements
+package io.truthencode.ddo.core.model.enhancement.enhancements
 
-import io.truthencode.ddo.model.enhancement.enhancements.classbased.ApothecaryTierTwo
+import io.truthencode.ddo.core.model.enhancement.enhancements.classbased.ApothecaryTierTwo
 
 trait LifeSalve extends ApothecaryTierTwo with ClassEnhancementImpl {
 

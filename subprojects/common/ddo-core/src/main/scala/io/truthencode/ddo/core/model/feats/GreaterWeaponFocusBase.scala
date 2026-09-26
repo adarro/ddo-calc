@@ -18,10 +18,10 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package io.truthencode.ddo.model.feats
+package io.truthencode.ddo.core.model.feats
 
-import io.truthencode.ddo.model.classes.HeroicCharacterClass
-import io.truthencode.ddo.support.requisite.{
+import io.truthencode.ddo.core.model.classes.HeroicCharacterClass
+import io.truthencode.ddo.core.support.requisite.{
   ClassRequisiteImpl,
   FeatRequisiteImpl,
   RequiresAllOfClass,
@@ -30,7 +30,7 @@ import io.truthencode.ddo.support.requisite.{
 
 /**
  * Icon Feat Greater Weapon Focus.png Greater Weapon Focus Passive Provides an additional +1 bonus
- * to attack rolls with the chosen weapon type and additional +2 stacking Melee Power or Ranged
+ * to attack rolls with the chosen weapon type and additional +2 stacking Mêlée Power or Ranged
  * Power. This feat stacks with Weapon Focus.
  */
 protected[feats] trait GreaterWeaponFocusBase

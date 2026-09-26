@@ -18,11 +18,11 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package io.truthencode.ddo.support.validation
+package io.truthencode.ddo.core.support.validation
 
-import io.truthencode.ddo.enhancement.BonusType
-import io.truthencode.ddo.model.effect.{EffectCategories, TriggerEvent}
-import io.truthencode.ddo.model.spells.SpellPower
+import io.truthencode.ddo.core.enhancement.BonusType
+import io.truthencode.ddo.core.model.effect.{EffectCategories, TriggerEvent}
+import io.truthencode.ddo.core.model.spells.SpellPower
 import io.truthencode.ddo.model.stats.BasicStat
 import zio.prelude.Validation
 

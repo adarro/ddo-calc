@@ -20,6 +20,6 @@
  */
 package io.truthencode.ddo.enchantment
 
-import io.truthencode.ddo.model.effect.EffectList
+import io.truthencode.ddo.core.model.effect.EffectList
 
 trait Enchantment extends EffectList

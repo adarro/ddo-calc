@@ -18,7 +18,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package io.truthencode.ddo.support.charges
+package io.truthencode.ddo.core.support.charges
 
 import java.time.Duration
 

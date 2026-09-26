@@ -22,7 +22,7 @@ package io.truthencode.ddo.activation
 
 import com.typesafe.scalalogging.LazyLogging
 import enumeratum.{Enum, EnumEntry}
-import io.truthencode.ddo.model.effect.{ActiveEvent, PassiveEvent, TriggerEvent}
+import io.truthencode.ddo.core.model.effect.{ActiveEvent, PassiveEvent, TriggerEvent}
 
 import scala.reflect.ClassTag
 
@@ -54,7 +54,7 @@ trait TriggeredActivation extends ActivationTypeImpl, TriggerImpl, ActiveEvent {
  */
 trait PassiveActivation extends ActivationTypeImpl, PassiveEvent {
   abstract override def activations: Seq[TriggerEvent] =
-    super.activations :+ io.truthencode.ddo.model.effect.TriggerEvent.Passive
+    super.activations :+ io.truthencode.ddo.core.model.effect.TriggerEvent.Passive
 }
 
 object ActivationType extends Enum[ActivationType], LazyLogging {

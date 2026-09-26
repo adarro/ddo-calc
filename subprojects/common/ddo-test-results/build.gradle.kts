@@ -7,9 +7,8 @@ plugins {
     id("test-report-aggregation")
     id("jacoco-report-aggregation")
 }
-//displayName =  "Test Results"
+// displayName =  "Test Results"
 description = "Utility class for aggregating Reports"
-
 
 dependencies {
     // projectList().map { it -> testReportAggregation(project("$it")) }
@@ -55,8 +54,8 @@ reporting {
     @Suppress("UnstableApiUsage")
     reports {
         create<AggregateTestReport>("aggregateTestReporting") {
-                testSuiteName.set("test")
-            }
+            testSuiteName.set("test")
+        }
         create<AggregateTestReport>("aggregateAcceptanceTestReporting") {
             testSuiteName.set("acceptanceTest")
         }
@@ -69,7 +68,6 @@ reporting {
         create<JacocoCoverageReport>("acceptanceTestCodeCoverageReport") {
             testSuiteName.set("acceptanceTest")
         }
-
     }
 }
 // sonar {

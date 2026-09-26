@@ -18,10 +18,10 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package io.truthencode.ddo.model.spells
+package io.truthencode.ddo.core.model.spells
 
-import io.truthencode.ddo.model.misc.CoolDown
-import io.truthencode.ddo.model.spells.component.ComponentList
+import io.truthencode.ddo.core.model.misc.CoolDown
+import io.truthencode.ddo.core.model.spells.component.ComponentList
 
 import java.time.Duration
 

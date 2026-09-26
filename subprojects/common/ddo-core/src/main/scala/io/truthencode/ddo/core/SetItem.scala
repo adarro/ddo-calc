@@ -20,8 +20,8 @@
  */
 package io.truthencode.ddo.core
 
-import io.truthencode.ddo.model.effect.Effect
-import io.truthencode.ddo.model.item.PermanentItem
+import io.truthencode.ddo.core.model.effect.Effect
+import io.truthencode.ddo.core.model.item.PermanentItem
 
 /**
  * An Item set provides bonuses when equipping some or all of the items in the set.
@@ -29,7 +29,7 @@ import io.truthencode.ddo.model.item.PermanentItem
 trait SetItem {
 
   /**
-   * Name of set, such as Anger's Wrath
+   * Name of a set, such as Anger's Wrath
    */
   val name: String
 
@@ -39,9 +39,9 @@ trait SetItem {
   val items: List[PermanentItem]
 
   /**
-   * This will generally be a single bonus set, such as Anger's Wrath. However some sets, such as
+   * This will generally be a single bonus set, such as Anger's Wrath. However, some sets, such as
    * the [[http://ddowiki.com/page/Named_item_sets#Might_of_the_Abishai Abashi's Might]] which gives
-   * a small bonus for some of the items, and a bigger bonus for wearing all of the items.
+   * a small bonus for some items, and a bigger bonus for wearing all the items.
    */
   val effects: Map[Int, List[Effect]]
 

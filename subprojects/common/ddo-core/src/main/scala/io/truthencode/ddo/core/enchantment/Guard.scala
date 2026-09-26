@@ -18,10 +18,11 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package io.truthencode.ddo.enchantment
+package io.truthencode.ddo.core.enchantment
 
-import io.truthencode.ddo.enchantment.Modifier._
-import io.truthencode.ddo.model.effect._
+import io.truthencode.ddo.core.enchantment.Modifier.*
+import io.truthencode.ddo.enchantment.Enchantment
+import io.truthencode.ddo.core.model.effect.*
 
 trait GuardFlag {
   val guard: Guards
@@ -40,6 +41,7 @@ object Guard extends ((Guards, Option[GuardModifier]) => Guard) {
   def apply(parameters: Parameters): Guard =
     Guard(parameters._1, parameters._2)
 
+    // scalastyle:off magic.number
   def modifier(affixes: Option[GuardModifier]): Int = {
     affixes match {
       case Some(afx) =>
@@ -54,6 +56,7 @@ object Guard extends ((Guards, Option[GuardModifier]) => Guard) {
       case _ => 0
     }
   }
+  // scalastyle:on magic.number
 
   private def create(guard: Guards, affixes: Option[GuardModifier]): Guard = {
     new Guard(guard, affixes) {

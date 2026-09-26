@@ -18,12 +18,12 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package io.truthencode.ddo.support.naming
+package io.truthencode.ddo.core.support.naming
 
-import io.truthencode.ddo.support.StringUtils.Extensions
+import io.truthencode.ddo.core.StringUtils.Extensions
 
 /**
- * Alters Display by adding spaces between words and settings common prepositions / articles to
+ * Alters Display by adding spaces between words and settings common prepositions / articles to the
  * lower case.
  */
 trait FriendlyDisplay extends DisplayProperties {

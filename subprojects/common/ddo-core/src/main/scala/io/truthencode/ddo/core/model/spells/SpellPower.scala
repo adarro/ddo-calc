@@ -18,15 +18,15 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package io.truthencode.ddo.model.spells
+package io.truthencode.ddo.core.model.spells
 
 import enumeratum.{Enum, EnumEntry}
 import io.truthencode.ddo.model.effect._
 import io.truthencode.ddo.model.skill.Skill
 import io.truthencode.ddo.model.skill.Skill.{Heal, Perform, Repair, Spellcraft}
-import io.truthencode.ddo.support.SearchPrefix
-import io.truthencode.ddo.support.StringUtils.Extensions
-import io.truthencode.ddo.support.naming.{DisplayName, FriendlyDisplay}
+import io.truthencode.ddo.core.support.SearchPrefix
+import io.truthencode.ddo.core.StringUtils.Extensions
+import io.truthencode.ddo.core.support.naming.{DisplayName, FriendlyDisplay}
 
 /**
  * Represents one of the eight schools of magic.
@@ -83,7 +83,7 @@ object SpellPower extends Enum[SpellPower] with SearchPrefix {
   }
 
   /**
-   * Light power is also used to determine Alignment based damage
+   * Light power is also used to determine Alignment-based damage
    */
   case object Light extends SpellPower with Light with Alignment {
     override def linkedSkill: Skill = Spellcraft

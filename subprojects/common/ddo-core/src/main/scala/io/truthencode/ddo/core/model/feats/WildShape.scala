@@ -18,12 +18,16 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package io.truthencode.ddo.model.feats
+package io.truthencode.ddo.core.model.feats
 
 import io.truthencode.ddo.activation.{OnShapeShift, TriggeredActivationImpl}
-import io.truthencode.ddo.model.misc.DefaultCasterCoolDown
-import io.truthencode.ddo.support.naming.{DisplayName, DisplayProperties, WildShapePrefix}
-import io.truthencode.ddo.support.requisite.{FeatRequisiteImpl, GrantsToClass, RequiresAllOfClass}
+import io.truthencode.ddo.core.model.misc.DefaultCasterCoolDown
+import io.truthencode.ddo.core.support.naming.{DisplayName, DisplayProperties, WildShapePrefix}
+import io.truthencode.ddo.core.support.requisite.{
+  FeatRequisiteImpl,
+  GrantsToClass,
+  RequiresAllOfClass
+}
 
 /**
  * [[https://ddowiki.com/page/Wild_Shape Wild Shape]] Transform into the shape of and animal,

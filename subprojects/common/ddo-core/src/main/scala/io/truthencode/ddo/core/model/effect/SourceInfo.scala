@@ -18,12 +18,12 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package io.truthencode.ddo.model.effect
+package io.truthencode.ddo.core.model.effect
 
 /**
  * A basic trait to provide source information. Useful mostly for tagging Arrays with where they
- * came from. I.e. An AC bonus coming from a specific equipped item and an Enhancement Line that
- * don't stack.
+ * came from. I.e., An AC bonus coming from a specific equipped item and an Enhancement Line that
+ * doesn't stack.
  */
 trait SourceInfo {
   val sourceId: String

@@ -18,19 +18,19 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package io.truthencode.ddo.model.item.weapon
+package io.truthencode.ddo.core.model.item.weapon
 
 import enumeratum.{Enum, EnumEntry}
 import io.truthencode.ddo.model.effect.Damage
-import io.truthencode.ddo.support.StringUtils.Extensions
-import io.truthencode.ddo.support.TraverseOps.Joinable
-import io.truthencode.ddo.support.naming.{DisplayName, FriendlyDisplay}
-import io.truthencode.ddo.support.{Bludgeoning, Piercing, Slashing}
+import io.truthencode.ddo.core.StringUtils.Extensions
+import io.truthencode.ddo.core.TraverseOps.Joinable
+import io.truthencode.ddo.core.support.naming.{DisplayName, FriendlyDisplay}
+import io.truthencode.ddo.core.support.{Bludgeoning, Piercing, Slashing}
 
 import scala.collection.immutable.IndexedSeq
 
 /**
- * Enumerates the specific base types of weapons available in DDO, i.e. Kopesh, Dagger etc.
+ * Enumerates the specific base types of weapons available in DDO, i.e., Kopesh, Dagger, etc.
  */
 sealed trait WeaponCategory
   extends EnumEntry with Damage with DefaultDeliveryMethod with DisplayName with FriendlyDisplay {
@@ -49,7 +49,7 @@ sealed trait WeaponCategory
 
 // scalastyle:off number.of.types number.of.methods
 /**
- * Holds the basic (Default) weapon types, swords, axes etc.
+ * Holds the basic (Default) weapon types, swords, axes, etc.
  *
  * @todo
  *   Handle orbs and rune arms, orbs should be shields, but rune arm is only off-hand only with
@@ -95,10 +95,10 @@ object WeaponCategory extends Enum[WeaponCategory] {
   val icPlus1: Seq[WeaponCategory] = WeaponCategory.values.nSelect(icPlus3.concat(icPlus2))
 
   /**
-   * Filters weapons for Improved Critical Threat modifiers according to source on ddowiki
+   * Filters weapons for Improved Critical Threat modifiers, according to a source on ddowiki
    * [[https://ddowiki.com/page/Improved_Critical]]
    * @return
-   *   Collection of Weapons with appropriate modifiers in a Tuple i.e. Seq((Falchion,3),...)
+   *   Collection of Weapons with appropriate modifiers in a Tuple i.e., Seq((Falchion,3),...)
    */
   def improvedCriticalRangeByWeapon(weaponClass: WeaponClass): Seq[(WeaponCategory, Int)] =
     WeaponClass.values.flatMap { wc =>
@@ -115,8 +115,8 @@ object WeaponCategory extends Enum[WeaponCategory] {
 
   /**
    * Used by [[improvedCriticalRangeByWeapon]] to safely locate and build an array of weapons with a
-   * specific value. This routine may be useful elsewhere (thus parameterized) but essentially a one
-   * off.
+   * specific value. This routine may be useful elsewhere (thus parameterized) but essentially a
+   * one-off.
    * @param t
    *   Possibly null / empty type
    * @param n
@@ -124,7 +124,7 @@ object WeaponCategory extends Enum[WeaponCategory] {
    * @tparam T
    *   Type of t
    * @return
-   *   a Option[tuple] of (t,n) or none if t is null / empty.
+   *   an Option[tuple] of (t,n) or none if t is null / empty.
    */
   def optPlus[T](t: T, n: Int): Option[(T, Int)] = {
     val x = Option(t)

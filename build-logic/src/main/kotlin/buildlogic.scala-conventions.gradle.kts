@@ -108,7 +108,8 @@ afterEvaluate {
         val s3Rewrites =
             listOf(
                 "-rewrite",
-                "-source:3.4-migration",
+                "-source",
+                "3.4-migration",                
                 "-Xignore-scala2-macros",
                 "-new-syntax",
             )

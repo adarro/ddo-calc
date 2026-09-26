@@ -18,7 +18,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package io.truthencode.ddo.providers
+package io.truthencode.ddo.core.providers
 
 abstract class SimpleValueProvider[V] {
   def createValue: V => V

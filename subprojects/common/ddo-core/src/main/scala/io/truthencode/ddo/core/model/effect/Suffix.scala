@@ -18,9 +18,9 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package io.truthencode.ddo.model.effect
+package io.truthencode.ddo.core.model.effect
 
-import io.truthencode.ddo.model.effect.features.Features
+import io.truthencode.ddo.core.model.effect.features.Features
 
 trait Suffix extends Effect with Features with Affix {
   // @fixme Remove this and add meaningful implementation

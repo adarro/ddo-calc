@@ -18,16 +18,16 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package io.truthencode.ddo.model.effect
+package io.truthencode.ddo.core.model.effect
 
 import enumeratum.EnumEntry
 import io.truthencode.ddo.api.model.effect.{BasicEffectInfo, DetailedEffect, FullEffect}
-import io.truthencode.ddo.enhancement.BonusType
-import io.truthencode.ddo.model.attribute.{Attribute, UsingAttributeSearchPrefix}
-import io.truthencode.ddo.model.feats.Feat
-import io.truthencode.ddo.model.item.weapon.WeaponCategory
+import io.truthencode.ddo.core.enhancement.BonusType
+import io.truthencode.ddo.core.model.attribute.{Attribute, UsingAttributeSearchPrefix}
+import io.truthencode.ddo.core.model.feats.Feat
+import io.truthencode.ddo.core.model.item.weapon.WeaponCategory
 import io.truthencode.ddo.model.stats.BasicStat
-import io.truthencode.ddo.support.naming.{DisplayName, UsingSearchPrefix}
+import io.truthencode.ddo.core.support.naming.{DisplayName, UsingSearchPrefix}
 
 import scala.util.Try
 
@@ -41,11 +41,11 @@ sealed trait Feature[V] extends BasicEffectInfo {
   /**
    * The main name of the effect.
    *
-   * Naming conventions The name should be concisely non-specific. i.e. Prefer "ArmorClass" instead
+   * Naming conventions The name should be concisely non-specific. I.e., Prefer "ArmorClass" instead
    * of "Deflection" or "Miss-Chance" Deflection is too specific as there are several stacking and
    * non-stacking types (Natural Armor, Shield) that all contribute to your specific goal of
-   * increasing your armor class. Miss-Chance is to vague as it encompasses everything from
-   * incorporeal, dodge, armor class, arrow-deflection etc.
+   * increasing your armor class. Miss-Chance is too vague as it encompasses everything from
+   * incorporeal, dodge, armor class, arrow-deflection, etc.
    */
   override lazy val name: String = nameOption.getOrElse("Unknown")
   lazy val nameOption: Option[String] = part.toOption match {
@@ -117,7 +117,7 @@ object Feature {
 
     /**
      * The General Description should be just that. This should not include specific values unless
-     * all instances will share that value. I.e. a Dodge Effect might state it increases your
+     * all instances will share that value. I.e., a Dodge Effect might state it increases your
      * miss-chance, but omit any value such as 20%. Those values will be displayed in the effectText
      * of a specific implementation such as the Dodge Feat or Uncanny Dodge
      */
@@ -156,9 +156,9 @@ object Feature {
 
     /**
      * The General Description should be just that. This should not include specific values unless
-     * all instances will share that value. I.e. a Dodge Effect might state it increases your
-     * miss-chance, but omit any value such as 20%. Those values will be displayed in the effectText
-     * of a specific implementation such as the Dodge Feat or Uncanny Dodge
+     * all instances will share that value. I.e., a Dodge Effect might state it increases your
+     * 'miss-chance', but omit any value such as 20%. Those values will be displayed in the
+     * effectText of a specific implementation such as the Dodge Feat or Uncanny Dodge
      */
     override val generalDescription: String = "Increases a particular attribute score"
   }
@@ -177,7 +177,7 @@ trait PartModifier[V, E <: EnumEntry] extends Feature[V] with DisplayName {
   self: UsingSearchPrefix =>
 
   /**
-   * The current Seaerch-Fu is weak. Override this default function.
+   * The current Search-Fu is weak. Override this default function.
    */
   override lazy val part: Try[EffectPart] =
     EffectPart.tryFindByPattern(partToModify.entryName, Option(withPrefix))

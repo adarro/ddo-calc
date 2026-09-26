@@ -18,7 +18,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package io.truthencode.ddo.support
+package io.truthencode.ddo.core.support
 
 import enumeratum.{Enum, EnumEntry}
 
@@ -48,7 +48,7 @@ object EnumSupport {
    * @param id
    *   string name of the value to extract. (Case Sensitive)
    * @return
-   *   The EnumEntry value or [[scala.None]] if value can not be found.
+   *   The EnumEntry value or [[scala.None]] if value cannot be found.
    */
   def tryEntryFromString(fqn: String, id: String): Option[EnumEntry] = {
     tryEnumFromString(fqn).flatMap(_.withNameOption(id))
@@ -63,7 +63,7 @@ object EnumSupport {
    *
    * @note
    *   Internally uses a [[scala.util.Try]] and will safely return [[None]] for any cast exceptions.
-   *   Also allows base trait name to invoke Companion. i.e. org.example.baseTrait vs Companion
+   *   Also allows base trait name to invoke Companion. I.e., org.example.baseTrait vs. Companion
    *   org.example.baseTrait$
    */
   def tryEnumFromString(fqn: String): Option[Enum[EnumEntry]] = {

@@ -18,19 +18,19 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package io.truthencode.ddo.model.feats
+package io.truthencode.ddo.core.model.feats
 
-import io.truthencode.ddo.enhancement.BonusType
-import io.truthencode.ddo.enhancement.BonusType.Feat
-import io.truthencode.ddo.model.effect
-import io.truthencode.ddo.model.effect.TriggerEvent.{Never, Passive}
-import io.truthencode.ddo.model.effect.features.{
+import io.truthencode.ddo.core.enhancement.BonusType
+import io.truthencode.ddo.core.enhancement.BonusType.Feat
+import io.truthencode.ddo.core.model.effect
+import io.truthencode.ddo.core.model.effect.TriggerEvent.{Never, Passive}
+import io.truthencode.ddo.core.model.effect.features.{
   Features,
   FeaturesImpl,
   TurnUndeadNumberOfTurnsFeature
 }
-import io.truthencode.ddo.model.effect.{EffectCategories, Feature, SourceInfo, TriggerEvent}
-import io.truthencode.ddo.support.requisite.{FeatRequisiteImpl, RequiresAllOfFeat}
+import io.truthencode.ddo.core.model.effect.{EffectCategories, Feature, SourceInfo, TriggerEvent}
+import io.truthencode.ddo.core.support.requisite.{FeatRequisiteImpl, RequiresAllOfFeat}
 
 trait ExtraTurning extends FeatRequisiteImpl with Passive with Features {
   self: ClassFeat & RequiresAllOfFeat =>

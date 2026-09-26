@@ -18,12 +18,12 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package io.truthencode.ddo.model.enhancement
+package io.truthencode.ddo.core.model.enhancement
 
 import enumeratum.{Enum, EnumEntry}
-import io.truthencode.ddo.support.StringUtils.Extensions
-import io.truthencode.ddo.support.naming.{Description, DisplayName}
-import io.truthencode.ddo.support.requisite.RaceRequisite
+import io.truthencode.ddo.core.StringUtils.Extensions
+import io.truthencode.ddo.core.support.naming.{Description, DisplayName}
+import io.truthencode.ddo.core.support.requisite.RaceRequisite
 
 import scala.collection.immutable
 

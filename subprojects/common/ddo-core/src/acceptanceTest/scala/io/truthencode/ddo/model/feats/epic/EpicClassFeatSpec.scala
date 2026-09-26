@@ -18,18 +18,18 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package io.truthencode.ddo.model.feats.epic
+package io.truthencode.ddo.core.model.feats.epic
 
 import com.typesafe.scalalogging.LazyLogging
 import enumeratum.{Enum, EnumEntry}
-import io.truthencode.ddo.model.classes.HeroicCharacterClass
-import io.truthencode.ddo.model.feats.{
+import io.truthencode.ddo.core.model.classes.HeroicCharacterClass
+import io.truthencode.ddo.core.model.feats.{
   ClassFeatDisplayHelper,
   ClassRestricted,
   EpicFeatFeatDisplayHelper
 }
-import io.truthencode.ddo.support.naming.DisplayProperties
-import io.truthencode.ddo.support.requisite.ClassRequisite
+import io.truthencode.ddo.core.support.naming.DisplayProperties
+import io.truthencode.ddo.core.support.requisite.ClassRequisite
 import org.concordion.integration.junit4.ConcordionRunner
 import org.junit.runner.RunWith
 

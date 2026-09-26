@@ -21,11 +21,11 @@
 package io.truthencode.ddo.model.race
 
 import enumeratum.{Enum, EnumEntry}
-import io.truthencode.ddo.model.attribute._
-import io.truthencode.ddo.model.classes.CharacterClass
-import io.truthencode.ddo.model.misc._
+import io.truthencode.ddo.core.model.attribute._
+import io.truthencode.ddo.core.model.classes.CharacterClass
+import io.truthencode.ddo.core.model.misc._
 import io.truthencode.ddo.model.worlds.{HomeWorld, World}
-import io.truthencode.ddo.support.SearchPrefix
+import io.truthencode.ddo.core.support.SearchPrefix
 
 import scala.collection.immutable.IndexedSeq
 

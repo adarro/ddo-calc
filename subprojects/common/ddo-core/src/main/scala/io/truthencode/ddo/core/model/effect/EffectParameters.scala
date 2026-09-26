@@ -18,19 +18,19 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package io.truthencode.ddo.model.effect
+package io.truthencode.ddo.core.model.effect
 
-import enumeratum.{Enum => SmartEnum, EnumEntry}
-import io.truthencode.ddo.enhancement.{BonusType => Bonus}
-import io.truthencode.ddo.model.attribute.Attribute
-import io.truthencode.ddo.repo.Repo
-import io.truthencode.ddo.support.ModifierStrategy
+import enumeratum.{Enum as SmartEnum, EnumEntry}
+import io.truthencode.ddo.core.enhancement.BonusType as Bonus
+import io.truthencode.ddo.core.model.attribute.Attribute
+import io.truthencode.ddo.core.repo.Repo
+import io.truthencode.ddo.core.support.ModifierStrategy
 
 import scala.collection.immutable
 
 /**
- * Enumerates the possible parameter types allowed for an effect such as the Trigger, Type of bonus
- * etc
+ * Enumerates the possible parameter types allowed for an effect such as the Trigger, Type of bonus,
+ * etc.
  */
 sealed trait EffectParameter extends EnumEntry with SearchPattern {
   override def searchPattern(target: String): String = target
@@ -39,16 +39,15 @@ sealed trait EffectParameter extends EnumEntry with SearchPattern {
 trait DifficultyCheck extends EffectParameter {
 
   /**
-   * The base difficulty check value (before modifiers such as Strength or any Feats / buffs etc.
-   * I.e. For the Trip Feat, it is a base DC of 10
+   * The base difficulty check value (before modifiers such as Strength or any Feats / buffs etc.)
+   * I.e., For the Trip Feat, it is a base DC of 10
    * @return
    *   initial base Difficulty value
    */
   def baseDC: Int
 
   /**
-   * List of Attributes to base modifiers. In a general terms, the highest or lowest value will
-   * apply.
+   * List of Attributes to base modifiers. In general terms, the highest or lowest value will apply.
    * @return
    *   list of attributes used to modify the check value.
    */

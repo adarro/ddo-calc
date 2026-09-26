@@ -21,6 +21,7 @@
 package io.truthencode.ddo.core
 
 import enumeratum.{Enum, EnumEntry}
+import io.truthencode.ddo.modeling.{DefaultValue, NoDefault}
 
 /**
  * The 'What it does' half of binding status.
@@ -32,7 +33,7 @@ sealed trait BindingStatus extends EnumEntry with DefaultValue[BindingStatus] {
 /**
  * Enum for noting the distinct types of binding.
  *
- * Binding ties an object to a character, preventing them from selling, trading or transferring.
+ * Binding ties an object to a character, preventing them from selling, trading, or transferring.
  */
 object BindingStatus extends Enum[BindingStatus] with DefaultValue[BindingStatus] {
 
@@ -47,7 +48,7 @@ object BindingStatus extends Enum[BindingStatus] with DefaultValue[BindingStatus
   case object BindsToAccount extends BindingStatus
 
   /**
-   * Item can not be traded or sold.
+   * Item cannot be traded or sold.
    */
   case object BindsToCharacter extends BindingStatus
 

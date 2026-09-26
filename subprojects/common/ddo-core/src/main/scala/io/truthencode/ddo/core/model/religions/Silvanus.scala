@@ -20,7 +20,7 @@
  */
 package io.truthencode.ddo.model.religions
 
-import io.truthencode.ddo.model.item.weapon.{FavoredWeapon, WeaponCategory}
+import io.truthencode.ddo.core.model.item.weapon.{FavoredWeapon, WeaponCategory}
 import io.truthencode.ddo.model.worlds.Eberron
 
 /**

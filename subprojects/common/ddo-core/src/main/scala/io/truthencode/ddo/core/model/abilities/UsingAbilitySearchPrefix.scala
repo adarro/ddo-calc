@@ -18,9 +18,9 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package io.truthencode.ddo.model.abilities
+package io.truthencode.ddo.core.model.abilities
 
-import io.truthencode.ddo.support.naming.{DisplayName, UsingSearchPrefix}
+import io.truthencode.ddo.core.support.naming.{DisplayName, UsingSearchPrefix}
 
 trait UsingAbilitySearchPrefix extends UsingSearchPrefix {
   self: DisplayName =>

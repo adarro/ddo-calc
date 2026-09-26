@@ -18,12 +18,12 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package io.truthencode.ddo.model.effect.features
+package io.truthencode.ddo.core.model.effect.features
 
 import io.truthencode.ddo.api.model.effect.DetailedEffect
-import io.truthencode.ddo.enhancement.BonusType
-import io.truthencode.ddo.model.effect.{EffectCategories, Feature, SourceInfo}
-import io.truthencode.ddo.model.item.weapon.WeaponCategory
+import io.truthencode.ddo.core.enhancement.BonusType
+import io.truthencode.ddo.core.model.effect.{EffectCategories, Feature, SourceInfo}
+import io.truthencode.ddo.core.model.item.weapon.WeaponCategory
 import io.truthencode.ddo.model.stats.BasicStat
 
 /**

@@ -20,7 +20,7 @@
  */
 package io.truthencode.ddo.activation
 
-import io.truthencode.ddo.model.effect.TriggerEvent
+import io.truthencode.ddo.core.model.effect.TriggerEvent
 
 /**
  * Created by adarr on 2/6/2017.

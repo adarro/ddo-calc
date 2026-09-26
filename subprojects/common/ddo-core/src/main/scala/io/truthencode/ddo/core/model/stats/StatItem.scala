@@ -22,10 +22,10 @@ package io.truthencode.ddo.model.stats
 
 import enumeratum.EnumEntry
 import io.truthencode.ddo.api.model.effect.DetailedEffect
-import io.truthencode.ddo.enhancement.BonusType
-import io.truthencode.ddo.model.attribute.Attribute
-import io.truthencode.ddo.model.effect._
-import io.truthencode.ddo.support.naming.UsingSearchPrefix
+import io.truthencode.ddo.core.enhancement.BonusType
+import io.truthencode.ddo.core.model.attribute.Attribute
+import io.truthencode.ddo.core.model.effect._
+import io.truthencode.ddo.core.support.naming.UsingSearchPrefix
 
 import scala.util.Try
 

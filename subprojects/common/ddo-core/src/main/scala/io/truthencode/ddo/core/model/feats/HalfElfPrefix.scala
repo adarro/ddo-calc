@@ -18,9 +18,9 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package io.truthencode.ddo.model.feats
+package io.truthencode.ddo.core.model.feats
 
-import io.truthencode.ddo.support.naming.{DisplayName, FriendlyDisplay, Prefix}
+import io.truthencode.ddo.core.support.naming.{DisplayName, FriendlyDisplay, Prefix}
 
 /**
  * Created by adarr on 2/18/2017.

@@ -18,7 +18,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package io.truthencode.ddo.model.misc
+package io.truthencode.ddo.core.model.misc
 
 import enumeratum.{Enum => SmartEnum, EnumEntry}
 
@@ -32,7 +32,7 @@ import enumeratum.{Enum => SmartEnum, EnumEntry}
 sealed trait Material extends EnumEntry
 // scalastyle:off number.of.types number.of.methods.in.type
 /**
- * Companion Enumeration for [[io.truthencode.ddo.model.misc.Material]]
+ * Companion Enumeration for [[io.truthencode.ddo.core.model.misc.Material]]
  */
 object Material extends SmartEnum[Material] {
   val values = findValues

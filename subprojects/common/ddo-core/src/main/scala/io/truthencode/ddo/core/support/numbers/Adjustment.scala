@@ -18,9 +18,9 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package io.truthencode.ddo.support.numbers
+package io.truthencode.ddo.core.support.numbers
 
-import io.truthencode.ddo.enhancement.BonusType
+import io.truthencode.ddo.core.enhancement.BonusType
 
 /**
  * Adjustment parameters for attempting to change the value of a given Adjustable Number.
@@ -31,7 +31,7 @@ import io.truthencode.ddo.enhancement.BonusType
  * @param bonusType
  *   used to determine stacking rules
  * @param sourceId
- *   provides context for some stacking rules in addition to the ability to lookup / add remove
+ *   provides context for some stacking rules in addition to the ability to look up / add remove
  *   stacks
  */
 case class Adjustment(

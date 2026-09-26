@@ -18,10 +18,10 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package io.truthencode.ddo.model.feats
+package io.truthencode.ddo.core.model.feats
 
-import io.truthencode.ddo.model.attribute.Attribute
-import io.truthencode.ddo.support.requisite.{
+import io.truthencode.ddo.core.model.attribute.Attribute
+import io.truthencode.ddo.core.support.requisite.{
   AttributeRequisiteImpl,
   RequiresAllOfAttribute,
   RequiresAllOfFeat,

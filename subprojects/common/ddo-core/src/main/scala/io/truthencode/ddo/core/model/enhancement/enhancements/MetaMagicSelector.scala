@@ -18,17 +18,17 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package io.truthencode.ddo.model.enhancement.enhancements
+package io.truthencode.ddo.core.model.enhancement.enhancements
 
-import io.truthencode.ddo.model.enhancement.Tier
-import io.truthencode.ddo.support.naming.EfficientMetamagicPrefix
-import io.truthencode.ddo.support.requisite.ActionPointRequisite
+import io.truthencode.ddo.core.model.enhancement.Tier
+import io.truthencode.ddo.core.support.naming.EfficientMetamagicPrefix
+import io.truthencode.ddo.core.support.requisite.ActionPointRequisite
 
 /**
  * Basic support for adding +1 of some stat in an enhancement.
  *
  * @note
- *   trait manipulates diplay text so mix in AFTER other text manipulations to ensure Roman Numeral
+ *   trait manipulates display text so mix in AFTER other text manipulations to ensure Roman Numeral
  *   / key integrity.
  */
 trait MetaMagicSelector extends MetaMagicEnhancement with EfficientMetamagicPrefix {

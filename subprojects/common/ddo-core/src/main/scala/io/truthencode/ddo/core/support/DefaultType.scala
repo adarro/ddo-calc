@@ -18,7 +18,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package io.truthencode.ddo.support
+package io.truthencode.ddo.core.support
 
 trait DefaultType {
   self: DefaultType =>
@@ -31,7 +31,7 @@ trait DefaultType {
   lazy val defaultType: Option[Storage] = None
 
   /**
-   * True if value is default value, otherwise false.
+   * True if value is the default value, otherwise false.
    * @note
    *   will return false if there is no default value is provided.
    */

@@ -18,7 +18,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package io.truthencode.ddo.support.slots
+package io.truthencode.ddo.core.support.slots
 
 /**
  * Flag indicating this item is cosmetic.

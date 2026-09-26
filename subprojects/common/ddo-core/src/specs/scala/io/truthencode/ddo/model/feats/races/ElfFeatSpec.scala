@@ -18,9 +18,9 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package io.truthencode.ddo.model.feats.races
+package io.truthencode.ddo.core.model.feats.races
 
-import io.truthencode.ddo.model.feats.{ConcordionResourcesBundleSpec, RaceSupport}
+import io.truthencode.ddo.core.model.feats.{ConcordionResourcesBundleSpec, RaceSupport}
 import io.truthencode.ddo.model.race.Race
 import org.concordion.integration.junit4.ConcordionRunner
 import org.junit.runner.RunWith

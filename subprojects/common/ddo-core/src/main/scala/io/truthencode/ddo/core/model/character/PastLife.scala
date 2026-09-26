@@ -18,10 +18,10 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package io.truthencode.ddo.model.character
+package io.truthencode.ddo.core.model.character
 
 import enumeratum.EnumEntry
-import io.truthencode.ddo.model.classes.HeroicCharacterClass
+import io.truthencode.ddo.core.model.classes.HeroicCharacterClass
 import io.truthencode.ddo.model.race.{IconicClass, Race}
 
 sealed trait PastLife extends EnumEntry {
@@ -29,8 +29,8 @@ sealed trait PastLife extends EnumEntry {
   /**
    * Number of times this has been acquired.
    * @note
-   *   Past life feats apply a maximum of 3 times, so timesAcuired will return the lesser of times
-   *   acquired or 3
+   *   Past life feats apply a maximum of 3 times, so [[timesAcuired]] will return the lesser of
+   *   times acquired or 3
    */
   val timesAcquired: Int
 }

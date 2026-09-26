@@ -18,13 +18,13 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package io.truthencode.ddo.model.feats
+package io.truthencode.ddo.core.model.feats
 
-import io.truthencode.ddo.model.attribute.Attribute
-import io.truthencode.ddo.model.feats.GeneralFeat.ExoticWeaponProficiency
-import io.truthencode.ddo.model.item.weapon.WeaponCategory
+import io.truthencode.ddo.core.model.attribute.Attribute
+import io.truthencode.ddo.core.model.feats.GeneralFeat.ExoticWeaponProficiency
+import io.truthencode.ddo.core.model.item.weapon.WeaponCategory
 import io.truthencode.ddo.model.race.Race
-import io.truthencode.ddo.support.requisite._
+import io.truthencode.ddo.core.support.requisite._
 
 /**
  * Shuriken Expertise.PNG Shuriken Expertise Passive You are skilled with the use of the shuriken,

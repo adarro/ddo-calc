@@ -18,7 +18,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package io.truthencode.ddo.support.numbers
+package io.truthencode.ddo.core.support.numbers
 
 import enumeratum.{Enum, EnumEntry}
 

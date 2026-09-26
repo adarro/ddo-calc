@@ -18,15 +18,15 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package io.truthencode.ddo.model.effect
+package io.truthencode.ddo.core.model.effect
 
 import com.typesafe.scalalogging.LazyLogging
 import enumeratum.{Enum, EnumEntry}
-import io.truthencode.ddo.NoDefault
-import io.truthencode.ddo.enhancement.BonusType
-import io.truthencode.ddo.model.abilities.ActiveAbilities
-import io.truthencode.ddo.model.attribute.{Attribute => Attributes}
-import io.truthencode.ddo.model.feats.{
+import io.truthencode.ddo.core.enhancement.BonusType
+import io.truthencode.ddo.modeling.NoDefault
+import io.truthencode.ddo.core.model.abilities.ActiveAbilities
+import io.truthencode.ddo.core.model.attribute.{Attribute => Attributes}
+import io.truthencode.ddo.core.model.feats.{
   Feat => Feats,
   GeneralFeat,
   ParentFeat,

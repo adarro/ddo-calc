@@ -15,7 +15,9 @@ val libs = the<LibrariesForLibs>()
 
 jacoco {
     // TODO migrate hardcode to Version Catalog (if needed)
-    toolVersion = libs.versions.jacoco.tools.version.get()
+    toolVersion =
+        libs.versions.jacoco.tools.version
+            .get()
 //    reportsDirectory.set(layout.buildDirectory.dir("customJacocoReportDir"))
 }
 

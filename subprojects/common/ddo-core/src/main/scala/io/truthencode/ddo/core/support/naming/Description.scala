@@ -18,14 +18,14 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package io.truthencode.ddo.support.naming
+package io.truthencode.ddo.core.support.naming
 
 trait Description {
 
   /**
    * A simple description of the object or effects.
    * @note
-   *   This will generally be the text as seen on ddowiki.
+   *   This will generally be the text as seen on DDOWiki.
    */
   lazy val description: Option[String] = None
 

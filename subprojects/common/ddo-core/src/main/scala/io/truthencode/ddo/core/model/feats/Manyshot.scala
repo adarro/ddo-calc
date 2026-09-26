@@ -18,25 +18,25 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package io.truthencode.ddo.model.feats
+package io.truthencode.ddo.core.model.feats
 
 import io.truthencode.ddo.activation.{AtWillEvent, TriggeredActivationImpl}
-import io.truthencode.ddo.enhancement.BonusType
-import io.truthencode.ddo.model.abilities.ActiveAbilities
-import io.truthencode.ddo.model.attribute.Attribute
-import io.truthencode.ddo.model.classes.HeroicCharacterClass
-import io.truthencode.ddo.model.classes.HeroicCharacterClass.Ranger
-import io.truthencode.ddo.model.effect
-import io.truthencode.ddo.model.effect.TriggerEvent
-import io.truthencode.ddo.model.effect.features.{
+import io.truthencode.ddo.core.enhancement.BonusType
+import io.truthencode.ddo.core.model.abilities.ActiveAbilities
+import io.truthencode.ddo.core.model.attribute.Attribute
+import io.truthencode.ddo.core.model.classes.HeroicCharacterClass
+import io.truthencode.ddo.core.model.classes.HeroicCharacterClass.Ranger
+import io.truthencode.ddo.core.model.effect
+import io.truthencode.ddo.core.model.effect.TriggerEvent
+import io.truthencode.ddo.core.model.effect.features.{
   DoubleShotFeature,
   FeaturesImpl,
   GrantAbilityFeature
 }
-import io.truthencode.ddo.model.misc.{PoolManyShot, SharedCoolDown}
-import io.truthencode.ddo.providers.SimpleValueProvider
-import io.truthencode.ddo.support.charges.{Chargeable, Rechargeable, TimedCharge}
-import io.truthencode.ddo.support.requisite.*
+import io.truthencode.ddo.core.model.misc.{PoolManyShot, SharedCoolDown}
+import io.truthencode.ddo.core.providers.SimpleValueProvider
+import io.truthencode.ddo.core.support.charges.{Chargeable, Rechargeable, TimedCharge}
+import io.truthencode.ddo.core.support.requisite.*
 
 import java.time.Duration
 
@@ -75,7 +75,7 @@ protected[feats] trait Manyshot
 
   /**
    * Used to group shared timer resources. It is strongly recommended to use one of the values in
-   * [[io.truthencode.ddo.model.misc.CoolDownPool]]
+   * [[io.truthencode.ddo.core.model.misc.CoolDownPool]]
    */
   override val coolDownPoolId: String = PoolManyShot
   override val grantBonusType: BonusType = BonusType.Feat

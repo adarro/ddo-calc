@@ -18,15 +18,15 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package io.truthencode.ddo.support.naming
+package io.truthencode.ddo.core.support.naming
 
-import io.truthencode.ddo.support.SearchPrefix
+import io.truthencode.ddo.core.support.SearchPrefix
 
 trait UsingSearchPrefix extends SearchPrefix {
 
   /**
    * Concatenates the prefix with the main value. Enums should typically use entryName, and others
-   * likely namesource from DisplayProperties
+   * likely [[DisplayName.nameSource]] from [[DisplayName]]
    * @example
    *   override val withPrefix: String = s"${searchPrefix}:$nameSource"
    */

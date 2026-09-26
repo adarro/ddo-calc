@@ -18,9 +18,25 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package io.truthencode.ddo.model.effect
+package io.truthencode.ddo.core.model.effect
 
-import enumeratum.{Enum => SmartEnum, EnumEntry}
+import enumeratum.{Enum as SmartEnum, EnumEntry}
+import io.truthencode.ddo.model.effect.{
+  Acid,
+  Bludgeoning,
+  Cold,
+  DamageReduction,
+  Electric,
+  ElementalResistance,
+  Fire,
+  FullPhysical,
+  Light,
+  Magic,
+  Piercing,
+  Resist,
+  Slashing,
+  Sonic
+}
 
 sealed trait ArmorSuffix extends EnumEntry with Suffix
 object ArmorSuffix extends SmartEnum[ArmorSuffix] {

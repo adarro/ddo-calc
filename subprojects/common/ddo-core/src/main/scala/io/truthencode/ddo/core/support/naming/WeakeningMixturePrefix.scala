@@ -18,11 +18,11 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package io.truthencode.ddo.support.naming
+package io.truthencode.ddo.core.support.naming
 
 /**
  * Created by adarr on 3/5/2017. Display Prefix for Spell Like Abilities when they are included in
- * wiki description
+ * the wiki description
  *
  * @example
  *   Alchemist Enhancement Rapid Condensation appears as SLA: Rapid Condensation

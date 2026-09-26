@@ -18,15 +18,15 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package io.truthencode.ddo.model.effect.features
+package io.truthencode.ddo.core.model.effect.features
 
 import io.truthencode.ddo.api.model.effect.DetailedEffect
-import io.truthencode.ddo.enhancement.BonusType
-import io.truthencode.ddo.model.effect
-import io.truthencode.ddo.model.effect._
-import io.truthencode.ddo.model.item.weapon.WeaponCategory
+import io.truthencode.ddo.core.enhancement.BonusType
+import io.truthencode.ddo.core.model.effect
+import io.truthencode.ddo.core.model.effect._
+import io.truthencode.ddo.core.model.item.weapon.WeaponCategory
 import io.truthencode.ddo.model.stats.{BasicStat, HitChance}
-import io.truthencode.ddo.support.naming.UsingSearchPrefix
+import io.truthencode.ddo.core.support.naming.UsingSearchPrefix
 
 /**
  * Increases your To Hit Chance by a specified amount for a specified weapon class.

@@ -18,7 +18,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package io.truthencode.ddo.model.spells
+package io.truthencode.ddo.core.model.spells
 
 /**
  * Holds known / available spells
@@ -42,8 +42,8 @@ trait SpellBook {
 
   /**
    * Loads the spells by invoking
-   * [[io.truthencode.ddo.model.spells.SpellBook#findAvailableSpells()]] on each of the
-   * [[io.truthencode.ddo.model.spells.SpellBook#spellIds()]]
+   * [[io.truthencode.ddo.core.model.spells.SpellBook#findAvailableSpells()]] on each of the
+   * [[io.truthencode.ddo.core.model.spells.SpellBook#spellIds()]]
    * @return
    */
   def loadFromIds: Seq[Option[Spell]] = {

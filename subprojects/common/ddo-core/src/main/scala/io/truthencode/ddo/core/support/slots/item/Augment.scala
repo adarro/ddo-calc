@@ -18,8 +18,9 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package io.truthencode.ddo.support.slots.item
+package io.truthencode.ddo.core.support.slots.item
 
+// TODO: Add support for Solar / Lunar Augments and verify maximum slots
 /**
  * Created by adarr on 5/5/2017.
  */

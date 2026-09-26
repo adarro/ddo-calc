@@ -18,9 +18,9 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package io.truthencode.ddo.support.dice
+package io.truthencode.ddo.core.support.dice
 
-import io.truthencode.ddo.ExtraInfo
+import io.truthencode.ddo.core.ExtraInfo
 import io.truthencode.ddo.model.meta.PhysicalDamageType
 
 import scala.util.matching.Regex
@@ -45,7 +45,7 @@ sealed trait DamageDice {
   /**
    * Number of sides of the dice
    *
-   * 6 represents a 6 sided die
+   * 6 represents a 6-sided die
    */
   val dice: Dice
 
@@ -57,14 +57,15 @@ sealed trait DamageDice {
   val extra: ExtraInfo
 
   /**
-   * List of damage types applied to an attack as Slash, Pierce, Magic, Good, Acid etc. This is used
-   * for purposes of damage reduction and may further be amplified by spell / melee / ranged power.
+   * List of damage types applied to an attack as Slash, Pierce, Magic, Good, Acid, etc. This is
+   * used for purposes of damage reduction and may further be amplified by spell / mêlée / ranged
+   * power.
    */
   val damageType: List[PhysicalDamageType]
 }
 
 /**
- * Encapsulates DnD Dice syntax notation with support for damage type flags (Magic, Silver etc)
+ * Encapsulates DnD Dice syntax notation with support for damage type flags (Magic, Silver, etc.)
  * @note
  *   implementation based on [[https://stackoverflow.com/a/25538287/400729]]
  */
@@ -85,7 +86,7 @@ object DamageInfo {
     )
     ddoDiceRegEx.findFirstMatchIn(diceExp) match {
       case Some(result) =>
-        // Longhand with named values because Regex are easy to misread
+        // Longhand with named values because Regexes are easy to misread
         val wMod = Option(result.group(nameMap("wMod"))).getOrElse("")
         val bNumber = Option(result.group(nameMap("bracketNumber"))).getOrElse("")
         val bSides = Option(result.group(nameMap("bracketSides"))).getOrElse("")

@@ -18,13 +18,17 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package io.truthencode.ddo.model.feats
+package io.truthencode.ddo.core.model.feats
 
 import io.truthencode.ddo.activation.{AtWillEvent, TriggeredActivationImpl}
-import io.truthencode.ddo.model.classes.HeroicCharacterClass
-import io.truthencode.ddo.model.misc.DefaultCasterCoolDown
-import io.truthencode.ddo.model.spells.{SingleTarget, Spell, SpellBookImpl}
-import io.truthencode.ddo.support.requisite.{FeatRequisiteImpl, GrantsToClass, RequiresAllOfClass}
+import io.truthencode.ddo.core.model.classes.HeroicCharacterClass
+import io.truthencode.ddo.core.model.misc.DefaultCasterCoolDown
+import io.truthencode.ddo.core.model.spells.{SingleTarget, Spell, SpellBookImpl}
+import io.truthencode.ddo.core.support.requisite.{
+  FeatRequisiteImpl,
+  GrantsToClass,
+  RequiresAllOfClass
+}
 
 /**
  * Created by adarr on 2/16/2017. [[https://ddowiki.com/page/Artificer_Construct_Mastery]] This feat

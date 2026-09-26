@@ -26,19 +26,19 @@ import net.ruippeixotog.scalascraper.dsl.DSL._
 import net.ruippeixotog.scalascraper.dsl.DSL.Extract._
 import net.ruippeixotog.scalascraper.model.Element
 import io.truthencode.ddo._
-import io.truthencode.ddo.enumeration.EnumExtensions.EnumCompanionOps
-import io.truthencode.ddo.model.attribute.Attribute
-import io.truthencode.ddo.model.item.weapon._
+import io.truthencode.ddo.core.enumeration.EnumExtensions.EnumCompanionOps
+import io.truthencode.ddo.core.model.attribute.Attribute
+import io.truthencode.ddo.core.model.item.weapon._
 import io.truthencode.ddo.model.meta.PhysicalDamageType
-import io.truthencode.ddo.model.misc.Material
-import io.truthencode.ddo.support.StringUtils.{
+import io.truthencode.ddo.core.model.misc.Material
+import io.truthencode.ddo.core.StringUtils.{
   Comma,
   EmptyString,
   ForwardSlash,
   Space,
   StringImprovements
 }
-import io.truthencode.ddo.support.dice.{DamageInfo, Dice}
+import io.truthencode.ddo.core.support.dice.{DamageInfo, Dice}
 import io.truthencode.ddo.support.matching.{WordMatchStrategies, WordMatchStrategy}
 import io.truthencode.ddo.web.mapping.ElementSupport.ElementToElementOps
 import io.truthencode.ddo.web.mapping.Extractor._

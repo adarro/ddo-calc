@@ -18,11 +18,11 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package io.truthencode.ddo.model.effect
+package io.truthencode.ddo.core.model.effect
 
-import io.truthencode.ddo.model.effect.features.Features
+import io.truthencode.ddo.core.model.effect.features.Features
 
-abstract class EffectBuilder[T <: EffectStatus]() {
+abstract class EffectBuilder[T <: EffectStatus] {
   protected val effect: Effect
 
   def withProperty(i: Int)(implicit ev: T =:= EffectInComplete): EffectBuilder[EffectInComplete] =

@@ -18,9 +18,9 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package io.truthencode.ddo.model.item.ingredients
+package io.truthencode.ddo.core.model.item.ingredients
 
-import io.truthencode.ddo.model.item.PermanentItem
+import io.truthencode.ddo.core.model.item.PermanentItem
 
 /**
  * Ingredients are primarily used in crafting to create shards and apply them to items.

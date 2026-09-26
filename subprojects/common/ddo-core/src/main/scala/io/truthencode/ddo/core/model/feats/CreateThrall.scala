@@ -18,14 +18,14 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package io.truthencode.ddo.model.feats
+package io.truthencode.ddo.core.model.feats
 
 import io.truthencode.ddo.activation.{AtWillEvent, TriggeredActivationImpl}
-import io.truthencode.ddo.model.classes.HeroicCharacterClass
-import io.truthencode.ddo.model.classes.HeroicCharacterClass.Warlock
-import io.truthencode.ddo.model.misc.DefaultCasterCoolDown
-import io.truthencode.ddo.model.spells.SpellLikeAbility
-import io.truthencode.ddo.support.requisite.{
+import io.truthencode.ddo.core.model.classes.HeroicCharacterClass
+import io.truthencode.ddo.core.model.classes.HeroicCharacterClass.Warlock
+import io.truthencode.ddo.core.model.misc.DefaultCasterCoolDown
+import io.truthencode.ddo.core.model.spells.SpellLikeAbility
+import io.truthencode.ddo.core.support.requisite.{
   FeatRequisiteImpl,
   GrantsToClass,
   RequiresAllOfClass,
@@ -36,7 +36,7 @@ import io.truthencode.ddo.support.requisite.{
  * [[https://ddowiki.com/page/Create_Thrall Create Thrall]] Official: Target enemy fights for you 60
  * seconds. An enemy succeeding on a Will save is instead confused and may indiscriminately attack
  * friend or foe for 10 seconds. Does not affect bosses. Display DC = 15 + Warlock Level + Cha Mod.
- * Displayed DC not affected by Enchantment Focus items. Rather quick casting time; no metamagic
+ * Displayed DC is not affected by Enchantment Focus items. Rather quick casting time; no metamagic
  * feats allowed. Affects also Undead.
  */
 protected[feats] trait CreateThrall

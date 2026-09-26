@@ -18,9 +18,9 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package io.truthencode.ddo.support.requisite
-import io.truthencode.ddo.model.favor.FavorPatron
-import io.truthencode.ddo.support.requisite.RequirementImplicits.patronToReq
+package io.truthencode.ddo.core.support.requisite
+import io.truthencode.ddo.core.model.favor.FavorPatron
+import io.truthencode.ddo.core.support.requisite.RequirementImplicits.patronToReq
 
 /**
  * Created by adarr on 2/11/2017.

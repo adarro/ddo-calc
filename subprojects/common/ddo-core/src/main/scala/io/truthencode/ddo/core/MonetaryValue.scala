@@ -24,16 +24,16 @@ import enumeratum.{Enum => SmartEnum, EnumEntry}
 
 /**
  * should indicate the base value (in platinum type denominations) This should probably be expanded
- * to a general DDO Denomination to support the concept of cost. i.e. plat would simply be the
- * listed item price (which is generally quite useless and uninteresting) but Astral Shards or
+ * to a general DDO Denomination to support the concept of cost. i.e., plat would simply be the
+ * listed item price (which is generally quite useless and uninteresting), but Astral Shards or
  * Turbine points could be noted if the item is available from the DDO Store etc.
  */
 sealed abstract class MonetaryValue extends EnumEntry
 
 /**
  * should indicate the base value (in platinum type denominations) This should probably be expanded
- * to a general DDO Denomination to support the concept of cost. i.e. plat would simply be the
- * listed item price (which is generally quite useless and uninteresting) but Astral Shards or
+ * to a general DDO Denomination to support the concept of cost. i.e., plat would simply be the
+ * listed item price (which is generally quite useless and uninteresting), but Astral Shards or
  * Turbine points could be noted if the item is available from the DDO Store etc.
  */
 object MonetaryValue extends SmartEnum[MonetaryValue] {

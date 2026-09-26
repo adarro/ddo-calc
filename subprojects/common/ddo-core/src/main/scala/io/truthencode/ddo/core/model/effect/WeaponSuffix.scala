@@ -18,12 +18,13 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package io.truthencode.ddo.model.effect
+package io.truthencode.ddo.core.model.effect
 
 import enumeratum.{Enum, EnumEntry}
-import io.truthencode.ddo.NoDefault
+import io.truthencode.ddo.modeling.NoDefault
 
 sealed trait WeaponSuffix extends EnumEntry with Suffix
+// scalastyle:off number.of.methods
 object WeaponSuffix extends Enum[WeaponSuffix] with NoDefault[WeaponSuffix] {
   val values = findValues
   case object ArcaneDetonation extends WeaponSuffix
@@ -34,7 +35,7 @@ object WeaponSuffix extends Enum[WeaponSuffix] with NoDefault[WeaponSuffix] {
   case object Bloodletter extends WeaponSuffix
   case object BoneBreaking extends WeaponSuffix
   //  case object Composedweaponaffixes extends Suffix
-  // case object  Crafteditemenchantments/Temporarylist  extends Suffix
+  // case object Crafteditemenchantments/Temporarylist extends Suffix
   case object Dazing extends WeaponSuffix
   case object Debilitation extends WeaponSuffix
   case object Deception extends WeaponSuffix
@@ -58,7 +59,7 @@ object WeaponSuffix extends Enum[WeaponSuffix] with NoDefault[WeaponSuffix] {
   case object LesserBane extends WeaponSuffix
   case object Maiming extends WeaponSuffix
   case object Mangling extends WeaponSuffix
-  // case object  Nibor/AlignmentProperties  extends Suffix
+  // case object Nibor/AlignmentProperties extends Suffix
   case object Obscenity extends WeaponSuffix
   case object Parrying extends WeaponSuffix
   case object Poison extends WeaponSuffix
@@ -91,3 +92,4 @@ object WeaponSuffix extends Enum[WeaponSuffix] with NoDefault[WeaponSuffix] {
   case object TheTyrant extends WeaponSuffix
   case object TrueAlignment extends WeaponSuffix
 }
+// scalastyle:on number.of.methods

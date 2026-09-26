@@ -21,8 +21,8 @@
 package io.truthencode.ddo.core
 
 import enumeratum.{Enum, EnumEntry}
-import io.truthencode.ddo.enumeration.{BitSupport, BitWise}
-import io.truthencode.ddo.support.slots.{EquipmentSlot, WearLocation}
+import io.truthencode.ddo.core.enumeration.{BitSupport, BitWise}
+import io.truthencode.ddo.core.support.slots.{EquipmentSlot, WearLocation}
 
 import scala.collection.immutable
 
@@ -44,17 +44,17 @@ sealed trait StoreLocation extends EnumEntry with BitWise {
 trait Inventory extends StoreLocation
 
 /**
- * storage location not on character such as a shared, character or TR bank
+ * storage location not on character such as a shared, character, or TR bank
  */
 trait Bank extends StoreLocation
 
 /**
- * can be sotred in a bag or container in inventory such as an Ingredient bag or Cookie Jar
+ * can be stored in a bag or container in inventory such as an Ingredient bag or Cookie Jar
  */
 trait Bag extends StoreLocation
 
 /**
- * can be placed into an item such. Supports primarily augments and filigrees.
+ * Can be placed into an item such. Supports primarily augments and filigrees.
  */
 trait ItemEmbed extends StoreLocation {
   self: AugmentLocation =>
@@ -85,7 +85,7 @@ trait CelestialAugment extends Augment {
 }
 
 /**
- * Object can be slotted onto character, such as a sword or helmet. Items with this value should
+ * Object can be slotted onto a character, such as a sword or helmet. Items with this value should
  * further be constrained with corresponding WearLocation.
  */
 trait ItemEquip extends StoreLocation {
@@ -102,7 +102,7 @@ object StoreLocation extends Enum[StoreLocation] with BitSupport {
   override type T = StoreLocation
 
   /**
-   * Object can be slotted onto character, such as a sword or helmet. Items with this value should
+   * Object can be slotted onto a character, such as a sword or helmet. Items with this value should
    * further be constrained with corresponding WearLocation.
    */
   lazy val Equipment: immutable.Seq[StoreLocation & ItemEquip] =
@@ -186,7 +186,7 @@ object StoreLocation extends Enum[StoreLocation] with BitSupport {
   case object IngredientBag extends Bag, StoreLocation
 
   /**
-   * Stores collectables and turn-ins that can be traded for equipment / potions etc
+   * Stores collectables and turn-ins that can be traded for equipment / potions etc.
    */
   case object CollectableBag extends Bag, StoreLocation
 
@@ -211,7 +211,7 @@ object StoreLocation extends Enum[StoreLocation] with BitSupport {
   case object Quiver extends StoreLocation
 
   /**
-   * Item can be stored in Active Inventory. This should be true by default for most object unless
+   * Item can be stored in Active Inventory. This should be true by default for most objects unless
    * they are some invisible quest item or effect.
    */
   case object ActiveInventory extends Inventory, StoreLocation

@@ -18,12 +18,12 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package io.truthencode.ddo.support.tree
+package io.truthencode.ddo.core.support.tree
 
 import enumeratum.{Enum, EnumEntry}
-import io.truthencode.ddo.model.enhancement._
-import io.truthencode.ddo.support.StringUtils.Extensions
-import io.truthencode.ddo.support.naming.{DisplayName, FriendlyDisplay}
+import io.truthencode.ddo.core.model.enhancement._
+import io.truthencode.ddo.core.StringUtils.Extensions
+import io.truthencode.ddo.core.support.naming.{DisplayName, FriendlyDisplay}
 
 import scala.collection.immutable
 
@@ -49,7 +49,7 @@ object ClassTrees extends Enum[ClassTrees] with TreePrefix {
   case object Apothecary extends ClassTrees with Apothecary
   case object Bombardier extends ClassTrees with Bombardier
   case object VileChemist extends ClassTrees with VileChemist
-  // Artificier
+  // Artificer
   case object Arcanotechnician extends ClassTrees with Arcanotechnician
   case object BattleEngineer extends ClassTrees with BattleEngineer
   case object RenegadeMastermaker extends ClassTrees with RenegadeMastermaker
@@ -98,7 +98,8 @@ object ClassTrees extends Enum[ClassTrees] with TreePrefix {
 
   /**
    * @note
-   *   may need to override display name to add Hyphen perhaps add Hyphenate rule to display options
+   *   may need to override the display name to add Hyphen perhaps add Hyphenate rule to display
+   *   options
    */
   case object ThiefAcrobat extends ClassTrees with ThiefAcrobat
   // Sorcerer

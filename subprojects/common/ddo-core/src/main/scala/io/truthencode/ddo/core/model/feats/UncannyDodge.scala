@@ -18,13 +18,13 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package io.truthencode.ddo.model.feats
+package io.truthencode.ddo.core.model.feats
 
 import io.truthencode.ddo.activation.{AtWillEvent, TriggeredActivationImpl}
-import io.truthencode.ddo.model.classes.HeroicCharacterClass
-import io.truthencode.ddo.model.classes.HeroicCharacterClass.{Barbarian, Rogue}
-import io.truthencode.ddo.support.TraverseOps.Crossable
-import io.truthencode.ddo.support.requisite.*
+import io.truthencode.ddo.core.model.classes.HeroicCharacterClass
+import io.truthencode.ddo.core.model.classes.HeroicCharacterClass.{Barbarian, Rogue}
+import io.truthencode.ddo.core.TraverseOps.Crossable
+import io.truthencode.ddo.core.support.requisite.*
 
 import java.time.Duration
 
@@ -32,10 +32,10 @@ import java.time.Duration
  * [[http://ddowiki.com/page/Uncanny_Dodge Uncanny Dodge]] This feat grants you a 1% passive bonus
  * to Dodge at levels 4, 6, 8, 12, 16, and 20. Also, you can activate this ability to gain a
  * temporary 50% dodge bonus and a +6 reflex save bonus. As of Update 14, using this ability is no
- * longer restricted by number of uses per rest. However, it is restricted by cooldown.
+ * longer restricted by the number of uses per rest. However, it is restricted by cooldown.
  *
  * @note
- *   This feat is replaced by [[ImprovedUncannyDodge]] if character has both. also available via
+ *   This feat is replaced by [[ImprovedUncannyDodge]] if the character has both. also available via
  *   Swashbuckler Enhancements
  */
 protected[feats] trait UncannyDodge

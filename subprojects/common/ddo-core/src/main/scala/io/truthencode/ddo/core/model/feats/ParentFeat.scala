@@ -18,7 +18,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package io.truthencode.ddo.model.feats
+package io.truthencode.ddo.core.model.feats
 
 /**
  * A Parent Feat is a Feat which acts as a container for linked sub-feats. A basic example would be

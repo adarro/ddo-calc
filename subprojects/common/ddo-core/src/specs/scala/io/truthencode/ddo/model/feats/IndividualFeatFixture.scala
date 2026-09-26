@@ -18,13 +18,13 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package io.truthencode.ddo.model.feats
+package io.truthencode.ddo.core.model.feats
 
 import com.typesafe.scalalogging.LazyLogging
 import io.truthencode.ddo.model.DisplayHelper
-import io.truthencode.ddo.model.feats.classes.ChargeSupport
-import io.truthencode.ddo.support.charges.Chargeable
-import io.truthencode.ddo.support.requisite._
+import io.truthencode.ddo.core.model.feats.classes.ChargeSupport
+import io.truthencode.ddo.core.support.charges.Chargeable
+import io.truthencode.ddo.core.support.requisite._
 
 import java.util
 import scala.beans.BeanProperty

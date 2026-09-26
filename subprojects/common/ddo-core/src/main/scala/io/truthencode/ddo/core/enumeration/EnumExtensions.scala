@@ -18,10 +18,10 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package io.truthencode.ddo.enumeration
+package io.truthencode.ddo.core.enumeration
 
 import enumeratum.{Enum, EnumEntry}
-import io.truthencode.ddo.support.StringUtils.Extensions
+import io.truthencode.ddo.core.StringUtils.Extensions
 
 import scala.collection.immutable
 
@@ -45,7 +45,7 @@ object EnumExtensions {
      * Attempts to locate a matching enumeration based on a list of potential values.
      *
      * @param names
-     *   List of string values to try. i.e. Red, blue, bLaCk for a color.
+     *   List of string values to try. I.e., Red, blue, bLaCk for a color.
      * @param ignoreCase
      *   toggles case sensitivity in search.
      * @return
@@ -83,7 +83,7 @@ object EnumExtensions {
      * A list of enum values matching the BitMask
      *
      * @param flag
-     *   Bit value to compare
+     *   A Bit value to compare
      * @return
      *   All matching values
      */

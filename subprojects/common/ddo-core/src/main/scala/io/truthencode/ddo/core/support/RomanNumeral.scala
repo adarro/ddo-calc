@@ -18,9 +18,9 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package io.truthencode.ddo.support
+package io.truthencode.ddo.core.support
 
-import io.truthencode.ddo.model.effect.{Prefix, Suffix}
+import io.truthencode.ddo.core.model.effect.{Prefix, Suffix}
 
 trait RomanNumeral {
   type Self <: RomanNumeral
@@ -55,7 +55,7 @@ object RomanNumeral {
   )
 
   /**
-   * // A small test def test( roman:String ) = println( roman + " => " + fromRoman( roman ) )
+   * // A small test def test( roman:String) = println( roman + " => " + fromRoman( roman ) )
    *
    * test("MCMXC") test("MMVIII") test("MDCLXVI")
    *

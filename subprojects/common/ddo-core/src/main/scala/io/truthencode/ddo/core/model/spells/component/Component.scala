@@ -18,9 +18,9 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package io.truthencode.ddo.model.spells.component
+package io.truthencode.ddo.core.model.spells.component
 
-import io.truthencode.ddo.model.spells.ComponentType
+import io.truthencode.ddo.core.model.spells.ComponentType
 
 /**
  * A component required to enact a spell.

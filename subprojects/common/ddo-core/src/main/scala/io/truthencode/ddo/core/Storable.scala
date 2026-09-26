@@ -21,7 +21,7 @@
 package io.truthencode.ddo.core
 
 import enumeratum.EnumEntry
-import io.truthencode.ddo.enumeration.EnumExtensions._
+import io.truthencode.ddo.core.enumeration.EnumExtensions._
 
 /**
  * Indicates the given object can be stored in some sort of bank or container.

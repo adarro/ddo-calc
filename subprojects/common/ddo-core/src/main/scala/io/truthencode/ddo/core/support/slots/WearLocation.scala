@@ -18,12 +18,12 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package io.truthencode.ddo.support.slots
+package io.truthencode.ddo.core.support.slots
 
 import enumeratum.{Enum, EnumEntry}
-import io.truthencode.ddo.enumeration.{BitSupport, BitWise}
-import io.truthencode.ddo.support.StringUtils.Extensions
-import io.truthencode.ddo.support.naming.{DisplayName, FriendlyDisplay}
+import io.truthencode.ddo.core.enumeration.{BitSupport, BitWise}
+import io.truthencode.ddo.core.StringUtils.Extensions
+import io.truthencode.ddo.core.support.naming.{DisplayName, FriendlyDisplay}
 
 import scala.collection.immutable
 
@@ -71,14 +71,14 @@ object WearLocation extends Enum[WearLocation] with BitSupport {
   case object Neck extends EquipmentSlot, WearLocation
 
   /**
-   * Cloaks etc
+   * Cloaks etc.
    */
   case object Back extends EquipmentSlot, WearLocation {
     override def displaySource: String = "Cloak"
   }
 
   /**
-   * Includes Armbands / bracers etc
+   * Includes Armbands / bracers etc.
    */
   case object Wrist extends EquipmentSlot, WearLocation
 
@@ -93,12 +93,12 @@ object WearLocation extends Enum[WearLocation] with BitSupport {
   case object SecondFinger extends Finger, WearLocation
 
   /**
-   * Armor / cloth robes for wizards etc
+   * Armor / cloth robes for wizards etc.
    */
   case object Body extends EquipmentSlot, WearLocation
 
   /**
-   * Footwear such as boots etc
+   * Footwear such as boots etc.
    */
   case object Feet extends EquipmentSlot, WearLocation
 
@@ -120,7 +120,7 @@ object WearLocation extends Enum[WearLocation] with BitSupport {
   case object MainHand extends HeldItem, WearLocation
 
   /**
-   * OffHand holds shield, Orbs, rune arms etc. and will be unavailable when using two-handed
+   * OffHand holds shield, Orbs, rune arms, etc. and will be unavailable when using two-handed
    * weapons or bows.
    */
   case object OffHand extends HeldItem, WearLocation

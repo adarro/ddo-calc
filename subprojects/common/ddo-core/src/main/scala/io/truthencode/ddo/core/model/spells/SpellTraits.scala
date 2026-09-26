@@ -18,16 +18,16 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package io.truthencode.ddo.model.spells
+package io.truthencode.ddo.core.model.spells
 
 import enumeratum.{Enum, EnumEntry}
-import io.truthencode.ddo.model.effect.{Effect, EffectList}
-import io.truthencode.ddo.model.misc.CoolDown
-import io.truthencode.ddo.model.spells.SpellElement._
-import io.truthencode.ddo.model.spells.component.ComponentList
-import io.truthencode.ddo.support.RomanNumeral
-import io.truthencode.ddo.support.StringUtils.Extensions
-import io.truthencode.ddo.support.naming.{DisplayName, FriendlyDisplay}
+import io.truthencode.ddo.core.model.effect.{Effect, EffectList}
+import io.truthencode.ddo.core.model.misc.CoolDown
+import io.truthencode.ddo.core.model.spells.SpellElement._
+import io.truthencode.ddo.core.model.spells.component.ComponentList
+import io.truthencode.ddo.core.support.RomanNumeral
+import io.truthencode.ddo.core.StringUtils.Extensions
+import io.truthencode.ddo.core.support.naming.{DisplayName, FriendlyDisplay}
 
 import java.time.Duration
 import scala.collection.{immutable, Iterable}

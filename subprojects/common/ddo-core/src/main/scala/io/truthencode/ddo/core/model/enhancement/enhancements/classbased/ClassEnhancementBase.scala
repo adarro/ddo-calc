@@ -18,16 +18,16 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package io.truthencode.ddo.model.enhancement.enhancements.classbased
+package io.truthencode.ddo.core.model.enhancement.enhancements.classbased
 
-import io.truthencode.ddo.model.classes.HeroicCharacterClass
-import io.truthencode.ddo.model.enhancement._
-import io.truthencode.ddo.model.enhancement.enhancements.{expanders, ClassEnhancement}
+import io.truthencode.ddo.core.model.classes.HeroicCharacterClass
+import io.truthencode.ddo.core.model.enhancement._
+import io.truthencode.ddo.core.model.enhancement.enhancements.{expanders, ClassEnhancement}
 import io.truthencode.ddo.support.Elvis.booleanToElvis
-import io.truthencode.ddo.support.points.SpendablePoints
-import io.truthencode.ddo.support.points.SpendablePoints.ActionPoints
-import io.truthencode.ddo.support.requisite._
-import io.truthencode.ddo.support.tree.TreeLike
+import io.truthencode.ddo.core.support.points.SpendablePoints
+import io.truthencode.ddo.core.support.points.SpendablePoints.ActionPoints
+import io.truthencode.ddo.core.support.requisite._
+import io.truthencode.ddo.core.support.tree.TreeLike
 
 /**
  * Convenience trait used to group class / race enhancement tier common information

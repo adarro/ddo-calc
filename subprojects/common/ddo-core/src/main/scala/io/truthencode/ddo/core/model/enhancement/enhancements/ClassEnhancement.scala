@@ -18,22 +18,27 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package io.truthencode.ddo.model.enhancement.enhancements
+package io.truthencode.ddo.core.model.enhancement.enhancements
 
 import enumeratum.Enum
-import io.truthencode.ddo.model.enhancement.{ClassBased, ClassBasedEnhancements, Enhancement, Tier}
-import io.truthencode.ddo.support.StringUtils.Extensions
-import io.truthencode.ddo.support.requisite.{
+import io.truthencode.ddo.core.model.enhancement.{
+  ClassBased,
+  ClassBasedEnhancements,
+  Enhancement,
+  Tier
+}
+import io.truthencode.ddo.core.StringUtils.Extensions
+import io.truthencode.ddo.core.support.requisite.{
   PointInTreeRequisite,
   PointsAvailableRequisite,
   RequiresActionPoints
 }
-import io.truthencode.ddo.support.tree.{ClassTrees, Ranks}
+import io.truthencode.ddo.core.support.tree.{ClassTrees, Ranks}
 
 import scala.collection.immutable
 
 /**
- * Class based enhancement which requires at least one level in a particular class.
+ * Class-based enhancement that requires at least one level in a particular class.
  */
 sealed trait ClassEnhancement extends Enhancement with ClassBased with Ranks {
   self: Tier & ClassBasedEnhancements & PointInTreeRequisite & PointsAvailableRequisite &
@@ -54,7 +59,7 @@ object ClassEnhancement extends Enum[ClassEnhancement] with ClassEnhancementSear
   override def values: immutable.IndexedSeq[ClassEnhancement] =
     findValues ++ generateObliterationMultiSelector ++ generateWeakeningMixtureMultiSelector
 
-  // Generator for Obliteration selectors, would like to do this in a less horrible manner at some point
+  // Generator for Obliteration selectors would like to do this in a less horrible manner at some point
   protected def generateObliterationMultiSelector: Seq[ElementalObliterationSelector] = {
     Seq(
       ("Fiery", "Fire"),

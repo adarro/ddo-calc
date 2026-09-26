@@ -18,9 +18,9 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package io.truthencode.ddo.model.classes
+package io.truthencode.ddo.core.model.classes
 
 /**
- * Represents one of the available
+ * Represents one of the available playable character classes
  */
 trait CharacterClass

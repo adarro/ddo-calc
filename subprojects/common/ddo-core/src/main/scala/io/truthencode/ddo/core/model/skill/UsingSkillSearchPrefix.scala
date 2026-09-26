@@ -20,7 +20,7 @@
  */
 package io.truthencode.ddo.model.skill
 
-import io.truthencode.ddo.support.naming.{DisplayName, UsingSearchPrefix}
+import io.truthencode.ddo.core.support.naming.{DisplayName, UsingSearchPrefix}
 
 trait UsingSkillSearchPrefix extends UsingSearchPrefix {
   self: DisplayName =>

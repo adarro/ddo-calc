@@ -18,12 +18,12 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package io.truthencode.ddo.model.effect.features
+package io.truthencode.ddo.core.model.effect.features
 
 import enumeratum.{Enum, EnumEntry}
 import io.truthencode.ddo.api.model.effect.FullEffect
-import io.truthencode.ddo.model.effect.Feature
-import io.truthencode.ddo.support.naming.DisplayProperties
+import io.truthencode.ddo.core.model.effect.Feature
+import io.truthencode.ddo.core.support.naming.DisplayProperties
 
 trait Features {
   def features: Seq[Feature[?]]

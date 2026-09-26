@@ -18,12 +18,12 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package io.truthencode.ddo.model.enhancement.enhancements
+package io.truthencode.ddo.core.model.enhancement.enhancements
 
-import io.truthencode.ddo.model.attribute.Attribute
+import io.truthencode.ddo.core.model.attribute.Attribute
 
 /**
- * Base trait which can be used to denote an enhancement which adds a bonus to an ability score such
+ * Base trait that can be used to denote an enhancement which adds a bonus to an ability score such
  * as Ability I in the Vile Chemist and Bombardier trees.
  */
 trait AbilityScoreEnhancement {

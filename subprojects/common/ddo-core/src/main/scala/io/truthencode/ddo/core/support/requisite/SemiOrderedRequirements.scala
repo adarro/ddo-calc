@@ -18,9 +18,9 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package io.truthencode.ddo.support.requisite
+package io.truthencode.ddo.core.support.requisite
 
-import io.truthencode.ddo.support.requisite.ValueWithRequirements.sortWithChaos
+import io.truthencode.ddo.core.support.requisite.ValueWithRequirements.sortWithChaos
 
 case class SemiOrderedRequirements(valueWithRequirements: ValueWithRequirements*) {
 
@@ -41,7 +41,7 @@ case class SemiOrderedRequirements(valueWithRequirements: ValueWithRequirements*
   }
 
   /**
-   * Can select based as a bonus when this criteria is met.
+   * Can select based as a bonus when these criteria are met.
    * @return
    *   Bonus Selections
    */

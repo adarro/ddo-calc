@@ -18,7 +18,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package io.truthencode.ddo.support.naming
+package io.truthencode.ddo.core.support.naming
 
 /**
  * Mixin Used to prefix a name. Useful for categories to alter 'Dwarf' into 'Race:Dwarf'
@@ -26,7 +26,7 @@ package io.truthencode.ddo.support.naming
 trait Prefix extends DisplayProperties {
 
   /**
-   * Delimits the prefix and text. Default value is ": "
+   * Delimits the prefix and text. The default value is ": "
    */
   protected val prefixSeparator: String = ":"
 

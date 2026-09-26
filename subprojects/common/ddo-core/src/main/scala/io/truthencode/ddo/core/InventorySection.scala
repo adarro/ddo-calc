@@ -21,6 +21,7 @@
 package io.truthencode.ddo.core
 
 import enumeratum.{Enum, EnumEntry}
+import io.truthencode.ddo.modeling.NoDefault
 
 /**
  * Represents a location where an item is.
@@ -36,7 +37,7 @@ object InventorySection extends Enum[InventorySection] {
   case object SharedBank extends InventorySection
 
   /**
-   * No current direct implementation plans for auction, just a place holder for the code.
+   * No current direct implementation plans for auction, just a placeholder for the code.
    */
   case object Auction extends InventorySection
 

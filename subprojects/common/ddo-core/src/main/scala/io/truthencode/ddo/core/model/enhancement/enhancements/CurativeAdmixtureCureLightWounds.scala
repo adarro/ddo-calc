@@ -18,11 +18,11 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package io.truthencode.ddo.model.enhancement.enhancements
+package io.truthencode.ddo.core.model.enhancement.enhancements
 
-import io.truthencode.ddo.model.classes.HeroicCharacterClass
-import io.truthencode.ddo.model.classes.HeroicCharacterClass.Alchemist
-import io.truthencode.ddo.model.enhancement.enhancements.classbased.ApothecaryTierOne
+import io.truthencode.ddo.core.model.classes.HeroicCharacterClass
+import io.truthencode.ddo.core.model.classes.HeroicCharacterClass.Alchemist
+import io.truthencode.ddo.core.model.enhancement.enhancements.classbased.ApothecaryTierOne
 
 trait CurativeAdmixtureCureLightWounds
   extends ApothecaryTierOne with ClassEnhancementImpl with CurativeAdmixtureBase {

@@ -18,15 +18,15 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package io.truthencode.ddo.support.naming
+package io.truthencode.ddo.core.support.naming
 
-import io.truthencode.ddo.support.RomanNumeral
-import io.truthencode.ddo.support.StringUtils.Extensions
+import io.truthencode.ddo.core.support.RomanNumeral
+import io.truthencode.ddo.core.StringUtils.Extensions
 
 /**
  * Preserves values / formatting for Roman Numeral Affixes
  * @note
- *   be sure to override namesource as this will append the roman numeral to it.
+ *   be sure to override [[DisplayName.nameSource]] as this will append the roman numeral to it.
  */
 trait RomanNumeralAffix {
   self: DisplayName =>

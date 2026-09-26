@@ -18,17 +18,17 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package io.truthencode.ddo.model.feats
+package io.truthencode.ddo.core.model.feats
 
 import io.truthencode.ddo.activation.{OnMeleeSpecialAttack, OnToggleEvent}
-import io.truthencode.ddo.model.effect.ActiveEvent
-import io.truthencode.ddo.model.misc.{CoolDown, DefaultCoolDown, DefaultSpellCoolDown}
+import io.truthencode.ddo.core.model.effect.ActiveEvent
+import io.truthencode.ddo.core.model.misc.{CoolDown, DefaultCoolDown, DefaultSpellCoolDown}
 
 /**
  * Created by adarr on 1/29/2017.
  * @note
  *   these should be moved out of the Feat package and renamed as they can and should be used for
- *   stances / toggles etc that are granted via enhancements etc
+ *   stances / toggles etc. that are granted via enhancements etc.
  *
  * Also, perhaps clickies?
  */
@@ -41,9 +41,9 @@ trait Toggle extends FeatType
 
 /**
  * This effect is a stance, which means it can be on or off, but may also have some stacking
- * restrictions. i.e. only one offensive combat stance may be active at any given time, and
- * automatically toggles off a defensive combat stance, however it may be combined with a
- * non-conflicting stance, such as a wizards undead shroud or the iconic feat Amauntor's Flames.
+ * restrictions. I.e., only one offensive combat stance may be active at any given time, and
+ * automatically toggles off a defensive combat stance, however, it may be combined with a
+ * non-conflicting stance, such as a wizard undead shroud or the iconic feat Amauntor's Flames.
  */
 trait Stance extends FeatType with Toggle with ActiveFeat with OnToggleEvent with DefaultCoolDown
 
@@ -56,8 +56,8 @@ trait ActiveFeat extends FeatType with CoolDown {
 }
 
 /**
- * This stance has effects that increase your defense by increasing your dodge, armor class or other
- * defensive measures.
+ * This stance has effects that increase your defense by increasing your dodge, armor class, or
+ * other defensive measures.
  *
  * It is exclusive of Offense combat stances.
  */
@@ -65,7 +65,7 @@ trait DefensiveCombatStance extends FeatType with Stance
 
 /**
  * This effect increasing your offensive capabilities by increasing damage, critical multiplier,
- * spell dc / penetration etc.
+ * spell dc / penetration, etc.
  *
  * It is exclusive of Defensive Combat stances.
  */
@@ -86,7 +86,7 @@ trait OffensiveRangedStance extends FeatType with Stance
 
 /**
  * This provides beneficial effects to spells and spell like abilities such as extending length,
- * range or power.
+ * range, or power.
  */
 trait MetaMagic extends FeatType with Stance
 

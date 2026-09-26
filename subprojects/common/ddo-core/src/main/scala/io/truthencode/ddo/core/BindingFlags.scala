@@ -22,8 +22,9 @@ package io.truthencode.ddo.core
 
 import com.typesafe.scalalogging.LazyLogging
 import enumeratum.{Enum, EnumEntry}
-import io.truthencode.ddo.BindingFlags.Unbound
-import io.truthencode.ddo.support.StringUtils.Extensions
+import io.truthencode.ddo.core.BindingFlags.Unbound
+import io.truthencode.ddo.core.StringUtils.Extensions
+import io.truthencode.ddo.modeling.DefaultValue
 import io.truthencode.ddo.support.matching.{WordMatchStrategies, WordMatchStrategy}
 
 import scala.collection.immutable
@@ -71,7 +72,7 @@ object BindingFlags extends Enum[BindingFlags] with DefaultValue[BindingFlags] w
    *   Optional String of text to translate.
    * @param strategy
    *   Implicit strategy used to determine matching constraints such as Upper / Lowercase / Preserve
-   *   Case, full word etc.
+   *   Case, full word, etc.
    * @return
    *   [BindingFlags] from name or None if no data or no matching data is found.
    * @note
@@ -81,7 +82,7 @@ object BindingFlags extends Enum[BindingFlags] with DefaultValue[BindingFlags] w
    * Finally defaults to None
    *
    * If you have the exact words without spaces, it may be more performant to use the 'withName'
-   * variant. NOTE: This enumeration is keyed by Acronym, so BTCoE will match, where 'Bound to
+   * variant. NOTE: This enumeration is keyed by Acronym; so BTCoE will match, where 'Bound to
    * Character On Equip' will fail.
    */
   def fromWords(words: Option[String])(implicit

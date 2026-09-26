@@ -18,10 +18,11 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package io.truthencode.ddo.model.enhancement
+package io.truthencode.ddo.core.model.enhancement
 
 /**
  * @note
- *   may need to override display name to add Hyphen perhaps add Hyphenate rule to display options
+ *   may need to override the display name to add Hyphen perhaps add Hyphenate rule to display
+ *   options
  */
 trait ThiefAcrobat extends RogueEnhancement

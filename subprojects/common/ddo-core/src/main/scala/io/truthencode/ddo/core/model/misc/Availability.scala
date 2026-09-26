@@ -18,7 +18,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package io.truthencode.ddo.model.misc
+package io.truthencode.ddo.core.model.misc
 
 import scala.collection.immutable.HashSet
 

@@ -18,9 +18,13 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package io.truthencode.ddo.model.feats
+package io.truthencode.ddo.core.model.feats
 
-import io.truthencode.ddo.support.requisite.{FreeFeat, RequiresAllOfFeat, RequiresCharacterLevel}
+import io.truthencode.ddo.core.support.requisite.{
+  FreeFeat,
+  RequiresAllOfFeat,
+  RequiresCharacterLevel
+}
 
 /**
  * Created by adarr on 4/3/2017.

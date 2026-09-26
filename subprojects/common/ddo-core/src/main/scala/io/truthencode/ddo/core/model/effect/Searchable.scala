@@ -18,7 +18,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package io.truthencode.ddo.model.effect
+package io.truthencode.ddo.core.model.effect
 
 import com.typesafe.scalalogging.LazyLogging
 import enumeratum.{Enum, EnumEntry}
@@ -41,7 +41,7 @@ trait Searchable[T <: EnumEntry & SearchPattern] extends Enum[T] with LazyLoggin
       case None => name
     }
 //    logger.whenDebugEnabled{
-//        val msg = s"\nSearchable:-> $cls for $name ${usePattern.getOrElse(sp)} target  $targetPattern"
+//        val msg = s"\nSearchable:-> $cls for $name ${usePattern.getOrElse(sp)} target $targetPattern"
 //        logger.debug(msg)
 //    }
 
@@ -78,7 +78,7 @@ trait Searchable[T <: EnumEntry & SearchPattern] extends Enum[T] with LazyLoggin
 //        logger.debug(s"${x.entryName}")
 //        Success(x)
 //      case _ =>
-//        val ex = new NoSuchElementException(s"Could not find element with name $name")
+//        val ex = new NoSuchElementException( s"Could not find element with name $name")
 //        logger.error("Failed to locate element by pattern", ex)
 //        Failure(ex)
 //    }

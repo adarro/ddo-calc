@@ -18,11 +18,11 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package io.truthencode.ddo.session
+package io.truthencode.ddo.core.session
 
 import enumeratum.{Enum, EnumEntry}
-import io.truthencode.ddo.support.naming.{DisplayName, DisplayProperties}
-import io.truthencode.ddo.support.requisite.{Inclusion, Requisite}
+import io.truthencode.ddo.core.support.naming.{DisplayName, DisplayProperties}
+import io.truthencode.ddo.core.support.requisite.{Inclusion, Requisite}
 
 import scala.collection.mutable
 

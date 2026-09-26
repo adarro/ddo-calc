@@ -18,7 +18,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package io.truthencode.ddo.support.validation
+package io.truthencode.ddo.core.support.validation
 
 import jakarta.inject.Singleton
 import org.eclipse.microprofile.config.inject.ConfigProperty

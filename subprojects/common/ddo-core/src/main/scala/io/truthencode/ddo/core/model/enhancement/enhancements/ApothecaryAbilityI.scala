@@ -18,10 +18,10 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package io.truthencode.ddo.model.enhancement.enhancements
+package io.truthencode.ddo.core.model.enhancement.enhancements
 
-import io.truthencode.ddo.model.attribute.Attribute
-import io.truthencode.ddo.model.enhancement.enhancements.classbased.ApothecaryTierThree
+import io.truthencode.ddo.core.model.attribute.Attribute
+import io.truthencode.ddo.core.model.enhancement.enhancements.classbased.ApothecaryTierThree
 
 trait ApothecaryAbilityI
   extends ApothecaryTierThree with ClassEnhancementImpl with AbilitySelector {

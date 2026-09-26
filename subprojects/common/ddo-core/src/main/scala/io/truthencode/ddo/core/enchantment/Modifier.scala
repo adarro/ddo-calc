@@ -18,11 +18,11 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package io.truthencode.ddo.enchantment
+package io.truthencode.ddo.core.enchantment
 
 import enumeratum.EnumEntry
-import io.truthencode.ddo.NoDefault
-import io.truthencode.ddo.support.IndexedEnum
+import io.truthencode.ddo.core.support.IndexedEnum
+import io.truthencode.ddo.modeling.NoDefault
 
 sealed trait Modifier extends EnumEntry
 

@@ -18,17 +18,17 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package io.truthencode.ddo.support.requisite
+package io.truthencode.ddo.core.support.requisite
 
-import io.truthencode.ddo.support.points.SpendablePoints
-import io.truthencode.ddo.support.requisite.RequirementImplicits.{
+import io.truthencode.ddo.core.support.points.SpendablePoints
+import io.truthencode.ddo.core.support.requisite.RequirementImplicits.{
   pointToReq,
   progressionWithPointsToReq
 }
-import io.truthencode.ddo.support.tree.TreeLike
+import io.truthencode.ddo.core.support.tree.TreeLike
 
 /**
- * Represents a required amount of points spent (Action, Survival, Epic Destiny Points)
+ * Represents a required number of points spent (Action, Survival, Epic Destiny Points)
  */
 sealed trait PointRequisite {
   self: Requisite =>
@@ -54,7 +54,7 @@ sealed trait PointsAvailableRequisite extends PointRequisite {
   self: Requisite =>
 
   /**
-   * Denotes the type and amount of points required to be available to acquire the given Enhancement
+   * Denotes the type and number of points required to be available to acquire the given Enhancement
    * @note
    *   this may need to become a stackable trait to support multiple types.
    * @return
@@ -74,7 +74,8 @@ sealed trait PointsAvailableRequisite extends PointRequisite {
 /**
  * Base Stackable trait implementation used to initialize when no other has been used.
  * @note
- *   we should be able to create just one of these instead of a Race / Class / Feat etc specific one
+ *   we should be able to create just one of these instead of a Race / Class / Feat etc. specific
+ *   one
  */
 trait PointsInTreeRequisiteImpl extends MustContainImpl[Requirement] with PointInTreeRequisite {
   self: Requisite & RequisiteType =>
@@ -96,8 +97,8 @@ trait PointsAvailableRequisiteImpl
 }
 
 /**
- * Denotes the amount of points needed (or that must be available) to acquire this Enhancement. This
- * is less specific than [[RequiresPointsInTree]], which specifics the amount of points spent in a
+ * Denotes the number of points needed (or that must be available) to acquire this Enhancement. This
+ * is less specific than [[RequiresPointsInTree]], which specifics the number of points spent in a
  * specific tree.
  */
 trait RequiresPointsAvailable

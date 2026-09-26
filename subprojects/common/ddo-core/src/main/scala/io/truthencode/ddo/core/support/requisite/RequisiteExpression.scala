@@ -18,9 +18,9 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package io.truthencode.ddo.support.requisite
+package io.truthencode.ddo.core.support.requisite
 
-import io.truthencode.ddo.support.requisite.Requirement.GroupedRequirement
+import io.truthencode.ddo.core.support.requisite.Requirement.GroupedRequirement
 
 /**
  * Base stackable trait used to store an array of requirements along with logic to evaluate.
@@ -29,7 +29,7 @@ sealed trait RequisiteExpression {
   self: RequisiteType & Inclusion =>
 
   /**
-   * Array of Requirements which can be checked against a given source.
+   * Array of Requirements that can be checked against a given source.
    *
    * @return
    */
@@ -138,7 +138,7 @@ trait RequiresNoneOf[T <: Requirement] extends MustContainNoneOf[T] with Require
 trait ProhibitsOneOf[+T <: Requirement] extends MustContainAtLeastOneOf[T] with Prohibit {
   private[this] def makeSet: RequirementSet = RequirementSet(this, this, oneOf)
 
-  abstract override def prerequisites: Seq[RequirementSet] = super.prerequisites :+ makeSet
+  abstract override def prerequisites: Seq[RequirementSet] = super.prerequisites: + makeSet
 }
  */
 
@@ -146,6 +146,6 @@ trait ProhibitsOneOf[+T <: Requirement] extends MustContainAtLeastOneOf[T] with 
 trait ProvidesOneOf[+T <: Requirement] extends MustContainAtLeastOneOf[T] with Grant {
   private[this] def makeSet: RequirementSet = RequirementSet(this, this, oneOf)
 
-  abstract override def prerequisites: Seq[RequirementSet] = super.prerequisites :+ makeSet
+  abstract override def prerequisites: Seq[RequirementSet] = super.prerequisites: + makeSet
 }
  */

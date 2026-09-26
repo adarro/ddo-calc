@@ -18,7 +18,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package io.truthencode.ddo.model.destiny
+package io.truthencode.ddo.core.model.destiny
 
 import enumeratum.EnumEntry
 

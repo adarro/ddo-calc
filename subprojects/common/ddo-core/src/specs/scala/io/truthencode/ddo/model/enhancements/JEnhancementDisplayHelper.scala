@@ -21,8 +21,8 @@
 package io.truthencode.ddo.model.enhancements
 
 import com.typesafe.scalalogging.LazyLogging
-import io.truthencode.ddo.model.enhancement.Tier
-import io.truthencode.ddo.support.tree.ClassTrees
+import io.truthencode.ddo.core.model.enhancement.Tier
+import io.truthencode.ddo.core.support.tree.ClassTrees
 
 import scala.beans.BeanProperty
 

@@ -18,7 +18,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package io.truthencode.ddo.support.requisite
+package io.truthencode.ddo.core.support.requisite
 
 import com.typesafe.scalalogging.LazyLogging
 import enumeratum.EnumEntry
@@ -50,7 +50,7 @@ object ValueWithRequirements extends LazyLogging {
     /**
      * Sort using Alpha then Numeric Key
      */
-    AlhpaNumeric,
+    AlphaNumeric,
 
     /**
      * Sort Using Numeric then Alpha Key
@@ -71,13 +71,13 @@ object ValueWithRequirements extends LazyLogging {
   def sortWithChaos(v1: RSort, v2: RSort): Boolean = {
     val anO1 = v1 match {
       case x: ANSort if x.reverse => (x, SortType.NumericAlpha)
-      case x: ANSort => (x, SortType.AlhpaNumeric)
+      case x: ANSort => (x, SortType.AlphaNumeric)
       case _ => (v1, SortType.Alpha)
     }
 
     val anO2 = v2 match {
       case x: ANSort if x.reverse => (x, SortType.NumericAlpha)
-      case x: ANSort => (x, SortType.AlhpaNumeric)
+      case x: ANSort => (x, SortType.AlphaNumeric)
       case _ => (v1, SortType.Alpha)
     }
 

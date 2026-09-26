@@ -18,12 +18,12 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package io.truthencode.ddo.model.enhancement.enhancements
+package io.truthencode.ddo.core.model.enhancement.enhancements
 
-import io.truthencode.ddo.model.classes.HeroicCharacterClass
-import io.truthencode.ddo.model.enhancement.enhancements.classbased.BombardierTierFour
-import io.truthencode.ddo.support.naming.SLAPrefix
-import io.truthencode.ddo.support.requisite.RequiresAllOfClass
+import io.truthencode.ddo.core.model.classes.HeroicCharacterClass
+import io.truthencode.ddo.core.model.enhancement.enhancements.classbased.BombardierTierFour
+import io.truthencode.ddo.core.support.naming.SLAPrefix
+import io.truthencode.ddo.core.support.requisite.RequiresAllOfClass
 
 trait SLASmokeBomb
   extends BombardierTierFour with ClassEnhancementImpl with RequiresAllOfClass with SLAPrefix {
@@ -39,7 +39,7 @@ trait SLASmokeBomb
 
   /**
    * Some enhancements have multiple ranks. This is the cost for each rank. Older versions had
-   * increasing costs which has been streamlined to a linear progression.
+   * increasing costs that have been streamlined to a linear progression.
    *
    * @return
    */

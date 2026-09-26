@@ -18,10 +18,10 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package io.truthencode.ddo.model.effect
+package io.truthencode.ddo.core.model.effect
 
 import enumeratum.EnumEntry
-import io.truthencode.ddo.support.IndexedEnum
+import io.truthencode.ddo.core.support.IndexedEnum
 
 import scala.collection.immutable
 
@@ -41,7 +41,7 @@ trait PassiveEvent extends TriggerEvent
 trait ActiveEvent extends TriggerEvent
 
 /**
- * Enumerates all valid trigger event typse
+ * Enumerates all valid trigger event types
  */
 // scalastyle:off number.of.methods
 object TriggerEvent extends IndexedEnum[TriggerEvent] {
@@ -71,7 +71,7 @@ object TriggerEvent extends IndexedEnum[TriggerEvent] {
   case object OnDamage extends ActiveEvent, TriggerEvent
 
   /**
-   * Occurs when you are hit by a spell
+   * Occurs when a spell hits you
    */
   case object OnSpellHit extends ActiveEvent
 
@@ -81,7 +81,7 @@ object TriggerEvent extends IndexedEnum[TriggerEvent] {
   case object OnSpellCast extends ActiveEvent, TriggerEvent
 
   /**
-   * Occurs when you activate a SLA (Spell like ability)
+   * Occurs when you activate an SLA (Spell like ability)
    */
   case object OnSpellLikeAbility extends ActiveEvent
 
@@ -96,7 +96,7 @@ object TriggerEvent extends IndexedEnum[TriggerEvent] {
   case object OnDeath extends ActiveEvent
 
   /**
-   * Occurs when you are incapacited
+   * Occurs when you are incapacitated
    *
    * Hit points fall below 0
    */
@@ -120,7 +120,7 @@ object TriggerEvent extends IndexedEnum[TriggerEvent] {
   case object OnHealthLevelBelow extends ActiveEvent
 
   /**
-   * Triggers on a ceratin percentage of health raises above the threshold
+   * Triggers on a certain percentage of health rises above the threshold
    */
   case object OnHealthLevelAbove extends ActiveEvent
 
@@ -152,7 +152,7 @@ object TriggerEvent extends IndexedEnum[TriggerEvent] {
   case object SpecialAttack extends ActiveEvent
 
   /**
-   * Occurs to summon (pet / monster etc)
+   * Occurs to summon (pet / monster etc.)
    */
   case object Summon extends ActiveEvent
 
@@ -192,7 +192,7 @@ object TriggerEvent extends IndexedEnum[TriggerEvent] {
   object OnUnconscious extends ActiveEvent
 
   /**
-   * Activates / Cycles based on some timer. i.e. Deflect Arrows
+   * Activates / Cycles based on some timer. I.e., Deflect Arrows
    */
   object OnTimer extends ActiveEvent
 
@@ -202,8 +202,8 @@ object TriggerEvent extends IndexedEnum[TriggerEvent] {
   object OnTumble extends ActiveEvent
 
   /**
-   * Special End event. Denotes the effect ends at the end of whatever the TriggerOn event was. i.e.
-   * End of Tumble for the Mobility Feat
+   * Special End event. Denotes the effect ends at the end of whatever the TriggerOn event was.
+   * I.e., End of Tumble for the Mobility Feat
    * @note
    *   need a better name for this
    */

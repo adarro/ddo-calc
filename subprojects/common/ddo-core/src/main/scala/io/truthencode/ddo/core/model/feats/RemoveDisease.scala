@@ -18,12 +18,12 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package io.truthencode.ddo.model.feats
+package io.truthencode.ddo.core.model.feats
 
 import io.truthencode.ddo.activation.OnSpellLikeAbilityEvent
-import io.truthencode.ddo.model.classes.HeroicCharacterClass
-import io.truthencode.ddo.model.classes.HeroicCharacterClass.Paladin
-import io.truthencode.ddo.support.requisite._
+import io.truthencode.ddo.core.model.classes.HeroicCharacterClass
+import io.truthencode.ddo.core.model.classes.HeroicCharacterClass.Paladin
+import io.truthencode.ddo.core.support.requisite._
 
 /**
  * [[http://ddowiki.com/page/Remove_Disease Remove Disease]] At 6th level, a paladin can produce a

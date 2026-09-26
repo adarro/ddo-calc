@@ -18,12 +18,16 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package io.truthencode.ddo.model.feats
+package io.truthencode.ddo.core.model.feats
 
 import io.truthencode.ddo.model.race.Race
-import io.truthencode.ddo.support.StringUtils.Extensions
-import io.truthencode.ddo.support.naming.Prefix
-import io.truthencode.ddo.support.requisite.{FeatRequisiteImpl, RaceRequisite, RequiresAllOfRace}
+import io.truthencode.ddo.core.StringUtils.Extensions
+import io.truthencode.ddo.core.support.naming.Prefix
+import io.truthencode.ddo.core.support.requisite.{
+  FeatRequisiteImpl,
+  RaceRequisite,
+  RequiresAllOfRace
+}
 
 /**
  * Created by adarr on 2/20/2017.

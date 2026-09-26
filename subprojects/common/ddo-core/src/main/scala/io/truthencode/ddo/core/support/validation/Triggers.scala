@@ -18,7 +18,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package io.truthencode.ddo.support.validation
+package io.truthencode.ddo.core.support.validation
 
 import com.typesafe.scalalogging.Logger
 
@@ -30,7 +30,7 @@ def validateTriggers(triggers: Seq[String]): Validation[String, Seq[String]] =
   if triggers.isEmpty then {
     Validation.fail("At least one valid trigger must be specified")
   } else {
-    import io.truthencode.ddo.support.TraverseOps._
+    import io.truthencode.ddo.core.TraverseOps._
     val tIn = triggers.mkString(", ")
     logger.debug(s"Evaluating Triggers $tIn")
     val tCommon = triggers.intersect(triggerNames)

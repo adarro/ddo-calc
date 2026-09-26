@@ -18,12 +18,12 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package io.truthencode.ddo.support.requisite
+package io.truthencode.ddo.core.support.requisite
 
 import enumeratum.{Enum, EnumEntry}
 
 /**
- * Flag used to determine whether a given expression is granting, requiring or prohibiting.
+ * Flag used to determine whether a given expression is granting, requiring, or prohibiting.
  */
 sealed trait RequisiteType extends EnumEntry {
   def requisiteType: String

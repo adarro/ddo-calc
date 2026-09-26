@@ -18,16 +18,16 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package io.truthencode.ddo.model.feats
+package io.truthencode.ddo.core.model.feats
 
-import io.truthencode.ddo.enhancement.BonusType
-import io.truthencode.ddo.model.effect.TriggerEvent
-import io.truthencode.ddo.model.effect.features.{
+import io.truthencode.ddo.core.enhancement.BonusType
+import io.truthencode.ddo.core.model.effect.TriggerEvent
+import io.truthencode.ddo.core.model.effect.features.{
   ConfirmCriticalHitAmountFeature,
   CriticalDamageAmountFeature,
   FeaturesImpl
 }
-import io.truthencode.ddo.support.requisite.{FeatRequisiteImpl, RequiresAnyOfFeat, RequiresBaB}
+import io.truthencode.ddo.core.support.requisite.{FeatRequisiteImpl, RequiresAnyOfFeat, RequiresBaB}
 
 /**
  * Icon Feat Power Critical.png Power Critical Passive Provides a +2 bonus to confirm critical hits

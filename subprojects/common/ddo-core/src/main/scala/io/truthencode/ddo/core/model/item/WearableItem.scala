@@ -18,9 +18,9 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package io.truthencode.ddo.model.item
+package io.truthencode.ddo.core.model.item
 
-import io.truthencode.ddo.Wearable
+import io.truthencode.ddo.core.Wearable
 
 /**
  * An Item that can be worn / equipped

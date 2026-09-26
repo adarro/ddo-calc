@@ -18,11 +18,11 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package io.truthencode.ddo.support.requisite
+package io.truthencode.ddo.core.support.requisite
 
-import io.truthencode.ddo.model.attribute.Attribute
-import io.truthencode.ddo.support.requisite.Requirement.GroupedRequirement
-import io.truthencode.ddo.support.requisite.RequirementImplicits.AttributeImplicits
+import io.truthencode.ddo.core.model.attribute.Attribute
+import io.truthencode.ddo.core.support.requisite.Requirement.GroupedRequirement
+import io.truthencode.ddo.core.support.requisite.RequirementImplicits.AttributeImplicits
 
 /**
  * Created by adarr on 2/3/2017.

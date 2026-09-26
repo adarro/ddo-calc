@@ -18,11 +18,11 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package io.truthencode.ddo.model.feats
+package io.truthencode.ddo.core.model.feats
 
-import io.truthencode.ddo.model.classes.HeroicCharacterClass
-import io.truthencode.ddo.model.classes.HeroicCharacterClass.Alchemist
-import io.truthencode.ddo.support.requisite.{
+import io.truthencode.ddo.core.model.classes.HeroicCharacterClass
+import io.truthencode.ddo.core.model.classes.HeroicCharacterClass.Alchemist
+import io.truthencode.ddo.core.support.requisite.{
   ClassRequisiteImpl,
   FeatRequisiteImpl,
   GrantsToClass,
@@ -30,7 +30,7 @@ import io.truthencode.ddo.support.requisite.{
 }
 
 /**
- * Alchemists hava a unique way of combining their spells as they cast them. As an Alchemist, your
+ * Alchemists have a unique way of combining their spells as they cast them. As an Alchemist, your
  * spells are each associated with a different Primer: Crimsonite, Gildleaf, or Ceruleite. Casting a
  * spell from a single Primer and then casting a spell from a different Primer will activate a
  * Reaction depending on the Primer of the spells cast. Reactions come in three variants: Pyrite,

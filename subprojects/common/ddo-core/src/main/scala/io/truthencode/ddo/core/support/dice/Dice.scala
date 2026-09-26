@@ -18,7 +18,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package io.truthencode.ddo.support.dice
+package io.truthencode.ddo.core.support.dice
 
 /**
  * Represents a Die with Sides and Number of Dice to roll

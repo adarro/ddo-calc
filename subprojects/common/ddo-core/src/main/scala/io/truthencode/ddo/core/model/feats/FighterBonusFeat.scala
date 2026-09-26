@@ -18,10 +18,10 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package io.truthencode.ddo.model.feats
+package io.truthencode.ddo.core.model.feats
 
-import io.truthencode.ddo.model.classes.HeroicCharacterClass
-import io.truthencode.ddo.support.requisite.{Inclusion, Requisite, SelectableToClass}
+import io.truthencode.ddo.core.model.classes.HeroicCharacterClass
+import io.truthencode.ddo.core.support.requisite.{Inclusion, Requisite, SelectableToClass}
 
 trait FighterBonusFeat extends SelectableToClass with BonusSelectableToClassFeat {
   self: Feat & FeatType & Requisite & Inclusion =>

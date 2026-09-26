@@ -18,7 +18,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package io.truthencode.ddo.support.slots.item
+package io.truthencode.ddo.core.support.slots.item
 
 import enumeratum.{Enum, EnumEntry}
 
@@ -44,7 +44,7 @@ object ItemGeneration extends Enum[ItemGeneration] {
 /**
  * Item created or upgraded via some method of crafting.
  *
- * This usually involves a device / workstation / altar by combinining a base item with various
+ * This usually involves a device / workstation / altar by combining a base item with various
  * ingredients.
  */
 trait Craftable extends ItemGeneration

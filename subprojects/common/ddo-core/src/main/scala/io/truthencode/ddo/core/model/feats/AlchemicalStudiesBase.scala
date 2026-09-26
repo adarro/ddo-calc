@@ -18,17 +18,18 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package io.truthencode.ddo.model.feats
+package io.truthencode.ddo.core.model.feats
 
-import io.truthencode.ddo.model.classes.HeroicCharacterClass
-import io.truthencode.ddo.support.requisite._
+import io.truthencode.ddo.core.model.classes.HeroicCharacterClass
+import io.truthencode.ddo.core.support.requisite._
 
 /**
- * Icon Feat Exotic Weapon Proficiency.png Exotic Weapon Proficiency - Passive This feat negates the
- * -4 penalty from using any of the exotic weapons while untrained. Bastard Sword and Dwarven Waraxe
- * deal grazing hits as if they were a two handed weapon if they are the only weapon wielded by a
- * proficient user. This feat must be taken for separate exotic weapons. * Strength 13 for Bastard
- * Sword and Dwarven Waraxe Base Attack Bonus +1,
+ * Icon Feat Exotic Weapon Proficiency.png Exotic Weapon Proficiency - Passive
+ *
+ * This feat negates the -4 penalty from using any of the exotic weapons while untrained. Bastard
+ * Sword and Dwarven Waraxe deal grazing hits as if they were a two-handed weapon if they are the
+ * only weapon wielded by a proficient user. This feat must be taken for separate exotic weapons.
+ * Strength 13 for Bastard Sword and Dwarven Waraxe Base Attack Bonus +1,
  */
 protected[feats] trait AlchemicalStudiesBase
   extends FeatRequisiteImpl with ClassRequisiteImpl with BonusSelectableToClassFeatImpl

@@ -18,13 +18,13 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package io.truthencode.ddo.model.feats
+package io.truthencode.ddo.core.model.feats
 
 import com.typesafe.scalalogging.LazyLogging
 import enumeratum.Enum
-import io.truthencode.ddo.model.effect.features.{Features, FeaturesImpl}
-import io.truthencode.ddo.support.naming.FriendlyDisplay
-import io.truthencode.ddo.support.requisite.{Inclusion, Requisite}
+import io.truthencode.ddo.core.model.effect.features.{Features, FeaturesImpl}
+import io.truthencode.ddo.core.support.naming.FriendlyDisplay
+import io.truthencode.ddo.core.support.requisite.{Inclusion, Requisite}
 
 /**
  * Meta / special feats such as Feat Respec Tokens which generally have meta-mechanic functions.

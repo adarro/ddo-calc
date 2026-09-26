@@ -18,9 +18,9 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package io.truthencode.ddo.support.numbers
+package io.truthencode.ddo.core.support.numbers
 
-import io.truthencode.ddo.{NonStacking, StacksWithAny, StacksWithUnique}
+import io.truthencode.ddo.core.{NonStacking, StacksWithAny, StacksWithUnique}
 
 trait AdjustableNumber {
 
@@ -46,7 +46,8 @@ object AdjustableNumber {
   }
 
   /**
-   * Stacks with others but not same. i.e. shield bonus stacks with any but other shield bonuses
+   * Stacks with others but not the same. I.e., shield bonus stacks with any but other shield
+   * bonuses
    */
   val fnStackNone: PartialFunction[Adjustment, Adjustment] = {
     case x if x.bonusType.isInstanceOf[NonStacking] =>
@@ -54,7 +55,8 @@ object AdjustableNumber {
   }
 
   /**
-   * Stacks with others but not same. i.e. shield bonus stacks with any but other shield bonuses
+   * Stacks with others but not the same. i.e., shield bonus stacks with any but other shield
+   * bonuses
    */
   val fnStackDifferent: PartialFunction[Adjustment, Adjustment] = {
     case x if x.bonusType.isInstanceOf[StacksWithUnique] =>

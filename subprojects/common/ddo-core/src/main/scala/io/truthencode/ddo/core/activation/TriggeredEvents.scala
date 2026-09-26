@@ -20,9 +20,9 @@
  */
 package io.truthencode.ddo.activation
 
-import io.truthencode.ddo.model.effect.TriggerEvent
-import io.truthencode.ddo.model.effect.TriggerEvent._
-import io.truthencode.ddo.model.feats.Toggle
+import io.truthencode.ddo.core.model.effect.TriggerEvent
+import io.truthencode.ddo.core.model.effect.TriggerEvent._
+import io.truthencode.ddo.core.model.feats.Toggle
 
 /**
  * Occurs on every attack

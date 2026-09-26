@@ -18,7 +18,9 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package io.truthencode.ddo.model.misc
+package io.truthencode.ddo.core.model.misc
+
+import io.truthencode.ddo.core.model.misc.PoolId
 
 import java.time.Duration
 
@@ -27,7 +29,7 @@ trait CoolDown {
   /**
    * Some duration until this action / spell / ability can be used again.
    * @return
-   *   Some Time span which must elapse before re-activation.
+   *   Some Time span that must elapse before re-activation.
    */
   def coolDown: Option[Duration]
 }
@@ -39,24 +41,24 @@ trait CoolDown {
 trait DefaultCoolDown extends CoolDown {
 
   /**
-   * This is a default cool down which is currently using
+   * This is a default cooldown which is currently using
    * [[io.truthencode.ddo.model.GlobalMinimumCoolDown]] for a value. This may be adjusted or changed
    * as knowledge increases. However, it is also hopeful to deprecate this for a specified value.
    * @return
-   *   Some Time span which must elapse before re-activation.
+   *   Some Time span that must elapse before re-activation.
    */
   override def coolDown: Option[Duration] =
-    Some(io.truthencode.ddo.model.GlobalMinimumCoolDown)
+    Some(io.truthencode.ddo.core.model.GlobalMinimumCoolDown)
 }
 
 /**
- * Default spell cool downs for undocumented / unknown spells.
+ * Default spell cooldowns for undocumented / unknown spells.
  */
 trait DefaultSpellCoolDown extends CoolDown {
 
   /**
    * @todo
-   *   this needs to be a class based filter as the default depends on it.
+   *   this needs to be a class-based filter as the default depends on it.
    * @return
    */
   override def coolDown: Option[Duration] = Some(Duration.ofSeconds(3))
@@ -84,7 +86,7 @@ trait BardSongCoolDown extends CoolDown {
 
   /**
    * This is a temporary and arbitrary cooldown assuming aura bard songs have a timer. Typically,
-   * aside from instant songs, the cool down will expire well before the song finishes.
+   * aside from instant songs, the cooldown will expire well before the song finishes.
    */
   final val BardSongDefaultCoolDown = Duration.ofSeconds(3)
   override def coolDown: Option[Duration] = Some(BardSongDefaultCoolDown)

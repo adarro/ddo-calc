@@ -18,22 +18,24 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package io.truthencode.ddo.model.feats
+package io.truthencode.ddo.core.model.feats
 
 import io.truthencode.ddo.activation.{AtWillEvent, TriggeredActivationImpl}
-import io.truthencode.ddo.enhancement.BonusType
-import io.truthencode.ddo.model.abilities.ActiveAbilities
-import io.truthencode.ddo.model.effect
-import io.truthencode.ddo.model.effect.TriggerEvent
-import io.truthencode.ddo.model.effect.features.{FeaturesImpl, GrantAbilityFeature}
-import io.truthencode.ddo.support.requisite.{FeatRequisiteImpl, RequiresAllOfFeat}
+import io.truthencode.ddo.core.enhancement.BonusType
+import io.truthencode.ddo.core.model.abilities.ActiveAbilities
+import io.truthencode.ddo.core.model.effect
+import io.truthencode.ddo.core.model.effect.TriggerEvent
+import io.truthencode.ddo.core.model.effect.features.{FeaturesImpl, GrantAbilityFeature}
+import io.truthencode.ddo.core.support.requisite.{FeatRequisiteImpl, RequiresAllOfFeat}
 
 import java.time.Duration
 
 /**
  * Icon Feat Hamstring.png [[https://ddowiki.com/page/Hamstring Hamstring]] Hamstring Active -
- * Special Attack This melee special attack, when successful, reduces the target's movement rate by
- * half for 12 seconds. Some creatures may be immune to the hamstring effect.
+ * Special Attack
+ *
+ * This mêlée special attack, when successful, reduces the target's movement rate by half for 12
+ * seconds. Some creatures may be immune to the hamstring effect.
  *
  * Sneak Attack
  */

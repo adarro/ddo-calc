@@ -18,14 +18,14 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package io.truthencode.ddo.model.abilities
+package io.truthencode.ddo.core.model.abilities
 
 import enumeratum.{Enum, EnumEntry}
 import io.truthencode.ddo.activation.OnToggleEvent
-import io.truthencode.ddo.model.feats.DefensiveCombatStance
-import io.truthencode.ddo.support.SearchPrefix
-import io.truthencode.ddo.support.StringUtils.Extensions
-import io.truthencode.ddo.support.naming.{DisplayName, FriendlyDisplay}
+import io.truthencode.ddo.core.model.feats.DefensiveCombatStance
+import io.truthencode.ddo.core.support.SearchPrefix
+import io.truthencode.ddo.core.StringUtils.Extensions
+import io.truthencode.ddo.core.support.naming.{DisplayName, FriendlyDisplay}
 
 /**
  * Represents an ability that must be granted and activated. This may be as simple as the Attack, a
@@ -108,9 +108,10 @@ object ActiveAbilities extends Enum[ActiveAbilities] with SearchPrefix {
   case object DefensiveFighting
     extends ActiveAbilities with DefensiveCombatStance with OnToggleEvent {
     // Members declared in io. truthencode. ddo. activation. ActivationType
-    override def activations: Seq[io.truthencode.ddo.model.effect.TriggerEvent] = super.activations
+    override def activations: Seq[io.truthencode.ddo.core.model.effect.TriggerEvent] =
+      super.activations
     // Members declared in io. truthencode. ddo. activation. Trigger
-    override def activatableTriggers: Seq[io.truthencode.ddo.model.effect.TriggerEvent] =
+    override def activatableTriggers: Seq[io.truthencode.ddo.core.model.effect.TriggerEvent] =
       super.activatableTriggers
   }
 

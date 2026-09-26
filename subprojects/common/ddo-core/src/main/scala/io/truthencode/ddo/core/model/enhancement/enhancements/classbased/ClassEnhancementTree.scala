@@ -18,9 +18,9 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package io.truthencode.ddo.model.enhancement.enhancements.classbased
+package io.truthencode.ddo.core.model.enhancement.enhancements.classbased
 
-import io.truthencode.ddo.model.enhancement.ClassBasedEnhancements
+import io.truthencode.ddo.core.model.enhancement.ClassBasedEnhancements
 
 trait ClassEnhancementTree {
   self: ClassBasedEnhancements =>

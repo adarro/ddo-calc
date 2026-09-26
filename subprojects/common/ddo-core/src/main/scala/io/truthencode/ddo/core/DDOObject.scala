@@ -20,15 +20,15 @@
  */
 package io.truthencode.ddo.core
 
-import io.truthencode.ddo.model.attribute.{Attribute => Attrib}
-import io.truthencode.ddo.model.item.weapon.{
+import io.truthencode.ddo.core.model.attribute.{Attribute => Attrib}
+import io.truthencode.ddo.core.model.item.weapon.{
   DeliveryType,
   Handedness,
   ProficiencyClass,
   WeaponCategory => wcat
 }
-import io.truthencode.ddo.model.misc.Material
-import io.truthencode.ddo.support.dice.DamageDice
+import io.truthencode.ddo.core.model.misc.Material
+import io.truthencode.ddo.core.support.dice.DamageDice
 
 /**
  * Encapsulates any and all Items and objects within DDO
@@ -63,7 +63,7 @@ object DDOObject {
     upgradeable: UpgradeInfo,
     weaponCategory: Option[wcat],
     weaponType: Option[DeliveryType])
-    extends io.truthencode.ddo.model.item.weapon.Weapon
+    extends io.truthencode.ddo.core.model.item.weapon.Weapon
   case class Clothing()
   case class Jewelery()
   case class Armour()

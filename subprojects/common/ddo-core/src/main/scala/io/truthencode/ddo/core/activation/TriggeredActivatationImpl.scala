@@ -20,7 +20,7 @@
  */
 package io.truthencode.ddo.activation
 
-import io.truthencode.ddo.model.effect.TriggerEvent
+import io.truthencode.ddo.core.model.effect.TriggerEvent
 
 /**
  * Convienience class for creating a triggered activation.

@@ -18,13 +18,13 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package io.truthencode.ddo.model.compendium.monster
+package io.truthencode.ddo.core.model.compendium.monster
 
 import enumeratum.{Enum, EnumEntry}
-import io.truthencode.ddo.model.compendium.types._
+import io.truthencode.ddo.core.model.compendium.types._
 
 import scala.collection.immutable
-
+// TODO: Relegate Monster Race to a basic case class with Repo Backing as we really don't need the overhead
 /**
  * Represents a Monster Race and should essentially match the corresponding Monster Manual entry.
  * This may at some point be used to add default resists / vulnerabilities to calculations. Examples

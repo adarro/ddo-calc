@@ -18,13 +18,13 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package io.truthencode.ddo.support.points
+package io.truthencode.ddo.core.support.points
 
 import enumeratum.{Enum, EnumEntry}
-import io.truthencode.ddo.Abbreviation
-import io.truthencode.ddo.support.SearchPrefix
-import io.truthencode.ddo.support.StringUtils.Extensions
-import io.truthencode.ddo.support.naming.{DisplayName, FriendlyDisplay}
+import io.truthencode.ddo.core.Abbreviation
+import io.truthencode.ddo.core.support.SearchPrefix
+import io.truthencode.ddo.core.StringUtils.Extensions
+import io.truthencode.ddo.core.support.naming.{DisplayName, FriendlyDisplay}
 
 import scala.collection.immutable
 

@@ -18,13 +18,13 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package io.truthencode.ddo.support.requisite
+package io.truthencode.ddo.core.support.requisite
 
-import io.truthencode.ddo.support.requisite.RequirementImplicits.progressionToReq
-import io.truthencode.ddo.support.tree.TreeLike
+import io.truthencode.ddo.core.support.requisite.RequirementImplicits.progressionToReq
+import io.truthencode.ddo.core.support.tree.TreeLike
 
 /**
- * Represents a required amount of points spent (Action, Survival, Epic Destiny Points)
+ * Represents a required number of points spent (Action, Survival, Epic Destiny Points)
  */
 sealed trait ProgressionRequisite {
   self: Requisite =>
@@ -47,7 +47,8 @@ sealed trait ProgressionInTreeRequisite extends ProgressionRequisite {
 /**
  * Base Stackable trait implementation used to initialize when no other has been used.
  * @note
- *   we should be able to create just one of these instead of a Race / Class / Feat etc specific one
+ *   we should be able to create just one of these instead of a Race / Class / Feat etc. specific
+ *   one
  */
 trait ProgressionRequisiteImpl
   extends MustContainImpl[Requirement] with ProgressionInTreeRequisite {

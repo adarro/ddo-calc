@@ -18,7 +18,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package io.truthencode.ddo.model.misc
+package io.truthencode.ddo.core.model.misc
 
 import enumeratum.{Enum, EnumEntry}
 
@@ -39,7 +39,7 @@ object CoolDownPool extends Enum[CoolDownPool] {
 
     /**
      * Used to group shared timer resources. It is strongly recommended to use one of the values in
-     * [[io.truthencode.ddo.model.misc.CoolDownPool]]
+     * [[io.truthencode.ddo.core.model.misc.CoolDownPool]]
      */
     override val coolDownPoolId: String = PoolManyShot
   }
@@ -47,7 +47,7 @@ object CoolDownPool extends Enum[CoolDownPool] {
 
     /**
      * Used to group shared timer resources. It is strongly recommended to use one of the values in
-     * [[io.truthencode.ddo.model.misc.CoolDownPool]]
+     * [[io.truthencode.ddo.core.model.misc.CoolDownPool]]
      */
     override val coolDownPoolId: String = PoolCleave
   }
@@ -55,7 +55,7 @@ object CoolDownPool extends Enum[CoolDownPool] {
 
     /**
      * Used to group shared timer resources. It is strongly recommended to use one of the values in
-     * [[io.truthencode.ddo.model.misc.CoolDownPool]]
+     * [[io.truthencode.ddo.core.model.misc.CoolDownPool]]
      */
     override val coolDownPoolId: String = PoolGreatCleave
   }

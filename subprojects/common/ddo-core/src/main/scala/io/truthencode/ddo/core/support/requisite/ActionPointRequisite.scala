@@ -18,20 +18,20 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package io.truthencode.ddo.support.requisite
+package io.truthencode.ddo.core.support.requisite
 
-import io.truthencode.ddo.support.tree.Ranks
+import io.truthencode.ddo.core.support.tree.Ranks
 
 /**
  * Encapsulates the AP Cost Action Points for each rank. Specifically adds the
- * [[io.truthencode.ddo.support.requisite.ActionPointRequisite#apCostPerRank]] method
+ * [[io.truthencode.ddo.core.support.requisite.ActionPointRequisite#apCostPerRank]] method
  */
 sealed trait ActionPointRequisite {
   self: Requisite & Ranks =>
 
   /**
    * Some enhancements have multiple ranks. This is the cost for each rank. Older versions had
-   * increasing costs which has been streamlined to a linear progression.
+   * increasing costs that have been streamlined to a linear progression.
    * @return
    */
   def apCostPerRank: Int
@@ -45,7 +45,7 @@ trait RequiresActionPoints
   extends ActionPointRequisite with RequiresAllOf[Requirement] with Requisite {
   self: Requisite & Ranks =>
 
-// FIXME: Add actionpoint to req collector
+// FIXME: Add ActionPoint to req collector
   abstract override def allOf: Seq[Requirement] = super.allOf
 
 }

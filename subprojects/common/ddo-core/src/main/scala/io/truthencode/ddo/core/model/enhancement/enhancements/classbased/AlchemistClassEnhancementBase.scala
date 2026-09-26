@@ -18,19 +18,19 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package io.truthencode.ddo.model.enhancement.enhancements.classbased
+package io.truthencode.ddo.core.model.enhancement.enhancements.classbased
 
-import io.truthencode.ddo.model.classes.HeroicCharacterClass
-import io.truthencode.ddo.model.classes.HeroicCharacterClass.Alchemist
-import io.truthencode.ddo.model.enhancement.enhancements.ClassEnhancement
-import io.truthencode.ddo.model.enhancement.{
+import io.truthencode.ddo.core.model.classes.HeroicCharacterClass
+import io.truthencode.ddo.core.model.classes.HeroicCharacterClass.Alchemist
+import io.truthencode.ddo.core.model.enhancement.enhancements.ClassEnhancement
+import io.truthencode.ddo.core.model.enhancement.{
   AlchemistEnhancement,
   Apothecary,
   Bombardier,
   VileChemist
 }
-import io.truthencode.ddo.support.requisite.RequiresPointsAvailable
-import io.truthencode.ddo.support.tree.ClassTrees
+import io.truthencode.ddo.core.support.requisite.RequiresPointsAvailable
+import io.truthencode.ddo.core.support.tree.ClassTrees
 
 trait AlchemistClassEnhancementBase {
   self: ClassEnhancementBase =>

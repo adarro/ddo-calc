@@ -20,7 +20,7 @@
  */
 package io.truthencode.ddo.model.save
 
-import io.truthencode.ddo.support.naming.DisplayName
+import io.truthencode.ddo.core.support.naming.DisplayName
 
 /**
  * Represents the ability to negate or circumvent a given effect.

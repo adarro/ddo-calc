@@ -18,15 +18,15 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package io.truthencode.ddo.model.alignment
+package io.truthencode.ddo.core.model.alignment
 
 import enumeratum.{Enum => SmartEnum, EnumEntry}
-import io.truthencode.ddo.model.alignment.LawAxis.{Chaotic, Lawful, Neutral}
-import io.truthencode.ddo.model.alignment.MoralAxis.{Evil, Good}
-import io.truthencode.ddo.support.SearchPrefix
+import io.truthencode.ddo.core.model.alignment.LawAxis.{Chaotic, Lawful, Neutral}
+import io.truthencode.ddo.core.model.alignment.MoralAxis.{Evil, Good}
+import io.truthencode.ddo.core.support.SearchPrefix
 
 /**
- * Represents the dual axis Alignments
+ * Represents the dual-axis Alignments
  *
  * @param law
  *   The range between Lawful to Chaotic
@@ -34,7 +34,7 @@ import io.truthencode.ddo.support.SearchPrefix
  *   The moral range between Good and evil
  */
 sealed class Alignments(
-  override val law: _root_.io.truthencode.ddo.model.alignment.LawAxis,
+  override val law: _root_.io.truthencode.ddo.core.model.alignment.LawAxis,
   override val moral: MoralAxis
 ) extends EnumEntry with AlignmentCombination
 

@@ -21,13 +21,13 @@
 package io.truthencode.ddo.model.stats
 
 import enumeratum.{Enum, EnumEntry}
-import io.truthencode.ddo.Abbreviation
-import io.truthencode.ddo.model.abilities.{ActiveAbilities, UsingAbilitySearchPrefix}
+import io.truthencode.ddo.core.Abbreviation
+import io.truthencode.ddo.core.model.abilities.{ActiveAbilities, UsingAbilitySearchPrefix}
 import io.truthencode.ddo.model.schools.School
-import io.truthencode.ddo.model.spells.SpellPower
-import io.truthencode.ddo.support.SearchPrefix
-import io.truthencode.ddo.support.StringUtils.Extensions
-import io.truthencode.ddo.support.naming.{DisplayName, FriendlyDisplay, UsingSearchPrefix}
+import io.truthencode.ddo.core.model.spells.SpellPower
+import io.truthencode.ddo.core.support.SearchPrefix
+import io.truthencode.ddo.core.StringUtils.Extensions
+import io.truthencode.ddo.core.support.naming.{DisplayName, FriendlyDisplay, UsingSearchPrefix}
 
 import scala.collection.immutable
 

@@ -18,7 +18,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package io.truthencode.ddo.support.numbers
+package io.truthencode.ddo.core.support.numbers
 
 import enumeratum.{Enum, EnumEntry}
 
@@ -33,7 +33,7 @@ object Numbers extends Enum[Numbers] {
 
   /**
    * Used to amplify a given value. // TODO: Implement Magnitude then change this to a case class
-   * applying [[io.truthencode.ddo.model.effect.Magnitude]]
+   * applying [[io.truthencode.ddo.core.model.effect.Magnitude]]
    */
   case object Magnitude extends Numbers
 

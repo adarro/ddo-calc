@@ -18,10 +18,10 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package io.truthencode.ddo.model.enhancement.enhancements
+package io.truthencode.ddo.core.model.enhancement.enhancements
 
-import io.truthencode.ddo.model.enhancement.enhancements.classbased.BombardierTierTwo
-import io.truthencode.ddo.support.naming.{DisplayName, DisplayProperties, SLAPrefix}
+import io.truthencode.ddo.core.model.enhancement.enhancements.classbased.BombardierTierTwo
+import io.truthencode.ddo.core.support.naming.{DisplayName, DisplayProperties, SLAPrefix}
 
 trait SLARapidCondensation extends BombardierTierTwo with ClassEnhancementImpl with SLAPrefix {
   self: DisplayName & DisplayProperties =>
@@ -37,7 +37,7 @@ trait SLARapidCondensation extends BombardierTierTwo with ClassEnhancementImpl w
 
   /**
    * Some enhancements have multiple ranks. This is the cost for each rank. Older versions had
-   * increasing costs which has been streamlined to a linear progression.
+   * increasing costs that have been streamlined to a linear progression.
    *
    * @return
    */

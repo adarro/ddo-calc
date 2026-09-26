@@ -18,14 +18,14 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package io.truthencode.ddo.model.effect
+package io.truthencode.ddo.core.model.effect
 
 trait Trigger {
   val triggerEvent: TriggerEvent
 }
 
 /**
- * Effect is passive and pervasive
+ * The effect is passive and pervasive
  *
  * The effect is generally active provided you have the Feat / Enhancement or wearing the item
  * granting the effect.

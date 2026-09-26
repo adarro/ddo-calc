@@ -22,7 +22,7 @@ package io.truthencode.ddo.core
 
 import java.net.URLEncoder
 
-import io.truthencode.ddo.support.StringUtils.{Space, UnderScore}
+import io.truthencode.ddo.core.StringUtils.{Space, UnderScore}
 
 import com.typesafe.config.{Config, ConfigFactory}
 import com.typesafe.scalalogging.LazyLogging

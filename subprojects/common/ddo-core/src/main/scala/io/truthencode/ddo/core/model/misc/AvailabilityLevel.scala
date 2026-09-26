@@ -18,10 +18,10 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package io.truthencode.ddo.model.misc
+package io.truthencode.ddo.core.model.misc
 
 import enumeratum.{Enum, EnumEntry}
-import io.truthencode.ddo.Abbreviation
+import io.truthencode.ddo.core.Abbreviation
 
 import scala.collection.immutable.IndexedSeq
 

@@ -18,12 +18,12 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package io.truthencode.ddo.model.feats
+package io.truthencode.ddo.core.model.feats
 
 import io.truthencode.ddo.activation.{AtWillEvent, TriggeredActivationImpl}
 import io.truthencode.ddo.model.religions.Aureon
-import io.truthencode.ddo.support.naming.DisplayProperties
-import io.truthencode.ddo.support.requisite.{FeatRequisiteImpl, RequiresAllOfFeat}
+import io.truthencode.ddo.core.support.naming.DisplayProperties
+import io.truthencode.ddo.core.support.requisite.{FeatRequisiteImpl, RequiresAllOfFeat}
 
 import java.time.Duration
 
@@ -34,7 +34,7 @@ import java.time.Duration
  * of Aureon's wisdom for 24 seconds plus 6 seconds per Religious Lore feat you have.
  *
  * In this state, you gain +4 Wisdom, +3 to Spell Penetration, +2 to your effective level for Turn
- * Undead, +4 to maximum Hit Dice affected when using Turn Undead, and +4 to the total Hit Dice
+ * Undead, +4 to the maximum Hit Dice affected when using Turn Undead, and +4 to the total Hit Dice
  * affected by Turn Undead.
  */
 trait AureonsInstruction

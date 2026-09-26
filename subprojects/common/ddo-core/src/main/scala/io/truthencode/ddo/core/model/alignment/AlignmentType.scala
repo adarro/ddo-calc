@@ -18,12 +18,12 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package io.truthencode.ddo.model.alignment
+package io.truthencode.ddo.core.model.alignment
 
 import enumeratum.{Enum, EnumEntry}
-import io.truthencode.ddo.NoDefault
-import io.truthencode.ddo.enumeration.BitSupport
-import io.truthencode.ddo.support.SearchPrefix
+import io.truthencode.ddo.modeling.NoDefault
+import io.truthencode.ddo.core.enumeration.BitSupport
+import io.truthencode.ddo.core.support.SearchPrefix
 
 import scala.collection.immutable
 

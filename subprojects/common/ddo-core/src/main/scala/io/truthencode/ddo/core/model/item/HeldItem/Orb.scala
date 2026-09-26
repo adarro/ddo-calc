@@ -18,11 +18,11 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package io.truthencode.ddo.model.item.HeldItem
+package io.truthencode.ddo.core.model.item.HeldItem
 
-import io.truthencode.ddo.Wearable
-import io.truthencode.ddo.model.item.WearableItem
-import io.truthencode.ddo.support.slots.WearLocation
+import io.truthencode.ddo.core.Wearable
+import io.truthencode.ddo.core.model.item.WearableItem
+import io.truthencode.ddo.core.support.slots.WearLocation
 
 trait Orb extends WearableItem with Wearable {
 

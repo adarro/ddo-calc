@@ -18,11 +18,11 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package io.truthencode.ddo.model.feats
+package io.truthencode.ddo.core.model.feats
 
-import io.truthencode.ddo.model.attribute.Attribute
+import io.truthencode.ddo.core.model.attribute.Attribute
 import io.truthencode.ddo.model.race.Race
-import io.truthencode.ddo.support.requisite.{
+import io.truthencode.ddo.core.support.requisite.{
   AttributeRequisiteImpl,
   FeatRequisiteImpl,
   RequiresAllOfAttribute,
@@ -31,7 +31,7 @@ import io.truthencode.ddo.support.requisite.{
 
 /**
  * Warlock.png Half-Elf Dilettante: Warlock Passive Able to use wands and scrolls as if you were a
- * level one warlock. Toggle: You deal 1D4 extra Fire damage with attacks and spells. This trigger
+ * level one warlock. Toggle: You deal 1D4 extra Fire damage with attacks and spells. This triggers
  * at most once every two seconds. This toggle is exclusive with Warlock Pact toggles. Half-Elf 13
  * Charisma
  */

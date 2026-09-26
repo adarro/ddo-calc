@@ -18,10 +18,10 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package io.truthencode.ddo.model.item.weapon
+package io.truthencode.ddo.core.model.item.weapon
 
 import enumeratum.{Enum, EnumEntry}
-import io.truthencode.ddo.NoDefault
+import io.truthencode.ddo.modeling.NoDefault
 
 /**
  * used to denote the Delivery method (thrown, launched, hand-held) of a weapon.

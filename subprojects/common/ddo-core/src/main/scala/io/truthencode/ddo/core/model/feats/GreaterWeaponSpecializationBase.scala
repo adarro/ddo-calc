@@ -18,10 +18,10 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package io.truthencode.ddo.model.feats
+package io.truthencode.ddo.core.model.feats
 
-import io.truthencode.ddo.model.classes.HeroicCharacterClass
-import io.truthencode.ddo.support.requisite.{
+import io.truthencode.ddo.core.model.classes.HeroicCharacterClass
+import io.truthencode.ddo.core.support.requisite.{
   ClassRequisiteImpl,
   FeatRequisiteImpl,
   RequiresAllOfClass,
@@ -30,11 +30,11 @@ import io.truthencode.ddo.support.requisite.{
 
 /**
  * Icon Feat Greater Weapon Specialization.png Greater Weapon Specialization Passive Provides an
- * additional +2 bonus to damage rolls with the chosen weapon type and +2 stacking Melee Power or
+ * additional +2 bonus to damage rolls with the chosen weapon type and +2 stacking Mêlée Power or
  * Ranged Power. This bonus stacks with the Weapon Specialization feat.
  *
  * @todo
- *   Weapon Focus Weapon Specialization in same Weapon Type
+ *   Weapon Focus Weapon Specialization in the same Weapon Type
  */
 protected[feats] trait GreaterWeaponSpecializationBase extends WeaponSpecializationBase {
   self: GeneralFeat & RequiresAllOfFeat =>

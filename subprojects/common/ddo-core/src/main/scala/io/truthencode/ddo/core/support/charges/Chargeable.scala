@@ -18,10 +18,10 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package io.truthencode.ddo.support.charges
+package io.truthencode.ddo.core.support.charges
 
 /**
- * Represents an object or ability that has Charges and can be used 'X' amount of times
+ * Represents an object or ability that has Charges and can be used 'X' number of times
  */
 trait Chargeable {
   def charges: Charges

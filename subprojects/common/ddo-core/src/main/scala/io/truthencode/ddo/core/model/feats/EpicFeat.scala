@@ -18,15 +18,15 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package io.truthencode.ddo.model.feats
+package io.truthencode.ddo.core.model.feats
 
 import enumeratum.Enum
-import io.truthencode.ddo.model.effect.features.{Features, FeaturesImpl}
+import io.truthencode.ddo.core.model.effect.features.{Features, FeaturesImpl}
 import io.truthencode.ddo.model.schools.School
-import io.truthencode.ddo.support.EpicLevels
-import io.truthencode.ddo.support.StringUtils.Extensions
-import io.truthencode.ddo.support.naming.{FriendlyDisplay, Prefix}
-import io.truthencode.ddo.support.requisite._
+import io.truthencode.ddo.core.EpicLevels
+import io.truthencode.ddo.core.StringUtils.Extensions
+import io.truthencode.ddo.core.support.naming.{FriendlyDisplay, Prefix}
+import io.truthencode.ddo.core.support.requisite._
 
 import scala.collection.immutable
 

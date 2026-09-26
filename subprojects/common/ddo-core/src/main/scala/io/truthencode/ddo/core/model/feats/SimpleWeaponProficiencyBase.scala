@@ -18,10 +18,10 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package io.truthencode.ddo.model.feats
+package io.truthencode.ddo.core.model.feats
 
-import io.truthencode.ddo.model.item.weapon.SimpleWeapon
-import io.truthencode.ddo.support.requisite.{ClassRequisiteImpl, FeatRequisiteImpl, FreeFeat}
+import io.truthencode.ddo.core.model.item.weapon.SimpleWeapon
+import io.truthencode.ddo.core.support.requisite.{ClassRequisiteImpl, FeatRequisiteImpl, FreeFeat}
 
 /**
  * Icon Feat Simple Weapon Proficiency.png Simple Weapon Proficiency Passive This feat negates the

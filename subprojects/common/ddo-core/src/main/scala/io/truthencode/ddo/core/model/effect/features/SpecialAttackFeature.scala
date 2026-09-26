@@ -18,10 +18,10 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package io.truthencode.ddo.model.effect.features
+package io.truthencode.ddo.core.model.effect.features
 
-import io.truthencode.ddo.model.effect
-import io.truthencode.ddo.model.effect.TriggerEvent
+import io.truthencode.ddo.core.model.effect
+import io.truthencode.ddo.core.model.effect.TriggerEvent
 
 /**
  * Convenience trait to set activation etc for special attacks

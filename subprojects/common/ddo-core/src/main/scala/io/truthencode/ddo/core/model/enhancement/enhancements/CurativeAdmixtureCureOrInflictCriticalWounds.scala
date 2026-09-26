@@ -18,10 +18,10 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package io.truthencode.ddo.model.enhancement.enhancements
+package io.truthencode.ddo.core.model.enhancement.enhancements
 
-import io.truthencode.ddo.model.enhancement.enhancements.classbased.ApothecaryTierFive
-import io.truthencode.ddo.support.StringUtils.Extensions
+import io.truthencode.ddo.core.model.enhancement.enhancements.classbased.ApothecaryTierFive
+import io.truthencode.ddo.core.StringUtils.Extensions
 
 trait CurativeAdmixtureCureOrInflictCriticalWounds
   extends ApothecaryTierFive with ClassEnhancementImpl with CurativeAdmixtureBase {

@@ -36,8 +36,8 @@ application and the database. They are typically used to transfer data between t
 
 Native Objects vary per language.
 
-| Type              | Language | Mutability | 
-|-------------------|----------|------------|
+| Type              | Language | Mutability |
+| ----------------- | -------- | ---------- |
 | Java Record       | Java     | Immutable  |
 | POJO              | Java     | Mutable    |
 | Bean              | Java     | Mutable    |

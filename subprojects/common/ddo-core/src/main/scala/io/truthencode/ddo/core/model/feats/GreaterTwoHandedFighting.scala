@@ -18,16 +18,16 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package io.truthencode.ddo.model.feats
+package io.truthencode.ddo.core.model.feats
 
-import io.truthencode.ddo.model.attribute.Attribute
-import io.truthencode.ddo.support.requisite._
+import io.truthencode.ddo.core.model.attribute.Attribute
+import io.truthencode.ddo.core.support.requisite._
 
 /**
- * Icon Feat Greater Two Handed Fighting.png Greater Two Handed Fighting Passive Increases the
+ * Icon Feat Greater Two-Handed Fighting.png Greater Two-Handed Fighting Passive Increases the
  * damage of glancing blow attacks when wielding a two-handed weapon by an additional 10% for a
  * total of 50%. Also increases the chance for weapon effects to trigger on glancing blows by an
- * additional 3% (9%) and an additional +2 to Melee Power (total of +6). * Improved Two Handed
+ * additional 3% (9%) and an additional +2 to Mêlée Power (total of +6). * Improved Two-Handed
  * Fighting Strength 17 Base Attack Bonus +11
  */
 trait GreaterTwoHandedFighting

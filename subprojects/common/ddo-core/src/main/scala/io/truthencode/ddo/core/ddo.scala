@@ -18,9 +18,9 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package io.truthencode
+package io.truthencode.ddo.core
 
-package object ddo {
+package object core {
   implicit class EmpoweredDouble(d: Double) {
     def ~^(e: Double): Double = Math.pow(d, e) // scalastyle:off method.name
   }

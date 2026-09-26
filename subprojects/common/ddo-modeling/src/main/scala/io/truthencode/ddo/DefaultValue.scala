@@ -18,7 +18,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package io.truthencode.ddo
+package io.truthencode.ddo.modeling
 
 /**
  * Used to supply some default value or None if there is no default.

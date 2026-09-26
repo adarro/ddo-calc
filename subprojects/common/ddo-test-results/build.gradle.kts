@@ -5,7 +5,11 @@ plugins {
     id("buildlogic.common-conventions")
 //    `jvm-test-suite`
     id("test-report-aggregation")
+    id("jacoco-report-aggregation")
 }
+//displayName =  "Test Results"
+description = "Utility class for aggregating Reports"
+
 
 dependencies {
     // projectList().map { it -> testReportAggregation(project("$it")) }
@@ -14,10 +18,12 @@ dependencies {
     testReportAggregation(project(":ddo-core"))
     testReportAggregation(project(":ddo-etl"))
     testReportAggregation(project(":ddo-modeling"))
-//    testReportAggregation(project(":ddo-platform"))
-//    testReportAggregation(project(":ddo-platform-kotlin"))
-//    testReportAggregation(project(":ddo-platform-scala"))
     testReportAggregation(project(":ddo-util"))
+    jacocoAggregation(project(":ddo-antlr"))
+    jacocoAggregation(project(":ddo-core"))
+    jacocoAggregation(project(":ddo-etl"))
+    jacocoAggregation(project(":ddo-modeling"))
+    jacocoAggregation(project(":ddo-util"))
     // acceptanceTestReportAggregation(project(":ddo-core"))
 }
 
@@ -48,9 +54,7 @@ dependencies {
 reporting {
     @Suppress("UnstableApiUsage")
     reports {
-        val testAggregateTestReport =
-            create<AggregateTestReport>("aggregateTestReporting") {
-//            testType.set(TestSuiteType.UNIT_TEST)
+        create<AggregateTestReport>("aggregateTestReporting") {
                 testSuiteName.set("test")
             }
         create<AggregateTestReport>("aggregateAcceptanceTestReporting") {
@@ -59,6 +63,13 @@ reporting {
         create<AggregateTestReport>("aggregateScoverageTestReporting") {
             testSuiteName.set("scoverageTest")
         }
+        create<JacocoCoverageReport>("testCodeCoverageReport") {
+            testSuiteName.set("test")
+        }
+        create<JacocoCoverageReport>("acceptanceTestCodeCoverageReport") {
+            testSuiteName.set("acceptanceTest")
+        }
+
     }
 }
 // sonar {

@@ -34,7 +34,7 @@ import scala.language.reflectiveCalls
 
 class DDoWikiScrapingIT extends AnyFunSpec with Matchers with MockitoSugar with LazyLogging {
   lazy val defaultEncoding = "UTF-8"
-  lazy val baseUri = "http://www.ddowiki.com"
+  lazy val baseUri = "https://www.ddowiki.com"
   lazy val nestedPath = "Drow_Scimitar_of_the_Weapon_Master.html"
   lazy val simplePath = "Elyd_Edge.html"
   lazy val multiLevelPath = ""

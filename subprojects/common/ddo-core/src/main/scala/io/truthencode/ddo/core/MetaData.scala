@@ -4,7 +4,7 @@
  * Copyright 2015-2021
  *
  * Author: Andre White.
- * FILE: Proficiency.scala
+ * FILE: MetaData.scala
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -18,6 +18,11 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package io.truthencode.ddo
+package io.truthencode.ddo.core
 
-trait Proficiency
+// Base Enums and skeleton objects
+/**
+ * TBD: :Used for Meta and potentially internal transformations.
+ */
+trait MetaData
+// armour bonus / enhancement bonus

@@ -4,7 +4,7 @@
  * Copyright 2015-2021
  *
  * Author: Andre White.
- * FILE: UpgradeInfo.scala
+ * FILE: InventorySection.scala
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -18,12 +18,27 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package io.truthencode.ddo
+package io.truthencode.ddo.core
+
+import enumeratum.{Enum, EnumEntry}
 
 /**
- * Provides information on whether a given object is upgradeable and may contain additional
- * information on how to upgrade it.
+ * Represents a location where an item is.
  */
-trait UpgradeInfo {
-  def text: Option[String]
+sealed trait InventorySection extends EnumEntry with NoDefault[InventorySection]
+object InventorySection extends Enum[InventorySection] {
+  def values = findValues
+
+  case object ActiveInventory extends InventorySection
+
+  case object CharacterBank extends InventorySection
+
+  case object SharedBank extends InventorySection
+
+  /**
+   * No current direct implementation plans for auction, just a place holder for the code.
+   */
+  case object Auction extends InventorySection
+
+  case object Equipped extends InventorySection
 }

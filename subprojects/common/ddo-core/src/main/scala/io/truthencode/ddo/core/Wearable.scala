@@ -4,7 +4,7 @@
  * Copyright 2015-2025
  *
  * Author: Andre White.
- * FILE: Storable.scala
+ * FILE: Wearable.scala
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -18,15 +18,15 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package io.truthencode.ddo
-
+package io.truthencode.ddo.core
 import enumeratum.EnumEntry
-import io.truthencode.ddo.enumeration.EnumExtensions._
+import io.truthencode.ddo.enumeration.EnumExtensions.{E2, EnumCompanionOps}
+import io.truthencode.ddo.support.slots.WearLocation
 
 /**
- * Indicates the given object can be stored in some sort of bank or container.
+ * Indicates the given object can be equipped / wielded etc.
  */
-trait Storable {
+trait Wearable {
 
   /**
    * A list of allowed location slots
@@ -34,10 +34,10 @@ trait Storable {
    * Slots are determined by default using the allowedWearLocationFlags bitmask.
    */
   lazy val equipmentSlot: Seq[EnumEntry] = {
-    /* WearLocation.withName("blah").foo*/
-    StoreLocation.fromMask(allowedWearLocationFlags) match {
+    WearLocation.withName("blah").foo
+    WearLocation.fromMask(allowedWearLocationFlags) match {
       case Some(x: Seq[EnumEntry]) => x
-      case _ => List[StoreLocation & Product & Serializable]()
+      case _ => List[WearLocation & Product & Serializable]()
     }
   }
 

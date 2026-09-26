@@ -4,7 +4,7 @@
  * Copyright 2015-2021
  *
  * Author: Andre White.
- * FILE: StackingRule.scala
+ * FILE: CriticalProfile.scala
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -18,26 +18,35 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package io.truthencode.ddo
+package io.truthencode.ddo.core
 
 /**
- * Encapsulates the stacking rules for purposes of adding / combining bonuses from multiple sources.
+ * Holds range information used to determine when critical hits occur and the bonus to apply.
  */
-sealed trait StackingRule
+trait CriticalProfile {
 
-/**
- * Benefits from this stack from Any source, including itself.
- * @example
- *   Mythic bonuses
- */
-trait StacksWithAny extends StackingRule
+  /**
+   * Lower bound
+   */
+  val min: Int
 
-/**
- * The most common rule. Multiple effects will not stack and only the highest applies.
- */
-trait NonStacking extends StackingRule
+  /**
+   * Upper bound
+   */
+  val max: Int
 
-/**
- * Miscellaneous bonuses coming from the same source don't stack (ie - 2 paladins' aura).
- */
-trait StacksWithUnique extends StackingRule
+  /**
+   * Bonus multiplier when a roll is between given range (inclusive)
+   */
+  val multiplier: Int
+
+  /**
+   * Creates a range using the given min / max (inclusive)
+   */
+  val toRange = Range(min, max).inclusive
+
+  /**
+   * Determines if a given roll would be considered 'Critical'
+   */
+  def isCritical(roll: Int): Boolean = toRange.contains(roll)
+}

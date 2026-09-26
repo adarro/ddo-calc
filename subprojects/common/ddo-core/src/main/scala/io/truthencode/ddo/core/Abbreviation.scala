@@ -4,7 +4,7 @@
  * Copyright 2015-2021
  *
  * Author: Andre White.
- * FILE: Library.scala
+ * FILE: Abbreviation.scala
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -18,8 +18,20 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package io.truthencode.ddo.modeling
+package io.truthencode.ddo.core
 
-class Library {
-  def someLibraryMethod(): Boolean = true
+/**
+ * Allows given object to have / use an abbreviation
+ */
+trait Abbreviation {
+
+  /**
+   * The short form of the word
+   */
+  val abbr: String
+
+  /**
+   * Expands the abbr to its full value
+   */
+  def toFullWord: String
 }

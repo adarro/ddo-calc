@@ -81,6 +81,7 @@ this list isn't immediately available in the configuration phase, so we have to 
 from a manually run listProjects task
  */
 tasks.register("listProjects") {
+    notCompatibleWithConfigurationCache("A one-off utility task most useful when changing the build which negates the task")
     description = "print out report aggregation projects"
     group = "utility"
     doLast {
@@ -117,7 +118,8 @@ fun findProjects(
     if (!project.name
             .contains("test") &&
         project.name.startsWith("ddo") &&
-        project != project.rootProject
+        project != project.rootProject &&
+        project.plugins.hasPlugin("java") // plugins should be applied at this point
     ) {
         writer.add(":${project.name}")
         logger.info("found ${project.childProjects.size} child projects in ${project.name}")

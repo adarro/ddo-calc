@@ -18,11 +18,11 @@
 package io.truthencode.ddo.core.model.feats;
 
 import org.concordion.api.FullOGNL;
-import org.concordion.integration.junit4.ConcordionRunner;
+import org.concordion.api.ConcordionFixture;
 import org.junit.runner.RunWith;
 
 @FullOGNL
-@RunWith(ConcordionRunner.class)
+@ConcordionFixture
 public class ManyShotSpec extends IndividualFeatFixture {
 
 

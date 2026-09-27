@@ -20,7 +20,7 @@ package io.truthencode.ddo.core.model.feats;
 import org.concordion.api.FullOGNL;
 import org.concordion.api.option.ConcordionOptions;
 import org.concordion.api.option.MarkdownExtensions;
-import org.concordion.integration.junit4.ConcordionRunner;
+import org.concordion.api.ConcordionFixture;
 import org.junit.runner.RunWith;
 
 @FullOGNL
@@ -31,6 +31,6 @@ import org.junit.runner.RunWith;
         MarkdownExtensions.WIKILINKS,
         MarkdownExtensions.AUTOLINKS,
         MarkdownExtensions.TASKLISTITEMS})
-@RunWith(ConcordionRunner.class)
+@ConcordionFixture
 public class GeneralFeatsSpec extends GeneralFeatRelatedFixture {
 }

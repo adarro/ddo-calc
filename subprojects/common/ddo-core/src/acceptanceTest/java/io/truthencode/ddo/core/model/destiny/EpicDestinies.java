@@ -23,12 +23,12 @@ import com.vladsch.flexmark.util.data.DataSet;
 import com.vladsch.flexmark.util.data.MutableDataSet;
 import com.vladsch.flexmark.util.misc.Extension;
 import org.concordion.api.option.FlexmarkOptions;
-import org.concordion.integration.junit4.ConcordionRunner;
+import org.concordion.api.ConcordionFixture;
 import org.junit.runner.RunWith;
 
 import java.util.List;
 
-@RunWith(ConcordionRunner.class)
+@ConcordionFixture
 public class EpicDestinies {
     private final transient List<Extension> e = List.of(EmojiExtension.create());
     @FlexmarkOptions

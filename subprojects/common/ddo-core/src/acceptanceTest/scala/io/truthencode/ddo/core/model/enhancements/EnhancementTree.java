@@ -17,10 +17,10 @@
  */
 package io.truthencode.ddo.core.model.enhancements;
 
-import org.concordion.integration.junit4.ConcordionRunner;
+import org.concordion.api.ConcordionFixture;
 import org.junit.runner.RunWith;
 
-@RunWith(ConcordionRunner.class)
+@ConcordionFixture
 public class EnhancementTree {
 // @ConcordionResources(value = {"../../../../../../resources/acceptanceTest/css/*.css","../../../../../../resources/acceptanceTest/images/*.png"},includeDefaultStyling = false,insertType = ConcordionResources.InsertType.EMBEDDED)
     // ../../../../../../../resources/acceptanceTest/

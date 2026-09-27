@@ -17,9 +17,9 @@
  */
 package io.truthencode.ddo.core.model.feats;
 
-import org.concordion.integration.junit4.ConcordionRunner;
+import org.concordion.api.ConcordionFixture;
 import org.junit.runner.RunWith;
 
-@RunWith(ConcordionRunner.class)
+@ConcordionFixture
 public class DodgeSpec {
 }

@@ -27,8 +27,8 @@ import io.truthencode.ddo.core.model.attribute.Attribute
 import io.truthencode.ddo.core.model.classes.HeroicCharacterClass
 import io.truthencode.ddo.core.model.favor.FavorPatron
 import io.truthencode.ddo.core.model.feats.Feat
-import io.truthencode.ddo.model.race.Race
-import io.truthencode.ddo.model.skill.Skill
+import io.truthencode.ddo.core.model.race.Race
+import io.truthencode.ddo.core.model.skill.Skill
 import io.truthencode.ddo.core.StringUtils.Extensions
 import io.truthencode.ddo.core.support.naming.{DisplayName, Prefix}
 import io.truthencode.ddo.core.support.points.{Progression, SpendablePoints}

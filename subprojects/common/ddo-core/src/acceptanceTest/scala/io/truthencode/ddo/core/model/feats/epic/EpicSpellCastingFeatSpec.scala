@@ -4,7 +4,7 @@
  * Copyright 2015-2021
  *
  * Author: Andre White.
- * FILE: ElfFeatSpec.scala
+ * FILE: EpicSpellCastingFeatSpec.scala
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -18,16 +18,17 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package io.truthencode.ddo.core.model.feats.races
+package io.truthencode.ddo.core.model.feats.epic
 
-import io.truthencode.ddo.core.model.feats.{ConcordionResourcesBundleSpec, RaceSupport}
-import io.truthencode.ddo.model.race.Race
+import io.truthencode.ddo.core.model.feats.{EpicFeat, EpicFeatFeatDisplayHelper, SpellCastingPassive}
+import org.concordion.api.FullOGNL
 import org.concordion.integration.junit4.ConcordionRunner
 import org.junit.runner.RunWith
 
-// @ConcordionResources(Array("/images/thumb/*.png", "/images/*.png"))
+@FullOGNL
 @RunWith(classOf[ConcordionRunner])
-class ElfFeatSpec extends ConcordionResourcesBundleSpec with RaceSupport {
-  override val raceId = Race.Elf
-
+class EpicSpellCastingFeatSpec extends EpicFeatFeatDisplayHelper {
+  override val filterByCategory: PartialFunction[Entry, EpicFeat] = { case x: SpellCastingPassive =>
+    x.asInstanceOf[EpicFeat]
+  }
 }

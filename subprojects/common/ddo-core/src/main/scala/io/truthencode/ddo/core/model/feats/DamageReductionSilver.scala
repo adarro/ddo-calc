@@ -22,7 +22,7 @@ package io.truthencode.ddo.core.model.feats
 
 import io.truthencode.ddo.core.model.classes.HeroicCharacterClass
 import io.truthencode.ddo.core.model.classes.HeroicCharacterClass.FavoredSoul
-import io.truthencode.ddo.model.religions.{Amaunator, SilverFlame, SovereignHost}
+import io.truthencode.ddo.core.model.religions.{Amaunator, SilverFlame, SovereignHost}
 import io.truthencode.ddo.core.support.requisite.{
   FeatRequisiteImpl,
   RequiresAllOfClass,

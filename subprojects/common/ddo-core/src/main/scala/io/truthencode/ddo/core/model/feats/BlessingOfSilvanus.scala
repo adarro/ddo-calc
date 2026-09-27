@@ -21,7 +21,7 @@
 package io.truthencode.ddo.core.model.feats
 
 import io.truthencode.ddo.activation.{OnToggleEvent, TriggeredActivationImpl}
-import io.truthencode.ddo.model.religions.Silvanus
+import io.truthencode.ddo.core.model.religions.Silvanus
 import io.truthencode.ddo.core.support.requisite.{FeatRequisiteImpl, RequiresAllOfFeat}
 
 import java.time.Duration

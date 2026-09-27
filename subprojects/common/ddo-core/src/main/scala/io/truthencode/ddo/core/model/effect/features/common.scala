@@ -22,7 +22,7 @@ package io.truthencode.ddo.core.model.effect.features
 
 import io.truthencode.ddo.api.model.effect.DetailedEffect
 import io.truthencode.ddo.core.enhancement.BonusType
-import io.truthencode.ddo.model.skill.{Skill, UsingSkillSearchPrefix}
+import io.truthencode.ddo.core.model.skill.{Skill, UsingSkillSearchPrefix}
 import io.truthencode.ddo.core.StringUtils.IntExtensions
 import io.truthencode.ddo.core.model.effect.{ParameterModifier, PartModifier, SourceInfo}
 

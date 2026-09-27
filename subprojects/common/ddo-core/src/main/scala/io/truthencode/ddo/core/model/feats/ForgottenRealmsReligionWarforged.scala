@@ -20,8 +20,8 @@
  */
 package io.truthencode.ddo.core.model.feats
 
-import io.truthencode.ddo.model.race.Race
-import io.truthencode.ddo.model.race.Race.Warforged
+import io.truthencode.ddo.core.model.race.Race
+import io.truthencode.ddo.core.model.race.Race.Warforged
 import io.truthencode.ddo.core.support.requisite.{RaceRequisiteImpl, RequiresAllOfRace}
 
 /**

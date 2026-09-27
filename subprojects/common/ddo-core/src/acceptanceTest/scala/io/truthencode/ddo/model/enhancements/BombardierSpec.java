@@ -34,6 +34,4 @@ public class BombardierSpec extends JEnhancementDisplayHelper {
         setCurrentTier(TEXT);
         return getCurrentTier();
     }
-
-
 }

@@ -18,11 +18,11 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package io.truthencode.ddo.model.religions
+package io.truthencode.ddo.core.model.religions
 
 import enumeratum.{Enum, EnumEntry}
 import io.truthencode.ddo.core.model.item.weapon.{FavoredWeapon, WeaponCategory}
-import io.truthencode.ddo.model.worlds.{Eberron, ForgottenRealms, HomeWorld}
+import io.truthencode.ddo.core.model.worlds.{Eberron, ForgottenRealms, HomeWorld}
 import io.truthencode.ddo.core.StringUtils.Extensions
 import io.truthencode.ddo.core.support.naming.{DisplayName, FriendlyDisplay}
 

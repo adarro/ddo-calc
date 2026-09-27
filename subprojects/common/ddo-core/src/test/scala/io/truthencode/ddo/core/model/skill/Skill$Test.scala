@@ -17,7 +17,7 @@
  */
 package io.truthencode.ddo.core.model.skill
 
-import io.truthencode.ddo.model.skill.Skill
+import io.truthencode.ddo.core.model.skill.Skill
 import org.scalatest.funspec.AnyFunSpec
 import org.scalatest.matchers.should.Matchers
 

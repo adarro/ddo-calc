@@ -15,7 +15,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package io.truthencode.ddo.model.feats.classes;
+package io.truthencode.ddo.core.model.feats.classes;
 
 import org.concordion.api.FullOGNL;
 import org.concordion.integration.junit4.ConcordionRunner;
@@ -24,6 +24,10 @@ import org.junit.runner.RunWith;
 @FullOGNL
 @RunWith(ConcordionRunner.class)
 public class MonkClassFeatSpec extends io.truthencode.ddo.core.model.feats.classes.MonkJavaHelperFeat {
+    
+private void foo() {
+    
+}
     // This wrapper class is no longer needed.
 //    MonkJavaHelper helper = new MonkJavaHelper() {
 //        @Override

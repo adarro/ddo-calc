@@ -4,7 +4,7 @@
  * Copyright 2015-2025
  *
  * Author: Andre White.
- * FILE: package.scala
+ * FILE: common.scala
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -28,8 +28,8 @@ import io.truthencode.ddo.core.model.classes.HeroicCharacterClass
 import io.truthencode.ddo.core.model.enhancement.enhancements.ClassEnhancement
 import io.truthencode.ddo.core.model.favor.FavorPatron
 import io.truthencode.ddo.core.model.feats.{ClassFeat, Feat, GeneralFeat, RacialFeat}
-import io.truthencode.ddo.model.race.Race
-import io.truthencode.ddo.model.skill.Skill
+import io.truthencode.ddo.core.model.race.Race
+import io.truthencode.ddo.core.model.skill.Skill
 import io.truthencode.ddo.core.support.points.SpendablePoints
 import io.truthencode.ddo.core.support.requisite.Requirement.*
 import io.truthencode.ddo.core.support.tree.TreeLike

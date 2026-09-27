@@ -20,7 +20,7 @@
  */
 package io.truthencode.ddo.core.model.feats
 
-import io.truthencode.ddo.model.religions.{Religion, SilverFlame}
+import io.truthencode.ddo.core.model.religions.{Religion, SilverFlame}
 
 /**
  * Created by adarr on 5/2/2017.

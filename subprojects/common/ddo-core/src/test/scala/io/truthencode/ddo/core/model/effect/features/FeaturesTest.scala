@@ -24,7 +24,7 @@ import com.typesafe.scalalogging.LazyLogging
 import io.truthencode.ddo.core.model.effect.Feature.printFeature
 import io.truthencode.ddo.core.model.effect.{Feature, SourceInfo}
 import io.truthencode.ddo.core.model.feats.{Feat, GeneralFeat}
-import io.truthencode.ddo.model.stats.BasicStat
+import io.truthencode.ddo.core.model.stats.BasicStat
 import org.scalatest.OptionValues.convertOptionToValuable
 import org.scalatest.funspec.AnyFunSpec
 import org.scalatest.matchers.must.Matchers.defined

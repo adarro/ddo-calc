@@ -21,8 +21,8 @@
 package io.truthencode.ddo.core.model.alignment
 
 import io.truthencode.ddo.core.model.attribute.Attribute
-import io.truthencode.ddo.model.skill.Skill
-import io.truthencode.ddo.model.stats.StatItem
+import io.truthencode.ddo.core.model.skill.Skill
+import io.truthencode.ddo.core.model.stats.StatItem
 
 trait SkillStat extends StatItem[Skill, Int] {
 

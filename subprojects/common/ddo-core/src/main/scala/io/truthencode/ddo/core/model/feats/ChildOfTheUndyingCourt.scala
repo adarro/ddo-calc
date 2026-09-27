@@ -20,7 +20,7 @@
  */
 package io.truthencode.ddo.core.model.feats
 
-import io.truthencode.ddo.model.religions.UndyingCourt
+import io.truthencode.ddo.core.model.religions.UndyingCourt
 import io.truthencode.ddo.core.support.requisite.{FeatRequisiteImpl, RequiresAllOfFeat}
 
 /**

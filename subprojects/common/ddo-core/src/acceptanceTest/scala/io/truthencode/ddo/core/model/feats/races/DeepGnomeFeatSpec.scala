@@ -4,7 +4,7 @@
  * Copyright 2015-2021
  *
  * Author: Andre White.
- * FILE: EpicRangedCombatFeatSpec.scala
+ * FILE: DeepGnomeFeatSpec.scala
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -18,20 +18,14 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package io.truthencode.ddo.core.model.feats.epic
+package io.truthencode.ddo.core.model.feats.races
 
-import io.truthencode.ddo.core.model.feats.{
-  EpicFeat,
-  EpicFeatFeatDisplayHelper,
-  RangedCombatPassive
-}
+import io.truthencode.ddo.core.model.feats.RaceSupport
+import io.truthencode.ddo.core.model.race.Race
 import org.concordion.integration.junit4.ConcordionRunner
 import org.junit.runner.RunWith
 
 @RunWith(classOf[ConcordionRunner])
-class EpicRangedCombatFeatSpec extends EpicFeatFeatDisplayHelper {
-
-  override val filterByCategory: PartialFunction[Entry, EpicFeat] = { case x: RangedCombatPassive =>
-    x.asInstanceOf[EpicFeat]
-  }
+class DeepGnomeFeatSpec extends RaceSupport {
+  override val raceId: Race = Race.DeepGnome
 }

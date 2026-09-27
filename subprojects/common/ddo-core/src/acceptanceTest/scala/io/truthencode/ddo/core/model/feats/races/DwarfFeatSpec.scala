@@ -4,7 +4,7 @@
  * Copyright 2015-2021
  *
  * Author: Andre White.
- * FILE: SunElfFeatSpec.scala
+ * FILE: DwarfFeatSpec.scala
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -21,11 +21,12 @@
 package io.truthencode.ddo.core.model.feats.races
 
 import io.truthencode.ddo.core.model.feats.RaceSupport
-import io.truthencode.ddo.model.race.Race
+import io.truthencode.ddo.core.model.race.Race
 import org.concordion.integration.junit4.ConcordionRunner
 import org.junit.runner.RunWith
 
 @RunWith(classOf[ConcordionRunner])
-class SunElfFeatSpec extends RaceSupport {
-  override val raceId: Race = Race.Morninglord
+class DwarfFeatSpec extends RaceSupport {
+  override val raceId: Race = Race.Dwarf
+
 }

@@ -20,7 +20,7 @@
  */
 package io.truthencode.ddo.core.model.feats
 
-import io.truthencode.ddo.model.religions.{LordOfBlades, Religion}
+import io.truthencode.ddo.core.model.religions.{LordOfBlades, Religion}
 
 /**
  * Created by adarr on 5/2/2017.

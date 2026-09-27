@@ -21,14 +21,14 @@
 package io.truthencode.ddo.core.model.feats
 
 import com.typesafe.scalalogging.LazyLogging
-import io.truthencode.ddo.model.DisplayHelper
 import io.truthencode.ddo.core.model.feats.classes.ChargeSupport
 import io.truthencode.ddo.core.support.charges.Chargeable
-import io.truthencode.ddo.core.support.requisite._
+import io.truthencode.ddo.core.support.requisite.*
+import io.truthencode.ddo.model.DisplayHelper
 
 import java.util
 import scala.beans.BeanProperty
-import scala.jdk.CollectionConverters._
+import scala.jdk.CollectionConverters.*
 
 class IndividualFeatFixture extends DisplayHelper with ChargeSupport with LazyLogging {
   override val displayEnum: E = Feat

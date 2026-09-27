@@ -21,7 +21,7 @@
 package io.truthencode.ddo.core.model.feats
 
 import io.truthencode.ddo.activation.{OnSummon, TriggeredActivationImpl}
-import io.truthencode.ddo.model.religions.Vulkoor
+import io.truthencode.ddo.core.model.religions.Vulkoor
 import io.truthencode.ddo.core.support.requisite.{FeatRequisiteImpl, RequiresAllOfFeat}
 
 import java.time.Duration

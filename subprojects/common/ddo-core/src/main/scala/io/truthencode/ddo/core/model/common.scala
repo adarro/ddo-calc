@@ -4,7 +4,7 @@
  * Copyright 2015-2021
  *
  * Author: Andre White.
- * FILE: ShardarkaiFeatSpec.scala
+ * FILE: common.scala
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -18,14 +18,24 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package io.truthencode.ddo.core.model.feats.races
+package io.truthencode.ddo.core.model
 
-import io.truthencode.ddo.core.model.feats.RaceSupport
-import io.truthencode.ddo.model.race.Race
-import org.concordion.integration.junit4.ConcordionRunner
-import org.junit.runner.RunWith
+import java.time.Duration
 
-@RunWith(classOf[ConcordionRunner])
-class ShardarkaiFeatSpec extends RaceSupport {
-  override val raceId: Race = Race.Shadarkai
-}
+/**
+ * Created by adarr on 1/27/2017.
+ */
+
+/* Global Defaults */
+final val GlobalMinimumCoolDown = Duration.ofSeconds(1)
+
+/* icky unknowns as of yet */
+/**
+ * Used to provide a default value for under documented / unknown values
+ */
+@deprecated(
+  message =
+    "This is a place holder for cooldowns etc that are undocumented or unknown and should be removed in a later version",
+  "ddo-core 0.0.1"
+)
+final val UnknownDuration = Duration.ofSeconds(5)

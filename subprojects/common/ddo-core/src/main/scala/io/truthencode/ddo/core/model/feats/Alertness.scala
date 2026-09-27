@@ -22,8 +22,8 @@ package io.truthencode.ddo.core.model.feats
 
 import io.truthencode.ddo.core.enhancement.BonusType
 import io.truthencode.ddo.core.model.effect.features.{FeaturesImpl, SkillFeature}
-import io.truthencode.ddo.model.skill.Skill
-import io.truthencode.ddo.model.skill.Skill.{Listen, Spot}
+import io.truthencode.ddo.core.model.skill.Skill
+import io.truthencode.ddo.core.model.skill.Skill.{Listen, Spot}
 import io.truthencode.ddo.core.support.requisite.{FeatRequisiteImpl, FreeFeat}
 
 /**

@@ -24,7 +24,7 @@ import com.typesafe.scalalogging.LazyLogging
 import enumeratum.{Enum, EnumEntry}
 import io.truthencode.ddo.core.model.effect.SourceInfo
 import io.truthencode.ddo.core.model.effect.features.Features
-import io.truthencode.ddo.model.race.Race
+import io.truthencode.ddo.core.model.race.Race
 import io.truthencode.ddo.core.StringUtils.Extensions
 import io.truthencode.ddo.core.support.naming.{DisplayName, FriendlyDisplay}
 import io.truthencode.ddo.core.support.requisite._

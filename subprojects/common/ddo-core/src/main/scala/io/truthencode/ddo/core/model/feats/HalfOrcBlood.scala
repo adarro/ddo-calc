@@ -20,7 +20,7 @@
  */
 package io.truthencode.ddo.core.model.feats
 
-import io.truthencode.ddo.model.race.Race
+import io.truthencode.ddo.core.model.race.Race
 import io.truthencode.ddo.core.StringUtils.Extensions
 import io.truthencode.ddo.core.support.naming.Prefix
 import io.truthencode.ddo.core.support.requisite.{

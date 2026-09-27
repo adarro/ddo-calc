@@ -18,7 +18,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package io.truthencode.ddo.model.skill
+package io.truthencode.ddo.core.model.skill
 
 import enumeratum.{Enum, EnumEntry}
 import io.truthencode.ddo.activation.{

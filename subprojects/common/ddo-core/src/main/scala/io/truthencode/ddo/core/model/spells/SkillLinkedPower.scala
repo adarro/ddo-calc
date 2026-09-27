@@ -21,7 +21,7 @@
 package io.truthencode.ddo.core.model.spells
 
 import io.truthencode.ddo.model.meta.Linked
-import io.truthencode.ddo.model.skill.Skill
+import io.truthencode.ddo.core.model.skill.Skill
 
 trait SkillLinkedPower extends Linked {
   def linkedSkill: Skill

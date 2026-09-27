@@ -15,16 +15,22 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package io.truthencode.ddo.model.feats;
+package io.truthencode.ddo.core.model.feats;
 
-import io.truthencode.ddo.core.model.feats.IndividualFeatFixture;
 import org.concordion.api.FullOGNL;
+import org.concordion.api.option.ConcordionOptions;
+import org.concordion.api.option.MarkdownExtensions;
 import org.concordion.integration.junit4.ConcordionRunner;
 import org.junit.runner.RunWith;
 
 @FullOGNL
+//@Extensions(Array(classOf[EmbedExtension], classOf[CollapseOutputExtension]))
+@ConcordionOptions(
+    declareNamespaces = {"ext", "urn:concordion-extensions:2010"},
+    markdownExtensions = {
+        MarkdownExtensions.WIKILINKS,
+        MarkdownExtensions.AUTOLINKS,
+        MarkdownExtensions.TASKLISTITEMS})
 @RunWith(ConcordionRunner.class)
-public class ManyShotSpec extends IndividualFeatFixture {
-
-
+public class GeneralFeatsSpec extends GeneralFeatRelatedFixture {
 }

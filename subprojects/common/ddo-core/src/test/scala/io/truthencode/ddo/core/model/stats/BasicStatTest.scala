@@ -21,7 +21,7 @@
 package io.truthencode.ddo.core.model.stats
 
 import com.typesafe.scalalogging.LazyLogging
-import io.truthencode.ddo.model.stats.{BasicStat, MissChance}
+import io.truthencode.ddo.core.model.stats.{BasicStat, MissChance}
 import org.scalatest.funspec.AnyFunSpec
 import org.scalatest.matchers.should.Matchers
 

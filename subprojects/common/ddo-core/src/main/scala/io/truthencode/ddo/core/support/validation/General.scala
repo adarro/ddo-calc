@@ -23,7 +23,7 @@ package io.truthencode.ddo.core.support.validation
 import io.truthencode.ddo.core.enhancement.BonusType
 import io.truthencode.ddo.core.model.effect.{EffectCategories, TriggerEvent}
 import io.truthencode.ddo.core.model.spells.SpellPower
-import io.truthencode.ddo.model.stats.BasicStat
+import io.truthencode.ddo.core.model.stats.BasicStat
 import zio.prelude.Validation
 
 def validateName(name: String): Validation[String, String] =

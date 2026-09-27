@@ -22,7 +22,7 @@ package io.truthencode.ddo.core.model.feats
 
 import io.truthencode.ddo.activation.{AtWillEvent, TriggeredActivationImpl}
 import io.truthencode.ddo.core.model.misc.DefaultCoolDown
-import io.truthencode.ddo.model.religions.SovereignHost
+import io.truthencode.ddo.core.model.religions.SovereignHost
 import io.truthencode.ddo.core.support.requisite.{FeatRequisiteImpl, RequiresAllOfFeat}
 
 /**

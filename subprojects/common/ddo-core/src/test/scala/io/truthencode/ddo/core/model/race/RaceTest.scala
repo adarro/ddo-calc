@@ -20,7 +20,7 @@
  */
 package io.truthencode.ddo.core.model.race
 
-import io.truthencode.ddo.model.race.{Race, RaceFamily}
+import io.truthencode.ddo.core.model.race.{Race, RaceFamily}
 import org.scalatest.funspec.AnyFunSpec
 import org.scalatest.matchers.should.Matchers
 

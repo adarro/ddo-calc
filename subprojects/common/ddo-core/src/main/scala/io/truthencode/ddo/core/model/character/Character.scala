@@ -26,9 +26,9 @@ import io.truthencode.ddo.core.model.destiny.EpicDestiny
 import io.truthencode.ddo.core.model.enhancement.Enhancement
 import io.truthencode.ddo.core.model.feats.Feat
 import io.truthencode.ddo.core.model.item.WearableItem
-import io.truthencode.ddo.model.race.Race
-import io.truthencode.ddo.model.skill.Skill
-import io.truthencode.ddo.model.stats._
+import io.truthencode.ddo.core.model.race.Race
+import io.truthencode.ddo.core.model.skill.Skill
+import io.truthencode.ddo.core.model.stats._
 import io.truthencode.ddo.core.support.dice.Dice
 import io.truthencode.ddo.core.support.points.{HitPoints, Ki, SpellPoints}
 

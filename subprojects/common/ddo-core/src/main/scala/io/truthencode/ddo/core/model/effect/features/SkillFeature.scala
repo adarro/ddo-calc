@@ -23,7 +23,7 @@ package io.truthencode.ddo.core.model.effect.features
 import io.truthencode.ddo.api.model.effect.DetailedEffect
 import io.truthencode.ddo.core.enhancement.BonusType
 import io.truthencode.ddo.core.model.effect._
-import io.truthencode.ddo.model.skill.Skill
+import io.truthencode.ddo.core.model.skill.Skill
 
 import scala.collection.immutable
 

@@ -21,7 +21,7 @@
 package io.truthencode.ddo.core.model.feats
 
 import io.truthencode.ddo.activation.{AtWillEvent, TriggeredActivationImpl}
-import io.truthencode.ddo.model.religions.Aureon
+import io.truthencode.ddo.core.model.religions.Aureon
 import io.truthencode.ddo.core.support.naming.DisplayProperties
 import io.truthencode.ddo.core.support.requisite.{FeatRequisiteImpl, RequiresAllOfFeat}
 

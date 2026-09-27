@@ -18,7 +18,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package io.truthencode.ddo.model.stats
+package io.truthencode.ddo.core.model.stats
 
 /**
  * Used to generally classify a stat or effect such as Saving Throws or Movement. These should

@@ -20,7 +20,7 @@
  */
 package io.truthencode.ddo.core.model.feats
 
-import io.truthencode.ddo.model.religions.{BloodOfVol, Religion}
+import io.truthencode.ddo.core.model.religions.{BloodOfVol, Religion}
 
 /**
  * Created by adarr on 5/2/2017.

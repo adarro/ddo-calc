@@ -21,7 +21,7 @@
 package io.truthencode.ddo.core.support.naming
 
 import com.typesafe.scalalogging.LazyLogging
-import io.truthencode.ddo.model.skill.UsingSkillSearchPrefix
+import io.truthencode.ddo.core.model.skill.UsingSkillSearchPrefix
 import org.scalatest.funspec.AnyFunSpec
 import org.scalatest.matchers.should.Matchers
 

@@ -34,8 +34,8 @@ import io.truthencode.ddo.core.model.item.weapon.WeaponCategory.{
 }
 import io.truthencode.ddo.core.model.item.weapon.WeaponClass
 import io.truthencode.ddo.core.support.naming.UsingSearchPrefix
-import io.truthencode.ddo.model.skill.Skill.{Listen, Spot}
-import io.truthencode.ddo.model.stats.{BasicStat, MissChance}
+import io.truthencode.ddo.core.model.skill.Skill.{Listen, Spot}
+import io.truthencode.ddo.core.model.stats.{BasicStat, MissChance}
 import io.truthencode.ddo.test.tags.{FeatTest, FeatureTest, SkillTest}
 import org.scalatest.TryValues.*
 import org.scalatest.funspec.AnyFunSpec

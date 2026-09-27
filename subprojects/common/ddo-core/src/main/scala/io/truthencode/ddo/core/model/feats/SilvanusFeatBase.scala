@@ -20,7 +20,7 @@
  */
 package io.truthencode.ddo.core.model.feats
 
-import io.truthencode.ddo.model.religions.{Religion, Silvanus}
+import io.truthencode.ddo.core.model.religions.{Religion, Silvanus}
 
 /**
  * Created by adarr on 5/2/2017.

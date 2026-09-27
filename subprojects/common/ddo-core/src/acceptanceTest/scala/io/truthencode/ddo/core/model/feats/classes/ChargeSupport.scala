@@ -20,14 +20,14 @@
  */
 package io.truthencode.ddo.core.model.feats.classes
 
-import io.truthencode.ddo.model.DisplayHelper
 import io.truthencode.ddo.core.support.charges.Interval.OnTimer
 import io.truthencode.ddo.core.support.charges.{Chargeable, Rechargeable}
+import io.truthencode.ddo.model.DisplayHelper
 
 import java.time.Duration
 import java.util.Optional
 import scala.beans.BeanProperty
-import scala.jdk.OptionConverters._
+import scala.jdk.OptionConverters.*
 
 /**
  * Helper classs to test Entities with Charges

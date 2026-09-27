@@ -24,7 +24,7 @@ import io.truthencode.ddo.core.enhancement.BonusType
 import io.truthencode.ddo.core.model.effect.EffectPart.Feat
 import io.truthencode.ddo.core.model.feats.Feat as Feats
 import io.truthencode.ddo.core.support.dice.{DamageDice, DamageInfo}
-import io.truthencode.ddo.model.stats.BasicStat
+import io.truthencode.ddo.core.model.stats.BasicStat
 import org.scalatest.funspec.AnyFunSpec
 import org.scalatest.matchers.should.Matchers
 // import io.truthencode.ddo.core.model.effect.EffectParameter.{DifficultyCheck, Magnitude}

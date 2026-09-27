@@ -32,8 +32,8 @@ import io.truthencode.ddo.core.model.feats.{
   ParentFeat,
   WeaponProficiencyBase
 }
-import io.truthencode.ddo.model.skill.{Skill => Skills}
-import io.truthencode.ddo.model.stats.{BasicStat, HitChance, MissChance}
+import io.truthencode.ddo.core.model.skill.{Skill => Skills}
+import io.truthencode.ddo.core.model.stats.{BasicStat, HitChance, MissChance}
 
 trait SearchPattern {
   self: EnumEntry =>
@@ -51,7 +51,7 @@ trait SkillEffectPart extends EffectPart with LazyLogging {
   val skill: Skills
 
   override def searchPattern(target: String = Searchable.stripParentheses(entryName)): String = {
-    val sp = io.truthencode.ddo.model.skill.Skill.searchPrefix
+    val sp = io.truthencode.ddo.core.model.skill.Skill.searchPrefix
     val t = Searchable.stripParentheses(entryName.replace("Skill", ""))
     s"$sp$t".replace("::", ":")
   }
@@ -160,7 +160,7 @@ object EffectPart extends Enum[EffectPart] with NoDefault[EffectPart] with Searc
   // skill key ability, total mod, rank, ability mod, misc mod
   case class Skill(override val skill: Skills) extends SkillEffectPart {
     override def entryName: String =
-      s"${io.truthencode.ddo.model.skill.Skill.searchPrefix}$skill"
+      s"${io.truthencode.ddo.core.model.skill.Skill.searchPrefix}$skill"
   }
 
   case class ActiveAbility(override val ability: ActiveAbilities) extends AbilityEffectPart {

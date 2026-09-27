@@ -20,7 +20,7 @@
  */
 package io.truthencode.ddo.core.support.requisite
 
-import io.truthencode.ddo.model.skill.Skill
+import io.truthencode.ddo.core.model.skill.Skill
 import io.truthencode.ddo.core.support.requisite.RequirementImplicits.skillToReq
 
 /**

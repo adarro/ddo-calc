@@ -22,8 +22,8 @@ package io.truthencode.ddo.core.model.spells
 
 import enumeratum.{Enum, EnumEntry}
 import io.truthencode.ddo.model.effect._
-import io.truthencode.ddo.model.skill.Skill
-import io.truthencode.ddo.model.skill.Skill.{Heal, Perform, Repair, Spellcraft}
+import io.truthencode.ddo.core.model.skill.Skill
+import io.truthencode.ddo.core.model.skill.Skill.{Heal, Perform, Repair, Spellcraft}
 import io.truthencode.ddo.core.support.SearchPrefix
 import io.truthencode.ddo.core.StringUtils.Extensions
 import io.truthencode.ddo.core.support.naming.{DisplayName, FriendlyDisplay}

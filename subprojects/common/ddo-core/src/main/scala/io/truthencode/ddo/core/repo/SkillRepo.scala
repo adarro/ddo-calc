@@ -20,7 +20,7 @@
  */
 package io.truthencode.ddo.core.repo
 
-import io.truthencode.ddo.model.skill.Skill
+import io.truthencode.ddo.core.model.skill.Skill
 
 trait SkillRepo {
   def get(id: String): Skill

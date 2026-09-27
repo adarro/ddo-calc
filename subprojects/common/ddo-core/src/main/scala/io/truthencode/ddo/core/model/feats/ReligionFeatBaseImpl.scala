@@ -20,7 +20,7 @@
  */
 package io.truthencode.ddo.core.model.feats
 
-import io.truthencode.ddo.model.religions.Religion
+import io.truthencode.ddo.core.model.religions.Religion
 
 /**
  * Created by adarr on 4/10/2017.

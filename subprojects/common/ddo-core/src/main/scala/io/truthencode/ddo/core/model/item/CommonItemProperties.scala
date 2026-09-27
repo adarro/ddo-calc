@@ -20,7 +20,7 @@
  */
 package io.truthencode.ddo.core.model.item
 
-import io.truthencode.ddo.model.race.Race
+import io.truthencode.ddo.core.model.race.Race
 
 trait CommonItemProperties {
   self: Item =>

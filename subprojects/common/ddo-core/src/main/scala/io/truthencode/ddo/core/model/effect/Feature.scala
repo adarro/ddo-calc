@@ -26,7 +26,7 @@ import io.truthencode.ddo.core.enhancement.BonusType
 import io.truthencode.ddo.core.model.attribute.{Attribute, UsingAttributeSearchPrefix}
 import io.truthencode.ddo.core.model.feats.Feat
 import io.truthencode.ddo.core.model.item.weapon.WeaponCategory
-import io.truthencode.ddo.model.stats.BasicStat
+import io.truthencode.ddo.core.model.stats.BasicStat
 import io.truthencode.ddo.core.support.naming.{DisplayName, UsingSearchPrefix}
 
 import scala.util.Try

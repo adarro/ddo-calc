@@ -24,7 +24,7 @@ import io.truthencode.ddo.api.model.effect.DetailedEffect
 import io.truthencode.ddo.core.enhancement.BonusType
 import io.truthencode.ddo.core.model.effect.{EffectCategories, Feature, SourceInfo}
 import io.truthencode.ddo.core.model.item.weapon.WeaponCategory
-import io.truthencode.ddo.model.stats.BasicStat
+import io.truthencode.ddo.core.model.stats.BasicStat
 
 /**
  * Increases your Weapons Critical Threat range Different Weapon types have greater or lesser

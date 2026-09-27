@@ -23,7 +23,7 @@ package io.truthencode.ddo.core.model.effect.features
 import io.truthencode.ddo.api.model.effect.DetailedEffect
 import io.truthencode.ddo.core.enhancement.BonusType
 import io.truthencode.ddo.core.model.effect._
-import io.truthencode.ddo.model.stats.{BasicStat, MissChance}
+import io.truthencode.ddo.core.model.stats.{BasicStat, MissChance}
 import io.truthencode.ddo.core.support.naming.UsingSearchPrefix
 
 import scala.util.{Success, Try}

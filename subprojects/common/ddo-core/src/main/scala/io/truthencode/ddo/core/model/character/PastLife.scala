@@ -22,7 +22,7 @@ package io.truthencode.ddo.core.model.character
 
 import enumeratum.EnumEntry
 import io.truthencode.ddo.core.model.classes.HeroicCharacterClass
-import io.truthencode.ddo.model.race.{IconicClass, Race}
+import io.truthencode.ddo.core.model.race.{IconicClass, Race}
 
 sealed trait PastLife extends EnumEntry {
 

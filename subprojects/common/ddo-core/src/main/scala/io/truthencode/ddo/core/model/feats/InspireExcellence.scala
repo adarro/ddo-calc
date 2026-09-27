@@ -22,7 +22,7 @@ package io.truthencode.ddo.core.model.feats
 
 import io.truthencode.ddo.core.model.classes.HeroicCharacterClass
 import io.truthencode.ddo.core.model.classes.HeroicCharacterClass.Bard
-import io.truthencode.ddo.model.skill.Skill
+import io.truthencode.ddo.core.model.skill.Skill
 import io.truthencode.ddo.core.support.requisite._
 
 /**

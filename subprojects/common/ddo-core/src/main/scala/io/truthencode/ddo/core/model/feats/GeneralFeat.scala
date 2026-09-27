@@ -31,9 +31,9 @@ import io.truthencode.ddo.core.model.effect.{Feature, SourceInfo, TriggerEvent}
 import io.truthencode.ddo.core.model.effect.features._
 import io.truthencode.ddo.core.model.item.weapon.WeaponCategory._
 import io.truthencode.ddo.core.model.item.weapon._
-import io.truthencode.ddo.model.race.Race
+import io.truthencode.ddo.core.model.race.Race
 import io.truthencode.ddo.model.schools.School
-import io.truthencode.ddo.model.skill.Skill
+import io.truthencode.ddo.core.model.skill.Skill
 import io.truthencode.ddo.core.StringUtils.Extensions
 import io.truthencode.ddo.core.support.naming.{FriendlyDisplay, PostText, Prefix}
 import io.truthencode.ddo.core.support.requisite._

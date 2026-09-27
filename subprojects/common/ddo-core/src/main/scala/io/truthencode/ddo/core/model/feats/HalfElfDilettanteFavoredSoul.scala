@@ -21,7 +21,7 @@
 package io.truthencode.ddo.core.model.feats
 
 import io.truthencode.ddo.core.model.attribute.Attribute
-import io.truthencode.ddo.model.race.Race
+import io.truthencode.ddo.core.model.race.Race
 import io.truthencode.ddo.core.support.requisite.{
   AttributeRequisiteImpl,
   FeatRequisiteImpl,

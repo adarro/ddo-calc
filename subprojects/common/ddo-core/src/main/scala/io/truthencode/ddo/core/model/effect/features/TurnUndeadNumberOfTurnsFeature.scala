@@ -24,7 +24,7 @@ import io.truthencode.ddo.api.model.effect.DetailedEffect
 import io.truthencode.ddo.core.enhancement.BonusType
 import io.truthencode.ddo.core.model.effect
 import io.truthencode.ddo.core.model.effect._
-import io.truthencode.ddo.model.stats.BasicStat
+import io.truthencode.ddo.core.model.stats.BasicStat
 import io.truthencode.ddo.core.support.naming.UsingSearchPrefix
 
 trait TurnUndeadNumberOfTurnsFeature extends Features {

@@ -23,7 +23,7 @@ package io.truthencode.ddo.core.model.item
 import io.truthencode.ddo.core.MonetaryValue.Coins
 import io.truthencode.ddo.core.model.effect.Effect
 import io.truthencode.ddo.core.model.misc.Material
-import io.truthencode.ddo.model.race.Race
+import io.truthencode.ddo.core.model.race.Race
 import io.truthencode.ddo.core.{BindingFlags, MetaData, SetItem}
 
 /**

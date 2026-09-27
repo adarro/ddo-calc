@@ -1,7 +1,10 @@
 /*
  * SPDX-License-Identifier: Apache-2.0
  *
- * Copyright 2015-2021 Andre White.
+ * Copyright 2015-2021
+ *
+ * Author: Andre White.
+ * FILE: BladeforgedFeatSpec.scala
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -15,13 +18,14 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package io.truthencode.ddo.model.feats;
+package io.truthencode.ddo.core.model.feats.races
 
-import io.truthencode.ddo.core.model.feats.TacticalFeatFeatDisplayHelperJava;
-import org.concordion.integration.junit4.ConcordionRunner;
-import org.junit.runner.RunWith;
+import io.truthencode.ddo.core.model.feats.RaceSupport
+import io.truthencode.ddo.core.model.race.Race
+import org.concordion.integration.junit4.ConcordionRunner
+import org.junit.runner.RunWith
 
-@RunWith(ConcordionRunner.class)
-public class TacticalFeatSpec extends TacticalFeatFeatDisplayHelperJava {
-
+@RunWith(classOf[ConcordionRunner])
+class BladeforgedFeatSpec extends RaceSupport {
+  override val raceId: Race = Race.Bladeforged
 }

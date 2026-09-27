@@ -22,7 +22,7 @@ package io.truthencode.ddo.core.model.feats
 
 import com.typesafe.scalalogging.LazyLogging
 import io.truthencode.ddo.core.model.effect.Feature
-import io.truthencode.ddo.model.skill.Skill
+import io.truthencode.ddo.core.model.skill.Skill
 import org.scalatest.funspec.AnyFunSpec
 import org.scalatest.matchers.should.Matchers
 

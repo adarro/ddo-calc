@@ -22,7 +22,6 @@ package io.truthencode.ddo.core.model.feats.metamagic
 
 import io.truthencode.ddo.core.model.feats.MetaMagicFeat
 import org.concordion.api.ConcordionFixture
-import org.junit.runner.RunWith
 
 import java.util
 import scala.jdk.CollectionConverters.SeqHasAsJava

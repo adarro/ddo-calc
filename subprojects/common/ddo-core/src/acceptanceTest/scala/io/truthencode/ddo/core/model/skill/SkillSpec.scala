@@ -23,7 +23,6 @@ package io.truthencode.ddo.core.model.skill
 import org.concordion.api.FullOGNL
 import org.concordion.api.option.{ConcordionOptions, MarkdownExtensions}
 import org.concordion.api.ConcordionFixture
-import org.junit.runner.RunWith
 
 import java.util
 import scala.jdk.CollectionConverters.SeqHasAsJava

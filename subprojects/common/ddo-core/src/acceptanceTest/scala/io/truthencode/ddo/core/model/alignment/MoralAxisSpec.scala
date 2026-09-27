@@ -24,7 +24,6 @@ import io.truthencode.ddo.core.support.ConcordionEnumBuilderSupport
 import org.concordion.api.FullOGNL
 //import org.concordion.ext.EmbedExtension
 import org.concordion.api.ConcordionFixture
-import org.junit.runner.RunWith
 
 @ConcordionFixture
 @FullOGNL

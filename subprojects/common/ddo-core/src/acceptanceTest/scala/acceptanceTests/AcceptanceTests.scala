@@ -22,7 +22,6 @@ package acceptanceTests
 
 import org.concordion.api.FullOGNL
 import org.concordion.api.ConcordionFixture
-import org.junit.runner.RunWith
 
 @FullOGNL
 //@Extensions(Array(classOf[EmbedExtension], classOf[CollapseOutputExtension]))

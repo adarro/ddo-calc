@@ -27,7 +27,6 @@ import io.truthencode.ddo.core.model.feats.{ClassFeatDisplayHelper, ClassRestric
 import io.truthencode.ddo.core.support.naming.DisplayProperties
 import io.truthencode.ddo.core.support.requisite.ClassRequisite
 import org.concordion.api.ConcordionFixture
-import org.junit.runner.RunWith
 
 import java.util
 import scala.jdk.CollectionConverters.SeqHasAsJava

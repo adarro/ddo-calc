@@ -26,7 +26,6 @@ import org.concordion.api.option.{ConcordionOptions, MarkdownExtensions}
 //import org.concordion.ext.EmbedExtension
 //import org.concordion.ext.collapse.CollapseOutputExtension
 import org.concordion.api.ConcordionFixture
-import org.junit.runner.RunWith
 
 @FullOGNL
 //@Extensions(Array(classOf[EmbedExtension], classOf[CollapseOutputExtension]))

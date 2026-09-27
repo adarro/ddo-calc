@@ -23,7 +23,6 @@ package io.truthencode.ddo.core.model.feats.races
 import io.truthencode.ddo.core.model.feats.RaceSupport
 import io.truthencode.ddo.core.model.race.Race
 import org.concordion.api.ConcordionFixture
-import org.junit.runner.RunWith
 
 @ConcordionFixture
 class WarforgedFeatSpec extends RaceSupport {

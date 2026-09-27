@@ -218,7 +218,7 @@ fun JvmTestSuite.applyKotlinTest() {
 
 fun JvmTestSuite.applyConcordionAcceptanceTest() {
     dependencies {
-//        implementation(project())
+        implementation(project())
         implementation(libs.concordion)
         // flexmark (mostly for Concordion / Markdown)
         implementation(libs.flexmark.all)

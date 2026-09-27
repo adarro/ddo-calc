@@ -52,7 +52,7 @@ val projectFolders: List<String>
     get() =
         providers.gradleProperty("projectFolders").getOrElse("").split(projectFolderDelimiter)
 
-logger.info("checking $projectFolders for sub-projects")
+logger.debug("checking $projectFolders for sub-projects")
 
 /**
  *  reads the first part of a string up to the "."

@@ -20,16 +20,14 @@
  */
 package io.truthencode.ddo.web.mapping
 
-import net.ruippeixotog.scalascraper.dsl.DSL.Extract._
-import net.ruippeixotog.scalascraper.dsl.DSL._
-import net.ruippeixotog.scalascraper.model.Element
-import io.truthencode.ddo.core.StringUtils.{Comma, EmptyString, Space}
+import com.typesafe.scalalogging.LazyLogging
 import io.truthencode.ddo.core.support.dice.DamageInfo
+import io.truthencode.ddo.web.HtmlTag
+import net.ruippeixotog.scalascraper.dsl.DSL.*
+import net.ruippeixotog.scalascraper.dsl.DSL.Extract.*
+import net.ruippeixotog.scalascraper.model.Element
 
 import scala.language.postfixOps
-// import org.jsoup.nodes.Element
-import com.typesafe.scalalogging.LazyLogging
-import io.truthencode.ddo.web.HtmlTag
 
 object Extractor extends LazyLogging {
 
@@ -48,7 +46,7 @@ object Extractor extends LazyLogging {
     tagSelector: String = HtmlTag.TableData): Option[String] = {
     textOrElement match {
       case Some(data: String) =>
-        logger.info(msgRawStringData)
+        logger.debug(msgRawStringData)
         Some(data)
       case Some(data: Element) =>
         val rslt = data >> element(s"$tagSelector:first-child")
@@ -68,7 +66,7 @@ object Extractor extends LazyLogging {
    * Extracts the critical profile information from a string representation.
    *
    * @param infoText
-   *   text containing a min - max x: Multiplier, i.e. 19-20 x3
+   *   text containing a min - max x: Multiplier, i.e., 19-20 x3
    * @return
    *   a [[critProfile]] or None if there was no parsable value found.
    */

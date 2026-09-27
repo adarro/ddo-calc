@@ -122,7 +122,7 @@ fun findProjects(
         project.plugins.hasPlugin("java") // plugins should be applied at this point
     ) {
         writer.add(":${project.name}")
-        logger.info("found ${project.childProjects.size} child projects in ${project.name}")
+        logger.debug("found ${project.childProjects.size} child projects in ${project.name}")
     }
     project.childProjects.forEach { (_, childProject) -> findProjects(writer, childProject) }
 }

@@ -37,7 +37,7 @@ afterEvaluate {
             ?.toString()
             ?.let(io.truthencode.buildlogic.TestMode::valueOf)
             ?: io.truthencode.buildlogic.TestMode.REFLECT
-    logger.debug("${project.name} kotlinTestMode: $testMode (dependencies)")
+    logger.debug("{} kotlinTestMode: {} (dependencies)", project.name, testMode)
     when (testMode) {
         io.truthencode.buildlogic.TestMode.REFLECT -> {
             // Do nothing!
@@ -72,7 +72,7 @@ afterEvaluate {
             ?.toString()
             ?.let(KotlinTestKits::valueOf)
             ?: KotlinTestKits.KoTest
-    logger.warn("after evaluate ${project.name} kotlinTestMode: $testMode (JvmTestSuite)")
+    logger.debug("after evaluate {} kotlinTestMode: {} (JvmTestSuite)", project.name, testMode)
     @Suppress("UnstableApiUsage") // Remove after JvmTestSuite is no longer 'incubating'
     testing {
         val ts = TestBuildSupport(project)
@@ -80,12 +80,12 @@ afterEvaluate {
             val test =
                 when (testMode) {
                     KotlinTestKits.KoTest -> {
-                        logger.warn("configuring ${project.name} KoTest for Unit testing (from kts)")
+                        logger.debug("configuring ${project.name} KoTest for Unit testing (from kts)")
                         named<JvmTestSuite>("test", ts.applyKoTest)
                     }
 
                     KotlinTestKits.KotlinTest -> {
-                        logger.warn("configuring ${project.name} KotlinTest for Unit testing (from kts)")
+                        logger.debug("configuring ${project.name} KotlinTest for Unit testing (from kts)")
                         named<JvmTestSuite>("test") {
                             useKotlinTest()
                         }

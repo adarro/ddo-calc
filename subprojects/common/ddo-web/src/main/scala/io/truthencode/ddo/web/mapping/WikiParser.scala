@@ -20,17 +20,8 @@
  */
 package io.truthencode.ddo.web.mapping
 
-import java.text.NumberFormat
 import com.typesafe.scalalogging.LazyLogging
-import net.ruippeixotog.scalascraper.dsl.DSL._
-import net.ruippeixotog.scalascraper.dsl.DSL.Extract._
-import net.ruippeixotog.scalascraper.model.Element
-import io.truthencode.ddo.core._
-import io.truthencode.ddo.core.enumeration.EnumExtensions.EnumCompanionOps
-import io.truthencode.ddo.core.model.attribute.Attribute
-import io.truthencode.ddo.core.model.item.weapon._
-import io.truthencode.ddo.model.meta.PhysicalDamageType
-import io.truthencode.ddo.core.model.misc.Material
+import io.truthencode.ddo.core.*
 import io.truthencode.ddo.core.StringUtils.{
   Comma,
   EmptyString,
@@ -38,12 +29,21 @@ import io.truthencode.ddo.core.StringUtils.{
   Space,
   StringImprovements
 }
+import io.truthencode.ddo.core.enumeration.EnumExtensions.EnumCompanionOps
+import io.truthencode.ddo.core.model.attribute.Attribute
+import io.truthencode.ddo.core.model.item.weapon.*
+import io.truthencode.ddo.core.model.misc.Material
 import io.truthencode.ddo.core.support.dice.{DamageInfo, Dice}
-import io.truthencode.ddo.support.matching.{WordMatchStrategies, WordMatchStrategy}
+import io.truthencode.ddo.model.meta.PhysicalDamageType
+import io.truthencode.ddo.support.matching.WordMatchStrategy
 import io.truthencode.ddo.web.mapping.ElementSupport.ElementToElementOps
-import io.truthencode.ddo.web.mapping.Extractor._
-import scala.jdk.CollectionConverters._
-//import scala.collection.JavaConverters._
+import io.truthencode.ddo.web.mapping.Extractor.*
+import net.ruippeixotog.scalascraper.dsl.DSL.*
+import net.ruippeixotog.scalascraper.dsl.DSL.Extract.*
+import net.ruippeixotog.scalascraper.model.Element
+
+import java.text.NumberFormat
+import scala.jdk.CollectionConverters.*
 import scala.language.{existentials, postfixOps, reflectiveCalls}
 import scala.util.Try
 
@@ -105,7 +105,7 @@ object WikiParser extends LazyLogging {
    */
   def criticalThreat(source: Map[String, Any]): Option[CriticalThreatRange] = {
     simpleExtractor(source.get(Field.CriticalThreatRange)) match {
-      // "Critical threat range"//  19-20/x2
+      // "Critical threat range" // 19-20/x2
       case Some(x: String) =>
         extractCriticalProfile(x) match {
           case Some(profile) =>
@@ -191,8 +191,8 @@ object WikiParser extends LazyLogging {
    *   Collection of Trait IDs or empty list if none found
    * @note
    *   Currently treating this as a list, I believe there is only one value at most, but taking the
-   *   performance hit over code breaking. MustContainAtLeastOne potential use case is a aligned
-   *   race restricted item. Will try to update and streamline this once we can locate better source
+   *   performance hit over code breaking. MustContainAtLeastOne potential use case is an aligned,
+   *   race-restricted item. Will try to update and streamline this once we can locate better source
    *   data
    *
    * Also, the value 'None' may be included in the text and is filtered out.
@@ -226,7 +226,7 @@ object WikiParser extends LazyLogging {
   }
 
   /**
-   * Extracts handedness (Off-hand, main-hand, two-handed etc) from source
+   * Extracts handedness (Off-hand, main-hand, two-handed, etc.) from source
    *
    * @param source
    *   Text or HTML fragment
@@ -285,7 +285,7 @@ object WikiParser extends LazyLogging {
   }
 
   /**
-   * Extracts binding information (i.e. bound to Character etc)
+   * Extracts binding information (i.e., bound to Character etc.)
    *
    * @param source
    *   Text or HTML fragment with desired information
@@ -298,7 +298,7 @@ object WikiParser extends LazyLogging {
       case Some(x: String) =>
         BindingFlags.fromWords(x)
       case _ =>
-        logger.debug(s"Failed to retrieve ${Field.Binding}");
+        logger.debug(s"Failed to retrieve ${Field.Binding}")
         None // TODO: Do we return default binding if none specified?
     }
   }
@@ -362,7 +362,7 @@ object WikiParser extends LazyLogging {
    * @param source
    *   Text or HTML fragment with desired information
    * @return
-   *   Int value for hardness , defaulting to zero if missing / invalid data
+   *   Int value for hardness, defaulting to zero if missing / invalid data
    */
   def hardness(source: Map[String, Any]): Int = {
     simpleExtractor(source.get(Field.Hardness)) match {
@@ -536,7 +536,7 @@ object WikiParser extends LazyLogging {
   }
 
   /**
-   * Extracts Weapon type (Melee, Ranged, thrown etc)
+   * Extracts Weapon type (Melee, Ranged, thrown, etc)
    *
    * @param wc
    *   Wrapper generally retrieved through [[WeaponCategory]] information

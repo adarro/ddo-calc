@@ -1,5 +1,4 @@
 import io.truthencode.buildlogic.FALLBACK_JDK_VERSION
-import io.truthencode.buildlogic.JLineClassifierFixAction
 import net.ltgt.gradle.errorprone.errorprone
 import net.ltgt.gradle.nullaway.nullaway
 import org.gradle.accessors.dm.LibrariesForLibs

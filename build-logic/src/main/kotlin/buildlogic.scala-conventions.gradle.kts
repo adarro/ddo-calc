@@ -156,6 +156,6 @@ afterEvaluate {
             }
         }
 
-        logger.warn("$cName ScalaCompile Options: $opts")
+        logger.debug("{} ScalaCompile Options: {}", cName, opts)
     }
 } // afterEvaluate

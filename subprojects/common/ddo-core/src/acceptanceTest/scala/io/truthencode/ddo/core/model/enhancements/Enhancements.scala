@@ -24,4 +24,4 @@ import io.truthencode.ddo.core.testoptions.DefaultFlexmark
 import org.concordion.api.ConcordionFixture
 
 @ConcordionFixture
-class Enhancements extends DefaultFlexmark {}
+class Enhancements extends DefaultFlexmark

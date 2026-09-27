@@ -20,18 +20,11 @@
  */
 package io.truthencode.ddo.core.support.validation
 
-import org.junit.runner.RunWith
-import zio.*
-import zio.test.junit.ZTestJUnitRunner
-import zio.test.{test, *}
+import org.scalatest.funspec.AnyFunSpec
+import org.scalatest.matchers.should.Matchers
 
-@RunWith(classOf[ZTestJUnitRunner])
-class ScalingEffectTest extends ZIOSpecDefault {
-  def spec: Spec[TestEnvironment & Scope, Any] = suite("Zio runner")(
-    test("test env") {
-      for _ <- ZIO.unit
-      yield assertCompletes
-    }
-  )
-
+class ScalingEffectTest extends AnyFunSpec with Matchers {
+  describe("Zio runner") {
+    it("test env")(pending)
+  }
 }

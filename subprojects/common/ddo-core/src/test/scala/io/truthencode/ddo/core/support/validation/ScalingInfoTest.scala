@@ -20,15 +20,11 @@
  */
 package io.truthencode.ddo.core.support.validation
 
-import zio.*
-import zio.test.junit.JUnitRunnableSpec
-import zio.test.{test, *}
+import org.scalatest.funspec.AnyFunSpec
+import org.scalatest.matchers.should.Matchers
 
-object ScalingInfoTest extends JUnitRunnableSpec {
-  def spec = suite("MySpec")(
-    test("test") {
-      for _ <- ZIO.unit
-      yield assertCompletes
-    }
-  )
+class ScalingInfoTest extends AnyFunSpec with Matchers {
+  describe("MySpec") {
+    it("test")(pending)
+  }
 }

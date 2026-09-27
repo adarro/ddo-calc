@@ -52,7 +52,7 @@ jobs:
                   tool: gradle
                   steps:
                       - run: ./gradlew assemble
-                      - run: if [ -e ./gradlew ]; then ./gradlew check reportScoverage aggregateScoverageTestReporting aggregateAcceptanceTestReporting aggregateTestReporting --no-configuration-cache --continue;else gradle check reportScoverage aggregateScoverageTestReporting aggregateAcceptanceTestReporting aggregateTestReporting --no-configuration-cache --continue;fi
+                      - run: if [ -e ./gradlew ]; then ./gradlew check reportScoverage aggregateAcceptanceTestReporting aggregateTestReporting aggregateScoverageTestReporting --no-configuration-cache --continue;else gradle check reportScoverage aggregateAcceptanceTestReporting aggregateTestReporting aggregateScoverageTestReporting --no-configuration-cache --continue;fi
             - save_cache:
                   paths:
                       - ~/.gradle/caches

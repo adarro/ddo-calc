@@ -21,8 +21,6 @@
 package io
 
 import org.concordion.api.ConcordionFixture
-import org.concordion.api.ConcordionFixture
-import org.junit.runner.RunWith
 
 @ConcordionFixture
 class Index {}

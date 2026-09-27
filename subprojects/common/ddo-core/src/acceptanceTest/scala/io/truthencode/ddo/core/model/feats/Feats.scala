@@ -21,7 +21,6 @@
 package io.truthencode.ddo.core.model.feats
 
 import org.concordion.api.ConcordionFixture
-import org.junit.runner.RunWith
 
 @ConcordionFixture
 class Feats

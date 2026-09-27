@@ -19,8 +19,6 @@ package io.truthencode.ddo.core.model.enhancements;
 
 import org.concordion.api.ConcordionFixture;
 import org.concordion.api.FullOGNL;
-import org.concordion.api.ConcordionFixture;
-import org.junit.runner.RunWith;
 
 
 @FullOGNL

@@ -18,7 +18,6 @@
 package io.truthencode.ddo.core.model.enhancements;
 
 import org.concordion.api.ConcordionFixture;
-import org.junit.runner.RunWith;
 
 @ConcordionFixture
 public class EnhancementTree {

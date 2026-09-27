@@ -17,11 +17,10 @@
  */
 package io.truthencode.ddo.core.model.feats;
 
+import org.concordion.api.ConcordionFixture;
 import org.concordion.api.FullOGNL;
 import org.concordion.api.option.ConcordionOptions;
 import org.concordion.api.option.MarkdownExtensions;
-import org.concordion.api.ConcordionFixture;
-import org.junit.runner.RunWith;
 
 @FullOGNL
 //@Extensions(Array(classOf[EmbedExtension], classOf[CollapseOutputExtension]))

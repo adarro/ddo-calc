@@ -25,7 +25,7 @@ plugins {
     scala
     //  java // apply (false)
     id("org.scoverage")
-    id("io.github.cosmicsilence.scalafix")
+//    id("io.github.cosmicsilence.scalafix")
 }
 val libs = the<LibrariesForLibs>()
 
@@ -64,15 +64,18 @@ scala {
     scalaVersion = scalaBaseVersion
 }
 
-scalafix {
-//    configFile = file("config/myscalafix.conf")
-    includes = listOf("/io/truthencode/**/*.scala")
-//    excludes = ["**/generated/**"]
-    ignoreSourceSets = listOf("scoverage")
-        semanticdb {
-        autoConfigure = true
-    }
-}
+// removed until we can work out sematicdb injection
+
+// TODO: Add scalafix with semanticdb injection
+//scalafix {
+////    configFile = file("config/myscalafix.conf")
+//    includes = listOf("/io/truthencode/**/*.scala")
+////    excludes = ["**/generated/**"]
+//    ignoreSourceSets = listOf("scoverage")
+//        semanticdb {
+//        autoConfigure = true
+//    }
+//}
 
 
 configure<org.scoverage.ScoverageExtension> {

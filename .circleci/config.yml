@@ -51,6 +51,7 @@ jobs:
             - with_tool_cache:
                   tool: gradle
                   steps:
+                      - run: ./gradlew scalafix
                       - run: ./gradlew assemble
 #                      - run: ./gradlew check checkScoverage --no-configuration-cache --continue
                       - run: ./gradlew check reportScoverage --no-configuration-cache --continue

@@ -20,10 +20,7 @@
  */
 package io.truthencode.ddo.core.model.enhancement.enhancements
 
-import io.truthencode.ddo.core.model.enhancement.enhancements.classbased.{
-  ApothecaryCore,
-  VileChemistCore
-}
+import io.truthencode.ddo.core.model.enhancement.enhancements.classbased.VileChemistCore
 import io.truthencode.ddo.core.support.points.SpendablePoints
 import io.truthencode.ddo.core.support.tree.TreeLike
 

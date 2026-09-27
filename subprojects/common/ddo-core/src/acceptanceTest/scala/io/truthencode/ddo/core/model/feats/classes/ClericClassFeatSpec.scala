@@ -23,7 +23,6 @@ package io.truthencode.ddo.core.model.feats.classes
 import io.truthencode.ddo.core.model.classes.HeroicCharacterClass
 import io.truthencode.ddo.core.model.feats.{ClassFeatDisplayHelper, Feat}
 import org.concordion.api.ConcordionFixture
-import org.junit.runner.RunWith
 
 @ConcordionFixture
 class ClericClassFeatSpec extends ClassFeatDisplayHelper {

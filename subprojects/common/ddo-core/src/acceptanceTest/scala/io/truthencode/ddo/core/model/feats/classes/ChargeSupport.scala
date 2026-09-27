@@ -20,9 +20,9 @@
  */
 package io.truthencode.ddo.core.model.feats.classes
 
+import io.truthencode.ddo.core.model.DisplayHelper
 import io.truthencode.ddo.core.support.charges.Interval.OnTimer
 import io.truthencode.ddo.core.support.charges.{Chargeable, Rechargeable}
-import io.truthencode.ddo.core.model.DisplayHelper
 
 import java.time.Duration
 import java.util.Optional

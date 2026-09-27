@@ -52,7 +52,6 @@ object ScalingValidation {
             value
           ) => // fail on all or succeed by filtering out invalid values based on config options
         logger.info(s"Some value $value found, validating")
-        import zio.*
 
         val sVal: Seq[Validation[String, ScalingEffect]] =
           for s <- value

@@ -23,8 +23,7 @@ package io.truthencode.ddo.core.model.feats.favor
 import com.typesafe.scalalogging.LazyLogging
 import io.truthencode.ddo.core.model.feats.{Feat, FeatDisplayHelper}
 import io.truthencode.ddo.core.support.requisite.RequiresAllOfPatron
-import org.concordion.api.FullOGNL
-import org.concordion.api.ConcordionFixture
+import org.concordion.api.{ConcordionFixture, FullOGNL}
 import org.junit.runner.RunWith
 
 import java.util

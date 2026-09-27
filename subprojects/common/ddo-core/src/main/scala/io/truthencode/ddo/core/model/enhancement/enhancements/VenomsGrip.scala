@@ -22,11 +22,7 @@ package io.truthencode.ddo.core.model.enhancement.enhancements
 
 import io.truthencode.ddo.core.model.classes.HeroicCharacterClass
 import io.truthencode.ddo.core.model.classes.HeroicCharacterClass.Alchemist
-import io.truthencode.ddo.core.model.enhancement.enhancements.classbased.{
-  VileChemistTierFive,
-  VileChemistTierFour
-}
-import io.truthencode.ddo.core.StringUtils.Extensions
+import io.truthencode.ddo.core.model.enhancement.enhancements.classbased.VileChemistTierFive
 import io.truthencode.ddo.core.support.points.SpendablePoints
 import io.truthencode.ddo.core.support.tree.TreeLike
 

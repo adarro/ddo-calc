@@ -21,8 +21,8 @@
 package io.truthencode.ddo.core.model.feats.races
 
 import io.truthencode.ddo.core.model.feats.{Feat, FeatDisplayHelper, RaceSupport}
-import io.truthencode.ddo.core.support.requisite.RequirementOption
 import io.truthencode.ddo.core.model.race.Race
+import io.truthencode.ddo.core.support.requisite.RequirementOption
 import org.concordion.api.ConcordionFixture
 import org.junit.runner.RunWith
 

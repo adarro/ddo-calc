@@ -23,7 +23,6 @@ package io.truthencode.ddo.core.model.enhancement.enhancements.classbased
 import io.truthencode.ddo.core.model.classes.HeroicCharacterClass
 import io.truthencode.ddo.core.model.enhancement._
 import io.truthencode.ddo.core.model.enhancement.enhancements.{expanders, ClassEnhancement}
-import io.truthencode.ddo.support.Elvis.booleanToElvis
 import io.truthencode.ddo.core.support.points.SpendablePoints
 import io.truthencode.ddo.core.support.points.SpendablePoints.ActionPoints
 import io.truthencode.ddo.core.support.requisite._

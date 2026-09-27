@@ -20,7 +20,6 @@
  */
 package io.truthencode.ddo.core.model.feats
 
-import io.truthencode.ddo.activation.TriggeredActivationImpl
 import io.truthencode.ddo.core.model.classes.HeroicCharacterClass
 import io.truthencode.ddo.core.model.classes.HeroicCharacterClass.Druid
 import io.truthencode.ddo.core.support.naming.{DisplayName, DisplayProperties}

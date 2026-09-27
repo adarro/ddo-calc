@@ -21,15 +21,13 @@
 package io.truthencode.ddo.core.model.feats.deity
 
 import com.typesafe.scalalogging.LazyLogging
-import io.truthencode.ddo.core.model.feats._
+import io.truthencode.ddo.core.StringUtils.Extensions
+import io.truthencode.ddo.core.model.feats.*
 import io.truthencode.ddo.core.model.item.weapon.FavoredWeapon
 import io.truthencode.ddo.core.model.religions.Religion
 import io.truthencode.ddo.core.model.worlds.World
-import io.truthencode.ddo.core.StringUtils.Extensions
 import io.truthencode.ddo.core.support.naming.{DisplayName, Prefix}
-import org.concordion.api.FullOGNL
-import org.concordion.api.ConcordionFixture
-import org.junit.runner.RunWith
+import org.concordion.api.{ConcordionFixture, FullOGNL}
 
 import java.util
 import scala.collection.immutable

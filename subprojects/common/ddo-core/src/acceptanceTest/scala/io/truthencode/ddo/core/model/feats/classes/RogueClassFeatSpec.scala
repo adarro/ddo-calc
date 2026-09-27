@@ -23,9 +23,7 @@ package io.truthencode.ddo.core.model.feats.classes
 import io.truthencode.ddo.core.model.classes.HeroicCharacterClass
 import io.truthencode.ddo.core.model.classes.HeroicCharacterClass.Rogue
 import io.truthencode.ddo.core.model.feats.{ClassFeatDisplayHelper, Feat}
-import org.concordion.api.FullOGNL
-import org.concordion.api.ConcordionFixture
-import org.junit.runner.RunWith
+import org.concordion.api.{ConcordionFixture, FullOGNL}
 
 @FullOGNL
 @ConcordionFixture

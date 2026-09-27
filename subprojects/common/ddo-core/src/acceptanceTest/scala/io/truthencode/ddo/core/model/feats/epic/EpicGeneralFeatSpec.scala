@@ -21,9 +21,7 @@
 package io.truthencode.ddo.core.model.feats.epic
 
 import io.truthencode.ddo.core.model.feats.{EpicFeat, EpicFeatFeatDisplayHelper, GeneralPassive}
-import org.concordion.api.FullOGNL
-import org.concordion.api.ConcordionFixture
-import org.junit.runner.RunWith
+import org.concordion.api.{ConcordionFixture, FullOGNL}
 
 @FullOGNL
 @ConcordionFixture

@@ -21,12 +21,7 @@
 package io.truthencode.ddo.core.model.feats
 
 import io.truthencode.ddo.core.model.classes.HeroicCharacterClass
-import io.truthencode.ddo.core.support.requisite.{
-  ClassRequisiteImpl,
-  FeatRequisiteImpl,
-  RequiresAllOfClass,
-  RequiresAllOfFeat
-}
+import io.truthencode.ddo.core.support.requisite.RequiresAllOfFeat
 
 /**
  * Icon Feat Greater Weapon Specialization.png Greater Weapon Specialization Passive Provides an

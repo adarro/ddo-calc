@@ -25,6 +25,7 @@ plugins {
     scala
     //  java // apply (false)
     id("org.scoverage")
+    id("io.github.cosmicsilence.scalafix")
 }
 val libs = the<LibrariesForLibs>()
 
@@ -62,6 +63,17 @@ val scalaBaseVersion =
 scala {
     scalaVersion = scalaBaseVersion
 }
+
+scalafix {
+//    configFile = file("config/myscalafix.conf")
+    includes = listOf("/io/truthencode/**/*.scala")
+//    excludes = ["**/generated/**"]
+    ignoreSourceSets = listOf("scoverage")
+        semanticdb {
+        autoConfigure = true
+    }
+}
+
 
 configure<org.scoverage.ScoverageExtension> {
 
@@ -101,7 +113,7 @@ afterEvaluate {
             )
         val s3Sdb =
             listOf(
-                "-Xsemanticdb",
+                "-Ysemanticdb",
                 "-semanticdb-target:$tp",
             )
 
@@ -134,7 +146,7 @@ afterEvaluate {
             "3" -> {
                 opts = listOf(
                     "-Wsafe-init",
-                    "-Yretain-trees",
+                    "-Yretain-trees","-Wunused:all"
                 ) + s3Rewrites // + s3Sdb
                 scalaCompileOptions.additionalParameters?.plusAssign(
                     opts,
@@ -159,3 +171,4 @@ afterEvaluate {
         logger.debug("{} ScalaCompile Options: {}", cName, opts)
     }
 } // afterEvaluate
+

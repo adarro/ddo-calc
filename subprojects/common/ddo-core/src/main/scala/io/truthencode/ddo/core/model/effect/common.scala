@@ -21,9 +21,6 @@
 package io.truthencode.ddo.core.model.effect
 
 import com.typesafe.scalalogging.LazyLogging
-import io.truthencode.ddo.api.model.effect.DetailedEffect
-import io.truthencode.ddo.core.enhancement.BonusType
-import zio.prelude.Validation
 
 /**
  * Common constants and functions for generating, reading, and evaluating effects.

@@ -20,7 +20,7 @@
  */
 package io.truthencode.ddo.core.model.feats
 
-import io.truthencode.ddo.activation.{AtWillEvent, TriggerImpl, TriggeredActivationImpl}
+import io.truthencode.ddo.activation.{AtWillEvent, TriggeredActivationImpl}
 import io.truthencode.ddo.core.enhancement.BonusType
 import io.truthencode.ddo.core.model.abilities.ActiveAbilities
 import io.truthencode.ddo.core.model.classes.HeroicCharacterClass

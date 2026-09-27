@@ -22,12 +22,8 @@ package io.truthencode.ddo.core.model.enhancement.enhancements
 
 import io.truthencode.ddo.core.model.classes.HeroicCharacterClass
 import io.truthencode.ddo.core.model.classes.HeroicCharacterClass.Alchemist
-import io.truthencode.ddo.core.model.enhancement.enhancements.classbased.{
-  VileChemistCore,
-  VileChemistTierOne
-}
+import io.truthencode.ddo.core.model.enhancement.enhancements.classbased.VileChemistTierOne
 import io.truthencode.ddo.core.support.points.SpendablePoints
-import io.truthencode.ddo.core.support.requisite.RequiresAllOfClass
 import io.truthencode.ddo.core.support.tree.TreeLike
 
 trait PoisonedCoating extends VileChemistTierOne with ClassEnhancementImpl {

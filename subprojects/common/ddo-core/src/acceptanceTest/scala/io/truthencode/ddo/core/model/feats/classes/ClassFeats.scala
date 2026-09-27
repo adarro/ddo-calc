@@ -23,7 +23,6 @@ package io.truthencode.ddo.core.model.feats.classes
 import io.truthencode.ddo.core.model.feats.{ClassFeat, FeatDisplayHelper}
 import io.truthencode.ddo.core.testoptions.DefaultFlexmark
 import org.concordion.api.ConcordionFixture
-import org.junit.runner.RunWith
 
 @ConcordionFixture
 class Classes extends FeatDisplayHelper with DefaultFlexmark {

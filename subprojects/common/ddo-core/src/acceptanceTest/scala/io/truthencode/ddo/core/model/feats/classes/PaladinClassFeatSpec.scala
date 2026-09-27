@@ -23,8 +23,7 @@ package io.truthencode.ddo.core.model.feats.classes
 import io.truthencode.ddo.core.model.classes.HeroicCharacterClass
 import io.truthencode.ddo.core.model.classes.HeroicCharacterClass.Paladin
 import io.truthencode.ddo.core.model.feats.{ClassFeatDisplayHelper, Feat}
-import org.concordion.api.FullOGNL
-import org.concordion.api.ConcordionFixture
+import org.concordion.api.{ConcordionFixture, FullOGNL}
 import org.junit.runner.RunWith
 
 @FullOGNL

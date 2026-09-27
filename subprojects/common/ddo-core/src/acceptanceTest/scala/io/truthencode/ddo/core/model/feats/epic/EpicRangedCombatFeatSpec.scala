@@ -20,7 +20,11 @@
  */
 package io.truthencode.ddo.core.model.feats.epic
 
-import io.truthencode.ddo.core.model.feats.{EpicFeat, EpicFeatFeatDisplayHelper, RangedCombatPassive}
+import io.truthencode.ddo.core.model.feats.{
+  EpicFeat,
+  EpicFeatFeatDisplayHelper,
+  RangedCombatPassive
+}
 import org.concordion.integration.junit4.ConcordionRunner
 import org.junit.runner.RunWith
 

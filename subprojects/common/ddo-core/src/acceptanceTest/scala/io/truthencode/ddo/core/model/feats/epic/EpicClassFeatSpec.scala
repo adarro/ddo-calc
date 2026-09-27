@@ -23,7 +23,11 @@ package io.truthencode.ddo.core.model.feats.epic
 import com.typesafe.scalalogging.LazyLogging
 import enumeratum.{Enum, EnumEntry}
 import io.truthencode.ddo.core.model.classes.HeroicCharacterClass
-import io.truthencode.ddo.core.model.feats.{ClassFeatDisplayHelper, ClassRestricted, EpicFeatFeatDisplayHelper}
+import io.truthencode.ddo.core.model.feats.{
+  ClassFeatDisplayHelper,
+  ClassRestricted,
+  EpicFeatFeatDisplayHelper
+}
 import io.truthencode.ddo.core.support.naming.DisplayProperties
 import io.truthencode.ddo.core.support.requisite.ClassRequisite
 import org.concordion.integration.junit4.ConcordionRunner

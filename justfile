@@ -45,6 +45,10 @@ testJdk17Gradle8:
   gradle --version -PdefaultJavaToolChainVersion=17
   ./gradlew :ddo-etl:tasks -PdefaultJavaToolChainVersion=17 --stacktrace
 
+# Clean BuildShip (VS Code / Eclipse) bin directories
+purgeBin:
+  find . -type d -name "bin" -exec rm -rf {} +
+
 # Clean Local Project and Gradle Cache
 purgeLocal:
   #!/usr/bin/env bash

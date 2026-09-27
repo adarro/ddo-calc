@@ -1,10 +1,10 @@
 /*
  * SPDX-License-Identifier: Apache-2.0
  *
- * Copyright 2015-2021
+ * Copyright 2015-2026
  *
  * Author: Andre White.
- * FILE: package.scala
+ * FILE: comon.scala
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -18,8 +18,11 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package io.truthencode.ddo.support
+package io.truthencode.ddo.web.mapping
 
-import com.typesafe.scalalogging.LazyLogging
+/**
+ * Created by adarr on 2/17/2017.
+ */
 
-package object utility extends LazyLogging {}
+lazy val msgNoData = "No Data available to extract"
+lazy val msgRawStringData = "returning raw string data"

@@ -28,7 +28,15 @@ import io.truthencode.ddo.core.model.effect.features.{Features, FeaturesImpl}
 import io.truthencode.ddo.core.support.naming.FriendlyDisplay
 import io.truthencode.ddo.core.support.requisite.*
 import io.truthencode.ddo.core.model.race.Race
-import io.truthencode.ddo.core.model.race.Race.{Dwarf, Elf, Gnome, HalfElf, HalfOrc, Halfling, Human}
+import io.truthencode.ddo.core.model.race.Race.{
+  Dwarf,
+  Elf,
+  Gnome,
+  HalfElf,
+  HalfOrc,
+  Halfling,
+  Human
+}
 
 import java.time.Duration
 import scala.collection.immutable

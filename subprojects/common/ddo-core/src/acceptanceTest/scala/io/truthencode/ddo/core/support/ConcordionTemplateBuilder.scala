@@ -23,7 +23,7 @@ package io.truthencode.ddo.core.support
 import com.typesafe.scalalogging.LazyLogging
 import de.neuland.jade4j.{Jade4J, JadeConfiguration}
 import enumeratum.{Enum, EnumEntry}
-import io.truthencode.ddo.core.StringUtils.{Extensions, randomAlphaString}
+import io.truthencode.ddo.core.StringUtils.{randomAlphaString, Extensions}
 import io.truthencode.ddo.core.enumeration.Companionable
 
 import scala.jdk.CollectionConverters.IterableHasAsJava

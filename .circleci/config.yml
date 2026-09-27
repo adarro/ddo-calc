@@ -75,6 +75,9 @@ jobs:
             - store_artifacts:
                   path: subprojects/common/ddo-test-results/build/reports/tests/acceptanceTest/aggregated-results
                   destination: acceptance-test-html-report
+            - store_artifacts:
+                  path: subprojects/common/ddo-core/build/test-results/acceptanceTest
+                  destination: concordion-test-html-report
             - codecov/upload
 workflows:
     example-workflow:

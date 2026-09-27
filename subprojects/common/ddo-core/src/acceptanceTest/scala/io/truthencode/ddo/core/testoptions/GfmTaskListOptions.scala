@@ -20,7 +20,7 @@
  */
 package io.truthencode.ddo.core.testoptions
 
-import _root_.io.truthencode.ddo.core.testoptions.Flexmark._
+import _root_.io.truthencode.ddo.core.testoptions.Flexmark.*
 import com.vladsch.flexmark.ext.gfm.tasklist.{TaskListExtension, TaskListItemPlacement}
 import com.vladsch.flexmark.util.data.MutableDataSet
 import com.vladsch.flexmark.util.misc.Extension

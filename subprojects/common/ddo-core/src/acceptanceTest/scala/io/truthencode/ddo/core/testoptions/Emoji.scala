@@ -1,7 +1,7 @@
 /*
  * SPDX-License-Identifier: Apache-2.0
  *
- * Copyright 2015-2021
+ * Copyright 2015-2025
  *
  * Author: Andre White.
  * FILE: Emoji.scala
@@ -20,7 +20,7 @@
  */
 package io.truthencode.ddo.core.testoptions
 
-import _root_.io.truthencode.ddo.core.testoptions.Flexmark._
+import _root_.io.truthencode.ddo.core.testoptions.Flexmark.*
 import com.vladsch.flexmark.ext.emoji.{EmojiExtension, EmojiImageType, EmojiShortcutType}
 import com.vladsch.flexmark.util.data.MutableDataSet
 import com.vladsch.flexmark.util.misc.Extension
@@ -42,10 +42,11 @@ trait Emoji extends Flexmark {
   /**
    * see [[https://github.com/vsch/flexmark-java/wiki/Extensions#emoji]]
    * @param dataSet
+   *   used to configure the extension
    * @return
    *   Mutated dataset with specified default options
    */
-  private[this] def taskOptions()(implicit dataSet: MutableDataSet): () => MutableDataSet = { () =>
+  private def taskOptions()(implicit dataSet: MutableDataSet): () => MutableDataSet = { () =>
     dataSet
       .set(EmojiExtension.ATTR_IMAGE_SIZE, "24")
       .set(EmojiExtension.USE_IMAGE_TYPE, EmojiImageType.UNICODE_FALLBACK_TO_IMAGE)

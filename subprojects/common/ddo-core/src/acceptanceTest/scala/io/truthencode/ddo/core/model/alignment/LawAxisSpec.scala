@@ -21,7 +21,7 @@
 package io.truthencode.ddo.core.model.alignment
 
 import com.typesafe.scalalogging.LazyLogging
-import io.truthencode.ddo.support.ConcordionEnumBuilderSupport
+import io.truthencode.ddo.core.support.ConcordionEnumBuilderSupport
 import org.concordion.api.FullOGNL
 // import org.concordion.ext.EmbedExtension
 import org.concordion.integration.junit4.ConcordionRunner

@@ -1,10 +1,10 @@
 /*
  * SPDX-License-Identifier: Apache-2.0
  *
- * Copyright 2015-2021
+ * Copyright 2015-2025
  *
  * Author: Andre White.
- * FILE: Emoji.scala
+ * FILE: WikiLink.scala
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -20,8 +20,8 @@
  */
 package io.truthencode.ddo.core.testoptions
 
-import _root_.io.truthencode.ddo.core.testoptions.Flexmark._
-import com.vladsch.flexmark.ext.emoji.{EmojiExtension, EmojiImageType, EmojiShortcutType}
+import _root_.io.truthencode.ddo.core.testoptions.Flexmark.*
+import com.vladsch.flexmark.ext.wikilink.WikiLinkExtension
 import com.vladsch.flexmark.util.data.MutableDataSet
 import com.vladsch.flexmark.util.misc.Extension
 
@@ -32,24 +32,25 @@ import com.vladsch.flexmark.util.misc.Extension
  * @see
  *   [[https://github.com/vsch/flexmark-java/wiki/Extensions#emoji]]
  */
-trait Emoji extends Flexmark {
+trait WikiLink extends Flexmark {
 
   abstract override def flexmarkExtensions: Seq[Extension] =
-    super.flexmarkExtensions :+ EmojiExtension.create()
+    super.flexmarkExtensions :+ WikiLinkExtension.create()
 
-  abstract override def calls: Seq[() => MutableDataSet] = super.calls :+ taskOptions()
+  abstract override def calls: Seq[() => MutableDataSet] = super.calls :+ wikiLinkTaskOptions()
 
   /**
    * see [[https://github.com/vsch/flexmark-java/wiki/Extensions#emoji]]
    * @param dataSet
+   *   used to configure the extension
    * @return
-   *   Mutated dataset with specified default options
+   *   the configured dataSet Mutated dataset with specified default options
    */
-  private[this] def taskOptions()(implicit dataSet: MutableDataSet): () => MutableDataSet = { () =>
-    dataSet
-      .set(EmojiExtension.ATTR_IMAGE_SIZE, "24")
-      .set(EmojiExtension.USE_IMAGE_TYPE, EmojiImageType.UNICODE_FALLBACK_TO_IMAGE)
-      .set(EmojiExtension.USE_SHORTCUT_TYPE, EmojiShortcutType.ANY_EMOJI_CHEAT_SHEET_PREFERRED)
+  private def wikiLinkTaskOptions()(implicit dataSet: MutableDataSet): () => MutableDataSet = {
+    () =>
+      dataSet
+        .set(WikiLinkExtension.IMAGE_LINKS, Boolean.box(true))
+
   }
 
 }

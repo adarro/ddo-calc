@@ -20,7 +20,7 @@
  */
 package io.truthencode.ddo.core.model.feats
 
-import io.truthencode.ddo.model.DisplayHelper
+import io.truthencode.ddo.core.model.DisplayHelper
 
 import java.util
 import scala.jdk.CollectionConverters.SeqHasAsJava

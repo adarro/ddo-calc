@@ -18,9 +18,9 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package io.truthencode.ddo.testoptions
+package io.truthencode.ddo.core.testoptions
 
-import _root_.io.truthencode.ddo.testoptions.Flexmark._
+import _root_.io.truthencode.ddo.core.testoptions.Flexmark._
 import com.vladsch.flexmark.ext.wikilink.WikiLinkExtension
 import com.vladsch.flexmark.util.data.MutableDataSet
 import com.vladsch.flexmark.util.misc.Extension

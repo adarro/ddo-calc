@@ -4,7 +4,7 @@
  * Copyright 2015-2021
  *
  * Author: Andre White.
- * FILE: Epic.scala
+ * FILE: Races.scala
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -18,16 +18,10 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package io.truthencode.ddo.core.model.feats.epic
+package io.truthencode.ddo.core.model.races
 
-import io.truthencode.ddo.core.model.feats.{Feat, FeatDisplayHelper}
-import io.truthencode.ddo.core.testoptions.DefaultFlexmark
-import org.concordion.api.FullOGNL
 import org.concordion.integration.junit4.ConcordionRunner
 import org.junit.runner.RunWith
 
-@FullOGNL
 @RunWith(classOf[ConcordionRunner])
-class Epic extends FeatDisplayHelper with DefaultFlexmark {
-  override val displayEnum: E = Feat
-}
+class Races

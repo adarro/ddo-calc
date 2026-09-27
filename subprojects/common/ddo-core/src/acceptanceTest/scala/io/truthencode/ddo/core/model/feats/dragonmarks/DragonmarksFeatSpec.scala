@@ -21,8 +21,8 @@
 package io.truthencode.ddo.core.model.feats.dragonmarks
 
 import io.truthencode.ddo.core.model.feats.DragonmarkFeatDisplayHelper
-import org.concordion.integration.junit4.ConcordionRunner
+import org.concordion.api.ConcordionFixture
 import org.junit.runner.RunWith
 
-@RunWith(classOf[ConcordionRunner])
+@ConcordionFixture
 class DragonmarksFeatSpec extends DragonmarkFeatDisplayHelper

@@ -20,8 +20,9 @@
  */
 package io
 
-import org.concordion.integration.junit4.ConcordionRunner
+import org.concordion.api.ConcordionFixture
+import org.concordion.api.ConcordionFixture
 import org.junit.runner.RunWith
 
-@RunWith(classOf[ConcordionRunner])
+@ConcordionFixture
 class Index {}

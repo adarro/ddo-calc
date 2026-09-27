@@ -22,14 +22,14 @@ package io.truthencode.ddo.core.model.skill
 
 import org.concordion.api.FullOGNL
 import org.concordion.api.option.{ConcordionOptions, MarkdownExtensions}
-import org.concordion.integration.junit4.ConcordionRunner
+import org.concordion.api.ConcordionFixture
 import org.junit.runner.RunWith
 
 import java.util
 import scala.jdk.CollectionConverters.SeqHasAsJava
 
 @FullOGNL
-@RunWith(classOf[ConcordionRunner])
+@ConcordionFixture
 @ConcordionOptions(
   declareNamespaces = Array("ext", "urn:concordion-extensions:2010"),
   markdownExtensions = Array(

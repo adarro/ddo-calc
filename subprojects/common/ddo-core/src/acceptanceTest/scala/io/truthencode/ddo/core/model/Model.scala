@@ -22,9 +22,9 @@ package io.truthencode.ddo.core.model
 
 import io.truthencode.ddo.core.testoptions.DefaultFlexmark
 import org.concordion.api.FullOGNL
-import org.concordion.integration.junit4.ConcordionRunner
+import org.concordion.api.ConcordionFixture
 import org.junit.runner.RunWith
 
 @FullOGNL
-@RunWith(classOf[ConcordionRunner])
+@ConcordionFixture
 class Model extends DefaultFlexmark

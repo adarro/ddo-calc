@@ -23,10 +23,10 @@ package io.truthencode.ddo.core.model.alignment
 import io.truthencode.ddo.core.support.ConcordionEnumBuilderSupport
 import org.concordion.api.FullOGNL
 //import org.concordion.ext.EmbedExtension
-import org.concordion.integration.junit4.ConcordionRunner
+import org.concordion.api.ConcordionFixture
 import org.junit.runner.RunWith
 
-@RunWith(classOf[ConcordionRunner])
+@ConcordionFixture
 @FullOGNL
 //@Extensions(Array(classOf[EmbedExtension]))
 class MoralAxisSpec {

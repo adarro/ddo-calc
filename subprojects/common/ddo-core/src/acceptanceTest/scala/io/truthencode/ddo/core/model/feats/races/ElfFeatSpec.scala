@@ -22,11 +22,11 @@ package io.truthencode.ddo.core.model.feats.races
 
 import io.truthencode.ddo.core.model.feats.{ConcordionResourcesBundleSpec, RaceSupport}
 import io.truthencode.ddo.core.model.race.Race
-import org.concordion.integration.junit4.ConcordionRunner
+import org.concordion.api.ConcordionFixture
 import org.junit.runner.RunWith
 
 // @ConcordionResources(Array("/images/thumb/*.png", "/images/*.png"))
-@RunWith(classOf[ConcordionRunner])
+@ConcordionFixture
 class ElfFeatSpec extends ConcordionResourcesBundleSpec with RaceSupport {
   override val raceId = Race.Elf
 

@@ -21,12 +21,12 @@
 package io.truthencode.ddo.core.model.feats
 
 import org.concordion.api.ConcordionResources
-import org.concordion.integration.junit4.ConcordionRunner
+import org.concordion.api.ConcordionFixture
 import org.junit.runner.RunWith
 
 /**
  * Created by adarr on 2/19/2017.
  */
 @ConcordionResources(Array("/images/*.png", "resources/*.png"))
-@RunWith(classOf[ConcordionRunner])
+@ConcordionFixture
 trait ConcordionResourcesBundleSpec

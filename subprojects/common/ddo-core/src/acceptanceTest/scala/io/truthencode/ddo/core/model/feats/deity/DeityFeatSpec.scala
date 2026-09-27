@@ -28,7 +28,7 @@ import io.truthencode.ddo.core.model.worlds.World
 import io.truthencode.ddo.core.StringUtils.Extensions
 import io.truthencode.ddo.core.support.naming.{DisplayName, Prefix}
 import org.concordion.api.FullOGNL
-import org.concordion.integration.junit4.ConcordionRunner
+import org.concordion.api.ConcordionFixture
 import org.junit.runner.RunWith
 
 import java.util
@@ -36,7 +36,7 @@ import scala.collection.immutable
 import scala.jdk.CollectionConverters.SeqHasAsJava
 
 @FullOGNL
-@RunWith(classOf[ConcordionRunner])
+@ConcordionFixture
 class DeityFeatSpec extends FeatDisplayHelper with LazyLogging {
 
   override val displayEnum: E = Feat

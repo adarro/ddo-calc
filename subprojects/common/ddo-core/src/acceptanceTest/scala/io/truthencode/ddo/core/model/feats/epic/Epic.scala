@@ -23,11 +23,11 @@ package io.truthencode.ddo.core.model.feats.epic
 import io.truthencode.ddo.core.model.feats.{Feat, FeatDisplayHelper}
 import io.truthencode.ddo.core.testoptions.DefaultFlexmark
 import org.concordion.api.FullOGNL
-import org.concordion.integration.junit4.ConcordionRunner
+import org.concordion.api.ConcordionFixture
 import org.junit.runner.RunWith
 
 @FullOGNL
-@RunWith(classOf[ConcordionRunner])
+@ConcordionFixture
 class Epic extends FeatDisplayHelper with DefaultFlexmark {
   override val displayEnum: E = Feat
 }

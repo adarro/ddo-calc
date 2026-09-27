@@ -24,7 +24,7 @@ import org.concordion.api.FullOGNL
 import org.concordion.api.option.{ConcordionOptions, MarkdownExtensions}
 //import org.concordion.ext.EmbedExtension
 //import org.concordion.ext.collapse.CollapseOutputExtension
-import org.concordion.integration.junit4.ConcordionRunner
+import org.concordion.api.ConcordionFixture
 import org.junit.runner.RunWith
 
 //@FullOGNL
@@ -36,7 +36,7 @@ import org.junit.runner.RunWith
 //    MarkdownExtensions.AUTOLINKS,
 //    MarkdownExtensions.TASKLISTITEMS)
 //)
-//@RunWith(classOf[ConcordionRunner])
+//@ConcordionFixture
 class GeneralFeatRelatedFixture extends FeatDisplayHelper {
   val displayEnum: E = GeneralFeat
 

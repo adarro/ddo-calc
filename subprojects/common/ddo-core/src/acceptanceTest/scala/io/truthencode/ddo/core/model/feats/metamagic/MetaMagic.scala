@@ -21,13 +21,13 @@
 package io.truthencode.ddo.core.model.feats.metamagic
 
 import io.truthencode.ddo.core.model.feats.MetaMagicFeat
-import org.concordion.integration.junit4.ConcordionRunner
+import org.concordion.api.ConcordionFixture
 import org.junit.runner.RunWith
 
 import java.util
 import scala.jdk.CollectionConverters.SeqHasAsJava
 
-@RunWith(classOf[ConcordionRunner])
+@ConcordionFixture
 class MetaMagic {
   def verifyFeats(): util.List[String] = {
     MetaMagicFeat.values.map { x =>

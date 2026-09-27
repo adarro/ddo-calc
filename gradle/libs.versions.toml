@@ -218,7 +218,7 @@ camel-testcontainers-junit5 = { module = "org.apache.camel:camel-testcontainers-
 chimney-s213 = { module = "io.scalaland:chimney_2.13", version.ref = "chimney" }
 chimney-s3 = { module = "io.scalaland:chimney_3", version.ref = "chimney" }
 commons-lang3 = { module = "org.apache.commons:commons-lang3", version.ref = "commons-lang3" }
-concordion = { module = "org.concordion:concordion", version.ref = "concordion"}
+concordion = { module = "org.concordion:concordion", version.ref = "concordion" }
 concordion-collapse-output-extension = "org.concordion:concordion-collapse-output-extension:1.0.0"
 concordion-embed-extension = "org.concordion:concordion-embed-extension:1.2.0"
 core-s3 = { module = "com.softwaremill.sttp.client3:core_3", version.ref = "sttp" }

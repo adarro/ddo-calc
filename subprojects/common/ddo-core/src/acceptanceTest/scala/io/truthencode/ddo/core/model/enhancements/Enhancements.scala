@@ -22,7 +22,7 @@ package io.truthencode.ddo.core.model.enhancements
 
 import io.truthencode.ddo.core.testoptions.DefaultFlexmark
 import org.concordion.api.ConcordionFixture
-import org.concordion.integration.junit4.ConcordionRunner
+import org.concordion.api.ConcordionFixture
 import org.junit.runner.RunWith
 
 @ConcordionFixture

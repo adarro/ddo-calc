@@ -22,10 +22,10 @@ package io.truthencode.ddo.core.model.feats.races
 
 import io.truthencode.ddo.core.model.feats.RaceSupport
 import io.truthencode.ddo.core.model.race.Race
-import org.concordion.integration.junit4.ConcordionRunner
+import org.concordion.api.ConcordionFixture
 import org.junit.runner.RunWith
 
-@RunWith(classOf[ConcordionRunner])
+@ConcordionFixture
 class ShardarkaiFeatSpec extends RaceSupport {
   override val raceId: Race = Race.Shadarkai
 }

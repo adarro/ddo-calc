@@ -28,7 +28,7 @@ import org.scalatest.funspec.AnyFunSpec
 import org.scalatest.matchers.should.Matchers
 import org.scalatestplus.mockito.MockitoSugar
 
-class BindingTest extends AnyFunSpec with Matchers with MockitoSugar with LazyLogging {
+class ItemBindingTest extends AnyFunSpec with Matchers with MockitoSugar with LazyLogging {
   final val Unbound = "Unbound"
   final val possibleText: List[String] = List(
     "Bound To Character on Equip",
@@ -59,7 +59,7 @@ class BindingTest extends AnyFunSpec with Matchers with MockitoSugar with LazyLo
     "BindsToCharacterOnAcquire",
     "BindsToCharacterOnEquip"
   )
-  
+
   // restore once we debug this fiasco
   ignore("Binding Status") {
     they("should include unbound, account and character") {

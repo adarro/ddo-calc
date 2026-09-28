@@ -53,7 +53,6 @@ dependencies {
 
             implementation(libs.dev.zio.prelude.s3)
             implementation(libs.typesafe.scala.logging.s3)
-            testImplementation(libs.dev.zio.test.junit.s3)
         }
 
         else -> {

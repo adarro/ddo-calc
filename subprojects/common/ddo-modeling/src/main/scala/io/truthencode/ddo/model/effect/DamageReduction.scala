@@ -159,6 +159,6 @@ trait Cold extends Elemental
 trait Electric extends Elemental
 
 /**
- * Reduces damage from Acid, Fire, Cold and Electric
+ * Reduces damage from Acid, Fire, Cold, and Electric
  */
 trait ElementalResistance extends Resist with Acid with Fire with Cold with Electric

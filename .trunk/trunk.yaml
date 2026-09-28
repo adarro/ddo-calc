@@ -27,7 +27,7 @@ lint:
         - markdownlint@0.49.1
         - oxipng@10.2.1
         - prettier@3.9.9
-        - renovate@44.112.3
+        - renovate@44.115.10
         - scalafmt@3.11.5
         - shellcheck@0.11.0
         - shfmt@3.14.1

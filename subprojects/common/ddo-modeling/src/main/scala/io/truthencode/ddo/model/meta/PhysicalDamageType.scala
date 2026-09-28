@@ -21,11 +21,18 @@
 package io.truthencode.ddo.model.meta
 
 import enumeratum.{Enum, EnumEntry}
-import io.truthencode.ddo.NoDefault
-import io.truthencode.ddo.model.effect._
+import io.truthencode.ddo.modeling.NoDefault
+import io.truthencode.ddo.model.effect.*
+import io.truthencode.ddo.model.effect.{
+  Damage,
+  DamageType,
+  MagicalDamage,
+  TypedPhysicalDamage,
+  UntypedPhysicalDamage
+}
 
 /**
- * Basic damage for (generally) physical damage such as melee weapons or projectiles (arrows /
+ * Basic damage for (generally) physical damage such as mêlée weapons or projectiles (arrows /
  * bolts) in addition to physical components to spells such as bludgeon damage from 'Ice Storm'.
  */
 sealed trait PhysicalDamageType extends EnumEntry with Damage with NoDefault[PhysicalDamageType] {
@@ -45,7 +52,7 @@ object PhysicalDamageType extends Enum[PhysicalDamageType] {
   case object Special extends PhysicalDamageType with UntypedPhysicalDamage
 
   /**
-   * Blunt force such as delivered by clubs maces and hammers and the crushing boulders of an ice
+   * Blunt force such as delivered by clubs, maces and hammers and the crushing boulders of an ice
    * storm
    */
   case object Bludgeon extends PhysicalDamageType with TypedPhysicalDamage with Bludgeoning
@@ -56,7 +63,7 @@ object PhysicalDamageType extends Enum[PhysicalDamageType] {
   case object Pierce extends PhysicalDamageType with TypedPhysicalDamage with Piercing
 
   /**
-   * Slicing damage such as delivered by Longswords, razors etc
+   * Slicing damage such as delivered by Longswords, razors, etc.
    */
   case object Slash extends PhysicalDamageType with TypedPhysicalDamage with Slashing
 

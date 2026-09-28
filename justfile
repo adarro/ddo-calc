@@ -45,6 +45,10 @@ testJdk17Gradle8:
   gradle --version -PdefaultJavaToolChainVersion=17
   ./gradlew :ddo-etl:tasks -PdefaultJavaToolChainVersion=17 --stacktrace
 
+# Clean BuildShip (VS Code / Eclipse) bin directories
+purgeBin:
+  find . -type d -name "bin" -exec rm -rf {} +
+
 # Clean Local Project and Gradle Cache
 purgeLocal:
   #!/usr/bin/env bash
@@ -60,7 +64,17 @@ nukeCache:
   rm -rf ~/.gradle/caches/
   rm -rf .gradle/
 
+# Remove semanticdb files
+unsemantic:
+  find . -type f -name "*.semanticdb" -delete
+
 
 # Real Time Local Dev with coordinated ports (Experimental)
 dockerDev:
   echo "This will one day launch services in dev mode"
+
+# Format and lint via Trunk.io then Spotless
+lint:
+  #!/usr/bin/env bash
+  trunk fmt
+  ./gradlew spotlessApply

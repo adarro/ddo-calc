@@ -112,7 +112,7 @@ configure<com.diffplug.gradle.spotless.SpotlessExtension> {
     project.plugins.withId("java") {
         logger.info("SPOTLESS: configuring java formatting to ${project.name} (googleJavaFormat)")
         java {
-            // TODO: Migrate any version references to use the Version Catalog instead of gradle properties for consistency and single source of truth
+            removeUnusedImports()
             val googleJavaFormatVersion = libs.versions.google.java.format
             googleJavaFormat(googleJavaFormatVersion.get())
                 .aosp()

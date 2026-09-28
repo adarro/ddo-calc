@@ -21,8 +21,9 @@
 package io.truthencode.ddo.model.meta
 
 import enumeratum.{Enum, EnumEntry}
-import io.truthencode.ddo.NoDefault
-import io.truthencode.ddo.model.effect._
+import io.truthencode.ddo.model.effect.*
+import io.truthencode.ddo.model.effect.Damage
+import io.truthencode.ddo.modeling.NoDefault
 
 import scala.collection.immutable
 

@@ -95,13 +95,18 @@ configurations {
 }
 
 // TODO: see if generated source is auto-detected
-sourceSets {
-    this.configureEach {
-        scala {
+// sourceSets {
+//    this.configureEach {
+//        scala {
+//
+//            this.srcDir(tasks.named("generateAvroScala"))
+//        }
+//    }
+// }
 
-            this.srcDir(tasks.named("generateAvroScala"))
-        }
-    }
+tasks.withType<Jar> {
+    // Stale BasicEffectInfo.class seems to be polluting incremental runs
+    duplicatesStrategy = DuplicatesStrategy.WARN
 }
 
 //    scala {

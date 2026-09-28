@@ -22,12 +22,12 @@ package io.truthencode.ddo.web.mapping
 
 import com.typesafe.scalalogging.LazyLogging
 import enumeratum.{Enum => SmartEnum, EnumEntry}
-import io.truthencode.ddo.DDOObject
-import io.truthencode.ddo.model.item.{PermanentItem, Potion}
-import io.truthencode.ddo.model.item.armor.Armor
-import io.truthencode.ddo.model.item.clothing.Clothing
+import io.truthencode.ddo.core.DDOObject
+import io.truthencode.ddo.core.model.item.{PermanentItem, Potion}
+import io.truthencode.ddo.core.model.item.armor.Armor
+import io.truthencode.ddo.core.model.item.clothing.Clothing
 import io.truthencode.ddo.support.matching.WordMatchStrategy
-import io.truthencode.ddo.model.item.Item
+import io.truthencode.ddo.core.model.item.Item
 
 import scala.collection.immutable
 import scala.language.{existentials, postfixOps}

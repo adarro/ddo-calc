@@ -31,7 +31,7 @@ plugins {
 
 tasks.withType(Test::class.java) {
     val t = this
-    logger.warn("Were in test config for ${project.name}")
+    logger.debug("Were in $name config for ${project.name}")
     // Jandex dependencies needed here where plugin is applied
     project.plugins.withId("org.kordamp.gradle.jandex") {
         val jandexProjectTask = ":${project.name}:jandex"
@@ -47,8 +47,6 @@ tasks.withType(Test::class.java) {
     }
     systemProperties["concordion.output.dir"] = outDir
     val outputDir = reports.junitXml.outputLocation
-
-//    logger.warn("Setting concordion.output.dir \tto:\t $outDir\nSetting junit.platform.reporting.output.dir \tto: \t${outputDir.get()}")
 
     val extraProps = mutableListOf("-Djunit.platform.reporting.output.dir=${outputDir.get().asFile.absolutePath}")
 
@@ -448,4 +446,19 @@ plugins.withType<JavaPlugin> {
             junitXml.required.set(true)
         }
     }
+}
+
+// Ensure JaCoCo captures data for both suites
+tasks.withType<JacocoReport> {
+    dependsOn(testing.suites)
+    classDirectories.setFrom(
+        files(
+            classDirectories.files.map {
+                fileTree(it) {
+                    include("io/truthencode/**") // Adjust to your package structure
+                    exclude("**/META-INF/**")
+                }
+            },
+        ),
+    )
 }

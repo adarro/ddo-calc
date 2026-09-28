@@ -21,12 +21,11 @@
 package acceptanceTests
 
 import org.concordion.api.FullOGNL
-import org.concordion.integration.junit4.ConcordionRunner
-import org.junit.runner.RunWith
+import org.concordion.api.ConcordionFixture
 
 @FullOGNL
 //@Extensions(Array(classOf[EmbedExtension], classOf[CollapseOutputExtension]))
-@RunWith(classOf[ConcordionRunner])
+@ConcordionFixture
 //@ConcordionOptions(
 //  declareNamespaces = Array("ext", "urn:concordion-extensions:2010"),
 //  markdownExtensions = Array(MarkdownExtensions.WIKILINKS,

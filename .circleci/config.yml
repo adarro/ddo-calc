@@ -51,6 +51,7 @@ jobs:
             - with_tool_cache:
                   tool: gradle
                   steps:
+                      - run: ./gradlew clean # TODO: remove once dirty cache is eliminated as an failure cause
 #                      - run: ./gradlew scalafix
                       - run: ./gradlew assemble compileScoverageJava compileScoverageScala --no-configuration-cache
 #                      - run: ./gradlew check checkScoverage --no-configuration-cache --continue

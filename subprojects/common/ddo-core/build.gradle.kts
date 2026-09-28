@@ -26,9 +26,12 @@ plugins {
 description = "Core DDO Objects"
 
 val sVersion = "3"
+
 scalaBuildInfo {
     scalaVersion = sVersion
+    rewrite = true
 }
+
 dependencies {
 //    implementation(enforcedPlatform(project(":ddo-platform-scala")))
     implementation(project(":ddo-util"))

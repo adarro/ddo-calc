@@ -27,7 +27,6 @@ import io.truthencode.ddo.core.model.feats.{Feat, GeneralFeat}
 import io.truthencode.ddo.core.model.stats.BasicStat
 import org.scalatest.OptionValues.convertOptionToValuable
 import org.scalatest.funspec.AnyFunSpec
-import org.scalatest.matchers.must.Matchers.defined
 import org.scalatest.matchers.should.Matchers
 
 import scala.language.postfixOps
@@ -37,7 +36,6 @@ class FeaturesTest extends AnyFunSpec with Matchers with LazyLogging {
 
   describe("A Feature Set") {
     it("Should be kewl") {
-      import Features.FeatureExtractor
       val source = Feat
       val ffs =
         for

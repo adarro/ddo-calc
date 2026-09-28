@@ -30,7 +30,6 @@ import org.scalatest.prop.{TableDrivenPropertyChecks, TableFor1}
 import org.scalatestplus.mockito.MockitoSugar
 
 import scala.collection.immutable
-import scala.util.Random
 import scala.util.Random.shuffle
 
 class DamageDiceTest

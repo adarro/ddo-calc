@@ -22,7 +22,6 @@ package io.truthencode.ddo.core.model.effect
 
 import com.typesafe.scalalogging.LazyLogging
 import io.truthencode.ddo.api.model.effect.{DetailedEffect, ScalingEffect, ScalingInfo}
-import io.truthencode.ddo.core.model.effect.EffectValidation.*
 import io.truthencode.ddo.core.support.validation.{invalidationOptions, validateDetailedEffect}
 import org.scalatest.funspec.AnyFunSpec
 import org.scalatest.matchers.should.Matchers

@@ -21,7 +21,7 @@
 package io.truthencode.ddo.core.support
 
 import enumeratum.{Enum, EnumEntry}
-import io.truthencode.ddo.core.support.{Other, SimpleEnum}
+import io.truthencode.ddo.core.support.SimpleEnum
 
 import scala.collection.immutable
 

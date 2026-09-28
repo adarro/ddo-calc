@@ -29,7 +29,6 @@ import io.truthencode.ddo.core.support.validation.ScalingValidation.{
 import org.scalatest.funspec.AnyFunSpec
 import org.scalatest.matchers.should.Matchers
 import org.scalatest.prop.TableDrivenPropertyChecks
-import zio.prelude.ZValidation
 
 class ScalingValidationTest
   extends AnyFunSpec with Matchers with LazyLogging with TableDrivenPropertyChecks {

@@ -40,10 +40,20 @@ interface ScalaBuildExtension {
      * Whether to enable rewrite mode for scala 3.
      */
     val rewrite: Property<Boolean>
+
+    /**
+     * Whether to enable semanticdb
+     * Toggle this to enable semanticdb injection.
+     *
+     * @note This may need to be adjusted when used in combination with scalafix.
+     * Specifically, the scalafix autoconfigure option may need to be disabled.
+     */
+    val semanticdb: Property<Boolean>
 }
 
 val scalaBuildExtension = extensions.create<ScalaBuildExtension>("scalaBuildInfo")
 
+// extension defaults
 scalaBuildExtension.scalaVersion.convention(
     providers
         .gradleProperty("builderScalaVersion")
@@ -55,6 +65,10 @@ scalaBuildExtension.scalaVersion.convention(
             }
         }.orElse(FALLBACK_SCALA_VERSION),
 )
+
+scalaBuildExtension.rewrite.convention(false)
+scalaBuildExtension.semanticdb.convention(false)
+
 val scalaBaseVersion =
     scalaBuildExtension.scalaVersion
         .flatMap { sv ->
@@ -158,11 +172,15 @@ afterEvaluate {
             "3" -> {
                 opts = listOf(
                     "-Wsafe-init",
-                    "-Yretain-trees","-Wunused:all"
-                ) 
+                    "-Yretain-trees", "-Wunused:all"
+                )
                 if (scalaBuildExtension.rewrite.getOrElse(false)) {
                     opts.plus(s3Rewrites)
-                } // + s3Sdb
+                }
+                if (scalaBuildExtension.semanticdb.getOrElse(false)) {
+                    opts.plus(s3Sdb)
+                }
+
                 scalaCompileOptions.additionalParameters?.plusAssign(
                     opts,
                 )
@@ -172,7 +190,10 @@ afterEvaluate {
                 opts =
                     listOf(
                         "-Xsource:3-cross",
-                    ) // + s2Sdb
+                    )
+                if (scalaBuildExtension.semanticdb.getOrElse(false)) {
+                    opts.plus(s2Sdb)
+                }
                 scalaCompileOptions.additionalParameters?.plusAssign(
                     opts,
                 )

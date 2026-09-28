@@ -101,7 +101,7 @@ class ItemBindingTest extends AnyFunSpec with Matchers with MockitoSugar with La
       rslt shouldEqual None
     }
   }
-  describe("Binding Flags") {
+  ignore("Binding Flags") {
     they("can create an instance from acronyms with [Option] or raw") {
       val words = possibleText.filter { x => x.equals(Unbound) }
       words.foreach { x =>

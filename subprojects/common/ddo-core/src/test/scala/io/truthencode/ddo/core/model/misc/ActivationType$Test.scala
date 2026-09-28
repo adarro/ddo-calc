@@ -24,8 +24,6 @@ import io.truthencode.ddo.core.model.effect.TriggerEvent
 import org.scalatest.funspec.AnyFunSpec
 import org.scalatest.matchers.should.Matchers
 
-import scala.languageFeature.postfixOps
-
 /**
  * Created by adarr on 1/28/2017.
  */

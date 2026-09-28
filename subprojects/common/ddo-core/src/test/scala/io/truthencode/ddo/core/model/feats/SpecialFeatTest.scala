@@ -21,7 +21,6 @@
 package io.truthencode.ddo.core.model.feats
 
 import com.typesafe.scalalogging.LazyLogging
-import io.truthencode.ddo.core.model.feats.SpecialFeat.FeatRespecToken
 import org.scalatest.funspec.AnyFunSpec
 import org.scalatest.matchers.should.Matchers
 

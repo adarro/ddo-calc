@@ -52,7 +52,7 @@ jobs:
                   tool: gradle
                   steps:
 #                      - run: ./gradlew scalafix
-                      - run: ./gradlew assemble
+                      - run: ./gradlew assemble compileScoverageJava compileScoverageScala --no-configuration-cache
 #                      - run: ./gradlew check checkScoverage --no-configuration-cache --continue
                       - run: ./gradlew check reportScoverage --no-configuration-cache --continue
                       - run: if [ -e ./gradlew ]; then ./gradlew  aggregateAcceptanceTestReporting aggregateTestReporting aggregateScoverageTestReporting --no-configuration-cache --continue;else gradle aggregateAcceptanceTestReporting aggregateTestReporting aggregateScoverageTestReporting --no-configuration-cache --continue;fi

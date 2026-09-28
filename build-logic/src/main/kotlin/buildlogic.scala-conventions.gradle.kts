@@ -30,7 +30,16 @@ plugins {
 val libs = the<LibrariesForLibs>()
 
 interface ScalaBuildExtension {
+    /**
+     * The scala major version to use for the project.
+     * Expects a value of 2 or 3
+     */
     val scalaVersion: Property<String>
+
+    /**
+     * Whether to enable rewrite mode for scala 3.
+     */
+    val rewrite: Property<Boolean>
 }
 
 val scalaBuildExtension = extensions.create<ScalaBuildExtension>("scalaBuildInfo")
@@ -124,7 +133,7 @@ afterEvaluate {
             listOf(
                 "-rewrite",
                 "-source",
-                "3.4-migration",
+                "3.6-migration",
                 "-Xignore-scala2-macros",
                 "-new-syntax",
             )
@@ -150,7 +159,10 @@ afterEvaluate {
                 opts = listOf(
                     "-Wsafe-init",
                     "-Yretain-trees","-Wunused:all"
-                ) + s3Rewrites // + s3Sdb
+                ) 
+                if (scalaBuildExtension.rewrite.getOrElse(false)) {
+                    opts.plus(s3Rewrites)
+                } // + s3Sdb
                 scalaCompileOptions.additionalParameters?.plusAssign(
                     opts,
                 )

@@ -51,9 +51,9 @@ jobs:
             - with_tool_cache:
                   tool: gradle
                   steps:
-#                      - run: ./gradlew scalafix
-                      - run: ./gradlew assemble
-#                      - run: ./gradlew check checkScoverage --no-configuration-cache --continue
+                      - run: ./gradlew clean
+                      - run: ./gradlew assemble compileScoverageJava compileScoverageScala --no-configuration-cache
+                      #                      - run: ./gradlew check checkScoverage --no-configuration-cache --continue # Enable once we have a baseline implementation
                       - run: ./gradlew check reportScoverage --no-configuration-cache --continue
                       - run: if [ -e ./gradlew ]; then ./gradlew  aggregateAcceptanceTestReporting aggregateTestReporting aggregateScoverageTestReporting --no-configuration-cache --continue;else gradle aggregateAcceptanceTestReporting aggregateTestReporting aggregateScoverageTestReporting --no-configuration-cache --continue;fi
             - save_cache:
@@ -83,7 +83,7 @@ jobs:
                   destination: concordion-test-html-report
             - codecov/upload
 workflows:
-    example-workflow:
+    coverage-reporting:
         jobs:
             - build_and_test:
                   context:

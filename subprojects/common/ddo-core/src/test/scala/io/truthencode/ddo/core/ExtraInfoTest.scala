@@ -21,9 +21,7 @@
 package io.truthencode.ddo.core
 
 import com.typesafe.scalalogging.LazyLogging
-import io.truthencode.ddo.core.model.spells.SpellPower.Positive
 import org.scalatest.funspec.AnyFunSpec
-import org.scalatest.funsuite.AnyFunSuiteLike
 import org.scalatest.matchers.should.Matchers
 import org.scalatestplus.scalacheck.ScalaCheckPropertyChecks
 

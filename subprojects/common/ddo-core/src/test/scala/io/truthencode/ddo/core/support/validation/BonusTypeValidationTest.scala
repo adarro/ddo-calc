@@ -21,7 +21,6 @@
 package io.truthencode.ddo.core.support.validation
 
 import com.typesafe.scalalogging.LazyLogging
-import io.truthencode.ddo.core.enhancement.BonusType
 import org.scalatest.funspec.AnyFunSpec
 import org.scalatest.matchers.should.Matchers
 

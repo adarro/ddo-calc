@@ -60,8 +60,9 @@ jquery = "3.7.1"
 json4s = "4.1.0-M3"
 jspecify = "1.0.1"
 jstachio = "1.3.6"
-junit-platform = "1.10.0"
-junit5 = "6.1.3"
+junit-platform = "1.14.3"
+# JUnit 6 blocked by Scalatest 5.x dependency
+junit5 = "5.14.3"
 kasechange = "1.4.1"
 kordamp-jandex-gradle-plugin = "2.0.0"
 kotest = "6.2.5"
@@ -277,7 +278,7 @@ junit-jupiter = { module = "org.junit.jupiter:junit-jupiter" }
 junit-jupiter-engine = { module = "org.junit.jupiter:junit-jupiter-engine" }
 junit-platform-engine = { module = "org.junit.platform:junit-platform-engine" }
 junit-platform-launcher = { module = "org.junit.platform:junit-platform-launcher" }
-junit-platform-reporting = { module = "org.junit.platform:junit-platform-reporting", version.ref = "junit5" }
+junit-platform-reporting = { module = "org.junit.platform:junit-platform-reporting", version.ref = "junit-platform" }
 junit-platform-runner = { module = "org.junit.platform:junit-platform-runner" }
 junit-vintage-engine = { module = "org.junit.vintage:junit-vintage-engine" }
 kasechange = { module = "net.pearx.kasechange:kasechange", version.ref = "kasechange" }
